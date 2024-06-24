@@ -4,3 +4,5 @@ import type { FuseResult } from 'fuse.js';
 export { default } from './SvelteFuse.svelte';
 
 export type ResultType<T> = FuseResult<T>[];
+
+export { default as IntegrationsCarousel } from './IntegrationCarousel.svelte';

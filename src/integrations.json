@@ -34,45 +34,6 @@
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "url": "/docs/products/auth",
                 "new": true,
-                "platform": "Self-hosted",
-                "author": {
-                    "avatar": "/images/community/avatars/souvik.png",
-                    "name": "Souvik Sarkar",
-                    "username": "@Jeet_2003"
-                }
-            },
-            {
-                "title": "Lorem Ipsum",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                "url": "/docs/products/auth",
-                "featured": true,
-                "platform": "Self-hosted",
-                "image": "/images/blog/ai-announcement.png",
-                "author": {
-                    "avatar": "/images/community/avatars/souvik.png",
-                    "name": "Souvik Sarkar",
-                    "username": "@Jeet_2003"
-                }
-            },
-            {
-                "title": "Lorem Ipsum",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                "url": "/docs/products/auth",
-                "new": true,
-                "platform": "Self-hosted",
-                "author": {
-                    "avatar": "/images/community/avatars/souvik.png",
-                    "name": "Souvik Sarkar",
-                    "username": "@Jeet_2003"
-                }
-            },
-            {
-                "title": "Lorem Ipsum",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                "featured": true,
-                "url": "/docs/products/auth",
-                "image": "/images/blog/ai-announcement.png",
-                "new": true,
                 "platform": "Cloud",
                 "author": {
                     "avatar": "/images/community/avatars/souvik.png",
@@ -84,44 +45,9 @@
                 "title": "Lorem Ipsum",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "url": "/docs/products/auth",
-                "platform": "Cloud",
-                "author": {
-                    "avatar": "/images/community/avatars/souvik.png",
-                    "name": "Souvik Sarkar",
-                    "username": "@Jeet_2003"
-                }
-            },
-            {
-                "title": "Lorem Ipsum",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                "url": "/docs/products/auth",
-                "new": true,
-                "platform": "Self-hosted",
-                "author": {
-                    "avatar": "/images/community/avatars/souvik.png",
-                    "name": "Souvik Sarkar",
-                    "username": "@Jeet_2003"
-                }
-            },
-            {
-                "title": "Lorem Ipsum",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "featured": true,
-                "url": "/docs/products/auth",
+                "platform": "Cloud",
                 "image": "/images/blog/ai-announcement.png",
-                "new": true,
-                "platform": "Self-hosted",
-                "author": {
-                    "avatar": "/images/community/avatars/souvik.png",
-                    "name": "Souvik Sarkar",
-                    "username": "@Jeet_2003"
-                }
-            },
-            {
-                "title": "Lorem Ipsum",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                "url": "/docs/products/auth",
-                "platform": "Self-hosted",
                 "author": {
                     "avatar": "/images/community/avatars/souvik.png",
                     "name": "Souvik Sarkar",
@@ -158,7 +84,81 @@
                 "title": "Lorem Ipsum",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "url": "/docs/products/auth",
-                "platform": "Self-hosted",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "new": true,
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "featured": true,
+                "url": "/docs/products/auth",
+                "image": "/images/blog/ai-announcement.png",
+                "new": true,
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "new": true,
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "featured": true,
+                "url": "/docs/products/auth",
+                "image": "/images/blog/ai-announcement.png",
+                "new": true,
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
                 "author": {
                     "avatar": "/images/community/avatars/souvik.png",
                     "name": "Souvik Sarkar",
@@ -201,7 +201,7 @@
                 "title": "Lorem Ipsum",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "url": "/docs/products/auth",
-                "platform": "Self-hosted",
+                "platform": "Cloud",
                 "author": {
                     "avatar": "/images/community/avatars/souvik.png",
                     "name": "Souvik Sarkar",
@@ -212,7 +212,7 @@
                 "title": "Lorem Ipsum",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "url": "/docs/products/auth",
-                "platform": "Self-hosted",
+                "platform": "Cloud",
                 "new": true,
                 "author": {
                     "avatar": "/images/community/avatars/souvik.png",
@@ -238,7 +238,7 @@
                 "title": "Lorem Ipsum",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "url": "/docs/products/auth",
-                "platform": "Self-hosted",
+                "platform": "Cloud",
                 "author": {
                     "avatar": "/images/community/avatars/souvik.png",
                     "name": "Souvik Sarkar",
@@ -250,7 +250,7 @@
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "url": "/docs/products/auth",
                 "new": true,
-                "platform": "Self-hosted",
+                "platform": "Cloud",
                 "author": {
                     "avatar": "/images/community/avatars/souvik.png",
                     "name": "Souvik Sarkar",
@@ -264,7 +264,7 @@
                 "url": "/docs/products/auth",
                 "image": "/images/blog/ai-announcement.png",
                 "new": true,
-                "platform": "Self-hosted",
+                "platform": "Cloud",
                 "author": {
                     "avatar": "/images/community/avatars/souvik.png",
                     "name": "Souvik Sarkar",
@@ -287,7 +287,7 @@
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "url": "/docs/products/auth",
                 "new": true,
-                "platform": "Self-hosted",
+                "platform": "Cloud",
                 "author": {
                     "avatar": "/images/community/avatars/souvik.png",
                     "name": "Souvik Sarkar",
@@ -299,7 +299,7 @@
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "featured": true,
                 "url": "/docs/products/auth",
-                "platform": "Self-hosted",
+                "platform": "Cloud",
                 "image": "/images/blog/ai-announcement.png",
                 "new": true,
                 "author": {
@@ -329,7 +329,7 @@
                 "title": "Lorem Ipsum",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "url": "/docs/products/auth",
-                "platform": "Self-hosted",
+                "platform": "Cloud",
                 "author": {
                     "avatar": "/images/community/avatars/souvik.png",
                     "name": "Souvik Sarkar",
@@ -355,7 +355,7 @@
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "featured": true,
                 "url": "/docs/products/auth",
-                "platform": "Self-hosted",
+                "platform": "Cloud",
                 "image": "/images/blog/ai-announcement.png",
                 "author": {
                     "avatar": "/images/community/avatars/souvik.png",
@@ -379,7 +379,7 @@
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "url": "/docs/products/auth",
                 "image": "/images/blog/ai-announcement.png",
-                "platform": "Self-hosted",
+                "platform": "Cloud",
                 "author": {
                     "avatar": "/images/community/avatars/souvik.png",
                     "name": "Souvik Sarkar",
@@ -402,7 +402,7 @@
                 "title": "Lorem Ipsum",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "url": "/docs/products/auth",
-                "platform": "Self-hosted",
+                "platform": "Cloud",
                 "author": {
                     "avatar": "/images/community/avatars/souvik.png",
                     "name": "Souvik Sarkar",
@@ -426,7 +426,7 @@
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "image": "/images/blog/ai-announcement.png",
                 "url": "/docs/products/auth",
-                "platform": "Self-hosted",
+                "platform": "Cloud",
                 "author": {
                     "avatar": "/images/community/avatars/souvik.png",
                     "name": "Souvik Sarkar",
@@ -449,7 +449,901 @@
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 "image": "/images/blog/ai-announcement.png",
                 "url": "/docs/products/auth",
-                "platform": "Self-hosted",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            }
+        ]
+    },
+    {
+        "category": "Low-code",
+        "description": "Low code solutions",
+        "items": [
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "featured": true,
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "image": "/images/blog/ai-announcement.png",
+                "new": true,
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "featured": true,
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "image": "/images/blog/ai-announcement.png",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "image": "/images/blog/ai-announcement.png",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "image": "/images/blog/ai-announcement.png",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            }
+        ]
+    },
+    {
+        "category": "Messaging",
+        "description": "Messaging solutions",
+        "items": [
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "featured": true,
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "image": "/images/blog/ai-announcement.png",
+                "new": true,
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "featured": true,
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "image": "/images/blog/ai-announcement.png",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "image": "/images/blog/ai-announcement.png",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "image": "/images/blog/ai-announcement.png",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            }
+        ]
+    },
+    {
+        "category": "Monitoring",
+        "description": "Monitoring solutions",
+        "items": [
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "featured": true,
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "image": "/images/blog/ai-announcement.png",
+                "new": true,
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "featured": true,
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "image": "/images/blog/ai-announcement.png",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "image": "/images/blog/ai-announcement.png",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "image": "/images/blog/ai-announcement.png",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            }
+        ]
+    },
+    {
+        "category": "Payments",
+        "description": "Payment solutions",
+        "items": [
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "featured": true,
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "image": "/images/blog/ai-announcement.png",
+                "new": true,
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "featured": true,
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "image": "/images/blog/ai-announcement.png",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "image": "/images/blog/ai-announcement.png",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "image": "/images/blog/ai-announcement.png",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            }
+        ]
+    },
+    {
+        "category": "Search",
+        "description": "Search solutions",
+        "items": [
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "featured": true,
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "image": "/images/blog/ai-announcement.png",
+                "new": true,
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "featured": true,
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "image": "/images/blog/ai-announcement.png",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "image": "/images/blog/ai-announcement.png",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "image": "/images/blog/ai-announcement.png",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            }
+        ]
+    },
+    {
+        "category": "Storage",
+        "description": "Storage solutions",
+        "items": [
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "featured": true,
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "image": "/images/blog/ai-announcement.png",
+                "new": true,
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "featured": true,
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "image": "/images/blog/ai-announcement.png",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "image": "/images/blog/ai-announcement.png",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "image": "/images/blog/ai-announcement.png",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
+                "author": {
+                    "avatar": "/images/community/avatars/souvik.png",
+                    "name": "Souvik Sarkar",
+                    "username": "@Jeet_2003"
+                }
+            },
+            {
+                "title": "Lorem Ipsum",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "image": "/images/blog/ai-announcement.png",
+                "url": "/docs/products/auth",
+                "platform": "Cloud",
                 "author": {
                     "avatar": "/images/community/avatars/souvik.png",
                     "name": "Souvik Sarkar",

@@ -67,194 +67,243 @@
     <div class="web-big-padding-section">
         <div id="form" class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden">
             <div
-                    class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
+                class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
             >
                 <div class="u-position-relative">
-                        <div class="web-container u-position-relative">
-                            <!-- before submit -->
-                            <div
-                                    class="u-position-relative u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0"
-                            >
-                                <div>
-                                    <div
-                                            class="web-u-max-inline-size-none-mobile"
-                                            class:web-u-max-width-380={!submitted}
+                    <div class="web-container u-position-relative">
+                        <!-- before submit -->
+                        <div
+                            class="u-position-relative u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0"
+                        >
+                            <div>
+                                <div
+                                    class="web-u-max-inline-size-none-mobile"
+                                    class:web-u-max-width-380={!submitted}
+                                >
+                                    <section class="u-flex-vertical web-u-gap-20">
+                                        <h4 class="web-display web-u-color-text-primary">
+                                            Become a partner
+                                        </h4>
+                                        <p class="web-description">
+                                            Apply to the Partners Program by filling out this form.
+                                            Our team will reach out to you to confirm your
+                                            application was accepted.
+                                        </p>
+                                    </section>
+                                    <section
+                                        class="u-flex-vertical u-gap-12 u-padding-block-start-40 u-margin-block-start-40 web-u-sep-block-start"
                                     >
-                                        <section class="u-flex-vertical web-u-gap-20">
-                                            <h4 class="web-display web-u-color-text-primary">
-                                                Become a partner
-                                            </h4>
-                                            <p class="web-description">
-                                                Apply to the Partners Program by filling out this form. Our team will reach out to you to confirm your application was accepted.
-                                            </p>
-                                        </section>
-                                        <section
-                                                class="u-flex-vertical u-gap-12 u-padding-block-start-40 u-margin-block-start-40 web-u-sep-block-start"
-                                        >
-                                            <h2 class="web-label web-u-color-text-primary">Follow us</h2>
-                                            <ul class="u-flex u-gap-8">
-                                                {#each socials as social}
-                                                    <li>
-                                                        <a
-                                                                href={social.link}
-                                                                class="web-icon-button"
-                                                                aria-label={social.label}
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                        >
-                                                            <span class={social.icon} aria-hidden="true" />
-                                                        </a>
-                                                    </li>
-                                                {/each}
-                                            </ul>
-                                        </section>
-                                        <div
-                                                class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
-                                        />
-                                    </div>
+                                        <h2 class="web-label web-u-color-text-primary">
+                                            Follow us
+                                        </h2>
+                                        <ul class="u-flex u-gap-8">
+                                            {#each socials as social}
+                                                <li>
+                                                    <a
+                                                        href={social.link}
+                                                        class="web-icon-button"
+                                                        aria-label={social.label}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        <span
+                                                            class={social.icon}
+                                                            aria-hidden="true"
+                                                        />
+                                                    </a>
+                                                </li>
+                                            {/each}
+                                        </ul>
+                                    </section>
+                                    <div
+                                        class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
+                                    />
                                 </div>
-                                {#if submitted}
-                                    <div
-                                            class="u-position-relative u-z-index-1 u-flex-vertical u-gap-8 u-text-center web-u-max-width-380 web-u-max-inline-size-none-mobile u-margin-inline-auto"
+                            </div>
+                            {#if submitted}
+                                <div
+                                    class="u-position-relative u-z-index-1 u-flex-vertical u-gap-8 u-text-center web-u-max-width-380 web-u-max-inline-size-none-mobile u-margin-inline-auto"
+                                >
+                                    <h6
+                                        class="web-label u-flex u-main-center u-cross-center u-gap-8 e-mobile-fix-1"
                                     >
-                                        <h6
-                                                class="web-label u-flex u-main-center u-cross-center u-gap-8 e-mobile-fix-1"
-                                        >
-                                            <img
-                                                    class="u-flex-shrink-0"
-                                                    src="/images/icons/colored/check.svg"
-                                                    alt=""
-                                            />
-                                            <span class="web-u-color-text-primary"
+                                        <img
+                                            class="u-flex-shrink-0"
+                                            src="/images/icons/colored/check.svg"
+                                            alt=""
+                                        />
+                                        <span class="web-u-color-text-primary"
                                             >Thank you for applying</span
+                                        >
+                                    </h6>
+                                    <p class="web-main-body-400">
+                                        Your application has been sent successfully. Our team will
+                                        try to get back to you as soon as possible.
+                                    </p>
+                                    <button
+                                        type="reset"
+                                        class="web-button is-secondary is-full-width-mobile u-block u-margin-inline-auto u-margin-block-start-16"
+                                        >Back to Integrations</button
+                                    >
+                                </div>
+                            {:else}
+                                <form
+                                    method="post"
+                                    on:submit|preventDefault={handleSubmit}
+                                    class="u-flex-vertical u-gap-16"
+                                >
+                                    <div class="u-flex u-main-end">
+                                        <ul
+                                            class="web-form-list is-two-columns u-gap-16 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
+                                        >
+                                            <li class="web-form-item u-flex-vertical u-gap-4">
+                                                <label class="u-block" for="name"
+                                                    >Name of representative</label
+                                                >
+                                                <input
+                                                    required
+                                                    class="web-input-text"
+                                                    type="text"
+                                                    placeholder="Enter name"
+                                                    id="name"
+                                                />
+                                            </li>
+                                            <li class="web-form-item u-flex-vertical u-gap-4">
+                                                <label class="u-block" for="workEmail"
+                                                    >Work email address</label
+                                                >
+                                                <input
+                                                    required
+                                                    class="web-input-text"
+                                                    type="email"
+                                                    placeholder="Enter email"
+                                                    id="workEmail"
+                                                />
+                                            </li>
+                                            <li class="web-form-item u-flex-vertical u-gap-4">
+                                                <label class="u-block" for="companyName"
+                                                    >Company name</label
+                                                >
+                                                <input
+                                                    required
+                                                    class="web-input-text"
+                                                    type="text"
+                                                    placeholder="Enter company name"
+                                                    id="companyName"
+                                                />
+                                            </li>
+                                            <li class="web-form-item u-flex-vertical u-gap-4">
+                                                <label class="u-block" for="companySize"
+                                                    >Company size</label
+                                                >
+
+                                                <div class="u-position-relative">
+                                                    <select class="web-input-text" id="companySize">
+                                                        <option>Select size</option>
+                                                        <option>1-10 employees</option>
+                                                        <option>11-50 employees</option>
+                                                        <option>51-200 employees</option>
+                                                        <option>201-500 employees</option>
+                                                        <option>501-1000 employees</option>
+                                                        <option>1001-5000 employees</option>
+                                                        <option>5000+ employees</option>
+                                                    </select>
+                                                    <span
+                                                        class="icon-cheveron-down u-position-absolute u-inset-inline-end-8 u-inset-block-start-8 web-u-pointer-events-none"
+                                                        aria-hidden="true"
+                                                    ></span>
+                                                </div>
+                                            </li>
+                                            <li
+                                                class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
                                             >
-                                        </h6>
-                                        <p class="web-main-body-400">
-                                            Your application has been sent successfully. Our team will try to get back to you as soon as possible.
+                                                <label class="u-block" for="companyWebsite"
+                                                    >Company website</label
+                                                >
+                                                <input
+                                                    required
+                                                    class="web-input-text"
+                                                    type="url"
+                                                    placeholder="http://company.com"
+                                                    id="companyWebsite"
+                                                />
+                                            </li>
+                                            <li
+                                                class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
+                                            >
+                                                <label class="u-block" for="integration"
+                                                    >Have you already created an integration with
+                                                    Appwrite?</label
+                                                >
+                                                <div class="u-position-relative">
+                                                    <select class="web-input-text" id="integration">
+                                                        <option>Select</option>
+                                                        <option
+                                                            >Yes, we have already created an
+                                                            integration</option
+                                                        >
+                                                        <option
+                                                            >No, it is currently in the process of
+                                                            being built</option
+                                                        >
+                                                        <option
+                                                            >No, we have yet to start building</option
+                                                        >
+                                                    </select>
+                                                    <span
+                                                        class="icon-cheveron-down u-position-absolute u-inset-inline-end-8 u-inset-block-start-8 web-u-pointer-events-none"
+                                                        aria-hidden="true"
+                                                    ></span>
+                                                </div>
+                                            </li>
+                                            <li
+                                                class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
+                                            >
+                                                <label class="u-block" for="productUrl"
+                                                    >Link to the product/company's brand assets</label
+                                                >
+                                                <input
+                                                    required
+                                                    class="web-input-text"
+                                                    type="url"
+                                                    placeholder="Enter url"
+                                                    id="productUrl"
+                                                />
+                                            </li>
+                                            <li
+                                                class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
+                                            >
+                                                <label class="u-block" for="details"
+                                                    >Any other details you'd like to share with us?</label
+                                                >
+                                                <textarea
+                                                    required
+                                                    class="web-input-text"
+                                                    placeholder="Enter your message"
+                                                    id="details"
+                                                ></textarea>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div
+                                        class="u-flex u-gap-16 u-main-space-between web-u-flex-vertical-reverse-mobile"
+                                    >
+                                        <p class="web-caption-400 web-u-max-width-380">
+                                            {#if error}
+                                                {error}
+                                            {/if}
                                         </p>
                                         <button
-                                               type="reset"
-                                                class="web-button is-secondary is-full-width-mobile u-block u-margin-inline-auto u-margin-block-start-16"
-                                        >Back to Integrations</button
+                                            type="submit"
+                                            class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1"
                                         >
+                                            <span>Apply</span>
+                                        </button>
                                     </div>
-                                {:else}
-                                    <form
-                                            method="post"
-                                            on:submit|preventDefault={handleSubmit}
-                                            class="u-flex-vertical u-gap-16"
-                                    >
-                                        <div class="u-flex u-main-end">
-                                            <ul
-                                                    class="web-form-list is-two-columns u-gap-16 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
-                                            >
-                                                <li class="web-form-item u-flex-vertical u-gap-4">
-                                                        <label class="u-block" for="name">Name of representative</label>
-                                                        <input
-                                                                required
-                                                                class="web-input-text"
-                                                                type="text"
-                                                                placeholder="Enter name"
-                                                                id="name"
-                                                        />
-                                                </li>
-                                                <li class="web-form-item u-flex-vertical u-gap-4">
-                                                        <label class="u-block" for="workEmail">Work email address</label>
-                                                        <input
-                                                                required
-                                                                class="web-input-text"
-                                                                type="email"
-                                                                placeholder="Enter email"
-                                                                id="workEmail"
-                                                        />
-                                                </li>
-                                                <li class="web-form-item u-flex-vertical u-gap-4">
-                                                        <label class="u-block" for="companyName">Company name</label>
-                                                        <input
-                                                                required
-                                                                class="web-input-text"
-                                                                type="text"
-                                                                placeholder="Enter company name"
-                                                                id="companyName"
-                                                        />
-                                                </li>
-                                                <li class="web-form-item u-flex-vertical u-gap-4">
-                                                    <label class="u-block" for="companySize">Company size</label>
-
-                                                    <div class="u-position-relative">
-                                                        <select class="web-input-text" id="companySize">
-                                                            <option>Select size</option>
-                                                            <option>1-10</option>
-                                                            <option>11-100</option>
-                                                            <option>101-1000</option>
-                                                            <option>1000+</option>
-                                                        </select>
-                                                        <span class="icon-cheveron-down u-position-absolute u-inset-inline-end-8 u-inset-block-start-8 web-u-pointer-events-none" aria-hidden="true"></span>
-                                                    </div>
-                                                </li>
-                                                <li class="web-form-item is-column-span-2 u-flex-vertical u-gap-4">
-                                                    <label class="u-block" for="companyWebsite">Company website</label>
-                                                    <input
-                                                            required
-                                                            class="web-input-text"
-                                                            type="url"
-                                                            placeholder="http://company.com"
-                                                            id="companyWebsite"
-                                                    />
-                                                </li>
-                                                <li class="web-form-item is-column-span-2 u-flex-vertical u-gap-4">
-                                                    <label class="u-block" for="integration">Have you already created an integration with Appwrite?</label>
-                                                    <div class="u-position-relative">
-                                                        <select class="web-input-text" id="integration">
-                                                            <option>Select</option>
-                                                            <option>1-10</option>
-                                                            <option>11-100</option>
-                                                            <option>101-1000</option>
-                                                            <option>1000+</option>
-                                                        </select>
-                                                        <span class="icon-cheveron-down u-position-absolute u-inset-inline-end-8 u-inset-block-start-8 web-u-pointer-events-none" aria-hidden="true"></span>
-                                                    </div>
-                                                </li>
-                                                <li class="web-form-item is-column-span-2 u-flex-vertical u-gap-4">
-                                                    <label class="u-block" for="productUrl">Link to the product/company's brand assets</label>
-                                                    <input
-                                                            required
-                                                            class="web-input-text"
-                                                            type="url"
-                                                            placeholder="Enter url"
-                                                            id="productUrl"
-                                                    />
-                                                </li>
-                                                <li class="web-form-item is-column-span-2 u-flex-vertical u-gap-4">
-                                                    <label class="u-block" for="details">Any other details you'd like to share with us?</label>
-                                                    <textarea
-                                                            required
-                                                            class="web-input-text"
-                                                            placeholder="Enter your message"
-                                                            id="details"
-                                                    ></textarea>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div
-                                                class="u-flex u-gap-16 u-main-space-between web-u-flex-vertical-reverse-mobile"
-                                        >
-                                            <p class="web-caption-400 web-u-max-width-380">
-                                                {#if error}
-                                                    {error}
-                                                {/if}
-                                            </p>
-                                            <button
-                                                    type="submit"
-                                                    class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1"
-                                            >
-                                                <span>Apply</span>
-                                            </button>
-                                        </div>
-                                    </form>
-                                {/if}
-                            </div>
+                                </form>
+                            {/if}
                         </div>
+                    </div>
                     <div class="web-container">
                         <FooterNav />
                         <MainFooter />
@@ -262,10 +311,5 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="web-container">
-        <FooterNav />
-        <MainFooter />
     </div>
 </Main>
