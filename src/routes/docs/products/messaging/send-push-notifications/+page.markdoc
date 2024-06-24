@@ -330,7 +330,7 @@ func messaging(
         }
     }
 }
-
+```
 Since the token is saved in `UserDefaults`, you can access it from anywhere in your app.
 With this saved `fcmToken`, you can create a push target with Appwrite when the user logs in.
 Each push target is associated with an account, heres an example with an email password login.
