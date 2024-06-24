@@ -134,11 +134,11 @@
             </div>
         </div>
         <div
-            class="u-position-absolute web-u-z-index-1-negative web-u-hide-mobile"
-            style:inline-size="704px"
-            style:block-size="670px"
-            style:left="calc((50% - 704px / 2) + 18rem)"
-            style:top="-4rem"
+            class="u-position-absolute web-u-z-index-1-negative"
+            style:inline-size="650px"
+            style:block-size="540px"
+            style:left="calc(50% + 100px)"
+            style:top="-0.5rem"
         >
             <img src="/images/integrations/rubiks-cube.png" alt="" />
         </div>
