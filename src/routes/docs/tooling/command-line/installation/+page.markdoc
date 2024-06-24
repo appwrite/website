@@ -84,6 +84,9 @@ appwrite client --selfSigned true
 ```
 {% /info %}
 
+{% info title="Correct CLI Version Required" %}
+All commands only work with **version 2.0** of the CLI.  Install [here](https://www.npmjs.com/package/appwrite-cli-beta).
+{% /info %}
 
 ## Next steps {% #next-steps %}
 
