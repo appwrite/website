@@ -20,16 +20,16 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * Command
 * Description
 ---
-* `login`
+* `login [options]`
 * The login command allows you to authenticate into the CLI. This command expects the console account that you use to log into the Appwrite Console.
 ---
-* `client`
+* `client [options]`
 * The client command allows you to configure your CLI.
 ---
-* `init`
+* `init [options]`
 * The init command helps you initialize your Appwrite project, databases, collections, functions, teams, and buckets.
 ---
-* `deploy`
+* `deploy | push`
 * The deploy command provides a convenient wrapper for deploying your databases, collections, functions, teams, and buckets.
 ---
 * `logout`
@@ -61,6 +61,45 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 ---
 * `locale`
 * The locale command allows you to customize your app based on your users' location.
+---
+* `assistant`
+* The assistant command allows you to interact with the Appwrite Assistant AI.
+---
+* `console`
+* The console command gives you access to the APIs used by the Appwrite console.
+---
+* `graphql`
+* The graphql command allows you to query and mutate any resource type on your Appwrite server.
+---
+* `health`
+* The health command allows you to both validate and monitor your Appwrite server's health.
+---
+* `messaging`
+* The messaging command allows you to send messages.
+---
+* `migrations`
+* The migrations command allows you to migrate data between services.
+---
+* `project`
+* The project command is for overall project administration.
+---
+* `proxy`
+* The proxy command allows you to configure behavior for your attached domains.
+---
+* `pull`
+* The pull command helps you pull your Appwrite project, functions, collections, buckets, teams, and messaging
+---
+* `register`
+* Prints link to register an Appwrite account.
+---
+* `run | dev`
+* The run command allows you to run projects locally to allow easy development and quick debugging
+---
+* `vcs`
+* The vcs command allows you to interact with VCS providers and manage your code repositories.
+---
+* `whoami`
+* The whomai command gives information about the currently logged in user.
 ---
 
 {% /table %}
