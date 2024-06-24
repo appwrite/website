@@ -19,6 +19,10 @@ In this mode, the CLI can only interact with one project at a time.
 # API Keys {% #api-keys %}
 In non-interactive mode, the CLI uses an API key to authenticate. Your API key must have sufficient permissions to execute the commands you plan to use. [Learn more about API Keys](/docs/advanced/platform/api-keys).
 
+# Github Actions {% #github-actions %}
+
+gitlab, travis, genkins
+
 # Deployment {% #deployment %}
 Appwrite's deploy commands can also be executed in a non-interactive mode. This applies to both function and collection deployment.
 

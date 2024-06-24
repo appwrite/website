@@ -28,6 +28,15 @@
 					href: '/docs/tooling/command-line/non-interactive'
 				}
 			]
+		},
+		{
+			label: 'Deployments',
+			items: [
+				{
+					label: 'Collections',
+					href: '/docs/tooling/command-line/collections'
+				}
+			]
 		}
 	];
 </script>
