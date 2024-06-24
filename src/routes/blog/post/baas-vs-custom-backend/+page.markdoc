@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "BaaS vs. Custom Backend: making the right choice as a freelancer"
-description: Discover whether BaaS or a custom backend is the best fit for your freelance projects. Weigh the pros and cons to make the right choice.
+description: Discover whether BaaS or a custom backend is the best fit for your freelance projects. In this blog we weigh the pros and cons to help you make the right choice.
 cover: /images/blog/baas-vs-custom-backend/BaaS-vs-Custom-Backend.png
 timeToRead: 6
 date: 2024-06-20
@@ -47,9 +47,7 @@ For example, [Appwrite Authentication](https://appwrite.io/docs/products/auth) s
 
 You also get 30+ OAuth2 integrations. From Google and Github to Twitch and Yandex, you can set up your user auth in minutes – quite literally!
 
-Take a look at how Dennis Ivy set up Google OAuth sign-in in less than 6 minutes using Appwrite:
-
-[Setup Google OAuth sign in 6 minutes](https://youtu.be/tgO_ADSvY1I?feature=shared)
+[Take a look at how Dennis Ivy set up Google OAuth sign-in in less than 6 minutes using Appwrite.](https://youtu.be/tgO_ADSvY1I?feature=shared)
 
 Additionally, BaaS handles password recovery, multi-factor authentication and other security aspects, giving you peace of mind and allowing you to focus on building great apps instead of worrying about [authentication and security issues.](https://appwrite.io/blog/post/goodbye-plaintext-passwords) For example, with a custom backend, you'll probably need a custom database, custom authorization store, and validator — lots of work in a feature where even the smallest mistake is critical.
 
@@ -75,7 +73,7 @@ Dealing with the complexities of cloud infrastructure takes valuable time and fo
 
 With BaaS platforms, you get a friendly interface to tap into the powerhouses of cloud services like AWS, Google Cloud, or Azure, all at warp speed. As a freelance developer, you get easy-to-use APIs and SDKs that allow you to integrate cloud storage functionality into their applications quickly, without building complex storage infrastructure from scratch.
 
-For example, [Appwrite Storage](https://appwrite.io/docs/products/storage) lets you securely store files with advanced compression, encryption and image transformations. You can edit, crop and resize images straight from the console. The feature also  includes access controls, and data backups to protect stored data from unauthorized access, data loss, or breaches. No need to worry about security!
+For example, [Appwrite Storage](https://appwrite.io/docs/products/storage) lets you securely store files with advanced compression, encryption and image transformations. You can edit, crop and resize images straight from the console. The feature also includes access controls, and data backups to protect stored data from unauthorized access, data loss, or breaches. No need to worry about security!
 
 Additionally, you can upload files as they are or in chunks for better speeds, ensuring a smoother experience. Plus, if a user's internet goes down during an upload, resumable uploads allow them to re-upload only the missing parts, saving time and frustration. 
 
