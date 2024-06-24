@@ -57,19 +57,19 @@
 
     // platform filters
     const platforms = ['Cloud', 'Self-hosted'] as const;
-    type Platform = (typeof platforms)[number] | null;
-    let platform: Platform = null;
+    type Platform = (typeof platforms)[number];
 
-    const setPlatform = (value: Platform) => {
-        platform = value;
-    };
+    let activePlatform = writable<Platform>('Cloud');
+    $: activeCategory.subscribe((value) => {
+        activeCategory.set(value);
+    });
 
     // categories
-    const categories = integrations.map((integration) => integration.category);
-    let categoryState = writable('');
+    const categories = integrations.map((integration) => integration.category).sort();
+    let activeCategory = writable('');
 
-    $: categoryState.subscribe((value) => {
-        categoryState.set(value);
+    $: activeCategory.subscribe((value) => {
+        activeCategory.set(value);
     });
 </script>
 
@@ -145,7 +145,7 @@
     </header>
 
     <div class="web-big-padding-section-level-1">
-        <div class="web-big-padding-section-level-2">
+        <div>
             <div class="web-container">
                 <div class="l-integrations-grid">
                     <aside class="u-flex-vertical u-gap-32 sidebar">
@@ -161,13 +161,14 @@
                                     Platform
                                 </h2>
                                 <ul class="u-flex u-flex-wrap u-gap-8" class:disabled={hasQuery}>
-                                    {#each platforms as ptfm}
+                                    {#each platforms as platform}
                                         <li>
                                             <button
                                                 class="tag"
-                                                class:is-selected={platform === ptfm}
-                                                class:active-tag={platform === ptfm}
-                                                on:click={() => setPlatform(ptfm)}>{ptfm}</button
+                                                class:is-selected={$activePlatform === platform}
+                                                class:active-tag={$activePlatform === platform}
+                                                on:click={() => activePlatform.set(platform)}
+                                                >{platform}</button
                                             >
                                         </li>
                                     {/each}
@@ -178,16 +179,36 @@
                                 <h2 class="web-side-nav-header web-eyebrow u-un-break-text">
                                     Categories
                                 </h2>
-                                <ul class="u-flex-vertical u-gap-16" class:disabled={hasQuery}>
+
+                                <div class="u-position-relative is-only-mobile">
+                                    <select class="web-input-text" bind:value={$activeCategory}>
+                                        <option disabled selected>Select</option>
+                                        {#each categories as category}
+                                            <option value={category.toLowerCase()}
+                                                >{category}</option
+                                            >
+                                        {/each}
+                                    </select>
+                                    <span
+                                        class="icon-cheveron-down u-position-absolute u-inset-inline-end-8 u-inset-block-start-8 web-u-pointer-events-none"
+                                        aria-hidden="true"
+                                    />
+                                </div>
+
+                                <ul
+                                    class="u-flex-vertical u-gap-16 is-only-desktop"
+                                    class:disabled={hasQuery}
+                                >
                                     {#each categories as category}
                                         <li>
-                                            <button
+                                            <a
+                                                href={`#${category.toLowerCase()}`}
                                                 class="web-link"
                                                 class:is-pink={category.toLowerCase() ===
-                                                    $categoryState}
+                                                    $activeCategory}
                                                 on:click={() =>
-                                                    categoryState.set(category.toLowerCase())}
-                                                >{category}</button
+                                                    activeCategory.set(category.toLowerCase())}
+                                                >{category}</a
                                             >
                                         </li>
                                     {/each}
@@ -306,13 +327,13 @@
                                 </section>
 
                                 {#each integrations.map((integration) => {
-                                    return { ...integration, items: platform ? integration.items.filter((item) => item.platform?.toLowerCase() === platform?.toLowerCase()) : integration.items };
+                                    return { ...integration, items: activePlatform ? integration.items.filter((item) => item.platform.toLowerCase() === $activePlatform.toLowerCase()) : integration.items };
                                 }) as integration (integration.category)}
                                     <section
                                         class="l-max-size-list-cards-section u-flex-vertical u-gap-32"
                                         id={integration.category.toLowerCase()}
                                         use:autoHash={() =>
-                                            categoryState.set(integration.category.toLowerCase())}
+                                            activeCategory.set(integration.category.toLowerCase())}
                                     >
                                         <header class="u-flex-vertical u-gap-4">
                                             <h2 class="web-label web-u-color-text-primary">
@@ -398,7 +419,7 @@
                         enhancing functionality and expanding your reach.
                     </p>
                     <a
-                        href="/"
+                        href="/integrations/contact-us"
                         class="web-button is-primary web-u-cross-child-center u-margin-block-start-16"
                     >
                         <span class="text">Get Started</span>
@@ -437,8 +458,7 @@
     .l-max-size-list-cards {
         &:where(:has(> ul > li:nth-child(10))) {
             position: relative;
-            max-block-size: pxToRem(460);
-            overflow: hidden;
+
             &::before {
                 position: absolute;
                 inset: 0;
@@ -490,10 +510,13 @@
                 opacity: 0.4;
             }
         }
+
         .sidebar {
-            position: sticky;
-            top: 50px;
-            height: 500px;
+            @media #{$break2open} {
+                position: sticky;
+                top: 50px;
+                height: 500px;
+            }
 
             .active-tag {
                 background-color: #fff;
@@ -505,7 +528,7 @@
             display: grid;
             gap: pxToRem(68);
             grid-template-columns: pxToRem(240) 1fr;
-            padding-block-start: pxToRem(60);
+            padding-block-start: pxToRem(40);
         }
     }
     .l-integrations-hero {
