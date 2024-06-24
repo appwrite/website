@@ -9,7 +9,6 @@
     import type { ResultType } from '$lib/integrations';
     import { writable } from 'svelte/store';
     import { autoHash } from '$lib/actions/autoHash';
-    import { page } from '$app/stores';
 
     const title = 'Integrations' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -133,6 +132,15 @@
                     </p>
                 </div>
             </div>
+        </div>
+        <div
+            class="u-position-absolute web-u-z-index-1-negative web-u-hide-mobile"
+            style:inline-size="704px"
+            style:block-size="670px"
+            style:left="calc((50% - 704px / 2) + 18rem)"
+            style:top="-4rem"
+        >
+            <img src="/images/integrations/rubiks-cube.png" alt="" />
         </div>
     </header>
 
