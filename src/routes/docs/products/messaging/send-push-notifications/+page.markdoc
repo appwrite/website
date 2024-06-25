@@ -384,7 +384,6 @@ func application(
 
 {% section #request-permissions step=3 title="Request permissions" %}
 Your app must ask for permission to receive push notification from the user.
-Appwrite provides an `OS` class to help simplify the process to handle permissions.
 
 {% tabs %}
 {% tabsitem #apple-apns title="Apple with APNs" %}
