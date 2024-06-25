@@ -33,6 +33,10 @@
 			label: 'Deployments',
 			items: [
 				{
+					label: 'Authentication',
+					href: '/docs/tooling/command-line/authentication'
+				},
+				{
 					label: 'Databases',
 					href: '/docs/tooling/command-line/databases'
 				},
