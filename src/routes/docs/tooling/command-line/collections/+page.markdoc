@@ -4,34 +4,13 @@ title: Deploy collections with CLI 2.0
 description: Efficiently deploy your Appwrite collection using the Command-Line Tool (CLI). 
 ---
 
-Create and manage your collections using the CLI 2.0 commands.
-
-# Login {% #login %}
-
-Log in to your Appwrite account using the `login` CLI command.
-
-```
-appwrite login
-```
-
-# Create project {% #create-project %}
-
-Create a project using the `init` command and follow the prompts.
-
-```
-appwrite init
-? How would you like to start? Create a new Appwrite project
-? Choose the project organization 25912221200392927
-? What would you like to name your project? My Awesome Project
-? What ID would you like to have for your project? unique()
-✓ Success
-```
+Create and manage your collections using the CLI 2.0 commands. Setup your Appwrite application using CLI commands [here](/docs/tooling/command-line/installation).
 
 # Create database {% #create-database %}
 
 Create an Appwrite database by running the `database` command in the folder holding your `appwrite.json` file.
 
-```
+```sh
 appwrite databases create --databaseId "unique()" --name "genre"
 ```
 
@@ -39,7 +18,7 @@ appwrite databases create --databaseId "unique()" --name "genre"
 
 You can create an Appwrite collection inside your database using the `database createCollection` command in the folder holding your `appwrite.json` file.
 
-```
+```sh
 appwrite databases createCollection --databaseId "25912221200392927" --collectionId "unique()" --name "genre"
 ```
 
@@ -47,7 +26,7 @@ appwrite databases createCollection --databaseId "25912221200392927" --collectio
 
 You can pull your Appwrite collection's and database's customizable settings using the `pull` command in the folder holding your `appwrite.json` file.
 
-```
+```sh
 appwrite pull collection
 ? From which database would you like to pull collections? (Press <space> to select, <a> 
 to toggle all, <i> to invert selection, and <enter> to proceed)
@@ -59,7 +38,7 @@ to toggle all, <i> to invert selection, and <enter> to proceed)
 
 To push the changes you made inside your `appwrite.json` file, use the `push` command in the folder holding your `appwrite.json` file.
 
-```
+```sh
 appwrite push
 ? Which resources would you like to push? Collections
 ? Which collections would you like to push? music (25912239163242502 - 25912239163242502)

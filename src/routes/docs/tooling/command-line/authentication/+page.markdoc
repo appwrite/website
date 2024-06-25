@@ -4,50 +4,63 @@ title: Deploy authentication with CLI 2.0
 description: Efficiently deploy your Appwrite authentication using the Command-Line Tool (CLI).
 ---
 
-## Get the current account
+Create and manage your authentication using the CLI 2.0 commands. Setup your Appwrite application using CLI commands [here](/docs/tooling/command-line/installation).
 
+# Create account
+
+```sh
+appwrite users create --userId "unique()" --name "test" --password "test1234"
 ```
- appwrite account get
-$id : 64948dca2c2f4bc54901
-$createdAt : 2023-06-22T18:07:06.360+00:00
-$updatedAt : 2024-06-25T13:54:32.332+00:00
-name : Richard
-registration : 2023-06-22T18:07:06.358+00:00
+
+
+# Get the current account
+
+```sh
+ appwrite users get --userId '1n0d02309je029fjd199jffj'
+$id : 1n0d02309je029fjd199jffj
+$createdAt : 2023-11-06T18:20:10.905+00:00
+$updatedAt : 2023-11-06T18:20:10.905+00:00
+name : ina
+password : 12900d9a-093m21209c9n-q9c-329rmcq-9emvr9qewfmewfj90qi-m32cmpoa;dpa
+hash : argon2
+hashOptions
+
+  type   │ memoryCost │ timeCost │ threads
+ ────────┼────────────┼──────────┼─────────
+  argon2 │ 2048       │ 4        │ 3
+
+registration : 2023-11-06T18:20:10.903+00:00
 status : true
 labels
 []
-passwordUpdate : 2024-06-24T16:08:15.617+00:00
-email : richardchoi54@gmail.com
+passwordUpdate : 2023-11-06T18:20:10.903+00:00
+email : test@email.com
 phone :
-emailVerification : true
+emailVerification : false
 phoneVerification : false
 mfa : false
 prefs
 
-  organization
- ──────────────────────
-  64948de4eb138c94b4f4
-
 targets
 []
-accessedAt : 2024-06-24T18:50:35.306+00:00
-✓ Success 
+accessedAt : 2023-11-06T18:20:10.903+00:00
+✓ Success
 ```
 
 ## Logout
 
-```
- appwrite account delete
-✓ Success 
+```sh
+appwrite users deleteSessions --userId '03jf0993293jfjf930'
 ```
 
 # List {% #list %}
 
-The databases command allows you to create structured collections of documents, queries, and filter lists of documents. Appwrite database CLI commands generally follow the following syntax:
+The users command allows you to manage your project users. Appwrite database CLI commands generally follow the following syntax:
 
 ```sh
-appwrite account [COMMAND] [OPTIONS]
+appwrite users [COMMAND] [OPTIONS]
 ```
+
 {% table %}
 * Command
 * Description
@@ -85,14 +98,11 @@ appwrite account [COMMAND] [OPTIONS]
 * createSHAUser [options]             
 * Create a new user. Password provided must be hashed with the [SHA](https://en.wikipedia.org/wiki/Secure_Hash_Algorithm) algorithm. Use the [POST /users](https://appwrite.io/docs/server/users#usersCreate) endpoint to create users with a plain text password.
 ---
-* getUsage [options]                  
-* Get usage details.
----
-* get [options]                       
+* getUsage [options] | get [options]                       
 * Get a user by its unique ID.
 ---
 * delete [options]                    
-* Delete a user by its unique ID, thereby releasing its ID. Since ID is released and can be reused, all user-related resources like documents or storage files should be deleted before user deletion. If you want to keep ID reserved, use the [updateStatus](https://appwrite.io/docs/server/users#usersUpdateStatus) endpoint instead.
+* Delete a user by its unique ID, thereby releasing it's ID. Since ID is released and can be reused, all user-related resources like documents or storage files should be deleted before user deletion. If you want to keep ID reserved, use the [updateStatus](https://appwrite.io/docs/server/users#usersUpdateStatus) endpoint instead.
 ---
 * updateEmail [options]               
 * Update the user email by its unique ID.
@@ -100,7 +110,7 @@ appwrite account [COMMAND] [OPTIONS]
 * createJWT [options]                 
 * Use this endpoint to create a JSON Web Token for user by its unique ID. You can use the resulting JWT to authenticate on behalf of the user. The JWT secret will become invalid if the session it uses gets deleted.
 ---
-* updateLabels [options]              
+* updateLabels [options]             
 * Update the user labels by its unique ID. Labels can be used to grant access to resources. While teams are a way for user's to share access to a resource, labels can be defined by the developer to grant access without an invitation. See the [Permissions docs](https://appwrite.io/docs/permissions) for more info.
 ---
 * listLogs [options]                  
@@ -109,19 +119,19 @@ appwrite account [COMMAND] [OPTIONS]
 * listMemberships [options]           
 * Get the user membership list by its unique ID.
 ---
-* updateMfa [options]                 
+* updateMfa [options]
 * Enable or disable MFA on a user account.
 ---
-* deleteMfaAuthenticator [options]    
+* deleteMfaAuthenticator [options]
 * Delete an authenticator app.
 ---
 * listMfaFactors [options]            
-* List the factors available on the account to be used as a MFA challenge.
+* List the factors available on the account to be used as a MFA challange.
 ---
-* getMfaRecoveryCodes [options]       
+* getMfaRecoveryCodes [options]     
 * Get recovery codes that can be used as backup for MFA flow by User ID. Before getting codes, they must be generated using [createMfaRecoveryCodes](/docs/references/cloud/client-web/account#createMfaRecoveryCodes) method.
 ---
-* updateMfaRecoveryCodes [options]    
+* updateMfaRecoveryCodes [options]   
 * Regenerate recovery codes that can be used as backup for MFA flow by User ID. Before regenerating codes, they must be first generated using [createMfaRecoveryCodes](/docs/references/cloud/client-web/account#createMfaRecoveryCodes) method.
 ---
 * createMfaRecoveryCodes [options]    
@@ -131,24 +141,24 @@ appwrite account [COMMAND] [OPTIONS]
 * Update the user name by its unique ID.
 ---
 * updatePassword [options]            
-* Update the user password by its unique ID.
+* Update the user password by its unique ID.  
 ---
 * updatePhone [options]               
 * Update the user phone by its unique ID.
 ---
 * getPrefs [options]                  
-* Get the user preferences by its unique ID.
+* Get the user preferences by its unique ID. 
 ---
 * updatePrefs [options]               
 * Update the user preferences by its unique ID. The object you pass is stored as is, and replaces any previous value. The maximum allowed prefs size is 64kB and throws error if exceeded.
 ---
 * listSessions [options]              
-* Get the user sessions list by its unique ID.
+* Get the user sessions list by its unique ID.  
 ---
 * createSession [options]             
-* Creates a session for a user. Returns an immediately usable session object. If you want to generate a token for a custom authentication flow, use the [POST /users/{userId}/tokens](https://appwrite.io/docs/server/users#createToken) endpoint.
+* Creates a session for a user. Returns an immediately usable session object.  If you want to generate a token for a custom authentication flow, use the [POST /users/{userId}/tokens](https://appwrite.io/docs/server/users#createToken) endpoint.
 ---
-* deleteSessions [options]            
+* deleteSessions [options]           
 * Delete all user's sessions by using the user's unique ID.
 ---
 * deleteSession [options]             
@@ -164,24 +174,18 @@ appwrite account [COMMAND] [OPTIONS]
 * Create a messaging target.
 ---
 * getTarget [options]                 
-* Get a user's push notification target by ID.
+* Get a user's push notification target by ID.   
 ---
 * updateTarget [options]              
 * Update a messaging target.
 ---
 * deleteTarget [options]              
-* Delete a messaging target.
----
-* createToken [options]               
-* Returns a token with a secret key for creating a session. If the provided user ID has not be registered, a new user will be created. Use the returned user ID and secret and submit a request to the [PUT /account/sessions/custom](https://appwrite.io/docs/references/cloud/client-web/account#updateCustomSession) endpoint to complete the login process.
+* Delete a messaging target. request to the [PUT /account/sessions/custom](https://appwrite.io/docs/references/cloud/client-web/account#updateCustomSession) endpoint to complete the login process.
 ---
 * updateEmailVerification [options]   
 * Update the user email verification status by its unique ID.
 ---
 * updatePhoneVerification [options]   
 * Update the user phone verification status by its unique ID.
----
-* help [command]                      
-* display help for command
 ---
 {% /table %}
