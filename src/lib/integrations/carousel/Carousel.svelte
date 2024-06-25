@@ -8,8 +8,6 @@
     import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
     import EmblaClassNames from 'embla-carousel-class-names';
 
-    export let count: number;
-
     let emblaApi: EmblaCarouselType;
 
     let options: EmblaOptionsType = {
@@ -20,6 +18,10 @@
 
     const onEmblaInit = (event: CustomEvent<EmblaCarouselType>) => {
         emblaApi = event.detail;
+
+        emblaApi.on('scroll', () => {
+            selectedScrollIndex = emblaApi.selectedScrollSnap();
+        });
     };
 
     let selectedScrollIndex = 0;
@@ -27,23 +29,23 @@
         emblaApi.scrollTo(index);
         selectedScrollIndex = emblaApi.selectedScrollSnap();
     };
+
+    const onPrev = () => {
+        emblaApi.scrollPrev();
+        selectedScrollIndex = emblaApi.selectedScrollSnap();
+    };
+
+    const onNext = () => {
+        emblaApi.scrollNext();
+        selectedScrollIndex = emblaApi.selectedScrollSnap();
+    };
 </script>
 
 <div class="embla web-carousel">
-    <button
-        class="web-carousel-button web-carousel-button-start"
-        on:click={() => {
-            emblaApi.scrollPrev();
-        }}
-    >
+    <button class="web-carousel-button web-carousel-button-start" on:click={onPrev}>
         <span class="web-icon-arrow-left" aria-hidden="true"></span>
     </button>
-    <button
-        class="web-carousel-button web-carousel-button-end"
-        on:click={() => {
-            emblaApi.scrollNext();
-        }}
-    >
+    <button class="web-carousel-button web-carousel-button-end" on:click={onNext}>
         <span class="web-icon-arrow-right" aria-hidden="true"></span>
     </button>
 
@@ -56,7 +58,7 @@
 
 <div class="web-carousel-bullets">
     <ul class="web-carousel-bullets-list">
-        {#each Array.from({ length: count }) as _, i}
+        {#each Array.from({ length: emblaApi?.scrollSnapList().length }) as _, i}
             <li class="web-carousel-bullets-item">
                 <button
                     class="web-carousel-bullets-button"

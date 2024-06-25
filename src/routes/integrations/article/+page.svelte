@@ -45,7 +45,7 @@
                         <span>Back to catalog</span>
                     </a>
 
-                    <Carousel.Root count={slides.length}>
+                    <Carousel.Root>
                         {#each slides as _}
                             <Carousel.Slide>
                                 <div>
