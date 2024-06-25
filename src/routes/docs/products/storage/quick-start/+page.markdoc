@@ -131,14 +131,10 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   const promise = await storage.createFile(
       '[BUCKET_ID]',
       ID.unique(),
-      {lastModified: 1712036524000,
-      lastModifiedDate: Tue Apr 02 2024 01:42:04 GMT-0400 (Eastern Daylight Time) {},
-      name: "wallhaven-j3o97w.jpg",
-      size: 199339,
-      type: "image/jpeg",
-      webkitRelativePath: ""}, // FILE
+      { name: "file.jpeg", type: "image/jpeg", uri: "file:///data/user/0/host.exp.exponent/cache/ExperienceData/text.jpeg", size: 183799}, // FILE
       ["read(\"any\")"]
   );
+
 
   promise.then(function (response) {
       console.log(response); // Success
