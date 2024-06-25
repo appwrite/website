@@ -1,12 +1,14 @@
 ---
 layout: article
-title: Deploy collections
+title: Deploy collections with CLI 2.0
 description: Efficiently deploy your Appwrite collection using the Command-Line Tool (CLI). 
 ---
 
+Create and manage your collections using the CLI 2.0 commands.
+
 # Login {% #login %}
 
-Use the CLI command to login to your Appwrite account.
+Log in to your Appwrite account using the `login` CLI command.
 
 ```
 appwrite login
@@ -14,7 +16,7 @@ appwrite login
 
 # Create project {% #create-project %}
 
-Create a project and follow the given prompts.
+Create a project using the `init` command and follow the prompts.
 
 ```
 appwrite init
@@ -27,7 +29,7 @@ appwrite init
 
 # Create database {% #create-database %}
 
-Create an Appwrite database by running this command in the folder holding your `appwrite.json` file.
+Create an Appwrite database by running the `database` command in the folder holding your `appwrite.json` file.
 
 ```
 appwrite databases create --databaseId "unique()" --name "genre"
@@ -35,7 +37,7 @@ appwrite databases create --databaseId "unique()" --name "genre"
 
 # Create collection {% #create-collection %}
 
-Using this command in the folder holding your `appwrite.json` file, you can create an Appwrite collection inside your database.
+You can create an Appwrite collection inside your database using the `database createCollection` command in the folder holding your `appwrite.json` file.
 
 ```
 appwrite databases createCollection --databaseId "25912221200392927" --collectionId "unique()" --name "genre"
@@ -43,7 +45,7 @@ appwrite databases createCollection --databaseId "25912221200392927" --collectio
 
 # Pull collection {% #pull-collection %}
 
-You can pull your Appwrite collection's and database's customizable settings into your local folder in the folder holding your `appwrite.json` file.
+You can pull your Appwrite collection's and database's customizable settings using the `pull` command in the folder holding your `appwrite.json` file.
 
 ```
 ? From which database would you like to pull collections? songs (64ascaq2edswwc0)  
@@ -54,7 +56,7 @@ You can pull your Appwrite collection's and database's customizable settings int
 
 # Push collection {% #pull-collection %}
 
-To push your collection changes in your `appwrite.json` file, use the `push` command in the folder holding your `appwrite.json` file.
+To push the changes you made inside your `appwrite.json` file, use the `push` command in the folder holding your `appwrite.json` file.
 
 ```
 appwrite push
@@ -132,13 +134,13 @@ An example of what your `appwrite.json` file should look like.
 }
 ```
 
+# List {% #list %}
+
+The databases command allows you to create structured collections of documents, query, and filter lists of documents. Appwrite database CLI commands generally follow the following syntax:
+
 ```sh
 appwrite databases [COMMAND] [OPTIONS]
 ```
-
-# List {% #list %}
-
-The databases command allows you to create structured collections of documents, query and filter lists of documents.
 
 {% table %}
 * Command
