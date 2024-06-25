@@ -12,7 +12,8 @@
 
     let options: EmblaOptionsType = {
         align: 'center',
-        loop: true
+        loop: true,
+        dragFree: true
     };
     let plugins: EmblaPluginType[] = [WheelGesturesPlugin(), EmblaClassNames()];
 
