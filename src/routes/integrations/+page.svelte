@@ -94,7 +94,7 @@
 <SvelteFuse {list} options={fuseOptions} bind:query={$query} bind:result />
 <Main>
     <header class="web-u-sep-block-end u-padding-block-end-0 u-position-relative u-overflow-hidden">
-        <div class="web-container u-position-relativ hero web-u-padding-block-end-0">
+        <div class="web-container u-position-relative hero web-u-padding-block-end-0">
             <img
                 src="/images/pages/integration/integration-bg-top-1.png"
                 alt=""
@@ -133,12 +133,7 @@
                 </div>
             </div>
 
-            <div
-                style:inline-size="650px"
-                style:block-size="540px"
-                style:left="calc(50% - 100px)"
-                style:top="-0.5rem"
-            >
+            <div>
                 <img src="/images/integrations/rubiks-cube.png" alt="" />
             </div>
         </div>
@@ -438,22 +433,29 @@
     @use '$scss/abstract' as *;
 
     .hero {
-        display: grid;
-        grid-template-columns: 40rem minmax(0, 1fr);
-        gap: pxToRem(32);
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
+        @media (min-width: 768px) {
+            display: grid;
+            grid-template-columns: 60% minmax(0, 1fr);
+            gap: pxToRem(32);
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
 
-        > :nth-child(2) {
-            transform-origin: left center;
-
-            transform: translateY(2rem);
+            > :nth-child(5) {
+                transform-origin: left center;
+                scale: 1.25;
+            }
         }
 
-        @media (max-width: 1023px) {
-            display: block;
+        @media (max-width: 768px) {
+            > :nth-child(5) {
+                transform-origin: left center;
+                scale: 2;
+            }
+        }
 
+        @media (max-width: 767.9px) {
+            display: block;
             overflow: hidden;
             gap: 2rem;
 
@@ -462,7 +464,7 @@
                 margin-inline: auto;
             }
 
-            > :nth-child(2) {
+            > :nth-child(5) {
                 scale: 1;
                 width: 100%;
                 height: 24rem;
@@ -550,6 +552,10 @@
     }
     .l-integrations-grid {
         position: relative;
+
+        @media #{$break1} {
+            padding-block-start: pxToRem(80);
+        }
 
         .disabled {
             & > li {
