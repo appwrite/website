@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { IntegrationsCarousel } from '$lib/integrations';
+    import Root from '$lib/components/Accordion/Root.svelte';
+    import { Carousel } from '$lib/integrations';
     import { Main } from '$lib/layouts';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
@@ -10,6 +11,8 @@
     const title = 'Integrations' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+
+    const slides = Array.from({ length: 10 });
 </script>
 
 <svelte:head>
@@ -42,38 +45,20 @@
                         <span>Back to catalog</span>
                     </a>
 
-                    <IntegrationsCarousel>
-                        <li class="web-carousel-item">
-                            <div>
-                                <img
-                                    src="/images/blog/ai-announcement.png"
-                                    class="web-u-media-ratio-16-9"
-                                    alt="cover"
-                                    width="472"
-                                />
-                            </div>
-                        </li>
-                        <li class="web-carousel-item is-main">
-                            <div>
-                                <img
-                                    src="/images/blog/ai-announcement.png"
-                                    class="web-u-media-ratio-16-9"
-                                    alt="cover"
-                                    width="584"
-                                />
-                            </div>
-                        </li>
-                        <li class="web-carousel-item">
-                            <div>
-                                <img
-                                    src="/images/blog/ai-announcement.png"
-                                    class="web-u-media-ratio-16-9"
-                                    alt="cover"
-                                    width="472"
-                                />
-                            </div>
-                        </li>
-                    </IntegrationsCarousel>
+                    <Carousel.Root count={slides.length}>
+                        {#each slides as _}
+                            <Carousel.Slide>
+                                <div>
+                                    <img
+                                        src="/images/blog/ai-announcement.png"
+                                        class="web-u-media-ratio-16-9"
+                                        alt="cover"
+                                        width="472"
+                                    />
+                                </div>
+                            </Carousel.Slide>
+                        {/each}
+                    </Carousel.Root>
                 </div>
             </div>
         </div>
