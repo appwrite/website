@@ -433,6 +433,7 @@
     @use '$scss/abstract' as *;
 
     .hero {
+        min-height: pxToRem(620);
         @media (min-width: 768px) {
             display: grid;
             grid-template-columns: 60% minmax(0, 1fr);
@@ -557,6 +558,7 @@
         position: relative;
 
         @media #{$break1} {
+            gap: 0;
             padding-block-start: pxToRem(80);
         }
 
@@ -568,6 +570,7 @@
         }
 
         .sidebar {
+            margin-bottom: pxToRem(60);
             @media #{$break2open} {
                 position: sticky;
                 top: 50px;
