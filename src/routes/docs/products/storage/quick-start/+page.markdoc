@@ -123,16 +123,21 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   import { Client, Storage, ID } from "react-native-appwrite";
 
   const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>');                 // Your project ID
+      .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+      .setProject('<PROJECT_ID>');                 // Your project ID
 
   const storage = new Storage(client);
 
   const promise = await storage.createFile(
-    '[BUCKET_ID]',
-    ID.unique(),
-    {name: "file.txt", type: "text/plain", size: 37967, uri: "https://file.txt"}, // FILE
-    ["read(\"any\")"]
+      '[BUCKET_ID]',
+      ID.unique(),
+      {lastModified: 1712036524000,
+      lastModifiedDate: Tue Apr 02 2024 01:42:04 GMT-0400 (Eastern Daylight Time) {},
+      name: "wallhaven-j3o97w.jpg",
+      size: 199339,
+      type: "image/jpeg",
+      webkitRelativePath: ""}, // FILE
+      ["read(\"any\")"]
   );
 
   promise.then(function (response) {
