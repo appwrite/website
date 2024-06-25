@@ -131,7 +131,7 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   const promise = await storage.createFile(
     '[BUCKET_ID]',
     ID.unique(),
-    {name: "file.txt", type: "text/plain", size: 37967, uri: ""}, // FILE
+    {name: "file.txt", type: "text/plain", size: 37967, uri: "https://file.txt"}, // FILE
     ["read(\"any\")"]
   );
 
