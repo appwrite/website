@@ -444,6 +444,8 @@
             > :nth-child(5) {
                 transform-origin: left center;
                 scale: 1.25;
+                position: relative;
+                left: pxToRem(-100);
             }
         }
 
@@ -451,6 +453,7 @@
             > :nth-child(5) {
                 transform-origin: left center;
                 scale: 2;
+                left: 0;
             }
         }
 
