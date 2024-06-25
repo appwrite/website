@@ -94,7 +94,7 @@
 <SvelteFuse {list} options={fuseOptions} bind:query={$query} bind:result />
 <Main>
     <header class="web-u-sep-block-end u-padding-block-end-0 u-position-relative u-overflow-hidden">
-        <div class="web-container u-position-relative">
+        <div class="web-container u-position-relativ hero web-u-padding-block-end-0">
             <img
                 src="/images/pages/integration/integration-bg-top-1.png"
                 alt=""
@@ -132,15 +132,15 @@
                     </p>
                 </div>
             </div>
-        </div>
-        <div
-            class="u-position-absolute web-u-z-index-1-negative"
-            style:inline-size="650px"
-            style:block-size="540px"
-            style:left="calc(50% + 100px)"
-            style:top="-0.5rem"
-        >
-            <img src="/images/integrations/rubiks-cube.png" alt="" />
+
+            <div
+                style:inline-size="650px"
+                style:block-size="540px"
+                style:left="calc(50% - 100px)"
+                style:top="-0.5rem"
+            >
+                <img src="/images/integrations/rubiks-cube.png" alt="" />
+            </div>
         </div>
     </header>
 
@@ -436,6 +436,53 @@
 
 <style lang="scss">
     @use '$scss/abstract' as *;
+
+    .hero {
+        display: grid;
+        grid-template-columns: 40rem minmax(0, 1fr);
+        gap: pxToRem(32);
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+
+        > :nth-child(2) {
+            transform-origin: left center;
+
+            transform: translateY(2rem);
+        }
+
+        @media (max-width: 1023px) {
+            display: block;
+
+            overflow: hidden;
+            gap: 2rem;
+
+            > :first-child {
+                max-width: 40rem;
+                margin-inline: auto;
+            }
+
+            > :nth-child(2) {
+                scale: 1;
+                width: 100%;
+                height: 24rem;
+                position: relative;
+
+                img {
+                    position: absolute;
+                    display: block;
+                    width: 40rem;
+
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-30%, -50%);
+
+                    max-block-size: unset;
+                    max-inline-size: unset;
+                }
+            }
+        }
+    }
 
     .web-pre-footer-bg {
         position: absolute;
