@@ -123,8 +123,7 @@ def main(context):
     # Why not try the Appwrite SDK?
     #
     # client = Client()
-    # // Only need to set key, the rest "just works"
-    # client.set_key(req.headers.get('x-appwrite-key')) // Header is automatically there
+    # client.set_key(req.headers.get('x-appwrite-key')) // Set key to automatically have header there
 
     # You can log messages to the console
     context.log("Hello, Logs!")
@@ -167,8 +166,7 @@ def main(context):
     headers = {"Authorization": HF_API_KEY}
 
     # client = Client()
-    # // Only need to set key, the rest "just works"
-    # client.set_key(req.headers.get('x-appwrite-key')) // Header is automatically there
+    # client.set_key(req.headers.get('x-appwrite-key')) // Set key to automatically have header there
   
     storage = Storage(client)
 

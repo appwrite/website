@@ -30,8 +30,7 @@ import { Client } from 'node-appwrite';
 export default async ({ req, res, log, error }) => {
   // Why not try the Appwrite SDK?
   //
-  // Only need to set key, the rest "just works"
-  // const client = new Client().setKey(req.headers['x-appwrite-key']); Header is automatically there
+  // const client = new Client().setKey(req.headers['x-appwrite-key']); Set key to automatically have header there
 
   // You can log messages to the console
   log('Hello, Logs!');
@@ -68,8 +67,7 @@ return function ($context) {
     // Why not try the Appwrite SDK?
     //
     // $client = (new Client());
-    // Only need to set key, the rest "just works"
-    // $client->setKey($context.req.headers['x-appwrite-key']); Header is automatically there
+    // $client->setKey($context.req.headers['x-appwrite-key']); Set key to automatically have header there
    
     // You can log messages to the console
     $context->log('Hello, Logs!');
@@ -104,8 +102,7 @@ def main(context):
     # Why not try the Appwrite SDK?
     #
     # client = Client()
-    # // Only need to set key, the rest "just works"
-    # client.set_key(context.req.headers.get('x-appwrite-key')) Header is automatically there
+    # client.set_key(context.req.headers.get('x-appwrite-key')) Set key to automatically have header there
 
     # You can log messages to the console
     context.log("Hello, Logs!")
@@ -136,8 +133,7 @@ def main(context)
   # Why not try the Appwrite SDK?
   #
   # client = Appwrite::Client.new
-  # Only need to set key, the rest "just works"
-  # client.set_key(context.req.headers['x-appwrite-key']) Header is automatically there
+  # client.set_key(context.req.headers['x-appwrite-key']) Set key to automatically have header there
 
   # You can log messages to the console
   context.log("Hello, Logs!")
@@ -170,8 +166,7 @@ export default ({ req, res, log, error }: any) => {
   // Why not try the Appwrite SDK?
   //
   // const client = new Client();
-  // Only need to set key, the rest "just works"
-  // client.setKey(req.headers.get('x-appwrite-key') || ""); Header is automatically there
+  // client.setKey(req.headers.get('x-appwrite-key') || ""); Set key to automatically have header there
 
 
   // You can log messages to the console
@@ -206,8 +201,7 @@ Future main(final context) async {
 // Why not try the Appwrite SDK?
   //
   // final client = Client();
-  // Only need to set key, the rest "just works"
-  // client.setKey(context.req['headers']['x-appwrite-key']); Header is automatically there
+  // client.setKey(context.req['headers']['x-appwrite-key']); Set key to automatically have header there
 
 
   // You can log messages to the console
@@ -246,8 +240,7 @@ class Main {
     fun main(context: RuntimeContext): RuntimeOutput {
         // Why not try the Appwrite SDK?
         // val client = Client()
-        // Only need to set key, the rest "just works"
-        // client.setKey(context.req.headers['x-appwrite-key']) Header is automatically there
+        // client.setKey(context.req.headers['x-appwrite-key']) Set key to automatically have header there
 
 
         // You can log messages to the console
@@ -289,8 +282,7 @@ public class Main {
         // Why not try the Appwrite SDK?
         //
         // Client client = new Client();
-        // Only need to set key, the rest "just works"
-        // client.setKey(context.req.getHeaders().get('x-appwrite-key')); Header is automatically there
+        // client.setKey(context.req.getHeaders().get('x-appwrite-key')); Set key to automatically have header there
 
         // You can log messages to the console
         context.log("Hello, Logs!");
@@ -327,8 +319,7 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     // Why not try the Appwrite SDK?
     //
     // let client = Client()
-    // Only need to set key, the rest "just works"
-    // client.setKey(context.req.headers('x-appwrite-key') ?? "") Header is automatically there
+    // client.setKey(context.req.headers('x-appwrite-key') ?? "") Set key to automatically have header there
 
 
     // You can log messages to the console
@@ -369,8 +360,7 @@ public class Handler {
         // Why not try the Appwrite SDK?
         //
         // var client = new Client()
-        // Only need to set key, the rest "just works"
-        // client.setKey(Context.Req.headers['x-appwrite-key']) Header is automatically there
+        // client.setKey(Context.Req.headers['x-appwrite-key']) Set key to automatically have header there
 
         // You can log messages to the console
         Context.Log("Hello, Logs!");
@@ -1300,8 +1290,7 @@ Instead, use the function settings to set what it is allowed to do.
 import { Client, Databases, ID } from 'node-appwrite';
 
 export default async ({ req, res, log, error }) => {
-    // Only need to set key, the rest "just works"
-    const client = new Client().setKey(req.headers['x-appwrite-key']); // Header is automatically there
+    const client = new Client().setKey(req.headers['x-appwrite-key']); // Set key to automatically have header there
     const databases = new Databases(client);
 
     try {
@@ -1331,8 +1320,7 @@ use Appwrite\ID;
 
 return function ($context) {
     $client = new Client();
-    // Only need to set key, the rest "just works"
-    $client->setKey($headers['x-appwrite-key']); // Header is automatically there
+    $client->setKey($headers['x-appwrite-key']); // Set key to automatically have header there
     
     $databases = new Databases($client);
 
@@ -1360,8 +1348,7 @@ import os
 
 def main(context):
     client = Client()
-    # Only need to set key, the rest "just works"
-    client.set_key(req.headers.get('x-appwrite-key')) # Header is automatically there
+    client.set_key(req.headers.get('x-appwrite-key')) # Set key to automatically have header there
     databases = Databases(client)
 
     try:
@@ -1384,8 +1371,7 @@ include Appwrite
 
 def main(context)
     client = Appwrite::Client.new
-    // Only need to set key, the rest "just works"
-    client.set_key(context.req.headers['x-appwrite-key']) // Header is automatically there
+    client.set_key(context.req.headers['x-appwrite-key']) // Set key to automatically have header there
 
     databases = Appwrite::Databases.new(client)
 
@@ -1409,8 +1395,7 @@ import { Client, Databases, ID } from "https://deno.land/x/appwrite/mod.ts";
                 
 export default function ({req, res, error}: any){
     const client = new Client();
-    // Only need to set key, the rest "just works"
-    client.setKey(req.headers.get('x-appwrite-key') || ""); // Header is automatically there
+    client.setKey(req.headers.get('x-appwrite-key') || ""); // Set key to automatically have header there
 
     const databases = new Databases(client);
     
@@ -1436,8 +1421,7 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 
 Future<dynamic> main(final context) async {
     final client = Client();
-    // Only need to set key, the rest "just works"
-    client.setKey(context.req.headers['x-appwrite-key']); // Header is automatically there
+    client.setKey(context.req.headers['x-appwrite-key']); // Set key to automatically have header there
     
     final databases = Databases(client);
     
@@ -1463,8 +1447,7 @@ import Foundation
 
 func main(context: RuntimeContext) async throws -> RuntimeOutput {
     let client = Client()
-    // Only need to set key, the rest "just works"
-    client.setKey(context.req.headers('x-appwrite-key') ?? "") // Header is automatically there
+    client.setKey(context.req.headers('x-appwrite-key') ?? "") // Set key to automatically have header there
 
     let databases = Databases(client: client)
 
@@ -1495,8 +1478,7 @@ namespace DotNetRuntime
         public async Task Main(RuntimeContext Context) 
         {
             var client = new Client()
-            // Only need to set key, the rest "just works"
-            client.setKey(Context.Request.headers['x-appwrite-key']) // Header is automatically there
+            client.setKey(Context.Request.headers['x-appwrite-key']) // Set key to automatically have header there
 
             var databases = new Databases(client);
     
@@ -1529,8 +1511,7 @@ import java.util.HashMap
 class Main {
     fun main(context: RuntimeContext): RuntimeOutput {
         val client = Client()
-        // Only need to set key, the rest "just works"
-        client.setKey(context.req.headers['x-appwrite-key']) // Header is automatically there
+        client.setKey(context.req.headers['x-appwrite-key']) // Set key to automatically have header there
 
         val databases = Databases(client)
 
@@ -1561,8 +1542,7 @@ import io.appwrite.Client;
 public class Main {
     public RuntimeOutput main(RuntimeContext context) throws Exception {
         Client client = new Client();
-        // Only need to set key, the rest "just works"
-        client.setKey(context.req.getHeaders().get('x-appwrite-key')); // Header is automatically there
+        client.setKey(context.req.getHeaders().get('x-appwrite-key')); // Set key to automatically have header there
         
         Databases databases = new Databases(client);
 
