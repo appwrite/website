@@ -1,33 +1,27 @@
 ---
 layout: article
-title: Deploy databases with CLI 2.0
+title: Deploy functions with CLI 2.0
 description: Efficiently deploy your Appwrite functions using the Command-Line Tool (CLI).
 ---
 
-Create and manage your functions using the CLI 2.0 commands. Setup your Appwrite application using CLI commands [here](/docs/tooling/command-line/installation).
+The CLI handles the creation and deployment of Appwrite Functions.  Setup your Appwrite application using CLI commands [here](/docs/tooling/command-line/installation).
 
-# Create function {% #create-function %}
+# Init function
 
-Create an Appwrite function. See available runtimes for functions [here](https://appwrite.io/docs/products/functions/runtimes#available-runtimes).
+You can init your `Appwrite.json` using the `init` command.
 
 ```sh
-appwrite functions create --functionId 'unique()' --name 'Test' --runtime 'node-18.0'
+init appwrite functions
 ```
 
-# Update function {% #update-function %}
+# Appwrite.json {% #Appwritejson %}
 
-Update your Appwrite function by running the `functions update` command in the folder holding your `appwrite.json` file.. See available runtimes for functions [here](https://appwrite.io/docs/products/functions/runtimes#available-runtimes).
+What your `appwrite.json` file should look like.
 
-```sh
-appwrite functions update --functionId '628484849201293938d' --name 'testFunction' --runtime 'node-19.0'
-```
-
-# Delete function {% #delete-function %}
-
-Delete your Appwrite function by running the `functions delete` command in the folder holding your `appwrite.json` file.
-
-```sh
-appwrite functions delete --functionId '628484849201293938d' 
+```server-nodejs
+{
+    "projectId": "heivi192901fjj1c20912"
+}
 ```
 
 # Pull function {% #pull-function %}
@@ -44,12 +38,7 @@ appwrite pull functions
 appwrite push functions
 ```
 
-# Appwrite.json {% #Appwritejson %}
-
-An example of what your `appwrite.json` file should look like.
-
-
-# List {% #list %}
+# Commands {% #commands %}
 
 The functions command allows you view, create and manage your Cloud Functions. Appwrite database CLI commands generally follow the following syntax:
 

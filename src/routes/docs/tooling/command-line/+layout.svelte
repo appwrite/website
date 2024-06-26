@@ -33,10 +33,6 @@
 			label: 'Deployments',
 			items: [
 				{
-					label: 'Databases',
-					href: '/docs/tooling/command-line/databases'
-				},
-				{
 					label: 'Collections',
 					href: '/docs/tooling/command-line/collections'
 				},
