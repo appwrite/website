@@ -48,14 +48,12 @@
                     <Carousel.Root>
                         {#each slides as _}
                             <Carousel.Slide>
-                                <div>
-                                    <img
-                                        src="/images/blog/ai-announcement.png"
-                                        class="web-u-media-ratio-16-9"
-                                        alt="cover"
-                                        width="472"
-                                    />
-                                </div>
+                                <img
+                                    src="/images/blog/ai-announcement.png"
+                                    class="web-u-media-ratio-16-9"
+                                    alt="cover"
+                                    width="472"
+                                />
                             </Carousel.Slide>
                         {/each}
                     </Carousel.Root>
