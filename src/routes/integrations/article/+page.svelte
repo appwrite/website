@@ -337,7 +337,7 @@
                         enhancing functionality and expanding your reach.
                     </p>
                     <a
-                        href="/"
+                        href="/integrations/contact-us"
                         class="web-button is-primary web-u-cross-child-center u-margin-block-start-16"
                     >
                         <span class="text">Get Started</span>

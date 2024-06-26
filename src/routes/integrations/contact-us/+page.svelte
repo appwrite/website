@@ -63,6 +63,15 @@
     <enhanced:img src="./bg.png" alt="" />
 </div>
 
+<div
+    class="u-position-absolute"
+    style="pointer-events:none"
+    style:z-index="-1"
+    style:right="-625px"
+>
+    <enhanced:img src="./blue-bg.png" alt="" />
+</div>
+
 <Main>
     <div class="web-big-padding-section">
         <div id="form" class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden">
