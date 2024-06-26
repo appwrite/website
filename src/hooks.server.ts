@@ -1,7 +1,13 @@
+import * as Sentry from '@sentry/sveltekit';
 import type { Handle } from '@sveltejs/kit';
 import redirects from './redirects.json';
 import { sequence } from '@sveltejs/kit/hooks';
 import { BANNER_KEY } from '$lib/constants';
+
+Sentry.init({
+    dsn: "https://27d41dc8bb67b596f137924ab8599e59@o1063647.ingest.us.sentry.io/4507497727000576",
+    tracesSampleRate: 1
+})
 
 const redirectMap = new Map(redirects.map(({ link, redirect }) => [link, redirect]));
 
@@ -26,4 +32,5 @@ const bannerRewriter: Handle = async ({ event, resolve }) => {
     return response;
 };
 
-export const handle = sequence(redirecter, bannerRewriter);
+export const handle = sequence(Sentry.sentryHandle(), redirecter, bannerRewriter);
+export const handleError = Sentry.handleErrorWithSentry();
