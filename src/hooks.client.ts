@@ -1,10 +1,10 @@
-import { dev } from '$app/environment';
+import { building } from '$app/environment';
 import { SENTRY_DSN } from '$lib/constants';
 import { handleErrorWithSentry, replayIntegration } from '@sentry/sveltekit';
 import * as Sentry from '@sentry/sveltekit';
 
 Sentry.init({
-    enabled: !!import.meta.env?.SENTRY_AUTH_TOKEN && !dev,
+    enabled: building,
     dsn: SENTRY_DSN,
     tracesSampleRate: 1.0,
 
