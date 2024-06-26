@@ -174,7 +174,7 @@
         </div>
     </div>
 
-    <div class="web-big-padding-section-level-1 u-overflow-hidden">
+    <div class="web-big-padding-section-level-1 u-overflow-hidden web-u-sep-block-start">
         <div class="web-big-padding-section-level-2">
             <div class="web-container">
                 <h3 class="web-label web-u-color-text-primary u-text-center">
@@ -323,7 +323,7 @@
                 style="z-index:-1"
             />
 
-            <div class="u-position-relative">
+            <div class="u-position-relative cta">
                 <section
                     class="web-hero u-flex u-row-gap-16 u-main-center u-cross-center web-u-max-width-580"
                 >
@@ -354,74 +354,24 @@
 
 <style lang="scss">
     @use '$scss/abstract' as *;
+
+    .cta {
+        min-height: pxToRem(560);
+        display: flex;
+        align-items: center;
+    }
+
     .web-pre-footer-bg {
         position: absolute;
         top: clamp(300px, 50vw, 50%);
         left: clamp(300px, 50vw, 50%);
-        transform: translate(-58%, -72%);
+        transform: translate(-58%, -52%);
         width: clamp(1200px, 200vw, 3000px);
         height: auto;
         max-inline-size: unset;
         max-block-size: unset;
     }
     /* more tha 9 items */
-    .l-max-size-list-cards-section {
-        scroll-snap-align: start;
-        scroll-margin-top: pxToRem(120);
-    }
-    .l-max-size-list-cards {
-        @mixin hide-items {
-            position: relative;
-            overflow: hidden;
-            &::before {
-                position: absolute;
-                inset: 0;
-                content: '';
-                display: block;
-                background: linear-gradient(
-                    180deg,
-                    rgba(25, 25, 28, 0) 0%,
-                    rgba(25, 25, 28, 0.92) 90%,
-                    #19191c 100%
-                );
-                transition: var(--transition);
-            }
-            .l-float-button {
-                position: absolute;
-                inset-inline: 0;
-                inset-block-end: pxToRem(20);
-                margin-inline: auto;
-                display: flex;
-            }
-        }
-        &:where(:has(> ul > li:nth-child(10))) {
-            @media #{$break2open} {
-                max-block-size: pxToRem(460);
-                @include hide-items();
-            }
-        }
-
-        &:where(:has(> ul > li:nth-child(7))) {
-            @media #{$break1} {
-                max-block-size: pxToRem(920);
-                @include hide-items();
-            }
-        }
-    }
-
-    :where(:target, :focus-within) {
-        .l-max-size-list-cards {
-            overflow: visible;
-            max-block-size: none;
-            &::before {
-                opacity: 0;
-                pointer-events: none;
-            }
-            .l-float-button {
-                display: none;
-            }
-        }
-    }
 
     .l-side-column {
         display: flex;
