@@ -3,8 +3,10 @@ import type { Handle } from '@sveltejs/kit';
 import redirects from './redirects.json';
 import { sequence } from '@sveltejs/kit/hooks';
 import { BANNER_KEY, SENTRY_DSN } from '$lib/constants';
+import { dev } from '$app/environment';
 
 Sentry.init({
+    enabled: !dev,
     dsn: SENTRY_DSN,
     tracesSampleRate: 1
 })
