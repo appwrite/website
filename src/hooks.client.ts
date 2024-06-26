@@ -6,6 +6,7 @@ import * as Sentry from '@sentry/sveltekit';
 Sentry.init({
     enabled: !dev,
     dsn: SENTRY_DSN,
+    allowUrls: [/appwrite\.io/],
     tracesSampleRate: 1.0,
 
     // This sets the sample rate to be 10%. You may want this to be 100% while

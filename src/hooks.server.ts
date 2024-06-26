@@ -8,7 +8,8 @@ import { dev } from '$app/environment';
 Sentry.init({
     enabled: !dev,
     dsn: SENTRY_DSN,
-    tracesSampleRate: 1
+    tracesSampleRate: 1,
+    allowUrls: [/appwrite\.io/]
 })
 
 const redirectMap = new Map(redirects.map(({ link, redirect }) => [link, redirect]));
