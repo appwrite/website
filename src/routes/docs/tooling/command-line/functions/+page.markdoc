@@ -4,6 +4,8 @@ title: Deploy databases with CLI 2.0
 description: Efficiently deploy your Appwrite functions using the Command-Line Tool (CLI).
 ---
 
+Create and manage your functions using the CLI 2.0 commands. Setup your Appwrite application using CLI commands [here](/docs/tooling/command-line/installation).
+
 # Create function {% #create-function %}
 
 Create an Appwrite function. See available runtimes for functions [here](https://appwrite.io/docs/products/functions/runtimes#available-runtimes).
@@ -14,24 +16,38 @@ appwrite functions create --functionId 'unique()' --name 'Test' --runtime 'node-
 
 # Update function {% #update-function %}
 
-Update your Appwrite function. See available runtimes for functions [here](https://appwrite.io/docs/products/functions/runtimes#available-runtimes).
+Update your Appwrite function by running the `functions update` command in the folder holding your `appwrite.json` file.. See available runtimes for functions [here](https://appwrite.io/docs/products/functions/runtimes#available-runtimes).
 
 ```sh
-appwrite functions update --functionId '628484849201293938d' --name 'Hatsune Miku' --runtime 'node-19.0'
+appwrite functions update --functionId '628484849201293938d' --name 'testFunction' --runtime 'node-19.0'
 ```
 
 # Delete function {% #delete-function %}
+
+Delete your Appwrite function by running the `functions delete` command in the folder holding your `appwrite.json` file.
 
 ```sh
 appwrite functions delete --functionId '628484849201293938d' 
 ```
 
 # Pull function {% #pull-function %}
+
+You can pull your Appwrite functions customizable settings using the `pull` command in the folder holding your `appwrite.json` file.
+
 ```sh
 appwrite pull functions
 ```
 
 # Push function {% #push-function %}
+
+```sh
+appwrite push functions
+```
+
+# Appwrite.json {% #Appwritejson %}
+
+An example of what your `appwrite.json` file should look like.
+
 
 # List {% #list %}
 

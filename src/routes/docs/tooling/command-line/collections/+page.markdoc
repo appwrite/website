@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Deploy collections with CLI 2.0
-description: Efficiently deploy your Appwrite collection using the Command-Line Tool (CLI). 
+description: Efficiently deploy your Appwrite collections using the Command-Line Tool (CLI). 
 ---
 
 Create and manage your collections using the CLI 2.0 commands. Setup your Appwrite application using CLI commands [here](/docs/tooling/command-line/installation).
@@ -28,10 +28,6 @@ You can pull your Appwrite collection's and database's customizable settings usi
 
 ```sh
 appwrite pull collection
-? From which database would you like to pull collections? (Press <space> to select, <a> 
-to toggle all, <i> to invert selection, and <enter> to proceed)
->( ) songs (6sadfvasdva2323bc0)
- ( ) playlists (12escvqw2120ffd1)
 ```
 
 # Push collection {% #pull-collection %}
@@ -40,11 +36,6 @@ To push the changes you made inside your `appwrite.json` file, use the `push` co
 
 ```sh
 appwrite push
-? Which resources would you like to push? Collections
-? Which collections would you like to push? music (25912239163242502 - 25912239163242502)
-ℹ Info Checking for databases and collection changes
-✓ Success Updated music ( 259122391632425028 ) name
-ℹ Info No changes has been detected. Skipping music ( 259122391632425028 )
 ```
 
 # Appwrite.json {% #Appwritejson %}

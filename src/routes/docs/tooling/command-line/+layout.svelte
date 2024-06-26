@@ -33,10 +33,6 @@
 			label: 'Deployments',
 			items: [
 				{
-					label: 'Projects',
-					href: '/docs/tooling/command-line/projects'
-				},
-				{
 					label: 'Databases',
 					href: '/docs/tooling/command-line/databases'
 				},
@@ -47,6 +43,10 @@
 				{
 					label: 'Functions',
 					href: '/docs/tooling/command-line/functions'
+				},
+				{
+					label: 'Teams',
+					href: '/docs/tooling/command-line/teams'
 				}
 			]
 		}

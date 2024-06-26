@@ -10,7 +10,7 @@ Create and manage your databases using the CLI 2.0 commands. Setup your Appwrite
 
 Create an Appwrite database by running the `database` command in the folder holding your `appwrite.json` file.
 
-```
+```sh
 appwrite databases create --databaseId "unique()" --name "genre"
 ```
 
@@ -18,23 +18,16 @@ appwrite databases create --databaseId "unique()" --name "genre"
 
 You can pull your Appwrite database's customizable settings using the `pull` command in the folder holding your `appwrite.json` file.
 
-```
+```sh
 appwrite pull collection // currently only way to pull database 
-? From which database would you like to pull collections? (Press <space> to select, <a> 
-to toggle all, <i> to invert selection, and <enter> to proceed)
->( ) songs (6sadfvasdva2323bc0)
- ( ) playlists (12escvqw2120ffd1)
+? From which database would you like to pull collections?
 ```
 
 # Push Database {% #pull-database %}
 
-```
+```sh
 appwrite push
 ? Which resources would you like to push? Collections // currently only way to push database
-? Which collections would you like to push? music (25912239163242502 - 25912239163242502)
-ℹ Info Checking for databases and collection changes
-✓ Success Updated music ( 259122391632425028 ) name
-ℹ Info No changes has been detected. Skipping music ( 259122391632425028 )
 ```
 
 # Appwrite.json {% #Appwritejson %}
