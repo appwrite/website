@@ -1,0 +1,100 @@
+---
+layout: article
+title: Deploy buckets with CLI 2.0
+description: Efficiently deploy your Appwrite buckets using the Command-Line Tool (CLI). 
+---
+
+
+# Init teams
+
+You can init your `Appwrite.json` using the `init` command.
+
+```sh
+init appwrite teams
+```
+
+# Appwrite.json {% #Appwritejson %}
+
+What your `appwrite.json` file should look like.
+
+```server-nodejs
+{
+    "projectId": "heivi192901fjj1c20912"
+}
+```
+
+# Pull teams {% #pull-teams %}
+
+```sh
+appwrite pull teams
+```
+
+# Push teams
+
+```sh
+appwrite push teams
+```
+
+# Commands {% #commands %}
+
+The storage command allows you to manage your project files. Appwrite database CLI commands generally follow the following syntax:
+
+```sh
+appwrite storage [COMMAND] [OPTIONS]
+```
+
+{% table %}
+listBuckets [options]      Get a list of all the storage buckets. You can use the query params to
+                             filter your results.
+
+  createBucket [options]     Create a new storage bucket.
+
+  getBucket [options]        Get a storage bucket by its unique ID. This endpoint response returns
+                             a JSON object with the storage bucket metadata.
+
+  updateBucket [options]     Update a storage bucket by its unique ID.
+
+  deleteBucket [options]     Delete a storage bucket by its unique ID.
+
+  listFiles [options]        Get a list of all the user files. You can use the query params to
+                             filter your results.
+
+  createFile [options]       Create a new file. Before using this route, you should create a new
+                             bucket resource using either a [server
+                             integration](https://appwrite.io/docs/server/storage#storageCreateBucket)
+                             API or directly from your Appwrite console.  Larger files should be
+                             uploaded using multiple requests with the
+                             [content-range](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Range)
+                             header to send a partial request with a maximum supported chunk of
+                             '5MB'. The 'content-range' header values should always be in bytes.
+                             When the first request is sent, the server will return the **File**
+                             object, and the subsequent part request must include the file's **id**
+                             in 'x-appwrite-id' header to allow the server to know that the partial
+                             upload is for the existing file and not for a new one.  If you're
+                             creating a new file using one of the Appwrite SDKs, all the chunking
+                             logic will be managed by the SDK internally.
+
+  getFile [options]          Get a file by its unique ID. This endpoint response returns a JSON
+                             object with the file metadata.
+
+  updateFile [options]       Update a file by its unique ID. Only users with write permissions have
+                             access to update this resource.
+
+  deleteFile [options]       Delete a file by its unique ID. Only users with write permissions have
+                             access to delete this resource.
+
+  getFileDownload [options]  Get a file content by its unique ID. The endpoint response return with
+                             a 'Content-Disposition: attachment' header that tells the browser to
+                             start downloading the file to user downloads directory.
+
+  getFilePreview [options]   Get a file preview image. Currently, this method supports preview for
+                             image files (jpg, png, and gif), other supported formats, like pdf,
+                             docs, slides, and spreadsheets, will return the file icon image. You
+                             can also pass query string arguments for cutting and resizing your
+                             preview image. Preview is supported only for image files smaller than
+                             10MB.
+
+  getFileView [options]      Get a file content by its unique ID. This endpoint is similar to the
+                             download method but returns with no  'Content-Disposition: attachment'
+                             header.
+{% /table %}
