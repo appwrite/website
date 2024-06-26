@@ -12,7 +12,7 @@
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
-    const slides = Array.from({ length: 10 });
+    const slides = Array.from({ length: 4 });
 </script>
 
 <svelte:head>
@@ -45,18 +45,33 @@
                         <span>Back to catalog</span>
                     </a>
 
-                    <Carousel.Root>
-                        {#each slides as _}
-                            <Carousel.Slide>
-                                <img
-                                    src="/images/blog/ai-announcement.png"
-                                    class="web-u-media-ratio-16-9"
-                                    alt="cover"
-                                    width="472"
-                                />
-                            </Carousel.Slide>
-                        {/each}
-                    </Carousel.Root>
+                    {#if slides.length > 1}
+                        <Carousel.Root>
+                            {#each slides as _}
+                                <Carousel.Slide>
+                                    <img
+                                        src="/images/blog/ai-announcement.png"
+                                        class="web-u-media-ratio-16-9"
+                                        alt="cover"
+                                        width="472"
+                                    />
+                                </Carousel.Slide>
+                            {/each}
+                        </Carousel.Root>
+                    {:else}
+                        <div
+                            class="web-carousel-item"
+                            style:max-width="584px"
+                            style:margin="0 auto"
+                        >
+                            <img
+                                src="/images/blog/ai-announcement.png"
+                                class="web-u-media-ratio-16-9"
+                                alt="cover"
+                                width="472"
+                            />
+                        </div>
+                    {/if}
                 </div>
             </div>
         </div>
