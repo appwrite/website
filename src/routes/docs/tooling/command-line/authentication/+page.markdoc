@@ -6,48 +6,33 @@ description: Efficiently deploy your Appwrite authentication using the Command-L
 
 Create and manage your authentication using the CLI 2.0 commands. Setup your Appwrite application using CLI commands [here](/docs/tooling/command-line/installation).
 
-# Create account
+# Create account {% #create-account %}
+
+You can create an user account inside your database using the `users create` command in the folder holding your `appwrite.json` file.
 
 ```sh
 appwrite users create --userId "unique()" --name "test" --password "test1234"
 ```
 
+# Login to your account {% #login-to-your-account %}
 
-# Get the current account
+You can create a session for your user account inside your database using the `users createSession` command in the folder holding your `appwrite.json` file.
+
+```sh
+appwrite users createSession --userId "12u0fu9ue09uf0jfejfefjj3"
+```
+
+# Get the current account {% #get-the-current-account %}
+
+You can get the current logged-in user account inside your database using the `users get` command in the folder holding your `appwrite.json` file.
 
 ```sh
  appwrite users get --userId '1n0d02309je029fjd199jffj'
-$id : 1n0d02309je029fjd199jffj
-$createdAt : 2023-11-06T18:20:10.905+00:00
-$updatedAt : 2023-11-06T18:20:10.905+00:00
-name : ina
-password : 12900d9a-093m21209c9n-q9c-329rmcq-9emvr9qewfmewfj90qi-m32cmpoa;dpa
-hash : argon2
-hashOptions
-
-  type   │ memoryCost │ timeCost │ threads
- ────────┼────────────┼──────────┼─────────
-  argon2 │ 2048       │ 4        │ 3
-
-registration : 2023-11-06T18:20:10.903+00:00
-status : true
-labels
-[]
-passwordUpdate : 2023-11-06T18:20:10.903+00:00
-email : test@email.com
-phone :
-emailVerification : false
-phoneVerification : false
-mfa : false
-prefs
-
-targets
-[]
-accessedAt : 2023-11-06T18:20:10.903+00:00
-✓ Success
 ```
 
-## Logout
+## Logout {% #logout %}
+
+You can delete a session for your user account inside your database using the `users createSession` command in the folder holding your `appwrite.json` file.
 
 ```sh
 appwrite users deleteSessions --userId '03jf0993293jfjf930'
