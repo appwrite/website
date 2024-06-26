@@ -548,8 +548,7 @@ export default async function ({ req, res }) {
     };
 
     const client = new Client()
-    // Only need to set key, the rest "just works"
-    client.setKey(req.headers['x-appwrite-key']); // Header is automatically there
+    client.setKey(req.headers['x-appwrite-key']); // Set key to automatically have header there
 
     const databases = new Databases(client);
     const document = await databases.createDocument('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message);
@@ -599,8 +598,7 @@ def main(context):
         }
 
         client = Client()
-        # Only need to set key, the rest "just works"
-        client.set_key(req.headers.get('x-appwrite-key')) # Header is automatically there
+        client.set_key(req.headers.get('x-appwrite-key')) # Set key to automatically have header there
 
         databases = Databases(client)
         document = databases.create_document('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message)
@@ -652,8 +650,7 @@ return function ($context) {
     ];
 
     $client = new Client();
-    // Only need to set key, the rest "just works"
-    $client->setKey($headers['x-appwrite-key']); // Header is automatically there
+    $client->setKey($headers['x-appwrite-key']); // Set key to automatically have header there
 
     $databases = new Databases($client);
     $document = $databases->createDocument('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID::unique(), $message);
@@ -747,9 +744,7 @@ Future main(final context) async {
             'content': formData['content']
         };
 
-        // Only need to set key, the rest "just works"
-        final client = Client().setKey(req.headers['x-appwrite-key']); // Header is automatically there
-
+        final client = Client().setKey(req.headers['x-appwrite-key']); // Set key to automatically have header there
         final databases = Database(client);
         final document = await databases.createDocument('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message);
 
