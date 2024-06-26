@@ -6,28 +6,32 @@ description: Efficiently deploy your Appwrite collections using the Command-Line
 
 Create and manage your collections using the CLI 2.0 commands. Setup your Appwrite application using CLI commands [here](/docs/tooling/command-line/installation).
 
-# Create database {% #create-database %}
+The Appwrite CLI also helps you deploy your project's databases and collections schema from one project to another.
 
-Create an Appwrite database by running the `database` command in the folder holding your `appwrite.json` file.
+# Init collections
 
-```sh
-appwrite databases create --databaseId "unique()" --name "genre"
-```
-
-# Create collection {% #create-collection %}
-
-You can create an Appwrite collection inside your database using the `database createCollection` command in the folder holding your `appwrite.json` file.
+You can init your `Appwrite.json` using the `init` command.
 
 ```sh
-appwrite databases createCollection --databaseId "25912221200392927" --collectionId "unique()" --name "genre"
+init appwrite collections
 ```
 
-# Pull collection {% #pull-collection %}
+# Appwrite.json {% #Appwritejson %}
+
+What your `appwrite.json` file should look like.
+
+```server-nodejs
+{
+    "projectId": "heivi192901fjj1c20912"
+}
+```
+
+# Pull collections {% #pull-collection %}
 
 You can pull your Appwrite collection's and database's customizable settings using the `pull` command in the folder holding your `appwrite.json` file.
 
 ```sh
-appwrite pull collection
+appwrite pull collections
 ```
 
 # Push collection {% #pull-collection %}
@@ -35,77 +39,10 @@ appwrite pull collection
 To push the changes you made inside your `appwrite.json` file, use the `push` command in the folder holding your `appwrite.json` file.
 
 ```sh
-appwrite push
+appwrite push collections
 ```
 
-# Appwrite.json {% #Appwritejson %}
-
-An example of what your `appwrite.json` file should look like.
-
-```server-nodejs
-{
-    "projectId": "25912221200392927,
-    "databases": [
-        {
-            "$id": "5e5ea5c16897e",
-            "name": "songs",
-            "$createdAt": "2023-07-01T18:35:27.802+00:00",
-            "$updatedAt": "2023-08-01T21:41:41.663+00:00",
-            "enabled": true
-        }
-    ],
-    "collections": [
-        {
-            "$id": "25912239163242502",
-            "$permissions": [
-                "create(\"any\")",
-                "read(\"any\")",
-                "update(\"any\")",
-                "delete(\"any\")"
-            ],
-            "databaseId": "2591258431319902",
-            "name": "songs",
-            "enabled": true,
-            "documentSecurity": true,
-            "attributes": [
-                {
-                    "key": "name",
-                    "type": "string",
-                    "status": "available",
-                    "error": "",
-                    "required": false,
-                    "array": false,
-                    "size": 100,
-                    "default": null
-                },
-                {
-                    "key": "audio",
-                    "type": "string",
-                    "status": "available",
-                    "error": "",
-                    "required": false,
-                    "array": false,
-                    "size": 200,
-                    "default": null
-                },
-                {
-                    "key": "artist",
-                    "type": "string",
-                    "status": "available",
-                    "error": "",
-                    "required": false,
-                    "array": false,
-                    "size": 500,
-                    "default": null
-                }
-            ],
-            "indexes": []
-        }
-    ]
-}
-```
-
-# List {% #list %}
+# Commands {% #commands %}
 
 The databases command allows you to create structured collections of documents, queries, and filter lists of documents. Appwrite database CLI commands generally follow the following syntax:
 
