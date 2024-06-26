@@ -147,4 +147,4 @@ appwrite databases [COMMAND] [OPTIONS]
 * getDatabaseUsage [options] | help [command]
 * display help for command
 ---
-  {% /table %}
+{% /table %}
