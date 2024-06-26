@@ -120,7 +120,7 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   --cec8e8123c05ba25--
   ```
   ```client-react-native
-  import { Client, Storage, ID, Permission } from "react-native-appwrite";
+  import { Client, Storage, ID, Permission } from 'react-native-appwrite';
 
   const client = new Client()
       .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
@@ -252,7 +252,7 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 ```client-react-native
-import { Client, Storage, ID } from "react-native-appwrite";
+import { Client, Storage, ID } from 'react-native-appwrite';
 
 const client = new Client();
 
