@@ -1,0 +1,12 @@
+---
+layout: tutorial
+title: Next steps
+description: View your Next.js project powered by Appwrite authentication and databases.
+step: 9
+---
+
+# Test your project {% #test-project %}
+Run your project with `npm run dev` and open [http://localhost:3000](http://localhost:3000) in your browser.
+
+
+![Create project screen](/images/docs/tutorials/expense-tracker-app.png)

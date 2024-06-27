@@ -1,0 +1,379 @@
+---
+layout: tutorial
+title: Add pagination
+description: Add pagination to the expense list
+step: 8
+---
+
+# Add pagination in API {% #add-pagination-api %}
+We will add pagination to the API. We edit our `app/api/expense/route.js` and add the pagination logic:
+
+```js
+// /src/app/api/expense/route.js
+
+import { Query } from "appwrite";
+import { headers } from "next/headers";
+import { NextResponse } from "next/server";
+
+import {
+  EXPENSE_COLLECTION_ID,
+  EXPENSE_DATABASE_ID,
+  account,
+  database,
+} from "@/config/appwrite";
+
+export async function POST(req) {
+  const body = await req.json();
+  const { userId, limit, start } = body; // Add limit and start
+  const headersList = headers();
+  const jwt = headersList.get("jwt");
+
+  if (!userId || !jwt) {
+    return new NextResponse("Unauthorized", { status: 401 });
+  }
+  account.client.setJWT(jwt);
+
+  try {
+    const items = await database.listDocuments(
+      EXPENSE_DATABASE_ID,
+      EXPENSE_COLLECTION_ID,
+      [
+        Query.equal("userId", [userId]),
+        Query.orderDesc("$createdAt"),
+        Query.limit(limit), // Query limit
+        Query.offset(parseInt(start)), // Query start offset
+      ]
+    );
+    return new NextResponse(
+      JSON.stringify({ items: items.documents, total: items.total })
+    );
+  } catch (error) {
+    console.log(error);
+    return new NextResponse("Internal server error", {
+      status: 500,
+      error: error.message,
+    });
+  }
+}
+```
+
+We are now accepting `limit` and `start` as parameters. `limit` is the number of items to return and `start` is the offset from the beginning of the list. We are also returning the `total` number of items in the collection.
+
+We are using the `Query.limit` to limit the number of items returned and `Query.offset` to offset the items returned.
+
+Learn more about [Appwrite Query](https://appwrite.io/docs/products/databases/queries) and [Appwrite Pagination](https://appwrite.io/docs/products/databases/pagination) in the Appwrite documentation.
+
+
+# Pagination in the frontend {% #add-pagination-frontend %}
+We will now add pagination in the frontend. Edit the `app/page.js` file and add the following code:
+
+```js
+// /src/app/page.js
+
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { useCookie } from "next-cookie";
+import toast from "react-hot-toast";
+import { useRouter } from "next/router";
+
+import ExpenseList from "@/components/ExpenseList";
+import DeleteExpensePopup from "@/components/DeleteExpensePopup";
+import CreateExpensePopup from "@/components/CreateExpensePopup";
+import ExpenseList from "@/components/ExpenseList";
+import EditExpensePopup from "@/components/EditExpensePopup";
+
+const Home = (props) => {
+  const [expenses, setExpenses] = useState();
+  const [popup, setPopup] = useState(null);
+  // New state to track the start
+  const [start, setStart] = useState(0); 
+  // New state to track the total
+  const [total, setTotal] = useState(0); 
+  const limit = 5; // Add limit per page
+  const cookie = useCookie(props.cookie);
+  const router = useRouter();
+  const jwt = cookie.get("jwt");
+  const userId = cookie.get("userid");
+
+  const getExpenses = async () => {
+    if (!jwt) {
+      router.push("/login");
+      return;
+    }
+
+    const response = await fetch("/api/expense/list", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        jwt,
+      },
+      body: JSON.stringify({
+        userId, start, limit, // Pass the start and limit
+      }),
+    });
+    const data = await response.json();
+    if (data.error === "Failed to verify JWT. Invalid token: Expired") {
+      cookie.remove("jwt");
+      cookie.remove("userid");
+      toast.error("Session expired, please login again");
+      router.push("/login");
+    } else {
+      setExpenses(data.items);
+      // Set the total
+      setTotal(data.total); 
+    }
+  };
+
+  useEffect(() => {
+    getExpenses();
+  }, [start]);
+
+  // Calculate the number of pages
+  const pages = Math.ceil(total / limit); 
+
+  const createExpense = async (item) => {
+    ...
+  }
+
+  const editExpense = async (item) => {
+    ...
+  }
+
+  const deleteExpense = async (docId) => {
+    ...
+  }
+
+  return (
+    <>
+      // Popup components from previous steps
+      <div className="container u-flex-vertical u-gap-12 u-cross-center">
+        <h1 className="heading-level-1 font-bold">Your expenses</h1>
+        <button
+          className="button"
+          onClick={() => setPopup({ type: "new", data: null })}
+        >
+          <span className="icon-plus" aria-hidden="true"></span>
+          <span className="text"> New Expense</span>
+        </button>
+        <ExpenseList setPopup={setPopup} expenses={expenses} />
+        // Pagination buttons will be here
+      </div>
+    </>
+  );
+};
+
+export default Home;
+```
+
+We are using the `start` and `limit` to get the expenses. We are also calculating the number of pages using the `total` and `limit`.
+
+We are also calculating `pages` using the `total` and `limit` with the [Math.ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil) function.
+
+Now, after the rendering the list, we will add the pagination buttons. Edit `app/page.js` and add the following code: 
+
+```jsx
+// /src/app/page.js
+
+<div className="container u-flex-vertical u-gap-12 u-cross-center">
+  <h1 className="heading-level-1 font-bold">Your expenses</h1>
+  <ExpenseList setPopup={setPopup} expenses={expenses} />
+  <div className="u-flex u-main-center u-gap-12">
+    {expenses?.length > 0 &&
+      [...Array(pages)].map((_, i) => (
+        <button
+          key={i}
+          className="button is-only-icon"
+          onClick={() => setStart(i * limit)}
+        >
+          {i + 1}
+        </button>
+      ))}
+  </div>
+</div>
+```
+
+We are making an array of `pages` and then rendering the buttons. We are also using the `start` to highlight the current page.
+
+Here is the final code for the `app/page.js` file after adding pagination:
+
+```jsx
+// /src/app/page.js
+
+"use client";
+
+import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { useCookie } from "next-cookie";
+
+import DeleteExpensePopup from "@/components/DeleteExpensePopup";
+import CreateExpensePopup from "@/components/CreateExpensePopup";
+import ExpenseList from "@/components/ExpenseList";
+import EditExpensePopup from "@/components/EditExpensePopup";
+
+const Home = (props) => {
+  const [expenses, setExpenses] = useState();
+  const [popup, setPopup] = useState(null);
+  const [start, setStart] = useState(0);
+  const [total, setTotal] = useState(0);
+  const limit = 4;
+  const router = useRouter();
+  const cookie = useCookie(props.cookie);
+  const jwt = cookie.get("jwt");
+  const userId = cookie.get("userid");
+
+  const getExpenses = async () => {
+    if (!jwt) {
+      router.push("/login");
+      return;
+    }
+    const response = await fetch("/api/expense/list", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        jwt,
+      },
+      body: JSON.stringify({
+        userId: userId,
+        start: start,
+        limit: limit,
+      }),
+    });
+    const data = await response.json();
+    if (data.message === "Failed to verify JWT. Invalid token: Expired") {
+      cookie.remove("jwt");
+      cookie.remove("userid");
+      toast.error("Session expired, please login again");
+      router.push("/login");
+    } else {
+      setExpenses(data.items);
+      setTotal(data.total);
+    }
+  };
+
+  useEffect(() => {
+    getExpenses();
+  }, [start]);
+
+  const createExpense = async (title, amount, type) => {
+    const response = await fetch("/api/expense", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        jwt,
+      },
+      body: JSON.stringify({
+        userId: userId,
+        title: title,
+        amount: amount,
+        type: type,
+      }),
+    });
+
+    if (response.status === 200) {
+      toast.success("Saved successfully");
+      setPopup(null);
+      getExpenses();
+    }
+  };
+
+  const editExpense = async (docId, title, amount, type) => {
+    const response = await fetch("/api/expense", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        jwt,
+      },
+      body: JSON.stringify({
+        docId: docId,
+        title: title,
+        amount: amount,
+        type: type,
+      }),
+    });
+
+    if (response.status === 200) {
+      toast.success("Updated successfully");
+      setPopup(null);
+      getExpenses();
+    }
+  };
+
+  const deleteExpense = async (docId) => {
+    const response = await fetch("/api/expense", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        jwt,
+      },
+      body: JSON.stringify({ docId: docId }),
+    });
+
+    if (response.status === 200) {
+      toast.success("Deleted successfully");
+      setPopup(null);
+      getExpenses();
+      setStart(0);
+    }
+  };
+
+  const pages = Math.ceil(total / limit);
+
+  return (
+    <>
+      {popup?.type === "new" && (
+        <CreateExpensePopup 
+          setPopup={setPopup} 
+          createExpense={createExpense} 
+        />
+      )}
+      {popup?.type === "edit" && (
+        <EditExpensePopup
+          docId={popup?.data?.$id}
+          title={popup?.data?.title}
+          amount={popup?.data?.amount}
+          type={popup?.data?.type}
+          popup={popup}
+          setPopup={setPopup}
+          editExpense={editExpense}
+        />
+      )}
+      {popup?.type === "delete" && (
+        <DeleteExpensePopup
+          popup={popup}
+          setPopup={setPopup}
+          deleteExpense={deleteExpense}
+        />
+      )}
+      <div className="container u-flex-vertical u-gap-12 u-cross-center">
+        <h1 className="heading-level-1 font-bold">
+          Your expenses
+        </h1>
+        <button
+          className="button"
+          onClick={() => setPopup({ type: "new", data: null })}
+        >
+          <span className="icon-plus" aria-hidden="true"></span>
+          <span className="text"> New Expense</span>
+        </button>
+        <ExpenseList setPopup={setPopup} expenses={expenses} />
+        <div className="u-flex u-main-center u-gap-12">
+          {expenses?.length > 0 &&
+            [...Array(pages)].map((_, i) => (
+              <button
+                key={i}
+                className="button is-only-icon"
+                onClick={() => setStart(i * limit)}
+              >
+                {i + 1}
+              </button>
+            ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Home;
+```
