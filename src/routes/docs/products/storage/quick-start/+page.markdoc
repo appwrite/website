@@ -31,7 +31,10 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   const promise = storage.createFile(
       '<BUCKET_ID>',
       ID.unique(),
-      document.getElementById('uploader').files[0]
+      { name: 'file.jpeg', 
+        type: 'image/jpeg', 
+        uri: 'file://user/text.jpeg', 
+        size: 183799 }
   );
 
   promise.then(function (response) {
@@ -54,7 +57,10 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
     final file = await storage.createFile(
       bucketId: '<BUCKET_ID>',
       fileId: ID.unique(),
-      file: InputFile.fromPath(path: './path-to-files/image.jpg', filename: 'image.jpg'),
+      file: { name: 'file.jpeg', 
+        type: 'image/jpeg', 
+        uri: 'file://user/text.jpeg', 
+        size: 183799 }
     );
   }
   ```
@@ -71,10 +77,10 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
       let file = try await storage.createFile(
           bucketId: "<BUCKET_ID>",
           fileId: ID.unique(),
-          file: InputFile.fromBuffer(yourByteBuffer,
-              filename: "image.jpg",
-              mimeType: "image/jpeg"
-          )
+          file: { name: 'file.jpeg', 
+            type: 'image/jpeg', 
+            uri: 'file://user/text.jpeg', 
+            size: 183799 }
       )
   }
   ```
@@ -92,7 +98,10 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
       val file = storage.createFile(
           bucketId = "<BUCKET_ID>",
           fileId = ID.unique(),
-          file = File("./path-to-files/image.jpg"),
+          file = { name: 'file.jpeg', 
+            type: 'image/jpeg', 
+            uri: 'file://user/text.jpeg', 
+            size: 183799 },
       )
   }
   ```
@@ -106,7 +115,7 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   --cec8e8123c05ba25
   Content-Disposition: form-data; name="operations"
 
-  { "query": "mutation CreateFile($bucketId: String!, $fileId: String!, $file: InputFile!) { storageCreateFile(bucketId: $bucketId, fileId: $fileId, file: $file) { id } }", "variables": { "bucketId": "<BUCKET_ID>", "fileId": "<FILE_ID>", "file": null } }
+  { "query": "mutation CreateFile($bucketId: String!, $fileId: String!, $file: { name: 'file.jpeg', type: 'image/jpeg', uri: 'file://user/text.jpeg', size: 183799 }) { storageCreateFile(bucketId: $bucketId, fileId: $fileId, file: { name: 'file.jpeg', type: 'image/jpeg', uri: 'file://user/text.jpeg', size: 183799 } ) { id } }", "variables": { "bucketId": "<BUCKET_ID>", "fileId": "<FILE_ID>", "file": null } }
   --cec8e8123c05ba25
   Content-Disposition: form-data; name="map"
 
@@ -120,7 +129,7 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   --cec8e8123c05ba25--
   ```
   ```client-react-native
-  import { Client, Storage, ID, Permission } from 'react-native-appwrite';
+  import { Client, Storage, ID } from 'react-native-appwrite';
 
   const client = new Client()
       .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
@@ -131,15 +140,11 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   const promise = await storage.createFile(
       '<BUCKET_ID>',
       ID.unique(),
-      { 
-      name: 'file.jpeg', 
-      type: 'image/jpeg', 
-      uri: 'file://user/text.jpeg', 
-      size: 183799
-      }, // FILE
-      Permission.read('any')
+      { name: 'file.jpeg', 
+        type: 'image/jpeg', 
+        uri: 'file://user/text.jpeg', 
+        size: 183799 }
   );
-
 
   promise.then(function (response) {
       console.log(response); // Success
