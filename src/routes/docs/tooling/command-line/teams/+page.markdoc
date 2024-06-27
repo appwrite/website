@@ -4,9 +4,9 @@ title: Deploy teams with CLI 2.0
 description: Efficiently deploy your Appwrite teams using the Command-Line Tool (CLI). 
 ---
 
-The Appwrite CLI can create teams to organize users. Teams can be used to grant access permissions to a group of users. Learn more about permissions.
+The Appwrite CLI can create teams to organize users. Teams can be used to grant access [permissions](https://appwrite.io/docs/products/auth/teams#permissions) to a group of users. Setup your Appwrite application using CLI commands [here](/docs/tooling/command-line/installation).
 
-# Init teams
+# Init team {% #init-teams %}
 
 You can init your `Appwrite.json` using the `init` command.
 
@@ -24,13 +24,17 @@ What your `appwrite.json` file should look like.
 }
 ```
 
-# Pull teams {% #pull-teams %}
+# Pull team {% #pull-teams %}
+
+You can pull your Appwrite teams customizable settings using the `pull` command in the folder holding your `appwrite.json` file.
 
 ```sh
 appwrite pull teams
 ```
 
-# Push teams
+# Push team {% #push-teams %}
+
+To push the changes you made inside your `appwrite.json` file, use the `push` command in the folder holding your `appwrite.json` file.
 
 ```sh
 appwrite push teams
@@ -48,46 +52,46 @@ appwrite teams [COMMAND] [OPTIONS]
 * Command
 * Description
 ---
-* list [options]                    
+* `list [options]`                    
 * Get a list of all the teams in which the current user is a member. You can use the parameters to filter your results.
 ---
-* create [options]                  
+* `create [options]`                  
 * Create a new team. The user who creates the team will automatically be assigned as the owner of the team. Only the users with the owner role can invite new members, add new owners and delete or update the team.
 ---
-* get [options]                     
+* `get [options]`                     
 * Get a team by its ID. All team members have read access for this resource.
 ---
-* updateName [options]              
+* `updateName [options]`              
 * Update the team's name by its unique ID.
 ---
-* delete [options]                  
+* `delete [options]`                  
 * Delete a team using its ID. Only team members with the owner role can delete the team.
 ---
-* listLogs [options]               
+* `listLogs [options]`               
 * Get the team activity logs list by its unique ID.
 ---
-* listMemberships [options]         
+* `listMemberships [options]`         
 * Use this endpoint to list a team's members using the team's ID. All team members have read access to this endpoint.
 ---  
-* createMembership [options]        
+* `createMembership [options]`        
 * Invite a new member to join your team. Provide an ID for existing users, or invite unregistered users using an email or phone number. If initiated from a Client SDK, Appwrite will send an email or sms with a link to join the team to the invited user, and an account will be created for them if one doesn't exist. If initiated from a Server SDK, the new member will be added automatically to the team.  You only need to provide one of a user ID, email, or phone number. Appwrite will prioritize accepting the user ID > email > phone number if you provide more than one of these parameters.  Use the 'url' parameter to redirect the user from the invitation email to your app. After the user is redirected, use the [Update Team Membership Status](https://appwrite.io/docs/references/cloud/client-web/teams#updateMembershipStatus) endpoint to allow the user to accept the invitation to the team.   Please note that to avoid a [Redirect Attack](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.md)   Appwrite will accept the only redirect URLs under the domains you have added as a platform on the Appwrite Console.
 ---
-* getMembership [options]           
+* `getMembership [options]`           
 * Get a team member by the membership unique id. All team members have read access for this resource.
 ---
-* updateMembership [options]        
+* `updateMembership [options]`        
 * Modify the roles of a team member. Only team members with the owner role have access to this endpoint. Learn more about [roles and permissions](https://appwrite.io/docs/permissions).
 ---
-* deleteMembership [options]        
+* `deleteMembership [options]`        
 * This endpoint allows a user to leave a team or for a team owner to delete the membership of any other team member. You can also use this endpoint to delete a user membership even if it is not accepted.
 ---
-* updateMembershipStatus [options]  
+* `updateMembershipStatus [options]`  
 * Use this endpoint to allow a user to accept an invitation to join a team after being redirected back to your app from the invitation email received by the user.  If the request is successful, a session for the user is automatically created.
 ---
-* getPrefs [options]                
+* `getPrefs [options]`                
 * Get the team's shared preferences by its unique ID. If a preference doesn't need to be shared by all team members, prefer storing them in [user preferences](https://appwrite.io/docs/references/cloud/client-web/account#getPrefs).
 ---
-* updatePrefs [options]             
+* `updatePrefs [options]`             
 * Update the team's preferences by its unique ID. The object you pass is stored as is and replaces any previous value. The maximum allowed prefs size is 64kB and throws an error if exceeded.
 ---
 {% /table %}
