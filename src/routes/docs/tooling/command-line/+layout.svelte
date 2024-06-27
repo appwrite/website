@@ -43,6 +43,14 @@
 				{
 					label: 'Teams',
 					href: '/docs/tooling/command-line/teams'
+				},
+				{
+					label: 'Topics',
+					href: '/docs/tooling/command-line/topics'
+				},
+				{
+					label: 'Buckets',
+					href: '/docs/tooling/command-line/buckets'
 				}
 			]
 		}

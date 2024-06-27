@@ -1,0 +1,191 @@
+---
+layout: article
+title: Deploy topics with CLI 2.0
+description: Efficiently deploy your Appwrite topics using the Command-Line Tool (CLI). 
+---
+
+# Init topics {% #init-topics %}
+
+You can init your `Appwrite.json` using the `init` command.
+
+```sh
+init appwrite topics
+```
+
+# Appwrite.json {% #Appwritejson %}
+
+What your `appwrite.json` file should look like.
+
+```server-nodejs
+{
+    "projectId": "heivi192901fjj1c20912"
+}
+```
+
+# Pull topics {% #pull-topics %}
+
+You can pull your Appwrite topics customizable settings using the `pull` command in the folder holding your `appwrite.json` file.
+
+```sh
+appwrite pull topics
+```
+
+# Push topics {% #push-topics %}
+
+To push the changes you made inside your `appwrite.json` file, use the `push` command in the folder holding your `appwrite.json` file.
+
+```sh
+appwrite push topics
+```
+
+# Commands {% #commands %}
+
+The messaging command allows you to send messages. Appwrite database CLI commands generally follow the following syntax:
+
+```sh
+appwrite messaging [COMMAND] [OPTIONS]
+```
+
+{% table %}
+* Command
+* Description
+---
+* `listMessages [options]`             
+* Get a list of all messages from the current Appwrite project.
+---
+* `createEmail [options]`              
+* Create a new email message.
+---
+* `updateEmail [options]`              
+* Update an email message by its unique ID.
+---
+* `createPush [options]`               
+* Create a new push notification.
+---
+* `updatePush [options]`               
+* Update a push notification by its unique ID.
+---
+* `createSms [options]`                
+* Create a new SMS message.
+---
+* `updateSms [options]`                
+* Update an email message by its unique ID.
+---
+* `getMessage [options]`               
+* Get a message by its unique ID.
+---
+* `delete [options]`        
+* Delete a message. If the message is not a draft or scheduled, but has been sent, this will not recall the message.
+---
+* `listMessageLogs [options]`          
+* Get the message activity logs listed by its unique ID.
+---
+* `listTargets [options]`
+* Get a list of the targets associated with a message.
+---
+* `listProviders [options]`      
+* Get a list of all providers from the current Appwrite project.
+---
+* `createApnsProvider [options]`
+* Create a new Apple Push Notification service provider.
+---
+* updateApnsProvider [options]       
+* Update a Apple Push Notification service provider by its unique ID.
+---
+* `createFcmProvider [options]`      
+* Create a new Firebase Cloud Messaging provider.
+---
+* `updateFcmProvider [options]`        
+* Update a Firebase Cloud Messaging provider by its unique ID.
+---
+* `createMailgunProvider [options]`    
+* Create a new Mailgun provider.
+---
+* `updateMailgunProvider [options]`   
+* Update a Mailgun provider by its unique ID.
+---
+* `createMsg91Provider [options]`    
+* Create a new MSG91 provider.
+---
+* `updateMsg91Provider [options]`
+* Update a MSG91 provider by its unique ID.
+---
+* `createSendgridProvider [options]` 
+* Create a new Sendgrid provider.
+---
+* `updateSendgridProvider [options]`
+* Update a Sendgrid provider by its unique ID.
+---
+* `createSmtpProvider [options]`     
+* Create a new SMTP provider.
+---
+* `updateSmtpProvider [options]`
+* Update a SMTP provider by its unique ID.
+---
+* `createTelesignProvider [options]` 
+* Create a new Telesign provider.
+---
+* `updateTelesignProvider [options]`
+* Update a Telesign provider by its unique ID.
+---
+* `createTextmagicProvider [options]`
+* Create a new Textmagic provider.
+---
+* `updateTextmagicProvider [options]`
+* Update a Textmagic provider by its unique ID.
+---
+* `createTwilioProvider [options]`   
+* Create a new Twilio provider.
+---
+* `updateTwilioProvider [options]`
+* Update a Twilio provider by its unique ID.
+---
+* `createVonageProvider [options]`   
+* Create a new Vonage provider.
+---
+* `updateVonageProvider [options]`
+* Update a Vonage provider by its unique ID.
+---
+* `getProvider [options]`         
+* Get a provider by its unique ID.
+---
+* `deleteProvider [options]`
+* Delete a provider by its unique ID.
+---
+* `listProviderLogs [options]`   
+* Get the provider activity logs listed by its unique ID.
+---
+* `listSubscriberLogs [options]`
+* Get the subscriber activity logs listed by its unique ID.
+---
+* `listTopics [options]`            
+* Get a list of all topics from the current Appwrite project.
+---
+* `createTopic [options]`    
+* Create a new topic.
+---
+* `getTopic [options]`             
+* Get a topic by its unique ID.
+---
+* `updateTopic [options]`              
+* Update a topic by its unique ID.
+---
+* `deleteTopic [options]`          
+* Delete a topic by its unique ID.
+---
+* `listTopicLogs [options]`           
+* Get the topic activity logs listed by its unique ID.
+---
+* `listSubscribers [options]`       
+* Get a list of all subscribers from the current Appwrite project.
+---
+* `createSubscriber [options]`
+* Create a new subscriber.
+---
+* `getSubscriber [options]`       
+* Get a subscriber by its unique ID.
+---
+* `deleteSubscriber [options]`
+* Delete a subscriber by its unique ID.
+---
+{% /table %}

@@ -6,7 +6,7 @@ description: Efficiently deploy your Appwrite functions using the Command-Line T
 
 The CLI handles the creation and deployment of Appwrite Functions.  Setup your Appwrite application using CLI commands [here](/docs/tooling/command-line/installation).
 
-# Init function
+# Init function {% #init-function %}
 
 You can init your `Appwrite.json` using the `init` command.
 
@@ -34,6 +34,8 @@ appwrite pull functions
 
 # Push function {% #push-function %}
 
+To push the changes you made inside your `appwrite.json` file, use the `push` command in the folder holding your `appwrite.json` file.
+
 ```sh
 appwrite push functions
 ```
@@ -50,64 +52,64 @@ appwrite functions [COMMAND] [OPTIONS]
 * Command
 * Description
 ---
-* list [options]                   
+* `list [options]`                   
 * Get a list of all the project's functions. You can use the query params to filter your results.
 ---
-* create [options]                 
+* `create [options]`                 
 * Create a new function. You can pass a list of [permissions](https://appwrite.io/docs/permissions) to allow different project users or team with access to execute the function using the client API.
 ---
-* listRuntimes                    
+* `listRuntimes`                    
 * Get a list of all runtimes that are currently active on your instance.
 ---
-* getUsage [options] | get [options]                    
+* `getUsage [options] | get [options]`                    
 * Get a function by its unique ID.
 ---
-* update [options]                 
+* `update [options]`                 
 * Update function by its unique ID.
 ---
-* delete [options]                 
+* `delete [options]`                 
 * Delete a function by its unique ID.
 ---
-* listDeployments [options]        
+* `listDeployments [options]`        
 * Get a list of all the project's code deployments. You can use the query params to filter your results.
 ---
-* createDeployment [options]       
+* `createDeployment [options]`       
 * Create a new function code deployment. Use this endpoint to upload a new version of your code function. To execute your newly uploaded code, you'll need to update the function's deployment to use your new deployment UID.  This endpoint accepts a tar.gz file compressed with your code. Make sure to include any dependencies your code has within the compressed file. You can learn more about code packaging in the [Appwrite Cloud Functions tutorial](https://appwrite.io/docs/functions). Use the "command" param to set the entrypoint used to execute your code.
 ---
-* getDeployment [options]          
+* `getDeployment [options]`          
 * Get a code deployment by its unique ID.
 ---
-* updateDeployment [options]       
+* `updateDeployment [options]`       
 * Update the function code deployment ID using the unique function ID. Use this endpoint to switch the code deployment that should be executed by the execution endpoint.
 ---
-* deleteDeployment [options]       
+* `deleteDeployment [options]`       
 * Delete a code deployment by its unique ID.
 ---
-* createBuild [options] | updateDeploymentBuild [options]| downloadDeployment [options]    
+* `createBuild [options] | updateDeploymentBuild [options]| downloadDeployment [options]`    
 * Get a Deployment's contents by its unique ID. This endpoint supports range requests for partial or streaming file download.
 ---
-* listExecutions [options]         
+* `listExecutions [options]`         
 * Get a list of all the current user function execution logs. You can use the query params to filter your results.
 ---
-* createExecution [options]        
+* `createExecution [options]`        
 * Trigger a function execution. The returned object will return you the current execution status. You can ping the 'Get Execution' endpoint to get updates on the current execution status. Once this endpoint is called, your function execution process will start asynchronously.
 ---
-* getExecution [options]           
+* `getExecution [options]`           
 * Get a function execution log by its unique ID.
 ---
-* getFunctionUsage [options] | listVariables [options]          
+* `getFunctionUsage [options] | listVariables [options]`          
 * Get a list of all variables of a specific function.
 ---
-* createVariable [options]         
+* `createVariable [options]`         
 * Create a new function environment variable. These variables can be accessed in the function at runtime as environment variables.
 ---
-* getVariable [options]            
+* `getVariable [options]`            
 * Get a variable by its unique ID.
 ---
-* updateVariable [options]         
+* `updateVariable [options]`         
 * Update variable by its unique ID.
 ---
-* deleteVariable [options]         
+* `deleteVariable [options]`        
 * Delete a variable by its unique ID.
 ---
 {% /table %}
