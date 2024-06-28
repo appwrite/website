@@ -103,22 +103,25 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   ```
 
   ```http
-  POST https://cloud.appwrite.io/v1/storage/buckets/<BUCKET_ID>/files HTTP/1.1
-  X-Appwrite-Project: <APPWRITE_PROJECT>
-  X-Appwrite-Mode: admin
-  Cookie: <COOKIE>
-  Content-Type: multipart/form-data; boundary=---1234
-  Content-Length: <Content-Length>
-  
-  -----1234
-  Content-Disposition: form-data; name="fileId"
+      POST https://cloud.appwrite.io/v1/storage/buckets/<BUCKET_ID>/files HTTP/1.1
+      X-Appwrite-Project: <PROJECT_ID>
+      X-Appwrite-Mode: admin
+      X-Appwrite-Response-Format: 1.5.0
+      Cookie: COOKIE
+      Content-Type: multipart/form-data; boundary=---1234
+      Content-Length: LENGTH   
 
-  "<FILE_ID>"
+      -----1234
+      Content-Disposition: form-data; name="fileId"     
 
-  -----1234
-  Content-Disposition: form-data; name="file"; filename="file.png"
-  Content-Type: image/png
-  < ./file.png
+      <FILEID>
+      -----1234
+      Content-Disposition: form-data; name="file"; filename="text.png"
+      Content-Type: image/PNG
+
+< ./miku.png
+
+-----1234
 
   ```
   ```client-react-native
