@@ -8,9 +8,9 @@ The [Appwrite CLI](https://github.com/appwrite/sdk-for-cli) is a command-line ap
 
 # Installation {% #Installation %}
 
-The CLI is packaged both as an  [npm module](https://www.npmjs.com/package/appwrite-cli)  as well as a  [standalone binary](https://github.com/appwrite/sdk-for-cli/releases/latest)  for your operating system, making it completely dependency free, platform independent and language agnostic.
+The CLI is packaged both as a [npm module](https://www.npmjs.com/package/appwrite-cli) as well as a [standalone binary](https://github.com/appwrite/sdk-for-cli/releases/latest)  for your operating system, making it completely dependency free, platform independent and language agnostic.
 
-If you plan to use the CLI to initialize new Appwrite Functions, ensure that  [Git is installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)  on your machine.
+If you plan to use the CLI to initialize new Appwrite Functions, ensure that [Git is installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) on your machine.
 
 ## Install with npm {% #install-with-npm %}
 
@@ -85,7 +85,7 @@ appwrite client --selfSigned true
 {% /info %}
 
 {% info title="Correct CLI Version Required" %}
-All commands only work with **version 2.0** of the CLI.  Install [here](https://www.npmjs.com/package/appwrite-cli-beta).
+All commands only work with **version 2.0** of the CLI, and will **not** work on previous versions.  Install [here](https://www.npmjs.com/package/appwrite-cli-beta).
 {% /info %}
 
 ## Next steps {% #next-steps %}
