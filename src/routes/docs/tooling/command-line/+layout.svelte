@@ -29,6 +29,10 @@
 			label: 'Deployments',
 			items: [
 				{
+					label: 'Projects',
+					href: '/docs/tooling/command-line/projects'
+				},
+				{
 					label: 'Collections',
 					href: '/docs/tooling/command-line/collections'
 				},

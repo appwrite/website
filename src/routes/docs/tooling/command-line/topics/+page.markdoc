@@ -4,24 +4,6 @@ title: Deploy topics with CLI 2.0
 description: Efficiently deploy your Appwrite topics using the Command-Line Tool (CLI). 
 ---
 
-# Init topics {% #init-topics %}
-
-You can init your `Appwrite.json` using the `init` command.
-
-```sh
-init appwrite topics
-```
-
-# Appwrite.json {% #Appwritejson %}
-
-What your `appwrite.json` file should look like.
-
-```server-nodejs
-{
-    "projectId": "heivi192901fjj1c20912"
-}
-```
-
 # Pull topics {% #pull-topics %}
 
 You can pull your Appwrite topics customizable settings using the `pull` command in the folder holding your `appwrite.json` file.
@@ -89,7 +71,7 @@ appwrite messaging [COMMAND] [OPTIONS]
 * `createApnsProvider [options]`
 * Create a new Apple Push Notification service provider.
 ---
-* updateApnsProvider [options]       
+* `updateApnsProvider [options]` 
 * Update a Apple Push Notification service provider by its unique ID.
 ---
 * `createFcmProvider [options]`      

@@ -37,7 +37,7 @@ If you made changes in the Appwrite Console that are different from your `appwri
 If you need to target a different project, API endpoint, change the path or entry point of your function, or update any of the other configuration options, 
 you can do so by editing the `appwrite.json` file.
 
-{% arrow_link href="/docs/tooling/command-line/deployment#function-options" %}
+{% arrow_link href="/docs/tooling/command-line/functions" %}
 Learn more about appwrite.json
 {% /arrow_link %}
 
