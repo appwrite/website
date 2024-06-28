@@ -20,10 +20,6 @@
 					href: '/docs/tooling/command-line/commands'
 				},
 				{
-					label: 'Deployment',
-					href: '/docs/tooling/command-line/deployment'
-				},
-				{
 					label: 'Non interactive',
 					href: '/docs/tooling/command-line/non-interactive'
 				}

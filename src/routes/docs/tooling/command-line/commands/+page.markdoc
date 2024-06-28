@@ -12,7 +12,7 @@ Commands follows the following general syntax:
 appwrite [COMMAND] [OPTIONS]
 ```
 
-# List {% #list %}
+# Commands {% #commands %}
 
 Below is a list of the available commands in the Appwrite CLI. You can get more information on each command by running `appwrite [COMMAND] --help`.
 
@@ -140,7 +140,7 @@ appwrite users list
 
 ## List collections {% #list-collections %}
 
-To get a list of all your collections, you can use the listCollections command.
+To get a list of all your [collections](/docs/tooling/command-line/collections), you can use the listCollections command.
 
 ```sh
 appwrite databases listCollections --databaseId [DATABASE_ID]
