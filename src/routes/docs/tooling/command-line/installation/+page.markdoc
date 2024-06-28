@@ -70,6 +70,22 @@ Before you can use the CLI, you need to login to your Appwrite account using
 appwrite login
 ```
 
+# Initialization {% #Initialization %}
+
+After you're logged in, the CLI needs to be initialized with your Appwrite project. You can initialize the CLI using:
+
+```sh
+appwrite init project
+```
+
+This will create your `appwrite.json` file, where you will configure with your various services.
+
+```server-nodejs
+{
+    "projectId": "heivi192901fjj1c20912"
+}
+```
+
 You can run your first CLI command after logging in. Try fetching information about your Appwrite project.
 
 ```sh
@@ -85,14 +101,14 @@ appwrite client --selfSigned true
 {% /info %}
 
 {% info title="Correct CLI Version Required" %}
-All commands only work with **version 2.0** of the CLI, and will **not** work on previous versions.  Install [here](https://www.npmjs.com/package/appwrite-cli-beta).
+All commands only work with **version 2.0** of the CLI and will **not** work on previous versions. Update [here](https://www.npmjs.com/package/appwrite-cli-beta).
 {% /info %}
 
 ## Next steps {% #next-steps %}
 
 You can use the CLI to create and deploy functions and collections. Deploy commands allow you to configure your Appwrite project programmatically and replicate functions and collection schemas across Appwrite projects.
 
-[Learn more about deployment](/docs/tooling/command-line/deployment)
+[Learn more about deployment](/docs/tooling/command-line/projects)
 
 Besides utility commands, the CLI can be used to execute commands like a Server SDK.
 

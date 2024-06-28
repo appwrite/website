@@ -6,24 +6,6 @@ description: Efficiently deploy your Appwrite project using the Command-Line Too
 
 After you're logged in, the CLI needs to be initialized with your Appwrite project.
 
-# Init project {% #init-project %}
-
-You can init your `Appwrite.json` using the `init` command.
-
-```sh
-init appwrite project
-```
-
-# Appwrite.json {% #Appwritejson %}
-
-What your `appwrite.json` file should look like.
-
-```server-nodejs
-{
-    "projectId": "heivi192901fjj1c20912"
-}
-```
-
 # Pull project {% #pull-project %}
 
 You can pull your Appwrite projects customizable settings using the `pull` command in the folder holding your `appwrite.json` file.
@@ -47,14 +29,21 @@ The project command is for overall project administration. Appwrite database CLI
 ```sh
 appwrite project [COMMAND] [OPTIONS]
 ```
-
-  getUsage [options]
-  listVariables             Get a list of all project variables. These variables will be accessible
-                            in all Appwrite Functions at runtime.
-  createVariable [options]  Create a new project variable. This variable will be accessible in all
-                            Appwrite Functions at runtime.
-  getVariable [options]     Get a project variable by its unique ID.
-  updateVariable [options]  Update project variable by its unique ID. This variable will be
-                            accessible in all Appwrite Functions at runtime.
-  deleteVariable [options]  Delete a project variable by its unique ID.
-  help [command]            display help for command
+{% table %}
+---
+* `getUsage [options]` | `listVariables`
+* Get a list of all project variables. These variables will be accessible in all Appwrite Functions at runtime.
+---
+* `createVariable [options]` 
+* Create a new project variable. This variable will be accessible in all Appwrite Functions at runtime.
+---
+* `getVariable [options]` 
+* Get a project variable by its unique ID.
+---
+* `updateVariable [options]`
+* Update project variable by its unique ID. This variable will be accessible in all Appwrite Functions at runtime.
+---
+* `deleteVariable [options]`
+* Delete a project variable by its unique ID.
+---
+{% /table %}

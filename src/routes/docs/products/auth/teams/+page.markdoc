@@ -189,7 +189,7 @@ val response = teams.createMembership(
 
 # CLI {% #CLI %}
 
-Invite members and create teams using the [**CLI**](/docs/tooling/command-line/installation), which allows you to perform server-side tasks using the terminal. Using the [CLI commands](/docs/tooling/command-line/teams), you would only need a single text command to invite members to your team or create a team.
+Invite members and create teams using the [**CLI**](/docs/tooling/command-line/installation), which allows you to perform server-side tasks using the terminal. You can invite members to your team or create a team with only a single text command using the [CLI commands](/docs/tooling/command-line/teams).
 
 # Permissions {% #permissions %}
 

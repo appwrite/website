@@ -6,30 +6,87 @@ description: Efficiently deploy your Appwrite functions using the Command-Line T
 
 The CLI handles the creation and deployment of Appwrite Functions.  Setup your Appwrite application using CLI commands [here](/docs/tooling/command-line/installation).
 
-# Init function {% #init-function %}
-
-You can init your `Appwrite.json` using the `init` command.
-
-```sh
-init appwrite functions
-```
-
-# Appwrite.json {% #Appwritejson %}
-
-What your `appwrite.json` file should look like.
-
-```server-nodejs
-{
-    "projectId": "heivi192901fjj1c20912"
-}
-```
-
 # Pull function {% #pull-function %}
 
 You can pull your Appwrite functions customizable settings using the `pull` command in the folder holding your `appwrite.json` file.
 
 ```sh
 appwrite pull functions
+```
+
+# Appwrite.json {% #appwritejson %}
+
+After pulling your Appwrite function, your `Appwrite.json` file should look similar to the following:
+```
+{
+    "projectId": <projectId>,
+    "functions": [
+        {
+            "$id": "<functionID>",
+            "$createdAt": "2024-04-22T22:29:31.427+00:00",
+            "$updatedAt": "2024-06-26T19:08:26.582+00:00",
+            "execute": [
+                "any"
+            ],
+            "name": "userAuth",
+            "enabled": true,
+            "live": true,
+            "logging": true,
+            "runtime": "node-18.0",
+            "deployment": "5df5acd0d48c2",
+            "vars": [
+                {
+                    "$id": "eyJhbGciOiJIUzI1N",
+                    "$createdAt": "2024-04-22T22:51:51.745+00:00",
+                    "$updatedAt": "2024-04-23T00:13:10.886+00:00",
+                    "key": "X_Appwrite_Key",
+                    "value": "<API_KEY>",
+                    "resourceType": "function",
+                    "resourceId": "eyJhbGciOiJIUzI1N"
+                },
+                {
+                    "$id": "N1IzUIJiOicGbhJye",
+                    "$createdAt": "2024-04-22T23:32:12.901+00:00",
+                    "$updatedAt": "2024-04-22T23:32:12.901+00:00",
+                    "key": "DATABASE_ID",
+                    "value": "<DATABASE_ID>",
+                    "resourceType": "function",
+                    "resourceId": "N1IzUIJiOicGbhJye"
+                },
+                {
+                    "$id": "OicGbhJyeN1IzUIJi",
+                    "$createdAt": "2024-04-22T23:32:12.910+00:00",
+                    "$updatedAt": "2024-04-22T23:32:12.910+00:00",
+                    "key": "PROJECT_ID",
+                    "value": "projectId",
+                    "resourceType": "function",
+                    "resourceId": "OicGbhJyeN1IzUIJi"
+                },
+                {
+                    "$id": "bhJyIJiON1IzUicGe",
+                    "$createdAt": "2024-04-22T23:32:12.912+00:00",
+                    "$updatedAt": "2024-04-22T23:32:12.912+00:00",
+                    "key": "COLLECTION_USERS_ID",
+                    "value": "<COLLECTION_ID>",
+                    "resourceType": "function",
+                    "resourceId": "bhJyIJiON1IzUicGe"
+                }
+            ],
+            "events": [],
+            "schedule": "",
+            "timeout": 15,
+            "entrypoint": "userAuth.js",
+            "commands": "npm install",
+            "version": "v3",
+            "installationId": "a0e499a8",
+            "providerRepositoryId": "7389",
+            "providerBranch": "user-appwrite-funcs",
+            "providerRootDirectory": "functions",
+            "providerSilentMode": false,
+            "path": "functions/49dbf3"
+        }
+    ]
+}
 ```
 
 # Push function {% #push-function %}
@@ -61,7 +118,7 @@ appwrite functions [COMMAND] [OPTIONS]
 * `listRuntimes`                    
 * Get a list of all runtimes that are currently active on your instance.
 ---
-* `getUsage [options] | get [options]`                    
+* `getUsage [options]` | `get [options]`                    
 * Get a function by its unique ID.
 ---
 * `update [options]`                 
@@ -85,7 +142,7 @@ appwrite functions [COMMAND] [OPTIONS]
 * `deleteDeployment [options]`       
 * Delete a code deployment by its unique ID.
 ---
-* `createBuild [options] | updateDeploymentBuild [options]| downloadDeployment [options]`    
+* `createBuild [options]` | `updateDeploymentBuild [options]` | `downloadDeployment [options]`    
 * Get a Deployment's contents by its unique ID. This endpoint supports range requests for partial or streaming file download.
 ---
 * `listExecutions [options]`         
@@ -97,7 +154,7 @@ appwrite functions [COMMAND] [OPTIONS]
 * `getExecution [options]`           
 * Get a function execution log by its unique ID.
 ---
-* `getFunctionUsage [options] | listVariables [options]`          
+* `getFunctionUsage [options]` | `listVariables [options]`          
 * Get a list of all variables of a specific function.
 ---
 * `createVariable [options]`         

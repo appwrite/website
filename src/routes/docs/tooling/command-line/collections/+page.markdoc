@@ -8,24 +8,6 @@ Create and manage your collections using the CLI 2.0 commands. Setup your Appwri
 
 The Appwrite CLI also helps you deploy your project's databases and collections schema from one project to another.
 
-# Init collection {% #init-collection %}
-
-You can init your `Appwrite.json` using the `init` command.
-
-```sh
-init appwrite collection
-```
-
-# Appwrite.json {% #Appwritejson %}
-
-What your `appwrite.json` file should look like.
-
-```server-nodejs
-{
-    "projectId": "heivi192901fjj1c20912"
-}
-```
-
 # Pull collection {% #pull-collection %}
 
 You can pull your Appwrite collection's and database's customizable settings using the `pull` command in the folder holding your `appwrite.json` file.

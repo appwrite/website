@@ -6,24 +6,6 @@ description: Efficiently deploy your Appwrite buckets using the Command-Line Too
 
 The Appwrite CLI allows you to configure and deploy buckets across projects. Setup your Appwrite application using CLI commands [here](/docs/tooling/command-line/installation).
 
-# Init bucket {% #init-bucket %}
-
-You can init your `Appwrite.json` using the `init` command.
-
-```sh
-init appwrite buckets
-```
-
-# Appwrite.json {% #Appwritejson %}
-
-An example of how your `appwrite.json` file should look.
-
-```server-nodejs
-{
-    "projectId": "heivi192901fjj1c20912"
-}
-```
-
 # Pull bucket {% #pull-bucket %}
 
 You can pull your Appwrite buckets customizable settings using the `pull` command in the folder holding your `appwrite.json` file.
