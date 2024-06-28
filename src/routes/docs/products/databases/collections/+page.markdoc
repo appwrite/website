@@ -274,3 +274,7 @@ The following indexes are currently supported:
 | `fulltext` | For searching within string attributes. Required for the [search query method](/docs/products/databases/queries#query-class).     |
 
 You can create an index by navigating to your collection's **Indexes** tab or by using your favorite [Server SDK](/docs/sdks#server).
+
+# CLI {% #cli %}
+
+Your collections can be created, edited, or deleted from your terminal using the Appwrite [**CLI**](http://localhost:5173/docs/tooling/command-line/installation). Use [CLI commands](http://localhost:5173/docs/tooling/command-line/collections) to manage your collections and deploy its schema from one project to another.

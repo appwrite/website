@@ -8,7 +8,7 @@ Storage buckets are a group of files, similar to collections in Appwrite Databas
 Buckets let you limit file size and extensions, whether or not to encrypt the files, and more.
 
 # Create Bucket {% #create-bucket %}
-You can create your bucket from the Appwrite Console or a [Server SDK](/docs/sdks#server).
+You can create your bucket from the Appwrite Console or a [Server SDK](/docs/sdks#server). Buckets can be created using the [CLI](/docs/tooling/command-line/installation) too, only requiring a single [command](/docs/tooling/command-line/buckets) to create buckets and more.
 
 {% tabs %}
 {% tabsitem #console title="Console" %}
