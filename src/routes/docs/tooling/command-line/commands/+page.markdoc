@@ -104,6 +104,39 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 
 {% /table %}
 
+{% table %}
+# Options {% #options %}
+
+* Command
+* Description
+---
+* `-v, --version`     
+* output the version number
+---
+* `-V, --verbose`     
+* Show complete error log
+---
+* `-j, --json`        
+* Output in JSON format
+---
+* `-f,--force`        
+* Flag to confirm all warnings
+---
+* `-a,--all`          
+* Flag to push all resources
+---
+* `--id [id...]`      
+* Flag to pass list of ids for a giving action
+---
+* `--report`          
+* Enable reporting in case of CLI errors
+---
+* `-h, --help`        
+* display help for command
+---
+{% /table %}
+
+
 # Verbose {% #verbose %}
 In case of errors with any command, you can get more information about what went wrong using the `--verbose` flag
 
