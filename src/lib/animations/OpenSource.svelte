@@ -3,6 +3,7 @@
     import { animation, createScrollHandler, scroll, type Animation } from '.';
     import { toScale, type Scale } from '$lib/utils/toScale';
     import { browser } from '$app/environment';
+    import { GITHUB_STARS } from '$lib/constants';
 
     const springOptions: SpringOptions = { stiffness: 58.78, mass: 1, damping: 17.14 };
     const animationOptions: AnimationListOptions = {
@@ -184,7 +185,7 @@
                         aria-label="GitHub"
                     />
                 </div>
-                <div class="web-title u-margin-block-start-auto">38k+ GitHub Stars</div>
+                <div class="web-title u-margin-block-start-auto">{GITHUB_STARS}+ GitHub Stars</div>
             </a>
 
             <a

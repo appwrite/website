@@ -28,7 +28,7 @@
             <li class="web-strip-plans-item web-strip-plans-container-query">
                 <div class="web-strip-plans-item-wrapper">
                     <div class="web-strip-plans-plan">
-                        <h4 class="title web-description">Starter</h4>
+                        <h4 class="title web-description">Free</h4>
                         <div class="web-title web-u-color-text-primary">$0</div>
                         <div class="info web-caption-500" />
                     </div>

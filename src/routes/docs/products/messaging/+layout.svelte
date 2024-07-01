@@ -71,7 +71,7 @@
 					href: '/docs/products/messaging/telesign'
 				},
 				{
-					label: 'SMS with TextMagic',
+					label: 'SMS with Textmagic',
 					href: '/docs/products/messaging/textmagic'
 				},
 				{

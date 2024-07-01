@@ -20,7 +20,7 @@ What does it actually mean to be open source as a company? It means that our cod
 
 If you haven’t yet heard, Appwrite recently announced the release of version 1.5, which has brought with it numerous features and upgrades, starting with Appwrite Messaging, our new offering to simplify implementing communication and messaging services in your applications. We have also released support for Server-Side Rendering frameworks in our SDK, allowing a substantial amount of web developers in our community to build with a lot more ease. Additionally, we have introduced Two-Factor Authentication in our suite of authentication offerings to improve the security of your app’s users. We have also added support for Enums in our SDKs to improve the developer experience and added new Bun and Dart function runtimes to Appwrite Cloud, among other updates and changes.
 
-You can learn more about the release by visiting the [Init website](https://appwrite.io/init).
+You can learn more about the release by visiting the [Init website](/init).
 
 # Contributors’ highlight
 

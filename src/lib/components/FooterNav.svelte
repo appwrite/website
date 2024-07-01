@@ -35,9 +35,9 @@
                 { label: 'Auth', href: '/docs/products/auth' },
                 { label: 'Databases', href: '/docs/products/databases' },
                 { label: 'Functions', href: '/docs/products/functions' },
-                { label: 'Messaging', href: '/docs/products/messaging' },
+                { label: 'Messaging', href: '/products/messaging' },
                 { label: 'Storage', href: '/docs/products/storage' },
-                { label: 'Realtime', href: '/docs/apis/realtime' }
+                { label: 'Realtime', href: '/docs/apis/realtime' },
             ],
             Learn: [
                 { label: 'Docs', href: '/docs' },
@@ -46,6 +46,12 @@
                 { label: 'Threads', href: '/threads' },
                 { label: 'Blog', href: '/blog' },
                 { label: 'Changelog', href: '/changelog' },
+                {
+                    label: 'Roadmap',
+                    href: 'https://github.com/orgs/appwrite/projects',
+                    target: '_blank',
+                    rel: 'noopener noreferrer'
+                },
                 {
                     label: 'Source code',
                     href: 'https://github.com/appwrite',

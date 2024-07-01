@@ -111,6 +111,11 @@
                     label: 'Assistant',
                     href: '/docs/tooling/assistant',
                     icon: 'icon-sparkles'
+                },
+                {
+                    label: "The Appwriter",
+                    href: '/docs/tooling/appwriter',
+                    icon: 'icon-text'
                 }
             ]
         },
