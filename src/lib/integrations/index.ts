@@ -5,8 +5,8 @@ export { default } from './SvelteFuse.svelte';
 
 export type ResultType<T> = FuseResult<T>[];
 
-import CarouselRoot from './carousel/Carousel.svelte';
-import CarouselSlide from './carousel/CarouselSlide.svelte';
+import CarouselRoot from './Carousel.svelte';
+import CarouselSlide from './CarouselSlide.svelte';
 
 export const Carousel = Object.assign({
     Root: CarouselRoot,
