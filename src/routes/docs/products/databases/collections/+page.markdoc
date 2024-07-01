@@ -291,7 +291,7 @@ Push any configurations or changes you made to the generated code by using the f
 appwrite push collections
 ```
 
-{% arrow_link href="/docs/tooling/command-line/teams#collections" %}
+{% arrow_link href="/docs/tooling/command-line/collections#commands" %}
 Learn more about the CLI collections commands
 {% /arrow_link %}
 

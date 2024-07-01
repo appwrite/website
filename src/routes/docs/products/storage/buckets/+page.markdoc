@@ -25,7 +25,7 @@ appwrite pull buckets
 Push any configurations or changes you made to the generated code by using the following command:
 
 ```bash
-appwrite push teams
+appwrite push buckets
 ```
 {% arrow_link href="/docs/tooling/command-line/buckets#commands" %}
 Learn more about the CLI buckets commands
