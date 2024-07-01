@@ -2,17 +2,19 @@
     <slot />
 </div>
 
-<style lang="scss">
-    @use '$scss/abstract' as *;
-
+<style>
     .embla__slide {
-        @media #{$break1} {
+        @media (max-width: 1023.9px) {
             flex: 0 0 100%;
         }
 
         flex: 0 0 33%;
         min-width: 0;
-        margin-right: pxToRem(32);
+        margin-right: 32px;
         transition: opacity 200ms ease-out;
+
+        &:has(.is-snapped) {
+            opacity: 0.2;
+        }
     }
 </style>
