@@ -277,4 +277,28 @@ You can create an index by navigating to your collection's **Indexes** tab or by
 
 # CLI {% #cli %}
 
-Your collections can be created, edited, or deleted from your terminal using the Appwrite [**CLI**](http://localhost:5173/docs/tooling/command-line/installation). Use [CLI commands](http://localhost:5173/docs/tooling/command-line/collections) to manage your collections and deploy their schema from one project to another.
+{% info title="CLI setup" %}
+Before you can deploy with the Appwrite CLI, make sure you've [installed and initialized](/docs/tooling/command-line/installation) the CLI and [logged-in](/docs/tooling/command-line/installation#get-started) into your Appwrite account.
+{% /info %}
+
+```bash
+appwrite pull collections
+```
+
+Push any configurations or changes you made to the generated code by using the following command:
+
+```bash
+appwrite push collections
+```
+
+{% arrow_link href="/docs/tooling/command-line/teams#collections" %}
+Learn more about the CLI collections commands
+{% /arrow_link %}
+
+## Overwrite warning {% #overwrite-warning %} 
+
+If you made changes in the Appwrite Console that are different from your `appwrite.json`, using the CLI push command will overwrite your console changes. Update your `appwrite.json` manually before pushing.
+
+{% arrow_link href="/docs/tooling/command-line/collections#appwritejson" %}
+Learn more about appwrite.json
+{% /arrow_link %}
