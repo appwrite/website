@@ -56,21 +56,26 @@
     });
 
     // platform filters
-    const platforms = ['Cloud', 'Self-hosted'] as const;
-    type Platform = (typeof platforms)[number];
+    const platforms = [
+        {
+            label: 'All',
+            value: ''
+        },
+        {
+            label: 'Cloud',
+            value: 'cloud'
+        },
+        {
+            label: 'Self-hosted',
+            value: 'self-hosted'
+        }
+    ];
 
-    let activePlatform = writable<Platform>('Cloud');
-    $: activeCategory.subscribe((value) => {
-        activeCategory.set(value);
-    });
+    let activePlatform = '';
 
     // categories
     const categories = integrations.map((integration) => integration.category).sort();
-    let activeCategory = writable('');
-
-    $: activeCategory.subscribe((value) => {
-        activeCategory.set(value);
-    });
+    let activeCategory = '';
 </script>
 
 <svelte:head>
@@ -156,14 +161,14 @@
                                     Platform
                                 </h2>
                                 <ul class="u-flex u-flex-wrap u-gap-8" class:disabled={hasQuery}>
-                                    {#each platforms as platform}
+                                    {#each platforms as { label, value }}
                                         <li>
                                             <button
                                                 class="tag"
-                                                class:is-selected={$activePlatform === platform}
-                                                class:active-tag={$activePlatform === platform}
-                                                on:click={() => activePlatform.set(platform)}
-                                                >{platform}</button
+                                                class:is-selected={activePlatform === value}
+                                                class:active-tag={activePlatform === value}
+                                                on:click={() => (activePlatform = value)}
+                                                >{label}</button
                                             >
                                         </li>
                                     {/each}
@@ -176,7 +181,7 @@
                                 </h2>
 
                                 <div class="u-position-relative is-only-mobile">
-                                    <select class="web-input-text" bind:value={$activeCategory}>
+                                    <select class="web-input-text" bind:value={activeCategory}>
                                         <option disabled selected>Select</option>
                                         {#each categories as category}
                                             <option value={category.toLowerCase()}
@@ -200,9 +205,9 @@
                                                 href={`#${category.toLowerCase()}`}
                                                 class="web-link"
                                                 class:is-pink={category.toLowerCase() ===
-                                                    $activeCategory}
+                                                    activeCategory}
                                                 on:click={() =>
-                                                    activeCategory.set(category.toLowerCase())}
+                                                    activeCategory === category.toLowerCase()}
                                                 >{category}</a
                                             >
                                         </li>
@@ -322,13 +327,13 @@
                                 </section>
 
                                 {#each integrations.map((integration) => {
-                                    return { ...integration, items: activePlatform ? integration.items.filter((item) => item.platform.toLowerCase() === $activePlatform.toLowerCase()) : integration.items };
+                                    return { ...integration, items: activePlatform ? integration.items.filter((item) => item.platform.toLowerCase() === activePlatform.toLowerCase()) : integration.items };
                                 }) as integration (integration.category)}
                                     <section
                                         class="l-max-size-list-cards-section u-flex-vertical u-gap-32"
                                         id={integration.category.toLowerCase()}
                                         use:autoHash={() =>
-                                            activeCategory.set(integration.category.toLowerCase())}
+                                            (activeCategory = integration.category.toLowerCase())}
                                     >
                                         <header class="u-flex-vertical u-gap-4">
                                             <h2 class="web-label web-u-color-text-primary">
