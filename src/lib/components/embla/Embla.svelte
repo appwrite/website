@@ -2,17 +2,18 @@
     import embla from 'embla-carousel-svelte';
     import {
         type EmblaCarouselType,
+        type EmblaEventType,
         type EmblaOptionsType,
         type EmblaPluginType
     } from 'embla-carousel';
     import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
-    import EmblaClassNames from 'embla-carousel-class-names';
 
     let emblaApi: EmblaCarouselType;
 
     let options: EmblaOptionsType = {
         align: 'center',
-        skipSnaps: true
+        skipSnaps: true,
+        loop: true
     };
 
     let hasPrev: boolean = false;
@@ -26,19 +27,7 @@
         else hasNext = false;
     };
 
-    let plugins: EmblaPluginType[] = [WheelGesturesPlugin(), EmblaClassNames()];
-
-    const onEmblaInit = (event: CustomEvent<EmblaCarouselType>) => {
-        emblaApi = event.detail;
-
-        emblaApi
-            .on('scroll', () => {
-                selectedScrollIndex = emblaApi.selectedScrollSnap();
-            })
-            .on('init', togglePrevNextBtnsState)
-            .on('select', togglePrevNextBtnsState)
-            .on('reInit', togglePrevNextBtnsState);
-    };
+    let plugins: EmblaPluginType[] = [WheelGesturesPlugin()];
 
     let selectedScrollIndex = 0;
     const onSelect = (index: number) => {
@@ -54,6 +43,82 @@
     const onNext = () => {
         emblaApi.scrollNext();
         selectedScrollIndex = emblaApi.selectedScrollSnap();
+    };
+
+    const TWEEN_FACTOR_BASE = 0.52;
+    let tweenFactor = 0;
+    let tweenNodes: HTMLElement[] = [];
+
+    const numberWithinRange = (number: number, min: number, max: number) =>
+        Math.min(Math.max(number, min), max);
+
+    const setTweenNodes = (emblaApi: EmblaCarouselType): void => {
+        tweenNodes = emblaApi.slideNodes().map((slideNode) => {
+            return slideNode.querySelector('.embla__slide__number') as HTMLElement;
+        });
+    };
+
+    const setTweenFactor = (emblaApi: EmblaCarouselType): void => {
+        tweenFactor = TWEEN_FACTOR_BASE * emblaApi.scrollSnapList().length;
+    };
+
+    const tweenScale = (emblaApi: EmblaCarouselType, eventName?: EmblaEventType): void => {
+        const engine = emblaApi.internalEngine();
+        const scrollProgress = emblaApi.scrollProgress();
+        const slidesInView = emblaApi.slidesInView();
+        const isScrollEvent = eventName === 'scroll';
+
+        emblaApi.scrollSnapList().forEach((scrollSnap, snapIndex) => {
+            let diffToTarget = scrollSnap - scrollProgress;
+            const slidesInSnap = engine.slideRegistry[snapIndex];
+
+            slidesInSnap.forEach((slideIndex) => {
+                if (isScrollEvent && !slidesInView.includes(slideIndex)) return;
+
+                if (engine.options.loop) {
+                    engine.slideLooper.loopPoints.forEach((loopItem) => {
+                        const target = loopItem.target();
+
+                        if (slideIndex === loopItem.index && target !== 0) {
+                            const sign = Math.sign(target);
+
+                            if (sign === -1) {
+                                diffToTarget = scrollSnap - (1 + scrollProgress);
+                            }
+                            if (sign === 1) {
+                                diffToTarget = scrollSnap + (1 - scrollProgress);
+                            }
+                        }
+                    });
+                }
+
+                const tweenValue = 1 - Math.abs(diffToTarget * tweenFactor);
+                const scale = numberWithinRange(tweenValue, 0.8, 1).toString();
+                const tweenNode = tweenNodes[slideIndex];
+                tweenNode.style.transform = `scale(${scale})`;
+            });
+        });
+    };
+
+    const onEmblaInit = (event: CustomEvent<EmblaCarouselType>) => {
+        emblaApi = event.detail;
+
+        setTweenNodes(emblaApi);
+        setTweenFactor(emblaApi);
+        tweenScale(emblaApi);
+
+        emblaApi
+            .on('scroll', () => {
+                selectedScrollIndex = emblaApi.selectedScrollSnap();
+            })
+            .on('init', togglePrevNextBtnsState)
+            .on('select', togglePrevNextBtnsState)
+            .on('reInit', togglePrevNextBtnsState)
+            .on('reInit', setTweenNodes)
+            .on('reInit', setTweenFactor)
+            .on('reInit', tweenScale)
+            .on('scroll', tweenScale)
+            .on('slideFocus', tweenScale);
     };
 </script>
 
