@@ -31,7 +31,7 @@ To create an OpenAI API key, we must first create an account on the [OpenAI pla
 ![OpenAI API Keys](/images/blog/ai-crystal-ball/openai.png)
 
 > Note: To use the GPT-4 API, your account must be upgraded to the Usage tier 1. To learn more, visit their [Usage tiers documentation](https://platform.openai.com/docs/guides/rate-limits/usage-tiers?context=tier-one).
-> 
+>
 
 ## GitHub
 
@@ -99,7 +99,7 @@ Visit the collection settings, enable **Document security,** and set the followi
 To build this app, we used SvelteKit, a framework to build web applications using JavaScript. There are some prerequisites, however, that must be completed before building out the features themselves.
 
 > Note: The code snippets will focus only on the application logic. All CSS or styling-related information as well as any other miscellaneous features will be accessible in the final project repository at the end of the blog.
-> 
+>
 
 ## Prerequisites
 
@@ -172,8 +172,8 @@ const createUser = () => {
             store.set(null);
             return false;
         }
-    } 
-    
+    }
+
     init();
 
     function login() {
@@ -322,7 +322,7 @@ We will be calling these functions for our main application page in the file `./
 
     async function getTopFiveLanguages(username, token) {
         let languageUsage = {};
-        
+
         const repositories = await github.getRepos(username, token);
         loadingMessage = `Checking 30 most-recently created repos...`;
         for (let repo of repositories) {
@@ -349,12 +349,12 @@ We will be calling these functions for our main application page in the file `./
     async function initCrystalBall(userId) {
 		    // Check if GitHub data is already stored in Appwrite DB or not
         userData = await db.getUserData(userId);
-        
+
         if(userData === false){
 		        // Get GitHub token from Appwrite session
             const session = await user.getSession();
             const githubToken = session.providerAccessToken;
-            
+
             // Get GitHub user details
             const githubUser = await github.getUser(githubToken);
             const githubUsername = githubUser.login;
@@ -396,7 +396,7 @@ We will be calling these functions for our main application page in the file `./
                 <button id="ballClick" on:click={getDestiny}>Tap here and reveal your destiny!</button>
             {:else if destinyLoading === 'loading'}
                 <img src={crystalball} alt="Crystal Ball">
-                <button on:click={getDestiny}>Reading your future...</button>                
+                <button on:click={getDestiny}>Reading your future...</button>
             {:else if destinyLoading === 'complete'}
                 <div class="destiny">
                     <div class="destinyMessage">
@@ -405,7 +405,7 @@ We will be calling these functions for our main application page in the file `./
                             <p>{destiny}</p>
                         </div>
                     </div>
-                    <div class="destinyButtons">		                   
+                    <div class="destinyButtons">
                         <button class="copyButton" on:click={getLink}>Get Link to Destiny</button>
                         <button class="resetButton" on:click={resetDestiny}>Want a new destiny?</button>
                     </div>
@@ -434,7 +434,7 @@ export async function POST({ request }) {
         });
 
         const userData = requestBody.userData;
-      
+
         const prompt = `You have the following data on a developer from their GitHub account:\n\nGitHub username: ${userData.username}\nFollowers: ${userData.followers}\nFollowing: ${userData.following}\nTop 5 languages:\n${userData.languages.join(',')}\n\nBased on this data, create a humourous, realistic prediction to lightly roast the individual about what they'll be doing in 5 years from now. Do not explicitly include their GitHub data in the final message. Only use gender-neutral pronouns.`;
         const response = await openai.chat.completions.create({
         model: 'gpt-4',
@@ -514,7 +514,7 @@ export const db = {**
 		        }
 		    )
 		},
-		
+
 		getDestiny: async(documentId) => {
 		    try{
 		        return await databases.getDocument(
@@ -548,7 +548,7 @@ export const csr = false;
 
 export async function load({ params }) {
     let destiny = await db.getDestiny(params.slug);
-    
+
     return {
         destiny
     };
@@ -568,7 +568,7 @@ We will render our page using the pre-fetched destiny here:
 
     function discoverDestiny() {
         window.open(`https://${window.location.hostname}`, '_self');
-    }    
+    }
 </script>
 
 <div class="mainContainer">
@@ -592,16 +592,16 @@ Lastly, we need to add a function in `./src/routes/app/+page.svelte` to store th
 async function getLink() {
     let destinyToSave = await db.addDestiny(userData.username, destiny);
     let url = `https://${window.location.hostname}/destiny/${destinyToSave.$id}`;
-    window.open(url, '_blank');        
+    window.open(url, '_blank');
 }
 ```
 
 # Next steps
 
-And with that, our AI Crystal Ball project is ready! So far, since launching this application, over **375 users** have signed up and created their destinies.  
+And with that, our AI Crystal Ball project is ready! So far, since launching this application, over **375 users** have signed up and created their destinies.
 
 The web app is still live and can be tried at the following link: [aicrystalball.oberai.dev](https://aicrystalball.oberai.dev/)
 
 You can find the application’s complete source code at this [GitHub Repo](https://github.com/adityaoberai/AI-Crystal-Ball/).
 
-[Join us on Discord](http://appwrite.io/discord) to be the first to get updates and to be part of a vibrant community!
+[Join us on Discord](https://appwrite.io/discord) to be the first to get updates and to be part of a vibrant community!

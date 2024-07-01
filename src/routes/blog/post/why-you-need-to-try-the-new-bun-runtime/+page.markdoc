@@ -10,9 +10,9 @@ category: product
 featured: false
 ---
 
-When Bun announced their 1.0 release, marking Bun stable and production-ready, we excitedly began working on a Bun runtime for [Appwrite Functions](https://appwrite.io/docs/products/functions).
+When Bun announced their 1.0 release, marking Bun stable and production-ready, we excitedly began working on a Bun runtime for [Appwrite Functions](/docs/products/functions).
 
-We loved the idea of Bun, because it’s more than just another Node runtime but a whole set of tools. Bun does everything from dependency management to testing and beyond with consistent DX and light-speed performance. This idea of being simple, reducing distractions, and giving developers all the tools in one place to just build stuff resonated with Appwrite’s product philosophy. 
+We loved the idea of Bun, because it’s more than just another Node runtime but a whole set of tools. Bun does everything from dependency management to testing and beyond with consistent DX and light-speed performance. This idea of being simple, reducing distractions, and giving developers all the tools in one place to just build stuff resonated with Appwrite’s product philosophy.
 
 Here’s a small selection of cool features that make it particularly useful as an Appwrite Function runtime.
 
@@ -195,7 +195,7 @@ describe("getGifs", () => {
     const gifUrl = await getGif(process.env['GIPHY_API_KEY']);
     expect(gifUrl).toMatch(/^(http|https):\/\/[^ "]+$/);
     });
-    
+
     // Sanity check to make sure it will make my builds fail.
     // test("This will always fail", async () => {
     //   expect(true).toBe(false);
@@ -207,7 +207,7 @@ Each time we deploy, we can configure Appwrite Functions to run the tests after 
 
 ```jsx
 bun install
-bun test  
+bun test
 ```
 
 This will install dependencies and run tests before activating a deployment.
@@ -253,7 +253,7 @@ This increased performance is particularly noticeable when you write long-runnin
 
 There’s a lot to love about [Bun](https://bun.sh/), and we only explored a few exciting differences that can be leveraged in the Bun Appwrite Function runtime. Bun also has a built-in web server, high-performance file I/O, snapshot testing, and much more to offer.
 
-If you’re curious, you can also try Bun in an Appwrite Function by creating your first [Appwrite Cloud](https://cloud.appwrite.io/) project. The free Starter plan gives you access to three Functions, which lets you compare and contrast Node.js, Deno, and Bun in identical containerized environments.
+If you’re curious, you can also try Bun in an Appwrite Function by creating your first [Appwrite Cloud](https://cloud.appwrite.io/) project. The free Free plan gives you access to three Functions, which lets you compare and contrast Node.js, Deno, and Bun in identical containerized environments.
 
 You can try your first Bun, Node.js, or Deno function on Appwrite Cloud without writing a single line of code through Appwrite Function templates. Appwrite will clone template functions to your GitHub profile and set up automatic deployments so you can start building immediately.
 
@@ -261,8 +261,8 @@ You can try your first Bun, Node.js, or Deno function on Appwrite Cloud without 
 
 Visit our documentation to learn more about the Bun, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
-- [Docs](https://appwrite.io/docs/products/functions/runtimes)
+- [Docs](/docs/products/functions/runtimes)
 - [Discord](https://appwrite.io/discord)
-- [Blog](https://appwrite.io/blog)
+- [Blog](/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
 - [GitHub](https://github.com/appwrite/appwrite)
