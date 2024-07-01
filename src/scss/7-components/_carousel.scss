@@ -20,6 +20,7 @@
   }
   &-item {
     scroll-snap-align:center; scroll-snap-stop:always;
+    transition: all 0.3s ease;
     img {
       display:block; inline-size:100%; border:solid pxToRem(2) hsl(var(--web-color-smooth));
       border-radius:var(--border-radius-medium); transition:var(--transition);
@@ -55,8 +56,9 @@
   @media (min-width:768px) and (max-width:1023.9px) {
     &-item {
       min-inline-size:pxToRem(394);
+      transition: all 0.3s ease;
       &.is-main {
-        min-inline-size:pxToRem(470);
+        transform:scale(1.1);
       }
     }
   }

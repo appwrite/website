@@ -1,5 +1,4 @@
 <script lang="ts">
-    import Root from '$lib/components/Accordion/Root.svelte';
     import { Carousel } from '$lib/integrations';
     import { Main } from '$lib/layouts';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
@@ -46,10 +45,9 @@
                     </a>
 
                     {#if slides.length > 1}
-                        <Carousel.Root>
+                        <Carousel.Root let:activeIndex>
                             {#each slides as _, i}
-                                <Carousel.Slide>
-                                    <b>{i}</b>
+                                <Carousel.Slide isActive={activeIndex === i}>
                                     <img
                                         src="/images/blog/ai-announcement.png"
                                         class="web-u-media-ratio-16-9"
