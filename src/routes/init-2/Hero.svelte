@@ -2,12 +2,10 @@
     const lines = Array.from({ length: 100 });
 </script>
 
-<div class="hero">
-    <div class="lines">
-        {#each lines as _, i}
-            <div class="line" style:top={`${i * 10}px`} />
-        {/each}
-    </div>
+<div class="lockup">
+    {#each lines as _, i}
+        <div class="line" style={`--animation-delay: ${i * 2}ms;top: ${i * 10}px`} />
+    {/each}
 </div>
 
 <style lang="scss">
@@ -20,15 +18,16 @@
         }
     }
 
-    .hero {
+    .lockup {
         position: relative;
-        height: 80vh;
+        height: 100vh;
         mask-image: url('/images/logos/init.svg');
         mask-repeat: no-repeat;
         mask-size: contain;
         overflow: hidden;
         display: flex;
         margin: 0 auto;
+        align-items: center;
 
         .line {
             position: absolute;
@@ -52,8 +51,9 @@
                     #fff 75%,
                     #fff 100%
                 );
-                animation: line 12s 0s infinite;
+                animation: line 12s infinite;
                 animation-fill-mode: forwards;
+                animation-delay: var(--animation-delay);
                 animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
             }
         }
