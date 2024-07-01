@@ -147,7 +147,7 @@
                 "url": "/docs/products/auth",
                 "image": "/images/blog/ai-announcement.png",
                 "new": true,
-                "platform": "Cloud",
+                "platform": "Self-hosted",
                 "author": {
                     "avatar": "/images/community/avatars/souvik.png",
                     "name": "Souvik Sarkar",
