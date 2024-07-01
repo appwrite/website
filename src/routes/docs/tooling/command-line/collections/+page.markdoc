@@ -16,6 +16,113 @@ You can pull your Appwrite collection's and database's customizable settings usi
 appwrite pull collections
 ```
 
+# Appwrite.json {% #appwritejson %}
+
+After pulling your Appwrite function, your `Appwrite.json` file should look similar to the following:
+
+```
+{
+    "projectId": "<PROJECT_ID>",
+    "databases": [
+        {
+            "$id": "<DATABASE_ID>",
+            "name": "songs",
+            "$createdAt": "2023-07-01T18:35:27.802+00:00",
+            "$updatedAt": "2023-08-01T21:41:41.663+00:00",
+            "enabled": true
+        }
+    ],
+    "collections": [
+        {
+            "$id": "COLLECTION_ID",
+            "$permissions": [
+                "create(\"any\")",
+                "read(\"any\")",
+                "update(\"any\")",
+                "delete(\"any\")"
+            ],
+            "databaseId": "<DATABASE_ID>",
+            "name": "music",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [
+                {
+                    "key": "userID",
+                    "type": "string",
+                    "status": "available",
+                    "error": "",
+                    "required": false,
+                    "array": false,
+                    "size": 100,
+                    "default": null
+                },
+                {
+                    "key": "name",
+                    "type": "string",
+                    "status": "available",
+                    "error": "",
+                    "required": false,
+                    "array": false,
+                    "size": 100,
+                    "default": null
+                },
+                {
+                    "key": "cloudinaryId",
+                    "type": "string",
+                    "status": "available",
+                    "error": "",
+                    "required": false,
+                    "array": false,
+                    "size": 100,
+                    "default": null
+                },
+                {
+                    "key": "user",
+                    "type": "string",
+                    "status": "available",
+                    "error": "",
+                    "required": false,
+                    "array": false,
+                    "size": 100,
+                    "default": null
+                },
+                {
+                    "key": "audio",
+                    "type": "string",
+                    "status": "available",
+                    "error": "",
+                    "required": false,
+                    "array": false,
+                    "size": 200,
+                    "default": null
+                },
+                {
+                    "key": "genre",
+                    "type": "string",
+                    "status": "available",
+                    "error": "",
+                    "required": false,
+                    "array": false,
+                    "size": 500,
+                    "default": null
+                },
+                {
+                    "key": "artist",
+                    "type": "string",
+                    "status": "available",
+                    "error": "",
+                    "required": false,
+                    "array": false,
+                    "size": 500,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        }
+    ]
+}
+```
+
 # Push collection {% #push-collection %}
 
 To push the changes you made inside your `appwrite.json` file, use the `push` command in the folder holding your `appwrite.json` file.

@@ -14,6 +14,32 @@ You can pull your Appwrite teams customizable settings using the `pull` command 
 appwrite pull teams
 ```
 
+# Appwrite.json {% #appwritejson %}
+After pulling your Appwrite function, your `Appwrite.json` file should look similar to the following:
+
+```
+{
+    "projectId": "<PROJECT_ID>",
+    "teams": [
+        {
+            "$id": "eyJhbGciOiJIUzI1N",
+            "name": "hat"
+        },
+        {
+            "$id": "N1IzUIJiOicGbhJye",
+            "name": "sun"
+        },
+        {
+            "$id": "OicGbhJyeN1IzUIJi",
+            "name": "emit"
+        },{
+            "$id": "bhJyIJiON1IzUicGe",
+            "name": "kue"
+        }
+    ]
+}
+```
+
 # Push team {% #push-teams %}
 
 To push the changes you made inside your `appwrite.json` file, use the `push` command in the folder holding your `appwrite.json` file.
