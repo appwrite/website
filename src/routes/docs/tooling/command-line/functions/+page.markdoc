@@ -19,10 +19,10 @@ appwrite pull functions
 After pulling your Appwrite function, your `Appwrite.json` file should look similar to the following:
 ```
 {
-    "projectId": <projectId>,
+    "projectId": <PROJECT_ID>,
     "functions": [
         {
-            "$id": "<functionID>",
+            "$id": "<FUNCTION_ID>",
             "$createdAt": "2024-04-22T22:29:31.427+00:00",
             "$updatedAt": "2024-06-26T19:08:26.582+00:00",
             "execute": [
@@ -58,7 +58,7 @@ After pulling your Appwrite function, your `Appwrite.json` file should look simi
                     "$createdAt": "2024-04-22T23:32:12.910+00:00",
                     "$updatedAt": "2024-04-22T23:32:12.910+00:00",
                     "key": "PROJECT_ID",
-                    "value": "projectId",
+                    "value": "<PROJECT_ID>",
                     "resourceType": "function",
                     "resourceId": "OicGbhJyeN1IzUIJi"
                 },

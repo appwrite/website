@@ -14,6 +14,51 @@ You can pull your Appwrite projects customizable settings using the `pull` comma
 appwrite pull project
 ```
 
+# Appwrite.json {% #appwritejson %}
+
+After pulling your project, your `appwrite.json` project should look similarly to this.
+
+```
+{
+    "projectId": "<PROJECT_ID>",
+    "projectName": "EchoVerse",
+    "projectSettings": {
+        "services": {
+            "account": true,
+            "avatars": true,
+            "databases": true,
+            "locale": true,
+            "health": true,
+            "storage": true,
+            "teams": true,
+            "users": true,
+            "functions": true,
+            "graphql": true,
+            "messaging": true
+        },
+        "auth": {
+            "methods": {
+                "jwt": true,
+                "phone": true,
+                "invites": true,
+                "anonymous": true,
+                "email-otp": true,
+                "magic-url": true,
+                "email-password": true
+            },
+            "security": {
+                "duration": 7200,
+                "limit": 100,
+                "sessionsLimit": 10,
+                "passwordHistory": 0,
+                "passwordDictionary": false,
+                "personalDataCheck": false
+            }
+        }
+    }
+}
+```
+
 # Push project {% #push-project %}
 
 To push the changes you made inside your `appwrite.json` file, use the `push` command in the folder holding your `appwrite.json` file.

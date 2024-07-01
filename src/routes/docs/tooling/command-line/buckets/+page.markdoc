@@ -14,6 +14,37 @@ You can pull your Appwrite buckets customizable settings using the `pull` comman
 appwrite pull buckets
 ```
 
+# Appwrite.json {% #appwritejson %}
+
+After pulling your Appwrite function, your `Appwrite.json` file should look similar to the following:
+
+```
+{
+    "projectId": "<PROJECT_ID>",
+    "buckets": [
+        {
+            "$id": "<BUCKET_ID>",
+            "$createdAt": "2024-06-21T16:20:25.516+00:00",
+            "$updatedAt": "2024-06-21T16:21:16.855+00:00",
+            "$permissions": [
+                "create(\"any\")",
+                "read(\"any\")",
+                "update(\"any\")",
+                "delete(\"any\")"
+            ],
+            "fileSecurity": false,
+            "name": "test",
+            "enabled": true,
+            "maximumFileSize": 5368709120,
+            "allowedFileExtensions": [],
+            "compression": "none",
+            "encryption": true,
+            "antivirus": true
+        }
+    ]
+}
+```
+
 # Push bucket {% #push-bucket %}
 
 To push the changes you made inside your `appwrite.json` file, use the `push` command in the folder holding your `appwrite.json` file.

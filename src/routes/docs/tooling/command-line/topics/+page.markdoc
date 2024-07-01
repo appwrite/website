@@ -12,6 +12,43 @@ You can pull your Appwrite topics customizable settings using the `pull` command
 appwrite pull topics
 ```
 
+# Appwrite.json {% #appwritejson %}
+
+After pulling your Appwrite function, your `Appwrite.json` file should look similar to the following:
+
+```
+{
+    "projectId": "<PROJECT_ID>",
+    "topics": [
+        {
+            "$id": "N1IzUIJiOicGbhJye",
+            "$createdAt": "2024-07-01T14:40:43.381+00:00",
+            "$updatedAt": "2024-07-01T14:40:43.381+00:00",
+            "name": "Anime",
+            "emailTotal": 3,
+            "smsTotal": 0,
+            "pushTotal": 0,
+            "subscribe": [
+                "users"
+            ]
+        },
+        {
+            "$id": "eyJhbGciOiJIUzI1N",
+            "$createdAt": "2024-07-01T14:41:19.029+00:00",
+            "$updatedAt": "2024-07-01T14:41:28.751+00:00",
+            "name": "Music",
+            "emailTotal": 2,
+            "smsTotal": 0,
+            "pushTotal": 0,
+            "subscribe": [
+                "users",
+                "any"
+            ]
+        }
+    ]
+}
+```
+
 # Push topics {% #push-topics %}
 
 To push the changes you made inside your `appwrite.json` file, use the `push` command in the folder holding your `appwrite.json` file.
