@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Carousel } from '$lib/integrations';
+    import { Embla } from '$lib/components/embla';
     import { Main } from '$lib/layouts';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
@@ -45,18 +45,18 @@
                     </a>
 
                     {#if slides.length > 1}
-                        <Carousel.Root let:activeIndex>
-                            {#each slides as _, i}
-                                <Carousel.Slide isActive={activeIndex === i}>
+                        <Embla.Root>
+                            {#each slides as _}
+                                <Embla.Slide>
                                     <img
                                         src="/images/blog/ai-announcement.png"
                                         class="web-u-media-ratio-16-9"
                                         alt="cover"
                                         width="472"
                                     />
-                                </Carousel.Slide>
+                                </Embla.Slide>
                             {/each}
-                        </Carousel.Root>
+                        </Embla.Root>
                     {:else}
                         <div
                             class="web-carousel-item"
