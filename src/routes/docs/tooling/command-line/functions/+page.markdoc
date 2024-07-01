@@ -4,7 +4,7 @@ title: Deploy functions with CLI 2.0
 description: Efficiently deploy your Appwrite functions using the Command-Line Tool (CLI).
 ---
 
-The CLI handles the creation and deployment of Appwrite Functions. Set up your Appwrite application using CLI commands [here](/docs/tooling/command-line/installation).
+The CLI handles the creation and deployment of Appwrite Functions. Install and initialize CLI Appwrite [here](/docs/tooling/command-line/installation).
 
 # Pull function {% #pull-function %}
 
