@@ -4,7 +4,7 @@ title: Deploy collections with CLI 2.0
 description: Efficiently deploy your Appwrite collections using the Command-Line Tool (CLI). 
 ---
 
-Create and manage your collections using the CLI 2.0 commands. Set up your Appwrite application using CLI commands [here](/docs/tooling/command-line/installation).
+Create and manage your collections using the CLI 2.0 commands. Install and initialize CLI Appwrite [here](/docs/tooling/command-line/installation).
 
 The Appwrite CLI also helps you deploy your project's databases and collections schema from one project to another.
 

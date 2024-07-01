@@ -4,7 +4,7 @@ title: Deploy project with CLI 2.0
 description: Efficiently deploy your Appwrite project using the Command-Line Tool (CLI).
 ---
 
-After you're logged in, the CLI needs to be initialized with your Appwrite project.
+After you're logged in, the CLI needs to be initialized with your Appwrite project. Install and CLI Appwrite [here](/docs/tooling/command-line/installation).
 
 # Pull project {% #pull-project %}
 
