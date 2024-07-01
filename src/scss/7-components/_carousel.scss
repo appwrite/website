@@ -3,12 +3,15 @@
 .#{$p}-carousel {
   position:relative;
 
+  @media #{$break2} {
   &::before {
     content:""; display:block;
     position:absolute; z-index:1; inset:0; inset-inline:pxToRem(0);
     background: linear-gradient(90deg, rgba(23, 23, 26, 1) 0%, rgba(23, 23, 26, 0.88) 9.65%, rgba(23, 23, 26, 0) 25%, rgba(23, 23, 26, 0) 50%, rgba(23, 23, 26, 0) 75%, rgba(23, 23, 26, 0.88) 89.28%, rgba(23, 23, 26, 1) 100%);
     pointer-events: none;
   }
+}
+
 
   &-item {
     img {

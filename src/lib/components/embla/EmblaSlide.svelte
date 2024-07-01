@@ -4,19 +4,16 @@
     </div>
 </li>
 
-<style>
+<style lang="scss">
+    @use '$scss/abstract' as *;
+
     .embla__slide {
-        @media (max-width: 1023.9px) {
+        @media (max-width: 768px) {
             flex: 0 0 100%;
         }
 
         flex: 0 0 50%;
         min-width: 0;
-        margin-right: 32px;
-        transition: opacity 200ms ease-out;
-
-        &:has(.is-snapped) {
-            opacity: 0.2;
-        }
+        margin-right: pxToRem(16);
     }
 </style>
