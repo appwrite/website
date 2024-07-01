@@ -1,0 +1,60 @@
+---
+layout: article
+title: Deploy locally
+description: Learn to locally Appwrite functions.
+---
+
+To deploy a function locally, use the following command:
+
+```bash
+appwrite run function
+```
+
+# Engine
+
+You'll be asked to choose an engine to use. There are benefits to using either [Docker](https://www.docker.com/) or your system directly.
+Choosing Docker simulates the production environment more precisely, but using the system directly is faster.
+
+2. what is the difference between local and production
+
+# Production vs local
+
+{% tabs %}
+{% tabsitem #production %}
+To run your function, you have to deploy it first. Every change in your code requires you to re-deploy the function, and also needs two projects in order to not break production while developing.
+{% /tabsitem %}
+All executions of functions use HTTP. Doesn't require execution permissions, you only need to visit the function URL to execute it. Can impersonate an user to execute the function as a specific user.
+{% tabsitem #local %}
+
+{% /tabsitem %}
+{% /tabs %}
+
+# CI/CD flows
+
+We can use Appwrite CLI to automate collection attributes changes, adding, recreating, and deleting. For example, publishing a new release would go through the following steps:
+
+1. Clone the repo
+2. Adds Node (Since Appwrite CLI uses Node)
+3. Login to account using secrets
+4. Push all available collections with --force flag to confirm all changes
+
+```yaml
+name: Database Migrations
+
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v3
+      - name: Login
+        run: npx appwrite login --email ${{ secrets.EMAIL }} --password ${{ secrets.PASSWORD }}
+      - name: Migrate collections
+        run: npx appwrite push collections --all --force
+```
