@@ -50,7 +50,7 @@ appwrite push teams
 
 # Commands {% #commands %}
 
-The teams command allows you to group users of your project and to enable them to share read and write access to your project resources. Appwrite database CLI commands generally follow the following syntax:
+The team's command allows you to group users of your project and to enable them to share read and write access to your project resources. Appwrite database CLI commands generally follow the following syntax:
 
 ```sh
 appwrite teams [COMMAND] [OPTIONS]
