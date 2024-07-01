@@ -5,7 +5,7 @@
   display: grid;
   gap: var(--p-grid-1-1-gap);
 
-  @media #{$break3open} {
+  @media #{$break4open} {
     --p-grid-1-1-gap-desktop: var(--grid-1-1-gap-desktop, 0);
     gap: var(--p-grid-1-1-gap-desktop);
 
@@ -15,7 +15,7 @@
 
 .#{$p}-grid-1-1-opt-2 {
   display: grid;
-  @media #{$break2open} {
+  @media #{$break3open} {
     grid-template-columns: repeat(2, 1fr);
 
   }

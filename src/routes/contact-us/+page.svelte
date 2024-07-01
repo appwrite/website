@@ -196,7 +196,7 @@
 									</p> -->
                                     <button
                                         type="submit"
-                                        class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1"
+                                        class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1-and-break-2"
                                     >
                                         <span>Submit</span>
                                     </button>

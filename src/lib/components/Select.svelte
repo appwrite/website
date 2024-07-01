@@ -137,7 +137,7 @@
 {/if}
 
 <div
-    class="web-select is-colored web-is-only-mobile web-u-inline-width-100-percent-mobile-break1"
+    class="web-select is-colored web-is-only-mobile web-u-inline-width-100-percent-mobile-break1-and-break-2"
     style:display={nativeMobile ? undefined : 'none'}
 >
     {#if selectedOption?.icon}
