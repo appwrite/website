@@ -11,9 +11,6 @@ importers:
       '@sentry/sveltekit':
         specifier: ^8.12.0
         version: 8.12.0(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.25.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.52.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.25.1(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.25.1)(@sveltejs/kit@2.5.17(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.1(@types/node@20.11.22)(sass@1.77.6)))(svelte@4.2.18)(vite@5.3.1(@types/node@20.11.22)(sass@1.77.6)))(encoding@0.1.13)(svelte@4.2.18)
-      embla-carousel-class-names:
-        specifier: ^8.1.5
-        version: 8.1.5(embla-carousel@8.1.5)
       embla-carousel-svelte:
         specifier: ^8.1.5
         version: 8.1.5(svelte@4.2.18)
@@ -2094,11 +2091,6 @@ packages:
 
   electron-to-chromium@1.4.812:
     resolution: {integrity: sha512-7L8fC2Ey/b6SePDFKR2zHAy4mbdp1/38Yk5TsARO66W3hC5KEaeKMMHoxwtuH+jcu2AYLSn9QX04i95t6Fl1Hg==}
-
-  embla-carousel-class-names@8.1.5:
-    resolution: {integrity: sha512-+C+lsVP6QMNOVxm7/crAjwIbPmg5EatR7WAfYCopaXpNUy6lansKPD7rojWRmCeExDrjkDfX0En7jDujDTR/7Q==}
-    peerDependencies:
-      embla-carousel: 8.1.5
 
   embla-carousel-reactive-utils@8.1.5:
     resolution: {integrity: sha512-76uZTrSaEGGta+qpiGkMFlLK0I7N04TdjZ2obrBhyggYIFDWlxk1CriIEmt2lisLNsa1IYXM85kr863JoCMSyg==}
@@ -6097,10 +6089,6 @@ snapshots:
       jake: 10.8.7
 
   electron-to-chromium@1.4.812: {}
-
-  embla-carousel-class-names@8.1.5(embla-carousel@8.1.5):
-    dependencies:
-      embla-carousel: 8.1.5
 
   embla-carousel-reactive-utils@8.1.5(embla-carousel@8.1.5):
     dependencies:
