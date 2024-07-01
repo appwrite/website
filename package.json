@@ -25,6 +25,7 @@
         "embla-carousel-class-names": "^8.1.5",
         "embla-carousel-svelte": "^8.1.5",
         "embla-carousel-wheel-gestures": "^8.0.1",
+        "@sentry/sveltekit": "^8.12.0",
         "h3": "^1.12.0"
     },
     "devDependencies": {
