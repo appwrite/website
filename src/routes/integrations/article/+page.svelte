@@ -47,8 +47,9 @@
 
                     {#if slides.length > 1}
                         <Carousel.Root>
-                            {#each slides as _}
+                            {#each slides as _, i}
                                 <Carousel.Slide>
+                                    <b>{i}</b>
                                     <img
                                         src="/images/blog/ai-announcement.png"
                                         class="web-u-media-ratio-16-9"

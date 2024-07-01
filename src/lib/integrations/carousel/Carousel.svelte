@@ -2,6 +2,7 @@
     import embla from 'embla-carousel-svelte';
     import {
         type EmblaCarouselType,
+        type EmblaEventType,
         type EmblaOptionsType,
         type EmblaPluginType
     } from 'embla-carousel';
@@ -11,8 +12,9 @@
     let emblaApi: EmblaCarouselType;
 
     let options: EmblaOptionsType = {
-        align: 'center',
-        loop: true
+        loop: false,
+        startIndex: 0,
+        inViewThreshold: 1
     };
 
     let plugins: EmblaPluginType[] = [WheelGesturesPlugin(), EmblaClassNames()];
@@ -43,12 +45,16 @@
 </script>
 
 <div class="embla web-carousel">
-    <button class="web-carousel-button web-carousel-button-start" on:click={onPrev}>
-        <span class="web-icon-arrow-left" aria-hidden="true"></span>
-    </button>
-    <button class="web-carousel-button web-carousel-button-end" on:click={onNext}>
-        <span class="web-icon-arrow-right" aria-hidden="true"></span>
-    </button>
+    {#if emblaApi?.canScrollPrev()}
+        <button class="web-carousel-button web-carousel-button-start" on:click={onPrev}>
+            <span class="web-icon-arrow-left" aria-hidden="true"></span>
+        </button>
+    {/if}
+    {#if emblaApi?.canScrollNext()}
+        <button class="web-carousel-button web-carousel-button-end" on:click={onNext}>
+            <span class="web-icon-arrow-right" aria-hidden="true"></span>
+        </button>
+    {/if}
 
     <div class="embla__viewport" use:embla={{ options, plugins }} on:emblaInit={onEmblaInit}>
         <div class="embla__container">
