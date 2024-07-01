@@ -451,7 +451,7 @@
                 transform-origin: left center;
                 scale: 1.25;
                 position: relative;
-                left: pxToRem(-100);
+                left: pxToRem(-30);
             }
         }
 
@@ -486,7 +486,7 @@
 
                     left: 50%;
                     top: 50%;
-                    transform: translate(-30%, -50%);
+                    transform: translate(-30%, -40%);
 
                     max-block-size: unset;
                     max-inline-size: unset;
@@ -606,9 +606,11 @@
         max-block-size: none;
         inset-block-end: -600px;
         inset-inline-start: -600px;
+        opacity: 0.5;
     }
     .l-bg-2 {
         inset-block-start: 0;
         inset-inline-start: 0;
+        opacity: 0.5;
     }
 </style>
