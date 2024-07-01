@@ -277,4 +277,4 @@ You can create an index by navigating to your collection's **Indexes** tab or by
 
 # CLI {% #cli %}
 
-Your collections can be created, edited, or deleted from your terminal using the Appwrite [**CLI**](http://localhost:5173/docs/tooling/command-line/installation). Use [CLI commands](http://localhost:5173/docs/tooling/command-line/collections) to manage your collections and deploy its schema from one project to another.
+Your collections can be created, edited, or deleted from your terminal using the Appwrite [**CLI**](http://localhost:5173/docs/tooling/command-line/installation). Use [CLI commands](http://localhost:5173/docs/tooling/command-line/collections) to manage your collections and deploy their schema from one project to another.

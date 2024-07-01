@@ -8,7 +8,7 @@ After you're logged in, the CLI needs to be initialized with your Appwrite proje
 
 # Pull project {% #pull-project %}
 
-You can pull your Appwrite projects customizable settings using the `pull` command in the folder holding your `appwrite.json` file.
+You can pull your Appwrite project's customizable settings using the `pull` command in the folder holding your `appwrite.json` file.
 
 ```sh
 appwrite pull project
@@ -16,7 +16,7 @@ appwrite pull project
 
 # Appwrite.json {% #appwritejson %}
 
-After pulling your project, your `appwrite.json` project should look similarly to this.
+After pulling your project, your `appwrite.json` project should look similar to this.
 
 ```
 {

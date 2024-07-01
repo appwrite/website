@@ -46,7 +46,3 @@ After updating the configuration, redeploy your function for changes to take eff
 4. Redeploy by clicking the triple-dots beside an execution, and hitting the **Redeploy** button.
 
 Redeployment behavior varies depending on how the initial deployment was created.
-
-# CLI {% #CLI %}
-
-Use the Appwrite [**CLI**](/docs/tooling/command-line/installation) to deploy your functions. Create your functions with a runtime template with just one [CLI command](/docs/tooling/command-line/functions).
