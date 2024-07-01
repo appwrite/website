@@ -81,8 +81,8 @@
             <div class="web-container">
                 <article class="u-flex-vertical web-u-gap-60-not-mobile web-u-gap-40-mobile">
                     <div class="l-grid-2-1 web-u-row-gap-56 web-u-gap-40-mobile">
-                        <header class="u-contents">
-                            <div class="l-grid-area-header u-flex u-cross-start u-gap-20">
+                        <div class="l-grid-content">
+                            <div class="u-flex u-cross-start u-gap-20">
                                 <img
                                     class="web-author-image"
                                     src="/images/avatars/christy.png"
@@ -106,14 +106,8 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="l-grid-area-buttons l-side-column">
-                                <button class="web-button u-stretch is-full-width-mobile">
-                                    <span>Add integrations</span>
-                                </button>
-                            </div>
-                        </header>
-                        <div class="u-contents">
-                            <div class="l-grid-area-content web-article">
+
+                            <div class="web-article">
                                 <div class="web-article-content">
                                     <p class="web-paragraph-md">
                                         The AI hype is real and will be around for many years to
@@ -142,45 +136,29 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="l-grid-area-side">
-                                <dl class="u-flex-vertical u-gap-20">
-                                    <div class="u-flex u-main-space-between u-gap-8">
-                                        <dt>Developed by</dt>
-                                        <dd class="web-u-color-text-primary">Appwrite</dd>
-                                    </div>
-                                    <div class="web-u-sep-block-end"></div>
-                                    <div class="u-flex u-main-space-between u-gap-8">
-                                        <dt>Partner</dt>
-                                        <dd><div class="web-inline-tag">Verified</div></dd>
-                                    </div>
-                                    <div class="web-u-sep-block-end"></div>
-                                    <div class="u-flex u-main-space-between u-gap-8">
-                                        <dt>Category</dt>
-                                        <dd class="web-u-color-text-primary">Category</dd>
-                                    </div>
-                                    <div class="web-u-sep-block-end"></div>
-                                    <div class="u-flex u-main-space-between u-gap-8">
-                                        <dt>Website</dt>
-                                        <dd>
-                                            <a class="web-link" href="/">
-                                                <span>appwrite.io</span>
-                                                <span class="web-icon-ext-link" aria-hidden="true"
-                                                ></span>
-                                            </a>
-                                        </dd>
-                                    </div>
-                                    <div class="web-u-sep-block-end"></div>
-                                    <div class="u-flex u-main-space-between u-gap-8">
-                                        <dt>Documentation</dt>
-                                        <dd>
-                                            <a class="web-link" href="/">
-                                                <span>Read</span>
-                                                <span class="web-icon-ext-link" aria-hidden="true"
-                                                ></span>
-                                            </a>
-                                        </dd>
-                                    </div>
-                                </dl>
+                        </div>
+                        <div class="l-grid-sidebar">
+                            <dl class="u-flex-vertical u-gap-20">
+                                <div class="u-flex u-main-space-between u-gap-8">
+                                    <dt>Developed by</dt>
+                                    <dd class="web-u-color-text-primary">Appwrite</dd>
+                                </div>
+                                <div class="web-u-sep-block-end"></div>
+                                <div class="u-flex u-main-space-between u-gap-8">
+                                    <dt>Partner</dt>
+                                    <dd><div class="web-inline-tag">Verified</div></dd>
+                                </div>
+                                <div class="web-u-sep-block-end"></div>
+                                <div class="u-flex u-main-space-between u-gap-8">
+                                    <dt>Category</dt>
+                                    <dd class="web-u-color-text-primary">Category</dd>
+                                </div>
+                            </dl>
+
+                            <div class="l-side-column">
+                                <button class="web-button u-stretch is-full-width-mobile">
+                                    <span>Add integrations</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -403,23 +381,22 @@
         }
         @media #{$break2open} {
             display: grid;
-            gap: pxToRem(32);
-            grid-template-columns: 7fr 1fr 4fr;
-            grid-template-areas:
-                'header  . buttons'
-                'content . side';
-            .l-grid-area-header {
-                grid-area: header;
-            }
-            .l-grid-area-buttons {
-                grid-area: buttons;
-            }
-            .l-grid-area-content {
-                grid-area: content;
-            }
-            .l-grid-area-side {
-                grid-area: side;
-            }
+            gap: pxToRem(64);
+            grid-template-columns: repeat(12, 1fr);
+        }
+
+        .l-grid-content {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            grid-column: span 7 / span 7;
+        }
+
+        .l-grid-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            grid-column: span 5 / span 5;
         }
     }
 

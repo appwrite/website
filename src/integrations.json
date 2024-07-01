@@ -116,54 +116,6 @@
                     "name": "Souvik Sarkar",
                     "username": "@Jeet_2003"
                 }
-            },
-            {
-                "title": "Lorem Ipsum",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                "url": "/docs/products/auth",
-                "platform": "Cloud",
-                "author": {
-                    "avatar": "/images/community/avatars/souvik.png",
-                    "name": "Souvik Sarkar",
-                    "username": "@Jeet_2003"
-                }
-            },
-            {
-                "title": "Lorem Ipsum",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                "url": "/docs/products/auth",
-                "new": true,
-                "platform": "Cloud",
-                "author": {
-                    "avatar": "/images/community/avatars/souvik.png",
-                    "name": "Souvik Sarkar",
-                    "username": "@Jeet_2003"
-                }
-            },
-            {
-                "title": "Lorem Ipsum",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                "featured": true,
-                "url": "/docs/products/auth",
-                "image": "/images/blog/ai-announcement.png",
-                "new": true,
-                "platform": "Self-hosted",
-                "author": {
-                    "avatar": "/images/community/avatars/souvik.png",
-                    "name": "Souvik Sarkar",
-                    "username": "@Jeet_2003"
-                }
-            },
-            {
-                "title": "Lorem Ipsum",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                "url": "/docs/products/auth",
-                "platform": "Cloud",
-                "author": {
-                    "avatar": "/images/community/avatars/souvik.png",
-                    "name": "Souvik Sarkar",
-                    "username": "@Jeet_2003"
-                }
             }
         ]
     },

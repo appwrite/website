@@ -5,6 +5,7 @@
     import FooterNav from '../../../lib/components/FooterNav.svelte';
     import MainFooter from '../../../lib/components/MainFooter.svelte';
     import { socials } from '$lib/constants';
+    import { anyify } from '$lib/utils/anyify';
     //import BlobPink from "$routes/startups/(assets)/blob-pink.svg";
     //import BlobPinkMobile from "$routes/startups/(assets)/blob-pink-mobile.svg";
 
@@ -12,6 +13,7 @@
     let firstName = '';
     let subject = '';
     let message = '';
+    let hasCreatedIntegration = false;
     let error: string | undefined;
     let submitted = false;
 
@@ -245,17 +247,24 @@
                                                     Appwrite?</label
                                                 >
                                                 <div class="u-position-relative">
-                                                    <select class="web-input-text" id="integration">
+                                                    <select
+                                                        class="web-input-text"
+                                                        id="integration"
+                                                        on:change={(e) =>
+                                                            anyify(e.target).value === 'yes'
+                                                                ? (hasCreatedIntegration = true)
+                                                                : (hasCreatedIntegration = false)}
+                                                    >
                                                         <option>Select</option>
-                                                        <option
+                                                        <option value="yes"
                                                             >Yes, we have already created an
                                                             integration</option
                                                         >
-                                                        <option
+                                                        <option value="no"
                                                             >No, it is currently in the process of
                                                             being built</option
                                                         >
-                                                        <option
+                                                        <option value="notYet"
                                                             >No, we have yet to start building</option
                                                         >
                                                     </select>
@@ -265,6 +274,22 @@
                                                     ></span>
                                                 </div>
                                             </li>
+                                            {#if hasCreatedIntegration}
+                                                <li
+                                                    class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
+                                                >
+                                                    <label class="u-block" for="linkToDocumentation"
+                                                        >Link to the integration's documentation</label
+                                                    >
+                                                    <input
+                                                        required
+                                                        class="web-input-text"
+                                                        type="url"
+                                                        placeholder="Enter url"
+                                                        id="linkToDocumentation"
+                                                    />
+                                                </li>
+                                            {/if}
                                             <li
                                                 class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
                                             >

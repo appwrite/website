@@ -14,6 +14,7 @@
         align: 'center',
         loop: true
     };
+
     let plugins: EmblaPluginType[] = [WheelGesturesPlugin(), EmblaClassNames()];
 
     const onEmblaInit = (event: CustomEvent<EmblaCarouselType>) => {
