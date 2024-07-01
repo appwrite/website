@@ -4,11 +4,11 @@ title: Deploy buckets with CLI 2.0
 description: Efficiently deploy your Appwrite buckets using the Command-Line Tool (CLI). 
 ---
 
-The Appwrite CLI allows you to configure and deploy buckets across projects. Setup your Appwrite application using CLI commands [here](/docs/tooling/command-line/installation).
+The Appwrite CLI allows you to configure and deploy buckets across projects. Set up your Appwrite application using CLI commands [here](/docs/tooling/command-line/installation).
 
 # Pull bucket {% #pull-bucket %}
 
-You can pull your Appwrite buckets customizable settings using the `pull` command in the folder holding your `appwrite.json` file.
+You can pull your Appwrite bucket's customizable settings using the `pull` command in the folder holding your `appwrite.json` file.
 
 ```sh
 appwrite pull buckets

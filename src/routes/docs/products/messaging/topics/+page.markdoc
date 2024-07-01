@@ -267,7 +267,7 @@ let topic = try await messaging.createTopic(
 {% /tabs %}
 
 # CLI {% #CLI %}
-You can also create topics with Appwrite **CLI** using the [CLI commands](/docs/tooling/command-line/topics), as well as configure with your messaging. Using the [**CLI**](/docs/tooling/command-line/installation), you can `pull` your topics schema from your project, customize your `appwrite.json` file, and `push` your changes back into your project.
+You can also create topics and configure your messaging using the [CLI commands](/docs/tooling/command-line/topics). Using the Appwrite [**CLI**](/docs/tooling/command-line/installation), you can `pull` your topics schema from your project, customize your `appwrite.json` file, and `push` your changes back into your project.
 
 # Permissions {% #permissions %}
 Before you can subscribe to a topic, a user needs the appropriate permission.
