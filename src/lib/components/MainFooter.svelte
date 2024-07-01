@@ -1,10 +1,11 @@
 <script lang="ts">
     import { socials } from '$lib/constants';
+    import { themeInUse } from '$routes/+layout.svelte';
     import ThemeSelect from './ThemeSelect.svelte';
 
     export let variant: 'homepage' | 'docs' = 'homepage';
 
-    const year = new Date().getFullYear()
+    const year = new Date().getFullYear();
 </script>
 
 {#if variant === 'homepage'}
@@ -61,9 +62,16 @@
                     <a href="/discord" target="_blank" rel="noopener noreferrer">Support</a>
                 </li>
                 <li>
-                    <a href="https://appwrite.online" target="_blank" rel="noopener noreferrer"
-                        >Status</a
-                    >
+                    <iframe
+                        class="u-flex"
+                        style:color-scheme="none"
+                        title="status"
+                        src={`https://status.appwrite.online/badge?theme=${$themeInUse}`}
+                        width="250"
+                        height="30"
+                        frameborder="0"
+                        scrolling="no"
+                    ></iframe>
                 </li>
                 <!-- <li>
 					<a href="https://github.com/appwrite/appwrite/releases" target="_blank" rel="noopener noreferrer">Changelog</a>
@@ -77,7 +85,7 @@
 {/if}
 
 <style lang="scss">
-  .web-icon-button {
-    display: grid;
-  }
+    .web-icon-button {
+        display: grid;
+    }
 </style>
