@@ -47,6 +47,12 @@
                 { label: 'Blog', href: '/blog' },
                 { label: 'Changelog', href: '/changelog' },
                 {
+                    label: 'Roadmap',
+                    href: 'https://github.com/orgs/appwrite/projects',
+                    target: '_blank',
+                    rel: 'noopener noreferrer'
+                },
+                {
                     label: 'Source code',
                     href: 'https://github.com/appwrite',
                     target: '_blank',

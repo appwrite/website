@@ -13,3 +13,5 @@ vite.config.ts.timestamp-*
 package-lock.json
 .tool-versions
 .vscode
+# Sentry Config File
+.sentryclirc

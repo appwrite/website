@@ -23,8 +23,8 @@
 <script lang="ts">
     export let selector = '#main';
     export let exclude: CreateTableOfContentsArgs['exclude'] = ['h1', 'h3', 'h4', 'h5', 'h6'];
-    export let activeType: CreateTableOfContentsArgs['activeType'] = 'lowest';
-    export let scrollOffset: CreateTableOfContentsArgs['scrollOffset'] = 120;
+    export let activeType: CreateTableOfContentsArgs['activeType'] = 'highest';
+    export let scrollOffset: CreateTableOfContentsArgs['scrollOffset'] = 0;
 
     const toc = createTableOfContents({
         selector,
