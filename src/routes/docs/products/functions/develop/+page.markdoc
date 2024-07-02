@@ -70,7 +70,7 @@ return function ($context) {
     //
     // $client = (new Client());
     // Set API key
-    // $client->setKey($context.req.headers['x-appwrite-key']); API key is automatically provided by Appwrite
+    // $client->setKey($context->req->headers['x-appwrite-key']); API key is automatically provided by Appwrite
    
     // You can log messages to the console
     $context->log('Hello, Logs!');
@@ -1334,7 +1334,7 @@ use Appwrite\ID;
 return function ($context) {
     $client = new Client();
     // Set API key
-    $client->setKey($context.req.headers['x-appwrite-key']); // API key is automatically provided by Appwrite
+    $client->setKey($context->req->headers['x-appwrite-key']); // API key is automatically provided by Appwrite
     
     $databases = new Databases($client);
 

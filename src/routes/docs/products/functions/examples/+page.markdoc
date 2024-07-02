@@ -653,7 +653,7 @@ return function ($context) {
 
     $client = new Client();
     // Set API key
-    $client->setKey($context.req.headers['x-appwrite-key']); // API key is automatically provided by Appwrite
+    $client->setKey($context->req->headers['x-appwrite-key']); // API key is automatically provided by Appwrite
 
     $databases = new Databases($client);
     $document = $databases->createDocument('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID::unique(), $message);
