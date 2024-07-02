@@ -20,7 +20,7 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
 
 {% multicode %}
   ```client-web
-  import { Client, Storage, ID } from "appwrite";
+  import { Client, Storage, ID } from 'appwrite';
 
   const client = new Client()
       .setEndpoint('https://cloud.appwrite.io/v1')
@@ -68,17 +68,17 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
 
   func main() async throws {
       let client = Client()
-        .setEndpoint("https://cloud.appwrite.io/v1")
-        .setProject("<PROJECT_ID>")
+        .setEndpoint('https://cloud.appwrite.io/v1')
+        .setProject('<PROJECT_ID>')
 
       let storage = Storage(client)
 
       let file = try await storage.createFile(
-          bucketId: "<BUCKET_ID>",
+          bucketId: '<BUCKET_ID>',
           fileId: ID.unique(),
           file: InputFile.fromBuffer(yourByteBuffer,
-              filename: "image.jpg",
-              mimeType: "image/jpeg"
+              filename: 'image.jpg',
+              mimeType: 'image/jpeg'
           )
       )
   }
@@ -91,15 +91,15 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
 
   suspend fun main() {
       val client = Client(applicationContext)
-          .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-          .setProject("<PROJECT_ID>") // Your project ID
+          .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+          .setProject('<PROJECT_ID>') // Your project ID
 
       val storage = Storage(client)
 
       val file = storage.createFile(
-          bucketId = "<BUCKET_ID>",
+          bucketId = '<BUCKET_ID>',
           fileId = ID.unique(),
-          file = InputFile.fromPath("file.png"),
+          file = InputFile.fromPath('./path-to-files/image.jpg'),
       )
   }
   ```
@@ -110,13 +110,13 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   X-Appwrite-Response-Format: 1.5.0
   Cookie: <COOKIE>
   Content-Type: multipart/form-data; boundary=---1234
-  Content-Length: <LENGTH
+  Content-Length: <LENGTH>
   -----1234
-  Content-Disposition: form-data; name="fileId"    
+  Content-Disposition: form-data; name='fileId'   
   <FILEID>
   -----1234
-  Content-Disposition: form-data; name="file"; filename="text.png"
-  Content-Type: image/PNG
+  Content-Disposition: form-data; name='file'; filename='image.jpg'
+  Content-Type: image/jpg
 
   < <File content>
 
@@ -136,9 +136,9 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
       '<BUCKET_ID>',
       ID.unique(),
       { 
-          name: 'file.jpeg', 
-          type: 'image/jpeg', 
-          uri: 'file://user/text.jpeg', 
+          name: 'image.jpg', 
+          type: 'image/jpg', 
+          uri: 'file://user/image.jpg', 
           size: 183799 
     }
 );
@@ -157,7 +157,7 @@ To download a file, use the `getFileDownload` method.
 
 {% multicode %}
 ```client-web
-import { Client, Storage } from "appwrite";
+import { Client, Storage } from 'appwrite';
 
 const client = new Client();
 
@@ -215,12 +215,12 @@ import Appwrite
 
 func main() async throws {
     let client = Client()
-      .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-      .setProject("5df5acd0d48c2") // Your project ID
+      .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+      .setProject('5df5acd0d48c2') // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFileDownload(
-        bucketId: "<BUCKET_ID>",
-        fileId: "<FILE_ID>"
+        bucketId: '<BUCKET_ID>',
+        fileId: '<FILE_ID>'
     )
 
     print(String(describing: byteBuffer))
@@ -240,14 +240,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val client = Client(applicationContext)
-            .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-            .setProject("5df5acd0d48c2") // Your project ID
+            .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+            .setProject('5df5acd0d48c2') // Your project ID
 
         val storage = Storage(client)
 
         val result = storage.getFileDownload(
-            bucketId = "<BUCKET_ID>",
-            fileId = "<FILE_ID>"
+            bucketId = '<BUCKET_ID>',
+            fileId = '<FILE_ID>'
         )
         println(result); // Resource URL
     }
