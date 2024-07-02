@@ -56,10 +56,6 @@
         "redirect": "/docs/tooling/command-line/installation"
     },
     {
-        "link": "/docs/command-line-deployment",
-        "redirect": "/docs/tooling/command-line/deployment"
-    },
-    {
         "link": "/docs/command-line-commands",
         "redirect": "/docs/tooling/command-line/commands"
     },
