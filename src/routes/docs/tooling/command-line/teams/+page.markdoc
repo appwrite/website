@@ -4,7 +4,7 @@ title: Deploy teams with CLI 2.0
 description: Efficiently deploy your Appwrite teams using the Command-Line Tool (CLI). 
 ---
 
-The Appwrite CLI can create teams to organize users. Teams can be used to grant access [permissions](https://appwrite.io/docs/products/auth/teams#permissions) to a group of users. Install and initialize CLI Appwrite [here](/docs/tooling/command-line/installation).
+The Appwrite CLI can create teams to organize users. Teams can be used to grant access [permissions](https://appwrite.io/docs/products/auth/teams#permissions) to a group of users. Install and initialize CLI Appwrite [here](/docs/tooling/command-line/installation#Installation).
 
 # Pull team {% #pull-team %}
 
