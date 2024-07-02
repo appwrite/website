@@ -1,5 +1,6 @@
 <script lang="ts">
     import { Media } from '$lib/UI';
+    import { page } from '$app/stores';
     import { scroll } from '$lib/animations';
     import { Article, FooterNav, MainFooter, Newsletter } from '$lib/components';
     import { Main } from '$lib/layouts';
@@ -32,6 +33,33 @@
     }
 
     let readPercentage = 0;
+
+    const shareUrl = DEFAULT_HOST + $page.url.pathname;
+
+    const socials = [
+        {
+            icon: 'web-icon-x',
+            label: 'Twitter',
+            link: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(title)}&text=${encodeURIComponent(title)}`
+        },
+        {
+            icon: 'web-icon-linkedin',
+            label: 'LinkedIn',
+            link: `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(title)}&text=${encodeURIComponent(title)}`
+        },
+    ];
+
+    let showNotification = false;
+    function copyToClipboard() {
+        navigator.clipboard.writeText(shareUrl).then(() => {
+            showNotification = true;
+            setTimeout(() => {
+                showNotification = false;
+            }, 2000); // hide after 2 seconds
+        }, (err) => {
+            console.error('Could not copy text: ', err);
+        });
+    }
 </script>
 
 <svelte:head>
@@ -72,14 +100,42 @@
                                     <span class="web-icon-chevron-left" aria-hidden="true" />
                                     <span>Back to blog</span>
                                 </a>
-                                <ul class="web-metadata web-caption-400">
-                                    <li>
-                                        <time datetime={date}>{formatDate(date)}</time>
-                                    </li>
-                                    {#if timeToRead}
-                                        <li>{timeToRead} min</li>
-                                    {/if}
-                                </ul>
+                                <!-- web-metadata web-caption-400 u-flex  -->
+                                <div class="u-flex web-caption-400  blog-header">
+                                    <ul class="web-metadata web-caption-400 ">
+                                        <li>
+                                            <time datetime={date}>{formatDate(date)}</time>
+                                        </li>
+                                        {#if timeToRead}
+                                            <li>{timeToRead} min</li>
+                                        {/if}
+                                    </ul>
+                                    <div class="share-links u-flex">
+                                        <span class="">Share</span>
+                                        <ul class="u-flex u-gap-8 share-icons">
+                                            <li>
+                                                <button class="web-icon-copy web-u-color-text-secondary" aria-label="Copy Link" on:click={copyToClipboard}></button>
+                                            </li>
+                                            {#each socials as social}
+                                                <li>
+                                                    <a
+                                                        href={social.link}
+                                                        class="web-icon-button"
+                                                        aria-label={social.label}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        <span class={social.icon} aria-hidden="true" />
+                                                    </a>
+                                                </li>
+                                            {/each}
+                                            
+                                        </ul>
+                                        {#if showNotification}
+                                            <span class="copy-notification">copied!</span>
+                                        {/if}
+                                    </div>
+                                </div>
                                 <h1 class="web-title web-u-color-text-primary">{title}</h1>
                                 {#if description}
                                     <p class="web-description u-margin-block-start-8">
@@ -220,5 +276,29 @@
         width: var(--percentage);
         background: hsl(var(--web-color-accent));
         z-index: 10000;
+    }
+    .blog-header {
+        display: flex;
+        justify-content: space-between;
+    }
+    .share-links {
+        position: relative;
+        right: 0px;
+        gap: 10px;
+        margin-left: 40px;
+        font-size: 15px;
+    }
+    .copy-notification {
+        position: absolute;
+        bottom: 30px;
+        // margin-left: 40px;
+        right: 0px;
+        animation: fadeInOut 2s forwards;
+    }
+    @keyframes fadeInOut {
+        0% { opacity: 0; }
+        40% { opacity: 1; }
+        60% { opacity: 1; }
+        100% { opacity: 0; }
     }
 </style>
