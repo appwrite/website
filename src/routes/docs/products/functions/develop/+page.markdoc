@@ -1478,7 +1478,7 @@ namespace DotNetRuntime
         public async Task Main(RuntimeContext Context) 
         {
             var client = new Client()
-            client.setKey(Context.Request.headers['x-appwrite-key']) // Set API key; it's automatically provided by Appwrite
+            client.setKey(Context.Request.Headers['x-appwrite-key']) // Set API key; it's automatically provided by Appwrite
 
             var databases = new Databases(client);
     
