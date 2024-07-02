@@ -1071,7 +1071,7 @@ You can access these logs through the following steps.
 If you need to pass constants or secrets to Appwrite Functions, you can use environment variables. 
 
 {% info title="Appwrite API keys" %}
-If your function uses an **Appwrite SDK** with a **dynamic API** key, go to the function's settings and specify what [**scopes**]( https://appwrite.io/docs/advanced/platform/api-keys#scopes) the API key has access to.
+If your function uses an **Appwrite SDK** with a **dynamic API** key, go to the function's settings and specify what [**scopes**](/docs/advanced/platform/api-keys#scopes) the API key has access to.
 {% /info %}
 
 | Variable                          | Description                                    |
