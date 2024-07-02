@@ -137,11 +137,12 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
       '<BUCKET_ID>',
       ID.unique(),
       { 
-        name: 'file.jpeg', 
-        type: 'image/jpeg', 
-        uri: 'file://user/text.jpeg', 
-        size: 183799 
-  });
+          name: 'file.jpeg', 
+          type: 'image/jpeg', 
+          uri: 'file://user/text.jpeg', 
+          size: 183799 
+    }
+);
 
   promise.then(function (response) {
       console.log(response); // Success
