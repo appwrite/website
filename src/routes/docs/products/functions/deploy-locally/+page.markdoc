@@ -32,9 +32,9 @@ Learn how to develop a function
 
 # Configure-settings {% #Configure-settings %}
 
-Function settings such as scopes, timeout, entrypoint, or build command will be read from [`appwrite.json`](/docs/tooling/command-line). Edit the file to apply settings locally and use the `appwrite push functions` to apply your configurated settings to production.
+Function settings such as scopes, timeout, entrypoint, or build command will be read from [`appwrite.json`](/docs/tooling/command-line/functions#appwritejson). Edit the file to apply settings locally and use the `appwrite push functions` to apply your configurated settings to production.
 
-{% arrow_link href="/docs/tooling/command-line/commands" %}
+{% arrow_link href="/docs/tooling/command-line/functions" %}
 Deploy functions using CLI commands
 {% /arrow_link %}
 
