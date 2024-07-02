@@ -30,7 +30,9 @@ import { Client } from 'node-appwrite';
 export default async ({ req, res, log, error }) => {
   // Why not try the Appwrite SDK?
   //
-  // const client = new Client().setKey(req.headers['x-appwrite-key']); Set API key; it's automatically provided by Appwrite
+  // const client = new Client()
+  // Set API key
+  // client.setKey(req.headers['x-appwrite-key']); API key is automatically provided by Appwrite
 
   // You can log messages to the console
   log('Hello, Logs!');
@@ -67,7 +69,8 @@ return function ($context) {
     // Why not try the Appwrite SDK?
     //
     // $client = (new Client());
-    // $client->setKey($context.req.headers['x-appwrite-key']); Set API key; it's automatically provided by Appwrite
+    // Set API key
+    // $client->setKey($context.req.headers['x-appwrite-key']); API key is automatically provided by Appwrite
    
     // You can log messages to the console
     $context->log('Hello, Logs!');
@@ -102,7 +105,8 @@ def main(context):
     # Why not try the Appwrite SDK?
     #
     # client = Client()
-    # client.set_key(context.req.headers.get('x-appwrite-key')) Set API key; it's automatically provided by Appwrite
+    # Set API key
+    # client.set_key(context.req.headers.get('x-appwrite-key')) API key is automatically provided by Appwrite
 
     # You can log messages to the console
     context.log("Hello, Logs!")
@@ -133,7 +137,8 @@ def main(context)
   # Why not try the Appwrite SDK?
   #
   # client = Appwrite::Client.new
-  # client.set_key(context.req.headers['x-appwrite-key']) Set API key; it's automatically provided by Appwrite
+  # Set API key
+  # client.set_key(context.req.headers['x-appwrite-key']) API key is automatically provided by Appwrite
 
   # You can log messages to the console
   context.log("Hello, Logs!")
@@ -166,7 +171,8 @@ export default ({ req, res, log, error }: any) => {
   // Why not try the Appwrite SDK?
   //
   // const client = new Client();
-  // client.setKey(req.headers.get('x-appwrite-key') || ""); Set API key; it's automatically provided by Appwrite
+  // Set API key
+  // client.setKey(req.headers.get('x-appwrite-key') || ""); API key is automatically provided by Appwrite
 
 
   // You can log messages to the console
@@ -201,7 +207,8 @@ Future main(final context) async {
 // Why not try the Appwrite SDK?
   //
   // final client = Client();
-  // client.setKey(context.req['headers']['x-appwrite-key']); Set API key; it's automatically provided by Appwrite
+  // Set API key
+  // client.setKey(context.req.headers['x-appwrite-key']); API key is automatically provided by Appwrite
 
 
   // You can log messages to the console
@@ -240,7 +247,8 @@ class Main {
     fun main(context: RuntimeContext): RuntimeOutput {
         // Why not try the Appwrite SDK?
         // val client = Client()
-        // client.setKey(context.req.headers['x-appwrite-key']) Set API key; it's automatically provided by Appwrite
+        // Set API key
+        // client.setKey(context.req.headers['x-appwrite-key']) API key is automatically provided by Appwrite
 
 
         // You can log messages to the console
@@ -282,7 +290,8 @@ public class Main {
         // Why not try the Appwrite SDK?
         //
         // Client client = new Client();
-        // client.setKey(context.req.getHeaders().get('x-appwrite-key')); Set API key; it's automatically provided by Appwrite
+        // Set API key
+        // client.setKey(context.req.getHeaders().get('x-appwrite-key')); API key is automatically provided by Appwrite
 
         // You can log messages to the console
         context.log("Hello, Logs!");
@@ -319,7 +328,8 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     // Why not try the Appwrite SDK?
     //
     // let client = Client()
-    // client.setKey(context.req.headers('x-appwrite-key') ?? "") Set API key; it's automatically provided by Appwrite
+    // Set API key
+    // client.setKey(context.req.headers('x-appwrite-key') ?? "") API key is automatically provided by Appwrite
 
 
     // You can log messages to the console
@@ -360,7 +370,8 @@ public class Handler {
         // Why not try the Appwrite SDK?
         //
         // var client = new Client()
-        // client.setKey(Context.Req.headers['x-appwrite-key']) Set API key; it's automatically provided by Appwrite
+        // Set API key
+        // client.setKey(Context.Req.Headers['x-appwrite-key']) API key is automatically provided by Appwrite
 
         // You can log messages to the console
         Context.Log("Hello, Logs!");
@@ -1290,7 +1301,9 @@ Instead, use the function settings to set what it is allowed to do.
 import { Client, Databases, ID } from 'node-appwrite';
 
 export default async ({ req, res, log, error }) => {
-    const client = new Client().setKey(req.headers['x-appwrite-key']); // Set API key; it's automatically provided by Appwrite
+    // Set API key
+    const client = new Client()
+    client.setKey(req.headers['x-appwrite-key']); // API key is automatically provided by Appwrite
     const databases = new Databases(client);
 
     try {
@@ -1320,7 +1333,8 @@ use Appwrite\ID;
 
 return function ($context) {
     $client = new Client();
-    $client->setKey($headers['x-appwrite-key']); // Set API key; it's automatically provided by Appwrite
+    // Set API key
+    $client->setKey($context.req.headers['x-appwrite-key']); // API key is automatically provided by Appwrite
     
     $databases = new Databases($client);
 
@@ -1348,7 +1362,8 @@ import os
 
 def main(context):
     client = Client()
-    client.set_key(req.headers.get('x-appwrite-key')) # Set API key; it's automatically provided by Appwrite
+    # Set API key
+    client.set_key(context.req.headers.get('x-appwrite-key')) # API key is automatically provided by Appwrite
     databases = Databases(client)
 
     try:
@@ -1371,7 +1386,8 @@ include Appwrite
 
 def main(context)
     client = Appwrite::Client.new
-    client.set_key(context.req.headers['x-appwrite-key']) # Set API key; it's automatically provided by Appwrite
+    # Set API key
+    client.set_key(context.req.headers.get['x-appwrite-key']) # API key is automatically provided by Appwrite
 
     databases = Appwrite::Databases.new(client)
 
@@ -1395,7 +1411,8 @@ import { Client, Databases, ID } from "https://deno.land/x/appwrite/mod.ts";
                 
 export default function ({req, res, error}: any){
     const client = new Client();
-    client.setKey(req.headers.get('x-appwrite-key') || ""); // Set API key; it's automatically provided by Appwrite
+    // Set API key
+    client.setKey(req.headers.get('x-appwrite-key') || ""); // API key is automatically provided by Appwrite
 
     const databases = new Databases(client);
     
@@ -1421,7 +1438,8 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 
 Future<dynamic> main(final context) async {
     final client = Client();
-    client.setKey(context.req.headers['x-appwrite-key']); // Set API key; it's automatically provided by Appwrite
+    // Set API key
+    client.setKey(context.req.headers['x-appwrite-key']); // API key is automatically provided by Appwrite
     
     final databases = Databases(client);
     
@@ -1447,7 +1465,8 @@ import Foundation
 
 func main(context: RuntimeContext) async throws -> RuntimeOutput {
     let client = Client()
-    client.setKey(context.req.headers('x-appwrite-key') ?? "") // Set API key; it's automatically provided by Appwrite
+    // Set API key
+    client.setKey(context.req.headers('x-appwrite-key') ?? "") // API key is automatically provided by Appwrite
 
     let databases = Databases(client: client)
 
@@ -1478,7 +1497,8 @@ namespace DotNetRuntime
         public async Task Main(RuntimeContext Context) 
         {
             var client = new Client()
-            client.setKey(Context.Request.Headers['x-appwrite-key']) // Set API key; it's automatically provided by Appwrite
+            // Set API key
+            client.setKey(Context.Request.Headers['x-appwrite-key']) // API key is automatically provided by Appwrite
 
             var databases = new Databases(client);
     
@@ -1511,7 +1531,8 @@ import java.util.HashMap
 class Main {
     fun main(context: RuntimeContext): RuntimeOutput {
         val client = Client()
-        client.setKey(context.req.headers['x-appwrite-key']) // Set API key; it's automatically provided by Appwrite
+        // Set API key
+        client.setKey(context.req.headers['x-appwrite-key']) // API key is automatically provided by Appwrite
 
         val databases = Databases(client)
 
@@ -1542,7 +1563,8 @@ import io.appwrite.Client;
 public class Main {
     public RuntimeOutput main(RuntimeContext context) throws Exception {
         Client client = new Client();
-        client.setKey(context.getReq().getHeaders().get('x-appwrite-key')); // Set API key; it's automatically provided by Appwrite
+        // Set API key
+        client.setKey(context.getReq().getHeaders().get('x-appwrite-key')); // API key is automatically provided by Appwrite
         
         Databases databases = new Databases(client);
 
