@@ -1371,7 +1371,7 @@ include Appwrite
 
 def main(context)
     client = Appwrite::Client.new
-    client.set_key(context.req.headers['x-appwrite-key']) // Set API key; it's automatically provided by Appwrite
+    client.set_key(context.req.headers['x-appwrite-key']) # Set API key; it's automatically provided by Appwrite
 
     databases = Appwrite::Databases.new(client)
 
