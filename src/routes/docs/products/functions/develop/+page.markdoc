@@ -1542,7 +1542,7 @@ import io.appwrite.Client;
 public class Main {
     public RuntimeOutput main(RuntimeContext context) throws Exception {
         Client client = new Client();
-        client.setKey(context.req.getHeaders().get('x-appwrite-key')); // Set API key; it's automatically provided by Appwrite
+        client.setKey(context.getReq().getHeaders().get('x-appwrite-key')); // Set API key; it's automatically provided by Appwrite
         
         Databases databases = new Databases(client);
 
