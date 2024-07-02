@@ -694,6 +694,10 @@ If you need to send a response to the invoker of the function, such as a user, c
 The response information **will not be logged** to the Appwrite Console. 
 There are several possible ways to send a response, explore them in the following Appwrite Function.
 
+{% info title="Depreciation notice" %}
+Use `req.bodyText` instead of `req.bodyRaw`, `res.text` for `res.send`, and `req.bodyText` or `req.bodyJson` instead of `req.body` depending on the expected input data type.
+{% /info %}
+
 {% multicode %}
 ```js
 export default async ({ req, res, log }) => {
