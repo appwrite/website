@@ -7,36 +7,46 @@ description: Learn to locally Appwrite functions.
 To deploy a function locally, use the following command:
 
 ```bash
-appwrite run function
+appwrite run functions
 ```
 
-# Engine
+# Engine {% #engine %}
 
-You'll be asked to choose an engine to use. There are benefits to using either [Docker](https://www.docker.com/) or your system directly.
-Choosing Docker simulates the production environment more precisely, but using the system directly is faster.
+You'll be asked to choose an engine for your local development. There are benefits to using either [Docker](https://www.docker.com/) or your system directly.
+Using the system directly is faster, but using Docker simulates the production environment more precisely.
 
-2. what is the difference between local and production
-
-# Production vs local
+# Production vs local {% #production-vs-local %}
 
 {% tabs %}
-{% tabsitem #production %}
-To run your function, you have to deploy it first. Every change in your code requires you to re-deploy the function, and also needs two projects in order to not break production while developing.
+{% tabsitem #production title="Production" %}
+To run your function, you have to deploy it first. Every change in your code requires you to redeploy the function, and it also needs two projects so it doesn't break production while developing.
 {% /tabsitem %}
-All executions of functions use HTTP. Doesn't require execution permissions, you only need to visit the function URL to execute it. Can impersonate an user to execute the function as a specific user.
-{% tabsitem #local %}
-
+{% tabsitem #local title="Local"%}
+All executions of locally developed functions use HTTP. It doesn't require execution permissions; you only need to visit the function URL to execute it. You can also mock an user to execute the function as a specific user.
 {% /tabsitem %}
 {% /tabs %}
 
-# CI/CD flows
+{% arrow_link href="/docs/products/functions/develop" %}
+Learn how to develop a function
+{% /arrow_link %}
 
-We can use Appwrite CLI to automate collection attributes changes, adding, recreating, and deleting. For example, publishing a new release would go through the following steps:
+# Configure-settings {% #Configure-settings %}
+
+Function settings such as scopes, timeout, entrypoint, or build command will be read from [`appwrite.json`](/docs/tooling/command-line/functions#appwritejson). Edit the file to apply settings locally and use the `appwrite push functions` to apply your configurated settings to production.
+
+{% arrow_link href="/docs/tooling/command-line/functions" %}
+Deploy functions using CLI commands
+{% /arrow_link %}
+
+
+# CI/CD flows {% #cicd-flows %}
+
+We can use Appwrite CLI to automate changes in collection attributes such as adding, recreating, and deleting. For example, publishing a new release would go through the following steps:
 
 1. Clone the repo
 2. Adds Node (Since Appwrite CLI uses Node)
 3. Login to account using secrets
-4. Push all available collections with --force flag to confirm all changes
+4. Push all available collections with `--force flag` to confirm all changes
 
 ```yaml
 name: Database Migrations
