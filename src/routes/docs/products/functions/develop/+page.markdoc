@@ -943,6 +943,97 @@ To get the different response types, set one of the following query parameters i
 | `html`     | `/?type=html`     | `https://64d4d22db370ae41a32e.appwrite.global/?type=html`     |
 | `empty`    | `/`               | `https://64d4d22db370ae41a32e.appwrite.global/`               |
 
+### JSON {% #JSON %}
+Known as javascript object notation, JSON is often used to send data from the server to a web page and is an `application/json` content-type. JSON would look something like this:
+
+```server-nodejs
+"employees":[
+    {"firstName":"John", "lastName":"Doe"},
+    {"firstName":"Anna", "lastName":"Smith"},
+    {"firstName":"Peter", "lastName":"Jones"}
+]
+```
+### Text {% #text %}
+
+It's meant for simple data exchange with no formatting or markup, and is a `text/plain` content type. Plain text would look something like this:
+
+```http
+His first name is John, and his last name is Doe.  Her first and last name is Anna Smith.  This is Peter Jone, he is a friend of John and Anna.
+```
+
+### Multipart form {% #multipart-form %}
+
+Multipart form allows you to submit binary data or multiple data types with a single request. Its content-type is multipart/form-data, and it would look something like this:
+
+```http
+POST / HTTP/1.1
+...
+Content-Type: multipart/form-data; boundary=12345
+
+--12345
+Content-Disposition: form-data; name="sometext"
+
+some text sent via post...
+--12345
+Content-Disposition: form-data; name="files"
+Content-Type: multipart/mixed; boundary=abcde
+
+--abcde
+Content-Disposition: file; file="picture.jpg"
+
+content of jpg...
+--abcde
+Content-Disposition: file; file="test.py"
+
+content of test.py file ....
+--abcde--
+--12345--
+```
+
+### URL encoded form {% #url-encoded-form %}
+
+URL encoded form makes it possible to transmit data over the internet by converting characters into a particular format, which looks like the following:
+
+```php
+<?php
+echo '<a href="ftp://user:', rawurlencode('foo @+%/'),
+     '@ftp.example.com/x.txt">';
+```
+
+### XML {% #xml %}
+
+XML stores and transports data by being a software and hardware independent tool. It should be noted that XML does not do anything, and requires a software to be writted to send, receive, store or display it. It's content-type is application/xml or text/xml, and it looks something like the following:
+
+```
+<note>
+  <to>Tove</to>
+  <from>Jani</from>
+  <heading>Reminder</heading>
+  <body>Don't forget me this weekend!</body>
+</note>
+```
+### Binary data {% #binary-data %}
+
+Binary data is used to send arbitrary data with no specific structure or formatting. Its content type is application/octet-stream, and an example of this would be the following:
+
+```
+POST https://cloud.appwrite.io/v1/account HTTP/1.1
+Content-Type: application/octet-stream
+X-Appwrite-Response-Format: 1.5.0   
+X-Appwrite-Project: X-Appwrite-Project
+
+<BINARY FILE CONTENT>
+```
+
+|Type                                                |Description                                                                                                  |Example|
+|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------|-------|
+|JSON (application/json)                             |Known as javascript object notation, JSON is often used to send data from the server to a web page.
+|Text (text/plain)                                   |
+|Multipart form (multipart/form-data)                |
+|URL encoded form (application/x-www-form-urlencoded)|
+|XML (application/xml | text/xml)                    |
+|Binary data (application/octet-stream)              |
+
 ## Logging {% #logging %}
 To protect user privacy, the request and response objects are not logged to the Appwrite Console by default. 
 This means, to see logs or debug function executions you need to use the `log()` and `error()` methods. 
