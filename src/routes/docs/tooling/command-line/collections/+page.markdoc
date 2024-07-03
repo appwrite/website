@@ -6,11 +6,25 @@ description: Efficiently deploy your Appwrite collections using the Command-Line
 
 Create and manage your collections using the CLI commands. Make sure you [install and initialize](/docs/tooling/command-line/installation#Installation) your CLI Appwrite project.
 
-The Appwrite CLI also helps you deploy your project's databases and collections schema from one project to another.
+The Appwrite CLI also helps you push your project's databases and collections schema from one project to another.
+
+# Init collection {% #init-collection %}
+
+Initialize your new collection using the following command:
+
+```sh
+appwrite init collection
+? What would you like to name your database? My Awesome Database
+? What ID would you like to have for your database? unique()
+? What would you like to name your collection? My Awesome Collection
+? What ID would you like to have for your collection? unique()
+? Enable Document-Security for configuring permissions for individual documents No
+✓ Success
+```
 
 # Pull collection {% #pull-collection %}
 
-You can pull your Appwrite collection's and database's customizable settings using the `pull` command in the folder holding your `appwrite.json` file.
+You also can pull your Appwrite collections and databases using the `pull` command in the folder holding your `appwrite.json` file.
 
 ```sh
 appwrite pull collections
@@ -20,7 +34,7 @@ appwrite pull collections
 
 After pulling your Appwrite function, your `appwrite.json` file should look similar to the following:
 
-```node-server
+```server-nodejs
 {
     "projectId": "<PROJECT_ID>",
     "databases": [

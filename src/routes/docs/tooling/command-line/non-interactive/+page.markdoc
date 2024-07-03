@@ -31,38 +31,43 @@ In non-interactive mode, the CLI uses an API key to authenticate. Your API key m
 {% /table %}
 
 # Deployment {% #deployment %}
-Appwrite's deploy commands can also be executed in a non-interactive mode. This applies to both function and collection deployment.
+Appwrite's `push` commands can also be executed in a non-interactive mode. This applies to the following resources: functions, collections, buckets, teams, and messaging topics.
 
-You can deploy a function non-interactively by using the `--yes` option to skip all warnings and specifying which functions you want to deploy.
+You can push a resource non-interactively by using the `--force` option to skip all warnings and specifying which resources you want to deploy.
 
-Deploy a single function by ID:
+To push all available resources:
 
 ```sh
-appwrite deploy function --functionId [FUNCTION ID] --yes
+appwrite push all --all --force
 ```
 
-Deploy all functions:
-
+To push a single funciton by ID:
 ```sh
-appwrite deploy function --all --yes
+appwrite push function --functionId [FUNCTION ID] --force
 ```
 
-You can deploy databases, collections, teams, and buckets non-interactively in a similar way by using the `--all` and `--yes` option.
-
-Deploy all databases and collections:
+Push all functions:
 
 ```sh
-appwrite deploy collection --all --yes
+appwrite push function --all --force
 ```
 
-Deploy all teams:
+You can push databases, collections, teams, and buckets non-interactively in a similar way by using the `--all` and `--force` option.
+
+Push all databases and collections:
 
 ```sh
-appwrite deploy team --all --yes
+appwrite push collection --all --force
 ```
 
-Deploy all buckets:
+Push all teams:
 
 ```sh
-appwrite deploy buckets --all --yes
+appwrite push team --all --force
+```
+
+Push all buckets:
+
+```sh
+appwrite push buckets --all --force
 ```

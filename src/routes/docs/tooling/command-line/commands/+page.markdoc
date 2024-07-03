@@ -5,7 +5,7 @@ description: Learn about Appwrites CLI and the powerful, feature complete comman
 ---
 
 {% info title="CLI Version" %}
-It is highly recommended that you have the latest version of the CLI; [update your CLI](https://www.npmjs.com/package/appwrite-cli-beta).
+It is highly recommended that you have the latest version of the CLI; [update your CLI](https://www.npmjs.com/package/appwrite-cli-beta) by running `npm install -g appwrite-cli-beta@latest`.
 {% /info %}
 
 Other than commands to create and push databases, collections, functions, teams, and buckets, the Appwrite CLI can be used as a Server SDK as well. The Appwrite CLI has a command for every Server API endpoint.
@@ -47,10 +47,10 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * Description
 ---
 * `init [options]`
-* The init command helps you initialize your Appwrite project, databases, collections, functions, teams, and buckets.
+* The init command helps you initialize your Appwrite project, databases, collections, functions, teams, messaging-topics, and buckets.
 ---
 * `pull`
-* The pull command helps you pull your Appwrite project, functions, collections, buckets, teams, and messaging
+* The pull command helps you pull your Appwrite project, functions, collections, buckets, teams, and messaging-topics.
 ---
 * `push`
 * The push command provides a convenient wrapper for pushing your databases, collections, functions, teams, and buckets.
@@ -170,6 +170,38 @@ By default, output is rendered in a tabular format. To format the output as JSON
 
 ```sh
 appwrite users list --json
+```
+
+# Force {% #force %}
+By default, when pushing or pulling resources, Appwrite CLI asks you to confirm in a destructive use case. Use the `--force` flag to verify all questions.
+
+```sh
+appwrite push collections --force
+```
+
+# All {% #all %}
+By default, when pushing or pulling resources, Appwrite CLI would ask you to select specific resources. Use the `--all` flag to select all available options.
+
+```sh
+appwrite pull functions --all
+```
+
+# Error reporting {% #report %}
+If you encounter errors with any command, you can use the --report flag to generate a GitHub reporting link.
+
+```sh
+appwrite login --report
+```
+
+# View on console {% #console-flow %}
+Many resources support the option to view them in the console. Use the `--console` flag to get a direct link to the console, and add the optional `--open` flag to automatically open it in the default browser.
+
+```sh
+appwrite databases getDocument \
+  --databaseId DATABASE_ID \
+  --collectionId COLLECTION_ID \
+  --documentId DOCUMENT_ID \
+  --console --open
 ```
 
 # Examples {% #examples %}
