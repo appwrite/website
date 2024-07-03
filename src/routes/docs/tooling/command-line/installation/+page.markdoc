@@ -111,7 +111,7 @@ appwrite client --selfSigned true
 
 You can use the CLI to create and deploy functions and collections. Deploy commands allow you to configure your Appwrite project programmatically and replicate functions and collection schemas across Appwrite projects.
 
-[Learn more about deployment](/docs/tooling/command-line/projects)
+[Learn more about deployment](/docs/tooling/command-line/collections)
 
 Besides utility commands, the CLI can be used to execute commands like a Server SDK.
 

@@ -66,10 +66,10 @@ Remember to specify the build commands for your function to install dependencies
 {% /tabsitem %}
 
 {% tabsitem #cli title="CLI" %}
-You can create functions using the CLI, without needing to access the Console.
+You can create functions using the CLI without needing to access the Console.
 Before you can deploy with the Appwrite CLI, make sure you've [initialized the CLI.](/docs/tooling/command-line/installation)
 
-To deploy with the Appwrite CLI, your function must be added to your `appwrite.json` config file.
+Your function must be added to `appwrite.json` to deploy with the Appwrite CLI. 
 
 You can pull an existing function:
 

@@ -4,7 +4,7 @@ title: Deploy collections with CLI
 description: Efficiently deploy your Appwrite collections using the Command-Line Tool (CLI). 
 ---
 
-Create and manage your collections using the CLI commands. Make sure you [install and initialize](/docs/tooling/command-line/installation#Installation) your CLI Appwrite project.
+Create and manage your collections using the CLI commands. Ensure you [install and initialize](/docs/tooling/command-line/installation#Installation) your CLI Appwrite project.
 
 The Appwrite CLI also helps you push your project's databases and collections schema from one project to another.
 
@@ -24,7 +24,7 @@ appwrite init collection
 
 # Pull collection {% #pull-collection %}
 
-You also can pull your Appwrite collections and databases using the `pull` command in the folder holding your `appwrite.json` file.
+You can also pull your existing Appwrite collections and databases using the `pull` command in the folder holding your `appwrite.json` file.
 
 ```sh
 appwrite pull collections
