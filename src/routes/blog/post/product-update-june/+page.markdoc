@@ -46,8 +46,6 @@ Appwrite’s newest product Messaging now has its own product page (the first of
 
 [This is a huge moment for the community!](https://x.com/appwrite/status/1805564529083924701) Thank you to everyone for supporting us in our journey. Onwards and upwards!
 
----
-
 # Product updates
 
 Big shoutout to [Manjunath0408](https://github.com/Manjunath0408) and [Darshan](https://github.com/ItzNotABug) for their contributions! 
@@ -68,8 +66,6 @@ Big shoutout to [Manjunath0408](https://github.com/Manjunath0408) and [Darshan](
 - [Fix for inconsistent build logs](https://github.com/appwrite/appwrite/issues/6237) by [Darshan](https://github.com/ItzNotABug)
 - [Fix for migration of collections, attributes and indexes of Databases](https://github.com/appwrite/appwrite/issues/8044)
 
----
-
 # Open source community recognitions
 
 This month, we’re excited to feature Raman as part of our Monthly Community Recognitions.
@@ -79,8 +75,6 @@ Raman created a video using **Appwrite Cloud and Flutter** showcasing how to wor
 [Watch the video.](https://www.youtube.com/watch?v=jLVWZauHnjE)
 
 If you'd like to participate in next month's Community Recognitions, [join our Discord server](https://appwrite.io/discord) to showcase your project.
-
----
 
 # Engineering resources
 
@@ -96,8 +90,6 @@ If you'd like to participate in next month's Community Recognitions, [join our D
 
 - [Repository:](https://github.com/2002Bishwajeet/serverless-functions) OGP Extractor is a serverless API that extracts open graph data, used to generate link previews by Bishwajeet Parhi
 - [Repository:](https://pub.dev/packages/app_realtime_ext) Up-to-date Appwrite Flutter SDK by Muslimin Ontong
-
----
 
 # What’s to come
 
