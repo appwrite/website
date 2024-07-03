@@ -210,7 +210,7 @@ Learn more about the CLI team commands
 
 ## Overwrite warning {% #overwrite-warning %} 
 
-If you made changes in the Appwrite Console that are different from your `appwrite.json`, using the CLI push command will overwrite your console changes. Update your `appwrite.json` manually before pushing.
+If you made changes in the Appwrite Console that are different from your `appwrite.json,` using the CLI deploy command will overwrite your console changes. Update your `appwrite.json` manually before deploying.
 
 {% arrow_link href="/docs/tooling/command-line/teams#appwritejson" %}
 Learn more about appwrite.json

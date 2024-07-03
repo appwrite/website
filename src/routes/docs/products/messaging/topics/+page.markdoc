@@ -274,22 +274,22 @@ Before you can deploy with the Appwrite CLI, make sure you've [installed and ini
 
 To manually deploy your Appwrite topics, you need to pull in your current Appwrite topics by using the following command:
 
-```bash
+```sh
 appwrite pull topics
 ```
 
 Push any configurations or changes you made to the generated code by using the following command:
 
-```bash
+```sh
 appwrite push topics
 ```
 {% arrow_link href="/docs/tooling/command-line/topics#commands" %}
-Learn more about the CLI topics commands
+Learn more about the CLI topic commands
 {% /arrow_link %}
 
 ## Overwrite warning {% #overwrite-warning %} 
 
-If you made changes in the Appwrite Console that are different from your `appwrite.json`, using the CLI push command will overwrite your console changes. Update your `appwrite.json` manually before pushing.
+If you made changes in the Appwrite Console that are different from your `appwrite.json,` using the CLI deploy command will overwrite your console changes. Update your `appwrite.json` manually before deploying.
 
 {% arrow_link href="/docs/tooling/command-line/topics#appwritejson" %}
 Learn more about appwrite.json

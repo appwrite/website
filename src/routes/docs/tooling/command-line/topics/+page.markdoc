@@ -4,7 +4,7 @@ title: Deploy topics with CLI
 description: Efficiently deploy your Appwrite topics using the Command-Line Tool (CLI). 
 ---
 
-The Appwrite CLI can create, set, delete, and configure topics. Make sure you [install and initialize](/docs/tooling/command-line/installation#Installation) your CLI Appwrite project.
+The Appwrite CLI can create, set, delete, and configure topics. Ensure you [install and initialize](/docs/tooling/command-line/installation#Installation) your CLI Appwrite project.
 
 # Initialize topic {% #initialize-topic %}
 
