@@ -118,19 +118,13 @@
                     title: 'Logs retention',
                     free: '1 hour',
                     pro: '7 days',
-                    scale: '14 days'
+                    scale: '28 days'
                 },
                 {
                     title: 'Budget caps and alerts',
                     free: 'Not needed',
                     pro: true,
                     scale: true
-                },
-                {
-                    title: 'Additional organization member roles',
-                    free: '-',
-                    pro: '-',
-                    scale: 'Coming Soon'
                 }
             ]
         },
@@ -258,6 +252,47 @@
                     free: '3M',
                     pro: 'Unlimited',
                     scale: 'Unlimited'
+                }
+            ]
+        }, 
+        {
+            title: 'Security',
+            rows: [
+                {
+                    title: 'SOC-2',
+                    free: '-',
+                    pro: '-',
+                    scale: true
+                },
+                {
+                    title: 'HIPAA',
+                    free: '-',
+                    pro: '-',
+                    scale: true
+                },
+                {
+                    title: 'BAA',
+                    free: '-',
+                    pro: '-',
+                    scale: true
+                },
+                {
+                    title: 'Additional organization roles',
+                    free: '-',
+                    pro: '-',
+                    scale: 'Coming Soon'
+                },
+                {
+                    title: 'Network logs',
+                    free: '-',
+                    pro: '-',
+                    scale: 'Coming Soon'
+                },
+                {
+                    title: 'Activity logs',
+                    free: '-',
+                    pro: '-',
+                    scale: 'Coming Soon'
                 }
             ]
         },
