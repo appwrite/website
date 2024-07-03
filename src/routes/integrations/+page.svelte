@@ -379,7 +379,6 @@
                                                     </li>
                                                 {/each}
                                             </ul>
-
                                             <a
                                                 href={`#${integration.category.toLowerCase()}`}
                                                 class="l-float-button web-button is-text"
@@ -509,46 +508,59 @@
     .l-float-button {
         display: none;
     }
+    /* more tha 9 items */
+    .l-max-size-list-cards-section {
+        scroll-snap-align: start;
+        scroll-margin-top: pxToRem(120);
+    }
+    .l-max-size-list-cards {
+        &:where(:has(> ul > li:nth-child(10))) {
+            position: relative;
+
+            &::before {
+                position: absolute;
+                inset: 0;
+                content: '';
+                display: block;
+                background: linear-gradient(
+                    180deg,
+                    rgba(25, 25, 28, 0) 0%,
+                    rgba(25, 25, 28, 0.92) 90%,
+                    #19191c 100%
+                );
+                transition: var(--transition);
+            }
+            .l-float-button {
+                position: absolute;
+                inset-inline: 0;
+                inset-block-end: pxToRem(20);
+                margin-inline: auto;
+                display: flex;
+            }
+        }
+    }
+
+    :where(:target, :focus-within) {
+        .l-max-size-list-cards {
+            overflow: visible;
+            max-block-size: none;
+            &::before {
+                opacity: 0;
+                pointer-events: none;
+            }
+            .l-float-button {
+                display: none;
+            }
+        }
+    }
 
     .l-grid-1 {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(pxToRem(270), 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
         gap: pxToRem(32);
     }
     .l-integrations-grid {
         position: relative;
-
-        .l-max-size-list-cards {
-            position: relative;
-            max-height: pxToRem(600);
-            overflow: hidden;
-
-            &:where(:has(> ul > li:nth-child(10))) {
-                &::before {
-                    position: absolute;
-                    inset: auto 0;
-                    height: 225px;
-                    bottom: 0;
-                    content: '';
-                    display: block;
-                    background: linear-gradient(
-                        180deg,
-                        rgba(25, 25, 28, 0) 0%,
-                        rgba(25, 25, 28, 0.92) 90%,
-                        #19191c 100%
-                    );
-                    transition: var(--transition);
-                }
-
-                .l-float-button {
-                    position: absolute;
-                    inset-inline: 0;
-                    inset-block-end: pxToRem(20);
-                    margin-inline: auto;
-                    display: flex;
-                }
-            }
-        }
 
         @media #{$break1} {
             gap: 0;
@@ -583,7 +595,12 @@
             padding-block-start: pxToRem(40);
         }
     }
-
+    .l-integrations-hero {
+        @media #{$break1} {
+        }
+        @media #{$break2open} {
+        }
+    }
     .l-bg-1 {
         max-inline-size: none;
         max-block-size: none;
