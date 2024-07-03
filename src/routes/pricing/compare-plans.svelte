@@ -277,7 +277,7 @@
                     scale: true
                 },
                 {
-                    title: 'Phone',
+                    title: 'Priority',
                     free: '-',
                     pro: '-',
                     scale: true
