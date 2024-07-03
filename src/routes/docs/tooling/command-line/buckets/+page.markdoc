@@ -4,7 +4,11 @@ title: Deploy buckets with CLI
 description: Efficiently deploy your Appwrite buckets using the Command-Line Tool (CLI). 
 ---
 
-The Appwrite CLI allows you to configure and deploy buckets across projects. Ensure you [install and initialize](/docs/tooling/command-line/installation#Installation) your CLI Appwrite project.
+{% info title="Before proceeding" %}
+Ensure you [**install**](/docs/tooling/command-line/installation#Installation) the CLI, [**login**](/docs/tooling/command-line/installation#get-started) to your Appwrite account, and [**initialize**](/docs/tooling/command-line/installation#Initialization) your Appwrite project.
+{% /info %}
+
+The Appwrite CLI allows you to configure and deploy buckets across projects.
 
 # Initialize bucket {% #initialize-bucket %}
 
@@ -12,15 +16,11 @@ Initialize your new bucket using the following command:
 
 ```sh
 appwrite init bucket
-? What would you like to name your bucket? My Awesome Bucket
-? What ID would you like to have for your bucket? unique()
-? Enable File-Security configuring permissions for individual file No
-✓ Success
 ```
 
 # Pull bucket {% #pull-bucket %}
 
-You can also pull your Appwrite buckets using the `pull` command in the folder holding your `appwrite.json` file.
+You can also pull your existing Appwrite buckets using the `pull` command in the folder holding your `appwrite.json` file.
 
 ```sh
 appwrite pull buckets
@@ -28,7 +28,7 @@ appwrite pull buckets
 
 # appwrite.json {% #appwritejson %}
 
-Your `appwrite.json` file should look similar to the following:
+After initializing your Appwrite project and pulling your existing buckets, your `appwrite.json` file should look similar to the following:
 
 ```server-nodejs
 {
@@ -59,7 +59,7 @@ Your `appwrite.json` file should look similar to the following:
 
 # Push bucket {% #push-bucket %}
 
-To push the changes you made inside your `appwrite.json` file, use the `push` command in the folder holding your `appwrite.json` file.
+In the folder holding your `appwrite.json` file, use the `push` command to push your changes you made inside your `appwrite.json` file.
 
 ```sh
 appwrite push buckets
