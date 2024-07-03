@@ -18,13 +18,13 @@ Before you can deploy with the Appwrite CLI, make sure you've [installed and ini
 
 To manually deploy your Appwrite buckets, you need to pull in your current Appwrite buckets by using the following command:
 
-```bash
+```sh
 appwrite pull buckets
 ```
 
 Push any configurations or changes you made to the generated code by using the following command:
 
-```bash
+```sh
 appwrite push buckets
 ```
 {% arrow_link href="/docs/tooling/command-line/buckets#commands" %}

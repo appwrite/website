@@ -14,10 +14,10 @@ You can pull your Appwrite functions customizable settings using the `pull` comm
 appwrite pull functions
 ```
 
-# Appwrite.json {% #appwritejson %}
+# appwrite.json {% #appwritejson %}
 
-After pulling your Appwrite function, your `Appwrite.json` file should look similar to the following:
-```
+After pulling your Appwrite function, your `appwrite.json` file should look similar to the following:
+```node-server
 {
     "projectId": <PROJECT_ID>,
     "functions": [

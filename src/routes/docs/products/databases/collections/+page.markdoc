@@ -281,13 +281,13 @@ You can create an index by navigating to your collection's **Indexes** tab or by
 Before you can deploy with the Appwrite CLI, make sure you've [installed and initialized](/docs/tooling/command-line/installation) the CLI and [logged-in](/docs/tooling/command-line/installation#get-started) into your Appwrite account.
 {% /info %}
 
-```bash
+```sh
 appwrite pull collections
 ```
 
 Push any configurations or changes you made to the generated code by using the following command:
 
-```bash
+```sh
 appwrite push collections
 ```
 

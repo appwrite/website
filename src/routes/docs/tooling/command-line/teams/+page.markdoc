@@ -14,10 +14,10 @@ You can pull your Appwrite team's customizable settings using the `pull` command
 appwrite pull teams
 ```
 
-# Appwrite.json {% #appwritejson %}
-After pulling your Appwrite function, your `Appwrite.json` file should look similar to the following:
+# appwrite.json {% #appwritejson %}
+After pulling your Appwrite function, your `appwrite.json` file should look similar to the following:
 
-```
+```server-nodejs
 {
     "projectId": "<PROJECT_ID>",
     "teams": [

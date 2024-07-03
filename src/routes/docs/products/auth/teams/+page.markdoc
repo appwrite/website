@@ -195,13 +195,13 @@ Before you can deploy with the Appwrite CLI, make sure you've [installed and ini
 
 To manually deploy your Appwrite teams, you need to pull in your current Appwrite teams by using the following command:
 
-```bash
+```sh
 appwrite pull teams
 ```
 
 Push any configurations or changes you made to the generated code by using the following command:
 
-```bash
+```sh
 appwrite push teams
 ```
 {% arrow_link href="/docs/tooling/command-line/teams#commands" %}

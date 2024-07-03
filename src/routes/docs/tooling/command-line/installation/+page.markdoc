@@ -100,10 +100,6 @@ appwrite client --selfSigned true
 ```
 {% /info %}
 
-{% info title="Correct CLI Version Required" %}
-All commands only work with **version 2.0** of the CLI and will **not** work on previous versions. Update [here](https://www.npmjs.com/package/appwrite-cli-beta).
-{% /info %}
-
 ## Next steps {% #next-steps %}
 
 You can use the CLI to create and deploy functions and collections. Deploy commands allow you to configure your Appwrite project programmatically and replicate functions and collection schemas across Appwrite projects.
