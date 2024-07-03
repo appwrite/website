@@ -19,8 +19,8 @@ const client = new Client()
 
 const account = new Account(client);
 
-const user await = account.create(
-    'ID.unique()', 
+const user = await account.create(
+    ID.unique(), 
     'email@example.com', 
     'password'
 );
@@ -90,8 +90,8 @@ const client = new Client()
 
 const account = new Account(client);
 
-const user await = account.create(
-    'ID.unique()', 
+const user = await account.create(
+    ID.unique(), 
     'email@example.com', 
     'password'
 );
