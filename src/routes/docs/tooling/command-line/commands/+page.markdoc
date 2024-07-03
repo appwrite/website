@@ -4,7 +4,11 @@ title: Commands
 description: Learn about Appwrites CLI and the powerful, feature complete commands to manage Appwrite's auth, databases, functions, storage, and more.
 ---
 
-Other than commands to create and deploy databases, collections, functions, teams, and buckets, the Appwrite CLI can be used as a Server SDK as well. The Appwrite CLI has a command for every Server API endpoint.
+{% info title="CLI Version" %}
+It is highly recommended that you have the latest version of the CLI; [update your CLI](https://www.npmjs.com/package/appwrite-cli-beta).
+{% /info %}
+
+Other than commands to create and push databases, collections, functions, teams, and buckets, the Appwrite CLI can be used as a Server SDK as well. The Appwrite CLI has a command for every Server API endpoint.
 
 Commands follows the following general syntax:
 
@@ -15,6 +19,8 @@ appwrite [COMMAND] [OPTIONS]
 # Commands {% #commands %}
 
 Below is a list of the available commands in the Appwrite CLI. You can get more information on each command by running `appwrite [COMMAND] --help`.
+  
+## Appwrite account commands {% #appwrite-account-commands %}
 
 {% table %}
 * Command
@@ -23,47 +29,51 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * `login [options]`
 * The login command allows you to authenticate into the CLI. This command expects the console account that you use to log into the Appwrite Console.
 ---
-* `client [options]`
-* The client command allows you to configure your CLI.
+* `logout`
+* The logout command allows you to logout from the CLI.
+---
+* `register`
+* Prints link to register an Appwrite account.
+---
+* `whoami`
+* The whomai command gives information about the currently logged in user.
+---
+{% /table %}
+
+## Appwrite push commands {% #appwrite-push-commands %}
+
+{% table %}
+* Command
+* Description
 ---
 * `init [options]`
 * The init command helps you initialize your Appwrite project, databases, collections, functions, teams, and buckets.
 ---
-* `deploy | push`
-* The deploy command provides a convenient wrapper for deploying your databases, collections, functions, teams, and buckets.
+* `pull`
+* The pull command helps you pull your Appwrite project, functions, collections, buckets, teams, and messaging
 ---
-* `logout`
-* The logout command allows you to logout from the CLI.
+* `push`
+* The push command provides a convenient wrapper for pushing your databases, collections, functions, teams, and buckets.
 ---
-* `projects`
-* The projects command allows you to view, create, and manage your Appwrite projects.
+* `run`
+* The run command allows you to run projects locally to allow easy development and quick debugging
 ---
-* `storage`
-* The storage command allows you to manage your project files.
----
-* `teams`
-* The teams command allows you to group users of your project and to enable them to share access permissions to your project's resources.
----
-* `users`
-* The users command allows you to manage your project users.
----
-* `account`
-* The account command allows you to authenticate as and manage a user account.
----
-* `avatars`
-* The avatars command provides utilities to manage images, icons, and avatars.
----
-* `functions`
-* The functions command allows you view, create and manage your Appwrite Functions.
----
-* `databases`
-* The databases command allows you to create structured collections of documents, query and filter lists of documents.
----
-* `locale`
-* The locale command allows you to customize your app based on your users' location.
+{% /table %}
+
+## General commands {% #general-commands %}
+
+{% table %}
+* Command
+* Description
 ---
 * `assistant`
 * The assistant command allows you to interact with the Appwrite Assistant AI.
+---
+* `client [options]`
+* The client command allows you to configure your CLI.
+---
+* `locale`
+* The locale command allows you to customize your app based on your users' location.
 ---
 * `console`
 * The console command gives you access to the APIs used by the Appwrite console.
@@ -74,34 +84,45 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * `health`
 * The health command allows you to both validate and monitor your Appwrite server's health.
 ---
-* `messaging`
-* The messaging command allows you to send messages.
----
 * `migrations`
 * The migrations command allows you to migrate data between services.
----
-* `project`
-* The project command is for overall project administration.
----
-* `proxy`
-* The proxy command allows you to configure behavior for your attached domains.
----
-* `pull`
-* The pull command helps you pull your Appwrite project, functions, collections, buckets, teams, and messaging
----
-* `register`
-* Prints link to register an Appwrite account.
----
-* `run | dev`
-* The run command allows you to run projects locally to allow easy development and quick debugging
 ---
 * `vcs`
 * The vcs command allows you to interact with VCS providers and manage your code repositories.
 ---
-* `whoami`
-* The whomai command gives information about the currently logged in user.
----
+{% /table %}
 
+## Appwrite project commands {% #appwrite-project-commands %}
+
+{% table %}
+
+* Command
+* Description
+---
+* `account`
+* The account command allows you to authenticate as and manage a user account.
+---
+* `users`
+* The users command allows you to manage your project users.
+---
+* `teams`
+* The teams command allows you to group users of your project and to enable them to share access permissions to your project's resources.
+---
+* `databases`
+* The databases command allows you to create structured collections of documents, query and filter lists of documents.
+---
+* `functions`
+* The functions command allows you view, create and manage your Appwrite Functions.
+---
+* `messaging`
+* The messaging command allows you to send messages.
+---
+* `storage`
+* The storage command allows you to manage your project files.
+---
+* `avatars`
+* The avatars command provides utilities to manage images, icons, and avatars.
+---
 {% /table %}
 
 {% table %}

@@ -14,11 +14,11 @@ You can pull your Appwrite bucket's customizable settings using the `pull` comma
 appwrite pull buckets
 ```
 
-# Appwrite.json {% #appwritejson %}
+# appwrite.json {% #appwritejson %}
 
-After pulling your Appwrite function, your `Appwrite.json` file should look similar to the following:
+After pulling your Appwrite function, your `appwrite.json` file should look similar to the following:
 
-```
+```server-nodejs
 {
     "projectId": "<PROJECT_ID>",
     "buckets": [

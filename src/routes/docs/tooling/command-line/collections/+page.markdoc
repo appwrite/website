@@ -16,11 +16,11 @@ You can pull your Appwrite collection's and database's customizable settings usi
 appwrite pull collections
 ```
 
-# Appwrite.json {% #appwritejson %}
+# appwrite.json {% #appwritejson %}
 
-After pulling your Appwrite function, your `Appwrite.json` file should look similar to the following:
+After pulling your Appwrite function, your `appwrite.json` file should look similar to the following:
 
-```
+```node-server
 {
     "projectId": "<PROJECT_ID>",
     "databases": [
