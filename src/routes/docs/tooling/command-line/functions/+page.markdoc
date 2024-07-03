@@ -4,19 +4,18 @@ title: Deploy functions with CLI
 description: Efficiently deploy your Appwrite functions using the Command-Line Tool (CLI).
 ---
 
-The CLI handles the creation and deployment of Appwrite Functions. Ensure you [install and initialize](/docs/tooling/command-line/installation#Installation) your CLI Appwrite project.
+{% info title="Before proceeding" %}
+Ensure you [**install**](/docs/tooling/command-line/installation#Installation) the CLI, [**login**](/docs/tooling/command-line/installation#get-started) to your Appwrite account, and [**initialize**](/docs/tooling/command-line/installation#Initialization) your Appwrite project.
+{% /info %}
 
-# Init function {% #init-function %}
+The CLI handles the creation and deployment of Appwrite Functions.
+
+# Initialize function {% #initialize-function %}
 
 Initialize your new function using the following command:
 
 ```sh
 appwrite init function
-? What would you like to name your function? My Awesome Function     
-? What ID would you like to have for your function? unique()
-? What runtime would you like to use? Node.js (node-16.0)
-? What template would you like to use? Starter
-✓ Success
 ```
 
 # Pull function {% #pull-function %}
@@ -29,7 +28,7 @@ appwrite pull functions
 
 # appwrite.json {% #appwritejson %}
 
-Your `appwrite.json` file should look similar to the following:
+After initializing your Appwrite project and pulling your existing buckets, your `appwrite.json` file should look similar to the following:
 
 ```server-nodejs
 {
@@ -105,7 +104,7 @@ Your `appwrite.json` file should look similar to the following:
 
 # Push function {% #push-function %}
 
-To push the changes you made inside your `appwrite.json` file, use the `push` command in the folder holding your `appwrite.json` file.
+In the folder holding your `appwrite.json` file, use the `push` command to push your changes you made inside your `appwrite.json` file.
 
 ```sh
 appwrite push functions

@@ -5,12 +5,15 @@ description: Learn about Appwrites CLI and the powerful, feature complete comman
 ---
 
 {% info title="CLI Version" %}
-It is highly recommended that you have the latest version of the CLI; [update your CLI](https://www.npmjs.com/package/appwrite-cli-beta) by running `npm install -g appwrite-cli-beta@latest`.
+It is highly recommended that you have the latest version of the CLI. [Update your CLI](https://www.npmjs.com/package/appwrite-cli-beta) by running the following command in your terminal:
+```sh
+npm install -g appwrite-cli-beta@latest
+```
 {% /info %}
 
-Other than commands to create and push databases, collections, functions, teams, and buckets, the Appwrite CLI can be used as a Server SDK as well. The Appwrite CLI has a command for every Server API endpoint.
+Other than commands to create and push databases, collections, functions, messaging-topics, teams, and buckets, the Appwrite CLI can be used as a Server SDK as well. The Appwrite CLI has a command for every Server API endpoint.
 
-Commands follows the following general syntax:
+Commands generally follows the following syntax:
 
 ```sh
 appwrite [COMMAND] [OPTIONS]
@@ -19,46 +22,6 @@ appwrite [COMMAND] [OPTIONS]
 # Commands {% #commands %}
 
 Below is a list of the available commands in the Appwrite CLI. You can get more information on each command by running `appwrite [COMMAND] --help`.
-  
-## Appwrite account commands {% #appwrite-account-commands %}
-
-{% table %}
-* Command
-* Description
----
-* `login [options]`
-* The login command allows you to authenticate into the CLI. This command expects the console account that you use to log into the Appwrite Console.
----
-* `logout`
-* The logout command allows you to logout from the CLI.
----
-* `register`
-* Prints link to register an Appwrite account.
----
-* `whoami`
-* The whomai command gives information about the currently logged in user.
----
-{% /table %}
-
-## Appwrite push commands {% #appwrite-push-commands %}
-
-{% table %}
-* Command
-* Description
----
-* `init [options]`
-* The init command helps you initialize your Appwrite project, databases, collections, functions, teams, messaging-topics, and buckets.
----
-* `pull`
-* The pull command helps you pull your Appwrite project, functions, collections, buckets, teams, and messaging-topics.
----
-* `push`
-* The push command provides a convenient wrapper for pushing your databases, collections, functions, teams, and buckets.
----
-* `run`
-* The run command allows you to run projects locally to allow easy development and quick debugging
----
-{% /table %}
 
 ## General commands {% #general-commands %}
 
@@ -92,7 +55,47 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 ---
 {% /table %}
 
-## Appwrite project commands {% #appwrite-project-commands %}
+## Account commands {% #account-commands %}
+
+{% table %}
+* Command
+* Description
+---
+* `login [options]`
+* The login command allows you to authenticate into the CLI. This command expects the console account that you use to log into the Appwrite Console.
+---
+* `logout`
+* The logout command allows you to logout from the CLI.
+---
+* `register`
+* Prints link to register an Appwrite account.
+---
+* `whoami`
+* The whomai command gives information about the currently logged in user.
+---
+{% /table %}
+
+## Deployment commands {% #deployment-commands %}
+
+{% table %}
+* Command
+* Description
+---
+* `init [options]`
+* The init command helps you initialize your Appwrite project, databases, collections, functions, teams, messaging-topics, and buckets.
+---
+* `pull`
+* The pull command helps you pull your Appwrite project, functions, collections, buckets, teams, and messaging-topics.
+---
+* `push`
+* The push command provides a convenient wrapper for pushing your databases, collections, functions, teams, and buckets.
+---
+* `run`
+* The run command allows you to run projects locally to allow easy development and quick debugging
+---
+{% /table %}
+
+## Project commands {% #appwrite-project-commands %}
 
 {% table %}
 
@@ -125,8 +128,9 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 ---
 {% /table %}
 
+## Command options {% #command-options %}
+
 {% table %}
-# Options {% #options %}
 
 * Command
 * Description

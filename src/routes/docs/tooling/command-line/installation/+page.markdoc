@@ -89,7 +89,7 @@ This will create your `appwrite.json` file, where you will configure with your v
 
 ```server-nodejs
 {
-    "projectId": "heivi192901fjj1c20912"
+    "projectId": <PROJECT_ID>
 }
 ```
 
@@ -109,7 +109,7 @@ appwrite client --selfSigned true
 
 ## Next steps {% #next-steps %}
 
-You can use the CLI to create and deploy functions and collections. Deploy commands allow you to configure your Appwrite project programmatically and replicate functions and collection schemas across Appwrite projects.
+You can use the CLI to create and deploy collections, functions, teams, topics, and buckets. Deploy commands allow you to configure your Appwrite project programmatically and replicate functions and collection schemas across Appwrite projects.
 
 [Learn more about deployment](/docs/tooling/command-line/collections)
 

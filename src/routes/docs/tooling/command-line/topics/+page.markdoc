@@ -4,7 +4,11 @@ title: Deploy topics with CLI
 description: Efficiently deploy your Appwrite topics using the Command-Line Tool (CLI). 
 ---
 
-The Appwrite CLI can create, set, delete, and configure topics. Ensure you [install and initialize](/docs/tooling/command-line/installation#Installation) your CLI Appwrite project.
+{% info title="Before proceeding" %}
+Ensure you [**install**](/docs/tooling/command-line/installation#Installation) the CLI, [**login**](/docs/tooling/command-line/installation#get-started) to your Appwrite account, and [**initialize**](/docs/tooling/command-line/installation#Initialization) your Appwrite project.
+{% /info %}
+
+The Appwrite CLI can create, set, delete, and configure topics.
 
 # Initialize topic {% #initialize-topic %}
 
@@ -12,9 +16,6 @@ Initialize your new topic using the following command:
 
 ```
 appwrite init topic
-? What would you like to name your messaging topic? My Awesome Topic
-? What ID would you like to have for your messaging topic? unique()
-✓ Success
 ```
 
 # Pull topics {% #pull-topics %}
@@ -27,7 +28,7 @@ appwrite pull topics
 
 # appwrite.json {% #appwritejson %}
 
-Your `appwrite.json` file should look similar to the following:
+After initializing your Appwrite project and pulling your existing buckets, your `appwrite.json` file should look similar to the following:
 
 ```server-nodejs
 {
@@ -64,7 +65,7 @@ Your `appwrite.json` file should look similar to the following:
 
 # Push topics {% #push-topics %}
 
-To push the changes you made inside your `appwrite.json` file, use the `push` command in the folder holding your `appwrite.json` file.
+In the folder holding your `appwrite.json` file, use the `push` command to push your changes you made inside your `appwrite.json` file.
 
 ```sh
 appwrite push topics
