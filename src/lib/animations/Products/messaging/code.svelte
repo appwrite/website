@@ -1,11 +1,14 @@
 <script lang="ts">
+    import { messagingController } from '.';
     import Code from '$lib/animations/CodeWindow/Code.svelte';
 
-    let content = `
+    const { state } = messagingController;
+
+    $: content = `
 await messaging.createPush(  
  	ID.unique(),
-	'New task assigned to you',
-	'You were assigned a new task in your board. Tap to check it out.',
+	'${$state.heading}',
+	'${$state.message}',
 );`.trim();
 </script>
 

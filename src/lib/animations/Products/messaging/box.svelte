@@ -10,7 +10,7 @@
     <div class="header">
         <span class="web-eyebrow">Message ID</span>
         <span class="web-eyebrow">Type</span>
-        <span class="web-eyebrow">Status</span>
+        <span class="web-eyebrow" style:text-align="center">Status</span>
     </div>
     {#each $state.messages.slice(0, $state.tableSlice) as task (task.id)}
         <div class="row" transition:slide={{ duration: 150 }} animate:flip={{ duration: 150 }}>

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { fade, fly } from 'svelte/transition';
+    import { fly } from 'svelte/transition';
     import { messagingController } from '.';
     import TaskCheckbox from '../TaskCheckbox.svelte';
 
@@ -7,7 +7,7 @@
 </script>
 
 {#if $state.submit === 'success'}
-    <div class="push-notification" in:fade>
+    <div class="push-notification" in:fly={{ y: -20 }}>
         <div class="icon" />
         <div class="content">
             <div class="header">
@@ -49,7 +49,7 @@
         padding: 0.5rem;
         margin: 0 auto;
         width: 125%;
-        height: 75px;
+        height: 60px;
         gap: 0.75rem;
         left: 50%;
         transform: translateX(-50%);
