@@ -1,21 +1,30 @@
 <script lang="ts">
-    const lines = Array.from({ length: 200 });
+    const lines = Array.from({ length: 45 });
+
+    function randomNumber(min: number, max: number) {
+        return Math.random() * (max - min) + min;
+    }
 </script>
 
 <div class="hero">
     <div class="lockup">
+        <h1 class="web-headline heading">Init</h1>
         {#each lines as _, i}
-            <div class="line" style={`--animation-delay: 0ms;top: ${i * 5}px`} />
+            <div
+                data-number={i + 1}
+                class="line"
+                style={`--animation-delay: ${randomNumber(200, 2000)}ms;top: ${i * 20}px`}
+            />
         {/each}
     </div>
 </div>
 
 <style lang="scss">
     :root {
-        --line-width: 20vw;
-        --line-height: 2px;
+        --line-width: 70vw;
+        --line-height: 15px;
         --animation-duration: 4s;
-        --starting-position: -50%;
+        --starting-position: -100vw;
     }
 
     @keyframes -global-line {
@@ -30,11 +39,21 @@
     .hero {
         .lockup {
             position: relative;
-            height: 50vh;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             flex-grow: 1;
-
-            overflow: hidden;
             margin: 0 auto;
+            overflow: hidden;
+
+            .heading {
+                position: relative;
+                z-index: 100;
+                color: hsl(240 5.7% 10.4%);
+                pointer-events: none;
+                font-size: 50vw;
+            }
 
             .line {
                 position: absolute;
@@ -57,6 +76,7 @@
                     height: var(--line-height);
                     left: var(--starting-position);
                     top: 0;
+                    filter: blur(2px);
                     will-change: left;
                     background: linear-gradient(
                         to left,
