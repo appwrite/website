@@ -6,9 +6,22 @@ description: Efficiently deploy your Appwrite functions using the Command-Line T
 
 The CLI handles the creation and deployment of Appwrite Functions. Make sure you [install and initialize](/docs/tooling/command-line/installation#Installation) your CLI Appwrite project.
 
+# Init function {% #init-function %}
+
+Initialize your new function using the following command:
+
+```sh
+appwrite init function
+? What would you like to name your function? My Awesome Function     
+? What ID would you like to have for your function? unique()
+? What runtime would you like to use? Node.js (node-16.0)
+? What template would you like to use? Starter
+✓ Success
+```
+
 # Pull function {% #pull-function %}
 
-You can pull your Appwrite functions customizable settings using the `pull` command in the folder holding your `appwrite.json` file.
+You can also pull your existing Appwrite functions using the `pull` command in the folder holding your `appwrite.json` file.
 
 ```sh
 appwrite pull functions
@@ -16,8 +29,9 @@ appwrite pull functions
 
 # appwrite.json {% #appwritejson %}
 
-After pulling your Appwrite function, your `appwrite.json` file should look similar to the following:
-```node-server
+Your `appwrite.json` file should look similar to the following:
+
+```server-nodejs
 {
     "projectId": <PROJECT_ID>,
     "functions": [

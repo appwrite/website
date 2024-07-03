@@ -70,6 +70,13 @@ Before you can use the CLI, you need to login to your Appwrite account using
 appwrite login
 ```
 
+In case of a self-hosted instance, add the `self-hosted` flag.
+
+```sh
+appwrite login --self-hosted
+```
+You can log-in to multiple accounts or change the **current** account by simply running the command again.
+
 # Initialization {% #Initialization %}
 
 After you're logged in, the CLI needs to be initialized with your Appwrite project. You can initialize the CLI using:

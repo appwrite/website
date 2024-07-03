@@ -6,16 +6,28 @@ description: Efficiently deploy your Appwrite teams using the Command-Line Tool 
 
 The Appwrite CLI can create teams to organize users. Teams can be used to grant access [permissions](https://appwrite.io/docs/products/auth/teams#permissions) to a group of users. Make sure you [install and initialize](/docs/tooling/command-line/installation#Installation) your CLI Appwrite project.
 
+# Initialize team {% #initialize-team %}
+
+Initialize your new team using the following command:
+
+```sh
+appwrite init team
+? What would you like to name your team? My Awesome Team? 
+What ID would you like to have for your team? unique()
+✓ Success
+ℹ Info Next you can use 'appwrite push team' to deploy the changes.
+```
+
 # Pull team {% #pull-team %}
 
-You can pull your Appwrite team's customizable settings using the `pull` command in the folder holding your `appwrite.json` file.
+You can also pull your existing Appwrite teams using the `pull` command in the folder holding your `appwrite.json` file.
 
 ```sh
 appwrite pull teams
 ```
 
 # appwrite.json {% #appwritejson %}
-After pulling your Appwrite function, your `appwrite.json` file should look similar to the following:
+Your `appwrite.json` file should look similar to the following:
 
 ```server-nodejs
 {
