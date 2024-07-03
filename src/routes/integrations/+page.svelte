@@ -540,10 +540,11 @@
         }
     }
 
-    :where(:target, :focus-within) {
+    :where(:target) {
         .l-max-size-list-cards {
             overflow: visible;
             max-block-size: none;
+            scroll-margin: 100px;
             &::before {
                 opacity: 0;
                 pointer-events: none;
