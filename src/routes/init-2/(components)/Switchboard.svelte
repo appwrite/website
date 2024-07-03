@@ -125,15 +125,15 @@
                         0px 0px 2px 1px rgba(50, 145, 255, 0.25);
                 }
 
-                &[data-state='off'] {
+                &:global([data-state='off']) {
                     background: #707070;
                 }
 
-                &[data-state='medium']:before {
+                &:global([data-state='medium']):before {
                     opacity: 1;
                 }
 
-                &[data-state='high']:after {
+                &:global([data-state='high']):after {
                     opacity: 1;
                 }
             }

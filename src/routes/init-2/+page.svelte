@@ -3,7 +3,6 @@
     import { Main } from '$lib/layouts';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
     import Hero from './(components)/Hero.svelte';
-    import Switchboard from './(components)/Switchboard.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
@@ -28,7 +27,7 @@
 </svelte:head>
 
 <Main>
-    <Switchboard />
+    <Hero />
 
     <div class="web-container">
         <FooterNav />
