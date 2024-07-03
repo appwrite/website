@@ -2,7 +2,7 @@ import Box from './box.svelte';
 import Code from './code.svelte';
 import Phone from './phone.svelte';
 
-import { safeAnimate, sleep } from '$lib/animations';
+import { safeAnimate, sleep, write } from '$lib/animations';
 import { createResettable } from '$lib/utils/resettable';
 import { getElSelector } from '../Products.svelte';
 
@@ -20,6 +20,8 @@ type Message = {
 };
 
 type State = {
+    heading: string;
+    message: string;
     tasks: Task[];
     messages: Message[];
     tableSlice: number;
@@ -27,6 +29,8 @@ type State = {
 };
 
 const state = createResettable<State>({
+    heading: '',
+    message: '',
     tasks: [
         {
             id: '3397fecdedb13397fecdedb1',
@@ -38,13 +42,13 @@ const state = createResettable<State>({
         {
             id: '...3397fecdedb1',
             type: 'SMS',
-            icon: './images/icons/illustrated/dark/sms.png',
+            icon: './images/icons/illustrated/dark/sms.svg',
             status: 'sent'
         },
         {
             id: '...2224gabjger4',
             type: 'Email',
-            icon: './images/icons/illustrated/dark/email.png',
+            icon: './images/icons/illustrated/dark/email.svg',
             status: 'sent'
         }
     ],
@@ -60,7 +64,7 @@ const execute = async () => {
 
     await Promise.all([
         safeAnimate(phone, { x: 365, y: 0, width: '275px' }, { duration: 0.5 })?.finished,
-        safeAnimate(code, { x: 80, y: 300, opacity: 1, zIndex: 100 }, { duration: 0.5 })?.finished,
+        safeAnimate(code, { x: 80, y: 325, opacity: 0, zIndex: 100 }, { duration: 0.5 })?.finished,
         safeAnimate(box, { x: 0, y: 32, opacity: 1 }, { duration: 0.5, delay: 1 })?.finished
     ]);
 
@@ -107,6 +111,25 @@ const execute = async () => {
 
     await sleep(250);
 
+    safeAnimate(code, { opacity: 1 }, { duration: 0.5 })?.finished, await sleep(250);
+    await write(
+        'New task assigned to you',
+        (v) => {
+            state.update((n) => ({ ...n, heading: v }));
+        },
+        300
+    );
+
+    await write(
+        'You were assigned a new task in your board. Tap to check it out.',
+        (v) => {
+            state.update((n) => ({ ...n, message: v }));
+        },
+        300
+    );
+
+    await sleep(250);
+
     update((p) => ({
         ...p,
         messages: [
@@ -114,7 +137,7 @@ const execute = async () => {
             {
                 id: '...5689fdoerre2',
                 type: 'Push',
-                icon: './images/icons/illustrated/dark/push.png',
+                icon: './images/icons/illustrated/dark/push.svg',
                 status: 'sending'
             }
         ]
