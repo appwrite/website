@@ -64,11 +64,11 @@ The truth is that code, content, and community are vast spaces of their own; you
 
 ## A little about Appwrite
 
-[Appwrite](http://appwrite.io/) is an open-source Backend-as-a-Service (BaaS), packaged as a set of Docker microservices to give developers of any background the tools necessary to build modern apps quickly and securely.
+[Appwrite](http://appwrite.io/) is an open-source Backend-as-a-Service (BaaS) platform that lets you add Authentication, Databases, Functions, and Storage to your product and build any application at any scale, own your data, and use your preferred coding languages and tools.
 
-Check out Appwrite as the backend for your next [web](https://appwrite.io/docs/getting-started-for-web), [Flutter](https://appwrite.io/docs/getting-started-for-flutter), or [server-side](https://appwrite.io/docs/getting-started-for-server)application. 
+Learn more about Appwrite:
 
-- [Appwrite Contribution Guide](https://github.com/appwrite/appwrite/blob/master/CONTRIBUTING.md)
+- [Appwrite Docs](https://appwrite.io/docs)
 - [Appwrite Discord](https://appwrite.io/discord)
 - [Appwrite GitHub](https://github.com/appwrite)
-- [Appwrite Documentation](https://appwrite.io/docs)
+- [Appwrite YouTube channel](https://youtube.com/@appwrite)
