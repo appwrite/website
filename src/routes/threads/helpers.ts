@@ -23,11 +23,11 @@ type FilterThreadsArgs = {
 export function filterThreads({ q, threads: threadDocs, tags, allTags }: FilterThreadsArgs) {
     const threads = tags
         ? threadDocs.filter((thread) => {
-              const lowercaseTags = thread.tags?.map((tag) => tag.toLowerCase());
+              const threadTags = thread.tags?.map((tag) => tag);
               if (allTags) {
-                  return tags?.every((tag) => lowercaseTags?.includes(tag.toLowerCase()));
+                  return tags?.every((tag) => threadTags?.includes(tag));
               } else {
-                  return tags?.some((tag) => lowercaseTags?.includes(tag.toLowerCase()));
+                  return tags?.some((tag) => threadTags?.includes(tag));
               }
           })
         : threadDocs;
@@ -69,10 +69,9 @@ type GetThreadsArgs = Omit<FilterThreadsArgs, 'threads'>;
 export async function getThreads({ q, tags, allTags }: GetThreadsArgs) {
     let query = [q ? Query.search('search_meta', q) : undefined, Query.orderDesc('$createdAt')];
 
-    tags = tags?.filter(Boolean).map((tag) => tag.toLowerCase()) ?? [];
-
+    tags = tags?.filter(Boolean).map((tag) => tag) ?? [];
     if (tags.length > 0) {
-        query = [...query, Query.search('tags', tags.join(','))];
+        query = [...query, Query.contains('tags', tags)];
     }
 
     const data = await databases.listDocuments(

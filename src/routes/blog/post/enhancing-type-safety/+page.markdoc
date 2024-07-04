@@ -65,7 +65,7 @@ Code maintainability is extremely important for any piece of software, which is 
 
 With the latest release of Appwrite, we have taken steps to improve type safety within our SDKs by leveraging enums. We have replaced all magic literals, such as constants needed for OAuth adapters, with enums to simplify the developer experience for all those who are building with Appwrite.
 
-```js
+```client-web
 import { Client, Account, OAuthProvider } from "appwrite";
 
 const client = new Client()
@@ -81,8 +81,8 @@ account.createOAuth2Session(OAuthProvider.Apple, '[LINK_ON_SUCCESS]', '[LINK_ON_
 
 Visit our documentation to learn more about Enums SDK support, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
-- [Docs](https://appwrite.io/docs/sdks#enums)
+- [Docs](/docs/sdks#enums)
 - [Discord](https://appwrite.io/discord)
-- [Blog](https://appwrite.io/blog)
+- [Blog](/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
 - [GitHub](https://github.com/appwrite/appwrite)

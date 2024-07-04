@@ -28,7 +28,7 @@
             <li class="web-strip-plans-item web-strip-plans-container-query">
                 <div class="web-strip-plans-item-wrapper">
                     <div class="web-strip-plans-plan">
-                        <h4 class="title web-description">Starter</h4>
+                        <h4 class="title web-description">Free</h4>
                         <div class="web-title web-u-color-text-primary">$0</div>
                         <div class="info web-caption-500" />
                     </div>
@@ -59,7 +59,8 @@
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <span class="text">Start trial</span>
+                        <!-- <span class="text">Start trial</span> -->
+                        <span class="text">Start building</span>
                     </a>
                 </div>
             </li>
@@ -67,7 +68,7 @@
                 <div class="web-strip-plans-item-wrapper">
                     <div class="web-strip-plans-plan">
                         <h4 class="title web-description">Scale</h4>
-                        <div class="web-title web-u-color-text-primary">$685</div>
+                        <div class="web-title web-u-color-text-primary">$599</div>
                         <div class="info web-caption-500">per org/month</div>
                     </div>
                     <p class="web-strip-plans-info web-caption-500">

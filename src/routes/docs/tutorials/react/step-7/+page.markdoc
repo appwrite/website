@@ -9,7 +9,7 @@ Using the `useIdeas` hook we can now display the ideas on the page. We will also
 
 Overwrite the contents of `src/pages/Home.jsx` with the following:
 
-```js
+```client-web
 import { useState } from "react";
 import { useUser } from "../lib/context/user";
 import { useIdeas } from "../lib/context/ideas";
@@ -78,4 +78,30 @@ export function Home() {
     </>
   );
 }
+```
+
+In `src/App.jsx`, wrap the `main` element with the `IdeaProvider` component.
+
+```client-web
+import { Login } from "./pages/Login";
+import { Home } from "./pages/Home";
+import { UserProvider } from "./lib/context/user";
+import { IdeaProvider } from "./lib/context/ideas";
+
+function App() {
+  const isLoginPage = window.location.pathname === "/login";
+
+  return (
+    <div>
+      <UserProvider>
+        <IdeaProvider>
+          <Navbar /> {/* Add the navbar before page content */}
+          <main>{isLoginPage ? <Login /> : <Home />}</main>
+        </IdeaProvider>
+      <UserProvider>
+    </div>
+  );
+}
+
+export default App;
 ```

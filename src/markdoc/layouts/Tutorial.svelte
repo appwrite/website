@@ -2,6 +2,7 @@
     export type Tutorial = {
         title: string;
         framework?: string;
+        category?: string;
         step: number;
         href: string;
         draft?: boolean;

@@ -22,6 +22,7 @@
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
     import { page } from '$app/stores';
+    import { loggedIn } from '$lib/utils/console';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -46,9 +47,21 @@
     }
 
     function isInViewport(element: Element): boolean {
+        const mobileHeader = document.querySelector('.aw-mobile-header');
+        const isMobile =
+            mobileHeader &&
+            getComputedStyle(mobileHeader).display !== 'none' &&
+            isVisible(mobileHeader, {
+                top: 0,
+                bottom: window.innerHeight,
+                left: 0,
+                right: window.innerWidth
+            });
+        const h = isMobile || 'bannerHidden' in document.body.dataset ? 32 : 64;
+
         return isVisible(element, {
-            top: 32,
-            bottom: 32,
+            top: h,
+            bottom: h,
             left: 0,
             right: window.innerWidth
         });
@@ -102,7 +115,7 @@
         {
             label: 'Changelog',
             href: '/changelog',
-            showBadge: hasNewChangelog() && !$page.url.pathname.includes('/changelog')
+            showBadge: hasNewChangelog?.() && !$page.url.pathname.includes('/changelog')
         },
         {
             label: 'Pricing',
@@ -178,7 +191,6 @@
         class="web-main-header is-special-padding theme-{resolvedTheme} is-transparent"
         class:is-hidden={$isHeaderHidden}
     >
-
         <div class="web-top-banner">
             <div class="web-top-banner-content web-u-color-text-primary">
                 <a href="/discord" target="_blank" rel="noopener noreferrer">

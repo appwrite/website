@@ -49,7 +49,7 @@
     import { navigating, page, updated } from '$app/stores';
     import { onMount } from 'svelte';
     import { derived, writable } from 'svelte/store';
-    import { loggedIn } from '$lib/utils/console';
+    import { createSource, loggedIn } from '$lib/utils/console';
     import { beforeNavigate } from '$app/navigation';
 
     function applyTheme(theme: Theme) {
@@ -60,6 +60,25 @@
     }
 
     onMount(() => {
+        const urlParams = $page.url.searchParams;
+        const ref = urlParams.get('ref');
+        const utmSource = urlParams.get('utm_source');
+        const utmMedium = urlParams.get('utm_medium');
+        const utmCampaign = urlParams.get('utm_campaign');
+        let referrer = document.referrer.length ? document.referrer : null;
+        // Skip our own
+        if(referrer?.includes('//appwrite.io')) {
+            referrer = null;
+        }
+        if (ref || referrer || utmSource || utmCampaign || utmMedium) {
+            createSource(
+                ref,
+                referrer,
+                utmSource,
+                utmCampaign,
+                utmMedium
+            );
+        }
         const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
 
         applyTheme(initialTheme);

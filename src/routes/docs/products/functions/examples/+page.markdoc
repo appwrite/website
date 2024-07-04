@@ -106,7 +106,7 @@ Finally, add `bundle install` to your function's build commands in the Appwrite 
 
 ## Code
 {% multicode %}
-```js
+```server-nodejs
 import { fetch } from 'undici';
 
 export default async function ({ req, res }) {
@@ -184,6 +184,7 @@ def main(context):
 ```dart
 import 'dart:async';
 import 'package:http/http.dart' as http;
+import 'dart:io';
 
 Future<dynamic> main(final context) async {
   if (context.req.path == '/eur') {
@@ -256,7 +257,7 @@ Create a Votes collection with the following attributes:
 
 ## Code
 {% multicode %}
-```js
+```server-nodejs
 import { Client, Databases, Query } from 'node-appwrite';
 
 export default async function ({ req, res }) {
@@ -397,6 +398,7 @@ return function ($context) {
 ```dart
 import 'dart:async';
 import 'package:dart_appwrite/dart_appwrite.dart';
+import 'dart:io';
 
 Future main(final context) async {
     final vote = {
@@ -511,7 +513,7 @@ Create a Messages collection with the following attributes:
 
 {% multicode %}
 
-```js
+```server-nodejs
 import { Client, Databases, Query, ID } from 'node-appwrite';
 import querystring from 'node:querystring';
 

@@ -23,7 +23,7 @@ You need to create a session using the Client SDKs **before** generating a JWT. 
 You can generate a JWT like this on a [Client SDK](/docs/sdks#client).
 
 {% multicode %}
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client()
@@ -34,7 +34,7 @@ const account = new Account(client);
 
 const user = await account.createJWT();
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -45,7 +45,18 @@ final account = Account(client);
 
 final jwt = await account.createJWT();
 ```
-```kotlin
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                  // Your project ID
+
+let account = Account(client)
+
+let jwt = try await account.createJWT()
+```
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
 
@@ -56,17 +67,6 @@ val client = Client(context)
 val account = Account(client)
 
 val jwt = account.createJWT()
-```
-```swift
-import Appwrite
-
-let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                  // Your project ID
-
-let account = Account(client)
-
-let jwt = try await account.createJWT()
 ```
 ```graphql
 mutation {

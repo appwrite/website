@@ -7,13 +7,14 @@
   &.is-normal {
     --p-card-bg-color: var(--p-card-bg-color-default);
     --p-card-bg-color-default: var(--web-color-card);
+    --p-card-bg-color-hover: var(--web-color-smooth);
 
     --p-card-border-color: var(--p-card-border-color-default);
     --p-card-border-color-default: var(--web-color-offset);
 
     --p-card-shadow-color: var(--p-card-shadow-color-default);
     --p-card-shadow-color-default: var(--web-color-black) / 0;
-    --p-card-shadow-color-focus-visible: var(--web-color-black) / 0.06;
+    --p-card-shadow-color-focus-visible: var(--web-color-pink-500) / 0.72;
 
     --card-padding: #{pxToRem(16)};
 
@@ -25,13 +26,14 @@
 
     &:where(a, button) {
       cursor:pointer;
-      outline: solid pxToRem(1) hsl(var(--transparent));
       box-shadow: 0 0 0 pxToRem(5) hsl(var(--p-card-shadow-color));
       transition:var(--transition);
-      &:where(:hover, :focus):not(#{$disabled}) {
-        outline-color: hsl(var(--p-card-border-color));
+
+      &:where(:hover, :active, :focus):not(#{$disabled}) {
+        --p-card-bg-color: var(--p-card-bg-color-hover);
       }
-      &:where(:focus-visible) {
+      &:where(:focus-visible):not(#{$disabled}) {
+        --p-card-border-color: var(--transparent);
         --p-card-shadow-color: var(--p-card-shadow-color-focus-visible);
       }
       &:where(#{$disabled}) { opacity:0.4; }
@@ -39,7 +41,6 @@
 
     #{$theme-dark} & {
       --p-card-border-color-default: var(--web-color-white) / 0.10;
-
       --p-card-shadow-color-focus-visible: var(--web-color-white) / 0.06;
     }
   }

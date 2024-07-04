@@ -27,7 +27,8 @@ export function load() {
                 timeToRead: frontmatter.timeToRead,
                 author: frontmatter.author,
                 category: frontmatter.category,
-                href: `${base}/blog/post/${postName}`
+                href: `${base}/blog/post/${postName}`,
+                draft: frontmatter.draft
             };
         })
         .sort((a, b) => {

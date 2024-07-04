@@ -29,31 +29,31 @@
                     title: 'Bandwidth',
                     free: '10GB',
                     pro: '300GB',
-                    scale: '5TB'
+                    scale: '300GB'
                 },
                 {
                     title: 'Additional bandwidth',
                     free: '-',
-                    pro: '$40 per 100GB',
-                    scale: '$40 per 100GB'
+                    pro: '$0.4 per GB',
+                    scale: '$0.4 per GB'
                 },
                 {
                     title: 'Storage',
                     free: '2GB',
                     pro: '150GB',
-                    scale: '500GB'
+                    scale: '150GB'
                 },
                 {
                     title: 'Additional storage',
                     free: '-',
-                    pro: '$3 per 100GB',
-                    scale: '$3 per 100GB'
+                    pro: '$0.03 per GB',
+                    scale: '$0.03 per GB'
                 },
                 {
                     title: 'Compute',
                     free: '750K executions',
                     pro: '3.5M executions',
-                    scale: '10M executions'
+                    scale: '3.5M executions'
                 }
             ]
         },
@@ -118,19 +118,13 @@
                     title: 'Logs retention',
                     free: '1 hour',
                     pro: '7 days',
-                    scale: '14 days'
+                    scale: '28 days'
                 },
                 {
                     title: 'Budget caps and alerts',
                     free: 'Not needed',
                     pro: true,
                     scale: true
-                },
-                {
-                    title: 'Additional organization member roles',
-                    free: '-',
-                    pro: '-',
-                    scale: 'Coming Soon'
                 }
             ]
         },
@@ -141,13 +135,13 @@
                     title: 'Users',
                     free: '75,000 monthly active users',
                     pro: '200,000 monthly active users',
-                    scale: '500,000 monthly active users'
+                    scale: '200,000 monthly active users'
                 },
                 {
                     title: 'Additional users',
                     free: '-',
-                    pro: '$3 per 1,000 users',
-                    scale: '$3 per 1,000 users'
+                    pro: '$0.003 per user',
+                    scale: '$0.003 per user'
                 },
                 {
                     title: 'Teams',
@@ -187,7 +181,7 @@
                 {
                     title: 'Dedicated databases',
                     free: '-',
-                    pro: 'Start trial',
+                    pro: 'Coming Soon',
                     scale: 'Coming soon'
                 }
             ]
@@ -205,7 +199,7 @@
                     title: 'File size limit',
                     free: '50MB',
                     pro: '5GB',
-                    scale: '5TB'
+                    scale: '5GB'
                 },
                 {
                     title: 'Image transformations',
@@ -228,7 +222,7 @@
                     title: 'Executions',
                     free: '750K',
                     pro: '3.5M',
-                    scale: '10M'
+                    scale: '3.5M'
                 },
                 {
                     title: 'Additional executions',
@@ -245,19 +239,60 @@
                     title: 'Concurrent connections',
                     free: '250',
                     pro: '500',
-                    scale: '1500'
+                    scale: '500'
                 },
                 {
                     title: 'Additional concurrent connections',
                     free: '-',
-                    pro: '$5 per 1,000',
-                    scale: '$5 per 1,000'
+                    pro: '$0.005 per connection',
+                    scale: '$0.005 per connection'
                 },
                 {
                     title: 'Messages',
                     free: '3M',
                     pro: 'Unlimited',
                     scale: 'Unlimited'
+                }
+            ]
+        }, 
+        {
+            title: 'Security',
+            rows: [
+                {
+                    title: 'SOC-2',
+                    free: '-',
+                    pro: '-',
+                    scale: true
+                },
+                {
+                    title: 'HIPAA',
+                    free: '-',
+                    pro: '-',
+                    scale: true
+                },
+                {
+                    title: 'BAA',
+                    free: '-',
+                    pro: '-',
+                    scale: true
+                },
+                {
+                    title: 'Additional organization roles',
+                    free: '-',
+                    pro: '-',
+                    scale: 'Coming Soon'
+                },
+                {
+                    title: 'Network logs',
+                    free: '-',
+                    pro: '-',
+                    scale: 'Coming Soon'
+                },
+                {
+                    title: 'Activity logs',
+                    free: '-',
+                    pro: '-',
+                    scale: 'Coming Soon'
                 }
             ]
         },
@@ -277,7 +312,7 @@
                     scale: true
                 },
                 {
-                    title: 'Phone',
+                    title: 'Priority',
                     free: '-',
                     pro: '-',
                     scale: true
@@ -381,7 +416,7 @@
                             <div
                                 class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between"
                             >
-                                <h4 class="web-label web-u-color-text-primary">Starter</h4>
+                                <h4 class="web-label web-u-color-text-primary">Free</h4>
                                 <a
                                     href="https://cloud.appwrite.io/register"
                                     class="web-button is-secondary"
@@ -401,7 +436,8 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <span class="web-sub-body-500">Start trial</span>
+                                    <!-- <span class="web-sub-body-500">Start trial</span> -->
+                                    <span class="web-sub-body-500">Start building</span>
                                 </a>
                             </div>
                         </div>
