@@ -78,16 +78,16 @@
 	</svg>
 </div>
 
-<div class="aw-big-padding-section">
-	<div class="aw-big-padding-section-level-1">
-		<div class="aw-big-padding-section-level-2">
-			<div class="aw-container">
-				<div class="aw-grid-1-1-opt-2 u-gap-32">
+<div class="web-big-padding-section">
+	<div class="web-big-padding-section-level-1">
+		<div class="web-big-padding-section-level-2">
+			<div class="web-container">
+				<div class="web-grid-1-1-opt-2 u-gap-32">
 					<div class="">
-						<div class="aw-u-max-inline-size-none-mobile" class:aw-u-max-width-380={!submitted}>
-							<section class="u-flex-vertical aw-u-gap-20">
-								<h1 class="aw-title aw-u-color-text-primary">Subscribe to our newsletter</h1>
-								<p class="aw-description aw-u-padding-block-end-40">
+						<div class="web-u-max-inline-size-none-mobile" class:web-u-max-width-380={!submitted}>
+							<section class="u-flex-vertical web-u-gap-20">
+								<h1 class="web-title web-u-color-text-primary">Subscribe to our newsletter</h1>
+								<p class="web-description web-u-padding-block-end-40">
 									Sign up to our company blog and get the latest insights from Appwrite. Learn more
 									about engineering, product design, building community, and tips & tricks for using
 									Appwrite.
@@ -134,7 +134,7 @@
 							<div class="u-flex u-flex-vertical u-gap-4">
 								<label for="name">Your name</label>
 								<input
-									class="aw-input-text"
+									class="web-input-text"
 									type="text"
 									placeholder="Enter your name"
 									id="name"
@@ -146,7 +146,7 @@
 							<div class="u-flex u-flex-vertical u-gap-4">
 								<label for="email">Your email</label>
 								<input
-									class="aw-input-text"
+									class="web-input-text"
 									type="email"
 									placeholder="Enter your email"
 									required
@@ -155,7 +155,7 @@
 									bind:value={email}
 								/>
 							</div>
-							<button type="submit" class="aw-button" disabled={submitting}>Sign up</button>
+							<button type="submit" class="web-button" disabled={submitting}>Sign up</button>
 							{#if error}
 								<span class="text"> Something went wrong. Please try again later. </span>
 							{/if}

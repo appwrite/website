@@ -9,7 +9,7 @@ Other than commands to create and deploy databases, collections, functions, team
 Commands follows the following general syntax:
 
 ```sh
-appwrite [COMMAND] --[OPTIONS]
+appwrite [COMMAND] [OPTIONS]
 ```
 
 # List {% #list %}
@@ -70,6 +70,13 @@ In case of errors with any command, you can get more information about what went
 
 ```sh
 appwrite users list --verbose
+```
+
+# JSON {% #json %}
+By default, output is rendered in a tabular format. To format the output as JSON, use the `--json` flag.
+
+```sh
+appwrite users list --json
 ```
 
 # Examples {% #examples %}

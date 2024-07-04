@@ -62,54 +62,54 @@
 </div>
 
 <Main>
-    <div class="aw-big-padding-section">
-        <div class="aw-big-padding-section-level-1">
-            <div class="aw-big-padding-section-level-2">
-                <div class="aw-container">
-                    <div class="aw-grid-1-1-opt-2 u-gap-32">
+    <div class="web-big-padding-section">
+        <div class="web-big-padding-section-level-1">
+            <div class="web-big-padding-section-level-2">
+                <div class="web-container">
+                    <div class="web-grid-1-1-opt-2 u-gap-32">
                         <div>
                             <div
-                                class="aw-u-max-inline-size-none-mobile"
-                                class:aw-u-max-width-380={!submitted}
+                                class="web-u-max-inline-size-none-mobile"
+                                class:web-u-max-width-380={!submitted}
                             >
                                 {#if submitted}
-                                    <section class="u-flex-vertical aw-u-gap-20">
-                                        <h1 class="aw-display aw-u-color-text-primary">
+                                    <section class="u-flex-vertical web-u-gap-20">
+                                        <h1 class="web-display web-u-color-text-primary">
                                             Thank you for your message
                                         </h1>
-                                        <p class="aw-description aw-u-padding-block-end-32">
+                                        <p class="web-description web-u-padding-block-end-32">
                                             Your message has been sent successfully. We appreciate
                                             your feedback, our team will try to get back to you as
                                             soon as possible.
                                         </p>
                                         <a
                                             href="/"
-                                            class="aw-button is-secondary aw-u-margin-block-end-32"
+                                            class="web-button is-secondary web-u-margin-block-end-32"
                                         >
                                             <span>Back to homepage</span>
                                         </a>
                                     </section>
                                 {:else}
-                                    <section class="u-flex-vertical aw-u-gap-20">
-                                        <h1 class="aw-display aw-u-color-text-primary">
+                                    <section class="u-flex-vertical web-u-gap-20">
+                                        <h1 class="web-display web-u-color-text-primary">
                                             Contact Us
                                         </h1>
-                                        <p class="aw-description aw-u-padding-block-end-40">
+                                        <p class="web-description web-u-padding-block-end-40">
                                             We'd love your input: questions, feature requests, bugs
                                             or compliments.
                                         </p>
                                     </section>
                                 {/if}
                                 <section
-                                    class="u-flex-vertical u-gap-12 aw-u-padding-block-start-40 aw-u-sep-block-start"
+                                    class="u-flex-vertical u-gap-12 web-u-padding-block-start-40 web-u-sep-block-start"
                                 >
-                                    <h2 class="aw-label aw-u-color-text-primary">Follow us</h2>
+                                    <h2 class="web-label web-u-color-text-primary">Follow us</h2>
                                     <ul class="u-flex u-gap-8">
                                         {#each socials as social}
                                             <li>
                                                 <a
                                                     href={social.link}
-                                                    class="aw-icon-button"
+                                                    class="web-icon-button"
                                                     aria-label={social.label}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
@@ -121,7 +121,7 @@
                                     </ul>
                                 </section>
                                 <div
-                                    class="aw-is-only-mobile aw-u-margin-block-start-40 aw-u-padding-block-start-40 aw-u-sep-block-start"
+                                    class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
                                 />
                             </div>
                         </div>
@@ -133,32 +133,32 @@
                             >
                                 <div class="u-flex u-main-end">
                                     <ul
-                                        class="aw-form-list is-two-columns u-gap-16 u-width-full-line aw-u-max-width-580 aw-u-max-inline-size-none-mobile"
+                                        class="web-form-list is-two-columns u-gap-16 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
                                     >
-                                        <li class="aw-form-item">
+                                        <li class="web-form-item">
                                             <input
                                                 required
-                                                class="aw-input-text"
+                                                class="web-input-text"
                                                 type="text"
                                                 placeholder="Name"
                                                 aria-label="Name"
                                                 bind:value={firstName}
                                             />
                                         </li>
-                                        <li class="aw-form-item">
+                                        <li class="web-form-item">
                                             <input
                                                 required
-                                                class="aw-input-text"
+                                                class="web-input-text"
                                                 type="email"
                                                 placeholder="Email address"
                                                 aria-label="Email address"
                                                 bind:value={email}
                                             />
                                         </li>
-                                        <li class="aw-form-item is-column-span-2">
+                                        <li class="web-form-item is-column-span-2">
                                             <input
                                                 required
-                                                class="aw-input-text"
+                                                class="web-input-text"
                                                 type="text"
                                                 name="subject"
                                                 placeholder="Subject"
@@ -166,11 +166,11 @@
                                                 bind:value={subject}
                                             />
                                         </li>
-                                        <li class="aw-form-item is-column-span-2">
+                                        <li class="web-form-item is-column-span-2">
                                             <textarea
                                                 required
                                                 name="message"
-                                                class="aw-input-text"
+                                                class="web-input-text"
                                                 placeholder="Your message"
                                                 aria-label="Message"
                                                 bind:value={message}
@@ -179,24 +179,24 @@
                                     </ul>
                                 </div>
                                 <div
-                                    class="u-flex u-gap-16 u-main-space-between aw-u-flex-vertical-reverse-mobile"
+                                    class="u-flex u-gap-16 u-main-space-between web-u-flex-vertical-reverse-mobile"
                                 >
-                                    <p class="aw-caption-400 aw-u-max-width-380">
+                                    <p class="web-caption-400 web-u-max-width-380">
                                         {#if error}
                                             {error}
                                         {/if}
                                     </p>
-                                    <!-- <p class="aw-caption-400 aw-u-max-width-380">
+                                    <!-- <p class="web-caption-400 web-u-max-width-380">
 										This form is protected by reCAPTCHA, and the Google <a
-											class="aw-link"
+											class="web-link"
 											href="/privacy"
 											target="_blank" rel="noopener noreferrer">Privacy Policy</a
 										>
-										and <a class="aw-link" href="/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.
+										and <a class="web-link" href="/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.
 									</p> -->
                                     <button
                                         type="submit"
-                                        class="aw-button u-cross-child-center aw-u-inline-width-100-percent-mobile-break1"
+                                        class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1"
                                     >
                                         <span>Submit</span>
                                     </button>
@@ -209,7 +209,7 @@
         </div>
     </div>
 
-    <div class="aw-container">
+    <div class="web-container">
         <FooterNav />
         <MainFooter />
     </div>

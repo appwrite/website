@@ -6,7 +6,7 @@
     const { state } = authController;
 
     const getIcon = (provider: string) => {
-        return `aw-icon-${provider.toLowerCase()}`;
+        return `web-icon-${provider.toLowerCase()}`;
     };
 </script>
 
@@ -39,7 +39,7 @@
 
             > :nth-child(2) {
                 margin-left: 0.75rem;
-                color: hsl(var(--aw-color-white));
+                color: hsl(var(--web-color-white));
 
                 font-family: Inter;
                 font-size: 0.875rem;
@@ -66,7 +66,7 @@
             font-size: var(--size);
             width: var(--size);
             height: var(--size);
-            color: hsl(var(--aw-color-greayscale-50));
+            color: hsl(var(--web-color-greayscale-50));
 
             position: relative;
 

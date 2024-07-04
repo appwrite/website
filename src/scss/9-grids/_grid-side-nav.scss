@@ -13,14 +13,14 @@
     .#{$p}-main-section { padding-inline:pxToRem(20); padding-block-start:pxToRem(32); }
 
     &.is-open {
-      background:hsl(var(--aw-color-background));
+      background:hsl(var(--web-color-background));
       > *:not(.#{$p}-mobile-header, .#{$p}-side-nav) { display:none!important; }
       .#{$p}-side-nav { display:block!important; }
     }
   }
   @media #{$break2} {
     .#{$p}-side-nav {
-      display:none; position:fixed; inset-inline-start:0; inset-block-start:pxToRem(73); inset-block-end:0; background:hsl(var(--aw-color-background));
+      display:none; position:fixed; inset-inline-start:0; inset-block-start:pxToRem(73); inset-block-end:0; background:hsl(var(--web-color-background));
       inline-size:pxToRem(280); block-size:initial; border-inline-end:solid pxToRem(1) hsl(var(--color-border));
     }
     &.is-open {

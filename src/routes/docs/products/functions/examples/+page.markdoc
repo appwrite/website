@@ -106,7 +106,7 @@ Finally, add `bundle install` to your function's build commands in the Appwrite 
 
 ## Code
 {% multicode %}
-```js
+```server-nodejs
 import { fetch } from 'undici';
 
 export default async function ({ req, res }) {
@@ -184,6 +184,7 @@ def main(context):
 ```dart
 import 'dart:async';
 import 'package:http/http.dart' as http;
+import 'dart:io';
 
 Future<dynamic> main(final context) async {
   if (context.req.path == '/eur') {
@@ -256,7 +257,7 @@ Create a Votes collection with the following attributes:
 
 ## Code
 {% multicode %}
-```js
+```server-nodejs
 import { Client, Databases, Query } from 'node-appwrite';
 
 export default async function ({ req, res }) {
@@ -397,6 +398,7 @@ return function ($context) {
 ```dart
 import 'dart:async';
 import 'package:dart_appwrite/dart_appwrite.dart';
+import 'dart:io';
 
 Future main(final context) async {
     final vote = {
@@ -511,7 +513,7 @@ Create a Messages collection with the following attributes:
 
 {% multicode %}
 
-```js
+```server-nodejs
 import { Client, Databases, Query, ID } from 'node-appwrite';
 import querystring from 'node:querystring';
 
@@ -552,7 +554,7 @@ export default async function ({ req, res }) {
       .setKey(process.env.APPWRITE_API_KEY);
 
     const databases = new Databases(client);
-    const document = await databases.createDocument('[DATABASE_ID]', '[MESSAGES_COLLECTION_ID]', ID.unique(), message);
+    const document = await databases.createDocument('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message);
 
     return res.send("Message sent");
   }
@@ -606,7 +608,7 @@ def main(context):
         )
 
         databases = Databases(client)
-        document = databases.create_document('[DATABASE_ID]', '[MESSAGES_COLLECTION_ID]', ID.unique(), message)
+        document = databases.create_document('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message)
 
         return context.res.send("Message sent")
 
@@ -661,7 +663,7 @@ return function ($context) {
       ->setKey(getenv('APPWRITE_API_KEY'));
 
     $databases = new Databases($client);
-    $document = $databases->createDocument('[DATABASE_ID]', '[MESSAGES_COLLECTION_ID]', ID::unique(), $message);
+    $document = $databases->createDocument('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID::unique(), $message);
 
     return $context->res->send("Message sent");
   }
@@ -711,7 +713,7 @@ def main(context)
             .set_key(ENV['APPWRITE_API_KEY'])
 
         databases = Appwrite::Database.new(client)
-        document = databases.create_document('[DATABASE_ID]', '[MESSAGES_COLLECTION_ID]', ID.unique(), message)
+        document = databases.create_document('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message)
 
         return context.res.send("Message sent")
     end
@@ -761,7 +763,7 @@ Future main(final context) async {
             .setKey(Platform.environment['APPWRITE_API_KEY']);
 
         final databases = Database(client);
-        final document = await databases.createDocument('[DATABASE_ID]', '[MESSAGES_COLLECTION_ID]', ID.unique(), message);
+        final document = await databases.createDocument('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message);
 
         return context.res.send("Message sent");
     }

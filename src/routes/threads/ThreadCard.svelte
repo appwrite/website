@@ -11,16 +11,16 @@
 {#key highlightTerms}
     <a
         href="/threads/{thread.discord_id}"
-        class="aw-card is-normal has-border-gradient thread"
+        class="web-card is-normal has-border-gradient thread"
     >
         <div class="u-flex u-gap-8">
-            <h3 class="aw-main-body-500 aw-u-color-text-primary u-break-word" use:highlight={highlightTerms}>
+            <h3 class="web-main-body-500 web-u-color-text-primary u-break-word" use:highlight={highlightTerms}>
                 {thread.title}
             </h3>
-            <!-- <time class="aw-caption-400 u-margin-inline-start-auto">12 Jan, 2023</time> -->
+            <!-- <time class="web-caption-400 u-margin-inline-start-auto">12 Jan, 2023</time> -->
         </div>
 
-        <p class="aw-main-body-500 u-margin-block-start-4 u-break-word" use:highlight={highlightTerms}>
+        <p class="web-main-body-500 u-margin-block-start-4 u-break-word" use:highlight={highlightTerms}>
             {thread.content.length > 200 ? thread.content.slice(0, 200) + '...' : thread.content}
         </p>
 
@@ -28,24 +28,24 @@
             <ul class="u-flex u-gap-8">
                 {#each thread.tags ?? [] as tag}
                     <li>
-                        <div class="aw-tag">{tag}</div>
+                        <div class="web-tag">{tag}</div>
                     </li>
                 {/each}
             </ul>
 
             <div
-                class="aw-icon-button is-more-content aw-u-pointer-events-none"
+                class="web-icon-button is-more-content web-u-pointer-events-none"
                 aria-label="Replies"
             >
-                <span class="aw-icon-message aw-u-font-size-16" aria-hidden="true" />
-                <span class="aw-caption-400 aw-u-line-height-1-2">{thread.message_count}</span>
+                <span class="web-icon-message web-u-font-size-16" aria-hidden="true" />
+                <span class="web-caption-400 web-u-line-height-1-2">{thread.message_count}</span>
             </div>
         </div>
     </a>
 {/key}
 
 <style lang="scss">
-    .aw-card {
+    .web-card {
         padding: 1.25rem;
     }
 
@@ -58,7 +58,7 @@
     }
 
     .thread :global(mark) {
-        background-color: hsl(var(--aw-color-pink-500) / 0.5);
+        background-color: hsl(var(--web-color-pink-500) / 0.5);
     }
 
     h3 {

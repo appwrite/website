@@ -9,10 +9,10 @@
 	style:width={width ? `${width}px` : undefined}
 	style:min-inline-size={width ? 'unset' : undefined}
 	role="columnheader"
-	class="aw-table-head-col"
+	class="web-table-head-col"
 	{align}
 >
-	<span class="aw-eyebrow">
+	<span class="web-eyebrow">
 		<slot />
 	</span>
 </td>

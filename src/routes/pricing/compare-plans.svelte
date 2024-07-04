@@ -29,31 +29,31 @@
                     title: 'Bandwidth',
                     free: '10GB',
                     pro: '300GB',
-                    scale: '5TB'
+                    scale: '300GB'
                 },
                 {
                     title: 'Additional bandwidth',
                     free: '-',
-                    pro: '$40 per 100GB',
-                    scale: '$40 per 100GB'
+                    pro: '$0.4 per GB',
+                    scale: '$0.4 per GB'
                 },
                 {
                     title: 'Storage',
                     free: '2GB',
                     pro: '150GB',
-                    scale: '500GB'
+                    scale: '150GB'
                 },
                 {
                     title: 'Additional storage',
                     free: '-',
-                    pro: '$3 per 100GB',
-                    scale: '$3 per 100GB'
+                    pro: '$0.03 per GB',
+                    scale: '$0.03 per GB'
                 },
                 {
                     title: 'Compute',
                     free: '750K executions',
                     pro: '3.5M executions',
-                    scale: '10M executions'
+                    scale: '3.5M executions'
                 }
             ]
         },
@@ -118,19 +118,13 @@
                     title: 'Logs retention',
                     free: '1 hour',
                     pro: '7 days',
-                    scale: '14 days'
+                    scale: '28 days'
                 },
                 {
                     title: 'Budget caps and alerts',
                     free: 'Not needed',
                     pro: true,
                     scale: true
-                },
-                {
-                    title: 'Additional organization member roles',
-                    free: '-',
-                    pro: '-',
-                    scale: 'Coming Soon'
                 }
             ]
         },
@@ -141,13 +135,13 @@
                     title: 'Users',
                     free: '75,000 monthly active users',
                     pro: '200,000 monthly active users',
-                    scale: '500,000 monthly active users'
+                    scale: '200,000 monthly active users'
                 },
                 {
                     title: 'Additional users',
                     free: '-',
-                    pro: '$3 per 1,000 users',
-                    scale: '$3 per 1,000 users'
+                    pro: '$0.003 per user',
+                    scale: '$0.003 per user'
                 },
                 {
                     title: 'Teams',
@@ -187,7 +181,7 @@
                 {
                     title: 'Dedicated databases',
                     free: '-',
-                    pro: 'Start trial',
+                    pro: 'Coming Soon',
                     scale: 'Coming soon'
                 }
             ]
@@ -205,7 +199,7 @@
                     title: 'File size limit',
                     free: '50MB',
                     pro: '5GB',
-                    scale: '5TB'
+                    scale: '5GB'
                 },
                 {
                     title: 'Image transformations',
@@ -228,7 +222,7 @@
                     title: 'Executions',
                     free: '750K',
                     pro: '3.5M',
-                    scale: '10M'
+                    scale: '3.5M'
                 },
                 {
                     title: 'Additional executions',
@@ -245,19 +239,60 @@
                     title: 'Concurrent connections',
                     free: '250',
                     pro: '500',
-                    scale: '1500'
+                    scale: '500'
                 },
                 {
                     title: 'Additional concurrent connections',
                     free: '-',
-                    pro: '$5 per 1,000',
-                    scale: '$5 per 1,000'
+                    pro: '$0.005 per connection',
+                    scale: '$0.005 per connection'
                 },
                 {
                     title: 'Messages',
                     free: '3M',
                     pro: 'Unlimited',
                     scale: 'Unlimited'
+                }
+            ]
+        }, 
+        {
+            title: 'Security',
+            rows: [
+                {
+                    title: 'SOC-2',
+                    free: '-',
+                    pro: '-',
+                    scale: true
+                },
+                {
+                    title: 'HIPAA',
+                    free: '-',
+                    pro: '-',
+                    scale: true
+                },
+                {
+                    title: 'BAA',
+                    free: '-',
+                    pro: '-',
+                    scale: true
+                },
+                {
+                    title: 'Additional organization roles',
+                    free: '-',
+                    pro: '-',
+                    scale: 'Coming Soon'
+                },
+                {
+                    title: 'Network logs',
+                    free: '-',
+                    pro: '-',
+                    scale: 'Coming Soon'
+                },
+                {
+                    title: 'Activity logs',
+                    free: '-',
+                    pro: '-',
+                    scale: 'Coming Soon'
                 }
             ]
         },
@@ -277,7 +312,7 @@
                     scale: true
                 },
                 {
-                    title: 'Phone',
+                    title: 'Priority',
                     free: '-',
                     pro: '-',
                     scale: true
@@ -314,49 +349,49 @@
 
 <svelte:window on:scroll={() => (scrollDir = getScrollDir())} />
 
-<div class="aw-big-padding-section-level-1 aw-white-section theme-light">
-    <div class="aw-big-padding-section-level-2">
+<div class="web-big-padding-section-level-1 web-white-section theme-light">
+    <div class="web-big-padding-section-level-2">
         <div class="u-position-relative">
             <article use:melt={$root}>
-                <div class="aw-container">
+                <div class="web-container">
                     <header
-                        class="aw-u-text-align-center"
+                        class="web-u-text-align-center"
                         use:visible
                         on:visible={(e) => {
                             shouldShowTable = !e.detail;
                         }}
                     >
-                        <h3 class="aw-title aw-u-color-text-primary">Compare plans</h3>
-                        <p class="aw-main-body-500 u-margin-block-start-16">
+                        <h3 class="web-title web-u-color-text-primary">Compare plans</h3>
+                        <p class="web-main-body-500 u-margin-block-start-16">
                             Discover our plans and find the one that fits your project’s needs.
                         </p>
                     </header>
 
                     <div
-                        class="aw-is-only-mobile aw-u-padding-block-start-48 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-filter-blur-8 /u-position-sticky /u-z-index-5"
+                        class="web-is-only-mobile web-u-padding-block-start-48 web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 /u-position-sticky /u-z-index-5"
                         style:--inset-block-start="2rem"
                     >
                         <Tabs bind:tab tabs={cols} let:TabsList>
                             <TabsList
-                                class=" aw-u-mobile-divider aw-u-container-query-inline"
+                                class=" web-u-mobile-divider web-u-container-query-inline"
                                 stretch
-                                style="--p-secondary-tabs-bg-color-default: var(--aw-color-white);
-								--p-secondary-tabs-text-color-selected: var(--aw-color-accent);
-								--p-secondary-tabs-bg-color-selected: var(--aw-color-accent) / 0.08;"
+                                style="--p-secondary-tabs-bg-color-default: var(--web-color-white);
+								--p-secondary-tabs-text-color-selected: var(--web-color-accent);
+								--p-secondary-tabs-bg-color-selected: var(--web-color-accent) / 0.08;"
                                 let:tab
                             >
-                                <span class="aw-main-body-500 u-capitalize">{tab}</span>
+                                <span class="web-main-body-500 u-capitalize">{tab}</span>
                             </TabsList>
                         </Tabs>
                     </div>
 
                     <div
-                        class="aw-is-not-mobile aw-u-grid-auto-column-1fr is-with-footer-border u-gap-32 aw-u-padding-inline-8 aw-u-margin-inline-8-negative aw-u-filter-blur-8 u-position-sticky u-z-index-5 aw-u-container-query-inline"
+                        class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border u-gap-32 web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 u-position-sticky u-z-index-5 web-u-container-query-inline"
                         style:--inset-block-start={$isHeaderHidden ? '0px' : '70px'}
                         style:transition="inset-block-start 0.3s ease"
                     >
                         <div
-                            class="aw-description aw-u-color-text-primary aw-u-cross-child-center"
+                            class="web-description web-u-color-text-primary web-u-cross-child-center"
                             style:opacity={browser ? 1 : 0}
                             style:position={browser ? 'relative' : undefined}
                         >
@@ -377,51 +412,52 @@
                                 </div>
                             {/key}
                         </div>
-                        <div class="aw-mini-card">
+                        <div class="web-mini-card">
                             <div
                                 class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between"
                             >
-                                <h4 class="aw-label aw-u-color-text-primary">Starter</h4>
+                                <h4 class="web-label web-u-color-text-primary">Free</h4>
                                 <a
                                     href="https://cloud.appwrite.io/register"
-                                    class="aw-button is-secondary"
+                                    class="web-button is-secondary"
                                 >
-                                    <span class="aw-sub-body-500">Start building</span>
+                                    <span class="web-sub-body-500">Start building</span>
                                 </a>
                             </div>
                         </div>
-                        <div class="aw-mini-card">
+                        <div class="web-mini-card">
                             <div
                                 class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between"
                             >
-                                <h4 class="aw-label aw-u-color-text-primary">Pro</h4>
+                                <h4 class="web-label web-u-color-text-primary">Pro</h4>
                                 <a
-                                    class="aw-button"
+                                    class="web-button"
                                     href="https://cloud.appwrite.io/console?type=createPro"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <span class="aw-sub-body-500">Start trial</span>
+                                    <!-- <span class="web-sub-body-500">Start trial</span> -->
+                                    <span class="web-sub-body-500">Start building</span>
                                 </a>
                             </div>
                         </div>
-                        <div class="aw-mini-card">
+                        <div class="web-mini-card">
                             <div
                                 class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between"
                             >
-                                <h4 class="aw-label aw-u-color-text-primary">Scale</h4>
-                                <button class="aw-button is-secondary" disabled>
-                                    <span class="aw-sub-body-500">Coming soon</span>
+                                <h4 class="web-label web-u-color-text-primary">Scale</h4>
+                                <button class="web-button is-secondary" disabled>
+                                    <span class="web-sub-body-500">Coming soon</span>
                                 </button>
                             </div>
                         </div>
                     </div>
-                    <div class="aw-u-stretch-sep-full-screen" />
+                    <div class="web-u-stretch-sep-full-screen" />
 
                     {#each tables as table}
                         {@const isOpen = $value?.includes(table.title)}
                         <table
-                            class="aw-compare-table aw-sub-body-400"
+                            class="web-compare-table web-sub-body-400"
                             class:is-open-in-mobile={isOpen}
                             use:melt={$item(table.title)}
                             use:visible={{ top: 128 }}
@@ -437,26 +473,26 @@
                             }}
                         >
                             <caption
-                                class="aw-compare-table-caption aw-description aw-u-color-text-primary"
+                                class="web-compare-table-caption web-description web-u-color-text-primary"
                                 use:melt={$heading({ level: 3 })}
                                 style:position={browser ? 'unset' : undefined}
                             >
                                 <button
-                                    class="aw-compare-table-caption-button"
+                                    class="web-compare-table-caption-button"
                                     use:melt={$trigger(table.title)}
                                 >
                                     <span>{table.title}</span>
                                     <span
-                                        class="icon-cheveron-down aw-is-only-mobile aw-u-inline-block"
+                                        class="icon-cheveron-down web-is-only-mobile web-u-inline-block"
                                         aria-hidden="true"
                                     />
                                 </button>
                             </caption>
 
-                            <tbody class="aw-compare-table-body" use:melt={$content(table.title)}>
+                            <tbody class="web-compare-table-body" use:melt={$content(table.title)}>
                                 {#each table.rows as row}
                                     <tr>
-                                        <th class="aw-sub-body-500">{row.title}</th>
+                                        <th class="web-sub-body-500">{row.title}</th>
                                         {#each cols as col, index}
                                             <td
                                                 class="level-{index}"

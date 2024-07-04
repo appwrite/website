@@ -702,8 +702,6 @@ databases.deleteDocument(
 
 {% /multicode %}
 
-Certainly, here is the content with the headings modified to the requested format:
-
 # Permissions {% #permissions %}
 
 To access documents in a relationship, you must have permission to access both the parent and child documents.

@@ -16,6 +16,7 @@ export type AuthorData = {
     href: string;
 };
 export type PostsData = {
+    draft: boolean;
     title: string;
     description: string;
     date: Date;
@@ -42,6 +43,7 @@ export const posts = Object.entries(postsGlob)
         const { frontmatter } = postList as {
             frontmatter: PostsData;
         };
+
         const slug = filepath.replace('./', '').replace('/+page.markdoc', '');
         const postName = slug.slice(slug.lastIndexOf('/') + 1);
 

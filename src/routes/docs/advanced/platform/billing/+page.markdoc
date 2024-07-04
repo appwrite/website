@@ -45,3 +45,20 @@ By default, an email alert will be sent at 75% of the budget cap. You can add up
 # Redeem credit {% #redeem-credit %}
 If you received a redeemable code for Appwrite Cloud credits, you can redeem them in the **Available credit** section.
 When you redeem credit, the credit balance will be automatically applied to the next billing cycle.
+
+# Recurring payments for Indian developers {% #recurring-payments-for-indian-developers %}
+
+The Reserve Bank of India (RBI) mandates additional security measures for recurring payments on **Indian cards**. 
+Appwrite is obligated to ask for verification before billing your card. 
+Appwrite asks for verification for up to $150 in case you use add-ons.
+Confirming the verification will not charge your card.
+When you are charged at the end of the billing period,
+you will not be charged more than your monthly plan plus add-ons used.
+
+If you set a budget cap, the verification will remain at $150, but the budget cap will still be applied for your add-ons.
+Again, you will not be charged when confirming the verification. 
+When you are charged at the end of the billing period,
+you will not be charged more than your monthly plan plus add-ons used.
+
+If you need higher limits, [contact us](mailto:billing@appwrite.io).
+

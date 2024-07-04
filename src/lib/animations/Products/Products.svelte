@@ -35,7 +35,7 @@
             title: 'Auth',
             subtitle: 'Secure login for all users',
             description:
-                'Authenticate users securely with multiple login methods like Email/Password, SMS, OAuth, Annoymous, Magic URLs and more.',
+                'Authenticate users securely with multiple login methods like Email/Password, SMS, OAuth, Anonymous, Magic URLs and more.',
             features: [
                 '30+ login methods',
                 'Support for teams, roles and user labels',
@@ -151,8 +151,8 @@
             return scrollInfo.percentage >= min && scrollInfo.percentage < max;
         });
 
-        const product = products[activeIdx] as Product | undefined;
-        const scale = productsScales[activeIdx] as Scale | undefined;
+        const product = products[activeIdx] as Product;
+        const scale = productsScales[activeIdx] as Scale;
         const percent = scale ? toScale(scrollInfo.percentage, scale, [0, 1]) : 0;
 
         return {
@@ -188,26 +188,12 @@
             }
         });
     })();
-
-    function navigateToProduct(product: Product) {
-        const i = products.indexOf(product);
-        const scale = productsScales[i][0];
-
-        const productsWrapper = document.getElementById('products');
-        if (!productsWrapper) return;
-        const rect = productsWrapper.getBoundingClientRect();
-
-        window.scrollTo({
-            top: rect.top + window.scrollY + rect.height * scale,
-            behavior: 'smooth'
-        });
-    }
 </script>
 
 <div
     id="products"
     use:scroll
-    on:aw-scroll={({ detail }) => {
+    on:web-scroll={({ detail }) => {
         scrollInfo = detail;
     }}
 >
@@ -222,18 +208,18 @@
                 in:fly={{ duration: 250, delay: 250, y: -300 }}
             >
                 {#if scrollInfo.percentage > -0.1}
-                    <span class="aw-badges aw-eyebrow" transition:slide={{ axis: 'x' }}
+                    <span class="web-badges web-eyebrow" transition:slide={{ axis: 'x' }}
                         >Products_</span
                     >
 
                     <h2
-                        class="aw-display aw-u-color-text-primary"
+                        class="web-display web-u-color-text-primary"
                         transition:fly={{ y: 16, delay: 250 }}
                     >
                         Your backend, minus the hassle
                     </h2>
                     <p
-                        class="aw-description aw-u-max-width-700 u-margin-inline-auto"
+                        class="web-description web-u-max-width-700 u-margin-inline-auto"
                         transition:fly={{
                             y: 16,
                             delay: 400
@@ -262,23 +248,18 @@
 
                             {#if copy}
                                 <li data-active={isActive ? '' : undefined}>
-                                    <button on:click={() => navigateToProduct(product)}>
-                                        <h3>
-                                            <img
-                                                src={isActive
-                                                    ? copy.icon.active
-                                                    : copy.icon.inactive}
-                                                alt=""
-                                                width="32"
-                                                height="32"
-                                            />
-                                            <span class="aw-label">{copy.title}</span>
-                                        </h3>
-                                    </button>
-
+                                    <h3>
+                                        <img
+                                            src={isActive ? copy.icon.active : copy.icon.inactive}
+                                            alt=""
+                                            width="32"
+                                            height="32"
+                                        />
+                                        <span class="web-label">{copy.title}</span>
+                                    </h3>
                                     {#if isActive}
                                         <div transition:slide>
-                                            <h4 class="aw-title">{copy.subtitle}</h4>
+                                            <h4 class="web-title">{copy.subtitle}</h4>
                                             <p>
                                                 {copy.description}
                                             </p>
@@ -355,7 +336,7 @@
                             <Storage.Phone />
                         {:else if active.product === 'functions'}
                             <Functions.Phone />
-                        {:else if !['auth', 'databases', 'storage', 'functions'].includes(anyify(active.product))}
+                        {:else if !['auth', 'databases', 'storage', 'functions'].includes(active.product)}
                             <Realtime.Phone />
                         {/if}
                     </div>
@@ -370,6 +351,8 @@
 </div>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     #products {
         min-height: 500vh;
         height: 5000px;
@@ -475,7 +458,7 @@
 
                     &[data-active] {
                         h3 {
-                            color: hsl(var(--aw-color-primary));
+                            color: hsl(var(--web-color-primary));
                             margin-block-end: 0.75rem;
                         }
                     }
@@ -486,13 +469,13 @@
                     align-items: center;
                     gap: 0.75rem;
 
-                    .aw-label {
+                    .web-label {
                         margin-block-start: 0.25rem;
                     }
                 }
 
                 h4 {
-                    color: hsl(var(--aw-color-primary));
+                    color: hsl(var(--web-color-primary));
                 }
 
                 p {
@@ -539,7 +522,7 @@
     }
 
     .phone {
-        @include border-gradient;
+        @include gradients.border-gradient;
         --m-border-size: 1px;
         --m-border-radius: 2.5rem;
         --m-border-gradient-after: linear-gradient(
@@ -608,7 +591,7 @@
         }
 
         :global(.header) {
-            border-bottom: 1px solid hsl(var(--aw-color-greyscale-700));
+            border-bottom: 1px solid hsl(var(--web-color-greyscale-700));
             color: var(--greyscale-400, #adadb1);
 
             text-transform: uppercase;
@@ -628,8 +611,8 @@
         }
 
         :global(.avatar) {
-            background-color: hsl(var(--aw-color-greyscale-700));
-            border-color: hsl(var(--aw-color-greyscale-700));
+            background-color: hsl(var(--web-color-greyscale-700));
+            border-color: hsl(var(--web-color-greyscale-700));
         }
 
         :global(.truncated) {
@@ -649,7 +632,7 @@
     }
 
     .controls {
-        @include border-gradient;
+        @include gradients.border-gradient;
         --m-border-radius: 1rem;
         --m-border-gradient-before: linear-gradient(
             180deg,
@@ -664,9 +647,13 @@
         opacity: 0;
 
         background: rgba(255, 255, 255, 0.08);
-        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.06), -2px 4px 9px 0px rgba(0, 0, 0, 0.06),
-            -8px 15px 17px 0px rgba(0, 0, 0, 0.05), -19px 34px 23px 0px rgba(0, 0, 0, 0.03),
-            -33px 60px 27px 0px rgba(0, 0, 0, 0.01), -52px 94px 30px 0px rgba(0, 0, 0, 0);
+        box-shadow:
+            0px 0px 0px 0px rgba(0, 0, 0, 0.06),
+            -2px 4px 9px 0px rgba(0, 0, 0, 0.06),
+            -8px 15px 17px 0px rgba(0, 0, 0, 0.05),
+            -19px 34px 23px 0px rgba(0, 0, 0, 0.03),
+            -33px 60px 27px 0px rgba(0, 0, 0, 0.01),
+            -52px 94px 30px 0px rgba(0, 0, 0, 0);
         backdrop-filter: blur(20px);
     }
 </style>

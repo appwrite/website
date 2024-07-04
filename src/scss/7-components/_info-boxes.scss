@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 .#{$p}-info-boxes {
-  --p-info-boxes-sep-color: var(--aw-color-smooth);
+  --p-info-boxes-sep-color: var(--web-color-smooth);
 
   display:grid; gap:pxToRem(1);
   grid-template-columns: repeat(auto-fill, minmax(pxToRem(306), 1fr));
@@ -22,9 +22,15 @@
   }
   &-title {
     display:flex; flex-wrap:wrap; align-items:baseline; gap:pxToRem(12);
-    margin-block-start:pxToRem(16); color:hsl(var(--aw-color-primary));
+    margin-block-start:pxToRem(16); color:hsl(var(--web-color-primary));
   }
-  &-content { margin-block-start:pxToRem(4); color:hsl(var(--aw-color-secondary)); }
+  &-content { margin-block-start:pxToRem(4); color:hsl(var(--web-color-secondary)); }
+
+  &:where(.is-desktop-max-out-3) {
+    @media #{$break2open} {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
   @media (max-width: 450px) {
     grid-template-columns: repeat(auto-fill, minmax(pxToRem(146), 1fr));
   }

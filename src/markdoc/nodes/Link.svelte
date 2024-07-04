@@ -13,13 +13,13 @@
     const inChangelog = isInChangelog();
 
     $: classes = (() => {
-        if (inDocs) return 'aw-paragraph-md';
-        if (inChangelog) return 'aw-paragraph-lg in-changelog';
+        if (inDocs) return 'web-paragraph-md';
+        if (inChangelog) return 'web-paragraph-lg in-changelog';
         return '';
     })();
 </script>
 
-<a class="aw-link is-inline {classes}" {href} {title} {target} {rel}><slot /></a>
+<a class="web-link is-inline {classes}" {href} {title} {target} {rel}><slot /></a>
 
 <style lang="scss">
     .in-changelog:last-child {

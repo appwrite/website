@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 .#{$p}-pricing-cards {
-  &-header  { padding-block-end:pxToRem(32); border-block-end:solid pxToRem(1) hsl(var(--aw-color-border)); }
+  &-header  { padding-block-end:pxToRem(32); border-block-end:solid pxToRem(1) hsl(var(--web-color-border)); }
   &-content { display:flex; flex-direction:column; gap:pxToRem(20); padding-block-start:pxToRem(32); }
 
   @media #{$break1} {

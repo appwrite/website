@@ -3,13 +3,13 @@
     export let description: string;
 </script>
 
-<div class="aw-card is-normal has-border-gradient">
-    <div class="aw-title aw-u-color-text-primary">{metric}</div>
-    <div class="aw-description">{description}</div>
+<div class="web-card is-normal has-border-gradient">
+    <div class="web-title web-u-color-text-primary">{metric}</div>
+    <div class="web-description">{description}</div>
 </div>
 
 <style lang="scss">
-    .aw-card {
+    .web-card {
         padding: 1.25rem;
     }
 </style>
