@@ -16,12 +16,15 @@
         0% {
             opacity: 0;
             filter: blur(15px);
+            transform: translateY(20px);
         }
         100% {
             opacity: 1;
             filter: blur(0);
+            transform: translateY(0px);
         }
     }
+
     .heading {
         position: relative;
         z-index: 100;
@@ -36,7 +39,7 @@
             opacity: 0;
             filter: blur(16px);
             transform: translateY(20px);
-            animation: enter 1200ms ease-in-out forwards;
+            animation: enter 1s ease-in-out forwards;
         }
     }
 
