@@ -178,8 +178,8 @@
             return scrollInfo.percentage >= min && scrollInfo.percentage < max;
         });
 
-        const product = products[activeIdx] as Product | undefined;
-        const scale = productsScales[activeIdx] as Scale | undefined;
+        const product = products[activeIdx] as Product;
+        const scale = productsScales[activeIdx] as Scale;
         const percent = scale ? toScale(scrollInfo.percentage, scale, [0, 1]) : 0;
 
         return {
@@ -372,7 +372,7 @@
                             <Messaging.Phone />
                         {:else if active.product === 'functions'}
                             <Functions.Phone />
-                        {:else if !['auth', 'databases', 'storage', 'messaging', 'functions'].includes(anyify(active.product))}
+                        {:else if !['auth', 'databases', 'storage', 'messaging', 'functions'].includes(active.product)}
                             <Realtime.Phone />
                         {/if}
                     </div>
