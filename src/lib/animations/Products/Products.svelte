@@ -151,8 +151,8 @@
             return scrollInfo.percentage >= min && scrollInfo.percentage < max;
         });
 
-        const product = products[activeIdx] as Product | undefined;
-        const scale = productsScales[activeIdx] as Scale | undefined;
+        const product = products[activeIdx] as Product;
+        const scale = productsScales[activeIdx] as Scale;
         const percent = scale ? toScale(scrollInfo.percentage, scale, [0, 1]) : 0;
 
         return {
@@ -336,7 +336,7 @@
                             <Storage.Phone />
                         {:else if active.product === 'functions'}
                             <Functions.Phone />
-                        {:else if !['auth', 'databases', 'storage', 'functions'].includes(anyify(active.product))}
+                        {:else if !['auth', 'databases', 'storage', 'functions'].includes(active.product)}
                             <Realtime.Phone />
                         {/if}
                     </div>
@@ -647,9 +647,13 @@
         opacity: 0;
 
         background: rgba(255, 255, 255, 0.08);
-        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.06), -2px 4px 9px 0px rgba(0, 0, 0, 0.06),
-            -8px 15px 17px 0px rgba(0, 0, 0, 0.05), -19px 34px 23px 0px rgba(0, 0, 0, 0.03),
-            -33px 60px 27px 0px rgba(0, 0, 0, 0.01), -52px 94px 30px 0px rgba(0, 0, 0, 0);
+        box-shadow:
+            0px 0px 0px 0px rgba(0, 0, 0, 0.06),
+            -2px 4px 9px 0px rgba(0, 0, 0, 0.06),
+            -8px 15px 17px 0px rgba(0, 0, 0, 0.05),
+            -19px 34px 23px 0px rgba(0, 0, 0, 0.03),
+            -33px 60px 27px 0px rgba(0, 0, 0, 0.01),
+            -52px 94px 30px 0px rgba(0, 0, 0, 0);
         backdrop-filter: blur(20px);
     }
 </style>
