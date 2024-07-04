@@ -33,13 +33,13 @@ Currently, Appwrite offers three methods for implementing the second factor:
 
 # Implementing 2FA in your apps
 
-One great aspect of Appwrite 2FA is that it can be used in conjunction with any existing authentication method you have implemented using Appwrite Auth. You can implement 2FA in your application via the following several steps. 
+One great aspect of Appwrite 2FA is that it can be used in conjunction with any existing authentication method you have implemented using Appwrite Auth. You can implement 2FA in your application via the following several steps.
 
 ## Step 1: Enable 2FA on an account
 
 To use 2FA, it needs to be enabled on a user’s account. This can be achieved by calling `account.updateMFA()`.
 
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 // Init SDK
@@ -86,7 +86,7 @@ try {
 
 ## Step 3: Check enabled factors
 
-To confirm which providers are enabled for an account, you can call `account.listProviders()`. 
+To confirm which providers are enabled for an account, you can call `account.listProviders()`.
 
 ```js
 const factors = await account.listFactors();
@@ -136,9 +136,9 @@ While Appwrite currently allows two factors of authentication, we intend to make
 
 Visit our documentation to learn more about Appwrite, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
-- [Docs](https://appwrite.io/docs/products/auth/mfa)
+- [Docs](/docs/products/auth/mfa)
 - [Discord](https://appwrite.io/discord)
-- [Blog](https://appwrite.io/blog)
+- [Blog](/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
 - [GitHub](https://github.com/appwrite/appwrite)
 

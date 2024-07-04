@@ -66,12 +66,24 @@
                     icon: 'icon-angular',
                     image: '/images/blog/placeholder.png',
                     href: 'angular'
+                },
+                {
+                    title: 'Solid',
+                    icon: 'icon-solidjs',
+                    image: '/images/blog/placeholder.png',
+                    href: 'solid'
                 }
             ]
         },
         {
             title: 'Mobile and native',
             quickStarts: [
+                {
+                    title: 'React Native',
+                    icon: 'icon-react-native',
+                    image: '/images/blog/placeholder.png',
+                    href: 'react-native'
+                },
                 {
                     title: 'Flutter',
                     icon: 'icon-flutter',
@@ -148,7 +160,7 @@
                     icon: 'icon-swift',
                     image: '/images/blog/placeholder.png',
                     href: 'swift'
-                },
+                }
             ]
         }
     ];

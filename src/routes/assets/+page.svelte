@@ -58,8 +58,8 @@
     <enhanced:img src="./bg.png" alt="" />
 </div>
 
-<Main>
-    <TocRoot activeType="highest">
+<Main omitMainId>
+    <TocRoot>
         <div class="web-container">
             <div class="web-grid-120-1fr-auto">
                 <header class="web-grid-120-1fr-auto-header">
@@ -124,11 +124,13 @@
                                     identity. Refrain from altering our logo and preferably use our
                                     logo on a neutral background.
                                 </p>
-                                <div class="u-flex u-flex-wrap u-gap-32 u-margin-block-start-12">
+                                <div
+                                    class="u-flex u-flex-wrap web-u-flex-vertical-mobile u-gap-32 u-margin-block-start-12"
+                                >
                                     <div
                                         class="media-wrapper | theme-light |
                                     u-stretch web-u-flex-basis-300 u-flex u-main-center u-cross-center web-u-border-radius-8 web-u-padding-inline-64
-                                    web-u-bg-color-neutral-100 web-u-block-size-320"
+                                    web-u-bg-color-neutral-100 web-u-min-block-size-320"
                                     >
                                         <img
                                             src="/assets/logotype/white.svg"
@@ -162,7 +164,7 @@
                                     <div
                                         class="media-wrapper | theme-dark |
                                     u-stretch web-u-flex-basis-300 u-flex u-main-center u-cross-center web-u-border-radius-8 web-u-padding-inline-64
-                                    web-u-bg-color-neutral-800 web-u-block-size-320"
+                                    web-u-bg-color-neutral-800 web-u-min-block-size-320"
                                     >
                                         <img
                                             src="/assets/logotype/black.svg"
@@ -207,7 +209,7 @@
                                     </p>
                                     <div
                                         class="u-flex u-main-center u-cross-center u-margin-block-start-12 web-u-border-radius-8 u-padding-inline-16
-                                                web-u-bg-color-neutral-800 web-u-block-size-320"
+                                                web-u-bg-color-neutral-800 web-u-min-block-size-320"
                                     >
                                         <img
                                             src="/assets/logotype/co-brand.svg"
@@ -233,11 +235,13 @@
                                     situations where space constraints make it challenging to
                                     showcase the complete logotype.
                                 </p>
-                                <div class="u-flex u-flex-wrap u-gap-32 u-margin-block-start-12">
+                                <div
+                                    class="u-flex u-flex-wrap web-u-flex-vertical-mobile u-gap-32 u-margin-block-start-12"
+                                >
                                     <div
                                         class="media-wrapper | theme-light |
                                     u-stretch web-u-flex-basis-300 u-flex u-main-center u-cross-center web-u-border-radius-8 web-u-padding-inline-64
-                                    web-u-bg-color-neutral-100 web-u-block-size-320"
+                                    web-u-bg-color-neutral-100 web-u-min-block-size-320"
                                     >
                                         <img
                                             src="/assets/logomark/logo.svg"
@@ -271,7 +275,7 @@
                                     <div
                                         class="media-wrapper | theme-dark |
                                     u-stretch web-u-flex-basis-300 u-flex u-main-center u-cross-center web-u-border-radius-8 web-u-padding-inline-64
-                                    web-u-bg-color-neutral-800 web-u-block-size-320"
+                                    web-u-bg-color-neutral-800 web-u-min-block-size-320"
                                     >
                                         <img
                                             src="/assets/logomark/logo.svg"
@@ -316,7 +320,7 @@
                                     </p>
                                     <div
                                         class="u-flex u-main-center u-cross-center u-margin-block-start-12 web-u-border-radius-8 u-padding-inline-16
-                                                web-u-bg-color-neutral-800 web-u-block-size-320"
+                                                web-u-bg-color-neutral-800 web-u-min-block-size-320"
                                     >
                                         <img
                                             src="/assets/logomark/co-brand.svg"
@@ -533,6 +537,37 @@
                                             <a
                                                 class="web-button is-secondary"
                                                 href={'/assets/visuals/functions.png'}
+                                                download
+                                            >
+                                                <span
+                                                    class="web-icon-download"
+                                                    aria-label="download"
+                                                />
+                                                <span>PNG</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="media-wrapper">
+                                        <img
+                                            class="web-u-border-radius-8 web-u-media-ratio-16-9 u-width-full-line"
+                                            src="/assets/visuals/messaging.png"
+                                            alt="Appwrite Messaging"
+                                        />
+                                        <div class="buttons">
+                                            <a
+                                                class="web-button is-secondary"
+                                                href="/assets/visuals/messaging.jpg"
+                                                download
+                                            >
+                                                <span
+                                                    class="web-icon-download"
+                                                    aria-label="download"
+                                                />
+                                                <span>JPG</span>
+                                            </a>
+                                            <a
+                                                class="web-button is-secondary"
+                                                href={'/assets/visuals/messaging.png'}
                                                 download
                                             >
                                                 <span

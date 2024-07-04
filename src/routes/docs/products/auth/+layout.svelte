@@ -90,8 +90,8 @@
                     href: '/docs/products/auth/custom-token'
                 },
                 {
-                    label: 'Two-factor authentication',
-                    href: '/docs/products/auth/2fa'
+                    label: 'Multi-factor authentication',
+                    href: '/docs/products/auth/mfa'
                 }
             ]
         },

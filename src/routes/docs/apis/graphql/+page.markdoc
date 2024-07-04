@@ -229,7 +229,7 @@ This allows you to execute complex actions in a single network request.
 Appwrite SDKs also support GraphQL in addition to the REST services.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Graphql } from "appwrite";
 
 const client = new Client()
@@ -266,7 +266,7 @@ mutation.then(response => {
     console.log(error);
 });
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
@@ -303,45 +303,7 @@ mutation.then((response) {
     print(error.message);
 });
 ```
-```kotlin
-import io.appwrite.Client
-import io.appwrite.services.Graphql
-
-val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                // Your project ID
-
-val graphql = Graphql(client)
-
-try {
-    val response = graphql.mutation(mapOf(
-        "query" to """mutation CreateAccount(
-            ${'$'}email: String!,
-            ${'$'}password: String!,
-            ${'$'}name: String
-        ) {
-            accountCreate(
-                email: ${'$'}email,
-                password: ${'$'}password,
-                name: ${'$'}name,
-                userId: "unique()"
-            ) {
-                _id
-            }
-        }""",
-        "variables" to mapOf(
-            "email" to "...",
-            "password" to "...",
-            "name" to "..."
-        )
-    ))
-
-    Log.d(javaClass.name, response)
-} catch (ex: AppwriteException) {
-    ex.printStackTrace()
-}
-```
-```swift
+```client-apple
 import Appwrite
 
 let client = Client()
@@ -379,6 +341,44 @@ do {
     print(String(describing: response))
 } catch {
     print(error.localizedDescription)
+}
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Graphql
+
+val client = Client(context)
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                // Your project ID
+
+val graphql = Graphql(client)
+
+try {
+    val response = graphql.mutation(mapOf(
+        "query" to """mutation CreateAccount(
+            ${'$'}email: String!,
+            ${'$'}password: String!,
+            ${'$'}name: String
+        ) {
+            accountCreate(
+                email: ${'$'}email,
+                password: ${'$'}password,
+                name: ${'$'}name,
+                userId: "unique()"
+            ) {
+                _id
+            }
+        }""",
+        "variables" to mapOf(
+            "email" to "...",
+            "password" to "...",
+            "name" to "..."
+        )
+    ))
+
+    Log.d(javaClass.name, response)
+} catch (ex: AppwriteException) {
+    ex.printStackTrace()
 }
 ```
 {% /multicode %}

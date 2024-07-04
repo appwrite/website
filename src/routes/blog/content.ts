@@ -16,6 +16,7 @@ export type AuthorData = {
     href: string;
 };
 export type PostsData = {
+    draft: boolean;
     title: string;
     description: string;
     date: Date;

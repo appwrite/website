@@ -65,7 +65,7 @@ To remove records from a table, you use deletion queries. While powerful, they s
 
 # Querying the Appwrite Database
 
-A lot of developers today don’t perform raw SQL queries but prefer to use an ORM such as Prima or a managed database provider such as Appwrite. While these tools enable the same end goal, a managed service can provide an easy-to-use wrapper and helper methods that make these queries easier to write and don’t require you to have a deep knowledge of SQL syntax. Appwrite offers the aforementioned data queries as a part of our Database product, which you can discover in our [product documentation](https://appwrite.io/docs/products/databases).
+A lot of developers today don’t perform raw SQL queries but prefer to use an ORM such as Prima or a managed database provider such as Appwrite. While these tools enable the same end goal, a managed service can provide an easy-to-use wrapper and helper methods that make these queries easier to write and don’t require you to have a deep knowledge of SQL syntax. Appwrite offers the aforementioned data queries as a part of our Database product, which you can discover in our [product documentation](/docs/products/databases).
 
 One of the data retrieval APIs the Appwrite Database offers is a list documents API to get multiple documents from any collection. The endpoint also allows you to filter, sort, and paginate results, for which Appwrite provides a common set of syntax to build queries, which you can build manually or using our SDKs. With our latest release, we’re adding support for database operators such as `OR`, `AND`, and `CONTAINS` to allow further flexibility.
 
@@ -73,7 +73,7 @@ One of the data retrieval APIs the Appwrite Database offers is a list documents 
 - `OR` operation: This operator allows nesting queries in an OR condition.
 - `CONTAINS` operation: The contains operator allows filtering by values that are contained in an array.
 
-```js
+```client-web
 import { Client, Databases, Query } from "appwrite";
 
 const client = new Client()
@@ -116,8 +116,8 @@ Mastering the art of data querying is a continuous process. As a developer, your
 
 Visit our documentation to learn more about Appwrite, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
-- [Docs](https://appwrite.io/docs/products/databases/queries)
+- [Docs](/docs/products/databases/queries)
 - [Discord](https://appwrite.io/discord)
-- [Blog](https://appwrite.io/blog)
+- [Blog](/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
 - [GitHub](https://github.com/appwrite/appwrite)

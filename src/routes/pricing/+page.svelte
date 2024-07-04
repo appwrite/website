@@ -30,7 +30,10 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<div class="u-position-absolute u-overflow-hidden web-location-for-mobile" style="pointer-events:none; inline-size:100%;">
+<div
+    class="u-position-absolute u-overflow-hidden web-location-for-mobile"
+    style="pointer-events:none; inline-size:100%;"
+>
     <enhanced:img
         src={BG}
         alt=""
@@ -65,7 +68,7 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="starter" class="web-label">Starter</h2>
+                                            <h2 id="starter" class="web-label">Free</h2>
                                             <div
                                                 class="web-title web-u-color-text-primary u-margin-block-start-8"
                                             >
@@ -132,7 +135,8 @@
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
-                                                <span class="web-sub-body-500">Start trial</span>
+                                                <!-- <span class="web-sub-body-500">Start trial</span> -->
+                                                <span class="web-sub-body-500">Start building</span>
                                             </a>
                                         </header>
                                         <div class="web-pricing-cards-content">
@@ -168,7 +172,7 @@
                                             <div
                                                 class="web-title web-u-color-text-primary u-margin-block-start-8"
                                             >
-                                                $685
+                                                $599
                                             </div>
                                             <div class="u-margin-block-start-4">
                                                 per organization/month
@@ -185,16 +189,17 @@
                                             </button>
                                         </header>
                                         <div class="web-pricing-cards-content">
-                                            <p>Everything in Pro and:</p>
+                                            <p>Everything in Pro, plus:</p>
                                             <ul class="web-checked-list-circle">
-                                                <li><span>5TB bandwidth</span></li>
-                                                <li><span>500GB storage</span></li>
-                                                <li><span>10M executions</span></li>
-                                                <li><span>500K monthly active users</span></li>
-                                                <li><span>Priority support</span></li>
-                                                <li><span>14-day log retention</span></li>
-                                                <li><span>Additional organization roles</span></li>
+                                                <li><span>Unlimited seats</span></li>
+                                                <li><span>SOC-2</span></li>
+                                                <li><span>BAA</span></li>
+                                                <li><span>Network logs</span></li>
+                                                <li><span>28-day log retention</span></li>
+                                                <li><span>Organization roles</span></li>
                                                 <li><span>SSO</span></li>
+                                                <li><span>Activity logs</span></li>
+                                                <li><span>Priority support</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -244,8 +249,8 @@
                                     </h3>
                                 </header>
                                 <p class="u-margin-block-start-8">
-                                    We support OSS maintainers with a free Pro Plan. Read our announcement blog
-                                    to find out more.
+                                    We support OSS maintainers with a free Pro Plan. Read our
+                                    announcement blog to find out more.
                                 </p>
                                 <a
                                     href="/docs/advanced/platform/oss"
@@ -285,9 +290,10 @@
     </div>
 </Main>
 
-
 <style lang="scss">
-  @media (min-width:360px) and (max-width:550px) {
-    .web-location-for-mobile { inset-block-start:90px; }
-  }
+    @media (min-width: 360px) and (max-width: 550px) {
+        .web-location-for-mobile {
+            inset-block-start: 90px;
+        }
+    }
 </style>

@@ -36,7 +36,7 @@ In terms of scalability, some common challenges faced are:
 
 # How Twilio can simplify implementation
 
-[Twilio](https://www.notion.so/How-tools-like-Twilio-can-simplify-messaging-for-developers-9475a3f11992419c9266cf8af703c95e?pvs=21) is a cloud communications platform that offers a wide range of services, including SMS, voice, video, and email. It's known for its flexibility, scalability, and ease of integration into various applications. Twilio also provides a robust push notification service, part of its broader suite of communication tools. 
+[Twilio](https://www.notion.so/How-tools-like-Twilio-can-simplify-messaging-for-developers-9475a3f11992419c9266cf8af703c95e?pvs=21) is a cloud communications platform that offers a wide range of services, including SMS, voice, video, and email. It's known for its flexibility, scalability, and ease of integration into various applications. Twilio also provides a robust push notification service, part of its broader suite of communication tools.
 
 Here are some of the benefits of using Twilio:
 
@@ -53,7 +53,7 @@ One of Twilio’s products that lets developers implement messaging across vario
 
 ## Twilio Programmable Messaging
 
-Twilio Programmable Messaging allows you to send alerts, notifications, promotions, and marketing messages to your customers' preferred channels using a single API. 
+Twilio Programmable Messaging allows you to send alerts, notifications, promotions, and marketing messages to your customers' preferred channels using a single API.
 
 Since the offering leverages a RESTful API, it is compatible with various programming languages and frameworks. It utilizes webhooks for real-time notifications of message delivery status and inbound messages. Security features like HTTPS and API keys ensure secure message transmission. Additionally, the Messaging API automatically queues messages when sending high volumes or when rate limits are reached.
 
@@ -70,7 +70,7 @@ Here's an overview of the Twilio Programmable Messaging:
 
 As a part of our latest release, Appwrite 1.5, we have launched a new product, Messaging, that helps developers implement communication services within their applications. As a part of the SMS offering within Messaging, we have added an adapter to integrate Twilio Programmable Messaging with Appwrite. Once you have access to your account SID, auth token, and phone number from Twilio, you will be able to send messages to your users with just a few lines of code.
 
-```js
+```server-nodejs
 const sdk = require('node-appwrite');
 
 // Init SDK
@@ -97,8 +97,8 @@ const promise = await messaging.updateTwilioProvider(
 # Resources
 Visit our documentation to learn more about Messaging, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
-- [Docs](https://appwrite.io/docs/products/messaging/twilio)
+- [Docs](/docs/products/messaging/twilio)
 - [Discord](https://appwrite.io/discord)
-- [Blog](https://appwrite.io/blog)
+- [Blog](/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
 - [GitHub](https://github.com/appwrite/appwrite)

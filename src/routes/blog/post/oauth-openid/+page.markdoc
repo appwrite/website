@@ -90,7 +90,7 @@ Appwrite provides the necessary redirect URL to add to your OIDC app configurati
 
 Once that is done, you can use any of the Appwrite client SDKs to implement OAuth 2.0 or OIDC authentication in just a few lines of code. 
 
-```js
+```client-web
 import { Client, Account, OAuthProvider } from "appwrite";
 
 const client = new Client()

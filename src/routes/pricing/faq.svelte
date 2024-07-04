@@ -11,10 +11,10 @@
             question: 'Can I self-host Appwrite for free?',
             answer: 'Yes! Appwrite Self Hosted will always be Open Source and free for you to use, without any limits. You can find the latest version of Appwrite in our <a rel="noopener noreferrer" class="web-link is-inline" href="https://github.com/appwrite/appwrite">GitHub repository</a>, and you can follow <a class="web-link is-inline" href="/docs/advanced/self-hosting/">Self Hosting docs</a> to learn how to install Appwrite on your server.'
         },
-        {
-            question: 'Does Appwrite have a trial period?',
-            answer: 'Yes, we offer a 14-day trial period for you to explore Appwrite Pro. After the 14-day trial, you can either continue using Pro plan or downgrade to a Starter plan.'
-        },
+        // {
+        //     question: 'Does Appwrite have a trial period?',
+        //     answer: 'Yes, we offer a 14-day trial period for you to explore Appwrite Pro. After the 14-day trial, you can either continue using Pro plan or downgrade to a Free plan.'
+        // },
         {
             question: 'What payment methods does Appwrite support?',
             answer: 'Appwrite currently supports <a class="web-link is-inline" href="/docs/advanced/platform/billing#payment-methods">credit and debit card payments</a>. We are actively working on adding support for more methods. Please <a class="web-link is-inline" href="/contact-us">contact us</a> in case this is an issue for you.'
@@ -24,7 +24,7 @@
             answer: 'Your project will continue to run, and additional charges will apply. You can find the costs for additional resources in the <a class="web-link is-inline" href="/pricing">pricing plans comparison</a>. We will also send you email reminders when you hit 75% and 100% of your resource limits. To avoid unexpected payments, you can set up a <a class="web-link is-inline" href="/docs/advanced/platform/pro#budget-cap">budget cap</a> on your organization. <a class="web-link is-inline" href="/docs/advanced/platform/pro#reaching-resource-limits">Learn more in our docs</a>.'
         },
         {
-            question: 'What happens if I reach a resource limit in my Starter plan?',
+            question: 'What happens if I reach a resource limit in my Free plan?',
             answer: 'Your project will freeze, and Appwrite Console will continue running in read-only mode. You need to upgrade to Pro, remove resources that exceed their limit, or wait for the next billing cycle, which resets usage limits. <a class="web-link is-inline" href="/docs/advanced/platform/pro#reaching-resource-limits">Learn more in our docs</a>.'
         },
         {
@@ -36,12 +36,12 @@
             answer: `The OSS program is exclusively for active open-source maintainers using Appwrite Cloud. You can find more information on how to join the program in our <a class="web-link is-inline" href="/blog/post/announcing-the-appwrite-oss-program">announcement blog</a>.`
         },
         {
-            question: 'I have a Starter plan account. How do I upgrade to a paid plan?',
+            question: 'I have a Free plan account. How do I upgrade to a paid plan?',
             answer: 'If you want to upgrade to a paid plan, you can do so in your Appwrite dashboard, select your organization, and change your plan in the <b>Billing</b> section.'
         },
         {
             question: 'How can I apply credits to my organization?',
-            answer: 'Go to the Appwrite Console and select the organization you wish to add credits to. In your organization overview, you can switch to the billing tab. Here, you need to go to the bottom of the page, where you will find the ability to add credits, as well as see the status of your credits. Credits are only relevant to Pro organizations since Starter organizations are 100% free.'
+            answer: 'Go to the Appwrite Console and select the organization you wish to add credits to. In your organization overview, you can switch to the billing tab. Here, you need to go to the bottom of the page, where you will find the ability to add credits, as well as see the status of your credits. Credits are only relevant to Pro organizations since Free organizations are 100% free.'
         },
         {
             question: 'Where can I find an overview of my organization usage stats?',
