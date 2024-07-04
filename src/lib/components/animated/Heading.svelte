@@ -4,7 +4,7 @@
     const splitText = text.split('');
 </script>
 
-<h1 class="sr-only" {...$$restProps}><slot {text} /></h1>
+<h1 class="sr-only" {...$$restProps}>{text}</h1>
 <h1 class="heading" {...$$restProps}>
     {#each splitText as letter, i}
         <span class="letter" style:animation-delay={`${i * stagger}ms`}>{letter}</span>
@@ -16,12 +16,12 @@
         0% {
             opacity: 0;
             filter: blur(15px);
-            transform: translateY(20px);
+            transform: translateY(20px) scale(1.2);
         }
         100% {
             opacity: 1;
             filter: blur(0);
-            transform: translateY(0px);
+            transform: translateY(0px) scale(1);
         }
     }
 
