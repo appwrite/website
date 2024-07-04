@@ -1,6 +1,6 @@
 ---
 layout: post
-title: June product update: Public roadmap | The Appwriter | Messaging
+title: "June product update: Public roadmap, The Appwriter, Messaging"
 description: Check out everything new that happened in June, including public roadmap, the Appwriter release and the new Messaging page.
 date: 2024-07-04
 cover: /images/blog/product-update-june/Product-update-June-2024.png
@@ -40,7 +40,11 @@ Does this mean we’re also a hardware company now?
 
 ![Messaging page](/images/blog/product-update-june/Messaging-page.png)
 
-Appwrite’s newest product Messaging now has its own product page (the first of its kind!). Messaging allows you to set up email, SMS and push notifications to your users from a single API. [Visit the brand-new page to find out more.](https://appwrite.io/products/messaging)
+Appwrite’s newest product Messaging now has its own product page (the first of its kind!). Messaging allows you to set up email, SMS and push notifications to your users from a single API. 
+
+You can find more in-depth information on how messaging works and even play around with the interactive animations.
+
+[Visit the brand-new page to find out more.](https://appwrite.io/products/messaging)
 
 # 42K stars on GitHub
 
