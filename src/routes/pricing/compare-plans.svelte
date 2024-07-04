@@ -29,7 +29,7 @@
                     title: 'Bandwidth',
                     free: '10GB',
                     pro: '300GB',
-                    scale: '5TB'
+                    scale: '300GB'
                 },
                 {
                     title: 'Additional bandwidth',
@@ -41,7 +41,7 @@
                     title: 'Storage',
                     free: '2GB',
                     pro: '150GB',
-                    scale: '500GB'
+                    scale: '150GB'
                 },
                 {
                     title: 'Additional storage',
@@ -53,7 +53,7 @@
                     title: 'Compute',
                     free: '750K executions',
                     pro: '3.5M executions',
-                    scale: '10M executions'
+                    scale: '3.5M executions'
                 }
             ]
         },
@@ -118,19 +118,13 @@
                     title: 'Logs retention',
                     free: '1 hour',
                     pro: '7 days',
-                    scale: '14 days'
+                    scale: '28 days'
                 },
                 {
                     title: 'Budget caps and alerts',
                     free: 'Not needed',
                     pro: true,
                     scale: true
-                },
-                {
-                    title: 'Additional organization member roles',
-                    free: '-',
-                    pro: '-',
-                    scale: 'Coming Soon'
                 }
             ]
         },
@@ -141,7 +135,7 @@
                     title: 'Users',
                     free: '75,000 monthly active users',
                     pro: '200,000 monthly active users',
-                    scale: '500,000 monthly active users'
+                    scale: '200,000 monthly active users'
                 },
                 {
                     title: 'Additional users',
@@ -205,7 +199,7 @@
                     title: 'File size limit',
                     free: '50MB',
                     pro: '5GB',
-                    scale: '5TB'
+                    scale: '5GB'
                 },
                 {
                     title: 'Image transformations',
@@ -228,7 +222,7 @@
                     title: 'Executions',
                     free: '750K',
                     pro: '3.5M',
-                    scale: '10M'
+                    scale: '3.5M'
                 },
                 {
                     title: 'Additional executions',
@@ -245,7 +239,7 @@
                     title: 'Concurrent connections',
                     free: '250',
                     pro: '500',
-                    scale: '1500'
+                    scale: '500'
                 },
                 {
                     title: 'Additional concurrent connections',
@@ -258,6 +252,47 @@
                     free: '3M',
                     pro: 'Unlimited',
                     scale: 'Unlimited'
+                }
+            ]
+        }, 
+        {
+            title: 'Security',
+            rows: [
+                {
+                    title: 'SOC-2',
+                    free: '-',
+                    pro: '-',
+                    scale: true
+                },
+                {
+                    title: 'HIPAA',
+                    free: '-',
+                    pro: '-',
+                    scale: true
+                },
+                {
+                    title: 'BAA',
+                    free: '-',
+                    pro: '-',
+                    scale: true
+                },
+                {
+                    title: 'Additional organization roles',
+                    free: '-',
+                    pro: '-',
+                    scale: 'Coming Soon'
+                },
+                {
+                    title: 'Network logs',
+                    free: '-',
+                    pro: '-',
+                    scale: 'Coming Soon'
+                },
+                {
+                    title: 'Activity logs',
+                    free: '-',
+                    pro: '-',
+                    scale: 'Coming Soon'
                 }
             ]
         },
@@ -277,7 +312,7 @@
                     scale: true
                 },
                 {
-                    title: 'Phone',
+                    title: 'Priority',
                     free: '-',
                     pro: '-',
                     scale: true
