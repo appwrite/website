@@ -2,7 +2,8 @@
     import { FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
-    import Hero from './(components)/Hero.svelte';
+
+    import HeroGradient from './(components)/HeroGradient.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
@@ -27,7 +28,7 @@
 </svelte:head>
 
 <Main>
-    <Hero />
+    <HeroGradient />
 
     <div class="web-container">
         <FooterNav />
