@@ -58,9 +58,9 @@
         .glass {
             position: absolute;
             inset: 0;
-            backdrop-filter: blur(3px);
+            backdrop-filter: blur(5px);
             background: rgba(25, 25, 28, 0) url(https://grainy-gradients.vercel.app/noise.svg);
-            mix-blend-mode: overlay;
+            mix-blend-mode: color;
             z-index: 10;
         }
         .lockup {

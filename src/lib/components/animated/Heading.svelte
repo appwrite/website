@@ -16,20 +16,16 @@
         0% {
             opacity: 0;
             filter: blur(15px);
-            transform: scale(1.3);
         }
         100% {
             opacity: 1;
             filter: blur(0);
-            transform: scale(1);
         }
     }
-
     .heading {
         position: relative;
         z-index: 100;
         color: white;
-        pointer-events: none;
         font-size: 20vw;
         position: relative;
 
