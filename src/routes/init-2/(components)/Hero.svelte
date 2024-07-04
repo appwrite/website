@@ -12,7 +12,7 @@
 
 <div class="hero">
     <div class="lockup">
-        <Heading class="web-headline heading" text="Init" />
+        <Heading text="Init" />
         <div class="glass" />
         {#each lines as _, i}
             <div
@@ -20,7 +20,7 @@
                 data-direction={animationDirections[
                     Math.floor(Math.random() * animationDirections.length)
                 ]}
-                style={`--animation-delay: ${randomNumber(200, 5000)}ms;--direction:${
+                style={`--animation-delay: ${randomNumber(200, 8000)}ms;--direction:${
                     animationDirections[Math.floor(Math.random() * animationDirections.length)]
                 };top: ${i * 80}px`}
             />
@@ -50,22 +50,24 @@
     :root {
         --line-width: 70vw;
         --line-height: 2px;
-        --animation-duration: 2s;
+        --animation-duration: 3s;
         --starting-position: -70vw;
+        --timing: cubic-bezier(0.1, -0.6, 0.2, 0);
     }
 
     .hero {
         .glass {
             position: absolute;
             inset: 0;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(6px);
             background: rgba(25, 25, 28, 0) url(https://grainy-gradients.vercel.app/noise.svg);
             mix-blend-mode: color;
-            z-index: 10;
+            z-index: 99;
         }
+
         .lockup {
             position: relative;
-            height: 100vh;
+            height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -84,12 +86,16 @@
                 &[data-direction='left'] {
                     &::after {
                         left: var(--starting-position);
+                        animation: left var(--animation-duration) var(--animation-delay) infinite
+                            forwards var(--timing);
                     }
                 }
 
                 &[data-direction='right'] {
                     &::after {
                         right: var(--starting-position);
+                        animation: right var(--animation-duration) var(--animation-delay) infinite
+                            forwards var(--timing);
                     }
                 }
 
@@ -108,9 +114,9 @@
                         rgba(59, 36, 85, 0.5) 80%,
                         rgba(0, 0, 0, 0) 100%
                     );
-                    animation: var(--direction) var(--animation-duration) infinite;
+
                     animation-fill-mode: forwards;
-                    animation-delay: var(--animation-delay);
+
                     animation-timing-function: cubic-bezier(0.1, -0.6, 0.2, 0);
                 }
             }
