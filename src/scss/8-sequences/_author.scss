@@ -2,6 +2,6 @@
 
 .#{$p}-author {
   display:flex; gap:pxToRem(16);
-  &-image { border-radius:50%; background-color:hsl(var(--aw-color-primary)); }
+  &-image { border-radius:50%; }
   &-info { display:flex; align-items:baseline; gap:pxToRem(8); }
 }

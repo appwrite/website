@@ -14,16 +14,16 @@
     export { className as class };
 </script>
 
-<ul class="aw-secondary-tabs {className}" use:melt={$list} {style}>
+<ul class="web-secondary-tabs {className}" use:melt={$list} {style}>
     {#each tabs as tab}
-        <li class="aw-secondary-tabs-item" class:u-stretch={stretch}>
+        <li class="web-secondary-tabs-item" class:u-stretch={stretch}>
             <button
-                class="aw-secondary-tabs-button u-width-full-line"
+                class="web-secondary-tabs-button u-width-full-line"
                 class:is-selected={$value === tab}
                 use:melt={$trigger(tab)}
             >
                 <slot {tab}>
-                    <span class="aw-main-body-500">{tab}</span>
+                    <span class="web-main-body-500">{tab}</span>
                 </slot>
             </button>
         </li>

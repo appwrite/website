@@ -7,7 +7,7 @@
 
   align-self:center; color:hsl(var(--color-neutral-0));
   padding-block:pxToRem(6); padding-inline:pxToRem(12); border-radius:pxToRem(6);
-  // background: linear-gradient(175deg, hsl(var(--aw-color-pink-500)) 25.03%, hsl(var(--aw-color-secondary-100)) 100%);
+  // background: linear-gradient(175deg, hsl(var(--web-color-pink-500)) 25.03%, hsl(var(--web-color-secondary-100)) 100%);
   background: radial-gradient(98.13% 199.7% at 98.13% 100%, #FE6947 0%, #FD366E 41.6%, #FD366E 100%);
 
   -webkit-backdrop-filter:blur(pxToRem(40));

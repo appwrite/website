@@ -4,8 +4,8 @@ title: Teams
 description: Master team management in the Appwrite Cloud. Explore team-related functions, permissions, and more.
 ---
 
-Teams are a good way to allow users to share access to resources. 
-For example, in a todo app, a user can [create a team](/docs/references/cloud/client-web/teams#create) for one of their todo lists and [invite another user](/docs/references/cloud/client-web/teams#createMembership) to the team to grant the other user access. 
+Teams are a good way to allow users to share access to resources.
+For example, in a todo app, a user can [create a team](/docs/references/cloud/client-web/teams#create) for one of their todo lists and [invite another user](/docs/references/cloud/client-web/teams#createMembership) to the team to grant the other user access.
 You can further give special rights to parts of a team using team roles.
 
 The invited user can [accept the invitation](/docs/references/cloud/client-web/teams#updateMembershipStatus) to gain access. If the user's ever removed from the team, they'll lose access again. 
@@ -16,7 +16,7 @@ For example, we can create a team called `teachers` with roles `maths`, `science
 The creator of the team is also granted the `owner` role. **Only those with the `owner` role can invite and remove members**.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Teams } from "appwrite";
 
 const client = new Client();
@@ -40,7 +40,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 void main() { // Init SDK
@@ -65,7 +65,7 @@ void main() { // Init SDK
   });
 }
 ```
-```swift
+```client-apple
 import Appwrite
 
 let client = Client()
@@ -104,7 +104,7 @@ val response = teams.create(
 You can invite members to a team by creating team memberships. For example, inviting "David" a math teacher, to the teachers team.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Teams } from "appwrite";
 
 const client = new Client();
@@ -117,7 +117,7 @@ client
 ;
 
 const promise = teams.createMembership(
-    'teachers', 
+    'teachers',
     ["maths"],
     "david@example.com"
     );
@@ -128,7 +128,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 void main() { // Init SDK
@@ -153,7 +153,7 @@ void main() { // Init SDK
   });
 }
 ```
-```swift
+```client-apple
 import Appwrite
 
 let client = Client()
@@ -191,7 +191,6 @@ val response = teams.createMembership(
 
 You can grant permissions to all members of a team using the `Role.team(<TEAM_ID>)` role or
 individual roles in the team using the `Role.team(<TEAM_ID>, [<ROLE_1>, <ROLE_2>, ...])` role.
- 
 | Description                                 | Role                               |
 | ------------------------------------------- | ------------------------------------------- |
 | All members   | `Role.team(<TEAM_ID>)`|
@@ -199,5 +198,5 @@ individual roles in the team using the `Role.team(<TEAM_ID>, [<ROLE_1>, <ROLE_2>
 
 
 {% arrow_link href="/docs/advanced/platform/permissions" %}
-Learn more about permissions 
+Learn more about permissions
 {% /arrow_link %}

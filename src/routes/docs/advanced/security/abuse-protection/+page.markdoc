@@ -33,3 +33,9 @@ You can add new platforms by navigating to **Overview** > **Platforms** > **Add 
 {% only_light %}
 ![Add a platform](/images/docs/quick-starts/add-platform.png)
 {% /only_light %}
+
+# DDoS protection {% #ddos-protection %}
+Appwrite Cloud's infrastructure is protected with always-on DDoS protection.
+Appwrite's DDoS protection operates in Network (layer 3) and Transport (layer 4) layers.
+This protects Appwrite's infrastructure against volumetric attacks such as UDP floods, ICMP floods, TCP floods, 
+and DNS reflection attacks, as well as protocol-layer attacks such as SYN floods, BGP attacks, and ping-of-death attacks.

@@ -22,28 +22,54 @@
 			]
 		},
 		{
-			label: 'Journeys',
+			label: 'Concepts',
 			items: [
 				{
-					label: 'Development',
-					href: '/docs/products/functions/development'
+					label: 'Functions',
+					href: '/docs/products/functions/functions'
 				},
 				{
-					label: 'Deployment',
-					href: '/docs/products/functions/deployment'
+					label: 'Deployments',
+					href: '/docs/products/functions/deployments'
 				},
 				{
-					label: 'Execution',
-					href: '/docs/products/functions/execution'
+					label: 'Executions',
+					href: '/docs/products/functions/executions'
+				},
+				{
+					label: 'Domains',
+					href: '/docs/products/functions/domains'
 				},
 				{
 					label: 'Runtimes',
 					href: '/docs/products/functions/runtimes'
 				},
+
+			]
+		},
+		{
+			label: 'Journeys',
+			items: [
 				{
-					label: 'Examples',
-					href: '/docs/products/functions/examples'
-				}
+					label: 'Templates',
+					href: '/docs/products/functions/templates'
+				},
+				{
+					label: 'Develop',
+					href: '/docs/products/functions/develop'
+				},
+				{
+					label: 'Deploy from Git',
+					href: '/docs/products/functions/deploy-from-git'
+				},
+				{
+					label: 'Deploy manually',
+					href: '/docs/products/functions/deploy-manually'
+				},
+				{
+					label: 'Execute',
+					href: '/docs/products/functions/execute'
+				},
 			]
 		},
 		{

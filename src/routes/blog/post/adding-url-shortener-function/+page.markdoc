@@ -44,7 +44,7 @@ Visit the **Domains** tab on the function page and copy the domain URL to test
 
 Go to the function URL in your web browser, and you'll see a short url like the one shown below.
 
-# Next Steps
+# Next steps
 
 URL shorteners often offer additional features such as tracking click-through rates, providing analytics on link usage, and allowing users to customize the shortened URL to some extent.This Function Template can be extended to perform a lot of functionalities. Some examples are:
 

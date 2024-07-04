@@ -12,8 +12,10 @@
 </div>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     .head-wrapper {
-        @include border-gradient;
+        @include gradients.border-gradient;
         --m-border-radius: 50%;
         --m-border-gradient-before: linear-gradient(
             135.1deg,
@@ -43,5 +45,7 @@
     img {
         border-radius: 50%;
         padding: 10%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
     }
 </style>

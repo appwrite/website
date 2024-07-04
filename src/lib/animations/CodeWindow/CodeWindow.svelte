@@ -18,14 +18,16 @@
 </div>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
 	.code-console {
-		@include border-gradient;
+		@include gradients.border-gradient;
 		--p-radius: 16px;
 
 		display: flex;
 		flex-direction: column;
 
-		background-color: hsl(var(--aw-color-card));
+		background-color: hsl(var(--web-color-card));
 		border-radius: var(--p-radius);
 		--m-border-radius: var(--p-radius);
 		--m-border-gradient-before: linear-gradient(

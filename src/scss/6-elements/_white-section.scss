@@ -1,6 +1,6 @@
 @use '../abstract' as *;
 
 .#{$p}-white-section {
-  background-color: hsl(var(--aw-color-greyscale-50));
-  color: hsl(var(--aw-color-greyscale-600));
+  background-color: hsl(var(--web-color-greyscale-50));
+  color: hsl(var(--web-color-greyscale-600));
 }

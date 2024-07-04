@@ -9,6 +9,7 @@
     export let title: string;
 
     const inTable = hasContext('in-table') ? getContext('in-table') : false;
+    const isAudio = /\.(wav|mp3|m4a|ogg)$/i.test(src);
 
     const {
         elements: { portalled, trigger, content, overlay },
@@ -19,15 +20,20 @@
     });
 </script>
 
-{#if inTable}
-    <img {src} {alt} {title} loading="lazy" style:vertical-align="middle" />
+{#if inTable || isAudio}
+    {#if isAudio}
+        <audio {src} controls class="u-width-full-line">
+            Your browser does not support the audio element.
+        </audio>
+    {:else}
+        <img {src} {alt} {title} loading="lazy" style:vertical-align="middle" />
+    {/if}
 {:else}
-    <div class="aw-media main">
-        <img {src} {alt} {title} loading="lazy" class="aw-u-media-ratio-16-9 u-width-full-line" />
-
+    <div class="web-media main">
+        <img {src} {alt} {title} loading="lazy" class="web-u-media-ratio-16-9 u-width-full-line" />
         <div class="abs">
             <Tooltip closeOnPointerDown>
-                <button class="aw-button is-secondary" use:melt={$trigger}>
+                <button class="web-button is-secondary" use:melt={$trigger}>
                     <span class="icon-arrow-expand" aria-hidden="true" />
                 </button>
                 <svelte:fragment slot="tooltip">Expand</svelte:fragment>
@@ -40,7 +46,7 @@
             <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }} />
 
             <img
-                class="aw-media content"
+                class="web-media content"
                 use:melt={$content}
                 {src}
                 {alt}
@@ -53,10 +59,10 @@
 {/if}
 
 <style lang="scss">
-    .aw-button {
+    .web-button {
         padding: 0.6rem !important;
         [class*='icon'] {
-            color: hsl(var(--aw-color-primary)) !important;
+            color: hsl(var(--web-color-primary)) !important;
         }
     }
 

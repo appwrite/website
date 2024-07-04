@@ -1,3 +1,5 @@
+import { writable } from 'svelte/store';
+
 async function securedCopy(value: string) {
     try {
         await navigator.clipboard.writeText(value);
@@ -39,4 +41,21 @@ export async function copy(value: string) {
     const success = (await securedCopy(value)) || unsecuredCopy(value);
 
     return success;
+}
+
+export function createCopy(value: string) {
+    const copied = writable(false);
+
+    let timeout: ReturnType<typeof setTimeout> | undefined = undefined;
+    function handleCopy() {
+        if (timeout) clearTimeout(timeout);
+        copied.set(true);
+        copy(value);
+        timeout = setTimeout(() => copied.set(false), 1000);
+    }
+
+    return {
+        copied,
+        copy: handleCopy
+    };
 }
