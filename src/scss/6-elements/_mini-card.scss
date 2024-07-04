@@ -1,8 +1,8 @@
 @use '../abstract' as *;
 
 .#{$p}-mini-card {
-  --p-mini-card-bg-color: var(--aw-color-white);
-  --p-mini-card-border-color: var(--aw-color-greyscale-100);
+  --p-mini-card-bg-color: var(--web-color-white);
+  --p-mini-card-border-color: var(--web-color-greyscale-100);
 
   padding:pxToRem(10); padding-inline-start:pxToRem(16);
 

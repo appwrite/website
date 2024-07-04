@@ -3,8 +3,8 @@
 
     setContext("no-paragraph", true);
 </script>
-<blockquote class="aw-blockquote">
-	<p class="aw-description">
+<blockquote class="web-blockquote">
+	<p class="web-description">
 		<slot />
 	</p>
 </blockquote>

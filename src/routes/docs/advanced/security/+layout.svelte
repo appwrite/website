@@ -25,12 +25,12 @@
 					href: '/docs/advanced/security/gdpr'
 				},
 				{
-					label: 'SOC 2 (Coming soon)',
+					label: 'SOC 2',
 					href: '/docs/advanced/security/soc2'
 				},
 				{
-					label: 'HIPPA (Coming soon)',
-					href: '/docs/advanced/security/hippa'
+					label: 'HIPAA',
+					href: '/docs/advanced/security/hipaa'
 				},
 				{
 					label: 'PCI',
@@ -48,6 +48,10 @@
 				{
 					label: 'Encryption',
 					href: '/docs/advanced/security/encryption'
+				},
+				{
+					label: 'Multi-Factor authentication',
+					href: '/docs/advanced/security/mfa'
 				},
 				{
 					label: 'HTTPS',

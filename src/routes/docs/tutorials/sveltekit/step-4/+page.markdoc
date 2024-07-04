@@ -12,7 +12,7 @@ We'll use a store to keep track of our user's data.
 
 Create a new file `src/lib/user.js` and add the following code to it.
 
-```js
+```client-web
 import { writable } from 'svelte/store';
 import { ID } from 'appwrite';
 import { goto } from '$app/navigation';
@@ -43,7 +43,7 @@ const createUser = () => {
 
 	async function login(email, password) {
 		if (!isBrowser) return;
-		await account.createEmailSession(email, password);
+		await account.createEmailPasswordSession(email, password);
 		await init();
 		goto('/'); // Redirect to home page after login
 	}

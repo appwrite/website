@@ -1,4 +1,4 @@
-import type { Models } from 'appwrite';
+import type { Models } from '@appwrite.io/console';
 
 export type MockThread = {
     id: string;
@@ -18,7 +18,7 @@ export interface DiscordMessage extends Pick<Models.Document, '$id'> {
     timestamp: string;
 }
 
-export interface DiscordThread extends Pick<Models.Document, '$id'> {
+export interface DiscordThread extends Models.Document {
     discord_id: string;
     author: string;
     tags?: string[];

@@ -12,8 +12,10 @@
 </div>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
 	.anim-box {
-		@include border-gradient;
+		@include gradients.border-gradient;
 		--m-border-radius: 1rem;
 		--m-border-gradient-before: linear-gradient(
 			180deg,
@@ -21,7 +23,7 @@
 			rgba(255, 255, 255, 0) 125.11%
 		);
 		border-radius: var(--m-border-radius);
-		background: hsl(var(--aw-color-card));
+		background: hsl(var(--web-color-card));
 		backdrop-filter: blur(8px);
 
 		padding: 0.5rem;

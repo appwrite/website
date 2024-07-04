@@ -6,6 +6,7 @@
     export let placement: NonNullable<FloatingConfig>['placement'] = 'top';
     export let disabled = false;
     export let closeOnPointerDown = false;
+    export let disableHoverableContent = false;
 
     const {
         elements: { trigger, content, arrow },
@@ -16,7 +17,8 @@
         },
         openDelay: 0,
         closeOnPointerDown,
-        forceVisible: true
+        forceVisible: true,
+        disableHoverableContent
     });
 
     $: flyParams = (function getFlyParams() {
@@ -61,7 +63,7 @@
 {/if}
 
 {#if $open && !disabled}
-    <div use:melt={$content} class="aw-tooltip aw-sub-body-400" transition:fly={flyParams}>
+    <div use:melt={$content} class="web-tooltip web-sub-body-400" transition:fly={flyParams}>
         <div use:melt={$arrow} />
         <slot name="tooltip" />
     </div>

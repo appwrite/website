@@ -4,7 +4,7 @@
     import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
     import { preferredPlatform, preferredVersion } from '$lib/utils/references';
 
-    $: expandable = !!$page.url.pathname.match(/\/docs\/references\/.*?\/.*?\/.*?\/?/);
+    $: expandable = !!$page.url.pathname.match(/\/docs\/references\/.*?\/(client|server).*?\/.*?\/?/);
 
     $: prefix = `/docs/references/${$preferredVersion ?? $page.params?.version ?? 'cloud'}/${
         $preferredPlatform ?? $page.params?.platform ?? 'client-web'
@@ -17,6 +17,11 @@
                     label: 'Overview',
                     href: '/docs/references',
                     icon: 'icon-view-grid'
+                },
+                {
+                    label: 'Quick start',
+                    href: '/docs/references/quick-start',
+                    icon: 'icon-play'
                 }
             ]
         },
@@ -52,6 +57,11 @@
                     label: 'Functions',
                     icon: 'icon-lightning-bolt',
                     href: `${prefix}/functions`
+                },
+                {
+                    label: 'Messaging',
+                    icon: 'icon-send',
+                    href: `${prefix}/messaging`
                 },
                 {
                     label: 'Localization',

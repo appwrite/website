@@ -38,7 +38,7 @@
 			{#each objectKeys($state.controls).filter((p) => $state.controls[p]) as provider (provider)}
 				<button class="oauth" transition:fade={{ duration: 100 }} animate:flip={{ duration: 250 }}>
 					<div class="inner">
-						<span class="aw-icon-{provider.toLowerCase()}" />
+						<span class="web-icon-{provider.toLowerCase()}" />
 						<span>{provider}</span>
 					</div>
 				</button>
@@ -151,7 +151,7 @@
 			font-weight: 400;
 			line-height: 1.25rem; /* 166.667% */
 			letter-spacing: -0.0105rem;
-			color: hsl(var(--aw-color-greyscale-500));
+			color: hsl(var(--web-color-greyscale-500));
 
 			margin-block-start: 0.75rem;
 
@@ -160,7 +160,7 @@
 				content: '';
 				height: 1px;
 				flex-grow: 1;
-				background-color: hsl(var(--aw-color-greyscale-200));
+				background-color: hsl(var(--web-color-greyscale-200));
 			}
 		}
 
@@ -179,7 +179,7 @@
 
 			border-radius: 0.5rem;
 			border: 1px solid #d9d9d9;
-			color: hsl(var(--aw-color-greyscale-750));
+			color: hsl(var(--web-color-greyscale-750));
 			text-align: center;
 
 			/* Responsive/Caption-500 */

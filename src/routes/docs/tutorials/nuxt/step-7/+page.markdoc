@@ -103,7 +103,6 @@ const user = useUserSession();
     <IdeasList />
   </div>
 </template>
-  
 <style>
 article.box {
   background-color: hsl(var(--color-neutral-0));
@@ -121,10 +120,10 @@ To catch that moment in time when the page loads, we call our `fetch` function, 
 Second, it's likely that a user will want to delete one of their ideas from the database.
 We help them do that by adding a delete button in the top right corner of the idea list item, but only on the ideas added by the user itself.
 
-Add the file `IdeasList` from the `componenents` directory and insert the following code:
+Add the file `IdeasList` from the `components` directory and insert the following code:
 
 ```vue
-<!-- componenents/IdeasList.vue -->
+<!-- components/IdeasList.vue -->
 <script setup>
 import { onMounted } from 'vue';
 

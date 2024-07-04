@@ -2,10 +2,10 @@
 
 .#{$p}-grid-articles {
   --p-grid-articles-item-border-color: var(--p-grid-articles-item-border-color-default);
-  --p-grid-articles-item-border-color-default: var(--aw-color-smooth);
+  --p-grid-articles-item-border-color-default: var(--web-color-smooth);
 
   --p-grid-articles-item-bg-color: var(--p-grid-articles-item-bg-color-default);
-  --p-grid-articles-item-bg-color-default: var(--aw-color-white);
+  --p-grid-articles-item-bg-color-default: var(--web-color-white);
 
   --p-grid-articles-width: #{pxToRem(280)};
 
@@ -74,8 +74,8 @@
   }
 
   #{$theme-dark} & {
-    --p-grid-articles-item-border-color-default: var(--aw-color-white)  / 0.2;
-    --p-grid-articles-item-bg-color-default: var(--aw-color-white)  / 0.06;
+    --p-grid-articles-item-border-color-default: var(--web-color-white)  / 0.2;
+    --p-grid-articles-item-bg-color-default: var(--web-color-white)  / 0.06;
   }
 
   @media #{$break1}     { gap:pxToRem(32); }

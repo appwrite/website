@@ -31,9 +31,7 @@ For a completely dependency-free installation, the CLI also ships with a conveni
 Using [Homebrew](https://brew.sh/)
 
 ```sh
-brew tap appwrite/sdk-for-cli https://github.com/appwrite/sdk-for-cli
-brew update
-brew install --HEAD appwrite
+brew install appwrite
 ```
 
 or terminal

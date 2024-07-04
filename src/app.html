@@ -33,6 +33,8 @@
                         document.body.classList.add(`theme-${systemTheme}`);
                     } else {
                         document.body.classList.add(`theme-${theme}`);
+                        // Color scheme in html
+                        document.documentElement.style.setProperty('color-scheme', theme);
                     }
                 }
             }
@@ -45,6 +47,11 @@
             const hideBanner = localStorage.getItem(BANNER_KEY);
             if (hideBanner === 'true') {
                 document.body.dataset.bannerHidden = '';
+            }
+            // Is logged in
+            const isLoggedIn = localStorage.getItem('appwrite:user');
+            if (isLoggedIn) {
+                document.body.dataset.loggedIn = '';
             }
         </script>
         <div style="display: contents">%sveltekit.body%</div>
