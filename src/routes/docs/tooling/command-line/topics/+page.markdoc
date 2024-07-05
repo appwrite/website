@@ -28,7 +28,7 @@ appwrite pull topics
 
 # appwrite.json {% #appwritejson %}
 
-After initializing your Appwrite project and pulling your existing buckets, your `appwrite.json` file should look similar to the following:
+After initializing your Appwrite project and pulling your existing topics, your `appwrite.json` file should look similar to the following:
 
 ```server-nodejs
 {
