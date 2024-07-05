@@ -71,7 +71,7 @@ Before you can deploy with the Appwrite CLI, make sure you've [initialized the C
 
 Your function must be added to `appwrite.json` to deploy with the Appwrite CLI. 
 
-You can pull an existing function:
+You can pull existing functions:
 
 ```sh
 appwrite pull functions
