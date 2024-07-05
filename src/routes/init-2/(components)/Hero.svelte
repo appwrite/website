@@ -1,125 +1,91 @@
 <script lang="ts">
-    import Heading from '$lib/components/animated/Heading.svelte';
-
-    const lines = Array.from({ length: 50 });
-
-    const randomNumber = (min: number, max: number) => {
-        return Math.random() * (max - min) + min;
-    };
-
-    const animationDirections = ['left', 'right'];
+    const lines = Array.from({ length: 8 });
+    import Lockup from './Lockup.svelte';
 </script>
 
 <div class="hero">
     <div class="lockup">
-        <Heading text="Init" />
-        <div class="glass" />
-        {#each lines as _, i}
-            <div
-                class="line"
-                data-direction={animationDirections[
-                    Math.floor(Math.random() * animationDirections.length)
-                ]}
-                style={`--animation-delay: ${randomNumber(200, 8000)}ms;--direction:${
-                    animationDirections[Math.floor(Math.random() * animationDirections.length)]
-                };top: ${i * 80}px`}
-            />
-        {/each}
+        <h1 class="sr-only">Init</h1>
+        <Lockup />
+        <div class="lines">
+            {#each lines as _, i}
+                <div class="line" style:left={`${i * 250}px`} style={`--delay:${i * 500}ms`} />
+            {/each}
+        </div>
     </div>
 </div>
 
 <style lang="scss">
-    @keyframes -global-left {
-        0% {
-            left: var(--starting-position);
-        }
-        100% {
-            left: 110%;
-        }
-    }
-
-    @keyframes -global-right {
-        0% {
-            right: var(--starting-position);
-        }
-        100% {
-            right: 110%;
-        }
-    }
-
     :root {
-        --line-width: 70vw;
-        --line-height: 2px;
-        --animation-duration: 3s;
-        --starting-position: -70vw;
-        --timing: cubic-bezier(0.1, -0.6, 0.2, 0);
+        --background: hsl(240 5.7% 10.4%);
+        --gradient: linear-gradient(
+            to bottom,
+            hsl(240 5.7% 10.4%),
+            rgba(51, 52, 52, 1),
+            rgba(122, 122, 122, 1),
+            hsl(240 5.7% 10.4%)
+        );
+        --width: 2px;
+        --height: 10vh;
+        --font-size: 25vw;
+        --starting-position: -50vh;
+        --duration: 5s;
+    }
+
+    @keyframes -global-line {
+        0% {
+            bottom: var(--starting-position);
+        }
+        100% {
+            bottom: 200%;
+        }
     }
 
     .hero {
-        .glass {
-            position: absolute;
-            inset: 0;
-            backdrop-filter: blur(6px);
-            background: rgba(25, 25, 28, 0) url(https://grainy-gradients.vercel.app/noise.svg);
-            mix-blend-mode: color;
-            z-index: 99;
-        }
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
 
         .lockup {
             position: relative;
-            height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-grow: 1;
-            margin: 0 auto;
             overflow: hidden;
-
-            .line {
+            .lines {
                 position: absolute;
-                height: var(--line-height);
-                width: 120vw;
-                transform: rotate(25deg);
+                inset: 0;
+                z-index: -10;
 
-                overflow: hidden;
-
-                &[data-direction='left'] {
-                    &::after {
-                        left: var(--starting-position);
-                        animation: left var(--animation-duration) var(--animation-delay) infinite
-                            forwards var(--timing);
-                    }
-                }
-
-                &[data-direction='right'] {
-                    &::after {
-                        right: var(--starting-position);
-                        animation: right var(--animation-duration) var(--animation-delay) infinite
-                            forwards var(--timing);
-                    }
-                }
-
-                &::after {
-                    content: '';
-                    display: block;
+                .line {
                     position: absolute;
-                    width: var(--line-width);
-                    height: var(--line-height);
-                    top: 0;
-                    border-radius: 100px;
-                    background: linear-gradient(
-                        to left,
-                        rgba(254, 83, 109, 0) 0%,
-                        rgba(254, 83, 109, 0.6) 50%,
-                        rgba(59, 36, 85, 0.5) 80%,
-                        rgba(0, 0, 0, 0) 100%
-                    );
+                    height: var(--height);
+                    width: var(--width);
 
-                    animation-fill-mode: forwards;
-
-                    animation-timing-function: cubic-bezier(0.1, -0.6, 0.2, 0);
+                    &::after {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        bottom: var(--starting-position);
+                        width: calc(var(--width) / 2);
+                        height: var(--height);
+                        background: var(--gradient);
+                        animation: line var(--duration) var(--delay) infinite forwards
+                            cubic-bezier(0.1, -0.6, 0.2, 0);
+                    }
                 }
             }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
         }
     }
 </style>
