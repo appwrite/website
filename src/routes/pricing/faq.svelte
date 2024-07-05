@@ -55,7 +55,7 @@
             question:
                 'Where can I find information about my invoices and other billing information?',
             answer: 'Go to the Appwrite Console and use the drop-down menu in the top right corner to navigate to your organization overview by clicking on your organization. This will bring you to your overview, where you can select the billing tab. Here you will find your overview, payment history and methods, billing address, set a budget cap, and add your credits.'
-        }
+        },
         {
             question:
                 'I work with sensitive data and need to sign a BAA. Does Appwrite provide this?',
