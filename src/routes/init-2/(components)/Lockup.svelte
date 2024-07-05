@@ -37,7 +37,6 @@
     <path d={t} class="base" />
     <path d={t} stroke="url(#t)" />
 
-    <rect x="50" y="50" width={width + 150} height={height + 100} mask="url(#blurMask)" />
     <defs>
         <linearGradient id="i1" gradientUnits="userSpaceOnUse">
             <stop stop-color="#fff" stop-opacity="0" />
@@ -155,7 +154,7 @@
             />
             <animate
                 attributeName="x2"
-                values="0; {width * 1.5}; 0"
+                values="0; {width}; 0"
                 dur={`${dur}s`}
                 repeatCount="indefinite"
                 keyTimes="0; 1; 1"
@@ -175,25 +174,18 @@
                 keyTimes="0; 1; 1"
             />
         </linearGradient>
-
-        <radialGradient id="gradualBlur" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-            <stop offset="0" stop-opacity="0" />
-            <stop offset="100%" stop-opacity="1" />
-        </radialGradient>
-        <mask id="blurMask" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
-            <rect width="1" height="1" fill="url(#gradualBlur)" />
-        </mask>
     </defs>
 </svg>
 
 <style lang="scss">
     .lockup {
         --stroke-color: #222;
+        --stroke-width: 2;
         --fill: hsl(240 5.7% 10.4%);
         fill: none;
 
         path {
-            stroke-width: 2;
+            stroke-width: var(--stroke-width);
             stroke-linecap: round;
         }
         .base {
