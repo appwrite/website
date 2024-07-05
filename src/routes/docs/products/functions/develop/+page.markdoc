@@ -1412,7 +1412,7 @@ import { Client, Databases, ID } from "https://deno.land/x/appwrite/mod.ts";
 export default function ({req, res, error}: any){
     const client = new Client();
     // Set API key
-    client.setKey(req.headers.get('x-appwrite-key') || ""); // API key is automatically provided by Appwrite
+    client.setKey(req.headers['x-appwrite-key'] || ""); // API key is automatically provided by Appwrite
 
     const databases = new Databases(client);
     
