@@ -161,7 +161,6 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 ---
 {% /table %}
 
-
 # Verbose {% #verbose %}
 In case of errors with any command, you can get more information about what went wrong using the `--verbose` flag
 
