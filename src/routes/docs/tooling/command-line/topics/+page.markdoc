@@ -12,7 +12,7 @@ The Appwrite CLI can create, set, delete, and configure topics.
 
 # Initialize topic {% #initialize-topic %}
 
-Initialize your new topic using the following command:
+Initialize a new topic using the following command:
 
 ```
 appwrite init topic
