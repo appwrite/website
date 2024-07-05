@@ -8,6 +8,12 @@
     @use '$scss/abstract' as *;
 
     .embla__slide {
+        cursor: grab;
+
+        &:active {
+            cursor: grabbing;
+        }
+
         @media (max-width: 768px) {
             flex: 0 0 100%;
         }
