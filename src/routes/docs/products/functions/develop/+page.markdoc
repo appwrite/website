@@ -1466,7 +1466,7 @@ import Foundation
 func main(context: RuntimeContext) async throws -> RuntimeOutput {
     let client = Client()
     // Set API key
-    client.setKey(context.req.headers('x-appwrite-key') ?? "") // API key is automatically provided by Appwrite
+    client.setKey(context.req.headers['x-appwrite-key'] ?? "") // API key is automatically provided by Appwrite
 
     let databases = Databases(client: client)
 
