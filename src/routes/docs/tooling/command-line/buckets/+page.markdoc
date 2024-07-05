@@ -12,7 +12,7 @@ The Appwrite CLI allows you to configure and deploy buckets across projects.
 
 # Initialize bucket {% #initialize-bucket %}
 
-Initialize your new bucket using the following command:
+Initialize a new bucket using the following command:
 
 ```sh
 appwrite init bucket
