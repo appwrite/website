@@ -1363,7 +1363,7 @@ import os
 def main(context):
     client = Client()
     # Set API key
-    client.set_key(context.req.headers.get('x-appwrite-key')) # API key is automatically provided by Appwrite
+    client.set_key(context.req.headers['x-appwrite-key']) # API key is automatically provided by Appwrite
     databases = Databases(client)
 
     try:
