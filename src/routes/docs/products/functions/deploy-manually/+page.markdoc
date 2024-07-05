@@ -40,7 +40,7 @@ Learn more about the CLI functions commands
 
 ## Overwrite warning {% #overwrite-warning %} 
 
-If you made changes in the Appwrite Console that are different from your `appwrite.json,` using the CLI deploy command will overwrite your console changes. Update your `appwrite.json` manually before deploying.
+If you made changes in the Appwrite Console that are different from your `appwrite.json`, using the CLI deploy command will overwrite your console changes. Update your `appwrite.json` manually before deploying.
 
 ## Configure CLI deployments {% #configure-cli-deployments %}
 If you need to target a different project, API endpoint, change the path or entry point of your function, or update any of the other configuration options, 

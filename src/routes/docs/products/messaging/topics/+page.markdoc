@@ -289,7 +289,7 @@ Learn more about the CLI topic commands
 
 ## Overwrite warning {% #overwrite-warning %} 
 
-If you made changes in the Appwrite Console that are different from your `appwrite.json,` using the CLI deploy command will overwrite your console changes. Update your `appwrite.json` manually before deploying.
+If you made changes in the Appwrite Console that are different from your `appwrite.json`, using the CLI deploy command will overwrite your console changes. Update your `appwrite.json` manually before deploying.
 
 {% arrow_link href="/docs/tooling/command-line/topics#appwritejson" %}
 Learn more about appwrite.json
