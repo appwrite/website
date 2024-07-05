@@ -13,7 +13,7 @@ npm install -g appwrite-cli-beta@latest
 
 Other than commands to create and push databases, collections, functions, messaging-topics, teams, and buckets, the Appwrite CLI can be used as a Server SDK as well. The Appwrite CLI has a command for every Server API endpoint.
 
-Commands generally follows the following syntax:
+Commands generally follow the following syntax:
 
 ```sh
 appwrite [COMMAND] [OPTIONS]
