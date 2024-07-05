@@ -107,7 +107,7 @@ def main(context):
     #
     # client = Client()
     # Set API key
-    # client.set_key(context.req.headers.get('x-appwrite-key')) API key is automatically provided by Appwrite
+    # client.set_key(context.req.headers['x-appwrite-key']) API key is automatically provided by Appwrite
 
     # You can log messages to the console
     context.log("Hello, Logs!")
@@ -1283,8 +1283,9 @@ By default, we include the following package managers in each runtime.
 {% /table %}
 
 # Using Appwrite in a function {% #using-appwrite %} 
-Appwrite can be used in your functions by adding the relevant SDK to your function's dependencies. 
-Authenticating with Appwrite is done via a dynamic API key or a JWT token. 
+Appwrite can be used in your functions by adding the relevant SDK to your function's dependencies.
+If you're not using dynamic API keys, API keys must be generated and exported as an [environment variable](/docs/advanced/self-hosting/environment-variables).
+Authenticating with Appwrite is done via a dynamic API key, a API key, or a JWT token. 
 
 You can read more about authentication in the [JWT login](/docs/products/auth/jwt) section of the docs.
 
@@ -1299,7 +1300,7 @@ Never share API keys with users.
 You can only use dynamic API keys inside Appwrite functions.
 Dynamic API keys don't need to be created. 
 If you're not using a dynamic API key, you would need to create and manage your API keys.
-Instead, update the function settings to configure function level permissions by navigating to **Your function** > **Settings** > **Scopes**.
+Update the function settings to configure function level permissions by navigating to **Your function** > **Settings** > **Scopes**.
 
 {% arrow_link href="/docs/advanced/platform/permissions"%}
 Learn more about permissions
