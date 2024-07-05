@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store';
+import { browser } from '$app/environment';
 
 type Adapter = {
     get: (key: string) => unknown;
@@ -72,9 +73,8 @@ type LastStateDev= {
 
 export const getParsedState = (): LastStateDev => {
     let data:LastStateDev = {client : "", others: ""};
-    if(!localStorage) return data;
-    let storedValue =  localStorage.getItem(LASTSTATEDEVLANGUAGE_KEY) === null?
-     JSON.stringify(data): localStorage.getItem(LASTSTATEDEVLANGUAGE_KEY);
+    let storedValue =  browser ? localStorage.getItem(LASTSTATEDEVLANGUAGE_KEY)?? 
+     JSON.stringify(data): JSON.stringify(data);
 
     data = JSON.parse(storedValue === null? JSON.stringify(data): storedValue);
     return data;
@@ -90,7 +90,9 @@ export const setLastStateDevLanguage = (value:string) => {
     else {
         data.others = value;
     }
-    localStorage.setItem(LASTSTATEDEVLANGUAGE_KEY, JSON.stringify(data));
+    if(browser){
+        localStorage.setItem(LASTSTATEDEVLANGUAGE_KEY, JSON.stringify(data));
+    }
 }
 
 export const getLastStateDevLanguage = (): LastStateDev => {
