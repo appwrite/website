@@ -56,7 +56,7 @@
         {
             question: 'What happens after the 12 months run out?',
             answer: 'A month before the end of the term, we will re-evaluate your situation together and provide you with a fitting plan. Depending on your situation, this could mean you have to start paying full price, a reduced price, or nothing at all.'
-        }
+        },
          {
             question: 'I need to sign a BAA. Can I do this with Appwrite?',
             answer: 'Yes, we can provide you with this.'
