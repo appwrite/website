@@ -20,10 +20,9 @@
 
 <svg
     {width}
-    class="lockup"
     {height}
+    class="lockup"
     viewBox={`0 0 ${width} ${height}`}
-    fill="none"
     xmlns="http://www.w3.org/2000/svg"
 >
     <path d={i1} class="base" />
@@ -37,6 +36,8 @@
 
     <path d={t} class="base" />
     <path d={t} stroke="url(#t)" />
+
+    <rect x="50" y="50" width={width + 150} height={height + 100} mask="url(#blurMask)" />
     <defs>
         <linearGradient id="i1" gradientUnits="userSpaceOnUse">
             <stop stop-color="#fff" stop-opacity="0" />
@@ -174,6 +175,14 @@
                 keyTimes="0; 1; 1"
             />
         </linearGradient>
+
+        <radialGradient id="gradualBlur" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="0" stop-opacity="0" />
+            <stop offset="100%" stop-opacity="1" />
+        </radialGradient>
+        <mask id="blurMask" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+            <rect width="1" height="1" fill="url(#gradualBlur)" />
+        </mask>
     </defs>
 </svg>
 
@@ -181,12 +190,12 @@
     .lockup {
         --stroke-color: #222;
         --fill: hsl(240 5.7% 10.4%);
+        fill: none;
 
         path {
             stroke-width: 2;
             stroke-linecap: round;
         }
-
         .base {
             stroke: var(--stroke-color);
             fill: var(--fill);

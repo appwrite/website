@@ -1,6 +1,9 @@
 <script lang="ts">
-    const lines = Array.from({ length: 8 });
     import Lockup from './Lockup.svelte';
+
+    const getRandomNumber = (min: number, max: number) => {
+        return (Math.random() * (max - min) + min).toFixed();
+    };
 </script>
 
 <div class="hero">
@@ -8,9 +11,35 @@
         <h1 class="sr-only">Init</h1>
         <Lockup />
         <div class="lines">
-            {#each lines as _, i}
-                <div class="line" style:left={`${i * 250}px`} style={`--delay:${i * 500}ms`} />
-            {/each}
+            <div>
+                {#each Array.from({ length: 1 }) as _, i}
+                    <div
+                        class="line"
+                        style:left={`${i * 175}px`}
+                        style={`--delay:${getRandomNumber(100, 500)}ms`}
+                    />
+                {/each}
+            </div>
+
+            <div style:left="320px" style:position="relative">
+                {#each Array.from({ length: 2 }) as _, i}
+                    <div
+                        class="line"
+                        style:left={`${i * 25}px`}
+                        style={`--delay:${getRandomNumber(100, 1200)}ms`}
+                    />
+                {/each}
+            </div>
+
+            <div style:left="625px" style:position="relative">
+                {#each Array.from({ length: 3 }) as _, i}
+                    <div
+                        class="line"
+                        style:left={`${i * 35}px`}
+                        style={`--delay:${getRandomNumber(100, 2000)}ms`}
+                    />
+                {/each}
+            </div>
         </div>
     </div>
 </div>
@@ -29,7 +58,7 @@
         --height: 10vh;
         --font-size: 25vw;
         --starting-position: -50vh;
-        --duration: 5s;
+        --duration: 2s;
     }
 
     @keyframes -global-line {
