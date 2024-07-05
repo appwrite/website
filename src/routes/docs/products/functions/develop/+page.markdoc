@@ -1498,7 +1498,7 @@ namespace DotNetRuntime
         {
             var client = new Client()
             // Set API key
-            client.setKey(Context.Request.Headers['x-appwrite-key']) // API key is automatically provided by Appwrite
+            client.setKey(Context.Req.Headers['x-appwrite-key']) // API key is automatically provided by Appwrite
 
             var databases = new Databases(client);
     
