@@ -151,7 +151,7 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * Flag to push all resources
 ---
 * `--id [id...]`      
-* Flag to pass list of ids for a giving action
+* Flag to pass list of ids for a given action
 ---
 * `--report`          
 * Enable reporting in case of CLI errors
