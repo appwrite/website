@@ -77,6 +77,7 @@ return function ($context) {
 
     // If something goes wrong, log an error
     $context->error('Hello, Errors!');
+
     // The `req` object contains the request data
     if ($context->req->method === 'GET') {
         // Send a response with the res object helpers
@@ -172,7 +173,7 @@ export default ({ req, res, log, error }: any) => {
   //
   // const client = new Client();
   // Set API key
-  // client.setKey(req.headers.get('x-appwrite-key') || ""); API key is automatically provided by Appwrite
+  // client.setKey(req.headers['x-appwrite-key'] || ""); API key is automatically provided by Appwrite
 
 
   // You can log messages to the console
@@ -672,6 +673,7 @@ These are provided alongside any custom headers sent to the function.
 |---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `x-appwrite-trigger`        |  Describes how the function execution was invoked. Possible values are `http`, `schedule` or `event`.                                                      |
 | `x-appwrite-event`          |  If the function execution was triggered by an event, describes the triggering event.                                                                |
+| `x-appwrite-key`            |  API key used for server authentication. Your API key is a secret, do not use it in client applications.                                             |
 | `x-appwrite-user-id`        |  If the function execution was invoked by an authenticated user, display the user ID. This doesn't apply to Appwrite Console users or API keys.      |
 | `x-appwrite-user-jwt`       |  JWT token generated from the invoking user's session. Used to authenticate Server SDKs to respect access permissions. [Learn more about JWT tokens](/docs/products/auth/jwt).  |
 | `x-appwrite-country-code`   |  Displays the country code of the configured locale.                                                                                                 |
@@ -766,7 +768,7 @@ export default async ({ req, res, log }) => {
         case 'empty':
             return res.empty();
         case 'json':
-            return res.json({type": "This is a JSON response"});
+            return res.json({"type": "This is a JSON response"});
         case 'redirect':
             return res.redirect("https://appwrite.io", 301);
         case 'html':
@@ -1081,10 +1083,6 @@ You can access these logs through the following steps.
 # Accessing environment variables {% #environment-variables %} 
 If you need to pass constants or secrets to Appwrite Functions, you can use environment variables. 
 
-{% info title="Appwrite API keys" %}
-If your function uses an **Appwrite SDK** with a **dynamic API** key, go to the function's settings and specify what [**scopes**](/docs/advanced/platform/api-keys#scopes) the API key has access to.
-{% /info %}
-
 | Variable                          | Description                                    |
 |-----------------------------------|------------------------------------------------|
 | `APPWRITE_FUNCTION_ID`              |  The ID of the running function.               |
@@ -1290,11 +1288,22 @@ Authenticating with Appwrite is done via a dynamic API key or a JWT token.
 
 You can read more about authentication in the [JWT login](/docs/products/auth/jwt) section of the docs.
 
-## Using with API key {% #using-api-key %} 
-Appwrite functions use dynamic API keys, allowing functions to ignore permissions and operate without a session.
+## Using with API key {% #using-api-key %}
+API keys have defined scopes when you create them.
+They ignore permissions and operate without sessions.
+If you're not using a dynamic API key, you must create and manage your API keys if the function should act as an admin-type role instead of acting on behalf of a user.
+Pass in your API key as an environment variable. 
+Never share API keys with users.
+
+## Using with Dynamic API key {% #using-dynamic-api-key %}
 You can only use dynamic API keys inside Appwrite functions.
-Inside Appwrite functions, dynamic or regular API keys don't have to be created or managed.
-Instead, use the function settings to set what it is allowed to do.
+Dynamic API keys don't need to be created. 
+If you're not using a dynamic API key, you would need to create and manage your API keys.
+Instead, update the function settings to configure function level permissions by navigating to **Your function** > **Settings** > **Scopes**.
+
+{% arrow_link href="/docs/advanced/platform/permissions"%}
+Learn more about permissions
+{% /arrow_link %}
 
 {% multicode %}
 ```server-nodejs
@@ -1591,7 +1600,7 @@ JWTs allow you to act on behalf of an user in your Appwrite Function.
 When using JWTs, you will be able to access and change **only** the resources with the same permissions as the user account that signed the JWT. 
 This preserves the permissions you configured on each resource.
 
-If the Appwrite Function is invoked by an authenticated user, `the x-appwrite-user-jwt` header is automatically passed in.
+If the Appwrite Function is invoked by an authenticated user, the `x-appwrite-user-jwt` header is automatically passed in.
 
 {% multicode %}
 
