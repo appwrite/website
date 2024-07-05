@@ -7,6 +7,7 @@
     import { Main } from '$lib/layouts';
     import { isMobileNavOpen } from '$lib/layouts/Main.svelte';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { slide } from 'svelte/transition';
     import FooterNav from '../lib/components/FooterNav.svelte';
     import MainFooter from '../lib/components/MainFooter.svelte';
     import DeveloperCard from './DeveloperCard.svelte';
