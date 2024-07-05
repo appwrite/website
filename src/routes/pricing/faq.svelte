@@ -36,6 +36,10 @@
             answer: `The OSS program is exclusively for active open-source maintainers using Appwrite Cloud. You can find more information on how to join the program in our <a class="web-link is-inline" href="/blog/post/announcing-the-appwrite-oss-program">announcement blog</a>.`
         },
         {
+            question: 'How can I join the Startups program?',
+            answer: `Are you a founder looking to build with Appwrite? Learn more about our Startups program on our Startups <a class="web-link is-inline" href="/startups">landing page.</a>.`
+        },
+        {
             question: 'I have a Free plan account. How do I upgrade to a paid plan?',
             answer: 'If you want to upgrade to a paid plan, you can do so in your Appwrite dashboard, select your organization, and change your plan in the <b>Billing</b> section.'
         },
@@ -45,7 +49,7 @@
         },
         {
             question: 'Where can I find an overview of my organization usage stats?',
-            answer: "Go to the Appwrite Console and select the organization you wish to view. Here, you will find a usage tab where you can find an overview of all your project's usage stats."
+            answer: "Go to the Appwrite Console and select the organization you wish to view. Here, you will find a usage tab with an overview of all your project's usage stats."
         },
         {
             question:
@@ -55,7 +59,7 @@
         {
             question:
                 'I work with sensitive data and need to sign a BAA. Does Appwrite provide this?',
-            answer: 'Yes, you can sign a BAA with Appwrite. Learn more about our HIPAA compliance in our <a class="web-link is-inline" href="/docs/advanced/security/hipaa">documentation</a>.'
+            answer: 'Yes, you can sign a BAA with Appwrite. Learn more about our security and compliance in our <a class="web-link is-inline" href="/docs/advanced/security">documentation</a>.'
         }
     ];
 
