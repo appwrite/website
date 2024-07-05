@@ -40,6 +40,16 @@
                     />
                 {/each}
             </div>
+
+            <div style:left="800px" style:position="relative">
+                {#each Array.from({ length: 1 }) as _, i}
+                    <div
+                        class="line"
+                        style:left={`${i * 35}px`}
+                        style={`--delay:${getRandomNumber(100, 2000)}ms`}
+                    />
+                {/each}
+            </div>
         </div>
     </div>
 </div>
