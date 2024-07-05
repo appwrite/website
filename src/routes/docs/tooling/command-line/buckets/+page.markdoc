@@ -67,7 +67,7 @@ appwrite push buckets
 
 # Commands {% #commands %}
 
-The storage command allows you to manage your project files. Appwrite database CLI commands generally follow the following syntax:
+The storage command allows you to manage your project's buckets and files. Appwrite storage CLI commands generally follow the following syntax:
 
 ```sh
 appwrite storage [COMMAND] [OPTIONS]
