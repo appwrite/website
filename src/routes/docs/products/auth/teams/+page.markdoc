@@ -190,7 +190,7 @@ val response = teams.createMembership(
 # CLI {% #CLI %}
 
 {% info title="CLI setup" %}
-Before you can deploy with the Appwrite CLI, make sure you've [installed and initialized](/docs/tooling/command-line/installation) the CLI and [logged-in](/docs/tooling/command-line/installation#get-started) into your Appwrite account.
+Before you can deploy with the Appwrite CLI, make sure you've [installed and initialized](/docs/tooling/command-line/installation) the CLI and [logged in](/docs/tooling/command-line/installation#get-started) to your Appwrite account.
 {% /info %}
 
 To manually deploy your Appwrite teams, you need to pull in your current Appwrite teams by using the following command:
