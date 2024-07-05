@@ -1,9 +1,9 @@
 ---
 layout: post
 title: How to handle CORS in Appwrite serverless functions
-description: Understanding why you are getting CORS error when sending a request to an Appwrite backend and how to debug.
-date: 2024-07-02
-cover: /images/blog/handle-cors-in-serverless-functions/cors_cover.png
+description: Learn how to handle Cross-Origin Resource Sharing (CORS) in Appwrite serverless functions.
+date: 2024-07-08
+cover: /images/blog/handle-cors-in-serverless-functions/cover.png
 timeToRead: 3
 author: ebenezer-don
 category: engineering
