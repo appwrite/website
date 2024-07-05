@@ -72,6 +72,7 @@ type LastStateDev= {
 
 export const getParsedState = (): LastStateDev => {
     let data:LastStateDev = {client : "", others: ""};
+    if(!localStorage) return data;
     let storedValue =  localStorage.getItem(LASTSTATEDEVLANGUAGE_KEY) === null?
      JSON.stringify(data): localStorage.getItem(LASTSTATEDEVLANGUAGE_KEY);
 
