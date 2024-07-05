@@ -16,16 +16,22 @@
             answer: 'Once you submit the form, our team will evaluate your application. If selected, you will receive an email with a special code to redeem your cloud credits and a detailed how-to guide on applying them. After you redeem your code, you will officially be part of the Startups program and can get started with your project!'
         },
         {
-            question: 'I am already a Pro user. Can I apply?',
-            answer: "We only accept new paying customers. This means that if you currently have a Pro account or had one previously, you're not eligible for the program."
+            question: 'I am a Pro user. Can I apply?',
+            answer: "Yes, if you are currently on a Free or Pro plan, you can apply for the program."
+
+        },
+         {
+            question: 'I am already a Scale user. Can I apply?',
+            answer: "If you are currently on a Scale plan, you can't apply for the program as the program is intended for Startups to help them relieve financial burdens at an early stage. If you're able to pay for a Scale plan, we will consider you uneligible."
+
         },
         {
             question: 'Who is eligible to apply?',
             answer: "We're supporting startups established in the last decade with VC funding or bootstrapped/self-funded. If you don't meet these requirements yet but are in the process of meeting them, feel free to reach out so we can see how we can support your startup."
         },
         {
-            question: 'What are the limits of the Pro plan?',
-            answer: 'The Appwrite Pro plan has ample room for growth and can handle production applications of all sizes. We have set generous limits to ensure most applications can grow comfortably within those limits without incurring high bills. Please review our <a class="web-link is-inline" href="/pricing">pricing page</a> for a full overview of the Pro plan limits.'
+            question: 'What are the limits of the Scale plan?',
+            answer: 'The Appwrite Scale plan has ample room for growth and can handle production applications of all sizes. We have set generous limits to ensure most applications can grow comfortably within those limits without incurring high bills. Please review our <a class="web-link is-inline" href="/pricing">pricing page</a> for a full overview of the Scale plan limits.'
         },
         {
             question: 'What happens if we scale overnight?',
@@ -33,7 +39,7 @@
         },
         {
             question: "What's included in the Appwrite for Startups program?",
-            answer: 'Startups joining the program get access to everything Appwrite Pro offers. This includes Cloud credits, unlimited seats, and premium email support. In addition, we provide you with special swag, and you get a program manager and a private Discord channel. Read more about it in our <a class="web-link is-inline" href="/blog/post/announcing-appwrite-startups-program">announcement</a>.'
+            answer: 'Startups joining the program get access to everything Appwrite Scale offers. This includes Cloud credits, unlimited seats, and premium email support. In addition, we provide you with special swag, and you get a program manager and a private Discord channel. Read more about it in our <a class="web-link is-inline" href="/blog/post/announcing-appwrite-startups-program">announcement</a>.'
         },
         {
             question: 'What kind of support do we get?',
@@ -42,7 +48,7 @@
         {
             question:
                 'What if we need more resources than what is offered in the Startups program?',
-            answer: 'If you need more resources than Appwrite Pro, we can discuss your needs and create a more tailored and custom plan.'
+            answer: 'If you need more resources than Appwrite Scale, we can discuss your needs and create a more tailored and custom plan.'
         },
         {
             question:
@@ -52,6 +58,10 @@
         {
             question: 'What happens after the 12 months run out?',
             answer: 'A month before the end of the term, we will re-evaluate your situation together and provide you with a fitting plan. Depending on your situation, this could mean you have to start paying full price, a reduced price, or nothing at all.'
+        }
+         {
+            question: 'I need to sign a BAA. Can I do this with Appwrite?',
+            answer: 'Yes, we can provide you with this.'
         }
     ];
 
