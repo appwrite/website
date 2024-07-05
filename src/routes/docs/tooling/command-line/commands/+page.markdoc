@@ -177,7 +177,7 @@ appwrite users list --json
 ```
 
 # Force {% #force %}
-By default, when pushing or pulling resources, Appwrite CLI asks you to confirm in a destructive use case. Use the `--force` flag to verify all questions.
+By default, when pushing or pulling resources, the Appwrite CLI will ask you to confirm destructive operations. Use the `--force` flag to verify all questions.
 
 ```sh
 appwrite push collections --force
