@@ -5,7 +5,7 @@ description: Learn about Appwrites CLI and the powerful, feature complete comman
 ---
 
 {% info title="CLI Version" %}
-It is highly recommended that you have the latest version of the CLI. [Update your CLI](https://www.npmjs.com/package/appwrite-cli-beta) by running the following commands in your terminal:
+It is highly recommended that you have the latest version of the CLI. [Update your CLI](https://www.npmjs.com/package/appwrite-cli) by running the following commands in your terminal:
 
 {% tabs %}
 {% tabsitem #npm title="NPM" %}
@@ -97,7 +97,7 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * The login command allows you to authenticate into the CLI. This command expects the console account that you use to log into the Appwrite Console.
 ---
 * `logout`
-* The logout command allows you to logout from the CLI.
+* The logout command allows you to log out of your Appwrite account.
 ---
 * `register`
 * Prints link to register an Appwrite account.
@@ -114,16 +114,16 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * Description
 ---
 * `init [options]`
-* The init command helps you initialize your Appwrite project, databases, collections, functions, teams, messaging-topics, and buckets.
+* The init command provides a convenient wrapper for creating and initializing projects, functions, collections, buckets, teams, and messaging-topics in Appwrite.
 ---
 * `pull`
 * The pull command helps you pull your Appwrite project, functions, collections, buckets, teams, and messaging-topics.
 ---
 * `push`
-* The push command provides a convenient wrapper for pushing your databases, collections, functions, teams, and buckets.
+* The push command provides a convenient wrapper for pushing your functions, collections, buckets, teams, and topics.
 ---
 * `run`
-* The run command allows you to run projects locally to allow easy development and quick debugging
+* The run command allows you to run projects locally to allow easy development and quick debugging.
 ---
 {% /table %}
 
@@ -135,22 +135,22 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * Description
 ---
 * `account`
-* The account command allows you to authenticate as and manage a user account.
+* The account command allows you to authenticate and manage a user account.
 ---
 * `users`
 * The users command allows you to manage your project users.
 ---
 * `teams`
-* The teams command allows you to group users of your project and to enable them to share access permissions to your project's resources.
+* The teams command allows you to group users of your project and enable them to share read and write access to your project resources.
 ---
 * `databases`
-* The databases command allows you to create structured collections of documents, query and filter lists of documents.
+* The databases command allows you to create structured collections of documents and query and filter lists of documents.
 ---
 * `functions`
-* The functions command allows you view, create and manage your Appwrite Functions.
+* The functions command allows you to view, create, and manage your Cloud Functions.
 ---
 * `messaging`
-* The messaging command allows you to send messages.
+* The messaging command allows you to send, create, edit, and delete messages.
 ---
 * `storage`
 * The storage command allows you to manage your project files.
@@ -168,7 +168,7 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * Description
 ---
 * `-v, --version`     
-* output the version number
+* Output the version number
 ---
 * `-V, --verbose`     
 * Show complete error log
@@ -183,13 +183,13 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * Flag to push all resources
 ---
 * `--id [id...]`      
-* Flag to pass list of ids for a given action
+* Flag to pass a list of ids for a given action
 ---
 * `--report`          
 * Enable reporting in case of CLI errors
 ---
 * `-h, --help`        
-* display help for command
+* Display help for command
 ---
 {% /table %}
 

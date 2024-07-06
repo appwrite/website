@@ -10,10 +10,10 @@ The CLI handles the creation and deployment of Appwrite Functions.
 
 # Initialize function {% #initialize-function %}
 
-Initialize your new function using the following command:
+Initialize a new function using the following command:
 
 ```sh
-appwrite init function
+appwrite init functions
 ```
 
 # Pull function {% #pull-function %}
@@ -102,7 +102,7 @@ After initializing your Appwrite project and pulling your existing buckets, your
 
 # Push function {% #push-function %}
 
-In the folder containing your `appwrite.json` file, use the `push` command to push your changes you made inside your `appwrite.json` file.
+{% partial file="cli-push-command.md" /%}
 
 ```sh
 appwrite push functions

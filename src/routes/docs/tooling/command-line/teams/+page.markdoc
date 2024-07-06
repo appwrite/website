@@ -10,7 +10,7 @@ The Appwrite CLI can create teams to organize users. Teams can be used to grant 
 
 # Initialize team {% #initialize-team %}
 
-Initialize your new team using the following command:
+Initialize a new team using the following command:
 
 ```sh
 appwrite init teams
@@ -52,7 +52,7 @@ After initializing your Appwrite project and pulling your existing buckets, your
 
 # Push team {% #push-teams %}
 
-In the folder containing your `appwrite.json` file, use the `push` command to push your changes you made inside your `appwrite.json` file.
+{% partial file="cli-push-command.md" /%}
 
 ```sh
 appwrite push teams
