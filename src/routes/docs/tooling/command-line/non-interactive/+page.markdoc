@@ -21,6 +21,8 @@ In non-interactive mode, the CLI uses an API key to authenticate. Your API key m
 
 # Providers {% #providers %}
 
+In non-interactive mode, you can use providers like Github actions to automate your Appwrite CLI commands, allowing you to use the CLI commands even in non-interactive mode.
+
 {% table %}
 * Name
 * Description
@@ -33,7 +35,7 @@ In non-interactive mode, the CLI uses an API key to authenticate. Your API key m
 # Deployment {% #deployment %}
 Appwrite's `push` commands can also be executed in a non-interactive mode. This applies to the following resources: functions, collections, buckets, teams, and messaging topics.
 
-You can push a resource non-interactively by using the `--force` option to skip all warnings and specifying which resources you want to deploy.
+You can push a resource non-interactively by using the `--force` option to skip all warnings and specify which resources you want to deploy.
 
 To push all available resources:
 

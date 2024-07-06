@@ -10,7 +10,7 @@ Create and manage your collections using the CLI commands. The Appwrite CLI also
 
 # Initialize collection {% #initialize-collection %}
 
-Initialize your new collection using the following command:
+Initialize a new collection using the following command:
 
 ```sh
 appwrite init collections
@@ -133,7 +133,7 @@ After initializing your Appwrite project and pulling your existing buckets, your
 
 # Push collection {% #push-collection %}
 
-In the folder containing your `appwrite.json` file, use the `push` command to push your changes you made inside your `appwrite.json` file.
+{% partial file="cli-push-command.md" /%}
 
 ```sh
 appwrite push collections

@@ -57,7 +57,7 @@ After initializing your Appwrite project and pulling your existing buckets, your
 
 # Push bucket {% #push-bucket %}
 
-In the folder containing your `appwrite.json` file, use the `push` command to push your changes you made inside your `appwrite.json` file.
+{% partial file="cli-push-command.md" /%}
 
 ```sh
 appwrite push buckets
