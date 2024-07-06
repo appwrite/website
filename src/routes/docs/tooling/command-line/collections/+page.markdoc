@@ -30,7 +30,7 @@ appwrite pull collections
 
 After initializing your Appwrite project and pulling your existing buckets, your `appwrite.json` file should look similar to the following:
 
-```server-nodejs
+```json
 {
     "projectId": "<PROJECT_ID>",
     "databases": [
