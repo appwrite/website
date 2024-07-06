@@ -268,7 +268,7 @@ let topic = try await messaging.createTopic(
 
 # Using the CLI {% #using-the-CLI %}
 
-Create a topic with the CLI or get, delete, and update a topic using a CLI command, which can also list, create, and delete subscribers. You can also accomplish this by configuring with the `appwrite.json` file, but you cannot set or update any permissions.
+You can also create a topic using the CLI, along with being able to get, delete, and update a topic. You can also accomplish this by configuring with the `appwrite.json` file, but you cannot set or update any permissions.
 
 {% arrow_link href="/docs/tooling/command-line/topics#appwritejson" %}
 Learn more about appwrite.json

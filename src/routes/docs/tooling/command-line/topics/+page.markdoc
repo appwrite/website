@@ -6,11 +6,11 @@ description: Efficiently deploy your Appwrite topics using the Command-Line Tool
 
 {% partial file="cli-disclaimer.md" /%}
 
-The Appwrite CLI can create, update, delete, and get topics.
+The Appwrite CLI can create, update, delete, and get topics, as well as configure the provider and the subscribers.
 
 # Initialize topic {% #initialize-topic %}
 
-Initialize a new topic using the following command:
+Create a new topic using the following command:
 
 ```
 appwrite init topics
@@ -18,7 +18,7 @@ appwrite init topics
 
 # Pull topics {% #pull-topics %}
 
-You can also pull your existing Appwrite topics using the `pull` command in the folder containing your `appwrite.json` file.
+You can also pull your existing Appwrite topics from the Appwrite Console using the `pull` command in the folder containing your `appwrite.json` file.
 
 ```sh
 appwrite pull topics
@@ -26,7 +26,7 @@ appwrite pull topics
 
 # appwrite.json {% #appwritejson %}
 
-After initializing your Appwrite project and pulling your existing topics, your `appwrite.json` file should look similar to the following:
+After [initializing](/docs/tooling/command-line/installation#Initialization) your Appwrite project and pulling your existing topics, your `appwrite.json` file should look similar to the following:
 
 ```json
 {

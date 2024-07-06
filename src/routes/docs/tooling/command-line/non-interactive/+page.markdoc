@@ -21,16 +21,7 @@ In non-interactive mode, the CLI uses an API key to authenticate. Your API key m
 
 # Providers {% #providers %}
 
-In non-interactive mode, you can use providers like Github actions to automate your Appwrite CLI commands, allowing you to use the CLI commands even in non-interactive mode.
-
-{% table %}
-* Name
-* Description
----
-* Github actions {% #github-actions %}
-* You can add your CLI to [Github actions](https://github.com/appwrite/setup-for-actions/tree/feat-cli-g2?tab=readme-ov-file#introduction) to automate your Appwrite CLI commands instead of manually using them.
-
-{% /table %}
+In non-interactive mode, you can use providers like [Github actions](https://github.com/appwrite/setup-for-actions/tree/feat-cli-g2?tab=readme-ov-file#introduction) to automate your Appwrite CLI commands, allowing you to use the CLI commands even in non-interactive mode.
 
 # Deployment {% #deployment %}
 Appwrite's `push` commands can also be executed in a non-interactive mode. This applies to the following resources: functions, collections, buckets, teams, and messaging topics.
@@ -45,7 +36,7 @@ appwrite push all --all --force
 
 To push a single function by ID:
 ```sh
-appwrite push function --functionId [FUNCTION ID] --force
+appwrite push functions --functionId [FUNCTION ID] --force
 ```
 
 Push all functions:

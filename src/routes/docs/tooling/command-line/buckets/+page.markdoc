@@ -6,11 +6,11 @@ description: Efficiently deploy your Appwrite buckets using the Command-Line Too
 
 {% partial file="cli-disclaimer.md" /%}
 
-The Appwrite CLI allows you to configure and deploy buckets across projects.
+The Appwrite CLI allows you to configure and deploy buckets across projects. You can also configure with your files using the CLI commands.
 
 # Initialize bucket {% #initialize-bucket %}
 
-Initialize a new bucket using the following command:
+Create a new bucket using the following command:
 
 ```sh
 appwrite init buckets
@@ -18,7 +18,7 @@ appwrite init buckets
 
 # Pull bucket {% #pull-bucket %}
 
-You can also pull your existing Appwrite buckets using the `pull` command in the folder containing your `appwrite.json` file.
+You can also pull your existing Appwrite buckets from the Appwrite Console using the `pull` command in the folder containing your `appwrite.json` file.
 
 ```sh
 appwrite pull buckets
@@ -26,7 +26,7 @@ appwrite pull buckets
 
 # appwrite.json {% #appwritejson %}
 
-After initializing your Appwrite project and pulling your existing buckets, your `appwrite.json` file should look similar to the following:
+After [initializing](/docs/tooling/command-line/installation#Initialization) your Appwrite project and pulling your existing buckets, your `appwrite.json` file should look similar to the following:
 
 ```json
 {
