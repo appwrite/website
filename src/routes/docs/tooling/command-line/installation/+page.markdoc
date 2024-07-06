@@ -87,7 +87,7 @@ appwrite init project
 
 This will create your `appwrite.json` file, where you will configure with your various services.
 
-```server-nodejs
+```json
 {
     "projectId": <PROJECT_ID>
 }

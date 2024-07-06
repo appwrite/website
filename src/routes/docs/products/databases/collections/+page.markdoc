@@ -225,37 +225,16 @@ let collection = try await databases.createCollection(
 You can also configure **permissions** in the `createCollection` method, learn more about the `createCollection` in the [API references](/docs/references).
 {% /tabsitem %}
 
-{% tabsitem #cli title="CLI" %}
-{% info title="CLI setup" %}
-Before you can deploy with the Appwrite CLI, make sure you've [installed and initialized](/docs/tooling/command-line/installation) the CLI and [logged-in](/docs/tooling/command-line/installation#get-started) into your Appwrite account.
-{% /info %}
+{% /tabs %}
 
-```sh
-appwrite pull collections
-```
 
-Push any configurations or changes you made to the generated code by using the `push` command.
+## Using the CLI {% #using-the-cli %}
 
-```sh
-appwrite push collections
-```
+You can also create your collections and update, get, and delete them using CLI commands. Using the [appwrite.json](/docs/tooling/command-line/collections#appwritejson) file, you can delete, create, edit, and get your collections attributes; you can also configure the data size limit, toggle if the data is required, and toggle if it's an array of data. Configuring collection level permissions cannot be done using the CLI, but instead through the Appwrite Console.
 
 {% arrow_link href="/docs/tooling/command-line/collections#commands" %}
 Learn more about the CLI collections commands
 {% /arrow_link %}
-
-{% info title="Overwrite warning" %}
-
-If you made changes in the Appwrite Console that are different from your `appwrite.json`, using the CLI deploy command will overwrite your console changes. Update your `appwrite.json` manually before deploying.
-
-{% arrow_link href="/docs/tooling/command-line/collections#appwritejson" %}
-Learn more about appwrite.json
-{% /arrow_link %}
-{% /info %}
-
-{% /tabsitem %}
-
-{% /tabs %}
 
 
 # Permissions {% #permissions %}

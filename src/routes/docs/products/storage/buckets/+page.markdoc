@@ -10,33 +10,14 @@ Buckets let you limit file size and extensions, whether or not to encrypt the fi
 # Create Bucket {% #create-bucket %}
 You can create your bucket from the Appwrite Console or a [Server SDK](/docs/sdks#server). You can also create buckets using the [CLI](/docs/tooling/command-line/installation), requiring only a single [command](/docs/tooling/command-line/buckets) to create buckets and handle server-side tasks with buckets and storage.
 
-# CLI {% #cli %}
+# Using the CLI {% #using-the-cli %}
 
-{% info title="CLI setup" %}
-Before you can deploy with the Appwrite CLI, make sure you've [installed and initialized](/docs/tooling/command-line/installation) the CLI and [logged-in](/docs/tooling/command-line/installation#get-started) into your Appwrite account.
-{% /info %}
+Using the CLI, you can create a bucket and get, update, and delete it, which you can also accomplish by changing the `appwrite.json` file. But you cannot control file access by granting bucket access to users.
 
-To manually deploy your Appwrite buckets, you need to pull in your current Appwrite buckets by using the following command:
 
-```sh
-appwrite pull buckets
-```
-
-Push any configurations or changes you made to the generated code by using the following command:
-
-```sh
-appwrite push buckets
-```
 {% arrow_link href="/docs/tooling/command-line/buckets#commands" %}
 Learn more about the CLI buckets commands
 {% /arrow_link %}
-
-{% tabs %}
-{% tabsitem #console title="Overwrite warning" %}
-If you made changes in the Appwrite Console that are different from your `appwrite.json`, using the CLI deploy command will overwrite your console changes. Update your `appwrite.json` manually before deploying.
-Learn more about appwrite.json
-{% /tabsitem %}
-{% /tabs %}
 
 {% tabs %}
 {% tabsitem #console title="Console" %}

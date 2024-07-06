@@ -8,7 +8,7 @@ description: Efficiently deploy your Appwrite teams using the Command-Line Tool 
 Ensure you [**install**](/docs/tooling/command-line/installation#Installation) the CLI, [**login**](/docs/tooling/command-line/installation#get-started) to your Appwrite account, and [**initialize**](/docs/tooling/command-line/installation#Initialization) your Appwrite project.
 {% /info %}
 
-The Appwrite CLI can create teams to organize users. Teams can be used to grant access [permissions](https://appwrite.io/docs/products/auth/teams#permissions) to a group of users.
+The Appwrite CLI can create teams to organize users. Teams can be used to grant [permissions](https://appwrite.io/docs/products/auth/teams#permissions) to a group of users.
 
 # Initialize team {% #initialize-team %}
 
@@ -29,7 +29,7 @@ appwrite pull teams
 # appwrite.json {% #appwritejson %}
 After initializing your Appwrite project and pulling your existing buckets, your `appwrite.json` file should look similar to the following:
 
-```server-nodejs
+```json
 {
     "projectId": "<PROJECT_ID>",
     "teams": [

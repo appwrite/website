@@ -30,7 +30,7 @@ appwrite pull topics
 
 After initializing your Appwrite project and pulling your existing topics, your `appwrite.json` file should look similar to the following:
 
-```server-nodejs
+```json
 {
     "projectId": "<PROJECT_ID>",
     "topics": [
