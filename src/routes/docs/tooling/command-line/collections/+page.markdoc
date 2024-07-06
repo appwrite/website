@@ -10,7 +10,7 @@ Create and manage your collections using the CLI commands. The Appwrite CLI also
 
 # Initialize collection {% #initialize-collection %}
 
-Initialize a new collection using the following command:
+Create a new collection using the following command:
 
 ```sh
 appwrite init collections
@@ -18,7 +18,7 @@ appwrite init collections
 
 # Pull collection {% #pull-collection %}
 
-You can also pull your existing Appwrite collections and databases using the `pull` command in the folder containing your `appwrite.json` file.
+You can also pull your existing Appwrite collections and databases from the Appwrite Console using the `pull` command in the folder containing your `appwrite.json` file.
 
 ```sh
 appwrite pull collections
@@ -26,7 +26,7 @@ appwrite pull collections
 
 # appwrite.json {% #appwritejson %}
 
-After initializing your Appwrite project and pulling your existing buckets, your `appwrite.json` file should look similar to the following:
+After [initializing](/docs/tooling/command-line/installation#Initialization) your Appwrite project and pulling your existing buckets, your `appwrite.json` file should look similar to the following:
 
 ```json
 {

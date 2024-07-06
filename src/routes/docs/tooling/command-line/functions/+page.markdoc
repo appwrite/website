@@ -6,11 +6,11 @@ description: Efficiently deploy your Appwrite functions using the Command-Line T
 
 {% partial file="cli-disclaimer.md" /%}
 
-The CLI handles the creation and deployment of Appwrite Functions.
+The CLI handles the creation, deployment, and execution of Appwrite Functions, as well as the configuration of the variables. 
 
 # Initialize function {% #initialize-function %}
 
-Initialize a new function using the following command:
+Create a new function using the following command:
 
 ```sh
 appwrite init functions
@@ -18,7 +18,7 @@ appwrite init functions
 
 # Pull function {% #pull-function %}
 
-You can also pull your existing Appwrite functions using the `pull` command in the folder containing your `appwrite.json` file.
+You can also pull your existing Appwrite functions from the Appwrite Console using the `pull` command in the folder containing your `appwrite.json` file.
 
 ```sh
 appwrite pull functions
@@ -26,7 +26,7 @@ appwrite pull functions
 
 # appwrite.json {% #appwritejson %}
 
-After initializing your Appwrite project and pulling your existing buckets, your `appwrite.json` file should look similar to the following:
+After [initializing](/docs/tooling/command-line/installation#Initialization) your Appwrite project and pulling your existing buckets, your `appwrite.json` file should look similar to the following:
 
 ```json
 {

@@ -261,7 +261,7 @@ appwrite users list
 
 ## List collections {% #list-collections %}
 
-To get a list of all your [collections](/docs/tooling/command-line/collections), you can use the listCollections command.
+To get a list of all your [collections](/docs/tooling/command-line/collections), you can use the `listCollections` command.
 
 ```sh
 appwrite databases listCollections --databaseId [DATABASE_ID]
@@ -275,7 +275,7 @@ appwrite databases listCollections --databaseId [DATABASE_ID]--json
 
 ## Get collection {% #get-collection %}
 
-To get more information on a particular collection, you can make use of the getCollection command and pass in the collectionId.
+To get more information on a particular collection, you can make use of the `getCollection` command and pass in the collectionId.
 
 ```sh
 appwrite databases getCollection --databaseId [DATABASE_ID] --collectionId [COLLECTION_ID]
