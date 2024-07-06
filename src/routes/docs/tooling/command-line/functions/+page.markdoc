@@ -4,9 +4,7 @@ title: Deploy functions with CLI
 description: Efficiently deploy your Appwrite functions using the Command-Line Tool (CLI).
 ---
 
-{% info title="Before proceeding" %}
-Ensure you [**install**](/docs/tooling/command-line/installation#Installation) the CLI, [**login**](/docs/tooling/command-line/installation#get-started) to your Appwrite account, and [**initialize**](/docs/tooling/command-line/installation#Initialization) your Appwrite project.
-{% /info %}
+{% partial file="cli-disclaimer.md" /%}
 
 The CLI handles the creation and deployment of Appwrite Functions.
 
@@ -20,7 +18,7 @@ appwrite init function
 
 # Pull function {% #pull-function %}
 
-You can also pull your existing Appwrite functions using the `pull` command in the folder holding your `appwrite.json` file.
+You can also pull your existing Appwrite functions using the `pull` command in the folder containing your `appwrite.json` file.
 
 ```sh
 appwrite pull functions
@@ -104,7 +102,7 @@ After initializing your Appwrite project and pulling your existing buckets, your
 
 # Push function {% #push-function %}
 
-In the folder holding your `appwrite.json` file, use the `push` command to push your changes you made inside your `appwrite.json` file.
+In the folder containing your `appwrite.json` file, use the `push` command to push your changes you made inside your `appwrite.json` file.
 
 ```sh
 appwrite push functions
@@ -112,7 +110,7 @@ appwrite push functions
 
 # Commands {% #commands %}
 
-The functions command lets you view, create, and manage your Cloud Functions. Appwrite database CLI commands generally follow the following syntax:
+The functions command lets you view, create, and manage your Cloud Functions. Appwrite functions CLI commands generally follow the following syntax:
 
 ```sh
 appwrite functions [COMMAND] [OPTIONS]

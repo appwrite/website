@@ -4,9 +4,7 @@ title: Deploy collections with CLI
 description: Efficiently deploy your Appwrite collections using the Command-Line Tool (CLI). 
 ---
 
-{% info title="Before proceeding" %}
-Ensure you [**install**](/docs/tooling/command-line/installation#Installation) the CLI, [**login**](/docs/tooling/command-line/installation#get-started) to your Appwrite account, and [**initialize**](/docs/tooling/command-line/installation#Initialization) your Appwrite project.
-{% /info %}
+{% partial file="cli-disclaimer.md" /%}
 
 Create and manage your collections using the CLI commands. The Appwrite CLI also helps you push your project's databases and collections schema from one project to another.
 
@@ -15,12 +13,12 @@ Create and manage your collections using the CLI commands. The Appwrite CLI also
 Initialize your new collection using the following command:
 
 ```sh
-appwrite init collection
+appwrite init collections
 ```
 
 # Pull collection {% #pull-collection %}
 
-You can also pull your existing Appwrite collections and databases using the `pull` command in the folder holding your `appwrite.json` file.
+You can also pull your existing Appwrite collections and databases using the `pull` command in the folder containing your `appwrite.json` file.
 
 ```sh
 appwrite pull collections
@@ -135,7 +133,7 @@ After initializing your Appwrite project and pulling your existing buckets, your
 
 # Push collection {% #push-collection %}
 
-In the folder holding your `appwrite.json` file, use the `push` command to push your changes you made inside your `appwrite.json` file.
+In the folder containing your `appwrite.json` file, use the `push` command to push your changes you made inside your `appwrite.json` file.
 
 ```sh
 appwrite push collections
