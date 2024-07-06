@@ -41,7 +41,7 @@ To push all available resources:
 appwrite push all --all --force
 ```
 
-To push a single funciton by ID:
+To push a single function by ID:
 ```sh
 appwrite push function --functionId [FUNCTION ID] --force
 ```
@@ -49,7 +49,7 @@ appwrite push function --functionId [FUNCTION ID] --force
 Push all functions:
 
 ```sh
-appwrite push function --all --force
+appwrite push functions --all --force
 ```
 
 You can push databases, collections, teams, and buckets non-interactively in a similar way by using the `--all` and `--force` option.
@@ -57,13 +57,13 @@ You can push databases, collections, teams, and buckets non-interactively in a s
 Push all databases and collections:
 
 ```sh
-appwrite push collection --all --force
+appwrite push collections --all --force
 ```
 
 Push all teams:
 
 ```sh
-appwrite push team --all --force
+appwrite push teams --all --force
 ```
 
 Push all buckets:

@@ -4,23 +4,21 @@ title: Deploy topics with CLI
 description: Efficiently deploy your Appwrite topics using the Command-Line Tool (CLI). 
 ---
 
-{% info title="Before proceeding" %}
-Ensure you [**install**](/docs/tooling/command-line/installation#Installation) the CLI, [**login**](/docs/tooling/command-line/installation#get-started) to your Appwrite account, and [**initialize**](/docs/tooling/command-line/installation#Initialization) your Appwrite project.
-{% /info %}
+{% partial file="cli-disclaimer.md" /%}
 
-The Appwrite CLI can create, set, delete, and configure topics.
+The Appwrite CLI can create, update, delete, and get topics.
 
 # Initialize topic {% #initialize-topic %}
 
 Initialize a new topic using the following command:
 
 ```
-appwrite init topic
+appwrite init topics
 ```
 
 # Pull topics {% #pull-topics %}
 
-You can also pull your existing Appwrite topics using the `pull` command in the folder holding your `appwrite.json` file.
+You can also pull your existing Appwrite topics using the `pull` command in the folder containing your `appwrite.json` file.
 
 ```sh
 appwrite pull topics
@@ -65,7 +63,7 @@ After initializing your Appwrite project and pulling your existing topics, your 
 
 # Push topics {% #push-topics %}
 
-In the folder holding your `appwrite.json` file, use the `push` command to push your changes you made inside your `appwrite.json` file.
+In the folder containing your `appwrite.json` file, use the `push` command to push your changes you made inside your `appwrite.json` file.
 
 ```sh
 appwrite push topics
@@ -73,7 +71,7 @@ appwrite push topics
 
 # Commands {% #commands %}
 
-The messaging command allows you to send messages. Appwrite database CLI commands generally follow the following syntax:
+The messaging command allows you to send, get, update, and delete messages. Appwrite messaging CLI commands generally follow the following syntax:
 
 ```sh
 appwrite messaging [COMMAND] [OPTIONS]

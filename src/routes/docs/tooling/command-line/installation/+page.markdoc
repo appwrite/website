@@ -52,6 +52,13 @@ iwr -useb https://appwrite.io/cli/install.ps1 | iex
 curl -sL https://appwrite.io/cli/install.sh | bash
 ```
 {% /tabsitem %}
+
+{% tabsitem #scoop title="Scoop" %}
+```sh
+scoop install https://raw.githubusercontent.com/appwrite/sdk-for-cli/master/scoop/appwrite.json
+```
+{% /tabsitem %}
+
 {% /tabs %}
 
 ## Verify installation {% #verify-installation %}

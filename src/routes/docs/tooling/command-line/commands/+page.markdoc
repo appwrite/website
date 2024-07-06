@@ -5,7 +5,41 @@ description: Learn about Appwrites CLI and the powerful, feature complete comman
 ---
 
 {% info title="CLI Version" %}
-It is highly recommended that you have the latest version of the CLI. [Update your CLI](https://www.npmjs.com/package/appwrite-cli-beta) by running the following command in your terminal:
+It is highly recommended that you have the latest version of the CLI. [Update your CLI](https://www.npmjs.com/package/appwrite-cli-beta) by running the following commands in your terminal:
+
+{% tabs %}
+{% tabsitem #npm title="NPM" %}
+```sh
+npm install -g appwrite-cli
+```
+{% /tabsitem %}
+
+{% tabsitem #linxmacos title="Linux/MacOS" %}
+```sh
+wget -q https://appwrite.io/cli/install.sh  -O - | /bin/bash
+```
+{% /tabsitem %}
+
+{% tabsitem #macos title="MacOS" %}
+```sh
+brew install appwrite
+```
+{% /tabsitem %}
+
+{% tabsitem #windows title="Windows" %}
+```sh
+iwr --useb https://appwrite.io/cli/install.ps1 | iex
+```
+{% /tabsitem %}
+
+{% tabsitem #scoop title="Scoop" %}
+```sh
+scoop install https://raw.githubusercontent.com/appwrite/sdk-for-cli/master/scoop/appwrite.json
+```
+{% /tabsitem %}
+
+{% /tabs %}
+
 {% /info %}
 
 
