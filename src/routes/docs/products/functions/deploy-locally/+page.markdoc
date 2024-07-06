@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Deploy locally
-description: Learn to locally deploy Appwrite functions.
+description: Learn to deploy Appwrite functions locally.
 ---
 
 To deploy a function locally, use the following command:
@@ -10,19 +10,21 @@ To deploy a function locally, use the following command:
 appwrite run functions
 ```
 
+This command is designed to help you efficiently deploy your Appwrite projects to your local machine.
+
 # Engine {% #engine %}
 
-You'll be asked to choose an engine for your local development. There are benefits to using either [Docker](https://www.docker.com/) or your system directly.
-Using the system directly is faster, but using Docker simulates the production environment more precisely.
+When following the wizard, you'll be asked to choose an engine for your local development. There are benefits to using either [Docker](https://www.docker.com/) or your system directly.
+Using the system directly is faster, but Docker simulates the production environment more precisely.
 
 # Production vs local {% #production-vs-local %}
 
 {% tabs %}
 {% tabsitem #production title="Production" %}
-To run your function, you have to deploy it first. Every change in your code requires you to redeploy the function, and it also needs two projects so it doesn't break production while developing.
+When deploying your function in production, you have to deploy it first in order to run the function. Every change in the code requires you to redeploy the function. It also needs two projects so it keeps production intact while developing.
 {% /tabsitem %}
 {% tabsitem #local title="Local"%}
-All executions of locally developed functions use HTTP. It doesn't require execution permissions; you only need to visit the function URL to execute it. You can also mock an user to execute the function as a specific user.
+If you're locally deploying a function, all their executions use HTTP. Locally developed functions do not require execution permissions; you only need to visit the function URL to execute it. You can also mock a user to execute the function as a specific user to test your locally developed function.
 {% /tabsitem %}
 {% /tabs %}
 
@@ -32,7 +34,7 @@ Learn how to develop a function
 
 # Configure-settings {% #Configure-settings %}
 
-Function settings such as scopes, timeout, entrypoint, or build command will be read from [`appwrite.json`](/docs/tooling/command-line/functions#appwritejson). Edit the file to apply settings locally and use the `appwrite push functions` to apply your configurated settings to production.
+Function settings like scopes, timeout, entrypoint, or build command will be read from the [`appwrite.json`](/docs/tooling/command-line/functions#appwritejson) file. Edit the file to apply settings locally and use the `appwrite push functions` to apply your configurated settings to production.
 
 {% arrow_link href="/docs/tooling/command-line/functions#commands" %}
 Deploy functions using CLI commands
@@ -41,12 +43,14 @@ Deploy functions using CLI commands
 
 # CI/CD flows {% #cicd-flows %}
 
-We can use Appwrite CLI to automate changes in collection attributes such as adding, recreating, and deleting. For example, publishing a new release would go through the following steps:
+We can use Appwrite CLI to automate changes in collection attributes such as adding, recreating, and deleting collections. For example, publishing a new release would go through the following steps:
 
 1. Clone the repo
 2. Adds Node (Since Appwrite CLI uses Node)
 3. Login to account using secrets
 4. Push all available collections with `--force flag` to confirm all changes
+
+See an example of what this would look like in code:
 
 ```yaml
 name: Database Migrations
