@@ -69,11 +69,6 @@
                     href: `${prefix}/locale`
                 },
                 {
-                    label: 'Health',
-                    icon: 'icon-heart',
-                    href: `${prefix}/health`
-                },
-                {
                     label: 'Avatars',
                     icon: 'icon-user-circle',
                     href: `${prefix}/avatars`
