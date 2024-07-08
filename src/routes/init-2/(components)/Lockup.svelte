@@ -60,9 +60,9 @@
                     gradientUnits="userSpaceOnUse"
                     {...$state[index]}
                 >
-                    <stop stop-color="#2EB9DF" stop-opacity="0" />
-                    <stop stop-color="#2EB9DF" />
-                    <stop offset="1" stop-color="#9E00FF" stop-opacity="0" />
+                    <stop stop-color="#fff" stop-opacity="0" />
+                    <stop stop-color="#fff" />
+                    <stop offset="1" stop-color="#fff" stop-opacity="0" />
                 </linearGradient>
             {/if}
         {/each}
