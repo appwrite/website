@@ -194,7 +194,7 @@
                         >
                             The Appwrite Startups Program supports your startup with a complete
                             backend for you to build your products. Eligible startups receive
-                            Appwrite Cloud Pro for 12 months.
+                            Appwrite Cloud Scale for 12 months.
                         </p>
                         <button
                             on:click={scrollToForm}
@@ -223,7 +223,7 @@
                             <div class="u-flex-vertical u-gap-8 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">Complete backend</h2>
                                 <p class="web-main-body-500">
-                                    Get access to Appwrite’s Pro plan and build your entire backend
+                                    Get access to Appwrite’s Scale plan and build your entire backend
                                     with Appwrite.
                                 </p>
                             </div>
@@ -240,7 +240,7 @@
                             <div class="u-flex-vertical u-gap-8 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">Cloud credits</h2>
                                 <p class="web-main-body-500">
-                                    Get Appwrite Cloud Pro for 12 months and reduce risk at an early
+                                    Get Appwrite Cloud Scale for 12 months and reduce risk at an early
                                     stage.
                                 </p>
                             </div>
@@ -255,9 +255,9 @@
                                 alt=""
                             />
                             <div class="u-flex-vertical u-gap-8 u-text-center">
-                                <h2 class="web-label web-u-color-text-primary">Premium support</h2>
+                                <h2 class="web-label web-u-color-text-primary">Priority support</h2>
                                 <p class="web-main-body-500">
-                                    Get community support and premium email support from the
+                                    Get community support and priority email support from the
                                     Appwrite team.
                                 </p>
                             </div>
@@ -727,7 +727,7 @@
                                                         class="web-check-bullet u-margin-block-start-4"
                                                     ></div>
                                                     <p class="web-description">
-                                                        Appwrite Cloud Pro for 12 months
+                                                        Appwrite Cloud Scale for 12 months
                                                     </p>
                                                 </div>
                                                 <div class="u-flex u-gap-16">
@@ -735,7 +735,7 @@
                                                         class="web-check-bullet u-margin-block-start-4"
                                                     ></div>
                                                     <p class="web-description">
-                                                        Premium email support as part of Pro
+                                                        Priority email support as part of Scale
                                                     </p>
                                                 </div>
                                             </div>
