@@ -5,23 +5,13 @@
     const width = 874;
     const height = 438;
 
-    const initialState = [
-        { x1: 0, x2: 0, y1: height, y2: height * 2 },
-        { x1: 0, x2: 0, y1: height, y2: height * 2 },
-        { x1: 0, x2: 0, y1: height, y2: height * 2 },
-        { x1: 0, x2: 0, y1: height, y2: height * 2 }
-    ];
-    const targetState = [
-        { x1: width * 2, x2: width, y1: height / 2, y2: height },
-        { x1: width * 2, x2: width, y1: height / 2, y2: height },
-        { x1: width * 2, x2: width, y1: height / 2, y2: height },
-        { x1: width * 2, x2: width, y1: height / 2, y2: height }
-    ];
+    const initialState = { pathLength: -100 };
+    const targetState = { pathLength: 100 };
 
     const state = tweened(initialState);
 
     const animate = () => {
-        state.set(targetState, { duration: 5000, delay: 2000 }).then(() => {
+        state.set(targetState, { duration: 2000, delay: 1000 }).then(() => {
             state.set(initialState, { duration: 0 }).then(() => {
                 animate();
             });
@@ -47,25 +37,17 @@
     viewBox={`0 0 ${width} ${height}`}
     xmlns="http://www.w3.org/2000/svg"
 >
-    {#each paths as path, index}
+    {#each paths as path}
         <path d={path} class="base" />
-        <path d={path} stroke={`url(#gradient-${index})`} />
+        <path d={path} class="stroke" stroke="url(#gradient)" />
     {/each}
 
     <defs>
-        {#each paths as _, index}
-            {#if $state[index]}
-                <linearGradient
-                    id={`gradient-${index}`}
-                    gradientUnits="userSpaceOnUse"
-                    {...$state[index]}
-                >
-                    <stop stop-color="#fff" stop-opacity="0" />
-                    <stop stop-color="#fff" />
-                    <stop offset="1" stop-color="#fff" stop-opacity="0" />
-                </linearGradient>
-            {/if}
-        {/each}
+        <linearGradient id="gradient" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#fff" stop-opacity="0" />
+            <stop stop-color="#fff" />
+            <stop offset="0.5" stop-color="#fff" stop-opacity="0" />
+        </linearGradient>
     </defs>
 </svg>
 
@@ -80,6 +62,31 @@
             opacity: 1;
         }
     }
+
+    @keyframes -global-stroke {
+        0% {
+            stroke-dasharray: 0 0 0 822;
+        }
+        25% {
+            stroke-dasharray: 0 205.5 205.5 822;
+        }
+        50% {
+            stroke-dasharray: 0 411 411 822;
+        }
+        75% {
+            stroke-dasharray: 411 205.5 822 822;
+        }
+        100% {
+            stroke-dasharray: 822 0 822 822;
+        }
+    }
+
+    @keyframes -global-rest {
+        to {
+            stroke-dashoffset: 822;
+        }
+    }
+
     .lockup {
         --stroke-color: #333;
         --stroke-width: 2;
@@ -94,6 +101,14 @@
         .base {
             stroke: var(--stroke-color);
             fill: var(--fill);
+        }
+
+        .stroke {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation:
+                stroke 10s linear forwards infinite,
+                reset 0s linear 10s forwards infinite;
         }
     }
 </style>
