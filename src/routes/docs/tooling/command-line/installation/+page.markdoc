@@ -60,9 +60,53 @@ scoop install https://raw.githubusercontent.com/appwrite/sdk-for-cli/master/scoo
 
 {% /tabs %}
 
+# Update your CLI {% #update-your-cli %}
+
+{% tabs %}
+{% tabsitem #npm title="npm" %}
+```sh
+npm install -g appwrite-cli
+```
+{% /tabsitem %}
+
+{% tabsitem #macos title="macOS" %}
+
+Using [Homebrew](https://brew.sh/)
+
+```sh
+brew install appwrite
+```
+
+or terminal
+
+```sh
+curl -sL https://appwrite.io/cli/install.sh | bash
+```
+{% /tabsitem %}
+
+{% tabsitem #windows title="Windows" %}
+```sh
+iwr -useb https://appwrite.io/cli/install.ps1 | iex
+```
+{% /tabsitem %}
+
+{% tabsitem #linux title="Linux" %}
+```sh
+curl -sL https://appwrite.io/cli/install.sh | bash
+```
+{% /tabsitem %}
+
+{% tabsitem #scoop title="Scoop" %}
+```sh
+scoop install https://raw.githubusercontent.com/appwrite/sdk-for-cli/master/scoop/appwrite.json
+```
+{% /tabsitem %}
+
+{% /tabs %}
+
 ## Verify installation {% #verify-installation %}
 
-After the installation is complete, you can verify the Appwrite CLI is available by checking its version number.
+After the installation or the update is complete, you can verify the Appwrite CLI is available by checking its version number.
 
 ```sh
 appwrite -v
@@ -215,7 +259,7 @@ rm -rf ~/.appwrite | bash
 
 {% tabsitem #scoop title="Scoop" %}
 ```sh
-scoop uninstall ./appwrite
+appwrite client --reset
 ```
 {% /tabsitem %}
 {% /tabs %}
