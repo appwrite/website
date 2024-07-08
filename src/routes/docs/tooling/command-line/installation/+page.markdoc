@@ -184,6 +184,12 @@ $APPWRITE_INSTALL_DIR = Join-Path -Path $env:LOCALAPPDATA -ChildPath "Appwrite";
 rm -f /usr/local/bin/appwrite | bash
 ```
 {% /tabsitem %}
+
+{% tabsitem #scoop title="Scoop" %}
+```sh
+scoop uninstall ./appwrite
+```
+{% /tabsitem %}
 {% /tabs %}
 
 You can also remove the configuration, cookies, and API Keys the Appwrite CLI stored. To remove those, run the following command.
@@ -204,6 +210,12 @@ $APPWRITE_CONFIG_DIR = Join-Path -Path $env:UserProfile -ChildPath ".appwrite"; 
 {% tabsitem #linux title="Linux" %}
 ```sh
 rm -rf ~/.appwrite | bash
+```
+{% /tabsitem %}
+
+{% tabsitem #scoop title="Scoop" %}
+```sh
+scoop uninstall ./appwrite
 ```
 {% /tabsitem %}
 {% /tabs %}
