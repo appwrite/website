@@ -1,3 +1,4 @@
+---
 layout: post
 title: "How to attract contributors and users to your open source project"
 description: Learn how to attract contributors to your open source project - tips from a 42K Github star project.
@@ -6,6 +7,7 @@ timeToRead: 7
 date: 2024-07-05
 author: aditya-oberai
 category: founder
+---
 
 The open-source community is a remarkable space. In this unique corner of the Internet, developers come together to collaborate, help out, and build solutions without expecting anything in return. This generosity makes it an excellent environment for developers trying to build the next big thing with limited resources.
 
@@ -29,7 +31,7 @@ But how did we go from a viral project to the vibrant community we are today?
 
 - **Build for your audience**
 
-Your solution should solve a real problem that developers face. If you're struggling with something, chances are other developers are too. Developers love to streamline their processes and will do whatever it takes to improve their workflows and help others do the same. 
+Your solution should solve a real problem that developers face. If you're struggling with something, chances are other developers are too. Developers love to streamline their processes and will do whatever it takes to improve their workflows and help others do the same.
 
 For example, Appwrite’s easy-to-use backend addressed the issue of wasting time on repetitive and complex backend tasks, which quickly attracted a community of eager-to-help engineers.
 
@@ -53,7 +55,7 @@ These resources help users get up to speed without wasting time. They offer vari
 
 - **Provide support**
 
-The best way to attract and keep an open source audience is to make sure your users are happy. Provide support, fix bugs, and educate the community. 
+The best way to attract and keep an open source audience is to make sure your users are happy. Provide support, fix bugs, and educate the community.
 
 Our Discord server has a dedicated support channel where our support team, together with experienced community members called [Appwrite Heroes](https://appwrite.io/heroes), helps address questions and resolve issues quickly.
 
@@ -95,7 +97,7 @@ Developers are allergic to marketing, but if you want people to use your project
 
 - **Network with other devs**
 
-Collaboration and cross-promotion is the name of the game. Participate in conferences, meetups, and webinars to showcase your project and its capabilities. Connect with other open-source project maintainers and communities. 
+Collaboration and cross-promotion is the name of the game. Participate in conferences, meetups, and webinars to showcase your project and its capabilities. Connect with other open-source project maintainers and communities.
 
 And it can also help you build your team! One of our most treasured team members, Aditya Oberai, is a seasoned networker. When he stumbled across Appwrite on X, he noticed that he already knew many other contributors, which drew him in further and helped him land a job at Appwrite. Now, how’s that for a success story?
 
@@ -109,11 +111,11 @@ Collaborating with content creators is a fantastic way to amplify your project's
 
 - **Release updates**
 
-Even small updates can signal that your project is actively maintained. Release updates regularly to reassure your community and keep them engaged. 
+Even small updates can signal that your project is actively maintained. Release updates regularly to reassure your community and keep them engaged.
 
 - **Share your roadmap**
 
-Being transparent with your users pays off. Let the community know what features and improvements are planned, while also giving them space to request features and fixes. 
+Being transparent with your users pays off. Let the community know what features and improvements are planned, while also giving them space to request features and fixes.
 
 We’ve recently [released our new public roadmap](https://appwrite.io/blog/post/public-roadmap-announcement) as part of our commitment to the community. It’s designed to improve collaboration between the Appwrite team and contributors. When users know what to expect, they feel heard and valued.
 
@@ -122,9 +124,10 @@ We’ve recently [released our new public roadmap](https://appwrite.io/blog/post
 An open-source project is nothing without its community, so be sure to include them in your milestone celebrations. Share when you reach significant milestones, such as major releases or achieving a certain number of contributors. Openly celebrating your community on social media or your Discord server is a great way to show appreciation.
 
 ![42K Github startgazers](/images/blog/how-to-attract-users-to-open-source-project/42k-stars.png)
+
 # Conclusion
 
-We’ve seen firsthand how an engaged open source community can help drive innovation and growth. Appwrite’s journey from a side project to a platform with thousands of users wouldn’t have been possible without the passion of open source developers. 
+We’ve seen firsthand how an engaged open source community can help drive innovation and growth. Appwrite’s journey from a side project to a platform with thousands of users wouldn’t have been possible without the passion of open source developers.
 
 That’s why we want to give back and support OSS projects.
 
