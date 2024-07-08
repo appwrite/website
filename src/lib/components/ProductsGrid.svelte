@@ -134,9 +134,10 @@
         }
 
         .product-card {
+            transition: all 100ms ease-in-out;
+            box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0);
+
             &:hover {
-                -webkit-box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.12);
-                -moz-box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.12);
                 box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.12);
             }
         }
