@@ -468,8 +468,8 @@ Explore the request object with the following function, which logs all request p
 {% multicode %}
 ```js
 export default async ({ req, res, log }) => {
-    log(req.bodyRaw);                     // Raw request body, contains request data
-    log(JSON.stringify(req.body));        // Object from parsed JSON request body, otherwise string
+    log(req.bodyJson);                     // Raw request body, contains request data
+    log(JSON.stringify(req.bodyJson));        // Object from parsed JSON request body, otherwise string
     log(JSON.stringify(req.headers));     // String key-value pairs of all request headers, keys are lowercase
     log(req.scheme);                      // Value of the x-forwarded-proto header, usually http or https
     log(req.method);                      // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
@@ -506,7 +506,7 @@ import json
 
 def main(context):
     context.log(context.req.body_raw)            # Raw request body, contains request data
-    context.log(json.dumps(context.req.body))    # Object from parsed JSON request body, otherwise string
+    context.log(json.dumps(context.req.bodyJson))    # Object from parsed JSON request body, otherwise string
     context.log(json.dumps(context.req.headers)) # String key-value pairs of all request headers, keys are lowercase
     context.log(context.req.scheme)              # Value of the x-forwarded-proto header, usually http or https
     context.log(context.req.method)              # Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
@@ -523,8 +523,8 @@ def main(context):
 require 'json'
                 
 def main(context)
-    context.log(context.req.bodyRaw)                #  Raw request body, contains request data
-    context.log(JSON.generate(context.req.body))    # Object from parsed JSON request body, otherwise string
+    context.log(context.req.bodyJson)                #  Raw request body, contains request data
+    context.log(JSON.generate(context.req.bodyJson))    # Object from parsed JSON request body, otherwise string
     context.log(JSON.generate(context.req.headers)) # String key-value pairs of all request headers, keys are lowercase
     context.log(context.req.scheme)                 # Value of the x-forwarded-proto header, usually http or https
     context.log(context.req.method)                 # Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
@@ -540,8 +540,8 @@ end
 ```
 ```deno
 export default async ({ req, res, log }: any) => {
-    log(req.bodyRaw);                 // Raw request body, contains request data
-    log(JSON.stringify(req.body));    // Object from parsed JSON request body, otherwise string
+    log(req.bodyJson);                 // Raw request body, contains request data
+    log(JSON.stringify(req.bodyJson));    // Object from parsed JSON request body, otherwise string
     log(JSON.stringify(req.headers)); // String key-value pairs of all request headers, keys are lowercase
     log(req.scheme);                  // Value of the x-forwarded-proto header, usually http or https
     log(req.method);                  // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
@@ -559,8 +559,8 @@ import 'dart:async';
 import 'dart:convert';
 
 Future<dynamic> main(final context) async {
-    context.log(context.req.bodyRaw);              // Raw request body, contains request data
-    context.log(json.encode(context.req.body));    // Object from parsed JSON request body, otherwise string
+    context.log(context.req.bodyJson);              // Raw request body, contains request data
+    context.log(json.encode(context.req.bodyJson));    // Object from parsed JSON request body, otherwise string
     context.log(json.encode(context.req.headers)); // String key-value pairs of all request headers, keys are lowercase
     context.log(context.req.scheme);               // Value of the x-forwarded-proto header, usually http or https
     context.log(context.req.method);               // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
@@ -579,8 +579,8 @@ import Foundation
 import Foundation
 
 func main(context: RuntimeContext) async throws -> RuntimeOutput {
-    context.log(context.req.bodyRaw)                                                     // Raw request body, contains request data
-    context.log(NSJSONSerialization.jsonObject(with: context.req.body, options: [])!)    // Object from parsed JSON request body, otherwise string
+    context.log(context.req.bodyJson)                                                     // Raw request body, contains request data
+    context.log(NSJSONSerialization.jsonObject(with: context.req.bodyJson, options: [])!)    // Object from parsed JSON request body, otherwise string
     context.log(NSJSONSerialization.jsonObject(with: context.req.headers, options: [])!) // String key-value pairs of all request headers, keys are lowercase
     context.log(context.req.scheme)                                                      // Value of the x-forwarded-proto header, usually http or https
     context.log(context.req.method)                                                      // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
@@ -629,8 +629,8 @@ class Main {
     fun main(context: RuntimeContext): RuntimeOutput {
         val gson = Gson()
 
-        context.log(context.req.bodyRaw)                // Raw request body, contains request data
-        context.log(gson.toString(context.req.body))    // Object from parsed JSON request body, otherwise string
+        context.log(context.req.bodyJson)                // Raw request body, contains request data
+        context.log(gson.toString(context.req.bodyJson))    // Object from parsed JSON request body, otherwise string
         context.log(gson.toString(context.req.headers)) // String key-value pairs of all request headers, keys are lowercase
         context.log(context.req.scheme)                 // Value of the x-forwarded-proto header, usually http or https
         context.log(context.req.method)                 // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
@@ -695,7 +695,7 @@ The response information **will not be logged** to the Appwrite Console.
 There are several possible ways to send a response, explore them in the following Appwrite Function.
 
 {% info title="Depreciation notice" %}
-Use `req.bodyText` instead of `req.bodyRaw`, `res.text` for `res.send`, and `req.bodyText` or `req.bodyJson` instead of `req.body` depending on the expected input data type.
+Use `req.bodyText` instead of `req.bodyRaw`. Use `res.text` instead of `res.send`. Use `req.bodyText` or `req.bodyJson` instead of `req.body` depending on the expected input data type.
 {% /info %}
 
 {% multicode %}
@@ -944,7 +944,7 @@ To get the different response types, set one of the following query parameters i
 | `empty`    | `/`               | `https://64d4d22db370ae41a32e.appwrite.global/`               |
 
 ### JSON {% #JSON %}
-Known as javascript object notation, JSON is often used to send data from the server to a web page and is an `application/json` content-type. JSON would look something like this:
+Known as javascript object notation, JSON is often used to send data from the server to a web page and is an `application/json` content type. JSON would look something like this:
 
 ```server-nodejs
 "employees":[
@@ -955,7 +955,7 @@ Known as javascript object notation, JSON is often used to send data from the se
 ```
 ### Text {% #text %}
 
-It's meant for simple data exchange with no formatting or markup, and is a `text/plain` content type. Plain text would look something like this:
+It's meant for simple data exchange with no formatting or markup and is a `text/plain` content type. Plain text would look something like this:
 
 ```http
 His first name is John, and his last name is Doe.  Her first and last name is Anna Smith.  This is Peter Jone, he is a friend of John and Anna.
@@ -963,7 +963,7 @@ His first name is John, and his last name is Doe.  Her first and last name is An
 
 ### Multipart form {% #multipart-form %}
 
-Multipart form allows you to submit binary data or multiple data types with a single request. Its content-type is multipart/form-data, and it would look something like this:
+The multipart form allows you to submit binary or multiple data types with a single request. Its content type is `multipart/form-data`, and it would look something like this:
 
 ```http
 POST / HTTP/1.1
@@ -1002,7 +1002,7 @@ echo '<a href="ftp://user:', rawurlencode('foo @+%/'),
 
 ### XML {% #xml %}
 
-XML stores and transports data by being a software and hardware independent tool. It should be noted that XML does not do anything, and requires a software to be writted to send, receive, store or display it. It's content-type is application/xml or text/xml, and it looks something like the following:
+XML stores and transports data by being a software and hardware-independent tool. It should be noted that XML requires software to be written to send, receive, store, or display it. It's content-type is `application/xml` or `text/xml`, and it looks something like the following:
 
 ```
 <note>
@@ -1014,7 +1014,7 @@ XML stores and transports data by being a software and hardware independent tool
 ```
 ### Binary data {% #binary-data %}
 
-Binary data is used to send arbitrary data with no specific structure or formatting. Its content type is application/octet-stream, and an example of this would be the following:
+Binary data sends arbitrary data with no specific structure or formatting. Its content type is application/octet-stream, and an example of this would be the following:
 
 ```
 POST https://cloud.appwrite.io/v1/account HTTP/1.1
