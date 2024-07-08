@@ -6,7 +6,7 @@ description: Efficiently deploy your Appwrite teams using the Command-Line Tool 
 
 {% partial file="cli-disclaimer.md" /%}
 
-The Appwrite CLI can create teams to organize users. Teams can be used to grant [permissions](https://appwrite.io/docs/products/auth/teams#permissions) to a group of users.
+The Appwrite CLI can create teams to organize users. Teams can be used to confgiure [permissions](https://appwrite.io/docs/products/auth/teams#permissions) to a group of users.
 
 # Initialize team {% #initialize-team %}
 
