@@ -244,39 +244,55 @@ Available sizes are `s`, `m`, `l` and `xl`. Default: `s`.
 
 #### Cards
 We use cards when we reference a list of links for navigation
+
+```
 {% cards %}
+
 {% cards_item href="/docs/quick-starts/react" title="React" %}
 Get started with Appwrite and React
 {% /cards_item %}
+
 {% cards_item href="/docs/quick-starts/vue" title="Vue.js" %}
 Get started with Appwrite and Vue.js
 {% /cards_item %}
+
 {% cards_item href="/docs/quick-starts/nuxt" title="Nuxt" %}
 Get started with Appwrite and Nuxt
 {% /cards_item %}
+
 {% cards_item href="/docs/quick-starts/sveltekit" title="SvelteKit" %}
 Get started with Appwrite and SvelteKit
 {% /cards_item %}
+
 {% /cards %}
+```
 
 #### Cards with icons
 We use cards when we reference a list of links for navigation, this variation has icons for extra hints visually.
+
+```
 {% cards %}
+
 {% cards_item href="/docs/products/messaging/apns" title="APNS" icon="icon-apple" %}
 Configure APNs for push notification to Apple devices.
 {% /cards_item %}
+
 {% cards_item href="/docs/products/messaging/fcm" title="FCM" icon="web-icon-firebase" %}
 Configure FCM for push notification to Android and Apple devices.
 {% /cards_item %}
+
 {% /cards %}
+```
 
 #### Accordions
 Use accordions to reduce page size and collapse information that's not important when a reader is skilling the page.
+
+```
 {% accordion %}
 {% accordion_item title="Team ID" %}
-
 {% /accordion_item %}
-{% accordion_item title="Bundle ID" %}
 
+{% accordion_item title="Bundle ID" %}
 {% /accordion_item %}
 {% /accordion %}
+```
