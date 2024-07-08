@@ -69,6 +69,7 @@
         --font-size: 25vw;
         --starting-position: -50vh;
         --duration: 2s;
+        --initial-delay: 4s;
     }
 
     @keyframes -global-line {
@@ -108,8 +109,8 @@
                         width: calc(var(--width) / 2);
                         height: var(--height);
                         background: var(--gradient);
-                        animation: line var(--duration) var(--delay) infinite forwards
-                            cubic-bezier(0.1, -0.6, 0.2, 0);
+                        animation: line var(--duration) calc(var(--initial-delay) + var(--delay))
+                            infinite forwards cubic-bezier(0.1, -0.6, 0.2, 0);
                     }
                 }
             }
