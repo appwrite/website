@@ -47,9 +47,21 @@
     }
 
     function isInViewport(element: Element): boolean {
+        const mobileHeader = document.querySelector('.aw-mobile-header');
+        const isMobile =
+            mobileHeader &&
+            getComputedStyle(mobileHeader).display !== 'none' &&
+            isVisible(mobileHeader, {
+                top: 0,
+                bottom: window.innerHeight,
+                left: 0,
+                right: window.innerWidth
+            });
+        const h = isMobile || 'bannerHidden' in document.body.dataset ? 32 : 64;
+
         return isVisible(element, {
-            top: 32,
-            bottom: 32,
+            top: h,
+            bottom: h,
             left: 0,
             right: window.innerWidth
         });

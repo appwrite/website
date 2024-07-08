@@ -68,7 +68,7 @@
                 <div class="web-strip-plans-item-wrapper">
                     <div class="web-strip-plans-plan">
                         <h4 class="title web-description">Scale</h4>
-                        <div class="web-title web-u-color-text-primary">$685</div>
+                        <div class="web-title web-u-color-text-primary">$599</div>
                         <div class="info web-caption-500">per org/month</div>
                     </div>
                     <p class="web-strip-plans-info web-caption-500">

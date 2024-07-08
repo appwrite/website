@@ -172,7 +172,7 @@
                                             <div
                                                 class="web-title web-u-color-text-primary u-margin-block-start-8"
                                             >
-                                                $685
+                                                $599
                                             </div>
                                             <div class="u-margin-block-start-4">
                                                 per organization/month
@@ -189,16 +189,17 @@
                                             </button>
                                         </header>
                                         <div class="web-pricing-cards-content">
-                                            <p>Everything in Pro and:</p>
+                                            <p>Everything in Pro, plus:</p>
                                             <ul class="web-checked-list-circle">
-                                                <li><span>5TB bandwidth</span></li>
-                                                <li><span>500GB storage</span></li>
-                                                <li><span>10M executions</span></li>
-                                                <li><span>500K monthly active users</span></li>
-                                                <li><span>Priority support</span></li>
-                                                <li><span>14-day log retention</span></li>
-                                                <li><span>Additional organization roles</span></li>
+                                                <li><span>Unlimited seats</span></li>
+                                                <li><span>SOC-2</span></li>
+                                                <li><span>BAA</span></li>
+                                                <li><span>Network logs</span></li>
+                                                <li><span>28-day log retention</span></li>
+                                                <li><span>Organization roles</span></li>
                                                 <li><span>SSO</span></li>
+                                                <li><span>Activity logs</span></li>
+                                                <li><span>Priority support</span></li>
                                             </ul>
                                         </div>
                                     </div>
