@@ -180,7 +180,7 @@
                                     Categories
                                 </h2>
 
-                                <div class="u-position-relative is-only-mobile">
+                                <div class="u-position-relative is-only-tablet">
                                     <select class="web-input-text" bind:value={activeCategory}>
                                         <option disabled selected>Select</option>
                                         {#each categories as category}
@@ -519,7 +519,10 @@
 
             &::before {
                 position: absolute;
-                inset: 0;
+                bottom: 0;
+                height: 100%;
+                width: 100%;
+                max-height: pxToRem(350);
                 content: '';
                 display: block;
                 background: linear-gradient(
@@ -583,9 +586,12 @@
                 height: 500px;
             }
 
-            .active-tag {
-                background-color: #fff;
-                color: #000;
+            .tag {
+                min-width: pxToRem(42);
+                &.active-tag {
+                    background-color: #fff;
+                    color: #000;
+                }
             }
         }
 
