@@ -14,6 +14,10 @@
                 {
                     label: 'Overview',
                     href: '/docs/advanced/platform'
+                },
+                {
+                    label: 'Shortcuts',
+                    href: '/docs/advanced/platform/shortcuts'
                 }
             ]
         },
