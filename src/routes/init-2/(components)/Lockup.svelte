@@ -23,18 +23,26 @@
     {/each}
 
     <defs>
-        <linearGradient id="gradient" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#fff" stop-opacity="1" />
-            <stop stop-color="#fff" />
-            <stop offset="0" stop-color="#fff" stop-opacity="1" />
+        <linearGradient
+            id="gradient"
+            x1="0%"
+            y1="0%"
+            x2="0%"
+            y2="100%"
+            gradientUnits="userSpaceOnUse"
+        >
+            <stop offset="0%" stop-color="#fff" opacity="0" />
+            <stop offset="50%" stop-color="#fff" />
+            <stop offset="100%" stop-color="#fff" opacity="0.1" />
         </linearGradient>
     </defs>
 </svg>
 
 <style lang="scss">
     :root {
-        --starting-dasharray: 0 0 0 500;
+        --starting-dasharray: 1000;
     }
+
     @keyframes -global-fade {
         0% {
             mask: linear-gradient(90deg, #000 25%, #000000e6 50%, #00000000) 150% 0 / 400% no-repeat;
@@ -47,19 +55,12 @@
     }
 
     @keyframes -global-stroke {
-        0% {
+        from {
+            stroke-dashoffset: 1000;
             stroke-dasharray: var(--starting-dasharray);
         }
-        50% {
-            stroke-dasharray: 0 0 225 500;
-        }
-        100% {
-            stroke-dasharray: 0 500 0 500;
-        }
-    }
-
-    @keyframes -global-reset {
         to {
+            stroke-dashoffset: 0;
             stroke-dasharray: var(--starting-dasharray);
         }
     }
@@ -82,9 +83,8 @@
 
         .stroke {
             stroke-dasharray: var(--starting-dasharray);
-            animation:
-                stroke var(--duration) linear 1.5s reverse infinite,
-                reset 0s linear var(--duration) infinite;
+            stroke-dashoffset: 1000;
+            animation: stroke var(--duration) linear forwards infinite;
         }
     }
 </style>
