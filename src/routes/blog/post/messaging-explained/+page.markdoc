@@ -96,13 +96,11 @@ Here's a step-by-step breakdown of how Appwrite Messaging works:
     - For each scheduled message, it checks if the message should be sent at that time.
     - If yes, the message is queued for sending.
 5. Preparing and sending the message via the messaging worker:
-    - Fetching users and targets: The worker fetches users and targets from topics, where targets can be email addresses, devices, or phone numbers. Targets that don't match the message type are ignored.
-    - Fetch providers: The worker fetches the appropriate provider for each target based on the message type. If no specific provider is set, the first enabled provider matching the message type is used.
-    - Group targets by provider: Targets are grouped based on the corresponding provider.
-    - Build and send the message: The message content is built for the specific provider and sent to the targets in batches. The worker then checks for other pending providers and repeats this step accordingly.
-    - Update message status and logs: After sending the messages, the message status and logs are updated on the internal database and displayed on the Appwrite Console.
-
-![Flowchart](/images/blog/messaging-explained/flow.png)
+    - First, the worker fetches users and targets from topics, where targets can be email addresses, devices, or phone numbers. Targets that don't match the message type are ignored.
+    - The worker then fetches the appropriate provider for each target based on the message type. If no specific provider is set, the first enabled provider matching the message type is used.
+    - Targets are grouped based on the corresponding provider.
+    - The message content is built for the specific provider and sent to the targets in batches. The worker then checks for other pending providers and repeats this step accordingly.
+    - After sending the messages, the message status and logs are updated on the internal database and displayed on the Appwrite Console.
 
 # Going forward
 
