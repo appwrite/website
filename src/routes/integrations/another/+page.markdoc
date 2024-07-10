@@ -1,0 +1,23 @@
+---
+layout: integration
+title: Another
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+date: 2023-05-02
+featured: false
+isPartner: true
+isNew: true
+cover: /images/blog/ai-announcement.png
+category: AI
+author: 
+    avatar: '/images/community/avatars/souvik.png'
+    name: Souvik Sarkar
+    username: 'Jeet_2003'
+platform: 
+    - 'Self-hosted'
+images: 
+    - /images/blog/ai-announcement.png
+    - /images/blog/ai-announcement.png
+    - /images/blog/ai-announcement.png
+---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tristique aliquam sagittis. Nam luctus tincidunt risus, vitae convallis est pharetra at. Cras condimentum nibh accumsan sapien finibus, eu porta mauris pharetra. Maecenas euismod vel orci iaculis pharetra. Aliquam ex mi, tristique vel mattis quis, efficitur ultrices lectus. Nam molestie ornare massa vitae rhoncus. In dolor arcu, faucibus quis tincidunt non, maximus ac quam. Integer ac lacinia purus. Nulla tristique, diam eget fringilla ornare, augue nunc dictum turpis, ut commodo tortor tortor ac arcu. Proin a diam tellus.

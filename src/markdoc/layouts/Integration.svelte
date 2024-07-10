@@ -1,18 +1,22 @@
 <script lang="ts">
     import { Embla } from '$lib/components/embla';
+    import FooterNav from '$lib/components/FooterNav.svelte';
+    import MainFooter from '$lib/components/MainFooter.svelte';
     import ProductsGrid from '$lib/components/ProductsGrid.svelte';
     import { Main } from '$lib/layouts';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-    import { TITLE_SUFFIX } from '$routes/titles';
+    import type { Integration } from '$routes/integrations/+page';
 
-    import FooterNav from '../../../lib/components/FooterNav.svelte';
-    import MainFooter from '../../../lib/components/MainFooter.svelte';
+    export let title: Integration['title'];
+    export let images: Integration['images'];
+    export let isNew: Integration['isNew'];
+    export let isPartner: Integration['isPartner'];
+    export let author: Integration['author'];
+    export let category: Integration['category'];
 
-    const title = 'Integrations' + TITLE_SUFFIX;
+    //const title = 'Integrations' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
-
-    const slides = Array.from({ length: 4 });
 </script>
 
 <svelte:head>
@@ -45,12 +49,12 @@
                         <span>Back to catalog</span>
                     </a>
 
-                    {#if slides.length > 1}
+                    {#if images.length > 1}
                         <Embla.Root>
-                            {#each slides as _}
+                            {#each images as slide}
                                 <Embla.Slide>
                                     <img
-                                        src="/images/blog/ai-announcement.png"
+                                        src={slide}
                                         class="web-u-media-ratio-16-9"
                                         alt="cover"
                                         width="472"
@@ -65,7 +69,7 @@
                             style:margin="0 auto"
                         >
                             <img
-                                src="/images/blog/ai-announcement.png"
+                                src={images[0]}
                                 class="web-u-media-ratio-16-9"
                                 alt="cover"
                                 width="472"
@@ -92,13 +96,13 @@
                                     height="40"
                                 />
                                 <div class="u-flex u-cross-center u-flex-wrap u-gap-16">
-                                    <h1 class="web-title web-u-color-text-primary">Lorem ipsum</h1>
+                                    <h1 class="web-title web-u-color-text-primary">{title}</h1>
                                     <a
                                         href="/blog/post/announcing-appwrite-new-ai-integrations"
                                         class="web-hero-banner-button"
                                     >
                                         <span class="web-icon-star" aria-hidden="true"></span>
-                                        <span class="web-caption-500">New</span>
+                                        {#if isNew}<span class="web-caption-500">New</span>{/if}
                                         <div class="web-hero-banner-button-sep"></div>
                                         <span class="web-caption-400 web-u-trim-1"
                                             >Developed by Appwrite</span
@@ -109,31 +113,7 @@
 
                             <div class="web-article">
                                 <div class="web-article-content">
-                                    <p class="web-paragraph-md">
-                                        The AI hype is real and will be around for many years to
-                                        come. In 2021 alone, AI startups worldwide raised nearly $50
-                                        billion in venture capital across approximately 1,500 deals,
-                                        reflecting a significant increase from previous years. So
-                                        it's no surprise that many of you are looking to build AI
-                                        powered applications. But that's easier said than done, as
-                                        building AI powered applications can be tricky. We don't
-                                        want it to be. That's why we're happy to share multiple AI
-                                        related announcements designed to enhance the Appwrite
-                                        experience and adapt to new possibilities for devs building
-                                        with Appwrite.
-                                    </p>
-                                    <p class="web-paragraph-md">
-                                        Lorem ipsum dolor sit amet consectetur. Neque id vel eros
-                                        sed ipsum. Nisi fames euismod egestas morbi massa eget. At
-                                        viverra nibh semper arcu in. Convallis etiam dui elit mauris
-                                        mattis netus sit. Auctor dolor porttitor viverra eget
-                                        egestas sem auctor suspendisse. Massa phasellus condimentum
-                                        nam ac quis quis duis risus. Ac ut aliquet tortor donec erat
-                                        ac. Enim a eros sit purus et lacinia. Faucibus nibh donec
-                                        auctor mattis enim. Elementum quam sed auctor lacus
-                                        tincidunt velit semper dui. Dolor commodo consectetur mollis
-                                        morbi metus arcu at.
-                                    </p>
+                                    <slot />
                                 </div>
                             </div>
                         </div>
@@ -141,17 +121,19 @@
                             <dl class="u-flex-vertical u-gap-20">
                                 <div class="u-flex u-main-space-between u-gap-8">
                                     <dt>Developed by</dt>
-                                    <dd class="web-u-color-text-primary">Appwrite</dd>
+                                    <dd class="web-u-color-text-primary">{author.name}</dd>
                                 </div>
                                 <div class="web-u-sep-block-end"></div>
-                                <div class="u-flex u-main-space-between u-gap-8">
-                                    <dt>Partner</dt>
-                                    <dd><div class="web-inline-tag">Verified</div></dd>
-                                </div>
+                                {#if isPartner}
+                                    <div class="u-flex u-main-space-between u-gap-8">
+                                        <dt>Partner</dt>
+                                        <dd><div class="web-inline-tag">Verified</div></dd>
+                                    </div>
+                                {/if}
                                 <div class="web-u-sep-block-end"></div>
                                 <div class="u-flex u-main-space-between u-gap-8">
                                     <dt>Category</dt>
-                                    <dd class="web-u-color-text-primary">Category</dd>
+                                    <dd class="web-u-color-text-primary">{category}</dd>
                                 </div>
                             </dl>
 

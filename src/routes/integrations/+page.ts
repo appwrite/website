@@ -1,0 +1,56 @@
+import { base } from '$app/paths';
+import { groupBy } from 'remeda';
+
+export type Integration = {
+    title: string;
+    description: string;
+    featured?: boolean;
+    cover: string;
+    isNew?: boolean;
+    isPartner?: boolean;
+    platform: string[];
+    category: string;
+    author: {
+        avatar: string;
+        name: string;
+        username: string;
+    };
+    href: string;
+    images: string[];
+};
+
+export const load = () => {
+    const integrationsGlob = import.meta.glob('./**/*.markdoc', {
+        eager: true
+    });
+
+    const categories: string[] = [];
+    const platforms: string[] = [];
+
+    const integrations = Object.entries(integrationsGlob).map(([filepath, integrationList]) => {
+        const { frontmatter } = integrationList as {
+            frontmatter: Integration;
+        };
+
+        const slug = filepath.replace('./', '').replace('/+page.markdoc', '');
+        const integrationName = slug.slice(slug.lastIndexOf('/') + 1);
+
+        frontmatter.platform.map((p) => platforms.push(p));
+
+        return {
+            ...frontmatter,
+            href: `${base}/integrations/${integrationName}`
+        };
+    });
+
+    return {
+        integrations: groupBy(
+            integrations.filter((i) => !i.featured),
+            (i) => i.category
+        ),
+        list: integrations,
+        categories: new Set(categories),
+        platforms: new Set(platforms),
+        featured: integrations.filter((i) => i.featured)
+    };
+};
