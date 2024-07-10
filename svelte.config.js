@@ -19,6 +19,7 @@ const config = {
             layouts: {
                 default: absolute('./src/markdoc/layouts/Article.svelte'),
                 article: absolute('./src/markdoc/layouts/Article.svelte'),
+                integration: absolute('./src/markdoc/layouts/Integration.svelte'),
                 tutorial: absolute('./src/markdoc/layouts/Tutorial.svelte'),
                 post: absolute('./src/markdoc/layouts/Post.svelte'),
                 author: absolute('./src/markdoc/layouts/Author.svelte'),

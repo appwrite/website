@@ -5,34 +5,16 @@
     import integrations from '../../integrations.json';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
-    import SvelteFuse from '$lib/integrations/SvelteFuse.svelte';
-    import type { ResultType } from '$lib/integrations';
+    import { type ResultType, Fuse } from '$lib/integrations';
     import { writable } from 'svelte/store';
     import { autoHash } from '$lib/actions/autoHash';
+    import type { Integration } from './+page';
+
+    export let data;
 
     const title = 'Integrations' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
-
-    // integration data
-    type Integrations = (typeof integrations)[number];
-    type Integration = Integrations['items'][number];
-
-    const getFeaturedIntegrations = () => {
-        const featuredIntegrations: Array<Integration> = [];
-
-        integrations.forEach((integration) => {
-            integration.items.forEach((item) => {
-                if (item.featured) {
-                    featuredIntegrations.push(item);
-                }
-            });
-        });
-
-        return featuredIntegrations.slice(0, 4);
-    };
-
-    const featuredIntegrations = getFeaturedIntegrations();
 
     // search functionality
     let fuseOptions = {
@@ -40,13 +22,7 @@
         threshold: 0.3
     };
 
-    // flatten the integrations into a single array for search
-    const list = integrations.reduce(
-        (acc, category) => acc.concat(category.items),
-        [] as Integration[]
-    );
-
-    let result: ResultType<(typeof list)[number]> = [];
+    let result: ResultType<Integration> = [];
 
     let hasQuery: boolean;
     let query = writable('');
@@ -56,25 +32,11 @@
     });
 
     // platform filters
-    const platforms = [
-        {
-            label: 'All',
-            value: ''
-        },
-        {
-            label: 'Cloud',
-            value: 'cloud'
-        },
-        {
-            label: 'Self-hosted',
-            value: 'self-hosted'
-        }
-    ];
+    const platforms = ['All', ...data.platforms];
 
     let activePlatform = '';
 
     // categories
-    const categories = integrations.map((integration) => integration.category).sort();
     let activeCategory = '';
 </script>
 
@@ -96,7 +58,7 @@
 </svelte:head>
 
 <!-- binding for fuse -->
-<SvelteFuse {list} options={fuseOptions} bind:query={$query} bind:result />
+<Fuse list={data.list} options={fuseOptions} bind:query={$query} bind:result />
 <Main>
     <header class="web-u-sep-block-end u-padding-block-end-0 u-position-relative u-overflow-hidden">
         <div class="web-container u-position-relative hero web-u-padding-block-end-0">
@@ -161,14 +123,14 @@
                                     Platform
                                 </h2>
                                 <ul class="u-flex u-flex-wrap u-gap-8" class:disabled={hasQuery}>
-                                    {#each platforms as { label, value }}
+                                    {#each platforms as platform}
                                         <li>
                                             <button
                                                 class="tag"
-                                                class:is-selected={activePlatform === value}
-                                                class:active-tag={activePlatform === value}
-                                                on:click={() => (activePlatform = value)}
-                                                >{label}</button
+                                                class:is-selected={activePlatform === platform}
+                                                class:active-tag={activePlatform === platform}
+                                                on:click={() => (activePlatform = platform)}
+                                                >{platform}</button
                                             >
                                         </li>
                                     {/each}
@@ -183,7 +145,7 @@
                                 <div class="u-position-relative is-only-tablet">
                                     <select class="web-input-text" bind:value={activeCategory}>
                                         <option disabled selected>Select</option>
-                                        {#each categories as category}
+                                        {#each data.categories as category}
                                             <option value={category.toLowerCase()}
                                                 >{category}</option
                                             >
@@ -199,7 +161,7 @@
                                     class="u-flex-vertical u-gap-16 is-only-desktop"
                                     class:disabled={hasQuery}
                                 >
-                                    {#each categories as category}
+                                    {#each data.categories as category}
                                         <li>
                                             <a
                                                 href={`#${category.toLowerCase()}`}
@@ -237,7 +199,7 @@
                                             {#each result.map((d) => d.item) as item}
                                                 <li>
                                                     <a
-                                                        href={item.url}
+                                                        href={item.href}
                                                         class="web-card is-normal u-height-100-percent"
                                                         style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                                                     >
@@ -279,13 +241,13 @@
 
                                     <div>
                                         <ul class="web-feature-grid">
-                                            {#each featuredIntegrations as item}
+                                            {#each data.featured as item}
                                                 <li
                                                     class="web-feature-grid-item is-two-columns-desktop-only"
                                                 >
-                                                    <a class="web-overlay-item" href={item.url}>
+                                                    <a class="web-overlay-item" href={item.href}>
                                                         <img
-                                                            src={item.image}
+                                                            src={item.cover}
                                                             alt={item.title}
                                                             class="u-block web-u-media-ratio-16-9 web-u-media-cover"
                                                         />
@@ -306,7 +268,7 @@
                                                                     class="web-u-color-text-primary"
                                                                     >{item.author.name}</span
                                                                 >
-                                                                {#if item.new}
+                                                                {#if item.isNew}
                                                                     <span
                                                                         class="web-inline-tag is-pink"
                                                                         >New</span
@@ -326,33 +288,30 @@
                                     </div>
                                 </section>
 
-                                {#each integrations.map((integration) => {
-                                    return { ...integration, items: activePlatform ? integration.items.filter((item) => item.platform.toLowerCase() === activePlatform.toLowerCase()) : integration.items };
-                                }) as integration (integration.category)}
-                                    {#if integration.items.length > 0}
+                                {#each Object.entries(data.integrations) as [category, items]}
+                                    {#if items.length > 0}
                                         <section
                                             class="l-max-size-list-cards-section u-flex-vertical u-gap-32"
-                                            id={integration.category.toLowerCase()}
+                                            id={category.toLowerCase()}
                                             use:autoHash={() =>
-                                                (activeCategory =
-                                                    integration.category.toLowerCase())}
+                                                (activeCategory = category.toLowerCase())}
                                         >
                                             <header class="u-flex-vertical u-gap-4">
                                                 <h2 class="web-label web-u-color-text-primary">
-                                                    {integration.category}
+                                                    {category}
                                                 </h2>
                                                 <p class="web-description">
-                                                    {integration.description}
+                                                    {category}
                                                 </p>
                                             </header>
                                             <div
                                                 class="l-max-size-list-cards u-flex-vertical u-gap-32"
                                             >
                                                 <ul class="l-grid-1">
-                                                    {#each integration.items as item, index (`${item.title}-${index}`)}
+                                                    {#each items as item, index (`${item.title}-${index}`)}
                                                         <li>
                                                             <a
-                                                                href={item.url}
+                                                                href={item.href}
                                                                 class="web-card is-normal u-height-100-percent"
                                                                 style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                                                             >
@@ -386,7 +345,7 @@
                                                     {/each}
                                                 </ul>
                                                 <a
-                                                    href={`#${integration.category.toLowerCase()}`}
+                                                    href={`#${category.toLowerCase()}`}
                                                     class="l-float-button web-button is-text"
                                                 >
                                                     <span>Show more</span>
