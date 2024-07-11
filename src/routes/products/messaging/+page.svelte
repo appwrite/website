@@ -279,13 +279,13 @@ messaging.create_email(
                         directly to your users.
                     </p>
                     <div class="u-flex u-items-center u-gap-8 u-margin-block-start-32 hero-buttons">
-                        <a class="web-button" href="https://cloud.appwrite.io" target="_blank"
+                        <a class="web-button" href="https://cloud.appwrite.io"
                             >Get started</a
                         >
                         <a
                             class="web-button is-secondary"
-                            href="https://appwrite.io/docs/products/messaging"
-                            target="_blank">Documentation</a
+                            href="/docs/products/messaging"
+                        >Documentation</a
                         >
                     </div>
                 </div>
@@ -333,7 +333,6 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/fcm"
-                                            target="_blank"
                                             rel="noopener noreferrer"
                                         >
                                             <span class="web-icon-firebase" aria-hidden="true" />
@@ -344,7 +343,6 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/apns"
-                                            target="_blank"
                                             rel="noopener noreferrer"
                                         >
                                             <span class="web-icon-apple" aria-hidden="true" />
@@ -370,7 +368,6 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/mailgun"
-                                            target="_blank"
                                             rel="noopener noreferrer"
                                         >
                                             <span class="web-icon-mailgun" aria-hidden="true" />
@@ -381,7 +378,6 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/sendgrid"
-                                            target="_blank"
                                             rel="noopener noreferrer"
                                         >
                                             <span class="web-icon-sendgrid" aria-hidden="true" />
@@ -406,7 +402,6 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/twilio"
-                                            target="_blank"
                                             rel="noopener noreferrer"
                                         >
                                             <span class="icon-twilio" aria-hidden="true" />
@@ -417,7 +412,6 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/vonage"
-                                            target="_blank"
                                             rel="noopener noreferrer"
                                         >
                                             <span class="icon-vonage" aria-hidden="true" />
@@ -450,7 +444,6 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs"
-                                            target="_blank"
                                             rel="noopener noreferrer"
                                         >
                                             <span
@@ -599,7 +592,6 @@ messaging.create_email(
                             class="web-card is-normal"
                             href="/docs/products/auth"
                             style="background: rgba(255, 255, 255, 0.04);"
-                            target="_blank"
                             rel="noopener noreferrer"
                         >
                             <div
@@ -628,7 +620,6 @@ messaging.create_email(
                         <a
                             class="web-card is-normal"
                             href="/docs/products/functions"
-                            target="_blank"
                             rel="noopener noreferrer"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
@@ -661,7 +652,6 @@ messaging.create_email(
                         <a
                             class="web-card is-normal"
                             href="/docs/products/databases"
-                            target="_blank"
                             rel="noopener noreferrer"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
@@ -693,7 +683,6 @@ messaging.create_email(
                         <a
                             class="web-card is-normal"
                             href="/docs/products/storage"
-                            target="_blank"
                             rel="noopener noreferrer"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
@@ -725,7 +714,6 @@ messaging.create_email(
                         <a
                             class="web-card is-normal"
                             href="/docs/apis/realtime"
-                            target="_blank"
                             rel="noopener noreferrer"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
