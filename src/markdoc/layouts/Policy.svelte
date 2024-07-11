@@ -22,7 +22,12 @@
 
     import { Main } from '$lib/layouts';
 
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import {
+        COOKIE_POLICY_DESCRIPTION,
+        DEFAULT_HOST,
+        POLICY_DESCRIPTION,
+        TERMS_POLICY_DESCRIPTION
+    } from '$lib/utils/metadata';
 
     import { TITLE_SUFFIX } from '$routes/titles';
 
@@ -30,19 +35,29 @@
     import TocRoot from '$lib/components/TocRoot.svelte';
     import { isHeaderHidden } from '$lib/layouts/Main.svelte';
     import { getContext, hasContext, setContext } from 'svelte';
+    import { page } from '$app/stores';
 
     export let title: string;
     export let transparentTableCells = false;
 
-    const seo = {
+    let seo = {
         title: title + TITLE_SUFFIX,
-        description: DEFAULT_DESCRIPTION,
+        description: POLICY_DESCRIPTION,
         ogImage: DEFAULT_HOST + '/images/open-graph/website.png',
 
         APP_NAME: 'Appwrite'
     };
 
     let showToc = false;
+
+    // handle multiple policies
+    const pageId = $page.route.id;
+
+    if (pageId === '/cookies') {
+        seo.description = COOKIE_POLICY_DESCRIPTION
+    } else if (pageId === '/terms') {
+        seo.description = TERMS_POLICY_DESCRIPTION
+    }
 
     setCtx({ transparentTableCells });
 </script>

@@ -2,14 +2,14 @@
     import { Carousel } from '$lib/components';
     import Technologies from '$lib/components/Technologies.svelte';
     import Docs from '$lib/layouts/Docs.svelte';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST, DOCUMENTATION_DESCRIPTION } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import MainFooter from '../../lib/components/MainFooter.svelte';
     import CodeCard, { type CodeCardProps } from './CodeCard.svelte';
     import Sidebar from './Sidebar.svelte';
 
     const title = 'Docs' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description = DOCUMENTATION_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 
     const tutorials: CodeCardProps[] = [
