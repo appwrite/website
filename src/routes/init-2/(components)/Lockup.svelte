@@ -41,8 +41,9 @@
 
 <style lang="scss">
     :root {
-        --starting-dasharray: 2000;
-        --starting-dashoffset: 2000;
+        --starting-dasharray: 1500;
+        --starting-dashoffset: 1500;
+        --ending-dashoffset: -1500;
     }
 
     @keyframes -global-fade {
@@ -62,7 +63,7 @@
             stroke-dasharray: var(--starting-dasharray);
         }
         to {
-            stroke-dashoffset: -2000;
+            stroke-dashoffset: var(--ending-dashoffset);
             stroke-dasharray: var(--starting-dasharray);
         }
     }
@@ -78,7 +79,7 @@
         --stroke-color: #333;
         --stroke-width: 2;
         --fill: hsl(240 5.7% 10.4%);
-        --duration: 16s;
+        --duration: 18s;
         fill: none;
         animation: fade 1s ease-in-out;
 
