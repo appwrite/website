@@ -18,8 +18,9 @@
     import SeoOgImage from '$lib/components/SeoOgImage.svelte';
     import { DocsArticle } from '$lib/layouts';
     import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
-    import { DOCS_TITLE_SUFFIX } from '$routes/titles';
+    import { DOCS_TITLE_SUFFIX, OVERVIEW_TITLE_SUFFIX } from '$routes/titles';
     import { getContext, setContext } from 'svelte';
+    import { page } from '$app/stores';
 
     export let title: string;
     export let description: string;
@@ -57,7 +58,10 @@
         return carry;
     }, []);
 
-    const seoTitle = title + DOCS_TITLE_SUFFIX;
+    const isProductsPage = /^\/docs\/products\/[^/]+$/.test($page.route.id.toString());
+
+    let seoTitle = title + DOCS_TITLE_SUFFIX;
+    if (isProductsPage) seoTitle = title + OVERVIEW_TITLE_SUFFIX;
 </script>
 
 <svelte:head>
