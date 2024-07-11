@@ -97,9 +97,7 @@ Developers are allergic to marketing, but if you want people to use your project
 
 - **Network with other devs**
 
-Collaboration and cross-promotion is the name of the game. Participate in conferences, meetups, and webinars to showcase your project and its capabilities. Connect with other open-source project maintainers and communities.
-
-And it can also help you build your team! One of our most treasured team members, Aditya Oberai, is a seasoned networker. When he stumbled across Appwrite on X, he noticed that he already knew many other contributors, which drew him in further and helped him land a job at Appwrite. Now, how’s that for a success story?
+Collaboration and cross-promotion is the name of the game. Participate in conferences, meetups, and webinars to showcase your project and its capabilities. Connect with other open-source project maintainers and communities. It can also help you build your team in the future.
 
 ![Appwrite team at RenderATL 2024](/images/blog/how-to-attract-users-to-open-source-project/render-atl-team-photo.png)
 
@@ -115,7 +113,7 @@ Even small updates can signal that your project is actively maintained. Release 
 
 - **Share your roadmap**
 
-Being transparent with your users pays off. Let the community know what features and improvements are planned, while also giving them space to request features and fixes.
+Being transparent with your users pays off. Let the community know what features and improvements are planned while also giving them space to request features and fixes.
 
 We’ve recently [released our new public roadmap](https://appwrite.io/blog/post/public-roadmap-announcement) as part of our commitment to the community. It’s designed to improve collaboration between the Appwrite team and contributors. When users know what to expect, they feel heard and valued.
 
@@ -127,7 +125,7 @@ An open-source project is nothing without its community, so be sure to include t
 
 # Conclusion
 
-We’ve seen firsthand how an engaged open source community can help drive innovation and growth. Appwrite’s journey from a side project to a platform with thousands of users wouldn’t have been possible without the passion of open source developers.
+We’ve seen firsthand how an engaged open-source community can help drive innovation and growth. Appwrite’s journey from a side project to a platform with thousands of users wouldn’t have been possible without the passion of open source developers.
 
 That’s why we want to give back and support OSS projects.
 
