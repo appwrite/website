@@ -897,6 +897,10 @@ messaging.create_email(
         pointer-events: none;
     }
 
+    .web-tag {
+      --p-tag-bg-color: var(--web-color-greyscale-100);
+    }
+
     @media (min-width: 1024px) {
         .hero {
             padding-block-start: 0;
