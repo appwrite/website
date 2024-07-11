@@ -8,6 +8,7 @@
     import Send from './(components)/Send.svelte';
     import Target from './(components)/Target.svelte';
     import MultiCodeContextless from './(components)/MultiCodeContextless.svelte';
+    import { Platform } from '$lib/utils/references';
 
     const title = 'Messaging' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -15,7 +16,7 @@
 
     const codeTopic = [
         {
-            language: 'js',
+            language: 'client-web',
             content: `import { Account, Messaging, ID } from "appwrite"
 
 // Fetch target ID
@@ -32,7 +33,7 @@ await messaging.createSubscriber(
 )`
         },
         {
-            language: 'dart',
+            language: 'client-flutter',
             content: `import 'package:appwrite/appwrite.dart';
 
 // Fetch target ID
@@ -49,7 +50,7 @@ await messaging.createSubscriber(
 );`
         },
         {
-            language: 'kotlin',
+            language: 'client-android-kotlin',
             content: `import io.appwrite.services.Account
 import io.appwrite.services.Messaging
 import io.appwrite.ID
@@ -68,7 +69,7 @@ messaging.createSubscriber(
 )`
         },
         {
-            language: 'swift',
+            language: 'client-apple',
             content: `import Appwrite
 
 // Fetch target ID
@@ -88,24 +89,11 @@ try await messaging.createSubscriber(
 
     const codeMessage = [
         {
-            language: 'js',
+            language: "server-nodejs",
             platform: 'Node.js',
             content: `import { Messaging, ID } from "node-appwrite"
 
 const messaging = Messaging(client);
-await messaging.createPush(
-    ID.unique(),           // Message ID
-    'Breaking update',     // Push title
-    'Hello, world!',       // Push body
-    ['news', 'sport'],       // Topic IDs
-);`
-        },
-        {
-            language: 'ts',
-            platform: 'Deno',
-            content: `import { Messaging, ID } from "https://deno.land/x/appwrite/mod.ts";
-
-const messaging = new Messaging(client);
 await messaging.createPush(
     ID.unique(),           // Message ID
     'Breaking update',     // Push title
@@ -561,14 +549,14 @@ messaging.create_email(
                                 class="u-margin-block-start-16 u-min-width-0"
                                 style="margin-block-end: 94px"
                             >
-                                <MultiCodeContextless data={codeTopic} height={450} />
+                                <MultiCodeContextless data={codeTopic} selected="{Platform.ClientWeb}" height={450} />
                             </div>
                         </div>
                         <div class="u-flex-vertical u-gap-8 u-min-width-0">
                             <h3 class="web-label web-u-color-text-primary">Send a message</h3>
                             <p class="web-description">Send a message to all targets on a topic.</p>
                             <div class="u-margin-block-start-16 u-min-width-0">
-                                <MultiCodeContextless data={codeMessage} height={450} />
+                                <MultiCodeContextless data={codeMessage} selected="{Platform.ServerNodeJs}" height={450} />
                             </div>
                         </div>
                     </div>
