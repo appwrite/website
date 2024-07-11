@@ -11,6 +11,7 @@ export const DOCUMENTATION_DESCRIPTION = 'Learn how to build like a team of hund
 export const POLICY_DESCRIPTION = 'Understand how we collect, use, and protect your personal information.'
 export const PRICING_DESCRIPTION = 'Explore our straightforward pricing plans that scale with your project.'
 export const TERMS_POLICY_DESCRIPTION = 'Review our Terms of Service to understand the rules and guidelines for using our open-source backend-as-a-service platform.'
+export const TUTORIALS_DESCRIPTION = 'Follow a simple tutorial to get started with Appwrite in your preferred framework quickly and easily.'
 
 export function buildOpenGraphImage(title: string, description: string): string {
 	return `https://og.appwrite.global/image.png?title=${encodeURIComponent(
