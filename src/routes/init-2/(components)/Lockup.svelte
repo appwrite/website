@@ -19,7 +19,7 @@
 >
     {#each paths as path, i}
         <path d={path} class="base" />
-        <path d={path} class="stroke" stroke="url(#gradient)" />
+        <path d={path} class="stroke" stroke="url(#gradient)" style={`--delay:${i * 500}ms`} />
     {/each}
 
     <defs>
@@ -31,16 +31,18 @@
             y2="100%"
             gradientUnits="userSpaceOnUse"
         >
-            <stop offset="0%" stop-color="#fff" opacity="0" />
-            <stop offset="50%" stop-color="#fff" />
-            <stop offset="100%" stop-color="#fff" opacity="0.1" />
+            <stop stop-color="#fff" stop-opacity="0" />
+            <stop stop-color="#fff" />
+            <stop offset="1" stop-color="#fff" stop-opacity="0" />
+            <stop offset="2" stop-color="#fff" stop-opacity="0" />
         </linearGradient>
     </defs>
 </svg>
 
 <style lang="scss">
     :root {
-        --starting-dasharray: 1000;
+        --starting-dasharray: 2000;
+        --starting-dashoffset: 2000;
     }
 
     @keyframes -global-fade {
@@ -56,11 +58,18 @@
 
     @keyframes -global-stroke {
         from {
-            stroke-dashoffset: 1000;
+            stroke-dashoffset: var(--starting-dashoffset);
             stroke-dasharray: var(--starting-dasharray);
         }
         to {
-            stroke-dashoffset: 0;
+            stroke-dashoffset: -2000;
+            stroke-dasharray: var(--starting-dasharray);
+        }
+    }
+
+    @keyframes -global-reset {
+        from {
+            stroke-dashoffset: var(--starting-dashoffset);
             stroke-dasharray: var(--starting-dasharray);
         }
     }
@@ -69,7 +78,7 @@
         --stroke-color: #333;
         --stroke-width: 2;
         --fill: hsl(240 5.7% 10.4%);
-        --duration: 8s;
+        --duration: 16s;
         fill: none;
         animation: fade 1s ease-in-out;
 
@@ -83,8 +92,11 @@
 
         .stroke {
             stroke-dasharray: var(--starting-dasharray);
-            stroke-dashoffset: 1000;
-            animation: stroke var(--duration) linear forwards infinite;
+            stroke-dashoffset: var(--starting-dashoffset);
+
+            animation:
+                stroke var(--duration) var(--delay) linear forwards infinite,
+                reset 0s var(--delay) forwards infinite;
         }
     }
 </style>
