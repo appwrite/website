@@ -79,9 +79,9 @@
         --stroke-color: #333;
         --stroke-width: 2;
         --fill: hsl(240 5.7% 10.4%);
-        --duration: 18s;
+        --duration: 6s;
         fill: none;
-        animation: fade 1s ease-in-out;
+        animation: fade 2s ease-in-out;
 
         path {
             stroke-width: var(--stroke-width);
