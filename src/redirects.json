@@ -677,6 +677,10 @@
     },
     {
         "link": "/cli/install.sh",
+        "redirect": "https://appwrite.io/cli/install.ps1"
+    },
+    {
+        "link": "/cli/install.sh",
         "redirect": "https://raw.githubusercontent.com/appwrite/sdk-for-cli/master/install.sh"
     }
 ]
