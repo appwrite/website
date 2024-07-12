@@ -17,14 +17,14 @@ At [Appwrite](https://appwrite.io/), we provide an API-agnostic approach, lettin
 
 # REST and modern web communication
 
-## What is REST?
+**What is REST?**
 
 Representational State Transfer (REST) is a stateless, request-response protocol that serves as the foundation of data communication on the web. It is simple, widely understood, and supported by virtually all web clients and servers.
 
 **Technical details:**
 
 - **Methods:** GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD
-- **Status Codes:** 1xx (Informational), 2xx (Success), 3xx (Redirection), 4xx (Client Error), 5xx (Server Error) - check out the [full list of status codes]([List of HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)).
+- **Status Codes:** 1xx (Informational), 2xx (Success), 3xx (Redirection), 4xx (Client Error), 5xx (Server Error) - check out the [full list of status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes).
 - **Headers:** Provide metadata (e.g., Content-Type, Authorization, Cache-Control, and more)
 - **Body**: Contains the payload of your data
 
@@ -59,7 +59,7 @@ Appwrite uses REST as the primary API for communication between clients and the 
 
 # WebSockets: enabling real-time communication
 
-*## What are WebSockets?
+**What are WebSockets?**
 
 WebSockets provide a full-duplex communication channel over a single, long-lived connection. This protocol allows for real-time data exchange between the client and server, which is essential for applications requiring instant updates, such as chat apps or live notifications.
 
@@ -117,7 +117,7 @@ client.subscribe('account', response => {
 
 # GraphQL: Efficient data querying
 
-## What is GraphQL?
+**What is GraphQL?**
 
 GraphQL is a query language for APIs and a runtime for executing those queries using a defined type system for your data. It allows clients to request exactly the data they need, reducing the amount of data transferred and improving performance.
 
