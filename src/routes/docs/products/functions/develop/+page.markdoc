@@ -1365,7 +1365,6 @@ use Appwrite\Services\Databases;
 use Appwrite\ID;
 
 return function ($context) {
-    $client = new Client();
     // Set API key
     $client = new Client();
     $client
