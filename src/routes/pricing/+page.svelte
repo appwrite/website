@@ -1,6 +1,6 @@
 <script lang="ts">
     import { FooterNav, MainFooter, PreFooter } from '$lib/components';
-    import { DEFAULT_HOST, PRICING_DESCRIPTION } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
 
     import { Main } from '$lib/layouts';
     import { TITLE_SUFFIX } from '$routes/titles';
@@ -9,7 +9,7 @@
     import BG from './bg.png?enhanced';
 
     const title = 'Pricing' + TITLE_SUFFIX;
-    const description = PRICING_DESCRIPTION;
+    const description = 'Explore our straightforward pricing plans that scale with your project.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 

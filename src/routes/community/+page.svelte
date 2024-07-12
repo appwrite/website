@@ -52,7 +52,7 @@
     import PreFooter from '$lib/components/PreFooter.svelte';
     import { GITHUB_STARS } from '$lib/constants';
     import { Main } from '$lib/layouts';
-    import { COMMUNITY_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import type { EventCardProps } from './EventCard.svelte';
     import EventCard from './EventCard.svelte';
@@ -122,7 +122,7 @@
     }
 
     const title = 'Community' + TITLE_SUFFIX;
-    const description = COMMUNITY_DESCRIPTION;
+    const description = 'Join our vibrant community of developers. Ask questions, contribute solutions, and inspire others to improve the backend development experience.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
