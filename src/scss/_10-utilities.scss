@@ -94,7 +94,7 @@
 .#{$p}-u-size-40                  { inline-size:pxToRem(40); block-size:pxToRem(40); }
 .#{$p}-u-block-size-48            { block-size:pxToRem(48); }
 .#{$p}-u-block-size-160           { block-size:pxToRem(160); }
-.#{$p}-u-block-size-320           { block-size:pxToRem(320); }
+.#{$p}-u-min-block-size-320           { min-block-size:pxToRem(320); }
 
 .#{$p}-u-inline-width-100-percent-mobile { @media #{$break1}, #{$break2} { inline-size:100%; } }
 .#{$p}-u-inline-width-100-percent-mobile-break1 { @media #{$break1} { inline-size:100%; } }

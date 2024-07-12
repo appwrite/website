@@ -1,16 +1,16 @@
 ---
 layout: article
-title: TextMagic
-description: Send SMS messages to your Appwrite users using TextMagic and Appwrite Messaging.
+title: Textmagic
+description: Send SMS messages to your Appwrite users using Textmagic and Appwrite Messaging.
 back: /docs/
 ---
-TextMagic lets you send customized SMS messages to your users.
+Textmagic lets you send customized SMS messages to your users.
 These SMS messages can be sent immediately or scheduled.
 You can send SMS messages for purposes like reminders, promotions, announcements, and even custom authentication flows.
 
 {% section #add-provider step=1 title="Add provider" %}
 
-To add TextMagic as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **SMS**.
+To add Textmagic as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **SMS**.
 {% only_dark %}
 ![Add a Textmagic provider](/images/docs/messaging/providers/textmagic/dark/provider.png)
 {% /only_dark %}
@@ -18,27 +18,27 @@ To add TextMagic as a provider, navigate to **Messaging** > **Providers** > {% i
 ![Add a Textmagic provider](/images/docs/messaging/providers/textmagic/provider.png)
 {% /only_light %}
 
-Give your provider a name > choose **TextMagic** > click **Save and continue**.
+Give your provider a name > choose **Textmagic** > click **Save and continue**.
 The provider will be saved to your project, but not enabled until you complete its configuration.
 {% /section %}
 {% section #configure-provider step=2 title="Configure provider" %}
 
-In the **Configure** step, you will need to provide details from your TextMagic dashboard to connect your Appwrite project.
+In the **Configure** step, you will need to provide details from your Textmagic dashboard to connect your Appwrite project.
 
-You will need to provide the following information from your **TextMagic dashboard**.
+You will need to provide the following information from your **Textmagic dashboard**.
 
 {% table %}
 * Field name
 *
 ---
 * API key
-* Head to TextMagic dashboard > **Services** > **API** > **Add new API key**.
+* Head to Textmagic dashboard > **Services** > **API** > **Add new API key**.
 ---
 * Username
-* Head to TextMagic dashboard > **My account** > **Username**.
+* Head to Textmagic dashboard > **My account** > **Username**.
 ---
 * Sender number
-* Head to TextMagic dashboard > **Services** > **Sender settings**.
+* Head to Textmagic dashboard > **Services** > **Sender settings**.
 {% /table %}
 
 After adding the following details, click **Save and continue** to enable the provider.
