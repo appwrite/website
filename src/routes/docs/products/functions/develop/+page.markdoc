@@ -1543,7 +1543,6 @@ namespace DotNetRuntime
     {
         public async Task Main(RuntimeContext Context) 
         {
-            var client = new Client()
             // Set API 
             var client = new Client()
                 .SetEndpoint("https://cloud.appwrite.io/v1")  
