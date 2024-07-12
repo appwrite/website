@@ -22,12 +22,7 @@
 
     import { Main } from '$lib/layouts';
 
-    import {
-        COOKIE_POLICY_DESCRIPTION,
-        DEFAULT_HOST,
-        POLICY_DESCRIPTION,
-        TERMS_POLICY_DESCRIPTION
-    } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
 
     import { TITLE_SUFFIX } from '$routes/titles';
 
@@ -42,7 +37,7 @@
 
     let seo = {
         title: title + TITLE_SUFFIX,
-        description: POLICY_DESCRIPTION,
+        description: 'Understand how we collect, use, and protect your personal information.',
         ogImage: DEFAULT_HOST + '/images/open-graph/website.png',
 
         APP_NAME: 'Appwrite'
@@ -54,9 +49,9 @@
     const pageId = $page.route.id;
 
     if (pageId === '/cookies') {
-        seo.description = COOKIE_POLICY_DESCRIPTION
+        seo.description = 'Read our cookie policy to understand your choices and manage your preferences.'
     } else if (pageId === '/terms') {
-        seo.description = TERMS_POLICY_DESCRIPTION
+        seo.description = 'Review our Terms of Service to understand the rules and guidelines for using our open-source backend-as-a-service platform.'
     }
 
     setCtx({ transparentTableCells });
