@@ -35,6 +35,13 @@
             selectedMap = selectedMap;
         };
     };
+
+    const downloadResource = (url: string) => {
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = url.split('/').pop() || 'download';
+        link.click();
+    }
 </script>
 
 <svelte:head>
@@ -137,28 +144,26 @@
                                             alt="Appwrite logo with black text"
                                         />
                                         <div class="buttons">
-                                            <a
+                                            <button
                                                 class="web-button is-secondary"
-                                                href="/assets/logotype/white.svg"
-                                                download
+                                                on:click={() => downloadResource("/assets/logotype/white.svg")}
                                             >
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>SVG</span>
-                                            </a>
-                                            <a
+                                            </button>
+                                            <button
                                                 class="web-button is-secondary"
-                                                href="/assets/logotype/white.png"
-                                                download
+                                                on:click={() => downloadResource("/assets/logotype/white.png")}
                                             >
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>PNG</span>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                     <div
@@ -171,28 +176,26 @@
                                             alt="Appwrite logo with white text"
                                         />
                                         <div class="buttons">
-                                            <a
+                                            <button
                                                 class="web-button is-secondary"
-                                                href="/assets/logotype/black.svg"
-                                                download
+                                                on:click={() => downloadResource("/assets/logotype/black.svg")}
                                             >
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>SVG</span>
-                                            </a>
-                                            <a
+                                            </button>
+                                            <button
                                                 class="web-button is-secondary"
-                                                href="/assets/logotype/black.png"
-                                                download
+                                                on:click={() => downloadResource("/assets/logotype/black.png")}
                                             >
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>PNG</span>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -248,28 +251,26 @@
                                             alt="Appwrite's logomark"
                                         />
                                         <div class="buttons">
-                                            <a
+                                            <button
                                                 class="web-button is-secondary"
-                                                href="/assets/logomark/logo.svg"
-                                                download
+                                                on:click={() => downloadResource("/assets/logomark/logo.svg")}
                                             >
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>SVG</span>
-                                            </a>
-                                            <a
+                                            </button>
+                                            <button
                                                 class="web-button is-secondary"
-                                                href="/assets/logomark/logo.png"
-                                                download
+                                                on:click={() => downloadResource("/assets/logomark/logo.png")}
                                             >
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>PNG</span>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                     <div
@@ -282,28 +283,26 @@
                                             alt="Appwrite's logomark"
                                         />
                                         <div class="buttons">
-                                            <a
+                                            <button
                                                 class="web-button is-secondary"
-                                                href="/assets/logomark/logo.svg"
-                                                download
+                                                on:click={() => downloadResource("/assets/logomark/logo.svg")}
                                             >
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>SVG</span>
-                                            </a>
-                                            <a
+                                            </button>
+                                            <button
                                                 class="web-button is-secondary"
-                                                href="/assets/logomark/logo.png"
-                                                download
+                                                on:click={() => downloadResource("/assets/logomark/logo.png")}
                                             >
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>PNG</span>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -397,28 +396,26 @@
                                             alt="Dashboard"
                                         />
                                         <div class="buttons">
-                                            <a
+                                            <button
                                                 class="web-button is-secondary"
-                                                href="/assets/visuals/dashboard.jpg"
-                                                download
+                                                on:click={() => downloadResource("/assets/visuals/dashboard.jpg")}
                                             >
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>JPG</span>
-                                            </a>
-                                            <a
+                                            </button>
+                                            <button
                                                 class="web-button is-secondary"
-                                                href={'/assets/visuals/dashboard.png'}
-                                                download
+                                                on:click={() => downloadResource("/assets/visuals/dashboard.png")}
                                             >
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>PNG</span>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="media-wrapper">
@@ -428,28 +425,26 @@
                                             alt="Appwrite Auth"
                                         />
                                         <div class="buttons">
-                                            <a
+                                            <button
                                                 class="web-button is-secondary"
-                                                href="/assets/visuals/auth.jpg"
-                                                download
+                                                on:click={() => downloadResource("/assets/visuals/auth.jpg")}
                                             >
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>JPG</span>
-                                            </a>
-                                            <a
+                                            </button>
+                                            <button
                                                 class="web-button is-secondary"
-                                                href={'/assets/visuals/auth.png'}
-                                                download
+                                                on:click={() => downloadResource("/assets/visuals/auth.png")}
                                             >
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>PNG</span>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="media-wrapper">
@@ -459,28 +454,26 @@
                                             alt="Appwrite Databases"
                                         />
                                         <div class="buttons">
-                                            <a
+                                            <button
                                                 class="web-button is-secondary"
-                                                href="/assets/visuals/databases.jpg"
-                                                download
+                                                on:click={() => downloadResource("/assets/visuals/databases.jpg")}
                                             >
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>JPG</span>
-                                            </a>
-                                            <a
+                                            </button>
+                                            <button
                                                 class="web-button is-secondary"
-                                                href={'/assets/visuals/databases.png'}
-                                                download
+                                                on:click={() => downloadResource("/assets/visuals/databases.png")}
                                             >
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>PNG</span>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
 
@@ -491,28 +484,26 @@
                                             alt="Appwrite Storage"
                                         />
                                         <div class="buttons">
-                                            <a
+                                            <button
                                                 class="web-button is-secondary"
-                                                href="/assets/visuals/storage.jpg"
-                                                download
+                                                on:click={() => downloadResource("/assets/visuals/storage.jpg")}
                                             >
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>JPG</span>
-                                            </a>
-                                            <a
+                                            </button>
+                                            <button
                                                 class="web-button is-secondary"
-                                                href={'/assets/visuals/storage.png'}
-                                                download
+                                                on:click={() => downloadResource("/assets/visuals/storage.png")}
                                             >
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>PNG</span>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
 
@@ -523,28 +514,26 @@
                                             alt="Appwrite Functions"
                                         />
                                         <div class="buttons">
-                                            <a
+                                            <button
                                                 class="web-button is-secondary"
-                                                href="/assets/visuals/functions.jpg"
-                                                download
+                                                on:click={() => downloadResource("/assets/visuals/functions.jpg")}
                                             >
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>JPG</span>
-                                            </a>
-                                            <a
+                                            </button>
+                                            <button
                                                 class="web-button is-secondary"
-                                                href={'/assets/visuals/functions.png'}
-                                                download
+                                                on:click={() => downloadResource("/assets/visuals/functions.png")}
                                             >
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>PNG</span>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="media-wrapper">
@@ -554,28 +543,26 @@
                                             alt="Appwrite Messaging"
                                         />
                                         <div class="buttons">
-                                            <a
+                                            <button
                                                 class="web-button is-secondary"
-                                                href="/assets/visuals/messaging.jpg"
-                                                download
+                                                on:click={() => downloadResource("/assets/visuals/messaging.jpg")}
                                             >
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>JPG</span>
-                                            </a>
-                                            <a
+                                            </button>
+                                            <button
                                                 class="web-button is-secondary"
-                                                href={'/assets/visuals/messaging.png'}
-                                                download
+                                                on:click={() => downloadResource("/assets/visuals/messaging.png")}
                                             >
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
                                                 />
                                                 <span>PNG</span>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
