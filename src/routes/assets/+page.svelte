@@ -82,9 +82,9 @@
                         </button>
                     </div>
                 </header>
-                <TocNav />
+                <TocNav {showToc} />
                 <main class="web-grid-120-1fr-auto-main /web-is-mobile-closed" id="main">
-                    <div class="web-content">
+                    <div class="web-content" class:web-is-mobile-closed={showToc}>
                         <section>
                             <p>
                                 Resources for presenting the Appwrite brand to maintain consistency

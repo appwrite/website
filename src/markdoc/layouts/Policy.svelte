@@ -86,7 +86,7 @@
                     <span class="icon-menu-alt-4" aria-hidden="true" />
                 </button>
                 </div>
-                <TocNav />
+                <TocNav {showToc} />
                 <main class="web-grid-120-1fr-auto-main /web-is-mobile-closed" id="main">
                     <div class="web-content is-count-headers" class:web-is-mobile-closed={showToc}>
                         <!-- svelte-ignore a11y-hidden -->
