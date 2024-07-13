@@ -18,7 +18,6 @@
     xmlns="http://www.w3.org/2000/svg"
 >
     {#each paths as path, i}
-        <path d={path} class="base" />
         <path d={path} class="stroke" stroke="url(#gradient)" style={`--delay:${i * 500}ms`} />
     {/each}
 
@@ -85,10 +84,6 @@
 
         path {
             stroke-width: var(--stroke-width);
-        }
-        .base {
-            stroke: var(--stroke-color);
-            fill: var(--fill);
         }
 
         .stroke {
