@@ -600,15 +600,14 @@ def main(context):
             'content': formData['content'][0]
         }
 
-        client = Client()
         # Set API key
         client = (
           Client()
             .set_endpoint("https://cloud.appwrite.io/v1")
             .set_project("os.environ["APPWRITE_FUNCTION_PROJECT_ID"]")
-            .set_key(context.req.headers["x-appwrite-key"]); API key is automatically provided by Appwrite
+            .set_key(context.req.headers["x-appwrite-key"]) API key is automatically provided by Appwrite
         )
-        
+
         databases = Databases(client)
         document = databases.create_document('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message)
 

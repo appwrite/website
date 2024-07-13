@@ -111,10 +111,10 @@ def main(context):
     #
     # Set API key
     # client = (
-    #   Client()
-    #       .set_endpoint("https://cloud.appwrite.io/v1")
-    #       .set_project("os.environ["APPWRITE_FUNCTION_PROJECT_ID"]")
-    #       .set_key(context.req.headers["x-appwrite-key"]); API key is automatically provided by Appwrite
+    #     Client()
+    #        .set_endpoint("https://cloud.appwrite.io/v1")
+    #        .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
+    #        .set_key(os.environ["APPWRITE_API_KEY"]) API key is automatically provided by Appwrite
     # )
 
     # You can log messages to the console
@@ -1366,8 +1366,7 @@ use Appwrite\ID;
 
 return function ($context) {
     // Set API key
-    $client = new Client();
-    $client
+    $client = (new Client())
         ->setEndpoint('https://cloud.appwrite.io/v1')
         ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
         ->setKey($context->req->headers['x-appwrite-key']); API key is automatically provided by Appwrite
