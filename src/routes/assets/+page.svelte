@@ -35,6 +35,8 @@
             selectedMap = selectedMap;
         };
     };
+
+    let showToc = false;
 </script>
 
 <svelte:head>
@@ -64,18 +66,21 @@
             <div class="web-grid-120-1fr-auto">
                 <header class="web-grid-120-1fr-auto-header">
                     <h1 class="web-display web-u-color-text-primary">Brand assets</h1>
-                    <button
-                        class="u-flex u-width-full-line web-u-padding-block-20
-                        web-u-color-text-primary web-is-only-mobile
-                       web-u-margin-inline-32-negative u-margin-block-start-24 web-u-sep-block u-width-full-line"
-                    >
-                        <span
-                            class="web-container u-flex u-width-full-line u-main-space-between u-cross-center"
+                    <div class="web-is-only-mobile">
+                        <button
+                            class="u-flex u-width-full-line web-u-padding-block-20
+                            web-u-color-text-primary web-u-margin-inline-32-negative
+                           u-margin-block-start-24 web-u-sep-block u-width-full-line"
+                           on:click={() => (showToc = !showToc)}
                         >
-                            <span class="web-description">Table of contents</span>
-                            <span class="icon-menu-alt-4" aria-hidden="true" />
-                        </span>
-                    </button>
+                            <span
+                                class="web-container u-flex u-width-full-line u-main-space-between u-cross-center"
+                            >
+                                <span class="web-description">Table of contents</span>
+                                <span class="icon-menu-alt-4" aria-hidden="true" />
+                            </span>
+                        </button>
+                    </div>
                 </header>
                 <TocNav />
                 <main class="web-grid-120-1fr-auto-main /web-is-mobile-closed" id="main">
