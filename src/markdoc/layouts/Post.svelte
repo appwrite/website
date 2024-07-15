@@ -8,7 +8,7 @@
     import type { AuthorData, CategoryData, PostsData } from '$routes/blog/content';
     import { BLOG_TITLE_SUFFIX } from '$routes/titles';
     import { getContext } from 'svelte';
-    import { type SocialShareOption, sharingOptions } from '$lib/constants';
+    import { type SocialShareOption, socialSharingOptions } from '$lib/constants';
     import { copy } from '$lib/utils/copy';
     import { page } from '$app/stores';
 
@@ -193,7 +193,7 @@
                                     </span>
 
                                     <ul class="u-flex u-gap-8">
-                                        {#each sharingOptions as sharingOption}
+                                        {#each socialSharingOptions as sharingOption}
                                             <li class="share-list-item">
                                                 <Tooltip placement="bottom" disableHoverableContent={true}>
                                                     <button
