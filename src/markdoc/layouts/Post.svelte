@@ -185,7 +185,7 @@
                                     </div>
                                 {/if}
 
-                                <div class="share-post-section u-flex u-gap-16 u-margin-block-start-16">
+                                <div class="share-post-section u-flex u-gap-16 u-margin-block-start-16 u-cross-center">
                                     <span
                                         class="u-font-size-16 u-padding-inline-end-8"
                                         style:font-weight="500">
