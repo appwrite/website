@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import { tweened } from 'svelte/motion';
+    import { writable } from 'svelte/store';
 
     const width = 874;
     const height = 438;
@@ -39,15 +40,14 @@
 >
     {#each paths as path, i}
         <path d={path} class="base" />
-        <path d={path} class="stroke" stroke="white" style={`animation-delay:${i * 500}ms`} />
-        <path d={path} class="stroke" stroke="white" style={`animation-delay:${i * 1000}ms`} />
+        <path d={path} class="stroke" stroke="url(#gradient)" />
+        <path d={path} class="stroke" stroke="url(#gradient)" style:animation-delay="4.5s" />
     {/each}
 
     <defs>
-        <linearGradient id="gradient" gradientUnits="userSpaceOnUse">
+        <linearGradient id="gradient" gradientUnits="objectBoundingBox" x2="0" y2="100%">
             <stop stop-color="#fff" stop-opacity="0" />
-            <stop stop-color="#fff" />
-            <stop offset="1" stop-color="#fff" stop-opacity="0" />
+            <stop offset="50%" stop-color="#fff" />
         </linearGradient>
     </defs>
 </svg>
@@ -55,9 +55,9 @@
 <style lang="scss">
     :root {
         --starting-dasharray: 0 1800;
-        --ending-dasharray: 300 1800;
+        --ending-dasharray: 1000 1800;
         --starting-dashoffset: 0;
-        --ending-dashoffset: -800;
+        --ending-dashoffset: -1600;
     }
 
     @keyframes -global-fade {
@@ -78,23 +78,24 @@
         }
     }
 
-    // @keyframes -global-reset {
-    //     to {
-    //         stroke-dashoffset: var(--ending-dashoffset);
-    //         //stroke-dasharray: var(--starting-dasharray);
-    //     }
-    // }
+    @keyframes -global-reset {
+        to {
+            stroke-dashoffset: var(--starting-dashoffset);
+            stroke-dasharray: var(--starting-dasharray);
+        }
+    }
 
     .lockup {
         --stroke-color: #333;
         --stroke-width: 2;
         --fill: hsl(240 5.7% 10.4%);
-        --duration: 3s;
+        --duration: 5s;
         fill: none;
         animation: fade 1s ease-out;
 
         path {
             stroke-width: var(--stroke-width);
+            vector-effect: non-scaling-stroke;
         }
 
         .base {
@@ -104,9 +105,11 @@
 
         .stroke {
             stroke-dasharray: var(--starting-dasharray);
-            stroke-dashoffset: var(--starting-dashoffset);
+            stroke-dashoffset: 0;
 
-            animation: stroke var(--duration) linear reverse infinite;
+            animation:
+                stroke var(--duration) linear reverse infinite,
+                reset 0s var(--duration) infinite;
         }
     }
 </style>
