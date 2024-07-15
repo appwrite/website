@@ -30,29 +30,20 @@
     import TocRoot from '$lib/components/TocRoot.svelte';
     import { isHeaderHidden } from '$lib/layouts/Main.svelte';
     import { getContext, hasContext, setContext } from 'svelte';
-    import { page } from '$app/stores';
 
     export let title: string;
+    export let description: string;
     export let transparentTableCells = false;
 
     let seo = {
         title: title + TITLE_SUFFIX,
-        description: 'Understand how we collect, use, and protect your personal information.',
+        description: description,
         ogImage: DEFAULT_HOST + '/images/open-graph/website.png',
 
         APP_NAME: 'Appwrite'
     };
 
     let showToc = false;
-
-    // handle multiple policies
-    const pageId = $page.route.id;
-
-    if (pageId === '/cookies') {
-        seo.description = 'Read our cookie policy to understand your choices and manage your preferences.'
-    } else if (pageId === '/terms') {
-        seo.description = 'Review our Terms of Service to understand the rules and guidelines for using our open-source backend-as-a-service platform.'
-    }
 
     setCtx({ transparentTableCells });
 </script>
@@ -89,6 +80,7 @@
                     style:inline-size="100vw"
                     style:background-color="hsl(var(--p-body-bg-color) / 0.1)"
                     style:translate="0 {$isHeaderHidden ? '-4.5rem' : '0'}"
+                    style:z-index="1"
                     on:click={() => (showToc = !showToc)}
                 >
                     <span class="web-description">Table of contents</span>

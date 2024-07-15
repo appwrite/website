@@ -7,11 +7,12 @@
     import ChangelogEntry from '../ChangelogEntry.svelte';
     import { page } from '$app/stores';
     import { CHANGELOG_KEY } from '../utils';
+    import { TITLE_SUFFIX } from '$routes/titles';
 
     export let data;
 
     const seo = {
-        title: 'Changelog',
+        title: 'Changelog' + TITLE_SUFFIX,
         description: 'Check out our detailed changelog to see what\'s new and what updates have been made to Appwrite Cloud and Self Hosted.',
         ogImage: `${DEFAULT_HOST}/images/open-graph/website.png`
     };
