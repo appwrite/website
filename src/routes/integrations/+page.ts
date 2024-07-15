@@ -35,7 +35,8 @@ export const load = () => {
         const slug = filepath.replace('./', '').replace('/+page.markdoc', '');
         const integrationName = slug.slice(slug.lastIndexOf('/') + 1);
 
-        frontmatter.platform.map((p) => platforms.push(p));
+        frontmatter.platform.map((platform) => platforms.push(platform));
+        categories.push(frontmatter.category);
 
         return {
             ...frontmatter,
