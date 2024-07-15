@@ -55,7 +55,6 @@
 <style lang="scss">
     :root {
         --starting-dasharray: 0 1800;
-        --middle-dasharray: 600 1800;
         --ending-dasharray: 1200 1800;
         --starting-dashoffset: 0;
         --ending-dashoffset: -1600;
@@ -77,19 +76,12 @@
             stroke-dashoffset: var(--starting-dashoffset);
             stroke-dasharray: var(--starting-dasharray);
         }
-        50% {
-            stroke-dasharray: var(--middle-dasharray);
-        }
+        // 50% {
+        //     stroke-dasharray: var(--middle-dasharray);
+        // }
         100% {
             stroke-dashoffset: var(--ending-dashoffset);
             stroke-dasharray: var(--ending-dasharray);
-        }
-    }
-
-    @keyframes -global-reset {
-        to {
-            stroke-dashoffset: var(--starting-dashoffset);
-            stroke-dasharray: var(--starting-dasharray);
         }
     }
 
@@ -115,9 +107,7 @@
             stroke-dasharray: var(--starting-dasharray);
             stroke-dashoffset: 0;
 
-            animation:
-                stroke var(--duration) linear reverse infinite,
-                reset 0s var(--duration) infinite;
+            animation: stroke var(--duration) linear reverse infinite;
         }
     }
 </style>
