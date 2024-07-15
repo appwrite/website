@@ -1,0 +1,225 @@
+---
+layout: article
+title: Start with Rest
+description: Build Rest apps with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
+difficulty: beginner
+readtime: 3
+back: /docs/quick-starts
+---
+
+Learn how to setup your first Rest project powered by Appwrite.
+{% section #step-1 step=1 title="Create project" %}
+Head to the [Appwrite Console](https://cloud.appwrite.io/console).
+
+If this is your first time using Appwrite, create an account and create your first project.
+
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/quick-starts/create-project.png)
+{% /only_light %}
+
+Then, under **Integrate with your server**, add an **API Key** with the following scopes.
+
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/integrate-server.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/quick-starts/integrate-server.png)
+{% /only_light %}
+
+| Category  {% width=120 %} | Required scopes       | Purpose |
+|-----------|-----------------------|---------|
+| Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
+|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
+|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
+|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
+|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+
+Other scopes are optional.
+
+{% /section %}
+{% section #step-2 step=2 title="Create Node.js project" %}
+Create a Node.js CLI application.
+
+```sh
+mkdir my-app
+cd my-app
+npm init
+```
+
+{% /section %}
+{% section #step-3 step=3 title="Install Appwrite" %}
+
+Install the Node.js Appwrite SDK.
+
+```sh
+npm install node-appwrite@11.1.1
+```
+{% /section %}
+{% section #step-4 step=4 title="Import Appwrite" %}
+
+Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier.
+
+{% only_dark %}
+![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/quick-starts/project-id.png)
+{% /only_light %}
+
+Create a new file `app.js` and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
+
+```js
+const sdk = require("node-appwrite");
+
+const client = new sdk.Client();
+
+async function createDocument(DATABASE_ID, COLLECTION_ID, DOCUMENT_ID, {title, description, isComplete}){
+    await fetch(`https://cloud.appwrite.io/v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Appwrite-Project': <PROJECT_ID>,
+            'X-Appwrite-Key': <API_KEY>,
+        },
+        body: JSON.stringify({
+            documentId: DOCUMENT_ID,
+            data:{
+                title,
+                description,
+                isComplete   
+            }
+        })
+    });
+}
+```
+
+{% /section %}
+
+{% section #step-5 step=5 title="Initialize database" %}
+
+Once the Appwrite Client is initialized, create a function to configure a todo collection.
+
+```json
+const databases = new sdk.Databases(client);
+
+var todoDatabase;
+var todoCollection;
+
+async function prepareDatabase() {
+    todoDatabase = await databases.create(
+        sdk.ID.unique(),
+        'TodosDB'
+    );
+
+    todoCollection = await databases.createCollection(
+        todoDatabase.$id,
+        sdk.ID.unique(),
+        'Todos'
+    );
+
+    await databases.createStringAttribute(
+        todoDatabase.$id,
+        todoCollection.$id,
+        'title',
+        255,
+        true
+    );
+
+    await databases.createStringAttribute(
+        todoDatabase.$id,
+        todoCollection.$id,
+        'description',
+        255, false,
+        'This is a test description'
+    );
+    await databases.createBooleanAttribute(
+        todoDatabase.$id,
+        todoCollection.$id,
+        'isComplete',
+        true
+    );
+}
+```
+
+{% /section %}
+
+
+{% section #step-6 step=6 title="Add documents" %}
+Create a function to add some mock data into your new collection.
+
+```js
+async function seedDatabase() {
+    var testTodo1 = {
+        title: 'Buy apples',
+        description: 'At least 2KGs',
+        isComplete: true
+    };
+
+    var testTodo2 = {
+        title: 'Wash the apples',
+        isComplete: true
+    };
+
+    var testTodo3 = {
+        title: 'Cut the apples',
+        description: 'Don\'t forget to pack them in a box',
+        isComplete: false
+    };
+
+    await databases.createDocument(
+        todoDatabase.$id,
+        todoCollection.$id,
+        sdk.ID.unique(),
+        testTodo1
+    );
+    await databases.createDocument(
+        todoDatabase.$id,
+        todoCollection.$id,
+        sdk.ID.unique(),
+        testTodo2
+    );
+    await databases.createDocument(
+        todoDatabase.$id,
+        todoCollection.$id,
+        sdk.ID.unique(),
+        testTodo3
+    );
+}
+```
+
+{% /section %}
+{% section #step-7 step=7 title="Retrieve documents" %}
+
+Create a function to retrieve the mock todo data and a function to execute the requests in order.
+Run the functions to by calling `runAllTasks();`.
+
+```js
+async function getTodos() {
+ const response = await fetch(`${endpoint}/users`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Appwrite-Project': projectId,
+            'X-Appwrite-Key': apiKey,
+        }
+    });
+
+    var data = await response.json();
+    
+    data.users.forEach(user => {
+        console.log(`User: ${user.email}\nCreated At: ${user.$createdAt}`);
+    });
+}
+
+async function runAllTasks() {
+    await prepareDatabase();
+    await seedDatabase();
+    await getTodos();
+}
+runAllTasks();
+```
+
+{% /section %}

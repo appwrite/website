@@ -72,6 +72,12 @@
                     icon: 'icon-solidjs',
                     image: '/images/blog/placeholder.png',
                     href: 'solid'
+                },
+                {
+                    title: 'REST',
+                    icon: 'icon-js',
+                    image: '/images/blog/placeholder.png',
+                    href: 'rest'
                 }
             ]
         },
