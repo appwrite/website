@@ -97,7 +97,7 @@
         'Marius Bolik',
         'CTO // mySHOEFITTER',
         'Appwrite has been a tremendous asset in implementing our IT infrastructure. Not only is the software an absolute game-changer, but the team is always there when you need them.',
-        'marius-bolik'
+        'marius-bolik2'
     );
 
     const souvikSarkar = testimonial(
@@ -140,6 +140,12 @@
             '@alexparton',
             "I just migrated a project from Firebase to Appwrite: Authentication, Users, Databases and Storage. And I can't be more in love with it.",
             'alejandro-morales'
+        ),
+        testimonial(
+            'Jonas Janssen',
+            'Founder',
+            "Thanks to Appwrite and advances in technology, we were able to get an MVP out in 2-3 months with 1 developer.",
+            'jonas-janssen'
         ),
         mariusBolik
     ];
