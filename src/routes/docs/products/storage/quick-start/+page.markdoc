@@ -88,7 +88,7 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   ```client-android-kotlin
   import io.appwrite.Client
   import io.appwrite.services.Storage
-  import io.appwrite.models.InputFileio.appwrite.models.InputFile
+  import io.appwrite.models.InputFile
   import io.appwrite.ID
 
   suspend fun main() {
@@ -115,14 +115,11 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   Content-Length: <LENGTH>
   -----1234
   Content-Disposition: form-data; name='fileId'   
-
   <FILE_ID>
   -----1234
   Content-Disposition: form-data; name='file'; filename='image.jpg'
   Content-Type: image/jpg
-
   <FILE_CONTENT>
-
   -----1234
   ```
 
@@ -139,10 +136,10 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
       '<BUCKET_ID>',
       ID.unique(),
       { 
-          name: 'image.jpg', 
-          type: 'image/jpg', 
-          uri: 'file://user/image.jpg', 
-          size: 183799 
+        name: 'image.jpg', 
+        type: 'image/jpg', 
+        uri: 'file://user/image.jpg', 
+        size: 183799 
     }
 );
 
