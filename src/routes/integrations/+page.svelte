@@ -265,7 +265,7 @@
                                                             >
                                                                 <span
                                                                     class="web-u-color-text-primary"
-                                                                    >{item.author.name}</span
+                                                                    >{item.title}</span
                                                                 >
                                                                 {#if item.isNew}
                                                                     <span
