@@ -41,7 +41,7 @@
     {#each paths as path, i}
         <path d={path} class="base" />
         <path d={path} class="stroke" stroke="url(#gradient)" />
-        <path d={path} class="stroke" stroke="url(#gradient)" style:animation-delay="4.5s" />
+        <path d={path} class="stroke" stroke="url(#gradient)" />
     {/each}
 
     <defs>
@@ -55,7 +55,8 @@
 <style lang="scss">
     :root {
         --starting-dasharray: 0 1800;
-        --ending-dasharray: 1000 1800;
+        --middle-dasharray: 600 1800;
+        --ending-dasharray: 1200 1800;
         --starting-dashoffset: 0;
         --ending-dashoffset: -1600;
     }
@@ -72,7 +73,14 @@
     }
 
     @keyframes -global-stroke {
-        to {
+        0% {
+            stroke-dashoffset: var(--starting-dashoffset);
+            stroke-dasharray: var(--starting-dasharray);
+        }
+        50% {
+            stroke-dasharray: var(--middle-dasharray);
+        }
+        100% {
             stroke-dashoffset: var(--ending-dashoffset);
             stroke-dasharray: var(--ending-dasharray);
         }
