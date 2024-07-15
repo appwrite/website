@@ -132,7 +132,7 @@
         testimonial(
             'Diego Ferreyra',
             '@diego_ferreyra1',
-            'Loving it. I’ve been a web developer for 20+ years and I’ve never gotten from 0 lines to actual useful coding so fast. 100% recommend.',
+            "Loving it. I've been a web developer for 20+ years and I've never gotten from 0 lines to actual useful coding so fast. 100% recommend.",
             'diego-ferreyra'
         ),
         testimonial(
@@ -144,7 +144,7 @@
         testimonial(
             'Jonas Janssen',
             'Founder',
-            "Thanks to Appwrite and advances in technology, we were able to get an MVP out in 2-3 months with 1 developer.",
+            'Thanks to Appwrite and advances in technology, we were able to get an MVP out in 2-3 months with 1 developer.',
             'jonas-janssen'
         ),
         mariusBolik
@@ -229,8 +229,8 @@
                             <div class="u-flex-vertical u-gap-8 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">Complete backend</h2>
                                 <p class="web-main-body-500">
-                                    Get access to Appwrite’s Scale plan and build your entire backend
-                                    with Appwrite.
+                                    Get access to Appwrite's Scale plan and build your entire
+                                    backend with Appwrite.
                                 </p>
                             </div>
                         </li>
@@ -246,8 +246,8 @@
                             <div class="u-flex-vertical u-gap-8 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">Cloud credits</h2>
                                 <p class="web-main-body-500">
-                                    Get Appwrite Cloud Scale for 12 months and reduce risk at an early
-                                    stage.
+                                    Get Appwrite Cloud Scale for 12 months and reduce risk at an
+                                    early stage.
                                 </p>
                             </div>
                         </li>
@@ -722,9 +722,9 @@
                                                 Join the Appwrite Startups program
                                             </h4>
                                             <p class="web-description">
-                                                We support VC backed or revenue generating 
-                                                startups that have been established within
-                                                the last decade with:
+                                                We support VC backed or revenue generating startups
+                                                that have been established within the last decade
+                                                with:
                                             </p>
 
                                             <div class="u-flex-vertical u-gap-12">
