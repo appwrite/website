@@ -321,7 +321,6 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/fcm"
-                                            rel="noopener noreferrer"
                                         >
                                             <span class="web-icon-firebase" aria-hidden="true" />
                                             <span class="text">FCM</span>
@@ -331,7 +330,6 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/apns"
-                                            rel="noopener noreferrer"
                                         >
                                             <span class="web-icon-apple" aria-hidden="true" />
                                             <span class="text">APNS</span>
@@ -356,7 +354,6 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/mailgun"
-                                            rel="noopener noreferrer"
                                         >
                                             <span class="web-icon-mailgun" aria-hidden="true" />
                                             <span class="text">Mailgun</span>
@@ -366,7 +363,6 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/sendgrid"
-                                            rel="noopener noreferrer"
                                         >
                                             <span class="web-icon-sendgrid" aria-hidden="true" />
                                             <span class="text">SendGrid</span>
@@ -390,7 +386,6 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/twilio"
-                                            rel="noopener noreferrer"
                                         >
                                             <span class="icon-twilio" aria-hidden="true" />
                                             <span class="text">Twilio</span>
@@ -400,7 +395,6 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/vonage"
-                                            rel="noopener noreferrer"
                                         >
                                             <span class="icon-vonage" aria-hidden="true" />
                                             <span class="text">Vonage</span>
@@ -432,7 +426,6 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs"
-                                            rel="noopener noreferrer"
                                         >
                                             <span
                                                 class="web-icon-appwrite u-small web-u-margin-inline-end-4"
@@ -549,14 +542,14 @@ messaging.create_email(
                                 class="u-margin-block-start-16 u-min-width-0"
                                 style="margin-block-end: 94px"
                             >
-                                <MultiCodeContextless data={codeTopic} selected="{Platform.ClientWeb}" height={450} />
+                                <MultiCodeContextless data={codeTopic} selected={Platform.ClientWeb} height={450} />
                             </div>
                         </div>
                         <div class="u-flex-vertical u-gap-8 u-min-width-0">
                             <h3 class="web-label web-u-color-text-primary">Send a message</h3>
                             <p class="web-description">Send a message to all targets on a topic.</p>
                             <div class="u-margin-block-start-16 u-min-width-0">
-                                <MultiCodeContextless data={codeMessage} selected="{Platform.ServerNodeJs}" height={450} />
+                                <MultiCodeContextless data={codeMessage} selected={Platform.ServerNodeJs} height={450} />
                             </div>
                         </div>
                     </div>
@@ -580,7 +573,6 @@ messaging.create_email(
                             class="web-card is-normal"
                             href="/docs/products/auth"
                             style="background: rgba(255, 255, 255, 0.04);"
-                            rel="noopener noreferrer"
                         >
                             <div
                                 class="u-flex-vertical u-gap-8 web-u-padding-inline-8 web-u-padding-block-end-8"
@@ -608,7 +600,6 @@ messaging.create_email(
                         <a
                             class="web-card is-normal"
                             href="/docs/products/functions"
-                            rel="noopener noreferrer"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
@@ -640,7 +631,6 @@ messaging.create_email(
                         <a
                             class="web-card is-normal"
                             href="/docs/products/databases"
-                            rel="noopener noreferrer"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
@@ -671,7 +661,6 @@ messaging.create_email(
                         <a
                             class="web-card is-normal"
                             href="/docs/products/storage"
-                            rel="noopener noreferrer"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
@@ -702,7 +691,6 @@ messaging.create_email(
                         <a
                             class="web-card is-normal"
                             href="/docs/apis/realtime"
-                            rel="noopener noreferrer"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
