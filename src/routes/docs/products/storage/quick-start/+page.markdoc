@@ -120,7 +120,7 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   Content-Disposition: form-data; name='file'; filename='image.jpg'
   Content-Type: image/jpg
 
-  < <File content>
+  <FILE_CONTENT>
 
   -----1234
   ```
