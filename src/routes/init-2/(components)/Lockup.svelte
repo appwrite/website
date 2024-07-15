@@ -1,6 +1,26 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
+    import { tweened } from 'svelte/motion';
+
     const width = 874;
     const height = 438;
+
+    const initialState = { x1: 0, x2: 0, y1: height, y2: height * 2 };
+    const targetState = { x1: width * 2, x2: width, y1: height / 2, y2: height };
+
+    const state = tweened(initialState);
+
+    const animate = () => {
+        state.set(targetState, { duration: 6000, delay: 1000 }).then(() => {
+            state.set(initialState, { duration: 0 }).then(() => {
+                animate();
+            });
+        });
+    };
+
+    onMount(() => {
+        animate();
+    });
 
     const paths = [
         'M53.9539 435.628V436.128H54.4539H122.654H123.154V435.628V132.776V132.276H122.654H1.28125H0.78125V132.776V192.884V193.384H1.28125H53.9539V435.628ZM45.2844 43.1913C45.2844 67.7464 64.0076 86.4606 89.1317 86.4606C114.256 86.4606 132.979 67.7464 132.979 43.1913C132.979 19.2098 114.251 0.5 89.1317 0.5C64.0121 0.5 45.2844 19.2098 45.2844 43.1913Z',
@@ -22,14 +42,7 @@
     {/each}
 
     <defs>
-        <linearGradient
-            id="gradient"
-            x1="0%"
-            y1="0%"
-            x2="0%"
-            y2="100%"
-            gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="gradient" gradientUnits="userSpaceOnUse" {...$state}>
             <stop stop-color="#fff" stop-opacity="0" />
             <stop stop-color="#fff" />
             <stop offset="1" stop-color="#fff" stop-opacity="0" />
@@ -80,7 +93,7 @@
         --fill: hsl(240 5.7% 10.4%);
         --duration: 18s;
         fill: none;
-        animation: fade 1s ease-in-out;
+        animation: fade 1s ease-out;
 
         path {
             stroke-width: var(--stroke-width);
@@ -91,7 +104,7 @@
             stroke-dashoffset: var(--starting-dashoffset);
 
             animation:
-                stroke var(--duration) var(--delay) linear forwards infinite,
+                stroke var(--duration) var(--delay) ease-out forwards infinite,
                 reset 0s var(--delay) forwards infinite;
         }
     }
