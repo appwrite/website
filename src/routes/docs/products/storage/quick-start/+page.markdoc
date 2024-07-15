@@ -36,7 +36,7 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
         type: 'text/plain', 
         size: 37967,
         uri: 'file://text.png'
-      }, // File
+      },
   );
 
   promise.then(function (response) {
@@ -127,26 +127,26 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   import { Client, Storage, ID } from 'react-native-appwrite';
 
   const client = new Client()
-      .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-      .setProject('<PROJECT_ID>');                 // Your project ID
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');                 // Your project ID
 
   const storage = new Storage(client);
 
   const promise = await storage.createFile(
-      '<BUCKET_ID>',
-      ID.unique(),
-      { 
-        name: 'image.jpg', 
-        type: 'image/jpg', 
-        uri: 'file://user/image.jpg', 
-        size: 183799 
+    '<BUCKET_ID>',
+    ID.unique(),
+    { 
+      name: 'image.jpg', 
+      type: 'image/jpg', 
+      uri: 'file://user/image.jpg', 
+      size: 183799 
     }
 );
 
   promise.then(function (response) {
-      console.log(response); // Success
+    console.log(response); // Success
   }, function (error) {
-      console.log(error); // Failure
+    console.log(error); // Failure
   });
   ```
 {% /multicode %}
