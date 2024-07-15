@@ -57,6 +57,204 @@ Each execution can have one of the follow status.
 - The function execution was not successful.
 {% /table %}
 
+The execution of functions can be delayed if you want to wait to trigger them.
+
+# Delayed executions {% #delayed-executions %}
+
+Delayed executions are queued to trigger the function at a future date and time. To schedule an execution, navigate to **Your function** > **Executions** > **Execute now** > **Schedule** in the Appwrite Console.
+
+{% only_dark %}
+![Add a SMTP provider](/images/docs/functions/execution/dark/scheduled-execution-function.png)
+{% /only_dark %}
+{% only_light %}
+![Add a SMTP provider](/images/docs/functions/execution/scheduled-execution-function.png)
+{% /only_light %}
+
+You can also schedule your functions using a [Server SDK](/docs/sdks#server).
+
+{% multicode %}
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject(<PROJECT_ID>) // Your project ID
+    .setSession(''); // The user session to authenticate with
+
+const functions = new sdk.Functions(client);
+
+const result = await functions.createExecution(
+    '<FUNCTION_ID>', // functionId
+    '2020-10-15T06:38:00.000+00:00' // Optional parameter to schedule function execution
+);
+```
+
+```php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Functions;
+
+$client = (new Client())
+    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    ->setProject(<PROJECT_ID>) // Your project ID
+    ->setSession(''); // The user session to authenticate with
+
+$functions = new Functions($client);
+
+$result = $functions->createExecution(
+    functionId: '<FUNCTION_ID>',
+    scheduled: '2020-10-15T06:38:00.000+00:00' // Optional parameter to schedule function execution
+);
+```
+
+```python
+from appwrite.client import Client
+
+client = Client()
+client.set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
+client.set_project(<PROJECT_ID>) # Your project ID
+client.set_session('') # The user session to authenticate with
+
+functions = Functions(client)
+
+result = functions.create_execution(
+    function_id = '<FUNCTION_ID>',
+    scheduled ='2020-10-15T06:38:00.000+00:00' # Optional parameter to schedule function execution
+)
+```
+
+```ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
+    .set_project('5df5acd0d48c2') # Your project ID
+    .set_session('') # The user session to authenticate with
+
+functions = Functions.new(client)
+
+result = functions.create_execution(
+    function_id: '<FUNCTION_ID>',
+    scheduled: '2020-10-15T06:38:00.000+00:00' # Optional parameter to schedule function execution
+)
+```
+
+```deno
+import { Client, Functions, ExecutionMethod } from "https://deno.land/x/appwrite/mod.ts";
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject(<PROJECT_ID>) // Your project ID
+    .setSession(''); // The user session to authenticate with
+
+const functions = new Functions(client);
+
+const response = await functions.createExecution(
+    '<FUNCTION_ID>', // functionId
+    '2020-10-15T06:38:00.000+00:00' // Optional parameter to schedule function execution
+);
+```
+
+```dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject(<PROJECT_ID>) // Your project ID
+    .setSession(''); // The user session to authenticate with
+
+Functions functions = Functions(client);
+
+Execution result = await functions.createExecution(
+    functionId: '<FUNCTION_ID>',
+    scheduled: '2020-10-15T06:38:00.000+00:00' // Optional parameter to schedule function execution
+);
+```
+
+```kotlin
+import io.appwrite.Client
+import io.appwrite.coroutines.CoroutineCallback
+import io.appwrite.services.Functions
+
+val client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject(<PROJECT_ID>) // Your project ID
+    .setSession("") // The user session to authenticate with
+
+val functions = Functions(client)
+
+val response = functions.createExecution(
+    functionId = "<FUNCTION_ID>",
+    "2020-10-15T06:38:00.000+00:00" // Optional parameter to schedule function execution
+)
+```
+
+```java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Functions;
+
+Client client = new Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject(<PROJECT_ID>) // Your project ID
+    .setSession(""); // The user session to authenticate with
+
+Functions functions = new Functions(client);
+
+functions.createExecution(
+    "<FUNCTION_ID>", // functionId
+    "2020-10-15T06:38:00.000+00:00" // Optional parameter to schedule function execution
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        System.out.println(result);
+    })
+);
+```
+
+```swift
+import Appwrite
+import AppwriteEnums
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject(<PROJECT_ID>) // Your project ID
+    .setSession("") // The user session to authenticate with
+
+let functions = Functions(client)
+
+let execution = try await functions.createExecution(
+    functionId: "<FUNCTION_ID>",
+    scheduled: "2020-10-15T06:38:00.000+00:00" // Optional parameter to schedule function execution
+)
+```
+
+```csharp
+using Appwrite;
+using Appwrite.Enums;
+using Appwrite.Models;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .SetProject(<PROJECT_ID>) // Your project ID
+    .SetSession(""); // The user session to authenticate with
+
+Functions functions = new Functions(client);
+
+Execution result = await functions.CreateExecution(
+    functionId: "<FUNCTION_ID>",
+    scheduled: "2020-10-15T06:38:00.000+00:00" // Optional parameter to schedule function execution
+);
+```
+{% /multicode %}
+
 # Execution details {% #execution-details %}
 
 When you click on an execution, you will be taken to an execution detail screen.
@@ -82,197 +280,4 @@ Logs are not retained forever in order to be compliant with GDPR and other data 
 Free plan organizations will retain logs for 24 hours, Pro plan organizations will retain logs for 7 days.
 
 If you need longer log retention, you can log to an Appwrite collection.
-Remember to configure proper permissions and implement Appwrite Functions or other scheduled tasks to expire and clean up logs.
-
-# Delayed executions {% #delayed-executions %}
-
-Delayed executions are queued to trigger the function for a future date and time. Schedule a execution by navigating to **Your function** > **Executions** > **Execute now** > **Schedule**.
-
-{% only_dark %}
-![Add a SMTP provider](/images/docs/functions/execution/dark/scheduled-execution-function.png)
-{% /only_dark %}
-{% only_light %}
-![Add a SMTP provider](/images/docs/functions/execution/scheduled-execution-function.png)
-{% /only_light %}
-
-```server-nodejs
-const sdk = require('node-appwrite');
-
-const client = new sdk.Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject(<PROJECT_ID>) // Your project ID
-    .setSession(''); // The user session to authenticate with
-
-const functions = new sdk.Functions(client);
-
-const result = await functions.createExecution(
-    '<FUNCTION_ID>', // functionId
-    '2020-10-15T06:38:00.000+00:00' // optional parameter to schedule function execution
-);
-```
-
-```php
-<?php
-
-use Appwrite\Client;
-use Appwrite\Services\Functions;
-
-$client = (new Client())
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject(<PROJECT_ID>) // Your project ID
-    ->setSession(''); // The user session to authenticate with
-
-$functions = new Functions($client);
-
-$result = $functions->createExecution(
-    functionId: '<FUNCTION_ID>',
-    scheduled: '2020-10-15T06:38:00.000+00:00' // optional parameter to schedule function execution
-);
-```
-
-```python
-from appwrite.client import Client
-
-client = Client()
-client.set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-client.set_project(<PROJECT_ID>) # Your project ID
-client.set_session('') # The user session to authenticate with
-
-functions = Functions(client)
-
-result = functions.create_execution(
-    function_id = '<FUNCTION_ID>',
-    scheduled ='2020-10-15T06:38:00.000+00:00' // optional parameter to schedule function execution
-)
-```
-
-```ruby
-require 'appwrite'
-
-include Appwrite
-
-client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-    .set_project('5df5acd0d48c2') # Your project ID
-    .set_session('') # The user session to authenticate with
-
-functions = Functions.new(client)
-
-result = functions.create_execution(
-    function_id: '<FUNCTION_ID>',
-    scheduled: '2020-10-15T06:38:00.000+00:00' // optional parameter to schedule function execution
-)
-```
-
-```deno
-import { Client, Functions, ExecutionMethod } from "https://deno.land/x/appwrite/mod.ts";
-
-const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject(<PROJECT_ID>) // Your project ID
-    .setSession(''); // The user session to authenticate with
-
-const functions = new Functions(client);
-
-const response = await functions.createExecution(
-    '<FUNCTION_ID>', // functionId
-    '2020-10-15T06:38:00.000+00:00' // optional parameter to schedule function execution
-);
-```
-
-```dart
-import 'package:dart_appwrite/dart_appwrite.dart';
-
-Client client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject(<PROJECT_ID>) // Your project ID
-    .setSession(''); // The user session to authenticate with
-
-Functions functions = Functions(client);
-
-Execution result = await functions.createExecution(
-    functionId: '<FUNCTION_ID>',
-    scheduled: '2020-10-15T06:38:00.000+00:00' // optional parameter to schedule function execution
-);
-```
-
-```kotlin
-import io.appwrite.Client
-import io.appwrite.coroutines.CoroutineCallback
-import io.appwrite.services.Functions
-
-val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject(<PROJECT_ID>) // Your project ID
-    .setSession("") // The user session to authenticate with
-
-val functions = Functions(client)
-
-val response = functions.createExecution(
-    functionId = "<FUNCTION_ID>",
-    "2020-10-15T06:38:00.000+00:00" // optional parameter to schedule function execution
-)
-```
-
-```java
-import io.appwrite.Client;
-import io.appwrite.coroutines.CoroutineCallback;
-import io.appwrite.services.Functions;
-
-Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject(<PROJECT_ID>) // Your project ID
-    .setSession(""); // The user session to authenticate with
-
-Functions functions = new Functions(client);
-
-functions.createExecution(
-    "<FUNCTION_ID>", // functionId
-    "2020-10-15T06:38:00.000+00:00" // optional parameter to schedule function execution
-    new CoroutineCallback<>((result, error) -> {
-        if (error != null) {
-            error.printStackTrace();
-            return;
-        }
-
-        System.out.println(result);
-    })
-);
-
-```
-
-```swift
-import Appwrite
-import AppwriteEnums
-
-let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject(<PROJECT_ID>) // Your project ID
-    .setSession("") // The user session to authenticate with
-
-let functions = Functions(client)
-
-let execution = try await functions.createExecution(
-    functionId: "<FUNCTION_ID>",
-    scheduled: "2020-10-15T06:38:00.000+00:00" // optional parameter to schedule function execution
-)
-```
-
-```csharp
-using Appwrite;
-using Appwrite.Enums;
-using Appwrite.Models;
-using Appwrite.Services;
-
-Client client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject(<PROJECT_ID>) // Your project ID
-    .SetSession(""); // The user session to authenticate with
-
-Functions functions = new Functions(client);
-
-Execution result = await functions.CreateExecution(
-    functionId: "<FUNCTION_ID>",
-    scheduled: "2020-10-15T06:38:00.000+00:00" // optional parameter to schedule function execution
-);
-```
+Remember to configure proper permissions and implement Appwrite Functions or other scheduled tasks to expire and clean up logs. 
