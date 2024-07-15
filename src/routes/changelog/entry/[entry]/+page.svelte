@@ -1,10 +1,13 @@
 <script lang="ts">
-    import { FooterNav, MainFooter } from '$lib/components';
+    import { FooterNav, MainFooter, Tooltip } from '$lib/components';
     import PreFooter from '$lib/components/PreFooter.svelte';
     import { Main } from '$lib/layouts';
     import { formatDate } from '$lib/utils/date';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { CHANGELOG_TITLE_SUFFIX } from '$routes/titles';
+    import { type SocialShareOption, socialSharingOptions } from '$lib/constants';
+    import { page } from '$app/stores';
+    import { copy } from '$lib/utils/copy';
 
     export let data;
 
@@ -15,6 +18,37 @@
             ? DEFAULT_HOST + data.cover
             : `${DEFAULT_HOST}/images/open-graph/website.png`
     };
+
+    const sharingOptions = socialSharingOptions.filter(option => option.label !== 'YCombinator');
+
+    enum CopyStatus {
+        Copy = 'Copy URL',
+        Copied = 'Copied!'
+    }
+
+    let copyText = CopyStatus.Copy;
+    async function handleCopy(content: string) {
+        await copy(content);
+
+        copyText = CopyStatus.Copied;
+        setTimeout(() => {
+            copyText = CopyStatus.Copy;
+        }, 1000);
+    }
+
+    async function handleShareClick(shareOption: SocialShareOption){
+        const blogPostUrl = encodeURI(`https://appwrite.io${$page.url.pathname}`)
+
+        if (shareOption.type === 'copy') {
+            await handleCopy(blogPostUrl);
+        } else if (shareOption.type === 'link') {
+            const shareableLink = shareOption.link
+                .replace('{TITLE}', seo.title + '.')
+                .replace('{URL}', blogPostUrl);
+
+            window.open(shareableLink, '_blank', 'noopener, noreferrer');
+        }
+    }
 </script>
 
 <svelte:head>
@@ -52,6 +86,37 @@
                                 </li>
                             </ul>
                             <h1 class="web-title web-u-color-text-primary">{data.title}</h1>
+                            <div class="share-post-section u-flex u-gap-16 u-margin-block-start-16 u-cross-center">
+                                <span
+                                    class="u-font-size-16 u-padding-inline-end-8"
+                                    style:font-weight="500">
+                                    SHARE
+                                </span>
+
+                                <ul class="u-flex u-gap-8">
+                                    {#each sharingOptions as sharingOption}
+                                        <li class="share-list-item">
+                                            <Tooltip placement="bottom" disableHoverableContent={true}>
+                                                <button
+                                                    class="web-icon-button"
+                                                    aria-label={sharingOption.label}
+                                                    on:click="{() => handleShareClick(sharingOption)}"
+                                                >
+                                                    <span class={sharingOption.icon} aria-hidden="true" />
+                                                </button>
+
+                                                <svelte:fragment slot="tooltip">
+                                                    {
+                                                        sharingOption.type === 'copy'
+                                                            ? copyText
+                                                            : `Share on ${sharingOption.label}`
+                                                    }
+                                                </svelte:fragment>
+                                            </Tooltip>
+                                        </li>
+                                    {/each}
+                                </ul>
+                            </div>
                         </header>
                         {#if data.cover}
                             <div class="web-media-container">
@@ -77,3 +142,18 @@
         </div>
     </div>
 </Main>
+
+<style lang="scss">
+    @media (min-width: 1024px) {
+        .web-main-article-header {
+            padding-block-end: 0;
+            border-block-end: unset;
+        }
+    }
+
+    .share-post-section {
+        padding: 16px 0;
+        border-block-end: solid 0.0625rem hsl(var(--web-color-border));
+        border-block-start: solid 0.0625rem hsl(var(--web-color-border));
+    }
+</style>
