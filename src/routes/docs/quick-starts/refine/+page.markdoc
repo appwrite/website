@@ -48,7 +48,7 @@ If you want to integrate Appwrite into an existing Refine app, simply use this c
 ```sh
 npm install @refinedev/appwrite
 ```
-Then follow [this](https://refine.dev/docs/packages/documentation/data-providers/appwrite) guide.
+Then follow [this guide on the Refine documentation site](https://refine.dev/docs/packages/documentation/data-providers/appwrite).
 
 
 {% /section %}
