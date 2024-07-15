@@ -1,26 +1,6 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
-    import { tweened } from 'svelte/motion';
-
     const width = 874;
     const height = 438;
-
-    const initialState = { x1: 0, x2: 0, y1: height, y2: height * 2 };
-    const targetState = { x1: width * 2, x2: width, y1: height / 2, y2: height };
-
-    const state = tweened(initialState);
-
-    const animate = () => {
-        state.set(targetState, { duration: 6000, delay: 1000 }).then(() => {
-            state.set(initialState, { duration: 0 }).then(() => {
-                animate();
-            });
-        });
-    };
-
-    onMount(() => {
-        animate();
-    });
 
     const paths = [
         'M53.9539 435.628V436.128H54.4539H122.654H123.154V435.628V132.776V132.276H122.654H1.28125H0.78125V132.776V192.884V193.384H1.28125H53.9539V435.628ZM45.2844 43.1913C45.2844 67.7464 64.0076 86.4606 89.1317 86.4606C114.256 86.4606 132.979 67.7464 132.979 43.1913C132.979 19.2098 114.251 0.5 89.1317 0.5C64.0121 0.5 45.2844 19.2098 45.2844 43.1913Z',
@@ -37,21 +17,34 @@
     viewBox={`0 0 ${width} ${height}`}
     xmlns="http://www.w3.org/2000/svg"
 >
-    {#each paths as path}
-        <path d={path} class="stroke" stroke="url(#gradient)" />
-        <path d={path} class="stroke" stroke="url(#gradient)" />
+    {#each paths as path, i}
+        <path d={path} class="stroke" stroke="url(#gradient)" style={`--delay:${i * 500}ms`} />
     {/each}
 
     <defs>
-        <linearGradient id="gradient" {...$state}>
-            <stop offset="0%" style="stop-color: white; stop-opacity: 1" />
-            <stop offset="1" style="stop-color: white; stop-opacity: 0" />
-            <stop offset="2" style="stop-color: white; stop-opacity: 1" />
+        <linearGradient
+            id="gradient"
+            x1="0%"
+            y1="0%"
+            x2="0%"
+            y2="100%"
+            gradientUnits="userSpaceOnUse"
+        >
+            <stop stop-color="#fff" stop-opacity="0" />
+            <stop stop-color="#fff" />
+            <stop offset="1" stop-color="#fff" stop-opacity="0" />
+            <stop offset="2" stop-color="#fff" stop-opacity="0" />
         </linearGradient>
     </defs>
 </svg>
 
 <style lang="scss">
+    :root {
+        --starting-dasharray: 1500;
+        --starting-dashoffset: 1500;
+        --ending-dashoffset: -1500;
+    }
+
     @keyframes -global-fade {
         0% {
             mask: linear-gradient(90deg, #000 25%, #000000e6 50%, #00000000) 150% 0 / 400% no-repeat;
@@ -63,16 +56,43 @@
         }
     }
 
+    @keyframes -global-stroke {
+        from {
+            stroke-dashoffset: var(--starting-dashoffset);
+            stroke-dasharray: var(--starting-dasharray);
+        }
+        to {
+            stroke-dashoffset: var(--ending-dashoffset);
+            stroke-dasharray: var(--starting-dasharray);
+        }
+    }
+
+    @keyframes -global-reset {
+        from {
+            stroke-dashoffset: var(--starting-dashoffset);
+            stroke-dasharray: var(--starting-dasharray);
+        }
+    }
+
     .lockup {
-        --stroke-width: 2;
         --stroke-color: #333;
+        --stroke-width: 2;
         --fill: hsl(240 5.7% 10.4%);
-        --duration: 6s;
-        animation: fade 2s ease-in-out;
+        --duration: 18s;
         fill: none;
+        animation: fade 1s ease-in-out;
 
         path {
             stroke-width: var(--stroke-width);
+        }
+
+        .stroke {
+            stroke-dasharray: var(--starting-dasharray);
+            stroke-dashoffset: var(--starting-dashoffset);
+
+            animation:
+                stroke var(--duration) var(--delay) linear forwards infinite,
+                reset 0s var(--delay) forwards infinite;
         }
     }
 </style>
