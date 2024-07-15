@@ -23,7 +23,7 @@
 
     enum CopyStatus {
         Copy = 'Copy URL',
-        Copied = 'Copied!'
+        Copied = 'Copied'
     }
 
     let copyText = CopyStatus.Copy;
@@ -88,7 +88,7 @@
                             <h1 class="web-title web-u-color-text-primary">{data.title}</h1>
                             <div class="share-post-section u-flex u-gap-16 u-margin-block-start-16 u-cross-center">
                                 <span
-                                    class="share-text u-padding-inline-end-8">
+                                    class="web-eyebrow u-padding-inline-end-8" style:color="#adadb0">
                                     SHARE
                                 </span>
 
@@ -156,9 +156,13 @@
         border-block-start: solid 0.0625rem hsl(var(--web-color-border));
     }
 
-    .share-text {
-      font-size: 12px;
-      font-weight: 400;
-      font-family: Aeonik Pro;
+    .web-icon-button {
+      .web-icon-x {
+        font-size: 16px;
+      }
+
+      .web-icon-copy {
+        font-size: 24px;
+      }
     }
 </style>
