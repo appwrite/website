@@ -549,7 +549,7 @@ export default async function ({ req, res }) {
 
     // Set API key
     const client = new Client()
-      .setProject('process.env.APPWRITE_FUNCTION_PROJECT_ID')
+      .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
       .setKey(req.headers['x-appwrite-key']);
 
     const databases = new Databases(client);
@@ -602,7 +602,7 @@ def main(context):
         # Set API key
         client = (
           Client()
-            .set_project("os.environ["APPWRITE_FUNCTION_PROJECT_ID"]")
+            .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
             .set_key(context.req.headers["x-appwrite-key"])
         )
 
@@ -706,7 +706,7 @@ def main(context)
 
         # Set API key
           client = Appwrite::Client.new
-            .set_project("ENV['APPWRITE_FUNCTION_PROJECT_ID']")
+            .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
             .set_key(context.req.headers['x-appwrite-key'])
 
         databases = Appwrite::Database.new(client)
@@ -755,7 +755,7 @@ Future main(final context) async {
         };
 
         final client = Client()
-          .setProject("Platform.environment['APPWRITE_FUNCTION_PROJECT_ID']")
+          .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
           .setKey(context.req.headers['x-appwrite-key']);
 
         final databases = Database(client);
