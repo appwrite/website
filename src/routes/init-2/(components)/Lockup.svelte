@@ -3,6 +3,11 @@
     import { tweened } from 'svelte/motion';
     import { writable } from 'svelte/store';
 
+    const controls = writable({
+        offset: '0',
+        array: '0'
+    });
+
     const width = 874;
     const height = 438;
 
@@ -31,6 +36,24 @@
     ];
 </script>
 
+<div class="controls">
+    <div>
+        <span>Offset</span>
+        <input type="range" step="10" max="10000" bind:value={$controls.offset} />
+    </div>
+
+    <div>
+        <span>Array</span>
+        <input type="range" step="10" max="10000" placeholder="" bind:value={$controls.array} />
+    </div>
+
+    <div>
+        <span>Result</span>
+        <pre>{`--starting-dasharray:${$controls.array};
+--starting-dashoffset:${$controls.offset};`}</pre>
+    </div>
+</div>
+
 <svg
     {width}
     {height}
@@ -40,7 +63,19 @@
 >
     {#each paths as path}
         <path d={path} class="base" />
-        <path d={path} class="stroke" stroke="url(#gradient)" />
+        <path
+            d={path}
+            class="stroke"
+            stroke="url(#gradient)"
+            style="--starting-dasharray:{$controls.array};--ending-dasharray:1200 1800;--starting-dashoffset:{$controls.offset};"
+        />
+        <path
+            d={path}
+            class="stroke"
+            stroke="blue"
+            style="--starting-dasharray:{$controls.array};--ending-dasharray:1200 1800;--starting-dashoffset:{$controls.offset};"
+            style:animation-delay="4.5s"
+        />
     {/each}
 
     <defs>
@@ -58,10 +93,19 @@
 
 <style lang="scss">
     :root {
-        --starting-dasharray: 0 1800;
         --ending-dasharray: 1200 1800;
-        --starting-dashoffset: 0;
-        --ending-dashoffset: -1600;
+    }
+
+    .controls {
+        min-width: 250px;
+        position: fixed;
+        top: 120px;
+        right: 120px;
+        border: 1px solid #333;
+        background-color: #333;
+        padding: 20px;
+        border-radius: 10px;
+        z-index: 1000;
     }
 
     @keyframes -global-fade {
@@ -107,7 +151,7 @@
         .stroke {
             stroke-dasharray: var(--starting-dasharray);
             stroke-dashoffset: var(--starting-dashoffset);
-            animation: stroke var(--duration) linear reverse infinite;
+            // animation: stroke var(--duration) linear reverse infinite;
         }
     }
 </style>
