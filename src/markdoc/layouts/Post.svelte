@@ -186,9 +186,7 @@
                                 {/if}
 
                                 <div class="share-post-section u-flex u-gap-16 u-margin-block-start-16 u-cross-center">
-                                    <span
-                                        class="u-font-size-16 u-padding-inline-end-8"
-                                        style:font-weight="500">
+                                    <span class="share-text u-padding-inline-end-8">
                                         SHARE
                                     </span>
 
@@ -297,5 +295,11 @@
       padding: 16px 0;
       border-block-end: solid 0.0625rem hsl(var(--web-color-border));
       border-block-start: solid 0.0625rem hsl(var(--web-color-border));
+    }
+
+    .share-text {
+      font-size: 12px;
+      font-weight: 400;
+      font-family: Aeonik Pro;
     }
 </style>
