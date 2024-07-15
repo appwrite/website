@@ -1,12 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import { tweened } from 'svelte/motion';
-    import { writable } from 'svelte/store';
-
-    const controls = writable({
-        offset: '0',
-        array: '0'
-    });
 
     const width = 874;
     const height = 438;
@@ -50,9 +44,10 @@
     {/each}
 
     <defs>
-        <linearGradient id="gradient" gradientUnits="objectBoundingBox" x2="0" y2="100%">
+        <linearGradient id="gradient" gradientUnits="userSpaceOnUse">
             <stop stop-color="#fff" stop-opacity="0" />
-            <stop offset="50%" stop-color="#fff" />
+            <stop stop-color="#fff" />
+            <stop offset="1" stop-color="#fff" stop-opacity="0" />
         </linearGradient>
     </defs>
 </svg>
@@ -61,7 +56,7 @@
     :root {
         --starting-dasharray: 0 1800;
         --starting-dashoffset: 0;
-        --ending-dashoffset: -800;
+        --ending-dashoffset: -1600;
         --ending-dasharray: 1200 1800;
     }
 
@@ -91,13 +86,12 @@
         --stroke-color: #333;
         --stroke-width: 2;
         --fill: hsl(240 5.7% 10.4%);
-        --duration: 5s;
+        --duration: 8s;
         fill: none;
         animation: fade 1s ease-out;
 
         path {
             stroke-width: var(--stroke-width);
-            vector-effect: non-scaling-stroke;
         }
 
         .base {
@@ -109,7 +103,7 @@
             stroke-dasharray: var(--starting-dasharray);
             stroke-dashoffset: var(--starting-dashoffset);
 
-            animation: stroke var(--duration) linear infinite;
+            animation: stroke var(--duration) linear reverse infinite;
         }
     }
 </style>
