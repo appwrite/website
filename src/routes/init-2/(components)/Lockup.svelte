@@ -39,12 +39,12 @@
 <div class="controls">
     <div>
         <span>Offset</span>
-        <input type="range" step="10" max="10000" bind:value={$controls.offset} />
+        <input type="range" step="1" max="10000" bind:value={$controls.offset} />
     </div>
 
     <div>
         <span>Array</span>
-        <input type="range" step="10" max="10000" placeholder="" bind:value={$controls.array} />
+        <input type="range" step="1" max="10000" placeholder="" bind:value={$controls.array} />
     </div>
 
     <div>
