@@ -549,9 +549,8 @@ export default async function ({ req, res }) {
 
     // Set API key
     const client = new Client()
-      .setEndpoint('https://cloud.appwrite.io/v1')
       .setProject('process.env.APPWRITE_FUNCTION_PROJECT_ID')
-      .setKey(req.headers['x-appwrite-key']); // API key is automatically provided by Appwrite
+      .setKey(req.headers['x-appwrite-key']);
 
     const databases = new Databases(client);
     const document = await databases.createDocument('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message);
@@ -603,9 +602,8 @@ def main(context):
         # Set API key
         client = (
           Client()
-            .set_endpoint("https://cloud.appwrite.io/v1")
             .set_project("os.environ["APPWRITE_FUNCTION_PROJECT_ID"]")
-            .set_key(context.req.headers["x-appwrite-key"]) API key is automatically provided by Appwrite
+            .set_key(context.req.headers["x-appwrite-key"])
         )
 
         databases = Databases(client)
@@ -659,9 +657,8 @@ return function ($context) {
 
     Set API key
     $client = (new Client())
-         ->setEndpoint('https://cloud.appwrite.io/v1')
          ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
-         ->setKey($context->req->headers['x-appwrite-key']); API key is automatically provided by Appwrite
+         ->setKey($context->req->headers['x-appwrite-key']);
 
     $databases = new Databases($client);
     $document = $databases->createDocument('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID::unique(), $message);
@@ -709,9 +706,8 @@ def main(context)
 
         # Set API key
           client = Appwrite::Client.new
-            .set_endpoint("https://cloud.appwrite.io/v1")
             .set_project("ENV['APPWRITE_FUNCTION_PROJECT_ID']")
-            .set_key(context.req.headers['x-appwrite-key']) API key is automatically provided by Appwrite
+            .set_key(context.req.headers['x-appwrite-key'])
 
         databases = Appwrite::Database.new(client)
         document = databases.create_document('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message)
@@ -759,9 +755,8 @@ Future main(final context) async {
         };
 
         final client = Client()
-          .setEndpoint('https://cloud.appwrite.io/v1')
           .setProject("Platform.environment['APPWRITE_FUNCTION_PROJECT_ID']")
-          .setKey(context.req.headers['x-appwrite-key']); API key is automatically provided by Appwrite
+          .setKey(context.req.headers['x-appwrite-key']);
 
         final databases = Database(client);
         final document = await databases.createDocument('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message);

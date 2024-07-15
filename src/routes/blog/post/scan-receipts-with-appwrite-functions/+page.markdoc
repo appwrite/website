@@ -125,9 +125,8 @@ def main(context):
     # Set API key
     # client = (
     #     Client()
-    #        .set_endpoint("https://cloud.appwrite.io/v1")
     #        .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
-    #        .set_key(os.environ["APPWRITE_API_KEY"]) API key is automatically provided by Appwrite
+    #        .set_key(os.environ["APPWRITE_API_KEY"])
     # )
 
     # You can log messages to the console
@@ -172,9 +171,8 @@ def main(context):
 
     # Set API key
     # client = new Client()
-    #   .set_endpoint('https://cloud.appwrite.io/v1')
     #   .set_project(os.environ['APPWRITE_FUNCTION_PROJECT_ID'])
-    #   .set_key(context.req.headers['x-appwrite-key']); API key is automatically provided by Appwrite
+    #   .set_key(context.req.headers['x-appwrite-key']);
   
     storage = Storage(client)
 
