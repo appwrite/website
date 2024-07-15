@@ -115,7 +115,8 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   Content-Length: <LENGTH>
   -----1234
   Content-Disposition: form-data; name='fileId'   
-  <FILEID>
+
+  <FILE_ID>
   -----1234
   Content-Disposition: form-data; name='file'; filename='image.jpg'
   Content-Type: image/jpg
