@@ -1294,16 +1294,12 @@ By default, we include the following package managers in each runtime.
 * N/A
 {% /table %}
 
-The goal here should be to mention the different ways to authenticate and encourage using the dynamic API keys because it’s the most easiest way to integrate with Appwrite in Appwrite functions. How can you express that here?
-
 # Using Appwrite in a function {% #using-appwrite %} 
 Appwrite can be used in your functions by adding the relevant SDK to your function's dependencies.
 Using dynamic API keys, you can easily integrate with Appwrite and no longer need to generate and export API keys as [environment variables](/docs/advanced/self-hosting/environment-variables).
 Authenticating with Appwrite is done via a dynamic API key, an API key, or a JWT token. 
 
 You can read more about authentication in the [JWT login](/docs/products/auth/jwt) section of the docs.
-
-The goal is to focus on dynamic API keys since that’s the easiest way to authenticate rather than creating a key manually.
 
 ## Using with dynamic API key {% #using-dynamic-api-key %}
 Dynamic API keys ignore permissions and operate without sessions.
