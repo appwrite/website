@@ -38,24 +38,26 @@
     xmlns="http://www.w3.org/2000/svg"
 >
     {#each paths as path, i}
-        <path d={path} class="stroke" stroke="url(#gradient)" style={`--delay:${i * 500}ms`} />
+        <path d={path} class="base" />
+        <path d={path} class="stroke" stroke="white" style={`animation-delay:${i * 500}ms`} />
+        <path d={path} class="stroke" stroke="white" style={`animation-delay:${i * 1000}ms`} />
     {/each}
 
     <defs>
-        <linearGradient id="gradient" gradientUnits="userSpaceOnUse" {...$state}>
+        <linearGradient id="gradient" gradientUnits="userSpaceOnUse">
             <stop stop-color="#fff" stop-opacity="0" />
             <stop stop-color="#fff" />
             <stop offset="1" stop-color="#fff" stop-opacity="0" />
-            <stop offset="2" stop-color="#fff" stop-opacity="0" />
         </linearGradient>
     </defs>
 </svg>
 
 <style lang="scss">
     :root {
-        --starting-dasharray: 1500;
-        --starting-dashoffset: 1500;
-        --ending-dashoffset: -1500;
+        --starting-dasharray: 0 1800;
+        --ending-dasharray: 300 1800;
+        --starting-dashoffset: 0;
+        --ending-dashoffset: -800;
     }
 
     @keyframes -global-fade {
@@ -70,28 +72,24 @@
     }
 
     @keyframes -global-stroke {
-        from {
-            stroke-dashoffset: var(--starting-dashoffset);
-            stroke-dasharray: var(--starting-dasharray);
-        }
         to {
             stroke-dashoffset: var(--ending-dashoffset);
-            stroke-dasharray: var(--starting-dasharray);
+            stroke-dasharray: var(--ending-dasharray);
         }
     }
 
-    @keyframes -global-reset {
-        from {
-            stroke-dashoffset: var(--starting-dashoffset);
-            stroke-dasharray: var(--starting-dasharray);
-        }
-    }
+    // @keyframes -global-reset {
+    //     to {
+    //         stroke-dashoffset: var(--ending-dashoffset);
+    //         //stroke-dasharray: var(--starting-dasharray);
+    //     }
+    // }
 
     .lockup {
         --stroke-color: #333;
         --stroke-width: 2;
         --fill: hsl(240 5.7% 10.4%);
-        --duration: 18s;
+        --duration: 3s;
         fill: none;
         animation: fade 1s ease-out;
 
@@ -99,13 +97,16 @@
             stroke-width: var(--stroke-width);
         }
 
+        .base {
+            stroke: var(--stroke-color);
+            fill: var(--fill);
+        }
+
         .stroke {
             stroke-dasharray: var(--starting-dasharray);
             stroke-dashoffset: var(--starting-dashoffset);
 
-            animation:
-                stroke var(--duration) var(--delay) ease-out forwards infinite,
-                reset 0s var(--delay) forwards infinite;
+            animation: stroke var(--duration) linear reverse infinite;
         }
     }
 </style>
