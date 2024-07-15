@@ -21,7 +21,7 @@ export type SocialShareOption = {
     type: 'link' | 'copy';
 };
 
-export const sharingOptions: Array<SocialShareOption> = [
+export const socialSharingOptions: Array<SocialShareOption> = [
     {
         icon: 'web-icon-x',
         label: 'Twitter',
