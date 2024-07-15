@@ -36,24 +36,6 @@
     ];
 </script>
 
-<div class="controls">
-    <div>
-        <span>Offset</span>
-        <input type="range" step="1" max="10000" bind:value={$controls.offset} />
-    </div>
-
-    <div>
-        <span>Array</span>
-        <input type="range" step="1" max="10000" placeholder="" bind:value={$controls.array} />
-    </div>
-
-    <div>
-        <span>Result</span>
-        <pre>{`--starting-dasharray:${$controls.array};
---starting-dashoffset:${$controls.offset};`}</pre>
-    </div>
-</div>
-
 <svg
     {width}
     {height}
@@ -61,51 +43,26 @@
     viewBox={`0 0 ${width} ${height}`}
     xmlns="http://www.w3.org/2000/svg"
 >
-    {#each paths as path}
+    {#each paths as path, i}
         <path d={path} class="base" />
-        <path
-            d={path}
-            class="stroke"
-            stroke="url(#gradient)"
-            style="--starting-dasharray:{$controls.array};--ending-dasharray:1200 1800;--starting-dashoffset:{$controls.offset};"
-        />
-        <path
-            d={path}
-            class="stroke"
-            stroke="blue"
-            style="--starting-dasharray:{$controls.array};--ending-dasharray:1200 1800;--starting-dashoffset:{$controls.offset};"
-            style:animation-delay="4.5s"
-        />
+        <path d={path} class="stroke" stroke="url(#gradient)" />
+        <path d={path} class="stroke" stroke="url(#gradient)" />
     {/each}
 
     <defs>
-        <linearGradient
-            id="gradient"
-            gradientUnits="objectBoundingBox"
-            gradientTransform="rotate(85)"
-        >
-            <stop stop-color="#fff" stop-opacity="20%" />
-            <stop offset="50%" stop-color="#fff" stop-opacity="80%" />
-            <stop offset="100%" stop-color="#fff" stop-opacity="20%" />
+        <linearGradient id="gradient" gradientUnits="objectBoundingBox" x2="0" y2="100%">
+            <stop stop-color="#fff" stop-opacity="0" />
+            <stop offset="50%" stop-color="#fff" />
         </linearGradient>
     </defs>
 </svg>
 
 <style lang="scss">
     :root {
+        --starting-dasharray: 0 1800;
+        --starting-dashoffset: 0;
+        --ending-dashoffset: -800;
         --ending-dasharray: 1200 1800;
-    }
-
-    .controls {
-        min-width: 250px;
-        position: fixed;
-        top: 120px;
-        right: 120px;
-        border: 1px solid #333;
-        background-color: #333;
-        padding: 20px;
-        border-radius: 10px;
-        z-index: 1000;
     }
 
     @keyframes -global-fade {
@@ -136,7 +93,7 @@
         --fill: hsl(240 5.7% 10.4%);
         --duration: 5s;
         fill: none;
-        animation: fade 3s ease-out;
+        animation: fade 1s ease-out;
 
         path {
             stroke-width: var(--stroke-width);
@@ -151,7 +108,8 @@
         .stroke {
             stroke-dasharray: var(--starting-dasharray);
             stroke-dashoffset: var(--starting-dashoffset);
-            // animation: stroke var(--duration) linear reverse infinite;
+
+            animation: stroke var(--duration) linear infinite;
         }
     }
 </style>
