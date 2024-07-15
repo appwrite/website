@@ -38,16 +38,20 @@
     viewBox={`0 0 ${width} ${height}`}
     xmlns="http://www.w3.org/2000/svg"
 >
-    {#each paths as path, i}
+    {#each paths as path}
         <path d={path} class="base" />
-        <path d={path} class="stroke" stroke="url(#gradient)" />
         <path d={path} class="stroke" stroke="url(#gradient)" />
     {/each}
 
     <defs>
-        <linearGradient id="gradient" gradientUnits="objectBoundingBox" x2="0" y2="100%">
-            <stop stop-color="#fff" stop-opacity="0" />
-            <stop offset="50%" stop-color="#fff" />
+        <linearGradient
+            id="gradient"
+            gradientUnits="objectBoundingBox"
+            gradientTransform="rotate(85)"
+        >
+            <stop stop-color="#fff" stop-opacity="20%" />
+            <stop offset="50%" stop-color="#fff" stop-opacity="80%" />
+            <stop offset="100%" stop-color="#fff" stop-opacity="20%" />
         </linearGradient>
     </defs>
 </svg>
@@ -76,9 +80,6 @@
             stroke-dashoffset: var(--starting-dashoffset);
             stroke-dasharray: var(--starting-dasharray);
         }
-        // 50% {
-        //     stroke-dasharray: var(--middle-dasharray);
-        // }
         100% {
             stroke-dashoffset: var(--ending-dashoffset);
             stroke-dasharray: var(--ending-dasharray);
@@ -91,7 +92,7 @@
         --fill: hsl(240 5.7% 10.4%);
         --duration: 5s;
         fill: none;
-        animation: fade 1s ease-out;
+        animation: fade 3s ease-out;
 
         path {
             stroke-width: var(--stroke-width);
@@ -105,8 +106,7 @@
 
         .stroke {
             stroke-dasharray: var(--starting-dasharray);
-            stroke-dashoffset: 0;
-
+            stroke-dashoffset: var(--starting-dashoffset);
             animation: stroke var(--duration) linear reverse infinite;
         }
     }
