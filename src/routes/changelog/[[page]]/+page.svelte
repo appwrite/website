@@ -7,11 +7,12 @@
     import ChangelogEntry from '../ChangelogEntry.svelte';
     import { page } from '$app/stores';
     import { CHANGELOG_KEY } from '../utils';
+    import { TITLE_SUFFIX } from '$routes/titles';
 
     export let data;
 
     const seo = {
-        title: 'Changelog',
+        title: 'Changelog' + TITLE_SUFFIX,
         description: DEFAULT_DESCRIPTION,
         ogImage: `${DEFAULT_HOST}/images/open-graph/website.png`
     };
