@@ -8,37 +8,15 @@ Storage buckets are a group of files, similar to collections in Appwrite Databas
 Buckets let you limit file size and extensions, whether or not to encrypt the files, and more.
 
 # Create Bucket {% #create-bucket %}
-You can create your bucket from the Appwrite Console or a [Server SDK](/docs/sdks#server). You can also create buckets using the [CLI](/docs/tooling/command-line/installation), requiring only a single [command](/docs/tooling/command-line/buckets) to create buckets and handle server-side tasks with buckets and storage.
+You can create your bucket from the Appwrite Console, a [Server SDK](/docs/sdks#server), or the [CLI](/docs/tooling/command-line/buckets).
 
-# CLI {% #cli %}
+# Using the CLI {% #using-the-cli %}
 
-{% info title="CLI setup" %}
-Before you can deploy with the Appwrite CLI, make sure you've [installed and initialized](/docs/tooling/command-line/installation) the CLI and [logged-in](/docs/tooling/command-line/installation#get-started) into your Appwrite account.
-{% /info %}
+Using the CLI, you can also create a bucket and get, update, and delete it, which you can also accomplish by updating the `appwrite.json` file. However, you cannot control file access by configuring bucket access to users.
 
-To manually deploy your Appwrite buckets, you need to pull in your current Appwrite buckets by using the following command:
-
-```bash
-appwrite pull buckets
-```
-
-Push any configurations or changes you made to the generated code by using the following command:
-
-```bash
-appwrite push buckets
-```
 {% arrow_link href="/docs/tooling/command-line/buckets#commands" %}
 Learn more about the CLI buckets commands
 {% /arrow_link %}
-
-## Overwrite warning {% #overwrite-warning %} 
-
-If you made changes in the Appwrite Console that are different from your `appwrite.json`, using the CLI push command will overwrite your console changes. Update your `appwrite.json` manually before pushing.
-
-{% arrow_link href="/docs/tooling/command-line/buckets#appwritejson" %}
-Learn more about appwrite.json
-{% /arrow_link %}
-
 
 {% tabs %}
 {% tabsitem #console title="Console" %}

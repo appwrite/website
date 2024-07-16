@@ -1,23 +1,33 @@
 ---
 layout: article
-title: Deploy teams with CLI 2.0
+title: Deploy teams with CLI
 description: Efficiently deploy your Appwrite teams using the Command-Line Tool (CLI). 
 ---
 
-The Appwrite CLI can create teams to organize users. Teams can be used to grant access [permissions](https://appwrite.io/docs/products/auth/teams#permissions) to a group of users. Install and initialize CLI Appwrite [here](/docs/tooling/command-line/installation#Installation).
+{% partial file="cli-disclaimer.md" /%}
+
+The Appwrite CLI can create teams to organize users. Teams can be used to confgiure [permissions](https://appwrite.io/docs/products/auth/teams#permissions) to a group of users.
+
+# Initialize team {% #initialize-team %}
+
+Create a new team using the following command:
+
+```sh
+appwrite init teams
+```
 
 # Pull team {% #pull-team %}
 
-You can pull your Appwrite team's customizable settings using the `pull` command in the folder holding your `appwrite.json` file.
+You can also pull your existing Appwrite teams from the Appwrite Console using the `pull` command in the folder containing your `appwrite.json` file.
 
 ```sh
 appwrite pull teams
 ```
 
-# Appwrite.json {% #appwritejson %}
-After pulling your Appwrite function, your `Appwrite.json` file should look similar to the following:
+# appwrite.json {% #appwritejson %}
+After [initializing](/docs/tooling/command-line/installation#Initialization) your Appwrite project and pulling your existing buckets, your `appwrite.json` file should look similar to the following:
 
-```
+```json
 {
     "projectId": "<PROJECT_ID>",
     "teams": [
@@ -42,7 +52,7 @@ After pulling your Appwrite function, your `Appwrite.json` file should look simi
 
 # Push team {% #push-teams %}
 
-To push the changes you made inside your `appwrite.json` file, use the `push` command in the folder holding your `appwrite.json` file.
+{% partial file="cli-push-command.md" /%}
 
 ```sh
 appwrite push teams
@@ -50,7 +60,7 @@ appwrite push teams
 
 # Commands {% #commands %}
 
-The team's command allows you to group users of your project and to enable them to share read and write access to your project resources. Appwrite database CLI commands generally follow the following syntax:
+The team's command allows you to group users of your project and enable them to share read and write access to your project resources. Appwrite team CLI commands generally follow the following syntax:
 
 ```sh
 appwrite teams [COMMAND] [OPTIONS]
@@ -81,8 +91,8 @@ appwrite teams [COMMAND] [OPTIONS]
 * `listMemberships [options]`         
 * Use this endpoint to list a team's members using the team's ID. All team members have read access to this endpoint.
 ---  
-* `createMembership [options]`        
-* Invite a new member to join your team. Provide an ID for existing users, or invite unregistered users using an email or phone number. If initiated from a Client SDK, Appwrite will send an email or sms with a link to join the team to the invited user, and an account will be created for them if one doesn't exist. If initiated from a Server SDK, the new member will be added automatically to the team.  You only need to provide one of a user ID, email, or phone number. Appwrite will prioritize accepting the user ID > email > phone number if you provide more than one of these parameters.  Use the 'url' parameter to redirect the user from the invitation email to your app. After the user is redirected, use the [Update Team Membership Status](https://appwrite.io/docs/references/cloud/client-web/teams#updateMembershipStatus) endpoint to allow the user to accept the invitation to the team.   Please note that to avoid a [Redirect Attack](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.md)   Appwrite will accept the only redirect URLs under the domains you have added as a platform on the Appwrite Console.
+* `createMembership [options]`
+* Invite a new member to join your team. Provide an ID for existing users, or invite unregistered users using an email or phone number. If initiated from a Client SDK, Appwrite will send an email or sms with a link to join the team to the invited user, and an account will be created for them if one doesn't exist. If initiated from a Server SDK, the new member will be added automatically to the team. You only need to provide one of a user ID, email, or phone number. Appwrite will prioritize accepting the user ID > email > phone number if you provide more than one of these parameters. Use the 'url' parameter to redirect the user from the invitation email to your app. After the user is redirected, use the [Update Team Membership Status](https://appwrite.io/docs/references/cloud/client-web/teams#updateMembershipStatus) endpoint to allow the user to accept the invitation to the team.   Please note that to avoid a [Redirect Attack](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.md)   Appwrite will accept the only redirect URLs under the domains you have added as a platform on the Appwrite Console.    
 ---
 * `getMembership [options]`           
 * Get a team member by the membership unique id. All team members have read access for this resource.
@@ -94,7 +104,7 @@ appwrite teams [COMMAND] [OPTIONS]
 * This endpoint allows a user to leave a team or for a team owner to delete the membership of any other team member. You can also use this endpoint to delete a user membership even if it is not accepted.
 ---
 * `updateMembershipStatus [options]`  
-* Use this endpoint to allow a user to accept an invitation to join a team after being redirected back to your app from the invitation email received by the user.  If the request is successful, a session for the user is automatically created.
+* Use this endpoint to allow a user to accept an invitation to join a team after being redirected back to your app from the invitation email received by the user. If the request is successful, a session for the user is automatically created.
 ---
 * `getPrefs [options]`                
 * Get the team's shared preferences by its unique ID. If a preference doesn't need to be shared by all team members, prefer storing them in [user preferences](https://appwrite.io/docs/references/cloud/client-web/account#getPrefs).

@@ -266,30 +266,9 @@ let topic = try await messaging.createTopic(
 {% /tabsitem %}
 {% /tabs %}
 
-# CLI {% #CLI %}
+# Using the CLI {% #using-the-CLI %}
 
-{% info title="CLI setup" %}
-Before you can deploy with the Appwrite CLI, make sure you've [installed and initialized](/docs/tooling/command-line/installation) the CLI and [logged-in](/docs/tooling/command-line/installation#get-started) into your Appwrite account.
-{% /info %}
-
-To manually deploy your Appwrite topics, you need to pull in your current Appwrite topics by using the following command:
-
-```bash
-appwrite pull topics
-```
-
-Push any configurations or changes you made to the generated code by using the following command:
-
-```bash
-appwrite push topics
-```
-{% arrow_link href="/docs/tooling/command-line/topics#commands" %}
-Learn more about the CLI topics commands
-{% /arrow_link %}
-
-## Overwrite warning {% #overwrite-warning %} 
-
-If you made changes in the Appwrite Console that are different from your `appwrite.json`, using the CLI push command will overwrite your console changes. Update your `appwrite.json` manually before pushing.
+You can also create a topic using the CLI, along with being able to get, delete, and update a topic. You can also accomplish this by configuring with the `appwrite.json` file, but you cannot set or update any permissions.
 
 {% arrow_link href="/docs/tooling/command-line/topics#appwritejson" %}
 Learn more about appwrite.json

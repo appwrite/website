@@ -9,8 +9,9 @@ The terms collections and documents are used because the Appwrite JSON REST API 
 That said, Appwrite is designed to support both SQL and NoSQL database adapters like MariaDB, MySQL, or MongoDB in future versions.
 
 # Create collection {% #create-collection %}
-You can create collections using the Appwrite Console or a [Server SDK](/docs/sdks#server).
+You can create collections using the Appwrite Console, a [Server SDK](/docs/sdks#server), or using the [CLI](/docs/tooling/command-line/installation).
 {% tabs %}
+
 {% tabsitem #console title="Console" %}
 You can create a collection by heading to the **Databases** page, navigate to a [database](/docs/products/databases/databases), and click **Create collection**.
 
@@ -223,7 +224,18 @@ let collection = try await databases.createCollection(
 
 You can also configure **permissions** in the `createCollection` method, learn more about the `createCollection` in the [API references](/docs/references).
 {% /tabsitem %}
+
 {% /tabs %}
+
+
+## Using the CLI {% #using-the-cli %}
+
+You can also create your collections and update, get, and delete them using CLI commands. Using the [appwrite.json](/docs/tooling/command-line/collections#appwritejson) file, you can configure your collections attributes; you can also configure the data size limit, toggle if the data is required, and toggle if it's an array of data. Configuring collection-level permissions cannot be done using the CLI but instead through the Appwrite Console.
+
+{% arrow_link href="/docs/tooling/command-line/collections#commands" %}
+Learn more about the CLI collections commands
+{% /arrow_link %}
+
 
 # Permissions {% #permissions %}
 Appwrite uses permissions to control data access.
@@ -274,31 +286,3 @@ The following indexes are currently supported:
 | `fulltext` | For searching within string attributes. Required for the [search query method](/docs/products/databases/queries#query-class).     |
 
 You can create an index by navigating to your collection's **Indexes** tab or by using your favorite [Server SDK](/docs/sdks#server).
-
-# CLI {% #cli %}
-
-{% info title="CLI setup" %}
-Before you can deploy with the Appwrite CLI, make sure you've [installed and initialized](/docs/tooling/command-line/installation) the CLI and [logged-in](/docs/tooling/command-line/installation#get-started) into your Appwrite account.
-{% /info %}
-
-```bash
-appwrite pull collections
-```
-
-Push any configurations or changes you made to the generated code by using the following command:
-
-```bash
-appwrite push collections
-```
-
-{% arrow_link href="/docs/tooling/command-line/collections#commands" %}
-Learn more about the CLI collections commands
-{% /arrow_link %}
-
-## Overwrite warning {% #overwrite-warning %} 
-
-If you made changes in the Appwrite Console that are different from your `appwrite.json`, using the CLI push command will overwrite your console changes. Update your `appwrite.json` manually before pushing.
-
-{% arrow_link href="/docs/tooling/command-line/collections#appwritejson" %}
-Learn more about appwrite.json
-{% /arrow_link %}
