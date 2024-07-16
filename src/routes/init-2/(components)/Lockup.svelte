@@ -1,26 +1,6 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
-    import { tweened } from 'svelte/motion';
-
     const width = 874;
     const height = 438;
-
-    const initialState = { y2: height };
-    const targetState = { y2: 0 };
-
-    const state = tweened(initialState);
-
-    const animate = () => {
-        state.set(targetState, { duration: 4000 }).then(() => {
-            state.set(initialState, { duration: 0 }).then(() => {
-                animate();
-            });
-        });
-    };
-
-    onMount(() => {
-        animate();
-    });
 
     const paths = [
         'M53.9539 435.628V436.128H54.4539H122.654H123.154V435.628V132.776V132.276H122.654H1.28125H0.78125V132.776V192.884V193.384H1.28125H53.9539V435.628ZM45.2844 43.1913C45.2844 67.7464 64.0076 86.4606 89.1317 86.4606C114.256 86.4606 132.979 67.7464 132.979 43.1913C132.979 19.2098 114.251 0.5 89.1317 0.5C64.0121 0.5 45.2844 19.2098 45.2844 43.1913Z',
@@ -40,12 +20,13 @@
     {#each paths as path, i}
         <path d={path} class="base" />
         {#each Array.from({ length: 2 }) as _, index}
+            {@const delay = 3}
             <path
                 d={path}
                 class="stroke"
                 stroke="url(#gradient)"
                 pathLength="1000"
-                style:animation-delay="{index * 4}s"
+                style:animation-delay="{index * delay}s"
             />
         {/each}
     {/each}
@@ -57,13 +38,17 @@
             x1="0%"
             y1="0%"
             x2="0%"
-            y2={height}
+            y2={height * 1.15}
+            gradientTransform="rotate(0)"
         >
             <stop offset="0%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" />
             <stop offset="50%" style="stop-color:rgba(255,255,255,1);stop-opacity:1" />
             <stop offset="51%" style="stop-color:rgba(255,255,255,1);stop-opacity:1" />
             <stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" />
         </linearGradient>
+        <filter id="glow" filterUnits="userSpaceOnUse" {width} {height}>
+            <feGaussianBlur in="color" stdDeviation="1" result="blur" />
+        </filter>
     </defs>
 </svg>
 
@@ -93,15 +78,15 @@
             stroke-dasharray: 0 1000;
             stroke-dashoffset: -1000;
         }
-        20% {
+        25% {
             stroke-dasharray: 600 400;
             stroke-dashoffset: -400;
         }
-        40% {
+        50% {
             stroke-dasharray: 600 400;
             stroke-dashoffset: 0;
         }
-        60% {
+        75% {
             stroke-dasharray: 0 1000;
             stroke-dashoffset: 0;
         }
@@ -134,6 +119,7 @@
             stroke-dashoffset: var(--starting-dashoffset);
             stroke-width: var(--stroke-width);
             animation: stroke var(--duration) linear infinite;
+            filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 0.4));
         }
     }
 </style>
