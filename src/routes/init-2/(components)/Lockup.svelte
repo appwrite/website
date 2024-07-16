@@ -39,22 +39,30 @@
 >
     {#each paths as path, i}
         <path d={path} class="base" />
-        <path d={path} class="stroke" stroke="url(#gradient)" />
-        <path d={path} class="stroke" stroke="url(#gradient)" />
+        <path d={path} class="stroke" stroke="url(#gradient)" pathLength="822" />
+        <path
+            d={path}
+            class="stroke"
+            stroke="url(#gradient)"
+            pathLength="822"
+            style:animation-delay="2.5s"
+        />
     {/each}
 
     <defs>
-        <linearGradient id="gradient" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#fff" stop-opacity="0" />
-            <stop stop-color="#fff" />
-            <stop offset="1" stop-color="#fff" stop-opacity="0" />
+        <linearGradient id="gradient" gradientUnits="userSpaceOnUse" gradientTransform="rotate(45)">
+            <stop offset="0%" stop-color="rgba(255, 255, 255, .1)" />
+            <stop offset="25%" stop-color="rgba(255, 255, 255, 1)" />
+            <stop offset="40%" stop-color="rgba(255, 255, 255, 0)" />
+            <stop offset="65%" stop-color="rgba(255, 255, 255, 1)" />
+            <stop offset="100%" stop-color="rgba(255, 255, 255, 0.8)" />
         </linearGradient>
     </defs>
 </svg>
 
 <style lang="scss">
     :root {
-        --starting-dasharray: 0 1800;
+        --starting-dasharray: 0 1000;
         --starting-dashoffset: 0;
         --ending-dashoffset: -1600;
         --ending-dasharray: 1200 1800;
@@ -64,21 +72,31 @@
         0% {
             mask: linear-gradient(90deg, #000 25%, #000000e6 50%, #00000000) 150% 0 / 400% no-repeat;
             opacity: 0.2;
+            filter: blur(1px);
         }
         100% {
             mask: linear-gradient(90deg, #000 25%, #000000e6 50%, #00000000) 0 / 400% no-repeat;
             opacity: 1;
+            filter: blur(0px);
         }
     }
 
     @keyframes -global-stroke {
         0% {
-            stroke-dashoffset: var(--starting-dashoffset);
-            stroke-dasharray: var(--starting-dasharray);
+            stroke-dasharray: 0 822;
+            stroke-dashoffset: -822;
+        }
+        25% {
+            stroke-dasharray: 200 622;
+            stroke-dashoffset: -622;
+        }
+        75% {
+            stroke-dasharray: 200 622;
+            stroke-dashoffset: 0;
         }
         100% {
-            stroke-dashoffset: var(--ending-dashoffset);
-            stroke-dasharray: var(--ending-dasharray);
+            stroke-dasharray: 0 822;
+            stroke-dashoffset: 0;
         }
     }
 
@@ -86,7 +104,7 @@
         --stroke-color: #333;
         --stroke-width: 2;
         --fill: hsl(240 5.7% 10.4%);
-        --duration: 5s;
+        --duration: 7s;
         fill: none;
         animation: fade 1s ease-out;
 
@@ -97,13 +115,15 @@
         .base {
             stroke: var(--stroke-color);
             fill: var(--fill);
+            stroke-width: var(--stroke-width);
         }
 
         .stroke {
             stroke-dasharray: var(--starting-dasharray);
             stroke-dashoffset: var(--starting-dashoffset);
+            stroke-width: var(--stroke-width);
 
-            animation: stroke var(--duration) linear reverse infinite;
+            animation: stroke var(--duration) linear infinite;
         }
     }
 </style>
