@@ -32,8 +32,7 @@
             x1="0%"
             y1="0%"
             x2="0%"
-            y2={height * 1.15}
-            gradientTransform="rotate(0)"
+            y2="100%"
         >
             <stop offset="0%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" />
             <stop offset="50%" style="stop-color:rgba(255,255,255,1);stop-opacity:1" />
@@ -80,10 +79,7 @@
             stroke-dasharray: 400 600;
             stroke-dashoffset: 0;
         }
-        75% {
-            stroke-dasharray: 0 1000;
-            stroke-dashoffset: 0;
-        }
+        75%,
         100% {
             stroke-dasharray: 0 1000;
             stroke-dashoffset: 0;
