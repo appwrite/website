@@ -1,7 +1,7 @@
-import EmblaRoot from './Embla.svelte';
-import EmblaSlide from './EmblaSlide.svelte';
+import CarouselRoot from './Carousel.svelte';
+import CarouselSlide from './CarouselSlide.svelte';
 
-export const Embla = Object.assign({
-    Root: EmblaRoot,
-    Slide: EmblaSlide
+export const Carousel = Object.assign({
+    Root: CarouselRoot,
+    Slide: CarouselSlide
 });

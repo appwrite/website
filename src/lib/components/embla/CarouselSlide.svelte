@@ -1,4 +1,4 @@
-<li class="embla__slide web-carousel-item">
+<li class="slide web-carousel-item">
     <div class="embla__slide__number">
         <slot />
     </div>
@@ -7,7 +7,7 @@
 <style lang="scss">
     @use '$scss/abstract' as *;
 
-    .embla__slide {
+    .slide {
         cursor: grab;
 
         &:active {

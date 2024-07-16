@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Embla } from '$lib/components/embla';
+    import { Carousel } from '$lib/components/embla';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import ProductsGrid from '$lib/components/ProductsGrid.svelte';
@@ -11,7 +11,7 @@
     export let images: Integration['images'];
     export let isNew: Integration['isNew'];
     export let isPartner: Integration['isPartner'];
-    export let author: Integration['product'];
+    export let product: Integration['product'];
     export let category: Integration['category'];
 
     //const title = 'Integrations' + TITLE_SUFFIX;
@@ -50,18 +50,18 @@
                     </a>
 
                     {#if images.length > 1}
-                        <Embla.Root>
+                        <Carousel.Root>
                             {#each images as slide}
-                                <Embla.Slide>
+                                <Carousel.Slide>
                                     <img
                                         src={slide}
                                         class="web-u-media-ratio-16-9"
                                         alt="cover"
                                         width="472"
                                     />
-                                </Embla.Slide>
+                                </Carousel.Slide>
                             {/each}
-                        </Embla.Root>
+                        </Carousel.Root>
                     {:else}
                         <div
                             class="web-carousel-item"
@@ -121,7 +121,7 @@
                             <dl class="u-flex-vertical u-gap-20">
                                 <div class="u-flex u-main-space-between u-gap-8">
                                     <dt>Developed by</dt>
-                                    <dd class="web-u-color-text-primary">{author.developer}</dd>
+                                    <dd class="web-u-color-text-primary">{product.developer}</dd>
                                 </div>
                                 <div class="web-u-sep-block-end"></div>
                                 {#if isPartner}
