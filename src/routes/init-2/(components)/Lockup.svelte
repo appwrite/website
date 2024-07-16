@@ -115,7 +115,7 @@
         --stroke-color: #333;
         --stroke-width: 2;
         --fill: hsl(240 5.7% 10.4%);
-        --duration: 10s;
+        --duration: 8s;
         fill: none;
         animation: fade 1s ease-out;
 
