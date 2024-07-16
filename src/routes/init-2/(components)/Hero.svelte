@@ -65,11 +65,10 @@
             hsl(240 5.7% 10.4%)
         );
         --width: 2px;
-        --height: 10vh;
-        --font-size: 25vw;
+        --height: 20vh;
         --starting-position: -50vh;
         --duration: 2s;
-        --initial-delay: 4s;
+        --initial-delay: 0s;
     }
 
     @keyframes -global-line {
