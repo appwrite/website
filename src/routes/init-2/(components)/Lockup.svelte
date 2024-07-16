@@ -20,7 +20,7 @@
     {#each paths as path, i}
         <path d={path} class="base" />
         {#each Array.from({ length: 2 }) as _, index}
-            {@const delay = 3}
+            {@const delay = 2.5}
             <path
                 d={path}
                 class="stroke"
@@ -79,11 +79,11 @@
             stroke-dashoffset: -1000;
         }
         25% {
-            stroke-dasharray: 600 400;
-            stroke-dashoffset: -400;
+            stroke-dasharray: 400 600;
+            stroke-dashoffset: -600;
         }
         50% {
-            stroke-dasharray: 600 400;
+            stroke-dasharray: 400 600;
             stroke-dashoffset: 0;
         }
         75% {
