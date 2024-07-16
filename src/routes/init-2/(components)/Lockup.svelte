@@ -10,16 +10,10 @@
     ];
 </script>
 
-<svg
-    {width}
-    {height}
-    class="lockup"
-    viewBox={`0 0 ${width} ${height}`}
-    xmlns="http://www.w3.org/2000/svg"
->
+<svg class="lockup" viewBox={`0 0 ${width} ${height}`} xmlns="http://www.w3.org/2000/svg">
     {#each paths as path, i}
         <path d={path} class="base" />
-        {#each Array.from({ length: 4 }) as _, index}
+        {#each Array.from({ length: 2 }) as _, index}
             {@const delay = 2.5}
             <path
                 d={path}
@@ -103,6 +97,8 @@
         --duration: 8s;
         fill: none;
         animation: fade 1s ease-out;
+        max-width: 60vw;
+        margin: 0 auto;
 
         path {
             stroke-width: var(--stroke-width);
