@@ -7,7 +7,7 @@
 </script>
 
 <div class="hero">
-    <div class="lockup">
+    <div class="container">
         <h1 class="sr-only">Init</h1>
         <Lockup />
         <div class="lines">
@@ -42,6 +42,15 @@
             </div>
 
             <div style:left="800px" style:position="relative">
+                {#each Array.from({ length: 5 }) as _, i}
+                    <div
+                        class="line"
+                        style:left={`${i * 35}px`}
+                        style={`--delay:${getRandomNumber(100, 1600)}ms`}
+                    />
+                {/each}
+            </div>
+            <div style:left="1200px" style:position="relative">
                 {#each Array.from({ length: 5 }) as _, i}
                     <div
                         class="line"
@@ -87,9 +96,12 @@
         align-items: center;
         position: relative;
 
-        .lockup {
+        .container {
             position: relative;
-            overflow: hidden;
+            overflow-y: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             &::before {
                 content: '';
@@ -107,7 +119,7 @@
                 width: 100%;
                 height: 50px;
                 bottom: 0;
-                background: linear-gradient(to bottom, var(--background), rgba(0, 0, 0, 0));
+                background: linear-gradient(to top, var(--background), rgba(0, 0, 0, 0));
                 z-index: -1;
             }
 
