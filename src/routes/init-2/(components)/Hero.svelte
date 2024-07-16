@@ -12,17 +12,17 @@
         <Lockup />
         <div class="lines">
             <div>
-                {#each Array.from({ length: 1 }) as _, i}
+                {#each Array.from({ length: 2 }) as _, i}
                     <div
                         class="line"
-                        style:left={`${i * 175}px`}
+                        style:left={`${i * 150}px`}
                         style={`--delay:${getRandomNumber(100, 500)}ms`}
                     />
                 {/each}
             </div>
 
             <div style:left="320px" style:position="relative">
-                {#each Array.from({ length: 2 }) as _, i}
+                {#each Array.from({ length: 4 }) as _, i}
                     <div
                         class="line"
                         style:left={`${i * 25}px`}
@@ -32,7 +32,7 @@
             </div>
 
             <div style:left="625px" style:position="relative">
-                {#each Array.from({ length: 3 }) as _, i}
+                {#each Array.from({ length: 8 }) as _, i}
                     <div
                         class="line"
                         style:left={`${i * 35}px`}
@@ -42,11 +42,11 @@
             </div>
 
             <div style:left="800px" style:position="relative">
-                {#each Array.from({ length: 1 }) as _, i}
+                {#each Array.from({ length: 5 }) as _, i}
                     <div
                         class="line"
                         style:left={`${i * 35}px`}
-                        style={`--delay:${getRandomNumber(100, 2000)}ms`}
+                        style={`--delay:${getRandomNumber(100, 1600)}ms`}
                     />
                 {/each}
             </div>
@@ -90,6 +90,27 @@
         .lockup {
             position: relative;
             overflow: hidden;
+
+            &::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 50px;
+                top: 0;
+                background: linear-gradient(to bottom, var(--background), rgba(0, 0, 0, 0));
+                z-index: -1;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 50px;
+                bottom: 0;
+                background: linear-gradient(to bottom, var(--background), rgba(0, 0, 0, 0));
+                z-index: -1;
+            }
+
             .lines {
                 position: absolute;
                 inset: 0;

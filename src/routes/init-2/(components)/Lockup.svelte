@@ -5,13 +5,13 @@
     const width = 874;
     const height = 438;
 
-    const initialState = { x1: 0, x2: 0, y1: height, y2: height * 2 };
-    const targetState = { x1: width * 2, x2: width, y1: height / 2, y2: height };
+    const initialState = { y2: height };
+    const targetState = { y2: 0 };
 
     const state = tweened(initialState);
 
     const animate = () => {
-        state.set(targetState, { duration: 6000, delay: 1000 }).then(() => {
+        state.set(targetState, { duration: 4000 }).then(() => {
             state.set(initialState, { duration: 0 }).then(() => {
                 animate();
             });
@@ -39,23 +39,30 @@
 >
     {#each paths as path, i}
         <path d={path} class="base" />
-        <path d={path} class="stroke" stroke="url(#gradient)" pathLength="822" />
-        <path
-            d={path}
-            class="stroke"
-            stroke="url(#gradient)"
-            pathLength="822"
-            style:animation-delay="2.5s"
-        />
+        {#each Array.from({ length: 2 }) as _, index}
+            <path
+                d={path}
+                class="stroke"
+                stroke="url(#gradient)"
+                pathLength="1000"
+                style="animation-delay:{index * 5}s;--initial-delay:{i * 2.5}s"
+            />
+        {/each}
     {/each}
 
     <defs>
-        <linearGradient id="gradient" gradientUnits="userSpaceOnUse" gradientTransform="rotate(45)">
-            <stop offset="0%" stop-color="rgba(255, 255, 255, .1)" />
-            <stop offset="25%" stop-color="rgba(255, 255, 255, 1)" />
-            <stop offset="40%" stop-color="rgba(255, 255, 255, 0)" />
-            <stop offset="65%" stop-color="rgba(255, 255, 255, 1)" />
-            <stop offset="100%" stop-color="rgba(255, 255, 255, 0.8)" />
+        <linearGradient
+            id="gradient"
+            gradientUnits="userSpaceOnUse"
+            x1="0%"
+            y1="0%"
+            x2="0%"
+            y2={height}
+        >
+            <stop offset="0%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" />
+            <stop offset="50%" style="stop-color:rgba(255,255,255,1);stop-opacity:1" />
+            <stop offset="51%" style="stop-color:rgba(255,255,255,1);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" />
         </linearGradient>
     </defs>
 </svg>
@@ -83,19 +90,23 @@
 
     @keyframes -global-stroke {
         0% {
-            stroke-dasharray: 0 822;
-            stroke-dashoffset: -822;
+            stroke-dasharray: 0 1000;
+            stroke-dashoffset: -1000;
         }
-        25% {
-            stroke-dasharray: 400 422;
-            stroke-dashoffset: -422;
+        20% {
+            stroke-dasharray: 600 400;
+            stroke-dashoffset: -400;
         }
-        75% {
-            stroke-dasharray: 200 622;
+        40% {
+            stroke-dasharray: 600 400;
+            stroke-dashoffset: 0;
+        }
+        60% {
+            stroke-dasharray: 0 1000;
             stroke-dashoffset: 0;
         }
         100% {
-            stroke-dasharray: 0 822;
+            stroke-dasharray: 0 1000;
             stroke-dashoffset: 0;
         }
     }
@@ -104,7 +115,7 @@
         --stroke-color: #333;
         --stroke-width: 2;
         --fill: hsl(240 5.7% 10.4%);
-        --duration: 5s;
+        --duration: 10s;
         fill: none;
         animation: fade 1s ease-out;
 
@@ -122,8 +133,7 @@
             stroke-dasharray: var(--starting-dasharray);
             stroke-dashoffset: var(--starting-dashoffset);
             stroke-width: var(--stroke-width);
-
-            animation: stroke var(--duration) linear infinite;
+            animation: stroke var(--duration) 2s linear infinite;
         }
     }
 </style>
