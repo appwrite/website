@@ -48,11 +48,23 @@ export const load = () => {
         };
     });
 
+    const groupedIntegrations = groupBy(integrations, (i) => i.category);
+
+    const integrationsWithDescriptions = Object.entries(groupedIntegrations).map(
+        ([category, integrations]) => {
+            const description = categoryDescriptions.find(
+                ([key]) => key.toLowerCase() === category.toLowerCase()
+            )?.[1];
+            return {
+                category,
+                description,
+                integrations
+            };
+        }
+    );
+
     return {
-        integrations: groupBy(
-            integrations.filter((i) => !i.featured),
-            (i) => i.category
-        ),
+        integrations: integrationsWithDescriptions,
         list: integrations,
         categories: new Set(categories),
         platforms: new Set(platforms),

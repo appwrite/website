@@ -287,8 +287,8 @@
                                     </div>
                                 </section>
 
-                                {#each Object.entries(data.integrations) as [category, items]}
-                                    {#if items.length > 0}
+                                {#each data.integrations as { category, description, integrations }}
+                                    {#if integrations.length > 0}
                                         <section
                                             class="l-max-size-list-cards-section u-flex-vertical u-gap-32"
                                             id={category.toLowerCase()}
@@ -300,17 +300,17 @@
                                                     {category}
                                                 </h2>
                                                 <p class="web-description">
-                                                    {category}
+                                                    {description}
                                                 </p>
                                             </header>
                                             <div
                                                 class="l-max-size-list-cards u-flex-vertical u-gap-32"
                                             >
                                                 <ul class="l-grid-1">
-                                                    {#each items as item, index (`${item.title}-${index}`)}
+                                                    {#each integrations as integration, index (`${integration.title}-${index}`)}
                                                         <li>
                                                             <a
-                                                                href={item.href}
+                                                                href={integration.href}
                                                                 class="web-card is-normal u-height-100-percent"
                                                                 style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                                                             >
@@ -319,15 +319,17 @@
                                                                 >
                                                                     <img
                                                                         class="web-user-box-image is-32px"
-                                                                        src={item.product.avatar}
-                                                                        alt={item.product.developer}
+                                                                        src={integration.product
+                                                                            .avatar}
+                                                                        alt={integration.product
+                                                                            .developer}
                                                                         width="32"
                                                                         height="32"
                                                                     />
                                                                     <h4
                                                                         class="web-main-body-400 web-u-color-text-primary"
                                                                     >
-                                                                        {item.title}
+                                                                        {integration.title}
                                                                     </h4>
                                                                     <span
                                                                         class="icon-arrow-right u-margin-inline-start-auto"
@@ -337,7 +339,7 @@
                                                                 <p
                                                                     class="web-sub-body-400 u-margin-block-start-4"
                                                                 >
-                                                                    {item.description}
+                                                                    {integration.description}
                                                                 </p>
                                                             </a>
                                                         </li>
