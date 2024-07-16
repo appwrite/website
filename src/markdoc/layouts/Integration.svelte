@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Carousel } from '$lib/components/embla';
+    import { Root, Slide } from '$lib/components/carousel';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import ProductsGrid from '$lib/components/ProductsGrid.svelte';
@@ -50,18 +50,18 @@
                     </a>
 
                     {#if images.length > 1}
-                        <Carousel.Root>
+                        <Root>
                             {#each images as slide}
-                                <Carousel.Slide>
+                                <Slide>
                                     <img
                                         src={slide}
                                         class="web-u-media-ratio-16-9"
                                         alt="cover"
                                         width="472"
                                     />
-                                </Carousel.Slide>
+                                </Slide>
                             {/each}
-                        </Carousel.Root>
+                        </Root>
                     {:else}
                         <div
                             class="web-carousel-item"
