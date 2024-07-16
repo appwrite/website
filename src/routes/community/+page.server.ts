@@ -44,16 +44,19 @@ export const load = async () => {
     //     return { issues: mockIssues };
     // }
 
-    // fetch issues from github, appwrite/appwrite repo
+    // fetch issues from GitHub, appwrite/appwrite repo
     const response = await fetch('https://api.github.com/repos/appwrite/appwrite/issues');
     const issues = await response.json();
     if (issues?.message?.includes('API rate limit exceeded')) {
         return { issues: mockIssues };
     }
 
+    // only open issues and since PRs are also issues, exclude them.
+    const onlyIssues = issues.filter((issue) => issue.state === 'open' && !issue.pull_request);
+
     // map issues to our format
     return {
-        issues: issues
+        issues: onlyIssues
             .map((issue: any) => ({
                 number: issue.number,
                 url: issue.html_url,
