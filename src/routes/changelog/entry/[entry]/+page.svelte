@@ -27,8 +27,10 @@
     }
 
     let copyText = CopyStatus.Copy;
-    async function handleCopy(content: string) {
-        await copy(content);
+    async function handleCopy() {
+        const blogPostUrl = encodeURI(`https://appwrite.io${$page.url.pathname}`)
+
+        await copy(blogPostUrl);
 
         copyText = CopyStatus.Copied;
         setTimeout(() => {
@@ -36,18 +38,13 @@
         }, 1000);
     }
 
-    async function handleShareClick(shareOption: SocialShareOption){
+    function getShareLink(shareOption: SocialShareOption): string {
         const blogPostUrl = encodeURI(`https://appwrite.io${$page.url.pathname}`)
+        const shareableLink = shareOption.link
+            .replace('{TITLE}', seo.title + '.')
+            .replace('{URL}', blogPostUrl);
 
-        if (shareOption.type === 'copy') {
-            await handleCopy(blogPostUrl);
-        } else if (shareOption.type === 'link') {
-            const shareableLink = shareOption.link
-                .replace('{TITLE}', seo.title + '.')
-                .replace('{URL}', blogPostUrl);
-
-            window.open(shareableLink, '_blank', 'noopener, noreferrer');
-        }
+        return shareableLink;
     }
 </script>
 
@@ -96,13 +93,25 @@
                                     {#each sharingOptions as sharingOption}
                                         <li class="share-list-item">
                                             <Tooltip placement="bottom" disableHoverableContent={true}>
-                                                <button
-                                                    class="web-icon-button"
-                                                    aria-label={sharingOption.label}
-                                                    on:click="{() => handleShareClick(sharingOption)}"
-                                                >
-                                                    <span class={sharingOption.icon} aria-hidden="true" />
-                                                </button>
+                                                {#if sharingOption.type === 'link'}
+                                                    <a
+                                                        class="web-icon-button"
+                                                        aria-label={sharingOption.label}
+                                                        href={getShareLink(sharingOption)}
+                                                        target="_blank"
+                                                        rel="noopener, noreferrer"
+                                                    >
+                                                        <span class={sharingOption.icon} aria-hidden="true" />
+                                                    </a>
+                                                {:else}
+                                                    <button
+                                                        class="web-icon-button"
+                                                        aria-label={sharingOption.label}
+                                                        on:click="{() => handleCopy()}"
+                                                    >
+                                                        <span class={sharingOption.icon} aria-hidden="true" />
+                                                    </button>
+                                                {/if}
 
                                                 <svelte:fragment slot="tooltip">
                                                     {
