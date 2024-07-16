@@ -19,6 +19,10 @@ export type Integration = {
     images: string[];
 };
 
+const categoryDescriptions = Object.entries({
+    ai: 'Artificial Intelligence integrations'
+});
+
 export const load = () => {
     const integrationsGlob = import.meta.glob('./**/*.markdoc', {
         eager: true
