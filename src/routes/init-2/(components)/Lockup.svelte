@@ -19,7 +19,7 @@
 >
     {#each paths as path, i}
         <path d={path} class="base" />
-        {#each Array.from({ length: 2 }) as _, index}
+        {#each Array.from({ length: 4 }) as _, index}
             {@const delay = 2.5}
             <path
                 d={path}
