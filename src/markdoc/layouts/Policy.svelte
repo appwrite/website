@@ -79,6 +79,7 @@
                     style:inline-size="100vw"
                     style:background-color="hsl(var(--p-body-bg-color) / 0.1)"
                     style:translate="0 {$isHeaderHidden ? '-4.5rem' : '0'}"
+                    style:z-index="1"
                     on:click={() => (showToc = !showToc)}
                 >
                     <span class="web-description">Table of contents</span>
