@@ -205,8 +205,8 @@
                                                         <div class="u-flex u-cross-center u-gap-8">
                                                             <img
                                                                 class="web-user-box-image is-32px"
-                                                                src={item.author.avatar}
-                                                                alt={item.author.name}
+                                                                src={item.product.avatar}
+                                                                alt={item.product.developer}
                                                                 width="32"
                                                                 height="32"
                                                             />
@@ -255,8 +255,8 @@
                                                         >
                                                             <img
                                                                 class="web-user-box-image"
-                                                                src={item.author.avatar}
-                                                                alt={`Avatar for ${item.author.name}`}
+                                                                src={item.product.avatar}
+                                                                alt={`Avatar for ${item.product.developer}`}
                                                                 width="40"
                                                                 height="40"
                                                             />
@@ -277,7 +277,7 @@
                                                             <div
                                                                 class="web-user-box-username web-caption-400 web-u-color-text-secondary"
                                                             >
-                                                                {item.author.username}
+                                                                {item.product.description}
                                                             </div>
                                                         </div>
                                                     </a>
@@ -319,8 +319,8 @@
                                                                 >
                                                                     <img
                                                                         class="web-user-box-image is-32px"
-                                                                        src={item.author.avatar}
-                                                                        alt={item.author.name}
+                                                                        src={item.product.avatar}
+                                                                        alt={item.product.developer}
                                                                         width="32"
                                                                         height="32"
                                                                     />
