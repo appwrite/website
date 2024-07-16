@@ -45,7 +45,7 @@
                 class="stroke"
                 stroke="url(#gradient)"
                 pathLength="1000"
-                style="animation-delay:{index * 5}s;--initial-delay:{i * 2.5}s"
+                style:animation-delay="{index * 4}s"
             />
         {/each}
     {/each}
@@ -133,7 +133,7 @@
             stroke-dasharray: var(--starting-dasharray);
             stroke-dashoffset: var(--starting-dashoffset);
             stroke-width: var(--stroke-width);
-            animation: stroke var(--duration) 2s linear infinite;
+            animation: stroke var(--duration) linear infinite;
         }
     }
 </style>
