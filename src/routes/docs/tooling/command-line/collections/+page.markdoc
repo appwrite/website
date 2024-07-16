@@ -1,26 +1,34 @@
 ---
 layout: article
-title: Deploy collections with CLI 2.0
+title: Deploy collections with CLI
 description: Efficiently deploy your Appwrite collections using the Command-Line Tool (CLI). 
 ---
 
-Create and manage your collections using the CLI 2.0 commands. Install and initialize CLI Appwrite [here](/docs/tooling/command-line/installation#Installation).
+{% partial file="cli-disclaimer.md" /%}
 
-The Appwrite CLI also helps you deploy your project's databases and collections schema from one project to another.
+Create and manage your collections using the CLI commands. The Appwrite CLI also helps you push your project's databases and collections schema from one project to another.
+
+# Initialize collection {% #initialize-collection %}
+
+Create a new collection using the following command:
+
+```sh
+appwrite init collections
+```
 
 # Pull collection {% #pull-collection %}
 
-You can pull your Appwrite collection's and database's customizable settings using the `pull` command in the folder holding your `appwrite.json` file.
+You can also pull your existing Appwrite collections and databases from the Appwrite Console using the `pull` command in the folder containing your `appwrite.json` file.
 
 ```sh
 appwrite pull collections
 ```
 
-# Appwrite.json {% #appwritejson %}
+# appwrite.json {% #appwritejson %}
 
-After pulling your Appwrite function, your `Appwrite.json` file should look similar to the following:
+After [initializing](/docs/tooling/command-line/installation#Initialization) your Appwrite project and pulling your existing buckets, your `appwrite.json` file should look similar to the following:
 
-```
+```json
 {
     "projectId": "<PROJECT_ID>",
     "databases": [
@@ -125,7 +133,7 @@ After pulling your Appwrite function, your `Appwrite.json` file should look simi
 
 # Push collection {% #push-collection %}
 
-To push the changes you made inside your `appwrite.json` file, use the `push` command in the folder holding your `appwrite.json` file.
+{% partial file="cli-push-command.md" /%}
 
 ```sh
 appwrite push collections
