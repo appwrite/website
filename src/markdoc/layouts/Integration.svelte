@@ -11,7 +11,7 @@
     export let images: Integration['images'];
     export let isNew: Integration['isNew'];
     export let isPartner: Integration['isPartner'];
-    export let author: Integration['author'];
+    export let author: Integration['product'];
     export let category: Integration['category'];
 
     //const title = 'Integrations' + TITLE_SUFFIX;
@@ -121,7 +121,7 @@
                             <dl class="u-flex-vertical u-gap-20">
                                 <div class="u-flex u-main-space-between u-gap-8">
                                     <dt>Developed by</dt>
-                                    <dd class="web-u-color-text-primary">{author.name}</dd>
+                                    <dd class="web-u-color-text-primary">{author.developer}</dd>
                                 </div>
                                 <div class="web-u-sep-block-end"></div>
                                 {#if isPartner}

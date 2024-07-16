@@ -10,10 +10,10 @@ export type Integration = {
     isPartner?: boolean;
     platform: string[];
     category: string;
-    author: {
+    product: {
         avatar: string;
-        name: string;
-        username: string;
+        developer: string;
+        description: string;
     };
     href: string;
     images: string[];
