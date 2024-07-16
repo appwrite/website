@@ -87,8 +87,8 @@
             stroke-dashoffset: -822;
         }
         25% {
-            stroke-dasharray: 200 622;
-            stroke-dashoffset: -622;
+            stroke-dasharray: 400 422;
+            stroke-dashoffset: -422;
         }
         75% {
             stroke-dasharray: 200 622;
@@ -104,7 +104,7 @@
         --stroke-color: #333;
         --stroke-width: 2;
         --fill: hsl(240 5.7% 10.4%);
-        --duration: 7s;
+        --duration: 5s;
         fill: none;
         animation: fade 1s ease-out;
 
