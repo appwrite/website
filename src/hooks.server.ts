@@ -18,7 +18,7 @@ const redirecter: Handle = async ({ event, resolve }) => {
     const currentPath = event.url.pathname;
     if (redirectMap.has(currentPath)) {
         return new Response(null, {
-            status: 308,
+            status: 301,
             headers: {
                 location: redirectMap.get(currentPath) ?? ''
             }
