@@ -839,7 +839,7 @@
                                             </p>
                                             <button
                                                 type="submit"
-                                                class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1"
+                                                class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1-and-break-2"
                                             >
                                                 <span>Apply</span>
                                             </button>
@@ -870,8 +870,8 @@
 </Main>
 
 <style lang="scss">
-    @use '$scss/abstract/mixins/border-gradient' as gradients;
-    @use '$scss/abstract/variables/devices' as devices;
+    @use '$scss/abstract/mixins/border-gradient' as *;
+    @use '$scss/abstract/variables/devices' as *;
 
     @keyframes scroll {
         to {
@@ -905,7 +905,7 @@
         }
     }
 
-    @media #{devices.$break1} {
+    @media #{$break1} {
         .web-grid-1-1 {
             display: flex;
             flex-direction: column;
@@ -959,13 +959,13 @@
             opacity: 0.4;
         }
     }
-    @media #{devices.$break1} {
+    @media #{$break1} {
         .e-mobile-fix-1 {
             display: block;
         }
     }
 
-    @media #{devices.$break2open} {
+    @media #{$break3open} {
         .web-grid-1-1 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -973,7 +973,7 @@
     }
 
     /* from 1280px and bugger */
-    @media #{devices.$break3open} {
+    @media #{$break4open} {
         .e-u-padding-block-start-80-desktop {
             padding-block-start: 5rem;
         }
