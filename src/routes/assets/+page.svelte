@@ -68,13 +68,15 @@
                     <h1 class="web-display web-u-color-text-primary">Brand assets</h1>
                     <div class="web-is-only-mobile">
                         <button
-                            class="u-flex u-width-full-line web-u-padding-block-20
-                            web-u-color-text-primary web-u-margin-inline-32-negative
-                           u-margin-block-start-24 web-u-sep-block u-width-full-line"
+                            class="web-u-padding-block-20
+                            web-u-color-text-primary web-is-only-mobile
+                            u-margin-block-start-24 web-u-sep-block u-padding-inline-20 u-margin-inline-negative-20"
+                            style="inline-size: 100vw;"
                            on:click={() => (showToc = !showToc)}
                         >
                             <span
-                                class="web-container u-flex u-width-full-line u-main-space-between u-cross-center"
+                                class="u-flex u-main-space-between u-cross-center"
+                                style="inline-size: 100%;"
                             >
                                 <span class="web-description">Table of contents</span>
                                 <span class="icon-menu-alt-4" aria-hidden="true" />
