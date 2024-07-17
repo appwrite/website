@@ -1,27 +1,3 @@
-<script lang="ts" context="module">
-    export const tribes = [
-        null,
-        'Appwrite',
-        'Flutter',
-        'Svelte',
-        'React',
-        'Vue',
-        'Angular',
-        'Next',
-        'Astro',
-        'Qwik',
-        'Apple',
-        'Android',
-        'Windows',
-        'Linux',
-        'Python',
-        'Dart',
-        'php',
-        'Ruby',
-        'NET'
-    ];
-</script>
-
 <script lang="ts">
     import { browser, dev } from '$app/environment';
     import { goto } from '$app/navigation';
@@ -32,15 +8,11 @@
     import type { TicketVariant } from '../constants';
 
     import type { PageData } from './$types';
-    import TribeToggle from './tribe-toggle.svelte';
 
     export let name = '';
-    export let tribe: string | null = null;
+    export let title = '';
     export let showGitHub = true;
-    export let variant: TicketVariant = 'default';
     $: ({ ticket } = $page.data as PageData);
-
-    const variants: TicketVariant[] = ['default', 'pink', 'rainbow'] as const;
 </script>
 
 <div class="u-flex u-flex-vertical u-gap-4 u-margin-block-start-32">
@@ -58,19 +30,20 @@
     />
 </div>
 
-{#if dev}
-    <label for="variant" class="u-margin-block-start-32 u-block">Ticket variant (DEBUG)</label>
-    <select
-        id="variant"
-        class="u-margin-block-start-4"
-        style:text-transform="capitalize"
-        bind:value={variant}
-    >
-        {#each variants as variant}
-            <option value={variant}>{variant}</option>
-        {/each}
-    </select>
-{/if}
+<div class="u-flex u-flex-vertical u-gap-4 u-margin-block-start-32">
+    <label for="name">Your title</label>
+    <input
+        class="web-input-text"
+        type="text"
+        placeholder="Enter your title"
+        id="title"
+        name="title"
+        required
+        bind:value={title}
+        maxlength="42"
+        disabled={!browser}
+    />
+</div>
 
 <hr />
 
@@ -143,38 +116,9 @@
 {/if}
 <hr />
 
-<h2 class="web-sub-body-500 web-u-color-text-primary">Add your tribe</h2>
-<p class="web-sub-body-500" style:margin-block-start="0.25rem">
-    Customize your Init ticket with your technology.
-</p>
-<div class="tribes">
-    {#each tribes as t}
-        <TribeToggle
-            tribe={t}
-            checked={t === tribe}
-            onClick={() => {
-                tribe = t;
-            }}
-        />
-    {/each}
-</div>
-
 <style lang="scss">
     hr {
         margin-block: 2rem;
         border-block-end: 1px solid hsl(var(--web-color-offset));
-    }
-
-    .tribes {
-        margin-block-start: 1.5rem;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-
-    @media (max-width: 1023px) {
-        .tribes {
-            gap: 0.625rem;
-        }
     }
 </style>

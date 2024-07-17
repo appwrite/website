@@ -167,13 +167,22 @@ export function getTicketVariant(
 export async function getTicketByUser(user: User, f = fetch) {
     const doc = await getTicketDocByUser(user, f);
 
-    return doc as TicketData;
+    const variant = getTicketVariant(doc);
+
+    return {
+        ...doc,
+        variant
+    } as TicketData;
 }
 
 export async function getTicketById(id: string, f = fetch) {
     const doc = await getTicketDocById(id, f);
+    const variant = getTicketVariant(doc);
 
-    return doc as TicketData;
+    return {
+        ...doc,
+        variant
+    } as TicketData;
 }
 
 export function loginGithub() {

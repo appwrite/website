@@ -78,13 +78,13 @@
                 <div class="ticket-2">
                     <Ticket
                         name="Walter"
-                        gh_user="walterob"
+                        title="Engineer"
                         id={1}
                         contributions={getMockContributions()}
                     />
                 </div>
                 <div class="ticket-3">
-                    <Ticket name="Sara" gh_user="sara_k" id={10} />
+                    <Ticket name="Sara" title="Head of Design" id={10} />
                 </div>
             </TicketPreview>
         </div>
