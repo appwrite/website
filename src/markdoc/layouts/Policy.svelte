@@ -71,7 +71,7 @@
                 <header class="web-grid-120-1fr-auto-header">
                     <h1 class="web-title web-u-color-text-primary">{title}</h1>
                 </header>
-                <div class="web-is-only-mobile">
+                <div class="web-is-only-mobile" style={showToc ? 'padding-block-end: 1.5rem;' : ''}>
                     <button
                     class="toc-btn u-position-sticky u-main-space-between u-cross-center
                 web-u-padding-20 web-u-margin-inline-20-negative web-u-color-text-primary web-is-only-mobile
@@ -92,11 +92,9 @@
                     </span>
                 </button>
                 </div>
-                <div class={showToc ? "toc-nav-holder" : ""}>
-                    <TocNav {showToc} />
-                </div>
+                <TocNav bind:showToc />
                 <main class="web-grid-120-1fr-auto-main /web-is-mobile-closed" id="main">
-                    <div class="web-content is-count-headers" class:web-is-mobile-closed={showToc}>
+                    <div class="web-content is-count-headers" class:web-is-mobile-closed={showToc && !showToc}>
                         <!-- svelte-ignore a11y-hidden -->
                         <h2 aria-hidden="true">Introduction</h2>
                         <slot />
@@ -118,9 +116,5 @@
     .toc-btn {
         display: flex;
         transition: translate 0.3s ease;
-    }
-
-    .toc-nav-holder {
-        padding-block-start: 1.5rem;
     }
 </style>

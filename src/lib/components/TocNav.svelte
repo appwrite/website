@@ -97,6 +97,6 @@
                 </svg>
             </span>
         </div>
-        <TocTree tree={$headingsTree} activeHeadingIdxs={$activeHeadingIdxs} {item} />
+        <TocTree tree={$headingsTree} activeHeadingIdxs={$activeHeadingIdxs} {item} bind:showToc />
     </div>
 </aside>
