@@ -7,6 +7,8 @@
     export let item: TableOfContentsElements['item'];
     export let level = 1;
 
+    export let showToc = true;
+
     const {
         toc: {
             helpers: { isActive }
@@ -22,6 +24,7 @@
                     class:is-selected={$isActive(heading.id)}
                     href="#{heading.id}"
                     use:melt={$item(heading.id)}
+                    on:click|preventDefault={() => showToc = !showToc}
                 >
                     <!--  eslint-disable-next-line svelte/no-at-html-tags -->
                     {@html heading.node.innerHTML}
