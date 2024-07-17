@@ -1,6 +1,8 @@
 <script lang="ts">
     import { spring } from 'svelte/motion';
     import Logo from '../(assets)/init-logo.svg';
+    import Shine from '../(assets)/shine.svg';
+    import Noise from '../(assets)/noise.png';
     import type { ContributionsMatrix, TicketData } from '../tickets/constants';
 
     type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
@@ -153,12 +155,10 @@
         <div class="lockup">
             <p class="web-title web-u-color-text-primary">{name?.trim() || '-'}</p>
 
-            {#if title}
-                <p class="web-label">{title}</p>
-            {/if}
+            <p class="web-label">{title}</p>
 
-            <div class="logo">
-                <img src={Logo} alt="init" style:width="80%" />
+            <div class="logo" style:width="100%">
+                <img src={Logo} alt="init" />
             </div>
         </div>
         <div class="stub">
@@ -167,6 +167,8 @@
                 <span>Ticket Number: #{id?.toString().padStart(6, '0')}</span>
             </div>
         </div>
+        <img src={Noise} alt="noise" class="noise" />
+        <img src={Shine} alt="shine" class="shine" />
     </div>
 </div>
 
@@ -180,6 +182,27 @@
         overflow: visible;
 
         perspective: 600px;
+        border-radius: pxToRem(16);
+    }
+
+    .shine {
+        position: absolute;
+        inset: 0;
+
+        height: 100%;
+        width: auto;
+        opacity: 0.4;
+        object-fit: cover;
+    }
+
+    .noise {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0.3;
+        object-fit: cover;
+        mix-blend-mode: hard-light;
     }
 
     .ticket {
@@ -193,10 +216,11 @@
         transform: rotateY(var(--rx)) rotateX(var(--ry));
         -webkit-transform-style: preserve-3d;
         transform-style: preserve-3d;
+        overflow: hidden;
     }
 
     .stub {
-        background: #85dbd8;
+        background: #111;
         width: 150px;
         border-radius: pxToRem(16);
         line-height: 1;
@@ -223,7 +247,7 @@
         --base-width-default: clamp(12rem, 40vw, #{$base-width}rem);
         height: var(--base-width, var(--base-width-default));
         width: calc(var(--base-width, var(--base-width-default)) * 1.5);
-        background-color: #111;
+        background: #111;
 
         padding: pxToRem(24);
         position: relative;
@@ -231,9 +255,13 @@
         overflow: hidden;
 
         .logo {
-            position: relative;
+            position: absolute;
             top: 50%;
-            transform: translateY(-30%);
+            transform: translateY(-25%);
+
+            img {
+                width: 80%;
+            }
         }
     }
 

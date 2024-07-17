@@ -89,7 +89,7 @@
                 </h1>
 
                 <div class="desktop">
-                    <Form bind:name bind:showGitHub />
+                    <Form bind:name bind:title bind:showGitHub />
                 </div>
             </div>
         {:else}
