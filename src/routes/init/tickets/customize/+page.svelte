@@ -9,25 +9,26 @@
     import { slide } from 'svelte/transition';
     import Ticket from '../../(components)/Ticket.svelte';
     import Form from './form.svelte';
-    import type { TicketVariant } from '../constants';
+    import { Drawer } from 'vaul-svelte';
 
     export let data;
 
     let name = data.ticket?.name ?? '';
+    let title = data.ticket?.title ?? '';
     const id = data.ticket?.id ?? 0;
     let tribe: string | undefined = data.ticket?.tribe ?? undefined;
     let showGitHub = data.ticket?.show_contributions ?? true;
     let drawerOpen = false;
     let customizing = false;
-    let variant: TicketVariant = data.ticket.variant ?? 'default';
 
     $: modified = !dequal(
         {
             name: data.ticket?.name,
+            title: data.ticket?.title,
             tribe: data.ticket?.tribe,
             showGitHub: data.ticket?.show_contributions
         },
-        { name, tribe, showGitHub }
+        { name, title, tribe, showGitHub }
     );
 
     async function saveTicket() {
@@ -84,11 +85,11 @@
                     <span>Back</span>
                 </button>
                 <h1 class="web-title web-u-color-text-primary" style:margin-block-start="1.5rem">
-                    Customize ticket<span class="web-u-color-text-accent">_</span>
+                    Customize ticket
                 </h1>
 
                 <div class="desktop">
-                    <Form bind:name bind:tribe bind:showGitHub bind:variant />
+                    <Form bind:name bind:showGitHub />
                 </div>
             </div>
         {:else}
@@ -96,8 +97,12 @@
                 <div class="header">
                     <h1 class="web-title web-u-color-text-primary">
                         Thank you for registering for
-                        <span style:font-weight="500">
-                            init<span class="web-u-color-text-accent">_</span>
+                        <span
+                            style:font-weight="500"
+                            style:-webkit-text-stroke="1px #999"
+                            style:color="transparent"
+                        >
+                            init
                         </span>
                     </h1>
                     <p class="web-label u-margin-block-start-16">
@@ -116,7 +121,9 @@
                     <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
                         <button class="web-button is-full-width is-secondary" on:click={copy}>
                             <div
-                                class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary"
+                                class="web-icon-{$copied
+                                    ? 'check'
+                                    : 'copy'} web-u-color-text-primary"
                             />
                             <span class="text">Copy ticket URL</span>
                         </button>
@@ -137,9 +144,9 @@
             <div class="ticket-holder">
                 <Ticket
                     {...data.ticket}
-                    {variant}
                     {tribe}
                     {name}
+                    {title}
                     contributions={data.streamed.contributions}
                     show_contributions={showGitHub}
                 />
@@ -152,22 +159,22 @@
         <MainFooter />
     </div>
 
-    {#if customizing}
-        <div class="drawer" data-state={drawerOpen ? 'open' : 'closed'}>
-            <button on:click={() => (drawerOpen = !drawerOpen)}>
-                <div class="inner">
-                    <span class="web-label web-u-color-text-primary">Ticket Editor</span>
-                    <span class="web-icon-chevron-down" />
-                </div>
-            </button>
-            {#if drawerOpen}
+    <Drawer.Root>
+        <Drawer.Trigger>
+            <div class="inner">
+                <span class="web-label web-u-color-text-primary">Ticket Editor</span>
+                <span class="web-icon-chevron-down" />
+            </div>
+        </Drawer.Trigger>
+        <Drawer.Portal>
+            <Drawer.Content class="drawer">
                 <hr />
                 <div class="form-wrapper" transition:slide>
-                    <Form bind:name bind:tribe bind:showGitHub bind:variant />
+                    <Form bind:name bind:showGitHub />
                 </div>
-            {/if}
-        </div>
-    {/if}
+            </Drawer.Content>
+        </Drawer.Portal>
+    </Drawer.Root>
 </Main>
 
 <style lang="scss">
@@ -195,10 +202,6 @@
 
     .desktop {
         display: contents;
-    }
-
-    .drawer {
-        display: none;
     }
 
     @media screen and (max-width: 1024px) {
