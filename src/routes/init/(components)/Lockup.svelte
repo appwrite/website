@@ -13,7 +13,7 @@
 <svg class="lockup" viewBox={`0 0 ${width} ${height}`} xmlns="http://www.w3.org/2000/svg">
     {#each paths as path, i}
         <path d={path} class="base" />
-        {#each Array.from({ length: 2 }) as _, index}
+        {#each Array.from({ length: 3 }) as _, index}
             {@const delay = 2.5}
             <path
                 d={path}
@@ -72,11 +72,11 @@
             stroke-dashoffset: -1000;
         }
         25% {
-            stroke-dasharray: 400 600;
-            stroke-dashoffset: -600;
+            stroke-dasharray: 500 500;
+            stroke-dashoffset: -500;
         }
         50% {
-            stroke-dasharray: 400 600;
+            stroke-dasharray: 500 500;
             stroke-dashoffset: 0;
         }
         75%,
