@@ -71,6 +71,12 @@ Server libraries for integrating with Appwrite to build server side integrations
 * [appwrite/sdk-for-dart](https://github.com/appwrite/sdk-for-dart)
 * 
 ---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/go.svg" alt="Go logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/go.svg" alt="Go logo" size="m" /%}{% /only_light %}
+* Go SDK `1.22`
+* [appwrite/sdk-for-go](https://github.com/appwrite/sdk-for-go)
+* 
+---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/python.svg" alt="Python logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/python.svg" alt="Python logo" size="m" /%}{% /only_light %}
 * Python SDK `5.0.2`
@@ -336,6 +342,11 @@ You can discover the available enums in each SDK at the source.
 {% only_light %}{% icon_image src="/images/platforms/php.svg" alt="PHP logo" size="m" /%}{% /only_light %}
 * PHP SDK `11.0.1`
 * [appwrite/sdk-for-php](https://github.com/appwrite/sdk-for-php/tree/dev/src/Appwrite/Enums)
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/go.svg" alt="Go logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/go.svg" alt="Go logo" size="m" /%}{% /only_light %}
+* Go SDK `1.22`
+* [appwrite/sdk-for-go](https://github.com/appwrite/sdk-for-go)
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_light %}
