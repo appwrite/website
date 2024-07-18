@@ -24,7 +24,7 @@
             position: absolute;
             inset-block-start: -100px;
             inset-inline-end: -100px;
-            z-index: -1;
+            z-index: 9;
         }
     }
 </style>
