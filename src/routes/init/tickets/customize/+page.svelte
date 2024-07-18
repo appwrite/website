@@ -45,6 +45,7 @@
             body: JSON.stringify({
                 ticketId,
                 name,
+                title,
                 tribe,
                 showGitHub
             })
