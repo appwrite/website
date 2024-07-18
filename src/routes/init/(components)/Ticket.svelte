@@ -1,8 +1,8 @@
 <script lang="ts">
     import { spring } from 'svelte/motion';
     import Logo from '../(assets)/init-logo.svg';
+    import Lines from '../(assets)/lines-bg.svg';
     import type { ContributionsMatrix, TicketData } from '../tickets/constants';
-    import TicketLines from './TicketLines.svelte';
 
     type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
         contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;
@@ -143,9 +143,6 @@
             0,
             1
         )};
-
-        --background-x: ${$springBackground.x}%;
-        --background-y: ${$springBackground.y}%;
 	`;
 </script>
 
@@ -161,7 +158,7 @@
             </div>
             <div class="shine" />
             <div class="noise" />
-            <TicketLines />
+            <img src={Lines} alt="lines" class="lines" />
         </div>
         <div class="stub">
             <div class="details">
@@ -181,7 +178,7 @@
     @keyframes fade {
         0% {
             opacity: 0;
-            filter: blur(1px);
+            filter: blur(4px);
             transform: rotateX(15deg) rotateY(-10deg);
         }
         100% {
@@ -197,6 +194,7 @@
 
         perspective: 600px;
         animation: fade 1s ease-out;
+        z-index: 100;
     }
 
     .shine,
@@ -252,7 +250,7 @@
         }
 
         .noise {
-            background-position: top right;
+            background-position: bottom right;
         }
 
         .details {
@@ -290,6 +288,17 @@
         border-radius: pxToRem(16);
         overflow: hidden;
 
+        .lines {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.5;
+            mix-blend-mode: hard-light;
+        }
+
         .shine {
             background-size: 150%;
         }
@@ -298,6 +307,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-25%);
+            z-index: 10;
 
             img {
                 width: 80%;

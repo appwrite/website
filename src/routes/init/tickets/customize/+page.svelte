@@ -6,7 +6,7 @@
     import { createCopy } from '$lib/utils/copy';
     import TicketPreview from '$routes/init/(components)/TicketPreview.svelte';
     import { dequal } from 'dequal/lite';
-    import { slide } from 'svelte/transition';
+    import { fade } from 'svelte/transition';
     import Ticket from '../../(components)/Ticket.svelte';
     import Form from './form.svelte';
     import { Drawer } from 'vaul-svelte';
@@ -18,8 +18,6 @@
     const id = data.ticket?.id ?? 0;
     let tribe: string | undefined = data.ticket?.tribe ?? undefined;
     let showGitHub = data.ticket?.show_contributions ?? true;
-    let drawerOpen = false;
-    let customizing = false;
 
     $: modified = !dequal(
         {
@@ -52,11 +50,6 @@
         });
     }
 
-    async function goBack() {
-        customizing = false;
-        saveTicket();
-    }
-
     const ticketUrl = `${$page.url.origin}/init/tickets/${data.ticket.$id}`;
     const { copied, copy } = createCopy(ticketUrl);
     $: twitterText = encodeURIComponent(
@@ -78,68 +71,62 @@
 
 <Main>
     <div class="hero">
-        {#if customizing}
-            <div style:margin-block-start="0.625rem">
-                <button class="web-link is-secondary u-cross-center" on:click={goBack}>
-                    <span class="web-icon-chevron-left" aria-hidden="true" />
-
-                    <span>Back</span>
-                </button>
-                <h1 class="web-title web-u-color-text-primary" style:margin-block-start="1.5rem">
-                    Customize ticket
-                </h1>
-
-                <div class="desktop">
-                    <Form bind:name bind:title bind:showGitHub />
-                </div>
-            </div>
-        {:else}
-            <div class="desktop-left">
-                <div class="header">
-                    <h1 class="web-title web-u-color-text-primary">
-                        Thank you for registering for
-                        <span
-                            style:font-weight="500"
-                            style:-webkit-text-stroke="1px #999"
-                            style:color="transparent"
-                        >
-                            init
-                        </span>
-                    </h1>
-                    <p class="web-label u-margin-block-start-16">
-                        You have received ticket #{id?.toString().padStart(6, '0')}
-                    </p>
-                </div>
-
-                <div class="info">
-                    <button
-                        on:click={() => (customizing = true)}
-                        class="web-button is-full-width u-margin-block-start-32"
+        <div class="desktop-left">
+            <div class="header">
+                <h1 class="web-title web-u-color-text-primary">
+                    Thank you for registering for
+                    <span
+                        style:font-weight="500"
+                        style:-webkit-text-stroke="1px #999"
+                        style:color="transparent"
                     >
+                        init
+                    </span>
+                </h1>
+                <p class="web-label u-margin-block-start-16">
+                    You have received ticket #{id?.toString().padStart(6, '0')}
+                </p>
+            </div>
+            <div class="info">
+                <Drawer.Root direction="bottom">
+                    <Drawer.Trigger class="web-button is-full-width u-margin-block-start-32">
                         <span class="text">Customize ticket</span>
-                    </button>
+                    </Drawer.Trigger>
 
-                    <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
-                        <button class="web-button is-full-width is-secondary" on:click={copy}>
-                            <div
-                                class="web-icon-{$copied
-                                    ? 'check'
-                                    : 'copy'} web-u-color-text-primary"
-                            />
-                            <span class="text">Copy ticket URL</span>
-                        </button>
-                        <a
-                            class="web-button is-full-width is-secondary"
-                            href="https://twitter.com/intent/tweet?text={twitterText}"
-                            target="_blank"
-                        >
-                            <div class="web-icon-x web-u-color-text-primary" />
-                            <span class="text">Share your ticket</span>
-                        </a>
-                    </div>
+                    <Drawer.Content
+                        style="position:fixed;background-color: #333;inset:0;max-width:33%;z-index:100;"
+                    >
+                        <div class="form-wrapper" transition:fade>
+                            <Form bind:name bind:title bind:showGitHub />
+                        </div>
+                    </Drawer.Content>
+                    <Drawer.Overlay
+                        style=" background-color: hsl(var(--web-color-background));
+            backdrop-filter: blur(40px);
+            position: fixed;
+            inset: 0;
+            z-index: 10;"
+                    />
+                </Drawer.Root>
+
+                <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
+                    <button class="web-button is-full-width is-secondary" on:click={copy}>
+                        <div
+                            class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary"
+                        />
+                        <span class="text">Copy ticket URL</span>
+                    </button>
+                    <a
+                        class="web-button is-full-width is-secondary"
+                        href="https://twitter.com/intent/tweet?text={twitterText}"
+                        target="_blank"
+                    >
+                        <div class="web-icon-x web-u-color-text-primary" />
+                        <span class="text">Share your ticket</span>
+                    </a>
                 </div>
             </div>
-        {/if}
+        </div>
 
         <TicketPreview>
             <div class="ticket-holder">
@@ -159,23 +146,6 @@
         <FooterNav />
         <MainFooter />
     </div>
-
-    <Drawer.Root>
-        <Drawer.Trigger>
-            <div class="inner">
-                <span class="web-label web-u-color-text-primary">Ticket Editor</span>
-                <span class="web-icon-chevron-down" />
-            </div>
-        </Drawer.Trigger>
-        <Drawer.Portal>
-            <Drawer.Content class="drawer">
-                <hr />
-                <div class="form-wrapper" transition:slide>
-                    <Form bind:name bind:showGitHub />
-                </div>
-            </Drawer.Content>
-        </Drawer.Portal>
-    </Drawer.Root>
 </Main>
 
 <style lang="scss">
@@ -201,15 +171,7 @@
         }
     }
 
-    .desktop {
-        display: contents;
-    }
-
     @media screen and (max-width: 1024px) {
-        .desktop {
-            display: none;
-        }
-
         .drawer {
             display: flex;
             flex-direction: column;
