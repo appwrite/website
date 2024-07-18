@@ -2,6 +2,7 @@
     import { spring } from 'svelte/motion';
     import Logo from '../(assets)/init-logo.svg';
     import type { ContributionsMatrix, TicketData } from '../tickets/constants';
+    import TicketLines from './TicketLines.svelte';
 
     type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
         contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;
@@ -160,11 +161,12 @@
             </div>
             <div class="shine" />
             <div class="noise" />
+            <TicketLines />
         </div>
         <div class="stub">
             <div class="details">
                 <span>Init 2.0</span>
-                <span>Ticket Number: #{id?.toString().padStart(6, '0')}</span>
+                <span>{`Ticket Number: #${id?.toString().padStart(6, '0')}`}</span>
             </div>
             <div class="shine" />
             <div class="noise" />
@@ -176,31 +178,46 @@
     @use '$scss/abstract' as *;
     $base-width: 15;
 
+    @keyframes fade {
+        0% {
+            opacity: 0;
+            filter: blur(1px);
+            transform: rotateX(15deg) rotateY(-10deg);
+        }
+        100% {
+            opacity: 1;
+            filter: blur(0px);
+            transform: rotateX(0deg) rotateY(0deg);
+        }
+    }
+
     .wrapper {
         position: relative;
         font-size: var(--base-width, var(--base-width-default));
 
         perspective: 600px;
+        animation: fade 1s ease-out;
     }
 
-    .shine {
+    .shine,
+    .noise {
+        background-repeat: no-repeat;
         position: absolute;
         inset: 0;
         height: 100%;
         width: 100%;
-        opacity: 0.4;
-        background-size: cover;
+        z-index: 2;
+    }
+
+    .shine {
+        opacity: 0.8;
         background-image: url('/images/tickets/shine.svg');
         mix-blend-mode: hard-light;
     }
 
     .noise {
-        position: absolute;
-        inset: 0;
-        height: 100%;
-        width: 100%;
         background-size: cover;
-        opacity: 0.4;
+        opacity: 0.7;
         background-image: url('/images/tickets/noise.png');
     }
 
@@ -221,7 +238,7 @@
     }
 
     .stub {
-        background: #111;
+        background: #000;
         width: 150px;
         border-radius: pxToRem(16);
         line-height: 1;
@@ -229,26 +246,35 @@
         overflow: hidden;
 
         .shine {
-            background-position-x: 25%;
+            background-position: 25% -120px;
+            background-size: 500%;
+            opacity: 0.5;
         }
 
         .noise {
-            background-position-x: right;
+            background-position: top right;
         }
 
         .details {
             transform-origin: center;
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%) rotate(90deg);
+            position: absolute;
+            inset: 0;
+            display: grid;
+            align-items: center;
+            margin-left: 20px;
+            gap: 4px;
+            padding: pxToRem(20) 0;
+            grid-template-columns: max-content;
 
             span {
                 font-family: var(--web-font-family-aeonik-fono);
                 font-size: pxToRem(12);
-                position: absolute;
-
+                //position: absolute;
+                transform: rotate(90deg);
+                transform-origin: center;
                 width: 100%;
                 text-transform: uppercase;
+                display: inline-block;
             }
         }
     }
@@ -257,12 +283,16 @@
         --base-width-default: clamp(12rem, 40vw, #{$base-width}rem);
         height: var(--base-width, var(--base-width-default));
         width: calc(var(--base-width, var(--base-width-default)) * 1.5);
-        background: #111;
+        background: #000;
 
         padding: pxToRem(24);
         position: relative;
         border-radius: pxToRem(16);
         overflow: hidden;
+
+        .shine {
+            background-size: 150%;
+        }
 
         .logo {
             position: absolute;
@@ -278,7 +308,6 @@
     .web-title {
         font-size: pxToRem(24);
         line-height: 1;
-        overflow-wrap: break-word;
     }
 
     .web-label {
