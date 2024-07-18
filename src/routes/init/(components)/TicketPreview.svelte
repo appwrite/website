@@ -15,10 +15,20 @@
         width: 100%;
         display: grid;
         place-items: center;
+        min-height: 75vh;
+        padding: 1.25rem;
+        border: 1px solid hsl(var(--web-color-border));
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 16px;
+        overflow: hidden;
 
         transition: opacity 0.25s ease;
 
         --base-width: min(25vw, 28.75rem);
+
+        @media screen and (max-width: 768px) {
+            rotate: -90deg;
+        }
 
         .shine {
             position: absolute;
