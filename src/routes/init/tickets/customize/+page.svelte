@@ -10,6 +10,7 @@
     import Ticket from '../../(components)/Ticket.svelte';
     import Form from './form.svelte';
     import { Drawer } from 'vaul-svelte';
+    import TicketDrawer from '$routes/init/(components)/TicketDrawer.svelte';
 
     export let data;
 
@@ -88,26 +89,11 @@
                 </p>
             </div>
             <div class="info">
-                <Drawer.Root direction="bottom">
-                    <Drawer.Trigger class="web-button is-full-width u-margin-block-start-32">
-                        <span class="text">Customize ticket</span>
-                    </Drawer.Trigger>
-
-                    <Drawer.Content
-                        style="position:fixed;background-color: #333;inset:0;max-width:33%;z-index:100;"
-                    >
-                        <div class="form-wrapper" transition:fade>
-                            <Form bind:name bind:title bind:showGitHub />
-                        </div>
-                    </Drawer.Content>
-                    <Drawer.Overlay
-                        style=" background-color: hsl(var(--web-color-background));
-            backdrop-filter: blur(40px);
-            position: fixed;
-            inset: 0;
-            z-index: 10;"
-                    />
-                </Drawer.Root>
+                <TicketDrawer>
+                    <div class="form-wrapper" transition:fade>
+                        <Form bind:name bind:title bind:showGitHub />
+                    </div>
+                </TicketDrawer>
 
                 <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
                     <button class="web-button is-full-width is-secondary" on:click={copy}>
@@ -171,74 +157,25 @@
         }
     }
 
-    @media screen and (max-width: 1024px) {
-        .drawer {
-            display: flex;
-            flex-direction: column;
+    :global([data-vaul-drawer]) {
+        display: flex;
+        flex-direction: column;
+        background-color: hsl(var(--web-color-background));
+        position: fixed;
+        top: 103px;
+        bottom: 0;
+        overflow-y: auto;
+        z-index: 10;
+        max-width: 36vw;
+        border-right: 1px solid hsl(var(--web-color-border));
+        padding-right: 40px;
+    }
 
-            position: sticky;
-            bottom: 0;
-            padding-block: 0;
-            background-color: hsl(var(--web-color-background));
-            backdrop-filter: blur(40px);
-            z-index: 9999999;
+    .web-container {
+        padding-block-start: 0;
 
-            max-height: 100vh;
-            overflow-y: auto;
-
-            [class^='web-icon-'] {
-                transition: var(--transition);
-                transform: rotate(180deg);
-            }
-
-            &[data-state='open'] {
-                [class^='web-icon-'] {
-                    transform: rotate(0deg);
-                }
-            }
-
-            > button {
-                background: linear-gradient(
-                        93deg,
-                        rgba(253, 54, 110, 0.2) 0.29%,
-                        rgba(35, 35, 37, 0.2) 52.57%,
-                        rgba(35, 35, 37, 0.2) 100%
-                    ),
-                    #232325;
-                padding-block: 1.8125rem;
-                width: 100%;
-
-                .inner {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    max-width: 512px;
-                    margin-inline: auto;
-                    padding-inline: var(--p-padding-inline);
-                }
-            }
-
-            hr {
-                border-block-start: 1px solid hsl(var(--web-color-smooth));
-            }
-
-            > .form-wrapper {
-                max-width: 512px;
-                height: 100%;
-                overflow-y: auto;
-
-                margin-inline: auto;
-                padding-block-end: 1rem;
-                padding-inline: 1.25rem;
-            }
-        }
-
-        .web-container {
-            padding-block-start: 0;
-
-            :global(nav) {
-                margin-block-start: 0;
-            }
+        :global(nav) {
+            margin-block-start: 0;
         }
     }
 </style>

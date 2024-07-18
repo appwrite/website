@@ -115,6 +115,7 @@
     </a>
 {/if}
 <hr />
+<button class="web-button is-full-width u-margin-block-start-32">Save</button>
 
 <style lang="scss">
     hr {
