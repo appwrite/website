@@ -179,18 +179,15 @@
     .wrapper {
         position: relative;
         font-size: var(--base-width, var(--base-width-default));
-        overflow: visible;
 
         perspective: 600px;
-        border-radius: pxToRem(16);
     }
 
     .shine {
         position: absolute;
         inset: 0;
-
         height: 100%;
-        width: auto;
+        width: 100%;
         opacity: 0.4;
         object-fit: cover;
     }
@@ -208,6 +205,8 @@
     .ticket {
         display: flex;
         gap: 4px;
+        overflow: hidden;
+        border-radius: pxToRem(16);
 
         transition: transform 100ms;
         -webkit-transform-origin: center;
@@ -217,6 +216,29 @@
         -webkit-transform-style: preserve-3d;
         transform-style: preserve-3d;
         overflow: hidden;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            clip-path: inset(0 0 0 0);
+            pointer-events: none;
+        }
+
+        &::before {
+            background: transparent;
+            clip-path: inset(0 0 calc(100% - gap) 0);
+        }
+
+        &::after {
+            background: transparent;
+            clip-path: inset(calc(100% - gap) 0 0 0);
+        }
     }
 
     .stub {
@@ -225,6 +247,7 @@
         border-radius: pxToRem(16);
         line-height: 1;
         position: relative;
+        overflow: hidden;
 
         .details {
             transform-origin: center;
