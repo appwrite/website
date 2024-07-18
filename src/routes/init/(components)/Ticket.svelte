@@ -202,7 +202,6 @@
         background-size: cover;
         opacity: 0.4;
         background-image: url('/images/tickets/noise.png');
-        mix-blend-mode: hard-light;
     }
 
     .ticket {
@@ -219,29 +218,6 @@
         -webkit-transform-style: preserve-3d;
         transform-style: preserve-3d;
         overflow: hidden;
-
-        &::before,
-        &::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 1;
-            clip-path: inset(0 0 0 0);
-            pointer-events: none;
-        }
-
-        &::before {
-            background: transparent;
-            clip-path: inset(0 0 calc(100% - gap) 0);
-        }
-
-        &::after {
-            background: transparent;
-            clip-path: inset(calc(100% - gap) 0 0 0);
-        }
     }
 
     .stub {
