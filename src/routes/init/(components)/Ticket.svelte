@@ -1,8 +1,6 @@
 <script lang="ts">
     import { spring } from 'svelte/motion';
     import Logo from '../(assets)/init-logo.svg';
-    import Shine from '../(assets)/shine.svg';
-    import Noise from '../(assets)/noise.png';
     import type { ContributionsMatrix, TicketData } from '../tickets/constants';
 
     type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
@@ -160,15 +158,17 @@
             <div class="logo" style:width="100%">
                 <img src={Logo} alt="init" />
             </div>
+            <div class="shine" />
+            <div class="noise" />
         </div>
         <div class="stub">
             <div class="details">
                 <span>Init 2.0</span>
                 <span>Ticket Number: #{id?.toString().padStart(6, '0')}</span>
             </div>
+            <div class="shine" />
+            <div class="noise" />
         </div>
-        <img src={Noise} alt="noise" class="noise" />
-        <img src={Shine} alt="shine" class="shine" />
     </div>
 </div>
 
@@ -189,7 +189,9 @@
         height: 100%;
         width: 100%;
         opacity: 0.4;
-        object-fit: cover;
+        background-size: cover;
+        background-image: url('/images/tickets/shine.svg');
+        mix-blend-mode: hard-light;
     }
 
     .noise {
@@ -197,8 +199,9 @@
         inset: 0;
         height: 100%;
         width: 100%;
-        opacity: 0.3;
-        object-fit: cover;
+        background-size: cover;
+        opacity: 0.4;
+        background-image: url('/images/tickets/noise.png');
         mix-blend-mode: hard-light;
     }
 
@@ -248,6 +251,14 @@
         line-height: 1;
         position: relative;
         overflow: hidden;
+
+        .shine {
+            background-position-x: 25%;
+        }
+
+        .noise {
+            background-position-x: right;
+        }
 
         .details {
             transform-origin: center;
