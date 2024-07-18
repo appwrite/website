@@ -90,9 +90,13 @@
             </div>
             <div class="info">
                 <TicketDrawer>
-                    <div class="form-wrapper" transition:fade>
+                    <div slot="form" class="form-wrapper" transition:fade>
                         <Form bind:name bind:title bind:showGitHub />
                     </div>
+                    <button
+                        slot="submitButton"
+                        class="web-button is-full-width u-margin-block-start-32">Save</button
+                    >
                 </TicketDrawer>
 
                 <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
@@ -155,20 +159,6 @@
                 }
             }
         }
-    }
-
-    :global([data-vaul-drawer]) {
-        display: flex;
-        flex-direction: column;
-        background-color: hsl(var(--web-color-background));
-        position: fixed;
-        top: 103px;
-        bottom: 0;
-        overflow-y: auto;
-        z-index: 10;
-        max-width: 36vw;
-        border-right: 1px solid hsl(var(--web-color-border));
-        padding-right: 40px;
     }
 
     .web-container {
