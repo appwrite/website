@@ -19,7 +19,7 @@
     let showGitHub = data.ticket?.show_contributions ?? true;
     let drawerOpen = false;
     let customizing = false;
-    let variant: TicketVariant = data.ticket.variant ?? 'default';
+    let variant: TicketVariant = 'default';
 
     $: modified = !dequal(
         {
@@ -116,7 +116,9 @@
                     <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
                         <button class="web-button is-full-width is-secondary" on:click={copy}>
                             <div
-                                class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary"
+                                class="web-icon-{$copied
+                                    ? 'check'
+                                    : 'copy'} web-u-color-text-primary"
                             />
                             <span class="text">Copy ticket URL</span>
                         </button>
