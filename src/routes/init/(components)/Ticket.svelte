@@ -253,6 +253,10 @@
         -webkit-transform-style: preserve-3d;
         transform-style: preserve-3d;
         overflow: hidden;
+
+        @media screen and (max-width: 768px) {
+            width: 50vh;
+        }
     }
 
     .stub {
