@@ -16,10 +16,11 @@
         display: grid;
         place-items: center;
         min-height: 60vh;
-        padding: 1.25rem;
-        overflow: hidden;
-
         transition: opacity 0.25s ease;
+
+        @media screen and (max-width: 768px) {
+            rotate: -90deg;
+        }
 
         .shine {
             position: absolute;

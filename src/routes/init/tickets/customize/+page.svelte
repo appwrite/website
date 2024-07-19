@@ -69,7 +69,7 @@
 
 <Main>
     <TicketPreview>
-        <div class="ticket-holder">
+        <div>
             <Ticket
                 {...data.ticket}
                 {name}
