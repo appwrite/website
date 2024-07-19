@@ -1,8 +1,9 @@
 <script lang="ts">
     import { spring } from 'svelte/motion';
-    import Logo from '../(assets)/init-logo.svg';
-    import Lines from '../(assets)/lines-bg.svg';
     import type { ContributionsMatrix, TicketData } from '../tickets/constants';
+    import Lockup from './Lockup.svelte';
+    import Lines from './Lines.svelte';
+    import { fade } from 'svelte/transition';
 
     type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
         contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;
@@ -12,6 +13,7 @@
         name,
         title,
         id,
+        aw_email,
         contributions,
         show_contributions = true,
         disableEffects = false
@@ -153,14 +155,31 @@
 
             <p class="web-label">{title}</p>
 
-            <div class="logo" style:width="100%">
-                <img src={Logo} alt="init" />
+            <div class="logo" style:width="75%">
+                <Lockup fill={false} animate={!disableEffects} />
             </div>
             <div class="shine" />
             <div class="noise" />
-            <img src={Lines} alt="lines" class="lines" />
+            <Lines />
         </div>
-        <div class="stub">
+        <div class="stub" class:pink={aw_email}>
+            {#await contributions then c}
+                {#if c && show_contributions}
+                    <div
+                        class="github"
+                        out:fade={{ duration: 100 }}
+                        data-remove-delay={removeDelay ? '' : undefined}
+                    >
+                        {#each c as row}
+                            <div class="row">
+                                {#each row as level, i}
+                                    <div style:--index={row.length - i} data-level={level} />
+                                {/each}
+                            </div>
+                        {/each}
+                    </div>
+                {/if}
+            {/await}
             <div class="details">
                 <span>Init 2.0</span>
                 <span>{`Ticket Number: #${id?.toString().padStart(6, '0')}`}</span>
@@ -173,7 +192,7 @@
 
 <style lang="scss">
     @use '$scss/abstract' as *;
-    $base-width: 15;
+    $base-width: 22;
 
     @keyframes fade {
         0% {
@@ -191,7 +210,7 @@
     .wrapper {
         position: relative;
         font-size: var(--base-width, var(--base-width-default));
-
+        width: 100%;
         perspective: 600px;
         animation: fade 1s ease-out;
         z-index: 100;
@@ -224,6 +243,7 @@
         gap: 4px;
         overflow: hidden;
         border-radius: pxToRem(16);
+        min-width: 50vw;
 
         transition: transform 100ms;
         -webkit-transform-origin: center;
@@ -237,11 +257,21 @@
 
     .stub {
         background: #000;
-        width: 150px;
+        width: 20%;
         border-radius: pxToRem(16);
         line-height: 1;
         position: relative;
         overflow: hidden;
+
+        &.pink {
+            color: white;
+            background: linear-gradient(
+                135deg,
+                hsl(var(--web-color-pink-500)) 0%,
+                hsl(var(--web-color-pink-500)) 61%,
+                hsl(var(--web-color-secondary-100)) 100%
+            );
+        }
 
         .shine {
             background-position: 25% -120px;
@@ -259,7 +289,7 @@
             inset: 0;
             display: grid;
             align-items: center;
-            margin-left: 20px;
+            margin-left: 50px;
             gap: 4px;
             padding: pxToRem(20) 0;
             grid-template-columns: max-content;
@@ -267,7 +297,6 @@
             span {
                 font-family: var(--web-font-family-aeonik-fono);
                 font-size: pxToRem(12);
-                //position: absolute;
                 transform: rotate(90deg);
                 transform-origin: center;
                 width: 100%;
@@ -275,29 +304,73 @@
                 display: inline-block;
             }
         }
+
+        .github {
+            --delay: 700ms;
+            display: flex;
+            flex-direction: column;
+            gap: pxToRem(8);
+
+            position: absolute;
+            inset-block-start: 0;
+            inset-inline-end: 50px;
+
+            mask-image: linear-gradient(to left, hsl(240, 3%, 14%), transparent);
+
+            &[data-remove-delay] {
+                --delay: 0ms;
+            }
+
+            .row {
+                display: flex;
+                gap: pxToRem(8);
+
+                div {
+                    --size: 8px;
+                    width: var(--size);
+                    height: var(--size);
+
+                    border-radius: calc(var(--size) / 4);
+                    animation: fade-in 500ms ease calc(calc(75ms * var(--index)) + var(--delay))
+                        forwards;
+
+                    &[data-level] {
+                        --bg-color: white;
+                    }
+
+                    &[data-level='0'] {
+                        opacity: 0;
+                    }
+
+                    &[data-level='1'] {
+                        opacity: 0.25;
+                    }
+
+                    &[data-level='2'] {
+                        opacity: 0.5;
+                    }
+
+                    &[data-level='3'] {
+                        opacity: 0.75;
+                    }
+
+                    &[data-level='4'] {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
     }
 
     .lockup {
-        --base-width-default: clamp(12rem, 40vw, #{$base-width}rem);
+        --base-width-default: clamp(12rem, 60vw, #{$base-width}rem);
         height: var(--base-width, var(--base-width-default));
-        width: calc(var(--base-width, var(--base-width-default)) * 1.5);
+        width: 80%;
         background: #000;
-
         padding: pxToRem(24);
         position: relative;
         border-radius: pxToRem(16);
         overflow: hidden;
-
-        .lines {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-            opacity: 0.5;
-            mix-blend-mode: hard-light;
-        }
 
         .shine {
             background-size: 150%;
@@ -305,13 +378,9 @@
 
         .logo {
             position: absolute;
-            top: 50%;
-            transform: translateY(-25%);
-            z-index: 10;
 
-            img {
-                width: 80%;
-            }
+            transform: translateY(30%);
+            z-index: 10;
         }
     }
 
@@ -326,74 +395,12 @@
         margin-block-start: pxToRem(0.25);
     }
 
-    @keyframes fade-in {
+    @keyframes -global-fade-in {
         from {
-            background-color: hsl(var(--bg-color) / 0);
-            /* border: 1px solid hsl(var(--border-color, transparent) / 0); */
+            background-color: rgba(255, 255, 255, 0);
         }
         to {
-            background-color: hsl(var(--bg-color) / 1);
-            /* border: 1px solid hsl(var(--border-color, transparent) / 1); */
+            background-color: rgba(255, 255, 255, 1);
         }
     }
-
-    // .github {
-    //     --delay: 700ms;
-    //     display: flex;
-    //     flex-direction: column;
-    //     gap: pxToRem(0.25);
-
-    //     position: absolute;
-    //     inset-block-start: 0;
-    //     inset-inline-end: 0;
-
-    //     mask-image: linear-gradient(to left, hsl(240, 3%, 14%), transparent);
-
-    //     &[data-remove-delay] {
-    //         --delay: 0ms;
-    //     }
-
-    //     .row {
-    //         display: flex;
-    //         gap: pxToRem(0.25);
-
-    //         div {
-    //             --size: #{pxToRem(0.5275)};
-    //             width: var(--size);
-    //             height: var(--size);
-
-    //             border-radius: calc(var(--size) / 4);
-    //             animation: fade-in 500ms ease calc(calc(75ms * var(--index)) + var(--delay))
-    //                 forwards;
-
-    //             &[data-level] {
-    //                 --bg-color: var(--web-color-accent);
-
-    //                 [data-variant='rainbow'] & {
-    //                     --bg-color: 0 0% 90%;
-    //                 }
-    //             }
-
-    //             &[data-level='0'] {
-    //                 opacity: 0;
-    //             }
-
-    //             &[data-level='1'] {
-    //                 opacity: 0.25;
-    //             }
-
-    //             &[data-level='2'] {
-    //                 opacity: 0.5;
-    //             }
-
-    //             &[data-level='3'] {
-    //                 opacity: 0.75;
-    //             }
-
-    //             &[data-level='4'] {
-    //                 opacity: 1;
-    //             }
-    //         }
-    //     }
-    // }
 </style>

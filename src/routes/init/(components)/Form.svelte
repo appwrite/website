@@ -5,9 +5,8 @@
     import { appwriteInit } from '$lib/appwrite/init';
     import { Switch } from '$lib/components';
     import { loginGithub } from '$routes/init/helpers';
-    import type { TicketVariant } from '../constants';
 
-    import type { PageData } from './$types';
+    import type { PageData } from '../tickets/customize/$types';
 
     export let name = '';
     export let title = '';

@@ -1,4 +1,8 @@
 <script lang="ts">
+    export let fill: boolean = true;
+    export let duration: number = 8;
+    export let animate: boolean = true;
+
     const width = 874;
     const height = 438;
 
@@ -10,17 +14,23 @@
     ];
 </script>
 
-<svg class="lockup" viewBox={`0 0 ${width} ${height}`} xmlns="http://www.w3.org/2000/svg">
+<svg
+    class="lockup"
+    viewBox={`0 0 ${width} ${height}`}
+    xmlns="http://www.w3.org/2000/svg"
+    style="--duration:{duration}s"
+>
     {#each paths as path, i}
-        <path d={path} class="base" />
+        <path d={path} class="base" class:fill />
         {#each Array.from({ length: 3 }) as _, index}
-            {@const delay = 2.5}
+            {@const delay = duration / 3.2}
             <path
                 d={path}
                 class="stroke"
                 stroke="url(#gradient)"
                 pathLength="1000"
                 style:animation-delay="{index * delay}s"
+                class:animate
             />
         {/each}
     {/each}
@@ -90,11 +100,11 @@
         --stroke-color: #333;
         --stroke-width: 2;
         --fill: hsl(240 5.7% 10.4%);
-        --duration: 8s;
         fill: none;
         animation: fade 1s ease-out;
         max-width: 60vw;
         margin: 0 auto;
+        display: block;
 
         path {
             stroke-width: var(--stroke-width);
@@ -102,16 +112,23 @@
 
         .base {
             stroke: var(--stroke-color);
-            fill: var(--fill);
+
             stroke-width: var(--stroke-width);
+
+            &.fill {
+                fill: var(--fill);
+            }
         }
 
         .stroke {
             stroke-dasharray: var(--starting-dasharray);
             stroke-dashoffset: var(--starting-dashoffset);
             stroke-width: var(--stroke-width);
-            animation: stroke var(--duration) linear infinite;
             filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 0.4));
+
+            &.animate {
+                animation: stroke var(--duration) linear infinite;
+            }
         }
     }
 </style>

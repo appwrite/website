@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Lines from './Lines.svelte';
     import Lockup from './Lockup.svelte';
 
     const getRandomNumber = (min: number, max: number) => {
@@ -8,58 +9,8 @@
 
 <div class="hero">
     <div class="container">
-        <h1 class="sr-only">Init</h1>
         <Lockup />
-        <div class="lines">
-            <div>
-                {#each Array.from({ length: 2 }) as _, i}
-                    <div
-                        class="line"
-                        style:left={`${i * 150}px`}
-                        style={`--delay:${getRandomNumber(100, 500)}ms`}
-                    />
-                {/each}
-            </div>
-
-            <div style:left="320px" style:position="relative">
-                {#each Array.from({ length: 4 }) as _, i}
-                    <div
-                        class="line"
-                        style:left={`${i * 25}px`}
-                        style={`--delay:${getRandomNumber(100, 1200)}ms`}
-                    />
-                {/each}
-            </div>
-
-            <div style:left="625px" style:position="relative">
-                {#each Array.from({ length: 8 }) as _, i}
-                    <div
-                        class="line"
-                        style:left={`${i * 35}px`}
-                        style={`--delay:${getRandomNumber(100, 2000)}ms`}
-                    />
-                {/each}
-            </div>
-
-            <div style:left="800px" style:position="relative">
-                {#each Array.from({ length: 5 }) as _, i}
-                    <div
-                        class="line"
-                        style:left={`${i * 35}px`}
-                        style={`--delay:${getRandomNumber(100, 1600)}ms`}
-                    />
-                {/each}
-            </div>
-            <div style:left="1200px" style:position="relative">
-                {#each Array.from({ length: 5 }) as _, i}
-                    <div
-                        class="line"
-                        style:left={`${i * 35}px`}
-                        style={`--delay:${getRandomNumber(100, 1600)}ms`}
-                    />
-                {/each}
-            </div>
-        </div>
+        <Lines />
     </div>
 </div>
 
@@ -68,15 +19,14 @@
         --background: hsl(240 5.7% 10.4%);
         --gradient: linear-gradient(
             to bottom,
-            hsl(240 5.7% 10.4%),
-            rgba(51, 52, 52, 1),
-            rgba(122, 122, 122, 1),
-            hsl(240 5.7% 10.4%)
+            rgba(255, 255, 255, 0.2) 0,
+            rgba(255, 255, 255, 0.2) 44%,
+            rgba(255, 255, 255, 0) 100%
         );
         --width: 2px;
         --height: 20vh;
-        --starting-position: -50vh;
-        --duration: 2s;
+        --starting-position: -60vh;
+        --duration: 4s;
         --initial-delay: 0s;
     }
 
@@ -99,9 +49,6 @@
         .container {
             position: relative;
             overflow-y: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
 
             &::before {
                 content: '';
@@ -122,42 +69,6 @@
                 background: linear-gradient(to top, var(--background), rgba(0, 0, 0, 0));
                 z-index: -1;
             }
-
-            .lines {
-                position: absolute;
-                inset: 0;
-                z-index: -10;
-
-                .line {
-                    position: absolute;
-                    height: var(--height);
-                    width: var(--width);
-
-                    &::after {
-                        content: '';
-                        display: block;
-                        position: absolute;
-                        bottom: var(--starting-position);
-                        width: calc(var(--width) / 2);
-                        height: var(--height);
-                        background: var(--gradient);
-                        animation: line var(--duration) calc(var(--initial-delay) + var(--delay))
-                            infinite forwards cubic-bezier(0.1, -0.6, 0.2, 0);
-                    }
-                }
-            }
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
         }
     }
 </style>
