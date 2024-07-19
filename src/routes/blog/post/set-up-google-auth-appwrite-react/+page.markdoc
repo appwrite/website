@@ -9,15 +9,12 @@ author: ebenezer-don
 category: engineering
 featured: false
 ---
-# How to set up Google authentication in React with Appwrite
-
-## Introduction
 
 In this article, we'll explore how to set up Google authentication in a React application using Appwrite. Appwrite is an open-source backend solution that provides a wide array of integrated tools and services, covering everything from server-side logic to user management and data storage. While this tutorial focuses on Google OAuth2, Appwrite supports many authentication methods, including [passwordless authentication](https://www.appwrite.io/blog/post/improve-ux-passwordless-auth), magic URL, email OTP, phone number OTP, email/password and various OAuth2 providers.
 
 By the end of this tutorial, you'll have a React app that allows users to log in with their Google account seamlessly. Let's get started!
 
-## Prerequisites
+# Prerequisites
 
 Before diving in, ensure you have the following:
 
@@ -26,7 +23,7 @@ Before diving in, ensure you have the following:
 - Access to a Google Cloud account
 - Node.js and npm installed on your machine
 
-## Setting up Google OAuth2 in Appwrite
+# Setting up Google OAuth2 in Appwrite
 
 First, we need to configure Appwrite to support Google OAuth2. Log in to your Appwrite console and navigate to the **Auth** section on your left sidebar.
 
@@ -42,7 +39,7 @@ At the bottom of the form, you'll see a "URI" field. Click the copy button besid
 
 Appwrite simplifies OAuth2 integration by supporting multiple providers out of the box, such as Facebook, GitHub, and Twitter. This flexibility makes it easy to extend your authentication methods as your application grows.
 
-## Creating OAuth2 client ID in Google cloud
+# Creating OAuth2 client ID in Google cloud
 
 Let's set up an OAuth2 Client ID in the Google Cloud Console to allow our Appwrite project to communicate with Google for authentication.
 
@@ -60,7 +57,7 @@ Select "Web application" as the application type and add the redirect URI provid
 
 ![Google cloud OAuth client ID](/images/blog/set-up-google-auth-appwrite-react/google-credentials-id.png)
 
-## Configuring Appwrite with Google OAuth2 credentials
+# Configuring Appwrite with Google OAuth2 credentials
 
 With your Google Cloud credentials ready, let's complete the setup in the Appwrite console. Return to your Appwrite console and navigate to the Auth section where you enabled Google OAuth2. In the popup, you'll see two fields for "App ID" and "App Secret."
 
@@ -70,7 +67,7 @@ Enter your Google OAuth Client ID into the "App ID" field and your Google OAuth 
 
 You now have Google OAuth2 set up in your Appwrite console! With Appwrite configured and your Google Cloud credentials integrated, let's move on to setting up your React project.
 
-## Setting up your React project
+# Setting up your React project
 
 To start, open your terminal and run the following command to create a new React application:
 
@@ -111,7 +108,7 @@ export { OAuthProvider }
 
 In the `appwrite.js` file, the `Client` object, used to interact with Appwrite services, is initialized with the Appwrite API endpoint and your project ID. The `account` object is created using the client to interact with the Appwrite account service, while the `OAuthProvider` is an enum that contains the OAuth2 providers supported by Appwrite. We are exporting it from this file so you don't have to import both from `appwrite` and `appwrite.js` when you need to use both account and OAuthProvider in a component.
 
-## Create authentication functions
+# Create authentication functions
 
 With your React project and Appwrite client set up, you can now create functions to handle login and logout. Create a new file named `auth.js` in the `src` directory. Add the following functions to handle login and logout:
 
@@ -151,7 +148,7 @@ In the `auth.js` file, we've created three functions: `loginWithGoogle`, `logout
 - The `logoutUser` function uses the `deleteSession` method to log out the current user. The `deleteSession` method expects the session ID to be deleted as an argument. In this case, we're passing `'current'` to delete the current session.
 - The `getUser` function uses the `get` method to retrieve the current user's account details. This function will be used to display the user's information after they log in or to check if the user is already logged in.
 
-## Set up component for authentication
+# Set up component for authentication
 
 Next, create a new component named `Auth.js` (this time, with a capital 'A') in the `src` directory. This component will handle the login and logout functionality using the functions we created earlier.
 
@@ -200,11 +197,11 @@ If the user is logged in, the component displays a welcome message with the user
 
 You've now set up the basic structure for Google authentication using Appwrite in your React application. Next, we will integrate and test our authentication flow in the React app.
 
-## Integrate and test Google auth in your React app
+# Integrate and test Google auth in your React app
 
 With your authentication component set up, it's time to integrate it into your main application and test the Google OAuth2 authentication flow.
 
-### Step 1: Add the `Auth` Component to Your Main Application
+## Step 1: Add the `Auth` Component to Your Main Application
 
 Open the `src/App.js` file and add the `Auth` component:
 
@@ -230,7 +227,7 @@ export default App
 
 This integration will display the `Auth` component within your main application, providing Google authentication functionality to your users.
 
-### Step 2: Run your React application
+## Step 2: Run your React application
 
 To see everything in action, start your React development server by running the following command in your terminal:
 
@@ -240,25 +237,25 @@ npm start
 
 Open your browser and navigate to `http://localhost:3000`. You should see your application with the login button.
 
-### Step 3: Test the authentication flow
+## Step 3: Test the authentication flow
 
-#### Testing login
+### Testing login
 
 1. Click on the "Login with Google" button.
 2. You will be redirected to the Google login page.
 3. After logging in with your Google account, you should be redirected back to your application.
 4. If successful, you should see a welcome message with your Google account name and a "Logout" button.
 
-#### Testing logout
+### Testing logout
 
 1. Click on the "Logout" button.
 2. The welcome message should no longer be there, and the "Login with Google" button should show.
 
-### Step 4: Verify user authentication
+## Step 4: Verify user authentication
 
 Every request made through the Appwrite SDK after the user is logged in will include their authentication details automatically. This ensures that actions like reading from or writing to the database will be authenticated without requiring additional credentials.
 
-### Conclusion
+# Conclusion
 
 You've successfully integrated Google OAuth2 authentication into your React application using Appwrite. With this setup, users can log in with their Google accounts, and you can securely manage their authentication state and data access within your application.
 
