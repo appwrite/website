@@ -80,21 +80,8 @@
         </div>
     </TicketPreview>
 
-    <div class="header">
-        <h1 class="web-title web-u-color-text-primary">
-            Thank you for registering for
-            <span style:font-weight="500">init</span>
-        </h1>
-        <p class="web-label u-margin-block-start-16">
-            You have received ticket #{id?.toString().padStart(6, '0')}
-        </p>
-    </div>
-
     <div class="info">
         <Drawer.Root>
-            <Drawer.Trigger class="web-button is-full-width u-margin-block-start-32">
-                <span class="text">Customize ticket</span>
-            </Drawer.Trigger>
             <Drawer.Content>
                 <div class="form-wrapper" transition:fade>
                     <Form bind:name bind:title bind:showGitHub />
@@ -103,22 +90,35 @@
                     <button on:click={saveTicket}>Save</button>
                 </Drawer.Close>
             </Drawer.Content>
-        </Drawer.Root>
+            <div class="toolbar">
+                <div class="header">
+                    <h1 class="web-label web-u-color-text-primary">
+                        Thank you for registering for
+                        <span style:font-weight="500">init</span>
+                    </h1>
+                </div>
 
-        <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
-            <button class="web-button is-full-width is-secondary" on:click={copy}>
-                <div class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary" />
-                <span class="text">Copy ticket URL</span>
-            </button>
-            <a
-                class="web-button is-full-width is-secondary"
-                href="https://twitter.com/intent/tweet?text={twitterText}"
-                target="_blank"
-            >
-                <div class="web-icon-x web-u-color-text-primary" />
-                <span class="text">Share your ticket</span>
-            </a>
-        </div>
+                <div class="buttons">
+                    <Drawer.Trigger class="web-button">
+                        <span class="text">Customize ticket</span>
+                    </Drawer.Trigger>
+                    <button class="web-button is-secondary" on:click={copy}>
+                        <div
+                            class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary"
+                        />
+                        <span class="text">Copy ticket URL</span>
+                    </button>
+                    <a
+                        class="web-button is-secondary"
+                        href="https://twitter.com/intent/tweet?text={twitterText}"
+                        target="_blank"
+                    >
+                        <div class="web-icon-x web-u-color-text-primary" />
+                        <span class="text">Share your ticket</span>
+                    </a>
+                </div>
+            </div>
+        </Drawer.Root>
     </div>
 
     <div class="web-container">
@@ -128,6 +128,29 @@
 </Main>
 
 <style lang="scss">
+    .toolbar {
+        position: fixed;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(
+                93deg,
+                rgba(253, 54, 110, 0.2) 0.29%,
+                rgba(35, 35, 37, 0.2) 52.57%,
+                rgba(35, 35, 37, 0.2) 100%
+            ),
+            #232325;
+        padding-block: 32px;
+        padding-inline: clamp(1.25rem, 4vw, 120rem);
+        width: 100%;
+        z-index: 1000;
+    }
+    .buttons {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
     :global([data-dialog-close]) {
         cursor: pointer;
     }
