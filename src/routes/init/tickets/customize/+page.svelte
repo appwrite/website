@@ -8,26 +8,24 @@
     import { dequal } from 'dequal/lite';
     import { fade } from 'svelte/transition';
     import Ticket from '../../(components)/Ticket.svelte';
-    import Form from './form.svelte';
+    import Form from '../../(components)/Form.svelte';
     import { Drawer } from 'vaul-svelte';
-    import TicketDrawer from '$routes/init/(components)/TicketDrawer.svelte';
+    import { getMockContributions } from '$routes/init/helpers';
 
     export let data;
 
     let name = data.ticket?.name ?? '';
     let title = data.ticket?.title ?? '';
     const id = data.ticket?.id ?? 0;
-    let tribe: string | undefined = data.ticket?.tribe ?? undefined;
     let showGitHub = data.ticket?.show_contributions ?? true;
 
     $: modified = !dequal(
         {
             name: data.ticket?.name,
             title: data.ticket?.title,
-            tribe: data.ticket?.tribe,
             showGitHub: data.ticket?.show_contributions
         },
-        { name, title, tribe, showGitHub }
+        { name, title, showGitHub }
     );
 
     async function saveTicket() {
@@ -45,7 +43,6 @@
                 ticketId,
                 name,
                 title,
-                tribe,
                 showGitHub
             })
         });
@@ -71,65 +68,57 @@
 </svelte:head>
 
 <Main>
-    <div class="hero">
-        <div class="desktop-left">
-            <div class="header">
-                <h1 class="web-title web-u-color-text-primary">
-                    Thank you for registering for
-                    <span
-                        style:font-weight="500"
-                        style:-webkit-text-stroke="1px #999"
-                        style:color="transparent"
-                    >
-                        init
-                    </span>
-                </h1>
-                <p class="web-label u-margin-block-start-16">
-                    You have received ticket #{id?.toString().padStart(6, '0')}
-                </p>
-            </div>
-            <div class="info">
-                <TicketDrawer>
-                    <div slot="form" class="form-wrapper" transition:fade>
-                        <Form bind:name bind:title bind:showGitHub />
-                    </div>
-                    <button
-                        slot="submitButton"
-                        class="web-button is-full-width u-margin-block-start-32">Save</button
-                    >
-                </TicketDrawer>
-
-                <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
-                    <button class="web-button is-full-width is-secondary" on:click={copy}>
-                        <div
-                            class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary"
-                        />
-                        <span class="text">Copy ticket URL</span>
-                    </button>
-                    <a
-                        class="web-button is-full-width is-secondary"
-                        href="https://twitter.com/intent/tweet?text={twitterText}"
-                        target="_blank"
-                    >
-                        <div class="web-icon-x web-u-color-text-primary" />
-                        <span class="text">Share your ticket</span>
-                    </a>
-                </div>
-            </div>
+    <TicketPreview>
+        <div class="ticket-holder">
+            <Ticket
+                {...data.ticket}
+                {name}
+                {title}
+                contributions={data.streamed.contributions}
+                show_contributions={showGitHub}
+            />
         </div>
+    </TicketPreview>
 
-        <TicketPreview>
-            <div class="ticket-holder">
-                <Ticket
-                    {...data.ticket}
-                    {tribe}
-                    {name}
-                    {title}
-                    contributions={data.streamed.contributions}
-                    show_contributions={showGitHub}
-                />
-            </div>
-        </TicketPreview>
+    <div class="header">
+        <h1 class="web-title web-u-color-text-primary">
+            Thank you for registering for
+            <span style:font-weight="500">init</span>
+        </h1>
+        <p class="web-label u-margin-block-start-16">
+            You have received ticket #{id?.toString().padStart(6, '0')}
+        </p>
+    </div>
+
+    <div class="info">
+        <Drawer.Root>
+            <Drawer.Trigger class="web-button is-full-width u-margin-block-start-32">
+                <span class="text">Customize ticket</span>
+            </Drawer.Trigger>
+            <Drawer.Content>
+                <div class="form-wrapper" transition:fade>
+                    <Form bind:name bind:title bind:showGitHub />
+                </div>
+                <Drawer.Close class="web-button is-full-width u-margin-block-start-32">
+                    <button on:click={saveTicket}>Save</button>
+                </Drawer.Close>
+            </Drawer.Content>
+        </Drawer.Root>
+
+        <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
+            <button class="web-button is-full-width is-secondary" on:click={copy}>
+                <div class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary" />
+                <span class="text">Copy ticket URL</span>
+            </button>
+            <a
+                class="web-button is-full-width is-secondary"
+                href="https://twitter.com/intent/tweet?text={twitterText}"
+                target="_blank"
+            >
+                <div class="web-icon-x web-u-color-text-primary" />
+                <span class="text">Share your ticket</span>
+            </a>
+        </div>
     </div>
 
     <div class="web-container">
@@ -139,26 +128,23 @@
 </Main>
 
 <style lang="scss">
-    .desktop-left {
-        h1 {
-            margin-block-start: 3.5rem;
-        }
-
-        @media screen and (max-width: 1023px) {
-            h1 {
-                margin-block-start: 0;
-            }
-
-            .info {
-                grid-row: 3;
-
-                .u-flex {
-                    flex-direction: column;
-                    gap: 0.5rem;
-                    margin-block-start: 0.5rem;
-                }
-            }
-        }
+    :global([data-dialog-close]) {
+        cursor: pointer;
+    }
+    :global([data-vaul-drawer]) {
+        display: flex;
+        flex-direction: column;
+        background-color: hsl(var(--web-color-background));
+        position: fixed;
+        top: 103px;
+        bottom: 0;
+        overflow-y: auto;
+        z-index: 10;
+        max-width: 40vw;
+        left: 0;
+        padding-inline: clamp(1.25rem, 4vw, 120rem);
+        border-right: 1px solid hsl(var(--web-color-border));
+        // padding-right: 40px;
     }
 
     .web-container {
