@@ -230,7 +230,7 @@ You can also configure **permissions** in the `createCollection` method, learn m
 
 ## Using the CLI {% #using-the-cli %}
 
-You can also create your collections and update, get, and delete them using CLI commands. Using the [appwrite.json](/docs/tooling/command-line/collections#appwritejson) file, you can configure your collections attributes; you can also configure the data size limit, toggle if the data is required, and toggle if it's an array of data. Configuring collection-level permissions cannot be done using the CLI but instead through the Appwrite Console.
+You can also create your collections and update, get, and delete them using CLI commands. Using the appwrite.json file, you can configure your collections' attributes and data size limit, toggle if the data is required, and toggle if it's an array of data. Configuring collection-level permissions cannot be done using the CLI but instead through the Appwrite Console.
 
 {% arrow_link href="/docs/tooling/command-line/collections#commands" %}
 Learn more about the CLI collections commands
