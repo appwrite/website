@@ -19,7 +19,7 @@ By the end of this tutorial, you'll have a React app that allows users to log in
 Before diving in, ensure you have the following:
 
 - Basic knowledge of React
-- An Appwrite project set up - Learn how to create an Appwrite project [here](https://appwrite.io/docs/tutorials/react/step-3)
+- An Appwrite project set up - Learn how to create an Appwrite project [here](/docs/tutorials/react/step-3)
 - Access to a Google Cloud account
 - Node.js and npm installed on your machine
 
@@ -259,6 +259,6 @@ Every request made through the Appwrite SDK after the user is logged in will inc
 
 You've successfully integrated Google OAuth2 authentication into your React application using Appwrite. With this setup, users can log in with their Google accounts, and you can securely manage their authentication state and data access within your application.
 
-Appwrite supports many OAuth2 providers, including GitHub, Microsoft, Apple, Facebook, and more. This flexibility allows you to easily integrate various authentication options based on your application's needs. Additionally, Appwrite offers a variety of other authentication flows, such as Magic URL, phone authentication, anonymous sessions, team invites, and more. You can explore these options and learn how to implement them in your applications by checking out the [Appwrite Auth Documentation](https://appwrite.io/docs/products/auth).
+Appwrite supports many OAuth2 providers, including GitHub, Microsoft, Apple, Facebook, and more. This flexibility allows you to easily integrate various authentication options based on your application's needs. Additionally, Appwrite offers a variety of other authentication flows, such as Magic URL, phone authentication, anonymous sessions, team invites, and more. You can explore these options and learn how to implement them in your applications by checking out the [Appwrite Auth Documentation](/docs/products/auth).
 
 Feel free to explore further and build on this foundation to create even more sophisticated and secure applications. If you need any help, don't hesitate to reach out to the Appwrite community on [Discord](https://discord.com/invite/appwrite) for support and guidance.
