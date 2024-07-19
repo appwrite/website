@@ -29,15 +29,16 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   const storage = new Storage(client);
 
   const promise = storage.createFile(
-      '<BUCKET_ID>',
-      ID.unique(),
-      {
-        name: 'file.txt', 
-        type: 'text/plain', 
-        size: 37967,
-        uri: 'file://text.png'
-      },
+    "<BUCKET_ID>",
+    ID.unique(),
+    {
+      name: "file.txt",
+      type: "text/plain",
+      size: 37967,
+      uri: "file://text.png",
+    },
   );
+
 
   promise.then(function (response) {
       console.log(response); // Success
