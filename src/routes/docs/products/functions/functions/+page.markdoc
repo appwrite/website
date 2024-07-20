@@ -142,7 +142,7 @@ If this is left empty, no user can execute your function.
 Server SDKs, scheduled executions, and event function triggers don't require permissions to execute a function.
 
 You can also control the function scopes to grant it access to project resources such as documents and files.
-If scopes are not selected, the API key must be generated to configure the functions scopes.
+If scopes are selected, you can use [dynamic api keys](/docs/products/functions/develop#using-dynamic-api-key) for your function.
 
 ## Events{% #events %}
 Functions can be triggered by [platform events](/docs/advanced/platform/events) which reflect changes 
