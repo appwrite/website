@@ -124,7 +124,7 @@ appwrite functions [COMMAND] [OPTIONS]
 * Get a list of all the project's functions. You can use the query params to filter your results.
 ---
 * `create [options]`
-* Create a new function. You can pass a list of [permissions](https://appwrite.io/docs/permissions) to allow different project users or team with access to execute the function using the client API.
+* Create a new function. You can pass a list of [permissions](https://appwrite.io/docs/permissions) to allow different project users or teams with access to execute the function using the client API.
 ---
 * `listRuntimes`                    
 * Get a list of all runtimes that are currently active on your instance.
@@ -175,7 +175,7 @@ appwrite functions [COMMAND] [OPTIONS]
 * Get a variable by its unique ID.
 ---
 * `updateVariable [options]`         
-* Update variable by its unique ID.
+* Update a variable by its unique ID.
 ---
 * `deleteVariable [options]`        
 * Delete a variable by its unique ID.

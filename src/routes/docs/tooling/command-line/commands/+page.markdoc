@@ -43,7 +43,7 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * The graphql command allows you to query and mutate any resource type on your Appwrite server.
 ---
 * `health`
-* The health command allows you to both validate and monitor your Appwrite server's health.
+* The health command allows you to validate and monitor your Appwrite server's health.
 ---
 * `migrations`
 * The migrations command allows you to migrate data between services.
@@ -69,7 +69,7 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * Prints link to register an Appwrite account.
 ---
 * `whoami`
-* The whomai command gives information about the currently logged in user.
+* The whomai command gives information about the currently logged-in user.
 ---
 {% /table %}
 

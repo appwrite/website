@@ -121,7 +121,7 @@ appwrite messaging [COMMAND] [OPTIONS]
 * Create a new Apple Push Notification service provider.
 ---
 * `updateApnsProvider [options]` 
-* Update a Apple Push Notification service provider by its unique ID.
+* Update an Apple Push Notification service provider by its unique ID.
 ---
 * `createFcmProvider [options]`      
 * Create a new Firebase Cloud Messaging provider.

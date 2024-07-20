@@ -12,7 +12,7 @@ you can also create deployments manually or through the Appwrite CLI.
 
 # CLI  {% #cli %} 
 
-Before deploying your function and updating, deleting, or downloading its deployment using the CLI, [**install**](/docs/tooling/command-line/installation#Installation) the CLI, [**log in**](/docs/tooling/command-line/installation#get-started) to your Appwrite account, and [**initialize**](/docs/tooling/command-line/installation#Initialization) your Appwrite project. Use the CLI commands or edit the `appwrite.json` file directly to create, update, list, and delete variables.
+Before deploying your function and updating, deleting, or downloading its deployment using the CLI, [**install**](/docs/tooling/command-line/installation#Installation) the CLI, [**log in**](/docs/tooling/command-line/installation#get-started) to your Appwrite account, and [**initialize**](/docs/tooling/command-line/installation#Initialization) your Appwrite project. Use the CLI commands or edit the `appwrite.json` file to create, update, list, and delete variables.
 
 {% arrow_link href="/docs/tooling/command-line/functions#commands" %}
 Learn more about the CLI functions commands
