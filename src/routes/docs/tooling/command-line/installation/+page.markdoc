@@ -120,12 +120,12 @@ Before you can use the CLI, you need to login to your Appwrite account using
 appwrite login
 ```
 
-In case of a self-hosted instance, add the `endpoint` flag. This flag is used whenever you want to self-host Appwrite, and it requires you to add the URL string where you're hosting from after the `endpoint` flag.
+If you're hosting a self-hosted instance, add the `endpoint` flag. This flag is used whenever you want to self-host Appwrite, and it requires you to add the URL string where you're hosting from after the `endpoint` flag.
 
 ```sh
 appwrite login --endpoint <URL_HERE>
 ```
-You can log-in to multiple accounts or change the **current** account by simply running the command again.
+You can log in to multiple accounts or change the **current** account by re-running the command.
 
 # Initialization {% #Initialization %}
 
