@@ -87,8 +87,13 @@ client
 ;
 
 const promise = functions.createExecution(
-        '<FUNCTION_ID>',  // functionId
-        '2020-10-15T06:38:00.000+00:00' // Optional parameter to schedule execution
+    '<FUNCTION_ID>', // functionId
+    '<BODY>', // body (optional)
+    false, // async (optional)
+    '<PATH>', // path (optional)
+    ExecutionMethod.GET, // method (optional)
+    {}, // headers (optional)
+    '2020-10-15T06:38:00.000+00:00' // schedule execution (optional)
     );
 
 promise.then(function (response) {
@@ -112,7 +117,12 @@ client
 
 const promise = functions.createExecution(
         '<FUNCTION_ID>',  // functionId
-        '2020-10-15T06:38:00.000+00:00' // Optional parameter to schedule execution
+        '<BODY>', // body (optional)
+        false, // async (optional)
+        '<PATH>', // path (optional)
+        ExecutionMethod.GET, // method (optional)
+        {}, // headers (optional)
+        '2020-10-15T06:38:00.000+00:00' // schedule execution (optional)
     );
 
 promise.then(function (response) {
@@ -137,8 +147,13 @@ $client
 $functions = new Functions($client);
 
 $result = $functions->createExecution( 
-    functionId: '<FUNCTION_ID>', 
-    scheduled: '2020-10-15T06:38:00.000+00:00' // Optional parameter to schedule execution
+    '<FUNCTION_ID>',  // functionId
+    '<BODY>', // body (optional)
+    false, // async (optional)
+    '<PATH>', // path (optional)
+    ExecutionMethod.GET, // method (optional)
+    {}, // headers (optional)
+    '2020-10-15T06:38:00.000+00:00' // schedule execution (optional)
 );
 ```
 ```python
@@ -155,8 +170,13 @@ client = Client()
 functions = Functions(client)
 
 result = functions.create_execution( 
-    function_id = '<FUNCTION_ID>', 
-    scheduled = '2020-10-15T06:38:00.000+00:00' // Optional parameter to schedule execution
+    function_id = '<FUNCTION_ID>', # functionId
+    body = '<BODY>', # body (optional)
+    async = False, # async (optional)
+    path = '<PATH>', # path (optional)
+    method = ExecutionMethod.GET, # method (optional)
+    headers = {} # headers (optional)
+    scheduleAt = '2020-10-15T06:38:00.000+00:00' # schedule execution (optional)
 )
 ```
 ```ruby
@@ -171,8 +191,13 @@ client = Client.new
 functions = Functions.new(client)
 
 response = functions.create_execution(
-    function_id: '<FUNCTION_ID>', 
-    scheduled: '2020-10-15T06:38:00.000+00:00' // Optional parameter to schedule execution
+    function_id: '<FUNCTION_ID>', // functionId
+    body: '<BODY>', # body (optional)
+    async: false, # async (optional)
+    path: '<PATH>', # path (optional)
+    method: ExecutionMethod::GET, # method (optional)
+    headers: {} # headers (optional)
+    scheduledAt: '2020-10-15T06:38:00.000+00:00' # schedule execution (optional)
 )
 
 puts response.inspect
@@ -189,8 +214,13 @@ var client = new Client()
 var functions = new Functions(client);
 
 Execution result = await functions.CreateExecution(
-    functionId: "<FUNCTION_ID>"    
-    scheduled: "2020-10-15T06:38:00.000+00:00"); // Optional parameter to schedule execution
+    functionId: "<FUNCTION_ID>", // functionId
+    body: "<BODY>", // body (optional)
+    async: false, // async (optional)
+    path: "<PATH>", // path (optional)
+    method: ExecutionMethod.GET, // method (optional)
+    headers: [object] // headers (optional)
+    scheduledAt: "2020-10-15T06:38:00.000+00:00"; // schedule execution (optional)
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -205,8 +235,13 @@ void main() { // Init SDK
   ;
 
   Future result = functions.createExecution(
-    functionId: '<FUNCTION_ID>',
-    scheduled: '2020-10-15T06:38:00.000+00:00' // Optional parameter to schedule execution
+    functionId: '<FUNCTION_ID>', // functionId
+    body: '<BODY>', // (optional)
+    xasync: false, // (optional)
+    path: '<PATH>', // (optional)
+    method: ExecutionMethod.GET, // (optional)
+    headers: {}, // (optional)
+    scheduledAt: '2020-10-15T06:38:00.000+00:00' // schedule execution (optional)
   );
 
   result
@@ -230,7 +265,12 @@ Functions functions = new Functions(client);
 
 functions.createExecution(
     "<FUNCTION_ID>", // functionId
-    "2020-10-15T06:38:00.000+00:00" // Optional parameter to schedule execution
+    "<BODY>", // body (optional)
+    false, // async (optional)
+    "<PATH>", // path (optional)
+    "GET", // method (optional)
+    mapOf( "a" to "b" ), // headers (optional)
+    "2020-10-15T06:38:00.000+00:00", // schedule execution (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -254,7 +294,12 @@ Functions functions = new Functions(client);
 
 functions.createExecution(
     "<FUNCTION_ID>", // functionId
-    "2020-10-15T06:38:00.000+00:00" // Optional parameter to schedule execution
+    "<BODY>", // body (optional)
+    false, // async (optional)
+    "<PATH>", // path (optional)
+    ExecutionMethod.GET, // method (optional)
+    mapOf( "a" to "b" ), // headers (optional)
+    "2020-10-15T06:38:00.000+00:00" // schedule execution (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -276,7 +321,12 @@ let functions = Functions(client)
 
 let execution = try await functions.createExecution(
   functionId: "<FUNCTION_ID>",
-  scheduled: "2020-10-15T06:38:00.000+00:00" // Optional parameter to schedule execution
+  body: "<BODY>", // optional
+  async: false, // optional
+  path: "<PATH>", // optional
+  method: .gET, // optional
+  headers: [:] // optional
+  scheduledAt: "2020-10-15T06:38:00.000+00:00" // Optional parameter to schedule execution
 )
 ```
 {% /multicode %}
