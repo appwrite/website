@@ -471,11 +471,23 @@ Explore the request object with the following function, which logs all request p
 
 ### Request Types {% #request-types %}
 
-body
-bodyRaw
-bodyText
-bodyJson
-bodyBinary
+{% table %}
+* Request
+* Description
+---
+* `req.bodyRaw`
+* Returns the raw body text data.
+---
+* `req.bodyText`
+* Returns binary data that was converted into text.
+---
+* `req.bodyJson`
+* Parses the body text as JSON.
+---
+* `req.bodyBinary`
+* Returns the binary body.
+---
+{% /table %}
 
 {% multicode %}
 ```js
@@ -565,6 +577,7 @@ export default async ({ req, res, log }: any) => {
     log(JSON.stringify(req.query));     // Parsed query params. For example, req.query.limit
 
     return res.text("All the request parameters are logged to the Appwrite Console.");
+}
 ```
 ```dart
 import 'dart:async';
@@ -708,28 +721,29 @@ There are several possible ways to send a response, explore them in the followin
 
 ### Response Types {% #response-types %}
 
-
+{% table %}
 * Response
 * Description
 ---
 * `send`
-* 
+* Sends a plain text body as a response.
 ---
 * `text`
-* 
+* Converts the body using UTF-8 encoding into a binary Buffer.
 ---
 * `binary`
-* 
+* Packages binary bytes, the status code, and the headers into an object.
 ---
 * `json`
-* 
+* Converts the data into a JSON string, and sets the content-type header to `application/json`.
 ---
 * `empty`
-* 
+* Sends a response with a status of `code 204 No Content`.
 ---
 * `redirect`
-* 
+* Redirects the client to the specified URL link.
 ---
+{% /table %}
 
 {% multicode %}
 ```js
