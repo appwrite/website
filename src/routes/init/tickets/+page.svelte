@@ -4,7 +4,7 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import Ticket from '../(components)/Ticket.svelte';
-    import { getMockContributions, loginGithub } from '../helpers';
+    import { loginGithub } from '../helpers';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
 
     const title = 'Init - Appwrite';
@@ -17,6 +17,10 @@
             title: 'Founder'
         },
         {
+            name: 'Sara',
+            title: 'Head of Design'
+        },
+        {
             name: 'Jesse',
             title: 'Design Engineer'
         },
@@ -27,6 +31,18 @@
         {
             name: 'Jade',
             title: 'Visual Designer'
+        },
+        {
+            name: 'Snezhanna',
+            title: 'Growth Content'
+        },
+        {
+            name: 'Laura',
+            title: 'Growth Lead'
+        },
+        {
+            name: 'Tessa',
+            title: 'Head of DevRel'
         }
     ];
 </script>
@@ -183,24 +199,25 @@
 
     @keyframes -global-scroll {
         0% {
-            transform: translateX(-50vw);
-            -webkit-transform: translateX(-50vw);
+            transform: translateX(-100vw);
         }
         100% {
-            transform: translateX(50vw);
-            -webkit-transform: translateX(50vw);
+            transform: translateX(100vw);
         }
     }
 
     .ticket-preview-wrapper {
         display: flex;
-        width: 200vw;
+        width: 400vw;
         overflow: hidden;
-
-        animation: scroll 10s linear infinite;
+        animation: scroll 60s linear infinite;
 
         &:nth-of-type(even) {
             animation-direction: reverse;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            animation-play-state: paused;
         }
     }
 </style>
