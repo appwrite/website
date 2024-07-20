@@ -151,7 +151,9 @@
 <div class="wrapper">
     <div class="ticket" use:onMouse style={styles}>
         <div class="lockup">
-            <p class="web-title web-u-color-text-primary">{name?.trim() || '-'}</p>
+            <p class="web-title web-u-color-text-primary">
+                {name?.trim() || '-'}
+            </p>
 
             <p class="web-label">{title}</p>
 
