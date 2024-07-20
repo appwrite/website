@@ -244,6 +244,7 @@
         overflow: hidden;
         border-radius: pxToRem(16);
         min-width: 50vw;
+        width: 100%;
 
         transition: transform 100ms;
         -webkit-transform-origin: center;
