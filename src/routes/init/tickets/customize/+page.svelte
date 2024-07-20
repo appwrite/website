@@ -68,57 +68,41 @@
 </svelte:head>
 
 <Main>
-    <TicketPreview>
-        <div>
-            <Ticket
-                {...data.ticket}
-                {name}
-                {title}
-                contributions={data.streamed.contributions}
-                show_contributions={showGitHub}
-            />
+    <div class="content web-container">
+        <div class="details">
+            <h1 class="web-title web-u-color-text-primary">
+                You're registered for
+                <span style:font-weight="500">init</span>
+            </h1>
         </div>
-    </TicketPreview>
-
-    <div class="info">
-        <Drawer.Root>
-            <Drawer.Content>
-                <div class="form-wrapper" transition:fade>
-                    <Form bind:name bind:title bind:showGitHub />
-                </div>
-                <Drawer.Close class="web-button is-full-width u-margin-block-start-32">
-                    <button on:click={saveTicket}>Save</button>
-                </Drawer.Close>
-            </Drawer.Content>
-            <div class="toolbar">
-                <div class="header">
-                    <h1 class="web-label web-u-color-text-primary">
-                        Thank you for registering for
-                        <span style:font-weight="500">init</span>
-                    </h1>
-                </div>
-
-                <div class="buttons">
-                    <Drawer.Trigger class="web-button">
-                        <span class="text">Customize ticket</span>
-                    </Drawer.Trigger>
-                    <button class="web-button is-secondary" on:click={copy}>
-                        <div
-                            class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary"
-                        />
-                        <span class="text">Copy ticket URL</span>
-                    </button>
-                    <a
-                        class="web-button is-secondary"
-                        href="https://twitter.com/intent/tweet?text={twitterText}"
-                        target="_blank"
-                    >
-                        <div class="web-icon-x web-u-color-text-primary" />
-                        <span class="text">Share your ticket</span>
-                    </a>
-                </div>
+        <div class="ticket">
+            <TicketPreview>
+                <Ticket
+                    {...data.ticket}
+                    {name}
+                    {title}
+                    contributions={data.streamed.contributions}
+                    show_contributions={showGitHub}
+                />
+            </TicketPreview>
+            <div class="buttons">
+                <button class="web-button">
+                    <span class="text">Customize ticket</span>
+                </button>
+                <button class="web-button is-secondary" on:click={copy}>
+                    <div class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary" />
+                    <span class="text">Copy URL</span>
+                </button>
+                <a
+                    class="web-button is-secondary"
+                    href="https://twitter.com/intent/tweet?text={twitterText}"
+                    target="_blank"
+                >
+                    <div class="web-icon-x web-u-color-text-primary" />
+                    <span class="text">Post</span>
+                </a>
             </div>
-        </Drawer.Root>
+        </div>
     </div>
 
     <div class="web-container">
@@ -128,24 +112,14 @@
 </Main>
 
 <style lang="scss">
-    .toolbar {
-        position: fixed;
-        bottom: 0;
+    .content {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: linear-gradient(
-                93deg,
-                rgba(253, 54, 110, 0.2) 0.29%,
-                rgba(35, 35, 37, 0.2) 52.57%,
-                rgba(35, 35, 37, 0.2) 100%
-            ),
-            #232325;
-        padding-block: 32px;
-        padding-inline: clamp(1.25rem, 4vw, 120rem);
-        width: 100%;
-        z-index: 1000;
+        margin: 0 auto;
+        gap: 64px;
     }
+
     .buttons {
         display: flex;
         align-items: center;
