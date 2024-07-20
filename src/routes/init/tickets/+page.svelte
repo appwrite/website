@@ -17,28 +17,12 @@
             title: 'Founder'
         },
         {
-            name: 'Sara',
-            title: 'Head of Design'
-        },
-        {
             name: 'Jesse',
             title: 'Design Engineer'
         },
         {
-            name: 'Snezhanna',
-            title: 'Growth Content'
-        },
-        {
             name: 'Caio',
             title: 'Visual Designer'
-        },
-        {
-            name: 'Laura',
-            title: 'Growth Lead'
-        },
-        {
-            name: 'Binyamin',
-            title: 'Platform Engineer'
         },
         {
             name: 'Jade',
@@ -211,9 +195,9 @@
     .ticket-preview-wrapper {
         display: flex;
         width: 200vw;
-        gap: 32px;
+        overflow: hidden;
 
-        animation: scroll 40s linear infinite;
+        animation: scroll 10s linear infinite;
 
         &:nth-of-type(even) {
             animation-direction: reverse;
