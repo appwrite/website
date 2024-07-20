@@ -179,7 +179,7 @@ export default ({ req, res, log, error }: any) => {
   // Set API key
   // const client = new Client()
   //    .setProject(Deno.env.get("APPWRITE_FUNCTION_PROJECT_ID") || "")
-  //    .setKey(req.headers['x-appwrite-key'] || "");
+  //    .setKey(req.headers["x-appwrite-key"] || "");
 
   // You can log messages to the console
   log("Hello, Logs!");
@@ -257,7 +257,7 @@ class Main {
         // Set API key
         // val client = Client()
         //    .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
-        //    .setKey(context.req.headers['x-appwrite-key'])
+        //    .setKey(context.req.headers["x-appwrite-key"])
 
 
         // You can log messages to the console
@@ -301,7 +301,7 @@ public class Main {
         // Set API key
         // Client client = new Client();
         //     .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
-        //     .setKey(context.getReq().getHeaders().get('x-appwrite-key'));
+        //     .setKey(context.getReq().getHeaders().get("x-appwrite-key"));
 
         // You can log messages to the console
         context.log("Hello, Logs!");
@@ -340,7 +340,7 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     // Set API key
     // let client = Client()
     //    .setProject(ProcessInfo.processInfo.environment["APPWRITE_FUNCTION_PROJECT_ID"])
-    //    .setKey(context.req.headers['x-appwrite-key'] ?? "")
+    //    .setKey(context.req.headers["x-appwrite-key"] ?? "")
 
 
     // You can log messages to the console
@@ -383,7 +383,7 @@ public class Handler {
         // Set API 
         // var client = new Client()
         //     .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID")) 
-        //     .SetKey(Context.Req.Headers['x-appwrite-key'])
+        //     .SetKey(Context.Req.Headers["x-appwrite-key"])
 
         // You can log messages to the console
         Context.Log("Hello, Logs!");
@@ -1197,6 +1197,7 @@ namespace runtime {
       static RuntimeOutput main(RuntimeContext &context) {
 
       return context.res.send(std::getenv("MY_VAR"));
+      }
   };
 }
 ```
@@ -1301,12 +1302,19 @@ Authenticating with Appwrite is done via a dynamic API key, an API key, or a JWT
 You can read more about authentication in the [JWT login](/docs/products/auth/jwt) section of the docs.
 
 ## Using with dynamic API key {% #using-dynamic-api-key %}
-Dynamic API keys ignore permissions and operate without sessions.
+Dynamic API keys are the same as [API keys](/docs/advanced/platform/api-keys) but are automatically generated.
+Dynamic API keys grant access and operate without sessions.
 They allow your function to act as an admin-type role instead of acting on behalf of a user.
 
 You can only use dynamic API keys inside Appwrite functions.
 Dynamic API keys don't need to be created. 
-Instead, update the function settings to configure function level permissions by navigating to **Your function** > **Settings** > **Scopes**.
+Instead, update the function settings to configure the scopes of the function.
+
+1. In Appwrite Console, navigate to Functions.
+2. Click to open a function you wish to configure.
+3. Under the Settings tab, navigate to Scopes.
+4. Select the scopes you want to grant the dynamic key.
+5. It is best practice to allow only necessary permissions.
 
 {% multicode %}
 ```server-nodejs
@@ -1485,7 +1493,7 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     // Set API key
     let client = Client()
        .setProject(ProcessInfo.processInfo.environment["APPWRITE_FUNCTION_PROJECT_ID"])
-       .setKey(context.req.headers['x-appwrite-key'] ?? "");
+       .setKey(context.req.headers["x-appwrite-key"] ?? "");
 
     let databases = Databases(client: client)
 
@@ -1518,7 +1526,7 @@ namespace DotNetRuntime
             // Set API 
             var client = new Client()
                 .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID")) 
-                .SetKey(Context.Req.Headers['x-appwrite-key'])
+                .SetKey(Context.Req.Headers["x-appwrite-key"])
 
             var databases = new Databases(client);
     
@@ -1553,7 +1561,7 @@ class Main {
         // Set API key
         val client = Client()
            .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
-           .setKey(context.req.headers['x-appwrite-key'])
+           .setKey(context.req.headers["x-appwrite-key"])
 
         val databases = Databases(client)
 
@@ -1586,7 +1594,7 @@ public class Main {
         // Set API key
         // Client client = new Client();
         //     .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
-        //     .setKey(context.getReq().getHeaders().get('x-appwrite-key'));
+        //     .setKey(context.getReq().getHeaders().get("x-appwrite-key"));
 
         Databases databases = new Databases(client);
 
