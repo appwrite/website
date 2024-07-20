@@ -4,15 +4,13 @@
 </script>
 
 <div class="ticket-preview" style:opacity={browser ? '1' : '0.5'}>
-    <slot />
-
+    <div><slot /></div>
     <img class="shine" src={ShineSVG} alt="" />
 </div>
 
 <style lang="scss">
     .ticket-preview {
         position: relative;
-        width: 100%;
         display: grid;
         place-items: center;
         min-height: 60vh;
