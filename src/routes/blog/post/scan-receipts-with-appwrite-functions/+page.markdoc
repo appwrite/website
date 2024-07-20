@@ -121,12 +121,12 @@ import os
 # It's executed each time we get a request
 def main(context):
     # Why not try the Appwrite SDK?
-
+    #
     # Set API key
     # client = (
     #     Client()
     #        .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
-    #        .set_key(os.environ["APPWRITE_API_KEY"])
+    #        .set_key(context.req.headers["x-appwrite-key"])
     # )
 
     # You can log messages to the console

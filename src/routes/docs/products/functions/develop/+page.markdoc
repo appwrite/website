@@ -109,9 +109,8 @@ def main(context):
     #
     # client = (
     #     Client()
-    #        .set_endpoint("https://cloud.appwrite.io/v1")
     #        .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
-    #        .set_key(os.environ["APPWRITE_API_KEY"])
+    #        .set_key(context.req.headers["x-appwrite-key"]);
     # )
 
     # You can log messages to the console
@@ -1623,7 +1622,6 @@ import { Client, Databases, ID } from 'node-appwrite';
 
 export default async ({ req, res, log }) => {
     const client = new Client()
-        .setEndpoint('https://cloud.appwrite.io/v1')
         .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
 
     if (req.headers['x-appwrite-user-jwt']) {
@@ -1661,7 +1659,6 @@ use Appwrite\ID;
 
 return function ($context) {
     $client = new (Client())
-        ->setEndpoint('https://cloud.appwrite.io/v1')
         ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
     
     if (isset($context->req->headers['x-appwrite-user-jwt'])) {
@@ -1697,7 +1694,6 @@ import os
 def main(context):
     client = (
         Client()
-            .set_endpoint("https://cloud.appwrite.io/v1")
             .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
     )
 
@@ -1728,7 +1724,6 @@ include Appwrite
 
 def main(context)
     client = Client.new
-        .set_endpoint('https://cloud.appwrite.io/v1')
         .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
 
     if context.request.headers['x-appwrite-user-jwt']
@@ -1754,7 +1749,6 @@ import { Client, Databases, ID } from "https://deno.land/x/appwrite/mod.ts";
                 
 export default function ({req, res, error}: any){
     const client = new Client()
-        .setEndpoint("https://cloud.appwrite.io/v1")
         .setProject(Deno.env.get("APPWRITE_FUNCTION_PROJECT_ID") || "")
     
     if (req.headers["x-appwrite-user-jwt"]) {
@@ -1787,7 +1781,6 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 
 Future<dynamic> main(final context) async {
     final client = Client()
-        .setEndpoint('https://cloud.appwrite.io/v1')
         .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
     
     if (context.req.headers['x-appwrite-user-jwt'] != null) {
@@ -1820,7 +1813,6 @@ import Foundation
 
 func main(context: RuntimeContext) async throws -> RuntimeOutput {
     let client = Client()
-       .setEndpoint("https://cloud.appwrite.io/v1")
        .setProject(ProcessInfo.processInfo.environment["APPWRITE_FUNCTION_PROJECT_ID"])
     
     if let jwt = context.req.headers["x-appwrite-user-jwt"] {
@@ -1858,7 +1850,6 @@ namespace DotNetRuntime
         public async Task Main(RuntimeContext Context)
         {
             var client = new Client()
-               .SetEndpoint("https://cloud.appwrite.io/v1")
                .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID"))
 
             if (Context.Req.Headers.ContainsKey("x-appwrite-user-jwt")) {
@@ -1898,7 +1889,6 @@ import java.util.HashMap
 class Main {
     fun main(context: RuntimeContext): RuntimeOutput {
         val client = Client()
-           .setEndpoint("https://cloud.appwrite.io/v1")
            .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
 
         if (context.req.headers["x-appwrite-user-jwt"] != null) {
@@ -1936,7 +1926,6 @@ import io.appwrite.Client;
 public class Main {
     public RuntimeOutput main(RuntimeContext context) throws Exception {
         Client client = new Client()
-            .setEndpoint("https://cloud.appwrite.io/v1")
             .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
                 
         if (context.req.headers.containsKey("x-appwrite-user-jwt")) {
