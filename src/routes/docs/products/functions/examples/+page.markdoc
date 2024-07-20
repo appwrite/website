@@ -271,11 +271,11 @@ export default async function ({ req, res }) {
     return res.json({ ok: false, message: 'You must vote yes or no.' }, 400);
   }
 
+  // set API key
   const client = new Client();
   client
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-    .setKey(process.env.APPWRITE_API_KEY);
+    .setKey(req.headers['x-appwrite-key']);
 
   const database = new Database(client);
   
@@ -313,11 +313,11 @@ def main(context):
     if vote['vote'] != 'yes' and vote['vote'] != 'no':
         return context.res.json({'ok': False, 'message': 'You must vote yes or no.'}, 400)
 
+    # Set API key
     client = (
         Client()
-        .set_endpoint("https://cloud.appwrite.io/v1")
         .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
-        .set_key(os.environ["APPWRITE_API_KEY"])
+        .set_key(context.req.headers["x-appwrite-key"])
     )
 
     database = Databases(client)
@@ -362,11 +362,11 @@ return function ($context) {
         return $context->res->json(['ok' => false, 'message' => 'You must vote yes or no.'], 400);
     }
 
+    // Set API key
     $client = new Client();
     $client
-        ->setEndpoint('https://cloud.appwrite.io/v1')
         ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
-        ->setKey(getenv('APPWRITE_API_KEY'));
+        ->setKey($context->req->headers['x-appwrite-key']);
 
     $database = new Database($client);
 
@@ -411,10 +411,10 @@ Future main(final context) async {
         return context.res.json({'ok': false, 'message': 'You must vote yes or no.'}, 400);
     }
 
+    // Set API key
     final client = Client()
-        .setEndpoint('https://cloud.appwrite.io/v1')
         .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
-        .setKey(Platform.environment['APPWRITE_API_KEY']);
+        .setKey(context.req.headers['x-appwrite-key']);
 
     final database = Database(client);
 
@@ -457,11 +457,11 @@ def main(context)
         return context.res.json({'ok': false, 'message': 'You must vote yes or no.'}, 400)
     end
 
+    # Set API key
     client = Appwrite::Client.new()
     client
-        .set_endpoint('https://cloud.appwrite.io/v1')
         .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
-        .set_key(ENV['APPWRITE_API_KEY'])
+        .set_key(context.req.headers['x-appwrite-key'])
 
     database = Appwrite::Database.new(client)
     
@@ -655,7 +655,7 @@ return function ($context) {
       'content' => $formData['content']
     ];
 
-    Set API key
+    // Set API key
     $client = (new Client())
          ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
          ->setKey($context->req->headers['x-appwrite-key']);
@@ -705,7 +705,7 @@ def main(context)
         }
 
         # Set API key
-          client = Appwrite::Client.new
+        client = Appwrite::Client.new
             .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
             .set_key(context.req.headers['x-appwrite-key'])
 
@@ -754,6 +754,7 @@ Future main(final context) async {
             'content': formData['content']
         };
 
+        // Set API key
         final client = Client()
           .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
           .setKey(context.req.headers['x-appwrite-key']);
