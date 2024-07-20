@@ -735,10 +735,10 @@ There are several possible ways to send a response, explore them in the followin
 * Packages binary bytes, the status code, and the headers into an object.
 ---
 * `json`
-* Converts the data into a JSON string, and sets the content-type header to `application/json`.
+* Converts the data into a JSON string and sets the content-type header to `application/json`.
 ---
 * `empty`
-* Sends a response with a status of `code 204 No Content`.
+* Sends a response with a `code 204 No Content` status.
 ---
 * `redirect`
 * Redirects the client to the specified URL link.
