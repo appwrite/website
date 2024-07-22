@@ -5,7 +5,7 @@
 </script>
 
 {#if customizing}
-    <div class="u-flex u-gap-16 input">
+    <div class="u-flex u-gap-16 input-container">
         <div class="u-flex-vertical input">
             <label for="name">Name</label>
             <input
@@ -36,12 +36,20 @@
 {/if}
 
 <style lang="scss">
-    .input {
-        flex: 1;
-        margin-bottom: 8px;
+    .input-container {
+        .input {
+            flex: 1;
+            margin-bottom: 8px;
+            gap: 12px;
 
-        & > label {
-            font-size: 12px;
+            & > label {
+                font-size: 12px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+            gap: 32px;
         }
     }
 </style>
