@@ -14,34 +14,35 @@
     $: ({ ticket } = $page.data as PageData);
 </script>
 
-<div class="u-flex u-flex-vertical u-gap-4 u-margin-block-start-32">
-    <label for="name">Your name</label>
-    <input
-        class="web-input-text"
-        type="text"
-        placeholder="Enter your name"
-        id="name"
-        name="name"
-        required
-        bind:value={name}
-        maxlength="42"
-        disabled={!browser}
-    />
-</div>
-
-<div class="u-flex u-flex-vertical u-gap-4 u-margin-block-start-32">
-    <label for="name">Your title</label>
-    <input
-        class="web-input-text"
-        type="text"
-        placeholder="Enter your title"
-        id="title"
-        name="title"
-        required
-        bind:value={title}
-        maxlength="42"
-        disabled={!browser}
-    />
+<div class="u-flex u-gap-4">
+    <div class="u-flex-vertical">
+        <label for="name">Name</label>
+        <input
+            class="web-input-text"
+            type="text"
+            placeholder="Enter your name"
+            id="name"
+            name="name"
+            required
+            bind:value={name}
+            maxlength="42"
+            disabled={!browser}
+        />
+    </div>
+    <div class="u-flex-vertical">
+        <label for="name">Title</label>
+        <input
+            class="web-input-text"
+            type="text"
+            placeholder="Enter your title"
+            id="title"
+            name="title"
+            required
+            bind:value={title}
+            maxlength="42"
+            disabled={!browser}
+        />
+    </div>
 </div>
 
 <hr />
@@ -49,16 +50,13 @@
 {#if ticket.gh_user}
     <div class="u-flex u-cross-center u-gap-8 web-u-color-text-primary">
         <img src="/images/icons/colored/check.svg" alt="" />
-        <span class="web-sub-body-500">GitHub account connected</span>
+        <span class="web-sub-body-500">GitHub</span>
     </div>
 
     <div
         class="u-flex u-cross-center u-main-between"
         style="margin-block-start: 0.25rem; gap: 1.25rem"
     >
-        <p class="web-sub-body-500">
-            Your ticket has been updated to show your unique GitHub contribution pattern.
-        </p>
         <Switch bind:checked={showGitHub} />
     </div>
 

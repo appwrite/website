@@ -78,14 +78,14 @@
                     </p>
                 </hgroup>
                 <div class="buttons">
-                    <button class="web-button is-full-width" on:click={loginGithub}>
+                    <button class="web-button" on:click={loginGithub}>
                         <div class="web-icon-github" />
                         <span class="text">Register with GitHub</span>
                     </button>
                     <a
                         href="https://cloud.appwrite.io/login?forceRedirect={$page.url
                             .origin}/init/tickets"
-                        class="web-button is-full-width is-secondary"
+                        class="web-button is-secondary"
                     >
                         <div class="web-icon-appwrite web-u-color-text-primary" />
                         <span class="text">Register with Appwrite</span>
@@ -165,6 +165,7 @@
                 .buttons {
                     display: flex;
                     gap: 16px;
+                    margin: 0 auto;
                 }
             }
 
