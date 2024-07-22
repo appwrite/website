@@ -128,7 +128,7 @@
         gap: 32px;
     }
     .top {
-        min-height: fit-content;
+        min-height: 80vh;
         margin: 48px 0 -96px 0;
         display: flex;
         align-items: center;

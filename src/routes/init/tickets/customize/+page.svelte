@@ -58,19 +58,23 @@
 </svelte:head>
 
 <Main>
-    <div class="content web-container">
-        <div class="details">
-            <h2 class="web-label web-u-color-text-secondary" style:font-size="14px">
-                #{id?.toString().padStart(6, '0')}
-            </h2>
-            <h1 class="web-title web-u-color-text-primary">
-                <span style:font-weight="500">init</span>
-                will begin on August 5th<span class="web-u-color-text-accent">.</span>
-            </h1>
-            <p style:margin-top="24px">
-                Join us from August 5th-10th to learn about what we've been up to at Appwrite.
-            </p>
+    <div class="hero">
+        <div class="desktop-left">
+            <div class="header">
+                <h1 class="web-display">
+                    Join <span class="web-u-color-text-primary" style:font-weight="500">
+                        init
+                    </span><br />5-10 Aug
+                </h1>
+            </div>
+
+            <div class="info">
+                <p class="web-label u-margin-block-start-16">
+                    Join us from August 5th-10th to learn about what we've been up to at Appwrite.
+                </p>
+            </div>
         </div>
+
         <div class="ticket">
             <TicketPreview>
                 <Ticket
@@ -93,19 +97,11 @@
 </Main>
 
 <style lang="scss">
-    .content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin: 96px auto -32px auto;
-        gap: 64px;
-
-        @media screen and (max-width: 768px) {
-            flex-direction: column;
-            gap: 32px;
+    .desktop-left {
+        h1 {
+            margin-block-start: 3.5rem;
         }
     }
-
     .ticket {
         display: flex;
         flex-direction: column;
