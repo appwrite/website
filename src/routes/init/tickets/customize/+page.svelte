@@ -110,9 +110,10 @@
         display: flex;
         flex-direction: column;
         gap: 24px;
+        width: 100%;
 
         .item {
-            height: 75px;
+            min-height: 75px;
             width: 100%;
         }
     }

@@ -116,6 +116,7 @@
         animation: fade 1s ease-out;
         overflow: hidden;
         width: 100%;
+        min-width: 50vw;
 
         .stub {
             background: #000;

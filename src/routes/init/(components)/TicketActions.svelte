@@ -25,7 +25,7 @@
 
 {#if customizing}
     <div
-        class="u-flex u-cross-center u-main-between u-gap-16"
+        class="action-container u-flex u-main-between u-gap-16"
         style:justify-content="space-between"
     >
         <div class="u-flex u-gap-16">
@@ -98,6 +98,12 @@
 {/if}
 
 <style lang="scss">
+    .action-container {
+        @media screen and (max-width: 1024px) {
+            flex-direction: column;
+            gap: 32px;
+        }
+    }
     .buttons {
         display: flex;
         align-items: center;

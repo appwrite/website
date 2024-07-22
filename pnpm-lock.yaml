@@ -14,9 +14,6 @@ importers:
       h3:
         specifier: ^1.12.0
         version: 1.12.0
-      vaul-svelte:
-        specifier: ^0.3.2
-        version: 0.3.2(svelte@4.2.18)
     devDependencies:
       '@appwrite.io/console':
         specifier: ^0.6.2
@@ -563,9 +560,6 @@ packages:
   '@internationalized/date@3.5.0':
     resolution: {integrity: sha512-nw0Q+oRkizBWMioseI8+2TeUPEyopJVz5YxoYVzR0W1v+2YytiYah7s/ot35F149q/xAg4F1gT/6eTd+tsUpFQ==}
 
-  '@internationalized/date@3.5.4':
-    resolution: {integrity: sha512-qoVJVro+O0rBaw+8HPjUB1iH8Ihf8oziEnqMnvhJUSuVIrHOuZ6eNLHNvzXJKUvAtaDiqMnRlg8Z2mgh09BlUw==}
-
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
     engines: {node: '>=12'}
@@ -788,11 +782,6 @@ packages:
 
   '@melt-ui/svelte@0.74.4':
     resolution: {integrity: sha512-EeDP3C1grK+bPTezJQXKid2k4RRGZakyHTghD/zg//fM6Gqe4JykVtV0Yih4QJs+yGTgJq/EaNQMQ6JkTnvHxg==}
-    peerDependencies:
-      svelte: '>=3 <5'
-
-  '@melt-ui/svelte@0.76.2':
-    resolution: {integrity: sha512-7SbOa11tXUS95T3fReL+dwDs5FyJtCEqrqG3inRziDws346SYLsxOQ6HmX+4BkIsQh1R8U3XNa+EMmdMt38lMA==}
     peerDependencies:
       svelte: '>=3 <5'
 
@@ -1783,11 +1772,6 @@ packages:
 
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
-
-  bits-ui@0.21.12:
-    resolution: {integrity: sha512-Cf0iB+ZKwA0ZjkpixrhrZK9PC6pGPFleW/65Xc/z0lpGvWaFtdOhiYEntCHHxZ0VihP3aJaG0OBhUBIbmAePaA==}
-    peerDependencies:
-      svelte: ^4.0.0 || ^5.0.0-next.118
 
   bmp-js@0.1.0:
     resolution: {integrity: sha512-vHdS19CnY3hwiNdkaqk93DvjVLfbEcI8mys4UjuWrlX1haDmroo8o4xCzh4wD6DGV6HxRCyauwhHRqMTfERtjw==}
@@ -3761,11 +3745,6 @@ packages:
     resolution: {integrity: sha512-Ii+sehpSfZy+At5nPdnyMhx78fEoPDkR2XW/zimHEL3MyGJQOCQ7WeP20jPYRz7ZCpcKLB21NxuXHF3bxjStBQ==}
     engines: {node: '>= 0.10'}
 
-  vaul-svelte@0.3.2:
-    resolution: {integrity: sha512-X4OGWttSTVUl417qGDsSFgOvIx24DoiMRY/jaP9z0v9FL8LQQJ0RQ1ZM0QpdyQPRlNd24ewjNQHh5EgYDtfNpw==}
-    peerDependencies:
-      svelte: ^4.0.0 || ^5.0.0-next.1
-
   vite-imagetools@6.2.9:
     resolution: {integrity: sha512-C4ZYhgj2vAj43/TpZ06XlDNP0p/7LIeYbgUYr+xG44nM++4HGX6YZBKAYpiBNgiCFUTJ6eXkRppWBrfPMevgmg==}
     engines: {node: '>=12.0.0'}
@@ -4306,10 +4285,6 @@ snapshots:
     dependencies:
       '@swc/helpers': 0.5.6
 
-  '@internationalized/date@3.5.4':
-    dependencies:
-      '@swc/helpers': 0.5.6
-
   '@isaacs/cliui@8.0.2':
     dependencies:
       string-width: 5.1.2
@@ -4606,16 +4581,6 @@ snapshots:
       svelte: 4.2.18
 
   '@melt-ui/svelte@0.74.4(svelte@4.2.18)':
-    dependencies:
-      '@floating-ui/core': 1.6.0
-      '@floating-ui/dom': 1.6.3
-      '@internationalized/date': 3.5.0
-      dequal: 2.0.3
-      focus-trap: 7.5.4
-      nanoid: 5.0.6
-      svelte: 4.2.18
-
-  '@melt-ui/svelte@0.76.2(svelte@4.2.18)':
     dependencies:
       '@floating-ui/core': 1.6.0
       '@floating-ui/dom': 1.6.3
@@ -5762,13 +5727,6 @@ snapshots:
   bindings@1.5.0:
     dependencies:
       file-uri-to-path: 1.0.0
-
-  bits-ui@0.21.12(svelte@4.2.18):
-    dependencies:
-      '@internationalized/date': 3.5.4
-      '@melt-ui/svelte': 0.76.2(svelte@4.2.18)
-      nanoid: 5.0.6
-      svelte: 4.2.18
 
   bmp-js@0.1.0: {}
 
@@ -7894,11 +7852,6 @@ snapshots:
   util-deprecate@1.0.2: {}
 
   validator@13.11.0: {}
-
-  vaul-svelte@0.3.2(svelte@4.2.18):
-    dependencies:
-      bits-ui: 0.21.12(svelte@4.2.18)
-      svelte: 4.2.18
 
   vite-imagetools@6.2.9(rollup@4.12.0):
     dependencies:
