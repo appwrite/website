@@ -38,7 +38,9 @@
         </div>
         <div class="shine" />
         <div class="noise" />
-        <Lines lines={[2, 3, 1]} />
+        {#if !disableEffects}
+            <Lines lines={[2, 3, 1]} />
+        {/if}
     </div>
     <div class="stub" class:pink={aw_email}>
         {#await contributions then c}
@@ -113,12 +115,8 @@
         gap: 4px;
         overflow: hidden;
         border-radius: pxToRem(16);
-        aspect-ratio: 2/1;
+        aspect-ratio: 2 / 1;
         animation: fade 1s ease-out;
-        overflow: hidden;
-        width: 100%;
-        min-width: 50vw;
-
         .stub {
             background: #000;
             grid-column: 10 / -1;

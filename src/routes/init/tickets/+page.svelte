@@ -80,7 +80,7 @@
                 <div class="buttons">
                     <button class="web-button" on:click={loginGithub}>
                         <div class="web-icon-github" />
-                        <span class="text">Register with GitHub</span>
+                        <span class="text">GitHub</span>
                     </button>
                     <a
                         href="https://cloud.appwrite.io/login?forceRedirect={$page.url
@@ -88,7 +88,7 @@
                         class="web-button is-secondary"
                     >
                         <div class="web-icon-appwrite web-u-color-text-primary" />
-                        <span class="text">Register with Appwrite</span>
+                        <span class="text">Appwrite</span>
                     </a>
                 </div>
                 <p class="u-margin-block-start-16 privacy">
@@ -106,8 +106,8 @@
                 <div class="ticket-preview-wrapper">
                     {#each tickets as { name, title }, i}
                         {@const id = i + 1}
-                        <div style:width="50vw">
-                            <Ticket disableEffects={i % 3 ? true : false} {name} {title} {id} />
+                        <div style:width="300vw">
+                            <Ticket disableEffects {name} {title} {id} />
                         </div>
                     {/each}
                 </div>
@@ -137,10 +137,11 @@
 
         .signup {
             margin: 0 auto;
-            width: 50vw;
+            width: 100%;
             position: absolute;
             top: 50%;
             left: 50%;
+            padding: 0 48px;
             transform: translateX(-50%) translateY(-50%);
             z-index: 1100;
             text-align: center;
@@ -219,6 +220,14 @@
 
         @media (prefers-reduced-motion: reduce) {
             animation-play-state: paused;
+        }
+
+        @media screen and (max-width: 768px) {
+            width: 800vw;
+        }
+
+        @media screen and (max-width: 640px) {
+            width: 1000vw;
         }
     }
 </style>
