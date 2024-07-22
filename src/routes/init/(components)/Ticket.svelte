@@ -48,12 +48,13 @@
                     out:fade={{ duration: 100 }}
                     data-remove-delay={removeDelay ? '' : undefined}
                 >
-                    {#each c as row}
-                        <div class="row">
-                            {#each row as level, i}
-                                <div style:--index={row.length - i} data-level={level} />
-                            {/each}
-                        </div>
+                    {#each c as row, index}
+                        {@const average = row.reduce((acc, level) => acc + level, 0) / row.length}
+                        <div
+                            class="row"
+                            data-level={Math.round(average)}
+                            style:--index={row.length - index}
+                        />
                     {/each}
                 </div>
             {/if}
@@ -121,8 +122,10 @@
         .stub {
             background: #000;
             grid-column: 10 / -1;
-
-            border-radius: pxToRem(16);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: pxToRem(8);
             line-height: 1;
             position: relative;
             overflow: hidden;
@@ -156,7 +159,7 @@
                 justify-content: space-between;
                 width: fit-content;
                 gap: 4px;
-                padding: pxToRem(20) 0;
+                padding: pxToRem(24) 0;
                 left: 80%;
 
                 span {
@@ -174,54 +177,47 @@
                 --delay: 700ms;
                 display: flex;
                 flex-direction: column;
-                gap: pxToRem(8);
-
-                position: absolute;
-                inset-block-start: 0;
-                inset-inline-end: 50px;
-
-                mask-image: linear-gradient(to left, hsl(240, 3%, 14%), transparent);
+                gap: pxToRem(4);
+                width: 60%;
+                margin: pxToRem(16);
+                border-radius: pxToRem(16);
 
                 &[data-remove-delay] {
                     --delay: 0ms;
                 }
 
                 .row {
-                    display: flex;
+                    --size: 4px;
+                    max-height: 80%;
                     gap: pxToRem(8);
+                    width: 100%;
+                    height: var(--size);
+                    border-radius: calc(var(--size) / 2);
+                    animation: fade-in 500ms ease calc(calc(75ms * var(--index)) + var(--delay))
+                        forwards;
 
-                    div {
-                        --size: 8px;
-                        width: var(--size);
-                        height: var(--size);
+                    &[data-level] {
+                        --bg-color: white;
+                    }
 
-                        border-radius: calc(var(--size) / 4);
-                        animation: fade-in 500ms ease calc(calc(75ms * var(--index)) + var(--delay))
-                            forwards;
+                    &[data-level='0'] {
+                        opacity: 0.16;
+                    }
 
-                        &[data-level] {
-                            --bg-color: white;
-                        }
+                    &[data-level='1'] {
+                        opacity: 0.32;
+                    }
 
-                        &[data-level='0'] {
-                            opacity: 0;
-                        }
+                    &[data-level='2'] {
+                        opacity: 0.64;
+                    }
 
-                        &[data-level='1'] {
-                            opacity: 0.25;
-                        }
+                    &[data-level='3'] {
+                        opacity: 0.8;
+                    }
 
-                        &[data-level='2'] {
-                            opacity: 0.5;
-                        }
-
-                        &[data-level='3'] {
-                            opacity: 0.75;
-                        }
-
-                        &[data-level='4'] {
-                            opacity: 1;
-                        }
+                    &[data-level='4'] {
+                        opacity: 1;
                     }
                 }
             }
