@@ -112,11 +112,10 @@
         gap: 4px;
         overflow: hidden;
         border-radius: pxToRem(16);
-        min-width: 50vw;
-        width: 100%;
         aspect-ratio: 2/1;
         animation: fade 1s ease-out;
         overflow: hidden;
+        width: 100%;
 
         .stub {
             background: #000;
