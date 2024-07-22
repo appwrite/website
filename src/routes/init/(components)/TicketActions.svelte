@@ -33,7 +33,7 @@
                 <div class="u-flex u-cross-center u-gap-8">
                     <div class="u-flex u-cross-center u-gap-8 web-u-color-text-primary">
                         <img src="/images/icons/colored/check.svg" alt="" />
-                        <span class="web-sub-body-500">GitHub</span>
+                        <span class="web-sub-body-500">Connected to GitHub</span>
                     </div>
 
                     <Tooltip placement="bottom">
@@ -51,7 +51,7 @@
             {#if ticket.aw_email}
                 <div class="u-flex u-cross-center u-gap-8 web-u-color-text-primary">
                     <img src="/images/icons/colored/check.svg" alt="" />
-                    <span class="web-sub-body-500">Appwrite</span>
+                    <span class="web-sub-body-500">Connected to Appwrite</span>
                 </div>
             {:else}
                 <a
