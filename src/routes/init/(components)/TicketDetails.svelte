@@ -33,13 +33,12 @@
             />
         </div>
     </div>
-{:else}
-    <div>You received ticket</div>
 {/if}
 
 <style lang="scss">
     .input {
         flex: 1;
+        margin-bottom: 8px;
 
         & > label {
             font-size: 12px;
