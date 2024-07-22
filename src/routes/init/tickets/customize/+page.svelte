@@ -61,12 +61,15 @@
     <div class="content web-container">
         <div class="details">
             <h2 class="web-label web-u-color-text-secondary" style:font-size="14px">
-                You've got ticket number: #{id?.toString().padStart(6, '0')}
+                #{id?.toString().padStart(6, '0')}
             </h2>
             <h1 class="web-title web-u-color-text-primary">
                 <span style:font-weight="500">init</span>
                 will begin on August 5th<span class="web-u-color-text-accent">.</span>
             </h1>
+            <p style:margin-top="24px">
+                Join us from August 5th-10th to learn about what we've been up to at Appwrite.
+            </p>
         </div>
         <div class="ticket">
             <TicketPreview>
