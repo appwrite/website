@@ -25,47 +25,45 @@
     }
 </script>
 
-<div class="wrapper">
-    <div class="ticket">
-        <div class="lockup">
-            <p class="web-title web-u-color-text-primary">
-                {name?.trim() || '-'}
-            </p>
+<div class="ticket">
+    <div class="lockup">
+        <p class="web-title web-u-color-text-primary">
+            {name?.trim() || '-'}
+        </p>
 
-            <p class="web-label">{title}</p>
+        <p class="web-label">{title}</p>
 
-            <div class="logo" style:width="75%">
-                <Lockup fill={false} animate={!disableEffects} />
-            </div>
-            <div class="shine" />
-            <div class="noise" />
-            <Lines />
+        <div class="logo" style:width="75%">
+            <Lockup fill={false} animate={!disableEffects} />
         </div>
-        <div class="stub" class:pink={aw_email}>
-            {#await contributions then c}
-                {#if c && show_contributions}
-                    <div
-                        class="github"
-                        out:fade={{ duration: 100 }}
-                        data-remove-delay={removeDelay ? '' : undefined}
-                    >
-                        {#each c as row}
-                            <div class="row">
-                                {#each row as level, i}
-                                    <div style:--index={row.length - i} data-level={level} />
-                                {/each}
-                            </div>
-                        {/each}
-                    </div>
-                {/if}
-            {/await}
-            <div class="details">
-                <span>Init 2.0</span>
-                <span>{`Ticket Number: #${id?.toString().padStart(6, '0')}`}</span>
-            </div>
-            <div class="shine" />
-            <div class="noise" />
+        <div class="shine" />
+        <div class="noise" />
+        <Lines />
+    </div>
+    <div class="stub" class:pink={aw_email}>
+        {#await contributions then c}
+            {#if c && show_contributions}
+                <div
+                    class="github"
+                    out:fade={{ duration: 100 }}
+                    data-remove-delay={removeDelay ? '' : undefined}
+                >
+                    {#each c as row}
+                        <div class="row">
+                            {#each row as level, i}
+                                <div style:--index={row.length - i} data-level={level} />
+                            {/each}
+                        </div>
+                    {/each}
+                </div>
+            {/if}
+        {/await}
+        <div class="details">
+            <span>Init 2.0</span>
+            <span>{`Ticket Number: #${id?.toString().padStart(6, '0')}`}</span>
         </div>
+        <div class="shine" />
+        <div class="noise" />
     </div>
 </div>
 
@@ -84,15 +82,6 @@
             filter: blur(0px);
             transform: rotateX(0deg) rotateY(0deg);
         }
-    }
-
-    .wrapper {
-        position: relative;
-        font-size: var(--base-width, var(--base-width-default));
-        width: 100%;
-        perspective: 600px;
-        animation: fade 1s ease-out;
-        z-index: 100;
     }
 
     .shine,
@@ -118,152 +107,146 @@
     }
 
     .ticket {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
         gap: 4px;
         overflow: hidden;
         border-radius: pxToRem(16);
         min-width: 50vw;
         width: 100%;
-
-        transition: transform 100ms;
-        -webkit-transform-origin: center;
-        transform-origin: center;
-        -webkit-transform: rotateY(var(--rx)) rotateX(var(--ry));
-        transform: rotateY(var(--rx)) rotateX(var(--ry));
-        -webkit-transform-style: preserve-3d;
-        transform-style: preserve-3d;
-        overflow: hidden;
-    }
-
-    .stub {
-        background: #000;
-        width: 20%;
-        border-radius: pxToRem(16);
-        line-height: 1;
-        position: relative;
+        aspect-ratio: 2/1;
+        animation: fade 1s ease-out;
         overflow: hidden;
 
-        &.pink {
-            color: white;
-            background: linear-gradient(
-                135deg,
-                hsl(var(--web-color-pink-500)) 0%,
-                hsl(var(--web-color-pink-500)) 61%,
-                hsl(var(--web-color-secondary-100)) 100%
-            );
-        }
+        .stub {
+            background: #000;
+            grid-column: 10 / -1;
 
-        .shine {
-            background-position: 25% -120px;
-            background-size: 500%;
-            opacity: 0.5;
-        }
+            border-radius: pxToRem(16);
+            line-height: 1;
+            position: relative;
+            overflow: hidden;
 
-        .noise {
-            background-position: bottom right;
-        }
+            &.pink {
+                color: white;
+                background: linear-gradient(
+                    135deg,
+                    hsl(var(--web-color-pink-500)) 0%,
+                    hsl(var(--web-color-pink-500)) 61%,
+                    hsl(var(--web-color-secondary-100)) 100%
+                );
+            }
 
-        .details {
-            transform-origin: center;
-            position: absolute;
-            inset: 0;
-            display: grid;
-            align-items: center;
-            margin-left: 50px;
-            gap: 4px;
-            padding: pxToRem(20) 0;
-            grid-template-columns: max-content;
+            .shine {
+                background-position: 25% -120px;
+                background-size: 500%;
+                opacity: 0.5;
+            }
 
-            span {
-                font-family: var(--web-font-family-aeonik-fono);
-                font-size: pxToRem(12);
-                transform: rotate(90deg);
+            .noise {
+                background-position: bottom right;
+            }
+
+            .details {
                 transform-origin: center;
-                width: 100%;
-                text-transform: uppercase;
-                display: inline-block;
-            }
-        }
+                position: absolute;
+                inset: 0;
+                display: grid;
+                align-items: center;
+                margin-left: 50px;
+                gap: 4px;
+                padding: pxToRem(20) 0;
+                grid-template-columns: max-content;
 
-        .github {
-            --delay: 700ms;
-            display: flex;
-            flex-direction: column;
-            gap: pxToRem(8);
-
-            position: absolute;
-            inset-block-start: 0;
-            inset-inline-end: 50px;
-
-            mask-image: linear-gradient(to left, hsl(240, 3%, 14%), transparent);
-
-            &[data-remove-delay] {
-                --delay: 0ms;
+                span {
+                    font-family: var(--web-font-family-aeonik-fono);
+                    font-size: pxToRem(12);
+                    transform: rotate(90deg);
+                    transform-origin: center;
+                    width: 100%;
+                    text-transform: uppercase;
+                    display: inline-block;
+                }
             }
 
-            .row {
+            .github {
+                --delay: 700ms;
                 display: flex;
+                flex-direction: column;
                 gap: pxToRem(8);
 
-                div {
-                    --size: 8px;
-                    width: var(--size);
-                    height: var(--size);
+                position: absolute;
+                inset-block-start: 0;
+                inset-inline-end: 50px;
 
-                    border-radius: calc(var(--size) / 4);
-                    animation: fade-in 500ms ease calc(calc(75ms * var(--index)) + var(--delay))
-                        forwards;
+                mask-image: linear-gradient(to left, hsl(240, 3%, 14%), transparent);
 
-                    &[data-level] {
-                        --bg-color: white;
-                    }
+                &[data-remove-delay] {
+                    --delay: 0ms;
+                }
 
-                    &[data-level='0'] {
-                        opacity: 0;
-                    }
+                .row {
+                    display: flex;
+                    gap: pxToRem(8);
 
-                    &[data-level='1'] {
-                        opacity: 0.25;
-                    }
+                    div {
+                        --size: 8px;
+                        width: var(--size);
+                        height: var(--size);
 
-                    &[data-level='2'] {
-                        opacity: 0.5;
-                    }
+                        border-radius: calc(var(--size) / 4);
+                        animation: fade-in 500ms ease calc(calc(75ms * var(--index)) + var(--delay))
+                            forwards;
 
-                    &[data-level='3'] {
-                        opacity: 0.75;
-                    }
+                        &[data-level] {
+                            --bg-color: white;
+                        }
 
-                    &[data-level='4'] {
-                        opacity: 1;
+                        &[data-level='0'] {
+                            opacity: 0;
+                        }
+
+                        &[data-level='1'] {
+                            opacity: 0.25;
+                        }
+
+                        &[data-level='2'] {
+                            opacity: 0.5;
+                        }
+
+                        &[data-level='3'] {
+                            opacity: 0.75;
+                        }
+
+                        &[data-level='4'] {
+                            opacity: 1;
+                        }
                     }
                 }
             }
         }
-    }
 
-    .lockup {
-        --base-width-default: clamp(12rem, 60vw, #{$base-width}rem);
-        height: var(--base-width, var(--base-width-default));
-        width: 80%;
-        background: #000;
-        padding: pxToRem(24);
-        position: relative;
-        border-radius: pxToRem(16);
-        overflow: hidden;
+        .lockup {
+            grid-column: span 9 / span 9;
+            height: 100%;
+            background: #000;
+            padding: pxToRem(24);
+            position: relative;
+            border-radius: pxToRem(16);
+            overflow: hidden;
 
-        .shine {
-            background-size: 150%;
+            .shine {
+                background-size: 150%;
+            }
+
+            .logo {
+                position: absolute;
+
+                transform: translateY(30%);
+                z-index: 10;
+            }
         }
-
-        .logo {
-            position: absolute;
-
-            transform: translateY(30%);
-            z-index: 10;
-        }
     }
-
     .web-title {
         font-size: pxToRem(24);
         line-height: 1;
