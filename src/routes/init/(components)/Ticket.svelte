@@ -38,7 +38,7 @@
         </div>
         <div class="shine" />
         <div class="noise" />
-        <Lines />
+        <Lines lines={[2, 3, 1]} />
     </div>
     <div class="stub" class:pink={aw_email}>
         {#await contributions then c}

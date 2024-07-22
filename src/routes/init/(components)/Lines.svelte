@@ -1,27 +1,17 @@
 <script lang="ts">
-    export const lines: Array<Array<number>> = [
-        [2, 1],
-        [4, 3],
-        [8, 2],
-        [5, 1],
-        [3, 4]
-    ];
+    export let lines: Array<number> = [2, 4, 2, 3];
 </script>
 
 <div class="container">
     <div class="lines">
-        {#each lines as [columns, rows], i}
-            <div>
-                {#each Array.from({ length: columns }) as _, i}
-                    <div style:left={`${i * 200}px`} style:position="relative">
-                        {#each Array.from({ length: rows }) as _, i}
-                            <div
-                                class="line"
-                                style:left={`${i * 35}px`}
-                                style={`--delay:${i * 250}ms`}
-                            />
-                        {/each}
-                    </div>
+        {#each lines as rows, index}
+            <div style:position="relative">
+                {#each Array.from({ length: rows }) as _, i}
+                    <div
+                        class="line"
+                        style:left={`${i * 15}px`}
+                        style={`--delay:${i * index * 250}ms`}
+                    />
                 {/each}
             </div>
         {/each}
@@ -38,10 +28,10 @@
             rgba(255, 255, 255, 0) 100%
         );
         --width: 2px;
-        --height: 20%;
-        --starting-position: -60%;
+        --height: 10vh;
+        --starting-position: -50vh;
         --duration: 4s;
-        --initial-delay: 0s;
+        --initial-delay: 0.5s;
     }
 
     @keyframes -global-line {
@@ -60,24 +50,7 @@
         justify-content: center;
         align-items: center;
         inset: 0;
-
-        &::before,
-        &::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 50px;
-            background: linear-gradient(to bottom, var(--background), rgba(0, 0, 0, 0));
-            z-index: -1;
-        }
-
-        &::before {
-            top: 0;
-        }
-
-        &::after {
-            bottom: 0;
-        }
+        z-index: 10;
 
         .lines {
             position: absolute;
@@ -85,10 +58,11 @@
             z-index: -10;
             display: flex;
             justify-content: space-between;
-            gap: 150px;
+            gap: 20px;
+            padding: 0 24px;
 
             .line {
-                position: absolute;
+                position: relative;
                 height: var(--height);
                 width: var(--width);
 
