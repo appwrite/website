@@ -151,17 +151,18 @@
                 transform-origin: center;
                 position: absolute;
                 inset: 0;
-                display: grid;
-                align-items: center;
-                margin-left: 50px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: fit-content;
                 gap: 4px;
                 padding: pxToRem(20) 0;
-                grid-template-columns: max-content;
+                left: 80%;
 
                 span {
                     font-family: var(--web-font-family-aeonik-fono);
-                    font-size: pxToRem(12);
-                    transform: rotate(90deg);
+                    font-size: clamp(8px, 1vw, 12px);
+                    writing-mode: vertical-lr;
                     transform-origin: center;
                     width: 100%;
                     text-transform: uppercase;
