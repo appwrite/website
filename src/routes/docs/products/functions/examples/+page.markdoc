@@ -271,7 +271,7 @@ export default async function ({ req, res }) {
     return res.json({ ok: false, message: 'You must vote yes or no.' }, 400);
   }
 
-  // set API key
+  // Set API key and set project
   const client = new Client();
   client
     .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
@@ -313,7 +313,7 @@ def main(context):
     if vote['vote'] != 'yes' and vote['vote'] != 'no':
         return context.res.json({'ok': False, 'message': 'You must vote yes or no.'}, 400)
 
-    # Set API key
+    # Set API key and set project
     client = (
         Client()
         .set_project(os.environ['APPWRITE_FUNCTION_PROJECT_ID'])
@@ -362,7 +362,7 @@ return function ($context) {
         return $context->res->json(['ok' => false, 'message' => 'You must vote yes or no.'], 400);
     }
 
-    // Set API key
+    // Set API key and set project
     $client = new Client();
     $client
         ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
@@ -411,7 +411,7 @@ Future main(final context) async {
         return context.res.json({'ok': false, 'message': 'You must vote yes or no.'}, 400);
     }
 
-    // Set API key
+    // Set API key and set project
     final client = Client()
         .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
         .setKey(context.req.headers['x-appwrite-key']);
@@ -457,7 +457,7 @@ def main(context)
         return context.res.json({'ok': false, 'message': 'You must vote yes or no.'}, 400)
     end
 
-    # Set API key
+    # Set API key and set project
     client = Appwrite::Client.new()
     client
         .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
@@ -547,7 +547,7 @@ export default async function ({ req, res }) {
       content: formData.content
     };
 
-    // Set API key
+    // Set API key and set project
     const client = new Client()
       .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
       .setKey(req.headers['x-appwrite-key']);
@@ -599,7 +599,7 @@ def main(context):
             'content': formData['content'][0]
         }
 
-        # Set API key
+        # Set API key and set project
         client = (
           Client()
             .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
@@ -655,7 +655,7 @@ return function ($context) {
       'content' => $formData['content']
     ];
 
-    // Set API key
+    // Set API key and set project
     $client = (new Client())
          ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
          ->setKey($context->req->headers['x-appwrite-key']);
@@ -704,7 +704,7 @@ def main(context)
             'content' => formData['content']
         }
 
-        # Set API key
+        # Set API key and set project
         client = Appwrite::Client.new
             .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
             .set_key(context.req.headers['x-appwrite-key'])
@@ -754,7 +754,7 @@ Future main(final context) async {
             'content': formData['content']
         };
 
-        // Set API key
+        // Set API key and set project
         final client = Client()
           .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
           .setKey(context.req.headers['x-appwrite-key']);

@@ -488,6 +488,6 @@ Here are some cron expressions for common intervals:
 
 # Permissions {% #permission %}
 
-Appwrite Functions can be executed using Client or Server SDKs. Client SDKs must be authenticated with an account that has been granted execution [permissions](/docs/advanced/platform/permissions) on the function's settings page. Server SDKs require an API key with the correct scopes.
+Appwrite Functions can be executed using Client or Server SDKs. Client SDKs must be authenticated with an account that has been granted execution [permissions](/docs/advanced/platform/permissions) on the function's settings page. Configure the function [scopes](/docs/advanced/platform/api-keys#scopes) to use the automatically generated [dynamic api key](/docs/products/functions/develop#using-dynamic-api-key) for the Server SDKs.
 
 If your function has a generated or custom domain, executions are not authenticated. Anyone visiting the configured domains will be considered a guest, so make sure to give `Any` execute permission in order for domain executions to work. If you need to enforce permissions for functions with a domain, use authentication methods like JWT.
