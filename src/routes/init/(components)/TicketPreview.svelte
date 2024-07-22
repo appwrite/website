@@ -13,7 +13,7 @@
         position: relative;
         display: grid;
         place-items: center;
-        min-height: 60vh;
+
         transition: opacity 0.25s ease;
 
         @media screen and (max-width: 768px) {

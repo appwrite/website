@@ -1,16 +1,12 @@
 <script lang="ts">
-    import { page } from '$app/stores';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
-    import { createCopy } from '$lib/utils/copy';
     import TicketPreview from '$routes/init/(components)/TicketPreview.svelte';
     import { dequal } from 'dequal/lite';
-    import { fade } from 'svelte/transition';
     import Ticket from '../../(components)/Ticket.svelte';
-    import Form from '../../(components)/Form.svelte';
-    import { Drawer } from 'vaul-svelte';
-    import { getMockContributions } from '$routes/init/helpers';
+    import TicketDetails from '$routes/init/(components)/TicketDetails.svelte';
+    import TicketActions from '$routes/init/(components)/TicketActions.svelte';
 
     export let data;
 
@@ -18,6 +14,8 @@
     let title = data.ticket?.title ?? '';
     const id = data.ticket?.id ?? 0;
     let showGitHub = data.ticket?.show_contributions ?? true;
+
+    let customizing = false;
 
     $: modified = !dequal(
         {
@@ -47,23 +45,13 @@
             })
         });
     }
-
-    const ticketUrl = `${$page.url.origin}/init/tickets/${data.ticket.$id}`;
-    const { copied, copy } = createCopy(ticketUrl);
-    $: twitterText = encodeURIComponent(
-        [
-            `Join Init and celebrate everything new with @appwrite`,
-            ``,
-            `Claim your ticket. ${ticketUrl}`
-        ].join('\n')
-    );
 </script>
 
 <svelte:head>
     <title>Customize Ticket - Appwrite</title>
     <meta
         name="description"
-        content="Join Init February 26-March 1. Register today and claim your Init ticket."
+        content="Join Init August 5th-10th. Register today and claim your ticket."
     />
 </svelte:head>
 
@@ -76,6 +64,9 @@
             </h1>
         </div>
         <div class="ticket">
+            <div class="item">
+                <TicketDetails bind:customizing bind:name bind:title />
+            </div>
             <TicketPreview>
                 <Ticket
                     {...data.ticket}
@@ -85,22 +76,8 @@
                     show_contributions={showGitHub}
                 />
             </TicketPreview>
-            <div class="buttons">
-                <button class="web-button">
-                    <span class="text">Customize ticket</span>
-                </button>
-                <button class="web-button is-secondary" on:click={copy}>
-                    <div class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary" />
-                    <span class="text">Copy URL</span>
-                </button>
-                <a
-                    class="web-button is-secondary"
-                    href="https://twitter.com/intent/tweet?text={twitterText}"
-                    target="_blank"
-                >
-                    <div class="web-icon-x web-u-color-text-primary" />
-                    <span class="text">Post</span>
-                </a>
+            <div class="item">
+                <TicketActions {saveTicket} bind:customizing bind:showGitHub />
             </div>
         </div>
     </div>
@@ -120,30 +97,18 @@
         gap: 64px;
     }
 
-    .buttons {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-    }
-    :global([data-dialog-close]) {
-        cursor: pointer;
-    }
-    :global([data-vaul-drawer]) {
+    .ticket {
         display: flex;
         flex-direction: column;
-        background-color: hsl(var(--web-color-background));
-        position: fixed;
-        top: 103px;
-        bottom: 0;
-        overflow-y: auto;
-        z-index: 10;
-        max-width: 40vw;
-        left: 0;
-        padding-inline: clamp(1.25rem, 4vw, 120rem);
-        border-right: 1px solid hsl(var(--web-color-border));
-        // padding-right: 40px;
-    }
+        gap: 24px;
 
+        .item {
+            height: 100px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+    }
     .web-container {
         padding-block-start: 0;
 
