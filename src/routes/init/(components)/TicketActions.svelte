@@ -6,6 +6,9 @@
     import Tooltip from '$lib/components/Tooltip.svelte';
 
     import type { PageData } from '../tickets/customize/$types';
+    import { browser, dev } from '$app/environment';
+    import { appwriteInit } from '$lib/appwrite/init';
+    import { goto } from '$app/navigation';
 
     export let showGitHub = true;
     export let customizing = false;
@@ -76,9 +79,24 @@
     </div>
 {:else}
     <div class="buttons" style:justify-content="space-between">
-        <button class="web-button" on:click={() => (customizing = !customizing)}>
-            <span class="text">Customize ticket</span>
-        </button>
+        <div class="u-flex u-gap-8">
+            <button class="web-button" on:click={() => (customizing = !customizing)}>
+                <span class="text">Customize ticket</span>
+            </button>
+            {#if dev}
+                <button
+                    class="web-button is-secondary"
+                    on:click={async () => {
+                        await appwriteInit.account.deleteSession('current');
+                        goto('/init/tickets');
+                    }}
+                    disabled={!browser}
+                >
+                    <div class="web-icon-github web-u-color-text-primary" />
+                    <span class="text">Log-out of GitHub</span>
+                </button>
+            {/if}
+        </div>
 
         <div class="u-flex u-gap-8">
             <button class="web-button is-secondary" on:click={copy}>
