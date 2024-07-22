@@ -3,14 +3,8 @@ import { get, writable } from 'svelte/store';
 
 import { OAuthProvider } from '@appwrite.io/console';
 import { appwriteInit } from '$lib/appwrite/init';
-import { contributors } from '$lib/contributors';
 import { getAppwriteUser, type AppwriteUser } from '$lib/utils/console';
-import type {
-    ContributionsMatrix,
-    TicketData,
-    TicketDoc,
-    TicketVariant
-} from './tickets/constants';
+import type { ContributionsMatrix, TicketData, TicketDoc } from './tickets/constants';
 
 export function createCountdown(date: Date) {
     const today = new Date();
@@ -146,22 +140,6 @@ export async function getTicketContributions(id: string, f = fetch): Promise<Con
         })) as { data: ContributionsMatrix | null };
 
     return contributions ?? [];
-}
-
-export function getTicketVariant(
-    doc: Omit<TicketData, 'contributions' | 'variant'>
-): TicketVariant {
-    const { gh_user, aw_email } = doc;
-
-    if (gh_user && contributors.includes(gh_user)) {
-        return 'rainbow';
-    }
-
-    if (aw_email) {
-        return 'pink';
-    }
-
-    return 'default';
 }
 
 export async function getTicketByUser(user: User, f = fetch) {

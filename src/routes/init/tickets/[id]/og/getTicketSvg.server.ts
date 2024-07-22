@@ -1,19 +1,18 @@
 import { splitStr } from '$lib/utils/string';
-import type { ContributionsMatrix, TicketData, TicketVariant } from '$routes/init/tickets/constants';
+import type { ContributionsMatrix, TicketData } from '$routes/init/tickets/constants';
 import { getContributions } from '../get-contributions/helpers.server';
 
 type GetCubeArgs = {
     week: number;
     day: number;
     level: number;
-    variant?: TicketVariant;
 };
 
-const getCube = ({ week, day, level, variant = 'default' }: GetCubeArgs) => {
+const getCube = ({ week, day, level }: GetCubeArgs) => {
     const x = INITIAL_X + day * DIFF_X;
     const y = INITIAL_Y + week * DIFF_Y;
     const opacity = level / 4;
-    const fill = variant === 'rainbow' ? 'white' : '#FD366E';
+    const fill = '#FD366E';
 
     return `<rect opacity="${opacity}" x="${x}" y="${y}" width="3.4087" height="3.4087" rx="0.852174" fill="${fill}" />`;
 };
@@ -24,54 +23,17 @@ const DIFF_X = 5.1133;
 
 export async function getCubes(ticket: TicketData) {
     const matrix = ((await getContributions(ticket.$id)) ?? []) as ContributionsMatrix;
-    // const matrix = getMockContributions();
 
     return matrix.reduce((acc, week, w) => {
         week.forEach((level, d) => {
-            acc.push(getCube({ week: w, day: d, level, variant: ticket.variant }));
+            acc.push(getCube({ week: w, day: d, level }));
         });
 
         return acc;
     }, [] as string[]);
 }
 
-const cards: Record<TicketVariant, string> = {
-    pink: `<g filter="url(#filter0_b_446_1414)">
-  <g clip-path="url(#clip0_446_1414)">
-  <rect width="438" height="249" rx="18" fill="#19191C"/>
-  <rect width="438" height="249" rx="18" fill="url(#paint0_linear_446_1414)" fill-opacity="0.64"/>
-  <g filter="url(#filter1_f_446_1414)">
-  <rect x="218.252" y="22.9998" width="196.251" height="274.751" rx="6.82611" fill="url(#paint1_linear_446_1414)"/>
-  <rect x="218.466" y="23.2131" width="195.824" height="274.324" rx="6.6128" stroke="#FD366E" stroke-width="0.426632"/>
-  </g>
-  <g filter="url(#filter2_d_446_1414)">
-  <g clip-path="url(#clip1_446_1414)">
-  <g filter="url(#filter3_b_446_1414)">
-  <rect x="218.25" y="22.9996" width="196.251" height="274.751" rx="6.82611" fill="#FD366E" fill-opacity="0.12"/>
-  <rect x="218.464" y="23.2129" width="195.824" height="274.324" rx="6.6128" stroke="url(#paint2_linear_446_1414)" stroke-opacity="0.48" stroke-width="0.426632"/>
-  <rect x="218.464" y="23.2129" width="195.824" height="274.324" rx="6.6128" stroke="url(#paint3_linear_446_1414)" stroke-width="0.426632"/>
-  </g>
-  <g filter="url(#filter4_b_446_1414)">
-  <rect x="218.464" y="23.2129" width="195.824" height="274.324" rx="6.6128" stroke="url(#paint4_linear_446_1414)" stroke-opacity="0.48" stroke-width="0.426632"/>
-  <rect x="218.464" y="23.2129" width="195.824" height="274.324" rx="6.6128" stroke="url(#paint5_linear_446_1414)" stroke-opacity="0.64" stroke-width="0.426632"/>
-  </g>
-  <g filter="url(#filter5_f_446_1414)">
-  <path d="M463.106 128.104L248.194 363.358C241.901 370.247 242.01 380.829 248.443 387.586C255.558 395.059 267.522 394.917 274.458 387.277L488.637 151.354C495.606 143.678 494.285 131.634 485.818 125.65C478.711 120.626 468.976 121.678 463.106 128.104Z" fill="url(#paint6_linear_446_1414)"/>
-  </g>
-  <g filter="url(#filter6_f_446_1414)">
-  <path d="M485.72 9.50119L270.808 244.756C264.515 251.644 264.624 262.226 271.057 268.983C278.172 276.456 290.136 276.314 297.072 268.674L511.251 32.7515C518.22 25.075 516.899 13.0308 508.432 7.04675C501.325 2.02345 491.59 3.07548 485.72 9.50119Z" fill="url(#paint7_linear_446_1414)"/>
-  </g>
-  <g filter="url(#filter7_f_446_1414)">
-  <path d="M403.38 -9.69792L188.467 225.557C182.175 232.445 182.284 243.027 188.717 249.784C195.832 257.257 207.796 257.115 214.732 249.475L428.91 13.5524C435.879 5.87593 434.559 -6.16827 426.092 -12.1524C418.985 -17.1757 409.25 -16.1236 403.38 -9.69792Z" fill="url(#paint8_linear_446_1414)"/>
-  </g>
-  <g filter="url(#filter8_f_446_1414)">
-  <path d="M312.081 -21.2169L97.169 214.038C90.8766 220.926 90.9857 231.508 97.4188 238.265C104.534 245.738 116.498 245.596 123.433 237.956L337.612 2.03346C344.581 -5.64303 343.261 -17.6872 334.794 -23.6713C327.686 -28.6946 317.951 -27.6426 312.081 -21.2169Z" fill="url(#paint9_linear_446_1414)"/>
-  </g>
-  <rect x="299.314" y="29.8257" width="34.1306" height="3.41306" rx="1.70653" fill="#19191C"/>
-  </g>
-  </g>
-  </g>
-  </g>`,
+const cards = {
     default: `<g filter="url(#filter1_b_327_1972)">
   <mask id="path-3-inside-1_327_1972" fill="white">
   <path fill-rule="evenodd" clip-rule="evenodd"
@@ -98,13 +60,6 @@ const cards: Record<TicketVariant, string> = {
   </g>`
 };
 
-function getTribeSource(variant: TicketVariant, tribe: string) {
-    if (variant === 'rainbow') {
-        return `/images/tribes/rainbow/${tribe?.toLowerCase()}.png`;
-    }
-    return `/images/tribes/${tribe?.toLowerCase()}.png`;
-}
-
 async function toBase64(src: string, f: typeof fetch) {
     const base64 = await f(src)
         .then((res) => res.arrayBuffer())
@@ -122,14 +77,6 @@ export const getTicketSvg = async (ticket: TicketData, f: typeof fetch) => {
     const chars_per_line = 16;
     // split ticket name in max 16 chars per line
     const split_name = splitStr(ticket.name, { chars: chars_per_line, breakWord: false });
-
-    const rainbow_png = await toBase64('/images/tickets/rainbow.png', f);
-
-    let tribe_svg: string | undefined = undefined;
-    if (ticket.tribe) {
-        const tribe_src = getTribeSource(ticket.variant ?? 'default', ticket.tribe);
-        tribe_svg = await toBase64(tribe_src, f);
-    }
 
     return `
 <svg width="876" height="498" viewBox="0 0 438 249" fill="none" xmlns="http://www.w3.org/2000/svg">

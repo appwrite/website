@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { spring } from 'svelte/motion';
     import type { ContributionsMatrix, TicketData } from '../tickets/constants';
     import Lockup from './Lockup.svelte';
     import Lines from './Lines.svelte';
@@ -24,132 +23,10 @@
     $: if (!show_contributions) {
         removeDelay = true;
     }
-
-    const springR = { stiffness: 0.066, damping: 0.25 };
-
-    let springRotate = spring({ x: 0, y: 0 }, springR);
-    let springGlare = spring({ x: 50, y: 50, o: 0.25 }, springR);
-    let springBackground = spring({ x: 50, y: 50 }, springR);
-    let hovering = false;
-
-    const round = (num: number, fix = 3) => parseFloat(num.toFixed(fix));
-    const clamp = (num: number, min = -20, max = 20) => Math.min(Math.max(num, min), max);
-    const adjust = (
-        value: number,
-        fromMin: number,
-        fromMax: number,
-        toMin: number,
-        toMax: number
-    ) => {
-        return round(toMin + ((toMax - toMin) * (value - fromMin)) / (fromMax - fromMin));
-    };
-
-    function isTouchEvent(e: MouseEvent | TouchEvent): e is TouchEvent {
-        return e.type === 'touchmove';
-    }
-
-    function onMouse(node: HTMLElement) {
-        if (disableEffects) return;
-        const mouseMove = (e: MouseEvent) => {
-            const clientX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
-            const clientY = isTouchEvent(e) ? e.touches[0].clientY : e.clientY;
-
-            const el = e.target as HTMLElement;
-            const rect = el.getBoundingClientRect(); // get element's current size/position
-            const absolute = {
-                x: clientX - rect.left, // get mouse position from left
-                y: clientY - rect.top // get mouse position from right
-            };
-            const percent = {
-                x: round((100 / rect.width) * absolute.x),
-                y: round((100 / rect.height) * absolute.y)
-            };
-            const center = {
-                x: percent.x - 50,
-                y: percent.y - 50
-            };
-
-            springRotate.stiffness = springR.stiffness;
-            springRotate.damping = springR.damping;
-            springRotate.set({
-                x: round(-(center.x / 7)),
-                y: round(center.y / 10)
-            });
-
-            springGlare.stiffness = springR.stiffness;
-            springGlare.damping = springR.damping;
-            springGlare.set({
-                x: percent.x,
-                y: percent.y,
-                o: 1
-            });
-
-            springBackground.stiffness = springR.stiffness;
-            springBackground.damping = springR.damping;
-            springBackground.set({
-                x: adjust(percent.x, 0, 100, 37, 63),
-                y: adjust(percent.y, 0, 100, 33, 67)
-            });
-
-            hovering = true;
-        };
-        const mouseLeave = () => {
-            if (disableEffects) return;
-
-            const snapStiff = 0.05;
-            const snapDamp = 0.5;
-
-            springRotate.stiffness = snapStiff;
-            springRotate.damping = snapDamp;
-            springRotate.set({ x: 0, y: 0 });
-
-            springGlare.stiffness = snapStiff;
-            springGlare.damping = snapDamp;
-            springGlare.set({ x: 50, y: 50, o: 0 });
-
-            springBackground.stiffness = snapStiff;
-            springBackground.damping = snapDamp;
-            springBackground.set({ x: 50, y: 50 }, { soft: 1 });
-
-            hovering = false;
-        };
-
-        node.addEventListener('mousemove', mouseMove);
-        node.addEventListener('mouseleave', mouseLeave);
-
-        return {
-            destroy() {
-                node.removeEventListener('mousemove', mouseMove);
-                node.removeEventListener('mouseleave', mouseLeave);
-            }
-        };
-    }
-
-    $: styles = `
-		--rx: ${$springRotate.x}deg;
-		--ry: ${$springRotate.y}deg;
-        --opacity: ${hovering ? 1 : 0};
-        --mx: ${$springGlare.x}%;
-		--my: ${$springGlare.y}%;
-        --pointer-x: ${$springGlare.x}%;
-        --pointer-y: ${$springGlare.y}%;
-        --pointer-from-top: ${$springGlare.y / 100};
-        --pointer-from-left: ${$springGlare.x / 100};
-		--o: ${$springGlare.o};
-        --card-opacity: ${$springGlare.o};
-        --pointer-from-center: ${clamp(
-            Math.sqrt(
-                ($springGlare.y - 50) * ($springGlare.y - 50) +
-                    ($springGlare.x - 50) * ($springGlare.x - 50)
-            ) / 50,
-            0,
-            1
-        )};
-	`;
 </script>
 
 <div class="wrapper">
-    <div class="ticket" use:onMouse style={styles}>
+    <div class="ticket">
         <div class="lockup">
             <p class="web-title web-u-color-text-primary">
                 {name?.trim() || '-'}

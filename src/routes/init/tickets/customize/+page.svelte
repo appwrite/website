@@ -7,6 +7,7 @@
     import Ticket from '../../(components)/Ticket.svelte';
     import TicketDetails from '$routes/init/(components)/TicketDetails.svelte';
     import TicketActions from '$routes/init/(components)/TicketActions.svelte';
+    import { getMockContributions } from '$routes/init/helpers';
 
     export let data;
 
@@ -44,6 +45,7 @@
                 showGitHub
             })
         });
+        customizing = false;
     }
 </script>
 
@@ -58,25 +60,24 @@
 <Main>
     <div class="content web-container">
         <div class="details">
+            <h2 class="web-label web-u-color-text-secondary" style:font-size="14px">
+                You've got ticket number: #{id?.toString().padStart(6, '0')}
+            </h2>
             <h1 class="web-title web-u-color-text-primary">
-                You're registered for
                 <span style:font-weight="500">init</span>
+                will begin on August 5th<span class="web-u-color-text-accent">.</span>
             </h1>
         </div>
         <div class="ticket">
-            <div class="item">
-                <TicketDetails bind:customizing bind:name bind:title />
-            </div>
             <TicketPreview>
                 <Ticket
                     {...data.ticket}
-                    {name}
-                    {title}
-                    contributions={data.streamed.contributions}
+                    contributions={data.streamed?.contributions}
                     show_contributions={showGitHub}
                 />
             </TicketPreview>
             <div class="item">
+                <TicketDetails bind:customizing bind:name bind:title />
                 <TicketActions {saveTicket} bind:customizing bind:showGitHub />
             </div>
         </div>
@@ -93,8 +94,13 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin: 0 auto;
+        margin: 96px auto -32px auto;
         gap: 64px;
+
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+            gap: 32px;
+        }
     }
 
     .ticket {
@@ -103,10 +109,8 @@
         gap: 24px;
 
         .item {
-            height: 100px;
+            height: 75px;
             width: 100%;
-            display: flex;
-            align-items: center;
         }
     }
     .web-container {
