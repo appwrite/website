@@ -83,19 +83,6 @@
             <button class="web-button" on:click={() => (customizing = !customizing)}>
                 <span class="text">Customize ticket</span>
             </button>
-            {#if dev}
-                <button
-                    class="web-button is-secondary"
-                    on:click={async () => {
-                        await appwriteInit.account.deleteSession('current');
-                        goto('/init/tickets');
-                    }}
-                    disabled={!browser}
-                >
-                    <div class="web-icon-github web-u-color-text-primary" />
-                    <span class="text">Log-out of GitHub</span>
-                </button>
-            {/if}
         </div>
 
         <div class="u-flex u-gap-8">
