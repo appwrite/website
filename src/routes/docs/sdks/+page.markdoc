@@ -198,21 +198,12 @@ sdk.ID.unique()
 sdk.ID.custom()
 
 ```
-```python
-from appwrite.id import ID
-
-# Generate a unique ID
-ID.unique()
-# Generate a custom ID
-ID.custom()
-```
-```dart
-import 'package:dart_appwrite/dart_appwrite.dart';
-
+```deno
+import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 // Generate a unique ID
-ID.unique()
+sdk.ID.unique()
 // Generate a custom ID
-ID.custom()
+sdk.ID.custom()
 ```
 ```php
 <?php
@@ -224,25 +215,24 @@ ID::unique()
 // Generate a custom ID
 ID::custom()
 ```
-```ruby
-require 'appwrite'
+```python
+from appwrite.id import ID
 
-include Appwrite
+# Generate a unique ID
+ID.unique()
+# Generate a custom ID
+ID.custom()
+```
+```csharp
+using Appwrite.ID;
 
 // Generate a unique ID
 ID.unique()
 // Generate a custom ID
 ID.custom()
 ```
-```deno
-import * as sdk from "https://deno.land/x/appwrite/mod.ts";
-// Generate a unique ID
-sdk.ID.unique()
-// Generate a custom ID
-sdk.ID.custom()
-```
-```csharp
-using Appwrite.ID;
+```dart
+import 'package:dart_appwrite/dart_appwrite.dart';
 
 // Generate a unique ID
 ID.unique()
@@ -258,6 +248,16 @@ ID.custom()
 ```
 ```kotlin
 io.appwrite.ID
+// Generate a unique ID
+ID.unique()
+// Generate a custom ID
+ID.custom()
+```
+```ruby
+require 'appwrite'
+
+include Appwrite
+
 // Generate a unique ID
 ID.unique()
 // Generate a custom ID
