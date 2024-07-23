@@ -34,16 +34,12 @@
 </svelte:head>
 
 <div
-    style:position="absolute"
-    style:top="0"
-    style:width="100vw"
-    style:height="100vh"
-    style:overflow="hidden"
+    class="absolute top-0 w-screen h-screen overflow-hidden"
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
     <div
-        class="absolute"
-        style="top: -800px; left: 50%; translate: -50%; pointer-events:none; z-index: 10"
+        class="absolute pointer-events-none"
+        style="top: -800px; left: 50%; translate: -50%; z-index: 10"
     >
         <enhanced:img
             style="width:1466px; height:804px; transform:rotate(150.348deg); opacity: 0.65; filter: blur(127.5px);
