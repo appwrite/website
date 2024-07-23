@@ -39,35 +39,8 @@
                         class="web-u-color-text-accent">_</span
                     >
                 </span>
-                launches on February 26th
+                launched on February 26th, 2024
             </h1>
-
-            <div class="info">
-                <p class="web-label web-u-color-text-primary">
-                    Register today and claim your Init ticket
-                </p>
-                <button
-                    class="web-button is-full-width u-margin-block-start-16"
-                    on:click={loginGithub}
-                >
-                    <div class="web-icon-github" />
-                    <span class="text">Register with GitHub account</span>
-                </button>
-                <a
-                    href="https://cloud.appwrite.io/login?forceRedirect={$page.url
-                        .origin}/init-0/tickets"
-                    class="web-button is-full-width is-secondary u-margin-block-start-8"
-                >
-                    <div class="web-icon-appwrite web-u-color-text-primary" />
-                    <span class="text">Register with Appwrite account</span>
-                </a>
-                <p class="u-margin-block-start-16">
-                    By registering, you agree to our <a href="/terms" class="web-link is-inline"
-                        >Terms and Conditions</a
-                    >
-                    and <a href="/privacy" class="web-link is-inline">Privacy Policy</a>
-                </p>
-            </div>
         </div>
 
         <div class="ticket-preview-wrapper">
@@ -99,12 +72,6 @@
 <style lang="scss">
     h1 {
         margin-block-start: 3.5rem;
-    }
-
-    .info {
-        p:first-child {
-            margin-block-start: 4rem;
-        }
     }
 
     .ticket-preview-wrapper {
@@ -165,15 +132,6 @@
     @media screen and (max-width: 1023px) {
         h1 {
             margin-block-start: 0;
-        }
-
-        .info {
-            grid-row: 3;
-
-            p:first-child {
-                margin-block-start: 0;
-                text-align: center;
-            }
         }
 
         .ticket-preview-wrapper {

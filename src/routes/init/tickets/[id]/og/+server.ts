@@ -4,13 +4,13 @@ import sharp from 'sharp';
 import type { TicketData } from '../../constants.js';
 import { getTicketSvg } from './getTicketSvg.server.js';
 
-export async function GET({ params, fetch }) {
+export async function GET({ params }) {
     const ticket = (await appwriteInitServer.databases.getDocument(
         APPWRITE_DB_INIT_ID,
         APPWRITE_COL_INIT_ID,
         params.id
     )) as unknown as TicketData;
-    const svg = await getTicketSvg({ ...ticket }, fetch);
+    const svg = await getTicketSvg({ ...ticket });
 
     const svgBuffer = Buffer.from(svg);
     const pngBuffer = await sharp(svgBuffer, {})
