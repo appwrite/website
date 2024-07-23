@@ -8,7 +8,7 @@
 
   &-footer { display:flex; flex-direction:column; gap:pxToRem(4); margin-block-start:pxToRem(24); }
 
-  #{$theme-dark} & {
+  #{$dark} & {
     --p-blockquote-border-color: var(--web-color-greyscale-750);
   }
 }

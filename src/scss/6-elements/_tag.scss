@@ -17,7 +17,7 @@
   #{$theme-light} & {
     --p-tag-bg-color: var(--web-color-greyscale-100);
   }
-  #{$theme-dark} & {
+  #{$dark} & {
     --p-tag-bg-color: var(--web-color-greyscale-750);
   }
 }
@@ -78,7 +78,7 @@
 
   }
   @include light-mode();
-  #{$theme-dark} & {
+  #{$dark} & {
     @include dark-mode();
   }
   #{$theme-light} & {

@@ -50,7 +50,7 @@
     background-color: hsl(var(--p-scroll-bg-color));
   }
 
-  #{$theme-dark} & {
+  #{$dark} & {
     --track-bg-color: var(--color-neutral-500);
     --track-border-color: var(--color-neutral-200);
     --scroll-bg-color: var(--color-neutral-150);

@@ -23,7 +23,7 @@
 
   &-wrapper {
     @include light-mode();
-    #{$theme-dark} & {
+    #{$dark} & {
       @include dark-mode();
     }
   }

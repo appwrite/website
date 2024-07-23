@@ -131,7 +131,7 @@ Within the `<html>` tag, add a `<head>` tag with the necessary meta tags, styles
 And after the `</head>` tag, add our `<body>` tag with the following content:
 
 ```html
-<body class="theme-dark">
+<body class="dark">
   <main class="main-content">
     <div class="top-cover u-padding-block-end-56">
       <div class="container">

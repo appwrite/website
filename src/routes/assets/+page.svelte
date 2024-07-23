@@ -164,7 +164,7 @@
                     </div>
                   </div>
                   <div
-                    class="media-wrapper | theme-dark |
+                    class="media-wrapper | dark |
                                     u-stretch web-u-flex-basis-300 u-main-center u-cross-center web-u-border-radius-8 web-u-bg-color-neutral-800 web-u-min-block-size-320 flex
                                     ps-16 pe-16"
                   >
@@ -263,7 +263,7 @@
                     </div>
                   </div>
                   <div
-                    class="media-wrapper | theme-dark |
+                    class="media-wrapper | dark |
                                     u-stretch web-u-flex-basis-300 u-main-center u-cross-center web-u-border-radius-8 web-u-bg-color-neutral-800 web-u-min-block-size-320 flex
                                     ps-16 pe-16"
                   >

@@ -233,7 +233,7 @@
 .#{$p}-u-only-light,
 .#{$p}-u-only-dark   { display:none; }
 
-#{$theme-dark} {
+#{$dark} {
   .#{$p}-u-only-dark   { display:block; }
 }
 #{$theme-light} {

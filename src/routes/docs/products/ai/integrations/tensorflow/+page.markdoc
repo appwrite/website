@@ -259,7 +259,7 @@ Create a HTML web page that the function will serve. Create a new file at `stati
     <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink" />
     <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink-icons" />
   </head>
-  <body class="theme-dark">
+  <body class="dark">
     <main class="main-content">
       <div class="top-cover u-padding-block-end-56">
         <div class="container">
