@@ -61,12 +61,14 @@
                     </ul>
 
                     {#if data.nextPage}
-                        <button class="web-button is-secondary" on:click={loadMore}>Load more</button>
+                        <button class="web-button is-secondary" on:click={loadMore}
+                            >Load more</button
+                        >
                     {/if}
                 </div>
             </div>
         </div>
-        <div class="web-big-padding-section-level-1 u-position-relative u-overflow-hidden">
+        <div class="web-big-padding-section-level-1 relative overflow-hidden">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
                     <PreFooter />

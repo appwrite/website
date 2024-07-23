@@ -29,17 +29,17 @@
 
 <Main>
     <enhanced:img
-        class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-0"
+        class="absolute u-inset-inline-start-0 u-inset-block-start-0"
         src="./bg-left.png"
         alt=""
     />
     <enhanced:img
-        class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0"
+        class="absolute u-inset-inline-end-0 u-inset-block-start-0"
         src="./bg-right.png"
         alt=""
     />
-    <div class="web-big-padding-section u-position-relative">
-        <div class="web-big-padding-section-level-1 u-position-relative">
+    <div class="web-big-padding-section relative">
+        <div class="web-big-padding-section-level-1 relative">
             <div class="web-big-padding-section-level-2" style:margin-block="8rem">
                 <section class="web-container web-u-padding-block-end-0">
                     <div
@@ -61,14 +61,14 @@
                 </section>
             </div>
         </div>
-        <div class="web-big-padding-section-level-1 u-position-relative">
+        <div class="web-big-padding-section-level-1 relative">
             <div class="web-big-padding-section-level-2">
                 <section class="web-container">
                     <section
-                        class="web-grid-1-1"
+                        class="grid grid-cols-2"
                         style="--grid-1-1-gap:2rem; --grid-1-1-gap-desktop:6.25rem;"
                     >
-                        <div class="u-flex-vertical u-gap-32">
+                        <div class="u-flex-vertical gap-8">
                             <h2 class="web-display web-u-color-text-primary">
                                 Designed for and by developers
                             </h2>
@@ -82,7 +82,7 @@
                             </a>
                         </div>
 
-                        <div class="web-description u-flex-vertical u-gap-16">
+                        <div class="web-description u-flex-vertical gap-4">
                             <p>
                                 At Appwrite it is our mission to eliminate friction and abstract
                                 complexity for every creator. Giving developers all the tools they
@@ -104,7 +104,7 @@
             </div>
         </div>
 
-        <!-- <div class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light">
+        <!-- <div class="web-big-padding-section-level-1 relative web-white-section light">
 			<div class="web-big-padding-section-level-2">
 				<div class="web-container">
 					<div class="web-hero is-center">
@@ -119,9 +119,9 @@
 						<div class="web-timeline-content">
 							<ol class="web-timeline-content-list">
 								<li class="web-timeline-content-item">
-									<div class="web-timeline-content-item-top web-grid-1-1"
+									<div class="web-timeline-content-item-top grid grid-cols-2"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
-										<div class="u-flex-vertical u-gap-16">
+										<div class="u-flex-vertical gap-4">
 											<span class="web-badges web-eyebrow web-u-cross-child-start">2019_</span>
 											<h3 class="web-title web-u-color-text-primary">
 												A passion project called Appwrite
@@ -138,7 +138,7 @@
 
 									</div>
 
-									<div class="web-timeline-content-item-bottom web-grid-1-1 is-not-mobile"
+									<div class="web-timeline-content-item-bottom grid grid-cols-2 is-not-mobile"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div>
 											[CONTENT-left]
@@ -152,9 +152,9 @@
 									</div>
 								</li>
 								<li class="web-timeline-content-item">
-									<div class="web-grid-1-1"
+									<div class="grid grid-cols-2"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
-										<div class="u-flex-vertical u-gap-16">
+										<div class="u-flex-vertical gap-4">
 											<span class="web-badges web-eyebrow web-u-cross-child-start">2019_</span>
 											<h3 class="web-title web-u-color-text-primary">
 												Building the team
@@ -166,7 +166,7 @@
 										<div>[image]</div>
 									</div>
 
-									<div class="web-timeline-content-item-bottom web-grid-1-1 is-not-mobile"
+									<div class="web-timeline-content-item-bottom grid grid-cols-2 is-not-mobile"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div>
 											<div class="web-card is-white web-u-max-width-168">
@@ -180,9 +180,9 @@
 									</div>
 								</li>
 								<li class="web-timeline-content-item">
-									<div class="web-grid-1-1"
+									<div class="grid grid-cols-2"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
-										<div class="u-flex-vertical u-gap-16">
+										<div class="u-flex-vertical gap-4">
 											<span class="web-badges web-eyebrow web-u-cross-child-start">2019_</span>
 											<h3 class="web-title web-u-color-text-primary">
 												Community validation
@@ -196,12 +196,12 @@
 										</div>
 									</div>
 
-									<div class="web-timeline-content-item-bottom web-grid-1-1 is-not-mobile"
+									<div class="web-timeline-content-item-bottom grid grid-cols-2 is-not-mobile"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div>
 											<div class="web-card is-white">
-												<div class="web-social-item u-flex-vertical u-gap-24">
-													<div class="u-flex u-gap-16 u-main-space-between">
+												<div class="web-social-item u-flex-vertical gap-6">
+													<div class="flex gap-4 u-main-space-between">
 														<div class="web-user-box">
 															<img class="web-user-box-image" src="/images/avatars/eldad.png" alt="Avatar of Eldad Fux">
 															<div class="web-user-box-name web-sub-body-500">Eldad Fux</div>
@@ -222,9 +222,9 @@
 									</div>
 								</li>
 								<li class="web-timeline-content-item">
-									<div class="web-grid-1-1"
+									<div class="grid grid-cols-2"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
-										<div class="u-flex-vertical u-gap-16">
+										<div class="u-flex-vertical gap-4">
 											<span class="web-badges web-eyebrow web-u-cross-child-start">2019_</span>
 											<h3 class="web-title web-u-color-text-primary">
 												Continuous improvement
@@ -239,7 +239,7 @@
 
 									</div>
 
-									<div class="web-timeline-content-item-bottom web-grid-1-1 is-not-mobile"
+									<div class="web-timeline-content-item-bottom grid grid-cols-2 is-not-mobile"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div>
 											[CONTENT-left]
@@ -251,9 +251,9 @@
 								</li>
 
 								<li class="web-timeline-content-item">
-									<div class="web-grid-1-1"
+									<div class="grid grid-cols-2"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
-										<div class="u-flex-vertical u-gap-16">
+										<div class="u-flex-vertical gap-4">
 											<span class="web-badges web-eyebrow web-u-cross-child-start">2019_</span>
 											<h3 class="web-title web-u-color-text-primary">
 												Taking it to the Cloud
@@ -265,7 +265,7 @@
 										<div>[image]</div>
 									</div>
 
-									<div class="web-timeline-content-item-bottom web-grid-1-1 is-not-mobile"
+									<div class="web-timeline-content-item-bottom grid grid-cols-2 is-not-mobile"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div>
 											[CONTENT-left]
@@ -282,12 +282,14 @@
 				</div>
 			</div>
 		</div> -->
-        <div class="web-big-padding-section-level-1 web-white-section theme-light">
+        <div class="web-big-padding-section-level-1 web-white-section light">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
                     <div class="web-hero web-u-max-width-800">
-                        <h4 class="web-display web-u-color-text-primary">Backed by top investors</h4>
-                        <p class="web-description web-u-max-width-480 u-margin-inline-auto">
+                        <h4 class="web-display web-u-color-text-primary">
+                            Backed by top investors
+                        </h4>
+                        <p class="web-description web-u-max-width-480 mx-auto">
                             Appwrite is proudly backed by some of the top investors in the industry.
                         </p>
                     </div>
@@ -377,7 +379,9 @@
             </div>
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
-                    <h5 class="web-title web-u-color-text-primary u-text-center">Angel Investors</h5>
+                    <h5 class="web-title web-u-color-text-primary u-text-center">
+                        Angel Investors
+                    </h5>
                     <ul class="web-grid-2c-4c u-margin-block-start-48">
                         <li class="u-flex-vertical">
                             <h6 class="web-main-body-500 web-u-color-text-primary">
@@ -386,7 +390,7 @@
                             <p class="web-main-body-500">Partner</p>
                             <p class="web-main-body-500">MizMaa</p>
                             <ul
-                                class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto"
+                                class="flex gap-2 u-padding-block-start-16 u-margin-block-start-auto"
                             >
                                 <li>
                                     <a
@@ -413,11 +417,13 @@
                             </ul>
                         </li>
                         <li class="u-flex-vertical">
-                            <h6 class="web-main-body-500 web-u-color-text-primary">Ariel Maislos</h6>
+                            <h6 class="web-main-body-500 web-u-color-text-primary">
+                                Ariel Maislos
+                            </h6>
                             <p class="web-main-body-500">Angel Investor</p>
                             <p class="web-main-body-500">Former Apple IL CEO</p>
                             <ul
-                                class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto"
+                                class="flex gap-2 u-padding-block-start-16 u-margin-block-start-auto"
                             >
                                 <li>
                                     <a
@@ -447,7 +453,7 @@
                             <h6 class="web-main-body-500 web-u-color-text-primary">Gilad Engel</h6>
                             <p class="web-main-body-500">Angel Investor</p>
                             <ul
-                                class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto"
+                                class="flex gap-2 u-padding-block-start-16 u-margin-block-start-auto"
                             />
                         </li>
                         <li class="u-flex-vertical">
@@ -457,7 +463,7 @@
                             <p class="web-main-body-500">Co-founder & Partner</p>
                             <p class="web-main-body-500">Crane Venture Partners</p>
                             <ul
-                                class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto"
+                                class="flex gap-2 u-padding-block-start-16 u-margin-block-start-auto"
                             >
                                 <li>
                                     <a
@@ -476,7 +482,7 @@
                             <h6 class="web-main-body-500 web-u-color-text-primary">Ameet Patel</h6>
                             <p class="web-main-body-500">Angel Investor</p>
                             <ul
-                                class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto"
+                                class="flex gap-2 u-padding-block-start-16 u-margin-block-start-auto"
                             >
                                 <li>
                                     <a
@@ -496,7 +502,7 @@
                             <p class="web-main-body-500">Partner</p>
                             <p class="web-main-body-500">Redline Capital</p>
                             <ul
-                                class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto"
+                                class="flex gap-2 u-padding-block-start-16 u-margin-block-start-auto"
                             >
                                 <li>
                                     <a
@@ -518,7 +524,7 @@
                             <p class="web-main-body-500">Co-founder</p>
                             <p class="web-main-body-500">Heroku</p>
                             <ul
-                                class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto"
+                                class="flex gap-2 u-padding-block-start-16 u-margin-block-start-auto"
                             >
                                 <li>
                                     <a
@@ -538,7 +544,7 @@
                             <p class="web-main-body-500">Co-Founder</p>
                             <p class="web-main-body-500">Elastic</p>
                             <ul
-                                class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto"
+                                class="flex gap-2 u-padding-block-start-16 u-margin-block-start-auto"
                             >
                                 <li>
                                     <a
@@ -558,10 +564,8 @@
             </div>
         </div>
 
-        <div class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden">
-            <div
-                class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
-            >
+        <div class="web-big-padding-section-level-1 u-padding-0 overflow-hidden">
+            <div class="web-big-padding-section-level-2 is-margin-replace-padding relative">
                 <img
                     src="/images/bgs/pre-footer.png"
                     alt=""

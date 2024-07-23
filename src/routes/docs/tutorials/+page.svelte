@@ -59,15 +59,15 @@
     <article class="web-article">
         <header class="web-article-header">
             <div class="web-article-header-start u-flex-vertical web-u-cross-start">
-                <div class="u-position-relative u-flex u-cross-center">
+                <div class="relative flex u-cross-center">
                     <h1 class="web-title">Tutorials</h1>
                 </div>
             </div>
             <div class="web-article-header-end" />
         </header>
-        <div class="web-article-content web-u-gap-80">
+        <div class="web-article-content web-gap-20">
             {#each data.tutorials as category}
-                <section class="u-flex-vertical u-gap-24">
+                <section class="u-flex-vertical gap-6">
                     <h2 class="web-eyebrow">{category.title}</h2>
                     <ul class="web-grid-row-4 web-grid-row-4-mobile-2">
                         {#each category.tutorials as tutorial}
@@ -79,7 +79,7 @@
                                         aria-disabled="true"
                                         tabindex="-1"
                                     >
-                                        <header class="u-flex u-cross-baseline u-gap-4">
+                                        <header class="flex u-cross-baseline gap-1">
                                             <span
                                                 class="{getIcon(tutorial)} web-u-font-size-24"
                                                 aria-hidden="true"
@@ -92,7 +92,7 @@
                                     </a>
                                 {:else}
                                     <a href={tutorial.href} class="web-card is-normal">
-                                        <header class="u-flex u-cross-baseline u-gap-4">
+                                        <header class="flex u-cross-baseline gap-1">
                                             <span
                                                 class="{getIcon(tutorial)} web-u-font-size-24"
                                                 aria-hidden="true"

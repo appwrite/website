@@ -2,7 +2,7 @@
     import { Main } from '$lib/layouts';
 </script>
 
-<div class="u-position-absolute web-is-only-mobile u-inset-inline-0">
+<div class="absolute web-is-only-mobile u-inset-inline-0">
     <svg
         class="u-width-full-line"
         xmlns="http://www.w3.org/2000/svg"
@@ -36,12 +36,10 @@
 </div>
 
 <div
-    class="u-position-absolute"
+    class="absolute"
     style="inline-size:100rem; inset-block-start:calc(50% - 250px); inset-inline-start:50%; transform:translateX(-50%);"
 >
-    <div
-        class="u-position-absolute u-inset-inline-start-0 web-u-inset-block-start-100 web-is-not-mobile"
-    >
+    <div class="absolute u-inset-inline-start-0 web-u-inset-block-start-100 web-is-not-mobile">
         <img
             src="/images/pages/brand-lunch/left-side-top-brand.png"
             alt=""
@@ -49,9 +47,7 @@
             style="transform:translateX(-35%)"
         />
     </div>
-    <div
-        class="u-position-absolute u-inset-inline-end-0 web-u-inset-block-start-100 web-is-not-mobile"
-    >
+    <div class="absolute u-inset-inline-end-0 web-u-inset-block-start-100 web-is-not-mobile">
         <img
             src="/images/pages/brand-lunch/right-side-top-brand.png"
             alt=""
@@ -61,7 +57,7 @@
     </div>
 </div>
 
-<div class="u-position-absolute u-width-full-line web-is-not-mobile">
+<div class="absolute u-width-full-line web-is-not-mobile">
     <svg
         xmlns="http://www.w3.org/2000/svg"
         width="1728"
@@ -97,12 +93,12 @@
 <Main>
     <div class="web-big-padding-section">
         <div class="web-big-padding-section-level-1">
-            <div class="web-container u-position-relative">
+            <div class="web-container relative">
                 <div
-                    class="web-big-padding-section-level-2 web-u-max-width-800 u-flex u-main-center u-cross-center u-margin-inline-auto web-u-margin-block-0"
+                    class="web-big-padding-section-level-2 web-u-max-width-800 flex u-main-center u-cross-center mx-auto web-u-margin-block-0"
                     style="block-size:calc(100vh - 6.375rem)"
                 >
-                    <div class="web-hero web-u-gap-20">
+                    <div class="web-hero web-gap-5">
                         <h1 class="web-headline web-u-color-text-primary">Brand new Appwrite</h1>
                         <p class="web-description web-u-color-text-primary web-u-opacity-64">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae
@@ -112,7 +108,7 @@
                 </div>
 
                 <div class="web-big-padding-section-level-2 web-u-sep-block-start">
-                    <div class="u-stretch u-flex web-u-flex-vertical-mobile">
+                    <div class="u-stretch flex web-u-flex-vertical-mobile">
                         <div
                             class="web-hero is-align-start web-u-max-width-480 web-u-padding-block-start-48"
                         >
@@ -125,7 +121,7 @@
                             </p>
                         </div>
                         <div
-                            class="u-stretch u-flex web-u-margin-inline-auto-mobile web-u-margin-block-start-40-mobile"
+                            class="u-stretch flex web-mx-auto-mobile web-u-margin-block-start-40-mobile"
                         >
                             <img
                                 class="web-u-margin-block-start-8-negative u-margin-inline-start-auto u-width-full-line u-max-width-500"
@@ -137,9 +133,11 @@
                 </div>
 
                 <div class="web-big-padding-section-level-2 web-u-sep-block-start">
-                    <div class="web-grid-1-1-opt-2">
+                    <div class="grid grid-cols-2-opt-2">
                         <div class="web-hero is-align-start web-u-padding-block-start-40">
-                            <h2 class="web-title web-u-color-text-primary">Eliminating complexity</h2>
+                            <h2 class="web-title web-u-color-text-primary">
+                                Eliminating complexity
+                            </h2>
                             <p class="web-main-body-500">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae
                                 diam augue.
@@ -176,9 +174,9 @@
             </div>
         </div>
         <div
-            class="web-big-padding-section-level-1 u-position-relative u-padding-0 u-full-screen-height u-flex u-main-center u-cross-center u-overflow-hidden"
+            class="web-big-padding-section-level-1 relative u-padding-0 u-full-screen-height flex u-main-center u-cross-center overflow-hidden"
         >
-            <div class="u-position-absolute u-inset-inline-start-0">
+            <div class="absolute u-inset-inline-start-0">
                 <svg
                     class="web-u-opacity-40-mobile u-max-width-100-percent web-u-max-height-100-percent"
                     xmlns="http://www.w3.org/2000/svg"
@@ -319,7 +317,7 @@
                     </defs>
                 </svg>
             </div>
-            <div class="u-position-absolute u-inset-inline-end-0">
+            <div class="absolute u-inset-inline-end-0">
                 <svg
                     class="web-u-opacity-40-mobile u-max-width-100-percent web-u-max-height-100-percent"
                     xmlns="http://www.w3.org/2000/svg"
@@ -456,11 +454,11 @@
                     </defs>
                 </svg>
             </div>
-            <div class="web-big-padding-section-level-2 u-position-relative">
+            <div class="web-big-padding-section-level-2 relative">
                 <div class="web-container">
                     <div class="web-hero">
                         <p
-                            class="web-headline web-u-color-text-primary web-u-max-width-610 u-margin-inline-auto"
+                            class="web-headline web-u-color-text-primary web-u-max-width-610 mx-auto"
                         >
                             Build like a team of hundreds
                         </p>
@@ -469,9 +467,9 @@
             </div>
         </div>
         <div
-            class="web-big-padding-section-level-1 u-position-relative u-padding-0 u-full-screen-height u-flex u-main-center u-cross-center u-overflow-hidden"
+            class="web-big-padding-section-level-1 relative u-padding-0 u-full-screen-height flex u-main-center u-cross-center overflow-hidden"
         >
-            <div class="u-position-absolute u-inset-inline-start-0">
+            <div class="absolute u-inset-inline-start-0">
                 <svg
                     class="web-u-opacity-40-mobile u-max-width-100-percent web-u-max-height-100-percent"
                     xmlns="http://www.w3.org/2000/svg"
@@ -612,7 +610,7 @@
                     </defs>
                 </svg>
             </div>
-            <div class="u-position-absolute u-inset-inline-end-0">
+            <div class="absolute u-inset-inline-end-0">
                 <svg
                     class="web-u-opacity-40-mobile u-max-width-100-percent web-u-max-height-100-percent"
                     xmlns="http://www.w3.org/2000/svg"
@@ -749,9 +747,9 @@
                     </defs>
                 </svg>
             </div>
-            <div class="web-big-padding-section-level-2 u-position-relative">
+            <div class="web-big-padding-section-level-2 relative">
                 <div class="web-container">
-                    <div class="u-flex u-main-center u-cross-center">
+                    <div class="flex u-main-center u-cross-center">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="584"
@@ -812,10 +810,10 @@
             </div>
         </div>
         <div
-            class="web-big-padding-section-level-1 web-white-section theme-light
-        u-position-relative u-padding-0 u-overflow-hidden"
+            class="web-big-padding-section-level-1 web-white-section light
+        relative u-padding-0 overflow-hidden"
         >
-            <div class="u-position-absolute u-inset-inline-end-0">
+            <div class="absolute u-inset-inline-end-0">
                 <svg
                     style="max-inline-size:100%;"
                     xmlns="http://www.w3.org/2000/svg"
@@ -1083,10 +1081,10 @@
                     </defs>
                 </svg>
             </div>
-            <div class="web-big-padding-section-level-2 u-position-relative">
+            <div class="web-big-padding-section-level-2 relative">
                 <div class="web-container">
                     <div
-                        class="u-full-screen-height u-flex-vertical web-u-gap-80 u-main-center u-cross-center"
+                        class="u-full-screen-height u-flex-vertical web-gap-20 u-main-center u-cross-center"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -1143,8 +1141,8 @@
                                 fill="#FD366E"
                             />
                         </svg>
-                        <div class="u-flex web-u-flex-vertical-mobile u-cross-center u-gap-32">
-                            <div class="u-flex-vertical u-cross-center u-gap-12">
+                        <div class="flex web-u-flex-vertical-mobile u-cross-center gap-8">
+                            <div class="u-flex-vertical u-cross-center gap-3">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="64"
@@ -1162,7 +1160,7 @@
                                 <div class="web-caption-400">Our global community</div>
                             </div>
                             <div>+</div>
-                            <div class="u-flex-vertical u-cross-center u-gap-12">
+                            <div class="u-flex-vertical u-cross-center gap-3">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="65"
@@ -1217,8 +1215,8 @@
             </div>
         </div>
 
-        <div class="web-big-padding-section-level-1 u-position-relative u-padding-0">
-            <div class="u-position-absolute u-inset-inline-start-0 u-width-full-line">
+        <div class="web-big-padding-section-level-1 relative u-padding-0">
+            <div class="absolute u-inset-inline-start-0 u-width-full-line">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="1280"
@@ -1576,9 +1574,9 @@
                     </defs>
                 </svg>
             </div>
-            <div class="web-big-padding-section-level-2 u-position-relative">
+            <div class="web-big-padding-section-level-2 relative">
                 <div class="web-container">
-                    <div class="web-grid-1-1-opt-2 u-gap-32 u-main-space-between">
+                    <div class="grid grid-cols-2-opt-2 gap-8 u-main-space-between">
                         <div class="web-hero is-align-start web-u-max-width-480">
                             <h4 class="web-title web-u-color-text-primary">
                                 Be a part of #Teamof100

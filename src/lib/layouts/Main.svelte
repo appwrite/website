@@ -68,7 +68,7 @@
     }
 
     function getVisibleTheme() {
-        const themes = Array.from(document.querySelectorAll('.theme-dark, .theme-light')).filter(
+        const themes = Array.from(document.querySelectorAll('.theme-dark, .light')).filter(
             (element) => {
                 const { classList, dataset } = element as HTMLElement;
                 if (
@@ -85,7 +85,7 @@
 
         for (const theme of themes) {
             if (isInViewport(theme)) {
-                return theme.classList.contains('theme-light') ? 'light' : 'dark';
+                return theme.classList.contains('light') ? 'light' : 'dark';
             }
         }
 
@@ -144,7 +144,7 @@
     };
 </script>
 
-<div class="u-position-relative">
+<div class="relative">
     <section
         class="web-mobile-header theme-{resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}

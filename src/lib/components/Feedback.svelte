@@ -49,12 +49,12 @@
 <section class="web-content-footer">
     <header class="web-content-footer-header u-width-full-line">
         <div
-            class="u-flex u-gap-32 u-main-space-between u-cross-center u-width-full-line"
+            class="flex gap-8 u-main-space-between u-cross-center u-width-full-line"
             style="flex-wrap: wrap-reverse;"
         >
-            <div class="u-flex u-gap-16 u-cross-center">
+            <div class="flex gap-4 u-cross-center">
                 <h5 class="web-main-body-600 web-u-color-text-primary">Was this page helpful?</h5>
-                <div class="u-flex u-gap-8">
+                <div class="flex gap-2">
                     <button
                         class="web-radio-button"
                         aria-label="helpful"
@@ -88,7 +88,7 @@
                             href="https://github.com/appwrite/website"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="web-link u-flex u-gap-4 u-cross-baseline"
+                            class="web-link flex gap-1 u-cross-baseline"
                         >
                             <span class="icon-pencil-alt u-contents" aria-hidden="true" />
                             <span>Update on GitHub</span>
@@ -104,7 +104,7 @@
             class="web-card is-normal"
             style="--card-padding:1rem"
         >
-            <div class="u-flex-vertical u-gap-8">
+            <div class="u-flex-vertical gap-2">
                 <label for="message">
                     <span class="web-u-color-text-primary">
                         What did you {feedbackType === 'negative' ? 'dislike' : 'like'}? (optional)
@@ -139,7 +139,7 @@
                 </p>
             {/if}
 
-            <div class="u-flex u-main-end u-margin-block-start-16 u-gap-8">
+            <div class="flex u-main-end u-margin-block-start-16 gap-2">
                 <button class="web-button is-text" on:click={() => (showFeedback = false)}>
                     <span>Cancel</span>
                 </button>

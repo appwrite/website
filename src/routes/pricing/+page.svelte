@@ -31,7 +31,7 @@
 </svelte:head>
 
 <div
-    class="u-position-absolute u-overflow-hidden web-location-for-mobile"
+    class="absolute overflow-hidden web-location-for-mobile"
     style="pointer-events:none; inline-size:100%;"
 >
     <enhanced:img
@@ -208,13 +208,13 @@
                         </ul>
                     </div>
 
-                    <ul class="web-grid-1-1-opt-2 u-gap-32 web-u-margin-block-start-80">
+                    <ul class="grid grid-cols-2-opt-2 gap-8 web-u-margin-block-start-80">
                         <li>
                             <article
                                 class="web-card is-transparent has-border-gradient u-min-height-100-percent"
                                 style="background:rgba(35, 35, 37, 0.90);"
                             >
-                                <header class="u-flex u-gap-12">
+                                <header class="flex gap-3">
                                     <h3
                                         id="enterprises"
                                         class="web-main-body-500 web-u-color-text-primary"
@@ -240,7 +240,7 @@
                                 class="web-card is-transparent has-border-gradient u-min-height-100-percent"
                                 style="background:rgba(35, 35, 37, 0.90);"
                             >
-                                <header class="u-flex u-gap-12">
+                                <header class="flex gap-3">
                                     <h3
                                         id="open-source-teams"
                                         class="web-main-body-500 web-u-color-text-primary"
@@ -266,11 +266,9 @@
         </div>
         <ComparePlans />
 
-        <div
-            class="web-big-padding-section-level-1 theme-dark u-position-relative u-overflow-hidden"
-        >
-            <div class="web-big-padding-section-level-2 u-position-relative">
-                <div class="web-container u-position-relative" style:z-index="10">
+        <div class="web-big-padding-section-level-1 theme-dark relative overflow-hidden">
+            <div class="web-big-padding-section-level-2 relative">
+                <div class="web-container relative" style:z-index="10">
                     <section class="web-grid-4-6">
                         <header>
                             <div class="web-display web-u-color-text-primary">FAQ</div>
@@ -279,7 +277,7 @@
                     </section>
                 </div>
             </div>
-            <div class="web-big-padding-section-level-2 u-position-relative">
+            <div class="web-big-padding-section-level-2 relative">
                 <div class="web-container">
                     <PreFooter />
                     <FooterNav />

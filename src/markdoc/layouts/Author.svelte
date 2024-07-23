@@ -45,10 +45,8 @@
 </svelte:head>
 
 <Main>
-    <div class="web-big-padding-section-level-1 u-position-relative u-overflow-hidden">
-        <div
-            class="u-position-absolute u-inset-inline-start-0 u-inset-block-end-0 web-u-pointer-events-none"
-        >
+    <div class="web-big-padding-section-level-1 relative overflow-hidden">
+        <div class="absolute u-inset-inline-start-0 u-inset-block-end-0 web-u-pointer-events-none">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="660"
@@ -102,9 +100,9 @@
             </svg>
         </div>
 
-        <div class="web-big-padding-section-level-2 u-position-relative">
+        <div class="web-big-padding-section-level-2 relative">
             <div class="web-container">
-                <div class="web-author-section u-block">
+                <div class="web-author-section block">
                     {#if avatar}
                         <FloatingHead --position="relative" src={avatar} alt={name} size={112} />
                     {/if}
@@ -119,7 +117,7 @@
                             {bio}
                         </p>
                     {/if}
-                    <ul class="u-flex u-main-center u-gap-8 u-margin-block-start-16">
+                    <ul class="flex u-main-center gap-2 u-margin-block-start-16">
                         {#if github}
                             <li>
                                 <a
@@ -171,7 +169,7 @@
                 <h2 class="web-title web-u-color-text-primary">Articles</h2>
 
                 <!-- <div class="web-is-only-mobile u-margin-block-start-32">
-					<label class="u-block web-select is-colored" for="articles">
+					<label class="block web-select is-colored" for="articles">
 						<select id="articles">
 							<option>Latest</option>
 							<option>News</option>
@@ -183,7 +181,7 @@
 					</label>
 				</div> -->
                 <!--<div class="web-is-not-mobile">
-					<div class="u-flex u-main-space-between u-gap-16 u-margin-block-start-24">
+					<div class="flex u-main-space-between gap-4 u-margin-block-start-24">
 						<ul
 							class="web-secondary-tabs is-transparent"
 							role="tablist"
@@ -264,7 +262,7 @@
 						</ul> -->
                 <!-- <div class="web-input-text-search-wrapper">
 							<span class="icon-search" aria-hidden="true" />
-							<input class="web-input-text web-u-block-size-48" type="search" placeholder="Search" />
+							<input class="web-input-text web-block-size-48" type="search" placeholder="Search" />
 						</div> 
 					</div>
 				</div>-->
@@ -287,7 +285,7 @@
             </div>
         </div>
         <div
-            class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
+            class="web-big-padding-section-level-2 is-margin-replace-padding relative overflow-hidden"
         >
             <div class="web-container">
                 <FooterNav />

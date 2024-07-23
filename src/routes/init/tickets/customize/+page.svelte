@@ -113,10 +113,12 @@
                         <span class="text">Customize ticket</span>
                     </button>
 
-                    <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
+                    <div class="flex u-cross-center gap-4 u-margin-block-start-16">
                         <button class="web-button is-full-width is-secondary" on:click={copy}>
                             <div
-                                class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary"
+                                class="web-icon-{$copied
+                                    ? 'check'
+                                    : 'copy'} web-u-color-text-primary"
                             />
                             <span class="text">Copy ticket URL</span>
                         </button>
@@ -184,7 +186,7 @@
             .info {
                 grid-row: 3;
 
-                .u-flex {
+                .flex {
                     flex-direction: column;
                     gap: 0.5rem;
                     margin-block-start: 0.5rem;

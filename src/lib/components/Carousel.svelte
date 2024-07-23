@@ -42,9 +42,9 @@
 </script>
 
 <div>
-    <div class="u-flex u-flex-wrap u-cross-center u-margin-block-start-8">
+    <div class="flex flex-wrap u-cross-center u-margin-block-start-8">
         <slot name="header" />
-        <div class="u-flex u-gap-12 u-cross-end u-margin-inline-start-auto">
+        <div class="flex gap-3 u-cross-end u-margin-inline-start-auto">
             <button
                 class="web-icon-button"
                 aria-label="Move carousel backward"
@@ -108,7 +108,11 @@
 
         &::after {
             right: 0;
-            background: linear-gradient(to left, hsl(var(--web-color-background-docs)), transparent);
+            background: linear-gradient(
+                to left,
+                hsl(var(--web-color-background-docs)),
+                transparent
+            );
         }
 
         &[data-state='end']::after {

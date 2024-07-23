@@ -11,7 +11,7 @@
             {#if response.models}
                 <li>
                     <article>
-                        <header class="u-flex u-cross-baseline u-gap-8">
+                        <header class="flex u-cross-baseline gap-2">
                             <span class="web-eyebrow web-u-color-text-primary">
                                 {response.code}
                             </span>

@@ -56,7 +56,7 @@
     function applyTheme(theme: Theme) {
         const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
         const className = `theme-${resolvedTheme}`;
-        document.body.classList.remove('theme-dark', 'theme-light');
+        document.body.classList.remove('theme-dark', 'light');
         document.body.classList.add(className);
     }
 

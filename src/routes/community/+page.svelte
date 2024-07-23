@@ -144,10 +144,10 @@
 </svelte:head>
 
 <Main>
-    <div class="web-big-padding-section u-overflow-hidden">
-        <div class="web-big-padding-section-level-1 u-position-relative u-overflow-hidden">
+    <div class="web-big-padding-section overflow-hidden">
+        <div class="web-big-padding-section-level-1 relative overflow-hidden">
             <div
-                class="u-position-absolute web-u-z-index-1-negative web-u-hide-mobile"
+                class="absolute web-z-1-negative web-u-hide-mobile"
                 style:inline-size="704px"
                 style:block-size="670px"
                 style:left="calc((50% - 704px / 2) + 18rem)"
@@ -156,7 +156,7 @@
                 <img src="/images/community/sphere.png" alt="" />
             </div>
             <div class="web-big-padding-section-level-2">
-                <section class="web-container web-u-padding-block-end-0 u-position-relative">
+                <section class="web-container web-u-padding-block-end-0 relative">
                     <div class="web-hero is-align-start web-u-max-width-580">
                         <h1 class="web-display web-u-color-text-primary">
                             Built by a community of 800+ contributors
@@ -167,7 +167,7 @@
                                 and contributors and help us make Appwrite better for developers
                                 worldwide.
                             </p>
-                            <div class="u-flex u-flex-wrap u-gap-12 u-margin-block-start-32">
+                            <div class="flex flex-wrap gap-3 u-margin-block-start-32">
                                 <a
                                     href="/discord"
                                     target="_blank"
@@ -206,7 +206,7 @@
             </div>
         </div>
 
-        <div class="web-big-padding-section-level-1 u-position-relative">
+        <div class="web-big-padding-section-level-1 relative">
             <div class="absolute-container">
                 <div class="green-gradient" />
                 <div class="pink-gradient" />
@@ -227,8 +227,8 @@
             </div>
 
             <div class="web-big-padding-section-level-2">
-                <div class="web-container u-position-relative">
-                    <div class="web-hero is-mobile-center web-u-gap-20 web-u-max-width-900">
+                <div class="web-container relative">
+                    <div class="web-hero is-mobile-center web-gap-5 web-u-max-width-900">
                         <h1 class="web-headline web-u-color-text-primary">
                             The power of open source benefits us all
                         </h1>
@@ -237,9 +237,7 @@
                                 See contributors of Appwrite since 2019 and discover how you can
                                 start contributing.
                             </p>
-                            <div
-                                class="u-flex u-flex-wrap u-main-center u-gap-12 u-margin-block-start-32"
-                            >
+                            <div class="flex flex-wrap u-main-center gap-3 u-margin-block-start-32">
                                 <a
                                     href="https://github.com/appwrite/appwrite/graphs/contributors"
                                     target="_blank"
@@ -273,8 +271,8 @@
                         style="--card-padding:2rem; --card-padding-mobile:1.25rem;"
                     >
                         <div
-                            class="u-flex web-u-flex-direction-column-mobile
-									web-u-gap-96 web-u-row-gap-48"
+                            class="flex web-u-flex-direction-column-mobile
+									web-gap-24 web-u-row-gap-48"
                         >
                             <div>
                                 <h3 class="web-label web-u-color-text-primary">
@@ -327,7 +325,7 @@
                                                         <span>({issue.repository})</span>
                                                     </div>
                                                     <ul
-                                                        class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8"
+                                                        class="flex flex-wrap gap-2 u-margin-block-start-8"
                                                     >
                                                         {#each issue.tags as tag}
                                                             <li>
@@ -349,12 +347,12 @@
                 <section class="web-container">
                     <h4 class="web-label web-u-color-text-primary">Other ways to help</h4>
                     <ul
-                        class="grid-box u-gap-32 web-u-gap-20-mobile u-margin-block-start-20"
+                        class="grid-box gap-8 web-gap-5-mobile u-margin-block-start-20"
                         style="--grid-item-size:15rem"
                     >
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
+                                class="web-card is-normal has-border-gradient u-flex-vertical web-gap-2"
                             >
                                 <div class="web-sub-body-500 web-u-color-text-primary">
                                     Create content
@@ -366,7 +364,7 @@
                         </li>
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
+                                class="web-card is-normal has-border-gradient u-flex-vertical web-gap-2"
                             >
                                 <div class="web-sub-body-500 web-u-color-text-primary">
                                     Present at meetups
@@ -378,7 +376,7 @@
                         </li>
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
+                                class="web-card is-normal has-border-gradient u-flex-vertical web-gap-2"
                             >
                                 <div class="web-sub-body-500 web-u-color-text-primary">
                                     Report bugs
@@ -390,7 +388,7 @@
                         </li>
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
+                                class="web-card is-normal has-border-gradient u-flex-vertical web-gap-2"
                             >
                                 <div class="web-sub-body-500 web-u-color-text-primary">
                                     Submit new ideas
@@ -402,7 +400,7 @@
                         </li>
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
+                                class="web-card is-normal has-border-gradient u-flex-vertical web-gap-2"
                             >
                                 <div class="web-sub-body-500 web-u-color-text-primary">
                                     Improve documentation
@@ -414,7 +412,7 @@
                         </li>
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
+                                class="web-card is-normal has-border-gradient u-flex-vertical web-gap-2"
                             >
                                 <div class="web-sub-body-500 web-u-color-text-primary">
                                     Helping others
@@ -451,9 +449,7 @@
             </div>
         </div>
 
-        <div
-            class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light"
-        >
+        <div class="web-big-padding-section-level-1 relative web-white-section light">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
                     <div class="web-hero is-center">
@@ -483,7 +479,7 @@
                 </div>
             </div>
         </div>
-        <div class="web-big-padding-section-level-1 web-white-section theme-light">
+        <div class="web-big-padding-section-level-1 web-white-section light">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
                     <div class="web-grid-15-25-desktop web-u-row-gap-48 web-u-column-gap-96">
@@ -504,7 +500,7 @@
                                     class="web-card is-white web-u-min-block-size-320 u-flex-vertical"
                                     style="--card-padding:2rem;rotate: 6deg"
                                 >
-                                    <div class="u-flex-vertical u-main-space-between u-gap-32">
+                                    <div class="u-flex-vertical u-main-space-between gap-8">
                                         <span
                                             class="icon-discord web-u-font-size-40"
                                             aria-hidden="true"
@@ -524,7 +520,7 @@
                                     class="web-card is-white web-u-min-block-size-320 u-flex-vertical"
                                     style="--card-padding:2rem; rotate: 2deg"
                                 >
-                                    <div class="u-flex-vertical u-main-space-between u-gap-32">
+                                    <div class="u-flex-vertical u-main-space-between gap-8">
                                         <span
                                             class="web-icon-x web-u-font-size-40"
                                             aria-hidden="true"
@@ -544,7 +540,7 @@
                                     class="web-card is-white web-u-min-block-size-320 u-flex-vertical"
                                     style="--card-padding:2rem; rotate: -10deg"
                                 >
-                                    <div class="u-flex-vertical u-main-space-between u-gap-32">
+                                    <div class="u-flex-vertical u-main-space-between gap-8">
                                         <span
                                             class="icon-github web-u-font-size-40"
                                             aria-hidden="true"
@@ -564,7 +560,7 @@
                                     class="web-card is-white web-u-min-block-size-320 u-flex-vertical"
                                     style="--card-padding:2rem; rotate: -6deg"
                                 >
-                                    <div class="u-flex-vertical u-main-space-between u-gap-32">
+                                    <div class="u-flex-vertical u-main-space-between gap-8">
                                         <span
                                             class="icon-youtube web-u-font-size-40"
                                             aria-hidden="true"
@@ -584,13 +580,13 @@
         <div class="web-big-padding-section-level-1">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
-                    <div class="web-grid-1-1-opt-2 u-gap-32">
+                    <div class="grid grid-cols-2-opt-2 gap-8">
                         <div class="">
                             <div
                                 class="web-u-max-inline-size-none-mobile"
                                 class:web-u-max-width-380={!submitted}
                             >
-                                <section class="u-flex-vertical web-u-gap-20">
+                                <section class="u-flex-vertical web-gap-5">
                                     <h1 class="web-title web-u-color-text-primary">
                                         Appwrite insights
                                     </h1>
@@ -603,7 +599,7 @@
                             </div>
                         </div>
                         {#if submitted}
-                            <div class="u-flex u-gap-8 u-cross-center">
+                            <div class="flex gap-2 u-cross-center">
                                 <svg
                                     width="18"
                                     height="18"
@@ -640,9 +636,9 @@
                             <form
                                 method="post"
                                 on:submit|preventDefault={submit}
-                                class="u-flex-vertical u-gap-16"
+                                class="u-flex-vertical gap-4"
                             >
-                                <div class="u-flex u-flex-vertical u-gap-4">
+                                <div class="flex u-flex-vertical gap-1">
                                     <label for="name">Your name</label>
                                     <input
                                         class="web-input-text"
@@ -654,7 +650,7 @@
                                         bind:value={name}
                                     />
                                 </div>
-                                <div class="u-flex u-flex-vertical u-gap-4">
+                                <div class="flex u-flex-vertical gap-1">
                                     <label for="email">Your email</label>
                                     <input
                                         class="web-input-text"
@@ -680,9 +676,7 @@
                 </div>
             </div>
 
-            <div
-                class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
-            >
+            <div class="web-big-padding-section-level-2 is-margin-replace-padding relative">
                 <div class="web-container">
                     <PreFooter />
                     <FooterNav />

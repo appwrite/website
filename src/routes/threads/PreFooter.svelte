@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg web-u-z-index-1-negative" />
+    <img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg -z-1" />
     <div class="web-container">
         <h2 class="web-display web-u-color-text-primary">Need support?</h2>
         <div class="cards">

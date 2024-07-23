@@ -24,7 +24,7 @@
                     We introduce improved support for server-side rendering in Appwrite
                     Authentication.
                 </p>
-                <div class="web-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
+                <div class="web-card-link flex u-cross-center" style:margin-block-start="1.25rem">
                     <span class="text">Announcement</span>
                     <span class="web-icon-arrow-right" />
                 </div>
@@ -44,11 +44,13 @@
 
         <a
             href="/blog/post/csr-vs-ssr-with-nextjs"
-            class="web-card is-normal has-border-gradient u-overflow-hidden"
+            class="web-card is-normal has-border-gradient overflow-hidden"
             style="padding: 1.25rem; --p-aspect-ratio: 0;"
         >
-            <h3 class="web-label web-u-color-text-primary" style="max-width: 18.75rem">CSR vs SSR</h3>
-            <div class="web-card-link u-flex u-cross-center">
+            <h3 class="web-label web-u-color-text-primary" style="max-width: 18.75rem">
+                CSR vs SSR
+            </h3>
+            <div class="web-card-link flex u-cross-center">
                 <span class="text">Article</span>
                 <span class="web-icon-arrow-right" />
             </div>
@@ -65,7 +67,7 @@
         >
             <div style="padding: 0.75rem;">
                 <h3 class="web-label web-u-color-text-primary">Event: Speed</h3>
-                <div class="web-card-link u-flex u-cross-center">
+                <div class="web-card-link flex u-cross-center">
                     <span class="text">Join</span>
                     <span class="web-icon-arrow-right" />
                 </div>
@@ -79,14 +81,14 @@
         <VideoWrapper let:openVideo>
             <button
                 on:click={openVideo}
-                class="web-card is-normal has-border-gradient u-overflow-hidden"
+                class="web-card is-normal has-border-gradient overflow-hidden"
                 style="padding: 0.5rem; display: flex; justify-content: space-between; "
             >
                 <div style="padding: 0.75rem;">
                     <h3 class="web-label web-u-color-text-primary" style="max-width: 300px">
                         Product tour
                     </h3>
-                    <div class="web-card-link u-flex u-cross-center">
+                    <div class="web-card-link flex u-cross-center">
                         <span class="text">Watch</span>
                         <span class="web-icon-arrow-right" />
                     </div>
@@ -105,7 +107,7 @@
             style="padding: 1.25rem"
         >
             <h3 class="web-label web-u-color-text-primary">Documentation</h3>
-            <div class="web-card-link u-flex u-cross-center">
+            <div class="web-card-link flex u-cross-center">
                 <span class="text">Learn more</span>
                 <span class="web-icon-arrow-right" />
             </div>

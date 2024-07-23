@@ -164,22 +164,22 @@
 
 <Main>
     <img
-        class="u-block u-position-absolute u-inset-inline-end-0 u-inset-block-start-0 u-margin-inline-auto u-inset-0"
+        class="block absolute u-inset-inline-end-0 u-inset-block-start-0 mx-auto u-inset-0"
         src={BackgroundHero}
         alt=""
     />
     <img
-        class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-0 e-bg-left-mobile"
+        class="absolute u-inset-inline-start-0 u-inset-block-start-0 e-bg-left-mobile"
         src={BackgroundLeft}
         alt=""
     />
     <img
-        class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0 e-bg-right-mobile"
+        class="absolute u-inset-inline-end-0 u-inset-block-start-0 e-bg-right-mobile"
         src={BackgroundRight}
         alt=""
     />
-    <div class="web-big-padding-section u-position-relative u-overflow-hidden">
-        <div class="web-big-padding-section-level-1 u-position-relative">
+    <div class="web-big-padding-section relative overflow-hidden">
+        <div class="web-big-padding-section-level-1 relative">
             <div class="web-big-padding-section-level-2 e-u-margin-block-128-desktop">
                 <section class="web-container web-u-padding-block-end-0">
                     <div
@@ -190,7 +190,7 @@
                             Build your startup with Appwrite
                         </h1>
                         <p
-                            class="web-description web-u-max-width-640 u-margin-inline-auto e-u-padding-inline-32-desktop"
+                            class="web-description web-u-max-width-640 mx-auto e-u-padding-inline-32-desktop"
                         >
                             The Appwrite Startups Program supports your startup with a complete
                             backend for you to build your products. Eligible startups receive
@@ -198,7 +198,7 @@
                         </p>
                         <button
                             on:click={scrollToForm}
-                            class="web-button u-margin-inline-auto u-margin-block-start-12"
+                            class="web-button mx-auto u-margin-block-start-12"
                         >
                             Apply now
                         </button>
@@ -210,9 +210,9 @@
                 class="web-big-padding-section-level-2 e-u-padding-block-start-48-mobile e-u-padding-block-start-80-desktop e-u-margin-block-end-80-mobile"
             >
                 <section class="web-container">
-                    <ul class="u-flex web-u-flex-vertical-mobile web-u-gap-80 e-u-gap-64-mobile">
+                    <ul class="flex web-u-flex-vertical-mobile web-gap-20 e-gap-24-mobile">
                         <li
-                            class="u-flex-vertical u-cross-center u-gap-16 u-stretch u-max-width-350 u-margin-inline-auto"
+                            class="u-flex-vertical u-cross-center gap-4 u-stretch u-max-width-350 mx-auto"
                         >
                             <img
                                 src="/images/icons/gradients/backend.svg"
@@ -220,16 +220,16 @@
                                 height="48"
                                 alt=""
                             />
-                            <div class="u-flex-vertical u-gap-8 u-text-center">
+                            <div class="u-flex-vertical gap-2 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">Complete backend</h2>
                                 <p class="web-main-body-500">
-                                    Get access to Appwrite’s Scale plan and build your entire backend
-                                    with Appwrite.
+                                    Get access to Appwrite’s Scale plan and build your entire
+                                    backend with Appwrite.
                                 </p>
                             </div>
                         </li>
                         <li
-                            class="u-flex-vertical u-cross-center u-gap-16 u-stretch u-max-width-350 u-margin-inline-auto"
+                            class="u-flex-vertical u-cross-center gap-4 u-stretch u-max-width-350 mx-auto"
                         >
                             <img
                                 src="/images/icons/gradients/cloud-credit.svg"
@@ -237,16 +237,16 @@
                                 height="48"
                                 alt=""
                             />
-                            <div class="u-flex-vertical u-gap-8 u-text-center">
+                            <div class="u-flex-vertical gap-2 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">Cloud credits</h2>
                                 <p class="web-main-body-500">
-                                    Get Appwrite Cloud Scale for 12 months and reduce risk at an early
-                                    stage.
+                                    Get Appwrite Cloud Scale for 12 months and reduce risk at an
+                                    early stage.
                                 </p>
                             </div>
                         </li>
                         <li
-                            class="u-flex-vertical u-cross-center u-gap-16 u-stretch u-max-width-350 u-margin-inline-auto"
+                            class="u-flex-vertical u-cross-center gap-4 u-stretch u-max-width-350 mx-auto"
                         >
                             <img
                                 src="/images/icons/gradients/support.svg"
@@ -254,7 +254,7 @@
                                 height="48"
                                 alt=""
                             />
-                            <div class="u-flex-vertical u-gap-8 u-text-center">
+                            <div class="u-flex-vertical gap-2 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">Priority support</h2>
                                 <p class="web-main-body-500">
                                     Get community support and priority email support from the
@@ -267,19 +267,17 @@
             </div>
         </div>
 
-        <div
-            class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light"
-        >
+        <div class="web-big-padding-section-level-1 relative web-white-section light">
             <div class="web-big-padding-section-level-2 e-u-margin-block-start-80-mobile">
                 <div class="web-container">
                     <div class="web-timeline-content">
                         <ol class="web-timeline-content-list">
                             <li>
                                 <div
-                                    class="web-timeline-content-item-top web-grid-1-1"
+                                    class="web-timeline-content-item-top grid grid-cols-2"
                                     style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;"
                                 >
-                                    <div class="u-flex-vertical u-gap-16">
+                                    <div class="u-flex-vertical gap-4">
                                         <h3 class="web-title web-u-color-text-primary">
                                             Ship faster
                                         </h3>
@@ -293,7 +291,7 @@
                                         </p>
                                     </div>
                                     <div>
-                                        <div class="web-card is-white u-flex-vertical web-u-gap-20">
+                                        <div class="web-card is-white u-flex-vertical web-gap-5">
                                             <p class="aw-sub-body-500">
                                                 The integrated user authentication and the ease of
                                                 creating data structures have undoubtedly saved us
@@ -334,13 +332,13 @@
                             </li>
                             <li class="web-timeline-content-item">
                                 <div
-                                    class="web-grid-1-1"
+                                    class="grid grid-cols-2"
                                     style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:6.5rem;"
                                 >
                                     <div class="web-is-not-mobile">
                                         <img alt="" src={UsageGraphs} />
                                     </div>
-                                    <div class="u-flex-vertical u-gap-16 web-u-flex-basis-380">
+                                    <div class="u-flex-vertical gap-4 web-u-flex-basis-380">
                                         <h3 class="web-title web-u-color-text-primary">
                                             Scalable architecture
                                         </h3>
@@ -353,7 +351,7 @@
                                             growth.
                                         </p>
                                         <div
-                                            class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-u-margin-block-start-16-mobile"
+                                            class="web-card is-white web-gap-5 web-u-margin-block-start-64 e-u-margin-block-start-16-mobile"
                                         >
                                             <p class="aw-sub-body-500">{ryanOconner.text}</p>
                                             <div class="web-user-box">
@@ -376,7 +374,7 @@
                                 </div>
                                 <div class="web-is-only-mobile">
                                     <img
-                                        class="u-block u-max-width-450 u-margin-inline-auto"
+                                        class="block u-max-width-450 mx-auto"
                                         alt=""
                                         src={UsageGraphs}
                                     />
@@ -384,10 +382,10 @@
                             </li>
                             <li class="web-timeline-content-item">
                                 <div
-                                    class="web-timeline-content-item-top web-grid-1-1"
+                                    class="web-timeline-content-item-top grid grid-cols-2"
                                     style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;"
                                 >
-                                    <div class="u-flex-vertical u-gap-16">
+                                    <div class="u-flex-vertical gap-4">
                                         <h3 class="web-title web-u-color-text-primary">
                                             Built-in security and compliance
                                         </h3>
@@ -398,7 +396,7 @@
                                             application.
                                         </p>
                                         <div
-                                            class="web-card is-white u-flex-vertical web-u-gap-20 web-u-margin-block-start-64 e-u-margin-block-start-16-mobile"
+                                            class="web-card is-white u-flex-vertical web-gap-5 web-u-margin-block-start-64 e-u-margin-block-start-16-mobile"
                                         >
                                             <p class="aw-sub-body-500">{souvikSarkar.text}</p>
                                             <div class="web-user-box">
@@ -419,18 +417,16 @@
                                         </div>
                                     </div>
 
-                                    <div class="web-is-not-desktop u-position-relative">
+                                    <div class="web-is-not-desktop relative">
                                         <img
-                                            class="u-block u-max-width-450 u-margin-inline-auto"
+                                            class="block u-max-width-450 mx-auto"
                                             src={SecurityOptions}
                                             alt=""
                                             style="height:auto;"
                                         />
                                     </div>
 
-                                    <div
-                                        class="web-is-only-desktop u-position-relative u-overflow-hidden"
-                                    >
+                                    <div class="web-is-only-desktop relative overflow-hidden">
                                         <div class="u-flex">
                                             <img
                                                 src={SecurityOptions}
@@ -444,11 +440,11 @@
                             </li>
                             <li class="web-timeline-content-item">
                                 <div
-                                    class="web-timeline-content-item-top web-grid-1-1"
+                                    class="web-timeline-content-item-top grid grid-cols-2"
                                     style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;"
                                 >
                                     <div
-                                        class="e-u-order-1-mobile e-u-margin-inline-auto-mobile u-width-full-line web-u-max-width-580"
+                                        class="e-u-order-1-mobile e-mx-auto-mobile u-width-full-line web-u-max-width-580"
                                     >
                                         <div
                                             class="web-chat web-u-max-width-580 web-u-margin-block-start-40-mobile"
@@ -465,7 +461,7 @@
                                                                 alt="Avatar of Teri"
                                                             />
                                                             <div
-                                                                class="web-user-box-name u-flex u-gap-8"
+                                                                class="web-user-box-name flex gap-2"
                                                             >
                                                                 <span class="web-sub-body-500"
                                                                     >Louis Baker</span
@@ -496,7 +492,7 @@
                                                                 alt="Avatar of Teri"
                                                             />
                                                             <div
-                                                                class="web-user-box-name u-flex u-gap-8"
+                                                                class="web-user-box-name flex gap-2"
                                                             >
                                                                 <span class="web-sub-body-500"
                                                                     >Steven</span
@@ -532,7 +528,7 @@
                                                                 alt="Avatar of Teri"
                                                             />
                                                             <div
-                                                                class="web-user-box-name u-flex u-gap-8"
+                                                                class="web-user-box-name flex gap-2"
                                                             >
                                                                 <span class="web-sub-body-500"
                                                                     >Louis Baker</span
@@ -561,7 +557,7 @@
                                                                 alt="Avatar of Teri"
                                                             />
                                                             <div
-                                                                class="web-user-box-name u-flex u-gap-8"
+                                                                class="web-user-box-name flex gap-2"
                                                             >
                                                                 <span class="web-sub-body-500"
                                                                     >Steven</span
@@ -591,7 +587,7 @@
                                         </div>
                                     </div>
                                     <div
-                                        class="u-flex-vertical u-gap-16 u-margin-inline-start-auto web-u-margin-inline-auto-mobile"
+                                        class="u-flex-vertical gap-4 u-margin-inline-start-auto web-mx-auto-mobile"
                                     >
                                         <h3 class="web-title web-u-color-text-primary">
                                             Power of open source community
@@ -603,7 +599,7 @@
                                             help navigate the challenges of startup growth.
                                         </p>
                                         <div
-                                            class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-u-margin-block-start-16-mobile"
+                                            class="web-card is-white web-gap-5 web-u-margin-block-start-64 e-u-margin-block-start-16-mobile"
                                         >
                                             <p class="aw-sub-body-500">{mariusBolik.text}</p>
                                             <div class="web-user-box">
@@ -631,19 +627,19 @@
             </div>
 
             <div
-                class="web-big-padding-section-level-2 web-u-overflow-hidden e-u-margin-block-start-200-desktop e-u-margin-block-start-128-mobile"
+                class="web-big-padding-section-level-2 overflow-hidden e-u-margin-block-start-200-desktop e-u-margin-block-start-128-mobile"
             >
                 <h4
-                    class="web-title web-u-color-text-primary u-text-center u-max-width-350 u-margin-inline-auto"
+                    class="web-title web-u-color-text-primary u-text-center u-max-width-350 mx-auto"
                 >
                     Focus on building your product
                 </h4>
                 <div class="scroll-carousel" use:infiniteScroll>
-                    <ul class="inner u-gap-32">
+                    <ul class="inner gap-8">
                         {#each testimonials as t}
                             <li>
                                 <div
-                                    class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-u-margin-block-start-48-mobile"
+                                    class="web-card is-white web-gap-5 web-u-margin-block-start-64 e-u-margin-block-start-48-mobile"
                                     style="inline-size:23.625rem"
                                 >
                                     <p class="aw-sub-body-500">{t.text}</p>
@@ -670,59 +666,55 @@
             </div>
         </div>
 
-        <div id="form" class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden">
-            <div
-                class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
-            >
-                <div class="u-position-relative">
+        <div id="form" class="web-big-padding-section-level-1 u-padding-0 overflow-hidden">
+            <div class="web-big-padding-section-level-2 is-margin-replace-padding relative">
+                <div class="relative">
                     <div class="web-big-padding-section-level-2">
-                        <div class="web-container u-position-relative">
+                        <div class="web-container relative">
                             <img
-                                class="u-position-absolute is-only-desktop"
+                                class="absolute is-only-desktop"
                                 style="inset-inline-end:-650px; inset-block-start:-200px; max-width:none; max-height:none;"
                                 src={BlobGreen}
                                 alt=""
                             />
                             <img
-                                class="u-position-absolute is-only-desktop"
+                                class="absolute is-only-desktop"
                                 style="inset-inline-start:-1000px; inset-block-start:-800px; max-width:none; max-height:none;"
                                 src={BlobPink}
                                 alt=""
                             />
                             <img
-                                class="u-position-absolute is-only-mobile"
+                                class="absolute is-only-mobile"
                                 style="inset-inline-end:-450px; inset-block-start:400px; max-width:none; max-height:none;"
                                 src={BlobGreenMobile}
                                 alt=""
                             />
                             <img
-                                class="u-position-absolute is-only-mobile"
+                                class="absolute is-only-mobile"
                                 style="inset-inline-start:-700px; inset-block-start:-400px; max-width:none; max-height:none;"
                                 src={BlobPinkMobile}
                                 alt=""
                             />
 
                             <!-- before submit -->
-                            <div
-                                class="u-position-relative u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0"
-                            >
+                            <div class="relative z-1 grid grid-cols-2-opt-2 gap-8 e-u-row-gap-0">
                                 <div>
                                     <div
                                         class="web-u-max-inline-size-none-mobile"
                                         class:web-u-max-width-380={!submitted}
                                     >
-                                        <section class="u-flex-vertical web-u-gap-20">
+                                        <section class="u-flex-vertical web-gap-5">
                                             <h4 class="web-title web-u-color-text-primary">
                                                 Join the Appwrite Startups program
                                             </h4>
                                             <p class="web-description">
-                                                We support VC backed or revenue generating 
-                                                startups that have been established within
-                                                the last decade with:
+                                                We support VC backed or revenue generating startups
+                                                that have been established within the last decade
+                                                with:
                                             </p>
 
-                                            <div class="u-flex-vertical u-gap-12">
-                                                <div class="u-flex u-gap-16">
+                                            <div class="u-flex-vertical gap-3">
+                                                <div class="flex gap-4">
                                                     <div
                                                         class="web-check-bullet u-margin-block-start-4"
                                                     ></div>
@@ -730,7 +722,7 @@
                                                         Appwrite Cloud Scale for 12 months
                                                     </p>
                                                 </div>
-                                                <div class="u-flex u-gap-16">
+                                                <div class="flex gap-4">
                                                     <div
                                                         class="web-check-bullet u-margin-block-start-4"
                                                     ></div>
@@ -747,10 +739,10 @@
                                 </div>
                                 {#if submitted}
                                     <div
-                                        class="u-position-relative u-z-index-1 u-flex-vertical u-gap-8 u-text-center web-u-max-width-380 web-u-max-inline-size-none-mobile u-margin-inline-auto"
+                                        class="relative z-1 u-flex-vertical gap-2 u-text-center web-u-max-width-380 web-u-max-inline-size-none-mobile mx-auto"
                                     >
                                         <h6
-                                            class="web-label u-flex u-main-center u-cross-center u-gap-8 e-mobile-fix-1"
+                                            class="web-label flex u-main-center u-cross-center gap-2 e-mobile-fix-1"
                                         >
                                             <img
                                                 class="u-flex-shrink-0"
@@ -767,7 +759,7 @@
                                         </p>
                                         <button
                                             on:click={resetForm}
-                                            class="web-button is-secondary is-full-width-mobile u-block u-margin-inline-auto u-margin-block-start-16"
+                                            class="web-button is-secondary is-full-width-mobile block mx-auto u-margin-block-start-16"
                                             >Back to form</button
                                         >
                                     </div>
@@ -775,14 +767,14 @@
                                     <form
                                         method="post"
                                         on:submit|preventDefault={handleSubmit}
-                                        class="u-flex-vertical u-gap-16"
+                                        class="u-flex-vertical gap-4"
                                     >
-                                        <div class="u-flex u-main-end">
+                                        <div class="flex u-main-end">
                                             <ul
-                                                class="web-form-list u-gap-16 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
+                                                class="web-form-list gap-4 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
                                             >
-                                                <li class="web-form-item u-flex-vertical u-gap-4">
-                                                    <div class="u-block">Full name</div>
+                                                <li class="web-form-item u-flex-vertical gap-1">
+                                                    <div class="block">Full name</div>
                                                     <input
                                                         required
                                                         class="web-input-text"
@@ -792,8 +784,8 @@
                                                         bind:value={personName}
                                                     />
                                                 </li>
-                                                <li class="web-form-item u-flex-vertical u-gap-4">
-                                                    <div class="u-block">Email address</div>
+                                                <li class="web-form-item u-flex-vertical gap-1">
+                                                    <div class="block">Email address</div>
                                                     <input
                                                         required
                                                         class="web-input-text"
@@ -803,8 +795,8 @@
                                                         bind:value={personEmail}
                                                     />
                                                 </li>
-                                                <li class="web-form-item u-flex-vertical u-gap-4">
-                                                    <div class="u-block">Company name</div>
+                                                <li class="web-form-item u-flex-vertical gap-1">
+                                                    <div class="block">Company name</div>
                                                     <input
                                                         required
                                                         class="web-input-text"
@@ -815,8 +807,8 @@
                                                         bind:value={companyName}
                                                     />
                                                 </li>
-                                                <li class="web-form-item u-flex-vertical u-gap-4">
-                                                    <div class="u-block">Company website</div>
+                                                <li class="web-form-item u-flex-vertical gap-1">
+                                                    <div class="block">Company website</div>
                                                     <input
                                                         required
                                                         class="web-input-text"
@@ -830,7 +822,7 @@
                                             </ul>
                                         </div>
                                         <div
-                                            class="u-flex u-gap-16 u-main-space-between web-u-flex-vertical-reverse-mobile"
+                                            class="flex gap-4 u-main-space-between web-u-flex-vertical-reverse-mobile"
                                         >
                                             <p class="web-caption-400 web-u-max-width-380">
                                                 {#if error}
@@ -849,8 +841,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="web-big-padding-section-level-2 u-position-relative">
-                        <div class="web-container u-position-relative" style:z-index="10">
+                    <div class="web-big-padding-section-level-2 relative">
+                        <div class="web-container relative" style:z-index="10">
                             <section class="web-grid-4-6">
                                 <header>
                                     <div class="web-display web-u-color-text-primary">FAQ</div>
@@ -906,7 +898,7 @@
     }
 
     @media #{devices.$break1} {
-        .web-grid-1-1 {
+        .grid grid-cols-2 {
             display: flex;
             flex-direction: column;
             gap: 32px;
@@ -917,7 +909,7 @@
         .e-u-padding-block-start-48-mobile {
             padding-block-start: 3rem;
         }
-        .e-u-gap-64-mobile {
+        .e-gap-24-mobile {
             gap: 4rem;
         }
         .e-u-margin-block-end-80-mobile {
@@ -966,7 +958,7 @@
     }
 
     @media #{devices.$break2open} {
-        .web-grid-1-1 {
+        .grid grid-cols-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
         }

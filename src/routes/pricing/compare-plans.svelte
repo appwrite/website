@@ -254,7 +254,7 @@
                     scale: 'Unlimited'
                 }
             ]
-        }, 
+        },
         {
             title: 'Security',
             rows: [
@@ -349,13 +349,13 @@
 
 <svelte:window on:scroll={() => (scrollDir = getScrollDir())} />
 
-<div class="web-big-padding-section-level-1 web-white-section theme-light">
+<div class="web-big-padding-section-level-1 web-white-section light">
     <div class="web-big-padding-section-level-2">
-        <div class="u-position-relative">
+        <div class="relative">
             <article use:melt={$root}>
                 <div class="web-container">
                     <header
-                        class="web-u-text-align-center"
+                        class="text-center"
                         use:visible
                         on:visible={(e) => {
                             shouldShowTable = !e.detail;
@@ -368,7 +368,7 @@
                     </header>
 
                     <div
-                        class="web-is-only-mobile web-u-padding-block-start-48 web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 /u-position-sticky /u-z-index-5"
+                        class="web-is-only-mobile web-u-padding-block-start-48 web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 /sticky /u-z-index-5"
                         style:--inset-block-start="2rem"
                     >
                         <Tabs bind:tab tabs={cols} let:TabsList>
@@ -386,7 +386,7 @@
                     </div>
 
                     <div
-                        class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border u-gap-32 web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 u-position-sticky u-z-index-5 web-u-container-query-inline"
+                        class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border gap-8 web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 sticky z-[5] web-u-container-query-inline"
                         style:--inset-block-start={$isHeaderHidden ? '0px' : '70px'}
                         style:transition="inset-block-start 0.3s ease"
                     >
@@ -413,9 +413,7 @@
                             {/key}
                         </div>
                         <div class="web-mini-card">
-                            <div
-                                class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between"
-                            >
+                            <div class="flex u-cross-center gap-4 flex-wrap u-main-space-between">
                                 <h4 class="web-label web-u-color-text-primary">Free</h4>
                                 <a
                                     href="https://cloud.appwrite.io/register"
@@ -426,9 +424,7 @@
                             </div>
                         </div>
                         <div class="web-mini-card">
-                            <div
-                                class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between"
-                            >
+                            <div class="flex u-cross-center gap-4 flex-wrap u-main-space-between">
                                 <h4 class="web-label web-u-color-text-primary">Pro</h4>
                                 <a
                                     class="web-button"
@@ -442,9 +438,7 @@
                             </div>
                         </div>
                         <div class="web-mini-card">
-                            <div
-                                class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between"
-                            >
+                            <div class="flex u-cross-center gap-4 flex-wrap u-main-space-between">
                                 <h4 class="web-label web-u-color-text-primary">Scale</h4>
                                 <button class="web-button is-secondary" disabled>
                                     <span class="web-sub-body-500">Coming soon</span>
@@ -483,7 +477,7 @@
                                 >
                                     <span>{table.title}</span>
                                     <span
-                                        class="icon-cheveron-down web-is-only-mobile web-u-inline-block"
+                                        class="icon-cheveron-down web-is-only-mobile inline-block"
                                         aria-hidden="true"
                                     />
                                 </button>

@@ -345,7 +345,7 @@
                     {/each}
                 </ul>
             </Accordion>
-            <div class="u-flex u-margin-block-start-20">
+            <div class="flex u-margin-block-start-20">
                 <span class="web-u-color-text-tertiary" style:font-size="0.75rem">
                     Total results: {users.flatMap((u) => u.devices).length}
                 </span>
@@ -353,7 +353,7 @@
 
             <hr />
 
-            <div class="u-flex u-cross-center u-main-end u-gap-16">
+            <div class="flex u-cross-center u-main-end gap-4">
                 <span style="font-size: 14px; color: #6C6C71;"
                     >{users.filter((u) => !!u.devices.some((d) => d.checked)).length} Users selected</span
                 >
@@ -362,7 +362,7 @@
         </div>
     </div>
 
-    <div class="u-flex u-flex-vertical u-cross-center u-gap-24 u-margin-block-start-16 target-text">
+    <div class="flex u-flex-vertical u-cross-center gap-6 u-margin-block-start-16 target-text">
         <h3 class="web-title web-u-color-text-primary u-text-center">
             Target and group your subscribers
         </h3>

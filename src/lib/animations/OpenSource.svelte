@@ -182,7 +182,7 @@
                 class="web-card is-white web-u-min-block-size-320 u-flex-vertical oss-card"
                 id="oss-discord"
             >
-                <div class="u-flex-vertical u-main-space-between u-gap-32">
+                <div class="u-flex-vertical u-main-space-between gap-8">
                     <span
                         class="web-icon-discord web-u-font-size-40"
                         aria-hidden="true"
@@ -197,7 +197,7 @@
                 id="oss-github"
                 href="https://github.com/appwrite/appwrite"
             >
-                <div class="u-flex-vertical u-main-space-between u-gap-32">
+                <div class="u-flex-vertical u-main-space-between gap-8">
                     <span
                         class="web-icon-github web-u-font-size-40"
                         aria-hidden="true"
@@ -212,7 +212,7 @@
                 class="web-card is-white web-u-min-block-size-320 u-flex-vertical oss-card"
                 id="oss-twitter"
             >
-                <div class="u-flex-vertical u-main-space-between u-gap-32">
+                <div class="u-flex-vertical u-main-space-between gap-8">
                     <span
                         class="web-icon-x web-u-font-size-40"
                         aria-hidden="true"
@@ -227,7 +227,7 @@
                 class="web-card is-white web-u-min-block-size-320 u-flex-vertical oss-card"
                 id="oss-youtube"
             >
-                <div class="u-flex-vertical u-main-space-between u-gap-32">
+                <div class="u-flex-vertical u-main-space-between gap-8">
                     <span
                         class="web-icon-youtube web-u-font-size-40"
                         aria-hidden="true"
@@ -242,7 +242,7 @@
                 id="oss-commits"
                 href="https://github.com/appwrite/appwrite"
             >
-                <div class="u-flex-vertical u-main-space-between u-gap-32">
+                <div class="u-flex-vertical u-main-space-between gap-8">
                     <span
                         class="web-icon-github web-u-font-size-40"
                         aria-hidden="true"

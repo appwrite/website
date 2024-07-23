@@ -52,15 +52,15 @@
 >
     <header class="web-code-snippet-header">
         <div class="web-code-snippet-header-start">
-            <div class="u-flex u-gap-16">
+            <div class="flex gap-4">
                 {#if platform}
                     <div class="web-tag"><span class="text">{platform}</span></div>
                 {/if}
             </div>
         </div>
         <div class="web-code-snippet-header-end">
-            <ul class="buttons-list u-flex u-gap-12">
-                <li class="buttons-list-item u-flex u-cross-child-scenter">
+            <ul class="buttons-list flex gap-3">
+                <li class="buttons-list-item flex u-cross-child-scenter">
                     <Select bind:value={selected} bind:options />
                 </li>
                 <li class="buttons-list-item" style="padding-inline-start: 13px">

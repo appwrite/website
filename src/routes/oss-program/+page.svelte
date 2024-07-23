@@ -67,7 +67,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<div class="u-position-absolute" style="pointer-events:none;">
+<div class="absolute" style="pointer-events:none;">
     <img src={GradientBackground} alt="" />
 </div>
 
@@ -76,14 +76,14 @@
         <div class="web-big-padding-section-level-1">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
-                    <div class="web-grid-1-1-opt-2 u-gap-32">
+                    <div class="grid grid-cols-2-opt-2 gap-8">
                         <div>
                             <div
                                 class="web-u-max-inline-size-none-mobile"
                                 class:web-u-max-width-380={!submitted}
                             >
                                 {#if submitted}
-                                    <section class="u-flex-vertical web-u-gap-20">
+                                    <section class="u-flex-vertical web-gap-5">
                                         <h1 class="web-display web-u-color-text-primary">
                                             Thank you for your application
                                         </h1>
@@ -99,7 +99,7 @@
                                         </a>
                                     </section>
                                 {:else}
-                                    <section class="u-flex-vertical web-u-gap-20">
+                                    <section class="u-flex-vertical web-gap-5">
                                         <h1 class="web-display web-u-color-text-primary">
                                             OSS program
                                         </h1>
@@ -111,10 +111,10 @@
                                     </section>
                                 {/if}
                                 <section
-                                    class="u-flex-vertical u-gap-12 web-u-padding-block-start-40 web-u-sep-block-start"
+                                    class="u-flex-vertical gap-3 web-u-padding-block-start-40 web-u-sep-block-start"
                                 >
                                     <h2 class="web-label web-u-color-text-primary">Follow us</h2>
-                                    <ul class="u-flex u-gap-8">
+                                    <ul class="flex gap-2">
                                         {#each socials as social}
                                             <li>
                                                 <a
@@ -139,14 +139,14 @@
                             <form
                                 method="post"
                                 on:submit|preventDefault={handleSubmit}
-                                class="u-flex-vertical u-gap-16"
+                                class="u-flex-vertical gap-4"
                             >
-                                <div class="u-flex u-main-end">
+                                <div class="flex u-main-end">
                                     <ul
-                                        class="web-form-list is-two-columns u-gap-16 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
+                                        class="web-form-list is-two-columns gap-4 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
                                     >
-                                        <li class="web-form-item u-flex-vertical u-gap-4">
-                                            <div class="u-block">Full name</div>
+                                        <li class="web-form-item u-flex-vertical gap-1">
+                                            <div class="block">Full name</div>
                                             <input
                                                 required
                                                 class="web-input-text"
@@ -156,8 +156,8 @@
                                                 bind:value={personName}
                                             />
                                         </li>
-                                        <li class="web-form-item u-flex-vertical u-gap-4">
-                                            <div class="u-block">Email address</div>
+                                        <li class="web-form-item u-flex-vertical gap-1">
+                                            <div class="block">Email address</div>
                                             <input
                                                 required
                                                 class="web-input-text"
@@ -168,9 +168,9 @@
                                             />
                                         </li>
                                         <li
-                                            class="web-form-item u-flex-vertical u-gap-4 is-column-span-2"
+                                            class="web-form-item u-flex-vertical gap-1 is-column-span-2"
                                         >
-                                            <div class="u-block">Project or company name</div>
+                                            <div class="block">Project or company name</div>
                                             <input
                                                 required
                                                 class="web-input-text"
@@ -180,8 +180,8 @@
                                                 bind:value={projectName}
                                             />
                                         </li>
-                                        <li class="web-form-item u-flex-vertical u-gap-4">
-                                            <div class="u-block">GitHub URL</div>
+                                        <li class="web-form-item u-flex-vertical gap-1">
+                                            <div class="block">GitHub URL</div>
                                             <input
                                                 required
                                                 class="web-input-text"
@@ -191,8 +191,8 @@
                                                 bind:value={githubUrl}
                                             />
                                         </li>
-                                        <li class="web-form-item u-flex-vertical u-gap-4">
-                                            <div class="u-block">Website URL</div>
+                                        <li class="web-form-item u-flex-vertical gap-1">
+                                            <div class="block">Website URL</div>
                                             <input
                                                 class="web-input-text"
                                                 type="url"
@@ -202,9 +202,9 @@
                                             />
                                         </li>
                                         <li
-                                            class="web-form-item u-flex-vertical u-gap-4 is-column-span-2"
+                                            class="web-form-item u-flex-vertical gap-1 is-column-span-2"
                                         >
-                                            <div class="u-block">OSS license</div>
+                                            <div class="block">OSS license</div>
                                             <input
                                                 class="web-input-text"
                                                 type="text"
@@ -214,9 +214,9 @@
                                             />
                                         </li>
                                         <li
-                                            class="web-form-item u-flex-vertical u-gap-4 is-column-span-2"
+                                            class="web-form-item u-flex-vertical gap-1 is-column-span-2"
                                         >
-                                            <div class="u-block">Message</div>
+                                            <div class="block">Message</div>
                                             <textarea
                                                 required
                                                 name="message"
@@ -229,7 +229,7 @@
                                     </ul>
                                 </div>
                                 <div
-                                    class="u-flex u-gap-16 u-main-space-between web-u-flex-vertical-reverse-mobile"
+                                    class="flex gap-4 u-main-space-between web-u-flex-vertical-reverse-mobile"
                                 >
                                     <p class="web-caption-400 web-u-max-width-380">
                                         {#if error}

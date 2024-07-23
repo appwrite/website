@@ -20,7 +20,7 @@
                     The latest versions of Bun, Dart, Deno, PHP, Ruby, Kotlin, Java, Swift, and Node
                     were added to our Cloud runtime ecosystem.
                 </p>
-                <div class="web-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
+                <div class="web-card-link flex u-cross-center" style:margin-block-start="1.25rem">
                     <span class="text">Announcement</span>
                     <span class="web-icon-arrow-right" />
                 </div>
@@ -34,7 +34,7 @@
             style="padding: 1.25rem"
         >
             <h3 class="web-label web-u-color-text-primary">Documentation</h3>
-            <div class="web-card-link u-flex u-cross-center">
+            <div class="web-card-link flex u-cross-center">
                 <span class="text">Learn more</span>
                 <span class="web-icon-arrow-right" />
             </div>
@@ -43,14 +43,14 @@
         <a
             href="https://discord.com/events/564160730845151244/1209117535723851776"
             rel="noopener noreferrer"
-            class="web-card is-normal has-border-gradient u-overflow-hidden"
+            class="web-card is-normal has-border-gradient overflow-hidden"
             style="padding: 0.5rem; display: flex; justify-content: space-between; "
         >
             <div style="padding: 0.75rem;">
                 <h3 class="web-label web-u-color-text-primary" style="max-width: 300px">
                     Closing party
                 </h3>
-                <div class="web-card-link u-flex u-cross-center">
+                <div class="web-card-link flex u-cross-center">
                     <span class="text">Watch</span>
                     <span class="web-icon-arrow-right" />
                 </div>

@@ -18,8 +18,9 @@
     export let image: $$Props['image'];
     export let href: $$Props['href'];
 </script>
+
 <a
-    class="web-card is-white web-u-flex-vertical u-gap-8"
+    class="web-card is-white web-u-flex-vertical gap-2"
     style="--card-padding: 0.5rem;"
     {href}
     target="_blank"

@@ -39,13 +39,13 @@
                 <ul class="web-metadata web-caption-400">
                     <slot name="metadata" />
                 </ul>
-                <div class="u-position-relative u-flex u-cross-center">
+                <div class="relative flex u-cross-center">
                     {#if back}
                         <a
                             href={back}
                             class="
                         web-button is-text is-icon web-u-cross-center web-u-size-40
-                        u-position-absolute u-inset-inline-start-0 web-u-translate-x-negative"
+                        absolute u-inset-inline-start-0 web-u-translate-x-negative"
                             aria-label="previous page"
                         >
                             <span
@@ -66,14 +66,12 @@
         <aside class="web-references-menu web-u-padding-inline-start-24">
             <div class="web-references-menu-content">
                 {#if toc && toc.length > 0}
-                    <div class="u-flex u-main-space-between u-cross-center u-gap-16">
+                    <div class="flex u-main-space-between u-cross-center gap-4">
                         <h5 class="web-references-menu-title web-eyebrow">On This Page</h5>
                     </div>
                     <ol class="web-references-menu-list">
                         {#each toc as parent (parent.href)}
-                            <li
-                                class="web-references-menu-item"
-                            >
+                            <li class="web-references-menu-item">
                                 <a
                                     href={parent.href}
                                     class="web-references-menu-link"
@@ -94,7 +92,8 @@
                                                     href={child.href}
                                                     class="web-references-menu-link"
                                                 >
-                                                    <span class="web-caption-400">{child.title}</span
+                                                    <span class="web-caption-400"
+                                                        >{child.title}</span
                                                     >
                                                 </a>
                                             </li>
@@ -105,10 +104,7 @@
                         {/each}
                     </ol>
                     <div class="u-sep-block-start u-padding-block-start-20">
-                        <button
-                            class="web-link u-inline-flex u-cross-center u-gap-8"
-                            use:scrollToTop
-                        >
+                        <button class="web-link u-inline-flex u-cross-center gap-2" use:scrollToTop>
                             <span class="web-icon-arrow-up" aria-hidden="true" />
                             <span class="web-caption-400">Back to top</span>
                         </button>

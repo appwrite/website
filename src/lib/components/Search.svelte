@@ -61,7 +61,7 @@
     }
 
     function createHref(hit: Hit<Props>): string {
-        const anchor = hit.anchor === '#' ? '' : hit.anchor ?? '';
+        const anchor = hit.anchor === '#' ? '' : (hit.anchor ?? '');
         const target = hit.url + anchor;
 
         return target.toString();
@@ -147,7 +147,7 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
-    class="wrapper u-position-fixed u-padding-0 u-inset-0 u-flex u-main-center u-cross-center"
+    class="wrapper u-padding-0 u-inset-0 u-main-center u-cross-center fixed flex"
     data-visible={open ? true : undefined}
     style:z-index="100"
     style:background="hsl(var(--web-color-black) / 0.3)"
@@ -159,15 +159,11 @@
     <div
         class="web-input-text-search-wrapper web-u-max-width-680 web-u-margin-inline-20 u-width-full-line"
     >
-        <span
-            class="web-icon-search u-z-index-5"
-            aria-hidden="true"
-            style="inset-block-start:0.9rem"
-        />
+        <span class="web-icon-search z-[5]" aria-hidden="true" style="inset-block-start:0.9rem" />
         <div id="searchbox" />
 
         <input
-            class="web-input-button -u-padding-block-0 u-position-relative u-z-index-1"
+            class="web-input-button -u-padding-block-0 relative z-1"
             type="text"
             id="search"
             bind:value
@@ -184,7 +180,7 @@
             }}
         />
         <div
-            class="web-card is-normal u-flex-vertical u-gap-24"
+            class="web-card is-normal u-flex-vertical gap-6"
             use:melt={$menu}
             style="--card-padding-mobile:1rem; border-radius:0 0 0.5rem 0.5rem;"
         >
@@ -192,15 +188,15 @@
                 <section>
                     {#if results.length > 0}
                         <h6 class="web-eyebrow">{results.length} results found</h6>
-                        <ul class="u-flex-vertical u-gap-4 u-margin-block-start-8">
+                        <ul class="u-flex-vertical u-margin-block-start-8 gap-1">
                             {#each results as hit, i (hit.uid)}
                                 {@const relevantSubtitle = getRelevantSubtitle(hit)}
                                 <li>
                                     <a
                                         data-hit={i}
                                         href={createHref(hit)}
-                                        class="web-button web-caption-400 is-text u-flex-vertical u-gap-8 u-min-width-100-percent
-                                            web-u-padding-block-8 web-padding-inline-12 web-u-cross-start u-max-width-100-percent"
+                                        class="web-button web-caption-400 is-text u-flex-vertical u-min-width-100-percent web-u-padding-block-8
+                                            web-padding-inline-12 web-u-cross-start u-max-width-100-percent gap-2"
                                         use:melt={$option({
                                             value: hit,
                                             label: hit.title ?? i.toString()
@@ -216,9 +212,7 @@
                                             {/if}
                                         </div>
                                         {#if hit.p}
-                                            <div
-                                                class="web-u-color-text-secondary web-u-trim-1"
-                                            >
+                                            <div class="web-u-color-text-secondary web-u-trim-1">
                                                 {hit.p}
                                             </div>
                                         {/if}
@@ -235,7 +229,7 @@
             {/if}
             <section>
                 <h6 class="web-eyebrow">Recommended</h6>
-                <ul class="u-flex-vertical u-gap-4 u-margin-block-start-8">
+                <ul class="u-flex-vertical u-margin-block-start-8 gap-1">
                     {#each recommended as hit, i (hit.uid)}
                         {@const index = i + (results.length ? results.length : 0)}
                         <li>
@@ -246,7 +240,7 @@
                                     value: hit,
                                     label: hit.title ?? i.toString()
                                 })}
-                                class="web-button web-caption-400 is-text u-flex-vertical u-gap-8 u-min-width-100-percent web-u-padding-block-4 web-u-cross-start"
+                                class="web-button web-caption-400 is-text u-flex-vertical u-min-width-100-percent web-u-padding-block-4 web-u-cross-start gap-2"
                             >
                                 <div class="web-u-trim-1">
                                     <span class="web-u-color-text-secondary">{hit.h1}</span>

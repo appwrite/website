@@ -25,7 +25,7 @@
                 <button class="web-icon-button" use:melt={$prevButton}>
                     <div class="web-icon-chevron-left" />
                 </button>
-                <div class="u-flex u-gap-16 u-cross-center">
+                <div class="flex gap-4 u-cross-center">
                     <div class="web-label web-u-color-text-primary" use:melt={$heading}>
                         {$headingValue}
                     </div>

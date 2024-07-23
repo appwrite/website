@@ -42,7 +42,7 @@
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
     <div
-        class="u-position-absolute"
+        class="absolute"
         style="top: -800px; left: 50%; translate: -50%; pointer-events:none; z-index: 10"
     >
         <enhanced:img
@@ -55,7 +55,7 @@
 </div>
 
 <div
-    class="u-position-absolute web-is-only-desktop"
+    class="web-is-only-desktop absolute"
     style="top: 22rem; left: 54%; translate: calc(-50% - 900px); width: 75.9375rem;"
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
@@ -63,7 +63,7 @@
 </div>
 
 <div
-    class="u-position-absolute web-is-only-desktop"
+    class="web-is-only-desktop absolute"
     style="top: 42rem; left: 49%; translate: calc(-50% + 800px); width: 60rem;"
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
@@ -119,7 +119,7 @@
                 >
                     <div class="web-media-container">
                         <img
-                            class="u-block"
+                            class="block"
                             src="/images/pages/homepage/dashboard.png"
                             alt="console dashboard"
                             style:aspect-ratio="1244 / 717"
@@ -130,7 +130,7 @@
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
                     <h2
-                        class="web-title web-u-color-text-primary web-u-text-align-center web-u-max-width-600 u-margin-inline-auto"
+                        class="web-title web-u-color-text-primary web-u-max-width-600 mx-auto text-center"
                     >
                         Trusted by developers from the world's leading organizations
                     </h2>
@@ -239,14 +239,10 @@
         <Products />
         <ProductsMobile />
 
-        <div
-            class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light"
-        >
-            <div
-                class="u-position-absolute u-inset-block-end-0 u-inset-inline-start u-width-full-line"
-            >
+        <div class="web-big-padding-section-level-1 web-white-section light relative">
+            <div class="u-inset-block-end-0 u-inset-inline-start u-width-full-line absolute">
                 <img
-                    class="u-block u-width-full-line"
+                    class="u-width-full-line block"
                     src="/images/bgs/padding-section-1.svg"
                     alt=""
                     style:max-height="48rem"
@@ -265,7 +261,7 @@
                             Migrations. With built-in security and privacy for peace of mind.
                         </p>
                     </section>
-                    <div class="u-overflow-hidden web-u-margin-block-start-80">
+                    <div class="web-u-margin-block-start-80 overflow-hidden">
                         <ul class="web-info-boxes web-sub-body-500">
                             <li class="web-info-boxes-item">
                                 <img
@@ -459,9 +455,9 @@
             </div>
         </div>
 
-        <div class="web-big-padding-section-level-1 u-position-relative u-overflow-hidden">
+        <div class="web-big-padding-section-level-1 relative overflow-hidden">
             <div
-                class="u-position-absolute web-is-not-mobile"
+                class="web-is-not-mobile absolute"
                 style:inline-size="768px"
                 style:block-size="768px"
                 style:inset-block-start="0rem"
@@ -477,7 +473,7 @@
                 />
             </div>
             <div class="web-big-padding-section-level-2 is-margin-replace-padding">
-                <div class="web-container u-position-relative">
+                <div class="web-container relative">
                     <section class="web-hero is-align-start">
                         <span class="web-badges web-eyebrow">SDKs_</span>
                         <h2 class="web-display web-u-color-text-primary u-max-width-600">
@@ -498,9 +494,9 @@
                     </section>
                 </div>
             </div>
-            <div class="web-big-padding-section-level-2 u-position-relative u-overflow-hidden">
+            <div class="web-big-padding-section-level-2 relative overflow-hidden">
                 <div
-                    class="u-position-absolute u-z-index-0 web-is-not-mobile"
+                    class="web-is-not-mobile absolute z-0"
                     style:width="50%"
                     style:height="100%"
                     style:left="0"
@@ -514,8 +510,8 @@
                         />
                     </div>
                 </div>
-                <div class="web-container u-position-relative">
-                    <div class="grid-1-1">
+                <div class="web-container relative">
+                    <div class="grid grid-cols-2">
                         <section class="web-hero is-align-start">
                             <span class="web-badges web-eyebrow">Scale_</span>
                             <h2 class="web-display u-max-width-600 web-u-color-text-primary">
@@ -546,7 +542,7 @@
                 </div>
             </div>
             <div
-                class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
+                class="web-big-padding-section-level-2 is-margin-replace-padding relative overflow-hidden"
             >
                 <div class="web-container">
                     <PreFooter />
