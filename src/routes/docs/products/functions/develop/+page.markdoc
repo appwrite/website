@@ -30,7 +30,7 @@ import { Client } from 'node-appwrite';
 export default async ({ req, res, log, error }) => {
   // Why not try the Appwrite SDK?
   //
-  // Set API key and set project
+  // Set project and set API key
   // const client = new Client()
   //    .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
   //    .setKey(req.headers['x-appwrite-key']);
@@ -69,7 +69,7 @@ use Appwrite\Exception;
 return function ($context) {
     // Why not try the Appwrite SDK?
     //
-    // Set API key and set project
+    // Set project and set API key
     // $client = (new Client())
     //      ->setProject(getenv(APPWRITE_FUNCTION_PROJECT_ID))
     //      ->setKey($context->req->headers['x-appwrite-key']);
@@ -107,7 +107,7 @@ import os
 def main(context):
     # Why not try the Appwrite SDK?
     #
-    # Set API key and set project
+    # Set project and set API key
     # client = (
     #     Client()
     #        .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
@@ -142,7 +142,7 @@ require "appwrite"
 def main(context)
   # Why not try the Appwrite SDK?
   #
-  # Set API key and set project
+  # Set project and set API key
   # client = Client.new
   #   .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
   #   .set_key(context.req.headers['x-appwrite-key'])
@@ -177,7 +177,7 @@ import { Client } from "https://deno.land/x/appwrite@7.0.0/mod.ts";
 export default ({ req, res, log, error }: any) => {
   // Why not try the Appwrite SDK?
   //
-  // Set API key and set project
+  // Set project and set API key
   // const client = new Client()
   //    .setProject(Deno.env.get("APPWRITE_FUNCTION_PROJECT_ID") || "")
   //    .setKey(req.headers["x-appwrite-key"] || "");
@@ -213,7 +213,7 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 Future main(final context) async {
   // Why not try the Appwrite SDK?
   //
-  // Set API key and set project
+  // Set project and set API key
   // final client = Client()
   //    .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
   //    .setKey(context.req.headers['x-appwrite-key']);
@@ -255,7 +255,7 @@ class Main {
     fun main(context: RuntimeContext): RuntimeOutput {
         // Why not try the Appwrite SDK?
         //
-        // Set API key and set project
+        // Set project and set API key
         // val client = Client()
         //    .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
         //    .setKey(context.req.headers["x-appwrite-key"])
@@ -298,7 +298,7 @@ public class Main {
     public RuntimeOutput main(RuntimeContext context) throws Exception {
         // Why not try the Appwrite SDK?
         //
-        // Set API key and set project
+        // Set project and set API key
         // Client client = new Client();
         //     .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
         //     .setKey(context.getReq().getHeaders().get("x-appwrite-key"));
@@ -337,7 +337,7 @@ import Foundation
 func main(context: RuntimeContext) async throws -> RuntimeOutput {
     // Why not try the Appwrite SDK?
     //
-    // Set API key and set project
+    // Set project and set API key
     // let client = Client()
     //    .setProject(ProcessInfo.processInfo.environment["APPWRITE_FUNCTION_PROJECT_ID"])
     //    .setKey(context.req.headers["x-appwrite-key"] ?? "")
@@ -379,7 +379,7 @@ public class Handler {
     {
         // Why not try the Appwrite SDK?
         //
-        // Set API key and set project
+        // Set project and set API key
         // var client = new Client()
         //     .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID")) 
         //     .SetKey(Context.Req.Headers["x-appwrite-key"]);
@@ -683,7 +683,7 @@ These are provided alongside any custom headers sent to the function.
 |---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `x-appwrite-trigger`        |  Describes how the function execution was invoked. Possible values are `http`, `schedule` or `event`.                                                      |
 | `x-appwrite-event`          |  If the function execution was triggered by an event, describes the triggering event.                                                                |
-| `x-appwrite-key`            |  The dynamic API key is used for server authentication. You don't need to create it. Configure function permission scopes to access your project services, like users and buckets. |
+| `x-appwrite-key`            |  The dynamic API key is used for server authentication. [Learn more about dynamic api keys](/docs/products/functions/develop#using-dynamic-api-key). |
 | `x-appwrite-user-id`        |  If the function execution was invoked by an authenticated user, display the user ID. This doesn't apply to Appwrite Console users or API keys.      |
 | `x-appwrite-user-jwt`       |  JWT token generated from the invoking user's session. Used to authenticate Server SDKs to respect access permissions. [Learn more about JWT tokens](/docs/products/auth/jwt).  |
 | `x-appwrite-country-code`   |  Displays the country code of the configured locale.                                                                                                 |
@@ -1294,10 +1294,8 @@ By default, we include the following package managers in each runtime.
 
 # Using Appwrite in a function {% #using-appwrite %} 
 Appwrite can be used in your functions by adding the relevant SDK to your function's dependencies.
-Integrate with Appwrite using its authentication, which is done via an API key, a JWT token, or a dynamic API key. 
+Integrate with Appwrite using its [authentication](/docs/products/auth/jwt), which is done via a JWT token or a dynamic API key. 
 Using dynamic API keys, you can easily integrate with Appwrite.
-
-You can read more about authentication in the [JWT login](/docs/products/auth/jwt) section of the docs.
 
 ## Using with dynamic API key {% #using-dynamic-api-key %}
 Dynamic API keys are the same as [API keys](/docs/advanced/platform/api-keys) but are automatically generated.
@@ -1310,7 +1308,7 @@ Instead, update the function settings to configure the scopes of the function.
 
 1. In Appwrite Console, navigate to **Functions**.
 2. Click to open a function you wish to configure.
-3. Under the **Settings** tab, navigate to Scopes.
+3. Under the **Settings** tab, navigate to **Scopes**.
 4. Select the scopes you want to grant the dynamic key.
 5. It is best practice to allow only necessary permissions.
 
@@ -1319,7 +1317,7 @@ Instead, update the function settings to configure the scopes of the function.
 import { Client, Databases, ID } from 'node-appwrite';
 
 export default async ({ req, res, log, error }) => {
-    // Set API key and set project
+    // Set project and set API key
     const client = new Client()
        .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
        .setKey(req.headers['x-appwrite-key']);
@@ -1352,7 +1350,7 @@ use Appwrite\Services\Databases;
 use Appwrite\ID;
 
 return function ($context) {
-    // Set API key and set project
+    // Set project and set API key
     $client = (new Client())
         ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
         ->setKey($context->req->headers['x-appwrite-key']);
@@ -1382,7 +1380,7 @@ from appwrite.id import ID
 import os
 
 def main(context):
-    # Set API key and set project
+    # Set project and set API key
     client = (
         Client()
             .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
@@ -1410,7 +1408,7 @@ require "appwrite"
 include Appwrite
 
 def main(context)
-    # Set API key and set project
+    # Set project and set API key
     client = Appwrite::Client.new
       .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
       .set_key(context.req.headers['x-appwrite-key'])
@@ -1436,7 +1434,7 @@ end
 import { Client, Databases, ID } from "https://deno.land/x/appwrite/mod.ts";
                 
 export default function ({req, res, error}: any){
-    // Set API key and set project
+    // Set project and set API key
     const client = new Client()
        .setProject(Deno.env.get("APPWRITE_FUNCTION_PROJECT_ID"))
        .setKey(req.headers["x-appwrite-key"] || "");
@@ -1464,7 +1462,7 @@ import 'dart:async';
 import 'package:dart_appwrite/dart_appwrite.dart';
 
 Future<dynamic> main(final context) async {
-    // Set API key and set project
+    // Set project and set API key
     final client = Client()
        .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
        .setKey(context.req.headers['x-appwrite-key']);
@@ -1492,7 +1490,7 @@ import AppwriteModels
 import Foundation
 
 func main(context: RuntimeContext) async throws -> RuntimeOutput {
-    // Set API key and set project
+    // Set project and set API key
     let client = Client()
        .setProject(ProcessInfo.processInfo.environment["APPWRITE_FUNCTION_PROJECT_ID"])
        .setKey(context.req.headers["x-appwrite-key"] ?? "")
@@ -1560,7 +1558,7 @@ import java.util.HashMap
 
 class Main {
     fun main(context: RuntimeContext): RuntimeOutput {
-        // Set API key and set project
+        // Set project and set API key
         val client = Client()
            .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
            .setKey(context.req.headers["x-appwrite-key"])
@@ -1593,7 +1591,7 @@ import io.appwrite.Client;
 
 public class Main {
     public RuntimeOutput main(RuntimeContext context) throws Exception {
-        // Set API key and set project
+        // Set project and set API key
         Client client = new Client();
              .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
              .setKey(context.getReq().getHeaders().get("x-appwrite-key"));

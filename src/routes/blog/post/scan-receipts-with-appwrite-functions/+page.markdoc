@@ -122,7 +122,7 @@ import os
 def main(context):
     # Why not try the Appwrite SDK?
     #
-    # Set API key and set project
+    # Set project and set API key
     # client = (
     #     Client()
     #        .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
@@ -169,7 +169,7 @@ def main(context):
     BUCKET_ID = os.environ['BUCKET_ID']
     headers = {'Authorization': HF_API_KEY}
 
-    # Set API key and set project
+    # Set project and set API key
     # client = new Client()
     #   .set_project(os.environ['APPWRITE_FUNCTION_PROJECT_ID'])
     #   .set_key(context.req.headers['x-appwrite-key']);
