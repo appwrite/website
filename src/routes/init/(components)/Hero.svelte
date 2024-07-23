@@ -12,6 +12,8 @@
         <Lockup />
         <Lines />
     </div>
+    <div class="shine" />
+    <div class="noise" />
 </div>
 
 <style lang="scss">
@@ -45,6 +47,22 @@
         justify-content: center;
         align-items: center;
         position: relative;
+
+        .shine {
+            opacity: 0.5;
+            background: url('/images/tickets/shine.svg') no-repeat;
+            background-size: cover;
+            mix-blend-mode: hard-light;
+            position: absolute;
+            inset: 0;
+        }
+
+        .noise {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+            mix-blend-mode: multiply;
+        }
 
         .container {
             position: relative;
