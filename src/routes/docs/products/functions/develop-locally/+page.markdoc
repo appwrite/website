@@ -1,0 +1,93 @@
+---
+layout: article
+title: Develop locally
+description: Learn to develop Appwrite functions locally.
+---
+
+Develop your Appwrite functions locally so you can make code changes without redeploying your function on every code change.
+
+# Install Docker {% #install-docker %}
+
+Install the [Docker CLI](https://www.docker.com/products/docker-desktop/) and ensure Docker runs in the background. We use Docker to simulate the production environment precisely so that we can execute a function.
+
+# Install Appwrite CLI {% #install-appwrite-cli %}
+
+Install the [Appwrite CLI](/docs/tooling/command-line/installation) to use the `appwrite run functions` command, along with other [CLI commands](/docs/tooling/command-line/commands).
+
+{% tabs %}
+
+{% tabsitem id="npm" title="Install with npm"%}
+```sh
+npm install -g appwrite-cli
+```
+{% /tabsitem %}
+
+{% /tabs %}
+
+# Login to Appwrite {% #login-to-appwrite %}
+
+Log in to your Appwrite account using the `appwrite login` CLI command to create and use Appwrite services and products, like **projects** and **functions**.
+
+```sh
+appwrite login
+```
+
+# Initialize Appwrite function {% #initialize-appwrite-project %}
+
+Initialize a function by running the `appwrite init function` CLI command. Follow the wizard prompts to create your Appwrite function.
+
+```sh
+appwrite init function
+? What would you like to name your function? My Awesome Function
+? What ID would you like to have for your function? unique()
+? What runtime would you like to use? Node.js (node-16.0)
+? How would you like to start your function code? Start from scratch (starter)
+✓ Success: 
+ℹ Info: Next you can use 'appwrite run function' to develop a function locally. To deploy the function, use 'appwrite push function.'
+```
+
+# Locally develop your function {% #locally-develop-your-function %}
+
+Use the following command to develop your function locally:
+
+```sh
+appwrite run functions
+```
+
+This command helps you efficiently develop your Appwrite functions on your local machine.
+
+# Push function {% #push-function %}
+
+Once you've developed your function, push it to the Appwrite Cloud by running the `appwrite push functions` CLI command.
+
+```sh
+appwrite push functions
+```
+
+You can change any function code locally, and when it's ready for deployment, use the `appwrite push functions` command to push your function up to the Appwrite Cloud to update your function in the Cloud.
+
+# Configure settings {% #configure-settings %}
+
+Function settings like timeout, entry point, or schedule will be read from the [`appwrite.json`](/docs/tooling/command-line/functions#appwritejson) file. Edit the file to suit your application's needs and use the `appwrite push functions` to apply your configurated settings to production.
+
+```json
+{
+    "projectId": <PROJECT_ID>,
+    "functions": [
+        {
+            "$id": <FUNCTION_ID>,
+            "name": "My Awesome Function",
+            "runtime": "node-16.0",
+            "execute": [],
+            "events": [],
+            "schedule": "",
+            "timeout": 15,
+            "enabled": true,
+            "logging": true,
+            "entrypoint": "src/main.js",
+            "commands": "npm install",
+            "path": "functions/<FUNCTION_ID>"
+        }
+    ]
+}
+```

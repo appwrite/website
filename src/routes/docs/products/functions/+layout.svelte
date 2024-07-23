@@ -67,8 +67,8 @@
 					href: '/docs/products/functions/deploy-manually'
 				},
 				{
-					label: 'Deploy locally',
-					href: '/docs/products/functions/deploy-locally'
+					label: 'Develop locally',
+					href: '/docs/products/functions/develop-locally'
 				},
 				{
 					label: 'Execute',
