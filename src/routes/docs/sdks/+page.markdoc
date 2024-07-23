@@ -30,6 +30,12 @@ Client libraries for integrating with Appwrite to build client-based application
 * [appwrite/sdk-for-flutter](https://github.com/appwrite/sdk-for-flutter)
 * 
 ---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/react.svg" alt="React logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/react.svg" alt="React logo" size="m" /%}{% /only_light %}
+* React Native SDK `0.1.0`
+* [appwrite/sdk-for-react-native](https://github.com/appwrite/sdk-for-react-native)
+* `beta`
+---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/apple.svg" alt="Apple logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/apple.svg" alt="Apple logo" size="m" /%}{% /only_light %}
 * Apple SDK `5.0.0`
@@ -41,12 +47,6 @@ Client libraries for integrating with Appwrite to build client-based application
 * Android SDK `5.1.0`
 * [appwrite/sdk-for-android](https://github.com/appwrite/sdk-for-android)
 * 
----
-* {% only_dark %}{% icon_image src="/images/platforms/dark/react.svg" alt="React logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/react.svg" alt="React logo" size="m" /%}{% /only_light %}
-* React Native SDK `0.1.0`
-* [appwrite/sdk-for-react-native](https://github.com/appwrite/sdk-for-react-native)
-* `beta`
 {% /table %}
 
 # Server {% #server %}
@@ -65,22 +65,16 @@ Server libraries for integrating with Appwrite to build server side integrations
 * [appwrite/sdk-for-node](https://github.com/appwrite/sdk-for-node)
 * 
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/dart.svg" alt="Dart logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/dart.svg" alt="Dart logo" size="m" /%}{% /only_light %}
-* Dart SDK `11.0.2`
-* [appwrite/sdk-for-dart](https://github.com/appwrite/sdk-for-dart)
-* 
----
-* {% only_dark %}{% icon_image src="/images/platforms/dark/go.svg" alt="Go logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/go.svg" alt="Go logo" size="m" /%}{% /only_light %}
-* Go SDK `1.22`
-* [appwrite/sdk-for-go](https://github.com/appwrite/sdk-for-go)
-* `beta`
----
 * {% only_dark %}{% icon_image src="/images/platforms/dark/python.svg" alt="Python logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/python.svg" alt="Python logo" size="m" /%}{% /only_light %}
 * Python SDK `5.0.2`
 * [appwrite/sdk-for-python](https://github.com/appwrite/sdk-for-python)
+* 
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/dart.svg" alt="Dart logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/dart.svg" alt="Dart logo" size="m" /%}{% /only_light %}
+* Dart SDK `11.0.2`
+* [appwrite/sdk-for-dart](https://github.com/appwrite/sdk-for-dart)
 * 
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/php.svg" alt="PHP logo" size="m" /%}{% /only_dark %}
@@ -107,16 +101,22 @@ Server libraries for integrating with Appwrite to build server side integrations
 * [appwrite/sdk-for-deno](https://github.com/appwrite/sdk-for-deno)
 * 
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
-* Kotlin SDK `5.0.1`
-* [appwrite/sdk-for-kotlin](https://github.com/appwrite/sdk-for-kotlin)
-* 
+* {% only_dark %}{% icon_image src="/images/platforms/dark/go.svg" alt="Go logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/go.svg" alt="Go logo" size="m" /%}{% /only_light %}
+* Go SDK `1.22`
+* [appwrite/sdk-for-go](https://github.com/appwrite/sdk-for-go)
+* `beta` `new`
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/swift.svg" alt="Swift logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/swift.svg" alt="Swift logo" size="m" /%}{% /only_light %}
 * Swift SDK `5.0.1`
 * [appwrite/sdk-for-swift](https://github.com/appwrite/sdk-for-swift)
+* 
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
+* Kotlin SDK `5.0.1`
+* [appwrite/sdk-for-kotlin](https://github.com/appwrite/sdk-for-kotlin)
 * 
 {% /table %}
 
@@ -198,12 +198,21 @@ sdk.ID.unique()
 sdk.ID.custom()
 
 ```
-```deno
-import * as sdk from "https://deno.land/x/appwrite/mod.ts";
+```python
+from appwrite.id import ID
+
+# Generate a unique ID
+ID.unique()
+# Generate a custom ID
+ID.custom()
+```
+```dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
 // Generate a unique ID
-sdk.ID.unique()
+ID.unique()
 // Generate a custom ID
-sdk.ID.custom()
+ID.custom()
 ```
 ```php
 <?php
@@ -215,24 +224,25 @@ ID::unique()
 // Generate a custom ID
 ID::custom()
 ```
-```python
-from appwrite.id import ID
+```ruby
+require 'appwrite'
 
-# Generate a unique ID
-ID.unique()
-# Generate a custom ID
-ID.custom()
-```
-```csharp
-using Appwrite.ID;
+include Appwrite
 
 // Generate a unique ID
 ID.unique()
 // Generate a custom ID
 ID.custom()
 ```
-```dart
-import 'package:dart_appwrite/dart_appwrite.dart';
+```deno
+import * as sdk from "https://deno.land/x/appwrite/mod.ts";
+// Generate a unique ID
+sdk.ID.unique()
+// Generate a custom ID
+sdk.ID.custom()
+```
+```csharp
+using Appwrite.ID;
 
 // Generate a unique ID
 ID.unique()
@@ -248,16 +258,6 @@ ID.custom()
 ```
 ```kotlin
 io.appwrite.ID
-// Generate a unique ID
-ID.unique()
-// Generate a custom ID
-ID.custom()
-```
-```ruby
-require 'appwrite'
-
-include Appwrite
-
 // Generate a unique ID
 ID.unique()
 // Generate a custom ID
@@ -322,37 +322,37 @@ You can discover the available enums in each SDK at the source.
 * &nbsp; {% width=48 %}
 * Platform
 * Enums
+* &nbsp; {% width=80 %}
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_light %}
 * Node.js SDK `12.0.1`
 * [appwrite/sdk-for-node](https://github.com/appwrite/sdk-for-node/tree/dev/lib/enums)
----
-* {% only_dark %}{% icon_image src="/images/platforms/dark/dart.svg" alt="Dart logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/dart.svg" alt="Dart logo" size="m" /%}{% /only_light %}
-* Dart SDK `10.1.1`
-* [appwrite/sdk-for-dart](https://github.com/appwrite/sdk-for-dart/blob/dev/lib/enums.dart)
+*
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/python.svg" alt="Python logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/python.svg" alt="Python logo" size="m" /%}{% /only_light %}
 * Python SDK `5.0.2`
 * [appwrite/sdk-for-python](https://github.com/appwrite/sdk-for-python/tree/dev/appwrite/enums)
+*
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/dart.svg" alt="Dart logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/dart.svg" alt="Dart logo" size="m" /%}{% /only_light %}
+* Dart SDK `10.1.1`
+* [appwrite/sdk-for-dart](https://github.com/appwrite/sdk-for-dart/blob/dev/lib/enums.dart)
+*
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/php.svg" alt="PHP logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/php.svg" alt="PHP logo" size="m" /%}{% /only_light %}
 * PHP SDK `11.0.1`
 * [appwrite/sdk-for-php](https://github.com/appwrite/sdk-for-php/tree/dev/src/Appwrite/Enums)
----
-* {% only_dark %}{% icon_image src="/images/platforms/dark/go.svg" alt="Go logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/go.svg" alt="Go logo" size="m" /%}{% /only_light %}
-* Go SDK `1.22`
-* [appwrite/sdk-for-go](https://github.com/appwrite/sdk-for-go)
-* `beta`
+*
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_light %}
 * Ruby SDK `11.0.1`
 * [appwrite/sdk-for-ruby](https://github.com/appwrite/sdk-for-ruby/tree/dev/lib/appwrite/enums)
+*
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_light %}
@@ -363,16 +363,25 @@ You can discover the available enums in each SDK at the source.
 {% only_light %}{% icon_image src="/images/platforms/deno.svg" alt="Deno logo" size="m" /%}{% /only_light %}
 * Deno SDK `10.0.1`
 * [appwrite/sdk-for-deno](https://github.com/appwrite/sdk-for-deno/tree/dev/src/enums)
+*
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
-* Kotlin SDK `5.0.1`
-* [appwrite/sdk-for-kotlin](https://github.com/appwrite/sdk-for-kotlin/tree/dev/src/main/kotlin/io/appwrite/enums)
+* {% only_dark %}{% icon_image src="/images/platforms/dark/go.svg" alt="Go logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/go.svg" alt="Go logo" size="m" /%}{% /only_light %}
+* Go SDK `1.22`
+* [appwrite/sdk-for-go](https://github.com/appwrite/sdk-for-go)
+* `beta` `new`
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/swift.svg" alt="Swift logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/swift.svg" alt="Swift logo" size="m" /%}{% /only_light %}
 * Swift SDK `5.0.1`
 * [appwrite/sdk-for-swift](https://github.com/appwrite/sdk-for-swift/tree/dev/Sources/AppwriteEnums)
+*
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
+* Kotlin SDK `5.0.1`
+* [appwrite/sdk-for-kotlin](https://github.com/appwrite/sdk-for-kotlin/tree/dev/src/main/kotlin/io/appwrite/enums)
+*
 {% /table %}
 {% /tabsitem %}
 {% /tabs %}
