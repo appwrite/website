@@ -55,7 +55,7 @@
                 </button>
                 <a
                     href="https://cloud.appwrite.io/login?forceRedirect={$page.url
-                        .origin}/init/tickets"
+                        .origin}/init-0/tickets"
                     class="web-button is-full-width is-secondary u-margin-block-start-8"
                 >
                     <div class="web-icon-appwrite web-u-color-text-primary" />

@@ -1,4 +1,4 @@
-import { getTicketById, getTicketContributions } from '$routes/init/helpers.js';
+import { getTicketById, getTicketContributions } from '$routes/init-0/helpers.js';
 import { error } from '@sveltejs/kit';
 
 export const ssr = true;

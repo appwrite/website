@@ -4,7 +4,7 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import { createCopy } from '$lib/utils/copy';
-    import TicketPreview from '$routes/init/(components)/TicketPreview.svelte';
+    import TicketPreview from '$routes/init-0/(components)/TicketPreview.svelte';
     import { dequal } from 'dequal/lite';
     import { slide } from 'svelte/transition';
     import Ticket from '../../(components)/Ticket.svelte';
@@ -19,7 +19,7 @@
     let showGitHub = data.ticket?.show_contributions ?? true;
     let drawerOpen = false;
     let customizing = false;
-    let variant: TicketVariant = 'default';
+    let variant: TicketVariant = data.ticket.variant ?? 'default';
 
     $: modified = !dequal(
         {
@@ -36,7 +36,7 @@
             return;
         }
 
-        await fetch(`/init/tickets/update`, {
+        await fetch(`/init-0/tickets/update`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -55,7 +55,7 @@
         saveTicket();
     }
 
-    const ticketUrl = `${$page.url.origin}/init/tickets/${data.ticket.$id}`;
+    const ticketUrl = `${$page.url.origin}/init-0/tickets/${data.ticket.$id}`;
     const { copied, copy } = createCopy(ticketUrl);
     $: twitterText = encodeURIComponent(
         [
@@ -116,9 +116,7 @@
                     <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
                         <button class="web-button is-full-width is-secondary" on:click={copy}>
                             <div
-                                class="web-icon-{$copied
-                                    ? 'check'
-                                    : 'copy'} web-u-color-text-primary"
+                                class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary"
                             />
                             <span class="text">Copy ticket URL</span>
                         </button>

@@ -1,6 +1,6 @@
 import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
 import { appwriteInitServer } from '$lib/appwrite/init.server';
-import { getTicketVariant } from '$routes/init/helpers';
+import { getTicketVariant } from '$routes/init-0/helpers';
 import sharp from 'sharp';
 import type { TicketData } from '../../constants.js';
 import { getTicketSvg } from './getTicketSvg.server.js';

@@ -1,7 +1,7 @@
 import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
 import { appwriteInitServer } from '$lib/appwrite/init.server';
 import { isProUser } from '$lib/utils/console.js';
-import type { User } from '$routes/init/helpers.js';
+import type { User } from '$routes/init-0/helpers.js';
 import { ID, Query } from '@appwrite.io/console';
 import type { TicketData, TicketDoc } from '../constants.js';
 
@@ -33,14 +33,18 @@ async function getTicketDocByUser(user: User) {
 
     const [gh, aw, isPro] = await Promise.all([
         user.github?.login
-            ? appwriteInitServer.databases.listDocuments(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, [
-                Query.equal('gh_user', user.github.login)
-            ])
+            ? appwriteInitServer.databases.listDocuments(
+                  APPWRITE_DB_INIT_ID,
+                  APPWRITE_COL_INIT_ID,
+                  [Query.equal('gh_user', user.github.login)]
+              )
             : null,
         user.appwrite?.$id
-            ? appwriteInitServer.databases.listDocuments(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, [
-                Query.equal('aw_email', user.appwrite.email)
-            ])
+            ? appwriteInitServer.databases.listDocuments(
+                  APPWRITE_DB_INIT_ID,
+                  APPWRITE_COL_INIT_ID,
+                  [Query.equal('aw_email', user.appwrite.email)]
+              )
             : null,
         isProUser()
     ]);

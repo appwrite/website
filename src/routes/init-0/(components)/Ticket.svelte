@@ -330,8 +330,7 @@
             );
             background-blend-mode: color-dodge;
             background-size: var(--imgsize);
-            background-position:
-                0% calc(var(--background-y) * 1),
+            background-position: 0% calc(var(--background-y) * 1),
                 var(--background-x) var(--background-y);
             filter: brightness(calc((var(--pointer-from-center) * 0.3) + 0.5)) contrast(2.3)
                 saturate(1);
