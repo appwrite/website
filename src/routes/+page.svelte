@@ -7,7 +7,6 @@
     import { Main } from '$lib/layouts';
     import { isMobileNavOpen } from '$lib/layouts/Main.svelte';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-    import { slide } from 'svelte/transition';
     import FooterNav from '../lib/components/FooterNav.svelte';
     import MainFooter from '../lib/components/MainFooter.svelte';
     import DeveloperCard from './DeveloperCard.svelte';
@@ -55,7 +54,6 @@
     </div>
 </div>
 
-<div class="absolute text-white text-2xl">Hello, world!</div>
 <div
     class="u-position-absolute web-is-only-desktop"
     style="top: 22rem; left: 54%; translate: calc(-50% - 900px); width: 75.9375rem;"
@@ -73,7 +71,7 @@
 </div>
 
 <Main>
-    <div class="web-big-padding-section">
+    <div class="web-big-padding-section hidden">
         <div class="web-big-padding-section-level-1">
             <div class="web-big-padding-section-level-2">
                 <section class="web-container web-u-padding-block-end-0">

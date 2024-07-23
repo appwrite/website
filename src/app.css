@@ -1,1 +1,84 @@
 @import 'tailwindcss';
+
+@theme {
+    /* colors */
+    --color-*: initial;
+    --color-pink-hue: 343;
+    --color-pink-200: hsl(var(--color-pink-hue) 98% 84%);
+    --color-pink-500: hsl(var(--color-pink-hue) 98% 60%); /* #FD366E */
+    --color-pink-600: hsl(var(--color-pink-hue) 65% 48%);
+    --color-pink-700: hsl(var(--color-pink-hue) 65% 36%);
+
+    /* red */
+    --color-red-hue: 3;
+    --color-red-200: calc(hsl(var(--color-red-hue) - 2) 100% 92%);
+    --color-red-500: hsl(var(--color-red-hue) 100% 61%);
+    --color-red-700: calc(hsl(var(--color-red-hue) - 3) 82% 39%);
+
+    /* orange */
+    --color-orange-hue: 18;
+    --color-orange-200: hsl(var(--color-orange-hue) 100% 88%);
+    --color-orange-500: hsl(var(--color-orange-hue) 99% 70%);
+    --color-orange-700: hsl(var(--color-orange-hue) 42% 42%);
+
+    /* mint */
+    --color-mint-hue: 177;
+    --color-mint-200: hsl(var(--color-mint-hue) 56% 88%);
+    --color-mint-500: calc(hsl(var(--color-mint-hue) + 1) 54% 69%);
+    --color-mint-700: calc(hsl(var(--color-mint-hue) + 2) 24% 41%);
+
+    /* purple */
+    --color-purple-hue: 249;
+    --color-purple-200: hsl(var(--color-purple-hue) 100% 88%);
+    --color-purple-500: calc(hsl(var(--color-purple-hue) - 1) 99% 70%);
+    --color-purple-700: calc(hsl(var(--color-purple-hue) - 1) 42% 42%);
+
+    /* yellow */
+    --color-yellow-hue: 42;
+    --color-yellow-200: hsl(var(--color-yellow-hue) 100% 88%);
+    --color-yellow-500: hsl(var(--color-yellow-hue) 99% 70%);
+    --color-yellow-700: calc(hsl(var(--color-yellow-hue) + 1) 42% 42%);
+
+    /* blue */
+    --color-blue-hue: 217;
+    --color-blue-200: hsl(var(--color-blue-hue) 100% 88%);
+    --color-blue-500: calc(hsl(var(--color-blue-hue) - 1) 99% 70%);
+    --color-blue-700: calc(hsl(var(--color-blue-hue) - 1) 42% 42%);
+
+    /* secondary */
+    --color-secondary-hue: 351;
+    --color-secondary-100: hsl(var(--color-secondary-hue) 99% 66%); /* #FE536D */
+
+    /* greyscale */
+    --color-white: hsl(0 0% 100%);
+    --color-black: hsl(0 0% 0%);
+    --color-greyscale-25: hsl(240 11% 98%);
+    --color-greyscale-50: hsl(240 11% 94%);
+    --color-greyscale-100: hsl(240 6% 90%);
+    --color-greyscale-200: hsl(240 4% 85%);
+    --color-greyscale-250: hsl(240 3% 77%);
+    --color-greyscale-300: hsl(240 2% 68%);
+    --color-greyscale-400: hsl(240 2% 60%);
+    --color-greyscale-500: hsl(240 2% 52%);
+    --color-greyscale-600: hsl(240 2% 43%);
+    --color-greyscale-700: hsl(240 3% 35%); /* #56565C */
+    --color-greyscale-750: hsl(240 4% 26%);
+    --color-greyscale-800: hsl(240 4% 18%);
+    --color-greyscale-850: hsl(240 3% 14%);
+    --color-greyscale-900: hsl(240 5.7% 10.4%);
+
+    /* font sizes */
+    --font-size-*: initial;
+    --font-size-sm: clamp(0.7rem, 0.35vi + 0.61rem, 0.89rem);
+    --font-size-base: clamp(0.88rem, 0.57vi + 0.73rem, 1.19rem);
+    --font-size-lg: clamp(1.09rem, 0.89vi + 0.87rem, 1.58rem);
+    --font-size-xl: clamp(1.37rem, 1.35vi + 1.03rem, 2.11rem);
+    --font-size-2xl: clamp(1.71rem, 2.01vi + 1.21rem, 2.81rem);
+    --font-size-3xl: clamp(2.14rem, 2.93vi + 1.4rem, 3.75rem);
+    --font-size-4xl: clamp(2.67rem, 4.23vi + 1.61rem, 5rem);
+    --font-size-5xl: clamp(3.34rem, 6.04vi + 1.83rem, 6.66rem);
+    --font-size-6xl: clamp(4.17rem, 8.56vi + 2.03rem, 8.88rem);
+    --font-size-7xl: clamp(5.22rem, 12.04vi + 2.21rem, 11.84rem);
+    --font-size-8xl: clamp(6.52rem, 16.84vi + 2.31rem, 15.78rem);
+    --font-size-9xl: clamp(8.15rem, 23.43vi + 2.29rem, 21.03rem);
+}
