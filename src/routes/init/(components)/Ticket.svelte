@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { spring } from 'svelte/motion';
     import type { ContributionsMatrix, TicketData } from '../tickets/constants';
     import Lockup from './Lockup.svelte';
     import Lines from './Lines.svelte';
@@ -23,56 +24,178 @@
     $: if (!show_contributions) {
         removeDelay = true;
     }
+
+    const springR = { stiffness: 0.066, damping: 0.25 };
+
+    let springRotate = spring({ x: 0, y: 0 }, springR);
+    let springGlare = spring({ x: 0, y: 0, o: 0.25 }, springR);
+    let hovering = false;
+
+    const round = (num: number, fix = 3) => parseFloat(num.toFixed(fix));
+    const clamp = (num: number, min = -20, max = 20) => Math.min(Math.max(num, min), max);
+    const adjust = (
+        value: number,
+        fromMin: number,
+        fromMax: number,
+        toMin: number,
+        toMax: number
+    ) => {
+        return round(toMin + ((toMax - toMin) * (value - fromMin)) / (fromMax - fromMin));
+    };
+
+    function isTouchEvent(e: MouseEvent | TouchEvent): e is TouchEvent {
+        return e.type === 'touchmove';
+    }
+
+    function onMouse(node: HTMLElement) {
+        if (disableEffects) return;
+        const mouseMove = (e: MouseEvent) => {
+            const clientX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
+            const clientY = isTouchEvent(e) ? e.touches[0].clientY : e.clientY;
+
+            const el = e.target as HTMLElement;
+            const rect = el.getBoundingClientRect(); // get element's current size/position
+            const absolute = {
+                x: clientX - rect.left, // get mouse position from left
+                y: clientY - rect.top // get mouse position from right
+            };
+            const percent = {
+                x: round((100 / rect.width) * absolute.x),
+                y: round((100 / rect.height) * absolute.y)
+            };
+            const center = {
+                x: percent.x - 50,
+                y: percent.y - 50
+            };
+
+            springRotate.stiffness = springR.stiffness;
+            springRotate.damping = springR.damping;
+            springRotate.set({
+                x: round(-(center.x / 7)),
+                y: round(center.y / 10)
+            });
+
+            springGlare.stiffness = springR.stiffness;
+            springGlare.damping = springR.damping;
+            springGlare.set({
+                x: round(percent.x / 8),
+                y: round(percent.y / 10),
+                o: 0.2
+            });
+
+            hovering = true;
+        };
+        const mouseLeave = () => {
+            if (disableEffects) return;
+
+            const snapStiff = 0.05;
+            const snapDamp = 0.5;
+
+            springRotate.stiffness = snapStiff;
+            springRotate.damping = snapDamp;
+            springRotate.set({ x: 0, y: 0 });
+
+            springGlare.stiffness = snapStiff;
+            springGlare.damping = snapDamp;
+            springGlare.set({ x: 0, y: 0, o: 0 });
+
+            hovering = false;
+        };
+
+        node.addEventListener('mousemove', mouseMove);
+        node.addEventListener('mouseleave', mouseLeave);
+
+        return {
+            destroy() {
+                node.removeEventListener('mousemove', mouseMove);
+                node.removeEventListener('mouseleave', mouseLeave);
+            }
+        };
+    }
+
+    $: styles = `
+		--rx: ${$springRotate.x}deg;
+		--ry: ${$springRotate.y}deg;
+        --opacity: ${hovering ? 1 : 0};
+        --mx: ${$springGlare.x}%;
+		--my: ${$springGlare.y}%;
+        --pointer-x: ${$springGlare.x}%;
+        --pointer-y: ${$springGlare.y}%;
+        --pointer-from-top: ${$springGlare.y / 100};
+        --pointer-from-left: ${$springGlare.x / 100};
+		--o: ${$springGlare.o};
+        --card-opacity: ${$springGlare.o};
+        --pointer-from-center: ${clamp(
+            Math.sqrt(
+                ($springGlare.y - 50) * ($springGlare.y - 50) +
+                    ($springGlare.x - 50) * ($springGlare.x - 50)
+            ) / 50,
+            0,
+            1
+        )};
+	`;
 </script>
 
-<div class="ticket">
-    <div class="lockup">
-        <p class="web-title web-u-color-text-primary">
-            {name?.trim() || '-'}
-        </p>
+<div class="wrapper">
+    <div class="ticket" use:onMouse style={styles}>
+        <div class="lockup">
+            <p class="web-title web-u-color-text-primary">
+                {name?.trim() || '-'}
+            </p>
 
-        <p class="web-label">{title}</p>
+            <p class="web-label">{title}</p>
 
-        <div class="logo" style:width="75%">
-            <Lockup fill={false} animate={!disableEffects} />
-        </div>
-        <div class="shine" />
-        <div class="noise" />
-        {#if !disableEffects}
-            <Lines lines={[2, 3, 1]} />
-        {/if}
-    </div>
-    <div class="stub" class:pink={aw_email}>
-        {#await contributions then c}
-            {#if c && show_contributions}
-                <div
-                    class="github"
-                    out:fade={{ duration: 100 }}
-                    data-remove-delay={removeDelay ? '' : undefined}
-                >
-                    {#each c as row, index}
-                        {@const average = row.reduce((acc, level) => acc + level, 0) / row.length}
-                        <div
-                            class="row"
-                            data-level={Math.round(average)}
-                            style:--index={row.length - index}
-                        />
-                    {/each}
-                </div>
+            <div class="logo" style:width="75%">
+                <Lockup fill={false} animate={!disableEffects} />
+            </div>
+            <div class="shine" />
+            <div class="noise" />
+            {#if !disableEffects}
+                <Lines lines={[2, 3, 1]} />
             {/if}
-        {/await}
-        <div class="details">
-            <span>Init 2.0</span>
-            <span>{`Ticket Number: #${id?.toString().padStart(6, '0')}`}</span>
         </div>
-        <div class="shine" />
-        <div class="noise" />
+        <div class="stub">
+            {#await contributions then c}
+                {#if c && show_contributions}
+                    <div
+                        class="github"
+                        out:fade={{ duration: 100 }}
+                        data-remove-delay={removeDelay ? '' : undefined}
+                    >
+                        {#each c as row, index}
+                            {@const average =
+                                row.reduce((acc, level) => acc + level, 0) / row.length}
+                            <div
+                                class="row"
+                                data-level={Math.round(average)}
+                                style:--index={row.length - index}
+                            />
+                        {/each}
+                    </div>
+                {/if}
+            {/await}
+            <div class="details">
+                <span>Init 2.0</span>
+                <span>{`Ticket Number: #${id?.toString().padStart(6, '0')}`}</span>
+            </div>
+            <div class="shine" />
+            <div class="noise" />
+        </div>
     </div>
 </div>
 
 <style lang="scss">
     @use '$scss/abstract' as *;
     $base-width: 22;
+
+    .wrapper {
+        position: relative;
+        font-size: var(--base-width, var(--base-width-default));
+        width: 100%;
+        perspective: 600px;
+        animation: fade 1s ease-out;
+        z-index: 100;
+    }
 
     @keyframes fade {
         0% {
@@ -98,9 +221,10 @@
     }
 
     .shine {
-        opacity: 0.8;
+        opacity: 0.5;
         background-image: url('/images/tickets/shine.svg');
         mix-blend-mode: hard-light;
+        background-position: var(--pointer-x) var(--pointer-y);
     }
 
     .noise {
@@ -117,6 +241,13 @@
         border-radius: pxToRem(16);
         aspect-ratio: 2 / 1;
         animation: fade 1s ease-out;
+        transition: transform 100ms;
+        transform-origin: center;
+        -webkit-transform: rotateY(var(--rx)) rotateX(var(--ry));
+        transform: rotateY(var(--rx)) rotateX(var(--ry));
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        overflow: hidden;
         .stub {
             background: #000;
             grid-column: 10 / -1;
@@ -128,20 +259,11 @@
             position: relative;
             overflow: hidden;
 
-            &.pink {
-                color: white;
-                background: linear-gradient(
-                    135deg,
-                    hsl(var(--web-color-pink-500)) 0%,
-                    hsl(var(--web-color-pink-500)) 61%,
-                    hsl(var(--web-color-secondary-100)) 100%
-                );
-            }
-
             .shine {
                 background-position: 25% -120px;
                 background-size: 500%;
                 opacity: 0.5;
+                transform-origin: center;
             }
 
             .noise {

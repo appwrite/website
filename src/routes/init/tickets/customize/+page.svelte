@@ -7,7 +7,6 @@
     import Ticket from '../../(components)/Ticket.svelte';
     import TicketDetails from '$routes/init/(components)/TicketDetails.svelte';
     import TicketActions from '$routes/init/(components)/TicketActions.svelte';
-    import { getMockContributions } from '$routes/init/helpers';
 
     export let data;
 
@@ -79,6 +78,8 @@
             <TicketPreview>
                 <Ticket
                     {...data.ticket}
+                    {name}
+                    {title}
                     contributions={data.streamed?.contributions}
                     show_contributions={showGitHub}
                 />

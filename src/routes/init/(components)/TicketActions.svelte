@@ -50,11 +50,7 @@
                 </button>
             {/if}
 
-            {#if ticket.aw_email}
-                <div class="u-flex u-cross-center u-gap-8 web-u-color-text-primary">
-                    <span class="web-sub-body-500">Connected to Appwrite</span>
-                </div>
-            {:else}
+            {#if !ticket.aw_email}
                 <a
                     href="https://cloud.appwrite.io/login?forceRedirect={$page.url
                         .origin}/init/tickets"
