@@ -35,7 +35,6 @@
             {#if ticket.gh_user}
                 <div class="u-flex u-cross-center u-gap-8">
                     <div class="u-flex u-cross-center u-gap-8 web-u-color-text-primary">
-                        <img src="/images/icons/colored/check.svg" alt="" />
                         <span class="web-sub-body-500">Connected to GitHub</span>
                     </div>
 
@@ -53,7 +52,6 @@
 
             {#if ticket.aw_email}
                 <div class="u-flex u-cross-center u-gap-8 web-u-color-text-primary">
-                    <img src="/images/icons/colored/check.svg" alt="" />
                     <span class="web-sub-body-500">Connected to Appwrite</span>
                 </div>
             {:else}
