@@ -15,7 +15,7 @@
             inset-block-start: -100px;
             inset-inline-end: -100px;
             z-index: -10;
-            width: 500px;
+            width: 100%;
             height: 500px;
             opacity: 0.5;
             background-image: url('/images/tickets/shine.svg');
