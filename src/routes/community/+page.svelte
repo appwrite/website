@@ -147,7 +147,7 @@
     <div class="web-big-padding-section overflow-hidden">
         <div class="web-big-padding-section-level-1 relative overflow-hidden">
             <div
-                class="absolute web-z-1-negative web-u-hide-mobile"
+                class="absolute -z-1 web-u-hide-mobile"
                 style:inline-size="704px"
                 style:block-size="670px"
                 style:left="calc((50% - 704px / 2) + 18rem)"
@@ -157,7 +157,7 @@
             </div>
             <div class="web-big-padding-section-level-2">
                 <section class="web-container web-u-padding-block-end-0 relative">
-                    <div class="web-hero is-align-start web-u-max-width-580">
+                    <div class="web-hero is-align-start max-w-[580px]">
                         <h1 class="web-display web-u-color-text-primary">
                             Built by a community of 800+ contributors
                         </h1>
