@@ -72,9 +72,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^7.13.1
         version: 7.13.1(eslint@8.57.0)(typescript@5.5.2)
-      autoprefixer:
-        specifier: ^10.4.19
-        version: 10.4.19(postcss@8.4.39)
       dequal:
         specifier: ^2.0.3
         version: 2.0.3
@@ -1839,13 +1836,6 @@ packages:
     resolution: {integrity: sha512-iNB/39N3dRKDWF7V+4Bto0X3v7mcFWpdSJOgZ1p6K5pTMIg3AjCLtVifW2M4hLkGuyc/iQC0t9FgB+ow2NvPbg==}
     engines: {node: '>=16.0.0'}
 
-  autoprefixer@10.4.19:
-    resolution: {integrity: sha512-BaENR2+zBZ8xXhM4pUaKUxlVdxZ0EZhjvbopwnXmxRUfqDmwSpC2lAi/QXvx7NRdPCo1WKEcEF6mV64si1z4Ew==}
-    engines: {node: ^10 || ^12 || >=14}
-    hasBin: true
-    peerDependencies:
-      postcss: ^8.1.0
-
   axobject-query@4.0.0:
     resolution: {integrity: sha512-+60uv1hiVFhHZeO+Lz0RYzsVHy5Wr1ayX0mwda9KPDVLNJgZ1T9Ny7VmFbLDzxsH0D87I86vgj3gFrjTJUYznw==}
 
@@ -2350,9 +2340,6 @@ packages:
   foreground-child@3.1.1:
     resolution: {integrity: sha512-TMKDUnIte6bfb5nWv7V/caI169OHgvwjb7V4WkeUvbQQdjr5rWKqHFiKWb/fcOwB+CzBT+qbWjvj+DVwRskpIg==}
     engines: {node: '>=14'}
-
-  fraction.js@4.3.7:
-    resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
 
   fs-extra@11.2.0:
     resolution: {integrity: sha512-PmDi3uwK5nFuXh7XDTlVnS17xJS7vW36is2+w3xcv8SVxiB4NyATf4ctkVY5bkSjX0Y4nbvZCq1/EjtEyr9ktw==}
@@ -3072,10 +3059,6 @@ packages:
 
   normalize-path@3.0.0:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
-    engines: {node: '>=0.10.0'}
-
-  normalize-range@0.1.2:
-    resolution: {integrity: sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==}
     engines: {node: '>=0.10.0'}
 
   normalize.css@8.0.1:
@@ -6012,16 +5995,6 @@ snapshots:
       toml-eslint-parser: 0.7.0
       yaml-eslint-parser: 1.2.2
 
-  autoprefixer@10.4.19(postcss@8.4.39):
-    dependencies:
-      browserslist: 4.23.1
-      caniuse-lite: 1.0.30001637
-      fraction.js: 4.3.7
-      normalize-range: 0.1.2
-      picocolors: 1.0.1
-      postcss: 8.4.39
-      postcss-value-parser: 4.2.0
-
   axobject-query@4.0.0:
     dependencies:
       dequal: 2.0.3
@@ -6597,8 +6570,6 @@ snapshots:
     dependencies:
       cross-spawn: 7.0.3
       signal-exit: 4.1.0
-
-  fraction.js@4.3.7: {}
 
   fs-extra@11.2.0:
     dependencies:
@@ -7328,8 +7299,6 @@ snapshots:
       abbrev: 1.1.1
 
   normalize-path@3.0.0: {}
-
-  normalize-range@0.1.2: {}
 
   normalize.css@8.0.1: {}
 
