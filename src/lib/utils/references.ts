@@ -26,25 +26,25 @@ export enum Service {
 export enum Platform {
     ClientWeb = 'client-web',
     ClientFlutter = 'client-flutter',
+    ClientReactNative = 'client-react-native',
     ClientApple = 'client-apple',
     ClientAndroidKotlin = 'client-android-kotlin',
     ClientAndroidJava = 'client-android-java',
-    ClientReactNative = 'client-react-native',
     ClientGraphql = 'client-graphql',
     ClientRest = 'client-rest',
     ServerNodeJs = 'server-nodejs',
     ServerPython = 'server-python',
     ServerDart = 'server-dart',
-    ServerDeno = 'server-deno',
     ServerPhp = 'server-php',
     ServerRuby = 'server-ruby',
+    ServerDotNet = 'server-dotnet (beta)',
+    ServerDeno = 'server-deno',
+    ServerGo = 'server-go (beta) (new)',
     ServerSwift = 'server-swift',
     ServerKotlin = 'server-kotlin',
     ServerJava = 'server-java',
-    ServerDotNet = 'server-dotnet',
     ServerGraphql = 'server-graphql',
     ServerRest = 'server-rest',
-    ServerGo = 'server-go'
 }
 
 export const platformMap: Record<Language | string, string> = {
@@ -58,7 +58,7 @@ export const platformMap: Record<Language | string, string> = {
     [Platform.ClientRest]: 'REST',
     [Platform.ServerDart]: 'Dart',
     [Platform.ServerDeno]: 'Deno',
-    [Platform.ServerDotNet]: '.NET',
+    [Platform.ServerDotNet]: '.NET (beta)',
     [Platform.ServerNodeJs]: 'Node.js',
     [Platform.ServerPhp]: 'PHP',
     [Platform.ServerPython]: 'Python',
@@ -68,7 +68,7 @@ export const platformMap: Record<Language | string, string> = {
     [Platform.ServerJava]: 'Java',
     [Platform.ServerGraphql]: 'GraphQL',
     [Platform.ServerRest]: 'REST',
-    [Platform.ServerGo]: 'Go',
+    [Platform.ServerGo]: 'Go (beta) (new)',
     sh: 'Shell',
     js: 'JavaScript',
     ts: 'TypeScript',
@@ -104,7 +104,7 @@ export const platformMap: Record<Language | string, string> = {
     vue: 'Vue',
     svelte: 'Svelte',
     groovy: 'Groovy',
-    go: 'Go',
+    go: 'Go (beta) (new)',
 };
 
 export const serviceMap: Record<Service, string> = {
