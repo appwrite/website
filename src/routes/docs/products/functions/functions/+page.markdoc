@@ -178,3 +178,11 @@ You can access environment variables inside functions using your [runtime langua
 ## Timeout {% #timeout %}
 You can limit the execution time of your function by navigating to your function > **Settings** > **Timeout**.
 There is a system wide maximum timeout of 900 seconds (15 minutes).
+
+## Scopes {% #scopes %}
+
+You can configure the function permission scopes to access your project services, like users and buckets, by navigating to your function > **Settings** > **Scopes**.
+
+{% arrow_link href="/docs/advanced/platform/api-keys#scopes" %}
+Learn more about scopes
+{% /arrow_link %}
