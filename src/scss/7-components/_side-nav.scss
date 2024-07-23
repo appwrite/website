@@ -95,7 +95,7 @@
     }
   }
 
-  #{$theme-dark} & {
+  #{$dark} & {
     --p-side-nav-item-bg-color-hover: var(--web-color-white) / 0.08;
   }
 }

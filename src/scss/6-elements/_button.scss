@@ -25,7 +25,7 @@
 
   &:where(:focus-visible) {
     box-shadow: 0 0 0 pxToRem(4) rgba(253, 54, 110, 0.24);
-    #{$theme-dark} {
+    #{$dark} {
       box-shadow: 0 0 0 pxToRem(4) rgba(253, 54, 110, 0.48);
     }   
   }
@@ -134,7 +134,7 @@
     }
     @include light-mode;
     
-    #{$theme-dark} & {
+    #{$dark} & {
       @include dark-mode;
     }
 
@@ -154,12 +154,12 @@
     .#{$p}-inline-tag {
       background:rgba(0, 0, 0, 0.08);
       color:hsl(var(--web-color-greyscale-900));
-      #{$theme-dark} & { color:hsl(var(--web-color-greyscale-100)); }
+      #{$dark} & { color:hsl(var(--web-color-greyscale-100)); }
     }
     &:where(:focus) {
       box-shadow:none;
       outline: 4px solid rgba(0, 0, 0, 0.14);
-      #{$theme-dark} & {
+      #{$dark} & {
         outline: 4px solid rgba(255, 255, 255, 0.16);
       }
     }
@@ -169,11 +169,11 @@
 
       -webkit-backdrop-filter: blur(pxToRem(8));
       backdrop-filter: blur(pxToRem(8));
-      #{$theme-dark} & {color:hsl(var(--color-neutral-0));}
+      #{$dark} & {color:hsl(var(--color-neutral-0));}
     }
     &:where(:hover, [data-highlighted]):where(:not(#{$disabled})) { background:linear-gradient(135deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.51) 54.74%, rgba(255, 255, 255, 0.38) 100%); }
     &:where(:active):where(:not(#{$disabled})) { background:linear-gradient(135deg, rgba(255, 255, 255, 0.60) 0%, rgba(255, 255, 255, 0.80) 54.74%, rgba(255, 255, 255, 0.60) 100%); }
-    #{$theme-dark} & {
+    #{$dark} & {
       color:hsl(var(--color-neutral-0));
       &:where(:hover, [data-highlighted]):where(:not(#{$disabled})) { background:linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.10) 54.74%, rgba(255, 255, 255, 0.06) 100%); }
       &:where(:active):where(:not(#{$disabled})) { background:linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.15) 54.74%, rgba(255, 255, 255, 0.09) 100%); }
@@ -186,7 +186,7 @@
         box-shadow:none; color:hsl(var(--web-color-greyscale-900));
         -webkit-backdrop-filter:blur(pxToRem(8));
         backdrop-filter:blur(pxToRem(8));
-       // #{$theme-dark} & { color:hsl(var(--color-neutral-0))!important; }
+       // #{$dark} & { color:hsl(var(--color-neutral-0))!important; }
       }
       &:where(:hover, [data-highlighted]):where(:not(#{$disabled})) { background:linear-gradient(135deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.51) 54.74%, rgba(255, 255, 255, 0.38) 100%); }
       &:where(:active):where(:not(#{$disabled})) { background:linear-gradient(135deg, rgba(255, 255, 255, 0.60) 0%, rgba(255, 255, 255, 0.80) 54.74%, rgba(255, 255, 255, 0.60) 100%); }

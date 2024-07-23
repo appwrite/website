@@ -17,7 +17,7 @@
 
   &.is-scroll { overflow-x:scroll; }
 
-  #{$theme-dark} & {
+  #{$dark} & {
     --p-articles-item-bg-color: var(--web-color-greyscale-850) / 0.94;
     --p-articles-item-title-color: var(--web-color-greyscale-100);
     --p-articles-item-paragraph-color: var(--web-color-greyscale-300);

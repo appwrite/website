@@ -101,7 +101,7 @@
       --p-select-box-shadow-color: var(--p-select-box-shadow-color-focus);
     }
 
-    #{$theme-dark} & {
+    #{$dark} & {
       @include dark-mode();
     }
   }
@@ -133,7 +133,7 @@
     --p-select-menu-box-shadow-color: var(--transparent);
   }
   @include light-mode();
-  #{$theme-dark} & {
+  #{$dark} & {
     @include dark-mode();
   }
 
@@ -176,7 +176,7 @@
     --p-select-option-bg-color-hover: var(--web-color-white) / 0.12;
   }
   @include light-mode();
-  #{$theme-dark} & {
+  #{$dark} & {
     @include dark-mode();
   }
 

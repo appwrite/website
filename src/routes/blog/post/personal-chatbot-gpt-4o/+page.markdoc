@@ -85,7 +85,7 @@ To get our chatbot up and running, we must first develop a UI you can interact w
     <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink" />
     <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink-icons" />
   </head>
-  <body class="theme-dark">
+  <body class="dark">
     <main class="main-content">
       <div class="top-cover u-padding-block-end-56">
         <div class="container">

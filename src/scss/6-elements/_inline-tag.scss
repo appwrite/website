@@ -13,7 +13,7 @@
     --p-inline-tag-bg: var(--web-color-pink-500);
     --p-inline-tag-bg-opacity: 0.1;
 
-    #{$theme-dark} & {
+    #{$dark} & {
       --p-inline-tag-bg-opacity: 0.24;
       --p-inline-tag-text: var(--web-color-greyscale-50);
     }

@@ -59,7 +59,7 @@
   }
   &:disabled { opacity:0.4; }
 
-  #{$theme-dark} & {
+  #{$dark} & {
     --p-hero-button-text-color-default: var(--web-color-white);
     --p-hero-button-bg-color-default: var(--web-color-pink-500) / 0.08;
     --p-hero-button-border-color-default: var(--web-color-pink-500);

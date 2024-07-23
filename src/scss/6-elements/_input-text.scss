@@ -63,7 +63,7 @@
   --p-input-bg-color: var(--p-input-bg-color-default);
   --p-input-border-color: var(--p-input-border-color-default);
 
-  #{$theme-dark} & {
+  #{$dark} & {
     @include input-dark-mode();
   }
   #{$theme-light} & {

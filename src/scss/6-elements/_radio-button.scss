@@ -45,7 +45,7 @@
     outline: solid pxToRem(1) hsl(var(--p-radio-text-color));
   }
 
-  #{$theme-dark} & {
+  #{$dark} & {
     --p-radio-bg-color-default: var(--web-color-white) / 0.06;
     --p-radio-bg-color-hover: var(--web-color-white) / 0.06;
     --p-radio-bg-color-active: var(--web-color-white) / 0.10;
