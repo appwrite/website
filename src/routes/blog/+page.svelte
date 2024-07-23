@@ -32,56 +32,56 @@
 
 <Main>
     <div class="web-big-padding-section" style:overflow-x="hidden">
-        <div class="web-big-padding-section-level-1 u-position-relative">
+        <div class="web-big-padding-section-level-1 relative">
             <div
-                    class="u-position-absolute"
-                    style="pointer-events:none;inset-inline-start:0; inset-block-end:0;"
+                class="absolute"
+                style="pointer-events:none;inset-inline-start:0; inset-block-end:0;"
             >
                 <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="660"
-                        height="497"
-                        viewBox="0 0 660 497"
-                        fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="660"
+                    height="497"
+                    viewBox="0 0 660 497"
+                    fill="none"
                 >
                     <g opacity="0.4" filter="url(#filter0_f_2092_11792)">
                         <ellipse
-                                cx="-2.5"
-                                cy="609.5"
-                                rx="362.5"
-                                ry="309.5"
-                                fill="url(#paint0_radial_2092_11792)"
+                            cx="-2.5"
+                            cy="609.5"
+                            rx="362.5"
+                            ry="309.5"
+                            fill="url(#paint0_radial_2092_11792)"
                         />
                     </g>
                     <defs>
                         <filter
-                                id="filter0_f_2092_11792"
-                                x="-665"
-                                y="0"
-                                width="1325"
-                                height="1219"
-                                filterUnits="userSpaceOnUse"
-                                color-interpolation-filters="sRGB"
+                            id="filter0_f_2092_11792"
+                            x="-665"
+                            y="0"
+                            width="1325"
+                            height="1219"
+                            filterUnits="userSpaceOnUse"
+                            color-interpolation-filters="sRGB"
                         >
                             <feFlood flood-opacity="0" result="BackgroundImageFix" />
                             <feBlend
-                                    mode="normal"
-                                    in="SourceGraphic"
-                                    in2="BackgroundImageFix"
-                                    result="shape"
+                                mode="normal"
+                                in="SourceGraphic"
+                                in2="BackgroundImageFix"
+                                result="shape"
                             />
                             <feGaussianBlur
-                                    stdDeviation="150"
-                                    result="effect1_foregroundBlur_2092_11792"
+                                stdDeviation="150"
+                                result="effect1_foregroundBlur_2092_11792"
                             />
                         </filter>
                         <radialGradient
-                                id="paint0_radial_2092_11792"
-                                cx="0"
-                                cy="0"
-                                r="1"
-                                gradientUnits="userSpaceOnUse"
-                                gradientTransform="translate(-2.5 629.739) rotate(90) scale(289.261 362.5)"
+                            id="paint0_radial_2092_11792"
+                            cx="0"
+                            cy="0"
+                            r="1"
+                            gradientUnits="userSpaceOnUse"
+                            gradientTransform="translate(-2.5 629.739) rotate(90) scale(289.261 362.5)"
                         >
                             <stop offset="0.281696" stop-color="#FE9567" />
                             <stop offset="0.59375" stop-color="#FD366E" />
@@ -90,14 +90,21 @@
                 </svg>
             </div>
 
-            <div class="web-big-padding-section-level-2 u-position-relative">
+            <div class="web-big-padding-section-level-2 relative">
                 <div class="web-container">
                     <h1 class="web-display web-u-color-text-primary">Blog</h1>
                     {#if featured}
-                        {@const author = data.authors.find((author) => author.slug === featured.author)}
+                        {@const author = data.authors.find(
+                            (author) => author.slug === featured.author
+                        )}
                         <article class="web-feature-article u-margin-block-start-48">
                             <a href={featured.href} class="web-feature-article-image">
-                                <img src={featured.cover} class="web-image-ratio-4/3" loading="lazy" alt="cover" />
+                                <img
+                                    src={featured.cover}
+                                    class="web-image-ratio-4/3"
+                                    loading="lazy"
+                                    alt="cover"
+                                />
                             </a>
                             <div class="web-feature-article-content">
                                 <header class="web-feature-article-header">
@@ -114,29 +121,31 @@
                                     {featured.description}
                                 </p>
                                 <div class="web-author">
-                                    <div class="u-flex u-cross-center u-gap-8">
+                                    <div class="flex u-cross-center gap-2">
                                         <img
-                                                class="web-author-image"
-                                                src={author?.avatar}
-                                                alt={author?.name}
-                                                loading="lazy"
-                                                width="24"
-                                                height="24"
+                                            class="web-author-image"
+                                            src={author?.avatar}
+                                            alt={author?.name}
+                                            loading="lazy"
+                                            width="24"
+                                            height="24"
                                         />
                                         <div class="web-author-info">
                                             <a href={author?.href} class="web-sub-body-400 web-link"
-                                            >{author?.name}</a
+                                                >{author?.name}</a
                                             >
                                             <p class="web-caption-400 u-hide">{author?.bio}</p>
-                                            <ul class="web-metadata web-caption-400 web-is-not-mobile">
+                                            <ul
+                                                class="web-metadata web-caption-400 web-is-not-mobile"
+                                            >
                                                 <li>{featured.timeToRead} min</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                                 <a
-                                        href={featured.href}
-                                        class="web-button is-secondary u-margin-block-start-auto"
+                                    href={featured.href}
+                                    class="web-button is-secondary u-margin-block-start-auto"
                                 >
                                     <span>Read article</span>
                                 </a>
@@ -159,13 +168,13 @@
                                 )}
                                 {#if author && !post.draft}
                                     <Article
-                                            title={post.title}
-                                            href={post.href}
-                                            cover={post.cover}
-                                            date={post.date}
-                                            timeToRead={post.timeToRead}
-                                            avatar={author.avatar}
-                                            author={author.name}
+                                        title={post.title}
+                                        href={post.href}
+                                        cover={post.cover}
+                                        date={post.date}
+                                        timeToRead={post.timeToRead}
+                                        avatar={author.avatar}
+                                        author={author.name}
                                     />
                                 {/if}
                             {/each}

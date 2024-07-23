@@ -53,7 +53,7 @@
                     </div>
                     <!-- <div class="web-input-text-search-wrapper u-inline-width-100-percent-mobile">
 						<span class="icon-search" aria-hidden="true" />
-						<input class="web-input-text web-u-block-size-48" type="search" placeholder="Search" />
+						<input class="web-input-text web-block-size-48" type="search" placeholder="Search" />
 					</div> -->
                 </div>
 
@@ -76,7 +76,7 @@
                     </ul>
                 </div>
                 <div
-                    class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
+                    class="web-big-padding-section-level-2 is-margin-replace-padding relative overflow-hidden"
                 >
                     <div class="web-container">
                         <FooterNav />

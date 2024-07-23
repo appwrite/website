@@ -66,22 +66,19 @@
 <Docs variant="default">
     <Sidebar />
 
-    <main
-        class="web-main-section u-position-relative web-u-overflow-hidden-break1-to-break3"
-        id="main"
-    >
-        <div class="u-position-absolute web-u-opacity-40-mobile bg-blur">
+    <main class="web-main-section relative overflow-hidden-break1-to-break3" id="main">
+        <div class="absolute web-u-opacity-40-mobile bg-blur">
             <img src="/images/bgs/docs-blur-1.svg" alt="" />
         </div>
 
         <div
-            class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-16 web-u-opacity-40-mobile"
+            class="absolute u-inset-inline-start-0 u-inset-block-start-16 web-u-opacity-40-mobile"
             style="    margin-inline-start: -30px;"
         >
             <enhanced:img src="./blur-2.png" alt="" />
         </div>
 
-        <section class="web-hero is-align-start u-position-relative e-hero-docs">
+        <section class="web-hero is-align-start relative e-hero-docs">
             <h1 class="web-display web-u-color-text-primary u-max-width-600">
                 Learn how to build like a team of hundreds<span class="web-u-color-text-accent"
                     >_
@@ -104,7 +101,7 @@
             <a href="/docs/sdks" class="web-button is-secondary" style:align-self="start">
                 <span class="web-sub-body-500">Explore all technologies</span>
             </a>
-            <div class="u-position-absolute web-is-not-mobile spline-wrapper">
+            <div class="absolute web-is-not-mobile spline-wrapper">
                 <img
                     class="u-only-dark"
                     src="/images/animations/tech-dark-transparent.png"

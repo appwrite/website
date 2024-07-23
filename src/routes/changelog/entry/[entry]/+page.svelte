@@ -42,7 +42,10 @@
                 <div class="web-container wrapper" style="--container-size:42.5rem">
                     <article class="web-main-article">
                         <header class="web-main-article-header">
-                            <a class="web-link web-u-color-text-secondary u-cross-baseline" href="/changelog">
+                            <a
+                                class="web-link web-u-color-text-secondary u-cross-baseline"
+                                href="/changelog"
+                            >
                                 <span class="web-icon-chevron-left" aria-hidden="true" />
                                 <span>Back to Changelog</span>
                             </a>
@@ -55,7 +58,7 @@
                         </header>
                         {#if data.cover}
                             <div class="web-media-container">
-                                <img class="u-block" src={data.cover} alt="" />
+                                <img class="block" src={data.cover} alt="" />
                             </div>
                         {/if}
 
@@ -65,7 +68,7 @@
                     </article>
                 </div>
             </div>
-            <div class="web-big-padding-section-level-1 u-position-relative u-overflow-hidden">
+            <div class="web-big-padding-section-level-1 relative overflow-hidden">
                 <div class="web-big-padding-section-level-2">
                     <div class="web-container">
                         <PreFooter />

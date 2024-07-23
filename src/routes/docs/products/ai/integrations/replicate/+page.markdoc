@@ -133,7 +133,7 @@ And after the `</head>` tag we're going to add our `<body>` which will contain t
   <main class="main-content">
     <div class="top-cover u-padding-block-end-56">
       <div class="container">
-        <div class="u-flex u-gap-16 u-flex-justify-center u-margin-block-start-16">
+        <div class="flex gap-4 u-flex-justify-center u-margin-block-start-16">
           <h1 class="heading-level-1">Replicate Demo</h1>
           <code class="u-un-break-text"></code>
         </div>
@@ -145,8 +145,8 @@ And after the `</head>` tag we're going to add our `<body>` which will contain t
     </div>
     <div class="container u-margin-block-start-negative-56"
       x-data="{ type: 'text', prompt: '', answer: {type: '', answer: ''}, loading: false }">
-      <div class="card u-flex u-gap-24 u-flex-vertical">
-        <div class="u-flex u-cross-center u-gap-8">
+      <div class="card flex gap-6 u-flex-vertical">
+        <div class="flex u-cross-center gap-2">
           <div class="input-text-wrapper is-with-end-button u-width-full-line">
             <input x-model="prompt" type="search" placeholder="Prompt" />
             <div class="icon-search" aria-hidden="true"></div>
@@ -166,18 +166,18 @@ And after the `</head>` tag we're going to add our `<body>` which will contain t
           </button>
         </div>
         <template x-if="answer.type">
-          <div class="u-flex u-flex-vertical u-gap-12">
-            <div class="u-flex u-flex-vertical u-gap-12 card">
-              <div class="u-flex u-gap-12">
+          <div class="flex u-flex-vertical gap-3">
+            <div class="flex u-flex-vertical gap-3 card">
+              <div class="flex gap-3">
                 <h5 class="eyebrow-heading-2">Result:</h5>
               </div>
-              <template x-if="answer.type === 'image'" class="u-flex u-gap-12">
+              <template x-if="answer.type === 'image'" class="flex gap-3">
                 <img class="u-max-width-400" x-bind:src="answer.response" alt="Replicate output" />
               </template>
-              <template x-if="answer.type === 'audio'" class="u-flex u-gap-12">
+              <template x-if="answer.type === 'audio'" class="flex gap-3">
                 <audio x-bind:src="answer.response" controls></audio>
               </template>
-              <template x-if="answer.type === 'text'" class="u-flex u-gap-12">
+              <template x-if="answer.type === 'text'" class="flex gap-3">
                 <p class="u-color-text-gray" x-text="answer.response"></p>
               </template>
             </div>

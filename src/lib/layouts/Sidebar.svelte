@@ -59,7 +59,8 @@
                     <a href={parent.href} aria-label="go back">
                         <span class="icon-cheveron-left" aria-hidden="true" />
                     </a>
-                    <span class="web-side-nav-wrapper-parent-title web-eyebrow">{parent.label}</span>
+                    <span class="web-side-nav-wrapper-parent-title web-eyebrow">{parent.label}</span
+                    >
                 </section>
             {/if}
             {#each navigation as navGroup}

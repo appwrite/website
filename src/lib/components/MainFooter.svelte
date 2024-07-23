@@ -4,12 +4,12 @@
 
     export let variant: 'homepage' | 'docs' = 'homepage';
 
-    const year = new Date().getFullYear()
+    const year = new Date().getFullYear();
 </script>
 
 {#if variant === 'homepage'}
-    <footer class="web-main-footer u-position-relative u-margin-block-start-48">
-        <ul class="u-flex u-gap-8">
+    <footer class="web-main-footer relative u-margin-block-start-48">
+        <ul class="flex gap-2">
             {#each socials as social}
                 <li>
                     <a
@@ -24,8 +24,8 @@
                 </li>
             {/each}
         </ul>
-        <div class="u-flex u-gap-16">
-            <ul class="u-flex u-gap-8">
+        <div class="flex gap-4">
+            <ul class="flex gap-2">
                 <li><a class="web-link" href="/terms">Terms</a></li>
                 <li><a class="web-link" href="/privacy">Privacy</a></li>
                 <li><a class="web-link" href="/cookies">Cookies</a></li>
@@ -34,11 +34,9 @@
         </div>
     </footer>
 {:else if variant === 'docs'}
-    <footer
-        class="web-main-footer is-with-bg-color u-margin-block-start-32 u-small u-position-relative"
-    >
+    <footer class="web-main-footer is-with-bg-color u-margin-block-start-32 u-small relative">
         <div class="web-main-footer-grid-1">
-            <ul class="web-main-footer-grid-1-column-1 u-flex u-gap-8">
+            <ul class="web-main-footer-grid-1-column-1 flex gap-2">
                 {#each socials as social}
                     <li>
                         <a
@@ -77,7 +75,7 @@
 {/if}
 
 <style lang="scss">
-  .web-icon-button {
-    display: grid;
-  }
+    .web-icon-button {
+        display: grid;
+    }
 </style>

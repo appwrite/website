@@ -78,7 +78,7 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<div class="u-position-relative">
+<div class="relative">
     <section class="web-mobile-header is-transparent">
         <div class="web-mobile-header-start">
             <a href="/" aria-label="homepage">
@@ -102,7 +102,11 @@
             <a href="https://cloud.appwrite.io" class="web-button web-is-only-desktop">
                 <span class="web-sub-body-500">Go to Console</span>
             </a>
-            <button class="web-button is-text" aria-label="open navigation" on:click={toggleSidenav}>
+            <button
+                class="web-button is-text"
+                aria-label="open navigation"
+                on:click={toggleSidenav}
+            >
                 {#if $layoutState.showSidenav}
                     <span aria-hidden="true" class="web-icon-close" />
                 {:else}
@@ -140,7 +144,7 @@
                         </li>
                     </ul>
                 </nav>
-                <div class="u-flex u-stretch web-u-margin-inline-start-48">
+                <div class="flex u-stretch web-u-margin-inline-start-48">
                     <button
                         class="web-input-button web-u-flex-basis-400"
                         on:click={() => ($layoutState.showSearch = true)}
@@ -148,7 +152,7 @@
                         <span class="web-icon-search" aria-hidden="true" />
                         <span class="text">Search in docs</span>
 
-                        <div class="u-flex u-gap-4 u-margin-inline-start-auto">
+                        <div class="flex gap-1 u-margin-inline-start-auto">
                             {#if isMac()}
                                 <span class="web-kbd" aria-label="command">⌘</span>
                             {:else}
@@ -160,7 +164,7 @@
                 </div>
             </div>
             <div class="web-main-header-end">
-                <div class="u-flex u-gap-8">
+                <div class="flex gap-2">
                     <a
                         href="https://github.com/appwrite/appwrite/stargazers"
                         target="_blank"

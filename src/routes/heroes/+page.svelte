@@ -65,7 +65,7 @@
         {
             name: 'Jason Torres',
             role: 'Freelance Community Manager',
-            bio: "Jason Torres a former film-maker turned developer who is currently exploring Developer Advocacy and Community Management freelance, and hosting The Tech Commute, a series of Twitter Spaces catered towards developers.",
+            bio: 'Jason Torres a former film-maker turned developer who is currently exploring Developer Advocacy and Community Management freelance, and hosting The Tech Commute, a series of Twitter Spaces catered towards developers.',
             github: 'https://github.com/jasonetorres',
             twitter: 'https://twitter.com/tasonjorres',
             linkedin: 'https://www.linkedin.com/in/thejasontorres',
@@ -74,7 +74,7 @@
         {
             name: 'Nishant Jain',
             role: 'Frontend Developer',
-            bio: "Nishant Jain is a frontend developer and community builder from Indore, India. He has been actively contributing to the Appwrite community as a Discord moderator.",
+            bio: 'Nishant Jain is a frontend developer and community builder from Indore, India. He has been actively contributing to the Appwrite community as a Discord moderator.',
             github: 'https://github.com/Nishantjain10',
             twitter: 'https://twitter.com/devnishant10',
             linkedin: 'https://www.linkedin.com/in/nishantj2002/',
@@ -163,9 +163,7 @@
             </div>
         </div>
 
-        <div
-            class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light"
-        >
+        <div class="web-big-padding-section-level-1 relative web-white-section light">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
                     <div class="web-hero">
@@ -178,7 +176,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="web-big-padding-section-level-2 web-u-overflow-hidden">
+            <div class="web-big-padding-section-level-2 overflow-hidden">
                 <div class="scroll-carousel" use:infiniteScroll>
                     <ul class="inner">
                         <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
@@ -189,7 +187,7 @@
                                     style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
                                 >
                                     <img
-                                        class="u-block web-u-border-radius-12"
+                                        class="block web-u-border-radius-12"
                                         src="/images/heroes/photos/{i + 1}.png"
                                         loading="lazy"
                                         alt=""
@@ -207,7 +205,7 @@
                             How Appwrite Heroes can benefit you
                         </h2>
                     </section>
-                    <div class="u-overflow-hidden web-u-margin-block-start-80">
+                    <div class="overflow-hidden web-u-margin-block-start-80">
                         <ul class="web-info-boxes web-sub-body-500">
                             <li class="web-info-boxes-item">
                                 <img
@@ -294,14 +292,9 @@
             </div>
         </div>
 
-        <div class="web-big-padding-section-level-1 u-position-relative footer-wrapper">
-            <enhanced:img
-                src="./bg-pre.png"
-                alt=""
-                class="u-position-absolute"
-                style:inset-block-start="0"
-            />
-            <div class="web-big-padding-section-level-2 u-position-relative">
+        <div class="web-big-padding-section-level-1 relative footer-wrapper">
+            <enhanced:img src="./bg-pre.png" alt="" class="absolute" style:inset-block-start="0" />
+            <div class="web-big-padding-section-level-2 relative">
                 <div class="web-container">
                     <div class="web-hero web-u-max-width-800">
                         <h5 class="web-display web-u-color-text-primary">Become a Hero</h5>
@@ -319,8 +312,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="web-big-padding-section-level-2 u-position-relative">
-                    <div class="web-container u-position-relative">
+                <div class="web-big-padding-section-level-2 relative">
+                    <div class="web-container relative">
                         <FooterNav noBorder />
                         <MainFooter />
                     </div>

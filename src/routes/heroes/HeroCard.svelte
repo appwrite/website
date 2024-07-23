@@ -22,9 +22,9 @@
     export let avatar: $$Props['avatar'];
 </script>
 
-<div class="web-card is-white theme-light">
+<div class="web-card is-white light">
     <div class="web-social-item u-flex-vertical">
-        <div class="u-flex u-gap-16 u-main-space-between">
+        <div class="flex gap-4 u-main-space-between">
             <div class="web-user-box">
                 <img class="web-user-box-image" src={avatar} alt="" />
                 <div class="web-user-box-name web-sub-body-500 web-clr-primary">{name}</div>
@@ -32,7 +32,7 @@
             </div>
         </div>
         <p class="web-sub-body-500 web-u-text-color-neutral-700 u-margin-block-start-20">{bio}</p>
-        <ul class="u-flex u-gap-12 u-margin-block-start-32">
+        <ul class="flex gap-3 u-margin-block-start-32">
             <li>
                 <a
                     class="web-icon-button"

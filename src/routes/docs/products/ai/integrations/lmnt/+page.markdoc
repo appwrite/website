@@ -28,11 +28,11 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console), click on **Fu
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
-2. Click **Create function**.
-3. Under **Connect Git repository**, select your provider.
-4. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
-5. In the **Variables** step, add `APPWRITE_BUCKET_ID`, `LMNT_API_KEY`. Generate your LMNT Key [here](https://app.lmnt.com/account). For the `APPWRITE_API_KEY`, tick the box to **Generate API key on completion**.
-6. Follow the step-by-step wizard and create the Function.
+1. Click **Create function**.
+1. Under **Connect Git repository**, select your provider.
+1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
+1. In the **Variables** step, add `APPWRITE_BUCKET_ID`, `LMNT_API_KEY`. Generate your LMNT Key [here](https://app.lmnt.com/account). For the `APPWRITE_API_KEY`, tick the box to **Generate API key on completion**.
+1. Follow the step-by-step wizard and create the Function.
 {% /section %}
 
 {% section #step-2 step=2 title="Add dependencies" %}
@@ -146,7 +146,7 @@ And after the `</head>` tag add this `<body>` which will contain the actual form
     <div class="top-cover u-padding-block-end-56">
       <div class="container">
         <div
-          class="u-flex u-gap-16 u-flex-justify-center u-margin-block-start-16"
+          class="flex gap-4 u-flex-justify-center u-margin-block-start-16"
         >
           <h1 class="heading-level-1">LMNT Demo</h1>
           <code class="u-un-break-text"></code>
@@ -164,8 +164,8 @@ And after the `</head>` tag add this `<body>` which will contain the actual form
       class="container u-margin-block-start-negative-56"
       x-data="{ prompt: '', response: '', loading: false }"
     >
-      <div class="card u-flex u-gap-24 u-flex-vertical">
-        <div class="u-flex u-cross-center u-gap-8">
+      <div class="card flex gap-6 u-flex-vertical">
+        <div class="flex u-cross-center gap-2">
           <div
             class="input-text-wrapper is-with-end-button u-width-full-line"
           >
@@ -182,9 +182,9 @@ And after the `</head>` tag add this `<body>` which will contain the actual form
           </button>
         </div>
         <template x-if="response">
-          <div class="u-flex u-flex-vertical u-gap-12">
-            <div class="u-flex u-flex-vertical u-gap-12 card">
-              <div class="u-flex u-gap-12">
+          <div class="flex u-flex-vertical gap-3">
+            <div class="flex u-flex-vertical gap-3 card">
+              <div class="flex gap-3">
                 <h5 class="eyebrow-heading-2">Output:</h5>
               </div>
 
@@ -236,7 +236,6 @@ const response = await lmnt.synthesize(req.body.text, 'lily', { format: 'mp3' })
 ```
 
 This code will send the prompt to the LMNT API and return the audio as a blob. Additionally, any errors will be caught and reported for easy debugging.
-
 {% /section %}
 
 {% section #step-7 step=7 title="Store Audio in Appwrite Storage" %}

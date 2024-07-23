@@ -193,9 +193,7 @@ def main(context):
 ```
 {% /section %}
 
-
 {% section #step-7 step=7 title="Build the generate_text function" %}
-
 Create the `generate_text` function in the `src/main.py` file to generate text completions using the TensorFlow model.
 
 ```python
@@ -222,9 +220,7 @@ def generate_text(prompt):
 
     return prompt + "".join(text_generated)
 ```
-
 {% /section %}
-
 
 {% section #step-8 step=8 title="Create web page" %}
 Create a HTML web page that the function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
@@ -268,7 +264,7 @@ Create a HTML web page that the function will serve. Create a new file at `stati
       <div class="top-cover u-padding-block-end-56">
         <div class="container">
           <div
-            class="u-flex u-gap-16 u-flex-justify-center u-margin-block-start-16"
+            class="flex gap-4 u-flex-justify-center u-margin-block-start-16"
           >
             <h1 class="heading-level-1">Generate with TensorFlow demo</h1>
             <code class="u-un-break-text"></code>
@@ -286,8 +282,8 @@ Create a HTML web page that the function will serve. Create a new file at `stati
         class="container u-margin-block-start-negative-56"
         x-data="{ prompt: '', answer: '', loading: false }"
       >
-        <div class="card u-flex u-gap-24 u-flex-vertical">
-          <div class="u-flex u-cross-center u-gap-8">
+        <div class="card flex gap-6 u-flex-vertical">
+          <div class="flex u-cross-center gap-2">
             <div
               class="input-text-wrapper is-with-end-button u-width-full-line"
             >
@@ -304,9 +300,9 @@ Create a HTML web page that the function will serve. Create a new file at `stati
             </button>
           </div>
           <template x-if="answer">
-            <div class="u-flex u-flex-vertical u-gap-12">
-              <div class="u-flex u-flex-vertical u-gap-12 card">
-                <div class="u-flex u-gap-12">
+            <div class="flex u-flex-vertical gap-3">
+              <div class="flex u-flex-vertical gap-3 card">
+                <div class="flex gap-3">
                   <h5 class="eyebrow-heading-2">TensorFlow Model:</h5>
                 </div>
 

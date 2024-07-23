@@ -25,11 +25,11 @@
     export let description: $$Props['description'];
     export let buttonText: $$Props['buttonText'];
     export let headingLevel: $$Props['headingLevel'] = 5;
-    const hasPast: boolean = (new Date()) > (new Date(date));
+    const hasPast: boolean = new Date() > new Date(date);
     const dateString: string = new Date(date).toLocaleDateString('en-US', {
         month: 'long',
         day: 'numeric',
-        year: 'numeric',
+        year: 'numeric'
     });
     $: headingTag = `h${headingLevel}`;
 </script>
@@ -39,12 +39,12 @@
         <img src={cover.src} alt={cover.alt} class="web-u-media-ratio-16-9" loading="lazy" />
     </div>
     <div class="web-grid-articles-item-content is-no-gap">
-        <ul class="u-flex u-flex-wrap web-u-list-inline-dot-sep">
-            <li class="u-flex u-cross-baseline u-gap-4">
+        <ul class="flex flex-wrap web-u-list-inline-dot-sep">
+            <li class="flex u-cross-baseline gap-1">
                 <span class="web-icon-calendar web-u-color-text-tertiary" aria-hidden="true" />
                 <time class="">{dateString}</time>
             </li>
-            <li class="u-flex u-cross-baseline u-gap-4">
+            <li class="flex u-cross-baseline gap-1">
                 <span class="web-icon-location web-u-color-text-tertiary" aria-hidden="true" />
                 <span class="">{location}</span>
             </li>
@@ -58,7 +58,7 @@
         <p class="web-sub-body-500">
             {description}
         </p>
-        <div class="u-flex u-flex-wrap u-gap-8 u-padding-block-start-16 mbs-auto">
+        <div class="flex flex-wrap gap-2 u-padding-block-start-16 mbs-auto">
             <button class="web-button is-secondary" disabled={hasPast}>
                 <span>{buttonText}</span>
             </button>

@@ -57,7 +57,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<div class="u-position-absolute" style="pointer-events:none;">
+<div class="absolute" style="pointer-events:none;">
     <enhanced:img src="./bg.png" alt="" />
 </div>
 
@@ -66,14 +66,14 @@
         <div class="web-big-padding-section-level-1">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
-                    <div class="web-grid-1-1-opt-2 u-gap-32">
+                    <div class="grid grid-cols-2-opt-2 gap-8">
                         <div>
                             <div
                                 class="web-u-max-inline-size-none-mobile"
                                 class:web-u-max-width-380={!submitted}
                             >
                                 {#if submitted}
-                                    <section class="u-flex-vertical web-u-gap-20">
+                                    <section class="u-flex-vertical web-gap-5">
                                         <h1 class="web-display web-u-color-text-primary">
                                             Thank you for your message
                                         </h1>
@@ -90,7 +90,7 @@
                                         </a>
                                     </section>
                                 {:else}
-                                    <section class="u-flex-vertical web-u-gap-20">
+                                    <section class="u-flex-vertical web-gap-5">
                                         <h1 class="web-display web-u-color-text-primary">
                                             Contact Us
                                         </h1>
@@ -101,10 +101,10 @@
                                     </section>
                                 {/if}
                                 <section
-                                    class="u-flex-vertical u-gap-12 web-u-padding-block-start-40 web-u-sep-block-start"
+                                    class="u-flex-vertical gap-3 web-u-padding-block-start-40 web-u-sep-block-start"
                                 >
                                     <h2 class="web-label web-u-color-text-primary">Follow us</h2>
-                                    <ul class="u-flex u-gap-8">
+                                    <ul class="flex gap-2">
                                         {#each socials as social}
                                             <li>
                                                 <a
@@ -129,11 +129,11 @@
                             <form
                                 method="post"
                                 on:submit|preventDefault={handleSubmit}
-                                class="u-flex-vertical u-gap-16"
+                                class="u-flex-vertical gap-4"
                             >
-                                <div class="u-flex u-main-end">
+                                <div class="flex u-main-end">
                                     <ul
-                                        class="web-form-list is-two-columns u-gap-16 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
+                                        class="web-form-list is-two-columns gap-4 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
                                     >
                                         <li class="web-form-item">
                                             <input
@@ -179,7 +179,7 @@
                                     </ul>
                                 </div>
                                 <div
-                                    class="u-flex u-gap-16 u-main-space-between web-u-flex-vertical-reverse-mobile"
+                                    class="flex gap-4 u-main-space-between web-u-flex-vertical-reverse-mobile"
                                 >
                                     <p class="web-caption-400 web-u-max-width-380">
                                         {#if error}

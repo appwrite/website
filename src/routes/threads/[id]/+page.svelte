@@ -96,7 +96,7 @@
                     {#each data.related as thread}
                         <li>
                             <a href="/threads/{thread.$id}" data-sveltekit-reload>
-                                <div class="u-flex u-cross-center">
+                                <div class="flex u-cross-center">
                                     <span class="web-sub-body-500 web-u-color-text-primary">
                                         {thread.title.length > 40
                                             ? thread.title.slice(0, 40) + '...'

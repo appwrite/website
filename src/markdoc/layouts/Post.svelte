@@ -88,10 +88,7 @@
                                 {/if}
                                 {#if authorData}
                                     <div class="web-author u-margin-block-start-16">
-                                        <a
-                                            href={authorData.href}
-                                            class="u-flex u-cross-center u-gap-8"
-                                        >
+                                        <a href={authorData.href} class="flex u-cross-center gap-2">
                                             {#if authorData.avatar}
                                                 <img
                                                     class="web-author-image"
@@ -103,13 +100,15 @@
                                                 />
                                             {/if}
                                             <div class="u-flex-vertical">
-                                                <h4 class="web-sub-body-400 web-u-color-text-primary">
+                                                <h4
+                                                    class="web-sub-body-400 web-u-color-text-primary"
+                                                >
                                                     {authorData.name}
                                                 </h4>
                                                 <p class="web-caption-400">{authorData.role}</p>
                                             </div>
                                         </a>
-                                        <!-- <ul class="u-flex u-gap-8 u-margin-inline-start-auto u-cross-child-center">
+                                        <!-- <ul class="flex gap-2 u-margin-inline-start-auto u-cross-child-center">
 											{#if authorData.twitter}
 												<li>
 													<a
@@ -155,7 +154,7 @@
                             </header>
                             {#if cover}
                                 <div class="web-media-container">
-                                    <Media class="u-block" src={cover} />
+                                    <Media class="block" src={cover} />
                                 </div>
                             {/if}
 
@@ -164,7 +163,7 @@
                             </div>
                         </article>
                         <!-- {#if categories?.length}
-							<div class="u-flex u-gap-16">
+							<div class="flex gap-4">
 								{#each categories as cat}
 									<a href={cat.href} class="web-tag">{cat.name}</a>
 								{/each}
@@ -200,7 +199,7 @@
                 </section>
             </div>
         </div>
-        <div class="web-big-padding-section-level-2 u-position-relative u-overflow-hidden">
+        <div class="web-big-padding-section-level-2 relative overflow-hidden">
             <div class="web-container">
                 <Newsletter />
                 <FooterNav />

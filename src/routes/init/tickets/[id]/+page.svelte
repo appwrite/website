@@ -52,7 +52,7 @@
                 <p class="web-label u-margin-block-start-16">
                     Register today and claim your Init ticket.
                 </p>
-                <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-32">
+                <div class="flex u-cross-center gap-4 u-margin-block-start-32">
                     <a class="web-button" href="/init/tickets">
                         <span class="text">Get my Init ticket</span>
                     </a>
@@ -94,7 +94,7 @@
             .info {
                 grid-row: 3;
 
-                .u-flex {
+                .flex {
                     flex-direction: column;
                     gap: 0.5rem;
                     margin-block-start: 1rem;

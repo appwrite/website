@@ -43,7 +43,7 @@
     const variants: TicketVariant[] = ['default', 'pink', 'rainbow'] as const;
 </script>
 
-<div class="u-flex u-flex-vertical u-gap-4 u-margin-block-start-32">
+<div class="flex u-flex-vertical gap-1 u-margin-block-start-32">
     <label for="name">Your name</label>
     <input
         class="web-input-text"
@@ -59,7 +59,7 @@
 </div>
 
 {#if dev}
-    <label for="variant" class="u-margin-block-start-32 u-block">Ticket variant (DEBUG)</label>
+    <label for="variant" class="u-margin-block-start-32 block">Ticket variant (DEBUG)</label>
     <select
         id="variant"
         class="u-margin-block-start-4"
@@ -75,13 +75,13 @@
 <hr />
 
 {#if ticket.gh_user}
-    <div class="u-flex u-cross-center u-gap-8 web-u-color-text-primary">
+    <div class="flex u-cross-center gap-2 web-u-color-text-primary">
         <img src="/images/icons/colored/check.svg" alt="" />
         <span class="web-sub-body-500">GitHub account connected</span>
     </div>
 
     <div
-        class="u-flex u-cross-center u-main-between"
+        class="flex u-cross-center u-main-between"
         style="margin-block-start: 0.25rem; gap: 1.25rem"
     >
         <p class="web-sub-body-500">
@@ -120,7 +120,7 @@
 <hr />
 
 {#if ticket.aw_email}
-    <div class="u-flex u-cross-center u-gap-8 web-u-color-text-primary">
+    <div class="flex u-cross-center gap-2 web-u-color-text-primary">
         <img src="/images/icons/colored/check.svg" alt="" />
         <span class="web-sub-body-500">Appwrite account connected</span>
     </div>
