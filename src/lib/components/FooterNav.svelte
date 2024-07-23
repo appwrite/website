@@ -23,6 +23,7 @@
                 { label: 'SvelteKit', href: '/docs/quick-starts/sveltekit' },
                 { label: 'Refine', href: '/docs/quick-starts/refine' },
                 { label: 'Angular', href: '/docs/quick-starts/angular' },
+                { label: 'Go', href: '/docs/quick-starts/go' },
                 { label: 'React Native', href: '/docs/quick-starts/react-native' },
                 { label: 'Flutter', href: '/docs/quick-starts/flutter' },
                 { label: 'Apple', href: '/docs/quick-starts/apple' },

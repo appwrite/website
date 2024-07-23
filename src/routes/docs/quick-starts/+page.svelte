@@ -160,6 +160,12 @@
                     icon: 'icon-swift',
                     image: '/images/blog/placeholder.png',
                     href: 'swift'
+                },
+                {
+                    title: 'Go',
+                    icon: 'icon-go',
+                    image: '/images/blog/placeholder.png',
+                    href: 'go'
                 }
             ]
         }
