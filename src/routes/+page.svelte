@@ -55,6 +55,7 @@
     </div>
 </div>
 
+<div class="absolute text-white text-2xl">Hello, world!</div>
 <div
     class="u-position-absolute web-is-only-desktop"
     style="top: 22rem; left: 54%; translate: calc(-50% - 900px); width: 75.9375rem;"
