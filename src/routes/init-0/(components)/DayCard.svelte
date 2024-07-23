@@ -44,7 +44,7 @@
                     />
                 {/if}
             </div>
-            <a href="/init/tickets" class="web-button is-secondary">Register</a>
+            <a href="/init-0/tickets" class="web-button is-secondary">Register</a>
         </div>
     </div>
 {/if}

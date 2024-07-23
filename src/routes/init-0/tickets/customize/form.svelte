@@ -28,7 +28,7 @@
     import { page } from '$app/stores';
     import { appwriteInit } from '$lib/appwrite/init';
     import { Switch } from '$lib/components';
-    import { loginGithub } from '$routes/init/helpers';
+    import { loginGithub } from '$routes/init-0/helpers';
     import type { TicketVariant } from '../constants';
 
     import type { PageData } from './$types';
@@ -95,7 +95,7 @@
             class="web-button is-full-width is-secondary u-margin-block-start-24"
             on:click={async () => {
                 await appwriteInit.account.deleteSession('current');
-                goto('/init/tickets');
+                goto('/init-0/tickets');
             }}
             disabled={!browser}
         >
@@ -134,7 +134,7 @@
         Sign in with your Appwrite account and see the magic happen in your ticket.
     </p>
     <a
-        href="https://cloud.appwrite.io/login?forceRedirect={$page.url.origin}/init/tickets"
+        href="https://cloud.appwrite.io/login?forceRedirect={$page.url.origin}/init-0/tickets"
         class="web-button is-full-width is-secondary u-margin-block-start-24"
     >
         <div class="web-icon-appwrite web-u-color-text-primary" />

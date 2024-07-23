@@ -1,10 +1,15 @@
-import { getTicketByUser, getTicketContributions, getUser, isLoggedIn } from '$routes/init/helpers';
+import {
+    getTicketByUser,
+    getTicketContributions,
+    getUser,
+    isLoggedIn
+} from '$routes/init-0/helpers';
 import { redirect } from '@sveltejs/kit';
 
 export const load = async () => {
     const loggedIn = await isLoggedIn();
     if (!loggedIn) {
-        redirect(307, '/init/tickets');
+        redirect(307, '/init-0/tickets');
     }
 
     const user = await getUser();
