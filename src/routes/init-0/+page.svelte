@@ -155,7 +155,6 @@
         </h1>
         <p class="web-description">The start of something new.</p>
         <div class="buttons">
-            <a href="/init-0/tickets" class="web-button">Claim your ticket</a>
             <button on:click={() => scrollIntoView('#kickoff')} class="web-button is-secondary">
                 <div class="web-icon-play" />
                 <span class="text">Watch the video</span>
@@ -247,12 +246,8 @@
         <div class="web-container">
             <div>
                 <h2 class="web-label web-u-color-text-primary">
-                    Get a ticket and enter our special Init giveaway
+                    Init 1.0 ran from February 26 to March 1
                 </h2>
-                <p class="web-sub-body-500">
-                    Create, customize, and share your Init ticket to enter our general giveaway.
-                </p>
-                <a href="/init-0/tickets" class="web-button is-secondary">Claim your ticket</a>
             </div>
 
             <div class="web-card is-normal has-border-gradient">
