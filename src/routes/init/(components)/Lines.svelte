@@ -25,8 +25,8 @@
             rgba(255, 255, 255, 0) 100%
         );
         --width: 2px;
-        --height: 10vh;
-        --starting-position: -100vh;
+        --height: 20vh;
+        --starting-position: -60vh;
         --duration: 4s;
         --initial-delay: 0.5s;
     }
@@ -55,11 +55,11 @@
                 width: var(--width);
 
                 @keyframes line {
-                    0% {
+                    from {
                         bottom: var(--starting-position);
                     }
-                    100% {
-                        bottom: 250%;
+                    to {
+                        bottom: 80vh;
                     }
                 }
 
