@@ -146,12 +146,12 @@
             <p class="web-label">{title}</p>
 
             <div class="logo" style:width="75%">
-                <Lockup fill={false} animate={!disableEffects} />
+                <Lockup animate={!disableEffects} />
             </div>
             <div class="shine" />
             <div class="noise" />
             {#if !disableEffects}
-                <Lines lines={[2, 3, 1]} />
+                <Lines lines={[2, 3, 2, 1]} />
             {/if}
         </div>
         <div class="stub">

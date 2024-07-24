@@ -20,14 +20,14 @@
     xmlns="http://www.w3.org/2000/svg"
     style="--duration:{duration}s"
 >
-    {#each paths as path, i}
+    {#each paths as path}
         <path d={path} class="base" class:fill />
         {#each Array.from({ length: 3 }) as _, index}
             {@const delay = duration / 3.2}
             <path
                 d={path}
                 class="stroke"
-                stroke="url(#gradient)"
+                stroke="url(#stroke)"
                 pathLength="1000"
                 style:animation-delay="{index * delay}s"
                 class:animate
@@ -37,7 +37,7 @@
 
     <defs>
         <linearGradient
-            id="gradient"
+            id="stroke"
             gradientUnits="userSpaceOnUse"
             x1="0%"
             y1="0%"
@@ -52,6 +52,15 @@
         <filter id="glow" filterUnits="userSpaceOnUse" {width} {height}>
             <feGaussianBlur in="color" stdDeviation="1" result="blur" />
         </filter>
+
+        <linearGradient id="fill" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="50%" y2="100%">
+            <stop offset="0%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" />
+            <stop offset="35%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" />
+            <stop offset="60%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" />
+            <stop offset="75%" style="stop-color:rgba(255,255,255,0.0);stop-opacity:1" />
+            <stop offset="90%" style="stop-color:rgba(255,255,255,0.08);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgba(255,255,255,0.02);stop-opacity:1" />
+        </linearGradient>
     </defs>
 </svg>
 
@@ -116,7 +125,7 @@
             stroke-width: var(--stroke-width);
 
             &.fill {
-                fill: var(--fill);
+                fill: url(#fill);
             }
         }
 
