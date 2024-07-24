@@ -46,21 +46,18 @@ There are currently three modes to connect the Appwriter to the computer: wired,
 
 ## Wired mode {% #wired-mode %}
 
-Make sure to use the USB-TYPE-C data cable to connect the computer to the keyboard and push the Appwriter switch towards the T. When connecting the Appwriter for the first time using the wired mode, your computer will install all required drivers by itself upon connection.
+To use the wired mode, connect the USB-TYPE-C data cable from the keyboard to the computer and push the Appwriter switch towards the T.
+When connecting using wired mode for the first time, your computer will install all required drivers on a successful connection.
 
-While the Appwriter is connected through the wired mode, its battery will charge, but make sure to use a charger that doesn't exceed a voltage/current = DSCV = 1A (max). Using a charger that exceeds this voltage and current ratings could easily damage your Appwriter keyboard.
+The battery will charge while your Appwriter is connected using the wired mode. Make sure to use a charger that doesn't exceed a voltage/current = DSCV = 1A (max). Using a charger that exceeds this voltage and current ratings could easily damage your Appwriter keyboard.
 
 ## Wireless mode {% #wireless-mode %}
 
-Make sure to push the Appwriter switch towards the G. Upon doing this, long press the `FN` + `4` keys for around 3 seconds. After the `4` key light flashes quickly, plug the receiver into a USB port of your computer.
+Push the Appwriter switch towards the G if you want to use the wireless mode. Upon switching to wireless mode, long press the `FN` + `4` keys for around 3 seconds. After the `4` key light flashes quickly, plug the receiver into a computer USB port.
 
 ## Bluetooth mode {% #bluetooth-mode %}
 
-push switch to b, short FN + switch bluetooth key position
-
-bluetooth paring: long press and hold fn+1 and wait for 1 key to indicate fast light
-after flashing quickly, search for elements and successfully pair bluetooth
-it can be used by B (2/3 key position operation in the same as above)
+To pair in Bluetooth mode, push the switch to B and do a long press while holding the `FN` + `1` keys. Once the `1` key flashes a fast light, you must search for elements.
 
 # General keyboard controls
 
