@@ -39,7 +39,7 @@
             bottom: var(--starting-position);
         }
         100% {
-            bottom: 200%;
+            bottom: 250%;
         }
     }
 
