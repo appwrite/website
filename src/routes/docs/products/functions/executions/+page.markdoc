@@ -89,7 +89,7 @@ client
 const promise = functions.createExecution(
         '<FUNCTION_ID>', // functionId
         '<BODY>', // body (optional)
-        false, // async (optional)
+        true, // scheduled executions need to be async
         '<PATH>', // path (optional)
         ExecutionMethod.GET, // method (optional)
         {}, // headers (optional)
@@ -118,7 +118,7 @@ client
 const promise = functions.createExecution(
         '<FUNCTION_ID>',  // functionId
         '<BODY>', // body (optional)
-        false, // async (optional)
+        true, // scheduled executions need to be async
         '<PATH>', // path (optional)
         ExecutionMethod.GET, // method (optional)
         {}, // headers (optional)
@@ -149,7 +149,7 @@ $functions = new Functions($client);
 $result = $functions->createExecution( 
     '<FUNCTION_ID>',  // functionId
     '<BODY>', // body (optional)
-    false, // async (optional)
+    true, // scheduled executions need to be async
     '<PATH>', // path (optional)
     ExecutionMethod.GET, // method (optional)
     {}, // headers (optional)
@@ -172,7 +172,7 @@ functions = Functions(client)
 result = functions.create_execution( 
     function_id = '<FUNCTION_ID>', # functionId
     body = '<BODY>', # body (optional)
-    async = False, # async (optional)
+    async = True, # scheduled executions need to be async
     path = '<PATH>', # path (optional)
     method = ExecutionMethod.GET, # method (optional)
     headers = {} # headers (optional)
@@ -193,7 +193,7 @@ functions = Functions.new(client)
 response = functions.create_execution(
     function_id: '<FUNCTION_ID>', // functionId
     body: '<BODY>', # body (optional)
-    async: false, # async (optional)
+    async: true, # scheduled executions need to be async
     path: '<PATH>', # path (optional)
     method: ExecutionMethod::GET, # method (optional)
     headers: {} # headers (optional)
@@ -216,7 +216,7 @@ var functions = new Functions(client);
 Execution result = await functions.CreateExecution(
     functionId: "<FUNCTION_ID>", // functionId
     body: "<BODY>", // body (optional)
-    async: false, // async (optional)
+    async: true, // scheduled executions need to be async
     path: "<PATH>", // path (optional)
     method: ExecutionMethod.GET, // method (optional)
     headers: [object] // headers (optional)
@@ -237,7 +237,7 @@ void main() { // Init SDK
   Future result = functions.createExecution(
     functionId: '<FUNCTION_ID>', // functionId
     body: '<BODY>', // (optional)
-    xasync: false, // (optional)
+    xasync: true, // scheduled executions need to be async
     path: '<PATH>', // (optional)
     method: ExecutionMethod.GET, // (optional)
     headers: {}, // (optional)
@@ -266,7 +266,7 @@ Functions functions = new Functions(client);
 functions.createExecution(
     "<FUNCTION_ID>", // functionId
     "<BODY>", // body (optional)
-    false, // async (optional)
+    true, // scheduled executions need to be async
     "<PATH>", // path (optional)
     "GET", // method (optional)
     mapOf( "a" to "b" ), // headers (optional)
@@ -295,7 +295,7 @@ Functions functions = new Functions(client);
 functions.createExecution(
     "<FUNCTION_ID>", // functionId
     "<BODY>", // body (optional)
-    false, // async (optional)
+    true, // scheduled executions need to be async
     "<PATH>", // path (optional)
     ExecutionMethod.GET, // method (optional)
     mapOf( "a" to "b" ), // headers (optional)
@@ -322,7 +322,7 @@ let functions = Functions(client)
 let execution = try await functions.createExecution(
   functionId: "<FUNCTION_ID>",
   body: "<BODY>", // optional
-  async: false, // optional
+  async: true, // scheduled executions need to be async
   path: "<PATH>", // optional
   method: .gET, // optional
   headers: [:] // optional
