@@ -13,17 +13,17 @@ const getTicketNumber = (ticket: TicketData) => {
 
 const getCube = ({ week, day, level }: GetCubeArgs) => {
     const x = INITIAL_X + day * DIFF_X;
-    const y = INITIAL_Y + week * DIFF_Y;
+    const y = INITIAL_Y - week * DIFF_Y;
     const opacity = level / 4;
     const fill = 'white';
 
-    return `<rect opacity="${opacity}" x="${x}" y="${y}" width="7.80023" height="7.80023" rx="1.95006" transform="rotate(-90 958.781 626.972)" fill="${fill}"/>`;
+    return `<rect opacity="${opacity === 0 ? '0.08' : opacity}" x="${x}" y="${y}" width="7.80023" height="7.80023" rx="1.95006" transform="rotate(-90 ${x} ${y})" fill="${fill}"/>`;
 };
 
 const INITIAL_X = 958.781;
 const INITIAL_Y = 626.972;
-const DIFF_Y = 12.1133;
-const DIFF_X = 12.1133;
+const DIFF_Y = 11.651;
+const DIFF_X = 11.651;
 
 export async function getCubes(ticket: TicketData) {
     const matrix = ((await getContributions(ticket.$id)) ?? []) as ContributionsMatrix;
@@ -41,8 +41,6 @@ export const getNewTicketSvg = async (ticket: TicketData) => {
     const cubes = await getCubes(ticket);
     const ticketNumber = getTicketNumber(ticket);
     const firstName = ticket.name.split(' ')[0];
-
-    console.log(cubes.length);
 
     return `
  <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
