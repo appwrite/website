@@ -11,11 +11,12 @@ const getTicketNumber = (ticket: TicketData) => {
     return `#${ticket.id.toString().padStart(6, '0')}`;
 };
 
+const fill = '#FD366E';
+
 const getCube = ({ week, day, level }: GetCubeArgs) => {
     const x = INITIAL_X + day * DIFF_X;
     const y = INITIAL_Y - week * DIFF_Y;
     const opacity = level / 4;
-    const fill = 'white';
 
     return `<rect opacity="${opacity === 0 ? '0.08' : opacity}" x="${x}" y="${y}" width="7.80023" height="7.80023" rx="1.95006" transform="rotate(-90 ${x} ${y})" fill="${fill}"/>`;
 };
@@ -47,12 +48,12 @@ export const getNewTicketSvg = async (ticket: TicketData) => {
 <rect width="1200" height="630" fill="#F5F5F5"/>
 <g clip-path="url(#clip0_346_418)" filter="url(#filter0_b_346_418)">
 <rect width="1200" height="630" fill="#19191C"/>
-<g filter="url(#filter1_f_346_418)">
+<g filter="url(#filter1_f_346_418)" opacity="0.6">
 <path d="M740.012 -205.65L-444.635 938.925C-463.978 957.614 -473.831 984.05 -471.437 1010.84C-464.798 1085.14 -375.175 1118.79 -321.28 1067.21L868.817 -71.698C898.314 -99.927 905.928 -144.104 887.582 -180.579C859.428 -236.555 785.073 -249.187 740.012 -205.65Z" fill="url(#paint0_linear_346_418)"/>
 </g>
-<text transform="translate(55.7944 54.7945)" fill="white" xml:space="preserve" style="white-space: pre" font-family="Aeonik Pro" font-size="54.7945" letter-spacing="-0.01em"><tspan x="0" y="56.9739">${firstName}&#x2019;s Ticket</tspan></text>
-<text transform="translate(55.7944 133.274)" fill="white" fill-opacity="0.5" xml:space="preserve" style="white-space: pre" font-family="Aeonik Fono" font-size="27.3973" letter-spacing="0em"><tspan x="0" y="33.5">TICKET NUMBER: ${ticketNumber}</tspan></text>
-<g  filter="url(#filter2_d_346_418)">
+<text transform="translate(55.7944 54.7945)" fill="white" xml:space="preserve" style="white-space: pre" font-family="Aeonik Pro" font-size="54.7945" letter-spacing="-0.01em"><tspan x="0" y="56.9739">${firstName}&#x2019;s Ticket<tspan fill="${fill}">_</tspan></tspan></text>
+<text transform="translate(55.7944 133.274)" fill="white" fill-opacity="0.5" xml:space="preserve" style="white-space: pre" font-family="Aeonik Fono" font-size="23.2422" letter-spacing="0em"><tspan x="0" y="21.7646">${ticketNumber}</tspan></text>
+<g filter="url(#filter2_d_346_418)">
 <g clip-path="url(#clip2_346_418)">
 <rect x="870.945" y="216.438" width="579.493" height="814.913" rx="28.9747" transform="rotate(90 870.945 216.438)" fill="black"/>
 <path opacity="0.2" d="M570.33 442.803L570.33 334.148" stroke="url(#paint1_linear_346_418)" stroke-width="3.62183"/>
