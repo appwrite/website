@@ -2,7 +2,7 @@ import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
 import { appwriteInitServer } from '$lib/appwrite/init.server';
 import sharp from 'sharp';
 import type { TicketData } from '../../constants.js';
-import { getTicketSvg } from './getTicketSvg.server.js';
+import { getNewTicketSvg } from './getTicketSvg.server.js';
 
 export async function GET({ params }) {
     const ticket = (await appwriteInitServer.databases.getDocument(
@@ -10,7 +10,7 @@ export async function GET({ params }) {
         APPWRITE_COL_INIT_ID,
         params.id
     )) as unknown as TicketData;
-    const svg = await getTicketSvg({ ...ticket });
+    const svg = await getNewTicketSvg({ ...ticket });
 
     const svgBuffer = Buffer.from(svg);
     const pngBuffer = await sharp(svgBuffer, {})
