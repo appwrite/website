@@ -7,11 +7,8 @@
         {#each lines as rows, index}
             <div style:position="relative">
                 {#each Array.from({ length: rows }) as _, i}
-                    <div
-                        class="line"
-                        style:left={`${i * 15}px`}
-                        style={`--delay:${i * index * 250}ms`}
-                    />
+                    {@const delay = i + 1 * index * 250}
+                    <div class="line" style={`--delay:${delay}ms`} />
                 {/each}
             </div>
         {/each}
