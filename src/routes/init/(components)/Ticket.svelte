@@ -162,14 +162,12 @@
                         out:fade={{ duration: 100 }}
                         data-remove-delay={removeDelay ? '' : undefined}
                     >
-                        {#each c as row, index}
-                            {@const average =
-                                row.reduce((acc, level) => acc + level, 0) / row.length}
-                            <div
-                                class="row"
-                                data-level={Math.round(average)}
-                                style:--index={row.length - index}
-                            />
+                        {#each c as row}
+                            <div class="row">
+                                {#each row as level, j}
+                                    <div style:--index={row.length - j} data-level={level} />
+                                {/each}
+                            </div>
                         {/each}
                     </div>
                 {/if}
@@ -307,37 +305,52 @@
                 }
 
                 .row {
-                    --size: 4px;
-                    max-height: 80%;
-                    gap: pxToRem(8);
-                    width: 100%;
-                    height: var(--size);
-                    border-radius: calc(var(--size) / 2);
-                    animation: fade-in 500ms ease calc(calc(75ms * var(--index)) + var(--delay))
-                        forwards;
+                    gap: pxToRem(4);
+                    display: flex;
 
-                    &[data-level] {
-                        --bg-color: white;
-                    }
+                    div {
+                        --size: 8px;
+                        width: var(--size);
+                        height: var(--size);
 
-                    &[data-level='0'] {
-                        opacity: 0.16;
-                    }
+                        border-radius: calc(var(--size) / 4);
+                        animation: fade-in 500ms ease calc(calc(75ms * var(--index)) + var(--delay))
+                            forwards;
 
-                    &[data-level='1'] {
-                        opacity: 0.32;
-                    }
+                        &[data-level] {
+                            --bg-color: var(--web-color-accent);
+                        }
 
-                    &[data-level='2'] {
-                        opacity: 0.64;
-                    }
+                        &[data-level='0'] {
+                            opacity: 0.08;
+                        }
 
-                    &[data-level='3'] {
-                        opacity: 0.8;
-                    }
+                        &[data-level='1'] {
+                            opacity: 0.25;
+                        }
 
-                    &[data-level='4'] {
-                        opacity: 1;
+                        &[data-level='2'] {
+                            opacity: 0.5;
+                        }
+
+                        &[data-level='3'] {
+                            opacity: 0.75;
+                        }
+
+                        &[data-level='4'] {
+                            opacity: 1;
+                        }
+
+                        @keyframes fade-in {
+                            from {
+                                background-color: hsl(var(--bg-color) / 0);
+                                /* border: 1px solid hsl(var(--border-color, transparent) / 0); */
+                            }
+                            to {
+                                background-color: hsl(var(--bg-color) / 1);
+                                /* border: 1px solid hsl(var(--border-color, transparent) / 1); */
+                            }
+                        }
                     }
                 }
             }
@@ -373,14 +386,5 @@
         font-size: pxToRem(16);
 
         margin-block-start: pxToRem(0.25);
-    }
-
-    @keyframes -global-fade-in {
-        from {
-            background-color: rgba(255, 255, 255, 0);
-        }
-        to {
-            background-color: rgba(255, 255, 255, 1);
-        }
     }
 </style>
