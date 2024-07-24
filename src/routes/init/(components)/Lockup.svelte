@@ -50,7 +50,7 @@
             <stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" />
         </linearGradient>
         <filter id="glow" filterUnits="userSpaceOnUse" {width} {height}>
-            <feGaussianBlur in="color" stdDeviation="1" result="blur" />
+            <feGaussianBlur in="color" stdDeviation="2" result="blur" />
         </filter>
 
         <linearGradient id="fill" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="50%" y2="100%">
@@ -72,39 +72,6 @@
         --ending-dasharray: 1200 1800;
     }
 
-    @keyframes -global-fade {
-        0% {
-            mask: linear-gradient(90deg, #000 25%, #000000e6 50%, #00000000) 150% 0 / 400% no-repeat;
-            opacity: 0.2;
-            filter: blur(1px);
-        }
-        100% {
-            mask: linear-gradient(90deg, #000 25%, #000000e6 50%, #00000000) 0 / 400% no-repeat;
-            opacity: 1;
-            filter: blur(0px);
-        }
-    }
-
-    @keyframes -global-stroke {
-        0% {
-            stroke-dasharray: 0 1000;
-            stroke-dashoffset: -1000;
-        }
-        25% {
-            stroke-dasharray: 500 500;
-            stroke-dashoffset: -500;
-        }
-        50% {
-            stroke-dasharray: 500 500;
-            stroke-dashoffset: 0;
-        }
-        75%,
-        100% {
-            stroke-dasharray: 0 1000;
-            stroke-dashoffset: 0;
-        }
-    }
-
     .lockup {
         --stroke-color: #333;
         --stroke-width: 2;
@@ -114,6 +81,22 @@
         max-width: 60vw;
         margin: 0 auto;
         display: block;
+        position: relative;
+        z-index: 12;
+
+        @keyframes fade {
+            0% {
+                mask: linear-gradient(90deg, #000 25%, #000000e6 50%, #00000000) 150% 0 / 400%
+                    no-repeat;
+                opacity: 0.2;
+                filter: blur(1px);
+            }
+            100% {
+                mask: linear-gradient(90deg, #000 25%, #000000e6 50%, #00000000) 0 / 400% no-repeat;
+                opacity: 1;
+                filter: blur(0px);
+            }
+        }
 
         path {
             stroke-width: var(--stroke-width);
@@ -137,6 +120,26 @@
 
             &.animate {
                 animation: stroke var(--duration) linear infinite;
+            }
+
+            @keyframes stroke {
+                0% {
+                    stroke-dasharray: 0 1000;
+                    stroke-dashoffset: -1000;
+                }
+                25% {
+                    stroke-dasharray: 500 500;
+                    stroke-dashoffset: -500;
+                }
+                50% {
+                    stroke-dasharray: 500 500;
+                    stroke-dashoffset: 0;
+                }
+                75%,
+                100% {
+                    stroke-dasharray: 0 1000;
+                    stroke-dashoffset: 0;
+                }
             }
         }
     }
