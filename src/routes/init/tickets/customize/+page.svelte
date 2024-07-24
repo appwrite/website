@@ -52,7 +52,7 @@
     <title>Customize Ticket - Appwrite</title>
     <meta
         name="description"
-        content="Join Init August 5th-10th. Register today and claim your ticket."
+        content="Join Init August 19th-23rd. Register today and claim your ticket."
     />
 </svelte:head>
 
@@ -69,7 +69,7 @@
 
             <div class="info">
                 <p class="web-label u-margin-block-start-16">
-                    Join us from August 5th-10th to learn about what we've been up to at Appwrite.
+                    Join us from August 19th-23rd to learn about what we've been up to at Appwrite.
                 </p>
             </div>
         </div>
