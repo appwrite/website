@@ -71,7 +71,7 @@
                 <hgroup>
                     <h1 class="web-display">
                         <span style:font-weight="500">init</span>
-                        launches on August 5th
+                        launches on August 19th
                     </h1>
                     <p class="web-label web-u-color-text-primary">
                         Register today and claim your Init ticket

@@ -32,21 +32,10 @@
     import Ticket10 from './(assets)/mock/ticket-10.png';
     import Ticket11 from './(assets)/mock/ticket-11.png';
     import Ticket12 from './(assets)/mock/ticket-12.png';
+    import { addDays, toReleaseDate } from '$lib/utils/date';
 
     const base = new Date('2024-02-26T14:00:00.000Z');
     const kickoff = new Date('2024-02-21T15:00:00.000Z');
-
-    function addDays(date: Date, days: number): Date {
-        return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
-    }
-
-    function toReleaseDate(date: Date): string {
-        return date.toLocaleDateString('en-US', {
-            weekday: 'long',
-            month: 'short',
-            day: 'numeric'
-        });
-    }
 
     $: days = [
         {
@@ -521,14 +510,6 @@
                     height: 200px;
                 }
             }
-        }
-
-        p {
-            margin-block-start: 1rem;
-        }
-
-        a {
-            margin-block-start: 1.5rem;
         }
 
         .tickets {
