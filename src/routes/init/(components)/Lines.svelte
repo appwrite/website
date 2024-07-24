@@ -26,18 +26,9 @@
         );
         --width: 2px;
         --height: 10vh;
-        --starting-position: -50vh;
+        --starting-position: -100vh;
         --duration: 4s;
         --initial-delay: 0.5s;
-    }
-
-    @keyframes -global-line {
-        0% {
-            bottom: var(--starting-position);
-        }
-        100% {
-            bottom: 250%;
-        }
     }
 
     .container {
@@ -62,6 +53,15 @@
                 position: relative;
                 height: var(--height);
                 width: var(--width);
+
+                @keyframes line {
+                    0% {
+                        bottom: var(--starting-position);
+                    }
+                    100% {
+                        bottom: 250%;
+                    }
+                }
 
                 &::after {
                     content: '';
