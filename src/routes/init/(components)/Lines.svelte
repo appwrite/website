@@ -27,7 +27,7 @@
         --width: 2px;
         --height: 20vh;
         --starting-position: -60vh;
-        --duration: 4s;
+        --duration: 6s;
         --initial-delay: 0.5s;
     }
 
