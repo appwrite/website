@@ -89,11 +89,11 @@ client
 const promise = functions.createExecution(
         '<FUNCTION_ID>', // functionId
         '<BODY>', // body (optional)
-        true, // scheduled executions need to be async
+        true, // Scheduled executions need to be async
         '<PATH>', // path (optional)
         ExecutionMethod.GET, // method (optional)
         {}, // headers (optional)
-        '2020-10-15T06:38:00.000+00:00' // schedule execution (optional)
+        '2020-10-15T06:38:00.000+00:00' // Schedule execution (optional)
     );
 
 promise.then(function (response) {
@@ -116,13 +116,13 @@ client
 ;
 
 const promise = functions.createExecution(
-        '<FUNCTION_ID>',  // functionId
+        '<FUNCTION_ID>', // functionId
         '<BODY>', // body (optional)
-        true, // scheduled executions need to be async
+        true, // Scheduled executions need to be async
         '<PATH>', // path (optional)
         ExecutionMethod.GET, // method (optional)
         {}, // headers (optional)
-        '2020-10-15T06:38:00.000+00:00' // schedule execution (optional)
+        '2020-10-15T06:38:00.000+00:00' // Schedule execution (optional)
     );
 
 promise.then(function (response) {
@@ -147,13 +147,13 @@ $client
 $functions = new Functions($client);
 
 $result = $functions->createExecution( 
-    '<FUNCTION_ID>',  // functionId
+    '<FUNCTION_ID>', // functionId
     '<BODY>', // body (optional)
-    true, // scheduled executions need to be async
+    true, // Scheduled executions need to be async
     '<PATH>', // path (optional)
     ExecutionMethod.GET, // method (optional)
     {}, // headers (optional)
-    '2020-10-15T06:38:00.000+00:00' // schedule execution (optional)
+    '2020-10-15T06:38:00.000+00:00' // Schedule execution (optional)
 );
 ```
 ```python
@@ -172,11 +172,11 @@ functions = Functions(client)
 result = functions.create_execution( 
     function_id = '<FUNCTION_ID>', # functionId
     body = '<BODY>', # body (optional)
-    async = True, # scheduled executions need to be async
+    async = True, # Scheduled executions need to be async
     path = '<PATH>', # path (optional)
     method = ExecutionMethod.GET, # method (optional)
     headers = {} # headers (optional)
-    scheduleAt = '2020-10-15T06:38:00.000+00:00' # schedule execution (optional)
+    scheduled_at = '2020-10-15T06:38:00.000+00:00' # Schedule execution (optional)
 )
 ```
 ```ruby
@@ -191,13 +191,13 @@ client = Client.new
 functions = Functions.new(client)
 
 response = functions.create_execution(
-    function_id: '<FUNCTION_ID>', // functionId
+    function_id: '<FUNCTION_ID>', # functionId
     body: '<BODY>', # body (optional)
-    async: true, # scheduled executions need to be async
+    async: true, # Scheduled executions need to be async
     path: '<PATH>', # path (optional)
     method: ExecutionMethod::GET, # method (optional)
     headers: {} # headers (optional)
-    scheduledAt: '2020-10-15T06:38:00.000+00:00' # schedule execution (optional)
+    scheduled_at: '2020-10-15T06:38:00.000+00:00' # Schedule execution (optional)
 )
 
 puts response.inspect
@@ -216,11 +216,11 @@ var functions = new Functions(client);
 Execution result = await functions.CreateExecution(
     functionId: "<FUNCTION_ID>", // functionId
     body: "<BODY>", // body (optional)
-    async: true, // scheduled executions need to be async
+    async: true, // Scheduled executions need to be async
     path: "<PATH>", // path (optional)
     method: ExecutionMethod.GET, // method (optional)
     headers: [object] // headers (optional)
-    scheduledAt: "2020-10-15T06:38:00.000+00:00"; // schedule execution (optional)
+    scheduledAt: "2020-10-15T06:38:00.000+00:00"; // Schedule execution (optional)
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -237,11 +237,11 @@ void main() { // Init SDK
   Future result = functions.createExecution(
     functionId: '<FUNCTION_ID>', // functionId
     body: '<BODY>', // (optional)
-    xasync: true, // scheduled executions need to be async
+    xasync: true, // Scheduled executions need to be async
     path: '<PATH>', // (optional)
     method: ExecutionMethod.GET, // (optional)
     headers: {}, // (optional)
-    scheduledAt: '2020-10-15T06:38:00.000+00:00' // schedule execution (optional)
+    scheduledAt: '2020-10-15T06:38:00.000+00:00' // Schedule execution (optional)
   );
 
   result
@@ -266,11 +266,11 @@ Functions functions = new Functions(client);
 functions.createExecution(
     "<FUNCTION_ID>", // functionId
     "<BODY>", // body (optional)
-    true, // scheduled executions need to be async
+    true, // Scheduled executions need to be async
     "<PATH>", // path (optional)
     "GET", // method (optional)
     mapOf( "a" to "b" ), // headers (optional)
-    "2020-10-15T06:38:00.000+00:00", // schedule execution (optional)
+    "2020-10-15T06:38:00.000+00:00", // Schedule execution (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -295,11 +295,11 @@ Functions functions = new Functions(client);
 functions.createExecution(
     "<FUNCTION_ID>", // functionId
     "<BODY>", // body (optional)
-    true, // scheduled executions need to be async
+    true, // Scheduled executions need to be async
     "<PATH>", // path (optional)
     ExecutionMethod.GET, // method (optional)
     mapOf( "a" to "b" ), // headers (optional)
-    "2020-10-15T06:38:00.000+00:00" // schedule execution (optional)
+    "2020-10-15T06:38:00.000+00:00" // Schedule execution (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -322,11 +322,11 @@ let functions = Functions(client)
 let execution = try await functions.createExecution(
   functionId: "<FUNCTION_ID>",
   body: "<BODY>", // optional
-  async: true, // scheduled executions need to be async
+  async: true, // Scheduled executions need to be async
   path: "<PATH>", // optional
   method: .gET, // optional
   headers: [:] // optional
-  scheduledAt: "2020-10-15T06:38:00.000+00:00" // Optional parameter to schedule execution
+  scheduledAt: "2020-10-15T06:38:00.000+00:00" // Schedule execution (optional)
 )
 ```
 {% /multicode %}
