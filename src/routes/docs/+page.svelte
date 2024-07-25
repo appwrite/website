@@ -245,7 +245,7 @@
                                 Messaging
                             </h4>
                             <p class="web-sub-body-400 u-margin-block-start-4">
-                                Send and schedule email, sms, and push notifications.
+                                Send and schedule email, SMS, and push notifications.
                             </p>
                         </a>
                     </li>
