@@ -52,7 +52,7 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 ---
 * {% icon icon="python" size="l" /%}
 * [Python ML](https://hub.docker.com/r/openruntimes/python-ml)
-* `python-ML-3.11`
+* `python-ml-3.11`
 * x86 / arm64
 ---
 * {% icon icon="dart" size="l" /%}
@@ -153,7 +153,7 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 ---
 * {% icon icon="python" size="l" /%}
 * [Python ML](https://hub.docker.com/r/openruntimes/python-ml)
-* `python-ML-3.11`
+* `python-ml-3.11`
 * x86 / arm64
 ---
 * {% icon icon="dart" size="l" /%}
