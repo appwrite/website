@@ -1294,8 +1294,7 @@ By default, we include the following package managers in each runtime.
 
 # Using Appwrite in a function {% #using-appwrite %} 
 Appwrite can be used in your functions by adding the relevant SDK to your function's dependencies.
-Integrate with Appwrite using its [authentication](/docs/products/auth/jwt), which is done via a JWT token or a dynamic API key. 
-Using dynamic API keys, you can easily integrate with Appwrite.
+Integrate Appwrite into your functions using [authentication](/docs/products/auth), which is done via a JWT token or a dynamic API key. 
 
 ## Using with dynamic API key {% #using-dynamic-api-key %}
 Dynamic API keys are the same as [API keys](/docs/advanced/platform/api-keys) but are automatically generated.

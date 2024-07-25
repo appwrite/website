@@ -181,7 +181,7 @@ There is a system wide maximum timeout of 900 seconds (15 minutes).
 
 ## Scopes {% #scopes %}
 
-You can configure the function permission scopes to access your project services, like users and buckets, by navigating to your function > **Settings** > **Scopes**.
+You can configure the functions permission scopes for the [dynamic API key](/docs/products/functions/develop#using-dynamic-api-key), which are automatically generated and do not need to be passed in as an environment variable, to access your project resources like users and buckets. Navigate to your function > **Settings** > **Scopes** to configure your dynamic API key permission scopes.
 
 {% arrow_link href="/docs/advanced/platform/api-keys#scopes" %}
 Learn more about scopes
