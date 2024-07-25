@@ -10,14 +10,6 @@ Buckets let you limit file size and extensions, whether or not to encrypt the fi
 # Create Bucket {% #create-bucket %}
 You can create your bucket from the Appwrite Console, a [Server SDK](/docs/sdks#server), or the [CLI](/docs/tooling/command-line/buckets).
 
-# Using the CLI {% #using-the-cli %}
-
-Using the CLI, you can also create a bucket and get, update, and delete it, which you can also accomplish by updating the `appwrite.json` file. However, you cannot control file access by configuring bucket access to users.
-
-{% arrow_link href="/docs/tooling/command-line/buckets#commands" %}
-Learn more about the CLI buckets commands
-{% /arrow_link %}
-
 {% tabs %}
 {% tabsitem #console title="Console" %}
 You can create a bucket by heading to the **Storage** page and clicking **Create bucket**.
@@ -232,6 +224,25 @@ let bucket = try await storage.createBucket(
 {% /multicode %}
 
 You can also configure permission, file size and extension restrictions, and more in the `createBucket` method, learn more about the `createBucket` in the [API references](/docs/references/cloud/server-nodejs/storage#createBucket).
+{% /tabsitem %}
+
+{% tabsitem #cli title="CLI" %}
+
+Create a bucket using the CLI command `appwrite init buckets`.
+
+```sh
+appwrite init buckets
+? What would you like to name your bucket? My Awesome Bucket
+? What ID would you like to have for your bucket? unique()
+? Enable File-Security configuring permissions for individual file No      
+✓ Success:
+ℹ Info: Next you can use 'appwrite push bucket' to deploy the changes. 
+```
+
+{% arrow_link href="/docs/tooling/command-line/buckets#commands" %}
+Learn more about the CLI buckets commands
+{% /arrow_link %}
+
 {% /tabsitem %}
 {% /tabs %}
 

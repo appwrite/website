@@ -225,17 +225,30 @@ let collection = try await databases.createCollection(
 You can also configure **permissions** in the `createCollection` method, learn more about the `createCollection` in the [API references](/docs/references).
 {% /tabsitem %}
 
-{% /tabs %}
+{% tabsitem #cli title="CLI" %}
 
+{% partial file="cli-disclaimer.md" /%}
 
-## Using the CLI {% #using-the-cli %}
+You can create your collections using the CLI command `appwrite init collections`.
 
-You can also create your collections and update, get, and delete them using CLI commands. Using the appwrite.json file, you can configure your collections' attributes and data size limit, toggle if the data is required, and toggle if it's an array of data. Configuring collection-level permissions cannot be done using the CLI but instead through the Appwrite Console.
-
+```sh
+appwrite init collections
+? What would you like to name your database? My Awesome Database
+? What ID would you like to have for your database? unique()
+? What would you like to name your collection? My Awesome Collection       
+? What ID would you like to have for your collection? unique()
+? Enable Document-Security for configuring permissions for individual      
+documents No
+✓ Success:
+ℹ Info: Next you can use 'appwrite push collection' to deploy the changes.
+```
 {% arrow_link href="/docs/tooling/command-line/collections#commands" %}
 Learn more about the CLI collections commands
 {% /arrow_link %}
 
+{% /tabsitem %}
+
+{% /tabs %}
 
 # Permissions {% #permissions %}
 Appwrite uses permissions to control data access.

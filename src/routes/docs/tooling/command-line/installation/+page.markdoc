@@ -44,17 +44,15 @@ curl -sL https://appwrite.io/cli/install.sh | bash
 ```sh
 iwr -useb https://appwrite.io/cli/install.ps1 | iex
 ```
+
+```sh
+scoop install https://raw.githubusercontent.com/appwrite/sdk-for-cli/master/scoop/appwrite.json
+```
 {% /tabsitem %}
 
 {% tabsitem #linux title="Linux" %}
 ```sh
 curl -sL https://appwrite.io/cli/install.sh | bash
-```
-{% /tabsitem %}
-
-{% tabsitem #scoop title="Scoop" %}
-```sh
-scoop install https://raw.githubusercontent.com/appwrite/sdk-for-cli/master/scoop/appwrite.json
 ```
 {% /tabsitem %}
 
@@ -120,14 +118,14 @@ Before you can use the CLI, you need to login to your Appwrite account using
 appwrite login
 ```
 
-If you're hosting a self-hosted instance, add the `endpoint` flag. This flag is used whenever you want to self-host Appwrite, and it requires you to add the URL string where you're hosting from after the `endpoint` flag.
+Add the' endpoint' flag if you're using a self-hosted instance of Appwrite. This flag requires you to add the URL string where you're using for your self-hosted instance after the `endpoint` flag.
 
 ```sh
 appwrite login --endpoint <URL_HERE>
 ```
 You can log in to multiple accounts or change the **current** account by re-running the command.
 
-# Initialization {% #Initialization %}
+# Initialization {% #initialization %}
 
 After you're logged in, the CLI needs to be initialized with your Appwrite project. You can initialize the CLI using:
 
@@ -218,8 +216,17 @@ rm -f /usr/local/bin/appwrite | bash
 {% /tabsitem %}
 
 {% tabsitem #windows title="Windows" %}
+
+Using [powershell](https://learn.microsoft.com/en-us/powershell/)
+
 ```sh
 $APPWRITE_INSTALL_DIR = Join-Path -Path $env:LOCALAPPDATA -ChildPath "Appwrite"; Remove-Item -Force -Path $APPWRITE_INSTALL_DIR
+```
+
+or [Scoop](https://scoop.sh/)
+
+```sh
+scoop uninstall appwrite
 ```
 {% /tabsitem %}
 
@@ -229,11 +236,6 @@ rm -f /usr/local/bin/appwrite | bash
 ```
 {% /tabsitem %}
 
-{% tabsitem #scoop title="Scoop" %}
-```sh
-scoop uninstall ./appwrite
-```
-{% /tabsitem %}
 {% /tabs %}
 
 You can also remove the configuration, cookies, and API Keys the Appwrite CLI stored. To remove those, run the following command.
@@ -246,9 +248,19 @@ rm -rf ~/.appwrite | bash
 {% /tabsitem %}
 
 {% tabsitem #windows title="Windows" %}
+
+Using [powershell](https://learn.microsoft.com/en-us/powershell/)
+
 ```sh
 $APPWRITE_CONFIG_DIR = Join-Path -Path $env:UserProfile -ChildPath ".appwrite"; Remove-Item -Recurse -Force -Path $APPWRITE_CONFIG_DIR
 ```
+
+or [Scoop](https://scoop.sh/)
+
+```sh
+appwrite client --reset
+```
+
 {% /tabsitem %}
 
 {% tabsitem #linux title="Linux" %}
@@ -257,9 +269,4 @@ rm -rf ~/.appwrite | bash
 ```
 {% /tabsitem %}
 
-{% tabsitem #scoop title="Scoop" %}
-```sh
-appwrite client --reset
-```
-{% /tabsitem %}
 {% /tabs %}
