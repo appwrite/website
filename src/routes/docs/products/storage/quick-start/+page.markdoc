@@ -31,10 +31,10 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
     "<BUCKET_ID>",
     ID.unique(),
     {
-      name: "file.txt",
-      type: "text/plain",
-      size: 37967,
-      uri: "file://text.png",
+        name: "file.txt",
+        type: "text/plain",
+        size: 37967,
+        uri: "file://text.png",
     },
   );
 
