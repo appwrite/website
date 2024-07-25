@@ -139,7 +139,7 @@ This will create your `appwrite.json` file, where you will configure your variou
 
 ```json
 {
-    "projectId": <PROJECT_ID>
+    "projectId": "<PROJECT_ID>"
 }
 ```
 
