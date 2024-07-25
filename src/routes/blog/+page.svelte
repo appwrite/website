@@ -1,12 +1,81 @@
 <script lang="ts">
     import { Main } from '$lib/layouts';
-    import { MainFooter, FooterNav, Article } from '$lib/components';
+    import { Article, FooterNav, MainFooter } from '$lib/components';
     import { TITLE_SUFFIX } from '$routes/titles.js';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { page } from '$app/stores';
+    import { browser } from '$app/environment';
 
     export let data;
+    const POSTS_PER_PAGE = 12;
+    const PAGE_NAVIGATION_RAGE = 3;
 
+    let currentPage = 1;
     const featured = data.posts.find((post) => post.featured);
+    const totalPages = Math.ceil(data.posts.length / POSTS_PER_PAGE);
+
+    const pages = chunkArray(data.posts, POSTS_PER_PAGE)
+
+    function chunkArray(array: Array<any>, chunkSize: number) {
+        const chunks = [];
+        for (let i = 0; i < array.length; i += chunkSize) {
+            chunks.push(array.slice(i, i + chunkSize));
+        }
+        return chunks;
+    }
+
+    // TODO: maybe update page url?
+    $: blogPosts = (index: number) => {
+        return pages[index] ?? pages[0]
+    }
+
+    $: pageChunks = chunkArray(
+        Array.from({ length: totalPages }, (_, i) => i + 1), PAGE_NAVIGATION_RAGE
+    );
+
+    $: currentPageRange = () => {
+        const chunkIndex = Math.floor((currentPage - 1) / 3);
+        return pageChunks[chunkIndex] || [];
+    }
+
+    $: isLastPage = () => {
+        return currentPage < totalPages
+    }
+
+    $: nextBatchStartPage = () => {
+        const batchIndex = Math.floor((currentPage - 1) / 3);
+        const nextBatchStart = (batchIndex + 1) * 3 + 1;
+        return nextBatchStart <= pages.length ? nextBatchStart : currentPage;
+    }
+
+    $: previousBatchStartPage = () => {
+        const batchIndex = Math.floor((currentPage - 1) / 3);
+        const currentBatchStart = batchIndex * 3 + 1;
+        const prevBatchStart = currentBatchStart - 3;
+        return prevBatchStart > 0 ? prevBatchStart : 1;
+    }
+
+    $: {
+        const pageParam = $page.url.searchParams.get('page') || '0';
+        currentPage = Math.max(pageParam ? parseInt(pageParam): 1, 1);
+
+        // should we do this?
+        if (parseInt(pageParam) <= 0) {
+            $page.url.searchParams.delete('page')
+            if (browser) {
+                history.replaceState(history.state, '', $page.url);
+            }
+        }
+
+        // should we do this?
+        if (parseInt(pageParam) > 1) {
+            if (browser) {
+                setTimeout(() => {
+                    document.getElementById('title')?.scrollIntoView({ behavior: 'smooth' })
+                }, 25)
+            }
+        }
+    }
 
     const title = 'Blog' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -149,11 +218,11 @@
         <div class="web-big-padding-section-level-1">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
-                    <h2 class="web-title web-u-color-text-primary">Articles</h2>
+                    <h2 id="title" class="web-title web-u-color-text-primary">Articles</h2>
 
                     <div class="u-margin-block-start-48">
                         <ul class="web-grid-articles">
-                            {#each data.posts as post}
+                            {#each blogPosts(currentPage - 1) as post}
                                 {@const author = data.authors.find(
                                     (author) => author.slug === post.author
                                 )}
@@ -171,6 +240,36 @@
                             {/each}
                         </ul>
                     </div>
+
+                    <div class="u-margin-block-start-48">
+                        <ul class="u-flex u-cross-center u-gap-4" style="justify-content: center">
+                            <a
+                                class="u-flex navigation-button"
+                                class:navigation-button-active={currentPage > 1}
+                                href="/blog?page={previousBatchStartPage()}"
+                            >
+                                <span class="web-icon-chevron-left" style="font-size: 20px"/>
+                                Previous
+                            </a>
+
+                            {#each currentPageRange() as page}
+                                <a
+                                    class="pagination-number"
+                                    class:pagination-number-selected={currentPage === page}
+                                    href="/blog?page={page}"
+                                > {page} </a>
+                            {/each}
+
+                            <a
+                                class="u-flex navigation-button"
+                                class:navigation-button-active={isLastPage()}
+                                href="/blog?page={nextBatchStartPage()}"
+                            >
+                                Next
+                                <span class="web-icon-chevron-right"  style="font-size: 20px"/>
+                            </a>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="web-big-padding-section-level-2">
@@ -182,3 +281,48 @@
         </div>
     </div>
 </Main>
+
+<style>
+    .pagination-number {
+        font-weight: 500;
+        line-height: 140%;
+        text-align: center;
+        font-style: normal;
+        letter-spacing: -0.063px;
+        font-size: var(--font-size-S, 14px);
+        font-family: var(--font-family-sansSerif, Inter);
+        padding: var(--space-3, 6px) var(--space-6, 12px);
+        color: var(--color-fgColor-neutral-secondary, #C3C3C6);
+    }
+
+    .pagination-number-selected {
+        border-radius: var(--border-radius-S, 8px);
+        color: var(--color-fgColor-accent-neutral, #FFF);
+        background: var(--color-bgColor-neutral-tertiary, #2D2D31);
+    }
+
+    .navigation-button {
+        opacity: 0.4;
+        font-weight: 500;
+        line-height: 140%;
+        text-align: center;
+        font-style: normal;
+        align-items: center;
+        cursor: not-allowed;
+        pointer-events: none;
+        justify-content: center;
+        letter-spacing: -0.063px;
+        gap: var(--space-2, 4px);
+        font-size: var(--font-size-S, 14px);
+        border-radius: var(--border-radius-S, 8px);
+        font-family: var(--font-family-sansSerif, Inter);
+        color: var(--color-fgColor-neutral-secondary, #C3C3C6);
+        padding: var(--space-3, 6px) var(--space-4, 8px) var(--space-3, 6px) var(--space-3, 6px);
+    }
+
+    .navigation-button-active {
+        opacity: 1;
+        cursor: pointer;
+        pointer-events: initial;
+    }
+</style>
