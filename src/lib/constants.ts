@@ -41,8 +41,8 @@ export const socials: Array<Social> = [
         link: 'https://www.youtube.com/c/appwrite?sub_confirmation=1'
     },
     {
-        icon: 'web-icon-devto',
-        label: 'Dev.to Squad',
+        icon: 'web-icon-daily-dev',
+        label: 'Daily.dev',
         link: 'https://app.daily.dev/squads/appwrite'
     }
 ];
