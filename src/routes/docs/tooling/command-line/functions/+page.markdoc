@@ -110,7 +110,7 @@ appwrite push functions
 
 # Commands {% #commands %}
 
-The functions command lets you view, create, and manage your Cloud Functions. Appwrite functions CLI commands generally follow the following syntax:
+The functions command lets you view, create, and manage your Appwrite Functions. Appwrite functions CLI commands generally follow the following syntax:
 
 ```sh
 appwrite functions [COMMAND] [OPTIONS]

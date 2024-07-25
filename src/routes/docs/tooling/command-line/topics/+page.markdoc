@@ -71,8 +71,7 @@ appwrite push topics
 
 # Commands {% #commands %}
 
-The messaging command allows you to send, get, update, and delete messages. Appwrite messaging CLI commands generally follow the following syntax:
-
+The messaging command allows you to send, get, update, and delete push notifications, SMS text messages, and emails. You can create a new provider like Mailgun and SendGrid and create, update, get, and delete topics and subscribers. Appwrite messaging CLI commands generally follow the following syntax:
 ```sh
 appwrite messaging [COMMAND] [OPTIONS]
 ```

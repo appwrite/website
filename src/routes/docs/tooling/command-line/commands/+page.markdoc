@@ -36,20 +36,8 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * `locale`
 * The locale command allows you to customize your app based on your users' location.
 ---
-* `console`
-* The console command gives you access to the APIs used by the Appwrite console.
----
 * `graphql`
 * The graphql command allows you to query and mutate any resource type on your Appwrite server.
----
-* `health`
-* The health command allows you to validate and monitor your Appwrite server's health.
----
-* `migrations`
-* The migrations command allows you to migrate data between services.
----
-* `vcs`
-* The vcs command allows you to interact with VCS providers and manage your code repositories.
 ---
 {% /table %}
 
@@ -113,7 +101,7 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * The databases command allows you to create structured collections of documents and query and filter lists of documents.
 ---
 * `functions`
-* The functions command allows you to view, create, and manage your Cloud Functions.
+* The functions command allows you to view, create, and manage your Appwrite Functions.
 ---
 * `messaging`
 * The messaging command allows you to send, create, edit, and delete messages.
@@ -199,9 +187,9 @@ Many resources support the option to view them in the console. Use the `--consol
 
 ```sh
 appwrite databases getDocument \
-  --databaseId DATABASE_ID \
-  --collectionId COLLECTION_ID \
-  --documentId DOCUMENT_ID \
+  --databaseId "<DATABASE_ID>" \
+  --collectionId "<COLLECTION_ID>" \
+  --documentId "<DOCUMENT_ID>" \
   --console --open
 ```
 
@@ -230,13 +218,13 @@ appwrite users list
 To get a list of all your [collections](/docs/tooling/command-line/collections), you can use the `listCollections` command.
 
 ```sh
-appwrite databases listCollections --databaseId [DATABASE_ID]
+appwrite databases listCollections --databaseId "<DATABASE_ID>"
 ```
 
 If you wish to parse the output from the CLI, you can request the CLI output in JSON format using the `--json` flag
 
 ```sh
-appwrite databases listCollections --databaseId [DATABASE_ID]--json
+appwrite databases listCollections --databaseId "<DATABASE_ID>" --json
 ```
 
 ## Get collection {% #get-collection %}
@@ -244,7 +232,7 @@ appwrite databases listCollections --databaseId [DATABASE_ID]--json
 To get more information on a particular collection, you can make use of the `getCollection` command and pass in the collectionId.
 
 ```sh
-appwrite databases getCollection --databaseId [DATABASE_ID] --collectionId [COLLECTION_ID]
+appwrite databases getCollection --databaseId "<DATABASE_ID>" --collectionId "<COLLECTION_ID>"
 ```
 
 ## Create document {% #create-document %}
@@ -253,7 +241,7 @@ To create a new document in an existing collection, use the `createDocument` com
 
 ```sh
 appwrite databases createDocument \
-    --databaseId [DATABASE_ID] --collectionId [COLLECTION_ID] \
+    --databaseId "<DATABASE_ID>" --collectionId "<COLLECTION_ID>" \
     --documentId 'unique()' --data '{ "Name": "Iron Man" }' \
     --permissions 'read("any")' 'write("team:abc")' 
 ```

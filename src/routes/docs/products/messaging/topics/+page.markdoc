@@ -264,11 +264,25 @@ let topic = try await messaging.createTopic(
 ```
 {% /multicode %}
 {% /tabsitem %}
+
+{% tabsitem #cli title="CLI" %}
+
+You can create a topic using the CLI command `appwrite init topics`.
+
+```sh
+appwrite init topics
+? What would you like to name your messaging topic? My Awesome Topic
+? What ID would you like to have for your messaging topic? unique()     
+✓ Success:
+ℹ Info: Next you can use 'appwrite push topic' to deploy the changes.
+```
+
+{% arrow_link href="/docs/tooling/command-line/topics#commands" %}
+Learn more about the CLI topics commands
+{% /arrow_link %}
+
+{% /tabsitem %}
 {% /tabs %}
-
-# Using the CLI {% #using-the-CLI %}
-
-You can also create, get, delete, and update a topic using the CLI. You can also accomplish this by configuring with the `appwrite.json` file, but you cannot set or update any permissions.
 
 {% arrow_link href="/docs/tooling/command-line/topics#appwritejson" %}
 Learn more about appwrite.json

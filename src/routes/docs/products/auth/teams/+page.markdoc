@@ -189,7 +189,15 @@ val response = teams.createMembership(
 
 # Using the CLI {% #using-the-CLI %}
 
-Using the CLI, you can invite members and create, get, update, and delete a team. You can also accomplish this by changing the content of the [appwrite.json](/docs/tooling/command-line/teams#appwritejson) file. However, you cannot use the CLI to configure permissions for team members.
+{% partial file="cli-disclaimer.md" /%}
+
+Use the CLI command `appwrite teams createMembership [options]` to invite a new member into your team.
+
+```sh
+appwrite teams createMembership --teamId "<TEAM_ID>" --roles --phone "+12065550100" --name "<NAME>" --userId "<USER_ID>"
+```
+
+You can also get, update, and delete a user's membership. However, you cannot use the CLI to configure permissions for team members.
 
 {% arrow_link href="/docs/tooling/command-line/teams#commands" %}
 Learn more about the CLI teams commands
