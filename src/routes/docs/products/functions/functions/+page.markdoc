@@ -87,7 +87,7 @@ The init command will initialize a folder with a starter function code.
 To push the generated code, add dependencies, and deploy the function using the following command:
 
 ```sh
-appwrite push function
+appwrite push functions
 ```
 {% /tabsitem %}
 {% /tabs %}
