@@ -2,6 +2,7 @@
   import OpenSource from "$lib/animations/OpenSource.svelte";
   import Products from "$lib/animations/Products/Products.svelte";
   import ProductsMobile from "$lib/animations/Products/ProductsMobile.svelte";
+  import Button from "$lib/components/Button.svelte";
   import LogoList from "$lib/components/LogoList.svelte";
   import PreFooter from "$lib/components/PreFooter.svelte";
   import Technologies from "$lib/components/Technologies.svelte";
@@ -68,6 +69,7 @@
 </div>
 
 <Main>
+  <Button on:click={() => alert("hello")}>Hello</Button>
   <div class="web-big-padding-section hidden">
     <div class="web-big-padding-section-level-1">
       <div class="web-big-padding-section-level-2">
