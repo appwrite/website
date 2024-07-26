@@ -3,8 +3,8 @@ layout: article
 title: Send SMS messages
 description: Send SMS messages to your users using Appwrite Messaging.
 ---
-You can send custom sms messages to your app's users using Appwrite Messaging and a connected SMTP service.
-This guide takes you through the implementation path of adding sms messaging to your app.
+You can send custom SMS messages to your app's users using Appwrite Messaging and a connected SMTP service.
+This guide takes you through the implementation path of adding SMS messaging to your app.
 
 # Add a provider {% #add-a-provider %}
 Appwrite supports [Twilio](/docs/products/messaging/twilio/),
@@ -463,7 +463,7 @@ let topic = try await messaging.createTopic(
 
 # Send SMS messages {% #send-sms %}
 You can send SMS messages using a Server SDK.
-To send an SMS messages immediately, you can call the `createSMS` endpoint without passing either the `draft` or `scheduledAt` parameters.
+To send an SMS messages immediately, you can call the `createSms` endpoint without passing either the `draft` or `scheduledAt` parameters.
 
 {% multicode %}
 ```server-nodejs
@@ -477,7 +477,7 @@ const client = new sdk.Client()
 
 const messaging = new sdk.Messaging(client);
 
-const message = await messaging.createSMS(
+const message = await messaging.createSms(
     '[MESSAGE_ID]',    // messageId
     '[CONTENT]',       // content
     [],                // topics (optional)
@@ -497,7 +497,7 @@ const client = new sdk.Client()
 
 const messaging = new sdk.Messaging(client);
 
-const message = await messaging.createSMS(
+const message = await messaging.createSms(
     '[MESSAGE_ID]',    // messageId
     '[CONTENT]',       // content
     [],                // topics (optional)
@@ -522,7 +522,7 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->createSMS(
+$result = $messaging->createSms(
     messageId: '[MESSAGE_ID]',
     content: '[CONTENT]',
     topics: [],                  // optional
@@ -608,7 +608,7 @@ Client client = Client();
 
 Messaging messaging = Messaging(client);
 
-Message message result = await messaging.createSMS(
+Message message result = await messaging.createSms(
     messageId: '[MESSAGE_ID]',
     content: '[CONTENT]',
     topics: [],                  // optional
@@ -630,7 +630,7 @@ val client = Client()
 
 val messaging = Messaging(client)
 
-val message - await messaging.createSMS(
+val message - await messaging.createSms(
     messageId = "[MESSAGE_ID]",
     content = "[CONTENT]",
     topics = listOf(),
@@ -652,7 +652,7 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-messaging.createSMS(
+messaging.createSms(
     "[MESSAGE_ID]",      // messageId
     "[CONTENT]",         // content
     listOf(),            // topics (optional)
@@ -680,7 +680,7 @@ let client = Client()
 
 let messaging = Messaging(client)
 
-let message = try await messaging.createSMS(
+let message = try await messaging.createSms(
     messageId: "[MESSAGE_ID]",
     content: "[CONTENT]",
     topics: [],                  // optional
@@ -693,7 +693,7 @@ let message = try await messaging.createSMS(
 {% /multicode %}
 
 # Schedule SMS message {% #schedule-sms %}
-To send an scheduled SMS message, you can call the `createSMS` endpoint with `scheduledAt` as a ISO 8601 date time string for the scheduled time.
+To send an scheduled SMS message, you can call the `createSms` endpoint with `scheduledAt` as a ISO 8601 date time string for the scheduled time.
 {% multicode %}
 ```server-nodejs
 const sdk = require('node-appwrite');
@@ -706,7 +706,7 @@ const client = new sdk.Client()
 
 const messaging = new sdk.Messaging(client);
 
-const message = await messaging.createSMS(
+const message = await messaging.createSms(
     '[MESSAGE_ID]',             // messageId
     '[CONTENT]',                // content
     [],                         // topics (optional)
@@ -726,7 +726,7 @@ const client = new sdk.Client()
 
 const messaging = new sdk.Messaging(client);
 
-const message = await messaging.createSMS(
+const message = await messaging.createSms(
     '[MESSAGE_ID]',             // messageId
     '[CONTENT]',                // content
     [],                         // topics (optional)
@@ -751,7 +751,7 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->createSMS(
+$result = $messaging->createSms(
     messageId: '[MESSAGE_ID]',
     content: '[CONTENT]',
     topics: [],                             // optional
@@ -837,7 +837,7 @@ Client client = Client();
 
 Messaging messaging = Messaging(client);
 
-Message message result = await messaging.createSMS(
+Message message result = await messaging.createSms(
     messageId: '[MESSAGE_ID]',
     content: '[CONTENT]',
     topics: [],                             // optional
@@ -859,7 +859,7 @@ val client = Client()
 
 val messaging = Messaging(client)
 
-val message - await messaging.createSMS(
+val message - await messaging.createSms(
     messageId = "[MESSAGE_ID]",
     content = "[CONTENT]",
     topics = listOf(),
@@ -881,7 +881,7 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-messaging.createSMS(
+messaging.createSms(
     "[MESSAGE_ID]",              // messageId
     "[CONTENT]",                 // content
     listOf(),                    // topics (optional)
@@ -909,7 +909,7 @@ let client = Client()
 
 let messaging = Messaging(client)
 
-let message = try await messaging.createSMS(
+let message = try await messaging.createSms(
     messageId: "[MESSAGE_ID]",
     content: "[CONTENT]",
     topics: [],                              // optional
