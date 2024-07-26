@@ -2,7 +2,7 @@
     import Tooltip from '$lib/components/Tooltip.svelte';
     import { createDialog, melt } from '@melt-ui/svelte';
     import { getContext, hasContext, onDestroy, onMount } from 'svelte';
-    import { fade } from 'svelte/transition';
+    import { fade, scale } from 'svelte/transition';
 
     export let src: string;
     export let alt: string;
@@ -51,7 +51,7 @@
 
     {#if $open}
         <div use:melt={$portalled}>
-            <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }} />
+            <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 250 }} />
 
             <img
                 class="web-media content"
@@ -60,7 +60,7 @@
                 {alt}
                 {title}
                 loading="lazy"
-            />
+                transition:scale={{ duration: 750, start: 0.95 }} />
         </div>
     {/if}
 {/if}
@@ -100,9 +100,12 @@
 
     .content {
         position: fixed;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        transform-origin: center;
 
         display: block;
         object-fit: contain;
