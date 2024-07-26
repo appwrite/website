@@ -229,19 +229,20 @@ You can also configure **permissions** in the `createCollection` method, learn m
 
 {% partial file="cli-disclaimer.md" /%}
 
-You can create your collections using the CLI command `appwrite init collections`.
+To create your collection using the CLI, first use the `appwrite init collections` command to initialize your collection.
 
 ```sh
 appwrite init collections
-? What would you like to name your database? My Awesome Database
-? What ID would you like to have for your database? unique()
-? What would you like to name your collection? My Awesome Collection       
-? What ID would you like to have for your collection? unique()
-? Enable Document-Security for configuring permissions for individual      
-documents No
-✓ Success:
-ℹ Info: Next you can use 'appwrite push collection' to deploy the changes.
 ```
+
+Then push your collection using the `appwrite push collections` command.
+
+```sh
+appwrite push collections
+```
+
+This will create your collection in the Console with all of your `appwrite.json` configurations.
+
 {% arrow_link href="/docs/tooling/command-line/collections#commands" %}
 Learn more about the CLI collections commands
 {% /arrow_link %}
