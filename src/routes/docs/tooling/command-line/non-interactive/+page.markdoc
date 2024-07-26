@@ -19,10 +19,6 @@ In this mode, the CLI can only interact with one project at a time.
 # API Keys {% #api-keys %}
 In non-interactive mode, the CLI uses an API key to authenticate. Your API key must have sufficient permissions to execute the commands you plan to use. [Learn more about API Keys](/docs/advanced/platform/api-keys).
 
-# Providers {% #providers %}
-
-In non-interactive mode, you can use providers like [Github actions](https://github.com/appwrite/setup-for-actions/tree/feat-cli-g2?tab=readme-ov-file#introduction) to automate your Appwrite CLI commands, allowing you to use the CLI commands even in non-interactive mode.
-
 # Deployment {% #deployment %}
 Appwrite's `push` commands can also be executed in a non-interactive mode. This applies to the following resources: functions, collections, buckets, teams, and messaging topics.
 
@@ -64,3 +60,11 @@ Push all buckets:
 ```sh
 appwrite push buckets --all --force
 ```
+
+# CI/CD integrations {% #ci-cd-integrations %}
+
+Use providers like Github actions to create continuous integrations and continuous delivery or deployment (CI/CD).
+
+## Github
+
+You can use [Github actions](https://github.com/appwrite/setup-for-actions/tree/feat-cli-g2?tab=readme-ov-file#introduction) to automate your Appwrite CLI commands, allowing you to use them even in non-interactive mode.

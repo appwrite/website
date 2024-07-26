@@ -6,7 +6,7 @@ description: Efficiently deploy your Appwrite buckets using the Command-Line Too
 
 {% partial file="cli-disclaimer.md" /%}
 
-The Appwrite CLI allows you to configure and deploy buckets across projects. You can also configure with your files using the CLI commands.
+The Appwrite CLI allows you to configure and deploy buckets across projects. You can also configure your files using the CLI commands.
 
 # Initialize bucket {% #initialize-bucket %}
 
@@ -106,7 +106,7 @@ appwrite storage [COMMAND] [OPTIONS]
 * Delete a file by its unique ID. Only users with write permissions have access to delete this resource.
 ---
 * `getFileDownload [options]`
-* Get a file content by its unique ID. The endpoint response return with a 'Content-Disposition: attachment' header that tells the browser to start downloading the file to user downloads directory.
+* Get a file content by its unique ID. The endpoint response returns with a 'Content-Disposition: attachment' header that tells the browser to start downloading the file to the user downloads directory.
 ---
 * `getFilePreview [options]`   
 * Get a file preview image. Currently, this method supports preview for image files (jpg, png, and gif), other supported formats, like pdf, docs, slides, and spreadsheets, will return the file icon image. You can also pass query string arguments for cutting and resizing your preview image. Preview is supported only for image files smaller than 10MB.
