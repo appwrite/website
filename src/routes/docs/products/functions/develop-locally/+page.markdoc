@@ -10,11 +10,11 @@ Develop your Appwrite functions locally so you can make code changes without red
 
 1. Install the [Docker CLI](https://www.docker.com/products/docker-desktop/)
 2. Ensure Docker is running in the background
-3. Install the [Appwrite CLI](/docs/tooling/command-line/installation)
+3. Install the [Appwrite CLI](/docs/tooling/command-line/installation#installation)
 4. [Log in](/docs/tooling/command-line/installation#get-started) to your Appwrite account using `appwrite login`
 5. [Initialize your project](/docs/tooling/command-line/installation#initialization) and create the `appwrite.json` file
 
-We use Docker to simulate the production environment precisely so that we can deploy a function locally. The `appwrite run functions` command allows functions to be run locally, and the CLI is needed to accomplish this. The CLI also allows other [CLI commands](/docs/tooling/command-line/commands), but initializing a project with `appwrite.json` file is required to run commands like `appwrite run functions`.
+We use Docker to simulate the production environment precisely so that we can deploy a function locally. You can locally run functions using the `appwrite run functions` CLI command. The CLI also allows other [CLI commands](/docs/tooling/command-line/commands), and initializing a project with `appwrite.json` file is required to run commands like `appwrite run functions`.
 
 {% arrow_link href="/docs/tooling/command-line/functions" %}
 Learn more about deploying functions using CLI
@@ -26,11 +26,11 @@ Use the `appwrite run functions` command to develop your function locally.
 
 ```sh
 appwrite run functions
-? Which function would you like to develop locally? My Awesome Function (<FUNCTION_ID>)
+? Which function would you like to develop locally? My Awesome Function ("<FUNCTION_ID>")
 
 runtime   │ entrypoint  │ path                           │ commands     
 ───────────┼──────────────┼───────────────────────────────────┼─────────────
-node-16.0 │ src/main.js │ functions/<FUNCTION_ID>        │ npm install
+node-16.0 │ src/main.js │ functions/"<FUNCTION_ID>"        │ npm install
 
 ℹ Info: If you wish to change your local settings, update the appwrite.json file and rerun the 'appwrite run' command.
 ♥ Hint: Permissions, events, CRON and timeouts dont apply when running locally.
@@ -68,7 +68,7 @@ Learn more about developing a function
 
 # Headers {% #headers %}
 
-Appwrite functions receive various headers, like `x-appwrite-key` and `x-appwrite-event`. To view all the received headers, use the following req object:
+Appwrite functions receive various headers, like `x-appwrite-key` and `x-appwrite-event`. To view all the received headers, use the following:
 
 ```javascript
 JSON.stringify(req.headers); // String key-value pairs of all request headers, keys are lowercase
