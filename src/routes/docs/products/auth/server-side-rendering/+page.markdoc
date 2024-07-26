@@ -115,7 +115,7 @@ Create an endpoint using your server's framework of choice that accepts a userna
 Once you have a session object, you can store it in a cookie. This will allow your users make authenticated requests to the Appwrite API from your server.
 
 Use the `secret` property of the session object as the cookie value. The `expire` property of the session object should be used as the cookie's max age.
-Here's an example with Express and PHP, but the same concepts apply to all most frameworks.
+Here's an example with Express and PHP, but the same concepts apply to most frameworks.
 {% multicode %}
 ```server-nodejs
 import express from 'express';
