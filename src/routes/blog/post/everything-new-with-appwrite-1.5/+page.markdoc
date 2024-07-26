@@ -19,7 +19,7 @@ A new product that allows you to send SMS, email, and push notifications through
 With just a few lines of backend code, you can set up a full-functioning messaging service under one unified platform.
 
 ```ts
-messaging.createSMS(
+messaging.createSms(
     '6541...ea30',
     'Thanks for signing up!',
     ['65415281565570ca1f9c'],
