@@ -36,7 +36,7 @@
 
 <a class="web-grid-articles-item" {href} target="_blank" rel="noopener noreferrer">
     <div class="web-grid-articles-item-image">
-        <img src={cover.src} alt={cover.alt} class="web-u-media-ratio-16-9" />
+        <img src={cover.src} alt={cover.alt} class="web-u-media-ratio-16-9" loading="lazy" />
     </div>
     <div class="web-grid-articles-item-content is-no-gap">
         <ul class="u-flex u-flex-wrap web-u-list-inline-dot-sep">
