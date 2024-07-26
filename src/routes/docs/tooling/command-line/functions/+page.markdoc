@@ -30,7 +30,7 @@ After [initializing](/docs/tooling/command-line/installation#Initialization) you
 
 ```json
 {
-    "projectId": <PROJECT_ID>,
+    "projectId": "<PROJECT_ID>",
     "functions": [
         {
             "$id": "<FUNCTION_ID>",
@@ -50,7 +50,7 @@ After [initializing](/docs/tooling/command-line/installation#Initialization) you
                     "$id": "eyJhbGciOiJIUzI1N",
                     "$createdAt": "2024-04-22T22:51:51.745+00:00",
                     "$updatedAt": "2024-04-23T00:13:10.886+00:00",
-                    "key": "X_Appwrite_Key",
+                    "key": "<X_Appwrite_Key>",
                     "value": "<API_KEY>",
                     "resourceType": "function",
                     "resourceId": "eyJhbGciOiJIUzI1N"
@@ -59,7 +59,7 @@ After [initializing](/docs/tooling/command-line/installation#Initialization) you
                     "$id": "N1IzUIJiOicGbhJye",
                     "$createdAt": "2024-04-22T23:32:12.901+00:00",
                     "$updatedAt": "2024-04-22T23:32:12.901+00:00",
-                    "key": "DATABASE_ID",
+                    "key": "<DATABASE_ID>",
                     "value": "<DATABASE_ID>",
                     "resourceType": "function",
                     "resourceId": "N1IzUIJiOicGbhJye"
@@ -68,7 +68,7 @@ After [initializing](/docs/tooling/command-line/installation#Initialization) you
                     "$id": "OicGbhJyeN1IzUIJi",
                     "$createdAt": "2024-04-22T23:32:12.910+00:00",
                     "$updatedAt": "2024-04-22T23:32:12.910+00:00",
-                    "key": "PROJECT_ID",
+                    "key": "<PROJECT_ID>",
                     "value": "<PROJECT_ID>",
                     "resourceType": "function",
                     "resourceId": "OicGbhJyeN1IzUIJi"
@@ -77,7 +77,7 @@ After [initializing](/docs/tooling/command-line/installation#Initialization) you
                     "$id": "bhJyIJiON1IzUicGe",
                     "$createdAt": "2024-04-22T23:32:12.912+00:00",
                     "$updatedAt": "2024-04-22T23:32:12.912+00:00",
-                    "key": "COLLECTION_USERS_ID",
+                    "key": "<COLLECTION_USERS_ID>",
                     "value": "<COLLECTION_ID>",
                     "resourceType": "function",
                     "resourceId": "bhJyIJiON1IzUicGe"

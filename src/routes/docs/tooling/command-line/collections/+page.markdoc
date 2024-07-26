@@ -42,7 +42,7 @@ After [initializing](/docs/tooling/command-line/installation#Initialization) you
     ],
     "collections": [
         {
-            "$id": "COLLECTION_ID",
+            "$id": "<COLLECTION_ID>",
             "$permissions": [
                 "create(\"any\")",
                 "read(\"any\")",
