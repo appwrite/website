@@ -2,14 +2,14 @@
     import { Main } from '$lib/layouts';
     import { MainFooter, FooterNav, Article } from '$lib/components';
     import { TITLE_SUFFIX } from '$routes/titles.js';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
 
     export let data;
 
     const featured = data.posts.find((post) => post.featured);
 
     const title = 'Blog' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description = 'Stay updated with the latest product news, insights, and tutorials from the Appwrite team. Discover tips and best practices for hassle-free backend development.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/blog.png';
 </script>
 
