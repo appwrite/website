@@ -503,7 +503,6 @@ To schedule an execution, navigate to **Your function** > **Executions** > **Exe
 {% tabsitem #sdk title="Server SDK" %}
 You can also schedule your function executions using a supported [runtime](/docs/products/functions/runtimes#available-runtimes).
 
-
 {% multicode %}
 ```server-nodejs
 const sdk = require('node-appwrite');
