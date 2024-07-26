@@ -47,19 +47,19 @@ There are currently three modes to connect the Appwriter to the computer: wired,
 ## Wired mode {% #wired-mode %}
 
 To use the wired mode, connect the USB-TYPE-C data cable from the keyboard to the computer and push the Appwriter switch towards the T.
-When connecting using wired mode for the first time, your computer will install all required drivers on a successful connection.
+When connecting the keyboard using wired mode for the first time, your computer will install all required drivers on a successful connection.
 
-The battery will charge while your Appwriter is connected using the wired mode. Make sure to use a charger that doesn't exceed a voltage/current = DSCV = 1A (max). Using a charger that exceeds this voltage and current ratings could easily damage your Appwriter keyboard.
+The Appwriter's battery will charge while connected using the wired mode. Make sure to use a charger that doesn't exceed a voltage/current = DSCV = 1A (max). Using a charger that exceeds this voltage and current ratings could easily damage your keyboard.
 
 ## Wireless mode {% #wireless-mode %}
 
-Push the Appwriter switch towards the G if you want to use the wireless mode. Upon switching to wireless mode, long press the `FN` + `4` keys for around 3 seconds. After the `4` key light flashes quickly, plug the receiver into a computer USB port.
+Push the Appwriter switch towards the G if you want to use the wireless mode. After switching to wireless mode, long press the `FN` + `4` keys for around 3 seconds. After the `4` key light flashes quickly, plug the receiver into a computer USB port.
 
 ## Bluetooth mode {% #bluetooth-mode %}
 
-To pair in Bluetooth mode, push the switch to B and do a long press while holding the `FN` + `1` keys. Once the `1` key flashes a fast light, you must search for elements.
+To pair the keyboard in Bluetooth mode, push the switch to B and do a long press while holding the `FN` + `1` keys. Once the `1` key flashes a fast light, you must search for elements.
 
-# General keyboard controls
+# General keyboard controls {% #general-keyboard-controls %}
 
 |Shortcut|Action|
 |---|---|
