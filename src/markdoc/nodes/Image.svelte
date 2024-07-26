@@ -1,8 +1,8 @@
 <script lang="ts">
     import Tooltip from '$lib/components/Tooltip.svelte';
     import { createDialog, melt } from '@melt-ui/svelte';
-    import { getContext, hasContext } from 'svelte';
-    import { fade, scale } from 'svelte/transition';
+    import { getContext, hasContext, onDestroy, onMount } from 'svelte';
+    import { fade } from 'svelte/transition';
 
     export let src: string;
     export let alt: string;
@@ -18,6 +18,14 @@
         preventScroll: false,
         forceVisible: true
     });
+
+    const handleScroll = () => {
+        if ($open) open.set(false);
+    };
+
+    onMount(() => window.addEventListener('scroll', handleScroll));
+
+    onDestroy(() => window.removeEventListener('scroll', handleScroll));
 </script>
 
 {#if inTable || isAudio}
@@ -52,7 +60,6 @@
                 {alt}
                 {title}
                 loading="lazy"
-                transition:scale={{ duration: 250, start: 0.95 }}
             />
         </div>
     {/if}
@@ -87,7 +94,7 @@
     .overlay {
         position: fixed;
         inset: 0;
-        background-color: rgba(0, 0, 0, 0.25);
+        background-color: rgba(27, 27, 27, 0.98);
         z-index: 1000;
     }
 
