@@ -37,9 +37,9 @@ export enum Platform {
     ServerDart = 'server-dart',
     ServerPhp = 'server-php',
     ServerRuby = 'server-ruby',
-    ServerDotNet = 'server-dotnet (beta)',
+    ServerDotNet = 'server-dotnet',
     ServerDeno = 'server-deno',
-    ServerGo = 'server-go (beta) (new)',
+    ServerGo = 'server-go',
     ServerSwift = 'server-swift',
     ServerKotlin = 'server-kotlin',
     ServerJava = 'server-java',
@@ -58,7 +58,7 @@ export const platformMap: Record<Language | string, string> = {
     [Platform.ClientRest]: 'REST',
     [Platform.ServerDart]: 'Dart',
     [Platform.ServerDeno]: 'Deno',
-    [Platform.ServerDotNet]: '.NET (beta)',
+    [Platform.ServerDotNet]: '.NET',
     [Platform.ServerNodeJs]: 'Node.js',
     [Platform.ServerPhp]: 'PHP',
     [Platform.ServerPython]: 'Python',
@@ -68,7 +68,7 @@ export const platformMap: Record<Language | string, string> = {
     [Platform.ServerJava]: 'Java',
     [Platform.ServerGraphql]: 'GraphQL',
     [Platform.ServerRest]: 'REST',
-    [Platform.ServerGo]: 'Go (beta) (new)',
+    [Platform.ServerGo]: 'Go',
     sh: 'Shell',
     js: 'JavaScript',
     ts: 'TypeScript',
@@ -104,7 +104,7 @@ export const platformMap: Record<Language | string, string> = {
     vue: 'Vue',
     svelte: 'Svelte',
     groovy: 'Groovy',
-    go: 'Go (beta) (new)',
+    go: 'Go',
 };
 
 export const serviceMap: Record<Service, string> = {
