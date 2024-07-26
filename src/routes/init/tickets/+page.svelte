@@ -4,7 +4,7 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import Ticket from '../(components)/Ticket.svelte';
-    import { loginGithub } from '../helpers';
+    import { getMockContributions, loginGithub } from '../helpers';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
 
     const title = 'Init - Appwrite';
@@ -107,7 +107,13 @@
                     {#each tickets as { name, title }, i}
                         {@const id = i + 1}
                         <div style:width="300vw">
-                            <Ticket disableEffects {name} {title} {id} />
+                            <Ticket
+                                contributions={getMockContributions()}
+                                disableEffects
+                                {name}
+                                {title}
+                                {id}
+                            />
                         </div>
                     {/each}
                 </div>

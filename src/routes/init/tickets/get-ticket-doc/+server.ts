@@ -1,4 +1,4 @@
-import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
+import { APPRWITE_COL_INIT_2_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
 import { appwriteInitServer } from '$lib/appwrite/init.server';
 import { isProUser } from '$lib/utils/console.js';
 import type { User } from '$routes/init/helpers.js';
@@ -33,14 +33,18 @@ async function getTicketDocByUser(user: User) {
 
     const [gh, aw, isPro] = await Promise.all([
         user.github?.login
-            ? appwriteInitServer.databases.listDocuments(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, [
-                Query.equal('gh_user', user.github.login)
-            ])
+            ? appwriteInitServer.databases.listDocuments(
+                  APPWRITE_DB_INIT_ID,
+                  APPRWITE_COL_INIT_2_ID,
+                  [Query.equal('gh_user', user.github.login)]
+              )
             : null,
         user.appwrite?.$id
-            ? appwriteInitServer.databases.listDocuments(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, [
-                Query.equal('aw_email', user.appwrite.email)
-            ])
+            ? appwriteInitServer.databases.listDocuments(
+                  APPWRITE_DB_INIT_ID,
+                  APPRWITE_COL_INIT_2_ID,
+                  [Query.equal('aw_email', user.appwrite.email)]
+              )
             : null,
         isProUser()
     ]);
@@ -55,7 +59,7 @@ async function getTicketDocByUser(user: User) {
             const newest = gh_doc.id > aw_doc.id ? gh_doc.$id : aw_doc.$id;
             await appwriteInitServer.databases.updateDocument(
                 APPWRITE_DB_INIT_ID,
-                APPWRITE_COL_INIT_ID,
+                APPRWITE_COL_INIT_2_ID,
                 oldest,
                 {
                     gh_user: null,
@@ -64,7 +68,7 @@ async function getTicketDocByUser(user: User) {
             );
             return (await appwriteInitServer.databases.updateDocument(
                 APPWRITE_DB_INIT_ID,
-                APPWRITE_COL_INIT_ID,
+                APPRWITE_COL_INIT_2_ID,
                 newest,
                 {
                     gh_user: user.github?.login,
@@ -79,7 +83,7 @@ async function getTicketDocByUser(user: User) {
         if (!doc.gh_user || !doc.aw_email) {
             return (await appwriteInitServer.databases.updateDocument(
                 APPWRITE_DB_INIT_ID,
-                APPWRITE_COL_INIT_ID,
+                APPRWITE_COL_INIT_2_ID,
                 doc.$id,
                 {
                     gh_user: user.github?.login,
@@ -92,7 +96,7 @@ async function getTicketDocByUser(user: User) {
         if (!!user.appwrite && doc.is_pro !== isPro) {
             return (await appwriteInitServer.databases.updateDocument(
                 APPWRITE_DB_INIT_ID,
-                APPWRITE_COL_INIT_ID,
+                APPRWITE_COL_INIT_2_ID,
                 doc.$id,
                 {
                     is_pro: isPro
@@ -106,18 +110,17 @@ async function getTicketDocByUser(user: User) {
         // If no document exists, create one
         const allDocs = await appwriteInitServer.databases.listDocuments(
             APPWRITE_DB_INIT_ID,
-            APPWRITE_COL_INIT_ID
+            APPRWITE_COL_INIT_2_ID
         );
         return (await appwriteInitServer.databases.createDocument(
             APPWRITE_DB_INIT_ID,
-            APPWRITE_COL_INIT_ID,
+            APPRWITE_COL_INIT_2_ID,
             ID.unique(),
             {
-                gh_user: user.github?.login ?? undefined,
                 aw_email: user.appwrite?.email ?? undefined,
                 id: allDocs.total + 1,
                 name: user.appwrite?.name ?? user.github?.name,
-                is_pro: isPro
+                title: ''
             }
         )) as unknown as TicketDoc;
     }
@@ -126,7 +129,7 @@ async function getTicketDocByUser(user: User) {
 async function getTicketDocById(id: string) {
     return (await appwriteInitServer.databases.getDocument(
         APPWRITE_DB_INIT_ID,
-        APPWRITE_COL_INIT_ID,
+        APPRWITE_COL_INIT_2_ID,
         id
     )) as unknown as Omit<TicketData, 'contributions' | 'variant'>;
 }
