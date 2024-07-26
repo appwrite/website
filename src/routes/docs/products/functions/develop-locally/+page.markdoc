@@ -75,7 +75,7 @@ Function settings like timeout, entry point, or schedule will be read from the [
     "projectId": "<PROJECT_ID>",
     "functions": [
         {
-            "$id": <FUNCTION_ID>,
+            "$id": "<FUNCTION_ID>",
             "name": "My Awesome Function",
             "runtime": "node-16.0",
             "execute": [],
