@@ -38,7 +38,7 @@ export async function getCubes(ticket: TicketData) {
     }, [] as string[]);
 }
 
-export const getNewTicketSvg = async (ticket: TicketData) => {
+export const getTicketSvg = async (ticket: TicketData) => {
     const cubes = await getCubes(ticket);
     const ticketNumber = getTicketNumber(ticket);
     const firstName = ticket.name.split(' ')[0];
@@ -144,8 +144,7 @@ ${ticket.title ? `<text transform="translate(92.2505 308.795)" fill="white" fill
 </g>
 <g clip-path="url(#clip3_346_418)">
 <path d="M1117.23 216.438C1133.23 216.438 1146.21 229.411 1146.21 245.413L1146.21 766.957C1146.21 782.959 1133.23 795.932 1117.23 795.932L903.542 795.932C887.54 795.932 874.568 782.959 874.568 766.957L874.568 245.413C874.568 229.411 887.54 216.438 903.542 216.438L1117.23 216.438Z" fill="black"/>
-<text transform="translate(932.514 230.926) rotate(90)" fill="white" fill-opacity="0.64" xml:space="preserve" style="white-space: pre" font-family="Aeonik Fono" font-size="21.731" letter-spacing="0em"><tspan x="0" y="21.9318">TICKET NUMBER: ${ticketNumber}</tspan></text>
-<text transform="translate(1097.31 230.926) rotate(90)" fill="white" xml:space="preserve" style="white-space: pre" font-family="Aeonik Fono" font-size="21.731" letter-spacing="0em"><tspan x="0" y="21.9318">INIT 2.0</tspan></text>
+<text transform="translate(1097.31 230.926) rotate(90)" fill-opacity="0.64" fill="white" xml:space="preserve" style="white-space: pre" font-family="Aeonik Fono" font-size="21.731" letter-spacing="0em"><tspan x="0" y="21.9318">TICKET NUMBER: ${ticketNumber}</tspan></text>
 ${cubes.join('')}
 <g filter="url(#filter20_f_346_418)">
 <path d="M1247.18 258.858L-121.325 1757C-161.391 1800.87 -160.696 1868.25 -119.734 1911.28C-74.4255 1958.87 1.76451 1957.96 45.9309 1909.31L1409.77 406.909C1454.14 358.026 1445.73 281.334 1391.82 243.227C1346.56 211.236 1284.56 217.936 1247.18 258.858Z" fill="url(#paint45_linear_346_418)"/>

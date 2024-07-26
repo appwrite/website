@@ -173,7 +173,6 @@
                 {/if}
             {/await}
             <div class="details">
-                <span>Init 2.0</span>
                 <span>{`Ticket Number: #${id?.toString().padStart(6, '0')}`}</span>
             </div>
             <div class="shine" />
