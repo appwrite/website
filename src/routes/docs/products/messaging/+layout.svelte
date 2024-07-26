@@ -51,7 +51,7 @@
 					href: '/docs/products/messaging/mailgun'
 				},
 				{
-					label: 'Email with Sendgrid',
+					label: 'Email with SendGrid',
 					href: '/docs/products/messaging/sendgrid'
 				},
 				{
