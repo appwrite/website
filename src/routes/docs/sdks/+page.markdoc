@@ -303,6 +303,12 @@ You can discover the available enums in each SDK at the source.
 * Flutter SDK `12.0.3`
 * [appwrite/sdk-for-flutter](https://github.com/appwrite/sdk-for-flutter/tree/dev/lib/src/enums)
 ---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/react.svg" alt="React logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/react.svg" alt="React logo" size="m" /%}{% /only_light %}
+* React Native SDK `0.1.0`
+* [appwrite/sdk-for-react-native](https://github.com/appwrite/sdk-for-react-native)
+* `beta`
+---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/apple.svg" alt="Apple logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/apple.svg" alt="Apple logo" size="m" /%}{% /only_light %}
 * Apple SDK `5.0.0`
