@@ -267,15 +267,21 @@ let topic = try await messaging.createTopic(
 
 {% tabsitem #cli title="CLI" %}
 
-You can create a topic using the CLI command `appwrite init topics`.
+{% partial file="cli-disclaimer.md" /%}
+
+You can create a topic using the CLI command `appwrite init topics` to initialize a topic.
 
 ```sh
 appwrite init topics
-? What would you like to name your messaging topic? My Awesome Topic
-? What ID would you like to have for your messaging topic? unique()     
-✓ Success:
-ℹ Info: Next you can use 'appwrite push topic' to deploy the changes.
 ```
+
+You can now push your topics with the following command:
+
+```sh
+appwrite push topics
+```
+
+This will create your topic in the Console with all of your `appwrite.json` configurations.
 
 {% arrow_link href="/docs/tooling/command-line/topics#commands" %}
 Learn more about the CLI topics commands
@@ -283,11 +289,6 @@ Learn more about the CLI topics commands
 
 {% /tabsitem %}
 {% /tabs %}
-
-{% arrow_link href="/docs/tooling/command-line/topics#appwritejson" %}
-Learn more about appwrite.json
-{% /arrow_link %}
-
 
 # Permissions {% #permissions %}
 Before you can subscribe to a topic, a user needs the appropriate permission.

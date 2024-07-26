@@ -12,31 +12,7 @@ you can also create deployments manually or through the Appwrite CLI.
 
 # CLI  {% #cli %} 
 
-{% info title="CLI setup" %}
-Before deploying your function with the Appwrite CLI, [**install**](/docs/tooling/command-line/installation#Installation) the CLI, [**log in**](/docs/tooling/command-line/installation#get-started) to your Appwrite account, and [**initialize**](/docs/tooling/command-line/installation#Initialization) your Appwrite project.
-{% /info %}
-
-Your function must be added to `appwrite.json` to deploy with the Appwrite CLI.
-You can pull an existing function:
-
-```sh
-appwrite pull functions
-```
-
-Or you can create a function:
-
-```sh
-appwrite init functions
-```
-
-Edit the generated code, add dependencies, and push the function using the following command:
-
-```sh
-appwrite push functions
-```
-{% arrow_link href="/docs/tooling/command-line/functions#commands" %}
-Learn more about the CLI functions commands
-{% /arrow_link %}
+{% partial file="cli-function.md" /%}
 
 ## Configure CLI deployments {% #configure-cli-deployments %}
 If you need to target a different project, API endpoint, change the path or entry point of your function, or update any of the other configuration options, 
