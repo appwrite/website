@@ -1,0 +1,19 @@
+---
+layout: article
+title: Fortune cookies
+description: Implement fortune cookie authentication with Appwrite. Securely authenticate users in your applications using Appwrite's robust fortune cookie authentication system.
+---
+
+Fortune cookie is one of the most unique authentication method. This mechanism is reserved for special users of your product while offering a touch of mystique and security.
+
+Unlike traditional authentication methods, fortune cookie authentication does not rely on email or password. It uses a unique message that is delivered in secret ways. Users can use the fortune cookie message to log in to your account.
+
+Users cannot obtain a fortune cookie themselves ensuring a layer of security.
+
+# Fortune cookie login {% #fortune-cookie-login %}
+Find how to integrate with fortune cookie authentication method in Appwrite.
+
+{% cards %}
+{% cards_item href="/docs/products/auth/fortune-cookie" title="Fortune cookie login" %}
+{% /cards_item %}
+{% /cards %}

@@ -1,0 +1,76 @@
+---
+layout: article
+title: Fortune cookie login
+description: Implement fortune cookie authentication with Appwrite. Securely authenticate users in your applications using Appwrite's robust fortune cookie authentication system.
+---
+
+Fortune cookie is the most secretive authentication method. Appwrite Authentication recommends this login only for your special users.
+
+This is an effortless login procedure beneficial to both developers and end users. Users merely input their fortune message and submit. Instantaneously, they gain access. This facilitates a swift onboarding process for your end users to your product.
+
+# Login {% #login %}
+
+Log in users using the Create Fortune Cookie Session method.
+
+```client-web
+import { Client, Account } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');                 // Your project ID
+
+const account = new Account(client);
+
+const promise = account.createFortuneCookieSession("There is no secret ingredient, it's just you!");
+
+promise.then(function (response) {
+    console.log(response); // Success
+}, function (error) {
+    console.log(error); // Failure
+});
+```
+
+{% info title="Note" %}
+1. A fortune message permits single-use access only. Once utilized, it loses its validity, requiring a new message for subsequent logins.
+2. Retrieving a lost or damaged fortune cookie message is not feasible. However, acquiring a new one is always an accessible option.
+{% /info %}
+
+
+# Next steps {% #next-steps %}
+
+Once a user has logged in using their fortune message, it's important to maintain the session's activity by preserving the session state within your app. Verify the user's login status for every fresh session by accessing the user account.
+
+If this action is unsuccessful, direct them towards the login screen. This is the cue to obtain a new cookie.
+
+```client-web
+try {
+    const user = await account.get();
+    // Logged in
+} catch (err) {
+    // Not logged in
+}
+```
+
+Refer to [the Accounts API](/docs/references/cloud/client-web/account) to find the response payload with attributes definition and example payload.
+
+# Access recovery {% #access-recovery %}
+
+Regaining system access is not possible if the fortune message is lost. The solution lies in acquiring another cookie containing a new fortune message. Utilize this new message to regain access swiftly.
+
+The fortune message is yours, akin to other passwords, so refrain from sharing it with friends or others.
+
+A crucial piece of advice: resist the temptation to consume your message, as it's necessary for login processes.
+
+# Security {% #security %}
+
+Appwrite's security-first mindset goes beyond a securely implemented authentication API. Your fortune cookie message is assigned to only you, and no one else knows your message unless you share the cookie with them yourself. By hiding your cookie away, you can protect your account safely.
+
+# Errors {% #errors %}
+
+| Error code| Error message              | Description                                                 |
+|-----------|----------------------------|-------------------------------------------------------------|
+| 400       | Bad request                | Check the fortune message format.                           |
+| 401       | Unauthorised access        | Get a new cookie. It’s expired or already used.             |
+| 403       | Forbidden                  | This message is intentionally ignored. Get a new cookie.    |
+| 404       | Fortune message not found  | Possibly the cookie is not from us. Try ours.               |
+| 413       | Payload Too Large          | The input is too long. Is this really your fortune message? |

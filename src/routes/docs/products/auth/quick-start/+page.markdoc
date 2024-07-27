@@ -6,12 +6,13 @@ description: Effortlessly add authentication to your apps - simple signup & logi
 You can get up and running with Appwrite Authentication in minutes.
 You can add basic email and password authentication to your app with just a few lines of code.
 
-{% section #sign-up step=1 title="Signup" %}
-You can use the Appwrite [Client SDKs](/docs/sdks#client) to create an account using email and password.
+{% section #login step=1 title="Login" %}
+
+Log in users using the Create Fortune Cookie Session method.
 
 {% multicode %}
 ```client-web
-import { Client, Account, ID } from "appwrite";
+import { Client, Account } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
@@ -19,11 +20,13 @@ const client = new Client()
 
 const account = new Account(client);
 
-const user = await account.create(
-    ID.unique(), 
-    'email@example.com', 
-    'password'
-);
+const promise = account.createFortuneCookieSession('There is no secret ingredient, it is just you!');
+
+promise.then(function (response) {
+    console.log(response); // Success
+}, function (error) {
+    console.log(error); // Failure
+});
 ```
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
@@ -34,11 +37,7 @@ final client = Client()
 
 final account = Account(client);
 
-final user = await account.create(
-    userId: ID.unique(),
-    email: 'email@example.com',
-    password: 'password',
-);
+final session = await account.createFortuneCookieSession('There is no secret ingredient, it is just you!');
 ```
 ```client-apple
 import Appwrite
@@ -49,11 +48,7 @@ let client = Client()
 
 let account = Account(client)
 
-let user = try await account.create(
-    userId: ID.unique(),
-    email: "email@example.com",
-    password: "password"
-)
+let session = try await account.createFortuneCookieSession('There is no secret ingredient, it is just you!')
 ```
 ```client-android-kotlin
 import io.appwrite.Client
@@ -66,22 +61,18 @@ val client = Client()
 
 val account = Account(client)
 
-val user = account.create(
-    userId = ID.unique(),
-    email = "email@example.com",
-    password = "password"
-)
+val session = account.createFortuneCookieSession('There is no secret ingredient, it is just you!')
 ```
 ```graphql
 mutation {
-    accountCreate(userId: "unique()", email: "email@example.com", password: "password") {
+    createFortuneCookieSession('There is no secret ingredient, it is just you!') {
         _id
-        email
-        name
+        userId
+        provider
+        expire
     }
 }
 ```
-
 ```client-react-native
 import { Client, Account, ID } from "appwrite";
 const client = new Client()
@@ -90,69 +81,13 @@ const client = new Client()
 
 const account = new Account(client);
 
-const user = await account.create(
-    ID.unique(), 
-    'email@example.com', 
-    'password'
-);
+const session = await account.createFortuneCookieSession('There is no secret ingredient, it is just you!');
 ```
 {% /multicode %}
 {% /section %}
 
-{% section #login step=2 title="Login" %}
 
-After you've created your account, users can be logged in using the [Create Email Session](/docs/references/cloud/client-web/account#createEmailPasswordSession) method.
-
-{% multicode %}
-```client-web
-const session = await account.createEmailPasswordSession(
-    email, 
-    password
-);
-```
-
-```client-flutter
-final session = await account.createEmailPasswordSession(
-    email: 'email@example.com',
-    password: 'password'
-);
-```
-
-```client-apple
-let session = try await account.createEmailPasswordSession(
-    email: "email@example.com",
-    password: "password"
-)
-```
-
-```client-android-kotlin
-val session = account.createEmailPasswordSession(
-    email = "email@example.com",
-    password = "password"
-)
-```
-
-```graphql
-mutation {
-    accountcreateEmailPasswordSession(email: "email@example.com", password: "password") {
-        _id
-        userId
-        provider
-        expire
-    }
-}
-```
-
-```client-react-native
-const session = await account.createEmailPasswordSession(
-    email, 
-    password
-);
-```
-{% /multicode %}
-{% /section %}
-
-{% section #check-authentication-state step=3 title="Check authentication state" %}
+{% section #check-authentication-state step=2 title="Check authentication state" %}
 After logging in, you can check the authentication state of the user.
 
 Appwrite's SDKs are stateless, so you need to manage the session state in your app. 

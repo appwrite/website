@@ -47,12 +47,20 @@
                 {
                     label: 'Tokens',
                     href: '/docs/products/auth/tokens'
+                },
+                {
+                    label: 'Fortune cookies',
+                    href: '/docs/products/auth/fortune-cookies'
                 }
             ]
         },
         {
             label: 'Journeys',
             items: [
+                {
+                    label: 'Fortune cookie login',
+                    href: '/docs/products/auth/fortune-cookie'
+                },
                 {
                     label: 'Email and password login',
                     href: '/docs/products/auth/email-password'

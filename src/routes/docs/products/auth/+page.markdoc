@@ -16,6 +16,9 @@ Add authentication to your app in 5 minutes
 Appwrite supports a variety of authentication methods to fit every app and every niche. Explore Appwrite's authentication flows.
 
 {% cards %}
+{% cards_item href="/docs/products/auth/fortune-cookie" title="Fortune cookie" %}
+Login with a fortune cookie message to access your account.
+{% /cards_item %}
 {% cards_item href="/docs/products/auth/email-password" title="Email and password" %}
 Email and password login with just a few lines of code secured with state of the art Argon2 hasing.
 {% /cards_item %}
