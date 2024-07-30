@@ -1,6 +1,6 @@
 ---
 layout: integration
-title: Payments with Lemon Squeezy
+title: Payments with Stripe
 description: Receive payments and store paid orders
 date: 2024-07-30
 featured: false
