@@ -6,6 +6,7 @@
     import { Main } from '$lib/layouts';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import type { Integration } from '$routes/integrations/+page';
+    import { isHeaderHidden } from '$lib/layouts/Main.svelte';
 
     export let title: Integration['title'];
     export let images: Integration['images'];
@@ -118,7 +119,10 @@
                             </div>
                         </div>
                         <div class="l-grid-sidebar">
-                            <dl class="u-flex-vertical u-gap-20">
+                            <dl
+                                class="u-flex-vertical u-gap-20 sidebar-desc"
+                                style:top={$isHeaderHidden ? '4rem' : '9rem'}
+                            >
                                 <div class="u-flex u-main-space-between u-gap-8">
                                     <dt>Developed by</dt>
                                     <dd class="web-u-color-text-primary">{product.developer}</dd>
@@ -234,6 +238,11 @@
             flex-direction: column;
             gap: 32px;
             grid-column: span 5 / span 5;
+            position: relative;
+            .sidebar-desc {
+                position: sticky;
+                left: 0;
+            }
         }
     }
 </style>
