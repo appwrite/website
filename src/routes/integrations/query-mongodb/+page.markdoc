@@ -1,7 +1,7 @@
 ---
 layout: integration
 title: Query MongoDB Atlas
-description: Save a document in your MongoDB cluster and query them all
+description: Save a document in your MongoDB cluster and list all stored documents
 date: 2024-07-30
 featured: false
 isPartner: true
