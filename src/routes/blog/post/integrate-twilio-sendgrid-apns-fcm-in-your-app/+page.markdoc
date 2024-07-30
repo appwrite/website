@@ -12,7 +12,7 @@ featured: false
 
 Bringing messaging into your app — emails, push notifications, or SMS — gives your users a direct line to you. It lets you instantly share updates, reminders, special offers, or important info right when your users need it, keeping them engaged. But which messaging provider do you choose, and how do you integrate it?
 
-In this article, we cover the benefits of the biggest messaging providers to help you choose the best one for your use case. We will also guide you through integrating Twilio, Sendgrid, APNs, and FCM into your app built with Appwrite.
+In this article, we cover the benefits of multiple messaging providers to help you choose the best one for your use case. We will also guide you through integrating Twilio, Sendgrid, APNs, and FCM into your app usig Appwrite.
 
 # Prerequisites
 
@@ -60,7 +60,7 @@ Visit the [docs](https://appwrite.io/docs/products/messaging/twilio) for a more 
 
 # Sendgrid
 
-Sendgrid is a reliable email delivery service that helps businesses send emails quickly and efficiently. With Sendgrid, you can ensure your emails land in the inbox, not the spam folder, which is crucial for maintaining good communication with your customers.
+Sendgrid is a reliable email delivery service that helps businesses send emails quickly and efficiently. Sendgrid promises a 99% deliverability rate and ensures your emails land in the inbox, not the spam folder, which is crucial for maintaining good communication with your customers.
 
 **Benefits of using Sendgrid:**
 
@@ -98,7 +98,7 @@ Visit the [docs](https://appwrite.io/docs/products/messaging/sendgrid) for a mor
 
 # APNs
 
-APNs (Apple Push Notification Service) is an Apple tool that lets you send notifications straight to iOS devices. It helps you keep your users updated and engaged with your app in real-time.
+APNs (Apple Push Notification Service) is an Apple tool that lets you send notifications straight to iOS devices. It helps you keep your users updated and engaged with your app in real time.
 
 **Benefits of using APNs:**
 
