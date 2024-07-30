@@ -33,7 +33,7 @@
     // platform filters
     const platforms = ['All', ...data.platforms];
 
-    let activePlatform = '';
+    let activePlatform = 'All';
 
     // categories
     let activeCategory = '';
@@ -161,17 +161,22 @@
                                     class:disabled={hasQuery}
                                 >
                                     {#each data.categories as category}
-                                        <li>
-                                            <a
-                                                href={`#${category.toLowerCase()}`}
-                                                class="web-link"
-                                                class:is-pink={category.toLowerCase() ===
-                                                    activeCategory}
-                                                on:click={() =>
-                                                    activeCategory === category.toLowerCase()}
-                                                >{category}</a
-                                            >
-                                        </li>
+                                        {@const integrations = data.integrations.find(
+                                            (i) => i.category === category
+                                        )}
+                                        {#if integrations && (activePlatform === 'All' || integrations.integrations.some( (i) => i.platform.includes(activePlatform) ))}
+                                            <li>
+                                                <a
+                                                    href={`#${category.toLowerCase()}`}
+                                                    class="web-link"
+                                                    class:is-pink={category.toLowerCase() ===
+                                                        activeCategory}
+                                                    on:click={() =>
+                                                        activeCategory === category.toLowerCase()}
+                                                    >{category}</a
+                                                >
+                                            </li>
+                                        {/if}
                                     {/each}
                                 </ul>
                             </section>
@@ -288,12 +293,20 @@
                                 </section>
 
                                 {#each data.integrations as { category, description, integrations }}
-                                    {#if integrations.length > 0}
+                                    {#if integrations?.length > 0 && (activePlatform === 'All' || integrations.some( (i) => i.platform.includes(activePlatform) ))}
                                         <section
                                             class="l-max-size-list-cards-section u-flex-vertical u-gap-32"
                                             id={category.toLowerCase()}
-                                            use:autoHash={() =>
-                                                (activeCategory = category.toLowerCase())}
+                                            use:autoHash={(entries) => {
+                                                entries.forEach((entry) => {
+                                                    if (
+                                                        entry.isIntersecting &&
+                                                        activeCategory !== category.toLowerCase()
+                                                    ) {
+                                                        activeCategory = category.toLowerCase();
+                                                    }
+                                                });
+                                            }}
                                         >
                                             <header class="u-flex-vertical u-gap-4">
                                                 <h2 class="web-label web-u-color-text-primary">
@@ -308,41 +321,43 @@
                                             >
                                                 <ul class="l-grid-1">
                                                     {#each integrations as integration, index (`${integration.title}-${index}`)}
-                                                        <li>
-                                                            <a
-                                                                href={integration.href}
-                                                                class="web-card is-normal u-height-100-percent"
-                                                                style="--card-padding:1.5rem; --card-padding-mobile:1.5rem; --card-border-radius: 1.5rem"
-                                                            >
-                                                                <div
-                                                                    class="u-flex u-cross-center u-gap-8"
+                                                        {#if activePlatform === 'All' || integration.platform.includes(activePlatform)}
+                                                            <li>
+                                                                <a
+                                                                    href={integration.href}
+                                                                    class="web-card is-normal u-height-100-percent"
+                                                                    style="--card-padding:1.5rem; --card-padding-mobile:1.5rem; --card-border-radius: 1.5rem"
                                                                 >
-                                                                    <img
-                                                                        class="web-user-box-image is-32px"
-                                                                        src={integration.product
-                                                                            .avatar}
-                                                                        alt={integration.product
-                                                                            .developer}
-                                                                        width="32"
-                                                                        height="32"
-                                                                    />
-                                                                    <h4
-                                                                        class="web-main-body-400 web-u-color-text-primary"
+                                                                    <div
+                                                                        class="u-flex u-cross-center u-gap-8"
                                                                     >
-                                                                        {integration.title}
-                                                                    </h4>
-                                                                    <span
-                                                                        class="icon-arrow-right u-margin-inline-start-auto"
-                                                                        aria-hidden="true"
-                                                                    ></span>
-                                                                </div>
-                                                                <p
-                                                                    class="web-sub-body-400 u-margin-block-start-4"
-                                                                >
-                                                                    {integration.description}
-                                                                </p>
-                                                            </a>
-                                                        </li>
+                                                                        <img
+                                                                            class="web-user-box-image is-32px"
+                                                                            src={integration.product
+                                                                                .avatar}
+                                                                            alt={integration.product
+                                                                                .developer}
+                                                                            width="32"
+                                                                            height="32"
+                                                                        />
+                                                                        <h4
+                                                                            class="web-main-body-400 web-u-color-text-primary"
+                                                                        >
+                                                                            {integration.title}
+                                                                        </h4>
+                                                                        <span
+                                                                            class="icon-arrow-right u-margin-inline-start-auto"
+                                                                            aria-hidden="true"
+                                                                        ></span>
+                                                                    </div>
+                                                                    <p
+                                                                        class="web-sub-body-400 u-margin-block-start-4"
+                                                                    >
+                                                                        {integration.description}
+                                                                    </p>
+                                                                </a>
+                                                            </li>
+                                                        {/if}
                                                     {/each}
                                                 </ul>
                                                 <a
