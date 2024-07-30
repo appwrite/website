@@ -26,6 +26,7 @@ const categoryDescriptions = Object.entries({
     logging: 'Logging integrations',
     messaging: 'Messaging integrations',
     payments: 'Payment integrations',
+    search: 'Search integrations',
     storage: 'Storage integrations',
     vcs: 'Version Control System integrations',
 });
