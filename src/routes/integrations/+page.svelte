@@ -145,9 +145,9 @@
                                     <select class="web-input-text" bind:value={activeCategory}>
                                         <option disabled selected>Select</option>
                                         {#each data.categories as category}
-                                            <option value={category.toLowerCase()}
-                                                >{category}</option
-                                            >
+                                            <option value={category.toLowerCase()}>
+                                                {category}
+                                            </option>
                                         {/each}
                                     </select>
                                     <span
@@ -312,7 +312,7 @@
                                                             <a
                                                                 href={integration.href}
                                                                 class="web-card is-normal u-height-100-percent"
-                                                                style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
+                                                                style="--card-padding:1.5rem; --card-padding-mobile:1.5rem; --card-border-radius: 1.5rem"
                                                             >
                                                                 <div
                                                                     class="u-flex u-cross-center u-gap-8"
