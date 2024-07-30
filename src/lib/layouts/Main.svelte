@@ -105,6 +105,10 @@
             href: '/docs'
         },
         {
+            label: 'Integrations',
+            href: '/integrations'
+        },
+        {
             label: 'Community',
             href: '/community'
         },
