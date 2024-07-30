@@ -17,7 +17,7 @@ platform:
 images: 
     - /images/integrations/phone-auth-twilio/cover.png
     - /images/integrations/phone-auth-twilio/twilio-console.png
-    - /images/integrations/phone-auth-twilio/provider.png
+    - /images/integrations/phone-auth-twilio/user.png
 ---
 
 Twilio is a cloud communications platform that provides programmable communication tools for making and receiving phone calls, sending and receiving text messages, and performing other communication functions using web APIs and SDKs.
