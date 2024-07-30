@@ -89,7 +89,7 @@
                             <div class="u-flex u-cross-start u-gap-20">
                                 <img
                                     class="web-author-image"
-                                    src="/images/avatars/christy.png"
+                                    src={product.avatar}
                                     alt="Christy Jacob"
                                     loading="lazy"
                                     width="40"
