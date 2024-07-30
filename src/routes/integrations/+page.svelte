@@ -240,7 +240,7 @@
                                 <section class="u-flex-vertical u-gap-32">
                                     <header class="u-flex-vertical u-gap-4">
                                         <h2 class="web-label web-u-color-text-primary">Featured</h2>
-                                        <p class="web-description">Top recommended integrations</p>
+                                        <p class="web-description">Top recommendeded integrations</p>
                                     </header>
 
                                     <div>
@@ -282,7 +282,7 @@
                                                             <div
                                                                 class="web-user-box-username web-caption-400 web-u-color-text-secondary"
                                                             >
-                                                                {item.product.description}
+                                                                {item.description}
                                                             </div>
                                                         </div>
                                                     </a>
