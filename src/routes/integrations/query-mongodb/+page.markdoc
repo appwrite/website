@@ -11,7 +11,7 @@ category: Databases
 product: 
     avatar: '/images/integrations/avatars/mongodb.png'
     developer: Appwrite
-    description: 'MongoDB is a popular NoSQL database known for its flexibility and scalability'
+    description: 'MongoDB is a popular NoSQL database known for its flexibility and scalability.'
 platform: 
     - 'Self-hosted'
     - 'Cloud'
