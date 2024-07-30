@@ -11,7 +11,7 @@ category: Payments
 product: 
     avatar: '/images/integrations/avatars/lemon-squeezy.png'
     developer: Appwrite
-    description: 'SendGrid is a cloud-based service that provides email delivery and marketing solutions. '
+    description: 'Lemon Squeezy is a platform designed to simplify the process of selling digital products online.'
 platform: 
     - 'Self-hosted'
     - 'Cloud'
