@@ -45,10 +45,10 @@ From your Lemon Squeezy dashboard, save the following details for further usage:
 
 | Field name |  |
 | --- | --- |
-| Variant ID | Head to Store > Products from the left sidebar. Create a new product with the pricing type as Subscription and add all other mandatory details such as name, price, payment schedule, and tax category. Click on the product dropdown menu (…) to get the variant ID. |
-| Store ID | Head to Settings > Stores from the left sidebar. The store ID will be a number visible next to your store’s URL. |
-| API key | Head to Settings > API from the left sidebar. Create a new API key. |
-| Webhook secret | Head to Settings > Webhooks from the left sidebar. Add a temporary endpoint https://temporary-endpoint (we will replace this with our final endpoint later), create a new webhook secret, and select the events subscription_created and subscription_expired. |
+| Variant ID | Head to **Store** > **Products** from the left sidebar. Create a new product with the pricing type as **Subscription** and add all other mandatory details such as name, price, payment schedule, and tax category. Click on the product dropdown menu (…) to get the variant ID. |
+| Store ID | Head to **Settings** > **Stores** from the left sidebar. The store ID will be a number visible next to your store’s URL. |
+| API key | Head to **Settings** > **API** from the left sidebar. Create a new API key. |
+| Webhook secret | Head to **Settings** > **Webhooks** from the left sidebar. Add a temporary endpoint `https://temporary-endpoint` (we will replace this with our final endpoint later), create a new webhook secret, and select the events `subscription_created` and `subscription_expired`. |
 
 ## Step 2: Create the Appwrite Function
 

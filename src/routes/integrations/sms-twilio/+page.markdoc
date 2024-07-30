@@ -41,9 +41,9 @@ Ensure you save the following information for later use:
 
 | Field name |  |
 | --- | --- |
-| Account SID | Head to Twilio console > Account info > Account SID. |
-| Auth token | Head to Twilio console > Account info > Auth Token. |
-| Phone number | You can access numbers by navigating to your Twilio console > Develop > Phone Numbers > Manage > Active Numbers. |
+| Account SID | Head to **Twilio console** > **Account info** > **Account SID**. |
+| Auth token | Head to **Twilio console** > **Account info** > **Auth Token**. |
+| Phone number | You can access numbers by navigating to your **Twilio console** > **Develop** > **Phone Numbers** > **Manage** > **Active Numbers**. |
 
 ## Step 2: Add Twilio provider to your Appwrite project
 

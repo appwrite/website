@@ -43,10 +43,10 @@ Head to the Apple Developer account and save the following details:
 
 | Field name |  |
 | --- | --- |
-| Bundle ID | Head to Apple Developer account > Program resources > Certificates, Identifiers & Profiles > Identifiers |
-| Team ID | Head to Apple Developer account > Membership details > Team ID |
-| Authentication key (.p8 file) | Head to Apple Developer account > Program resources > Certificates, Identifiers & Profiles > Keys. Create a key and give it a name. Enable the Apple Push Notifications service (APNS), and register your key. |
-| Authentication key ID | Head to Apple Developer account > Program resources > Certificates, Identifiers & Profiles > Keys. Click on your key to view details. |
+| Bundle ID | Head to **Apple Developer account** > **Program resources** > **Certificates, Identifiers & Profiles** > **Identifiers** |
+| Team ID | Head to **Apple Developer account** > **Membership details** > **Team ID** |
+| Authentication key (.p8 file) | Head to **Apple Developer account** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. Create a key and give it a name. Enable the **Apple Push Notifications service (APNs)**, and register your key. |
+| Authentication key ID | Head to **Apple Developer account** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. Click on your key to view details. |
 
 ## Step 2: Add APNs provider to your Appwrite project
 
