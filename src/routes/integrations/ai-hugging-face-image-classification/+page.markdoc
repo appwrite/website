@@ -54,17 +54,13 @@ Then, create a new repository with the default branch and root directory setting
 
 ## Step 3: Test the function
 
-Once all the steps are complete, it is time to test the function!
-
-1. **Upload an image**: Use the Appwrite console or one of Appwrite’s SDKs to [upload an image](https://appwrite.io/docs/references/cloud/client-web/storage#createFile) to the `image_classification` storage bucket.
-2. **Review the response**: If successful, you will find a response saved in the `image_classification` collection in the `ai` database in the following format:
+Once all the steps are complete, it is time to test the function! Use the Appwrite console or one of Appwrite’s SDKs to [upload an image](https://appwrite.io/docs/references/cloud/client-web/storage#createFile) to the `image_classification` storage bucket. If successful, you will find a response saved in the `image_classification` collection in the `ai` database in the following format:
     
+| image | labels |
+| --- | --- |
+| `66a13bf100318c752f1b` | `[{"label":"llama","score":0.9664694666862488},{"label":"comic book","score":0.019199883565306664},{"label":"suit, suit of clothes","score":0.005637330934405327},{"label":"television, television system","score":0.00037627643905580044},{"label":"muzzle","score":0.00019786457414738834}]` |
     
-    | image | labels |
-    | --- | --- |
-    | 66a13bf100318c752f1b | [{"label":"llama","score":0.9664694666862488},{"label":"comic book","score":0.019199883565306664},{"label":"suit, suit of clothes","score":0.005637330934405327},{"label":"television, television system","score":0.00037627643905580044},{"label":"muzzle","score":0.00019786457414738834}] |
-    
-    The `image` attribute contains the ID of the image file uploaded to the `image_classification` storage bucket, and the `labels` attribute contains the response from Hugging Face, including all the labels and their confidence score.
+The `image` attribute contains the ID of the image file uploaded to the `image_classification` storage bucket, and the `labels` attribute contains the response from Hugging Face, including all the labels and their confidence score.
     
 
 # Read more about Hugging Face and Appwrite Functions
