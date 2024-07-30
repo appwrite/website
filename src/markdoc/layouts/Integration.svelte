@@ -136,12 +136,6 @@
                                     <dd class="web-u-color-text-primary">{category}</dd>
                                 </div>
                             </dl>
-
-                            <div class="l-side-column">
-                                <button class="web-button u-stretch is-full-width-mobile">
-                                    <span>Add integrations</span>
-                                </button>
-                            </div>
                         </div>
                     </div>
                 </article>
