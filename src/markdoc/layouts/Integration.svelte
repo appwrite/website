@@ -13,9 +13,9 @@
     export let isPartner: Integration['isPartner'];
     export let product: Integration['product'];
     export let category: Integration['category'];
+    export let description: Integration['description'];
 
     //const title = 'Integrations' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
