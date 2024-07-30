@@ -20,7 +20,14 @@ export type Integration = {
 };
 
 const categoryDescriptions = Object.entries({
-    ai: 'Artificial Intelligence integrations'
+    ai: 'Artificial Intelligence integrations',
+    auth: 'Authentication integrations',
+    databases: 'Database integrations',
+    logging: 'Logging integrations',
+    messaging: 'Messaging integrations',
+    payments: 'Payment integrations',
+    storage: 'Storage integrations',
+    vcs: 'Version Control System integrations',
 });
 
 export const load = () => {
