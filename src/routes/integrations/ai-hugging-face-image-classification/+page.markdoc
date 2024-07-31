@@ -1,6 +1,6 @@
 ---
 layout: integration
-title: Image classification
+title: Image classification with Hugging Face
 description: Understand and label the contents of images
 date: 2024-07-30
 featured: false

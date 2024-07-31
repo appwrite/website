@@ -1,6 +1,6 @@
 ---
 layout: integration
-title: Language translation
+title: Language translation with Hugging Face
 description: Translate text between languages
 date: 2024-07-30
 featured: false
