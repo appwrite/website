@@ -105,16 +105,16 @@
             href: '/docs'
         },
         {
-            label: 'Integrations',
-            href: '/integrations'
-        },
-        {
             label: 'Community',
             href: '/community'
         },
         {
             label: 'Blog',
             href: '/blog'
+        },
+        {
+            label: 'Integrations',
+            href: '/integrations'
         },
         {
             label: 'Changelog',
