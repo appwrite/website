@@ -359,7 +359,7 @@
                                                                             src={integration.product
                                                                                 .avatar}
                                                                             alt={integration.product
-                                                                                .developer}
+                                                                                .vendor}
                                                                             width="32"
                                                                             height="32"
                                                                         />
