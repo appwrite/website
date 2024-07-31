@@ -10,7 +10,7 @@ cover: /images/integrations/oauth-discord/cover.png
 category: Auth
 product: 
     avatar: '/images/integrations/avatars/discord.png'
-    developer: Appwrite
+    vendor: Discord
     description: 'Discord is a popular communication platform designed for creating communities.'
 platform: 
     - 'Self-hosted'

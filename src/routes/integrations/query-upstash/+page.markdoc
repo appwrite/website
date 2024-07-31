@@ -10,7 +10,7 @@ cover: /images/integrations/query-upstash/cover.png
 category: Databases
 product: 
     avatar: '/images/integrations/avatars/upstash.png'
-    developer: Appwrite
+    vendor: Upstash
     description: 'Upstash Vector provides a powerful vector database designed to handle complex queries and search functionalities.'
 platform: 
     - 'Self-hosted'

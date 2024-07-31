@@ -10,7 +10,7 @@ cover: /images/integrations/email-sendgrid/cover.png
 category: Messaging
 product: 
     avatar: '/images/integrations/avatars/sendgrid.png'
-    developer: Appwrite
+    vendor: SendGrid
     description: 'SendGrid is a cloud-based service that provides email delivery and marketing solutions.'
 platform: 
     - 'Self-hosted'

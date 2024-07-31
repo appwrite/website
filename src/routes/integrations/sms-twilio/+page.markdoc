@@ -10,7 +10,7 @@ cover: /images/integrations/sms-twilio/cover.png
 category: Messaging
 product: 
     avatar: '/images/integrations/avatars/twilio.png'
-    developer: Appwrite
+    vendor: Twilio
     description: 'Twilio is a cloud communications platform that provides programmable communication tools using web APIs and SDKs.'
 platform: 
     - 'Self-hosted'

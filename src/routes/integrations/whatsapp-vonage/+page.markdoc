@@ -10,7 +10,7 @@ cover: /images/integrations/whatsapp-vonage/cover.png
 category: Messaging
 product: 
     avatar: '/images/integrations/avatars/vonage.png'
-    developer: Appwrite
+    vendor: Vonage
     description: 'Vonage is a cloud communications provider that offers residential telecommunications services based on voice over Internet Protocol as well as programmable communications tools via web APIs.'
 platform: 
     - 'Self-hosted'

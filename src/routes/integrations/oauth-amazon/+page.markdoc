@@ -10,7 +10,7 @@ cover: /images/integrations/oauth-amazon/cover.png
 category: Auth
 product: 
     avatar: '/images/integrations/avatars/amazon.png'
-    developer: Appwrite
+    vendor: Amazon
     description: 'Amazon is a global e-commerce platform that offers a wide selection of products, from electronics, books, and apparel to household goods, groceries, and digital media.'
 platform: 
     - 'Self-hosted'
