@@ -19,7 +19,7 @@
     let linkToDocumentation = '';
     let productUrl = '';
     let extraDetails = '';
-    let subject = `Technology Partner Application: ${companyName}`;
+    let subject = '';
     let message = '';
     let hasCreatedIntegration = false;
     let error: string | undefined;
@@ -28,7 +28,8 @@
     async function handleSubmit() {
         error = undefined;
         message = `Name of representative: ${name}\n\nWork Email: ${email}\n\nCompany Name: ${companyName}\n\nCompany Size: ${companySize}\n\nCompany Website: ${companyWebsite}\n\nIntegration status: ${integrationStatus}\n\nLink to Documentation: ${linkToDocumentation}\n\nLink to product/company assets: ${productUrl}\n\nDetails: ${extraDetails}`;
-
+        subject = `Technology Partner Application: ${companyName}`
+        
         const response = await fetch('https://growth.appwrite.io/v1/feedback', {
             method: 'POST',
             headers: {
