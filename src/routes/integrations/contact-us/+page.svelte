@@ -13,9 +13,9 @@
     let email = '';
     let name = '';
     let companyName = '';
-    let companySize = '';
+    let companySize: string | null = null;
     let companyWebsite = '';
-    let integrationStatus = '';
+    let integrationStatus: string | null = null;
     let linkToDocumentation = '';
     let productUrl = '';
     let extraDetails = '';
@@ -28,7 +28,7 @@
     async function handleSubmit() {
         error = undefined;
         message = `Name of representative: ${name}\n\nWork Email: ${email}\n\nCompany Name: ${companyName}\n\nCompany Size: ${companySize}\n\nCompany Website: ${companyWebsite}\n\nIntegration status: ${integrationStatus}\n\nLink to Documentation: ${linkToDocumentation}\n\nLink to product/company assets: ${productUrl}\n\nDetails: ${extraDetails}`;
-        
+
         const response = await fetch('https://growth.appwrite.io/v1/feedback', {
             method: 'POST',
             headers: {
@@ -206,8 +206,12 @@
                                                 >
 
                                                 <div class="u-position-relative">
-                                                    <select class="web-input-text" id="companySize" bind:value={companySize}>
-                                                        <option>Select size</option>
+                                                    <select
+                                                        class="web-input-text"
+                                                        id="companySize"
+                                                        bind:value={companySize}
+                                                    >
+                                                        <option value={null}>Select size</option>
                                                         <option>1-10 employees</option>
                                                         <option>11-50 employees</option>
                                                         <option>51-200 employees</option>
@@ -254,7 +258,7 @@
                                                                 ? (hasCreatedIntegration = true)
                                                                 : (hasCreatedIntegration = false)}
                                                     >
-                                                        <option>Select</option>
+                                                        <option value={null}>Select</option>
                                                         <option value="yes"
                                                             >Yes, we have already created an
                                                             integration</option
@@ -333,7 +337,7 @@
                                             type="submit"
                                             class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1"
                                         >
-                                            <span>Apply</span>
+                                            <span>Submit</span>
                                         </button>
                                     </div>
                                 </form>
