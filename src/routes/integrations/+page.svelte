@@ -419,7 +419,7 @@
                     <h2
                         class="web-display u-max-width-600 web-u-text-align-center web-u-color-text-primary"
                     >
-                        Become a technology partner
+                        Become a Technology Partner
                     </h2>
                     <p class="web-main-body-500">
                         Join our Technology Partners program to integrate your solutions with
