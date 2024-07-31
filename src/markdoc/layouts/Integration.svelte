@@ -10,7 +10,7 @@
 
     export let title: Integration['title'];
     export let images: Integration['images'];
-    export let isNew: Integration['isNew'];
+    // export let isNew: Integration['isNew'];
     export let isPartner: Integration['isPartner'];
     export let product: Integration['product'];
     export let category: Integration['category'];
