@@ -36,7 +36,7 @@
     let activePlatform = 'All';
 
     // categories
-    let activeCategory = '';
+    let activeCategory: string | null = null;
 </script>
 
 <svelte:head>
@@ -141,14 +141,19 @@
                                     Categories
                                 </h2>
 
-                                <div class="u-position-relative is-only-tablet">
+                                <div class="u-position-relative is-not-desktop">
                                     <select class="web-input-text" bind:value={activeCategory}>
-                                        <option disabled selected>Select</option>
                                         {#each data.categories as category}
-                                            <option value={category.toLowerCase()}>
-                                                {category}
-                                            </option>
+                                            {@const integrations = data.integrations.find(
+                                                (i) => i.category === category
+                                            )}
+                                            {#if integrations && (activePlatform === 'All' || integrations.integrations.some( (i) => i.platform.includes(activePlatform) ))}
+                                                <option value={category.toLowerCase()}>
+                                                    {category}
+                                                </option>
+                                            {/if}
                                         {/each}
+                                        <option value={null}> Select category </option>
                                     </select>
                                     <span
                                         class="icon-cheveron-down u-position-absolute u-inset-inline-end-8 u-inset-block-start-8 web-u-pointer-events-none"
@@ -240,7 +245,9 @@
                                 <section class="u-flex-vertical u-gap-32">
                                     <header class="u-flex-vertical u-gap-4">
                                         <h2 class="web-label web-u-color-text-primary">Featured</h2>
-                                        <p class="web-description">Top recommendeded integrations</p>
+                                        <p class="web-description">
+                                            Top recommendeded integrations
+                                        </p>
                                     </header>
 
                                     <div>
@@ -264,20 +271,23 @@
                                                                 alt={`Avatar for ${item.product.developer}`}
                                                                 width="40"
                                                                 height="40"
+                                                                style="border-radius: 50%;"
                                                             />
                                                             <div
                                                                 class="web-user-box-name web-main-body-500 u-flex u-gap-8"
                                                             >
                                                                 <span
                                                                     class="web-u-color-text-primary"
-                                                                    >{item.title}</span
                                                                 >
-                                                                {#if item.isNew}
+                                                                    {item.title}
+                                                                </span>
+                                                                <!-- {#if item.isNew}
                                                                     <span
                                                                         class="web-inline-tag is-pink"
-                                                                        >New</span
                                                                     >
-                                                                {/if}
+                                                                        New
+                                                                    </span>
+                                                                {/if} -->
                                                             </div>
                                                             <div
                                                                 class="web-user-box-username web-caption-400 web-u-color-text-secondary"
