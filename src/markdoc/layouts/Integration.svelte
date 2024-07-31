@@ -39,8 +39,8 @@
 
 <Main>
     <div
-        class="web-u-sep-block-end"
-        style="background-color:rgba(23, 23, 26, 1); margin-block-end: 5rem"
+        class="web-u-sep-block-end u-padding-block-end-0"
+        style="background-color:rgba(23, 23, 26, 1); margin-block-end: 2.5rem"
     >
         <div class="web-container">
             <div class="web-integrations-top-section">
