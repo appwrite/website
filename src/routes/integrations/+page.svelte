@@ -9,6 +9,7 @@
     import { autoHash } from '$lib/actions/autoHash';
     import type { Integration } from './+page';
     import { goto } from '$app/navigation';
+    import { onDestroy, onMount } from 'svelte';
 
     export let data;
 
@@ -38,6 +39,10 @@
 
     // categories
     let activeCategory: string | null = null;
+
+    onMount(() => document.documentElement.setAttribute('data-scroll-smooth', ''));
+
+    onDestroy(() => document.documentElement.removeAttribute('data-scroll-smooth'));
 </script>
 
 <svelte:head>
@@ -146,7 +151,9 @@
                                     <select
                                         class="web-input-text"
                                         bind:value={activeCategory}
-                                        on:select={() => goto(`#${activeCategory?.toLowerCase()}`)}
+                                        on:change={() => {
+                                            goto(`#${activeCategory?.toLowerCase()}`);
+                                        }}
                                     >
                                         {#each data.categories as category}
                                             {@const integrations = data.integrations.find(
@@ -431,7 +438,9 @@
 
 <style lang="scss">
     @use '$scss/abstract' as *;
-
+    :global([data-scroll-smooth]) {
+        scroll-behavior: smooth;
+    }
     .hero {
         min-height: pxToRem(620);
         @media (min-width: 768px) {
