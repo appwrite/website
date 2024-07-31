@@ -37,6 +37,7 @@ A Squad is an easy way to keep up with all the cool things happening at Appwrite
 # Appwrite at FreeCodeCamp
 
 ![FreeCodeCamp video](/images/blog/product-update-july/3.png)
+
 Appwrite developed a coding course on the [FreeCodeCamp.org](http://FreeCodeCamp.org) YouTube channel. FreeCodeCamp is a popular learning resource for developers, with hundreds of easy-to-follow video guides and tutorials.
 
 [Learn how to create a full-stack sticky notes app using JavaScript and Appwrite in this video tutorial.](https://www.youtube.com/watch?v=yBThHM2pBbE)
@@ -54,7 +55,7 @@ Appwrite developed a coding course on the [FreeCodeCamp.org](http://FreeCodeCamp
 
 ---
 
-# **Community recognitions**
+# Community recognitions
 
 This month, we’re excited to feature Daniel Veremchuk as part of our Monthly Community Recognitions.
 
@@ -87,7 +88,7 @@ AyeHigh was also recently featured on ProductHunt. [Check them out here](https:/
 - [Read](https://appwrite.io/blog/post/messaging-explained): Messaging explained
 - [Read:](https://appwrite.io/blog/post/how-to-attract-users-to-open-source-project) How to attract contributors and users to your open source project
 
-# **Open source and community updates**
+# Open source and community updates
 
 - [Repository:](https://github.com/ItzNotABug/web-amp) Appwrite Messaging method parameters on JS/Node SDKs by [Darshan](https://github.com/ItzNotABug)
 - [Blog post:](https://devpost.com/software/vrtuhub-ltd) Vrtuhub — a hackathon project built with Appwrite’s backend
