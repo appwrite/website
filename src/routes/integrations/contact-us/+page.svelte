@@ -50,7 +50,7 @@
         submitted = true;
     }
 
-    const title = 'Contact us' + TITLE_SUFFIX;
+    const title = 'Become a Technology Partner' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
@@ -170,7 +170,7 @@
                                                     required
                                                     class="web-input-text"
                                                     type="text"
-                                                    placeholder="Enter name"
+                                                    placeholder="Walter O'Brien"
                                                     id="name"
                                                     bind:value={name}
                                                 />
@@ -183,7 +183,7 @@
                                                     required
                                                     class="web-input-text"
                                                     type="email"
-                                                    placeholder="Enter email"
+                                                    placeholder="walter@appwrite.io"
                                                     id="workEmail"
                                                     bind:value={email}
                                                 />
@@ -196,7 +196,7 @@
                                                     required
                                                     class="web-input-text"
                                                     type="text"
-                                                    placeholder="Enter company name"
+                                                    placeholder="Acme Corp"
                                                     id="companyName"
                                                     bind:value={companyName}
                                                 />
@@ -237,7 +237,7 @@
                                                     required
                                                     class="web-input-text"
                                                     type="url"
-                                                    placeholder="http://company.com"
+                                                    placeholder="https://appwrite.io"
                                                     id="companyWebsite"
                                                     bind:value={companyWebsite}
                                                 />
@@ -289,7 +289,7 @@
                                                         required
                                                         class="web-input-text"
                                                         type="url"
-                                                        placeholder="Enter url"
+                                                        placeholder="https://appwrite.io/docs"
                                                         id="linkToDocumentation"
                                                         bind:value={linkToDocumentation}
                                                     />
@@ -305,7 +305,7 @@
                                                     required
                                                     class="web-input-text"
                                                     type="url"
-                                                    placeholder="Enter url"
+                                                    placeholder="https://appwrite.io/assets"
                                                     id="productUrl"
                                                     bind:value={productUrl}
                                                 />
