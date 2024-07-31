@@ -417,7 +417,7 @@
                     class="web-hero u-flex u-row-gap-16 u-main-center u-cross-center web-u-max-width-580"
                 >
                     <h2
-                        class="web-display u-max-width-500 web-u-text-align-center web-u-color-text-primary"
+                        class="web-display u-max-width-600 web-u-text-align-center web-u-color-text-primary"
                     >
                         Become a technology partner
                     </h2>
