@@ -1,6 +1,6 @@
 ---
 layout: integration
-title: Speech recognition
+title: Speech recognition with Hugging Face
 description: Process speech audio into text
 date: 2024-07-30
 featured: false
