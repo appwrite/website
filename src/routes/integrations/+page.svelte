@@ -206,7 +206,7 @@
                     </aside>
 
                     <section>
-                        <div class="u-flex-vertical u-gap-80">
+                        <div class="u-flex-vertical u-gap-64">
                             {#if hasQuery}
                                 <section
                                     class="l-max-size-list-cards-section u-flex-vertical u-gap-32"
