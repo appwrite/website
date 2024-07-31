@@ -10,8 +10,15 @@
     //import BlobPinkMobile from "$routes/startups/(assets)/blob-pink-mobile.svg";
 
     let email = '';
-    let firstName = '';
-    let subject = '';
+    let name = '';
+    let companyName = '';
+    let companySize = '';
+    let companyWebsite = '';
+    let integrationStatus = '';
+    let linkToDocumentation = '';
+    let productUrl = '';
+    let extraDetails = '';
+    let subject = `Technology Partner Application: ${companyName}`;
     let message = '';
     let hasCreatedIntegration = false;
     let error: string | undefined;
@@ -19,6 +26,8 @@
 
     async function handleSubmit() {
         error = undefined;
+        message = `Name of representative: ${name}\n\nWork Email: ${email}\n\nCompany Name: ${companyName}\n\nCompany Size: ${companySize}\n\nCompany Website: ${companyWebsite}\n\nIntegration status: ${integrationStatus}\n\nLink to Documentation: ${linkToDocumentation}\n\nLink to product/company assets: ${productUrl}\n\nDetails: ${extraDetails}`;
+        
         const response = await fetch('https://growth.appwrite.io/v1/feedback', {
             method: 'POST',
             headers: {
@@ -26,7 +35,7 @@
             },
             body: JSON.stringify({
                 email,
-                firstName,
+                name,
                 subject,
                 message
             })
@@ -86,51 +95,6 @@
                         <div
                             class="u-position-relative u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0"
                         >
-                            <div>
-                                <div
-                                    class="web-u-max-inline-size-none-mobile"
-                                    class:web-u-max-width-380={!submitted}
-                                >
-                                    <section class="u-flex-vertical web-u-gap-20">
-                                        <h4 class="web-display web-u-color-text-primary">
-                                            Become a partner
-                                        </h4>
-                                        <p class="web-description">
-                                            Apply to the Partners Program by filling out this form.
-                                            Our team will reach out to you to confirm your
-                                            application was accepted.
-                                        </p>
-                                    </section>
-                                    <section
-                                        class="u-flex-vertical u-gap-12 u-padding-block-start-40 u-margin-block-start-40 web-u-sep-block-start"
-                                    >
-                                        <h2 class="web-label web-u-color-text-primary">
-                                            Follow us
-                                        </h2>
-                                        <ul class="u-flex u-gap-8">
-                                            {#each socials as social}
-                                                <li>
-                                                    <a
-                                                        href={social.link}
-                                                        class="web-icon-button"
-                                                        aria-label={social.label}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                    >
-                                                        <span
-                                                            class={social.icon}
-                                                            aria-hidden="true"
-                                                        />
-                                                    </a>
-                                                </li>
-                                            {/each}
-                                        </ul>
-                                    </section>
-                                    <div
-                                        class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
-                                    />
-                                </div>
-                            </div>
                             {#if submitted}
                                 <div
                                     class="u-position-relative u-z-index-1 u-flex-vertical u-gap-8 u-text-center web-u-max-width-380 web-u-max-inline-size-none-mobile u-margin-inline-auto"
@@ -158,6 +122,51 @@
                                     >
                                 </div>
                             {:else}
+                                <div>
+                                    <div
+                                        class="web-u-max-inline-size-none-mobile"
+                                        class:web-u-max-width-380={!submitted}
+                                    >
+                                        <section class="u-flex-vertical web-u-gap-20">
+                                            <h4 class="web-display web-u-color-text-primary">
+                                                Become a technology partner
+                                            </h4>
+                                            <p class="web-description">
+                                                Apply to the Technology Partners Program by filling out this form.
+                                                Our team will reach out to you to confirm your
+                                                application was accepted.
+                                            </p>
+                                        </section>
+                                        <section
+                                            class="u-flex-vertical u-gap-12 u-padding-block-start-40 u-margin-block-start-40 web-u-sep-block-start"
+                                        >
+                                            <h2 class="web-label web-u-color-text-primary">
+                                                Follow us
+                                            </h2>
+                                            <ul class="u-flex u-gap-8">
+                                                {#each socials as social}
+                                                    <li>
+                                                        <a
+                                                            href={social.link}
+                                                            class="web-icon-button"
+                                                            aria-label={social.label}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                        >
+                                                            <span
+                                                                class={social.icon}
+                                                                aria-hidden="true"
+                                                            />
+                                                        </a>
+                                                    </li>
+                                                {/each}
+                                            </ul>
+                                        </section>
+                                        <div
+                                            class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
+                                        />
+                                    </div>
+                                </div>
                                 <form
                                     method="post"
                                     on:submit|preventDefault={handleSubmit}
@@ -177,6 +186,7 @@
                                                     type="text"
                                                     placeholder="Enter name"
                                                     id="name"
+                                                    bind:value={name}
                                                 />
                                             </li>
                                             <li class="web-form-item u-flex-vertical u-gap-4">
@@ -189,6 +199,7 @@
                                                     type="email"
                                                     placeholder="Enter email"
                                                     id="workEmail"
+                                                    bind:value={email}
                                                 />
                                             </li>
                                             <li class="web-form-item u-flex-vertical u-gap-4">
@@ -201,6 +212,7 @@
                                                     type="text"
                                                     placeholder="Enter company name"
                                                     id="companyName"
+                                                    bind:value={companyName}
                                                 />
                                             </li>
                                             <li class="web-form-item u-flex-vertical u-gap-4">
@@ -209,7 +221,7 @@
                                                 >
 
                                                 <div class="u-position-relative">
-                                                    <select class="web-input-text" id="companySize">
+                                                    <select class="web-input-text" id="companySize" bind:value={companySize}>
                                                         <option>Select size</option>
                                                         <option>1-10 employees</option>
                                                         <option>11-50 employees</option>
@@ -237,6 +249,7 @@
                                                     type="url"
                                                     placeholder="http://company.com"
                                                     id="companyWebsite"
+                                                    bind:value={companyWebsite}
                                                 />
                                             </li>
                                             <li
@@ -250,6 +263,7 @@
                                                     <select
                                                         class="web-input-text"
                                                         id="integration"
+                                                        bind:value={integrationStatus}
                                                         on:change={(e) =>
                                                             anyify(e.target).value === 'yes'
                                                                 ? (hasCreatedIntegration = true)
@@ -287,6 +301,7 @@
                                                         type="url"
                                                         placeholder="Enter url"
                                                         id="linkToDocumentation"
+                                                        bind:value={linkToDocumentation}
                                                     />
                                                 </li>
                                             {/if}
@@ -302,6 +317,7 @@
                                                     type="url"
                                                     placeholder="Enter url"
                                                     id="productUrl"
+                                                    bind:value={productUrl}
                                                 />
                                             </li>
                                             <li
@@ -315,6 +331,7 @@
                                                     class="web-input-text"
                                                     placeholder="Enter your message"
                                                     id="details"
+                                                    bind:value={extraDetails}
                                                 ></textarea>
                                             </li>
                                         </ul>
