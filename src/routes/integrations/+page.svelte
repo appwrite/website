@@ -8,6 +8,7 @@
     import { writable } from 'svelte/store';
     import { autoHash } from '$lib/actions/autoHash';
     import type { Integration } from './+page';
+    import { goto } from '$app/navigation';
 
     export let data;
 
@@ -142,7 +143,11 @@
                                 </h2>
 
                                 <div class="u-position-relative is-not-desktop">
-                                    <select class="web-input-text" bind:value={activeCategory}>
+                                    <select
+                                        class="web-input-text"
+                                        bind:value={activeCategory}
+                                        on:select={() => goto(`#${activeCategory?.toLowerCase()}`)}
+                                    >
                                         {#each data.categories as category}
                                             {@const integrations = data.integrations.find(
                                                 (i) => i.category === category
@@ -552,6 +557,9 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
         gap: pxToRem(32);
+        @media #{$break1} {
+            gap: 1.25rem;
+        }
     }
     .l-integrations-grid {
         position: relative;
@@ -609,5 +617,16 @@
         inset-block-start: 0;
         inset-inline-start: 0;
         opacity: 0.5;
+    }
+
+    .web-feature-grid {
+        @media #{$break1} {
+            gap: 1rem;
+        }
+    }
+    .web-feature-grid {
+        @media #{$break1} {
+            gap: 1rem;
+        }
     }
 </style>

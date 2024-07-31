@@ -7,7 +7,8 @@
     import { socials } from '$lib/constants';
     import { anyify } from '$lib/utils/anyify';
     //import BlobPink from "$routes/startups/(assets)/blob-pink.svg";
-    //import BlobPinkMobile from "$routes/startups/(assets)/blob-pink-mobile.svg";
+    // import BlobPinkMobile from "$routes/startups/(assets)/blob-pink-mobile.svg";
+    import Pink from './bg.png';
 
     let email = '';
     let firstName = '';
@@ -62,16 +63,7 @@
 </svelte:head>
 
 <div class="u-position-absolute" style="pointer-events:none;">
-    <enhanced:img src="./bg.png" alt="" />
-</div>
-
-<div
-    class="u-position-absolute"
-    style="pointer-events:none"
-    style:z-index="-1"
-    style:right="-625px"
->
-    <enhanced:img src="./blue-bg.png" alt="" />
+    <img src={Pink} alt="" />
 </div>
 
 <Main>
@@ -91,16 +83,35 @@
                                     class="web-u-max-inline-size-none-mobile"
                                     class:web-u-max-width-380={!submitted}
                                 >
-                                    <section class="u-flex-vertical web-u-gap-20">
-                                        <h4 class="web-display web-u-color-text-primary">
-                                            Become a partner
-                                        </h4>
-                                        <p class="web-description">
-                                            Apply to the Partners Program by filling out this form.
-                                            Our team will reach out to you to confirm your
-                                            application was accepted.
-                                        </p>
-                                    </section>
+                                    {#if submitted}
+                                        <section class="u-flex-vertical web-u-gap-20">
+                                            <h1 class="web-display web-u-color-text-primary">
+                                                Thank you for applying
+                                            </h1>
+                                            <p class="web-description web-u-padding-block-end-32">
+                                                Your application has been sent successfully. Our
+                                                team will try to get back to you as soon as
+                                                possible.
+                                            </p>
+                                            <a
+                                                href="/integrations"
+                                                class="web-button is-secondary web-u-margin-block-end-32"
+                                            >
+                                                <span>Back to integrations</span>
+                                            </a>
+                                        </section>
+                                    {:else}
+                                        <section class="u-flex-vertical web-u-gap-20">
+                                            <h4 class="web-display web-u-color-text-primary">
+                                                Become a partner
+                                            </h4>
+                                            <p class="web-description">
+                                                Apply to the Partners Program by filling out this
+                                                form. Our team will reach out to you to confirm your
+                                                application was accepted.
+                                            </p>
+                                        </section>
+                                    {/if}
                                     <section
                                         class="u-flex-vertical u-gap-12 u-padding-block-start-40 u-margin-block-start-40 web-u-sep-block-start"
                                     >
@@ -131,33 +142,7 @@
                                     />
                                 </div>
                             </div>
-                            {#if submitted}
-                                <div
-                                    class="u-position-relative u-z-index-1 u-flex-vertical u-gap-8 u-text-center web-u-max-width-380 web-u-max-inline-size-none-mobile u-margin-inline-auto"
-                                >
-                                    <h6
-                                        class="web-label u-flex u-main-center u-cross-center u-gap-8 e-mobile-fix-1"
-                                    >
-                                        <img
-                                            class="u-flex-shrink-0"
-                                            src="/images/icons/colored/check.svg"
-                                            alt=""
-                                        />
-                                        <span class="web-u-color-text-primary"
-                                            >Thank you for applying</span
-                                        >
-                                    </h6>
-                                    <p class="web-main-body-400">
-                                        Your application has been sent successfully. Our team will
-                                        try to get back to you as soon as possible.
-                                    </p>
-                                    <button
-                                        type="reset"
-                                        class="web-button is-secondary is-full-width-mobile u-block u-margin-inline-auto u-margin-block-start-16"
-                                        >Back to Integrations</button
-                                    >
-                                </div>
-                            {:else}
+                            {#if !submitted}
                                 <form
                                     method="post"
                                     on:submit|preventDefault={handleSubmit}
