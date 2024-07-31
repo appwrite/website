@@ -162,12 +162,12 @@
                     class="web-hero u-flex u-row-gap-16 u-main-center u-cross-center web-u-max-width-580"
                 >
                     <h2
-                        class="web-display u-max-width-500 web-u-text-align-center web-u-color-text-primary"
+                        class="web-display u-max-width-600 web-u-text-align-center web-u-color-text-primary"
                     >
-                        Become a partner
+                        Become a technology partner
                     </h2>
                     <p class="web-main-body-500">
-                        Join our partner program to integrate your solutions with Appwrite’s API,
+                        Join the Technology Partners program to integrate your solutions with Appwrite’s API,
                         enhancing functionality and expanding your reach.
                     </p>
                     <a
