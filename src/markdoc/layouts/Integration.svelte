@@ -39,8 +39,8 @@
 
 <Main>
     <div
-        class="web-u-sep-block-end u-padding-block-end-0"
-        style="background-color:rgba(23, 23, 26, 1);"
+        class="web-u-sep-block-end"
+        style="background-color:rgba(23, 23, 26, 1); margin-block-end: 5rem"
     >
         <div class="web-container">
             <div class="web-integrations-top-section">
@@ -82,68 +82,63 @@
         </div>
     </div>
     <div class="web-big-padding-section-level-1">
-        <div class="web-big-padding-section-level-2">
-            <div class="web-container">
-                <article class="u-flex-vertical web-u-gap-60-not-mobile web-u-gap-40-mobile">
-                    <div class="l-grid-2-1 web-u-row-gap-56 web-u-gap-40-mobile">
-                        <div class="l-grid-content">
-                            <div class="u-flex u-cross-start u-gap-20">
-                                <img
-                                    class="web-author-image"
-                                    src={product.avatar}
-                                    alt="Christy Jacob"
-                                    loading="lazy"
-                                    width="40"
-                                    height="40"
-                                />
-                                <div class="u-flex u-cross-center u-flex-wrap u-gap-16">
-                                    <h1 class="web-title web-u-color-text-primary">{title}</h1>
-                                    <div
-                                        class="web-hero-banner-button"
-                                        style="padding-inline: 0.75rem"
-                                    >
-                                        <!-- <span class="web-icon-star" aria-hidden="true"></span> -->
-                                        <!-- {#if isNew}<span class="web-caption-500">New</span>{/if} -->
-                                        <!-- <div class="web-hero-banner-button-sep"></div> -->
-                                        <span class="web-caption-400 web-u-trim-1">
-                                            Developed by Appwrite
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="web-article">
-                                <div class="web-article-content">
-                                    <slot />
+        <div class="web-container">
+            <article class="u-flex-vertical web-u-gap-60-not-mobile web-u-gap-40-mobile">
+                <div class="l-grid-2-1 web-u-row-gap-56 web-u-gap-40-mobile">
+                    <div class="l-grid-content">
+                        <div class="u-flex u-cross-start u-gap-20">
+                            <img
+                                class="web-author-image"
+                                src={product.avatar}
+                                alt="Christy Jacob"
+                                loading="lazy"
+                                width="40"
+                                height="40"
+                            />
+                            <div class="u-flex u-cross-center u-flex-wrap u-gap-16">
+                                <h1 class="web-title web-u-color-text-primary">{title}</h1>
+                                <div class="web-hero-banner-button" style="padding-inline: 0.75rem">
+                                    <!-- <span class="web-icon-star" aria-hidden="true"></span> -->
+                                    <!-- {#if isNew}<span class="web-caption-500">New</span>{/if} -->
+                                    <!-- <div class="web-hero-banner-button-sep"></div> -->
+                                    <span class="web-caption-400 web-u-trim-1">
+                                        Developed by Appwrite
+                                    </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="l-grid-sidebar">
-                            <dl
-                                class="u-flex-vertical u-gap-20 sidebar-desc"
-                                style:top={$isHeaderHidden ? '4rem' : '9rem'}
-                            >
-                                <div class="u-flex u-main-space-between u-gap-8">
-                                    <dt>Developed by</dt>
-                                    <dd class="web-u-color-text-primary">{product.developer}</dd>
-                                </div>
-                                <div class="web-u-sep-block-end"></div>
-                                {#if isPartner}
-                                    <div class="u-flex u-main-space-between u-gap-8">
-                                        <dt>Partner</dt>
-                                        <dd><div class="web-inline-tag">Verified</div></dd>
-                                    </div>
-                                {/if}
-                                <div class="web-u-sep-block-end"></div>
-                                <div class="u-flex u-main-space-between u-gap-8">
-                                    <dt>Category</dt>
-                                    <dd class="web-u-color-text-primary">{category}</dd>
-                                </div>
-                            </dl>
+
+                        <div class="web-article">
+                            <div class="web-article-content">
+                                <slot />
+                            </div>
                         </div>
                     </div>
-                </article>
-            </div>
+                    <div class="l-grid-sidebar">
+                        <dl
+                            class="u-flex-vertical u-gap-20 sidebar-desc"
+                            style:top={$isHeaderHidden ? '4rem' : '9rem'}
+                        >
+                            <div class="u-flex u-main-space-between u-gap-8">
+                                <dt>Developed by</dt>
+                                <dd class="web-u-color-text-primary">{product.developer}</dd>
+                            </div>
+                            <div class="web-u-sep-block-end"></div>
+                            {#if isPartner}
+                                <div class="u-flex u-main-space-between u-gap-8">
+                                    <dt>Partner</dt>
+                                    <dd><div class="web-inline-tag">Verified</div></dd>
+                                </div>
+                            {/if}
+                            <div class="web-u-sep-block-end"></div>
+                            <div class="u-flex u-main-space-between u-gap-8">
+                                <dt>Category</dt>
+                                <dd class="web-u-color-text-primary">{category}</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+            </article>
         </div>
     </div>
 
@@ -174,7 +169,7 @@
                             Appwrite’s API, enhancing functionality and expanding your reach.
                         </p>
                         <a
-                            href="/integrations/contact-us"
+                            href="/integrations/technology-partner"
                             class="web-button is-primary web-u-cross-child-center u-margin-block-start-16"
                         >
                             <span class="text">Get Started</span>

@@ -264,7 +264,7 @@
                                     </header>
 
                                     <div>
-                                        <ul class="web-feature-grid">
+                                        <ul class="web-feature-grid" style="gap: 1rem">
                                             {#each data.featured as item}
                                                 <li
                                                     class="web-feature-grid-item is-two-columns-desktop-only"
@@ -363,16 +363,17 @@
                                                                             width="32"
                                                                             height="32"
                                                                         />
-                                                                        <h4
-                                                                            class="web-u-color-text-primary"
-                                                                        >
-                                                                            {integration.title}
-                                                                        </h4>
                                                                         <span
                                                                             class="icon-arrow-right u-margin-inline-start-auto"
                                                                             aria-hidden="true"
                                                                         ></span>
                                                                     </div>
+
+                                                                    <h4
+                                                                        class="web-u-color-text-primary u-margin-block-start-12"
+                                                                    >
+                                                                        {integration.title}
+                                                                    </h4>
                                                                     <p
                                                                         class="web-sub-body-400 u-margin-block-start-4"
                                                                     >
@@ -425,7 +426,7 @@
                             Appwrite’s API, enhancing functionality and expanding your reach.
                         </p>
                         <a
-                            href="/integrations/contact-us"
+                            href="/integrations/technology-partner"
                             class="web-button is-primary web-u-cross-child-center u-margin-block-start-16"
                         >
                             <span class="text">Get Started</span>
@@ -568,7 +569,7 @@
     .l-grid-1 {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-        gap: pxToRem(32);
+        gap: 1rem;
         @media #{$break1} {
             gap: 1.25rem;
         }

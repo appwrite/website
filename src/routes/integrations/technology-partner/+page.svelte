@@ -28,8 +28,8 @@
     async function handleSubmit() {
         error = undefined;
         message = `Name of representative: ${name}\n\nWork Email: ${email}\n\nCompany Name: ${companyName}\n\nCompany Size: ${companySize}\n\nCompany Website: ${companyWebsite}\n\nIntegration status: ${integrationStatus}\n\nLink to Documentation: ${linkToDocumentation}\n\nLink to product/company assets: ${productUrl}\n\nDetails: ${extraDetails}`;
-        subject = `Technology Partner Application: ${companyName}`
-        
+        subject = `Technology Partner Application: ${companyName}`;
+
         const response = await fetch('https://growth.appwrite.io/v1/feedback', {
             method: 'POST',
             headers: {
@@ -50,7 +50,7 @@
         submitted = true;
     }
 
-    const title = 'Contact us' + TITLE_SUFFIX;
+    const title = 'Become a Technology Partner' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
@@ -116,9 +116,9 @@
                                                 Become a Technology Partner
                                             </h4>
                                             <p class="web-description">
-                                                Apply to our Technology Partners Program by filling out this
-                                                form. Our team will reach out to you to confirm your
-                                                application was accepted.
+                                                Apply to our Technology Partners Program by filling
+                                                out this form. Our team will reach out to you to
+                                                confirm your application was accepted.
                                             </p>
                                         </section>
                                     {/if}
@@ -170,7 +170,7 @@
                                                     required
                                                     class="web-input-text"
                                                     type="text"
-                                                    placeholder="Enter name"
+                                                    placeholder="Walter O'Brien"
                                                     id="name"
                                                     bind:value={name}
                                                 />
@@ -183,7 +183,7 @@
                                                     required
                                                     class="web-input-text"
                                                     type="email"
-                                                    placeholder="Enter email"
+                                                    placeholder="walterobrien@acmecorp.com"
                                                     id="workEmail"
                                                     bind:value={email}
                                                 />
@@ -196,7 +196,7 @@
                                                     required
                                                     class="web-input-text"
                                                     type="text"
-                                                    placeholder="Enter company name"
+                                                    placeholder="Acme corp."
                                                     id="companyName"
                                                     bind:value={companyName}
                                                 />
@@ -237,7 +237,7 @@
                                                     required
                                                     class="web-input-text"
                                                     type="url"
-                                                    placeholder="http://company.com"
+                                                    placeholder="https://acmecorp.com"
                                                     id="companyWebsite"
                                                     bind:value={companyWebsite}
                                                 />
@@ -289,7 +289,7 @@
                                                         required
                                                         class="web-input-text"
                                                         type="url"
-                                                        placeholder="Enter url"
+                                                        placeholder="https://acmecorp.com/docs"
                                                         id="linkToDocumentation"
                                                         bind:value={linkToDocumentation}
                                                     />
@@ -305,7 +305,7 @@
                                                     required
                                                     class="web-input-text"
                                                     type="url"
-                                                    placeholder="Enter url"
+                                                    placeholder="https://acmecorp.com/assets"
                                                     id="productUrl"
                                                     bind:value={productUrl}
                                                 />
@@ -319,7 +319,7 @@
                                                 <textarea
                                                     required
                                                     class="web-input-text"
-                                                    placeholder="Enter your message"
+                                                    placeholder="Your message"
                                                     id="details"
                                                     bind:value={extraDetails}
                                                 ></textarea>
