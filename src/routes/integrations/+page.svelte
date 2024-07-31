@@ -282,7 +282,7 @@
                                                             <div
                                                                 class="web-user-box-username web-caption-400 web-u-color-text-secondary"
                                                             >
-                                                                {item.description}
+                                                                {item.category}
                                                             </div>
                                                         </div>
                                                     </a>
