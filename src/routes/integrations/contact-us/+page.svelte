@@ -36,7 +36,7 @@
             },
             body: JSON.stringify({
                 email,
-                name,
+                firstName: name,
                 subject,
                 message
             })
