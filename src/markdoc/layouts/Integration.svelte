@@ -95,15 +95,12 @@
                                 width="40"
                                 height="40"
                             />
-                            <div class="u-flex u-cross-center u-flex-wrap u-gap-16">
-                                <h1 class="web-title web-u-color-text-primary">{title}</h1>
-                                <div class="web-hero-banner-button" style="padding-inline: 0.75rem">
-                                    <!-- <span class="web-icon-star" aria-hidden="true"></span> -->
-                                    <!-- {#if isNew}<span class="web-caption-500">New</span>{/if} -->
-                                    <!-- <div class="web-hero-banner-button-sep"></div> -->
-                                    <span class="web-caption-400 web-u-trim-1"> Official </span>
-                                </div>
-                            </div>
+                            <h1
+                                class="web-title web-u-color-text-primary"
+                                style="max-width: 28.15rem;"
+                            >
+                                {title}
+                            </h1>
                         </div>
 
                         <div class="web-article">
@@ -140,7 +137,9 @@
         </div>
     </div>
 
-    <div class="web-big-padding-section-level-1 u-overflow-hidden web-u-sep-block-start">
+    <div
+        class="web-big-padding-section-level-1 u-overflow-hidden web-u-sep-block-start u-margin-block-start-48"
+    >
         <!-- <ProductsGrid /> -->
 
         <div class="web-container">
