@@ -240,7 +240,7 @@
                                 <section class="u-flex-vertical u-gap-32">
                                     <header class="u-flex-vertical u-gap-4">
                                         <h2 class="web-label web-u-color-text-primary">Featured</h2>
-                                        <p class="web-description">Top recommendeded integrations</p>
+                                        <p class="web-description">Top recommended integrations</p>
                                     </header>
 
                                     <div>
@@ -394,10 +394,10 @@
                     <h2
                         class="web-display u-max-width-500 web-u-text-align-center web-u-color-text-primary"
                     >
-                        Become a partner
+                        Become a technology partner
                     </h2>
                     <p class="web-main-body-500">
-                        Join our partner program to integrate your solutions with Appwrite’s API,
+                        Join our technology partner program to integrate your solutions with Appwrite’s API,
                         enhancing functionality and expanding your reach.
                     </p>
                     <a
