@@ -10,7 +10,7 @@ cover: /images/integrations/search-algolia/cover.png
 category: Search
 product: 
     avatar: '/images/integrations/avatars/algolia.png'
-    developer: Appwrite
+    vendor: Algolia
     description: 'Algolia is a search platform that helps you add fast and relevant search capabilities to your app.'
 platform: 
     - 'Self-hosted'

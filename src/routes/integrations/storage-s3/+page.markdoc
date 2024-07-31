@@ -10,7 +10,7 @@ cover: /images/integrations/storage-s3/cover.png
 category: Storage
 product: 
     avatar: '/images/integrations/avatars/aws.png'
-    developer: Appwrite
+    vendor: AWS
     description: 'Amazon S3 is an object storage service that offers industry-leading scalability, data availability, security, and performance.'
 platform: 
     - 'Self-hosted'

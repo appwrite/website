@@ -183,7 +183,7 @@
                                                     required
                                                     class="web-input-text"
                                                     type="email"
-                                                    placeholder="walterobrien@acmecorp.com"
+                                                    placeholder="walter@appwrite.io"
                                                     id="workEmail"
                                                     bind:value={email}
                                                 />
@@ -196,7 +196,7 @@
                                                     required
                                                     class="web-input-text"
                                                     type="text"
-                                                    placeholder="Acme corp."
+                                                    placeholder="Acme Corp"
                                                     id="companyName"
                                                     bind:value={companyName}
                                                 />
@@ -237,7 +237,7 @@
                                                     required
                                                     class="web-input-text"
                                                     type="url"
-                                                    placeholder="https://acmecorp.com"
+                                                    placeholder="https://appwrite.io"
                                                     id="companyWebsite"
                                                     bind:value={companyWebsite}
                                                 />
@@ -289,7 +289,7 @@
                                                         required
                                                         class="web-input-text"
                                                         type="url"
-                                                        placeholder="https://acmecorp.com/docs"
+                                                        placeholder="https://appwrite.io/docs"
                                                         id="linkToDocumentation"
                                                         bind:value={linkToDocumentation}
                                                     />
@@ -305,7 +305,7 @@
                                                     required
                                                     class="web-input-text"
                                                     type="url"
-                                                    placeholder="https://acmecorp.com/assets"
+                                                    placeholder="https://appwrite.io/assets"
                                                     id="productUrl"
                                                     bind:value={productUrl}
                                                 />

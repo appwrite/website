@@ -10,7 +10,7 @@ cover: /images/integrations/push-apns/cover.png
 category: Messaging
 product: 
     avatar: '/images/integrations/avatars/apple.png'
-    developer: Appwrite
+    vendor: Apple
     description: 'Apple Push Notification Service is an Apple platform that enables developers to send notifications to iOS devices, macOS computers, and other Apple devices.'
 platform: 
     - 'Self-hosted'

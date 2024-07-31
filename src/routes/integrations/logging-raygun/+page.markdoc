@@ -10,7 +10,7 @@ cover: /images/integrations/logging-raygun/cover.png
 category: Logging
 product: 
     avatar: '/images/integrations/avatars/raygun.png'
-    developer: Appwrite
+    vendor: Raygun
     description: 'Raygun is an application performance monitoring (APM) and error tracking tool designed for software developers to identify and resolve issues in their applications quickly. It provides real-time insights into software performance, error diagnostics, and user experience, helping teams to detect, diagnose, and fix errors faster. With features like crash reporting, real user monitoring, and deployment tracking, Raygun helps ensure the stability and efficiency of applications.'
 platform: 
     - 'Self-hosted'

@@ -10,7 +10,7 @@ cover: /images/integrations/push-fcm/cover.png
 category: Messaging
 product: 
     avatar: '/images/integrations/avatars/fcm.png'
-    developer: Appwrite
+    vendor: Firebase
     description: 'Firebase Cloud Messaging is a cross-platform messaging solution from Google that enables you to send notifications and messages to users across Android, iOS, and web applications.'
 platform: 
     - 'Self-hosted'
