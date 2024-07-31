@@ -149,37 +149,38 @@
 
     <div class="web-big-padding-section-level-1 u-overflow-hidden web-u-sep-block-start">
         <ProductsGrid />
-        <div class="web-big-padding-section-level-2 u-position-relative">
-            <img
-                src="/images/bgs/pre-footer.png"
-                alt=""
-                class="web-pre-footer-bg"
-                style="z-index:-1"
-            />
 
-            <div class="u-position-relative cta">
-                <section
-                    class="web-hero u-flex u-row-gap-16 u-main-center u-cross-center web-u-max-width-580"
-                >
-                    <h2
-                        class="web-display u-max-width-600 web-u-text-align-center web-u-color-text-primary"
-                    >
-                        Become a Technology Partner
-                    </h2>
-                    <p class="web-main-body-500">
-                        Join our Technology Partners program to integrate your solutions with Appwrite’s API,
-                        enhancing functionality and expanding your reach.
-                    </p>
-                    <a
-                        href="/integrations/contact-us"
-                        class="web-button is-primary web-u-cross-child-center u-margin-block-start-16"
-                    >
-                        <span class="text">Get Started</span>
-                    </a>
-                </section>
-            </div>
-        </div>
         <div class="web-container">
+            <div class="web-big-padding-section-level-2 u-position-relative">
+                <img
+                    src="/images/bgs/pre-footer.png"
+                    alt=""
+                    class="web-pre-footer-bg"
+                    style="z-index:-1"
+                />
+
+                <div class="u-position-relative cta">
+                    <section
+                        class="web-hero u-flex u-row-gap-16 u-main-center u-cross-center web-u-max-width-580"
+                    >
+                        <h2
+                            class="web-display u-max-width-600 web-u-text-align-center web-u-color-text-primary"
+                        >
+                            Become a Technology Partner
+                        </h2>
+                        <p class="web-main-body-500">
+                            Join our Technology Partners program to integrate your solutions with
+                            Appwrite’s API, enhancing functionality and expanding your reach.
+                        </p>
+                        <a
+                            href="/integrations/contact-us"
+                            class="web-button is-primary web-u-cross-child-center u-margin-block-start-16"
+                        >
+                            <span class="text">Get Started</span>
+                        </a>
+                    </section>
+                </div>
+            </div>
             <FooterNav />
             <MainFooter />
         </div>
