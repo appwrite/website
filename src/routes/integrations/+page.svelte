@@ -10,6 +10,7 @@
     import type { Integration } from './+page';
     import { goto } from '$app/navigation';
     import { onDestroy, onMount } from 'svelte';
+    import { browser } from '$app/environment';
 
     export let data;
 
@@ -40,9 +41,13 @@
     // categories
     let activeCategory: string | null = null;
 
-    onMount(() => document.documentElement.setAttribute('data-scroll-smooth', ''));
+    onMount(() => {
+        if (browser) document.documentElement.setAttribute('data-scroll-smooth', '');
+    });
 
-    onDestroy(() => document.documentElement.removeAttribute('data-scroll-smooth'));
+    onDestroy(() => {
+        if (browser) document.documentElement.removeAttribute('data-scroll-smooth');
+    });
 </script>
 
 <svelte:head>
