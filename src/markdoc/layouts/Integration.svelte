@@ -4,7 +4,7 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import ProductsGrid from '$lib/components/ProductsGrid.svelte';
     import { Main } from '$lib/layouts';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import type { Integration } from '$routes/integrations/+page';
     import { isHeaderHidden } from '$lib/layouts/Main.svelte';
 
@@ -148,7 +148,7 @@
     </div>
 
     <div class="web-big-padding-section-level-1 u-overflow-hidden web-u-sep-block-start">
-        <ProductsGrid />
+        <!-- <ProductsGrid /> -->
 
         <div class="web-container">
             <div class="web-big-padding-section-level-2 u-position-relative">
@@ -159,7 +159,8 @@
                     style="z-index:-1"
                 />
 
-                <div class="u-position-relative cta">
+                <!-- <div class="u-position-relative cta"> -->
+                <div class="u-position-relative">
                     <section
                         class="web-hero u-flex u-row-gap-16 u-main-center u-cross-center web-u-max-width-580"
                     >
