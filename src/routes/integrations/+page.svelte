@@ -233,7 +233,7 @@
                                                             <img
                                                                 class="web-user-box-image is-32px"
                                                                 src={item.product.avatar}
-                                                                alt={item.product.developer}
+                                                                alt={item.product.vendor}
                                                                 width="32"
                                                                 height="32"
                                                             />
@@ -281,7 +281,7 @@
                                                             <img
                                                                 class="web-user-box-image"
                                                                 src={item.product.avatar}
-                                                                alt={`Avatar for ${item.product.developer}`}
+                                                                alt={`Avatar for ${item.product.vendor}`}
                                                                 width="40"
                                                                 height="40"
                                                                 style="border-radius: 50%;"
