@@ -1,13 +1,13 @@
 ---
 layout: integration
-title: Version Control with GitHub
-description: Manage versions for your Appwrite Functions on GitHub
+title: Deployments with GitHub
+description: Manage versions and deploy Appwrite Functions
 date: 2024-07-30
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/vcs-github/cover.png
-category: VCS
+cover: /images/integrations/deployments-github/cover.png
+category: Deployments
 product: 
     avatar: '/images/integrations/avatars/github.png'
     developer: Appwrite
@@ -15,9 +15,9 @@ product:
 platform: 
     - 'Self-hosted'
 images: 
-    - /images/integrations/vcs-github/cover.png
-    - /images/integrations/vcs-github/create.png
-    - /images/integrations/vcs-github/installed.png
+    - /images/integrations/deployments-github/cover.png
+    - /images/integrations/deployments-github/create.png
+    - /images/integrations/deployments-github/installed.png
 ---
 
 GitHub is a web-based platform that facilitates version control and collaborative software development using Git. It enables developers to host, review code, manage projects, and work together on software development. GitHub offers tools for issue tracking, project management, and documentation, enhancing team collaboration. It hosts millions of open-source projects from developers across the world.
@@ -37,7 +37,7 @@ To implement the GitHub integration for Appwrite Functions, there are several st
 
 Visit the [Developer Settings on GitHub](https://github.com/settings/apps) to create a new GitHub app. 
 
-![Create new GitHub app](/images/integrations/vcs-github/create.png)
+![Create new GitHub app](/images/integrations/deployments-github/create.png)
 
 Add a GitHub name (keep in mind that this will be publicly displayed), a relevant description, and a homepage URL for your application. Then, add the following URLs:
 
@@ -117,7 +117,7 @@ docker compose exec appwrite vars
 
 To test the provider, go to the **Settings** page in your Appwrite project, navigate to the **Git configuration** section, and add an installation. On successful installation, you should be able to find your app installation in the same section.
 
-![Installed GitHub app](/images/integrations/vcs-github/installed.png)
+![Installed GitHub app](/images/integrations/deployments-github/installed.png)
 
 # Read more about GitHub and Appwrite Functions
 
