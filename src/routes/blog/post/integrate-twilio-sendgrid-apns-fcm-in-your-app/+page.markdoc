@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Integrate Twilio, Sendgrid, APNs and FCM into your Appwrite project"
+title: "Integrate Twilio, SendGrid, APNs and FCM into your Appwrite project"
 description: Which messaging provider should you choose for your app?
 date: 2024-07-30
 cover: /images/blog/integrations-messaging/cover.png
@@ -12,7 +12,7 @@ featured: false
 
 Bringing messaging into your app — emails, push notifications, or SMS — gives your users a direct line to you. It lets you instantly share updates, reminders, special offers, or important info right when your users need it, keeping them engaged. But which messaging provider do you choose, and how do you integrate it?
 
-In this article, we cover the benefits of multiple messaging providers to help you choose the best one for your use case. We will also guide you through integrating Twilio, Sendgrid, APNs, and FCM into your app using Appwrite.
+In this article, we cover the benefits of multiple messaging providers to help you choose the best one for your use case. We will also guide you through integrating Twilio, SendGrid, APNs, and FCM into your app using Appwrite.
 
 # Prerequisites
 
@@ -58,15 +58,15 @@ In your **Messaging** tab, you can now create a new message. Pick your users ([s
 
 Visit the [docs](https://appwrite.io/docs/products/messaging/twilio) for a more detailed tutorial or get started with Twilio right away on the [integrations page.](https://appwrite.io/integrations)
 
-# Sendgrid
+# SendGrid
 
-Sendgrid is a reliable email delivery service that helps businesses send emails quickly and efficiently. Sendgrid promises a 99% deliverability rate and ensures your emails land in the inbox, not the spam folder, which is crucial for maintaining good communication with your customers.
+SendGrid is a reliable email delivery service that helps businesses send emails quickly and efficiently. SendGrid promises a 99% deliverability rate and ensures your emails land in the inbox, not the spam folder, which is crucial for maintaining good communication with your customers.
 
-**Benefits of using Sendgrid:**
+**Benefits of using SendGrid:**
 
-- **High deliverability:** Sendgrid ensures your emails get delivered to the inbox, improving engagement rates.
+- **High deliverability:** SendGrid ensures your emails get delivered to the inbox, improving engagement rates.
 - **Detailed analytics:** Gain insights into email performance with analytics and reporting.
-- **Scalability:** Whether you're sending a few emails or millions, Sendgrid scales to meet your needs.
+- **Scalability:** Whether you're sending a few emails or millions, SendGrid scales to meet your needs.
 
 **Best use cases:**
 
@@ -74,27 +74,27 @@ Sendgrid is a reliable email delivery service that helps businesses send emails 
 - **Promotional emails:** Drive sales and engagement with targeted marketing campaigns.
 - **Transactional emails:** Send important notifications like order confirmations, shipping updates, and password resets.
 
-# How to integrate Sendgrid into your app
+# How to integrate SendGrid into your app
 
-Follow these simple steps to integrate Sendgrid into your Appwrite project.
+Follow these simple steps to integrate SendGrid into your Appwrite project.
 
-## Step 1: Sign up on Sendgrid
+## Step 1: Sign up on SendGrid
 
-First, [sign up for a Sendgrid account](https://signup.sendgrid.com/) and complete the setup. Then, [create an API key](https://www.twilio.com/docs/sendgrid/ui/account-and-settings/api-keys) with full access and save it for future use. Next, follow Sendgrid's [Domain Authentication](https://www.twilio.com/docs/sendgrid/ui/account-and-settings/how-to-set-up-domain-authentication) guide to authenticate your domain. If you don’t have a domain, use their [Single Sender Verification](https://www.twilio.com/docs/sendgrid/ui/sending-email/sender-verification) process to verify your sender identity.
+First, [sign up for a SendGrid account](https://signup.sendgrid.com/) and complete the setup. Then, [create an API key](https://www.twilio.com/docs/sendgrid/ui/account-and-settings/api-keys) with full access and save it for future use. Next, follow SendGrid's [Domain Authentication](https://www.twilio.com/docs/sendgrid/ui/account-and-settings/how-to-set-up-domain-authentication) guide to authenticate your domain. If you don’t have a domain, use their [Single Sender Verification](https://www.twilio.com/docs/sendgrid/ui/sending-email/sender-verification) process to verify your sender identity.
 
-## Step 2: Add Sendgrid provider to your Appwrite project
+## Step 2: Add SendGrid provider to your Appwrite project
 
-In your Appwrite project, go to **Messaging** > **Providers** > **Create a provider** > **Email.** Name your provider and choose Sendgrid. In the next page, you get to enter the API Key, the email address and customize the sender name, reply-to email and name.
+In your Appwrite project, go to **Messaging** > **Providers** > **Create a provider** > **Email.** Name your provider and choose SendGrid. In the next page, you get to enter the API Key, the email address and customize the sender name, reply-to email and name.
 
-![Sendgrid messaging integration](/images/blog/integrations-messaging/2.png)
+![SendGrid messaging integration](/images/blog/integrations-messaging/2.png)
 
-## Step 3: Test the Sendgrid provider
+## Step 3: Test the SendGrid provider
 
 Make sure you have at least one [topic](https://appwrite.io/docs/products/messaging/topics) or [target](https://appwrite.io/docs/products/messaging/targets) set up before testing.
 
 Once the provider is configured, head to **Messages** > **Create an email message**. Enter the text, choose the recipients, and set the delivery time for your message. That’s it — you can now send emails to your users!
 
-Visit the [docs](https://appwrite.io/docs/products/messaging/sendgrid) for a more detailed tutorial or start with Sendgrid in the [Integrations Catalog.](https://appwrite.io/integrations)
+Visit the [docs](https://appwrite.io/docs/products/messaging/sendgrid) for a more detailed tutorial or start with SendGrid in the [Integrations Catalog.](https://appwrite.io/integrations)
 
 # APNs
 
