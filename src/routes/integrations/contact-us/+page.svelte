@@ -11,8 +11,15 @@
     import Pink from './bg.png';
 
     let email = '';
-    let firstName = '';
-    let subject = '';
+    let name = '';
+    let companyName = '';
+    let companySize = '';
+    let companyWebsite = '';
+    let integrationStatus = '';
+    let linkToDocumentation = '';
+    let productUrl = '';
+    let extraDetails = '';
+    let subject = `Technology Partner Application: ${companyName}`;
     let message = '';
     let hasCreatedIntegration = false;
     let error: string | undefined;
@@ -20,6 +27,8 @@
 
     async function handleSubmit() {
         error = undefined;
+        message = `Name of representative: ${name}\n\nWork Email: ${email}\n\nCompany Name: ${companyName}\n\nCompany Size: ${companySize}\n\nCompany Website: ${companyWebsite}\n\nIntegration status: ${integrationStatus}\n\nLink to Documentation: ${linkToDocumentation}\n\nLink to product/company assets: ${productUrl}\n\nDetails: ${extraDetails}`;
+        
         const response = await fetch('https://growth.appwrite.io/v1/feedback', {
             method: 'POST',
             headers: {
@@ -27,7 +36,7 @@
             },
             body: JSON.stringify({
                 email,
-                firstName,
+                name,
                 subject,
                 message
             })
@@ -162,6 +171,7 @@
                                                     type="text"
                                                     placeholder="Enter name"
                                                     id="name"
+                                                    bind:value={name}
                                                 />
                                             </li>
                                             <li class="web-form-item u-flex-vertical u-gap-4">
@@ -174,6 +184,7 @@
                                                     type="email"
                                                     placeholder="Enter email"
                                                     id="workEmail"
+                                                    bind:value={email}
                                                 />
                                             </li>
                                             <li class="web-form-item u-flex-vertical u-gap-4">
@@ -186,6 +197,7 @@
                                                     type="text"
                                                     placeholder="Enter company name"
                                                     id="companyName"
+                                                    bind:value={companyName}
                                                 />
                                             </li>
                                             <li class="web-form-item u-flex-vertical u-gap-4">
@@ -194,7 +206,7 @@
                                                 >
 
                                                 <div class="u-position-relative">
-                                                    <select class="web-input-text" id="companySize">
+                                                    <select class="web-input-text" id="companySize" bind:value={companySize}>
                                                         <option>Select size</option>
                                                         <option>1-10 employees</option>
                                                         <option>11-50 employees</option>
@@ -222,6 +234,7 @@
                                                     type="url"
                                                     placeholder="http://company.com"
                                                     id="companyWebsite"
+                                                    bind:value={companyWebsite}
                                                 />
                                             </li>
                                             <li
@@ -235,6 +248,7 @@
                                                     <select
                                                         class="web-input-text"
                                                         id="integration"
+                                                        bind:value={integrationStatus}
                                                         on:change={(e) =>
                                                             anyify(e.target).value === 'yes'
                                                                 ? (hasCreatedIntegration = true)
@@ -272,6 +286,7 @@
                                                         type="url"
                                                         placeholder="Enter url"
                                                         id="linkToDocumentation"
+                                                        bind:value={linkToDocumentation}
                                                     />
                                                 </li>
                                             {/if}
@@ -287,6 +302,7 @@
                                                     type="url"
                                                     placeholder="Enter url"
                                                     id="productUrl"
+                                                    bind:value={productUrl}
                                                 />
                                             </li>
                                             <li
@@ -300,6 +316,7 @@
                                                     class="web-input-text"
                                                     placeholder="Enter your message"
                                                     id="details"
+                                                    bind:value={extraDetails}
                                                 ></textarea>
                                             </li>
                                         </ul>
