@@ -20,15 +20,15 @@ export type Integration = {
 };
 
 const categoryDescriptions = Object.entries({
-    ai: 'Enhance your applications with machine learning and artificial intelligence capabilities, from natural language processing to speech recognition',
-    auth: 'Securely manage user authentication and authorization with integrations for various identity providers and protocols',
-    databases: 'Connect and manage various database systems to efficiently store, retrieve, and manipulate your application\'s data',
-    logging: 'Implement logging systems to monitor, record, and analyze application performance and errors',
-    messaging: 'Integrate communication platforms for real-time messaging, notifications, and collaboration within your applications',
-    payments: 'Facilitate online transactions with payment gateway integrations for seamless and secure payment processing',
-    search: 'Enable powerful search functionalities within your applications to find and retrieve relevant information quickly',
-    storage: 'Utilize scalable storage solutions for saving and managing application data, files, and media',
-    vcs: 'Integrate with version control systems to streamline code management, collaboration, and deployment processes',
+    ai: 'Machine learning and AI capabilities',
+    auth: 'User authentication and authorization',
+    databases: 'Manage database systems',
+    logging: 'Monitor and analyze application logs',
+    messaging: 'Real-time communication platforms',
+    payments: 'Secure online payment processing',
+    search: 'Implement search functionalities',
+    storage: 'Storage for data and media',
+    vcs: 'Integrate version control for code management',
 });
 
 export const load = () => {
