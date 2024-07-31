@@ -10,7 +10,7 @@ cover: /images/integrations/oauth-apple/cover.png
 category: Auth
 product: 
     avatar: '/images/integrations/avatars/apple.png'
-    developer: Appwrite
+    vendor: Apple
     description: 'An Apple ID is a unique account that allows access to Apple services, including the App Store, iCloud, iTunes, Apple Music, and more.'
 platform: 
     - 'Self-hosted'

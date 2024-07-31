@@ -10,7 +10,7 @@ cover: /images/integrations/deployments-github/cover.png
 category: Deployments
 product: 
     avatar: '/images/integrations/avatars/github.png'
-    developer: Appwrite
+    vendor: GitHub
     description: 'GitHub is a web-based platform that facilitates version control and collaborative software development using Git.'
 platform: 
     - 'Self-hosted'

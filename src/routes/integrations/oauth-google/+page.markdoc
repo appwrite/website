@@ -10,7 +10,7 @@ cover: /images/integrations/oauth-google/cover.png
 category: Auth
 product: 
     avatar: '/images/integrations/avatars/google.png'
-    developer: Appwrite
+    vendor: Google
     description: 'Google Workspace is a comprehensive suite of cloud-based productivity and collaboration tools developed by Google.'
 platform: 
     - 'Self-hosted'

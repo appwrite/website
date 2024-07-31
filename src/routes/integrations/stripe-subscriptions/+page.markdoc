@@ -10,7 +10,7 @@ cover: /images/integrations/stripe-subscriptions/cover.png
 category: Payments
 product: 
     avatar: '/images/integrations/avatars/stripe.png'
-    developer: Appwrite
+    vendor: Stripe
     description: 'Stripe is an online payment processing platform that allows businesses to accept online payments securely and efficiently.'
 platform: 
     - 'Self-hosted'
