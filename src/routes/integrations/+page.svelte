@@ -8,6 +8,7 @@
     import { writable } from 'svelte/store';
     import { autoHash } from '$lib/actions/autoHash';
     import type { Integration } from './+page';
+    import { goto } from '$app/navigation';
 
     export let data;
 
@@ -36,7 +37,7 @@
     let activePlatform = 'All';
 
     // categories
-    let activeCategory = '';
+    let activeCategory: string | null = null;
 </script>
 
 <svelte:head>
@@ -141,14 +142,23 @@
                                     Categories
                                 </h2>
 
-                                <div class="u-position-relative is-only-tablet">
-                                    <select class="web-input-text" bind:value={activeCategory}>
-                                        <option disabled selected>Select</option>
+                                <div class="u-position-relative is-not-desktop">
+                                    <select
+                                        class="web-input-text"
+                                        bind:value={activeCategory}
+                                        on:select={() => goto(`#${activeCategory?.toLowerCase()}`)}
+                                    >
                                         {#each data.categories as category}
-                                            <option value={category.toLowerCase()}>
-                                                {category}
-                                            </option>
+                                            {@const integrations = data.integrations.find(
+                                                (i) => i.category === category
+                                            )}
+                                            {#if integrations && (activePlatform === 'All' || integrations.integrations.some( (i) => i.platform.includes(activePlatform) ))}
+                                                <option value={category.toLowerCase()}>
+                                                    {category}
+                                                </option>
+                                            {/if}
                                         {/each}
+                                        <option value={null}> Select category </option>
                                     </select>
                                     <span
                                         class="icon-cheveron-down u-position-absolute u-inset-inline-end-8 u-inset-block-start-8 web-u-pointer-events-none"
@@ -264,20 +274,23 @@
                                                                 alt={`Avatar for ${item.product.developer}`}
                                                                 width="40"
                                                                 height="40"
+                                                                style="border-radius: 50%;"
                                                             />
                                                             <div
                                                                 class="web-user-box-name web-main-body-500 u-flex u-gap-8"
                                                             >
                                                                 <span
                                                                     class="web-u-color-text-primary"
-                                                                    >{item.title}</span
                                                                 >
-                                                                {#if item.isNew}
+                                                                    {item.title}
+                                                                </span>
+                                                                <!-- {#if item.isNew}
                                                                     <span
                                                                         class="web-inline-tag is-pink"
-                                                                        >New</span
                                                                     >
-                                                                {/if}
+                                                                        New
+                                                                    </span>
+                                                                {/if} -->
                                                             </div>
                                                             <div
                                                                 class="web-user-box-username web-caption-400 web-u-color-text-secondary"
@@ -397,8 +410,8 @@
                         Become a technology partner
                     </h2>
                     <p class="web-main-body-500">
-                        Join our technology partner program to integrate your solutions with Appwrite’s API,
-                        enhancing functionality and expanding your reach.
+                        Join our technology partner program to integrate your solutions with
+                        Appwrite’s API, enhancing functionality and expanding your reach.
                     </p>
                     <a
                         href="/integrations/contact-us"
@@ -544,6 +557,9 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
         gap: pxToRem(32);
+        @media #{$break1} {
+            gap: 1.25rem;
+        }
     }
     .l-integrations-grid {
         position: relative;
@@ -601,5 +617,16 @@
         inset-block-start: 0;
         inset-inline-start: 0;
         opacity: 0.5;
+    }
+
+    .web-feature-grid {
+        @media #{$break1} {
+            gap: 1rem;
+        }
+    }
+    .web-feature-grid {
+        @media #{$break1} {
+            gap: 1rem;
+        }
     }
 </style>
