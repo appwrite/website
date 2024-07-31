@@ -185,12 +185,14 @@
                                                 For scaling teams and agencies that need dedicated
                                                 support.
                                             </p>
-                                            <button
+                                            <a
+                                                href="https://cloud.appwrite.io/console?type=createScale"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
                                                 class="web-button is-secondary is-full-width u-margin-block-start-32"
-                                                disabled
                                             >
-                                                <span class="web-sub-body-500">Coming soon</span>
-                                            </button>
+                                                <span class="web-sub-body-500">Start building</span>
+                                            </a>
                                         </header>
                                         <div class="web-pricing-cards-content">
                                             <p>Everything in Pro, plus:</p>
@@ -230,9 +232,8 @@
                                             </p>
                                             <button
                                                 class="web-button is-secondary is-full-width u-margin-block-start-32"
-                                                disabled
                                             >
-                                                <span class="web-sub-body-500">Coming soon</span>
+                                                <span class="web-sub-body-500">Contact us</span>
                                             </button>
                                         </header>
                                         <div class="web-pricing-cards-content">
@@ -346,8 +347,8 @@
     }
 
     .web-pricing-cards-list .web-main-body-500 {
-      height: 78px;
-      --p-font-size: unset !important;
-      --p-line-height: var(--web-line-height-sm);
+        height: 78px;
+        --p-font-size: unset !important;
+        --p-line-height: var(--web-line-height-sm);
     }
 </style>
