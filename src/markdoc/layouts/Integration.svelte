@@ -101,9 +101,7 @@
                                     <!-- <span class="web-icon-star" aria-hidden="true"></span> -->
                                     <!-- {#if isNew}<span class="web-caption-500">New</span>{/if} -->
                                     <!-- <div class="web-hero-banner-button-sep"></div> -->
-                                    <span class="web-caption-400 web-u-trim-1">
-                                        Developed by Appwrite
-                                    </span>
+                                    <span class="web-caption-400 web-u-trim-1"> Official </span>
                                 </div>
                             </div>
                         </div>
