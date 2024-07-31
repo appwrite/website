@@ -458,7 +458,7 @@
                         </div>
                         <div class="web-mini-card">
                             <div
-                                class="u-flex u-cross-center u-gap-32 u-flex-wrap u-main-space-between"
+                                class="u-flex u-cross-center u-gap-32 u-main-space-between"
                             >
                                 <h4 class="web-label web-u-color-text-primary">Free</h4>
                                 <a
@@ -471,7 +471,7 @@
                         </div>
                         <div class="web-mini-card">
                             <div
-                                class="u-flex u-cross-center u-gap-32 u-flex-wrap u-main-space-between"
+                                class="u-flex u-cross-center u-gap-32 u-main-space-between"
                             >
                                 <h4 class="web-label web-u-color-text-primary">Pro</h4>
                                 <a
@@ -487,22 +487,30 @@
                         </div>
                         <div class="web-mini-card">
                             <div
-                                class="u-flex u-cross-center u-gap-32 u-flex-wrap u-main-space-between"
+                                class="u-flex u-cross-center u-gap-32 u-main-space-between"
                             >
                                 <h4 class="web-label web-u-color-text-primary">Scale</h4>
-                                <button class="web-button is-secondary" disabled>
-                                    <span class="web-sub-body-500">Coming soon</span>
-                                </button>
+                                <a
+                                    class="web-button is-secondary"
+                                    href="https://cloud.appwrite.io/console?type=createScale"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <span class="web-sub-body-500">Start now</span>
+                                </a>
                             </div>
                         </div>
                         <div class="web-mini-card">
                             <div
-                                class="u-flex u-cross-center u-gap-32 u-flex-wrap u-main-space-between"
+                                class="u-flex u-cross-center u-gap-32 u-main-space-between"
                             >
                                 <h4 class="web-label web-u-color-text-primary">Enterprise</h4>
-                                <button class="web-button is-secondary" disabled>
+                                <a
+                                    class="web-button is-secondary"
+                                    href="/contact-us"
+                                >
                                     <span class="web-sub-body-500">Contact</span>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -576,5 +584,23 @@
 <style>
     .web-u-grid-auto-column-1fr {
         grid-template-columns: 1fr;
+        grid-auto-columns: max-content;
+    }
+
+    .web-label {
+        font-size: var(--web-font-size-large);
+    }
+
+    @media (min-width: 1024px) and (max-width: 1204px){
+        .web-description:nth-child(2) {
+            padding-inline-start: 6rem;
+        }
+    }
+
+    @media (min-width: 1204px) {
+        .web-u-grid-auto-column-1fr {
+            grid-auto-columns: max-content;
+            grid-template-columns: repeat(2, 1fr);
+        }
     }
 </style>
