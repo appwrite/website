@@ -113,10 +113,10 @@
                                     {:else}
                                         <section class="u-flex-vertical web-u-gap-20">
                                             <h4 class="web-display web-u-color-text-primary">
-                                                Become a partner
+                                                Become a technology partner
                                             </h4>
                                             <p class="web-description">
-                                                Apply to the Partners Program by filling out this
+                                                Apply to the Technology Partners Program by filling out this
                                                 form. Our team will reach out to you to confirm your
                                                 application was accepted.
                                             </p>
