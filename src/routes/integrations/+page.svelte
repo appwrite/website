@@ -410,7 +410,7 @@
                         Become a technology partner
                     </h2>
                     <p class="web-main-body-500">
-                        Join our technology partner program to integrate your solutions with
+                        Join our Technology Partners program to integrate your solutions with
                         Appwrite’s API, enhancing functionality and expanding your reach.
                     </p>
                     <a
