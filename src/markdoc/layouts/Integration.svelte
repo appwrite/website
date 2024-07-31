@@ -120,8 +120,8 @@
                             style:top={$isHeaderHidden ? '4rem' : '9rem'}
                         >
                             <div class="u-flex u-main-space-between u-gap-8">
-                                <dt>Developed by</dt>
-                                <dd class="web-u-color-text-primary">{product.developer}</dd>
+                                <dt>Vendor</dt>
+                                <dd class="web-u-color-text-primary">{product.vendor}</dd>
                             </div>
                             <div class="web-u-sep-block-end"></div>
                             {#if isPartner}

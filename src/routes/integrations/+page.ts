@@ -12,7 +12,7 @@ export type Integration = {
     category: string;
     product: {
         avatar: string;
-        developer: string;
+        vendor: string;
         description: string;
     };
     href: string;
