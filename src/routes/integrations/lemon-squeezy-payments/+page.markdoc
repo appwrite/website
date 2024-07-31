@@ -10,7 +10,7 @@ cover: /images/integrations/lemon-squeezy-payments/cover.png
 category: Payments
 product: 
     avatar: '/images/integrations/avatars/lemon-squeezy.png'
-    developer: Appwrite
+    vendor: Lemon Squeezy
     description: 'Lemon Squeezy is a platform designed to simplify the process of selling digital products online.'
 platform: 
     - 'Self-hosted'

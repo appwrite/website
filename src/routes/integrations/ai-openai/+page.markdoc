@@ -10,7 +10,7 @@ cover: /images/integrations/ai-openai/cover.png
 category: AI
 product: 
     avatar: '/images/integrations/avatars/openai.png'
-    developer: Appwrite
+    vendor: OpenAI
     description: 'The OpenAI API allows you to integrate advanced AI models into your app.'
 platform: 
     - 'Self-hosted'

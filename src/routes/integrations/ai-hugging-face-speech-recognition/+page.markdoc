@@ -10,7 +10,7 @@ cover: /images/integrations/ai-hugging-face-speech-recognition/cover.png
 category: AI
 product: 
     avatar: '/images/integrations/avatars/hugging-face.png'
-    developer: Appwrite
+    vendor: Hugging Face
     description: 'Hugging Face is a leading AI company that offers an extensive library of pre-trained models for various natural language processing and computer vision tasks, including image classification.'
 platform: 
     - 'Self-hosted'

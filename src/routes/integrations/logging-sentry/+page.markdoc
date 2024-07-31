@@ -10,7 +10,7 @@ cover: /images/integrations/logging-sentry/cover.png
 category: Logging
 product: 
     avatar: '/images/integrations/avatars/sentry.png'
-    developer: Appwrite
+    vendor: Sentry
     description: 'Sentry is an open-source error-tracking and performance-monitoring tool designed to help developers identify, diagnose, and fix issues in real-time.'
 platform: 
     - 'Self-hosted'

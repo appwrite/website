@@ -10,7 +10,7 @@ cover: /images/integrations/ai-perplexity/cover.png
 category: AI
 product: 
     avatar: '/images/integrations/avatars/perplexity.png'
-    developer: Appwrite
+    vendor: Perplexity
     description: 'Perplexity is an advanced AI tool that generates high-quality text based on given prompts.'
 platform: 
     - 'Self-hosted'
