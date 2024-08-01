@@ -24,7 +24,7 @@ We’ve bundled all integrations into different categories. Here are a few notab
 
 - GitHub
 
-We've integrated GitHub to synchronize your Appwrite projects and streamline your development workflow. This integration enables the generation of repositories for function templates and manages automatic deployments for any Appwrite Functions through GitHub.
+We've integrated GitHub to simplify your development workflow with Appwrite Functions. This integration enables the generation of repositories for function templates and manages automatic deployments for any Appwrite Functions through GitHub.
 
 ## Authentication
 
