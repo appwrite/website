@@ -20,25 +20,23 @@ You’re building your next big project on top of Appwrite; your backend is all 
 
 We’ve bundled all integrations into different categories. Here are a few notable providers (with many more to come!). Check out the full catalog on the Integrations page. 
 
-## Version control
-
-- GitHub
-
-We've integrated GitHub to simplify your development workflow with Appwrite Functions. This integration enables the generation of repositories for function templates and manages automatic deployments for any Appwrite Functions through GitHub.
-
 ## Authentication
 
-- OAuth2
+- [Phone auth](https://appwrite.io/docs/products/auth/phone-sms)
+
+Phone auth allows you to authenticate users using One-Time Passwords (OTPs) sent to their mobile phones via SMS, making it a highly-convenient passwordless alternative to email-password authentication. You can use Twilio to enable phone authentication for your apps.
+
+- [OAuth2](https://appwrite.io/docs/products/auth/oauth2)
 
 You can set up OAuth2 with over 30 providers. OAuth is a way for apps to request limited access to a user's account on another service without needing the user's password. This keeps the user’s account more secure while making signing up and logging in all the more convenient. 
 
-Some of Appwrite’s OAuth integrations include:
+Some of Appwrite’s OAuth integrations include Amazon, Appwrite, Discord, Google, and Notion.
 
-- Amazon
-- Apple
-- Discord
-- Google
-- Notion
+## Deployments
+
+- [GitHub](https://appwrite.io/docs/advanced/self-hosting/functions)
+
+We've integrated GitHub to simplify your development workflow with Appwrite Functions. This integration enables the generation of repositories for function templates and manages automatic deployments for any Appwrite Functions through GitHub.
 
 ## Messaging
 
@@ -60,11 +58,13 @@ Going one step further? Use Vonage to send WhatsApp messages and connect with yo
 
 ## Storage
 
+- Amazon S3
+
 Store your files on self-hosted instances with Amazon S3. Amazon S3 provides scalable object storage that allows you to manage and access your data seamlessly, ensuring high availability and durability.
 
-## Monitoring and debugging
+## Logging
 
-Monitor your app's performance, trace errors, and fix your app faster. These tools help you proactively manage issues, optimize performance, and deliver a smoother user experience:
+Monitor your application's performance by tracing errors across your Appwrite instance and fixing them faster. These tools help you proactively manage issues and deliver a more stable experience: 
 
 - Sentry
 - Raygun
@@ -72,9 +72,9 @@ Monitor your app's performance, trace errors, and fix your app faster. These too
 
 ## AI
 
-- Hugging Face and GenAI for AI
+- Hugging Face and Generative AI
 
-Enhance your app with AI through Appwrite's integrations. Build [with our AI function templates](https://appwrite.io/blog/post/building-with-ai-function-templates) from top tools like Hugging Face, OpenAI, Perplexity, and more. Imagine creating [your very own AI chatbot](https://appwrite.io/blog/post/personal-chatbot-gpt-4o) with OpenAI’s GPT-4o — it's easier than you think!
+Enhance your app with AI through Appwrite's integrations. Build [with our AI function templates](https://appwrite.io/blog/post/building-with-ai-function-templates) from popular tools like Hugging Face, OpenAI, Perplexity, and more. Imagine creating [your very own AI chatbot](https://appwrite.io/blog/post/personal-chatbot-gpt-4o) with OpenAI’s GPT-4o — it's easier than you think!
 
 ## Payments
 
@@ -88,11 +88,13 @@ Lemon Squeezy lets you set up payments and subscriptions quickly, so you can foc
 
 ## Databases
 
-- MongoDB Atlas and Upstash Vector for Query
+- MongoDB Atlas and Upstash Vector
 
-Easily search and manage your data using MongoDB Atlas and Upstash Vector integration. MongoDB Atlas offers a flexible database solution, and Upstash Vector improves query capabilities for fast and reliable data access. Together, they help you manage data efficiently and boost your app’s performance.
+Easily manage your data using MongoDB Atlas and Upstash Vector integration. MongoDB Atlas offers a flexible database solution, and Upstash Vector improves query capabilities for fast and reliable data access. Together, they help you manage data efficiently and boost your app’s performance.
 
-- Algolia for Search
+## Search
+
+- Algolia
 
 Improve your app’s search functionality with the Algolia integration. Algolia makes it straightforward to integrate practical search features, helping users easily find the information they need without hassle.
 
@@ -121,7 +123,7 @@ With the launch of our Integrations Catalog, we’re also inviting developers an
 
 # How to apply
 
-Do you think your tool plays well with Appwrite? Visit our [Integrations Catalog contact page](https://appwrite.io/integrations/contact-us) and fill out the submission form. Tell us about your company, the integration you’re proposing, and how it benefits developers using Appwrite. Our team will review your submission and get back to you with the next steps.
+Do you think your tool plays well with Appwrite? Visit our [Integrations Catalog Technology partners page](https://appwrite.io/integrations/technology-partner) and fill out the submission form. Tell us about your company, the integration you’re proposing, and how it benefits developers using Appwrite. Our team will review your submission and get back to you with the next steps.
 
 # More to come
 
