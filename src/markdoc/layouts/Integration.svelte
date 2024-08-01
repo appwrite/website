@@ -15,9 +15,11 @@
     export let product: Integration['product'];
     export let category: Integration['category'];
     export let description: Integration['description'];
+    export let cover: Integration['cover'];
 
     //const title = 'Integrations' + TITLE_SUFFIX;
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    //const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + cover;
 </script>
 
 <svelte:head>
