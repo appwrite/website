@@ -71,7 +71,8 @@
                 <header class="web-grid-120-1fr-auto-header">
                     <h1 class="web-title web-u-color-text-primary">{title}</h1>
                 </header>
-                <div class="web-is-only-mobile" style={showToc ? 'padding-block-end: 1.5rem;' : ''}>
+                <div class="web-is-only-mobile mobile-header"
+                     style={showToc ? 'padding-block-end: 1.5rem;' : ''}>
                     <button
                     class="toc-btn u-position-sticky u-main-space-between u-cross-center
                 web-u-padding-20 web-u-margin-inline-20-negative web-u-color-text-primary web-is-only-mobile
@@ -116,5 +117,14 @@
     .toc-btn {
         display: flex;
         transition: translate 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-header {
+        top: 0;
+        z-index: 1200;
+        position: sticky;
+        //background: hsl(var(--p-body-bg-color));
+      }
     }
 </style>
