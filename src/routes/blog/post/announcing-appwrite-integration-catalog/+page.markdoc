@@ -76,9 +76,9 @@ Enhance your app with AI through Appwrite's integrations. Build [with our AI fun
 
 ## Payments
 
-- [Stripe](https://appwrite.io/docs/tutorials/subscriptions-with-stripe/step-1)
+- Stripe
 
-Use Stripe to set up app subscriptions and payments. It's designed to be straightforward so you can smoothly manage your transactions.
+Use Stripe to set up app [subscriptions](https://appwrite.io/docs/tutorials/subscriptions-with-stripe/step-1) and payments. It's designed to be straightforward so you can smoothly manage your transactions.
 
 - Lemon Squeezy
 
