@@ -30,7 +30,9 @@ We've integrated GitHub to simplify your development workflow with Appwrite Func
 
 - OAuth2
 
-You can set up OAuth2 with over 30 providers. OAuth is a way for apps to request limited access to a user's account on another service without needing the user's password. This keeps the user’s account more secure while making signing up and logging in all the more convenient. Some of Appwrite’s OAuth integrations include:
+You can set up OAuth2 with over 30 providers. OAuth is a way for apps to request limited access to a user's account on another service without needing the user's password. This keeps the user’s account more secure while making signing up and logging in all the more convenient. 
+
+Some of Appwrite’s OAuth integrations include:
 
 - Amazon
 - Apple
