@@ -100,7 +100,7 @@ Improve your app’s search functionality with the Algolia integration. Algolia 
 
 # Designed with your experience in mind
 
-As with everything we do here at Appwrite, we heavily focus on the developer experience. Our main goal with the Integration Catalog is to meet your needs when integrating X with Appwrite. We focussed on a set of principles that helped us deliver on our promise:
+As with everything we do here at Appwrite, we heavily focus on the developer experience. Our main goal with the Integration Catalog is to meet your needs when integrating X with Appwrite. We focused on a set of principles that helped us deliver on our promise:
 
 1. Appwrite developers need quick access to integration options, including everything provided in the console and future integrations.
 2. Categories should group integrations, and a consistent hierarchy of information should exist on every page.
