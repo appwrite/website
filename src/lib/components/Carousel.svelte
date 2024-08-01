@@ -108,7 +108,11 @@
 
         &::after {
             right: 0;
-            background: linear-gradient(to left, hsl(var(--web-color-background-docs)), transparent);
+            background: linear-gradient(
+                to left,
+                hsl(var(--web-color-background-docs)),
+                transparent
+            );
         }
 
         &[data-state='end']::after {
