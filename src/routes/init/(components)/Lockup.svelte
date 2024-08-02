@@ -65,11 +65,6 @@
 </svg>
 
 <style lang="scss">
-    :root {
-        --starting-dasharray: 0 1000;
-        --starting-dashoffset: 0;
-    }
-
     .lockup {
         --stroke-color: #333;
         --stroke-width: 2;
@@ -102,7 +97,6 @@
 
         .base {
             stroke: var(--stroke-color);
-
             stroke-width: var(--stroke-width);
 
             &.fill {
@@ -111,8 +105,8 @@
         }
 
         .stroke {
-            stroke-dasharray: var(--starting-dasharray);
-            stroke-dashoffset: var(--starting-dashoffset);
+            stroke-dasharray: 0 1000;
+            stroke-dashoffset: 0;
             stroke-width: var(--stroke-width);
             filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 0.4));
 
