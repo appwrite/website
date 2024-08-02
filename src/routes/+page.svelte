@@ -77,7 +77,7 @@
             <div class="web-big-padding-section-level-2">
                 <section class="web-container web-u-padding-block-end-0">
                     <a
-                        href="/blog/post/announcing-appwrite-integration-catalog"
+                        href="/blog/post/announcing-appwrite-integrations-catalog"
                         class="web-hero-banner-button web-u-margin-block-end-24"
                     >
                         <span class="web-icon-star" aria-hidden="true" />
