@@ -68,8 +68,6 @@
     :root {
         --starting-dasharray: 0 1000;
         --starting-dashoffset: 0;
-        --ending-dashoffset: -1600;
-        --ending-dasharray: 1200 1800;
     }
 
     .lockup {
