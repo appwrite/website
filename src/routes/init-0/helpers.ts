@@ -10,6 +10,7 @@ import type {
     TicketDoc,
     TicketVariant
 } from './tickets/constants';
+import { OAuthProvider } from '@appwrite.io/console';
 
 export function createCountdown(date: Date) {
     const today = new Date();
@@ -186,7 +187,7 @@ export async function getTicketById(id: string, f = fetch) {
 
 export function loginGithub() {
     appwriteInit.account.createOAuth2Session(
-        'github',
+        OAuthProvider.Github,
         `${window.location.origin}/init-0/tickets?success=1`,
         `${window.location.origin}/init-0/tickets?error=1`,
         ['read:user']
