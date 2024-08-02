@@ -1,4 +1,4 @@
-import { APPRWITE_COL_INIT_2_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
+import { APPWRITE_COL_INIT_2_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
 import { appwriteInitServer } from '$lib/appwrite/init.server';
 
 export async function POST({ request }) {
@@ -6,7 +6,7 @@ export async function POST({ request }) {
 
     await appwriteInitServer.databases.updateDocument(
         APPWRITE_DB_INIT_ID,
-        APPRWITE_COL_INIT_2_ID,
+        APPWRITE_COL_INIT_2_ID,
         data.ticketId,
         {
             name: data.name,
