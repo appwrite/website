@@ -1,5 +1,5 @@
 <script lang="ts">
-    export let lines: Array<number> = [2, 1, 2, 4, 3];
+    export let lines: Array<number> = [2, 1, 2, 1, 3];
     const getRandomHeight = () => Math.floor(Math.random() * 100) + 75;
 </script>
 
@@ -27,7 +27,7 @@
         justify-content: center;
         align-items: center;
         inset: 0;
-        z-index: 10;
+        z-index: -1;
 
         .lines {
             position: absolute;
@@ -46,8 +46,8 @@
                 rgba(255, 255, 255, 0) 100%
             );
             --width: 2px;
-            --starting-position: -60vh;
-            --duration: 4s;
+            --starting-position: -80vh;
+            --duration: 6s;
             --initial-delay: 0.5s;
 
             .line {
