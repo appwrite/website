@@ -84,7 +84,7 @@
                         <span class="web-caption-500">New</span>
                         <div class="web-hero-banner-button-sep" />
                         <span class="web-caption-400 web-u-trim-1"
-                            >Announcing Appwrite's Integration Catalog</span
+                            >Announcing Appwrite's Integrations Catalog</span
                         >
                         <span class="web-icon-arrow-right" aria-hidden="true" />
                     </a>
