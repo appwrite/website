@@ -14,9 +14,18 @@ importers:
       '@sentry/sveltekit':
         specifier: ^8.12.0
         version: 8.12.0(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.25.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.52.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.25.1(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.25.1)(@sveltejs/kit@2.5.17(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.1(@types/node@20.11.22)(sass@1.77.6)))(svelte@4.2.18)(vite@5.3.1(@types/node@20.11.22)(sass@1.77.6)))(encoding@0.1.13)(svelte@4.2.18)
+      embla-carousel-svelte:
+        specifier: ^8.1.5
+        version: 8.1.5(svelte@4.2.18)
+      embla-carousel-wheel-gestures:
+        specifier: ^8.0.1
+        version: 8.0.1(embla-carousel@8.1.5)
       h3:
         specifier: ^1.12.0
         version: 1.12.0
+      remeda:
+        specifier: ^2.3.0
+        version: 2.3.0
     devDependencies:
       '@appwrite.io/console':
         specifier: ^0.6.2
@@ -75,6 +84,9 @@ importers:
       dequal:
         specifier: ^2.0.3
         version: 2.0.3
+      embla-carousel:
+        specifier: ^8.1.5
+        version: 8.1.5
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
@@ -84,6 +96,9 @@ importers:
       eslint-plugin-svelte:
         specifier: ^2.40.0
         version: 2.41.0(eslint@8.57.0)(svelte@4.2.18)
+      fuse.js:
+        specifier: ^7.0.0
+        version: 7.0.0
       highlight.js:
         specifier: ^11.9.0
         version: 11.9.0
@@ -2118,6 +2133,25 @@ packages:
   electron-to-chromium@1.4.812:
     resolution: {integrity: sha512-7L8fC2Ey/b6SePDFKR2zHAy4mbdp1/38Yk5TsARO66W3hC5KEaeKMMHoxwtuH+jcu2AYLSn9QX04i95t6Fl1Hg==}
 
+  embla-carousel-reactive-utils@8.1.5:
+    resolution: {integrity: sha512-76uZTrSaEGGta+qpiGkMFlLK0I7N04TdjZ2obrBhyggYIFDWlxk1CriIEmt2lisLNsa1IYXM85kr863JoCMSyg==}
+    peerDependencies:
+      embla-carousel: 8.1.5
+
+  embla-carousel-svelte@8.1.5:
+    resolution: {integrity: sha512-3XEIqfALTwmA73narVxMo6vNDqy+ezFgn5LyywYBfoq/azh7AHbNGpfG/2mZQBttJcI3JBswYwQoZklajhil1Q==}
+    peerDependencies:
+      svelte: ^3.49.0 || ^4.0.0
+
+  embla-carousel-wheel-gestures@8.0.1:
+    resolution: {integrity: sha512-LMAnruDqDmsjL6UoQD65aLotpmfO49Fsr3H0bMi7I+BH6jbv9OJiE61kN56daKsVtCQEt0SU1MrJslbhtgF3yQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      embla-carousel: ^8.0.0 || ~8.0.0-rc03
+
+  embla-carousel@8.1.5:
+    resolution: {integrity: sha512-R6xTf7cNdR2UTNM6/yUPZlJFRmZSogMiRjJ5vXHO65II5MoUlrVYUAP0fHQei/py82Vf15lj+WI+QdhnzBxA2g==}
+
   emoji-regex@10.3.0:
     resolution: {integrity: sha512-QpLs9D9v9kArv4lfDEgg1X/gN5XLnf/A6l9cs8SPZLRZR3ZkY9+kwIQTxm+fsSej5UMYGE8fdoaZVIBlqG0XTw==}
 
@@ -2327,6 +2361,10 @@ packages:
 
   function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
+
+  fuse.js@7.0.0:
+    resolution: {integrity: sha512-14F4hBIxqKvD4Zz/XjDc3y94mNZN6pRv3U13Udo0lNLCWRBUsrMv2xwcF/y/Z5sV6+FQW+/ow68cHpm4sunt8Q==}
+    engines: {node: '>=10'}
 
   gauge@4.0.4:
     resolution: {integrity: sha512-f9m+BEN5jkg6a0fZjleidjN51VE1X+mPFQ2DJ0uv1V39oCLCbsGe6yjbBnp7eK7z/+GAon99a3nHuqbuuthyPg==}
@@ -3308,6 +3346,9 @@ packages:
   regenerator-runtime@0.14.1:
     resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
 
+  remeda@2.3.0:
+    resolution: {integrity: sha512-J9djcCyFL9D1ZGnfiNJ6MMhcUT8BmNCT+dj2SApdrTNz+CxqW1dScPVaDCopivHTShiYXh4sRSPYKMzlGrgyQw==}
+
   require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
     engines: {node: '>=0.10.0'}
@@ -3761,6 +3802,10 @@ packages:
     resolution: {integrity: sha512-Ne+eE4r0/iWnpAxD852z3A+N0Bt5RN//NjJwRd2VFHEmrywxf5vsZlh4R6lixl6B+wz/8d+maTSAkN1FIkI3LQ==}
     engines: {node: '>=10'}
 
+  type-fest@4.21.0:
+    resolution: {integrity: sha512-ADn2w7hVPcK6w1I0uWnM//y1rLXZhzB9mr0a3OirzclKF1Wp6VzevUmzz/NRAWunOT6E8HrnpGY7xOfc6K57fA==}
+    engines: {node: '>=16'}
+
   typescript@5.5.2:
     resolution: {integrity: sha512-NcRtPEOsPFFWjobJEtfihkLCZCXZt/os3zf8nTxjVH3RvTSxjrCamJpbExGvYOF+tFHc3pA65qpdwPbzjohhew==}
     engines: {node: '>=14.17'}
@@ -3912,6 +3957,10 @@ packages:
 
   whatwg-url@5.0.0:
     resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}
+
+  wheel-gestures@2.2.5:
+    resolution: {integrity: sha512-01BlXRjBVt5Gy0VH2rRqMeccHruTGq2Gd1fx0UqCPN8KDeDCmlTXsRGc/hXJk6W+wnO9CNJp2xfntMNRArBxKQ==}
+    engines: {node: '>=10'}
 
   which@2.0.2:
     resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
@@ -6162,6 +6211,23 @@ snapshots:
 
   electron-to-chromium@1.4.812: {}
 
+  embla-carousel-reactive-utils@8.1.5(embla-carousel@8.1.5):
+    dependencies:
+      embla-carousel: 8.1.5
+
+  embla-carousel-svelte@8.1.5(svelte@4.2.18):
+    dependencies:
+      embla-carousel: 8.1.5
+      embla-carousel-reactive-utils: 8.1.5(embla-carousel@8.1.5)
+      svelte: 4.2.18
+
+  embla-carousel-wheel-gestures@8.0.1(embla-carousel@8.1.5):
+    dependencies:
+      embla-carousel: 8.1.5
+      wheel-gestures: 2.2.5
+
+  embla-carousel@8.1.5: {}
+
   emoji-regex@10.3.0: {}
 
   emoji-regex@8.0.0: {}
@@ -6424,6 +6490,8 @@ snapshots:
     optional: true
 
   function-bind@1.1.2: {}
+
+  fuse.js@7.0.0: {}
 
   gauge@4.0.4:
     dependencies:
@@ -7418,6 +7486,10 @@ snapshots:
 
   regenerator-runtime@0.14.1: {}
 
+  remeda@2.3.0:
+    dependencies:
+      type-fest: 4.21.0
+
   require-directory@2.1.1: {}
 
   require-in-the-middle@7.3.0:
@@ -7948,6 +8020,8 @@ snapshots:
 
   type-fest@0.20.2: {}
 
+  type-fest@4.21.0: {}
+
   typescript@5.5.2: {}
 
   uc.micro@2.1.0: {}
@@ -8102,6 +8176,8 @@ snapshots:
     dependencies:
       tr46: 0.0.3
       webidl-conversions: 3.0.1
+
+  wheel-gestures@2.2.5: {}
 
   which@2.0.2:
     dependencies:
