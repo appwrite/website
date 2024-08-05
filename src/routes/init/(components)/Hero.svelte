@@ -11,7 +11,7 @@
 <style lang="scss">
     .hero {
         height: 80vh;
-        width: 50vw;
+        width: 60vw;
         margin: 0 auto;
         display: flex;
         justify-content: center;
