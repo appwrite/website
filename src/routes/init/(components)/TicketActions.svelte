@@ -53,8 +53,9 @@
 
             {#if !ticket.aw_email}
                 <a
-                    href={`${PUBLIC_APPWRITE_DASHBOARD}/login?forceRedirect={$page.url
-                        .origin}/init/tickets`}
+                    href={`${PUBLIC_APPWRITE_DASHBOARD}/login?forceRedirect=${
+                        $page.url.origin
+                    }/init/tickets`}
                     class="web-button is-secondary"
                 >
                     <div class="web-icon-appwrite web-u-color-text-primary" />
