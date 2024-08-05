@@ -162,11 +162,13 @@
 .#{$p}-u-flex-basis-400             { flex-basis:pxToRem(400); }
 .#{$p}-u-translate-x-negative        { transform:translateX(-100%); }
 
-.#{$p}-gap-2          { gap:pxToRem(6); }
-.#{$p}-gap-5        { gap:pxToRem(20)!important;  }
-.#{$p}-gap-5-mobile { @media #{$break1} { gap:pxToRem(20)!important; } }
-.#{$p}-gap-8        { gap:pxToRem(32)!important;  }
-.#{$p}-gap-24        { gap:pxToRem(64)!important;  }
+.#{$p}-u-gap-6          { gap:pxToRem(6); }
+.#{$p}-u-gap-20        { gap:pxToRem(20)!important;  }
+.#{$p}-u-gap-20-mobile { @media #{$break1} { gap:pxToRem(20)!important; } }
+.#{$p}-u-gap-40-mobile { @media #{$break1} { gap:pxToRem(40)!important; } }
+.#{$p}-u-gap-60-not-mobile { @media #{$break2open} { gap:pxToRem(60)!important; } }
+.#{$p}-u-gap-32        { gap:pxToRem(32)!important;  }
+.#{$p}-u-gap-64        { gap:pxToRem(64)!important;  }
 .#{$p}-u-gap-80        { gap:pxToRem(80);  }
 .#{$p}-gap-24        { gap:pxToRem(96);  }
 .#{$p}-u-row-gap-24   { row-gap: pxToRem(24)!important; }
