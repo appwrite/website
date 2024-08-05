@@ -6,6 +6,7 @@
     import Ticket from '../(components)/Ticket.svelte';
     import { getMockContributions, loginGithub } from '../helpers';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
@@ -83,8 +84,8 @@
                         <span class="text">GitHub</span>
                     </button>
                     <a
-                        href="https://cloud.appwrite.io/login?forceRedirect={$page.url
-                            .origin}/init/tickets"
+                        href={`${PUBLIC_APPWRITE_DASHBOARD}/login?forceRedirect={$page.url
+                            .origin}/init/tickets`}
                         class="web-button is-secondary"
                     >
                         <div class="web-icon-appwrite web-u-color-text-primary" />

@@ -9,6 +9,7 @@
     import { browser, dev } from '$app/environment';
     import { appwriteInit } from '$lib/appwrite/init';
     import { goto } from '$app/navigation';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     export let showGitHub = true;
     export let customizing = false;
@@ -52,8 +53,8 @@
 
             {#if !ticket.aw_email}
                 <a
-                    href="https://cloud.appwrite.io/login?forceRedirect={$page.url
-                        .origin}/init/tickets"
+                    href={`${PUBLIC_APPWRITE_DASHBOARD}/login?forceRedirect={$page.url
+                        .origin}/init/tickets`}
                     class="web-button is-secondary"
                 >
                     <div class="web-icon-appwrite web-u-color-text-primary" />
