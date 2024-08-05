@@ -1,19 +1,17 @@
 <script lang="ts">
-    export let lines: Array<number> = [1, 1, 1, 1];
+    export let lines = 5;
     const getRandomHeight = () => Math.floor(Math.random() * 100) + 75;
 </script>
 
 <div class="container">
     <div class="lines">
-        {#each lines as rows, index}
+        {#each Array.from({ length: lines }) as _}
+            {@const randomDelay = () => Math.floor(Math.random() * 500)}
             <div style:position="relative">
-                {#each Array.from({ length: rows }) as _, i}
-                    {@const delay = i + 1 * index * 150}
-                    <div
-                        class="line"
-                        style={`--delay:${delay}ms;--height:${getRandomHeight()}px;`}
-                    />
-                {/each}
+                <div
+                    class="line"
+                    style={`--delay:${randomDelay()}ms;--height:${getRandomHeight()}px;`}
+                />
             </div>
         {/each}
     </div>
@@ -35,8 +33,8 @@
             z-index: -10;
             display: flex;
             justify-content: space-between;
-            gap: 20px;
-            padding: 0 24px;
+            max-width: 80%;
+            margin: 0 auto;
             opacity: 0.7;
 
             --gradient: linear-gradient(
@@ -47,7 +45,7 @@
             );
             --width: 2px;
             --starting-position: -80vh;
-            --duration: 4s;
+            --duration: 2s;
             --initial-delay: 0.5s;
 
             .line {
@@ -55,12 +53,16 @@
                 height: var(--height);
                 width: var(--width);
 
+                @media screen and (max-width: 768px) {
+                    height: calc(var(--height) / 4);
+                }
+
                 @keyframes line {
                     from {
                         bottom: var(--starting-position);
                     }
                     to {
-                        bottom: 80vh;
+                        bottom: 15vh;
                     }
                 }
 
@@ -76,6 +78,10 @@
                     filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
                     animation: line var(--duration) calc(var(--initial-delay) + var(--delay))
                         infinite forwards cubic-bezier(0.1, -0.6, 0.2, 0);
+
+                    @media screen and (max-width: 768px) {
+                        height: calc(var(--height) / 2);
+                    }
                 }
             }
         }
