@@ -3,80 +3,96 @@
     import { Feedback } from '$lib/components';
     import type { Tutorial } from '$markdoc/layouts/Tutorial.svelte';
     import type { TocItem } from './DocsArticle.svelte';
+    import Section from '$markdoc/tags/Section.svelte';
 
-    export let title: string;
     export let toc: Array<TocItem>;
     export let currentStep: number;
-    export let back: string;
     export let date: string;
 
     export let tutorials: Array<Tutorial>;
 
+    const firstStepItem = tutorials[0];
+    // currentStep starts from 1, the arrays start from 0.
+    const currentStepItem = (tutorials[currentStep - 1] ?? firstStepItem);
+
     $: nextStep = tutorials.find((tutorial) => tutorial.step === currentStep + 1);
     $: prevStep = tutorials.find((tutorial) => tutorial.step === currentStep - 1);
+
+    function getDecrementedStep(stepOrTutorial: number | Tutorial): number {
+        if (typeof stepOrTutorial === 'number') {
+            return stepOrTutorial - 1;
+        } else {
+            return stepOrTutorial.step - 1;
+        }
+    }
+
+    // `any` for compatibility with reactive variables.
+    function getCorrectTitle(tutorial: any | Tutorial, checkAt: number): string {
+        if (tutorial.step === checkAt) {
+            return 'Introduction';
+        } else {
+            return tutorial.title;
+        }
+    }
 </script>
 
 <main class="u-contents" id="main">
     <article class="web-article u-contents">
         <header class="web-article-header">
             <div class="web-article-header-start u-flex-vertical web-u-cross-start">
-                <button
-                    class="web-icon-button web-is-only-mobile"
-                    aria-label="previous page"
-                >
-                    <span class="icon-cheveron-left" aria-hidden="true" />
-                </button>
                 <ul class="web-metadata web-caption-400">
-                    <slot name="metadata" />
+                    {#if currentStepItem.difficulty}
+                        <li>{currentStepItem.difficulty}</li>
+                    {/if}
+                    {#if currentStepItem.readtime}
+                        <li>{currentStepItem.readtime} min</li>
+                    {/if}
                 </ul>
                 <div class="u-position-relative u-flex u-cross-center">
-                    {#if back}
-                        <a
-                            href={back}
-                            class="
-						web-button is-text is-only-icon web-u-cross-center web-u-size-40
-						u-position-absolute u-inset-inline-start-0 web-u-translate-x-negative"
-                            aria-label="previous page"
-                        >
-                            <span
-                                class="icon-cheveron-left web-u-font-size-24 web-u-color-text-primary web-is-not-mobile"
-                                aria-hidden="true"
-                            />
-                        </a>
-                    {/if}
-                    <h1 class="web-title">{title}</h1>
+                    <h1 class="web-title">{firstStepItem.title}</h1>
                 </div>
             </div>
             <div class="web-article-header-end" />
         </header>
         <div class="web-article-content">
-            <slot />
-            <div class="u-flex u-main-space-between">
-                {#if prevStep}
-                    <a href={prevStep.href} class="web-button is-text">
-                        <span class="icon-cheveron-left" aria-hidden="true" />
-                        <span class="web-sub-body-500">
-                            Step {prevStep.step}<span class="web-is-not-mobile"
-                                >: {prevStep.title}</span
-                            >
-                        </span>
-                    </a>
-                {/if}
-                {#if nextStep}
-                    <a
-                        href={nextStep.href}
-                        class="web-button is-secondary"
-                        style:margin-left={prevStep ? undefined : 'auto'}
-                    >
-                        <span class="web-sub-body-500">
-                            Step {nextStep.step}<span class="web-is-not-mobile"
-                                >: {nextStep.title}</span
-                            >
-                        </span>
-                        <span class="icon-cheveron-right" aria-hidden="true" />
-                    </a>
-                {/if}
-            </div>
+            <Section
+                id={currentStepItem.href}
+                step={getDecrementedStep(currentStep)}
+                title={getCorrectTitle(currentStepItem, 1)}
+                isWithLine={false}
+            >
+
+                <div class="u-padding-block-start-32">
+                    <slot />
+                </div>
+
+                <div class="u-flex u-main-space-between">
+                    {#if prevStep}
+                        <a href={prevStep.href} class="web-button is-text previous-step-anchor">
+                            <span class="icon-cheveron-left" aria-hidden="true" />
+                            <span class="web-sub-body-500">
+                                Step {getDecrementedStep(prevStep)}<span class="web-is-not-mobile"
+                                    >: {getCorrectTitle(prevStep, 1)}</span
+                                >
+                            </span>
+                        </a>
+                    {/if}
+                    {#if nextStep}
+                        <a
+                            href={nextStep.href}
+                            class="web-button is-secondary"
+                            style:margin-left={prevStep ? undefined : 'auto'}
+                        >
+                            <span class="web-sub-body-500">
+                                Step {getDecrementedStep(nextStep)}<span class="web-is-not-mobile"
+                                    >: {nextStep.title}</span
+                                >
+                            </span>
+                            <span class="icon-cheveron-right" aria-hidden="true" />
+                        </a>
+                    {/if}
+                </div>
+            </Section>
 
             <Feedback {date} />
         </div>
@@ -86,7 +102,7 @@
                     <h5 class="web-references-menu-title web-eyebrow">Tutorial Steps</h5>
                 </div>
                 <ol class="web-references-menu-list">
-                    {#each tutorials as tutorial}
+                    {#each tutorials as tutorial, index}
                         {@const isCurrentStep = currentStep === tutorial.step}
                         <li class="web-references-menu-item">
                             <a
@@ -95,14 +111,15 @@
                                 class:tutorial-scroll-indicator={isCurrentStep && !toc.length}
                                 class:is-selected={isCurrentStep}
                             >
-                                <span class="web-numeric-badge">{tutorial.step}</span>
-                                <span class="web-caption-400">{tutorial.title}</span>
+                                <span class="web-numeric-badge">{tutorial.step - 1}</span>
+                                <!-- first item will always be introduction -->
+                                <span class="web-caption-400">{index === 0 ? 'Introduction' : tutorial.title}</span>
                             </a>
-                            {#if isCurrentStep}
+                            {#if isCurrentStep && toc.slice(1).length}
                                 <ol
                                         class="web-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
                                 >
-                                {#each toc as parent}
+                                {#each toc.slice(1) as parent}
                                         <li class="web-references-menu-item">
                                             <a
                                                 href={parent.href}
@@ -110,11 +127,6 @@
                                                 class:tutorial-scroll-indicator={parent.selected}
                                                 class:is-selected={parent.selected}
                                             >
-                                                {#if parent?.step}
-                                                    <span class="web-numeric-badge"
-                                                        >{parent.step}</span
-                                                    >
-                                                {/if}
                                                 <span class="web-caption-400">{parent.title}</span>
                                             </a>
                                             {#if parent.children}
@@ -154,3 +166,15 @@
 </main>
 
 
+<style>
+    .web-article-header {
+        padding-inline-start: unset !important;
+    }
+
+    .previous-step-anchor {
+        border: unset !important;
+        outline: unset !important;
+        background: unset !important;
+        padding-inline-start: unset !important;
+    }
+</style>
