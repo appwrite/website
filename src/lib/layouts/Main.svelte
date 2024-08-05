@@ -24,6 +24,7 @@
     import { page } from '$app/stores';
     import { loggedIn } from '$lib/utils/console';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -196,24 +197,13 @@
         class="web-main-header is-special-padding theme-{resolvedTheme} is-transparent"
         class:is-hidden={$isHeaderHidden}
     >
-        <div class="web-top-banner">
-            <div class="web-top-banner-content web-u-color-text-primary">
-                <a href="/discord" target="_blank" rel="noopener noreferrer">
-                    <span class="web-caption-500">We are having lots of fun on</span>
-                    <span class="web-icon-discord" aria-hidden="true" />
-                    <span class="web-caption-500">Discord. Come and join us!</span>
-                </a>
-                {#if browser}
-                    <button
-                        class="web-top-banner-button"
-                        aria-label="close discord message"
-                        on:click={hideTopBanner}
-                    >
-                        <span class="web-icon-close" aria-hidden="true" />
-                    </button>
-                {/if}
-            </div>
-        </div>
+        <AnnouncementBanner>
+            <a href="/discord" target="_blank" rel="noopener noreferrer">
+                <span class="web-caption-500">We are having lots of fun on</span>
+                <span class="web-icon-discord" aria-hidden="true" />
+                <span class="web-caption-500">Discord. Come and join us!</span>
+            </a>
+        </AnnouncementBanner>
 
         <div class="web-main-header-wrapper">
             <div class="web-main-header-start">
