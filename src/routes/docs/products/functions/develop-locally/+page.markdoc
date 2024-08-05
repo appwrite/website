@@ -4,7 +4,7 @@ title: Develop locally
 description: Learn to develop Appwrite functions locally.
 ---
 
-Develop your Appwrite functions locally so you can make code changes without redeploying your function on every code change.
+Develop your Appwrite functions locally to make code changes without redeploying your function on every code change and hot reload your code for faster testing.
 
 # Setup {% #setup %}
 
@@ -14,13 +14,13 @@ Develop your Appwrite functions locally so you can make code changes without red
 4. [Log in](/docs/tooling/command-line/installation#get-started) to your Appwrite account using `appwrite login`
 5. [Initialize your project](/docs/tooling/command-line/installation#initialization) and create the `appwrite.json` file
 
-We use Docker to simulate the production environment precisely so that we can deploy a function locally. You can locally run functions using the `appwrite run functions` CLI command. The CLI also allows other [CLI commands](/docs/tooling/command-line/commands), and initializing a project with `appwrite.json` file is required to run commands like `appwrite run functions`.
+We use Docker to replicate the production environment for the local deployment of functions. These can be executed locally with the `appwrite run functions` CLI command, which requires initializing a project with an `appwrite.json` file. The CLI also supports various other [CLI commands](/docs/tooling/command-line/commands).
 
 {% arrow_link href="/docs/tooling/command-line/functions" %}
 Learn more about deploying functions using CLI
 {% /arrow_link %}
 
-# Locally develop your function {% #locally-develop-your-function %}
+# Develop {% #develop %}
 
 Use the `appwrite run functions` command to develop your function locally.
 
@@ -30,7 +30,7 @@ appwrite run functions
 
 runtime   │ entrypoint  │ path                           │ commands     
 ───────────┼──────────────┼───────────────────────────────────┼─────────────
-node-16.0 │ src/main.js │ functions/"<FUNCTION_ID>"        │ npm install
+node-16.0 │ src/main.js │ functions/<FUNCTION_ID>        │ npm install
 
 ℹ Info: If you wish to change your local settings, update the appwrite.json file and rerun the 'appwrite run' command.
 ♥ Hint: Permissions, events, CRON and timeouts dont apply when running locally.
@@ -60,7 +60,7 @@ Build finished.
 ✓ Success: Visit http://localhost:3000/ to execute your function.
 ```
 
-This command helps you efficiently develop your Appwrite functions on your local machine. When developing your Appwrite function locally, it will receive headers like when you develop a function in the Console.
+This command helps you efficiently develop your Appwrite functions on your local machine. You can also hot reload your function code as you develop locally, so you will see your code changes instantly without having to wait for it to build. When developing your Appwrite function locally, it will receive headers like when you develop a function in the Console.
 
 {% arrow_link href="/docs/products/functions/develop" %}
 Learn more about developing a function
@@ -74,36 +74,13 @@ Appwrite functions receive various headers, like `x-appwrite-key` and `x-appwrit
 JSON.stringify(req.headers); // String key-value pairs of all request headers, keys are lowercase
 ```
 
-An example of the function headers response:
+You can use headers like dynamic API keys in your function, which give you access to your project services and allow you to operate without sessions. To configure your dynamic API key scopes, navigate to **Functions** > **Settings** > **Scopes**.
 
-```sh
-{
-  "host": "localhost:3000",
-  "connection": "keep-alive",
-  "sec-ch-ua": "\"Google Chrome\";v=\"127\"",
-  "sec-ch-ua-mobile": "?0",
-  "user-agent": "Chrome/127.0.0.0 Safari/537.36",
-  "sec-ch-ua-platform": "\"Windows\"",
-  "accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
-  "sec-fetch-site": "same-origin",
-  "sec-fetch-mode": "no-cors",
-  "sec-fetch-dest": "image",
-  "referer": "http://localhost:3000/",
-  "accept-encoding": "gzip, deflate, br, zstd",
-  "accept-language": "en-US,en;q=0.9",
-  "cookie": "<COOKIE>",
-  "x-appwrite-trigger": "http",
-  "x-appwrite-event": "",
-  "x-appwrite-user-id": "",
-  "x-appwrite-user-jwt": "<JWT_TOKEN>"
-}
-```
-
-{% arrow_link href="/docs/products/functions/develop#headers" %}
-Learn more about function headers
+{% arrow_link href="/docs/products/functions/develop" %}
+Learn more about dynamic API keys
 {% /arrow_link %}
 
-Once you have confirmed the headers you want for your function after executing it and making all your code changes, push your function to the Cloud using the CLI.
+Once you have confirmed the headers you want for your function and made all your code changes, push your function to the Cloud using the CLI.
 
 # Push function {% #push-function %}
 
