@@ -1,7 +1,7 @@
 import { APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID } from '$env/static/private';
 import { appwriteInitServer } from '$lib/appwrite/init.server';
 import { isProUser } from '$lib/utils/console.js';
-import type { User } from '$routes/init/helpers.js';
+import { type User } from '$routes/init/helpers.js';
 import { ID, Query } from '@appwrite.io/console';
 import type { TicketData, TicketDoc } from '../constants.js';
 
@@ -11,7 +11,7 @@ type SendToHubspotArgs = {
 };
 
 async function sendToHubspot({ name, email }: SendToHubspotArgs) {
-    await fetch('https://growth.appwrite.io/v1/mailinglists/init', {
+    await fetch('https://growth.appwrite.io/v1/mailinglists/init-2.0', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -118,9 +118,11 @@ async function getTicketDocByUser(user: User) {
             ID.unique(),
             {
                 aw_email: user.appwrite?.email ?? undefined,
+                gh_user: user.github?.login ?? undefined,
                 id: allDocs.total + 1,
                 name: user.appwrite?.name ?? user.github?.name,
-                title: ''
+                title: '',
+                show_contributions: true
             }
         )) as unknown as TicketDoc;
     }

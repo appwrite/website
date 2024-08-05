@@ -63,7 +63,7 @@
                 <h1 class="web-display">
                     Join <span class="web-u-color-text-primary" style:font-weight="500">
                         init
-                    </span><br />19-23 Aug
+                    </span><br />August 19th-23rd
                 </h1>
             </div>
 

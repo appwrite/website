@@ -81,19 +81,10 @@
                 <div class="buttons">
                     <button class="web-button" on:click={loginGithub}>
                         <div class="web-icon-github" />
-                        <span class="text">GitHub</span>
+                        <span class="text">Register with GitHub</span>
                     </button>
-                    <a
-                        href={`${PUBLIC_APPWRITE_DASHBOARD}/login?forceRedirect=${
-                            $page.url.origin
-                        }/init/tickets`}
-                        class="web-button is-secondary"
-                    >
-                        <div class="web-icon-appwrite web-u-color-text-primary" />
-                        <span class="text">Appwrite</span>
-                    </a>
                 </div>
-                <p class="u-margin-block-start-16 privacy">
+                <p class="privacy">
                     By registering, you agree to our <a href="/terms" class="web-link is-inline"
                         >Terms and Conditions</a
                     >
