@@ -189,11 +189,13 @@
         </div>
     </section>
     <header
-        class="web-main-header is-special-padding theme-{resolvedTheme} is-transparent"
+        class="web-main-header theme-{resolvedTheme} is-transparent"
+        style="padding-left:0;padding-right:0;"
         class:is-hidden={$isHeaderHidden}
     >
         <AnnouncementBanner />
-        <div class="web-main-header-wrapper">
+
+        <div class="web-main-header-wrapper is-special-padding">
             <div class="web-main-header-start">
                 <a href="/">
                     <img
@@ -266,6 +268,10 @@
         100% {
             transform: scale(1);
         }
+    }
+
+    .is-special-padding {
+        padding-inline: clamp(1.25rem, 4vw, 120rem);
     }
 
     [data-badge] {
