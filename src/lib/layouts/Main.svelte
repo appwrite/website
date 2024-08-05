@@ -23,6 +23,7 @@
     import { onMount } from 'svelte';
     import { page } from '$app/stores';
     import { loggedIn } from '$lib/utils/console';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -174,7 +175,7 @@
         </div>
         <div class="web-mobile-header-end">
             {#if !$isMobileNavOpen}
-                <a href="https://cloud.appwrite.io" class="web-button">
+                <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button">
                     <span class="text">Get started</span>
                 </a>
             {/if}
