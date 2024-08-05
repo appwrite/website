@@ -22,7 +22,7 @@
 
     import { Main } from '$lib/layouts';
 
-    import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
 
     import { TITLE_SUFFIX } from '$routes/titles';
 
@@ -32,12 +32,11 @@
     import { getContext, hasContext, setContext } from 'svelte';
 
     export let title: string;
-    export let description: string;
     export let transparentTableCells = false;
 
-    let seo = {
+    const seo = {
         title: title + TITLE_SUFFIX,
-        description: description,
+        description: DEFAULT_DESCRIPTION,
         ogImage: DEFAULT_HOST + '/images/open-graph/website.png',
 
         APP_NAME: 'Appwrite'

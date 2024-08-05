@@ -72,14 +72,12 @@
     --p-input-bg-color: var(--p-input-bg-color-hover);
     --p-input-border-color: var(--p-input-border-color-hover);
   }
-  &:is(:focus),
-  &:has(:focus) {
+  &:is(:focus) {
     --p-input-bg-color: var(--p-input-bg-color-focus);
     --p-input-border-color: var(--p-input-border-color-focus);
     box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-input-focus-box-shadow-color));
   }
-  &:is(:active),
-  &:has(:active){
+  &:is(:active) {
     --p-input-bg-color: var(--p-input-bg-color-active);
     --p-input-border-color: var(--p-input-border-color-active);
     box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-input-focus-box-shadow-color));
@@ -90,10 +88,6 @@
     --p-input-bg-color: var(--p-input-bg-color-disabled);
     --p-input-border-color: var(--p-input-border-color-disabled);
     opacity: 0.4;
-  }
-  input:focus {
-    box-shadow:none;
-    inline-size:100%;
   }
 
   &-search-wrapper {
