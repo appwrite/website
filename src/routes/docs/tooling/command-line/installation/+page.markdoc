@@ -115,7 +115,7 @@ After the installation or the update is complete, you can verify the Appwrite CL
 appwrite -v
 ```
 
-# Get started {% #get-started %}
+# Login {% #login %}
 
 Before you can use the CLI, you need to login to your Appwrite account using
 
