@@ -68,7 +68,7 @@
     .lockup {
         --stroke-color: #333;
         --stroke-width: 2;
-        --fill: hsl(240 5.7% 10.4%);
+        --fill: hsl(var(--web-color-background));
         fill: none;
         animation: fade 1s ease-out;
         max-width: 60vw;
@@ -100,7 +100,7 @@
             stroke-width: var(--stroke-width);
 
             &.fill {
-                fill: url(#fill);
+                fill: var(--fill);
             }
         }
 

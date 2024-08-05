@@ -10,7 +10,7 @@
 
 <style lang="scss">
     .hero {
-        height: 90vh;
+        height: 100vh;
         width: 100%;
         display: flex;
         justify-content: center;

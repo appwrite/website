@@ -109,8 +109,7 @@
     }
 
     .hero {
-        min-height: 500px;
-        height: 70vh;
+        height: 80vh;
 
         display: flex;
         flex-direction: column;
