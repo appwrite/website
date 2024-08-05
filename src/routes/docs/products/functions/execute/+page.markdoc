@@ -487,7 +487,7 @@ Here are some cron expressions for common intervals:
 
 # Delayed executions {% #delayed-executions %}
 
-You can also delay function executions, which trigger the function only once at a future date and time. You can schedule a function execution using the Appwrite Console or a Server SDK.
+You can also delay function executions, which trigger the function only once at a future date and time. You can schedule a function execution using the Appwrite Console, a Client SDK, or a Server SDK.
 
 {% tabs %}
 {% tabsitem #console title="Console" %}
@@ -501,7 +501,7 @@ To schedule an execution, navigate to **Your function** > **Executions** > **Exe
 {% /only_light %}
 {% /tabsitem %}
 {% tabsitem #sdk title="Server SDK" %}
-You can also schedule your function executions using a supported [runtime](/docs/products/functions/runtimes#available-runtimes).
+You can also schedule your function executions using a supported [SDK](/docs/sdks).
 
 {% multicode %}
 ```server-nodejs

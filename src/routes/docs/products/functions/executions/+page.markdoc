@@ -47,11 +47,11 @@ Each execution can have one of the follow status.
 - Status
 - description
 ---
-- `processing`
-- The function execution has begun and has not finished.
----
 - `scheduled`
 - The function execution will trigger later
+---
+- `processing`
+- The function execution has begun and has not finished.
 ---
 - `completed`
 - The function executed successfully.
