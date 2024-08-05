@@ -1,11 +1,12 @@
 export const GITHUB_STARS = '42.8K';
-export const BANNER_KEY = 'discord-banner-01'; // Change key to force banner to show again
+export const BANNER_KEY = 'init-banner-02'; // Change key to force banner to show again
 export const SENTRY_DSN =
     'https://27d41dc8bb67b596f137924ab8599e59@o1063647.ingest.us.sentry.io/4507497727000576';
 
 /**
  * History:
  * discord-banner-01
+ * init-banner-02
  * pricing-banner-01
  */
 
