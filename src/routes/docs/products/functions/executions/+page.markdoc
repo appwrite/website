@@ -51,7 +51,7 @@ Each execution can have one of the follow status.
 - The function execution has begun and has not finished.
 ---
 - `scheduled`
-- The function execution will trigger later
+- The function execution will trigger later.
 ---
 - `completed`
 - The function executed successfully.
