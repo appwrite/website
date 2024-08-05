@@ -479,7 +479,7 @@ Explore the request object with the following function, which logs all request p
 * Returns the raw body text data.
 ---
 * `req.bodyText`
-* Returns binary data that was converted into text.
+* Returns text that has been converted from binary data.
 ---
 * `req.bodyJson`
 * Parses the body text as JSON.
@@ -724,9 +724,6 @@ There are several possible ways to send a response, explore them in the followin
 {% table %}
 * Response
 * Description
----
-* `send`
-* Sends a plain text body as a response.
 ---
 * `text`
 * Converts the body using UTF-8 encoding into a binary Buffer.
