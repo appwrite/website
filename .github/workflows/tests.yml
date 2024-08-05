@@ -10,7 +10,7 @@ jobs:
         steps:
             - uses: actions/checkout@v4
               with:
-                  ref: ${{ github.event.pull_request.head.sha }}
+                  ref: ${{ github.event.pull_request.merge_commit_sha }}
             - name: Use Node.js
               uses: actions/setup-node@v3
               with:
