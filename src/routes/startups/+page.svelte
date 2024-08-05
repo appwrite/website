@@ -459,7 +459,7 @@
                                                         <div class="web-user-box">
                                                             <img
                                                                 class="web-user-box-image"
-                                                                src="/images/community/avatars/7.avif"
+                                                                src="/images/community/avatars/walter.avif"
                                                                 height="40"
                                                                 width="40"
                                                                 alt="Avatar of Walter"
@@ -526,7 +526,7 @@
                                                         <div class="web-user-box">
                                                             <img
                                                                 class="web-user-box-image"
-                                                                src="/images/community/avatars/7.avif"
+                                                                src="/images/community/avatars/walter.avif"
                                                                 height="40"
                                                                 width="40"
                                                                 alt="Avatar of Walter"
