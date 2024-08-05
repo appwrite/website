@@ -292,16 +292,20 @@ You can discover the available enums in each SDK at the source.
 * &nbsp; {% width=48 %}
 * Platform
 * Enums
+* &nbsp; {% width=80 %}
+
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_light %}
 * Web SDK `14.0.1`
 * [appwrite/sdk-for-web](https://github.com/appwrite/sdk-for-web/tree/dev/src/enums)
+*
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/flutter.svg" alt="Flutter logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/flutter.svg" alt="Flutter logo" size="m" /%}{% /only_light %}
 * Flutter SDK `12.0.3`
 * [appwrite/sdk-for-flutter](https://github.com/appwrite/sdk-for-flutter/tree/dev/lib/src/enums)
+*
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/react.svg" alt="React logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/react.svg" alt="React logo" size="m" /%}{% /only_light %}
@@ -313,11 +317,13 @@ You can discover the available enums in each SDK at the source.
 {% only_light %}{% icon_image src="/images/platforms/apple.svg" alt="Apple logo" size="m" /%}{% /only_light %}
 * Apple SDK `5.0.0`
 * [appwrite/sdk-for-apple](https://github.com/appwrite/sdk-for-apple/tree/dev/Sources/AppwriteEnums)
+*
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/android.svg" alt="Android logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/android.svg" alt="Android logo" size="m" /%}{% /only_light %}
 * Android SDK `5.1.0`
 * [appwrite/sdk-for-android](https://github.com/appwrite/sdk-for-android/tree/dev/library/src/main/java/io/appwrite/enums)
+*
 {% /table %}
 {% /tabsitem %}
 
@@ -364,6 +370,7 @@ You can discover the available enums in each SDK at the source.
 {% only_light %}{% icon_image src="/images/platforms/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_light %}
 * .NET SDK `0.8.1`
 * [appwrite/sdk-for-dotnet](https://github.com/appwrite/sdk-for-dotnet/tree/dev/src/Appwrite/Enums)
+*
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/deno.svg" alt="Deno logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/deno.svg" alt="Deno logo" size="m" /%}{% /only_light %}
