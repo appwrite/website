@@ -9,7 +9,6 @@
     import { browser, dev } from '$app/environment';
     import { appwriteInit } from '$lib/appwrite/init';
     import { goto } from '$app/navigation';
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     export let showGitHub = true;
     export let customizing = false;
@@ -50,18 +49,6 @@
                     <span class="text">Log in to GitHub</span>
                 </button>
             {/if}
-
-            {#if !ticket.aw_email}
-                <a
-                    href={`${PUBLIC_APPWRITE_DASHBOARD}/login?forceRedirect=${
-                        $page.url.origin
-                    }/init/tickets`}
-                    class="web-button is-secondary"
-                >
-                    <div class="web-icon-appwrite web-u-color-text-primary" />
-                    <span class="text">Log in to Appwrite</span>
-                </a>
-            {/if}
         </div>
 
         <div class="buttons">
@@ -92,7 +79,7 @@
                 target="_blank"
             >
                 <div class="web-icon-x web-u-color-text-primary" />
-                <span class="text">Post</span>
+                <span class="text">Share</span>
             </a>
         </div>
     </div>
