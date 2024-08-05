@@ -47,7 +47,7 @@
             );
             --width: 2px;
             --starting-position: -80vh;
-            --duration: 6s;
+            --duration: 4s;
             --initial-delay: 0.5s;
 
             .line {
