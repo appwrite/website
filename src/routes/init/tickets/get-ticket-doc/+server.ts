@@ -51,7 +51,7 @@ async function getTicketDocByUser(user: User) {
         isProUser()
     ]);
 
-    if (gh?.total || aw?.total) {
+    if (gh?.total) {
         const gh_doc = gh?.documents[0] as unknown as TicketDoc;
         const aw_doc = aw?.documents[0] as unknown as TicketDoc;
 
@@ -79,7 +79,7 @@ async function getTicketDocByUser(user: User) {
             )) as unknown as TicketDoc;
         }
 
-        const doc = gh_doc ?? aw_doc;
+        const doc = gh_doc;
 
         // If the document is missing either the GitHub or Appwrite user, update it
         if (!doc.gh_user || !doc.aw_email) {

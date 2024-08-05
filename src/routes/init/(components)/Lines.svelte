@@ -1,5 +1,5 @@
 <script lang="ts">
-    export let lines: Array<number> = [2, 1, 2, 1, 3];
+    export let lines: Array<number> = [1, 1, 1, 1];
     const getRandomHeight = () => Math.floor(Math.random() * 100) + 75;
 </script>
 
@@ -11,7 +11,7 @@
                     {@const delay = i + 1 * index * 150}
                     <div
                         class="line"
-                        style={`--delay:${delay}ms;--height:${getRandomHeight()}px;left:${i * 12}px`}
+                        style={`--delay:${delay}ms;--height:${getRandomHeight()}px;`}
                     />
                 {/each}
             </div>
@@ -41,7 +41,7 @@
 
             --gradient: linear-gradient(
                 to bottom,
-                rgba(255, 255, 255, 1) 0%,
+                rgba(255, 255, 255, 0) 0%,
                 rgba(255, 255, 255, 1) 50%,
                 rgba(255, 255, 255, 0) 100%
             );
