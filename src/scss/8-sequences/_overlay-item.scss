@@ -1,0 +1,19 @@
+@use '../abstract' as *;
+.#{$p}-overlay-item {
+  position: relative;
+  display: block;
+  border-radius: var(--border-radius-medium);
+  border: pxToRem(1) solid hsl(var(--smooth));
+  overflow:hidden;
+  img { border-radius:inherit; }
+  &::before {
+    position:absolute; inset:0;
+    content:""; display:block;
+    border-radius:inherit;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.00) 50%, rgba(0, 0, 0, 0.64) 74.79%, #000 100%), rgba(255, 255, 255, 0.04);
+  }
+  .web-user-box {
+    position:absolute; inset-inline-start:pxToRem(16); inset-block-end:pxToRem(16);
+    &-image { inline-size:pxToRem(40); block-size:pxToRem(40); margin-block:auto; }
+  }
+}
