@@ -166,7 +166,7 @@
     ];
 
     const title = 'Quick starts' + DOCS_TITLE_SUFFIX;
-    const description = 'Get started with your favorite framework and language in just a few clicks.';
+    const description = '';
     const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 </script>
 
