@@ -15,7 +15,7 @@ Here's everything that happens during a function execution.
 1. The active [deployment](/docs/products/functions/deployments)'s executor will handle the request.
 1. The Executor passes in request information like headers, body or path through the `context.req` object of your exported function.
 1. The runtime executes the code you defined, you can log through the `context.log()` or `context.error()` methods.
-1. Function terminates when you return results using `return context.res.send()`, `return context.res.json()` or similar.
+1. Function terminates when you return results using `return context.res.text()`, `return context.res.json()` or similar.
 
 ## Entrypoint {% #entrypoint %}
 You'll find all of these steps in a simple function like this.
@@ -44,8 +44,8 @@ export default async ({ req, res, log, error }) => {
   // The `req` object contains the request data
   if (req.method === 'GET') {
     // Send a response with the res object helpers
-    // `res.send()` dispatches a string back to the client
-    return res.send('Hello, World!');
+    // `res.text()` dispatches a string back to the client
+    return res.text('Hello, World!');
   }
 
   // `res.json()` is a handy helper for sending JSON
@@ -83,7 +83,7 @@ return function ($context) {
     // The `req` object contains the request data
     if ($context->req->method === 'GET') {
         // Send a response with the res object helpers
-        // `res.send()` dispatches a string back to the client
+        // `res.text()` dispatches a string back to the client
         return $context->res->send('Hello, World!');
     }
 
@@ -123,8 +123,8 @@ def main(context):
     # The `context.req` object contains the request data
     if context.req.method == "GET":
         # Send a response with the res object helpers
-        # `context.res.send()` dispatches a string back to the client
-        return context.res.send("Hello, World!")
+        # `context.res.text()` dispatches a string back to the client
+        return context.res.text("Hello, World!")
 
     # `context.res.json()` is a handy helper for sending JSON
     return context.res.json({
@@ -156,8 +156,8 @@ def main(context)
   # The `context.req` object contains the request data
   if (context.req.method == "GET")
     # Send a response with the res object helpers
-    # `context.res.send()` dispatches a string back to the client
-    return context.res.send("Hello, World!")
+    # `context.res.text()` dispatches a string back to the client
+    return context.res.text("Hello, World!")
   end
 
   # `context.res.json()` is a handy helper for sending JSON
@@ -191,8 +191,8 @@ export default ({ req, res, log, error }: any) => {
   // The `req` object contains the request data
   if (req.method === "GET") {
     // Send a response with the res object helpers
-    // `res.send()` dispatches a string back to the client
-    return res.send("Hello, World!");
+    // `res.text()` dispatches a string back to the client
+    return res.text("Hello, World!");
   }
 
   // `res.json()` is a handy helper for sending JSON
@@ -228,8 +228,8 @@ Future main(final context) async {
   // The `req` object contains the request data
   if (context.req.method == 'GET') {
     // Send a response with the res object helpers
-    // `res.send()` dispatches a string back to the client
-    return context.res.send('Hello, World!');
+    // `res.text()` dispatches a string back to the client
+    return context.res.text('Hello, World!');
   }
 
   // `res.json()` is a handy helper for sending JSON
@@ -269,8 +269,8 @@ class Main {
         // The `context.req` object contains the request data
         if (context.req.method == "GET") {
             // Send a response with the res object helpers
-            // `context.res.send()` dispatches a string back to the client
-            return context.res.send("Hello, World!")
+            // `context.res.text()` dispatches a string back to the client
+            return context.res.text("Hello, World!")
         }
 
         // `context.res.json()` is a handy helper for sending JSON
@@ -351,8 +351,8 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     // The `context.req` object contains the request data
     if context.req.method == "GET" {
         // Send a response with the res object helpers
-        // `res.send()` dispatches a string back to the client
-        return context.res.send("Hello, World!")
+        // `res.text()` dispatches a string back to the client
+        return context.res.text("Hello, World!")
     }
 
     // `context.res.json()` is a handy helper for sending JSON
@@ -393,8 +393,8 @@ public class Handler {
         // The `Context.Req` object contains the request data
         if (Context.Req.Method == "GET") {
             // Send a response with the res object helpers
-            // `Context.Res.Send()` dispatches a string back to the client
-            return Context.Res.Send("Hello, World!");
+            // `Context.Res.Text()` dispatches a string back to the client
+            return Context.Res.Text("Hello, World!");
         }
 
         // `Context.Res.Json()` is a handy helper for sending JSON
@@ -425,6 +425,10 @@ You'll find these properties in the context object.
 | log()    | Method to log information to the Appwrite Console, end users will not be able to see these logs. See full examples [in the logging section](#logging). |
 | error()  | Methoc to log errors to the Appwrite Console, end users will not be able to see these errors. See full examples [in the logging section](#logging).    |
 
+{% info title="Depreciation notice" %}
+Use `req.bodyText` instead of `req.bodyRaw`. Use `res.text` instead of `res.send`. Use `req.bodyText` or `req.bodyJson` instead of `req.body` depending on the expected input data type.
+{% /info %}
+
 ### Destructuring assignment {% #destructuring %}
 Some languages, namely JavaScript, support destructuring. 
 You'll see us use destructuring in examples, which has the following syntax. 
@@ -435,26 +439,26 @@ You'll see us use destructuring in examples, which has the following syntax.
 // before destructuring
 export default async function (context) {
     context.log("This is a log!");
-    return context.res.send("This is a response!");
+    return context.res.text("This is a response!");
 }
 
 // after destructuring
 export default async function ({ req, res, log, error }) {
     log("This is a log!");
-    return res.send("This is a response!");
+    return res.text("This is a response!");
 }
 ```
 ```deno
 // before destructuring
 export default async function (context: any) {
     context.log("This is a log!");
-    return context.res.send("This is a response!");
+    return context.res.text("This is a response!");
 }
    
 // after destructuring
 export default async function ({ req, res, log, error }: any) {
     log("This is a log!");
-    return res.send("This is a response!");
+    return res.text("This is a response!");
 }
 ```
 {% /multicode %}
@@ -465,11 +469,31 @@ If you pass data into an Appwrite Function, it'll be found in the request object
 This includes all invocation inputs from Appwrite SDKs, HTTP calls, Appwrite events, or browsers visiting the configured domain. 
 Explore the request object with the following function, which logs all request params to the Appwrite Console.
 
+### Request Types {% #request-types %}
+
+{% table %}
+* Request
+* Description
+---
+* `req.bodyRaw`
+* Returns the raw body text data.
+---
+* `req.bodyText`
+* Returns text that has been converted from binary data.
+---
+* `req.bodyJson`
+* Parses the body text as JSON.
+---
+* `req.bodyBinary`
+* Returns the binary body.
+---
+{% /table %}
+
 {% multicode %}
 ```js
 export default async ({ req, res, log }) => {
-    log(req.bodyRaw);                     // Raw request body, contains request data
-    log(JSON.stringify(req.body));        // Object from parsed JSON request body, otherwise string
+    log(req.bodyJson);                    // Raw request body, contains request data
+    log(JSON.stringify(req.bodyJson));    // Object from parsed JSON request body, otherwise string
     log(JSON.stringify(req.headers));     // String key-value pairs of all request headers, keys are lowercase
     log(req.scheme);                      // Value of the x-forwarded-proto header, usually http or https
     log(req.method);                      // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
@@ -480,7 +504,7 @@ export default async ({ req, res, log }) => {
     log(req.queryString);                 // Raw query params string. For example "limit=12&offset=50"
     log(JSON.stringify(req.query));       // Parsed query params. For example, req.query.limit
 
-    return res.send("All the request parameters are logged to the Appwrite Console.");
+    return res.text("All the request parameters are logged to the Appwrite Console.");
 };
 ```
 ```php
@@ -505,73 +529,74 @@ return function ($context) {
 import json
 
 def main(context):
-    context.log(context.req.body_raw)            # Raw request body, contains request data
-    context.log(json.dumps(context.req.body))    # Object from parsed JSON request body, otherwise string
-    context.log(json.dumps(context.req.headers)) # String key-value pairs of all request headers, keys are lowercase
-    context.log(context.req.scheme)              # Value of the x-forwarded-proto header, usually http or https
-    context.log(context.req.method)              # Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
-    context.log(context.req.url)                 # Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50
-    context.log(context.req.host)                # Hostname from the host header, such as awesome.appwrite.io
-    context.log(context.req.port)                # Port from the host header, for example 8000
-    context.log(context.req.path)                # Path part of URL, for example /v1/hooks
-    context.log(context.req.query_string)        # Raw query params string. For example "limit=12&offset=50"
-    context.log(json.dumps(context.req.query))   # Parsed query params. For example, req.query.limit
+    context.log(context.req.body_raw)              # Raw request body, contains request data
+    context.log(json.dumps(context.req.bodyJson))  # Object from parsed JSON request body, otherwise string
+    context.log(json.dumps(context.req.headers))   # String key-value pairs of all request headers, keys are lowercase
+    context.log(context.req.scheme)                # Value of the x-forwarded-proto header, usually http or https
+    context.log(context.req.method)                # Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
+    context.log(context.req.url)                   # Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50
+    context.log(context.req.host)                  # Hostname from the host header, such as awesome.appwrite.io
+    context.log(context.req.port)                  # Port from the host header, for example 8000
+    context.log(context.req.path)                  # Path part of URL, for example /v1/hooks
+    context.log(context.req.query_string)          # Raw query params string. For example "limit=12&offset=50"
+    context.log(json.dumps(context.req.query))     # Parsed query params. For example, req.query.limit
 
-    return context.res.send("All the request parameters are logged to the Appwrite Console.")
+    return context.res.text("All the request parameters are logged to the Appwrite Console.")
 ```
 ```ruby
 require 'json'
                 
 def main(context)
-    context.log(context.req.bodyRaw)                #  Raw request body, contains request data
-    context.log(JSON.generate(context.req.body))    # Object from parsed JSON request body, otherwise string
-    context.log(JSON.generate(context.req.headers)) # String key-value pairs of all request headers, keys are lowercase
-    context.log(context.req.scheme)                 # Value of the x-forwarded-proto header, usually http or https
-    context.log(context.req.method)                 # Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
-    context.log(context.req.url)                    # Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50
-    context.log(context.req.host)                   # Hostname from the host header, such as awesome.appwrite.io
-    context.log(context.req.port)                   # Port from the host header, for example 8000
-    context.log(context.req.path)                   # Path part of URL, for example /v1/hooks
-    context.log(context.req.queryString)            # Raw query params string. For example "limit=12&offset=50"
-    context.log(JSON.generate(context.req.query))   # Parsed query params. For example, req.query.limit
+    context.log(context.req.bodyJson)                 #  Raw request body, contains request data
+    context.log(JSON.generate(context.req.bodyJson))  # Object from parsed JSON request body, otherwise string
+    context.log(JSON.generate(context.req.headers))   # String key-value pairs of all request headers, keys are lowercase
+    context.log(context.req.scheme)                   # Value of the x-forwarded-proto header, usually http or https
+    context.log(context.req.method)                   # Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
+    context.log(context.req.url)                      # Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50
+    context.log(context.req.host)                     # Hostname from the host header, such as awesome.appwrite.io
+    context.log(context.req.port)                     # Port from the host header, for example 8000
+    context.log(context.req.path)                     # Path part of URL, for example /v1/hooks
+    context.log(context.req.queryString)              # Raw query params string. For example "limit=12&offset=50"
+    context.log(JSON.generate(context.req.query))     # Parsed query params. For example, req.query.limit
 
-    return context.res.send("All the request parameters are logged to the Appwrite Console.")
+    return context.res.text("All the request parameters are logged to the Appwrite Console.")
 end
 ```
 ```deno
 export default async ({ req, res, log }: any) => {
-    log(req.bodyRaw);                 // Raw request body, contains request data
-    log(JSON.stringify(req.body));    // Object from parsed JSON request body, otherwise string
-    log(JSON.stringify(req.headers)); // String key-value pairs of all request headers, keys are lowercase
-    log(req.scheme);                  // Value of the x-forwarded-proto header, usually http or https
-    log(req.method);                  // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
-    log(req.url);                     // Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50
-    log(req.host);                    // Hostname from the host header, such as awesome.appwrite.io
-    log(req.port);                    // Port from the host header, for example 8000
-    log(req.path);                    // Path part of URL, for example /v1/hooks
-    log(req.queryString);             // Raw query params string. For example "limit=12&offset=50"
-    log(JSON.stringify(req.query));   // Parsed query params. For example, req.query.limit
+    log(req.bodyJson);                  // Raw request body, contains request data
+    log(JSON.stringify(req.bodyJson));  // Object from parsed JSON request body, otherwise string
+    log(JSON.stringify(req.headers));   // String key-value pairs of all request headers, keys are lowercase
+    log(req.scheme);                    // Value of the x-forwarded-proto header, usually http or https
+    log(req.method);                    // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
+    log(req.url);                       // Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50
+    log(req.host);                      // Hostname from the host header, such as awesome.appwrite.io
+    log(req.port);                      // Port from the host header, for example 8000
+    log(req.path);                      // Path part of URL, for example /v1/hooks
+    log(req.queryString);               // Raw query params string. For example "limit=12&offset=50"
+    log(JSON.stringify(req.query));     // Parsed query params. For example, req.query.limit
 
-    return res.send("All the request parameters are logged to the Appwrite Console.");
+    return res.text("All the request parameters are logged to the Appwrite Console.");
+}
 ```
 ```dart
 import 'dart:async';
 import 'dart:convert';
 
 Future<dynamic> main(final context) async {
-    context.log(context.req.bodyRaw);              // Raw request body, contains request data
-    context.log(json.encode(context.req.body));    // Object from parsed JSON request body, otherwise string
-    context.log(json.encode(context.req.headers)); // String key-value pairs of all request headers, keys are lowercase
-    context.log(context.req.scheme);               // Value of the x-forwarded-proto header, usually http or https
-    context.log(context.req.method);               // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
-    context.log(context.req.url);                  // Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50
-    context.log(context.req.host);                 // Hostname from the host header, such as awesome.appwrite.io
-    context.log(context.req.port);                 // Port from the host header, for example 8000
-    context.log(context.req.path);                 // Path part of URL, for example /v1/hooks
-    context.log(context.req.queryString);          // Raw query params string. For example "limit=12&offset=50"
-    context.log(json.encode(context.req.query));   // Parsed query params. For example, req.query.limit
+    context.log(context.req.bodyJson);               // Raw request body, contains request data
+    context.log(json.encode(context.req.bodyJson));  // Object from parsed JSON request body, otherwise string
+    context.log(json.encode(context.req.headers));   // String key-value pairs of all request headers, keys are lowercase
+    context.log(context.req.scheme);                 // Value of the x-forwarded-proto header, usually http or https
+    context.log(context.req.method);                 // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
+    context.log(context.req.url);                    // Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50
+    context.log(context.req.host);                   // Hostname from the host header, such as awesome.appwrite.io
+    context.log(context.req.port);                   // Port from the host header, for example 8000
+    context.log(context.req.path);                   // Path part of URL, for example /v1/hooks
+    context.log(context.req.queryString);            // Raw query params string. For example "limit=12&offset=50"
+    context.log(json.encode(context.req.query));     // Parsed query params. For example, req.query.limit
 
-    return context.res.send("All the request parameters are logged to the Appwrite Console.");
+    return context.res.text("All the request parameters are logged to the Appwrite Console.");
 }
 ```
 ```swift
@@ -579,19 +604,19 @@ import Foundation
 import Foundation
 
 func main(context: RuntimeContext) async throws -> RuntimeOutput {
-    context.log(context.req.bodyRaw)                                                     // Raw request body, contains request data
-    context.log(NSJSONSerialization.jsonObject(with: context.req.body, options: [])!)    // Object from parsed JSON request body, otherwise string
-    context.log(NSJSONSerialization.jsonObject(with: context.req.headers, options: [])!) // String key-value pairs of all request headers, keys are lowercase
-    context.log(context.req.scheme)                                                      // Value of the x-forwarded-proto header, usually http or https
-    context.log(context.req.method)                                                      // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
-    context.log(context.req.url)                                                         // Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50 
-    context.log(context.req.host)                                                        // Hostname from the host header, such as awesome.appwrite.io
-    context.log(context.req.port)                                                        // Port from the host header, for example 8000
-    context.log(context.req.path)                                                        // Path part of URL, for example /v1/hooks
-    context.log(context.req.queryString)                                                 // Raw query params string. For example "limit=12&offset=50"
-    context.log(NSJSONSerialization.jsonObject(with: context.req.query, options: [])!)   // Parsed query params. For example, req.query.limit
+    context.log(context.req.bodyJson)                                                      // Raw request body, contains request data
+    context.log(NSJSONSerialization.jsonObject(with: context.req.bodyJson, options: [])!)  // Object from parsed JSON request body, otherwise string
+    context.log(NSJSONSerialization.jsonObject(with: context.req.headers, options: [])!)   // String key-value pairs of all request headers, keys are lowercase
+    context.log(context.req.scheme)                                                        // Value of the x-forwarded-proto header, usually http or https
+    context.log(context.req.method)                                                        // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
+    context.log(context.req.url)                                                           // Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50 
+    context.log(context.req.host)                                                          // Hostname from the host header, such as awesome.appwrite.io
+    context.log(context.req.port)                                                          // Port from the host header, for example 8000
+    context.log(context.req.path)                                                          // Path part of URL, for example /v1/hooks
+    context.log(context.req.queryString)                                                   // Raw query params string. For example "limit=12&offset=50"
+    context.log(NSJSONSerialization.jsonObject(with: context.req.query, options: [])!)     // Parsed query params. For example, req.query.limit
 
-    return context.res.send("All the request parameters are logged to the Appwrite Console.")
+    return context.res.text("All the request parameters are logged to the Appwrite Console.")
 }
 ```
 ```csharp
@@ -602,19 +627,19 @@ using System.Text.Json;
 public class Handler {
     public async Task<RuntimeOutput> Main(RuntimeContext Context) 
     {
-        Context.Log(Context.Req.BodyRaw);                                                     // Raw request body, contains request data
+        Context.Log(Context.Req.BodyRaw);                                                // Raw request body, contains request data
         Context.Log(JsonSerializer.Serialize<object>(Context.Req.Body));                 // Object from parsed JSON request body, otherwise string
         Context.Log(JsonSerializer.Serialize<object>(Context.Req.Headers));              // String key-value pairs of all request headers, keys are lowercase
-        Context.Log(Context.Req.Scheme);                                                      // Value of the x-forwarded-proto header, usually http or https
-        Context.Log(Context.Req.Method);                                                      // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
-        Context.Log(Context.Req.Url);                                                         // Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50
-        Context.Log(Context.Req.Host);                                                        // Hostname from the host header, such as awesome.appwrite.io
-        Context.Log(Context.Req.Port);                                                        // Port from the host header, for example 8000
-        Context.Log(Context.Req.Path);                                                        // Path part of URL, for example /v1/hooks
-        Context.Log(Context.Req.QueryString);                                                 // Raw query params string. For example "limit=12&offset=50"
+        Context.Log(Context.Req.Scheme);                                                 // Value of the x-forwarded-proto header, usually http or https
+        Context.Log(Context.Req.Method);                                                 // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
+        Context.Log(Context.Req.Url);                                                    // Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50
+        Context.Log(Context.Req.Host);                                                   // Hostname from the host header, such as awesome.appwrite.io
+        Context.Log(Context.Req.Port);                                                   // Port from the host header, for example 8000
+        Context.Log(Context.Req.Path);                                                   // Path part of URL, for example /v1/hooks
+        Context.Log(Context.Req.QueryString);                                            // Raw query params string. For example "limit=12&offset=50"
         Context.Log(JsonSerializer.Serialize<object>(Context.Req.Query));                // Parsed query params. For example, req.query.limit
 
-        return Context.Res.Send("All the request parameters are logged to the Appwrite Console.");
+        return Context.Res.Text("All the request parameters are logged to the Appwrite Console.");
     }
 }
 ```
@@ -629,19 +654,19 @@ class Main {
     fun main(context: RuntimeContext): RuntimeOutput {
         val gson = Gson()
 
-        context.log(context.req.bodyRaw)                // Raw request body, contains request data
-        context.log(gson.toString(context.req.body))    // Object from parsed JSON request body, otherwise string
-        context.log(gson.toString(context.req.headers)) // String key-value pairs of all request headers, keys are lowercase
-        context.log(context.req.scheme)                 // Value of the x-forwarded-proto header, usually http or https
-        context.log(context.req.method)                 // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
-        context.log(context.req.url)                    // Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50
-        context.log(context.req.host)                   // Hostname from the host header, such as awesome.appwrite.io
-        context.log(context.req.port)                   // Port from the host header, for example 8000
-        context.log(context.req.path)                   // Path part of URL, for example /v1/hooks
-        context.log(context.req.queryString)            // Raw query params string. For example "limit=12&offset=50"
-        context.log(gson.toString(context.req.query))   // Parsed query params. For example, req.query.limit
+        context.log(context.req.bodyJson)                 // Raw request body, contains request data
+        context.log(gson.toString(context.req.bodyJson))  // Object from parsed JSON request body, otherwise string
+        context.log(gson.toString(context.req.headers))   // String key-value pairs of all request headers, keys are lowercase
+        context.log(context.req.scheme)                   // Value of the x-forwarded-proto header, usually http or https
+        context.log(context.req.method)                   // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
+        context.log(context.req.url)                      // Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50
+        context.log(context.req.host)                     // Hostname from the host header, such as awesome.appwrite.io
+        context.log(context.req.port)                     // Port from the host header, for example 8000
+        context.log(context.req.path)                     // Path part of URL, for example /v1/hooks
+        context.log(context.req.queryString)              // Raw query params string. For example "limit=12&offset=50"
+        context.log(gson.toString(context.req.query))     // Parsed query params. For example, req.query.limit
 
-        return context.res.send("All the request parameters are logged to the Appwrite Console.")
+        return context.res.text("All the request parameters are logged to the Appwrite Console.")
     }
 }
 ```
@@ -695,6 +720,29 @@ If you need to send a response to the invoker of the function, such as a user, c
 The response information **will not be logged** to the Appwrite Console. 
 There are several possible ways to send a response, explore them in the following Appwrite Function.
 
+### Response Types {% #response-types %}
+
+{% table %}
+* Response
+* Description
+---
+* `text`
+* Converts the body using UTF-8 encoding into a binary Buffer.
+---
+* `binary`
+* Packages binary bytes, the status code, and the headers into an object.
+---
+* `json`
+* Converts the data into a JSON string and sets the content-type header to `application/json`.
+---
+* `empty`
+* Sends a response with a `code 204 No Content` status.
+---
+* `redirect`
+* Redirects the client to the specified URL link.
+---
+{% /table %}
+
 {% multicode %}
 ```js
 export default async ({ req, res, log }) => {
@@ -707,12 +755,12 @@ export default async ({ req, res, log }) => {
         case 'redirect':
             return res.redirect("https://appwrite.io", 301);
         case 'html':
-            return res.send(
+            return res.text(
                 "<h1>This is an HTML response</h1>", 200, {
                     "content-type": "text/html"
                 });
         default:
-            return res.send("This is a text response");
+            return res.text("This is a text response");
     }
 }
 ```
@@ -747,11 +795,11 @@ def main(context):
     elif type == 'redirect':
         return context.res.redirect("https://appwrite.io", 301)
     elif type == 'html':
-        return context.res.send("<h1>This is an HTML response</h1>", 200, {
+        return context.res.text("<h1>This is an HTML response</h1>", 200, {
             "content-type": "text/html"
         })
     else:
-        return context.res.send("This is a text response")
+        return context.res.text("This is a text response")
 ```
 ```ruby
 def main(context)
@@ -763,11 +811,11 @@ def main(context)
         when 'redirect'
             return context.res.redirect("https://appwrite.io", 301)
         when 'html'
-            return context.res.send("<h1>This is an HTML response</h1>", 200, {
+            return context.res.text("<h1>This is an HTML response</h1>", 200, {
                 "content-type": "text/html"
             })
         else
-            return context.res.send("This is a text response")
+            return context.res.text("This is a text response")
     end
 end
 ```
@@ -782,12 +830,12 @@ export default async ({ req, res, log }) => {
         case 'redirect':
             return res.redirect("https://appwrite.io", 301);
         case 'html':
-            return res.send(
+            return res.text(
                 "<h1>This is an HTML response</h1>", 200, {
                     "content-type": "text/html"
                 });
         default:
-            return res.send("This is a text response");
+            return res.text("This is a text response");
     }
 }
 ```
@@ -803,10 +851,10 @@ Future<dynamic> main(final context) async {
         case 'redirect':
             return context.res.redirect('https://appwrite.io', 301);
         case 'html':
-            return context.res.send('<h1>This is an HTML response</h1>',
+            return context.res.text('<h1>This is an HTML response</h1>',
                 200, {'content-type': 'text/html'});
         default:
-            return context.res.send('This is a text response');
+            return context.res.text('This is a text response');
   }
 }
 ```
@@ -818,15 +866,15 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     case "empty":
         return context.res.empty()
     case "json":
-        return context.res.send(["type": "This is a JSON response"])
+        return context.res.text(["type": "This is a JSON response"])
     case "redirect":
         return context.res.redirect("https://appwrite.io", 301)
     case "html":
-        return context.res.send("<h1>This is an HTML response</h1>", 200, [
+        return context.res.text("<h1>This is an HTML response</h1>", 200, [
             "content-type": "text/html"
             ])
     default:
-        return context.res.send("This is a text response")
+        return context.res.text("This is a text response")
     }
 }
 ```
@@ -839,15 +887,15 @@ public class Handler {
             case "empty":
                 return Context.Res.Empty();
             case "json":
-                return Context.Res.Send(new Dictionary<string, object>() { { "type", "This is a JSON response" } });
+                return Context.Res.Text(new Dictionary<string, object>() { { "type", "This is a JSON response" } });
             case "redirect":
                 return Context.Res.Redirect("https://appwrite.io", 301);
             case "html":
-                return Context.Res.Send("<h1>This is an HTML response</h1>", 200, new Dictionary<string, string>() {
+                return Context.Res.Text("<h1>This is an HTML response</h1>", 200, new Dictionary<string, string>() {
                     { "content-type", "text/html" } 
                 });
             default:
-                return Context.Res.Send("This is a text response");
+                return Context.Res.Text("This is a text response");
         }
     }
 }
@@ -862,10 +910,10 @@ class Main {
     fun main(context: RuntimeContext): RuntimeOutput {
         when (context.req.query["type"]) {
             "empty" -> return context.res.empty()
-            "json" -> return context.res.send(mapOf("type" to "This is a JSON response"))
+            "json" -> return context.res.text(mapOf("type" to "This is a JSON response"))
             "redirect" -> return context.res.redirect("https://appwrite.io", 301)
-            "html" -> return context.res.send("<h1>This is an HTML response</h1>", 200, mapOf("content-type" to "text/html"))
-            else -> return context.res.send("This is a text response")
+            "html" -> return context.res.text("<h1>This is an HTML response</h1>", 200, mapOf("content-type" to "text/html"))
+            else -> return context.res.text("This is a text response")
         }
     }
 }
@@ -914,15 +962,15 @@ namespace runtime {
         } else if (type == "json") {
           Json::Value data;
           data["type"] = "This is a JSON response";
-          return context.res.send(data);
+          return context.res.text(data);
         } else if (type == "redirect") {
           return context.res.redirect("https://appwrite.io", 301);
         } else if (type == "html") {
           Json::Value headers;
           headers["content-type"] = "text/html";
-          return context.res.send("<h1>This is an HTML response</h1>", 200, headers);
+          return context.res.text("<h1>This is an HTML response</h1>", 200, headers);
         } else {
-          return context.res.send("This is a text response");
+          return context.res.text("This is a text response");
         }
       }
   };
@@ -954,7 +1002,7 @@ export default async ({ req, res, log, error }) => {
     log(`This function was called with ${req.method} method`);
     error("This is an error, use for logging errors to console");
 
-    return res.send("Check the Appwrite Console to see logs and errors!");
+    return res.text("Check the Appwrite Console to see logs and errors!");
 };
 ```
 ```php
@@ -974,7 +1022,7 @@ def main(context):
     context.log(f"This function was called with {context.req.method} method")
     context.error("This is an error, use for logging errors to console")
 
-    return context.res.send("Check the Appwrite Console to see logs and errors!")
+    return context.res.text("Check the Appwrite Console to see logs and errors!")
 ```
 ```ruby
 def main(context)
@@ -982,7 +1030,7 @@ def main(context)
     context.log("This function was called with #{context.req.method} method")
     context.error("This is an error, use for logging errors to console")
 
-    return context.res.send("Check the Appwrite Console to see logs and errors!")
+    return context.res.text("Check the Appwrite Console to see logs and errors!")
 end
 ```
 ```deno
@@ -991,7 +1039,7 @@ export default async ({ res, log, error }: any) => {
     log(`This function was called with ${context.req.method} method`);
     error("This is an error, use for logging errors to console");
 
-    return res.send("Check the Appwrite Console to see logs and errors!");
+    return res.text("Check the Appwrite Console to see logs and errors!");
 };
 ```
 ```dart
@@ -1002,7 +1050,7 @@ Future<dynamic> main(final context) async {
     context.log("This function was called with ${context.req.method} method");
     context.error("This is an error, use for logging errors to console");
 
-    return context.res.send("Check the Appwrite Console to see logs and errors!");
+    return context.res.text("Check the Appwrite Console to see logs and errors!");
 }
 ```
 ```swift
@@ -1013,7 +1061,7 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     context.log("This function was called with \(context.req.method) method")
     context.error("This is an error, use for logging errors to console")
 
-    return context.res.send("Check the Appwrite Console to see logs and errors!")
+    return context.res.text("Check the Appwrite Console to see logs and errors!")
 }
 ```
 ```csharp
@@ -1026,7 +1074,7 @@ public class Handler {
         Context.Log($"This function was called with {Context.Req.Method} method");
         Context.Error("This is an error, use for logging errors to console");
 
-        return Context.Res.Send("Check the Appwrite Console to see logs and errors!");
+        return Context.Res.Text("Check the Appwrite Console to see logs and errors!");
     }
 }
 ```
@@ -1042,7 +1090,7 @@ class Main {
         context.log("This function was called with ${context.req.method} method")
         context.error("This is an error, use for logging errors to console")
 
-        return context.res.send("Check the Appwrite Console to see logs and errors!")
+        return context.res.text("Check the Appwrite Console to see logs and errors!")
     }
 }
 ```
@@ -1076,7 +1124,7 @@ namespace runtime {
         context.log("This function was called with " + context.req.method + " method");
         context.error("This is an error, use for logging errors to console");
 
-        return context.res.send("Check the Appwrite Console to see logs and errors!");
+        return context.res.text("Check the Appwrite Console to see logs and errors!");
       }
   };
 }
@@ -1111,7 +1159,7 @@ You can access the environment variables through the systems library of each lan
 {% multicode %}
 ```js
 export default async ({ req, res, log }) => {
-    return res.send(process.env.MY_VAR);
+    return res.text(process.env.MY_VAR);
 }
 ```
 ```php
@@ -1123,16 +1171,16 @@ return function ($context) {
 ```
 ```python
 def main(context):
-    return context.res.send(os.environ['MY_VAR'])
+    return context.res.text(os.environ['MY_VAR'])
 ```
 ```ruby
 def main(context)
-    return context.res.send(ENV['MY_VAR'])
+    return context.res.text(ENV['MY_VAR'])
 end
 ```
 ```deno
 export default async ({ req, res, log }) => {
-    return res.send(Deno.env.get('MY_VAR'));
+    return res.text(Deno.env.get('MY_VAR'));
 }
 ```
 ```dart
@@ -1140,14 +1188,14 @@ import 'dart:io';
 import 'dart:async';
 
 Future<dynamic> main(final context) async {
-    return context.res.send(Platform.environment['MY_VAR']);
+    return context.res.text(Platform.environment['MY_VAR']);
 }
 ```
 ```swift
 import Foundation
 
 func main(context: RuntimeContext) async throws -> RuntimeOutput {
-    return context.res.send(ProcessInfo.processInfo.environment["MY_VAR"])
+    return context.res.text(ProcessInfo.processInfo.environment["MY_VAR"])
 }
 ```
 ```csharp
@@ -1156,7 +1204,7 @@ namespace DotNetRuntime;
 public class Handler {
     public async Task<RuntimeOutput> Main(RuntimeContext Context) 
     {
-        return Context.Res.Send(Environment.GetEnvironmentVariable("MY_VAR"));
+        return Context.Res.Text(Environment.GetEnvironmentVariable("MY_VAR"));
     }
 }
 ```
@@ -1168,7 +1216,7 @@ import io.openruntimes.kotlin.RuntimeOutput
 
 class Main {
     fun main(context: RuntimeContext): RuntimeOutput {
-        return context.res.send(System.getenv("MY_VAR"))
+        return context.res.text(System.getenv("MY_VAR"))
     }
 }
 ```
@@ -1180,7 +1228,7 @@ import io.openruntimes.java.RuntimeOutput;
 
 public class Main {
     public RuntimeOutput main(RuntimeContext context) throws Exception {
-        return context.getRes().send(System.getenv("MY_VAR"));
+        return context.getRes().text(System.getenv("MY_VAR"));
     }
 }
 ```
@@ -1194,7 +1242,7 @@ namespace runtime {
     class Handler {
     public:
         static RuntimeOutput main(RuntimeContext &context) {
-            return context.res.send(std::getenv("MY_VAR"));
+            return context.res.text(std::getenv("MY_VAR"));
         }
     };
 }
@@ -1332,10 +1380,10 @@ export default async ({ req, res, log, error }) => {
         )
     } catch (e) {
         error("Failed to create document: " + e.message)
-        return res.send("Failed to create document")
+        return res.text("Failed to create document")
     }
 
-    return res.send("Document created")
+    return res.text("Document created")
 }
 ```
 ```php
@@ -1449,10 +1497,10 @@ export default function ({req, res, error}: any){
         );
     } catch (e) {
         error("Failed to create document: " + e.message);
-        return res.send("Failed to create document");
+        return res.text("Failed to create document");
     }
     
-    return res.send("Document created");
+    return res.text("Document created");
 }
 ```
 ```dart
@@ -1477,10 +1525,10 @@ Future<dynamic> main(final context) async {
         );
     } catch (e) {
         context.error("Failed to create document: " + e.message);
-        return context.res.send("Failed to create document");
+        return context.res.text("Failed to create document");
     }
 
-    return context.res.send("Document created");
+    return context.res.text("Document created");
 }
 ```
 ```swift
@@ -1505,10 +1553,10 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
         )
     } catch {
         context.error("Failed to create document: \(error.localizedDescription)")
-        return context.res.send("Failed to create document")
+        return context.res.text("Failed to create document")
     }
 
-    return context.res.send("Document created")
+    return context.res.text("Document created")
 }
 ```
 ```csharp
@@ -1573,10 +1621,10 @@ class Main {
             )
         } catch (e: Exception) {
             context.error("Failed to create document: " + e.message)
-            return context.res.send("Failed to create document")
+            return context.res.text("Failed to create document")
         }
 
-        return context.res.send("Document created")
+        return context.res.text("Document created")
     }
 }
 ```
@@ -1606,10 +1654,10 @@ public class Main {
             );
         } catch (Exception e) {
             context.error("Failed to create document: " + e.getMessage());
-            return context.res.send("Failed to create document");
+            return context.res.text("Failed to create document");
         }
 
-        return context.res.send("Document created");
+        return context.res.text("Document created");
     }
 }
 ```
@@ -1634,7 +1682,7 @@ export default async ({ req, res, log }) => {
     if (req.headers['x-appwrite-user-jwt']) {
         client.setJWT(req.headers['x-appwrite-user-jwt'])
     } else {
-        return res.send("Please sign in, JWT not found")
+        return res.text("Please sign in, JWT not found")
     }
 
     const databases = new Databases(client);
@@ -1648,10 +1696,10 @@ export default async ({ req, res, log }) => {
         )
     } catch (e) {
         log("Failed to create document: " + e.message)
-        return res.send("Failed to create document")
+        return res.text("Failed to create document")
     }
 
-    return res.send("Document created")
+    return res.text("Document created")
 }
 ```
 ```php
@@ -1707,7 +1755,7 @@ def main(context):
     if "x-appwrite-user-jwt" in context.req.headers:
         client.set_jwt(context.req.headers["x-appwrite-user-jwt"])
     else:
-        return context.res.send("Please sign in, JWT not found")
+        return context.res.text("Please sign in, JWT not found")
 
     databases = Databases(client)
 
@@ -1761,7 +1809,7 @@ export default function ({req, res, error}: any){
     if (req.headers["x-appwrite-user-jwt"]) {
         client.setJWT(req.headers["x-appwrite-user-jwt"]);
     } else {
-        return res.send("Please sign in, JWT not found");
+        return res.text("Please sign in, JWT not found");
     }
     
     const databases = new Databases(client);
@@ -1775,10 +1823,10 @@ export default function ({req, res, error}: any){
         );
     } catch (e) {
         error("Failed to create document: " + e.message)
-        return res.send("Failed to create document");
+        return res.text("Failed to create document");
     }
     
-    return res.send("Document created");
+    return res.text("Document created");
 }
 ```
 ```dart
@@ -1793,7 +1841,7 @@ Future<dynamic> main(final context) async {
     if (context.req.headers['x-appwrite-user-jwt'] != null) {
         client.setJWT(context.req.headers['x-appwrite-user-jwt']);
     } else {
-        return context.res.send("Please sign in, JWT not found");
+        return context.res.text("Please sign in, JWT not found");
     }
     
     final databases = Databases(client);
@@ -1807,10 +1855,10 @@ Future<dynamic> main(final context) async {
         );
     } catch (e) {
         context.error("Failed to create document: " + e.message);
-        return context.res.send("Failed to create document");
+        return context.res.text("Failed to create document");
     }
 
-    return context.res.send("Document created");
+    return context.res.text("Document created");
 }
 ```
 ```swift
@@ -1825,7 +1873,7 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     if let jwt = context.req.headers["x-appwrite-user-jwt"] {
         client.setJWT(jwt)
     } else {
-        return context.res.send("Please sign in, JWT not found")
+        return context.res.text("Please sign in, JWT not found")
     }
 
     let databases = Databases(client: client)
@@ -1839,10 +1887,10 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
         )
     } catch {
         context.error("Failed to create document: \(error.localizedDescription)")
-        return context.res.send("Failed to create document")
+        return context.res.text("Failed to create document")
     }
 
-    return context.res.send("Document created")
+    return context.res.text("Document created")
 }
 ```
 ```csharp
@@ -1862,7 +1910,7 @@ namespace DotNetRuntime
             if (Context.Req.Headers.ContainsKey("x-appwrite-user-jwt")) {
                 client.SetJWT(Context.Req.Headers["x-appwrite-user-jwt"]);
             } else {
-                return Context.Res.Send("Please sign in, JWT not found");
+                return Context.Res.Text("Please sign in, JWT not found");
             }
 
             var databases = new Databases(client);
@@ -1875,10 +1923,10 @@ namespace DotNetRuntime
                     data: new Dictionary<string, object>());
             } catch (Exception e) {
                 Context.Error("Failed to create document: " + e.Message);
-                return Context.Res.Send("Failed to create document");
+                return Context.Res.Text("Failed to create document");
             }
 
-            return Context.Res.Send("Document created");
+            return Context.Res.Text("Document created");
         }
     }
 }
@@ -1901,7 +1949,7 @@ class Main {
         if (context.req.headers["x-appwrite-user-jwt"] != null) {
             client.setJWT(context.req.headers["x-appwrite-user-jwt"])
         } else {
-            return context.res.send("Please sign in, JWT not found")
+            return context.res.text("Please sign in, JWT not found")
         }
 
         val databases = Databases(client)
@@ -1915,10 +1963,10 @@ class Main {
             )
         } catch (e: Exception) {
             context.error("Failed to create document: " + e.message)
-            return context.res.send("Failed to create document")
+            return context.res.text("Failed to create document")
         }
 
-        return context.res.send("Document created")
+        return context.res.text("Document created")
     }
 }
 ```
@@ -1938,7 +1986,7 @@ public class Main {
         if (context.req.headers.containsKey("x-appwrite-user-jwt")) {
             client.setJWT(context.req.headers.get("x-appwrite-user-jwt"));
         } else {
-            return context.res.send("Please sign in, JWT not found");
+            return context.res.text("Please sign in, JWT not found");
         }
 
         Databases databases = new Databases(client);
@@ -1952,10 +2000,10 @@ public class Main {
             );
         } catch (Exception e) {
             context.error("Failed to create document: " + e.getMessage());
-            return context.res.send("Failed to create document");
+            return context.res.text("Failed to create document");
         }
 
-        return context.res.send("Document created");
+        return context.res.text("Document created");
 
     }
 }
@@ -1979,7 +2027,7 @@ export function add(a, b) {
 import { add } from './utils.js';
 
 export default function ({ res }) {
-    return res.send(add(1, 2));
+    return res.text(add(1, 2));
 }
 ```
 {% /tabsitem %}
@@ -2014,7 +2062,7 @@ def add(a, b):
 from .utils import add
 
 def main(context):
-    return context.res.send(add(1, 2))
+    return context.res.text(add(1, 2))
 ```
 {% /tabsitem %}
 
@@ -2030,7 +2078,7 @@ end
 require_relative 'utils'
 
 def main(context)
-    return context.res.send(add(1, 2))
+    return context.res.text(add(1, 2))
 end
 ```
 {% /tabsitem %}
@@ -2047,7 +2095,7 @@ export function add(a: number, b: number): number {
 import { add } from './utils.ts';
 
 export default function ({res}: {res: any}) {
-    return res.send(add(1, 2));
+    return res.text(add(1, 2));
 }
 ```
 {% /tabsitem %}
@@ -2066,7 +2114,7 @@ import 'dart:async';
 import 'package:package_name/utils.dart';
 
 Future<dynamic> main(final context) async {
-    return context.res.send(add(1, 2));
+    return context.res.text(add(1, 2));
 }
 ```
 {% /tabsitem %}
@@ -2083,7 +2131,7 @@ func add(_ a: Int, _ b: Int) -> Int {
 import Foundation
 
 func main(context: RuntimeContext) async throws -> RuntimeOutput {
-    return context.res.send(add(1, 2))
+    return context.res.text(add(1, 2))
 }
 ```
 {% /tabsitem %}
@@ -2109,7 +2157,7 @@ namespace DotNetRuntime
     public class Handler {
         public async Task<RuntimeOutput> Main(RuntimeContext Context)
         {
-            return Context.Res.Send(Utils.Add(1, 2));
+            return Context.Res.Text(Utils.Add(1, 2));
         }
     }
 }
@@ -2137,7 +2185,7 @@ import io.openruntimes.kotlin.Utils
 
 class Main {
     fun main(context: RuntimeContext): RuntimeOutput {
-        return context.res.send(Utils.add(1, 2))
+        return context.res.text(Utils.add(1, 2))
     }
 }
 ```
@@ -2163,7 +2211,7 @@ import io.openruntimes.java.Utils;
 
 public class Main {
     public RuntimeOutput main(RuntimeContext context) throws Exception {
-        return context.res.send(Utils.add(1, 2));
+        return context.res.text(Utils.add(1, 2));
     }
 }
 ```
