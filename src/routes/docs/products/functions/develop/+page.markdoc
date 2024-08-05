@@ -30,10 +30,10 @@ import { Client } from 'node-appwrite';
 export default async ({ req, res, log, error }) => {
   // Why not try the Appwrite SDK?
   //
+  // Set project and set API key
   // const client = new Client()
-  //    .setEndpoint('https://cloud.appwrite.io/v1')
   //    .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-  //    .setKey(process.env.APPWRITE_API_KEY);
+  //    .setKey(req.headers['x-appwrite-key']);
 
   // You can log messages to the console
   log('Hello, Logs!');
@@ -69,12 +69,11 @@ use Appwrite\Exception;
 return function ($context) {
     // Why not try the Appwrite SDK?
     //
-    // $client = new Client();
-    // $client
-    //     ->setEndpoint('https://cloud.appwrite.io/v1')
-    //     ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
-    //      ->setKey(getenv('APPWRITE_API_KEY'));
-
+    // Set project and set API key
+    // $client = (new Client())
+    //      ->setProject(getenv(APPWRITE_FUNCTION_PROJECT_ID))
+    //      ->setKey($context->req->headers['x-appwrite-key']);
+   
     // You can log messages to the console
     $context->log('Hello, Logs!');
 
@@ -108,11 +107,11 @@ import os
 def main(context):
     # Why not try the Appwrite SDK?
     #
+    # Set project and set API key
     # client = (
     #     Client()
-    #         .set_endpoint("https://cloud.appwrite.io/v1")
-    #         .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
-    #         .set_key(os.environ["APPWRITE_API_KEY"])
+    #        .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
+    #        .set_key(context.req.headers["x-appwrite-key"])
     # )
 
     # You can log messages to the console
@@ -143,11 +142,10 @@ require "appwrite"
 def main(context)
   # Why not try the Appwrite SDK?
   #
-  # client = Appwrite::Client.new
-  # client
-  #   .set_endpoint('https://cloud.appwrite.io/v1')
+  # Set project and set API key
+  # client = Client.new
   #   .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
-  #   .set_key(ENV['APPWRITE_API_KEY'])
+  #   .set_key(context.req.headers['x-appwrite-key'])
 
   # You can log messages to the console
   context.log("Hello, Logs!")
@@ -179,10 +177,10 @@ import { Client } from "https://deno.land/x/appwrite@7.0.0/mod.ts";
 export default ({ req, res, log, error }: any) => {
   // Why not try the Appwrite SDK?
   //
+  // Set project and set API key
   // const client = new Client()
-  //    .setEndpoint('https://cloud.appwrite.io/v1')
-  //    .setProject(Deno.env.get("APPWRITE_FUNCTION_PROJECT_ID"))
-  //    .setKey(Deno.env.get("APPWRITE_API_KEY"));
+  //    .setProject(Deno.env.get("APPWRITE_FUNCTION_PROJECT_ID") || "")
+  //    .setKey(req.headers["x-appwrite-key"] || "");
 
   // You can log messages to the console
   log("Hello, Logs!");
@@ -213,12 +211,13 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 // This is your Appwrite function
 // It's executed each time we get a request
 Future main(final context) async {
-// Why not try the Appwrite SDK?
+  // Why not try the Appwrite SDK?
   //
+  // Set project and set API key
   // final client = Client()
-  //    .setEndpoint('https://cloud.appwrite.io/v1')
-  //    .setProject(Platform.environment["APPWRITE_FUNCTION_PROJECT_ID"])
-  //    .setKey(Platform.environment["APPWRITE_API_KEY"]);
+  //    .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
+  //    .setKey(context.req.headers['x-appwrite-key']);
+
 
   // You can log messages to the console
   context.log('Hello, Logs!');
@@ -255,10 +254,11 @@ class Main {
     // It's executed each time we get a request
     fun main(context: RuntimeContext): RuntimeOutput {
         // Why not try the Appwrite SDK?
+        //
+        // Set project and set API key
         // val client = Client()
-        //    .setEndpoint("https://cloud.appwrite.io/v1")
         //    .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
-        //    .setKey(System.getenv("APPWRITE_API_KEY"))
+        //    .setKey(context.req.headers["x-appwrite-key"])
 
         // You can log messages to the console
         context.log("Hello, Logs!")
@@ -298,10 +298,10 @@ public class Main {
     public RuntimeOutput main(RuntimeContext context) throws Exception {
         // Why not try the Appwrite SDK?
         //
-        // Client client = new Client()
-        //     .setEndpoint("https://cloud.appwrite.io/v1")
+        // Set project and set API key
+        // Client client = new Client();
         //     .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
-        //     .setKey(System.getenv("APPWRITE_API_KEY"));
+        //     .setKey(context.getReq().getHeaders().get("x-appwrite-key"));
 
         // You can log messages to the console
         context.log("Hello, Logs!");
@@ -337,10 +337,10 @@ import Foundation
 func main(context: RuntimeContext) async throws -> RuntimeOutput {
     // Why not try the Appwrite SDK?
     //
+    // Set project and set API key
     // let client = Client()
-    //    .setEndpoint("https://cloud.appwrite.io/v1")
     //    .setProject(ProcessInfo.processInfo.environment["APPWRITE_FUNCTION_PROJECT_ID"])
-    //    .setKey(ProcessInfo.processInfo.environment["APPWRITE_API_KEY"]);
+    //    .setKey(context.req.headers["x-appwrite-key"] ?? "")
 
     // You can log messages to the console
     context.log("Hello, Logs!")
@@ -379,10 +379,10 @@ public class Handler {
     {
         // Why not try the Appwrite SDK?
         //
+        // Set project and set API key
         // var client = new Client()
-        //     .SetEndpoint("https://cloud.appwrite.io/v1")  
-        //     .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID"))        
-        //     .SetKey(Environment.GetEnvironmentVariable("APPWRITE_API_KEY"))
+        //     .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID")) 
+        //     .SetKey(Context.Req.Headers["x-appwrite-key"]);
 
         // You can log messages to the console
         Context.Log("Hello, Logs!");
@@ -708,6 +708,7 @@ These are provided alongside any custom headers sent to the function.
 |---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `x-appwrite-trigger`        |  Describes how the function execution was invoked. Possible values are `http`, `schedule` or `event`.                                                      |
 | `x-appwrite-event`          |  If the function execution was triggered by an event, describes the triggering event.                                                                |
+| `x-appwrite-key`            |  The dynamic API key is used for server authentication. [Learn more about dynamic api keys](/docs/products/functions/develop#dynamic-api-key). |
 | `x-appwrite-user-id`        |  If the function execution was invoked by an authenticated user, display the user ID. This doesn't apply to Appwrite Console users or API keys.      |
 | `x-appwrite-user-jwt`       |  JWT token generated from the invoking user's session. Used to authenticate Server SDKs to respect access permissions. [Learn more about JWT tokens](/docs/products/auth/jwt).  |
 | `x-appwrite-country-code`   |  Displays the country code of the configured locale.                                                                                                 |
@@ -825,7 +826,7 @@ export default async ({ req, res, log }) => {
         case 'empty':
             return res.empty();
         case 'json':
-            return res.json({type": "This is a JSON response"});
+            return res.json({"type": "This is a JSON response"});
         case 'redirect':
             return res.redirect("https://appwrite.io", 301);
         case 'html':
@@ -1140,10 +1141,6 @@ You can access these logs through the following steps.
 # Accessing environment variables {% #environment-variables %} 
 If you need to pass constants or secrets to Appwrite Functions, you can use environment variables. 
 
-{% info title="Appwrite API keys" %}
-If your function is using an Appwrite SDK with an API key, this API key needs to be generated and passed in manually. API keys are not passed by default for security reasons.
-{% /info %}
-
 | Variable                          | Description                                    |
 |-----------------------------------|------------------------------------------------|
 | `APPWRITE_FUNCTION_ID`              |  The ID of the running function.               |
@@ -1231,7 +1228,7 @@ import io.openruntimes.java.RuntimeOutput;
 
 public class Main {
     public RuntimeOutput main(RuntimeContext context) throws Exception {
-        return context.getRes().send(System.getenv("MY_VAR"));
+        return context.getRes().text(System.getenv("MY_VAR"));
     }
 }
 ```
@@ -1242,12 +1239,12 @@ public class Main {
 #include "../RuntimeContext.h"
 
 namespace runtime {
-  class Handler {
+    class Handler {
     public:
-      static RuntimeOutput main(RuntimeContext &context) {
-
-      return context.res.text(std::getenv("MY_VAR"));
-  };
+        static RuntimeOutput main(RuntimeContext &context) {
+            return context.res.text(std::getenv("MY_VAR"));
+        }
+    };
 }
 ```
 {% /multicode %}
@@ -1344,29 +1341,33 @@ By default, we include the following package managers in each runtime.
 {% /table %}
 
 # Using Appwrite in a function {% #using-appwrite %} 
-Appwrite can be used in your functions by adding the relevant SDK to your function's dependencies. 
-Authenticating with Appwrite is done via an API key or a JWT token. 
-API keys must be generated and exported as an [environment variable](/docs/advanced/self-hosting/environment-variables).
+Appwrite can be used in your functions by adding the relevant SDK to your function's dependencies.
+Authenticating with Appwrite is done via a dynamic API key or a JWT token. 
 
-You can read more about authentication in the [JWT login](/docs/products/auth/jwt) section of the docs.
+## Dynamic API key {% #dynamic-api-key %}
+Dynamic API keys are the same as [API keys](/docs/advanced/platform/api-keys) but are automatically generated.
+They are generated in your functions per execution.
+However, you can only use dynamic API keys inside Appwrite functions.
 
-## Using with API key {% #using-api-key %} 
-API keys have defined scopes when you create them. 
-They ignore permissions and operate without a sessions. 
-Use API keys if the function should act as an admin type role, instead of acting on behalf of a user. 
-Pass in your API key as an environment variable. 
-Never share API keys with users.
+Dynamic API keys grant access and operate without sessions.
+They allow your function to act as an admin-type role instead of acting on behalf of a user.
+Update the function settings to configure the scopes of the function.
+
+1. In Appwrite Console, navigate to **Functions**.
+2. Click to open a function you wish to configure.
+3. Under the **Settings** tab, navigate to **Scopes**.
+4. Select the scopes you want to grant the dynamic key.
+5. It is best practice to allow only necessary permissions.
 
 {% multicode %}
 ```server-nodejs
 import { Client, Databases, ID } from 'node-appwrite';
 
 export default async ({ req, res, log, error }) => {
-
+    // Set project and set API key
     const client = new Client()
-        .setEndpoint('https://cloud.appwrite.io/v1')
-        .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-        .setKey(process.env.APPWRITE_API_KEY);
+       .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+       .setKey(req.headers['x-appwrite-key']);
 
     const databases = new Databases(client);
 
@@ -1396,11 +1397,11 @@ use Appwrite\Services\Databases;
 use Appwrite\ID;
 
 return function ($context) {
+    // Set project and set API key
     $client = (new Client())
-        ->setEndpoint('https://cloud.appwrite.io/v1')
         ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
-        ->setKey(getenv('APPWRITE_API_KEY'));
-    
+        ->setKey($context->req->headers['x-appwrite-key']);
+   
     $databases = new Databases($client);
 
     try {
@@ -1426,11 +1427,11 @@ from appwrite.id import ID
 import os
 
 def main(context):
+    # Set project and set API key
     client = (
         Client()
-            .set_endpoint("https://cloud.appwrite.io/v1")
             .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
-            .set_key(os.environ["APPWRITE_API_KEY"])
+            .set_key(context.req.headers["x-appwrite-key"])
     )
 
     databases = Databases(client)
@@ -1454,10 +1455,10 @@ require "appwrite"
 include Appwrite
 
 def main(context)
-    client = Client.new
-        .set_endpoint('https://cloud.appwrite.io/v1')
-        .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
-        .set_key(ENV['APPWRITE_API_KEY'])
+    # Set project and set API key
+    client = Appwrite::Client.new
+      .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
+      .set_key(context.req.headers['x-appwrite-key'])
 
     databases = Appwrite::Databases.new(client)
 
@@ -1480,11 +1481,11 @@ end
 import { Client, Databases, ID } from "https://deno.land/x/appwrite/mod.ts";
                 
 export default function ({req, res, error}: any){
+    // Set project and set API key
     const client = new Client()
-        .setEndpoint("https://cloud.appwrite.io/v1")
-        .setProject(Deno.env.get("APPWRITE_FUNCTION_PROJECT_ID") || "")
-        .setKey(Deno.env.get("APPWRITE_API_KEY") || "");
-    
+       .setProject(Deno.env.get("APPWRITE_FUNCTION_PROJECT_ID"))
+       .setKey(req.headers["x-appwrite-key"] || "");
+
     const databases = new Databases(client);
     
     try {
@@ -1508,11 +1509,11 @@ import 'dart:async';
 import 'package:dart_appwrite/dart_appwrite.dart';
 
 Future<dynamic> main(final context) async {
+    // Set project and set API key
     final client = Client()
-        .setEndpoint('https://cloud.appwrite.io/v1')
-        .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
-        .setKey(Platform.environment['APPWRITE_API_KEY']);
-    
+       .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
+       .setKey(context.req.headers['x-appwrite-key']);
+
     final databases = Databases(client);
     
     try {
@@ -1536,10 +1537,10 @@ import AppwriteModels
 import Foundation
 
 func main(context: RuntimeContext) async throws -> RuntimeOutput {
+    // Set project and set API key
     let client = Client()
-       .setEndpoint("https://cloud.appwrite.io/v1")
        .setProject(ProcessInfo.processInfo.environment["APPWRITE_FUNCTION_PROJECT_ID"])
-       .setKey(ProcessInfo.processInfo.environment["APPWRITE_API_KEY"]);
+       .setKey(context.req.headers["x-appwrite-key"] ?? "")
 
     let databases = Databases(client: client)
 
@@ -1569,11 +1570,11 @@ namespace DotNetRuntime
     {
         public async Task Main(RuntimeContext Context) 
         {
+            // Set API 
             var client = new Client()
-               .SetEndpoint("https://cloud.appwrite.io/v1")
-               .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID"))
-               .SetKey(Environment.GetEnvironmentVariable("APPWRITE_API_KEY"))
-    
+                .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID")) 
+                .SetKey(Context.Req.Headers["x-appwrite-key"]);
+
             var databases = new Databases(client);
     
             try {
@@ -1604,10 +1605,10 @@ import java.util.HashMap
 
 class Main {
     fun main(context: RuntimeContext): RuntimeOutput {
+        // Set project and set API key
         val client = Client()
-           .setEndpoint("https://cloud.appwrite.io/v1")
            .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
-           .setKey(System.getenv("APPWRITE_API_KEY"))
+           .setKey(context.req.headers["x-appwrite-key"])
 
         val databases = Databases(client)
 
@@ -1637,10 +1638,10 @@ import io.appwrite.Client;
 
 public class Main {
     public RuntimeOutput main(RuntimeContext context) throws Exception {
-        Client client = new Client()
-            .setEndpoint("https://cloud.appwrite.io/v1")
-            .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
-            .setKey(System.getenv("APPWRITE_API_KEY"));
+        // Set project and set API key
+        Client client = new Client();
+             .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
+             .setKey(context.getReq().getHeaders().get("x-appwrite-key"));
 
         Databases databases = new Databases(client);
 
@@ -1667,7 +1668,7 @@ JWTs allow you to act on behalf of an user in your Appwrite Function.
 When using JWTs, you will be able to access and change **only** the resources with the same permissions as the user account that signed the JWT. 
 This preserves the permissions you configured on each resource.
 
-If the Appwrite Function is invoked by an authenticated user, `the x-appwrite-user-jwt` header is automatically passed in.
+If the Appwrite Function is invoked by an authenticated user, the `x-appwrite-user-jwt` header is automatically passed in.
 
 {% multicode %}
 
@@ -1676,7 +1677,6 @@ import { Client, Databases, ID } from 'node-appwrite';
 
 export default async ({ req, res, log }) => {
     const client = new Client()
-        .setEndpoint('https://cloud.appwrite.io/v1')
         .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
 
     if (req.headers['x-appwrite-user-jwt']) {
@@ -1714,7 +1714,6 @@ use Appwrite\ID;
 
 return function ($context) {
     $client = new (Client())
-        ->setEndpoint('https://cloud.appwrite.io/v1')
         ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
     
     if (isset($context->req->headers['x-appwrite-user-jwt'])) {
@@ -1750,7 +1749,6 @@ import os
 def main(context):
     client = (
         Client()
-            .set_endpoint("https://cloud.appwrite.io/v1")
             .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
     )
 
@@ -1781,7 +1779,6 @@ include Appwrite
 
 def main(context)
     client = Client.new
-        .set_endpoint('https://cloud.appwrite.io/v1')
         .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
 
     if context.request.headers['x-appwrite-user-jwt']
@@ -1807,7 +1804,6 @@ import { Client, Databases, ID } from "https://deno.land/x/appwrite/mod.ts";
                 
 export default function ({req, res, error}: any){
     const client = new Client()
-        .setEndpoint("https://cloud.appwrite.io/v1")
         .setProject(Deno.env.get("APPWRITE_FUNCTION_PROJECT_ID") || "")
     
     if (req.headers["x-appwrite-user-jwt"]) {
@@ -1840,7 +1836,6 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 
 Future<dynamic> main(final context) async {
     final client = Client()
-        .setEndpoint('https://cloud.appwrite.io/v1')
         .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
     
     if (context.req.headers['x-appwrite-user-jwt'] != null) {
@@ -1873,7 +1868,6 @@ import Foundation
 
 func main(context: RuntimeContext) async throws -> RuntimeOutput {
     let client = Client()
-       .setEndpoint("https://cloud.appwrite.io/v1")
        .setProject(ProcessInfo.processInfo.environment["APPWRITE_FUNCTION_PROJECT_ID"])
     
     if let jwt = context.req.headers["x-appwrite-user-jwt"] {
@@ -1911,7 +1905,6 @@ namespace DotNetRuntime
         public async Task Main(RuntimeContext Context)
         {
             var client = new Client()
-               .SetEndpoint("https://cloud.appwrite.io/v1")
                .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID"))
 
             if (Context.Req.Headers.ContainsKey("x-appwrite-user-jwt")) {
@@ -1951,7 +1944,6 @@ import java.util.HashMap
 class Main {
     fun main(context: RuntimeContext): RuntimeOutput {
         val client = Client()
-           .setEndpoint("https://cloud.appwrite.io/v1")
            .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
 
         if (context.req.headers["x-appwrite-user-jwt"] != null) {
@@ -1989,7 +1981,6 @@ import io.appwrite.Client;
 public class Main {
     public RuntimeOutput main(RuntimeContext context) throws Exception {
         Client client = new Client()
-            .setEndpoint("https://cloud.appwrite.io/v1")
             .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
                 
         if (context.req.headers.containsKey("x-appwrite-user-jwt")) {
