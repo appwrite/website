@@ -41,6 +41,7 @@
             ],
             Learn: [
                 { label: 'Docs', href: '/docs' },
+                { label: 'Integrations', href: '/integrations' },
                 { label: 'Community', href: '/community' },
                 { label: 'Init', href: '/init' },
                 { label: 'Threads', href: '/threads' },
