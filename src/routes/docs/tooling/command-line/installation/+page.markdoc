@@ -1,12 +1,12 @@
 ---
 layout: article
-title: Command line interface (CLI)
+title: Installation
 description: Get started with the Appwrite CLI by following the installation guide. Learn how to set up and configure the CLI on your development environment.
 ---
 
-The [Appwrite CLI](https://github.com/appwrite/sdk-for-cli) is a command-line application that allows you to interact with Appwrite to perform server-side tasks using your terminal. This includes creating and managing projects, managing resources (documents, files, users), creating and deploying Appwrite Functions, and other operations available through Appwrite's API.
+The [Appwrite Command Line Interface (CLI)](https://github.com/appwrite/sdk-for-cli) is an application that allows you to interact with Appwrite to perform server-side tasks using your terminal. This includes creating and managing projects, managing resources (documents, files, users), creating and deploying Appwrite Functions, and other operations available through Appwrite's API.
 
-# Installation {% #installation %}
+# Getting started {% #getting-started %}
 
 The CLI is packaged both as an [npm module](https://www.npmjs.com/package/appwrite-cli) as well as a [standalone binary](https://github.com/appwrite/sdk-for-cli/releases/latest) for your operating system, making it completely dependency free, platform independent, and language agnostic.
 
