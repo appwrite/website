@@ -8,6 +8,7 @@ import type { TicketData, TicketDoc } from '../constants.js';
 type SendToHubspotArgs = {
     name: string;
     email: string;
+    id: string;
 };
 
 async function sendToHubspot({ name, email }: SendToHubspotArgs) {
@@ -27,7 +28,8 @@ async function getTicketDocByUser(user: User) {
     if (user.appwrite?.email) {
         sendToHubspot({
             name: user.appwrite?.name ?? user.github?.name ?? user.appwrite.email,
-            email: user.appwrite?.email
+            email: user.appwrite?.email,
+            id: user.appwrite.$id
         });
     }
 
