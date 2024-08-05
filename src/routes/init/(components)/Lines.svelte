@@ -11,7 +11,7 @@
                     {@const delay = i + 1 * index * 150}
                     <div
                         class="line"
-                        style={`--delay:${delay}ms;--height:${getRandomHeight()}px;left:${i * 40}px`}
+                        style={`--delay:${delay}ms;--height:${getRandomHeight()}px;left:${i * 12}px`}
                     />
                 {/each}
             </div>

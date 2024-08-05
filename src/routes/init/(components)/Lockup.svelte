@@ -16,7 +16,7 @@
 
 <svg
     class="lockup"
-    viewBox={`-10 -10 ${width} ${height}`}
+    viewBox={`0 -2 ${width} ${height}`}
     xmlns="http://www.w3.org/2000/svg"
     style="--duration:{duration}s"
 >
