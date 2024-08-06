@@ -198,17 +198,16 @@
 
     @keyframes -global-scroll {
         0% {
-            transform: translateX(-100vw);
+            transform: translateX(-100vw) translateZ(0);
         }
         100% {
-            transform: translateX(100vw);
+            transform: translateX(100vw) translateZ(0);
         }
     }
 
     .ticket-preview-wrapper {
         display: flex;
         width: 400vw;
-        overflow: hidden;
         animation: scroll 60s linear infinite;
 
         .ticket {
