@@ -136,12 +136,12 @@
             <p class="web-label">{title}</p>
 
             <div class="logo" style:width="75%">
-                <Lockup animate={!disableEffects} />
+                <Lockup fill={false} animate={!disableEffects} />
             </div>
             <div class="shine" />
             <div class="noise" />
             {#if !disableEffects}
-                <Lines lines={[2, 3, 2, 1]} />
+                <Lines lines={2} />
             {/if}
         </div>
         <div class="stub">
@@ -365,7 +365,7 @@
             .logo {
                 position: absolute;
 
-                transform: translateY(30%);
+                transform: translateY(50%) translateX(-5%);
                 z-index: 10;
             }
         }
