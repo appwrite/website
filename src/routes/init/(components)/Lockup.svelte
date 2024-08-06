@@ -23,7 +23,7 @@
     {#each paths as path}
         <path d={path} class="base" class:fill />
         {#each Array.from({ length: 3 }) as _, index}
-            {@const delay = duration / 3.2}
+            {@const delay = duration / 3}
             <path
                 d={path}
                 class="stroke"
@@ -50,17 +50,8 @@
             <stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" />
         </linearGradient>
         <filter id="glow" filterUnits="userSpaceOnUse" {width} {height}>
-            <feGaussianBlur in="color" stdDeviation="2" result="blur" />
+            <feGaussianBlur in="color" stdDeviation="100" result="blur" />
         </filter>
-
-        <linearGradient id="fill" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="50%" y2="100%">
-            <stop offset="0%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" />
-            <stop offset="35%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" />
-            <stop offset="60%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" />
-            <stop offset="75%" style="stop-color:rgba(255,255,255,0.0);stop-opacity:1" />
-            <stop offset="90%" style="stop-color:rgba(255,255,255,0.08);stop-opacity:1" />
-            <stop offset="100%" style="stop-color:rgba(255,255,255,0.02);stop-opacity:1" />
-        </linearGradient>
     </defs>
 </svg>
 
@@ -122,15 +113,15 @@
             @keyframes stroke {
                 0% {
                     stroke-dasharray: 0 1000;
-                    stroke-dashoffset: -1000;
+                    stroke-dashoffset: 1000;
                 }
                 25% {
                     stroke-dasharray: 500 500;
-                    stroke-dashoffset: -500;
+                    stroke-dashoffset: 1000;
                 }
                 50% {
                     stroke-dasharray: 500 500;
-                    stroke-dashoffset: 0;
+                    stroke-dashoffset: 500;
                 }
                 75%,
                 100% {
