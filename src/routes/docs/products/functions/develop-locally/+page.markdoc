@@ -8,17 +8,14 @@ Develop your Appwrite functions locally to make code changes without redeploying
 
 # Setup {% #setup %}
 
+We use Docker to replicate the production environment for the local deployment of functions. These can be executed locally with the CLI command, which requires initializing a project with an `appwrite.json` file and having local code to run the function locally. The CLI also supports various other [CLI commands](/docs/tooling/command-line/commands).
+
 1. Install the [Docker CLI](https://www.docker.com/products/docker-desktop/)
 2. Ensure Docker is running in the background
 3. Install the [Appwrite CLI](/docs/tooling/command-line/installation#installation)
 4. [Log in](/docs/tooling/command-line/installation#get-started) to your Appwrite account using `appwrite login`
-5. [Initialize your project](/docs/tooling/command-line/installation#initialization) and create the `appwrite.json` file
-
-We use Docker to replicate the production environment for the local deployment of functions. These can be executed locally with the `appwrite run functions` CLI command, which requires initializing a project with an `appwrite.json` file. The CLI also supports various other [CLI commands](/docs/tooling/command-line/commands).
-
-{% arrow_link href="/docs/tooling/command-line/functions" %}
-Learn more about deploying functions using CLI
-{% /arrow_link %}
+5. [Initialize your project](/docs/tooling/command-line/installation#initialization)
+6. [Initialize an Appwrite function](/docs/tooling/command-line/functions) and copy and paste your code
 
 # Develop {% #develop %}
 
@@ -28,9 +25,9 @@ Use the `appwrite run functions` command to develop your function locally.
 appwrite run functions
 ? Which function would you like to develop locally? My Awesome Function ("<FUNCTION_ID>")
 
-runtime   │ entrypoint  │ path                           │ commands     
-───────────┼──────────────┼───────────────────────────────────┼─────────────
-node-16.0 │ src/main.js │ functions/<FUNCTION_ID>        │ npm install
+ runtime   | entrypoint  | path                           | commands     
+-----------|-------------|--------------------------------|--------------
+ node-16.0 | src/main.js | functions/\<FUNCTION_ID\>      | npm install  
 
 ℹ Info: If you wish to change your local settings, update the appwrite.json file and rerun the 'appwrite run' command.
 ♥ Hint: Permissions, events, CRON and timeouts dont apply when running locally.
@@ -60,7 +57,7 @@ Build finished.
 ✓ Success: Visit http://localhost:3000/ to execute your function.
 ```
 
-This command helps you efficiently develop your Appwrite functions on your local machine. You can also hot reload your function code as you develop locally, so you will see your code changes instantly without waiting for it to build. When developing your Appwrite function locally, it will receive headers like when you develop a function in the Console.
+This command helps you efficiently develop your Appwrite functions on your local machine. Any changes to your function code are instantly reflected without waiting for them to build. This is because when you develop a function locally, it hot reloads your code, provided you've initiated it with the `appwrite run functions` command. When developing your Appwrite function locally, it will receive [headers](/docs/products/functions/develop#headers) like when you develop a function in the Console.
 
 {% arrow_link href="/docs/products/functions/develop" %}
 Learn more about developing a function
@@ -68,27 +65,23 @@ Learn more about developing a function
 
 # Dynamic API keys {% #dynamic-api-keys %}
 
-You can use headers like dynamic API keys in your function, which give you access to your project services and allow you to operate without sessions. To configure your dynamic API key scopes, navigate to **Functions** > **Settings** > **Scopes**.
+You can use headers like dynamic API keys in your function, which give you access to your project services and allow you to operate without sessions. To configure your dynamic API key scopes, modify the scopes in the `appwrite.json` file. To apply those configured scopes to your function in the Console, push your function using `appwrite push functions`.
 
 {% arrow_link href="/docs/products/functions/develop" %}
 Learn more about dynamic API keys
 {% /arrow_link %}
 
-You can also impersonate a user when you develop a function locally.
-
 # Impersonate user {% #impersonate-user %}
 
-Impersonate a user using the `--userId <USER_ID>` option to select a user you want to use for testing. You can test if the user can perform a requested action, like creating a document.
+You can also impersonate a user when you develop a function locally. Impersonate a user using the `--userId <USER_ID>` option to select a user you want to use for testing. You can test if the user can perform a requested action, like creating a document.
 
 ```sh
 appwrite run functions --userId "<USER_ID>"
 ```
 
-Once you made all your code changes, push your function to the Cloud using the CLI.
-
 # Push function {% #push-function %}
 
-Once you've developed your function, push it by running the `appwrite push functions` CLI command.
+Once you've developed your function, push it by running the following CLI command
 
 ```sh
 appwrite push functions
