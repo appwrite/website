@@ -3,7 +3,8 @@
     import { Feedback } from '$lib/components';
     import type { Tutorial } from '$markdoc/layouts/Tutorial.svelte';
     import type { TocItem } from './DocsArticle.svelte';
-    import Section from '$markdoc/tags/Section.svelte';
+    import Heading from '$markdoc/nodes/Heading.svelte';
+    import { onMount } from 'svelte';
 
     export let toc: Array<TocItem>;
     export let currentStep: number;
@@ -18,14 +19,6 @@
     $: nextStep = tutorials.find((tutorial) => tutorial.step === currentStep + 1);
     $: prevStep = tutorials.find((tutorial) => tutorial.step === currentStep - 1);
 
-    function getDecrementedStep(stepOrTutorial: number | Tutorial): number {
-        if (typeof stepOrTutorial === 'number') {
-            return stepOrTutorial - 1;
-        } else {
-            return stepOrTutorial.step - 1;
-        }
-    }
-
     // `any` for compatibility with reactive variables.
     function getCorrectTitle(tutorial: any | Tutorial, checkAt: number): string {
         if (tutorial.step === checkAt) {
@@ -34,6 +27,17 @@
             return tutorial.title;
         }
     }
+
+    let slotContent: HTMLElement | null = null;
+
+    onMount(() => {
+        if (!slotContent) return;
+
+        // dynamically modify all `label` headers to `body`.
+        slotContent.querySelectorAll<HTMLHeadingElement>('h2.web-label').forEach(header => {
+            header.classList.replace('web-label', 'web-main-body-500');
+        });
+    });
 </script>
 
 <main class="u-contents" id="main">
@@ -55,44 +59,47 @@
             <div class="web-article-header-end" />
         </header>
         <div class="web-article-content">
-            <Section
-                id={currentStepItem.href}
-                step={getDecrementedStep(currentStep)}
-                title={getCorrectTitle(currentStepItem, 1)}
-                isWithLine={false}
-            >
+            <section class="web-article-content-section">
+                <section class="web-article-content-sub-section">
+                    <header class="web-article-content-header">
+                        <span class="web-numeric-badge">{currentStep}</span>
+                        <Heading level={1} id={currentStepItem.href} step={currentStep}>
+                            {getCorrectTitle(currentStepItem, 1)}
+                        </Heading>
+                    </header>
 
-                <div class="u-padding-block-start-32">
-                    <slot />
-                </div>
+                    <div class="u-padding-block-start-32" bind:this={slotContent}>
+                        <slot />
+                    </div>
 
-                <div class="u-flex u-main-space-between">
-                    {#if prevStep}
-                        <a href={prevStep.href} class="web-button is-text previous-step-anchor">
-                            <span class="icon-cheveron-left" aria-hidden="true" />
-                            <span class="web-sub-body-500">
-                                Step {getDecrementedStep(prevStep)}<span class="web-is-not-mobile"
-                                    >: {getCorrectTitle(prevStep, 1)}</span
+                    <div class="u-flex u-main-space-between">
+                        {#if prevStep}
+                            <a href={prevStep.href} class="web-button is-text previous-step-anchor">
+                                <span class="icon-cheveron-left" aria-hidden="true" />
+                                <span class="web-sub-body-500">
+                                    Step {prevStep.step}<span class="web-is-not-mobile"
+                                >: {getCorrectTitle(prevStep, 1)}</span
                                 >
-                            </span>
-                        </a>
-                    {/if}
-                    {#if nextStep}
-                        <a
-                            href={nextStep.href}
-                            class="web-button is-secondary"
-                            style:margin-left={prevStep ? undefined : 'auto'}
-                        >
-                            <span class="web-sub-body-500">
-                                Step {getDecrementedStep(nextStep)}<span class="web-is-not-mobile"
-                                    >: {nextStep.title}</span
+                                </span>
+                            </a>
+                        {/if}
+                        {#if nextStep}
+                            <a
+                                href={nextStep.href}
+                                class="web-button is-secondary"
+                                style:margin-left={prevStep ? undefined : 'auto'}
+                            >
+                                <span class="web-sub-body-500">
+                                    Step {nextStep.step}<span class="web-is-not-mobile"
+                                >: {nextStep.title}</span
                                 >
-                            </span>
-                            <span class="icon-cheveron-right" aria-hidden="true" />
-                        </a>
-                    {/if}
-                </div>
-            </Section>
+                                </span>
+                                <span class="icon-cheveron-right" aria-hidden="true" />
+                            </a>
+                        {/if}
+                    </div>
+                </section>
+            </section>
 
             <Feedback {date} />
         </div>
@@ -111,11 +118,11 @@
                                 class:tutorial-scroll-indicator={isCurrentStep && !toc.length}
                                 class:is-selected={isCurrentStep}
                             >
-                                <span class="web-numeric-badge">{tutorial.step - 1}</span>
+                                <span class="web-numeric-badge">{tutorial.step}</span>
                                 <!-- first item will always be introduction -->
                                 <span class="web-caption-400">{index === 0 ? 'Introduction' : tutorial.title}</span>
                             </a>
-                            {#if isCurrentStep && toc.slice(1).length}
+                            {#if isCurrentStep && toc.length}
                                 <ol
                                         class="web-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
                                 >
@@ -168,6 +175,7 @@
 
 <style>
     .web-article-header {
+        margin-block-end: 2rem !important;
         padding-inline-start: unset !important;
     }
 
