@@ -62,7 +62,7 @@
         --fill: hsl(var(--web-color-background));
         fill: none;
         animation: fade 1s ease-out;
-        max-width: 60vw;
+        max-width: 50vw;
         margin: 0 auto;
         display: block;
         position: relative;
