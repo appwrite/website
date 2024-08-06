@@ -61,15 +61,16 @@
         <div class="desktop-left">
             <div class="header">
                 <h1 class="web-display">
-                    Join <span class="web-u-color-text-primary" style:font-weight="500">
+                    Ready, set, <span class="web-u-color-text-primary" style:font-weight="500">
                         init
-                    </span><br />19-23 Aug
+                    </span>
                 </h1>
             </div>
 
             <div class="info">
                 <p class="web-label u-margin-block-start-16">
-                    Join us from August 19th-23rd to learn about what we've been up to at Appwrite.
+                    Join us during the week of August 19–23 to celebrate everything new with
+                    Appwrite.
                 </p>
             </div>
         </div>

@@ -9,6 +9,7 @@
     import Target from './(components)/Target.svelte';
     import MultiCodeContextless from './(components)/MultiCodeContextless.svelte';
     import { Platform } from '$lib/utils/references';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     const title = 'Messaging' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -89,7 +90,7 @@ try await messaging.createSubscriber(
 
     const codeMessage = [
         {
-            language: "server-nodejs",
+            language: 'server-nodejs',
             platform: 'Node.js',
             content: `import { Messaging, ID } from "node-appwrite"
 
@@ -267,13 +268,9 @@ messaging.create_email(
                         directly to your users.
                     </p>
                     <div class="u-flex u-items-center u-gap-8 u-margin-block-start-32 hero-buttons">
-                        <a class="web-button" href="https://cloud.appwrite.io"
-                            >Get started</a
-                        >
-                        <a
-                            class="web-button is-secondary"
-                            href="/docs/products/messaging"
-                        >Documentation</a
+                        <a class="web-button" href={PUBLIC_APPWRITE_DASHBOARD}>Get started</a>
+                        <a class="web-button is-secondary" href="/docs/products/messaging"
+                            >Documentation</a
                         >
                     </div>
                 </div>
@@ -423,10 +420,7 @@ messaging.create_email(
                                 </p>
                                 <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
                                     <li>
-                                        <a
-                                            class="web-interactive-tag"
-                                            href="/docs"
-                                        >
+                                        <a class="web-interactive-tag" href="/docs">
                                             <span
                                                 class="web-icon-appwrite u-small web-u-margin-inline-end-4"
                                                 aria-hidden="true"
@@ -542,14 +536,22 @@ messaging.create_email(
                                 class="u-margin-block-start-16 u-min-width-0"
                                 style="margin-block-end: 94px"
                             >
-                                <MultiCodeContextless data={codeTopic} selected={Platform.ClientWeb} height={450} />
+                                <MultiCodeContextless
+                                    data={codeTopic}
+                                    selected={Platform.ClientWeb}
+                                    height={450}
+                                />
                             </div>
                         </div>
                         <div class="u-flex-vertical u-gap-8 u-min-width-0">
                             <h3 class="web-label web-u-color-text-primary">Send a message</h3>
                             <p class="web-description">Send a message to all targets on a topic.</p>
                             <div class="u-margin-block-start-16 u-min-width-0">
-                                <MultiCodeContextless data={codeMessage} selected={Platform.ServerNodeJs} height={450} />
+                                <MultiCodeContextless
+                                    data={codeMessage}
+                                    selected={Platform.ServerNodeJs}
+                                    height={450}
+                                />
                             </div>
                         </div>
                     </div>
@@ -862,7 +864,7 @@ messaging.create_email(
     }
 
     .web-tag {
-      --p-tag-bg-color: var(--web-color-greyscale-100);
+        --p-tag-bg-color: var(--web-color-greyscale-100);
     }
 
     @media (min-width: 1024px) {

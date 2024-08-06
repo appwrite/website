@@ -63,7 +63,14 @@
 </svelte:head>
 
 <Main>
-    <Lockup />
+    <div class="hero">
+        <Lockup />
+
+        <p class="web-description">The start of something new.</p>
+        <div class="buttons">
+            <a href="/init/tickets" class="web-button">Claim your ticket</a>
+        </div>
+    </div>
 
     <div class="web-container">
         <div class="day-cards">
@@ -77,24 +84,6 @@
         </div>
         <hr />
         <div class="days">
-            <div
-                class="web-card is-normal has-border-gradient kickoff"
-                transition:fade={{ delay: 0, duration: 600 }}
-            >
-                <h3
-                    class="web-title web-u-color-text-primary"
-                    id="kickoff"
-                    style:scroll-margin-top="5rem"
-                >
-                    init kickoff
-                </h3>
-                <Video
-                    --p-aspect-ratio="16/9"
-                    thumbnail=""
-                    src="https://www.youtube-nocookie.com/embed/5NtrYks2dqE?si=0vjkBCZYg8yf2GUW&controls=0"
-                />
-            </div>
-
             {#each days as day, i}
                 {@const date = `DAY ${i} - ${toReleaseDate(day.release)}`}
 
@@ -117,6 +106,40 @@
 <style lang="scss">
     hr {
         border-block-start: 1px solid hsl(var(--web-color-offset));
+    }
+
+    .hero {
+        height: 80vh;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        position: relative;
+        overflow-x: clip;
+
+        p {
+            max-width: 23.125rem;
+            text-align: center;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 0.5rem;
+
+            padding-block-start: 1rem;
+
+            @media screen and (max-width: 1023px) {
+                flex-direction: column;
+                align-items: center;
+
+                .web-button {
+                    width: 300px;
+                }
+            }
+        }
     }
 
     .day-cards {
@@ -168,38 +191,6 @@
                 left: -40px;
                 top: 50%;
                 transform: translate(-50%, -50%);
-            }
-        }
-    }
-
-    .kickoff {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-
-        background: linear-gradient(
-                93deg,
-                rgba(253, 54, 110, 0.2) 0.29%,
-                rgba(35, 35, 37, 0.2) 52.57%,
-                rgba(35, 35, 37, 0.2) 100%
-            ),
-            #232325;
-        padding: 0.5rem;
-
-        height: 25rem;
-
-        h3 {
-            padding-block-start: 1.5rem;
-            padding-inline-start: 1.5rem;
-        }
-
-        @media screen and (max-width: 1023px) {
-            flex-direction: column;
-            gap: 1rem;
-            height: unset;
-
-            h3 {
-                padding-inline-start: 1.25rem;
             }
         }
     }

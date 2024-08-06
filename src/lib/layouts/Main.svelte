@@ -23,6 +23,8 @@
     import { onMount } from 'svelte';
     import { page } from '$app/stores';
     import { loggedIn } from '$lib/utils/console';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -141,11 +143,6 @@
 
         return $scrollInfo.deltaDirChange < 200;
     })();
-
-    const hideTopBanner = () => {
-        document.body.dataset.bannerHidden = '';
-        localStorage.setItem(BANNER_KEY, 'true');
-    };
 </script>
 
 <div class="u-position-relative">
@@ -174,7 +171,7 @@
         </div>
         <div class="web-mobile-header-end">
             {#if !$isMobileNavOpen}
-                <a href="https://cloud.appwrite.io" class="web-button">
+                <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button">
                     <span class="text">Get started</span>
                 </a>
             {/if}
@@ -192,29 +189,13 @@
         </div>
     </section>
     <header
-        class="web-main-header is-special-padding theme-{resolvedTheme} is-transparent"
+        class="web-main-header theme-{resolvedTheme} is-transparent"
+        style="padding-left:0;padding-right:0;"
         class:is-hidden={$isHeaderHidden}
     >
-        <div class="web-top-banner">
-            <div class="web-top-banner-content web-u-color-text-primary">
-                <a href="/discord" target="_blank" rel="noopener noreferrer">
-                    <span class="web-caption-500">We are having lots of fun on</span>
-                    <span class="web-icon-discord" aria-hidden="true" />
-                    <span class="web-caption-500">Discord. Come and join us!</span>
-                </a>
-                {#if browser}
-                    <button
-                        class="web-top-banner-button"
-                        aria-label="close discord message"
-                        on:click={hideTopBanner}
-                    >
-                        <span class="web-icon-close" aria-hidden="true" />
-                    </button>
-                {/if}
-            </div>
-        </div>
+        <AnnouncementBanner />
 
-        <div class="web-main-header-wrapper">
+        <div class="web-main-header-wrapper is-special-padding">
             <div class="web-main-header-start">
                 <a href="/">
                     <img
@@ -287,6 +268,10 @@
         100% {
             transform: scale(1);
         }
+    }
+
+    .is-special-padding {
+        padding-inline: clamp(1.25rem, 4vw, 120rem);
     }
 
     [data-badge] {
