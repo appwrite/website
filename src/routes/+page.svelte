@@ -40,16 +40,9 @@
   class:web-u-hide-mobile={$isMobileNavOpen}
 >
   <div
-    class="pointer-events-none absolute"
-    style="top: -800px; left: 50%; translate: -50%; z-index: 10"
-  >
-    <enhanced:img
-      style="width:1466px; height:804px; transform:rotate(150.348deg); opacity: 0.65; filter: blur(127.5px);
-		max-block-size: unset; max-inline-size: unset;"
-      src="./top-page-dark.png"
-      alt=""
-    />
-  </div>
+    class="pointer-events-none absolute h-[400px] w-[800px] bg-[radial-gradient(ellipse_closest-side_at_50%_50%,_rgba(253,54,110,0.2)_20%_,_rgba(255,255,255,0)_100%)]"
+    style="left: 50%; translate: -50%; z-index: 10"
+  ></div>
 </div>
 
 <div
@@ -69,7 +62,6 @@
 </div>
 
 <Main>
-  <Button on:click={() => alert("hello")}>Hello</Button>
   <div class="web-big-padding-section hidden">
     <div class="web-big-padding-section-level-1">
       <div class="web-big-padding-section-level-2">

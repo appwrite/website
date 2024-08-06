@@ -8,8 +8,6 @@
   };
   export const isHeaderHidden = writable(false);
   export const isMobileNavOpen = writable(false);
-
-  const initialized = writable(false);
 </script>
 
 <script lang="ts">
@@ -22,29 +20,10 @@
   import { addEventListener } from "@melt-ui/svelte/internal/helpers";
   import { onMount } from "svelte";
   import { page } from "$app/stores";
-  import { loggedIn } from "$lib/utils/console";
+  import { classNames } from "$lib/utils/classnames";
 
   export let omitMainId = false;
   let theme: "light" | "dark" | null = "dark";
-
-  function setupThemeObserver() {
-    const handleVisibility = () => {
-      theme = getVisibleTheme();
-    };
-
-    const observer = new MutationObserver(handleVisibility);
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    const callbacks = [
-      addEventListener(window, "scroll", handleVisibility),
-      addEventListener(window, "resize", handleVisibility),
-    ];
-
-    return () => {
-      observer.disconnect();
-      callbacks.forEach((callback) => callback());
-    };
-  }
 
   function isInViewport(element: Element): boolean {
     const mobileHeader = document.querySelector(".aw-mobile-header");
@@ -91,13 +70,6 @@
 
     return "dark";
   }
-
-  onMount(() => {
-    setTimeout(() => {
-      $initialized = true;
-    }, 1000);
-    return setupThemeObserver();
-  });
 
   let navLinks: NavLink[] = [
     {
@@ -154,14 +126,14 @@
     <div class="web-mobile-header-start">
       <a href="/">
         <img
-          class="web-logo web-u-only-dark"
+          class="web-logo block dark:hidden"
           src="/images/logos/appwrite.svg"
           alt="appwrite"
           height="24"
           width="130"
         />
         <img
-          class="web-logo web-u-only-light"
+          class="web-logo hidden dark:block"
           src="/images/logos/appwrite-light.svg"
           alt="appwrite"
           height="24"
@@ -215,14 +187,14 @@
       <div class="web-main-header-start">
         <a href="/">
           <img
-            class="web-logo web-u-only-dark"
+            class="web-logo hidden dark:block"
             src="/images/logos/appwrite.svg"
             alt="appwrite"
             height="24"
             width="130"
           />
           <img
-            class="web-logo web-u-only-light"
+            class="web-logo block dark:hidden"
             src="/images/logos/appwrite-light.svg"
             alt="appwrite"
             height="24"
@@ -234,9 +206,10 @@
             {#each navLinks as navLink}
               <li class="web-main-header-nav-item">
                 <a
-                  class="web-link"
+                  class={classNames(
+                    "data-[badge]:after:animate-scale-in data-[badge]:relative data-[badge]:after:absolute data-[badge]:after:size-1.5 data-[badge]:after:translate-full data-[badge]:after:rounded-full",
+                  )}
                   href={navLink.href}
-                  data-initialized={$initialized ? "" : undefined}
                   data-badge={navLink.showBadge ? "" : undefined}
                   >{navLink.label}
                 </a>
@@ -277,33 +250,12 @@
     padding-inline: 0.375rem;
   }
 
-  @keyframes scale-in {
-    0% {
-      transform: scale(0);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-
   [data-badge] {
-    position: relative;
-
     &::after {
-      content: "";
-      position: absolute;
       background-color: hsl(var(--web-color-accent));
-      border-radius: 100%;
-      width: 0.375rem;
-      height: 0.375rem;
 
       inset-block-start: -2px;
       inset-inline-end: -4px;
-      translate: 100%;
-    }
-
-    &:not([data-initialized])::after {
-      animation: scale-in 0.2s ease-out;
     }
   }
 </style>

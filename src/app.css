@@ -96,4 +96,17 @@
   --breakpoint-xl: 1440px;
   --breakpoint-2xl: 1728px;
   --breakpoint-3xl: 1920px;
+
+  /* Animations */
+  --animate-scale-in: scale-in 0.2s ease-out forwards;
+
+  /* Keyframes */
+  @keyframes scale-in {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 }
