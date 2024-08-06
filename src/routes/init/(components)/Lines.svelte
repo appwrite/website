@@ -1,13 +1,17 @@
 <script lang="ts">
-    export let lines = 5;
+    let lines = 2;
     const getRandomHeight = () => Math.floor(Math.random() * 100) + 75;
 </script>
 
 <div class="container">
     <div class="lines">
         {#each Array.from({ length: lines }) as _}
-            {@const randomDelay = () => Math.floor(Math.random() * 500)}
-            <div style:position="relative">
+            {@const randomDelay = () => Math.floor(Math.random() * 2800)}
+            <div style:position="relative" class="group">
+                <div
+                    class="line"
+                    style={`--delay:${randomDelay()}ms;--height:${getRandomHeight()}px;`}
+                />
                 <div
                     class="line"
                     style={`--delay:${randomDelay()}ms;--height:${getRandomHeight()}px;`}
@@ -47,6 +51,11 @@
             --starting-position: -80vh;
             --duration: 2s;
             --initial-delay: 0.5s;
+
+            .group {
+                display: flex;
+                gap: 24px;
+            }
 
             .line {
                 position: relative;

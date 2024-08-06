@@ -13,7 +13,6 @@
         .shine {
             position: absolute;
             inset-block-start: -100px;
-            inset-inline-end: -100px;
             z-index: -10;
             width: 100%;
             height: 500px;
