@@ -4,14 +4,14 @@
     import TocRoot from '$lib/components/TocRoot.svelte';
     import { Main } from '$lib/layouts';
 
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import FooterNav from '../../lib/components/FooterNav.svelte';
     import MainFooter from '../../lib/components/MainFooter.svelte';
     import Copy from './Copy.svelte';
 
     const title = 'Assets' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description = 'Resources for presenting the Appwrite brand, ensuring consistency in using our logos, colours, and other brand elements across various platforms and materials.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     enum Section {
