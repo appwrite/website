@@ -141,7 +141,7 @@
             <div class="shine" />
             <div class="noise" />
             {#if !disableEffects}
-                <Lines lines={2} />
+                <Lines />
             {/if}
         </div>
         <div class="stub">
