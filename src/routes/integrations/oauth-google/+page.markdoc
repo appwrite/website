@@ -6,7 +6,7 @@ date: 2024-07-30
 featured: true
 isPartner: true
 isNew: true
-cover: /images/integrations/oauth-google/cover.png
+cover: /images/integrations/oauth-google/cover.jpg
 category: Auth
 product: 
     avatar: '/images/integrations/avatars/google.png'
@@ -16,7 +16,7 @@ platform:
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/oauth-google/cover.png
+    - /images/integrations/oauth-google/cover.jpg
     - /images/integrations/oauth-google/consent-screen.png
     - /images/integrations/oauth-google/client-id.png
     - /images/integrations/oauth-google/provider.png

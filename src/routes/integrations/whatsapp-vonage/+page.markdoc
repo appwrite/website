@@ -6,7 +6,7 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/whatsapp-vonage/cover.png
+cover: /images/integrations/whatsapp-vonage/cover.jpg
 category: Messaging
 product: 
     avatar: '/images/integrations/avatars/vonage.png'
@@ -16,7 +16,7 @@ platform:
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/whatsapp-vonage/cover.png
+    - /images/integrations/whatsapp-vonage/cover.jpg
     - /images/integrations/whatsapp-vonage/settings.png
     - /images/integrations/whatsapp-vonage/template.png
     - /images/integrations/whatsapp-vonage/variables.png

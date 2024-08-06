@@ -6,7 +6,7 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/phone-auth-twilio/cover.png
+cover: /images/integrations/phone-auth-twilio/cover.jpg
 category: Auth
 product: 
     avatar: '/images/integrations/avatars/twilio.png'
@@ -15,7 +15,7 @@ product:
 platform: 
     - 'Self-hosted'
 images: 
-    - /images/integrations/phone-auth-twilio/cover.png
+    - /images/integrations/phone-auth-twilio/cover.jpg
     - /images/integrations/phone-auth-twilio/twilio-console.png
     - /images/integrations/phone-auth-twilio/user.png
 ---

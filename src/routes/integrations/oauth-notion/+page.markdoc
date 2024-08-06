@@ -6,7 +6,7 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/oauth-notion/cover.png
+cover: /images/integrations/oauth-notion/cover.jpg
 category: Auth
 product: 
     avatar: '/images/integrations/avatars/notion.png'
@@ -16,7 +16,7 @@ platform:
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/oauth-notion/cover.png
+    - /images/integrations/oauth-notion/cover.jpg
     - /images/integrations/oauth-notion/new-integration.png
     - /images/integrations/oauth-notion/provider.png
     - /images/integrations/oauth-notion/redirect-uri.png

@@ -6,7 +6,7 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/stripe-payments/cover.png
+cover: /images/integrations/stripe-payments/cover.jpg
 category: Payments
 product: 
     avatar: '/images/integrations/avatars/stripe.png'
@@ -16,7 +16,7 @@ platform:
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/stripe-payments/cover.png
+    - /images/integrations/stripe-payments/cover.jpg
     - /images/integrations/stripe-payments/dashboard.png
     - /images/integrations/stripe-payments/api-keys.png
     - /images/integrations/stripe-payments/webhooks.png

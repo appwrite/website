@@ -6,7 +6,7 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/ai-perplexity/cover.png
+cover: /images/integrations/ai-perplexity/cover.jpg
 category: AI
 product: 
     avatar: '/images/integrations/avatars/perplexity.png'
@@ -16,7 +16,7 @@ platform:
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/ai-perplexity/cover.png
+    - /images/integrations/ai-perplexity/cover.jpg
     - /images/integrations/ai-perplexity/api-key.png
     - /images/integrations/ai-perplexity/template.png
     - /images/integrations/ai-perplexity/variables.png

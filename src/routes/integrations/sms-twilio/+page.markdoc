@@ -6,7 +6,7 @@ date: 2024-07-30
 featured: true
 isPartner: true
 isNew: true
-cover: /images/integrations/sms-twilio/cover.png
+cover: /images/integrations/sms-twilio/cover.jpg
 category: Messaging
 product: 
     avatar: '/images/integrations/avatars/twilio.png'
@@ -15,7 +15,7 @@ product:
 platform: 
     - 'Self-hosted'
 images: 
-    - /images/integrations/sms-twilio/cover.png
+    - /images/integrations/sms-twilio/cover.jpg
     - /images/integrations/sms-twilio/twilio-console.png
     - /images/integrations/sms-twilio/config.png
     - /images/integrations/sms-twilio/sms.png

@@ -6,7 +6,7 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/query-upstash/cover.png
+cover: /images/integrations/query-upstash/cover.jpg
 category: Databases
 product: 
     avatar: '/images/integrations/avatars/upstash.png'
@@ -16,7 +16,7 @@ platform:
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/query-upstash/cover.png
+    - /images/integrations/query-upstash/cover.jpg
     - /images/integrations/query-upstash/index.png
     - /images/integrations/query-upstash/template.png
     - /images/integrations/query-upstash/variables.png

@@ -6,7 +6,7 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/oauth-amazon/cover.png
+cover: /images/integrations/oauth-amazon/cover.jpg
 category: Auth
 product: 
     avatar: '/images/integrations/avatars/amazon.png'
@@ -16,7 +16,7 @@ platform:
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/oauth-amazon/cover.png
+    - /images/integrations/oauth-amazon/cover.jpg
     - /images/integrations/oauth-amazon/security-profile.png
     - /images/integrations/oauth-amazon/provider.png
     - /images/integrations/oauth-amazon/allowed-return-urls.png
