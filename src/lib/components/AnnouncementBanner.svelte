@@ -1,7 +1,5 @@
 <script lang="ts">
     import { page } from '$app/stores';
-
-    console.log($page);
 </script>
 
 <div class="banner" class:hidden={$page.url.pathname.includes('init')}>
