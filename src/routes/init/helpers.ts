@@ -57,7 +57,7 @@ export function createCountdown(date: Date) {
 
 export async function isLoggedIn() {
     const user = await getUser();
-    return !!(user.appwrite || user.github);
+    return !!user.github;
 }
 
 export interface GithubUser {
