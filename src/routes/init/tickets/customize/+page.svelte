@@ -122,4 +122,14 @@
             margin-block-start: 0;
         }
     }
+
+    .web-display {
+        margin-bottom: -48px;
+    }
+
+    @media screen and (min-width: 768px) {
+        .web-display {
+            margin-bottom: 0;
+        }
+    }
 </style>
