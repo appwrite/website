@@ -3,7 +3,6 @@ import { get, writable } from 'svelte/store';
 
 import { OAuthProvider } from '@appwrite.io/console';
 import { appwriteInit } from '$lib/appwrite/init';
-import { getAppwriteUser, type AppwriteUser } from '$lib/utils/console';
 import type { ContributionsMatrix, TicketData, TicketDoc } from './tickets/constants';
 
 export function createCountdown(date: Date) {
@@ -96,13 +95,12 @@ export async function getGithubUser() {
 
 export type User = {
     github: GithubUser | null;
-    appwrite: AppwriteUser | null;
 };
 
 export async function getUser(): Promise<User> {
-    const [github, appwrite] = await Promise.all([getGithubUser(), getAppwriteUser()]);
+    const github = await getGithubUser();
 
-    return { github, appwrite };
+    return { github };
 }
 
 export function getMockContributions() {
