@@ -298,9 +298,14 @@
                     display: flex;
 
                     div {
-                        --size: 8px;
+                        --size: 3px;
                         width: var(--size);
                         height: var(--size);
+                        flex-shrink: 0;
+
+                        @media screen and (min-width: 768px) {
+                            --size: 8px;
+                        }
 
                         border-radius: calc(var(--size) / 4);
                         animation: fade-in 500ms ease calc(calc(75ms * var(--index)) + var(--delay))
