@@ -1,12 +1,10 @@
 <script lang="ts">
-    import { page } from '$app/stores';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import Ticket from '../(components)/Ticket.svelte';
     import { getMockContributions, loginGithub } from '../helpers';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
@@ -18,32 +16,32 @@
             title: 'Founder'
         },
         {
-            name: 'Sara',
-            title: 'Head of Design'
-        },
-        {
             name: 'Jesse',
             title: 'Design Engineer'
+        },
+        {
+            name: 'Bradley',
+            title: 'Platform Engineer'
         },
         {
             name: 'Caio',
             title: 'Visual Designer'
         },
         {
+            name: 'Matej',
+            title: 'Platform Engineer'
+        },
+        {
+            name: 'Torsten',
+            title: 'Product Architect'
+        },
+        {
             name: 'Jade',
             title: 'Visual Designer'
         },
         {
-            name: 'Snezhanna',
-            title: 'Growth Content'
-        },
-        {
-            name: 'Laura',
-            title: 'Growth Lead'
-        },
-        {
-            name: 'Tessa',
-            title: 'Head of DevRel'
+            name: 'Kushboo',
+            title: 'Platform Engineer'
         }
     ];
 </script>
@@ -81,19 +79,10 @@
                 <div class="buttons">
                     <button class="web-button" on:click={loginGithub}>
                         <div class="web-icon-github" />
-                        <span class="text">GitHub</span>
+                        <span class="text">Register with GitHub</span>
                     </button>
-                    <a
-                        href={`${PUBLIC_APPWRITE_DASHBOARD}/login?forceRedirect=${
-                            $page.url.origin
-                        }/init/tickets`}
-                        class="web-button is-secondary"
-                    >
-                        <div class="web-icon-appwrite web-u-color-text-primary" />
-                        <span class="text">Appwrite</span>
-                    </a>
                 </div>
-                <p class="u-margin-block-start-16 privacy">
+                <p class="privacy">
                     By registering, you agree to our <a href="/terms" class="web-link is-inline"
                         >Terms and Conditions</a
                     >
@@ -108,7 +97,7 @@
                 <div class="ticket-preview-wrapper">
                     {#each tickets as { name, title }, i}
                         {@const id = i + 1}
-                        <div style:width="300vw">
+                        <div class="ticket">
                             <Ticket
                                 contributions={getMockContributions()}
                                 disableEffects
@@ -222,6 +211,10 @@
         overflow: hidden;
         animation: scroll 60s linear infinite;
 
+        .ticket {
+            width: 50vw;
+        }
+
         &:nth-of-type(even) {
             animation-direction: reverse;
         }
@@ -232,10 +225,18 @@
 
         @media screen and (max-width: 768px) {
             width: 800vw;
+
+            .ticket {
+                width: 100vw;
+            }
         }
 
         @media screen and (max-width: 640px) {
             width: 1000vw;
+
+            .ticket {
+                width: 125vw;
+            }
         }
     }
 </style>

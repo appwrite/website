@@ -13,7 +13,6 @@
         name,
         title,
         id,
-        aw_email,
         contributions,
         show_contributions = true,
         disableEffects = false
@@ -33,15 +32,6 @@
 
     const round = (num: number, fix = 3) => parseFloat(num.toFixed(fix));
     const clamp = (num: number, min = -20, max = 20) => Math.min(Math.max(num, min), max);
-    const adjust = (
-        value: number,
-        fromMin: number,
-        fromMax: number,
-        toMin: number,
-        toMax: number
-    ) => {
-        return round(toMin + ((toMax - toMin) * (value - fromMin)) / (fromMax - fromMin));
-    };
 
     function isTouchEvent(e: MouseEvent | TouchEvent): e is TouchEvent {
         return e.type === 'touchmove';
@@ -363,6 +353,10 @@
             position: relative;
             border-radius: pxToRem(16);
             overflow: hidden;
+
+            .web-label {
+                position: absolute;
+            }
 
             .shine {
                 background-size: 150%;

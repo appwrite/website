@@ -3,8 +3,8 @@
     export let duration: number = 8;
     export let animate: boolean = true;
 
-    const width = 874;
-    const height = 438;
+    const width = 880;
+    const height = 450;
 
     const paths = [
         'M53.9539 435.628V436.128H54.4539H122.654H123.154V435.628V132.776V132.276H122.654H1.28125H0.78125V132.776V192.884V193.384H1.28125H53.9539V435.628ZM45.2844 43.1913C45.2844 67.7464 64.0076 86.4606 89.1317 86.4606C114.256 86.4606 132.979 67.7464 132.979 43.1913C132.979 19.2098 114.251 0.5 89.1317 0.5C64.0121 0.5 45.2844 19.2098 45.2844 43.1913Z',
@@ -16,7 +16,7 @@
 
 <svg
     class="lockup"
-    viewBox={`0 0 ${width} ${height}`}
+    viewBox={`0 -2 ${width} ${height}`}
     xmlns="http://www.w3.org/2000/svg"
     style="--duration:{duration}s"
 >
@@ -68,7 +68,7 @@
     .lockup {
         --stroke-color: #333;
         --stroke-width: 2;
-        --fill: hsl(240 5.7% 10.4%);
+        --fill: hsl(var(--web-color-background));
         fill: none;
         animation: fade 1s ease-out;
         max-width: 60vw;
@@ -76,6 +76,11 @@
         display: block;
         position: relative;
         z-index: 12;
+        padding: 0 24px;
+
+        @media screen and (max-width: 768px) {
+            max-width: 100vw;
+        }
 
         @keyframes fade {
             0% {
@@ -100,7 +105,7 @@
             stroke-width: var(--stroke-width);
 
             &.fill {
-                fill: url(#fill);
+                fill: var(--fill);
             }
         }
 

@@ -51,10 +51,10 @@ export const getTicketSvg = async (ticket: TicketData) => {
 <g filter="url(#filter1_f_819_219)">
 <path d="M739.012 -205.65L-445.635 938.925C-464.978 957.614 -474.831 984.05 -472.437 1010.84C-465.798 1085.14 -376.175 1118.79 -322.28 1067.21L867.817 -71.6979C897.314 -99.9269 904.928 -144.104 886.582 -180.579C858.428 -236.555 784.073 -249.187 739.012 -205.65Z" fill="url(#paint1_linear_819_219)"/>
 </g>
-<text transform="translate(54.7949 54.7945)" fill="white" xml:space="preserve" style="white-space: pre" font-family="Aeonik Pro" font-size="54.7945" letter-spacing="-0.01em"><tspan x="0" y="56.152">${firstName}&#x2019;s Ticket</tspan></text>
-<text transform="translate(54.7949 54.7945)" fill="#FD366E" xml:space="preserve" style="white-space: pre" font-family="Aeonik Pro" font-size="54.7945" letter-spacing="-0.01em"><tspan x="349.176" y="56.152">_</tspan></text>
+<text transform="translate(54.7949 54.7945)" fill="white" xml:space="preserve" style="white-space: pre" font-family="Aeonik Pro" font-size="54.7945" letter-spacing="-0.01em"><tspan x="0" y="56.152">${firstName}&#x2019;s ticket</tspan></text>
+<text transform="translate(54.7949 54.7945)" fill="#FD366E" xml:space="preserve" style="white-space: pre" font-family="Aeonik Pro" font-size="54.7945" letter-spacing="-0.01em"><tspan x="315.176" y="52.152">_</tspan></text>
 <text opacity="0.5" transform="translate(54.7949 136.014)" fill="#E4E4E7" xml:space="preserve" style="white-space: pre" font-family="Aeonik Fono" font-size="23.2422" letter-spacing="0em"><tspan x="0" y="21.7646">${ticketNumber}</tspan></text>
-<g clip-path="url(#clip1_819_219)" filter="url(#filter2_d_819_219)">
+<g clip-path="url(#clip1_819_219)">
 <g clip-path="url(#clip2_819_219)">
 <rect x="869.945" y="216.438" width="579.493" height="814.913" rx="28.9747" transform="rotate(90 869.945 216.438)" fill="black"/>
 <text transform="translate(91.3916 252.657)" fill="white" xml:space="preserve" style="white-space: pre" font-family="Aeonik Pro" font-size="43.462" letter-spacing="-0.01em"><tspan x="0" y="44.3636">${firstName}</tspan></text>
