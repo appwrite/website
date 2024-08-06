@@ -23,7 +23,7 @@
     {#each paths as path}
         <path d={path} class="base" class:fill />
         {#each Array.from({ length: 3 }) as _, index}
-            {@const delay = duration / 3.2}
+            {@const delay = duration / 3}
             <path
                 d={path}
                 class="stroke"
@@ -107,26 +107,26 @@
             filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 0.4));
 
             &.animate {
-                animation: stroke var(--duration) linear infinite reverse;
+                animation: stroke var(--duration) linear infinite;
             }
 
             @keyframes stroke {
                 0% {
                     stroke-dasharray: 0 1000;
-                    stroke-dashoffset: -1000;
+                    stroke-dashoffset: 0;
                 }
                 25% {
                     stroke-dasharray: 500 500;
-                    stroke-dashoffset: -500;
+                    stroke-dashoffset: 500;
                 }
                 50% {
                     stroke-dasharray: 500 500;
-                    stroke-dashoffset: 0;
+                    stroke-dashoffset: 1000;
                 }
                 75%,
                 100% {
                     stroke-dasharray: 0 1000;
-                    stroke-dashoffset: 0;
+                    stroke-dashoffset: 1000;
                 }
             }
         }
