@@ -8,10 +8,10 @@ import type { TicketData, TicketDoc } from '../constants.js';
 type SendToHubspotArgs = {
     name: string;
     email: string;
-    id: string;
+    userId: string;
 };
 
-async function sendToHubspot({ name, email }: SendToHubspotArgs) {
+async function sendToHubspot({ name, email, userId }: SendToHubspotArgs) {
     await fetch('https://growth.appwrite.io/v1/mailinglists/init-2.0', {
         method: 'POST',
         headers: {
@@ -19,7 +19,8 @@ async function sendToHubspot({ name, email }: SendToHubspotArgs) {
         },
         body: JSON.stringify({
             email,
-            name
+            name,
+            userId
         })
     });
 }
@@ -29,7 +30,7 @@ async function getTicketDocByUser(user: User) {
         sendToHubspot({
             name: user.appwrite?.name ?? user.github?.name ?? user.appwrite.email,
             email: user.appwrite?.email,
-            id: user.appwrite.$id
+            userId: user.appwrite.$id
         });
     }
 

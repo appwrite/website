@@ -50,17 +50,8 @@
             <stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" />
         </linearGradient>
         <filter id="glow" filterUnits="userSpaceOnUse" {width} {height}>
-            <feGaussianBlur in="color" stdDeviation="2" result="blur" />
+            <feGaussianBlur in="color" stdDeviation="100" result="blur" />
         </filter>
-
-        <linearGradient id="fill" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="50%" y2="100%">
-            <stop offset="0%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" />
-            <stop offset="35%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" />
-            <stop offset="60%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" />
-            <stop offset="75%" style="stop-color:rgba(255,255,255,0.0);stop-opacity:1" />
-            <stop offset="90%" style="stop-color:rgba(255,255,255,0.08);stop-opacity:1" />
-            <stop offset="100%" style="stop-color:rgba(255,255,255,0.02);stop-opacity:1" />
-        </linearGradient>
     </defs>
 </svg>
 
@@ -116,7 +107,7 @@
             filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 0.4));
 
             &.animate {
-                animation: stroke var(--duration) linear infinite;
+                animation: stroke var(--duration) linear infinite reverse;
             }
 
             @keyframes stroke {
