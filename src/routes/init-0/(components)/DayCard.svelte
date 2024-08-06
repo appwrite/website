@@ -4,7 +4,7 @@
     export type DayType = {
         title: string;
         release: Date;
-        animation?: typeof SvelteComponent
+        animation?: typeof SvelteComponent;
     };
 </script>
 
@@ -66,7 +66,7 @@
         flex-direction: column;
         position: relative;
 
-        background: hsl(var(--web-color-card));
+        background: hsl(var(--web-color-subtle));
         overflow: hidden;
 
         height: 7.5rem;
