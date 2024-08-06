@@ -6,7 +6,7 @@ difficulty: beginner
 readtime: 5
 back: /docs/quick-starts
 ---
-Learn how to setup your first Go project powered by Appwrite.
+Learn how to set up your first Go project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
@@ -39,25 +39,13 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 Other scopes are optional.
 
 {% /section %}
-{% section #step-2 step=2 title="Create Node.js project" %}
-Create a Go CLI application.
+{% section #step-2 step=2 title="Create Go project" %}
 
-On Linux or Mac:
-
-cd
-On Windows:
-
-cd %HOMEPATH%
+Create a go.mod file.
 
 ```sh
-Create a go.mod file `go mod init go-appwrite/main`
-Install appwrite dependencies. `go get github.com/appwrite/sdk-for-go v0.0.0-20240703150753-748203e5536c`
+`go mod init go-appwrite/main`
 ```
-Go.mod file should look like this: 
-https://github.com/choir27/go-appwrite/blob/main/Account/createAccount/go.mod
-
-Make sure your go.sum file looks like this: https://github.com/choir27/go-appwrite/blob/main/Account/createAccount/go.sum If it doesn’t, create a go.sum file, copy and paste the above code into the file
-
 
 {% /section %}
 {% section #step-3 step=3 title="Install Appwrite" %}
@@ -65,9 +53,34 @@ Make sure your go.sum file looks like this: https://github.com/choir27/go-appwri
 Install the Go Appwrite SDK.
 
 ```sh
-go get github.com/appwrite/sdk-for-go v0.0.0-20240703150753-748203e5536c
+go get github.com/appwrite/sdk-for-go@1.6.x
 ```
+
+Your `go.mod` file should look like this:
+
+```go
+module go-appwrite/main
+
+require github.com/appwrite/sdk-for-go v0.0.0-20240703150753-748203e5536c
+
+go 1.22.5
+```
+
+If it doesn’t, go to your `go.mod` file and copy and paste the above code into the file.
+
+Make sure your `go.sum` file looks like this:
+
+```go
+github.com/appwrite/sdk-for-go v0.0.0-20240703150753-748203e5536c h1:dT+W+Ujz5cuaEvOe8uVfy0xox8YduBJR6uECkgMOEc8=
+github.com/appwrite/sdk-for-go v0.0.0-20240703150753-748203e5536c/go.mod h1:lLim0S47hdXlLet+GAayvBC7VfVxcsoSZ1F5oymXrmc=
+github.com/open-runtimes/types-for-go/v4 v4.0.0 h1:eMKlziaQVPVtgs2VSi1V/grdw3iGbOca/YrHIwMNUXk=
+github.com/open-runtimes/types-for-go/v4 v4.0.0/go.mod h1:88UUMYovXGRbv5keL4uTKDYMWeNtIKV0BbxDRQ18/xY=
+```
+
+If it doesn’t, go to your `go.sum` file and copy and paste the above code into the file.
+
 {% /section %}
+
 {% section #step-4 step=4 title="Import Appwrite" %}
 
 Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier.
@@ -79,7 +92,7 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Create a new file `app.go` and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
+Create a new file, `app.go`, initialize a function, and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
 ```go
 package main
@@ -91,151 +104,235 @@ import (
 	"github.com/appwrite/sdk-for-go/databases"
 )
 
-appwriteClient := client.NewClient()
-appwriteClient.SetProject("<PROJECT_ID>")
-appwriteClient.SetKey("<API_KEY>")
+func initClient() {
+	appwriteClient := client.NewClient()
+	appwriteClient.SetProject("<PROJECT_ID>")
+	appwriteClient.SetKey("<API_KEY>")
+}
 ```
 
 {% /section %}
 {% section #step-5 step=5 title="Initialize database" %}
 
-Once the Appwrite Client is initialized, create a function to configure a todo collection.
+Once the Appwrite Client is initialized, create a function to configure a todo database and collection.
 
 ```go
 package main
 
 import (
 	"fmt"
-	"log"
 
-	// Assuming "sdk" is the package name where Databases and other related functions are defined
-	"sdk"
+	"github.com/appwrite/sdk-for-go/client"
+	"github.com/appwrite/sdk-for-go/databases"
 )
-
-var (
-	client         *sdk.Client
-	databases      *sdk.Databases
-	todoDatabase   *sdk.Database
-	todoCollection *sdk.Collection
-)
-
-func prepareDatabase() {
-	var err error
-
-	// Create a new database instance
-	todoDatabase, err = databases.CreateDatabase(client, sdk.UniqueID(), "TodosDB")
-	if err != nil {
-		log.Fatalf("Failed to create database: %v", err)
-	}
-
-	// Create a new collection in the database
-	todoCollection, err = databases.CreateCollection(todoDatabase.ID, sdk.UniqueID(), "Todos")
-	if err != nil {
-		log.Fatalf("Failed to create collection: %v", err)
-	}
-
-	// Create a string attribute for the title
-	err = databases.CreateStringAttribute(todoDatabase.ID, todoCollection.ID, "title", 255, true)
-	if err != nil {
-		log.Fatalf("Failed to create string attribute for title: %v", err)
-	}
-
-	// Create a string attribute for the description
-	err = databases.CreateStringAttribute(todoDatabase.ID, todoCollection.ID, "description", 255, false, "This is a test description")
-	if err != nil {
-		log.Fatalf("Failed to create string attribute for description: %v", err)
-	}
-
-	// Create a boolean attribute for isComplete
-	err = databases.CreateBooleanAttribute(todoDatabase.ID, todoCollection.ID, "isComplete", true)
-	if err != nil {
-		log.Fatalf("Failed to create boolean attribute for isComplete: %v", err)
-	}
-}
 
 func main() {
-	client = sdk.NewClient("your-api-key", "your-api-endpoint")
-	databases = sdk.NewDatabases(client)
+	appwriteClient := client.NewClient()
+	appwriteClient.SetProject("<PROJECT_ID>")
+	appwriteClient.SetKey("<API_KEY>")
 
-	prepareDatabase()
-	fmt.Println("Database and collection setup complete.")
+	appwriteDatabases := databases.NewDatabases(appwriteClient)
+
+    database, err := appwriteDatabases.Create(
+        "unique()", 
+        "Pokemon"
+    )
+
+    if err != nil {
+		fmt.Println(err)
+		return
+    }
+
+    collection, err := appwriteDatabases.CreateCollection(
+	    database.Id,
+	    "unique()",
+	    "Gym Leaders"
+    )
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+}
+```
+
+Then, initialize a function to create your attributes.
+
+```go
+func todoCollection(appwriteDatabases *databases.Databases, database *models.Database, collection *models.Collection) {
+	attribute1, err := appwriteDatabases.CreateStringAttribute(
+		database.Id,
+		collection.Id,
+		"title",
+		255,
+		true,
+	)
+
+	fmt.Println(attribute1)
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	attribute2, err := appwriteDatabases.CreateStringAttribute(
+		database.Id,
+		collection.Id,
+		"description",
+		255,
+		false,
+	)
+
+	fmt.Println(attribute2)
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	attribute3, err := appwriteDatabases.CreateBooleanAttribute(
+		database.Id,
+		collection.Id,
+		"isComplete",
+		true,
+	)
+
+	fmt.Println(attribute3)
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 }
 ```
 
 {% /section %}
 {% section #step-6 step=6 title="Add documents" %}
-Create a function to add some mock data into your new collection.
+Create a function to add some mock data to your new collection.
 
-```js
-async function seedDatabase() {
-    var testTodo1 = {
-        title: 'Buy apples',
-        description: 'At least 2KGs',
-        isComplete: true
-    };
+```go
+func seedDatabase(appwriteDatabases *databases.Databases, database *models.Database, collection *models.Collection) {
+	testTodo1 := map[string]interface{}{
+		"title":       "Buy apples",
+		"description": "At least 2KGs",
+		"isComplete":  true,
+	}
 
-    var testTodo2 = {
-        title: 'Wash the apples',
-        isComplete: true
-    };
+	testTodo2 := map[string]interface{}{
+		"title":      "Wash the apples",
+		"isComplete": true,
+	}
 
-    var testTodo3 = {
-        title: 'Cut the apples',
-        description: 'Don\'t forget to pack them in a box',
-        isComplete: false
-    };
+	testTodo3 := map[string]interface{}{
+		"title":       "Cut the apples",
+		"description": "Don't forget to pack them in a box",
+		"isComplete":  false,
+	}
 
-    await databases.createDocument(
-        todoDatabase.$id,
-        todoCollection.$id,
-        sdk.ID.unique(),
-        testTodo1
-    );
-    await databases.createDocument(
-        todoDatabase.$id,
-        todoCollection.$id,
-        sdk.ID.unique(),
-        testTodo2
-    );
-    await databases.createDocument(
-        todoDatabase.$id,
-        todoCollection.$id,
-        sdk.ID.unique(),
-        testTodo3
-    );
+	createDocument1, err := appwriteDatabases.CreateDocument(
+		database.Id,
+		collection.Id,
+		"unique()",
+		testTodo1,
+	)
+
+	fmt.Println(createDocument1)
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	createDocument2, err := appwriteDatabases.CreateDocument(
+		database.Id,
+		collection.Id,
+		"unique()",
+		testTodo2,
+	)
+
+	fmt.Println(createDocument2)
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	createDocument3, err := appwriteDatabases.CreateDocument(
+		database.Id,
+		collection.Id,
+		"unique()",
+		testTodo3,
+	)
+
+	fmt.Println(createDocument3)
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 }
 ```
 
 {% /section %}
 {% section #step-7 step=7 title="Retrieve documents" %}
 
-Create a function to retrieve the mock todo data and a function to execute the requests in order.
-Run the functions to by calling `runAllTasks();`.
+Create a function to retrieve the mock todo data.
 
-```js
-async function getTodos() {
-    var todos = await databases.listDocuments(
-        todoDatabase.$id,
-        todoCollection.$id
-    );
+```go
+func getTodos(appwriteDatabases *databases.Databases, database *models.Database, collection *models.Collection) {
+	todo, err := appwriteDatabases.ListDocuments(
+		database.Id,
+		collection.Id,
+		databases.WithListDocumentsQueries([]interface{}{}),
+	)
 
-    todos.documents.forEach(todo => {
-        console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
-    });
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println(todo)
 }
+```
 
-async function runAllTasks() {
-    await prepareDatabase();
-    await seedDatabase();
-    await getTodos();
+Make sure to update `main()` with the functions you created. Your `main()` function should look something like this:
+
+```go
+func main() {
+
+	appwriteClient := client.NewClient()
+	appwriteClient.SetProject("<PROJECT_ID>")
+	appwriteClient.SetKey("<API_KEY>")
+
+	appwriteDatabases := databases.NewDatabases(appwriteClient)
+
+	database, err := appwriteDatabases.Create("unique()", "Pokemon")
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	collection, err := appwriteDatabases.CreateCollection(
+		database.Id,
+		"unique()",
+		"Gym Leaders")
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	todoCollection(appwriteDatabases, database, collection)
+	seedDatabase(appwriteDatabases, database, collection)
+	getTodos(appwriteDatabases, database, collection)
 }
-runAllTasks();
 ```
 
 {% /section %}
 
 {% section #step-8 step=8 title="All set" %}
 
-Run your project with `node app.js` and view the response in your console.
+Run your project with `go run .` and view the response in your console.
 
 {% /section %}
