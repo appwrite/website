@@ -113,20 +113,20 @@
             @keyframes stroke {
                 0% {
                     stroke-dasharray: 0 1000;
-                    stroke-dashoffset: 0;
+                    stroke-dashoffset: 1000;
                 }
                 25% {
                     stroke-dasharray: 500 500;
-                    stroke-dashoffset: 500;
+                    stroke-dashoffset: 1000;
                 }
                 50% {
                     stroke-dasharray: 500 500;
-                    stroke-dashoffset: 1000;
+                    stroke-dashoffset: 500;
                 }
                 75%,
                 100% {
                     stroke-dasharray: 0 1000;
-                    stroke-dashoffset: 1000;
+                    stroke-dashoffset: 0;
                 }
             }
         }
