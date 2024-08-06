@@ -1,4 +1,10 @@
-<div class="banner">
+<script lang="ts">
+    import { page } from '$app/stores';
+
+    console.log($page);
+</script>
+
+<div class="banner" class:hidden={$page.url.pathname.includes('init')}>
     <div class="content web-u-color-text-primary">
         <div class="headings">
             <span style:font-weight="500"
@@ -23,6 +29,10 @@
         display: flex;
         align-items: center;
         border-bottom: 1px solid hsl(var(--web-color-border));
+
+        &.hidden {
+            display: none;
+        }
 
         .content {
             display: flex;
