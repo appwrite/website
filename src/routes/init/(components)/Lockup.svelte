@@ -16,7 +16,7 @@
 
 <svg
     class="lockup"
-    viewBox={`0 -2 ${width} ${height}`}
+    viewBox={`0 0 ${width} ${height}`}
     xmlns="http://www.w3.org/2000/svg"
     style="--duration:{duration}s"
 >
@@ -49,9 +49,6 @@
             <stop offset="51%" style="stop-color:rgba(255,255,255,1);stop-opacity:1" />
             <stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" />
         </linearGradient>
-        <filter id="glow" filterUnits="userSpaceOnUse" {width} {height}>
-            <feGaussianBlur in="color" stdDeviation="100" result="blur" />
-        </filter>
     </defs>
 </svg>
 
@@ -64,6 +61,8 @@
         animation: fade 1s ease-out;
         max-width: 50vw;
         margin: 0 auto;
+
+        width: 100%;
         display: block;
         position: relative;
         z-index: 12;
