@@ -1,21 +1,16 @@
 ---
 layout: article
 title: Start with Go
-description: Get started with Appwrite on Go and learn how to build secure and scalable apps using our powerful backend.
+description: Dive into our step-by-step guide on integrating Appwrite with your Go server backend application. Get your backend up and running quickly with this tutorial.
 difficulty: beginner
-readtime: 3
+readtime: 5
 back: /docs/quick-starts
 ---
-
-
-Learn how to setup your first Go project powered by Appwrite and the [Appwrite Go SDK](https://github.com/appwrite/sdk-for-go).
-
-{% section #step-1 step=1 title="Create Go project" %}
-
-{% /section %}
-
-{% section #step-2 step=2 title="Create Appwrite project" %}
+Learn how to setup your first Go project powered by Appwrite.
+{% section #step-1 step=1 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
+
+If this is your first time using Appwrite, create an account and create your first project.
 
 {% only_dark %}
 ![Create project screen](/images/docs/quick-starts/dark/create-project.png)
@@ -24,55 +19,58 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 ![Create project screen](/images/docs/quick-starts/create-project.png)
 {% /only_light %}
 
-If this is your first time using Appwrite, create an account and create your first project.
-
-Then, under **Add a platform**, add an **Android app**.
-
-Add your app's **name** and **package name**, your package name is the one entered when creating an Android project. For existing projects, you should use the **applicationId** in your app-level [build.gradle](https://github.com/appwrite/playground-for-android/blob/master/app/build.gradle#L11) file.
+Then, under **Integrate with your server**, add an **API Key** with the following scopes.
 
 {% only_dark %}
-![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
+![Create project screen](/images/docs/quick-starts/dark/integrate-server.png)
 {% /only_dark %}
 {% only_light %}
-![Add a platform](/images/docs/quick-starts/add-platform.png)
+![Create project screen](/images/docs/quick-starts/integrate-server.png)
 {% /only_light %}
 
-You can skip optional steps.
+| Category  {% width=120 %} | Required scopes       | Purpose |
+|-----------|-----------------------|---------|
+| Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
+|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
+|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
+|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
+|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+
+Other scopes are optional.
 
 {% /section %}
+{% section #step-2 step=2 title="Create Node.js project" %}
+Create a Go CLI application.
 
-{% section #step-3 step=3 title="Add the Appwrite SDK" %}
-To add the Appwrite SDK for Android as a dependency, add the following to your app-level **build.gradle.kts** file inside the **dependencies** block.
+On Linux or Mac:
 
-```kotlin
-implementation("io.appwrite:sdk-for-android:5.1.0")
+cd
+On Windows:
+
+cd %HOMEPATH%
+
+```sh
+Create a go.mod file `go mod init go-appwrite/main`
+Install appwrite dependencies. `go get github.com/appwrite/sdk-for-go v0.0.0-20240703150753-748203e5536c`
 ```
+Go.mod file should look like this: 
+https://github.com/choir27/go-appwrite/blob/main/Account/createAccount/go.mod
 
-In order to allow creating OAuth sessions, the following activity needs to be added inside the `<application>` tag, along side the existing `<activity>` tags in your [AndroidManifest.xml](https://github.com/appwrite/playground-for-flutter/blob/master/android/app/src/main/AndroidManifest.xml). 
-Be sure to replace the **[PROJECT_ID]** string with your actual Appwrite project ID. 
-You can find your Appwrite project ID in you project settings screen in your Appwrite Console.
+Make sure your go.sum file looks like this: https://github.com/choir27/go-appwrite/blob/main/Account/createAccount/go.sum If it doesn’t, create a go.sum file, copy and paste the above code into the file
 
-```xml
-<manifest ...>
-  ...
-  <application ...>
-    ...
-    <!-- Add this inside the `<application>` tag, along side the existing `<activity>` tags -->
-    <activity android:name="io.appwrite.views.CallbackActivity" android:exported="true">
-      <intent-filter android:label="android_web_auth">
-        <action android:name="android.intent.action.VIEW" />
-        <category android:name="android.intent.category.DEFAULT" />
-        <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="appwrite-callback-[PROJECT_ID]" />
-      </intent-filter>
-    </activity>
-  </application>
-</manifest>
+
+{% /section %}
+{% section #step-3 step=3 title="Install Appwrite" %}
+
+Install the Go Appwrite SDK.
+
+```sh
+go get github.com/appwrite/sdk-for-go v0.0.0-20240703150753-748203e5536c
 ```
 {% /section %}
+{% section #step-4 step=4 title="Import Appwrite" %}
 
-{% section #step-4 step=4 title="Create Appwrite Singleton" %}
-Find your project's ID in the **Settings** page. 
+Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier.
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
@@ -81,175 +79,163 @@ Find your project's ID in the **Settings** page.
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Create a new file `Appwrite.kt` and add the following code to it, replacing `[YOUR_PROJECT_ID]` with your project ID.
+Create a new file `app.go` and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
-```kotlin
-package <YOUR_ROOT_PACKAGE_HERE>
+```go
+package main
 
-import android.content.Context
-import io.appwrite.Client
-import io.appwrite.ID
-import io.appwrite.models.*
-import io.appwrite.services.*
+import (
+	"fmt"
 
-object Appwrite {
-    lateinit var client: Client
-    lateinit var account: Account
+	"github.com/appwrite/sdk-for-go/client"
+	"github.com/appwrite/sdk-for-go/databases"
+)
 
-    fun init(context: Context) {
-        client = Client(context)
-            .setEndpoint("https://cloud.appwrite.io/v1")
-            .setProject("[YOUR_PROJECT_ID]")
+appwriteClient := client.NewClient()
+appwriteClient.SetProject("<PROJECT_ID>")
+appwriteClient.SetKey("<API_KEY>")
+```
 
-        account = Account(client)
-    }
+{% /section %}
+{% section #step-5 step=5 title="Initialize database" %}
 
-    suspend fun onLogin(
-        email: String,
-        password: String,
-    ): Session {
-        return account.createEmailPasswordSession(
-            email,
-            password,
-        )
-    }
+Once the Appwrite Client is initialized, create a function to configure a todo collection.
 
-    suspend fun onRegister(
-        email: String,
-        password: String,
-    ): User<Map<String, Any>> {
-        return account.create(
-            userId = ID.unique(),
-            email,
-            password,
-        )
-    }
+```go
+package main
 
-    suspend fun onLogout() {
-        account.deleteSession("current")
-    }
+import (
+	"fmt"
+	"log"
+
+	// Assuming "sdk" is the package name where Databases and other related functions are defined
+	"sdk"
+)
+
+var (
+	client         *sdk.Client
+	databases      *sdk.Databases
+	todoDatabase   *sdk.Database
+	todoCollection *sdk.Collection
+)
+
+func prepareDatabase() {
+	var err error
+
+	// Create a new database instance
+	todoDatabase, err = databases.CreateDatabase(client, sdk.UniqueID(), "TodosDB")
+	if err != nil {
+		log.Fatalf("Failed to create database: %v", err)
+	}
+
+	// Create a new collection in the database
+	todoCollection, err = databases.CreateCollection(todoDatabase.ID, sdk.UniqueID(), "Todos")
+	if err != nil {
+		log.Fatalf("Failed to create collection: %v", err)
+	}
+
+	// Create a string attribute for the title
+	err = databases.CreateStringAttribute(todoDatabase.ID, todoCollection.ID, "title", 255, true)
+	if err != nil {
+		log.Fatalf("Failed to create string attribute for title: %v", err)
+	}
+
+	// Create a string attribute for the description
+	err = databases.CreateStringAttribute(todoDatabase.ID, todoCollection.ID, "description", 255, false, "This is a test description")
+	if err != nil {
+		log.Fatalf("Failed to create string attribute for description: %v", err)
+	}
+
+	// Create a boolean attribute for isComplete
+	err = databases.CreateBooleanAttribute(todoDatabase.ID, todoCollection.ID, "isComplete", true)
+	if err != nil {
+		log.Fatalf("Failed to create boolean attribute for isComplete: %v", err)
+	}
+}
+
+func main() {
+	client = sdk.NewClient("your-api-key", "your-api-endpoint")
+	databases = sdk.NewDatabases(client)
+
+	prepareDatabase()
+	fmt.Println("Database and collection setup complete.")
 }
 ```
+
 {% /section %}
-{% section #step-5 step=5 title="Create a login page" %}
-Add the following code to `MainActivity.kt`.
+{% section #step-6 step=6 title="Add documents" %}
+Create a function to add some mock data into your new collection.
 
-```kotlin
-package <YOUR_ROOT_PACKAGE_HERE>
+```js
+async function seedDatabase() {
+    var testTodo1 = {
+        title: 'Buy apples',
+        description: 'At least 2KGs',
+        isComplete: true
+    };
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.*
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.*
-import androidx.compose.ui.text.input.*
-import androidx.compose.ui.unit.*
-import <YOUR_ROOT_PACKAGE_HERE>.ui.theme.MyApplicationTheme
-import kotlinx.coroutines.launch
+    var testTodo2 = {
+        title: 'Wash the apples',
+        isComplete: true
+    };
 
-class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalMaterial3Api::class)
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    var testTodo3 = {
+        title: 'Cut the apples',
+        description: 'Don\'t forget to pack them in a box',
+        isComplete: false
+    };
 
-        Appwrite.init(applicationContext)
-
-        setContent {
-            MyApplicationTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    val coroutineScope = rememberCoroutineScope()
-
-                    var user by remember { mutableStateOf("") }
-                    var email by remember { mutableStateOf("") }
-                    var password by remember { mutableStateOf("") }
-
-                    if (user.isNotEmpty()) {
-                        Column(
-                            modifier = Modifier.fillMaxSize(),
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.Center
-                        ) {
-                            Text(text = "Logged in as $user")
-                            Button(onClick = {
-                                coroutineScope.launch {
-                                    Appwrite.onLogout()
-                                }
-                            }) {
-                                Text("Logout")
-                            }
-                        }
-                    }
-
-                    Column(
-                        modifier = Modifier.fillMaxSize(),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
-                    ) {
-                        TextField(
-                            value = email,
-                            onValueChange = { email = it },
-                            label = { Text("Username") },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp)
-                        )
-                        TextField(
-                            value = password,
-                            onValueChange = { password = it },
-                            label = { Text("Password") },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp),
-                            visualTransformation = PasswordVisualTransformation(),
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
-                        )
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp),
-                            horizontalArrangement = Arrangement.SpaceBetween
-                        ) {
-                            Button(onClick = {
-                                coroutineScope.launch {
-                                    try {
-                                        Appwrite.onLogin(email, password)
-
-                                        user = email
-                                    } catch (e: Exception) {
-                                        e.printStackTrace()
-                                    }
-                                }
-                            }) {
-                                Text("Login")
-                            }
-                            Button(onClick = {
-                                coroutineScope.launch {
-                                    try {
-                                        Appwrite.onRegister(email, password)
-                                    } catch (e: Exception) {
-                                        e.printStackTrace()
-                                    }
-                                }
-                            }) {
-                                Text("Register")
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+    await databases.createDocument(
+        todoDatabase.$id,
+        todoCollection.$id,
+        sdk.ID.unique(),
+        testTodo1
+    );
+    await databases.createDocument(
+        todoDatabase.$id,
+        todoCollection.$id,
+        sdk.ID.unique(),
+        testTodo2
+    );
+    await databases.createDocument(
+        todoDatabase.$id,
+        todoCollection.$id,
+        sdk.ID.unique(),
+        testTodo3
+    );
 }
 ```
+
+{% /section %}
+{% section #step-7 step=7 title="Retrieve documents" %}
+
+Create a function to retrieve the mock todo data and a function to execute the requests in order.
+Run the functions to by calling `runAllTasks();`.
+
+```js
+async function getTodos() {
+    var todos = await databases.listDocuments(
+        todoDatabase.$id,
+        todoCollection.$id
+    );
+
+    todos.documents.forEach(todo => {
+        console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
+    });
+}
+
+async function runAllTasks() {
+    await prepareDatabase();
+    await seedDatabase();
+    await getTodos();
+}
+runAllTasks();
+```
+
 {% /section %}
 
-{% section #step-6 step=6 title="All set" %}
-Run your project by clicking **Run app** in Android Studio.
-{% /section %}
+{% section #step-8 step=8 title="All set" %}
 
+Run your project with `node app.js` and view the response in your console.
+
+{% /section %}
