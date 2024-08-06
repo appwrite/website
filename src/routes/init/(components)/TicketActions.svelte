@@ -64,7 +64,7 @@
     <div class="buttons" style:justify-content="space-between">
         <div class="u-flex u-gap-8">
             <button class="web-button" on:click={() => (customizing = !customizing)}>
-                <span class="text">Customize ticket</span>
+                <span class="text">Customize</span>
             </button>
         </div>
 
