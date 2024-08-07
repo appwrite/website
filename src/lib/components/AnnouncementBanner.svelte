@@ -1,19 +1,8 @@
 <script lang="ts">
     import { page } from '$app/stores';
-
-    function isDateSameOrAfter(date: Date) {
-        const currentDate = new Date();
-        currentDate.setHours(0, 0, 0, 0);
-        date.setHours(0, 0, 0, 0);
-
-        return date >= currentDate;
-    }
 </script>
 
-<div
-    class="banner"
-    class:hidden={$page.url.pathname.includes('init') || isDateSameOrAfter(new Date('2024-08-07'))}
->
+<div class="banner" class:hidden={$page.url.pathname.includes('init')}>
     <div class="content web-u-color-text-primary">
         <div class="headings">
             <span style:font-weight="500"
