@@ -171,8 +171,6 @@ functions.createExecution(
 {% /tabsitem %}
 
 {% tabsitem #server title="Server SDKs" %}
-
-#server
 {% multicode %}
 ```js
 const sdk = require('node-appwrite');
