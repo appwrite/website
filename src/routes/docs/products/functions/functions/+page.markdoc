@@ -33,7 +33,8 @@ This lets you track your code using Git, which makes it easy to integrate Appwri
    {% only_light %}
    ![Create project screen](/images/docs/functions/template.png)
    {% /only_light %}
-   {% /tabsitem %}
+
+{% /tabsitem %}
 
 {% tabsitem #manual title="Manual" %}
 You can also create Appwrite Functions manually by uploading your code in a zipped file.

@@ -32,7 +32,8 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console), click on **Fu
 1. After connecting to GitHub, under **Quick start**, select the **Python ML** starter template.
 1. In the **Variables** step, add any necessary variables like `APPWRITE_API_KEY`, `APPWRITE_ENDPOINT`, and `APPWRITE_FUNCTION_PROJECT_ID`.
 1. Follow the step-by-step wizard to create the function.
-   {% /section %}
+
+{% /section %}
 
 {% section #step-2 step=2 title="Add TensorFlow and necessary packages" %}
 Once the function is created, navigate to the freshly created repository and clone it to your local machine.

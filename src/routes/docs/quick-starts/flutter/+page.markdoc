@@ -76,7 +76,8 @@ You have to change your iOS Deployment Target in Xcode to be iOS >= 11 to be abl
 2. To view your app's settings, select the Runner project in the XCode project navigator. Then, in the main view sidebar, select the **Runner target**.
 3. Select the **General** tab.
 4. In **Deployment Info** > **Target**, select iOS 11.0 or above
-   {% /tabsitem %}
+
+{% /tabsitem %}
 
 {% tabsitem #android title="Android" %}
 Add your app's **name** and **package name**, Your package name is generally the **applicationId** in your app-level [build.gradle](https://github.com/appwrite/playground-for-flutter/blob/master/android/app/build.gradle#L41) file.

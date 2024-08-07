@@ -77,7 +77,8 @@ You can create relationships in the Appwrite Console by adding a relationship at
 4. Pick relationship attribute key(s) to represent the related collection. Relationship attribute keys are used to reference the related collection in queries, so pick something that's intuitive and easy to remember.
 5. Select desired [on delete](#on-delete) behavior.
 6. Click the **Create** button to create the relationship.
-   {% /tabsitem %}
+
+{% /tabsitem %}
 
 {% tabsitem #sdk title="SDK" %}
 Here's an example that adds a relationship between the collections **movies** and **reviews**.

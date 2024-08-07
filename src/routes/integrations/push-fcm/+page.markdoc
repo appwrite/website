@@ -82,8 +82,9 @@ To test the provider on mobile apps, there are some additional configuration ste
 5. In the Firebase console, go to *Settings*> **Cloud Messaging** > **APNs authentication key** > click **Upload**. Then, upload your key here.
 6. Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > + Capabilities > Search for **Push Notifications**.
 7. If using SwiftUI, disable swizzling by setting `FirebaseAppDelegateProxyEnabled` to `NO` in your `Info.plist`.
-   {% /tabsitem %}
-   {% /tabs %}
+
+{% /tabsitem %}
+{% /tabs %}
 
 After that, you can follow the [Send push notifications](https://appwrite.io/docs/products/messaging/send-push-notifications) flow to test your provider.
 

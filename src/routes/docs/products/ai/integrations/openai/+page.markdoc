@@ -32,7 +32,8 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
 1. In the **Variables** step, add the `OPENAI_API_KEY`, generate it [here](https://platform.openai.com/account/api-keys).
 1. Follow the step-by-step wizard and create the function.
-   {% /section %}
+
+{% /section %}
 
 {% section #step-2 step=2 title="Add OpenAI SDK" %}
 Once the function is created, navigate to the freshly created repository and clone it to your local machine.

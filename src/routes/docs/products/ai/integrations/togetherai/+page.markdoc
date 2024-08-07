@@ -33,7 +33,8 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console), click, on **F
 1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
 1. In the **Variables** step, add `APPWRITE_BUCKET_ID` and `TOGETHER_API_KEY`. You can generate your Together AI key [here](https://api.together.xyz/settings/api-keys). For the `APPWRITE_API_KEY`, tick the box to **Generate API key on completion**..
 1. Follow the step-by-step wizard and create the function.
-   {% /section %}
+
+{% /section %}
 
 {% section #step-2 step=2 title="Add Undici" %}
 Once the function is created, clone and open it in your development environment.
