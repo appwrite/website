@@ -15,7 +15,7 @@ In this article, we’ll go over how the image classification field developed an
 
 # A Brief History of Image Classification
 
-arly image classification began in the 1960s and relied on simple algorithms such as nearest neighbors and linear classifiers to perform classification tasks. During this time, some of the theoretical underpinnings of what would become image classification were also invented, such as the Vapnik-Chervonenkis Theory (VC Theory).
+Early image classification began in the 1960s and relied on simple algorithms such as nearest neighbours and linear classifiers. During this time, some of the foundations of image classification were invented, such as the Vapnik-Chervonenkis Theory (VC Theory).
 
 In the late 1980s, researchers explored how neural networks could be used. The introduction of back-propagation made it easier to train multi-layer perceptrons (MLPs) and showed that neural networks had the potential for classification tasks. However, a lack of large datasets to train on and insufficient processing power made real-world applications impractical.
 
@@ -23,7 +23,7 @@ All these efforts culminated in 2012 AlexNet won the ImageNet Large Scale Visual
 
 Following AlexNet, other notable architectures emerged, including VGGNet and GoogLeNet in 2014, ResNet in 2015, and EfficientNet in 2019. Each built on AlexNet's foundation, refining and simplifying CNN architecture, which is widely used today.
 
-Looking ahead, new trends are emerging. Retention mechanisms and transformers, inspired by their success in natural language processing, are being applied to image classification. These models treat image patches like text tokens. Additionally, few-shot learning and transfer learning are being explored to reduce the need for large datasets, making model training more efficient.
+Retention mechanisms and transformers, inspired by their success in natural language processing, are new trends in image classification. These models treat image patches like text tokens. Few-shot learning and transfer learning have potential to reduce the need for large datasets, making models training more efficient.
 
 # Architectures
 
@@ -44,7 +44,7 @@ Currently, Transformers are leading benchmarks on most image classification data
 
 # Datasets
 
-Finding data to train these architectures can sometimes be the most challenging part of developing state-of-the-art image classification models. It was tough in the early days, but these days, we have standardized high-quality labeled data that is offered entirely free for any researchers who require it. Next, I'll cover some of the most popular datasets.
+Finding data to train these architectures used to be the most challenging part of developing state-of-the-art image classification models. Now, however, there is standardized high-quality labeled data that is offered entirely free for any researchers who require it. Next, we'll cover some of the most popular datasets.
 
 ### [ImageNet](https://www.image-net.org/)
 
@@ -65,7 +65,7 @@ To show you how you might use image classification in your application, we can c
 
 ### Step 1: Train the TensorFlow model
 
-First, make sure you have TensorFlow and NumPy installed on your machine, then paste the following code into a file called training.py; this is a modified version of the TensorFlow image classification tutorial found [here](https://www.tensorflow.org/tutorials/images/classification).
+Install TensorFlow and NumPy installed on your machine, then paste the following code into a file called training.py; this is a modified version of the TensorFlow image classification tutorial found [here](https://www.tensorflow.org/tutorials/images/classification).
 
 ```python
 import matplotlib.pyplot as plt
@@ -160,7 +160,7 @@ Give it any name and make sure to select the `Python (ML)` runtime; this should 
 
 ### Step 3: Add our inference code to the function
 
-With the function boilerplate created, we will replace the `main.py` file with a script we'll run on our function to load the model we just trained and make evaluations based on it. Replace all the code in that file with the following code:
+With the function boilerplate created, replace the `main.py` file with a script to load the model we just trained and run inference:
 
 ```python
 import os
@@ -231,7 +231,7 @@ def main(context):
     return context.res.send(response_message, 200)
 ```
 
-We also want to add a requirements.txt file with TensorFlow and NumPy, so we have all the dependencies we need:
+Add a requirements.txt file with TensorFlow and NumPy, to fetch the required dependencies:
 
 ```text
 tensorflow
@@ -242,9 +242,9 @@ Pillow
 
 ### Step 4: Deploy your function
 
-Next, move the model.tflite file that was created into the same directory as your main.py file and then change directories to where your appwrite.json is stored. This model.tflite is quite a small file, so we can store it in the function. If you’re using larger models, upload them to Appwrite Storage and then use getFileDownload to download them to your function. 
+Move the `model.tflite` file that was created into the same directory as the `main.py` file and then change directories to that containing the `appwrite.json`. This `model.tflite` is quite a small file, so store it in the function. If using larger models, upload them to Appwrite Storage and then use `getFileDownload` to download them to the function. 
 
-With the file now copied, run appwrite deploy function and select the function you just created to deploy it to Appwrite.
+With the file now copied, run appwrite deploy function and select the function to deploy it to Appwrite.
 
 ### Step 5: Update your environment variables 
 
@@ -252,7 +252,7 @@ Now that the function has been deployed, navigate to it on the Appwrite console 
 
 ### Step 6: Test your function
 
-Finally, send a `POST` request to your function with a JSON body that contains a file ID from your bucket like this: 
+Finally, send a `POST` request to the function with a JSON body that contains a file ID from the bucket like this: 
 
 ```json
 {"$id": "66503a9e00246481a92c"}
