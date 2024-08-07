@@ -72,6 +72,8 @@
         min-height: 76px;
         display: flex;
         align-items: center;
+        max-width: 100vw;
+        overflow: hidden;
         border-bottom: 1px solid hsl(var(--web-color-border));
 
         &.hidden {
