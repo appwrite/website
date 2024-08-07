@@ -19,7 +19,7 @@
     const { copied, copy } = createCopy(ticketUrl);
     $: twitterText = encodeURIComponent(
         [
-            `Join Init and celebrate everything new with @appwrite`,
+            `Join us during the week of August 19–23 to celebrate everything new with @appwrite.`,
             ``,
             `Claim your ticket. ${ticketUrl}`
         ].join('\n')
