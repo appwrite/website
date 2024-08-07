@@ -62,7 +62,7 @@
         flex-direction: column;
         position: relative;
 
-        background: hsl(var(--web-color-card));
+        background: hsl(var(--web-color-subtle));
         overflow: hidden;
 
         height: 7.5rem;
