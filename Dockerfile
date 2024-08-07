@@ -49,15 +49,13 @@ WORKDIR /app
 COPY package.json package.json
 COPY pnpm-lock.yaml pnpm-lock.yaml
 RUN corepack enable
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
 FROM base as build
-
 COPY . .
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN NODE_OPTIONS=--max_old_space_size=8192 pnpm run build
 
 FROM base as final
-
 # Install fontconfig
 COPY ./local-fonts /usr/share/fonts
 RUN apt-get update && \
