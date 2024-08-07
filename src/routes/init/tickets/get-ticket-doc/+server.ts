@@ -11,7 +11,7 @@ type SendToHubspotArgs = {
     userId: string;
 };
 
-async function sendToHubspot({ name, email, userId }: SendToHubspotArgs) {
+async function sendToUserList({ name, email, userId }: SendToHubspotArgs) {
     await fetch('https://growth.appwrite.io/v1/mailinglists/init-2.0', {
         method: 'POST',
         headers: {
@@ -26,11 +26,11 @@ async function sendToHubspot({ name, email, userId }: SendToHubspotArgs) {
 }
 
 async function getTicketDocByUser(user: User) {
-    if (user.appwrite?.email) {
-        sendToHubspot({
-            name: user.appwrite?.name ?? user.github?.name ?? user.appwrite.email,
-            email: user.appwrite?.email,
-            userId: user.appwrite.$id
+    if (user.github?.email) {
+        sendToUserList({
+            name: user.appwrite?.name ?? user.github?.name ?? user.github.email,
+            email: user.github?.email,
+            userId: user.appwrite?.$id ?? ''
         });
     }
 
