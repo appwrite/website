@@ -11,7 +11,8 @@
     import Copy from './Copy.svelte';
 
     const title = 'Assets' + TITLE_SUFFIX;
-    const description = 'Resources for presenting the Appwrite brand, ensuring consistency in using our logos, colours, and other brand elements across various platforms and materials.';
+    const description =
+        'Resources for presenting the Appwrite brand, ensuring consistency in using our logos, colours, and other brand elements across various platforms and materials.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     enum Section {

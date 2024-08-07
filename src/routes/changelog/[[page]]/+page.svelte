@@ -13,7 +13,8 @@
 
     const seo = {
         title: 'Changelog' + TITLE_SUFFIX,
-        description: 'Check out our detailed changelog to see what\'s new and what updates have been made to Appwrite Cloud and Self Hosted.',
+        description:
+            "Check out our detailed changelog to see what's new and what updates have been made to Appwrite Cloud and Self Hosted.",
         ogImage: `${DEFAULT_HOST}/images/open-graph/website.png`
     };
 
@@ -61,7 +62,9 @@
                     </ul>
 
                     {#if data.nextPage}
-                        <button class="web-button is-secondary" on:click={loadMore}>Load more</button>
+                        <button class="web-button is-secondary" on:click={loadMore}
+                            >Load more</button
+                        >
                     {/if}
                 </div>
             </div>

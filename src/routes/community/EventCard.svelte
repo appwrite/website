@@ -25,11 +25,11 @@
     export let description: $$Props['description'];
     export let buttonText: $$Props['buttonText'];
     export let headingLevel: $$Props['headingLevel'] = 5;
-    const hasPast: boolean = (new Date()) > (new Date(date));
+    const hasPast: boolean = new Date() > new Date(date);
     const dateString: string = new Date(date).toLocaleDateString('en-US', {
         month: 'long',
         day: 'numeric',
-        year: 'numeric',
+        year: 'numeric'
     });
     $: headingTag = `h${headingLevel}`;
 </script>

@@ -254,7 +254,7 @@
                     scale: 'Unlimited'
                 }
             ]
-        }, 
+        },
         {
             title: 'Security',
             rows: [

@@ -1,7 +1,6 @@
 import { base } from '$app/paths';
 import type { AuthorData, PostsData } from './content';
 
-
 export function load() {
     const postsGlob = import.meta.glob('./post/**/*.markdoc', {
         eager: true

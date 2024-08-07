@@ -86,4 +86,5 @@ The following consequences should also apply at the project level if the Free pl
 
 -   **Functions**
 -   If more than 5 functions have been created, disable them in order of date created (oldest ones first).
-    {% /table %}
+
+{% /table %}

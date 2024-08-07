@@ -9,8 +9,7 @@ export const SENTRY_DSN =
  * init-banner-02
  * pricing-banner-01
  */
-type Banners = 'discord-banner-01' | 'init-banner-02' | 'pricing-banner-01'
-
+type Banners = 'discord-banner-01' | 'init-banner-02' | 'pricing-banner-01';
 
 export type Social = {
     icon: string;

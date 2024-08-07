@@ -103,7 +103,9 @@
                                                 />
                                             {/if}
                                             <div class="u-flex-vertical">
-                                                <h4 class="web-sub-body-400 web-u-color-text-primary">
+                                                <h4
+                                                    class="web-sub-body-400 web-u-color-text-primary"
+                                                >
                                                     {authorData.name}
                                                 </h4>
                                                 <p class="web-caption-400">{authorData.role}</p>

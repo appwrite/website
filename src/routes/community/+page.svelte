@@ -122,7 +122,8 @@
     }
 
     const title = 'Community' + TITLE_SUFFIX;
-    const description = 'Join our vibrant community of developers. Ask questions, contribute solutions, and inspire others to improve the backend development experience.';
+    const description =
+        'Join our vibrant community of developers. Ask questions, contribute solutions, and inspire others to improve the backend development experience.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 

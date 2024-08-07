@@ -113,7 +113,7 @@
                     icon: 'icon-sparkles'
                 },
                 {
-                    label: "The Appwriter",
+                    label: 'The Appwriter',
                     href: '/docs/tooling/appwriter',
                     icon: 'icon-text'
                 }
