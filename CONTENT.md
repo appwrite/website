@@ -163,6 +163,7 @@ These are the fundamental Markdown syntax elements you'll need to create well-st
 
 ```md
 {% tabs %}
+
 {% tabsitem #js title="Javascript" %}
 Lorem ipsum dolor sit amet consectetur.
 {% /tabsitem %}
@@ -170,6 +171,7 @@ Lorem ipsum dolor sit amet consectetur.
 {% tabsitem #flutter title="Flutter" %}
 Lorem ipsum dolor sit amet consectetur.
 {% /tabsitem %}
+
 {% /tabs %}
 ```
 
@@ -300,10 +302,12 @@ Use accordions to reduce page size and collapse information that's not important
 
 ```
 {% accordion %}
+
 {% accordion_item title="Team ID" %}
 {% /accordion_item %}
 
 {% accordion_item title="Bundle ID" %}
 {% /accordion_item %}
+
 {% /accordion %}
 ```
