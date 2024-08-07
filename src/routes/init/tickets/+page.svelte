@@ -5,6 +5,7 @@
     import Ticket from '../(components)/Ticket.svelte';
     import { getMockContributions, loginGithub } from '../helpers';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
+    import { onMount } from 'svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
@@ -44,6 +45,20 @@
             title: 'Platform Engineer'
         }
     ];
+
+    let container: HTMLDivElement;
+
+    function preventTouchMove(event: TouchEvent) {
+        event.preventDefault();
+    }
+
+    onMount(() => {
+        container.addEventListener('touchmove', preventTouchMove, { passive: false });
+
+        return () => {
+            container.removeEventListener('touchmove', preventTouchMove);
+        };
+    });
 </script>
 
 <svelte:head>
@@ -94,7 +109,7 @@
 
         <div class="col">
             {#each Array.from({ length: 2 }) as _}
-                <div class="ticket-preview-wrapper">
+                <div class="ticket-preview-wrapper" bind:this={container}>
                     {#each tickets as { name, title }, i}
                         {@const id = i + 1}
                         <div class="ticket">
@@ -131,6 +146,7 @@
         align-items: center;
         justify-content: center;
         position: relative;
+        overflow: hidden;
 
         .signup {
             margin: 0 auto;
@@ -210,6 +226,8 @@
         width: 400vw;
         animation: scroll 60s linear infinite;
         overflow: hidden;
+        pointer-events: none;
+        touch-action: none;
 
         --x-translate-start: -100vw;
         --x-translate-end: 100vw;
