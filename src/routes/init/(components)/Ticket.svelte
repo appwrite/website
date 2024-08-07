@@ -230,9 +230,7 @@
         animation: fade 1s ease-out;
         transition: transform 100ms;
         transform-origin: center;
-        -webkit-transform: rotateY(var(--rx)) rotateX(var(--ry));
         transform: rotateY(var(--rx)) rotateX(var(--ry));
-        -webkit-transform-style: preserve-3d;
         transform-style: preserve-3d;
         overflow: hidden;
         .stub {
@@ -298,9 +296,14 @@
                     display: flex;
 
                     div {
-                        --size: 8px;
+                        --size: 3px;
                         width: var(--size);
                         height: var(--size);
+                        flex-shrink: 0;
+
+                        @media screen and (min-width: 768px) {
+                            --size: 8px;
+                        }
 
                         border-radius: calc(var(--size) / 4);
                         animation: fade-in 500ms ease calc(calc(75ms * var(--index)) + var(--delay))
@@ -349,13 +352,14 @@
             grid-column: span 9 / span 9;
             height: 100%;
             background: #000;
-            padding: pxToRem(24);
+            padding: pxToRem(20);
             position: relative;
             border-radius: pxToRem(16);
             overflow: hidden;
 
             .web-label {
                 position: absolute;
+                font-size: clamp(12px, 1vw, 16px);
             }
 
             .shine {
@@ -365,19 +369,17 @@
             .logo {
                 position: absolute;
 
-                transform: translateY(50%) translateX(-5%);
+                transform: translateY(75%) translateX(-10%);
                 z-index: 10;
+
+                @media screen and (min-width: 768px) {
+                    transform: translateY(50%) translateX(-5%);
+                }
             }
         }
     }
     .web-title {
-        font-size: pxToRem(24);
+        font-size: clamp(20px, 1vw, 24px);
         line-height: 1;
-    }
-
-    .web-label {
-        font-size: pxToRem(16);
-
-        margin-block-start: pxToRem(0.25);
     }
 </style>
