@@ -113,11 +113,15 @@
                             </li>
                             <li>
                                 <article
-                                    class="web-card is-transparent is-transparent-pink has-border-gradient u-height-100-percent"
+                                    class="web-card is-transparent has-border-gradient u-height-100-percent"
+                                    style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="pro" class="web-label">Pro</h2>
+                                            <header class="u-flex u-gap-12">
+                                                <h2 id="pro" class="web-label">Pro</h2>
+                                                <div class="web-inline-tag is-pink">Popular</div>
+                                            </header>
                                             <div
                                                 class="web-title web-u-color-text-primary u-margin-block-start-8"
                                             >
@@ -182,12 +186,14 @@
                                                 For scaling teams and agencies that need dedicated
                                                 support.
                                             </p>
-                                            <button
+                                            <a
+                                                href="https://cloud.appwrite.io/console?type=createScale"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
                                                 class="web-button is-secondary is-full-width u-margin-block-start-32"
-                                                disabled
                                             >
-                                                <span class="web-sub-body-500">Coming soon</span>
-                                            </button>
+                                                <span class="web-sub-body-500">Start building</span>
+                                            </a>
                                         </header>
                                         <div class="web-pricing-cards-content">
                                             <p>Everything in Pro, plus:</p>
@@ -206,6 +212,45 @@
                                     </div>
                                 </article>
                             </li>
+                            <li>
+                                <article
+                                    class="web-card is-transparent has-border-gradient u-height-100-percent"
+                                    style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
+                                >
+                                    <div class="web-pricing-cards-item">
+                                        <header class="web-pricing-cards-header">
+                                            <h2 id="scale" class="web-label">Enterprise</h2>
+                                            <div
+                                                class="web-title web-u-color-text-primary u-margin-block-start-8"
+                                            >
+                                                $685
+                                            </div>
+                                            <div class="u-margin-block-start-4">
+                                                per organization/month
+                                            </div>
+                                            <p class="web-main-body-500 u-margin-block-start-16">
+                                                For enterprises that need more power and premium support.
+                                            </p>
+                                            <button
+                                                class="web-button is-secondary is-full-width u-margin-block-start-32"
+                                            >
+                                                <span class="web-sub-body-500">Contact us</span>
+                                            </button>
+                                        </header>
+                                        <div class="web-pricing-cards-content">
+                                            <p>Everything in Scale, plus:</p>
+                                            <ul class="web-checked-list-circle">
+                                                <li><span>Uptime SLA</span></li>
+                                                <li><span>90 days logs</span></li>
+                                                <li><span>On premise support</span></li>
+                                                <li><span>Dedicated success manager</span></li>
+                                                <li><span>Private Slack / Discord channel</span></li>
+                                                <li><span>Personalized onboarding and training</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </article>
+                            </li>
                         </ul>
                     </div>
 
@@ -217,16 +262,15 @@
                             >
                                 <header class="u-flex u-gap-12">
                                     <h3
-                                        id="enterprises"
+                                        id="insurance"
                                         class="web-main-body-500 web-u-color-text-primary"
                                     >
-                                        Enterprises
+                                        Side Project Insurance
                                     </h3>
-                                    <div class="web-inline-tag is-pink">Coming Soon</div>
                                 </header>
                                 <p class="u-margin-block-start-8">
-                                    Large scale projects seeking greater performance, collaboration
-                                    and security.
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting
+                                    industry.
                                 </p>
                                 <a
                                     href="/contact-us"
@@ -296,5 +340,16 @@
         .web-location-for-mobile {
             inset-block-start: 90px;
         }
+    }
+
+    .web-pricing-cards-list {
+        gap: 1rem;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .web-pricing-cards-list .web-main-body-500 {
+        height: 78px;
+        --p-font-size: unset !important;
+        --p-line-height: var(--web-line-height-sm);
     }
 </style>
