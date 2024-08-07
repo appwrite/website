@@ -45,20 +45,6 @@
             title: 'Platform Engineer'
         }
     ];
-
-    let container: HTMLDivElement;
-
-    function preventTouchMove(event: TouchEvent) {
-        event.preventDefault();
-    }
-
-    onMount(() => {
-        container.addEventListener('touchmove', preventTouchMove, { passive: false });
-
-        return () => {
-            container.removeEventListener('touchmove', preventTouchMove);
-        };
-    });
 </script>
 
 <svelte:head>
@@ -109,7 +95,7 @@
 
         <div class="col">
             {#each Array.from({ length: 2 }) as _}
-                <div class="ticket-preview-wrapper" bind:this={container}>
+                <div class="ticket-preview-wrapper">
                     {#each tickets as { name, title }, i}
                         {@const id = i + 1}
                         <div class="ticket">
