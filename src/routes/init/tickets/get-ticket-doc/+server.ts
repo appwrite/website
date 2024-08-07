@@ -29,7 +29,7 @@ async function getTicketDocByUser(user: User) {
     if (user.github?.email) {
         sendToUserList({
             name: user.appwrite?.name ?? user.github?.name ?? user.github.email,
-            email: user.github?.email,
+            email: user.appwrite?.email ?? user.github?.email,
             userId: user.appwrite?.$id ?? ''
         });
     }
