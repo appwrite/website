@@ -80,142 +80,142 @@ appwrite messaging [COMMAND] [OPTIONS]
 * Command
 * Description
 ---
-* `listMessages [options]`             
+* `list-messages [options]`             
 * Get a list of all messages from the current Appwrite project.
 ---
-* `createEmail [options]`              
+* `create-email [options]`              
 * Create a new email message.
 ---
-* `updateEmail [options]`              
+* `update-email [options]`              
 * Update an email message by its unique ID.
 ---
-* `createPush [options]`               
+* `create-push [options]`               
 * Create a new push notification.
 ---
-* `updatePush [options]`               
+* `update-push [options]`               
 * Update a push notification by its unique ID.
 ---
-* `createSms [options]`                
+* `create-sms [options]`                
 * Create a new SMS message.
 ---
 * `updateSms [options]`                
 * Update an email message by its unique ID.
 ---
-* `getMessage [options]`               
+* `get-message [options]`               
 * Get a message by its unique ID.
 ---
 * `delete [options]`        
 * Delete a message. If the message is not a draft or scheduled, but has been sent, this will not recall the message.
 ---
-* `listMessageLogs [options]`          
+* `list-message-logs [options]`          
 * Get the message activity logs listed by its unique ID.
 ---
-* `listTargets [options]`
+* `list-targets [options]`
 * Get a list of the targets associated with a message.
 ---
-* `listProviders [options]`      
+* `list-providers [options]`      
 * Get a list of all providers from the current Appwrite project.
 ---
-* `createApnsProvider [options]`
+* `create-apns-provider [options]`
 * Create a new Apple Push Notification service provider.
 ---
-* `updateApnsProvider [options]` 
+* `update-apns-provider [options]` 
 * Update an Apple Push Notification service provider by its unique ID.
 ---
-* `createFcmProvider [options]`      
+* `create-fcm-provider [options]`      
 * Create a new Firebase Cloud Messaging provider.
 ---
-* `updateFcmProvider [options]`        
+* `update-fcm-provider [options]`        
 * Update a Firebase Cloud Messaging provider by its unique ID.
 ---
-* `createMailgunProvider [options]`    
+* `create-mailgun-provider [options]`    
 * Create a new Mailgun provider.
 ---
-* `updateMailgunProvider [options]`   
+* `update-mailgun-provider [options]`   
 * Update a Mailgun provider by its unique ID.
 ---
-* `createMsg91Provider [options]`    
+* `create-msg91-provider [options]`    
 * Create a new MSG91 provider.
 ---
-* `updateMsg91Provider [options]`
+* `update-msg91-provider [options]`
 * Update a MSG91 provider by its unique ID.
 ---
-* `createSendgridProvider [options]` 
+* `create-sendgrid-provider [options]` 
 * Create a new Sendgrid provider.
 ---
-* `updateSendgridProvider [options]`
+* `update-sendgrid-provider [options]`
 * Update a Sendgrid provider by its unique ID.
 ---
-* `createSmtpProvider [options]`     
+* `create-smtp-provider [options]`     
 * Create a new SMTP provider.
 ---
-* `updateSmtpProvider [options]`
+* `update-smtp-provider [options]`
 * Update a SMTP provider by its unique ID.
 ---
-* `createTelesignProvider [options]` 
+* `create-telesign-provider [options]` 
 * Create a new Telesign provider.
 ---
-* `updateTelesignProvider [options]`
+* `update-telesign-provider [options]`
 * Update a Telesign provider by its unique ID.
 ---
-* `createTextmagicProvider [options]`
+* `create-textmagic-provider [options]`
 * Create a new Textmagic provider.
 ---
-* `updateTextmagicProvider [options]`
+* `update-textmagic-provider [options]`
 * Update a Textmagic provider by its unique ID.
 ---
-* `createTwilioProvider [options]`   
+* `create-twilio-provider [options]`   
 * Create a new Twilio provider.
 ---
-* `updateTwilioProvider [options]`
+* `update-twilio-provider [options]`
 * Update a Twilio provider by its unique ID.
 ---
-* `createVonageProvider [options]`   
+* `create-vonage-provider [options]`   
 * Create a new Vonage provider.
 ---
-* `updateVonageProvider [options]`
+* `update-vonage-provider [options]`
 * Update a Vonage provider by its unique ID.
 ---
-* `getProvider [options]`         
+* `get-provider [options]`         
 * Get a provider by its unique ID.
 ---
-* `deleteProvider [options]`
+* `delete-provider [options]`
 * Delete a provider by its unique ID.
 ---
-* `listProviderLogs [options]`   
+* `list-provider-logs [options]`   
 * Get the provider activity logs listed by its unique ID.
 ---
-* `listSubscriberLogs [options]`
+* `list-subscriber-logs [options]`
 * Get the subscriber activity logs listed by its unique ID.
 ---
-* `listTopics [options]`            
+* `list-topics [options]`            
 * Get a list of all topics from the current Appwrite project.
 ---
-* `createTopic [options]`    
+* `create-topic [options]`    
 * Create a new topic.
 ---
-* `getTopic [options]`             
+* `get-topic [options]`             
 * Get a topic by its unique ID.
 ---
-* `updateTopic [options]`              
+* `update-topic [options]`              
 * Update a topic by its unique ID.
 ---
-* `deleteTopic [options]`          
+* `delete-topic [options]`          
 * Delete a topic by its unique ID.
 ---
-* `listTopicLogs [options]`           
+* `list-topic-logs [options]`           
 * Get the topic activity logs listed by its unique ID.
 ---
-* `listSubscribers [options]`       
+* `list-subscribers [options]`       
 * Get a list of all subscribers from the current Appwrite project.
 ---
-* `createSubscriber [options]`
+* `create-subscriber [options]`
 * Create a new subscriber.
 ---
-* `getSubscriber [options]`       
+* `get-subscriber [options]`       
 * Get a subscriber by its unique ID.
 ---
-* `deleteSubscriber [options]`
+* `delete-subscriber [options]`
 * Delete a subscriber by its unique ID.
 ---
 {% /table %}

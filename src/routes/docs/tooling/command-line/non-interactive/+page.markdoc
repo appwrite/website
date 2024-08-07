@@ -8,7 +8,7 @@ The Appwrite CLI can be used in a non-interactive and headless manner, without s
 ```sh
 appwrite client \
     --endpoint https://cloud.appwrite.io/v1 \
-    --projectId [YOUR_PROJECT_ID] \
+    --project-id [YOUR_PROJECT_ID] \
     --key YOUR_API_KEY
 ```
 
@@ -32,7 +32,7 @@ appwrite push all --all --force
 
 To push a single function by ID:
 ```sh
-appwrite push functions --functionId [FUNCTION ID] --force
+appwrite push functions --function-id [FUNCTION ID] --force
 ```
 
 Push all functions:
