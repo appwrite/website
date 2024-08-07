@@ -63,6 +63,7 @@ export async function isLoggedIn() {
 export interface GithubUser {
     login: string;
     name: string;
+    email: string;
 }
 
 export async function getGithubUser() {
@@ -76,10 +77,13 @@ export async function getGithubUser() {
                 Authorization: `Bearer ${providerAccessToken}`
             }
         })
-            .then((res) => res.json() as Promise<GithubUser>)
+            .then((res) => {
+                return res.json() as Promise<GithubUser>;
+            })
             .then((n) => ({
                 login: n.login,
-                name: n.name
+                name: n.name,
+                email: n.email
             }));
 
         if (!res.login) {
