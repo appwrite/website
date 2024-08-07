@@ -1,7 +1,7 @@
 <script lang="ts">
     import Tooltip from '$lib/components/Tooltip.svelte';
     import { createDialog, melt } from '@melt-ui/svelte';
-    import { getContext, hasContext } from 'svelte';
+    import { getContext, hasContext, onDestroy, onMount } from 'svelte';
     import { fade, scale } from 'svelte/transition';
 
     export let src: string;
@@ -18,6 +18,14 @@
         preventScroll: false,
         forceVisible: true
     });
+
+    const handleScroll = () => {
+        if ($open) open.set(false);
+    };
+
+    onMount(() => window.addEventListener('scroll', handleScroll));
+
+    onDestroy(() => window.removeEventListener('scroll', handleScroll));
 </script>
 
 {#if inTable || isAudio}
@@ -43,7 +51,7 @@
 
     {#if $open}
         <div use:melt={$portalled}>
-            <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }} />
+            <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 250 }} />
 
             <img
                 class="web-media content"
@@ -52,8 +60,7 @@
                 {alt}
                 {title}
                 loading="lazy"
-                transition:scale={{ duration: 250, start: 0.95 }}
-            />
+                transition:scale={{ duration: 750, start: 0.95 }} />
         </div>
     {/if}
 {/if}
@@ -87,15 +94,18 @@
     .overlay {
         position: fixed;
         inset: 0;
-        background-color: rgba(0, 0, 0, 0.25);
+        background-color: rgba(27, 27, 27, 0.98);
         z-index: 1000;
     }
 
     .content {
         position: fixed;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        transform-origin: center;
 
         display: block;
         object-fit: contain;
