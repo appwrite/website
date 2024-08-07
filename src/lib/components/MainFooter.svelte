@@ -56,7 +56,7 @@
             <div class="web-main-footer-grid-1-column-2">
                 <ThemeSelect />
             </div>
-            <ul class="web-main-footer-grid-1-column-3 web-main-footer-links">
+            <ul class="web-main-footer-grid-1-column-3 u-cross-center web-main-footer-links">
                 <li>
                     <a href="/discord" target="_blank" rel="noopener noreferrer">Support</a>
                 </li>
@@ -79,5 +79,11 @@
 <style lang="scss">
   .web-icon-button {
     display: grid;
+  }
+
+  @media (max-width: 1023.9px), (min-width: 1024px) and (max-width: 1279.9px) {
+    .web-main-footer-links {
+      flex-direction: unset !important;
+    }
   }
 </style>
