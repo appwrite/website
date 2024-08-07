@@ -1,15 +1,10 @@
 import { onMount } from 'svelte';
 import { get, writable } from 'svelte/store';
 
+import { OAuthProvider } from '@appwrite.io/console';
 import { appwriteInit } from '$lib/appwrite/init';
-import { contributors } from '$lib/contributors';
 import { getAppwriteUser, type AppwriteUser } from '$lib/utils/console';
-import type {
-    ContributionsMatrix,
-    TicketData,
-    TicketDoc,
-    TicketVariant
-} from './tickets/constants';
+import type { ContributionsMatrix, TicketData, TicketDoc } from './tickets/constants';
 
 export function createCountdown(date: Date) {
     const today = new Date();
@@ -62,7 +57,7 @@ export function createCountdown(date: Date) {
 
 export async function isLoggedIn() {
     const user = await getUser();
-    return !!(user.appwrite || user.github);
+    return !!user.github;
 }
 
 export interface GithubUser {
@@ -147,46 +142,21 @@ export async function getTicketContributions(id: string, f = fetch): Promise<Con
     return contributions ?? [];
 }
 
-export function getTicketVariant(
-    doc: Omit<TicketData, 'contributions' | 'variant'>
-): TicketVariant {
-    const { gh_user, aw_email } = doc;
-
-    if (gh_user && contributors.includes(gh_user)) {
-        return 'rainbow';
-    }
-
-    if (aw_email) {
-        return 'pink';
-    }
-
-    return 'default';
-}
-
 export async function getTicketByUser(user: User, f = fetch) {
     const doc = await getTicketDocByUser(user, f);
 
-    const variant = getTicketVariant(doc);
-
-    return {
-        ...doc,
-        variant
-    } as TicketData;
+    return doc as TicketData;
 }
 
 export async function getTicketById(id: string, f = fetch) {
     const doc = await getTicketDocById(id, f);
-    const variant = getTicketVariant(doc);
 
-    return {
-        ...doc,
-        variant
-    } as TicketData;
+    return doc as TicketData;
 }
 
 export function loginGithub() {
     appwriteInit.account.createOAuth2Session(
-        'github',
+        OAuthProvider.Github,
         `${window.location.origin}/init/tickets?success=1`,
         `${window.location.origin}/init/tickets?error=1`,
         ['read:user']

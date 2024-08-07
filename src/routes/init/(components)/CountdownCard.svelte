@@ -12,13 +12,11 @@
     {#if $days > 1}
         <p class="web-title">
             {$days}
-            {$days > 1 ? 'days' : 'day'}<span class="web-u-color-text-accent">_</span>
+            {$days > 1 ? 'days' : 'day'}
         </p>
     {:else}
         <div class="web-title">
-            <Counter value={$hours} />:<Counter value={$minutes} />:<Counter
-                value={$seconds}
-            /><span class="web-u-color-text-accent">_</span>
+            <Counter value={$hours} />:<Counter value={$minutes} />:<Counter value={$seconds} />
         </div>
     {/if}
 
