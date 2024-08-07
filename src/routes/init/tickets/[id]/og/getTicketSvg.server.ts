@@ -27,6 +27,7 @@ const DIFF_Y = 11.651;
 const DIFF_X = 11.651;
 
 export async function getCubes(ticket: TicketData) {
+    if (!ticket.show_contributions) return [];
     const matrix = ((await getContributions(ticket.$id)) ?? []) as ContributionsMatrix;
 
     return matrix.reduce((acc, week, w) => {

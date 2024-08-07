@@ -12,7 +12,6 @@
 
     let name = data.ticket?.name ?? '';
     let title = data.ticket?.title ?? '';
-    const id = data.ticket?.id ?? 0;
     let showGitHub = data.ticket?.show_contributions ?? true;
 
     let customizing = false;
