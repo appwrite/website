@@ -9,7 +9,7 @@ author: aditya-oberai
 category: product
 ---
 
-It’s an exciting time for software development, as many new concepts and techniques pop up every day, giving us endless possibilities to build new and shiny things. But this sea of opportunity can be hard to navigate and keep up with. AI, for instance, is a field that is rapidly evolving and is influencing not only the products we can build but also the way we develop them. However, building AI-powered applications can be complicated. Appwrite’s new AI Function templates make it easier to build AI powered applications. 
+It’s an exciting time for software development, as many new concepts and techniques pop up every day, giving us endless possibilities to build new and shiny things. But this sea of opportunity can be hard to navigate and keep up with. AI, for instance, is a field that is rapidly evolving and is influencing not only the products we can build but also the way we develop them. However, building AI-powered applications can be complicated. Appwrite’s new AI Function templates make it easier to build AI powered applications.
 
 So, what did we add? This blog provides an overview of all the concepts we’ve added, tutorials, templates, and the integrations we support.
 
@@ -27,7 +27,7 @@ Image classification is a process used in machine learning and artificial intell
 
 ## Function templates added to the Console
 
-- Image Classification - Classify images using the Hugging Face inference API.
+-   Image Classification - Classify images using the Hugging Face inference API.
 
 ## Tutorial
 
@@ -47,7 +47,7 @@ Object detection is a technology used in computer vision that not only categoriz
 
 ## Function templates added to the Console
 
-- Object Detection - Detect objects in images using the Hugging Face inference API.
+-   Object Detection - Detect objects in images using the Hugging Face inference API.
 
 ## Tutorial
 
@@ -71,10 +71,10 @@ Text generation, facilitated by technologies like artificial neural networks, sp
 
 ## Function templates added to the Console
 
-- Text Generation - Generate text using the Hugging Face inference API.
-- Chat - Create a chatbot using the Perplexity AI API.
-- Prompt ChatGPT - Ask questions and let OpenAI GPT-3.5-turbo answer.
-- RAG with LangChain - Generate text using a LangChain RAG model.
+-   Text Generation - Generate text using the Hugging Face inference API.
+-   Chat - Create a chatbot using the Perplexity AI API.
+-   Prompt ChatGPT - Ask questions and let OpenAI GPT-3.5-turbo answer.
+-   RAG with LangChain - Generate text using a LangChain RAG model.
 
 ## Tutorial
 
@@ -94,8 +94,8 @@ Language translation, particularly when facilitated by advanced artificial intel
 
 ## Function templates added to the Console
 
-- Analyze - Automate moderation by getting the toxicity of messages.
-- Language Translation - Translate text using the Hugging Face inference API.
+-   Analyze - Automate moderation by getting the toxicity of messages.
+-   Language Translation - Translate text using the Hugging Face inference API.
 
 ## Tutorial
 
@@ -119,7 +119,7 @@ Speech recognition technology, which converts spoken language into text, is a vi
 
 ## Function templates added to the Console
 
-- Speech Recognition - Transcribe audio to text using the Hugging Face inference API.
+-   Speech Recognition - Transcribe audio to text using the Hugging Face inference API.
 
 ## Tutorial
 
@@ -139,9 +139,9 @@ Text-to-speech (TTS) technology converts written text into spoken words, and the
 
 ## Function templates added to the Console
 
-- Text to Speech - Convert text to speech using the Hugging Face inference API.
-- Speak with ElevenLabs - Convert text to speech using the ElevenLabs API.
-- Speak with LMNT - Convert text to speech using the LMNT API.
+-   Text to Speech - Convert text to speech using the Hugging Face inference API.
+-   Speak with ElevenLabs - Convert text to speech using the ElevenLabs API.
+-   Speak with LMNT - Convert text to speech using the LMNT API.
 
 ## Tutorial
 
@@ -161,7 +161,7 @@ Music generation with artificial intelligence (AI) involves using machine learni
 
 ## Function templates added to the Console
 
-- Music generation - Generate music from a text prompt using the Hugging Face inference API.
+-   Music generation - Generate music from a text prompt using the Hugging Face inference API.
 
 ## Tutorial
 
@@ -175,28 +175,29 @@ Efficiently convert text to music
 
 As we have covered in this blog, we have added a lot of great templates for you to get started on your AI journey. Including support for AI integrations:
 
-- [Pinecone](https://appwrite.io/docs/products/ai/integrations/pinecone)
-- [OpenAI](https://appwrite.io/docs/products/ai/integrations/openai)
-- [Hugging Face](https://appwrite.io/docs/products/ai/tutorials/image-classification)
-- [ElevenLabs](https://appwrite.io/docs/products/ai/integrations/elevenlabs)
-- [Perplexity](https://appwrite.io/docs/products/ai/integrations/perplexity)
-- [Replicate](https://appwrite.io/docs/products/ai/integrations/replicate)
-- [fal.ai](https://appwrite.io/docs/products/ai/integrations/fal-ai)
-- [LangChain](https://appwrite.io/docs/products/ai/integrations/langchain)
-- [Together AI](https://appwrite.io/docs/products/ai/integrations/togetherai)
+-   [Pinecone](https://appwrite.io/docs/products/ai/integrations/pinecone)
+-   [OpenAI](https://appwrite.io/docs/products/ai/integrations/openai)
+-   [Hugging Face](https://appwrite.io/docs/products/ai/tutorials/image-classification)
+-   [ElevenLabs](https://appwrite.io/docs/products/ai/integrations/elevenlabs)
+-   [Perplexity](https://appwrite.io/docs/products/ai/integrations/perplexity)
+-   [Replicate](https://appwrite.io/docs/products/ai/integrations/replicate)
+-   [fal.ai](https://appwrite.io/docs/products/ai/integrations/fal-ai)
+-   [LangChain](https://appwrite.io/docs/products/ai/integrations/langchain)
+-   [Together AI](https://appwrite.io/docs/products/ai/integrations/togetherai)
 
 ![Image of Appwrite Console](/images/blog/building-with-ai-function-templates/function-templates-overview.png)
 
 We've also added more AI Function templates for more use cases than discussed above:
-- Sync with Pinecone - Sync your Appwrite database with Pinecone's vector database.
-- Generate with fal.ai - Generate images using fal.ai's API.
-- Censor with Redact - Censor sensitive information from a provided text string using Redact API by Pangea.
-- Analyze with PerspectiveAPI - Automate moderation by getting toxicity of messages.
-- Generate with Replicate - Generate text, audio and images using Replicate's API.
+
+-   Sync with Pinecone - Sync your Appwrite database with Pinecone's vector database.
+-   Generate with fal.ai - Generate images using fal.ai's API.
+-   Censor with Redact - Censor sensitive information from a provided text string using Redact API by Pangea.
+-   Analyze with PerspectiveAPI - Automate moderation by getting toxicity of messages.
+-   Generate with Replicate - Generate text, audio and images using Replicate's API.
 
 Take a look at these two blogs to learn more about using Function templates in your projects:
 
-- [Streamline receipt scanning with Appwrite Cloud](https://appwrite.io/blog/post/scan-receipts-with-appwrite-functions)
-- [Build an intelligent chatbot with ChatGPT and Appwrite Functions](https://appwrite.io/blog/post/function-template-prompt-chatgpt)
+-   [Streamline receipt scanning with Appwrite Cloud](https://appwrite.io/blog/post/scan-receipts-with-appwrite-functions)
+-   [Build an intelligent chatbot with ChatGPT and Appwrite Functions](https://appwrite.io/blog/post/function-template-prompt-chatgpt)
 
 We will continue to add more AI tutorials, integrations, blogs, videos, and Function templates. You can also contribute by adding your own pull requests to the [repository](https://github.com/appwrite/templates).

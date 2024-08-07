@@ -4,7 +4,6 @@ title: Examples
 description: Accelerate your serverless development with Appwrite Functions examples. Access a library of code samples and use cases to jumpstart your projects.
 ---
 
-
 Appwrite Functions is all about flexibility. Behind the simple workflow hides some useful examples that can help you accomplish your goals faster. Take a look at the following.
 
 {% section #currency-conversion step=1 title="Currency conversion API" %}
@@ -16,14 +15,17 @@ Here's a currency conversion API that converts from Euros and Indian Rupees to U
 {% tabs %}
 {% tabsitem #node title="Node.js" %}
 Run the following bash command to create a `package.json` file. This file is used to manage your Node.js project's dependencies.
+
 ```bash
 npm init -y
 ```
-Install the `undici` library. This library includes a `fetch` function that you can use to make HTTP requests. 
-    
+
+Install the `undici` library. This library includes a `fetch` function that you can use to make HTTP requests.
+
 ```bash
 npm install undici
 ```
+
 Finally, add `npm install` to your function's build commands in the Appwrite Console.
 {% /tabsitem %}
 
@@ -71,7 +73,7 @@ name: appwrite_function
 description: Appwrite Function
 version: 1.0.0
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+    sdk: '>=2.12.0 <3.0.0'
 ```
 
 Install the `http` library. This library includes a `get` function that you can use to make HTTP requests.
@@ -103,9 +105,10 @@ Finally, add `bundle install` to your function's build commands in the Appwrite 
 
 {% /tabs %}
 
-
 ## Code
+
 {% multicode %}
+
 ```server-nodejs
 import { fetch } from 'undici';
 
@@ -129,6 +132,7 @@ export default async function ({ req, res }) {
   return res.send('Invalid path');
 };
 ```
+
 ```php
 <?php
 
@@ -161,6 +165,7 @@ return function ($context) {
     return $context->res->send('Invalid path');
 };
 ```
+
 ```python
 import requests
 
@@ -181,6 +186,7 @@ def main(context):
 
   return 'Invalid path'
 ```
+
 ```dart
 import 'dart:async';
 import 'package:http/http.dart' as http;
@@ -206,6 +212,7 @@ Future<dynamic> main(final context) async {
   return 'Invalid path';
 }
 ```
+
 ```ruby
 require 'httparty'
 
@@ -229,6 +236,7 @@ def main(context)
   return 'Invalid path'
 end
 ```
+
 {% /multicode %}
 
 {% /section %}
@@ -241,22 +249,23 @@ Here's a simple voting system that allows users to vote on various topics. Appwr
 
 Create a Topics collection with the following attributes:
 
-| Name          | Type   | Description                      |
-|---------------|--------|----------------------------------|
-| `title`       | string | The name of the topic            |
-| `description` | string | Long form description of the topic|
+| Name          | Type   | Description                        |
+| ------------- | ------ | ---------------------------------- |
+| `title`       | string | The name of the topic              |
+| `description` | string | Long form description of the topic |
 
 Create a Votes collection with the following attributes:
 
-| Name          | Type   | Description                              |
-|---------------|--------|------------------------------------------|
-| `userId`      | string | The ID of the user who cast the vote     |
-| `topicId`     | string | The ID of the topic that was voted on    |
-| `vote`        | string | The vote cast by the user. Must be either "yes" or "no" |
-
+| Name      | Type   | Description                                             |
+| --------- | ------ | ------------------------------------------------------- |
+| `userId`  | string | The ID of the user who cast the vote                    |
+| `topicId` | string | The ID of the topic that was voted on                   |
+| `vote`    | string | The vote cast by the user. Must be either "yes" or "no" |
 
 ## Code
+
 {% multicode %}
+
 ```server-nodejs
 import { Client, Databases, Query } from 'node-appwrite';
 
@@ -278,7 +287,7 @@ export default async function ({ req, res }) {
     .setKey(process.env.APPWRITE_API_KEY);
 
   const database = new Database(client);
-  
+
   const existingVotes = await database.listDocuments('[VOTES_COLLECTION_ID]', [
     Query.equals('userId', vote.userId),
     Query.equals('topicId', vote.topicId)
@@ -297,6 +306,7 @@ export default async function ({ req, res }) {
   return res.json({ ok: true, message: 'Vote cast.', vote: voteDocument });
 };
 ```
+
 ```python
 from appwrite.client import Client
 from appwrite.services.databases import Databases
@@ -321,7 +331,7 @@ def main(context):
     )
 
     database = Databases(client)
-    
+
     existing_votes = database.list_documents('[VOTES_COLLECTION_ID]', [
         Query.equals('userId', vote['userId']),
         Query.equals('topicId', vote['topicId'])
@@ -329,7 +339,7 @@ def main(context):
 
     if existing_votes['total'] > 0:
         return context.res.json({
-          'ok': False, 
+          'ok': False,
           'message': 'You have already voted on this topic.'
         }, 400)
 
@@ -341,6 +351,7 @@ def main(context):
 
     return context.res.json({'ok': True, 'message': 'Vote cast.', 'vote': vote_document})
 ```
+
 ```php
 <?php
 
@@ -377,7 +388,7 @@ return function ($context) {
 
     if ($existingVotes['total'] > 0) {
         return $context->res->json([
-          'ok' => false, 
+          'ok' => false,
           'message' => 'You have already voted on this topic.'
         ], 400);
     }
@@ -389,12 +400,13 @@ return function ($context) {
     ]);
 
     return $context->res->json([
-      'ok' => true, 
-      'message' => 'Vote cast.', 
+      'ok' => true,
+      'message' => 'Vote cast.',
       'vote' => $voteDocument
     ]);
 };
 ```
+
 ```dart
 import 'dart:async';
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -425,7 +437,7 @@ Future main(final context) async {
 
     if (existingVotes['total'] > 0) {
         return context.res.json({
-          'ok': false, 
+          'ok': false,
           'message': 'You have already voted on this topic.'
         }, 400);
     }
@@ -437,12 +449,13 @@ Future main(final context) async {
     });
 
     return context.res.json({
-      'ok': true, 
-      'message': 'Vote cast.', 
+      'ok': true,
+      'message': 'Vote cast.',
       'vote': voteDocument
     });
 }
 ```
+
 ```ruby
 require "appwrite"
 
@@ -464,7 +477,7 @@ def main(context)
         .set_key(ENV['APPWRITE_API_KEY'])
 
     database = Appwrite::Database.new(client)
-    
+
     existing_votes = database.list_documents('[VOTES_COLLECTION_ID]', [
         Appwrite::Query.new('userId', '=', vote['userId']),
         Appwrite::Query.new('topicId', '=', vote['topicId'])
@@ -472,7 +485,7 @@ def main(context)
 
     if existing_votes['total'] > 0
         return context.res.json({
-          'ok': false, 
+          'ok': false,
           'message': 'You have already voted on this topic.'
         }, 400)
     end
@@ -484,32 +497,34 @@ def main(context)
     })
 
     return context.res.json({
-      'ok': true, 
-      'message': 'Vote cast.', 
+      'ok': true,
+      'message': 'Vote cast.',
       'vote': vote_document
     })
 end
 ```
+
 {% /multicode %}
-Use the function by navigating to the function URL in the browser. 
-The URL should contain the required parameters. 
+Use the function by navigating to the function URL in the browser.
+The URL should contain the required parameters.
 For example, `<YOUR_FUNCTION_URL>/?userId=<USER_ID>&topicId=<TOPIC_ID>&vote=yes` to cast a vote.
 {% /section %}
 
 {% section #form-submission step=3 title="HTML contact form" %}
-Here's a simple form page that handles form submissions, and can be used to store a user's message in a collection. 
+Here's a simple form page that handles form submissions, and can be used to store a user's message in a collection.
 The form is submitted to the function using the `POST` method and the form data is sent as a URL-encoded string in the request body.
 
 ## Prerequisites
+
 Create a Messages collection with the following attributes:
 
-| Name       | Type   | Description                      |
-|------------|--------|----------------------------------|
-| `name`     | string | The name of the message author   |
-| `email`    | string | The email of the message author  |
-| `content`  | string | The content of the message       |
+| Name      | Type   | Description                     |
+| --------- | ------ | ------------------------------- |
+| `name`    | string | The name of the message author  |
+| `email`   | string | The email of the message author |
+| `content` | string | The content of the message      |
 
-## Code 
+## Code
 
 {% multicode %}
 
@@ -649,7 +664,7 @@ return function ($context) {
 
   if ($context->req->method === 'POST' && $context->req->headers['content-type'] === 'application/x-www-form-urlencoded') {
     \parse_str($context->req->body, $formData);
-    
+
     $message = [
       'name' => $formData['name'],
       'email' => $formData['email'],

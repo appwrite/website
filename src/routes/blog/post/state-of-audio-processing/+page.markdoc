@@ -36,9 +36,9 @@ When you have a recording of a sound, it's a mix of many different frequencies (
 
 This is useful because:
 
-- You can see which notes are being played by different instruments
-- You can remove frequencies you don't want, like noise or certain instruments
-- You can change the volume of specific frequencies to alter the balance of the sound
+-   You can see which notes are being played by different instruments
+-   You can remove frequencies you don't want, like noise or certain instruments
+-   You can change the volume of specific frequencies to alter the balance of the sound
 
 Here's a simple code example:
 
@@ -46,7 +46,7 @@ Here's a simple code example:
 import numpy as np
 
 # Make a simple sound wave
-t = np.linspace(0, 1, 500)  
+t = np.linspace(0, 1, 500)
 f = 10  # Frequency in Hz
 y = np.sin(2*np.pi*f*t)
 
@@ -97,10 +97,10 @@ The model is trained on labeled data (recordings where we know what instrument i
 
 DNNs are useful in audio for things like:
 
-- Converting speech to text
-- Identifying the genre of a piece of music
-- Detecting emotions in speech
-- Removing background noise from recordings
+-   Converting speech to text
+-   Identifying the genre of a piece of music
+-   Detecting emotions in speech
+-   Removing background noise from recordings
 
 The ability of DNNs to learn complex patterns makes them very useful for modern audio processing tasks.
 

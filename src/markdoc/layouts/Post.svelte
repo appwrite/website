@@ -20,6 +20,7 @@
     const authors = getContext<AuthorData[]>('authors');
     const authorData = authors.find((a) => a.slug === author);
     const categoriesList = getContext<CategoryData[]>('categories');
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const categories = getValidCategories();
     const posts = getContext<PostsData[]>('posts');
 
@@ -103,7 +104,9 @@
                                                 />
                                             {/if}
                                             <div class="u-flex-vertical">
-                                                <h4 class="web-sub-body-400 web-u-color-text-primary">
+                                                <h4
+                                                    class="web-sub-body-400 web-u-color-text-primary"
+                                                >
                                                     {authorData.name}
                                                 </h4>
                                                 <p class="web-caption-400">{authorData.role}</p>

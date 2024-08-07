@@ -5,38 +5,51 @@ description: Efficiently deploy your serverless functions with Appwrite. Explore
 ---
 
 Each function can have many deployments, which can be thought of as versions of the mini-application.
-Functions can be created and deployed in different ways to meet your unique development habits. 
+Functions can be created and deployed in different ways to meet your unique development habits.
 
 # Deployment status {% #deployment-status %}
+
 Throughout the life cycle of a deployment, it could have the following status.
 
 {% table %}
-* Status 
-* description
+
+-   Status
+-   description
+
 ---
-* `active`
-* The deployment is built and currently activated and ready to be executed. A function can have one active deployment and deployment a must be active before being executed.
+
+-   `active`
+-   The deployment is built and currently activated and ready to be executed. A function can have one active deployment and deployment a must be active before being executed.
+
 ---
-* `ready`
-* A deployment is built, but is not activated. `ready` deployments can be activated to replace the current active deployment.
+
+-   `ready`
+-   A deployment is built, but is not activated. `ready` deployments can be activated to replace the current active deployment.
+
 ---
-* `building`
-* A deployment is being built. Check the [build log](#build-logs) for more detailed logs.
+
+-   `building`
+-   A deployment is being built. Check the [build log](#build-logs) for more detailed logs.
+
 ---
-* `failed`
-* A deployment was not successful. Check the [build log](#build-logs) for detailed logs for debugging.
+
+-   `failed`
+-   A deployment was not successful. Check the [build log](#build-logs) for detailed logs for debugging.
+
 {% /table %}
 
 # Update deployment {% #update-deployment %}
+
 Some Function settings require redeploying your function to be reflected in your active deployment.
-When you update a function by changing it's **Git settings**, **Build settings**, and **Environment variables**, 
+When you update a function by changing it's **Git settings**, **Build settings**, and **Environment variables**,
 you need to redeploy your function before they take effect.
 
-# Build logs  {% #build-logs %}
+# Build logs {% #build-logs %}
+
 When you build a deployment, the logs generated will be saved for debugging purposes.
 You can find build logs by navigating to the **deployments** tab of your function, clicking the three-dots menu beside, and click **Logs**.
 
-# Redeploy {% #redeploy %} 
+# Redeploy {% #redeploy %}
 
 After updating the configuration, redeploy your function for changes to take effect. You can also redeploy to retry failed builds.
 

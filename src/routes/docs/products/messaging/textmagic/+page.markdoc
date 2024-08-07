@@ -4,6 +4,7 @@ title: Textmagic
 description: Send SMS messages to your Appwrite users using Textmagic and Appwrite Messaging.
 back: /docs/
 ---
+
 Textmagic lets you send customized SMS messages to your users.
 These SMS messages can be sent immediately or scheduled.
 You can send SMS messages for purposes like reminders, promotions, announcements, and even custom authentication flows.
@@ -28,17 +29,22 @@ In the **Configure** step, you will need to provide details from your Textmagic 
 You will need to provide the following information from your **Textmagic dashboard**.
 
 {% table %}
-* Field name
-*
+
+-   Field name
+-   ***
+-   API key
+-   Head to Textmagic dashboard > **Services** > **API** > **Add new API key**.
+
 ---
-* API key
-* Head to Textmagic dashboard > **Services** > **API** > **Add new API key**.
+
+-   Username
+-   Head to Textmagic dashboard > **My account** > **Username**.
+
 ---
-* Username
-* Head to Textmagic dashboard > **My account** > **Username**.
----
-* Sender number
-* Head to Textmagic dashboard > **Services** > **Sender settings**.
+
+-   Sender number
+-   Head to Textmagic dashboard > **Services** > **Sender settings**.
+
 {% /table %}
 
 After adding the following details, click **Save and continue** to enable the provider.
@@ -65,6 +71,7 @@ Verify that you can receive the message in your inbox. If not, check for logs in
 {% tabsitem #server-sdk title="Server SDK" %}
 To send a message programmatically, use an [Appwrite Server SDK](/docs/sdks#server).
 {% multicode %}
+
 ```server-nodejs
 const sdk = require('node-appwrite');
 
@@ -89,6 +96,7 @@ const messaging = await messaging.createSms(
         ''                                       // scheduledAt (optional)
     );
 ```
+
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
@@ -113,6 +121,7 @@ const messaging = await messaging.createSms(
         ''                                       // scheduledAt (optional)
     );
 ```
+
 ```php
 <?php
 
@@ -139,6 +148,7 @@ $result = $messaging->createSms(
     scheduledAt: ''                               // optional
 );
 ```
+
 ```python
 from appwrite.client import Client
 from appwrite.services.messaging import Messaging
@@ -163,6 +173,7 @@ result = messaging.create_sms(
     scheduled_at = ''                           # optional
 )
 ```
+
 ```ruby
 require 'appwrite'
 
@@ -187,6 +198,7 @@ response = messaging.create_sms(
 
 puts response.inspect
 ```
+
 ```csharp
 using Appwrite;
 using Appwrite.Services;
@@ -201,13 +213,14 @@ var messaging = new Messaging(client);
 
 Message result = await messaging.CreateSMS(
     messageId: "[MESSAGE_ID]",
-    content: "[CONTENT]"    
-    topics: new List<string> {}                   // optional    
-    users: new List<string> {}                    // optional    
-    targets: new List<string> {}                  // optional    
-    draft: true                                   // optional    
+    content: "[CONTENT]"
+    topics: new List<string> {}                   // optional
+    users: new List<string> {}                    // optional
+    targets: new List<string> {}                  // optional
+    draft: true                                   // optional
     scheduledAt: "");                             // optional
 ```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:dart_appwrite/enums.dart';
@@ -241,6 +254,7 @@ void main() {                                    // Init SDK
   });
 }
 ```
+
 ```kotlin
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -271,6 +285,7 @@ messaging.createSms(
     })
 );
 ```
+
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -301,6 +316,7 @@ messaging.createSms(
     })
 );
 ```
+
 ```swift
 import Appwrite
 
@@ -321,6 +337,7 @@ let message = try await messaging.createSms(
   scheduledAt: ""                                // optional
 )
 ```
+
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}
@@ -340,6 +357,7 @@ In the settings, you can update a provider's configuration or delete the provide
 {% tabsitem #server-sdk title="Server SDK" %}
 To update or delete providers programmatically, use an [Appwrite Server SDK](/docs/sdks#server).
 {% multicode %}
+
 ```server-nodejs
 const sdk = require('node-appwrite');
 
@@ -363,6 +381,7 @@ const provider = await messaging.updateTextmagicProvider(
         '[FROM]'                                 // from (optional)
     );
 ```
+
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
@@ -386,6 +405,7 @@ const provider = await messaging.updateTextmagicProvider(
         '[FROM]'                                 // from (optional)
     );
 ```
+
 ```php
 <?php
 
@@ -411,6 +431,7 @@ $result = $messaging->updateTextmagicProvider(
     from: '[FROM]'                                // optional
 );
 ```
+
 ```python
 from appwrite.client import Client
 from appwrite.services.messaging import Messaging
@@ -434,6 +455,7 @@ result = messaging.update_textmagic_provider(
     from = '[FROM]'                             # optional
 )
 ```
+
 ```ruby
 require 'appwrite'
 
@@ -457,6 +479,7 @@ response = messaging.update_textmagic_provider(
 
 puts response.inspect
 ```
+
 ```csharp
 using Appwrite;
 using Appwrite.Services;
@@ -477,6 +500,7 @@ Provider result = await messaging.UpdateTextmagicProvider(
     apiKey: "[API_KEY]"                           // optional
     from: "[FROM]");                              // optional
 ```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:dart_appwrite/enums.dart';
@@ -509,6 +533,7 @@ void main() {                                    // Init SDK
   });
 }
 ```
+
 ```kotlin
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -538,6 +563,7 @@ messaging.updateTextmagicProvider(
     })
 );
 ```
+
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -567,6 +593,7 @@ messaging.updateTextmagicProvider(
     })
 );
 ```
+
 ```swift
 import Appwrite
 
@@ -586,6 +613,7 @@ let provider = try await messaging.updateTextmagicProvider(
   from: "[FROM]"                                 // optional
 )
 ```
+
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}

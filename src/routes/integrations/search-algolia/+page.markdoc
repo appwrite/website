@@ -8,14 +8,14 @@ isPartner: true
 isNew: true
 cover: /images/integrations/search-algolia/cover.png
 category: Search
-product: 
+product:
     avatar: '/images/integrations/avatars/algolia.png'
     vendor: Algolia
     description: 'Algolia is a search platform that helps you add fast and relevant search capabilities to your app.'
-platform: 
+platform:
     - 'Self-hosted'
     - 'Cloud'
-images: 
+images:
     - /images/integrations/search-algolia/cover.png
     - /images/integrations/search-algolia/overview.png
     - /images/integrations/search-algolia/index.png
@@ -52,7 +52,7 @@ Head over to the Appwrite console, navigate to the **Functions** page, click th
 
 ![Function template](/images/integrations/search-algolia/template.png)
 
-During the setup process, click on the checkbox to create an Appwrite API key on completion and add the Appwrite Database ID and Collection ID for the data you want to index and search as well as the **Algolia application ID**, **search API key**, **write API key** (under Admin API Key), and **index ID** in the **Variables** step. If you are self-hosting Appwrite, click on the **optional variables** dropdown and update the Appwrite endpoint to your instance’s publicly accessible endpoint. 
+During the setup process, click on the checkbox to create an Appwrite API key on completion and add the Appwrite Database ID and Collection ID for the data you want to index and search as well as the **Algolia application ID**, **search API key**, **write API key** (under Admin API Key), and **index ID** in the **Variables** step. If you are self-hosting Appwrite, click on the **optional variables** dropdown and update the Appwrite endpoint to your instance’s publicly accessible endpoint.
 
 ![Env variables](/images/integrations/search-algolia/variables.png)
 
@@ -62,16 +62,15 @@ Then, create a new repository with the default branch and root directory setting
 
 Once all the steps are complete, it is time to test the function! Before we go further, visit the **Domains** tab on the **Functions** page and copy the domain URL to test the function.
 
-Send a POST (HTTP) Request to the function URL to index the Appwrite Collection in Algolia. 
+Send a POST (HTTP) Request to the function URL to index the Appwrite Collection in Algolia.
 
 ```bash
 curl -XPOST https://DEPLOYED_FUNCTION_DOMAIN
 ```
 
 In case you have a large collection of data and your function executions timeout, you can head to the **Settings** tab on the **Functions** page and increase the function timeout limit from **15 seconds** to **900 seconds** (maximum).
-    
+
 Then, open your function URL in the browser to try the interactive search UI.
-    
 
 ![Demo](/images/integrations/search-algolia/demo.png)
 
@@ -79,6 +78,6 @@ Then, open your function URL in the browser to try the interactive search UI.
 
 If you would like to learn more about Algolia, we have some resources that you should visit:
 
-- [Sign up for Algolia](https://dashboard.algolia.com/users/sign_up)
-- [Learn more about Functions templates in Appwrite docs](https://appwrite.io/docs/products/functions/templates)
-- [Connect with other developers and the Appwrite team on Discord.](https://discord.com/invite/appwrite)
+-   [Sign up for Algolia](https://dashboard.algolia.com/users/sign_up)
+-   [Learn more about Functions templates in Appwrite docs](https://appwrite.io/docs/products/functions/templates)
+-   [Connect with other developers and the Appwrite team on Discord.](https://discord.com/invite/appwrite)

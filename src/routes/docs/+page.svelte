@@ -9,7 +9,8 @@
     import Sidebar from './Sidebar.svelte';
 
     const title = 'Docs' + TITLE_SUFFIX;
-    const description = 'Learn how to build like a team of hundreds. Get started with Authentication, Databases, Storage, Functions, and Messaging in your preferred framework.';
+    const description =
+        'Learn how to build like a team of hundreds. Get started with Authentication, Databases, Storage, Functions, and Messaging in your preferred framework.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 
     const tutorials: CodeCardProps[] = [

@@ -8,14 +8,14 @@ isPartner: true
 isNew: true
 cover: /images/integrations/ai-hugging-face-language-translation/cover.png
 category: AI
-product: 
+product:
     avatar: '/images/integrations/avatars/hugging-face.png'
     vendor: Hugging Face
     description: 'Hugging Face is a leading AI company that offers an extensive library of pre-trained models for various natural language processing and computer vision tasks, including image classification.'
-platform: 
+platform:
     - 'Self-hosted'
     - 'Cloud'
-images: 
+images:
     - /images/integrations/ai-hugging-face-language-translation/cover.png
     - /images/integrations/ai-hugging-face-language-translation/hugging-face-create-api-token.png
     - /images/integrations/ai-hugging-face-language-translation/language-translation-function-template.png
@@ -64,14 +64,14 @@ You can also use tools like Postman, cURL, or your favorite programming language
 ```bash
 curl -X POST http://DEPLOYED_FUNCTION_DOMAIN \
 -H "Content-Type: application/json" \
--d '{"source": "What is Appwrite?"}' 
+-d '{"source": "What is Appwrite?"}'
 ```
 
 # Read more about Hugging Face and Appwrite Functions
 
 If you would like to learn more about Hugging Face and Appwrite Functions, we have some resources that you should visit:
 
-- [Sign up for Hugging Face](https://huggingface.co/login)
-- [Set up the Hugging Face provider in Appwrite](https://appwrite.io/docs/products/ai/tutorials/language-translation)
-- [Find more function templates](https://appwrite.io/docs/products/functions/templates)
-- [Appwrite Functions API reference](https://appwrite.io/docs/references)
+-   [Sign up for Hugging Face](https://huggingface.co/login)
+-   [Set up the Hugging Face provider in Appwrite](https://appwrite.io/docs/products/ai/tutorials/language-translation)
+-   [Find more function templates](https://appwrite.io/docs/products/functions/templates)
+-   [Appwrite Functions API reference](https://appwrite.io/docs/references)

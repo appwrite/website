@@ -7,6 +7,7 @@
         type EmblaPluginType
     } from 'embla-carousel';
     import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
+    import { createIncrementingArray } from '$lib/utils/array';
 
     let emblaApi: EmblaCarouselType;
 
@@ -143,7 +144,7 @@
 
 <div class="web-carousel-bullets">
     <ul class="web-carousel-bullets-list">
-        {#each Array.from({ length: emblaApi?.scrollSnapList().length }) as _, i}
+        {#each createIncrementingArray(emblaApi?.scrollSnapList().length) as i}
             <li class="web-carousel-bullets-item">
                 <button
                     class="web-carousel-bullets-button"

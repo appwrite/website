@@ -2,14 +2,14 @@
     import { getLocalTimeZone, today } from '@internationalized/date';
     import { createCalendar, melt } from '@melt-ui/svelte';
     import Step from './Step.svelte';
+    import { createIncrementingArray } from '$lib/utils/array';
 
     const curr = today(getLocalTimeZone());
 
     const {
         elements: { calendar, heading, grid, cell, prevButton, nextButton },
         states: { months, headingValue, value },
-        helpers: { isDateDisabled, isDateUnavailable },
-        options: { locale }
+        helpers: { isDateDisabled, isDateUnavailable }
     } = createCalendar({
         defaultValue: curr
     });
@@ -69,7 +69,7 @@
         </div>
 
         <div class="time-picker is-only-desktop">
-            {#each { length: 11 } as _, i}
+            {#each createIncrementingArray(11) as i}
                 <div>
                     <span>{(3 + i).toString().padStart(2, '0')}</span>
                     <span>:</span>

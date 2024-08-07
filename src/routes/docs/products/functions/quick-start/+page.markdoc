@@ -3,9 +3,10 @@ layout: article
 title: Start with Functions
 description: Get started quickly with Appwrite Functions. Follow a step-by-step guide to create your first serverless function, define triggers, and execute code.
 ---
+
 You can create and execute your first Appwrite Function in minutes.
 
-# Create function {% #create-function %} 
+# Create function {% #create-function %}
 
 Before deploying your function with Git, create a new function attached to your Git repository.
 
@@ -23,10 +24,11 @@ Before deploying your function with Git, create a new function attached to your 
 5. Follow the step-by-step wizard and create the function.
 6. The function will be created and a build will begin. Once the build completes, you'll have created your first function.
 
-You can find the code used by the starter template in your newly created Git repository. 
+You can find the code used by the starter template in your newly created Git repository.
 Each push to your Git repo will trigger a new deployment.
 
-## Execute {% #execute %} 
+## Execute {% #execute %}
+
 You can execute your Appwrite Function through [many different triggers](/docs/products/functions/execute).
 The easiest way to execute your first function is to use the Appwrite Console.
 
@@ -42,8 +44,8 @@ The easiest way to execute your first function is to use the Appwrite Console.
 1. Click **Execute** to execute the starter template function.
 1. Wait for the execution to be marked **completed** and click to view the execution logs.
 
-
 # Explore {% #explore %}
+
 Use this your first function as a springboard to explore the flexible and powerful features of Appwrite Functions.
 
 {% cards %}

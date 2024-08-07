@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { createIncrementingArray } from '$lib/utils/array';
     import { fade } from 'svelte/transition';
 
     export let value = 0;
@@ -28,7 +29,7 @@
                 <span>{char}</span>
             {:else}
                 <ul style:transform={getTransform(Number(char))} use:transform={Number(char)}>
-                    {#each { length: 10 } as _, i}
+                    {#each createIncrementingArray(10) as i}
                         <li>{i}</li>
                     {/each}
                 </ul>

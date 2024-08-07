@@ -12,16 +12,16 @@ Create a new file in the `src/` directory called `middleware.js`:
 ```js
 // src/middleware.js
 
-import { defineMiddleware } from "astro:middleware";
-import { createSessionClient } from "./server/appwrite";
+import { defineMiddleware } from 'astro:middleware';
+import { createSessionClient } from './server/appwrite';
 
 export const onRequest = defineMiddleware(async ({ request, locals }, next) => {
-  try {
-    const { account } = createSessionClient(request);
-    locals.user = await account.get();
-  } catch {}
+    try {
+        const { account } = createSessionClient(request);
+        locals.user = await account.get();
+    } catch {}
 
-  return next();
+    return next();
 });
 ```
 
@@ -30,26 +30,26 @@ To ensure the `locals` object is typed correctly, we can add a type definition f
 ```ts
 /// <reference types="astro/client" />
 
-type Models = import("node-appwrite").Models;
+type Models = import('node-appwrite').Models;
 
 declare namespace App {
-  interface Locals {
-    user?: Models.User<Models.Preferences>;
-  }
+    interface Locals {
+        user?: Models.User<Models.Preferences>;
+    }
 }
 
 interface ImportMetaEnv {
-  readonly PUBLIC_APPWRITE_ENDPOINT: string;
-  readonly PUBLIC_APPWRITE_PROJECT: string;
-  readonly APPWRITE_KEY: string;
+    readonly PUBLIC_APPWRITE_ENDPOINT: string;
+    readonly PUBLIC_APPWRITE_PROJECT: string;
+    readonly APPWRITE_KEY: string;
 }
 
 interface ImportMeta {
-  readonly env: ImportMetaEnv;
+    readonly env: ImportMetaEnv;
 }
 ```
 
-Now, use the `locals` object in the home page to redirect based on the user's login status. 
+Now, use the `locals` object in the home page to redirect based on the user's login status.
 Overwrite the file in the `src/pages` directory called `index.astro`:
 
 ```js

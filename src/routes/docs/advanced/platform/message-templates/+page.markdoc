@@ -43,24 +43,24 @@ You can customize the email templates for account verification, magic-url authen
 
 Each email template has the following components that you can customize.
 
-| Component                                                                                                                                                                                                                                                             | Description                                                                                                                                                                                                                                                           |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Sender name                                                                                                                                                                                                                                                           | Readers will see this as a display name of the sender.                                                                                                                                                                                                                |
-| Sender email                                                                                                                                                                                                                                                          | Readers will see this as a display email of the sender. This email must be authenticated on the SMTP provider you've configured, otherwise it will be delivered to the spam folder. This usually means the email must end with the same domain as your SMTP username. |
-| Reply to                                                                                                                                                                                                                                                              | Readers will reply to this email address instead of the sender address. You can leave this field empty, and the sender email will be used automatically.                                                                                                              |
-| Subject                                                                                                                                                                                                                                                               | The title of the email.                                                                                                                                                                                                                                               |
-| Message                                                                                                                                                                                                                                                               | The body of the email in HTML format. You can find the variables available in the [Email Template Syntax](#email-template-syntax) section.                                                                                                                            |
+| Component    | Description                                                                                                                                                                                                                                                           |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Sender name  | Readers will see this as a display name of the sender.                                                                                                                                                                                                                |
+| Sender email | Readers will see this as a display email of the sender. This email must be authenticated on the SMTP provider you've configured, otherwise it will be delivered to the spam folder. This usually means the email must end with the same domain as your SMTP username. |
+| Reply to     | Readers will reply to this email address instead of the sender address. You can leave this field empty, and the sender email will be used automatically.                                                                                                              |
+| Subject      | The title of the email.                                                                                                                                                                                                                                               |
+| Message      | The body of the email in HTML format. You can find the variables available in the [Email Template Syntax](#email-template-syntax) section.                                                                                                                            |
 
 ## Email template syntax {% #email-template-syntax %}
 
 Variables can be used in email templates to dynamically construct unique emails for each reader. These variables can only be used in the **Message** field of the email template.
 
-| Variable                                                                                                                              | Description                                                                                                                           |
-| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `{{project}}`                                                                                                                         | The project name.                                                                                                                     |
-| `{{team}}`                                                                                                                            | The project team's name.                                                                                                              |
-| `{{user}}`                                                                                                                            | The name of the user receiving the email. This variable is not available in the Magic URL template, as there might not be a user yet. |
-| `{{redirect}}`                                                                                                                        | The URL for the user to complete the email template's action.                                                                         |
+| Variable       | Description                                                                                                                           |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `{{project}}`  | The project name.                                                                                                                     |
+| `{{team}}`     | The project team's name.                                                                                                              |
+| `{{user}}`     | The name of the user receiving the email. This variable is not available in the Magic URL template, as there might not be a user yet. |
+| `{{redirect}}` | The URL for the user to complete the email template's action.                                                                         |
 
 ## Email template syntax {% #email-template-examples %}
 
@@ -69,47 +69,52 @@ Here's an example of using these variables in a template.
 ```html
 <!doctype html>
 <html>
+    <head>
+        <style>
+            ... your style here
+        </style>
+    </head>
 
-<head>
-    <style>
-        ... your style here
-    </style>
-</head>
+    <body style="direction: ltr">
+        <div
+            style="max-width:650px; word-wrap: break-word; overflow-wrap: break-word;
+  word-break: break-all; margin:0 auto;"
+        >
+            <table style="margin-top: 32px">
+                <tr>
+                    <td>
+                        <h1>{{subject}}</h1>
+                    </td>
+                </tr>
+            </table>
 
-<body style="direction: ltr">
+            <table style="margin-top: 40px">
+                <tr>
+                    <td>
+                        <p>Hello</p>
 
-    <div style="max-width:650px; word-wrap: break-word; overflow-wrap: break-word;
-  word-break: break-all; margin:0 auto;">
-        <table style="margin-top: 32px">
-            <tr>
-                <td>
-                    <h1>{{subject}}</h1>
-                </td>
-            </tr>
-        </table>
+                        <p>Follow this link to reset your {{project}} password.</p>
 
-        <table style="margin-top: 40px">
-            <tr>
-                <td>
-                    <p>Hello </p>
+                        <a href="{{redirect}}" target="_blank" rel="noopener noreferrer"
+                            >{{redirect}}</a
+                        >
 
-                    <p>Follow this link to reset your {{project}} password.</p>
-
-                    <a href="{{redirect}}" target="_blank" rel="noopener noreferrer">{{redirect}}</a>
-
-                    <p><br />If you didn't ask to reset your password, you can ignore this message.</p>
-                    <br />
-
-                    <p>Thanks
+                        <p>
+                            <br />If you didn't ask to reset your password, you can ignore this
+                            message.
+                        </p>
                         <br />
-                        {{project}} team</p>
-                </td>
-            </tr>
-        </table>
-    </div>
 
-</body>
-
+                        <p>
+                            Thanks
+                            <br />
+                            {{project}} team
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
 </html>
 ```
 
@@ -122,6 +127,7 @@ You can send messages in different languages by setting the locale with `client.
 For example, you can send an email verification in French.
 
 {% multicode %}
+
 ```client-web
 import { Client, Account } from "appwrite";
 
@@ -193,4 +199,5 @@ let account = Account(client)
 
 let token = try await account.createVerification('https://example.com')
 ```
+
 {% /multicode %}

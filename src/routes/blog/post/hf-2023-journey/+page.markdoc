@@ -9,7 +9,7 @@ author: aditya-oberai
 category: hacktoberfest
 ---
 
-**October** is our favorite month of the year because it brings with it **Hacktoberfest**, the largest celebration of open source in the world! And this year, we returned to support DigitalOcean and  **Hacktoberfest 2023** as a sponsor to invest in the upliftment of the open-source world and to rejoice the 10th anniversary of this wonderful initiative. Hacktoberfest brought moments of nostalgia seeing developers from different walks of life join in to take their first steps in the open-source world.
+**October** is our favorite month of the year because it brings with it **Hacktoberfest**, the largest celebration of open source in the world! And this year, we returned to support DigitalOcean and **Hacktoberfest 2023** as a sponsor to invest in the upliftment of the open-source world and to rejoice the 10th anniversary of this wonderful initiative. Hacktoberfest brought moments of nostalgia seeing developers from different walks of life join in to take their first steps in the open-source world.
 
 We had an absolute blast interacting with all the new contributors and hosting all the events throughout the month! Our **[Discord server](https://appwrite.io/discord)** was full of **AMAs** and **PR Review parties**, which enabled us to demonstrate our PR review workflow and allowed the community to really appreciate the work that goes into maintaining open-source projects. We were also able to educate new contributors on various facets of open source, usage of tools like Git and GitHub, the process of submitting a PR, communication best practices, and so much more!
 
@@ -27,32 +27,32 @@ That one month truly enabled us to lay the foundations of a budding organization
 
 This Hacktoberfest, we focused on collaborating with our contributors to make impactful contributions. Some of them really stood out to us, and we thought to share them here for you to check out too!
 
-- [Security Scans in the CI pipeline using GitLeaks](https://github.com/appwrite/appwrite/pull/6492)
+-   [Security Scans in the CI pipeline using GitLeaks](https://github.com/appwrite/appwrite/pull/6492)
 
-- [Functions template to implement Sync with MeiliSearch in Kotlin](https://github.com/appwrite/templates/pull/234)
+-   [Functions template to implement Sync with MeiliSearch in Kotlin](https://github.com/appwrite/templates/pull/234)
 
-- [Messaging adapter for Postmark](https://github.com/utopia-php/messaging/pull/26)
+-   [Messaging adapter for Postmark](https://github.com/utopia-php/messaging/pull/26)
 
-- [Storage adapter for IBM Cloud Object Storage](https://github.com/utopia-php/storage/pull/90)
+-   [Storage adapter for IBM Cloud Object Storage](https://github.com/utopia-php/storage/pull/90)
 
-- [Unit tests for the Android and Kotlin SDKs](https://github.com/appwrite/sdk-generator/pull/729)
+-   [Unit tests for the Android and Kotlin SDKs](https://github.com/appwrite/sdk-generator/pull/729)
 
 The Appwrite team also participated in a number of livestreams throughout the month.
 
-- [Open Source Friday with Appwrite](https://www.youtube.com/watch?v=VJvawxeUhN4) by GitHub
+-   [Open Source Friday with Appwrite](https://www.youtube.com/watch?v=VJvawxeUhN4) by GitHub
 
-- [Learn healthy contribution practices with Aditya Oberai!](https://www.twitch.tv/videos/1947516149) by GitHub Education
+-   [Learn healthy contribution practices with Aditya Oberai!](https://www.twitch.tv/videos/1947516149) by GitHub Education
 
-- [Building Appwrite Functions](https://www.twitch.tv/videos/1953276802) by MLH
+-   [Building Appwrite Functions](https://www.twitch.tv/videos/1953276802) by MLH
 
 ## Milestones achieved so far
 
 Together, we made a lot of noise during Hacktoberfest, leading to some amazing results for the Appwrite community!
 
-- **135+** Hacktoberfest issues
-- **65+** accepted Pull Requests
-- **30+** new GitHub contributors
-- **8** Hacktoberfest PR Review Parties
+-   **135+** Hacktoberfest issues
+-   **65+** accepted Pull Requests
+-   **30+** new GitHub contributors
+-   **8** Hacktoberfest PR Review Parties
 
 All these achievements were made possible through the strong collaboration and active participation of the community through a variety of contributions, spanning **adapters**, **function templates**, and more!
 
@@ -60,7 +60,7 @@ All these achievements were made possible through the strong collaboration and a
 
 We have a lot of exciting features that we’re working towards as we gear up to make **Appwrite Cloud** generally available. Appwrite Cloud is the hosted Appwrite solution managed by our team, so developers like you can focus on building their applications. We’re currently running Appwrite Cloud in Public Beta, so [sign up and start building](https://cloud.appwrite.io/register) as soon as you can!
 
-Besides that, this Hacktoberfest, one new product that we saw a number of folks contribute to is  **Appwrite Messaging**. Stay tuned for more information on the same.
+Besides that, this Hacktoberfest, one new product that we saw a number of folks contribute to is **Appwrite Messaging**. Stay tuned for more information on the same.
 
 ## How can you contribute after Hacktoberfest?
 

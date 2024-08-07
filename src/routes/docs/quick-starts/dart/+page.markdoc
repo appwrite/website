@@ -3,6 +3,7 @@ layout: article
 title: Start with Dart
 description: Build Flutter apps with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
 ---
+
 Learn how to setup your first Dart project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
@@ -16,16 +17,15 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 If this is your first time using Appwrite, create an account and create your first project.
 
-
 Then, under **Integrate with your server**, add an **API Key** with the following scopes.
 
-| Category  {% width=120 %} | Required scopes       | Purpose |
-|-----------|-----------------------|---------|
-| Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
-|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
-|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
-|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
-|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+| Category {% width=120 %} | Required scopes     | Purpose                                                                                                     |
+| ------------------------ | ------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Database                 | `databases.write`   | Allows API key to create, update, and delete [databases](/docs/products/databases/databases).               |
+|                          | `collections.write` | Allows API key to create, update, and delete [collections](/docs/products/databases/collections).           |
+|                          | `attributes.write`  | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
+|                          | `documents.read`    | Allows API key to read [documents](/docs/products/databases/documents).                                     |
+|                          | `documents.write`   | Allows API key to create, update, and delete [documents](/docs/products/databases/documents).               |
 
 Other scopes are optional.
 
@@ -55,6 +55,7 @@ Install the Dart Appwrite SDK.
 ```sh
 dart pub add dart_appwrite 11.0.2
 ```
+
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
 
@@ -67,7 +68,7 @@ Find your project ID in the **Settings** page.
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
- Also, click on the **View API Keys** button to find the API key that was created earlier. 
+Also, click on the **View API Keys** button to find the API key that was created earlier.
 
 Open `bin/my_app.dart` and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
@@ -98,13 +99,13 @@ Future<void> prepareDatabase() async {
   databases = Databases(client);
 
   todoDatabase = await databases.create(
-    databaseId: ID.unique(), 
+    databaseId: ID.unique(),
     name: 'TodosDB'
   );
 
   todoCollection = await databases.createCollection(
-    databaseId: todoDatabase.$id, 
-    collectionId: ID.unique(), 
+    databaseId: todoDatabase.$id,
+    collectionId: ID.unique(),
     name: 'Todos'
   );
 
@@ -137,6 +138,7 @@ Future<void> prepareDatabase() async {
 {% /section %}
 {% section #step-6 step=6 title="Add documents" %}
 Create a function to add some mock data into your new collection.
+
 ```dart
 Future<void> seedDatabase() async {
   var testTodo1 = {
@@ -183,10 +185,11 @@ Future<void> seedDatabase() async {
 {% section #step-7 step=7 title="Retrieve documents" %}
 
 Create a function to retrieve the mock todo data.
+
 ```dart
 Future<void> getTodos() async {
   var todos = await databases.listDocuments(
-    databaseId: todoDatabase.$id, 
+    databaseId: todoDatabase.$id,
     collectionId: todoCollection.$id
   );
 
@@ -197,6 +200,7 @@ Future<void> getTodos() async {
 ```
 
 Finally, revisit the `main()` function and call the functions created in previous steps.
+
 ```dart
 Future<void> main() async {
   client

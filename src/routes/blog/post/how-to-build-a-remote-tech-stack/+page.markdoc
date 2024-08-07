@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to build a tech stack for a remote startup"
+title: 'How to build a tech stack for a remote startup'
 description: 10 tools you need in your remote tech stack.
 date: 2024-07-16
 cover: /images/blog/how-to-build-remote-tech-stack/cover.png
@@ -8,15 +8,16 @@ timeToRead: 5
 author: snezhanna
 category: startup
 ---
-Building a remote company? Awesome! You've probably read many great stories about the benefits of work-life balance, working from anywhere, and hiring global talent. Or you might come from a 9 to 5 office job and think: never again! Either way, you're here because you now might be wondering, how do I actually communicate, organize, hire, and work fully remotely? 
 
-Since day one, Appwrite has been working entirely remotely and across the globe. We've learned a thing or two about what tools work best for us, and we would like to help you get started with your own remote-empowering tech stack. 
+Building a remote company? Awesome! You've probably read many great stories about the benefits of work-life balance, working from anywhere, and hiring global talent. Or you might come from a 9 to 5 office job and think: never again! Either way, you're here because you now might be wondering, how do I actually communicate, organize, hire, and work fully remotely?
+
+Since day one, Appwrite has been working entirely remotely and across the globe. We've learned a thing or two about what tools work best for us, and we would like to help you get started with your own remote-empowering tech stack.
 
 # How to choose the right tech stack
 
 Before you start looking into your stack, ask yourself what you value most in using tools.
 
-At Appwrite, we appreciate tools that help us work remotely more effectively. We also prefer open-source and privacy-friendly software, though not exclusively. 
+At Appwrite, we appreciate tools that help us work remotely more effectively. We also prefer open-source and privacy-friendly software, though not exclusively.
 
 This list highlights the tech we use to organize our work as an open-source, fully remote, and privacy-focused company.
 
@@ -28,15 +29,15 @@ This list highlights the tech we use to organize our work as an open-source, ful
 
 Initially created for gamers, [Discord](https://discord.com/) is designed for real-time communication, which is really important to help remote teams stay connected. We love grouping conversations per team and topic, with additional channels for cross-team collaboration. The “lobby” chat acts as an office space where team members say hi when they log on, have informal conversations, or share gifs — the water cooler talk of remote companies! This helps us feel connected even if our coworkers are online in a different timezone.
 
-Discord is also a favorite of the open source community, with many OSS projects being developed in Discord servers. Appwrite has an active [public server on Discord](https://appwrite.io/discord), and you're welcome to join! 
+Discord is also a favorite of the open source community, with many OSS projects being developed in Discord servers. Appwrite has an active [public server on Discord](https://appwrite.io/discord), and you're welcome to join!
 
 Some Discord pros:
 
-- Ease of use
-- Robust features for free
-- Serious security features, including 2FA, IP location lock and more
-- Versatile communication channels, including audio and video
-- Customizable server structure
+-   Ease of use
+-   Robust features for free
+-   Serious security features, including 2FA, IP location lock and more
+-   Versatile communication channels, including audio and video
+-   Customizable server structure
 
 ## 2. Linear for task tracking
 
@@ -50,10 +51,10 @@ Linear enables us to collaborate effectively across teams. Its intuitive approac
 
 Some Linear pros:
 
-- Developer-friendly approach
-- User-friendly
-- 2-week cycles
-- Easy task tracking
+-   Developer-friendly approach
+-   User-friendly
+-   2-week cycles
+-   Easy task tracking
 
 ## 3. Figma for design & collaboration
 
@@ -61,15 +62,15 @@ Some Linear pros:
 
 You've probably heard of [Figma](http://figma.com) as a design tool. But did you know you can also use it for brainstorming, retrospectives, and collaboration? We love this versatility.
 
-At Appwrite, our design teams use Figma for everything—from product designs and web pages to blog covers and social assets. Meanwhile, the rest of the team can leave comments and collaborate seamlessly. 
+At Appwrite, our design teams use Figma for everything—from product designs and web pages to blog covers and social assets. Meanwhile, the rest of the team can leave comments and collaborate seamlessly.
 
 Figma's whiteboard feature, FigJam, is perfect for brainstorming and real-time collaboration. You can set the topic, start a timer, and let ideas flow freely on a shared whiteboard. This makes brainstorming sessions more cohesive and focused.
 
 Some Figma pros:
 
-- Versatility
-- Real-time collaboration
-- Easy-to-use
+-   Versatility
+-   Real-time collaboration
+-   Easy-to-use
 
 ## 4. Notion for databases & collaboration
 
@@ -77,18 +78,18 @@ Some Figma pros:
 
 Your remote company's documents need a reliable home, and Notion databases are the perfect solution.
 
-Appwrite uses [Notion databases](http://notion.so) as its single source of truth for all crucial information, including the company handbook, team documents, campaign briefs, content databases, and social media calendars. 
+Appwrite uses [Notion databases](http://notion.so) as its single source of truth for all crucial information, including the company handbook, team documents, campaign briefs, content databases, and social media calendars.
 
-Notion's collaborative features allow team members to work together in sync and async, making it an excellent choice for a remote setup. This centralization fosters a transparent and cohesive work environment, keeping information easily accessible and up-to-date. 
+Notion's collaborative features allow team members to work together in sync and async, making it an excellent choice for a remote setup. This centralization fosters a transparent and cohesive work environment, keeping information easily accessible and up-to-date.
 
-Due to its versatility, Notion might be a bit daunting to get started with — but you can download plenty of free templates to customize your databases to your preference. 
+Due to its versatility, Notion might be a bit daunting to get started with — but you can download plenty of free templates to customize your databases to your preference.
 
 Some Notion pros:
 
-- Comprehensive databases
-- Async collaboration
-- Customizable
-- Easy-to-use
+-   Comprehensive databases
+-   Async collaboration
+-   Customizable
+-   Easy-to-use
 
 ## 5. Loom for sharing information remotely
 
@@ -100,23 +101,23 @@ That's why we're big fans of [Loom](https://www.loom.com/). With Loom, you can r
 
 Some Loom pros:
 
-- Async communication
-- Easy recording and sharing
-- AI tools for a video summary
+-   Async communication
+-   Easy recording and sharing
+-   AI tools for a video summary
 
 ## 6. Attio for customer relationship management
 
 ![Attio](/images/blog/how-to-build-remote-tech-stack/6.png)
 
-As your client base skyrockets through the roof (hopefully!), you’ll need a way to build relationships with your customers. At Appwrite, we use Attio for CRM. 
+As your client base skyrockets through the roof (hopefully!), you’ll need a way to build relationships with your customers. At Appwrite, we use Attio for CRM.
 
 With [Attio](http://attio.com), we manage our [OSS](https://appwrite.io/blog/post/announcing-the-appwrite-oss-program) and [Startups programs](https://appwrite.io/startups), and keep all partnerships in one place, like creators, events and integrations. Its user-friendly design helps our team track and organize contacts effectively, as well as collaborate on campaigns with ease.
 
 Some Attio pros:
 
-- User-friendly
-- Customizable workflows
-- Real-time updates
+-   User-friendly
+-   Customizable workflows
+-   Real-time updates
 
 ## 7. GitHub team for open source contributions
 
@@ -128,10 +129,10 @@ This approach allows Appwrite to receive open-source contributions from develope
 
 Some Github Team pros:
 
-- Simple role and permission management
-- Scalability
-- Centralized control
-- Activity tracking
+-   Simple role and permission management
+-   Scalability
+-   Centralized control
+-   Activity tracking
 
 ## 8. Appwrite for backend
 
@@ -139,14 +140,14 @@ Some Github Team pros:
 
 We couldn't end this list without mentioning [Appwrite](https://appwrite.io/). When asked, "Do you use Appwrite to build Appwrite?" the answer is a yes. The team is building Appwrite with the exact same API we let developers use to develop their apps. Our entire backend, including user authentication, databases, and collections, is powered by Appwrite's easy-to-implement APIs.
 
-Appwrite enables you to build a robust backend in half the time and with fewer human resources. By handling complex and time-consuming tasks like authentication and database management, Appwrite lets you focus on the unique features that set your product apart. This also applies to the Appwrite team as we work to improve our products. 
+Appwrite enables you to build a robust backend in half the time and with fewer human resources. By handling complex and time-consuming tasks like authentication and database management, Appwrite lets you focus on the unique features that set your product apart. This also applies to the Appwrite team as we work to improve our products.
 
 Some Appwrite pros:
 
-- Versatile APIs
-- Robust and quality features
-- Self-hosted or cloud — your choice
-- Easy-to-use and understand
+-   Versatile APIs
+-   Robust and quality features
+-   Self-hosted or cloud — your choice
+-   Easy-to-use and understand
 
 # Bonus tools
 
@@ -160,10 +161,10 @@ Now, these tools are not strictly related to remote work. However, they have gre
 
 Some Plausible pros:
 
-- privacy-friendly
-- user data is hosted on European servers
-- open source
-- user-friendly
+-   privacy-friendly
+-   user data is hosted on European servers
+-   open source
+-   user-friendly
 
 ## [Dub.co](http://Dub.co) for link-building
 
@@ -175,10 +176,10 @@ However, we still like to track the effectiveness of our campaigns. Dub.co, an o
 
 Some [dub.co](http://dub.co) pros:
 
-- Open-source
-- Straightforward pricing
-- Advanced analytics
-- Easy-to-use
+-   Open-source
+-   Straightforward pricing
+-   Advanced analytics
+-   Easy-to-use
 
 # Moving forward
 
@@ -190,5 +191,5 @@ If you’re a startup founder, you might be interested in the [Appwrite Startups
 
 More resources:
 
-- [How to attract users and contributors to your open-source project](https://appwrite.io/blog/post/how-to-attract-users-to-open-source-project)
-- [How to create a privacy-first growth strategy](https://appwrite.io/blog/post/How-to-put-privacy-first)
+-   [How to attract users and contributors to your open-source project](https://appwrite.io/blog/post/how-to-attract-users-to-open-source-project)
+-   [How to create a privacy-first growth strategy](https://appwrite.io/blog/post/How-to-put-privacy-first)

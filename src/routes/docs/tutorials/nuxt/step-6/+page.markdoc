@@ -5,7 +5,7 @@ description: Add databases and queries for ideas in your Nuxt project.
 step: 6
 ---
 
-In Appwrite, data is stored as a collection of documents. 
+In Appwrite, data is stored as a collection of documents.
 Create a new database and collection in the [Appwrite Console](https://cloud.appwrite.io/) to store the ideas.
 
 {% only_dark %}
@@ -16,11 +16,11 @@ Create a new database and collection in the [Appwrite Console](https://cloud.app
 {% /only_light %}
 
 Create a new collection with the following attributes:
-| Field       | Type   | Required | Size     |
+| Field | Type | Required | Size |
 |-------------|--------|----------|----------|
-| userId      | String | Yes      | 200      |
-| title       | String | Yes      | 200      |
-| description | String | No       | 500      |
+| userId | String | Yes | 200 |
+| title | String | Yes | 200 |
+| description | String | No | 500 |
 
 Change the collection's permissions in the settings to give access.
 
@@ -55,15 +55,15 @@ Create a new file in the composables directory, `useIdeas.js` and add the follow
 ```ts
 // composables/useIdeas.ts
 
-import { ID, Query, Models} from "appwrite";
-import { database } from "~/appwrite";
-import { ref } from "vue";
+import { ID, Query, Models } from 'appwrite';
+import { database } from '~/appwrite';
+import { ref } from 'vue';
 
 const ideasDatabaseId: string = import.meta.env.VITE_DATABASE_ID;
 const ideasCollectionId: string = import.meta.env.VITE_COLLECTION_ID;
 const queryLimit: number = 10;
 
-interface Idea extends Models.Document{
+interface Idea extends Models.Document {
     title: string;
     description: string;
     userId: string;
@@ -72,15 +72,13 @@ interface Idea extends Models.Document{
 const current = ref<Idea[] | null>(null); // Reference for the fetched data
 
 export const useIdeas = () => {
-
     // Fetch the 10 most recent ideas from the database
     // Add the list to the current reference object
     const fetch = async (): Promise<void> => {
-        const response = await database.listDocuments(
-            ideasDatabaseId,
-            ideasCollectionId,
-            [Query.orderDesc("$createdAt"), Query.limit(queryLimit)]
-        );
+        const response = await database.listDocuments(ideasDatabaseId, ideasCollectionId, [
+            Query.orderDesc('$createdAt'),
+            Query.limit(queryLimit)
+        ]);
         current.value = response.documents as Idea[];
     };
 
@@ -93,7 +91,7 @@ export const useIdeas = () => {
             ID.unique(),
             idea
         );
-        current.value = [response, ...current.value as Idea[]].slice(0, 10) as Idea[];
+        current.value = [response, ...(current.value as Idea[])].slice(0, 10) as Idea[];
     };
 
     const remove = async (id: string): Promise<void> => {
@@ -107,7 +105,7 @@ export const useIdeas = () => {
         add,
         current,
         fetch,
-        remove,
+        remove
     };
 };
 ```

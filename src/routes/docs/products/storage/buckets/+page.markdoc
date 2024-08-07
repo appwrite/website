@@ -8,6 +8,7 @@ Storage buckets are a group of files, similar to collections in Appwrite Databas
 Buckets let you limit file size and extensions, whether or not to encrypt the files, and more.
 
 # Create Bucket {% #create-bucket %}
+
 You can create your bucket from the Appwrite Console or a [Server SDK](/docs/sdks#server).
 
 {% tabs %}
@@ -49,6 +50,7 @@ promise.then(function (response) {
     console.log(error);
 });
 ```
+
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
@@ -72,6 +74,7 @@ promise.then(function (response) {
     console.log(error);
 });
 ```
+
 ```php
 <?php
 
@@ -90,6 +93,7 @@ $storage = new Storage($client);
 
 $result = $storage->createBucket('[BUCKET_ID]', '[NAME]');
 ```
+
 ```python
 from appwrite.client import Client
 from appwrite.services.storage import Storage
@@ -106,6 +110,7 @@ storage = Storage(client)
 
 result = storage.create_bucket('[BUCKET_ID]', '[NAME]')
 ```
+
 ```ruby
 require 'Appwrite'
 
@@ -122,6 +127,7 @@ response = storage.create_bucket(bucket_id: '[BUCKET_ID]', name: '[NAME]')
 
 puts response.inspect
 ```
+
 ```csharp
 using Appwrite;
 using Appwrite.Services;
@@ -138,6 +144,7 @@ Bucket result = await storage.CreateBucket(
     bucketId: "[BUCKET_ID]",
     name: "[NAME]");
 ```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 
@@ -164,6 +171,7 @@ void main() { // Init SDK
   });
 }
 ```
+
 ```kotlin
 import io.appwrite.Client
 import io.appwrite.services.Storage
@@ -180,6 +188,7 @@ val response = storage.createBucket(
     name = "[NAME]",
 )
 ```
+
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -205,6 +214,7 @@ storage.createBucket(
     })
 );
 ```
+
 ```swift
 import Appwrite
 
@@ -221,6 +231,7 @@ let bucket = try await storage.createBucket(
 )
 
 ```
+
 {% /multicode %}
 
 You can also configure permission, file size and extension restrictions, and more in the `createBucket` method, learn more about the `createBucket` in the [API references](/docs/references/cloud/server-nodejs/storage#createBucket).
@@ -228,6 +239,7 @@ You can also configure permission, file size and extension restrictions, and mor
 {% /tabs %}
 
 # Permissions {% #permissions %}
+
 Appwrite uses permissions to control file access.
 For security, only users that are granted permissions can access a file.
 This helps prevent accidental data leaks by forcing you to make more concious decisions around permissions.
@@ -238,20 +250,24 @@ This means users can't create new files or read, update, and delete existing fil
 [Learn about configuring permissions](/docs/products/storage/permissions).
 
 # Encryption {% #encryption %}
+
 Appwrite provides added security settings for your buckets. Enable encryption under your bucket's **Settings** > **Security settings**.
 You can enable encryption to encrypt files in your buckets. If your files are leaked, encrypted files cannot be read by the malicious actor.
 Files bigger than 20MB cannot be encrypted.
 
 # Compression {% #compression %}
+
 Appwrite allows you to compress your files.
 Two algorithms are available, which are [gzip](https://www.gzip.org/) and [zstd](https://github.com/facebook/zstd).
 You can enable compress under your bucket's **Settings** > **Compression**.
 For files larger than 20MB, compression will be skipped even when enabled.
 
 # Maximum file size {% #max-size %}
+
 Limit the maximum file size allowed in the bucket to prevent abuse.
 You can configure maximum file size under your bucket's **Settings** > **Maximum file size**.
 
 # File extensions {% #extensions %}
+
 Limit the file extensions allowed in the bucket to prevent abuse. A maximum of 100 file extensions can be added. Leave blank to allow all file types.
 You can configure maximum file size under your bucket's **Settings** > **File extensions**.

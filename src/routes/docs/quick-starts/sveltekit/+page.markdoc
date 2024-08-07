@@ -6,6 +6,7 @@ difficulty: beginner
 readtime: 3
 back: /docs/quick-starts
 ---
+
 Learn how to setup your first SvelteKit project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
@@ -19,7 +20,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 If this is your first time using Appwrite, create an account and create your first project.
 
-Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`. 
+Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`.
 
 {% only_dark %}
 ![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
@@ -37,6 +38,7 @@ Create a SvelteKit project.
 ```sh
 npm create svelte@latest my-app && cd my-app && npm install
 ```
+
 {% /section %}
 {% section #step-3 step=3 title="Install Appwrite" %}
 
@@ -45,9 +47,10 @@ Install the JavaScript Appwrite SDK.
 ```sh
 npm install appwrite@14.0.1
 ```
+
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
-Find your project's ID in the **Settings** page. 
+Find your project's ID in the **Settings** page.
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
@@ -69,6 +72,7 @@ client
 export const account = new Account(client);
 export { ID } from 'appwrite';
 ```
+
 {% /section %}
 {% section #step-5 step=5 title="Create a login page" %}
 Replace the contents of `src/routes/+page.svelte` with the following code.
@@ -93,10 +97,10 @@ Replace the contents of `src/routes/+page.svelte` with the following code.
         e.preventDefault();
         const formData = new FormData(e.target);
         const type = e.submitter.dataset.type;
-        
-        if (type === "login") {
+
+        if (type === 'login') {
             login(formData.get('email'), formData.get('password'));
-        } else if (type === "register") {
+        } else if (type === 'register') {
             register(formData.get('email'), formData.get('password'));
         }
     }
@@ -107,11 +111,9 @@ Replace the contents of `src/routes/+page.svelte` with the following code.
     }
 </script>
 
-<p>
-    {loggedInUser ? `Logged in as ${loggedInUser.name}` : 'Not logged in'}
-</p>
+<p>{loggedInUser ? `Logged in as ${loggedInUser.name}` : 'Not logged in'}</p>
 
-<form on:submit={submit}>
+<form on:submit="{submit}">
     <input type="email" placeholder="Email" name="email" required />
     <input type="password" placeholder="Password" name="password" required />
 
@@ -119,12 +121,11 @@ Replace the contents of `src/routes/+page.svelte` with the following code.
     <button type="submit" data-type="register">Register</button>
 </form>
 
-<button on:click={logout}>Logout</button>
+<button on:click="{logout}">Logout</button>
 ```
+
 {% /section %}
 
 {% section #step-6 step=6 title="All set" %}
 Run your project with `npm run dev` and open [localhost on port 5173](http://localhost:5173) in your browser.
 {% /section %}
-
-

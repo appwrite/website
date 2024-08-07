@@ -3,4 +3,5 @@ layout: article
 title: Integration
 description: Learn how to migrate your projects from other vendors to Appwrite Cloud or how to move from self-hosting to Cloud and the other way around using Appwrite Migrations service.
 ---
+
 Integration

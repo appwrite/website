@@ -54,7 +54,7 @@ export async function load() {
         });
 
     const tutorials = Object.entries(
-        allTutorials.reduce((acc: { [key: string]: any[] }, item) => {
+        allTutorials.reduce((acc: { [key: string]: unknown[] }, item) => {
             // If the category does not exist in the accumulator, initialize it
             if (!acc[item.category]) {
                 acc[item.category] = [];

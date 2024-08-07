@@ -22,7 +22,6 @@
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
     import { page } from '$app/stores';
-    import { loggedIn } from '$lib/utils/console';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
     import InitBanner from '$lib/components/InitBanner.svelte';

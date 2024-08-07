@@ -22,6 +22,7 @@ Create a React Native project using [npx](https://www.npmjs.com/package/npx).
 npx create-expo-app my-app
 cd my-app
 ```
+
 {% /section %}
 
 {% section #step-2 step=2 title="Create project" %}
@@ -71,6 +72,7 @@ Install the Appwrite SDK for React Native and required dependencies.
 ```sh
 npx expo install react-native-appwrite react-native-url-polyfill
 ```
+
 {% /section %}
 
 {% section #step-4 step=4 title="Implement Appwrite" %}
@@ -130,6 +132,7 @@ const styles = StyleSheet.create({
 });
 
 ```
+
 {% /section %}
 
 {% section #step-5 step=5 title="Create a login form" %}
@@ -195,7 +198,7 @@ You can also add some simple styling to your app by adding the following styles 
 ```client-react-native
 const styles = StyleSheet.create({
   root: {
-    marginTop: 40, 
+    marginTop: 40,
     marginBottom: 40
   },
   input: {
@@ -213,6 +216,7 @@ const styles = StyleSheet.create({
   },
 });
 ```
+
 {% /section %}
 
 {% section #step-6 step=6 title="All set" %}

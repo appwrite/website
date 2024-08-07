@@ -42,7 +42,10 @@
                 <div class="web-container wrapper" style="--container-size:42.5rem">
                     <article class="web-main-article">
                         <header class="web-main-article-header">
-                            <a class="web-link web-u-color-text-secondary u-cross-baseline" href="/changelog">
+                            <a
+                                class="web-link web-u-color-text-secondary u-cross-baseline"
+                                href="/changelog"
+                            >
                                 <span class="web-icon-chevron-left" aria-hidden="true" />
                                 <span>Back to Changelog</span>
                             </a>

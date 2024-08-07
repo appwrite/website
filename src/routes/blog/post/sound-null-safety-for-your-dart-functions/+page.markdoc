@@ -176,7 +176,7 @@ class Profile {
 }
 ```
 
-Notice that `final String name` and `final String age` are declared as class variables that cannot be null, but `final Stay ?stay`  is explicitly stated to be nullable. This is why the constructor of `Profile({required this.name, required this.age, this.stay})` specifies that name and age are required. If you try to pass null, or a nullable value into these required params without providing non-null defaults, the compiler will complain.
+Notice that `final String name` and `final String age` are declared as class variables that cannot be null, but `final Stay ?stay` is explicitly stated to be nullable. This is why the constructor of `Profile({required this.name, required this.age, this.stay})` specifies that name and age are required. If you try to pass null, or a nullable value into these required params without providing non-null defaults, the compiler will complain.
 
 When constructing a `Profile` class from a JSON, we also did some null handling. We access members using `json?[]` syntax, which checks if `json` is null before attempting access, preventing null pointer exceptions. Since stay is nullable, we check if stay exists in the `json` passed in, and if not, we default to null. Later when accessing member `stay`, we’ll be reminded to handle this properly.
 
@@ -294,8 +294,8 @@ If you’re still on Dart 2.x, I strongly recommend you migrate to Dart 3 to ben
 
 Visit our documentation to learn more about Dart, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
-- [Docs](/docs/products/functions/runtimes)
-- [Discord](https://appwrite.io/discord)
-- [Blog](/blog)
-- [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
-- [GitHub](https://github.com/appwrite/appwrite)
+-   [Docs](/docs/products/functions/runtimes)
+-   [Discord](https://appwrite.io/discord)
+-   [Blog](/blog)
+-   [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
+-   [GitHub](https://github.com/appwrite/appwrite)

@@ -34,28 +34,28 @@ Using the server integration flexibility, you can change resource permissions, s
 
 In Client and Server SDKs, you will find a **Permission** class with helper methods for each role described below:
 
-| Type | Description |
-| ---- | ----------- |
-| `Permission.read()` | Access to read a resource. |
+| Type                  | Description                                                                                                                                   |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Permission.read()`   | Access to read a resource.                                                                                                                    |
 | `Permission.create()` | Access to create new resources. Does not apply to files or documents. Applying this type of access to files or documents results in an error. |
-| `Permission.update()` | Access to change a resource, but not remove or create new resources. Does not apply to functions. |
-| `Permission.delete()` | Access to remove a resource. Does not apply to functions. |
-| `Permission.write()` | Alias to grant create, update, and delete access for collections and buckets and update and delete access for documents and files. |
+| `Permission.update()` | Access to change a resource, but not remove or create new resources. Does not apply to functions.                                             |
+| `Permission.delete()` | Access to remove a resource. Does not apply to functions.                                                                                     |
+| `Permission.write()`  | Alias to grant create, update, and delete access for collections and buckets and update and delete access for documents and files.            |
 
 # Permission roles {% #permission-roles %}
 
 In Client and Server SDKs, you will find a **Role** class with helper methods for each role described below:
 
-| Type | Description |
-| ---- | ----------- |
-| `Role.any()` | Grants access to anyone. |
-| `Role.guests()` | Grants access to any guest user without a session. Authenticated users don't have access to this role. |
-| `Role.users([STATUS])` | Grants access to any authenticated or anonymous user. You can optionally pass the **verified** or **unverified** string to target specific types of users. |
-| `Role.user([USER_ID], [STATUS])` | Grants access to a specific user by user ID. You can optionally pass the **verified** or **unverified** string to target specific types of users. |
-| `Role.team([TEAM_ID])` | Grants access to any member of the specific team. To gain access to this permission, the user must be the team creator (owner), or receive and accept an invitation to join this team. |
-| `Role.team([TEAM_ID], [ROLE])` | Grants access to any member who possesses a specific role in a team. To gain access to this permission, the user must be a member of the specific team and have the given role assigned to them. Team roles can be assigned when inviting a user to become a team member. |
-| `Role.member([MEMBERSHIP_ID])` | Grants access to a specific member of a team. When the member is removed from the team, they will no longer have access. |
-| `Role.label([LABEL_ID])` | Grants access to all accounts with a specific label ID. Once the label is removed from the user, they will no longer have access. [Learn more about labels](/docs/products/auth/labels). |
+| Type                             | Description                                                                                                                                                                                                                                                               |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Role.any()`                     | Grants access to anyone.                                                                                                                                                                                                                                                  |
+| `Role.guests()`                  | Grants access to any guest user without a session. Authenticated users don't have access to this role.                                                                                                                                                                    |
+| `Role.users([STATUS])`           | Grants access to any authenticated or anonymous user. You can optionally pass the **verified** or **unverified** string to target specific types of users.                                                                                                                |
+| `Role.user([USER_ID], [STATUS])` | Grants access to a specific user by user ID. You can optionally pass the **verified** or **unverified** string to target specific types of users.                                                                                                                         |
+| `Role.team([TEAM_ID])`           | Grants access to any member of the specific team. To gain access to this permission, the user must be the team creator (owner), or receive and accept an invitation to join this team.                                                                                    |
+| `Role.team([TEAM_ID], [ROLE])`   | Grants access to any member who possesses a specific role in a team. To gain access to this permission, the user must be a member of the specific team and have the given role assigned to them. Team roles can be assigned when inviting a user to become a team member. |
+| `Role.member([MEMBERSHIP_ID])`   | Grants access to a specific member of a team. When the member is removed from the team, they will no longer have access.                                                                                                                                                  |
+| `Role.label([LABEL_ID])`         | Grants access to all accounts with a specific label ID. Once the label is removed from the user, they will no longer have access. [Learn more about labels](/docs/products/auth/labels).                                                                                  |
 
 # Examples {% #examples %}
 
@@ -96,7 +96,7 @@ promise.then(function (response) {
 });
 ```
 
-## Example 2 - Team roles  {% #example-2-team-roles %}
+## Example 2 - Team roles {% #example-2-team-roles %}
 
 In the following example, we are creating a document that can be read by members of the team with ID `5c1f88b87435e` and can only be edited or deleted by members of the same team that possess the team role `owner`.
 

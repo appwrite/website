@@ -18,10 +18,10 @@ By the end of this tutorial, you'll have a React app that allows users to log in
 
 Before diving in, ensure you have the following:
 
-- Basic knowledge of React
-- An Appwrite project set up - Learn how to create an Appwrite project [here](/docs/tutorials/react/step-3)
-- Access to a Google Cloud account
-- Node.js and npm installed on your machine
+-   Basic knowledge of React
+-   An Appwrite project set up - Learn how to create an Appwrite project [here](/docs/tutorials/react/step-3)
+-   Access to a Google Cloud account
+-   Node.js and npm installed on your machine
 
 # Setting up Google OAuth2 in Appwrite
 
@@ -96,14 +96,13 @@ Create a new file named `appwrite.js` in the `src` directory. Here, we'll initia
 
 ```js
 // src/appwrite.js
-import { Client, Account, OAuthProvider } from 'appwrite'
+import { Client, Account, OAuthProvider } from 'appwrite';
 
-const client = new Client()
+const client = new Client();
 client
-  .setEndpoint('https://cloud.appwrite.io/v1')// The Appwrite API endpoint
-  .setProject('project-id')// Your Appwrite project IDexport const account = new Account(client)
-export { OAuthProvider }
-
+    .setEndpoint('https://cloud.appwrite.io/v1') // The Appwrite API endpoint
+    .setProject('project-id'); // Your Appwrite project IDexport const account = new Account(client)
+export { OAuthProvider };
 ```
 
 In the `appwrite.js` file, the `Client` object, used to interact with Appwrite services, is initialized with the Appwrite API endpoint and your project ID. The `account` object is created using the client to interact with the Appwrite account service, while the `OAuthProvider` is an enum that contains the OAuth2 providers supported by Appwrite. We are exporting it from this file so you don't have to import both from `appwrite` and `appwrite.js` when you need to use both account and OAuthProvider in a component.
@@ -114,39 +113,38 @@ With your React project and Appwrite client set up, you can now create functions
 
 ```jsx
 // src/auth.js
-import { account, OAuthProvider } from './appwrite'
+import { account, OAuthProvider } from './appwrite';
 
 export const loginWithGoogle = async () => {
-  try {
-    await account.createOAuth2Session(OAuthProvider.Google)
-  } catch (error) {
-    console.error(error)
-  }
-}
+    try {
+        await account.createOAuth2Session(OAuthProvider.Google);
+    } catch (error) {
+        console.error(error);
+    }
+};
 
 export const logoutUser = async () => {
-  try {
-    await account.deleteSession('current')
-  } catch (error) {
-    console.error(error)
-  }
-}
+    try {
+        await account.deleteSession('current');
+    } catch (error) {
+        console.error(error);
+    }
+};
 
 export const getUser = async () => {
-  try {
-    return await account.get()
-  } catch (error) {
-    console.error(error)
-  }
-}
-
+    try {
+        return await account.get();
+    } catch (error) {
+        console.error(error);
+    }
+};
 ```
 
 In the `auth.js` file, we've created three functions: `loginWithGoogle`, `logoutUser` and `getUser`.
 
-- The `loginWithGoogle` function uses the `createOAuth2Session` method to initiate a Google OAuth2 session. The `OAuthProvider` object is imported from the `./appwrite.js` file, which contains the Google OAuth2 provider.
-- The `logoutUser` function uses the `deleteSession` method to log out the current user. The `deleteSession` method expects the session ID to be deleted as an argument. In this case, we're passing `'current'` to delete the current session.
-- The `getUser` function uses the `get` method to retrieve the current user's account details. This function will be used to display the user's information after they log in or to check if the user is already logged in.
+-   The `loginWithGoogle` function uses the `createOAuth2Session` method to initiate a Google OAuth2 session. The `OAuthProvider` object is imported from the `./appwrite.js` file, which contains the Google OAuth2 provider.
+-   The `logoutUser` function uses the `deleteSession` method to log out the current user. The `deleteSession` method expects the session ID to be deleted as an argument. In this case, we're passing `'current'` to delete the current session.
+-   The `getUser` function uses the `get` method to retrieve the current user's account details. This function will be used to display the user's information after they log in or to check if the user is already logged in.
 
 # Set up component for authentication
 
@@ -154,41 +152,40 @@ Next, create a new component named `Auth.js` (this time, with a capital 'A') in 
 
 ```jsx
 // src/Auth.js
-import React, { useState, useEffect } from 'react'
-import { loginWithGoogle, logoutUser, getUser } from './auth'
+import React, { useState, useEffect } from 'react';
+import { loginWithGoogle, logoutUser, getUser } from './auth';
 
 const Auth = () => {
-  const [user, setUser] = useState(null)
+    const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const checkUser = async () => {
-      try {
-        const userData = await getUser()
-        setUser(userData)
-      } catch (error) {
-        setUser(null)
-      }
-    }
+    useEffect(() => {
+        const checkUser = async () => {
+            try {
+                const userData = await getUser();
+                setUser(userData);
+            } catch (error) {
+                setUser(null);
+            }
+        };
 
-    checkUser()
-  }, [])
+        checkUser();
+    }, []);
 
-  return (
-    <div>
-      {user ? (
-        <>
-          <p>Welcome, {user.name}!</p>
-          <button onClick={logoutUser}>Logout</button>
-        </>
-      ) : (
-        <button onClick={loginWithGoogle}>Login with Google</button>
-      )}
-    </div>
-  )
-}
+    return (
+        <div>
+            {user ? (
+                <>
+                    <p>Welcome, {user.name}!</p>
+                    <button onClick={logoutUser}>Logout</button>
+                </>
+            ) : (
+                <button onClick={loginWithGoogle}>Login with Google</button>
+            )}
+        </div>
+    );
+};
 
-export default Auth
-
+export default Auth;
 ```
 
 In the `Auth.js` file, we've created a functional component named `Auth`. This component uses the `useState` and `useEffect` hooks to manage the user's authentication state. The `checkUser` function is called when the component mounts to check if the user is already logged in.
@@ -207,22 +204,21 @@ Open the `src/App.js` file and add the `Auth` component:
 
 ```jsx
 // src/App.js
-import React from 'react'
-import Auth from './Auth'
+import React from 'react';
+import Auth from './Auth';
 
 const App = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Appwrite Google Auth Example</h1>
-        <Auth />
-      </header>
-    </div>
-  )
-}
+    return (
+        <div className="App">
+            <header className="App-header">
+                <h1>Appwrite Google Auth Example</h1>
+                <Auth />
+            </header>
+        </div>
+    );
+};
 
-export default App
-
+export default App;
 ```
 
 This integration will display the `Auth` component within your main application, providing Google authentication functionality to your users.

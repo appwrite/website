@@ -67,17 +67,11 @@
         const utmCampaign = urlParams.get('utm_campaign');
         let referrer = document.referrer.length ? document.referrer : null;
         // Skip our own
-        if(referrer?.includes('//appwrite.io')) {
+        if (referrer?.includes('//appwrite.io')) {
             referrer = null;
         }
         if (ref || referrer || utmSource || utmCampaign || utmMedium) {
-            createSource(
-                ref,
-                referrer,
-                utmSource,
-                utmCampaign,
-                utmMedium
-            );
+            createSource(ref, referrer, utmSource, utmCampaign, utmMedium);
         }
         const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
 

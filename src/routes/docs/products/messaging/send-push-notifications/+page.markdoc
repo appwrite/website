@@ -3,6 +3,7 @@ layout: article
 title: Send push notification
 description: Send push notification to your users using Appwrite Messaging.
 ---
+
 You can send, schedule, and manage push notifications to your apps using Appwrite Messaging.
 Push notifications can be used to deliver new message notifications, app updates, promotional offers,
 and other messages straight to your user's devices.
@@ -60,8 +61,8 @@ func application(
 }
 ```
 
-
 Next, create a handler for when the app receives the push notification device token.
+
 ```swift
 func application(
     _ application: UIApplication,
@@ -75,10 +76,12 @@ func application(
 }
 
 ```
+
 Since the token is saved in `UserDefaults`, you can access it from anywhere in your app.
 With this saved `apnsToken`, you can create a push target with Appwrite when the user logs in.
 Each push target is associated with an account, heres an example with an email password login.
 The same logic applies to all types of login methods.
+
 ```swift
 func login() async {
     do {
@@ -110,6 +113,7 @@ func login() async {
     }
 }
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #android-fcm title="FCM for Android" %}
@@ -181,6 +185,7 @@ fun onLogin(
 
 The FCM token that we defined in `sharedPreferenes` will be passed into the `onLogin` handler
 to create the push target.
+
 ```kotlin
  binding.login.setOnClickListener{
     viewModel.onLogin(
@@ -234,6 +239,7 @@ class MessagingService : FirebaseMessagingService() {
 ```
 
 In your `AndroidManifest.xml`, register this new service.
+
 ```xml
 <service android:name="<YOUR_NOTIFICATION_HANDLER_SERVICE>" android:exported="false">
     <intent-filter>
@@ -241,6 +247,7 @@ In your `AndroidManifest.xml`, register this new service.
     </intent-filter>
 </service>
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #apple-fcm title="FCM for Apple" %}
@@ -249,11 +256,11 @@ Before you can send push notifications using FCM, make sure you'd followed the s
 
 After adding Firebase to your iOS project and adding the `GoogleService-Info.plist` to the root of your project.
 
-
 Next, add your APNs key to Firebase.
+
 1. Head to **Apple Developer Member Center** > **Program resources** > **Certificates, Identifiers & Profiles** > **Keys**. The key needs **Apple Push Notification Service** enabled.
 1. Create a new key, note down the key ID and download your key.
-1. In Firebase console, go to *Settings** > **Cloud Messaging** > **APNs authentication key** > click **Upload**. Upload your key here.
+1. In Firebase console, go to \*Settings** > **Cloud Messaging** > **APNs authentication key** > click **Upload\*\*. Upload your key here.
 1. Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
 1. If using SwiftUI, disable swizzling by setting `FirebaseAppDelegateProxyEnabled` to `NO` in your `Info.plist`.
 
@@ -289,9 +296,11 @@ func application(
     return true
 }
 ```
+
 Your APNS token can change, so you need to handle the token refresh event and update the target with Appwrite Messaging.
 Implement `didReceiveRegistrationToken`, which is called when the FCM token is updated.
-```swift
+
+````swift
 func messaging(
     _ messaging: FirebaseMessaging.Messaging,
     didReceiveRegistrationToken fcmToken: String?
@@ -365,11 +374,12 @@ func login() async {
         }
     }
 }
-```
+````
 
 If you have disabled method swizzling, or you are building a SwiftUI app,
 you'll need to explicitly map your APNs token to the FCM registration token.
 Implement the `didRegisterForRemoteNotificationsWithDeviceToken` method to get the device token and save it to FCM.
+
 ```swift
 func application(
     _ application: UIApplication,
@@ -378,6 +388,7 @@ func application(
     Messaging.messaging().apnsToken = deviceToken
 }
 ```
+
 {% /tabsitem %}
 {% /tabs %}
 {% /section %}
@@ -390,7 +401,7 @@ Your app must ask for permission to receive push notification from the user.
 Before your app can receive push notifications, you need to request the user for permissions.
 Appwrite provides a utility to help request permissions to display notificaitons.
 
-You can learn more about requesting permissions from the 
+You can learn more about requesting permissions from the
 [Apple Developer Documentation](https://developer.apple.com/documentation/usernotifications/asking-permission-to-use-notifications).
 {% /tabsitem %}
 
@@ -405,7 +416,7 @@ First, add `POST_NOTIFICATIONS` to your `AndroidManifest.xml`.
     <!-- ... rest of your manifest -->
 ```
 
-Then, you'll also need to request [runtime permissions](https://developer.android.com/training/permissions/requesting) 
+Then, you'll also need to request [runtime permissions](https://developer.android.com/training/permissions/requesting)
 from your users using the `android.permission.POST_NOTIFICATIONS` permission.
 {% /tabsitem %}
 
@@ -413,7 +424,7 @@ from your users using the `android.permission.POST_NOTIFICATIONS` permission.
 Before your app can receive push notifications, you need to request the user for permissions.
 Appwrite provides a utility to help request permissions to display notificaitons.
 
-You can learn more about requesting permissions from the 
+You can learn more about requesting permissions from the
 [Apple Developer Documentation](https://developer.apple.com/documentation/usernotifications/asking-permission-to-use-notifications).
 
 When an FCM registration token is generated, the library uploads the identifier and configuration data to Firebase.
@@ -421,14 +432,17 @@ If you wish to give your users the ability to explicitly opt out of sending data
 you can disable automatic initialization and manually initialize the library when the user grants permission.
 
 Disable auto-initialization by setting `FirebaseMessagingAutoInitEnabled` to `NO` in your `Info.plist`.
+
 ```text
 FirebaseMessagingAutoInitEnabled = NO
 ```
 
 Then, manually initialize the library when the user grants permission.
-``` swift
+
+```swift
 Messaging.messaging().autoInitEnabled = true
 ```
+
 {% /tabsitem %}
 {% /tabs %}
 
@@ -464,6 +478,7 @@ Verify that you can receive the message in your inbox. If not, check for logs in
 {% tabsitem #server-sdk title="Server SDK" %}
 To send a message programmatically, use an [Appwrite Server SDK](/docs/sdks#server).
 {% multicode %}
+
 ```server-nodejs
 const sdk = require('node-appwrite');
 
@@ -496,6 +511,7 @@ const messaging = await messaging.createPush(
         ''              // scheduledAt (optional)
     );
 ```
+
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
@@ -528,6 +544,7 @@ const messaging = await messaging.createPush(
         ''              // scheduledAt (optional)
     );
 ```
+
 ```php
 <?php
 
@@ -562,6 +579,7 @@ $result = $messaging->createPush(
     scheduledAt: ''     // optional
 );
 ```
+
 ```python
 from appwrite.client import Client
 from appwrite.services.messaging import Messaging
@@ -594,6 +612,7 @@ result = messaging.create_push(
     scheduled_at = ''   # optional
 )
 ```
+
 ```ruby
 require 'appwrite'
 
@@ -626,6 +645,7 @@ response = messaging.create_push(
 
 puts response.inspect
 ```
+
 ```csharp
 using Appwrite;
 using Appwrite.Services;
@@ -641,20 +661,21 @@ var messaging = new Messaging(client);
 Message result = await messaging.CreatePush(
     messageId: "[MESSAGE_ID]",
     title: "[TITLE]",
-    body: "[BODY]"    
-    topics: new List<string> {}     // optional    
-    users: new List<string> {}      // optional    
-    targets: new List<string> {}    // optional    
-    data: [object]      // optional    
-    action: "[ACTION]"  // optional    
-    icon: "[ICON]"      // optional    
-    sound: "[SOUND]"    // optional    
-    color: "[COLOR]"    // optional    
-    tag: "[TAG]"        // optional    
-    badge: "[BADGE]"    // optional    
-    draft: false        // optional    
+    body: "[BODY]"
+    topics: new List<string> {}     // optional
+    users: new List<string> {}      // optional
+    targets: new List<string> {}    // optional
+    data: [object]      // optional
+    action: "[ACTION]"  // optional
+    icon: "[ICON]"      // optional
+    sound: "[SOUND]"    // optional
+    color: "[COLOR]"    // optional
+    tag: "[TAG]"        // optional
+    badge: "[BADGE]"    // optional
+    draft: false        // optional
     scheduledAt: "");   // optional
 ```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:dart_appwrite/enums.dart';
@@ -696,6 +717,7 @@ void main() {   // Init SDK
   });
 }
 ```
+
 ```kotlin
 import io.appwrite.Client
 import io.appwrite.services.Messaging
@@ -725,6 +747,7 @@ val response = messaging.createPush(
     scheduledAt = ""            // optional
 )
 ```
+
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -763,6 +786,7 @@ messaging.createPush(
     })
 );
 ```
+
 ```swift
 import Appwrite
 
@@ -791,6 +815,7 @@ let message = try await messaging.createPush(
   scheduledAt: ""     // optional
 )
 ```
+
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}

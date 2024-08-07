@@ -8,14 +8,14 @@ isPartner: true
 isNew: true
 cover: /images/integrations/query-mongodb/cover.png
 category: Databases
-product: 
+product:
     avatar: '/images/integrations/avatars/mongodb.png'
     vendor: MongoDB
     description: 'MongoDB is a popular NoSQL database known for its flexibility and scalability.'
-platform: 
+platform:
     - 'Self-hosted'
     - 'Cloud'
-images: 
+images:
     - /images/integrations/query-mongodb/cover.png
     - /images/integrations/query-mongodb/first-cluster.png
     - /images/integrations/query-mongodb/connection-string.png
@@ -75,6 +75,6 @@ You can add other database functionalities by editing the function generated for
 
 If you would like to learn more about MongoDB Atlas and Appwrite Functions, we have some resources that you should visit:
 
-- [Integrate SQL, NoSQL, Vector, Graph, or any database into your Appwrite project](https://appwrite.io/blog/post/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project)
-- [Understanding data queries in database management](https://appwrite.io/blog/post/understand-data-queries)
-- [Appwrite Functions docs](https://appwrite.io/docs/products/functions)
+-   [Integrate SQL, NoSQL, Vector, Graph, or any database into your Appwrite project](https://appwrite.io/blog/post/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project)
+-   [Understanding data queries in database management](https://appwrite.io/blog/post/understand-data-queries)
+-   [Appwrite Functions docs](https://appwrite.io/docs/products/functions)

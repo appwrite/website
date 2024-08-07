@@ -12,8 +12,8 @@ We'll create a function that uses TensorFlow to generate text completions based 
 
 # Prerequisites {% #prerequisites %}
 
-- An Appwrite Project
-- Basic knowledge of Python and TensorFlow
+-   An Appwrite Project
+-   Basic knowledge of Python and TensorFlow
 
 {% section #step-1 step=1 title="Create new function" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console), click on **Functions** in the left sidebar, and then click on the **Create Function** button.
@@ -32,6 +32,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console), click on **Fu
 1. After connecting to GitHub, under **Quick start**, select the **Python ML** starter template.
 1. In the **Variables** step, add any necessary variables like `APPWRITE_API_KEY`, `APPWRITE_ENDPOINT`, and `APPWRITE_FUNCTION_PROJECT_ID`.
 1. Follow the step-by-step wizard to create the function.
+
 {% /section %}
 
 {% section #step-2 step=2 title="Add TensorFlow and necessary packages" %}
@@ -49,6 +50,7 @@ Install these packages by running:
 ```bash
 pip install -r requirements.txt
 ```
+
 {% /section %}
 
 {% section #step-3 step=3 title="Train the TensorFlow model" %}
@@ -129,6 +131,7 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
 {% /section %}
 
 {% section #step-4 step=4 title="Create utility functions" %}
@@ -150,6 +153,7 @@ def throw_if_missing(obj: object, keys: list[str]) -> None:
     if missing:
         raise ValueError(f"Missing required fields: {', '.join(missing)}")
 ```
+
 {% /section %}
 
 {% section #step-5 step=5 title="Handle GET request" %}
@@ -168,6 +172,7 @@ def main(context):
             {"content-type": "text/html; charset=utf-8"},
         )
 ```
+
 {% /section %}
 
 {% section #step-6 step=6 title="Handle POST request" %}
@@ -191,8 +196,8 @@ def main(context):
     generated_text = generate_text(prompt)
     return context.res.json({"ok": True, "completion": generated_text}, 200)
 ```
-{% /section %}
 
+{% /section %}
 
 {% section #step-7 step=7 title="Build the generate_text function" %}
 
@@ -225,101 +230,93 @@ def generate_text(prompt):
 
 {% /section %}
 
-
 {% section #step-8 step=8 title="Create web page" %}
 Create a HTML web page that the function will serve. Create a new file at `static/index.html` with some HTML boilerplate:
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Generate with TensorFlow demo</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Generate with TensorFlow demo</title>
 
-    <script>
-      async function onSubmit(prompt) {
-        const response = await fetch("/", {
-          method: "POST",
-          body: JSON.stringify({ prompt }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        <script>
+            async function onSubmit(prompt) {
+                const response = await fetch('/', {
+                    method: 'POST',
+                    body: JSON.stringify({ prompt }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
 
-        const json = await response.json();
+                const json = await response.json();
 
-        if (!json.ok || json.error) {
-          alert(json.error);
-        }
+                if (!json.ok || json.error) {
+                    alert(json.error);
+                }
 
-        return json.completion;
-      }
-    </script>
+                return json.completion;
+            }
+        </script>
 
-    <script src="//unpkg.com/alpinejs" defer></script>
+        <script src="//unpkg.com/alpinejs" defer></script>
 
-    <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink" />
-    <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink-icons" />
-  </head>
-  <body class="theme-dark">
-    <main class="main-content">
-      <div class="top-cover u-padding-block-end-56">
-        <div class="container">
-          <div
-            class="u-flex u-gap-16 u-flex-justify-center u-margin-block-start-16"
-          >
-            <h1 class="heading-level-1">Generate with TensorFlow demo</h1>
-            <code class="u-un-break-text"></code>
-          </div>
-          <p
-            class="body-text-1 u-normal u-margin-block-start-8"
-            style="max-width: 50rem"
-          >
-            Use this page to test your implementation with TensorFlow. Enter
-            text and receive the model output as a response.
-          </p>
-        </div>
-      </div>
-      <div
-        class="container u-margin-block-start-negative-56"
-        x-data="{ prompt: '', answer: '', loading: false }"
-      >
-        <div class="card u-flex u-gap-24 u-flex-vertical">
-          <div class="u-flex u-cross-center u-gap-8">
+        <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink" />
+        <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink-icons" />
+    </head>
+    <body class="theme-dark">
+        <main class="main-content">
+            <div class="top-cover u-padding-block-end-56">
+                <div class="container">
+                    <div class="u-flex u-gap-16 u-flex-justify-center u-margin-block-start-16">
+                        <h1 class="heading-level-1">Generate with TensorFlow demo</h1>
+                        <code class="u-un-break-text"></code>
+                    </div>
+                    <p class="body-text-1 u-normal u-margin-block-start-8" style="max-width: 50rem">
+                        Use this page to test your implementation with TensorFlow. Enter text and
+                        receive the model output as a response.
+                    </p>
+                </div>
+            </div>
             <div
-              class="input-text-wrapper is-with-end-button u-width-full-line"
+                class="container u-margin-block-start-negative-56"
+                x-data="{ prompt: '', answer: '', loading: false }"
             >
-              <input x-model="prompt" type="search" placeholder="Question" />
-              <div class="icon-search" aria-hidden="true"></div>
-            </div>
+                <div class="card u-flex u-gap-24 u-flex-vertical">
+                    <div class="u-flex u-cross-center u-gap-8">
+                        <div class="input-text-wrapper is-with-end-button u-width-full-line">
+                            <input x-model="prompt" type="search" placeholder="Question" />
+                            <div class="icon-search" aria-hidden="true"></div>
+                        </div>
 
-            <button
-              class="button"
-              x-bind:disabled="loading"
-              x-on:click="async () => { loading = true; answer = ''; try { answer = await onSubmit(prompt) } catch(err) { console.error(err); } finally { loading = false; } }"
-            >
-              <span class="text">Submit</span>
-            </button>
-          </div>
-          <template x-if="answer">
-            <div class="u-flex u-flex-vertical u-gap-12">
-              <div class="u-flex u-flex-vertical u-gap-12 card">
-                <div class="u-flex u-gap-12">
-                  <h5 class="eyebrow-heading-2">TensorFlow Model:</h5>
-                </div>
+                        <button
+                            class="button"
+                            x-bind:disabled="loading"
+                            x-on:click="async () => { loading = true; answer = ''; try { answer = await onSubmit(prompt) } catch(err) { console.error(err); } finally { loading = false; } }"
+                        >
+                            <span class="text">Submit</span>
+                        </button>
+                    </div>
+                    <template x-if="answer">
+                        <div class="u-flex u-flex-vertical u-gap-12">
+                            <div class="u-flex u-flex-vertical u-gap-12 card">
+                                <div class="u-flex u-gap-12">
+                                    <h5 class="eyebrow-heading-2">TensorFlow Model:</h5>
+                                </div>
 
-                <div style="overflow-x: hidden; line-break: anywhere">
-                  <p class="u-color-text-gray" x-text="answer"></p>
+                                <div style="overflow-x: hidden; line-break: anywhere">
+                                    <p class="u-color-text-gray" x-text="answer"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
                 </div>
-              </div>
             </div>
-          </template>
-        </div>
-      </div>
-    </main>
-  </body>
+        </main>
+    </body>
 </html>
 ```
 

@@ -3,20 +3,22 @@ layout: article
 title: Databases
 description: Dive deeper into Appwrite Databases and their configuration. Learn how to create, manage, and optimize multiple databases for your application.
 ---
+
 Databases are the largest organizational unit in Appwrite.
 Each database contains a group of [collections](/docs/products/databases/collections).
 In future versions, different databases may be backed by a different database technology of your choosing.
 
 # Create in Console {% #create-in-console %}
+
 The easiest way to create a database using the Appwrite Console.
 You can create a database by navigating to the **Databases** page and clicking **Create database**.
 
-
-
 # Create using Server SDKs {% #create-using-server-sdks %}
+
 You can programmatically create databases using a [Server SDK](/docs/sdks#server). Appwrite [Server SDKs](/docs/sdks#server) require an [API key](/docs/advanced/platform/api-keys).
 
 {% multicode %}
+
 ```server-nodejs
 const sdk = require('node-appwrite');
 
@@ -39,6 +41,7 @@ promise.then(function (response) {
     console.log(error);
 });
 ```
+
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
@@ -62,6 +65,7 @@ promise.then(function (response) {
     console.log(error);
 });
 ```
+
 ```php
 <?php
 
@@ -80,6 +84,7 @@ $databases = new Databases($client);
 
 $result = $databases->create('<DATABASE_ID>', '[NAME]');
 ```
+
 ```python
 from appwrite.client import Client
 from appwrite.services.databases import Databases
@@ -96,6 +101,7 @@ databases = Databases(client)
 
 result = databases.create('<DATABASE_ID>', '[NAME]')
 ```
+
 ```ruby
 require 'Appwrite'
 
@@ -112,6 +118,7 @@ response = databases.create(database_id: '<DATABASE_ID>', name: '[NAME]')
 
 puts response.inspect
 ```
+
 ```csharp
 using Appwrite;
 using Appwrite.Services;
@@ -128,6 +135,7 @@ Database result = await databases.Create(
     databaseId: "<DATABASE_ID>",
     name: "[NAME]");
 ```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 
@@ -154,6 +162,7 @@ void main() { // Init SDK
   });
 }
 ```
+
 ```kotlin
 import io.appwrite.Client
 import io.appwrite.services.Databases
@@ -170,6 +179,7 @@ val response = databases.create(
     name = "[NAME]",
 )
 ```
+
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -195,6 +205,7 @@ databases.create(
     })
 );
 ```
+
 ```swift
 import Appwrite
 

@@ -4,10 +4,10 @@ title: Security
 description: Learn how Appwrite keeps your project, users, and data secure through security measures and compliance.
 ---
 
-Appwrite helps you build secure apps by applying various security and compliance measures. 
+Appwrite helps you build secure apps by applying various security and compliance measures.
 Appwrite is compliant with [GDPR](/docs/advanced/security/gdpr), [HIPAA](/docs/advanced/security/hipaa), and [SOC 2](/docs/advanced/security/soc2).
 
-Appwrite also employs [enhanced password protection and encryption](/docs/products/auth/security), [rate limits](/docs/advanced/security/abuse-protection), 
+Appwrite also employs [enhanced password protection and encryption](/docs/products/auth/security), [rate limits](/docs/advanced/security/abuse-protection),
 [robust permission systems](/docs/advanced/platform/permissions), and [HTTPS/TLS](/docs/advanced/security/tls) to protect you and your users' data.
 
 # Compliance {% #compliance %}
@@ -40,12 +40,12 @@ Learn about the different ways Appwrite protects you and your users' data and pr
 
 {% cards %}
 {% cards_item href="/docs/products/auth/security" title="Authentication" %}
-Secure authentication methods to 
+Secure authentication methods to
 protect your users and promote better passwords.
 {% /cards_item %}
 
 {% cards_item href="/docs/advanced/security/encryption" title="Encryption" %}
-Appwrite encrypts sensitive data and files 
+Appwrite encrypts sensitive data and files
 in Appwrite Databases and Storage.
 {% /cards_item %}
 
@@ -56,7 +56,7 @@ attacks like packet sniffing.
 
 {% cards_item href="/docs/advanced/security/https" title="TLS" %}
 Appwrite assigns TLS certificates on all
-Appwrite and user provided domains connected to Appwrite. 
+Appwrite and user provided domains connected to Appwrite.
 {% /cards_item %}
 
 {% cards_item href="/docs/advanced/security/backups" title="Backups" %}
@@ -70,7 +70,7 @@ to find vulnerabilities.
 {% /cards_item %}
 
 {% cards_item href="/docs/advanced/security/audit-logs" title="Audit logs" %}
-Appwrite provides detailed audit logs for each 
+Appwrite provides detailed audit logs for each
 product to track and discover suspicious activity.
 {% /cards_item %}
 
@@ -82,6 +82,7 @@ like DoS and brute-force attacks.
 {% /cards %}
 
 # Reporting vulnerabilities {% #reporting-vulnerabilities %}
+
 If you discover security vulnerabilities, please contact us at security@appwrite.io.
 Please avoid **posting a public issue** on GitHub or elsewhere online to prevent malicious actors
 from abusing the vulnerabilities before the Appwrite team has chance to patch the issue.

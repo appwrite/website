@@ -10,47 +10,44 @@ Now the end-user is able to sign up, we can create the account page. This page w
 ```jsx
 // src/app/account/page.jsx
 
-import {
-  createSessionClient,
-  getLoggedInUser,
-} from "@/lib/server/appwrite";
-import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
+import { createSessionClient, getLoggedInUser } from '@/lib/server/appwrite';
+import { redirect } from 'next/navigation';
+import { cookies } from 'next/headers';
 
 async function signOut() {
-  "use server";
+    'use server';
 
-  const { account } = await createSessionClient();
+    const { account } = await createSessionClient();
 
-  cookies().delete("my-custom-session");
-  await account.deleteSession("current");
+    cookies().delete('my-custom-session');
+    await account.deleteSession('current');
 
-  redirect("/signup");
+    redirect('/signup');
 }
 
 export default async function HomePage() {
-  const user = await getLoggedInUser();
-  if (!user) redirect("/signup");
+    const user = await getLoggedInUser();
+    if (!user) redirect('/signup');
 
-  return (
-    <>
-      <ul>
-        <li>
-          <strong>Email:</strong> {user.email}
-        </li>
-        <li>
-          <strong>Name:</strong> {user.name}
-        </li>
-        <li>
-          <strong>ID: </strong> {user.$id}
-        </li>
-      </ul>
+    return (
+        <>
+            <ul>
+                <li>
+                    <strong>Email:</strong> {user.email}
+                </li>
+                <li>
+                    <strong>Name:</strong> {user.name}
+                </li>
+                <li>
+                    <strong>ID: </strong> {user.$id}
+                </li>
+            </ul>
 
-      <form action={signOut}>
-        <button type="submit">Sign out</button>
-      </form>
-    </>
-  );
+            <form action={signOut}>
+                <button type="submit">Sign out</button>
+            </form>
+        </>
+    );
 }
 ```
 

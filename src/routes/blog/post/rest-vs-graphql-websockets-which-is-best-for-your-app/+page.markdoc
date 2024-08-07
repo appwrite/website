@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "REST vs GraphQL vs WebSockets: which is best for your app?"
+title: 'REST vs GraphQL vs WebSockets: which is best for your app?'
 description: Discover the differences between REST, GraphQL, and WebSockets. Learn when to use each for your projects to optimize performance and enhance functionality.
 date: 2024-07-12
 cover: /images/blog/rest-vs-graphql-websockets/cover.png
@@ -23,10 +23,10 @@ Representational State Transfer (REST) is a stateless, request-response protocol
 
 **Technical details:**
 
-- **Methods:** GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD
-- **Status Codes:** 1xx (Informational), 2xx (Success), 3xx (Redirection), 4xx (Client Error), 5xx (Server Error) - check out the [full list of status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes).
-- **Headers:** Provide metadata (e.g., Content-Type, Authorization, Cache-Control, and more)
-- **Body**: Contains the payload of your data
+-   **Methods:** GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD
+-   **Status Codes:** 1xx (Informational), 2xx (Success), 3xx (Redirection), 4xx (Client Error), 5xx (Server Error) - check out the [full list of status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes).
+-   **Headers:** Provide metadata (e.g., Content-Type, Authorization, Cache-Control, and more)
+-   **Body**: Contains the payload of your data
 
 ```
 Client                          Server
@@ -65,9 +65,9 @@ WebSockets provide a full-duplex communication channel over a single, long-lived
 
 **Technical details:**
 
-- **Handshake:** Starts as an HTTP connection and upgrades to WebSocket
-- **Communication:** Bi-directional, allowing data to be sent and received simultaneously
-- **Frames:** Text and binary frames for data exchange
+-   **Handshake:** Starts as an HTTP connection and upgrades to WebSocket
+-   **Communication:** Bi-directional, allowing data to be sent and received simultaneously
+-   **Frames:** Text and binary frames for data exchange
 
 ```
 Client                          Server
@@ -123,10 +123,10 @@ GraphQL is a query language for APIs and a runtime for executing those queries u
 
 **Technical details:**
 
-- **Schema:** Defines types, queries, mutations, and subscriptions
-- **Queries:** Precise data fetching, multiple resources in a single request
-- **Mutations:** For writing data
-- **Subscriptions:** For real-time updates
+-   **Schema:** Defines types, queries, mutations, and subscriptions
+-   **Queries:** Precise data fetching, multiple resources in a single request
+-   **Mutations:** For writing data
+-   **Subscriptions:** For real-time updates
 
 ```
 Client                          Server
@@ -196,22 +196,22 @@ query GetAccount {
 
 # Compare REST vs GraphQL vs WebSockets
 
-| Feature | REST | WebSockets | GraphQL |
-| --- | --- | --- | --- |
-| Communication | Request-Response | Full-Duplex | Request-Response |
-| Real-Time | No | Yes | Yes (with subscriptions) |
-| Data Transfer | Individual requests | Continuous stream | Precise queries |
-| Complexity | Low | High | Medium |
-| Latency | High (for real-time) | Low | Medium |
-| Use Case | CRUD operations, APIs | Live chats, notifications | Efficient data querying |
+| Feature       | REST                  | WebSockets                | GraphQL                  |
+| ------------- | --------------------- | ------------------------- | ------------------------ |
+| Communication | Request-Response      | Full-Duplex               | Request-Response         |
+| Real-Time     | No                    | Yes                       | Yes (with subscriptions) |
+| Data Transfer | Individual requests   | Continuous stream         | Precise queries          |
+| Complexity    | Low                   | High                      | Medium                   |
+| Latency       | High (for real-time)  | Low                       | Medium                   |
+| Use Case      | CRUD operations, APIs | Live chats, notifications | Efficient data querying  |
 
 # Pros and cons
 
-| API | Pros | Cons |
-| --- | --- | --- |
-| REST | Simple, widely used | No real-time, stateless |
-| WebSockets | Real-time, low latency | More complex, resource-intensive |
-| GraphQL | Efficient data fetching, flexible queries | Complex implementation, potential over/under-fetching |
+| API        | Pros                                      | Cons                                                  |
+| ---------- | ----------------------------------------- | ----------------------------------------------------- |
+| REST       | Simple, widely used                       | No real-time, stateless                               |
+| WebSockets | Real-time, low latency                    | More complex, resource-intensive                      |
+| GraphQL    | Efficient data fetching, flexible queries | Complex implementation, potential over/under-fetching |
 
 # How to choose your API?
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Integrate SQL, NoSQL, Vector, Graph, or any database into your Appwrite project"
+title: 'Integrate SQL, NoSQL, Vector, Graph, or any database into your Appwrite project'
 description: With databases it's always "it depends", but we got the answers.
 date: 2024-05-24
 cover: /images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/cover.png
@@ -40,23 +40,23 @@ import postgres from 'postgres';
 let client;
 
 export default async ({ req, res, log, error }) => {
-	// Connect to database
-  if(!client) {
-    const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = process.env;
-    client = postgres({
-      host: PGHOST,
-      database: PGDATABASE,
-      username: PGUSER,
-      password: PGPASSWORD,
-      port: 5432,
-      ssl: 'require',
-      connection: {
-        options: `project=${ENDPOINT_ID}`,
-      },
-    });
-  }
+    // Connect to database
+    if (!client) {
+        const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = process.env;
+        client = postgres({
+            host: PGHOST,
+            database: PGDATABASE,
+            username: PGUSER,
+            password: PGPASSWORD,
+            port: 5432,
+            ssl: 'require',
+            connection: {
+                options: `project=${ENDPOINT_ID}`
+            }
+        });
+    }
 
-  // Rest of the code
+    // Rest of the code
 };
 ```
 
@@ -78,7 +78,8 @@ await client`INSERT INTO warehouses (location, capacity) VALUES (${location}, ${
 // Query data
 const page = 1;
 const limit = 100;
-const warehouses = await client`SELECT * FROM warehouses LIMIT ${limit} OFFSET ${(page - 1) * limit}`;
+const warehouses =
+    await client`SELECT * FROM warehouses LIMIT ${limit} OFFSET ${(page - 1) * limit}`;
 return res.json(warehouses);
 ```
 
@@ -102,40 +103,44 @@ import { MongoClient, ServerApiVersion } from 'mongodb';
 let client;
 
 export default async ({ req, res, log, error }) => {
-  // Connect to database
-  if(!client) {
-    client = new MongoClient(process.env.MONGO_URI, {
-      serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-      }
+    // Connect to database
+    if (!client) {
+        client = new MongoClient(process.env.MONGO_URI, {
+            serverApi: {
+                version: ServerApiVersion.v1,
+                strict: true,
+                deprecationErrors: true
+            }
+        });
+
+        await client.connect();
+    }
+
+    // Insert data
+    const location = `Street ${Math.round(Math.random() * 1000)}, Earth`; // Random address
+    const capacity = 10 + Math.round(Math.random() * 10) * 10; // Random number: 10,20,30,...,90,100
+
+    await client.db('main').collection('warehouses').insertOne({
+        location,
+        capacity
     });
 
-    await client.connect();
-  }
+    // Query data
+    const page = 1;
+    const limit = 100;
+    const cursor = client
+        .db('main')
+        .collection('warehouses')
+        .find()
+        .limit(limit)
+        .skip((page - 1) * limit);
 
-  // Insert data
-  const location = `Street ${Math.round(Math.random() * 1000)}, Earth`; // Random address
-  const capacity = 10 + Math.round(Math.random() * 10) * 10; // Random number: 10,20,30,...,90,100
+    const docs = [];
+    for await (const doc of cursor) {
+        docs.push(doc);
+    }
 
-  await client.db("main").collection("warehouses").insertOne({
-      location,
-      capacity
-  });
-
-  // Query data
-  const page = 1;
-  const limit = 100;
-  const cursor = client.db("main").collection("warehouses")
-    .find().limit(limit).skip((page - 1) * limit);
-
-  const docs = [];
-  for await (const doc of cursor) {
-    docs.push(doc);
-  }
-
-  return res.json(docs);
+    return res.json(docs);
 };
 ```
 
@@ -158,21 +163,21 @@ import { createHash } from 'node:crypto';
 let client;
 
 export default async ({ req, res, log, error }) => {
-  // Connect to database
-  if(!client) {
-    const { REDIS_PASSWORD, REDIS_HOST } = process.env;
-    client = createClient({
-      password: REDIS_PASSWORD,
-      socket: {
-        host: REDIS_HOST,
-        port: 14714
-      }
-    });
+    // Connect to database
+    if (!client) {
+        const { REDIS_PASSWORD, REDIS_HOST } = process.env;
+        client = createClient({
+            password: REDIS_PASSWORD,
+            socket: {
+                host: REDIS_HOST,
+                port: 14714
+            }
+        });
 
-    await client.connect();
-  }
+        await client.connect();
+    }
 
-  // Rest of the code
+    // Rest of the code
 };
 ```
 
@@ -185,8 +190,8 @@ const capacity = 10 + Math.round(Math.random() * 10) * 10; // Random number: 10,
 
 const hash = createHash('md5').update(location).digest('hex');
 await client.hSet(`warehouses:${hash}`, {
-  location,
-  capacity
+    location,
+    capacity
 });
 ```
 
@@ -218,34 +223,34 @@ import { driver, auth, int } from 'neo4j-driver';
 let client;
 
 export default async ({ req, res, log, error }) => {
-  // // Connect to database
-  if(!client) {
-    const { NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD } = process.env;
-    client = driver(NEO4J_URI, auth.basic(NEO4J_USER, NEO4J_PASSWORD))
-  }
+    // // Connect to database
+    if (!client) {
+        const { NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD } = process.env;
+        client = driver(NEO4J_URI, auth.basic(NEO4J_USER, NEO4J_PASSWORD));
+    }
 
-  // Rest of the code
-}
+    // Rest of the code
+};
 ```
 
 Next, you can insert data as nodes with relations between them. You can use `MERGE` clause to ensure a node is re-used instead of creating duplicates.
 
 ```jsx
 // Insert data
-const categories = [ 'electronics', 'fashion', 'furniture', 'cars' ];
+const categories = ['electronics', 'fashion', 'furniture', 'cars'];
 
 const category = categories[Math.floor(Math.random() * categories.length)]; // Random category
 const location = `Street ${Math.round(Math.random() * 1000)}, Earth`; // Random address
 const capacity = 10 + Math.round(Math.random() * 10) * 10; // Random number: 10,20,30,...,90,100
 
 await client.executeQuery(
-  `
+    `
     MERGE (c:Category {name: $category})
     CREATE (w:Warehouse {location: $location, capacity: $capacity})
     CREATE (w)-[:STORES]->(c)
   `,
-  { location, capacity, category },
-  { database: 'neo4j' }
+    { location, capacity, category },
+    { database: 'neo4j' }
 );
 ```
 
@@ -258,14 +263,14 @@ const limit = 100;
 const offset = (page - 1) * limit;
 
 const graph = await client.executeQuery(
-  `
+    `
     MATCH (w:Warehouse)-[:STORES]->(c:Category)
     RETURN w, c
     SKIP $offset
     LIMIT $limit
   `,
-  { limit: int(limit), offset: int(offset) },
-  { database: 'neo4j' }
+    { limit: int(limit), offset: int(offset) },
+    { database: 'neo4j' }
 );
 
 return res.json(graph);
@@ -284,44 +289,44 @@ There are AI models to generate embeddings from text, music, or images, which is
 Integrating with Upstash Vector is unbelievably simple. Usually, you would have to connect to an AI model yourself to generate embeddings. In latest Upstash, you can pick model when creating an index, and the embedding is created for you automatically, for any input you provide. With that in mind, you can create an Appwrite Function that connects to Upstash, and inserts your data.
 
 ```jsx
-import { Index } from "@upstash/vector"
+import { Index } from '@upstash/vector';
 
 let client;
 
 export default async ({ req, res, log, error }) => {
-  // Connect to database
-  if(!client) {
-    const { UPSTASH_URL, UPSTASH_TOKEN } = process.env;
-    client = new Index({ url: UPSTASH_URL, token: UPSTASH_TOKEN });
-  }
+    // Connect to database
+    if (!client) {
+        const { UPSTASH_URL, UPSTASH_TOKEN } = process.env;
+        client = new Index({ url: UPSTASH_URL, token: UPSTASH_TOKEN });
+    }
 
-  // Insert data
-  const categories = ['electronics', 'fashion', 'furniture', 'cars'];
+    // Insert data
+    const categories = ['electronics', 'fashion', 'furniture', 'cars'];
 
-  const category = categories[Math.floor(Math.random() * categories.length)]; // Random category
-  const name = `Product #${Math.round(Math.random() * 1000)}`; // Random name
-  const price = 10 + Math.round(Math.random() * 90); // Random number between 10 and 100
+    const category = categories[Math.floor(Math.random() * categories.length)]; // Random category
+    const name = `Product #${Math.round(Math.random() * 1000)}`; // Random name
+    const price = 10 + Math.round(Math.random() * 90); // Random number between 10 and 100
 
-  const id = `${new Date().getTime().toString(16)}${Math.round(Math.random() * 1000000000).toString(16)}`; // Unique ID
+    const id = `${new Date().getTime().toString(16)}${Math.round(Math.random() * 1000000000).toString(16)}`; // Unique ID
 
-  await client.upsert({
-    id,
-    data: `product name ${name} in category ${category} priced at ${price}€`,
-    metadata: { name, category, price },
-  });
+    await client.upsert({
+        id,
+        data: `product name ${name} in category ${category} priced at ${price}€`,
+        metadata: { name, category, price }
+    });
 
-  // Rest of the code
-}
+    // Rest of the code
+};
 ```
 
 After inserting data, Upstash takes a few seconds to generate embeddings and store it in the database. Once the index is ready, you can query your database and look for similar products.
 
 ```jsx
 const embedding = await client.query({
-  data: "product name Airpods in category electronics priced at 36€",
-  topK: 1,
-  includeVectors: true,
-  includeMetadata: true,
+    data: 'product name Airpods in category electronics priced at 36€',
+    topK: 1,
+    includeVectors: true,
+    includeMetadata: true
 });
 
 return res.json(embedding);

@@ -8,14 +8,14 @@ isPartner: true
 isNew: true
 cover: /images/integrations/ai-perplexity/cover.png
 category: AI
-product: 
+product:
     avatar: '/images/integrations/avatars/perplexity.png'
     vendor: Perplexity
     description: 'Perplexity is an advanced AI tool that generates high-quality text based on given prompts.'
-platform: 
+platform:
     - 'Self-hosted'
     - 'Cloud'
-images: 
+images:
     - /images/integrations/ai-perplexity/cover.png
     - /images/integrations/ai-perplexity/api-key.png
     - /images/integrations/ai-perplexity/template.png
@@ -62,13 +62,13 @@ You can also use tools like Postman, cURL, or your favorite programming language
 ```bash
 curl -X POST http://DEPLOYED_FUNCTION_DOMAIN \
 -H "Content-Type: application/json" \
--d '{"prompt": "What is Appwrite?"}' 
+-d '{"prompt": "What is Appwrite?"}'
 ```
 
 # Read more about Perplexity and Appwrite Functions
 
 If you would like to learn more about Perplexity and Appwrite Functions, we have some resources that you should visit:
 
-- [Integrating Perplexity - Appwrite Docs](https://appwrite.io/docs/products/ai/integrations/perplexity)
-- [More on Appwrite AI integrations](https://appwrite.io/blog/post/announcing-appwrite-new-ai-integrations)
-- [Appwrite Functions docs](https://appwrite.io/docs/products/functions)
+-   [Integrating Perplexity - Appwrite Docs](https://appwrite.io/docs/products/ai/integrations/perplexity)
+-   [More on Appwrite AI integrations](https://appwrite.io/blog/post/announcing-appwrite-new-ai-integrations)
+-   [Appwrite Functions docs](https://appwrite.io/docs/products/functions)

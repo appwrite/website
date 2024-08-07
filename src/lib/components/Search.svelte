@@ -61,7 +61,7 @@
     }
 
     function createHref(hit: Hit<Props>): string {
-        const anchor = hit.anchor === '#' ? '' : hit.anchor ?? '';
+        const anchor = hit.anchor === '#' ? '' : (hit.anchor ?? '');
         const target = hit.url + anchor;
 
         return target.toString();
@@ -216,9 +216,7 @@
                                             {/if}
                                         </div>
                                         {#if hit.p}
-                                            <div
-                                                class="web-u-color-text-secondary web-u-trim-1"
-                                            >
+                                            <div class="web-u-color-text-secondary web-u-trim-1">
                                                 {hit.p}
                                             </div>
                                         {/if}

@@ -4,7 +4,6 @@ title: Terms and Conditions
 description: Review our Terms of Service to understand the rules and guidelines for using our open-source backend-as-a-service platform.
 ---
 
-
 These Terms and Conditions ("Terms," "Terms and Conditions") govern your relationship with [Appwrite (https://appwrite.io)](https://appwrite.io) website (the "Service") operated by Appwrite ("us," "we," or "our").
 
 Please read these Terms and Conditions carefully before using the Service.
@@ -12,8 +11,6 @@ Please read these Terms and Conditions carefully before using the Service.
 Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who access or use the Service.
 
 By accessing or using the Service, you agree to be bound by these Terms. If you disagree with any part of the terms, then you may not access the Service.
-
-
 
 # Subscriptions
 
@@ -25,8 +22,6 @@ A valid payment method, including credit card or PayPal, is required to process 
 
 Should automatic billing fail to occur for any reason, Appwrite will issue an electronic invoice indicating that you must proceed manually, within a certain deadline date, with the full payment corresponding to the billing period as indicated on the invoice.
 
-
-
 # Fee Changes
 
 Appwrite, in its sole discretion and at any time, may modify the Subscription fees for the Subscriptions. Any Subscription fee change will become effective at the end of the then-current Billing Cycle.
@@ -35,13 +30,9 @@ Appwrite will provide you with a reasonable prior notice of any change in Subscr
 
 Your continued use of the Service after the Subscription fee change comes into effect constitutes your agreement to pay the modified Subscription fee amount.
 
-
-
 # Refunds
 
 Certain refund requests for Subscriptions may be considered by Appwrite on a case-by-case basis and granted in the sole discretion of Appwrite.
-
-
 
 # Content
 
@@ -50,7 +41,6 @@ Our Service allows you to post, link, store, share, and otherwise make available
 By posting Content to the Service, you grant us the right and license to use, modify, perform, display, reproduce, and distribute such Content on and through the Service. You retain any and all of your rights to any Content you submit, post, or display on or through the Service, and you are responsible for protecting those rights.
 
 You represent and warrant that: (i) the Content is yours (you own it) or you have the right to use it and grant us the rights and license as provided in these Terms, and (ii) the posting of your Content on or through the Service does not violate the privacy rights, publicity rights, copyrights, contract rights, or any other rights of any person.
-
 
 # Accounts
 
@@ -66,11 +56,12 @@ The Service and its original content (excluding Content provided by users), feat
 
 # Prohibited Use of the SMS Messages Service
 
-You agree not to use the Service for the sending of unsolicited or spam SMS messages. This includes but is not limited to the prohibition of 
-- using the Service in connection with any content, product, or service the recipient has not explicitly requested.
-- sending SMS messages through the Service unless you have obtained prior express consent from the recipients, as required by applicable law.
+You agree not to use the Service for the sending of unsolicited or spam SMS messages. This includes but is not limited to the prohibition of
 
-Failure to adhere to these prohibitions and/or any applicable law relating to the use of such SMS Service can result in immediate termination of your account and further legal action. You shall comply with any and all applicable laws and regulations. 
+-   using the Service in connection with any content, product, or service the recipient has not explicitly requested.
+-   sending SMS messages through the Service unless you have obtained prior express consent from the recipients, as required by applicable law.
+
+Failure to adhere to these prohibitions and/or any applicable law relating to the use of such SMS Service can result in immediate termination of your account and further legal action. You shall comply with any and all applicable laws and regulations.
 
 Furthermore, you agree to indemnify and hold harmless Appwrite, its affiliates, directors, employees, and agents against any claims, proceedings, damages, liabilities, fines, or costs arising from your misuse of the SMS services, which includes, but is not limited to the sending of unsolicited SMS messages, your failure to secure the necessary consents from recipients or not adhering to applicable laws and regulations in relevant jurisdictions.
 
@@ -92,16 +83,16 @@ Upon termination, your right to use the Service will immediately cease. If you w
 
 In no event shall Appwrite, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (I) your access to or use of or inability to access or use the Service; (II) any conduct or content of any third party on the Service; (III) any content obtained from the Service; and (IV) unauthorized access, use, or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence) or any other legal theory, whether or not we have been informed of the possibility of such damage, and even if a remedy set forth herein is found to have failed of its essential purpose.
 
-
 # Disclaimer
 
 Your use of the Service is at your sole risk. The Service is provided on an "AS IS" and "AS AVAILABLE" basis. The Service is provided without warranties of any kind, whether express or implied, including, but not limited to, implied warranties of merchantability, fitness for a particular purpose, non-infringement or course of performance.
 
 Appwrite its subsidiaries, affiliates, and its licensors do not warrant that:
-- the Service will function uninterrupted, secure or available at any particular time or location;
-- any errors or defects will be corrected;
-- the Service is free of viruses or other harmful components; or
-- the results of using the Service will meet your requirements.
+
+-   the Service will function uninterrupted, secure or available at any particular time or location;
+-   any errors or defects will be corrected;
+-   the Service is free of viruses or other harmful components; or
+-   the results of using the Service will meet your requirements.
 
 # Governing Law
 

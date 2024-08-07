@@ -19,13 +19,13 @@ Therefore, using Discord OAuth and Databases in Appwrite, we built our very own 
 
 The giveaway app has two major features:
 
-- **Giveaway registration**
+-   **Giveaway registration**
 
 The giveaway registration requires users to log in to the app with their Discord account. As soon as a user logs in with Discord, the app adds their Discord username and email address to an Appwrite collection.
 
 ![Sign In With Discord](/images/blog/building-init-giveaway-app/signin.png)
 
-- **Winner selection**
+-   **Winner selection**
 
 The data added to the Appwrite collection is loaded in a wheel that is also updated in real time in case new registrations are added. The wheel can then be spun like a roulette wheel to find a randomly selected winner.
 
@@ -51,30 +51,29 @@ We created a **database** and a **collection** for each day of the giveaway in o
 
 Each collection contained two **attributes**:
 
-| Key | Type | Size | Required |
-| --- | --- | --- | --- |
-| discordName | String | 255 | Yes |
-| email | Email | - | Yes |
+| Key         | Type   | Size | Required |
+| ----------- | ------ | ---- | -------- |
+| discordName | String | 255  | Yes      |
+| email       | Email  | -    | Yes      |
 
 To ensure that one user could only be added once for a day’s giveaway, we created an **index** of the `unique` type.
 
-| Key | Type | Attribute | Order |
-| --- | --- | --- | --- |
-| names | unique | discordName | ASC |
+| Key   | Type   | Attribute   | Order |
+| ----- | ------ | ----------- | ----- |
+| names | unique | discordName | ASC   |
 
 Lastly, we added **collection-level permissions** to allow anyone to read data (since the giveaway page was meant to be publicly accessible) and only authenticated users to add data (their Discord username and email address) to the collection.
 
-| Role | Create | Read | Update | Delete |
-| --- | --- | --- | --- | --- |
-| Any |  | Yes |  |  |
-| Users | Yes |  |  |  |
+| Role  | Create | Read | Update | Delete |
+| ----- | ------ | ---- | ------ | ------ |
+| Any   |        | Yes  |        |        |
+| Users | Yes    |      |        |        |
 
 ## Setting up the app
 
 Looking at the two primary features, there were three primary challenges we needed to solve to develop this app. To build this app, we used SvelteKit, a framework to build web applications using JavaScript. There are some prerequisites, however, that must be completed before building out the features themselves.
 
 > Note: The code snippets will focus only on the application logic. All CSS and styling-related information will be accessible in the final project repository at the end of the blog.
->
 
 ### Prerequisites
 
@@ -127,17 +126,17 @@ First, we used the Appwrite Web SDK to set up our Auth library in the applicatio
 import { account } from './appwrite';
 
 export const user = {
-	login: async () => {
-		account.createOAuth2Session(
-			'discord',
-			`https://${window.location.hostname}/success`,
-			`https://${window.location.hostname}/failure`
-		);
-	},
+    login: async () => {
+        account.createOAuth2Session(
+            'discord',
+            `https://${window.location.hostname}/success`,
+            `https://${window.location.hostname}/failure`
+        );
+    },
 
-	get: async () => {
-		return await account.get();
-	}
+    get: async () => {
+        return await account.get();
+    }
 };
 ```
 
@@ -177,7 +176,7 @@ The `login` function was called through a button click on the index page of our 
 
 ### Adding data to Appwrite Database
 
-To add or get information from the database, we created a database library in the project.  The `add` function adds the Discord username and email to our collection. The `list` function gets the list of all documents in our collection and returns it after reformatting for our roulette wheel for the giveaway.
+To add or get information from the database, we created a database library in the project. The `add` function adds the Discord username and email to our collection. The `list` function gets the list of all documents in our collection and returns it after reformatting for our roulette wheel for the giveaway.
 
 ```js
 // ./src/lib/database.js
@@ -187,32 +186,32 @@ import { database } from './appwrite';
 import { COLLECTION_NAME, DATABASE_NAME } from './constants';
 
 export const db = {
-	list: async () => {
-		var entries = await database.listDocuments(DATABASE_NAME, COLLECTION_NAME, [
-			Query.limit(500),
-			Query.select(['discordName'])
-		]);
+    list: async () => {
+        var entries = await database.listDocuments(DATABASE_NAME, COLLECTION_NAME, [
+            Query.limit(500),
+            Query.select(['discordName'])
+        ]);
 
-		var options = [];
+        var options = [];
 
-		entries.documents.forEach((entry) => {
-			options.push({ label: entry.discordName });
-		});
+        entries.documents.forEach((entry) => {
+            options.push({ label: entry.discordName });
+        });
 
-		return { options: options, total: entries.total };
-	},
+        return { options: options, total: entries.total };
+    },
 
-	add: async (discordName, email) => {
-		try {
-			await database.createDocument(DATABASE_NAME, COLLECTION_NAME, ID.unique(), {
-				discordName: discordName,
-				email: email
-			});
-			console.log('Added to the raffle');
-		} catch (error) {
-			console.log(error.message);
-		}
-	}
+    add: async (discordName, email) => {
+        try {
+            await database.createDocument(DATABASE_NAME, COLLECTION_NAME, ID.unique(), {
+                discordName: discordName,
+                email: email
+            });
+            console.log('Added to the raffle');
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
 };
 ```
 
@@ -258,12 +257,12 @@ To create our giveaway roulette, we used an NPM package [`spin-wheel`](https://w
 import { db } from '$lib/database';
 
 export async function load() {
-	var dbResponse = await db.list();
+    var dbResponse = await db.list();
 
-	return {
-		entries: dbResponse.options,
-		total: dbResponse.total
-	};
+    return {
+        entries: dbResponse.options,
+        total: dbResponse.total
+    };
 }
 ```
 
@@ -379,8 +378,8 @@ Using the load function would ensure that this list would be available on our pa
 
 The giveaway roulette app was used over 450 times by 230+ different users across the different Init events we hosted. The application is still live and can be tried through the following links:
 
-- Participate in the giveaway roulette: [giveaway.appwrite.io](https://giveaway.appwrite.io)
-- Giveaway roulette: [giveaway.appwrite.io/giveaway](https://giveaway.appwrite.io/giveaway)
+-   Participate in the giveaway roulette: [giveaway.appwrite.io](https://giveaway.appwrite.io)
+-   Giveaway roulette: [giveaway.appwrite.io/giveaway](https://giveaway.appwrite.io/giveaway)
 
 You can find the application’s complete source code at this [GitHub Repo](https://github.com/adityaoberai/InitGiveawayRoulette).
 

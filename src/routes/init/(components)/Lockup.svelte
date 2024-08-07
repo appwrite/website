@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { createIncrementingArray } from '$lib/utils/array';
+
     export let fill: boolean = true;
     export let duration: number = 8;
     export let animate: boolean = true;
@@ -22,7 +24,7 @@
 >
     {#each paths as path}
         <path d={path} class="base" class:fill />
-        {#each Array.from({ length: 3 }) as _, index}
+        {#each createIncrementingArray(3) as index}
             {@const delay = duration / 3}
             <path
                 d={path}

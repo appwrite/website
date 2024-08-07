@@ -11,8 +11,8 @@ This example uses the "ESPnet2 TTS pretrained model" from Hugging Face to conver
 
 # Prerequisites {% #prerequisites %}
 
-- An Appwrite project
-- A [Hugging Face API keys](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token)
+-   An Appwrite project
+-   A [Hugging Face API keys](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token)
 
 {% section #step-1 step=1 title="Create new function" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
@@ -31,6 +31,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
 1. In the **Variables** step, add the `HUGGINGFACE_ACCESS_TOKEN`, generate it [here](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token). For the `APPWRITE_API_KEY`, tick the box to **Generate API key on completion**.
 1. Follow the step-by-step wizard and create the function.
+
 {% /section %}
 
 {% section #step-2 step=2 title="Add dependencies" %}
@@ -42,6 +43,7 @@ Install the `node-appwrite` package, to simplify uploading the generated audio f
 ```bash
 npm install undici node-appwrite
 ```
+
 {% /section %}
 
 {% section #step-4 step=4 title="Create an Appwrite service" %}
@@ -54,22 +56,20 @@ Create a file called `src/appwrite.js` and implement the following class:
 import { Client, ID, InputFile, Storage } from 'node-appwrite';
 
 class AppwriteService {
-  constructor() {
-    const client = new Client();
-    client
-      .setEndpoint(
-        process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1'
-      )
-      .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-      .setKey(process.env.APPWRITE_API_KEY);
+    constructor() {
+        const client = new Client();
+        client
+            .setEndpoint(process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1')
+            .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+            .setKey(process.env.APPWRITE_API_KEY);
 
-    this.storage = new Storage(client);
-  }
+        this.storage = new Storage(client);
+    }
 
-  async createFile(bucketId, blob) {
-    const file = await InputFile.fromBlob(blob, 'audio.flac');
-    return await this.storage.createFile(bucketId, ID.unique(), file);
-  }
+    async createFile(bucketId, blob) {
+        const file = await InputFile.fromBlob(blob, 'audio.flac');
+        return await this.storage.createFile(bucketId, ID.unique(), file);
+    }
 }
 
 export default AppwriteService;
@@ -102,38 +102,35 @@ import AppwriteService from './appwrite.js';
 const HUGGINGFACE_API = 'https://api-inference.huggingface.co';
 
 export default async ({ req, res, error }) => {
-  const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'generated_speech';
+    const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'generated_speech';
 
-  if (!req.body.text || typeof req.body.text !== 'string') {
-    return res.json({ ok: false, error: 'Missing required field `text`' }, 400);
-  }
-
-  const response = await fetch(
-    `${HUGGINGFACE_API}/models/espnet/kan-bayashi_ljspeech_vits`,
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.HUGGINGFACE_ACCESS_TOKEN}`,
-      },
-      method: 'POST',
-      body: JSON.stringify({
-        inputs: req.body.text,
-      }),
+    if (!req.body.text || typeof req.body.text !== 'string') {
+        return res.json({ ok: false, error: 'Missing required field `text`' }, 400);
     }
-  );
 
-  if (!response.ok) {
-    error(await response.text());
-    return res.json({ ok: false, error: 'Failed to process text' }, 500);
-  }
+    const response = await fetch(`${HUGGINGFACE_API}/models/espnet/kan-bayashi_ljspeech_vits`, {
+        headers: {
+            Authorization: `Bearer ${process.env.HUGGINGFACE_ACCESS_TOKEN}`
+        },
+        method: 'POST',
+        body: JSON.stringify({
+            inputs: req.body.text
+        })
+    });
 
-  const blob = await response.blob();
-  const appwrite = new AppwriteService();
-  const file = await appwrite.createFile(bucketId, blob);
+    if (!response.ok) {
+        error(await response.text());
+        return res.json({ ok: false, error: 'Failed to process text' }, 500);
+    }
 
-  return res.json({
-    ok: true,
-    fileId: file.$id,
-  });
+    const blob = await response.blob();
+    const appwrite = new AppwriteService();
+    const file = await appwrite.createFile(bucketId, blob);
+
+    return res.json({
+        ok: true,
+        fileId: file.$id
+    });
 };
 ```
 

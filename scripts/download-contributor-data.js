@@ -4,12 +4,15 @@ const perPage = 100;
 
 const outputFile = `./src/lib/contributors.ts`;
 
-const headers = process.env.GITHUB_TOKEN ? {
-    Authorization: `token ${process.env.GITHUB_TOKEN}`
-} : {}
+const headers = process.env.GITHUB_TOKEN
+    ? {
+          Authorization: `token ${process.env.GITHUB_TOKEN}`
+      }
+    : {};
 
-console.log(`using github token: ${!!process.env.GITHUB_TOKEN}`)
+console.log(`using github token: ${!!process.env.GITHUB_TOKEN}`);
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function fetchRepositories() {
     let page = 1;
     let repositoriesData = [];

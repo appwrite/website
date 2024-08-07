@@ -3,6 +3,7 @@ layout: article
 title: Quick start
 description: Configure the Appwrite SDKs and take the necessary steps to start using Appwrite.
 ---
+
 Follow these steps before you begin using the Appwrite SDKs or accessing Appwrite through the REST and GraphQL API.
 
 {% section #select-the-right-API step=1 title="Select the right API" %}
@@ -14,7 +15,7 @@ install a [Client SDK](/docs/sdks#client) and follow steps for Client APIs.
 If you're create a server application, like a **backend, admin app, or a CLI tool**,
 install a [Server SDK](/docs/sdks#server) and follow steps for Server APIs.
 
-If you're creating a **Server-side Rendered (SSR)** web app, 
+If you're creating a **Server-side Rendered (SSR)** web app,
 install a [Server SDK](/docs/sdks#server) and follow steps for SSR.
 {% /section %}
 
@@ -72,9 +73,9 @@ Under **Integrate with your server**, add an **API Key** with the following scop
 ![Create project screen](/images/docs/quick-starts/integrate-server.png)
 {% /only_light %}
 
-| Category  {% width=120 %} | Required scopes       | Purpose |
-|-----------|-----------------------|---------|
-| Sessions  | `sessions.write`     | Allows API key to create, update, and delete sessions. |
+| Category {% width=120 %} | Required scopes  | Purpose                                                |
+| ------------------------ | ---------------- | ------------------------------------------------------ |
+| Sessions                 | `sessions.write` | Allows API key to create, update, and delete sessions. |
 
 {% /tabsitem %}
 {% /tabs %}
@@ -90,6 +91,7 @@ and other metadata for Appwrite to properly parse your request.
 Client apps need to be configured with endpoint and project ID,
 so the Appwrite SDK knows which endpoint and project to connect to.
 {% multicode %}
+
 ```client-web
 import { Client } from "appwrite";
 
@@ -100,6 +102,7 @@ client
     .setProject('<YOUR_PROJECT_ID>')                // Your project ID
 ;
 ```
+
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 
@@ -110,6 +113,7 @@ client
     .setProject('<YOUR_PROJECT_ID>')                // Your project ID
 ;
 ```
+
 ```client-apple
 import Appwrite
 
@@ -117,6 +121,7 @@ let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
     .setProject("<YOUR_PROJECT_ID>")                            // Your project ID
 ```
+
 ```client-android-kotlin
 import io.appwrite.Client
 
@@ -124,6 +129,7 @@ val client = Client(context)
     .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
     .setProject("<YOUR_PROJECT_ID>")                // Your project ID
 ```
+
 {% /multicode %}
 {% /tabsitem %}
 
@@ -132,6 +138,7 @@ Server apps need to be configured with endpoint, project ID, and an API key
 so the Appwrite SDK knows which endpoint and project to connect to, as well as have credentials to perform admin actions.
 
 {% multicode %}
+
 ```server-nodejs
 const sdk = require('node-appwrite');
 
@@ -144,6 +151,7 @@ client
     .setJWT('<YOUR_API_KEY>')                                   // Your secret JSON Web Token
 ;
 ```
+
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
@@ -156,6 +164,7 @@ client
     .setJWT('<YOUR_API_KEY>')                                   // Your secret JSON Web Token
 ;
 ```
+
 ```php
 <?php
 
@@ -169,6 +178,7 @@ $client
     ->setJWT('<YOUR_API_KEY>')                                  // Your secret JSON Web Token
 ;
 ```
+
 ```python
 from appwrite.client import Client
 
@@ -180,6 +190,7 @@ client = Client()
   .set_jwt('<YOUR_API_KEY>')                                    # Your secret JSON Web Token
 )
 ```
+
 ```ruby
 require 'appwrite'
 
@@ -190,6 +201,7 @@ client = Client.new
     .set_project('<YOUR_PROJECT_ID>')                           # Your project ID
     .set_jwt('<YOUR_API_KEY>')                                  # Your secret JSON Web Token
 ```
+
 ```csharp
 using Appwrite;
 using Appwrite.Services;
@@ -199,6 +211,7 @@ var client = new Client()
     .SetProject("<YOUR_PROJECT_ID>")                            // Your project ID
     .SetJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
 ```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 
@@ -212,6 +225,7 @@ void main() {                                                   // Init SDK
   ;
 }
 ```
+
 ```kotlin
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -221,6 +235,7 @@ Client client = new Client()
     .setProject("<YOUR_PROJECT_ID>")                            // Your project ID
     .setJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
 ```
+
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -230,6 +245,7 @@ Client client = new Client()
     .setProject("<YOUR_PROJECT_ID>")                            // Your project ID
     .setJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
 ```
+
 ```swift
 import Appwrite
 
@@ -238,11 +254,13 @@ let client = Client()
     .setProject("<YOUR_PROJECT_ID>")                            // Your project ID
     .setJWT("<YOUR_API_KEY>")                                   // Your secret JSON Web Token
 ```
+
 {% /multicode %}
 {% /tabsitem %}
 
 {% tabsitem #ssr title="SSR" %}
 Appwrite uses Server SDKs for SSR apps. The initialization is different
+
 ## Admin client {% #admin-client %}
 
 {% info title="Admin clients" %}
@@ -250,14 +268,15 @@ Admin clients should only be used if you need to perform admin actions that bypa
 or [unauthenticated requests that bypass rate limits](/docs/products/auth/server-side-rendering#rate-limits).
 {% /info %}
 
-To initialize the admin client, we'll need to first [generated an API key](/docs/advanced/platform/api-keys#create-api-key). 
+To initialize the admin client, we'll need to first [generated an API key](/docs/advanced/platform/api-keys#create-api-key).
 The API key should have the following scope in order to perform authentication:
 
-| Category  {% width=120 %} | Required scopes    | Purpose |
-|-----------|---------------------|---------|
-| Sessions  | `sessions.write`    | Allows API key to create, update, and delete sessions. |
+| Category {% width=120 %} | Required scopes  | Purpose                                                |
+| ------------------------ | ---------------- | ------------------------------------------------------ |
+| Sessions                 | `sessions.write` | Allows API key to create, update, and delete sessions. |
 
 {% multicode %}
+
 ```server-nodejs
 import { Client } from "node-appwrite"; // Using the server SDK
 
@@ -266,6 +285,7 @@ const adminClient = new Client()
     .setProject('<YOUR_PROJECT_ID>')             // Your project ID
     .setKey('<YOUR_API_KEY>');                   // Your secret API key
 ```
+
 ```php
 use Appwrite\Client;
 use Appwrite\Services\Account;
@@ -277,18 +297,20 @@ $adminClient = (new Client())
 
 
 ```
+
 {% /multicode %}
 
 It is important to use an API key, as this will allow your server requests to bypass [rate limits](/docs/advanced/platform/rate-limits). If you don't use an API key, your server will be rate limited as if it were a client from a single IP address.
 
 ## Session client {% #session-client %}
 
-The session client will be used to make requests to Appwrite on behalf of the end-user. 
+The session client will be used to make requests to Appwrite on behalf of the end-user.
 It will be initialized with the session, usually stored within a cookie.
 
 You should create a new client for each request and **never** share the client between requests.
 
 {% multicode %}
+
 ```server-nodejs
 const sessionClient = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
@@ -299,6 +321,7 @@ if (session) {
     sessionClient.setSession(session);
 }
 ```
+
 ```php
 $sessionClient = (new Client())
     ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
@@ -309,6 +332,7 @@ if ($session) {
     $sessionClient->setSession($session);
 }
 ```
+
 {% /multicode %}
 {% /tabsitem %}
 
@@ -322,6 +346,7 @@ If you're using Appwrite without an SDK, follow the guides for the [REST API](/d
 If you prefer to explore examples, follow one of the following quick starts.
 
 ## Client apps {% #client-app %}
+
 Examples when building with Client APIs
 {% cards %}
 {% cards_item href="/docs/quick-starts/web" title="Web" icon="icon-nextjs" %}
@@ -357,6 +382,7 @@ Get started with Appwrite and Android
 {% /cards %}
 
 ## Server apps {% #server-app %}
+
 Examples when building with Server APIs
 
 {% cards %}
@@ -388,6 +414,5 @@ Get started with Appwrite and Kotlin
 Get started with Appwrite and Swift
 {% /cards_item %}
 {% /cards %}
-
 
 {% /section %}

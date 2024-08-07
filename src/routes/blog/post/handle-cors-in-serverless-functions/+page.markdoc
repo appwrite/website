@@ -20,9 +20,9 @@ CORS controls how web applications interact with resources from different origin
 
 When a browser makes a cross-origin request, it includes an Origin header with the request. The server can respond with various CORS headers to specify:
 
-- Which origins are allowed (`Access-Control-Allow-Origin`)
-- Which methods are allowed (`Access-Control-Allow-Methods`)
-- Which headers are allowed (`Access-Control-Allow-Headers`)
+-   Which origins are allowed (`Access-Control-Allow-Origin`)
+-   Which methods are allowed (`Access-Control-Allow-Methods`)
+-   Which headers are allowed (`Access-Control-Allow-Headers`)
 
 For certain types of requests, the browser sends a preflight (OPTIONS) request to check if the actual request is safe to send.
 
@@ -42,13 +42,12 @@ Preflight requests are sent by browsers to verify permissions before making actu
 
 ```javascript
 if (req.method === 'OPTIONS') {
-  return res.send('', 200, {
-    'Access-Control-Allow-Origin': 'YOUR_DOMAIN_HERE',
-    'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-  })
+    return res.send('', 200, {
+        'Access-Control-Allow-Origin': 'YOUR_DOMAIN_HERE',
+        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+    });
 }
-
 ```
 
 ### 3. Include CORS headers in responses
@@ -57,18 +56,17 @@ For other requests (POST, GET, etc.), include the `Access-Control-Allow-Origin`
 
 ```javascript
 if (req.method === 'POST') {
-  try {
-    return res.json({ ok: true }, 200, {
-      'Access-Control-Allow-Origin': 'YOUR_DOMAIN_HERE',
-    })
-  } catch (error) {
-    return res.json({ error: 'Internal Server Error' }, 500, {
-      'Access-Control-Allow-Origin': '*',
-    })
-  }
+    try {
+        return res.json({ ok: true }, 200, {
+            'Access-Control-Allow-Origin': 'YOUR_DOMAIN_HERE'
+        });
+    } catch (error) {
+        return res.json({ error: 'Internal Server Error' }, 500, {
+            'Access-Control-Allow-Origin': '*'
+        });
+    }
 }
 ```
-
 
 # Security considerations
 
@@ -78,17 +76,16 @@ For example, here’s how you might configure CORS to allow access from any orig
 
 ```javascript
 return res.json(completion, 200, {
-  'Access-Control-Allow-Origin': '*',
-})
+    'Access-Control-Allow-Origin': '*'
+});
 ```
 
 For better security, replace `*` with your specific domain name to restrict access to only trusted origins:
 
 ```javascript
 return res.json(completion, 200, {
-  'Access-Control-Allow-Origin': 'https://yourdomain.com',
-})
-
+    'Access-Control-Allow-Origin': 'https://yourdomain.com'
+});
 ```
 
 This way, only requests originating from your domain will be allowed.
@@ -97,6 +94,6 @@ This way, only requests originating from your domain will be allowed.
 
 Handling CORS in Appwrite serverless functions ensures secure communication between your web applications and backend resources. By understanding how CORS works, you can prevent unauthorized requests and protect your serverless functions from potential security threats.
 
-- [Get started with Appwrite](https://cloud.appwrite.io/)
-- [Explore the Functions documentation](https://appwrite.io/docs/products/functions)
-- [Join our Discord community](https://discord.com/invite/appwrite)
+-   [Get started with Appwrite](https://cloud.appwrite.io/)
+-   [Explore the Functions documentation](https://appwrite.io/docs/products/functions)
+-   [Join our Discord community](https://discord.com/invite/appwrite)

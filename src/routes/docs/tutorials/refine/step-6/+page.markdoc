@@ -7,11 +7,9 @@ step: 6
 
 We're going to add CRUD pages to our admin panel so you can list, create, and view blog posts records.
 
-
 # List page {% #list-page %}
 
-
- First, create a listing page to show Appwrite API data in a table by copying the code below into `src/pages/posts` and saving it as `list.tsx`.
+First, create a listing page to show Appwrite API data in a table by copying the code below into `src/pages/posts` and saving it as `list.tsx`.
 
 ```ts
 import { IResourceComponentsProps } from "@refinedev/core";
@@ -68,8 +66,7 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
 
 # Create page {% #create-page %}
 
- Create a new record page for the Appwrite API by copying the following code and saving it as `create.tsx`.
-
+Create a new record page for the Appwrite API by copying the following code and saving it as `create.tsx`.
 
 ```ts
 import { HttpError, IResourceComponentsProps } from "@refinedev/core";
@@ -120,7 +117,6 @@ export const PostCreate: React.FC<IResourceComponentsProps> = () => {
 
 Create a page for editing a records with the following code and saving it as `edit.tsx`.
 
-
 ```ts
 import React from "react";
 import { HttpError, IResourceComponentsProps } from "@refinedev/core";
@@ -168,8 +164,7 @@ export const PostEdit: React.FC<IResourceComponentsProps> = () => {
 
 # Show page {% #show-page %}
 
- Create a page for showig the records with the following code and saving it as `edit.tsx`.
-
+Create a page for showig the records with the following code and saving it as `edit.tsx`.
 
 ```ts
 import { useShow, IResourceComponentsProps } from "@refinedev/core";
@@ -202,39 +197,37 @@ export const PostShow: React.FC<IResourceComponentsProps> = () => {
 
 # Interfaces {% #interfaces %}
 
- We need to add interfaces to `src/interfaces/index.d.ts` file.
-
+We need to add interfaces to `src/interfaces/index.d.ts` file.
 
 ```ts
 export interface IFile {
-  name: string;
-  percent: number;
-  size: number;
-  status: "error" | "success" | "done" | "uploading" | "removed";
-  type: string;
-  uid: string;
-  url: string;
+    name: string;
+    percent: number;
+    size: number;
+    status: 'error' | 'success' | 'done' | 'uploading' | 'removed';
+    type: string;
+    uid: string;
+    url: string;
 }
 
 export interface IPost {
-  id: string;
-  title: string;
-  content: string;
+    id: string;
+    title: string;
+    content: string;
 }
 
 export interface IPostVariables {
-  id: string;
-  title: string;
-  content: string;
+    id: string;
+    title: string;
+    content: string;
 }
 ```
 
 # Connect pages to the App
 
-Finally, import the pages into `App.tsx` and define them in the `<Route>` components. 
+Finally, import the pages into `App.tsx` and define them in the `<Route>` components.
 
 Simply, paste the following into `App.tsx`.
-
 
 ```ts
 import { Authenticated, Refine } from "@refinedev/core";
@@ -296,7 +289,7 @@ const App: React.FC = () => (
           <Routes>
             <Route
               element={
-                <Authenticated 
+                <Authenticated
                   fallback={<CatchAllNavigate to="/login" />}
                 >
                   <ThemedLayoutV2>
@@ -308,8 +301,8 @@ const App: React.FC = () => (
               <Route
                 index
                 element={
-                  <NavigateToResource 
-                    resource="<APPWRITE_COLLECTION_ID>" 
+                  <NavigateToResource
+                    resource="<APPWRITE_COLLECTION_ID>"
                   />
                 }
               />
@@ -326,7 +319,7 @@ const App: React.FC = () => (
               element={
                 <Authenticated fallback={<Outlet />}>
                   <NavigateToResource
-                    resource="<APPWRITE_COLLECTION_ID>" 
+                    resource="<APPWRITE_COLLECTION_ID>"
                   />
                 </Authenticated>
               }
@@ -335,8 +328,8 @@ const App: React.FC = () => (
                 path="/login"
                 element={<AuthPage forgotPasswordLink={false} />}
               />
-              <Route path="/register" 
-                element={<AuthPage type="register" />} 
+              <Route path="/register"
+                element={<AuthPage type="register" />}
               />
             </Route>
 
@@ -362,4 +355,3 @@ const App: React.FC = () => (
 
 export default App;
 ```
-

@@ -4,19 +4,19 @@ title: Deploy manually
 description: Learn to deploy Appwrite functions manually from the Appwrite CLI or the Appwrite Console.
 ---
 
-Appwrite Functions are mini-applications in Appwrite with their own endpoints. 
+Appwrite Functions are mini-applications in Appwrite with their own endpoints.
 Each function can have many deployments, which can be thought of as versions of the mini-application.
 
 While we recommend you create deployments through [automatic Git deployments](/docs/products/functions/deploy-from-git),
 you can also create deployments manually or through the Appwrite CLI.
 
-# CLI  {% #cli %} 
+# CLI {% #cli %}
 
 {% info title="CLI setup" %}
 Before you can deploy with the Appwrite CLI, make sure you've [installed and initialized](/docs/tooling/command-line/installation) the CLI.
 {% /info %}
 
-To deploy with the Appwrite CLI, your function must be added to `appwrite.json`. 
+To deploy with the Appwrite CLI, your function must be added to `appwrite.json`.
 Use the `appwrite init function` method to create a starter function, then paste in your function code.
 
 ```bash
@@ -29,19 +29,20 @@ Edit the generated code, add dependencies, and deploy the function using the fol
 appwrite deploy function
 ```
 
-## Overwrite warning {% #overwrite-warning %} 
+## Overwrite warning {% #overwrite-warning %}
 
 If you made changes in the Appwrite Console that are different from your `appwrite.json`, using the CLI deploy command will overwrite your console changes. Update your `appwrite.json` manually before deploying.
 
 ## Configure CLI deployments {% #configure-cli-deployments %}
-If you need to target a different project, API endpoint, change the path or entry point of your function, or update any of the other configuration options, 
+
+If you need to target a different project, API endpoint, change the path or entry point of your function, or update any of the other configuration options,
 you can do so by editing the `appwrite.json` file.
 
 {% arrow_link href="/docs/tooling/command-line/deployment#function-options" %}
 Learn more about appwrite.json
 {% /arrow_link %}
 
-# Manual Deployment {% #manual %} 
+# Manual Deployment {% #manual %}
 
 You can upload your functions to be deployed using the Appwrite Console. The example below shows a simple Node.js function.
 
@@ -54,17 +55,20 @@ You can upload your functions to be deployed using the Appwrite Console. The exa
 First, navigate inside the folder that contains your dependency file. Package your code files into the `.tar.gz` format:
 
 {% multicode %}
-  ```bash
-  tar --exclude code.tar.gz -czf code.tar.gz .
-  ```
-  ```cmd
-  tar --exclude code.tar.gz -czf code.tar.gz .
-  ```
-  ```powershell
-  tar --exclude code.tar.gz -czf code.tar.gz .
-  ```
-{% /multicode %}
 
+```bash
+tar --exclude code.tar.gz -czf code.tar.gz .
+```
+
+```cmd
+tar --exclude code.tar.gz -czf code.tar.gz .
+```
+
+```powershell
+tar --exclude code.tar.gz -czf code.tar.gz .
+```
+
+{% /multicode %}
 
 Next, navigate to your Appwrite Console and upload the function.
 
@@ -76,14 +80,14 @@ Next, navigate to your Appwrite Console and upload the function.
 6. Select **Activate deployment after build**.
 7. Click **Create**.
 
-
 # Debugging {% #debugging %}
-- If you updated your function's configuration but the deployment is not working as expected,
-you may need to first redeploy your function before the changes take effect.
 
-- If you notice your function is missing dependencies during build or at runtimes, update it's build settings.
-Navigate to **Functions** > your function > **Settings** > **Configuration** > **Build settings**. 
-These commands will be ran before the function is built and can be used to install dependencies.
+-   If you updated your function's configuration but the deployment is not working as expected,
+    you may need to first redeploy your function before the changes take effect.
 
-- If you're missing some code files at build time, make sure they are included in the **Root directory**. 
-Only files in the root directory folder will be copied to the executor.
+-   If you notice your function is missing dependencies during build or at runtimes, update it's build settings.
+    Navigate to **Functions** > your function > **Settings** > **Configuration** > **Build settings**.
+    These commands will be ran before the function is built and can be used to install dependencies.
+
+-   If you're missing some code files at build time, make sure they are included in the **Root directory**.
+    Only files in the root directory folder will be copied to the executor.

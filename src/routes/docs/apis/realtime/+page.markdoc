@@ -11,6 +11,7 @@ Instead of requesting new data via HTTP, the subscription will receive new data 
 This lets you build an interactive and responsive user experience by providing information from all of Appwrite's services in realtime. The example below shows subscribing to realtime events for file uploads.
 
 {% multicode %}
+
 ```client-web
 import { Client } from "appwrite";
 
@@ -93,7 +94,6 @@ If you subscribe to a channel, you will receive callbacks for a variety of event
 
 [View a list of all available events](/docs/advanced/platform/events).
 
-
 {% info title="Permissions" %}
 All subscriptions are secured by the [permissions system](/docs/advanced/platform/permissions) offered by Appwrite, meaning a user will only receive updates to resources they have permission to access.
 
@@ -107,12 +107,15 @@ Realtime authenticates using an existing user session. If you authenticate **aft
 More information and examples of authenticating users can be found in the dedicated [authentication docs](/docs/products/auth).
 
 # Examples {% #examples %}
+
 The examples below will show you how you can use Realtime in various ways.
 
 ## Subscribe to a Channel {% #subscribe-to-a-channel %}
+
 In this example we are subscribing to all updates related to our account by using the `account` channel. This will be triggered by any update related to the authenticated user, like updating the user's name or e-mail address.
 
 {% multicode %}
+
 ```client-web
 import { Client } from "appwrite";
 
@@ -177,13 +180,14 @@ val subscription = realtime.subscribe("account") {
 
 {% /multicode %}
 
-## Subscribe to Multiple Channels  {% #subscribe-to-multiple-channel %}
+## Subscribe to Multiple Channels {% #subscribe-to-multiple-channel %}
 
 You can also listen to multiple channels at once by passing an array of channels. This will trigger the callback for any events for all channels passed.
 
 In this example we are listening to the document A and all files by subscribing to the `databases.A.collections.A.documents.A` and `files` channels.
 
 {% multicode %}
+
 ```client-web
 import { Client } from "appwrite";
 
@@ -252,6 +256,7 @@ realtime.subscribe("databases.A.collections.A.documents.A", "files") {
 If you no longer want to receive updates from a subscription, you can unsubscribe so that your callbacks are no longer called. Leaving old subscriptions alive and resubscribing can result in duplicate subscriptions and cause race conditions.
 
 {% multicode %}
+
 ```client-web
 import { Client } from "appwrite";
 
@@ -329,25 +334,35 @@ subscription.close()
 The payload from the subscription will contain following properties:
 
 {% table %}
-* Name
-* Type
-* Description
+
+-   Name
+-   Type
+-   Description
+
 ---
-* events
-* string[]
-* The [Appwrite events](/docs/advanced/platform/events) that triggered this update.
+
+-   events
+-   string[]
+-   The [Appwrite events](/docs/advanced/platform/events) that triggered this update.
+
 ---
-* channels
-* string[]
-* An array of [channels](/docs/apis/realtime#channels) that can receive this message.
+
+-   channels
+-   string[]
+-   An array of [channels](/docs/apis/realtime#channels) that can receive this message.
+
 ---
-* timestamp
-* string
-* The [ISO 8601 timestamp](https://en.wikipedia.org/wiki/ISO_8601) in UTC timezone from the server
+
+-   timestamp
+-   string
+-   The [ISO 8601 timestamp](https://en.wikipedia.org/wiki/ISO_8601) in UTC timezone from the server
+
 ---
-* payload
-* object
-* Payload contains the data equal to the response model.
+
+-   payload
+-   object
+-   Payload contains the data equal to the response model.
+
 {% /table %}
 
 If you subscribe to the `documents` channel and a document the user is allowed to read is updated, you will receive an object containing information about the event and the updated document.
@@ -356,57 +371,55 @@ The response will look like this:
 
 ```json
 {
-  "events": [
-    "databases.default.collections.sample.documents.63c98b9baea0938e1206.update",
-    "databases.*.collections.*.documents.*.update",
-    "databases.default.collections.*.documents.63c98b9baea0938e1206.update",
-    "databases.*.collections.*.documents.63c98b9baea0938e1206.update",
-    "databases.*.collections.sample.documents.63c98b9baea0938e1206.update",
-    "databases.default.collections.sample.documents.*.update",
-    "databases.*.collections.sample.documents.*.update",
-    "databases.default.collections.*.documents.*.update",
-    "databases.default.collections.sample.documents.63c98b9baea0938e1206",
-    "databases.*.collections.*.documents.*",
-    "databases.default.collections.*.documents.63c98b9baea0938e1206",
-    "databases.*.collections.*.documents.63c98b9baea0938e1206",
-    "databases.*.collections.sample.documents.63c98b9baea0938e1206",
-    "databases.default.collections.sample.documents.*",
-    "databases.*.collections.sample.documents.*",
-    "databases.default.collections.*.documents.*",
-    "databases.default.collections.sample",
-    "databases.*.collections.*",
-    "databases.default.collections.*",
-    "databases.*.collections.sample",
-    "databases.default",
-    "databases.*"
-  ],
-  "channels": [
-    "documents",
-    "databases.default.collections.sample.documents",
-    "databases.default.collections.sample.documents.63c98b9baea0938e1206"
-  ],
-  "timestamp": "2023-01-19 18:30:04.051",
-  "payload": {
-    "ip": "127.0.0.1",
-    "stringArray": [
-      "sss"
+    "events": [
+        "databases.default.collections.sample.documents.63c98b9baea0938e1206.update",
+        "databases.*.collections.*.documents.*.update",
+        "databases.default.collections.*.documents.63c98b9baea0938e1206.update",
+        "databases.*.collections.*.documents.63c98b9baea0938e1206.update",
+        "databases.*.collections.sample.documents.63c98b9baea0938e1206.update",
+        "databases.default.collections.sample.documents.*.update",
+        "databases.*.collections.sample.documents.*.update",
+        "databases.default.collections.*.documents.*.update",
+        "databases.default.collections.sample.documents.63c98b9baea0938e1206",
+        "databases.*.collections.*.documents.*",
+        "databases.default.collections.*.documents.63c98b9baea0938e1206",
+        "databases.*.collections.*.documents.63c98b9baea0938e1206",
+        "databases.*.collections.sample.documents.63c98b9baea0938e1206",
+        "databases.default.collections.sample.documents.*",
+        "databases.*.collections.sample.documents.*",
+        "databases.default.collections.*.documents.*",
+        "databases.default.collections.sample",
+        "databases.*.collections.*",
+        "databases.default.collections.*",
+        "databases.*.collections.sample",
+        "databases.default",
+        "databases.*"
     ],
-    "email": "joe@example.com",
-    "stringRequired": "req",
-    "float": 3.3,
-    "boolean": false,
-    "integer": 3,
-    "enum": "apple",
-    "stringDefault": "default",
-    "datetime": "2023-01-19T10:27:09.428+00:00",
-    "url": "https://appwrite.io",
-    "$id": "63c98b9baea0938e1206",
-    "$createdAt": "2023-01-19T18:27:39.715+00:00",
-    "$updatedAt": "2023-01-19T18:30:04.040+00:00",
-    "$permissions": [],
-    "$collectionId": "sample",
-    "$databaseId": "default"
-  }
+    "channels": [
+        "documents",
+        "databases.default.collections.sample.documents",
+        "databases.default.collections.sample.documents.63c98b9baea0938e1206"
+    ],
+    "timestamp": "2023-01-19 18:30:04.051",
+    "payload": {
+        "ip": "127.0.0.1",
+        "stringArray": ["sss"],
+        "email": "joe@example.com",
+        "stringRequired": "req",
+        "float": 3.3,
+        "boolean": false,
+        "integer": 3,
+        "enum": "apple",
+        "stringDefault": "default",
+        "datetime": "2023-01-19T10:27:09.428+00:00",
+        "url": "https://appwrite.io",
+        "$id": "63c98b9baea0938e1206",
+        "$createdAt": "2023-01-19T18:27:39.715+00:00",
+        "$updatedAt": "2023-01-19T18:30:04.040+00:00",
+        "$permissions": [],
+        "$collectionId": "sample",
+        "$databaseId": "default"
+    }
 }
 ```
 
@@ -415,50 +428,79 @@ The response will look like this:
 A list of all channels available you can subscribe to. IDs cannot be wildcards.
 
 {% table %}
-* Channel
-* Description
+
+-   Channel
+-   Description
+
 ---
-* `account`
-* All account related events (session create, name update...)
+
+-   `account`
+-   All account related events (session create, name update...)
+
 ---
-* `databases.[ID].collections.[ID].documents`
-* Any create/update/delete events to any document in a collection
+
+-   `databases.[ID].collections.[ID].documents`
+-   Any create/update/delete events to any document in a collection
+
 ---
-* `documents`
-* Any create/update/delete events to any document
+
+-   `documents`
+-   Any create/update/delete events to any document
+
 ---
-* `databases.[ID].collections.[ID].documents.[ID]`
-* Any update/delete events to a given document
+
+-   `databases.[ID].collections.[ID].documents.[ID]`
+-   Any update/delete events to a given document
+
 ---
-* `files`
-* Any create/update/delete events to any file
+
+-   `files`
+-   Any create/update/delete events to any file
+
 ---
-* `buckets.[ID].files.[ID]`
-* Any update/delete events to a given file of the given bucket
+
+-   `buckets.[ID].files.[ID]`
+-   Any update/delete events to a given file of the given bucket
+
 ---
-* `buckets.[ID].files`
-* Any update/delete events to any file of the given bucket
+
+-   `buckets.[ID].files`
+-   Any update/delete events to any file of the given bucket
+
 ---
-* `teams`
-* Any create/update/delete events to a any team
+
+-   `teams`
+-   Any create/update/delete events to a any team
+
 ---
-* `teams.[ID]`
-* Any update/delete events to a given team
+
+-   `teams.[ID]`
+-   Any update/delete events to a given team
+
 ---
-* `memberships`
-* Any create/update/delete events to a any membership
+
+-   `memberships`
+-   Any create/update/delete events to a any membership
+
 ---
-* `memberships.[ID]`
-* Any update/delete events to a given membership
+
+-   `memberships.[ID]`
+-   Any update/delete events to a given membership
+
 ---
-* `executions`
-* Any update to executions
+
+-   `executions`
+-   Any update to executions
+
 ---
-* `executions.[ID]`
-* Any update to a given execution
+
+-   `executions.[ID]`
+-   Any update to a given execution
+
 ---
-* `functions.[ID]`
-* Any execution event to a given function
+
+-   `functions.[ID]`
+-   Any execution event to a given function
 
 {% /table %}
 
@@ -469,6 +511,7 @@ The SDK will guess the endpoint of the Realtime API when setting the endpoint of
 By default the endpoint is `wss://cloud.appwrite.io/v1/realtime`.
 
 {% multicode %}
+
 ```client-web
 import { Client } from "appwrite";
 const client = new Client();

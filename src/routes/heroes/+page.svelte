@@ -65,7 +65,7 @@
         {
             name: 'Jason Torres',
             role: 'Freelance Community Manager',
-            bio: "Jason Torres a former film-maker turned developer who is currently exploring Developer Advocacy and Community Management freelance, and hosting The Tech Commute, a series of Twitter Spaces catered towards developers.",
+            bio: 'Jason Torres a former film-maker turned developer who is currently exploring Developer Advocacy and Community Management freelance, and hosting The Tech Commute, a series of Twitter Spaces catered towards developers.',
             github: 'https://github.com/jasonetorres',
             twitter: 'https://twitter.com/tasonjorres',
             linkedin: 'https://www.linkedin.com/in/thejasontorres',
@@ -74,7 +74,7 @@
         {
             name: 'Nishant Jain',
             role: 'Frontend Developer',
-            bio: "Nishant Jain is a frontend developer and community builder from Indore, India. He has been actively contributing to the Appwrite community as a Discord moderator.",
+            bio: 'Nishant Jain is a frontend developer and community builder from Indore, India. He has been actively contributing to the Appwrite community as a Discord moderator.',
             github: 'https://github.com/Nishantjain10',
             twitter: 'https://twitter.com/devnishant10',
             linkedin: 'https://www.linkedin.com/in/nishantj2002/',

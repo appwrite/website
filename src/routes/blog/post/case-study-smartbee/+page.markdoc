@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Smartbee: Revolutionizing coal mine monitoring"
+title: 'Smartbee: Revolutionizing coal mine monitoring'
 description: Learn how Smartbee leveraged Appwrite to build a performant and robust system to monitor and aggregate gas level data in real-time for 7 coal mines in Columbia.
 date: 2023-12-02
 cover: /images/blog/smartbee.png
@@ -9,10 +9,9 @@ author: aditya-oberai
 category: case-studies
 ---
 
-In 2020, Sergio Ponguta and his brother started Smartbee, a company offering security and communications solutions for coal mining operations in Colombia. Both brothers, being formally educated in systems engineering, combined with a lack of fear of traversing down mines, felt comfortable launching this venture. 
+In 2020, Sergio Ponguta and his brother started Smartbee, a company offering security and communications solutions for coal mining operations in Colombia. Both brothers, being formally educated in systems engineering, combined with a lack of fear of traversing down mines, felt comfortable launching this venture.
 
-They launched their venture by installing security cameras for mines. A requirement of their customers resulted in them setting up a communications system for telephone stations located both outside and inside the mine. As they began growing their offerings, they discovered that the Ministry of Mines and Energy in Colombia made it mandatory for all coal mines to monitor and record gas levels inside. Smartbee took this as an opportunity and started importing gas sensors to provide them to coal mines in Colombia. To add extra value on top of the sensors, they started developing a platform that would aggregate sensor data in real-time and generate reports accordingly. 
-
+They launched their venture by installing security cameras for mines. A requirement of their customers resulted in them setting up a communications system for telephone stations located both outside and inside the mine. As they began growing their offerings, they discovered that the Ministry of Mines and Energy in Colombia made it mandatory for all coal mines to monitor and record gas levels inside. Smartbee took this as an opportunity and started importing gas sensors to provide them to coal mines in Colombia. To add extra value on top of the sensors, they started developing a platform that would aggregate sensor data in real-time and generate reports accordingly.
 
 # Challenges revolving around the development of the platform
 
@@ -28,8 +27,7 @@ For the initial iteration of their MVP, Smartbee started building an online plat
 
 To simplify and accelerate their development process, Sergio started looking for open-source Backend-as-a-Service platforms. He was aware of Firebase in the past; however, Smartbee needed a system that could also be self-hosted in the vicinity of the coal mines. He also came across Supabase; however, their high complexity to self-host turned him away.
 
-
-# Architecting their current solution 
+# Architecting their current solution
 
 Amid this process, Sergio came across Appwrite. Appwrite’s high count of GitHub stars and highly active developer community were the primary validating factors for him to consider leveraging the product for his platform.
 

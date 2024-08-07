@@ -4,7 +4,7 @@
 
     export let variant: 'homepage' | 'docs' = 'homepage';
 
-    const year = new Date().getFullYear()
+    const year = new Date().getFullYear();
 </script>
 
 {#if variant === 'homepage'}
@@ -77,13 +77,13 @@
 {/if}
 
 <style lang="scss">
-  .web-icon-button {
-    display: grid;
-  }
-
-  @media (max-width: 1023.9px), (min-width: 1024px) and (max-width: 1279.9px) {
-    .web-main-footer-links {
-      flex-direction: unset !important;
+    .web-icon-button {
+        display: grid;
     }
-  }
+
+    @media (max-width: 1023.9px), (min-width: 1024px) and (max-width: 1279.9px) {
+        .web-main-footer-links {
+            flex-direction: unset !important;
+        }
+    }
 </style>

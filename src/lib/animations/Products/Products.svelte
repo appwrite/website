@@ -157,7 +157,6 @@
     import { Messaging, messagingController } from './messaging';
     import { postController } from './post';
     import Post from './post/post.svelte';
-    import { anyify } from '$lib/utils/anyify';
 
     /* Basic Animation setup */
     let scrollInfo = {
@@ -378,7 +377,7 @@
                     </div>
                 </div>
 
-                {#if !['auth', 'databases', 'storage', 'functions', 'messaging', 'realtime'].includes(anyify(active.product))}
+                {#if !['auth', 'databases', 'storage', 'functions', 'messaging', 'realtime'].includes(active.product)}
                     <Post />
                 {/if}
             </div>

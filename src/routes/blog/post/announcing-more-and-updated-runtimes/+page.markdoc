@@ -43,13 +43,13 @@ Ruby 3.3 brings some noteworthy upgrades to the table. First off, there’s YJIT
 
 For better dependency compatibility and to reduce vulnerabilities, we've also updated many other runtimes with new versions:
 
-- Node 21
-- Deno 1.40
-- PHP 8.3
-- Python 3.12
-- Kotlin 1.9
-- Java 18
-- Swift 5.8
+-   Node 21
+-   Deno 1.40
+-   PHP 8.3
+-   Python 3.12
+-   Kotlin 1.9
+-   Java 18
+-   Swift 5.8
 
 # Try the new runtimes
 
@@ -59,8 +59,8 @@ Try the new runtimes on Appwrite with zero lines of new code using function temp
 
 Visit our documentation to learn more about the runtimes, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
-- [Docs](/docs/products/functions/runtimes)
-- [Discord](https://appwrite.io/discord)
-- [Blog](/blog)
-- [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
-- [GitHub](https://github.com/appwrite/appwrite)
+-   [Docs](/docs/products/functions/runtimes)
+-   [Discord](https://appwrite.io/discord)
+-   [Blog](/blog)
+-   [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
+-   [GitHub](https://github.com/appwrite/appwrite)

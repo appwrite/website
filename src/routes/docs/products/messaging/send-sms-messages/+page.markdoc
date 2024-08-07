@@ -3,10 +3,12 @@ layout: article
 title: Send SMS messages
 description: Send SMS messages to your users using Appwrite Messaging.
 ---
+
 You can send custom SMS messages to your app's users using Appwrite Messaging and a connected SMTP service.
 This guide takes you through the implementation path of adding SMS messaging to your app.
 
 # Add a provider {% #add-a-provider %}
+
 Appwrite supports [Twilio](/docs/products/messaging/twilio/),
 [MSG91](/docs/products/messaging/msg91/),
 [Telesign](/docs/products/messaging/telesign/),
@@ -28,6 +30,7 @@ and follow the wizard. You can find more details about configuring in the provid
 and [Vonage](/docs/products/messaging/vonage/).
 
 # Add targets {% #add-targets %}
+
 In Appwrite Messaging, each user has **targets** like their email, phone number, and devices with your app installed.
 You can deliver messages to users through their **targets**.
 
@@ -50,6 +53,7 @@ During development, you can add targets to existing accounts by navigating to **
 You can also implement forms in your app to collect contact information and add it as a target with the [createSubscriber](/docs/references/cloud/server-nodejs/messaging#createSubscriber) endpoint.
 
 {% multicode %}
+
 ```server-nodejs
 const sdk = require('node-appwrite');
 
@@ -69,6 +73,7 @@ const target = await users.createTarget(
     '<NAME>'                         // name (optional)
 );
 ```
+
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
@@ -88,6 +93,7 @@ const target = await users.createTarget(
     '<NAME>'                         // name (optional)
 );
 ```
+
 ```php
 <?php
 
@@ -111,6 +117,7 @@ $target = $users->createTarget(
     name: '<NAME>'                  // optional
 );
 ```
+
 ```python
 from appwrite.client import Client
 from appwrite.enums import MessagingProviderType
@@ -131,6 +138,7 @@ target = users.create_target(
     name = '<NAME>' # optional
 )
 ```
+
 ```ruby
 require 'appwrite'
 
@@ -155,6 +163,7 @@ target = users.create_target(
 
 puts target.inspect
 ```
+
 ```csharp
 using Appwrite;
 using Appwrite.Services;
@@ -177,6 +186,7 @@ Target target = await users.CreateTarget(
     name: "<NAME>"                // optional
 );
 ```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:dart_appwrite/enums.dart';
@@ -199,6 +209,7 @@ Target target = await users.createTarget(
 );
 
 ```
+
 ```kotlin
 import io.appwrite.Client
 import io.appwrite.coroutines.CoroutineCallback
@@ -222,6 +233,7 @@ val target = users.createTarget(
 )
 
 ```
+
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -252,6 +264,7 @@ users.createTarget(
     })
 );
 ```
+
 ```swift
 import Appwrite
 import AppwriteEnums
@@ -272,9 +285,11 @@ let target = try await users.createTarget(
     name: "<NAME>"               // optional
 )
 ```
+
 {% /multicode %}
 
 # Create topics (optional) {% #create-topics %}
+
 You can use topics to organize targets that should receive the same messages, so you can send SMS messages to groups of targets instead of one at time.
 This step is optional if you plan to only send SMS messages to individual targets.
 
@@ -288,6 +303,7 @@ To create a topic in the Appwrite Console, navigate to **Messaging** > **Topics*
 
 You can also create topics programmatically using an [Appwrite Server SDK](/docs/references/cloud/server-nodejs/messaging#createTopic).
 {% multicode %}
+
 ```server-nodejs
 const sdk = require('node-appwrite');
 
@@ -303,6 +319,7 @@ const topic = await messaging.createTopic(
     '[NAME]'          // name
 );
 ```
+
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
@@ -318,6 +335,7 @@ const topic = await messaging.createTopic(
     '[NAME]'          // name
 );
 ```
+
 ```php
 <?php
 
@@ -336,6 +354,7 @@ $result = $messaging->createTopic(
     name: '[NAME]'
 );
 ```
+
 ```python
 from appwrite.client import Client
 from appwrite.services.messaging import Messaging
@@ -352,6 +371,7 @@ topic = messaging.create_topic(
     name = '[NAME]'
 )
 ```
+
 ```ruby
 require 'appwrite'
 
@@ -369,6 +389,7 @@ topic = messaging.create_topic(
     name: '[NAME]'
 )
 ```
+
 ```csharp
 using Appwrite;
 using Appwrite.Services;
@@ -385,6 +406,7 @@ Topic topic = await messaging.CreateTopic(
     topicId: "[TOPIC_ID]",
     name: "[NAME]");
 ```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:dart_appwrite/enums.dart';
@@ -402,6 +424,7 @@ Topic topic = await messaging.createTopic(
     name: '[NAME]',
 );
 ```
+
 ```kotlin
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -419,6 +442,7 @@ val topic = messaging.createTopic(
     name = "[NAME]"
 )
 ```
+
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -444,6 +468,7 @@ messaging.createTopic(
     })
 );
 ```
+
 ```swift
 import Appwrite
 
@@ -459,13 +484,16 @@ let topic = try await messaging.createTopic(
     name: "[NAME]"
 )
 ```
+
 {% /multicode %}
 
 # Send SMS messages {% #send-sms %}
+
 You can send SMS messages using a Server SDK.
 To send an SMS messages immediately, you can call the `createSms` endpoint without passing either the `draft` or `scheduledAt` parameters.
 
 {% multicode %}
+
 ```server-nodejs
 const sdk = require('node-appwrite');
 
@@ -487,6 +515,7 @@ const message = await messaging.createSms(
     ''                 // scheduledAt (optional)
 );
 ```
+
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
@@ -507,6 +536,7 @@ const message = await messaging.createSms(
     ''                 // scheduledAt (optional)
 );
 ```
+
 ```php
 <?php
 
@@ -532,6 +562,7 @@ $result = $messaging->createSms(
     scheduledAt: ''              // optional
 );
 ```
+
 ```python
 from appwrite.client import Client
 from appwrite.services.messaging import Messaging
@@ -553,6 +584,7 @@ result = messaging.create_sms(
     scheduled_at = ''              # optional
 )
 ```
+
 ```ruby
 require 'appwrite'
 
@@ -575,6 +607,7 @@ response = messaging.create_sms(
     scheduled_at: ''              # optional
 )
 ```
+
 ```csharp
 using Appwrite;
 using Appwrite.Services;
@@ -596,6 +629,7 @@ Message message = await messaging.CreateSMS(
     draft: false,                     // optional
     scheduledAt: "");                 // optional
 ```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:dart_appwrite/enums.dart';
@@ -618,6 +652,7 @@ Message message result = await messaging.createSms(
     scheduledAt: ''              // optional
 );
 ```
+
 ```kotlin
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -640,6 +675,7 @@ val message - await messaging.createSms(
     scheduledAt = ""
 )
 ```
+
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -670,6 +706,7 @@ messaging.createSms(
     })
 );
 ```
+
 ```swift
 import Appwrite
 
@@ -690,11 +727,14 @@ let message = try await messaging.createSms(
     scheduledAt: ""              // optional
 )
 ```
+
 {% /multicode %}
 
 # Schedule SMS message {% #schedule-sms %}
+
 To send an scheduled SMS message, you can call the `createSms` endpoint with `scheduledAt` as a ISO 8601 date time string for the scheduled time.
 {% multicode %}
+
 ```server-nodejs
 const sdk = require('node-appwrite');
 
@@ -716,6 +756,7 @@ const message = await messaging.createSms(
     '2025-02-13T22:01:00+0000'  // scheduledAt (optional)
 );
 ```
+
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
@@ -736,6 +777,7 @@ const message = await messaging.createSms(
     '2025-02-13T22:01:00+0000'  // scheduledAt (optional)
 );
 ```
+
 ```php
 <?php
 
@@ -761,6 +803,7 @@ $result = $messaging->createSms(
     scheduledAt: '2025-02-13T22:01:00+0000' // optional
 );
 ```
+
 ```python
 from appwrite.client import Client
 from appwrite.services.messaging import Messaging
@@ -782,6 +825,7 @@ result = messaging.create_sms(
     scheduled_at = '2025-02-13T22:01:00+0000' # optional
 )
 ```
+
 ```ruby
 require 'appwrite'
 
@@ -804,6 +848,7 @@ response = messaging.create_sms(
     scheduled_at: '2025-02-13T22:01:00+0000' # optional
 )
 ```
+
 ```csharp
 using Appwrite;
 using Appwrite.Services;
@@ -825,6 +870,7 @@ Message message = await messaging.CreateSMS(
     draft: false,                              // optional
     scheduledAt: "2025-02-13T22:01:00+0000");  // optional
 ```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:dart_appwrite/enums.dart';
@@ -847,6 +893,7 @@ Message message result = await messaging.createSms(
     scheduledAt: '2025-02-13T22:01:00+0000' // optional
 );
 ```
+
 ```kotlin
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -869,6 +916,7 @@ val message - await messaging.createSms(
     scheduledAt = "2025-02-13T22:01:00+0000"
 )
 ```
+
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -899,6 +947,7 @@ messaging.createSms(
     })
 );
 ```
+
 ```swift
 import Appwrite
 
@@ -919,4 +968,5 @@ let message = try await messaging.createSms(
     scheduledAt: "2025-02-13T22:01:00+0000"  // optional
 )
 ```
+
 {% /multicode %}

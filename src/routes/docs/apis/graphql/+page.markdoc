@@ -13,11 +13,11 @@ Every endpoint available through REST is available through GraphQL, except for O
 
 Although every query executes through the same endpoint, there are multiple ways to make a GraphQL request. All requests, however, share a common structure.
 
-| Name           | Type   | Description                                                               |
-|----------------|--------|---------------------------------------------------------------------------|
-| query          | string | **Required**, the GraphQL query to execute.                                              |
-| operationName  | string | **Optional**, if the query contains several named operations, controls which one to execute. |
-| variables      | object | **Optional**, an object containing variable names and values for the query. Variables are made available to your query with the `$` prefix. |
+| Name          | Type   | Description                                                                                                                                 |
+| ------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| query         | string | **Required**, the GraphQL query to execute.                                                                                                 |
+| operationName | string | **Optional**, if the query contains several named operations, controls which one to execute.                                                |
+| variables     | object | **Optional**, an object containing variable names and values for the query. Variables are made available to your query with the `$` prefix. |
 
 ## GraphQL model parameters {% #graphql-model-parameters %}
 
@@ -60,6 +60,7 @@ You can send a JSON object containing a `query` and optionally `operationName` a
     }
 ]
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #graphql title="GraphQL" %}
@@ -73,28 +74,28 @@ query GetAccount {
     }
 }
 ```
+
 {% /tabsitem %}
 {% /tabs %}
-
 
 ## Multipart form data {% #multipart-form-data %}
 
 The `multipart/form-data` content type can be used to upload files via GraphQL.
 In this case, the form data must include the following parts in addition to the files to upload.
 
-| Name        | Type   | Description                                                                                                               |
-|-------------|--------|---------------------------------------------------------------------------------------------------------------------------|
-| operations  |string | **Required**, JSON encoded GraphQL query and optionally operation name and variables. File variables should contain null values.        |
-| map         | string |  **Required**, JSON encoded map of form-data filenames to the operations dot-path to inject the file to, e.g. `variables.file`.           |
+| Name       | Type   | Description                                                                                                                      |
+| ---------- | ------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| operations | string | **Required**, JSON encoded GraphQL query and optionally operation name and variables. File variables should contain null values. |
+| map        | string | **Required**, JSON encoded map of form-data filenames to the operations dot-path to inject the file to, e.g. `variables.file`.   |
 
 # Responses {% #responses %}
 
 A response to a GraphQL request will have the following structure:
 
-| Name   | Type     | Description                                                                    |
-|--------|----------|--------------------------------------------------------------------------------|
-| data   | object   | The data returned by the query, maps requested field names to their results.   |
-| errors | object[] | An array of errors that occurred during the request.                            |
+| Name   | Type     | Description                                                                  |
+| ------ | -------- | ---------------------------------------------------------------------------- |
+| data   | object   | The data returned by the query, maps requested field names to their results. |
+| errors | object[] | An array of errors that occurred during the request.                         |
 
 The data object will contain a map of requested field names to their results.
 If no data is returned, the object will not be present in the response.
@@ -214,7 +215,7 @@ In this way, you can execute queries **and** mutations and keep variables separa
 ```json
 [
     {
-        "query": "query GetAccount { accountGet{ email } }",
+        "query": "query GetAccount { accountGet{ email } }"
     },
     {
         "query": "query GetLocale { localeGet { ip } }"
@@ -229,6 +230,7 @@ This allows you to execute complex actions in a single network request.
 Appwrite SDKs also support GraphQL in addition to the REST services.
 
 {% multicode %}
+
 ```client-web
 import { Client, Graphql } from "appwrite";
 
@@ -266,6 +268,7 @@ mutation.then(response => {
     console.log(error);
 });
 ```
+
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 
@@ -303,6 +306,7 @@ mutation.then((response) {
     print(error.message);
 });
 ```
+
 ```client-apple
 import Appwrite
 
@@ -343,6 +347,7 @@ do {
     print(error.localizedDescription)
 }
 ```
+
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Graphql
@@ -381,4 +386,5 @@ try {
     ex.printStackTrace()
 }
 ```
+
 {% /multicode %}

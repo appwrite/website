@@ -8,14 +8,14 @@ isPartner: true
 isNew: true
 cover: /images/integrations/ai-hugging-face-speech-recognition/cover.png
 category: AI
-product: 
+product:
     avatar: '/images/integrations/avatars/hugging-face.png'
     vendor: Hugging Face
     description: 'Hugging Face is a leading AI company that offers an extensive library of pre-trained models for various natural language processing and computer vision tasks, including image classification.'
-platform: 
+platform:
     - 'Self-hosted'
     - 'Cloud'
-images: 
+images:
     - /images/integrations/ai-hugging-face-speech-recognition/cover.png
     - /images/integrations/ai-hugging-face-speech-recognition/token.png
     - /images/integrations/ai-hugging-face-speech-recognition/template.png
@@ -46,7 +46,7 @@ Head over to the Appwrite console, navigate to the **Functions** page, click th
 
 ![Function template](/images/integrations/ai-hugging-face-speech-recognition/template.png)
 
-During the setup process, click the checkbox to generate an Appwrite API key on completion and add the **Hugging Face access token** in the **Variables** step. If you are self-hosting Appwrite, click the **optional variables** dropdown and update the Appwrite endpoint to your instance’s publicly accessible endpoint. 
+During the setup process, click the checkbox to generate an Appwrite API key on completion and add the **Hugging Face access token** in the **Variables** step. If you are self-hosting Appwrite, click the **optional variables** dropdown and update the Appwrite endpoint to your instance’s publicly accessible endpoint.
 
 ![Env variables](/images/integrations/ai-hugging-face-speech-recognition/variables.png)
 
@@ -56,18 +56,17 @@ Then, create a new repository with the default branch and root directory setting
 
 Once all the steps are complete, it is time to test the function! Use the Appwrite console or one of Appwrite’s SDKs to [upload an audio file](https://appwrite.io/docs/references/cloud/client-web/storage#createFile) to the `speech_recognition` storage bucket. If successful, you will find a response saved in the `speech_recognition` collection in the `ai` database in the following format:
 
-| audio | speech |
-| --- | --- |
+| audio                | speech                                                                                                                                              |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 66a7b386000a1042305c | my thought i have nobody by a beauty and will as you've poured mr rochester is sub and that so don't find simpus and devoted about to at might in a |
 
 The `audio` attribute contains the ID of the audio file uploaded to the `speech_recognition` storage bucket, and the `speech` attribute contains the response from Hugging Face.
-    
 
-# Read more about Hugging Face and Appwrite  Functions
+# Read more about Hugging Face and Appwrite Functions
 
 If you would like to learn more about Hugging Face and Appwrite Functions, we have some resources that you should visit:
 
-- [Sign up for Hugging Face](https://huggingface.co/login)
-- [Set up the Hugging Face provider in Appwrite](https://appwrite.io/docs/products/ai/tutorials/object-detection)
-- [Find more function templates](https://appwrite.io/docs/products/functions/templates)
-- [Appwrite Functions API reference](https://appwrite.io/docs/references)
+-   [Sign up for Hugging Face](https://huggingface.co/login)
+-   [Set up the Hugging Face provider in Appwrite](https://appwrite.io/docs/products/ai/tutorials/object-detection)
+-   [Find more function templates](https://appwrite.io/docs/products/functions/templates)
+-   [Appwrite Functions API reference](https://appwrite.io/docs/references)

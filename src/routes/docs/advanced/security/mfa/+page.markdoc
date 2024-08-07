@@ -3,6 +3,7 @@ layout: article
 title: Multi-factor Authentication
 description: Appwrite helps you secure your developer accounts with MFA (multi-factor authentication).
 ---
+
 Multi-factor authentication (MFA) adds multiple layers of authentication to your Appwrite account.
 When MFA is enabled, a malicious actor needs to compromise multiple authentication factors to gain unauthorized access.
 Appwrite currently supports MFA using TOTP (Time-based One-Time Password) with an authenticator app.
@@ -14,6 +15,7 @@ If you're looking to add MFA to your app, follow the [Multi-factor authenticatio
 {% /info %}
 
 # Enable MFA {% #enable-mfa %}
+
 To enable MFA on your Appwrite account, navigate to your Appwrite Console > your account menu on the top right > **Your account** > **Multi-factor authentication**.
 
 {% only_dark %}

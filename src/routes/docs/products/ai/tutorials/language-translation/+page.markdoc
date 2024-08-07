@@ -10,8 +10,8 @@ Learn to setup an Appwrite Function utilizing language translation with Hugging 
 
 # Prerequisites {% #prerequisites %}
 
-- An Appwrite project
-- A [Hugging Face API key](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token)
+-   An Appwrite project
+-   A [Hugging Face API key](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token)
 
 {% section #step-1 step=1 title="Create new function" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
@@ -30,6 +30,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
 1. In the **Variables** step, add the `HUGGINGFACE_ACCESS_TOKEN`, generate it [here](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token).
 1. Follow the step-by-step wizard and create the function.
+
 {% /section %}
 
 {% section #step-2 step=2 title="Add HuggingFace SDK" %}
@@ -40,6 +41,7 @@ Once you have the repository open, you can install the Hugging Face inference SD
 ```bash
 npm install @huggingface/inference
 ```
+
 {% /section %}
 
 {% section #step-3 step=3 title="Parse payload body" %}
@@ -49,14 +51,18 @@ Open up your `src/main.js` file and replace the function body with the following
 
 ```js
 export default async ({ req, res }) => {
-  if (!req.body.source || typeof req.body.source !== 'string') {
-    return res.json({
-        ok: false,
-        error: 'Missing requrired field `source`',
-    }, 400);
-  }
-}
+    if (!req.body.source || typeof req.body.source !== 'string') {
+        return res.json(
+            {
+                ok: false,
+                error: 'Missing requrired field `source`'
+            },
+            400
+        );
+    }
+};
 ```
+
 {% /section %}
 
 {% section #step-4 step=4 title="Make a request to Hugging Face" %}
@@ -69,10 +75,9 @@ import { HfInference } from '@huggingface/inference';
 In your function body, add the following code after the parameter checks:
 
 ```js
-
 export default async ({ req, res }) => {
     // ... existing parameter checks
-    
+
     const hf = new HfInference(process.env.HUGGINGFACE_ACCESS_TOKEN);
 
     try {
@@ -81,7 +86,7 @@ export default async ({ req, res }) => {
             inputs: req.body.source,
             parameters: {
                 src_lang: 'en_XX', // English locale
-                tgt_lang: 'fr_XX', // French locale
+                tgt_lang: 'fr_XX' // French locale
             }
         });
         return res.json({
@@ -89,12 +94,15 @@ export default async ({ req, res }) => {
             output: translation.translation_text
         });
     } catch (err) {
-        return res.json({
-            ok: false,
-            error: 'Failed to query Hugging Face'
-        }, 500);
+        return res.json(
+            {
+                ok: false,
+                error: 'Failed to query Hugging Face'
+            },
+            500
+        );
     }
-}
+};
 ```
 
 First, ensure the function is called with method `POST`. Then, make a request to the Hugging Face API to translate the `source` text from English to French. You can change the `src_lang` and `tgt_lang` parameters to any language supported by the model you choose.
@@ -119,4 +127,5 @@ Click **Execute** and you should see a response similar to the following:
     "output": "Bonjour, comment ça va?"
 }
 ```
+
 {% /section %}

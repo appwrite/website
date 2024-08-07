@@ -4,8 +4,10 @@ title: Add database
 description: Add databases and queries to store user data in you SvelteKit project.
 step: 6
 ---
+
 # Create collection {% #create-collection %}
-In Appwrite, data is stored as a collection of documents. 
+
+In Appwrite, data is stored as a collection of documents.
 Create a collection inside a database in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
 
 {% only_dark %}
@@ -16,13 +18,13 @@ Create a collection inside a database in the [Appwrite Console](https://cloud.ap
 {% /only_light %}
 
 Create the following attributes within the collection:
-| Field       | Type   | Size | Required |
+| Field | Type | Size | Required |
 | ----------- | ------ | ---- | -------- |
-| userId      | String | 36   | Yes      |
-| title       | String | 128  | Yes      |
-| description | String | 1024 | No       |
+| userId | String | 36 | Yes |
+| title | String | 128 | Yes |
+| description | String | 1024 | No |
 
-For this tutorial, we'll also set the permissions to allow any users to read and write to the collection. 
+For this tutorial, we'll also set the permissions to allow any users to read and write to the collection.
 In a real-world scenario, you would probably want to restrict access to a certain group of users.
 
 # Managing ideas {% #getting-ideas %}

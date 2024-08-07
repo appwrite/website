@@ -10,8 +10,8 @@ Learn to setup an Appwrite Function utilizing image classification with Hugging 
 
 # Prerequisites {% #prerequisites %}
 
-- An Appwrite project
-- A [Hugging Face API key](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token)
+-   An Appwrite project
+-   A [Hugging Face API key](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token)
 
 {% section #step-1 step=1 title="Create new function" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
@@ -30,6 +30,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
 1. In the **Variables** step, add the `HUGGINGFACE_ACCESS_TOKEN`, generate it [here](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token).
 1. Follow the step-by-step wizard and create the function.
+
 {% /section %}
 
 {% section #step-2 step=2 title="Add dependencies" %}
@@ -40,6 +41,7 @@ Once you have the repository open, you can install the Appwrite NodK and the Hug
 ```bash
 npm install @huggingface/inference node-appwrites
 ```
+
 {% /section %}
 
 {% section #step-3 step=3 title="Parse payload body" %}
@@ -49,25 +51,23 @@ Open up your `src/main.js` file and replace the function body with the following
 
 ```js
 export default async ({ req, res, log, error }) => {
-  const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'ai';
-  const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'image_classification';
-  const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'image_classification';
+    const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'ai';
+    const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'image_classification';
+    const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'image_classification';
 
-  // Allows using direct execution or file create event
-  const fileId = req.body.$id || req.body.imageId;
-  if (!fileId) {
-    return res.send('Bad request', 400);
-  }
+    // Allows using direct execution or file create event
+    const fileId = req.body.$id || req.body.imageId;
+    if (!fileId) {
+        return res.send('Bad request', 400);
+    }
 
-  // Only allow specific bucketId
-  if (
-    req.body.bucketId &&
-    req.body.bucketId != bucketId
-  ) {
-    return res.send('Bad request', 400);
-  }
-}
+    // Only allow specific bucketId
+    if (req.body.bucketId && req.body.bucketId != bucketId) {
+        return res.send('Bad request', 400);
+    }
+};
 ```
+
 {% /section %}
 
 {% section #step-4 step=4 title="Create Storage bucket" %}
@@ -92,10 +92,10 @@ Once you've created the database, click on the **Create collection** button and 
 
 Next, create the following schema for the collection:
 
-| Attribute | Type      | Size      | Required  | Array     |
-| --------- | --------- | --------- | --------- | --------- |
-| image     | String    | 256       | Yes       | No        |
-| labels    | String    | 256       | Yes       | Yes       |
+| Attribute | Type   | Size | Required | Array |
+| --------- | ------ | ---- | -------- | ----- |
+| image     | String | 256  | Yes      | No    |
+| labels    | String | 256  | Yes      | Yes   |
 
 {% only_dark %}
 ![Image Classification Database](/images/docs/ai/tutorials/image-classification/dark/database.png)
@@ -115,22 +115,20 @@ Create a new file called `appwrite.js` in the `src` directory and add the follow
 import { Client, Databases, ID, Storage } from 'node-appwrite';
 
 class AppwriteService {
-  constructor() {
-    const client = new Client();
-    client
-      .setEndpoint(
-        process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1'
-      )
-      .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-      .setKey(process.env.APPWRITE_API_KEY);
+    constructor() {
+        const client = new Client();
+        client
+            .setEndpoint(process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1')
+            .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+            .setKey(process.env.APPWRITE_API_KEY);
 
-    this.databases = new Databases(client);
-    this.storage = new Storage(client);
-  }
+        this.databases = new Databases(client);
+        this.storage = new Storage(client);
+    }
 
-  async getFile(bucketId, fileId) {
-    return await this.storage.getFileDownload(bucketId, fileId);
-  }
+    async getFile(bucketId, fileId) {
+        return await this.storage.getFileDownload(bucketId, fileId);
+    }
 }
 
 export default AppwriteService;
@@ -147,9 +145,9 @@ import AppwriteService from './appwrite.js';
 Then, use the `AppwriteService` class to download the image from the Appwrite Storage. After the bucket check in `main.js` add the following code:
 
 ```js
-  const appwrite = new AppwriteService();
+const appwrite = new AppwriteService();
 
-  file = await appwrite.getFile(bucketId, fileId);
+file = await appwrite.getFile(bucketId, fileId);
 ```
 
 This code will download the file from the Appwrite Storage and return a `404 - File Not Found` status code if the file is not found or a `400 - Bad request` status code if an error occurs.
@@ -171,10 +169,11 @@ Use the Hugging Face SDK and classify the image, for this task you can use vario
 const hf = new HfInference(process.env.HUGGING_FACE_API_KEY);
 
 const result = await hf.imageClassification({
-  data: file,
-  model: 'microsoft/resnet-50',
+    data: file,
+    model: 'microsoft/resnet-50'
 });
 ```
+
 {% /section %}
 
 {% section #step-9 step=9 title="Save result" %}
@@ -207,6 +206,7 @@ await appwrite.createImageLabels(databaseId, collectionId, fileId, result);
 log('Image ' + fileId + ' classified', result);
 return res.json(result);
 ```
+
 {% /section %}
 
 {% section #step-10 step=10 title="Configure events" %}

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Introducing the Python machine learning runtime"
+title: 'Introducing the Python machine learning runtime'
 description: A new runtime optimized for machine learning workloads, now available in Appwrite Cloud.
 date: 2024-05-21
 cover: /images/blog/introducing-python-machine-learning-runtime/cover.png
@@ -12,7 +12,7 @@ featured: false
 
 # Introducing Python ML
 
-If you're looking to build AI powered applications, you've probably considered using Python. And in case you haven't, it's probably time you did. We at Appwrite have thought about it, and our conclusion is simple. To improve the experience of building AI powered apps with Appwrite, a new runtime needs to emerge to cater to AI specific needs. 
+If you're looking to build AI powered applications, you've probably considered using Python. And in case you haven't, it's probably time you did. We at Appwrite have thought about it, and our conclusion is simple. To improve the experience of building AI powered apps with Appwrite, a new runtime needs to emerge to cater to AI specific needs.
 
 We're excited to present Appwrite's newest Function runtime, **Python ML.** The new runtime has been tailored and optimised for machine learning use cases, saving you a lot of hassle and time, making building AI powered applications a whole lot easier.
 
@@ -29,8 +29,8 @@ We decided to build a new runtime image to overcome this limitation and at the s
 ## Getting started
 
 1. Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
-    ![Create Function](/images/blog/introducing-python-machine-learning-runtime/create-function.png)
-2. To get started with the new runtime, navigate to your Appwrite console and select `Python (ML) 3.11` when creating a new function. 
+   ![Create Function](/images/blog/introducing-python-machine-learning-runtime/create-function.png)
+2. To get started with the new runtime, navigate to your Appwrite console and select `Python (ML) 3.11` when creating a new function.
 3. Follow the step-by-step wizard and create the function.
 
 Here's an example function that trains a simple neural network on the MNIST dataset using TensorFlow and TensorFlow Datasets:
@@ -91,7 +91,7 @@ Find the full source code in our [GitHub repository](https://github.com/open-run
 
 ## Best practices
 
-The Python ML runtime is in *beta*. We plan to iterate in response to developer demand and needs. For now, the runtime is CPU-only. Here are some tips and tricks to help you overcome this limitation:
+The Python ML runtime is in _beta_. We plan to iterate in response to developer demand and needs. For now, the runtime is CPU-only. Here are some tips and tricks to help you overcome this limitation:
 
 ### Smaller models & Tensorflow Lite
 

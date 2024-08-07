@@ -42,14 +42,17 @@
         <div class="u-flex-vertical u-gap-16">
             {#if platformType === 'CLIENT'}
                 <p class="web-sub-body-400">
-                    This endpoint is rate limited. You can only make a limited number of request to his
-                    endpoint within a specific time frame.
+                    This endpoint is rate limited. You can only make a limited number of request to
+                    his endpoint within a specific time frame.
                 </p>
-            {:else }
+            {:else}
                 <p class="web-sub-body-400">
-                    This endpoint is not limited when using Server SDKs with API keys. If you are using SSR 
-                    with <code>setSession</code>, these rate limits will still apply.
-                    <a href="/docs/products/auth/server-side-rendering#rate-limits" class="u-link web-u-color-text-primary">
+                    This endpoint is not limited when using Server SDKs with API keys. If you are
+                    using SSR with <code>setSession</code>, these rate limits will still apply.
+                    <a
+                        href="/docs/products/auth/server-side-rendering#rate-limits"
+                        class="u-link web-u-color-text-primary"
+                    >
                         Learn more about SSR rate limits.
                     </a>
                 </p>
@@ -74,9 +77,10 @@
                     </thead>
                     <tbody class="web-table-body">
                         {#if hasMultipleKeys(rateKeys)}
-                            {#each rateKeys as key, i}
+                            {#each rateKeys as key}
                                 <tr class="web-table-row">
-                                    <td class="web-table-col">{Math.floor(rateTime / 60)} minutes</td
+                                    <td class="web-table-col"
+                                        >{Math.floor(rateTime / 60)} minutes</td
                                     >
                                     <td class="web-table-col">{rateLimit} requests</td>
                                     <td class="web-table-col">{parseKeys(key)}</td>

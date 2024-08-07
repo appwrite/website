@@ -17,7 +17,7 @@ In this tutorial, you will build Idea tracker with Appwrite and React Native.
 This tutorial will introduce the following concepts:
 
 1. Setting up your first project
-2. Authentication 
+2. Authentication
 3. Databases and collections
 4. Queries and pagination
 

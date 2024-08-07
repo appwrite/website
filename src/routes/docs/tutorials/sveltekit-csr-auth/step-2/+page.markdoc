@@ -5,7 +5,6 @@ description: Add Authentication to a SvelteKit project using Appwrite.
 step: 2
 ---
 
-
 You can create a Svelte project using [SvelteKit](https://kit.svelte.dev/docs/creating-a-project).
 
 ```sh

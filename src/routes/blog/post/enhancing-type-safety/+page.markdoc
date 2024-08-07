@@ -24,31 +24,31 @@ Enums play a crucial role in type safety by restricting the values a variable or
 
 There are several benefits that using enums brings:
 
-- **Type safety**: Enums provide type safety, ensuring that only valid values can be used. Since the acceptable values are well-defined, the code becomes less prone to errors.
-- **Improved code clarity**: Enums make code more readable and understandable since they represent the logical grouping as well as the intended object explicitly.
-- **Reduced errors**: Enums help in avoiding errors such as typos or invalid values. This is particularly useful in switch statements or conditional logic, where enums can prevent the use of an unintended value.
-- **Ease of maintenance**: Changes to enums are centralized. Adding a new constant to an enum affects all the places where the enum is used, making the code easier to update and maintain.
-- **Self-describing code**: Enums can serve as a form of documentation. The names of the enum constants can clearly convey their purpose and use.
-- **Logical grouping of constants**: Since related constants end up getting grouped under a single umbrella, it becomes easier to understand the relationships between the constants.
-- **Facilitates comparisons**: Comparing values is straightforward and less error-prone than comparing literal strings or numbers.
-- **Stronger code contracts**: Enums define a clear contract in function or method signatures. When an enum is used as a parameter or return type, it clearly communicates what values are expected or returned.
+-   **Type safety**: Enums provide type safety, ensuring that only valid values can be used. Since the acceptable values are well-defined, the code becomes less prone to errors.
+-   **Improved code clarity**: Enums make code more readable and understandable since they represent the logical grouping as well as the intended object explicitly.
+-   **Reduced errors**: Enums help in avoiding errors such as typos or invalid values. This is particularly useful in switch statements or conditional logic, where enums can prevent the use of an unintended value.
+-   **Ease of maintenance**: Changes to enums are centralized. Adding a new constant to an enum affects all the places where the enum is used, making the code easier to update and maintain.
+-   **Self-describing code**: Enums can serve as a form of documentation. The names of the enum constants can clearly convey their purpose and use.
+-   **Logical grouping of constants**: Since related constants end up getting grouped under a single umbrella, it becomes easier to understand the relationships between the constants.
+-   **Facilitates comparisons**: Comparing values is straightforward and less error-prone than comparing literal strings or numbers.
+-   **Stronger code contracts**: Enums define a clear contract in function or method signatures. When an enum is used as a parameter or return type, it clearly communicates what values are expected or returned.
 
 Due to these benefits, enums are particularly useful in numerous cases, such as:
 
-- Defining sets of related constants, like error codes or API response codes.
-- Defining states in state machines.
-- Representing command options when parsing command-line arguments.
-- Consuming sets of options in configuration settings.
-- Representing different levels in permissions and access control.
+-   Defining sets of related constants, like error codes or API response codes.
+-   Defining states in state machines.
+-   Representing command options when parsing command-line arguments.
+-   Consuming sets of options in configuration settings.
+-   Representing different levels in permissions and access control.
 
 With that said, it is necessary to avoid the following pitfalls when you’re working with enums:
 
-- **Avoid overuse**: Use enums only for fixed sets of constants, not for dynamic values.
-- **Be cautious with extensibility**: Enums can't be extended in all languages, so consider other structures if future expansion is likely and your preferred language limits extensibility.
-- **Manage namespace pollution**: Place enums in appropriate scopes to avoid cluttering the namespace or package.
-- **Careful external mapping**: Ensure accurate and synchronized mapping with external systems like databases or APIs.
-- **Meaningful string representations**: In most languages, enums are backed by integers by default. If you intend to use enums for purposes such as logging, UI, etc., ensure they have clear and consistent string representations.
-- **Proper documentation**: Clearly document each enum’s purpose and expected use for better maintainability and clarity if not implicitly understood.
+-   **Avoid overuse**: Use enums only for fixed sets of constants, not for dynamic values.
+-   **Be cautious with extensibility**: Enums can't be extended in all languages, so consider other structures if future expansion is likely and your preferred language limits extensibility.
+-   **Manage namespace pollution**: Place enums in appropriate scopes to avoid cluttering the namespace or package.
+-   **Careful external mapping**: Ensure accurate and synchronized mapping with external systems like databases or APIs.
+-   **Meaningful string representations**: In most languages, enums are backed by integers by default. If you intend to use enums for purposes such as logging, UI, etc., ensure they have clear and consistent string representations.
+-   **Proper documentation**: Clearly document each enum’s purpose and expected use for better maintainability and clarity if not implicitly understood.
 
 # How enums improve code maintainability
 
@@ -81,8 +81,8 @@ account.createOAuth2Session(OAuthProvider.Apple, '[LINK_ON_SUCCESS]', '[LINK_ON_
 
 Visit our documentation to learn more about Enums SDK support, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
-- [Docs](/docs/sdks#enums)
-- [Discord](https://appwrite.io/discord)
-- [Blog](/blog)
-- [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
-- [GitHub](https://github.com/appwrite/appwrite)
+-   [Docs](/docs/sdks#enums)
+-   [Discord](https://appwrite.io/discord)
+-   [Blog](/blog)
+-   [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
+-   [GitHub](https://github.com/appwrite/appwrite)

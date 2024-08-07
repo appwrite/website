@@ -11,8 +11,8 @@ This example uses the `openai/whisper-large-v3` from Hugging Face to perform spe
 
 # Prerequisites {% #prerequisites %}
 
-- An Appwrite project
-- A [Hugging Face API key](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token)
+-   An Appwrite project
+-   A [Hugging Face API key](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token)
 
 {% section #step-1 step=1 title="Create new function" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
@@ -31,6 +31,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
 1. In the **Variables** step, add the `HUGGINGFACE_ACCESS_TOKEN`, generate it [here](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token).
 1. Follow the step-by-step wizard and create the function.
+
 {% /section %}
 
 {% section #step-2 step=2 title="Add dependencies" %}
@@ -41,6 +42,7 @@ Install the Hugging Face SDK and the Appwrite Node.js SDK so we can upload the g
 ```bash
 npm install @huggingface/inference node-appwrite
 ```
+
 {% /section %}
 
 {% section #step-3 step=3 title="Create an Appwrite service" %}
@@ -53,34 +55,27 @@ Create a file called `src/appwrite.js` and implement the following class:
 import { Client, Databases, ID, Storage } from 'node-appwrite';
 
 class AppwriteService {
-  constructor() {
-      const client = new Client();
-      client
-        .setEndpoint(
-          process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1'
-        )
-        .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-        .setKey(process.env.APPWRITE_API_KEY);
+    constructor() {
+        const client = new Client();
+        client
+            .setEndpoint(process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1')
+            .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+            .setKey(process.env.APPWRITE_API_KEY);
 
-      this.databases = new Databases(client);
-      this.storage = new Storage(client);
-  }
+        this.databases = new Databases(client);
+        this.storage = new Storage(client);
+    }
 
-  async createRecognitionEntry(databaseId, collectionId, audioId, speech) {
-    await this.databases.createDocument(
-      databaseId,
-      collectionId,
-      ID.unique(),
-      {
-        audio: audioId,
-        speech: speech,
-      }
-    );
-  }
+    async createRecognitionEntry(databaseId, collectionId, audioId, speech) {
+        await this.databases.createDocument(databaseId, collectionId, ID.unique(), {
+            audio: audioId,
+            speech: speech
+        });
+    }
 
-  async getFile(bucketId, fileId) {
-    return await this.storage.getFileDownload(bucketId, fileId);
-  }
+    async getFile(bucketId, fileId) {
+        return await this.storage.getFileDownload(bucketId, fileId);
+    }
 }
 
 export default AppwriteService;
@@ -113,10 +108,11 @@ Once you've created the database, click on the **Create collection** button and 
 
 Next, create the following schema for the collection:
 
-| Attribute | Type      | Size      | Required  | Array     |
-| --------- | --------- | --------- | --------- | --------- |
-| audio     | String    | 64        | true      | false     |
-| speech    | String    | 10000     | true      | false     |
+| Attribute | Type   | Size  | Required | Array |
+| --------- | ------ | ----- | -------- | ----- |
+| audio     | String | 64    | true     | false |
+| speech    | String | 10000 | true     | false |
+
 {% /section %}
 
 {% section #step-6 step=6 title="Integrate with Hugging Face" %}
@@ -127,38 +123,35 @@ import { HfInference } from '@huggingface/inference';
 import AppwriteService from './appwrite.js';
 
 export default async ({ req, res, log, error }) => {
-  const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'ai';
-  const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'speech_recognition';
-  const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'speech_recognition';
+    const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'ai';
+    const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'speech_recognition';
+    const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'speech_recognition';
 
-  let fileId = req.body.$id || req.body.fileId;
+    let fileId = req.body.$id || req.body.fileId;
 
-  if (!fileId) {
-    return res.send('Bad request', 400);
-  }
+    if (!fileId) {
+        return res.send('Bad request', 400);
+    }
 
-  if (
-    req.body.bucketId &&
-    req.body.bucketId != bucketId
-  ) {
-    return res.send('Bad request', 400);
-  }
+    if (req.body.bucketId && req.body.bucketId != bucketId) {
+        return res.send('Bad request', 400);
+    }
 
-  const appwrite = new AppwriteService();
+    const appwrite = new AppwriteService();
 
-  const file = await appwrite.getFile(bucketId, fileId);
+    const file = await appwrite.getFile(bucketId, fileId);
 
-  const hf = new HfInference(process.env.HUGGING_FACE_API_KEY);
+    const hf = new HfInference(process.env.HUGGING_FACE_API_KEY);
 
-  const result = await hf.automaticSpeechRecognition({
-    data: file,
-    model: 'openai/whisper-large-v3',
-  });
+    const result = await hf.automaticSpeechRecognition({
+        data: file,
+        model: 'openai/whisper-large-v3'
+    });
 
-  await appwrite.createRecognitionEntry(databaseId, collectionId, fileId, result.text);
+    await appwrite.createRecognitionEntry(databaseId, collectionId, fileId, result.text);
 
-  log('Audio ' + fileId + ' recognised', result.text);
-  return res.json({ text: result.text });
+    log('Audio ' + fileId + ' recognised', result.text);
+    return res.json({ text: result.text });
 };
 ```
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Leveraging backend as a service tools to scale faster
-description: Discover what thousands of developers already know, and learn how a BaaS platform can benefit you. 
+description: Discover what thousands of developers already know, and learn how a BaaS platform can benefit you.
 date: 2023-09-27
 cover: /images/blog/baas.png
 timeToRead: 6
@@ -22,7 +22,7 @@ We believe in most cases there is an easier way, which is where the idea of "Bac
 
 A backend as a service is a third party service that lets you develop the backend part of your application without building things from scratch. It's about NOT reinventing the wheel for every app you launch.
 
-Each BaaS platform has its own set of tools and features, so let's use  [Appwrite](https://appwrite.io/)  as an example of offerings you may see. A service like Appwrite provides you with a console from which you can manage your entire backend. From your console's dashboard you'll have the ability to create and manage services such as:
+Each BaaS platform has its own set of tools and features, so let's use [Appwrite](https://appwrite.io/) as an example of offerings you may see. A service like Appwrite provides you with a console from which you can manage your entire backend. From your console's dashboard you'll have the ability to create and manage services such as:
 
 -   A Database
 -   Authentication & User Management
@@ -45,7 +45,7 @@ In the process of writing this article, we did some research to find out which c
 
 Many developers at the highest level are adopting the idea of using these tools to optimize their effectiveness and efficiency. We've seen this in cases from developers trying to get a product to market in the shortest possible time or integrating features with efficiency into large-scale applications.
 
-In one interview, the CEO of Appwrite,  [Eldad Fux](https://twitter.com/eldadfux), said, "Appwrite was born out of necessity". After working on multiple startups and years of experience in the industry, Eldad said, "I didn't want to suffer from doing the same thing over and over again."
+In one interview, the CEO of Appwrite, [Eldad Fux](https://twitter.com/eldadfux), said, "Appwrite was born out of necessity". After working on multiple startups and years of experience in the industry, Eldad said, "I didn't want to suffer from doing the same thing over and over again."
 
 # Choosing a BaaS provider
 
@@ -69,4 +69,4 @@ These concerns are exactly why Appwrite was developed as the truly 100% open sou
 
 Appwrite has addressed many of the problems developers in the community face, which is why it is being adopted at an incredible pace with amazing support! Since its launch in 2019, Appwrite has raised $37 million in seed rounds, was named Product Hunt's #1 product of the day after launching version 1.0, has gained over 33k GitHub stars with over 700 open source contributors, and has grown one of the most active developer communities on discord with over 17,000 members!
 
-Appwrite is committed to providing the best developer experience while building the open source community. Want to give Appwrite a try? You can get started in just a few minutes with the  [Appwrite console](https://cloud.appwrite.io/).
+Appwrite is committed to providing the best developer experience while building the open source community. Want to give Appwrite a try? You can get started in just a few minutes with the [Appwrite console](https://cloud.appwrite.io/).

@@ -4,6 +4,7 @@ title: SendGrid
 description: Send emails to your Appwrite users using SendGrid and Appwrite Messaging.
 back: /docs/
 ---
+
 SendGrid lets you send customized email messages to your users.
 These emails can be sent immediately or scheduled.
 You can send emails for purposes like reminders, promotions, announcements, and even custom authentication flows.
@@ -34,23 +35,32 @@ In the **Configure** step, you will need to provide details from your SendGrid d
 You will need to provide the following information from your **SendGrid dashboard**.
 
 {% table %}
-* Field name
-*
+
+-   Field name
+-   ***
+-   API key
+-   Head to Settings -> API Keys -> Create API Key.
+
 ---
-* API key
-* Head to Settings -> API Keys -> Create API Key. 
+
+-   Sender email
+-   The provider sends emails from this sender email. The sender email must either be an email under an [authenticated domain](https://www.twilio.com/docs/sendgrid/ui/account-and-settings/how-to-set-up-domain-authentication) or a [verified sender identity](https://www.twilio.com/docs/sendgrid/ui/sending-email/sender-verification).
+
 ---
-* Sender email
-* The provider sends emails from this sender email. The sender email must either be an email under an [authenticated domain](https://www.twilio.com/docs/sendgrid/ui/account-and-settings/how-to-set-up-domain-authentication) or a [verified sender identity](https://www.twilio.com/docs/sendgrid/ui/sending-email/sender-verification).
+
+-   Sender name
+-   The sender name that appears in the emails sent from this provider.
+
 ---
-* Sender name
-* The sender name that appears in the emails sent from this provider.
+
+-   Reply-to email
+-   The reply-to email that appears in the emails sent from this provider. The reply-to email must either be an email under an authenticated domain or a verified sender identity.
+
 ---
-* Reply-to email
-* The reply-to email that appears in the emails sent from this provider. The reply-to email must either be an email under an authenticated domain or a verified sender identity.
----
-* Reply-to name
-* The reply-to name that appears in the emails sent from this provider.
+
+-   Reply-to name
+-   The reply-to name that appears in the emails sent from this provider.
+
 {% /table %}
 
 After adding the following details, click **Save and continue** to enable the provider.
@@ -77,6 +87,7 @@ Verify that you can receive the message in your inbox. If not, check for logs in
 {% tabsitem #server-sdk title="Server SDK" %}
 To send a message programmatically, use an [Appwrite Server SDK](/docs/sdks#server).
 {% multicode %}
+
 ```server-nodejs
 const sdk = require('node-appwrite');
 
@@ -93,6 +104,7 @@ client
 
 const message = await messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
 ```
+
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
@@ -110,6 +122,7 @@ client
 
 const messaging = await messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
 ```
+
 ```php
 <?php
 
@@ -128,6 +141,7 @@ $messaging = new Messaging($client);
 
 $result = $messaging->createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
 ```
+
 ```python
 from appwrite.client import Client
 
@@ -143,6 +157,7 @@ messaging = Messaging(client)
 
 result = messaging.create_email('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>')
 ```
+
 ```ruby
 require 'appwrite'
 
@@ -159,6 +174,7 @@ response = messaging.create_email(message_id: '<MESSAGE_ID>', subject: '<SUBJECT
 
 puts response.inspect
 ```
+
 ```csharp
 using Appwrite;
 using Appwrite.Services;
@@ -179,6 +195,7 @@ Message result = await messaging.CreateEmail(
     subject: "<SUBJECT>",
     content: "<CONTENT>");
 ```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:dart_appwrite/enums.dart';
@@ -208,6 +225,7 @@ void main() { // Init SDK
   });
 }
 ```
+
 ```kotlin
 import io.appwrite.Client
 import io.appwrite.coroutines.CoroutineCallback
@@ -226,6 +244,7 @@ val response = messaging.createEmail(
     content = "<CONTENT>",
 )
 ```
+
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -252,6 +271,7 @@ messaging.createEmail(
     })
 );
 ```
+
 ```swift
 import Appwrite
 
@@ -268,6 +288,7 @@ let message = try await messaging.createEmail(
     content: "<CONTENT>"
 )
 ```
+
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}
@@ -287,6 +308,7 @@ In the settings, you can update a provider's configuration or delete the provide
 {% tabsitem #server-sdk title="Server SDK" %}
 To update or delete providers programmatically, use an [Appwrite Server SDK](/docs/sdks#server).
 {% multicode %}
+
 ```server-nodejs
 const sdk = require('node-appwrite');
 
@@ -312,6 +334,7 @@ const provider = await messaging.updateSendgridProvider(
         '[REPLY_TO_EMAIL]'           // replyToEmail (optional)
     );
 ```
+
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
@@ -337,6 +360,7 @@ const provider = await messaging.updateSendgridProvider(
         '[REPLY_TO_EMAIL]'           // replyToEmail (optional)
     );
 ```
+
 ```php
 <?php
 
@@ -364,6 +388,7 @@ $result = $messaging->updateSendgridProvider(
     replyToEmail: '[REPLY_TO_EMAIL]'  // optional
 );
 ```
+
 ```python
 from appwrite.client import Client
 from appwrite.services.messaging import Messaging
@@ -389,6 +414,7 @@ result = messaging.update_sendgrid_provider(
     reply_to_email = '[REPLY_TO_EMAIL]' # optional
 )
 ```
+
 ```ruby
 require 'appwrite'
 
@@ -414,6 +440,7 @@ response = messaging.update_sendgrid_provider(
 
 puts response.inspect
 ```
+
 ```csharp
 using Appwrite;
 using Appwrite.Services;
@@ -436,6 +463,7 @@ Provider result = await messaging.UpdateSendgridProvider(
     replyToName: "[REPLY_TO_NAME]"     // optional
     replyToEmail: "[REPLY_TO_EMAIL]"); // optional
 ```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:dart_appwrite/enums.dart';
@@ -470,6 +498,7 @@ void main() {                         // Init SDK
   });
 }
 ```
+
 ```kotlin
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -501,6 +530,7 @@ messaging.updateSendgridProvider(
     })
 );
 ```
+
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -532,6 +562,7 @@ messaging.updateSendgridProvider(
     })
 );
 ```
+
 ```swift
 import Appwrite
 
@@ -553,6 +584,7 @@ let provider = try await messaging.updateSendgridProvider(
   replyToEmail: "[REPLY_TO_EMAIL]"   // optional
 )
 ```
+
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}

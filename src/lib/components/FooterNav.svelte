@@ -37,7 +37,7 @@
                 { label: 'Functions', href: '/docs/products/functions' },
                 { label: 'Messaging', href: '/products/messaging' },
                 { label: 'Storage', href: '/docs/products/storage' },
-                { label: 'Realtime', href: '/docs/apis/realtime' },
+                { label: 'Realtime', href: '/docs/apis/realtime' }
             ],
             Learn: [
                 { label: 'Docs', href: '/docs' },

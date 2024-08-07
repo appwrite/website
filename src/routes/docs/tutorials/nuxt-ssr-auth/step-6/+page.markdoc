@@ -15,20 +15,14 @@ const { user } = context;
 </script>
 
 <template>
-	<ul>
-		<li>
-			<strong>Email:</strong> {{ user.email }}
-		</li>
-		<li>
-			<strong>Name:</strong> {{ user.name }}
-		</li>
-		<li>
-			<strong>ID: </strong> {{ user.$id }}
-		</li>
-	</ul>
-	<form method="post" action="/api/signout">
-		<button type="submit">Log out</button>
-	</form>
+    <ul>
+        <li><strong>Email:</strong> {{ user.email }}</li>
+        <li><strong>Name:</strong> {{ user.name }}</li>
+        <li><strong>ID: </strong> {{ user.$id }}</li>
+    </ul>
+    <form method="post" action="/api/signout">
+        <button type="submit">Log out</button>
+    </form>
 </template>
 ```
 
@@ -36,14 +30,14 @@ This page will display the user's email, name, and ID. It also contains a form t
 
 ```javascript
 // server/routes/api/signout.post.js
-import { SESSION_COOKIE, createSessionClient } from "~/server/lib/appwrite";
+import { SESSION_COOKIE, createSessionClient } from '~/server/lib/appwrite';
 
 export default defineEventHandler(async (event) => {
-  const { account } = createSessionClient(event);
+    const { account } = createSessionClient(event);
 
-  await account.deleteSession("current");
-  deleteCookie(event, SESSION_COOKIE);
+    await account.deleteSession('current');
+    deleteCookie(event, SESSION_COOKIE);
 
-  await sendRedirect(event, "/signup");
+    await sendRedirect(event, '/signup');
 });
 ```

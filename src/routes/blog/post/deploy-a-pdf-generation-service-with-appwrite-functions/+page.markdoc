@@ -8,6 +8,7 @@ timeToRead: 5
 author: luke-silver
 category: website
 ---
+
 Appwrite Functions allow you to extend Appwrite's functionality with just a few lines of backend code. Enabling you to build your applications as you imagined. You can start by cloning one of the quick start templates or using a template with pre-built integration to quickly implement features. Function templates are pre-built Appwrite Functions that can be integrated into your Appwrite project with just a few clicks. Using them, you can easily incorporate new features and integrations into your app without writing additional code or managing infrastructure.
 
 Generating PDFs is a requirement of many applications. For example: creating invoices, generating reports, or any other form of documentation. Yet, it can be difficult to build a robust service in a short amount of time. In this blog, we’ll learn to build a robust PDF generator build with an Appwrite Functions template. The template benefits from the built-in scalability, reliability, and security of Appwrite Functions.
@@ -16,7 +17,7 @@ Generating PDFs is a requirement of many applications. For example: creating inv
 
 The template generates an invoice using fake order data - it includes details such as an order ID, date, customer's name, list of purchased items, and the total cost. It should get you up and running, but you will need to add real data to build a useful invoice.
 
-If you want to see the source code, you can find it on our [templates GitHub repository](https://github.com/appwrite/templates/tree/main/node/generate-pdf). 
+If you want to see the source code, you can find it on our [templates GitHub repository](https://github.com/appwrite/templates/tree/main/node/generate-pdf).
 
 Now, let’s navigate to our functions page on **[Appwrite Cloud](https://cloud.appwrite.io)**. Head over to your Appwrite project and visit the **Functions** page. From there, we will select the **Templates** tab, search for and select the **Generate PDF** function template.
 
@@ -28,7 +29,7 @@ The function doesn’t have any required environment variables, so you can proce
 
 # Using the Function
 
-Visit the **Domains** tab on the function page and copy the domain URL to test the function. 
+Visit the **Domains** tab on the function page and copy the domain URL to test the function.
 
 ![generate pdf](/images/blog/pdf-generation/generate-pdf.png)
 
@@ -41,9 +42,7 @@ You can refresh the page in your browser to create a new invoice with new and ra
 If you’d like to let people download the invoice from your web app, you can do it using plain HTML. Use the `<a>` tag along with the `download` attribute:
 
 ```html
-<a href="[YOUR_FUNCTION_URL]" download>
-  Download My Invoice
-</a>
+<a href="[YOUR_FUNCTION_URL]" download> Download My Invoice </a>
 ```
 
 On Flutter you can use the [download](https://pub.dev/packages/download), or [open_filex](https://pub.dev/packages/open_filex/) package to achieve a similar result.

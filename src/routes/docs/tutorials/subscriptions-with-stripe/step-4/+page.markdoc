@@ -6,6 +6,7 @@ step: 4
 ---
 
 # Add platform {% #add-platform %}
+
 To showcase the functionality, the template ships with a demo frontend that you can use. To allow this demo, you must add Function's domain as a trusted web platform. Head to your project's **Overview** page in Apwrite Console, and scroll down to the **Integrations** section. Click the **Add platform** button and select **Web App** from the dropdown.
 
 {% only_dark %}
@@ -15,7 +16,7 @@ To showcase the functionality, the template ships with a demo frontend that you 
 ![Add a platform](/images/docs/quick-starts/add-platform.png)
 {% /only_light %}
 
-Set **Name** to `Subscription demo` and **Hostname** to your Function's domain. 
+Set **Name** to `Subscription demo` and **Hostname** to your Function's domain.
 You can find your function's domain under the **Domains** tab.
 
 {% only_dark %}
@@ -25,7 +26,7 @@ You can find your function's domain under the **Domains** tab.
 ![Functions domain](/images/docs/tutorials/subscriptions-with-stripe/functions-stripe-domain.png)
 {% /only_light %}
 
-Click the **Next** button to continue. 
+Click the **Next** button to continue.
 
 You don't need to follow the remaining screens, so you can click on **Skip optional steps**.
 

@@ -59,7 +59,7 @@ Add the following code to it.
 ```ts
 // appwrite.ts
 
-import { Client, Databases, Account } from "appwrite";
+import { Client, Databases, Account } from 'appwrite';
 
 const url: string = import.meta.env.VITE_APPWRITE_ENDPOINT;
 const project: string = import.meta.env.VITE_APPWRITE_PROJECT;

@@ -20,10 +20,10 @@ With just a few lines of backend code, you can now set up a full-functioning mes
 
 ## Highlights
 
-- Unified platform for SMS, email, and push notifications.
-- Integration with leading third-party messaging services.
-- Simplified backend code for messaging services.
-- A fully functional Messaging Console for organizing messages, recipients, and providers.
+-   Unified platform for SMS, email, and push notifications.
+-   Integration with leading third-party messaging services.
+-   Simplified backend code for messaging services.
+-   A fully functional Messaging Console for organizing messages, recipients, and providers.
 
 ## Emails
 
@@ -87,7 +87,7 @@ If you're building a mobile app, note that push notifications must be sent throu
 
 You must configure these services before you can send your first push notification.
 
-To send with APNS, you must first register for remote notifications in your app delegate's application using the (_:didFinishLaunchingWithOptions:) method.
+To send with APNS, you must first register for remote notifications in your app delegate's application using the (\_:didFinishLaunchingWithOptions:) method.
 
 ```swift
 func application(
@@ -132,22 +132,22 @@ Appwrite Cloud 1.5 brings enhanced support for SSR authentication patterns, opti
 
 ## Highlights
 
-- Enhanced SSR authentication support.
-- Improved session management for SSR frameworks.
-- Official methods for session generation and access.
+-   Enhanced SSR authentication support.
+-   Improved session management for SSR frameworks.
+-   Official methods for session generation and access.
 
 The big change is that Appwrite now allows you to generate and access sessions server side to set session cookies and use these sessions to authorize future requests.
 
 ```tsx
-const session = account.createEmailPasswordSession(email, password)
-console.log(session.secret) // Output: 'eyJpZCI...sdfahfkjjy'
+const session = account.createEmailPasswordSession(email, password);
+console.log(session.secret); // Output: 'eyJpZCI...sdfahfkjjy'
 ```
 
 Using the new `setSession` method, we can now retrieve a session secret from our cookies and authorize users to perform authenticated request to our server.
 
 ```tsx
-client.setSession(session.secret)
-const currentUser = await account.get()
+client.setSession(session.secret);
+const currentUser = await account.get();
 ```
 
 Read the [SSR announcement](/blog/post/introducing-support-for-server-side-rendering) to get a full overview of capabilities or visit our documentation to get started.
@@ -158,17 +158,17 @@ Security takes a front seat with the addition of Two-Factor Authentication (2FA)
 
 ## Highlights
 
-- Enhanced security with Two-Factor Authentication.
-- Easy implementation of 2FA challenges.
-- Support for multiple authentication methods, including phone, email, and TOTP.
-- Can be used in conjunction with any existing authentication method you have implemented using Appwrite Auth.
+-   Enhanced security with Two-Factor Authentication.
+-   Easy implementation of 2FA challenges.
+-   Support for multiple authentication methods, including phone, email, and TOTP.
+-   Can be used in conjunction with any existing authentication method you have implemented using Appwrite Auth.
 
 ## Enabling 2FA
 
 To use 2FA, it needs to be enabled on a user's account. This can be achieved by calling account.updateMFA().
 
 ```js
-import { Client, Account } from "appwrite";
+import { Client, Account } from 'appwrite';
 
 // Init SDK
 const client = new Client();
@@ -192,37 +192,26 @@ New Database operators `contains` and `or`, providing greater control and flexib
 
 ## Highlights
 
-- New `contains` and `or` database operators.
-- Enhanced query flexibility and control.
-- Support for complex data retrieval and manipulation.
+-   New `contains` and `or` database operators.
+-   Enhanced query flexibility and control.
+-   Support for complex data retrieval and manipulation.
 
 ## Adding operators
 
 The contains operator is a great addition to the existing text search operators such as startsWith & endsWith, and can be used in combination with these two.
 
 ```js
-db.listDocuments(
-    '<DATABASE_ID>',
-    '<COLLECTION_ID>',
-	  [
-	    Query.contains('content', ['happy', 'love']),
-	  ]
-   )
+db.listDocuments('<DATABASE_ID>', '<COLLECTION_ID>', [
+    Query.contains('content', ['happy', 'love'])
+]);
 ```
 
 To use the OR operator pass Query.or([...]) to the queries array and provide at least two queries within the nested array.
 
 ```js
-db.listDocuments(
-	 '<DATABASE_ID>',
-	 '<COLLECTION_ID>',
-        [
-        Query.or([
-            Query.contains('name','ivy'),
-            Query.greaterThan('age',30)
-            ])
-        ]
-  )
+db.listDocuments('<DATABASE_ID>', '<COLLECTION_ID>', [
+    Query.or([Query.contains('name', 'ivy'), Query.greaterThan('age', 30)])
+]);
 ```
 
 Read the [Database operators announcement](/blog/post/introducing-new-database-operators) for a full overview of capabilities, or visit our [documentation](/docs/products/databases/queries) to get started.
@@ -233,18 +222,16 @@ Enum SDK support expands the versatility and usability of Appwrite's SDKs across
 
 ## Highlights
 
-- Enum support improves type safety and code readability.
+-   Enum support improves type safety and code readability.
 
 ## Enums and OAuth
 
 One of the most common examples of SDK Enums is OAuth providers. To log in with Apple, you must pass the Apple string as the provider. With enums, you'll be able to pass OAuthProvider.Apple instead.
 
 ```js
-import { Client, Account, OAuthProvider } from "appwrite";
+import { Client, Account, OAuthProvider } from 'appwrite';
 
-const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('<PROJECT_ID>');
+const client = new Client().setEndpoint('https://cloud.appwrite.io/v1').setProject('<PROJECT_ID>');
 
 const account = new Account(client);
 
@@ -257,7 +244,7 @@ Read the [Enum SDK support](/blog/post/introducing-enum-sdk-support) announcemen
 
 One feature that was not announced during Init but was recently released is custom token login. Tokens are short-lived secrets created by an [Appwrite Server SDK](/docs/sdks#server) that can be exchanged for a session by a [Client SDK](/docs/sdks#client) to log in users. You may already be familiar with tokens if you checked out [Magic URL login](/docs/products/auth/magic-url), [Email OTP login](/docs/products/auth/email-otp), or [Phone (SMS) login](/docs/products/auth/phone-sms).
 
-Custom token allows you to use a [Server SDK](/docs/sdks#server) to generate tokens for your own auth implementations. This allows you to code your own authentication methods using Appwrite Functions or your own backend. You could implement username and password sign-in, captcha-protected authentication, phone call auth, and much more. Custom tokens also allow you to  integrate Appwrite with external authentication providers such as Auth0, TypingDNA, or any provider trusted by your users.
+Custom token allows you to use a [Server SDK](/docs/sdks#server) to generate tokens for your own auth implementations. This allows you to code your own authentication methods using Appwrite Functions or your own backend. You could implement username and password sign-in, captcha-protected authentication, phone call auth, and much more. Custom tokens also allow you to integrate Appwrite with external authentication providers such as Auth0, TypingDNA, or any provider trusted by your users.
 
 ## Creating your custom token
 
@@ -290,6 +277,6 @@ This release brings you more flexibility, security, and safety when building wit
 
 To get started, visit our documentation, YouTube channel, or get support on Discord.
 
-- [Documentation](/docs)
-- [Discord](https://appwrite.io/discord)
-- [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
+-   [Documentation](/docs)
+-   [Discord](https://appwrite.io/discord)
+-   [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)

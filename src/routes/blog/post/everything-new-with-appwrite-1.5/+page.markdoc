@@ -10,7 +10,7 @@ category: product
 featured: false
 ---
 
-Appwrite just finished its release announcements for version 1.5 with a week of celebration called Init_, so here's the TLDR on all the announcements we made last week.
+Appwrite just finished its release announcements for version 1.5 with a week of celebration called Init\_, so here's the TLDR on all the announcements we made last week.
 
 ## Day 0 - Messaging
 
@@ -19,11 +19,7 @@ A new product that allows you to send SMS, email, and push notifications through
 With just a few lines of backend code, you can set up a full-functioning messaging service under one unified platform.
 
 ```ts
-messaging.createSms(
-    '6541...ea30',
-    'Thanks for signing up!',
-    ['65415281565570ca1f9c'],
-);
+messaging.createSms('6541...ea30', 'Thanks for signing up!', ['65415281565570ca1f9c']);
 ```
 
 With messaging, we also have a fully functional interface for organizing messages, recipients and providers all directly from the console
@@ -37,15 +33,15 @@ Improved support for server-side rendering authentication patterns. Appwrite was
 The big change was that Appwrite now allows you to generate and access sessions server side to set session cookies and use these sessions to authorize future requests.
 
 ```ts
-const session = account.createEmailPasswordSession(email, password)
-console.log(session.secret) // Output: 'eyJpZCI...sdfahfkjjy'
+const session = account.createEmailPasswordSession(email, password);
+console.log(session.secret); // Output: 'eyJpZCI...sdfahfkjjy'
 ```
 
 Using the new `setSession` method, we can now retrieve a session secret from our cookies and authorize users to perform authenticated request to our server.
 
 ```ts
-client.setSession(session.secret)
-const currentUser = await account.get()
+client.setSession(session.secret);
+const currentUser = await account.get();
 ```
 
 ## Day 2 - 2FA
@@ -65,61 +61,59 @@ account.updateChallenge(challengeId, 'challengeCode'])
 
 Two new database operators for more control and flexibility when writing queries.
 
-- `contains` - partial text matches on string attributes, array element matching on array attributes
-- `or` - write logical OR queries
+-   `contains` - partial text matches on string attributes, array element matching on array attributes
+-   `or` - write logical OR queries
 
 ```ts
-Query.contains('content', ['happy', 'love'])
+Query.contains('content', ['happy', 'love']);
 
-Query.or([
-    Query.contains('name','ivy'),
-    Query.greaterThan('age',30)
-  ])
+Query.or([Query.contains('name', 'ivy'), Query.greaterThan('age', 30)]);
 ```
 
 In addition to these key announcements, Appwrite announced Enum SDK support and the addition of more updated runtimes to the Appwrite ecosystem.
 
 ## Content list
+
 You can find all the official release announcements and documentation for each day of the week below
 
 ### Day 0: Messaging
 
-- [Announcement Video](https://youtu.be/w-izHSKXqtU)
-- [Product tour](https://youtu.be/QdDgPeuBZ1I)
-- [Announcement article](/blog/post/announcing-appwrite-messaging)
-- [Docs](/docs/products/messaging)
+-   [Announcement Video](https://youtu.be/w-izHSKXqtU)
+-   [Product tour](https://youtu.be/QdDgPeuBZ1I)
+-   [Announcement article](/blog/post/announcing-appwrite-messaging)
+-   [Docs](/docs/products/messaging)
 
 ### Day 1: SSR
 
-- [Announcement Video](https://youtu.be/jeL4cSovOBA)
-- [Product tour](https://youtu.be/7LN05c-ov_0)
-- [Announcement article](/blog/post/introducing-support-for-server-side-rendering)
-- [Docs](/docs/products/auth/server-side-rendering)
+-   [Announcement Video](https://youtu.be/jeL4cSovOBA)
+-   [Product tour](https://youtu.be/7LN05c-ov_0)
+-   [Announcement article](/blog/post/introducing-support-for-server-side-rendering)
+-   [Docs](/docs/products/auth/server-side-rendering)
 
 ### Day 2: 2FA & Enum SDK support
 
-- [Announcement Video](https://youtu.be/hpdUXOFay4M) - 2FA
-- [Product tour](https://youtu.be/OWRju8ZZuQ8) - 2FA
-- [Announcement article](/blog/post/announcing-two-factor-authentication) - 2FA
-- [Announcement article - Enum SDK support](/blog/post/introducing-enum-sdk-support)
-- [Docs - 2FA](/docs/products/auth/mfa)
-- [Docs - Enum SDK support](/docs/sdks#enums)
+-   [Announcement Video](https://youtu.be/hpdUXOFay4M) - 2FA
+-   [Product tour](https://youtu.be/OWRju8ZZuQ8) - 2FA
+-   [Announcement article](/blog/post/announcing-two-factor-authentication) - 2FA
+-   [Announcement article - Enum SDK support](/blog/post/introducing-enum-sdk-support)
+-   [Docs - 2FA](/docs/products/auth/mfa)
+-   [Docs - Enum SDK support](/docs/sdks#enums)
 
-### Day 3:  Database Operators
+### Day 3: Database Operators
 
-- [Announcement Video](https://youtu.be/73flN6mZqAs)
-- [Product tour](https://youtu.be/IMgl9f_iht4)
-- [Announcement article](/blog/post/introducing-new-database-operators)
-- [Docs](/docs/products/databases/queries)
+-   [Announcement Video](https://youtu.be/73flN6mZqAs)
+-   [Product tour](https://youtu.be/IMgl9f_iht4)
+-   [Announcement article](/blog/post/introducing-new-database-operators)
+-   [Docs](/docs/products/databases/queries)
 
-### Day 4:  New runtimes
+### Day 4: New runtimes
 
-- [Announcement article](/blog/post/introducing-enum-sdk-support)
-- [Docs](/docs/products/functions/runtimes)
+-   [Announcement article](/blog/post/introducing-enum-sdk-support)
+-   [Docs](/docs/products/functions/runtimes)
 
 Join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
-- [Discord](https://appwrite.io/discord)
-- [Blog](/blog)
-- [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
-- [GitHub](https://github.com/appwrite/appwrite)
+-   [Discord](https://appwrite.io/discord)
+-   [Blog](/blog)
+-   [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
+-   [GitHub](https://github.com/appwrite/appwrite)

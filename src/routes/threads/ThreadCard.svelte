@@ -9,18 +9,21 @@
 </script>
 
 {#key highlightTerms}
-    <a
-        href="/threads/{thread.discord_id}"
-        class="web-card is-normal has-border-gradient thread"
-    >
+    <a href="/threads/{thread.discord_id}" class="web-card is-normal has-border-gradient thread">
         <div class="u-flex u-gap-8">
-            <h3 class="web-main-body-500 web-u-color-text-primary u-break-word" use:highlight={highlightTerms}>
+            <h3
+                class="web-main-body-500 web-u-color-text-primary u-break-word"
+                use:highlight={highlightTerms}
+            >
                 {thread.title}
             </h3>
             <!-- <time class="web-caption-400 u-margin-inline-start-auto">12 Jan, 2023</time> -->
         </div>
 
-        <p class="web-main-body-500 u-margin-block-start-4 u-break-word" use:highlight={highlightTerms}>
+        <p
+            class="web-main-body-500 u-margin-block-start-4 u-break-word"
+            use:highlight={highlightTerms}
+        >
             {thread.content.length > 200 ? thread.content.slice(0, 200) + '...' : thread.content}
         </p>
 
@@ -53,7 +56,7 @@
         position: relative;
 
         p: {
-          overflow-wrap: break-word;
+            overflow-wrap: break-word;
         }
     }
 

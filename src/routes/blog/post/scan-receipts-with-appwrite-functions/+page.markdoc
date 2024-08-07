@@ -8,6 +8,7 @@ timeToRead: 15
 author: vincent-ge
 category: functions
 ---
+
 I downloaded a personal finance app a few weeks ago to help me track my expenses.
 I uninstalled that app about five minutes later.
 
@@ -23,17 +24,20 @@ To help you and your users avoid filling out giant forms, we're going to build a
 that will extract the total amount from a receipt image using a Hugging Face model.
 
 # Prerequisites
+
 Before you start, you'll need to know the basics of working with Appwrite Cloud and [Appwrite Functions](/docs/products/functions).
 We're going to be using Appwrite Functions to run our receipt processing code, which calls a [Hugging Face model](https://huggingface.co/AdamCodd/donut-receipts-extract)
 to extract data from a receipt image. Make sure you also have a **Hugging Face API key** to use the model.
 
 # Scanning receipts
+
 We're going to use the [Hugging Face Donut Receipts Extract model](https://huggingface.co/AdamCodd/donut-receipts-extract) to
 extract relevant information from the receipt image.
 
 Hugging Face's API makes this pretty simple. We'll send a POST request to the model's endpoint with the image data, and it will return the extracted information.
 
 Our script can be as simple as:
+
 ```python
 import requests
 
@@ -86,18 +90,21 @@ print(parsed_receipt)
 ```
 
 Let's also quickly save our dependencies in a `requirements.txt` file by running these commands:
+
 ```bash
 pip install pipreqs
 pipreqs .
 ```
 
 The outputted file for me just looks like this:
+
 ```txt
 appwrite==5.0.2
 Requests==2.31.0
 ```
 
 # Integrating with Appwrite Functions
+
 This script is great for running locally, but we want to run it in the Cloud so we can call it from our app.
 We also want to make sure we're not exposing our Hugging Face API key in our app and add user based permissions to our endpoint.
 
@@ -156,6 +163,7 @@ def main(context):
 We will update the function to accept a file ID from Appwrite Storage, download the file, and run our receipt scanning script on it.
 
 First, setup the Appwrite SDK in the function.
+
 ```python
 import os
 import requests
@@ -217,9 +225,11 @@ Next, we'll download the file from Appwrite Storage and run our receipt scanning
 ```
 
 # Make a request
+
 Now that our function is set up, we can make a request to it from our app to scan a receipt.
 
 Using a CURL request on the function's [domain](/docs/products/functions/domains):
+
 ```bash
 curl -X POST https://66325723b6d05e9f6262.appwrite.global \
      -H "Content-Type: application/json" \
@@ -230,23 +240,24 @@ Which might return something like:
 
 ```json
 {
-  "receipt": {
-    "store_name": " Boutique",
-    "store_address": " 4143 STATE STREET LOS ANGELES, CA",
-    "phone": "213-555-1234",
-    "date": "2022-03-05",
-    "time": "13:05PM",
-    "subtotal": " $183,87",
-    "service_charge": "",
-    "tax": " $22,98",
-    "total": " $206,85",
-    "tips": "",
-    "discount": ""
-  }
+    "receipt": {
+        "store_name": " Boutique",
+        "store_address": " 4143 STATE STREET LOS ANGELES, CA",
+        "phone": "213-555-1234",
+        "date": "2022-03-05",
+        "time": "13:05PM",
+        "subtotal": " $183,87",
+        "service_charge": "",
+        "tax": " $22,98",
+        "total": " $206,85",
+        "tips": "",
+        "discount": ""
+    }
 }
 ```
 
 # Next steps
+
 There are a few things you can do to integrate this into your app. For example, you could integrate this
 with a web app by uploading the receipt image to Appwrite Storage and calling the function with the file ID.
 
@@ -259,11 +270,11 @@ const file = await storage.createFile(
 
 const result = await functions.createExecution(
     '66325723000399792782', // functionId
-    JSON.stringify({$id: file.$id}), // data
+    JSON.stringify({ $id: file.$id }), // data
     false, // async (optional)
     '/', // path (optional)
     sdk.ExecutionMethod.POST, // method
-    {"Content-Type": "application/json"} // headers
+    { 'Content-Type': 'application/json' } // headers
 );
 ```
 
@@ -278,9 +289,8 @@ instead of returning it as a response.
 
 Visit our documentation to learn more about Appwrite, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
-- [Docs](/docs/products/ai)
-- [Discord](https://appwrite.io/discord)
-- [Blog](/blog)
-- [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
-- [GitHub](https://github.com/appwrite/appwrite)
-
+-   [Docs](/docs/products/ai)
+-   [Discord](https://appwrite.io/discord)
+-   [Blog](/blog)
+-   [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
+-   [GitHub](https://github.com/appwrite/appwrite)

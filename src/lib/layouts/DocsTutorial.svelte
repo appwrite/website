@@ -20,10 +20,7 @@
     <article class="web-article u-contents">
         <header class="web-article-header">
             <div class="web-article-header-start u-flex-vertical web-u-cross-start">
-                <button
-                    class="web-icon-button web-is-only-mobile"
-                    aria-label="previous page"
-                >
+                <button class="web-icon-button web-is-only-mobile" aria-label="previous page">
                     <span class="icon-cheveron-left" aria-hidden="true" />
                 </button>
                 <ul class="web-metadata web-caption-400">
@@ -100,9 +97,9 @@
                             </a>
                             {#if isCurrentStep}
                                 <ol
-                                        class="web-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
+                                    class="web-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
                                 >
-                                {#each toc as parent}
+                                    {#each toc as parent}
                                         <li class="web-references-menu-item">
                                             <a
                                                 href={parent.href}
@@ -136,7 +133,7 @@
                                                 </ol>
                                             {/if}
                                         </li>
-                                {/each}
+                                    {/each}
                                 </ol>
                             {/if}
                         </li>
@@ -152,5 +149,3 @@
         </aside>
     </article>
 </main>
-
-

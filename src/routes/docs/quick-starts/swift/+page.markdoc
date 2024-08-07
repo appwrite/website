@@ -6,11 +6,12 @@ difficulty: beginner
 readtime: 5
 back: /docs/quick-starts
 ---
+
 Learn how to setup your first Swift project powered by Appwrite.
 
 {% info title="Server SDK" %}
 This tutorial is for the Swift Server SDK, meant for server and backend applications.
-If you're trying to build a client-side app, like an iOS, macOS, watchOS or tvOS app, 
+If you're trying to build a client-side app, like an iOS, macOS, watchOS or tvOS app,
 follow the [Start with Apple guide](https://appwrite.io/docs/quick-starts/apple).
 {% /info %}
 
@@ -34,13 +35,13 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 {% only_light %}
 ![Server integrations](/images/docs/quick-starts/integrate-server.png)
 {% /only_light %}
-| Category  {% width=120 %} | Required scopes       | Purpose |
+| Category {% width=120 %} | Required scopes | Purpose |
 |-----------|-----------------------|---------|
-| Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
-|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
-|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
-|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
-|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+| Database | `databases.write` | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
+| | `collections.write` | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
+| | `attributes.write` | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
+| | `documents.read` | Allows API key to read [documents](/docs/products/databases/documents). |
+| | `documents.write` | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
 
 Other scopes are optional.
 
@@ -54,6 +55,7 @@ Other scopes are optional.
 {% /section %}
 {% section #step-2 step=2 title="Create Swift project" %}
 Create a Swift CLI application by opening **XCode** > **Create a new XCode project**
+
 > **macOS** > **Command Line Tool**.
 
 Follow the wizard and open your new project.
@@ -61,14 +63,14 @@ Follow the wizard and open your new project.
 {% /section %}
 {% section #step-3 step=3 title="Install Appwrite" %}
 
-Install the Swift Appwrite SDK by going to **File** > **Add Packages...** and search for the repo url 
+Install the Swift Appwrite SDK by going to **File** > **Add Packages...** and search for the repo url
 `https://github.com/appwrite/sdk-for-swift` and select `sdk-for-swift`.
 Specify version as `5.0.1` with rule **Up to Next Major Version**.
 
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
 
-Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier. 
+Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier.
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
@@ -129,7 +131,7 @@ func prepareDatabase() async -> (Database?, Collection?) {
         key: "isComplete",
         xrequired: true
     )
-    
+
     return (todoDatabase, todoCollection)
 }
 ```
@@ -137,6 +139,7 @@ func prepareDatabase() async -> (Database?, Collection?) {
 {% /section %}
 {% section #step-6 step=6 title="Add documents" %}
 Create a function to add some mock data into your new collection.
+
 ```swift
 func seedDatabase(todoDatabase: Database?, todoCollection: Collection?) async {
     let testTodo1: [String: Any] = [
@@ -159,13 +162,13 @@ func seedDatabase(todoDatabase: Database?, todoCollection: Collection?) async {
     try? await databases.createDocument(
         databaseId: todoDatabase!.id,
         collectionId: todoCollection!.id,
-        documentId: ID.unique(), 
+        documentId: ID.unique(),
         data: testTodo1
     )
     try? await databases.createDocument(
         databaseId: todoDatabase!.id,
         collectionId: todoCollection!.id,
-        documentId: ID.unique(), 
+        documentId: ID.unique(),
         data: testTodo2
     )
     try? await databases.createDocument(

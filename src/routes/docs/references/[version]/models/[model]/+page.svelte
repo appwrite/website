@@ -43,6 +43,7 @@
                         <Td>
                             {property.description}
                             {#if property.relatedModels}
+                                <!-- eslint-disable -->
                                 Can be one of: {@html parse(property.relatedModels)}
                             {/if}
                         </Td>
@@ -53,14 +54,14 @@
         <Heading id="example" level={2}>Example</Heading>
         <Tabs>
             {#each data.examples as example}
-            <TabsItem id={example.type.toLowerCase()} title={example.type}>
-                <Fence
-                content={JSON.stringify(example.example, null, 4)}
-                language="json"
-                process
-                withLineNumbers
-                />
-            </TabsItem>
+                <TabsItem id={example.type.toLowerCase()} title={example.type}>
+                    <Fence
+                        content={JSON.stringify(example.example, null, 4)}
+                        language="json"
+                        process
+                        withLineNumbers
+                    />
+                </TabsItem>
             {/each}
         </Tabs>
     </article>

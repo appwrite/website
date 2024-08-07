@@ -8,14 +8,14 @@ isPartner: true
 isNew: true
 cover: /images/integrations/lemon-squeezy-payments/cover.png
 category: Payments
-product: 
+product:
     avatar: '/images/integrations/avatars/lemon-squeezy.png'
     vendor: Lemon Squeezy
     description: 'Lemon Squeezy is a platform designed to simplify the process of selling digital products online.'
-platform: 
+platform:
     - 'Self-hosted'
     - 'Cloud'
-images: 
+images:
     - /images/integrations/lemon-squeezy-payments/cover.png
     - /images/integrations/lemon-squeezy-payments/dashboard.png
     - /images/integrations/lemon-squeezy-payments/template.png
@@ -37,18 +37,18 @@ To implement the Lemon Squeezy payments integration, there are several steps you
 
 ## Step 1: Setup Lemon Squeezy
 
-First, [sign up on Lemon Squeezy](https://www.lemonsqueezy.com/) and add a new store. 
+First, [sign up on Lemon Squeezy](https://www.lemonsqueezy.com/) and add a new store.
 
 ![Lemon Squeezy dashboard](/images/integrations/lemon-squeezy-payments/dashboard.png)
 
 From your Lemon Squeezy dashboard, save the following details for further usage:
 
-| Field name |  |
-| --- | --- |
-| Variant ID | Head to **Store** > **Products** from the left sidebar. Create a new product with the pricing type as **Single payment** and add all other mandatory details such as name, price, and tax category. Click on the product dropdown menu (…) to get the variant ID. |
-| Store ID | Head to **Settings** > **Stores** from the left sidebar. The store ID will be a number visible next to your store’s URL. |
-| API key | Head to **Settings** > **API** from the left sidebar. Create a new API key. |
-| Webhook secret | Head to **Settings** > **Webhooks** from the left sidebar. Add a temporary endpoint `https://temporary-endpoint` (we will replace this with our final endpoint later), create a new webhook secret, and select the event `order_created`. |
+| Field name     |                                                                                                                                                                                                                                                                   |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Variant ID     | Head to **Store** > **Products** from the left sidebar. Create a new product with the pricing type as **Single payment** and add all other mandatory details such as name, price, and tax category. Click on the product dropdown menu (…) to get the variant ID. |
+| Store ID       | Head to **Settings** > **Stores** from the left sidebar. The store ID will be a number visible next to your store’s URL.                                                                                                                                          |
+| API key        | Head to **Settings** > **API** from the left sidebar. Create a new API key.                                                                                                                                                                                       |
+| Webhook secret | Head to **Settings** > **Webhooks** from the left sidebar. Add a temporary endpoint `https://temporary-endpoint` (we will replace this with our final endpoint later), create a new webhook secret, and select the event `order_created`.                         |
 
 ## Step 2: Create the Appwrite Function
 
@@ -58,7 +58,7 @@ Head over to the Appwrite console, navigate to the **Functions** page, click th
 
 ![Function template](/images/integrations/lemon-squeezy-payments/template.png)
 
-During the setup process, click the checkbox to generate an Appwrite API key on completion and add the **Lemon Squeezy API key**, **webhook secret**, **store ID**, and **variant ID** in the **Variables** step. If you are self-hosting Appwrite, click on the **optional variables** dropdown and update the Appwrite endpoint to your instance’s publicly accessible endpoint. 
+During the setup process, click the checkbox to generate an Appwrite API key on completion and add the **Lemon Squeezy API key**, **webhook secret**, **store ID**, and **variant ID** in the **Variables** step. If you are self-hosting Appwrite, click on the **optional variables** dropdown and update the Appwrite endpoint to your instance’s publicly accessible endpoint.
 
 ![Env variables](/images/integrations/lemon-squeezy-payments/variables.png)
 
@@ -88,6 +88,6 @@ You can visit the **Databases** page in your Appwrite project, enter the `orders
 
 If you would like to learn more about Lemon Squeezy Payments and Appwrite Functions, we have some resources that you should visit:
 
-- [Sign up for Lemon Squeezy](https://lemonsqueezy.com)
-- [Add a new product to your Lemon Squeezy store](https://docs.lemonsqueezy.com/help/products/adding-products)
-- [Learn more about Functions templates in Appwrite docs](https://appwrite.io/docs/products/functions/templates)
+-   [Sign up for Lemon Squeezy](https://lemonsqueezy.com)
+-   [Add a new product to your Lemon Squeezy store](https://docs.lemonsqueezy.com/help/products/adding-products)
+-   [Learn more about Functions templates in Appwrite docs](https://appwrite.io/docs/products/functions/templates)

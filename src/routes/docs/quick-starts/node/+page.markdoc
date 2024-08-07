@@ -6,6 +6,7 @@ difficulty: beginner
 readtime: 5
 back: /docs/quick-starts
 ---
+
 Learn how to setup your first Node.js project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
@@ -28,13 +29,13 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 ![Create project screen](/images/docs/quick-starts/integrate-server.png)
 {% /only_light %}
 
-| Category  {% width=120 %} | Required scopes       | Purpose |
-|-----------|-----------------------|---------|
-| Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
-|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
-|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
-|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
-|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+| Category {% width=120 %} | Required scopes     | Purpose                                                                                                     |
+| ------------------------ | ------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Database                 | `databases.write`   | Allows API key to create, update, and delete [databases](/docs/products/databases/databases).               |
+|                          | `collections.write` | Allows API key to create, update, and delete [collections](/docs/products/databases/collections).           |
+|                          | `attributes.write`  | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
+|                          | `documents.read`    | Allows API key to read [documents](/docs/products/databases/documents).                                     |
+|                          | `documents.write`   | Allows API key to create, update, and delete [documents](/docs/products/databases/documents).               |
 
 Other scopes are optional.
 
@@ -56,6 +57,7 @@ Install the Node.js Appwrite SDK.
 ```sh
 npm install node-appwrite@11.1.1
 ```
+
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
 
@@ -71,14 +73,14 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 Create a new file `app.js` and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
 ```js
-const sdk = require("node-appwrite");
+const sdk = require('node-appwrite');
 
 const client = new sdk.Client();
 
 client
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<YOUR_PROJECT_ID>")
-    .setKey("<YOUR_API_KEY>");
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
 ```
 
 {% /section %}
@@ -93,30 +95,18 @@ var todoDatabase;
 var todoCollection;
 
 async function prepareDatabase() {
-    todoDatabase = await databases.create(
-        sdk.ID.unique(),
-        'TodosDB'
-    );
+    todoDatabase = await databases.create(sdk.ID.unique(), 'TodosDB');
 
-    todoCollection = await databases.createCollection(
-        todoDatabase.$id,
-        sdk.ID.unique(),
-        'Todos'
-    );
+    todoCollection = await databases.createCollection(todoDatabase.$id, sdk.ID.unique(), 'Todos');
 
-    await databases.createStringAttribute(
-        todoDatabase.$id,
-        todoCollection.$id,
-        'title',
-        255,
-        true
-    );
+    await databases.createStringAttribute(todoDatabase.$id, todoCollection.$id, 'title', 255, true);
 
     await databases.createStringAttribute(
         todoDatabase.$id,
         todoCollection.$id,
         'description',
-        255, false,
+        255,
+        false,
         'This is a test description'
     );
     await databases.createBooleanAttribute(
@@ -147,7 +137,7 @@ async function seedDatabase() {
 
     var testTodo3 = {
         title: 'Cut the apples',
-        description: 'Don\'t forget to pack them in a box',
+        description: "Don't forget to pack them in a box",
         isComplete: false
     };
 
@@ -180,13 +170,12 @@ Run the functions to by calling `runAllTasks();`.
 
 ```js
 async function getTodos() {
-    var todos = await databases.listDocuments(
-        todoDatabase.$id,
-        todoCollection.$id
-    );
+    var todos = await databases.listDocuments(todoDatabase.$id, todoCollection.$id);
 
-    todos.documents.forEach(todo => {
-        console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
+    todos.documents.forEach((todo) => {
+        console.log(
+            `Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`
+        );
     });
 }
 

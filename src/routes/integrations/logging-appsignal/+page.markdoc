@@ -8,13 +8,13 @@ isPartner: true
 isNew: true
 cover: /images/integrations/logging-appsignal/cover.png
 category: Logging
-product: 
+product:
     avatar: '/images/integrations/avatars/appsignal.png'
     vendor: AppSignal
     description: 'AppSignal is a comprehensive monitoring and error-tracking tool designed for developers to gain insights into the performance of their applications.'
-platform: 
+platform:
     - 'Self-hosted'
-images: 
+images:
     - /images/integrations/logging-appsignal/cover.png
     - /images/integrations/logging-appsignal/api-key.png
     - /images/integrations/logging-appsignal/errors-list.png
@@ -75,5 +75,5 @@ You can also view the error summary for further details.
 
 If you would like to learn more about AppSignal and Appwrite, we have some resources that you should visit:
 
-- [Sign up for AppSignal](https://appsignal.com/users/sign_up)
-- [Handling errors in Appwrite self-hosted instances](https://appwrite.io/docs/advanced/self-hosting/production#errors)
+-   [Sign up for AppSignal](https://appsignal.com/users/sign_up)
+-   [Handling errors in Appwrite self-hosted instances](https://appwrite.io/docs/advanced/self-hosting/production#errors)

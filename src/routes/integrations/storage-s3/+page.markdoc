@@ -8,13 +8,13 @@ isPartner: true
 isNew: true
 cover: /images/integrations/storage-s3/cover.png
 category: Storage
-product: 
+product:
     avatar: '/images/integrations/avatars/aws.png'
     vendor: AWS
     description: 'Amazon S3 is an object storage service that offers industry-leading scalability, data availability, security, and performance.'
-platform: 
+platform:
     - 'Self-hosted'
-images: 
+images:
     - /images/integrations/storage-s3/cover.png
     - /images/integrations/storage-s3/bucket.png
     - /images/integrations/storage-s3/access-key.png
@@ -77,8 +77,8 @@ When you visit your S3 bucket via the AWS Management Console, you should see the
 
 If you would like to learn more about Amazon S3 and Appwrite Auth, we have some resources that you should visit:
 
-- [What is Amazon S3?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html)
-- [How to create an Amazon S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html)
-- [Appwrite self-hosting docs](https://appwrite.io/docs/advanced/self-hosting)
-- [Storage environment variables for Appwrite (self-hosted)](https://appwrite.io/docs/advanced/self-hosting/environment-variables#storage)
-- [Appwrite Storage API reference](https://appwrite.io/docs/references/cloud/client-web/storage)
+-   [What is Amazon S3?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html)
+-   [How to create an Amazon S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html)
+-   [Appwrite self-hosting docs](https://appwrite.io/docs/advanced/self-hosting)
+-   [Storage environment variables for Appwrite (self-hosted)](https://appwrite.io/docs/advanced/self-hosting/environment-variables#storage)
+-   [Appwrite Storage API reference](https://appwrite.io/docs/references/cloud/client-web/storage)

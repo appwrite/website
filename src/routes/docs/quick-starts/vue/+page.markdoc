@@ -20,7 +20,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 If this is your first time using Appwrite, create an account and create your first project.
 
-Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`. 
+Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`.
 
 {% only_dark %}
 ![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
@@ -38,6 +38,7 @@ Create a Vue project.
 ```sh
 npm init vue@latest my-app && cd my-app
 ```
+
 {% /section %}
 {% section #step-3 step=3 title="Install Appwrite" %}
 
@@ -46,9 +47,10 @@ Install the JavaScript Appwrite SDK.
 ```sh
 npm install appwrite@14.0.1
 ```
+
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
-Find your project's ID in the **Settings** page. 
+Find your project's ID in the **Settings** page.
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
@@ -71,57 +73,53 @@ client
 export const account = new Account(client);
 export { ID } from 'appwrite';
 ```
+
 {% /section %}
 {% section #step-5 step=5 title="Create a login page" %}
 Add the following code to `src/App.vue`.
 
 ```html
 <template>
-  <div>
-    <p>
-      {{ loggedInUser ? `Logged in as ${loggedInUser.name}` : 'Not logged in' }}
-    </p>
+    <div>
+        <p>{{ loggedInUser ? `Logged in as ${loggedInUser.name}` : 'Not logged in' }}</p>
 
-    <form>
-      <input type="email" placeholder="Email" v-model="email" />
-      <input type="password" placeholder="Password" v-model="password" />
-      <input type="text" placeholder="Name" v-model="name" />
-      <button type="button" @click="login(email, password)">Login</button>
-      <button type="button" @click="register">
-        Register
-      </button>
-      <button type="button" @click="logout">
-        Logout
-      </button>
-    </form>
-  </div>
+        <form>
+            <input type="email" placeholder="Email" v-model="email" />
+            <input type="password" placeholder="Password" v-model="password" />
+            <input type="text" placeholder="Name" v-model="name" />
+            <button type="button" @click="login(email, password)">Login</button>
+            <button type="button" @click="register">Register</button>
+            <button type="button" @click="logout">Logout</button>
+        </form>
+    </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { account, ID } from './lib/appwrite.js';
+    import { ref } from 'vue';
+    import { account, ID } from './lib/appwrite.js';
 
-const loggedInUser = ref(null);
-const email = ref('');
-const password = ref('');
-const name = ref('');
+    const loggedInUser = ref(null);
+    const email = ref('');
+    const password = ref('');
+    const name = ref('');
 
-const login = async (email, password) => {
-  await account.createEmailPasswordSession(email, password);
-  loggedInUser.value = await account.get();
-};
+    const login = async (email, password) => {
+        await account.createEmailPasswordSession(email, password);
+        loggedInUser.value = await account.get();
+    };
 
-const register = async () => {
-  await account.create(ID.unique(), email.value, password.value, name.value);
-  login(email.value, password.value);
-};
+    const register = async () => {
+        await account.create(ID.unique(), email.value, password.value, name.value);
+        login(email.value, password.value);
+    };
 
-const logout = async () => {
-  await account.deleteSession('current');
-  loggedInUser.value = null;
-};
+    const logout = async () => {
+        await account.deleteSession('current');
+        loggedInUser.value = null;
+    };
 </script>
 ```
+
 {% /section %}
 
 {% section #step-6 step=6 title="All set" %}

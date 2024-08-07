@@ -13,40 +13,44 @@ We're always working on improving and extending the current stack of available p
 Client libraries for integrating with Appwrite to build client-based applications and websites. Read one of the many [quick starts](/docs/quick-starts) guides for your framework of choice to start building your first application.
 
 {% table %}
-* &nbsp; {% width=48 %}
-* Platform
-* GitHub Repository
-* &nbsp; {% width=80 %}
+
+-   &nbsp; {% width=48 %}
+-   Platform
+-   GitHub Repository
+-   &nbsp; {% width=80 %}
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_light %}
-* Web SDK `14.0.1`
-* [appwrite/sdk-for-web](https://github.com/appwrite/sdk-for-web)
-* 
----
-* {% only_dark %}{% icon_image src="/images/platforms/dark/flutter.svg" alt="Flutter logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/flutter.svg" alt="Flutter logo" size="m" /%}{% /only_light %}
-* Flutter SDK `12.0.3`
-* [appwrite/sdk-for-flutter](https://github.com/appwrite/sdk-for-flutter)
-* 
----
-* {% only_dark %}{% icon_image src="/images/platforms/dark/apple.svg" alt="Apple logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/apple.svg" alt="Apple logo" size="m" /%}{% /only_light %}
-* Apple SDK `5.0.0`
-* [appwrite/sdk-for-apple](https://github.com/appwrite/sdk-for-apple)
-* 
----
-* {% only_dark %}{% icon_image src="/images/platforms/dark/android.svg" alt="Android logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/android.svg" alt="Android logo" size="m" /%}{% /only_light %}
-* Android SDK `5.1.0`
-* [appwrite/sdk-for-android](https://github.com/appwrite/sdk-for-android)
-* 
----
-* {% only_dark %}{% icon_image src="/images/platforms/dark/react.svg" alt="React logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/react.svg" alt="React logo" size="m" /%}{% /only_light %}
-* React Native SDK `0.1.0`
-* [appwrite/sdk-for-react-native](https://github.com/appwrite/sdk-for-react-native)
-* `beta`
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_light %}
+-   Web SDK `14.0.1`
+-   [appwrite/sdk-for-web](https://github.com/appwrite/sdk-for-web)
+-   ***
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/flutter.svg" alt="Flutter logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/flutter.svg" alt="Flutter logo" size="m" /%}{% /only_light %}
+-   Flutter SDK `12.0.3`
+-   [appwrite/sdk-for-flutter](https://github.com/appwrite/sdk-for-flutter)
+-   ***
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/apple.svg" alt="Apple logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/apple.svg" alt="Apple logo" size="m" /%}{% /only_light %}
+-   Apple SDK `5.0.0`
+-   [appwrite/sdk-for-apple](https://github.com/appwrite/sdk-for-apple)
+-   ***
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/android.svg" alt="Android logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/android.svg" alt="Android logo" size="m" /%}{% /only_light %}
+-   Android SDK `5.1.0`
+-   [appwrite/sdk-for-android](https://github.com/appwrite/sdk-for-android)
+-   ***
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/react.svg" alt="React logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/react.svg" alt="React logo" size="m" /%}{% /only_light %}
+-   React Native SDK `0.1.0`
+-   [appwrite/sdk-for-react-native](https://github.com/appwrite/sdk-for-react-native)
+-   `beta`
+
 {% /table %}
 
 # Server {% #server %}
@@ -54,69 +58,75 @@ Client libraries for integrating with Appwrite to build client-based application
 Server libraries for integrating with Appwrite to build server side integrations or use inside your [Appwrite Functions](/docs/products/functions). Read one of the many [quick starts](/docs/quick-starts) guides for your language/runtime of choice to start building your first server integration.
 
 {% table %}
-* &nbsp; {% width=48 %}
-* Platform
-* GitHub Repository
-* &nbsp; {% width=80 %}
+
+-   &nbsp; {% width=48 %}
+-   Platform
+-   GitHub Repository
+-   &nbsp; {% width=80 %}
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_light %}
-* Node.js SDK `12.0.1`
-* [appwrite/sdk-for-node](https://github.com/appwrite/sdk-for-node)
-* 
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_light %}
+-   Node.js SDK `12.0.1`
+-   [appwrite/sdk-for-node](https://github.com/appwrite/sdk-for-node)
+-   ***
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/dart.svg" alt="Dart logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/dart.svg" alt="Dart logo" size="m" /%}{% /only_light %}
+-   Dart SDK `11.0.2`
+-   [appwrite/sdk-for-dart](https://github.com/appwrite/sdk-for-dart)
+-   ***
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/python.svg" alt="Python logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/python.svg" alt="Python logo" size="m" /%}{% /only_light %}
+-   Python SDK `5.0.2`
+-   [appwrite/sdk-for-python](https://github.com/appwrite/sdk-for-python)
+-   ***
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/php.svg" alt="PHP logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/php.svg" alt="PHP logo" size="m" /%}{% /only_light %}
+-   PHP SDK `11.0.1`
+-   [appwrite/sdk-for-php](https://github.com/appwrite/sdk-for-php)
+-   ***
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_light %}
+-   Ruby SDK `11.0.1`
+-   [appwrite/sdk-for-ruby](https://github.com/appwrite/sdk-for-ruby)
+-   ***
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_light %}
+-   .NET SDK `0.8.1`
+-   [appwrite/sdk-for-dotnet](https://github.com/appwrite/sdk-for-dotnet)
+-   `beta`
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/dart.svg" alt="Dart logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/dart.svg" alt="Dart logo" size="m" /%}{% /only_light %}
-* Dart SDK `11.0.2`
-* [appwrite/sdk-for-dart](https://github.com/appwrite/sdk-for-dart)
-* 
----
-* {% only_dark %}{% icon_image src="/images/platforms/dark/python.svg" alt="Python logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/python.svg" alt="Python logo" size="m" /%}{% /only_light %}
-* Python SDK `5.0.2`
-* [appwrite/sdk-for-python](https://github.com/appwrite/sdk-for-python)
-* 
----
-* {% only_dark %}{% icon_image src="/images/platforms/dark/php.svg" alt="PHP logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/php.svg" alt="PHP logo" size="m" /%}{% /only_light %}
-* PHP SDK `11.0.1`
-* [appwrite/sdk-for-php](https://github.com/appwrite/sdk-for-php)
-* 
----
-* {% only_dark %}{% icon_image src="/images/platforms/dark/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_light %}
-* Ruby SDK `11.0.1`
-* [appwrite/sdk-for-ruby](https://github.com/appwrite/sdk-for-ruby)
-* 
----
-* {% only_dark %}{% icon_image src="/images/platforms/dark/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_light %}
-* .NET SDK `0.8.1`
-* [appwrite/sdk-for-dotnet](https://github.com/appwrite/sdk-for-dotnet)
-* `beta`
----
-* {% only_dark %}{% icon_image src="/images/platforms/dark/deno.svg" alt="Deno logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/deno.svg" alt="Deno logo" size="m" /%}{% /only_light %}
-* Deno SDK `10.0.1`
-* [appwrite/sdk-for-deno](https://github.com/appwrite/sdk-for-deno)
-* 
----
-* {% only_dark %}{% icon_image src="/images/platforms/dark/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
-* Kotlin SDK `5.0.1`
-* [appwrite/sdk-for-kotlin](https://github.com/appwrite/sdk-for-kotlin)
-* 
----
-* {% only_dark %}{% icon_image src="/images/platforms/dark/swift.svg" alt="Swift logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/swift.svg" alt="Swift logo" size="m" /%}{% /only_light %}
-* Swift SDK `5.0.1`
-* [appwrite/sdk-for-swift](https://github.com/appwrite/sdk-for-swift)
-* 
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/deno.svg" alt="Deno logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/deno.svg" alt="Deno logo" size="m" /%}{% /only_light %}
+-   Deno SDK `10.0.1`
+-   [appwrite/sdk-for-deno](https://github.com/appwrite/sdk-for-deno)
+-   ***
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
+-   Kotlin SDK `5.0.1`
+-   [appwrite/sdk-for-kotlin](https://github.com/appwrite/sdk-for-kotlin)
+-   ***
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/swift.svg" alt="Swift logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/swift.svg" alt="Swift logo" size="m" /%}{% /only_light %}
+-   Swift SDK `5.0.1`
+-   [appwrite/sdk-for-swift](https://github.com/appwrite/sdk-for-swift)
+
 {% /table %}
 
 If you would like to help us extend our platforms and SDKs stack, you are more than welcome to contact us or contribute to the [Appwrite SDK Generator](https://github.com/appwrite/sdk-generator) project GitHub repository and read our contribution guide.
 
 # Protocols {% #protocols %}
+
 We are always looking to add new SDKs to our platform. If the SDK you are looking for is still missing, labeled as beta or experimental, or you simply do not want to integrate with an SDK, you can always integrate with Appwrite directly using any standard HTTP, GraphQL, or WebSocket clients and the relevant Appwrite protocol.
 
 Appwrite supports multiple API protocols for maximum flexibility and developer convenience. You can learn more about how to integrate directly with them using one of the following available guides:
@@ -136,16 +146,19 @@ Integrate with the Appwrite GraphQL API
 {% /cards %}
 
 # Utility classes {% #utility-classes %}
+
 Appwrite's SDKs provide useful utility classes to make your development experience easier.
 Use these classes and methods to reduce guess work and get better code suggestions in your IDE.
 
 ## IDs {% #ids %}
-Appwrite has utility classes to help you handle IDs. 
+
+Appwrite has utility classes to help you handle IDs.
 These generate the correct ID format to be passed to the Appwrite APIs.
 Note that **ID.unique()** does not generate unique IDs locally, but asks the Appwrite APIs to generate them on the server.
 {% tabs %}
 {% tabsitem #client title="Client SDKs" %}
 {% multicode %}
+
 ```client-web
 import { Client, Account } from "appwrite";
 
@@ -154,6 +167,7 @@ ID.unique()
 // Generate a custom ID
 ID.custom()
 ```
+
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 
@@ -162,6 +176,7 @@ ID.unique()
 // Generate a custom ID
 ID.custom()
 ```
+
 ```client-apple
 import Appwrite
 
@@ -170,6 +185,7 @@ ID.unique()
 // Generate a custom ID
 ID.custom()
 ```
+
 ```client-android-kotlin
 import io.appwrite.ID
 
@@ -178,11 +194,13 @@ ID.unique()
 // Generate a custom ID
 ID.custom()
 ```
+
 {% /multicode %}
 {% /tabsitem %}
 
 {% tabsitem #server title="Server SDKs" %}
 {% multicode %}
+
 ```server-nodejs
 const sdk = require('node-appwrite');
 
@@ -192,6 +210,7 @@ sdk.ID.unique()
 sdk.ID.custom()
 
 ```
+
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 // Generate a unique ID
@@ -199,6 +218,7 @@ sdk.ID.unique()
 // Generate a custom ID
 sdk.ID.custom()
 ```
+
 ```php
 <?php
 
@@ -209,6 +229,7 @@ ID::unique()
 // Generate a custom ID
 ID::custom()
 ```
+
 ```python
 from appwrite.id import ID
 
@@ -217,6 +238,7 @@ ID.unique()
 # Generate a custom ID
 ID.custom()
 ```
+
 ```csharp
 using Appwrite.ID;
 
@@ -225,6 +247,7 @@ ID.unique()
 // Generate a custom ID
 ID.custom()
 ```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 
@@ -233,6 +256,7 @@ ID.unique()
 // Generate a custom ID
 ID.custom()
 ```
+
 ```java
 io.appwrite.ID
 // Generate a unique ID
@@ -240,6 +264,7 @@ ID.unique()
 // Generate a custom ID
 ID.custom()
 ```
+
 ```kotlin
 io.appwrite.ID
 // Generate a unique ID
@@ -247,6 +272,7 @@ ID.unique()
 // Generate a custom ID
 ID.custom()
 ```
+
 ```ruby
 require 'appwrite'
 
@@ -257,6 +283,7 @@ ID.unique()
 // Generate a custom ID
 ID.custom()
 ```
+
 ```swift
 import Appwrite
 // Generate a unique ID
@@ -264,48 +291,60 @@ ID.unique()
 // Generate a custom ID
 ID.custom()
 ```
+
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}
 
-Appwrite generates unique IDs that are both **random** and **ordered**. 
+Appwrite generates unique IDs that are both **random** and **ordered**.
 Appwrite IDs combine a timestamp prefix based on microseconds and a random UID string, formatted as `<timestamp_hex><uid_hex>`.
 
 ## Enums {% #enums %}
+
 Appwrite has enumeration classes for predefined strings used different parameters used for the Appwrite APIs.
 
-These enums are available for authenticator type, name, OAuth provider, 
-password hash types, browsers, authentication factors, index types, credit cards, 
-image gravity, image format, relationship types, SMTP encryption, Function runtime, 
+These enums are available for authenticator type, name, OAuth provider,
+password hash types, browsers, authentication factors, index types, credit cards,
+image gravity, image format, relationship types, SMTP encryption, Function runtime,
 messaging provider type, compression algorithms, execution methods, and country flags.
 {% tabs %}
 {% tabsitem #client title="Client SDKs" %}
 You can discover the available enums in each SDK at the source.
 
 {% table %}
-* &nbsp; {% width=48 %}
-* Platform
-* Enums
+
+-   &nbsp; {% width=48 %}
+-   Platform
+-   Enums
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_light %}
-* Web SDK `14.0.1`
-* [appwrite/sdk-for-web](https://github.com/appwrite/sdk-for-web/tree/dev/src/enums)
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_light %}
+-   Web SDK `14.0.1`
+-   [appwrite/sdk-for-web](https://github.com/appwrite/sdk-for-web/tree/dev/src/enums)
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/flutter.svg" alt="Flutter logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/flutter.svg" alt="Flutter logo" size="m" /%}{% /only_light %}
-* Flutter SDK `12.0.3`
-* [appwrite/sdk-for-flutter](https://github.com/appwrite/sdk-for-flutter/tree/dev/lib/src/enums)
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/flutter.svg" alt="Flutter logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/flutter.svg" alt="Flutter logo" size="m" /%}{% /only_light %}
+-   Flutter SDK `12.0.3`
+-   [appwrite/sdk-for-flutter](https://github.com/appwrite/sdk-for-flutter/tree/dev/lib/src/enums)
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/apple.svg" alt="Apple logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/apple.svg" alt="Apple logo" size="m" /%}{% /only_light %}
-* Apple SDK `5.0.0`
-* [appwrite/sdk-for-apple](https://github.com/appwrite/sdk-for-apple/tree/dev/Sources/AppwriteEnums)
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/apple.svg" alt="Apple logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/apple.svg" alt="Apple logo" size="m" /%}{% /only_light %}
+-   Apple SDK `5.0.0`
+-   [appwrite/sdk-for-apple](https://github.com/appwrite/sdk-for-apple/tree/dev/Sources/AppwriteEnums)
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/android.svg" alt="Android logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/android.svg" alt="Android logo" size="m" /%}{% /only_light %}
-* Android SDK `5.1.0`
-* [appwrite/sdk-for-android](https://github.com/appwrite/sdk-for-android/tree/dev/library/src/main/java/io/appwrite/enums)
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/android.svg" alt="Android logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/android.svg" alt="Android logo" size="m" /%}{% /only_light %}
+-   Android SDK `5.1.0`
+-   [appwrite/sdk-for-android](https://github.com/appwrite/sdk-for-android/tree/dev/library/src/main/java/io/appwrite/enums)
+
 {% /table %}
 {% /tabsitem %}
 
@@ -313,67 +352,90 @@ You can discover the available enums in each SDK at the source.
 You can discover the available enums in each SDK at the source.
 
 {% table %}
-* &nbsp; {% width=48 %}
-* Platform
-* Enums
+
+-   &nbsp; {% width=48 %}
+-   Platform
+-   Enums
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_light %}
-* Node.js SDK `12.0.1`
-* [appwrite/sdk-for-node](https://github.com/appwrite/sdk-for-node/tree/dev/lib/enums)
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_light %}
+-   Node.js SDK `12.0.1`
+-   [appwrite/sdk-for-node](https://github.com/appwrite/sdk-for-node/tree/dev/lib/enums)
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/dart.svg" alt="Dart logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/dart.svg" alt="Dart logo" size="m" /%}{% /only_light %}
-* Dart SDK `10.1.1`
-* [appwrite/sdk-for-dart](https://github.com/appwrite/sdk-for-dart/blob/dev/lib/enums.dart)
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/dart.svg" alt="Dart logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/dart.svg" alt="Dart logo" size="m" /%}{% /only_light %}
+-   Dart SDK `10.1.1`
+-   [appwrite/sdk-for-dart](https://github.com/appwrite/sdk-for-dart/blob/dev/lib/enums.dart)
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/python.svg" alt="Python logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/python.svg" alt="Python logo" size="m" /%}{% /only_light %}
-* Python SDK `5.0.2`
-* [appwrite/sdk-for-python](https://github.com/appwrite/sdk-for-python/tree/dev/appwrite/enums)
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/python.svg" alt="Python logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/python.svg" alt="Python logo" size="m" /%}{% /only_light %}
+-   Python SDK `5.0.2`
+-   [appwrite/sdk-for-python](https://github.com/appwrite/sdk-for-python/tree/dev/appwrite/enums)
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/php.svg" alt="PHP logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/php.svg" alt="PHP logo" size="m" /%}{% /only_light %}
-* PHP SDK `11.0.1`
-* [appwrite/sdk-for-php](https://github.com/appwrite/sdk-for-php/tree/dev/src/Appwrite/Enums)
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/php.svg" alt="PHP logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/php.svg" alt="PHP logo" size="m" /%}{% /only_light %}
+-   PHP SDK `11.0.1`
+-   [appwrite/sdk-for-php](https://github.com/appwrite/sdk-for-php/tree/dev/src/Appwrite/Enums)
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_light %}
-* Ruby SDK `11.0.1`
-* [appwrite/sdk-for-ruby](https://github.com/appwrite/sdk-for-ruby/tree/dev/lib/appwrite/enums)
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_light %}
+-   Ruby SDK `11.0.1`
+-   [appwrite/sdk-for-ruby](https://github.com/appwrite/sdk-for-ruby/tree/dev/lib/appwrite/enums)
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_light %}
-* .NET SDK `0.8.1`
-* [appwrite/sdk-for-dotnet](https://github.com/appwrite/sdk-for-dotnet/tree/dev/src/Appwrite/Enums)
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_light %}
+-   .NET SDK `0.8.1`
+-   [appwrite/sdk-for-dotnet](https://github.com/appwrite/sdk-for-dotnet/tree/dev/src/Appwrite/Enums)
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/deno.svg" alt="Deno logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/deno.svg" alt="Deno logo" size="m" /%}{% /only_light %}
-* Deno SDK `10.0.1`
-* [appwrite/sdk-for-deno](https://github.com/appwrite/sdk-for-deno/tree/dev/src/enums)
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/deno.svg" alt="Deno logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/deno.svg" alt="Deno logo" size="m" /%}{% /only_light %}
+-   Deno SDK `10.0.1`
+-   [appwrite/sdk-for-deno](https://github.com/appwrite/sdk-for-deno/tree/dev/src/enums)
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
-* Kotlin SDK `5.0.1`
-* [appwrite/sdk-for-kotlin](https://github.com/appwrite/sdk-for-kotlin/tree/dev/src/main/kotlin/io/appwrite/enums)
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
+-   Kotlin SDK `5.0.1`
+-   [appwrite/sdk-for-kotlin](https://github.com/appwrite/sdk-for-kotlin/tree/dev/src/main/kotlin/io/appwrite/enums)
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/swift.svg" alt="Swift logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/swift.svg" alt="Swift logo" size="m" /%}{% /only_light %}
-* Swift SDK `5.0.1`
-* [appwrite/sdk-for-swift](https://github.com/appwrite/sdk-for-swift/tree/dev/Sources/AppwriteEnums)
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/swift.svg" alt="Swift logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/swift.svg" alt="Swift logo" size="m" /%}{% /only_light %}
+-   Swift SDK `5.0.1`
+-   [appwrite/sdk-for-swift](https://github.com/appwrite/sdk-for-swift/tree/dev/Sources/AppwriteEnums)
+
 {% /table %}
 {% /tabsitem %}
 {% /tabs %}
 
 ## Queries and permissions {% #queries-and-permissions %}
-Appwrite has utility classes for queries and permissions. 
+
+Appwrite has utility classes for queries and permissions.
 You can learn more about [query utility classes](/docs/products/databases/queries) and [permissions utility classes](/docs/advanced/platform/permissions) in their own pages.
 
 ## File I/O {% #file-io %}
+
 Depending on your platform, you will also need some helpers to interface with system I/O.
 Learn more about [storage input file classes](/docs/products/storage/upload-download#input-file).
 
 # Community {% #community %}
+
 If you have created your own framework or any other technology specific integration and would like us to list it here please [contact us](/contact-us).
 
 If you would like to help us expand Appwrite's list of SDKs, you can contribute to Appwrite's [SDK Generator](https://github.com/appwrite/sdk-generator) project on GitHub and read our [contribution guide](https://github.com/appwrite/sdk-generator/blob/master/CONTRIBUTING.md).

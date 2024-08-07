@@ -8,25 +8,25 @@ isPartner: true
 isNew: true
 cover: /images/integrations/email-sendgrid/cover.png
 category: Messaging
-product: 
+product:
     avatar: '/images/integrations/avatars/sendgrid.png'
     vendor: SendGrid
     description: 'SendGrid is a cloud-based service that provides email delivery and marketing solutions.'
-platform: 
+platform:
     - 'Self-hosted'
     - 'Cloud'
-images: 
+images:
     - /images/integrations/email-sendgrid/cover.png
     - /images/integrations/email-sendgrid/welcome-guide.png
     - /images/integrations/email-sendgrid/provider.png
     - /images/integrations/email-sendgrid/email.png
 ---
 
-SendGrid is a cloud-based service that provides email delivery and marketing solutions. It helps businesses manage email communications, including transactional emails (like password resets and order confirmations) and marketing emails (newsletters and promotions). 
+SendGrid is a cloud-based service that provides email delivery and marketing solutions. It helps businesses manage email communications, including transactional emails (like password resets and order confirmations) and marketing emails (newsletters and promotions).
 
 # How does the integration work?
 
-You can use the SendGrid provider in Appwrite Messaging to send customized emails to your users for various purposes such as reminders, promotions, announcements, and even custom authentication flows. They can be sent immediately or scheduled for later. 
+You can use the SendGrid provider in Appwrite Messaging to send customized emails to your users for various purposes such as reminders, promotions, announcements, and even custom authentication flows. They can be sent immediately or scheduled for later.
 
 # How to implement
 
@@ -48,19 +48,19 @@ For this step, you must [create an account on Appwrite Cloud](https://cloud.appw
 
 Fill in the following fields:
 
-| Field name |  |
-| --- | --- |
-| API key | The full access API key you saved from the SendGrid dashboard. |
-| Sender email | The provider sends emails from this sender email. The sender email must either be an email under an authenticated domain or a verified sender identity. |
-| Sender name | The sender name that appears in the emails sent from this provider. |
+| Field name     |                                                                                                                                                                                |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| API key        | The full access API key you saved from the SendGrid dashboard.                                                                                                                 |
+| Sender email   | The provider sends emails from this sender email. The sender email must either be an email under an authenticated domain or a verified sender identity.                        |
+| Sender name    | The sender name that appears in the emails sent from this provider.                                                                                                            |
 | Reply-to email | The reply-to email that appears in the emails sent from this provider. The reply-to email must either be an email under an authenticated domain or a verified sender identity. |
-| Reply-to name | The reply-to name that appears in the emails sent from this provider. |
+| Reply-to name  | The reply-to name that appears in the emails sent from this provider.                                                                                                          |
 
 ## Step 3: Test the SendGrid provider
 
 Before you proceed, you must already have at least one [topic](https://appwrite.io/docs/products/messaging/topics) or [target](https://appwrite.io/docs/products/messaging/targets) set up.
 
-Once the provider is set up, you can go to the **Messages** tab on the **Messaging** page and **create an email message**. You can add the test message, configure the users to send the message to, and pick when the message should be sent out. 
+Once the provider is set up, you can go to the **Messages** tab on the **Messaging** page and **create an email message**. You can add the test message, configure the users to send the message to, and pick when the message should be sent out.
 
 ![Create email](/images/integrations/email-sendgrid/email.png)
 
@@ -68,7 +68,7 @@ Once the provider is set up, you can go to the **Messages** tab on the **Messagi
 
 If you would like to learn more about Sendgrid and Appwrite Messaging, we have some resources that you should visit:
 
-- [Sign up for SendGrid](https://signup.sendgrid.com/)
-- [Set up the SendGrid provider in Appwrite Messaging](https://appwrite.io/docs/products/messaging/sendgrid)
-- [Send email messages through Appwrite Messaging](https://appwrite.io/docs/products/messaging/send-email-messages)
-- [Appwrite Messaging API reference](https://appwrite.io/docs/references/cloud/server-nodejs/messaging)
+-   [Sign up for SendGrid](https://signup.sendgrid.com/)
+-   [Set up the SendGrid provider in Appwrite Messaging](https://appwrite.io/docs/products/messaging/sendgrid)
+-   [Send email messages through Appwrite Messaging](https://appwrite.io/docs/products/messaging/send-email-messages)
+-   [Appwrite Messaging API reference](https://appwrite.io/docs/references/cloud/server-nodejs/messaging)

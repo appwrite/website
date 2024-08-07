@@ -8,13 +8,13 @@ isPartner: true
 isNew: true
 cover: /images/integrations/logging-sentry/cover.png
 category: Logging
-product: 
+product:
     avatar: '/images/integrations/avatars/sentry.png'
     vendor: Sentry
     description: 'Sentry is an open-source error-tracking and performance-monitoring tool designed to help developers identify, diagnose, and fix issues in real-time.'
-platform: 
+platform:
     - 'Self-hosted'
-images: 
+images:
     - /images/integrations/logging-sentry/cover.png
     - /images/integrations/logging-sentry/project.png
     - /images/integrations/logging-sentry/issues.png
@@ -79,5 +79,5 @@ You can also view the error details for more information.
 
 If you would like to learn more about Sentry and Appwrite, we have some resources that you should visit:
 
-- [Sign up for Sentry](https://sentry.io/signup/)
-- [Handling errors in Appwrite self-hosted instances](https://appwrite.io/docs/advanced/self-hosting/production#errors)
+-   [Sign up for Sentry](https://sentry.io/signup/)
+-   [Handling errors in Appwrite self-hosted instances](https://appwrite.io/docs/advanced/self-hosting/production#errors)

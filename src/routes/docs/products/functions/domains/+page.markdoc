@@ -5,8 +5,8 @@ description: Execute Appwrite Functions through domains using standard HTTP GET,
 ---
 
 Each deployed function can have its own domain, generated or developer defined.
-You can use this domain to execute Appwrite Functions through HTTP methods. 
-You can use common practices like using paths, query parameters, headers, HTTP methods, formdata, 
+You can use this domain to execute Appwrite Functions through HTTP methods.
+You can use common practices like using paths, query parameters, headers, HTTP methods, formdata,
 and all the typical HTTP concepts to implement Appwrite Functions.
 
 Appwrite generates TLS certificates to enforce HTTPS on all Appwrite Functions domains, generated or custom.
@@ -22,6 +22,7 @@ Learn about Function development
 1. Under the **Domains** tab, you'll find the generated domain from Appwrite.
 
 The domain usually has this format.
+
 ```bash
 https://64d4d22db370ae41a32e.appwrite.global
 ```

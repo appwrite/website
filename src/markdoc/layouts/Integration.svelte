@@ -2,7 +2,6 @@
     import { Root, Slide } from '$lib/components/carousel';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
-    import ProductsGrid from '$lib/components/ProductsGrid.svelte';
     import { Main } from '$lib/layouts';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import type { Integration } from '$routes/integrations/+page';
@@ -10,15 +9,12 @@
 
     export let title: Integration['title'];
     export let images: Integration['images'];
-    // export let isNew: Integration['isNew'];
     export let isPartner: Integration['isPartner'];
     export let product: Integration['product'];
     export let category: Integration['category'];
     export let description: Integration['description'];
     export let cover: Integration['cover'];
 
-    //const title = 'Integrations' + TITLE_SUFFIX;
-    //const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
     const ogImage = DEFAULT_HOST + cover;
 </script>
 
@@ -142,8 +138,6 @@
     <div
         class="web-big-padding-section-level-1 u-overflow-hidden web-u-sep-block-start u-margin-block-start-48"
     >
-        <!-- <ProductsGrid /> -->
-
         <div class="web-container">
             <div class="web-big-padding-section-level-2 u-position-relative">
                 <img
@@ -153,7 +147,6 @@
                     style="z-index:-1"
                 />
 
-                <!-- <div class="u-position-relative cta"> -->
                 <div class="u-position-relative">
                     <section
                         class="web-hero u-flex u-row-gap-16 u-main-center u-cross-center web-u-max-width-580"

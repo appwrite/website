@@ -9,7 +9,12 @@
     <time class="web-caption-400 padded" datetime={entry.date}>{formatDate(entry.date)}</time>
     {#if entry.cover}
         <a href={entry.href} class="web-media">
-            <img src={entry.cover} alt="" loading="lazy" class="web-u-media-ratio-16-9 u-width-full-line" />
+            <img
+                src={entry.cover}
+                alt=""
+                loading="lazy"
+                class="web-u-media-ratio-16-9 u-width-full-line"
+            />
         </a>
     {/if}
 

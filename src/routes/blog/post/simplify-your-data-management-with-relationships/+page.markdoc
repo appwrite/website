@@ -58,25 +58,20 @@ The movie response:
     "$collectionId": "movies",
     "$createdAt": "2023-04-04T03:35:24.493+00:00",
     "$updatedAt": "2023-04-04T03:35:24.493+00:00",
-    "$permissions": [
-
-    ],
+    "$permissions": [],
     "title": "Spiderman",
     "reviews": [
         {
             "$id": "642b9d627d866e646602",
             "$databaseId": "marvel",
-            "$collectionId" :"reviews",
+            "$collectionId": "reviews",
             "$createdAt": "2023-04-04T03:45:38.514+00:00",
             "$updatedAt": "2023-04-04T03:45:38.514+00:00",
-            "$permissions": [
-
-            ],
+            "$permissions": [],
             "content": "Great movie"
         }
     ]
 }
-
 ```
 
 The review response, notably with no review attribute:
@@ -102,50 +97,48 @@ The movie response:
 
 ```json
 {
-     "$id": "642b9afc785532a807d8",
-     "$databaseId": "marvel",
-     "$collectionId": "movies",
-     "$createdAt": "2023-04-04T03:35:24.493+00:00",
-     "$updatedAt": "2023-04-04T03:35:24.493+00:00",
-     "$permissions": [],
-     "title": "Spiderman",
-     "reviews": [
-          {
-               "$id": "642b9d627d866e646602",
-               "$databaseId": "marvel",
-               "$collectionId": "reviews",
-               "$createdAt": "2023-04-04T03:45:38.514+00:00",
-               "$updatedAt": "2023-04-04T03:45:38.514+00:00",
-               "$permissions": [],
-               "content": "Great movie"
-          }
-     ]
+    "$id": "642b9afc785532a807d8",
+    "$databaseId": "marvel",
+    "$collectionId": "movies",
+    "$createdAt": "2023-04-04T03:35:24.493+00:00",
+    "$updatedAt": "2023-04-04T03:35:24.493+00:00",
+    "$permissions": [],
+    "title": "Spiderman",
+    "reviews": [
+        {
+            "$id": "642b9d627d866e646602",
+            "$databaseId": "marvel",
+            "$collectionId": "reviews",
+            "$createdAt": "2023-04-04T03:45:38.514+00:00",
+            "$updatedAt": "2023-04-04T03:45:38.514+00:00",
+            "$permissions": [],
+            "content": "Great movie"
+        }
+    ]
 }
-
 ```
 
 The review response, now with the movie attribute:
 
 ```json
 {
-     "$id": "642b9d627d866e646602",
-     "$databaseId": "marvel",
-     "$collectionId": "reviews",
-     "$createdAt": "2023-04-04T03:45:38.514+00:00",
-     "$updatedAt": "2023-04-04T03:45:38.514+00:00",
-     "$permissions": [],
-     "content": "Great movie",
-     "movie": {
-          "$id": "642b9afc785532a807d8",
-          "$databaseId": "marvel",
-          "$collectionId": "movies",
-          "$createdAt": "2023-04-04T03:35:24.493+00:00",
-          "$updatedAt": "2023-04-04T03:35:24.493+00:00",
-          "$permissions": [],
-          "title": "Spiderman"
-     }
+    "$id": "642b9d627d866e646602",
+    "$databaseId": "marvel",
+    "$collectionId": "reviews",
+    "$createdAt": "2023-04-04T03:45:38.514+00:00",
+    "$updatedAt": "2023-04-04T03:45:38.514+00:00",
+    "$permissions": [],
+    "content": "Great movie",
+    "movie": {
+        "$id": "642b9afc785532a807d8",
+        "$databaseId": "marvel",
+        "$collectionId": "movies",
+        "$createdAt": "2023-04-04T03:35:24.493+00:00",
+        "$updatedAt": "2023-04-04T03:35:24.493+00:00",
+        "$permissions": [],
+        "title": "Spiderman"
+    }
 }
-
 ```
 
 One-way and two-way relationships offer different advantages and disadvantages, depending on the specific requirements of the application. In some cases, one-way relationships can provide better performance by reducing the amount of data that needs to be stored and accessed. However, two-way relationships can provide more flexibility by allowing both collections to access each other's data.
@@ -174,6 +167,6 @@ In addition to simplifying your collection management, database relationships al
 
 Overall, database relationships are a powerful tool that simplifies your collection management and saves you time and effort. By easily linking your collections and retrieving related data, you can focus on developing your application's core features. Check out the [docs](/docs/databases-relationships) for more information. We encourage you to give it a try today and see how it can benefit your development process.
 
-- [Appwrite GitHub](https://github.com/appwrite)
-- [Appwrite Docs](/docs)
-- [Discord Community](https://appwrite.io/discord)
+-   [Appwrite GitHub](https://github.com/appwrite)
+-   [Appwrite Docs](/docs)
+-   [Discord Community](https://appwrite.io/discord)

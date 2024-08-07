@@ -19,7 +19,6 @@ Navigate to **Settings** > **Permissions** and add a new role **Any**.
 Check the **CREATE** and **READ** permissions, so anyone can create and read documents.
 {% /section %}
 
-
 {% section #create-documents step=3 title="Create documents" %}
 To create a document use the `createDocument` method.
 
@@ -29,6 +28,7 @@ Navigate to the `Oscar` database, copy the database ID, and replace `<DATABASE_I
 Then, in the `My books` collection, copy the collection ID, and replace `<COLLECTION_ID>`.
 
 {% multicode %}
+
 ```client-web
 import { Client, Databases, ID } from "appwrite";
 
@@ -51,6 +51,7 @@ promise.then(function (response) {
     console.log(error);
 });
 ```
+
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 
@@ -73,6 +74,7 @@ void main() async {
     }
 }
 ```
+
 ```client-apple
 import Appwrite
 import AppwriteModels
@@ -96,6 +98,7 @@ func main() async throws {
     }
 }
 ```
+
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Databases
@@ -119,6 +122,7 @@ suspend fun main() {
     }
 }
 ```
+
 {% /multicode %}
 
 The response should look similar to this.
@@ -142,6 +146,7 @@ To read and query data from your collection, use the `listDocuments` endpoint.
 
 Like the previous step, replace `<PROJECT_ID>`, `<DATABASE_ID>`, and`<COLLECTION_ID>` with their respective IDs.
 {% multicode %}
+
 ```client-web
 import { Client, Databases, Query } from "appwrite";
 
@@ -165,6 +170,7 @@ promise.then(function (response) {
     console.log(error);
 });
 ```
+
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 
@@ -188,6 +194,7 @@ void main() async {
     }
 }
 ```
+
 ```client-apple
 import Appwrite
 import AppwriteModels
@@ -212,6 +219,7 @@ func main() async throws{
     }
 }
 ```
+
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.Query
@@ -237,5 +245,6 @@ suspend fun main() {
     }
 }
 ```
+
 {% /multicode %}
 {% /section %}

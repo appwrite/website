@@ -166,7 +166,8 @@
     ];
 
     const title = 'Quick starts' + DOCS_TITLE_SUFFIX;
-    const description = 'Get started with your favorite framework and language in just a few clicks.';
+    const description =
+        'Get started with your favorite framework and language in just a few clicks.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 </script>
 
@@ -186,7 +187,6 @@
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
-
 
 <main class="web-main-section" id="main">
     <article class="web-article">

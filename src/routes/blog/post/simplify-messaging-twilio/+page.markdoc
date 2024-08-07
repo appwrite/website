@@ -18,10 +18,10 @@ Messaging refers to sending messages directly to a user's mobile device from an 
 
 It can be used for various reasons, including:
 
-- **Transactional messages:** These messages relate to the user's actions or account, such as payment confirmation.
-- **Promotional messages**: These marketing messages promote products, services, or offers.
-- **Reminder messages**: These remind users about events, tasks, or actions they must take.
-- **Location-based messages**: These are triggered by the user's location.
+-   **Transactional messages:** These messages relate to the user's actions or account, such as payment confirmation.
+-   **Promotional messages**: These marketing messages promote products, services, or offers.
+-   **Reminder messages**: These remind users about events, tasks, or actions they must take.
+-   **Location-based messages**: These are triggered by the user's location.
 
 ## Challenges faced when building a messaging system
 
@@ -29,10 +29,10 @@ While messaging is a standard feature, it can be a complex task involving variou
 
 In terms of scalability, some common challenges faced are:
 
-- **Handling high volume**: Messaging apps can experience sudden spikes in usage, requiring quick infrastructure scaling without performance degradation.
-- **Data management**: Efficiently storing, retrieving, and managing large volumes of messages is a significant challenge, especially with growing user bases.
-- **User connections**: Maintaining concurrent user connections and ensuring real-time message delivery without delays.
-- **Diverse platforms**: Ensuring consistent functionality across various iOS, Android, and web platforms.
+-   **Handling high volume**: Messaging apps can experience sudden spikes in usage, requiring quick infrastructure scaling without performance degradation.
+-   **Data management**: Efficiently storing, retrieving, and managing large volumes of messages is a significant challenge, especially with growing user bases.
+-   **User connections**: Maintaining concurrent user connections and ensuring real-time message delivery without delays.
+-   **Diverse platforms**: Ensuring consistent functionality across various iOS, Android, and web platforms.
 
 # How Twilio can simplify implementation
 
@@ -40,14 +40,14 @@ In terms of scalability, some common challenges faced are:
 
 Here are some of the benefits of using Twilio:
 
-- **Multi-channel support**: Twilio provides a single platform to handle different types of messaging, including SMS, MMS, email, and push notifications. This unified approach means developers can manage various communication channels through one interface.
-- **Cross-platform messaging**: Twilio supports push notifications for both iOS and Android platforms, simplifying the process of creating cross-platform compatible messages.
-- **Cloud infrastructure**: Being a cloud-based service, Twilio scales automatically to handle varying loads, which is crucial for applications that may experience sudden spikes in user activity.
-- **High availability**: Twilio's robust infrastructure ensures high availability and reliable message delivery, reducing concerns about downtime or message loss.
-- **Personalization and segmentation**: Twilio allows for the customization and personalization of messages, enabling targeted communication strategies.
-- **Scheduling and automation**: Developers can schedule notifications and automate messaging based on user actions or predefined conditions.
-- **Delivery reports**: Twilio provides feedback on message delivery status, which is crucial for understanding and improving the effectiveness of notifications.
-- **Real-time analytics**: Access to real-time analytics helps monitor the performance of messaging campaigns.
+-   **Multi-channel support**: Twilio provides a single platform to handle different types of messaging, including SMS, MMS, email, and push notifications. This unified approach means developers can manage various communication channels through one interface.
+-   **Cross-platform messaging**: Twilio supports push notifications for both iOS and Android platforms, simplifying the process of creating cross-platform compatible messages.
+-   **Cloud infrastructure**: Being a cloud-based service, Twilio scales automatically to handle varying loads, which is crucial for applications that may experience sudden spikes in user activity.
+-   **High availability**: Twilio's robust infrastructure ensures high availability and reliable message delivery, reducing concerns about downtime or message loss.
+-   **Personalization and segmentation**: Twilio allows for the customization and personalization of messages, enabling targeted communication strategies.
+-   **Scheduling and automation**: Developers can schedule notifications and automate messaging based on user actions or predefined conditions.
+-   **Delivery reports**: Twilio provides feedback on message delivery status, which is crucial for understanding and improving the effectiveness of notifications.
+-   **Real-time analytics**: Access to real-time analytics helps monitor the performance of messaging campaigns.
 
 One of Twilio’s products that lets developers implement messaging across various channels such as SMS, MMS, and WhatsApp is Programmable Messaging.
 
@@ -59,12 +59,12 @@ Since the offering leverages a RESTful API, it is compatible with various progra
 
 Here's an overview of the Twilio Programmable Messaging:
 
-- **Multiple messaging services**: Supports SMS, MMS, and chat services, allowing developers to send and receive messages across different platforms.
-- **Scalable infrastructure**: The API is backed by Twilio's robust cloud infrastructure, ensuring high availability and scalability to handle large volumes of messages.
-- **Messaging insights:** Allows you to analyze your application's messaging, identify and debug issues, optimize delivery, and find areas to boost engagement with your end users.
-- **Content template builder:** This lets you create and send rich messaging content over any Twilio-supported messaging channel.
-- **Link shortening:** Allows you to send messages with shortened links using your company-branded domain and track clicks.
-- **Message scheduling:** This lets you schedule SMS, MMS, and WhatsApp messages to be sent at a fixed time in the future.
+-   **Multiple messaging services**: Supports SMS, MMS, and chat services, allowing developers to send and receive messages across different platforms.
+-   **Scalable infrastructure**: The API is backed by Twilio's robust cloud infrastructure, ensuring high availability and scalability to handle large volumes of messages.
+-   **Messaging insights:** Allows you to analyze your application's messaging, identify and debug issues, optimize delivery, and find areas to boost engagement with your end users.
+-   **Content template builder:** This lets you create and send rich messaging content over any Twilio-supported messaging channel.
+-   **Link shortening:** Allows you to send messages with shortened links using your company-branded domain and track clicks.
+-   **Message scheduling:** This lets you schedule SMS, MMS, and WhatsApp messages to be sent at a fixed time in the future.
 
 # Using Twilio with Appwrite Messaging
 
@@ -95,10 +95,11 @@ const promise = await messaging.updateTwilioProvider(
 ```
 
 # Resources
+
 Visit our documentation to learn more about Messaging, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
-- [Docs](/docs/products/messaging/twilio)
-- [Discord](https://appwrite.io/discord)
-- [Blog](/blog)
-- [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
-- [GitHub](https://github.com/appwrite/appwrite)
+-   [Docs](/docs/products/messaging/twilio)
+-   [Discord](https://appwrite.io/discord)
+-   [Blog](/blog)
+-   [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
+-   [GitHub](https://github.com/appwrite/appwrite)

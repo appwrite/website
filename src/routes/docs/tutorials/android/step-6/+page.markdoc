@@ -19,11 +19,11 @@ In Appwrite, data is stored as a collection of documents. Create a collection in
 
 Create a new collection with the following attributes:
 
-| Attribute   | Type   | Required | Size     |
-|-------------|--------|----------|----------|
-| userId      | String | Yes      | 200      |
-| title       | String | Yes      | 200      |
-| description | String | No       | 500      |
+| Attribute   | Type   | Required | Size |
+| ----------- | ------ | -------- | ---- |
+| userId      | String | Yes      | 200  |
+| title       | String | Yes      | 200  |
+| description | String | No       | 500  |
 
 {% only_dark %}
 ![Collection permissions screen](/images/docs/tutorials/dark/idea-tracker-permissions.png)

@@ -45,8 +45,8 @@ First thing first, you must set up an Appwrite project. To do so, you must eithe
 
 Once that is done, under **Add a platform**, add an **Android app** or an **Apple app**. You can skip optional steps.
 
-- **iOS steps:** Add your app **name** and **Bundle ID**. You can find your **Bundle Identifier** in the **General** tab for your app's primary target in XCode.
-- **Android steps:** Add your app's **name** and **package name.** Your package name is generally the **applicationId** in your app-level `build.gradle` file.
+-   **iOS steps:** Add your app **name** and **Bundle ID**. You can find your **Bundle Identifier** in the **General** tab for your app's primary target in XCode.
+-   **Android steps:** Add your app's **name** and **package name.** Your package name is generally the **applicationId** in your app-level `build.gradle` file.
 
 ## Step 2: Install the React Native SDK
 
@@ -77,12 +77,14 @@ client
 const account = new Account(client);
 
 // Register a user
-account.create(ID.unique(), 'me@example.com', 'password', 'Jane Doe')
-    .then(function (response) {
+account.create(ID.unique(), 'me@example.com', 'password', 'Jane Doe').then(
+    function (response) {
         console.log(response);
-    }, function (error) {
+    },
+    function (error) {
         console.log(error);
-    });
+    }
+);
 ```
 
 Read the [quick start](/docs/quick-starts/react-native) to get started or find a [tutorial](/docs/tutorials/react-native/step-1) to build an ideas tracker with React Native.
@@ -91,8 +93,8 @@ Read the [quick start](/docs/quick-starts/react-native) to get started or find a
 
 Visit our documentation to learn more about our SDKs, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our source code.
 
-- [Docs](/docs/sdks)
-- [Discord](https://appwrite.io/discord)
-- [Blog](/blog)
-- [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
-- [GitHub](https://github.com/appwrite/appwrite)
+-   [Docs](/docs/sdks)
+-   [Discord](https://appwrite.io/discord)
+-   [Blog](/blog)
+-   [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
+-   [GitHub](https://github.com/appwrite/appwrite)

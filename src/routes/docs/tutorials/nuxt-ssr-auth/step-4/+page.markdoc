@@ -8,28 +8,29 @@ step: 4
 Nuxt server middle are functions that run on the server before a route is displayed to the user. Nuxt context allows you to store data for the lifecycle of the current request. We can use this to store the user's account data, so that it is available to all pages.
 
 Create a new file in the `server/middleware` directory called `auth.js`.
+
 ```js
 // server/middleware/auth.js
-import { createSessionClient } from "../lib/appwrite";
+import { createSessionClient } from '../lib/appwrite';
 
 export default defineEventHandler(async (event) => {
-  const { account } = createSessionClient(event);
+    const { account } = createSessionClient(event);
 
-  try {
-    event.context.user = await account.get();
-  } catch (error) {}
+    try {
+        event.context.user = await account.get();
+    } catch (error) {}
 });
 ```
 
 To ensure the `context` object is typed correctly, we can add a type definition for it in the `env.d.ts` file:
 
 ```ts
-import type { Models } from "node-appwrite";
+import type { Models } from 'node-appwrite';
 
-declare module "h3" {
-  interface H3EventContext {
-    user?: Models.User<Models.Preferences<any>>;
-  }
+declare module 'h3' {
+    interface H3EventContext {
+        user?: Models.User<Models.Preferences<any>>;
+    }
 }
 ```
 
@@ -37,11 +38,11 @@ Now, use the `context` object in the home page to redirect based on the user's l
 
 ```js
 export default defineEventHandler(async (event) => {
-  if (event.context.user) {
-    await sendRedirect(event, "/account");
-  }
+    if (event.context.user) {
+        await sendRedirect(event, '/account');
+    }
 
-  await sendRedirect(event, "/signup");
+    await sendRedirect(event, '/signup');
 });
 ```
 

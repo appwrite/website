@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "mySHOEFITTER: Solving 75% of online shoe order returns"
+title: 'mySHOEFITTER: Solving 75% of online shoe order returns'
 description: Learn how mySHOEFITTER utilized Appwrite Cloud and AI to enable over 12,000 customers to get their shoe size within an accuracy of 2 mm, solving a massive supply chain problem in the shoe industry.
 date: 2024-03-04
 cover: /images/blog/case-study-myshoefitter.png
@@ -11,12 +11,12 @@ category: case-studies
 
 > “Appwrite has been a tremendous asset in implementing our IT infrastructure. Not only is the software an absolute game-changer, but the team is always there when you need them. The integrated user authentication and the ease of creating data structures have undoubtedly saved us several weeks' worth of time. For me, Appwrite is the perfect backend solution. All you have to do is sign up, and your backend is ready to go. I have never seen such an innovative and easy-to-understand backend solution before!” \
 >  \
-> Marius Bolik,  \
-> CTO, mySHOEFITTER 
+> Marius Bolik, \
+> CTO, mySHOEFITTER
 
 As co-founder of one of the largest European e-commerce platforms for running and tennis equipment called Jogging Point and Tennis Point, Markus Piebrock has always been concerned by the very high return rates in the shoe sector. **Over 30% of all online shoe orders were returned, out of which they discovered that approximately 75% were primarily caused by customers selecting the wrong shoe size.** The problem is not uncommon. For most people, picking the correct shoe size for online purchases is a challenging experience, only made more difficult with complex instructions, wrong measurement methods, inaccurate size suggestions, and other issues.
 
-With improvements in AI over the last few years, Markus realized that he could create a more straightforward experience for people and substantially reduce operational costs for companies by preventing size-based shoe returns. 
+With improvements in AI over the last few years, Markus realized that he could create a more straightforward experience for people and substantially reduce operational costs for companies by preventing size-based shoe returns.
 
 And thus, the idea for mySHOEFITTER was born.
 
@@ -45,19 +45,19 @@ Marius came across Appwrite while looking for a more stable Backend-as-a-Service
 
 ## How Appwrite fit in their solution
 
-In 2023, Marius joined Appwrite Cloud as an early consumer since he prefers managed solutions over self-hostable ones as a developer. His experience with Appwrite allowed him to recommend and push for adoption at mySHOEFITTER, which they did well at. 
+In 2023, Marius joined Appwrite Cloud as an early consumer since he prefers managed solutions over self-hostable ones as a developer. His experience with Appwrite allowed him to recommend and push for adoption at mySHOEFITTER, which they did well at.
 
 Currently, mySHOEFITTER uses multiple Appwrite products to achieve a well-functioning solution. They use **Appwrite Authentication** to set up anonymous accounts for each user when they start using their app for the first time. This allows them to comply with data privacy regulations such as the GDPR. All feet images are stored in **Appwrite Storage** when they are captured for processing by their AI. For communication with their AI and computation of the exact shoe size, based on responses from their AI, they use Appwrite Functions. All the information received from their AI is stored in **Appwrite Databases**.
 
 Some of the benefits of Appwrite that the mySHOEFITTER team appreciates are:
 
-* **Clean product experience:** Appwrite’s simple-to-use interface and experience allowed their team to onboard to the platform a lot more quickly and without less hassle.
-* **Availability of managed solution:** Because our managed solution, Appwrite Cloud, is available to the public, mySHOEFITTER saved a lot of time, effort, and money required to set up, manage, and scale their own infrastructure.
-* **Extensibility:** Appwrite is easily extensible through our Functions product, so it is easy to integrate with external APIs, tools, and platforms.
+-   **Clean product experience:** Appwrite’s simple-to-use interface and experience allowed their team to onboard to the platform a lot more quickly and without less hassle.
+-   **Availability of managed solution:** Because our managed solution, Appwrite Cloud, is available to the public, mySHOEFITTER saved a lot of time, effort, and money required to set up, manage, and scale their own infrastructure.
+-   **Extensibility:** Appwrite is easily extensible through our Functions product, so it is easy to integrate with external APIs, tools, and platforms.
 
 # What’s next for mySHOEFITTER
 
-While mySHOEFITTER has been operating at a pre-revenue stage, they have **raised  €600,000 in funding** from various investors, including the **Fraunhofer Tech Fond** and **NRW Bank**. Currently, they are focusing on customer development and have partnered with various shoe manufacturers and fashion labels. 
+While mySHOEFITTER has been operating at a pre-revenue stage, they have **raised €600,000 in funding** from various investors, including the **Fraunhofer Tech Fond** and **NRW Bank**. Currently, they are focusing on customer development and have partnered with various shoe manufacturers and fashion labels.
 
 One of their biggest customers includes the **Weltbild D2C Group**, which has integrated mySHOEFITTER in all their fashion and shoe brands, including **Groundies**, one of the largest German fashion brands for barefoot shoes, and **Orbisana**, a well-known retailer of healthcare products. Another one of mySHOEFITTER’s current customers is **Sweetwater Marketing**, one of Germany’s largest agencies for employer branding and brand partnerships. They had a major success story during Christmas of 2023, where Sweetwater worked with **Bayerische Landesbank** to help gift 1000 of their employees a pair of white Adidas sneakers. The employees used mySHOEFITTER to find out their exact shoe size for this model and saw a **success rate of 98.8%** (i.e., 988 employees received the right shoe size).
 

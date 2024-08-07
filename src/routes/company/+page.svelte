@@ -286,7 +286,9 @@
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
                     <div class="web-hero web-u-max-width-800">
-                        <h4 class="web-display web-u-color-text-primary">Backed by top investors</h4>
+                        <h4 class="web-display web-u-color-text-primary">
+                            Backed by top investors
+                        </h4>
                         <p class="web-description web-u-max-width-480 u-margin-inline-auto">
                             Appwrite is proudly backed by some of the top investors in the industry.
                         </p>
@@ -377,7 +379,9 @@
             </div>
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
-                    <h5 class="web-title web-u-color-text-primary u-text-center">Angel Investors</h5>
+                    <h5 class="web-title web-u-color-text-primary u-text-center">
+                        Angel Investors
+                    </h5>
                     <ul class="web-grid-2c-4c u-margin-block-start-48">
                         <li class="u-flex-vertical">
                             <h6 class="web-main-body-500 web-u-color-text-primary">
@@ -413,7 +417,9 @@
                             </ul>
                         </li>
                         <li class="u-flex-vertical">
-                            <h6 class="web-main-body-500 web-u-color-text-primary">Ariel Maislos</h6>
+                            <h6 class="web-main-body-500 web-u-color-text-primary">
+                                Ariel Maislos
+                            </h6>
                             <p class="web-main-body-500">Angel Investor</p>
                             <p class="web-main-body-500">Former Apple IL CEO</p>
                             <ul

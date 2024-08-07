@@ -8,14 +8,14 @@ isPartner: true
 isNew: true
 cover: /images/integrations/query-upstash/cover.png
 category: Databases
-product: 
+product:
     avatar: '/images/integrations/avatars/upstash.png'
     vendor: Upstash
     description: 'Upstash Vector provides a powerful vector database designed to handle complex queries and search functionalities.'
-platform: 
+platform:
     - 'Self-hosted'
     - 'Cloud'
-images: 
+images:
     - /images/integrations/query-upstash/cover.png
     - /images/integrations/query-upstash/index.png
     - /images/integrations/query-upstash/template.png
@@ -65,5 +65,5 @@ You can add other database functionalities by editing the function generated on 
 
 If you would like to learn more about Upstash and Appwrite Functions, we have some resources that you should visit:
 
-- [Integrate SQL, NoSQL, Vector, Graph, or any database into your Appwrite project](https://appwrite.io/blog/post/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project)
-- [Appwrite Functions docs](https://appwrite.io/docs/products/functions)
+-   [Integrate SQL, NoSQL, Vector, Graph, or any database into your Appwrite project](https://appwrite.io/blog/post/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project)
+-   [Appwrite Functions docs](https://appwrite.io/docs/products/functions)

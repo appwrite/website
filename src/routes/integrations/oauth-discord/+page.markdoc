@@ -8,14 +8,14 @@ isPartner: true
 isNew: true
 cover: /images/integrations/oauth-discord/cover.png
 category: Auth
-product: 
+product:
     avatar: '/images/integrations/avatars/discord.png'
     vendor: Discord
     description: 'Discord is a popular communication platform designed for creating communities.'
-platform: 
+platform:
     - 'Self-hosted'
     - 'Cloud'
-images: 
+images:
     - /images/integrations/oauth-discord/cover.png
     - /images/integrations/oauth-discord/new-app.png
     - /images/integrations/oauth-discord/oauth2.png
@@ -58,7 +58,7 @@ Follow the [OAuth 2 login](https://appwrite.io/docs/products/auth/oauth2#init) f
 
 If you would like to learn more about Discord and Appwrite Auth, we have some resources that you should visit:
 
-- [Register a Discord Developer application](https://discord.com/developers/applications)
-- [Implement OAuth login in your apps using Appwrite Auth](https://appwrite.io/docs/products/auth/oauth2)
-- [Understanding OAuth and OpenID Connect](https://appwrite.io/blog/post/oauth-openid)
-- [Appwrite Auth API reference](https://appwrite.io/docs/references/cloud/client-web/account)
+-   [Register a Discord Developer application](https://discord.com/developers/applications)
+-   [Implement OAuth login in your apps using Appwrite Auth](https://appwrite.io/docs/products/auth/oauth2)
+-   [Understanding OAuth and OpenID Connect](https://appwrite.io/blog/post/oauth-openid)
+-   [Appwrite Auth API reference](https://appwrite.io/docs/references/cloud/client-web/account)

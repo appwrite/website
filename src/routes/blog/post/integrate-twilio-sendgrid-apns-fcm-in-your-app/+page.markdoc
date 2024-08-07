@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Integrate Twilio, SendGrid, APNs and FCM into your Appwrite project"
+title: 'Integrate Twilio, SendGrid, APNs and FCM into your Appwrite project'
 description: Which messaging provider should you choose for your app?
 date: 2024-07-30
 cover: /images/blog/integrations-messaging/cover.png
@@ -24,17 +24,17 @@ Twilio is a cloud communications platform that offers SMS, voice, video, and ema
 
 **Benefits of using Twilio:**
 
-- **Multi-channel support**: Manage SMS, MMS, email, and push notifications from one platform.
-- **Cross-platform messaging**: Send push notifications to both iOS and Android devices easily.
-- **Personalization and segmentation**: Customize messages for targeted communication.
-- **Scheduling and automation**: Schedule and automate notifications based on user actions or set conditions.
+-   **Multi-channel support**: Manage SMS, MMS, email, and push notifications from one platform.
+-   **Cross-platform messaging**: Send push notifications to both iOS and Android devices easily.
+-   **Personalization and segmentation**: Customize messages for targeted communication.
+-   **Scheduling and automation**: Schedule and automate notifications based on user actions or set conditions.
 
 **Best use cases:**
 
-- **Customer support:** Use SMS and voice for timely customer service.
-- **Marketing campaigns:** Send personalized promotions and updates.
-- **App engagement:** Push notifications for app updates, reminders, and special offers.
-- **Event reminders:** Schedule automated reminders for appointments and events.
+-   **Customer support:** Use SMS and voice for timely customer service.
+-   **Marketing campaigns:** Send personalized promotions and updates.
+-   **App engagement:** Push notifications for app updates, reminders, and special offers.
+-   **Event reminders:** Schedule automated reminders for appointments and events.
 
 # How to integrate Twilio into your app
 
@@ -64,15 +64,15 @@ SendGrid is a reliable email delivery service that helps businesses send emails 
 
 **Benefits of using SendGrid:**
 
-- **High deliverability:** SendGrid ensures your emails get delivered to the inbox, improving engagement rates.
-- **Detailed analytics:** Gain insights into email performance with analytics and reporting.
-- **Scalability:** Whether you're sending a few emails or millions, SendGrid scales to meet your needs.
+-   **High deliverability:** SendGrid ensures your emails get delivered to the inbox, improving engagement rates.
+-   **Detailed analytics:** Gain insights into email performance with analytics and reporting.
+-   **Scalability:** Whether you're sending a few emails or millions, SendGrid scales to meet your needs.
 
 **Best use cases:**
 
-- **Newsletters:** Keep your audience informed with regular updates and news.
-- **Promotional emails:** Drive sales and engagement with targeted marketing campaigns.
-- **Transactional emails:** Send important notifications like order confirmations, shipping updates, and password resets.
+-   **Newsletters:** Keep your audience informed with regular updates and news.
+-   **Promotional emails:** Drive sales and engagement with targeted marketing campaigns.
+-   **Transactional emails:** Send important notifications like order confirmations, shipping updates, and password resets.
 
 # How to integrate SendGrid into your app
 
@@ -102,15 +102,15 @@ APNs (Apple Push Notification Service) is an Apple tool that lets you send notif
 
 **Benefits of using APNs:**
 
-- **Instant alerts:** Notify users right away with important updates.
-- **Rich content:** Include images, videos, and interactive elements in your notifications.
-- **Boost engagement:** Keep users coming back with personalized messages.
+-   **Instant alerts:** Notify users right away with important updates.
+-   **Rich content:** Include images, videos, and interactive elements in your notifications.
+-   **Boost engagement:** Keep users coming back with personalized messages.
 
 **Best use cases:**
 
-- **App updates:** Inform users about new features or important changes.
-- **Reminders:** Send reminders for appointments, tasks, or events.
-- **Special offers:** Share promotions and special deals.
+-   **App updates:** Inform users about new features or important changes.
+-   **Reminders:** Send reminders for appointments, tasks, or events.
+-   **Special offers:** Share promotions and special deals.
 
 # How to integrate APNs into your app
 
@@ -118,16 +118,16 @@ Follow these simple steps to integrate APNs into your Appwrite project.
 
 ## Step 1: Sign up for Apple Developer
 
-First, [sign up for the Apple Developer program](https://developer.apple.com/programs). 
+First, [sign up for the Apple Developer program](https://developer.apple.com/programs).
 
 Head to your new Apple Developer account and save the following details:
 
-| Field name |  |
-| --- | --- |
-| Bundle ID | Head to Apple Developer account > Program resources > Certificates, Identifiers & Profiles > Identifiers |
-| Team ID | Head to Apple Developer account > Membership details > Team ID |
+| Field name                    |                                                                                                                                                                                                                |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Bundle ID                     | Head to Apple Developer account > Program resources > Certificates, Identifiers & Profiles > Identifiers                                                                                                       |
+| Team ID                       | Head to Apple Developer account > Membership details > Team ID                                                                                                                                                 |
 | Authentication key (.p8 file) | Head to Apple Developer account > Program resources > Certificates, Identifiers & Profiles > Keys. Create a key and give it a name. Enable the Apple Push Notifications service (APNS), and register your key. |
-| Authentication key ID | Head to Apple Developer account > Program resources > Certificates, Identifiers & Profiles > Keys. Click on your key to view details. |
+| Authentication key ID         | Head to Apple Developer account > Program resources > Certificates, Identifiers & Profiles > Keys. Click on your key to view details.                                                                          |
 
 ## Step 2: Add APNs provider to your Appwrite project
 
@@ -151,15 +151,15 @@ FCM (Firebase Cloud Messaging) is a cross-platform messaging solution that lets 
 
 **Benefits of using FCM:**
 
-- **Multi-platform:** Reach users on Android, iOS, and the web.
-- **Flexible messaging:** Send notifications or data messages for various needs.
-- **Track performance:** Use Firebase Analytics to see how your messages are doing.
+-   **Multi-platform:** Reach users on Android, iOS, and the web.
+-   **Flexible messaging:** Send notifications or data messages for various needs.
+-   **Track performance:** Use Firebase Analytics to see how your messages are doing.
 
 **Best use cases:**
 
-- **User engagement:** Send personalized notifications to keep users interested.
-- **Real-time updates:** Push updates on live activities, like scores in a sports app or breaking news.
-- **Special offers:** Share promotions and special deals.
+-   **User engagement:** Send personalized notifications to keep users interested.
+-   **Real-time updates:** Push updates on live activities, like scores in a sports app or breaking news.
+-   **Special offers:** Share promotions and special deals.
 
 # How to integrate FCM into your app
 
@@ -173,7 +173,7 @@ To enable FCM, go to **Cloud Messaging** > Click the three-dots menu > **Enable*
 
 ## Step 2: Add FCM provider to your Appwrite project
 
-In your Appwrite **Messaging** page, click on the **Providers** tab > **Create a new push notifications provider**. 
+In your Appwrite **Messaging** page, click on the **Providers** tab > **Create a new push notifications provider**.
 
 Select **FCM** and upload the JSON file.
 
@@ -187,6 +187,6 @@ To test the provider on mobile apps, you must do additional configuration steps 
 
 By now, you should be able to integrate your chosen messaging provider and start connecting with your users. If you’re still searching for the right solution, take a look at our [Integrations Catalog](https://appwrite.io/integrations) for a comprehensive list of messaging providers. You can also find additional resources below to help you set up messaging effectively.
 
-- [Push notifications best practices](https://appwrite.io/blog/post/push-notifications-best-practices).
-- [Messaging explained](https://appwrite.io/blog/post/messaging-explained).
-- [Messaging in Appwrite docs.](https://appwrite.io/docs/products/messaging)
+-   [Push notifications best practices](https://appwrite.io/blog/post/push-notifications-best-practices).
+-   [Messaging explained](https://appwrite.io/blog/post/messaging-explained).
+-   [Messaging in Appwrite docs.](https://appwrite.io/docs/products/messaging)

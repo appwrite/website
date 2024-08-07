@@ -18,7 +18,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 If this is your first time using Appwrite, create an account and create your first project.
 
-Then, under **Add a platform**, add a **Android** or **Apple** platform with the package/bundle ID `com.example.idea-tracker`. 
+Then, under **Add a platform**, add a **Android** or **Apple** platform with the package/bundle ID `com.example.idea-tracker`.
 
 {% only_dark %}
 ![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
@@ -31,8 +31,8 @@ You can skip optional steps.
 
 # Initialize Appwrite SDK {% #init-sdk %}
 
-To use Appwrite in our React Native app, you'll need to find our project ID. 
-Find your project's ID in the **Settings** page. 
+To use Appwrite in our React Native app, you'll need to find our project ID.
+Find your project's ID in the **Settings** page.
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
@@ -46,14 +46,13 @@ Only one instance of the `Client()` class should be created per app.
 Add the following code to it, replacing `<YOUR_PROJECT_ID>` with your project ID.
 
 ```js
-import { Client, Databases, Account } from "react-native-appwrite";
+import { Client, Databases, Account } from 'react-native-appwrite';
 
 const client = new Client();
 client
-  .setEndpoint("https://cloud.appwrite.io/v1")
-  .setProject("<YOUR_PROJECT_ID>") // Replace with your project ID
-  .setPlatform('com.example.idea-tracker');
-
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>') // Replace with your project ID
+    .setPlatform('com.example.idea-tracker');
 
 export const account = new Account(client);
 export const databases = new Databases(client);
