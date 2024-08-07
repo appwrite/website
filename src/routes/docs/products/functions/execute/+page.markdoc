@@ -171,6 +171,8 @@ functions.createExecution(
 {% /tabsitem %}
 
 {% tabsitem #server title="Server SDKs" %}
+
+#server
 {% multicode %}
 ```js
 const sdk = require('node-appwrite');
@@ -501,8 +503,8 @@ To schedule an execution, navigate to **Your function** > **Executions** > **Exe
 {% /only_light %}
 {% /tabsitem %}
 
-{% tabsitem #console-sdk title="Console SDK" %}
-You can also schedule your function executions using a supported [Console SDK](/docs/sdks).
+{% tabsitem #client-sdk title="Client SDK" %}
+You can also schedule your function executions using a supported [Client SDK](/docs/sdks/#client).
 
 {% multicode %}
 
@@ -546,6 +548,27 @@ Execution result = await functions.createExecution(
 );
 ```
 
+```client-react-native
+import { Client, Functions, ExecutionMethod } from "react-native-appwrite";
+
+const client = new Client()
+    .setProject('<PROJECT_ID>'); // Your project ID
+
+const functions = new Functions(client);
+
+const result = await functions.createExecution(
+    '<FUNCTION_ID>', // functionId
+    '<BODY>', // body (optional)
+    true, // Scheduled executions need to be async
+    '<PATH>', // path (optional)
+    ExecutionMethod.GET, // method (optional)
+    {}, // headers (optional)
+    '2020-10-15T06:38:00.000+00:00' // Schedule execution (optional)
+);
+
+console.log(result);
+```
+
 ```client-apple
 import Appwrite
 import AppwriteEnums
@@ -587,27 +610,6 @@ val result = functions.createExecution(
 )
 ```
 
-```client-react-native
-import { Client, Functions, ExecutionMethod } from "react-native-appwrite";
-
-const client = new Client()
-    .setProject('<PROJECT_ID>'); // Your project ID
-
-const functions = new Functions(client);
-
-const result = await functions.createExecution(
-    '<FUNCTION_ID>', // functionId
-    '<BODY>', // body (optional)
-    true, // Scheduled executions need to be async
-    '<PATH>', // path (optional)
-    ExecutionMethod.GET, // method (optional)
-    {}, // headers (optional)
-    '2020-10-15T06:38:00.000+00:00' // Schedule execution (optional)
-);
-
-console.log(result);
-```
-
 ```graphql
 mutation {
     functionsCreateExecution(
@@ -647,7 +649,7 @@ mutation {
 
 
 ```http
-POST https://v16.appwrite.org/v1/functions/<FUNCTION_ID>/executions HTTP/1.1
+POST https://cloud.appwrite.io/v1/functions/<FUNCTION_ID>/executions HTTP/1.1
 X-Appwrite-Project: "<PROJECT_ID>"
 X-Appwrite-Response-Format: 1.5.0
 Content-Type: application/json
@@ -667,7 +669,7 @@ Content-Type: application/json
 {% /tabsitem %}
 
 {% tabsitem #sdk title="Server SDK" %}
-You can also schedule your function executions using a supported [Server SDK](/docs/sdks).
+You can also schedule your function executions using a supported [Server SDK](/docs/sdks/#server).
 
 {% multicode %}
 ```server-nodejs
