@@ -57,7 +57,7 @@ Build finished.
 ✓ Success: Visit http://localhost:3000/ to execute your function.
 ```
 
-This command helps you efficiently develop your Appwrite functions on your local machine. Any changes to your function code are instantly reflected without waiting for them to build. This is because when you develop a function locally, it hot reloads your code, provided you've initiated it with the `appwrite run functions` command. When developing your Appwrite function locally, it will receive [headers](/docs/products/functions/develop#headers) like when you develop a function in the Console.
+This command helps you efficiently develop your Appwrite functions on your local machine. When developing your Appwrite function locally, it will receive [headers](/docs/products/functions/develop#headers) like when you develop a function and it is deployed to Appwrite.
 
 {% arrow_link href="/docs/products/functions/develop" %}
 Learn more about developing a function
@@ -65,7 +65,7 @@ Learn more about developing a function
 
 # Dynamic API keys {% #dynamic-api-keys %}
 
-You can use headers like dynamic API keys in your function, which give you access to your project services and allow you to operate without sessions. To configure your dynamic API key scopes, modify the scopes in the `appwrite.json` file. To apply those configured scopes to your function in the Console, push your function using `appwrite push functions`.
+You can use headers like dynamic API keys in your function, which give you access to your project services and allow you to operate without sessions. To configure your dynamic API key scopes, modify the scopes in the `appwrite.json` file.
 
 {% arrow_link href="/docs/products/functions/develop" %}
 Learn more about dynamic API keys
@@ -73,10 +73,10 @@ Learn more about dynamic API keys
 
 # Impersonate user {% #impersonate-user %}
 
-You can also impersonate a user when you develop a function locally. Impersonate a user using the `--userId <USER_ID>` option to select a user you want to use for testing. You can test if the user can perform a requested action, like creating a document.
+You can also impersonate a user when you develop a function locally. Impersonate a user using the `--user-id <USER_ID>` option to select a user you want to use for testing. You can test if the user can perform a requested action, like creating a document.
 
 ```sh
-appwrite run functions --userId "<USER_ID>"
+appwrite run functions --user-id "<USER_ID>"
 ```
 
 # Push function {% #push-function %}
