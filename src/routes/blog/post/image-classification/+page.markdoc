@@ -17,7 +17,7 @@ In this article, we’ll go over how the image classification field developed an
 
 arly image classification began in the 1960s and relied on simple algorithms such as nearest neighbors and linear classifiers to perform classification tasks. During this time, some of the theoretical underpinnings of what would become image classification were also invented, such as the Vapnik-Chervonenkis Theory (VC Theory).
 
-In the late 1980s, researchers explored how neural networks could be used for performing image classification tasks. The introduction of backpropagation made it easier to train multi-layer perceptrons (MLPs), showing that neural networks had the potential for classification tasks. However, the technology wasn't practical back then because there weren't large datasets to train on and the processing power was insufficient.
+In the late 1980s, researchers explored how neural networks could be used. The introduction of back-propagation made it easier to train multi-layer perceptrons (MLPs) and showed that neural networks had the potential for classification tasks. However, a lack of large datasets to train on and insufficient processing power made real-world applications impractical.
 
 All these efforts culminated in 2012 AlexNet won the ImageNet Large Scale Visual Recognition (ILSVRC) competition. This victory highlighted the potential of Convolutional Neural Networks (CNNs) for image classification, leading to a major shift in the field.
 
