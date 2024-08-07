@@ -149,14 +149,14 @@ This will create your `appwrite.json` file, where you will configure your variou
 You can run your first CLI command after logging in. Try fetching information about your Appwrite project.
 
 ```sh
-appwrite projects get --projectId "<PROJECT_ID>"
+appwrite projects get --project-id "<PROJECT_ID>"
 ```
 
 {% info title="Self-signed certificates" %}
 By default, requests to domains with self-signed SSL certificates (or no certificates) are disabled. If you trust the domain, you can bypass the certificate validation using
 
 ```sh
-appwrite client --selfSigned true
+appwrite client --self-signed true
 ```
 {% /info %}
 
@@ -189,7 +189,7 @@ At any point, if you would like to change your server's endpoint, project ID, or
 ```sh
 appwrite client --endpoint https://cloud.appwrite.io/v1
 appwrite client --key 23f24gwrhSDgefaY
-appwrite client --selfSigned true
+appwrite client --self-signed true
 appwrite client --reset // Resets your CLI configuration
 appwrite client --debug // Prints your current configuration
 ```
