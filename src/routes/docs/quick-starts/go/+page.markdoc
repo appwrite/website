@@ -41,10 +41,12 @@ Other scopes are optional.
 {% /section %}
 {% section #step-2 step=2 title="Create Go project" %}
 
-Create a go.mod file.
+Create a go application.
 
 ```sh
-`go mod init go-appwrite/main`
+mkdir my-app
+cd my-app
+go mod init go-appwrite/main
 ```
 
 {% /section %}
@@ -92,7 +94,7 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Create a new file, `app.go`, initialize a function, and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
+Create a new file called `app.go`, initialize a function, and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
 ```go
 package main
@@ -114,7 +116,7 @@ func initClient() {
 {% /section %}
 {% section #step-5 step=5 title="Initialize database" %}
 
-Once the Appwrite Client is initialized, create a function to configure a todo database and collection.
+Once the Appwrite Client is initialized, create a function to configure a todo collection.
 
 ```go
 package main
@@ -135,7 +137,7 @@ func main() {
 
     database, err := appwriteDatabases.Create(
         "unique()", 
-        "Pokemon"
+        "TodosDB"
     )
 
     if err != nil {
@@ -146,7 +148,7 @@ func main() {
     collection, err := appwriteDatabases.CreateCollection(
 	    database.Id,
 	    "unique()",
-	    "Gym Leaders"
+	    "Todos"
     )
 
 	if err != nil {
@@ -306,7 +308,7 @@ func main() {
 
 	appwriteDatabases := databases.NewDatabases(appwriteClient)
 
-	database, err := appwriteDatabases.Create("unique()", "Pokemon")
+	database, err := appwriteDatabases.Create("unique()", "TodosDB")
 
 	if err != nil {
 		fmt.Println(err)
@@ -316,7 +318,7 @@ func main() {
 	collection, err := appwriteDatabases.CreateCollection(
 		database.Id,
 		"unique()",
-		"Gym Leaders")
+		"Todos")
 
 	if err != nil {
 		fmt.Println(err)
