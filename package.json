@@ -21,6 +21,16 @@
         "test:unit": "vitest"
     },
     "packageManager": "pnpm@9.4.0+sha512.f549b8a52c9d2b8536762f99c0722205efc5af913e77835dbccc3b0b0b2ca9e7dc8022b78062c17291c48e88749c70ce88eb5a74f1fa8c4bf5e18bb46c8bd83a",
+    "pnpm": {
+        "supportedArchitectures": {
+            "os": [
+                "win32"
+            ],
+            "cpu": [
+                "x64"
+            ]
+        }
+    },
     "dependencies": {
         "@sentry/sveltekit": "^8.12.0",
         "embla-carousel-svelte": "^8.1.5",
@@ -63,7 +73,7 @@
         "prettier": "^3.3.2",
         "prettier-plugin-svelte": "^3.2.5",
         "sass": "^1.77.6",
-        "sharp": "0.32.6",
+        "sharp": "0.33.4",
         "svelte": "^4.2.18",
         "svelte-check": "^3.8.1",
         "svelte-markdoc-preprocess": "^2.0.0",
