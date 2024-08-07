@@ -5,6 +5,7 @@
 
 <div class="container">
     <div class="lines">
+        <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
         {#each Array.from({ length: lines }) as _}
             {@const randomDelay = () => Math.floor(Math.random() * 2800)}
             <div style:position="relative" class="group">

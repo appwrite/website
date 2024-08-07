@@ -2,6 +2,7 @@
     import { getLocalTimeZone, today } from '@internationalized/date';
     import { createCalendar, melt } from '@melt-ui/svelte';
     import Step from './Step.svelte';
+    import { createIncrementingArray } from '$lib/utils/array';
 
     const curr = today(getLocalTimeZone());
 
@@ -68,7 +69,7 @@
         </div>
 
         <div class="time-picker is-only-desktop">
-            {#each { length: 11 } as _, i}
+            {#each createIncrementingArray(11) as i}
                 <div>
                     <span>{(3 + i).toString().padStart(2, '0')}</span>
                     <span>:</span>

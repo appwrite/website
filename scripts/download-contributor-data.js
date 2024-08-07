@@ -12,6 +12,7 @@ const headers = process.env.GITHUB_TOKEN
 
 console.log(`using github token: ${!!process.env.GITHUB_TOKEN}`);
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function fetchRepositories() {
     let page = 1;
     let repositoriesData = [];
@@ -77,7 +78,7 @@ async function fetchContributors(apiUrl) {
 
 async function main() {
     const contributors = new Set();
-    await fetchRepositories();
+
     for (const repo of ['appwrite/appwrite', 'appwrite/console', 'appwrite/sdk-generator']) {
         console.log(`Fetching contributors for ${repo}...`);
         const url = `https://api.github.com/repos/${repo}/contributors`;

@@ -5,6 +5,7 @@
     import Ticket from '../(components)/Ticket.svelte';
     import { getMockContributions, loginGithub } from '../helpers';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
+    import { createIncrementingArray } from '$lib/utils/array';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
@@ -93,7 +94,8 @@
         </div>
 
         <div class="col">
-            {#each Array.from({ length: 2 }) as _}
+            <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
+            {#each createIncrementingArray(2) as _}
                 <div class="ticket-preview-wrapper">
                     {#each tickets as { name, title }, i}
                         {@const id = i + 1}
