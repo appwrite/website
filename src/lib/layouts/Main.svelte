@@ -25,6 +25,7 @@
     import { loggedIn } from '$lib/utils/console';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
+    import InitBanner from '$lib/components/InitBanner.svelte';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -189,13 +190,25 @@
         </div>
     </section>
     <header
-        class="web-main-header theme-{resolvedTheme} is-transparent"
-        style="padding-left:0;padding-right:0;"
+        class="web-main-header is-special-padding theme-{resolvedTheme} is-transparent"
         class:is-hidden={$isHeaderHidden}
+        class:is-special-padding={BANNER_KEY !== 'init-banner-02'}
+        style={BANNER_KEY === 'init-banner-02' ? 'padding-inline: 0' : ''}
     >
-        <AnnouncementBanner />
+        <AnnouncementBanner>
+            <a href="/discord" target="_blank" rel="noopener noreferrer">
+                <span class="web-caption-500">We are having lots of fun on</span>
+                <span class="web-icon-discord" aria-hidden="true" />
+                <span class="web-caption-500">Discord. Come and join us!</span>
+            </a>
+        </AnnouncementBanner>
 
-        <div class="web-main-header-wrapper is-special-padding">
+        <!-- <InitBanner /> -->
+
+        <div
+            class="web-main-header-wrapper"
+            class:is-special-padding={BANNER_KEY === 'init-banner-02'}
+        >
             <div class="web-main-header-start">
                 <a href="/">
                     <img
