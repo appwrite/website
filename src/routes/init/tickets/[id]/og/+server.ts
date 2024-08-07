@@ -13,7 +13,7 @@ export async function GET({ params }) {
     const svg = await getTicketSvg({ ...ticket });
 
     const svgBuffer = Buffer.from(svg);
-    const pngBuffer = await sharp(svgBuffer, {}).resize({}).toFormat('png').toBuffer();
+    const pngBuffer = await sharp(svgBuffer).toBuffer();
 
     return new Response(pngBuffer, {
         headers: {
