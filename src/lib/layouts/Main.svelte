@@ -192,22 +192,24 @@
     <header
         class="web-main-header is-special-padding theme-{resolvedTheme} is-transparent"
         class:is-hidden={$isHeaderHidden}
-        class:is-special-padding={BANNER_KEY !== 'init-banner-02'}
+        class:is-special-padding={!BANNER_KEY.startsWith('init-banner-')}
         style={BANNER_KEY === 'init-banner-02' ? 'padding-inline: 0' : ''}
     >
-        <AnnouncementBanner>
-            <a href="/discord" target="_blank" rel="noopener noreferrer">
-                <span class="web-caption-500">We are having lots of fun on</span>
-                <span class="web-icon-discord" aria-hidden="true" />
-                <span class="web-caption-500">Discord. Come and join us!</span>
-            </a>
-        </AnnouncementBanner>
-
-        <!-- <InitBanner /> -->
+        {#if BANNER_KEY.startsWith('init-banner-')}
+            <InitBanner />
+        {:else}
+            <AnnouncementBanner>
+                <a href="/discord" target="_blank" rel="noopener noreferrer">
+                    <span class="web-caption-500">We are having lots of fun on</span>
+                    <span class="web-icon-discord" aria-hidden="true" />
+                    <span class="web-caption-500">Discord. Come and join us!</span>
+                </a>
+            </AnnouncementBanner>
+        {/if}
 
         <div
             class="web-main-header-wrapper"
-            class:is-special-padding={BANNER_KEY === 'init-banner-02'}
+            class:is-special-padding={BANNER_KEY.startsWith('init-banner-')}
         >
             <div class="web-main-header-start">
                 <a href="/">
