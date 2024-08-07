@@ -34,7 +34,7 @@ Convolutional neural networks (CNNs) use multiple layers to process data. Convol
 
 ### Transformers
 
-As previously mentioned in the history section, the transformer architecture has completely changed the language processing field of AI. Researchers have been investigating employing the Transformer architecture since 2020 by converting sections of images into tokens to run through the architecture with [Google's ViT](https://arxiv.org/pdf/2010.11929) and [Microsoft's Swin Transformer](https://arxiv.org/pdf/2103.14030), showcasing that transformers yield matching or even greater results than CNNs.
+The transformer architecture has completely changed the language processing field of AI. Researchers have investigated using the Transformer architecture since 2020, by converting sections of images into tokens with [Google's ViT](https://arxiv.org/pdf/2010.11929) and [Microsoft's Swin Transformer](https://arxiv.org/pdf/2103.14030). In these cases, Transformers showed yields matching or even greater results than CNNs.
 
 Currently, Transformers are leading benchmarks on most image classification datasets, including ImageNet ([OmniVec](https://arxiv.org/pdf/2311.05709)), CIFAR-10 (ViT-H/14), and [STL-10](https://cs.stanford.edu/~acoates/stl10/) (ViT-L/16). Still, they need help with datasets containing many classes, such as CIFAR-100, which is currently topped by an [EfficientNet](https://arxiv.org/pdf/1905.11946) (CNN). Another downside to transformers is that they require significantly more data than a CNN to train.
 
