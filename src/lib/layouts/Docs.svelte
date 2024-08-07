@@ -42,6 +42,7 @@
     import { isMac } from '$lib/utils/platform';
     import { getContext, setContext } from 'svelte';
     import { GITHUB_STARS } from '$lib/constants';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     export let variant: DocsLayoutVariant = 'default';
     export let isReferences = false;
@@ -99,10 +100,14 @@
             </a>
         </div>
         <div class="web-mobile-header-end">
-            <a href="https://cloud.appwrite.io" class="web-button web-is-only-desktop">
+            <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button web-is-only-desktop">
                 <span class="web-sub-body-500">Go to Console</span>
             </a>
-            <button class="web-button is-text" aria-label="open navigation" on:click={toggleSidenav}>
+            <button
+                class="web-button is-text"
+                aria-label="open navigation"
+                on:click={toggleSidenav}
+            >
                 {#if $layoutState.showSidenav}
                     <span aria-hidden="true" class="web-icon-close" />
                 {:else}

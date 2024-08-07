@@ -7,6 +7,7 @@
     import ComparePlans from './compare-plans.svelte';
     import Faq from './faq.svelte';
     import BG from './bg.png?enhanced';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     const title = 'Pricing' + TITLE_SUFFIX;
     const description = 'Explore our straightforward pricing plans that scale with your project.';
@@ -79,7 +80,7 @@
                                                 For personal hobby projects and students.
                                             </p>
                                             <a
-                                                href="https://cloud.appwrite.io/register"
+                                                href="{PUBLIC_APPWRITE_DASHBOARD}/register"
                                                 class="web-button is-secondary is-full-width u-margin-block-start-32"
                                             >
                                                 <span class="web-sub-body-500">Start building</span>
