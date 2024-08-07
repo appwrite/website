@@ -31,6 +31,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        background-color: hsl(var(--web-color-subtle));
     }
 
     .web-title {
