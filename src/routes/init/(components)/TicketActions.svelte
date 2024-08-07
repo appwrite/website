@@ -55,7 +55,7 @@
             <button class="web-button is-secondary" on:click={() => (customizing = false)}>
                 <span class="text">Cancel</span>
             </button>
-            <button class="web-button" on:click={saveTicket}>
+            <button class="web-button save-button" on:click={saveTicket}>
                 <span class="text">Save Changes</span>
             </button>
         </div>
@@ -114,7 +114,8 @@
                 width: 100%;
             }
             .web-button {
-                &.customize-button {
+                &.customize-button,
+                &.save-button {
                     width: 100%;
                 }
 
