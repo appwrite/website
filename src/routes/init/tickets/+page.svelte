@@ -196,12 +196,12 @@
         }
     }
 
-    @keyframes -global-scroll {
+    @keyframes scroll {
         0% {
-            transform: translateX(-100vw) translateZ(0);
+            transform: translateX(var(--x-translate-start)) translateZ(0);
         }
         100% {
-            transform: translateX(100vw) translateZ(0);
+            transform: translateX(var(--x-translate-end)) translateZ(0);
         }
     }
 
@@ -209,9 +209,14 @@
         display: flex;
         width: 400vw;
         animation: scroll 60s linear infinite;
+        overflow: hidden;
+
+        --x-translate-start: -100vw;
+        --x-translate-end: 100vw;
 
         .ticket {
             width: 50vw;
+            margin-right: 32px;
         }
 
         &:nth-of-type(even) {
@@ -227,14 +232,6 @@
 
             .ticket {
                 width: 100vw;
-            }
-        }
-
-        @media screen and (max-width: 640px) {
-            width: 1000vw;
-
-            .ticket {
-                width: 125vw;
             }
         }
     }
