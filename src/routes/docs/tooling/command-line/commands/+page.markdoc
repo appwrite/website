@@ -17,55 +17,86 @@ appwrite [COMMAND] [OPTIONS]
 Below is a list of the available commands in the Appwrite CLI. You can get more information on each command by running `appwrite [COMMAND] --help`.
 
 {% table %}
-* Command
-* Description
+
+-   Command
+-   Description
+
 ---
-* `login`
-* The login command allows you to authenticate into the CLI. This command expects the console account that you use to log into the Appwrite Console.
+
+-   `login`
+-   The login command allows you to authenticate into the CLI. This command expects the console account that you use to log into the Appwrite Console.
+
 ---
-* `client`
-* The client command allows you to configure your CLI.
+
+-   `client`
+-   The client command allows you to configure your CLI.
+
 ---
-* `init`
-* The init command helps you initialize your Appwrite project, databases, collections, functions, teams, and buckets.
+
+-   `init`
+-   The init command helps you initialize your Appwrite project, databases, collections, functions, teams, and buckets.
+
 ---
-* `deploy`
-* The deploy command provides a convenient wrapper for deploying your databases, collections, functions, teams, and buckets.
+
+-   `deploy`
+-   The deploy command provides a convenient wrapper for deploying your databases, collections, functions, teams, and buckets.
+
 ---
-* `logout`
-* The logout command allows you to logout from the CLI.
+
+-   `logout`
+-   The logout command allows you to logout from the CLI.
+
 ---
-* `projects`
-* The projects command allows you to view, create, and manage your Appwrite projects.
+
+-   `projects`
+-   The projects command allows you to view, create, and manage your Appwrite projects.
+
 ---
-* `storage`
-* The storage command allows you to manage your project files.
+
+-   `storage`
+-   The storage command allows you to manage your project files.
+
 ---
-* `teams`
-* The teams command allows you to group users of your project and to enable them to share access permissions to your project's resources.
+
+-   `teams`
+-   The teams command allows you to group users of your project and to enable them to share access permissions to your project's resources.
+
 ---
-* `users`
-* The users command allows you to manage your project users.
+
+-   `users`
+-   The users command allows you to manage your project users.
+
 ---
-* `account`
-* The account command allows you to authenticate as and manage a user account.
+
+-   `account`
+-   The account command allows you to authenticate as and manage a user account.
+
 ---
-* `avatars`
-* The avatars command provides utilities to manage images, icons, and avatars.
+
+-   `avatars`
+-   The avatars command provides utilities to manage images, icons, and avatars.
+
 ---
-* `functions`
-* The functions command allows you view, create and manage your Appwrite Functions.
+
+-   `functions`
+-   The functions command allows you view, create and manage your Appwrite Functions.
+
 ---
-* `databases`
-* The databases command allows you to create structured collections of documents, query and filter lists of documents.
+
+-   `databases`
+-   The databases command allows you to create structured collections of documents, query and filter lists of documents.
+
 ---
-* `locale`
-* The locale command allows you to customize your app based on your users' location.
+
+-   `locale`
+-   The locale command allows you to customize your app based on your users' location.
+
 ---
 
 {% /table %}
 
 # Verbose {% #verbose %}
+
 In case of errors with any command, you can get more information about what went wrong using the `--verbose` flag
 
 ```sh
@@ -73,6 +104,7 @@ appwrite users list --verbose
 ```
 
 # JSON {% #json %}
+
 By default, output is rendered in a tabular format. To format the output as JSON, use the `--json` flag.
 
 ```sh
@@ -129,5 +161,5 @@ To create a new document in an existing collection, use the `createDocument` com
 appwrite databases createDocument \
     --databaseId [DATABASE_ID] --collectionId [COLLECTION_ID] \
     --documentId 'unique()' --data '{ "Name": "Iron Man" }' \
-    --permissions 'read("any")' 'write("team:abc")' 
+    --permissions 'read("any")' 'write("team:abc")'
 ```

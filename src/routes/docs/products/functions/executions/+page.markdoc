@@ -14,29 +14,45 @@ In your function's **Executions** tab, you will see a table of your recent execu
 Here's the information shown on this table.
 
 {% table %}
-- Column
-- Description
+
+-   Column
+-   Description
+
 ---
-- EXECUTION ID
-- Unique identifier for each execution
+
+-   EXECUTION ID
+-   Unique identifier for each execution
+
 ---
-- STATUS
-- The current status of the execution
+
+-   STATUS
+-   The current status of the execution
+
 ---
-- CREATED
-- Timestamp of when the execution was created
+
+-   CREATED
+-   Timestamp of when the execution was created
+
 ---
-- TRIGGER
-- The [platform event](/docs/advanced/platform/events) that triggered the execution
+
+-   TRIGGER
+-   The [platform event](/docs/advanced/platform/events) that triggered the execution
+
 ---
-- METHOD
-- The HTTP method used to create the execution
+
+-   METHOD
+-   The HTTP method used to create the execution
+
 ---
-- PATH
-- The URL path the function execution was called with
+
+-   PATH
+-   The URL path the function execution was called with
+
 ---
-- DURATION
-- The time taken for the execution
+
+-   DURATION
+-   The time taken for the execution
+
 {% /table %}
 
 ## Execution status {% #execution-status %}
@@ -44,17 +60,25 @@ Here's the information shown on this table.
 Each execution can have one of the follow status.
 
 {% table %}
-- Status
-- description
+
+-   Status
+-   description
+
 ---
-- `processing`
-- The function execution has begun and has not finished.
+
+-   `processing`
+-   The function execution has begun and has not finished.
+
 ---
-- `completed`
-- The function executed successfully.
+
+-   `completed`
+-   The function executed successfully.
+
 ---
-- `failed`
-- The function execution was not successful.
+
+-   `failed`
+-   The function execution was not successful.
+
 {% /table %}
 
 # Execution details {% #execution-details %}

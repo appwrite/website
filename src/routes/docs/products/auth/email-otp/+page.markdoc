@@ -10,11 +10,11 @@ Email OTP (one-time password) authentication lets users create accounts using th
 Email OTP sends an email with a 6 digit code that user needs to enter into the app, while Magic URL delivers a clickable button or a link to user's inbox.
 Both allow passwordless login flows with different advantages.
 
-| Benefits of Email OTP                                              | Downsides of Email OTP                   |
-|--------------------------------------------------------------------|------------------------------------------|
-| Doesn't require user to be signed into email inbox on the device   | Expires quicker                        |
-| Doesn't disturb application flow with a redirect                   | Requires more inputs from user         |
-| Doesn't require deep linking on mobile apps                        |                                          |
+| Benefits of Email OTP                                            | Downsides of Email OTP         |
+| ---------------------------------------------------------------- | ------------------------------ |
+| Doesn't require user to be signed into email inbox on the device | Expires quicker                |
+| Doesn't disturb application flow with a redirect                 | Requires more inputs from user |
+| Doesn't require deep linking on mobile apps                      |                                |
 
 {% /info %}
 
@@ -59,6 +59,7 @@ final sessionToken = await account.createEmailToken(
 
 final userId = sessionToken.userId;
 ```
+
 ```client-apple
 import Appwrite
 
@@ -94,6 +95,7 @@ val sessionToken = account.createEmailToken(
 
 val userId = sessionToken.userId;
 ```
+
 ```graphql
 mutation {
     accountCreateEmailToken(userId: "unique()", email: "email@example.com") {
@@ -142,6 +144,7 @@ final session = await account.createSession(
     secret: '[SECRET]'
 );
 ```
+
 ```client-apple
 import Appwrite
 
@@ -156,6 +159,7 @@ let session = try await account.createSession(
     secret: "[SECRET]"
 );
 ```
+
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
@@ -195,6 +199,7 @@ A security phrase is a randomly generated phrase provided on the login page, as 
 By default, security phrases are disabled. To enable a security phrase in Email OTP, enable it in first step of the authentication flow.
 
 {% multicode %}
+
 ```client-web
 import { Client, Account, ID } from "appwrite";
 
@@ -219,11 +224,7 @@ promise.then(function (response) {
 
 ```graphql
 mutation {
-    accountCreateEmailToken(
-        userId: "ID.unique()",
-        email: "email@example.com",
-        phrase: true
-    ) {
+    accountCreateEmailToken(userId: "ID.unique()", email: "email@example.com", phrase: true) {
         _id
         _createdAt
         userId

@@ -17,7 +17,7 @@ The **Appwrite Assistant** is an AI-powered tool engineered to augment Appwrite-
 While the Appwrite Assistant remains under active development and is considered experimental, it undergoes incremental refinement. Its proficiency in comprehending user queries and delivering relevant responses improves with sustained usage.
 {% /info %}
 
-# Getting started  {% #getting-started %}
+# Getting started {% #getting-started %}
 
 To engage the Appwrite Assistant, access the Command Center within your Appwrite Console, and proceed to the `Ask the AI` tab in the navigation.
 
@@ -25,19 +25,19 @@ To engage the Appwrite Assistant, access the Command Center within your Appwrite
 
 The Appwrite Assistant accommodates queries related to Appwrite, encompassing topics such as:
 
-- How to add platform in the console?
-- How to integrate Appwrite in my Flutter project?
-- How can I create a user account?
-- How to store a file in a bucket?
+-   How to add platform in the console?
+-   How to integrate Appwrite in my Flutter project?
+-   How can I create a user account?
+-   How to store a file in a bucket?
 
 # Optimizations {% #optimizations %}
 
 For optimal utilization of the Appwrite Assistant, consider the following recommendations:
 
-- **Precision**: Articulate queries with specificity.
-- **Natural Language**: The Assistant comprehends plain English, obviating the need for technical terminology.
-- **Query Refinement**: In cases of misinterpretation, rephrase queries.
-- **Manual Documentation Search**: In scenarios where the Assistant falls short, manually search the Appwrite documentation.
+-   **Precision**: Articulate queries with specificity.
+-   **Natural Language**: The Assistant comprehends plain English, obviating the need for technical terminology.
+-   **Query Refinement**: In cases of misinterpretation, rephrase queries.
+-   **Manual Documentation Search**: In scenarios where the Assistant falls short, manually search the Appwrite documentation.
 
 # Privacy {% #privacy %}
 

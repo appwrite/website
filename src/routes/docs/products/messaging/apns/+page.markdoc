@@ -4,6 +4,7 @@ title: Apple Push Notification service
 description: Send push notifications to apps on Apple devices through Apple Push Notification service (APNs) using Appwrite Messaging.
 back: /docs/
 ---
+
 Apple Push Notification service (APNs) lets you send push notifications to Apple devices like macOS, iOS, tvOS, iPadOS, and watchOS devices.
 APNs is a best-effort service, and will attempt to deliver you messages to your device when it's online and available again.
 APNs will save the last message for 30 days or less and attempt delivery as soon as it's online.
@@ -61,7 +62,7 @@ Head to **Apple Developer Member Center** > **Program resources** > **Certificat
 {% only_dark %}
 ![Authentication Key](/images/docs/messaging/providers/apns/dark/authentication-key.png)
 {% /only_dark %}
-    {% only_light %}
+{% only_light %}
 ![Authentication Key](/images/docs/messaging/providers/apns/authentication-key.png)
 {% /only_light %}
 {% /accordion_item %}
@@ -125,6 +126,7 @@ const provider = await messaging.updateAPNSProvider(
         '[BUNDLE_ID]'                            // bundleId (optional)
     );
 ```
+
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
@@ -149,6 +151,7 @@ const provider = await messaging.updateAPNSProvider(
         '[BUNDLE_ID]'                            // bundleId (optional)
     );
 ```
+
 ```php
 <?php
 
@@ -175,6 +178,7 @@ $result = $messaging->updateAPNSProvider(
     bundleId: '[BUNDLE_ID]'                       // optional
 );
 ```
+
 ```python
 from appwrite.client import Client
 from appwrite.services.messaging import Messaging
@@ -199,6 +203,7 @@ result = messaging.update_apns_provider(
     bundle_id = '[BUNDLE_ID]'                   # optional
 )
 ```
+
 ```ruby
 require 'appwrite'
 
@@ -223,6 +228,7 @@ response = messaging.update_apns_provider(
 
 puts response.inspect
 ```
+
 ```csharp
 using Appwrite;
 using Appwrite.Services;
@@ -244,6 +250,7 @@ Provider result = await messaging.UpdateAPNSProvider(
     teamId: "[TEAM_ID]"                           // optional
     bundleId: "[BUNDLE_ID]");                     // optional
 ```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:dart_appwrite/enums.dart';
@@ -277,6 +284,7 @@ void main() {                                    // Init SDK
   });
 }
 ```
+
 ```kotlin
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -307,6 +315,7 @@ messaging.updateAPNSProvider(
     })
 );
 ```
+
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -337,6 +346,7 @@ messaging.updateAPNSProvider(
     })
 );
 ```
+
 ```swift
 import Appwrite
 
@@ -357,6 +367,7 @@ let provider = try await messaging.updateAPNSProvider(
   bundleId: "[BUNDLE_ID]"                        // optional
 )
 ```
+
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}

@@ -4,7 +4,9 @@ title: Add database
 description: Add data storage to your Vue.js project powered by Appwrite Cloud databases.
 step: 6
 ---
+
 # Create collection {% #create-collection %}
+
 In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
 
 {% only_dark %}
@@ -15,11 +17,11 @@ In Appwrite, data is stored as a collection of documents. Create a collection in
 {% /only_light %}
 
 Create a new collection with the following attributes:
-| Field       | Type   | Required |
+| Field | Type | Required |
 |-------------|--------|----------|
-| userId      | String | Yes      |
-| title       | String | Yes      |
-| description | String | No       |
+| userId | String | Yes |
+| title | String | Yes |
+| description | String | No |
 
 # Ideas context {% #ideas-context %}
 

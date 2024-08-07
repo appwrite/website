@@ -33,13 +33,12 @@ Go to the **Webhooks** section and click the button to **Add an endpoint**.
 
 Let's add a fake endpoint for now in order to get a webhook secret. Later, when you set up the Appwrite Function, you will update this endpoint with the Function's endpoint.
 
-Enter `https://temporary-endpoint/` as **Endpoint URL** and feel free to write some **Description** for yourself. 
-Leave everything else as is, and continue down to **Select events**. 
-You need to toggle events `customer.subscription.created` and `customer.subscription.deleted`. 
-You can use the search bar to your advantage. By searching for `subscription`, you should easily find those two events. 
+Enter `https://temporary-endpoint/` as **Endpoint URL** and feel free to write some **Description** for yourself.
+Leave everything else as is, and continue down to **Select events**.
+You need to toggle events `customer.subscription.created` and `customer.subscription.deleted`.
+You can use the search bar to your advantage. By searching for `subscription`, you should easily find those two events.
 
 Once both are selected, you can click a button to **Add events**. Finish off the form by clicking the **Add endpoint** button.
-
 
 {% only_dark %}
 ![Stripe webhook setup screen](/images/docs/tutorials/subscriptions-with-stripe/dark/stripe-webhook-subscription.png)

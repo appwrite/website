@@ -6,13 +6,14 @@ difficulty: beginner
 readtime: 3
 ---
 
-
 Appwrite Functions can be executed in several ways.
 Executions can be invoked through the Appwrite SDK and visiting its REST endpoint. Functions can also be triggered by events and scheduled executions.
 Here are all the different ways to consume your Appwrite Functions.
 
 # Domains {% #domains %}
+
 You can execute a function through HTTP requests, using a browser or by sending an HTTP request.
+
 1. In the Appwrite Console's sidebar, click **Functions**.
 1. Under **Execute access**, set the access to `Any` so that anyone can execute the function. You will use [JWTs](/docs/products/auth/jwt) to authenticate users.
 1. Under the **Domains** tab, you'll find the generated domain from Appwrite and your custom domains. [Learn about adding a custom domain](/docs/products/functions/domains).
@@ -35,7 +36,7 @@ curl -X POST https://64d4d22db370ae41a32e.appwrite.global \
 Notice how a `x-appwrite-user-jwt` header is passed in the request, you will use this to authenticate users.
 [Learn more about JWTs](/docs/products/auth/jwt).
 
-This unlocks ability for you to develop custom HTTP endpoints with Appwrite Functions. 
+This unlocks ability for you to develop custom HTTP endpoints with Appwrite Functions.
 It also allows accepting incoming webhooks for handling online payments, hosting social platform bots, and much more.
 
 # SDK {% #sdk %}
@@ -46,8 +47,9 @@ You can invoke your Appwrite Functions directly from the [Appwrite SDKs](/docs/s
 {% tabsitem #client title="Client SDKs" %}
 
 {% multicode %}
+
 ```js
-import { Client, Functions } from "appwrite";
+import { Client, Functions } from 'appwrite';
 
 const client = new Client();
 
@@ -55,24 +57,27 @@ const functions = new Functions(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>') // Your project ID
-;
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
 const promise = functions.createExecution(
-        '<FUNCTION_ID>',  // functionId
-        '<BODY>',  // body (optional)
-        false,  // async (optional)
-        '<PATH>',  // path (optional)
-        'GET',  // method (optional)
-        {} // headers (optional)
-    );
+    '<FUNCTION_ID>', // functionId
+    '<BODY>', // body (optional)
+    false, // async (optional)
+    '<PATH>', // path (optional)
+    'GET', // method (optional)
+    {} // headers (optional)
+);
 
-promise.then(function (response) {
-    console.log(response); // Success
-}, function (error) {
-    console.log(error); // Failure
-});
+promise.then(
+    function (response) {
+        console.log(response); // Success
+    },
+    function (error) {
+        console.log(error); // Failure
+    }
+);
 ```
+
 ```dart
 import 'package:appwrite/appwrite.dart';
 
@@ -101,6 +106,7 @@ void main() { // Init SDK
   });
 }
 ```
+
 ```swift
 import Appwrite
 
@@ -119,6 +125,7 @@ let execution = try await functions.createExecution(
   headers: [:] // optional
 )
 ```
+
 ```kotlin
 import io.appwrite.Client
 import io.appwrite.services.Functions
@@ -138,6 +145,7 @@ val response = functions.createExecution(
     headers = mapOf( "a" to "b" ) // optional
 )
 ```
+
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -166,12 +174,14 @@ functions.createExecution(
     })
 );
 ```
+
 {% /multicode %}
 
 {% /tabsitem %}
 
 {% tabsitem #server title="Server SDKs" %}
 {% multicode %}
+
 ```js
 const sdk = require('node-appwrite');
 
@@ -182,25 +192,28 @@ const functions = new sdk.Functions(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>') // Your project ID
-;
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
 const promise = functions.createExecution(
-        '<FUNCTION_ID>',  // functionId
-    
-        '<BODY>',  // body (optional)
-        false,  // async (optional)
-        '<PATH>',  // path (optional)
-        'GET',  // method (optional)
-        {} // headers (optional)
-    );
+    '<FUNCTION_ID>', // functionId
 
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
+    '<BODY>', // body (optional)
+    false, // async (optional)
+    '<PATH>', // path (optional)
+    'GET', // method (optional)
+    {} // headers (optional)
+);
+
+promise.then(
+    function (response) {
+        console.log(response);
+    },
+    function (error) {
+        console.log(error);
+    }
+);
 ```
+
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
@@ -216,7 +229,7 @@ client
 
 const promise = functions.createExecution(
         '<FUNCTION_ID>',  // functionId
-    
+
         '<BODY>',  // body (optional)
         false,  // async (optional)
         '<PATH>',  // path (optional)
@@ -230,6 +243,7 @@ promise.then(function (response) {
     console.log(error);
 });
 ```
+
 ```php
 <?php
 
@@ -245,8 +259,8 @@ $client
 
 $functions = new Functions($client);
 
-$result = $functions->createExecution( 
-    functionId: '<FUNCTION_ID>', 
+$result = $functions->createExecution(
+    functionId: '<FUNCTION_ID>',
     body: '<BODY>',  // optional
     async: false,  // optional
     path: '<PATH>',  // optional
@@ -254,6 +268,7 @@ $result = $functions->createExecution(
     headers: [] // optional
 );
 ```
+
 ```python
 from appwrite.client import Client
 from appwrite.services.functions import Functions
@@ -267,8 +282,8 @@ client = Client()
 
 functions = Functions(client)
 
-result = functions.create_execution( 
-    function_id = '<FUNCTION_ID>', 
+result = functions.create_execution(
+    function_id = '<FUNCTION_ID>',
     body = '<BODY>',  # optional
     async = False,  # optional
     path = '<PATH>',  # optional
@@ -276,6 +291,7 @@ result = functions.create_execution(
     headers = {} # optional
 )
 ```
+
 ```ruby
 require 'appwrite'
 
@@ -288,7 +304,7 @@ client = Client.new
 functions = Functions.new(client)
 
 response = functions.create_execution(
-    function_id: '<FUNCTION_ID>', 
+    function_id: '<FUNCTION_ID>',
     body: '<BODY>',  # optional
     async: false,  # optional
     path: '<PATH>',  # optional
@@ -298,6 +314,7 @@ response = functions.create_execution(
 
 puts response.inspect
 ```
+
 ```csharp
 using Appwrite;
 using Appwrite.Services;
@@ -310,13 +327,14 @@ var client = new Client()
 var functions = new Functions(client);
 
 Execution result = await functions.CreateExecution(
-    functionId: "<FUNCTION_ID>"    
-    body: "<BODY>" // optional    
-    async: false // optional    
-    path: "<PATH>" // optional    
-    method: "GET" // optional    
+    functionId: "<FUNCTION_ID>"
+    body: "<BODY>" // optional
+    async: false // optional
+    path: "<PATH>" // optional
+    method: "GET" // optional
     headers: [object]); // optional
 ```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 
@@ -346,6 +364,7 @@ void main() { // Init SDK
   });
 }
 ```
+
 ```kotlin
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -375,6 +394,7 @@ functions.createExecution(
     })
 );
 ```
+
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -404,6 +424,7 @@ functions.createExecution(
     })
 );
 ```
+
 ```swift
 import Appwrite
 
@@ -422,13 +443,15 @@ let execution = try await functions.createExecution(
   headers: [:] // optional
 )
 ```
+
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}
 
 # Console {% #console %}
-Another easy way to test a function is directly in the Appwrite Console. 
-You test a function by hitting the **Execute now** button, which will display with modal below. 
+
+Another easy way to test a function is directly in the Appwrite Console.
+You test a function by hitting the **Execute now** button, which will display with modal below.
 
 You'll be able to mock executions by configuring the path, method, headers, and body.
 
@@ -438,7 +461,6 @@ You'll be able to mock executions by configuring the path, method, headers, and 
 {% only_light %}
 ![Create project screen](/images/docs/functions/execution/execute-function.png)
 {% /only_light %}
-
 
 # Events {% #events %}
 
@@ -478,13 +500,12 @@ Appwrite supports scheduled function executions. You can schedule executions usi
 
 Here are some cron expressions for common intervals:
 
-| Cron Expression  | Schedule              |
-| ---------------- | --------------------- |
-| `*/15 * * * *`   | Every 15 minutes      |
-| `0 * * * *`      | Every Hour            |
-| `0 0 * * *`      | Every day at 00:00    |
-| `0 0 * * 1`      | Every Monday at 00:00 |
-
+| Cron Expression | Schedule              |
+| --------------- | --------------------- |
+| `*/15 * * * *`  | Every 15 minutes      |
+| `0 * * * *`     | Every Hour            |
+| `0 0 * * *`     | Every day at 00:00    |
+| `0 0 * * 1`     | Every Monday at 00:00 |
 
 # Permissions {% #permission %}
 

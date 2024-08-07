@@ -4,6 +4,7 @@ title: Initialize SDK
 description: Add authentication to a Nuxt project using Appwrite.
 step: 3
 ---
+
 Before you can use Appwrite, you need to create the Appwrite `Client` and set the project ID and endpoint.
 The client is then used to create services like `Databases` and `Account`, so they all point to the same Appwrite project.
 
@@ -60,13 +61,13 @@ export function createSessionClient(event) {
 
 ```js
 export default defineNuxtConfig({
-  runtimeConfig: {
-    appwriteKey: process.env.APPWRITE_KEY,
-    public: {
-      appwriteEndpoint: process.env.PUBLIC_APPWRITE_ENDPOINT,
-      appwriteProjectId: process.env.PUBLIC_APPWRITE_PROJECT,
-    },
-  },
+    runtimeConfig: {
+        appwriteKey: process.env.APPWRITE_KEY,
+        public: {
+            appwriteEndpoint: process.env.PUBLIC_APPWRITE_ENDPOINT,
+            appwriteProjectId: process.env.PUBLIC_APPWRITE_PROJECT
+        }
+    }
 });
 ```
 
@@ -87,9 +88,9 @@ The `APPWRITE_KEY` is an Appwrite API key with the necessary permissions to crea
 
 For this tutorial you'll need an API key with the following scopes:
 
-| Category  {% width=120 %}                              | Required scopes                                        | Purpose                                                |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| Sessions                                               | `sessions.write`                                       | Allows API key to create, update, and delete sessions. |
+| Category {% width=120 %} | Required scopes  | Purpose                                                |
+| ------------------------ | ---------------- | ------------------------------------------------------ |
+| Sessions                 | `sessions.write` | Allows API key to create, update, and delete sessions. |
 
 {% only_dark %}
 ![Server integrations](/images/docs/quick-starts/dark/integrate-server.png)

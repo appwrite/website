@@ -1,11 +1,17 @@
-import { dev } from '$app/environment';
-
 type Issue = {
     number: number;
     url: string;
     title: string;
     repository: string;
     tags: string[];
+};
+
+type ApiIssue = {
+    number: number;
+    html_url: string;
+    title: string;
+    repository_url: string;
+    labels: { name: string }[];
 };
 
 const mockIssues: Issue[] = [
@@ -40,10 +46,6 @@ const mockIssues: Issue[] = [
 ];
 
 export const load = async () => {
-    // if (dev) {
-    //     return { issues: mockIssues };
-    // }
-
     // fetch issues from github, appwrite/appwrite repo
     const response = await fetch('https://api.github.com/repos/appwrite/appwrite/issues');
     const issues = await response.json();
@@ -54,12 +56,12 @@ export const load = async () => {
     // map issues to our format
     return {
         issues: issues
-            .map((issue: any) => ({
+            .map((issue: ApiIssue) => ({
                 number: issue.number,
                 url: issue.html_url,
                 title: issue.title,
                 repository: issue.repository_url.replace('https://api.github.com/repos/', ''),
-                tags: issue.labels.map((label: any) => label.name)
+                tags: issue.labels.map((label) => label.name)
             }))
             .slice(0, 6)
     };

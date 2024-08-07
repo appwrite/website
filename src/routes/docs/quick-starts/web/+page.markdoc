@@ -20,8 +20,8 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 If this is your first time using Appwrite, create an account and create your first project.
 
-Then, under **Add a platform**, add a **Web app**. 
-The **Hostname** should be `localhost` or the domain on which you're hosting your web app. 
+Then, under **Add a platform**, add a **Web app**.
+The **Hostname** should be `localhost` or the domain on which you're hosting your web app.
 
 {% only_dark %}
 ![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
@@ -35,6 +35,7 @@ You can skip optional steps.
 {% /section %}
 {% section #step-2 step=2 title="Create project" %}
 You can install the Appwrite Web SDK using a package manager.
+
 ```sh
 npm install appwrite@14.0.1
 ```
@@ -44,8 +45,10 @@ You can also add the Appwrite Web SDK using CDN with a script tag.
 ```html
 <script src="https://cdn.jsdelivr.net/npm/appwrite@14.0.1"></script>
 ```
+
 {% /section %}
 {% section #step-3 step=3 title="Import Appwrite" %}
+
 ```client-web
 import { Client, Account } from 'appwrite';
 
@@ -58,6 +61,7 @@ client
 export const account = new Account(client);
 export { ID } from 'appwrite';
 ```
+
 {% /section %}
 
 {% section #step-4 step=4 title="Using TypeScript" %}
@@ -66,15 +70,13 @@ If you prefer TypeScript, you can import TypeScript models from the Appwrite SDK
 ```ts
 // appwrite.ts
 
-import { Client, Databases, Account } from "appwrite";
+import { Client, Databases, Account } from 'appwrite';
 // Import type models for Appwrite
 import { type Models } from 'appwrite';
 
 const client: Client = new Client();
 
-client
-    .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('<YOUR_PROJECT_ID>'); // Replace with your project ID
+client.setEndpoint('https://cloud.appwrite.io/v1').setProject('<YOUR_PROJECT_ID>'); // Replace with your project ID
 
 export const account: Account = new Account(client);
 export const database: Databases = new Databases(client);
@@ -82,12 +84,14 @@ export const database: Databases = new Databases(client);
 // You then use the imported type definitions like this
 const authUser: Models.Session = await account.createEmailPasswordSession(email, password);
 ```
+
 {% /section %}
 
 {% section #step-5 step=5 title="Extending TypeScript models" %}
 Sometimes you'll need to extend TypeScript models with your own type definitions.
 
 For example, when you fetch a list of documents from a collection, you can define the expected structure of the documents like this.
+
 ```ts
 interface Idea extends Models.Document {
     title: string;
@@ -99,17 +103,17 @@ interface Idea extends Models.Document {
 When you fetch documents, you can use this new `Idea` interface like this.
 
 ```ts
-const response = await database.listDocuments(
-    ideasDatabaseId,
-    ideasCollectionId,
-    [Query.orderDesc("$createdAt"), Query.limit(queryLimit)]
-);
+const response = await database.listDocuments(ideasDatabaseId, ideasCollectionId, [
+    Query.orderDesc('$createdAt'),
+    Query.limit(queryLimit)
+]);
 const ideas = response.documents as Idea[];
 ```
+
 {% /section %}
 
 {% section #step-6 step=6 title="All set" %}
-The Appwrite SDK works with your favorite Web frameworks. 
+The Appwrite SDK works with your favorite Web frameworks.
 
 Learn to use Appwrite by adding authentication to a simple web app.
 {% cards %}

@@ -9,7 +9,7 @@ author: aditya-oberai
 category: functions
 ---
 
-Recently, at the OpenAI Spring Update, OpenAI CTO Mira Murati announced the launch of their new flagship model, **GPT-4o**. GPT-4o happens to be OpenAI's fastest and most affordable model so far, which led us to wonder if we could use it to build our very own chatbot. 
+Recently, at the OpenAI Spring Update, OpenAI CTO Mira Murati announced the launch of their new flagship model, **GPT-4o**. GPT-4o happens to be OpenAI's fastest and most affordable model so far, which led us to wonder if we could use it to build our very own chatbot.
 
 Therefore, in this blog, we will learn how to use Appwrite Functions and the OpenAI GPT-4o API to build a personal chatbot.
 
@@ -29,8 +29,8 @@ Now that we have our OpenAI API Key, let's prepare the function on [Appwrite](ht
 
 Once the function is ready, we must visit the Settings tab on the Function page and add the following environment variables:
 
-- `OPENAI_API_KEY`: API Key from our OpenAI account
-- `OPENAI_MAX_TOKENS`: Maximum number of tokens that the OpenAI response should contain (we'll set this as `512`)
+-   `OPENAI_API_KEY`: API Key from our OpenAI account
+-   `OPENAI_MAX_TOKENS`: Maximum number of tokens that the OpenAI response should contain (we'll set this as `512`)
 
 Once that is done, visit the function's GitHub repository and clone the project.
 
@@ -54,103 +54,98 @@ To get our chatbot up and running, we must first develop a UI you can interact w
 ```html
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prompt ChatGPT demo</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Prompt ChatGPT demo</title>
 
-    <script>
-      async function onSubmit(prompt) {
-        const response = await fetch('/', {
-          method: 'POST',
-          body: JSON.stringify({ prompt }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+        <script>
+            async function onSubmit(prompt) {
+                const response = await fetch('/', {
+                    method: 'POST',
+                    body: JSON.stringify({ prompt }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
 
-        const json = await response.json();
+                const json = await response.json();
 
-        if (!json.ok || json.error) {
-          alert(json.error);
-        }
+                if (!json.ok || json.error) {
+                    alert(json.error);
+                }
 
-        return json.completion;
-      }
-    </script>
+                return json.completion;
+            }
+        </script>
 
-    <script src="//unpkg.com/alpinejs" defer></script>
+        <script src="//unpkg.com/alpinejs" defer></script>
 
-    <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink" />
-    <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink-icons" />
-  </head>
-  <body class="theme-dark">
-    <main class="main-content">
-      <div class="top-cover u-padding-block-end-56">
-        <div class="container">
-          <div
-            class="u-flex u-gap-16 u-flex-justify-center u-margin-block-start-16"
-          >
-            <h1 class="heading-level-1">Prompt ChatGPT demo</h1>
-            <code class="u-un-break-text"></code>
-          </div>
-          <p
-            class="body-text-1 u-normal u-margin-block-start-8"
-            style="max-width: 50rem"
-          >
-            Use this page to test your implementation with OpenAI GPT-4o API. Enter
-            text and receive the model output as a response.
-          </p>
-        </div>
-      </div>
-      <div
-        class="container u-margin-block-start-negative-56"
-        x-data="{ prompt: '', answer: '', loading: false }"
-      >
-        <div class="card u-flex u-gap-24 u-flex-vertical">
-          <div class="u-flex u-cross-center u-gap-8">
+        <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink" />
+        <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink-icons" />
+    </head>
+    <body class="theme-dark">
+        <main class="main-content">
+            <div class="top-cover u-padding-block-end-56">
+                <div class="container">
+                    <div class="u-flex u-gap-16 u-flex-justify-center u-margin-block-start-16">
+                        <h1 class="heading-level-1">Prompt ChatGPT demo</h1>
+                        <code class="u-un-break-text"></code>
+                    </div>
+                    <p class="body-text-1 u-normal u-margin-block-start-8" style="max-width: 50rem">
+                        Use this page to test your implementation with OpenAI GPT-4o API. Enter text
+                        and receive the model output as a response.
+                    </p>
+                </div>
+            </div>
             <div
-              class="input-text-wrapper is-with-end-button u-width-full-line"
+                class="container u-margin-block-start-negative-56"
+                x-data="{ prompt: '', answer: '', loading: false }"
             >
-              <input x-model="prompt" type="search" placeholder="Question" />
-              <div class="icon-search" aria-hidden="true"></div>
-            </div>
+                <div class="card u-flex u-gap-24 u-flex-vertical">
+                    <div class="u-flex u-cross-center u-gap-8">
+                        <div class="input-text-wrapper is-with-end-button u-width-full-line">
+                            <input x-model="prompt" type="search" placeholder="Question" />
+                            <div class="icon-search" aria-hidden="true"></div>
+                        </div>
 
-            <button
-              class="button"
-              x-bind:disabled="loading"
-              x-on:click="async () => { loading = true; answer = ''; try { answer = await onSubmit(prompt) } catch(err) { console.error(err); } finally { loading = false; } }"
-            >
-              <span class="text">Submit</span>
-            </button>
-          </div>
-          <template x-if="answer">
-            <div class="u-flex u-flex-vertical u-gap-12">
-              <div class="u-flex u-flex-vertical u-gap-12 card">
-                <div class="u-flex u-gap-12">
-                  <h5 class="eyebrow-heading-2">ChatGPT:</h5>
-                </div>
+                        <button
+                            class="button"
+                            x-bind:disabled="loading"
+                            x-on:click="async () => { loading = true; answer = ''; try { answer = await onSubmit(prompt) } catch(err) { console.error(err); } finally { loading = false; } }"
+                        >
+                            <span class="text">Submit</span>
+                        </button>
+                    </div>
+                    <template x-if="answer">
+                        <div class="u-flex u-flex-vertical u-gap-12">
+                            <div class="u-flex u-flex-vertical u-gap-12 card">
+                                <div class="u-flex u-gap-12">
+                                    <h5 class="eyebrow-heading-2">ChatGPT:</h5>
+                                </div>
 
-                <div style="overflow-x: hidden; line-break: anywhere; white-space: pre-line;">
-                  <p class="u-color-text-gray" x-text="answer"></p>
+                                <div
+                                    style="overflow-x: hidden; line-break: anywhere; white-space: pre-line;"
+                                >
+                                    <p class="u-color-text-gray" x-text="answer"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
                 </div>
-              </div>
             </div>
-          </template>
-        </div>
-      </div>
-    </main>
-  </body>
+        </main>
+    </body>
 </html>
 ```
 
 ### Preparing our utility functions
 
-To simplify the function logic, we create additional utility functions to 
+To simplify the function logic, we create additional utility functions to
 
-- return the contents of a file in the static folder as a string (to send our UI to the client browser)
-- throw an error if any of the keys are missing from the object (to check for missing environment variables)
+-   return the contents of a file in the static folder as a string (to send our UI to the client browser)
+-   throw an error if any of the keys are missing from the object (to check for missing environment variables)
 
 For that, we shall enter the `src` folder and create a file `utils.js` with the following code:
 
@@ -169,7 +164,7 @@ const staticFolder = path.join(__dirname, '../static');
  * @returns {string} Contents of static/{fileName}
  */
 export function getStaticFile(fileName) {
-  return fs.readFileSync(path.join(staticFolder, fileName)).toString();
+    return fs.readFileSync(path.join(staticFolder, fileName)).toString();
 }
 
 /**
@@ -179,15 +174,15 @@ export function getStaticFile(fileName) {
  * @throws {Error}
  */
 export function throwIfMissing(obj, keys) {
-  const missing = [];
-  for (let key of keys) {
-    if (!(key in obj) || !obj[key]) {
-      missing.push(key);
+    const missing = [];
+    for (let key of keys) {
+        if (!(key in obj) || !obj[key]) {
+            missing.push(key);
+        }
     }
-  }
-  if (missing.length > 0) {
-    throw new Error(`Missing required fields: ${missing.join(', ')}`);
-  }
+    if (missing.length > 0) {
+        throw new Error(`Missing required fields: ${missing.join(', ')}`);
+    }
 }
 ```
 
@@ -206,33 +201,33 @@ import OpenAI from 'openai';
 import { getStaticFile, throwIfMissing } from './utils.js';
 
 export default async ({ req, res }) => {
-  throwIfMissing(process.env, ['OPENAI_API_KEY']);
+    throwIfMissing(process.env, ['OPENAI_API_KEY']);
 
-  if (req.method === 'GET') {
-    return res.send(getStaticFile('index.html'), 200, {
-      'Content-Type': 'text/html; charset=utf-8',
-    });
-  }
+    if (req.method === 'GET') {
+        return res.send(getStaticFile('index.html'), 200, {
+            'Content-Type': 'text/html; charset=utf-8'
+        });
+    }
 
-  try {
-    throwIfMissing(req.body, ['prompt']);
-  } catch (err) {
-    return res.json({ ok: false, error: err.message }, 400);
-  }
+    try {
+        throwIfMissing(req.body, ['prompt']);
+    } catch (err) {
+        return res.json({ ok: false, error: err.message }, 400);
+    }
 
-  const openai = new OpenAI();
+    const openai = new OpenAI();
 
-  try {
-    const response = await openai.chat.completions.create({
-      model: 'gpt-4o',
-      max_tokens: parseInt(process.env.OPENAI_MAX_TOKENS ?? '512'),
-      messages: [{ role: 'user', content: req.body.prompt }],
-    });
-    const completion = response.choices[0].message.content;
-    return res.json({ ok: true, completion }, 200);
-  } catch (err) {
-    return res.json({ ok: false, error: 'Failed to query model.' }, 500);
-  }
+    try {
+        const response = await openai.chat.completions.create({
+            model: 'gpt-4o',
+            max_tokens: parseInt(process.env.OPENAI_MAX_TOKENS ?? '512'),
+            messages: [{ role: 'user', content: req.body.prompt }]
+        });
+        const completion = response.choices[0].message.content;
+        return res.json({ ok: true, completion }, 200);
+    } catch (err) {
+        return res.json({ ok: false, error: 'Failed to query model.' }, 500);
+    }
 };
 ```
 
@@ -271,5 +266,5 @@ And with that, you have successfully deployed your personal chatbot powered by G
 
 Additionally, if you would like to learn more about Appwrite Functions, here are some resources:
 
-- [Appwrite Functions docs](https://appwrite.io/docs/functions): These documents provide more information on how to use Appwrite Functions.
-- [Appwrite Discord](https://discord.com/invite/appwrite): Connect with other developers and the Appwrite team for discussion, questions, and collaboration.
+-   [Appwrite Functions docs](https://appwrite.io/docs/functions): These documents provide more information on how to use Appwrite Functions.
+-   [Appwrite Discord](https://discord.com/invite/appwrite): Connect with other developers and the Appwrite team for discussion, questions, and collaboration.

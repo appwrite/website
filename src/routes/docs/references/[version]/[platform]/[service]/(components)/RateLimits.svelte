@@ -77,7 +77,7 @@
                     </thead>
                     <tbody class="web-table-body">
                         {#if hasMultipleKeys(rateKeys)}
-                            {#each rateKeys as key, i}
+                            {#each rateKeys as key}
                                 <tr class="web-table-row">
                                     <td class="web-table-col"
                                         >{Math.floor(rateTime / 60)} minutes</td

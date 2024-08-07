@@ -38,8 +38,8 @@ For the purposes of this demo application, I will be implementing these in a Sve
 
 Before we implement our auth flow, we must first:
 
-- Create an Appwrite project and create an API key
-- Set up a SvelteKit app on our local system
+-   Create an Appwrite project and create an API key
+-   Set up a SvelteKit app on our local system
 
 ### Appwrite
 
@@ -97,7 +97,7 @@ const users = new Users(client);
 
 /**
  * Returns user if user exists in Appwrite, if not creates a new user
- * 
+ *
  * @param {string} email
  * @returns {Promise<import("node-appwrite").Models.User>} user
  */
@@ -112,14 +112,14 @@ async function getUser(email) {
     } catch (err) {
         console.error(err);
     }
-    
+
 }
 
 /**
  * Logic for authentication
- * 
- * @param {string} email 
- * @param {string} password 
+ *
+ * @param {string} email
+ * @param {string} password
  * @returns {Promise<import("node-appwrite").Models.User>} user
  */
 async function authLogic(email, password) {
@@ -172,7 +172,7 @@ Before we create our client app functionality, we will set up the Appwrite Web S
 npm i appwrite
 ```
 
- We will then create a file `./src/lib/appwrite.js` and add the following code:
+We will then create a file `./src/lib/appwrite.js` and add the following code:
 
 ```js
 import { Client, Account } from 'appwrite';
@@ -182,8 +182,8 @@ const endpoint = PUBLIC_APPWRITE_ENDPOINT;
 const projectId = PUBLIC_APPWRITE_PROJECT_ID;
 
 const client = new Client()
-	.setEndpoint(endpoint) // Your API Endpoint
-	.setProject(projectId); // Your project ID;
+    .setEndpoint(endpoint) // Your API Endpoint
+    .setProject(projectId); // Your project ID;
 
 export const account = new Account(client);
 ```
@@ -194,87 +194,87 @@ We will create a file `./src/routes/+page.svelte` and add the following code:
 
 ```html
 <script>
-	import { account } from '$lib/appwrite';
-	import { onMount } from 'svelte';
+    import { account } from '$lib/appwrite';
+    import { onMount } from 'svelte';
 
-	let user = '';
-	let session = '';
-	let token = '';
+    let user = '';
+    let session = '';
+    let token = '';
 
-	let state = ['notLoggedIn', 'tokenGenerated', 'loggedIn'];
-	let currentState = state[0];
+    let state = ['notLoggedIn', 'tokenGenerated', 'loggedIn'];
+    let currentState = state[0];
 
-	async function createToken(event) {
-		try {
-			event.preventDefault();
+    async function createToken(event) {
+        try {
+            event.preventDefault();
 
-			let formData = new FormData(event.target);
-			const email = formData.get('email');
-			const password = formData.get('password');
+            let formData = new FormData(event.target);
+            const email = formData.get('email');
+            const password = formData.get('password');
 
-			let authRequest = await fetch('/auth', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({ email, password })
-			});
+            let authRequest = await fetch('/auth', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            });
 
-			let authRequestBody = await authRequest.json();
+            let authRequestBody = await authRequest.json();
 
-			user = authRequestBody.user;
-			token = authRequestBody.token;
-			currentState = state[1];
-		} catch (error) {
-			console.error(error);
-		}
-	}
+            user = authRequestBody.user;
+            token = authRequestBody.token;
+            currentState = state[1];
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
-	async function createSession() {
-		session = await account.createSession(user.$id, token.secret);
-		currentState = state[2];
-	}
+    async function createSession() {
+        session = await account.createSession(user.$id, token.secret);
+        currentState = state[2];
+    }
 
-	async function logout() {
-		token = '';
-		session = '';
-		currentState = state[0];
-		await account.deleteSession('current');
-	}
+    async function logout() {
+        token = '';
+        session = '';
+        currentState = state[0];
+        await account.deleteSession('current');
+    }
 
-	onMount(async () => {
-		await logout();
-	});
+    onMount(async () => {
+        await logout();
+    });
 </script>
 
 <h1>Custom Token Auth Demo</h1>
 
 {#if currentState == state[0]}
-	<div>
-		<h2>Login</h2>
-		<form on:submit={createToken}>
-			<div>
-				<label for="email">Email</label>
-				<input type="email" id="email" name="email" placeholder="Enter any email id" required />
-			</div>
-			<div>
-				<label for="password">Password (Enter code: 123456)</label>
-				<input type="text" id="password" name="password" placeholder="123456" required />
-			</div>
-			<button type="submit">Login</button>
-		</form>
-	</div>
+<div>
+    <h2>Login</h2>
+    <form on:submit="{createToken}">
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter any email id" required />
+        </div>
+        <div>
+            <label for="password">Password (Enter code: 123456)</label>
+            <input type="text" id="password" name="password" placeholder="123456" required />
+        </div>
+        <button type="submit">Login</button>
+    </form>
+</div>
 {:else if currentState == state[1]}
-	<div>
-		<h2>Token secret: {token.secret}</h2>
-		<button on:click={createSession}>Generate session</button>
-	</div>
+<div>
+    <h2>Token secret: {token.secret}</h2>
+    <button on:click="{createSession}">Generate session</button>
+</div>
 {:else if currentState == state[2]}
-	<div>
-		<h2>Session details</h2>
-		<pre>{JSON.stringify(session, undefined, 4)}</pre>
-		<button type="submit" on:click={logout}>Logout</button>
-	</div>
+<div>
+    <h2>Session details</h2>
+    <pre>{JSON.stringify(session, undefined, 4)}</pre>
+    <button type="submit" on:click="{logout}">Logout</button>
+</div>
 {/if}
 ```
 
@@ -294,5 +294,5 @@ And with that, our demo project to try custom token authentication in Appwrite i
 
 Additionally, if you would like to learn more about Appwrite Auth, here are some resources:
 
-- [Appwrite Auth docs](https://appwrite.io/docs/products/auth): These documents provide more information on how to use Appwrite Auth.
-- [Appwrite Discord](https://discord.com/invite/appwrite): Connect with other developers and the Appwrite team for discussion, questions, and collaboration.
+-   [Appwrite Auth docs](https://appwrite.io/docs/products/auth): These documents provide more information on how to use Appwrite Auth.
+-   [Appwrite Discord](https://discord.com/invite/appwrite): Connect with other developers and the Appwrite team for discussion, questions, and collaboration.

@@ -8,14 +8,14 @@ isPartner: true
 isNew: true
 cover: /images/integrations/stripe-payments/cover.png
 category: Payments
-product: 
+product:
     avatar: '/images/integrations/avatars/stripe.png'
     vendor: Stripe
     description: 'Stripe is an online payment processing platform that allows businesses to accept online payments securely and efficiently.'
-platform: 
+platform:
     - 'Self-hosted'
     - 'Cloud'
-images: 
+images:
     - /images/integrations/stripe-payments/cover.png
     - /images/integrations/stripe-payments/dashboard.png
     - /images/integrations/stripe-payments/api-keys.png
@@ -29,7 +29,7 @@ images:
 
 Stripe is an online payment processing platform that allows businesses to accept online payments securely and efficiently. Stripe supports a variety of payment methods, including credit cards, debit cards, and digital wallets, and offers additional services such as billing, invoicing, and fraud prevention.
 
- With robust APIs and extensive documentation, Stripe enables developers to integrate its payment solutions into websites and mobile applications seamlessly, making it a popular choice for businesses of all sizes.
+With robust APIs and extensive documentation, Stripe enables developers to integrate its payment solutions into websites and mobile applications seamlessly, making it a popular choice for businesses of all sizes.
 
 # How does the integration work?
 
@@ -61,7 +61,7 @@ Head over to the Appwrite console, navigate to the **Functions** page, click th
 
 ![Function template](/images/integrations/stripe-payments/template.png)
 
-During the setup process, click the checkbox to generate an Appwrite API key on completion and add the **Stripe secret key** and **webhook secret** in the **Variables** step. If you are self-hosting Appwrite, click on the **optional variables** dropdown and update the Appwrite endpoint to your instance’s publicly accessible endpoint. 
+During the setup process, click the checkbox to generate an Appwrite API key on completion and add the **Stripe secret key** and **webhook secret** in the **Variables** step. If you are self-hosting Appwrite, click on the **optional variables** dropdown and update the Appwrite endpoint to your instance’s publicly accessible endpoint.
 
 ![Env variables](/images/integrations/stripe-payments/variables.png)
 
@@ -84,7 +84,7 @@ Once all the steps are complete, it is time to test the function! First, copy th
 
 ![Add web platform](/images/integrations/stripe-payments/web-platform.png)
 
-Then, open it in your browser to test the function and access the pre-built interactive UI. You can anonymously log in through this UI and create a payment order using [Stripe’s test card number](https://docs.stripe.com/testing#cards). As soon as this process is completed, the function UI will show you the completed order. 
+Then, open it in your browser to test the function and access the pre-built interactive UI. You can anonymously log in through this UI and create a payment order using [Stripe’s test card number](https://docs.stripe.com/testing#cards). As soon as this process is completed, the function UI will show you the completed order.
 
 ![Demo](/images/integrations/stripe-payments/demo.png)
 
@@ -96,5 +96,5 @@ You can visit the **Databases** page in your Appwrite project, enter the `orders
 
 If you would like to learn more about Stripe Payments and Appwrite Functions, we have some resources that you should visit:
 
-- [Sign up on Stripe](https://stripe.com)
-- [Learn more about Functions templates in Appwrite docs](https://appwrite.io/docs/products/functions/templates)
+-   [Sign up on Stripe](https://stripe.com)
+-   [Learn more about Functions templates in Appwrite docs](https://appwrite.io/docs/products/functions/templates)

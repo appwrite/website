@@ -8,24 +8,24 @@ readtime: 5
 
 If you're looking to migrate existing projects to Appwrite, Migrations can help you make the move more quickly. You can move your app from Firebase, Supabase, Nhost, and even move between self-hosted and Cloud projects using Migrations. You can also use Migrations to move between two self-hosted instances or even to duplicate projects on the same instance. Migrations will automatically move accounts, database documents, and storage files from one source to another.
 
-# Sources  {% #sources %}
+# Sources {% #sources %}
 
 Appwrite supports multiple source destinations for migrating your data. You can transfer data from these sources to a new or existing Appwrite project. Resources marked as 'enabled' are migrated automatically. Resources marked as 'partial' can be migrated but with limitations or caveats; please refer to the guide for each source to learn more. Resources marked as 'manual' require manual migration.
 
-| Source | Users | Databases | Documents | Files | Functions |
-|--------|-------|-----------|-----------|-------|-----------|
-| [Firebase](/docs/advanced/migrations/firebase) | enabled | enabled | partial | enabled | manual |
-| [Supabase](/docs/advanced/migrations/supabase) | enabled | enabled | partial | enabled | manual |
-| [Nhost](/docs/advanced/migrations/nhost) | enabled | enabled | partial | enabled | manual |
-| [Cloud](/docs/advanced/migrations/cloud) | enabled | enabled | enabled | enabled | enabled |
-| [Self hosted](/docs/advanced/migrations/self-hosted) | enabled | enabled | enabled | enabled | enabled |
+| Source                                               | Users   | Databases | Documents | Files   | Functions |
+| ---------------------------------------------------- | ------- | --------- | --------- | ------- | --------- |
+| [Firebase](/docs/advanced/migrations/firebase)       | enabled | enabled   | partial   | enabled | manual    |
+| [Supabase](/docs/advanced/migrations/supabase)       | enabled | enabled   | partial   | enabled | manual    |
+| [Nhost](/docs/advanced/migrations/nhost)             | enabled | enabled   | partial   | enabled | manual    |
+| [Cloud](/docs/advanced/migrations/cloud)             | enabled | enabled   | enabled   | enabled | enabled   |
+| [Self hosted](/docs/advanced/migrations/self-hosted) | enabled | enabled   | enabled   | enabled | enabled   |
 
 # Limitations {% #limitations %}
 
-Migrations cannot transfer all data perfectly, so certain fields, such as `$createdAt` and `$updatedAt`, may not be transferred. 
+Migrations cannot transfer all data perfectly, so certain fields, such as `$createdAt` and `$updatedAt`, may not be transferred.
 More information can be found on the migration page for each source.
 
-Migrations help you jump-start your move, but because each product is unique, complex databases and product unique features like functions might need to be migrated manually. 
+Migrations help you jump-start your move, but because each product is unique, complex databases and product unique features like functions might need to be migrated manually.
 We also recommend you carefully **validate permissions and data integrity** when moving between platforms.
 
 # Charges {% #charges %}

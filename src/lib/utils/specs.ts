@@ -67,37 +67,37 @@ export enum ModelType {
 function getExamples(version: string) {
     switch (version) {
         case '0.15.x':
-            return import.meta.glob('$appwrite/docs/examples/0.15.x/**/*.md', {
+            return import.meta.glob<string>('$appwrite/docs/examples/0.15.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.0.x':
-            return import.meta.glob('$appwrite/docs/examples/1.0.x/**/*.md', {
+            return import.meta.glob<string>('$appwrite/docs/examples/1.0.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.1.x':
-            return import.meta.glob('$appwrite/docs/examples/1.1.x/**/*.md', {
+            return import.meta.glob<string>('$appwrite/docs/examples/1.1.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.2.x':
-            return import.meta.glob('$appwrite/docs/examples/1.2.x/**/*.md', {
+            return import.meta.glob<string>('$appwrite/docs/examples/1.2.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.3.x':
-            return import.meta.glob('$appwrite/docs/examples/1.3.x/**/*.md', {
+            return import.meta.glob<string>('$appwrite/docs/examples/1.3.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.4.x':
-            return import.meta.glob('$appwrite/docs/examples/1.4.x/**/*.md', {
+            return import.meta.glob<string>('$appwrite/docs/examples/1.4.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.5.x':
-            return import.meta.glob('$appwrite/docs/examples/1.5.x/**/*.md', {
+            return import.meta.glob<string>('$appwrite/docs/examples/1.5.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
@@ -203,12 +203,12 @@ async function getSpec(version: string, platform: string) {
 
 export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
     const raw = await getSpec(version, platform);
-    const api = JSON.parse(raw);
+    const api = JSON.parse(raw as string);
 
     return api;
 }
 
-const descriptions = import.meta.glob(
+const descriptions = import.meta.glob<string>(
     '/src/routes/docs/references/[version]/[platform]/[service]/descriptions/*.md',
     {
         query: '?raw',
@@ -357,9 +357,9 @@ export function resolveReference(
 
 export const generateExample = (
     schema: OpenAPIV3.SchemaObject,
-    api: OpenAPIV3.Document<{}>,
+    api: OpenAPIV3.Document<object>,
     modelType: ModelType = ModelType.REST
-): Object => {
+): object => {
     const properties = Object.keys(schema.properties ?? {}).map((key) => {
         const name = key;
         const fields = schema.properties?.[key];
@@ -446,5 +446,6 @@ export const generateExample = (
             [propertyName]: property['x-example']
         };
     }, {});
+
     return example;
 };

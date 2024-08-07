@@ -13,6 +13,7 @@ Custom token allows you to use [Server SDK](/docs/sdks#server) to generate token
 Once you have your server endpoint prepared either in an Appwrite Function or a server integration, you can use the [Create token](/docs/references/cloud/server-nodejs/users#createToken) endpoint of the [Users API](/docs/products/auth/users) to generate a token.
 
 {% multicode %}
+
 ```server-nodejs
 import { Client, Users } from "node-appwrite";
 
@@ -146,6 +147,7 @@ var users = new Users(client);
 var token = await users.CreateToken("[USER_ID]");
 var secret = token.secret;
 ```
+
 {% /multicode %}
 
 The newly created token includes a `secret` which is 6 character long hexadecimal string. You can configure length of the secret and expiry when creating a token.
@@ -191,6 +193,7 @@ final session = await account.createSession(
     secret: '[SECRET]'
 );
 ```
+
 ```client-apple
 import Appwrite
 

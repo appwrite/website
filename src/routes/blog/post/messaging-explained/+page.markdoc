@@ -13,7 +13,7 @@ Recently, Appwrite launched its newest product, [Appwrite Messaging](https://app
 
 # Unified messaging platform
 
-To give you a quick refresher, Messaging covers three communication channels under one unified API, allowing you to send email, SMS, and push notifications from your Appwrite project. It connects with a variety of third-party providers, such as Vonage, Twilio, Mailgun, and more, to deliver your messages. Our [documentation](https://appwrite.io/docs/products/messaging) provides a full overview of providers. 
+To give you a quick refresher, Messaging covers three communication channels under one unified API, allowing you to send email, SMS, and push notifications from your Appwrite project. It connects with a variety of third-party providers, such as Vonage, Twilio, Mailgun, and more, to deliver your messages. Our [documentation](https://appwrite.io/docs/products/messaging) provides a full overview of providers.
 
 ![Messaging features](/images/blog/messaging-explained/features.gif)
 
@@ -21,10 +21,10 @@ To give you a quick refresher, Messaging covers three communication channels und
 
 Appwrite Messaging helps you communicate with your users through push notifications, emails, and SMS text messages. With Messaging, you can deliver messages to groups of users through topics or address individual users' email, phone, or devices through targets. This enables several use cases, such as
 
-- Personalized communication for marketing
-- Real-time app alerts to increase user engagement and retention
-- Transactional messages, such as payment updates, invoices, etc.
-- Custom security checks and authentication flows
+-   Personalized communication for marketing
+-   Real-time app alerts to increase user engagement and retention
+-   Transactional messages, such as payment updates, invoices, etc.
+-   Custom security checks and authentication flows
 
 Let’s now discuss the three core Messaging concepts: **topics**, **targets**, and **messages**.
 
@@ -36,7 +36,7 @@ In Appwrite Messaging, you can use topics to deliver messages to groups of users
 
 ## Targets
 
-Targets are different ways a user can be reached. For example, a user might have two emails, a phone number, and a phone and tablet installed with your app. This means the user has five different targets where you can deliver messages. 
+Targets are different ways a user can be reached. For example, a user might have two emails, a phone number, and a phone and tablet installed with your app. This means the user has five different targets where you can deliver messages.
 
 You can send a message directly to a set of targets or add them as subscribers to a topic. For example, if you want to send a payment reminder to a user manually, you could choose to send it just to a specific target. If you want to send out your monthly newsletter, you could have a topic many targets can subscribe to and then send the message to the topic instead.
 
@@ -46,9 +46,9 @@ You can send a message directly to a set of targets or add them as subscribers t
 
 Messages contain information that is sent to a user from the application. A message can be of any of the following types:
 
-- Push notifications
-- Emails
-- SMS
+-   Push notifications
+-   Emails
+-   SMS
 
 ![Messages](/images/blog/messaging-explained/preview.png)
 
@@ -81,7 +81,7 @@ You can also watch the [product tour](https://www.youtube.com/watch?v=QdDgPeuBZ1
 
 # How Messaging works
 
-Now that we have learned about the three core concepts of Appwrite Messaging, let us dive deeper into how the product works. Each time you send or schedule a push notification, email, or SMS text, it's recorded in Appwrite as a **message** is displayed in the **Messages** tab. However, there is a lot more that goes on under the hood. 
+Now that we have learned about the three core concepts of Appwrite Messaging, let us dive deeper into how the product works. Each time you send or schedule a push notification, email, or SMS text, it's recorded in Appwrite as a **message** is displayed in the **Messages** tab. However, there is a lot more that goes on under the hood.
 
 Here's a step-by-step breakdown of how Appwrite Messaging works:
 
@@ -106,8 +106,8 @@ Here's a step-by-step breakdown of how Appwrite Messaging works:
 
 We hope this blog improved your understanding of how Appwrite Messaging works. With that said, we have numerous additional resources to help you learn more about messaging in applications and build with Appwrite Messaging:
 
-- [Play around with Messaging on the product page](https://appwrite.io/products/messaging)
-- [Best practices for sending push notifications](https://appwrite.io/blog/post/push-notifications-best-practices)
-- [How tools like Twilio can simplify messaging for developers](https://appwrite.io/blog/post/simplify-messaging-twilio)
-- [Documentation](https://appwrite.io/docs/products/messaging)
-- [Product video tour](https://www.youtube.com/watch?v=QdDgPeuBZ1I)
+-   [Play around with Messaging on the product page](https://appwrite.io/products/messaging)
+-   [Best practices for sending push notifications](https://appwrite.io/blog/post/push-notifications-best-practices)
+-   [How tools like Twilio can simplify messaging for developers](https://appwrite.io/blog/post/simplify-messaging-twilio)
+-   [Documentation](https://appwrite.io/docs/products/messaging)
+-   [Product video tour](https://www.youtube.com/watch?v=QdDgPeuBZ1I)

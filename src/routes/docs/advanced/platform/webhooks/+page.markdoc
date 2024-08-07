@@ -18,15 +18,15 @@ Each event type has a specific payload format with the relevant event informatio
 
 HTTP requests made to your webhook's configured URL endpoint will contain several special headers.
 
-| Header | Description |
-|--------|-------------|
-| X-Appwrite-Webhook-Id | The ID of the Webhook who triggered the event. |
-| X-Appwrite-Webhook-Events | Names of the events that triggered this delivery. |
-| X-Appwrite-Webhook-Name | Name of the webhook as specified in your app settings and [events list](/docs/advanced/platform/events). |
-| X-Appwrite-Webhook-User-Id | The user ID of the user who triggered the event. Returns an empty string if an API key triggered the event. Note that events like `account.create` or `account.sessions.create` are performed by guest users and will not return any user ID. If you still need the user ID for these events, you can find it in the event payload. |
-| X-Appwrite-Webhook-Project-Id | The ID of the project who owns the Webhook and API call. |
-| X-Appwrite-Webhook-Signature | The HMAC-SHA1 signature of the payload. This is used to verify the authenticity of the payload. |
-| User-Agent | Each request made by Appwrite will be 'Appwrite-Server'. |
+| Header                        | Description                                                                                                                                                                                                                                                                                                                         |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| X-Appwrite-Webhook-Id         | The ID of the Webhook who triggered the event.                                                                                                                                                                                                                                                                                      |
+| X-Appwrite-Webhook-Events     | Names of the events that triggered this delivery.                                                                                                                                                                                                                                                                                   |
+| X-Appwrite-Webhook-Name       | Name of the webhook as specified in your app settings and [events list](/docs/advanced/platform/events).                                                                                                                                                                                                                            |
+| X-Appwrite-Webhook-User-Id    | The user ID of the user who triggered the event. Returns an empty string if an API key triggered the event. Note that events like `account.create` or `account.sessions.create` are performed by guest users and will not return any user ID. If you still need the user ID for these events, you can find it in the event payload. |
+| X-Appwrite-Webhook-Project-Id | The ID of the project who owns the Webhook and API call.                                                                                                                                                                                                                                                                            |
+| X-Appwrite-Webhook-Signature  | The HMAC-SHA1 signature of the payload. This is used to verify the authenticity of the payload.                                                                                                                                                                                                                                     |
+| User-Agent                    | Each request made by Appwrite will be 'Appwrite-Server'.                                                                                                                                                                                                                                                                            |
 
 # Verification {% #verification %}
 
@@ -35,7 +35,6 @@ This is the HMAC-SHA1 signature of the payload. You can find the signature key i
 To generate this hash you append the payload to the end of webhook URL (make sure there are no spaces in between) and then use the HMAC-SHA1 algorithm to generate the signature.
 After you've generated the signature, compare it to the `X-Appwrite-Webhook-Signature` header value.
 If they match, the payload is valid and you can trust it came from your Appwrite instance.
-
 
 # Events {% #events %}
 

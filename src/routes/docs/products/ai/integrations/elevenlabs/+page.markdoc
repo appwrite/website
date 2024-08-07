@@ -12,8 +12,8 @@ Integrating ElevenLabs into your Appwrite project is simple. This tutorial will 
 
 # Prerequisites {% #prerequisites %}
 
-- An Appwrite Project
-- An [ElevenLabs API Key](https://elevenlabs.io/)
+-   An Appwrite Project
+-   An [ElevenLabs API Key](https://elevenlabs.io/)
 
 {% section #step-1 step=1 title="Create new function" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
@@ -32,7 +32,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
 1. In the **Variables** step, add the `ELEVENLABS_API_KEY`, generate it [here](https://elevenlabs.io/). For the `APPWRITE_API_KEY`, tick the box to **Generate API key on completion**.
 1. Follow the step-by-step wizard and create the function.
-{% /section %}
+   {% /section %}
 
 {% section #step-2 step=2 title="Add dependencies" %}
 Once the function is created, navigate to the freshly created repository and clone it to your local machine.
@@ -42,6 +42,7 @@ Install the `undici` package to make requests to the ElevenLabs API and `node-ap
 ```bash
 npm install undici node-appwrite
 ```
+
 {% /section %}
 
 {% section #step-3 step=3 title="Create utility functions" %}
@@ -62,9 +63,10 @@ const __dirname = path.dirname(__filename);
 const staticFolder = path.join(__dirname, '../static');
 
 export function getStaticFile(fileName) {
-  return fs.readFileSync(path.join(staticFolder, fileName)).toString();
+    return fs.readFileSync(path.join(staticFolder, fileName)).toString();
 }
 ```
+
 {% /section %}
 
 {% section #step-4 step=4 title="Handle GET request" %}
@@ -74,11 +76,11 @@ Write the `GET` request handler in the `src/main.js` file. This handler will ret
 import { getStaticFile } from './utils.js';
 
 export default async ({ req, res, error }) => {
-  if (req.method === 'GET') {
-    return res.send(getStaticFile('index.html'), 200, {
-      'Content-Type': 'text/html; charset=utf-8',
-    });
-  }
+    if (req.method === 'GET') {
+        return res.send(getStaticFile('index.html'), 200, {
+            'Content-Type': 'text/html; charset=utf-8'
+        });
+    }
 };
 ```
 
@@ -90,43 +92,42 @@ Create a HTML web page that the function will serve. Create a new file at `stati
 
 ```html
 <!doctype html>
-<html lang="en">
-</html>
+<html lang="en"></html>
 ```
 
 Within the `<html>` tag, Add a `<head>` tag that will define the style and scripts.
 
 ```html
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ElevenLabs Demo</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ElevenLabs Demo</title>
 
-  <script>
-    async function onSubmit(prompt) {
-      const response = await fetch('/', {
-        method: 'POST',
-        body: JSON.stringify({ text: prompt }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+    <script>
+        async function onSubmit(prompt) {
+            const response = await fetch('/', {
+                method: 'POST',
+                body: JSON.stringify({ text: prompt }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
 
-      const json = await response.json();
+            const json = await response.json();
 
-      if (!json.ok || json.error) {
-        alert(json.error);
-      }
+            if (!json.ok || json.error) {
+                alert(json.error);
+            }
 
-      return json.response;
-    }
-  </script>
+            return json.response;
+        }
+    </script>
 
-  <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
 
-  <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink" />
-  <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink-icons" />
+    <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink" />
+    <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink-icons" />
 </head>
 ```
 
@@ -134,61 +135,54 @@ And after the `</head>` tag add this `<body>` which will contain the actual form
 
 ```html
 <body>
-  <main class="main-content">
-    <div class="top-cover u-padding-block-end-56">
-      <div class="container">
-        <div
-          class="u-flex u-gap-16 u-flex-justify-center u-margin-block-start-16"
-        >
-          <h1 class="heading-level-1">ElevenLabs Demo</h1>
-          <code class="u-un-break-text"></code>
-        </div>
-        <p
-          class="body-text-1 u-normal u-margin-block-start-8"
-          style="max-width: 50rem"
-        >
-          Use this page to test your implementation with ElevenLabs. Enter
-          text and receive an audio response.
-        </p>
-      </div>
-    </div>
-    <div
-      class="container u-margin-block-start-negative-56"
-      x-data="{ prompt: '', response: '', loading: false }"
-    >
-      <div class="card u-flex u-gap-24 u-flex-vertical">
-        <div class="u-flex u-cross-center u-gap-8">
-          <div
-            class="input-text-wrapper is-with-end-button u-width-full-line"
-          >
-            <input x-model="prompt" type="search" placeholder="Enter text" />
-            <div class="icon-search" aria-hidden="true"></div>
-          </div>
-
-          <button
-            class="button"
-            x-bind:disabled="loading"
-            x-on:click="async () => { loading = true; response = ''; try { response = await onSubmit(prompt) } catch(err) { console.error(err); } finally { loading = false; } }"
-          >
-            <span class="text">Generate</span>
-          </button>
-        </div>
-        <template x-if="response">
-          <div class="u-flex u-flex-vertical u-gap-12">
-            <div class="u-flex u-flex-vertical u-gap-12 card">
-              <div class="u-flex u-gap-12">
-                <h5 class="eyebrow-heading-2">Output:</h5>
-              </div>
-
-              <div>
-                <audio x-bind:src="response" controls></audio>
-              </div>
+    <main class="main-content">
+        <div class="top-cover u-padding-block-end-56">
+            <div class="container">
+                <div class="u-flex u-gap-16 u-flex-justify-center u-margin-block-start-16">
+                    <h1 class="heading-level-1">ElevenLabs Demo</h1>
+                    <code class="u-un-break-text"></code>
+                </div>
+                <p class="body-text-1 u-normal u-margin-block-start-8" style="max-width: 50rem">
+                    Use this page to test your implementation with ElevenLabs. Enter text and
+                    receive an audio response.
+                </p>
             </div>
-          </div>
-        </template>
-      </div>
-    </div>
-  </main>
+        </div>
+        <div
+            class="container u-margin-block-start-negative-56"
+            x-data="{ prompt: '', response: '', loading: false }"
+        >
+            <div class="card u-flex u-gap-24 u-flex-vertical">
+                <div class="u-flex u-cross-center u-gap-8">
+                    <div class="input-text-wrapper is-with-end-button u-width-full-line">
+                        <input x-model="prompt" type="search" placeholder="Enter text" />
+                        <div class="icon-search" aria-hidden="true"></div>
+                    </div>
+
+                    <button
+                        class="button"
+                        x-bind:disabled="loading"
+                        x-on:click="async () => { loading = true; response = ''; try { response = await onSubmit(prompt) } catch(err) { console.error(err); } finally { loading = false; } }"
+                    >
+                        <span class="text">Generate</span>
+                    </button>
+                </div>
+                <template x-if="response">
+                    <div class="u-flex u-flex-vertical u-gap-12">
+                        <div class="u-flex u-flex-vertical u-gap-12 card">
+                            <div class="u-flex u-gap-12">
+                                <h5 class="eyebrow-heading-2">Output:</h5>
+                            </div>
+
+                            <div>
+                                <audio x-bind:src="response" controls></audio>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </main>
 </body>
 ```
 
@@ -201,20 +195,20 @@ Add methods necessary to integrate with the ElevenLabs API:
 Import `fetch`, and the required features from the Appwrite Node.js SDK at the top of the `main.js` file
 
 ```js
-import { Client, Storage, ID, InputFile, Permission, Role } from "node-appwrite";
-import { fetch } from "undici";
+import { Client, Storage, ID, InputFile, Permission, Role } from 'node-appwrite';
+import { fetch } from 'undici';
 ```
 
 Next add code to validate the body of the request and initialize the Appwrite SDK:
 
 ```js
 const client = new Client()
-  .setEndpoint(process.env.APPWRITE_ENDPOINT ?? "https://cloud.appwrite.io/v1")
-  .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-  .setKey(process.env.APPWRITE_API_KEY);
+    .setEndpoint(process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1')
+    .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+    .setKey(process.env.APPWRITE_API_KEY);
 
-if (!req.body.text || typeof req.body.text !== "string") {
-  return res.json({ ok: false, error: "Missing required field `text`" }, 400);
+if (!req.body.text || typeof req.body.text !== 'string') {
+    return res.json({ ok: false, error: 'Missing required field `text`' }, 400);
 }
 ```
 
@@ -222,27 +216,24 @@ Send a request to the ElevenLabs API and return the response:
 
 ```js
 const body = {
-  accent: req.body.accent || "british",
-  accent_strength: 1.0,
-  age: req.body.age || "young",
-  gender: req.body.gender || "female",
-  text: req.body.text,
+    accent: req.body.accent || 'british',
+    accent_strength: 1.0,
+    age: req.body.age || 'young',
+    gender: req.body.gender || 'female',
+    text: req.body.text
 };
 
-const response = await fetch(
-  "https://api.elevenlabs.io/v1/voice-generation/generate-voice",
-  {
-    method: "POST",
+const response = await fetch('https://api.elevenlabs.io/v1/voice-generation/generate-voice', {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
-      "xi-api-key": process.env.ELEVENLABS_API_KEY,
+        'Content-Type': 'application/json',
+        'xi-api-key': process.env.ELEVENLABS_API_KEY
     },
-    body: JSON.stringify(body),
-  },
-);
+    body: JSON.stringify(body)
+});
 
 if (response.status !== 200) {
-  return res.json({ ok: false, error: "Failed to generate audio" }, 500);
+    return res.json({ ok: false, error: 'Failed to generate audio' }, 500);
 }
 ```
 
@@ -257,10 +248,10 @@ Store the audio file in Appwrite Storage for easy retrieval later:
 const storage = new Storage(client);
 
 const file = await storage.createFile(
-  process.env.APPWRITE_BUCKET_ID,
-  ID.unique(),
-  InputFile.fromBlob(await response.blob(), "audio.mp3"),
-  [Permission.read(Role.any())],
+    process.env.APPWRITE_BUCKET_ID,
+    ID.unique(),
+    InputFile.fromBlob(await response.blob(), 'audio.mp3'),
+    [Permission.read(Role.any())]
 );
 ```
 

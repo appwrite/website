@@ -15,14 +15,9 @@ type Model = {
         name: string;
         type: string;
         description: string;
-        items?: Array<any>;
+        items?: OpenAPIV3.ReferenceObject | Array<OpenAPIV3.SchemaObject>;
         relatedModels?: string;
     }>;
-};
-
-type Example = {
-    type: ModelType;
-    example: string;
 };
 
 export const load: PageServerLoad = async ({ params }) => {
@@ -37,7 +32,7 @@ export const load: PageServerLoad = async ({ params }) => {
             switch (property.type) {
                 case 'array': {
                     let arrayTypes;
-                    if (property.items.hasOwnProperty('$ref')) {
+                    if (property.items && '$ref' in property.items) {
                         arrayTypes = [(property.items.$ref as string).split('/').pop()];
                     }
 
@@ -63,7 +58,7 @@ export const load: PageServerLoad = async ({ params }) => {
                 }
                 case 'object': {
                     let arrayTypes;
-                    if (property.items?.hasOwnProperty('$ref')) {
+                    if (property.items && '$ref' in property.items) {
                         arrayTypes = [(property.items?.$ref as string).split('/').pop()];
                     }
 

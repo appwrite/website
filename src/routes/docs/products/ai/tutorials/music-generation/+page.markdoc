@@ -11,8 +11,8 @@ This example uses the "facebook/musicgen-large" from Hugging Face to convert tex
 
 # Prerequisites {% #prerequisites %}
 
-- An Appwrite project
-- A [Hugging Face API keys](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token)
+-   An Appwrite project
+-   A [Hugging Face API keys](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token)
 
 {% section #step-1 step=1 title="Create new function" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
@@ -31,7 +31,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
 1. In the **Variables** step, add the `HUGGINGFACE_ACCESS_TOKEN`, generate it [here](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token). For the `APPWRITE_API_KEY`, tick the box to **Generate API key on completion**.
 1. Follow the step-by-step wizard and create the function.
-{% /section %}
+   {% /section %}
 
 {% section #step-2 step=2 title="Add dependencies" %}
 Once the function is created, clone the function and open it in your development environment.
@@ -42,6 +42,7 @@ Install the `node-appwrite` package, to simplify uploading the generated audio f
 ```bash
 npm install undici node-appwrite
 ```
+
 {% /section %}
 
 {% section #step-4 step=4 title="Create an Appwrite service" %}
@@ -54,23 +55,21 @@ Create a file called `src/appwrite.js` and implement the following class:
 import { Client, ID, InputFile, Storage } from 'node-appwrite';
 
 class AppwriteService {
-  constructor() {
-    const client = new Client();
-    client
-      .setEndpoint(
-        process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1'
-      )
-      .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-      .setKey(process.env.APPWRITE_API_KEY);
+    constructor() {
+        const client = new Client();
+        client
+            .setEndpoint(process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1')
+            .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+            .setKey(process.env.APPWRITE_API_KEY);
 
-    this.databases = new Databases(client);
-    this.storage = new Storage(client);
-  }
+        this.databases = new Databases(client);
+        this.storage = new Storage(client);
+    }
 
-  async createFile(bucketId, blob) {
-    const file = await InputFile.fromBlob(blob, 'audio.flac');
-    return await this.storage.createFile(bucketId, ID.unique(), file);
-  }
+    async createFile(bucketId, blob) {
+        const file = await InputFile.fromBlob(blob, 'audio.flac');
+        return await this.storage.createFile(bucketId, ID.unique(), file);
+    }
 }
 
 export default AppwriteService;
@@ -103,29 +102,26 @@ import AppwriteService from './appwrite.js';
 const HUGGINGFACE_API = 'https://api-inference.huggingface.co';
 
 export default async ({ req, res, error }) => {
-  const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'generated_music';
+    const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'generated_music';
 
-  const response = await fetch(
-    `${HUGGINGFACE_API}/models/facebook/musicgen-small`,
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.HUGGINGFACE_ACCESS_TOKEN}`,
-      },
-      method: 'POST',
-      body: JSON.stringify({
-        inputs: req.body.prompt,
-      }),
-    }
-  );
+    const response = await fetch(`${HUGGINGFACE_API}/models/facebook/musicgen-small`, {
+        headers: {
+            Authorization: `Bearer ${process.env.HUGGINGFACE_ACCESS_TOKEN}`
+        },
+        method: 'POST',
+        body: JSON.stringify({
+            inputs: req.body.prompt
+        })
+    });
 
-  const blob = await response.blob();
-  const appwrite = new AppwriteService();
-  const file = await appwrite.createFile(bucketId, blob);
+    const blob = await response.blob();
+    const appwrite = new AppwriteService();
+    const file = await appwrite.createFile(bucketId, blob);
 
-  return res.json({
-    ok: true,
-    fileId: file.$id,
-  });
+    return res.json({
+        ok: true,
+        fileId: file.$id
+    });
 };
 ```
 

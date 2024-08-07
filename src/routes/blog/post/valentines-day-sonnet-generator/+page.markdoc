@@ -29,7 +29,7 @@ Now that we have our OpenAI API Key, let us get the function ready on [Appwrite
 
 This function requires **1 environment variable** to setup:
 
-- `OPENAI_API_KEY`: API Key from our OpenAI account
+-   `OPENAI_API_KEY`: API Key from our OpenAI account
 
 After you have configured the environment variables, you must connect your Appwrite account with GitHub, select **Create a new repository** (this will generate a GitHub repository for you with the function), and leave the production branch and root settings as default to create this function.
 
@@ -44,93 +44,100 @@ In the project directory, visit `static/index.html` and replace the existing cod
 ```html
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Valentine's Day Sonnet Generator</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Valentine's Day Sonnet Generator</title>
 
-    <script>
-      async function onSubmit(name) {
-        const response = await fetch('/', {
-          method: 'POST',
-          body: JSON.stringify({ name }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+        <script>
+            async function onSubmit(name) {
+                const response = await fetch('/', {
+                    method: 'POST',
+                    body: JSON.stringify({ name }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
 
-        const json = await response.json();
+                const json = await response.json();
 
-        if (!json.ok || json.error) {
-          alert(json.error);
-        }
+                if (!json.ok || json.error) {
+                    alert(json.error);
+                }
 
-        return json.completion;
-      }
-    </script>
+                return json.completion;
+            }
+        </script>
 
-    <script src="//unpkg.com/alpinejs" defer></script>
+        <script src="//unpkg.com/alpinejs" defer></script>
 
-    <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink" />
-    <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink-icons" />
-  </head>
-  <body>
-    <main class="main-content">
-      <div class="top-cover u-padding-block-end-56">
-        <div class="container">
-          <div
-            class="u-flex u-gap-16 u-flex-justify-center u-margin-block-start-16"
-          >
-            <h1 class="heading-level-1">Valentine's Day Sonnet Generator ❤️</h1>
-            <code class="u-un-break-text"></code>
-          </div>
-          <p
-            class="body-text-1 u-normal u-margin-block-start-8"
-            style="max-width: 50rem"
-          >
-            Enter your partner's name and receive a sonnet dedicated to them, courtesy of Appwrite and OpenAI
-          </p>
-        </div>
-      </div>
-      <div
-        class="container u-margin-block-start-negative-56"
-        x-data="{ name: '', sonnet: '', loading: false }"
-      >
-        <div class="card u-flex u-gap-24 u-flex-vertical">
-          <div class="u-flex u-cross-center u-gap-8">
+        <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink" />
+        <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink-icons" />
+    </head>
+    <body>
+        <main class="main-content">
+            <div class="top-cover u-padding-block-end-56">
+                <div class="container">
+                    <div class="u-flex u-gap-16 u-flex-justify-center u-margin-block-start-16">
+                        <h1 class="heading-level-1">Valentine's Day Sonnet Generator ❤️</h1>
+                        <code class="u-un-break-text"></code>
+                    </div>
+                    <p class="body-text-1 u-normal u-margin-block-start-8" style="max-width: 50rem">
+                        Enter your partner's name and receive a sonnet dedicated to them, courtesy
+                        of Appwrite and OpenAI
+                    </p>
+                </div>
+            </div>
             <div
-              class="input-text-wrapper is-with-end-button u-width-full-line"
+                class="container u-margin-block-start-negative-56"
+                x-data="{ name: '', sonnet: '', loading: false }"
             >
-              <input x-model="name" type="search" placeholder="Enter name of your beloved" maxlength="70" />
-              <div class="icon-heart" style="position: absolute; inset-inline-start: 1rem; inset-block-start: 0.5rem;" aria-hidden="true"></div>
-            </div>
+                <div class="card u-flex u-gap-24 u-flex-vertical">
+                    <div class="u-flex u-cross-center u-gap-8">
+                        <div class="input-text-wrapper is-with-end-button u-width-full-line">
+                            <input
+                                x-model="name"
+                                type="search"
+                                placeholder="Enter name of your beloved"
+                                maxlength="70"
+                            />
+                            <div
+                                class="icon-heart"
+                                style="position: absolute; inset-inline-start: 1rem; inset-block-start: 0.5rem;"
+                                aria-hidden="true"
+                            ></div>
+                        </div>
 
-            <button
-              class="button"
-              x-bind:disabled="loading"
-              x-on:click="async () => { loading = true; sonnet = ''; try { sonnet = await onSubmit(name) } catch(err) { console.error(err); } finally { loading = false; } }"
-            >
-              <span class="text">Submit</span>
-            </button>
-          </div>
-          <template x-if="sonnet">
-            <div class="u-flex u-flex-vertical u-gap-12">
-              <div class="u-flex u-flex-vertical u-gap-12 card">
-                <div class="u-flex u-gap-12">
-                  <h5 class="eyebrow-heading-2">Cupid:</h5>
-                </div>
+                        <button
+                            class="button"
+                            x-bind:disabled="loading"
+                            x-on:click="async () => { loading = true; sonnet = ''; try { sonnet = await onSubmit(name) } catch(err) { console.error(err); } finally { loading = false; } }"
+                        >
+                            <span class="text">Submit</span>
+                        </button>
+                    </div>
+                    <template x-if="sonnet">
+                        <div class="u-flex u-flex-vertical u-gap-12">
+                            <div class="u-flex u-flex-vertical u-gap-12 card">
+                                <div class="u-flex u-gap-12">
+                                    <h5 class="eyebrow-heading-2">Cupid:</h5>
+                                </div>
 
-                <div style="overflow-x: hidden; line-break: auto">
-                  <p class="u-color-text-gray" style="white-space: pre-line;" x-text="sonnet"></p>
+                                <div style="overflow-x: hidden; line-break: auto">
+                                    <p
+                                        class="u-color-text-gray"
+                                        style="white-space: pre-line;"
+                                        x-text="sonnet"
+                                    ></p>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
                 </div>
-              </div>
             </div>
-          </template>
-        </div>
-      </div>
-    </main>
-  </body>
+        </main>
+    </body>
 </html>
 ```
 
@@ -140,21 +147,21 @@ The original function provided through this template used OpenAI’s GPT-3.5-Tur
 
 ```json
 {
-  "name": "prompt-chatgpt",
-  "version": "1.0.0",
-  "description": "",
-  "main": "src/main.js",
-  "type": "module",
-  "scripts": {
-    "format": "prettier --write ."
-  },
-  "keywords": [],
-  "dependencies": {
-    "openai": "^4.28.0"
-  },
-  "devDependencies": {
-    "prettier": "^3.0.0"
-  }
+    "name": "prompt-chatgpt",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/main.js",
+    "type": "module",
+    "scripts": {
+        "format": "prettier --write ."
+    },
+    "keywords": [],
+    "dependencies": {
+        "openai": "^4.28.0"
+    },
+    "devDependencies": {
+        "prettier": "^3.0.0"
+    }
 }
 ```
 
@@ -206,7 +213,7 @@ Once you’ve completed all the aforementioned steps, you can push the code to t
 
 ![Function deployments](/images/blog/valentines-day-sonnet-generator/deployments.png)
 
-You can then go ahead and test your function by opening the function domain in your browser. 
+You can then go ahead and test your function by opening the function domain in your browser.
 
 # Next steps
 
@@ -218,5 +225,5 @@ If you liked this project or want to investigate the full project code, visit th
 
 For more information about Appwrite Functions, visit the following resources:
 
-- [Appwrite Function Docs](https://appwrite.io/docs/functions): These documents provide more information on how to use Appwrite Functions.
-- [Appwrite Discord](https://discord.com/invite/appwrite): Connect with other developers and the Appwrite team for discussion, questions, and collaboration.
+-   [Appwrite Function Docs](https://appwrite.io/docs/functions): These documents provide more information on how to use Appwrite Functions.
+-   [Appwrite Discord](https://discord.com/invite/appwrite): Connect with other developers and the Appwrite team for discussion, questions, and collaboration.

@@ -10,42 +10,29 @@ We can now implement our sign up page. Create a `page.jsx` file in the `src/app/
 ```jsx
 // src/app/signup/page.jsx
 
-import {
-  getLoggedInUser
-} from "@/lib/server/appwrite";
+import { getLoggedInUser } from '@/lib/server/appwrite';
 
 export default async function SignUpPage() {
-  const user = await getLoggedInUser();
-  if (user) redirect("/account");
+    const user = await getLoggedInUser();
+    if (user) redirect('/account');
 
-  return (
-    <>
-      <form action={signUpWithEmail}>
-        <input
-          id="email"
-          name="email"
-          placeholder="Email"
-          type="email"
-        />
-        <input
-          id="password"
-          name="password"
-          placeholder="Password"
-          minLength={8}
-          type="password"
-        />
-        <input
-          id="name"
-          name="name"
-          placeholder="Name"
-          type="text"
-        />
-        <button type="submit">Sign up</button>
-      </form>
-    </>
-  );
+    return (
+        <>
+            <form action={signUpWithEmail}>
+                <input id="email" name="email" placeholder="Email" type="email" />
+                <input
+                    id="password"
+                    name="password"
+                    placeholder="Password"
+                    minLength={8}
+                    type="password"
+                />
+                <input id="name" name="name" placeholder="Name" type="text" />
+                <button type="submit">Sign up</button>
+            </form>
+        </>
+    );
 }
-
 ```
 
 This is an HTML form with an email and password input. When the form is submitted, we want to send the email and password to Appwrite to authenticate the user. To use Next.js form actions we create the `signUpWithEmail` function in the same file:
@@ -55,31 +42,31 @@ This is an HTML form with an email and password input. When the form is submitte
 
 // previous imports ...
 
-import { ID } from "node-appwrite";
-import { createAdminClient } from "@/lib/server/appwrite";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+import { ID } from 'node-appwrite';
+import { createAdminClient } from '@/lib/server/appwrite';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 async function signUpWithEmail(formData) {
-  "use server";
+    'use server';
 
-  const email = formData.get("email");
-  const password = formData.get("password");
-  const name = formData.get("name");
+    const email = formData.get('email');
+    const password = formData.get('password');
+    const name = formData.get('name');
 
-  const { account } = await createAdminClient();
+    const { account } = await createAdminClient();
 
-  await account.create(ID.unique(), email, password, name);
-  const session = await account.createEmailPasswordSession(email, password);
+    await account.create(ID.unique(), email, password, name);
+    const session = await account.createEmailPasswordSession(email, password);
 
-  cookies().set("my-custom-session", session.secret, {
-    path: "/",
-    httpOnly: true,
-    sameSite: "strict",
-    secure: true,
-  });
+    cookies().set('my-custom-session', session.secret, {
+        path: '/',
+        httpOnly: true,
+        sameSite: 'strict',
+        secure: true
+    });
 
-  redirect("/account");
+    redirect('/account');
 }
 
 // the SignUpPage component ...

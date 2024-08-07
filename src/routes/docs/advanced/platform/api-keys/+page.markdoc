@@ -8,7 +8,7 @@ API keys are secrets used by Appwrite [Server SDKs](/docs/sdks#server) and the A
 What can be accessed each API key is restricted by [scopes](#scopes) instead of permissions.
 
 {% info title="Best practice" %}
-It is a best practice to grant only the scopes you need to meet your project's goals to an API key. 
+It is a best practice to grant only the scopes you need to meet your project's goals to an API key.
 API keys should be treated as a secret. Never share the API key and keep API keys out of client applications.
 {% /info %}
 
@@ -23,42 +23,42 @@ API keys should be treated as a secret. Never share the API key and keep API key
 
 To create a new API key, navigate to **Overview** > **Integration** > **API keys** and click **Create API key**.
 
-When adding a new API Key, you can choose which [scopes](#scopes) to grant your application. 
+When adding a new API Key, you can choose which [scopes](#scopes) to grant your application.
 If you need to replace your API Key, create a new key, update your app credentials and, once ready, delete your old key.
 
 # Scopes {% #scopes %}
 
-| Name             | Description                                                           |
-|------------------|-----------------------------------------------------------------------|
-| `users.read`     | Access to read your project's users                                   |
-| `users.write`    | Access to create, update, and delete your project's users              |
-| `teams.read`     | Access to read your project's teams                                    |
-| `teams.write`    | Access to create, update, and delete your project's teams              |
-| `databases.read` | Access to read your project's databases                               |
-| `databases.write`| Access to create, update, and delete your project's databases         |
-| `collections.read`| Access to read your project's database collections                   |
-| `collections.write`| Access to create, update, and delete your project's database collections|
-| `attributes.read`| Access to read your project's database collection's attributes        |
-| `attributes.write`| Access to create, update, and delete your project's database collection's attributes|
-| `indexes.read`   | Access to read your project's database collection's indexes            |
-| `indexes.write`  | Access to create, update, and delete your project's database collection's indexes|
-| `documents.read` | Access to read your project's database documents                       |
-| `documents.write`| Access to create, update, and delete your project's database documents |
-| `files.read`     | Access to read your project's storage files and preview images         |
-| `files.write`    | Access to create, update, and delete your project's storage files      |
-| `buckets.read`   | Access to read your project's storage buckets                          |
-| `buckets.write`  | Access to create, update, and delete your project's storage buckets    |
-| `functions.read` | Access to read your project's functions and code deployments           |
-| `functions.write`| Access to create, update, and delete your project's functions and code deployments|
-| `execution.read` | Access to read your project's execution logs                           |
-| `execution.write`| Access to execute your project's functions                             |
-| `locale.read`    | Access to access your project's Locale service                         |
-| `avatars.read`   | Access to access your project's Avatars service                        |
-| `health.read`    | Access to read your project's health status                            |
-| `rules.read`     | Access to read your project's proxy rules                              |
-| `rules.write`    | Access to create, update, and delete your project's proxy rules        |
-| `migrations.read`| Access to read your project's migrations                               |
-| `migrations.write`| Access to create, update, and delete your project's migrations        |
-| `vcs.read`       | Access to read your project's VCS repositories                         |
-| `vcs.write`      | Access to create, update, and delete your project's VCS repositories   |
-| `assistant.read` | Access to read the Assistant service                                   |
+| Name                | Description                                                                          |
+| ------------------- | ------------------------------------------------------------------------------------ |
+| `users.read`        | Access to read your project's users                                                  |
+| `users.write`       | Access to create, update, and delete your project's users                            |
+| `teams.read`        | Access to read your project's teams                                                  |
+| `teams.write`       | Access to create, update, and delete your project's teams                            |
+| `databases.read`    | Access to read your project's databases                                              |
+| `databases.write`   | Access to create, update, and delete your project's databases                        |
+| `collections.read`  | Access to read your project's database collections                                   |
+| `collections.write` | Access to create, update, and delete your project's database collections             |
+| `attributes.read`   | Access to read your project's database collection's attributes                       |
+| `attributes.write`  | Access to create, update, and delete your project's database collection's attributes |
+| `indexes.read`      | Access to read your project's database collection's indexes                          |
+| `indexes.write`     | Access to create, update, and delete your project's database collection's indexes    |
+| `documents.read`    | Access to read your project's database documents                                     |
+| `documents.write`   | Access to create, update, and delete your project's database documents               |
+| `files.read`        | Access to read your project's storage files and preview images                       |
+| `files.write`       | Access to create, update, and delete your project's storage files                    |
+| `buckets.read`      | Access to read your project's storage buckets                                        |
+| `buckets.write`     | Access to create, update, and delete your project's storage buckets                  |
+| `functions.read`    | Access to read your project's functions and code deployments                         |
+| `functions.write`   | Access to create, update, and delete your project's functions and code deployments   |
+| `execution.read`    | Access to read your project's execution logs                                         |
+| `execution.write`   | Access to execute your project's functions                                           |
+| `locale.read`       | Access to access your project's Locale service                                       |
+| `avatars.read`      | Access to access your project's Avatars service                                      |
+| `health.read`       | Access to read your project's health status                                          |
+| `rules.read`        | Access to read your project's proxy rules                                            |
+| `rules.write`       | Access to create, update, and delete your project's proxy rules                      |
+| `migrations.read`   | Access to read your project's migrations                                             |
+| `migrations.write`  | Access to create, update, and delete your project's migrations                       |
+| `vcs.read`          | Access to read your project's VCS repositories                                       |
+| `vcs.write`         | Access to create, update, and delete your project's VCS repositories                 |
+| `assistant.read`    | Access to read the Assistant service                                                 |

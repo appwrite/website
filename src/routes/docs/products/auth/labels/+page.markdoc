@@ -7,6 +7,7 @@ description: Organize your users and grant custom permissions for subscriptions 
 Labels are a good way to categorize a user to grant them access to resources. For example, a `subscriber` label can be added to a user once they've purchased a subscription.
 
 {% multicode %}
+
 ```server-nodejs
 const sdk = require('node-appwrite');
 
@@ -44,7 +45,7 @@ $client
 $users = new Users($client);
 
 $result = $users->updateLabels(
-    '[USER_ID]', 
+    '[USER_ID]',
     [ 'subscriber' ]
 );
 ```
@@ -61,7 +62,7 @@ client = Client()
   .set_project('5df5acd0d48c2')                 # Your project ID
   .set_key('98fd4...a2ad2')                     # Your secret API key
 )
- 
+
 users = Users(client)
 
 result = users.update_labels(
@@ -69,6 +70,7 @@ result = users.update_labels(
     [ 'subscriber' ]
 );
 ```
+
 ```ruby
 require 'appwrite'
 
@@ -108,6 +110,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 
@@ -123,6 +126,7 @@ final result = await users.updateLabels(
     labels: [ 'subscriber' ],
 );
 ```
+
 ```kotlin
 import io.appwrite.Client
 import io.appwrite.Role
@@ -172,16 +176,17 @@ var response = await users.UpdateLabels(
     labels: [ 'subscriber' ]
 );
 ```
+
 {% /multicode %}
 
 This would correspond with the permissions below.
 
-| Description                                 | Code Snippet                                |
-| ------------------------------------------- | ------------------------------------------- |
-| Read   | `Permissions.read(Role.label('subscriber'))`|
-| Update | `Permissions.update(Role.label('subscriber'))` |
-| Delete | `Permissions.delete(Role.label('subscriber'))` |
-| Create | `Permissions.create(Role.label('subscriber'))` |
+| Description | Code Snippet                                   |
+| ----------- | ---------------------------------------------- |
+| Read        | `Permissions.read(Role.label('subscriber'))`   |
+| Update      | `Permissions.update(Role.label('subscriber'))` |
+| Delete      | `Permissions.delete(Role.label('subscriber'))` |
+| Create      | `Permissions.create(Role.label('subscriber'))` |
 
 {% arrow_link href="/docs/advanced/platform/permissions" %}
 Learn more about permissions

@@ -19,11 +19,11 @@ Open Mind is an application that helps create better awareness of psychoactive s
 
 The [Open Mind app](https://openmindapp.de/) offers the following features:
 
-- **Information about psychoactive substances**: Descriptive information on a vast range of substances, including what they are, safe quantities to consume, and how long they remain effective.
-- **Substance combination checker**: A tool that verifies how risky a combination of different substances can be to a person's health and any possible side-effects of consuming such a cocktail.
-- **Trip games**: Two games (a reaction test and a memory cards game) that allow a user to evaluate their sobriety after consuming any substance(s).
-- **Emergency instructions**: A set of instructions for different harmful (or risky) situations a user might experience after consuming any substance(s).
-- **Consumption history log**: A self-logging tool that lets users track their consumption history, including the type of drug, quantity of intake, method of consumption, start and end of the effect, and any additional notes.
+-   **Information about psychoactive substances**: Descriptive information on a vast range of substances, including what they are, safe quantities to consume, and how long they remain effective.
+-   **Substance combination checker**: A tool that verifies how risky a combination of different substances can be to a person's health and any possible side-effects of consuming such a cocktail.
+-   **Trip games**: Two games (a reaction test and a memory cards game) that allow a user to evaluate their sobriety after consuming any substance(s).
+-   **Emergency instructions**: A set of instructions for different harmful (or risky) situations a user might experience after consuming any substance(s).
+-   **Consumption history log**: A self-logging tool that lets users track their consumption history, including the type of drug, quantity of intake, method of consumption, start and end of the effect, and any additional notes.
 
 # Developing the application
 
@@ -41,9 +41,9 @@ The App Innovators team made the Open Mind app available publicly on the [Google
 
 Although localized to regions within Europe, the Android app has amassed:
 
-- Over 11,500 downloads
-- 3600+ monthly active users
-- 350-500 daily active users, with the majority coming from Germany, Austria, and Switzerland
+-   Over 11,500 downloads
+-   3600+ monthly active users
+-   350-500 daily active users, with the majority coming from Germany, Austria, and Switzerland
 
 In Testflight, the Apple app amassed over 1000 beta users; however, changes in the App Store policies prevented them from further updating and promoting the Apple app. In recent times, however, the team has taken a new direction and is converting the Open Mind mobile app into a web app using Flutter Web. The current version of the web application is available at [openmindapp.de](https://openmindapp.de/) and is quickly gaining traction and users.
 

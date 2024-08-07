@@ -8,14 +8,16 @@ Teams are a good way to allow users to share access to resources.
 For example, in a todo app, a user can [create a team](/docs/references/cloud/client-web/teams#create) for one of their todo lists and [invite another user](/docs/references/cloud/client-web/teams#createMembership) to the team to grant the other user access.
 You can further give special rights to parts of a team using team roles.
 
-The invited user can [accept the invitation](/docs/references/cloud/client-web/teams#updateMembershipStatus) to gain access. If the user's ever removed from the team, they'll lose access again. 
+The invited user can [accept the invitation](/docs/references/cloud/client-web/teams#updateMembershipStatus) to gain access. If the user's ever removed from the team, they'll lose access again.
 
 # Create team {% #create %}
+
 For example, we can create a team called `teachers` with roles `maths`, `sciences`, `arts`, and `literature`.
 
 The creator of the team is also granted the `owner` role. **Only those with the `owner` role can invite and remove members**.
 
 {% multicode %}
+
 ```client-web
 import { Client, Teams } from "appwrite";
 
@@ -40,6 +42,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
+
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 
@@ -65,6 +68,7 @@ void main() { // Init SDK
   });
 }
 ```
+
 ```client-apple
 import Appwrite
 
@@ -80,6 +84,7 @@ let team = try await teams.create(
     roles: ["maths", "sciences", "arts", "literature"]
 )
 ```
+
 ```kotlin
 import io.appwrite.Client
 import io.appwrite.services.Teams
@@ -104,6 +109,7 @@ val response = teams.create(
 You can invite members to a team by creating team memberships. For example, inviting "David" a math teacher, to the teachers team.
 
 {% multicode %}
+
 ```client-web
 import { Client, Teams } from "appwrite";
 
@@ -128,6 +134,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
+
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 
@@ -153,6 +160,7 @@ void main() { // Init SDK
   });
 }
 ```
+
 ```client-apple
 import Appwrite
 
@@ -168,6 +176,7 @@ let membership = try await teams.createMembership(
     email: "david@example.com"
 )
 ```
+
 ```kotlin
 import io.appwrite.Client
 import io.appwrite.services.Teams
@@ -191,11 +200,10 @@ val response = teams.createMembership(
 
 You can grant permissions to all members of a team using the `Role.team(<TEAM_ID>)` role or
 individual roles in the team using the `Role.team(<TEAM_ID>, [<ROLE_1>, <ROLE_2>, ...])` role.
-| Description                                 | Role                               |
+| Description | Role |
 | ------------------------------------------- | ------------------------------------------- |
-| All members   | `Role.team(<TEAM_ID>)`|
-| Select roles   | `Role.team(<TEAM_ID>, [<ROLE_1>, <ROLE_2>, ...])`|
-
+| All members | `Role.team(<TEAM_ID>)`|
+| Select roles | `Role.team(<TEAM_ID>, [<ROLE_1>, <ROLE_2>, ...])`|
 
 {% arrow_link href="/docs/advanced/platform/permissions" %}
 Learn more about permissions

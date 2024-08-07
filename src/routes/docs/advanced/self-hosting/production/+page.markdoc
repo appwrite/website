@@ -15,8 +15,8 @@ You **must** set `_APP_OPENSSL_KEY_V1` immediately after installation of a produ
 Make sure to keep this key in a safe place and never make it publicly accessible.
 
 {% info title="Best practice" %}
-You should always prefer **HTTPS** over HTTP in production environments. This keeps your APIs secure and prevents any redirects from interfering with your requests. 
-You can force the use of HTTPS with the [_APP_OPTIONS_FORCE_HTTPS](/docs/advanced/self-hosting/environment-variables) environment variable.
+You should always prefer **HTTPS** over HTTP in production environments. This keeps your APIs secure and prevents any redirects from interfering with your requests.
+You can force the use of HTTPS with the [\_APP_OPTIONS_FORCE_HTTPS](/docs/advanced/self-hosting/environment-variables) environment variable.
 {% /info %}
 
 # Console access {% #console-access %}
@@ -30,7 +30,7 @@ Appwrite provides three different methods to limit access to your Appwrite Conso
 By default, only the first user can sign up on the Appwrite instance's dashboard. All other users must be added to the dashboard through invitation.
 
 {% arrow_link href="/docs/advanced/self-hosting/environment-variables" %}
-Learn more about environment variables 
+Learn more about environment variables
 {% /arrow_link %}
 
 # Scaling {% #scaling %}
@@ -50,7 +50,7 @@ If you disabled rate limits during development, make sure you re-enable them whe
 Rate limits are an important mechanism to protect your app. Without rate limits, malicious actors can spam your APIs to perform [denial-of-service type attacks](https://en.wikipedia.org/wiki/Denial-of-service_attack) or brute-force user passwords.
 
 {% arrow_link href="/docs/advanced/self-hosting/environment-variables" %}
-Learn more about environment variables 
+Learn more about environment variables
 {% /arrow_link %}
 
 # Emails {% #emails %}
@@ -82,7 +82,7 @@ To monitor errors in production, add a third party monitoring service by setting
 In production, it is highly recommended to turn error reporting off. To do so, make sure the Appwrite container environment variable `_APP_ENV` is set to `production` and not `development`.
 
 {% arrow_link href="/docs/advanced/self-hosting/environment-variables" %}
-Learn more about environment variables 
+Learn more about environment variables
 {% /arrow_link %}
 
 # Security {% #security %}

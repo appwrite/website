@@ -19,7 +19,6 @@
     import { API_REFERENCE_TITLE_SUFFIX } from '$routes/titles.js';
     import { getContext, onMount, setContext } from 'svelte';
     import { writable } from 'svelte/store';
-    import { anyify } from '$lib/utils/anyify.js';
     import { scrollToTop } from '$lib/actions/scrollToTop.js';
     import { clickOutside } from '$lib/actions/clickOutside.js';
     import { Accordion, AccordionItem } from '$lib/components/Accordion';
@@ -148,7 +147,7 @@
                                 { value: 'cloud', label: 'Cloud' },
                                 ...versions.map((version) => ({
                                     value: version,
-                                    label: anyify(version)
+                                    label: String(version)
                                 }))
                             ]}
                         />

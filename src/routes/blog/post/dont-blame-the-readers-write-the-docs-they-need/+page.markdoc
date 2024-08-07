@@ -19,7 +19,7 @@ You’ve seen this exact conversation in support threads if you're active in any
 
 "Yes"
 
-It’s convenient to just blame the developer for *not reading carefully*, but it’s also an opportunity to improve your developer experience.
+It’s convenient to just blame the developer for _not reading carefully_, but it’s also an opportunity to improve your developer experience.
 Over the past year, we’ve noticed conversations like this in Appwrite communities. We took it as an opportunity to grow.
 
 "Why don’t they read the docs?" We wanted to find out.
@@ -85,7 +85,7 @@ With all the new content, the new Appwrite docs also introduce **search**. Searc
 
 The new docs are written using an extended flavor of markdown made with [Markdoc and Svelte](https://github.com/TorstenDittmann/svelte-markdoc-preprocess), which makes community contributions easier. Markdown is easy to read and we can extend it with custom syntax like this multi-code selector.
 
-``````
+````
 {% multicode %}
 ```js
 console.log("I'm javascript");
@@ -94,24 +94,27 @@ console.log("I'm javascript");
 print("I'm python")
 ```
 {% /multicode %}
-``````
+````
 
 Which renders multi-select code fences like you find all over our docs.
 
 {% multicode %}
+
 ```js
 console.log("I'm javascript");
 ```
+
 ```py
 print("I'm python")
 ```
+
 {% /multicode %}
 
 The documentation source is easy for contributors to read and allows us to extend its syntax with powerful features.
 
 # Moving forward
 
-The most important part of these changes is to give us *room to grow*. There is more room for content, especially community-contributed tutorials, quick starts, and integration guides. Truth is, while we build the Appwrite Platform, the community has built more successful and production-ready projects.
+The most important part of these changes is to give us _room to grow_. There is more room for content, especially community-contributed tutorials, quick starts, and integration guides. Truth is, while we build the Appwrite Platform, the community has built more successful and production-ready projects.
 
 Even weeks after the launch of the new documentation, we’re already receiving a ton of help from the community through issues and PRs. With the power of open source, the new knowledge base for Appwrite developers will grow faster than ever before.
 

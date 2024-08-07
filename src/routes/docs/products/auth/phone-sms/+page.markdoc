@@ -47,6 +47,7 @@ final token = await account.createPhoneToken(
 
 final userId = token.userId;
 ```
+
 ```client-apple
 import Appwrite
 
@@ -131,6 +132,7 @@ final session = await account.createSession(
     secret: '[SECRET]'
 );
 ```
+
 ```client-apple
 import Appwrite
 
@@ -145,6 +147,7 @@ let session = try await account.createSession(
     secret: "[SECRET]"
 );
 ```
+
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account

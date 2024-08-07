@@ -10,8 +10,8 @@ Learn to setup an Appwrite Function utilizing object detection with Hugging Face
 
 # Prerequisites {% #prerequisites %}
 
-- An Appwrite project
-- A [Hugging Face API key](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token)
+-   An Appwrite project
+-   A [Hugging Face API key](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token)
 
 {% section #step-1 step=1 title="Create a new function" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
@@ -30,7 +30,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on 
 1. After connecting to GitHub, under **Quick start**, select the **Node.js** starter template.
 1. In the **Variables** step, add the `HUGGINGFACE_ACCESS_TOKEN`, generate it [here](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token).
 1. Follow the step-by-step wizard and create the function.
-{% /section %}
+   {% /section %}
 
 {% section #step-2 step=2 title="Add dependencies" %}
 Once the function is created, clone the function and open it in your development environment.
@@ -40,6 +40,7 @@ Once you have the repository open, you can install the Hugging Face inference SD
 ```bash
 npm install @huggingface/inference node-appwrite
 ```
+
 {% /section %}
 
 {% section #step-3 step=3 title="Parsing the body" %}
@@ -50,23 +51,20 @@ Open up your `src/index.js` file and replace the function body with the followin
 
 ```js
 export default async ({ req, res, log, error }) => {
-  const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'ai';
-  const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'image_classification';
-  const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'image_classification';
+    const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'ai';
+    const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'image_classification';
+    const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'image_classification';
 
-  // Allows using direct execution or file create event
-  const fileId = req.body.$id || req.body.imageId;
-  if (!fileId) {
-    return res.send('Bad request', 400);
-  }
+    // Allows using direct execution or file create event
+    const fileId = req.body.$id || req.body.imageId;
+    if (!fileId) {
+        return res.send('Bad request', 400);
+    }
 
-  if (
-    req.body.bucketId &&
-    req.body.bucketId != bucketId
-  ) {
-    return res.send('Bad request', 400);
-  }
-}
+    if (req.body.bucketId && req.body.bucketId != bucketId) {
+        return res.send('Bad request', 400);
+    }
+};
 ```
 
 This code will parse the body of the request and check if the request is a POST request. It will then check if the request contains the required fields and if the bucket ID matches the one we set in the environment variables.
@@ -98,22 +96,20 @@ Create a new file in the `src` directory called `appwrite.js` and add the follow
 import { Client, Databases, ID, Storage } from 'node-appwrite';
 
 class AppwriteService {
-  constructor() {
-    const client = new Client();
-    client
-      .setEndpoint(
-        process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1'
-      )
-      .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-      .setKey(process.env.APPWRITE_API_KEY);
+    constructor() {
+        const client = new Client();
+        client
+            .setEndpoint(process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1')
+            .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+            .setKey(process.env.APPWRITE_API_KEY);
 
-    this.databases = new Databases(client);
-    this.storage = new Storage(client);
-  }
+        this.databases = new Databases(client);
+        this.storage = new Storage(client);
+    }
 
-  async getFile(bucketId, fileId) {
-    return await this.storage.getFileDownload(bucketId, fileId);
-  }
+    async getFile(bucketId, fileId) {
+        return await this.storage.getFileDownload(bucketId, fileId);
+    }
 }
 
 export default AppwriteService;
@@ -130,9 +126,9 @@ import AppwriteService from './appwrite.js';
 Then, we can use the `AppwriteService` class to download the image from the Appwrite Storage. After the bucket check within `main.js` add the following code:
 
 ```js
-  const appwrite = new AppwriteService();
+const appwrite = new AppwriteService();
 
-  const file = await appwrite.getFile(bucketId, fileId);
+const file = await appwrite.getFile(bucketId, fileId);
 ```
 
 This code will download the file from the Appwrite Storage and return a `404 - File Not Found` status code if the file is not found or a `400 - Bad request` status code if an error occurs.
@@ -154,10 +150,11 @@ Next we're going to use the Hugging Face SDK and classify the image, for this ta
 const hf = new HfInference(process.env.HUGGING_FACE_API_KEY);
 
 const result = await hf.objectDetection({
-  data: file,
-  model: 'facebook/detr-resnet-50',
+    data: file,
+    model: 'facebook/detr-resnet-50'
 });
 ```
+
 {% /section %}
 
 {% section #step-7 step=7 title="Setting up our database" %}
@@ -210,6 +207,7 @@ await appwrite.createImageLabels(databaseId, collectionId, fileId, result);
 log('Image ' + fileId + ' detected', result);
 return res.json(result);
 ```
+
 {% /section %}
 
 {% section #step-9 step=9 title="Configuring events" %}

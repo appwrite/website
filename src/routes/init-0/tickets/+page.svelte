@@ -1,11 +1,10 @@
 <script lang="ts">
-    import { page } from '$app/stores';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import Ticket from '../(components)/Ticket.svelte';
     import TicketPreview from '../(components)/TicketPreview.svelte';
-    import { getMockContributions, loginGithub } from '../helpers';
+    import { getMockContributions } from '../helpers';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
 
     const title = 'Init - Appwrite';

@@ -65,7 +65,7 @@ export function UserProvider(props) {
 
 Now, we can use the `useUser` hook to access the user's data from any component. However, we first need to wrap our app with the `UserProvider`.
 
-# Basic routing  {% #basic-routing %}
+# Basic routing {% #basic-routing %}
 
 First, wrap the `main` element with the `UserProvider` component.
 
@@ -114,16 +114,14 @@ function App() {
 export default App;
 ```
 
-# Home page  {% #home-page %}
+# Home page {% #home-page %}
 
 Create a new file `src/pages/Home.jsx` and add the following stub code to it.
 
 ```js
 // We'll complete this component later
 export function Home() {
-  return (
-    <p>I'm the home page</p>
-  );
+    return <p>I'm the home page</p>;
 }
 ```
 

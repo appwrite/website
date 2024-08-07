@@ -31,7 +31,7 @@ The Command Center offers context-sensitive commands for creating entities like 
 
 An integral part of the Command Center is the [Appwrite AI Assistant](/docs/tooling/assistant), trained on Appwrite's extensive documentation, content, and knowledge base. The Assistant can answer Appwrite-related queries with detailed explanations, step-by-step instructions, and relevant code snippets, enhancing your ability to utilize Appwrite quickly and efficiently.
 
-# Keyboard optimization  {% #keyboard-optimization %}
+# Keyboard optimization {% #keyboard-optimization %}
 
 Many developers favor keyboard interactions for efficiency and speed. The Command Center was designed with keyboard optimization in mind. It caters to the needs of keyboard-centric developers, enabling various tasks and efficient navigation across the Console without relying on a mouse or trackpad.
 

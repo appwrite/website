@@ -41,6 +41,7 @@ Create a Vite project.
 ```sh
 npm create vite@latest my-app -- --template solid && cd my-app
 ```
+
 {% /section %}
 
 {% section #step-3 step=3 title="Install Appwrite" %}
@@ -49,6 +50,7 @@ Install the JavaScript Appwrite SDK.
 ```sh
 npm install appwrite@14.0.1
 ```
+
 {% /section %}
 
 {% section #step-4 step=4 title="Import Appwrite" %}
@@ -76,6 +78,7 @@ client
 export const account = new Account(client);
 export { ID } from 'appwrite';
 ```
+
 {% /section %}
 
 {% section #step-5 step=5 title="Create a login page" %}
@@ -135,6 +138,7 @@ const App = () => {
 
 export default App;
 ```
+
 {% /section %}
 
 {% section #step-6 step=6 title="All set" %}

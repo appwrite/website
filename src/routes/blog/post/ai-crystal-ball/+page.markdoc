@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Predicting your developer destiny: how I built the AI Crystal Ball"
+title: 'Predicting your developer destiny: how I built the AI Crystal Ball'
 description: How I used Appwrite, OpenAI, GitHub, and SvelteKit to develop an AI prank app.
 date: 2024-05-10
 cover: /images/blog/ai-crystal-ball/cover.png
@@ -17,10 +17,10 @@ Therefore, in this blog, we’ll discuss how the AI Crystal Ball project was bui
 
 In order to build this application, we have a few prerequisites. We must set up the following:
 
-- OpenAI API key
-- GitHub OAuth app
-- Appwrite OAuth adapter for GitHub
-- Appwrite collections to store GitHub data and destinies
+-   OpenAI API key
+-   GitHub OAuth app
+-   Appwrite OAuth adapter for GitHub
+-   Appwrite collections to store GitHub data and destinies
 
 ## OpenAI
 
@@ -31,7 +31,6 @@ To create an OpenAI API key, we must first create an account on the [OpenAI pla
 ![OpenAI API Keys](/images/blog/ai-crystal-ball/openai.png)
 
 > Note: To use the GPT-4 API, your account must be upgraded to the Usage tier 1. To learn more, visit their [Usage tiers documentation](https://platform.openai.com/docs/guides/rate-limits/usage-tiers?context=tier-one).
->
 
 ## GitHub
 
@@ -45,9 +44,9 @@ To create a GitHub OAuth application, we must visit the [Settings page](https://
 
 In this app, we primarily need Appwrite for the following:
 
-- Managing GitHub OAuth login
-- Saving the information we get from the GitHub API, so we don’t need to call it repeatedly
-- Saving developer destinies if a user wants to create a shareable link
+-   Managing GitHub OAuth login
+-   Saving the information we get from the GitHub API, so we don’t need to call it repeatedly
+-   Saving developer destinies if a user wants to create a shareable link
 
 The only prerequisite here was creating an [Appwrite Cloud account](https://cloud.appwrite.io/), followed by creating a new project and adding your hostname as a web app to the project.
 
@@ -65,41 +64,40 @@ We must create a database with the ID `crystalball` and two collections with the
 
 Create the collection and add the following attributes:
 
-| Key | Type | Size | Required | Array |
-| --- | --- | --- | --- | --- |
-| languages | String | 2000 | - | Yes |
-| followers | Integer | - | Yes | - |
-| following | Integer | - | Yes | - |
-| username | String | 255 | Yes | - |
+| Key       | Type    | Size | Required | Array |
+| --------- | ------- | ---- | -------- | ----- |
+| languages | String  | 2000 | -        | Yes   |
+| followers | Integer | -    | Yes      | -     |
+| following | Integer | -    | Yes      | -     |
+| username  | String  | 255  | Yes      | -     |
 
 Visit the collection settings, enable **Document security,** and set the following (collection-level) **Permissions**:
 
-| Role | Create | Read | Update | Delete |
-| --- | --- | --- | --- | --- |
-| Users | Yes | - | - | - |
+| Role  | Create | Read | Update | Delete |
+| ----- | ------ | ---- | ------ | ------ |
+| Users | Yes    | -    | -      | -      |
 
 #### The `destiny` collection
 
 Create the collection and add the following attributes:
 
-| Key | Type | Size | Required |
-| --- | --- | --- | --- |
-| destiny | String | 25000 | Yes |
-| username | String | 255 | Yes |
+| Key      | Type   | Size  | Required |
+| -------- | ------ | ----- | -------- |
+| destiny  | String | 25000 | Yes      |
+| username | String | 255   | Yes      |
 
 Visit the collection settings, enable **Document security,** and set the following (collection-level) **Permissions**:
 
-| Role | Create | Read | Update | Delete |
-| --- | --- | --- | --- | --- |
-| Any | - | Yes | - | - |
-| Users | Yes | - | - | - |
+| Role  | Create | Read | Update | Delete |
+| ----- | ------ | ---- | ------ | ------ |
+| Any   | -      | Yes  | -      | -      |
+| Users | Yes    | -    | -      | -      |
 
 # Building the web app
 
 To build this app, we used SvelteKit, a framework to build web applications using JavaScript. There are some prerequisites, however, that must be completed before building out the features themselves.
 
 > Note: The code snippets will focus only on the application logic. All CSS or styling-related information as well as any other miscellaneous features will be accessible in the final project repository at the end of the blog.
->
 
 ## Prerequisites
 
@@ -165,7 +163,7 @@ const createUser = () => {
     async function init() {
         try {
             let session = await getSession();
-            if(!session) throw new Error('No session found');
+            if (!session) throw new Error('No session found');
             store.set(await account.get());
             return true;
         } catch (error) {
@@ -177,14 +175,18 @@ const createUser = () => {
     init();
 
     function login() {
-        if(!isBrowser) return;
-        account.createOAuth2Session('github', `https://${window.location.hostname}/app`, `https://${window.location.hostname}`);
+        if (!isBrowser) return;
+        account.createOAuth2Session(
+            'github',
+            `https://${window.location.hostname}/app`,
+            `https://${window.location.hostname}`
+        );
     }
 
     async function getSession() {
         try {
             return await account.getSession('current');
-        } catch(err) {
+        } catch (err) {
             return null;
         }
     }
@@ -194,8 +196,8 @@ const createUser = () => {
         init,
         login,
         getSession
-    }
-}
+    };
+};
 
 export const user = createUser();
 ```
@@ -215,8 +217,8 @@ We will call the login function from the index page at `./src/routes/+page.svelt
 <div class="mainContainer">
     <h1>AI Crystal Ball</h1>
     <h2>Find your developer destiny!</h2>
-    <img src={crystalBall} alt="crystal ball">
-    <button on:click={login}>Login with GitHub</button>
+    <img src="{crystalBall}" alt="crystal ball" />
+    <button on:click="{login}">Login with GitHub</button>
 </div>
 ```
 
@@ -230,7 +232,7 @@ export const github = {
         const url = 'https://api.github.com/user';
         var response = await fetch(url, {
             headers: {
-                'Authorization': `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
                 'X-GitHub-Api-Version': '2022-11-28'
             }
         });
@@ -241,7 +243,7 @@ export const github = {
         const url = `https://api.github.com/users/${username}/repos?sort=created&direction=desc`;
         const response = await fetch(url, {
             headers: {
-                'Authorization': `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
                 'X-GitHub-Api-Version': '2022-11-28'
             }
         });
@@ -252,13 +254,13 @@ export const github = {
         const url = `https://api.github.com/repos/${username}/${repo}/languages`;
         const response = await fetch(url, {
             headers: {
-                'Authorization': `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
                 'X-GitHub-Api-Version': '2022-11-28'
             }
         });
         return await response.json();
     }
-}
+};
 ```
 
 At this point, we also want to create our Database library using the Appwrite SDK, so that we can store the information from the GitHub API. For that, we shall create a file `./src/lib/databases.js` and add the following:
@@ -272,19 +274,15 @@ const databaseId = env.PUBLIC_APPWRITE_DATABASE_ID;
 const githubDataCollectionId = env.PUBLIC_APPWRITE_COLLECTION_ID_GITHUBDATA;
 
 export const db = {
-    getUserData: async(documentId) => {
-        try{
-            return await databases.getDocument(
-                databaseId,
-                githubDataCollectionId,
-                documentId
-            );
-        } catch(err){
+    getUserData: async (documentId) => {
+        try {
+            return await databases.getDocument(databaseId, githubDataCollectionId, documentId);
+        } catch (err) {
             return false;
         }
     },
 
-    addUserData: async(userId, username, followers, following, languages) => {
+    addUserData: async (userId, username, followers, following, languages) => {
         return await databases.createDocument(
             databaseId,
             githubDataCollectionId,
@@ -295,10 +293,8 @@ export const db = {
                 following,
                 languages
             },
-            [
-                Permission.write(Role.user(userId)), Permission.read(Role.user(userId))
-            ]
-        )
+            [Permission.write(Role.user(userId)), Permission.read(Role.user(userId))]
+        );
     }
 };
 ```
@@ -310,7 +306,7 @@ We will be calling these functions for our main application page in the file `./
     import { user } from '$lib/user';
     import { db } from '$lib/databases';
     import { github } from '$lib/github';
-	  import { onMount } from 'svelte';
+    import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
     import crystalball from '$lib/assets/crystalball.png';
 
@@ -337,21 +333,24 @@ We will be calling these functions for our main application page in the file `./
             }
         }
         loadingMessage = `Confirmed top 5 used languages...`;
-        return Object.entries(languageUsage).sort((a, b) => b[1] - a[1]).slice(0, 5).map(a => a[0]);
+        return Object.entries(languageUsage)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 5)
+            .map((a) => a[0]);
     }
 
     function resetDestiny() {
         destiny = '';
         destinyLoading = '';
-        document.getElementById("ballClick").disabled = false;
+        document.getElementById('ballClick').disabled = false;
     }
 
     async function initCrystalBall(userId) {
-		    // Check if GitHub data is already stored in Appwrite DB or not
+        // Check if GitHub data is already stored in Appwrite DB or not
         userData = await db.getUserData(userId);
 
-        if(userData === false){
-		        // Get GitHub token from Appwrite session
+        if (userData === false) {
+            // Get GitHub token from Appwrite session
             const session = await user.getSession();
             const githubToken = session.providerAccessToken;
 
@@ -360,9 +359,15 @@ We will be calling these functions for our main application page in the file `./
             const githubUsername = githubUser.login;
             loadingMessage = `Received user data ${githubUsername} from GitHub`;
 
-						// Get top 5 languages using GitHub user details and add to Appwrite
+            // Get top 5 languages using GitHub user details and add to Appwrite
             let languages = await getTopFiveLanguages(githubUsername, githubToken);
-            userData = await db.addUserData($user.$id, githubUsername, githubUser.followers, githubUser.following, languages);
+            userData = await db.addUserData(
+                $user.$id,
+                githubUsername,
+                githubUser.followers,
+                githubUser.following,
+                languages
+            );
         }
         githubLoading = false;
     }
@@ -370,49 +375,49 @@ We will be calling these functions for our main application page in the file `./
     onMount(async () => {
         let loggedIn = await user.init();
         console.log($user);
-        if(!loggedIn) {
+        if (!loggedIn) {
             goto('/');
         }
         let userId = $user.$id;
         await initCrystalBall(userId);
-    })
+    });
 </script>
 
 {#if githubLoading}
-    <div class="mainContainer">
-        <div class="loadingContainer">
-            <h1>Loading your Profile</h1>
-            <div class="loadingContainerBox">
-                <img src={crystalball} alt="Crystal Ball">
-                <p>{loadingMessage}</p>
+<div class="mainContainer">
+    <div class="loadingContainer">
+        <h1>Loading your Profile</h1>
+        <div class="loadingContainerBox">
+            <img src="{crystalball}" alt="Crystal Ball" />
+            <p>{loadingMessage}</p>
+        </div>
+    </div>
+</div>
+{:else}
+<div class="crystalballContainer mainContainer">
+    <div class="crystalball">
+        {#if destinyLoading === ''}
+        <img src="{crystalball}" alt="Crystal Ball" />
+        <button id="ballClick" on:click="{getDestiny}">Tap here and reveal your destiny!</button>
+        {:else if destinyLoading === 'loading'}
+        <img src="{crystalball}" alt="Crystal Ball" />
+        <button on:click="{getDestiny}">Reading your future...</button>
+        {:else if destinyLoading === 'complete'}
+        <div class="destiny">
+            <div class="destinyMessage">
+                <h1>Five Years from Today</h1>
+                <div class="destinyMessageBox">
+                    <p>{destiny}</p>
+                </div>
+            </div>
+            <div class="destinyButtons">
+                <button class="copyButton" on:click="{getLink}">Get Link to Destiny</button>
+                <button class="resetButton" on:click="{resetDestiny}">Want a new destiny?</button>
             </div>
         </div>
+        {/if}
     </div>
-{:else}
-    <div class="crystalballContainer mainContainer">
-        <div class="crystalball">
-            {#if destinyLoading === ''}
-                <img src={crystalball} alt="Crystal Ball">
-                <button id="ballClick" on:click={getDestiny}>Tap here and reveal your destiny!</button>
-            {:else if destinyLoading === 'loading'}
-                <img src={crystalball} alt="Crystal Ball">
-                <button on:click={getDestiny}>Reading your future...</button>
-            {:else if destinyLoading === 'complete'}
-                <div class="destiny">
-                    <div class="destinyMessage">
-                        <h1>Five Years from Today</h1>
-                        <div class="destinyMessageBox">
-                            <p>{destiny}</p>
-                        </div>
-                    </div>
-                    <div class="destinyButtons">
-                        <button class="copyButton" on:click={getLink}>Get Link to Destiny</button>
-                        <button class="resetButton" on:click={resetDestiny}>Want a new destiny?</button>
-                    </div>
-                </div>
-            {/if}
-        </div>
-    </div>
+</div>
 {/if}
 ```
 
@@ -426,7 +431,7 @@ import { env } from '$env/dynamic/private';
 import { OpenAI } from 'openai';
 
 export async function POST({ request }) {
-    try{
+    try {
         const requestBody = await request.json();
 
         const openai = new OpenAI({
@@ -437,9 +442,9 @@ export async function POST({ request }) {
 
         const prompt = `You have the following data on a developer from their GitHub account:\n\nGitHub username: ${userData.username}\nFollowers: ${userData.followers}\nFollowing: ${userData.following}\nTop 5 languages:\n${userData.languages.join(',')}\n\nBased on this data, create a humourous, realistic prediction to lightly roast the individual about what they'll be doing in 5 years from now. Do not explicitly include their GitHub data in the final message. Only use gender-neutral pronouns.`;
         const response = await openai.chat.completions.create({
-        model: 'gpt-4',
-        max_tokens: 250,
-        messages: [{ role: 'user', content: prompt }],
+            model: 'gpt-4',
+            max_tokens: 250,
+            messages: [{ role: 'user', content: prompt }]
         });
         const completion = response.choices[0].message?.content;
         console.log(completion);
@@ -454,8 +459,8 @@ export async function POST({ request }) {
                 },
                 status: 200
             }
-        )
-    } catch(err){
+        );
+    } catch (err) {
         console.error(err);
         throw error(500, err.message);
     }
@@ -467,19 +472,19 @@ We will send this request by adding the following function to the file`./src/rou
 ```jsx
 async function getDestiny() {
     destinyLoading = 'loading';
-    document.getElementById("ballClick").disabled = true;
+    document.getElementById('ballClick').disabled = true;
     const destinyRequest = await fetch('/api/destiny', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				userData
-			})
-		})
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            userData
+        })
+    });
     destinyLoading = 'complete';
     let destinyRequestBody = await destinyRequest.json();
-    if(destinyRequest.status == 200){
+    if (destinyRequest.status == 200) {
         destiny += `${destinyRequestBody.destiny}`;
     } else {
         destiny += `Error occured:\n\n${destinyRequestBody.error}`;
@@ -580,7 +585,7 @@ We will render our page using the pre-fetched destiny here:
             </div>
         </div>
         <div class="destinyButtons">
-            <button on:click={discoverDestiny}>Discover your developer destiny!</button>
+            <button on:click="{discoverDestiny}">Discover your developer destiny!</button>
         </div>
     </div>
 </div>

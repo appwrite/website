@@ -29,17 +29,22 @@ In the **Configure** step, you will need to provide details from your Twilio das
 You will need to provide the following information from your **Twilio dashboard**.
 
 {% table %}
-* Field name
-*
+
+-   Field name
+-   ***
+-   Account SID
+-   Head to Twilio console > **Account info** > **Account SID**.
+
 ---
-* Account SID
-* Head to Twilio console > **Account info** > **Account SID**.
+
+-   Auth token
+-   Head to Twilio console > **Account info** > **Auth Token**.
+
 ---
-* Auth token
-* Head to Twilio console > **Account info** > **Auth Token**.
----
-* Sender number
-* You can access numbers by navigating to your Twilio console > **Develop** > **Phone Numbers** > **Manage** > **Active Numbers**.
+
+-   Sender number
+-   You can access numbers by navigating to your Twilio console > **Develop** > **Phone Numbers** > **Manage** > **Active Numbers**.
+
 {% /table %}
 
 After adding the following details, click **Save and continue** to enable the provider.
@@ -91,6 +96,7 @@ const message = await messaging.createSms(
         ''                                       // scheduledAt (optional)
     );
 ```
+
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
@@ -115,6 +121,7 @@ const message = await messaging.createSms(
         ''                                       // scheduledAt (optional)
     );
 ```
+
 ```php
 <?php
 
@@ -141,6 +148,7 @@ $result = $messaging->createSms(
     scheduledAt: ''                               // optional
 );
 ```
+
 ```python
 from appwrite.client import Client
 from appwrite.services.messaging import Messaging
@@ -165,6 +173,7 @@ result = messaging.create_sms(
     scheduled_at = ''                           # optional
 )
 ```
+
 ```ruby
 require 'appwrite'
 
@@ -189,6 +198,7 @@ response = messaging.create_sms(
 
 puts response.inspect
 ```
+
 ```csharp
 using Appwrite;
 using Appwrite.Services;
@@ -203,13 +213,14 @@ var messaging = new Messaging(client);
 
 Message result = await messaging.CreateSMS(
     messageId: "[MESSAGE_ID]",
-    content: "[CONTENT]"    
-    topics: new List<string> {}                   // optional    
-    users: new List<string> {}                    // optional    
-    targets: new List<string> {}                  // optional    
-    draft: true                                   // optional    
+    content: "[CONTENT]"
+    topics: new List<string> {}                   // optional
+    users: new List<string> {}                    // optional
+    targets: new List<string> {}                  // optional
+    draft: true                                   // optional
     scheduledAt: "");                             // optional
 ```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:dart_appwrite/enums.dart';
@@ -243,6 +254,7 @@ void main() {                                    // Init SDK
   });
 }
 ```
+
 ```kotlin
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -273,6 +285,7 @@ messaging.createSms(
     })
 );
 ```
+
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -303,6 +316,7 @@ messaging.createSms(
     })
 );
 ```
+
 ```swift
 import Appwrite
 
@@ -323,6 +337,7 @@ let message = try await messaging.createSms(
   scheduledAt: ""                                // optional
 )
 ```
+
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}
@@ -340,6 +355,7 @@ In the settings, you can update a provider's configuration or delete the provide
 {% tabsitem #server-sdk title="Server SDK" %}
 To update or delete providers programmatically, use an [Appwrite Server SDK](/docs/sdks#server).
 {% multicode %}
+
 ```server-nodejs
 const sdk = require('node-appwrite');
 
@@ -363,6 +379,7 @@ const provider = await messaging.updateTwilioProvider(
         '[FROM]'                                 // from (optional)
     );
 ```
+
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
@@ -386,6 +403,7 @@ const provider = await messaging.updateTwilioProvider(
         '[FROM]'                                 // from (optional)
     );
 ```
+
 ```php
 <?php
 
@@ -411,6 +429,7 @@ $result = $messaging->updateTwilioProvider(
     from: '[FROM]'                                // optional
 );
 ```
+
 ```python
 from appwrite.client import Client
 from appwrite.services.messaging import Messaging
@@ -434,6 +453,7 @@ result = messaging.update_twilio_provider(
     from = '[FROM]'                             # optional
 )
 ```
+
 ```ruby
 require 'appwrite'
 
@@ -457,6 +477,7 @@ response = messaging.update_twilio_provider(
 
 puts response.inspect
 ```
+
 ```csharp
 using Appwrite;
 using Appwrite.Services;
@@ -477,6 +498,7 @@ Provider result = await messaging.UpdateTwilioProvider(
     authToken: "[AUTH_TOKEN]"                     // optional
     from: "[FROM]");                              // optional
 ```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:dart_appwrite/enums.dart';
@@ -509,6 +531,7 @@ void main() {                                    // Init SDK
   });
 }
 ```
+
 ```kotlin
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -538,6 +561,7 @@ messaging.updateTwilioProvider(
     })
 );
 ```
+
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -567,6 +591,7 @@ messaging.updateTwilioProvider(
     })
 );
 ```
+
 ```swift
 import Appwrite
 
@@ -586,6 +611,7 @@ let provider = try await messaging.updateTwilioProvider(
   from: "[FROM]"                                 // optional
 )
 ```
+
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}

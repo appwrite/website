@@ -52,8 +52,8 @@ To add the Appwrite SDK for Android as a dependency, add the following to your a
 implementation("io.appwrite:sdk-for-android:5.1.0")
 ```
 
-In order to allow creating OAuth sessions, the following activity needs to be added inside the `<application>` tag, along side the existing `<activity>` tags in your [AndroidManifest.xml](https://github.com/appwrite/playground-for-flutter/blob/master/android/app/src/main/AndroidManifest.xml). 
-Be sure to replace the **[PROJECT_ID]** string with your actual Appwrite project ID. 
+In order to allow creating OAuth sessions, the following activity needs to be added inside the `<application>` tag, along side the existing `<activity>` tags in your [AndroidManifest.xml](https://github.com/appwrite/playground-for-flutter/blob/master/android/app/src/main/AndroidManifest.xml).
+Be sure to replace the **[PROJECT_ID]** string with your actual Appwrite project ID.
 You can find your Appwrite project ID in you project settings screen in your Appwrite Console.
 
 ```xml
@@ -73,10 +73,11 @@ You can find your Appwrite project ID in you project settings screen in your App
   </application>
 </manifest>
 ```
+
 {% /section %}
 
 {% section #step-4 step=4 title="Create Appwrite Singleton" %}
-Find your project's ID in the **Settings** page. 
+Find your project's ID in the **Settings** page.
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
@@ -134,6 +135,7 @@ object Appwrite {
     }
 }
 ```
+
 {% /section %}
 {% section #step-5 step=5 title="Create a login page" %}
 Add the following code to `MainActivity.kt`.
@@ -251,6 +253,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 ```
+
 {% /section %}
 
 {% section #step-6 step=6 title="All set" %}

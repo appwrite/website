@@ -56,7 +56,7 @@
         pointer-events: none;
         transition: 200ms ease;
 
-        &[data-state='open'] {
+        :global(&[data-state='open']) {
             opacity: 1;
             pointer-events: all;
         }
@@ -82,7 +82,7 @@
         pointer-events: none;
         transition: 200ms ease;
 
-        &[data-state='open'] {
+        :global(&[data-state='open']) {
             opacity: 1;
             transform: scale(1);
             pointer-events: all;

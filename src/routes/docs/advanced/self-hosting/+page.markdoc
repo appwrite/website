@@ -29,7 +29,9 @@ You will be prompted to configure the following during the setup command:
 
 {% tabs %}
 {% tabsitem #unix title="macOS and Linux" %}
+
 ## Bash
+
 ```sh
 docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
@@ -37,10 +39,13 @@ docker run -it --rm \
     --entrypoint="install" \
     appwrite/appwrite:1.5.7
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #windows title="Windows" %}
+
 ## CMD
+
 ```cmd
 docker run -it --rm ^
     --volume //var/run/docker.sock:/var/run/docker.sock ^
@@ -48,7 +53,9 @@ docker run -it --rm ^
     --entrypoint="install" ^
     appwrite/appwrite:1.5.7
 ```
+
 ## Powershell
+
 ```powershell
 docker run -it --rm `
     --volume /var/run/docker.sock:/var/run/docker.sock `
@@ -56,6 +63,7 @@ docker run -it --rm `
     --entrypoint="install" `
     appwrite/appwrite:1.5.7
 ```
+
 {% /tabsitem %}
 {% /tabs %}
 
@@ -66,26 +74,33 @@ In addition to running Appwrite locally, you can also launch Appwrite using a pr
 Choose from one of the providers below:
 
 {% table %}
-* &nbsp; {% width=48 %}
-* Provider
-* Installation Link
----
-* {% only_dark %}{% icon_image src="/images/one-click/dark/digitalocean.svg" alt="DigitalOcean logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/one-click/digitalocean.svg" alt="DigitalOcean logo" size="m" /%}{% /only_light %}
-* DigitalOcean
-* [Click to install](https://marketplace.digitalocean.com/apps/appwrite)
----
-* {% only_dark %}{% icon_image src="/images/one-click/dark/gitpod.svg" alt="Gitpod logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/one-click/gitpod.svg" alt="Gitpod logo" size="m" /%}{% /only_light %}
-* Gitpod
-* [Click to install](https://gitpod.io/#https://github.com/appwrite/integration-for-gitpod)
----
-* {% only_dark %}{% icon_image src="/images/one-click/dark/akamai.svg" alt="Akamai logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/one-click/akamai.svg" alt="Akamai logo" size="m" /%}{% /only_light %}
-* Akamai Compute
-* [Click to install](https://www.linode.com/marketplace/apps/appwrite/appwrite/)
-{% /table %}
 
+-   &nbsp; {% width=48 %}
+-   Provider
+-   Installation Link
+
+---
+
+-   {% only_dark %}{% icon_image src="/images/one-click/dark/digitalocean.svg" alt="DigitalOcean logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/one-click/digitalocean.svg" alt="DigitalOcean logo" size="m" /%}{% /only_light %}
+-   DigitalOcean
+-   [Click to install](https://marketplace.digitalocean.com/apps/appwrite)
+
+---
+
+-   {% only_dark %}{% icon_image src="/images/one-click/dark/gitpod.svg" alt="Gitpod logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/one-click/gitpod.svg" alt="Gitpod logo" size="m" /%}{% /only_light %}
+-   Gitpod
+-   [Click to install](https://gitpod.io/#https://github.com/appwrite/integration-for-gitpod)
+
+---
+
+-   {% only_dark %}{% icon_image src="/images/one-click/dark/akamai.svg" alt="Akamai logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/one-click/akamai.svg" alt="Akamai logo" size="m" /%}{% /only_light %}
+-   Akamai Compute
+-   [Click to install](https://www.linode.com/marketplace/apps/appwrite/appwrite/)
+
+{% /table %}
 
 # Next steps {% #next-steps %}
 

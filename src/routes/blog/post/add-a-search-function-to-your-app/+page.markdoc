@@ -20,10 +20,10 @@ Meilisearch is a flexible and powerful user-focused search engine that can be ad
 
 To use the function, you need the following set of keys:
 
-- `APPWRITE_KEY` - API Key to talk to Appwrite backend APIs.To generate API Keys you can follow the documentation [here](https://appwrite.io/docs/getting-started-for-server#apiKey)
-- `APPWRITE_ENDPOINT` - To get the Appwrite endpoint, you need to go to [Appwrite](https://cloud.appwrite.io/) and find it under “Settings”
-- `APPWRITE_DATABASE_ID` - The ID of the Appwrite database that contains the collection to sync. You can find the documentation [here](https://appwrite.io/docs/databases).
-- `APPWRITE_COLLECTION_ID` - The ID of the collection in the Appwrite database to sync.
+-   `APPWRITE_KEY` - API Key to talk to Appwrite backend APIs.To generate API Keys you can follow the documentation [here](https://appwrite.io/docs/getting-started-for-server#apiKey)
+-   `APPWRITE_ENDPOINT` - To get the Appwrite endpoint, you need to go to [Appwrite](https://cloud.appwrite.io/) and find it under “Settings”
+-   `APPWRITE_DATABASE_ID` - The ID of the Appwrite database that contains the collection to sync. You can find the documentation [here](https://appwrite.io/docs/databases).
+-   `APPWRITE_COLLECTION_ID` - The ID of the collection in the Appwrite database to sync.
 
 To use Meilisearch, you can either self-host it using the command 👇
 
@@ -31,27 +31,22 @@ To use Meilisearch, you can either self-host it using the command 👇
  curl -L [https://install.meilisearch.com](https://install.meilisearch.com/) | sh
 ```
 
-Or use [Meilisearch Cloud](https://www.meilisearch.com/cloud). For this example, we will assume that you are using Meilisearch Cloud. 
+Or use [Meilisearch Cloud](https://www.meilisearch.com/cloud). For this example, we will assume that you are using Meilisearch Cloud.
 
 Here’s the keys you need:
 
-- `MEILISEARCH_ENDPOINT` - This is the host URL of the Meilisearch server. Once you have logged in to Meilisearch Cloud and created a new project, you will find the URL under “Overview” and this is how it should look like 👇
-
+-   `MEILISEARCH_ENDPOINT` - This is the host URL of the Meilisearch server. Once you have logged in to Meilisearch Cloud and created a new project, you will find the URL under “Overview” and this is how it should look like 👇
 
 ![Overview Meilisearch](/images/blog/add-a-search-function-to-your-app/functions.png)
 
--  `MEILISEARCH_ADMIN_API_KEY` - This is the admin API key for Meilisearch. You will find it in the Meilisearch Console under “API Key”. 
--  `MEILISEARCH_SEARCH_API_KEY` - This is the API Key for Meilisearch search operations. To get this, you need you create a new index from the Meilisearch Console. Once created you will find it under `Overview` as `Default Search API Key`
-
-
+-   `MEILISEARCH_ADMIN_API_KEY` - This is the admin API key for Meilisearch. You will find it in the Meilisearch Console under “API Key”.
+-   `MEILISEARCH_SEARCH_API_KEY` - This is the API Key for Meilisearch search operations. To get this, you need you create a new index from the Meilisearch Console. Once created you will find it under `Overview` as `Default Search API Key`
 
 ![Creating an index from the Console](/images/blog/add-a-search-function-to-your-app/variables.png)
 
-
 ![Keys](/images/blog/add-a-search-function-to-your-app/connect.png)
 
-- `MEILISEARCH_INDEX_NAME` - Name of the Meilisearch index to which the documents will be synchronized. For e.g, in the above picture, the Index name is `Newindex`. You can also find it under `Settings` as `Index Name`.
- 
+-   `MEILISEARCH_INDEX_NAME` - Name of the Meilisearch index to which the documents will be synchronized. For e.g, in the above picture, the Index name is `Newindex`. You can also find it under `Settings` as `Index Name`.
 
 ## Preparing the Function
 
@@ -59,23 +54,17 @@ The function template syncs documents in an Appwrite database collection to a Me
 
 If you want to see the source code, you can find it on our [templates GitHub repository](https://github.com/appwrite/templates/tree/main/node/sync-with-meilisearch). Now, let’s navigate to our functions page on **[Appwrite](https://cloud.appwrite.io/)**. From there, we will select the **Templates** tab, search for and select the **Sync with Meilisearch** function template.
 
-
-
 ![templates](/images/blog/add-a-search-function-to-your-app/templates.png)
 
 The function requires `APPWRITE_API_KEY`, `APPWRITE_DATABASE_ID`, `APPWRITE_COLLECTION_ID` , `MEILISEARCH_ENDPOINT`, `MEILISEARCH_ADMIN_API_KEY`, `MEILISEARCH_SEARCH_API_KEY`, `MEILISEARCH_INDEX_NAME`. Once you have added them you can proceed to the Connect step.
 
 Select **Create a new repository** (this will generate a GitHub repository for you with the function), and leave the production branch and root settings as default to create this function.
 
-
-
 ![connect](/images/blog/add-a-search-function-to-your-app/connecttemplate.png)
-
 
 # Testing the Template
 
 Visit the **Domains** tab on the function page and copy the domain URL to test the function.
-
 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/va05oaxklo04x6xh6fka.png)
 
@@ -83,14 +72,15 @@ Visit the **Domains** tab on the function page and copy the domain URL to test
 
 We’ve added search functionality to our app and opened up many possibilities to improve the experience of our app’s users.
 
-How can the *template* be extended ?
-- Using events to automatically index new collections
-- Using weights and other meilisearch features to optimise search such as excluding certain fields from indexing
+How can the _template_ be extended ?
+
+-   Using events to automatically index new collections
+-   Using weights and other meilisearch features to optimise search such as excluding certain fields from indexing
 
 Some examples are:
 
 1. **Real-time Data Exploration:** It can be used to provide real-time search capabilities for datasets and data streams, allowing users to explore and analyze data in real-time.
-2. **Content Management Systems:** The function template can be integrated into content management systems (CMS) to facilitate efficient content retrieval for editors and site visitors. 
+2. **Content Management Systems:** The function template can be integrated into content management systems (CMS) to facilitate efficient content retrieval for editors and site visitors.
 
 Be sure to check out the other available Function Templates. We’ve created multiple that could be of use in your projects. You can find the [templates GitHub repository here](https://github.com/appwrite/templates).
 

@@ -8,6 +8,7 @@ timeToRead: 10
 author: vincent-ge
 category: migration
 ---
+
 If you’re ready to move from Firebase to Appwrite, or you just want to explore your BaaS options, we can give you a jump start with Appwrite Migrations.
 
 ![Appwrite Console Migrations page](/images/blog/migrate-firebase-projects-to-appwrite/migrations-overview.png)
@@ -18,9 +19,9 @@ Moving is frustrating. Packing, unpacking, renting a truck, wondering if your be
 
 Just like moving houses, not every piece of old furniture will suit your new house. You’ll need some creative rearranging or maybe some new furniture. Appwrite is different from Firebase in a similar sense.
 
-- Appwrite automatically moves user accounts or files, but documents and cloud functions will require some work to move.
-- Nested documents will require some clever engineering to be transformed into Appwrite relationships. In a future version, they might be added automatically, but you will need to migrate them with a script for now.
-- Appwrite Functions also use different syntax and deployment methods than Firebase’s Cloud Functions. These will need the most work to migrate and likely need to be partially rewritten.
+-   Appwrite automatically moves user accounts or files, but documents and cloud functions will require some work to move.
+-   Nested documents will require some clever engineering to be transformed into Appwrite relationships. In a future version, they might be added automatically, but you will need to migrate them with a script for now.
+-   Appwrite Functions also use different syntax and deployment methods than Firebase’s Cloud Functions. These will need the most work to migrate and likely need to be partially rewritten.
 
 ## Prepare for your move
 

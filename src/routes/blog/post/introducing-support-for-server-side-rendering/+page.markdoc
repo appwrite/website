@@ -36,16 +36,16 @@ npm install node-appwrite
 
 To solve this issue, all existing server SDK methods that create a session now return a `secret` attribute. The following methods are:
 
-- `account.createEmailPasswordSession(email, password)`
-- `account.createAnonymousSession()`
-- `account.createSession(userId, token)`
+-   `account.createEmailPasswordSession(email, password)`
+-   `account.createAnonymousSession()`
+-   `account.createSession(userId, token)`
 
 You can use these methods now to create a session, and to set a session cookie on your domain.
 
 ```jsx
-const session = account.createEmailPasswordSession(email, password)
+const session = account.createEmailPasswordSession(email, password);
 
-console.log(session.secret) // Output: 'eyJpZCI...sdfahfkjjy'
+console.log(session.secret); // Output: 'eyJpZCI...sdfahfkjjy'
 ```
 
 ## Using session secrets
@@ -55,8 +55,8 @@ With a session cookie set, we can now authenticate users and protect routes.
 When using the Appwrite SDK, you can use the new `setSession` method to authenticate a user for any request.
 
 ```jsx
-client.setSession(session.secret)
-const currentUser = await account.get()
+client.setSession(session.secret);
+const currentUser = await account.get();
 ```
 
 {% info title="Appwrite client security" %}
@@ -72,12 +72,12 @@ With the new authentication patterns for SSR, you’ll need to create two differ
 The admin client will need to be initialized with an API key in order to bypass rate limits when performing unauthenticated request or when we need to perform actions that bypass permissions. Without an API key our server will be rate limited when trying to make request to certain endpoints.
 
 ```jsx
-import { Client } from "node-appwrite"
+import { Client } from 'node-appwrite';
 
 const adminClient = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<YOUR_PROJECT_ID>')
-    .setKey('<YOUR_API_KEY>')
+    .setKey('<YOUR_API_KEY>');
 ```
 
 ### Session Client
@@ -87,23 +87,23 @@ A session client will allow us to make requests as an authenticated end-user wit
 ```jsx
 const sessionClient = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('<YOUR_PROJECT_ID>')
+    .setProject('<YOUR_PROJECT_ID>');
 
-const session = req.cookies.session
+const session = req.cookies.session;
 
 if (session) {
-    sessionClient.setSession(session)
+    sessionClient.setSession(session);
 }
 
-const user = await account.get()
+const user = await account.get();
 ```
 
 # Seeing it in action
 
 Using Next.js, let’s see how we can create an application with two endpoints:
 
-- `/api/signin`  - creates a session and sets a session cookie
-- `/api/user` - retrieves session from cookies and authenticates the request
+-   `/api/signin` - creates a session and sets a session cookie
+-   `/api/user` - retrieves session from cookies and authenticates the request
 
 We'll use an admin client to create sessions and a session client to perform authenticated requests.
 
@@ -152,24 +152,24 @@ export function  createSessionClient(headers) {
 Now, in the `/signin` route, we can use the admin client to generate a session and set a cookie.
 
 ```jsx
-import { createAdminClient } from "@/lib/appwrite"
-import { cookies } from 'next/headers'
+import { createAdminClient } from '@/lib/appwrite';
+import { cookies } from 'next/headers';
 
-export async function POST(request){
-    const { account } = await  createAdminClient()
+export async function POST(request) {
+    const { account } = await createAdminClient();
 
-    const { email, password } = await request.json()
-    const session = await account.createEmailPasswordSession(email, password)
+    const { email, password } = await request.json();
+    const session = await account.createEmailPasswordSession(email, password);
 
     cookies().set('session', session.secret, {
         httpOnly: true,
         secure: true,
         sameSite: 'strict',
         expires: new Date(session.expire),
-        path: '/',
-    })
+        path: '/'
+    });
 
-    return Response.redirect('/api/user')
+    return Response.redirect('/api/user');
 }
 ```
 
@@ -178,16 +178,16 @@ export async function POST(request){
 With a session set, we can now use the session client to authenticate a user and return the user object. This session client can now be used on all requests that require an authenticated user.
 
 ```jsx
-import { createSessionClient } from "@/lib/appwrite"
-import { headers } from 'next/headers'
+import { createSessionClient } from '@/lib/appwrite';
+import { headers } from 'next/headers';
 
-export async function GET(request){
-    const { account } = await createSessionClient(headers)
+export async function GET(request) {
+    const { account } = await createSessionClient(headers);
     try {
-        const user = await account.get()
-        return Response.json(user)
+        const user = await account.get();
+        return Response.json(user);
     } catch (error) {
-        return Response.json(error)
+        return Response.json(error);
     }
 }
 ```
@@ -196,11 +196,11 @@ export async function GET(request){
 
 Visit our documentation to learn more about SSR, join us on Discord to be part of the discussion, visit our blog and YouTube channel to learn more, or visit our GitHub repository to see our source code.
 
-- [Docs](/docs/products/auth/server-side-rendering)
-- [Discord](https://appwrite.io/discord)
-- [Blog](/blog)
-- [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
-- [GitHub repository](https://github.com/appwrite/appwrite)
+-   [Docs](/docs/products/auth/server-side-rendering)
+-   [Discord](https://appwrite.io/discord)
+-   [Blog](/blog)
+-   [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
+-   [GitHub repository](https://github.com/appwrite/appwrite)
 
 SSR will be available as part of the Appwrite 1.5 release on [GitHub](https://github.com/appwrite/appwrite) and [Cloud](https://cloud.appwrite.io/register) in March 2024.
 

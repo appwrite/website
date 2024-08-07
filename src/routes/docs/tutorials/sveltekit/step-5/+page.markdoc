@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Add navigation 
+title: Add navigation
 description: Add navigation to your SvelteKit application with Appwrite authentication.
 step: 5
 ---
@@ -12,37 +12,37 @@ Create a new file `src/routes/+layout.svelte` and add the following code to it.
 
 ```html
 <script>
-	import { user } from '$lib/user';
+    import { user } from '$lib/user';
 </script>
 
 <nav>
-	<a href="/">Home</a>
-	{#if $user}
-		<div>
-			<span>{$user.name}</span>
-			<button type="button" on:click={user.logout}>Logout</button>
-		</div>
-	{:else}
-		<a href="/login">Login</a>
-	{/if}
+    <a href="/">Home</a>
+    {#if $user}
+    <div>
+        <span>{$user.name}</span>
+        <button type="button" on:click="{user.logout}">Logout</button>
+    </div>
+    {:else}
+    <a href="/login">Login</a>
+    {/if}
 </nav>
 
 <slot />
 
 <style>
-	:global(*) {
-		font-family: sans-serif;
-	}
+    :global(*) {
+        font-family: sans-serif;
+    }
 
-	:global(body) {
-		margin: 1rem auto;
-		max-width: 30rem;
-	}
+    :global(body) {
+        margin: 1rem auto;
+        max-width: 30rem;
+    }
 
-	nav {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 </style>
 ```

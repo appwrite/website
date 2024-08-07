@@ -13,6 +13,7 @@ Anonymous sessions allow you to implement **guest** users. Guest users let you s
 Create an anonymous session with [Create Anonymous Session](/docs/references/cloud/client-web/account#createAnonymousSession) method.
 
 {% multicode %}
+
 ```client-web
 import { Client, Account } from "appwrite";
 
@@ -30,6 +31,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
+
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 
@@ -41,6 +43,7 @@ final account = Account(client);
 
 final user = await account.createAnonymousSession();
 ```
+
 ```client-apple
 import Appwrite
 
@@ -52,6 +55,7 @@ let account = Account(client)
 
 let user = try await account.createAnonymousSession()
 ```
+
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
@@ -64,6 +68,7 @@ val account = Account(client)
 
 val user = account.createAnonymousSession()
 ```
+
 ```graphql
 mutation {
     accountCreateAnonymousSession {
@@ -74,6 +79,7 @@ mutation {
     }
 }
 ```
+
 {% /multicode %}
 
 # Attaching an account {% #attach-account %}

@@ -49,4 +49,5 @@ _APP_ENV=development
 _APP_OPENSSL_KEY_V1=your-secret-key
 _APP_DOMAIN=localhost
 ```
+
 {% partial file="update-variables.md" /%}

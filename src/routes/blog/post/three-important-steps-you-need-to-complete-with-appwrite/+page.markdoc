@@ -36,9 +36,10 @@ Before you can read and write data from an Appwrite database collection or stora
 With these three steps to complete, you should be set to connect to an Appwrite backend from either a client or server SDK.
 
 # Resources
+
 Visit our documentation to get started, join us on Discord to be part of the discussion, or visit our blog and YouTube channel to learn more!
 
-- [Docs](/docs)
-- [Discord](https://appwrite.io/discord)
-- [Blog](/blog)
-- [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
+-   [Docs](/docs)
+-   [Discord](https://appwrite.io/discord)
+-   [Blog](/blog)
+-   [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)

@@ -87,6 +87,7 @@ export function toast(msg) {
     }
 }
 ```
+
 # Login page {% #login-page %}
 
 Create a new file `views/Login.jsx` and add the following code to it.
@@ -131,8 +132,8 @@ export default function LoginScreen() {
                 <Button
                     title="Register"
                     onPress={
-                        () => { 
-                            user.register(email, password) 
+                        () => {
+                            user.register(email, password)
                         }
                     }
                 />

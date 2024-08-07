@@ -8,14 +8,14 @@ isPartner: true
 isNew: true
 cover: /images/integrations/stripe-subscriptions/cover.png
 category: Payments
-product: 
+product:
     avatar: '/images/integrations/avatars/stripe.png'
     vendor: Stripe
     description: 'Stripe is an online payment processing platform that allows businesses to accept online payments securely and efficiently.'
-platform: 
+platform:
     - 'Self-hosted'
     - 'Cloud'
-images: 
+images:
     - /images/integrations/stripe-subscriptions/cover.png
     - /images/integrations/stripe-subscriptions/dashboard.png
     - /images/integrations/stripe-subscriptions/api-keys.png
@@ -61,7 +61,7 @@ Head over to the Appwrite console, navigate to the **Functions** page, click th
 
 ![Function template](/images/integrations/stripe-subscriptions/template.png)
 
-During the setup process, click the checkbox to generate an Appwrite API key on completion and add the **Stripe secret key** and **Webhook secret** in the **Variables** step. If you are self-hosting Appwrite, click the **optional variables** dropdown and update the Appwrite endpoint to your instance’s publicly accessible endpoint. 
+During the setup process, click the checkbox to generate an Appwrite API key on completion and add the **Stripe secret key** and **Webhook secret** in the **Variables** step. If you are self-hosting Appwrite, click the **optional variables** dropdown and update the Appwrite endpoint to your instance’s publicly accessible endpoint.
 
 ![Env variables](/images/integrations/stripe-subscriptions/variables.png)
 
@@ -77,7 +77,7 @@ Once all the steps are complete, it is time to test the function! First, copy th
 
 ![Add web platform](/images/integrations/stripe-subscriptions/web-platform.png)
 
-Then, open it in your browser to test the function and access the pre-built interactive UI. You can anonymously log in through this UI and create a subscription using [Stripe’s test card number](https://docs.stripe.com/testing#cards). As soon as this process is complete, the function UI will show that you are subscribed. 
+Then, open it in your browser to test the function and access the pre-built interactive UI. You can anonymously log in through this UI and create a subscription using [Stripe’s test card number](https://docs.stripe.com/testing#cards). As soon as this process is complete, the function UI will show that you are subscribed.
 
 ![Demo](/images/integrations/stripe-subscriptions/demo.png)
 
@@ -89,6 +89,6 @@ Additionally, your user on Appwrite will feature the `subscriber` label, which y
 
 If you would like to learn more about Stripe Subscriptions and Appwrite Functions, we have some resources that you should visit:
 
-- [Sign up on Stripe](https://stripe.com)
-- [Add app subscriptions with Stripe on Appwrite](https://appwrite.io/docs/tutorials/subscriptions-with-stripe/step-1)
-- [Learn more about Functions templates in Appwrite docs](https://appwrite.io/docs/products/functions/templates)
+-   [Sign up on Stripe](https://stripe.com)
+-   [Add app subscriptions with Stripe on Appwrite](https://appwrite.io/docs/tutorials/subscriptions-with-stripe/step-1)
+-   [Learn more about Functions templates in Appwrite docs](https://appwrite.io/docs/products/functions/templates)

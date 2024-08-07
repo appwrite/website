@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Introducing Enum SDK support: Enhanced dev experience across SDKs"
+title: 'Introducing Enum SDK support: Enhanced dev experience across SDKs'
 description: A new feature that will reduce friction and improve your experience.
 date: 2024-02-28
 cover: /images/blog/enum-announcement.png
@@ -9,6 +9,7 @@ author: jake-barnby
 category: product
 featured: false
 ---
+
 We are excited to announce a significant enhancement to the development experience across all Appwrite client and server-side SDKs, Enums SDK Support.
 
 This enhancement is designed to streamline the development process, improve code quality, and facilitate seamless integration with Appwrite's backend services.
@@ -43,10 +44,10 @@ This new feature will improve the experience of building with Appwrite and lower
 
 Visit our documentation to learn more about Enums SDK support, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our source code.
 
-- [Docs](/docs/sdks#enums)
-- [Discord](https://appwrite.io/discord)
-- [Blog](/blog)
-- [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
-- [GitHub](https://github.com/appwrite/appwrite)
+-   [Docs](/docs/sdks#enums)
+-   [Discord](https://appwrite.io/discord)
+-   [Blog](/blog)
+-   [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
+-   [GitHub](https://github.com/appwrite/appwrite)
 
 Enums will be available as part of the Appwrite 1.5 release on [GitHub](https://github.com/appwrite/appwrite) and [Cloud](https://cloud.appwrite.io/register) in March 2024.

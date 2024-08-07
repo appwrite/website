@@ -8,14 +8,14 @@ isPartner: true
 isNew: true
 cover: /images/integrations/lemon-squeezy-subscriptions/cover.png
 category: Payments
-product: 
+product:
     avatar: '/images/integrations/avatars/lemon-squeezy.png'
     vendor: Lemon Squeezy
     description: 'Lemon Squeezy is a platform designed to simplify the process of selling digital products online.'
-platform: 
+platform:
     - 'Self-hosted'
     - 'Cloud'
-images: 
+images:
     - /images/integrations/lemon-squeezy-subscriptions/cover.png
     - /images/integrations/lemon-squeezy-subscriptions/dashboard.png
     - /images/integrations/lemon-squeezy-subscriptions/template.png
@@ -37,18 +37,18 @@ To implement the Lemon Squeezy subscriptions integration, there are several step
 
 ## Step 1: Setup Lemon Squeezy
 
-First, [sign up on Lemon Squeezy](https://www.lemonsqueezy.com/) and add a new store. 
+First, [sign up on Lemon Squeezy](https://www.lemonsqueezy.com/) and add a new store.
 
 ![Lemon Squeezy dashboard](/images/integrations/lemon-squeezy-subscriptions/dashboard.png)
 
 From your Lemon Squeezy dashboard, save the following details for further usage:
 
-| Field name |  |
-| --- | --- |
-| Variant ID | Head to **Store** > **Products** from the left sidebar. Create a new product with the pricing type as **Subscription** and add all other mandatory details such as name, price, payment schedule, and tax category. Click on the product dropdown menu (…) to get the variant ID. |
-| Store ID | Head to **Settings** > **Stores** from the left sidebar. The store ID will be a number visible next to your store’s URL. |
-| API key | Head to **Settings** > **API** from the left sidebar. Create a new API key. |
-| Webhook secret | Head to **Settings** > **Webhooks** from the left sidebar. Add a temporary endpoint `https://temporary-endpoint` (we will replace this with our final endpoint later), create a new webhook secret, and select the events `subscription_created` and `subscription_expired`. |
+| Field name     |                                                                                                                                                                                                                                                                                   |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Variant ID     | Head to **Store** > **Products** from the left sidebar. Create a new product with the pricing type as **Subscription** and add all other mandatory details such as name, price, payment schedule, and tax category. Click on the product dropdown menu (…) to get the variant ID. |
+| Store ID       | Head to **Settings** > **Stores** from the left sidebar. The store ID will be a number visible next to your store’s URL.                                                                                                                                                          |
+| API key        | Head to **Settings** > **API** from the left sidebar. Create a new API key.                                                                                                                                                                                                       |
+| Webhook secret | Head to **Settings** > **Webhooks** from the left sidebar. Add a temporary endpoint `https://temporary-endpoint` (we will replace this with our final endpoint later), create a new webhook secret, and select the events `subscription_created` and `subscription_expired`.      |
 
 ## Step 2: Create the Appwrite Function
 
@@ -58,7 +58,7 @@ Head over to the Appwrite console, navigate to the **Functions** page, click th
 
 ![Function template](/images/integrations/lemon-squeezy-subscriptions/template.png)
 
-During the setup process, click the checkbox to generate an Appwrite API key on completion and add the **Lemon Squeezy API key**, **webhook secret**, **store ID**, and **variant ID** in the **Variables** step. If you are self-hosting Appwrite, click on the **optional variables** dropdown and update the Appwrite endpoint to your instance’s publicly accessible endpoint. 
+During the setup process, click the checkbox to generate an Appwrite API key on completion and add the **Lemon Squeezy API key**, **webhook secret**, **store ID**, and **variant ID** in the **Variables** step. If you are self-hosting Appwrite, click on the **optional variables** dropdown and update the Appwrite endpoint to your instance’s publicly accessible endpoint.
 
 ![Env variables](/images/integrations/lemon-squeezy-subscriptions/variables.png)
 
@@ -76,7 +76,7 @@ Once all the steps are complete, it is time to test the function! First, copy th
 
 ![Add web platform](/images/integrations/lemon-squeezy-subscriptions/web-platform.png)
 
-Then, open it in your browser to test the function and access the pre-built interactive UI. You can anonymously log in through this UI and create a subscription using [Lemon Squeezy's test card number](https://docs.lemonsqueezy.com/help/getting-started/test-mode#test-card-numbers). As soon as this process is complete, the function UI will show that you are subscribed. 
+Then, open it in your browser to test the function and access the pre-built interactive UI. You can anonymously log in through this UI and create a subscription using [Lemon Squeezy's test card number](https://docs.lemonsqueezy.com/help/getting-started/test-mode#test-card-numbers). As soon as this process is complete, the function UI will show that you are subscribed.
 
 ![Demo](/images/integrations/lemon-squeezy-subscriptions/demo.png)
 
@@ -88,6 +88,6 @@ Additionally, your user on Appwrite will feature the `subscriber` label, which y
 
 If you would like to learn more about Lemon Squeezy Subscriptions and Appwrite Functions, we have some resources that you should visit:
 
-- [Sign up for Lemon Squeezy](https://lemonsqueezy.com)
-- [Add a new product to your Lemon Squeezy store](https://docs.lemonsqueezy.com/help/products/adding-products)
-- [Learn more about Functions templates in Appwrite docs](https://appwrite.io/docs/products/functions/templates)
+-   [Sign up for Lemon Squeezy](https://lemonsqueezy.com)
+-   [Add a new product to your Lemon Squeezy store](https://docs.lemonsqueezy.com/help/products/adding-products)
+-   [Learn more about Functions templates in Appwrite docs](https://appwrite.io/docs/products/functions/templates)

@@ -11,14 +11,15 @@ step: 1
 In this tutorial, you will build Idea tracker with Appwrite and Android.
 
 # Concepts {% #concepts %}
+
 This tutorial will introduce the following concepts:
 
 1. Setting up your first project
-2. Authentication 
+2. Authentication
 3. Databases and collections
 4. Queries and pagination
 
-
 # Prerequisites {% #prerequisites %}
+
 1. Basic knowledge of Kotlin and Android development.
 2. Have [Android Studio](https://developer.android.com/studio) installed on your computer.

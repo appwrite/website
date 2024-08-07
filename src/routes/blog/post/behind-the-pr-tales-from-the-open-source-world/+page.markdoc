@@ -10,7 +10,7 @@ category: hacktoberfest, contributors, open-source
 featured: false
 ---
 
-In the world of software development, October is more than just a month; it's a season of collaboration, innovation, and celebration. 
+In the world of software development, October is more than just a month; it's a season of collaboration, innovation, and celebration.
 
 # What is Hacktoberfest
 
@@ -46,23 +46,23 @@ From the above stories, one thing is common: everyone needs to start from somewh
 
 # Tips to start contributing
 
-Now that we've heard the inspiring stories of Hacktoberfest contributors, it's time to take the next step and embark on your own journey of contribution. If you're eager to make a meaningful impact in the open-source community, but unsure of where to begin, don't worry – we've got you covered. Starting your journey as a contributor can feel overwhelming, but fear not! 
+Now that we've heard the inspiring stories of Hacktoberfest contributors, it's time to take the next step and embark on your own journey of contribution. If you're eager to make a meaningful impact in the open-source community, but unsure of where to begin, don't worry – we've got you covered. Starting your journey as a contributor can feel overwhelming, but fear not!
 
 These tips will help you make the most out of Hacktoberfest:
 
-- Familiarize yourself with the official [Hacktoberfest](https://hacktoberfest.com/) rules.
-- Look for projects that align with your interests and skills.
-- Choose 1-2 projects and join their communities.
-- If you get stuck, don't hesitate to reach out to project maintainers or the community for help.
-- Take the time to learn about the project and always read its contribution guidelines before you start.
-- Begin with beginner-friendly or good-first issues.
-- Provide clear descriptions and comments when documenting your pull requests.
-- Lastly, remember to have fun and enjoy the process of contributing to open source. It's a rewarding experience that can lead to personal and professional growth.
+-   Familiarize yourself with the official [Hacktoberfest](https://hacktoberfest.com/) rules.
+-   Look for projects that align with your interests and skills.
+-   Choose 1-2 projects and join their communities.
+-   If you get stuck, don't hesitate to reach out to project maintainers or the community for help.
+-   Take the time to learn about the project and always read its contribution guidelines before you start.
+-   Begin with beginner-friendly or good-first issues.
+-   Provide clear descriptions and comments when documenting your pull requests.
+-   Lastly, remember to have fun and enjoy the process of contributing to open source. It's a rewarding experience that can lead to personal and professional growth.
 
 Here are a few projects that are participating in Hacktoberfest this year and you can contribute to:
 
-- [Appwrite](https://github.com/search?q=owner%3Aappwrite+owner%3Autopia-php+owner%3Aopen-runtimes+label%3Ahacktoberfest+is%3Aopen+is%3Aissue&type=issues&state=open)
-- [ILLA Cloud](https://github.com/illacloud/illa)
-- [Novu](https://github.com/novuhq/novu/labels/Hacktoberfest)
+-   [Appwrite](https://github.com/search?q=owner%3Aappwrite+owner%3Autopia-php+owner%3Aopen-runtimes+label%3Ahacktoberfest+is%3Aopen+is%3Aissue&type=issues&state=open)
+-   [ILLA Cloud](https://github.com/illacloud/illa)
+-   [Novu](https://github.com/novuhq/novu/labels/Hacktoberfest)
 
 You can find more participating repositories [here](https://github.com/search?q=hacktoberfest&type=repositories)

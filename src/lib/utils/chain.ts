@@ -126,7 +126,7 @@ export const chain: ChainFn = (...fns: Function[]) => {
         Object.keys(cancelled).forEach((key) => (cancelled[key] = true));
     };
 
-    let lastRes: any = undefined;
+    let lastRes: unknown = undefined;
 
     const execute = async () => {
         const executionId = stupidId();
@@ -149,4 +149,4 @@ export const chain: ChainFn = (...fns: Function[]) => {
 };
 
 // Stupid way of generating unique id
-const stupidId = () => Math.random().toString(36).substr(2, 9);
+const stupidId = () => Math.random().toString(36).substring(2, 9);

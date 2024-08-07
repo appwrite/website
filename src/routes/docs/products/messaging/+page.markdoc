@@ -16,7 +16,7 @@ You can also use Appwrite Messaging to implement security checks and custom auth
 ![Messaging overview](/images/docs/messaging/message-overview.png)
 {% /only_light %}
 
-Explore what you can build with Appwrite Messaging. 
+Explore what you can build with Appwrite Messaging.
 {% cards %}
 {% cards_item href="/docs/products/messaging/send-email-messages" title="Emails" icon="icon-mail" %}
 Send newsletters, invoices, promotions and other emails.

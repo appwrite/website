@@ -52,18 +52,18 @@ Update `src/App.vue` to the following code.
 
 ```vue
 <script setup>
-import { onMounted } from "vue";
-import { user } from "./stores/user.js";
+import { onMounted } from 'vue';
+import { user } from './stores/user.js';
 
 onMounted(() => {
-  user.init();
+    user.init();
 });
 </script>
 
 <template>
-  <div>
-    <main>Home page</main>
-  </div>
+    <div>
+        <main>Home page</main>
+    </div>
 </template>
 ```
 
@@ -74,29 +74,27 @@ Update `src/App.vue` to the following code.
 
 ```vue
 <script setup>
-import { onMounted } from "vue";
-import Home from "./pages/Home.vue";
-import Login from "./pages/Login.vue";
-import { user } from "./stores/user.js";
+import { onMounted } from 'vue';
+import Home from './pages/Home.vue';
+import Login from './pages/Login.vue';
+import { user } from './stores/user.js';
 
-const isLoginPage = window.location.pathname === "/login";
+const isLoginPage = window.location.pathname === '/login';
 
 onMounted(() => {
-  user.init();
+    user.init();
 });
 </script>
 
 <template>
-  <div>
-    <main>
-      <Login v-if="isLoginPage" />
-      <Home v-else />
-    </main>
-  </div>
+    <div>
+        <main>
+            <Login v-if="isLoginPage" />
+            <Home v-else />
+        </main>
+    </div>
 </template>
 ```
-
-
 
 # Home page {% #home-page %}
 
@@ -104,8 +102,8 @@ Create a new file `src/pages/Home.vue` and add the following stub code to it.
 
 ```vue
 <template>
-  <!-- We'll complete this component later -->
-  <h1>Home page</h1>
+    <!-- We'll complete this component later -->
+    <h1>Home page</h1>
 </template>
 ```
 
@@ -117,29 +115,24 @@ Create a new file `src/pages/Login.vue` and add the following code to it.
 
 ```vue
 <script setup>
-import { user } from "../stores/user";
-import { ref } from "vue";
+import { user } from '../stores/user';
+import { ref } from 'vue';
 
-const email = ref("");
-const password = ref("");
+const email = ref('');
+const password = ref('');
 </script>
 
 <template>
-  <section>
-    <h1>Login or register</h1>
-    <form>
-      <input type="email" placeholder="Email" v-model="email" />
-      <input type="password" placeholder="Password" v-model="password" />
-      <div>
-        <button type="button" @click="user.login(email, password)">
-          Login
-        </button>
-        <button type="button" @click="user.register(email, password)">
-          Register
-        </button>
-      </div>
-    </form>
-  </section>
+    <section>
+        <h1>Login or register</h1>
+        <form>
+            <input type="email" placeholder="Email" v-model="email" />
+            <input type="password" placeholder="Password" v-model="password" />
+            <div>
+                <button type="button" @click="user.login(email, password)">Login</button>
+                <button type="button" @click="user.register(email, password)">Register</button>
+            </div>
+        </form>
+    </section>
 </template>
 ```
-

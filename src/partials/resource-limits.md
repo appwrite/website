@@ -42,7 +42,8 @@ Reaching your organization's resource limits will have the following effects unt
 
 -   **Storage**
 -   File uploads are disabled. Persists across billing periods until the amount of storage used is below the plan limit.
-    {% /table %}
+
+{% /table %}
 
 ## Switching to Free plan and reaching limits {% #switching-to-free-plan-reaching-resource-limits %}
 

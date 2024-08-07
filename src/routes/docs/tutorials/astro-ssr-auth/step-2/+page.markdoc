@@ -5,7 +5,6 @@ description: Add authentication to a Astro project using Appwrite.
 step: 2
 ---
 
-
 Create an [Astro project](https://docs.astro.build/en/install/auto/#1-run-the-setup-wizard) using:
 
 ```sh

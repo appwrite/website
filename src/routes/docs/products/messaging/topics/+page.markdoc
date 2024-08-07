@@ -3,6 +3,7 @@ layout: article
 title: Topics
 description: Allow groups of users to subscribe to a common topic and receive the same notifications.
 ---
+
 In Appwrite Messaging, you can use topics to deliver messages to groups of users at once.
 
 {% only_dark %}
@@ -13,6 +14,7 @@ In Appwrite Messaging, you can use topics to deliver messages to groups of users
 {% /only_light %}
 
 # Topics and targets {% #topics-and-targets %}
+
 A user can have multiple targets, such as emails, phone numbers, and devices with your app installed.
 These targets can subscribe to a topic, so when messages are published to a topic, all subscribed targets receive the message.
 
@@ -21,6 +23,7 @@ Learn more about targets
 {% /arrow_link %}
 
 # Organizing topics {% #organizing-topics %}
+
 A topic should have semantic meaning.
 For example, a topic can represent a group of customers that receiving a common announcemennt or publishing public updates.
 It's important to keep privacy in mind when using topics.
@@ -30,6 +33,7 @@ Topics are optimized for delivering the same message to large groups of users.
 If you need to deliver messages to **all devices of the same user**, you can find a user's targets by calling `account.get()`.
 
 # Create a topic {% #create-a-topic %}
+
 You can create topics
 {% tabs %}
 {% tabsitem #console title="Console" %}
@@ -44,6 +48,7 @@ Navigate to your Appwrite Console > **Messaging** > **Topics** > **Create topic*
 
 {% tabsitem #server-sdk title="Server SDK" %}
 {% multicode %}
+
 ```server-nodejs
 const sdk = require('node-appwrite');
 
@@ -65,6 +70,7 @@ const topic = messaging.createTopic(
     );
 
 ```
+
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
@@ -85,6 +91,7 @@ const topic = messaging.createTopic(
         '[ROLES]'         // permission roles for who can subscribe
     );
 ```
+
 ```php
 <?php
 
@@ -101,13 +108,14 @@ $client
 
 $messaging = new Messaging($client);
 
-$topic = $messaging->createTopic( 
-    topicId: '[TOPIC_ID]', 
+$topic = $messaging->createTopic(
+    topicId: '[TOPIC_ID]',
     name: '[NAME]',
     subscribe: '[ROLES]'  // permission roles for who can subscribe
 
 );
 ```
+
 ```python
 from appwrite.client import Client
 from appwrite.services.messaging import Messaging
@@ -122,12 +130,13 @@ client = Client()
 
 messaging = Messaging(client)
 
-topic = messaging.create_topic( 
-    topic_id = '[TOPIC_ID]', 
+topic = messaging.create_topic(
+    topic_id = '[TOPIC_ID]',
     name = '[NAME]',
     subscribe = '[ROLES]'  # permission roles for who can subscribe
 )
 ```
+
 ```ruby
 require 'appwrite'
 
@@ -141,13 +150,14 @@ client = Client.new
 messaging = Messaging.new(client)
 
 topic = messaging.create_topic(
-    topic_id: '[TOPIC_ID]', 
+    topic_id: '[TOPIC_ID]',
     name: '[NAME]',
     subscribe: '[ROLES]'  # permission roles for who can subscribe
 )
 
 puts topic.inspect
 ```
+
 ```csharp
 using Appwrite;
 using Appwrite.Services;
@@ -165,6 +175,7 @@ Topic topic = await messaging.CreateTopic(
     name: "[NAME]",
     subscribe: "[ROLES]")  // permission roles for who can subscribe
 ```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:dart_appwrite/enums.dart';
@@ -194,6 +205,7 @@ void main() {                                    // Init SDK
   });
 }
 ```
+
 ```kotlin
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -220,6 +232,7 @@ messaging.createTopic(
     })
 );
 ```
+
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -246,6 +259,7 @@ messaging.createTopic(
     })
 );
 ```
+
 ```swift
 import Appwrite
 
@@ -262,11 +276,13 @@ let topic = try await messaging.createTopic(
   subscribe: "[ROLES]" // permission roles for who can subscribe
 )
 ```
+
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}
 
 # Permissions {% #permissions %}
+
 Before you can subscribe to a topic, a user needs the appropriate permission.
 You can set permission by navigating to **Messaging** > **Topics** > select a topic to configure > **Subscription access**.
 
@@ -275,6 +291,7 @@ Learn more about permission roles
 {% /arrow_link %}
 
 # Subscribe targets to a topic {% #subscribe-targets-to-topics %}
+
 {% tabs %}
 {% tabsitem #console title="Console" %}
 During development, you can subscribe targets to a topic for testing right in the Appwrite console.
@@ -291,6 +308,7 @@ If you can't find the targets you'd like to add, see the [targets page](/docs/pr
 
 {% tabsitem #server-sdk title="Server SDK" %}
 {% multicode %}
+
 ```server-nodejs
 const sdk = require('node-appwrite');
 
@@ -307,6 +325,7 @@ const subscriber = await messaging.createSubscriber(
     '[TARGET_ID]'         // targetId
 );
 ```
+
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
@@ -323,6 +342,7 @@ const subscriber = await messaging.createSubscriber(
     '[TARGET_ID]'         // targetId
 );
 ```
+
 ```php
 <?php
 
@@ -339,11 +359,12 @@ $client
 $messaging = new Messaging($client);
 
 $subscriber = $messaging->createSubscriber(
-    topicId: '[TOPIC_ID]', 
-    subscriberId: '[SUBSCRIBER_ID]', 
+    topicId: '[TOPIC_ID]',
+    subscriberId: '[SUBSCRIBER_ID]',
     targetId: '[TARGET_ID]'
 );
 ```
+
 ```python
 from appwrite.client import Client
 from appwrite.services.messaging import Messaging
@@ -356,11 +377,12 @@ client.set_jwt('eyJhbVCJ9.eyJ...')                   # Your secret JSON Web Toke
 messaging = Messaging(client)
 
 subscriber = messaging.create_subscriber(
-    topic_id = '[TOPIC_ID]', 
-    subscriber_id = '[SUBSCRIBER_ID]', 
+    topic_id = '[TOPIC_ID]',
+    subscriber_id = '[SUBSCRIBER_ID]',
     target_id = '[TARGET_ID]'
 )
 ```
+
 ```ruby
 require 'appwrite'
 
@@ -374,11 +396,12 @@ client = Client.new
 messaging = Messaging.new(client)
 
 subscriber = messaging.create_subscriber(
-    topic_id: '[TOPIC_ID]', 
-    subscriber_id: '[SUBSCRIBER_ID]', 
+    topic_id: '[TOPIC_ID]',
+    subscriber_id: '[SUBSCRIBER_ID]',
     target_id: '[TARGET_ID]'
 )
 ```
+
 ```csharp
 using Appwrite;
 using Appwrite.Services;
@@ -396,6 +419,7 @@ Subscriber result = await messaging.CreateSubscriber(
     subscriberId: "[SUBSCRIBER_ID]",
     targetId: "[TARGET_ID]");
 ```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:dart_appwrite/enums.dart';
@@ -414,6 +438,7 @@ Subscriber subscriber result = await messaging.createSubscriber(
     targetId: '[TARGET_ID]',
 );
 ```
+
 ```kotlin
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -432,6 +457,7 @@ val subscriber = messaging.createSubscriber(
     targetId = "[TARGET_ID]"
 )
 ```
+
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
@@ -458,6 +484,7 @@ messaging.createSubscriber(
     })
 );
 ```
+
 ```swift
 import Appwrite
 
@@ -474,6 +501,7 @@ let subscriber = try await messaging.createSubscriber(
     targetId: "[TARGET_ID]"
 )
 ```
+
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}

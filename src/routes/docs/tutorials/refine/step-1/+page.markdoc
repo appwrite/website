@@ -12,8 +12,6 @@ category: Web
 **Blog admin panel**: a CRUD app to manage Blog content.
 In this tutorial, you will build admin panel app with Appwrite and [Refine](https://github.com/refinedev/refine).
 
-
-
 {% only_dark %}
 ![Create project screen](/images/docs/tutorials/refine/refine-admin-panel-dark.png)
 {% /only_dark %}
@@ -26,11 +24,9 @@ In this tutorial, you will build admin panel app with Appwrite and [Refine](http
 This tutorial will introduce the following concepts:
 
 1. Setting up your first project
-2. Authentication 
+2. Authentication
 3. Databases and collections
 4. Queries and pagination
-
-
 
 # Prerequisites {% #prerequisites %}
 

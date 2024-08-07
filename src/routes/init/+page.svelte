@@ -3,19 +3,15 @@
     import { Main } from '$lib/layouts';
     import { addDays, toReleaseDate } from '$lib/utils/date';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
-    import { fade } from 'svelte/transition';
     import DayCard, { type DayType } from './(components)/DayCard.svelte';
     import Lockup from './(components)/Hero.svelte';
-    import Video from './(components)/Video.svelte';
     import CountdownCard from './(components)/CountdownCard.svelte';
-    import Day1 from '$routes/init-0/(days)/Day1.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
     const ogImage = buildOpenGraphImage('init', description);
 
     let base = new Date('2024-08-19T15:00:00.000Z');
-    const kickoff = new Date('2024-08-23T15:00:00.000Z');
 
     $: days = [
         {

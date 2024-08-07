@@ -5,9 +5,6 @@
     import FooterNav from '../../../lib/components/FooterNav.svelte';
     import MainFooter from '../../../lib/components/MainFooter.svelte';
     import { socials } from '$lib/constants';
-    import { anyify } from '$lib/utils/anyify';
-    //import BlobPink from "$routes/startups/(assets)/blob-pink.svg";
-    // import BlobPinkMobile from "$routes/startups/(assets)/blob-pink-mobile.svg";
     import Pink from './bg.png';
 
     let email = '';
@@ -255,7 +252,7 @@
                                                         id="integration"
                                                         bind:value={integrationStatus}
                                                         on:change={(e) =>
-                                                            anyify(e.target).value === 'yes'
+                                                            e.currentTarget.value === 'yes'
                                                                 ? (hasCreatedIntegration = true)
                                                                 : (hasCreatedIntegration = false)}
                                                     >

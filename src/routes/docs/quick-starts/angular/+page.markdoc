@@ -7,7 +7,6 @@ readtime: 3
 back: /docs/quick-starts
 ---
 
-
 Learn how to setup your first Angular project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
@@ -21,7 +20,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 If this is your first time using Appwrite, create an account and create your first project.
 
-Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`. 
+Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`.
 
 {% only_dark %}
 ![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
@@ -37,6 +36,7 @@ You can skip optional steps.
 Create an Angular project.
 
 If you don't have Angular CLI installed, run this command.
+
 ```sh
 npm install -g @angular/cli
 ```
@@ -56,9 +56,10 @@ Install the JavaScript Appwrite SDK.
 ```sh
 npm install appwrite@14.0.1
 ```
+
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
-Find your project's ID in the **Settings** page. 
+Find your project's ID in the **Settings** page.
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
@@ -80,6 +81,7 @@ client
 export const account = new Account(client);
 export { ID } from 'appwrite';
 ```
+
 {% /section %}
 {% section #step-5 step=5 title="Create a login page" %}
 First, add imports for the `FormsModule` from Angular to handle the login form..
@@ -102,61 +104,55 @@ export class AppModule { }
 ```
 
 Then, replace the contents of `src/app/app.component.html`.
+
 ```html
 <div>
-  <p>
-    {{ loggedInUser ? 'Logged in as ' + loggedInUser.name : 'Not logged in' }}
-  </p>
+    <p>{{ loggedInUser ? 'Logged in as ' + loggedInUser.name : 'Not logged in' }}</p>
 
-  <div>
-    <input type="email" placeholder="Email" [(ngModel)]="email" />
-    <input type="password" placeholder="Password" [(ngModel)]="password" />
-    <input type="text" placeholder="Name" [(ngModel)]="name" />
+    <div>
+        <input type="email" placeholder="Email" [(ngModel)]="email" />
+        <input type="password" placeholder="Password" [(ngModel)]="password" />
+        <input type="text" placeholder="Name" [(ngModel)]="name" />
 
-    <button (click)="login(email, password)">
-      Login
-    </button>
+        <button (click)="login(email, password)">Login</button>
 
-    <button (click)="register(email, password, name)">
-      Register
-    </button>
+        <button (click)="register(email, password, name)">Register</button>
 
-    <button (click)="logout()">
-      Logout
-    </button>
-  </div>
+        <button (click)="logout()">Logout</button>
+    </div>
 </div>
 ```
 
 Lastly, update `src/app/app.component.ts`.
+
 ```ts
 import { Component } from '@angular/core';
 import { account, ID } from '../lib/appwrite';
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  loggedInUser: any = null;
-  email: string = '';
-  password: string = '';
-  name: string = '';
+    loggedInUser: any = null;
+    email: string = '';
+    password: string = '';
+    name: string = '';
 
-  async login(email: string, password: string) {
-    await account.createEmailPasswordSession(email, password);
-    this.loggedInUser = await account.get();
-  }
+    async login(email: string, password: string) {
+        await account.createEmailPasswordSession(email, password);
+        this.loggedInUser = await account.get();
+    }
 
-  async register(email: string, password: string, name: string) {
-    await account.create(ID.unique(), email, password, name);
-    this.login(email, password);
-  }
+    async register(email: string, password: string, name: string) {
+        await account.create(ID.unique(), email, password, name);
+        this.login(email, password);
+    }
 
-  async logout() {
-    await account.deleteSession('current');
-    this.loggedInUser = null;
-  }
+    async logout() {
+        await account.deleteSession('current');
+        this.loggedInUser = null;
+    }
 }
 ```
 

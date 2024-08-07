@@ -20,7 +20,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 If this is your first time using Appwrite, create an account and create your first project.
 
-Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`. 
+Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`.
 
 {% only_dark %}
 ![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
@@ -38,22 +38,23 @@ Create a Refine project with Appwrite support.
 ```sh
 npm create refine-app@latest -- --preset refine-appwrite
 ```
+
 {% /section %}
 {% section #step-3 step=3 title="Install Appwrite" %}
-
 
 Using the `refine-appwrite` preset eliminates the need for extra dependencies for a quick start.
 
 If you want to integrate Appwrite into an existing Refine app, simply use this command:
+
 ```sh
 npm install @refinedev/appwrite
 ```
-Then follow [this guide on the Refine documentation site](https://refine.dev/docs/packages/documentation/data-providers/appwrite).
 
+Then follow [this guide on the Refine documentation site](https://refine.dev/docs/packages/documentation/data-providers/appwrite).
 
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
-Find your project's ID in the **Settings** page. 
+Find your project's ID in the **Settings** page.
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
@@ -63,12 +64,11 @@ Find your project's ID in the **Settings** page.
 {% /only_light %}
 Navigate to `src/utility/appwriteClient.ts` and add your API credentials.
 
-
 ```ts
-import { Account, Appwrite, Storage } from "@refinedev/appwrite";
+import { Account, Appwrite, Storage } from '@refinedev/appwrite';
 
 const APPWRITE_URL = '<YOUR_API_ENDPOINT>'; // Replace with your Appwrite API Endpoint
-const APPWRITE_PROJECT = "<YOUR_PROJECT_ID>"; // Replace with your project ID
+const APPWRITE_PROJECT = '<YOUR_PROJECT_ID>'; // Replace with your project ID
 
 const appwriteClient = new Appwrite();
 
@@ -77,8 +77,8 @@ const account = new Account(appwriteClient);
 const storage = new Storage(appwriteClient);
 
 export { account, appwriteClient, storage };
-
 ```
+
 {% /section %}
 {% section #step-5 step=5 title="Create a login page" %}
 
@@ -172,6 +172,7 @@ const App: React.FC = () => {
 
 export default App;
 ```
+
 {% /section %}
 
 {% section #step-6 step=6 title="All set" %}

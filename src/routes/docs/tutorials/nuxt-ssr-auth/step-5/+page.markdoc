@@ -10,16 +10,11 @@ We can now implement our sign up page. Create a `signin.vue` file in the `pages`
 ```vue
 <!-- pages/signup.vue -->
 <template>
-  <form method="post" action="/api/signup">
-    <input id="email" name="email" placeholder="Email" type="email" />
-    <input
-      id="password"
-      name="password"
-      placeholder="Password"
-      type="password"
-    />
-    <button type="submit">Sign up</button>
-  </form>
+    <form method="post" action="/api/signup">
+        <input id="email" name="email" placeholder="Email" type="email" />
+        <input id="password" name="password" placeholder="Password" type="password" />
+        <button type="submit">Sign up</button>
+    </form>
 </template>
 ```
 

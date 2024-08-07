@@ -22,23 +22,25 @@ When you repeatedly use the same transformed images, the performance impact will
 
 Below you can find all the different parameters offered by the preview endpoint to manipulate the image.
 
-| Parameter     | Description                                                                                                     |
-| --------------| --------------------------------------------------------------------------------------------------------------- |
-| width         | Set the width of the output image in pixels, the image will be resized keeping the aspect ratio intact. Accepts integer between `0-4000`  |
-| height        | Set the height of the output image in pixels, the image will be resized keeping the aspect ratio intact. Accepts integer between `0-4000` |
-| gravity       | The gravity while cropping the image providing either width, height, or both. Accepts any of: `center`, `top-left`, `top`, `top-right`, `left`, `right`, `bottom-left`, `bottom`, `bottom-right`. |
-| quality       | Set the quality of the output image. Accepts integer between `0-100`, where `100` is the highest quality.          |
-| borderWidth   | Set a border with the given width in pixels to the output image. Accepts integer between `0-100`.               |
-| borderColor   | Set a border-color for the output image. Accepts any valid hex color value without the leading `#`.            |
-| borderRadius  | Set a border-radius in pixels. Accepts an integer between `0-4000`.                                             |
-| opacity       | Set opacity for the output image. Accepts a float value between `0-1`, where `0` makes it transparent. Only works with output formats supporting alpha channels like `png`. |
-| rotation      | Rotate the output image by a degree. Accepts an integer between `-360` to `360`.                                  |
-| background    | Set a background-color. Accepts any valid hex color value without the leading `#`. Only works with output formats supporting alpha channels like `png`. |
-| output        | Set the output image format. If not provided, will use the original image's format. Supported formats are: `jpg`, `jpeg`, `png`, `gif`, and `webp` |
+| Parameter    | Description                                                                                                                                                                                       |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| width        | Set the width of the output image in pixels, the image will be resized keeping the aspect ratio intact. Accepts integer between `0-4000`                                                          |
+| height       | Set the height of the output image in pixels, the image will be resized keeping the aspect ratio intact. Accepts integer between `0-4000`                                                         |
+| gravity      | The gravity while cropping the image providing either width, height, or both. Accepts any of: `center`, `top-left`, `top`, `top-right`, `left`, `right`, `bottom-left`, `bottom`, `bottom-right`. |
+| quality      | Set the quality of the output image. Accepts integer between `0-100`, where `100` is the highest quality.                                                                                         |
+| borderWidth  | Set a border with the given width in pixels to the output image. Accepts integer between `0-100`.                                                                                                 |
+| borderColor  | Set a border-color for the output image. Accepts any valid hex color value without the leading `#`.                                                                                               |
+| borderRadius | Set a border-radius in pixels. Accepts an integer between `0-4000`.                                                                                                                               |
+| opacity      | Set opacity for the output image. Accepts a float value between `0-1`, where `0` makes it transparent. Only works with output formats supporting alpha channels like `png`.                       |
+| rotation     | Rotate the output image by a degree. Accepts an integer between `-360` to `360`.                                                                                                                  |
+| background   | Set a background-color. Accepts any valid hex color value without the leading `#`. Only works with output formats supporting alpha channels like `png`.                                           |
+| output       | Set the output image format. If not provided, will use the original image's format. Supported formats are: `jpg`, `jpeg`, `png`, `gif`, and `webp`                                                |
 
 # Examples {% #examples %}
+
 Here are some examples using [Client SDKs](/docs/sdks#client).
 {% multicode %}
+
 ```client-web
 import { Client, Storage } from "appwrite";
 
@@ -69,6 +71,7 @@ const result = storage.getFilePreview(
 
 console.log(result.href);
 ```
+
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 
@@ -118,6 +121,7 @@ FutureBuilder(
   },
 );
 ```
+
 ```client-apple
 import Appwrite
 
@@ -145,6 +149,7 @@ func main() async throws {
     print(String(describing: byteBuffer)
 }
 ```
+
 ```client-android-java
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

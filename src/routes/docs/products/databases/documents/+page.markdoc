@@ -3,10 +3,12 @@ layout: article
 title: Documents
 description: Master document management with Appwrite Databases. Learn how to create, update, and query documents within your collections for dynamic data storage.
 ---
+
 Each piece of data or information in Appwrite Databases is a document.
 Documents have a structure defined by the parent collection.
 
 # Create documents {% #create-documents %}
+
 {% info title="Permissions required" %}
 You must grant **create** permissions to users at the **collection level** before users can create documents.
 [Learn more about permissions](#permissions)
@@ -15,6 +17,7 @@ You must grant **create** permissions to users at the **collection level** befor
 In most use cases, you will create documents programmatically.
 
 {% multicode %}
+
 ```client-web
 import { Client, Databases, ID } from "appwrite";
 
@@ -37,6 +40,7 @@ promise.then(function (response) {
     console.log(error);
 });
 ```
+
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 
@@ -59,6 +63,7 @@ void main() async {
     }
 }
 ```
+
 ```client-apple
 import Appwrite
 import AppwriteModels
@@ -82,6 +87,7 @@ func main() async throws {
     }
 }
 ```
+
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Databases
@@ -105,12 +111,13 @@ suspend fun main() {
     }
 }
 ```
+
 ```graphql
 mutation {
     databasesCreateDocument(
-        databaseId: "<DATABASE_ID>",
-        collectionId: "<COLLECTION_ID>",
-        documentId: "[DOCUMENT_ID]",
+        databaseId: "<DATABASE_ID>"
+        collectionId: "<COLLECTION_ID>"
+        documentId: "[DOCUMENT_ID]"
         data: "{}"
     ) {
         _id
@@ -123,6 +130,7 @@ mutation {
     }
 }
 ```
+
 {% /multicode %}
 
 During testing, you might prefer to create documents in the Appwrite Console.
@@ -144,6 +152,7 @@ By default, results are limited to the **first 25 items**.
 You can change this through [pagination](/docs/products/databases/pagination).
 
 {% multicode %}
+
 ```client-web
 import { Client, Databases, Query } from "appwrite";
 
@@ -167,6 +176,7 @@ promise.then(function (response) {
     console.log(error);
 });
 ```
+
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 
@@ -190,6 +200,7 @@ void main() async {
     }
 }
 ```
+
 ```client-apple
 import Appwrite
 import AppwriteModels
@@ -214,6 +225,7 @@ func main() async throws {
     }
 }
 ```
+
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.Query
@@ -239,11 +251,12 @@ suspend fun main() {
     }
 }
 ```
+
 ```graphql
 query {
     databasesListDocuments(
-        databaseId: "<DATABASE_ID>",
-        collectionId: "<COLLECTION_ID>",
+        databaseId: "<DATABASE_ID>"
+        collectionId: "<COLLECTION_ID>"
         queries: ["equal(\"title\", [\"Avatar\"])"]
     ) {
         total
@@ -254,9 +267,11 @@ query {
     }
 }
 ```
+
 {% /multicode %}
 
 # Permissions {% #permissions %}
+
 In Appwrite, permissions can be granted at the collection level and the document level.
 Before a user can create a document, you need to grant create permissions to the user.
 

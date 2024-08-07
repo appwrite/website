@@ -13,7 +13,7 @@ With the release of [Appwrite Pro](https://appwrite.io/blog/post/announcing-appw
 
 But for those of you thinking: ‘This is a paid plan, so what about us open-source maintainers?’
 
-Well, we haven’t forgotten you. Appwrite is open-source, and we have come so far due to the love the open-source community has shown us. Therefore, we want to continue to give back to the community by allowing OSS maintainers to build with Appwrite Pro free of charge. With this OSS plan, we hope to ensure the future for many open-source maintainers, just like many of you have ensured ours. 
+Well, we haven’t forgotten you. Appwrite is open-source, and we have come so far due to the love the open-source community has shown us. Therefore, we want to continue to give back to the community by allowing OSS maintainers to build with Appwrite Pro free of charge. With this OSS plan, we hope to ensure the future for many open-source maintainers, just like many of you have ensured ours.
 
 Let’s take a short walk down memory lane to learn about Appwrite’s open-source journey so far and why we owe the community our support.
 
@@ -23,7 +23,7 @@ The [first ever pull request](https://github.com/appwrite/appwrite/pulls?page=10
 
 ![Eldad's first ever PR for Appwrite](/images/blog/first-pr1.png)
 
-Not much later, Appwrite's [open-source version](https://betterprogramming.pub/introducing-appwrite-an-open-source-backend-server-for-mobile-web-developers-4be70731575d) was launched. The launch went viral, our Hacker News post was trending, and our GitHub Stars charts went up with over 1,500 new stargazers in the first month after release. The love was evident from both sides and together with many contributors, Eldad worked tirelessly as a solo maintainer to build out the product envisioned, ensuring many other developers would not face the same struggles when building complex software. 
+Not much later, Appwrite's [open-source version](https://betterprogramming.pub/introducing-appwrite-an-open-source-backend-server-for-mobile-web-developers-4be70731575d) was launched. The launch went viral, our Hacker News post was trending, and our GitHub Stars charts went up with over 1,500 new stargazers in the first month after release. The love was evident from both sides and together with many contributors, Eldad worked tirelessly as a solo maintainer to build out the product envisioned, ensuring many other developers would not face the same struggles when building complex software.
 
 ![First ever community contribution for Appwrite](/images/blog/community-pr1.png)
 
@@ -33,7 +33,7 @@ Today, Appwrite has over [38K stars](https://github.com/appwrite/appwrite), 800 
 
 ### **Pre-monetization as a solo maintainer**
 
-After three months of getting serious traction, Eldad decided to become a full-time open-source maintainer, leaving a full-time job. After 12 months, with no monetization of Appwrite yet possible, the real struggle started. The financial burden as a solo maintainer was immense. Not only do you have to cover the costs of building your project, such as infrastructure, development tools, and hosting, but you also feel the financial burden of day-to-day life. 
+After three months of getting serious traction, Eldad decided to become a full-time open-source maintainer, leaving a full-time job. After 12 months, with no monetization of Appwrite yet possible, the real struggle started. The financial burden as a solo maintainer was immense. Not only do you have to cover the costs of building your project, such as infrastructure, development tools, and hosting, but you also feel the financial burden of day-to-day life.
 
 After many considerations to fight the financial pressure, Appwrite got an amazing investment offer from the outstanding individuals at Ibex and Seedcamp, who offered to support the vision. Six months later, they were followed by an investment from Bessemer (Auth0, Cloudinary) and Flybridge (Firebase, MongoDB) that led our 8.5m seed round. The timing could not have been better, and Appwrite was able to thrive with new financial stability.
 
@@ -53,13 +53,13 @@ As we grew, so did our team, and we added many more engineers to the team. Many 
 
 Another way we ensure funds from the community go back to the community is by giving back the money we earn on swags. For every shirt, hoodie, bag, or sock we sell from the [Appwrite store](https://appwrite.store/), we give back the profit made. In general, we believe swag should be there for the community, not to line our pockets.
 
-### *OSS Fund*
+### _OSS Fund_
 
 We always knew that if we're ever fortunate enough to be in a position to give back funds to the community, we'd never think twice about it. And with our Series A, we were in that position. In 2022 we announced the Appwrite OSS Fund, a $50,000 fund to support open-source projects.
 
 At the time, Eldad put the purpose of the fund into words, and we couldn’t phrase it any better:
 
-*‘In the journey of turning your dream project into a reality, all that you need to have is the vision to build an awesome open-source project. The idea behind the fund is to support developers like you and the open-source project you are building.’*
+_‘In the journey of turning your dream project into a reality, all that you need to have is the vision to build an awesome open-source project. The idea behind the fund is to support developers like you and the open-source project you are building.’_
 
 This fund has now come to an end, but we successfully supported twenty OSS maintainers, such as [LinkFree](https://github.com/EddieHubCommunity/BioDrop) (now BioDrop), [Vale](https://github.com/errata-ai/vale), [Rally](https://github.com/lukevella/rallly), and [Strawberry](https://github.com/strawberry-graphql/strawberry/).
 

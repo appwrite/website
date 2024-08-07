@@ -20,14 +20,14 @@ HIPAA, established in 1996, is a U.S. law designed to provide privacy standards 
 
 If you are handling data related to health, you need to adhere to the regulations. Here are some examples of applications:
 
-- Healthcare apps (like Apple health)
-- Hospital applications
-- Patient portals
-- Medical results dashboard
-- Patient intake forms
-- Video apps
-- Wellness and mental health
-- Chat apps
+-   Healthcare apps (like Apple health)
+-   Hospital applications
+-   Patient portals
+-   Medical results dashboard
+-   Patient intake forms
+-   Video apps
+-   Wellness and mental health
+-   Chat apps
 
 There are more examples of applications, but the above are the most general.
 
@@ -52,14 +52,14 @@ You might still wonder, ‘Why should I care?’ I don’t work in health. But r
 
 ## How you should approach HIPAA
 
-- **Educate yourself and your team**
-Start with a solid understanding of HIPAA's requirements. Resources are available from the U.S. Department of Health & Human Services and other reputable sites.
-- **Implement strong security measures**
-Use encryption for data at rest and in transit, ensure proper authentication mechanisms are in place, and regularly update and patch systems.
-- **Consider HIPAA early on**
-Integrate HIPAA considerations into the design phase of your development process. It’s easier to build compliance into your application from the start than to retrofit it later.    
-- **Invest in a HIPAA compliant tech stack**
-Investigate what platforms and tools ad here to HIPAA compliancy and reassure they meet both your tech and compliancy requirements.    
+-   **Educate yourself and your team**
+    Start with a solid understanding of HIPAA's requirements. Resources are available from the U.S. Department of Health & Human Services and other reputable sites.
+-   **Implement strong security measures**
+    Use encryption for data at rest and in transit, ensure proper authentication mechanisms are in place, and regularly update and patch systems.
+-   **Consider HIPAA early on**
+    Integrate HIPAA considerations into the design phase of your development process. It’s easier to build compliance into your application from the start than to retrofit it later.
+-   **Invest in a HIPAA compliant tech stack**
+    Investigate what platforms and tools ad here to HIPAA compliancy and reassure they meet both your tech and compliancy requirements.
 
 ## Caring for your users
 

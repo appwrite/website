@@ -29,23 +29,35 @@ Audit log entries under the **Activity** tab has the following structure.
 Each entry describes an event.
 
 {% table %}
-- Column
-- Description
+
+-   Column
+-   Description
+
 ---
-- User
-- Name of the user that performed the event.
+
+-   User
+-   Name of the user that performed the event.
+
 ---
-- Event
-- The name of the [event](/docs/advanced/platform/events).
+
+-   Event
+-   The name of the [event](/docs/advanced/platform/events).
+
 ---
-- Location
-- The physical of the user when they performed the action.
+
+-   Location
+-   The physical of the user when they performed the action.
+
 ---
-- IP
-- The IP of the user when they performed an action.
+
+-   IP
+-   The IP of the user when they performed an action.
+
 ---
-- Date
-- The date and time of the event.
+
+-   Date
+-   The date and time of the event.
+
 {% /table %}
 
 # Retention {% #retention %}

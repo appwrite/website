@@ -3,6 +3,7 @@ layout: article
 title: Release policy
 description: Understand how Appwrite releases and versions its platforms and APIs.
 ---
+
 We value the trust of developers in Appwrite as the backbone of their applications.
 Our release policy is designed to provide developers with a reliable and consistent experience when using Appwrite.
 We are committed to providing support for our API, SDKs, and product versions for a reasonable length of time,
@@ -19,49 +20,68 @@ and we make every effort to ensure that our releases are thoroughly tested and s
 In rare cases where there are significant delays or changes to our release schedule, we will notify through our website's [changelog](/changelog), [Discord](https://appwrite.io/discord),
 newsletter, and other communication channels.
 
-# Scope  {% #scope %}
+# Scope {% #scope %}
+
 Appwrite will provide two phases of continued support for older versions of Appwrite.
 
 {% table %}
-* Phase {% width=100 %}
-* Scope
+
+-   Phase {% width=100 %}
+-   Scope
+
 ---
-* Support
-* Receive continued bug fixes and security updates.
+
+-   Support
+-   Receive continued bug fixes and security updates.
+
 ---
-* Extended security support
-* Receives only security updates.
+
+-   Extended security support
+-   Receives only security updates.
+
 {% /table %}
 
-# Support  {% #support %}
+# Support {% #support %}
+
 Appwrite commits to the continued support of our software with extended support policies for security related fixes for older versions of Appwrite.
 Supported versions will continue to receive bug fixes and security updates. Extended security support versions will only receive security updates.
 {% table %}
-* Releases {% width=100 %}
-* Current Version
-* Support
-* Extended Security Support
+
+-   Releases {% width=100 %}
+-   Current Version
+-   Support
+-   Extended Security Support
+
 ---
-* API
-* `v1`
-* 3 latest versions
-* 10 years
+
+-   API
+-   `v1`
+-   3 latest versions
+-   10 years
+
 ---
-* SDK
-* [See list](/docs/sdks)
-* 5 latest versions
-* 10 years
+
+-   SDK
+-   [See list](/docs/sdks)
+-   5 latest versions
+-   10 years
+
 ---
-* Self-hosted
-* `1.5.x`
-* Latest major version `>= 1.x.x`
-* 10 years
+
+-   Self-hosted
+-   `1.5.x`
+-   Latest major version `>= 1.x.x`
+-   10 years
+
 ---
-* Runtimes
-* [See list](/docs/products/functions/runtimes)
-* 24 months
-* Per vendor
+
+-   Runtimes
+-   [See list](/docs/products/functions/runtimes)
+-   24 months
+-   Per vendor
+
 {% /table %}
+
 # API versions {% #api-versions %}
 
 We are committed to providing developers with a stable and reliable API.
@@ -118,54 +138,87 @@ The links below give end-of-life schedules for each language that Appwrite suppo
 ## Runtimes language {% #runtime-languages %}
 
 {% table %}
-* Language {% width=150 %}
-* LTS policy
+
+-   Language {% width=150 %}
+-   LTS policy
+
 ---
-* Node.js
-* [https://nodejs.org](https://nodejs.org)
+
+-   Node.js
+-   [https://nodejs.org](https://nodejs.org)
+
 ---
-* Python
-* [devguide.python.org](https://devguide.python.org)
+
+-   Python
+-   [devguide.python.org](https://devguide.python.org)
+
 ---
-* Ruby
-* [www.ruby-lang.org](https://www.ruby-lang.org)
+
+-   Ruby
+-   [www.ruby-lang.org](https://www.ruby-lang.org)
+
 ---
-* Java
-* [www.oracle.com](https://www.oracle.com)
+
+-   Java
+-   [www.oracle.com](https://www.oracle.com)
+
 ---
-* .NET Core
-* [dotnet.microsoft.com](https://dotnet.microsoft.com)
+
+-   .NET Core
+-   [dotnet.microsoft.com](https://dotnet.microsoft.com)
+
 ---
-* PHP
-* [https://www.php.net](https://www.php.net)
+
+-   PHP
+-   [https://www.php.net](https://www.php.net)
+
 ---
-* Dart
-* [https://dart.dev/](https://dart.dev/)
+
+-   Dart
+-   [https://dart.dev/](https://dart.dev/)
+
 ---
-* Deno
-* [https://deno.com/runtime](https://deno.com/runtime)
+
+-   Deno
+-   [https://deno.com/runtime](https://deno.com/runtime)
+
 ---
-* Swift
-* [https://developer.apple.com/swift](https://developer.apple.com/swift)
+
+-   Swift
+-   [https://developer.apple.com/swift](https://developer.apple.com/swift)
+
 ---
-* Kotlin
-* [https://kotlinlang.org](https://kotlinlang.org)
+
+-   Kotlin
+-   [https://kotlinlang.org](https://kotlinlang.org)
+
 ---
-* C++
-* [https://en.cppreference.com/w/](https://en.cppreference.com/w/)
+
+-   C++
+-   [https://en.cppreference.com/w/](https://en.cppreference.com/w/)
+
 {% /table %}
 
 ## Runtimes OS {% #runtime-os %}
+
 {% table %}
-* OS {% width=150 %}
-* LTS policy
+
+-   OS {% width=150 %}
+-   LTS policy
+
 ---
-* Alpine
-* [https://www.alpinelinux.org](https://www.alpinelinux.org)
+
+-   Alpine
+-   [https://www.alpinelinux.org](https://www.alpinelinux.org)
+
 ---
-* Debian
-* [https://www.debian.org/](https://www.debian.org/)
+
+-   Debian
+-   [https://www.debian.org/](https://www.debian.org/)
+
 ---
-* Ubuntu
-* [https://releases.ubuntu.com/](https://releases.ubuntu.com/)
+
+-   Ubuntu
+-   [https://releases.ubuntu.com/](https://releases.ubuntu.com/)
+
 {% /table %}

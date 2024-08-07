@@ -14,20 +14,21 @@ When creating products, accessibility can be an afterthought. Understandably, we
 It's not always easy to maintain a high level of accessibility, but it's definitely easier with a design system. The components we created in Pink Design, Appwrite's fully open source UI library, have an accessibility level of AA. This is the recommended level of accessibility for most products.
 
 To ensure our products will maintain a high accessibility level, we did the following:
-- Use high color contrast
-- Not relying on color
-- Allow keyboard navigation
-- Define font size in REM
-- Allow users to reduce motion
+
+-   Use high color contrast
+-   Not relying on color
+-   Allow keyboard navigation
+-   Define font size in REM
+-   Allow users to reduce motion
 
 # Use high color contrast
 
 Color contrast might be the first thing that comes to mind when thinking about accessibility. A lack of contrast between the text and background might mean some people would be unable or have difficulty reading the text. Similarly, bright colors with high luminance are not readable for others. W3C recommends a contrast ratio between text and background of 4.5 to 1 for conformance level AA.
 
-| Item         | Price     | # In stock |
-|--------------|-----------|------------|
-| Apples       | 1.99      | *7*        |
-| Bananas      | **1.89**  | 5234       |
+| Item    | Price    | # In stock |
+| ------- | -------- | ---------- |
+| Apples  | 1.99     | _7_        |
+| Bananas | **1.89** | 5234       |
 
 # Not relying on color
 
@@ -41,7 +42,7 @@ People with fine motor control restrictions or disabled hands or arms will be un
 
 It is possible to enhance accessibility through development as well. In collaboration with our engineering team, we decided to incorporate the following into Pink Design:
 
-![Alt text](/images/pages/homepage/dashboard.png "a title")
+![Alt text](/images/pages/homepage/dashboard.png 'a title')
 
 # Define font size in REM
 
@@ -69,4 +70,3 @@ promise.then(function (response) {
 # Allow users to reduce motion
 
 There is no doubt that animations are a nice addition to every product, but animations can also distract people. In some cases, animations can cause dizziness, vertigo, or epileptic seizures. Users that are sensitive to motion might choose to reduce motion in their operating system settings. In this case, we should skip the animation for them. In Pink Design, we decided to create a big animation to show the functionality of the library on the landing page. The animation is 10 seconds long and is the first thing you see on the page. It starts immediately when the page is loaded, but if “reduce motion” is enabled in the operating system, the animation skips to the end.
-

@@ -20,6 +20,7 @@
     const authors = getContext<AuthorData[]>('authors');
     const authorData = authors.find((a) => a.slug === author);
     const categoriesList = getContext<CategoryData[]>('categories');
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const categories = getValidCategories();
     const posts = getContext<PostsData[]>('posts');
 

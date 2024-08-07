@@ -12,7 +12,7 @@ Each user's account can also have their own preference object, which you can use
 
 # Signup and login {% #signup-login %}
 
-You can signup and login a user with an account create through 
+You can signup and login a user with an account create through
 [email password](/docs/products/auth/email-password),
 [phone (SMS)](/docs/products/auth/phone-sms),
 [Anonymous](/docs/products/auth/anonymous),
@@ -27,6 +27,7 @@ You can store user preferences on a user's account using Appwrite's [Update Pref
 Preferences are stored as a key-value JSON object. The maximum allowed size for preferences is 64kB, and an error will be thrown if this limit is exceeded.
 
 {% multicode %}
+
 ```client-web
 import { Client, Account } from "appwrite";
 
@@ -44,6 +45,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
+
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 
@@ -60,6 +62,7 @@ final user = await account.updatePrefs(
     }
 );
 ```
+
 ```client-apple
 import Appwrite
 
@@ -76,6 +79,7 @@ let user = try await account.updatePrefs(
     ]
 )
 ```
+
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
@@ -93,11 +97,10 @@ val user = account.updatePrefs(
     )
 )
 ```
+
 ```graphql
 mutation {
-    accountUpdatePrefs(
-        prefs: "{\"darkTheme\": true, \"language\": \"en\"}"
-    ) {
+    accountUpdatePrefs(prefs: "{\"darkTheme\": true, \"language\": \"en\"}") {
         _id
         name
         prefs {
@@ -106,11 +109,13 @@ mutation {
     }
 }
 ```
+
 {% /multicode %}
 
 After a user's preferences are updated, they can be retrieved using the [get account preferences](/docs/references/cloud/client-web/account#getPrefs) endpoint.
 
 {% multicode %}
+
 ```client-web
 import { Client, Account } from "appwrite";
 
@@ -128,6 +133,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
+
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 
@@ -139,6 +145,7 @@ final account = Account(client);
 
 final prefs = await account.getPrefs();
 ```
+
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
@@ -151,6 +158,7 @@ val account = Account(client)
 
 val prefs = account.getPrefs()
 ```
+
 ```client-apple
 import Appwrite
 
@@ -162,6 +170,7 @@ let account = Account(client)
 
 let prefs = try await account.getPrefs()
 ```
+
 ```graphql
 query {
     accountGetPrefs {
@@ -169,22 +178,20 @@ query {
     }
 }
 ```
+
 {% /multicode %}
 
 # Permissions {% #permissions %}
 
 You can grant permissions to all users using the `Role.users(<STATUS>)` role or
 individual users using the `Role.user(<USER_ID>, <STATUS>)` role.
-| Description                                 | Role                               |
+| Description | Role |
 | ------------------------------------------- | ------------------------------------------- |
-| Verified users   | `Role.users('verified')`|
+| Verified users | `Role.users('verified')`|
 | Unverified users | `Role.users('unverified')` |
-| Verified user   | `Role.user(<USER_ID>, 'verified')`|
+| Verified user | `Role.user(<USER_ID>, 'verified')`|
 | Unverified user | `Role.user(<USER_ID>, 'unverified')` |
-
 
 {% arrow_link href="/docs/advanced/platform/permissions" %}
 Learn more about permissions
 {% /arrow_link %}
-
-

@@ -21,11 +21,11 @@ With the recent Appwrite 1.5 release, we added a new passwordless authentication
 
 Email OTP authentication sends an email with a 6-digit code that a user needs to enter into the app, while magic URL authentication delivers a clickable button or link to the user's inbox. Both allow passwordless login flows with different advantages.
 
-| Benefits of email OTP | Downsides of email OTP |
-| --- | --- |
-| Doesn't require the user to be signed into their email inbox on the device | Expires quicker |
-| Doesn't disturb the application flow with a redirect | Requires more inputs from the user |
-| Doesn't require deep linking on mobile apps |  |
+| Benefits of email OTP                                                      | Downsides of email OTP             |
+| -------------------------------------------------------------------------- | ---------------------------------- |
+| Doesn't require the user to be signed into their email inbox on the device | Expires quicker                    |
+| Doesn't disturb the application flow with a redirect                       | Requires more inputs from the user |
+| Doesn't require deep linking on mobile apps                                |                                    |
 
 # Implementing email OTP in a SvelteKit app
 
@@ -111,8 +111,8 @@ npm i appwrite
 As soon as that’s done, we can start preparing our application logic. For that, visit the `src/lib` directory and create a file `appwrite.js`. Add the following code to the same.
 
 ```js
-import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_ID } from "$env/static/public";
-import { Client, Account } from "appwrite";
+import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_ID } from '$env/static/public';
+import { Client, Account } from 'appwrite';
 
 const client = new Client()
     .setEndpoint(PUBLIC_APPWRITE_ENDPOINT)
@@ -124,8 +124,8 @@ export const account = new Account(client);
 In the same directory, create a file `user.js` and add the following code.
 
 ```js
-import { account } from "./appwrite";
-import { ID } from "appwrite";
+import { account } from './appwrite';
+import { ID } from 'appwrite';
 
 export const user = {
     createOtp: async (email) => {
@@ -135,7 +135,7 @@ export const user = {
     verifyOtp: async (userId, secret) => {
         return await account.createSession(userId, secret);
     }
-}
+};
 ```
 
 ## Update the application UI
@@ -146,24 +146,24 @@ In the `src/routes` directory, visit the file `+page.svelte` and replace it with
 
 ```html
 <script>
-    import { user } from "$lib/user.js";
+    import { user } from '$lib/user.js';
 
     var token;
-    var securityPhrase = "Create OTP first to get the security phrase.";
+    var securityPhrase = 'Create OTP first to get the security phrase.';
 
     async function createOtp(e) {
         e.preventDefault();
         const formData = new FormData(e.target);
         token = await user.createOtp(formData.get('email'));
         securityPhrase = `Security phrase: ${token.phrase}`;
-        alert("OTP sent to email");
+        alert('OTP sent to email');
     }
 
     async function verifyOtp(e) {
         e.preventDefault();
         const formData = new FormData(e.target);
         const response = await user.verifyOtp(token.userId, formData.get('otp'));
-        alert("OTP verified");
+        alert('OTP verified');
     }
 </script>
 
@@ -171,16 +171,22 @@ In the `src/routes` directory, visit the file `+page.svelte` and replace it with
     <div class="container">
         <div id="email">
             <h2>Enter Email</h2>
-            <form on:submit={createOtp}>
-                <input type="email" name="email" id="email" placeholder="team@appwrite.io" required>
+            <form on:submit="{createOtp}">
+                <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="team@appwrite.io"
+                    required
+                />
                 <button class="button" type="submit">Submit</button>
             </form>
         </div>
-        
+
         <div id="otp">
             <h2>Enter OTP</h2>
-            <form on:submit={verifyOtp}>
-                <input type="text" name="otp" id="otp" placeholder="012345" required>
+            <form on:submit="{verifyOtp}">
+                <input type="text" name="otp" id="otp" placeholder="012345" required />
                 <button class="button" type="submit">Submit</button>
             </form>
             <p>{securityPhrase}</p>
@@ -199,5 +205,5 @@ And with that, our demo application is ready. If you liked this project or want 
 
 For more information about Appwrite Authentication, visit the following resources:
 
-- [Appwrite Authentication Docs](https://appwrite.io/docs/products/auth): These docs provide more information on how to use the different methods offered under Appwrite Authentication.
-- [Appwrite Discord](https://discord.com/invite/appwrite): Connect with other developers and the Appwrite team for discussion, questions, and collaboration.
+-   [Appwrite Authentication Docs](https://appwrite.io/docs/products/auth): These docs provide more information on how to use the different methods offered under Appwrite Authentication.
+-   [Appwrite Discord](https://discord.com/invite/appwrite): Connect with other developers and the Appwrite team for discussion, questions, and collaboration.

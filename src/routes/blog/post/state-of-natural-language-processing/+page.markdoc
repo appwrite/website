@@ -14,7 +14,7 @@ Natural Language Processing (NLP) is a field that combines computer science, art
 
 # A (not so) brief history of NLP
 
-The history of Natural Language Processing (NLP) began in the 1950s with attempts to automate language translation. These early experiments, such as the [Georgetown experiment](https://en.wikipedia.org/wiki/Georgetown-IBM_experiment) in 1954, showed promise but also highlighted the complexity of human language. 
+The history of Natural Language Processing (NLP) began in the 1950s with attempts to automate language translation. These early experiments, such as the [Georgetown experiment](https://en.wikipedia.org/wiki/Georgetown-IBM_experiment) in 1954, showed promise but also highlighted the complexity of human language.
 
 Fast forward to 1966, and we have [ELIZA](https://web.stanford.edu/class/cs124/p36-weizenabaum.pdf), a program that simulated conversation by matching patterns in user input. ELIZA showed that machines could interact in a way that mimics human conversation, much like modern chatbots.
 
@@ -31,7 +31,7 @@ ELIZA's responses aren't perfect, but they demonstrate the basic principle of pa
 
 By the end of the 20th century, the use of statistical methods began to change NLP. Instead of using fixed rules, these methods allowed computers to learn from data. This was a big step forward and set the stage for the use of machine learning in NLP. The 2000s saw further advancements with algorithms that could learn from vast amounts of data, leading to significant improvements in tasks like language translation and speech recognition.
 
-The development of neural networks, especially word embeddings like [Word2Vec](https://arxiv.org/abs/1301.3781), marked another leap forward. These techniques allowed for more nuanced understanding of language by representing words in a space where the distance between words captured their semantic similarity. 
+The development of neural networks, especially word embeddings like [Word2Vec](https://arxiv.org/abs/1301.3781), marked another leap forward. These techniques allowed for more nuanced understanding of language by representing words in a space where the distance between words captured their semantic similarity.
 
 Picture a simple 2D word embedding space:
 
@@ -61,11 +61,12 @@ Before diving into the intricacies of LLMs, let's take a step back and look at s
 
 ## Naive Bayes classifiers
 
-Consider building a spam email detector. You could use a [Naive Bayes classifier](https://www.ibm.com/topics/naive-bayes), which learns from examples of spam and non-spam emails to predict whether a new email is spam. 
+Consider building a spam email detector. You could use a [Naive Bayes classifier](https://www.ibm.com/topics/naive-bayes), which learns from examples of spam and non-spam emails to predict whether a new email is spam.
 
-Here's a simple analogy: 
-- Common spam words (e.g., "free", "winner", "viagra") are red flags.
-- Non-spam words (e.g., "meeting", "project", "dinner") indicate a safe email.
+Here's a simple analogy:
+
+-   Common spam words (e.g., "free", "winner", "viagra") are red flags.
+-   Non-spam words (e.g., "meeting", "project", "dinner") indicate a safe email.
 
 The Naive Bayes classifier counts red flags, and safe words in an email and makes a prediction. It's a straightforward yet effective approach for many text classification tasks.
 
@@ -96,7 +97,7 @@ Now that we've covered the foundations, let's dive into the world of Large Langu
 
 ## Neural networks
 
-At the heart of LLMs are neural networks - computational models inspired by the structure and function of the human brain. 
+At the heart of LLMs are neural networks - computational models inspired by the structure and function of the human brain.
 
 Picture a neural network as a team of interconnected workers (neurons) organized into different departments (layers). Each worker processes a piece of information and passes it along to the next department until the final output is produced.
 

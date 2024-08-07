@@ -21,12 +21,12 @@ As part of our mission to make software development more accessible and enjoyabl
 
 We created a set of principles to guide us through the pricing process. We like to call this the “Value Framework” as it focuses on delivering the maximum value to our users without compromising on the affordability and accessibility of our products and services.
 
-- Equally plan for being accessible to all and our continued growth.
-- Make adoption easy and ensure the developer's growth and success match pricing.
-- The developer's success helps Appwrite grow and deliver better products.
-- Features should be consistent across tiers unless they are clearly focused on enterprise.
-- Focus on value based profit. Limits should generally be applied to usage. Not functionality.
-- Be fair.
+-   Equally plan for being accessible to all and our continued growth.
+-   Make adoption easy and ensure the developer's growth and success match pricing.
+-   The developer's success helps Appwrite grow and deliver better products.
+-   Features should be consistent across tiers unless they are clearly focused on enterprise.
+-   Focus on value based profit. Limits should generally be applied to usage. Not functionality.
+-   Be fair.
 
 # Affordable and accessible
 
@@ -38,18 +38,18 @@ The above framework supports our goal to make Appwrite Cloud affordable and acce
 
 **Free plan**
 
-- A free tier for every developer working on a side project or SaaS product that can thrive on our Free plan limits.
-- Free.
+-   A free tier for every developer working on a side project or SaaS product that can thrive on our Free plan limits.
+-   Free.
 
 **Pro Plan**
 
-- A plan that supports your ambitions to scale your production project and allows you to grow. With flexible budget control tools to ensure you never get a surprise bill.
-- $15, per month, per member.
+-   A plan that supports your ambitions to scale your production project and allows you to grow. With flexible budget control tools to ensure you never get a surprise bill.
+-   $15, per month, per member.
 
 **Scale plan**
 
-- A plan that offers more support as you continue to scale your commercial product and team. With higher limits and more support from our team to ensure we support the demand of scaling teams.
-- $685, per month, per organization.
+-   A plan that offers more support as you continue to scale your commercial product and team. With higher limits and more support from our team to ensure we support the demand of scaling teams.
+-   $685, per month, per organization.
 
 # Business model: Pay per organization member
 
@@ -65,5 +65,5 @@ One thing we cannot dismiss is our OSS program. We strongly believe in helping o
 
 This is a big step forward for Appwrite and the community and we are excited to see the response to our plans. The coming weeks we will work hard on making our pricing available, but until then developers can continue to build on Appwrite free of charge.
 
-- [Review the pricing comparison](/pricing)
-- [Sign up for Cloud in beta](https://cloud.appwrite.io/)
+-   [Review the pricing comparison](/pricing)
+-   [Sign up for Cloud in beta](https://cloud.appwrite.io/)

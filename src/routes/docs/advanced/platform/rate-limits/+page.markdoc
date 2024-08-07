@@ -23,16 +23,16 @@ X-RateLimit-Reset: 1372700873
 
 The headers tell you everything you need to know about your current rate limit status:
 
-| Header               | Description                                                                    |
-| -------------------- | ------------------------------------------------------------------------------ |
-| X-RateLimit-Limit    | The maximum number of requests that the consumer is permitted to make per hour. |
-| X-RateLimit-Remaining| The number of requests remaining in the current rate limit window.              |
-| X-RateLimit-Reset    | The time at which the current rate limit window resets in UTC epoch seconds.    |
+| Header                | Description                                                                     |
+| --------------------- | ------------------------------------------------------------------------------- |
+| X-RateLimit-Limit     | The maximum number of requests that the consumer is permitted to make per hour. |
+| X-RateLimit-Remaining | The number of requests remaining in the current rate limit window.              |
+| X-RateLimit-Reset     | The time at which the current rate limit window resets in UTC epoch seconds.    |
 
 If you need the time in a different format, any modern programming language can get the job done. For example, if you open up the console on your web browser, you can easily get the reset time as a JavaScript Date object. You can also read more about [Unix Time](https://en.wikipedia.org/wiki/Unix_time).
 
 ```js
-new Date(1372700873 * 1000) // => Mon Jul 01 2013 13:47:53 GMT-0400 (EDT)
+new Date(1372700873 * 1000); // => Mon Jul 01 2013 13:47:53 GMT-0400 (EDT)
 ```
 
 Once you go over the rate limit you will receive an error response:

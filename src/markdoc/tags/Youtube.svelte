@@ -6,6 +6,5 @@
 </script>
 
 <div class="web-media">
-    <!-- svelte-ignore a11y-media-has-caption -->
     <Video {thumbnail} {src} />
 </div>

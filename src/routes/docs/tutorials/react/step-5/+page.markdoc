@@ -1,13 +1,14 @@
 ---
 layout: tutorial
-title: Add navigation 
+title: Add navigation
 description: Add navigation to your React applicating using Appwrite.
 step: 5
 ---
 
 In our app we want to have a navigation bar that is always visible. We will add it to the `App` component and use the `useUser` hook to show either:
-- a logout button if the user is logged in.
-- a login button if the user is not logged in.
+
+-   a logout button if the user is logged in.
+-   a login button if the user is not logged in.
 
 Update the App component in `src/App.jsx`:
 

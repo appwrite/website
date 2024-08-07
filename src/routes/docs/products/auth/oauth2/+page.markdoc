@@ -24,7 +24,7 @@ Before using OAuth 2 login, you need to enable and configure an OAuth 2 login pr
 
 To initialize the OAuth 2 login process, use the [Create OAuth 2 Session](/docs/references/cloud/client-web/account#createOAuth2Session) route.
 
-OAuth2 sessions allow you to specify the scope of the access you want to request from the OAuth2 provider. 
+OAuth2 sessions allow you to specify the scope of the access you want to request from the OAuth2 provider.
 The requested scopes describe which resources a session can access.
 
 You can pass the scopes to request through the `scopes` parameter when creating a session.
@@ -32,6 +32,7 @@ The scope is provider-specific and can be found in the provider's documentation.
 
 {% tabs %}
 {% tabsitem #js title="Javascript" %}
+
 ```client-web
 import { Client, Account, OAuthProvider } from "appwrite";
 
@@ -49,9 +50,11 @@ account.createOAuth2Session(
     ['repo', 'user'] // scopes (optional)
 );
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #flutter title="Flutter" %}
+
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/enums.dart';
@@ -68,6 +71,7 @@ await account.createOAuth2Session(
     scopes: ['repo', 'user']
 );
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #apple title="Apple" %}
@@ -88,6 +92,7 @@ For Apple, add the following URL scheme to your `Info.plist`.
 </dict>
 </array>
 ```
+
 If you're using UIKit, you'll also need to add a hook to your `SceneDelegate.swift` file to ensure cookies work correctly.
 
 ```client-apple
@@ -116,10 +121,11 @@ try await account.createOAuth2Session(
     scopes: ['repo', 'user']
 )
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #android title="Android" %}
-For Android, add the following activity inside the `<application>` tag in your `AndroidManifest.xml`. 
+For Android, add the following activity inside the `<application>` tag in your `AndroidManifest.xml`.
 Replace `<PROJECT_ID>` with your actual Appwrite project ID.
 
 ```xml
@@ -133,6 +139,7 @@ Replace `<PROJECT_ID>` with your actual Appwrite project ID.
   </intent-filter>
 </activity>
 ```
+
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
@@ -150,6 +157,7 @@ account.createOAuth2Session(
     scopes = listOf('repo', 'user')
 )
 ```
+
 {% /tabsitem %}
 {% /tabs %}
 
@@ -164,6 +172,7 @@ After authenticating a user through their OAuth 2 provider, you can fetch their 
 After creating an OAuth 2 session, you can fetch the session to get information about the provider.
 
 {% multicode %}
+
 ```client-web
 import { Client, Account } from "appwrite";
 
@@ -197,6 +206,7 @@ print(session.provider);
 print(session.providerUid);
 print(session.providerAccessToken);
 ```
+
 ```client-apple
 import Appwrite
 
@@ -215,6 +225,7 @@ print(session.provider);
 print(session.providerUid);
 print(session.providerAccessToken);
 ```
+
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
@@ -234,31 +245,32 @@ print(session.provider);
 print(session.providerUid);
 print(session.providerAccessToken);
 ```
-{% /multicode %}
 
+{% /multicode %}
 
 An OAuth 2 [session](/docs/references/cloud/models/session) will have the following attributes.
 
-| Property                   | Description                                                                                               |
-| -------------------------- | --------------------------------------------------------------------------------------------------------- |
-| provider                   | The OAuth2 Provider.                                                                                       |
-| providerUid                | User ID from the OAuth 2 Provider.                                                                         |
-| providerAccessToken        | Access token from the OAuth 2 provider. Use this to **make requests to the OAuth 2 provider** to fetch personal data. |
-| providerAccessTokenExpiry  | Check this value to know if an access token is about to expire.                                            |
+| Property                  | Description                                                                                                           |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| provider                  | The OAuth2 Provider.                                                                                                  |
+| providerUid               | User ID from the OAuth 2 Provider.                                                                                    |
+| providerAccessToken       | Access token from the OAuth 2 provider. Use this to **make requests to the OAuth 2 provider** to fetch personal data. |
+| providerAccessTokenExpiry | Check this value to know if an access token is about to expire.                                                       |
 
 You can use the `providerAccessToken` to make requests to your OAuth 2 provider. Refer to the docs for the OAuth 2 provider you're using to learn about making API calls with the access token.
 
 # Refresh tokens {% #refresh-tokens %}
 
-OAuth 2 sessions expire to protect from security risks. 
+OAuth 2 sessions expire to protect from security risks.
 This means the OAuth 2 session with a provider may expire, even when an Appwrite session remains active.
-OAuth 2 sessions should be refreshed periodically so access tokens don't expire. 
+OAuth 2 sessions should be refreshed periodically so access tokens don't expire.
 
-Check the value of `providerAccessTokenExpiry` to know if the token is expired or is about to expire. 
+Check the value of `providerAccessTokenExpiry` to know if the token is expired or is about to expire.
 You can refresh the provider session by calling the [Update OAuth Session](/docs/references/cloud/client-web/account#updateSession) endpoint whenever your user visits your app.
-Avoid refreshing before every request, which might cause rate limit problems. 
+Avoid refreshing before every request, which might cause rate limit problems.
 
 {% multicode %}
+
 ```client-web
 const promise = account.updateSession('[SESSION_ID]');
 
@@ -268,6 +280,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
+
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 
@@ -281,6 +294,7 @@ final result = await account.updateSession(
     sessionId: '[SESSION_ID]'
 );
 ```
+
 ```client-apple
 import Appwrite
 
@@ -294,6 +308,7 @@ let session = try await account.updateSession(
     sessionId: "[SESSION_ID]"
 );
 ```
+
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account

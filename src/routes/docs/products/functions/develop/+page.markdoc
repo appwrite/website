@@ -8,6 +8,7 @@ Appwrite Functions offer a familiar interface if you've developed REST endpoints
 Each function is handled following a request and response pattern.
 
 # Lifecycle {% #life-cycle %}
+
 There is a clear lifecycle for all Appwrite Functions, from beginning to end.
 Here's everything that happens during a function execution.
 
@@ -18,10 +19,12 @@ Here's everything that happens during a function execution.
 1. Function terminates when you return results using `return context.res.send()`, `return context.res.json()` or similar.
 
 ## Entrypoint {% #entrypoint %}
+
 You'll find all of these steps in a simple function like this.
 Notice the exported entry point that the executor will call.
 
 {% multicode %}
+
 ```server-nodejs
 import { Client } from 'node-appwrite';
 
@@ -135,6 +138,7 @@ def main(context):
         "getInspired": "https://builtwith.appwrite.io",
     })
 ```
+
 ```ruby
 require "appwrite"
 
@@ -171,6 +175,7 @@ def main(context)
   })
 end
 ```
+
 ```deno
 import { Client } from "https://deno.land/x/appwrite@7.0.0/mod.ts";
 
@@ -206,6 +211,7 @@ export default ({ req, res, log, error }: any) => {
   });
 };
 ```
+
 ```dart
 import 'dart:async';
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -242,6 +248,7 @@ Future main(final context) async {
   });
 }
 ```
+
 ```kotlin
 package io.openruntimes.kotlin.src
 
@@ -283,6 +290,7 @@ class Main {
     }
 }
 ```
+
 ```java
 package io.openruntimes.java.src;
 
@@ -327,6 +335,7 @@ public class Main {
     }
 }
 ```
+
 ```swift
 import Appwrite
 import AppwriteModels
@@ -364,6 +373,7 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     ])
 }
 ```
+
 ```csharp
 namespace DotNetRuntime;
 
@@ -375,13 +385,13 @@ public class Handler {
 
     // This is your Appwrite function
     // It"s executed each time we get a request
-    public async Task Main(RuntimeContext Context) 
+    public async Task Main(RuntimeContext Context)
     {
         // Why not try the Appwrite SDK?
         //
         // var client = new Client()
-        //     .SetEndpoint("https://cloud.appwrite.io/v1")  
-        //     .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID"))        
+        //     .SetEndpoint("https://cloud.appwrite.io/v1")
+        //     .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID"))
         //     .SetKey(Environment.GetEnvironmentVariable("APPWRITE_API_KEY"))
 
         // You can log messages to the console
@@ -408,29 +418,33 @@ public class Handler {
     }
 }
 ```
+
 {% /multicode %}
 
 If you prefer to learn through more examples like this, explore the [examples page](/docs/products/functions/examples).
 
 # Context object {% #context-object %}
-Context is an object passed into every function to handle communication to both the end users, and logging to the Appwrite Console. 
+
+Context is an object passed into every function to handle communication to both the end users, and logging to the Appwrite Console.
 All input, output, and logging **must be handled through the context object** passed in.
 
 You'll find these properties in the context object.
 
-| Property | Description                                                                                                              |
-|----------|--------------------------------------------------------------------------------------------------------------------------|
+| Property | Description                                                                                                                                            |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | req      | Contains request information like method, body, and headers. See full examples [in the request section](#request).                                     |
-| res      | Contains methods to build a response and return information. See full examples [in the response section](#response).                                     |
+| res      | Contains methods to build a response and return information. See full examples [in the response section](#response).                                   |
 | log()    | Method to log information to the Appwrite Console, end users will not be able to see these logs. See full examples [in the logging section](#logging). |
 | error()  | Methoc to log errors to the Appwrite Console, end users will not be able to see these errors. See full examples [in the logging section](#logging).    |
 
 ### Destructuring assignment {% #destructuring %}
-Some languages, namely JavaScript, support destructuring. 
-You'll see us use destructuring in examples, which has the following syntax. 
+
+Some languages, namely JavaScript, support destructuring.
+You'll see us use destructuring in examples, which has the following syntax.
 
 [Learn more about destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment).
 {% multicode %}
+
 ```js
 // before destructuring
 export default async function (context) {
@@ -444,45 +458,49 @@ export default async function ({ req, res, log, error }) {
     return res.send("This is a response!");
 }
 ```
+
 ```deno
 // before destructuring
 export default async function (context: any) {
     context.log("This is a log!");
     return context.res.send("This is a response!");
 }
-   
+
 // after destructuring
 export default async function ({ req, res, log, error }: any) {
     log("This is a log!");
     return res.send("This is a response!");
 }
 ```
+
 {% /multicode %}
 
 ## Request {% #request %}
 
-If you pass data into an Appwrite Function, it'll be found in the request object. 
-This includes all invocation inputs from Appwrite SDKs, HTTP calls, Appwrite events, or browsers visiting the configured domain. 
+If you pass data into an Appwrite Function, it'll be found in the request object.
+This includes all invocation inputs from Appwrite SDKs, HTTP calls, Appwrite events, or browsers visiting the configured domain.
 Explore the request object with the following function, which logs all request params to the Appwrite Console.
 
 {% multicode %}
+
 ```js
 export default async ({ req, res, log }) => {
-    log(req.bodyRaw);                     // Raw request body, contains request data
-    log(JSON.stringify(req.body));        // Object from parsed JSON request body, otherwise string
-    log(JSON.stringify(req.headers));     // String key-value pairs of all request headers, keys are lowercase
-    log(req.scheme);                      // Value of the x-forwarded-proto header, usually http or https
-    log(req.method);                      // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
-    log(req.url);                         // Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50
-    log(req.host);                        // Hostname from the host header, such as awesome.appwrite.io
-    log(req.port);                        // Port from the host header, for example 8000
-    log(req.path);                        // Path part of URL, for example /v1/hooks
-    log(req.queryString);                 // Raw query params string. For example "limit=12&offset=50"
-    log(JSON.stringify(req.query));       // Parsed query params. For example, req.query.limit
+    log(req.bodyRaw); // Raw request body, contains request data
+    log(JSON.stringify(req.body)); // Object from parsed JSON request body, otherwise string
+    log(JSON.stringify(req.headers)); // String key-value pairs of all request headers, keys are lowercase
+    log(req.scheme); // Value of the x-forwarded-proto header, usually http or https
+    log(req.method); // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
+    log(req.url); // Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50
+    log(req.host); // Hostname from the host header, such as awesome.appwrite.io
+    log(req.port); // Port from the host header, for example 8000
+    log(req.path); // Path part of URL, for example /v1/hooks
+    log(req.queryString); // Raw query params string. For example "limit=12&offset=50"
+    log(JSON.stringify(req.query)); // Parsed query params. For example, req.query.limit
 
-    return res.send("All the request parameters are logged to the Appwrite Console.");
+    return res.send('All the request parameters are logged to the Appwrite Console.');
 };
 ```
+
 ```php
 <?php
 return function ($context) {
@@ -501,6 +519,7 @@ return function ($context) {
     return $context->res->send("All the request parameters are logged to the Appwrite Console.");
 }
 ```
+
 ```python
 import json
 
@@ -519,9 +538,10 @@ def main(context):
 
     return context.res.send("All the request parameters are logged to the Appwrite Console.")
 ```
+
 ```ruby
 require 'json'
-                
+
 def main(context)
     context.log(context.req.bodyRaw)                #  Raw request body, contains request data
     context.log(JSON.generate(context.req.body))    # Object from parsed JSON request body, otherwise string
@@ -538,6 +558,7 @@ def main(context)
     return context.res.send("All the request parameters are logged to the Appwrite Console.")
 end
 ```
+
 ```deno
 export default async ({ req, res, log }: any) => {
     log(req.bodyRaw);                 // Raw request body, contains request data
@@ -554,6 +575,7 @@ export default async ({ req, res, log }: any) => {
 
     return res.send("All the request parameters are logged to the Appwrite Console.");
 ```
+
 ```dart
 import 'dart:async';
 import 'dart:convert';
@@ -574,6 +596,7 @@ Future<dynamic> main(final context) async {
     return context.res.send("All the request parameters are logged to the Appwrite Console.");
 }
 ```
+
 ```swift
 import Foundation
 import Foundation
@@ -584,7 +607,7 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     context.log(NSJSONSerialization.jsonObject(with: context.req.headers, options: [])!) // String key-value pairs of all request headers, keys are lowercase
     context.log(context.req.scheme)                                                      // Value of the x-forwarded-proto header, usually http or https
     context.log(context.req.method)                                                      // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
-    context.log(context.req.url)                                                         // Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50 
+    context.log(context.req.url)                                                         // Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50
     context.log(context.req.host)                                                        // Hostname from the host header, such as awesome.appwrite.io
     context.log(context.req.port)                                                        // Port from the host header, for example 8000
     context.log(context.req.path)                                                        // Path part of URL, for example /v1/hooks
@@ -594,13 +617,14 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     return context.res.send("All the request parameters are logged to the Appwrite Console.")
 }
 ```
+
 ```csharp
 namespace DotNetRuntime;
 
 using System.Text.Json;
 
 public class Handler {
-    public async Task<RuntimeOutput> Main(RuntimeContext Context) 
+    public async Task<RuntimeOutput> Main(RuntimeContext Context)
     {
         Context.Log(Context.Req.BodyRaw);                                                     // Raw request body, contains request data
         Context.Log(JsonSerializer.Serialize<object>(Context.Req.Body));                 // Object from parsed JSON request body, otherwise string
@@ -618,6 +642,7 @@ public class Handler {
     }
 }
 ```
+
 ```kotlin
 package io.openruntimes.kotlin.src
 
@@ -645,6 +670,7 @@ class Main {
     }
 }
 ```
+
 ```java
 package io.openruntimes.java;
 
@@ -672,49 +698,51 @@ public class Main {
     }
 }
 ```
+
 {% /multicode %}
 
 ### Headers {% #headers %}
 
-Appwrite Functions will always receive a set of headers that provide meta data about the function execution. 
+Appwrite Functions will always receive a set of headers that provide meta data about the function execution.
 These are provided alongside any custom headers sent to the function.
 
-| Variable                  | Description                                                                                                                                          |
-|---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x-appwrite-trigger`        |  Describes how the function execution was invoked. Possible values are `http`, `schedule` or `event`.                                                      |
-| `x-appwrite-event`          |  If the function execution was triggered by an event, describes the triggering event.                                                                |
-| `x-appwrite-user-id`        |  If the function execution was invoked by an authenticated user, display the user ID. This doesn't apply to Appwrite Console users or API keys.      |
-| `x-appwrite-user-jwt`       |  JWT token generated from the invoking user's session. Used to authenticate Server SDKs to respect access permissions. [Learn more about JWT tokens](/docs/products/auth/jwt).  |
-| `x-appwrite-country-code`   |  Displays the country code of the configured locale.                                                                                                 |
-| `x-appwrite-continent-code` |  Displays the continent code of the configured locale.                                                                                               |
-| `x-appwrite-continent-eu`   |  Describes if the configured local is within the EU.                                                                                                 |
+| Variable                    | Description                                                                                                                                                                   |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `x-appwrite-trigger`        | Describes how the function execution was invoked. Possible values are `http`, `schedule` or `event`.                                                                          |
+| `x-appwrite-event`          | If the function execution was triggered by an event, describes the triggering event.                                                                                          |
+| `x-appwrite-user-id`        | If the function execution was invoked by an authenticated user, display the user ID. This doesn't apply to Appwrite Console users or API keys.                                |
+| `x-appwrite-user-jwt`       | JWT token generated from the invoking user's session. Used to authenticate Server SDKs to respect access permissions. [Learn more about JWT tokens](/docs/products/auth/jwt). |
+| `x-appwrite-country-code`   | Displays the country code of the configured locale.                                                                                                                           |
+| `x-appwrite-continent-code` | Displays the continent code of the configured locale.                                                                                                                         |
+| `x-appwrite-continent-eu`   | Describes if the configured local is within the EU.                                                                                                                           |
 
 ## Response {% #response %}
-If you need to send a response to the invoker of the function, such as a user, client app, or an integration, use the response object. 
-The response information **will not be logged** to the Appwrite Console. 
+
+If you need to send a response to the invoker of the function, such as a user, client app, or an integration, use the response object.
+The response information **will not be logged** to the Appwrite Console.
 There are several possible ways to send a response, explore them in the following Appwrite Function.
 
 {% multicode %}
+
 ```js
 export default async ({ req, res, log }) => {
-
     switch (req.query.type) {
-        case 'empty': 
+        case 'empty':
             return res.empty();
         case 'json':
-            return res.json({"type": "This is a JSON response"});
+            return res.json({ type: 'This is a JSON response' });
         case 'redirect':
-            return res.redirect("https://appwrite.io", 301);
+            return res.redirect('https://appwrite.io', 301);
         case 'html':
-            return res.send(
-                "<h1>This is an HTML response</h1>", 200, {
-                    "content-type": "text/html"
-                });
+            return res.send('<h1>This is an HTML response</h1>', 200, {
+                'content-type': 'text/html'
+            });
         default:
-            return res.send("This is a text response");
+            return res.send('This is a text response');
     }
-}
+};
 ```
+
 ```php
 <?php
 
@@ -735,6 +763,7 @@ return function ($context) {
     }
 };
 ```
+
 ```python
 def main(context):
     type = context.req.query['type']
@@ -752,9 +781,10 @@ def main(context):
     else:
         return context.res.send("This is a text response")
 ```
+
 ```ruby
 def main(context)
-    case context.req.query['type'] 
+    case context.req.query['type']
         when 'empty'
             return context.res.empty()
         when 'json'
@@ -770,6 +800,7 @@ def main(context)
     end
 end
 ```
+
 ```deno
 export default async ({ req, res, log }) => {
 
@@ -790,6 +821,7 @@ export default async ({ req, res, log }) => {
     }
 }
 ```
+
 ```dart
 import 'dart:async';
 
@@ -809,6 +841,7 @@ Future<dynamic> main(final context) async {
   }
 }
 ```
+
 ```swift
 import Foundation
 
@@ -829,9 +862,10 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     }
 }
 ```
+
 ```csharp
 public class Handler {
-    public async Task<RuntimeOutput> Main(RuntimeContext Context) 
+    public async Task<RuntimeOutput> Main(RuntimeContext Context)
     {
         switch (Context.Request.Query["type"])
         {
@@ -843,7 +877,7 @@ public class Handler {
                 return Context.Res.Redirect("https://appwrite.io", 301);
             case "html":
                 return Context.Res.Send("<h1>This is an HTML response</h1>", 200, new Dictionary<string, string>() {
-                    { "content-type", "text/html" } 
+                    { "content-type", "text/html" }
                 });
             default:
                 return Context.Res.Send("This is a text response");
@@ -851,6 +885,7 @@ public class Handler {
     }
 }
 ```
+
 ```kotlin
 package io.openruntimes.kotlin.src
 
@@ -869,6 +904,7 @@ class Main {
     }
 }
 ```
+
 ```java
 package io.openruntimes.java.src;
 
@@ -896,6 +932,7 @@ public class Main {
     }
 }
 ```
+
 ```cpp
 #include "../RuntimeResponse.h"
 #include "../RuntimeRequest.h"
@@ -927,12 +964,13 @@ namespace runtime {
   };
 }
 ```
+
 {% /multicode %}
 
 To get the different response types, set one of the following query parameters in the [generated domain](/docs/products/functions/domains) of your function.
 
-| Type     | Query Param     | Example                                                     |
-|----------|-----------------|-------------------------------------------------------------|
+| Type       | Query Param       | Example                                                       |
+| ---------- | ----------------- | ------------------------------------------------------------- |
 | `text`     | `/?type=text`     | `https://64d4d22db370ae41a32e.appwrite.global/?type=text`     |
 | `json`     | `/?type=json`     | `https://64d4d22db370ae41a32e.appwrite.global/?type=json`     |
 | `redirect` | `/?type=redirect` | `https://64d4d22db370ae41a32e.appwrite.global/?type=redirect` |
@@ -940,22 +978,25 @@ To get the different response types, set one of the following query parameters i
 | `empty`    | `/`               | `https://64d4d22db370ae41a32e.appwrite.global/`               |
 
 ## Logging {% #logging %}
-To protect user privacy, the request and response objects are not logged to the Appwrite Console by default. 
-This means, to see logs or debug function executions you need to use the `log()` and `error()` methods. 
+
+To protect user privacy, the request and response objects are not logged to the Appwrite Console by default.
+This means, to see logs or debug function executions you need to use the `log()` and `error()` methods.
 These logs are only visible to developers with access to the Appwrite Console.
 
 Here's an example of using logs and errors.
 
 {% multicode %}
+
 ```js
 export default async ({ req, res, log, error }) => {
-    log("This is a log, use for logging information to console");
+    log('This is a log, use for logging information to console');
     log(`This function was called with ${req.method} method`);
-    error("This is an error, use for logging errors to console");
+    error('This is an error, use for logging errors to console');
 
-    return res.send("Check the Appwrite Console to see logs and errors!");
+    return res.send('Check the Appwrite Console to see logs and errors!');
 };
 ```
+
 ```php
 <?php
 
@@ -967,6 +1008,7 @@ return function ($context) {
     return $context->send("Check the Appwrite Console to see logs and errors!");
 };
 ```
+
 ```python
 def main(context):
     context.log("This is a log, use for logging information to console")
@@ -975,6 +1017,7 @@ def main(context):
 
     return context.res.send("Check the Appwrite Console to see logs and errors!")
 ```
+
 ```ruby
 def main(context)
     context.log("This is a log, use for logging information to console")
@@ -984,6 +1027,7 @@ def main(context)
     return context.res.send("Check the Appwrite Console to see logs and errors!")
 end
 ```
+
 ```deno
 export default async ({ res, log, error }: any) => {
     log("This is a log, use for logging information to console");
@@ -993,6 +1037,7 @@ export default async ({ res, log, error }: any) => {
     return res.send("Check the Appwrite Console to see logs and errors!");
 };
 ```
+
 ```dart
 import 'dart:async';
 
@@ -1004,6 +1049,7 @@ Future<dynamic> main(final context) async {
     return context.res.send("Check the Appwrite Console to see logs and errors!");
 }
 ```
+
 ```swift
 import Foundation
 
@@ -1015,11 +1061,12 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     return context.res.send("Check the Appwrite Console to see logs and errors!")
 }
 ```
+
 ```csharp
 namespace DotNetRuntime;
 
 public class Handler {
-    public async Task<RuntimeOutput> Main(RuntimeContext Context) 
+    public async Task<RuntimeOutput> Main(RuntimeContext Context)
     {
         Context.Log("This is a log, use for logging information to console");
         Context.Log($"This function was called with {Context.Req.Method} method");
@@ -1029,6 +1076,7 @@ public class Handler {
     }
 }
 ```
+
 ```kotlin
 package io.openruntimes.kotlin.src
 
@@ -1045,6 +1093,7 @@ class Main {
     }
 }
 ```
+
 ```java
 package io.openruntimes.java.src;
 
@@ -1061,6 +1110,7 @@ public class Main {
     }
 }
 ```
+
 ```cpp
 #include "../RuntimeResponse.h"
 #include "../RuntimeRequest.h"
@@ -1080,6 +1130,7 @@ namespace runtime {
   };
 }
 ```
+
 {% /multicode %}
 
 You can access these logs through the following steps.
@@ -1089,21 +1140,22 @@ You can access these logs through the following steps.
 3. Under the Executions tab, click on an execution.
 4. In the Response section, you'll be able to view logs under the Logs and Errors tabs.
 
-# Accessing environment variables {% #environment-variables %} 
-If you need to pass constants or secrets to Appwrite Functions, you can use environment variables. 
+# Accessing environment variables {% #environment-variables %}
+
+If you need to pass constants or secrets to Appwrite Functions, you can use environment variables.
 
 {% info title="Appwrite API keys" %}
 If your function is using an Appwrite SDK with an API key, this API key needs to be generated and passed in manually. API keys are not passed by default for security reasons.
 {% /info %}
 
-| Variable                          | Description                                    |
-|-----------------------------------|------------------------------------------------|
-| `APPWRITE_FUNCTION_ID`              |  The ID of the running function.               |
-| `APPWRITE_FUNCTION_NAME`            |  The Name of the running function.             |
-| `APPWRITE_FUNCTION_DEPLOYMENT`      |  The deployment ID of the running function.    |
-| `APPWRITE_FUNCTION_PROJECT_ID`      |  The project ID of the running function.       |
-| `APPWRITE_FUNCTION_RUNTIME_NAME`    |  The runtime of the running function.          |
-| `APPWRITE_FUNCTION_RUNTIME_VERSION` |  The runtime version of the running function.  |
+| Variable                            | Description                                  |
+| ----------------------------------- | -------------------------------------------- |
+| `APPWRITE_FUNCTION_ID`              | The ID of the running function.              |
+| `APPWRITE_FUNCTION_NAME`            | The Name of the running function.            |
+| `APPWRITE_FUNCTION_DEPLOYMENT`      | The deployment ID of the running function.   |
+| `APPWRITE_FUNCTION_PROJECT_ID`      | The project ID of the running function.      |
+| `APPWRITE_FUNCTION_RUNTIME_NAME`    | The runtime of the running function.         |
+| `APPWRITE_FUNCTION_RUNTIME_VERSION` | The runtime version of the running function. |
 
 {% arrow_link href="/docs/products/functions/functions#environment-variables" %}
 Learn to add variables to you function
@@ -1112,11 +1164,13 @@ Learn to add variables to you function
 You can access the environment variables through the systems library of each language.
 
 {% multicode %}
+
 ```js
 export default async ({ req, res, log }) => {
     return res.send(process.env.MY_VAR);
-}
+};
 ```
+
 ```php
 <?php
 
@@ -1124,20 +1178,24 @@ return function ($context) {
     return $context->res->send(getenv('MY_VAR'));
 };
 ```
+
 ```python
 def main(context):
     return context.res.send(os.environ['MY_VAR'])
 ```
+
 ```ruby
 def main(context)
     return context.res.send(ENV['MY_VAR'])
 end
 ```
+
 ```deno
 export default async ({ req, res, log }) => {
     return res.send(Deno.env.get('MY_VAR'));
 }
 ```
+
 ```dart
 import 'dart:io';
 import 'dart:async';
@@ -1146,6 +1204,7 @@ Future<dynamic> main(final context) async {
     return context.res.send(Platform.environment['MY_VAR']);
 }
 ```
+
 ```swift
 import Foundation
 
@@ -1153,16 +1212,18 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     return context.res.send(ProcessInfo.processInfo.environment["MY_VAR"])
 }
 ```
+
 ```csharp
 namespace DotNetRuntime;
 
 public class Handler {
-    public async Task<RuntimeOutput> Main(RuntimeContext Context) 
+    public async Task<RuntimeOutput> Main(RuntimeContext Context)
     {
         return Context.Res.Send(Environment.GetEnvironmentVariable("MY_VAR"));
     }
 }
 ```
+
 ```kotlin
 package io.openruntimes.kotlin.src
 
@@ -1175,6 +1236,7 @@ class Main {
     }
 }
 ```
+
 ```java
 package io.openruntimes.java.src;
 
@@ -1187,6 +1249,7 @@ public class Main {
     }
 }
 ```
+
 ```cpp
 #include "../RuntimeResponse.h"
 #include "../RuntimeRequest.h"
@@ -1202,10 +1265,12 @@ namespace runtime {
   };
 }
 ```
+
 {% /multicode %}
 
-# Dependencies {% #dependencies %} 
-To install your dependencies before your function is built, 
+# Dependencies {% #dependencies %}
+
+To install your dependencies before your function is built,
 you should add the relevant install command to the top your function's **Build setting** > **Commands**.
 You can find this setting under **Functions** > your function > **Settings** > **Configuration** > **Build settings**.
 
@@ -1213,103 +1278,132 @@ Make sure to include dependency files like `package.json`, `composer.json`, `req
 Do not include the dependency folders like `node_modules`, `vendor`, etc. in your function's root directory.
 The dependencies installed for your local OS may not work in the executor environments
 
-Your function's dependencies should be managed by the package manager of each language. 
+Your function's dependencies should be managed by the package manager of each language.
 By default, we include the following package managers in each runtime.
 
 {% table %}
-* &nbsp; {% width=80 %}
-* Language
-* Package Manager
-* Commands
+
+-   &nbsp; {% width=80 %}
+-   Language
+-   Package Manager
+-   Commands
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_light %}
-* Node.js
-* NPM
-* `npm install`
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_light %}
+-   Node.js
+-   NPM
+-   `npm install`
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/php.svg" alt="PHP logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/php.svg" alt="PHP logo" size="m" /%}{% /only_light %}
-* PHP
-* Composer
-* `composer install`
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/php.svg" alt="PHP logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/php.svg" alt="PHP logo" size="m" /%}{% /only_light %}
+-   PHP
+-   Composer
+-   `composer install`
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/python.svg" alt="Python logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/python.svg" alt="Python logo" size="m" /%}{% /only_light %}
-* Python
-* pip
-* `pip install -r requirements.txt`
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/python.svg" alt="Python logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/python.svg" alt="Python logo" size="m" /%}{% /only_light %}
+-   Python
+-   pip
+-   `pip install -r requirements.txt`
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_light %}
-* Ruby
-* Bundler
-* `bundle install`
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_light %}
+-   Ruby
+-   Bundler
+-   `bundle install`
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/deno.svg" alt="Deno logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/deno.svg" alt="Deno logo" size="m" /%}{% /only_light %}
-* Deno
-* deno
-* `deno cache <ENTRYPOINT_FILE>`
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/deno.svg" alt="Deno logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/deno.svg" alt="Deno logo" size="m" /%}{% /only_light %}
+-   Deno
+-   deno
+-   `deno cache <ENTRYPOINT_FILE>`
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/dart.svg" alt="Dart logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/dart.svg" alt="Dart logo" size="m" /%}{% /only_light %}
-* Dart
-* pub
-* `pub get`
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/dart.svg" alt="Dart logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/dart.svg" alt="Dart logo" size="m" /%}{% /only_light %}
+-   Dart
+-   pub
+-   `pub get`
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/swift.svg" alt="Swift logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/swift.svg" alt="Swift logo" size="m" /%}{% /only_light %}
-* Swift
-* Swift Package Manager
-* `swift package resolve`
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/swift.svg" alt="Swift logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/swift.svg" alt="Swift logo" size="m" /%}{% /only_light %}
+-   Swift
+-   Swift Package Manager
+-   `swift package resolve`
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_light %}
-* .NET
-* NuGet
-* `dotnet restore`
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_light %}
+-   .NET
+-   NuGet
+-   `dotnet restore`
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/bun.svg" alt="Bun logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/bun.svg" alt="Bun logo" size="m" /%}{% /only_light %}
-* Bun
-* bun
-* `bun install`
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/bun.svg" alt="Bun logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/bun.svg" alt="Bun logo" size="m" /%}{% /only_light %}
+-   Bun
+-   bun
+-   `bun install`
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
-* Kotlin
-* Gradle
-* N/A
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
+-   Kotlin
+-   Gradle
+-   N/A
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/java.svg" alt="Java logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/java.svg" alt="Java logo" size="m" /%}{% /only_light %}
-* Java
-* Gradle
-* N/A
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/java.svg" alt="Java logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/java.svg" alt="Java logo" size="m" /%}{% /only_light %}
+-   Java
+-   Gradle
+-   N/A
+
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/c.svg" alt="C++ logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/c.svg" alt="C++ logo" size="m" /%}{% /only_light %}
-* C++
-* None
-* N/A
+
+-   {% only_dark %}{% icon_image src="/images/platforms/dark/c.svg" alt="C++ logo" size="m" /%}{% /only_dark %}
+    {% only_light %}{% icon_image src="/images/platforms/c.svg" alt="C++ logo" size="m" /%}{% /only_light %}
+-   C++
+-   None
+-   N/A
+
 {% /table %}
 
-# Using Appwrite in a function {% #using-appwrite %} 
-Appwrite can be used in your functions by adding the relevant SDK to your function's dependencies. 
-Authenticating with Appwrite is done via an API key or a JWT token. 
+# Using Appwrite in a function {% #using-appwrite %}
+
+Appwrite can be used in your functions by adding the relevant SDK to your function's dependencies.
+Authenticating with Appwrite is done via an API key or a JWT token.
 API keys must be generated and exported as an [environment variable](/docs/advanced/self-hosting/environment-variables).
 
 You can read more about authentication in the [JWT login](/docs/products/auth/jwt) section of the docs.
 
-## Using with API key {% #using-api-key %} 
-API keys have defined scopes when you create them. 
-They ignore permissions and operate without a sessions. 
-Use API keys if the function should act as an admin type role, instead of acting on behalf of a user. 
-Pass in your API key as an environment variable. 
+## Using with API key {% #using-api-key %}
+
+API keys have defined scopes when you create them.
+They ignore permissions and operate without a sessions.
+Use API keys if the function should act as an admin type role, instead of acting on behalf of a user.
+Pass in your API key as an environment variable.
 Never share API keys with users.
 
 {% multicode %}
+
 ```server-nodejs
 import { Client, Databases, ID } from 'node-appwrite';
 
@@ -1337,6 +1431,7 @@ export default async ({ req, res, log, error }) => {
     return res.send("Document created")
 }
 ```
+
 ```php
 <?php
 
@@ -1352,7 +1447,7 @@ return function ($context) {
         ->setEndpoint('https://cloud.appwrite.io/v1')
         ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
         ->setKey(getenv('APPWRITE_API_KEY'));
-    
+
     $databases = new Databases($client);
 
     try {
@@ -1370,6 +1465,7 @@ return function ($context) {
     return $context->res->send("Document created");
 };
 ```
+
 ```python
 from appwrite.client import Client
 from appwrite.services.databases import Databases
@@ -1400,6 +1496,7 @@ def main(context):
 
     return context.response.send("Document created")
 ```
+
 ```ruby
 require "appwrite"
 
@@ -1428,17 +1525,18 @@ def main(context)
     return context.response.send("Document created")
 end
 ```
+
 ```deno
 import { Client, Databases, ID } from "https://deno.land/x/appwrite/mod.ts";
-                
+
 export default function ({req, res, error}: any){
     const client = new Client()
         .setEndpoint("https://cloud.appwrite.io/v1")
         .setProject(Deno.env.get("APPWRITE_FUNCTION_PROJECT_ID") || "")
         .setKey(Deno.env.get("APPWRITE_API_KEY") || "");
-    
+
     const databases = new Databases(client);
-    
+
     try {
         databases.createDocument(
             "<DATABASE_ID>",
@@ -1450,10 +1548,11 @@ export default function ({req, res, error}: any){
         error("Failed to create document: " + e.message);
         return res.send("Failed to create document");
     }
-    
+
     return res.send("Document created");
 }
 ```
+
 ```dart
 import 'dart:io';
 import 'dart:async';
@@ -1464,9 +1563,9 @@ Future<dynamic> main(final context) async {
         .setEndpoint('https://cloud.appwrite.io/v1')
         .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
         .setKey(Platform.environment['APPWRITE_API_KEY']);
-    
+
     final databases = Databases(client);
-    
+
     try {
         await databases.createDocument(
             databaseId: '<DATABASE_ID>',
@@ -1482,6 +1581,7 @@ Future<dynamic> main(final context) async {
     return context.res.send("Document created");
 }
 ```
+
 ```swift
 import Appwrite
 import AppwriteModels
@@ -1497,7 +1597,7 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
 
     do {
         try await databases.createDocument(
-            databaseId: "<DATABASE_ID>", 
+            databaseId: "<DATABASE_ID>",
             collectionId: "<COLLECTION_ID>",
             documentId: ID.unique(),
             data: [:]
@@ -1510,24 +1610,25 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     return context.res.send("Document created")
 }
 ```
+
 ```csharp
 using Appwrite;
 using Appwrite.Services;
-using Appwrite.Models;                        
-                        
+using Appwrite.Models;
+
 namespace DotNetRuntime
 {
-    public class Handler 
+    public class Handler
     {
-        public async Task Main(RuntimeContext Context) 
+        public async Task Main(RuntimeContext Context)
         {
             var client = new Client()
                .SetEndpoint("https://cloud.appwrite.io/v1")
                .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID"))
                .SetKey(Environment.GetEnvironmentVariable("APPWRITE_API_KEY"))
-    
+
             var databases = new Databases(client);
-    
+
             try {
                 await databases.CreateDocument(
                     databaseId: "<DATABASE_ID>",
@@ -1538,12 +1639,13 @@ namespace DotNetRuntime
                 Context.Error("Failed to create document: " + e.Message);
                 return Context.Response.Send("Failed to create document");
             }
-    
+
             return Context.Response.Send("Document created");
         }
     }
 }
 ```
+
 ```kotlin
 package io.openruntimes.kotlin.src
 
@@ -1579,6 +1681,7 @@ class Main {
     }
 }
 ```
+
 ```java
 package io.openruntimes.java.src;
 
@@ -1612,11 +1715,13 @@ public class Main {
     }
 }
 ```
+
 {% /multicode %}
 
-## Using with JWT {% #using-jwt %} 
-JWTs allow you to act on behalf of an user in your Appwrite Function. 
-When using JWTs, you will be able to access and change **only** the resources with the same permissions as the user account that signed the JWT. 
+## Using with JWT {% #using-jwt %}
+
+JWTs allow you to act on behalf of an user in your Appwrite Function.
+When using JWTs, you will be able to access and change **only** the resources with the same permissions as the user account that signed the JWT.
 This preserves the permissions you configured on each resource.
 
 If the Appwrite Function is invoked by an authenticated user, `the x-appwrite-user-jwt` header is automatically passed in.
@@ -1654,6 +1759,7 @@ export default async ({ req, res, log }) => {
     return res.send("Document created")
 }
 ```
+
 ```php
 <?php
 
@@ -1668,13 +1774,13 @@ return function ($context) {
     $client = new (Client())
         ->setEndpoint('https://cloud.appwrite.io/v1')
         ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
-    
+
     if (isset($context->req->headers['x-appwrite-user-jwt'])) {
         $client->setJWT($context->req->headers['x-appwrite-user-jwt']);
     } else {
         return $context->res->send("Please sign in, JWT not found");
     }
-    
+
     $databases = new Databases($client);
 
     try {
@@ -1692,6 +1798,7 @@ return function ($context) {
     return $context->res->send("Document created");
 };
 ```
+
 ```python
 from appwrite.client import Client
 from appwrite.services.databases import Databases
@@ -1726,6 +1833,7 @@ def main(context):
 
     return context.response.send("Document created")
 ```
+
 ```ruby
 require "appwrite"
 
@@ -1754,22 +1862,23 @@ def main(context)
     return context.response.send("Document created")
 end
 ```
+
 ```deno
 import { Client, Databases, ID } from "https://deno.land/x/appwrite/mod.ts";
-                
+
 export default function ({req, res, error}: any){
     const client = new Client()
         .setEndpoint("https://cloud.appwrite.io/v1")
         .setProject(Deno.env.get("APPWRITE_FUNCTION_PROJECT_ID") || "")
-    
+
     if (req.headers["x-appwrite-user-jwt"]) {
         client.setJWT(req.headers["x-appwrite-user-jwt"]);
     } else {
         return res.send("Please sign in, JWT not found");
     }
-    
+
     const databases = new Databases(client);
-    
+
     try {
         databases.createDocument(
             "<DATABASE_ID>",
@@ -1781,10 +1890,11 @@ export default function ({req, res, error}: any){
         error("Failed to create document: " + e.message)
         return res.send("Failed to create document");
     }
-    
+
     return res.send("Document created");
 }
 ```
+
 ```dart
 import 'dart:io';
 import 'dart:async';
@@ -1794,15 +1904,15 @@ Future<dynamic> main(final context) async {
     final client = Client()
         .setEndpoint('https://cloud.appwrite.io/v1')
         .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
-    
+
     if (context.req.headers['x-appwrite-user-jwt'] != null) {
         client.setJWT(context.req.headers['x-appwrite-user-jwt']);
     } else {
         return context.res.send("Please sign in, JWT not found");
     }
-    
+
     final databases = Databases(client);
-    
+
     try {
         await databases.createDocument(
             databaseId: '<DATABASE_ID>',
@@ -1818,6 +1928,7 @@ Future<dynamic> main(final context) async {
     return context.res.send("Document created");
 }
 ```
+
 ```swift
 import Appwrite
 import AppwriteModels
@@ -1827,7 +1938,7 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     let client = Client()
        .setEndpoint("https://cloud.appwrite.io/v1")
        .setProject(ProcessInfo.processInfo.environment["APPWRITE_FUNCTION_PROJECT_ID"])
-    
+
     if let jwt = context.req.headers["x-appwrite-user-jwt"] {
         client.setJWT(jwt)
     } else {
@@ -1851,6 +1962,7 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     return context.res.send("Document created")
 }
 ```
+
 ```csharp
 using Appwrite;
 using Appwrite.Services;
@@ -1890,6 +2002,7 @@ namespace DotNetRuntime
     }
 }
 ```
+
 ```kotlin
 package io.openruntimes.kotlin.src
 
@@ -1930,6 +2043,7 @@ class Main {
     }
 }
 ```
+
 ```java
 package io.openruntimes.java.src;
 
@@ -1943,7 +2057,7 @@ public class Main {
         Client client = new Client()
             .setEndpoint("https://cloud.appwrite.io/v1")
             .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
-                
+
         if (context.req.headers.containsKey("x-appwrite-user-jwt")) {
             client.setJWT(context.req.headers.get("x-appwrite-user-jwt"));
         } else {
@@ -1969,6 +2083,7 @@ public class Main {
     }
 }
 ```
+
 {% /multicode %}
 
 # Code structure {% #code-structure %}
@@ -1977,12 +2092,14 @@ As your functions grow, you may find yourself needing to split your code into mu
 
 {% tabs %}
 {% tabsitem #nodejs title="Node.js" %}
+
 ```js
 // src/utils.js
 export function add(a, b) {
     return a + b;
 }
 ```
+
 ```js
 // src/main.js
 import { add } from './utils.js';
@@ -1991,9 +2108,11 @@ export default function ({ res }) {
     return res.send(add(1, 2));
 }
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #php title="PHP" %}
+
 ```php
 <?php
 // src/utils.php
@@ -2001,6 +2120,7 @@ function add($a, $b) {
     return $a + $b;
 }
 ```
+
 ```php
 <?php
 // src/main.php
@@ -2010,14 +2130,17 @@ return function ($context) {
     return $context->res->send(add(1, 2));
 };
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #python title="Python" %}
+
 ```python
 # src/utils.py
 def add(a, b):
     return a + b
 ```
+
 ```python
 # src/main.py
 from .utils import add
@@ -2025,15 +2148,18 @@ from .utils import add
 def main(context):
     return context.res.send(add(1, 2))
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #ruby title="Ruby" %}
+
 ```ruby
 # lib/utils.rb
 def add(a, b)
     return a + b
 end
 ```
+
 ```ruby
 # lib/main.rb
 require_relative 'utils'
@@ -2042,15 +2168,18 @@ def main(context)
     return context.res.send(add(1, 2))
 end
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #deno title="Deno" %}
+
 ```deno
 // src/utils.ts
 export function add(a: number, b: number): number {
     return a + b;
 }
 ```
+
 ```deno
 // src/main.ts
 import { add } from './utils.ts';
@@ -2059,15 +2188,18 @@ export default function ({res}: {res: any}) {
     return res.send(add(1, 2));
 }
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #dart title="Dart" %}
+
 ```dart
 // lib/utils.dart
 int add(int a, int b) {
     return a + b;
 }
 ```
+
 ```dart
 // lib/main.dart
 import 'dart:async';
@@ -2078,15 +2210,18 @@ Future<dynamic> main(final context) async {
     return context.res.send(add(1, 2));
 }
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #swift title="Swift" %}
+
 ```swift
 // Sources/utils.swift
 func add(_ a: Int, _ b: Int) -> Int {
     return a + b
 }
 ```
+
 ```swift
 // Sources/index.swift
 import Foundation
@@ -2095,9 +2230,11 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     return context.res.send(add(1, 2))
 }
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #dotnet title=".NET" %}
+
 ```csharp
 // src/Utils.cs
 namespace DotNetRuntime
@@ -2111,6 +2248,7 @@ namespace DotNetRuntime
     }
 }
 ```
+
 ```csharp
 // src/Index.cs
 namespace DotNetRuntime
@@ -2123,9 +2261,11 @@ namespace DotNetRuntime
     }
 }
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #kotlin title="Kotlin" %}
+
 ```kotlin
 // src/Utils.kt
 package io.openruntimes.kotlin.src
@@ -2136,6 +2276,7 @@ object Utils {
     }
 }
 ```
+
 ```kotlin
 // src/Main.kt
 package io.openruntimes.kotlin.src
@@ -2150,9 +2291,11 @@ class Main {
     }
 }
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #java title="Java" %}
+
 ```java
 // src/Utils.java
 package io.openruntimes.java.src;
@@ -2163,6 +2306,7 @@ class Utils {
     }
 }
 ```
+
 ```java
 package io.openruntimes.java.src;
 
@@ -2176,5 +2320,6 @@ public class Main {
     }
 }
 ```
+
 {% /tabsitem %}
 {% /tabs %}

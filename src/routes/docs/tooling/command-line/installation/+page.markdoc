@@ -8,9 +8,9 @@ The [Appwrite CLI](https://github.com/appwrite/sdk-for-cli) is a command-line ap
 
 # Installation {% #Installation %}
 
-The CLI is packaged both as an  [npm module](https://www.npmjs.com/package/appwrite-cli)  as well as a  [standalone binary](https://github.com/appwrite/sdk-for-cli/releases/latest)  for your operating system, making it completely dependency free, platform independent and language agnostic.
+The CLI is packaged both as an [npm module](https://www.npmjs.com/package/appwrite-cli) as well as a [standalone binary](https://github.com/appwrite/sdk-for-cli/releases/latest) for your operating system, making it completely dependency free, platform independent and language agnostic.
 
-If you plan to use the CLI to initialize new Appwrite Functions, ensure that  [Git is installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)  on your machine.
+If you plan to use the CLI to initialize new Appwrite Functions, ensure that [Git is installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) on your machine.
 
 ## Install with npm {% #install-with-npm %}
 
@@ -23,7 +23,6 @@ npm install -g appwrite-cli
 ## Install with script {% #install-with-script %}
 
 For a completely dependency-free installation, the CLI also ships with a convenient installation script for your operating system
-
 
 {% tabs %}
 {% tabsitem #macos title="macOS" %}
@@ -39,18 +38,23 @@ or terminal
 ```sh
 curl -sL https://appwrite.io/cli/install.sh | bash
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #windows title="Windows" %}
+
 ```sh
 iwr -useb https://appwrite.io/cli/install.ps1 | iex
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #linux title="Linux" %}
+
 ```sh
 curl -sL https://appwrite.io/cli/install.sh | bash
 ```
+
 {% /tabsitem %}
 {% /tabs %}
 
@@ -82,8 +86,8 @@ By default, requests to domains with self-signed SSL certificates (or no certifi
 ```sh
 appwrite client --selfSigned true
 ```
-{% /info %}
 
+{% /info %}
 
 ## Next steps {% #next-steps %}
 
@@ -143,18 +147,23 @@ or terminal
 ```sh
 rm -f /usr/local/bin/appwrite | bash
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #windows title="Windows" %}
+
 ```sh
 $APPWRITE_INSTALL_DIR = Join-Path -Path $env:LOCALAPPDATA -ChildPath "Appwrite"; Remove-Item -Force -Path $APPWRITE_INSTALL_DIR
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #linux title="Linux" %}
+
 ```sh
 rm -f /usr/local/bin/appwrite | bash
 ```
+
 {% /tabsitem %}
 {% /tabs %}
 
@@ -162,20 +171,26 @@ You can also remove the configuration, cookies, and API Keys the Appwrite CLI st
 
 {% tabs %}
 {% tabsitem #macos title="macOS" %}
+
 ```sh
 rm -rf ~/.appwrite | bash
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #windows title="Windows" %}
+
 ```sh
 $APPWRITE_CONFIG_DIR = Join-Path -Path $env:UserProfile -ChildPath ".appwrite"; Remove-Item -Recurse -Force -Path $APPWRITE_CONFIG_DIR
 ```
+
 {% /tabsitem %}
 
 {% tabsitem #linux title="Linux" %}
+
 ```sh
 rm -rf ~/.appwrite | bash
 ```
+
 {% /tabsitem %}
 {% /tabs %}

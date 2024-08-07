@@ -6,6 +6,7 @@ difficulty: beginner
 readtime: 5
 back: /docs/quick-starts
 ---
+
 Learn how to setup your first Deno project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
@@ -28,13 +29,13 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 ![Create project screen](/images/docs/quick-starts/integrate-server.png)
 {% /only_light %}
 
-| Category  {% width=120 %} | Required scopes       | Purpose |
-|-----------|-----------------------|---------|
-| Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
-|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
-|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
-|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
-|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+| Category {% width=120 %} | Required scopes     | Purpose                                                                                                     |
+| ------------------------ | ------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Database                 | `databases.write`   | Allows API key to create, update, and delete [databases](/docs/products/databases/databases).               |
+|                          | `collections.write` | Allows API key to create, update, and delete [collections](/docs/products/databases/collections).           |
+|                          | `attributes.write`  | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
+|                          | `documents.read`    | Allows API key to read [documents](/docs/products/databases/documents).                                     |
+|                          | `documents.write`   | Allows API key to create, update, and delete [documents](/docs/products/databases/documents).               |
 
 Other scopes are optional.
 
@@ -76,14 +77,14 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 Open `mod.ts` in your IDE and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
 ```ts
-import { Client, ID, Databases, Models } from "https://deno.land/x/appwrite/mod.ts";
+import { Client, ID, Databases, Models } from 'https://deno.land/x/appwrite/mod.ts';
 
 const client: Client = new Client();
 
 client
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<YOUR_PROJECT_ID>")
-    .setKey("<YOUR_API_KEY>");
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
 ```
 
 {% /section %}
@@ -104,30 +105,18 @@ interface Todo {
 }
 
 async function prepareDatabase(): Promise<void> {
-    todoDatabase = await databases.create(
-        ID.unique(),
-        'TodosDB'
-    );
+    todoDatabase = await databases.create(ID.unique(), 'TodosDB');
 
-    todoCollection = await databases.createCollection(
-        todoDatabase.$id,
-        ID.unique(),
-        'Todos'
-    );
+    todoCollection = await databases.createCollection(todoDatabase.$id, ID.unique(), 'Todos');
 
-    await databases.createStringAttribute(
-        todoDatabase.$id,
-        todoCollection.$id,
-        'title',
-        255,
-        true
-    );
+    await databases.createStringAttribute(todoDatabase.$id, todoCollection.$id, 'title', 255, true);
 
     await databases.createStringAttribute(
         todoDatabase.$id,
         todoCollection.$id,
         'description',
-        255, false,
+        255,
+        false,
         'This is a test description'
     );
     await databases.createBooleanAttribute(
@@ -158,28 +147,13 @@ async function seedDatabase(): Promise<void> {
 
     const testTodo3: Todo = {
         title: 'Cut the apples',
-        description: 'Don\'t forget to pack them in a box',
+        description: "Don't forget to pack them in a box",
         isComplete: false
     };
 
-    await databases.createDocument(
-        todoDatabase.$id,
-        todoCollection.$id,
-        ID.unique(),
-        testTodo1
-    );
-    await databases.createDocument(
-        todoDatabase.$id,
-        todoCollection.$id,
-        ID.unique(),
-        testTodo2
-    );
-    await databases.createDocument(
-        todoDatabase.$id,
-        todoCollection.$id,
-        ID.unique(),
-        testTodo3
-    );
+    await databases.createDocument(todoDatabase.$id, todoCollection.$id, ID.unique(), testTodo1);
+    await databases.createDocument(todoDatabase.$id, todoCollection.$id, ID.unique(), testTodo2);
+    await databases.createDocument(todoDatabase.$id, todoCollection.$id, ID.unique(), testTodo3);
 }
 ```
 
@@ -191,13 +165,12 @@ Run the functions to by calling `runAllTasks();`.
 
 ```ts
 async function getTodos(): Promise<void> {
-    const todos = await databases.listDocuments(
-        todoDatabase.$id,
-        todoCollection.$id
-    );
+    const todos = await databases.listDocuments(todoDatabase.$id, todoCollection.$id);
 
     todos.documents.forEach((todo: Todo) => {
-        console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
+        console.log(
+            `Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`
+        );
     });
 }
 

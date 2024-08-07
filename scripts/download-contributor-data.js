@@ -77,7 +77,7 @@ async function fetchContributors(apiUrl) {
 
 async function main() {
     const contributors = new Set();
-
+    await fetchRepositories();
     for (const repo of ['appwrite/appwrite', 'appwrite/console', 'appwrite/sdk-generator']) {
         console.log(`Fetching contributors for ${repo}...`);
         const url = `https://api.github.com/repos/${repo}/contributors`;
