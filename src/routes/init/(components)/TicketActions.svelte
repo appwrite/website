@@ -19,7 +19,7 @@
     const { copied, copy } = createCopy(ticketUrl);
     $: twitterText = encodeURIComponent(
         [
-            `Join Init and celebrate everything new with @appwrite`,
+            `Join us during the week of August 19–23 to celebrate everything new with @appwrite.`,
             ``,
             `Claim your ticket. ${ticketUrl}`
         ].join('\n')
@@ -62,13 +62,11 @@
     </div>
 {:else}
     <div class="buttons" style:justify-content="space-between">
-        <div class="u-flex u-gap-8">
-            <button class="web-button" on:click={() => (customizing = !customizing)}>
-                <span class="text">Customize</span>
-            </button>
-        </div>
+        <button class="web-button customize-button" on:click={() => (customizing = !customizing)}>
+            <span class="text">Customize</span>
+        </button>
 
-        <div class="u-flex u-gap-8">
+        <div class="u-flex u-gap-8 action-buttons">
             <button class="web-button is-secondary" on:click={copy}>
                 <div class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary" />
                 <span class="text">Copy URL</span>
@@ -108,5 +106,22 @@
         display: flex;
         align-items: center;
         gap: 16px;
+
+        @media screen and (max-width: 1024px) {
+            flex-direction: column;
+
+            .action-buttons {
+                width: 100%;
+            }
+            .web-button {
+                &.customize-button {
+                    width: 100%;
+                }
+
+                &.is-secondary {
+                    width: 100%;
+                }
+            }
+        }
     }
 </style>
