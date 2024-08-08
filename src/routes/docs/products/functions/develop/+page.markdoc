@@ -84,7 +84,7 @@ return function ($context) {
     if ($context->req->method === 'GET') {
         // Send a response with the res object helpers
         // `res.text()` dispatches a string back to the client
-        return $context->res->send('Hello, World!');
+        return $context->res->text('Hello, World!');
     }
 
     // `res.json()` is a handy helper for sending JSON
@@ -312,8 +312,8 @@ public class Main {
         // The `context.getReq()` object contains the request data
         if (context.getReq().getMethod().equals("GET")) {
             // Send a response with the res object helpers
-            // `context.getRes().send()` dispatches a string back to the client
-            return context.getRes().send("Hello, World!");
+            // `context.getRes().text()` dispatches a string back to the client
+            return context.getRes().text("Hello, World!");
         }
 
         Map json = new HashMap<>();
@@ -469,7 +469,7 @@ If you pass data into an Appwrite Function, it'll be found in the request object
 This includes all invocation inputs from Appwrite SDKs, HTTP calls, Appwrite events, or browsers visiting the configured domain. 
 Explore the request object with the following function, which logs all request params to the Appwrite Console.
 
-### Request Types {% #request-types %}
+### Request types {% #request-types %}
 
 {% table %}
 * Request
@@ -522,7 +522,7 @@ return function ($context) {
     $context->log($context->req->queryString);          // Raw query params string. For example "limit=12&offset=50"
     $context->log(json_encode($context->req->query));   // Parsed query params. For example, req.query.limit
 
-    return $context->res->send("All the request parameters are logged to the Appwrite Console.");
+    return $context->res->text("All the request parameters are logged to the Appwrite Console.");
 }
 ```
 ```python
@@ -693,7 +693,7 @@ public class Main {
         context.log(context.getReq().getQueryString());            // Raw query params string. For example "limit=12&offset=50"
         context.log(gson.toString(context.getReq().getQuery()));   // Parsed query params. For example, req.query.limit
 
-        return context.getRes().send("All the request parameters are logged to the Appwrite Console.");
+        return context.getRes().text("All the request parameters are logged to the Appwrite Console.");
     }
 }
 ```
@@ -720,27 +720,26 @@ If you need to send a response to the invoker of the function, such as a user, c
 The response information **will not be logged** to the Appwrite Console. 
 There are several possible ways to send a response, explore them in the following Appwrite Function.
 
-### Response Types {% #response-types %}
+### Response types {% #response-types %}
 
 {% table %}
 * Response
 * Description
 ---
-* `text`
-* Converts the body using UTF-8 encoding into a binary Buffer.
----
-* `binary`
-* Packages binary bytes, the status code, and the headers into an object.
+* `empty`
+* Sends a response with a `code 204 No Content` status.
 ---
 * `json`
 * Converts the data into a JSON string and sets the content-type header to `application/json`.
 ---
-* `empty`
-* Sends a response with a `code 204 No Content` status.
+* `binary`
+* Packages binary bytes, the status code, and the headers into an object.
 ---
 * `redirect`
 * Redirects the client to the specified URL link.
 ---
+* `text`
+* Converts the body using UTF-8 encoding into a binary Buffer.
 {% /table %}
 
 {% multicode %}
@@ -776,11 +775,11 @@ return function ($context) {
         case 'redirect':
             return $context->res->redirect("https://appwrite.io", 301);
         case 'html':
-            return $context->res->send("<h1>This is an HTML response</h1>", 200, [
+            return $context->res->text("<h1>This is an HTML response</h1>", 200, [
                 "content-type" => "text/html"
                 ]);
         default:
-            return $context->res->send("This is a text response");
+            return $context->res->text("This is a text response");
     }
 };
 ```
@@ -826,7 +825,7 @@ export default async ({ req, res, log }) => {
         case 'empty':
             return res.empty();
         case 'json':
-            return res.json({"type": "This is a JSON response"});
+            return res.json({type: "This is a JSON response"});
         case 'redirect':
             return res.redirect("https://appwrite.io", 301);
         case 'html':
@@ -934,13 +933,13 @@ public class Main {
             case "json":
                 HashMap<String, Object> data = new HashMap<>();
                 data.put("type", "This is a JSON response");
-                return context.getRes().send(data);
+                return context.getRes().text(data);
             case "redirect":
                 return context.getRes().redirect("https://appwrite.io", 301);
             case "html":
-                return context.getRes().send("<h1>This is an HTML response</h1>", 200, Map.of("content-type", "text/html"));
+                return context.getRes().text("<h1>This is an HTML response</h1>", 200, Map.of("content-type", "text/html"));
             default:
-                return context.getRes().send("This is a text response");
+                return context.getRes().text("This is a text response");
         }
     }
 }
@@ -1013,7 +1012,7 @@ return function ($context) {
     $context->log("This function was called with " . $context->req->method . " method");
     $context->error("This is an error, use for logging errors to console");
 
-    return $context->send("Check the Appwrite Console to see logs and errors!");
+    return $context->text("Check the Appwrite Console to see logs and errors!");
 };
 ```
 ```python
@@ -1106,7 +1105,7 @@ public class Main {
         context.log("This function was called with " + context.req.method + " method");
         context.error("This is an error, use for logging errors to console");
 
-        return context.getRes().send("Check the Appwrite Console to see logs and errors!");
+        return context.getRes().text("Check the Appwrite Console to see logs and errors!");
     }
 }
 ```
@@ -1166,7 +1165,7 @@ export default async ({ req, res, log }) => {
 <?php
 
 return function ($context) {
-    return $context->res->send(getenv('MY_VAR'));
+    return $context->res->text(getenv('MY_VAR'));
 };
 ```
 ```python
@@ -1413,10 +1412,10 @@ return function ($context) {
         );
     } catch (Exception $e) {
         $context->error("Failed to create document: " . $e->getMessage());
-        return $context->res->send("Failed to create document");
+        return $context->res->text("Failed to create document");
     }
 
-    return $context->res->send("Document created");
+    return $context->res->text("Document created");
 };
 ```
 ```python
@@ -1445,9 +1444,9 @@ def main(context):
         )
     except Exception as e:
         context.error("Failed to create document: " + e.message)
-        return context.response.send("Failed to create document")
+        return context.response.text("Failed to create document")
 
-    return context.response.send("Document created")
+    return context.response.text("Document created")
 ```
 ```ruby
 require "appwrite"
@@ -1471,10 +1470,10 @@ def main(context)
         )
     rescue Exception => e
         context.error("Failed to create document: " + e.message)
-        return context.response.send("Failed to create document")
+        return context.response.text("Failed to create document")
     end
 
-    return context.response.send("Document created")
+    return context.response.text("Document created")
 end
 ```
 ```deno
@@ -1585,10 +1584,10 @@ namespace DotNetRuntime
                     data: new Dictionary<string, object>());
             } catch (Exception e) {
                 Context.Error("Failed to create document: " + e.Message);
-                return Context.Response.Send("Failed to create document");
+                return Context.Response.Text("Failed to create document");
             }
     
-            return Context.Response.Send("Document created");
+            return Context.Response.Text("Document created");
         }
     }
 }
@@ -1719,7 +1718,7 @@ return function ($context) {
     if (isset($context->req->headers['x-appwrite-user-jwt'])) {
         $client->setJWT($context->req->headers['x-appwrite-user-jwt']);
     } else {
-        return $context->res->send("Please sign in, JWT not found");
+        return $context->res->text("Please sign in, JWT not found");
     }
     
     $databases = new Databases($client);
@@ -1733,10 +1732,10 @@ return function ($context) {
         );
     } catch (Exception $e) {
         $context->error("Failed to create document: " . $e->getMessage());
-        return $context->res->send("Failed to create document");
+        return $context->res->text("Failed to create document");
     }
 
-    return $context->res->send("Document created");
+    return $context->res->text("Document created");
 };
 ```
 ```python
@@ -1768,9 +1767,9 @@ def main(context):
         )
     except Exception as e:
         context.error("Failed to create document: " + e.message)
-        return context.response.send("Failed to create document")
+        return context.response.text("Failed to create document")
 
-    return context.response.send("Document created")
+    return context.response.text("Document created")
 ```
 ```ruby
 require "appwrite"
@@ -1784,7 +1783,7 @@ def main(context)
     if context.request.headers['x-appwrite-user-jwt']
         client.set_jwt(context.request.headers['x-appwrite-user-jwt'])
     else
-        return context.response.send("Please sign in, JWT not found")
+        return context.response.text("Please sign in, JWT not found")
     end
 
     databases = Appwrite::Databases.new(client)
@@ -1793,10 +1792,10 @@ def main(context)
         databases.create_document('<DATABASE_ID>', '[COLLECTION_ID]', Appwrite::ID.unique(), {})
     rescue Appwrite::Exception => e
         context.error("Failed to create document: " + e.message)
-        return context.response.send("Failed to create document")
+        return context.response.text("Failed to create document")
     end
 
-    return context.response.send("Document created")
+    return context.response.text("Document created")
 end
 ```
 ```deno
@@ -2046,7 +2045,7 @@ function add($a, $b) {
 require_once(__DIR__ . '/utils.php');
 
 return function ($context) {
-    return $context->res->send(add(1, 2));
+    return $context->res->text(add(1, 2));
 };
 ```
 {% /tabsitem %}
