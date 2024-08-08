@@ -3,32 +3,32 @@
     import { Main } from '$lib/layouts';
     import { addDays, toReleaseDate } from '$lib/utils/date';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
-    import { fade } from 'svelte/transition';
     import DayCard, { type DayType } from './(components)/DayCard.svelte';
     import Lockup from './(components)/Hero.svelte';
-    import Video from './(components)/Video.svelte';
     import CountdownCard from './(components)/CountdownCard.svelte';
-    import Day1 from '$routes/init-0/(days)/Day1.svelte';
+    import { Animations } from './(animations)';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
     const ogImage = buildOpenGraphImage('init', description);
 
     let base = new Date('2024-08-19T15:00:00.000Z');
-    const kickoff = new Date('2024-08-23T15:00:00.000Z');
 
     $: days = [
         {
-            title: 'Messaging',
-            release: base
+            title: 'Kickoff',
+            release: base,
+            animation: Animations.LocalDev
         },
         {
-            title: 'SSR',
-            release: addDays(base, 1)
+            title: 'CLI',
+            release: addDays(base, 1),
+            animation: Animations.CLI
         },
         {
-            title: 'Enum and 2FA',
-            release: addDays(base, 2)
+            title: 'Functions',
+            release: addDays(base, 2),
+            animation: Animations.Functions
         },
         {
             title: 'Operators',
@@ -76,13 +76,12 @@
         <div class="day-cards">
             {#each days as day, i (day.release.toISOString())}
                 <DayCard {day} number={i}>
-                    <div class="web-card is-normal has-border-gradient">
-                        <h3 class="web-title web-u-color-text-primary">{day.title}</h3>
-                    </div>
+                    <svelte:component this={day.animation} />
                 </DayCard>
             {/each}
         </div>
         <hr />
+        <button on:click={ff}>ff</button>
         <div class="days">
             {#each days as day, i}
                 {@const date = `DAY ${i} - ${toReleaseDate(day.release)}`}
@@ -159,6 +158,7 @@
     .days {
         position: relative;
         margin-block-start: 5rem;
+        overflow: hidden;
 
         &::before {
             /* Gradient line */
@@ -176,22 +176,6 @@
                 hsl(var(--web-color-subtle)) 90%,
                 transparent 100%
             );
-        }
-
-        :global(h2) {
-            position: relative;
-            margin-block-end: 1rem;
-
-            &:not(:first-child) {
-                margin-block-start: 5rem;
-            }
-
-            :global(.web-dot) {
-                position: absolute;
-                left: -40px;
-                top: 50%;
-                transform: translate(-50%, -50%);
-            }
         }
     }
 </style>

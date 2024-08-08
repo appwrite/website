@@ -47,8 +47,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 3rem;
-        line-height: 3rem;
+        height: 1rem;
+        line-height: 1rem;
         transition: 0.5s ease;
     }
 </style>

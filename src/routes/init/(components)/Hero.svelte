@@ -15,6 +15,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 0 24px;
         position: relative;
         background: linear-gradient(
             -45deg,
