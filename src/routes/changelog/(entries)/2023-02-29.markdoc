@@ -1,6 +1,6 @@
 ---
 layout: changelog
-title: "Introducing new Database operators: or & contains query methods"
+title: "New Database operators: OR & contains query methods"
 date: 2024-02-29
 cover: /images/changelog/2024-02-29.png
 ---
