@@ -299,10 +299,16 @@
     "className": "web-icon-x",
     "unicode": "&#59954;"
   },
-  "youtube": {
+  "ycombinator": {
     "encodedCode": "\\ea33",
     "prefix": "web-icon",
-    "className": "web-icon-youtube",
+    "className": "web-icon-ycombinator",
     "unicode": "&#59955;"
+  },
+  "youtube": {
+    "encodedCode": "\\ea34",
+    "prefix": "web-icon",
+    "className": "web-icon-youtube",
+    "unicode": "&#59956;"
   }
 }
