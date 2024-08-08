@@ -11,6 +11,7 @@
     import FooterNav from '../lib/components/FooterNav.svelte';
     import MainFooter from '../lib/components/MainFooter.svelte';
     import DeveloperCard from './DeveloperCard.svelte';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -104,7 +105,7 @@
                                 the frameworks and languages of your choice.
                             </p>
                             <a
-                                href="https://cloud.appwrite.io"
+                                href={PUBLIC_APPWRITE_DASHBOARD}
                                 class="web-button is-full-width-mobile u-margin-block-start-32"
                             >
                                 <span class="text">Get started</span>
