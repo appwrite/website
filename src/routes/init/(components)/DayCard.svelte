@@ -4,34 +4,48 @@
     export type DayType = {
         title: string;
         release: Date;
-        graphic?: SvelteComponent;
+        animation?: typeof SvelteComponent;
     };
 </script>
 
 <script lang="ts">
     import { createCountdown } from '../helpers';
     import Counter from './Counter.svelte';
+    import { format } from 'date-fns';
 
-    export let day: DayType;
     export let number: number;
+    export let day: DayType;
 
     const { hasReleased, days, hours, minutes, seconds } = createCountdown(day.release);
 </script>
 
-{#if hasReleased}
-    <div class="day">
-        <div class="circle" aria-hidden />
-        <span class="web-eyebrow web-u-color-text-primary">Day {number}</span>
-        <h2 class="web-label web-u-color-text-primary">{day.title}</h2>
+<div class="day">
+    {#if hasReleased}
+        <div style:z-index="10" style="margin-top: auto; margin-bottom: 0;">
+            <span
+                class="web-u-color-text-primary web-u-uppercase"
+                style:opacity="0.6"
+                style:margin-bottom="-8px"
+                style:display="block"
+            >
+                Day {number}
+            </span>
+            <h2 class="web-label web-u-color-text-primary">
+                {day.title}
+            </h2>
+        </div>
+
         <div class="slot-wrapper">
             <slot />
         </div>
-    </div>
-{:else}
-    <div class="release">
-        <span class="web-eyebrow web-u-color-text-primary">Day {number}</span>
-        <div class="bottom">
-            <div class="countdown web-title">
+    {:else}
+        <div style:z-index="10" style="margin-top: auto; margin-bottom: 0;">
+            <span
+                class="web-u-color-text-primary web-u-uppercase"
+                style:opacity="0.6"
+                style:margin-bottom="-8px"
+                style:display="block"
+            >
                 {#if $hours > 24}
                     {$days} {$days > 1 ? 'days' : 'day'}
                 {:else}
@@ -39,17 +53,21 @@
                         value={$seconds}
                     />
                 {/if}
-            </div>
+            </span>
+            <h2 class="web-label web-u-color-text-primary">
+                {format(day.release, 'MMMM dd')}
+            </h2>
+        </div>
+        <div class="overlay">
             <a href="/init/tickets" class="web-button is-secondary">Register</a>
         </div>
-    </div>
-{/if}
+    {/if}
+</div>
 
 <style lang="scss">
     @use '$scss/abstract/mixins/border-gradient' as gradients;
 
-    .day,
-    .release {
+    .day {
         @include gradients.border-gradient;
         --m-border-radius: 1rem;
         --m-border-gradient-before: linear-gradient(
@@ -58,67 +76,66 @@
             rgba(255, 255, 255, 0) 125.11%
         );
 
+        aspect-ratio: 5 / 2;
+        padding: 20px;
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         position: relative;
-
+        gap: 0;
         background: hsl(var(--web-color-subtle));
         overflow: hidden;
-
-        height: 7.5rem;
-        padding: 1.25rem;
-
         flex: 0 0 var(--day-min-w);
-    }
 
-    .day {
+        &::before {
+            z-index: 1000;
+        }
+
+        .overlay {
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                z-index: 1;
+                background: radial-gradient(
+                    circle farthest-corner at 400px 100px,
+                    hsl(var(--web-color-background) / 0) 0%,
+                    hsl(var(--web-color-background)) 50%,
+                    hsl(var(--web-color-background)) 100%
+                );
+            }
+        }
+
         h2 {
             margin-block-start: 0.5rem;
             position: relative;
             max-width: 50%;
         }
 
-        /* .circle {
-            content: '';
-            background: radial-gradient(
-                hsl(var(--web-color-accent)) 0%,
-                hsl(var(--web-color-accent) / 0) 70%
-            );
-            opacity: 0.24;
-
-            --size: 500px;
-            width: var(--size);
-            height: var(--size);
-
+        .web-button {
             position: absolute;
-            right: 0;
-            top: 0;
-            translate: 60% -60%;
-            z-index: 0;
-            pointer-events: none;
-        } */
+            right: 24px;
+            bottom: 24px;
+            z-index: 10;
+        }
 
         .slot-wrapper {
             position: absolute;
             height: 100%;
-            inset-inline-end: 0;
-            inset-block-end: 0;
-            translate: 50% 20%;
-            pointer-events: none;
-        }
-    }
-
-    .release {
-        justify-content: center;
-        gap: 0.5rem;
-
-        .bottom {
+            width: 100%;
+            top: 50%;
+            left: 0;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .countdown {
-            color: hsl(var(--web-color-primary));
+            translate: 0 -50%;
+            pointer-events: none;
+
+            a {
+                margin-top: auto;
+                margin-bottom: 24px;
+            }
         }
     }
 </style>
