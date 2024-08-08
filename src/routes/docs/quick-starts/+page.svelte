@@ -120,22 +120,28 @@
                     href: 'python'
                 },
                 {
-                    title: '.NET',
-                    icon: 'icon-dotnet',
-                    image: '/images/blog/placeholder.png',
-                    href: 'dotnet'
-                },
-                {
                     title: 'Dart',
                     icon: 'icon-dart',
                     image: '/images/blog/placeholder.png',
                     href: 'dart'
                 },
                 {
+                    title: 'PHP',
+                    icon: 'icon-php',
+                    image: '/images/blog/placeholder.png',
+                    href: 'php'
+                },
+                 {
                     title: 'Ruby',
                     icon: 'icon-ruby',
                     image: '/images/blog/placeholder.png',
                     href: 'ruby'
+                },
+                {
+                    title: '.NET',
+                    icon: 'icon-dotnet',
+                    image: '/images/blog/placeholder.png',
+                    href: 'dotnet'
                 },
                 {
                     title: 'Deno',
@@ -144,16 +150,10 @@
                     href: 'deno'
                 },
                 {
-                    title: 'PHP',
-                    icon: 'icon-php',
+                    title: 'Go',
+                    icon: 'icon-go',
                     image: '/images/blog/placeholder.png',
-                    href: 'php'
-                },
-                {
-                    title: 'Kotlin',
-                    icon: 'icon-kotlin',
-                    image: '/images/blog/placeholder.png',
-                    href: 'kotlin'
+                    href: 'go'
                 },
                 {
                     title: 'Swift',
@@ -162,11 +162,11 @@
                     href: 'swift'
                 },
                 {
-                    title: 'Go',
-                    icon: 'icon-go',
+                    title: 'Kotlin',
+                    icon: 'icon-kotlin',
                     image: '/images/blog/placeholder.png',
-                    href: 'go'
-                }
+                    href: 'kotlin'
+                },
             ]
         }
     ];
