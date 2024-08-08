@@ -60,7 +60,7 @@ docker compose exec appwrite vars
 Once the AppSignal provider is configured, run the following command in your terminal:
 
 ```bash
-docker compose exec appwrite ssl --domain=“wrongdomain.com”
+docker compose exec appwrite ssl --domain="wrongdomain.com"
 ```
 
 Doing so will show errors in your AppSignal **Errors** page.
