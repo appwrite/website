@@ -7,6 +7,11 @@
     import Lockup from './(components)/Hero.svelte';
     import CountdownCard from './(components)/CountdownCard.svelte';
     import { Animations } from './(animations)';
+    import Day1 from './(days)/Day1.svelte';
+    import Day2 from './(days)/Day2.svelte';
+    import Day3 from './(days)/Day3.svelte';
+    import Day4 from './(days)/Day4.svelte';
+    import Day5 from './(days)/Day5.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
@@ -16,22 +21,22 @@
 
     $: days = [
         {
-            title: 'Kickoff',
+            title: 'Local development',
             release: base,
             animation: Animations.LocalDev
         },
         {
-            title: 'CLI',
+            title: 'New Appwrtie CLI',
             release: addDays(base, 1),
             animation: Animations.CLI
         },
         {
-            title: 'Functions',
+            title: 'Function ecosystem',
             release: addDays(base, 2),
             animation: Animations.Functions
         },
         {
-            title: 'Go support',
+            title: 'GO support',
             release: addDays(base, 3),
             animation: Animations.Go
         },
@@ -74,6 +79,8 @@
         </div>
     </div>
 
+    <button on:click={ff}>ff</button>
+
     <div class="web-container">
         <div class="day-cards">
             {#each days as day, i (day.release.toISOString())}
@@ -83,17 +90,27 @@
             {/each}
         </div>
         <hr />
-        <button on:click={ff}>ff</button>
         <div class="days">
             {#each days as day, i}
                 {@const date = `DAY ${i} - ${toReleaseDate(day.release)}`}
-
-                <h2 class="web-eyebrow web-u-color-text-primary">
-                    <div class="web-dot" />
-                    {date}
-                    <span class="web-u-color-text-accent">_</span>
-                </h2>
-                <CountdownCard date={day.release} />
+                {#if i === 0}
+                    <Day1 {date} release={day.release} />
+                {:else if i === 1}
+                    <Day2 {date} release={day.release} />
+                {:else if i === 2}
+                    <Day3 {date} release={day.release} />
+                {:else if i === 3}
+                    <Day4 {date} release={day.release} />
+                {:else if i === 4}
+                    <Day5 {date} release={day.release} />
+                {:else}
+                    <h2 class="web-eyebrow web-u-color-text-primary">
+                        <div class="web-dot" />
+                        {date}
+                        <span class="web-u-color-text-accent">_</span>
+                    </h2>
+                    <CountdownCard date={day.release} />
+                {/if}
             {/each}
         </div>
     </div>
@@ -160,7 +177,22 @@
     .days {
         position: relative;
         margin-block-start: 5rem;
-        overflow: hidden;
+
+        :global(h2) {
+            position: relative;
+            margin-block-end: 1rem;
+
+            &:not(:first-child) {
+                margin-block-start: 5rem;
+            }
+
+            :global(.web-dot) {
+                position: absolute;
+                left: -40px;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
 
         &::before {
             /* Gradient line */
