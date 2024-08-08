@@ -27,7 +27,7 @@ appwrite run functions
 
  runtime   | entrypoint  | path                           | commands     
 -----------|-------------|--------------------------------|--------------
- node-16.0 | src/main.js | functions/\<FUNCTION_ID\>      | npm install  
+ node-16.0 | src/main.js | functions/<FUNCTION_ID>      | npm install  
 
 ℹ Info: If you wish to change your local settings, update the appwrite.json file and rerun the 'appwrite run' command.
 ♥ Hint: Permissions, events, CRON and timeouts dont apply when running locally.
