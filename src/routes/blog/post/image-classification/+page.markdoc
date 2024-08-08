@@ -13,7 +13,7 @@ Image classification is an exciting field of computer vision that tries to under
 
 In this article, we’ll go over how the image classification field developed and its most popular architectures and datasets. Then, we’ll run you through implementing it into your Appwrite project using TensorFlow.
 
-# A Brief History of Image Classification
+# A brief history of image classification
 
 Early image classification began in the 1960s and relied on simple algorithms such as nearest neighbours and linear classifiers. During this time, some of the foundations of image classification were invented, such as the Vapnik-Chervonenkis Theory (VC Theory).
 
