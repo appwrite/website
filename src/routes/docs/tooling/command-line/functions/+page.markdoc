@@ -126,7 +126,7 @@ appwrite functions [COMMAND] [OPTIONS]
 * `create [options]`
 * Create a new function. You can pass a list of [permissions](https://appwrite.io/docs/permissions) to allow different project users or teams with access to execute the function using the client API.
 ---
-* `listRuntimes`                    
+* `list-runtimes`                    
 * Get a list of all runtimes that are currently active on your instance.
 ---
 * `get [options]`                    
@@ -138,46 +138,46 @@ appwrite functions [COMMAND] [OPTIONS]
 * `delete [options]`                 
 * Delete a function by its unique ID.
 ---
-* `listDeployments [options]`        
+* `list-deployments [options]`        
 * Get a list of all the project's code deployments. You can use the query params to filter your results.
 ---
-* `createDeployment [options]`       
+* `create-deployment [options]`       
 * Create a new function code deployment. Use this endpoint to upload a new version of your code function. To execute your newly uploaded code, you'll need to update the function's deployment to use your new deployment UID. This endpoint accepts a tar.gz file compressed with your code. Make sure to include any dependencies your code has within the compressed file. You can learn more about code packaging in the [Appwrite Cloud Functions tutorial](https://appwrite.io/docs/functions). Use the "command" param to set the entrypoint used to execute your code.
 ---
-* `getDeployment [options]`          
+* `get-deployment [options]`          
 * Get a code deployment by its unique ID.
 ---
-* `updateDeployment [options]`       
+* `update-deployment [options]`       
 * Update the function code deployment ID using the unique function ID. Use this endpoint to switch the code deployment that should be executed by the execution endpoint.
 ---
-* `deleteDeployment [options]`       
+* `delete-deployment [options]`       
 * Delete a code deployment by its unique ID.
 ---
-* `downloadDeployment [options]`    
+* `download-deployment [options]`    
 * Get a Deployment's contents by its unique ID. This endpoint supports range requests for partial or streaming file download.
 ---
-* `listExecutions [options]`         
+* `list-executions [options]`         
 * Get a list of all the current user function execution logs. You can use the query params to filter your results.
 ---
-* `createExecution [options]`    
+* `create-execution [options]`    
 * Trigger a function execution. The returned object will return you the current execution status. You can ping the 'Get Execution' endpoint to get updates on the current execution status. Once this endpoint is called, your function execution process will start asynchronously.
 ---
-* `getExecution [options]`           
+* `get-execution [options]`           
 * Get a function execution log by its unique ID.
 ---
-* `listVariables [options]`          
+* `list-variables [options]`          
 * Get a list of all variables of a specific function.
 ---
-* `createVariable [options]`         
+* `create-variable [options]`         
 * Create a new function environment variable. These variables can be accessed in the function at runtime as environment variables.
 ---
-* `getVariable [options]`            
+* `get-variable [options]`            
 * Get a variable by its unique ID.
 ---
-* `updateVariable [options]`         
+* `update-variable [options]`         
 * Update a variable by its unique ID.
 ---
-* `deleteVariable [options]`        
+* `delete-variable [options]`        
 * Delete a variable by its unique ID.
 ---
 {% /table %}

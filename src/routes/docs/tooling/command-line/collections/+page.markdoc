@@ -151,103 +151,103 @@ appwrite databases [COMMAND] [OPTIONS]
 * Command
 * Description
 ---
-* `listCollections [options]`
+* `list-collections [options]`
 * Get a list of all collections that belong to the provided databaseId. You can use the search parameter to filter your results.
 ---
-* `createCollection [options]`
+* `create-collection [options]`
 * Create a new Collection. Before using this route, you should create a new database resource using either a [server integration](https://appwrite.io/docs/server/databases#databasesCreateCollection) API or directly from your database console.
 ---  
-* `getCollection [options]`
+* `get-collection [options]`
 * Get a collection by its unique ID. This endpoint response returns a JSON object with the collection metadata.
 ---
-* `updateCollection [options]`
+* `update-collection [options]`
 * Update a collection by its unique ID.
 ---
-* `deleteCollection [options]`
+* `delete-collection [options]`
 * Delete a collection by its unique ID. Only users with write permissions have access to delete this resource.
 ---
-* `listAttributes [options]`
+* `list-attributes [options]`
 * List attributes in the collection.
 ---
-* `createBooleanAttribute [options]`
+* `create-boolean-attribute [options]`
 * Create a boolean attribute.
 ---
-* `updateBooleanAttribute [options]`
+* `update-boolean-attribute [options]`
 * Update a boolean attribute. Changing the 'default' value will not update already existing documents.
 ---
-* `createDatetimeAttribute [options]`
+* `create-datetime-attribute [options]`
 * Create a date time attribute according to the ISO 8601 standard.
 ---
-* `updateDatetimeAttribute [options]`
+* `update-datetime-attribute [options]`
 * Update a date time attribute. Changing the 'default' value will not update already existing documents.
 ---
-* `createEmailAttribute [options]`
+* `create-email-attribute [options]`
 * Create an email attribute.
 ---
-* `updateEmailAttribute [options]`
+* `update-email-attribute [options]`
 * Update an email attribute. Changing the 'default' value will not update already existing documents.
 ---
-* `createEnumAttribute [options]`
+* `create-enum-attribute [options]`
 * Create an enumeration attribute. The 'elements' param acts as a white-list of accepted values for this attribute.
 ---
-* `updateEnumAttribute [options]`
+* `update-enum-attribute [options]`
 * Update an enum attribute. Changing the 'default' value will not update already existing documents.
 ---  
-* `createFloatAttribute [options]`
+* `create-float-attribute [options]`
 * Create a float attribute. Optionally, minimum and maximum values can be provided.
 ---
-* `updateFloatAttribute [options]`
+* `update-float-attribute [options]`
 * Update a float attribute. Changing the 'default' value will not update already existing documents.
 ---  
-* `createIntegerAttribute [options]`
+* `create-integer-attribute [options]`
 * Create an integer attribute. Optionally, minimum and maximum values can be provided.
 ---
-* `updateIntegerAttribute [options]`
+* `update-integer-attribute [options]`
 * Update an integer attribute. Changing the 'default' value will not update already existing documents.
 ---
-* `createIpAttribute [options]`     
+* `create-ip-attribute [options]`     
 * Create IP address attribute.
 ---
-* `updateIpAttribute [options]`
+* `update-ip-attribute [options]`
 * Update an ip attribute. Changing the 'default' value will not update already existing documents.
 ---
-* `createRelationshipAttribute [options]`
+* `create-relationship-attribute [options]`
 * Create relationship attribute. [Learn more about relationship attributes](https://appwrite.io/docs/databases-relationships#relationship-attributes).
 ---
-* `createStringAttribute [options]`
+* `create-string-attribute [options]`
 * Create a string attribute.
 ---
-* `updateStringAttribute [options]`
+* `update-string-attribute [options]`
 * Update a string attribute. Changing the 'default' value will not update already existing documents.
 ---
-* `createUrlAttribute [options]`          
+* `create-url-attribute [options]`          
 * Create a URL attribute.
 ---
-* `updateUrlAttribute [options]`
+* `update-url-attribute [options]`
 * Update an url attribute. Changing the 'default' value will not update already existing documents.
 ---
-* `getAttribute [options]`
+* `get-attribute [options]`
 * Get attribute by ID.
 ---
-* `deleteAttribute [options]` 
+* `delete-attribute [options]` 
 * Deletes an attribute.
 ---
-* `updateRelationshipAttribute [options]`  
+* `update-relationship-attribute [options]`  
 * Update relationship attribute. [Learn more about relationship attributes](https://appwrite.io/docs/databases-relationships#relationship-attributes).
 ---
-* `listIndexes [options]`
+* `list-indexes [options]`
 * List indexes in the collection.
 ---
-* `createIndex [options]`
+* `create-index [options]`
 * Creates an index on the attributes listed. Your index should include all the attributes you will query in a single request. Attributes can be 'key', 'fulltext', and 'unique'.
 ---
-* `getIndex [options]`
+* `get-index [options]`
 * Get index by ID.
 ---
-* `deleteIndex [options]`
+* `delete-index [options]`
 * Delete an index.
 ---
-* `listCollectionLogs [options]`
+* `list-collection-logs [options]`
 * Get the collection activity logs list by its unique ID.
 ---
 {% /table %}
