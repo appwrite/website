@@ -18,6 +18,40 @@ export type Social = {
     link: string;
 };
 
+export type SocialShareOption = {
+    icon: string;
+    label: string;
+    link: string;
+    type: 'link' | 'copy';
+};
+
+export const socialSharingOptions: Array<SocialShareOption> = [
+    {
+        icon: 'web-icon-x',
+        label: 'Twitter',
+        link: 'https://x.com/intent/post?text={TITLE}\n&url={URL}',
+        type: 'link'
+    },
+    {
+        icon: 'web-icon-linkedin',
+        label: 'LinkedIn',
+        link: 'https://www.linkedin.com/sharing/share-offsite?text={TITLE}\n&url={URL}',
+        type: 'link'
+    },
+    {
+        icon: 'web-icon-ycombinator',
+        label: 'YCombinator',
+        link: 'https://news.ycombinator.com/submitlink?t={TITLE}\n&u={URL}',
+        type: 'link'
+    },
+    {
+        icon: 'web-icon-copy',
+        label: 'Copy',
+        link: '',
+        type: 'copy'
+    }
+]
+
 export const socials: Array<Social> = [
     {
         icon: 'web-icon-discord',

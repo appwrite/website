@@ -1,13 +1,16 @@
 <script lang="ts">
     import { Media } from '$lib/UI';
     import { scroll } from '$lib/animations';
-    import { Article, FooterNav, MainFooter, Newsletter } from '$lib/components';
+    import { Article, FooterNav, MainFooter, Newsletter, Tooltip } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { formatDate } from '$lib/utils/date';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import type { AuthorData, CategoryData, PostsData } from '$routes/blog/content';
     import { BLOG_TITLE_SUFFIX } from '$routes/titles';
     import { getContext } from 'svelte';
+    import { type SocialShareOption, socialSharingOptions } from '$lib/constants';
+    import { copy } from '$lib/utils/copy';
+    import { page } from '$app/stores';
 
     export let title: string;
     export let description: string;
@@ -32,6 +35,32 @@
     }
 
     let readPercentage = 0;
+
+    enum CopyStatus {
+        Copy = 'Copy URL',
+        Copied = 'Copied'
+    }
+
+    let copyText = CopyStatus.Copy;
+    async function handleCopy() {
+        const blogPostUrl = encodeURI(`https://appwrite.io${$page.url.pathname}`)
+
+        await copy(blogPostUrl);
+
+        copyText = CopyStatus.Copied;
+        setTimeout(() => {
+            copyText = CopyStatus.Copy;
+        }, 1000);
+    }
+
+    function getShareLink(shareOption: SocialShareOption): string {
+        const blogPostUrl = encodeURI(`https://appwrite.io${$page.url.pathname}`)
+        const shareableLink = shareOption.link
+            .replace('{TITLE}', title + '.')
+            .replace('{URL}', blogPostUrl);
+
+        return shareableLink;
+    }
 </script>
 
 <svelte:head>
@@ -152,6 +181,48 @@
 										</ul> -->
                                     </div>
                                 {/if}
+
+                                <div class="share-post-section u-flex u-gap-16 u-margin-block-start-16 u-cross-center">
+                                    <span class="web-eyebrow u-padding-inline-end-8" style:color="#adadb0">
+                                        SHARE
+                                    </span>
+
+                                    <ul class="u-flex u-gap-8">
+                                        {#each socialSharingOptions as sharingOption}
+                                            <li class="share-list-item">
+                                                <Tooltip placement="bottom" disableHoverableContent={true}>
+                                                    {#if sharingOption.type === 'link'}
+                                                        <a
+                                                            class="web-icon-button"
+                                                            aria-label={sharingOption.label}
+                                                            href={getShareLink(sharingOption)}
+                                                            target="_blank"
+                                                            rel="noopener, noreferrer"
+                                                        >
+                                                            <span class={sharingOption.icon} aria-hidden="true" />
+                                                        </a>
+                                                    {:else}
+                                                        <button
+                                                            class="web-icon-button"
+                                                            aria-label={sharingOption.label}
+                                                            on:click="{() => handleCopy()}"
+                                                        >
+                                                            <span class={sharingOption.icon} aria-hidden="true" />
+                                                        </button>
+                                                    {/if}
+
+                                                    <svelte:fragment slot="tooltip">
+                                                        {
+                                                            sharingOption.type === 'copy'
+                                                                ? copyText
+                                                                : `Share on ${sharingOption.label}`
+                                                        }
+                                                    </svelte:fragment>
+                                                </Tooltip>
+                                            </li>
+                                        {/each}
+                                    </ul>
+                                </div>
                             </header>
                             {#if cover}
                                 <div class="web-media-container">
@@ -220,5 +291,28 @@
         width: var(--percentage);
         background: hsl(var(--web-color-accent));
         z-index: 10000;
+    }
+
+    @media (min-width: 1024px) {
+      .web-main-article-header {
+        padding-block-end: 0;
+        border-block-end: unset;
+      }
+    }
+
+    .share-post-section {
+      padding: 16px 0;
+      border-block-end: solid 0.0625rem hsl(var(--web-color-border));
+      border-block-start: solid 0.0625rem hsl(var(--web-color-border));
+    }
+
+    .web-icon-button {
+      .web-icon-x {
+        font-size: 16px;
+      }
+
+      .web-icon-copy {
+        font-size: 24px;
+      }
     }
 </style>
