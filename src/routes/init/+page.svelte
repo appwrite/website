@@ -31,12 +31,14 @@
             animation: Animations.Functions
         },
         {
-            title: 'Operators',
-            release: addDays(base, 3)
+            title: 'Go support',
+            release: addDays(base, 3),
+            animation: Animations.Go
         },
         {
-            title: 'New runtimes',
-            release: addDays(base, 4)
+            title: 'Mock numbers',
+            release: addDays(base, 4),
+            animation: Animations.Numbers
         }
     ] as DayType[];
 
