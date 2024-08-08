@@ -186,10 +186,10 @@ appwrite login --report
 Many resources support the option to view them in the console. Use the `--console` flag to get a direct link to the console, and add the optional `--open` flag to automatically open it in the default browser.
 
 ```sh
-appwrite databases getDocument \
-  --databaseId "<DATABASE_ID>" \
-  --collectionId "<COLLECTION_ID>" \
-  --documentId "<DOCUMENT_ID>" \
+appwrite databases get-document \
+  --database-id "<DATABASE_ID>" \
+  --collection-id "<COLLECTION_ID>" \
+  --document-id "<DOCUMENT_ID>" \
   --console --open
 ```
 
@@ -200,7 +200,7 @@ appwrite databases getDocument \
 To create a new user in your project, you can use the create command.
 
 ```sh
-appwrite users create --userId "unique()" \
+appwrite users create --user-id "unique()" \
     --email hello@appwrite.io \
     --password very_strong_password
 ```
@@ -215,33 +215,33 @@ appwrite users list
 
 ## List collections {% #list-collections %}
 
-To get a list of all your [collections](/docs/tooling/command-line/collections), you can use the `listCollections` command.
+To get a list of all your [collections](/docs/tooling/command-line/collections), you can use the `list-collections` command.
 
 ```sh
-appwrite databases listCollections --databaseId "<DATABASE_ID>"
+appwrite databases list-collections --database-id "<DATABASE_ID>"
 ```
 
 If you wish to parse the output from the CLI, you can request the CLI output in JSON format using the `--json` flag
 
 ```sh
-appwrite databases listCollections --databaseId "<DATABASE_ID>" --json
+appwrite databases list-collections --database-id "<DATABASE_ID>" --json
 ```
 
 ## Get collection {% #get-collection %}
 
-To get more information on a particular collection, you can make use of the `getCollection` command and pass in the collectionId.
+To get more information on a particular collection, you can make use of the `get-collection` command and pass in the collection-id.
 
 ```sh
-appwrite databases getCollection --databaseId "<DATABASE_ID>" --collectionId "<COLLECTION_ID>"
+appwrite databases get-collection --database-id "<DATABASE_ID>" --collection-id "<COLLECTION_ID>"
 ```
 
 ## Create document {% #create-document %}
 
-To create a new document in an existing collection, use the `createDocument` command.
+To create a new document in an existing collection, use the `create-document` command.
 
 ```sh
-appwrite databases createDocument \
-    --databaseId "<DATABASE_ID>" --collectionId "<COLLECTION_ID>" \
-    --documentId 'unique()' --data '{ "Name": "Iron Man" }' \
+appwrite databases create-document \
+    --database-id "<DATABASE_ID>" --collection-id "<COLLECTION_ID>" \
+    --document-id 'unique()' --data '{ "Name": "Iron Man" }' \
     --permissions 'read("any")' 'write("team:abc")' 
 ```
