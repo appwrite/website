@@ -4,7 +4,7 @@
     export type DayType = {
         title: string;
         release: Date;
-        animation?: typeof SvelteComponent
+        graphic?: SvelteComponent;
     };
 </script>
 
@@ -21,9 +21,7 @@
 {#if hasReleased}
     <div class="day">
         <div class="circle" aria-hidden />
-        <span class="web-eyebrow web-u-color-text-primary"
-            >Day {number}<span class="web-u-color-text-accent">_</span></span
-        >
+        <span class="web-eyebrow web-u-color-text-primary">Day {number}</span>
         <h2 class="web-label web-u-color-text-primary">{day.title}</h2>
         <div class="slot-wrapper">
             <slot />
@@ -31,9 +29,7 @@
     </div>
 {:else}
     <div class="release">
-        <span class="web-eyebrow web-u-color-text-primary"
-            >Day {number}<span class="web-u-color-text-accent">_</span></span
-        >
+        <span class="web-eyebrow web-u-color-text-primary">Day {number}</span>
         <div class="bottom">
             <div class="countdown web-title">
                 {#if $hours > 24}
@@ -66,7 +62,7 @@
         flex-direction: column;
         position: relative;
 
-        background: hsl(var(--web-color-card));
+        background: hsl(var(--web-color-subtle));
         overflow: hidden;
 
         height: 7.5rem;
