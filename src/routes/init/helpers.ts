@@ -68,10 +68,7 @@ export interface GithubUser {
 
 export async function getGithubUser() {
     try {
-        const identitiesList = await appwriteInit.account.listIdentities();
-        if (!identitiesList.total) return null;
-        const identity = identitiesList.identities[0];
-        const { providerAccessToken, provider } = identity;
+        const { providerAccessToken, provider } = await appwriteInit.account.getSession('current');
         if (provider !== 'github') return null;
 
         const res = await fetch('https://api.github.com/user', {
@@ -123,18 +120,6 @@ export function getMockContributions() {
     return result;
 }
 
-export async function auth(userId: string, secret: string, f = fetch) {
-    const response = await f('/init/tickets/auth', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ userId, secret })
-    });
-
-    return await response.json();
-}
-
 export async function getTicketDocByUser(user: User, f = fetch) {
     return await f(`/init/tickets/get-ticket-doc?user=${JSON.stringify(user)}`).then(
         (res) => res.json() as Promise<TicketDoc>
@@ -174,7 +159,7 @@ export async function getTicketById(id: string, f = fetch) {
 }
 
 export function loginGithub() {
-    appwriteInit.account.createOAuth2Token(
+    appwriteInit.account.createOAuth2Session(
         OAuthProvider.Github,
         `${window.location.origin}/init/tickets?success=1`,
         `${window.location.origin}/init/tickets?error=1`,

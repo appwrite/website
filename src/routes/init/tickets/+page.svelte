@@ -5,6 +5,7 @@
     import Ticket from '../(components)/Ticket.svelte';
     import { getMockContributions, loginGithub } from '../helpers';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
+    import { onMount } from 'svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
