@@ -1,12 +1,13 @@
 <script lang="ts">
     let lines = 2;
     const getRandomHeight = () => Math.floor(Math.random() * 100) + 75;
+
+    const randomDelay = () => Math.floor(Math.random() * 2800);
 </script>
 
 <div class="container">
     <div class="lines">
         {#each Array.from({ length: lines }) as _}
-            {@const randomDelay = () => Math.floor(Math.random() * 2800)}
             <div style:position="relative" class="group">
                 <div
                     class="line"
