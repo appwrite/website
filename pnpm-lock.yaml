@@ -123,6 +123,9 @@ importers:
       prettier-plugin-svelte:
         specifier: ^3.2.5
         version: 3.2.6(prettier@3.3.3)(svelte@4.2.18)
+      reading-time:
+        specifier: ^2.0.0-1
+        version: 2.0.0-1
       remeda:
         specifier: ^2.10.0
         version: 2.10.0
@@ -144,6 +147,9 @@ importers:
       svgtofont:
         specifier: ^4.2.1
         version: 4.2.2
+      text-readability:
+        specifier: ^1.1.0
+        version: 1.1.0
       tslib:
         specifier: ^2.6.3
         version: 2.6.3
@@ -1492,6 +1498,9 @@ packages:
 
   '@types/pg@8.6.1':
     resolution: {integrity: sha512-1Kc4oAGzAl7uqUStZCDvaLFqZrW9qWSjXOmBfdgyBP5La7Us6Mg4GBvRlSoaZMhQF/zSj1C8CtKMBkoiT8eL8w==}
+
+  '@types/pluralize@0.0.29':
+    resolution: {integrity: sha512-BYOID+l2Aco2nBik+iYS4SZX0Lf20KPILP5RGmM1IgzdwNdTs0eebiFriOPcej1sX9mLnSoiNte5zcFxssgpGA==}
 
   '@types/pug@2.0.10':
     resolution: {integrity: sha512-Sk/uYFOBAB7mb74XcpizmH0KOR2Pv3D2Hmrh1Dmy5BmK3MpdSa5kqZcg6EKBdklU0bFXX9gCfzvpnyUehrPIuA==}
@@ -3005,6 +3014,9 @@ packages:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
 
+  normalize-strings@1.1.1:
+    resolution: {integrity: sha512-fARPRdTwmrQDLYhmeh7j/eZwrCP6WzxD6uKOdK/hT/uKACAE9AG2Bc2dgqOZLkfmmctHpfcJ9w3AQnfLgg3GYg==}
+
   normalize.css@8.0.1:
     resolution: {integrity: sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==}
 
@@ -3202,6 +3214,10 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
+  pluralize@8.0.0:
+    resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
+    engines: {node: '>=4'}
+
   pngjs@3.4.0:
     resolution: {integrity: sha512-NCrCHhWmnQklfH4MtJMRjZ2a8c80qXeMlQMv2uVp9ISJMTt562SbGd6n2oq0PaPgKm7Z6pL9E2UlLIhC+SHL3w==}
     engines: {node: '>=4.0.0'}
@@ -3339,6 +3355,9 @@ packages:
   readdirp@3.6.0:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
+
+  reading-time@2.0.0-1:
+    resolution: {integrity: sha512-5Eoo17ZGqH2L0jmMZUNKARiGAX3NCC0LR+mDHTX+nMPqFSRwMQrsxhI9NOSEfzH8E1W5vGAKFcyQAk3Rla1WuA==}
 
   recast@0.23.9:
     resolution: {integrity: sha512-Hx/BGIbwj+Des3+xy5uAtAbdCyqK9y9wbBcDFDYanLS9JnMqf7OeF87HQwUimE87OEc72mr6tkKUKMBBL+hF9Q==}
@@ -3692,6 +3711,10 @@ packages:
       '@types/svgicons2svgfont':
         optional: true
 
+  syllable@5.0.1:
+    resolution: {integrity: sha512-HWtNCp6v7J8H0lrT8j1HHjfOLltRoDcC7QRFVu25p4BE52JqetXG65nqC7CsatT8WQRfY4Qvh93BWJIUxbmXFg==}
+    hasBin: true
+
   symbol-tree@3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
 
@@ -3701,6 +3724,9 @@ packages:
   tar@6.2.1:
     resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
+
+  text-readability@1.1.0:
+    resolution: {integrity: sha512-I1kqUJX8nJwzCvCZSV945sjisi4NBnwZ5iwzzdsRXbqH8fKqhjwZMGdBm01UMb1K1EWrJ7jFozjXUobs7JZA6g==}
 
   text-table@0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
@@ -5631,6 +5657,8 @@ snapshots:
       pg-protocol: 1.6.1
       pg-types: 2.2.0
 
+  '@types/pluralize@0.0.29': {}
+
   '@types/pug@2.0.10': {}
 
   '@types/qs@6.9.15': {}
@@ -7293,6 +7321,8 @@ snapshots:
 
   normalize-path@3.0.0: {}
 
+  normalize-strings@1.1.1: {}
+
   normalize.css@8.0.1: {}
 
   npm-run-path@5.3.0:
@@ -7500,6 +7530,8 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.2
 
+  pluralize@8.0.0: {}
+
   pngjs@3.4.0: {}
 
   postcss-load-config@3.1.4(postcss@8.4.41):
@@ -7610,6 +7642,8 @@ snapshots:
   readdirp@3.6.0:
     dependencies:
       picomatch: 2.3.1
+
+  reading-time@2.0.0-1: {}
 
   recast@0.23.9:
     dependencies:
@@ -8030,6 +8064,12 @@ snapshots:
       - bluebird
       - supports-color
 
+  syllable@5.0.1:
+    dependencies:
+      '@types/pluralize': 0.0.29
+      normalize-strings: 1.1.1
+      pluralize: 8.0.0
+
   symbol-tree@3.2.4: {}
 
   tabbable@6.2.0: {}
@@ -8042,6 +8082,11 @@ snapshots:
       minizlib: 2.1.2
       mkdirp: 1.0.4
       yallist: 4.0.0
+
+  text-readability@1.1.0:
+    dependencies:
+      pluralize: 8.0.0
+      syllable: 5.0.1
 
   text-table@0.2.0: {}
 
