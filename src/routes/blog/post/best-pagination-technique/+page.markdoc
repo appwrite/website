@@ -308,6 +308,7 @@ After running the script, you could already tell that there was a performance bo
 | 80% offset | 424.63 | 5.60 |
 | 90% offset | 482.71 | 5.05 |
 
+![Cursor pagination benchmark](/images/blog/best-pagination-technique/graph2.png)
 
 As you can see, cursor pagination is highly efficient. The graph shows that cursor pagination maintains consistent performance regardless of the offset size, with each query performing as well as the first or last one. Loading the last page of a large list repeatedly can significantly impact performance.
 
