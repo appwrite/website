@@ -59,6 +59,7 @@
         border-radius: var(--p-border-radius, 0.5rem);
         object-fit: cover;
         inline-size: 100%;
+        filter: grayscale(1);
     }
 
     .play {

@@ -5,17 +5,19 @@
     import thumbnail from '../(assets)/thumbnail-localdev.png';
     import { Animations } from '../(animations)';
     import VideoWrapper from '../(components)/VideoWrapper.svelte';
+    import Grid from '../(components)/Grid.svelte';
 
     export let release: Date;
     export let date: string;
 </script>
 
 <Day day={date} {release}>
-    <div class="mosaic">
+    <Grid>
         <a
             href="/blog/post/announcing-appwrite-messaging"
             class="web-card is-normal has-border-gradient"
             style:padding="0"
+            slot="main"
         >
             <div style:padding="2rem" style:padding-block-end="0">
                 <h3 class="web-label web-u-color-text-primary">Messaging</h3>
@@ -29,36 +31,56 @@
                 </div>
             </div>
             <img src={illustration} alt="" />
-            <div class="circle" />
         </a>
-        <div
-            class="web-card is-normal has-border-gradient"
-            style="padding: 0.5rem; --p-aspect-ratio: 0;"
-        >
-            <Video
-                {thumbnail}
-                src="https://www.youtube-nocookie.com/embed/w-izHSKXqtU?si=OV30JUel_Zoq10AU&controls=0"
-            />
-        </div>
 
-        <a
-            href="/blog/post/simplify-messaging-twilio"
-            class="web-card is-normal has-border-gradient u-overflow-hidden"
-            style="padding: 1.25rem; --p-aspect-ratio: 0;"
-        >
-            <h3 class="web-label web-u-color-text-primary" style="max-width: 18.75rem">
-                How tools like Twilio can simplify messaging for developers
-            </h3>
-            <div class="web-card-link u-flex u-cross-center">
-                <span class="text">Article</span>
-                <span class="web-icon-arrow-right" />
+        <div slot="sidebar">
+            <div
+                class="web-card is-normal has-border-gradient"
+                style="padding: 0.5rem; --p-aspect-ratio: 0;"
+            >
+                <Video
+                    {thumbnail}
+                    src="https://www.youtube-nocookie.com/embed/w-izHSKXqtU?si=OV30JUel_Zoq10AU&controls=0"
+                />
             </div>
-            <img
-                src=""
-                alt="Twilio"
-                style="position: absolute; inset-block-start: 0; inset-inline-end: -2rem;"
-            />
-        </a>
+            <a
+                href="/blog/post/simplify-messaging-twilio"
+                class="web-card is-normal has-border-gradient u-overflow-hidden"
+                style="padding: 1.25rem; --p-aspect-ratio: 0;"
+            >
+                <h3 class="web-label web-u-color-text-primary" style="max-width: 18.75rem">
+                    How tools like Twilio can simplify messaging for developers
+                </h3>
+                <div class="web-card-link u-flex u-cross-center">
+                    <span class="text">Article</span>
+                    <span class="web-icon-arrow-right" />
+                </div>
+                <img
+                    src=""
+                    alt="Twilio"
+                    style="position: absolute; inset-block-start: 0; inset-inline-end: -2rem;"
+                />
+            </a>
+            <a
+                href="/blog/post/push-notifications-best-practices"
+                class="web-card is-normal has-border-gradient u-overflow-hidden"
+                style="padding: 20px"
+            >
+                <h3 class="web-label web-u-color-text-primary" style="max-width: 300px">
+                    Best practices for sending push notifications
+                </h3>
+                <div class="web-card-link u-flex u-cross-center">
+                    <span class="text">Article</span>
+                    <span class="web-icon-arrow-right" />
+                </div>
+                <div>
+                    <Animations.LocalDev />
+                </div>
+            </a>
+        </div>
+    </Grid>
+
+    <div class="mosaic">
         <a
             href="/blog/post/push-notifications-best-practices"
             class="web-card is-normal has-border-gradient u-overflow-hidden"
@@ -169,20 +191,6 @@
                 margin-block-start: 1rem;
                 z-index: 10;
             }
-
-            .circle {
-                $size: 200px;
-                width: $size;
-                height: $size;
-                background: hsl(var(--web-color-accent));
-                filter: blur(200px);
-
-                position: absolute;
-                inset-block-end: calc(-1 * $size / 2);
-                inset-inline-start: 50%;
-                translate: -50%;
-                z-index: 1;
-            }
         }
 
         > :nth-child(2) {
@@ -259,6 +267,7 @@
         }
 
         .web-card {
+            background: hsl(var(--web-color-subtle));
             .web-card-link {
                 color: var(--web-color-primary);
             }

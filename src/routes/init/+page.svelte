@@ -26,7 +26,7 @@
             animation: Animations.LocalDev
         },
         {
-            title: 'New Appwrtie CLI',
+            title: 'New Appwrite CLI',
             release: addDays(base, 1),
             animation: Animations.CLI
         },
