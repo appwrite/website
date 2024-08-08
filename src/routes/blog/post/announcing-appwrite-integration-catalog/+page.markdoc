@@ -7,7 +7,7 @@ cover: /images/blog/integrations-catalog.png
 timeToRead: 12
 author: aditya-oberai
 category: product
-featured: true
+featured: false
 ---
 
 Our new Integrations Catalog is designed to empower you by providing a seamless way to integrate your favorite tools, libraries, and services with Appwrite, making your development process even more efficient and enjoyable.
