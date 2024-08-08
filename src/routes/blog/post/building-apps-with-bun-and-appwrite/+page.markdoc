@@ -129,7 +129,7 @@ export default async ({ res }) => {
     </>
   );
 
-  return res.send(renderToString(html), 200, {
+  return res.text(renderToString(html), 200, {
     "Content-Type": "text/html",
   });
 };
