@@ -1,6 +1,6 @@
 import { APPWRITE_API_KEY_INIT } from '$env/static/private';
 import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_INIT_ID } from '$env/static/public';
-import { Client, Databases } from '@appwrite.io/console';
+import { Account, Client, Databases } from '@appwrite.io/console';
 
 const clientServer = new Client();
 clientServer
@@ -9,5 +9,6 @@ clientServer
     .setKey(APPWRITE_API_KEY_INIT);
 
 export const appwriteInitServer = {
+    account: new Account(clientServer),
     databases: new Databases(clientServer)
 };
