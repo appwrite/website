@@ -26,10 +26,7 @@
     );
 
     async function saveTicket() {
-        const ticketId = data.ticket?.$id;
-        if (ticketId === undefined || !modified) {
-            return;
-        }
+        if (!modified) return;
 
         await fetch(`/init/tickets/update`, {
             method: 'POST',
@@ -37,7 +34,6 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                ticketId,
                 name,
                 title,
                 showGitHub
@@ -86,7 +82,7 @@
             </TicketPreview>
             <div class="item">
                 <TicketDetails bind:customizing bind:name bind:title />
-                <TicketActions {saveTicket} bind:customizing bind:showGitHub />
+                <TicketActions {saveTicket} bind:customizing bind:showGitHub {modified} />
             </div>
         </div>
     </div>
