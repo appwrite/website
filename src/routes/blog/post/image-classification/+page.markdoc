@@ -9,7 +9,7 @@ author: bradley-schofield
 category: AI
 ---
 
-Image Classification is an exciting field of Computer Vision that tries to understand and label images in their entirety. It has many applications: you can integrate it into your app to automatically categorize photos, filter inappropriate content from social media feeds, or even organize your online store's product catalog.
+Image classification is an exciting field of computer vision that tries to understand and label images in their entirety. It has many applications: you can integrate it into your app to automatically categorize photos, filter inappropriate content from social media feeds, or even organize your online store's product catalog.
 
 In this article, we’ll go over how the image classification field developed and its most popular architectures and datasets. Then, we’ll run you through implementing it into your Appwrite project using TensorFlow.
 
