@@ -59,7 +59,7 @@ The latest version of Appwrite was built with the help of over 20 developers, tr
 - [@amanpatel23](https://github.com/amanpatel23), who [fixed certain pattern input validation](https://github.com/appwrite/console/pull/702)
 - [@programmingwithrp](https://github.com/programmingwithrp), who [updated links for the Cron syntax](https://github.com/appwrite/console/pull/639)
 - [@sourabpramanik](https://github.com/sourabpramanik), who [helped fix table overflow in mobile view](https://github.com/appwrite/console/pull/666)
-- [@sourabpramanik](https://github.com/sourabpramanik), who[ helped fix the console organization project count limit](https://github.com/appwrite/console/pull/699)
+- [@sourabpramanik](https://github.com/sourabpramanik), who [helped fix the console organization project count limit](https://github.com/appwrite/console/pull/699)
 - [@AmitGurbani](https://github.com/AmitGurbani), who [fixed clearing of the DateTime attribute](https://github.com/appwrite/console/pull/594)
 - [@sahalsaad](https://github.com/sahalsaad), who [added nullable option to the DateTime field](https://github.com/appwrite/console/pull/608)
 - [@FreSauce](https://github.com/FreSauce), who [fixed missing separator for keycodes comparison](https://github.com/appwrite/console/pull/585)
