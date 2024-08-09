@@ -1,8 +1,6 @@
 import { base } from '$app/paths';
 import type { AuthorData, PostsData } from './content';
-
-const POSTS_PER_PAGE = 12;
-export const _PAGE_NAVIGATION_RANGE = 3;
+import { BLOG_POSTS_NAVIGATION_RANGE, BLOG_POSTS_PER_PAGE } from '$lib/constants';
 
 export function load() {
     const postsGlob = import.meta.glob('./post/**/*.markdoc', {
@@ -65,15 +63,15 @@ export function load() {
 }
 
 function getPaginationData(posts: object) {
-    const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+    const totalPages = Math.ceil(posts.length / BLOG_POSTS_PER_PAGE);
 
     const paginatedPosts = Array.from({ length: totalPages }, (_, i) =>
-        posts.slice(i * POSTS_PER_PAGE, (i + 1) * POSTS_PER_PAGE)
+        posts.slice(i * BLOG_POSTS_PER_PAGE, (i + 1) * BLOG_POSTS_PER_PAGE)
     );
 
-    const pageNavigationChunks = Array.from({ length: totalPages }, (_, i) => i + 1)
+    const pageNavigationChunks: number[][] = Array.from({ length: totalPages }, (_, i) => i + 1)
         .reduce((acc, curr, idx) => {
-            const chunkIdx = Math.floor(idx / _PAGE_NAVIGATION_RANGE);
+            const chunkIdx = Math.floor(idx / BLOG_POSTS_NAVIGATION_RANGE);
             acc[chunkIdx] = acc[chunkIdx] || [];
             acc[chunkIdx].push(curr);
             return acc;
