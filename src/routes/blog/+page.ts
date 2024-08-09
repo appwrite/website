@@ -1,8 +1,10 @@
 import { base } from '$app/paths';
 import type { AuthorData, PostsData } from './content';
 
+const POSTS_PER_PAGE = 12;
+export const _PAGE_NAVIGATION_RANGE = 3;
 
-export function load() {
+export function load({ url }) {
     const postsGlob = import.meta.glob('./post/**/*.markdoc', {
         eager: true
     });
@@ -53,8 +55,32 @@ export function load() {
         };
     });
 
+    const paginationData = getPaginationData(url, posts);
+
     return {
-        posts,
-        authors
+        authors,
+        ...paginationData,
+        featured: posts.find(post => post.featured)
     };
+}
+
+function getPaginationData(url: URL, posts: object) {
+    const currentPage = Number(url.searchParams.get('page')) || 1;
+    const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+    const paginatedPosts = posts.slice((currentPage - 1) * POSTS_PER_PAGE, currentPage * POSTS_PER_PAGE);
+
+    const pageNavigationChunks = Array.from({ length: totalPages }, (_, i) => i + 1)
+        .reduce((acc, curr, idx) => {
+            const chunkIdx = Math.floor(idx / _PAGE_NAVIGATION_RANGE);
+            acc[chunkIdx] = acc[chunkIdx] || [];
+            acc[chunkIdx].push(curr);
+            return acc;
+        }, []);
+
+    return {
+        totalPages,
+        currentPage,
+        posts: paginatedPosts,
+        navigation: pageNavigationChunks,
+    }
 }
