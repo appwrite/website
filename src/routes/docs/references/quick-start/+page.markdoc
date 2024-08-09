@@ -366,26 +366,29 @@ Get started with Appwrite and Node.js
 {% cards_item href="/docs/quick-starts/python" title="Python" icon="icon-python" %}
 Get started with Appwrite and Python
 {% /cards_item %}
-{% cards_item href="/docs/quick-starts/dotnet" title=".NET" icon="icon-dotnet" %}
-Get started with Appwrite and .NET
-{% /cards_item %}
 {% cards_item href="/docs/quick-starts/dart" title="Dart" icon="icon-dart" %}
 Get started with Appwrite and Dart
-{% /cards_item %}
-{% cards_item href="/docs/quick-starts/ruby" title="Ruby" icon="icon-ruby" %}
-Get started with Appwrite and Ruby
-{% /cards_item %}
-{% cards_item href="/docs/quick-starts/deno" title="Deno" icon="icon-deno" %}
-Get started with Appwrite and Deno
 {% /cards_item %}
 {% cards_item href="/docs/quick-starts/php" title="PHP" icon="icon-php" %}
 Get started with Appwrite and PHP
 {% /cards_item %}
-{% cards_item href="/docs/quick-starts/kotlin" title="Kotlin" icon="icon-kotlin" %}
-Get started with Appwrite and Kotlin
+{% cards_item href="/docs/quick-starts/ruby" title="Ruby" icon="icon-ruby" %}
+Get started with Appwrite and Ruby
+{% /cards_item %}
+{% cards_item href="/docs/quick-starts/dotnet" title=".NET" icon="icon-dotnet" %}
+Get started with Appwrite and .NET
+{% /cards_item %}
+{% cards_item href="/docs/quick-starts/deno" title="Deno" icon="icon-deno" %}
+Get started with Appwrite and Deno
+{% /cards_item %}
+{% cards_item href="/docs/quick-starts/go" title="Go" icon="icon-go" %}
+Get started with Appwrite and Go
 {% /cards_item %}
 {% cards_item href="/docs/quick-starts/swift" title="Swift" icon="icon-swift" %}
 Get started with Appwrite and Swift
+{% /cards_item %}
+{% cards_item href="/docs/quick-starts/kotlin" title="Kotlin" icon="icon-kotlin" %}
+Get started with Appwrite and Kotlin
 {% /cards_item %}
 {% /cards %}
 
