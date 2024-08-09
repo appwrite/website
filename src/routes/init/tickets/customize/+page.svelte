@@ -2,11 +2,13 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
-    import TicketPreview from '$routes/init/(components)/TicketPreview.svelte';
     import { dequal } from 'dequal/lite';
-    import Ticket from '../../(components)/Ticket.svelte';
-    import TicketDetails from '$routes/init/(components)/TicketDetails.svelte';
-    import TicketActions from '$routes/init/(components)/TicketActions.svelte';
+    import {
+        TicketPreview,
+        Ticket,
+        TicketActions,
+        TicketDetails
+    } from '$routes/init/(components)/ticket/index.js';
 
     export let data;
 

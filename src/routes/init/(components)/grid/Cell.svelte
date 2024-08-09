@@ -1,9 +1,9 @@
 <script lang="ts">
-    export let column: number | 'auto' = 'auto';
-    export let row: number | 'auto' = 'auto';
+    export let columns: number = 1;
+    export let rows: number | 'auto' = 'auto';
 </script>
 
-<div class="cell" style="--column:{column};--row:{row};">
+<div class="cell" style="--columns:{columns};--rows:{rows};">
     <slot />
 </div>
 
@@ -11,8 +11,8 @@
     @use '$scss/abstract' as *;
 
     .cell {
-        grid-column: span var(--column) / span var(--column);
-        grid-row: span var(--row) / span var(--row);
+        grid-column: span var(--columns);
+        grid-row: span var(--rows);
         display: flex;
         flex-direction: column;
         gap: pxToRem(32);
