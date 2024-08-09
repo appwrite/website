@@ -6,7 +6,7 @@ description: Efficiently deploy your Appwrite functions using the Command-Line T
 
 {% partial file="cli-disclaimer.md" /%}
 
-The CLI handles the creation, deployment, and execution of Appwrite Functions, as well as the configuration of the variables. 
+The CLI handles the creation, deployment, and execution of Appwrite Functions, as well as the configuration of the variables. You can also [develop your function locally](/docs/products/functions/develop-locally) using CLI commands.
 
 # Initialize function {% #initialize-function %}
 

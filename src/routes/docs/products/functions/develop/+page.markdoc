@@ -17,6 +17,8 @@ Here's everything that happens during a function execution.
 1. The runtime executes the code you defined, you can log through the `context.log()` or `context.error()` methods.
 1. Function terminates when you return results using `return context.res.text()`, `return context.res.json()` or similar.
 
+[Locally developed functions](/docs/products/functions/develop-locally) follow the same lifecycle on your local machine.
+
 ## Entrypoint {% #entrypoint %}
 You'll find all of these steps in a simple function like this.
 Notice the exported entry point that the executor will call.
