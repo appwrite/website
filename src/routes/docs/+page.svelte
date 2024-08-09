@@ -71,14 +71,14 @@
         id="main"
     >
         <div class="u-position-absolute web-u-opacity-40-mobile bg-blur">
-            <img src="/images/bgs/docs-blur-1.svg" alt="" />
+            <img draggable=false src="/images/bgs/docs-blur-1.svg" alt="" />
         </div>
 
         <div
             class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-16 web-u-opacity-40-mobile"
             style="    margin-inline-start: -30px;"
         >
-            <enhanced:img src="./blur-2.png" alt="" />
+            <enhanced:img draggable=false src="./blur-2.png" alt="" />
         </div>
 
         <section class="web-hero is-align-start u-position-relative e-hero-docs">
