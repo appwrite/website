@@ -4,7 +4,7 @@ title: SMS delivery
 description: Set up SMS services for your self-hosted Appwrite instance. Discover how to configure SMS notifications, verification, and messaging for your applications.
 ---
 
-Appwrite supports phone authentication, which allows users to create accounts and log in using SMS messages. Appwrite requires an SMS provider to be set up before using Phone authentication; however, you can also mock the SMS provider by mocking the [phone number](/docs/products/auth/security#mock-phone-number).
+Appwrite supports phone authentication, which allows users to create accounts and log in using SMS messages. Appwrite requires an SMS provider to be set up before using Phone authentication.
 
 {% info title="Setting up Appwrite Messaging?" %}
 This page describes how to setup messaging for your self-hosted Appwrite instance to send one-time passwords during phone login.
