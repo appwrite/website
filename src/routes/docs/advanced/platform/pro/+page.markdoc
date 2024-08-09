@@ -14,10 +14,6 @@ Appwrite's plans are applied to an entire organization.
 Get started with a Pro plan organization by visiting the [pricing page](https://appwrite.io/pricing) and click **Start building**
 or create a new organization from the Appwrite Console and select **Pro plan**.
 
-<!-- ## Trial
-Every Appwrite Pro plan organization starts with a **14 day free trial**.
-The first billing period will start after the trial ends. -->{% #trial %}
-
 ## Switch to Free plan {% #switch-to-pro-plan %}
 
 Head to the overview of your organization through the profile menu on the top right of your Appwrite Console.

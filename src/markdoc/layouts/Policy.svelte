@@ -22,7 +22,7 @@
 
     import { Main } from '$lib/layouts';
 
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
 
     import { TITLE_SUFFIX } from '$routes/titles';
 
@@ -32,11 +32,12 @@
     import { getContext, hasContext, setContext } from 'svelte';
 
     export let title: string;
+    export let description: string;
     export let transparentTableCells = false;
 
-    const seo = {
+    let seo = {
         title: title + TITLE_SUFFIX,
-        description: DEFAULT_DESCRIPTION,
+        description: description,
         ogImage: DEFAULT_HOST + '/images/open-graph/website.png',
 
         APP_NAME: 'Appwrite'
@@ -79,6 +80,7 @@
                     style:inline-size="100vw"
                     style:background-color="hsl(var(--p-body-bg-color) / 0.1)"
                     style:translate="0 {$isHeaderHidden ? '-4.5rem' : '0'}"
+                    style:z-index="1"
                     on:click={() => (showToc = !showToc)}
                 >
                     <span class="web-description">Table of contents</span>
