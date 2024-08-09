@@ -12,7 +12,7 @@ We use Docker to replicate the production environment for the local deployment o
 
 1. Install the [Docker CLI](https://www.docker.com/products/docker-desktop/)
 2. Ensure Docker is running in the background
-3. Install the [Appwrite CLI](/tooling/command-line/installation#getting-started)
+3. Install the [Appwrite CLI](/docs/tooling/command-line/installation#getting-started)
 4. [Log in](/docs/tooling/command-line/installation#login) to your Appwrite account using `appwrite login`
 5. [Initialize your project](/docs/tooling/command-line/installation#initialization)
 6. [Initialize an Appwrite function](/docs/tooling/command-line/functions) and copy and paste your code
