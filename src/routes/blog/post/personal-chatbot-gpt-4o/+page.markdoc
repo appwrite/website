@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Build a personal chatbot with GPT-4o and Appwrite Functions
+title: Build a chatbot with GPT-4o and Appwrite Functions
 description: Learn how to use OpenAI's new flagship model, GPT-4o to create an intelligent chatbot.
 date: 2024-05-17
 cover: /images/blog/personal-chatbot-gpt-4o/cover.png

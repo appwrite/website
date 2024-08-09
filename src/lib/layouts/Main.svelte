@@ -207,7 +207,7 @@
               <li class="web-main-header-nav-item">
                 <a
                   class={classNames(
-                    "data-[badge]:after:animate-scale-in data-[badge]:relative data-[badge]:after:absolute data-[badge]:after:size-1.5 data-[badge]:after:translate-full data-[badge]:after:rounded-full",
+                    "data-[badge]:after:animate-scale-in data-[badge]:after:translate-full data-[badge]:relative data-[badge]:after:absolute data-[badge]:after:size-1.5 data-[badge]:after:rounded-full",
                   )}
                   href={navLink.href}
                   data-badge={navLink.showBadge ? "" : undefined}

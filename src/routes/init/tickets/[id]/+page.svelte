@@ -43,18 +43,18 @@
             <div class="header">
                 <h1 class="web-display">
                     Join <span class="web-u-color-text-primary" style:font-weight="500">
-                        init<span class="web-u-color-text-accent">_</span>
-                    </span><br />26 Feb - 1 March
+                        init
+                    </span><br />August 19th-23rd
                 </h1>
             </div>
 
             <div class="info">
                 <p class="web-label u-margin-block-start-16">
-                    Register today and claim your Init ticket.
+                    Register today and claim your ticket.
                 </p>
                 <div class="flex u-cross-center gap-4 u-margin-block-start-32">
                     <a class="web-button" href="/init/tickets">
-                        <span class="text">Get my Init ticket</span>
+                        <span class="text">Get my ticket</span>
                     </a>
                     <button class="web-button is-secondary" on:click={copy}>
                         <span

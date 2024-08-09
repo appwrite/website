@@ -113,7 +113,7 @@
             </span>
         </a>
         <a
-            href="/init/tickets"
+            href="/init-0/tickets"
             class="web-card is-normal has-border-gradient"
             style="padding: 1.25rem"
         >
