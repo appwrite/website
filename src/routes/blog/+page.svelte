@@ -3,10 +3,40 @@
     import { MainFooter, FooterNav, Article } from '$lib/components';
     import { TITLE_SUFFIX } from '$routes/titles.js';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import { page } from '$app/stores';
+    import { onMount } from 'svelte';
+    import { BLOG_POSTS_NAVIGATION_RANGE } from '$lib/constants.js';
 
     export let data;
+    const featured = data.featured;
 
-    const featured = data.posts.find((post) => post.featured);
+    let currentPage = 1;
+
+    $: isLastPage = currentPage < data.totalPages;
+
+    $: paginatedBlogPosts = data.posts[currentPage - 1] ?? data.posts[0];
+
+    $: chunkIndex = Math.floor((currentPage - 1) / BLOG_POSTS_NAVIGATION_RANGE);
+
+    $: currentPageRange = data.navigation[chunkIndex] || [];
+
+    $: nextBatchStartPage = (): number => {
+        const nextBatchStart = (chunkIndex + 1) * BLOG_POSTS_NAVIGATION_RANGE + 1;
+        return nextBatchStart <= data.posts.length ? nextBatchStart : currentPage;
+    };
+
+    $: previousBatchStartPage = (): number => {
+        const currentBatchStart = chunkIndex * BLOG_POSTS_NAVIGATION_RANGE + 1;
+        const prevBatchStart = currentBatchStart - BLOG_POSTS_NAVIGATION_RANGE;
+        return prevBatchStart > 0 ? prevBatchStart : 1;
+    }
+
+    onMount(() => {
+        return page.subscribe((page) => {
+            const pageParam = page.url.searchParams.get('page') || '1';
+            currentPage = Math.max(parseInt(pageParam), 1);
+        });
+    });
 
     const title = 'Blog' + TITLE_SUFFIX;
     const description = 'Stay updated with the latest product news, insights, and tutorials from the Appwrite team. Discover tips and best practices for hassle-free backend development.';
@@ -149,11 +179,11 @@
         <div class="web-big-padding-section-level-1">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
-                    <h2 class="web-title web-u-color-text-primary">Articles</h2>
+                    <h2 id="title" class="web-title web-u-color-text-primary">Articles</h2>
 
                     <div class="u-margin-block-start-48">
                         <ul class="web-grid-articles">
-                            {#each data.posts as post}
+                            {#each paginatedBlogPosts as post}
                                 {@const author = data.authors.find(
                                     (author) => author.slug === post.author
                                 )}
@@ -171,6 +201,36 @@
                             {/each}
                         </ul>
                     </div>
+
+                    <div class="u-margin-block-start-48">
+                        <ul class="u-flex u-cross-center u-gap-4" style="justify-content: center">
+                            <a
+                                class="u-flex navigation-button"
+                                class:navigation-button-active={currentPage > 1}
+                                href="/blog?page={previousBatchStartPage()}"
+                            >
+                                <span class="web-icon-chevron-left" style="font-size: 20px"/>
+                                Previous
+                            </a>
+
+                            {#each currentPageRange as page}
+                                <a
+                                    class="pagination-number"
+                                    class:pagination-number-selected={currentPage === page}
+                                    href="/blog?page={page}"
+                                > {page} </a>
+                            {/each}
+
+                            <a
+                                class="u-flex navigation-button"
+                                class:navigation-button-active={isLastPage}
+                                href="/blog?page={nextBatchStartPage()}"
+                            >
+                                Next
+                                <span class="web-icon-chevron-right"  style="font-size: 20px"/>
+                            </a>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="web-big-padding-section-level-2">
@@ -182,3 +242,48 @@
         </div>
     </div>
 </Main>
+
+<style>
+    .pagination-number {
+        font-weight: 500;
+        line-height: 140%;
+        text-align: center;
+        font-style: normal;
+        letter-spacing: -0.063px;
+        font-size: var(--font-size-S, 14px);
+        font-family: var(--font-family-sansSerif, Inter);
+        padding: var(--space-3, 6px) var(--space-6, 12px);
+        color: var(--color-fgColor-neutral-secondary, #C3C3C6);
+    }
+
+    .pagination-number-selected {
+        border-radius: var(--border-radius-S, 8px);
+        color: var(--color-fgColor-accent-neutral, #FFF);
+        background: var(--color-bgColor-neutral-tertiary, #2D2D31);
+    }
+
+    .navigation-button {
+        opacity: 0.4;
+        font-weight: 500;
+        line-height: 140%;
+        text-align: center;
+        font-style: normal;
+        align-items: center;
+        cursor: not-allowed;
+        pointer-events: none;
+        justify-content: center;
+        letter-spacing: -0.063px;
+        gap: var(--space-2, 4px);
+        font-size: var(--font-size-S, 14px);
+        border-radius: var(--border-radius-S, 8px);
+        font-family: var(--font-family-sansSerif, Inter);
+        color: var(--color-fgColor-neutral-secondary, #C3C3C6);
+        padding: var(--space-3, 6px) var(--space-4, 8px) var(--space-3, 6px) var(--space-3, 6px);
+    }
+
+    .navigation-button-active {
+        opacity: 1;
+        cursor: pointer;
+        pointer-events: initial;
+    }
+</style>

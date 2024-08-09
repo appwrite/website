@@ -3,6 +3,9 @@ export const BANNER_KEY: Banners = 'init-banner-02'; // Change key to force bann
 export const SENTRY_DSN =
     'https://27d41dc8bb67b596f137924ab8599e59@o1063647.ingest.us.sentry.io/4507497727000576';
 
+export const BLOG_POSTS_PER_PAGE = 12;
+export const BLOG_POSTS_NAVIGATION_RANGE = 3;
+
 /**
  * History:
  * discord-banner-01
