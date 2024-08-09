@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Main } from '$lib/layouts';
-    import { Article, FooterNav, MainFooter } from '$lib/components';
+    import { MainFooter, FooterNav, Article } from '$lib/components';
     import { TITLE_SUFFIX } from '$routes/titles.js';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { _PAGE_NAVIGATION_RANGE } from '$routes/blog/+page';
@@ -127,11 +127,11 @@
                             <div class="web-feature-article-content">
                                 <header class="web-feature-article-header">
                                     <ul class="web-metadata web-caption-400 web-is-only-mobile">
-                                        <li>{featured?.timeToRead} min</li>
+                                        <li>{featured.timeToRead} min</li>
                                     </ul>
-                                    <a href={featured?.href}>
+                                    <a href={featured.href}>
                                         <h2 class="web-title web-u-color-text-primary">
-                                            {featured?.title}
+                                            {featured.title}
                                         </h2>
                                     </a>
                                 </header>
