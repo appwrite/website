@@ -40,9 +40,39 @@ The keyboard comes with Mac layout keys pre-installed for macOS which can also b
 |Switch support|Hot-swappable switches with 3 & 5 pin|
 |Rollover|N-key rollover|
 
-# How to change the backlight {% #how-to-change-the-backlight %}
+# Quick start  {% #quick-start %}
 
-Press `Fn + Home` to change the RGB backlight effect and cycle through all the lights.
+There are currently three modes to connect the Appwriter to the computer: wired, wireless, and Bluetooth.
+
+## Wired mode {% #wired-mode %}
+
+To use the wired mode, connect the USB-TYPE-C data cable from the keyboard to the computer and push the Appwriter switch towards the T.
+When connecting the keyboard using wired mode for the first time, your computer will install all required drivers on a successful connection.
+
+The Appwriter's battery will charge while connected using the wired mode. Make sure to use a charger that doesn't exceed a voltage/current = DSCV = 1A (max). Using a charger that exceeds this voltage and current ratings could easily damage your keyboard.
+
+## Wireless mode {% #wireless-mode %}
+
+Push the Appwriter switch towards the G if you want to use the wireless mode. After switching to wireless mode, long press the `FN` + `4` keys for around 3 seconds. After the `4` key light flashes quickly, plug the receiver into a computer USB port.
+
+## Bluetooth mode {% #bluetooth-mode %}
+
+To pair the keyboard in Bluetooth mode, push the switch to B and do a long press while holding the `FN` + `1` keys. Once the `1` key flashes a fast light, you must search for elements.
+
+# General keyboard controls {% #general-keyboard-controls %}
+
+|Shortcut|Action|
+|---|---|
+| `FN + Esc` | Hold for 3 seconds to reset to factory defaults |
+| `FN + Win` | Disable/enable Win key |
+| `FN + Backspace` | System power/sleep |
+| `FN + Delete` | Change keyboard backlight effect |
+| `FN + Home` | Change keyboard backlight color |
+| `FN + Pg Up` | Toggle keyboard backlight |
+| `FN + Up Arrow` | Increase keyboard brightness |
+| `FN + Down Arrow` | Decrease keyboard brightness |
+| `FN + Left Arrow` | Slow down keyboard backlight effect |
+| `FN + Right Arrow` | Speed up keyboard backlight effect |
 
 # How to get the Appwriter {% #how-to-get-the-appwriter %}
 
