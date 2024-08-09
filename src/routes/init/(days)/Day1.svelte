@@ -5,35 +5,40 @@
     import thumbnail from '../(assets)/thumbnail-localdev.png';
     import { Animations } from '../(animations)';
     import VideoWrapper from '../(components)/VideoWrapper.svelte';
-    import Grid from '../(components)/Grid.svelte';
+    import { Grid } from '../(components)/grid';
+    import Cell from '../(components)/grid/Cell.svelte';
 
     export let release: Date;
     export let date: string;
 </script>
 
 <Day day={date} {release}>
-    <Grid>
-        <a
-            href="/blog/post/announcing-appwrite-messaging"
-            class="web-card is-normal has-border-gradient"
-            style:padding="0"
-            slot="main"
-        >
-            <div style:padding="2rem" style:padding-block-end="0">
-                <h3 class="web-label web-u-color-text-primary">Messaging</h3>
-                <p style:margin-block-start="0.625rem">
-                    Introducing multimedia messaging service to communicate to your users across
-                    platforms.
-                </p>
-                <div class="web-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
-                    <span class="text">Announcement</span>
-                    <span class="web-icon-arrow-right" />
+    <Grid.Root columns={24} rows={24}>
+        <Grid.Cell column={14}>
+            <a
+                href="/blog/post/announcing-appwrite-messaging"
+                class="web-card is-normal has-border-gradient"
+                style:padding="0"
+            >
+                <div style:padding="2rem" style:padding-block-end="0">
+                    <h3 class="web-label web-u-color-text-primary">Messaging</h3>
+                    <p style:margin-block-start="0.625rem">
+                        Introducing multimedia messaging service to communicate to your users across
+                        platforms.
+                    </p>
+                    <div
+                        class="web-card-link u-flex u-cross-center"
+                        style:margin-block-start="1.25rem"
+                    >
+                        <span class="text">Announcement</span>
+                        <span class="web-icon-arrow-right" />
+                    </div>
                 </div>
-            </div>
-            <img src={illustration} alt="" />
-        </a>
+                <img src={illustration} alt="" />
+            </a>
+        </Grid.Cell>
 
-        <div slot="sidebar">
+        <Grid.Cell column={10}>
             <div
                 class="web-card is-normal has-border-gradient"
                 style="padding: 0.5rem; --p-aspect-ratio: 0;"
@@ -43,6 +48,7 @@
                     src="https://www.youtube-nocookie.com/embed/w-izHSKXqtU?si=OV30JUel_Zoq10AU&controls=0"
                 />
             </div>
+
             <a
                 href="/blog/post/simplify-messaging-twilio"
                 class="web-card is-normal has-border-gradient u-overflow-hidden"
@@ -61,65 +67,73 @@
                     style="position: absolute; inset-block-start: 0; inset-inline-end: -2rem;"
                 />
             </a>
+        </Grid.Cell>
+
+        <Grid.Cell column={9}>
             <a
-                href="/blog/post/push-notifications-best-practices"
+                href="/blog/post/simplify-messaging-twilio"
                 class="web-card is-normal has-border-gradient u-overflow-hidden"
-                style="padding: 20px"
+                style="padding: 1.25rem; --p-aspect-ratio: 0;"
             >
-                <h3 class="web-label web-u-color-text-primary" style="max-width: 300px">
-                    Best practices for sending push notifications
+                <h3 class="web-label web-u-color-text-primary" style="max-width: 18.75rem">
+                    How tools like Twilio can simplify messaging for developers
                 </h3>
                 <div class="web-card-link u-flex u-cross-center">
                     <span class="text">Article</span>
                     <span class="web-icon-arrow-right" />
                 </div>
-                <div>
-                    <Animations.LocalDev />
-                </div>
-            </a>
-        </div>
-    </Grid>
-
-    <div class="mosaic">
-        <a
-            href="/blog/post/push-notifications-best-practices"
-            class="web-card is-normal has-border-gradient u-overflow-hidden"
-            style="padding: 20px"
-        >
-            <h3 class="web-label web-u-color-text-primary" style="max-width: 300px">
-                Best practices for sending push notifications
-            </h3>
-            <div class="web-card-link u-flex u-cross-center">
-                <span class="text">Article</span>
-                <span class="web-icon-arrow-right" />
-            </div>
-            <div>
-                <Animations.LocalDev />
-            </div>
-        </a>
-        <VideoWrapper let:openVideo>
-            <button
-                on:click={openVideo}
-                class="web-card is-normal has-border-gradient u-overflow-hidden"
-                style="padding: 0.5rem; display: flex; justify-content: space-between; "
-            >
-                <div style="padding: 0.75rem;">
-                    <h3 class="web-label web-u-color-text-primary" style="max-width: 300px">
-                        Product tour
-                    </h3>
-                    <div class="web-card-link u-flex u-cross-center">
-                        <span class="text">Watch</span>
-                        <span class="web-icon-arrow-right" />
-                    </div>
-                </div>
-                <Video
-                    {thumbnail}
-                    --p-aspect-ratio="16/9"
-                    --p-border-radius="0.75rem"
-                    src="https://www.youtube-nocookie.com/embed/QdDgPeuBZ1I?si=YDlxtt3nYe_FZnql&controls=0"
+                <img
+                    src=""
+                    alt="Twilio"
+                    style="position: absolute; inset-block-start: 0; inset-inline-end: -2rem;"
                 />
-            </button>
-        </VideoWrapper>
+            </a>
+        </Grid.Cell>
+        <Grid.Cell column={9}>
+            <a
+                href="/blog/post/simplify-messaging-twilio"
+                class="web-card is-normal has-border-gradient u-overflow-hidden"
+                style="padding: 1.25rem; --p-aspect-ratio: 0;"
+            >
+                <h3 class="web-label web-u-color-text-primary" style="max-width: 18.75rem">
+                    How tools like Twilio can simplify messaging for developers
+                </h3>
+                <div class="web-card-link u-flex u-cross-center">
+                    <span class="text">Article</span>
+                    <span class="web-icon-arrow-right" />
+                </div>
+                <img
+                    src=""
+                    alt="Twilio"
+                    style="position: absolute; inset-block-start: 0; inset-inline-end: -2rem;"
+                />
+            </a>
+        </Grid.Cell>
+        <Grid.Cell column={6}>
+            <a
+                href="/blog/post/simplify-messaging-twilio"
+                class="web-card is-normal has-border-gradient u-overflow-hidden"
+                style="padding: 1.25rem; --p-aspect-ratio: 0;"
+            >
+                <h3 class="web-label web-u-color-text-primary" style="max-width: 18.75rem">
+                    How tools like Twilio can simplify messaging for developers
+                </h3>
+                <div class="web-card-link u-flex u-cross-center">
+                    <span class="text">Article</span>
+                    <span class="web-icon-arrow-right" />
+                </div>
+                <img
+                    src=""
+                    alt="Twilio"
+                    style="position: absolute; inset-block-start: 0; inset-inline-end: -2rem;"
+                />
+            </a>
+        </Grid.Cell>
+    </Grid.Root>
+
+    <!-- <div class="mosaic">
+       
+        
 
         <a
             href="/docs/products/messaging"
@@ -163,7 +177,7 @@
                 style="aspect-ratio: 16/9; border-radius: 0.75rem;  object-fit: cover;"
             />
         </a>
-    </div>
+    </div> -->
 </Day>
 
 <style lang="scss">
