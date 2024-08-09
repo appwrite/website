@@ -2,79 +2,35 @@
     import { Main } from '$lib/layouts';
     import { Article, FooterNav, MainFooter } from '$lib/components';
     import { TITLE_SUFFIX } from '$routes/titles.js';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-    import { page } from '$app/stores';
-    import { browser } from '$app/environment';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import { _PAGE_NAVIGATION_RANGE } from '$routes/blog/+page';
 
     export let data;
-    const POSTS_PER_PAGE = 12;
-    const PAGE_NAVIGATION_RAGE = 3;
 
-    let currentPage = 1;
-    const featured = data.posts.find((post) => post.featured);
-    const totalPages = Math.ceil(data.posts.length / POSTS_PER_PAGE);
+    const featured = data.featured;
 
-    const pages = chunkArray(data.posts, POSTS_PER_PAGE)
+    $: currentPage = data.currentPage;
 
-    function chunkArray(array: Array<any>, chunkSize: number) {
-        const chunks = [];
-        for (let i = 0; i < array.length; i += chunkSize) {
-            chunks.push(array.slice(i, i + chunkSize));
-        }
-        return chunks;
+    $: currentPageRange = (): number[] => {
+        const chunkIndex = Math.floor((currentPage - 1) / _PAGE_NAVIGATION_RANGE);
+        return data.navigation[chunkIndex] || [];
+    };
+
+    $: isLastPage = (): boolean => {
+        return currentPage < data.totalPages;
     }
 
-    // TODO: maybe update page url?
-    $: blogPosts = (index: number) => {
-        return pages[index] ?? pages[0]
+    $: nextBatchStartPage = (): number => {
+        const batchIndex = Math.floor((currentPage - 1) / _PAGE_NAVIGATION_RANGE);
+        const nextBatchStart = (batchIndex + 1) * _PAGE_NAVIGATION_RANGE + 1;
+        return nextBatchStart <= data.posts.length ? nextBatchStart : currentPage;
     }
 
-    $: pageChunks = chunkArray(
-        Array.from({ length: totalPages }, (_, i) => i + 1), PAGE_NAVIGATION_RAGE
-    );
-
-    $: currentPageRange = () => {
-        const chunkIndex = Math.floor((currentPage - 1) / 3);
-        return pageChunks[chunkIndex] || [];
-    }
-
-    $: isLastPage = () => {
-        return currentPage < totalPages
-    }
-
-    $: nextBatchStartPage = () => {
-        const batchIndex = Math.floor((currentPage - 1) / 3);
-        const nextBatchStart = (batchIndex + 1) * 3 + 1;
-        return nextBatchStart <= pages.length ? nextBatchStart : currentPage;
-    }
-
-    $: previousBatchStartPage = () => {
-        const batchIndex = Math.floor((currentPage - 1) / 3);
-        const currentBatchStart = batchIndex * 3 + 1;
-        const prevBatchStart = currentBatchStart - 3;
+    $: previousBatchStartPage = (): number => {
+        const batchIndex = Math.floor((currentPage - 1) / _PAGE_NAVIGATION_RANGE);
+        const currentBatchStart = batchIndex * _PAGE_NAVIGATION_RANGE + 1;
+        const prevBatchStart = currentBatchStart - _PAGE_NAVIGATION_RANGE;
         return prevBatchStart > 0 ? prevBatchStart : 1;
-    }
-
-    $: {
-        const pageParam = $page.url.searchParams.get('page') || '0';
-        currentPage = Math.max(pageParam ? parseInt(pageParam): 1, 1);
-
-        // should we do this?
-        if (parseInt(pageParam) <= 0) {
-            $page.url.searchParams.delete('page')
-            if (browser) {
-                history.replaceState(history.state, '', $page.url);
-            }
-        }
-
-        // should we do this?
-        if (parseInt(pageParam) > 1) {
-            if (browser) {
-                setTimeout(() => {
-                    document.getElementById('title')?.scrollIntoView({ behavior: 'smooth' })
-                }, 25)
-            }
-        }
     }
 
     const title = 'Blog' + TITLE_SUFFIX;
@@ -171,11 +127,11 @@
                             <div class="web-feature-article-content">
                                 <header class="web-feature-article-header">
                                     <ul class="web-metadata web-caption-400 web-is-only-mobile">
-                                        <li>{featured.timeToRead} min</li>
+                                        <li>{featured?.timeToRead} min</li>
                                     </ul>
-                                    <a href={featured.href}>
+                                    <a href={featured?.href}>
                                         <h2 class="web-title web-u-color-text-primary">
-                                            {featured.title}
+                                            {featured?.title}
                                         </h2>
                                     </a>
                                 </header>
@@ -222,7 +178,7 @@
 
                     <div class="u-margin-block-start-48">
                         <ul class="web-grid-articles">
-                            {#each blogPosts(currentPage - 1) as post}
+                            {#each data.posts as post}
                                 {@const author = data.authors.find(
                                     (author) => author.slug === post.author
                                 )}
