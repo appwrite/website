@@ -6,7 +6,7 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/push-fcm/cover.png
+cover: /images/integrations/push-fcm/cover.jpg
 category: Messaging
 product: 
     avatar: '/images/integrations/avatars/fcm.png'
@@ -16,7 +16,7 @@ platform:
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/push-fcm/cover.png
+    - /images/integrations/push-fcm/cover.jpg
     - /images/integrations/push-fcm/private-key.png
     - /images/integrations/push-fcm/provider.png
 ---

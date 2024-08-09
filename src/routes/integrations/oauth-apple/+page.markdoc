@@ -6,7 +6,7 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/oauth-apple/cover.png
+cover: /images/integrations/oauth-apple/cover.jpg
 category: Auth
 product: 
     avatar: '/images/integrations/avatars/apple.png'
@@ -16,7 +16,7 @@ platform:
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/oauth-apple/cover.png
+    - /images/integrations/oauth-apple/cover.jpg
     - /images/integrations/oauth-apple/apple-developer-program.png
     - /images/integrations/oauth-apple/provider.png
 ---

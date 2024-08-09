@@ -6,7 +6,7 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/oauth-discord/cover.png
+cover: /images/integrations/oauth-discord/cover.jpg
 category: Auth
 product: 
     avatar: '/images/integrations/avatars/discord.png'
@@ -16,7 +16,7 @@ platform:
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/oauth-discord/cover.png
+    - /images/integrations/oauth-discord/cover.jpg
     - /images/integrations/oauth-discord/new-app.png
     - /images/integrations/oauth-discord/oauth2.png
     - /images/integrations/oauth-discord/provider.png

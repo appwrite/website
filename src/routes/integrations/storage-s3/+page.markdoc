@@ -6,7 +6,7 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/storage-s3/cover.png
+cover: /images/integrations/storage-s3/cover.jpg
 category: Storage
 product: 
     avatar: '/images/integrations/avatars/aws.png'
@@ -15,7 +15,7 @@ product:
 platform: 
     - 'Self-hosted'
 images: 
-    - /images/integrations/storage-s3/cover.png
+    - /images/integrations/storage-s3/cover.jpg
     - /images/integrations/storage-s3/bucket.png
     - /images/integrations/storage-s3/access-key.png
     - /images/integrations/storage-s3/appwrite-file.png

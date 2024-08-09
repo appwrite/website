@@ -6,7 +6,7 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/deployments-github/cover.png
+cover: /images/integrations/deployments-github/cover.jpg
 category: Deployments
 product: 
     avatar: '/images/integrations/avatars/github.png'
@@ -15,7 +15,7 @@ product:
 platform: 
     - 'Self-hosted'
 images: 
-    - /images/integrations/deployments-github/cover.png
+    - /images/integrations/deployments-github/cover.jpg
     - /images/integrations/deployments-github/create.png
     - /images/integrations/deployments-github/installed.png
 ---

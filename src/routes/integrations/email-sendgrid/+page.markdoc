@@ -6,7 +6,7 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/email-sendgrid/cover.png
+cover: /images/integrations/email-sendgrid/cover.jpg
 category: Messaging
 product: 
     avatar: '/images/integrations/avatars/sendgrid.png'
@@ -16,7 +16,7 @@ platform:
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/email-sendgrid/cover.png
+    - /images/integrations/email-sendgrid/cover.jpg
     - /images/integrations/email-sendgrid/welcome-guide.png
     - /images/integrations/email-sendgrid/provider.png
     - /images/integrations/email-sendgrid/email.png

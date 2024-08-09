@@ -6,7 +6,7 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/search-algolia/cover.png
+cover: /images/integrations/search-algolia/cover.jpg
 category: Search
 product: 
     avatar: '/images/integrations/avatars/algolia.png'
@@ -16,7 +16,7 @@ platform:
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/search-algolia/cover.png
+    - /images/integrations/search-algolia/cover.jpg
     - /images/integrations/search-algolia/overview.png
     - /images/integrations/search-algolia/index.png
     - /images/integrations/search-algolia/template.png

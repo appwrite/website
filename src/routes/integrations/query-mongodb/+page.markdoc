@@ -6,7 +6,7 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/query-mongodb/cover.png
+cover: /images/integrations/query-mongodb/cover.jpg
 category: Databases
 product: 
     avatar: '/images/integrations/avatars/mongodb.png'
@@ -16,7 +16,7 @@ platform:
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/query-mongodb/cover.png
+    - /images/integrations/query-mongodb/cover.jpg
     - /images/integrations/query-mongodb/first-cluster.png
     - /images/integrations/query-mongodb/connection-string.png
     - /images/integrations/query-mongodb/network-access.png

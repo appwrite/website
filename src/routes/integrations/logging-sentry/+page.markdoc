@@ -6,7 +6,7 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/logging-sentry/cover.png
+cover: /images/integrations/logging-sentry/cover.jpg
 category: Logging
 product: 
     avatar: '/images/integrations/avatars/sentry.png'
@@ -15,7 +15,7 @@ product:
 platform: 
     - 'Self-hosted'
 images: 
-    - /images/integrations/logging-sentry/cover.png
+    - /images/integrations/logging-sentry/cover.jpg
     - /images/integrations/logging-sentry/project.png
     - /images/integrations/logging-sentry/issues.png
     - /images/integrations/logging-sentry/issue-details.png
