@@ -455,16 +455,16 @@
                                                         <div class="web-user-box">
                                                             <img
                                                                 class="web-user-box-image"
-                                                                src="/images/community/avatars/6.avif"
+                                                                src="/images/community/avatars/walter.avif"
                                                                 height="40"
                                                                 width="40"
-                                                                alt="Avatar of Teri"
+                                                                alt="Avatar of Walter"
                                                             />
                                                             <div
                                                                 class="web-user-box-name flex gap-2"
                                                             >
                                                                 <span class="web-sub-body-500"
-                                                                    >Louis Baker</span
+                                                                    >Walter O'Brien</span
                                                                 >
                                                                 <time
                                                                     class="web-caption-400 web-u-color-text-tertiary"
@@ -489,7 +489,7 @@
                                                                 src="/images/avatars/steven.avif"
                                                                 width="48"
                                                                 height="48"
-                                                                alt="Avatar of Teri"
+                                                                alt="Avatar of Steven"
                                                             />
                                                             <div
                                                                 class="web-user-box-name flex gap-2"
@@ -511,7 +511,7 @@
                                                                     class="web-link is-pink"
                                                                     href="/blog/post/cors-error"
                                                                     target="_blank"
-                                                                    >`Access blocked by CORS policy`</a
+                                                                    >"Access blocked by CORS policy"</a
                                                                 >?
                                                             </div>
                                                         </div>
@@ -522,16 +522,16 @@
                                                         <div class="web-user-box">
                                                             <img
                                                                 class="web-user-box-image"
-                                                                src="/images/community/avatars/6.avif"
+                                                                src="/images/community/avatars/walter.avif"
                                                                 height="40"
                                                                 width="40"
-                                                                alt="Avatar of Teri"
+                                                                alt="Avatar of Walter"
                                                             />
                                                             <div
                                                                 class="web-user-box-name flex gap-2"
                                                             >
                                                                 <span class="web-sub-body-500"
-                                                                    >Louis Baker</span
+                                                                    >Walter O'Brien</span
                                                                 >
                                                                 <time
                                                                     class="web-caption-400 web-u-color-text-tertiary"
@@ -554,7 +554,7 @@
                                                                 src="/images/avatars/steven.avif"
                                                                 width="48"
                                                                 height="48"
-                                                                alt="Avatar of Teri"
+                                                                alt="Avatar of Steven"
                                                             />
                                                             <div
                                                                 class="web-user-box-name flex gap-2"
@@ -564,7 +564,7 @@
                                                                 >
                                                                 <time
                                                                     class="web-caption-400 web-u-color-text-tertiary"
-                                                                    >8:38 AM</time
+                                                                    >9:08 AM</time
                                                                 >
                                                             </div>
                                                             <div
@@ -577,7 +577,7 @@
                                                                     class="web-link is-pink"
                                                                     href="/blog/post/cors-error"
                                                                     target="_blank"
-                                                                    >/blog/post/cors-error</a
+                                                                    >https://appwrite.io/blog/post/cors-error</a
                                                                 >. Let me know if this helps 🙂
                                                             </div>
                                                         </div>

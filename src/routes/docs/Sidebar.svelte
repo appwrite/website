@@ -129,6 +129,12 @@
                     isParent: true
                 },
                 {
+                    label: 'Integrations',
+                    href: '/integrations',
+                    icon: 'icon-puzzle',
+                    isParent: true
+                },
+                {
                     label: 'Migrations',
                     href: '/docs/advanced/migrations',
                     icon: 'icon-refresh',

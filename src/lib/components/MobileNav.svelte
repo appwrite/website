@@ -15,7 +15,7 @@
 <svelte:window on:resize={() => open && (open = false)} />
 
 <nav class="web-side-nav web-is-not-desktop" class:u-hide={!open}>
-  <div class="web-side-nav-wrapper ps-4 pe-4">
+  <div class="web-side-nav-wrapper pe-4 ps-4">
     <div class="flex items-center gap-2">
       <a
         href="https://cloud.appwrite.io/register"

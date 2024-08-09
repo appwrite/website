@@ -65,7 +65,7 @@
                     rel: 'noopener noreferrer'
                 }
             ],
-            Program: [
+            Programs: [
                 { label: 'Heroes', href: '/heroes' },
                 { label: 'Startups', href: '/startups' }
             ],
