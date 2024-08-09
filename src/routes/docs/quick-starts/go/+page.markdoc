@@ -108,12 +108,7 @@ func prepareDatabase() {
 	appwriteDatabases = appwrite.NewDatabases(appwriteClient)
 
 	var err error
-	todoDatabase, err = appwriteDatabases.Create(id.Unique(), "TodosDB")
-
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
+	todoDatabase, _ = appwriteDatabases.Create(id.Unique(), "TodosDB")
 
 	todoCollection, err = appwriteDatabases.CreateCollection(
 		todoDatabase.Id,
