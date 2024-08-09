@@ -3,39 +3,32 @@
     import { MainFooter, FooterNav, Article } from '$lib/components';
     import { TITLE_SUFFIX } from '$routes/titles.js';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
-    import { _PAGE_NAVIGATION_RANGE } from '$routes/blog/+page';
     import { page } from '$app/stores';
     import { onMount } from 'svelte';
+    import { BLOG_POSTS_NAVIGATION_RANGE } from '$lib/constants.js';
 
     export let data;
     const featured = data.featured;
 
     let currentPage = 1;
 
-    $: currentPageRange = (): number[] => {
-        const chunkIndex = Math.floor((currentPage - 1) / _PAGE_NAVIGATION_RANGE);
-        return data.navigation[chunkIndex] || [];
-    };
+    $: isLastPage = currentPage < data.totalPages;
 
-    $: isLastPage = (): boolean => {
-        return currentPage < data.totalPages;
-    };
+    $: paginatedBlogPosts = data.posts[currentPage - 1] ?? data.posts[0];
+
+    $: chunkIndex = Math.floor((currentPage - 1) / BLOG_POSTS_NAVIGATION_RANGE);
+
+    $: currentPageRange = data.navigation[chunkIndex] || [];
 
     $: nextBatchStartPage = (): number => {
-        const batchIndex = Math.floor((currentPage - 1) / _PAGE_NAVIGATION_RANGE);
-        const nextBatchStart = (batchIndex + 1) * _PAGE_NAVIGATION_RANGE + 1;
+        const nextBatchStart = (chunkIndex + 1) * BLOG_POSTS_NAVIGATION_RANGE + 1;
         return nextBatchStart <= data.posts.length ? nextBatchStart : currentPage;
     };
 
     $: previousBatchStartPage = (): number => {
-        const batchIndex = Math.floor((currentPage - 1) / _PAGE_NAVIGATION_RANGE);
-        const currentBatchStart = batchIndex * _PAGE_NAVIGATION_RANGE + 1;
-        const prevBatchStart = currentBatchStart - _PAGE_NAVIGATION_RANGE;
+        const currentBatchStart = chunkIndex * BLOG_POSTS_NAVIGATION_RANGE + 1;
+        const prevBatchStart = currentBatchStart - BLOG_POSTS_NAVIGATION_RANGE;
         return prevBatchStart > 0 ? prevBatchStart : 1;
-    }
-
-    $: getBlogPosts = () => {
-        return data.posts[currentPage - 1] ?? data.posts[0]
     }
 
     onMount(() => {
@@ -190,7 +183,7 @@
 
                     <div class="u-margin-block-start-48">
                         <ul class="web-grid-articles">
-                            {#each getBlogPosts() as post}
+                            {#each paginatedBlogPosts as post}
                                 {@const author = data.authors.find(
                                     (author) => author.slug === post.author
                                 )}
@@ -220,7 +213,7 @@
                                 Previous
                             </a>
 
-                            {#each currentPageRange() as page}
+                            {#each currentPageRange as page}
                                 <a
                                     class="pagination-number"
                                     class:pagination-number-selected={currentPage === page}
@@ -230,7 +223,7 @@
 
                             <a
                                 class="u-flex navigation-button"
-                                class:navigation-button-active={isLastPage()}
+                                class:navigation-button-active={isLastPage}
                                 href="/blog?page={nextBatchStartPage()}"
                             >
                                 Next
