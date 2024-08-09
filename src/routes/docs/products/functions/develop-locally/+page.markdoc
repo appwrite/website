@@ -57,7 +57,7 @@ Build finished.
 ✓ Success: Visit http://localhost:3000/ to execute your function.
 ```
 
-This command helps you efficiently develop your Appwrite functions on your local machine. Modifying your function code updates your function's behavior and you can see that behavior upon execution. When developing your Appwrite function locally, it will receive [headers](/docs/products/functions/develop#headers) like when you develop a function and it is deployed to Appwrite.
+This command helps you efficiently develop your Appwrite functions on your local machine. Modifying your function code will automatically restart the function to run with the updated code. When developing your Appwrite function locally, it will receive [headers](/docs/products/functions/develop#headers) like a function deployed to Appwrite.
 
 {% arrow_link href="/docs/products/functions/develop" %}
 Learn more about developing a function
