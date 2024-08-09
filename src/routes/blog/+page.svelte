@@ -4,12 +4,13 @@
     import { TITLE_SUFFIX } from '$routes/titles.js';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { _PAGE_NAVIGATION_RANGE } from '$routes/blog/+page';
+    import { page } from '$app/stores';
+    import { onMount } from 'svelte';
 
     export let data;
-
     const featured = data.featured;
 
-    $: currentPage = data.currentPage;
+    let currentPage = 1;
 
     $: currentPageRange = (): number[] => {
         const chunkIndex = Math.floor((currentPage - 1) / _PAGE_NAVIGATION_RANGE);
@@ -18,13 +19,13 @@
 
     $: isLastPage = (): boolean => {
         return currentPage < data.totalPages;
-    }
+    };
 
     $: nextBatchStartPage = (): number => {
         const batchIndex = Math.floor((currentPage - 1) / _PAGE_NAVIGATION_RANGE);
         const nextBatchStart = (batchIndex + 1) * _PAGE_NAVIGATION_RANGE + 1;
         return nextBatchStart <= data.posts.length ? nextBatchStart : currentPage;
-    }
+    };
 
     $: previousBatchStartPage = (): number => {
         const batchIndex = Math.floor((currentPage - 1) / _PAGE_NAVIGATION_RANGE);
@@ -32,6 +33,17 @@
         const prevBatchStart = currentBatchStart - _PAGE_NAVIGATION_RANGE;
         return prevBatchStart > 0 ? prevBatchStart : 1;
     }
+
+    $: getBlogPosts = () => {
+        return data.posts[currentPage - 1] ?? data.posts[0]
+    }
+
+    onMount(() => {
+        return page.subscribe((page) => {
+            const pageParam = page.url.searchParams.get('page') || '1';
+            currentPage = Math.max(parseInt(pageParam), 1);
+        });
+    });
 
     const title = 'Blog' + TITLE_SUFFIX;
     const description = 'Stay updated with the latest product news, insights, and tutorials from the Appwrite team. Discover tips and best practices for hassle-free backend development.';
@@ -178,7 +190,7 @@
 
                     <div class="u-margin-block-start-48">
                         <ul class="web-grid-articles">
-                            {#each data.posts as post}
+                            {#each getBlogPosts() as post}
                                 {@const author = data.authors.find(
                                     (author) => author.slug === post.author
                                 )}
