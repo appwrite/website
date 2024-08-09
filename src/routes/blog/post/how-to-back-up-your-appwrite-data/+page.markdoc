@@ -8,7 +8,7 @@ timeToRead: 3
 author: bradley-schofield
 category: engineering
 ---
-*This article was originally published on [dev.to](https://dev.to/appwrite/appwrite-in-production-backups-and-restores-4beg) in May 2022 and was updated for accuracy.*
+*This article was originally published in May 2022 and was updated for accuracy.*
 
 Backing up and restoring data is an extremely important part of running servers. It's a virtual safety net against most bad things that can happen. Made a bad config change? Restore a backup. Messed up an update? Restore a backup. Corrupted Drives? Restore a backup.
 
