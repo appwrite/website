@@ -71,18 +71,28 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Create a new file called `app.go`, initialize a function, and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
+Create a new file called `app.go`, initialize a function, and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key. Import the Appwrite dependencies for client, databases, and models.
 
 ```go
 package main
 
 import (
 	"github.com/appwrite/sdk-for-go/appwrite"
+	"github.com/appwrite/sdk-for-go/client"
+	"github.com/appwrite/sdk-for-go/databases"
+	"github.com/appwrite/sdk-for-go/models"
+)
+
+var (
+	appwriteClient    client.Client
+	todoDatabase      *models.Database
+	todoCollection    *models.Collection
+	appwriteDatabases *databases.Databases
 )
 
 func main() {
-	client := appwrite.NewClient(
-		appwrite.WithProject("<PROJECT_ID>"),
+	appwriteClient = appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_KEY>"),
 		appwrite.WithKey("<API_KEY>"),
 	)
 }
@@ -91,20 +101,21 @@ func main() {
 {% /section %}
 {% section #step-5 step=5 title="Initialize database" %}
 
-Once the Appwrite Client is initialized, create a function to configure a todo collection.
+Once the Appwrite Client is initialized, create a function to configure a todo collection. Import the Appwrite dependencies for id.
 
 ```go
-func todoCollection(client client.Client) {
-	appwriteDatabases := appwrite.NewDatabases(client)
+func prepareDatabase() {
+	appwriteDatabases = appwrite.NewDatabases(appwriteClient)
 
-	todoDatabase, err := appwriteDatabases.Create("unique()", "TodosDB")
+	var err error
+	todoDatabase, err = appwriteDatabases.Create(id.Unique(), "TodosDB")
 
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	todoCollection, err := appwriteDatabases.CreateCollection(
+	todoCollection, err = appwriteDatabases.CreateCollection(
 		todoDatabase.Id,
 		id.Unique(),
 		"Todos")
@@ -114,7 +125,7 @@ func todoCollection(client client.Client) {
 		return
 	}
 
-	attribute1, err := appwriteDatabases.CreateStringAttribute(
+	appwriteDatabases.CreateStringAttribute(
 		todoDatabase.Id,
 		todoCollection.Id,
 		"title",
@@ -122,14 +133,7 @@ func todoCollection(client client.Client) {
 		true,
 	)
 
-	fmt.Println(attribute1)
-
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	attribute2, err := appwriteDatabases.CreateStringAttribute(
+	appwriteDatabases.CreateStringAttribute(
 		todoDatabase.Id,
 		todoCollection.Id,
 		"description",
@@ -137,28 +141,12 @@ func todoCollection(client client.Client) {
 		false,
 	)
 
-	fmt.Println(attribute2)
-
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	attribute3, err := appwriteDatabases.CreateBooleanAttribute(
+	appwriteDatabases.CreateBooleanAttribute(
 		todoDatabase.Id,
 		todoCollection.Id,
 		"isComplete",
 		true,
 	)
-
-	fmt.Println(attribute3)
-
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	seedDatabase(appwriteDatabases, todoDatabase, todoCollection)
 }
 ```
 
@@ -167,8 +155,7 @@ func todoCollection(client client.Client) {
 Create a function to add some mock data to your new collection.
 
 ```go
-func seedDatabase(appwriteDatabases *databases.Databases, toDoDatabase *models.Database, toDoCollection *models.Collection) {
-
+func seedDatabase() {
 	testTodo1 := map[string]interface{}{
 		"title":       "Buy apples",
 		"description": "At least 2KGs",
@@ -186,52 +173,60 @@ func seedDatabase(appwriteDatabases *databases.Databases, toDoDatabase *models.D
 		"isComplete":  false,
 	}
 
-	document1, err := appwriteDatabases.CreateDocument(
-		toDoDatabase.Id,
-		toDoCollection.Id,
+	appwriteDatabases.CreateDocument(
+		todoDatabase.Id,
+		todoCollection.Id,
 		id.Unique(),
 		testTodo1,
 	)
 
-	fmt.Println(document1)
-
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	document2, err := appwriteDatabases.CreateDocument(
-		toDoDatabase.Id,
-		toDoCollection.Id,
-		"unique()",
+	appwriteDatabases.CreateDocument(
+		todoDatabase.Id,
+		todoCollection.Id,
+		id.Unique(),
 		testTodo2,
 	)
 
-	fmt.Println(document2)
-
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	document3, err := appwriteDatabases.CreateDocument(
-		toDoDatabase.Id,
-		toDoCollection.Id,
+	appwriteDatabases.CreateDocument(
+		todoDatabase.Id,
+		todoCollection.Id,
 		id.Unique(),
 		testTodo3,
 	)
+}
+```
 
-	fmt.Println(document3)
+{% /section %}
+{% section #step-7 step=7 title="Retrieve documents" %}
+
+Create a function to retrieve the mock todo data.
+
+```go
+type Todo struct {
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	IsComplete  bool   `json:"isComplete"`
+}
+
+func getTodos(appwriteDatabases *databases.Databases, todoDatabase *models.Database, todoCollection *models.Collection) {
+	todos, err := appwriteDatabases.ListDocuments(
+		todoDatabase.Id,
+		todoCollection.Id,
+		appwriteDatabases.WithListDocumentsQueries([]string{}),
+	)
+
+	for _, doc := range todos.Documents {
+		var todo Todo
+		fmt.Println(doc)
+		fmt.Printf("Title: %s\nDescription: %s\nIs Todo Complete: %t\n\n", todo.Title, todo.Description, todo.IsComplete)
+	}
 
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-
-	getTodos(appwriteDatabases, toDoDatabase, toDoCollection)
 }
 ```
-
 
 Make sure to update `main()` with the todo Collection function you created. Your `main()` function should look something like this:
 
@@ -249,36 +244,16 @@ import (
 )
 
 func main() {
-
-	client := appwrite.NewClient(
-		appwrite.WithProject("<PROJECT_ID>"),
+	appwriteClient = appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_KEY>"),
 		appwrite.WithKey("<API_KEY>"),
 	)
 
-	todoCollection(client)
+	prepareDatabase()
+	seedDatabase()
+	getTodos()
 }
-```
 
-{% /section %}
-{% section #step-7 step=7 title="Retrieve documents" %}
-
-Create a function to retrieve the mock todo data.
-
-```go
-func getTodos(appwriteDatabases *databases.Databases, toDoDatabase *models.Database, toDoCollection *models.Collection) {
-	todos, err := appwriteDatabases.ListDocuments(
-		toDoDatabase.Id,
-		toDoCollection.Id,
-		appwriteDatabases.WithListDocumentsQueries([]string{}),
-	)
-
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	fmt.Println(todos)
-}
 ```
 
 {% /section %}
