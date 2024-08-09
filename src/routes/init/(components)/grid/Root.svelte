@@ -1,6 +1,6 @@
 <script lang="ts">
     export let columns: number = 12;
-    export let rows: number = 12;
+    export let rows: number = 2;
 </script>
 
 <div class="grid" style="--columns:{columns};--rows:{rows};">
@@ -13,7 +13,8 @@
     .grid {
         display: grid;
         grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
-        grid-template-rows: repeat(var(--columns), minmax(0, pxToRem(120)));
+        grid-template-rows: subgrid;
+
         gap: pxToRem(32);
     }
 </style>

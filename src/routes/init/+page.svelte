@@ -12,12 +12,13 @@
     import Day3 from './(days)/Day3.svelte';
     import Day4 from './(days)/Day4.svelte';
     import Day5 from './(days)/Day5.svelte';
+    import Day from './(days)/Day.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
     const ogImage = buildOpenGraphImage('init', description);
 
-    let base = new Date('2024-08-19T15:00:00.000Z');
+    let base = new Date('2024-08-01T15:00:00.000Z');
 
     $: days = [
         {
@@ -76,10 +77,9 @@
         <p class="web-description">The start of something new.</p>
         <div class="buttons">
             <a href="/init/tickets" class="web-button">Claim your ticket</a>
+            <button class="aw-button" on:click={ff}>fast forward</button>
         </div>
     </div>
-
-    <button on:click={ff}>ff</button>
 
     <div class="web-container">
         <div class="day-cards">
@@ -93,24 +93,26 @@
         <div class="days">
             {#each days as day, i}
                 {@const date = `DAY ${i} - ${toReleaseDate(day.release)}`}
-                {#if i === 0}
-                    <Day1 {date} release={day.release} />
-                {:else if i === 1}
-                    <Day2 {date} release={day.release} />
-                {:else if i === 2}
-                    <Day3 {date} release={day.release} />
-                {:else if i === 3}
-                    <Day4 {date} release={day.release} />
-                {:else if i === 4}
-                    <Day5 {date} release={day.release} />
-                {:else}
-                    <h2 class="web-eyebrow web-u-color-text-primary">
-                        <div class="web-dot" />
-                        {date}
-                        <span class="web-u-color-text-accent">_</span>
-                    </h2>
-                    <CountdownCard date={day.release} />
-                {/if}
+                <Day day={date} release={day.release}>
+                    {#if i === 0}
+                        <Day1 />
+                    {:else if i === 1}
+                        <Day2 />
+                    {:else if i === 2}
+                        <Day3 />
+                    {:else if i === 3}
+                        <Day4 />
+                    {:else if i === 4}
+                        <Day5 />
+                    {:else}
+                        <h2 class="web-eyebrow web-u-color-text-primary">
+                            <div class="web-dot" />
+                            {date}
+                            <span class="web-u-color-text-accent">_</span>
+                        </h2>
+                        <CountdownCard date={day.release} />
+                    {/if}
+                </Day>
             {/each}
         </div>
     </div>
