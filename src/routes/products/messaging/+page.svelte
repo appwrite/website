@@ -8,6 +8,8 @@
     import Send from './(components)/Send.svelte';
     import Target from './(components)/Target.svelte';
     import MultiCodeContextless from './(components)/MultiCodeContextless.svelte';
+    import { Platform } from '$lib/utils/references';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     const title = 'Messaging' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -15,7 +17,7 @@
 
     const codeTopic = [
         {
-            language: 'js',
+            language: 'client-web',
             content: `import { Account, Messaging, ID } from "appwrite"
 
 // Fetch target ID
@@ -32,7 +34,7 @@ await messaging.createSubscriber(
 )`
         },
         {
-            language: 'dart',
+            language: 'client-flutter',
             content: `import 'package:appwrite/appwrite.dart';
 
 // Fetch target ID
@@ -49,7 +51,7 @@ await messaging.createSubscriber(
 );`
         },
         {
-            language: 'kotlin',
+            language: 'client-android-kotlin',
             content: `import io.appwrite.services.Account
 import io.appwrite.services.Messaging
 import io.appwrite.ID
@@ -68,7 +70,7 @@ messaging.createSubscriber(
 )`
         },
         {
-            language: 'swift',
+            language: 'client-apple',
             content: `import Appwrite
 
 // Fetch target ID
@@ -88,24 +90,11 @@ try await messaging.createSubscriber(
 
     const codeMessage = [
         {
-            language: 'js',
+            language: 'server-nodejs',
             platform: 'Node.js',
             content: `import { Messaging, ID } from "node-appwrite"
 
 const messaging = Messaging(client);
-await messaging.createPush(
-    ID.unique(),           // Message ID
-    'Breaking update',     // Push title
-    'Hello, world!',       // Push body
-    ['news', 'sport'],       // Topic IDs
-);`
-        },
-        {
-            language: 'ts',
-            platform: 'Deno',
-            content: `import { Messaging, ID } from "https://deno.land/x/appwrite/mod.ts";
-
-const messaging = new Messaging(client);
 await messaging.createPush(
     ID.unique(),           // Message ID
     'Breaking update',     // Push title
@@ -279,13 +268,9 @@ messaging.create_email(
                         directly to your users.
                     </p>
                     <div class="u-flex u-items-center u-gap-8 u-margin-block-start-32 hero-buttons">
-                        <a class="web-button" href="https://cloud.appwrite.io" target="_blank"
-                            >Get started</a
-                        >
-                        <a
-                            class="web-button is-secondary"
-                            href="https://appwrite.io/docs/products/messaging"
-                            target="_blank">Documentation</a
+                        <a class="web-button" href={PUBLIC_APPWRITE_DASHBOARD}>Get started</a>
+                        <a class="web-button is-secondary" href="/docs/products/messaging"
+                            >Documentation</a
                         >
                     </div>
                 </div>
@@ -333,8 +318,6 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/fcm"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
                                         >
                                             <span class="web-icon-firebase" aria-hidden="true" />
                                             <span class="text">FCM</span>
@@ -344,8 +327,6 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/apns"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
                                         >
                                             <span class="web-icon-apple" aria-hidden="true" />
                                             <span class="text">APNS</span>
@@ -370,8 +351,6 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/mailgun"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
                                         >
                                             <span class="web-icon-mailgun" aria-hidden="true" />
                                             <span class="text">Mailgun</span>
@@ -381,8 +360,6 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/sendgrid"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
                                         >
                                             <span class="web-icon-sendgrid" aria-hidden="true" />
                                             <span class="text">SendGrid</span>
@@ -406,8 +383,6 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/twilio"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
                                         >
                                             <span class="icon-twilio" aria-hidden="true" />
                                             <span class="text">Twilio</span>
@@ -417,8 +392,6 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/vonage"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
                                         >
                                             <span class="icon-vonage" aria-hidden="true" />
                                             <span class="text">Vonage</span>
@@ -447,12 +420,7 @@ messaging.create_email(
                                 </p>
                                 <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
                                     <li>
-                                        <a
-                                            class="web-interactive-tag"
-                                            href="/docs"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
+                                        <a class="web-interactive-tag" href="/docs">
                                             <span
                                                 class="web-icon-appwrite u-small web-u-margin-inline-end-4"
                                                 aria-hidden="true"
@@ -568,14 +536,22 @@ messaging.create_email(
                                 class="u-margin-block-start-16 u-min-width-0"
                                 style="margin-block-end: 94px"
                             >
-                                <MultiCodeContextless data={codeTopic} height={450} />
+                                <MultiCodeContextless
+                                    data={codeTopic}
+                                    selected={Platform.ClientWeb}
+                                    height={450}
+                                />
                             </div>
                         </div>
                         <div class="u-flex-vertical u-gap-8 u-min-width-0">
                             <h3 class="web-label web-u-color-text-primary">Send a message</h3>
                             <p class="web-description">Send a message to all targets on a topic.</p>
                             <div class="u-margin-block-start-16 u-min-width-0">
-                                <MultiCodeContextless data={codeMessage} height={450} />
+                                <MultiCodeContextless
+                                    data={codeMessage}
+                                    selected={Platform.ServerNodeJs}
+                                    height={450}
+                                />
                             </div>
                         </div>
                     </div>
@@ -599,8 +575,6 @@ messaging.create_email(
                             class="web-card is-normal"
                             href="/docs/products/auth"
                             style="background: rgba(255, 255, 255, 0.04);"
-                            target="_blank"
-                            rel="noopener noreferrer"
                         >
                             <div
                                 class="u-flex-vertical u-gap-8 web-u-padding-inline-8 web-u-padding-block-end-8"
@@ -628,8 +602,6 @@ messaging.create_email(
                         <a
                             class="web-card is-normal"
                             href="/docs/products/functions"
-                            target="_blank"
-                            rel="noopener noreferrer"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
@@ -661,8 +633,6 @@ messaging.create_email(
                         <a
                             class="web-card is-normal"
                             href="/docs/products/databases"
-                            target="_blank"
-                            rel="noopener noreferrer"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
@@ -693,8 +663,6 @@ messaging.create_email(
                         <a
                             class="web-card is-normal"
                             href="/docs/products/storage"
-                            target="_blank"
-                            rel="noopener noreferrer"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
@@ -725,8 +693,6 @@ messaging.create_email(
                         <a
                             class="web-card is-normal"
                             href="/docs/apis/realtime"
-                            target="_blank"
-                            rel="noopener noreferrer"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
@@ -895,6 +861,10 @@ messaging.create_email(
     .web-interactive-tag[data-readonly] {
         cursor: not-allowed;
         pointer-events: none;
+    }
+
+    .web-tag {
+        --p-tag-bg-color: var(--web-color-greyscale-100);
     }
 
     @media (min-width: 1024px) {

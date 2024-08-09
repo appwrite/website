@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Code from '$lib/animations/CodeWindow/Code.svelte';
-	import { authController } from '.';
+    import Code from '$lib/animations/CodeWindow/Code.svelte';
+    import { authController } from '.';
 
-	const { state } = authController;
+    const { state } = authController;
 
-	$: content = `
+    $: content = `
 const result = account.create(
 	ID.unique(),
 	'${$state.email}',	

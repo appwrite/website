@@ -194,7 +194,7 @@
                         >
                             The Appwrite Startups Program supports your startup with a complete
                             backend for you to build your products. Eligible startups receive
-                            Appwrite Cloud Pro for 12 months.
+                            Appwrite Cloud Scale for 12 months.
                         </p>
                         <button
                             on:click={scrollToForm}
@@ -223,7 +223,7 @@
                             <div class="u-flex-vertical u-gap-8 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">Complete backend</h2>
                                 <p class="web-main-body-500">
-                                    Get access to Appwrite’s Pro plan and build your entire backend
+                                    Get access to Appwrite’s Scale plan and build your entire backend
                                     with Appwrite.
                                 </p>
                             </div>
@@ -240,7 +240,7 @@
                             <div class="u-flex-vertical u-gap-8 u-text-center">
                                 <h2 class="web-label web-u-color-text-primary">Cloud credits</h2>
                                 <p class="web-main-body-500">
-                                    Get Appwrite Cloud Pro for 12 months and reduce risk at an early
+                                    Get Appwrite Cloud Scale for 12 months and reduce risk at an early
                                     stage.
                                 </p>
                             </div>
@@ -255,9 +255,9 @@
                                 alt=""
                             />
                             <div class="u-flex-vertical u-gap-8 u-text-center">
-                                <h2 class="web-label web-u-color-text-primary">Premium support</h2>
+                                <h2 class="web-label web-u-color-text-primary">Priority support</h2>
                                 <p class="web-main-body-500">
-                                    Get community support and premium email support from the
+                                    Get community support and priority email support from the
                                     Appwrite team.
                                 </p>
                             </div>
@@ -459,16 +459,16 @@
                                                         <div class="web-user-box">
                                                             <img
                                                                 class="web-user-box-image"
-                                                                src="/images/community/avatars/6.avif"
+                                                                src="/images/community/avatars/walter.avif"
                                                                 height="40"
                                                                 width="40"
-                                                                alt="Avatar of Teri"
+                                                                alt="Avatar of Walter"
                                                             />
                                                             <div
                                                                 class="web-user-box-name u-flex u-gap-8"
                                                             >
                                                                 <span class="web-sub-body-500"
-                                                                    >Louis Baker</span
+                                                                    >Walter O'Brien</span
                                                                 >
                                                                 <time
                                                                     class="web-caption-400 web-u-color-text-tertiary"
@@ -493,7 +493,7 @@
                                                                 src="/images/avatars/steven.avif"
                                                                 width="48"
                                                                 height="48"
-                                                                alt="Avatar of Teri"
+                                                                alt="Avatar of Steven"
                                                             />
                                                             <div
                                                                 class="web-user-box-name u-flex u-gap-8"
@@ -515,7 +515,7 @@
                                                                     class="web-link is-pink"
                                                                     href="/blog/post/cors-error"
                                                                     target="_blank"
-                                                                    >`Access blocked by CORS policy`</a
+                                                                    >"Access blocked by CORS policy"</a
                                                                 >?
                                                             </div>
                                                         </div>
@@ -526,16 +526,16 @@
                                                         <div class="web-user-box">
                                                             <img
                                                                 class="web-user-box-image"
-                                                                src="/images/community/avatars/6.avif"
+                                                                src="/images/community/avatars/walter.avif"
                                                                 height="40"
                                                                 width="40"
-                                                                alt="Avatar of Teri"
+                                                                alt="Avatar of Walter"
                                                             />
                                                             <div
                                                                 class="web-user-box-name u-flex u-gap-8"
                                                             >
                                                                 <span class="web-sub-body-500"
-                                                                    >Louis Baker</span
+                                                                    >Walter O'Brien</span
                                                                 >
                                                                 <time
                                                                     class="web-caption-400 web-u-color-text-tertiary"
@@ -558,7 +558,7 @@
                                                                 src="/images/avatars/steven.avif"
                                                                 width="48"
                                                                 height="48"
-                                                                alt="Avatar of Teri"
+                                                                alt="Avatar of Steven"
                                                             />
                                                             <div
                                                                 class="web-user-box-name u-flex u-gap-8"
@@ -568,7 +568,7 @@
                                                                 >
                                                                 <time
                                                                     class="web-caption-400 web-u-color-text-tertiary"
-                                                                    >8:38 AM</time
+                                                                    >9:08 AM</time
                                                                 >
                                                             </div>
                                                             <div
@@ -581,7 +581,7 @@
                                                                     class="web-link is-pink"
                                                                     href="/blog/post/cors-error"
                                                                     target="_blank"
-                                                                    >/blog/post/cors-error</a
+                                                                    >https://appwrite.io/blog/post/cors-error</a
                                                                 >. Let me know if this helps 🙂
                                                             </div>
                                                         </div>
@@ -727,7 +727,7 @@
                                                         class="web-check-bullet u-margin-block-start-4"
                                                     ></div>
                                                     <p class="web-description">
-                                                        Appwrite Cloud Pro for 12 months
+                                                        Appwrite Cloud Scale for 12 months
                                                     </p>
                                                 </div>
                                                 <div class="u-flex u-gap-16">
@@ -735,7 +735,7 @@
                                                         class="web-check-bullet u-margin-block-start-4"
                                                     ></div>
                                                     <p class="web-description">
-                                                        Premium email support as part of Pro
+                                                        Priority email support as part of Scale
                                                     </p>
                                                 </div>
                                             </div>
