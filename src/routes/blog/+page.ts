@@ -4,7 +4,7 @@ import type { AuthorData, PostsData } from './content';
 const POSTS_PER_PAGE = 12;
 export const _PAGE_NAVIGATION_RANGE = 3;
 
-export function load({ url }) {
+export function load() {
     const postsGlob = import.meta.glob('./post/**/*.markdoc', {
         eager: true
     });
@@ -55,7 +55,7 @@ export function load({ url }) {
         };
     });
 
-    const paginationData = getPaginationData(url, posts);
+    const paginationData = getPaginationData(posts);
 
     return {
         authors,
@@ -64,10 +64,12 @@ export function load({ url }) {
     };
 }
 
-function getPaginationData(url: URL, posts: object) {
-    const currentPage = Number(url.searchParams.get('page')) || 1;
+function getPaginationData(posts: object) {
     const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
-    const paginatedPosts = posts.slice((currentPage - 1) * POSTS_PER_PAGE, currentPage * POSTS_PER_PAGE);
+
+    const paginatedPosts = Array.from({ length: totalPages }, (_, i) =>
+        posts.slice(i * POSTS_PER_PAGE, (i + 1) * POSTS_PER_PAGE)
+    );
 
     const pageNavigationChunks = Array.from({ length: totalPages }, (_, i) => i + 1)
         .reduce((acc, curr, idx) => {
@@ -79,7 +81,6 @@ function getPaginationData(url: URL, posts: object) {
 
     return {
         totalPages,
-        currentPage,
         posts: paginatedPosts,
         navigation: pageNavigationChunks,
     }
