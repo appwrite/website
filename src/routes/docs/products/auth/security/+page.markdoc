@@ -21,7 +21,7 @@ Only keep user sessions active as long as needed and maintain exactly **one** in
 | {% only_dark %}{% icon_image src="/images/platforms/dark/apple.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}{% only_light %}{% icon_image src="/images/platforms/apple.svg" alt="Javascript logo" size="m" /%}{% /only_light %}  | Apple | Uses a session cookie stored in **UserDefaults**. |
 | {% only_dark %}{% icon_image src="/images/platforms/dark/android.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}{% only_light %}{% icon_image src="/images/platforms/android.svg" alt="Javascript logo" size="m" /%}{% /only_light %}  | Android | Uses a session cookie stored in **SharedPreferences**. |
 
-# Mock phone {% #mock-phone %}
+# Mock phone number {% #mock-phone-number %}
 
 Mocking phone numbers allows users to test SMS authentication without needing an actual phone number. This can be useful for testing edge cases where a user doesn't have a physical SIM card but needs to sign in to your application using SMS. To mock a phone number, navigate to **Auth** > **Security** > Mock Phone Numbers.
 

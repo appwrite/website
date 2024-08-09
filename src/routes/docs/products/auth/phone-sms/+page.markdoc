@@ -98,7 +98,7 @@ mutation {
 
 # Login {% #login %}
 
-After initiating the phone authentication process, the returned user ID and secret are used to confirm the user. The secret will usually be a 6-digit number in the SMS message sent to the user.
+After initiating the phone authentication process, the returned user ID and secret are used to confirm the user. The secret will usually be a 6-digit number in the SMS message sent to the user. You can also [mock the phone number](/docs/products/auth/security#mock-phone-number) to initiate a phone authentication process.
 
 {% multicode %}
 
