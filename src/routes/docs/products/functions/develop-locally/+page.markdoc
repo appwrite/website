@@ -12,8 +12,8 @@ We use Docker to replicate the production environment for the local deployment o
 
 1. Install the [Docker CLI](https://www.docker.com/products/docker-desktop/)
 2. Ensure Docker is running in the background
-3. Install the [Appwrite CLI](/docs/tooling/command-line/installation#installation)
-4. [Log in](/docs/tooling/command-line/installation#get-started) to your Appwrite account using `appwrite login`
+3. Install the [Appwrite CLI](/tooling/command-line/installation#getting-started)
+4. [Log in](/docs/tooling/command-line/installation#login) to your Appwrite account using `appwrite login`
 5. [Initialize your project](/docs/tooling/command-line/installation#initialization)
 6. [Initialize an Appwrite function](/docs/tooling/command-line/functions) and copy and paste your code
 
@@ -66,14 +66,16 @@ Learn more about developing a function
 # Dynamic API keys {% #dynamic-api-keys %}
 
 You can use headers like dynamic API keys in your function, which give you access to your project services and allow you to operate without sessions. To configure your dynamic API key scopes, modify the scopes in the `appwrite.json` file.
-
-{% arrow_link href="/docs/products/functions/develop" %}
+  
+{% arrow_link href="/docs/products/functions/develop#dynamic-api-key" %}
 Learn more about dynamic API keys
 {% /arrow_link %}
 
 # Impersonate user {% #impersonate-user %}
 
-You can also impersonate a user when you develop a function locally. Impersonate a user using the `--user-id <USER_ID>` option to select a user you want to use for testing. This allows you to test if the user can perform specific actions, such as creating a document. This lets you test user label-based roles like admin or premium to ensure they work as intended. You can also test user preferences across devices and sessions.
+You can also impersonate a user when you develop a function locally. Impersonate a user using the `--user-id <USER_ID>` option to select a user you want to use for testing. This allows you to test if the user can perform specific actions, such as creating a document.
+
+When using the `--user-id <USER_ID>` endpoint, the CLI will check and return an error if the user does not exist. But if a user does exist, a [JWT token](/docs/products/auth/jwt#jwt) will be generated and last for 1 hour, similar to API tokens.
 
 ```sh
 appwrite run functions --user-id "<USER_ID>"
