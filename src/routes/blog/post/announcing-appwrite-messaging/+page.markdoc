@@ -3,7 +3,7 @@ layout: post
 title: "Announcing Messaging: Push, Email and SMS"
 description: You can now send emails, SMS and push notifications with Appwrite’s easy-to-use APIs.
 date: 2024-02-26
-cover: /images/blog/messaging-announcement.png
+cover: /images/blog/messaging-announcement.webp
 timeToRead: 6
 author: eldad-fux
 category: product
@@ -77,7 +77,7 @@ You can address recipients of messages at three levels:
 
 You can publish announcements and newsletters through topics, deliver user-specific promotions and alerts to all user's available targets, and address individual targets for location-based or real-time alerts.
 
-![Creating a message from the Console](/images/blog/message-overview.png)
+![Creating a message from the Console](/images/blog/message-overview.webp)
 
 # Deliver messages your way
 

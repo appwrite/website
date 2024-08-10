@@ -3,7 +3,7 @@ layout: post
 title: Simplify your data management with relationships
 description: Learn how to simplify your collection management and save time and effort with database relationships.
 date: 2024-01-05
-cover: /images/blog/simplify-your-data-management-with-relationships/cover.png
+cover: /images/blog/simplify-your-data-management-with-relationships/cover.webp
 timeToRead: 6
 author: jake-barnby
 category: accessibility
@@ -17,25 +17,25 @@ That's where one of Appwrite’s newest features comes in. Database relationship
 
 ## One to One
 
-![one to one](/images/blog/simplify-your-data-management-with-relationships/one-to-one.png)
+![one to one](/images/blog/simplify-your-data-management-with-relationships/one-to-one.webp)
 
 A one-to-one relationship means that each record in one collection is associated with only one record in another collection. For example, if you have a collection of users and a collection of profiles, each user can have only one profile, and each profile can belong to only one user.
 
 ## One to Many
 
-![one to many](/images/blog/simplify-your-data-management-with-relationships/one-to-many.png)
+![one to many](/images/blog/simplify-your-data-management-with-relationships/one-to-many.webp)
 
 A one-to-many relationship is when each record in one collection can be associated with multiple records in another collection. For instance, if you have a collection of artists and a collection of albums, each artist can have many albums released, but each album can only be released by one artist.
 
 ## Many To One
 
-![many to one](/images/blog/simplify-your-data-management-with-relationships/many-to-one.png)
+![many to one](/images/blog/simplify-your-data-management-with-relationships/many-to-one.webp)
 
 In contrast, many-to-one relationships are when multiple records in one collection can be associated with a single record in another collection. Inversely to the previous example, if you have a collection of albums and a collection of artists, many albums can be released by a single artist. While this may seem the same as a one-to-many relationship, it differs once you take the direction into account. A many-to-one relationship that is one-way can be used to represent a relationship that is only seen on the many side.
 
 ## Many to Many
 
-![many to many](/images/blog/simplify-your-data-management-with-relationships/many-to-many.png)
+![many to many](/images/blog/simplify-your-data-management-with-relationships/many-to-many.webp)
 
 Finally, many-to-many relationships describe a scenario where multiple records in one collection can be associated with multiple records in another collection. For example, if you have a collection of books and a collection of authors, each book can have multiple authors, and each author can write multiple books.
 

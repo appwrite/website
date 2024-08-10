@@ -3,7 +3,7 @@ layout: post
 title: "July product update: Integrations Catalog | daily.dev Squad | FreeCodeCamp"
 description: "Check out everything that happened in July in your monthly Appwrite digest."
 date: 2024-08-01
-cover: /images/blog/product-update-july/cover.png
+cover: /images/blog/product-update-july/cover.webp
 timeToRead: 8
 author: dennis-ivy
 category: product
@@ -12,7 +12,7 @@ July was packed with announcements and new content. We announced Appwrite integr
 
 # Integrations Catalog
 
-![Integrations catalog](/images/blog/product-update-july/1.png)
+![Integrations catalog](/images/blog/product-update-july/1.webp)
 
 We just launched our brand new Integrations Catalog — a one-stop-shop for all your Appwrite integrations needs. It’s designed to:
 
@@ -26,7 +26,7 @@ The current integrations are just the first of many. We’ll be continually upda
 
 # [daily.dev](http://daily.dev) Squad
 
-![dailydev squad](/images/blog/product-update-july/2.png)
+![dailydev squad](/images/blog/product-update-july/2.webp)
 
 Appwrite now has a Squad on [daily.dev](http://daily.dev) and you’re invited!
 
@@ -36,7 +36,7 @@ A Squad is an easy way to keep up with all the cool things happening at Appwrite
 
 # Appwrite at FreeCodeCamp
 
-![FreeCodeCamp video](/images/blog/product-update-july/3.png)
+![FreeCodeCamp video](/images/blog/product-update-july/3.webp)
 
 Appwrite developed a coding course on the [FreeCodeCamp.org](http://FreeCodeCamp.org) YouTube channel. FreeCodeCamp is a popular learning resource for developers, with hundreds of easy-to-follow video guides and tutorials.
 

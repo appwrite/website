@@ -3,7 +3,7 @@ layout: post
 title: "June product update: Public roadmap | The Appwriter | Messaging"
 description: "Check out everything new that happened in June, including public roadmap, the Appwriter release and the new Messaging page."
 date: 2024-07-04
-cover: /images/blog/product-update-june/product-update-june-2024.png
+cover: /images/blog/product-update-june/product-update-june-2024.webp
 timeToRead: 5
 author: dennis-ivy
 category: product
@@ -12,7 +12,7 @@ It’s the first week of a new month, which means it’s time to reflect on all 
 
 # Public roadmap
 
-![Appwrite's public roadmap](/images/blog/product-update-june/public-roadmap.png)
+![Appwrite's public roadmap](/images/blog/product-update-june/public-roadmap.webp)
 
 This month, we launched the new public roadmap on GitHub. It is part of our commitment to transparency with the Appwrite community. It enables:
 
@@ -28,7 +28,7 @@ The roadmap is designed to help us increase collaboration among the core team, c
 
 Appwrite community members have started to receive their Appwriters, and the reviews are in! People love it. 
 
-![Appwriter testimonials](/images/blog/product-update-june/appwriter-testimonials.png)
+![Appwriter testimonials](/images/blog/product-update-june/appwriter-testimonials.webp)
 
 We’re very proud of the overwhelmingly positive feedback from the community. Our team has worked tirelessly for the past six months to ensure that every detail, from the packaging to every key press, is perfect. 
 
@@ -38,7 +38,7 @@ Does this mean we’re also a hardware company now?
 
 # Appwrite Messaging
 
-![Messaging page](/images/blog/product-update-june/messaging-page.png)
+![Messaging page](/images/blog/product-update-june/messaging-page.webp)
 
 Appwrite’s newest product Messaging now has its own product page (the first of its kind!). Messaging allows you to set up email, SMS and push notifications to your users from a single API. 
 

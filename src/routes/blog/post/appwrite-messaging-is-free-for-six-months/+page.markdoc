@@ -3,7 +3,7 @@ layout: post
 title: Appwrite Messaging is free for six months
 description: We're happy to share our plans for Messaging for the next six months.
 date: 2024-05-08
-cover: /images/blog/messaging-pricing.png
+cover: /images/blog/messaging-pricing.webp
 timeToRead: 5
 author: eldad-fux
 category: Product
@@ -42,7 +42,7 @@ We will add more providers and invite you to contribute with your own pull reque
 
 ## A complete backend for your projects
 
-![Tweet about Messaging](/images/blog/tweet-hitesh.png)
+![Tweet about Messaging](/images/blog/tweet-hitesh.webp)
 
 We’re excited to bring Messaging to Cloud and to offer the service for free for the next six months while in open beta. Adding Messaging makes Appwrite an even more complete backend for your projects, and we look forward to adding more functionality soon.
 

@@ -2,7 +2,7 @@
 layout: post
 title: "BaaS vs. Custom Backend: making the right choice as a freelancer"
 description: Discover whether BaaS or a custom backend is the best fit for your freelance projects. In this blog we weigh the pros and cons to help you make the right choice.
-cover: /images/blog/baas-vs-custom-backend/cover.png
+cover: /images/blog/baas-vs-custom-backend/cover.webp
 timeToRead: 6
 date: 2024-06-20
 author: aditya-oberai
@@ -43,7 +43,7 @@ As a freelancer, you’ve probably built more authentication systems than you wa
 
 For example, [Appwrite Authentication](/docs/products/auth) simplifies the process to just a few clicks and a couple of lines of code. In Appwrite, you can securely authenticate users using multiple login methods, such as Email & Password, SMS, OAuth2, Anonymous, Magic URLs, and more. If your client requires specific authentication methods such as Auth0, tailored authentication using Web3 or AI, or integration with company-specific hardware cards, custom tokens let you implement your own authentication flow to meet these needs. There’s also support for teams, roles, and user labels, and includes rate-limiting and advanced user protection features.
 
-![Appwrite Authentication](/images/blog/baas-vs-custom-backend/auth.png)
+![Appwrite Authentication](/images/blog/baas-vs-custom-backend/auth.webp)
 
 You also get 30+ OAuth2 integrations. From Google and Github to Twitch and Yandex, you can set up your user auth in minutes – quite literally!
 
@@ -61,7 +61,7 @@ BaaS providers offer pre-configured database solutions, allowing you to quickly 
 
 The beauty of [Appwrite Databases](/docs/products/databases) is that it simplifies database management with a user-friendly interface. This makes it easier for developers to perform tasks like data storage, retrieval, and backup without deep expertise.
 
-![Appwrite Databases](/images/blog/baas-vs-custom-backend/database.png)
+![Appwrite Databases](/images/blog/baas-vs-custom-backend/database.webp)
 
 If you require a more specific functionality, you can integrate [any external database into your Appwrite project, such as SQL, NoSQL, Vector, Graph, and more](/blog/post/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project) – there’s absolutely no vendor lock-in.
 
@@ -77,7 +77,7 @@ For example, [Appwrite Storage](/docs/products/storage) lets you securely store 
 
 Additionally, you can upload files as they are or in chunks for better speeds, ensuring a smoother experience. Plus, if a user's internet goes down during an upload, resumable uploads allow them to re-upload only the missing parts, saving time and frustration.
 
-![Appwrite Storage](/images/blog/baas-vs-custom-backend/storage.png)
+![Appwrite Storage](/images/blog/baas-vs-custom-backend/storage.webp)
 
 Security features let you control allowed file formats and set maximum sizes for specific features. For slow (usually mobile) networks, Appwrite optimizes uploads by converting images to WEBP or lowering quality and resolution, ensuring fast and efficient performance.
 
@@ -89,7 +89,7 @@ Messaging is hard to home brew – it requires expertise in designing and implem
 
 In [Appwrite Messaging](/docs/products/messaging), with just a few lines of backend code, you can set up a full-functioning messaging service for your application that covers email, SMS, and push notifications under one unified API. It supports a variety of third-party messaging services:
 
-![Appwrite Messaging](/images/blog/baas-vs-custom-backend/messaging.png)
+![Appwrite Messaging](/images/blog/baas-vs-custom-backend/messaging.webp)
 
 You can group your users by topic, user type or target, and draft messages directly inside the Appwrite Console. Drafting directly in the Appwrite Console is great for promo messages, newsletters, and other announcements. You can see a preview of what your message will look like right in the console and control how your message will look before sending.
 

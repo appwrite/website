@@ -3,7 +3,7 @@ layout: post
 title: Designing the new Appwrite website
 description: Our new website is one of the most important communication channels in which current and potential new Appwrite developers can access relevant information and learn more about our products and our company. We decided to rethink its structure from scratch and incorporate an experience that was on par with our rebrand.
 date: 2023-10-11
-cover: /images/blog/designing-the-new-appwrite-website/cover.png
+cover: /images/blog/designing-the-new-appwrite-website/cover.webp
 timeToRead: 5
 author: caio-arias
 category: website
@@ -15,7 +15,7 @@ It is no surprise that the channel that gets the most traffic is our website. No
 
 We started this process by doing a thorough analysis of our site’s structure, figuring out what was working, what could be better, but also keeping in mind that this was an opportunity to improve and add to the overall presentation of our content. There was still some much-needed information still missing from our website, and we knew this was the perfect time to start brainstorming, writing, editing, and designing the pages in which that content would live.
 
-![Website wireframes](/images/blog/designing-the-new-appwrite-website/wireframe.png)
+![Website wireframes](/images/blog/designing-the-new-appwrite-website/wireframe.webp)
 
 Once the overall content and site map was defined, we built wireframes to further test the navigation across pages, and made adjustments to the content being shown according to our tests. It is important to keep in mind that this process was all done before we even started to think about how our rebrand would be applied to the site, so as to not distract us from what was most important at the moment: defining the content.
 
@@ -25,7 +25,7 @@ The website played a major role in defining some aspects of our brand identity, 
 
 One of the concepts that worked well in the website was the use of glass-like elements. It sparked many ideas on how we could apply textures, lighting, blurring in the UI in ways that were both interesting and purposeful. One of the team’s favorite examples of applications of this idea were the illustrated icons we designed for the suite of products we offer at Appwrite, each one combining our signature pink color with a glass-like layer that would make up the entire composition.
 
-![Appwrite's pricing plans](/images/blog/designing-the-new-appwrite-website/plans.png)
+![Appwrite's pricing plans](/images/blog/designing-the-new-appwrite-website/plans.webp)
 
 # Working with animations
 

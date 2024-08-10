@@ -3,7 +3,7 @@ layout: post
 title: Enhancing type safety in software development with enums
 description: Explore the fundamentals of enums, their practical advantages, and their impact on code maintenance and readability.
 date: 2024-02-28
-cover: /images/blog/enhancing-type-safety.png
+cover: /images/blog/enhancing-type-safety.webp
 timeToRead: 7
 author: aditya-oberai
 category: engineering

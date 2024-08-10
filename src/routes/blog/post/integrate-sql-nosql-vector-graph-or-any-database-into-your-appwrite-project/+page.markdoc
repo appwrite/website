@@ -3,7 +3,7 @@ layout: post
 title: "Integrate SQL, NoSQL, Vector, Graph, or any database into your Appwrite project"
 description: With databases it's always "it depends", but we got the answers.
 date: 2024-05-24
-cover: /images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/cover.png
+cover: /images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/cover.webp
 timeToRead: 9
 author: matej-baco
 category: product
@@ -84,7 +84,7 @@ return res.json(warehouses);
 
 You can find an entire example in our [query Neon Postgres](https://github.com/appwrite/templates/tree/main/node/query-neon-postgres) function template, which is also available on your Appwrite Console in the Functions Marketplace.
 
-![Neon Postgres Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/neon.png)
+![Neon Postgres Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/neon.webp)
 
 ## MongoDB Atlas
 
@@ -141,7 +141,7 @@ export default async ({ req, res, log, error }) => {
 
 A better-structured example can be found in the [query Mongo Atlas](https://github.com/appwrite/templates/tree/main/node/query-mongo-atlas) function template and also on your Appwrite Console.
 
-![MongoDB Atlas Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/mongodb.png)
+![MongoDB Atlas Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/mongodb.webp)
 
 ## Redis
 
@@ -200,7 +200,7 @@ return res.json(warehouses);
 
 A working example can be found in our [query Redis Labs](https://github.com/appwrite/templates/tree/main/node/query-redis-labs) function template or in your Appwrite Console.
 
-![Redis Labs Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/redis.png)
+![Redis Labs Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/redis.webp)
 
 ## Neo4j AuraDB
 
@@ -273,7 +273,7 @@ return res.json(graph);
 
 You can look at the entire example put together in the [query Neo4j AuraDB](https://github.com/appwrite/templates/tree/main/node/query-neo4j-auradb) template or in your Functions Marketplace in Appwrite Console.
 
-![Neon4j AuraDB Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/neo4j.png)
+![Neon4j AuraDB Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/neo4j.webp)
 
 ## Upstash Vector
 
@@ -329,7 +329,7 @@ return res.json(embedding);
 
 If needed for your use-case, you can disable automatic embedding generation from Upstash, and use any AI model of your choice. You can use the [query Upstash Vector](https://github.com/appwrite/templates/tree/main/node/query-upstash-vector) Appwrite Function template as a reference for your implementation. Additionally, you can find this example in Appwrite Console when setting up a new function.
 
-![Upstash Vector Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/vector.png)
+![Upstash Vector Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/vector.webp)
 
 ## **Next steps**
 

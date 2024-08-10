@@ -3,7 +3,7 @@ layout: post
 title: Announcing new Appwrite AI integrations
 description: We are happy we can finally share more about our plans for AI and what we have been working on so far.
 date: 2024-05-14
-cover: /images/blog/ai-announcement.png
+cover: /images/blog/ai-announcement.webp
 timeToRead: 5
 author: christy-jacob
 category: AI
@@ -21,7 +21,7 @@ Let's examine the integrations, Function templates, and what's still to come.
 
 To make your life easier, we have added technical guides to our documentation covering [computer vision](https://appwrite.io/blog/post/state-of-computer-vision), [natural language processing](https://appwrite.io/blog/post/state-of-natural-language-processing), and [audio processing](https://appwrite.io/blog/post/state-of-audio-processing). These advanced tutorials explain how to use [AI and Appwrite](https://appwrite.io/docs/products/ai) in your projects.
 
-![AI docs](/images/blog/ai-docs.png)
+![AI docs](/images/blog/ai-docs.webp)
 
 ## AI integrations
 
@@ -46,7 +46,7 @@ We have templates for your favorite AI tools, like OpenAI, LangChain, HuggingFac
 
 Find the full overview on your console under the `Templates` tab in `Fuctions`. Filter function templates by the `AI` use case and select the AI function template that you need.
 
-![Appwrite console with AI template functions](/images/blog/ai-function-templates.png)
+![Appwrite console with AI template functions](/images/blog/ai-function-templates.webp)
 
 You can also find the full list of templates on [GitHub](https://github.com/appwrite/templates) and see what's to come.
 

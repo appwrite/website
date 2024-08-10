@@ -3,7 +3,7 @@ layout: post
 title: Building a Valentine's Day sonnet generator using OpenAI and Appwrite Functions
 description: How we used Appwrite Functions and OpenAI's GPT-4 API to a create a fun, yet creative project.
 date: 2024-03-08
-cover: /images/blog/valentines-day-sonnet-generator/cover.png
+cover: /images/blog/valentines-day-sonnet-generator/cover.webp
 timeToRead: 7
 author: aditya-oberai
 category: functions
@@ -17,7 +17,7 @@ In this blog, we will share how we developed our Valentine’s Day Sonnet Genera
 
 To get an OpenAI API Key, you must create an account on the [OpenAI platform](https://platform.openai.com/). Once your account is set up, visit their [API keys](https://platform.openai.com/account/api-keys) page and create an API Key. Ensure you copy and save this key in a safe place, as the OpenAI platform will not let you view the key after it is created.
 
-![OpenAI API Keys](/images/blog/valentines-day-sonnet-generator/openai.png)
+![OpenAI API Keys](/images/blog/valentines-day-sonnet-generator/openai.webp)
 
 > Note: To use the GPT-4 API, your account must be upgraded to the **Usage tier 1**. To learn more, visit their [Usage tiers documentation](https://platform.openai.com/docs/guides/rate-limits/usage-tiers?context=tier-one).
 
@@ -25,7 +25,7 @@ To get an OpenAI API Key, you must create an account on the [OpenAI platform](h
 
 Now that we have our OpenAI API Key, let us get the function ready on [Appwrite](https://cloud.appwrite.io/). Head over to your Appwrite project and visit the Functions page. From there, we will select the Templates tab, search for and select the Prompt ChatGPT function template.
 
-![Appwrite Function Templates](/images/blog/valentines-day-sonnet-generator/templates.png)
+![Appwrite Function Templates](/images/blog/valentines-day-sonnet-generator/templates.webp)
 
 This function requires **1 environment variable** to setup:
 
@@ -204,7 +204,7 @@ export default async ({ req, res, log, error }) => {
 
 Once you’ve completed all the aforementioned steps, you can push the code to the generated GitHub repository, at which point Appwrite Cloud will automatically deploy the changes to your function.
 
-![Function deployments](/images/blog/valentines-day-sonnet-generator/deployments.png)
+![Function deployments](/images/blog/valentines-day-sonnet-generator/deployments.webp)
 
 You can then go ahead and test your function by opening the function domain in your browser. 
 
@@ -212,7 +212,7 @@ You can then go ahead and test your function by opening the function domain in y
 
 And with that, our Valentine’s Day sonnet generator is ready! When we released this project on Valentine’s Day this year, it was used over 300 times by people across the world. You can try it out: [apwr.dev/valentines-day-sonnet](https://apwr.dev/valentines-day-sonnet)
 
-![Output function](/images/blog/valentines-day-sonnet-generator/output.png)
+![Output function](/images/blog/valentines-day-sonnet-generator/output.webp)
 
 If you liked this project or want to investigate the full project code, visit the [GitHub repository](https://github.com/adityaoberai/valentines-day-sonnet-generator).
 

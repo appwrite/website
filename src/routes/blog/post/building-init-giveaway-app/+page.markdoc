@@ -3,7 +3,7 @@ layout: post
 title: Building the giveaway app for Init Discord sessions
 description: How we used Appwrite and SvelteKit to develop a custom roulette-style giveaway web application.
 date: 2024-03-06
-cover: /images/blog/building-init-giveaway-app/cover.png
+cover: /images/blog/building-init-giveaway-app/cover.webp
 timeToRead: 7
 author: aditya-oberai
 category: open-source
@@ -23,13 +23,13 @@ The giveaway app has two major features:
 
 The giveaway registration requires users to log in to the app with their Discord account. As soon as a user logs in with Discord, the app adds their Discord username and email address to an Appwrite collection.
 
-![Sign In With Discord](/images/blog/building-init-giveaway-app/signin.png)
+![Sign In With Discord](/images/blog/building-init-giveaway-app/signin.webp)
 
 - **Winner selection**
 
 The data added to the Appwrite collection is loaded in a wheel that is also updated in real time in case new registrations are added. The wheel can then be spun like a roulette wheel to find a randomly selected winner.
 
-![Spin The Wheel](/images/blog/building-init-giveaway-app/winner.png)
+![Spin The Wheel](/images/blog/building-init-giveaway-app/winner.webp)
 
 # How we built it
 
@@ -43,7 +43,7 @@ To build this application, we used the Discord OAuth adapter in Appwrite Auth an
 
 Implementing Discord OAuth required us to first set up an application on the [Discord Developer Portal](https://discord.com/developers/applications). After creating an application, we visited the OAuth2 tab within the application to get the **client ID** and **secret** to set up the Discord **OAuth adapter** in our Appwrite project. We also copied to **redirect URI** to add it to our Discord Developer App.
 
-![Discord OAuth Adapter](/images/blog/building-init-giveaway-app/discord.png)
+![Discord OAuth Adapter](/images/blog/building-init-giveaway-app/discord.webp)
 
 ### Appwrite Database
 
@@ -161,7 +161,7 @@ The `login` function was called through a button click on the index page of our 
 	<div class="container u-flex-vertical">
 		<InitHeading heading="Giveaway" />
 
-		<img src="/giveaway.png" alt="Plain black T-shirt with the text Init and a keyboard branded with the Appwrite logo on the Escape key" />
+		<img src="/giveaway.webp" alt="Plain black T-shirt with the text Init and a keyboard branded with the Appwrite logo on the Escape key" />
 
 		<p class="heading-level-6 u-margin-32">
 			Login with Discord and get a chance to win some amazing gifts!
@@ -334,7 +334,7 @@ Using the load function would ensure that this list would be available on our pa
 		wheel = new Wheel(wheelContainer, props);
 		wheel.radius = 0.95;
 		wheel.isInteractive = false;
-		wheel.overlayImage = '/picker.png';
+		wheel.overlayImage = '/picker.webp';
 		wheel.itemBackgroundColors = ['#27272A'];
 		wheel.itemLabelColors = ['#FFFFFF'];
 		wheel.itemLabelFont = 'sans-serif';

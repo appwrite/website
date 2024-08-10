@@ -3,7 +3,7 @@ layout: post
 title: Deploy a PDF generation service in minutes with Appwrite Functions
 description: Learn how to deploy PDF generation service in minutes with Appwrite Functions.
 date: 2023-11-14
-cover: /images/blog/pdf-generation/pdf.png
+cover: /images/blog/pdf-generation/pdf.webp
 timeToRead: 5
 author: luke-silver
 category: website
@@ -20,21 +20,21 @@ If you want to see the source code, you can find it on our [templates GitHub rep
 
 Now, let’s navigate to our functions page on **[Appwrite Cloud](https://cloud.appwrite.io)**. Head over to your Appwrite project and visit the **Functions** page. From there, we will select the **Templates** tab, search for and select the **Generate PDF** function template.
 
-![function](/images/blog/pdf-generation/templates.png)
+![function](/images/blog/pdf-generation/templates.webp)
 
 The function doesn’t have any required environment variables, so you can proceed straight to the **Connect** step. Select **Create a new repository** (this will generate a GitHub repository for you with the function), and leave the production branch and root settings as default to create this function.
 
-![create function](/images/blog/pdf-generation/create-function.png)
+![create function](/images/blog/pdf-generation/create-function.webp)
 
 # Using the Function
 
 Visit the **Domains** tab on the function page and copy the domain URL to test the function. 
 
-![generate pdf](/images/blog/pdf-generation/generate-pdf.png)
+![generate pdf](/images/blog/pdf-generation/generate-pdf.webp)
 
 Go to the function URL in your web browser, and you'll see a PDF invoice like the one shown below.
 
-![sample invoice](/images/blog/pdf-generation/sample-invoice.png)
+![sample invoice](/images/blog/pdf-generation/sample-invoice.webp)
 
 You can refresh the page in your browser to create a new invoice with new and random information.
 

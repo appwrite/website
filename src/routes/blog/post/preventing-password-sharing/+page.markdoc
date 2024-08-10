@@ -3,7 +3,7 @@ layout: post
 title: "The cost of convenience: preventing password sharing"
 description: How we as developers can prevent password sharing and make our applications more secure.
 date: 2024-03-07
-cover: /images/blog/preventing-password-sharing.png
+cover: /images/blog/preventing-password-sharing.webp
 timeToRead: 6
 author: aditya-oberai
 category: authentication, security

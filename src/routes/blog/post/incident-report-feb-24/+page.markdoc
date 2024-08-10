@@ -1,7 +1,7 @@
 ---
 layout: post
 title: February 2024 - Incident Report
-cover: /images/blog/privacy.png
+cover: /images/blog/privacy.webp
 description: In this post, we detail the incidents encountered in February 2024, including high memory usage, database restarts, repeated gateway timeouts, and executor crashes. We share our analysis, user impact, and the resolution steps taken to mitigate these issues, reinforcing our commitment to transparency and continuous improvement.
 date: 2024-03-15
 timeToRead: 3

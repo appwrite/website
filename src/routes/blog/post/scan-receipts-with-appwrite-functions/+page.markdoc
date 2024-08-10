@@ -3,7 +3,7 @@ layout: post
 title: Streamline receipt scanning with Appwrite Cloud
 description: Learn how to extract information from receipts with Appwrite Cloud and Appwrite Functions.
 date: 2024-05-01
-cover: /images/blog/receipt-scan.png
+cover: /images/blog/receipt-scan.webp
 timeToRead: 15
 author: vincent-ge
 category: functions
@@ -104,11 +104,11 @@ We also want to make sure we're not exposing our Hugging Face API key in our app
 Let's create a new function in Appwrite Functions to run our script. We'll use the Python starter template, which will automatically create a repo on your account,
 add boilerplate code, and deploy the function to Appwrite Cloud.
 
-![Scan function in Appwrite](/images/blog/scan-receipts-with-appwrite-functions/scan-function.png)
+![Scan function in Appwrite](/images/blog/scan-receipts-with-appwrite-functions/scan-function.webp)
 
 Navigate to the settings tab of the function and add the following environment variables:
 
-![Environment Variables](/images/blog/scan-receipts-with-appwrite-functions/environment-variables.png)
+![Environment Variables](/images/blog/scan-receipts-with-appwrite-functions/environment-variables.webp)
 
 The generated starter code will look like this when you clone the repo:
 
@@ -269,7 +269,7 @@ const result = await functions.createExecution(
 
 Another option is to trigger the function with a webhook when a new file is uploaded to Appwrite Storage.
 
-![Appwrite event triggers for Function](/images/blog/scan-receipts-with-appwrite-functions/events.png)
+![Appwrite event triggers for Function](/images/blog/scan-receipts-with-appwrite-functions/events.webp)
 
 The function will already have the file ID in the request body, you'll just need to store the returned data in a collection
 instead of returning it as a response.

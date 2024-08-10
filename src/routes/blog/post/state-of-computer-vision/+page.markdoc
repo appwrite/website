@@ -3,7 +3,7 @@ layout: post
 title: State of computer vision
 description: Get up to speed on the latest trends in computer vision and how they are shaping the future of the industry.
 date: 2024-03-25
-cover: /images/blog/state-of-computer-vision/cover.png
+cover: /images/blog/state-of-computer-vision/cover.webp
 timeToRead: 15
 author: bradley-schofield
 category: product
@@ -54,7 +54,7 @@ Do note that even though I am focusing on edges in this example, kernels exist t
 
 Next, let's introduce the concept of a “kernel”, these can also be referred to as “filters”; these are small grids (that can be a square or a rectangle) with numbers in it. These numbers are not random but are instead specifically picked to detect a certain feature. For example, a filter we could use to detect edges is the sobel edge detector.
 
-![Image of a kernel](/images/blog/state-of-computer-vision/kernel.png)
+![Image of a kernel](/images/blog/state-of-computer-vision/kernel.webp)
 
 Now you have both the image as luminance values and this kernel perform the following steps:
 

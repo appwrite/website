@@ -3,7 +3,7 @@ layout: post
 title: "Introducing new Database operators: or & contains query methods"
 description: What is a database without queries? Not a lot. That's why we’re happy to announce a new set of query methods, array contains, string contains, and OR operators to Appwrite Databases.
 date: 2024-02-29
-cover: /images/blog/db-operators-overview.png
+cover: /images/blog/db-operators-overview.webp
 timeToRead: 5
 author: dennis-ivy
 category: product

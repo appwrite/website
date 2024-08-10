@@ -3,7 +3,7 @@ layout: post
 title: Improving user security in your web apps with email OTP auth
 description: Understand how email OTP authentication works and how you can implement it in a SvelteKit application.
 date: 2024-04-05
-cover: /images/blog/email-otp-auth-sveltekit/cover.png
+cover: /images/blog/email-otp-auth-sveltekit/cover.webp
 timeToRead: 6
 author: aditya-oberai
 category: authentication

@@ -3,7 +3,7 @@ layout: post
 title: Don’t blame the readers, write the documentation they need
 description: Unveiling Appwrite's new documentation. More details, just as simple, and more welcoming to contributors.
 date: 2023-10-10
-cover: /images/blog/dont-blame-the-readers-write-the-docs-they-need/cover.png
+cover: /images/blog/dont-blame-the-readers-write-the-docs-they-need/cover.webp
 timeToRead: 10
 author: vincent-ge
 category: design, brand
@@ -67,21 +67,21 @@ The new Appwrite docs need to cover the entire developer journey. This means it 
 
 Appwrite’s new documentation has a navigation flow that aims to follow this journey. We introduced overview pages that introduce Appwrite’s capabilities, platform pages to help developers evaluate Appwrite’s design, more quick starts for frameworks to shorten the learning stage and build confidence, and expanded tutorials that help developers build and scale.
 
-![Overview of Appwrite's new documentation](/images/blog/dont-blame-the-readers-write-the-docs-they-need/overview.png)
+![Overview of Appwrite's new documentation](/images/blog/dont-blame-the-readers-write-the-docs-they-need/overview.webp)
 
 Developers loved the simplicity of the old Appwrite documentation, and we didn’t want to lose that part of our identity.
 Each deep dive section still begins with the same one-page quick start, which may be enough information for veterans.
 More comprehensive documentation and suggested usage are available, but further down the navigation.
 
-![Quick start in the Authentication docs page](/images/blog/dont-blame-the-readers-write-the-docs-they-need/quickstart.png)
+![Quick start in the Authentication docs page](/images/blog/dont-blame-the-readers-write-the-docs-they-need/quickstart.webp)
 
 For learners and students, we added step by step tutorials to help you get to a working app faster and build confidence.
 
-![A complete tutorial in the new docs](/images/blog/dont-blame-the-readers-write-the-docs-they-need/tutorials.png)
+![A complete tutorial in the new docs](/images/blog/dont-blame-the-readers-write-the-docs-they-need/tutorials.webp)
 
 With all the new content, the new Appwrite docs also introduce **search**. Search helps keep Appwrite docs easy to navigate.
 
-![Search feature in new documentation](/images/blog/dont-blame-the-readers-write-the-docs-they-need/search.png)
+![Search feature in new documentation](/images/blog/dont-blame-the-readers-write-the-docs-they-need/search.webp)
 
 The new docs are written using an extended flavor of markdown made with [Markdoc and Svelte](https://github.com/TorstenDittmann/svelte-markdoc-preprocess), which makes community contributions easier. Markdown is easy to read and we can extend it with custom syntax like this multi-code selector.
 

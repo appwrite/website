@@ -3,7 +3,7 @@ layout: post
 title: Three important steps you need to complete before setting up your first Appwrite project
 description: Are you getting errors when setting up your first project in Appwrite? Take a look at these steps.
 date: 2024-02-15
-cover: /images/blog/three-important-steps-you-need-to-complete-with-appwrite/3-important-steps.png
+cover: /images/blog/three-important-steps-you-need-to-complete-with-appwrite/3-important-steps.webp
 timeToRead: 3
 author: dennis-ivy
 category: engineering
@@ -19,19 +19,19 @@ After creating a new project in the Appwrite console, you’ll need to add a pla
 
 If you’re adding an API key to use one of the server SDK’s, you’ll be asked to set scopes for the key. This sets permissions, allowing us to dictate what permissions this API key has over certain parts of our application.
 
-![Appwrite Console adding a platform](/images/blog/three-important-steps-you-need-to-complete-with-appwrite/add-platform.png)
+![Appwrite Console adding a platform](/images/blog/three-important-steps-you-need-to-complete-with-appwrite/add-platform.webp)
 
 # 2 - Add a hostname
 
 When using the Web SDK, you’ll need to set a hostname. This just tells Appwrite what origin you’ll be connecting from. Failing to set the right hostname will result in CORS error later, so be sure you pay attention when setting this. I just put out a full video and [an article about handling CORS errors](/blog/post/cors-error), so be sure to check that out if you have questions or face any problems.
 
-![Hostname](/images/blog/three-important-steps-you-need-to-complete-with-appwrite/hostname.png)
+![Hostname](/images/blog/three-important-steps-you-need-to-complete-with-appwrite/hostname.webp)
 
 # 3 - Permissions
 
 Before you can read and write data from an Appwrite database collection or storage bucket, you’ll need to ensure you have the proper permissions set. This can be set from the “Settings” tab under the “Permissions” section inside a collection or storage bucket.
 
-![Permissions overview](/images/blog/three-important-steps-you-need-to-complete-with-appwrite/permissions.png)
+![Permissions overview](/images/blog/three-important-steps-you-need-to-complete-with-appwrite/permissions.webp)
 
 With these three steps to complete, you should be set to connect to an Appwrite backend from either a client or server SDK.
 

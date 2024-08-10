@@ -3,7 +3,7 @@ layout: post
 title: Celebrate Open Source with Appwrite and Hacktoberfest 2023!
 description: We're excited to announce our participation in Hacktoberfest 2023! Join Appwrite in celebrating and supporting open-source development this October.
 date: 2023-10-01
-cover: /images/blog/hacktoberfest-2023.png
+cover: /images/blog/hacktoberfest-2023.webp
 timeToRead: 3
 author: eldad-fux
 category: hacktoberfest
@@ -35,7 +35,7 @@ Hacktoberfest is back, celebrating a decade of open source! Appwrite is proud to
 - Earn an Appwrite hoodie and stickers for contributing only one accepted and merged PR!
 - Earn a Digital Swag Bag from DigitalOcean for contributing 4 PRs+ from any open-source project participating in Hacktoberfest. We have a surprise gift inside this swag bag waiting for you
 
-![Hacktoberfest swag](/images/blog/hacktoberfest2023-swag.png)
+![Hacktoberfest swag](/images/blog/hacktoberfest2023-swag.webp)
 
 ## How Appwrite Supports Developers
 

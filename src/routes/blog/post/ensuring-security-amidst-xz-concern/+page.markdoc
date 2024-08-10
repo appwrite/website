@@ -3,7 +3,7 @@ layout: post
 title: Ensuring security amidst the XZ Utils backdoor concern
 description: Learn about Appwrite's response to XZ Utils backdoor concerns and how to safeguard your Appwrite projects.
 date: 2024-04-02
-cover: /images/blog/ensuring-security-amidst-xz-concern/cover.png
+cover: /images/blog/ensuring-security-amidst-xz-concern/cover.webp
 timeToRead: 7
 author: jake-barnby
 category: engineering

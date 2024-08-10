@@ -3,7 +3,7 @@ layout: post
 title: Announcing Cloud pricing plans
 description: Appwrite Cloud pricing are now available.
 date: 2023-08-08
-cover: /images/blog/cloud-pricing.png
+cover: /images/blog/cloud-pricing.webp
 timeToRead: 5
 author: laura-du-ry
 category: cloud
@@ -34,7 +34,7 @@ The above framework supports our goal to make Appwrite Cloud affordable and acce
 
 # Pricing plans
 
-![Appwrite pricing plans](/images/blog/pricing-plans.png)
+![Appwrite pricing plans](/images/blog/pricing-plans.webp)
 
 **Free plan**
 

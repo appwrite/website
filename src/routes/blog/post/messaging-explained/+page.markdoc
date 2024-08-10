@@ -3,7 +3,7 @@ layout: post
 title: Messaging explained
 description: Learn about Appwrite Messaging and how it works under the hood
 date: 2024-07-08
-cover: /images/blog/messaging-explained/cover.png
+cover: /images/blog/messaging-explained/cover.webp
 timeToRead: 5
 author: aditya-oberai
 category: product
@@ -32,7 +32,7 @@ Let’s now discuss the three core Messaging concepts: **topics**, **targets**, 
 
 In Appwrite Messaging, you can use topics to deliver messages to groups of users at once. Topics should have a clear meaning or goal. For example, a topic can represent a group of customers that receive common announcements or product updates.
 
-![Topics](/images/blog/messaging-explained/topics.png)
+![Topics](/images/blog/messaging-explained/topics.webp)
 
 ## Targets
 
@@ -40,7 +40,7 @@ Targets are different ways a user can be reached. For example, a user might have
 
 You can send a message directly to a set of targets or add them as subscribers to a topic. For example, if you want to send a payment reminder to a user manually, you could choose to send it just to a specific target. If you want to send out your monthly newsletter, you could have a topic many targets can subscribe to and then send the message to the topic instead.
 
-![Targets](/images/blog/messaging-explained/targets.png)
+![Targets](/images/blog/messaging-explained/targets.webp)
 
 ## Messages
 
@@ -50,7 +50,7 @@ Messages contain information that is sent to a user from the application. A mess
 - Emails
 - SMS
 
-![Messages](/images/blog/messaging-explained/preview.png)
+![Messages](/images/blog/messaging-explained/preview.webp)
 
 Here’s an example of how you would programmatically send an SMS to a topic using the Appwrite Node.js SDK.
 

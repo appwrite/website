@@ -3,7 +3,7 @@ layout: post
 title: "Integrate Twilio, SendGrid, APNs and FCM into your Appwrite project"
 description: Which messaging provider should you choose for your app?
 date: 2024-07-30
-cover: /images/blog/integrations-messaging/cover.png
+cover: /images/blog/integrations-messaging/cover.webp
 timeToRead: 6
 author: aditya-oberai
 category: product
@@ -48,7 +48,7 @@ Create a [Twilio account](https://www.twilio.com/try-twilio) and purchase a phon
 
 In your Appwrite project, navigate to **Messaging** > **Providers** > **Create a provider** > **SMS**. Name your provider and select **Twilio**. On the next page, fill out the **Account SID** and **Account Token**, as well as the phone number that will be sending SMS.
 
-![Twilio messaging integration](/images/blog/integrations-messaging/1.png)
+![Twilio messaging integration](/images/blog/integrations-messaging/1.webp)
 
 Once you complete provider creation, you should see it on your list of providers. You can now use this number to send SMS to your users!
 
@@ -86,7 +86,7 @@ First, [sign up for a SendGrid account](https://signup.sendgrid.com/) and comple
 
 In your Appwrite project, go to **Messaging** > **Providers** > **Create a provider** > **Email.** Name your provider and choose SendGrid. In the next page, you get to enter the API Key, the email address and customize the sender name, reply-to email and name.
 
-![SendGrid messaging integration](/images/blog/integrations-messaging/2.png)
+![SendGrid messaging integration](/images/blog/integrations-messaging/2.webp)
 
 ## Step 3: Test the SendGrid provider
 
@@ -135,7 +135,7 @@ In your Appwrite project, go to **Messaging** > **Providers** > **Create a new p
 
 Enter the **team ID**, **bundle ID**, **authentication key ID**, and the **authentication key (.p8 file)** you got from the Apple Developer Member Center. If your app uses a development provisioning profile, enable Sandbox mode.
 
-![APNs messaging integration](/images/blog/integrations-messaging/3.png)
+![APNs messaging integration](/images/blog/integrations-messaging/3.webp)
 
 ## Step 3: Test the provider
 
@@ -177,7 +177,7 @@ In your Appwrite **Messaging** page, click on the **Providers** tab > **Create a
 
 Select **FCM** and upload the JSON file.
 
-![FCM messaging integration](/images/blog/integrations-messaging/4.png)
+![FCM messaging integration](/images/blog/integrations-messaging/4.webp)
 
 ## Step 3: Test the provider
 

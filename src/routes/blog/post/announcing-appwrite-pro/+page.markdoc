@@ -3,7 +3,7 @@ layout: post
 title: "Announcing: Appwrite Pro"
 description: We’re happy to introduce Appwrite Pro. After announcing our pricing plans for Appwrite Cloud in August, we have reached another milestone as we roll out billing and welcome our newest addition to Appwrite Cloud. A new product offering that allows you to build with more confidence.
 date: 2023-12-20
-cover: /images/blog/announcing-appwrite-pro/header.png
+cover: /images/blog/announcing-appwrite-pro/header.webp
 timeToRead: 5
 author: christy-jacob
 category: cloud
@@ -82,7 +82,7 @@ For a production product, you need more control of your brand, as well as the fl
 
 For the last few years, we have had help from the community and dedicated moderators to help us support you using Appwrite. Now, with the launch of Appwrite Pro, we add premium support. This is an email support service on top of our  Discord community, where we will have a dedicated team to provide technical support. We understand that this is an important addition for you to have when building with Appwrite. We want to ensure you can build with confidence.
 
-![Appwrite Pro](/images/blog/announcing-appwrite-pro/pro.png)
+![Appwrite Pro](/images/blog/announcing-appwrite-pro/pro.webp)
 
 # Growth in beta with early adopters
 
@@ -92,7 +92,7 @@ Appwrite Cloud has seen immense growth since we entered public beta. It has been
 
 Beta developers are fundamental to the success of Appwrite Cloud today, and we are grateful for the support we have received. To give back and say thank you, we will provide each early adopter of Appwrite Cloud with credits for Appwrite Pro for the first two months.
 
-![Appwrite Pro early adopters $30 Credits](/images/blog/announcing-appwrite-pro/credits.png)
+![Appwrite Pro early adopters $30 Credits](/images/blog/announcing-appwrite-pro/credits.webp)
 
 ## Existing organizations and projects
 

@@ -3,7 +3,7 @@ layout: post
 title: "Smartbee: Revolutionizing coal mine monitoring"
 description: Learn how Smartbee leveraged Appwrite to build a performant and robust system to monitor and aggregate gas level data in real-time for 7 coal mines in Columbia.
 date: 2023-12-02
-cover: /images/blog/smartbee.png
+cover: /images/blog/smartbee.webp
 timeToRead: 5
 author: aditya-oberai
 category: case-studies

@@ -3,7 +3,7 @@ layout: post
 title: SSR vs CSR with Next.js
 description: Learn the differences between SSR and CSR and how Appwrite Authentication can be leveraged with both in Next.js.
 date: 2024-02-27
-cover: /images/blog/ssr-vs-csr/cover.png
+cover: /images/blog/ssr-vs-csr/cover.webp
 timeToRead: 10
 author: dennis-ivy
 category: product

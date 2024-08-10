@@ -3,14 +3,14 @@ layout: post
 title: Migrate Firebase projects to Appwrite
 description: Migrate your Firebase projects to Appwrite Cloud in just one click.
 date: 2023-11-06
-cover: /images/blog/migrate-firebase-projects-to-appwrite/migrate-firebase-projects-to-appwrite.png
+cover: /images/blog/migrate-firebase-projects-to-appwrite/migrate-firebase-projects-to-appwrite.webp
 timeToRead: 10
 author: vincent-ge
 category: migration
 ---
 If you’re ready to move from Firebase to Appwrite, or you just want to explore your BaaS options, we can give you a jump start with Appwrite Migrations.
 
-![Appwrite Console Migrations page](/images/blog/migrate-firebase-projects-to-appwrite/migrations-overview.png)
+![Appwrite Console Migrations page](/images/blog/migrate-firebase-projects-to-appwrite/migrations-overview.webp)
 
 Moving is frustrating. Packing, unpacking, renting a truck, wondering if your bed fits through the door. Moving data between cloud platforms feels much the same, so we built Migrations to help lighten the load. Migrations will help you move users, data, and files out of Firebase and into your Appwrite project.
 
@@ -26,7 +26,7 @@ Just like moving houses, not every piece of old furniture will suit your new hou
 
 To help you with your move, Appwrite Migrations will require keys to your old home to access your project’s users, files, and data. This means Appwrite will need your Firebase service account’s API key.
 
-![Firebase key management screen.](/images/blog/migrate-firebase-projects-to-appwrite/firebase-key.png)
+![Firebase key management screen.](/images/blog/migrate-firebase-projects-to-appwrite/firebase-key.webp)
 
 The quickest way to get a key is to use your **Firebase Admin SDK** service account and key, found under **Project settings > Service accounts > Generate private key**.
 

@@ -2,7 +2,7 @@
 layout: post
 title: Add a URL shortener function to your application
 description: Learning how to add the URL shortener function template to your application.
-cover: /images/blog/adding-url-shortener/cover.png
+cover: /images/blog/adding-url-shortener/cover.webp
 timeToRead: 5
 date: 2023-11-08
 author: haimantika-mitra
@@ -22,17 +22,17 @@ You can find the source code on our [templates GitHub repository](https://githu
 # Setting up the Template
 To get started, you need to navigate to the functions page on the **[Appwrite](https://appwrite.io/cloud)** console. From there, we will select the **Templates** tab, search for and select the **URL Shortener** function template.
 
-![Function template](/images/blog/adding-url-shortener/functions.png)
+![Function template](/images/blog/adding-url-shortener/functions.webp)
 
 The function requires two variables:
 - `APPWRITE_API_KEY`
 - `SHORT_BASE_URL`
 
-![Required variables](/images/blog/adding-url-shortener/variables.png)
+![Required variables](/images/blog/adding-url-shortener/variables.webp)
 
 Once you have populated those, you can go straight to the **Connect** step.
 
-![Connecting repository](/images/blog/adding-url-shortener/connect.png)
+![Connecting repository](/images/blog/adding-url-shortener/connect.webp)
 
 Select **Create a new repository** (this will generate a GitHub repository for you with the function), and leave the production branch and root settings as default to create this function.
 
@@ -40,7 +40,7 @@ Select **Create a new repository** (this will generate a GitHub repository for
 
 Visit the **Domains** tab on the function page and copy the domain URL to test the function.
 
-![Domains](/images/blog/adding-url-shortener/shortener.png)
+![Domains](/images/blog/adding-url-shortener/shortener.webp)
 
 Go to the function URL in your web browser, and you'll see a short url like the one shown below.
 

@@ -3,7 +3,7 @@ layout: post
 title: Share your resume using Appwrite Functions
 description: How you can create a resume using HTML and use a Bun Appwrite Function to share it with the world. 
 date: 2024-03-07
-cover: /images/blog/bun-function-resume/cover.png
+cover: /images/blog/bun-function-resume/cover.webp
 timeToRead: 7
 author: aditya-oberai
 category: functions
@@ -17,7 +17,7 @@ Therefore, in this blog, we will leverage one of Appwrite’s newest functions r
 
 To create the Appwrite Function, you must go to [Appwrite Cloud](https://cloud.appwrite.io) and create a new project. Once a new project is created, you must visit the **Functions** page. Once you click on the **Create a new function** button, you will discover a number of starter templates, of which you must select **Bun**. Once you have created a starter function with Bun and connected your GitHub account, we are ready to begin developing our resume function.
 
-![Appwrite Cloud Functions page](/images/blog/bun-function-resume/appwrite.png)
+![Appwrite Cloud Functions page](/images/blog/bun-function-resume/appwrite.webp)
 
 # Building the Appwrite Function
 
@@ -191,7 +191,7 @@ At this point, our project directory structure should look as follows:
 
 Once you’ve completed all the aforementioned steps, you can push the code to our GitHub repository, at which point Appwrite Cloud will automatically deploy the changes to your function.
 
-![Function deployment](/images/blog/bun-function-resume/deployment.png)
+![Function deployment](/images/blog/bun-function-resume/deployment.webp)
 
 You can then go ahead and test your function by opening the function domain in your browser. 
 

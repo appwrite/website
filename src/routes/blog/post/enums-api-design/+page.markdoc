@@ -3,7 +3,7 @@ layout: post
 title: Effective use of enums in API design
 description: Learn how enums enable effective and robust communication between different software.
 date: 2024-02-28
-cover: /images/blog/enums-api-design.png
+cover: /images/blog/enums-api-design.webp
 timeToRead: 6
 author: aditya-oberai
 category: engineering

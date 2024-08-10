@@ -3,7 +3,7 @@ layout: post
 title: Introducing support for server-side rendering
 description: Server-side rendering (SSR) is now fully supported with Appwrite allowing more flexibility to build how you want.
 date: 2024-02-27
-cover: /images/blog/ssr-announcement.png
+cover: /images/blog/ssr-announcement.webp
 timeToRead: 7
 author: dennis-ivy
 category: product

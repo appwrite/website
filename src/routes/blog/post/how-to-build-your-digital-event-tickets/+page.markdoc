@@ -3,7 +3,7 @@ layout: post
 title: How to build your digital event tickets
 description: Did you enjoy the Init tickets? In this blog we share how you can create your own.
 date: 2024-03-04
-cover: /images/blog/tickets-cover.png
+cover: /images/blog/tickets-cover.webp
 timeToRead: 12
 author: laura-du-ry
 category: engineering
@@ -31,25 +31,25 @@ Here is an overview of the three design types.
 
 The Init celebration ticket is what everyone gets at sign-up. This is your starting point.
 
-![Init celebration ticket](/images/blog/card1.png)
+![Init celebration ticket](/images/blog/card1.webp)
 
 ### Building with Appwrite
 
 The Appwrite ticket is for all developers with an Appwrite account. They get a pink ticket with an extra pink glow.
 
-![Init Appwrite dev ticket](/images/blog/card2.png)
+![Init Appwrite dev ticket](/images/blog/card2.webp)
 
 ### Appwrite contributors
 
 Then, we have one very special ticket dedicated to contributors of Appwrite. If you have contributed to Appwrite in any way, you will get this special design. It’s a platinum card with a rainbow glow.
 
-![Init contributors ticket](/images/blog/card3.png)
+![Init contributors ticket](/images/blog/card3.webp)
 
 # Show off your GitHub contributions grid
 
 An essential part of the ticket is that we wanted to emphasize the importance of contributing to open source. What better way than showing off your actual contributions within your ticket?
 
-![Init celebration ticket](/images/blog/tickets-blog.png)
+![Init celebration ticket](/images/blog/tickets-blog.webp)
 
 As you can see on each side of the ticket, a grid resembles your unique GitHub contributions over the past year, just like on your GitHub profile. You can choose to add the grid with a toggle, but to do so, you need to connect your GitHub account.
 
@@ -61,7 +61,7 @@ First, you need to associate your GitHub account with your Init ticket. Therefor
 
 By following our [documentation on OAuth](https://appwrite.io/docs/products/auth/oauth2), and creating an OAuth GitHub App, we're quickly able to create a login flow for Appwrite Init. When logging in for the first time, a new ticket is instantiated and saved to Appwrite Cloud.
 
-![Init celebration ticket](/images/blog/tickets-blog2.png)
+![Init celebration ticket](/images/blog/tickets-blog2.webp)
 
 ## Integrating the GitHub contributions grid
 

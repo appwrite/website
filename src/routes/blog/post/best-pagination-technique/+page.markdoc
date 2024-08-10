@@ -3,7 +3,7 @@ layout: post
 title: "Best database pagination technique"
 description: "Learn how to fix database-related performance problems using offset and cursor pagination."
 date: 2024-08-05
-cover: /images/blog/best-pagination-technique/cover.png
+cover: /images/blog/best-pagination-technique/cover.webp
 timeToRead: 8
 author: matej-baco
 category: engineering
@@ -242,7 +242,7 @@ Within a minute, all benchmarks finished, providing me with the average response
 | 80% offset | 424.63 |
 | 90% offset | 482.71 |
 
-![Cursor pagination benchmark](/images/blog/best-pagination-technique/graph.png)
+![Cursor pagination benchmark](/images/blog/best-pagination-technique/graph.webp)
 As you can see, offset 0 was pretty fast, responding in less than 4ms. The first jump was to offset 100k, and the change was drastic, increasing response times to 52ms. With each increase in the offset, the duration went up, resulting in almost 500ms to get ten documents after an offset of 900k documents. That is crazy!
 
 Now let's update our script to use cursor pagination. We will update our script to use a cursor instead of offset and update our bash script to provide a cursor (document ID) instead of an offset number.
@@ -308,7 +308,7 @@ After running the script, you could already tell that there was a performance bo
 | 80% offset | 424.63 | 5.60 |
 | 90% offset | 482.71 | 5.05 |
 
-![Cursor pagination benchmark](/images/blog/best-pagination-technique/graph2.png)
+![Cursor pagination benchmark](/images/blog/best-pagination-technique/graph2.webp)
 
 As you can see, cursor pagination is highly efficient. The graph shows that cursor pagination maintains consistent performance regardless of the offset size, with each query performing as well as the first or last one. Loading the last page of a large list repeatedly can significantly impact performance.
 

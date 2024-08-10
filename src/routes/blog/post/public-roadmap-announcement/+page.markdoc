@@ -3,7 +3,7 @@ layout: post
 title: Announcing Appwrite's public roadmap
 description: We just released our product roadmap to increase transparency and foster better collaboration.
 date: 2024-06-19
-cover: /images/blog/public-roadmap-announcement/cover.png
+cover: /images/blog/public-roadmap-announcement/cover.webp
 timeToRead: 5
 author: eldad-fux
 category: open-source
@@ -44,7 +44,7 @@ While the new roadmap offers much more flexibility and visibility into our short
 # The roadmap framework
 To ensure our focus is always on the right areas, we have developed an internal framework to guide our roadmap decisions. This framework is based on the significance of our focus areas, allowing us to set clear priorities, measure progress, understand the impact, maintain balance, and foster collaboration within the team and the Appwrite community.
 
-![Roadmap framework](/images/blog/public-roadmap-announcement/framework.png)
+![Roadmap framework](/images/blog/public-roadmap-announcement/framework.webp)
 
 By concentrating on specific aspects, we ensure our team stays aligned and works towards common goals that reflect our mission while continually improving the overall developer experience. Our roadmap framework revolves around four main pillars:
 

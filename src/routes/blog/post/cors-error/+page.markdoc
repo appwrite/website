@@ -3,7 +3,7 @@ layout: post
 title: Solving CORS errors with Appwrite
 description: Understanding why you are getting CORS error when sending a request to an Appwrite backend and how to debug.
 date: 2024-01-16
-cover: /images/blog/cors-error/cors_cover.png
+cover: /images/blog/cors-error/cors_cover.webp
 timeToRead: 3
 author: dennis-ivy
 category: engineering
@@ -26,7 +26,7 @@ This happens because our server has not added site B, `myfrontend.com`, to its l
 Any request coming from a URL that is not listed in our server's allowed origins will be rejected by our CORS policy. 
 The solution in this case would be to simply add `myfrontend.com` to the list of allowed origins.
 
-![CORS error appwrite](/images/blog/cors-error/cors_example.png)
+![CORS error appwrite](/images/blog/cors-error/cors_example.webp)
 
 CORS is crucial because it provides a secure way to make requests across different origins. 
 Without CORS, any website would be able to make requests to our server, and this would lead to major problems.

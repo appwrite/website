@@ -3,7 +3,7 @@ layout: post
 title: How Appwrite Databases can replace your PlanetScale database
 description: Compare PlanetScale Databases to Appwrite Databases so you can understand whether Appwrite is a viable alternative to PlanetScale's free-tier.
 date: 2024-03-10
-cover: /images/blog/planetscale-databases-alternative/cover.png
+cover: /images/blog/planetscale-databases-alternative/cover.webp
 timeToRead: 7
 author: aditya-oberai
 category: product
@@ -99,7 +99,7 @@ With Appwrite Cloud, we have mindfully designed our pricing plans to be accessib
   - Comes with flexible budget control tools to ensure you never get a surprise bill.
   - $15, per month, per member.
 
-![Appwrite pricing overview](/images/blog/planetscale-databases-alternative/pricing.png)
+![Appwrite pricing overview](/images/blog/planetscale-databases-alternative/pricing.webp)
 
 For databases, here are the differences between both plans:
 

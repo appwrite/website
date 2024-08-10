@@ -3,7 +3,7 @@ layout: post
 title: "Swift 101: how to build a library with Swift Package Manager"
 description: Learn how to build a library with Swift Package Manager.
 date: 2024-08-02
-cover: /images/blog/swift-101/cover.png
+cover: /images/blog/swift-101/cover.webp
 timeToRead: 6
 author: jake-barnby
 category: engineering

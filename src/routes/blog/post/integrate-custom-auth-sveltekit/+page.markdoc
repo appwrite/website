@@ -3,7 +3,7 @@ layout: post
 title: Integrate any external authentication solution into your Appwrite project
 description: Add any custom authentication flow to your applications.
 date: 2024-05-30
-cover: /images/blog/integrate-custom-auth-sveltekit/cover.png
+cover: /images/blog/integrate-custom-auth-sveltekit/cover.webp
 timeToRead: 6
 author: aditya-oberai
 category: auth
@@ -45,7 +45,7 @@ Before we implement our auth flow, we must first:
 
 First, we must create an account on [Appwrite Cloud](https://cloud.appwrite.io/), followed by creating a new project and an API key with the scopes `users.read` and `users.write`.
 
-![Appwrite Project Overview](/images/blog/integrate-custom-auth-sveltekit/overview.png)
+![Appwrite Project Overview](/images/blog/integrate-custom-auth-sveltekit/overview.webp)
 
 > Note: If you plan to deploy this application publicly, please also add the hostname of your web app as a Web platform to the project.
 

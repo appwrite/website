@@ -3,7 +3,7 @@ layout: post
 title: "Predicting your developer destiny: how I built the AI Crystal Ball"
 description: How I used Appwrite, OpenAI, GitHub, and SvelteKit to develop an AI prank app.
 date: 2024-05-10
-cover: /images/blog/ai-crystal-ball/cover.png
+cover: /images/blog/ai-crystal-ball/cover.webp
 timeToRead: 9
 author: aditya-oberai
 category: open-source
@@ -28,7 +28,7 @@ Since we are using GPT-4 to generate developer destinies, we will need an OpenAI
 
 To create an OpenAI API key, we must first create an account on the [OpenAI platform](https://platform.openai.com/). Once the account is set up and a project is created, we can visit their [API keys](https://platform.openai.com/account/api-keys) page and create an API key. Ensure you copy and save this key in a safe place, as the OpenAI platform will not let you view the key after it is created.
 
-![OpenAI API Keys](/images/blog/ai-crystal-ball/openai.png)
+![OpenAI API Keys](/images/blog/ai-crystal-ball/openai.webp)
 
 > Note: To use the GPT-4 API, your account must be upgraded to the Usage tier 1. To learn more, visit their [Usage tiers documentation](https://platform.openai.com/docs/guides/rate-limits/usage-tiers?context=tier-one).
 >
@@ -39,7 +39,7 @@ To generate personalized developer destinies, we are using information such as a
 
 To create a GitHub OAuth application, we must visit the [Settings page](https://github.com/settings/profile) on GitHub and click on the [Developer Settings](https://github.com/settings/profile) tab. From here, we can register an OAuth app. While registering the app, you can add any temporary URL, such as `https://temporary-endpoint/`, in the **Authorization callback URL** field (we will update this in the next step). Ensure you save your Client ID and Client Secret when you visit this page, as we will need them in the next step.
 
-![GitHub OAuth](/images/blog/ai-crystal-ball/github.png)
+![GitHub OAuth](/images/blog/ai-crystal-ball/github.webp)
 
 ## Appwrite
 
@@ -55,7 +55,7 @@ The only prerequisite here was creating an [Appwrite Cloud account](https://clo
 
 To implement GitHub OAuth, we must visit the **Auth** page on the Appwrite project, go to the **Settings** tab, click on **GitHub** from the list of OAuth adapters, and paste the Client ID and Secret we saved from the GitHub OAuth app. Ensure that copy the **redirect URI** and paste it into your GitHub OAuth app in the **Authorization callback URL** field.
 
-![Appwrite OAuth for GitHub](/images/blog/ai-crystal-ball/oauth.png)
+![Appwrite OAuth for GitHub](/images/blog/ai-crystal-ball/oauth.webp)
 
 ## Appwrite Database
 
@@ -205,7 +205,7 @@ We will call the login function from the index page at `./src/routes/+page.svelt
 ```html
 <script>
     import { user } from '$lib/user';
-    import crystalBall from '$lib/assets/crystalball.png'; // An image of a crystal ball
+    import crystalBall from '$lib/assets/crystalball.webp'; // An image of a crystal ball
 
     function login() {
         user.login();
@@ -312,7 +312,7 @@ We will be calling these functions for our main application page in the file `./
     import { github } from '$lib/github';
 	  import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
-    import crystalball from '$lib/assets/crystalball.png';
+    import crystalball from '$lib/assets/crystalball.webp';
 
     let destiny = '';
     let loadingMessage = 'Fetching GitHub data...';

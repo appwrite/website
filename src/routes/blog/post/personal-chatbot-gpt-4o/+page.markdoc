@@ -3,7 +3,7 @@ layout: post
 title: Build a chatbot with GPT-4o and Appwrite Functions
 description: Learn how to use OpenAI's new flagship model, GPT-4o to create an intelligent chatbot.
 date: 2024-05-17
-cover: /images/blog/personal-chatbot-gpt-4o/cover.png
+cover: /images/blog/personal-chatbot-gpt-4o/cover.webp
 timeToRead: 5
 author: aditya-oberai
 category: functions
@@ -17,7 +17,7 @@ Therefore, in this blog, we will learn how to use Appwrite Functions and the Ope
 
 To use the OpenAI GPT-4o API, we must first create an API key on their platform. To do that, we must first create an account on the [OpenAI platform](https://platform.openai.com/). Once the account is set up and a project is created, we can visit their [API keys](https://platform.openai.com/account/api-keys) page and create an API key. Ensure you copy and save this key in a safe place, as the OpenAI platform will not let you view the key after it is created.
 
-![Create an OpenAI API Key](/images/blog/personal-chatbot-gpt-4o/openai.png)
+![Create an OpenAI API Key](/images/blog/personal-chatbot-gpt-4o/openai.webp)
 
 > Note: To use the GPT-4o API, your account must be upgraded to Usage tier 1 (you must purchase at least $5 worth of credits). To learn more, visit their [Usage tiers documentation](https://platform.openai.com/docs/guides/rate-limits/usage-tiers?context=tier-one).
 
@@ -25,7 +25,7 @@ To use the OpenAI GPT-4o API, we must first create an API key on their platform.
 
 Now that we have our OpenAI API Key, let's prepare the function on [Appwrite](https://cloud.appwrite.io/). Go to your Appwrite project and visit the Functions page. From there, we will create a function using the Node.js starter template.
 
-![Create a new Appwrite Function](/images/blog/personal-chatbot-gpt-4o/functions.png)
+![Create a new Appwrite Function](/images/blog/personal-chatbot-gpt-4o/functions.webp)
 
 Once the function is ready, we must visit the Settings tab on the Function page and add the following environment variables:
 
@@ -257,13 +257,13 @@ At this point, our project directory structure should look as follows:
 
 Once you've completed all the aforementioned steps, you can push the code to our GitHub repository, at which point Appwrite Cloud will automatically deploy the changes to your function.
 
-![Appwrite Function deployments](/images/blog/personal-chatbot-gpt-4o/deployment.png)
+![Appwrite Function deployments](/images/blog/personal-chatbot-gpt-4o/deployment.webp)
 
 You can then go ahead and test your function by opening the function domain in your browser.
 
 Here is what an example of this looks like: [apwr.dev/gpt-4o-demo](https://apwr.dev/gpt-4o-demo)
 
-![Final project UI](/images/blog/personal-chatbot-gpt-4o/final.png)
+![Final project UI](/images/blog/personal-chatbot-gpt-4o/final.webp)
 
 ## Next steps
 

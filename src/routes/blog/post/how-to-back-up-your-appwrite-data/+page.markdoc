@@ -3,7 +3,7 @@ layout: post
 title: "How to back up and restore your Appwrite data"
 description: Learn how to back up and restore your Appwrite files.
 date: 2024-08-07
-cover: /images/blog/appwrite-backups-and-restores/cover.png
+cover: /images/blog/appwrite-backups-and-restores/cover.webp
 timeToRead: 3
 author: bradley-schofield
 category: engineering

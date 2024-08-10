@@ -3,7 +3,7 @@ layout: post
 title: New and Updated Runtimes in the Appwrite Ecosystem
 description: More runtimes, more flexibility. We're happy to add more and updated runtimes to allow you to build with your preferred tech stack.
 date: 2024-03-01
-cover: /images/blog/runtimes.png
+cover: /images/blog/runtimes.webp
 timeToRead: 6
 author: vincent-ge
 category: product
@@ -55,7 +55,7 @@ For better dependency compatibility and to reduce vulnerabilities, we've also up
 
 Try the new runtimes on Appwrite with zero lines of new code using function templates. Appwrite will clone a template repository to your GitHub profile and set up automatic deployments so you can start building with these runtimes immediately.
 
-![Get started with Functions and runtimes](/images/blog/runtime-functions.png)
+![Get started with Functions and runtimes](/images/blog/runtime-functions.webp)
 
 Visit our documentation to learn more about the runtimes, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 

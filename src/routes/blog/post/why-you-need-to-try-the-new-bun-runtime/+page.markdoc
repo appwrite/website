@@ -3,7 +3,7 @@ layout: post
 title: Why you need to try the new Bun function runtime
 description: Why Bun's feature sare perfect for building Appwrite Functions.
 date: 2024-03-01
-cover: /images/blog/why-you-need-to-try-the-new-bun-runtime/cover.png
+cover: /images/blog/why-you-need-to-try-the-new-bun-runtime/cover.webp
 timeToRead: 15
 author: vincent-ge
 category: product
@@ -71,11 +71,11 @@ Again, in the context of an Appwrite Function, the build time you can save is pr
 
 **Bun** build time
 
-![Bun build time](/images/blog/why-you-need-to-try-the-new-bun-runtime/bun-buildtime.png)
+![Bun build time](/images/blog/why-you-need-to-try-the-new-bun-runtime/bun-buildtime.webp)
 
 **Typescript** build time
 
-![Typescript build time](/images/blog/why-you-need-to-try-the-new-bun-runtime/ts-buildtime.png)
+![Typescript build time](/images/blog/why-you-need-to-try-the-new-bun-runtime/ts-buildtime.webp)
 
 # Implements standard Web APIs
 

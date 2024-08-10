@@ -3,7 +3,7 @@ layout: post
 title: How to build cross-platform applications with React Native
 description: With the launch of our new React Native SDK in open beta we want to take a deeper dive into cross platform development and when you should use it.
 date: 2024-05-05
-cover: /images/blog/react-nativecross.png
+cover: /images/blog/react-nativecross.webp
 timeToRead: 9
 author: damodar-lohani
 category: engineering
@@ -66,7 +66,7 @@ To get started, follow these steps.
 
 First, you must set up an Appwrite project. To do so, you must either [create an Appwrite Cloud account](https://cloud.appwrite.io) or [self-host Appwrite](/docs/advanced/self-hosting) on your system.
 
-![Get started with React Native](/images/blog/overview-react-native.png)
+![Get started with React Native](/images/blog/overview-react-native.webp)
 
 Once that is done, under **Add a platform**, add an **Android app** or an **Apple app**. You can skip optional steps.
 

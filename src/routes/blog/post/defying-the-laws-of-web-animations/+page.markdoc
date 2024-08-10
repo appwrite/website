@@ -3,7 +3,7 @@ layout: post
 title: Defying the laws of web animations
 description: Web animations can be scary, and come with a lot of obstacles. But what if we could bend the rules to our will?
 date: 2023-10-18
-cover: /images/blog/defying-the-laws-of-web-animations/cover.png
+cover: /images/blog/defying-the-laws-of-web-animations/cover.webp
 timeToRead: 10
 author: thomas-g-lopes
 category: website
@@ -45,7 +45,7 @@ Scroll-based animations are quite common. There are two types. Animations that s
 We have 5 sections in our animation, as showcased in our video (we technically have 2 more, one for the beginning and one for the end), and they're pretty similar. They are all in a really tall container, so that we have ample space to scroll through, but the animations
 themselves always stick to the center of the screen.
 
-![Excali viewport](/images/blog/defying-the-laws-of-web-animations/excali_viewport.png)
+![Excali viewport](/images/blog/defying-the-laws-of-web-animations/excali_viewport.webp)
 
 I've split said container into 5 **equal** parts, each part representing a section. All the sections are always sticking to the center of the screen as I said, but, once the top of the viewport passes a section trigger, the respective section is active, and all the other sections are de-activated. (In the sketch above, the active section is the 2nd one, but if the user scrolls down _just_ a bit, the 3rd section will be active.)
 

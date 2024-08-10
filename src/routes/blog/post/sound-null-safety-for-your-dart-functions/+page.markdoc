@@ -3,7 +3,7 @@ layout: post
 title: Sound null-safety for your Dart functions
 description: Learn to reduce null related runtime errors with Dart 3.
 date: 2024-03-01
-cover: /images/blog/sound-null-safety-for-your-dart-functions/cover.png
+cover: /images/blog/sound-null-safety-for-your-dart-functions/cover.webp
 timeToRead: 12
 author: vincent-ge
 category: product

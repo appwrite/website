@@ -3,7 +3,7 @@ layout: post
 title: "How to build a tech stack for a remote startup"
 description: 10 tools you need in your remote tech stack.
 date: 2024-07-16
-cover: /images/blog/how-to-build-remote-tech-stack/cover.png
+cover: /images/blog/how-to-build-remote-tech-stack/cover.webp
 timeToRead: 5
 author: snezhanna
 category: startup
@@ -24,7 +24,7 @@ This list highlights the tech we use to organize our work as an open-source, ful
 
 ## 1. Discord for team communication
 
-![Discord](/images/blog/how-to-build-remote-tech-stack/1.png)
+![Discord](/images/blog/how-to-build-remote-tech-stack/1.webp)
 
 Initially created for gamers, [Discord](https://discord.com/) is designed for real-time communication, which is really important to help remote teams stay connected. We love grouping conversations per team and topic, with additional channels for cross-team collaboration. The “lobby” chat acts as an office space where team members say hi when they log on, have informal conversations, or share gifs — the water cooler talk of remote companies! This helps us feel connected even if our coworkers are online in a different timezone.
 
@@ -40,7 +40,7 @@ Some Discord pros:
 
 ## 2. Linear for task tracking
 
-![Linear](/images/blog/how-to-build-remote-tech-stack/2.png)
+![Linear](/images/blog/how-to-build-remote-tech-stack/2.webp)
 
 As your remote team and their workloads grow, it becomes crucial to ensure tasks are completed on time, nothing gets overlooked, and no team member feels overwhelmed. At Appwrite, we use [Linear](https://linear.app/) for its straightforward, developer-friendly approach.
 
@@ -57,7 +57,7 @@ Some Linear pros:
 
 ## 3. Figma for design & collaboration
 
-![Figma](/images/blog/how-to-build-remote-tech-stack/3.png)
+![Figma](/images/blog/how-to-build-remote-tech-stack/3.webp)
 
 You've probably heard of [Figma](http://figma.com) as a design tool. But did you know you can also use it for brainstorming, retrospectives, and collaboration? We love this versatility.
 
@@ -73,7 +73,7 @@ Some Figma pros:
 
 ## 4. Notion for databases & collaboration
 
-![Notion](/images/blog/how-to-build-remote-tech-stack/4.png)
+![Notion](/images/blog/how-to-build-remote-tech-stack/4.webp)
 
 Your remote company's documents need a reliable home, and Notion databases are the perfect solution.
 
@@ -92,7 +92,7 @@ Some Notion pros:
 
 ## 5. Loom for sharing information remotely
 
-![Loom](/images/blog/how-to-build-remote-tech-stack/5.png)
+![Loom](/images/blog/how-to-build-remote-tech-stack/5.webp)
 
 Organizing a meeting every time you need to demo a tool, explain a new process, or train a new team member can be a real hassle, especially if you're coordinating schedules across different time zones for remote teams. These meetings often turn into a waste of time, especially for repeatable and straightforward tasks.
 
@@ -106,7 +106,7 @@ Some Loom pros:
 
 ## 6. Attio for customer relationship management
 
-![Attio](/images/blog/how-to-build-remote-tech-stack/6.png)
+![Attio](/images/blog/how-to-build-remote-tech-stack/6.webp)
 
 As your client base skyrockets through the roof (hopefully!), you’ll need a way to build relationships with your customers. At Appwrite, we use Attio for CRM. 
 
@@ -120,7 +120,7 @@ Some Attio pros:
 
 ## 7. GitHub team for open source contributions
 
-![GitHub teams](/images/blog/how-to-build-remote-tech-stack/7.png)
+![GitHub teams](/images/blog/how-to-build-remote-tech-stack/7.webp)
 
 GitHub simplifies managing remote teams and permissions. With [GitHub Teams](https://github.com/team), you can organize team members, assign roles, and set specific access levels for repositories.
 
@@ -135,7 +135,7 @@ Some Github Team pros:
 
 ## 8. Appwrite for backend
 
-![Appwrite](/images/blog/how-to-build-remote-tech-stack/8.png)
+![Appwrite](/images/blog/how-to-build-remote-tech-stack/8.webp)
 
 We couldn't end this list without mentioning [Appwrite](https://appwrite.io/). When asked, "Do you use Appwrite to build Appwrite?" the answer is a yes. The team is building Appwrite with the exact same API we let developers use to develop their apps. Our entire backend, including user authentication, databases, and collections, is powered by Appwrite's easy-to-implement APIs.
 
@@ -154,7 +154,7 @@ Now, these tools are not strictly related to remote work. However, they have gre
 
 ## Plausible for analytics
 
-![Plausible](/images/blog/how-to-build-remote-tech-stack/9.png)
+![Plausible](/images/blog/how-to-build-remote-tech-stack/9.webp)
 
 [Plausible](http://plausible.io) is a privacy-friendly alternative to Google Analytics, which we opted for as part of [our commitment to data privacy](https://appwrite.io/blog/post/How-to-put-privacy-first). It is an open-source analytics platform with some of the highest [privacy standards](https://plausible.io/privacy). It helps us get demographic and user behavior data from the website and Appwrite Cloud in a privacy-friendly manner.
 
@@ -167,7 +167,7 @@ Some Plausible pros:
 
 ## [Dub.co](http://Dub.co) for link-building
 
-![Dub.co](/images/blog/how-to-build-remote-tech-stack/10.png)
+![Dub.co](/images/blog/how-to-build-remote-tech-stack/10.webp)
 
 As a privacy-conscious company, we have stopped using marketing classified pixels such as webpage tags and cookies. As soon as you leave this website, we will lose all information about you.
 

@@ -3,7 +3,7 @@ layout: post
 title: Open-source contributors make the community great
 description: Celebrating open source, Appwrite 1.4 contributors, and the largest open source event,  Hacktoberfest. Discover more about contributing and why you should start.
 date: 2023-10-01
-cover: /images/blog/contributors-post-1.4.png
+cover: /images/blog/contributors-post-1.4.webp
 timeToRead: 4
 author: haimantika-mitra
 category: hacktoberfest, contributors, open-source
@@ -20,7 +20,7 @@ For those of you who have been following Appwrite, you might have noticed how mu
 
 But what does this actually mean to be open source as a company? It means that our code is open for other developers to use, copy, and fork, but most importantly, to contribute to. It's about being transparent and about building in the open, it is about giving back to those who helped us get here. And with over 700+ contributors contributing to Appwrite, it's fair enough to say that the Appwrite you see today was built by you, the open source community.
 
-![open source community](/images/blog/global-community-2.png)
+![open source community](/images/blog/global-community-2.webp)
 
 ## 1.4 contributors
 
@@ -69,7 +69,7 @@ Every single contributor and every single contribution made the product better f
 
 As mentioned previously, many of our team members were first contributors before they joined. Our very own [Christy Jacob](https://github.com/christyjacob4) once started as a contributor during [Hacktoberfest](https://appwrite.io/blog/post/hacktoberfest-2023), the largest celebration of open source, and is now a Lead Engineer building Appwrite Cloud. It all starts with that first step and pull request.
 
-![hacktoberfest partecipants](/images/blog/badge.png)
+![hacktoberfest partecipants](/images/blog/badge.webp)
 
 So there is more to open source contributing than just helping build a project. It can help you progress in your future career by learning, building your portfolio, networking, and even finding job opportunities. All the more reasons to jump on the wagon. With that said, we also understand that for some, contributing might seem daunting, but it really isn't if you get the right help and guidance. This is where [Hacktoberfest](https://appwrite.io/blog/post/hacktoberfest-2023) comes in. It is an amazing event that allows you to contribute to many different projects in many different ways together with others, so you don't have to start your journey alone. It started on the 1st of October 2023, and you can join the entire month. This is your chance to kickstart your open source journey.
 
@@ -77,4 +77,4 @@ We want to invite developers to come join us during Hacktoberfest. Together, we 
 
 Come join us and build like a team of hundreds.
 
-![Build like a team of hundreds](/images/blog/slogan.png)
+![Build like a team of hundreds](/images/blog/slogan.webp)

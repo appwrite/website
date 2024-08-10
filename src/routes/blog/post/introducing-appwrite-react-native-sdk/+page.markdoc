@@ -3,7 +3,7 @@ layout: post
 title: Introducing Appwrite's React Native SDK in open beta
 description: A new SDK that allows more mobile developers to benefit from Appwrite's powerful tools.
 date: 2024-04-09
-cover: /images/blog/introducing-appwrite-react-native-sdk/cover.png
+cover: /images/blog/introducing-appwrite-react-native-sdk/cover.webp
 timeToRead: 4
 author: vincent-ge
 category: product
@@ -41,7 +41,7 @@ Diving into Appwrite's React Native SDK is easy. Here's how to get started:
 
 First thing first, you must set up an Appwrite project. To do so, you must either [create an Appwrite Cloud account](https://cloud.appwrite.io) or [self-host Appwrite](/docs/advanced/self-hosting) on your system.
 
-![qa.appwrite.org_console_project-test_overview_platforms.png](/images/blog/introducing-appwrite-react-native-sdk/appwrite.png)
+![qa.appwrite.org_console_project-test_overview_platforms.webp](/images/blog/introducing-appwrite-react-native-sdk/appwrite.webp)
 
 Once that is done, under **Add a platform**, add an **Android app** or an **Apple app**. You can skip optional steps.
 

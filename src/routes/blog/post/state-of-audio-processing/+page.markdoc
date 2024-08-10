@@ -3,7 +3,7 @@ layout: post
 title: State of audio processing
 description: An overview of the latest developments in audio processing with AI and their impact on various industries.
 date: 2024-03-27
-cover: /images/blog/state-of-audio-processing/cover.png
+cover: /images/blog/state-of-audio-processing/cover.webp
 timeToRead: 15
 author: luke-silver
 category: product
@@ -61,7 +61,7 @@ plt.show()
 
 This code makes a simple sound wave, applies a Fourier transform to it, and plots the amount of each frequency present in the sound.
 
-![Fourier transform plot](/images/blog/state-of-audio-processing/fourier.png)
+![Fourier transform plot](/images/blog/state-of-audio-processing/fourier.webp)
 
 ## Deep neural networks
 

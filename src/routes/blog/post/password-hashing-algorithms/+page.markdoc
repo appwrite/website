@@ -3,7 +3,7 @@ layout: post
 title: How password hashing algorithms keep your data safe
 description: Learn about password hashing algorithms and how they help secure user credentials in your application.
 date: 2023-10-20
-cover: /images/blog/password-hashing-algorithms.png
+cover: /images/blog/password-hashing-algorithms.webp
 timeToRead: 7
 author: aditya-oberai
 category: authentication, security
