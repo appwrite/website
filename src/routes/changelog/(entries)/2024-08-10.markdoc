@@ -1,9 +1,9 @@
 ---
 layout: changelog
-title: "Announcing: Priority Queues for Faster Build Times"
+title: "Announcing: Express Queues for Faster Build Times"
 date: 2024-08-10
 ---
 
-As Appwrite Cloud continues to grow, we’ve taken steps to ensure a smoother experience for our developers. We are pleased to introduce Priority Queues, designed to reduce waiting times for function builds.
+As Appwrite Cloud continues to grow, we’ve taken steps to ensure a smoother experience for our developers. We are pleased to introduce Express Queues, designed to reduce waiting times for function builds.
 
-This enhancement is particularly beneficial for our Pro and Scale plan users, who will now experience faster processing times thanks to dedicated priority queues. However, all users will notice improvements in overall build efficiency, as this change helps to streamline the entire system.
+This enhancement is particularly beneficial for our Pro and Scale plan users, who will now experience faster processing times thanks to dedicated express queues. However, all users will notice improvements in overall build efficiency, as this change helps to streamline the entire system.
