@@ -229,6 +229,12 @@
                     free: '-',
                     pro: '$2 per 1 Million',
                     scale: '$2 per 1 Million'
+                },
+                {
+                    title: 'Express Builds',
+                    free: '-',
+                    pro: true,
+                    scale: true
                 }
             ]
         },
