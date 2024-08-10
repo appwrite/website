@@ -19,6 +19,7 @@
     export let timeToRead: string;
     export let cover: string;
     export let category: string;
+    export let lastUpdated: string;
 
     const authors = getContext<AuthorData[]>('authors');
     const authorData = authors.find((a) => a.slug === author);
@@ -231,6 +232,15 @@
                             {/if}
 
                             <div class="web-article-content u-margin-block-start-32">
+                                {#if lastUpdated}
+                                    <span class="web-main-body-500 last-updated-text">
+                                        Updated:
+                                        <time dateTime={lastUpdated}>
+                                            {formatDate(lastUpdated)}
+                                        </time>
+                                    </span>
+                                {/if}
+
                                 <slot />
                             </div>
                         </article>
@@ -314,5 +324,9 @@
       .web-icon-copy {
         font-size: 24px;
       }
+    }
+
+    .last-updated-text {
+        color: var(--primary, #e4e4e7);
     }
 </style>
