@@ -17,10 +17,10 @@ Appwrite supports a variety of authentication methods to fit every app and every
 
 {% cards %}
 {% cards_item href="/docs/products/auth/email-password" title="Email and password" %}
-Email and password login with just a few lines of code secured with state of the art Argon2 hasing.
+Email and password login with just a few lines of code secured with state of the art Argon2 hashing.
 {% /cards_item %}
 {% cards_item href="/docs/products/auth/phone-sms" title="Phone (SMS)" %}
-Log in users with out a password using their phone number and SMS verification.
+Log in users without a password using their phone number and SMS verification.
 {% /cards_item %}
 {% cards_item href="/docs/products/auth/magic-url" title="Magic URL" %}
 Passwordless login with a magic link sent to the user's email.
