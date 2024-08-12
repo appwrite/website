@@ -1,260 +1,260 @@
 <script lang="ts" context="module">
-  import { writable } from "svelte/store";
+    import { writable } from 'svelte/store';
 
-  export type NavLink = {
-    label: string;
-    href: string;
-    showBadge?: boolean;
-  };
-  export const isHeaderHidden = writable(false);
-  export const isMobileNavOpen = writable(false);
+    export type NavLink = {
+        label: string;
+        href: string;
+        showBadge?: boolean;
+    };
+    export const isHeaderHidden = writable(false);
+    export const isMobileNavOpen = writable(false);
 </script>
 
 <script lang="ts">
-  import { browser } from "$app/environment";
-  import { MobileNav, IsLoggedIn } from "$lib/components";
-  import { BANNER_KEY, GITHUB_STARS } from "$lib/constants";
-  import { isVisible } from "$lib/utils/isVisible";
-  import { createScrollInfo } from "$lib/utils/scroll";
-  import { hasNewChangelog } from "$routes/changelog/utils";
-  import { page } from "$app/stores";
-  import { classNames } from "$lib/utils/classnames";
+    import { browser } from '$app/environment';
+    import { MobileNav, IsLoggedIn } from '$lib/components';
+    import { BANNER_KEY, GITHUB_STARS } from '$lib/constants';
+    import { isVisible } from '$lib/utils/isVisible';
+    import { createScrollInfo } from '$lib/utils/scroll';
+    import { hasNewChangelog } from '$routes/changelog/utils';
+    import { addEventListener } from '@melt-ui/svelte/internal/helpers';
+    import { onMount } from 'svelte';
+    import { page } from '$app/stores';
+    import { classNames } from '$lib/utils/classnames';
+    import Button from '$lib/components/Button.svelte';
 
-  export let omitMainId = false;
-  let theme: "light" | "dark" | null = "dark";
+    export let omitMainId = false;
+    let theme: 'light' | 'dark' | null = 'dark';
 
-  function isInViewport(element: Element): boolean {
-    const mobileHeader = document.querySelector(".aw-mobile-header");
-    const isMobile =
-      mobileHeader &&
-      getComputedStyle(mobileHeader).display !== "none" &&
-      isVisible(mobileHeader, {
-        top: 0,
-        bottom: window.innerHeight,
-        left: 0,
-        right: window.innerWidth,
-      });
-    const h = isMobile || "bannerHidden" in document.body.dataset ? 32 : 64;
+    function isInViewport(element: Element): boolean {
+        const mobileHeader = document.querySelector('.aw-mobile-header');
+        const isMobile =
+            mobileHeader &&
+            getComputedStyle(mobileHeader).display !== 'none' &&
+            isVisible(mobileHeader, {
+                top: 0,
+                bottom: window.innerHeight,
+                left: 0,
+                right: window.innerWidth
+            });
+        const h = isMobile || 'bannerHidden' in document.body.dataset ? 32 : 64;
 
-    return isVisible(element, {
-      top: h,
-      bottom: h,
-      left: 0,
-      right: window.innerWidth,
-    });
-  }
-
-  function getVisibleTheme() {
-    const themes = Array.from(
-      document.querySelectorAll(".dark, .light"),
-    ).filter((element) => {
-      const { classList, dataset } = element as HTMLElement;
-      if (
-        classList.contains("web-mobile-header") ||
-        classList.contains("web-main-header") ||
-        element === document.body ||
-        typeof dataset["themeIgnore"] === "string"
-      ) {
-        return false;
-      }
-      return true;
-    });
-
-    for (const theme of themes) {
-      if (isInViewport(theme)) {
-        return theme.classList.contains("light") ? "light" : "dark";
-      }
+        return isVisible(element, {
+            top: h,
+            bottom: h,
+            left: 0,
+            right: window.innerWidth
+        });
     }
 
-    return "dark";
-  }
+    function getVisibleTheme() {
+        const themes = Array.from(document.querySelectorAll('.dark, .light')).filter((element) => {
+            const { classList, dataset } = element as HTMLElement;
+            if (
+                classList.contains('web-mobile-header') ||
+                classList.contains('web-main-header') ||
+                element === document.body ||
+                typeof dataset['themeIgnore'] === 'string'
+            ) {
+                return false;
+            }
+            return true;
+        });
 
-  let navLinks: NavLink[] = [
-    {
-      label: "Docs",
-      href: "/docs",
-    },
-    {
-      label: "Community",
-      href: "/community",
-    },
-    {
-      label: "Blog",
-      href: "/blog",
-    },
-    {
-      label: "Changelog",
-      href: "/changelog",
-      showBadge:
-        hasNewChangelog?.() && !$page.url.pathname.includes("/changelog"),
-    },
-    {
-      label: "Pricing",
-      href: "/pricing",
-    },
-  ];
+        for (const theme of themes) {
+            if (isInViewport(theme)) {
+                return theme.classList.contains('light') ? 'light' : 'dark';
+            }
+        }
 
-  $: resolvedTheme = $isMobileNavOpen ? "dark" : theme;
-
-  const scrollInfo = createScrollInfo();
-
-  $: $isHeaderHidden = (() => {
-    if ($scrollInfo.top < 250) {
-      return false;
-    }
-    if ($scrollInfo.direction === "down") {
-      return true;
+        return 'dark';
     }
 
-    return $scrollInfo.deltaDirChange < 200;
-  })();
+    let navLinks: NavLink[] = [
+        {
+            label: 'Docs',
+            href: '/docs'
+        },
+        {
+            label: 'Community',
+            href: '/community'
+        },
+        {
+            label: 'Blog',
+            href: '/blog'
+        },
+        {
+            label: 'Changelog',
+            href: '/changelog',
+            showBadge: hasNewChangelog?.() && !$page.url.pathname.includes('/changelog')
+        },
+        {
+            label: 'Pricing',
+            href: '/pricing'
+        }
+    ];
 
-  const hideTopBanner = () => {
-    document.body.dataset.bannerHidden = "";
-    localStorage.setItem(BANNER_KEY, "true");
-  };
+    $: resolvedTheme = $isMobileNavOpen ? 'dark' : theme;
+
+    const scrollInfo = createScrollInfo();
+
+    $: $isHeaderHidden = (() => {
+        if ($scrollInfo.top < 250) {
+            return false;
+        }
+        if ($scrollInfo.direction === 'down') {
+            return true;
+        }
+
+        return $scrollInfo.deltaDirChange < 200;
+    })();
+
+    const hideTopBanner = () => {
+        document.body.dataset.bannerHidden = '';
+        localStorage.setItem(BANNER_KEY, 'true');
+    };
 </script>
 
 <div class="relative">
-  <section
-    class="web-mobile-header {resolvedTheme}"
-    class:is-transparent={browser && !$isMobileNavOpen}
-    class:is-hidden={$isHeaderHidden}
-  >
-    <div class="web-mobile-header-start">
-      <a href="/">
-        <img
-          class="web-logo block dark:hidden"
-          src="/images/logos/appwrite.svg"
-          alt="appwrite"
-          height="24"
-          width="130"
-        />
-        <img
-          class="web-logo hidden dark:block"
-          src="/images/logos/appwrite-light.svg"
-          alt="appwrite"
-          height="24"
-          width="130"
-        />
-      </a>
-    </div>
-    <div class="web-mobile-header-end">
-      {#if !$isMobileNavOpen}
-        <a href="https://cloud.appwrite.io" class="web-button">
-          <span class="text">Get started</span>
-        </a>
-      {/if}
-      <button
-        class="web-button is-text"
-        aria-label="open navigation"
-        on:click={() => ($isMobileNavOpen = !$isMobileNavOpen)}
-      >
-        {#if $isMobileNavOpen}
-          <span aria-hidden="true" class="web-icon-close" />
-        {:else}
-          <span aria-hidden="true" class="web-icon-hamburger-menu" />
-        {/if}
-      </button>
-    </div>
-  </section>
-  <header
-    class="web-main-header is-special-padding {resolvedTheme} is-transparent"
-    class:is-hidden={$isHeaderHidden}
-  >
-    <div class="web-top-banner">
-      <div class="web-top-banner-content web-u-color-text-primary">
-        <a href="/discord" target="_blank" rel="noopener noreferrer">
-          <span class="web-caption-500">We are having lots of fun on</span>
-          <span class="web-icon-discord" aria-hidden="true" />
-          <span class="web-caption-500">Discord. Come and join us!</span>
-        </a>
-        {#if browser}
-          <button
-            class="web-top-banner-button"
-            aria-label="close discord message"
-            on:click={hideTopBanner}
-          >
-            <span class="web-icon-close" aria-hidden="true" />
-          </button>
-        {/if}
-      </div>
-    </div>
-
-    <div class="web-main-header-wrapper">
-      <div class="web-main-header-start">
-        <a href="/">
-          <img
-            class="web-logo hidden dark:block"
-            src="/images/logos/appwrite.svg"
-            alt="appwrite"
-            height="24"
-            width="130"
-          />
-          <img
-            class="web-logo block dark:hidden"
-            src="/images/logos/appwrite-light.svg"
-            alt="appwrite"
-            height="24"
-            width="130"
-          />
-        </a>
-        <nav class="web-main-header-nav" aria-label="Main">
-          <ul class="web-main-header-nav-list">
-            {#each navLinks as navLink}
-              <li class="web-main-header-nav-item">
-                <a
-                  class={classNames(
-                    "data-[badge]:after:animate-scale-in data-[badge]:relative data-[badge]:after:absolute data-[badge]:after:size-1.5 data-[badge]:after:translate-full data-[badge]:after:rounded-full",
-                  )}
-                  href={navLink.href}
-                  data-badge={navLink.showBadge ? "" : undefined}
-                  >{navLink.label}
+    <section
+        class="web-mobile-header {resolvedTheme}"
+        class:is-transparent={browser && !$isMobileNavOpen}
+        class:is-hidden={$isHeaderHidden}
+    >
+        <div class="web-mobile-header-start">
+            <a href="/">
+                <img
+                    class="web-logo block dark:hidden"
+                    src="/images/logos/appwrite.svg"
+                    alt="appwrite"
+                    height="24"
+                    width="130"
+                />
+                <img
+                    class="web-logo hidden dark:block"
+                    src="/images/logos/appwrite-light.svg"
+                    alt="appwrite"
+                    height="24"
+                    width="130"
+                />
+            </a>
+        </div>
+        <div class="web-mobile-header-end">
+            {#if !$isMobileNavOpen}
+                <a href="https://cloud.appwrite.io" class="web-button">
+                    <span class="text">Get started</span>
                 </a>
-              </li>
-            {/each}
-          </ul>
-        </nav>
-      </div>
-      <div class="web-main-header-end">
-        <a
-          href="https://github.com/appwrite/appwrite/stargazers"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="web-button"
-        >
-          <span aria-hidden="true" class="web-icon-star" />
-          <span class="text">Star on GitHub</span>
-          <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span>
-        </a>
+            {/if}
+            <button
+                class="web-button is-text"
+                aria-label="open navigation"
+                on:click={() => ($isMobileNavOpen = !$isMobileNavOpen)}
+            >
+                {#if $isMobileNavOpen}
+                    <span aria-hidden="true" class="web-icon-close" />
+                {:else}
+                    <span aria-hidden="true" class="web-icon-hamburger-menu" />
+                {/if}
+            </button>
+        </div>
+    </section>
+    <header
+        class="web-main-header is-special-padding {resolvedTheme} is-transparent"
+        class:is-hidden={$isHeaderHidden}
+    >
+        <div class="web-top-banner">
+            <div class="web-top-banner-content web-u-color-text-primary">
+                <a href="/discord" target="_blank" rel="noopener noreferrer">
+                    <span class="web-caption-500">We are having lots of fun on</span>
+                    <span class="web-icon-discord" aria-hidden="true" />
+                    <span class="web-caption-500">Discord. Come and join us!</span>
+                </a>
+                {#if browser}
+                    <button
+                        class="web-top-banner-button"
+                        aria-label="close discord message"
+                        on:click={hideTopBanner}
+                    >
+                        <span class="web-icon-close" aria-hidden="true" />
+                    </button>
+                {/if}
+            </div>
+        </div>
 
-        <IsLoggedIn />
-      </div>
-    </div>
-  </header>
-  <MobileNav bind:open={$isMobileNavOpen} links={navLinks} />
+        <div class="web-main-header-wrapper">
+            <div class="web-main-header-start">
+                <a href="/">
+                    <img
+                        class="web-logo hidden dark:block"
+                        src="/images/logos/appwrite.svg"
+                        alt="appwrite"
+                        height="24"
+                        width="130"
+                    />
+                    <img
+                        class="web-logo block dark:hidden"
+                        src="/images/logos/appwrite-light.svg"
+                        alt="appwrite"
+                        height="24"
+                        width="130"
+                    />
+                </a>
+                <nav class="web-main-header-nav" aria-label="Main">
+                    <ul class="web-main-header-nav-list">
+                        {#each navLinks as navLink}
+                            <li class="web-main-header-nav-item">
+                                <a
+                                    class={classNames(
+                                        'data-[badge]:after:animate-scale-in data-[badge]:after:translate-full data-[badge]:relative data-[badge]:after:absolute data-[badge]:after:size-1.5 data-[badge]:after:rounded-full'
+                                    )}
+                                    href={navLink.href}
+                                    data-badge={navLink.showBadge ? '' : undefined}
+                                    >{navLink.label}
+                                </a>
+                            </li>
+                        {/each}
+                    </ul>
+                </nav>
+            </div>
+            <div class="web-main-header-end">
+                <Button
+                    href="https://github.com/appwrite/appwrite/stargazers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    intent="text"
+                >
+                    <span aria-hidden="true" class="web-icon-star" />
+                    <span class="text">Star on GitHub</span>
+                    <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span>
+                </Button>
 
-  <main
-    class="web-main-section"
-    class:web-u-hide-mobile={$isMobileNavOpen}
-    id={omitMainId ? undefined : "main"}
-  >
-    <slot />
-  </main>
+                <IsLoggedIn />
+            </div>
+        </div>
+    </header>
+    <MobileNav bind:open={$isMobileNavOpen} links={navLinks} />
+
+    <main
+        class="web-main-section"
+        class:web-u-hide-mobile={$isMobileNavOpen}
+        id={omitMainId ? undefined : 'main'}
+    >
+        <slot />
+    </main>
 </div>
 
 <style lang="scss">
-  .nav-badge {
-    margin-inline-start: 0.5rem;
-    padding-inline: 0.375rem;
-  }
-
-  [data-badge] {
-    &::after {
-      background-color: hsl(var(--web-color-accent));
-
-      inset-block-start: -2px;
-      inset-inline-end: -4px;
+    .nav-badge {
+        margin-inline-start: 0.5rem;
+        padding-inline: 0.375rem;
     }
-  }
+
+    [data-badge] {
+        &::after {
+            background-color: hsl(var(--web-color-accent));
+
+            inset-block-start: -2px;
+            inset-inline-end: -4px;
+        }
+    }
 </style>
