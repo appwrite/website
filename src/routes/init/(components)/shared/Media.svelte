@@ -34,7 +34,7 @@
 {:else}
   <div
     class="web-card is-normal has-border-gradient u-overflow-hidden"
-    style="padding: 0.5rem;"
+    style="padding: 0.5rem;height:100%;"
   >
     <div class="details" style="padding: 0.75rem;">
       <h3 class="web-label web-u-color-text-primary" style="width: 18.75rem">
@@ -66,6 +66,15 @@
 
     .slot-wrapper {
       grid-column: span 7;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 100%;
+
+      :global(img) {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
 </style>

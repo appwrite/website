@@ -34,7 +34,7 @@
         {day.subtitle}
       </span>
       <h2 class="web-label web-u-color-text-primary">
-        {day.title}
+        {day.title}<span class="web-u-color-text-accent">_</span>
       </h2>
     </div>
 

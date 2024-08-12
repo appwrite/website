@@ -21,7 +21,7 @@
 </script>
 
 <VideoWrapper let:openVideo>
-  <button on:click={openVideo}>
+  <button on:click={openVideo} style="height:100%;">
     <div class="wrapper" use:melt={$trigger}>
       <img class="img" src={thumbnail} alt="" />
       <div class="play">
@@ -64,6 +64,7 @@
     object-fit: cover;
     inline-size: 100%;
     filter: grayscale(1);
+    aspect-ratio: var(--p-aspect-ratio, 1.6);
   }
 
   .play {
