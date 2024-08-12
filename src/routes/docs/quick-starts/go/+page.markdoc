@@ -107,18 +107,12 @@ Once the Appwrite Client is initialized, create a function to configure a todo c
 func prepareDatabase() {
 	appwriteDatabases = appwrite.NewDatabases(appwriteClient)
 
-	var err error
 	todoDatabase, _ = appwriteDatabases.Create(id.Unique(), "TodosDB")
 
-	todoCollection, err = appwriteDatabases.CreateCollection(
+	todoCollection, _ = appwriteDatabases.CreateCollection(
 		todoDatabase.Id,
 		id.Unique(),
 		"Todos")
-
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
 
 	appwriteDatabases.CreateStringAttribute(
 		todoDatabase.Id,
@@ -203,8 +197,8 @@ type Todo struct {
 	IsComplete  bool   `json:"isComplete"`
 }
 
-func getTodos(appwriteDatabases *databases.Databases, todoDatabase *models.Database, todoCollection *models.Collection) {
-	todos, err := appwriteDatabases.ListDocuments(
+func getTodos() {
+	todos, _ := appwriteDatabases.ListDocuments(
 		todoDatabase.Id,
 		todoCollection.Id,
 		appwriteDatabases.WithListDocumentsQueries([]string{}),
@@ -214,11 +208,6 @@ func getTodos(appwriteDatabases *databases.Databases, todoDatabase *models.Datab
 		var todo Todo
 		fmt.Println(doc)
 		fmt.Printf("Title: %s\nDescription: %s\nIs Todo Complete: %t\n\n", todo.Title, todo.Description, todo.IsComplete)
-	}
-
-	if err != nil {
-		fmt.Println(err)
-		return
 	}
 }
 ```
