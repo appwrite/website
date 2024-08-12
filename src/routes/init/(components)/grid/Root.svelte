@@ -11,14 +11,14 @@
   @use "$scss/abstract" as *;
 
   .grid {
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    display: flex;
+    gap: pxToRem(32);
+    flex-direction: column;
 
     @media screen and (min-width: 768px) {
+      display: grid;
       grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
       grid-template-rows: repeat(var(--rows), minmax(0, 1fr));
     }
-
-    gap: pxToRem(32);
   }
 </style>
