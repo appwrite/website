@@ -95,9 +95,9 @@
     const metrics = [
         { metric: `${GITHUB_STARS}+`, description: 'GitHub Stars' },
         { metric: '3K+', description: 'Pull Requests' },
-        { metric: '18K+', description: 'Commits' },
+        { metric: '21K+', description: 'Commits' },
         { metric: '3K+', description: 'Issues' },
-        { metric: '600+', description: 'Open Issues' },
+        { metric: '500+', description: 'Open Issues' },
         { metric: '2.5K+', description: 'Closed Issues' },
         { metric: '3.5K+', description: 'Forks' },
         { metric: '800+', description: 'Contributors' }

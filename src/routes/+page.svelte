@@ -11,6 +11,7 @@
     import FooterNav from '../lib/components/FooterNav.svelte';
     import MainFooter from '../lib/components/MainFooter.svelte';
     import DeveloperCard from './DeveloperCard.svelte';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -77,14 +78,14 @@
             <div class="web-big-padding-section-level-2">
                 <section class="web-container web-u-padding-block-end-0">
                     <a
-                        href="/blog/post/announcing-appwrite-integration-catalog"
+                        href="/blog/post/announcing-init-faster-smoother-better"
                         class="web-hero-banner-button web-u-margin-block-end-24"
                     >
                         <span class="web-icon-star" aria-hidden="true" />
                         <span class="web-caption-500">New</span>
                         <div class="web-hero-banner-button-sep" />
                         <span class="web-caption-400 web-u-trim-1"
-                            >Announcing Appwrite's Integrations Catalog</span
+                            >Announcing: A new Init. Faster. Smoother. Better.</span
                         >
                         <span class="web-icon-arrow-right" aria-hidden="true" />
                     </a>
@@ -104,7 +105,7 @@
                                 the frameworks and languages of your choice.
                             </p>
                             <a
-                                href="https://cloud.appwrite.io"
+                                href={PUBLIC_APPWRITE_DASHBOARD}
                                 class="web-button is-full-width-mobile u-margin-block-start-32"
                             >
                                 <span class="text">Get started</span>

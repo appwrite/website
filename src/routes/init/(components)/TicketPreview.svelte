@@ -1,48 +1,26 @@
 <script>
     import { browser } from '$app/environment';
-    import ShineSVG from '../(assets)/shine-bg.svg';
 </script>
 
 <div class="ticket-preview" style:opacity={browser ? '1' : '0.5'}>
     <slot />
-
-    <img class="shine" src={ShineSVG} alt="" />
+    <div class="shine" />
 </div>
 
 <style lang="scss">
     .ticket-preview {
-        --p-border-radius: 1rem;
-        border: 1px solid hsl(var(--web-color-subtle));
-        border-radius: var(--p-border-radius);
-
         position: relative;
-        overflow: hidden;
-        width: 100%;
-        aspect-ratio: 0.95 / 1;
-
-        display: grid;
-        place-items: center;
-
-        transition: opacity 0.25s ease;
-
-        --base-width: min(40vw, 28.75rem);
-
-        :global(.ticket-holder) {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            translate: -50% -50%;
-        }
-
         .shine {
             position: absolute;
             inset-block-start: -100px;
-            inset-inline-end: -100px;
-            z-index: -1;
-        }
-
-        @media screen and (max-width: 1023px) {
-            --base-width: min(60vw, 300px);
+            z-index: -10;
+            width: 100%;
+            height: 500px;
+            opacity: 0.5;
+            background-image: url('/images/tickets/shine.svg');
+            background-size: cover;
+            mix-blend-mode: hard-light;
+            filter: blur(10px);
         }
     }
 </style>
