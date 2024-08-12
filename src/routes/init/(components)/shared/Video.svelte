@@ -5,14 +5,13 @@
 
   type $$Props = {
     thumbnail: string;
-    title: string;
+    title?: string;
     src: string;
     "--p-aspect-ratio"?: string;
     "--p-border-radius"?: string;
   };
 
   export let thumbnail: $$Props["thumbnail"];
-  export let title: $$Props["title"];
   export let src: $$Props["src"];
 
   const dialog = videoCtx.get();
@@ -22,20 +21,7 @@
 </script>
 
 <VideoWrapper let:openVideo>
-  <button
-    on:click={openVideo}
-    class="web-card is-normal has-border-gradient u-overflow-hidden"
-    style="padding: 0.5rem; display: flex; justify-content: space-between;"
-  >
-    <div style="padding: 0.75rem;">
-      <h3 class="web-label web-u-color-text-primary" style="width: 18.75rem">
-        {title}
-      </h3>
-      <div class="web-card-link u-flex u-cross-center">
-        <span class="text">Watch</span>
-        <span class="web-icon-arrow-right" />
-      </div>
-    </div>
+  <button on:click={openVideo}>
     <div class="wrapper" use:melt={$trigger}>
       <img class="img" src={thumbnail} alt="" />
       <div class="play">
@@ -64,7 +50,7 @@
 
   .wrapper {
     position: relative;
-    overflow: hidden;
+    //overflow: hidden;
     max-height: 100%;
     display: flex;
     justify-content: flex-end;
@@ -119,9 +105,5 @@
     svg {
       translate: 1px;
     }
-  }
-
-  .web-card {
-    height: 100%;
   }
 </style>

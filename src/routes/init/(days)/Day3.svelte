@@ -7,28 +7,33 @@
   import Announcement from "../(components)/shared/Announcement.svelte";
   import Media from "../(components)/shared/Media.svelte";
   import Article from "../(components)/shared/Article.svelte";
+  import functionComparison from "../(assets)/function-comparison.svg";
+  import dynamicKeys from "../(assets)/dynamic-keys.svg";
+  import DayCard from "../(components)/DayCard.svelte";
+  import { Animations } from "../(animations)";
+
+  export let release: Date;
 </script>
 
 <Grid.Root columns={12} rows={2}>
   <Grid.Cell columns={7} rows={2}>
     <Announcement
       title="Function ecosystem"
-      description="New features are being added to vastly improve your Appwrite Functions
-                        experience."
+      description="New features are being added to vastly improve your Appwrite Functions experience."
       {illustration}
     />
   </Grid.Cell>
   <Grid.Cell columns={5}>
     <Article
-      title="Serverless functions 101: best practices"
-      illustration={messaging}
+      title="Comparing serverless functions: Appwrite vs. Supabase vs. Firebase"
+      illustration={functionComparison}
       url="/blog/post/simplify-messaging-twilio"
     />
   </Grid.Cell>
   <Grid.Cell columns={5}>
     <Article
       title="How to leverage Appwrite Dynamic Keys for enhanced security"
-      illustration={messaging}
+      illustration={dynamicKeys}
       url="/blog/post/simplify-messaging-twilio"
     />
   </Grid.Cell>
@@ -52,19 +57,27 @@
     />
   </Grid.Cell>
   <Grid.Cell columns={6}>
-    <Video
-      src="https://www.youtube-nocookie.com/embed/7LN05c-ov_0?si=Gb0gS-k4M24F1AOg"
-      title="Product demo"
-      {thumbnail}
-    />
+    <Media title="Product demo" label="Watch">
+      <Video
+        src="https://www.youtube-nocookie.com/embed/7LN05c-ov_0?si=Gb0gS-k4M24F1AOg"
+        title="Product demo"
+        {thumbnail}
+        --p-aspect-ratio="2.35/1"
+      />
+    </Media>
   </Grid.Cell>
   <Grid.Cell columns={6}>
     <Media title="Discord Stage: Day 2" url="https://discord.com">
-      <img
-        src={thumbnail}
-        alt=""
-        style="aspect-ratio:16/6;border-radius: 0.75rem;width:100%;height:100%;"
-      />
+      <DayCard
+        day={{
+          title: "Day 2",
+          release,
+        }}
+        --p-aspect-ratio="2.35/1"
+        number={2}
+      >
+        <svelte:component this={Animations.Functions} />
+      </DayCard>
     </Media>
   </Grid.Cell>
 </Grid.Root>
