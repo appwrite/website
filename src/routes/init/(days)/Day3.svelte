@@ -11,6 +11,7 @@
   import dynamicKeys from "../(assets)/dynamic-keys.svg";
   import DayCard from "../(components)/DayCard.svelte";
   import { Animations } from "../(animations)";
+  import { format } from "date-fns";
 
   export let release: Date;
 </script>
@@ -72,9 +73,9 @@
         day={{
           title: "Day 2",
           release,
+          subtitle: format(release, "MMM dd"),
         }}
         --p-aspect-ratio="2.35/1"
-        number={2}
       >
         <svelte:component this={Animations.Functions} />
       </DayCard>

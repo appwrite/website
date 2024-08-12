@@ -23,26 +23,31 @@
   const days = [
     {
       title: "Local development",
+      subtitle: "Day 0",
       release: base,
       animation: Animations.LocalDev,
     },
     {
       title: "New Appwrite CLI",
+      subtitle: "Day 1",
       release: addDays(base, 1),
       animation: Animations.CLI,
     },
     {
       title: "Function ecosystem",
+      subtitle: "Day 2",
       release: addDays(base, 2),
       animation: Animations.Functions,
     },
     {
       title: "GO support",
+      subtitle: "Day 3",
       release: addDays(base, 3),
       animation: Animations.Go,
     },
     {
       title: "Mock numbers",
+      subtitle: "Day 4",
       release: addDays(base, 4),
       animation: Animations.Numbers,
     },
@@ -79,7 +84,7 @@
   <div class="web-container">
     <div class="day-cards">
       {#each days as day, i (day.release.toISOString())}
-        <DayCard {day} number={i} --p-aspect-ratio="5/2">
+        <DayCard {day} --p-aspect-ratio="5/2">
           <svelte:component this={day.animation} />
         </DayCard>
       {/each}
