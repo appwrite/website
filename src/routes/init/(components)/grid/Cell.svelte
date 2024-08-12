@@ -11,11 +11,14 @@
   @use "$scss/abstract" as *;
 
   .cell {
-    grid-column: span var(--columns);
-    grid-row: span var(--rows);
     display: flex;
     flex-direction: column;
     gap: pxToRem(32);
     height: 100%;
+
+    @media screen and (min-width: 768px) {
+      grid-column: span var(--columns);
+      grid-row: span var(--rows);
+    }
   }
 </style>
