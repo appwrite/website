@@ -21,18 +21,11 @@ Only keep user sessions active as long as needed and maintain exactly **one** in
 | {% only_dark %}{% icon_image src="/images/platforms/dark/apple.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}{% only_light %}{% icon_image src="/images/platforms/apple.svg" alt="Javascript logo" size="m" /%}{% /only_light %}  | Apple | Uses a session cookie stored in **UserDefaults**. |
 | {% only_dark %}{% icon_image src="/images/platforms/dark/android.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}{% only_light %}{% icon_image src="/images/platforms/android.svg" alt="Javascript logo" size="m" /%}{% /only_light %}  | Android | Uses a session cookie stored in **SharedPreferences**. |
 
-# Using mock phone number {% #using-mock-phone-number %}
+# Mock phone numbers {% #mock-phone-numbers %}
 
-Using mock phone numbers allows users to test SMS authentication without needing an actual phone number. This can be useful for testing edge cases where a user doesn't have a phone number but needs to sign in to your application using SMS. 
+Creating and using mock phone numbers allows users to test SMS authentication without needing an actual phone number. This can be useful for testing edge cases where a user doesn't have a phone number but needs to sign in to your application using SMS. 
 
-After defining a mock phone number, you need to define a specific OTP code to use for SMS sign-in instead of the SMS secret code sent to a real phone number. To use a mock a phone number, navigate to **Auth** > **Security** > Mock Phone Numbers.
-
-{% only_dark %}
-![Console UI to mock phone number](/images/docs/auth/phone/dark/mock-phone.png)
-{% /only_dark %}
-{% only_light %}
-![Console UI to mock phone number](/images/docs/auth/phone/mock-phone.png)
-{% /only_light %}
+To create a mock phone number, navigate to **Auth** > **Security** > Mock Phone Numbers. After defining a mock phone number, you need to define a specific OTP code that will be used for SMS sign-in instead of the SMS secret code sent to a real phone number.
 
 # Session limits {% #session-limits %}
 In Appwrite versions 1.2 and above, you can limit the number of active sessions created per user to prevent the accumulation of unused but active sessions. New sessions created by the same user past the session limit delete the oldest session.

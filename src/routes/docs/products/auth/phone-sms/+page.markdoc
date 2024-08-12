@@ -6,7 +6,7 @@ description: Enhance security with phone and SMS authentication in Appwrite. Dis
 
 Phone authentication lets users create accounts using their phone numbers and log in through SMS messages.
 
-Use [mock phone numbers](/docs/products/auth/security#mock-phone-number) to initiate a phone authentication process without an actual phone number.
+Create and use [mock phone numbers](/docs/products/auth/security#mock-phone-numbers) to initiate a phone authentication process without an actual phone number.
 
 # Send SMS message {% #init %}
 
