@@ -7,9 +7,11 @@
     import { Main } from '$lib/layouts';
     import { isMobileNavOpen } from '$lib/layouts/Main.svelte';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { slide } from 'svelte/transition';
     import FooterNav from '../lib/components/FooterNav.svelte';
     import MainFooter from '../lib/components/MainFooter.svelte';
     import DeveloperCard from './DeveloperCard.svelte';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -76,13 +78,15 @@
             <div class="web-big-padding-section-level-2">
                 <section class="web-container web-u-padding-block-end-0">
                     <a
-                        href="/blog/post/announcing-appwrite-new-ai-integrations"
+                        href="/blog/post/announcing-init-faster-smoother-better"
                         class="web-hero-banner-button web-u-margin-block-end-24"
                     >
                         <span class="web-icon-star" aria-hidden="true" />
                         <span class="web-caption-500">New</span>
                         <div class="web-hero-banner-button-sep" />
-                        <span class="web-caption-400 web-u-trim-1">Announcing new AI Appwrite Integrations</span>
+                        <span class="web-caption-400 web-u-trim-1"
+                            >Announcing: A new Init. Faster. Smoother. Better.</span
+                        >
                         <span class="web-icon-arrow-right" aria-hidden="true" />
                     </a>
                     <div class="web-hero is-horizontal">
@@ -95,13 +99,13 @@
                         </h1>
                         <div class="u-cross-child-end">
                             <p class="web-description">
-                                Build your entire backend within minutes and scale effortlessly 
-				using Appwrite's open-source platform. Add Authentication, 
-				Databases, Functions, Storage, and Messaging to your projects
-                                using the frameworks and languages of your choice.
+                                Build your entire backend within minutes and scale effortlessly
+                                using Appwrite's open-source platform. Add Authentication,
+                                Databases, Functions, Storage, and Messaging to your projects using
+                                the frameworks and languages of your choice.
                             </p>
                             <a
-                                href="https://cloud.appwrite.io"
+                                href={PUBLIC_APPWRITE_DASHBOARD}
                                 class="web-button is-full-width-mobile u-margin-block-start-32"
                             >
                                 <span class="text">Get started</span>
@@ -321,8 +325,8 @@
                                     height="40"
                                     alt=""
                                 />
-                                <h3 class="web-info-boxes-title">GDPR</h3>
-                                <p class="web-info-boxes-content">
+                                <h3 class="aw-info-boxes-title">GDPR</h3>
+                                <p class="aw-info-boxes-content">
                                     Safeguard user data and privacy with provided GDPR regulations.
                                 </p>
                             </li>
@@ -504,7 +508,12 @@
                     style:left="0"
                 >
                     <div style:display="grid" style:place-items="center" style:height="100%">
-                        <img src="/images/bgs/diagonal-lines.png" alt="" width="512" loading="lazy"  />
+                        <img
+                            src="/images/bgs/diagonal-lines.png"
+                            alt=""
+                            width="512"
+                            loading="lazy"
+                        />
                     </div>
                 </div>
                 <div class="web-container u-position-relative">
