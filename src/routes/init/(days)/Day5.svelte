@@ -1,71 +1,65 @@
 <script lang="ts">
-  import illustration from "../(assets)/local-illustration.svg";
-  import Video from "../(components)/shared/Video.svelte";
-  import thumbnail from "../(assets)/thumbnail-localdev.png";
-  import discord from "../(assets)/discord-1.png";
+  import illustration from "../(assets)/mock-numbers-announcement.svg";
+  import thumbnail from "../(assets)/mock-numbers-thumb.svg";
+  import contributors from "../(assets)/contributors.svg";
   import messaging from "../(assets)/messaging-1.png";
   import { Grid } from "../(components)/grid";
   import Announcement from "../(components)/shared/Announcement.svelte";
   import Media from "../(components)/shared/Media.svelte";
   import Article from "../(components)/shared/Article.svelte";
+  import DayCard from "../(components)/DayCard.svelte";
+  import { Animations } from "../(animations)";
+
+  export let release: Date;
 </script>
 
 <Grid.Root columns={12} rows={2}>
   <Grid.Cell columns={7} rows={2}>
     <Announcement
-      title="Function ecosystem"
-      description="New features are being added to vastly improve your Appwrite Functions
-                          experience."
+      title="Mock numbers"
+      description="Streamline phone authentication testing and app review processes."
       {illustration}
     />
   </Grid.Cell>
   <Grid.Cell columns={5}>
     <Article
-      title="Serverless functions 101: best practices"
-      illustration={messaging}
+      title="Mock numbers for phone sign-in"
+      illustration={thumbnail}
       url="/blog/post/simplify-messaging-twilio"
     />
   </Grid.Cell>
   <Grid.Cell columns={5}>
     <Article
-      title="How to leverage Appwrite Dynamic Keys for enhanced security"
-      illustration={messaging}
+      title="Celebrating 1.6 contributors"
+      illustration={contributors}
       url="/blog/post/simplify-messaging-twilio"
     />
   </Grid.Cell>
 
-  <Grid.Cell columns={4}>
+  <Grid.Cell columns={3}>
     <Article
       url="/blog/post/simplify-messaging-twilio"
-      title="Docs: Binary executions"
+      title="Designing Init"
     />
   </Grid.Cell>
-  <Grid.Cell columns={4}>
+  <Grid.Cell columns={3}>
     <Article
       url="/blog/post/simplify-messaging-twilio"
-      title="Docs: Dynamic keys"
-    />
-  </Grid.Cell>
-  <Grid.Cell columns={4}>
-    <Article
-      url="/blog/post/simplify-messaging-twilio"
-      title="Docs: Delayed executions"
+      title="Docs: Mock numbers"
     />
   </Grid.Cell>
   <Grid.Cell columns={6}>
-    <Video
-      src="https://www.youtube-nocookie.com/embed/7LN05c-ov_0?si=Gb0gS-k4M24F1AOg"
-      title="Product demo"
-      {thumbnail}
-    />
-  </Grid.Cell>
-  <Grid.Cell columns={6}>
-    <Media title="Discord Stage: Day 2" url="https://discord.com">
-      <img
-        src={discord}
-        alt=""
-        style="aspect-ratio:16/6;border-radius: 0.75rem;width:100%;height:100%;"
-      />
+    <Media title="Discord Stage: Day 4" url="https://discord.com">
+      <DayCard
+        day={{
+          title: "Closing party",
+          release,
+        }}
+        --p-aspect-ratio="2.35/1"
+        number={4}
+      >
+        <svelte:component this={Animations.Numbers} />
+      </DayCard>
     </Media>
   </Grid.Cell>
 </Grid.Root>
