@@ -18,7 +18,7 @@
   const description = "The start of something new.";
   const ogImage = buildOpenGraphImage("init", description);
 
-  let base = new Date("2024-08-01T15:00:00.000Z");
+  let base = new Date("2024-08-19T15:00:00.000Z");
 
   $: days = [
     {
