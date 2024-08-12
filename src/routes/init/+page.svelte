@@ -18,9 +18,9 @@
   const description = "The start of something new.";
   const ogImage = buildOpenGraphImage("init", description);
 
-  let base = new Date("2024-08-19T15:00:00.000Z");
+  const base = new Date("2024-08-19T15:00:00.000Z");
 
-  $: days = [
+  const days = [
     {
       title: "Local development",
       release: base,
@@ -47,10 +47,6 @@
       animation: Animations.Numbers,
     },
   ] as DayType[];
-
-  const ff = () => {
-    base = addDays(base, -1);
-  };
 </script>
 
 <svelte:head>
@@ -77,7 +73,6 @@
     <p class="web-description">The start of something new.</p>
     <div class="buttons">
       <a href="/init/tickets" class="web-button">Claim your ticket</a>
-      <button class="aw-button" on:click={ff}>fast forward</button>
     </div>
   </div>
 
