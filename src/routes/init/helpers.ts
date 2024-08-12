@@ -1,15 +1,10 @@
 import { onMount } from 'svelte';
 import { get, writable } from 'svelte/store';
 
+import { OAuthProvider } from '@appwrite.io/console';
 import { appwriteInit } from '$lib/appwrite/init';
-import { contributors } from '$lib/contributors';
 import { getAppwriteUser, type AppwriteUser } from '$lib/utils/console';
-import type {
-    ContributionsMatrix,
-    TicketData,
-    TicketDoc,
-    TicketVariant
-} from './tickets/constants';
+import type { ContributionsMatrix, TicketData, TicketDoc } from './tickets/constants';
 
 export function createCountdown(date: Date) {
     const today = new Date();
@@ -62,17 +57,21 @@ export function createCountdown(date: Date) {
 
 export async function isLoggedIn() {
     const user = await getUser();
-    return !!(user.appwrite || user.github);
+    return !!user.github;
 }
 
 export interface GithubUser {
     login: string;
     name: string;
+    email: string;
 }
 
 export async function getGithubUser() {
     try {
-        const { providerAccessToken, provider } = await appwriteInit.account.getSession('current');
+        const identitiesList = await appwriteInit.account.listIdentities();
+        if (!identitiesList.total) return null;
+        const identity = identitiesList.identities[0];
+        const { providerAccessToken, provider } = identity;
         if (provider !== 'github') return null;
 
         const res = await fetch('https://api.github.com/user', {
@@ -81,10 +80,13 @@ export async function getGithubUser() {
                 Authorization: `Bearer ${providerAccessToken}`
             }
         })
-            .then((res) => res.json() as Promise<GithubUser>)
+            .then((res) => {
+                return res.json() as Promise<GithubUser>;
+            })
             .then((n) => ({
                 login: n.login,
-                name: n.name
+                name: n.name,
+                email: n.email
             }));
 
         if (!res.login) {
@@ -121,6 +123,18 @@ export function getMockContributions() {
     return result;
 }
 
+export async function auth(userId: string, secret: string, f = fetch) {
+    const response = await f('/init/tickets/auth', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ userId, secret })
+    });
+
+    return await response.json();
+}
+
 export async function getTicketDocByUser(user: User, f = fetch) {
     return await f(`/init/tickets/get-ticket-doc?user=${JSON.stringify(user)}`).then(
         (res) => res.json() as Promise<TicketDoc>
@@ -147,46 +161,21 @@ export async function getTicketContributions(id: string, f = fetch): Promise<Con
     return contributions ?? [];
 }
 
-export function getTicketVariant(
-    doc: Omit<TicketData, 'contributions' | 'variant'>
-): TicketVariant {
-    const { gh_user, aw_email } = doc;
-
-    if (gh_user && contributors.includes(gh_user)) {
-        return 'rainbow';
-    }
-
-    if (aw_email) {
-        return 'pink';
-    }
-
-    return 'default';
-}
-
 export async function getTicketByUser(user: User, f = fetch) {
     const doc = await getTicketDocByUser(user, f);
 
-    const variant = getTicketVariant(doc);
-
-    return {
-        ...doc,
-        variant
-    } as TicketData;
+    return doc as TicketData;
 }
 
 export async function getTicketById(id: string, f = fetch) {
     const doc = await getTicketDocById(id, f);
-    const variant = getTicketVariant(doc);
 
-    return {
-        ...doc,
-        variant
-    } as TicketData;
+    return doc as TicketData;
 }
 
 export function loginGithub() {
-    appwriteInit.account.createOAuth2Session(
-        'github',
+    appwriteInit.account.createOAuth2Token(
+        OAuthProvider.Github,
         `${window.location.origin}/init/tickets?success=1`,
         `${window.location.origin}/init/tickets?error=1`,
         ['read:user']
