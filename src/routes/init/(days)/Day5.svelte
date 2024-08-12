@@ -9,6 +9,7 @@
   import Article from "../(components)/shared/Article.svelte";
   import DayCard from "../(components)/DayCard.svelte";
   import { Animations } from "../(animations)";
+  import { format } from "date-fns";
 
   export let release: Date;
 </script>
@@ -54,9 +55,9 @@
         day={{
           title: "Closing party",
           release,
+          subtitle: format(release, "MMM dd"),
         }}
         --p-aspect-ratio="2.35/1"
-        number={4}
       >
         <svelte:component this={Animations.Numbers} />
       </DayCard>

@@ -11,6 +11,7 @@
   import Article from "../(components)/shared/Article.svelte";
   import DayCard from "../(components)/DayCard.svelte";
   import { Animations } from "../(animations)";
+  import { format } from "date-fns";
 
   export let release: Date;
 </script>
@@ -66,10 +67,10 @@
       <DayCard
         day={{
           title: "Kick off",
+          subtitle: format(release, "MMM dd"),
           release,
         }}
         --p-aspect-ratio="2.35/1"
-        number={0}
       >
         <svelte:component this={Animations.LocalDev} />
       </DayCard>

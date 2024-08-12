@@ -11,6 +11,7 @@
   import Article from "../(components)/shared/Article.svelte";
   import DayCard from "../(components)/DayCard.svelte";
   import { Animations } from "../(animations)";
+  import { format } from "date-fns";
 
   export let release: Date;
 </script>
@@ -60,9 +61,9 @@
         day={{
           title: "Day 3",
           release,
+          subtitle: format(release, "MMM dd"),
         }}
         --p-aspect-ratio="2.35/1"
-        number={3}
       >
         <svelte:component this={Animations.Go} />
       </DayCard>

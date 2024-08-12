@@ -4,6 +4,7 @@
   export type DayType = {
     title: string;
     release: Date;
+    subtitle: string;
     "--p-aspect-ratio"?: string;
     animation?: typeof SvelteComponent;
   };
@@ -14,7 +15,6 @@
   import Counter from "./Counter.svelte";
   import { format } from "date-fns";
 
-  export let number: number;
   export let day: DayType;
 
   const { hasReleased, days, hours, minutes, seconds } = createCountdown(
@@ -31,7 +31,7 @@
         style:margin-bottom="-8px"
         style:display="block"
       >
-        Day {number}
+        {day.subtitle}
       </span>
       <h2 class="web-label web-u-color-text-primary">
         {day.title}
