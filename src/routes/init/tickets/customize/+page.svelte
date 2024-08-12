@@ -10,41 +10,50 @@
 
     export let data;
 
-    let name = data.ticket?.name ?? '';
-    let title = data.ticket?.title ?? '';
-    const id = data.ticket?.id ?? 0;
-    let showGitHub = data.ticket?.show_contributions ?? true;
+    let originalName = data.ticket?.name ?? '';
+    let name = originalName;
+    let originalTitle = data.ticket?.title ?? '';
+    let title = originalTitle;
+    let originalShowGitHub = data.ticket?.show_contributions ?? true;
+    let showGitHub = originalShowGitHub;
 
     let customizing = false;
+    let saving = false;
 
     $: modified = !dequal(
         {
-            name: data.ticket?.name,
-            title: data.ticket?.title,
-            showGitHub: data.ticket?.show_contributions
+            name: originalName,
+            title: originalTitle,
+            showGitHub: originalShowGitHub
         },
         { name, title, showGitHub }
     );
 
     async function saveTicket() {
-        const ticketId = data.ticket?.$id;
-        if (ticketId === undefined || !modified) {
-            return;
-        }
+        if (!modified) return;
 
-        await fetch(`/init/tickets/update`, {
+        saving = true;
+
+        let response = await fetch(`/init/tickets/update`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                ticketId,
                 name,
                 title,
                 showGitHub
             })
         });
+
+        if (response.ok) {
+            originalName = name;
+            originalTitle = title;
+            originalShowGitHub = showGitHub;
+        }
+
         customizing = false;
+        saving = false;
     }
 </script>
 
@@ -87,7 +96,7 @@
             </TicketPreview>
             <div class="item">
                 <TicketDetails bind:customizing bind:name bind:title />
-                <TicketActions {saveTicket} bind:customizing bind:showGitHub />
+                <TicketActions {saveTicket} bind:customizing bind:showGitHub {modified} {saving} />
             </div>
         </div>
     </div>

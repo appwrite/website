@@ -12,6 +12,8 @@
 
     export let showGitHub = true;
     export let customizing = false;
+    export let modified = false;
+    export let saving = false;
     export let saveTicket: () => void;
     let { ticket } = $page.data as PageData;
 
@@ -74,7 +76,7 @@
             <button class="web-button is-secondary" on:click={() => (customizing = false)}>
                 <span class="text">Cancel</span>
             </button>
-            <button class="web-button save-button" on:click={saveTicket}>
+            <button class="web-button save-button" on:click={saveTicket} disabled={!modified || saving}>
                 <span class="text">Save Changes</span>
             </button>
         </div>
