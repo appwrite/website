@@ -23,17 +23,15 @@
     "packageManager": "pnpm@9.4.0+sha512.f549b8a52c9d2b8536762f99c0722205efc5af913e77835dbccc3b0b0b2ca9e7dc8022b78062c17291c48e88749c70ce88eb5a74f1fa8c4bf5e18bb46c8bd83a",
     "dependencies": {
         "@sentry/sveltekit": "^8.12.0",
-        "embla-carousel-svelte": "^8.1.5",
-        "embla-carousel-wheel-gestures": "^8.0.1",
         "h3": "^1.12.0",
-        "remeda": "^2.3.0"
+        "sharp": "^0.33.4"
     },
     "devDependencies": {
         "@appwrite.io/console": "^0.6.2",
         "@appwrite.io/pink": "~0.16.0",
         "@appwrite.io/pink-icons": "~0.16.0",
         "@appwrite.io/repo": "github:appwrite/appwrite#main",
-        "@internationalized/date": "3.5.0",
+        "@internationalized/date": "^3.5.0",
         "@melt-ui/pp": "^0.3.2",
         "@melt-ui/svelte": "^0.74.4",
         "@playwright/test": "^1.44.1",
@@ -49,6 +47,8 @@
         "@typescript-eslint/parser": "^7.13.1",
         "dequal": "^2.0.3",
         "embla-carousel": "^8.1.5",
+        "embla-carousel-svelte": "^8.1.5",
+        "embla-carousel-wheel-gestures": "^8.0.1",
         "eslint": "^8.57.0",
         "eslint-config-prettier": "^8.10.0",
         "eslint-plugin-svelte": "^2.40.0",
@@ -62,8 +62,8 @@
         "oslllo-svg-fixer": "^3.0.0",
         "prettier": "^3.3.2",
         "prettier-plugin-svelte": "^3.2.5",
+        "remeda": "^2.10.0",
         "sass": "^1.77.6",
-        "sharp": "^0.33.4",
         "svelte": "^4.2.18",
         "svelte-check": "^3.8.1",
         "svelte-markdoc-preprocess": "^2.0.0",
