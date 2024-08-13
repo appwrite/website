@@ -11,6 +11,7 @@
     import DayCard from '../(components)/DayCard.svelte';
     import { Animations } from '../(animations)';
     import { format } from 'date-fns';
+    import BigVideo from '../(components)/shared/BigVideo.svelte';
 
     export let release: Date;
 </script>
@@ -34,13 +35,11 @@
         />
     </Grid.Cell>
     <Grid.Cell columns={5} rows={1}>
-        <Media title="Product demo" fullWidth>
-            <Video
-                {thumbnail}
-                --p-aspect-ratio="2.35/1"
-                src="https://www.youtube-nocookie.com/embed/w-izHSKXqtU?si=OV30JUel_Zoq10AU&controls=0"
-            />
-        </Media>
+        <BigVideo
+            {thumbnail}
+            title="Product demo"
+            src="https://www.youtube-nocookie.com/embed/w-izHSKXqtU?si=OV30JUel_Zoq10AU&controls=0"
+        />
     </Grid.Cell>
     <Grid.Cell columns={6}>
         <Article
