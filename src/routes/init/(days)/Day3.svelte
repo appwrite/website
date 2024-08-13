@@ -7,7 +7,9 @@
     import Media from '../(components)/shared/Media.svelte';
     import Article from '../(components)/shared/Article.svelte';
     import functionComparison from '../(assets)/day-3/function-comparison.svg';
+    import functionComparisonMobile from '../(assets)/day-3/function-comparison-mobile.svg';
     import dynamicKeys from '../(assets)/day-3/dynamic-keys.svg';
+    import dynamicKeysMobile from '../(assets)/day-3/dynamic-keys-mobile.svg';
     import DayCard from '../(components)/DayCard.svelte';
     import { Animations } from '../(animations)';
     import { format } from 'date-fns';
@@ -28,6 +30,7 @@
         <Article
             title="Comparing serverless functions: Appwrite vs. Supabase vs. Firebase"
             illustration={functionComparison}
+            mobileIllustration={functionComparisonMobile}
             url="/blog/post/simplify-messaging-twilio"
         />
     </Grid.Cell>
@@ -35,6 +38,7 @@
         <Article
             title="How to leverage Appwrite Dynamic Keys for enhanced security"
             illustration={dynamicKeys}
+            mobileIllustration={dynamicKeysMobile}
             url="/blog/post/simplify-messaging-twilio"
         />
     </Grid.Cell>

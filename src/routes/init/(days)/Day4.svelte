@@ -1,7 +1,10 @@
 <script lang="ts">
     import illustration from '../(assets)/day-4/go-announcement.svg';
-    import buildWith from '../(assets)/day-4/build-with-go.svg';
+    import buildWithGo from '../(assets)/day-4/build-with-go.svg';
+    import buildWithGoMobile from '../(assets)/day-4/build-with-go-mobile.svg';
     import useGo from '../(assets)/day-4/use-go.svg';
+    import useGoMobile from '../(assets)/day-4/use-go-mobile.svg';
+
     import Video from '../(components)/shared/Video.svelte';
     import thumbnail from '../(assets)/mock-thumb.png';
     import { Grid } from '../(components)/grid';
@@ -27,7 +30,8 @@
     <Grid.Cell columns={10}>
         <Article
             title="What you can build with the GO runtime"
-            illustration={buildWith}
+            illustration={buildWithGo}
+            mobileIllustration={buildWithGoMobile}
             url="/blog/post/simplify-messaging-twilio"
         />
     </Grid.Cell>
@@ -35,6 +39,7 @@
         <Article
             title="Why should you use Golang in your app?"
             illustration={useGo}
+            mobileIllustration={useGoMobile}
             url="/blog/post/simplify-messaging-twilio"
         />
     </Grid.Cell>

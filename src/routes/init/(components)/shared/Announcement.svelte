@@ -18,7 +18,11 @@
         <p style:margin-block-start="0.625rem">
             {description}
         </p>
-        <div class="web-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
+        <div
+            class="web-card-link u-flex u-cross-center"
+            style:margin-block-start="1.25rem"
+            style:color="#fff"
+        >
             <span class="text">Announcement</span>
             <span class="web-icon-arrow-right" />
         </div>
