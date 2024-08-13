@@ -15,6 +15,8 @@
 </script>
 
 <script lang="ts">
+    import { format } from 'date-fns';
+
     type $$Props = EventCardProps;
 
     export let href: $$Props['href'];
@@ -26,11 +28,7 @@
     export let buttonText: $$Props['buttonText'];
     export let headingLevel: $$Props['headingLevel'] = 5;
     const hasPast: boolean = new Date() > new Date(date);
-    const dateString: string = new Date(date).toLocaleDateString('en-US', {
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric'
-    });
+    const dateString: string = format(new Date(date), 'MMMM d, yyyy');
     $: headingTag = `h${headingLevel}`;
 </script>
 
