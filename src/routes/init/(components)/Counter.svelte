@@ -28,7 +28,6 @@
                 <span>{char}</span>
             {:else}
                 <ul style:transform={getTransform(Number(char))} use:transform={Number(char)}>
-                    <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
                     {#each { length: 10 } as _, i}
                         <li>{i}</li>
                     {/each}
