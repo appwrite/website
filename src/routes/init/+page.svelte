@@ -13,6 +13,7 @@
   import Day4 from "./(days)/Day4.svelte";
   import Day5 from "./(days)/Day5.svelte";
   import Day from "./(days)/Day.svelte";
+  import EventCarousel from "./(components)/EventCarousel.svelte";
 
   const title = "Init - Appwrite";
   const description = "The start of something new.";
@@ -115,6 +116,10 @@
         </Day>
       {/each}
     </div>
+  </div>
+
+  <div class="web-container">
+    <EventCarousel />
   </div>
 
   <div class="web-container">
