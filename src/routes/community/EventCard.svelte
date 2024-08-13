@@ -6,7 +6,7 @@
             alt: string;
         };
         date: string;
-        location: string;
+        location?: string;
         title: string;
         description: string;
         buttonText: string;
@@ -20,16 +20,16 @@
     export let href: $$Props['href'];
     export let cover: $$Props['cover'];
     export let date: $$Props['date'];
-    export let location: $$Props['location'];
+    export let location: $$Props['location'] = '';
     export let title: $$Props['title'];
     export let description: $$Props['description'];
     export let buttonText: $$Props['buttonText'];
     export let headingLevel: $$Props['headingLevel'] = 5;
-    const hasPast: boolean = (new Date()) > (new Date(date));
+    const hasPast: boolean = new Date() > new Date(date);
     const dateString: string = new Date(date).toLocaleDateString('en-US', {
         month: 'long',
         day: 'numeric',
-        year: 'numeric',
+        year: 'numeric'
     });
     $: headingTag = `h${headingLevel}`;
 </script>
@@ -44,10 +44,12 @@
                 <span class="web-icon-calendar web-u-color-text-tertiary" aria-hidden="true" />
                 <time class="">{dateString}</time>
             </li>
-            <li class="u-flex u-cross-baseline u-gap-4">
-                <span class="web-icon-location web-u-color-text-tertiary" aria-hidden="true" />
-                <span class="">{location}</span>
-            </li>
+            {#if location}
+                <li class="u-flex u-cross-baseline u-gap-4">
+                    <span class="web-icon-location web-u-color-text-tertiary" aria-hidden="true" />
+                    <span class="">{location}</span>
+                </li>
+            {/if}
         </ul>
         <svelte:element
             this={headingTag}

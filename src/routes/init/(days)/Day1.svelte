@@ -48,7 +48,6 @@
                 src="https://www.youtube-nocookie.com/embed/7LN05c-ov_0?si=Gb0gS-k4M24F1AOg"
                 title="Product demo"
                 {thumbnail}
-                --p-aspect-ratio="16/6"
             />
         </Media>
     </Grid.Cell>
