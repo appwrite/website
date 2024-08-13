@@ -1,222 +1,217 @@
 <script lang="ts">
-  import { FooterNav, MainFooter } from "$lib/components";
-  import { Main } from "$lib/layouts";
-  import { addDays, toReleaseDate } from "$lib/utils/date";
-  import { buildOpenGraphImage } from "$lib/utils/metadata";
-  import DayCard, { type DayType } from "./(components)/DayCard.svelte";
-  import Lockup from "./(components)/Hero.svelte";
-  import CountdownCard from "./(components)/CountdownCard.svelte";
-  import { Animations } from "./(animations)";
-  import Day1 from "./(days)/Day1.svelte";
-  import Day2 from "./(days)/Day2.svelte";
-  import Day3 from "./(days)/Day3.svelte";
-  import Day4 from "./(days)/Day4.svelte";
-  import Day5 from "./(days)/Day5.svelte";
-  import Day from "./(days)/Day.svelte";
-  import EventCarousel from "./(components)/EventCarousel.svelte";
+    import { FooterNav, MainFooter } from '$lib/components';
+    import { Main } from '$lib/layouts';
+    import { addDays, toReleaseDate } from '$lib/utils/date';
+    import { buildOpenGraphImage } from '$lib/utils/metadata';
+    import DayCard, { type DayType } from './(components)/DayCard.svelte';
+    import Lockup from './(components)/Hero.svelte';
+    import CountdownCard from './(components)/CountdownCard.svelte';
+    import { Animations } from './(animations)';
+    import Day1 from './(days)/Day1.svelte';
+    import Day2 from './(days)/Day2.svelte';
+    import Day3 from './(days)/Day3.svelte';
+    import Day4 from './(days)/Day4.svelte';
+    import Day5 from './(days)/Day5.svelte';
+    import Day from './(days)/Day.svelte';
+    import EventCarousel from './(components)/EventCarousel.svelte';
 
-  const title = "Init - Appwrite";
-  const description = "The start of something new.";
-  const ogImage = buildOpenGraphImage("init", description);
+    const title = 'Init - Appwrite';
+    const description = 'The start of something new.';
+    const ogImage = buildOpenGraphImage('init', description);
 
-  const base = new Date("2024-08-01T15:00:00.000Z");
+    const base = new Date('2024-08-01T15:00:00.000Z');
 
-  const days = [
-    {
-      title: "Local development",
-      subtitle: "Day 0",
-      release: base,
-      animation: Animations.LocalDev,
-    },
-    {
-      title: "New Appwrite CLI",
-      subtitle: "Day 1",
-      release: addDays(base, 1),
-      animation: Animations.CLI,
-    },
-    {
-      title: "Function ecosystem",
-      subtitle: "Day 2",
-      release: addDays(base, 2),
-      animation: Animations.Functions,
-    },
-    {
-      title: "GO support",
-      subtitle: "Day 3",
-      release: addDays(base, 3),
-      animation: Animations.Go,
-    },
-    {
-      title: "Mock numbers",
-      subtitle: "Day 4",
-      release: addDays(base, 4),
-      animation: Animations.Numbers,
-    },
-  ] as DayType[];
+    const days = [
+        {
+            title: 'Local development',
+            subtitle: 'Day 0',
+            release: base,
+            animation: Animations.LocalDev
+        },
+        {
+            title: 'New Appwrite CLI',
+            subtitle: 'Day 1',
+            release: addDays(base, 1),
+            animation: Animations.CLI
+        },
+        {
+            title: 'Function ecosystem',
+            subtitle: 'Day 2',
+            release: addDays(base, 2),
+            animation: Animations.Functions
+        },
+        {
+            title: 'GO support',
+            subtitle: 'Day 3',
+            release: addDays(base, 3),
+            animation: Animations.Go
+        },
+        {
+            title: 'Mock numbers',
+            subtitle: 'Day 4',
+            release: addDays(base, 4),
+            animation: Animations.Numbers
+        }
+    ] as DayType[];
 </script>
 
 <svelte:head>
-  <!-- Titles -->
-  <title>{title}</title>
-  <meta property="og:title" content={title} />
-  <meta name="twitter:title" content={title} />
-  <!-- Description -->
-  <meta name="description" content={description} />
-  <meta property="og:description" content={description} />
-  <meta name="twitter:description" content={description} />
-  <!-- Image -->
-  <meta property="og:image" content={ogImage} />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:image" content={ogImage} />
-  <meta name="twitter:card" content="summary_large_image" />
+    <!-- Titles -->
+    <title>{title}</title>
+    <meta property="og:title" content={title} />
+    <meta name="twitter:title" content={title} />
+    <!-- Description -->
+    <meta name="description" content={description} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:description" content={description} />
+    <!-- Image -->
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <Main>
-  <div class="hero">
-    <Lockup />
+    <div class="hero">
+        <Lockup />
 
-    <p class="web-description">The start of something new.</p>
-    <div class="buttons">
-      <a href="/init/tickets" class="web-button">Claim your ticket</a>
+        <p class="web-description">The start of something new.</p>
+        <div class="buttons">
+            <a href="/init/tickets" class="web-button">Claim your ticket</a>
+        </div>
     </div>
-  </div>
 
-  <div class="web-container">
-    <div class="day-cards">
-      {#each days as day, i (day.release.toISOString())}
-        <DayCard {day} --p-aspect-ratio="5/2">
-          <svelte:component this={day.animation} />
-        </DayCard>
-      {/each}
+    <div class="web-container">
+        <div class="day-cards">
+            {#each days as day, i (day.release.toISOString())}
+                <DayCard {day} --p-aspect-ratio="5/2">
+                    <svelte:component this={day.animation} />
+                </DayCard>
+            {/each}
+        </div>
+        <hr />
+        <div class="days">
+            {#each days as day, i}
+                {@const date = `DAY ${i} - ${toReleaseDate(day.release)}`}
+                <Day day={date} release={day.release}>
+                    {#if i === 0}
+                        <Day1 release={day.release} />
+                    {:else if i === 1}
+                        <Day2 release={day.release} />
+                    {:else if i === 2}
+                        <Day3 release={day.release} />
+                    {:else if i === 3}
+                        <Day4 release={day.release} />
+                    {:else if i === 4}
+                        <Day5 release={day.release} />
+                    {:else}
+                        <h2 class="web-eyebrow web-u-color-text-primary">
+                            <div class="web-dot" />
+                            {date}
+                            <span class="web-u-color-text-accent">_</span>
+                        </h2>
+                        <CountdownCard date={day.release} />
+                    {/if}
+                </Day>
+            {/each}
+        </div>
+        <EventCarousel />
+
+        <FooterNav />
+        <MainFooter />
     </div>
-    <hr />
-    <div class="days">
-      {#each days as day, i}
-        {@const date = `DAY ${i} - ${toReleaseDate(day.release)}`}
-        <Day day={date} release={day.release}>
-          {#if i === 0}
-            <Day1 release={day.release} />
-          {:else if i === 1}
-            <Day2 release={day.release} />
-          {:else if i === 2}
-            <Day3 release={day.release} />
-          {:else if i === 3}
-            <Day4 release={day.release} />
-          {:else if i === 4}
-            <Day5 release={day.release} />
-          {:else}
-            <h2 class="web-eyebrow web-u-color-text-primary">
-              <div class="web-dot" />
-              {date}
-              <span class="web-u-color-text-accent">_</span>
-            </h2>
-            <CountdownCard date={day.release} />
-          {/if}
-        </Day>
-      {/each}
-    </div>
-  </div>
-
-  <div class="web-container">
-    <EventCarousel />
-  </div>
-
-  <div class="web-container">
-    <FooterNav />
-    <MainFooter />
-  </div>
 </Main>
 
 <style lang="scss">
-  hr {
-    border-block-start: 1px solid hsl(var(--web-color-offset));
-  }
-
-  .hero {
-    height: 75vh;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-
-    position: relative;
-    overflow-x: clip;
-
-    p {
-      max-width: 23.125rem;
-      text-align: center;
+    hr {
+        border-block-start: 1px solid hsl(var(--web-color-offset));
     }
 
-    .buttons {
-      display: flex;
-      gap: 0.5rem;
+    .hero {
+        height: 75vh;
 
-      padding-block-start: 1rem;
-
-      @media screen and (max-width: 1023px) {
+        display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+        gap: 1rem;
 
-        .web-button {
-          width: 300px;
+        position: relative;
+        overflow-x: clip;
+
+        p {
+            max-width: 23.125rem;
+            text-align: center;
         }
-      }
+
+        .buttons {
+            display: flex;
+            gap: 0.5rem;
+
+            padding-block-start: 1rem;
+
+            @media screen and (max-width: 1023px) {
+                flex-direction: column;
+                align-items: center;
+
+                .web-button {
+                    width: 300px;
+                }
+            }
+        }
     }
-  }
 
-  .day-cards {
-    --day-min-w: 370px;
-    padding-block: 3.75rem;
+    .day-cards {
+        --day-min-w: 370px;
+        padding-block: 3.75rem;
 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
 
-    @media screen and (max-width: 1023px) {
-      --day-min-w: 100%;
+        @media screen and (max-width: 1023px) {
+            --day-min-w: 100%;
+        }
     }
-  }
 
-  .days {
-    position: relative;
-    margin-block-start: 5rem;
-
-    :global(h2) {
-      position: relative;
-      margin-block-end: 1rem;
-
-      &:not(:first-child) {
+    .days {
+        position: relative;
         margin-block-start: 5rem;
-      }
 
-      :global(.web-dot) {
-        position: absolute;
-        left: -40px;
-        top: 50%;
-        transform: translate(-50%, -50%);
-      }
+        :global(h2) {
+            position: relative;
+            margin-block-end: 1rem;
+
+            &:not(:first-child) {
+                margin-block-start: 5rem;
+            }
+
+            :global(.web-dot) {
+                position: absolute;
+                left: -40px;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        &::before {
+            /* Gradient line */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -40px;
+            width: 1px;
+            height: 100%;
+
+            background: linear-gradient(
+                to bottom,
+                hsl(var(--web-color-accent)) 0%,
+                hsl(var(--web-color-subtle)) 10%,
+                hsl(var(--web-color-subtle)) 90%,
+                transparent 100%
+            );
+        }
     }
-
-    &::before {
-      /* Gradient line */
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -40px;
-      width: 1px;
-      height: 100%;
-
-      background: linear-gradient(
-        to bottom,
-        hsl(var(--web-color-accent)) 0%,
-        hsl(var(--web-color-subtle)) 10%,
-        hsl(var(--web-color-subtle)) 90%,
-        transparent 100%
-      );
-    }
-  }
 </style>
