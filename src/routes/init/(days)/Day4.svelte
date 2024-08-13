@@ -21,6 +21,7 @@
             title="GO support"
             description="Appwrite now supports GO functions runtime."
             {illustration}
+            url="/"
         />
     </Grid.Cell>
     <Grid.Cell columns={10}>

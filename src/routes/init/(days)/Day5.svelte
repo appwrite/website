@@ -19,6 +19,7 @@
             title="Mock numbers"
             description="Streamline phone authentication testing and app review processes."
             {illustration}
+            url="/"
         />
     </Grid.Cell>
     <Grid.Cell columns={5}>
