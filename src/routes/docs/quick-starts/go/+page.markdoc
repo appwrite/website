@@ -71,7 +71,7 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Create a new file called `app.go`, initialize a function, and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key. Import the Appwrite dependencies for client, databases, and models.
+Create a new file called `app.go`, initialize a function, and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key. Import the Appwrite dependencies for appwrite, client, databases, and models.
 
 ```go
 package main
@@ -107,12 +107,16 @@ Once the Appwrite Client is initialized, create a function to configure a todo c
 func prepareDatabase() {
 	appwriteDatabases = appwrite.NewDatabases(appwriteClient)
 
-	todoDatabase, _ = appwriteDatabases.Create(id.Unique(), "TodosDB")
+	todoDatabase, _ = appwriteDatabases.Create(
+		id.Unique(),
+		"TodosDB",
+	)
 
 	todoCollection, _ = appwriteDatabases.CreateCollection(
 		todoDatabase.Id,
 		id.Unique(),
-		"Todos")
+		"Todos",
+	)
 
 	appwriteDatabases.CreateStringAttribute(
 		todoDatabase.Id,
@@ -217,7 +221,7 @@ func getTodos() {
 }
 ```
 
-Make sure to update `main()` with the todo Collection function you created. Your `main()` function should look something like this:
+Make sure to update `main()` with the functions you created. Your `main()` function should look something like this:
 
 ```go
 package main
