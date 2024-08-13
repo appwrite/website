@@ -3,13 +3,11 @@
         url?: string;
         title: string;
         label?: string;
-        fullWidth?: boolean;
     };
 
     export let url: $$Props['url'] = '';
     export let title: $$Props['title'];
     export let label: $$Props['label'] = 'View';
-    export let fullWidth: $$Props['fullWidth'] = false;
 </script>
 
 {#if url}
@@ -32,11 +30,7 @@
         </div>
     </a>
 {:else}
-    <div
-        class="web-card is-normal has-border-gradient u-overflow-hidden"
-        style="padding: 0.5rem;"
-        class:fullwidth={fullWidth}
-    >
+    <div class="web-card is-normal has-border-gradient u-overflow-hidden" style="padding: 0.5rem;">
         <div class="details" style="padding: 0.75rem;">
             <h3 class="web-label web-u-color-text-primary">
                 {title}
@@ -59,21 +53,6 @@
         justify-content: space-between;
         height: 100%;
         gap: 16px;
-
-        &.fullwidth {
-            flex-direction: column;
-
-            .slot-wrapper {
-                flex-basis: 100%;
-            }
-            .details {
-                position: absolute;
-                bottom: 16px;
-                left: 16px;
-                flex-basis: 100%;
-                z-index: 10;
-            }
-        }
 
         @media screen and (max-width: 768px) {
             flex-direction: column;
