@@ -76,6 +76,7 @@
     }
 
     .day {
+        height: 100%;
         h2 {
             margin-block-start: 0.5rem;
             position: relative;

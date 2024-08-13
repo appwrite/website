@@ -19,7 +19,7 @@
         style="padding: 0.5rem;"
     >
         <div class="details" style="padding: 0.75rem;">
-            <h3 class="web-label web-u-color-text-primary" style="width: 18.75rem">
+            <h3 class="web-label web-u-color-text-primary">
                 {title}
             </h3>
             <div class="web-card-link u-flex u-cross-center">
@@ -32,12 +32,9 @@
         </div>
     </a>
 {:else}
-    <div
-        class="web-card is-normal has-border-gradient u-overflow-hidden"
-        style="padding: 0.5rem;height:100%;"
-    >
+    <div class="web-card is-normal has-border-gradient u-overflow-hidden" style="padding: 0.5rem;">
         <div class="details" style="padding: 0.75rem;">
-            <h3 class="web-label web-u-color-text-primary" style="width: 18.75rem">
+            <h3 class="web-label web-u-color-text-primary">
                 {title}
             </h3>
             <div class="web-card-link u-flex u-cross-center">
@@ -53,26 +50,23 @@
 
 <style lang="scss">
     .web-card {
-        height: 100%;
         background-color: hsl(var(--web-color-subtle));
-        gap: 48px;
-        justify-content: center;
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
 
-        @media screen and (min-width: 768px) {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            grid-template-rows: 1fr;
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
         }
 
         .details {
-            grid-column: span 5;
+            flex-basis: 40%;
         }
 
         .slot-wrapper {
-            grid-column: span 7;
+            flex-basis: 60%;
             border-radius: 12px;
             overflow: hidden;
-            height: 100%;
 
             :global(img) {
                 width: 100%;
