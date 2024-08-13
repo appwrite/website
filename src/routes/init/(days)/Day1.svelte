@@ -1,6 +1,7 @@
 <script lang="ts">
     import announcement from '../(assets)/day-1/announcement.svg';
     import functions from '../(assets)/day-1/serverless-functions.svg';
+    import mobileFunctions from '../(assets)/day-1/serverless-functions-mobile.svg';
     import serverless from '../(assets)/day-1/serverless-cli.svg';
     import swag from '../(assets)/day-1/swag-thumb.png';
     import thumbnail from '../(assets)/mock-thumb.png';
@@ -23,6 +24,7 @@
             title="Local development"
             description="Run and test Appwrite Functions locally and deploy only when you’re ready."
             illustration={announcement}
+            url="/"
         />
     </Grid.Cell>
     <Grid.Cell columns={5}>

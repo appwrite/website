@@ -1,5 +1,5 @@
 <script lang="ts">
-    import illustration from '../(assets)/day-3/functions-illustration.svg';
+    import illustration from '../(assets)/day-3/functions-announcement.svg';
     import Video from '../(components)/shared/Video.svelte';
     import thumbnail from '../(assets)/mock-thumb.png';
     import { Grid } from '../(components)/grid';
@@ -21,6 +21,7 @@
             title="Function ecosystem"
             description="New features are being added to vastly improve your Appwrite Functions experience."
             {illustration}
+            url="/"
         />
     </Grid.Cell>
     <Grid.Cell columns={5}>

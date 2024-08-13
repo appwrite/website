@@ -18,9 +18,9 @@
     <Grid.Cell columns={7} rows={2}>
         <Announcement
             title="New Appwrite CLI"
-            description="The new Appwrite CLI allows you to test your functions locally, easily
-                        migrate databases and more."
+            description="The new Appwrite CLI allows you to test your functions locally, easily migrate databases and more."
             {illustration}
+            url="/"
         />
     </Grid.Cell>
     <Grid.Cell columns={5} rows={1}>
