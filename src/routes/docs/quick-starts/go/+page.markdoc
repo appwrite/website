@@ -101,7 +101,7 @@ func main() {
 {% /section %}
 {% section #step-5 step=5 title="Initialize database" %}
 
-Once the Appwrite Client is initialized, create a function to configure a todo collection. Import the Appwrite dependencies for id.
+Once the Appwrite Client is initialized, create a function to configure a todo collection. Import the id Appwrite dependency by adding `"github.com/appwrite/sdk-for-go/id"` to the imported dependencies list.
 
 ```go
 func prepareDatabase() {
@@ -197,16 +197,21 @@ type Todo struct {
 	IsComplete  bool   `json:"isComplete"`
 }
 
+type TodoList struct {
+	*models.DocumentList
+	Documents []Todo `json:"documents"`
+}
+
 func getTodos() {
-	todos, _ := appwriteDatabases.ListDocuments(
+	todoResponse, _ := appwriteDatabases.ListDocuments(
 		todoDatabase.Id,
 		todoCollection.Id,
-		appwriteDatabases.WithListDocumentsQueries([]string{}),
 	)
 
-	for _, doc := range todos.Documents {
-		var todo Todo
-		fmt.Println(doc)
+	var todos TodoList
+	todoResponse.Decode(&todos)
+
+	for _, todo := range todos.Documents {
 		fmt.Printf("Title: %s\nDescription: %s\nIs Todo Complete: %t\n\n", todo.Title, todo.Description, todo.IsComplete)
 	}
 }
@@ -227,6 +232,13 @@ import (
 	"github.com/appwrite/sdk-for-go/models"
 )
 
+var (
+	appwriteClient    client.Client
+	todoDatabase      *models.Database
+	todoCollection    *models.Collection
+	appwriteDatabases *databases.Databases
+)
+
 func main() {
 	appwriteClient = appwrite.NewClient(
 		appwrite.WithProject("<PROJECT_KEY>"),
@@ -237,7 +249,6 @@ func main() {
 	seedDatabase()
 	getTodos()
 }
-
 ```
 
 {% /section %}
