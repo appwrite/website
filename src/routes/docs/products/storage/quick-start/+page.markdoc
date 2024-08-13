@@ -23,18 +23,18 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   import { Client, Storage, ID } from 'appwrite';
 
   const client = new Client()
-      .setProject('<PROJECT_ID>');
+      .setProject('<PROJECT_ID>'); // Your project ID
 
   const storage = new Storage(client);
 
   const promise = storage.createFile(
-    "<BUCKET_ID>",
+    '<BUCKET_ID>',
     ID.unique(),
     {
-        name: "file.txt",
-        type: "text/plain",
+        name: 'file.txt',
+        type: 'text/plain',
         size: 37967,
-        uri: "file://text.png",
+        uri: 'file://text.png',
     },
   );
 
@@ -49,9 +49,9 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   ```client-flutter
   import 'package:appwrite/appwrite.dart';
 
-  void main() { // Init SDK
+  void main() {
     final client = Client()
-      .setProject('<PROJECT_ID>');
+      .setProject('<PROJECT_ID>'); // Your project ID
 
     final storage = Storage(client);
 
@@ -68,7 +68,7 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
 
   func main() async throws {
       let client = Client()
-        .setProject("<PROJECT_ID>")
+        .setProject("<PROJECT_ID>") // Your project ID
 
       let storage = Storage(client)
 
@@ -91,7 +91,7 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
 
   suspend fun main() {
       val client = Client(applicationContext)
-          .setProject("<PROJECT_ID>")                  // Your project ID
+          .setProject("<PROJECT_ID>") // Your project ID
 
       val storage = Storage(client)
 
@@ -110,12 +110,15 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   Cookie: <COOKIE>
   Content-Type: multipart/form-data; boundary=---1234
   Content-Length: <LENGTH>
+
   -----1234
-  Content-Disposition: form-data; name='fileId'   
+  Content-Disposition: form-data; name='fileId'
+
   <FILE_ID>
   -----1234
   Content-Disposition: form-data; name='file'; filename='image.jpg'
   Content-Type: image/jpg
+  
   <FILE_CONTENT>
   -----1234
   ```
@@ -124,7 +127,7 @@ To upload a file, add this to you web, Flutter, Apple, or Android app.
   import { Client, Storage, ID } from 'react-native-appwrite';
 
   const client = new Client()
-    .setProject('<PROJECT_ID>');                 // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
   const storage = new Storage(client);
 
@@ -153,14 +156,14 @@ To download a file, use the `getFileDownload` method.
 
 {% multicode %}
 ```client-web
-import { Client, Storage } from 'appwrite';
+import { Client, Storage } from "appwrite";
 
 const client = new Client();
 
 const storage = new Storage(client);
 
 client
-    .setProject('<PROJECT_ID>')                  // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
 const result = storage.getFileDownload('<BUCKET_ID>', '<FILE_ID>');
@@ -247,6 +250,12 @@ class MainActivity : AppCompatActivity() {
         println(result); // Resource URL
     }
 }
+```
+
+```http
+GET https://cloud.appwrite.io/v1/storage/buckets/<BUCKET_ID>/files/<FILE_ID>/download HTTP/1.1
+X-Appwrite-Project: "<PROJECT_ID>"
+X-Appwrite-Response-Format: 1.5.0
 ```
 
 ```client-react-native
