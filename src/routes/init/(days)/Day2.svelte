@@ -1,7 +1,8 @@
 <script lang="ts">
     import illustration from '../(assets)/day-2/cli-illustration.svg';
     import thumbnail from '../(assets)/day-2/discord-day-2.png';
-    import ci from '../(assets)/day-2/ci-cd-thumb.svg';
+    import ci from '../(assets)/day-2/ci-cd.svg';
+    import ciMobile from '../(assets)/day-2/ci-cd-mobile.svg';
     import { Grid } from '../(components)/grid';
     import Announcement from '../(components)/shared/Announcement.svelte';
     import Media from '../(components)/shared/Media.svelte';
@@ -27,16 +28,19 @@
         <Article
             title="CI/CD examples in Appwrite CLI"
             illustration={ci}
+            mobileIllustration={ciMobile}
             url="/blog/post/simplify-messaging-twilio"
             label="Read article"
         />
     </Grid.Cell>
     <Grid.Cell columns={5} rows={1}>
-        <Video
-            {thumbnail}
-            --p-aspect-ratio="2.35/1"
-            src="https://www.youtube-nocookie.com/embed/w-izHSKXqtU?si=OV30JUel_Zoq10AU&controls=0"
-        />
+        <Media title="Product demo" fullWidth>
+            <Video
+                {thumbnail}
+                --p-aspect-ratio="2.35/1"
+                src="https://www.youtube-nocookie.com/embed/w-izHSKXqtU?si=OV30JUel_Zoq10AU&controls=0"
+            />
+        </Media>
     </Grid.Cell>
     <Grid.Cell columns={6}>
         <Article

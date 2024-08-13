@@ -1,7 +1,9 @@
 <script lang="ts">
     import illustration from '../(assets)/day-5/mock-numbers-announcement.svg';
-    import thumbnail from '../(assets)/day-5/mock-numbers-thumb.svg';
+    import mockNumbers from '../(assets)/day-5/mock-numbers.svg';
+    import mockNumbersMobile from '../(assets)/day-5/mock-numbers-mobile.svg';
     import contributors from '../(assets)/day-5/contributors.svg';
+    import contributorsMobile from '../(assets)/day-5/contributors-mobile.svg';
     import { Grid } from '../(components)/grid';
     import Announcement from '../(components)/shared/Announcement.svelte';
     import Media from '../(components)/shared/Media.svelte';
@@ -25,7 +27,8 @@
     <Grid.Cell columns={5}>
         <Article
             title="Mock numbers for phone sign-in"
-            illustration={thumbnail}
+            illustration={mockNumbers}
+            mobileIllustration={mockNumbersMobile}
             url="/blog/post/simplify-messaging-twilio"
         />
     </Grid.Cell>
@@ -33,6 +36,7 @@
         <Article
             title="Celebrating 1.6 contributors"
             illustration={contributors}
+            mobileIllustration={contributorsMobile}
             url="/blog/post/simplify-messaging-twilio"
         />
     </Grid.Cell>

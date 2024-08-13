@@ -52,7 +52,7 @@
         max-height: 100%;
         display: flex;
         justify-content: flex-end;
-
+        height: 100%;
         cursor: pointer;
     }
 

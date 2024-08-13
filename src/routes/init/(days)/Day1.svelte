@@ -2,7 +2,8 @@
     import announcement from '../(assets)/day-1/announcement.svg';
     import functions from '../(assets)/day-1/serverless-functions.svg';
     import mobileFunctions from '../(assets)/day-1/serverless-functions-mobile.svg';
-    import serverless from '../(assets)/day-1/serverless-cli.svg';
+    import serverlessCli from '../(assets)/day-1/serverless-cli.svg';
+    import mobileServerlessCli from '../(assets)/day-1/serverless-cli-mobile.svg';
     import swag from '../(assets)/day-1/swag-thumb.png';
     import thumbnail from '../(assets)/mock-thumb.png';
 
@@ -31,13 +32,15 @@
         <Article
             title="Serverless functions 101: best practices"
             illustration={functions}
+            mobileIllustration={mobileFunctions}
             url="/blog/post/simplify-messaging-twilio"
         />
     </Grid.Cell>
     <Grid.Cell columns={5}>
         <Article
             title="Local serverless function development with the new Appwrite CLI"
-            illustration={serverless}
+            illustration={serverlessCli}
+            mobileIllustration={mobileServerlessCli}
             url="/blog/post/simplify-messaging-twilio"
         />
     </Grid.Cell>

@@ -2,12 +2,14 @@
     type $$Props = {
         url: string;
         illustration?: string;
+        mobileIllustration?: string;
         title: string;
         label?: string;
     };
 
     export let url: $$Props['url'];
-    export let illustration: $$Props['illustration'] = undefined;
+    export let illustration: $$Props['illustration'] = '';
+    export let mobileIllustration: $$Props['mobileIllustration'] = '';
     export let title: $$Props['title'];
     export let label: $$Props['label'] = 'Read article';
 </script>
@@ -23,7 +25,19 @@
         </div>
     </div>
     {#if illustration}
-        <img src={illustration} alt="{title} illustration" class="illustration" />
+        <img
+            src={illustration}
+            alt="{title} illustration"
+            class="desktop-illustration"
+            class:web-is-only-desktop={mobileIllustration}
+        />
+    {/if}
+    {#if mobileIllustration}
+        <img
+            src={mobileIllustration}
+            alt="{title} illustration "
+            class="illustration web-is-only-mobile"
+        />
     {/if}
 </a>
 
@@ -32,9 +46,14 @@
         display: flex;
         justify-content: space-between;
         height: 100%;
+        gap: 32px;
         background-color: hsl(var(--web-color-subtle));
 
-        .illustration {
+        h3 {
+            text-wrap: pretty;
+        }
+
+        .desktop-illustration {
             max-width: 50%;
         }
 
