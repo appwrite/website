@@ -1,7 +1,8 @@
 import type { AuthorData, PostsData } from "$routes/blog/content";
 
 export const DEFAULT_HOST = 'https://appwrite.io';
-export const DEFAULT_DESCRIPTION = 'Appwrite is an open-source platform for building applications at any scale, using your preferred programming languages and tools.';
+export const DEFAULT_DESCRIPTION = 'Appwrite is an open-source backend platform offering essential APIs for building web and mobile applications.';
+
 export function buildOpenGraphImage(title: string, description: string): string {
 	return `https://og.appwrite.global/image.png?title=${encodeURIComponent(
 		title
