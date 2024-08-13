@@ -55,12 +55,13 @@
     .web-card {
         height: 100%;
         background-color: hsl(var(--web-color-subtle));
-        display: grid;
         gap: 48px;
         justify-content: center;
 
         @media screen and (min-width: 768px) {
+            display: grid;
             grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: 1fr;
         }
 
         .details {

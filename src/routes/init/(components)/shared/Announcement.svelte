@@ -42,12 +42,12 @@
             hsl(var(--web-color-subtle)) 100%
         );
         backdrop-filter: blur(2px);
+        height: 100%;
 
         .illustration {
             position: relative;
             z-index: 0;
-            margin-left: auto;
-            margin-right: 0;
+            margin: auto 0 0 auto;
             max-height: 275px;
             display: flex;
             width: 100%;
