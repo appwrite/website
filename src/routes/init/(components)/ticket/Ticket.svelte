@@ -1,9 +1,10 @@
 <script lang="ts">
+    import type { ContributionsMatrix, TicketData } from '$routes/init/tickets/constants';
     import { spring } from 'svelte/motion';
-    import type { ContributionsMatrix, TicketData } from '../tickets/constants';
-    import Lockup from './Lockup.svelte';
-    import Lines from './Lines.svelte';
+
     import { fade } from 'svelte/transition';
+    import Lockup from '../Lockup.svelte';
+    import Lines from '../Lines.svelte';
 
     type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
         contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;

@@ -5,7 +5,6 @@
     import { loginGithub } from '$routes/init/helpers';
     import Tooltip from '$lib/components/Tooltip.svelte';
 
-    import type { PageData } from '../tickets/customize/$types';
     import { browser, dev } from '$app/environment';
     import { appwriteInit } from '$lib/appwrite/init';
     import { goto } from '$app/navigation';
@@ -15,7 +14,7 @@
     export let modified = false;
     export let saving = false;
     export let saveTicket: () => void;
-    let { ticket } = $page.data as PageData;
+    let { ticket } = $page.data;
 
     const ticketUrl = `${$page.url.origin}/init/tickets/${ticket?.$id}`;
     const shareTextOptions = [
@@ -76,7 +75,11 @@
             <button class="web-button is-secondary" on:click={() => (customizing = false)}>
                 <span class="text">Cancel</span>
             </button>
-            <button class="web-button save-button" on:click={saveTicket} disabled={!modified || saving}>
+            <button
+                class="web-button save-button"
+                on:click={saveTicket}
+                disabled={!modified || saving}
+            >
                 <span class="text">Save Changes</span>
             </button>
         </div>

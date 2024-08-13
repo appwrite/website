@@ -5,6 +5,7 @@
     import { Ticket } from '../(components)/ticket';
     import { getMockContributions, loginGithub } from '../helpers';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
+    import TicketScroll from '../(components)/TicketScroll.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
@@ -92,24 +93,7 @@
             <div class="shadow"></div>
         </div>
 
-        <div class="col">
-            {#each Array.from({ length: 2 }) as _}
-                <div class="ticket-preview-wrapper">
-                    {#each tickets as { name, title }, i}
-                        {@const id = i + 1}
-                        <div class="ticket">
-                            <Ticket
-                                contributions={getMockContributions()}
-                                disableEffects
-                                {name}
-                                {title}
-                                {id}
-                            />
-                        </div>
-                    {/each}
-                </div>
-            {/each}
-        </div>
+        <TicketScroll />
     </div>
 
     <div class="web-container">
@@ -119,11 +103,6 @@
 </Main>
 
 <style lang="scss">
-    .col {
-        display: flex;
-        flex-direction: column;
-        gap: 32px;
-    }
     .top {
         min-height: 80vh;
         margin: 48px 0 -96px 0;
@@ -193,48 +172,6 @@
                         rgba(0, 0, 0, 1) 75%,
                         transparent
                     );
-            }
-        }
-    }
-
-    @keyframes scroll {
-        0% {
-            transform: translateX(var(--x-translate-start)) translateZ(0);
-        }
-        100% {
-            transform: translateX(var(--x-translate-end)) translateZ(0);
-        }
-    }
-
-    .ticket-preview-wrapper {
-        display: flex;
-        width: 400vw;
-        animation: scroll 60s linear infinite;
-        overflow: hidden;
-        pointer-events: none;
-        touch-action: none;
-
-        --x-translate-start: -100vw;
-        --x-translate-end: 100vw;
-
-        .ticket {
-            width: 50vw;
-            margin-right: 32px;
-        }
-
-        &:nth-of-type(even) {
-            animation-direction: reverse;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            animation-play-state: paused;
-        }
-
-        @media screen and (max-width: 768px) {
-            width: 800vw;
-
-            .ticket {
-                width: 100vw;
             }
         }
     }
