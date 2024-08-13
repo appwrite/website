@@ -15,7 +15,7 @@
                 src: day0,
                 alt: ''
             },
-            date: '2024-08-19',
+            date: '2024-08-19T15:00:00.000Z',
             title: 'Init kick off',
             description: 'Join us each day for a special Init event from 19-23 Aug.',
             buttonText: 'View event'
@@ -26,7 +26,7 @@
                 src: day1,
                 alt: ''
             },
-            date: '2024-08-20',
+            date: '2024-08-20T15:00:00.000Z',
 
             title: 'Guest speaker: Hitesh Choudhary',
             description: 'Join us each day for a special Init event from 19-23 Aug.',
@@ -38,7 +38,7 @@
                 src: day2,
                 alt: ''
             },
-            date: '2024-08-21',
+            date: '2024-08-21T15:00:00.000Z',
 
             title: 'Guest speaker: Jessica Temporal',
             description: 'Join us each day for a special Init event from 19-23 Aug.',
@@ -50,7 +50,7 @@
                 src: day3,
                 alt: ''
             },
-            date: '2024-08-22',
+            date: '2024-08-22T15:00:00.000Z',
 
             title: 'Guest speaker: Danny Thompson',
             description: 'Join us each day for a special Init event from 19-23 Aug.',
@@ -62,7 +62,7 @@
                 src: day4,
                 alt: ''
             },
-            date: '2024-08-23',
+            date: '2024-08-23T15:00:00.000Z',
 
             title: 'Closing party',
             description: 'Join us each day for a special Init event from 19-23 Aug.',
