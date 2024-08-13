@@ -90,6 +90,34 @@ const token = await users.createToken('[USER_ID]');
 const secret = token.secret;
 ```
 
+```go
+package main
+
+import (
+	"github.com/appwrite/sdk-for-go/appwrite"
+	"github.com/appwrite/sdk-for-go/client"
+	"github.com/appwrite/sdk-for-go/users"
+)
+
+var (
+	appwriteClient client.Client
+	appwriteUsers  *users.Users
+)
+
+func main() {
+	appwriteClient = appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"),    // Your project ID
+		appwrite.WithKey("<API_KEY>"),           // Your project API key
+	)
+
+	appwriteUsers = appwrite.NewUsers(appwriteClient)
+
+	token, _ := appwriteUsers.CreateToken("<USER_ID>")
+
+	var _ = token.Secret
+}
+```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 
