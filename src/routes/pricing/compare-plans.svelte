@@ -4,7 +4,6 @@
     import { visible } from '$lib/actions/visible';
     import { isHeaderHidden } from '$lib/layouts/Main.svelte';
     import { getScrollDir } from '$lib/utils/getScrollDir';
-    import { isVisible } from '$lib/utils/isVisible';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
@@ -607,7 +606,7 @@
     @media (min-width: 1204px) {
         .web-u-grid-auto-column-1fr {
             grid-auto-columns: max-content;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(5, 1fr);
         }
     }
 </style>
