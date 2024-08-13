@@ -1,17 +1,21 @@
 <script lang="ts" context="module">
     import { Carousel } from '$lib/components';
-    import type { EventCardProps } from '$routes/community/EventCard.svelte';
-    import EventCard from '$routes/community/EventCard.svelte';
+    import day0 from '../(assets)/discord/day-0.png';
+    import day1 from '../(assets)/discord/day-1.png';
+    import day2 from '../(assets)/discord/day-2.png';
+    import day3 from '../(assets)/discord/day-3.png';
+    import day4 from '../(assets)/discord/day-4.png';
+    import type { EventCardProps } from './EventCard.svelte';
+    import EventCard from './EventCard.svelte';
 
     export const events: EventCardProps[] = [
         {
             href: 'https://discord.com/events/564160730845151244/1218597329024843837',
             cover: {
-                src: '/images/community/events/28march-office-hours.png',
+                src: day0,
                 alt: ''
             },
             date: '2024-08-19',
-
             title: 'Init kick off',
             description: 'Join us each day for a special Init event from 19-23 Aug.',
             buttonText: 'View event'
@@ -19,7 +23,7 @@
         {
             href: 'https://discord.com/events/564160730845151244/1218597959017431192',
             cover: {
-                src: '/images/community/events/4april-office-hours.png',
+                src: day1,
                 alt: ''
             },
             date: '2024-08-20',
@@ -31,7 +35,7 @@
         {
             href: 'https://discord.com/events/564160730845151244/1218598369363230872',
             cover: {
-                src: '/images/community/events/11april-office-hours.png',
+                src: day2,
                 alt: ''
             },
             date: '2024-08-21',
@@ -43,7 +47,7 @@
         {
             href: 'https://discord.com/events/564160730845151244/1218598369363230872',
             cover: {
-                src: '/images/community/events/11april-office-hours.png',
+                src: day3,
                 alt: ''
             },
             date: '2024-08-22',
@@ -55,7 +59,7 @@
         {
             href: 'https://discord.com/events/564160730845151244/1218598369363230872',
             cover: {
-                src: '/images/community/events/11april-office-hours.png',
+                src: day4,
                 alt: ''
             },
             date: '2024-08-23',
