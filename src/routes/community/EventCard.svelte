@@ -6,7 +6,7 @@
             alt: string;
         };
         date: string;
-        location?: string;
+        location: string;
         title: string;
         description: string;
         buttonText: string;
@@ -44,12 +44,11 @@
                 <span class="web-icon-calendar web-u-color-text-tertiary" aria-hidden="true" />
                 <time class="">{dateString}</time>
             </li>
-            {#if location}
-                <li class="u-flex u-cross-baseline u-gap-4">
-                    <span class="web-icon-location web-u-color-text-tertiary" aria-hidden="true" />
-                    <span class="">{location}</span>
-                </li>
-            {/if}
+
+            <li class="u-flex u-cross-baseline u-gap-4">
+                <span class="web-icon-location web-u-color-text-tertiary" aria-hidden="true" />
+                <span class="">{location}</span>
+            </li>
         </ul>
         <svelte:element
             this={headingTag}
