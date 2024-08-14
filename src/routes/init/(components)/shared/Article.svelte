@@ -18,7 +18,7 @@
     <div style:padding="1.25rem">
         <h3
             class="web-label web-u-color-text-primary"
-            style="max-width: 16.75rem;text-wrap:pretty;"
+            style="max-width: 18.75rem;text-wrap:pretty;"
         >
             {title}
         </h3>

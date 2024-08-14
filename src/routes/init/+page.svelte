@@ -1,5 +1,6 @@
 <script lang="ts">
     import { FooterNav, MainFooter } from '$lib/components';
+    import { dev } from '$app/environment';
     import { Main } from '$lib/layouts';
     import { addDays, toReleaseDate } from '$lib/utils/date';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
@@ -21,9 +22,9 @@
     const description = 'The start of something new.';
     const ogImage = buildOpenGraphImage('init', description);
 
-    const base = new Date('2024-08-19T15:00:00.000Z');
+    let base = new Date('2024-08-19T15:00:00.000Z');
 
-    const days = [
+    $: days = [
         {
             title: 'Local development',
             subtitle: 'Day 0',
@@ -55,6 +56,10 @@
             animation: Animations.Numbers
         }
     ] as DayType[];
+
+    const fastForward = () => {
+        base = addDays(base, -1);
+    };
 </script>
 
 <svelte:head>
@@ -82,6 +87,9 @@
             <p class="web-description">The start of something new.</p>
             <div class="buttons">
                 <a href="/init/tickets" class="web-button">Claim your ticket</a>
+                {#if dev}
+                    <button on:click={fastForward} class="web-button">Fast forward</button>
+                {/if}
             </div>
         </div>
 
