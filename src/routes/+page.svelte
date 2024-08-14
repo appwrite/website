@@ -12,6 +12,7 @@
   import FooterNav from "../lib/components/FooterNav.svelte";
   import MainFooter from "../lib/components/MainFooter.svelte";
   import DeveloperCard from "./DeveloperCard.svelte";
+  import Button from "../lib/components/Button.svelte";
 
   const title = "Appwrite - Build like a team of hundreds";
   const description = DEFAULT_DESCRIPTION;
@@ -104,12 +105,7 @@
                 Databases, Functions, Storage, and Messaging to your projects
                 using the frameworks and languages of your choice.
               </p>
-              <a
-                href="https://cloud.appwrite.io"
-                class="web-button is-full-width-mobile u-margin-block-start-32"
-              >
-                <span class="text">Get started</span>
-              </a>
+              <Button href="https://cloud.appwrite.io">Get started</Button>
             </div>
           </div>
         </section>

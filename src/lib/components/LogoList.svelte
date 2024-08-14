@@ -78,15 +78,15 @@
   ];
 </script>
 
-<div class="web-big-padding-section-level-2">
-  <div class="web-container">
+<div class="my-32">
+  <div class="container">
     <h2
-      class="web-title web-u-color-text-primary mx-auto max-w-[600px] text-center"
+      class="font-aeonik-pro text-greyscale-100 mx-auto max-w-[600px] text-center text-xl leading-10"
     >
       {title}
     </h2>
     <ul
-      class="web-u-padding-block-start-80 grid grid-cols-6 text-center md:gap-10"
+      class="web-u-padding-block-start-80 grid grid-cols-3 text-center md:grid-cols-6 md:gap-10"
     >
       {#each logos as { src, alt, width, height }, i}
         <li class="grid place-content-center">

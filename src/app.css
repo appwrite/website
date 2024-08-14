@@ -100,13 +100,6 @@
   /* Animations */
   --animate-scale-in: scale-in 0.2s ease-out forwards;
 
-  /* Container */
-  @layer components {
-    .container {
-      @apply mx-8 box-content max-w-7xl px-4 md:px-5 lg:px-8;
-    }
-  }
-
   /* Keyframes */
   @keyframes scale-in {
     0% {
@@ -115,5 +108,15 @@
     100% {
       transform: scale(1);
     }
+  }
+
+  /* Fonts */
+  --font-family-aeonik-pro: "Aeonik Pro", var(--font-family-sans);
+}
+
+/* Container */
+@layer components {
+  .container {
+    @apply mx-auto box-content max-w-7xl px-8;
   }
 }
