@@ -3,10 +3,10 @@
     import swag from '../(assets)/swag-giveaway.png';
 </script>
 
-<div class="overlay">
+<div class="wrapper">
     <div class="web-container">
         <div class="details">
-            <h3 class="web-title">Get a ticket and enter our special Init giveaway</h3>
+            <h3 class="web-label">Get a ticket and enter our<br /> special Init giveaway</h3>
             <p class="web-u-color-text-secondary">
                 Create, customize, and share your Init ticket to enter our general giveaway.
             </p>
@@ -26,25 +26,47 @@
 </div>
 
 <style lang="scss">
-    .overlay {
+    .wrapper {
         max-width: 100vw;
         overflow: hidden;
         position: relative;
+        padding: 96px 0 48px 0;
+        margin-bottom: -24px;
+        background-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.32) 0%,
+            rgba(0, 0, 0, 0) 25%,
+            rgba(0, 0, 0, 0) 100%
+        );
 
         .web-container {
             display: flex;
             justify-content: space-between;
+            gap: 64px;
+
+            @media screen and (max-width: 1023px) {
+                flex-direction: column;
+                gap: 32px;
+            }
 
             .details {
                 position: relative;
                 z-index: 1000;
                 color: #fff;
                 margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .web-card {
+                flex-basis: 50%;
             }
 
             .img {
                 img {
                     border-radius: 12px;
+                    height: 100%;
                 }
             }
         }
@@ -53,6 +75,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-top: 64px;
         }
 
         &::after {
@@ -65,8 +88,8 @@
             background-image: linear-gradient(
                 180deg,
                 rgba(0, 0, 0, 0) 0%,
-                hsl(var(--web-color-background)) 70%,
-                hsl(var(--web-color-background)) 100%
+                hsl(var(--web-color-background-docs)) 70%,
+                hsl(var(--web-color-background-docs)) 100%
             );
             z-index: 10;
         }

@@ -4,7 +4,7 @@
     import { addDays, toReleaseDate } from '$lib/utils/date';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
     import DayCard, { type DayType } from './(components)/DayCard.svelte';
-    import Lockup from './(components)/Hero.svelte';
+    import Hero from './(components)/Hero.svelte';
     import CountdownCard from './(components)/CountdownCard.svelte';
     import { Animations } from './(animations)';
     import Day1 from './(days)/Day1.svelte';
@@ -15,6 +15,7 @@
     import Day from './(days)/Day.svelte';
     import EventCarousel from './(components)/EventCarousel.svelte';
     import Giveaway from './(components)/Giveaway.svelte';
+    import CallToAction from './(components)/CallToAction.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
@@ -74,55 +75,58 @@
 </svelte:head>
 
 <Main>
-    <div class="hero">
-        <Lockup />
+    <div style:background="#171719">
+        <div class="hero">
+            <Hero />
 
-        <p class="web-description">The start of something new.</p>
-        <div class="buttons">
-            <a href="/init/tickets" class="web-button">Claim your ticket</a>
+            <p class="web-description">The start of something new.</p>
+            <div class="buttons">
+                <a href="/init/tickets" class="web-button">Claim your ticket</a>
+            </div>
         </div>
-    </div>
 
-    <div class="web-container">
-        <div class="day-cards">
-            {#each days as day, i (day.release.toISOString())}
-                <DayCard {day} --p-aspect-ratio="5/2">
-                    <svelte:component this={day.animation} />
-                </DayCard>
-            {/each}
+        <div class="web-container">
+            <div class="day-cards">
+                {#each days as day, i (day.release.toISOString())}
+                    <DayCard {day} --p-aspect-ratio="5/2">
+                        <svelte:component this={day.animation} />
+                    </DayCard>
+                {/each}
+            </div>
+            <hr />
+            <div class="days">
+                {#each days as day, i}
+                    {@const date = `DAY ${i} - ${toReleaseDate(day.release)}`}
+                    <Day day={date} release={day.release}>
+                        {#if i === 0}
+                            <Day1 release={day.release} />
+                        {:else if i === 1}
+                            <Day2 release={day.release} />
+                        {:else if i === 2}
+                            <Day3 release={day.release} />
+                        {:else if i === 3}
+                            <Day4 release={day.release} />
+                        {:else if i === 4}
+                            <Day5 release={day.release} />
+                        {:else}
+                            <h2 class="web-eyebrow web-u-color-text-primary">
+                                <div class="web-dot" />
+                                {date}
+                                <span class="web-u-color-text-accent">_</span>
+                            </h2>
+                            <CountdownCard date={day.release} />
+                        {/if}
+                    </Day>
+                {/each}
+            </div>
         </div>
         <hr />
-        <div class="days">
-            {#each days as day, i}
-                {@const date = `DAY ${i} - ${toReleaseDate(day.release)}`}
-                <Day day={date} release={day.release}>
-                    {#if i === 0}
-                        <Day1 release={day.release} />
-                    {:else if i === 1}
-                        <Day2 release={day.release} />
-                    {:else if i === 2}
-                        <Day3 release={day.release} />
-                    {:else if i === 3}
-                        <Day4 release={day.release} />
-                    {:else if i === 4}
-                        <Day5 release={day.release} />
-                    {:else}
-                        <h2 class="web-eyebrow web-u-color-text-primary">
-                            <div class="web-dot" />
-                            {date}
-                            <span class="web-u-color-text-accent">_</span>
-                        </h2>
-                        <CountdownCard date={day.release} />
-                    {/if}
-                </Day>
-            {/each}
-        </div>
-    </div>
-    <div class="web-container">
-        <hr />
+
         <EventCarousel />
+        <hr />
+        <Giveaway />
     </div>
-    <Giveaway />
+    <CallToAction />
     <div class="web-container">
         <FooterNav />
         <MainFooter />
@@ -130,10 +134,6 @@
 </Main>
 
 <style lang="scss">
-    hr {
-        border-block-start: 1px solid hsl(var(--web-color-offset));
-    }
-
     .hero {
         height: 75vh;
 

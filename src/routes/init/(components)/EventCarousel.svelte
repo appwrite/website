@@ -71,21 +71,35 @@
     ];
 </script>
 
-<Carousel size="big">
-    <svelte:fragment slot="header">
-        <h4 class="web-label web-u-color-text-primary">Upcoming Events</h4>
-    </svelte:fragment>
-    {#each events as event}
-        <li>
-            <EventCard
-                href={event.href}
-                cover={event.cover}
-                date={event.date}
-                location={event.location}
-                title={event.title}
-                description={event.description}
-                buttonText={event.buttonText}
-            />
-        </li>
-    {/each}
-</Carousel>
+<div class="carousel">
+    <div class="web-container">
+        <Carousel size="big">
+            <svelte:fragment slot="header">
+                <h4 class="web-label web-u-color-text-primary">Upcoming Events</h4>
+            </svelte:fragment>
+            {#each events as event}
+                <li>
+                    <EventCard
+                        href={event.href}
+                        cover={event.cover}
+                        date={event.date}
+                        location={event.location}
+                        title={event.title}
+                        description={event.description}
+                        buttonText={event.buttonText}
+                    />
+                </li>
+            {/each}
+        </Carousel>
+    </div>
+</div>
+
+<style lang="scss">
+    .carousel {
+        margin-top: 48px;
+        padding: 48px 0;
+        background: hsl(var(--web-color-background));
+        border-bottom: 1px solid hsl(var(--web-color-offset));
+        border-top: 1px solid hsl(var(--web-color-offset));
+    }
+</style>
