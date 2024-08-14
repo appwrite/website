@@ -18,24 +18,25 @@
     export let release: Date;
 </script>
 
-<Grid.Root columns={24} rows={2}>
-    <Grid.Cell columns={14} rows={2}>
+<Grid.Root columns={12} rows={2}>
+    <Grid.Cell columns={7} rows={2}>
         <Announcement
             title="GO support"
             description="Appwrite now supports GO functions runtime."
-            {illustration}
             url="/"
-        />
+        >
+            <img src={illustration} alt="" />
+        </Announcement>
     </Grid.Cell>
-    <Grid.Cell columns={10}>
+    <Grid.Cell columns={5}>
         <Article
-            title="What you can build with the GO runtime"
+            title="3 things you can build with the GO runtime"
             illustration={buildWithGo}
             mobileIllustration={buildWithGoMobile}
             url="/blog/post/simplify-messaging-twilio"
         />
     </Grid.Cell>
-    <Grid.Cell columns={10}>
+    <Grid.Cell columns={5}>
         <Article
             title="Why should you use Golang in your app?"
             illustration={useGo}
@@ -47,18 +48,8 @@
     <Grid.Cell columns={6}>
         <Article url="/blog/post/simplify-messaging-twilio" title="Docs: GO support" />
     </Grid.Cell>
-    <Grid.Cell columns={9}>
-        <Media title="Product demo" label="Watch">
-            <Video
-                src="https://www.youtube-nocookie.com/embed/7LN05c-ov_0?si=Gb0gS-k4M24F1AOg"
-                title="Product demo"
-                {thumbnail}
-                --p-aspect-ratio="2.35/1"
-            />
-        </Media>
-    </Grid.Cell>
-    <Grid.Cell columns={9}>
-        <Media title="Discord Stage: Day 2" url="https://discord.com">
+    <Grid.Cell columns={6}>
+        <Media title="Discord Stage: Day 3" url="https://discord.com">
             <DayCard
                 day={{
                     title: 'Day 3',

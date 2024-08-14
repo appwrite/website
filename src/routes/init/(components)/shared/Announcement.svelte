@@ -1,19 +1,17 @@
 <script lang="ts">
     type $$Props = {
         url: string;
-        illustration?: string;
         title: string;
         description: string;
     };
 
     export let url: $$Props['url'];
-    export let illustration: $$Props['illustration'] = undefined;
     export let title: $$Props['title'];
     export let description: $$Props['description'];
 </script>
 
 <a href={url} class="web-card is-normal has-border-gradient" style:padding="0">
-    <div style:padding="2rem" style:padding-block-end="0">
+    <div style:padding="2rem" style:padding-block-end="0" style:max-width="32rem">
         <h3 class="web-label web-u-color-text-primary">{title}</h3>
         <p style:margin-block-start="0.625rem">
             {description}
@@ -28,7 +26,7 @@
         </div>
     </div>
     <div class="illustration">
-        <img src={illustration} alt="" />
+        <slot />
     </div>
 </a>
 
@@ -47,21 +45,11 @@
         );
         backdrop-filter: blur(2px);
         height: 100%;
+        overflow: hidden;
 
         .illustration {
-            position: relative;
             z-index: 0;
             margin: auto 0 0 auto;
-            max-height: 275px;
-            display: flex;
-            width: 100%;
-
-            img {
-                width: auto;
-                height: 100%;
-                margin-right: 0;
-                margin-left: auto;
-            }
         }
 
         p {

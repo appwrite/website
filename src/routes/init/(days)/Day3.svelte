@@ -22,9 +22,14 @@
         <Announcement
             title="Function ecosystem"
             description="New features are being added to vastly improve your Appwrite Functions experience."
-            {illustration}
             url="/"
-        />
+        >
+            <div class="illustration-wrapper">
+                <div class="illustration">
+                    <img src={illustration} alt="" />
+                </div>
+            </div>
+        </Announcement>
     </Grid.Cell>
     <Grid.Cell columns={5}>
         <Article
@@ -77,3 +82,26 @@
         </Media>
     </Grid.Cell>
 </Grid.Root>
+
+<style lang="scss">
+    .illustration-wrapper {
+        min-height: 275px;
+
+        @media screen and (max-width: 768px) {
+            min-height: 200px;
+        }
+
+        .illustration {
+            position: absolute;
+            right: -100px;
+            top: 50px;
+            height: 500px;
+
+            @media screen and (max-width: 768px) {
+                height: 350px;
+                top: 150px;
+                right: -50px;
+            }
+        }
+    }
+</style>

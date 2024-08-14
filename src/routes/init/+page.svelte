@@ -20,7 +20,7 @@
     const description = 'The start of something new.';
     const ogImage = buildOpenGraphImage('init', description);
 
-    const base = new Date('2024-08-19T15:00:00.000Z');
+    const base = new Date('2024-08-01T15:00:00.000Z');
 
     const days = [
         {
@@ -119,6 +119,7 @@
         </div>
     </div>
     <div class="web-container">
+        <hr />
         <EventCarousel />
     </div>
     <Giveaway />

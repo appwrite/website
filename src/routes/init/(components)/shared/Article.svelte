@@ -16,7 +16,10 @@
 
 <a href={url} class="web-card is-normal has-border-gradient u-overflow-hidden" style:padding="0">
     <div style:padding="1.25rem">
-        <h3 class="web-label web-u-color-text-primary" style="max-width: 18.75rem;">
+        <h3
+            class="web-label web-u-color-text-primary"
+            style="max-width: 16.75rem;text-wrap:pretty;"
+        >
             {title}
         </h3>
         <div class="web-card-link u-flex u-cross-center">
@@ -24,13 +27,16 @@
             <span class="web-icon-arrow-right" />
         </div>
     </div>
+
     {#if illustration}
-        <img
-            src={illustration}
-            alt="{title} illustration"
-            class="desktop-illustration"
-            class:web-is-only-desktop={mobileIllustration}
-        />
+        <div style:position="absolute" style:max-width="75%" style:height="100%" style:right="0">
+            <img
+                src={illustration}
+                alt="{title} illustration"
+                class="illustration"
+                class:web-is-only-desktop={mobileIllustration}
+            />
+        </div>
     {/if}
     {#if mobileIllustration}
         <img
@@ -53,8 +59,9 @@
             text-wrap: pretty;
         }
 
-        .desktop-illustration {
-            max-width: 50%;
+        .illustration {
+            object-fit: cover;
+            height: 100%;
         }
 
         @media screen and (max-width: 768px) {
