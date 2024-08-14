@@ -42,14 +42,14 @@ The keyboard comes with Mac layout keys pre-installed for macOS which can also b
 
 # Quick start  {% #quick-start %}
 
-There are currently three modes to connect the Appwriter to the computer: wired, wireless, and Bluetooth.
+There are currently three modes to connect the Appwriter to the computer: wired, wireless, and Bluetooth. There is also a switch under the keyboard to toggle between B, T, or G, which switch to wired, wireless, or  Bluetooth mode, respectively.
 
 ## Wired mode {% #wired-mode %}
 
-To use the wired mode, connect the USB-TYPE-C data cable from the keyboard to the computer and push the Appwriter switch towards the T.
+To use the wired mode, connect the USB-C data cable from the keyboard to the computer and push the Appwriter switch towards the T.
 When connecting the keyboard for the first time using wired mode, your computer will install all required drivers on a successful connection.
 
-The Appwriter's battery will charge while connected using the wired mode. Make sure to use a charger that doesn't exceed a voltage/current = DSCV = 1A (max). Using a charger that exceeds this voltage and current ratings could easily damage your keyboard.
+The Appwriter's battery will charge while connected using the wired mode. Make sure to use a charger that doesn't exceed a voltage/current = DC5V = 1A (max). Using a charger that exceeds this voltage and current ratings could easily damage your keyboard.
 
 ## Wireless mode {% #wireless-mode %}
 
@@ -57,7 +57,7 @@ Push the Appwriter switch towards the G if you want to use the wireless mode wit
 
 ## Bluetooth mode {% #bluetooth-mode %}
 
-To pair the keyboard in Bluetooth mode, push the switch to B and do a long press while pressing the `FN` + `1` keys. Once the `1` key flashes a fast light, you must search for the Appwriter in your Bluetooth devices to pair your devices.
+To switch the keyboard to Bluetooth mode, push the switch to B. The keyboard can pair to three different devices. To connect to a device, short press the `FN` + `1/2/3` key depending on the device you want to pair the keyboard with. Long press the `FN` + `1/2/3` key to pair connect your keyboard to the specific device you want to pair the keyboard with. Once the `1`, `2`, or `3` key flashes a fast light, you must search for the Appwriter in your Bluetooth devices to pair the devices.
 
 # General keyboard controls {% #general-keyboard-controls %}
 
@@ -76,7 +76,13 @@ To pair the keyboard in Bluetooth mode, push the switch to B and do a long press
 | `FN + Left Arrow` | Slow down keyboard backlight effect |
 | `FN + Right Arrow` | Speed up keyboard backlight effect |
 
-To switch to Windows mode, switch the preinstalled macOS keycap with the Windows keycap and use the `FN + A` shortcut to enable Windows mode; this will enable Windows-specific keyboard commands to work, like `Ctrl + C` or `Ctrl + A`. To use macOS-specific keyboard commands such as `Command + U` or `Command + Delete`, keep the preinstalled macOS keycap in and use the `FN + S` shortcut to enable macOS mode.
+## Windows mode {% #windows-mode %}
+
+To switch to Windows mode, switch the preinstalled macOS keycap with the Windows keycap and use the `FN + A` shortcut to enable Windows mode; this will enable Windows-specific keyboard commands to work, like `Ctrl + C` or `Ctrl + A`.
+
+## MacOS mode {% #macos-mode %}
+
+To use macOS-specific keyboard commands such as `Command + C` or `Command + A`, keep the preinstalled macOS keycap in and use the `FN + S` shortcut to enable macOS mode.
 
 # How to get the Appwriter {% #how-to-get-the-appwriter %}
 
