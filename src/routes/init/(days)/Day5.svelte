@@ -20,9 +20,10 @@
         <Announcement
             title="Mock numbers"
             description="Streamline phone authentication testing and app review processes."
-            {illustration}
             url="/"
-        />
+        >
+            <img src={illustration} alt="" />
+        </Announcement>
     </Grid.Cell>
     <Grid.Cell columns={5}>
         <Article

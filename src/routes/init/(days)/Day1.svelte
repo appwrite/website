@@ -24,9 +24,10 @@
         <Announcement
             title="Local development"
             description="Run and test Appwrite Functions locally and deploy only when you’re ready."
-            illustration={announcement}
             url="/"
-        />
+        >
+            <img src={announcement} alt="" />
+        </Announcement>
     </Grid.Cell>
     <Grid.Cell columns={5}>
         <Article
