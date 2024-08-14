@@ -122,7 +122,7 @@
   <section
     class="web-mobile-header {resolvedTheme}"
     class:transparent={browser && !$isMobileNavOpen}
-    class:hidden={$isHeaderHidden}
+    class:is-hidden={$isHeaderHidden}
   >
     <div class="web-mobile-header-start">
       <a href="/">
@@ -163,7 +163,7 @@
   </section>
   <header
     class="web-main-header is-special-padding {resolvedTheme} is-transparent"
-    class:hidden={$isHeaderHidden}
+    class:is-hidden={$isHeaderHidden}
   >
     <div class="web-top-banner">
       <div class="web-top-banner-content web-u-color-text-primary">
