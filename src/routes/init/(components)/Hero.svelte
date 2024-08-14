@@ -4,7 +4,7 @@
 </script>
 
 <div class="hero">
-    <Lockup />
+    <Lockup fillColor="#171719" />
     <Lines />
 </div>
 
