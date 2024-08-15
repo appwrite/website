@@ -22,7 +22,7 @@
             description="Streamline phone authentication testing and app review processes."
             url="/"
         >
-            <img src={illustration} alt="" />
+            <img src={illustration} alt="" style:margin="40px 0 -40px 0" />
         </Announcement>
     </Grid.Cell>
     <Grid.Cell columns={5}>
