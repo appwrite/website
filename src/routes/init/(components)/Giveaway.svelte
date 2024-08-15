@@ -51,7 +51,7 @@
 
             .details {
                 position: relative;
-                z-index: 1000;
+                z-index: 100;
                 color: #fff;
                 margin: 0 auto;
                 display: flex;
@@ -84,7 +84,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 150px;
+            height: 300px;
             background-image: linear-gradient(
                 180deg,
                 rgba(0, 0, 0, 0) 0%,

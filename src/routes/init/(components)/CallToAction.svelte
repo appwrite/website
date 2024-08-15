@@ -26,6 +26,7 @@
         padding-block-start: 0rem;
         padding-block-end: 0;
         overflow: hidden;
+        margin-bottom: -125px;
         border-top: 1px solid hsl(var(--web-color-offset));
 
         .web-container {
