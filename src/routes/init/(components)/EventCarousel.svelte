@@ -73,7 +73,7 @@
 
 <div class="carousel">
     <div class="web-container">
-        <Carousel size="big">
+        <Carousel size="medium">
             <svelte:fragment slot="header">
                 <h4 class="web-label web-u-color-text-primary">Upcoming Events</h4>
             </svelte:fragment>

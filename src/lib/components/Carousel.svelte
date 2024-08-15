@@ -49,7 +49,7 @@
                 class="web-icon-button"
                 aria-label="Move carousel backward"
                 disabled={isStart}
-                on:click={() => prev()}
+                on:click={prev}
             >
                 <span class="web-icon-arrow-left" aria-hidden="true" />
             </button>
@@ -57,7 +57,7 @@
                 class="web-icon-button"
                 aria-label="Move carousel forward"
                 disabled={isEnd}
-                on:click={() => next()}
+                on:click={next}
             >
                 <span class="web-icon-arrow-right" aria-hidden="true" />
             </button>
