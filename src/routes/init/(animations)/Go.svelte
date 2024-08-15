@@ -7,7 +7,7 @@
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
     >
-        <g clip-path="url(#clip0_577_34)">
+        <g>
             <g filter="url(#filter0_bdi_577_34)">
                 <rect
                     width="225.152"
