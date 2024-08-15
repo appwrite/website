@@ -44,7 +44,7 @@
 <div>
     <div class="u-flex u-flex-wrap u-cross-center u-margin-block-start-8">
         <slot name="header" />
-        <div class="u-flex u-gap-12 u-cross-end u-margin-inline-start-auto">
+        <div class="nav u-flex u-gap-12 u-cross-end u-margin-inline-start-auto">
             <button
                 class="web-icon-button"
                 aria-label="Move carousel backward"
@@ -79,6 +79,13 @@
 </div>
 
 <style lang="scss">
+    .nav {
+        button {
+            @media screen and (max-width: 1023.9px) {
+                display: none !important;
+            }
+        }
+    }
     .carousel-wrapper {
         position: relative;
 
