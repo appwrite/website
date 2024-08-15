@@ -44,13 +44,7 @@
             {#each tickets as { name, title }, i}
                 {@const id = i + 1}
                 <div class="ticket">
-                    <Ticket
-                        contributions={getMockContributions()}
-                        disableEffects
-                        {name}
-                        {title}
-                        {id}
-                    />
+                    <Ticket contributions={getMockContributions()} {name} {title} {id} />
                 </div>
             {/each}
         </div>

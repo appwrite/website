@@ -22,7 +22,7 @@
         >
             {title}
         </h3>
-        <div class="web-card-link u-flex u-cross-center">
+        <div class="web-card-link u-flex u-cross-center" style:margin-top="8px">
             <span class="text">{label}</span>
             <span class="web-icon-arrow-right" />
         </div>
