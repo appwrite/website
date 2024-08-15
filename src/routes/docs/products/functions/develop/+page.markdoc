@@ -246,12 +246,13 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 	}
 
 	// `res.json()` is a handy helper for sending JSON
-	return Context.Res.Json(Response{
-		Motto:       "Build like a team of hundreds_",
-		Learn:       "https://appwrite.io/docs",
-		Connect:     "https://appwrite.io/discord",
-		GetInspired: "https://builtwith.appwrite.io",
-	})
+	return Context.Res.Json(
+		Response{
+			Motto:       "Build like a team of hundreds_",
+			Learn:       "https://appwrite.io/docs",
+			Connect:     "https://appwrite.io/discord",
+			GetInspired: "https://builtwith.appwrite.io",
+		})
 }
 ```
 
@@ -1558,22 +1559,15 @@ package handler
 
 import (
 	"os"
+    "fmt"
 
 	"github.com/appwrite/sdk-for-go/appwrite"
 	"github.com/appwrite/sdk-for-go/id"
 	"github.com/open-runtimes/types-for-go/v4/openruntimes"
 )
 
-type Response struct {
-	Motto       string `json:"motto"`
-	Learn       string `json:"learn"`
-	Connect     string `json:"connect"`
-	GetInspired string `json:"getInspired"`
-}
-
 func Main(Context openruntimes.Context) openruntimes.Response {
-	// This is your Appwrite function
-	// It's executed each time we get a request service
+    // Set project and set API key
 	client := appwrite.NewClient(
 		appwrite.WithProject(os.Getenv("APPWRITE_FUNCTION_PROJECT_ID")),
 		appwrite.WithKey(Context.Req.Headers["x-appwrite-key"]),
@@ -1581,11 +1575,17 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 
 	databases := appwrite.NewDatabases(client)
 
-	databases.CreateDocument("<DATABASE_ID>",
+	_, err := databases.CreateDocument(
+        "<DATABASE_ID>",
 		"<COLLECTION_ID>",
 		id.Unique(),
 		map[string]interface{}{},
 	)
+
+    if err != nil {
+        Context.Log(fmt.Sprintf("Failed to create document: %v", err))
+        return Context.Res.Text("Failed to create document")
+    }
 
 	return Context.Res.Text("Document created")
 }
@@ -1914,6 +1914,47 @@ export default function ({req, res, error}: any){
     }
     
     return res.text("Document created");
+}
+```
+```go
+package handler
+
+import (
+	"fmt"
+	"log"
+
+	"github.com/appwrite/sdk-for-go/appwrite"
+	"github.com/appwrite/sdk-for-go/id"
+	"github.com/open-runtimes/types-for-go/v4/openruntimes"
+)
+
+func Main(Context openruntimes.Context) openruntimes.Response {
+	client := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"),
+	)
+
+	jwt, exists := Context.Req.Headers["x-appwrite-user-jwt"]
+	if !exists || len(jwt) == 0 {
+		appwrite.WithJWT(Context.Req.Headers["x-appwrite-user-jwt"])
+	} else {
+		return Context.Res.Text("Please sign in, JWT not found")
+	}
+
+	databases := appwrite.NewDatabases(client)
+
+	_, err := databases.CreateDocument(
+		"<DATABASE_ID>",
+		"<COLLECTION_ID>",
+		id.Unique(),
+		map[string]interface{}{},
+	)
+
+	if err != nil {
+        Context.Log(fmt.Sprintf("Failed to create document: %v", err))
+		return Context.Res.Text(str)
+	}
+
+	return Context.Res.Text("Document created")
 }
 ```
 ```dart
