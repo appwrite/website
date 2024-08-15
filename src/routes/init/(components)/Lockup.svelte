@@ -64,8 +64,6 @@
 
         width: 100%;
         display: block;
-        position: relative;
-        z-index: 12;
 
         &.animate {
             animation: fade 1s ease-out;
