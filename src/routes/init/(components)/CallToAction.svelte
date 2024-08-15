@@ -62,7 +62,7 @@
                 margin-top: 48px;
 
                 @media screen and (max-width: 1023px) {
-                    inset-inline-end: -100px;
+                    inset-inline-start: 1.5rem;
                     inset-block-end: 0rem;
 
                     max-block-size: unset;
