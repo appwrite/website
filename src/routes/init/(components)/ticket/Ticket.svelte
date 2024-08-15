@@ -369,6 +369,7 @@
 
             .logo {
                 position: absolute;
+                left: 48px;
 
                 transform: translateY(75%) translateX(-10%);
                 z-index: 10;

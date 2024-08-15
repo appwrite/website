@@ -25,7 +25,7 @@
             description="Appwrite now supports GO functions runtime."
             url="/"
         >
-            <img src={illustration} alt="" style:margin-top="20px" />
+            <img src={illustration} alt="" />
         </Announcement>
     </Grid.Cell>
     <Grid.Cell columns={5}>
