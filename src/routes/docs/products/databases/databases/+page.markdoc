@@ -62,6 +62,29 @@ promise.then(function (response) {
     console.log(error);
 });
 ```
+```go
+package main
+
+import (
+    "fmt"
+
+	"github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+	appwriteClient := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"),
+		appwrite.WithKey("<API_KEY>"),
+	)
+
+	appwriteDatabases := appwrite.NewDatabases(appwriteClient)
+
+	promise, _ := appwriteDatabases.Create("<DATABASE_ID", "<NAME>")
+
+	fmt.Println(promise)
+}
+```
+
 ```php
 <?php
 

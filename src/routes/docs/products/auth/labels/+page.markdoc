@@ -108,6 +108,36 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/appwrite/sdk-for-go/appwrite"
+	"github.com/appwrite/sdk-for-go/client"
+	"github.com/appwrite/sdk-for-go/users"
+)
+
+var (
+	appwriteUsers  *users.Users
+)
+
+func main() {
+	appwriteClient := appwrite.NewClient(
+		appwrite.WithProject("5df5acd0d48c2"),
+		appwrite.WithKey("98fd4...a2ad2"),
+	)
+
+	appwriteUsers = appwrite.NewUsers(appwriteClient)
+
+	promise, _ := appwriteUsers.UpdateLabels("<USER_ID>", []string{"subscriber"})
+
+	fmt.Println(promise)
+}
+```
+
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 
