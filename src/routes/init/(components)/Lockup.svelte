@@ -59,7 +59,7 @@
         --stroke-width: 2;
 
         fill: none;
-        max-width: 50vw;
+        max-width: 40vw;
         margin: 0 auto;
 
         width: 100%;
