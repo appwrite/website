@@ -5,8 +5,6 @@
     export let date: Date;
 
     const { days, hours, minutes, seconds } = createCountdown(date);
-
-    console.log($hours);
 </script>
 
 <div class="web-card is-normal web-u-color-text-primary">
