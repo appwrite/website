@@ -5,7 +5,7 @@
     import serverlessCli from '../(assets)/day-1/serverless-cli.svg';
     import mobileServerlessCli from '../(assets)/day-1/serverless-cli-mobile.svg';
     import swag from '../(assets)/day-1/swag-thumb.png';
-    import thumbnail from '../(assets)/mock-thumb.png';
+    import thumbnail from '../(assets)/day-1/video-thumb.png';
 
     import Video from '../(components)/shared/Video.svelte';
     import { Grid } from '../(components)/grid';
@@ -65,7 +65,7 @@
 
     <Grid.Cell columns={6}>
         <Media title="Init Swag" url="https://discord.com" label="Enter giveaway">
-            <img src={swag} alt="" style:filter="grayscale(1)" />
+            <img src={swag} alt="" />
         </Media>
     </Grid.Cell>
     <Grid.Cell columns={6}>

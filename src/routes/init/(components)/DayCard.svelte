@@ -56,12 +56,10 @@
                 {/if}
             </span>
             <h2 class="web-label web-u-color-text-primary">
-                {format(day.release, 'MMMM dd')}
+                {format(day.release, 'MMMM dd')}<span class="web-u-color-text-accent">_</span>
             </h2>
         </div>
-        <div class="overlay">
-            <a href="/init/tickets" class="web-button is-secondary">Register</a>
-        </div>
+        <a href="/init/tickets" class="web-button is-secondary">Register</a>
     {/if}
 </div>
 
@@ -93,24 +91,6 @@
             z-index: 1000;
         }
 
-        .overlay {
-            &::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                right: 0;
-                left: 0;
-                z-index: 1;
-                background: radial-gradient(
-                    circle farthest-corner at 400px 100px,
-                    hsl(var(--web-color-background) / 0) 0%,
-                    hsl(var(--web-color-background)) 50%,
-                    hsl(var(--web-color-background)) 100%
-                );
-            }
-        }
-
         h2 {
             margin-block-start: 0.5rem !important;
             margin-block-end: 0 !important;
@@ -133,6 +113,10 @@
             display: flex;
             translate: 0 -50%;
             pointer-events: none;
+
+            :global(svg) {
+                height: 100%;
+            }
 
             a {
                 margin-top: auto;

@@ -1,7 +1,7 @@
 <script lang="ts">
     import illustration from '../(assets)/day-3/functions-announcement.svg';
     import Video from '../(components)/shared/Video.svelte';
-    import thumbnail from '../(assets)/mock-thumb.png';
+    import thumbnail from '../(assets)/day-3/video-thumb.png';
     import { Grid } from '../(components)/grid';
     import Announcement from '../(components)/shared/Announcement.svelte';
     import Media from '../(components)/shared/Media.svelte';
