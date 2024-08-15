@@ -40,3 +40,7 @@ With all Appwrite services, including databases and storage, access is granted a
 These permissions are enforced for client SDKs and server SDKs when using JWT, but are ignored when using a server SDK with an API key.
 
 {% partial file="auth-security.md" /%}
+
+# Session alerts {% #session-alerts %}
+
+Set up email alert notifications for your users so that whenever multiple sessions are created using their user account information, such as their email address, they will be alerted to the new session. The alert will be sent as an email, so user accounts must have a valid and existing email address to receive these notifications. However, users will not receive email notifications when creating their first session or using [Magic URL](/docs/products/auth/magic-url) login or [Email OTP](/docs/products/auth/email-otp) login. To toggle session alerts, navigate to **Auth** > **Security** > Session Alerts.
