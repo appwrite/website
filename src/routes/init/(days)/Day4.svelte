@@ -5,8 +5,6 @@
     import useGo from '../(assets)/day-4/use-go.svg';
     import useGoMobile from '../(assets)/day-4/use-go-mobile.svg';
 
-    import Video from '../(components)/shared/Video.svelte';
-    import thumbnail from '../(assets)/mock-thumb.png';
     import { Grid } from '../(components)/grid';
     import Announcement from '../(components)/shared/Announcement.svelte';
     import Media from '../(components)/shared/Media.svelte';
@@ -25,7 +23,7 @@
             description="Appwrite now supports GO functions runtime."
             url="/"
         >
-            <img src={illustration} alt="" />
+            <img src={illustration} alt="" style:max-inline-size="unset" />
         </Announcement>
     </Grid.Cell>
     <Grid.Cell columns={5}>
