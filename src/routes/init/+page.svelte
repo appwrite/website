@@ -83,11 +83,18 @@
         <div class="hero">
             <Hero />
 
-            <p class="web-description">The start of something new.</p>
-            <div class="buttons">
-                <a href="/init/tickets" class="web-button">Claim your ticket</a>
+            <div
+                style:margin-top="-8rem"
+                style:margin-bottom="4rem"
+                style:position="relative"
+                style:z-index="1000"
+            >
+                <p class="web-description">The start of something new.</p>
+                <div class="buttons">
+                    <a href="/init/tickets" class="web-button">Claim your ticket</a>
 
-                <button on:click={fastForward} class="web-button">Fast forward</button>
+                    <button on:click={fastForward} class="web-button">Fast forward</button>
+                </div>
             </div>
         </div>
 
