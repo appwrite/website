@@ -50,6 +50,10 @@
         .illustration {
             z-index: 0;
             margin: auto 0 0 auto;
+
+            :global(img) {
+                height: 100%;
+            }
         }
 
         p {

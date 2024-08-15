@@ -82,20 +82,7 @@
     <div style:background="#171719">
         <div class="hero">
             <Hero />
-
-            <div
-                style:margin-top="-8rem"
-                style:margin-bottom="4rem"
-                style:position="relative"
-                style:z-index="1000"
-            >
-                <p class="web-description">The start of something new.</p>
-                <div class="buttons">
-                    <a href="/init/tickets" class="web-button">Claim your ticket</a>
-
-                    <button on:click={fastForward} class="web-button">Fast forward</button>
-                </div>
-            </div>
+            <button on:click={fastForward}>Fast forward</button>
         </div>
 
         <div class="web-container">
@@ -158,27 +145,6 @@
 
         position: relative;
         overflow-x: clip;
-
-        p {
-            max-width: 23.125rem;
-            text-align: center;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 0.5rem;
-
-            padding-block-start: 1rem;
-
-            @media screen and (max-width: 1023px) {
-                flex-direction: column;
-                align-items: center;
-
-                .web-button {
-                    width: 300px;
-                }
-            }
-        }
     }
 
     .day-cards {

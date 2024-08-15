@@ -1,12 +1,11 @@
 <script lang="ts">
     import illustration from '../(assets)/day-2/cli-illustration.svg';
-    import thumbnail from '../(assets)/day-2/discord-day-2.png';
+    import thumbnail from '../(assets)/day-2/video-thumb.png';
     import ci from '../(assets)/day-2/ci-cd.svg';
     import ciMobile from '../(assets)/day-2/ci-cd-mobile.svg';
     import { Grid } from '../(components)/grid';
     import Announcement from '../(components)/shared/Announcement.svelte';
     import Media from '../(components)/shared/Media.svelte';
-    import Video from '../(components)/shared/Video.svelte';
     import Article from '../(components)/shared/Article.svelte';
     import DayCard from '../(components)/DayCard.svelte';
     import { Animations } from '../(animations)';
