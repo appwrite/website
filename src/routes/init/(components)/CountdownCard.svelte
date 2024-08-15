@@ -5,11 +5,13 @@
     export let date: Date;
 
     const { days, hours, minutes, seconds } = createCountdown(date);
+
+    console.log($hours);
 </script>
 
 <div class="web-card is-normal web-u-color-text-primary">
     <img src="/images/icons/gradients/lock.svg" alt="Lock" />
-    {#if $days > 1}
+    {#if $hours > 24}
         <p class="web-title">
             {$days}
             {$days > 1 ? 'days' : 'day'}
