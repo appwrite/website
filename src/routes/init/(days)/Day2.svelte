@@ -1,16 +1,18 @@
 <script lang="ts">
-    import illustration from '../(assets)/day-2/cli-illustration.svg';
-    import thumbnail from '../(assets)/day-2/video-thumb.png';
-    import ci from '../(assets)/day-2/ci-cd.svg';
-    import ciMobile from '../(assets)/day-2/ci-cd-mobile.svg';
+    import illustration from '../(assets)/day-3/functions-announcement.svg';
+    import Video from '../(components)/shared/Video.svelte';
+    import thumbnail from '../(assets)/day-3/video-thumb.png';
     import { Grid } from '../(components)/grid';
     import Announcement from '../(components)/shared/Announcement.svelte';
     import Media from '../(components)/shared/Media.svelte';
     import Article from '../(components)/shared/Article.svelte';
+    import functionComparison from '../(assets)/day-3/function-comparison.svg';
+    import functionComparisonMobile from '../(assets)/day-3/function-comparison-mobile.svg';
+    import dynamicKeys from '../(assets)/day-3/dynamic-keys.svg';
+    import dynamicKeysMobile from '../(assets)/day-3/dynamic-keys-mobile.svg';
     import DayCard from '../(components)/DayCard.svelte';
     import { Animations } from '../(animations)';
     import { format } from 'date-fns';
-    import BigVideo from '../(components)/shared/BigVideo.svelte';
 
     export let release: Date;
 </script>
@@ -18,48 +20,88 @@
 <Grid.Root columns={12} rows={2}>
     <Grid.Cell columns={7} rows={2}>
         <Announcement
-            title="New Appwrite CLI"
-            description="The new Appwrite CLI allows you to test your functions locally, easily migrate databases and more."
-            url="/"
+            title="Function ecosystem"
+            description="New features are being added to vastly improve your Appwrite Functions experience."
+            url="/blog/post/introducing-functions-ecosystem"
         >
-            <img src={illustration} alt="" />
+            <div class="illustration-wrapper">
+                <div class="illustration">
+                    <img src={illustration} alt="" />
+                </div>
+            </div>
         </Announcement>
     </Grid.Cell>
-    <Grid.Cell columns={5} rows={1}>
+    <Grid.Cell columns={5}>
         <Article
-            title="CI/CD examples in Appwrite CLI"
-            illustration={ci}
-            mobileIllustration={ciMobile}
-            url="/blog/post/simplify-messaging-twilio"
-            label="Read article"
+            title="Comparing serverless functions: Appwrite vs. Supabase vs. Firebase"
+            illustration={functionComparison}
+            mobileIllustration={functionComparisonMobile}
+            url="/blog/post/appwrite-vs-firebase-vs-supabase-functions-comparison"
         />
     </Grid.Cell>
-    <Grid.Cell columns={5} rows={1}>
-        <BigVideo
-            {thumbnail}
-            title="Product demo"
-            src="https://www.youtube-nocookie.com/embed/w-izHSKXqtU?si=OV30JUel_Zoq10AU&controls=0"
+    <Grid.Cell columns={5}>
+        <Article
+            title="How to leverage Appwrite Dynamic Keys for enhanced security"
+            illustration={dynamicKeys}
+            mobileIllustration={dynamicKeysMobile}
+            url="/blog/post/how-to-leverage-dynamic-api-keys-for-better-security"
         />
+    </Grid.Cell>
+
+    <Grid.Cell columns={4}>
+        <Article url="/docs/products/functions/execute" title="Docs: Binary executions" />
+    </Grid.Cell>
+    <Grid.Cell columns={4}>
+        <Article url="/docs/products/functions/develop" title="Docs: Dynamic keys" />
+    </Grid.Cell>
+    <Grid.Cell columns={4}>
+        <Article url="/docs/products/functions/executions" title="Docs: Delayed executions" />
     </Grid.Cell>
     <Grid.Cell columns={6}>
-        <Article
-            title="Docs: New Appwrite CLI"
-            url="/blog/post/simplify-messaging-twilio"
-            label="Read"
-        />
+        <Media title="Product demo" label="Watch">
+            <Video
+                src="https://www.youtube-nocookie.com/embed/G2UBTOBumII?si=2kMcQnu1SV0VcE1w&amp;controls=0"
+                title="Product demo"
+                {thumbnail}
+                --p-aspect-ratio="2.35/1"
+            />
+        </Media>
     </Grid.Cell>
     <Grid.Cell columns={6}>
-        <Media title="Discord Stage: Day 1" url="https://discord.com" label="Join">
+        <Media title="Discord Stage: Day 2" url="https://discord.com">
             <DayCard
                 day={{
-                    title: 'Day 1',
+                    title: 'Day 2',
                     release,
                     subtitle: format(release, 'MMM dd')
                 }}
                 --p-aspect-ratio="2.35/1"
             >
-                <svelte:component this={Animations.CLI} />
+                <svelte:component this={Animations.Functions} />
             </DayCard>
         </Media>
     </Grid.Cell>
 </Grid.Root>
+
+<style lang="scss">
+    .illustration-wrapper {
+        min-height: 275px;
+
+        @media screen and (max-width: 768px) {
+            min-height: 200px;
+        }
+
+        .illustration {
+            position: absolute;
+            right: -100px;
+            top: 50px;
+            height: 500px;
+
+            @media screen and (max-width: 768px) {
+                height: 350px;
+                top: 150px;
+                right: -50px;
+            }
+        }
+    }
+</style>

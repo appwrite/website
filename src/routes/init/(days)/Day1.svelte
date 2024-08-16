@@ -1,20 +1,16 @@
 <script lang="ts">
-    import announcement from '../(assets)/day-1/announcement.svg';
-    import functions from '../(assets)/day-1/serverless-functions.svg';
-    import mobileFunctions from '../(assets)/day-1/serverless-functions-mobile.svg';
-    import serverlessCli from '../(assets)/day-1/serverless-cli.svg';
-    import mobileServerlessCli from '../(assets)/day-1/serverless-cli-mobile.svg';
-    import swag from '../(assets)/day-1/swag-thumb.png';
-    import thumbnail from '../(assets)/day-1/video-thumb.png';
-
-    import Video from '../(components)/shared/Video.svelte';
+    import illustration from '../(assets)/day-2/cli-illustration.svg';
+    import thumbnail from '../(assets)/day-2/video-thumb.png';
+    import ci from '../(assets)/day-2/ci-cd.svg';
+    import ciMobile from '../(assets)/day-2/ci-cd-mobile.svg';
     import { Grid } from '../(components)/grid';
-    import Media from '../(components)/shared/Media.svelte';
     import Announcement from '../(components)/shared/Announcement.svelte';
+    import Media from '../(components)/shared/Media.svelte';
     import Article from '../(components)/shared/Article.svelte';
     import DayCard from '../(components)/DayCard.svelte';
     import { Animations } from '../(animations)';
     import { format } from 'date-fns';
+    import BigVideo from '../(components)/shared/BigVideo.svelte';
 
     export let release: Date;
 </script>
@@ -22,63 +18,47 @@
 <Grid.Root columns={12} rows={2}>
     <Grid.Cell columns={7} rows={2}>
         <Announcement
-            title="Local development"
-            description="Run and test Appwrite Functions locally and deploy only when you’re ready."
-            url="/"
+            title="New Appwrite CLI"
+            description="The new Appwrite CLI allows you to test your functions locally, easily migrate databases and more."
+            url="/blog/post/introducing-new-appwrite-cli"
         >
-            <img src={announcement} alt="" />
+            <img src={illustration} alt="" />
         </Announcement>
     </Grid.Cell>
-    <Grid.Cell columns={5}>
+    <Grid.Cell columns={5} rows={1}>
         <Article
-            title="Serverless functions 101: best practices"
-            illustration={functions}
-            mobileIllustration={mobileFunctions}
-            url="/blog/post/simplify-messaging-twilio"
+            title="CI/CD examples in Appwrite CLI"
+            illustration={ci}
+            mobileIllustration={ciMobile}
+            url="/blog/post/ci-cd-examples-in-appwrite"
+            label="Read article"
         />
     </Grid.Cell>
-    <Grid.Cell columns={5}>
-        <Article
-            title="Local serverless function development with the new Appwrite CLI"
-            illustration={serverlessCli}
-            mobileIllustration={mobileServerlessCli}
-            url="/blog/post/simplify-messaging-twilio"
+    <Grid.Cell columns={5} rows={1}>
+        <BigVideo
+            {thumbnail}
+            title="Product demo"
+            src="https://www.youtube-nocookie.com/embed/nlzFl3AHlog?si=kr3iBSKboEIf9TQi&amp;controls=0"
         />
-    </Grid.Cell>
-
-    <Grid.Cell columns={6}>
-        <Media title="Product demo" label="Watch">
-            <Video
-                src="https://www.youtube-nocookie.com/embed/GMwrHds4Oa8?si=Ijkg89IIBcAhT6TW"
-                title="Product demo"
-                {thumbnail}
-            />
-        </Media>
     </Grid.Cell>
     <Grid.Cell columns={6}>
         <Article
-            url="/docs/products/auth/server-side-rendering"
-            title="Docs: Local Development"
+            title="Docs: New Appwrite CLI"
+            url="/docs/tooling/command-line/installation"
             label="Read"
         />
     </Grid.Cell>
-
     <Grid.Cell columns={6}>
-        <Media title="Init Swag" url="https://discord.com" label="Enter giveaway">
-            <img src={swag} alt="" />
-        </Media>
-    </Grid.Cell>
-    <Grid.Cell columns={6}>
-        <Media title="Discord Stage: Day 0" url="https://discord.com" label="Join">
+        <Media title="Discord Stage: Day 1" url="https://discord.com" label="Join">
             <DayCard
                 day={{
-                    title: 'Kick off',
-                    subtitle: format(release, 'MMM dd'),
-                    release
+                    title: 'Day 1',
+                    release,
+                    subtitle: format(release, 'MMM dd')
                 }}
                 --p-aspect-ratio="2.35/1"
             >
-                <svelte:component this={Animations.LocalDev} />
+                <svelte:component this={Animations.CLI} />
             </DayCard>
         </Media>
     </Grid.Cell>

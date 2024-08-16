@@ -7,11 +7,11 @@
     import Hero from './(components)/Hero.svelte';
     import CountdownCard from './(components)/CountdownCard.svelte';
     import { Animations } from './(animations)';
+    import Day0 from './(days)/Day0.svelte';
     import Day1 from './(days)/Day1.svelte';
     import Day2 from './(days)/Day2.svelte';
     import Day3 from './(days)/Day3.svelte';
     import Day4 from './(days)/Day4.svelte';
-    import Day5 from './(days)/Day5.svelte';
     import Day from './(days)/Day.svelte';
     import EventCarousel from './(components)/EventCarousel.svelte';
     import Giveaway from './(components)/Giveaway.svelte';
@@ -21,7 +21,7 @@
     const description = 'The start of something new.';
     const ogImage = buildOpenGraphImage('init', description);
 
-    let base = new Date('2024-08-19T13:00:00.000Z');
+    let base = new Date('2024-08-11T13:00:00.000Z');
 
     $: days = [
         {
@@ -94,15 +94,15 @@
                     {@const date = `DAY ${i} - ${toReleaseDate(day.release)}`}
                     <Day day={date} release={day.release}>
                         {#if i === 0}
-                            <Day1 release={day.release} />
+                            <Day0 release={day.release} />
                         {:else if i === 1}
-                            <Day2 release={day.release} />
+                            <Day1 release={day.release} />
                         {:else if i === 2}
-                            <Day3 release={day.release} />
+                            <Day2 release={day.release} />
                         {:else if i === 3}
-                            <Day4 release={day.release} />
+                            <Day3 release={day.release} />
                         {:else if i === 4}
-                            <Day5 release={day.release} />
+                            <Day4 release={day.release} />
                         {:else}
                             <h2 class="web-eyebrow web-u-color-text-primary">
                                 <div class="web-dot" />
