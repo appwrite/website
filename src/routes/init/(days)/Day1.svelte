@@ -31,7 +31,7 @@
             illustration={ci}
             mobileIllustration={ciMobile}
             url="/blog/post/ci-cd-examples-in-appwrite"
-            label="Read article"
+            label="Learn more"
         />
     </Grid.Cell>
     <Grid.Cell columns={5} rows={1}>
@@ -39,13 +39,14 @@
             {thumbnail}
             title="Product demo"
             src="https://www.youtube-nocookie.com/embed/nlzFl3AHlog?si=kr3iBSKboEIf9TQi&amp;controls=0"
+            label="Watch"
         />
     </Grid.Cell>
     <Grid.Cell columns={6}>
         <Article
             title="Docs: New Appwrite CLI"
             url="/docs/tooling/command-line/installation"
-            label="Read"
+            label="Read docs"
         />
     </Grid.Cell>
     <Grid.Cell columns={6}>

@@ -37,6 +37,7 @@
             illustration={functionComparison}
             mobileIllustration={functionComparisonMobile}
             url="/blog/post/appwrite-vs-firebase-vs-supabase-functions-comparison"
+            label="Learn more"
         />
     </Grid.Cell>
     <Grid.Cell columns={5}>
@@ -45,17 +46,30 @@
             illustration={dynamicKeys}
             mobileIllustration={dynamicKeysMobile}
             url="/blog/post/how-to-leverage-dynamic-api-keys-for-better-security"
+            label="Learn more"
         />
     </Grid.Cell>
 
     <Grid.Cell columns={4}>
-        <Article url="/docs/products/functions/execute" title="Docs: Binary executions" />
+        <Article
+            url="/docs/products/functions/execute"
+            title="Docs: Binary executions"
+            label="Read docs"
+        />
     </Grid.Cell>
     <Grid.Cell columns={4}>
-        <Article url="/docs/products/functions/develop" title="Docs: Dynamic keys" />
+        <Article
+            url="/docs/products/functions/develop"
+            title="Docs: Dynamic keys"
+            label="Read docs"
+        />
     </Grid.Cell>
     <Grid.Cell columns={4}>
-        <Article url="/docs/products/functions/executions" title="Docs: Delayed executions" />
+        <Article
+            url="/docs/products/functions/executions"
+            title="Docs: Delayed executions"
+            label="Read docs"
+        />
     </Grid.Cell>
     <Grid.Cell columns={6}>
         <Media title="Product demo" label="Watch">
@@ -71,6 +85,7 @@
         <Media
             title="Discord Stage: Day 2"
             url="https://discord.gg/zzj9pTzB?event=1268847922590650378"
+            label="Join"
         >
             <DayCard
                 hasBorder={false}
