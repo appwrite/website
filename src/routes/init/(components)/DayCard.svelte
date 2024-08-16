@@ -43,10 +43,15 @@
     {:else}
         <div style:z-index="10" style="margin-top: auto; margin-bottom: 0;">
             <span
-                class="web-u-color-text-primary web-u-uppercase"
-                style:opacity="0.6"
+                class="web-u-color-text-primary web-eyebrow web-u-uppercase"
                 style:margin-bottom="-8px"
                 style:display="block"
+            >
+                {day.subtitle} <span class="web-u-color-text-accent">_</span>
+            </span>
+            <h2
+                class="web-title web-u-color-text-primary"
+                style="--height:3rem;--line-height:3rem;"
             >
                 {#if $hours > 24}
                     {$days} {$days > 1 ? 'days' : 'day'}
@@ -55,9 +60,6 @@
                         value={$seconds}
                     />
                 {/if}
-            </span>
-            <h2 class="web-label web-u-color-text-primary">
-                {format(day.release, 'MMMM dd')}<span class="web-u-color-text-accent">_</span>
             </h2>
         </div>
         <a href="/init/tickets" class="web-button is-secondary">Register</a>
