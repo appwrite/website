@@ -49,7 +49,7 @@
     <Grid.Cell columns={6}>
         <Media title="Product demo" label="Watch">
             <Video
-                src="https://www.youtube-nocookie.com/embed/7LN05c-ov_0?si=Gb0gS-k4M24F1AOg"
+                src="https://www.youtube-nocookie.com/embed/GMwrHds4Oa8?si=Ijkg89IIBcAhT6TW"
                 title="Product demo"
                 {thumbnail}
             />
