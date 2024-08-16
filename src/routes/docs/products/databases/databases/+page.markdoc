@@ -98,7 +98,7 @@ require 'Appwrite'
 include Appwrite
 
 client = Client.new
-    .set_project('5df5acd0d48c2') # Your project ID
+    .set_project('5df5acd0d48c2')                 # Your project ID
     .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
 
 databases = Databases.new(client)
@@ -113,7 +113,7 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 var client = new Client()
-    .SetProject("5df5acd0d48c2") // Your project ID
+    .SetProject("5df5acd0d48c2")                  // Your project ID
     .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
 var databases = new Databases(client);
@@ -130,7 +130,7 @@ void main() { // Init SDK
   Databases databases = Databases(client);
 
   client
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setProject('5df5acd0d48c2')                 // Your project ID
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
   ;
 
@@ -152,7 +152,7 @@ import io.appwrite.Client
 import io.appwrite.services.Databases
 
 val client = Client(context)
-    .setProject("5df5acd0d48c2") // Your project ID
+    .setProject("5df5acd0d48c2")                 // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
 
 val databases = Databases(client)
@@ -168,7 +168,7 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Databases;
 
 Client client = new Client()
-    .setProject("5df5acd0d48c2") // Your project ID
+    .setProject("5df5acd0d48c2")                  // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
 Databases databases = new Databases(client);
@@ -190,7 +190,7 @@ databases.create(
 import Appwrite
 
 let client = Client()
-    .setProject("5df5acd0d48c2") // Your project ID
+    .setProject("5df5acd0d48c2")                 // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
 
 let databases = Databases(client)
