@@ -75,18 +75,18 @@
 
   /* Font sizes */
   --font-size-*: initial;
-  --font-size-sm: clamp(0.7rem, 0.35vi + 0.61rem, 0.89rem);
-  --font-size-base: clamp(0.88rem, 0.57vi + 0.73rem, 1.19rem);
-  --font-size-lg: clamp(1.09rem, 0.89vi + 0.87rem, 1.58rem);
-  --font-size-xl: clamp(1.37rem, 1.35vi + 1.03rem, 2.11rem);
-  --font-size-2xl: clamp(1.71rem, 2.01vi + 1.21rem, 2.81rem);
-  --font-size-3xl: clamp(2.14rem, 2.93vi + 1.4rem, 3.75rem);
-  --font-size-4xl: clamp(2.67rem, 4.23vi + 1.61rem, 5rem);
-  --font-size-5xl: clamp(3.34rem, 6.04vi + 1.83rem, 6.66rem);
-  --font-size-6xl: clamp(4.17rem, 8.56vi + 2.03rem, 8.88rem);
-  --font-size-7xl: clamp(5.22rem, 12.04vi + 2.21rem, 11.84rem);
-  --font-size-8xl: clamp(6.52rem, 16.84vi + 2.31rem, 15.78rem);
-  --font-size-9xl: clamp(8.15rem, 23.43vi + 2.29rem, 21.03rem);
+  --font-size-sm: 0.75rem;
+  --font-size-base: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 1.75rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 2.5rem;
+  --font-size-6xl: 2.75rem;
+  --font-size-7xl: 3rem;
+  --font-size-8xl: 3.25rem;
 
   /* Breakpoints */
   --breakpoint-*: initial;
@@ -111,7 +111,12 @@
   }
 
   /* Fonts */
+  --font-family-*: initial;
+  --font-family-sans: "Inter", arial, sans-serif;
+  --font-family-mono: "Fira Code", monospace;
+  --font-family-aeonik-fono: "Aenoik Fono", monospace;
   --font-family-aeonik-pro: "Aeonik Pro", var(--font-family-sans);
+  --font-family-archia: "Archia", arial, sans-serif;
 }
 
 /* Container */
