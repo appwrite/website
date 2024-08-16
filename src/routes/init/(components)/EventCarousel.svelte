@@ -16,8 +16,8 @@
                 alt: ''
             },
             date: '2024-08-19T15:00:00.000Z',
-            title: 'Local development',
-            description: 'Discussion on serverless DevEx and challenges.',
+            title: 'Init kick off',
+            description: 'Join us each day for a special Init event from August 19th-23rd.',
             buttonText: 'View event'
         },
         {
@@ -28,8 +28,8 @@
             },
             date: '2024-08-20T15:00:00.000Z',
 
-            title: 'CLI: Vincent Ge',
-            description: 'Discussion on command line tooling.',
+            title: 'Init Day 2',
+            description: 'Join us each day for a special Init event from August 19th-23rd.',
             buttonText: 'View event'
         },
         {
@@ -40,8 +40,8 @@
             },
             date: '2024-08-21T15:00:00.000Z',
 
-            title: 'Functions ecosystem: Jim Bennett',
-            description: 'Discussion on serverless functions in general.',
+            title: 'Init Day 3',
+            description: 'Join us each day for a special Init event from August 19th-23rd.',
             buttonText: 'View event'
         },
         {
@@ -52,8 +52,8 @@
             },
             date: '2024-08-22T15:00:00.000Z',
 
-            title: 'Golang support: Demola Malomo',
-            description: 'Discussion on Golang as a language.',
+            title: 'Init Day 4',
+            description: 'Join us each day for a special Init event from August 19th-23rd.',
             buttonText: 'View event'
         },
         {
@@ -65,8 +65,7 @@
             date: '2024-08-23T15:00:00.000Z',
 
             title: 'Closing party',
-            description:
-                'Discussion will summarise Init + cover favourite announcements from speakers.',
+            description: 'Join us each day for a special Init event from August 19th-23rd.',
             buttonText: 'View event'
         }
     ];
