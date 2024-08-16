@@ -99,7 +99,6 @@ from appwrite.client import Client
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
   .set_project('<PROJECT_ID>')                  # Your project ID
   .set_jwt('eyJJ9.eyJ...886ca')                 # Your secret JSON Web Token
 )
@@ -111,7 +110,6 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1')   # Your API Endpoint
     .set_project('<PROJECT_ID>')                    # Your project ID
     .set_jwt('eyJJ9.eyJ...886ca')                   # Your secret JSON Web Token
 ```
@@ -198,7 +196,7 @@ const documents = await databases.listDocuments(
 use Appwrite\Client;
 
 $client = (new Client())
-    .setProject('<PROJECT_ID>')                           // Your project ID
+    .setProject('<PROJECT_ID>')                            // Your project ID
     .setJWT('eyJJ9.eyJ...886ca');                          // Your secret JSON Web Tokens
 
 $databases = new Databases($client);
@@ -215,8 +213,7 @@ from appwrite.client import Client
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1')              # Your API Endpoint
-  .set_project('<PROJECT_ID>')                             # Your project ID
+  .set_project('<PROJECT_ID>')                              # Your project ID
   .set_jwt('eyJJ9.eyJ...886ca')                             # Your secret JSON Web Token
 )
 
@@ -234,8 +231,7 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1')            # Your API Endpoint
-    .set_project('<PROJECT_ID>')                           # Your project ID
+    .set_project('<PROJECT_ID>')                            # Your project ID
     .set_jwt('eyJJ9.eyJ...886ca')                           # Your secret JSON Web Token
 
 databases = Databases.new(client)
@@ -387,7 +383,6 @@ from appwrite.client import Client
 
 client = Client()
 (client
-    .set_endpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .set_project('<PROJECT_ID>')                  // Your project ID
     .set_key('98fd4...a2ad2')                     // Your secret API key
 )
@@ -406,7 +401,6 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
     .set_project('<PROJECT_ID>')                  # Your project ID
     .set_key('98fd4...a2ad2')                     # Your secret API key
 

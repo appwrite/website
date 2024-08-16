@@ -131,7 +131,6 @@ from appwrite.client import Client
 from appwrite.services.databases import Databases
 
 client = (Client()
-    .set_endpoint('https://cloud.appwrite.io/v1')     # Your API Endpoint
     .set_project('<PROJECT_ID>'))                   # Your project ID
 
 databases = Databases(client)
@@ -155,7 +154,6 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1')# Your API Endpoint
     .set_project('<PROJECT_ID>')               # Your project ID
 
 databases = Databases.new(client)

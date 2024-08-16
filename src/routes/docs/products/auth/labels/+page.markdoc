@@ -55,7 +55,6 @@ from appwrite.role import Role
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
   .set_project('5df5acd0d48c2')                 # Your project ID
   .set_key('98fd4...a2ad2')                     # Your secret API key
 )
@@ -73,7 +72,6 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
     .set_project('5df5acd0d48c2')                 # Your project ID
     .set_key('98fd4...a2ad2')                     # Your secret API key
 
