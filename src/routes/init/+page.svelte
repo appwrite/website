@@ -55,6 +55,10 @@
             animation: Animations.Numbers
         }
     ] as DayType[];
+
+    const ff = () => {
+        base = addDays(base, -1);
+    };
 </script>
 
 <svelte:head>
@@ -78,6 +82,7 @@
     <div style:background="#171719">
         <div class="hero">
             <Hero />
+            <button on:click={ff}>Fast forward</button>
         </div>
 
         <div class="web-container">
