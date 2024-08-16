@@ -66,7 +66,10 @@
         .illustration {
             object-fit: cover;
             height: 100%;
-            max-height: 150px;
+
+            @media screen and (max-width: 768px) {
+                max-height: 150px;
+            }
         }
 
         @media screen and (max-width: 768px) {
