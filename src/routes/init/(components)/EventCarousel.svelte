@@ -101,6 +101,7 @@
         background: hsl(var(--web-color-background));
         border-bottom: 1px solid hsl(var(--web-color-offset));
         border-top: 1px solid hsl(var(--web-color-offset));
+        margin-top: 160px;
 
         @media screen and (max-width: 768px) {
             margin-top: 40px;
