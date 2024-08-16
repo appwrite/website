@@ -4,8 +4,7 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import { createCopy } from '$lib/utils/copy';
-    import TicketPreview from '$routes/init/(components)/TicketPreview.svelte';
-    import Ticket from '../../(components)/Ticket.svelte';
+    import { TicketPreview, Ticket } from '$routes/init/(components)/ticket';
 
     export let data;
 
