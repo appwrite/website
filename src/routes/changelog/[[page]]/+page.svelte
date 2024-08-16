@@ -2,17 +2,18 @@
     import { goto } from '$app/navigation';
     import { FooterNav, MainFooter, PreFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { onMount } from 'svelte';
     import ChangelogEntry from '../ChangelogEntry.svelte';
     import { page } from '$app/stores';
     import { CHANGELOG_KEY } from '../utils';
+    import { TITLE_SUFFIX } from '$routes/titles';
 
     export let data;
 
     const seo = {
-        title: 'Changelog',
-        description: DEFAULT_DESCRIPTION,
+        title: 'Changelog' + TITLE_SUFFIX,
+        description: 'Check out our detailed changelog to see what\'s new and what updates have been made to Appwrite Cloud and Self Hosted.',
         ogImage: `${DEFAULT_HOST}/images/open-graph/website.png`
     };
 

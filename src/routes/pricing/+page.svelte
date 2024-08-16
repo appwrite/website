@@ -1,15 +1,16 @@
 <script lang="ts">
     import { FooterNav, MainFooter, PreFooter } from '$lib/components';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
 
     import { Main } from '$lib/layouts';
     import { TITLE_SUFFIX } from '$routes/titles';
     import ComparePlans from './compare-plans.svelte';
     import Faq from './faq.svelte';
     import BG from './bg.png?enhanced';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     const title = 'Pricing' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description = 'Explore our straightforward pricing plans that scale with your project.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
@@ -79,7 +80,7 @@
                                                 For personal hobby projects and students.
                                             </p>
                                             <a
-                                                href="https://cloud.appwrite.io/register"
+                                                href="{PUBLIC_APPWRITE_DASHBOARD}/register"
                                                 class="web-button is-secondary is-full-width u-margin-block-start-32"
                                             >
                                                 <span class="web-sub-body-500">Start building</span>
@@ -172,7 +173,7 @@
                                             <div
                                                 class="web-title web-u-color-text-primary u-margin-block-start-8"
                                             >
-                                                $685
+                                                $599
                                             </div>
                                             <div class="u-margin-block-start-4">
                                                 per organization/month
@@ -189,16 +190,17 @@
                                             </button>
                                         </header>
                                         <div class="web-pricing-cards-content">
-                                            <p>Everything in Pro and:</p>
+                                            <p>Everything in Pro, plus:</p>
                                             <ul class="web-checked-list-circle">
-                                                <li><span>5TB bandwidth</span></li>
-                                                <li><span>500GB storage</span></li>
-                                                <li><span>10M executions</span></li>
-                                                <li><span>500K monthly active users</span></li>
-                                                <li><span>Priority support</span></li>
-                                                <li><span>14-day log retention</span></li>
-                                                <li><span>Additional organization roles</span></li>
+                                                <li><span>Unlimited seats</span></li>
+                                                <li><span>SOC-2</span></li>
+                                                <li><span>BAA</span></li>
+                                                <li><span>Network logs</span></li>
+                                                <li><span>28-day log retention</span></li>
+                                                <li><span>Organization roles</span></li>
                                                 <li><span>SSO</span></li>
+                                                <li><span>Activity logs</span></li>
+                                                <li><span>Priority support</span></li>
                                             </ul>
                                         </div>
                                     </div>
