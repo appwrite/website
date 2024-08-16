@@ -32,7 +32,7 @@
             title: 'Visual Designer'
         },
         {
-            name: 'Kushboo',
+            name: 'Khushboo',
             title: 'Platform Engineer'
         }
     ];
