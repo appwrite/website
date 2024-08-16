@@ -16,8 +16,8 @@
                 alt: ''
             },
             date: '2024-08-19T15:00:00.000Z',
-            title: 'Init kick off',
-            description: 'Join us each day for a special Init event from 19-23 Aug.',
+            title: 'Local development',
+            description: 'Discussion on serverless DevEx and challenges.',
             buttonText: 'View event'
         },
         {
@@ -28,8 +28,8 @@
             },
             date: '2024-08-20T15:00:00.000Z',
 
-            title: 'Guest speaker: Hitesh Choudhary',
-            description: 'Join us each day for a special Init event from 19-23 Aug.',
+            title: 'CLI: Vincent Ge',
+            description: 'Discussion on command line tooling.',
             buttonText: 'View event'
         },
         {
@@ -40,8 +40,8 @@
             },
             date: '2024-08-21T15:00:00.000Z',
 
-            title: 'Guest speaker: Jessica Temporal',
-            description: 'Join us each day for a special Init event from 19-23 Aug.',
+            title: 'Functions ecosystem: Jim Bennett',
+            description: 'Discussion on serverless functions in general.',
             buttonText: 'View event'
         },
         {
@@ -52,8 +52,8 @@
             },
             date: '2024-08-22T15:00:00.000Z',
 
-            title: 'Guest speaker: Danny Thompson',
-            description: 'Join us each day for a special Init event from 19-23 Aug.',
+            title: 'Golang support: Demola Malomo',
+            description: 'Discussion on Golang as a language.',
             buttonText: 'View event'
         },
         {
@@ -65,7 +65,8 @@
             date: '2024-08-23T15:00:00.000Z',
 
             title: 'Closing party',
-            description: 'Join us each day for a special Init event from 19-23 Aug.',
+            description:
+                'Discussion will summarise Init + cover favourite announcements from speakers.',
             buttonText: 'View event'
         }
     ];
