@@ -287,6 +287,42 @@ const message = await messaging.createPush(
         ''                                       // scheduledAt (optional)
     );
 ```
+```go
+package main
+
+import (
+	"github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+	appwriteClient := appwrite.NewClient(
+		appwrite.WithProject("5df5acd0d48c2"),                 // Your project ID
+		appwrite.WithKey("919c2d18fb5d4...a2ae413da83346ad2"), // Your secret API key
+	)
+
+	appwriteMessaging := appwrite.NewMessaging(appwriteClient)
+
+	var _, _ = appwriteMessaging.CreatePush(
+		"<MESSAGING_ID>",                                               // messageId
+		"<TITLE>",                                                      // title
+		"<BODY>",                                                       // body
+		appwriteMessaging.WithCreatePushTopics([]string{}),             // topics (optional)
+		appwriteMessaging.WithCreatePushUsers([]string{}),              // users (optional)
+		appwriteMessaging.WithCreatePushTargets([]string{}),            // targets (optional)
+		appwriteMessaging.WithCreatePushData(map[string]interface{}{}), // data (optional)
+		appwriteMessaging.WithCreatePushAction("<ACTION>"),             // action (optional)
+        appwriteMessaging.WithCreatePushImage("[ID1:ID2]"),             // image (optional)
+		appwriteMessaging.WithCreatePushIcon("<ICON>"),                 // icon (optional)
+		appwriteMessaging.WithCreatePushSound("<SOUND>"),               // sound (optional)
+		appwriteMessaging.WithCreatePushColor("<COLOR>"),               // color (optional)
+		appwriteMessaging.WithCreatePushTag("<TAG>"),                   // tag (optional)
+		appwriteMessaging.WithCreatePushBadge("<BADGE>"),               // badge (optional)
+		appwriteMessaging.WithCreatePushDraft(false),                   // draft (optional)
+		appwriteMessaging.WithCreatePushScheduledAt(""),                // scheduledAt (optional)
+	)
+}
+```
+
 ```php
 <?php
 
