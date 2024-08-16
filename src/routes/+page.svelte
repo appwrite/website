@@ -99,13 +99,15 @@
               </span>
             </h1>
             <div class="u-cross-child-end">
-              <p class="web-description">
+              <p class="web-description mt-5">
                 Build your entire backend within minutes and scale effortlessly
                 using Appwrite's open-source platform. Add Authentication,
                 Databases, Functions, Storage, and Messaging to your projects
                 using the frameworks and languages of your choice.
               </p>
-              <Button href="https://cloud.appwrite.io">Get started</Button>
+              <Button href="https://cloud.appwrite.io" class="mt-8"
+                >Get started</Button
+              >
             </div>
           </div>
         </section>
@@ -134,11 +136,9 @@
     <div
       class="web-big-padding-section-level-1 web-white-section light relative"
     >
-      <div
-        class="u-inset-block-end-0 u-inset-inline-start u-width-full-line absolute"
-      >
+      <div class="u-inset-block-end-0 u-inset-inline-start absolute w-full">
         <img
-          class="u-width-full-line block"
+          class="u-width-full-line block w-full"
           src="/images/bgs/padding-section-1.svg"
           alt=""
           style:max-height="48rem"
@@ -356,9 +356,7 @@
 
     <div class="web-big-padding-section-level-1 relative overflow-hidden">
       <div
-        class="web-is-not-mobile absolute"
-        style:inline-size="768px"
-        style:block-size="768px"
+        class="web-is-not-mobile absolute mt-0 h-[calc(var(--spacing-96)_*_2)] w-[calc(var(--spacing-96)_*_2)]"
         style:inset-block-start="0rem"
         style:z-index="-1"
         style:left="calc(50% - 384px + 350px)"
@@ -378,18 +376,14 @@
             <h2 class="web-display web-u-color-text-primary u-max-width-600">
               Code the way you want
             </h2>
-            <p class="web-description u-max-width-600">
+            <p class="web-description max-w-xl">
               We support many SDKs making Appwrite flexible to your needs and
               ensuring you can code with the language you want at any time.
             </p>
             <Technologies />
-            <a
-              href="/docs/sdks"
-              class="web-button is-secondary"
-              style:align-self="start"
-            >
-              <span class="web-sub-body-500">Explore all SDKs</span>
-            </a>
+            <Button href="/docs/sdks" intent="secondary">
+              Explore all SDKs
+            </Button>
           </section>
         </div>
       </div>

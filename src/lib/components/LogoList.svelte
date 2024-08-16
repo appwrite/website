@@ -81,7 +81,7 @@
 <div class="my-32">
   <div class="container">
     <h2
-      class="font-aeonik-pro text-greyscale-100 mx-auto max-w-[600px] text-center text-xl leading-10"
+      class="font-aeonik-pro text-greyscale-100 mx-auto max-w-xl text-center text-4xl leading-10"
     >
       {title}
     </h2>
