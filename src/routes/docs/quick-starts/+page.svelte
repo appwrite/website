@@ -120,22 +120,28 @@
                     href: 'python'
                 },
                 {
-                    title: '.NET',
-                    icon: 'icon-dotnet',
-                    image: '/images/blog/placeholder.png',
-                    href: 'dotnet'
-                },
-                {
                     title: 'Dart',
                     icon: 'icon-dart',
                     image: '/images/blog/placeholder.png',
                     href: 'dart'
                 },
                 {
+                    title: 'PHP',
+                    icon: 'icon-php',
+                    image: '/images/blog/placeholder.png',
+                    href: 'php'
+                },
+                 {
                     title: 'Ruby',
                     icon: 'icon-ruby',
                     image: '/images/blog/placeholder.png',
                     href: 'ruby'
+                },
+                {
+                    title: '.NET',
+                    icon: 'icon-dotnet',
+                    image: '/images/blog/placeholder.png',
+                    href: 'dotnet'
                 },
                 {
                     title: 'Deno',
@@ -144,10 +150,16 @@
                     href: 'deno'
                 },
                 {
-                    title: 'PHP',
-                    icon: 'icon-php',
+                    title: 'Go',
+                    icon: 'icon-go',
                     image: '/images/blog/placeholder.png',
-                    href: 'php'
+                    href: 'go'
+                },
+                {
+                    title: 'Swift',
+                    icon: 'icon-swift',
+                    image: '/images/blog/placeholder.png',
+                    href: 'swift'
                 },
                 {
                     title: 'Kotlin',
@@ -155,18 +167,12 @@
                     image: '/images/blog/placeholder.png',
                     href: 'kotlin'
                 },
-                {
-                    title: 'Swift',
-                    icon: 'icon-swift',
-                    image: '/images/blog/placeholder.png',
-                    href: 'swift'
-                }
             ]
         }
     ];
 
     const title = 'Quick starts' + DOCS_TITLE_SUFFIX;
-    const description = '';
+    const description = 'Get started with your favorite framework and language in just a few clicks.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 </script>
 

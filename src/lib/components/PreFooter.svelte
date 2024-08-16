@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 </script>
 
 <img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg" style="z-index:-1" />
@@ -9,7 +10,7 @@
             Start building today
         </h2>
         <a
-            href="https://cloud.appwrite.io"
+            href={PUBLIC_APPWRITE_DASHBOARD}
             class="web-button is-transparent web-u-cross-child-center"
         >
             <span class="text">Get started</span>
@@ -36,7 +37,7 @@
                         For personal hobby projects and students.
                     </p>
                     <a
-                        href="https://cloud.appwrite.io/register"
+                        href={`${PUBLIC_APPWRITE_DASHBOARD}/register`}
                         class="web-button is-secondary is-full-width-mobile web-u-cross-child-end"
                     >
                         <span class="text">Get started</span>
@@ -54,7 +55,7 @@
                         For pro developers and teams that need to scale their products.
                     </p>
                     <a
-                        href="https://cloud.appwrite.io/console?type=createPro"
+                        href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=createPro`}
                         class="web-button is-full-width-mobile web-u-cross-child-end"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -68,7 +69,7 @@
                 <div class="web-strip-plans-item-wrapper">
                     <div class="web-strip-plans-plan">
                         <h4 class="title web-description">Scale</h4>
-                        <div class="web-title web-u-color-text-primary">$685</div>
+                        <div class="web-title web-u-color-text-primary">$599</div>
                         <div class="info web-caption-500">per org/month</div>
                     </div>
                     <p class="web-strip-plans-info web-caption-500">
