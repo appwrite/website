@@ -21,7 +21,7 @@
     const description = 'The start of something new.';
     const ogImage = buildOpenGraphImage('init', description);
 
-    let base = new Date('2024-08-19T15:00:00.000Z');
+    let base = new Date('2024-08-19T08:00:00.000Z');
 
     $: days = [
         {
@@ -55,10 +55,6 @@
             animation: Animations.Numbers
         }
     ] as DayType[];
-
-    const fastForward = () => {
-        base = addDays(base, -1);
-    };
 </script>
 
 <svelte:head>
@@ -82,7 +78,6 @@
     <div style:background="#171719">
         <div class="hero">
             <Hero />
-            <button on:click={fastForward}>Fast forward</button>
         </div>
 
         <div class="web-container">
