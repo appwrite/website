@@ -1,6 +1,8 @@
 <script context="module" lang="ts">
+	import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+
 	export async function newsletter(name: string, email: string) {
-		const response = await fetch('https://growth.appwrite.io/v1/newsletter/subscribe', {
+		const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/newsletter/subscribe`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
