@@ -23,10 +23,6 @@
 
     let base = new Date('2024-08-19T13:00:00.000Z');
 
-    const ff = () => {
-        base = addDays(base, -1);
-    };
-
     $: days = [
         {
             title: 'Local development',
@@ -82,8 +78,6 @@
     <div style:background="#171719">
         <div class="hero">
             <Hero />
-
-            <button on:click={ff}>Fast forward</button>
         </div>
 
         <div class="web-container">
