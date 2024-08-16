@@ -117,6 +117,24 @@ client
 
 const message - await messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
 ```
+```go
+package main
+
+import (
+	"github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+	appwriteClient := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"), // Your project ID
+		appwrite.WithKey("<API_KEY>"), // Your secret API key
+	)
+
+	appwriteMessaging := appwrite.NewMessaging(appwriteClient)
+
+	var _, _ = appwriteMessaging.CreateEmail("<EMAIL_ID>", "<SUBJECT>", "<CONTENT>")
+}
+```
 ```php
 <?php
 
@@ -368,6 +386,35 @@ messaging.deleteProvider('<PROVIDER_ID>')
     console.log(error);
 });
 ```
+
+```go
+package main
+
+import (
+	"github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+	appwriteClient := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"), // Your project ID
+		appwrite.WithKey("<API_KEY>"), // Your secret API key
+	)
+
+	appwriteMessaging := appwrite.NewMessaging(appwriteClient)
+
+	appwriteMessaging.UpdateSendgridProvider(
+		"<PROVIDER_ID>",
+		appwriteMessaging.WithUpdateSendgridProviderName("<NAME>"),
+		appwriteMessaging.WithUpdateSendgridProviderEnabled(false),
+		appwriteMessaging.WithUpdateSendgridProviderApiKey("<API_KEY>"),
+		appwriteMessaging.WithUpdateSendgridProviderFromName("<FROM_NAME>"),
+		appwriteMessaging.WithUpdateSendgridProviderFromEmail("email@example.com"),
+		appwriteMessaging.WithUpdateSendgridProviderReplyToName("<REPLY_TO_NAME>"),
+		appwriteMessaging.WithUpdateSendgridProviderReplyToEmail("<REPLY_TO_EMAIL>"),
+	)
+}
+```
+
 ```php
 <?php
 

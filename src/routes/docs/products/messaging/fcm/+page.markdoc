@@ -140,6 +140,29 @@ const provider = await messaging.updateFCMProvider(
         {}                                       // serviceAccountJSON (optional)
     );
 ```
+```go
+package main
+
+import (
+	"github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+	appwriteClient := appwrite.NewClient(
+		appwrite.WithProject("5df5acd0d48c2"),                                               // Your project ID
+		appwrite.WithKey("919c2d18fb5d4...a2ae413da83346ad2"),                               // Your secret API key
+	)
+
+	appwriteMessaging := appwrite.NewMessaging(appwriteClient)
+
+	var _, _ = appwriteMessaging.UpdateFcmProvider(
+		"<PROVIDER_ID>", // providerId
+		appwriteMessaging.WithUpdateFcmProviderName("<NAME>"),                               // name (optional)
+		appwriteMessaging.WithUpdateFcmProviderEnabled(false),                               // enabled (optional)
+		appwriteMessaging.WithUpdateFcmProviderServiceAccountJSON(map[string]interface{}{}), // serviceAccountJSON (optional)
+	)
+}
+```
 ```php
 <?php
 
@@ -211,7 +234,7 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 var client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .SetEndPoint("https://cloud.appwrite.io/v1")  // Your API Endpoint
     .SetProject("5df5acd0d48c2")                  // Your project ID
     .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 

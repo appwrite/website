@@ -149,6 +149,32 @@ const provider = await messaging.updateAPNSProvider(
         '[BUNDLE_ID]'                            // bundleId (optional)
     );
 ```
+```go
+package main
+
+import (
+	"github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+	appwriteClient := appwrite.NewClient(
+		appwrite.WithProject("5df5acd0d48c2"),                 // Your project ID
+		appwrite.WithKey("919c2d18fb5d4...a2ae413da83346ad2"), // Your secret API key
+	)
+
+	appwriteMessaging := appwrite.NewMessaging(appwriteClient)
+
+	var _, _ = appwriteMessaging.UpdateApnsProvider(
+		"<PROVIDER_ID>", // providerId
+		appwriteMessaging.WithUpdateApnsProviderName("<NAME>"),             // name (optional)
+		appwriteMessaging.WithUpdateApnsProviderEnabled(false),             // enabled (optional)
+		appwriteMessaging.WithUpdateApnsProviderAuthKey("<AUTH_KEY>"),      // authKey (optional)
+		appwriteMessaging.WithUpdateApnsProviderAuthKeyId("<AUTH_KEY_ID>"), // authKeyId (optional)
+		appwriteMessaging.WithUpdateApnsProviderTeamId("<TEAM_ID>"),        // teamId (optional)
+		appwriteMessaging.WithUpdateApnsProviderBundleId("<BUNDLE_ID>"),    // bundleId (optional)
+	)
+}
+```
 ```php
 <?php
 
