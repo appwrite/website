@@ -83,9 +83,11 @@
         <div class="web-container">
             <div class="day-cards">
                 {#each days as day, i (day.release.toISOString())}
-                    <DayCard {day} --p-aspect-ratio="5/2">
-                        <svelte:component this={day.animation} />
-                    </DayCard>
+                    <a href="#day-{i}" style="display:contents;">
+                        <DayCard {day} --p-aspect-ratio="5/2">
+                            <svelte:component this={day.animation} />
+                        </DayCard>
+                    </a>
                 {/each}
             </div>
             <hr />
@@ -93,6 +95,7 @@
                 {#each days as day, i}
                     {@const date = `DAY ${i} - ${toReleaseDate(day.release)}`}
                     <Day day={date} release={day.release}>
+                        <div id="day-{i}" style:scroll-margin="100px" />
                         {#if i === 0}
                             <Day0 release={day.release} />
                         {:else if i === 1}
