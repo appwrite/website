@@ -1,15 +1,15 @@
 <script lang="ts">
-    import illustration from '../(assets)/day-3/functions-announcement.svg';
+    import illustration from '../(assets)/day-2/functions-announcement.svg';
     import Video from '../(components)/shared/Video.svelte';
-    import thumbnail from '../(assets)/day-3/video-thumb.png';
+    import thumbnail from '../(assets)/day-2/video-thumb.png';
     import { Grid } from '../(components)/grid';
     import Announcement from '../(components)/shared/Announcement.svelte';
     import Media from '../(components)/shared/Media.svelte';
     import Article from '../(components)/shared/Article.svelte';
-    import functionComparison from '../(assets)/day-3/function-comparison.svg';
-    import functionComparisonMobile from '../(assets)/day-3/function-comparison-mobile.svg';
-    import dynamicKeys from '../(assets)/day-3/dynamic-keys.svg';
-    import dynamicKeysMobile from '../(assets)/day-3/dynamic-keys-mobile.svg';
+    import functionComparison from '../(assets)/day-2/function-comparison.svg';
+    import functionComparisonMobile from '../(assets)/day-2/function-comparison-mobile.svg';
+    import dynamicKeys from '../(assets)/day-2/dynamic-keys.svg';
+    import dynamicKeysMobile from '../(assets)/day-2/dynamic-keys-mobile.svg';
     import DayCard from '../(components)/DayCard.svelte';
     import { Animations } from '../(animations)';
     import { format } from 'date-fns';
@@ -73,6 +73,7 @@
             url="https://discord.gg/zzj9pTzB?event=1268847922590650378"
         >
             <DayCard
+                hasBorder={false}
                 day={{
                     title: 'Day 2',
                     release,

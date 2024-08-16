@@ -16,11 +16,12 @@
     import { format } from 'date-fns';
 
     export let day: DayType;
+    export let hasBorder: boolean = true;
 
     const { hasReleased, days, hours, minutes, seconds } = createCountdown(day.release);
 </script>
 
-<div class="day">
+<div class="day" class:border={hasBorder}>
     {#if hasReleased}
         <div style:z-index="10" style="margin-top: auto; margin-bottom: 0;">
             <span
@@ -67,13 +68,7 @@
     @use '$scss/abstract/mixins/border-gradient' as gradients;
 
     .day {
-        @include gradients.border-gradient;
-        --m-border-radius: 1rem;
-        --m-border-gradient-before: linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.12) 0%,
-            rgba(255, 255, 255, 0) 125.11%
-        );
+        border-radius: var(--m-border-radius);
         height: 100%;
 
         aspect-ratio: var(--p-aspect-ratio);
@@ -86,6 +81,16 @@
         background: hsl(var(--web-color-subtle));
         overflow: hidden;
         flex: 0 0 var(--day-min-w);
+
+        &.border {
+            @include gradients.border-gradient;
+            --m-border-radius: 1rem;
+            --m-border-gradient-before: linear-gradient(
+                180deg,
+                rgba(255, 255, 255, 0.12) 0%,
+                rgba(255, 255, 255, 0) 125.11%
+            );
+        }
 
         &::before {
             z-index: 1000;

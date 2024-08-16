@@ -97,10 +97,14 @@
 
 <style lang="scss">
     .carousel {
-        margin-top: 160px;
         padding: 80px 0;
         background: hsl(var(--web-color-background));
         border-bottom: 1px solid hsl(var(--web-color-offset));
         border-top: 1px solid hsl(var(--web-color-offset));
+
+        @media screen and (max-width: 768px) {
+            margin-top: 40px;
+            padding: 40px 0;
+        }
     }
 </style>
