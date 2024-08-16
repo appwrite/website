@@ -1,9 +1,9 @@
 <script lang="ts">
-    import illustration from '../(assets)/day-4/go-announcement.svg';
-    import buildWithGo from '../(assets)/day-4/build-with-go.svg';
-    import buildWithGoMobile from '../(assets)/day-4/build-with-go-mobile.svg';
-    import useGo from '../(assets)/day-4/use-go.svg';
-    import useGoMobile from '../(assets)/day-4/use-go-mobile.svg';
+    import illustration from '../(assets)/day-3/go-announcement.svg';
+    import buildWithGo from '../(assets)/day-3/build-with-go.svg';
+    import buildWithGoMobile from '../(assets)/day-3/build-with-go-mobile.svg';
+    import useGo from '../(assets)/day-3/use-go.svg';
+    import useGoMobile from '../(assets)/day-3/use-go-mobile.svg';
 
     import { Grid } from '../(components)/grid';
     import Announcement from '../(components)/shared/Announcement.svelte';
@@ -23,7 +23,7 @@
             description="Appwrite now supports GO functions runtime."
             url="/blog/post/announcing-go-support"
         >
-            <img src={illustration} alt="" style:max-inline-size="unset" />
+            <img src={illustration} alt="" />
         </Announcement>
     </Grid.Cell>
     <Grid.Cell columns={5}>
@@ -52,6 +52,7 @@
             url="https://discord.gg/zzj9pTzB?event=1268848051007782963"
         >
             <DayCard
+                hasBorder={false}
                 day={{
                     title: 'Day 3',
                     release,

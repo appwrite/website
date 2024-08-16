@@ -36,6 +36,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 32px;
             .buttons {
                 display: flex;
                 gap: 0.5rem;

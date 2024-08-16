@@ -1,9 +1,9 @@
 <script lang="ts">
-    import illustration from '../(assets)/day-5/mock-numbers-announcement.svg';
-    import mockNumbers from '../(assets)/day-5/mock-numbers.svg';
-    import mockNumbersMobile from '../(assets)/day-5/mock-numbers-mobile.svg';
-    import contributors from '../(assets)/day-5/contributors.svg';
-    import contributorsMobile from '../(assets)/day-5/contributors-mobile.svg';
+    import illustration from '../(assets)/day-4/mock-numbers-announcement.svg';
+    import mockNumbers from '../(assets)/day-4/mock-numbers.svg';
+    import mockNumbersMobile from '../(assets)/day-4/mock-numbers-mobile.svg';
+    import contributors from '../(assets)/day-4/contributors.svg';
+    import contributorsMobile from '../(assets)/day-4/contributors-mobile.svg';
     import { Grid } from '../(components)/grid';
     import Announcement from '../(components)/shared/Announcement.svelte';
     import Media from '../(components)/shared/Media.svelte';
@@ -54,6 +54,7 @@
             url="https://discord.gg/zzj9pTzB?event=1268848185422381118"
         >
             <DayCard
+                hasBorder={false}
                 day={{
                     title: 'Closing party',
                     release,

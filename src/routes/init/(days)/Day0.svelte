@@ -1,11 +1,11 @@
 <script lang="ts">
-    import announcement from '../(assets)/day-1/announcement.svg';
-    import functions from '../(assets)/day-1/serverless-functions.svg';
-    import mobileFunctions from '../(assets)/day-1/serverless-functions-mobile.svg';
-    import serverlessCli from '../(assets)/day-1/serverless-cli.svg';
-    import mobileServerlessCli from '../(assets)/day-1/serverless-cli-mobile.svg';
-    import swag from '../(assets)/day-1/swag-thumb.png';
-    import thumbnail from '../(assets)/day-1/video-thumb.png';
+    import announcement from '../(assets)/day-0/announcement.svg';
+    import functions from '../(assets)/day-0/serverless-functions.svg';
+    import mobileFunctions from '../(assets)/day-0/serverless-functions-mobile.svg';
+    import serverlessCli from '../(assets)/day-0/serverless-cli.svg';
+    import mobileServerlessCli from '../(assets)/day-0/serverless-cli-mobile.svg';
+    import swag from '../(assets)/day-0/swag-thumb.png';
+    import thumbnail from '../(assets)/day-0/video-thumb.png';
 
     import Video from '../(components)/shared/Video.svelte';
     import { Grid } from '../(components)/grid';
@@ -75,6 +75,7 @@
             label="Join"
         >
             <DayCard
+                hasBorder={false}
                 day={{
                     title: 'Kick off',
                     subtitle: format(release, 'MMM dd'),

@@ -55,6 +55,10 @@
         gap: 32px;
         background-color: hsl(var(--web-color-subtle));
 
+        &:hover {
+            background-color: hsl(var(--web-color-greyscale-800));
+        }
+
         h3 {
             text-wrap: pretty;
         }
@@ -62,10 +66,12 @@
         .illustration {
             object-fit: cover;
             height: 100%;
+            max-height: 150px;
         }
 
         @media screen and (max-width: 768px) {
             flex-direction: column;
+            max-height: 375px;
         }
     }
 </style>

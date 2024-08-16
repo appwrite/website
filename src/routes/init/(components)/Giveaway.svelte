@@ -6,7 +6,7 @@
 <div class="wrapper">
     <div class="web-container">
         <div class="details">
-            <h3 class="web-label">Get a ticket and enter our<br /> special Init giveaway</h3>
+            <h3 class="web-label">Get a ticket and enter our special Init giveaway</h3>
             <p class="web-u-color-text-secondary">
                 Create, customize, and share your Init ticket to enter our general giveaway.
             </p>
@@ -53,17 +53,27 @@
                 position: relative;
                 z-index: 100;
                 color: #fff;
-                margin: 0 auto;
                 display: flex;
                 flex-direction: column;
                 gap: 16px;
+                text-align: center;
+                align-items: center;
+
+                @media screen and (min-width: 768px) {
+                    max-width: 25%;
+                    text-align: left;
+                    align-items: baseline;
+                }
             }
 
             .web-card {
-                flex-basis: 50%;
+                flex-basis: 40%;
             }
 
             .img {
+                @media screen and (min-width: 768px) {
+                    order: 1;
+                }
                 img {
                     border-radius: 12px;
                     height: 100%;

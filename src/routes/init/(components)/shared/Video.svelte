@@ -19,7 +19,7 @@
 </script>
 
 <VideoWrapper let:openVideo>
-    <button on:click={openVideo} style="height:100%;">
+    <button on:click={openVideo} style="height:100%;display:block;">
         <div class="wrapper" use:melt={$trigger}>
             <img class="img" src={thumbnail} alt="" />
             <div class="play">

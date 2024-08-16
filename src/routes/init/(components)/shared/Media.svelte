@@ -54,6 +54,10 @@
         height: 100%;
         gap: 16px;
 
+        &:hover {
+            background-color: hsl(var(--web-color-greyscale-800));
+        }
+
         @media screen and (max-width: 768px) {
             flex-direction: column;
         }
@@ -71,6 +75,7 @@
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+                display: block;
             }
         }
     }
