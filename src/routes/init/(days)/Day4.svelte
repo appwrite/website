@@ -49,7 +49,10 @@
         <Article url="/docs/products/auth/phone-sms" title="Docs: Mock numbers" />
     </Grid.Cell>
     <Grid.Cell columns={6}>
-        <Media title="Discord Stage: Day 4" url="https://discord.com">
+        <Media
+            title="Discord Stage: Day 4"
+            url="https://discord.gg/zzj9pTzB?event=1268848185422381118"
+        >
             <DayCard
                 day={{
                     title: 'Closing party',
