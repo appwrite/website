@@ -32,6 +32,7 @@
             illustration={buildWithGo}
             mobileIllustration={buildWithGoMobile}
             url="/blog/post/3-things-you-can-build-with-go-runtime"
+            label="Learn more"
         />
     </Grid.Cell>
     <Grid.Cell columns={5}>
@@ -40,16 +41,18 @@
             illustration={useGo}
             mobileIllustration={useGoMobile}
             url="/blog/post/what-is-golang"
+            label="Learn more"
         />
     </Grid.Cell>
 
     <Grid.Cell columns={6}>
-        <Article url="/docs/quick-starts/go" title="Docs: GO support" />
+        <Article url="/docs/quick-starts/go" title="Docs: GO support" label="Read docs" />
     </Grid.Cell>
     <Grid.Cell columns={6}>
         <Media
             title="Discord Stage: Day 3"
             url="https://discord.gg/zzj9pTzB?event=1268848051007782963"
+            label="Join"
         >
             <DayCard
                 hasBorder={false}

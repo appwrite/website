@@ -35,6 +35,7 @@
             illustration={functions}
             mobileIllustration={mobileFunctions}
             url="/blog/post/serverless-functions-best-practices"
+            label="Learn more"
         />
     </Grid.Cell>
     <Grid.Cell columns={5}>
@@ -43,6 +44,7 @@
             illustration={serverlessCli}
             mobileIllustration={mobileServerlessCli}
             url="/blog/post/functions-local-development-guide"
+            label="Learn more"
         />
     </Grid.Cell>
 
@@ -59,7 +61,7 @@
         <Article
             url="/docs/products/functions/develop-locally"
             title="Docs: Local Development"
-            label="Read"
+            label="Read docs"
         />
     </Grid.Cell>
 

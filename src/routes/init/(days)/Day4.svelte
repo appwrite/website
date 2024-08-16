@@ -31,6 +31,7 @@
             illustration={mockNumbers}
             mobileIllustration={mockNumbersMobile}
             url="/blog/post/mock-numbers-best-practices"
+            label="Learn more"
         />
     </Grid.Cell>
     <Grid.Cell columns={5}>
@@ -39,19 +40,25 @@
             illustration={contributors}
             mobileIllustration={contributorsMobile}
             url="/blog/post/contributors-1.6"
+            label="Learn more"
         />
     </Grid.Cell>
 
     <Grid.Cell columns={3}>
-        <Article url="/blog/post/designing-init-event-logo" title="Designing Init" />
+        <Article
+            url="/blog/post/designing-init-event-logo"
+            title="Designing Init"
+            label="Learn more"
+        />
     </Grid.Cell>
     <Grid.Cell columns={3}>
-        <Article url="/docs/products/auth/phone-sms" title="Docs: Mock numbers" />
+        <Article url="/docs/products/auth/phone-sms" title="Docs: Mock numbers" label="Read docs" />
     </Grid.Cell>
     <Grid.Cell columns={6}>
         <Media
             title="Discord Stage: Day 4"
             url="https://discord.gg/zzj9pTzB?event=1268848185422381118"
+            label="Join"
         >
             <DayCard
                 hasBorder={false}
