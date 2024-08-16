@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { ContributionsMatrix, TicketData } from '$routes/init/tickets/constants';
     import { spring } from 'svelte/motion';
+    import staticLockup from '../../(assets)/static-lockup.svg';
 
     import { fade } from 'svelte/transition';
     import Lockup from '../Lockup.svelte';
@@ -137,7 +138,11 @@
             <p class="web-label">{title}</p>
 
             <div class="logo" style:width="75%">
-                <Lockup fill={false} animate={!disableEffects} />
+                {#if disableEffects}
+                    <img src={staticLockup} alt="Init" style:margin-left="-20px" />
+                {:else}
+                    <Lockup fill={false} animate={!disableEffects} />
+                {/if}
             </div>
             <div class="shine" />
             <div class="noise" />
