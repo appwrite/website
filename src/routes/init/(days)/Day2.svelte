@@ -68,7 +68,10 @@
         </Media>
     </Grid.Cell>
     <Grid.Cell columns={6}>
-        <Media title="Discord Stage: Day 2" url="https://discord.com">
+        <Media
+            title="Discord Stage: Day 2"
+            url="https://discord.gg/zzj9pTzB?event=1268847922590650378"
+        >
             <DayCard
                 day={{
                     title: 'Day 2',

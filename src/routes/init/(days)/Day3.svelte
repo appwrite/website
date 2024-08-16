@@ -47,7 +47,10 @@
         <Article url="/docs/quick-starts/go" title="Docs: GO support" />
     </Grid.Cell>
     <Grid.Cell columns={6}>
-        <Media title="Discord Stage: Day 3" url="https://discord.com">
+        <Media
+            title="Discord Stage: Day 3"
+            url="https://discord.gg/zzj9pTzB?event=1268848051007782963"
+        >
             <DayCard
                 day={{
                     title: 'Day 3',

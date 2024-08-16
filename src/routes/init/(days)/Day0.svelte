@@ -64,12 +64,16 @@
     </Grid.Cell>
 
     <Grid.Cell columns={6}>
-        <Media title="Init Swag" url="https://discord.com" label="Enter giveaway">
+        <Media title="Init Swag" url="/init/tickets" label="Enter giveaway">
             <img src={swag} alt="" />
         </Media>
     </Grid.Cell>
     <Grid.Cell columns={6}>
-        <Media title="Discord Stage: Day 0" url="https://discord.com" label="Join">
+        <Media
+            title="Discord Stage: Day 0"
+            url="https://discord.gg/zzj9pTzB?event=1268847435111862335"
+            label="Join"
+        >
             <DayCard
                 day={{
                     title: 'Kick off',
