@@ -1,10 +1,9 @@
 <script lang="ts">
-    import illustration from '../(assets)/day-4/go-announcement.svg';
-    import buildWithGo from '../(assets)/day-4/build-with-go.svg';
-    import buildWithGoMobile from '../(assets)/day-4/build-with-go-mobile.svg';
-    import useGo from '../(assets)/day-4/use-go.svg';
-    import useGoMobile from '../(assets)/day-4/use-go-mobile.svg';
-
+    import illustration from '../(assets)/day-5/mock-numbers-announcement.svg';
+    import mockNumbers from '../(assets)/day-5/mock-numbers.svg';
+    import mockNumbersMobile from '../(assets)/day-5/mock-numbers-mobile.svg';
+    import contributors from '../(assets)/day-5/contributors.svg';
+    import contributorsMobile from '../(assets)/day-5/contributors-mobile.svg';
     import { Grid } from '../(components)/grid';
     import Announcement from '../(components)/shared/Announcement.svelte';
     import Media from '../(components)/shared/Media.svelte';
@@ -19,44 +18,47 @@
 <Grid.Root columns={12} rows={2}>
     <Grid.Cell columns={7} rows={2}>
         <Announcement
-            title="GO support"
-            description="Appwrite now supports GO functions runtime."
-            url="/"
+            title="Mock numbers"
+            description="Streamline phone authentication testing and app review processes."
+            url="/blog/post/announcing-mock-numbers-session-alerts"
         >
-            <img src={illustration} alt="" style:max-inline-size="unset" />
+            <img src={illustration} alt="" style:margin="40px 0 -40px 0" />
         </Announcement>
     </Grid.Cell>
     <Grid.Cell columns={5}>
         <Article
-            title="3 things you can build with the GO runtime"
-            illustration={buildWithGo}
-            mobileIllustration={buildWithGoMobile}
-            url="/blog/post/simplify-messaging-twilio"
+            title="Mock numbers for phone sign-in"
+            illustration={mockNumbers}
+            mobileIllustration={mockNumbersMobile}
+            url="/blog/post/mock-numbers-best-practices"
         />
     </Grid.Cell>
     <Grid.Cell columns={5}>
         <Article
-            title="Why should you use Golang in your app?"
-            illustration={useGo}
-            mobileIllustration={useGoMobile}
-            url="/blog/post/simplify-messaging-twilio"
+            title="Celebrating 1.6 contributors"
+            illustration={contributors}
+            mobileIllustration={contributorsMobile}
+            url="/blog/post/contributors-1.6"
         />
     </Grid.Cell>
 
-    <Grid.Cell columns={6}>
-        <Article url="/blog/post/simplify-messaging-twilio" title="Docs: GO support" />
+    <Grid.Cell columns={3}>
+        <Article url="/blog/post/designing-init-event-logo" title="Designing Init" />
+    </Grid.Cell>
+    <Grid.Cell columns={3}>
+        <Article url="/docs/products/auth/phone-sms" title="Docs: Mock numbers" />
     </Grid.Cell>
     <Grid.Cell columns={6}>
-        <Media title="Discord Stage: Day 3" url="https://discord.com">
+        <Media title="Discord Stage: Day 4" url="https://discord.com">
             <DayCard
                 day={{
-                    title: 'Day 3',
+                    title: 'Closing party',
                     release,
                     subtitle: format(release, 'MMM dd')
                 }}
                 --p-aspect-ratio="2.35/1"
             >
-                <svelte:component this={Animations.Go} />
+                <svelte:component this={Animations.Numbers} />
             </DayCard>
         </Media>
     </Grid.Cell>

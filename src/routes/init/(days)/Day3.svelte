@@ -1,15 +1,14 @@
 <script lang="ts">
-    import illustration from '../(assets)/day-3/functions-announcement.svg';
-    import Video from '../(components)/shared/Video.svelte';
-    import thumbnail from '../(assets)/day-3/video-thumb.png';
+    import illustration from '../(assets)/day-4/go-announcement.svg';
+    import buildWithGo from '../(assets)/day-4/build-with-go.svg';
+    import buildWithGoMobile from '../(assets)/day-4/build-with-go-mobile.svg';
+    import useGo from '../(assets)/day-4/use-go.svg';
+    import useGoMobile from '../(assets)/day-4/use-go-mobile.svg';
+
     import { Grid } from '../(components)/grid';
     import Announcement from '../(components)/shared/Announcement.svelte';
     import Media from '../(components)/shared/Media.svelte';
     import Article from '../(components)/shared/Article.svelte';
-    import functionComparison from '../(assets)/day-3/function-comparison.svg';
-    import functionComparisonMobile from '../(assets)/day-3/function-comparison-mobile.svg';
-    import dynamicKeys from '../(assets)/day-3/dynamic-keys.svg';
-    import dynamicKeysMobile from '../(assets)/day-3/dynamic-keys-mobile.svg';
     import DayCard from '../(components)/DayCard.svelte';
     import { Animations } from '../(animations)';
     import { format } from 'date-fns';
@@ -20,88 +19,45 @@
 <Grid.Root columns={12} rows={2}>
     <Grid.Cell columns={7} rows={2}>
         <Announcement
-            title="Function ecosystem"
-            description="New features are being added to vastly improve your Appwrite Functions experience."
-            url="/"
+            title="GO support"
+            description="Appwrite now supports GO functions runtime."
+            url="/blog/post/announcing-go-support"
         >
-            <div class="illustration-wrapper">
-                <div class="illustration">
-                    <img src={illustration} alt="" />
-                </div>
-            </div>
+            <img src={illustration} alt="" style:max-inline-size="unset" />
         </Announcement>
     </Grid.Cell>
     <Grid.Cell columns={5}>
         <Article
-            title="Comparing serverless functions: Appwrite vs. Supabase vs. Firebase"
-            illustration={functionComparison}
-            mobileIllustration={functionComparisonMobile}
-            url="/blog/post/simplify-messaging-twilio"
+            title="3 things you can build with the GO runtime"
+            illustration={buildWithGo}
+            mobileIllustration={buildWithGoMobile}
+            url="/blog/post/3-things-you-can-build-with-go-runtime"
         />
     </Grid.Cell>
     <Grid.Cell columns={5}>
         <Article
-            title="How to leverage Appwrite Dynamic Keys for enhanced security"
-            illustration={dynamicKeys}
-            mobileIllustration={dynamicKeysMobile}
-            url="/blog/post/simplify-messaging-twilio"
+            title="Why should you use Golang in your app?"
+            illustration={useGo}
+            mobileIllustration={useGoMobile}
+            url="/blog/post/what-is-golang"
         />
     </Grid.Cell>
 
-    <Grid.Cell columns={4}>
-        <Article url="/blog/post/simplify-messaging-twilio" title="Docs: Binary executions" />
-    </Grid.Cell>
-    <Grid.Cell columns={4}>
-        <Article url="/blog/post/simplify-messaging-twilio" title="Docs: Dynamic keys" />
-    </Grid.Cell>
-    <Grid.Cell columns={4}>
-        <Article url="/blog/post/simplify-messaging-twilio" title="Docs: Delayed executions" />
+    <Grid.Cell columns={6}>
+        <Article url="/docs/quick-starts/go" title="Docs: GO support" />
     </Grid.Cell>
     <Grid.Cell columns={6}>
-        <Media title="Product demo" label="Watch">
-            <Video
-                src="https://www.youtube-nocookie.com/embed/7LN05c-ov_0?si=Gb0gS-k4M24F1AOg"
-                title="Product demo"
-                {thumbnail}
-                --p-aspect-ratio="2.35/1"
-            />
-        </Media>
-    </Grid.Cell>
-    <Grid.Cell columns={6}>
-        <Media title="Discord Stage: Day 2" url="https://discord.com">
+        <Media title="Discord Stage: Day 3" url="https://discord.com">
             <DayCard
                 day={{
-                    title: 'Day 2',
+                    title: 'Day 3',
                     release,
                     subtitle: format(release, 'MMM dd')
                 }}
                 --p-aspect-ratio="2.35/1"
             >
-                <svelte:component this={Animations.Functions} />
+                <svelte:component this={Animations.Go} />
             </DayCard>
         </Media>
     </Grid.Cell>
 </Grid.Root>
-
-<style lang="scss">
-    .illustration-wrapper {
-        min-height: 275px;
-
-        @media screen and (max-width: 768px) {
-            min-height: 200px;
-        }
-
-        .illustration {
-            position: absolute;
-            right: -100px;
-            top: 50px;
-            height: 500px;
-
-            @media screen and (max-width: 768px) {
-                height: 350px;
-                top: 150px;
-                right: -50px;
-            }
-        }
-    }
-</style>
