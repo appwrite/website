@@ -54,7 +54,6 @@ const client = new Client();
 const functions = new Functions(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>') // Your project ID
 ;
 
@@ -81,7 +80,6 @@ void main() { // Init SDK
   Functions functions = Functions(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>') // Your project ID
   ;
   Future result = functions.createExecution(
@@ -105,7 +103,6 @@ void main() { // Init SDK
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<YOUR_PROJECT_ID>") // Your project ID
 
 let functions = Functions(client)
@@ -124,7 +121,6 @@ import io.appwrite.Client
 import io.appwrite.services.Functions
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<YOUR_PROJECT_ID>") // Your project ID
 
 val functions = Functions(client)
@@ -144,7 +140,6 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Functions;
 
 Client client = new Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<YOUR_PROJECT_ID>"); // Your project ID
 
 Functions functions = new Functions(client);
@@ -181,7 +176,6 @@ const client = new sdk.Client();
 const functions = new sdk.Functions(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>') // Your project ID
 ;
 
@@ -210,7 +204,6 @@ let client = new sdk.Client();
 let functions = new sdk.Functions(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>') // Your project ID
 ;
 
@@ -239,7 +232,6 @@ use Appwrite\Services\Functions;
 $client = new Client();
 
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     ->setProject('<YOUR_PROJECT_ID>') // Your project ID
 ;
 
@@ -304,7 +296,6 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 var client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .SetProject("<YOUR_PROJECT_ID>"); // Your project ID
 
 var functions = new Functions(client);
@@ -325,7 +316,6 @@ void main() { // Init SDK
   Functions functions = Functions(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>') // Your project ID
   ;
 
@@ -352,7 +342,6 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Functions;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<YOUR_PROJECT_ID>"); // Your project ID
 
 Functions functions = new Functions(client);
@@ -381,7 +370,6 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Functions;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<YOUR_PROJECT_ID>"); // Your project ID
 
 Functions functions = new Functions(client);
@@ -408,7 +396,6 @@ functions.createExecution(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<YOUR_PROJECT_ID>") // Your project ID
 
 let functions = Functions(client)

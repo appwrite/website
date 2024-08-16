@@ -21,7 +21,6 @@ import { Databases, Account, Client } from "appwrite";
 
 const client = new Client();
 client
-  .setEndpoint(PUBLIC_APPWRITE_ENDPOINT)
   .setProject(PUBLIC_APPWRITE_PROJECT);
 
 const account = new Account(client);

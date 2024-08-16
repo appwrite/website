@@ -27,7 +27,6 @@ export const SESSION_COOKIE = 'my-custom-session';
 
 export function createAdminClient() {
     const client = new Client()
-        .setEndpoint(PUBLIC_APPWRITE_ENDPOINT)
         .setProject(PUBLIC_APPWRITE_PROJECT)
         .setKey(APPWRITE_KEY); // Set the Appwrite API key!
 
@@ -41,7 +40,6 @@ export function createAdminClient() {
 
 export function createSessionClient(event) {
     const client = new Client()
-        .setEndpoint(PUBLIC_APPWRITE_ENDPOINT)
         .setProject(PUBLIC_APPWRITE_PROJECT);
 
     // Extract our custom domain's session cookie from the request

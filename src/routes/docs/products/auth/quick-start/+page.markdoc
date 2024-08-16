@@ -14,7 +14,6 @@ You can use the Appwrite [Client SDKs](/docs/sdks#client) to create an account u
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
 const account = new Account(client);
@@ -29,8 +28,7 @@ const user = await account.create(
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>');                 // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 final account = Account(client);
 
@@ -44,8 +42,7 @@ final user = await account.create(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                  // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 let account = Account(client)
 
@@ -61,8 +58,7 @@ import io.appwrite.services.Account
 import io.appwrite.ID
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                  // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 val account = Account(client)
 
@@ -85,8 +81,7 @@ mutation {
 ```client-react-native
 import { Client, Account, ID } from "appwrite";
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>');                 // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 const account = new Account(client);
 
@@ -501,7 +496,6 @@ class Appwrite {
 
     public init() {
         self.client = Client()
-            .setEndpoint("https://cloud.appwrite.io/v1")
             .setProject("<YOUR_PROJECT_ID>")
         
         self.account = Account(client)
@@ -578,7 +572,6 @@ object Appwrite {
 
     fun init(context: Context) {
         client = Client(context)
-            .setEndpoint(ENDPOINT)
             .setProject(PROJECT_ID)
     }
 }

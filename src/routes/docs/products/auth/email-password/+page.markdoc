@@ -14,7 +14,6 @@ You can use the Appwrite Client SDKs to create an account using email and passwo
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
 const account = new Account(client);
@@ -40,7 +39,6 @@ First, send a verification email. Specify a redirect URL which users will be red
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('5df5acd0d48c2')                 // Your project ID
 
 const account = new Account(client);
@@ -62,7 +60,6 @@ Since the secrets are passed in through url params, it will be easiest to perfor
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
 const account = new Account(client);
@@ -88,7 +85,6 @@ After you've created your account, users can be logged in using the Create Email
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
 const account = new Account(client);
@@ -112,7 +108,6 @@ Only redirect URLs to domains added as a platform on your Appwrite Console will 
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
 const promise = account.createRecovery('email@example.com', 'https://example.com');
@@ -130,7 +125,6 @@ After receiving an email with the secret attached to the redirect link, submit a
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
 const promise = account.updateRecovery(

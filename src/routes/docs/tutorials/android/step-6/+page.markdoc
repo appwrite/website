@@ -114,7 +114,6 @@ object Appwrite {
 
     fun init(context: Context) {
         client = Client(context)
-            .setEndpoint(ENDPOINT)
             .setProject(PROJECT_ID)
 
         // Add this line 👇

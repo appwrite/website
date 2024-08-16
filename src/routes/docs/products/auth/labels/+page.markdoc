@@ -11,7 +11,6 @@ Labels are a good way to categorize a user to grant them access to resources. Fo
 const sdk = require('node-appwrite');
 
 const client = new sdk.Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('5df5acd0d48c2')                 // Your project ID
     .setKey('98fd4...a2ad2');                    // Your secret API key
 
@@ -37,7 +36,6 @@ use Appwrite\Role;
 $client = new Client();
 
 $client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('5df5acd0d48c2')                 // Your project ID
     .setKey('98fd4...a2ad2');                    // Your secret API key
 
@@ -91,7 +89,6 @@ response = users.update_labels(
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
 let client = new sdk.Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('5df5acd0d48c2')                 // Your project ID
     .setKey('98fd4...a2ad2');                    // Your secret API key
 
@@ -112,7 +109,6 @@ promise.then(function (response) {
 import 'package:dart_appwrite/dart_appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('5df5acd0d48c2')                 // Your project ID
     .setKey('98fd4...a2ad2');                    // Your secret API key
 
@@ -129,7 +125,6 @@ import io.appwrite.Role
 import io.appwrite.services.Users
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("5df5acd0d48c2")                 // Your project ID
     .setKey("98fd4...a2ad2")                     // Your secret API key
 
@@ -145,7 +140,6 @@ val response = users.updateLabels(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("5df5acd0d48c2")                 // Your project ID
     .setKey("98fd4...a2ad2")                     // Your secret API key
 
@@ -161,7 +155,6 @@ let response = try await users.updateLabels(
 using Appwrite;
 
 var client = new Client()
-    .SetEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .SetProject("5df5acd0d48c2")                 // Your project ID
     .SetKey("98fd4...a2ad2");                    // Your secret API key
 

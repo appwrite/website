@@ -76,7 +76,6 @@ const sdk = require("node-appwrite");
 const client = new sdk.Client();
 
 client
-    .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<YOUR_PROJECT_ID>")
     .setKey("<YOUR_API_KEY>");
 ```

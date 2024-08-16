@@ -51,7 +51,7 @@ const APPWRITE_PROJECT = "<YOUR_PROJECT_ID>"; // Replace with your project ID
 
 const appwriteClient = new Appwrite();
 
-appwriteClient.setEndpoint(APPWRITE_URL).setProject(APPWRITE_PROJECT);
+appwriteClient.setProject(APPWRITE_PROJECT);
 const account = new Account(appwriteClient);
 const storage = new Storage(appwriteClient);
 

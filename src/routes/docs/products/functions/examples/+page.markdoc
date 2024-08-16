@@ -273,7 +273,6 @@ export default async function ({ req, res }) {
 
   const client = new Client();
   client
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
     .setKey(process.env.APPWRITE_API_KEY);
 
@@ -364,7 +363,6 @@ return function ($context) {
 
     $client = new Client();
     $client
-        ->setEndpoint('https://cloud.appwrite.io/v1')
         ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
         ->setKey(getenv('APPWRITE_API_KEY'));
 
@@ -412,7 +410,6 @@ Future main(final context) async {
     }
 
     final client = Client()
-        .setEndpoint('https://cloud.appwrite.io/v1')
         .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
         .setKey(Platform.environment['APPWRITE_API_KEY']);
 
@@ -549,7 +546,6 @@ export default async function ({ req, res }) {
 
     const client = new Client();
     client
-      .setEndpoint('https://cloud.appwrite.io/v1')
       .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
       .setKey(process.env.APPWRITE_API_KEY);
 
@@ -658,7 +654,6 @@ return function ($context) {
 
     $client = new Client();
     $client
-      ->setEndpoint('https://cloud.appwrite.io/v1')
       ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
       ->setKey(getenv('APPWRITE_API_KEY'));
 
@@ -758,7 +753,6 @@ Future main(final context) async {
         };
 
         final client = Client()
-            .setEndpoint('https://cloud.appwrite.io/v1')
             .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
             .setKey(Platform.environment['APPWRITE_API_KEY']);
 

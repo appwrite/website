@@ -18,7 +18,6 @@ Send an SMS message to initiate the authentication process. A **new account** wi
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 const account = new Account(client);
@@ -35,7 +34,6 @@ const userId = token.userId;
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 final account = Account(client);
@@ -51,7 +49,6 @@ final userId = token.userId;
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>");
 
 let account = Account(client);
@@ -70,7 +67,6 @@ import io.appwrite.services.Account
 import io.appwrite.ID
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>");
 
 val account = Account(client);
@@ -106,7 +102,6 @@ After initiating the phone authentication process, the returned user ID and secr
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 const account = new Account(client);
@@ -121,7 +116,6 @@ const session = await account.createSession(
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 final account = Account(client);
@@ -135,7 +129,6 @@ final session = await account.createSession(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>");
 
 let account = Account(client);
@@ -151,7 +144,6 @@ import io.appwrite.services.Account
 import io.appwrite.ID
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>");
 
 val account = Account(client);
