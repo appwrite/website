@@ -15,7 +15,7 @@
             {$days > 1 ? 'days' : 'day'}
         </p>
     {:else}
-        <div class="web-title">
+        <div class="web-title" style="--height:3rem;--line-height:3rem;">
             <Counter value={$hours} />:<Counter value={$minutes} />:<Counter value={$seconds} />
         </div>
     {/if}
