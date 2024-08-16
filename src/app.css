@@ -73,21 +73,6 @@
   --color-greyscale-850: hsl(var(--color-greyscale-hue) 3% 14%);
   --color-greyscale-900: hsl(var(--color-greyscale-hue) 5.7% 10.4%);
 
-  /* Font sizes */
-  --font-size-*: initial;
-  --font-size-sm: 0.75rem;
-  --font-size-base: 0.875rem;
-  --font-size-md: 1rem;
-  --font-size-lg: 1.25rem;
-  --font-size-xl: 1.5rem;
-  --font-size-2xl: 1.75rem;
-  --font-size-3xl: 2rem;
-  --font-size-4xl: 2.25rem;
-  --font-size-5xl: 2.5rem;
-  --font-size-6xl: 2.75rem;
-  --font-size-7xl: 3rem;
-  --font-size-8xl: 3.25rem;
-
   /* Breakpoints */
   --breakpoint-*: initial;
   --breakpoint-sm: 640px;
