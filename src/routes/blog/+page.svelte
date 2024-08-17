@@ -6,11 +6,18 @@
     import { page } from '$app/stores';
     import { onMount } from 'svelte';
     import { BLOG_POSTS_NAVIGATION_RANGE } from '$lib/constants.js';
+    import { createDebounce } from '$lib/utils/debounce';
 
     export let data;
     const featured = data.featured;
+    const categories = data.categories.sort((a, b) => a.name.localeCompare(b.name));
 
     let currentPage = 1;
+
+    let query = '';
+    let isEnd = false;
+    let isStart = true;
+    let categoriesElement: HTMLElement;
 
     $: isLastPage = currentPage < data.totalPages;
 
@@ -31,12 +38,74 @@
         return prevBatchStart > 0 ? prevBatchStart : 1;
     }
 
+    $: showNavigation = query === '' && selectedCategories.length === 0
+
     onMount(() => {
         return page.subscribe((page) => {
             const pageParam = page.url.searchParams.get('page') || '1';
             currentPage = Math.max(parseInt(pageParam), 1);
         });
     });
+
+    let selectedCategories: string[] = [];
+    function toggleCategory(tag: string) {
+        if (tag.toLowerCase() === 'latest') {
+            selectedCategories = [];
+        } else {
+            selectedCategories = selectedCategories.includes(tag)
+                ? selectedCategories.filter((t) => t !== tag)
+                : [...selectedCategories, tag];
+        }
+
+        handleSearch(query);
+    }
+
+    const handleSearch = async (value: string) => {
+        query = value.toLowerCase();
+        const tempCategories = selectedCategories.map((cat) =>
+            cat.replace(/\s+/g, '-').toLowerCase()
+        );
+
+        paginatedBlogPosts = (!query && !tempCategories.length)
+            ? data.posts[currentPage - 1] ?? data.posts[0]
+            : data.allPosts.filter((post) => {
+                const postTitle = post.title.toLowerCase();
+                const postCategories = post.category
+                    .split(',')
+                    .map((cat) => cat.trim().replace(/\s+/g, '-').toLowerCase());
+
+                return postTitle.includes(query) &&
+                    (tempCategories.length === 0 || tempCategories.some((cat) => postCategories.includes(cat)));
+            });
+    };
+
+    const { debounce, reset } = createDebounce();
+
+    const search = (node: HTMLInputElement) => {
+        const inputHandler = () => debounce(() => handleSearch(node.value.toLowerCase()));
+        const keydownHandler = (event: KeyboardEvent) => {
+            if (event.key === 'Enter') {
+                reset();
+                handleSearch(node.value.toLowerCase());
+            }
+        };
+
+        node.addEventListener('input', inputHandler);
+        node.addEventListener('keydown', keydownHandler);
+
+        return {
+            destroy() {
+                node.removeEventListener('input', inputHandler);
+                node.removeEventListener('keydown', keydownHandler);
+            }
+        };
+    };
+
+    function handleScroll() {
+        const { scrollLeft, offsetWidth, scrollWidth } = categoriesElement;
+        isStart = scrollLeft <= 0;
+        isEnd = Math.ceil(scrollLeft + offsetWidth) >= scrollWidth;
+    }
 
     const title = 'Blog' + TITLE_SUFFIX;
     const description = 'Stay updated with the latest product news, insights, and tutorials from the Appwrite team. Discover tips and best practices for hassle-free backend development.';
@@ -176,61 +245,145 @@
                 </div>
             </div>
         </div>
-        <div class="web-big-padding-section-level-1">
-            <div class="web-big-padding-section-level-2">
-                <div class="web-container">
-                    <h2 id="title" class="web-title web-u-color-text-primary">Articles</h2>
+        <div class="u-padding-block-start-80">
+            <div class="web-container">
+                <h2 id="title" class="web-title web-u-color-text-primary">Articles</h2>
 
-                    <div class="u-margin-block-start-48">
-                        <ul class="web-grid-articles">
-                            {#each paginatedBlogPosts as post}
-                                {@const author = data.authors.find(
-                                    (author) => author.slug === post.author
-                                )}
-                                {#if author && !post.draft}
-                                    <Article
-                                            title={post.title}
-                                            href={post.href}
-                                            cover={post.cover}
-                                            date={post.date}
-                                            timeToRead={post.timeToRead}
-                                            avatar={author.avatar}
-                                            author={author.name}
-                                    />
-                                {/if}
-                            {/each}
-                        </ul>
-                    </div>
+                <div class="u-padding-block-start-16">
+                    <div class="u-flex u-cross-center u-gap-32 search-and-categories">
+                        <div
+                            class="categories-wrapper"
+                            data-state={isStart ? 'start' : isEnd ? 'end' : 'middle'}
+                        >
+                            <ul class="categories u-flex u-gap-8 u-overflow-x-auto"
+                                on:scroll={handleScroll}
+                                bind:this={categoriesElement}>
 
-                    <div class="u-margin-block-start-48">
-                        <ul class="u-flex u-cross-center u-gap-4" style="justify-content: center">
-                            <a
-                                class="u-flex navigation-button"
-                                class:navigation-button-active={currentPage > 1}
-                                href="/blog?page={previousBatchStartPage()}"
+                                <li class="u-flex u-cross-center u-cursor-pointer">
+                                    <button
+                                        class="web-interactive-tag web-caption-400"
+                                        class:is-selected={ selectedCategories.length === 0}
+                                        on:click={() => toggleCategory('Latest')}
+                                    >
+                                        Latest
+                                    </button>
+                                </li>
+
+                                {#each categories as category}
+                                    <li class="u-flex u-cross-center">
+                                        <button
+                                            class="web-interactive-tag web-caption-400"
+                                            class:is-selected={ selectedCategories.includes(category.name) }
+                                            on:click={() => toggleCategory(category.name)}
+                                        >
+                                            {category.name}
+                                        </button>
+                                    </li>
+                                {/each}
+                            </ul>
+                        </div>
+
+                        <div
+                            class="is-only-mobile web-input-text-search-wrapper u-width-full-line"
+                        >
+                                <span
+                                    class="web-icon-search u-z-index-5"
+                                    aria-hidden="true"
+                                    style="inset-block-start:0.9rem"
+                                />
+                            <input
+                                class="web-input-button -u-padding-block-0 u-position-relative u-z-index-1"
+                                type="text"
+                                id="search"
+                                placeholder="Search"
+                                use:search
+                                bind:value={query}
+                                data-hit="-1"
+                            />
+                        </div>
+
+                        <div
+                            class="is-not-mobile web-input-text-search-wrapper u-width-full-line u-max-width-350 web-u-max-inline-size-none-mobile u-margin-inline-start-auto"
                             >
-                                <span class="web-icon-chevron-left" style="font-size: 20px"/>
-                                Previous
-                            </a>
-
-                            {#each currentPageRange as page}
-                                <a
-                                    class="pagination-number"
-                                    class:pagination-number-selected={currentPage === page}
-                                    href="/blog?page={page}"
-                                > {page} </a>
-                            {/each}
-
-                            <a
-                                class="u-flex navigation-button"
-                                class:navigation-button-active={isLastPage}
-                                href="/blog?page={nextBatchStartPage()}"
-                            >
-                                Next
-                                <span class="web-icon-chevron-right"  style="font-size: 20px"/>
-                            </a>
-                        </ul>
+                                <span
+                                    class="web-icon-search u-z-index-5"
+                                    aria-hidden="true"
+                                    style="inset-block-start:0.9rem"
+                                />
+                                <input
+                                    class="web-input-button -u-padding-block-0 u-position-relative u-z-index-1"
+                                    type="text"
+                                    id="search"
+                                    placeholder="Search"
+                                    use:search
+                                    bind:value={query}
+                                    data-hit="-1"
+                                />
+                            </div>
                     </div>
+                </div>
+
+                <div class="u-margin-block-start-48">
+                    <ul class:web-grid-articles={paginatedBlogPosts.length > 0}>
+                        {#each paginatedBlogPosts as post}
+                            {@const author = data.authors.find(
+                                (author) => author.slug === post.author
+                            )}
+                            {#if author && !post.draft}
+                                <Article
+                                        title={post.title}
+                                        href={post.href}
+                                        cover={post.cover}
+                                        date={post.date}
+                                        timeToRead={post.timeToRead}
+                                        avatar={author.avatar}
+                                        author={author.name}
+                                />
+                            {/if}
+                        {:else}
+                            <div class="u-padding-block-32 u-flex-vertical u-gap-32 u-cross-center">
+                                <span class="web-main-body-500">no results found for "{query ? query : selectedCategories.join(', ')}"</span>
+
+                                <button
+                                    class="web-button is-secondary"
+                                    on:click={() => {
+                                        query = '';
+                                        handleSearch('');
+                                    }}>Clear search
+                                </button>
+                            </div>
+                        {/each}
+                    </ul>
+                </div>
+
+                <div class="u-margin-block-start-48" class:u-hide={!showNavigation}>
+                    <ul class="u-flex u-cross-center u-gap-4" style="justify-content: center">
+                        <a
+                            class="u-flex navigation-button"
+                            class:navigation-button-active={currentPage > 1}
+                            href="/blog?page={previousBatchStartPage()}"
+                        >
+                            <span class="web-icon-chevron-left" style="font-size: 20px"/>
+                            Previous
+                        </a>
+
+                        {#each currentPageRange as page}
+                            <a
+                                class="pagination-number"
+                                class:pagination-number-selected={currentPage === page}
+                                href="/blog?page={page}"
+                            > {page} </a>
+                        {/each}
+
+                        <a
+                            class="u-flex navigation-button"
+                            class:navigation-button-active={isLastPage}
+                            href="/blog?page={nextBatchStartPage()}"
+                        >
+                            Next
+                            <span class="web-icon-chevron-right"  style="font-size: 20px"/>
+                        </a>
+                    </ul>
                 </div>
             </div>
             <div class="web-big-padding-section-level-2">
@@ -285,5 +438,102 @@
         opacity: 1;
         cursor: pointer;
         pointer-events: initial;
+    }
+
+    .web-interactive-tag {
+        white-space: nowrap;
+    }
+
+    .is-selected {
+        color: hsl(var(--web-color-black));
+        background: hsl(var(--web-color-white));
+    }
+
+    .u-overflow-x-auto {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .u-overflow-x-auto::-webkit-scrollbar {
+        display: none;
+    }
+
+    .categories-wrapper {
+        position: relative;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 60px;
+            height: 100%;
+            transition: ease 250ms;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        &::before {
+            left: 0;
+            background: linear-gradient(
+                    to right,
+                    hsl(var(--web-color-background-docs)),
+                    transparent
+            );
+        }
+
+        &[data-state='start']::before {
+            opacity: 0;
+        }
+
+        &::after {
+            right: 0;
+            background: linear-gradient(
+                    to left,
+                    hsl(var(--web-color-background-docs)),
+                    transparent
+            );
+        }
+
+        &[data-state='end']::after {
+            opacity: 0;
+        }
+    }
+
+    .categories {
+        max-width: calc(0.5 * 100vw);
+    }
+
+    @media (min-width: 1024px) and (max-width: 1280px) {
+        .categories {
+            max-width: calc(0.55 * 100vw);
+        }
+    }
+
+    @media (min-width: 1280px) and (max-width: 1359px) {
+        .categories {
+            max-width: calc(0.6 * 100vw);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .search-and-categories {
+            flex-wrap: wrap;
+            display: flex !important;
+            padding-block-start: 2rem;
+            flex-direction: column-reverse !important
+        }
+
+        .categories {
+            max-width: 90vw;
+        }
+
+        .search-and-categories > .is-only-mobile {
+            align-self: baseline;
+        }
+
+        .search-and-categories > .web-input-text-search-wrapper {
+            min-inline-size: unset !important;
+        }
     }
 </style>
