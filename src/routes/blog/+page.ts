@@ -79,6 +79,7 @@ function getPaginationData(posts: PostsData[]) {
 
     return {
         totalPages,
+        allPosts: posts,
         posts: paginatedPosts,
         navigation: pageNavigationChunks,
     }
