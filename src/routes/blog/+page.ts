@@ -62,7 +62,7 @@ export function load() {
     };
 }
 
-function getPaginationData(posts: object) {
+function getPaginationData(posts: PostsData[]) {
     const totalPages = Math.ceil(posts.length / BLOG_POSTS_PER_PAGE);
 
     const paginatedPosts = Array.from({ length: totalPages }, (_, i) =>
@@ -70,7 +70,7 @@ function getPaginationData(posts: object) {
     );
 
     const pageNavigationChunks: number[][] = Array.from({ length: totalPages }, (_, i) => i + 1)
-        .reduce((acc, curr, idx) => {
+        .reduce((acc: number[][], curr, idx) => {
             const chunkIdx = Math.floor(idx / BLOG_POSTS_NAVIGATION_RANGE);
             acc[chunkIdx] = acc[chunkIdx] || [];
             acc[chunkIdx].push(curr);
