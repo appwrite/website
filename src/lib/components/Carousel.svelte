@@ -44,12 +44,12 @@
 <div>
     <div class="u-flex u-flex-wrap u-cross-center u-margin-block-start-8">
         <slot name="header" />
-        <div class="u-flex u-gap-12 u-cross-end u-margin-inline-start-auto">
+        <div class="nav u-flex u-gap-12 u-cross-end u-margin-inline-start-auto">
             <button
                 class="web-icon-button"
                 aria-label="Move carousel backward"
                 disabled={isStart}
-                on:click={() => prev()}
+                on:click={prev}
             >
                 <span class="web-icon-arrow-left" aria-hidden="true" />
             </button>
@@ -57,7 +57,7 @@
                 class="web-icon-button"
                 aria-label="Move carousel forward"
                 disabled={isEnd}
-                on:click={() => next()}
+                on:click={next}
             >
                 <span class="web-icon-arrow-right" aria-hidden="true" />
             </button>
@@ -79,6 +79,13 @@
 </div>
 
 <style lang="scss">
+    .nav {
+        button {
+            @media screen and (max-width: 1023.9px) {
+                display: none !important;
+            }
+        }
+    }
     .carousel-wrapper {
         position: relative;
 
@@ -108,7 +115,11 @@
 
         &::after {
             right: 0;
-            background: linear-gradient(to left, hsl(var(--web-color-background-docs)), transparent);
+            background: linear-gradient(
+                to left,
+                hsl(var(--web-color-background-docs)),
+                transparent
+            );
         }
 
         &[data-state='end']::after {

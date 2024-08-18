@@ -9,16 +9,14 @@
 
 <div class="web-card is-normal web-u-color-text-primary">
     <img src="/images/icons/gradients/lock.svg" alt="Lock" />
-    {#if $days > 1}
+    {#if $hours > 24}
         <p class="web-title">
             {$days}
-            {$days > 1 ? 'days' : 'day'}<span class="web-u-color-text-accent">_</span>
+            {$days > 1 ? 'days' : 'day'}
         </p>
     {:else}
-        <div class="web-title">
-            <Counter value={$hours} />:<Counter value={$minutes} />:<Counter
-                value={$seconds}
-            /><span class="web-u-color-text-accent">_</span>
+        <div class="web-title" style="--height:3rem;--line-height:3rem;">
+            <Counter value={$hours} />:<Counter value={$minutes} />:<Counter value={$seconds} />
         </div>
     {/if}
 
@@ -33,6 +31,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        background-color: hsl(var(--web-color-subtle));
     }
 
     .web-title {

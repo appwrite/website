@@ -2,14 +2,14 @@
     import { Carousel } from '$lib/components';
     import Technologies from '$lib/components/Technologies.svelte';
     import Docs from '$lib/layouts/Docs.svelte';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import MainFooter from '../../lib/components/MainFooter.svelte';
     import CodeCard, { type CodeCardProps } from './CodeCard.svelte';
     import Sidebar from './Sidebar.svelte';
 
     const title = 'Docs' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description = 'Learn how to build like a team of hundreds. Get started with Authentication, Databases, Storage, Functions, and Messaging in your preferred framework.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 
     const tutorials: CodeCardProps[] = [
@@ -245,7 +245,7 @@
                                 Messaging
                             </h4>
                             <p class="web-sub-body-400 u-margin-block-start-4">
-                                Send and schedule email, sms, and push notifications.
+                                Send and schedule email, SMS, and push notifications.
                             </p>
                         </a>
                     </li>
