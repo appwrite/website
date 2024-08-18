@@ -118,3 +118,12 @@
         </aside>
     </article>
 </main>
+
+<style>
+    @media (min-width: 1280px) and (max-width: 1330px) {
+        .web-article-content {
+            /* original/default is 41.5rem */
+            max-inline-size: 40.5rem !important;
+        }
+    }
+</style>
