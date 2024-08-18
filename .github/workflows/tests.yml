@@ -10,7 +10,7 @@ jobs:
         steps:
             - uses: actions/checkout@v4
               with:
-                  ref: ${{ github.event.pull_request.head.sha }}
+                  ref: ${{ github.event.pull_request.merge_commit_sha }}
             - name: Use Node.js
               uses: actions/setup-node@v3
               with:
@@ -34,6 +34,8 @@ jobs:
             - name: Build Website
               env:
                   NODE_OPTIONS: '--max_old_space_size=8192'
+                  PUBLIC_APPWRITE_ENDPOINT: ${{ secrets.PUBLIC_APPWRITE_ENDPOINT }}
+                  PUBLIC_APPWRITE_DASHBOARD: ${{ secrets.PUBLIC_APPWRITE_DASHBOARD }}
                   PUBLIC_APPWRITE_PROJECT_ID: ${{ secrets.PUBLIC_APPWRITE_PROJECT_ID }}
                   PUBLIC_APPWRITE_DB_MAIN_ID: ${{ secrets.PUBLIC_APPWRITE_DB_MAIN_ID }}
                   PUBLIC_APPWRITE_COL_THREADS_ID: ${{ secrets.PUBLIC_APPWRITE_COL_THREADS_ID }}

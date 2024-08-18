@@ -72,7 +72,7 @@ Miscellaneous:
 - Add tests for scheduled functions
 - Remove throw PdoException in Error hook
 - Refactor localdevice injection
-- Usage sms per country code count
+- Usage SMS per country code count
 - GetEnv on worker.php
 - Feat get env
 - Chore: remove compose version

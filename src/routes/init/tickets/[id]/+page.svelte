@@ -4,8 +4,7 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import { createCopy } from '$lib/utils/copy';
-    import TicketPreview from '$routes/init/(components)/TicketPreview.svelte';
-    import Ticket from '../../(components)/Ticket.svelte';
+    import { TicketPreview, Ticket } from '$routes/init/(components)/ticket';
 
     export let data;
 
@@ -43,18 +42,18 @@
             <div class="header">
                 <h1 class="web-display">
                     Join <span class="web-u-color-text-primary" style:font-weight="500">
-                        init<span class="web-u-color-text-accent">_</span>
-                    </span><br />26 Feb - 1 March
+                        init
+                    </span><br />August 19th-23rd
                 </h1>
             </div>
 
             <div class="info">
                 <p class="web-label u-margin-block-start-16">
-                    Register today and claim your Init ticket.
+                    Register today and claim your ticket.
                 </p>
                 <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-32">
                     <a class="web-button" href="/init/tickets">
-                        <span class="text">Get my Init ticket</span>
+                        <span class="text">Get my ticket</span>
                     </a>
                     <button class="web-button is-secondary" on:click={copy}>
                         <span
