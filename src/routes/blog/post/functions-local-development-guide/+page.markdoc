@@ -3,7 +3,7 @@ layout: post
 title: "Local serverless function development with the new Appwrite CLI"
 description: Your guide to creating, testing, and maintaining Appwrite functions locally.
 date: 2024-08-19
-cover: /images/blog/local-development-guide/cover.png
+cover: /images/blog/local-development-guide/localdev-cover.png
 timeToRead: 5
 author: ebenezer-don
 category: product
