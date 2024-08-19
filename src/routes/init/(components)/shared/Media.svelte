@@ -13,7 +13,7 @@
 {#if url}
   <a
     href={url}
-    class="web-card is-normal has-border-gradient u-overflow-hidden"
+    class="web-card is-normal has-border-gradient overflow-hidden"
     style="padding: 0.5rem;"
   >
     <div class="details" style="padding: 0.75rem;">
@@ -31,7 +31,7 @@
   </a>
 {:else}
   <div
-    class="web-card is-normal has-border-gradient u-overflow-hidden"
+    class="web-card is-normal has-border-gradient overflow-hidden"
     style="padding: 0.5rem;"
   >
     <div class="details" style="padding: 0.75rem;">

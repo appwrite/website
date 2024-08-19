@@ -33,7 +33,7 @@
 </svelte:head>
 
 <div
-  class="u-position-absolute u-overflow-hidden web-location-for-mobile"
+  class="u-position-absolute web-location-for-mobile overflow-hidden"
   style="pointer-events:none; inline-size:100%;"
 >
   <enhanced:img
@@ -265,7 +265,7 @@
     <ComparePlans />
 
     <div
-      class="web-big-padding-section-level-1 theme-dark u-position-relative u-overflow-hidden"
+      class="web-big-padding-section-level-1 theme-dark u-position-relative overflow-hidden"
     >
       <div class="web-big-padding-section-level-2 u-position-relative">
         <div class="container u-position-relative" style:z-index="10">

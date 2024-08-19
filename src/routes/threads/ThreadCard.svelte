@@ -15,7 +15,7 @@
   >
     <div class="flex gap-2">
       <h3
-        class="web-main-body-500 web-u-color-text-primary u-break-word"
+        class="web-main-body-500 text-primary break-words"
         use:highlight={highlightTerms}
       >
         {thread.title}
@@ -24,7 +24,7 @@
     </div>
 
     <p
-      class="web-main-body-500 u-margin-block-start-4 u-break-word"
+      class="web-main-body-500 u-margin-block-start-4 break-words"
       use:highlight={highlightTerms}
     >
       {thread.content.length > 200
@@ -32,7 +32,7 @@
         : thread.content}
     </p>
 
-    <div class="u-margin-block-start-16 flex justify-between gap-4">
+    <div class="mt-4 flex justify-between gap-4">
       <ul class="flex gap-2">
         {#each thread.tags ?? [] as tag}
           <li>

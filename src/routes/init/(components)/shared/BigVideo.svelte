@@ -16,7 +16,7 @@
 </script>
 
 <div
-  class="web-card is-normal has-border-gradient u-overflow-hidden"
+  class="web-card is-normal has-border-gradient overflow-hidden"
   style="padding: 0.5rem;"
 >
   <Video {thumbnail} {src}>
