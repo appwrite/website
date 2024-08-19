@@ -59,6 +59,10 @@
 					href: '/docs/products/functions/develop'
 				},
 				{
+					label: 'Develop locally',
+					href: '/docs/products/functions/develop-locally'
+				},
+				{
 					label: 'Deploy from Git',
 					href: '/docs/products/functions/deploy-from-git'
 				},
