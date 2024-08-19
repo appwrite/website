@@ -57,20 +57,20 @@
             />
         </Media>
     </Grid.Cell>
-    <!-- <Grid.Cell columns={6}>
+    <Grid.Cell columns={6}>
         <Article
             url="/docs/products/functions/develop-locally"
             title="Docs: Local Development"
             label="Read docs"
         />
-    </Grid.Cell> -->
+    </Grid.Cell>
 
     <Grid.Cell columns={6}>
         <Media title="Init Swag" url="/init/tickets" label="Enter giveaway">
             <img src={swag} alt="" />
         </Media>
     </Grid.Cell>
-    <Grid.Cell columns={12}>
+    <Grid.Cell columns={6}>
         <Media
             title="Discord Stage: Day 0"
             url="https://discord.gg/zzj9pTzB?event=1268847435111862335"
