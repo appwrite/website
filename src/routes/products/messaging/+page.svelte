@@ -538,7 +538,7 @@ messaging.create_email(
           <div
             class="code-snippets divide-border-primary mt-64 grid grid-cols-2 gap-16 divide-x-2"
           >
-            <div class="u-min-width-0 flex flex-col gap-2">
+            <div class="flex min-w-0 flex-col gap-2">
               <h3 class="web-label web-u-color-text-primary">
                 Subscribe to a topic
               </h3>
@@ -547,7 +547,7 @@ messaging.create_email(
               </p>
 
               <div
-                class="u-margin-block-start-16 u-min-width-0"
+                class="u-margin-block-start-16 min-w-0"
                 style="margin-block-end: 94px"
               >
                 <MultiCodeContextless
@@ -557,12 +557,12 @@ messaging.create_email(
                 />
               </div>
             </div>
-            <div class="u-min-width-0 flex flex-col gap-2">
+            <div class="flex min-w-0 flex-col gap-2">
               <h3 class="web-label web-u-color-text-primary">Send a message</h3>
               <p class="web-description">
                 Send a message to all targets on a topic.
               </p>
-              <div class="u-margin-block-start-16 u-min-width-0">
+              <div class="u-margin-block-start-16 min-w-0">
                 <MultiCodeContextless
                   data={codeMessage}
                   selected={Platform.ServerNodeJs}
