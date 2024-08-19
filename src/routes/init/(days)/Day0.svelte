@@ -70,7 +70,7 @@
             <img src={swag} alt="" />
         </Media>
     </Grid.Cell>
-    <Grid.Cell columns={6}>
+    <Grid.Cell columns={12}>
         <Media
             title="Discord Stage: Day 0"
             url="https://discord.gg/zzj9pTzB?event=1268847435111862335"
