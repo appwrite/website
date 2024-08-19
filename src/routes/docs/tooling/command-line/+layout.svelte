@@ -20,12 +20,33 @@
 					href: '/docs/tooling/command-line/commands'
 				},
 				{
-					label: 'Deployment',
-					href: '/docs/tooling/command-line/deployment'
-				},
-				{
 					label: 'Non interactive',
 					href: '/docs/tooling/command-line/non-interactive'
+				}
+			]
+		},
+		{
+			label: 'Deployments',
+			items: [
+				{
+					label: 'Collections',
+					href: '/docs/tooling/command-line/collections'
+				},
+				{
+					label: 'Functions',
+					href: '/docs/tooling/command-line/functions'
+				},
+				{
+					label: 'Teams',
+					href: '/docs/tooling/command-line/teams'
+				},
+				{
+					label: 'Topics',
+					href: '/docs/tooling/command-line/topics'
+				},
+				{
+					label: 'Buckets',
+					href: '/docs/tooling/command-line/buckets'
 				}
 			]
 		}
