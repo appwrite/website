@@ -57,13 +57,13 @@
             />
         </Media>
     </Grid.Cell>
-    <Grid.Cell columns={6}>
+    <!-- <Grid.Cell columns={6}>
         <Article
             url="/docs/products/functions/develop-locally"
             title="Docs: Local Development"
             label="Read docs"
         />
-    </Grid.Cell>
+    </Grid.Cell> -->
 
     <Grid.Cell columns={6}>
         <Media title="Init Swag" url="/init/tickets" label="Enter giveaway">
