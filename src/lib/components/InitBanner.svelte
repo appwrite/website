@@ -41,7 +41,7 @@
             <span class="web-u-color-text-secondary">The start of something new</span>
             <div class="shadow" />
         </div>
-        <a href="/init/tickets" rel="noopener noreferrer" class="action">
+        <a href="/init" rel="noopener noreferrer" class="action">
             <span class="web-caption-500">Join now</span>
             <span class="web-icon-arrow-right" aria-hidden="true" />
             <div class="shadow" />
