@@ -2,7 +2,17 @@ import { writable } from 'svelte/store';
 import type { Language } from './code';
 import { browser } from '$app/environment';
 
-const allVersions = ['1.5.x', '1.4.x', '1.3.x', '1.2.x', '1.1.x', '1.0.x', '0.15.x', 'cloud'] as const;
+const allVersions = [
+    '1.6.x',
+    '1.5.x',
+    '1.4.x',
+    '1.3.x',
+    '1.2.x',
+    '1.1.x',
+    '1.0.x',
+    '0.15.x',
+    'cloud'
+] as const;
 
 export type Version = (typeof allVersions)[number];
 
@@ -26,24 +36,25 @@ export enum Service {
 export enum Platform {
     ClientWeb = 'client-web',
     ClientFlutter = 'client-flutter',
+    ClientReactNative = 'client-react-native',
     ClientApple = 'client-apple',
     ClientAndroidKotlin = 'client-android-kotlin',
     ClientAndroidJava = 'client-android-java',
-    ClientReactNative = 'client-react-native',
     ClientGraphql = 'client-graphql',
     ClientRest = 'client-rest',
     ServerNodeJs = 'server-nodejs',
     ServerPython = 'server-python',
     ServerDart = 'server-dart',
-    ServerDeno = 'server-deno',
     ServerPhp = 'server-php',
     ServerRuby = 'server-ruby',
+    ServerDotNet = 'server-dotnet',
+    ServerDeno = 'server-deno',
+    ServerGo = 'server-go',
     ServerSwift = 'server-swift',
     ServerKotlin = 'server-kotlin',
     ServerJava = 'server-java',
-    ServerDotNet = 'server-dotnet',
     ServerGraphql = 'server-graphql',
-    ServerRest = 'server-rest'
+    ServerRest = 'server-rest',
 }
 
 export const platformMap: Record<Language | string, string> = {
@@ -67,6 +78,7 @@ export const platformMap: Record<Language | string, string> = {
     [Platform.ServerJava]: 'Java',
     [Platform.ServerGraphql]: 'GraphQL',
     [Platform.ServerRest]: 'REST',
+    [Platform.ServerGo]: 'Go',
     sh: 'Shell',
     js: 'JavaScript',
     ts: 'TypeScript',
@@ -101,7 +113,8 @@ export const platformMap: Record<Language | string, string> = {
     text: 'Text',
     vue: 'Vue',
     svelte: 'Svelte',
-    groovy: 'Groovy'
+    groovy: 'Groovy',
+    go: 'Go',
 };
 
 export const serviceMap: Record<Service, string> = {
