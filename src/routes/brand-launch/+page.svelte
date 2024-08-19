@@ -175,7 +175,7 @@
               <h2 class="web-title web-u-color-text-primary">
                 Allowing you to innovate without limits
               </h2>
-              <p class="web-main-body-500">
+              <p class="text-base">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
                 vitae diam augue. Praesent sagittis eget ipsum vitae eleifend.
               </p>
@@ -192,11 +192,11 @@
       </div>
     </div>
     <div
-      class="web-big-padding-section-level-1 u-padding-0 u-full-screen-height relative flex items-center justify-center overflow-hidden"
+      class="web-big-padding-section-level-1 u-padding-0 relative flex h-screen items-center justify-center overflow-hidden"
     >
       <div class="u-inset-inline-start-0 absolute">
         <svg
-          class="web-u-opacity-40-mobile web-u-max-height-100-percent max-w-full"
+          class="web-u-opacity-40-mobile max-h-full max-h-full max-w-full"
           xmlns="http://www.w3.org/2000/svg"
           width="698"
           height="900"
@@ -337,7 +337,7 @@
       </div>
       <div class="u-inset-inline-end-0 absolute">
         <svg
-          class="web-u-opacity-40-mobile web-u-max-height-100-percent max-w-full"
+          class="web-u-opacity-40-mobile max-h-full max-w-full"
           xmlns="http://www.w3.org/2000/svg"
           width="874"
           height="900"
@@ -485,11 +485,11 @@
       </div>
     </div>
     <div
-      class="web-big-padding-section-level-1 u-padding-0 u-full-screen-height relative flex items-center justify-center overflow-hidden"
+      class="web-big-padding-section-level-1 u-padding-0 relative flex h-screen items-center justify-center overflow-hidden"
     >
       <div class="u-inset-inline-start-0 absolute">
         <svg
-          class="web-u-opacity-40-mobile web-u-max-height-100-percent max-w-full"
+          class="web-u-opacity-40-mobile max-h-full max-w-full"
           xmlns="http://www.w3.org/2000/svg"
           width="698"
           height="900"
@@ -630,7 +630,7 @@
       </div>
       <div class="u-inset-inline-end-0 absolute">
         <svg
-          class="web-u-opacity-40-mobile web-u-max-height-100-percent max-w-full"
+          class="web-u-opacity-40-mobile max-h-full max-w-full"
           xmlns="http://www.w3.org/2000/svg"
           width="874"
           height="900"
@@ -1102,7 +1102,7 @@
       <div class="web-big-padding-section-level-2 relative">
         <div class="container">
           <div
-            class="u-full-screen-height web-gap-20 flex flex-col items-center justify-center"
+            class="web-gap-20 flex h-screen flex-col items-center justify-center"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
