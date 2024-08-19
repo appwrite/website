@@ -139,7 +139,7 @@ And after the `</head>` tag add this `<body>` which will contain the actual form
             x-data="{ search: '', results: [ ] }"
             x-init="$watch('search', async (value) => { results = await onSearch(value) })"
         >
-        <div class="card flex gap-6 u-flex-vertical">
+        <div class="card flex gap-6 flex flex-col">
             <div id="searchbox">
             <div
                 class="input-text-wrapper is-with-end-button u-width-full-line"
@@ -148,7 +148,7 @@ And after the `</head>` tag add this `<body>` which will contain the actual form
                 <div class="icon-search" aria-hidden="true"></div>
             </div>
             </div>
-            <div id="hits" class="flex u-flex-vertical gap-3">
+            <div id="hits" class="flex flex-col gap-3">
             <template x-for="result in results">
                 <div class="card">
                 <pre x-text="JSON.stringify(result, null, '\t')"></pre>

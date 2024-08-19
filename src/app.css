@@ -73,15 +73,6 @@
   --color-greyscale-850: hsl(var(--color-greyscale-hue) 3% 14%);
   --color-greyscale-900: hsl(var(--color-greyscale-hue) 5.7% 10.4%);
 
-  /* Breakpoints */
-  --breakpoint-*: initial;
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 1024px;
-  --breakpoint-lg: 1280px;
-  --breakpoint-xl: 1440px;
-  --breakpoint-2xl: 1728px;
-  --breakpoint-3xl: 1920px;
-
   /* Animations */
   --animate-scale-in: scale-in 0.2s ease-out forwards;
 

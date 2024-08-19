@@ -156,8 +156,8 @@ The `login` function was called through a button click on the index page of our 
 </script>
 
 <NavBar />
-<section class="u-flex-vertical">
-	<div class="container u-flex-vertical">
+<section class="flex flex-col">
+	<div class="container flex flex-col">
 		<InitHeading heading="Giveaway" />
 
 		<img src="/giveaway.png" alt="Plain black T-shirt with the text Init and a keyboard branded with the Appwrite logo on the Escape key" />
@@ -241,7 +241,7 @@ We integrated the `add` function directly into the `success` endpoint for our OA
 
 <NavBar />
 
-<div class="container u-flex-vertical">
+<div class="container flex flex-col">
 	<h1 class="heading-level-1 u-margin-32 u-normal">Success!</h1>
 	<p class="body-text-1 u-margin-32 u-normal">Thanks for participating in the giveaway, {userId}</p>
 </div>
@@ -365,10 +365,10 @@ Using the load function would ensure that this list would be available on our pa
 	});
 </script>
 
-<section class="u-flex-vertical gap-4">
+<section class="flex flex-col gap-4">
 	<InitHeading {heading} />
-	<div class="wheel u-flex-vertical">
-		<div class="wheel-container u-flex-vertical"></div>
+	<div class="wheel flex flex-col">
+		<div class="wheel-container flex flex-col"></div>
 	</div>
 	<button class="button is-big" on:click={spin}>Spin The Wheel</button>
 </section>

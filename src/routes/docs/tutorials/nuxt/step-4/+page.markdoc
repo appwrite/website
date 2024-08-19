@@ -106,7 +106,7 @@ const handleRegistration = async (event) => {
 </script>
 
 <template>
-  <div class="u-max-width-650" style="margin: 0 auto;">
+  <div class="max-w-[650px]" style="margin: 0 auto;">
     <section class="card u-margin-32">
       <h2 class="eyebrow-heading-2">Login/Register</h2>
       <AuthForm v-if="isSignUp" :handle-submit="handleRegistration" submit-type="Sign Up"></AuthForm>
@@ -127,7 +127,7 @@ We will also show buttons to toggle between the two different types of forms.
 
 # Authentication forms {% #auth-forms %}
 
-In the previous step, we defined a `AuthForm` to handle signup and login. 
+In the previous step, we defined a `AuthForm` to handle signup and login.
 Let's build this form now.
 
 Create a new file `components/authForm.vue` and add the following code.
@@ -138,7 +138,7 @@ The handle submit and submit type are props passed from `pages/login.vue`
 
 <template>
 <form
-  class="form u-width-full-line u-max-width-500 u-margin-block-start-16"
+  class="form u-width-full-line max-w-[500px] u-margin-block-start-16"
   @submit.prevent="handleSubmit"
 >
   <ul class="form-list">

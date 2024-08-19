@@ -87,7 +87,7 @@ const user = useUserSession();
 </script>
 
 <template>
-  <div class="u-max-width-650" style="margin-inline: auto;">
+  <div class="max-w-[650px]" style="margin-inline: auto;">
     <!-- Idea form component for logged in users -->
     <section v-if="user.current.value" class="card u-margin-32">
       <IdeasForm />
@@ -108,9 +108,10 @@ article.box {
   background-color: hsl(var(--color-neutral-0));
 }
 </style>
-````
+```
 
 # Ideas list {% #ideas-list %}
+
 Now that we can get some ideas to show, we go on to build the component for the list of ideas.
 
 Once again, we need to take a moment to think about how this component should work.
@@ -167,14 +168,14 @@ This component should be visible to all users, so no conditional rendering neeed
 <!-- pages/index.vue -->
 
 <template>
-  <div class="u-max-width-650" style="margin: 0 auto;">
+  <div class="max-w-[650px]" style="margin: 0 auto;">
     <!-- ... Some skipped code -->
     <IdeasList />
   </div>
 </template>
 
 <!-- ... Some skipped code -->
-````
+```
 
 Congratulations!
 You now have an ideas tracker built with Nuxt and Appwrite to use locally.

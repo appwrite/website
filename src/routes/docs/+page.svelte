@@ -82,23 +82,23 @@
     </div>
 
     <section class="web-hero is-align-start e-hero-docs relative">
-      <h1 class="web-display web-u-color-text-primary u-max-width-600">
+      <h1 class="web-display web-u-color-text-primary max-w-[600px]">
         Learn how to build like a team of hundreds<span
           class="web-u-color-text-accent"
           >_
         </span>
       </h1>
-      <p class="web-description u-max-width-600">
+      <p class="web-description max-w-[600px]">
         Appwrite helps you build secure and scalable apps, faster. Leverage
         Appwrite's powerful APIs to stop fighting technologies and start
         delivering value.
       </p>
     </section>
     <section class="web-hero is-align-start tech-hero">
-      <h2 class="web-title web-u-color-text-primary u-max-width-600">
+      <h2 class="web-title web-u-color-text-primary max-w-[600px]">
         Get started with your technologies
       </h2>
-      <p class="web-description u-max-width-600">
+      <p class="web-description max-w-[600px]">
         Start building with your preferred web, mobile, and native frameworks by
         following a quick start guide.
       </p>
@@ -112,7 +112,7 @@
       </a>
       <div class="web-is-not-mobile spline-wrapper absolute">
         <img
-          class="u-only-dark"
+          class="hidden dark:block"
           src="/images/animations/tech-dark-transparent.png"
           width="660"
           height="660"
@@ -120,7 +120,7 @@
           style="position: absolute;"
         />
         <img
-          class="u-only-light"
+          class="block dark:hidden"
           src="/images/animations/tech-light-transparent.png"
           width="660"
           height="660"
@@ -131,10 +131,10 @@
       <div class="bg-overlay" />
     </section>
     <section>
-      <h2 class="web-title web-u-color-text-primary u-max-width-600">
+      <h2 class="web-title web-u-color-text-primary max-w-[600px]">
         Show me some code
       </h2>
-      <p class="web-description u-max-width-600 u-margin-block-start-16">
+      <p class="web-description u-margin-block-start-16 max-w-[600px]">
         If you learn best from code examples, follow one of our tutorials.
       </p>
       <Carousel size="medium">
@@ -146,10 +146,10 @@
       </Carousel>
     </section>
     <section class="web-hero is-align-start is-no-max-width">
-      <h2 class="web-title web-u-color-text-primary u-max-width-600">
+      <h2 class="web-title web-u-color-text-primary max-w-[600px]">
         Explore capabilities
       </h2>
-      <p class="web-description u-max-width-600">
+      <p class="web-description max-w-[600px]">
         All the core functionalities you need with a scalable and flexible API.
         Explore Appwrite's product offerings.
       </p>
@@ -160,14 +160,14 @@
               <img
                 src="/images/icons/illustrated/dark/auth.png"
                 alt=""
-                class="u-only-dark"
+                class="hidden dark:block"
                 width="48"
                 height="48"
               />
               <img
                 src="/images/icons/illustrated/light/auth.png"
                 alt=""
-                class="u-only-light"
+                class="block dark:hidden"
                 width="48"
                 height="48"
               />
@@ -186,14 +186,14 @@
               <img
                 src="/images/icons/illustrated/dark/databases.png"
                 alt=""
-                class="u-only-dark"
+                class="hidden dark:block"
                 width="48"
                 height="48"
               />
               <img
                 src="/images/icons/illustrated/light/databases.png"
                 alt=""
-                class="u-only-light"
+                class="block dark:hidden"
                 width="48"
                 height="48"
               />
@@ -212,14 +212,14 @@
               <img
                 src="/images/icons/illustrated/dark/functions.png"
                 alt=""
-                class="u-only-dark"
+                class="hidden dark:block"
                 width="48"
                 height="48"
               />
               <img
                 src="/images/icons/illustrated/light/functions.png"
                 alt=""
-                class="u-only-light"
+                class="block dark:hidden"
                 width="48"
                 height="48"
               />
@@ -238,14 +238,14 @@
               <img
                 src="/images/icons/illustrated/dark/messaging.png"
                 alt=""
-                class="u-only-dark"
+                class="hidden dark:block"
                 width="48"
                 height="48"
               />
               <img
                 src="/images/icons/illustrated/light/messaging.png"
                 alt=""
-                class="u-only-light"
+                class="block dark:hidden"
                 width="48"
                 height="48"
               />
@@ -264,14 +264,14 @@
               <img
                 src="/images/icons/illustrated/dark/storage.png"
                 alt=""
-                class="u-only-dark"
+                class="hidden dark:block"
                 width="48"
                 height="48"
               />
               <img
                 src="/images/icons/illustrated/light/storage.png"
                 alt=""
-                class="u-only-light"
+                class="block dark:hidden"
                 width="48"
                 height="48"
               />
@@ -290,14 +290,14 @@
               <img
                 src="/images/icons/illustrated/dark/realtime.png"
                 alt=""
-                class="u-only-dark"
+                class="hidden dark:block"
                 width="48"
                 height="48"
               />
               <img
                 src="/images/icons/illustrated/light/realtime.png"
                 alt=""
-                class="u-only-light"
+                class="block dark:hidden"
                 width="48"
                 height="48"
               />
@@ -315,10 +315,10 @@
       </div>
     </section>
     <section class="web-hero is-align-start is-no-max-width">
-      <h2 class="web-title web-u-color-text-primary u-max-width-600">
+      <h2 class="web-title web-u-color-text-primary max-w-[600px]">
         Explore ways to integrate
       </h2>
-      <p class="web-description u-max-width-600">
+      <p class="web-description max-w-[600px]">
         Choose how you integrate with Appwrite. Explore references for the
         Appwrite SDK, REST API, GraphQL API, or Realtime API.
       </p>
@@ -378,10 +378,10 @@
       </div>
     </section>
     <section class="web-hero is-align-start is-no-max-width">
-      <h2 class="web-title web-u-color-text-primary u-max-width-600">
+      <h2 class="web-title web-u-color-text-primary max-w-[600px]">
         Migrate to Appwrite
       </h2>
-      <p class="web-description u-max-width-600">
+      <p class="web-description max-w-[600px]">
         Own your data with automatic data migrations.
       </p>
       <div class="u-margin-block-start-24">

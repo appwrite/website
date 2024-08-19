@@ -1,64 +1,64 @@
 <script lang="ts" context="module">
-    export type ProjectCardProps = {
-        title: string;
-        description: string;
-        image: {
-            src: string;
-            alt: string;
-        };
-        href: string;
+  export type ProjectCardProps = {
+    title: string;
+    description: string;
+    image: {
+      src: string;
+      alt: string;
     };
+    href: string;
+  };
 </script>
 
 <script lang="ts">
-    type $$Props = ProjectCardProps;
+  type $$Props = ProjectCardProps;
 
-    export let title: $$Props['title'];
-    export let description: $$Props['description'];
-    export let image: $$Props['image'];
-    export let href: $$Props['href'];
+  export let title: $$Props["title"];
+  export let description: $$Props["description"];
+  export let image: $$Props["image"];
+  export let href: $$Props["href"];
 </script>
 
 <a
-    class="web-card is-white web-u-flex-vertical gap-2"
-    style="--card-padding: 0.5rem;"
-    {href}
-    target="_blank"
-    rel="noopener noreferrer"
+  class="web-card is-white web-flex flex-col gap-2"
+  style="--card-padding: 0.5rem;"
+  {href}
+  target="_blank"
+  rel="noopener noreferrer"
 >
-    <div class="u-padding-12">
-        <h3 class="web-main-body-500 web-u-color-text-primary">{title}</h3>
-        <p class="u-trim-2">
-            {description}
-        </p>
-    </div>
-    <div class="img-wrapper">
-        <img src={image.src} alt={image.alt} />
-    </div>
+  <div class="u-padding-12">
+    <h3 class="web-main-body-500 web-u-color-text-primary">{title}</h3>
+    <p class="u-trim-2">
+      {description}
+    </p>
+  </div>
+  <div class="img-wrapper">
+    <img src={image.src} alt={image.alt} />
+  </div>
 </a>
 
 <style lang="scss">
-    .web-card {
-        &:hover {
-            img {
-                transform: scale(1.025);
-            }
-        }
+  .web-card {
+    &:hover {
+      img {
+        transform: scale(1.025);
+      }
     }
+  }
 
-    .img-wrapper {
-        border-radius: 0.5rem;
-        overflow: hidden;
+  .img-wrapper {
+    border-radius: 0.5rem;
+    overflow: hidden;
 
-        img {
-            display: block;
+    img {
+      display: block;
 
-            block-size: 160px;
-            inline-size: 100%;
-            max-block-size: none;
-            max-inline-size: none;
-            object-fit: cover;
-            transition: var(--transition);
-        }
+      block-size: 160px;
+      inline-size: 100%;
+      max-block-size: none;
+      max-inline-size: none;
+      object-fit: cover;
+      transition: var(--transition);
     }
+  }
 </style>

@@ -26,7 +26,7 @@
 <main class="u-contents" id="main">
   <article class="web-article u-contents">
     <header class="web-article-header">
-      <div class="web-article-header-start u-flex-vertical web-u-cross-start">
+      <div class="web-article-header-start web-u-cross-start flex flex-col">
         {#if back}
           <a
             href={back}
@@ -39,12 +39,12 @@
         <ul class="web-metadata web-caption-400">
           <slot name="metadata" />
         </ul>
-        <div class="u-cross-center relative flex">
+        <div class="relative flex items-center">
           {#if back}
             <a
               href={back}
               class="
-                        web-button is-text is-icon web-u-cross-center web-u-size-40
+                        web-button is-text is-icon web-items-center web-u-size-40
                         u-inset-inline-start-0 web-u-translate-x-negative absolute"
               aria-label="previous page"
             >
@@ -66,7 +66,7 @@
     <aside class="web-references-menu ps-6">
       <div class="web-references-menu-content">
         {#if toc && toc.length > 0}
-          <div class="u-main-space-between u-cross-center flex gap-4">
+          <div class="flex items-center justify-between gap-4">
             <h5 class="web-references-menu-title web-eyebrow">On This Page</h5>
           </div>
           <ol class="web-references-menu-list">
@@ -100,7 +100,7 @@
           </ol>
           <div class="u-sep-block-start u-padding-block-start-20">
             <button
-              class="web-link u-inline-flex u-cross-center gap-2"
+              class="web-link u-inline-flex items-center gap-2"
               use:scrollToTop
             >
               <span class="web-icon-arrow-up" aria-hidden="true" />
