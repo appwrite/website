@@ -31,16 +31,16 @@ importers:
         specifier: ^0.6.2
         version: 0.6.2
       '@appwrite.io/pink':
-        specifier: ~0.16.0
-        version: 0.16.0
+        specifier: ~0.26.0
+        version: 0.26.0
       '@appwrite.io/pink-icons':
-        specifier: ~0.16.0
-        version: 0.16.0
+        specifier: ~0.26.0
+        version: 0.26.0
       '@appwrite.io/repo':
-        specifier: github:appwrite/appwrite#main
-        version: https://codeload.github.com/appwrite/appwrite/tar.gz/5ddc705099a7751b12432f37d1b0f0381c9aecfa
+        specifier: github:appwrite/appwrite#1.6.x
+        version: https://codeload.github.com/appwrite/appwrite/tar.gz/cdef3e0cde06bbd45dcf4b0fae492825d22ac291
       '@internationalized/date':
-        specifier: ^3.5.0
+        specifier: 3.5.0
         version: 3.5.0
       '@melt-ui/pp':
         specifier: ^0.3.2
@@ -193,14 +193,14 @@ packages:
   '@appwrite.io/console@0.6.2':
     resolution: {integrity: sha512-3qYknuFwhvTN2GnPB8G1w5DgxfVorGtfj4uuEaXbTmMUmjA8fHaW5VkJriuUxCi6/TpxDxqV/hhEkdoXL+5H4w==}
 
-  '@appwrite.io/pink-icons@0.16.0':
-    resolution: {integrity: sha512-tWaG5lFXnKzbFbGf4SlxoFYj2yH7kQDejFq+UHdfzBrqteSfZpxIxdNmKHIea1ztcmsat4y+R0ZbVX9iOv+oPw==}
+  '@appwrite.io/pink-icons@0.26.0':
+    resolution: {integrity: sha512-abLQdT0zlDkEEwvgU1ymFq0ztxuRerwx7t1oeUGFgXlm9gXrxt6nce2f5GRqg9Rb7hM3F3nyc1ds8zRRWHQOyw==}
 
-  '@appwrite.io/pink@0.16.0':
-    resolution: {integrity: sha512-KprOd+36I0w6PC0x6NJclvyJNpCsjAPcrCHL3QixSX0dZ66wqFE6NitF/KiVVCxbuBaNgjrm7oQ0hr7dt1Sm5Q==}
+  '@appwrite.io/pink@0.26.0':
+    resolution: {integrity: sha512-iPeGE56pauzxuIXt15ZswjKCErwp3QdF3XOlJZfyYY7J2nirra85JNTL+3lWuFIf8yYWL7NbvCjhf8ig79TgwA==}
 
-  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/5ddc705099a7751b12432f37d1b0f0381c9aecfa':
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/5ddc705099a7751b12432f37d1b0f0381c9aecfa}
+  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/cdef3e0cde06bbd45dcf4b0fae492825d22ac291':
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/cdef3e0cde06bbd45dcf4b0fae492825d22ac291}
     version: 0.0.0
 
   '@babel/code-frame@7.24.7':
@@ -4355,15 +4355,15 @@ snapshots:
 
   '@appwrite.io/console@0.6.2': {}
 
-  '@appwrite.io/pink-icons@0.16.0': {}
+  '@appwrite.io/pink-icons@0.26.0': {}
 
-  '@appwrite.io/pink@0.16.0':
+  '@appwrite.io/pink@0.26.0':
     dependencies:
-      '@appwrite.io/pink-icons': 0.16.0
+      '@appwrite.io/pink-icons': 0.26.0
       normalize.css: 8.0.1
       the-new-css-reset: 1.11.2
 
-  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/5ddc705099a7751b12432f37d1b0f0381c9aecfa': {}
+  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/cdef3e0cde06bbd45dcf4b0fae492825d22ac291': {}
 
   '@babel/code-frame@7.24.7':
     dependencies:

@@ -13,9 +13,9 @@
 <script lang="ts">
     import { createCountdown } from '../helpers';
     import Counter from './Counter.svelte';
-    import { format } from 'date-fns';
 
     export let day: DayType;
+
     export let hasBorder: boolean = true;
 
     const { hasReleased, days, hours, minutes, seconds } = createCountdown(day.release);
