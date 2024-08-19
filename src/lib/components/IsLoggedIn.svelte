@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Button from "./Button.svelte";
+  import Button from "./ui/Button.svelte";
   import { PUBLIC_APPWRITE_DASHBOARD } from "$env/static/public";
 
   export let classes = "";

@@ -147,8 +147,8 @@ And after the `</head>` tag, add our `<body>` tag with the following content:
     </div>
     <div class="container u-margin-block-start-negative-56"
       x-data="{ prompt: '', result: { src: '' }, loading: false }">
-      <div class="card flex gap-6 u-flex-vertical">
-        <div class="flex u-cross-center gap-2">
+      <div class="card flex gap-6 flex flex-col">
+        <div class="flex items-center gap-2">
           <div class="input-text-wrapper is-with-end-button u-width-full-line">
             <input x-model="prompt" type="search" placeholder="Prompt" />
             <div class="icon-search" aria-hidden="true"></div>
@@ -159,12 +159,12 @@ And after the `</head>` tag, add our `<body>` tag with the following content:
           </button>
         </div>
         <template x-if="answer.type">
-          <div class="flex u-flex-vertical gap-3">
-            <div class="flex u-flex-vertical gap-3 card">
+          <div class="flex flex-col gap-3">
+            <div class="flex flex-col gap-3 card">
               <div class="flex gap-3">
                 <h5 class="eyebrow-heading-2">Result:</h5>
               </div>
-              <img class="u-max-width-400" x-bind:src="result.src" alt="fal.ai output" />
+              <img class="max-w-[400px]" x-bind:src="result.src" alt="fal.ai output" />
             </div>
           </div>
         </template>

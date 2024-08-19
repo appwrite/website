@@ -21,7 +21,7 @@
   import { onMount } from "svelte";
   import { page } from "$app/stores";
   import { classNames } from "$lib/utils/classnames";
-  import Button from "$lib/components/Button.svelte";
+  import Button from "$lib/components/ui/Button.svelte";
 
   export let omitMainId = false;
   let theme: "light" | "dark" | null = "dark";
@@ -220,16 +220,16 @@
         </nav>
       </div>
       <div class="web-main-header-end">
-        <Button
+        <a
           href="https://github.com/appwrite/appwrite/stargazers"
           target="_blank"
           rel="noopener noreferrer"
-          intent="text"
+          class="web-button is-text web-u-inline-width-100-percent-mobile"
         >
-          <span aria-hidden="true" class="web-icon-star" />
+          <span class="web-icon-star" aria-hidden="true" />
           <span class="text">Star on GitHub</span>
           <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span>
-        </Button>
+        </a>
 
         <IsLoggedIn />
       </div>

@@ -61,7 +61,7 @@
 
 <Main omitMainId>
   <TocRoot>
-    <div class="web-container">
+    <div class="container">
       <div class="web-grid-120-1fr-auto">
         <header class="web-grid-120-1fr-auto-header">
           <h1 class="web-display web-u-color-text-primary">Brand assets</h1>
@@ -71,7 +71,7 @@
                        u-margin-block-start-24 web-u-sep-block u-width-full-line flex"
           >
             <span
-              class="web-container u-width-full-line u-main-space-between u-cross-center flex"
+              class="container u-width-full-line flex items-center justify-between"
             >
               <span class="web-description">Table of contents</span>
               <span class="icon-menu-alt-4" aria-hidden="true" />
@@ -102,7 +102,7 @@
             </section>
 
             <section id={getSectionId(Section.NAMING)}>
-              <div class="web-u-flex-vertical flex gap-2">
+              <div class="web-flex flex-col gap-2">
                 <h2
                   class="web-title web-u-color-text-primary"
                   use:visible={{ top: 48 }}
@@ -119,7 +119,7 @@
             </section>
 
             <section id={getSectionId(Section.LOGOTYPE)}>
-              <div class="web-u-flex-vertical flex gap-2">
+              <div class="web-flex flex-col gap-2">
                 <h2
                   class="web-title web-u-color-text-primary"
                   use:visible={{ top: 48 }}
@@ -133,11 +133,11 @@
                   our logo on a neutral background.
                 </p>
                 <div
-                  class="web-u-flex-vertical-mobile u-margin-block-start-12 flex flex-wrap gap-8"
+                  class="web-flex flex-col-mobile u-margin-block-start-12 flex flex-wrap gap-8"
                 >
                   <div
                     class="media-wrapper | light |
-                                    u-stretch web-u-flex-basis-300 u-main-center u-cross-center web-u-bg-color-neutral-100 web-u-min-block-size-320 flex rounded-lg
+                                    u-stretch web-u-flex-basis-300 web-u-bg-color-neutral-100 web-u-min-block-size-320 flex items-center justify-center rounded-lg
                                     ps-16 pe-16"
                   >
                     <img
@@ -165,7 +165,7 @@
                   </div>
                   <div
                     class="media-wrapper | dark |
-                                    u-stretch web-u-flex-basis-300 u-main-center u-cross-center web-u-border-radius-8 web-u-bg-color-neutral-800 web-u-min-block-size-320 flex
+                                    u-stretch web-u-flex-basis-300 web-u-border-radius-8 web-u-bg-color-neutral-800 web-u-min-block-size-320 flex items-center justify-center
                                     ps-16 pe-16"
                   >
                     <img
@@ -194,7 +194,7 @@
                 </div>
               </div>
               <section>
-                <div class="web-u-flex-vertical flex gap-2">
+                <div class="web-flex flex-col gap-2">
                   <h3 class="web-label web-u-color-text-primary">
                     Co-branding logotypes
                   </h3>
@@ -204,8 +204,8 @@
                     collection of shapes.
                   </p>
                   <div
-                    class="u-main-center u-cross-center u-margin-block-start-12 web-u-border-radius-8 u-padding-inline-16 web-u-bg-color-neutral-800
-                                                web-u-min-block-size-320 flex"
+                    class="u-margin-block-start-12 web-u-border-radius-8 u-padding-inline-16 web-u-bg-color-neutral-800 web-u-min-block-size-320 flex
+                                                items-center justify-center"
                   >
                     <img
                       src="/assets/logotype/co-brand.svg"
@@ -217,7 +217,7 @@
             </section>
 
             <section id={getSectionId(Section.LOGOMARK)}>
-              <div class="web-u-flex-vertical flex gap-2">
+              <div class="web-flex flex-col gap-2">
                 <h3
                   class="web-title web-u-color-text-primary"
                   use:visible={{ top: 48 }}
@@ -232,11 +232,11 @@
                   showcase the complete logotype.
                 </p>
                 <div
-                  class="web-u-flex-vertical-mobile u-margin-block-start-12 flex flex-wrap gap-8"
+                  class="web-flex flex-col-mobile u-margin-block-start-12 flex flex-wrap gap-8"
                 >
                   <div
                     class="media-wrapper | light |
-                                    u-stretch web-u-flex-basis-300 u-main-center u-cross-center web-u-border-radius-8 web-u-bg-color-neutral-100 web-u-min-block-size-320 flex
+                                    u-stretch web-u-flex-basis-300 web-u-border-radius-8 web-u-bg-color-neutral-100 web-u-min-block-size-320 flex items-center justify-center
                                     ps-16 pe-16"
                   >
                     <img
@@ -264,7 +264,7 @@
                   </div>
                   <div
                     class="media-wrapper | dark |
-                                    u-stretch web-u-flex-basis-300 u-main-center u-cross-center web-u-border-radius-8 web-u-bg-color-neutral-800 web-u-min-block-size-320 flex
+                                    u-stretch web-u-flex-basis-300 web-u-border-radius-8 web-u-bg-color-neutral-800 web-u-min-block-size-320 flex items-center justify-center
                                     ps-16 pe-16"
                   >
                     <img
@@ -293,7 +293,7 @@
                 </div>
               </div>
               <section id="">
-                <div class="web-u-flex-vertical flex gap-2">
+                <div class="web-flex flex-col gap-2">
                   <h3 class="web-label web-u-color-text-primary">
                     Co-branding lockups
                   </h3>
@@ -303,8 +303,8 @@
                     collection of shapes.
                   </p>
                   <div
-                    class="u-main-center u-cross-center u-margin-block-start-12 web-u-border-radius-8 u-padding-inline-16 web-u-bg-color-neutral-800
-                                                web-u-min-block-size-320 flex"
+                    class="u-margin-block-start-12 web-u-border-radius-8 u-padding-inline-16 web-u-bg-color-neutral-800 web-u-min-block-size-320 flex
+                                                items-center justify-center"
                   >
                     <img
                       src="/assets/logomark/co-brand.svg"
@@ -325,9 +325,9 @@
               </h2>
               <div class="flex flex-wrap gap-8">
                 <div
-                  class="media-wrapper | u-stretch web-u-flex-basis-200 web-u-flex-vertical u-main-center web-u-border-radius-8
-                                u-padding-inline-24 web-u-text-color-neutral-900 web-u-bg-color-neutral-50 web-u-media-ratio-1-1
-                                web-u-min-block-size-160 gap-2"
+                  class="media-wrapper | u-stretch web-u-flex-basis-200 web-flex web-u-border-radius-8 u-padding-inline-24 web-u-text-color-neutral-900
+                                web-u-bg-color-neutral-50 web-u-media-ratio-1-1 web-u-min-block-size-160 flex-col
+                                justify-center gap-2"
                 >
                   <h3 class="web-label">Light Grey</h3>
                   <p class="web-caption-400">#EDEDF0</p>
@@ -336,9 +336,9 @@
                   </div>
                 </div>
                 <div
-                  class="media-wrapper | web-u-sep u-stretch web-u-flex-basis-200 web-u-flex-vertical u-main-center
-                                web-u-border-radius-8 u-padding-inline-24 web-u-media-ratio-1-1 web-u-min-block-size-160 web-u-text-color-neutral-50
-                                web-u-bg-color-neutral-900 gap-2"
+                  class="media-wrapper | web-u-sep u-stretch web-u-flex-basis-200 web-flex web-u-border-radius-8 u-padding-inline-24
+                                web-u-media-ratio-1-1 web-u-min-block-size-160 web-u-text-color-neutral-50 web-u-bg-color-neutral-900 flex-col
+                                justify-center gap-2"
                 >
                   <h3 class="web-label">Dark Grey</h3>
                   <p class="web-caption-400">#19191D</p>
@@ -347,9 +347,9 @@
                   </div>
                 </div>
                 <div
-                  class="media-wrapper | u-stretch web-u-flex-basis-200 web-u-flex-vertical u-main-center web-u-border-radius-8
-                                u-padding-inline-24 web-u-text-color-neutral-50 web-u-bg-color-primary-500 web-u-aspect-ratio-1-1
-                                web-u-min-block-size-160 gap-2"
+                  class="media-wrapper | u-stretch web-u-flex-basis-200 web-flex web-u-border-radius-8 u-padding-inline-24 web-u-text-color-neutral-50
+                                web-u-bg-color-primary-500 web-u-aspect-ratio-1-1 web-u-min-block-size-160 flex-col
+                                justify-center gap-2"
                 >
                   <h3 class="web-label">Appwrite Pink</h3>
                   <p class="web-caption-400">#FD366E</p>
@@ -361,7 +361,7 @@
             </section>
 
             <section id={getSectionId(Section.VISUALS)}>
-              <div class="web-u-flex-vertical flex gap-2">
+              <div class="web-flex flex-col gap-2">
                 <h2
                   class="web-title web-u-color-text-primary"
                   use:visible={{ top: 48 }}
@@ -533,7 +533,7 @@
             </section>
 
             <section id={getSectionId(Section.CONTACT)}>
-              <div class="web-u-flex-vertical flex gap-2">
+              <div class="web-flex flex-col gap-2">
                 <h2
                   class="web-title web-u-color-text-primary"
                   use:visible={{ top: 48 }}

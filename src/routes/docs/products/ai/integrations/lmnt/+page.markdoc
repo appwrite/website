@@ -164,8 +164,8 @@ And after the `</head>` tag add this `<body>` which will contain the actual form
       class="container u-margin-block-start-negative-56"
       x-data="{ prompt: '', response: '', loading: false }"
     >
-      <div class="card flex gap-6 u-flex-vertical">
-        <div class="flex u-cross-center gap-2">
+      <div class="card flex gap-6 flex flex-col">
+        <div class="flex items-center gap-2">
           <div
             class="input-text-wrapper is-with-end-button u-width-full-line"
           >
@@ -182,8 +182,8 @@ And after the `</head>` tag add this `<body>` which will contain the actual form
           </button>
         </div>
         <template x-if="response">
-          <div class="flex u-flex-vertical gap-3">
-            <div class="flex u-flex-vertical gap-3 card">
+          <div class="flex flex-col gap-3">
+            <div class="flex flex-col gap-3 card">
               <div class="flex gap-3">
                 <h5 class="eyebrow-heading-2">Output:</h5>
               </div>

@@ -35,7 +35,7 @@
   </footer>
 {:else if variant === "docs"}
   <footer
-    class="web-main-footer is-with-bg-color u-margin-block-start-32 u-small relative"
+    class="web-main-footer is-with-bg-color u-margin-block-start-32 relative"
   >
     <div class="web-main-footer-grid-1">
       <ul class="web-main-footer-grid-1-column-1 flex gap-2">
@@ -57,7 +57,7 @@
         <ThemeSelect />
       </div>
       <ul
-        class="web-main-footer-grid-1-column-3 u-cross-center web-main-footer-links"
+        class="web-main-footer-grid-1-column-3 web-main-footer-links items-center"
       >
         <li>
           <a href="/discord" target="_blank" rel="noopener noreferrer"

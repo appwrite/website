@@ -12,7 +12,7 @@
   import FooterNav from "../lib/components/FooterNav.svelte";
   import MainFooter from "../lib/components/MainFooter.svelte";
   import DeveloperCard from "./DeveloperCard.svelte";
-  import Button from "../lib/components/Button.svelte";
+  import Button from "../lib/components/ui/Button.svelte";
 
   const title = "Appwrite - Build like a team of hundreds";
   const description = DEFAULT_DESCRIPTION;
@@ -77,7 +77,7 @@
   <div class="web-big-padding-section hidden">
     <div class="web-big-padding-section-level-1">
       <div class="web-big-padding-section-level-2">
-        <section class="web-container web-u-padding-block-end-0">
+        <section class="container web-u-padding-block-end-0">
           <a
             href="/blog/post/announcing-appwrite-new-ai-integrations"
             class="web-hero-banner-button web-u-margin-block-end-24"
@@ -114,7 +114,7 @@
       </div>
       <div class="web-big-padding-section-level-2">
         <section
-          class="web-container web-u-padding-block-0"
+          class="container web-u-padding-block-0"
           style="--container-size:78.75rem"
         >
           <div class="web-media-container">
@@ -136,7 +136,7 @@
     <div
       class="web-big-padding-section-level-1 web-white-section light relative"
     >
-      <div class="u-inset-block-end-0 u-inset-inline-start absolute w-full">
+      <div class="u-inset-inline-start absolute bottom-0 w-full">
         <img
           class="u-width-full-line block w-full"
           src="/images/bgs/padding-section-1.svg"
@@ -146,19 +146,21 @@
       </div>
 
       <div class="web-big-padding-section-level-2">
-        <div class="web-container">
-          <section class="web-hero is-align-start">
-            <span class="web-badges web-eyebrow">PRIVACY & SECURITY_</span>
-            <h2 class="web-display web-u-color-text-primary u-max-width-700">
+        <div class="container">
+          <section class="web-hero is-align-start max-w-[700px]">
+            <span class="web-badges web-eyebrow !text-white"
+              >PRIVACY & SECURITY_</span
+            >
+            <h2 class="web-display text-greyscale-900">
               Self-host your data or take it to the Cloud
             </h2>
-            <p class="web-description u-max-width-700">
+            <p class="web-description !text-greyscale-700">
               Migrate your data from and to any platform at any time with
               Appwrite Migrations. With built-in security and privacy for peace
               of mind.
             </p>
           </section>
-          <div class="web-u-margin-block-start-80 overflow-hidden">
+          <div class="mt-20 overflow-hidden">
             <ul class="web-info-boxes web-sub-body-500">
               <li class="web-info-boxes-item">
                 <img
@@ -256,9 +258,9 @@
       </div>
       <OpenSource />
       <div class="web-big-padding-section-level-2">
-        <div class="web-container">
+        <div class="container">
           <div class="web-hero">
-            <div class="web-display web-u-color-text-primary">
+            <div class="web-display text-greyscale-900">
               Loved by developers like you
             </div>
           </div>
@@ -302,7 +304,8 @@
                   href="https://twitter.com/appwrite"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="web-link is-inline">@appwrite</a
+                  class="text-greyscale-900 underline hover:text-pink-600"
+                  >@appwrite</a
                 > handle my authentication process while I focus on the business
                 logic.
               </DeveloperCard>
@@ -343,7 +346,8 @@
                   href="https://twitter.com/appwrite"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="web-link is-inline">@appwrite</a
+                  class="text-greyscale-900 underline hover:text-pink-600"
+                  >@appwrite</a
                 >. With its robust feature set and open-source nature, it's the
                 perfect choice for developers who want to build secure and
                 scalable applications.
@@ -370,10 +374,10 @@
         />
       </div>
       <div class="web-big-padding-section-level-2 is-margin-replace-padding">
-        <div class="web-container relative">
+        <div class="container relative">
           <section class="web-hero is-align-start">
-            <span class="web-badges web-eyebrow">SDKs_</span>
-            <h2 class="web-display web-u-color-text-primary u-max-width-600">
+            <span class="web-badges web-eyebrow !text-white">SDKs_</span>
+            <h2 class="web-display text-greyscale-100 max-w-[600px]">
               Code the way you want
             </h2>
             <p class="web-description max-w-xl">
@@ -381,9 +385,9 @@
               ensuring you can code with the language you want at any time.
             </p>
             <Technologies />
-            <Button href="/docs/sdks" intent="secondary">
-              Explore all SDKs
-            </Button>
+            <a href="/docs/sdks" class="web-button is-secondary"
+              >Explore all SDKs</a
+            >
           </section>
         </div>
       </div>
@@ -407,11 +411,11 @@
             />
           </div>
         </div>
-        <div class="web-container relative">
+        <div class="container relative">
           <div class="grid grid-cols-2">
             <section class="web-hero is-align-start">
-              <span class="web-badges web-eyebrow">Scale_</span>
-              <h2 class="web-display u-max-width-600 web-u-color-text-primary">
+              <span class="web-badges web-eyebrow !text-white">Scale_</span>
+              <h2 class="web-display web-u-color-text-primary max-w-[600px]">
                 We scale for you
               </h2>
             </section>
@@ -441,7 +445,7 @@
       <div
         class="web-big-padding-section-level-2 is-margin-replace-padding relative overflow-hidden"
       >
-        <div class="web-container">
+        <div class="container">
           <PreFooter />
           <FooterNav />
           <MainFooter />

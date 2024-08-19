@@ -111,9 +111,9 @@
       </div>
       <div class="web-article-header-end">
         <div
-          class="web-u-flex-vertical-mobile web-u-color-text-primary flex gap-6"
+          class="web-flex flex-col-mobile web-u-color-text-primary flex gap-6"
         >
-          <div class="u-cross-center flex gap-2">
+          <div class="flex items-center gap-2">
             <label class="u-small web-is-not-mobile" for="platform"
               >Platform</label
             >
@@ -141,7 +141,7 @@
               nativeMobile
             />
           </div>
-          <div class="u-cross-center flex gap-2">
+          <div class="flex items-center gap-2">
             <label class="u-small web-is-not-mobile" for="version"
               >Version</label
             >
@@ -164,14 +164,12 @@
     </header>
     <div class="web-article-content" style:gap="6rem">
       <section class="web-article-content-grid-6-4">
-        <div
-          class="web-article-content-grid-6-4-column-1 u-flex-vertical gap-2"
-        >
+        <div class="web-article-content-grid-6-4-column-1 flex flex-col gap-2">
           <!-- eslint-disable-next-line svelte/no-at-html-tags -->
           {@html parse(data.service?.description)}
         </div>
         <div
-          class="web-article-content-grid-6-4-column-2 u-flex-vertical u-main-end gap-8"
+          class="web-article-content-grid-6-4-column-2 u-main-end flex flex-col gap-8"
         >
           <Fence
             language="text"
@@ -184,7 +182,7 @@
 
         {#if data.methods.length === 0}
           <div
-            class="web-article-content-grid-6-4-column-2 u-flex-vertical gap-8"
+            class="web-article-content-grid-6-4-column-2 flex flex-col gap-8"
           >
             <div class="web-inline-info">
               <span class="icon-info" aria-hidden="true" />
@@ -199,14 +197,14 @@
       {#each data.methods as method (method.id)}
         <section class="web-article-content-grid-6-4">
           <div
-            class="web-article-content-grid-6-4-column-1 u-flex-vertical gap-8"
+            class="web-article-content-grid-6-4-column-1 flex flex-col gap-8"
           >
             <header class="web-article-content-header">
               <Heading id={method.id} level={2} inReferences
                 >{method.title}</Heading
               >
             </header>
-            <div class="u-flex-vertical gap-2">
+            <div class="flex flex-col gap-2">
               <!-- eslint-disable-next-line svelte/no-at-html-tags -->
               {@html parse(method.description)}
             </div>
@@ -227,7 +225,7 @@
             </Accordion>
           </div>
           <div
-            class="web-article-content-grid-6-4-column-2 u-flex-vertical gap-8"
+            class="web-article-content-grid-6-4-column-2 flex flex-col gap-8"
           >
             <div class="u-contents dark">
               <div
@@ -271,7 +269,7 @@
         </button>
         <div class="web-references-menu-content">
           <div
-            class="web-references-menu-header u-main-space-between u-cross-center u-margin-block-start-24 flex gap-4"
+            class="web-references-menu-header u-margin-block-start-24 flex items-center justify-between gap-4"
           >
             <h5 class="web-references-menu-title web-eyebrow">On This Page</h5>
             <button
@@ -295,7 +293,7 @@
           </ul>
           <div class="u-sep-block-start web-u-padding-block-20">
             <button
-              class="web-link u-inline-flex u-cross-center gap-2"
+              class="web-link u-inline-flex items-center gap-2"
               use:scrollToTop
             >
               <span class="web-icon-arrow-up" aria-hidden="true" />

@@ -6,13 +6,13 @@
   } from "svelte/elements";
   import { cva, type VariantProps } from "cva";
 
-  const button = cva(
+  const card = cva(
     [
-      "flex w-fit min-h-10 items-center justify-center gap-2 rounded-lg px-4 text-white transition-all select-none",
+      "flex w-fit min-h-10 items-center justify-center gap-2 rounded-2xl px-6 text-white transition-all select-none",
     ],
     {
       variants: {
-        intent: {
+        variant: {
           primary: [
             "to-secondary-100 bg-gradient-to-br from-pink-500 via-pink-500",
             "hover:shadow-[0_0_2rem_#fd366e52]",
@@ -31,29 +31,29 @@
     | (HTMLButtonAttributes & { href?: undefined })
     | (HTMLAnchorAttributes & { href: string });
 
-  type $$Props = ButtonProps & VariantProps<typeof button>;
+  type $$Props = ButtonProps & VariantProps<typeof card>;
 
   export let href: $$Props["href"] = undefined;
-  export let intent: $$Props["intent"] = "primary";
+  export let variant: $$Props["variant"] = "primary";
   const { class: classes, ...props } = $$restProps;
 
-  const sharedClasses = classNames(button({ intent }), classes);
+  const buttonClasses = classNames(card({ variant }), classes);
 </script>
 
 {#if href}
   <a
     {...props}
     {href}
-    class={sharedClasses}
-    class:has-border-gradient={intent === "secondary"}
+    class={buttonClasses}
+    class:has-border-gradient={variant === "secondary"}
   >
     <slot />
   </a>
 {:else}
   <button
     {...props}
-    class={sharedClasses}
-    class:has-border-gradient={intent === "secondary"}
+    class={buttonClasses}
+    class:has-border-gradient={variant === "secondary"}
   >
     <slot />
   </button>
