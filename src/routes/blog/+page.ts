@@ -1,8 +1,7 @@
 import { base } from '$app/paths';
 import type { AuthorData, PostsData } from './content';
 
-
-export function load() {
+export function load({ url }) {
     const postsGlob = import.meta.glob('./post/**/*.markdoc', {
         eager: true
     });
@@ -53,8 +52,16 @@ export function load() {
         };
     });
 
+    const page = Number(url.searchParams.get('page')) || 1;
+    const postsPerPage = 6; // Adjust this number as needed
+    const totalPages = Math.ceil(posts.length / postsPerPage);
+    const paginatedPosts = posts.slice((page - 1) * postsPerPage, page * postsPerPage);
+
     return {
-        posts,
-        authors
+        posts: paginatedPosts,
+        authors,
+        currentPage: page,
+        totalPages,
+        featured: posts.find(post => post.featured)
     };
 }
