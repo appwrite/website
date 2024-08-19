@@ -76,7 +76,7 @@
                 }
                 img {
                     border-radius: 12px;
-                    height: 100%;
+
                     display: block;
                 }
             }
