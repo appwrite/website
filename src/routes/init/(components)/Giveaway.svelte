@@ -19,7 +19,7 @@
     </div>
 
     <div
-      class="web-card is-normal has-border-gradient u-overflow-hidden img"
+      class="web-card is-normal has-border-gradient img overflow-hidden"
       style:padding="0.5rem"
     >
       <img src={swag} alt="Enter our Init giveaway." />

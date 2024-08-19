@@ -16,7 +16,7 @@
 
 <a
   href={url}
-  class="web-card is-normal has-border-gradient u-overflow-hidden"
+  class="web-card is-normal has-border-gradient overflow-hidden"
   style:padding="0"
 >
   <div style:padding="1.25rem">

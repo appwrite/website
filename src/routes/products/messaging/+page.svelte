@@ -238,7 +238,7 @@ messaging.create_email(
 </svelte:head>
 
 <Main>
-  <div class="web-big-padding-section u-overflow-hidden">
+  <div class="web-big-padding-section overflow-hidden">
     <div class="hero">
       <img
         src="/images/products/messaging/blur-left.png"
@@ -311,7 +311,7 @@ messaging.create_email(
               All of your messages in one place
             </h2>
           </section>
-          <div class="u-overflow-hidden web-u-margin-block-start-80">
+          <div class="web-u-margin-block-start-80 overflow-hidden">
             <ul class="web-info-boxes is-desktop-max-out-3 web-sub-body-500">
               <li class="web-info-boxes-item">
                 <img
@@ -536,7 +536,7 @@ messaging.create_email(
             </h2>
           </div>
           <div
-            class="web-grid-1-1-opt-2 web-u-gap-64 web-u-margin-block-start-64 code-snippets"
+            class="code-snippets divide-border-primary mt-64 grid grid-cols-2 gap-16 divide-x-2"
           >
             <div class="u-min-width-0 flex flex-col gap-2">
               <h3 class="web-label web-u-color-text-primary">
@@ -583,7 +583,7 @@ messaging.create_email(
           Keep exploring our products
         </h4>
         <ul
-          class="u-grid u-gap-32 u-margin-block-start-32"
+          class="mt-8 grid gap-8"
           style="grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr))"
         >
           <li class="web-u-flex-basis-378">
