@@ -26,7 +26,7 @@
     >
       {title}
     </h3>
-    <div class="web-card-link u-flex items-center" style:margin-top="8px">
+    <div class="web-card-link flex items-center" style:margin-top="8px">
       <span class="text">{label}</span>
       <span class="web-icon-arrow-right" />
     </div>

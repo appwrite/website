@@ -24,7 +24,7 @@
       <h3 class="web-label web-u-color-text-primary">
         {title}
       </h3>
-      <div class="web-card-link u-flex items-center">
+      <div class="web-card-link flex items-center">
         <span class="text">{label}</span>
         <span class="web-icon-arrow-right" />
       </div>

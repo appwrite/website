@@ -27,7 +27,7 @@
         {title}
       </h4>
       <div class="web-author">
-        <div class="u-flex u-gap-8 items-center">
+        <div class="flex items-center gap-2">
           <img
             class="web-author-image"
             loading="lazy"

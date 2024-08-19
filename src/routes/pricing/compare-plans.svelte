@@ -426,9 +426,7 @@
               {/key}
             </div>
             <div class="web-mini-card">
-              <div
-                class="u-flex u-gap-16 u-flex-wrap items-center justify-between"
-              >
+              <div class="u-gap-16 flex flex-wrap items-center justify-between">
                 <h4 class="web-label web-u-color-text-primary">Free</h4>
                 <a
                   href="https://cloud.appwrite.io/register"
@@ -439,9 +437,7 @@
               </div>
             </div>
             <div class="web-mini-card">
-              <div
-                class="u-flex u-gap-16 u-flex-wrap items-center justify-between"
-              >
+              <div class="u-gap-16 flex flex-wrap items-center justify-between">
                 <h4 class="web-label web-u-color-text-primary">Pro</h4>
                 <a
                   class="web-button"
@@ -455,9 +451,7 @@
               </div>
             </div>
             <div class="web-mini-card">
-              <div
-                class="u-flex u-gap-16 u-flex-wrap items-center justify-between"
-              >
+              <div class="u-gap-16 flex flex-wrap items-center justify-between">
                 <h4 class="web-label web-u-color-text-primary">Scale</h4>
                 <button class="web-button is-secondary" disabled>
                   <span class="web-sub-body-500">Coming soon</span>
