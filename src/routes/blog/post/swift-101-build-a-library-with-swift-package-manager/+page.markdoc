@@ -189,14 +189,12 @@ struct FooPackage {
     static let account = Account(client)
 
     public static func login(
-        endpoint: String,
         projectId: String,
         email: String,
         password: String,
         completion: @escaping (Result<Session, AppwriteError>) -> Void
     ) {
         client
-            .setEndpoint(endpoint)
             .setProject(projectId)
 
         account.createSession(

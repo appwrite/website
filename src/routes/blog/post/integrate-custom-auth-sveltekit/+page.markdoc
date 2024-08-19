@@ -89,7 +89,6 @@ const projectId = PUBLIC_APPWRITE_PROJECT_ID;
 const apiKey = env.APPWRITE_API_KEY;
 
 const client = new Client()
-    .setEndpoint(endpoint)
     .setProject(projectId)
     .setKey(apiKey);
 
@@ -182,7 +181,6 @@ const endpoint = PUBLIC_APPWRITE_ENDPOINT;
 const projectId = PUBLIC_APPWRITE_PROJECT_ID;
 
 const client = new Client()
-	.setEndpoint(endpoint) // Your API Endpoint
 	.setProject(projectId); // Your project ID;
 
 export const account = new Account(client);
