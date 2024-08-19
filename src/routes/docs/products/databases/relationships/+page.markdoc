@@ -87,7 +87,7 @@ A relationship attribute with the key `reviews` is added to the movies collectio
 const { Client, Databases } = require('node-appwrite');
 
 const client = new Client()
-    .setProject('<PROJECT_ID>');               // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 const databases = new Databases(client);
 
@@ -131,7 +131,7 @@ from appwrite.client import Client
 from appwrite.services.databases import Databases
 
 client = (Client()
-    .set_project('<PROJECT_ID>'))                   # Your project ID
+    .set_project('<PROJECT_ID>')) # Your project ID
 
 databases = Databases(client)
 
@@ -154,7 +154,7 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_project('<PROJECT_ID>')               # Your project ID
+    .set_project('<PROJECT_ID>') # Your project ID
 
 databases = Databases.new(client)
 
@@ -690,7 +690,7 @@ You can also provide explicit permissions to the child document if they should b
 const { Client, Databases, ID } = require('node-appwrite');
 
 const client = new Client()
-    .setProject('<PROJECT_ID>');               // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 const databases = new Databases(client);
 

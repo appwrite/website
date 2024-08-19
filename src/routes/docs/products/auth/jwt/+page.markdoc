@@ -27,7 +27,7 @@ You can generate a JWT like this on a [Client SDK](/docs/sdks#client).
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setProject('<PROJECT_ID>');                 // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 const account = new Account(client);
 
@@ -37,7 +37,7 @@ const user = await account.createJWT();
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setProject('<PROJECT_ID>');                 // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 final account = Account(client);
 
@@ -47,7 +47,7 @@ final jwt = await account.createJWT();
 import Appwrite
 
 let client = Client()
-    .setProject("<PROJECT_ID>")                  // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 let account = Account(client)
 
@@ -58,7 +58,7 @@ import io.appwrite.Client
 import io.appwrite.services.Account
 
 val client = Client(context)
-    .setProject("<PROJECT_ID>")                  // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 val account = Account(client)
 
@@ -81,16 +81,16 @@ Use JWTs tokens like this in a [Server SDK](/docs/sdks#server).
 const { Client } = require('node-appwrite');
 
 const client = new Client()
-    .setProject('<PROJECT_ID>')                  // Your project ID
-    .setJWT('eyJJ9.eyJ...886ca');                // Your secret JSON Web Token
+    .setProject('<PROJECT_ID>')   // Your project ID
+    .setJWT('eyJJ9.eyJ...886ca'); // Your secret JSON Web Token
 ```
 
 ```php
 use Appwrite\Client;
 
 $client = (new Client())
-    ->setProject('<PROJECT_ID>')                             // Your project ID
-    ->setJWT('eyJJ9.eyJ...886ca');                           // Your secret JSON Web Token
+    ->setProject('<PROJECT_ID>')   // Your project ID
+    ->setJWT('eyJJ9.eyJ...886ca'); // Your secret JSON Web Token
 ```
 
 ```python
@@ -99,8 +99,8 @@ from appwrite.client import Client
 client = Client()
 
 (client
-  .set_project('<PROJECT_ID>')                  # Your project ID
-  .set_jwt('eyJJ9.eyJ...886ca')                 # Your secret JSON Web Token
+  .set_project('<PROJECT_ID>')  # Your project ID
+  .set_jwt('eyJJ9.eyJ...886ca') # Your secret JSON Web Token
 )
 ```
 
@@ -110,48 +110,48 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_project('<PROJECT_ID>')                    # Your project ID
-    .set_jwt('eyJJ9.eyJ...886ca')                   # Your secret JSON Web Token
+    .set_project('<PROJECT_ID>')  # Your project ID
+    .set_jwt('eyJJ9.eyJ...886ca') # Your secret JSON Web Token
 ```
 
 ```deno
 import { Client } from "https://deno.land/x/appwrite/mod.ts";
 
 let client = new Client()
-    .setProject('<PROJECT_ID>')                     // Your project ID
-    .setJWT('eyJJ9.eyJ...886ca');                   // Your secret JSON Web Token
+    .setProject('<PROJECT_ID>')   // Your project ID
+    .setJWT('eyJJ9.eyJ...886ca'); // Your secret JSON Web Token
 ```
 
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 
 final client = Client()
-    .setProject('<PROJECT_ID>')                     // Your project ID
-    .setJWT('eyJJ9.eyJ...886ca');                   // Your secret JSON Web Token
+    .setProject('<PROJECT_ID>')   // Your project ID
+    .setJWT('eyJJ9.eyJ...886ca'); // Your secret JSON Web Token
 ```
 
 ```kotlin
 import io.appwrite.Client
 
 val client = Client()
-    .setProject("<PROJECT_ID>")                     // Your project ID
-    .setJWT("eyJJ9.eyJ...886ca")                    // Your secret JSON Web Token
+    .setProject("<PROJECT_ID>")  // Your project ID
+    .setJWT("eyJJ9.eyJ...886ca") // Your secret JSON Web Token
 ```
 
 ```swift
 import Appwrite
 
 let client = Client()
-    .setProject("<PROJECT_ID>")                     // Your project ID
-    .setJWT("eyJJ9.eyJ...886ca")                    // Your secret JSON Web Token
+    .setProject("<PROJECT_ID>")  // Your project ID
+    .setJWT("eyJJ9.eyJ...886ca") // Your secret JSON Web Token
 ```
 
 ```csharp
 using Appwrite;
 
 var client = new Client()
-    .SetProject("<PROJECT_ID>")                     // Your project ID
-    .SetJWT("eyJJ9.eyJ...886ca");                   // Your secret JSON Web Token
+    .SetProject("<PROJECT_ID>")   // Your project ID
+    .SetJWT("eyJJ9.eyJ...886ca"); // Your secret JSON Web Token
 ```
 {% /multicode %}
 
@@ -181,8 +181,8 @@ If you're authenticated on the client-side as `user-a` and created a JWT `'eyJJ9
 const { Client } = require('node-appwrite');
 
 const client = new Client()
-    .setProject('<PROJECT_ID>')                  // Your project ID
-    .setJWT('eyJJ9.eyJ...886ca');                // Your secret JSON Web Token
+    .setProject('<PROJECT_ID>')   // Your project ID
+    .setJWT('eyJJ9.eyJ...886ca'); // Your secret JSON Web Token
 
 const databases = new sdk.Databases(client);
 
@@ -196,8 +196,8 @@ const documents = await databases.listDocuments(
 use Appwrite\Client;
 
 $client = (new Client())
-    .setProject('<PROJECT_ID>')                            // Your project ID
-    .setJWT('eyJJ9.eyJ...886ca');                          // Your secret JSON Web Tokens
+    .setProject('<PROJECT_ID>')   // Your project ID
+    .setJWT('eyJJ9.eyJ...886ca'); // Your secret JSON Web Tokens
 
 $databases = new Databases($client);
 
@@ -213,8 +213,8 @@ from appwrite.client import Client
 client = Client()
 
 (client
-  .set_project('<PROJECT_ID>')                              # Your project ID
-  .set_jwt('eyJJ9.eyJ...886ca')                             # Your secret JSON Web Token
+  .set_project('<PROJECT_ID>')  # Your project ID
+  .set_jwt('eyJJ9.eyJ...886ca') # Your secret JSON Web Token
 )
 
 databases = Databases(client)
@@ -231,8 +231,8 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_project('<PROJECT_ID>')                            # Your project ID
-    .set_jwt('eyJJ9.eyJ...886ca')                           # Your secret JSON Web Token
+    .set_project('<PROJECT_ID>')  # Your project ID
+    .set_jwt('eyJJ9.eyJ...886ca') # Your secret JSON Web Token
 
 databases = Databases.new(client)
 
@@ -246,8 +246,8 @@ documents = databases.list_documents(
 import { Client } from "https://deno.land/x/appwrite/mod.ts";
 
 let client = new Client()
-    .setProject('<PROJECT_ID>')                     // Your project ID
-    .setJWT('eyJJ9.eyJ...886ca');                   // Your secret JSON Web Token
+    .setProject('<PROJECT_ID>')   // Your project ID
+    .setJWT('eyJJ9.eyJ...886ca'); // Your secret JSON Web Token
 
 let databases = new sdk.Databases(client);
 
@@ -261,8 +261,8 @@ let documents = await databases.listDocuments(
 import 'package:dart_appwrite/dart_appwrite.dart';
 
 final client = Client()
-    .setProject('<PROJECT_ID>')                     // Your project ID
-    .setJWT('eyJJ9.eyJ...886ca');                   // Your secret JSON Web Token
+    .setProject('<PROJECT_ID>')   // Your project ID
+    .setJWT('eyJJ9.eyJ...886ca'); // Your secret JSON Web Token
 
 final databases = Databases(client);
 
@@ -276,8 +276,8 @@ final documents = await databases.listDocuments(
 import io.appwrite.Client
 
 val client = Client()
-    .setProject("<PROJECT_ID>")                     // Your project ID
-    .setJWT("eyJJ9.eyJ...886ca")                    // Your secret JSON Web Token
+    .setProject("<PROJECT_ID>")  // Your project ID
+    .setJWT("eyJJ9.eyJ...886ca") // Your secret JSON Web Token
 
 val databases = Databases(client)
 
@@ -291,8 +291,8 @@ val documents = databases.listDocuments(
 import Appwrite
 
 let client = Client()
-    .setProject("<PROJECT_ID>")                     // Your project ID
-    .setJWT("eyJJ9.eyJ...886ca")                    // Your secret JSON Web Token
+    .setProject("<PROJECT_ID>")  // Your project ID
+    .setJWT("eyJJ9.eyJ...886ca") // Your secret JSON Web Token
     
 let databases = Databases(client)
 
@@ -308,8 +308,8 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 var client = new Client()
-    .SetProject("<PROJECT_ID>")                     // Your project ID
-    .SetJWT("eyJJ9.eyJ...886ca");                   // Your secret JSON Web Token
+    .SetProject("<PROJECT_ID>")   // Your project ID
+    .SetJWT("eyJJ9.eyJ...886ca"); // Your secret JSON Web Token
 
 var databases = new Databases(client);
 
@@ -350,8 +350,8 @@ If the same request is made where the [Server SDK](/docs/sdks#server)'s `client`
 const { Client } = require('node-appwrite');
 
 const client = new Client()
-    .setProject('<PROJECT_ID>')                  // Your project ID
-    .setKey('98fd4...a2ad2');                    // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('98fd4...a2ad2');   // Your secret API key
 
 const databases = new sdk.Databases(client);
 
@@ -366,8 +366,8 @@ const documents = await databases.listDocuments(
 use Appwrite\Client;
 
 $client = (new Client())
-    ->setProject('<PROJECT_ID>')                  // Your project ID
-    ->setKey('98fd4...a2ad2');                    // Your secret API key
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setKey('98fd4...a2ad2');   // Your secret API key
 
 $databases = new Databases($client);
 
@@ -383,8 +383,8 @@ from appwrite.client import Client
 
 client = Client()
 (client
-    .set_project('<PROJECT_ID>')                  // Your project ID
-    .set_key('98fd4...a2ad2')                     // Your secret API key
+    .set_project('<PROJECT_ID>') // Your project ID
+    .set_key('98fd4...a2ad2')    // Your secret API key
 )
 
 databases = Databases(client)
@@ -401,8 +401,8 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_project('<PROJECT_ID>')                  # Your project ID
-    .set_key('98fd4...a2ad2')                     # Your secret API key
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_key('98fd4...a2ad2')    # Your secret API key
 
 databases = Databases.new(client)
 
@@ -416,8 +416,8 @@ documents = databases.list_documents(
 import { Client } from "https://deno.land/x/appwrite/mod.ts";
 
 let client = new Client()
-    .setProject('<PROJECT_ID>')                  // Your project ID
-    .setKey('98fd4...a2ad2');                    // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('98fd4...a2ad2');   // Your secret API key
 
 let databases = new sdk.Databases(client);
 
@@ -431,8 +431,8 @@ let documents = await databases.listDocuments(
 import 'package:dart_appwrite/dart_appwrite.dart';
 
 final client = Client()
-    .setProject('<PROJECT_ID>')                  // Your project ID
-    .setKey('98fd4...a2ad2');                    // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('98fd4...a2ad2');   // Your secret API key
 
 final databases = Databases(client);
 
@@ -446,8 +446,8 @@ final documents = await databases.listDocuments(
 import io.appwrite.Client
 
 val client = Client()
-    .setProject("<PROJECT_ID>")                  // Your project ID
-    .setKey('98fd4...a2ad2');                    // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey('98fd4...a2ad2');   // Your secret API key
 
 val databases = Databases(client)
 
@@ -461,8 +461,8 @@ val documents = databases.listDocuments(
 import Appwrite
 
 let client = Client()
-    .setProject("<PROJECT_ID>")                  // Your project ID
-    .setKey('98fd4...a2ad2');                    // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey('98fd4...a2ad2');   // Your secret API key
 
 let databases = Databases(client)
 
@@ -478,8 +478,8 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 var client = new Client()
-    .SetProject("<PROJECT_ID>")                  // Your project ID
-    .SetKey('98fd4...a2ad2');                    // Your secret API key
+    .SetProject("<PROJECT_ID>") // Your project ID
+    .SetKey('98fd4...a2ad2');   // Your secret API key
 
 var databases = new Databases(client);
 

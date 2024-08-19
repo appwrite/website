@@ -17,8 +17,8 @@ Once you have your server endpoint prepared either in an Appwrite Function or a 
 import { Client, Users } from "node-appwrite";
 
 const client = new Client()
-    .setProject('<PROJECT_ID>');                    // Your project ID
-    .setKey('<API_KEY>');                           // Your project API key
+    .setProject('<PROJECT_ID>'); // Your project ID
+    .setKey('<API_KEY>');        // Your project API key
 
 const users = new Users(client);
 
@@ -31,8 +31,8 @@ use Appwrite\Client;
 use Appwrite\Users;
 
 $client = (new Client())
-    ->setProject('<PROJECT_ID>')                    // Your project ID
-    ->setKey('<API_KEY>');                          // Your project API key
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setKey('<API_KEY>');       // Your project API key
 
 $users = new Users($client);
 
@@ -47,8 +47,8 @@ from appwrite.users import Users
 client = Client()
 
 (client
-  .set_project('<PROJECT_ID>')                  # Your project ID
-  .set_key('<API_KEY>')                         # Your project API key
+  .set_project('<PROJECT_ID>') # Your project ID
+  .set_key('<API_KEY>')        # Your project API key
 )
 
 users = Users(client)
@@ -63,8 +63,8 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_project('<PROJECT_ID>')                    # Your project ID
-    .set_key('<API_KEY>')                           # Your project API key
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_key('<API_KEY>')        # Your project API key
 
 users = Users.new(client)
 
@@ -76,8 +76,8 @@ secret = token['secret']
 import { Client, Users } from "https://deno.land/x/appwrite/mod.ts";
 
 const client = new Client()
-    .setProject('<PROJECT_ID>')                     // Your project ID
-    .setKey('<API_KEY>');                           // Your project API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>');       // Your project API key
 
 const users = new Users(client);
 
@@ -89,8 +89,8 @@ const secret = token.secret;
 import 'package:dart_appwrite/dart_appwrite.dart';
 
 final client = Client()
-    .setProject('<PROJECT_ID>')                     // Your project ID
-    .setKey('<API_KEY>');                           // Your project API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>');       // Your project API key
 
 final users = Users(client);
 
@@ -103,8 +103,8 @@ import io.appwrite.Client
 import io.appwrite.Users
 
 val client = Client()
-    .setProject("<PROJECT_ID>")                     // Your project ID
-    .setKey("<API_KEY>")                            // Your project API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your project API key
 
 val users = Users(client)
 
@@ -116,8 +116,8 @@ val secret = token.secret
 import Appwrite
 
 let client = Client()
-    .setProject("<PROJECT_ID>")                     // Your project ID
-    .setKey("<API_KEY>")                            // Your project API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your project API key
 
 let users = Users(client)
 
@@ -129,8 +129,8 @@ let secret = token.secret
 using Appwrite;
 
 var client = new Client()
-    .SetProject("<PROJECT_ID>")                     // Your project ID
-    .SetKey("<API_KEY>");                           // Your project API key
+    .SetProject("<PROJECT_ID>") // Your project ID
+    .SetKey("<API_KEY>");       // Your project API key
 
 var users = new Users(client);
 

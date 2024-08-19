@@ -14,7 +14,7 @@ You can use the Appwrite [Client SDKs](/docs/sdks#client) to create an account u
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
-    .setProject('<PROJECT_ID>');                 // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 const account = new Account(client);
 

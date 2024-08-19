@@ -63,8 +63,8 @@ const target = await users.createTarget(
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
 const client = new sdk.Client()
-    .setProject('5df5acd0d48c2')                    // Your project ID
-    .setJWT('eyJhbVCJ9.eyJ...');                    // Your secret JSON Web Token
+    .setProject('5df5acd0d48c2') // Your project ID
+    .setJWT('eyJhbVCJ9.eyJ...'); // Your secret JSON Web Token
 
 const users = new sdk.Users(client);
 
@@ -928,7 +928,7 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:dart_appwrite/enums.dart';
 import 'package:dart_appwrite/models.dart';
 
-void main() {                                          // Init SDK
+void main() {                                    // Init SDK
   Client client = Client();
   Messaging messaging = Messaging(client);
 
@@ -965,8 +965,8 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setProject("5df5acd0d48c2")                       // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2");      // Your secret API key
+    .setProject("5df5acd0d48c2")                  // Your project ID
+    .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
 Messaging messaging = new Messaging(client);
 

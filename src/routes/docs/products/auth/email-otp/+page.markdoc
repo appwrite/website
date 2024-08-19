@@ -191,7 +191,7 @@ By default, security phrases are disabled. To enable a security phrase in Email 
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
-    .setProject('<PROJECT_ID>');                 // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 const account = new Account(client);
 

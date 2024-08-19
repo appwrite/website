@@ -31,7 +31,7 @@ Preferences are stored as a key-value JSON object. The maximum allowed size for 
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setProject('<PROJECT_ID>');                 // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 const account = new Account(client);
 
@@ -47,7 +47,7 @@ promise.then(function (response) {
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setProject('<PROJECT_ID>');                 // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 final account = Account(client);
 
@@ -62,7 +62,7 @@ final user = await account.updatePrefs(
 import Appwrite
 
 let client = Client()
-    .setProject("<PROJECT_ID>")                  // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 let account = Account(client)
 
@@ -78,7 +78,7 @@ import io.appwrite.Client
 import io.appwrite.services.Account
 
 val client = Client()
-    .setProject("<PROJECT_ID>")                  // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 val account = Account(client)
 
@@ -111,7 +111,7 @@ After a user's preferences are updated, they can be retrieved using the [get acc
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setProject('<PROJECT_ID>');                 // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 const account = new Account(client);
 
@@ -127,7 +127,7 @@ promise.then(function (response) {
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setProject('<PROJECT_ID>');                 // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 final account = Account(client);
 
@@ -138,7 +138,7 @@ import io.appwrite.Client
 import io.appwrite.services.Account
 
 val client = Client(context)
-    .setProject("<PROJECT_ID>")                  // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 val account = Account(client)
 
@@ -148,7 +148,7 @@ val prefs = account.getPrefs()
 import Appwrite
 
 let client = Client()
-    .setProject("<PROJECT_ID>")                  // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 let account = Account(client)
 
