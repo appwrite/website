@@ -268,7 +268,7 @@ messaging.create_email(
             and SMS directly to your users.
           </p>
           <div
-            class="u-flex u-items-center u-gap-8 u-margin-block-start-32 hero-buttons"
+            class="u-items-center u-margin-block-start-32 hero-buttons flex gap-2"
           >
             <a class="web-button" href={PUBLIC_APPWRITE_DASHBOARD}
               >Get started</a
@@ -325,7 +325,7 @@ messaging.create_email(
                   Effortlessly send push notifications for seamless instant
                   communication.
                 </p>
-                <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
+                <ul class="u-margin-block-start-16 flex flex-wrap gap-2">
                   <li>
                     <a
                       class="web-interactive-tag"
@@ -358,7 +358,7 @@ messaging.create_email(
                   Easily send emails for smooth communication and information
                   sharing.
                 </p>
-                <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
+                <ul class="u-margin-block-start-16 flex flex-wrap gap-2">
                   <li>
                     <a
                       class="web-interactive-tag"
@@ -390,7 +390,7 @@ messaging.create_email(
                 <p class="web-info-boxes-content">
                   Send SMS for quick updates beyond your app's environment.
                 </p>
-                <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
+                <ul class="u-margin-block-start-16 flex flex-wrap gap-2">
                   <li>
                     <a
                       class="web-interactive-tag"
@@ -430,7 +430,7 @@ messaging.create_email(
                 <p class="web-info-boxes-content">
                   Send realtime alerts to your users within your application.
                 </p>
-                <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
+                <ul class="u-margin-block-start-16 flex flex-wrap gap-2">
                   <li>
                     <a class="web-interactive-tag" href="/docs">
                       <span
@@ -456,7 +456,7 @@ messaging.create_email(
                 <p class="web-info-boxes-content">
                   Connect chat apps such as Slack, Discord, and WhatsApp.
                 </p>
-                <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
+                <ul class="u-margin-block-start-16 flex flex-wrap gap-2">
                   <li>
                     <span class="web-interactive-tag" data-readonly>
                       <span class="icon-slack" aria-hidden="true" />
@@ -538,7 +538,7 @@ messaging.create_email(
           <div
             class="web-grid-1-1-opt-2 web-u-gap-64 web-u-margin-block-start-64 code-snippets"
           >
-            <div class="u-gap-8 u-min-width-0 flex flex-col">
+            <div class="u-min-width-0 flex flex-col gap-2">
               <h3 class="web-label web-u-color-text-primary">
                 Subscribe to a topic
               </h3>
@@ -557,7 +557,7 @@ messaging.create_email(
                 />
               </div>
             </div>
-            <div class="u-gap-8 u-min-width-0 flex flex-col">
+            <div class="u-min-width-0 flex flex-col gap-2">
               <h3 class="web-label web-u-color-text-primary">Send a message</h3>
               <p class="web-description">
                 Send a message to all targets on a topic.
@@ -593,9 +593,9 @@ messaging.create_email(
               style="background: rgba(255, 255, 255, 0.04);"
             >
               <div
-                class="u-gap-8 web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col"
+                class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
               >
-                <div class="u-flex u-gap-8 items-center">
+                <div class="flex items-center gap-2">
                   <img
                     src="/images/icons/illustrated/dark/auth.png"
                     alt="auth"
@@ -623,9 +623,9 @@ messaging.create_email(
               style="background: rgba(255, 255, 255, 0.04);"
             >
               <div
-                class="u-gap-8 web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col"
+                class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
               >
-                <div class="u-flex u-gap-8 items-center">
+                <div class="flex items-center gap-2">
                   <img
                     src="/images/icons/illustrated/dark/functions.png"
                     alt="functions"
@@ -654,9 +654,9 @@ messaging.create_email(
               style="background: rgba(255, 255, 255, 0.04);"
             >
               <div
-                class="u-gap-8 web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col"
+                class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
               >
-                <div class="u-flex u-gap-8 items-center">
+                <div class="flex items-center gap-2">
                   <img
                     src="/images/icons/illustrated/dark/databases.png"
                     alt=""
@@ -684,9 +684,9 @@ messaging.create_email(
               style="background: rgba(255, 255, 255, 0.04);"
             >
               <div
-                class="u-gap-8 web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col"
+                class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
               >
-                <div class="u-flex u-gap-8 items-center">
+                <div class="flex items-center gap-2">
                   <img
                     src="/images/icons/illustrated/dark/storage.png"
                     alt="storage"
@@ -715,9 +715,9 @@ messaging.create_email(
               style="background: rgba(255, 255, 255, 0.04);"
             >
               <div
-                class="u-gap-8 web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col"
+                class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
               >
-                <div class="u-flex u-gap-8 items-center">
+                <div class="flex items-center gap-2">
                   <img
                     src="/images/icons/illustrated/dark/realtime.png"
                     alt="realtime"

@@ -1,20 +1,15 @@
 @import "tailwindcss";
 
-:root {
-  --color-pink-hue: 343;
-  --color-secondary-hue: 351;
-  --color-red-hue: 3;
-  --color-orange-hue: 18;
-  --color-mint-hue: 177;
-  --color-purple-hue: 249;
-  --color-yellow-hue: 42;
-  --color-blue-hue: 217;
-  --color-greyscale-hue: 240;
-}
-
 @theme {
+  /* Themes */
+
   /* Colors */
   --color-*: initial;
+
+  /* base */
+  --color-primary: hsl(var(--color-primary));
+  --color-secondary: hsl(var(--color-secondary));
+  --color-border-primary: hsl(var(--color-greyscale-hue) 5.7% 10.4% / 0.04);
 
   /* pink */
   --color-pink-200: hsl(var(--color-pink-hue) 98% 84%);
@@ -93,6 +88,28 @@
   --font-family-aeonik-fono: "Aenoik Fono", monospace;
   --font-family-aeonik-pro: "Aeonik Pro", var(--font-family-sans);
   --font-family-archia: "Archia", arial, sans-serif;
+}
+
+:root,
+.light {
+  --color-pink-hue: 343;
+  --color-secondary-hue: 351;
+  --color-red-hue: 3;
+  --color-orange-hue: 18;
+  --color-mint-hue: 177;
+  --color-purple-hue: 249;
+  --color-yellow-hue: 42;
+  --color-blue-hue: 217;
+  --color-greyscale-hue: 240;
+
+  /* base */
+  --color-primary: var(--color-greyscale-900);
+  --color-secondary: var(--color-greyscale-700);
+}
+
+/* dark theme */
+.dark {
+  --color-primary: var(--color-greyscale-100);
 }
 
 /* Container */

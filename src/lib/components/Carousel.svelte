@@ -45,9 +45,9 @@
 </script>
 
 <div>
-  <div class="u-flex u-flex-wrap u-margin-block-start-8 items-center">
+  <div class="u-margin-block-start-8 flex flex-wrap items-center">
     <slot name="header" />
-    <div class="nav u-flex u-gap-12 u-cross-end u-margin-inline-start-auto">
+    <div class="nav u-gap-12 u-cross-end u-margin-inline-start-auto flex">
       <button
         class="web-icon-button"
         aria-label="Move carousel backward"

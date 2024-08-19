@@ -89,7 +89,7 @@
               </ul>
               <h1 class="web-title web-u-color-text-primary">{data.title}</h1>
               <div
-                class="share-post-section u-flex u-gap-16 u-margin-block-start-16 items-center"
+                class="share-post-section u-gap-16 u-margin-block-start-16 flex items-center"
               >
                 <span
                   class="web-eyebrow u-padding-inline-end-8"
@@ -98,7 +98,7 @@
                   SHARE
                 </span>
 
-                <ul class="u-flex u-gap-8">
+                <ul class="flex gap-2">
                   {#each sharingOptions as sharingOption}
                     <li class="share-list-item">
                       <Tooltip

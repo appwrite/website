@@ -196,7 +196,7 @@
   }}
 >
   <div class="sticky-wrapper">
-    <h3 class="web-display text-greyscale-900">Powered by Open Source</h3>
+    <h3 class="web-display text-primary">Powered by Open Source</h3>
 
     <div class="cards-wrapper">
       <a

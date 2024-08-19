@@ -212,7 +212,7 @@
                 class="web-card is-transparent has-border-gradient u-min-height-100-percent"
                 style="background:rgba(35, 35, 37, 0.90);"
               >
-                <header class="u-flex u-gap-12">
+                <header class="u-gap-12 flex">
                   <h3
                     id="enterprises"
                     class="web-main-body-500 web-u-color-text-primary"
@@ -238,7 +238,7 @@
                 class="web-card is-transparent has-border-gradient u-min-height-100-percent"
                 style="background:rgba(35, 35, 37, 0.90);"
               >
-                <header class="u-flex u-gap-12">
+                <header class="u-gap-12 flex">
                   <h3
                     id="open-source-teams"
                     class="web-main-body-500 web-u-color-text-primary"

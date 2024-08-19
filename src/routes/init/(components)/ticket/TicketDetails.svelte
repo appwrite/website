@@ -5,7 +5,7 @@
 </script>
 
 {#if customizing}
-  <div class="u-flex u-gap-16 input-container">
+  <div class="u-gap-16 input-container flex">
     <div class="input flex flex-col">
       <label for="name">Name</label>
       <input

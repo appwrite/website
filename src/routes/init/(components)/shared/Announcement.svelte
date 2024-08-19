@@ -21,7 +21,7 @@
       {description}
     </p>
     <div
-      class="web-card-link u-flex items-center"
+      class="web-card-link flex items-center"
       style:margin-block-start="1.25rem"
       style:color="#fff"
     >
