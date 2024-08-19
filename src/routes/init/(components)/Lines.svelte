@@ -30,7 +30,7 @@
         justify-content: center;
         align-items: center;
         inset: 0;
-        z-index: -1;
+        z-index: 0;
 
         .lines {
             position: absolute;
