@@ -45,6 +45,7 @@
         "@types/morgan": "^1.9.9",
         "@typescript-eslint/eslint-plugin": "^7.13.1",
         "@typescript-eslint/parser": "^7.13.1",
+        "date-fns": "^3.6.0",
         "dequal": "^2.0.3",
         "embla-carousel": "^8.1.5",
         "embla-carousel-svelte": "^8.1.5",
