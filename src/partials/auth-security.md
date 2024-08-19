@@ -28,6 +28,6 @@ Disallowing personal data can be enabled in the Auth service's **Security** tab 
 
 # Session alerts {% #session-alerts %}
 
-Set up email alerts for your users so that whenever another session is created outside of their existing session using their user account information, such as their email address, they will be alerted to the new session.
+Enable email alerts for your users so that whenever another session is created for their account, they will be alerted to the new session.
 
 Users must have a valid email address to receive email notifications. This isn't the case when using [Magic URL](/docs/products/auth/magic-url) login, [Email OTP](/docs/products/auth/email-otp) login, or [OAuth2](/docs/products/auth/oauth2) login. To toggle session alerts, navigate to **Auth** > **Security** > Session Alerts.
