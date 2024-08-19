@@ -1,6 +1,7 @@
 <script lang="ts">
     import { highlight } from '$lib/actions/highlight';
     import type { DiscordThread } from './types';
+    import { removeBackticks } from '$routes/threads/helpers';
 
     export let thread: DiscordThread;
     export let query: string;
@@ -21,7 +22,7 @@
         </div>
 
         <p class="web-main-body-500 u-margin-block-start-4 u-break-word" use:highlight={highlightTerms}>
-            {thread.content.length > 200 ? thread.content.slice(0, 200) + '...' : thread.content}
+            {removeBackticks(thread.content)}
         </p>
 
         <div class="u-flex u-main-space-between u-gap-16 u-margin-block-start-16">
