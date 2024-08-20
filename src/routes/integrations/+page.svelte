@@ -245,22 +245,26 @@
                                                         class="web-card is-normal u-height-100-percent"
                                                         style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                                                     >
-                                                        <img
-                                                            class="web-user-box-image is-32px"
+                                                        <div
+                                                            class="u-flex u-cross-center u-gap-8"
                                                             style:margin-bottom="16px"
-                                                            src={item.product.avatar}
-                                                            alt={item.product.vendor}
-                                                            width="32"
-                                                            height="32"
-                                                        />
+                                                        >
+                                                            <img
+                                                                class="web-user-box-image is-32px"
+                                                                src={item.product.avatar}
+                                                                alt={item.product.vendor}
+                                                                width="32"
+                                                                height="32"
+                                                            />
+                                                            <span
+                                                                class="icon-arrow-right u-margin-inline-start-auto"
+                                                                aria-hidden="true"
+                                                            />
+                                                        </div>
                                                         <div class="u-flex u-cross-center u-gap-8">
                                                             <h4 class="web-u-color-text-primary">
                                                                 {item.title}
                                                             </h4>
-                                                            <span
-                                                                class="icon-arrow-right u-margin-inline-start-auto"
-                                                                aria-hidden="true"
-                                                            ></span>
                                                         </div>
                                                         <p
                                                             class="web-sub-body-400 u-margin-block-start-4"
@@ -368,19 +372,18 @@
                                                                     class="web-card is-normal u-height-100-percent"
                                                                     style="--card-padding:1.5rem; --card-padding-mobile:1.5rem; --card-border-radius: 1.5rem"
                                                                 >
-                                                                    <img
-                                                                        class="web-user-box-image is-32px"
-                                                                        style:margin-bottom="16px"
-                                                                        src={integration.product
-                                                                            .avatar}
-                                                                        alt={integration.product
-                                                                            .vendor}
-                                                                        width="32"
-                                                                        height="32"
-                                                                    />
                                                                     <div
                                                                         class="u-flex u-cross-center u-gap-8"
                                                                     >
+                                                                        <img
+                                                                            class="web-user-box-image is-32px"
+                                                                            src={integration.product
+                                                                                .avatar}
+                                                                            alt={integration.product
+                                                                                .vendor}
+                                                                            width="32"
+                                                                            height="32"
+                                                                        />
                                                                         <span
                                                                             class="icon-arrow-right u-margin-inline-start-auto"
                                                                             aria-hidden="true"
