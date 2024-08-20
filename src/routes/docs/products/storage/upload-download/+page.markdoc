@@ -281,7 +281,7 @@ const client = new Client();
 const storage = new Storage(client);
 
 client
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
 const promise = storage.getFile('[BUCKET_ID]', '[FILE_ID]');
@@ -300,7 +300,7 @@ void main() { // Init SDK
   Storage storage = Storage(client);
 
   client
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
   ;
   // downloading file
   Future result = storage.getFile(
@@ -334,7 +334,7 @@ import Appwrite
 
 func main() async throws {
     let client = Client()
-      .setProject("5df5acd0d48c2") // Your project ID
+      .setProject("<PROJECT_ID>") // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFile(
         bucketId: "[BUCKET_ID]",
@@ -358,7 +358,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val client = Client(applicationContext)
-            .setProject("5df5acd0d48c2") // Your project ID
+            .setProject("<PROJECT_ID>") // Your project ID
 
         val storage = Storage(client)
 
@@ -384,7 +384,7 @@ const client = new Client();
 const storage = new Storage(client);
 
 client
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
 const result = storage.getFileDownload('[BUCKET_ID]', '[FILE_ID]');
@@ -399,7 +399,7 @@ void main() { // Init SDK
   Storage storage = Storage(client);
 
   client
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
   ;
   // downloading file
   Future result = storage.getFileDownload(
@@ -433,7 +433,7 @@ import Appwrite
 
 func main() async throws {
     let client = Client()
-      .setProject("5df5acd0d48c2") // Your project ID
+      .setProject("<PROJECT_ID>") // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFileDownload(
         bucketId: "[BUCKET_ID]",
@@ -457,7 +457,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val client = Client(applicationContext)
-            .setProject("5df5acd0d48c2") // Your project ID
+            .setProject("<PROJECT_ID>") // Your project ID
 
         val storage = Storage(client)
 
@@ -483,7 +483,7 @@ const client = new Client();
 const storage = new Storage(client);
 
 client
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
 const result = storage.getFilePreview('[BUCKET_ID]', '[FILE_ID]');
@@ -498,7 +498,7 @@ void main() { // Init SDK
   Storage storage = Storage(client);
 
   client
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
   ;
   // downloading file
   Future result = storage.getFilePreview(
@@ -532,7 +532,7 @@ import Appwrite
 
 func main() async throws {
     let client = Client()
-      .setProject("5df5acd0d48c2") // Your project ID
+      .setProject("<PROJECT_ID>") // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFilePreview(
         bucketId: "[BUCKET_ID]",
@@ -556,7 +556,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val client = Client(applicationContext)
-            .setProject("5df5acd0d48c2") // Your project ID
+            .setProject("<PROJECT_ID>") // Your project ID
 
         val storage = Storage(client)
 
@@ -583,7 +583,7 @@ const client = new Client();
 const storage = new Storage(client);
 
 client
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
 const result = storage.getFileView('[BUCKET_ID]', '[FILE_ID]');
@@ -598,7 +598,7 @@ void main() { // Init SDK
   Storage storage = Storage(client);
 
   client
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
   ;
   // downloading file
   Future result = storage.getFileView(
@@ -632,7 +632,7 @@ import Appwrite
 
 func main() async throws {
     let client = Client()
-      .setProject("5df5acd0d48c2") // Your project ID
+      .setProject("<PROJECT_ID>") // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFileView(
         bucketId: "[BUCKET_ID]",
@@ -656,7 +656,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val client = Client(applicationContext)
-            .setProject("5df5acd0d48c2") // Your project ID
+            .setProject("<PROJECT_ID>") // Your project ID
 
         val storage = Storage(client)
 

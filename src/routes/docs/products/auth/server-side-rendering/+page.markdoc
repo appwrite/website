@@ -286,7 +286,7 @@ const client = new sdk.Client();
 const account = new sdk.Account(client);
 
 client
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
 const promise = account.createAnonymousSession();
@@ -306,7 +306,7 @@ use Appwrite\Services\Account;
 $client = new Client();
 
 $client
-    ->setProject('5df5acd0d48c2') // Your project ID
+    ->setProject('<PROJECT_ID>') // Your project ID
 ;
 
 $account = new Account($client);

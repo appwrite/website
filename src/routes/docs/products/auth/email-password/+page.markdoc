@@ -39,7 +39,7 @@ First, send a verification email. Specify a redirect URL which users will be red
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 
 const account = new Account(client);
 

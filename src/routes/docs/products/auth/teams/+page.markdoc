@@ -24,7 +24,7 @@ const client = new Client();
 const teams = new Teams(client);
 
 client
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
 const promise = teams.create(
@@ -47,7 +47,7 @@ void main() { // Init SDK
   Teams teams = Teams(client);
 
   client
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
   ;
   Future result = teams.create(
     teamId: 'teachers',
@@ -67,7 +67,7 @@ void main() { // Init SDK
 import Appwrite
 
 let client = Client()
-    .setProject("5df5acd0d48c2") // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 let teams = Teams(client)
 
@@ -82,7 +82,7 @@ import io.appwrite.Client
 import io.appwrite.services.Teams
 
 val client = Client(context)
-    .setProject("5df5acd0d48c2") // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 val teams = Teams(client)
 
@@ -108,7 +108,7 @@ const client = new Client();
 const teams = new Teams(client);
 
 client
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
 const promise = teams.createMembership(
@@ -131,7 +131,7 @@ void main() { // Init SDK
   Teams teams = Teams(client);
 
   client
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
   ;
   Future result = teams.createMembership(
     teamId: 'teachers',
@@ -151,7 +151,7 @@ void main() { // Init SDK
 import Appwrite
 
 let client = Client()
-    .setProject("5df5acd0d48c2") // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 let teams = Teams(client)
 
@@ -166,7 +166,7 @@ import io.appwrite.Client
 import io.appwrite.services.Teams
 
 val client = Client(context)
-    .setProject("5df5acd0d48c2") // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 val teams = Teams(client)
 

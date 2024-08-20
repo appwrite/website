@@ -36,8 +36,8 @@ const client = new sdk.Client();
 const storage = new sdk.Storage(client);
 
 client
-    .setProject('5df5acd0d48c2')                 // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>')        // Your secret API key
 ;
 
 const promise = storage.createBucket('[BUCKET_ID]', '[NAME]');
@@ -57,8 +57,8 @@ let client = new sdk.Client();
 let storage = new sdk.Storage(client);
 
 client
-    .setProject('5df5acd0d48c2')                 // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>')        // Your secret API key
 ;
 
 
@@ -79,8 +79,8 @@ use Appwrite\Services\Storage;
 $client = new Client();
 
 $client
-    ->setProject('5df5acd0d48c2')                 // Your project ID
-    ->setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setKey('<API_KEY>')        // Your secret API key
 ;
 
 $storage = new Storage($client);
@@ -94,8 +94,8 @@ from appwrite.services.storage import Storage
 client = Client()
 
 (client
-  .set_project('5df5acd0d48c2')                 # Your project ID
-  .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
+  .set_project('<PROJECT_ID>') # Your project ID
+  .set_key('<API_KEY>')        # Your secret API key
 )
 
 storage = Storage(client)
@@ -108,8 +108,8 @@ require 'Appwrite'
 include Appwrite
 
 client = Client.new
-    .set_project('5df5acd0d48c2')                 # Your project ID
-    .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_key('<API_KEY>')        # Your secret API key
 
 storage = Storage.new(client)
 
@@ -123,8 +123,8 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 var client = new Client()
-    .SetProject("5df5acd0d48c2")                  // Your project ID
-    .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .SetProject("<PROJECT_ID>") // Your project ID
+    .SetKey("<API_KEY>");       // Your secret API key
 
 var storage = new Storage(client);
 
@@ -140,8 +140,8 @@ void main() { // Init SDK
   Storage storage = Storage(client);
 
   client
-    .setProject('5df5acd0d48c2')                 // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>')        // Your secret API key
   ;
 
   Future result = storage.createBucket(
@@ -162,8 +162,8 @@ import io.appwrite.Client
 import io.appwrite.services.Storage
 
 val client = Client(context)
-    .setProject("5df5acd0d48c2")                 // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your secret API key
 
 val storage = Storage(client)
 
@@ -178,8 +178,8 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Storage;
 
 Client client = new Client()
-    .setProject("5df5acd0d48c2")                  // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>");       // Your secret API key
 
 Storage storage = new Storage(client);
 
@@ -200,8 +200,8 @@ storage.createBucket(
 import Appwrite
 
 let client = Client()
-    .setProject("5df5acd0d48c2")                 // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your secret API key
 
 let storage = Storage(client)
 

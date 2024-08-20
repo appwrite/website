@@ -54,8 +54,8 @@ You can also implement forms in your app to collect contact information and add 
 const sdk = require('node-appwrite');
 
 const client = new sdk.Client()
-    .setProject('5df5acd0d48c2')                  // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
+    .setProject('<PROJECT_ID>')                  // Your project ID
+    .setKey('<API_KEY>'); // Your secret API key
 
 const users = new sdk.Users(client);
 
@@ -72,7 +72,7 @@ const target = await users.createTarget(
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
 const client = new sdk.Client()
-    .setProject('5df5acd0d48c2')                    // Your project ID
+    .setProject('<PROJECT_ID>')                    // Your project ID
     .setJWT('eyJhbVCJ9.eyJ...');                    // Your secret JSON Web Token
 
 const users = new sdk.Users(client);
@@ -94,8 +94,8 @@ use Appwrite\Services\Users;
 use Appwrite\Enums\MessagingProviderType;
 
 $client = (new Client())
-    ->setProject('5df5acd0d48c2')                  // Your project ID
-    ->setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setKey('<API_KEY>'); // Your secret API key
 
 $users = new Users($client);
 
@@ -113,8 +113,8 @@ from appwrite.client import Client
 from appwrite.enums import MessagingProviderType
 
 client = Client()
-client.set_project('5df5acd0d48c2')                 # Your project ID
-client.set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
+client.set_project('<PROJECT_ID>') # Your project ID
+client.set_key('<API_KEY>')        # Your secret API key
 
 users = Users(client)
 
@@ -134,8 +134,8 @@ include Appwrite
 include Appwrite::Enums
 
 client = Client.new
-    .set_project('5df5acd0d48c2')                   # Your project ID
-    .set_key('919c2d18fb5d4...a2ae413da83346ad2')   # Your secret API key
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_key('<API_KEY>')        # Your secret API key
 
 users = Users.new(client)
 
@@ -157,8 +157,8 @@ using Appwrite.Models;
 using Appwrite.Enums;
 
 Client client = new Client()
-    .SetProject("5df5acd0d48c2")                  // Your project ID
-    .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .SetProject("<PROJECT_ID>") // Your project ID
+    .SetKey("<API_KEY>");       // Your secret API key
 
 Users users = new Users(client);
 
@@ -177,8 +177,8 @@ import 'package:dart_appwrite/enums.dart';
 import 'package:dart_appwrite/models.dart';
 
 Client client = Client()
-  .setProject('5df5acd0d48c2')                  // Your project ID
-  .setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
+  .setProject('<PROJECT_ID>') // Your project ID
+  .setKey('<API_KEY>');       // Your secret API key
 
 Users users = Users(client);
 
@@ -199,8 +199,8 @@ import io.appwrite.services.Users
 import io.appwrite.enums.MessagingProviderType
 
 val client = Client()
-    .setProject("5df5acd0d48c2")                 // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your secret API key
 
 val users = Users(client)
 
@@ -221,8 +221,8 @@ import io.appwrite.services.Users;
 import io.appwrite.enums.MessagingProviderType;
 
 Client client = new Client()
-    .setProject("5df5acd0d48c2")                  // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>");       // Your secret API key
 
 Users users = new Users(client);
 
@@ -248,8 +248,8 @@ import Appwrite
 import AppwriteEnums
 
 let client = Client()
-    .setProject("5df5acd0d48c2")                 // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your secret API key
 
 let users = Users(client)
 
@@ -282,8 +282,8 @@ You can also create topics programmatically using an [Appwrite Server SDK](/docs
 const sdk = require('node-appwrite');
 
 const client = new sdk.Client()
-    .setProject('5df5acd0d48c2')                  // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>');       // Your secret API key
 
 const messaging = new sdk.Messaging(client);
 
@@ -296,8 +296,8 @@ const topic = await messaging.createTopic(
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
 const client = new sdk.Client()
-    .setProject('5df5acd0d48c2')                  // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>');       // Your secret API key
 
 const messaging = new sdk.Messaging(client);
 
@@ -313,8 +313,8 @@ use Appwrite\Client;
 use Appwrite\Services\Messaging;
 
 $client = (new Client())
-    ->setProject('5df5acd0d48c2')                  // Your project ID
-    ->setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setKey('<API_KEY>');       // Your secret API key
 
 $messaging = new Messaging($client);
 
@@ -328,8 +328,8 @@ from appwrite.client import Client
 from appwrite.services.messaging import Messaging
 
 client = Client()
-client.set_project('5df5acd0d48c2')                 # Your project ID
-client.set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
+client.set_project('<PROJECT_ID>') # Your project ID
+client.set_key('<API_KEY>')        # Your secret API key
 
 messaging = Messaging(client)
 
@@ -344,8 +344,8 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_project('5df5acd0d48c2')                 # Your project ID
-    .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_key('<API_KEY>')        # Your secret API key
 
 messaging = Messaging.new(client)
 
@@ -360,8 +360,8 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 Client client = new Client()
-    .SetProject("5df5acd0d48c2")                  // Your project ID
-    .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .SetProject("<PROJECT_ID>") // Your project ID
+    .SetKey("<API_KEY>");       // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
@@ -375,8 +375,8 @@ import 'package:dart_appwrite/enums.dart';
 import 'package:dart_appwrite/models.dart';
 
 Client client = Client()
-    .setProject('5df5acd0d48c2')                  // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>');       // Your secret API key
 
 Messaging messaging = Messaging(client);
 
@@ -391,8 +391,8 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 val client = new Client()
-    .setProject("5df5acd0d48c2")                 // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your secret API key
 
 val messaging = new Messaging(client)
 
@@ -407,8 +407,8 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setProject("5df5acd0d48c2")                  // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>");       // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
@@ -429,8 +429,8 @@ messaging.createTopic(
 import Appwrite
 
 let client = Client()
-    .setProject("5df5acd0d48c2")                 // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your secret API key
 
 let messaging = Messaging(client)
 
@@ -451,8 +451,8 @@ const sdk = require('node-appwrite');
 
 // Init SDK
 const client = new sdk.Client()
-    .setProject('5df5acd0d48c2')                  // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>');       // Your secret API key
 
 const messaging = new sdk.Messaging(client);
 
@@ -470,8 +470,8 @@ const message = await messaging.createSms(
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
 const client = new sdk.Client()
-    .setProject('5df5acd0d48c2')                  // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>');       // Your secret API key
 
 const messaging = new sdk.Messaging(client);
 
@@ -494,8 +494,8 @@ use Appwrite\Services\Messaging;
 $client = new Client();
 
 $client
-    ->setProject('5df5acd0d48c2')                  // Your project ID
-    ->setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setKey('<API_KEY>');       // Your secret API key
 
 $messaging = new Messaging($client);
 
@@ -514,8 +514,8 @@ from appwrite.client import Client
 from appwrite.services.messaging import Messaging
 
 client = Client()
-client.set_project('5df5acd0d48c2')                 # Your project ID
-client.set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
+client.set_project('<PROJECT_ID>') # Your project ID
+client.set_key('<API_KEY>')        # Your secret API key
 
 messaging = Messaging(client)
 
@@ -535,8 +535,8 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_project('5df5acd0d48c2')                 # Your project ID
-    .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_key('<API_KEY>')        # Your secret API key
 
 messaging = Messaging.new(client)
 
@@ -556,8 +556,8 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 Client client = new Client()
-    .SetProject("5df5acd0d48c2")                  // Your project ID
-    .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .SetProject("<PROJECT_ID>") // Your project ID
+    .SetKey("<API_KEY>");       // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
@@ -576,8 +576,8 @@ import 'package:dart_appwrite/enums.dart';
 import 'package:dart_appwrite/models.dart';
 
 Client client = Client();
-    .setProject('5df5acd0d48c2')                  // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>');       // Your secret API key
 
 Messaging messaging = Messaging(client);
 
@@ -597,8 +597,8 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 val client = Client()
-    .setProject("5df5acd0d48c2")                 // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your secret API key
 
 val messaging = Messaging(client)
 
@@ -618,8 +618,8 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setProject("5df5acd0d48c2")                  // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>");       // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
@@ -645,8 +645,8 @@ messaging.createSms(
 import Appwrite
 
 let client = Client()
-    .setProject("5df5acd0d48c2")                 // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your secret API key
 
 let messaging = Messaging(client)
 
@@ -670,8 +670,8 @@ const sdk = require('node-appwrite');
 
 // Init SDK
 const client = new sdk.Client()
-    .setProject('5df5acd0d48c2')                  // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>');       // Your secret API key
 
 const messaging = new sdk.Messaging(client);
 
@@ -689,8 +689,8 @@ const message = await messaging.createSms(
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
 const client = new sdk.Client()
-    .setProject('5df5acd0d48c2')                  // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>');       // Your secret API key
 
 const messaging = new sdk.Messaging(client);
 
@@ -713,8 +713,8 @@ use Appwrite\Services\Messaging;
 $client = new Client();
 
 $client
-    ->setProject('5df5acd0d48c2')                  // Your project ID
-    ->setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setKey('<API_KEY>');       // Your secret API key
 
 $messaging = new Messaging($client);
 
@@ -733,8 +733,8 @@ from appwrite.client import Client
 from appwrite.services.messaging import Messaging
 
 client = Client()
-client.set_project('5df5acd0d48c2')                 # Your project ID
-client.set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
+client.set_project('<PROJECT_ID>') # Your project ID
+client.set_key('<API_KEY>')        # Your secret API key
 
 messaging = Messaging(client)
 
@@ -754,8 +754,8 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_project('5df5acd0d48c2')                 # Your project ID
-    .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_key('<API_KEY>')        # Your secret API key
 
 messaging = Messaging.new(client)
 
@@ -775,8 +775,8 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 Client client = new Client()
-    .SetProject("5df5acd0d48c2")                  // Your project ID
-    .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .SetProject("<PROJECT_ID>") // Your project ID
+    .SetKey("<API_KEY>");       // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
@@ -795,8 +795,8 @@ import 'package:dart_appwrite/enums.dart';
 import 'package:dart_appwrite/models.dart';
 
 Client client = Client();
-    .setProject('5df5acd0d48c2')                  // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>');       // Your secret API key
 
 Messaging messaging = Messaging(client);
 
@@ -816,8 +816,8 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 val client = Client()
-    .setProject("5df5acd0d48c2")                 // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your secret API key
 
 val messaging = Messaging(client)
 
@@ -837,8 +837,8 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setProject("5df5acd0d48c2")                  // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>");       // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
@@ -864,8 +864,8 @@ messaging.createSms(
 import Appwrite
 
 let client = Client()
-    .setProject("5df5acd0d48c2")                  // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2")  // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your secret API key
 
 let messaging = Messaging(client)
 
