@@ -205,6 +205,20 @@ sdk.ID.unique()
 // Generate a custom ID
 sdk.ID.custom()
 ```
+```go
+package main
+
+import (
+	"github.com/appwrite/sdk-for-go/id"
+)
+
+func main(){
+    // Generate a unique ID
+    var _ = id.Unique()
+    // Generate a custom ID
+    var _ = id.Custom()
+}
+```
 ```php
 <?php
 
