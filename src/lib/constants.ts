@@ -3,14 +3,15 @@ export const BANNER_KEY: Banners = 'init-banner-02'; // Change key to force bann
 export const SENTRY_DSN =
     'https://27d41dc8bb67b596f137924ab8599e59@o1063647.ingest.us.sentry.io/4507497727000576';
 
+export const INTEGRATIONS_PARAM_KEY = 'search';
+
 /**
  * History:
  * discord-banner-01
  * init-banner-02
  * pricing-banner-01
  */
-type Banners = 'discord-banner-01' | 'init-banner-02' | 'pricing-banner-01'
-
+type Banners = 'discord-banner-01' | 'init-banner-02' | 'pricing-banner-01';
 
 export type Social = {
     icon: string;
@@ -50,7 +51,7 @@ export const socialSharingOptions: Array<SocialShareOption> = [
         link: '',
         type: 'copy'
     }
-]
+];
 
 export const socials: Array<Social> = [
     {

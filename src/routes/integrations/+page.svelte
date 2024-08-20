@@ -12,6 +12,7 @@
     import { onDestroy, onMount } from 'svelte';
     import { browser } from '$app/environment';
     import { page } from '$app/stores';
+    import { INTEGRATIONS_PARAM_KEY } from '$lib/constants';
 
     export let data;
 
@@ -28,7 +29,7 @@
     let result: ResultType<Integration> = [];
 
     let hasQuery: boolean;
-    let query = writable('');
+    let query = writable($page.url.searchParams.get(INTEGRATIONS_PARAM_KEY) ?? '');
 
     $: query.subscribe((value) => {
         hasQuery = value.length > 0;
@@ -43,7 +44,7 @@
     let activeCategory: string | null = null;
 
     const handleQuery = (value: string) => {
-        $page.url.searchParams.set('q', encodeURIComponent(value));
+        $page.url.searchParams.set(INTEGRATIONS_PARAM_KEY, encodeURIComponent(value));
         query.set(value);
         replaceState($page.url, $page.state);
     };
@@ -134,6 +135,7 @@
                                 <input
                                     class="text"
                                     placeholder="Search"
+                                    bind:value={$query}
                                     on:input={(e) => handleQuery(e.currentTarget.value)}
                                 />
                             </label>
