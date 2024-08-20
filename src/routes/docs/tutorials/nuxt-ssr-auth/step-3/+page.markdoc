@@ -25,7 +25,6 @@ export const SESSION_COOKIE = "my-custom-session";
 
 export function createAdminClient() {
   const client = new Client()
-    .setEndpoint(process.env.APPWRITE_ENDPOINT!)
     .setProject(process.env.APPWRITE_PROJECT!)
     .setKey(process.env.APPWRITE_KEY!);
 
@@ -40,7 +39,6 @@ export function createSessionClient(event) {
   const config = useRuntimeConfig(event);
 
   const client = new Client()
-    .setEndpoint(config.public.appwriteEndpoint)
     .setProject(config.public.appwriteProjectId);
 
   const session = getCookie(event, SESSION_COOKIE);

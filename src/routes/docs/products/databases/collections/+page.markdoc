@@ -9,9 +9,8 @@ The terms collections and documents are used because the Appwrite JSON REST API 
 That said, Appwrite is designed to support both SQL and NoSQL database adapters like MariaDB, MySQL, or MongoDB in future versions.
 
 # Create collection {% #create-collection %}
-You can create collections using the Appwrite Console, a [Server SDK](/docs/sdks#server), or using the [CLI](/docs/tooling/command-line/installation).
+You can create collections using the Appwrite Console or a [Server SDK](/docs/sdks#server).
 {% tabs %}
-
 {% tabsitem #console title="Console" %}
 You can create a collection by heading to the **Databases** page, navigate to a [database](/docs/products/databases/databases), and click **Create collection**.
 
@@ -31,9 +30,8 @@ const client = new sdk.Client();
 const databases = new sdk.Databases(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>')        // Your secret API key
 ;
 
 const promise = databases.createCollection('<DATABASE_ID>', '[COLLECTION_ID]', '[NAME]');
@@ -53,9 +51,8 @@ let client = new sdk.Client();
 let databases = new sdk.Databases(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>')        // Your secret API key
 ;
 
 
@@ -76,9 +73,8 @@ use Appwrite\Services\Databases;
 $client = new Client();
 
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('5df5acd0d48c2') // Your project ID
-    ->setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setKey('<API_KEY>')        // Your secret API key
 ;
 
 $databases = new Databases($client);
@@ -92,9 +88,8 @@ from appwrite.services.databases import Databases
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-  .set_project('5df5acd0d48c2') # Your project ID
-  .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
+  .set_project('<PROJECT_ID>') # Your project ID
+  .set_key('<API_KEY>')        # Your secret API key
 )
 
 databases = Databases(client)
@@ -107,9 +102,8 @@ require 'Appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-    .set_project('5df5acd0d48c2') # Your project ID
-    .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_key('<API_KEY>')        # Your secret API key
 
 databases = Databases.new(client)
 
@@ -123,9 +117,8 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 var client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("5df5acd0d48c2") // Your project ID
-    .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .SetProject("<PROJECT_ID>") // Your project ID
+    .SetKey("<API_KEY>");       // Your secret API key
 
 var databases = new Databases(client);
 
@@ -142,9 +135,8 @@ void main() { // Init SDK
   Databases databases = Databases(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>')        // Your secret API key
   ;
 
   Future result = databases.createCollection(
@@ -166,9 +158,8 @@ import io.appwrite.Client
 import io.appwrite.services.Databases
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2") // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your secret API key
 
 val databases = Databases(client)
 
@@ -184,9 +175,8 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Databases;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2") // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>");       // Your secret API key
 
 Databases databases = new Databases(client);
 
@@ -208,9 +198,8 @@ databases.createCollection(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2") // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your secret API key
 
 let databases = Databases(client)
 
@@ -224,31 +213,6 @@ let collection = try await databases.createCollection(
 
 You can also configure **permissions** in the `createCollection` method, learn more about the `createCollection` in the [API references](/docs/references).
 {% /tabsitem %}
-
-{% tabsitem #cli title="CLI" %}
-
-{% partial file="cli-disclaimer.md" /%}
-
-To create your collection using the CLI, first use the `appwrite init collections` command to initialize your collection.
-
-```sh
-appwrite init collections
-```
-
-Then push your collection using the `appwrite push collections` command.
-
-```sh
-appwrite push collections
-```
-
-This will create your collection in the Console with all of your `appwrite.json` configurations.
-
-{% arrow_link href="/docs/tooling/command-line/collections#commands" %}
-Learn more about the CLI collections commands
-{% /arrow_link %}
-
-{% /tabsitem %}
-
 {% /tabs %}
 
 # Permissions {% #permissions %}

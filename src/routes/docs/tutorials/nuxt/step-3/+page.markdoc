@@ -66,7 +66,7 @@ const project: string = import.meta.env.VITE_APPWRITE_PROJECT;
 
 const client: Client = new Client();
 
-client.setEndpoint(url).setProject(project);
+client.setProject(project);
 
 export const account: Account = new Account(client);
 export const database: Databases = new Databases(client);

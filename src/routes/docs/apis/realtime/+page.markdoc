@@ -15,7 +15,6 @@ This lets you build an interactive and responsive user experience by providing i
 import { Client } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 // Subscribe to files channel
@@ -31,7 +30,6 @@ client.subscribe('files', response => {
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 final realtime = Realtime(client);
@@ -52,7 +50,6 @@ import Appwrite
 import AppwriteModels
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 let realtime = Realtime(client)
@@ -71,7 +68,6 @@ import io.appwrite.Client
 import io.appwrite.services.Realtime
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 val realtime = Realtime(client)
@@ -117,7 +113,6 @@ In this example we are subscribing to all updates related to our account by usin
 import { Client } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 client.subscribe('account', response => {
@@ -130,7 +125,6 @@ client.subscribe('account', response => {
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 final realtime = Realtime(client);
@@ -148,7 +142,6 @@ import Appwrite
 import AppwriteModels
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 let realtime = Realtime(client)
@@ -164,7 +157,6 @@ import io.appwrite.Client
 import io.appwrite.services.Realtime
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 val realtime = Realtime(client)
@@ -188,7 +180,6 @@ In this example we are listening to the document A and all files by subscribing 
 import { Client } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 client.subscribe(['collections.A.documents.A', 'files'], response => {
@@ -201,7 +192,6 @@ client.subscribe(['collections.A.documents.A', 'files'], response => {
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 final realtime = Realtime(client);
@@ -219,7 +209,6 @@ import Appwrite
 import AppwriteModels
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 let realtime = Realtime(client)
@@ -235,7 +224,6 @@ import io.appwrite.Client
 import io.appwrite.services.Realtime
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 val realtime = Realtime(client)
 
@@ -256,7 +244,6 @@ If you no longer want to receive updates from a subscription, you can unsubscrib
 import { Client } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 const unsubscribe = client.subscribe('files', response => {
@@ -272,7 +259,6 @@ unsubscribe();
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 final realtime = Realtime(client);
@@ -308,7 +294,6 @@ import io.appwrite.Client
 import io.appwrite.services.Realtime
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 val realtime = Realtime(client)

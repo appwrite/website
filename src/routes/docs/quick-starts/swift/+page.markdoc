@@ -85,7 +85,6 @@ import Appwrite
 import AppwriteModels
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<YOUR_PROJECT_ID>")
     .setKey("<YOUR_API_KEY>")
 ```

@@ -60,7 +60,7 @@ A comment is made to your PR about the build, unless you enable **Silent mode**.
 ---
 * Starter
 * A simple starter function that returns "Hello, world!"
-* Node.js, Python, PHP, Dart, Node.js (TypeScript), Bun, Deno, Ruby, Kotlin, C++, .NET, Java, Swift, Go
+* Node.js, Python, PHP, Dart, Node.js (TypeScript), Bun, Deno, Ruby, Kotlin, C++, .NET, Java, Swift
 ---
 * Sync with Meilisearch
 * Syncs documents in an Appwrite database collection to a Meilisearch index to add search-as-you-type search boxes to your app.

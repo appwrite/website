@@ -75,7 +75,6 @@ The admin client will need to be initialized with an API key in order to bypass 
 import { Client } from "node-appwrite"
 
 const adminClient = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<YOUR_PROJECT_ID>')
     .setKey('<YOUR_API_KEY>')
 ```
@@ -86,7 +85,6 @@ A session client will allow us to make requests as an authenticated end-user wit
 
 ```jsx
 const sessionClient = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<YOUR_PROJECT_ID>')
 
 const session = req.cookies.session
@@ -117,7 +115,6 @@ import { parseCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
 export function createAdminClient() => {
     const client = new Client()
-        .setEndpoint(process.env.PUBLIC_APPWRITE_ENDPOINT)
         .setProject(process.env.PUBLIC_APPWRITE_PROJECT)
         .setKey(process.env.APPWRITE_API_KEY)
 
@@ -130,7 +127,6 @@ export function createAdminClient() => {
 
 export function  createSessionClient(headers) {
     const client = new Client()
-        .setEndpoint(process.env.PUBLIC_APPWRITE_ENDPOINT)
         .setProject(process.env.PUBLIC_APPWRITE_PROJECT)
 
     const cookies = parseCookie(headers.get('cookie') ?? '')

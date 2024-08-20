@@ -24,8 +24,7 @@ const client = new Client();
 const teams = new Teams(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
 const promise = teams.create(
@@ -48,8 +47,7 @@ void main() { // Init SDK
   Teams teams = Teams(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
   ;
   Future result = teams.create(
     teamId: 'teachers',
@@ -69,8 +67,7 @@ void main() { // Init SDK
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2") // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 let teams = Teams(client)
 
@@ -85,8 +82,7 @@ import io.appwrite.Client
 import io.appwrite.services.Teams
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2") // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 val teams = Teams(client)
 
@@ -112,8 +108,7 @@ const client = new Client();
 const teams = new Teams(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
 const promise = teams.createMembership(
@@ -136,8 +131,7 @@ void main() { // Init SDK
   Teams teams = Teams(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
   ;
   Future result = teams.createMembership(
     teamId: 'teachers',
@@ -157,8 +151,7 @@ void main() { // Init SDK
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2") // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 let teams = Teams(client)
 
@@ -173,8 +166,7 @@ import io.appwrite.Client
 import io.appwrite.services.Teams
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2") // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 val teams = Teams(client)
 
@@ -186,22 +178,6 @@ val response = teams.createMembership(
 ```
 
 {% /multicode %}
-
-# Using the CLI {% #using-the-CLI %}
-
-{% partial file="cli-disclaimer.md" /%}
-
-Use the CLI command `appwrite teams create-membership [options]` to invite a new member into your team.
-
-```sh
-appwrite teams create-membership --team-id "<TEAM_ID>" --roles --phone "+12065550100" --name "<NAME>" --user-id "<USER_ID>"
-```
-
-You can also get, update, and delete a user's membership. However, you cannot use the CLI to configure permissions for team members.
-
-{% arrow_link href="/docs/tooling/command-line/teams#commands" %}
-Learn more about the CLI teams commands
-{% /arrow_link %}
 
 # Permissions {% #permissions %}
 

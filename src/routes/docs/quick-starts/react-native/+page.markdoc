@@ -99,7 +99,6 @@ let account;
 
 client = new Client();
 client
-  .setEndpoint('https://cloud.appwrite.io/v1')
   .setProject('sisyphus')
   .setPlatform('com.example.my-app');
 

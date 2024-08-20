@@ -183,7 +183,6 @@ import 'package:appwrite/models.dart' as models;
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Client client = Client()
-      .setEndpoint("https://cloud.appwrite.io/v1")
       .setProject("<YOUR_PROJECT_ID>");
   Account account = Account(client);
 

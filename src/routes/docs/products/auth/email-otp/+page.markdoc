@@ -30,7 +30,6 @@ Send an an email to initiate the authentication process. A **new account** will 
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 const account = new Account(client);
@@ -47,7 +46,6 @@ const userId = sessionToken.userId;
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 final account = Account(client);
@@ -63,7 +61,6 @@ final userId = sessionToken.userId;
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>");
 
 let account = Account(client);
@@ -82,7 +79,6 @@ import io.appwrite.services.Account
 import io.appwrite.ID
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>");
 
 val account = Account(client);
@@ -117,7 +113,6 @@ After initiating the email OTP authentication process, the returned user ID and 
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 const account = new Account(client);
@@ -132,7 +127,6 @@ const session = await account.createSession(
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 final account = Account(client);
@@ -146,7 +140,6 @@ final session = await account.createSession(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>");
 
 let account = Account(client);
@@ -162,7 +155,6 @@ import io.appwrite.services.Account
 import io.appwrite.ID
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>");
 
 val account = Account(client);
@@ -199,8 +191,7 @@ By default, security phrases are disabled. To enable a security phrase in Email 
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>');                 // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 const account = new Account(client);
 

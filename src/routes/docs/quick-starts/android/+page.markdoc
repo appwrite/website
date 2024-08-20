@@ -102,7 +102,6 @@ object Appwrite {
 
     fun init(context: Context) {
         client = Client(context)
-            .setEndpoint("https://cloud.appwrite.io/v1")
             .setProject("[YOUR_PROJECT_ID]")
 
         account = Account(client)
