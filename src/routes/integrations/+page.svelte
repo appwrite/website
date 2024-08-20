@@ -23,13 +23,16 @@
     // search functionality
     let fuseOptions = {
         keys: ['title'],
-        threshold: 0.3
+        threshold: 0.2,
+        distance: 500
     };
 
     let result: ResultType<Integration> = [];
 
     let hasQuery: boolean;
-    let query = writable($page.url.searchParams.get(INTEGRATIONS_PARAM_KEY) ?? '');
+    let query = writable(
+        decodeURIComponent($page.url.searchParams.get(INTEGRATIONS_PARAM_KEY) ?? '')
+    );
 
     $: query.subscribe((value) => {
         hasQuery = value.length > 0;
@@ -242,14 +245,15 @@
                                                         class="web-card is-normal u-height-100-percent"
                                                         style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                                                     >
+                                                        <img
+                                                            class="web-user-box-image is-32px"
+                                                            style:margin-bottom="16px"
+                                                            src={item.product.avatar}
+                                                            alt={item.product.vendor}
+                                                            width="32"
+                                                            height="32"
+                                                        />
                                                         <div class="u-flex u-cross-center u-gap-8">
-                                                            <img
-                                                                class="web-user-box-image is-32px"
-                                                                src={item.product.avatar}
-                                                                alt={item.product.vendor}
-                                                                width="32"
-                                                                height="32"
-                                                            />
                                                             <h4 class="web-u-color-text-primary">
                                                                 {item.title}
                                                             </h4>
@@ -364,18 +368,19 @@
                                                                     class="web-card is-normal u-height-100-percent"
                                                                     style="--card-padding:1.5rem; --card-padding-mobile:1.5rem; --card-border-radius: 1.5rem"
                                                                 >
+                                                                    <img
+                                                                        class="web-user-box-image is-32px"
+                                                                        style:margin-bottom="16px"
+                                                                        src={integration.product
+                                                                            .avatar}
+                                                                        alt={integration.product
+                                                                            .vendor}
+                                                                        width="32"
+                                                                        height="32"
+                                                                    />
                                                                     <div
                                                                         class="u-flex u-cross-center u-gap-8"
                                                                     >
-                                                                        <img
-                                                                            class="web-user-box-image is-32px"
-                                                                            src={integration.product
-                                                                                .avatar}
-                                                                            alt={integration.product
-                                                                                .vendor}
-                                                                            width="32"
-                                                                            height="32"
-                                                                        />
                                                                         <span
                                                                             class="icon-arrow-right u-margin-inline-start-auto"
                                                                             aria-hidden="true"

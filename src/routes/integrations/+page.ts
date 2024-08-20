@@ -1,7 +1,5 @@
 import { base } from '$app/paths';
-import { INTEGRATIONS_PARAM_KEY } from '$lib/constants';
 import { groupBy } from 'remeda';
-import Fuse from 'fuse.js';
 
 export type Integration = {
     title: string;
@@ -33,8 +31,7 @@ const categoryDescriptions = Object.entries({
     deployments: 'Seamlessly deploy your code'
 });
 
-export const load = ({ url }) => {
-    const search = url.searchParams.get(INTEGRATIONS_PARAM_KEY) ?? '';
+export const load = () => {
     const integrationsGlob = import.meta.glob('./**/*.markdoc', {
         eager: true
     });
@@ -74,14 +71,8 @@ export const load = ({ url }) => {
         }
     );
 
-    const fuse = new Fuse(integrations, {
-        keys: ['title'],
-        threshold: 0.3
-    });
-
     return {
         integrations: integrationsWithDescriptions,
-        searchResults: fuse.search(search),
         list: integrations,
         categories: new Set(categories),
         platforms: new Set(platforms),
