@@ -43,6 +43,7 @@
                         <Td>
                             {property.description}
                             {#if property.relatedModels}
+                                <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                                 Can be one of: {@html parse(property.relatedModels)}
                             {/if}
                         </Td>

@@ -196,13 +196,17 @@ const specs = import.meta.glob(
         import: 'default'
     }
 );
-async function getSpec(version: string, platform: string) {
+async function getSpec(version: string, platform: string): Promise<string> {
     const isClient = platform.startsWith('client-');
     const isServer = platform.startsWith('server-');
     const target = `/node_modules/@appwrite.io/repo/app/config/specs/open-api3-${version}-${
         isServer ? 'server' : isClient ? 'client' : 'console'
     }.json`;
-    return specs[target]();
+    const spec = await specs[target]();
+    if (typeof spec !== 'string') {
+        throw new Error('Invalid API spec');
+    }
+    return spec;
 }
 
 export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
@@ -227,7 +231,10 @@ export async function getDescription(service: string): Promise<string> {
         throw new Error('Missing service description');
     }
 
-    const description = descriptions[target]();
+    const description = await descriptions[target]();
+    if (typeof description !== 'string') {
+        throw new Error('Invalid service description');
+    }
 
     return description;
 }
@@ -320,7 +327,7 @@ export async function getService(
 
         data.methods.push({
             id: operation['x-appwrite'].method,
-            demo: await examples[path](),
+            demo: await examples[path]() as string,
             title: operation.summary ?? '',
             description: operation.description ?? '',
             parameters: parameters ?? [],
@@ -359,8 +366,7 @@ export function resolveReference(
     throw new Error("Schema doesn't exist");
 }
 
-export const generateExample = (schema: OpenAPIV3.SchemaObject, api: OpenAPIV3.Document<{}>, modelType: ModelType = ModelType.REST): Object => {
-
+export const generateExample = (schema: OpenAPIV3.SchemaObject, api: OpenAPIV3.Document<object>, modelType: ModelType = ModelType.REST): object => {
     const properties = Object.keys(schema.properties ?? {}).map((key) =>{
         const name = key;
         const fields = schema.properties?.[key];

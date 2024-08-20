@@ -20,12 +20,10 @@
 
     let threads = data.threads;
 
-    let searching = false; // Do some sick animation
     let query = '';
 
     const handleSearch = async (value: string) => {
         query = value;
-        searching = true;
         threads = await getThreads({
             q: value,
             tags: selectedTags ?? [],

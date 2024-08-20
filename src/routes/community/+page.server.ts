@@ -1,5 +1,3 @@
-import { dev } from '$app/environment';
-
 type Issue = {
     number: number;
     url: string;
@@ -39,6 +37,14 @@ const mockIssues: Issue[] = [
     }
 ];
 
+type GithubIssue = {
+    number: number;
+    html_url: string;
+    title: string;
+    repository_url: string;
+    labels: { name: string }[];
+};
+
 export const load = async () => {
     // if (dev) {
     //     return { issues: mockIssues };
@@ -54,12 +60,12 @@ export const load = async () => {
     // map issues to our format
     return {
         issues: issues
-            .map((issue: any) => ({
+            .map((issue: GithubIssue) => ({
                 number: issue.number,
                 url: issue.html_url,
                 title: issue.title,
                 repository: issue.repository_url.replace('https://api.github.com/repos/', ''),
-                tags: issue.labels.map((label: any) => label.name)
+                tags: issue.labels.map((label: GithubIssue['labels'][number]) => label.name)
             }))
             .slice(0, 6)
     };

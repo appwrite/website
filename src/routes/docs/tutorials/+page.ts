@@ -1,5 +1,5 @@
 import { base } from '$app/paths';
-import type { Tutorial } from '$markdoc/layouts/Tutorial.svelte';
+import type { Tutorial } from '$routes/blog/content';
 
 const framework_order = ['React', 'Vue', 'SvelteKit', 'Stripe', 'Refine'];
 const category_order = [
@@ -53,22 +53,27 @@ export async function load() {
             return a.title.toLowerCase().localeCompare(b.title.toLowerCase());
         });
 
-    const tutorials = Object.entries(
-        allTutorials.reduce((acc: { [key: string]: any[] }, item) => {
-            // If the category does not exist in the accumulator, initialize it
-            if (!acc[item.category]) {
-                acc[item.category] = [];
-            }
+    const categories = Object.entries(
+        allTutorials.reduce(
+            (acc, item) => {
+                if (item.category) {
+                    // If the category does not exist in the accumulator, initialize it
+                    if (!acc[item.category]) {
+                        acc[item.category] = [];
+                    }
 
-            // Push the current item into the appropriate category
-            acc[item.category].push(item);
+                    // Push the current item into the appropriate category
+                    acc[item.category].push(item);
+                }
+                return acc;
+            },
+            {} as Record<string, Partial<Tutorial>[]>
+        )
+    )
+        .map(([title, tutorials]) => ({ title, tutorials }))
+        .sort((a, b) => category_order.indexOf(a.title) - category_order.indexOf(b.title));
 
-            return acc;
-        }, {})
-    ).map(([title, tutorials]) => ({ title, tutorials }));
-
-    tutorials.sort((a, b) => category_order.indexOf(a.title) - category_order.indexOf(b.title));
     return {
-        tutorials
+        categories
     };
 }

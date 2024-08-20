@@ -13,7 +13,6 @@
     --web-color-smooth: var(--web-color-greyscale-900) / 0.04;
     --web-color-subtle: var(--web-color-greyscale-50);
     --web-color-offset: var(--web-color-black) / 0.08;
-
     --web-color-border: var(--web-color-greyscale-50);
   }
 
@@ -34,7 +33,7 @@
     /* call other color variable */
     --web-color-border: var(--web-color-subtle);
   }
-  
+
   /* pink */
   --web-color-pink-hue: 343;
   --web-color-pink-200: var(--web-color-pink-hue) 98% 84%;

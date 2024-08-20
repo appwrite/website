@@ -2,7 +2,6 @@
     import { Root, Slide } from '$lib/components/carousel';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
-    import ProductsGrid from '$lib/components/ProductsGrid.svelte';
     import { Main } from '$lib/layouts';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import type { Integration } from '$routes/integrations/+page';
@@ -183,13 +182,7 @@
 </Main>
 
 <style lang="scss">
-    @use '$scss/abstract' as *;
-
-    .cta {
-        min-height: pxToRem(560);
-        display: flex;
-        align-items: center;
-    }
+    @use '$scss/abstract';
 
     .web-pre-footer-bg {
         position: absolute;
@@ -203,20 +196,12 @@
     }
     /* more tha 9 items */
 
-    .l-side-column {
-        display: flex;
-        gap: pxToRem(16);
-        @media #{$break1} {
-            flex-direction: column;
-        }
-    }
-
     .l-grid-2-1 {
-        @media #{$break1} {
+        @media #{abstract.$break1} {
             display: flex;
             flex-direction: column;
         }
-        @media #{$break2open} {
+        @media #{abstract.$break2open} {
             display: grid;
             gap: pxToRem(64);
             grid-template-columns: repeat(12, 1fr);

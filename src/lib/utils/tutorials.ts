@@ -1,5 +1,5 @@
 import { base } from '$app/paths';
-import type { Tutorial } from '$markdoc/layouts/Tutorial.svelte';
+import type { Tutorial } from '$routes/blog/content';
 
 export function globToTutorial(data: { tutorials: Record<string, unknown>; pathname: string }) {
 	return Object.entries(data.tutorials)

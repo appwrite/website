@@ -191,6 +191,16 @@
         }
 
         .lines {
+            --gradient: linear-gradient(
+                            to right,
+                            rgba(255, 255, 255, 0) 0%,
+                            rgba(255, 255, 255, 1) 50%,
+                            rgba(255, 255, 255, 1) 100%
+                        );
+            --height: 1px;
+            --starting-position: -80vw;
+            --duration: 1s;
+
             position: absolute;
             inset: 0;
             z-index: 0;
@@ -208,16 +218,6 @@
                 position: relative;
                 justify-content: center;
             }
-
-            --gradient: linear-gradient(
-                to right,
-                rgba(255, 255, 255, 0) 0%,
-                rgba(255, 255, 255, 1) 50%,
-                rgba(255, 255, 255, 1) 100%
-            );
-            --height: 1px;
-            --starting-position: -80vw;
-            --duration: 1s;
 
             .line {
                 position: relative;

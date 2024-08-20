@@ -38,7 +38,6 @@
 
     let error: string | undefined;
     let submitted = false;
-    let submitting = false;
 
     function scrollToForm() {
         const form = document.getElementById('form');
@@ -47,7 +46,6 @@
 
     async function handleSubmit() {
         error = undefined;
-        submitting = true;
 
         const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/conversations/startups`, {
             method: 'POST',
@@ -61,8 +59,6 @@
                 companyUrl: companyUrl.startsWith('http') ? companyUrl : `https://${companyUrl}`
             })
         });
-
-        submitting = false;
 
         if (response.status >= 400) {
             error =
@@ -716,7 +712,7 @@
                                                 Join the Appwrite Startups program
                                             </h4>
                                             <p class="web-description">
-                                                We support VC backed or revenue generating 
+                                                We support VC backed or revenue generating
                                                 startups that have been established within
                                                 the last decade with:
                                             </p>

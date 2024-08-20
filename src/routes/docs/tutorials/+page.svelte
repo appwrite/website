@@ -1,6 +1,7 @@
 <script lang="ts">
     import { MainFooter } from '$lib/components';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import type { Tutorial } from '$routes/blog/content.js';
     import { DOCS_TITLE_SUFFIX } from '$routes/titles';
 
     const title = 'Tutorials' + DOCS_TITLE_SUFFIX;
@@ -8,8 +9,6 @@
     const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 
     export let data;
-
-    type MappedTutorial = (typeof data.tutorials)[number];
 
     const iconMap: Record<string, string> = {
         'react native': 'icon-react-native',
@@ -32,7 +31,7 @@
         'astro ssr': 'icon-astro'
     };
 
-    const getIcon = (tutorial: MappedTutorial) => {
+    const getIcon = (tutorial: Partial<Tutorial>) => {
         if (!tutorial.framework) return ''; // TODO: Default icon
         return iconMap[tutorial.framework.toLowerCase()];
     };
@@ -66,7 +65,7 @@
             <div class="web-article-header-end" />
         </header>
         <div class="web-article-content web-u-gap-80">
-            {#each data.tutorials as category}
+            {#each data.categories as category}
                 <section class="u-flex-vertical u-gap-24">
                     <h2 class="web-eyebrow">{category.title}</h2>
                     <ul class="web-grid-row-4 web-grid-row-4-mobile-2">

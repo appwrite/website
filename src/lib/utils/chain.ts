@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 type Cancel = () => void;
 type Promised<T> = T extends Promise<infer U> ? U : T;
 
@@ -126,7 +125,7 @@ export const chain: ChainFn = (...fns: Function[]) => {
 		Object.keys(cancelled).forEach((key) => (cancelled[key] = true));
 	};
 
-	let lastRes: any = undefined;
+	let lastRes: unknown = undefined;
 
 	const execute = async () => {
 		const executionId = stupidId();

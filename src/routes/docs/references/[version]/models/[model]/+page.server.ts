@@ -8,15 +8,10 @@ type Model = {
         name: string;
         type: string;
         description: string;
-        items?: Array<any>;
+        items?: string;
         relatedModels?: string;
     }>;
 };
-
-type Example = {
-    type: ModelType;
-    example: string;
-}
 
 export const load: PageServerLoad = async ({ params }) => {
     const version = params.version === 'cloud' ? '1.6.x' : params.version;
@@ -30,7 +25,7 @@ export const load: PageServerLoad = async ({ params }) => {
             switch (property.type) {
                 case 'array': {
                     let arrayTypes;
-                    if (property.items.hasOwnProperty('$ref')) {
+                    if (property.items && '$ref' in property.items) {
                         arrayTypes = [
                             (property.items.$ref as string)
                                 .split('/')
@@ -61,7 +56,7 @@ export const load: PageServerLoad = async ({ params }) => {
                 }
                 case 'object': {
                     let arrayTypes;
-                    if (property.items?.hasOwnProperty('$ref')) {
+                    if (property.items && '$ref' in property.items) {
                         arrayTypes = [
                             ((property.items)?.$ref as string)
                                 .split('/')

@@ -1,7 +1,7 @@
 <script lang="ts">
     import { scrollToTop } from '$lib/actions/scrollToTop';
     import { Feedback } from '$lib/components';
-    import type { Tutorial } from '$markdoc/layouts/Tutorial.svelte';
+    import type { Tutorial } from '$routes/blog/content';
     import type { TocItem } from './DocsArticle.svelte';
 
     export let title: string;

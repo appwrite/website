@@ -1,4 +1,12 @@
 import { base } from '$app/paths';
+export type Tutorial = {
+    title: string;
+    href: string;
+    framework?: string;
+    category?: string;
+    step: number;
+    draft?: boolean;
+};
 export type CategoryData = {
     name: string;
     description: string;
@@ -38,7 +46,7 @@ const categoriesGlob = import.meta.glob('./category/**/*.markdoc', {
     eager: true
 });
 
-export const posts = Object.entries(postsGlob)
+export const posts: PostsData[] = Object.entries(postsGlob)
     .map(([filepath, postList]) => {
         const { frontmatter } = postList as {
             frontmatter: PostsData;
@@ -55,14 +63,15 @@ export const posts = Object.entries(postsGlob)
             timeToRead: frontmatter.timeToRead,
             author: frontmatter.author,
             category: frontmatter.category,
-            href: `${base}/blog/post/${postName}`
-        };
+            draft: frontmatter.draft,
+            href: `${base}/blog/post/${postName}`,
+        }
     })
     .sort((a, b) => {
         return b.date.getTime() - a.date.getTime();
     });
 
-export const authors = Object.values(authorsGlob).map((authorList) => {
+export const authors: AuthorData[] = Object.values(authorsGlob).map((authorList) => {
     const { frontmatter } = authorList as {
         frontmatter: AuthorData;
     };
@@ -80,7 +89,7 @@ export const authors = Object.values(authorsGlob).map((authorList) => {
     };
 });
 
-export const categories = Object.values(categoriesGlob).map((categoryList) => {
+export const categories: CategoryData[] = Object.values(categoriesGlob).map((categoryList) => {
     const { frontmatter } = categoryList as {
         frontmatter: CategoryData;
     };

@@ -161,8 +161,8 @@ await messaging.createPush(
             platform: 'Dart',
             content: `<?php
 
-use Appwrite\Services\Messaging;
-use Appwrite\ID;
+use Appwrite\\Services\\Messaging;
+use Appwrite\\ID;
 
 $messaging = new Messaging(client);
 $messaging->createPush(
@@ -191,8 +191,8 @@ messaging.create_email(
             platform: 'Dart',
             content: `<?php
 
-use Appwrite\Services\Messaging;
-use Appwrite\ID;
+use Appwrite\\Services\\Messaging;
+use Appwrite\\ID;
 
 $messaging = new Messaging(client);
 $messaging->createPush(

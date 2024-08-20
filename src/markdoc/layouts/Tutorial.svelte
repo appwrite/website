@@ -1,14 +1,3 @@
-<script context="module" lang="ts">
-    export type Tutorial = {
-        title: string;
-        framework?: string;
-        category?: string;
-        step: number;
-        href: string;
-        draft?: boolean;
-    };
-</script>
-
 <script lang="ts">
     import { DocsTutorial } from '$lib/layouts';
     import { getContext, setContext } from 'svelte';
@@ -18,6 +7,7 @@
     import type { LayoutContext } from './Article.svelte';
     import { DOCS_TITLE_SUFFIX } from '$routes/titles';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import type { Tutorial } from '$routes/blog/content';
 
     export let title: string;
     export let description: string;
