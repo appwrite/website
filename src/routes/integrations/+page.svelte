@@ -155,7 +155,7 @@
                                                 class="tag"
                                                 class:is-selected={activePlatform === platform}
                                                 class:active-tag={activePlatform === platform}
-                                                on:click={() => activePlatform === platform}
+                                                on:click={() => (activePlatform = platform)}
                                                 >{platform}</button
                                             >
                                         </li>
@@ -175,6 +175,7 @@
                                         on:change={() => {
                                             goto(`#${activeCategory?.toLowerCase()}`);
                                         }}
+                                        disabled={hasQuery}
                                     >
                                         {#each data.categories as category}
                                             {@const integrations = data.integrations.find(
@@ -205,7 +206,7 @@
                                         {#if integrations && (activePlatform === 'All' || integrations.integrations.some( (i) => i.platform.includes(activePlatform) ))}
                                             <li>
                                                 <a
-                                                    href={`#${category.toLowerCase()}`}
+                                                    href="#{category.toLowerCase()}"
                                                     class="web-link"
                                                     class:is-pink={category.toLowerCase() ===
                                                         activeCategory}
