@@ -179,6 +179,22 @@ val response = teams.createMembership(
 
 {% /multicode %}
 
+# Using the CLI {% #using-the-CLI %}
+
+{% partial file="cli-disclaimer.md" /%}
+
+Use the CLI command `appwrite teams create-membership [options]` to invite a new member into your team.
+
+```sh
+appwrite teams create-membership --team-id "<TEAM_ID>" --roles --phone "+12065550100" --name "<NAME>" --user-id "<USER_ID>"
+```
+
+You can also get, update, and delete a user's membership. However, you cannot use the CLI to configure permissions for team members.
+
+{% arrow_link href="/docs/tooling/command-line/teams#commands" %}
+Learn more about the CLI teams commands
+{% /arrow_link %}
+
 # Permissions {% #permissions %}
 
 You can grant permissions to all members of a team using the `Role.team(<TEAM_ID>)` role or

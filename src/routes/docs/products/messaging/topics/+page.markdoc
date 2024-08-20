@@ -254,6 +254,30 @@ let topic = try await messaging.createTopic(
 ```
 {% /multicode %}
 {% /tabsitem %}
+
+{% tabsitem #cli title="CLI" %}
+
+{% partial file="cli-disclaimer.md" /%}
+
+You can create a topic using the CLI command `appwrite init topics` to initialize a topic.
+
+```sh
+appwrite init topics
+```
+
+You can now push your topics with the following command:
+
+```sh
+appwrite push topics
+```
+
+This will create your topic in the Console with all of your `appwrite.json` configurations.
+
+{% arrow_link href="/docs/tooling/command-line/topics#commands" %}
+Learn more about the CLI topics commands
+{% /arrow_link %}
+
+{% /tabsitem %}
 {% /tabs %}
 
 # Permissions {% #permissions %}
