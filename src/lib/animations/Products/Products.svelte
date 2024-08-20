@@ -486,11 +486,11 @@
                 width: 100%;
 
                 > li {
+                    transition: 100ms ease;
+
                     &:not(:first-child) {
                         padding-block-start: 1.5rem;
                     }
-
-                    transition: 100ms ease;
 
                     &[data-active] {
                         h3 {

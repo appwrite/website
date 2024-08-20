@@ -9,6 +9,9 @@
 
     .slide {
         cursor: grab;
+        flex: 0 0 50%;
+        min-width: 0;
+        margin-right: abstract.pxToRem(16);
 
         &:active {
             cursor: grabbing;
@@ -17,9 +20,5 @@
         @media (max-width: 768px) {
             flex: 0 0 100%;
         }
-
-        flex: 0 0 50%;
-        min-width: 0;
-        margin-right: abstract.pxToRem(16);
     }
 </style>
