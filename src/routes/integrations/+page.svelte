@@ -8,9 +8,10 @@
     import { writable } from 'svelte/store';
     import { autoHash } from '$lib/actions/autoHash';
     import type { Integration } from './+page';
-    import { goto } from '$app/navigation';
+    import { goto, replaceState } from '$app/navigation';
     import { onDestroy, onMount } from 'svelte';
     import { browser } from '$app/environment';
+    import { page } from '$app/stores';
 
     export let data;
 
@@ -40,6 +41,12 @@
 
     // categories
     let activeCategory: string | null = null;
+
+    const handleQuery = (value: string) => {
+        $page.url.searchParams.set('q', encodeURIComponent(value));
+        query.set(value);
+        replaceState($page.url, $page.state);
+    };
 
     onMount(() => {
         if (browser) document.documentElement.setAttribute('data-scroll-smooth', '');
@@ -124,7 +131,11 @@
                         <section>
                             <label class="web-input-button web-u-flex-basis-400">
                                 <span class="web-icon-search" aria-hidden="true"></span>
-                                <input class="text" placeholder="Search" bind:value={$query} />
+                                <input
+                                    class="text"
+                                    placeholder="Search"
+                                    on:input={(e) => handleQuery(e.currentTarget.value)}
+                                />
                             </label>
                         </section>
                         <section class="u-flex-vertical">
@@ -139,7 +150,7 @@
                                                 class="tag"
                                                 class:is-selected={activePlatform === platform}
                                                 class:active-tag={activePlatform === platform}
-                                                on:click={() => (activePlatform = platform)}
+                                                on:click={() => activePlatform === platform}
                                                 >{platform}</button
                                             >
                                         </li>

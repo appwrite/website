@@ -28,10 +28,12 @@ const categoryDescriptions = Object.entries({
     payments: 'Secure online payment processing',
     search: 'Implement search functionalities',
     storage: 'Storage for data and media',
-    deployments: 'Seamlessly deploy your code',
+    deployments: 'Seamlessly deploy your code'
 });
 
-export const load = () => {
+export const load = ({ url }) => {
+    const search = url.searchParams.get('q');
+    console.log(search);
     const integrationsGlob = import.meta.glob('./**/*.markdoc', {
         eager: true
     });
