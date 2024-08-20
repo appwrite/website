@@ -91,7 +91,7 @@ GitOps is a common way of tracking and migrating database changes. The latest Ap
 
 When running `appwrite push collection`, the CLI will compare your local `appwrite.json` collection definition against the currently deployed remote collection and will present you with a detailed table awaiting your decision, for example:
 
-```md
+```
 Key       │ Action     │ Reason
 ──────────┼────────────┼─────────────────────────────────────────────
 times     │ deleting   │ Field isn't available in appwrite.json file
