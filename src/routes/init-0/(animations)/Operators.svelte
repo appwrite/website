@@ -153,7 +153,6 @@
     }
 
     .rectangle {
-        @include gradients.border-gradient;
         --m-border-radius: 11.17px;
 
         width: 441px;
@@ -166,6 +165,7 @@
         display: flex;
         align-items: center;
         padding: 11.17px;
+        @include gradients.border-gradient;
     }
 
     .diamond {
@@ -194,7 +194,6 @@
     }
 
     .operators {
-        @include gradients.border-gradient;
         --m-border-radius: 11.17px;
 
         position: absolute;
@@ -206,15 +205,16 @@
         padding: 6px;
         gap: 6px;
         opacity: 0;
+        @include gradients.border-gradient;
 
         span {
-            @include gradients.border-gradient;
             --m-border-radius: 8px;
             background: rgba(255, 255, 255, 0.04);
             width: 58px;
             height: 30px;
             display: grid;
             place-items: center;
+            @include gradients.border-gradient;
         }
     }
 </style>

@@ -174,7 +174,6 @@
     }
 
     .component {
-        @include gradients.border-gradient;
         --m-border-radius: 17.36px;
         --m-border-gradient-before: linear-gradient(
             180deg,
@@ -194,6 +193,7 @@
         box-shadow: 0px 2.8px 5.6px #00000005;
         backdrop-filter: blur(27.78px) brightness(100%);
         -webkit-backdrop-filter: blur(27.78px) brightness(100%);
+        @include gradients.border-gradient;
     }
 
     .overlap-group {

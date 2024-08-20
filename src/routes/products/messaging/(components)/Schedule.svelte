@@ -115,7 +115,6 @@
     }
 
     .calendar {
-        @include gradients.border-gradient;
         --m-border-radius: 1.5rem;
         --m-border-gradient-before: linear-gradient(
             to bottom,
@@ -134,6 +133,7 @@
             margin-inline: auto;
             max-width: 20rem;
         }
+        @include gradients.border-gradient;
     }
 
     header {

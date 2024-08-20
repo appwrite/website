@@ -558,7 +558,6 @@
     }
 
     .phone {
-        @include gradients.border-gradient;
         --m-border-size: 1px;
         --m-border-radius: 2.5rem;
         --m-border-gradient-after: linear-gradient(
@@ -580,6 +579,7 @@
         left: calc(50%);
         z-index: 10;
         opacity: 1;
+        @include gradients.border-gradient;
 
         .inner {
             background-color: white;
@@ -668,7 +668,6 @@
     }
 
     .controls {
-        @include gradients.border-gradient;
         --m-border-radius: 1rem;
         --m-border-gradient-before: linear-gradient(
             180deg,
@@ -691,5 +690,6 @@
             -33px 60px 27px 0px rgba(0, 0, 0, 0.01),
             -52px 94px 30px 0px rgba(0, 0, 0, 0);
         backdrop-filter: blur(20px);
+        @include gradients.border-gradient;
     }
 </style>

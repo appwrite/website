@@ -441,7 +441,6 @@
             } /* items */
 
             .carousel-img {
-                @include gradients.border-gradient;
                 --m-border-gradient-before: linear-gradient(
                     135.1deg,
                     #ffffff 10.1%,
@@ -456,6 +455,7 @@
                 );
                 backdrop-filter: blur(16px);
                 -webkit-backdrop-filter: blur(16px);
+                @include gradients.border-gradient;
             }
         }
     }

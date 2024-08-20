@@ -106,7 +106,6 @@
     @use '$scss/abstract/mixins/border-gradient' as gradients;
 
     .console {
-        @include gradients.border-gradient;
         --m-border-radius: 18px;
         --m-border-gradient-before: linear-gradient(
             to bottom,
@@ -124,6 +123,7 @@
             height: 400px;
             width: 100%;
         }
+        @include gradients.border-gradient;
         .inner {
             border: 8px solid #2d2d2f;
             border-radius: 18px;
@@ -230,7 +230,6 @@
         }
 
         .phone {
-            @include gradients.border-gradient;
             --m-border-radius: 60px 60px 0 0;
             --m-border-gradient-before: linear-gradient(
                 to bottom,
@@ -251,7 +250,7 @@
                 inset-block-start: 0;
                 transform: translateX(-50%);
             }
-
+            @include gradients.border-gradient;
             .notch {
                 position: absolute;
                 inset-inline-start: 50%;
@@ -284,7 +283,6 @@
         }
 
         .notification {
-            @include gradients.border-gradient;
             --m-border-radius: 20px;
             --m-border-gradient-before: linear-gradient(
                 to bottom,
@@ -307,7 +305,7 @@
                 inset-inline-start: 50%;
                 transform: translateX(-50%);
             }
-
+            @include gradients.border-gradient;
             .header {
                 display: flex;
                 align-items: center;

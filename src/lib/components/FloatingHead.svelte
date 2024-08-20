@@ -15,7 +15,6 @@
     @use '$scss/abstract/mixins/border-gradient' as gradients;
 
     .head-wrapper {
-        @include gradients.border-gradient;
         --m-border-radius: 50%;
         --m-border-gradient-before: linear-gradient(
             135.1deg,
@@ -37,6 +36,7 @@
         );
         box-shadow: 0px 5.35px 10.7px 0px rgba(0, 0, 0, 0.02);
 
+        @include gradients.border-gradient;
         &.isRelative {
             position: relative;
         }

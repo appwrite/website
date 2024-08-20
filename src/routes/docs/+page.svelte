@@ -452,8 +452,6 @@
     }
 
     .tech-hero {
-        @include gradients.border-block-gradient;
-
         --m-border-size: 1px;
         --m-border-gradient-before: linear-gradient(
             to right,
@@ -470,6 +468,8 @@
 
         position: relative;
         z-index: 10;
+
+        @include gradients.border-block-gradient;
 
         .spline-wrapper {
             --p-size: 700px;

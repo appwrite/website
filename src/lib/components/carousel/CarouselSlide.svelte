@@ -5,7 +5,7 @@
 </li>
 
 <style lang="scss">
-    @use '$scss/abstract' as *;
+    @use '$scss/abstract';
 
     .slide {
         cursor: grab;
@@ -20,6 +20,6 @@
 
         flex: 0 0 50%;
         min-width: 0;
-        margin-right: pxToRem(16);
+        margin-right: abstract.pxToRem(16);
     }
 </style>

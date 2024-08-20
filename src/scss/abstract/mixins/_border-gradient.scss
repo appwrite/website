@@ -11,17 +11,19 @@
 }
 
 @mixin border-gradient {
-  position: relative;
-  border-radius: var(--m-border-radius);
+  & {
+    position: relative;
+    border-radius: var(--m-border-radius);
+  }
 
   &::before {
-    @include border-gradient-inner;
     background: var(--m-border-gradient-before) border-box;
+    @include border-gradient-inner;
   }
 
   &::after {
-    @include border-gradient-inner;
     background: var(--m-border-gradient-after) border-box;
+    @include border-gradient-inner;
   }
 }
 
@@ -43,13 +45,13 @@
   border-radius: var(--m-border-radius);
 
   &::before {
-    @include border-block-gradient-inner;
     background: var(--m-border-gradient-before) border-box;
+    @include border-block-gradient-inner;
   }
 
   &::after {
-    @include border-block-gradient-inner;
     background: var(--m-border-gradient-after) border-box;
+    @include border-block-gradient-inner;
   }
 }
 

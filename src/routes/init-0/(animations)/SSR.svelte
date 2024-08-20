@@ -174,13 +174,13 @@
         backdrop-filter: blur(15.53px);
         -webkit-backdrop-filter: blur(15.53px);
 
-        @include gradients.border-gradient;
         --m-border-radius: 12px;
         --m-border-gradient-before: linear-gradient(
             180deg,
             rgba(255, 255, 255, 0.14) 0%,
             rgba(255, 255, 255, 0) 106.54%
         );
+        @include gradients.border-gradient;
     }
 
     .circles {

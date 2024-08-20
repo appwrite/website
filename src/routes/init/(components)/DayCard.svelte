@@ -85,13 +85,13 @@
         flex: 0 0 var(--day-min-w);
 
         &.border {
-            @include gradients.border-gradient;
             --m-border-radius: 1rem;
             --m-border-gradient-before: linear-gradient(
                 180deg,
                 rgba(255, 255, 255, 0.12) 0%,
                 rgba(255, 255, 255, 0) 125.11%
             );
+            @include gradients.border-gradient;
         }
 
         &::before {

@@ -1,5 +1,5 @@
-@use '../../abstract/functions/pxToRem' as *;
-@use '../../abstract/variables/common' as *;
+@use '../../abstract/functions';
+@use '../../abstract/variables';
 
 @mixin numeric-badge {
   --p-numeric-badge-text-color: var(--web-color-pink-500);
@@ -8,12 +8,12 @@
 
   color: hsl(var(--p-numeric-badge-text-color));
   background: hsl(var(--p-numeric-badge-bg-color));
-  border: pxToRem(1) solid hsl(var(--p-numeric-badge-border-color));
+  border: functions.pxToRem(1) solid hsl(var(--p-numeric-badge-border-color));
 
-  display:grid; place-content:center; min-inline-size:pxToRem(24); block-size:pxToRem(24);
-  padding-inline:pxToRem(6); border-radius:pxToRem(6); font-size:pxToRem(14); user-select:none;
+  display:grid; place-content:center; min-inline-size:functions.pxToRem(24); block-size:functions.pxToRem(24);
+  padding-inline:functions.pxToRem(6); border-radius:functions.pxToRem(6); font-size:functions.pxToRem(14); user-select:none;
 
-  #{$theme-dark} & {
+  #{variables.$theme-dark} & {
     --p-numeric-badge-text-color: var(--web-color-greyscale-100);
     --p-numeric-badge-bg-color: calc(var(--web-color-pink-hue) - 13) 23% 14%;
     --p-numeric-badge-border-color: calc(var(--web-color-pink-hue) - 2) 51% 29%;

@@ -203,7 +203,7 @@
         }
         @media #{abstract.$break2open} {
             display: grid;
-            gap: pxToRem(64);
+            gap: abstract.pxToRem(64);
             grid-template-columns: repeat(12, 1fr);
         }
 

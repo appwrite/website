@@ -48,7 +48,6 @@
     }
 
     .cardy {
-        @include gradients.border-gradient;
         --m-border-gradient-before: linear-gradient(
             180deg,
             rgba(255, 255, 255, 0.16) 0%,
@@ -59,6 +58,7 @@
         background: rgba(255, 255, 255, 0.04);
         backdrop-filter: blur(7.5px);
         padding: 1.5rem;
+        @include gradients.border-gradient;
     }
 
     .web-pre-footer-bg {

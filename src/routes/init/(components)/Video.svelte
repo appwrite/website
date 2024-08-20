@@ -65,7 +65,6 @@
   }
 
   .play {
-    @include gradients.border-gradient;
     --m-border-radius: 100%;
     --m-border-gradient-before: linear-gradient(
       180deg,
@@ -92,6 +91,7 @@
 
     transition: transform 150ms ease;
 
+    @include gradients.border-gradient;
     .wrapper:hover & {
       transform: scale(1.05);
     }

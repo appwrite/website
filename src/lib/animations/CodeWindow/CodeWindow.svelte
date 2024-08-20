@@ -21,7 +21,6 @@
     @use '$scss/abstract/mixins/border-gradient' as gradients;
 
 	.code-console {
-		@include gradients.border-gradient;
 		--p-radius: 16px;
 
 		display: flex;
@@ -40,6 +39,7 @@
 		min-width: 330px;
 		width: fit-content;
 		padding: 0 0.25rem 0.25rem;
+		@include gradients.border-gradient;
 	}
 
 	.block {

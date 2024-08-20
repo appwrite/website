@@ -15,7 +15,6 @@
     @use '$scss/abstract/mixins/border-gradient' as gradients;
 
 	.anim-box {
-		@include gradients.border-gradient;
 		--m-border-radius: 1rem;
 		--m-border-gradient-before: linear-gradient(
 			180deg,
@@ -31,6 +30,7 @@
 
 		text-align: left;
 
+		@include gradients.border-gradient;
 		.top {
 			color: var(--greyscale-50, #ededf0);
 			font-family: Aeonik Pro;

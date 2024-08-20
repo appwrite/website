@@ -441,16 +441,17 @@
 </Main>
 
 <style lang="scss">
-    @use '$scss/abstract' as *;
+    @use '$scss/abstract';
+
     :global([data-scroll-smooth]) {
         scroll-behavior: smooth;
     }
     .hero {
-        min-height: pxToRem(620);
+        min-height: abstract.pxToRem(620);
         @media (min-width: 768px) {
             display: grid;
             grid-template-columns: 60% minmax(0, 1fr);
-            gap: pxToRem(32);
+            gap: abstract.pxToRem(32);
             justify-content: space-between;
             align-items: center;
             position: relative;
@@ -459,7 +460,7 @@
                 transform-origin: left center;
                 scale: 1.25;
                 position: relative;
-                left: pxToRem(-30);
+                left: abstract.pxToRem(-30);
             }
         }
 
@@ -519,7 +520,7 @@
     /* more tha 9 items */
     .l-max-size-list-cards-section {
         scroll-snap-align: start;
-        scroll-margin-top: pxToRem(120);
+        scroll-margin-top: abstract.pxToRem(120);
     }
     .l-max-size-list-cards {
         &:where(:has(> ul > li:nth-child(10))) {
@@ -530,7 +531,7 @@
                 bottom: 0;
                 height: 100%;
                 width: 100%;
-                max-height: pxToRem(350);
+                max-height: abstract.pxToRem(350);
                 content: '';
                 display: block;
                 background: linear-gradient(
@@ -544,7 +545,7 @@
             .l-float-button {
                 position: absolute;
                 inset-inline: 0;
-                inset-block-end: pxToRem(20);
+                inset-block-end: abstract.pxToRem(20);
                 margin-inline: auto;
                 display: flex;
             }
@@ -570,16 +571,16 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
         gap: 1rem;
-        @media #{$break1} {
+        @media #{abstract.$break1} {
             gap: 1.25rem;
         }
     }
     .l-integrations-grid {
         position: relative;
 
-        @media #{$break1} {
+        @media #{abstract.$break1} {
             gap: 0;
-            padding-block-start: pxToRem(80);
+            padding-block-start: abstract.pxToRem(80);
         }
 
         .disabled {
@@ -590,15 +591,15 @@
         }
 
         .sidebar {
-            margin-bottom: pxToRem(60);
-            @media #{$break2open} {
+            margin-bottom: abstract.pxToRem(60);
+            @media #{abstract.$break2open} {
                 position: sticky;
                 top: 50px;
                 height: 500px;
             }
 
             .tag {
-                min-width: pxToRem(42);
+                min-width: abstract.pxToRem(42);
                 &.active-tag {
                     background-color: #fff;
                     color: #000;
@@ -606,17 +607,17 @@
             }
         }
 
-        @media #{$break2open} {
+        @media #{abstract.$break2open} {
             display: grid;
-            gap: pxToRem(68);
-            grid-template-columns: pxToRem(240) 1fr;
-            padding-block-start: pxToRem(40);
+            gap: abstract.pxToRem(68);
+            grid-template-columns: abstract.pxToRem(240) 1fr;
+            padding-block-start: abstract.pxToRem(40);
         }
     }
     .l-integrations-hero {
-        @media #{$break1} {
+        @media #{abstract.$break1} {
         }
-        @media #{$break2open} {
+        @media #{abstract.$break2open} {
         }
     }
     .l-bg-1 {
@@ -633,12 +634,12 @@
     }
 
     .web-feature-grid {
-        @media #{$break1} {
+        @media #{abstract.$break1} {
             gap: 1rem;
         }
     }
     .web-feature-grid {
-        @media #{$break1} {
+        @media #{abstract.$break1} {
             gap: 1rem;
         }
     }

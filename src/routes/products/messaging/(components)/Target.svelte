@@ -407,7 +407,6 @@
         }
 
         foreignObject span {
-            @include gradients.border-gradient;
             --m-border-radius: 0.5rem;
             --m-border-gradient-before: linear-gradient(
                 to bottom,
@@ -423,6 +422,7 @@
             font-size: 1.175rem;
             translate: 0 4px;
 
+            @include gradients.border-gradient;
             &[data-active='true'] {
                 opacity: 1;
             }
@@ -430,7 +430,6 @@
     }
 
     .users-modal {
-        @include gradients.border-gradient;
 
         position: absolute;
         inset-block-start: 5rem;
@@ -463,6 +462,7 @@
             max-block-size: 28rem;
             overflow: hidden;
         }
+        @include gradients.border-gradient;
 
         .accordion-items {
             display: flex;

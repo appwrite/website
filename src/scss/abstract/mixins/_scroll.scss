@@ -1,25 +1,25 @@
-@use '../../abstract/functions/pxToRem' as *;
-@use '../../abstract/variables/common' as *;
+@use '../../abstract/functions';
+@use '../../abstract/variables';
 @mixin scroll {
   &::-webkit-scrollbar {
     opacity: 0.7;
-    width: pxToRem(8);
-    height: pxToRem(8);
+    width: functions.pxToRem(8);
+    height: functions.pxToRem(8);
   }
 
   &::-webkit-scrollbar-track {
-    border-radius: pxToRem(4);
-    margin-right: pxToRem(8);
+    border-radius: functions.pxToRem(4);
+    margin-right: functions.pxToRem(8);
   }
 
   &::-webkit-scrollbar-thumb {
-    border-radius: pxToRem(4);
+    border-radius: functions.pxToRem(4);
     background-color: transparent;
   }
 
   &::-webkit-scrollbar-corner {
     background-color: transparent;
-    border-radius: pxToRem(6);
+    border-radius: functions.pxToRem(6);
   }
 
   &:hover {
@@ -38,19 +38,19 @@
   }
 
   ::-webkit-scrollbar-track {
-    border-block:solid pxToRem(1) hsl(var(--p-track-border-color));
+    border-block:solid functions.pxToRem(1) hsl(var(--p-track-border-color));
     background-color: hsl(var(--p-track-bg-color));
     border-radius: 0;
   }
 
   ::-webkit-scrollbar-thumb {
     border-radius: 100px;
-    border: pxToRem(3) solid transparent;
+    border: functions.pxToRem(3) solid transparent;
     background-clip: content-box;
     background-color: hsl(var(--p-scroll-bg-color));
   }
 
-  #{$theme-dark} & {
+  #{variables.$theme-dark} & {
     --track-bg-color: var(--color-neutral-500);
     --track-border-color: var(--color-neutral-200);
     --scroll-bg-color: var(--color-neutral-150);

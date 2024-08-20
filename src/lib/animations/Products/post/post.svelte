@@ -161,7 +161,6 @@
 
 	// Components
 	.gradient-box {
-		@include gradients.border-gradient;
 		--m-border-gradient-before: linear-gradient(
 			180deg,
 			rgba(255, 255, 255, 0.12) 0%,
@@ -181,6 +180,7 @@
 		z-index: 9999;
 
 		min-width: 20rem;
+		@include gradients.border-gradient;
 	}
 
 	@keyframes fadeIn {

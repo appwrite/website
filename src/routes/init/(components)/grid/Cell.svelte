@@ -8,12 +8,12 @@
 </div>
 
 <style lang="scss">
-  @use "$scss/abstract" as *;
+  @use "$scss/abstract";
 
   .cell {
     display: flex;
     flex-direction: column;
-    gap: pxToRem(32);
+    gap: abstract.pxToRem(32);
     height: 100%;
 
     @media screen and (min-width: 768px) {

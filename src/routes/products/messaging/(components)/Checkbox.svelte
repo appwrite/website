@@ -31,7 +31,6 @@
     @use '$scss/abstract/mixins/border-gradient' as gradients;
 
     button {
-        @include gradients.border-gradient;
         --p-size: var(--size, 1.25rem);
         --m-border-radius: calc(var(--p-size) / 4);
         --m-border-gradient-before: linear-gradient(
@@ -48,6 +47,7 @@
 
         transition: 150ms ease;
 
+        @include gradients.border-gradient;
         &:hover {
             opacity: 0.8;
         }

@@ -58,12 +58,12 @@
 </div>
 
 <style lang="scss">
-    @use '$scss/abstract' as *;
+    @use '$scss/abstract';
 
     .col {
         display: flex;
         flex-direction: column;
-        gap: pxToRem(32);
+        gap: abstract.pxToRem(32);
 
         @keyframes scroll {
             0% {

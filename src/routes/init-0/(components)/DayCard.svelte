@@ -54,7 +54,6 @@
 
     .day,
     .release {
-        @include gradients.border-gradient;
         --m-border-radius: 1rem;
         --m-border-gradient-before: linear-gradient(
             180deg,
@@ -73,6 +72,7 @@
         padding: 1.25rem;
 
         flex: 0 0 var(--day-min-w);
+        @include gradients.border-gradient;
     }
 
     .day {
