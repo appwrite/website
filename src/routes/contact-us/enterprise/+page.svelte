@@ -122,34 +122,6 @@
                                             </p>
                                         </section>
                                     {/if}
-                                    <section
-                                        class="u-flex-vertical u-gap-12 u-padding-block-start-40 u-margin-block-start-40 web-u-sep-block-start"
-                                    >
-                                        <h2 class="web-label web-u-color-text-primary">
-                                            Follow us
-                                        </h2>
-                                        <ul class="u-flex u-gap-8">
-                                            {#each socials as social}
-                                                <li>
-                                                    <a
-                                                        href={social.link}
-                                                        class="web-icon-button"
-                                                        aria-label={social.label}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                    >
-                                                        <span
-                                                            class={social.icon}
-                                                            aria-hidden="true"
-                                                        />
-                                                    </a>
-                                                </li>
-                                            {/each}
-                                        </ul>
-                                    </section>
-                                    <div
-                                        class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
-                                    />
                                 </div>
                             </div>
                             {#if !submitted}
