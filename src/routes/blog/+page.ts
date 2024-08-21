@@ -1,7 +1,6 @@
 import { base } from '$app/paths';
 import type { AuthorData, PostsData } from './content';
 
-
 export function load() {
     const postsGlob = import.meta.glob('./post/**/*.markdoc', {
         eager: true
@@ -28,7 +27,8 @@ export function load() {
                 author: frontmatter.author,
                 category: frontmatter.category,
                 href: `${base}/blog/post/${postName}`,
-                draft: frontmatter.draft
+                draft: frontmatter.draft,
+                callToAction: frontmatter.callToAction
             };
         })
         .sort((a, b) => {
