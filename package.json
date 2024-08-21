@@ -55,6 +55,7 @@
         "eslint-plugin-svelte": "^2.40.0",
         "fuse.js": "^7.0.0",
         "highlight.js": "^11.9.0",
+        "ipx": "^3.0.1",
         "markdown-it": "^14.1.0",
         "meilisearch": "^0.37.0",
         "motion": "^10.18.0",
