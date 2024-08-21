@@ -1,9 +1,11 @@
 <script lang="ts">
+    import type { ContributionsMatrix, TicketData } from '$routes/init/tickets/constants';
     import { spring } from 'svelte/motion';
-    import type { ContributionsMatrix, TicketData } from '../tickets/constants';
-    import Lockup from './Lockup.svelte';
-    import Lines from './Lines.svelte';
+    import staticLockup from '../../(assets)/static-lockup.svg';
+
     import { fade } from 'svelte/transition';
+    import Lockup from '../Lockup.svelte';
+    import Lines from '../Lines.svelte';
 
     type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
         contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;
@@ -136,7 +138,11 @@
             <p class="web-label">{title}</p>
 
             <div class="logo" style:width="75%">
-                <Lockup fill={false} animate={!disableEffects} />
+                {#if disableEffects}
+                    <img src={staticLockup} alt="Init" style:margin-left="-20px" />
+                {:else}
+                    <Lockup fill={false} animate={!disableEffects} />
+                {/if}
             </div>
             <div class="shine" />
             <div class="noise" />
@@ -368,6 +374,7 @@
 
             .logo {
                 position: absolute;
+                left: 48px;
 
                 transform: translateY(75%) translateX(-10%);
                 z-index: 10;

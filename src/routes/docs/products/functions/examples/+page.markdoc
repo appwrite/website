@@ -115,7 +115,7 @@ export default async function ({ req, res }) {
     const response = await fetch('https://api.exchangerate.host/latest?base=EUR&symbols=USD');
     const data = await response.json();
     const amountInDollars = amountInEuros * data.rates.USD;
-    return res.send(amountInDollars.toString());
+    return res.text(amountInDollars.toString());
   }
 
   if (req.path === '/inr') {
@@ -123,10 +123,10 @@ export default async function ({ req, res }) {
     const response = await fetch('https://api.exchangerate.host/latest?base=INR&symbols=USD');
     const data = await response.json();
     const amountInDollars = amountInRupees * data.rates.USD;
-    return res.send(amountInDollars.toString());
+    return res.text(amountInDollars.toString());
   }
 
-  return res.send('Invalid path');
+  return res.text('Invalid path');
 };
 ```
 ```php
@@ -147,7 +147,7 @@ return function ($context) {
         $response = $client->get('https://api.exchangerate.host/latest?base=EUR&symbols=USD');
         $data = $response->json();
         $amountInDollars = $amountInEuros * $data['rates']['USD'];
-        return $context->res->send(strval($amountInDollars));
+        return $context->res->text(strval($amountInDollars));
     }
 
     if ($context->req->path === '/inr') {
@@ -155,10 +155,10 @@ return function ($context) {
         $response = $client->get('https://api.exchangerate.host/latest?base=INR&symbols=USD');
         $data = $response->json();
         $amountInDollars = $amountInRupees * $data['rates']['USD'];
-        return $context->res->send(strval($amountInDollars));
+        return $context->res->text(strval($amountInDollars));
     }
 
-    return $context->res->send('Invalid path');
+    return $context->res->text('Invalid path');
 };
 ```
 ```python
@@ -170,14 +170,14 @@ def main(context):
     response = requests.get('https://api.exchangerate.host/latest?base=EUR&symbols=USD')
     data = response.json()
     amount_in_dollars = amount_in_euros * data['rates']['USD']
-    return context.res.send(str(amount_in_dollars))
+    return context.res.text(str(amount_in_dollars))
 
   if context.req.path == '/inr':
     amount_in_rupees = float(context.req.query['amount'])
     response = requests.get('https://api.exchangerate.host/latest?base=INR&symbols=USD')
     data = response.json()
     amount_in_dollars = amount_in_rupees * data['rates']['USD']
-    return context.res.send(str(amount_in_dollars))
+    return context.res.text(str(amount_in_dollars))
 
   return 'Invalid path'
 ```
@@ -192,7 +192,7 @@ Future<dynamic> main(final context) async {
     final response = await http.get(Uri.parse('https://api.exchangerate.host/latest?base=EUR&symbols=USD'));
     final data = json.decode(response.body);
     final amountInDollars = amountInEuros * data['rates']['USD'];
-    return context.res.send(amountInDollars.toString());
+    return context.res.text(amountInDollars.toString());
   }
 
   if (context.req.path == '/inr') {
@@ -200,7 +200,7 @@ Future<dynamic> main(final context) async {
     final response = await http.get(Uri.parse('https://api.exchangerate.host/latest?base=INR&symbols=USD'));
     final data = json.decode(response.body);
     final amountInDollars = amountInRupees * data['rates']['USD'];
-    return context.res.send(amountInDollars.toString());
+    return context.res.text(amountInDollars.toString());
   }
 
   return 'Invalid path';
@@ -215,7 +215,7 @@ def main(context)
     response = HTTParty.get('https://api.exchangerate.host/latest?base=EUR&symbols=USD')
     data = JSON.parse(response.body)
     amount_in_dollars = amount_in_euros * data['rates']['USD']
-    return context.res.send(amount_in_dollars.to_s)
+    return context.res.text(amount_in_dollars.to_s)
   end
 
   if context.req.path == '/inr'
@@ -223,7 +223,7 @@ def main(context)
     response = HTTParty.get('https://api.exchangerate.host/latest?base=INR&symbols=USD')
     data = JSON.parse(response.body)
     amount_in_dollars = amount_in_rupees * data['rates']['USD']
-    return context.res.send(amount_in_dollars.to_s)
+    return context.res.text(amount_in_dollars.to_s)
   end
 
   return 'Invalid path'
@@ -271,11 +271,11 @@ export default async function ({ req, res }) {
     return res.json({ ok: false, message: 'You must vote yes or no.' }, 400);
   }
 
+  // Set project and set API key
   const client = new Client();
   client
-    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-    .setKey(process.env.APPWRITE_API_KEY);
+    .setKey(req.headers['x-appwrite-key']);
 
   const database = new Database(client);
   
@@ -313,11 +313,11 @@ def main(context):
     if vote['vote'] != 'yes' and vote['vote'] != 'no':
         return context.res.json({'ok': False, 'message': 'You must vote yes or no.'}, 400)
 
+    # Set project and set API key
     client = (
         Client()
-        .set_endpoint("https://cloud.appwrite.io/v1")
-        .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
-        .set_key(os.environ["APPWRITE_API_KEY"])
+        .set_project(os.environ['APPWRITE_FUNCTION_PROJECT_ID'])
+        .set_key(context.req.headers['x-appwrite-key'])
     )
 
     database = Databases(client)
@@ -362,11 +362,11 @@ return function ($context) {
         return $context->res->json(['ok' => false, 'message' => 'You must vote yes or no.'], 400);
     }
 
+    // Set project and set API key
     $client = new Client();
     $client
-        ->setEndpoint('https://cloud.appwrite.io/v1')
         ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
-        ->setKey(getenv('APPWRITE_API_KEY'));
+        ->setKey($context->req->headers['x-appwrite-key']);
 
     $database = new Database($client);
 
@@ -411,10 +411,10 @@ Future main(final context) async {
         return context.res.json({'ok': false, 'message': 'You must vote yes or no.'}, 400);
     }
 
+    // Set project and set API key
     final client = Client()
-        .setEndpoint('https://cloud.appwrite.io/v1')
         .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
-        .setKey(Platform.environment['APPWRITE_API_KEY']);
+        .setKey(context.req.headers['x-appwrite-key']);
 
     final database = Database(client);
 
@@ -457,11 +457,11 @@ def main(context)
         return context.res.json({'ok': false, 'message': 'You must vote yes or no.'}, 400)
     end
 
+    # Set project and set API key
     client = Appwrite::Client.new()
     client
-        .set_endpoint('https://cloud.appwrite.io/v1')
         .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
-        .set_key(ENV['APPWRITE_API_KEY'])
+        .set_key(context.req.headers['x-appwrite-key'])
 
     database = Appwrite::Database.new(client)
     
@@ -535,7 +535,7 @@ const html = `<!doctype html>
 
 export default async function ({ req, res }) {
   if (req.method === 'GET') {
-    return res.send(html, 200, {'content-type': 'text/html'});
+    return res.text(html, 200, {'content-type': 'text/html'});
   }
 
   if (req.method === 'POST' && req.headers['content-type'] === 'application/x-www-form-urlencoded') {
@@ -547,19 +547,18 @@ export default async function ({ req, res }) {
       content: formData.content
     };
 
-    const client = new Client();
-    client
-      .setEndpoint('https://cloud.appwrite.io/v1')
+    // Set project and set API key
+    const client = new Client()
       .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-      .setKey(process.env.APPWRITE_API_KEY);
+      .setKey(req.headers['x-appwrite-key']);
 
     const databases = new Databases(client);
     const document = await databases.createDocument('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message);
 
-    return res.send("Message sent");
+    return res.text("Message sent");
   }
 
-  return res.send('Not found', 404);
+  return res.text('Not found', 404);
 }
 ```
 
@@ -589,7 +588,7 @@ html = '''<!doctype html>
 
 def main(context):
     if context.req.method == 'GET':
-        return context.res.send(html, 200, {'content-type': 'text/html'})
+        return context.res.text(html, 200, {'content-type': 'text/html'})
 
     if context.req.method == 'POST' and context.req.headers['content-type'] == 'application/x-www-form-urlencoded':
         formData = parse_qs(context.req.body)
@@ -600,19 +599,19 @@ def main(context):
             'content': formData['content'][0]
         }
 
+        # Set project and set API key
         client = (
-            Client()
-            .set_endpoint("https://cloud.appwrite.io/v1")
+          Client()
             .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
-            .set_key(os.environ["APPWRITE_API_KEY"])
+            .set_key(context.req.headers["x-appwrite-key"])
         )
 
         databases = Databases(client)
         document = databases.create_document('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message)
 
-        return context.res.send("Message sent")
+        return context.res.text("Message sent")
 
-    return context.res.send('Not found', 404)
+    return context.res.text('Not found', 404)
 ```
 
 ```php
@@ -644,7 +643,7 @@ return function ($context) {
   global $html;
 
   if ($context->req->method === 'GET') {
-    return $context->res->send($html, 200, ['content-type' => 'text/html']);
+    return $context->res->text($html, 200, ['content-type' => 'text/html']);
   }
 
   if ($context->req->method === 'POST' && $context->req->headers['content-type'] === 'application/x-www-form-urlencoded') {
@@ -656,19 +655,18 @@ return function ($context) {
       'content' => $formData['content']
     ];
 
-    $client = new Client();
-    $client
-      ->setEndpoint('https://cloud.appwrite.io/v1')
-      ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
-      ->setKey(getenv('APPWRITE_API_KEY'));
+    // Set project and set API key
+    $client = (new Client())
+         ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
+         ->setKey($context->req->headers['x-appwrite-key']);
 
     $databases = new Databases($client);
     $document = $databases->createDocument('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID::unique(), $message);
 
-    return $context->res->send("Message sent");
+    return $context->res->text("Message sent");
   }
 
-  return $context->res->send('Not found', 404);
+  return $context->res->text('Not found', 404);
 };
 ```
 
@@ -694,7 +692,7 @@ html = '''<!doctype html>
 
 def main(context)
     if context.req.method == 'GET'
-        return context.res.send(html, 200, {'content-type': 'text/html'})
+        return context.res.text(html, 200, {'content-type': 'text/html'})
     end
 
     if context.req.method == 'POST' and context.req.headers['content-type'] == 'application/x-www-form-urlencoded'
@@ -706,19 +704,18 @@ def main(context)
             'content' => formData['content']
         }
 
-        client = Appwrite::Client.new()
-        client
-            .set_endpoint('https://cloud.appwrite.io/v1')
+        # Set project and set API key
+        client = Appwrite::Client.new
             .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
-            .set_key(ENV['APPWRITE_API_KEY'])
+            .set_key(context.req.headers['x-appwrite-key'])
 
         databases = Appwrite::Database.new(client)
         document = databases.create_document('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message)
 
-        return context.res.send("Message sent")
+        return context.res.text("Message sent")
     end
 
-    return context.res.send('Not found', 404)
+    return context.res.text('Not found', 404)
 end
 ```
 
@@ -745,7 +742,7 @@ Future main(final context) async {
 ''';
 
     if (context.req.method == 'GET') {
-        return context.res.send(html, 200, {'content-type': 'text/html'});
+        return context.res.text(html, 200, {'content-type': 'text/html'});
     }
 
     if (context.req.method == 'POST' && context.req.headers['content-type'] == 'application/x-www-form-urlencoded') {
@@ -757,18 +754,18 @@ Future main(final context) async {
             'content': formData['content']
         };
 
+        // Set project and set API key
         final client = Client()
-            .setEndpoint('https://cloud.appwrite.io/v1')
-            .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
-            .setKey(Platform.environment['APPWRITE_API_KEY']);
+          .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
+          .setKey(context.req.headers['x-appwrite-key']);
 
         final databases = Database(client);
         final document = await databases.createDocument('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message);
 
-        return context.res.send("Message sent");
+        return context.res.text("Message sent");
     }
 
-    return context.res.send('Not found', 404);
+    return context.res.text('Not found', 404);
 }
 ```
 
