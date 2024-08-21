@@ -30,7 +30,7 @@ We had a few iterations of the event logo before settling on our final version. 
 
 ![Sara's pass](/images/blog/designing-init/saras-pass.png)
 
-![First browser pass](/images/blog/designing-init/browser-pass-1.png)
+{% video src="/images/blog/designing-init/first-browser-pass.mov" /%}
 
 After several days of going back and forth, Jade gave us the version that we would end up going with, designed in Figma, and animated in After Effects.
 
@@ -232,7 +232,7 @@ With this, we get 2 groups of 2 lines, each with a randomized height and animati
 
 ## Expanding the theme: feature illustrations
 
-Of course, the Init lockup was not the only component of design work needed for Init. This is a week-long event jam packed with daily announcements. To make every day of Init feel special, we wanted to create a suite of visual assets that expanded on the event’s theme while serving as great visual support for each announcement.
+Of course, the Init lockup was not the only component of design work needed for Init. This is a week-long event jam packed with daily announcements. To make every day of Init feel special, we wanted to create a series of visual assets that expanded on the event’s theme while serving as great visual support for each announcement.
 
 We worked together with Appwrite engineers to understand how each new feature launched could be illustrated using the dynamic line art concept we developed. This resulted in a set of key illustrations we used across different channels such as campaign announcements on social media, website illustrations, blog covers, and animations.
 
