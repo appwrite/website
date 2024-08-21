@@ -53,7 +53,7 @@ async function main() {
         if (!is_image(file)) continue;
         if (exceptions.some((exception) => relative_path.startsWith(exception))) continue;
 
-        console.log(get_relative_path(relative_path));
+        console.log(relative_path);
 
         const image = sharp(file);
         const size_before = (await image.toBuffer()).length;
@@ -62,7 +62,8 @@ async function main() {
             .resize({
                 width: 1280,
                 height: 1280,
-                fit: sharp.fit.inside
+                fit: sharp.fit.inside,
+                withoutEnlargement: true
             })
             .toBuffer();
         const size_after = buffer.length;
