@@ -34,3 +34,9 @@ With all Appwrite services, including databases and storage, access is granted a
 These permissions are enforced for client SDKs and server SDKs when using JWT, but are ignored when using a server SDK with an API key.
 
 {% partial file="auth-security.md" /%}
+
+# Mock phone numbers {% #mock-phone-numbers %}
+
+Creating and using mock phone numbers allows users to test SMS authentication without needing an actual phone number. This can be useful for testing edge cases where a user doesn't have a phone number but needs to sign in to your application using SMS. 
+
+To create a mock phone number, navigate to **Auth** > **Security** > Mock Phone Numbers. After defining a mock phone number, you need to define a specific OTP code that will be used for SMS sign-in instead of the SMS secret code sent to a real phone number.
