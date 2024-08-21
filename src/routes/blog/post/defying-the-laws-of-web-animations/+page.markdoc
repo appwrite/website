@@ -7,10 +7,7 @@ cover: /images/blog/defying-the-laws-of-web-animations/cover.png
 timeToRead: 10
 author: thomas-g-lopes
 category: website
-call_to_action: 
-  heading: Get started with Appwrite tomorrow
-  label: Get started later
-  url: https://google.com
+callToAction: true
 ---
 
 If you're a frontend developer, you know that one of the scariest tasks you can receive is coding a complex web animation. If you're not a frontend developer, I bet that sounds even harder.
@@ -286,5 +283,3 @@ We've gone over the building blocks of our main animations: Triggering an animat
 I hope this article helped outline the thought process behind this challenge, and also motivates you to delve into our [source code](https://github.com/appwrite/website/) to discover other nifty tricks we did to make our website possible!
 
 Happy hacking!
-
-{% call_to_action /%}
