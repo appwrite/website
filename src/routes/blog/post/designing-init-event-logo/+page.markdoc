@@ -12,7 +12,7 @@ featured: false
 
 After the success of our first Init event in Spring of 2024, we knew there would be more coming soon, and that, visually, we had set ourselves a high bar. Even though Init is a fully online, virtual event, Appwrite’s visual design team created something tangible and interactive with the fully customizable, and shareable Init event tickets. In early July, knowing that our next event was just around the corner, we gathered again and began to brainstorm the visual design style that we wanted to bring to Init 2.0.
 
-## The Design Process
+# The Design Process
 
 As a team, we always begin these design sprints with an empty FigJam board, where we can add notes, add screenshots that might give us inspiration, and have discussions about the things we like and dislike. Since this was our second time ideating for Init, we were able to apply many learnings from previous processes, which made this (and subsequent phases) feel more streamlined.
 
@@ -24,7 +24,7 @@ With the new feature set in mind, we needed to make sure that every piece of the
 
 Once the team agreed on our visual style, we began to iterate on concepts.
 
-## Concepts
+# Concepts
 
 We had a few iterations of the event logo before settling on our final version. In situations like this, there can be a lot of value in iterating in code; it’s easy to preview, you can start to get a feel for the real world implementation, and once the team finds something that works the job is halfway done.
 
@@ -42,7 +42,7 @@ We all agreed this was the right direction- it felt snappy and performant, but w
 
 What we ended up shipping was much simpler, and significantly more performant, relying entirely on CSS.
 
-## Animating the Event Logo
+# Animating the Event Logo
 
 > At Appwrite, we build our marketing site in SvelteKit, but these principles will easily translate into any component based framework.
 
@@ -230,7 +230,7 @@ The background lines were much simpler.
 
 With this, we get 2 groups of 2 lines, each with a randomized height and animation delay, creating a subtle, dynamic backdrop for our lockup.
 
-## Expanding the theme: feature illustrations
+# Expanding the theme: feature illustrations
 
 Of course, the Init lockup was not the only component of design work needed for Init. This is a week-long event jam packed with daily announcements. To make every day of Init feel special, we wanted to create a series of visual assets that expanded on the event’s theme while serving as great visual support for each announcement.
 
@@ -244,7 +244,7 @@ We worked together with Appwrite engineers to understand how each new feature la
 
 This helped expand the concept we began developing with the Init lockup and made the whole event’s identity feel more expressive, diverse, and complete.
 
-## Conclusion
+# Conclusion
 
 As a design team, our goal is to do work that sets a standard of excellence for not only ourselves, but also the industry as a whole. Here, we set out to build something that was visually appealing,  pushed the quality up another level from 1.0, was performant, and fit the themes of our event. Through a lot of hard work, learning, and iteration, we feel as though we managed to do all three. We’re constantly evolving, and will build on what we learned here to make our next events, and every other surface even better. Keep an eye out, and thanks for joining Init 2.0!
 
