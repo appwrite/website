@@ -21,6 +21,13 @@ const config = {
     png: { compressionLevel: 9, quality: 80 },
     gif: { quality: 80 }
 };
+/** @type {sharp.ResizeOptions} */
+const resize_config = {
+    width: 1280,
+    height: 1280,
+    fit: sharp.fit.inside,
+    withoutEnlargement: true
+};
 
 function* walk_directory(dir) {
     const files = readdirSync(dir);
@@ -59,12 +66,7 @@ async function main() {
         const size_before = (await image.toBuffer()).length;
         const meta = await image.metadata();
         const buffer = await image[meta.format](config[meta.format])
-            .resize({
-                width: 1280,
-                height: 1280,
-                fit: sharp.fit.inside,
-                withoutEnlargement: true
-            })
+            .resize(resize_config)
             .toBuffer();
         const size_after = buffer.length;
         if (size_after >= size_before) continue;
