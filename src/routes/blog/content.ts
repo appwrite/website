@@ -26,6 +26,11 @@ export type PostsData = {
     category: string;
     href: string;
     featured?: boolean;
+    callToAction: {
+        heading?: string;
+        label?: string;
+        url?: string;
+    };
 };
 
 const postsGlob = import.meta.glob('./post/**/*.markdoc', {
