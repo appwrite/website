@@ -23,7 +23,7 @@
     export let back: string | undefined = undefined;
     export let date: string | undefined = undefined;
 
-    $: isQuickStartArticle = $page.url.href.includes('/docs/quick-starts/');
+    $: isQuickStartArticle = $page.route.id?.includes('/docs/quick-starts/');
 </script>
 
 <main class="u-contents" id="main">
