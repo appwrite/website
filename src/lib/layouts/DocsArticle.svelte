@@ -16,11 +16,14 @@
     import { scrollToTop } from '$lib/actions/scrollToTop';
 
     import { Feedback } from '$lib/components';
+    import { page } from '$app/stores';
 
     export let title: string;
     export let toc: Array<TocItem>;
     export let back: string | undefined = undefined;
     export let date: string | undefined = undefined;
+
+    $: isQuickStartArticle = $page.url.href.includes('/docs/quick-starts/');
 </script>
 
 <main class="u-contents" id="main">
@@ -59,7 +62,10 @@
             </div>
             <div class="web-article-header-end" />
         </header>
-        <div class="web-article-content">
+        <div
+            class="web-article-content"
+            class:quick-start-article-padding={isQuickStartArticle}
+        >
             <slot />
             <Feedback {date} />
         </div>
@@ -121,7 +127,7 @@
 
 <style>
     @media (min-width: 1280px) and (max-width: 1330px) {
-        .web-article-content {
+        .quick-start-article-padding {
             /* original/default is 41.5rem */
             max-inline-size: 40.5rem !important;
         }
