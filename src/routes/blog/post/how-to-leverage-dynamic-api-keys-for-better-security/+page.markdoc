@@ -9,7 +9,7 @@ author: ebenezer-don
 category: product
 featured: false
 ---
-Appwrite now features dynamic keys, significantly improving how you manage API keys within your projects. These keys are designed to enhance security and facilitate easier local development and environment setup. As part of the Appwrite Functions ecosystem, they reduce the need for manual key management and rotation, making your applications (and functions!) easier to maintain. 
+Appwrite now features dynamic keys, significantly improving how you manage API keys within your projects. These keys are designed to enhance security and facilitate easier local development and environment setup. As part of the Appwrite Functions ecosystem, they reduce the need for manual key management and rotation, making your applications (and functions!) easier to maintain.
 
 This guide will walk you through understanding, setting up, and effectively using dynamic API keys in your projects.
 
@@ -53,14 +53,15 @@ Dynamic API keys offer several advantages:
 
 ## Step-by-step guide
 
-1. **Initial setup:** To begin, create and configure your function in the [Appwrite console](https://appwrite.io/docs/tooling/command-line/functions) or locally using the [Appwrite CLI](https://appwrite.io/docs/products/functions/develop-locally).
-2. **Configuring scopes:** Scopes control the permissions of the dynamic API key. You can define the necessary scopes for your function in the Appwrite console. This ensures that the function only has access to the required resources.
-    
-    To define scopes in the Appwrite console, navigate to your function's settings and scroll down to the "Scopes" section. Here, you can select the required scopes for your function.
-    
-    ![Dynamic-keys-Appwrite](/images/blog/how-to-leverage-dynamic-api-keys-for-better-security/1.png)
-    
-3. **Writing the function code:**  In the old approach, the API endpoint and API key were typically hardcoded within the function. You would manually specify the endpoint URL and use a static API key stored in environment variables like this:
+**1. Initial setup:** To begin, create and configure your function in the [Appwrite console](https://appwrite.io/docs/tooling/command-line/functions) or locally using the [Appwrite CLI](https://appwrite.io/docs/products/functions/develop-locally).
+
+**2. Configuring scopes:** Scopes control the permissions of the dynamic API key. You can define the necessary scopes for your function in the Appwrite console. This ensures that the function only has access to the required resources.
+
+To define scopes in the Appwrite console, navigate to your function's settings and scroll down to the "Scopes" section. Here, you can select the required scopes for your function.
+
+![Dynamic-keys-Appwrite](/images/blog/how-to-leverage-dynamic-api-keys-for-better-security/1.png)
+
+**3. Writing the function code:**  In the old approach, the API endpoint and API key were typically hardcoded within the function. You would manually specify the endpoint URL and use a static API key stored in environment variables like this:
 
 ```jsx
 const client = new Client()
@@ -80,7 +81,7 @@ const client = new Client()
 
 In the above example, the environment variable `APPWRITE_FUNCTION_API_ENDPOINT` is used for the endpoint, and the API key is obtained from `req.headers['x-appwrite-key']`.
 
-4. **Deploying and testing the function:** [Deploy your function](https://appwrite.io/docs/products/functions/functions) through the Appwrite console or the Appwrite CLI. Test the function by calling its endpoint and verifying that it performs the intended operations, such as creating a new document in the database.
+**4. Deploying and testing the function:** [Deploy your function](https://appwrite.io/docs/products/functions/functions) through the Appwrite console or the Appwrite CLI. Test the function by calling its endpoint and verifying that it performs the intended operations, such as creating a new document in the database.
 
 ## Using dynamic API keys in local functions
 
