@@ -17,9 +17,9 @@ This guide will walk you through understanding, setting up, and effectively usin
 
 With Appwrite 1.6 comes two important variables:
 
-## process.env.APPWRITE_FUNCTION_API_ENDPOINT:
+## APPWRITE_FUNCTION_API _ENDPOINT:
 
-Appwrite now automatically provides this variable during function execution, ensuring your function always uses the correct API endpoint. This eliminates the need to manually set the endpoint in your function code or environment variables.
+Appwrite now automatically provides the API endpoint as an environment variable during function execution, ensuring your function always uses the correct API endpoint. This eliminates the need to manually set the endpoint in your function code or environment variables.
 
 Along with the existing `APPWRITE_FUNCTION_PROJECT_ID` variable, this setup eliminates the need to manually set the endpoint and project ID in your function code or environment variables, making the integration seamless.
 
