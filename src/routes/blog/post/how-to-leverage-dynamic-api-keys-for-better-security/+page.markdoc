@@ -3,7 +3,7 @@ layout: post
 title: "How to leverage Appwrite Dynamic Keys for enhanced security"
 description: Learn how to use dynamic API keys to protect your projects.
 date: 2024-08-21
-cover: /images/blog/appwrite-dynamic-keys/cover.png
+cover: /images/blog/how-to-leverage-dynamic-api-keys-for-better-security/cover.png
 timeToRead: 5
 author: ebenezer-don
 category: product
@@ -58,7 +58,7 @@ Dynamic API keys offer several advantages:
     
     To define scopes in the Appwrite console, navigate to your function's settings and scroll down to the "Scopes" section. Here, you can select the required scopes for your function.
     
-    ![Dynamic-keys-Appwrite](/images/blog/appwrite-dynamic-keys/1.png)
+    ![Dynamic-keys-Appwrite](/images/blog/how-to-leverage-dynamic-api-keys-for-better-security/1.png)
     
 3. **Writing the function code:**  In the old approach, the API endpoint and API key were typically hardcoded within the function. You would manually specify the endpoint URL and use a static API key stored in environment variables like this:
 
