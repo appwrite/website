@@ -17,7 +17,7 @@ This guide will walk you through understanding, setting up, and effectively usin
 
 With Appwrite 1.6 comes two important variables:
 
-## APPWRITE_FUNCTION_API _ENDPOINT:
+## APPWRITE_FUNCTION_API_ENDPOINT:
 
 Appwrite now automatically provides the API endpoint as an environment variable during function execution, ensuring your function always uses the correct API endpoint. This eliminates the need to manually set the endpoint in your function code or environment variables.
 
