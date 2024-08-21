@@ -146,10 +146,10 @@ This will create your `appwrite.json` file, where you will configure your variou
 }
 ```
 
-You can run your first CLI command after logging in. Try fetching information about your Appwrite project.
+You can run your first CLI command after logging in. Try fetching your users from your project.
 
 ```sh
-appwrite projects get --project-id "<PROJECT_ID>"
+appwrite users list
 ```
 
 {% info title="Self-signed certificates" %}
