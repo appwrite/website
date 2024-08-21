@@ -56,7 +56,6 @@
     </div>
 </div>
 
-<a href="/broken-link">broken link</a>
 
 <div
     class="u-position-absolute web-is-only-desktop"
