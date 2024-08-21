@@ -477,9 +477,6 @@ Explore the request object with the following function, which logs all request p
 * Request
 * Description
 ---
-* `req.bodyRaw`
-* Returns the raw body text data.
----
 * `req.bodyText`
 * Returns text that has been converted from binary data.
 ---
@@ -494,8 +491,8 @@ Explore the request object with the following function, which logs all request p
 {% multicode %}
 ```js
 export default async ({ req, res, log }) => {
-    log(req.bodyJson);                    // Raw request body, contains request data
-    log(JSON.stringify(req.bodyJson));    // Object from parsed JSON request body, otherwise string
+    log(req.bodyText);                    // Raw request body, contains request data
+    log(req.bodyJson);                    // Object from parsed JSON request body, otherwise string
     log(JSON.stringify(req.headers));     // String key-value pairs of all request headers, keys are lowercase
     log(req.scheme);                      // Value of the x-forwarded-proto header, usually http or https
     log(req.method);                      // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
@@ -512,7 +509,6 @@ export default async ({ req, res, log }) => {
 ```php
 <?php
 return function ($context) {
-    $context->log($context->req->bodyRaw);              // Raw request body, contains request data
     $context->log(json_encode($context->req->body));    // Object from parsed JSON request body, otherwise string
     $context->log(json_encode($context->req->headers)); // String key-value pairs of all request headers, keys are lowercase
     $context->log($context->req->scheme);               // Value of the x-forwarded-proto header, usually http or https
@@ -629,7 +625,6 @@ using System.Text.Json;
 public class Handler {
     public async Task<RuntimeOutput> Main(RuntimeContext Context) 
     {
-        Context.Log(Context.Req.BodyRaw);                                                // Raw request body, contains request data
         Context.Log(JsonSerializer.Serialize<object>(Context.Req.Body));                 // Object from parsed JSON request body, otherwise string
         Context.Log(JsonSerializer.Serialize<object>(Context.Req.Headers));              // String key-value pairs of all request headers, keys are lowercase
         Context.Log(Context.Req.Scheme);                                                 // Value of the x-forwarded-proto header, usually http or https
@@ -683,7 +678,6 @@ public class Main {
     public RuntimeOutput main(RuntimeContext context) {
         Gson gson = new Gson();
 
-        context.log(context.getReq().getBodyRaw());                // Raw request body, contains request data
         context.log(gson.toString(context.getReq().getBody()));    // Object from parsed JSON request body, otherwise string
         context.log(gson.toString(context.getReq().getHeaders())); // String key-value pairs of all request headers, keys are lowercase
         context.log(context.getReq().getScheme());                 // Value of the x-forwarded-proto header, usually http or https
@@ -991,7 +985,7 @@ To get the different response types, set one of the following query parameters i
 
 ## Logging {% #logging %}
 To protect user privacy, the request and response objects are not logged to the Appwrite Console by default. 
-This means, to see logs or debug function executions you need to use the `log()` and `error()` methods. 
+This means, to see logs or debug function executions you need to use the `log()` and `error()` methods.
 These logs are only visible to developers with access to the Appwrite Console.
 
 Here's an example of using logs and errors.
@@ -1144,6 +1138,10 @@ If you need to pass constants or secrets to Appwrite Functions, you can use envi
 
 | Variable                          | Description                                    |
 |-----------------------------------|------------------------------------------------|
+| `APPWRITE_FUNCTION_API_ENDPOINT`    |  The API endpoint of the running function      |
+| `APPWRITE_VERSION`                  |  The Appwrite version used to run the function |
+| `APPWRITE_REGION`                   |  The region where the function will run from   |
+| `APPWRITE_FUNCTION_API_KEY`         |  The function API key is used for server authentication |
 | `APPWRITE_FUNCTION_ID`              |  The ID of the running function.               |
 | `APPWRITE_FUNCTION_NAME`            |  The Name of the running function.             |
 | `APPWRITE_FUNCTION_DEPLOYMENT`      |  The deployment ID of the running function.    |
