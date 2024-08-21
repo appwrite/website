@@ -26,7 +26,7 @@ appwrite login --email "<EMAIL>" --password "<PASSWORD>" --mfa totp
 In non-interactive mode, the CLI uses an API key to authenticate. Your API key must have sufficient permissions to execute the commands you plan to use. [Learn more about API Keys](/docs/advanced/platform/api-keys).
 
 {% info title="Using API keys with CLI" %}
-Some CLI commands won't work with an API key, like the `projects` commands
+Some CLI commands won't work with an API key, like the `projects` commands.
 {% /info %}
 
 # Deployment {% #deployment %}
