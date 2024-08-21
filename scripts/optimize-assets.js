@@ -12,7 +12,8 @@ const exceptions = ['assets/'];
  *     jpeg: sharp.JpegOptions,
  *     webp: sharp.WebpOptions,
  *     png: sharp.PngOptions,
- *     gif: sharp.GifOptions
+ *     gif: sharp.GifOptions,
+ *     avif: sharp.AvifOptions
  * }}
  */
 const config = {
@@ -23,13 +24,16 @@ const config = {
         lossless: true
     },
     png: {
-        quality: 100,
-        compressionLevel: 9
+        quality: 100
     },
     gif: {
         quality: 100
+    },
+    avif: {
+        lossless: true
     }
 };
+
 /** @type {sharp.ResizeOptions} */
 const resize_config = {
     width: 1280,
@@ -65,12 +69,13 @@ function get_relative_path(file) {
 async function main() {
     for (const file of walk_directory(join(__dirname, '../static'))) {
         const relative_path = get_relative_path(file);
+        const is_animated = file.endsWith('.gif');
         if (!is_image(file)) continue;
         if (exceptions.some((exception) => relative_path.startsWith(exception))) continue;
 
-        console.log(relative_path);
-
-        const image = sharp(file);
+        const image = sharp(file, {
+            animated: is_animated
+        });
         const size_before = (await image.toBuffer()).length;
         const meta = await image.metadata();
         const buffer = await image[meta.format](config[meta.format])
@@ -78,8 +83,9 @@ async function main() {
             .toBuffer();
         const size_after = buffer.length;
 
-        // check for 5% reduction in size
-        if (size_after >= size_before * 0.95) continue;
+        if (size_after >= size_before) continue;
+
+        console.log(relative_path);
 
         await sharp(buffer).toFile(file);
     }
