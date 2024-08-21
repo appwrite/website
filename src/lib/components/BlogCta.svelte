@@ -16,10 +16,28 @@
         border-top: 1px solid hsl(var(--web-color-subtle));
         padding: 48px 0;
         min-height: 180px;
+        margin-top: 48px;
         display: flex;
+        margin-bottom: -24px;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            height: 170%;
+            z-index: -1;
+            background-image: radial-gradient(
+                ellipse at center,
+                rgba(253, 54, 110, 0.09),
+                transparent 85%
+            );
+            //filter: blur(10px);
+        }
 
         .details {
             gap: 20px;

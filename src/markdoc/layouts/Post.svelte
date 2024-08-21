@@ -11,6 +11,7 @@
     import { type SocialShareOption, socialSharingOptions } from '$lib/constants';
     import { copy } from '$lib/utils/copy';
     import { page } from '$app/stores';
+    import CTA from '$lib/components/BlogCta.svelte';
 
     export let title: string;
     export let description: string;
@@ -19,11 +20,13 @@
     export let timeToRead: string;
     export let cover: string;
     export let category: string;
-    export let call_to_action: {
-        label: string;
-        url: string;
-        heading: string;
-    };
+    export let callToAction:
+        | {
+              label: string;
+              url: string;
+              heading: string;
+          }
+        | boolean;
 
     const authors = getContext<AuthorData[]>('authors');
     const authorData = authors.find((a) => a.slug === author);
@@ -66,8 +69,6 @@
 
         return shareableLink;
     }
-
-    console.log(call_to_action);
 </script>
 
 <svelte:head>
@@ -255,6 +256,7 @@
                                 <slot />
                             </div>
                         </article>
+
                         <!-- {#if categories?.length}
 							<div class="u-flex u-gap-16">
 								{#each categories as cat}
@@ -263,6 +265,11 @@
 							</div>
 						{/if} -->
                     </div>
+                    {#if typeof callToAction === 'boolean'}
+                        <CTA />
+                    {:else if typeof callToAction === 'object'}
+                        <CTA {...callToAction} />
+                    {/if}
                 </div>
             </div>
         </div>
