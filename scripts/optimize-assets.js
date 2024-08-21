@@ -16,10 +16,19 @@ const exceptions = ['assets/'];
  * }}
  */
 const config = {
-    jpeg: { quality: 80 },
-    webp: { quality: 80 },
-    png: { compressionLevel: 9, quality: 80 },
-    gif: { quality: 80 }
+    jpeg: {
+        quality: 100
+    },
+    webp: {
+        lossless: true
+    },
+    png: {
+        quality: 100,
+        compressionLevel: 9
+    },
+    gif: {
+        quality: 100
+    }
 };
 /** @type {sharp.ResizeOptions} */
 const resize_config = {
@@ -44,10 +53,9 @@ function* walk_directory(dir) {
 }
 
 function is_image(file) {
-    const image_extensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
     const extension = file.split('.').pop().toLowerCase();
 
-    return image_extensions.includes(extension);
+    return Object.keys(config).includes(extension);
 }
 
 function get_relative_path(file) {
@@ -69,7 +77,9 @@ async function main() {
             .resize(resize_config)
             .toBuffer();
         const size_after = buffer.length;
-        if (size_after >= size_before) continue;
+
+        // check for 5% reduction in size
+        if (size_after >= size_before * 0.95) continue;
 
         await sharp(buffer).toFile(file);
     }

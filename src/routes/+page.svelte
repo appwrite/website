@@ -7,11 +7,11 @@
     import { Main } from '$lib/layouts';
     import { isMobileNavOpen } from '$lib/layouts/Main.svelte';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-    import { slide } from 'svelte/transition';
     import FooterNav from '../lib/components/FooterNav.svelte';
     import MainFooter from '../lib/components/MainFooter.svelte';
     import DeveloperCard from './DeveloperCard.svelte';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import CoverImage from './dashboard.png';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -122,7 +122,7 @@
                     <div class="web-media-container">
                         <img
                             class="u-block"
-                            src="/images/pages/homepage/dashboard.png"
+                            src={CoverImage}
                             alt="console dashboard"
                             style:aspect-ratio="1244 / 717"
                         />
