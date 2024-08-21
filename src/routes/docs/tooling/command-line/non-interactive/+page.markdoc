@@ -16,9 +16,11 @@ When you set the global configuration parameters using the `appwrite client` com
 
 In this mode, the CLI can only interact with one project at a time.
 
-## Placeholder Title {% #placholder-title %}
-
 To run tests or project-per-branch previews, you will need Console SDK capabilities. To accomplish this, log in using the `appwrite login` and pass in your email, password, and OTP settings as parameters.
+
+```sh
+appwrite login --email "<EMAIL>" --password "<PASSWORD>" --mfa totp  
+```
 
 # API Keys {% #api-keys %}
 In non-interactive mode, the CLI uses an API key to authenticate. Your API key must have sufficient permissions to execute the commands you plan to use. [Learn more about API Keys](/docs/advanced/platform/api-keys).
