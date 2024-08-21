@@ -6,6 +6,9 @@
 </script>
 
 <div class="web-media">
-    <!-- svelte-ignore a11y-media-has-caption -->
-    <Video {thumbnail} {src} />
+    <Video
+        {thumbnail}
+        src={src}
+        --p-aspect-ratio="16/9"
+    />
 </div>
