@@ -8,7 +8,7 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const config = {
     jpeg: { quality: 80 },
     webp: { quality: 80 },
-    png: { compressionLevel: 8 },
+    png: { compressionLevel: 9 },
     gif: { quality: 80 }
 };
 
@@ -39,8 +39,12 @@ async function main() {
         console.log(file);
 
         const image = sharp(file);
+        const size_before = (await image.toBuffer()).length;
         const meta = await image.metadata();
         const buffer = await image[meta.format](config[meta.format]).toBuffer();
+        const size_after = buffer.length;
+        if (size_after >= size_before) continue;
+
         await sharp(buffer).toFile(file);
     }
 }
