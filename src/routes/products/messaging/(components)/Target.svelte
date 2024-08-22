@@ -383,10 +383,10 @@
   <div
     class="u-margin-block-start-16 target-text flex flex-col items-center gap-6"
   >
-    <h3 class="web-title web-u-color-text-primary u-text-center">
+    <h3 class="web-title web-u-color-text-primary text-center">
       Target and group your subscribers
     </h3>
-    <p class="web-description u-text-center" style:max-inline-size="580px">
+    <p class="web-description text-center" style:max-inline-size="580px">
       Segment your users based on topics using list subscriptions to send
       focused messages.
     </p>

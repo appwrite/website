@@ -80,7 +80,7 @@ In the project directory, visit `static/index.html` and replace the existing cod
       <div class="top-cover u-padding-block-end-56">
         <div class="container">
           <div
-            class="flex gap-4 u-flex-justify-center u-margin-block-start-16"
+            class="flex gap-4 justify-center u-margin-block-start-16"
           >
             <h1 class="heading-level-1">Valentine's Day Sonnet Generator ❤️</h1>
             <code class="u-un-break-text"></code>
