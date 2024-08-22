@@ -206,6 +206,54 @@ export default ({ req, res, log, error }: any) => {
   });
 };
 ```
+```go
+package handler
+
+import (
+	"fmt"
+	"os"
+
+	"github.com/appwrite/sdk-for-go/appwrite"
+	"github.com/open-runtimes/types-for-go/v4/openruntimes"
+)
+
+type Response struct {
+	Motto       string `json:"motto"`
+	Learn       string `json:"learn"`
+	Connect     string `json:"connect"`
+	GetInspired string `json:"getInspired"`
+}
+
+func Main(Context openruntimes.Context) openruntimes.Response {
+	// This is your Appwrite function
+	// It's executed each time we get a request service
+	var _ = appwrite.NewClient(
+		appwrite.WithProject(os.Getenv("APPWRITE_FUNCTION_PROJECT_ID")),
+		appwrite.WithKey(Context.Req.Headers["x-appwrite-key"]),
+	)
+
+	// You can log messages to the console
+	fmt.Println("Hello, Logs!")
+
+	fmt.Fprintln(os.Stderr, "Error:", "Hello, Errors!")
+
+	// The `Context.Req` object contains the request data
+	if Context.Req.Method == "GET" {
+		// Send a response with the Context.Res object helpers
+		// `Context.Res.Text()` dispatches a string back to the client
+		return Context.Res.Text("Hello, World!")
+	}
+
+	// `res.json()` is a handy helper for sending JSON
+	return Context.Res.Json(
+		Response{
+			Motto:       "Build like a team of hundreds_",
+			Learn:       "https://appwrite.io/docs",
+			Connect:     "https://appwrite.io/discord",
+			GetInspired: "https://builtwith.appwrite.io",
+		})
+}
+```
 ```dart
 import 'dart:async';
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -437,7 +485,7 @@ You'll see us use destructuring in examples, which has the following syntax.
 
 [Learn more about destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment).
 {% multicode %}
-```js
+```server-nodejs
 // before destructuring
 export default async function (context) {
     context.log("This is a log!");
@@ -489,10 +537,10 @@ Explore the request object with the following function, which logs all request p
 {% /table %}
 
 {% multicode %}
-```js
+```server-nodejs
 export default async ({ req, res, log }) => {
     log(req.bodyText);                    // Raw request body, contains request data
-    log(req.bodyJson);                    // Object from parsed JSON request body, otherwise string
+    log(JSON.stringify(req.bodyJson));    // Object from parsed JSON request body, otherwise string
     log(JSON.stringify(req.headers));     // String key-value pairs of all request headers, keys are lowercase
     log(req.scheme);                      // Value of the x-forwarded-proto header, usually http or https
     log(req.method);                      // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
@@ -509,7 +557,7 @@ export default async ({ req, res, log }) => {
 ```php
 <?php
 return function ($context) {
-    $context->log(json_encode($context->req->body));    // Object from parsed JSON request body, otherwise string
+    $context->log(json_encode($context->req->bodyJson));// Object from parsed JSON request body, otherwise string
     $context->log(json_encode($context->req->headers)); // String key-value pairs of all request headers, keys are lowercase
     $context->log($context->req->scheme);               // Value of the x-forwarded-proto header, usually http or https
     $context->log($context->req->method);               // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
@@ -527,7 +575,7 @@ return function ($context) {
 import json
 
 def main(context):
-    context.log(context.req.body_raw)              # Raw request body, contains request data
+    context.log(context.req.bodyText)              # Raw request body, contains request data
     context.log(json.dumps(context.req.bodyJson))  # Object from parsed JSON request body, otherwise string
     context.log(json.dumps(context.req.headers))   # String key-value pairs of all request headers, keys are lowercase
     context.log(context.req.scheme)                # Value of the x-forwarded-proto header, usually http or https
@@ -545,7 +593,7 @@ def main(context):
 require 'json'
                 
 def main(context)
-    context.log(context.req.bodyJson)                 #  Raw request body, contains request data
+    context.log(context.req.bodyText)                 #  Raw request body, contains request data
     context.log(JSON.generate(context.req.bodyJson))  # Object from parsed JSON request body, otherwise string
     context.log(JSON.generate(context.req.headers))   # String key-value pairs of all request headers, keys are lowercase
     context.log(context.req.scheme)                   # Value of the x-forwarded-proto header, usually http or https
@@ -562,7 +610,7 @@ end
 ```
 ```deno
 export default async ({ req, res, log }: any) => {
-    log(req.bodyJson);                  // Raw request body, contains request data
+    log(req.bodyText);                  // Raw request body, contains request data
     log(JSON.stringify(req.bodyJson));  // Object from parsed JSON request body, otherwise string
     log(JSON.stringify(req.headers));   // String key-value pairs of all request headers, keys are lowercase
     log(req.scheme);                    // Value of the x-forwarded-proto header, usually http or https
@@ -577,12 +625,37 @@ export default async ({ req, res, log }: any) => {
     return res.text("All the request parameters are logged to the Appwrite Console.");
 }
 ```
+```go
+package handler
+
+import (
+	"encoding/json"
+
+	"github.com/open-runtimes/types-for-go/v4/openruntimes"
+)
+
+func Main(Context openruntimes.Context) openruntimes.Response {
+	Context.Log(Context.Req.BodyText)               // Raw request body, contains request data
+	Context.Log(json.Marshal(Context.Req.BodyJson)) // Object from parsed JSON request body, otherwise string
+	Context.Log(json.Marshal(Context.Req.Headers))  // String key-value pairs of all request headers, keys are lowercase
+	Context.Log(Context.Req.Scheme)                 // Value of the x-forwarded-proto header, usually http or https
+	Context.Log(Context.Req.Method)                 // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
+	Context.Log(Context.Req.Url)                    // Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50
+	Context.Log(Context.Req.Host)                   // Hostname from the host header, such as awesome.appwrite.io
+	Context.Log(Context.Req.Port)                   // Port from the host header, for example 8000
+	Context.Log(Context.Req.Path)                   // Path part of URL, for example /v1/hooks
+	Context.Log(Context.Req.QueryString)            // Raw query params string. For example "limit=12&offset=50"
+	Context.Log(json.Marshal(Context.Req.Query))    // Parsed query params. For example, req.query.limit
+
+	return Context.Res.Text("All the request parameters are logged to the Appwrite Console.")
+}
+```
 ```dart
 import 'dart:async';
 import 'dart:convert';
 
 Future<dynamic> main(final context) async {
-    context.log(context.req.bodyJson);               // Raw request body, contains request data
+    context.log(context.req.bodyText);               // Raw request body, contains request data
     context.log(json.encode(context.req.bodyJson));  // Object from parsed JSON request body, otherwise string
     context.log(json.encode(context.req.headers));   // String key-value pairs of all request headers, keys are lowercase
     context.log(context.req.scheme);                 // Value of the x-forwarded-proto header, usually http or https
@@ -625,7 +698,7 @@ using System.Text.Json;
 public class Handler {
     public async Task<RuntimeOutput> Main(RuntimeContext Context) 
     {
-        Context.Log(JsonSerializer.Serialize<object>(Context.Req.Body));                 // Object from parsed JSON request body, otherwise string
+        Context.Log(JsonSerializer.Serialize<object>(Context.Req.BodyJson));             // Object from parsed JSON request body, otherwise string
         Context.Log(JsonSerializer.Serialize<object>(Context.Req.Headers));              // String key-value pairs of all request headers, keys are lowercase
         Context.Log(Context.Req.Scheme);                                                 // Value of the x-forwarded-proto header, usually http or https
         Context.Log(Context.Req.Method);                                                 // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
@@ -739,7 +812,7 @@ There are several possible ways to send a response, explore them in the followin
 {% /table %}
 
 {% multicode %}
-```js
+```server-nodejs
 export default async ({ req, res, log }) => {
 
     switch (req.query.type) {
@@ -832,6 +905,28 @@ export default async ({ req, res, log }) => {
         default:
             return res.text("This is a text response");
     }
+}
+```
+```go
+package handler
+
+import (
+	"github.com/open-runtimes/types-for-go/v4/openruntimes"
+)
+
+func Main(Context openruntimes.Context) openruntimes.Response {
+	switch Context.Req.Query["type"] {
+	case "empty":
+		return Context.Res.Empty()
+	case "json":
+		return Context.Res.Json(map[string]string{"type": "This is a JSON response"})
+	case "redirect":
+		return Context.Res.Redirect("https://appwrite.io")
+	case "html":
+		return Context.Res.Text("<h1>This is an HTML response</h1>")
+	default:
+		return Context.Res.Text("This is a text response")
+	}
 }
 ```
 ```dart
@@ -991,7 +1086,7 @@ These logs are only visible to developers with access to the Appwrite Console.
 Here's an example of using logs and errors.
 
 {% multicode %}
-```js
+```server-nodejs
 export default async ({ req, res, log, error }) => {
     log("This is a log, use for logging information to console");
     log(`This function was called with ${req.method} method`);
@@ -1156,7 +1251,7 @@ Learn to add variables to you function
 You can access the environment variables through the systems library of each language.
 
 {% multicode %}
-```js
+```server-nodejs
 export default async ({ req, res, log }) => {
     return res.text(process.env.MY_VAR);
 }
@@ -1502,6 +1597,42 @@ export default function ({req, res, error}: any){
     return res.text("Document created");
 }
 ```
+```go
+package handler
+
+import (
+	"os"
+    "fmt"
+
+	"github.com/appwrite/sdk-for-go/appwrite"
+	"github.com/appwrite/sdk-for-go/id"
+	"github.com/open-runtimes/types-for-go/v4/openruntimes"
+)
+
+func Main(Context openruntimes.Context) openruntimes.Response {
+    // Set project and set API key
+	client := appwrite.NewClient(
+		appwrite.WithProject(os.Getenv("APPWRITE_FUNCTION_PROJECT_ID")),
+		appwrite.WithKey(Context.Req.Headers["x-appwrite-key"]),
+	)
+
+	databases := appwrite.NewDatabases(client)
+
+	_, err := databases.CreateDocument(
+        "<DATABASE_ID>",
+		"<COLLECTION_ID>",
+		id.Unique(),
+		map[string]interface{}{},
+	)
+
+    if err != nil {
+        Context.Log(fmt.Sprintf("Failed to create document: %v", err))
+        return Context.Res.Text("Failed to create document")
+    }
+
+	return Context.Res.Text("Document created")
+}
+```
 ```dart
 import 'dart:io';
 import 'dart:async';
@@ -1828,6 +1959,47 @@ export default function ({req, res, error}: any){
     return res.text("Document created");
 }
 ```
+```go
+package handler
+
+import (
+	"fmt"
+	"log"
+
+	"github.com/appwrite/sdk-for-go/appwrite"
+	"github.com/appwrite/sdk-for-go/id"
+	"github.com/open-runtimes/types-for-go/v4/openruntimes"
+)
+
+func Main(Context openruntimes.Context) openruntimes.Response {
+	client := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"),
+	)
+
+	jwt, exists := Context.Req.Headers["x-appwrite-user-jwt"]
+	if !exists || len(jwt) == 0 {
+		appwrite.WithJWT(Context.Req.Headers["x-appwrite-user-jwt"])
+	} else {
+		return Context.Res.Text("Please sign in, JWT not found")
+	}
+
+	databases := appwrite.NewDatabases(client)
+
+	_, err := databases.CreateDocument(
+		"<DATABASE_ID>",
+		"<COLLECTION_ID>",
+		id.Unique(),
+		map[string]interface{}{},
+	)
+
+	if err != nil {
+        Context.Log(fmt.Sprintf("Failed to create document: %v", err))
+		return Context.Res.Text(str)
+	}
+
+	return Context.Res.Text("Document created")
+}
+```
 ```dart
 import 'dart:io';
 import 'dart:async';
@@ -2015,13 +2187,13 @@ As your functions grow, you may find yourself needing to split your code into mu
 
 {% tabs %}
 {% tabsitem #nodejs title="Node.js" %}
-```js
+```server-nodejs
 // src/utils.js
 export function add(a, b) {
     return a + b;
 }
 ```
-```js
+```server-nodejs
 // src/main.js
 import { add } from './utils.js';
 
@@ -2095,6 +2267,45 @@ import { add } from './utils.ts';
 
 export default function ({res}: {res: any}) {
     return res.text(add(1, 2));
+}
+```
+{% /tabsitem %}
+
+{% tabsitem #go title="Go" %}
+```go
+// src/utils/go.mod
+module example.com/utils
+
+go 1.23.0
+```
+```go
+// src/utils/utils.go
+package utils
+
+func Add(a int, b int) int {
+	return a + b
+}
+```
+```go
+// src/main/go.mod
+module example.com/main
+
+go 1.23.0
+
+replace example.com/utils => ../utils // Run go mod edit -replace example.com/go=../go
+
+require example.com/utils v0.0.0-00010101000000-000000000000 // Run go mod tidy
+```
+```go
+// src/main/main.go
+package main
+
+import "example.com/utils"
+
+func main() {
+	// Get a greeting message and print it.
+	message := utils.Add(5, 4)
+	print(message)
 }
 ```
 {% /tabsitem %}
