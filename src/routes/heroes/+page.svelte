@@ -198,7 +198,7 @@
                   style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
                 >
                   <img
-                    class="u-block web-u-border-radius-12"
+                    class="blockweb-u-border-radius-12"
                     src="/images/heroes/photos/{i + 1}.png"
                     loading="lazy"
                     alt=""

@@ -174,7 +174,7 @@
 
 <Main>
   <img
-    class="u-block u-inset-inline-end-0 u-inset-block-start-0 u-margin-inline-auto u-inset-0 absolute"
+    class="blocku-inset-inline-end-0 u-inset-block-start-0 u-inset-0 absolute mx-auto"
     src={BackgroundHero}
     alt=""
   />
@@ -200,16 +200,13 @@
               Build your startup with Appwrite
             </h1>
             <p
-              class="web-description web-u-max-width-640 u-margin-inline-auto e-u-padding-inline-32-desktop"
+              class="web-description web-u-max-width-640 e-u-padding-inline-32-desktop mx-auto"
             >
               The Appwrite Startups Program supports your startup with a
               complete backend for you to build your products. Eligible startups
               receive Appwrite Cloud Scale for 12 months.
             </p>
-            <button
-              on:click={scrollToForm}
-              class="web-button u-margin-inline-auto u-margin-block-start-12"
-            >
+            <button on:click={scrollToForm} class="web-button mt-3 mx-auto">
               Apply now
             </button>
           </div>
@@ -224,7 +221,7 @@
             class="web-u-flex-vertical-mobile web-u-gap-80 e-u-gap-64-mobile flex"
           >
             <li
-              class="u-stretch u-margin-inline-auto flex max-w-[350px] flex-col items-center gap-4"
+              class="u-stretch mx-auto flex max-w-[350px] flex-col items-center gap-4"
             >
               <img
                 src="/images/icons/gradients/backend.svg"
@@ -243,7 +240,7 @@
               </div>
             </li>
             <li
-              class="u-stretch u-margin-inline-auto flex max-w-[350px] flex-col items-center gap-4"
+              class="u-stretch mx-auto flex max-w-[350px] flex-col items-center gap-4"
             >
               <img
                 src="/images/icons/gradients/cloud-credit.svg"
@@ -262,7 +259,7 @@
               </div>
             </li>
             <li
-              class="u-stretch u-margin-inline-auto flex max-w-[350px] flex-col items-center gap-4"
+              class="u-stretch mx-auto flex max-w-[350px] flex-col items-center gap-4"
             >
               <img
                 src="/images/icons/gradients/support.svg"
@@ -396,7 +393,7 @@
                 </div>
                 <div class="web-is-only-mobile">
                   <img
-                    class="u-block u-margin-inline-auto max-w-[450px]"
+                    class="blockmx-auto max-w-[450px]"
                     alt=""
                     src={UsageGraphs}
                   />
@@ -441,7 +438,7 @@
 
                   <div class="web-is-not-desktop relative">
                     <img
-                      class="u-block u-margin-inline-auto max-w-[450px]"
+                      class="blockmx-auto max-w-[450px]"
                       src={SecurityOptions}
                       alt=""
                       style="height:auto;"
@@ -466,7 +463,7 @@
                   style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;"
                 >
                   <div
-                    class="e-u-order-1-mobile e-u-margin-inline-auto-mobile u-width-full-line web-u-max-width-580"
+                    class="e-u-order-1-mobile e-mx-auto-mobile u-width-full-line web-u-max-width-580"
                   >
                     <div
                       class="web-chat web-u-max-width-580 web-u-margin-block-start-40-mobile"
@@ -595,7 +592,7 @@
                     </div>
                   </div>
                   <div
-                    class="u-margin-inline-start-auto web-u-margin-inline-auto-mobile flex flex-col gap-4"
+                    class="u-margin-inline-start-auto web-mx-auto-mobile flex flex-col gap-4"
                   >
                     <h3 class="web-title web-u-color-text-primary">
                       Power of open source community
@@ -635,10 +632,10 @@
       </div>
 
       <div
-        class="web-big-padding-section-level-2 web-u-overflow-hidden e-u-margin-block-start-200-desktop e-u-margin-block-start-128-mobile"
+        class="web-big-padding-section-level-2 web-u-overflow-hidden e-u-margin-block-start-200-desktop e-mt-38-mobile"
       >
         <h4
-          class="web-title web-u-color-text-primary u-margin-inline-auto max-w-[350px] text-center"
+          class="web-title web-u-color-text-primary mx-auto max-w-[350px] text-center"
         >
           Focus on building your product
         </h4>
@@ -753,7 +750,7 @@
                 </div>
                 {#if submitted}
                   <div
-                    class="u-z-index-1 web-u-max-width-380 web-u-max-inline-size-none-mobile u-margin-inline-auto relative flex flex-col gap-2 text-center"
+                    class="u-z-index-1 web-u-max-width-380 web-u-max-inline-size-none-mobile relative mx-auto flex flex-col gap-2 text-center"
                   >
                     <h6
                       class="web-label u-main-center e-mobile-fix-1 flex items-center gap-2"
@@ -773,7 +770,7 @@
                     </p>
                     <button
                       on:click={resetForm}
-                      class="web-button is-secondary is-full-width-mobile u-block u-margin-inline-auto u-margin-block-start-16"
+                      class="web-button is-secondary is-full-width-mobile blocku-margin-block-start-16 mx-auto"
                       >Back to form</button
                     >
                   </div>
@@ -788,7 +785,7 @@
                         class="web-form-list u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile gap-4"
                       >
                         <li class="web-form-item flex flex-col gap-1">
-                          <div class="u-block">Full name</div>
+                          <div class="block">Full name</div>
                           <input
                             required
                             class="web-input-text"
@@ -799,7 +796,7 @@
                           />
                         </li>
                         <li class="web-form-item flex flex-col gap-1">
-                          <div class="u-block">Email address</div>
+                          <div class="block">Email address</div>
                           <input
                             required
                             class="web-input-text"
@@ -810,7 +807,7 @@
                           />
                         </li>
                         <li class="web-form-item flex flex-col gap-1">
-                          <div class="u-block">Company name</div>
+                          <div class="block">Company name</div>
                           <input
                             required
                             class="web-input-text"
@@ -822,7 +819,7 @@
                           />
                         </li>
                         <li class="web-form-item flex flex-col gap-1">
-                          <div class="u-block">Company website</div>
+                          <div class="block">Company website</div>
                           <input
                             required
                             class="web-input-text"
@@ -944,10 +941,10 @@
     .e-u-order-1-mobile {
       order: 1;
     }
-    .e-u-margin-inline-auto-mobile {
+    .e-mx-auto-mobile {
       margin-inline: auto;
     }
-    .e-u-margin-block-start-128-mobile {
+    .e-mt-38-mobile {
       margin-block-start: 8rem;
     }
     .e-bg-left-mobile {

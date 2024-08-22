@@ -163,7 +163,7 @@
                       class="web-form-list is-two-columns u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile gap-4"
                     >
                       <li class="web-form-item flex flex-col gap-1">
-                        <label class="u-block" for="name"
+                        <label class="block" for="name"
                           >Name of representative</label
                         >
                         <input
@@ -176,7 +176,7 @@
                         />
                       </li>
                       <li class="web-form-item flex flex-col gap-1">
-                        <label class="u-block" for="workEmail"
+                        <label class="block" for="workEmail"
                           >Work email address</label
                         >
                         <input
@@ -189,7 +189,7 @@
                         />
                       </li>
                       <li class="web-form-item flex flex-col gap-1">
-                        <label class="u-block" for="companyName"
+                        <label class="block" for="companyName"
                           >Company name</label
                         >
                         <input
@@ -202,7 +202,7 @@
                         />
                       </li>
                       <li class="web-form-item flex flex-col gap-1">
-                        <label class="u-block" for="companySize"
+                        <label class="block" for="companySize"
                           >Company size</label
                         >
 
@@ -230,7 +230,7 @@
                       <li
                         class="web-form-item is-column-span-2 flex flex-col gap-1"
                       >
-                        <label class="u-block" for="companyWebsite"
+                        <label class="block" for="companyWebsite"
                           >Company website</label
                         >
                         <input
@@ -245,7 +245,7 @@
                       <li
                         class="web-form-item is-column-span-2 flex flex-col gap-1"
                       >
-                        <label class="u-block" for="integration"
+                        <label class="block" for="integration"
                           >Have you already created an integration with
                           Appwrite?</label
                         >
@@ -280,7 +280,7 @@
                         <li
                           class="web-form-item is-column-span-2 flex flex-col gap-1"
                         >
-                          <label class="u-block" for="linkToDocumentation"
+                          <label class="block" for="linkToDocumentation"
                             >Link to the integration's documentation</label
                           >
                           <input
@@ -296,7 +296,7 @@
                       <li
                         class="web-form-item is-column-span-2 flex flex-col gap-1"
                       >
-                        <label class="u-block" for="productUrl"
+                        <label class="block" for="productUrl"
                           >Link to the product/company's brand assets</label
                         >
                         <input
@@ -311,7 +311,7 @@
                       <li
                         class="web-form-item is-column-span-2 flex flex-col gap-1"
                       >
-                        <label class="u-block" for="details"
+                        <label class="block" for="details"
                           >Any other details you'd like to share with us?</label
                         >
                         <textarea

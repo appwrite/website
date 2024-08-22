@@ -23,10 +23,7 @@
             more of Appwrite's documentation.
           </p>
         {/if}
-        <a
-          href="/docs"
-          class="web-button is-secondary u-margin-block-start-12 self-center"
-        >
+        <a href="/docs" class="web-button is-secondary mt-3 self-center">
           <span>Back to docs</span>
         </a>
       </div>
