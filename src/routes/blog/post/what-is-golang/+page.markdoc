@@ -29,7 +29,7 @@ The Go programming language offers a few features that make it popular among dev
 
 - **Standard library:** Go comes with a rich standard library that includes everything from web servers to cryptography. This extensive library means you can often avoid third-party dependencies, leading to more secure and maintainable code.
 - **Code package management:** Code package management helps organize and use both your own and external code packages, and it allows you to publish packages with just a few commands.
-- **Static typing:** Static typing ****in Go ensures that data types are correct and compatible, preventing common errors found in dynamically typed languages.
+- **Static typing:** Static typing in Go ensures that data types are correct and compatible, preventing common errors found in dynamically typed languages.
 - **Platform independence:** Go's platform independence means you can compile Go code to run on almost any operating system.
 - **Concurrency model:** Go's concurrency model uses lightweight goroutines, which act like threads, and channels that let these goroutines communicate. The syntax is simple and resembles patterns in dynamic languages, focusing on using interfaces rather than inheritance. This makes it easier to write programs that can handle multiple tasks simultaneously.
 
