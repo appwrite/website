@@ -284,8 +284,5 @@ Hopefully, by this point, you’re excited to start building with Go. Here are a
 
 Ready to get your hands on the new Go runtime and Go SDK? We’ve created a few resources to help you get your first Go project off the ground and leverage Golang’s speed and performance in your apps. Check them out:
 
-- 3 things you can build with Go runtime
-- Why choose Go for your app?
-- Appwrite Go SDK + runtime docs
 - [Join the Appwrite Community on Discord](https://appwrite.io/discord)
 - [More about Init](https://file+.vscode-resource.vscode-cdn.net/Users/ebenezerdon/Documents/ed-repos/ed-technical-articles/appwrite/link_to_init)
