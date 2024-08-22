@@ -35,7 +35,8 @@
                 height="30"
                 frameborder="0"
                 scrolling="no"
-                style="color-scheme: none;margin-top: -4px;"
+                style:color-scheme="none"
+                style:margin-top="-4px"
             />
 
             <ul class="u-flex u-gap-16">
@@ -89,14 +90,14 @@
 {/if}
 
 <style lang="scss">
-    @use '$scss/abstract/variables/devices' as *;
+    @use '$scss/abstract/variables/devices';
     .web-icon-button {
         display: grid;
     }
 
     .e-main-footer {
         display: flex;
-        @media #{$break1} {
+        @media #{devices.$break1} {
             flex-direction: column;
             > * {
                 padding-block: 1rem;
@@ -105,7 +106,7 @@
                 }
             }
         }
-        @media #{$break2open} {
+        @media #{devices.$break2open} {
             display: flex;
             gap: 2rem;
         }
