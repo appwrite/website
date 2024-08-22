@@ -1897,7 +1897,7 @@ export default async ({ req, res, log }) => {
     if (req.headers['x-appwrite-user-jwt']) {
         client.setJWT(req.headers['x-appwrite-user-jwt'])
     } else {
-        return res.text("Please sign in, JWT not found")
+        return res.text("Access denied: This function requires authentication. Please sign in to continue.");
     }
 
     const databases = new Databases(client);
@@ -1934,7 +1934,7 @@ return function ($context) {
     if (isset($context->req->headers['x-appwrite-user-jwt'])) {
         $client->setJWT($context->req->headers['x-appwrite-user-jwt']);
     } else {
-        return $context->res->text("Please sign in, JWT not found");
+        return $context->res->text("Access denied: This function requires authentication. Please sign in to continue.");
     }
     
     $databases = new Databases($client);
@@ -1970,7 +1970,7 @@ def main(context):
     if "x-appwrite-user-jwt" in context.req.headers:
         client.set_jwt(context.req.headers["x-appwrite-user-jwt"])
     else:
-        return context.res.text("Please sign in, JWT not found")
+        return context.res.text("Access denied: This function requires authentication. Please sign in to continue.")
 
     databases = Databases(client)
 
@@ -1999,7 +1999,7 @@ def main(context)
     if context.request.headers['x-appwrite-user-jwt']
         client.set_jwt(context.request.headers['x-appwrite-user-jwt'])
     else
-        return context.response.text("Please sign in, JWT not found")
+        return context.response.text("Access denied: This function requires authentication. Please sign in to continue.")
     end
 
     databases = Appwrite::Databases.new(client)
@@ -2024,7 +2024,7 @@ export default function ({req, res, error}: any){
     if (req.headers["x-appwrite-user-jwt"]) {
         client.setJWT(req.headers["x-appwrite-user-jwt"]);
     } else {
-        return res.text("Please sign in, JWT not found");
+        return res.text("Access denied: This function requires authentication. Please sign in to continue.");
     }
     
     const databases = new Databases(client);
@@ -2065,7 +2065,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 	if !exists || len(jwt) == 0 {
 		appwrite.WithJWT(Context.Req.Headers["x-appwrite-user-jwt"])
 	} else {
-		return Context.Res.Text("Please sign in, JWT not found")
+		return Context.Res.Text("Access denied: This function requires authentication. Please sign in to continue.")
 	}
 
 	databases := appwrite.NewDatabases(client)
@@ -2097,7 +2097,7 @@ Future<dynamic> main(final context) async {
     if (context.req.headers['x-appwrite-user-jwt'] != null) {
         client.setJWT(context.req.headers['x-appwrite-user-jwt']);
     } else {
-        return context.res.text("Please sign in, JWT not found");
+        return context.res.text("Access denied: This function requires authentication. Please sign in to continue.");
     }
     
     final databases = Databases(client);
@@ -2129,7 +2129,7 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     if let jwt = context.req.headers["x-appwrite-user-jwt"] {
         client.setJWT(jwt)
     } else {
-        return context.res.text("Please sign in, JWT not found")
+        return context.res.text("Access denied: This function requires authentication. Please sign in to continue.")
     }
 
     let databases = Databases(client: client)
@@ -2166,7 +2166,7 @@ namespace DotNetRuntime
             if (Context.Req.Headers.ContainsKey("x-appwrite-user-jwt")) {
                 client.SetJWT(Context.Req.Headers["x-appwrite-user-jwt"]);
             } else {
-                return Context.Res.Text("Please sign in, JWT not found");
+                return Context.Res.Text("Access denied: This function requires authentication. Please sign in to continue.d");
             }
 
             var databases = new Databases(client);
@@ -2205,7 +2205,7 @@ class Main {
         if (context.req.headers["x-appwrite-user-jwt"] != null) {
             client.setJWT(context.req.headers["x-appwrite-user-jwt"])
         } else {
-            return context.res.text("Please sign in, JWT not found")
+            return context.res.text("Access denied: This function requires authentication. Please sign in to continue.")
         }
 
         val databases = Databases(client)
@@ -2242,7 +2242,7 @@ public class Main {
         if (context.req.headers.containsKey("x-appwrite-user-jwt")) {
             client.setJWT(context.req.headers.get("x-appwrite-user-jwt"));
         } else {
-            return context.res.text("Please sign in, JWT not found");
+            return context.res.text("Access denied: This function requires authentication. Please sign in to continue.");
         }
 
         Databases databases = new Databases(client);
