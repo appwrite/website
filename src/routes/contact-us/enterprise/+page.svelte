@@ -21,9 +21,7 @@
         error = undefined;
         const subject = `Enterprise Plan Application: ${companyName}`;
 
-        // TODO: submit this too once we know the field name.
-        // eslint-disable-next-line
-        const userCloudEmail = loggedIn && $user?.email ? $user.email : undefined;
+        const cloudEmail = loggedIn && $user?.email ? $user.email : undefined;
 
         const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback/sale`, {
             method: 'POST',
@@ -33,6 +31,7 @@
             body: JSON.stringify({
                 email,
                 subject,
+                cloudEmail,
                 companyName,
                 companySize,
                 companyWebsite,
