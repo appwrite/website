@@ -4,7 +4,7 @@
 
     export let variant: 'homepage' | 'docs' = 'homepage';
 
-    const year = new Date().getFullYear()
+    const year = new Date().getFullYear();
 </script>
 
 {#if variant === 'homepage'}
@@ -24,13 +24,26 @@
                 </li>
             {/each}
         </ul>
-        <div class="u-flex u-gap-16">
-            <ul class="u-flex u-gap-8">
+        <div class="e-main-footer">
+            <div>Copyright © {year} Appwrite</div>
+
+            <iframe
+                class="status"
+                title="Appwrite Status"
+                src="https://status.appwrite.online/badge?theme=dark"
+                width="190"
+                height="30"
+                frameborder="0"
+                scrolling="no"
+                style:color-scheme="none"
+                style:margin-top="-4px"
+            />
+
+            <ul class="u-flex u-gap-16">
                 <li><a class="web-link" href="/terms">Terms</a></li>
                 <li><a class="web-link" href="/privacy">Privacy</a></li>
                 <li><a class="web-link" href="/cookies">Cookies</a></li>
             </ul>
-            <div>Copyright © {year} Appwrite</div>
         </div>
     </footer>
 {:else if variant === 'docs'}
@@ -77,13 +90,25 @@
 {/if}
 
 <style lang="scss">
-  .web-icon-button {
-    display: grid;
-  }
-
-  @media (max-width: 1023.9px), (min-width: 1024px) and (max-width: 1279.9px) {
-    .web-main-footer-links {
-      flex-direction: unset !important;
+    @use '$scss/abstract/variables/devices';
+    .web-icon-button {
+        display: grid;
     }
-  }
+
+    .e-main-footer {
+        display: flex;
+        @media #{devices.$break1} {
+            flex-direction: column;
+            > * {
+                padding-block: 1rem;
+                &:not(:first-child) {
+                    border-block-start: solid 0.0625rem hsl(var(--web-color-border));
+                }
+            }
+        }
+        @media #{devices.$break2open} {
+            display: flex;
+            gap: 2rem;
+        }
+    }
 </style>

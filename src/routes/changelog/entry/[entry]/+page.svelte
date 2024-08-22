@@ -53,7 +53,7 @@
     <title>{seo.title + CHANGELOG_TITLE_SUFFIX}</title>
     <meta property="og:title" content={seo.title} />
     <meta name="twitter:title" content={seo.title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={seo.description} />
     <meta property="og:description" content={seo.description} />
     <meta name="twitter:description" content={seo.description} />
