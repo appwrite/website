@@ -4,7 +4,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "pnpm download-contributors && vite build",
+        "build": "node ./scripts/build.js",
         "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
         "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
         "clean": "rm -rf node_modules && rm -rf .svelte_kit && pnpm i",
@@ -18,7 +18,8 @@
         "preview": "vite preview",
         "test": "npm run test:integration && npm run test:unit",
         "test:integration": "playwright test",
-        "test:unit": "vitest"
+        "test:unit": "vitest",
+        "optimize": "node ./scripts/optimize-assets.js"
     },
     "packageManager": "pnpm@9.4.0+sha512.f549b8a52c9d2b8536762f99c0722205efc5af913e77835dbccc3b0b0b2ca9e7dc8022b78062c17291c48e88749c70ce88eb5a74f1fa8c4bf5e18bb46c8bd83a",
     "dependencies": {
@@ -28,10 +29,10 @@
     },
     "devDependencies": {
         "@appwrite.io/console": "^0.6.2",
-        "@appwrite.io/pink": "~0.16.0",
-        "@appwrite.io/pink-icons": "~0.16.0",
-        "@appwrite.io/repo": "github:appwrite/appwrite#main",
-        "@internationalized/date": "^3.5.0",
+        "@appwrite.io/pink": "~0.26.0",
+        "@appwrite.io/pink-icons": "~0.26.0",
+        "@appwrite.io/repo": "github:appwrite/appwrite#1.6.x",
+        "@internationalized/date": "3.5.0",
         "@melt-ui/pp": "^0.3.2",
         "@melt-ui/svelte": "^0.74.4",
         "@playwright/test": "^1.44.1",
