@@ -237,7 +237,7 @@ func main() {
 
 	appwriteFunctions := appwrite.NewFunctions(appwriteClient)
 
-	promise, err := appwriteFunctions.CreateExecution(
+	execution, err := appwriteFunctions.CreateExecution(
 		"<FUNCTION_ID>", // functionId
 		appwriteFunctions.WithCreateExecutionBody("<BODY>"), // body (optional)
 		appwriteFunctions.WithCreateExecutionAsync(false), // async (optional)
@@ -245,7 +245,7 @@ func main() {
 		appwriteFunctions.WithCreateExecutionMethod("GET"), // method (optional)
 		appwriteFunctions.WithCreateExecutionHeaders(map[string]interface{}{})) // headers (optional)
 
-	fmt.Println(promise)
+	fmt.Println(execution)
 
 	if err != nil {
 		fmt.Println(err)
