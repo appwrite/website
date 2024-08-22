@@ -1,0 +1,9 @@
+@use '../abstract' as *;
+
+.#{$p}-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: pxToRem(32);
+  @media (max-width:767.9px) { grid-template-columns: 1fr; }
+  @media (min-width:768px) { grid-template-columns: repeat(2, 1fr); }
+}

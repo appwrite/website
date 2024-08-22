@@ -34,8 +34,8 @@
                 {
                     title: 'Additional bandwidth',
                     free: '-',
-                    pro: '$0.4 per GB',
-                    scale: '$0.4 per GB'
+                    pro: '$40 per 100GB',
+                    scale: '$40 per 100GB'
                 },
                 {
                     title: 'Storage',
@@ -46,8 +46,8 @@
                 {
                     title: 'Additional storage',
                     free: '-',
-                    pro: '$0.03 per GB',
-                    scale: '$0.03 per GB'
+                    pro: '$3 per 100GB',
+                    scale: '$3 per 100GB'
                 },
                 {
                     title: 'Compute',
@@ -140,8 +140,8 @@
                 {
                     title: 'Additional users',
                     free: '-',
-                    pro: '$0.003 per user',
-                    scale: '$0.003 per user'
+                    pro: '$3 per 1,000 users',
+                    scale: '$3 per 1,000 users'
                 },
                 {
                     title: 'Teams',
@@ -229,6 +229,12 @@
                     free: '-',
                     pro: '$2 per 1 Million',
                     scale: '$2 per 1 Million'
+                },
+                {
+                    title: 'Express builds',
+                    free: '-',
+                    pro: true,
+                    scale: true
                 }
             ]
         },
@@ -244,8 +250,8 @@
                 {
                     title: 'Additional concurrent connections',
                     free: '-',
-                    pro: '$0.005 per connection',
-                    scale: '$0.005 per connection'
+                    pro: '$5 per 1,000',
+                    scale: '$5 per 1,000'
                 },
                 {
                     title: 'Messages',

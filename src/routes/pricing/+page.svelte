@@ -1,15 +1,16 @@
 <script lang="ts">
     import { FooterNav, MainFooter, PreFooter } from '$lib/components';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
 
     import { Main } from '$lib/layouts';
     import { TITLE_SUFFIX } from '$routes/titles';
     import ComparePlans from './compare-plans.svelte';
     import Faq from './faq.svelte';
     import BG from './bg.png?enhanced';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     const title = 'Pricing' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description = 'Explore our straightforward pricing plans that scale with your project.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
@@ -18,7 +19,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -79,7 +80,7 @@
                                                 For personal hobby projects and students.
                                             </p>
                                             <a
-                                                href="https://cloud.appwrite.io/register"
+                                                href="{PUBLIC_APPWRITE_DASHBOARD}/register"
                                                 class="web-button is-secondary is-full-width u-margin-block-start-32"
                                             >
                                                 <span class="web-sub-body-500">Start building</span>

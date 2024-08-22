@@ -4,7 +4,7 @@
 
     export let variant: 'homepage' | 'docs' = 'homepage';
 
-    const year = new Date().getFullYear()
+    const year = new Date().getFullYear();
 </script>
 
 {#if variant === 'homepage'}
@@ -62,7 +62,7 @@
             <div class="web-main-footer-grid-1-column-2">
                 <ThemeSelect />
             </div>
-            <ul class="web-main-footer-grid-1-column-3 web-main-footer-links">
+            <ul class="web-main-footer-grid-1-column-3 u-cross-center web-main-footer-links">
                 <li>
                     <a href="/discord" target="_blank" rel="noopener noreferrer">Support</a>
                 </li>
@@ -83,23 +83,14 @@
 {/if}
 
 <style lang="scss">
-  @use '$scss/abstract/variables/devices' as *;
-  .web-icon-button {
-    display: grid;
-  }
+    @use '$scss/abstract/variables/devices' as *;
+    .web-icon-button {
+        display: grid;
+    }
 
-  .e-main-footer {
-    display: flex;
-    @media #{$break1} {
-        flex-direction: column;
-      > * {
-        padding-block:1rem;
-        &:not(:first-child) { border-block-start:solid 0.0625rem hsl(var(--web-color-border)); }
-      }
+    @media (max-width: 1023.9px), (min-width: 1024px) and (max-width: 1279.9px) {
+        .web-main-footer-links {
+            flex-direction: unset !important;
+        }
     }
-    @media #{$break2open} {
-      display: flex;
-      gap: 2rem;
-    }
-  }
 </style>

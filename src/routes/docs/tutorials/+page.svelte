@@ -1,10 +1,10 @@
 <script lang="ts">
     import { MainFooter } from '$lib/components';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { DOCS_TITLE_SUFFIX } from '$routes/titles';
 
     const title = 'Tutorials' + DOCS_TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description = 'Follow a simple tutorial to get started with Appwrite in your preferred framework quickly and easily.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 
     export let data;
@@ -43,7 +43,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />

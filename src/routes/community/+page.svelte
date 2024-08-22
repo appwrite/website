@@ -52,7 +52,7 @@
     import PreFooter from '$lib/components/PreFooter.svelte';
     import { GITHUB_STARS } from '$lib/constants';
     import { Main } from '$lib/layouts';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import type { EventCardProps } from './EventCard.svelte';
     import EventCard from './EventCard.svelte';
@@ -95,9 +95,9 @@
     const metrics = [
         { metric: `${GITHUB_STARS}+`, description: 'GitHub Stars' },
         { metric: '3K+', description: 'Pull Requests' },
-        { metric: '18K+', description: 'Commits' },
+        { metric: '21K+', description: 'Commits' },
         { metric: '3K+', description: 'Issues' },
-        { metric: '600+', description: 'Open Issues' },
+        { metric: '500+', description: 'Open Issues' },
         { metric: '2.5K+', description: 'Closed Issues' },
         { metric: '3.5K+', description: 'Forks' },
         { metric: '800+', description: 'Contributors' }
@@ -122,7 +122,7 @@
     }
 
     const title = 'Community' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description = 'Join our vibrant community of developers. Ask questions, contribute solutions, and inspire others to improve the backend development experience.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
@@ -131,7 +131,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
