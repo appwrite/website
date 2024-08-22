@@ -813,6 +813,8 @@ There are several possible ways to send a response, explore them in the followin
 
 {% multicode %}
 ```server-nodejs
+const fs = require('fs');
+
 export default async ({ req, res, log }) => {
 
     switch (req.query.type) {
@@ -820,6 +822,8 @@ export default async ({ req, res, log }) => {
             return res.empty();
         case 'json':
             return res.json({"type": "This is a JSON response"});
+        case 'binary':
+            return res.binary(InputFile.fromPath('/path/to/file', 'filename'));
         case 'redirect':
             return res.redirect("https://appwrite.io", 301);
         case 'html':
@@ -834,6 +838,7 @@ export default async ({ req, res, log }) => {
 ```
 ```php
 <?php
+use Appwrite\InputFile;
 
 return function ($context) {
     switch ($context->req->query['type']) {
@@ -841,6 +846,8 @@ return function ($context) {
             return $context->res->empty();
         case 'json':
             return $context->res->json(["type" => "This is a JSON response"]);
+        case 'binary':
+            return $context->res->binary(InputFile::withPath('file.png'));
         case 'redirect':
             return $context->res->redirect("https://appwrite.io", 301);
         case 'html':
@@ -853,13 +860,17 @@ return function ($context) {
 };
 ```
 ```python
+from appwrite.input_file import InputFile
+
 def main(context):
     type = context.req.query['type']
 
     if type == 'empty':
         return context.res.empty()
-    elif type =='json':
+    elif type == 'json':
         return context.res.json({"type": "This is a JSON response"})
+    elif type == 'binary':
+        return context.res.binary(InputFile.from_path('file.png'))
     elif type == 'redirect':
         return context.res.redirect("https://appwrite.io", 301)
     elif type == 'html':
@@ -876,6 +887,8 @@ def main(context)
             return context.res.empty()
         when 'json'
             return context.res.json({"type": "This is a JSON response"})
+        when 'binary'
+            return context.res.binary(InputFile.from_path('dir/file.png'))
         when 'redirect'
             return context.res.redirect("https://appwrite.io", 301)
         when 'html'
@@ -895,6 +908,8 @@ export default async ({ req, res, log }) => {
             return res.empty();
         case 'json':
             return res.json({type: "This is a JSON response"});
+        case 'binary':
+            return res.binary(InputFile.fromPath('/path/to/file.png', 'file.png'));
         case 'redirect':
             return res.redirect("https://appwrite.io", 301);
         case 'html':
@@ -911,6 +926,9 @@ export default async ({ req, res, log }) => {
 package handler
 
 import (
+	"io"
+	"os"
+
 	"github.com/open-runtimes/types-for-go/v4/openruntimes"
 )
 
@@ -920,6 +938,10 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 		return Context.Res.Empty()
 	case "json":
 		return Context.Res.Json(map[string]string{"type": "This is a JSON response"})
+	case "binary":
+		file, _ := os.Open("./destiny.png")
+		imageData, _ := io.ReadAll(file)
+		return Context.Res.Binary(imageData)
 	case "redirect":
 		return Context.Res.Redirect("https://appwrite.io")
 	case "html":
@@ -938,6 +960,8 @@ Future<dynamic> main(final context) async {
             return context.res.empty();
         case 'json':
             return context.res.json({'type': 'This is a JSON response'});
+        case 'binary':
+            return context.res.binary(InputFile(path: './path-to-files/image.jpg', filename: 'image.jpg'));
         case 'redirect':
             return context.res.redirect('https://appwrite.io', 301);
         case 'html':
@@ -957,6 +981,8 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
         return context.res.empty()
     case "json":
         return context.res.text(["type": "This is a JSON response"])
+    case "binary":
+        return context.res.binary(InputFile.fromPath("file.png"))
     case "redirect":
         return context.res.redirect("https://appwrite.io", 301)
     case "html":
@@ -978,6 +1004,8 @@ public class Handler {
                 return Context.Res.Empty();
             case "json":
                 return Context.Res.Text(new Dictionary<string, object>() { { "type", "This is a JSON response" } });
+            case "binary":
+                return Context.Res.Binary(InputFile.FromPath("./path-to-files/image.jpg"));
             case "redirect":
                 return Context.Res.Redirect("https://appwrite.io", 301);
             case "html":
@@ -995,12 +1023,14 @@ package io.openruntimes.kotlin.src
 
 import io.openruntimes.kotlin.RuntimeContext
 import io.openruntimes.kotlin.RuntimeOutput
+import io.appwrite.models.InputFile
 
 class Main {
     fun main(context: RuntimeContext): RuntimeOutput {
         when (context.req.query["type"]) {
             "empty" -> return context.res.empty()
             "json" -> return context.res.text(mapOf("type" to "This is a JSON response"))
+            "binary" -> return context.res.binary(InputFile.fromPath("file.png"))
             "redirect" -> return context.res.redirect("https://appwrite.io", 301)
             "html" -> return context.res.text("<h1>This is an HTML response</h1>", 200, mapOf("content-type" to "text/html"))
             else -> return context.res.text("This is a text response")
@@ -1013,6 +1043,7 @@ package io.openruntimes.java.src;
 
 import io.openruntimes.java.RuntimeContext;
 import io.openruntimes.java.RuntimeOutput;
+import io.appwrite.models.InputFile;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -1025,6 +1056,8 @@ public class Main {
                 HashMap<String, Object> data = new HashMap<>();
                 data.put("type", "This is a JSON response");
                 return context.getRes().text(data);
+            case "binary"
+                return context.getRes().binary(InputFile.fromPath("file.png"));
             case "redirect":
                 return context.getRes().redirect("https://appwrite.io", 301);
             case "html":
@@ -1053,6 +1086,8 @@ namespace runtime {
           Json::Value data;
           data["type"] = "This is a JSON response";
           return context.res.text(data);
+        } else if (type == "binary") {
+          return context.res.binary(InputFile.fromPath("file.png"))
         } else if (type == "redirect") {
           return context.res.redirect("https://appwrite.io", 301);
         } else if (type == "html") {
@@ -1080,6 +1115,9 @@ To get the different response types, set one of the following query parameters i
 
 ## Logging {% #logging %}
 To protect user privacy, the request and response objects are not logged to the Appwrite Console by default. 
+
+We support the spread operator across most of the languages, meaning you can write code that is more concise and flexible.
+
 This means, to see logs or debug function executions you need to use the `log()` and `error()` methods.
 These logs are only visible to developers with access to the Appwrite Console.
 
@@ -1088,9 +1126,11 @@ Here's an example of using logs and errors.
 {% multicode %}
 ```server-nodejs
 export default async ({ req, res, log, error }) => {
-    log("This is a log, use for logging information to console");
+    const message = "This is a log, use for logging information to console";
+    log("Message: ", message);
     log(`This function was called with ${req.method} method`);
-    error("This is an error, use for logging errors to console");
+    const errorMessage = "This is an error, use for logging errors to console"
+    error("Error: ", errorMessage);
 
     return res.text("Check the Appwrite Console to see logs and errors!");
 };
@@ -1099,46 +1139,75 @@ export default async ({ req, res, log, error }) => {
 <?php
 
 return function ($context) {
-    $context->log("This is a log, use for logging information to console");
+    $message = "This is a log, use for logging information to console";
+    $context->log("Message: ", message);
     $context->log("This function was called with " . $context->req->method . " method");
-    $context->error("This is an error, use for logging errors to console");
+    $errorMessage = "Check the Appwrite Console to see logs and errors!"
+    $context->error("Error: ", errorMessage);
 
     return $context->text("Check the Appwrite Console to see logs and errors!");
 };
 ```
 ```python
 def main(context):
-    context.log("This is a log, use for logging information to console")
+    message = "This is a log, use for logging information to console"
+    context.log("Message: ", message)
     context.log(f"This function was called with {context.req.method} method")
-    context.error("This is an error, use for logging errors to console")
+    errorMessage = "This is an error, use for logging errors to console"
+    context.error("Error: ", errorMessage)
 
     return context.res.text("Check the Appwrite Console to see logs and errors!")
 ```
 ```ruby
 def main(context)
-    context.log("This is a log, use for logging information to console")
+    message = "This is a log, use for logging information to console"
+    context.log("Message: ", message)
     context.log("This function was called with #{context.req.method} method")
-    context.error("This is an error, use for logging errors to console")
+    errorMessage = "This is an error, use for logging errors to console"
+    context.error("Error: ", errorMessage)
 
     return context.res.text("Check the Appwrite Console to see logs and errors!")
 end
 ```
 ```deno
 export default async ({ res, log, error }: any) => {
-    log("This is a log, use for logging information to console");
+    let message = "This is a log, use for logging information to console";
+    log("Message: ", message);
     log(`This function was called with ${context.req.method} method`);
-    error("This is an error, use for logging errors to console");
+    let errorMessage = "This is an error, use for logging errors to console";
+    error("Error: ", errorMessage);
 
     return res.text("Check the Appwrite Console to see logs and errors!");
 };
+```
+```go
+package handler
+
+import (
+	"fmt"
+
+	"github.com/open-runtimes/types-for-go/v4/openruntimes"
+)
+
+func Main(Context openruntimes.Context) openruntimes.Response {
+	message := "This is a log, use for logging information to console"
+	Context.Log("Message: ", message)
+	Context.Log(fmt.Sprintf("This function was called with %s method", Context.Req.Method))
+	errorMessage := "This is an error, use for logging errors to console"
+	Context.Error("Error: ", errorMessage)
+
+	return Context.Res.Text("Check the Appwrite Console to see logs and errors!")
+}
 ```
 ```dart
 import 'dart:async';
 
 Future<dynamic> main(final context) async {
-    context.log("This is a log, use for logging information to console");
+    var message = "This is a log, use for logging information to console";
+    context.log("message: ", var);
     context.log("This function was called with ${context.req.method} method");
-    context.error("This is an error, use for logging errors to console");
+    var errorMessage = "This is an error, use for logging errors to console";
+    context.error("Error: ", errorMessage);
 
     return context.res.text("Check the Appwrite Console to see logs and errors!");
 }
@@ -1147,9 +1216,11 @@ Future<dynamic> main(final context) async {
 import Foundation
 
 func main(context: RuntimeContext) async throws -> RuntimeOutput {
-    context.log("This is a log, use for logging information to console")
+    var message: String = "This is a log, use for logging information to console"
+    context.log("Message: ", message)
     context.log("This function was called with \(context.req.method) method")
-    context.error("This is an error, use for logging errors to console")
+    var message: String = "This is an error, use for logging errors to console"
+    context.error("Error: ", message)
 
     return context.res.text("Check the Appwrite Console to see logs and errors!")
 }
@@ -1160,9 +1231,11 @@ namespace DotNetRuntime;
 public class Handler {
     public async Task<RuntimeOutput> Main(RuntimeContext Context) 
     {
-        Context.Log("This is a log, use for logging information to console");
+        string message = "This is a log, use for logging information to console";
+        Context.Log("Message: ", message);
         Context.Log($"This function was called with {Context.Req.Method} method");
-        Context.Error("This is an error, use for logging errors to console");
+        string errorMessage = "This is an error, use for logging errors to console";
+        Context.Error("Error: ", errorMessage);
 
         return Context.Res.Text("Check the Appwrite Console to see logs and errors!");
     }
@@ -1176,9 +1249,11 @@ import io.openruntimes.kotlin.RuntimeOutput
 
 class Main {
     fun main(context: RuntimeContext): RuntimeOutput {
-        context.log("This is a log, use for logging information to console")
+        var message: String = "This is a log, use for logging information to console"
+        context.log("Message: ", message)
         context.log("This function was called with ${context.req.method} method")
-        context.error("This is an error, use for logging errors to console")
+        var errorMessage: String = "This is an error, use for logging errors to console"
+        context.error("Error: ", errorMessage)
 
         return context.res.text("Check the Appwrite Console to see logs and errors!")
     }
@@ -1192,9 +1267,11 @@ import io.openruntimes.java.RuntimeOutput;
 
 public class Main {
     public RuntimeOutput main(RuntimeContext context) throws Exception {
-        context.log("This is a log, use for logging information to console");
+        String message = "This is a log, use for logging information to console";
+        context.log("Message: ", message);
         context.log("This function was called with " + context.req.method + " method");
-        context.error("This is an error, use for logging errors to console");
+        string errorMessage = "This is an error, use for logging errors to console";
+        context.error("Error: ", errorMessage);
 
         return context.getRes().text("Check the Appwrite Console to see logs and errors!");
     }
@@ -1210,9 +1287,11 @@ namespace runtime {
   class Handler {
     public:
       static RuntimeOutput main(RuntimeContext &context) {
-        context.log("This is a log, use for logging information to console");
+        const std::string message = "This is a log, use for logging information to console";
+        context.log("Message: ", message);
         context.log("This function was called with " + context.req.method + " method");
-        context.error("This is an error, use for logging errors to console");
+        const std::string errorMessage = "This is an error, use for logging errors to console";
+        context.error("Error: ", errorMessage);
 
         return context.res.text("Check the Appwrite Console to see logs and errors!");
       }
@@ -1391,6 +1470,12 @@ By default, we include the following package managers in each runtime.
 * deno
 * `deno cache <ENTRYPOINT_FILE>`
 ---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/go.svg" alt="Go logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/go.svg" alt="Go logo" size="m" /%}{% /only_light %}
+* Go
+* Go Modules
+* N/A
+---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/dart.svg" alt="Dart logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/dart.svg" alt="Dart logo" size="m" /%}{% /only_light %}
 * Dart
@@ -1468,7 +1553,7 @@ export default async ({ req, res, log, error }) => {
     try {
         await databases.createDocument(
             '<DATABASE_ID>',
-            '[COLLECTION_ID]',
+            '<COLLECTION_ID>',
             ID.unique(),
             {}
         )
@@ -1501,7 +1586,7 @@ return function ($context) {
     try {
         $databases->createDocument(
             databaseId: '<DATABASE_ID>',
-            collectionId: '[COLLECTION_ID]',
+            collectionId: '<COLLECTION_ID>',
             documentId: ID::unique(),
             data: []
         );
@@ -1559,7 +1644,7 @@ def main(context)
     begin
         databases.create_document(
             databaseId: '<DATABASE_ID>',
-            collectionId: '[COLLECTION_ID]',
+            collectionId: '<COLLECTION_ID>',
             documentId: ID.unique(),
             data: {}
         )
@@ -1649,7 +1734,7 @@ Future<dynamic> main(final context) async {
     try {
         await databases.createDocument(
             databaseId: '<DATABASE_ID>',
-            collectionId: '[COLLECTION_ID]',
+            collectionId: '<COLLECTION_ID>',
             documentId: ID.unique(),
             data: {}
         );
@@ -1820,7 +1905,7 @@ export default async ({ req, res, log }) => {
     try {
         await databases.createDocument(
             '<DATABASE_ID>',
-            '[COLLECTION_ID]',
+            '<COLLECTION_ID>',
             ID.unique(),
             {}
         )
@@ -1857,7 +1942,7 @@ return function ($context) {
     try {
         $databases->createDocument(
             databaseId: '<DATABASE_ID>',
-            collectionId: '[COLLECTION_ID]',
+            collectionId: '<COLLECTION_ID>',
             documentId: ID::unique(),
             data: []
         );
@@ -1920,7 +2005,7 @@ def main(context)
     databases = Appwrite::Databases.new(client)
 
     begin
-        databases.create_document('<DATABASE_ID>', '[COLLECTION_ID]', Appwrite::ID.unique(), {})
+        databases.create_document('<DATABASE_ID>', '<COLLECTION_ID>', Appwrite::ID.unique(), {})
     rescue Appwrite::Exception => e
         context.error("Failed to create document: " + e.message)
         return context.response.text("Failed to create document")
@@ -1973,7 +2058,7 @@ import (
 
 func Main(Context openruntimes.Context) openruntimes.Response {
 	client := appwrite.NewClient(
-		appwrite.WithProject("<PROJECT_ID>"),
+		appwrite.WithProject("APPWRITE_FUNCTION_PROJECT_ID"),
 	)
 
 	jwt, exists := Context.Req.Headers["x-appwrite-user-jwt"]
@@ -2020,7 +2105,7 @@ Future<dynamic> main(final context) async {
     try {
         await databases.createDocument(
             databaseId: '<DATABASE_ID>',
-            collectionId: '[COLLECTION_ID]',
+            collectionId: '<COLLECTION_ID>',
             documentId: ID.unique(),
             data: {}
         );
