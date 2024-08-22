@@ -113,7 +113,7 @@
         <div
           class="web-u-flex-vertical-mobile web-u-color-text-primary flex gap-6"
         >
-          <div class="u-cross-center flex gap-2">
+          <div class="flex items-center gap-2">
             <label class="u-small web-is-not-mobile" for="platform"
               >Platform</label
             >
@@ -141,7 +141,7 @@
               nativeMobile
             />
           </div>
-          <div class="u-cross-center flex gap-2">
+          <div class="flex items-center gap-2">
             <label class="u-small web-is-not-mobile" for="version"
               >Version</label
             >
@@ -269,7 +269,7 @@
         </button>
         <div class="web-references-menu-content">
           <div
-            class="web-references-menu-header u-main-space-between u-cross-center u-margin-block-start-24 flex gap-4"
+            class="web-references-menu-header u-main-space-between u-margin-block-start-24 flex items-center gap-4"
           >
             <h5 class="web-references-menu-title web-eyebrow">On This Page</h5>
             <button
@@ -293,7 +293,7 @@
           </ul>
           <div class="u-sep-block-start web-u-padding-block-20">
             <button
-              class="web-link u-inline-flex u-cross-center gap-2"
+              class="web-link u-inline-flex items-center gap-2"
               use:scrollToTop
             >
               <span class="web-icon-arrow-up" aria-hidden="true" />

@@ -307,7 +307,7 @@
                   <thead class="web-table-line-head">
                     <tr class="web-table-line-row">
                       <th
-                        class="web-table-line-cell web-u-color-text-primary u-un-break-text"
+                        class="web-table-line-cell web-u-color-text-primary whitespace-nowrap"
                         >Issue #</th
                       >
                       <th class="web-table-line-cell web-u-color-text-primary"
@@ -318,7 +318,7 @@
                   <tbody class="web-table-line-body">
                     {#each data.issues as issue}
                       <tr class="web-table-line-row">
-                        <td class="web-table-line-cell u-un-break-text">
+                        <td class="web-table-line-cell whitespace-nowrap">
                           <span class="web-caption-400">#{issue.number}</span>
                         </td>
                         <td class="web-table-line-cell">
@@ -616,7 +616,7 @@
               </div>
             </div>
             {#if submitted}
-              <div class="u-cross-center flex gap-2">
+              <div class="flex items-center gap-2">
                 <svg
                   width="18"
                   height="18"
@@ -656,7 +656,7 @@
                 on:submit|preventDefault={submit}
                 class="flex flex-col gap-4"
               >
-                <div class="flex flex flex-col gap-1">
+                <div class="flex flex-col gap-1">
                   <label for="name">Your name</label>
                   <input
                     class="web-input-text"
@@ -668,7 +668,7 @@
                     bind:value={name}
                   />
                 </div>
-                <div class="flex flex flex-col gap-1">
+                <div class="flex flex-col gap-1">
                   <label for="email">Your email</label>
                   <input
                     class="web-input-text"

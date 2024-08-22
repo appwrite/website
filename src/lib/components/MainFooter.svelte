@@ -70,7 +70,7 @@
         <ThemeSelect />
       </div>
       <ul
-        class="web-main-footer-grid-1-column-3 u-cross-center web-main-footer-links"
+        class="web-main-footer-grid-1-column-3 web-main-footer-links items-center"
       >
         <li>
           <a href="/discord" target="_blank" rel="noopener noreferrer"

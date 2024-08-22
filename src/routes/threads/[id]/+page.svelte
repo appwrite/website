@@ -45,7 +45,7 @@
   <div class="web-container web-u-padding-block-end-0">
     <div class="header">
       <div>
-        <a class="web-link is-secondary u-cross-baseline" href="/threads">
+        <a class="web-link is-secondary items-baseline" href="/threads">
           <span class="web-icon-chevron-left" aria-hidden="true" />
           <span>Back</span>
         </a>
@@ -106,7 +106,7 @@
           {#each data.related as thread}
             <li>
               <a href="/threads/{thread.$id}" data-sveltekit-reload>
-                <div class="u-cross-center flex">
+                <div class="flex items-center">
                   <span class="web-sub-body-500 web-u-color-text-primary">
                     {thread.title.length > 40
                       ? thread.title.slice(0, 40) + "..."

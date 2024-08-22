@@ -11,7 +11,7 @@
       {@const first = i === 0}
       <li class:u-padding-block-start-16={!first}>
         <article>
-          <header class="u-cross-baseline flex gap-2">
+          <header class="flex items-baseline gap-2">
             <span class="web-code web-u-color-text-primary">
               {parameter.name}
             </span>

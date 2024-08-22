@@ -74,7 +74,7 @@
               </h2>
               <a
                 href="https://appwrite.careers"
-                class="web-button u-cross-child-start web-u-inline-width-100-percent-mobile-break1"
+                class="web-button web-u-inline-width-100-percent-mobile-break1 self-start"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -397,7 +397,7 @@
       </div>
       <div class="web-big-padding-section-level-2">
         <div class="web-container">
-          <h5 class="web-title web-u-color-text-primary text-center">
+          <h5 class="web-title web-u-color-text-primary u-text-center">
             Angel Investors
           </h5>
           <ul class="web-grid-2c-4c u-margin-block-start-48">
@@ -611,7 +611,7 @@
               href="https://appwrite.careers"
               target="_blank"
               rel="noopener noreferrer"
-              class="web-button is-transparent u-cross-child-center u-margin-block-start-16"
+              class="web-button is-transparent u-margin-block-start-16 self-center"
             >
               <span>Careers</span>
             </a>

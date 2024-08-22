@@ -224,7 +224,7 @@
             class="web-u-flex-vertical-mobile web-u-gap-80 e-u-gap-64-mobile flex"
           >
             <li
-              class="u-cross-center u-stretch u-margin-inline-auto flex max-w-[350px] flex-col gap-4"
+              class="u-stretch u-margin-inline-auto flex max-w-[350px] flex-col items-center gap-4"
             >
               <img
                 src="/images/icons/gradients/backend.svg"
@@ -243,7 +243,7 @@
               </div>
             </li>
             <li
-              class="u-cross-center u-stretch u-margin-inline-auto flex max-w-[350px] flex-col gap-4"
+              class="u-stretch u-margin-inline-auto flex max-w-[350px] flex-col items-center gap-4"
             >
               <img
                 src="/images/icons/gradients/cloud-credit.svg"
@@ -262,7 +262,7 @@
               </div>
             </li>
             <li
-              class="u-cross-center u-stretch u-margin-inline-auto flex max-w-[350px] flex-col gap-4"
+              class="u-stretch u-margin-inline-auto flex max-w-[350px] flex-col items-center gap-4"
             >
               <img
                 src="/images/icons/gradients/support.svg"
@@ -756,7 +756,7 @@
                     class="u-z-index-1 web-u-max-width-380 web-u-max-inline-size-none-mobile u-margin-inline-auto relative flex flex-col gap-2 text-center"
                   >
                     <h6
-                      class="web-label u-main-center u-cross-center e-mobile-fix-1 flex gap-2"
+                      class="web-label u-main-center e-mobile-fix-1 flex items-center gap-2"
                     >
                       <img
                         class="shrink-0"
@@ -845,7 +845,7 @@
                       </p>
                       <button
                         type="submit"
-                        class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1"
+                        class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
                       >
                         <span>Apply</span>
                       </button>

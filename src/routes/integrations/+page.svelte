@@ -132,7 +132,7 @@
             </section>
             <section class="flex flex-col">
               <section class="flex flex-col gap-4">
-                <h2 class="web-side-nav-header web-eyebrow u-un-break-text">
+                <h2 class="web-side-nav-header web-eyebrow whitespace-nowrap">
                   Platform
                 </h2>
                 <ul class="flex flex-wrap gap-2" class:disabled={hasQuery}>
@@ -151,7 +151,7 @@
               </section>
               <div class="web-u-sep-block-start u-margin-block-24"></div>
               <section class="flex flex-col gap-4">
-                <h2 class="web-side-nav-header web-eyebrow u-un-break-text">
+                <h2 class="web-side-nav-header web-eyebrow whitespace-nowrap">
                   Categories
                 </h2>
 
@@ -412,7 +412,7 @@
 
         <div class="relative">
           <section
-            class="web-hero u-row-gap-16 u-main-center u-cross-center web-u-max-width-580 flex"
+            class="web-hero u-row-gap-16 u-main-center web-u-max-width-580 flex items-center"
           >
             <h2
               class="web-display web-u-text-align-center web-u-color-text-primary max-w-[600px]"

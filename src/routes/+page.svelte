@@ -97,7 +97,7 @@
                 >
               </span>
             </h1>
-            <div class="u-cross-child-end">
+            <div class="self-end">
               <p class="web-description">
                 Build your entire backend within minutes and scale effortlessly
                 using Appwrite's open-source platform. Add Authentication,

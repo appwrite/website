@@ -43,7 +43,7 @@
     <div class="web-big-padding-section-level-2">
       <div class="web-container">
         <a
-          class="web-link web-u-color-text-secondary u-cross-baseline"
+          class="web-link web-u-color-text-secondary items-baseline"
           href="/blog"
         >
           <span class="web-icon-chevron-left" aria-hidden="true" />
