@@ -3,7 +3,7 @@ layout: post
 title: "Introducing Go, high-performance Functions runtime and SDK"
 description: We’re excited to announce that Go runtime is now supported in Appwrite Functions and we have added a Go SDK.
 date: 2024-08-22
-cover: /images/blog/init-day3/cover.png
+cover: /images/blog/go-cover.png
 timeToRead: 7
 author: matej-baco
 category: product
