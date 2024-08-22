@@ -80,7 +80,7 @@
             {/if}
           {:else}
             {#if navGroup.label}
-              <h2 class="web-side-nav-header web-eyebrow u-un-break-text">
+              <h2 class="web-side-nav-header web-eyebrow whitespace-nowrap">
                 {navGroup.label}
               </h2>
             {/if}

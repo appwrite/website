@@ -65,7 +65,7 @@
     </div>
     <div class="web-code-snippet-header-end">
       <ul class="buttons-list flex gap-3">
-        <li class="buttons-list-item u-cross-child-scenter flex">
+        <li class="buttons-list-item flex self-center">
           <Select bind:value={selected} bind:options />
         </li>
         <li class="buttons-list-item" style="padding-inline-start: 13px">

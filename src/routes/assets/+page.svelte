@@ -91,11 +91,7 @@
                 elements across various platforms and materials.
               </p>
 
-              <a
-                href="/assets.zip"
-                download
-                class="web-button u-cross-child-start"
-              >
+              <a href="/assets.zip" download class="web-button">
                 <span class="web-icon-download" aria-hidden="true" />
                 <span>Download assets</span>
               </a>

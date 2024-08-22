@@ -242,7 +242,7 @@
                   </p>
                   <button
                     type="submit"
-                    class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1"
+                    class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
                     disabled={submitting}
                   >
                     <span>Submit</span>

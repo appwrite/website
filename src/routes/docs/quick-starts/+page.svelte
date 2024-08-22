@@ -198,7 +198,7 @@
   <article class="web-article">
     <header class="web-article-header">
       <div class="web-article-header-start web-u-cross-start flex flex-col">
-        <div class="u-cross-center relative flex">
+        <div class="relative flex items-center">
           <h1 class="web-title">Quick start</h1>
         </div>
       </div>
@@ -215,7 +215,7 @@
                   href={`/docs/quick-starts/${quickStart.href}`}
                   class="web-card is-normal"
                 >
-                  <header class="u-cross-baseline flex gap-1">
+                  <header class="flex items-baseline gap-1">
                     <span
                       class="{quickStart.icon} web-u-font-size-24"
                       aria-hidden="true"

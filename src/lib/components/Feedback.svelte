@@ -94,7 +94,7 @@
               href="https://github.com/appwrite/website"
               target="_blank"
               rel="noopener noreferrer"
-              class="web-link u-cross-baseline flex gap-1"
+              class="web-link flex items-baseline gap-1"
             >
               <span class="icon-pencil-alt u-contents" aria-hidden="true" />
               <span>Update on GitHub</span>

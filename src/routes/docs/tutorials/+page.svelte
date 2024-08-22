@@ -60,7 +60,7 @@
   <article class="web-article">
     <header class="web-article-header">
       <div class="web-article-header-start web-u-cross-start flex flex-col">
-        <div class="u-cross-center relative flex">
+        <div class="relative flex items-center">
           <h1 class="web-title">Tutorials</h1>
         </div>
       </div>
@@ -80,7 +80,7 @@
                     aria-disabled="true"
                     tabindex="-1"
                   >
-                    <header class="u-cross-baseline flex gap-1">
+                    <header class="flex items-baseline gap-1">
                       <span
                         class="{getIcon(tutorial)} web-u-font-size-24"
                         aria-hidden="true"
@@ -93,7 +93,7 @@
                   </a>
                 {:else}
                   <a href={tutorial.href} class="web-card is-normal">
-                    <header class="u-cross-baseline flex gap-1">
+                    <header class="flex items-baseline gap-1">
                       <span
                         class="{getIcon(tutorial)} web-u-font-size-24"
                         aria-hidden="true"

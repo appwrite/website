@@ -107,7 +107,7 @@
             <article class="web-main-article">
               <header class="web-main-article-header">
                 <a
-                  class="web-link is-secondary web-u-color-text-secondary u-cross-baseline"
+                  class="web-link is-secondary web-u-color-text-secondary items-baseline"
                   href="/blog"
                 >
                   <span class="web-icon-chevron-left" aria-hidden="true" />
@@ -129,7 +129,7 @@
                 {/if}
                 {#if authorData}
                   <div class="web-author u-margin-block-start-16">
-                    <a href={authorData.href} class="u-cross-center flex gap-2">
+                    <a href={authorData.href} class="flex items-center gap-2">
                       {#if authorData.avatar}
                         <img
                           class="web-author-image"
@@ -147,7 +147,7 @@
                         <p class="web-caption-400">{authorData.role}</p>
                       </div>
                     </a>
-                    <!-- <ul class="flex gap-2 u-margin-inline-start-auto u-cross-child-center">
+                    <!-- <ul class="flex gap-2 u-margin-inline-start-auto self-center">
 											{#if authorData.twitter}
 												<li>
 													<a
@@ -192,7 +192,7 @@
                 {/if}
 
                 <div
-                  class="share-post-section u-margin-block-start-16 u-cross-center flex gap-4"
+                  class="share-post-section u-margin-block-start-16 flex items-center gap-4"
                 >
                   <span
                     class="web-eyebrow u-padding-inline-end-8"

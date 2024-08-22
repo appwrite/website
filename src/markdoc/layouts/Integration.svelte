@@ -93,7 +93,7 @@
       >
         <div class="l-grid-2-1 web-u-row-gap-56 web-u-gap-40-mobile">
           <div class="l-grid-content">
-            <div class="u-cross-start flex gap-5">
+            <div class="flex items-start gap-5">
               <img
                 class="web-author-image"
                 src={product.avatar}
@@ -161,7 +161,7 @@
         <!-- <div class="relative cta"> -->
         <div class="relative">
           <section
-            class="web-hero u-row-gap-16 u-main-center u-cross-center web-u-max-width-580 flex"
+            class="web-hero u-row-gap-16 u-main-center web-u-max-width-580 flex items-center"
           >
             <h2
               class="web-display web-u-text-align-center web-u-color-text-primary max-w-[600px]"
