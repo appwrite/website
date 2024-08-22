@@ -4,11 +4,9 @@
     import { TITLE_SUFFIX } from '$routes/titles';
     import FooterNav from '../../../lib/components/FooterNav.svelte';
     import MainFooter from '../../../lib/components/MainFooter.svelte';
-    import { socials } from '$lib/constants';
-    //import BlobPink from "$routes/startups/(assets)/blob-pink.svg";
-    // import BlobPinkMobile from "$routes/startups/(assets)/blob-pink-mobile.svg";
     import Pink from '../bg.png';
     import { loggedIn, user } from '$lib/utils/console';
+    import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
 
     let email = '';
     let name = '';
@@ -21,26 +19,25 @@
 
     async function handleSubmit() {
         error = undefined;
-        let message = `Name of representative: ${name}\n\nWork Email: ${email}\n\nCompany Name: ${companyName}\n\nCompany Size: ${companySize}\n\nCompany Website: ${companyWebsite}\n\nUse-case: ${useCase}`;
-        const subject = `Enterprise Plan Inquiry: ${companyName}`;
+        const subject = `Enterprise Plan Application: ${companyName}`;
 
-        if (loggedIn && $user?.email) {
-            message = message.replace(
-                `\n\nWork Email: ${email}\n\n`,
-                `\n\nWork Email: ${email}\n\nCloud Email: ${$user.email}\n\n`
-            );
-        }
+        // TODO: submit this too once we know the field name.
+        // eslint-disable-next-line
+        const userCloudEmail = loggedIn && $user?.email ? $user.email : undefined;
 
-        const response = await fetch('https://growth.appwrite.io/v1/enterprise', {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback/sale`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 email,
-                firstName: name,
                 subject,
-                message
+                companyName,
+                companySize,
+                companyWebsite,
+                firstName: name,
+                message: useCase,
             })
         });
 
