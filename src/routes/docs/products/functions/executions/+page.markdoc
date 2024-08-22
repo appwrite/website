@@ -47,6 +47,9 @@ Each execution can have one of the follow status.
 - Status
 - description
 ---
+- `scheduled`
+- The function execution will trigger later.
+---
 - `processing`
 - The function execution has begun and has not finished.
 ---
