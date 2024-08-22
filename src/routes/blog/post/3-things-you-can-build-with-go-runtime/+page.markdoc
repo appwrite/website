@@ -15,70 +15,41 @@ In the last few years, Golang (or Go) has grown to become one of the most popula
 
 There are several reasons why Appwrite Functions and Go form a rather handy option for your product development toolkit:
 
-- **Highly performant (due to compiled nature)**
+## Highly performant (due to compiled nature)
 
 In our internal benchmark, while the larger codebase and compiled nature of Go leads to slower builds, our Go runtime showed up to 3 times faster cold-start times compared to interpreted languages.  Additionally, it demonstrated 5 times less memory consumption than any other runtime, including Node.js, Dart, PHP, and Python.
 
-- **Open-source runtime(s)**
+## Open-source runtime(s)
 
 Our Go runtime (just like our other runtimes) has been developed by our team and is [open-sourced](https://github.com/open-runtimes/open-runtimes/tree/main/runtimes/go), which allows a simpler feedback and contribution mechanism and enables improvement of the runtime at a much higher pace.
 
-- **Event-driven nature**
+## Event-driven nature
 
 Appwrite Functions can be executed by various types of events, which allows you to integrate them into your applications in many different ways. These events include all HTTP actions (to consume like a REST API), CRON schedules (to run them on set time periods), and any events across the various Appwrite products in your project (for example, user creation, document deletion, or file upload).
 
-- **Global environment variables**
+## Global environment variables
 
 Aside from environment variables at the function level, Appwrite also allows you to environment variables at the project level so that they can be shared across multiple functions in a single project. 
 
-- **Permissions system**
+## Permissions system
 
 Appwrite’s permissions system for products such as Databases and Storage also extends to Functions, providing an additional layer of security to prevent unauthorized users from consuming your functions.
 
-- **Local development support**
+## Local development support
 
 With our latest release, Appwrite has released support for [local development](https://appwrite.io/blog/post/announcing-local-development), allowing users to test and debug their Appwrite Functions on their devices without deploying to an Appwrite instance. For the Go runtime, we have also released a module containing all the necessary types for the Functions runtime, making it even easier to develop Go-based Appwrite Functions in your preferred code editor.
 
-- **CI/CD with GitHub**
+## CI/CD with GitHub
 
 Appwrite offers CI/CD support for Appwrite Functions through GitHub, simplifying your developer experience by automating the process of pushing your function to your Appwrite project.
 
 # Building Go functions
 
-Now that you have been introduced to Appwrite Functions, it is time to test them on our new Go runtime! To use Go in Appwrite, you need to use the latest version of Appwrite. You can either [sign up on Appwrite Cloud](https://appwrite.io/cloud) or self-host Appwrite 1.6 on your preferred device.
+To use Go in Appwrite, you need to use the latest version of Appwrite. You can either [sign up on Appwrite Cloud](https://appwrite.io/cloud) or [self-host](https://appwrite.io/docs/advanced/self-hosting) Appwrite 1.6 with the `go-1.23` runtime added to your [environment](https://appwrite.io/docs/advanced/self-hosting/environment-variables#functions:~:text=preserve%20harddrive%20health.-,_APP_FUNCTIONS_RUNTIMES,-version%20%3E%3D%200.8.0%20This). The runtime will be available on Appwrite Cloud after Init. Next, go ahead and create a Go function using the [Appwrite CLI](https://appwrite.io/docs/tooling/command-line/installation#Installation) by running `appwrite init function`.
 
-Installing a self-hosted version of Appwrite is pretty straight-forward; all you need to do is:
+Once your function is set up, we can try some examples:
 
-1. Have Docker installed
-2. Run the command:
-
-```bash
-docker run -it --rm \
-    --volume /var/run/docker.sock:/var/run/docker.sock \
-    --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
-    --entrypoint="install" \
-    appwrite/appwrite:1.6.0
-```
-
-For one-click setups, check out the [installation docs](https://appwrite.io/docs/self-hosting).
-
-To use Go in Appwrite, add it to the `.env` file and restart your Appwrite instance with `docker compose up -d`.
-
-```bash
-.
-.
-.
-_APP_FUNCTIONS_RUNTIMES=go-1.22,...
-.
-.
-.
-```
-
-Next, go ahead and create a Go function using the [Appwrite CLI](https://appwrite.io/docs/tooling/command-line/installation#Installation) by running `appwrite init function`.
-
-Now that your function is set up, we can try some examples:
-
-# Example 1: AI Chatbot using GPT-3.5
+## Example 1: AI Chatbot using GPT-3.5
 
 The first example is a simple chatbot function that accepts a prompt in the request body and returns an answer in the response from the ChatGPT API. 
 
@@ -112,7 +83,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 	openAiClient := openai.NewClient(openAiKey)
 
 	if Context.Req.Method == "GET" {
-		return Context.Res.Text("Send a POST request to this endpoint with a prompt and get a response.", Context.Res.WithStatusCode(200))
+		return Context.Res.Text("Send a POST request to this endpoint with a prompt and get a response.")
 	}
 
 	if Context.Req.Method == "POST" {
@@ -146,14 +117,14 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 			Context.Error(err)
 			return Context.Res.Json(map[string]interface{}{
 				"ok":    false,
-				"error": err,
+				"error": err.Error(),
 			}, Context.Res.WithStatusCode(500))
 		}
 
 		return Context.Res.Json(map[string]interface{}{
 			"ok":       true,
 			"response": completion.Choices[0].Message.Content,
-		}, Context.Res.WithStatusCode(200))
+		})
 	}
 
 	return Context.Res.Json(map[string]interface{}{
@@ -165,74 +136,47 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 
 You can then deploy this function using the `appwrite deploy function` command.
 
-# Example 2: HTML Resume
+## Example 2: HTML Resume
 
 The second example is an online HTML-based resume that you can deliver online through the function. 
 
-For this, the first thing we do is create a `static` directory in the function folder and add a file `resume.html` in it with the contents of our resume. You can [copy our template](https://github.com/appwrite-community/go-function-examples/blob/main/functions/go-resume/static/resume.html) if you’d like.
+For this, the first thing we do is create a `static` directory in the function folder and add a file, `resume.html` with the contents of our resume. You can [copy our template](https://github.com/appwrite-community/go-function-examples/blob/main/functions/go-resume/static/resume.html) if you’d like.
 
-Next, create a `services` directory in the function folder and add a file `utilities.go`, which will add a function to read the contents of the `static/resume.html` file.
-
-```go
-package services
-
-import (
-	"os"
-	"path/filepath"
-
-	"github.com/open-runtimes/types-for-go/v4/openruntimes"
-)
-
-func GetStaticFile(Context openruntimes.Context, fileName string) string {
-	ex, err := os.Executable()
-	if err != nil {
-		Context.Error(err)
-	}
-	exPath := filepath.Dir(ex)
-
-	staticFolder := filepath.Join(exPath, "./static")
-
-	filePath := filepath.Join(staticFolder, fileName)
-
-	content, err := os.ReadFile(filePath)
-	if err != nil {
-		Context.Error(err)
-	}
-
-	return string(content)
-}
-```
-
-Then, we create our function logic`.go` file, where we return this content with the appropriate headers so that a browser reads it as an HTML page.
+Next, create our function logic in the `main.go` file, where we return this content with the appropriate headers so that a browser reads it as an HTML page.
 
 ```go
 package handler
 
 import (
-	"openruntimes/handler/services"
+	"embed"
 
 	"github.com/open-runtimes/types-for-go/v4/openruntimes"
 )
 
+//go:embed static/*
+var embedReader embed.FS
+
 func Main(Context openruntimes.Context) openruntimes.Response {
 	if Context.Req.Method == "GET" {
-		resumeHtml := services.GetStaticFile(Context, "resume.html")
 
-		return Context.Res.Text(
-			resumeHtml, 
-			Context.Res.WithStatusCode(200), 
+		resumeHtml, _ := embedReader.ReadFile(("static/resume.html"))
+
+		Context.Log(resumeHtml)
+
+		return Context.Res.Text(string(resumeHtml),
+			Context.Res.WithStatusCode(200),
 			Context.Res.WithHeaders(map[string]string{
-				"Content-Type": "text/html; charset=utf-8",
-			})
-		)
+				"Content-Type": "text/html",
+			}))
 	}
-	return Context.Res.Text("Bad request", Context.Res.WithStatusCode(400))
+	return Context.Res.Text("Bad request", Context.Res.WithStatusCode(404))
 }
+
 ```
 
 You can then deploy this function using the `appwrite deploy function` command.
 
-# Example 3: URL Shortener
+## Example 3: URL Shortener
 
 The third example is a personal URL shortener that stores your shortened URL path and long URL in an Appwrite Database and redirects the consumer to the appropriate long URL on pinging the shortened URL. 
 
@@ -317,8 +261,8 @@ import (
 )
 
 type RequestBody struct {
-	ShortUrl string `json:"shortUrl"`
-	LongUrl  string `json:"longUrl"`
+	ShortId string `json:"shortId"`
+	LongUrl string `json:"longUrl"`
 }
 
 type ResponseBody struct {
@@ -334,8 +278,8 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 
 	databases := appwrite.NewDatabases(client)
 
-	dbId := "urlDb"
-	collId := "urlColl"
+	dbId := "urlDatabase"
+	collId := "urlCollection"
 
 	services.InitialiseDatabase(Context, *databases, dbId, collId)
 
@@ -350,10 +294,10 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 			}, Context.Res.WithStatusCode(400))
 		}
 
-		document, err := databases.CreateDocument(
+		_, err = databases.CreateDocument(
 			dbId,
 			collId,
-			requestBody.ShortUrl,
+			requestBody.ShortId,
 			map[string]interface{}{
 				"longUrl": requestBody.LongUrl,
 			},
@@ -368,9 +312,10 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 		}
 
 		return Context.Res.Json(map[string]interface{}{
-			"ok":       true,
-			"response": document,
-		}, Context.Res.WithStatusCode(200))
+			"ok":      true,
+			"shortId": requestBody.ShortId,
+			"longUrl": requestBody.LongUrl,
+		})
 	}
 
 	if Context.Req.Method == "GET" {
@@ -379,22 +324,23 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 			return Context.Res.Text("Welcome to the URL shortener service\n\nAdd a short URL to the path to redirect to the long URL\n", Context.Res.WithStatusCode(200))
 		}
 
-		shortUrl := path[1:]
+		shortId := path[1:]
 
-		document, err := databases.GetDocument(dbId, collId, shortUrl)
+		document, err := databases.GetDocument(dbId, collId, shortId)
 
 		if err != nil {
 			Context.Error(err)
-			return Context.Res.Text("URL not found", Context.Res.WithStatusCode(400))
+			return Context.Res.Text("URL not found", Context.Res.WithStatusCode(404))
 		}
 
 		var responseBody ResponseBody
 		document.Decode(&responseBody)
 
-		return Context.Res.Redirect(responseBody.LongUrl, Context.Res.WithStatusCode(301))
+		return Context.Res.Redirect(responseBody.LongUrl, Context.Res.WithStatusCode(302))
 	}
 	return Context.Res.Empty()
 }
+
 ```
 
 You can then deploy this function using the `appwrite deploy function` command.
