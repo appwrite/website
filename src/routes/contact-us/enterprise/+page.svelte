@@ -23,7 +23,7 @@
 
         const cloudEmail = loggedIn && $user?.email ? $user.email : undefined;
 
-        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback/sale`, {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback/sales`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
