@@ -513,7 +513,7 @@
                                 <h4 class="web-label web-u-color-text-primary">Enterprise</h4>
                                 <a
                                     class="web-button is-secondary"
-                                    href="/contact-us"
+                                    href="/contact-us/enterprise"
                                 >
                                     <span class="web-sub-body-500">Contact</span>
                                 </a>
@@ -589,8 +589,8 @@
 
 <style>
     .web-u-grid-auto-column-1fr {
-        grid-template-columns: 1fr;
         grid-auto-columns: max-content;
+        grid-template-columns: repeat(5, 2fr);
     }
 
     .web-label {
@@ -603,10 +603,13 @@
         }
     }
 
-    @media (min-width: 1204px) {
-        .web-u-grid-auto-column-1fr {
-            grid-auto-columns: max-content;
-            grid-template-columns: repeat(5, 1fr);
+    @media (min-width: 1024px) and (max-width: 1210px) {
+        .web-button  {
+            padding-inline: 0.15rem !important;
+        }
+
+        .web-button .web-sub-body-500 {
+            font-size: var(--web-font-size-small);
         }
     }
 </style>
