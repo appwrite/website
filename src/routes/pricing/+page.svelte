@@ -33,7 +33,7 @@
 </svelte:head>
 
 <div
-  class="u-position-absolute web-location-for-mobile overflow-hidden"
+  class="web-location-for-mobile absolute overflow-hidden"
   style="pointer-events:none; inline-size:100%;"
 >
   <enhanced:img
@@ -206,13 +206,13 @@
             </ul>
           </div>
 
-          <ul class="web-grid-1-1-opt-2 u-gap-32 web-u-margin-block-start-80">
+          <ul class="web-grid-1-1-opt-2 web-u-margin-block-start-80 gap-8">
             <li>
               <article
                 class="web-card is-transparent has-border-gradient u-min-height-100-percent"
                 style="background:rgba(35, 35, 37, 0.90);"
               >
-                <header class="u-gap-12 flex">
+                <header class="flex gap-3">
                   <h3
                     id="enterprises"
                     class="web-main-body-500 web-u-color-text-primary"
@@ -238,7 +238,7 @@
                 class="web-card is-transparent has-border-gradient u-min-height-100-percent"
                 style="background:rgba(35, 35, 37, 0.90);"
               >
-                <header class="u-gap-12 flex">
+                <header class="flex gap-3">
                   <h3
                     id="open-source-teams"
                     class="web-main-body-500 web-u-color-text-primary"
@@ -265,10 +265,10 @@
     <ComparePlans />
 
     <div
-      class="web-big-padding-section-level-1 theme-dark u-position-relative overflow-hidden"
+      class="web-big-padding-section-level-1 theme-dark relative overflow-hidden"
     >
-      <div class="web-big-padding-section-level-2 u-position-relative">
-        <div class="container u-position-relative" style:z-index="10">
+      <div class="web-big-padding-section-level-2 relative">
+        <div class="container relative" style:z-index="10">
           <section class="web-grid-4-6">
             <header>
               <div class="web-display web-u-color-text-primary">FAQ</div>
@@ -277,7 +277,7 @@
           </section>
         </div>
       </div>
-      <div class="web-big-padding-section-level-2 u-position-relative">
+      <div class="web-big-padding-section-level-2 relative">
         <div class="container">
           <PreFooter />
           <FooterNav />
