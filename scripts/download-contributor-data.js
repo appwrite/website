@@ -73,7 +73,7 @@ async function fetchContributors(apiUrl) {
     return contributorsData;
 }
 
-async function main() {
+export async function downloadContributors() {
     const contributors = new Set();
 
     for (const repo of ['appwrite/appwrite', 'appwrite/console', 'appwrite/sdk-generator']) {
@@ -96,5 +96,3 @@ async function main() {
 
     fs.writeFileSync(outputFile, contributorsFile);
 }
-
-main();
