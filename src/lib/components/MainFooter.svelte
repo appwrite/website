@@ -27,10 +27,16 @@
         <div class="e-main-footer">
             <div>Copyright © {year} Appwrite</div>
 
-            <a href="/" class="status is-complete">
-                <span class="status-icon" aria-hidden="true"></span>
-                <span class="web-u-color-text-primary">All systems operational</span>
-            </a>
+            <iframe
+                class="status"
+                title="Appwrite Status"
+                src="https://status.appwrite.online/badge?theme=dark"
+                width="190"
+                height="30"
+                frameborder="0"
+                scrolling="no"
+                style="color-scheme: none;margin-top: -4px;"
+            />
 
             <ul class="u-flex u-gap-16">
                 <li><a class="web-link" href="/terms">Terms</a></li>
@@ -88,9 +94,20 @@
         display: grid;
     }
 
-    @media (max-width: 1023.9px), (min-width: 1024px) and (max-width: 1279.9px) {
-        .web-main-footer-links {
-            flex-direction: unset !important;
+    .e-main-footer {
+        display: flex;
+        @media #{$break1} {
+            flex-direction: column;
+            > * {
+                padding-block: 1rem;
+                &:not(:first-child) {
+                    border-block-start: solid 0.0625rem hsl(var(--web-color-border));
+                }
+            }
+        }
+        @media #{$break2open} {
+            display: flex;
+            gap: 2rem;
         }
     }
 </style>
