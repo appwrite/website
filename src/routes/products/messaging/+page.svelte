@@ -579,7 +579,7 @@ messaging.create_email(
       class="web-big-padding-section-level-1 web-u-sep-block-start web-u-padding-block-start-80"
     >
       <div class="container">
-        <h4 class="web-label u-text-center web-u-color-text-primary">
+        <h4 class="web-label web-u-color-text-primary text-center">
           Keep exploring our products
         </h4>
         <ul

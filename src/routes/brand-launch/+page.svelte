@@ -1612,7 +1612,7 @@
                 <span>Share</span>
               </button>
             </div>
-            <div class="web-media-container u-flex-basis-250 u-stretch">
+            <div class="web-media-container u-stretch basis-[250px]">
               <img
                 src="/images/brand/t-shirts.png"
                 alt="brand visual stuff"
