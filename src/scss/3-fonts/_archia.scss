@@ -1,0 +1,49 @@
+@use '../abstract' as *;
+@font-face {
+  font-family: 'Archia';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: local('Archia'), local('Archia'), url('/fonts/archia/Archia-Thin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Archia';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Archia'), local('Archia'), url('/fonts/archia/Archia-Light.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Archia';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Archia'), local('Archia'), url('/fonts/archia/Archia-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Archia';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('Archia'), local('Archia'), url('/fonts/archia/Archia-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Archia';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Archia'), local('Archia'), url('/fonts/archia/Archia-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Archia';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Archia'), local('Archia'), url('/fonts/archia/Archia-Bold.woff2') format('woff2');
+  }
+  

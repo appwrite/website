@@ -4,6 +4,7 @@
     import FunctionsShot from './(assets)/fn-shot.png?enhanced';
     import StorageShot from './(assets)/storage-shot.png?enhanced';
     import RealtimeShot from './(assets)/realtime-shot.png?enhanced';
+    import MessagingShot from './(assets)/messaging-shot.png?enhanced';
 
     export const elId = writable(0);
 
@@ -12,7 +13,15 @@
     }
 
     /* Products infos */
-    const products = ['auth', 'databases', 'storage', 'functions', 'realtime', 'post'] as const;
+    const products = [
+        'auth',
+        'databases',
+        'storage',
+        'functions',
+        'messaging',
+        'realtime',
+        'post'
+    ] as const;
     type Product = (typeof products)[number];
 
     type ProductInfo = {
@@ -77,6 +86,23 @@
             ],
             shot: FunctionsShot
         },
+        messaging: {
+            icon: {
+                active: './images/icons/illustrated/dark/messaging.png',
+                inactive: './images/icons/illustrated/dark/messaging-transparent.png'
+            },
+            title: 'Messaging',
+            subtitle: 'Communicate with your users',
+            description:
+                'Set up a full-functioning messaging service for your application that covers multiple channels under one unified platform.',
+            features: [
+                'Draft and preview your messages before delivery',
+                'Segment your users for specific targeting',
+                'Send push notifications, emails, and SMS',
+                'Supports real-time and location-based messaging'
+            ],
+            shot: MessagingShot
+        },
         storage: {
             icon: {
                 active: './images/icons/illustrated/dark/storage.png',
@@ -128,6 +154,7 @@
     import { Storage, storageController } from './storage';
     import { Functions, functionsController } from './functions';
     import { Realtime, realtimeController } from './realtime';
+    import { Messaging, messagingController } from './messaging';
     import { postController } from './post';
     import Post from './post/post.svelte';
     import { anyify } from '$lib/utils/anyify';
@@ -169,6 +196,7 @@
         databases: databasesController,
         storage: storageController,
         functions: functionsController,
+        messaging: messagingController,
         realtime: realtimeController,
         post: postController
     };
@@ -199,8 +227,8 @@
 >
     <div class="sticky-wrapper">
         <!-- <div class="debug">
-			<pre>{scrollInfo.percentage}</pre>
-		</div> -->
+            <pre>{scrollInfo.percentage}</pre>
+        </div> -->
         {#if scrollInfo.percentage < 0.075}
             <div
                 class="main-text"
@@ -289,6 +317,8 @@
                                         Files
                                     {:else if active.product === 'functions'}
                                         <!-- oblivion -->
+                                    {:else if active.product === 'messaging'}
+                                        Messages
                                     {:else if active.product === 'realtime'}
                                         Realtime
                                     {/if}
@@ -297,6 +327,8 @@
 
                             {#if active.product === 'auth'}
                                 <Auth.Box />
+                            {:else if active.product === 'messaging'}
+                                <Messaging.Box />
                             {:else if active.product === 'databases'}
                                 <Databases.Box />
                             {:else if active.product === 'storage'}
@@ -315,6 +347,8 @@
                                 <Storage.Code />
                             {:else if active.product === 'functions'}
                                 <Functions.Code />
+                            {:else if active.product === 'messaging'}
+                                <Messaging.Code />
                             {/if}
                         </CodeWindow>
                     </div>
@@ -334,15 +368,17 @@
                             <Databases.Phone />
                         {:else if active.product === 'storage'}
                             <Storage.Phone />
+                        {:else if active.product === 'messaging'}
+                            <Messaging.Phone />
                         {:else if active.product === 'functions'}
                             <Functions.Phone />
-                        {:else if !['auth', 'databases', 'storage', 'functions'].includes(active.product)}
+                        {:else if !['auth', 'databases', 'storage', 'messaging', 'functions'].includes(active.product)}
                             <Realtime.Phone />
                         {/if}
                     </div>
                 </div>
 
-                {#if !['auth', 'databases', 'storage', 'functions', 'realtime'].includes(anyify(active.product))}
+                {#if !['auth', 'databases', 'storage', 'functions', 'messaging', 'realtime'].includes(anyify(active.product))}
                     <Post />
                 {/if}
             </div>
@@ -355,7 +391,7 @@
 
     #products {
         min-height: 500vh;
-        height: 5000px;
+        height: fit-content;
         position: relative;
 
         --debug-bg: transparent;
@@ -385,7 +421,7 @@
         padding-inline: 1.25rem;
 
         width: 100%;
-        height: 100vh;
+        height: 60vh;
 
         > .main-text {
             position: absolute;
@@ -396,7 +432,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 15rem;
+            min-height: 5rem;
             text-align: center;
 
             h2 {
@@ -532,7 +568,7 @@
         );
 
         background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(8px);
+        //backdrop-filter: blur(8px);
         padding: 0.5rem;
 
         width: 275px;
