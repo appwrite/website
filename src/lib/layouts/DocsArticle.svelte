@@ -16,14 +16,22 @@
     import { scrollToTop } from '$lib/actions/scrollToTop';
 
     import { Feedback } from '$lib/components';
-    import { page } from '$app/stores';
+    import { onMount } from 'svelte';
 
     export let title: string;
     export let toc: Array<TocItem>;
     export let back: string | undefined = undefined;
     export let date: string | undefined = undefined;
 
-    $: isQuickStartArticle = $page.route.id?.includes('/docs/quick-starts/');
+    let reducedArticleSize = false;
+
+    onMount(() => {
+        // reduces size for articles using numbered sections.
+        const slotWrapper = document.querySelector('.slot-wrapper');
+        reducedArticleSize = !!slotWrapper?.querySelector(
+            '.web-article-content-section.is-with-line .web-numeric-badge'
+        );
+    })
 </script>
 
 <main class="u-contents" id="main">
@@ -64,9 +72,12 @@
         </header>
         <div
             class="web-article-content"
-            class:quick-start-article-padding={isQuickStartArticle}
+            class:reduced-article-size={reducedArticleSize}
         >
-            <slot />
+            <div class="slot-wrapper">
+                <slot />
+            </div>
+
             <Feedback {date} />
         </div>
         <aside class="web-references-menu web-u-padding-inline-start-24">
@@ -127,7 +138,7 @@
 
 <style>
     @media (min-width: 1280px) and (max-width: 1330px) {
-        .quick-start-article-padding {
+        .reduced-article-size {
             /* original/default is 41.5rem */
             max-inline-size: 40.5rem !important;
         }
