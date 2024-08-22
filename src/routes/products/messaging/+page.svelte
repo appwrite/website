@@ -297,7 +297,7 @@ messaging.create_email(
     </div>
 
     <div
-      class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light web-u-padding-block-end-0"
+      class="web-big-padding-section-level-1 web-white-section theme-light web-u-padding-block-end-0 relative"
     >
       <div
         class="web-big-padding-section-level-2"
@@ -481,15 +481,15 @@ messaging.create_email(
           </div>
         </div>
       </div>
-      <!-- <div class="web-big-padding-section-level-2 u-position-relative u-z-index-1 theme-light">
-                <div class="container u-position-relative">
+      <!-- <div class="web-big-padding-section-level-2 relative u-z-index-1 theme-light">
+                <div class="container relative">
                     <img
-                        class="u-position-absolute u-z-index-1 is-not-mobile"
+                        class="absolute u-z-index-1 is-not-mobile"
                         style="width:1500px; height:auto; max-block-size:none; max-inline-size:none; inset-block-end:-27rem; rotate:145deg; inset-inline-start:-42rem;"
                         src="/images/messaging/stripes.png"
                         alt="stripes"
                     />
-                    <div class="grid-1-1 u-position-relative u-z-index-1">
+                    <div class="grid-1-1 relative u-z-index-1">
                         <section class="web-hero is-align-start">
                             <span class="web-badges web-eyebrow">PERFORMANCE_</span>
                             <h2 class="web-display max-w-[600px] web-u-color-text-primary">
@@ -524,7 +524,7 @@ messaging.create_email(
     </div>
 
     <div
-      class="u-position-relative u-z-index-1"
+      class="u-z-index-1 relative"
       style="background-color:hsl(var(--web-color-greyscale-900)); padding-block-start: 40px"
     >
       <div class="web-big-padding-section-level-2">
@@ -742,7 +742,7 @@ messaging.create_email(
       </div>
     </section>
     <div
-      class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
+      class="web-big-padding-section-level-2 is-margin-replace-padding relative"
     >
       <div class="container">
         <PreFooter />

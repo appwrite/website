@@ -43,7 +43,7 @@
   </div>
   <div class="web-grid-articles-item-content is-no-gap">
     <ul class="web-u-list-inline-dot-sep flex flex-wrap">
-      <li class="u-cross-baseline u-gap-4 flex">
+      <li class="u-cross-baseline flex gap-1">
         <span
           class="web-icon-calendar web-u-color-text-tertiary"
           aria-hidden="true"
@@ -51,7 +51,7 @@
         <time class="">{dateString}</time>
       </li>
       {#if location}
-        <li class="u-cross-baseline u-gap-4 flex">
+        <li class="u-cross-baseline flex gap-1">
           <span
             class="web-icon-location web-u-color-text-tertiary"
             aria-hidden="true"

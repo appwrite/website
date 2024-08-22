@@ -47,7 +47,7 @@
 <div>
   <div class="u-margin-block-start-8 flex flex-wrap items-center">
     <slot name="header" />
-    <div class="nav u-gap-12 u-cross-end u-margin-inline-start-auto flex">
+    <div class="nav u-cross-end u-margin-inline-start-auto flex gap-3">
       <button
         class="web-icon-button"
         aria-label="Move carousel backward"

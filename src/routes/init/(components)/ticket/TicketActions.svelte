@@ -48,10 +48,10 @@
 
 {#if customizing}
   <div
-    class="action-container u-main-between u-gap-16 flex"
+    class="action-container u-main-between flex gap-4"
     style:justify-content="space-between"
   >
-    <div class="u-gap-16 flex">
+    <div class="flex gap-4">
       {#if ticket.gh_user}
         <div class="flex items-center gap-2">
           <div class="web-u-color-text-primary flex items-center gap-2">

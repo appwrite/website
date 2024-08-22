@@ -192,7 +192,7 @@
                 {/if}
 
                 <div
-                  class="share-post-section u-gap-16 u-margin-block-start-16 flex items-center"
+                  class="share-post-section u-margin-block-start-16 flex items-center gap-4"
                 >
                   <span
                     class="web-eyebrow u-padding-inline-end-8"

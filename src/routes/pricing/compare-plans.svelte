@@ -360,7 +360,7 @@
 
 <div class="web-big-padding-section-level-1 web-white-section theme-light">
   <div class="web-big-padding-section-level-2">
-    <div class="u-position-relative">
+    <div class="relative">
       <article use:melt={$root}>
         <div class="container">
           <header
@@ -396,7 +396,7 @@
           </div>
 
           <div
-            class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border u-gap-32 web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 u-position-sticky u-z-index-5 web-u-container-query-inline"
+            class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 u-position-sticky u-z-index-5 web-u-container-query-inline gap-8"
             style:--inset-block-start={$isHeaderHidden ? "0px" : "70px"}
             style:transition="inset-block-start 0.3s ease"
           >
@@ -426,7 +426,7 @@
               {/key}
             </div>
             <div class="web-mini-card">
-              <div class="u-gap-16 flex flex-wrap items-center justify-between">
+              <div class="flex flex-wrap items-center justify-between gap-4">
                 <h4 class="web-label web-u-color-text-primary">Free</h4>
                 <a
                   href="https://cloud.appwrite.io/register"
@@ -437,7 +437,7 @@
               </div>
             </div>
             <div class="web-mini-card">
-              <div class="u-gap-16 flex flex-wrap items-center justify-between">
+              <div class="flex flex-wrap items-center justify-between gap-4">
                 <h4 class="web-label web-u-color-text-primary">Pro</h4>
                 <a
                   class="web-button"
@@ -451,7 +451,7 @@
               </div>
             </div>
             <div class="web-mini-card">
-              <div class="u-gap-16 flex flex-wrap items-center justify-between">
+              <div class="flex flex-wrap items-center justify-between gap-4">
                 <h4 class="web-label web-u-color-text-primary">Scale</h4>
                 <button class="web-button is-secondary" disabled>
                   <span class="web-sub-body-500">Coming soon</span>
