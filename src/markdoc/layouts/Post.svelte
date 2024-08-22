@@ -247,7 +247,7 @@
               </header>
               {#if cover}
                 <div class="web-media-container">
-                  <Media class="u-block" src={cover} />
+                  <Media class="block" src={cover} />
                 </div>
               {/if}
 

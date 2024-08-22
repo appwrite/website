@@ -148,7 +148,7 @@
 										<div>
 											<div class="web-card is-white web-u-max-width-350">
 												<h6 class="web-label">0.1 - 0.4 released</h6>
-												<p class="web-sub-body-400 u-margin-block-start-12">Early stages of authentication, avatars, database, teams, and storage features</p>
+												<p class="web-sub-body-400 mt-3">Early stages of authentication, avatars, database, teams, and storage features</p>
 											</div>
 										</div>
 									</div>
@@ -291,7 +291,7 @@
             <h4 class="web-display web-u-color-text-primary">
               Backed by top investors
             </h4>
-            <p class="web-description web-u-max-width-480 u-margin-inline-auto">
+            <p class="web-description web-u-max-width-480 mx-auto">
               Appwrite is proudly backed by some of the top investors in the
               industry.
             </p>

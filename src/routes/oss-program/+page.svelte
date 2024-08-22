@@ -150,7 +150,7 @@
                     class="web-form-list is-two-columns u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile gap-4"
                   >
                     <li class="web-form-item flex flex-col gap-1">
-                      <div class="u-block">Full name</div>
+                      <div class="block">Full name</div>
                       <input
                         required
                         class="web-input-text"
@@ -161,7 +161,7 @@
                       />
                     </li>
                     <li class="web-form-item flex flex-col gap-1">
-                      <div class="u-block">Email address</div>
+                      <div class="block">Email address</div>
                       <input
                         required
                         class="web-input-text"
@@ -174,7 +174,7 @@
                     <li
                       class="web-form-item is-column-span-2 flex flex-col gap-1"
                     >
-                      <div class="u-block">Project or company name</div>
+                      <div class="block">Project or company name</div>
                       <input
                         required
                         class="web-input-text"
@@ -185,7 +185,7 @@
                       />
                     </li>
                     <li class="web-form-item flex flex-col gap-1">
-                      <div class="u-block">GitHub URL</div>
+                      <div class="block">GitHub URL</div>
                       <input
                         required
                         class="web-input-text"
@@ -196,7 +196,7 @@
                       />
                     </li>
                     <li class="web-form-item flex flex-col gap-1">
-                      <div class="u-block">Website URL</div>
+                      <div class="block">Website URL</div>
                       <input
                         class="web-input-text"
                         type="url"
@@ -208,7 +208,7 @@
                     <li
                       class="web-form-item is-column-span-2 flex flex-col gap-1"
                     >
-                      <div class="u-block">OSS license</div>
+                      <div class="block">OSS license</div>
                       <input
                         class="web-input-text"
                         type="text"
@@ -220,7 +220,7 @@
                     <li
                       class="web-form-item is-column-span-2 flex flex-col gap-1"
                     >
-                      <div class="u-block">Message</div>
+                      <div class="block">Message</div>
                       <textarea
                         required
                         name="message"

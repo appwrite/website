@@ -128,9 +128,7 @@
                   identity. Refrain from altering our logo and preferably use
                   our logo on a neutral background.
                 </p>
-                <div
-                  class="web-flex flex-col-mobile u-margin-block-start-12 flex flex-wrap gap-8"
-                >
+                <div class="web-flex flex-col-mobile mt-3 flex flex-wrap gap-8">
                   <div
                     class="media-wrapper | light |
                                     u-stretch web-u-flex-basis-300 web-u-bg-color-neutral-100 web-u-min-block-size-320 flex items-center justify-center rounded-lg
@@ -200,7 +198,7 @@
                     collection of shapes.
                   </p>
                   <div
-                    class="u-margin-block-start-12 web-u-border-radius-8 u-padding-inline-16 web-u-bg-color-neutral-800 web-u-min-block-size-320 flex
+                    class="web-u-border-radius-8 u-padding-inline-16 web-u-bg-color-neutral-800 web-u-min-block-size-320 mt-3 flex
                                                 items-center justify-center"
                   >
                     <img
@@ -227,9 +225,7 @@
                   for situations where space constraints make it challenging to
                   showcase the complete logotype.
                 </p>
-                <div
-                  class="web-flex flex-col-mobile u-margin-block-start-12 flex flex-wrap gap-8"
-                >
+                <div class="web-flex flex-col-mobile mt-3 flex flex-wrap gap-8">
                   <div
                     class="media-wrapper | light |
                                     u-stretch web-u-flex-basis-300 web-u-border-radius-8 web-u-bg-color-neutral-100 web-u-min-block-size-320 flex items-center justify-center
@@ -299,7 +295,7 @@
                     collection of shapes.
                   </p>
                   <div
-                    class="u-margin-block-start-12 web-u-border-radius-8 u-padding-inline-16 web-u-bg-color-neutral-800 web-u-min-block-size-320 flex
+                    class="web-u-border-radius-8 u-padding-inline-16 web-u-bg-color-neutral-800 web-u-min-block-size-320 mt-3 flex
                                                 items-center justify-center"
                   >
                     <img
@@ -369,9 +365,7 @@
                   Use these product visuals to enhance your articles,
                   presentations, and content related to Appwrite.
                 </p>
-                <div
-                  class="grid-cols-2-opt-2 u-margin-block-start-12 grid gap-8"
-                >
+                <div class="grid-cols-2-opt-2 mt-3 grid gap-8">
                   <div class="media-wrapper">
                     <img
                       class="web-u-border-radius-8 web-u-media-ratio-16-9 u-width-full-line"

@@ -51,10 +51,7 @@
               Your email has been verified successfully.
             {/if}
           </p>
-          <a
-            href="/"
-            class="web-button is-secondary u-margin-block-start-12 self-center"
-          >
+          <a href="/" class="web-button is-secondary mt-3 self-center">
             <span>Back to homepage</span>
           </a>
         </div>

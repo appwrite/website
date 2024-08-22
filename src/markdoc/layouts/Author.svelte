@@ -106,7 +106,7 @@
 
     <div class="web-big-padding-section-level-2 relative">
       <div class="web-container">
-        <div class="web-author-section u-block">
+        <div class="web-author-section block">
           {#if avatar}
             <FloatingHead
               --position="relative"
@@ -178,7 +178,7 @@
         <h2 class="web-title web-u-color-text-primary">Articles</h2>
 
         <!-- <div class="web-is-only-mobile u-margin-block-start-32">
-					<label class="u-block web-select is-colored" for="articles">
+					<label class="blockweb-select is-colored" for="articles">
 						<select id="articles">
 							<option>Latest</option>
 							<option>News</option>

@@ -56,7 +56,7 @@
   <title>{title}</title>
   <meta property="og:title" content={title} />
   <meta name="twitter:title" content={title} />
-  <!-- Description -->
+  <!-- Desscription -->
   <meta name="description" content={description} />
   <meta property="og:description" content={description} />
   <meta name="twitter:description" content={description} />
@@ -74,7 +74,7 @@
   <header
     class="web-u-sep-block-end u-padding-block-end-0 u-overflow-hidden relative"
   >
-    <div class="container hero web-u-padding-block-end-0 relative">
+    <div class="web-container hero web-u-padding-block-end-0 relative">
       <img
         src="/images/pages/integration/integration-bg-top-1.png"
         alt=""
@@ -98,7 +98,7 @@
       />
       <div class="web-integrations-top-section">
         <div
-          class="l-integrations-hero u-main-center web-u-max-width-680 flex flex-col gap-5"
+          class="l-integrations-hero web-u-max-width-680 flex flex-col justify-center gap-5"
         >
           <div class="web-eyebrow web-u-color-text-primary">
             INTEGRATIONS<span class="web-u-color-text-accent">_</span>
@@ -121,18 +121,18 @@
 
   <div class="web-big-padding-section-level-1">
     <div>
-      <div class="container">
+      <div class="web-container">
         <div class="l-integrations-grid">
           <aside class="sidebar flex flex-col gap-8">
             <section>
-              <label class="web-input-button web-u-flex-basis-400">
+              <label class="web-input-button web-flex-basis-400">
                 <span class="web-icon-search" aria-hidden="true"></span>
                 <input class="text" placeholder="Search" bind:value={$query} />
               </label>
             </section>
             <section class="flex flex-col">
               <section class="flex flex-col gap-4">
-                <h2 class="web-side-nav-header web-eyebrow whitespace-nowrap">
+                <h2 class="web-side-nav-header web-eyebrow u-un-break-text">
                   Platform
                 </h2>
                 <ul class="flex flex-wrap gap-2" class:disabled={hasQuery}>
@@ -151,7 +151,7 @@
               </section>
               <div class="web-u-sep-block-start u-margin-block-24"></div>
               <section class="flex flex-col gap-4">
-                <h2 class="web-side-nav-header web-eyebrow whitespace-nowrap">
+                <h2 class="web-side-nav-header web-eyebrow u-un-break-text">
                   Categories
                 </h2>
 
@@ -229,10 +229,12 @@
                         <li>
                           <a
                             href={item.href}
-                            class="web-card is-normal h-full"
+                            class="web-card is-normal u-height-100-percent"
                             style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                           >
-                            <div class="flex items-center gap-2">
+                            <div
+                              class="flex items-center justify-between gap-2"
+                            >
                               <img
                                 class="web-user-box-image is-32px"
                                 src={item.product.avatar}
@@ -240,7 +242,7 @@
                                 width="32"
                                 height="32"
                               />
-                              <h4 class="web-u-color-text-primary">
+                              <h4 class="web-u-color-text-primary mt-3">
                                 {item.title}
                               </h4>
                               <span
@@ -248,7 +250,7 @@
                                 aria-hidden="true"
                               ></span>
                             </div>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                            <p class="web-sub-body-400 mt-1">
                               {item.description}
                             </p>
                           </a>
@@ -265,19 +267,22 @@
                   </header>
 
                   <div>
-                    <ul class="web-feature-grid" style="gap: 1rem">
+                    <ul class="web-feature-grid grid grid-cols-2 gap-4">
                       {#each data.featured as item}
                         <li
-                          class="web-feature-grid-item is-two-columns-desktop-only"
+                          class="web-feature-grid-item is-two-columns-desktop-only relative"
                         >
-                          <a class="web-overlay-item" href={item.href}>
+                          <a
+                            class="block overflow-hidden rounded-2xl before:absolute before:inset-x-0 before:bottom-0 before:block before:h-80 before:rounded-[inherit] before:bg-gradient-to-b before:from-transparent before:via-transparent before:to-black"
+                            href={item.href}
+                          >
                             <img
                               src={item.cover}
                               alt={item.title}
-                              class="u-block web-u-media-ratio-16-9 web-u-media-cover"
+                              class="web-u-media-cover block aspect-video"
                             />
                             <div
-                              class="web-user-box u-column-gap-8 u-row-gap-0"
+                              class="web-user-box absolute bottom-4 left-4 z-10 gap-x-2"
                             >
                               <img
                                 class="web-user-box-image"
@@ -288,9 +293,9 @@
                                 style="border-radius: 50%;"
                               />
                               <div
-                                class="web-user-box-name web-main-body-500 flex gap-2"
+                                class="web-user-box-name web-main-body-500 gap-2"
                               >
-                                <span class="web-u-color-text-primary">
+                                <span class="web-u-color-text-primary mt-3">
                                   {item.title}
                                 </span>
                                 <!-- {#if item.isNew}
@@ -345,11 +350,11 @@
                               <li>
                                 <a
                                   href={integration.href}
-                                  class="web-card is-normal h-full"
+                                  class="web-card is-normal u-height-100-percent"
                                   style="--card-padding:1.5rem; --card-padding-mobile:1.5rem; --card-border-radius: 1.5rem"
                                 >
                                   <div
-                                    class="flex items-center justify-between"
+                                    class="flex items-center justify-between gap-2"
                                   >
                                     <img
                                       class="web-user-box-image is-32px"
@@ -364,14 +369,10 @@
                                     ></span>
                                   </div>
 
-                                  <h4
-                                    class="web-u-color-text-primary u-margin-block-start-12"
-                                  >
+                                  <h4 class="web-u-color-text-primary mt-3">
                                     {integration.title}
                                   </h4>
-                                  <p
-                                    class="web-sub-body-400 u-margin-block-start-4"
-                                  >
+                                  <p class="web-sub-body-400 mt-1">
                                     {integration.description}
                                   </p>
                                 </a>
@@ -401,7 +402,7 @@
     class="web-big-padding-section-level-1 u-overflow-hidden"
     style:margin-top="160px"
   >
-    <div class="container">
+    <div class="web-container">
       <div class="web-big-padding-section-level-2 relative">
         <img
           src="/images/bgs/pre-footer.png"
@@ -412,10 +413,10 @@
 
         <div class="relative">
           <section
-            class="web-hero u-row-gap-16 u-main-center web-u-max-width-580 flex items-center"
+            class="web-hero web-u-max-width-580 flex items-center justify-center gap-4"
           >
             <h2
-              class="web-display web-u-text-align-center web-u-color-text-primary max-w-[600px]"
+              class="web-display u-max-width-600 web-u-text-align-center web-u-color-text-primary"
             >
               Become a Technology Partner
             </h2>

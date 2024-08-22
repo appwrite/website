@@ -76,7 +76,7 @@
   <div class="web-big-padding-section">
     <div class="web-big-padding-section-level-1">
       <div class="web-big-padding-section-level-2">
-        <section class="web-container web-u-padding-block-end-0">
+        <section class="container web-u-padding-block-end-0">
           <a
             href="/blog/post/announcing-init-faster-smoother-better"
             class="web-hero-banner-button web-u-margin-block-end-24"
@@ -116,12 +116,12 @@
       </div>
       <div class="web-big-padding-section-level-2">
         <section
-          class="web-container web-u-padding-block-0"
+          class="container web-u-padding-block-0"
           style="--container-size:78.75rem"
         >
           <div class="web-media-container">
             <img
-              class="u-block"
+              class="block"
               src={CoverImage}
               alt="console dashboard"
               style:aspect-ratio="1244 / 717"
@@ -130,9 +130,9 @@
         </section>
       </div>
       <div class="web-big-padding-section-level-2">
-        <div class="web-container">
+        <div class="container">
           <h2
-            class="web-title web-u-color-text-primary web-u-text-align-center web-u-max-width-600 u-margin-inline-auto"
+            class="web-title web-u-color-text-primary web-u-text-align-center web-u-max-width-600 mx-auto"
           >
             Trusted by developers from the world's leading organizations
           </h2>
@@ -244,13 +244,11 @@
     <ProductsMobile />
 
     <div
-      class="web-big-padding-section-level-1 web-white-section theme-light relative"
+      class="web-big-padding-section-level-1 web-white-section light relative"
     >
-      <div
-        class="u-inset-block-end-0 u-inset-inline-start u-width-full-line absolute"
-      >
+      <div class="u-inset-inline-start absolute bottom-0 w-full">
         <img
-          class="u-block u-width-full-line"
+          class="block w-full"
           src="/images/bgs/padding-section-1.svg"
           alt=""
           style:max-height="48rem"
@@ -258,9 +256,11 @@
       </div>
 
       <div class="web-big-padding-section-level-2">
-        <div class="web-container">
+        <div class="container">
           <section class="web-hero is-align-start">
-            <span class="web-badges web-eyebrow">PRIVACY & SECURITY_</span>
+            <span class="web-badges web-eyebrow !text-white"
+              >PRIVACY & SECURITY_</span
+            >
             <h2 class="web-display web-u-color-text-primary max-w-[700px]">
               Self-host your data or take it to the Cloud
             </h2>
@@ -368,9 +368,9 @@
       </div>
       <OpenSource />
       <div class="web-big-padding-section-level-2">
-        <div class="web-container">
+        <div class="container">
           <div class="web-hero">
-            <div class="web-display web-u-color-text-primary">
+            <div class="web-display text-primary">
               Loved by developers like you
             </div>
           </div>
@@ -484,9 +484,9 @@
         />
       </div>
       <div class="web-big-padding-section-level-2 is-margin-replace-padding">
-        <div class="web-container relative">
+        <div class="container relative">
           <section class="web-hero is-align-start">
-            <span class="web-badges web-eyebrow">SDKs_</span>
+            <span class="web-badges web-eyebrow !text-white">SDKs_</span>
             <h2 class="web-display web-u-color-text-primary max-w-[600px]">
               Code the way you want
             </h2>
@@ -525,10 +525,10 @@
             />
           </div>
         </div>
-        <div class="web-container relative">
-          <div class="grid-1-1">
+        <div class="container relative">
+          <div class="grid grid-cols-2">
             <section class="web-hero is-align-start">
-              <span class="web-badges web-eyebrow">Scale_</span>
+              <span class="web-badges web-eyebrow !text-white">Scale_</span>
               <h2 class="web-display web-u-color-text-primary max-w-[600px]">
                 We scale for you
               </h2>
@@ -559,7 +559,7 @@
       <div
         class="web-big-padding-section-level-2 is-margin-replace-padding u-overflow-hidden relative"
       >
-        <div class="web-container">
+        <div class="container">
           <PreFooter />
           <FooterNav />
           <MainFooter />
