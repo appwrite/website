@@ -148,7 +148,7 @@ Use these classes and methods to reduce guess work and get better code suggestio
 ## IDs {% #ids %}
 Appwrite has utility classes to help you handle IDs. 
 These generate the correct ID format to be passed to the Appwrite APIs.
-Note that **ID.unique()** does not generate unique IDs locally, but asks the Appwrite APIs to generate them on the server.
+
 {% tabs %}
 {% tabsitem #client title="Client SDKs" %}
 {% multicode %}
