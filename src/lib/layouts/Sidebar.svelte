@@ -107,7 +107,7 @@
     {#if expandable}
       <button
         on:click={toggleSidenav}
-        class="web-icon-button u-margin-inline-start-auto"
+        class="web-icon-button ml-auto"
         style:margin-bottom="1rem"
         aria-label="toggle nav"
       >

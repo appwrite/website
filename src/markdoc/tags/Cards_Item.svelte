@@ -18,7 +18,7 @@
         {title}
       </h4>
     </header>
-    <p class="web-sub-body-400 u-margin-block-start-4" style:margin-block="0">
+    <p class="web-sub-body-400 mt-1" style:margin-block="0">
       <slot />
     </p>
   </a>

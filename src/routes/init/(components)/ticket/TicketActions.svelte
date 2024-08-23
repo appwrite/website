@@ -48,7 +48,7 @@
 
 {#if customizing}
   <div
-    class="action-container u-main-between flex gap-4"
+    class="action-container flex justify-between gap-4"
     style:justify-content="space-between"
   >
     <div class="flex gap-4">

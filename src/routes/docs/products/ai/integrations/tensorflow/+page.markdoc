@@ -261,16 +261,16 @@ Create a HTML web page that the function will serve. Create a new file at `stati
   </head>
   <body class="dark">
     <main class="main-content">
-      <div class="top-cover u-padding-block-end-56">
+      <div class="top-cover pb-14">
         <div class="container">
           <div
-            class="flex gap-4 justify-center u-margin-block-start-16"
+            class="flex gap-4 justify-center mt-4"
           >
             <h1 class="heading-level-1">Generate with TensorFlow demo</h1>
             <code class="u-un-break-text"></code>
           </div>
           <p
-            class="body-text-1 u-normal u-margin-block-start-8"
+            class="body-text-1 u-normal mt-2"
             style="max-width: 50rem"
           >
             Use this page to test your implementation with TensorFlow. Enter

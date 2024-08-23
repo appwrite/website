@@ -49,20 +49,16 @@
           <span class="web-icon-chevron-left" aria-hidden="true" />
           <span>Back to blog</span>
         </a>
-        <div class="web-category-header u-margin-block-start-24">
+        <div class="web-category-header mt-6">
           <div class="web-category-header-content">
             <h1 class="web-display web-u-color-text-primary">{name}</h1>
             <p class="web-category-header-description web-description">
               {description}
             </p>
           </div>
-          <!-- <div class="web-input-text-search-wrapper u-inline-width-100-percent-mobile">
-						<span class="icon-search" aria-hidden="true" />
-						<input class="web-input-text web-u-block-size-48" type="search" placeholder="Search" />
-					</div> -->
         </div>
 
-        <div class="u-margin-block-start-48">
+        <div class="mt-12">
           <ul class="web-grid-articles">
             {#each posts as post}
               {@const author = authors.find((a) =>
@@ -83,7 +79,7 @@
           </ul>
         </div>
         <div
-          class="web-big-padding-section-level-2 is-margin-replace-padding u-overflow-hidden relative"
+          class="web-big-padding-section-level-2 is-margin-replace-padding relative overflow-hidden"
         >
           <div class="web-container">
             <FooterNav />

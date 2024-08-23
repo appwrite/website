@@ -48,10 +48,8 @@
       </div>
 
       <div class="info">
-        <p class="web-label u-margin-block-start-16">
-          Register today and claim your ticket.
-        </p>
-        <div class="u-margin-block-start-32 flex items-center gap-4">
+        <p class="web-label mt-4">Register today and claim your ticket.</p>
+        <div class="mt-8 flex items-center gap-4">
           <a class="web-button" href="/init/tickets">
             <span class="text">Get my ticket</span>
           </a>

@@ -162,7 +162,7 @@
               </li>
             </ul>
             <div
-              class="web-input-text-search-wrapper u-width-full-line web-u-max-inline-size-none-mobile u-margin-inline-start-auto max-w-[350px]"
+              class="web-input-text-search-wrapper web-u-max-inline-size-none-mobile ml-auto w-full max-w-[350px]"
             >
               <span
                 class="web-icon-search z-[5]"
@@ -170,7 +170,7 @@
                 style="inset-block-start:0.9rem"
               />
               <input
-                class="web-input-button -u-padding-block-0 relative z-1"
+                class="web-input-button relative z-1"
                 type="text"
                 id="search"
                 placeholder="Search for threads"
@@ -182,15 +182,12 @@
           </div>
 
           {#if threads.length}
-            <h2
-              class="u-margin-block-start-16 web-u-color-text-primary"
-              aria-live="polite"
-            >
+            <h2 class="web-u-color-text-primary mt-4" aria-live="polite">
               Found {query.length ? threads.length : "5000+"} results.
             </h2>
           {/if}
 
-          <div class="u-margin-block-start-16 flex flex-col gap-4">
+          <div class="mt-4 flex flex-col gap-4">
             {#each threads as thread (thread.$id)}
               <ThreadCard {thread} {query} />
             {:else}

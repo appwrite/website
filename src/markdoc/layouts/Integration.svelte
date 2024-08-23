@@ -41,16 +41,13 @@
 
 <Main>
   <div
-    class="web-u-sep-block-end u-padding-block-end-0"
+    class="web-u-sep-block-end pb-0"
     style="background-color:rgba(23, 23, 26, 1); margin-block-end: 2.5rem"
   >
     <div class="web-container">
       <div class="web-integrations-top-section">
         <div class="web-carousel-wrapper">
-          <a
-            href="/integrations"
-            class="web-button is-text u-margin-block-end-48"
-          >
+          <a href="/integrations" class="web-button is-text mb-12">
             <span class="icon-cheveron-left" aria-hidden="true"></span>
             <span>Back to catalog</span>
           </a>
@@ -145,7 +142,7 @@
   </div>
 
   <div
-    class="web-big-padding-section-level-1 u-overflow-hidden web-u-sep-block-start u-margin-block-start-48"
+    class="web-big-padding-section-level-1 web-u-sep-block-start mt-12 overflow-hidden"
   >
     <!-- <ProductsGrid /> -->
 
@@ -161,7 +158,7 @@
         <!-- <div class="relative cta"> -->
         <div class="relative">
           <section
-            class="web-hero u-row-gap-16 u-main-center web-u-max-width-580 flex items-center"
+            class="web-hero web-u-max-width-580 flex items-center justify-center gap-y-4"
           >
             <h2
               class="web-display web-u-text-align-center web-u-color-text-primary max-w-[600px]"
@@ -175,7 +172,7 @@
             </p>
             <a
               href="/integrations/technology-partner"
-              class="web-button is-primary web-u-cross-child-center u-margin-block-start-16"
+              class="web-button is-primary web-u-cross-child-center mt-4"
             >
               <span class="text">Get Started</span>
             </a>

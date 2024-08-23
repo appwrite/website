@@ -371,14 +371,14 @@
             }}
           >
             <h3 class="web-title web-u-color-text-primary">Compare plans</h3>
-            <p class="web-main-body-500 u-margin-block-start-16">
+            <p class="web-main-body-500 mt-4">
               Discover our plans and find the one that fits your project’s
               needs.
             </p>
           </header>
 
           <div
-            class="web-is-only-mobile web-u-padding-block-start-48 web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 /sticky /u-z-index-5"
+            class="web-is-only-mobile web-u-padding-block-start-48 web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8"
             style:--inset-block-start="2rem"
           >
             <Tabs bind:tab tabs={cols} let:TabsList>
@@ -390,13 +390,13 @@
 								--p-secondary-tabs-bg-color-selected: var(--web-color-accent) / 0.08;"
                 let:tab
               >
-                <span class="web-main-body-500 u-capitalize">{tab}</span>
+                <span class="web-main-body-500 capitalize">{tab}</span>
               </TabsList>
             </Tabs>
           </div>
 
           <div
-            class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 u-z-index-5 web-u-container-query-inline sticky gap-8"
+            class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 web-u-container-query-inline sticky z-[5] gap-8"
             style:--inset-block-start={$isHeaderHidden ? "0px" : "70px"}
             style:transition="inset-block-start 0.3s ease"
           >

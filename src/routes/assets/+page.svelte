@@ -66,13 +66,11 @@
         <header class="web-grid-120-1fr-auto-header">
           <h1 class="web-display web-u-color-text-primary">Brand assets</h1>
           <button
-            class="u-width-full-line web-u-padding-block-20 web-u-color-text-primary
-                        web-is-only-mobile web-u-margin-inline-32-negative
-                       u-margin-block-start-24 web-u-sep-block u-width-full-line flex"
+            class="web-u-padding-block-20 web-u-color-text-primary web-is-only-mobile
+                        web-u-margin-inline-32-negative web-u-sep-block
+                       mt-6 flex w-full w-full"
           >
-            <span
-              class="container u-width-full-line flex items-center justify-between"
-            >
+            <span class="container flex w-full items-center justify-between">
               <span class="web-description">Table of contents</span>
               <span class="icon-menu-alt-4" aria-hidden="true" />
             </span>
@@ -131,7 +129,7 @@
                 <div class="web-flex flex-col-mobile mt-3 flex flex-wrap gap-8">
                   <div
                     class="media-wrapper | light |
-                                    u-stretch web-u-flex-basis-300 web-u-bg-color-neutral-100 web-u-min-block-size-320 flex items-center justify-center rounded-lg
+                                    web-u-flex-basis-300 web-u-bg-color-neutral-100 web-u-min-block-size-320 flex flex-1 items-center justify-center rounded-lg
                                     ps-16 pe-16"
                   >
                     <img
@@ -159,7 +157,7 @@
                   </div>
                   <div
                     class="media-wrapper | dark |
-                                    u-stretch web-u-flex-basis-300 web-u-border-radius-8 web-u-bg-color-neutral-800 web-u-min-block-size-320 flex items-center justify-center
+                                    web-u-flex-basis-300 web-u-border-radius-8 web-u-bg-color-neutral-800 web-u-min-block-size-320 flex flex-1 items-center justify-center
                                     ps-16 pe-16"
                   >
                     <img
@@ -198,8 +196,8 @@
                     collection of shapes.
                   </p>
                   <div
-                    class="web-u-border-radius-8 u-padding-inline-16 web-u-bg-color-neutral-800 web-u-min-block-size-320 mt-3 flex
-                                                items-center justify-center"
+                    class="web-u-border-radius-8 web-u-bg-color-neutral-800 web-u-min-block-size-320 mt-3 flex items-center
+                                                justify-center px-4"
                   >
                     <img
                       src="/assets/logotype/co-brand.svg"
@@ -228,7 +226,7 @@
                 <div class="web-flex flex-col-mobile mt-3 flex flex-wrap gap-8">
                   <div
                     class="media-wrapper | light |
-                                    u-stretch web-u-flex-basis-300 web-u-border-radius-8 web-u-bg-color-neutral-100 web-u-min-block-size-320 flex items-center justify-center
+                                    web-u-flex-basis-300 web-u-border-radius-8 web-u-bg-color-neutral-100 web-u-min-block-size-320 flex flex-1 items-center justify-center
                                     ps-16 pe-16"
                   >
                     <img
@@ -256,7 +254,7 @@
                   </div>
                   <div
                     class="media-wrapper | dark |
-                                    u-stretch web-u-flex-basis-300 web-u-border-radius-8 web-u-bg-color-neutral-800 web-u-min-block-size-320 flex items-center justify-center
+                                    web-u-flex-basis-300 web-u-border-radius-8 web-u-bg-color-neutral-800 web-u-min-block-size-320 flex flex-1 items-center justify-center
                                     ps-16 pe-16"
                   >
                     <img
@@ -295,8 +293,8 @@
                     collection of shapes.
                   </p>
                   <div
-                    class="web-u-border-radius-8 u-padding-inline-16 web-u-bg-color-neutral-800 web-u-min-block-size-320 mt-3 flex
-                                                items-center justify-center"
+                    class="web-u-border-radius-8 web-u-bg-color-neutral-800 web-u-min-block-size-320 mt-3 flex items-center
+                                                justify-center px-4"
                   >
                     <img
                       src="/assets/logomark/co-brand.svg"
@@ -317,9 +315,9 @@
               </h2>
               <div class="flex flex-wrap gap-8">
                 <div
-                  class="media-wrapper | u-stretch web-u-flex-basis-200 web-flex web-u-border-radius-8 u-padding-inline-24 web-u-text-color-neutral-900
-                                web-u-bg-color-neutral-50 web-u-media-ratio-1-1 web-u-min-block-size-160 flex-col
-                                justify-center gap-2"
+                  class="media-wrapper | web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-text-color-neutral-900 web-u-bg-color-neutral-50 web-u-media-ratio-1-1
+                                web-u-min-block-size-160 flex-1 flex-col justify-center
+                                gap-2 px-6"
                 >
                   <h3 class="web-label">Light Grey</h3>
                   <p class="web-caption-400">#EDEDF0</p>
@@ -328,9 +326,9 @@
                   </div>
                 </div>
                 <div
-                  class="media-wrapper | web-u-sep u-stretch web-u-flex-basis-200 web-flex web-u-border-radius-8 u-padding-inline-24
-                                web-u-media-ratio-1-1 web-u-min-block-size-160 web-u-text-color-neutral-50 web-u-bg-color-neutral-900 flex-col
-                                justify-center gap-2"
+                  class="media-wrapper | web-u-sep web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-media-ratio-1-1 web-u-min-block-size-160
+                                web-u-text-color-neutral-50 web-u-bg-color-neutral-900 flex-1 flex-col justify-center
+                                gap-2 px-6"
                 >
                   <h3 class="web-label">Dark Grey</h3>
                   <p class="web-caption-400">#19191D</p>
@@ -339,9 +337,9 @@
                   </div>
                 </div>
                 <div
-                  class="media-wrapper | u-stretch web-u-flex-basis-200 web-flex web-u-border-radius-8 u-padding-inline-24 web-u-text-color-neutral-50
-                                web-u-bg-color-primary-500 web-u-aspect-ratio-1-1 web-u-min-block-size-160 flex-col
-                                justify-center gap-2"
+                  class="media-wrapper | web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-text-color-neutral-50 web-u-bg-color-primary-500 web-u-aspect-ratio-1-1
+                                web-u-min-block-size-160 flex-1 flex-col justify-center
+                                gap-2 px-6"
                 >
                   <h3 class="web-label">Appwrite Pink</h3>
                   <p class="web-caption-400">#FD366E</p>
@@ -368,7 +366,7 @@
                 <div class="grid-cols-2-opt-2 mt-3 grid gap-8">
                   <div class="media-wrapper">
                     <img
-                      class="web-u-border-radius-8 web-u-media-ratio-16-9 u-width-full-line"
+                      class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
                       src="/assets/visuals/dashboard.png"
                       alt="Dashboard"
                     />
@@ -393,7 +391,7 @@
                   </div>
                   <div class="media-wrapper">
                     <img
-                      class="web-u-border-radius-8 web-u-media-ratio-16-9 u-width-full-line"
+                      class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
                       src="/assets/visuals/auth.png"
                       alt="Appwrite Auth"
                     />
@@ -418,7 +416,7 @@
                   </div>
                   <div class="media-wrapper">
                     <img
-                      class="web-u-border-radius-8 web-u-media-ratio-16-9 u-width-full-line"
+                      class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
                       src="/assets/visuals/databases.png"
                       alt="Appwrite Databases"
                     />
@@ -444,7 +442,7 @@
 
                   <div class="media-wrapper">
                     <img
-                      class="web-u-border-radius-8 web-u-media-ratio-16-9 u-width-full-line"
+                      class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
                       src="/assets/visuals/storage.png"
                       alt="Appwrite Storage"
                     />
@@ -470,7 +468,7 @@
 
                   <div class="media-wrapper">
                     <img
-                      class="web-u-border-radius-8 web-u-media-ratio-16-9 u-width-full-line"
+                      class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
                       src="/assets/visuals/functions.png"
                       alt="Appwrite Functions"
                     />
@@ -495,7 +493,7 @@
                   </div>
                   <div class="media-wrapper">
                     <img
-                      class="web-u-border-radius-8 web-u-media-ratio-16-9 u-width-full-line"
+                      class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
                       src="/assets/visuals/messaging.png"
                       alt="Appwrite Messaging"
                     />

@@ -6,7 +6,7 @@
 <div class="step" data-hideline={hideLine}>
     <div class="web-dot" />
     <h2 class="web-eyebrow web-u-color-text-primary step-title">{title}</h2>
-    <div class="u-margin-block-start-32 step-content">
+    <div class="mt-8 step-content">
         <slot />
     </div>
 </div>

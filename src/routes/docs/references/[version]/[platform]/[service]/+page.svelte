@@ -102,8 +102,8 @@
   {/if}
 </svelte:head>
 
-<main class="u-contents" id="main">
-  <article class="web-article u-contents">
+<main class="contents" id="main">
+  <article class="web-article contents">
     <header class="web-article-header">
       <div class="web-article-header-start">
         <h1 class="web-title">{serviceName}</h1>
@@ -114,7 +114,7 @@
           class="web-u-flex-vertical-mobile web-u-color-text-primary flex gap-6"
         >
           <div class="flex items-center gap-2">
-            <label class="u-small web-is-not-mobile" for="platform"
+            <label class="web-is-not-mobile text-sm" for="platform"
               >Platform</label
             >
             <Select
@@ -142,7 +142,7 @@
             />
           </div>
           <div class="flex items-center gap-2">
-            <label class="u-small web-is-not-mobile" for="version"
+            <label class="web-is-not-mobile text-sm" for="version"
               >Version</label
             >
 
@@ -169,7 +169,7 @@
           {@html parse(data.service?.description)}
         </div>
         <div
-          class="web-article-content-grid-6-4-column-2 u-main-end flex flex-col gap-8"
+          class="web-article-content-grid-6-4-column-2 flex flex-col justify-end gap-8"
         >
           <Fence
             language="text"
@@ -227,7 +227,7 @@
           <div
             class="web-article-content-grid-6-4-column-2 flex flex-col gap-8"
           >
-            <div class="u-contents theme-dark">
+            <div class="theme-dark contents">
               <div
                 class="sticky"
                 style="--inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position);"
@@ -240,7 +240,7 @@
                   process
                   withLineNumbers={false}
                 />
-                <div class="u-margin-block-start-24">
+                <div class="mt-6">
                   <Fence
                     language={platform}
                     content={method.demo}
@@ -269,7 +269,7 @@
         </button>
         <div class="web-references-menu-content">
           <div
-            class="web-references-menu-header u-main-space-between u-margin-block-start-24 flex items-center gap-4"
+            class="web-references-menu-header mt-6 flex items-center justify-between gap-4"
           >
             <h5 class="web-references-menu-title web-eyebrow">On This Page</h5>
             <button
@@ -291,9 +291,9 @@
               </li>
             {/each}
           </ul>
-          <div class="u-sep-block-start web-u-padding-block-20">
+          <div class="border-primary web-u-padding-block-20 border-t">
             <button
-              class="web-link u-inline-flex items-center gap-2"
+              class="web-link inline-flex items-center gap-2"
               use:scrollToTop
             >
               <span class="web-icon-arrow-up" aria-hidden="true" />

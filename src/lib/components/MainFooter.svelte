@@ -8,7 +8,7 @@
 </script>
 
 {#if variant === "homepage"}
-  <footer class="web-main-footer u-margin-block-start-48 relative">
+  <footer class="web-main-footer relative mt-12">
     <ul class="flex gap-2">
       {#each socials as social}
         <li>
@@ -47,9 +47,7 @@
     </div>
   </footer>
 {:else if variant === "docs"}
-  <footer
-    class="web-main-footer is-with-bg-color u-margin-block-start-32 u-small relative"
-  >
+  <footer class="web-main-footer is-with-bg-color relative mt-8 text-sm">
     <div class="web-main-footer-grid-1">
       <ul class="web-main-footer-grid-1-column-1 flex gap-2">
         {#each socials as social}

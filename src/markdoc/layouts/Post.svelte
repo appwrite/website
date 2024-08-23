@@ -123,12 +123,12 @@
                 </ul>
                 <h1 class="web-title web-u-color-text-primary">{title}</h1>
                 {#if description}
-                  <p class="web-description u-margin-block-start-8">
+                  <p class="web-description mt-2">
                     {description}
                   </p>
                 {/if}
                 {#if authorData}
-                  <div class="web-author u-margin-block-start-16">
+                  <div class="web-author mt-4">
                     <a href={authorData.href} class="flex items-center gap-2">
                       {#if authorData.avatar}
                         <img
@@ -147,7 +147,7 @@
                         <p class="web-caption-400">{authorData.role}</p>
                       </div>
                     </a>
-                    <!-- <ul class="flex gap-2 u-margin-inline-start-auto self-center">
+                    <!-- <ul class="flex gap-2 ml-auto self-center">
 											{#if authorData.twitter}
 												<li>
 													<a
@@ -191,13 +191,8 @@
                   </div>
                 {/if}
 
-                <div
-                  class="share-post-section u-margin-block-start-16 flex items-center gap-4"
-                >
-                  <span
-                    class="web-eyebrow u-padding-inline-end-8"
-                    style:color="#adadb0"
-                  >
+                <div class="share-post-section mt-4 flex items-center gap-4">
+                  <span class="web-eyebrow pr-2" style:color="#adadb0">
                     SHARE
                   </span>
 
@@ -251,7 +246,7 @@
                 </div>
               {/if}
 
-              <div class="web-article-content u-margin-block-start-32">
+              <div class="web-article-content mt-8">
                 <slot />
               </div>
             </article>
@@ -272,7 +267,7 @@
     <div class="web-big-padding-section-level-2">
       <div class="web-container">
         <h3 class="web-label web-u-color-text-primary">Read next</h3>
-        <section class="u-margin-block-start-32">
+        <section class="mt-8">
           <ul class="web-grid-articles">
             {#each posts.filter((p) => p.title !== title).slice(0, 3) as post}
               {@const author = authors.find((a) => a.slug === post.author)}
@@ -292,7 +287,7 @@
         </section>
       </div>
     </div>
-    <div class="web-big-padding-section-level-2 u-overflow-hidden relative">
+    <div class="web-big-padding-section-level-2 relative overflow-hidden">
       <div class="web-container">
         <Newsletter />
         <FooterNav />

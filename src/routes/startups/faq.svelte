@@ -85,7 +85,7 @@
 </script>
 
 <ul
-  class="collapsible u-width-full-line"
+  class="collapsible w-full"
   style="--p-toggle-border-color: var(--web-color-smooth);"
   use:melt={$root}
   id="faq"
@@ -101,7 +101,7 @@
         >
           <h3 use:melt={$heading({ level: 3 })}>
             <button
-              class="collapsible-button u-width-full-line"
+              class="collapsible-button w-full"
               use:melt={$trigger(`${index}`)}
             >
               <span class="web-label web-u-color-text-primary">

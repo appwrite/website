@@ -87,10 +87,10 @@
         {/each}
         <div class="web-card is-normal has-border-gradient">
           <span class="web-sub-body-500 web-u-color-text-primary">Reply</span>
-          <p class="web-sub-body-500 u-margin-block-start-16">
+          <p class="web-sub-body-500 mt-4">
             Reply to this thread by joining our Discord
           </p>
-          <a class="web-button u-margin-block-start-24" href={discordLink}>
+          <a class="web-button mt-6" href={discordLink}>
             <span class="web-icon-discord" />
             <span class="text">Reply on Discord</span>
           </a>
@@ -113,7 +113,7 @@
                       : thread.title}
                   </span>
                 </div>
-                <p class="web-sub-body-400 u-margin-block-start-8">
+                <p class="web-sub-body-400 mt-2">
                   {thread.content.length > 160
                     ? thread.content.slice(0, 160) + "..."
                     : thread.content}

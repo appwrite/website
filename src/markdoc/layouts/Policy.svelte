@@ -73,9 +73,9 @@
           <h1 class="web-title web-u-color-text-primary">{title}</h1>
         </header>
         <button
-          class="toc-btn u-width-full-line u-main-space-between web-u-padding-20 web-u-margin-inline-20-negative web-u-color-text-primary
-                web-is-only-mobile u-margin-block-start-24 web-u-sep-block web-u-filter-blur-8
-                sticky flex items-center"
+          class="toc-btn web-u-padding-20 web-u-margin-inline-20-negative web-u-color-text-primary web-is-only-mobile web-u-sep-block
+                web-u-filter-blur-8 sticky mt-6 flex
+                w-full items-center justify-between"
           style:--inset-block-start="4.5rem"
           style:inline-size="100vw"
           style:background-color="hsl(var(--p-body-bg-color) / 0.1)"

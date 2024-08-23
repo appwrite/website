@@ -152,7 +152,7 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
-  class="wrapper u-padding-0 u-inset-0 fixed flex items-center justify-center"
+  class="wrapper fixed inset-0 flex items-center justify-center p-0"
   data-visible={open ? true : undefined}
   style:z-index="100"
   style:background="hsl(var(--web-color-black) / 0.3)"
@@ -162,7 +162,7 @@
   on:click={handleExit}
 >
   <div
-    class="web-input-text-search-wrapper web-max-w-[680px] web-u-margin-inline-20 u-width-full-line"
+    class="web-input-text-search-wrapper web-max-w-[680px] web-u-margin-inline-20 w-full"
   >
     <span
       class="web-icon-search z-[5]"
@@ -172,7 +172,7 @@
     <div id="searchbox" />
 
     <input
-      class="web-input-button -u-padding-block-0 relative z-1"
+      class="web-input-button relative z-1"
       type="text"
       id="search"
       bind:value
@@ -197,7 +197,7 @@
         <section>
           {#if results.length > 0}
             <h6 class="web-eyebrow">{results.length} results found</h6>
-            <ul class="u-margin-block-start-8 flex flex-col gap-1">
+            <ul class="mt-2 flex flex-col gap-1">
               {#each results as hit, i (hit.uid)}
                 {@const relevantSubtitle = getRelevantSubtitle(hit)}
                 <li>
@@ -231,14 +231,14 @@
             </ul>
           {:else}
             <p class="web-caption-400">
-              No results found for <span class="u-bold">{value}</span>
+              No results found for <span class="font-bold">{value}</span>
             </p>
           {/if}
         </section>
       {/if}
       <section>
         <h6 class="web-eyebrow">Recommended</h6>
-        <ul class="u-margin-block-start-8 flex flex-col gap-1">
+        <ul class="mt-2 flex flex-col gap-1">
           {#each recommended as hit, i (hit.uid)}
             {@const index = i + (results.length ? results.length : 0)}
             <li>

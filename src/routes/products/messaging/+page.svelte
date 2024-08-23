@@ -263,13 +263,11 @@ messaging.create_email(
           <h1 class="web-display web-u-color-text-primary">
             Open source messaging service for developers
           </h1>
-          <p class="web-description u-margin-block-start-20">
+          <p class="web-description mt-5">
             Set up messaging within minutes and send push notifications, emails,
             and SMS directly to your users.
           </p>
-          <div
-            class="u-items-center u-margin-block-start-32 hero-buttons flex gap-2"
-          >
+          <div class="hero-buttons mt-8 flex items-center gap-2">
             <a class="web-button" href={PUBLIC_APPWRITE_DASHBOARD}
               >Get started</a
             >
@@ -325,7 +323,7 @@ messaging.create_email(
                   Effortlessly send push notifications for seamless instant
                   communication.
                 </p>
-                <ul class="u-margin-block-start-16 flex flex-wrap gap-2">
+                <ul class="mt-4 flex flex-wrap gap-2">
                   <li>
                     <a
                       class="web-interactive-tag"
@@ -358,7 +356,7 @@ messaging.create_email(
                   Easily send emails for smooth communication and information
                   sharing.
                 </p>
-                <ul class="u-margin-block-start-16 flex flex-wrap gap-2">
+                <ul class="mt-4 flex flex-wrap gap-2">
                   <li>
                     <a
                       class="web-interactive-tag"
@@ -390,7 +388,7 @@ messaging.create_email(
                 <p class="web-info-boxes-content">
                   Send SMS for quick updates beyond your app's environment.
                 </p>
-                <ul class="u-margin-block-start-16 flex flex-wrap gap-2">
+                <ul class="mt-4 flex flex-wrap gap-2">
                   <li>
                     <a
                       class="web-interactive-tag"
@@ -430,11 +428,11 @@ messaging.create_email(
                 <p class="web-info-boxes-content">
                   Send realtime alerts to your users within your application.
                 </p>
-                <ul class="u-margin-block-start-16 flex flex-wrap gap-2">
+                <ul class="mt-4 flex flex-wrap gap-2">
                   <li>
                     <a class="web-interactive-tag" href="/docs">
                       <span
-                        class="web-icon-appwrite u-small web-u-margin-inline-end-4"
+                        class="web-icon-appwrite web-u-margin-inline-end-4 text-sm"
                         aria-hidden="true"
                       />
                       <span class="text">Appwrite</span>
@@ -456,7 +454,7 @@ messaging.create_email(
                 <p class="web-info-boxes-content">
                   Connect chat apps such as Slack, Discord, and WhatsApp.
                 </p>
-                <ul class="u-margin-block-start-16 flex flex-wrap gap-2">
+                <ul class="mt-4 flex flex-wrap gap-2">
                   <li>
                     <span class="web-interactive-tag" data-readonly>
                       <span class="icon-slack" aria-hidden="true" />
@@ -481,15 +479,15 @@ messaging.create_email(
           </div>
         </div>
       </div>
-      <!-- <div class="web-big-padding-section-level-2 relative u-z-index-1 theme-light">
+      <!-- <div class="web-big-padding-section-level-2 relative z-[1] theme-light">
                 <div class="container relative">
                     <img
-                        class="absolute u-z-index-1 is-not-mobile"
+                        class="absolute z-[1] is-not-mobile"
                         style="width:1500px; height:auto; max-block-size:none; max-inline-size:none; inset-block-end:-27rem; rotate:145deg; inset-inline-start:-42rem;"
                         src="/images/messaging/stripes.png"
                         alt="stripes"
                     />
-                    <div class="grid-1-1 relative u-z-index-1">
+                    <div class="grid-1-1 relative z-[1]">
                         <section class="web-hero is-align-start">
                             <span class="web-badges web-eyebrow">PERFORMANCE_</span>
                             <h2 class="web-display max-w-[600px] web-u-color-text-primary">
@@ -497,7 +495,7 @@ messaging.create_email(
                             </h2>
                         </section>
                         <ul
-                            class="web-big-list-info u-margin-inline-start-auto web-u-inline-width-100-percent-mobile-break1 web-u-margin-block-start-48"
+                            class="web-big-list-info ml-auto web-u-inline-width-100-percent-mobile-break1 web-u-margin-block-start-48"
                         >
                             <li class="web-big-list-info-item">
                                 <div class="web-headline web-u-color-text-primary">500+</div>
@@ -524,7 +522,7 @@ messaging.create_email(
     </div>
 
     <div
-      class="u-z-index-1 relative"
+      class="relative z-[1]"
       style="background-color:hsl(var(--web-color-greyscale-900)); padding-block-start: 40px"
     >
       <div class="web-big-padding-section-level-2">
@@ -546,10 +544,7 @@ messaging.create_email(
                 Subscribe to receive all messages related to a topic.
               </p>
 
-              <div
-                class="u-margin-block-start-16 min-w-0"
-                style="margin-block-end: 94px"
-              >
+              <div class="mt-4 min-w-0" style="margin-block-end: 94px">
                 <MultiCodeContextless
                   data={codeTopic}
                   selected={Platform.ClientWeb}
@@ -562,7 +557,7 @@ messaging.create_email(
               <p class="web-description">
                 Send a message to all targets on a topic.
               </p>
-              <div class="u-margin-block-start-16 min-w-0">
+              <div class="mt-4 min-w-0">
                 <MultiCodeContextless
                   data={codeMessage}
                   selected={Platform.ServerNodeJs}
@@ -606,7 +601,7 @@ messaging.create_email(
                     Auth
                   </h4>
                   <span
-                    class="web-icon-arrow-right u-margin-inline-start-auto"
+                    class="web-icon-arrow-right ml-auto"
                     aria-hidden="true"
                   />
                 </div>
@@ -636,7 +631,7 @@ messaging.create_email(
                     Functions
                   </h4>
                   <span
-                    class="web-icon-arrow-right u-margin-inline-start-auto"
+                    class="web-icon-arrow-right ml-auto"
                     aria-hidden="true"
                   />
                 </div>
@@ -667,7 +662,7 @@ messaging.create_email(
                     Databases
                   </h4>
                   <span
-                    class="web-icon-arrow-right u-margin-inline-start-auto"
+                    class="web-icon-arrow-right ml-auto"
                     aria-hidden="true"
                   />
                 </div>
@@ -697,7 +692,7 @@ messaging.create_email(
                     Storage
                   </h4>
                   <span
-                    class="web-icon-arrow-right u-margin-inline-start-auto"
+                    class="web-icon-arrow-right ml-auto"
                     aria-hidden="true"
                   />
                 </div>
@@ -728,7 +723,7 @@ messaging.create_email(
                     Realtime
                   </h4>
                   <span
-                    class="web-icon-arrow-right u-margin-inline-start-auto"
+                    class="web-icon-arrow-right ml-auto"
                     aria-hidden="true"
                   />
                 </div>

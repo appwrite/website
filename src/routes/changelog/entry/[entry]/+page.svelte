@@ -88,13 +88,8 @@
                 </li>
               </ul>
               <h1 class="web-title web-u-color-text-primary">{data.title}</h1>
-              <div
-                class="share-post-section u-margin-block-start-16 flex items-center gap-4"
-              >
-                <span
-                  class="web-eyebrow u-padding-inline-end-8"
-                  style:color="#adadb0"
-                >
+              <div class="share-post-section mt-4 flex items-center gap-4">
+                <span class="web-eyebrow pr-2" style:color="#adadb0">
                   SHARE
                 </span>
 
@@ -148,7 +143,7 @@
               </div>
             {/if}
 
-            <div class="web-article-content u-margin-block-start-32">
+            <div class="web-article-content mt-8">
               <svelte:component this={data.component} />
             </div>
           </article>

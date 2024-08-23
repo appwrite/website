@@ -132,9 +132,9 @@
                 on:submit|preventDefault={handleSubmit}
                 class="flex flex-col gap-4"
               >
-                <div class="u-main-end flex">
+                <div class="flex justify-end">
                   <ul
-                    class="web-form-list is-two-columns u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile gap-4"
+                    class="web-form-list is-two-columns web-u-max-width-580 web-u-max-inline-size-none-mobile w-full gap-4"
                   >
                     <li class="web-form-item">
                       <input
@@ -180,7 +180,7 @@
                   </ul>
                 </div>
                 <div
-                  class="u-main-space-between web-u-flex-vertical-reverse-mobile flex gap-4"
+                  class="web-u-flex-vertical-reverse-mobile flex justify-between gap-4"
                 >
                   <p class="web-caption-400 web-u-max-width-380">
                     {#if error}

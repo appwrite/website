@@ -45,9 +45,9 @@
 </script>
 
 <div>
-  <div class="u-margin-block-start-8 flex flex-wrap items-center">
+  <div class="mt-2 flex flex-wrap items-center">
     <slot name="header" />
-    <div class="nav u-margin-inline-start-auto flex items-end gap-3">
+    <div class="nav ml-auto flex items-end gap-3">
       <button
         class="web-icon-button"
         aria-label="Move carousel backward"
@@ -72,7 +72,7 @@
     data-state={isStart ? "start" : isEnd ? "end" : "middle"}
   >
     <ul
-      class="web-grid-articles u-margin-block-start-32 carousel"
+      class="web-grid-articles carousel mt-8"
       class:is-medium={size === "medium"}
       class:is-big={size === "big"}
       style:gap="{gap}px"

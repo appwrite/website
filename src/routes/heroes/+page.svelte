@@ -116,7 +116,7 @@
             <h1 class="web-display web-u-color-text-primary">
               Appwrite Heroes
             </h1>
-            <p class="web-main-body-500 u-margin-block-start-20">
+            <p class="web-main-body-500 mt-5">
               If you love building, writing, speaking, and helping other
               developers build with Appwrite, help us support you by joining the
               Appwrite Heroes program and becoming a leader in our developer
@@ -126,7 +126,7 @@
               href="https://7nxwryuitoy.typeform.com/heroes-apply"
               target="_blank"
               rel="noopener noreferrer"
-              class="web-button is-secondary u-margin-block-start-32"
+              class="web-button is-secondary mt-8"
             >
               <span class="text">Become a Hero</span>
             </a>
@@ -216,7 +216,7 @@
               How Appwrite Heroes can benefit you
             </h2>
           </section>
-          <div class="u-overflow-hidden web-u-margin-block-start-80">
+          <div class="web-u-margin-block-start-80 overflow-hidden">
             <ul class="web-info-boxes web-sub-body-500">
               <li class="web-info-boxes-item">
                 <img
@@ -326,7 +326,7 @@
               href="https://7nxwryuitoy.typeform.com/heroes-apply"
               target="_blank"
               rel="noopener noreferrer"
-              class="web-button is-transparent is-full-width-mobile web-u-cross-child-center u-margin-block-start-20"
+              class="web-button is-transparent is-full-width-mobile web-u-cross-child-center mt-5"
             >
               Become a Hero
             </a>

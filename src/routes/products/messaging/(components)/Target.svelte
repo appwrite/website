@@ -362,7 +362,7 @@
           {/each}
         </ul>
       </Accordion>
-      <div class="u-margin-block-start-20 flex">
+      <div class="mt-5 flex">
         <span class="web-u-color-text-tertiary" style:font-size="0.75rem">
           Total results: {users.flatMap((u) => u.devices).length}
         </span>
@@ -370,7 +370,7 @@
 
       <hr />
 
-      <div class="u-main-end flex items-center gap-4">
+      <div class="flex items-center justify-end gap-4">
         <span style="font-size: 14px; color: #6C6C71;"
           >{users.filter((u) => !!u.devices.some((d) => d.checked)).length} Users
           selected</span
@@ -380,9 +380,7 @@
     </div>
   </div>
 
-  <div
-    class="u-margin-block-start-16 target-text flex flex-col items-center gap-6"
-  >
+  <div class="target-text mt-4 flex flex-col items-center gap-6">
     <h3 class="web-title web-u-color-text-primary text-center">
       Target and group your subscribers
     </h3>
