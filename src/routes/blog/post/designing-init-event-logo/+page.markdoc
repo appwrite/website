@@ -83,7 +83,7 @@ const paths = [
 </svg>
 ```
 
-With a few ways not to do the animation under my belt, the final step was finding the correct solution. I started experimenting with CSS animations, and while doing some digging, I landed on [this Stack Overflow post](https://stackoverflow.com/questions/46443036/svg-stroke-animation-increase-length), which gave me the what I needed to start. Utilizing the power of `stroke-dasharray` and `stroke-dashoffset` I was able to create a simple animation, applying it to each path.
+With a few ways not to do the animation under my belt, the final step was finding the correct solution. I started experimenting with CSS animations, and while doing some digging, I landed on [this Stack Overflow post](https://stackoverflow.com/questions/46443036/svg-stroke-animation-increase-length), which gave me what I needed to start. Utilizing the power of `stroke-dasharray` and `stroke-dashoffset` I was able to create a simple animation, applying it to each path.
 
 ```css
 :root {
