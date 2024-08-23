@@ -2166,7 +2166,7 @@ namespace DotNetRuntime
             if (Context.Req.Headers.ContainsKey("x-appwrite-user-jwt")) {
                 client.SetJWT(Context.Req.Headers["x-appwrite-user-jwt"]);
             } else {
-                return Context.Res.Text("Access denied: This function requires authentication. Please sign in to continue.d");
+                return Context.Res.Text("Access denied: This function requires authentication. Please sign in to continue");
             }
 
             var databases = new Databases(client);
