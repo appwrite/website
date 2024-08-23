@@ -27,7 +27,7 @@ Throughout the life cycle of a deployment, it could have the following status.
 * The function execution has begun and has not finished.
 ---
 * `waiting`
-* The execution is queued but has not been picked up for processing.
+* The deployment is queued but has not been picked up for processing.
 ---
 * `failed`
 * A deployment was not successful. Check the [build log](#build-logs) for detailed logs for debugging.
