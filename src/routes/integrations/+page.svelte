@@ -125,7 +125,14 @@
         <div class="l-integrations-grid">
           <aside class="sidebar flex flex-col gap-8">
             <section>
-              <input name="search" bind:value={$query} />
+              <Input
+                label="Search"
+                name="search"
+                placeholder="Search"
+                bind:value={$query}
+                autocomplete="off"
+              ></Input>
+
               <!-- <label
                 class="web-input-button focus:border-greyscale-100 web-flex-basis-400"
               >
