@@ -8,7 +8,7 @@ The Appwrite CLI can be used in a non-interactive and headless manner, without s
 ```sh
 appwrite client \
     --endpoint https://cloud.appwrite.io/v1 \
-    --project-id [YOUR_PROJECT_ID] \
+    --project-id [PROJECT_ID] \
     --key YOUR_API_KEY
 ```
 
@@ -16,18 +16,23 @@ When you set the global configuration parameters using the `appwrite client` com
 
 In this mode, the CLI can only interact with one project at a time.
 
-To run tests or project-per-branch previews, you will need Console SDK capabilities. To accomplish this, log in using the `appwrite login` and pass in your email, password, and OTP settings as parameters.
+Use `appwrite login` with your email, password, and OTP to log in so you can run tests or set up project-per-branch previews, or you log in using an API key.
 
 ```sh
 appwrite login --email "<EMAIL>" --password "<PASSWORD>" --mfa totp  
 ```
 
 # API Keys {% #api-keys %}
-In non-interactive mode, the CLI uses an API key to authenticate. Your API key must have sufficient permissions to execute the commands you plan to use. [Learn more about API Keys](/docs/advanced/platform/api-keys).
 
 {% info title="Using API keys with CLI" %}
 Some CLI commands won't work with an API key, like the `projects` commands.
 {% /info %}
+
+In non-interactive mode, the CLI also uses an API key to authenticate. Your API key must have sufficient permissions to execute the commands you plan to use. [Learn more about API Keys](/docs/advanced/platform/api-keys).
+
+```sh
+appwrite client --projectId "<PROJECT_ID>" --key "<APY_KEY>"
+```
 
 # Deployment {% #deployment %}
 Appwrite's `push` commands can also be executed in a non-interactive mode. This applies to the following resources: functions, collections, buckets, teams, and messaging topics.
