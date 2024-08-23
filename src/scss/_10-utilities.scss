@@ -200,7 +200,7 @@
 .#{$p}-u-container-query-inline { container-type:inline-size; }
 
 .#{$p}-u-pointer-events-none { pointer-events:none; }
-.#{$p}-z-[1]-negative { z-index:-1; }
+.#{$p}-z-1-negative { z-index:-1; }
 
 .#{$p}-u-list-inline-dot-sep {
   >li:nth-child(n + 2)::before { content:"·"; margin-inline-start:pxToRem(8); }
