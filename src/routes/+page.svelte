@@ -16,6 +16,48 @@
   const title = "Appwrite - Build like a team of hundreds";
   const description = DEFAULT_DESCRIPTION;
   const ogImage = `${DEFAULT_HOST}/images/open-graph/website.png`;
+
+  const infoBoxes: Array<{ label: string; description: string; icon: string }> =
+    [
+      {
+        label: "Self-Hosted",
+        description: "Own your data or host it on a cloud region of choice.",
+        icon: "/images/icons/gradients/self-hosted.svg",
+      },
+      {
+        label: "Encryption",
+        description: "Built-in data encryption both in rest and in transit.",
+        icon: "/images/icons/gradients/lock.svg",
+      },
+      {
+        label: "Abuse protection",
+        description: "Protect your APIs from abuse with built-in protection.",
+        icon: "/images/icons/gradients/shield.svg",
+      },
+      {
+        label: "Data migrations",
+        description:
+          "Easily transfer data from 3rd parties or between Cloud and self-hosted.",
+        icon: "/images/icons/gradients/database.svg",
+      },
+      {
+        label: "GDPR",
+        description:
+          "Safeguard user data and privacy with provided GDPR regulations.",
+        icon: "/images/icons/gradients/star.svg",
+      },
+      {
+        label: "SOC-2",
+        description:
+          "Ensure the highest level of security and privacy protection.",
+        icon: "/images/icons/gradients/soc-2.svg",
+      },
+      {
+        label: "HIPAA",
+        description: "Protect sensitive user health data.",
+        icon: "/images/icons/gradients/hipaa.svg",
+      },
+    ];
 </script>
 
 <svelte:head>
@@ -270,98 +312,21 @@
               of mind.
             </p>
           </section>
-          <div class="web-u-margin-block-start-80 overflow-hidden">
+          <div class="mt-20 overflow-hidden">
             <ul class="web-info-boxes web-sub-body-500">
-              <li class="web-info-boxes-item">
-                <img
-                  src="/images/icons/gradients/self-hosted.svg"
-                  width="40"
-                  height="40"
-                  alt=""
-                />
-                <h3 class="web-info-boxes-title">Self-Hosted</h3>
-                <p class="web-info-boxes-content">
-                  Own your data or host it on a cloud region of choice.
-                </p>
-              </li>
-              <li class="web-info-boxes-item">
-                <img
-                  src="/images/icons/gradients/lock.svg"
-                  width="40"
-                  height="40"
-                  alt=""
-                />
-                <h3 class="web-info-boxes-title">Encryption</h3>
-                <p class="web-info-boxes-content">
-                  Built-in data encryption both in rest and in transit.
-                </p>
-              </li>
-              <li class="web-info-boxes-item">
-                <img
-                  src="/images/icons/gradients/shield.svg"
-                  width="40"
-                  height="40"
-                  alt=""
-                />
-                <h3 class="web-info-boxes-title">Abuse protection</h3>
-                <p class="web-info-boxes-content">
-                  Protect your APIs from abuse with built-in protection.
-                </p>
-              </li>
-              <li class="web-info-boxes-item">
-                <img
-                  src="/images/icons/gradients/database.svg"
-                  width="40"
-                  height="40"
-                  alt=""
-                />
-                <h3 class="web-info-boxes-title">Data migrations</h3>
-                <p class="web-info-boxes-content">
-                  Easily transfer data from 3rd parties or between Cloud and
-                  self-hosted.
-                </p>
-              </li>
-              <li class="web-info-boxes-item">
-                <img
-                  src="/images/icons/gradients/star.svg"
-                  width="40"
-                  height="40"
-                  alt=""
-                />
-                <h3 class="aw-info-boxes-title">GDPR</h3>
-                <p class="aw-info-boxes-content">
-                  Safeguard user data and privacy with provided GDPR
-                  regulations.
-                </p>
-              </li>
-              <li class="web-info-boxes-item">
-                <img
-                  src="/images/icons/gradients/soc-2.svg"
-                  width="40"
-                  height="40"
-                  alt=""
-                />
-                <h3 class="web-info-boxes-title">
-                  <span>SOC-2</span>
-                </h3>
-                <p class="web-info-boxes-content">
-                  Ensure the highest level of security and privacy protection.
-                </p>
-              </li>
-              <li class="web-info-boxes-item">
-                <img
-                  src="/images/icons/gradients/hipaa.svg"
-                  width="40"
-                  height="40"
-                  alt=""
-                />
-                <h3 class="web-info-boxes-title">
-                  <span>HIPAA</span>
-                </h3>
-                <p class="web-info-boxes-content">
-                  Protect sensitive user health data.
-                </p>
-              </li>
+              {#each infoBoxes as box}
+                <li class="web-info-boxes-item">
+                  <img src={box.icon} width="40" height="40" alt="" />
+                  <h3
+                    class="text-primary mt-4 flex flex-wrap items-baseline gap-3"
+                  >
+                    {box.label}
+                  </h3>
+                  <p class="web-info-boxes-content">
+                    {box.description}
+                  </p>
+                </li>
+              {/each}
             </ul>
           </div>
         </div>
