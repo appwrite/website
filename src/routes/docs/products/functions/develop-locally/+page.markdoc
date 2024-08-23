@@ -75,6 +75,81 @@ You can use headers like dynamic API keys in your function, which give you acces
 Learn more about dynamic API keys
 {% /arrow_link %}
 
+# Hot reloading {% #hot-reloading %}
+
+You can hot reload your locally developed functions, which means you can update the function code and see the changes happen in real time without restarting. Compiled languages must translate the source code into machine code, causing the system to rebuild continuously. However, interpreted languages only rebuild when you change the dependency file. Otherwise, updates can be made through a file swap.
+
+{% table %}
+* &nbsp; {% width=80 %}
+* Language
+* Dependency File
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_light %}
+* Node.js
+* `Package.json`
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/php.svg" alt="PHP logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/php.svg" alt="PHP logo" size="m" /%}{% /only_light %}
+* PHP
+* `composer.json`
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/python.svg" alt="Python logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/python.svg" alt="Python logo" size="m" /%}{% /only_light %}
+* Python
+* `Requirements.txt`
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_light %}
+* Ruby
+* `Gemfile`
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/deno.svg" alt="Deno logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/deno.svg" alt="Deno logo" size="m" /%}{% /only_light %}
+* Deno
+* `Import URLs`
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/go.svg" alt="Go logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/go.svg" alt="Go logo" size="m" /%}{% /only_light %}
+* Go
+* `go.mod`
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/dart.svg" alt="Dart logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/dart.svg" alt="Dart logo" size="m" /%}{% /only_light %}
+* Dart
+* `Pubspec.yaml`
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/swift.svg" alt="Swift logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/swift.svg" alt="Swift logo" size="m" /%}{% /only_light %}
+* Swift
+* `Package.swift` (Swift Package Manager Files)
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_light %}
+* .NET
+* `.nupkg` (NuGet Packages)
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/bun.svg" alt="Bun logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/bun.svg" alt="Bun logo" size="m" /%}{% /only_light %}
+* Bun
+* `Package.json`
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
+* Kotlin
+* `JAR` Files (Java ARchive)
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/java.svg" alt="Java logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/java.svg" alt="Java logo" size="m" /%}{% /only_light %}
+* Java
+* `JAR` Files (Java ARchive)
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/c.svg" alt="C++ logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/c.svg" alt="C++ logo" size="m" /%}{% /only_light %}
+* C++
+* `.h` (Header Files)
+{% /table %}
+
 # Impersonate user {% #impersonate-user %}
 
 You can also impersonate a user when you develop a function locally. Impersonate a user using the `--user-id <USER_ID>` option to select a user you want to use for testing. This allows you to test if the user can perform specific actions, such as creating a document.
