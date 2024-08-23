@@ -157,14 +157,16 @@ import { Client, Account } from "appwrite";
 
 // Generate a unique ID
 ID.unique()
+
 // Generate a custom ID
-ID.custom()
+ID.custom("my-custom-id")
 ```
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 // Generate a unique ID
 ID.unique()
+
 // Generate a custom ID
 ID.custom()
 ```
@@ -173,16 +175,18 @@ import Appwrite
 
 // Generate a unique ID
 ID.unique()
+
 // Generate a custom ID
-ID.custom()
+ID.custom("my-custom-id")
 ```
 ```client-android-kotlin
 import io.appwrite.ID
 
 // Generate a unique ID
 ID.unique()
+
 // Generate a custom ID
-ID.custom()
+ID.custom("my-custom-id")
 ```
 {% /multicode %}
 {% /tabsitem %}
@@ -194,16 +198,18 @@ const sdk = require('node-appwrite');
 
 // Generate a unique ID
 sdk.ID.unique()
+
 // Generate a custom ID
-sdk.ID.custom()
+sdk.ID.custom("my-custom-id")
 
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 // Generate a unique ID
 sdk.ID.unique()
+
 // Generate a custom ID
-sdk.ID.custom()
+sdk.ID.custom("my-custom-id")
 ```
 ```php
 <?php
@@ -212,63 +218,71 @@ use Appwrite\ID;
 
 // Generate a unique ID
 ID::unique()
+
 // Generate a custom ID
-ID::custom()
+ID::custom("my-custom-id")
 ```
 ```python
 from appwrite.id import ID
 
 # Generate a unique ID
 ID.unique()
+
 # Generate a custom ID
-ID.custom()
+ID.custom("my-custom-id")
 ```
 ```csharp
 using Appwrite.ID;
 
 // Generate a unique ID
 ID.unique()
+
 // Generate a custom ID
-ID.custom()
+ID.custom("my-custom-id")
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 
 // Generate a unique ID
 ID.unique()
+
 // Generate a custom ID
-ID.custom()
+ID.custom("my-custom-id")
 ```
 ```java
 io.appwrite.ID
 // Generate a unique ID
 ID.unique()
+
 // Generate a custom ID
-ID.custom()
+ID.custom("my-custom-id")
 ```
 ```kotlin
 io.appwrite.ID
 // Generate a unique ID
 ID.unique()
+
 // Generate a custom ID
-ID.custom()
+ID.custom("my-custom-id")
 ```
 ```ruby
 require 'appwrite'
 
 include Appwrite
-
-// Generate a unique ID
+ß
+# Generate a unique ID
 ID.unique()
-// Generate a custom ID
-ID.custom()
+
+# Generate a custom ID
+ID.custom("my-custom-id")
 ```
 ```swift
 import Appwrite
 // Generate a unique ID
 ID.unique()
+
 // Generate a custom ID
-ID.custom()
+ID.custom("my-custom-id")
 ```
 {% /multicode %}
 {% /tabsitem %}
