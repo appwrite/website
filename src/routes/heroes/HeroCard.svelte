@@ -33,12 +33,10 @@
         <div class="web-user-box-username web-sub-body-400">{role}</div>
       </div>
     </div>
-    <p
-      class="web-sub-body-500 web-u-text-color-neutral-700 u-margin-block-start-20"
-    >
+    <p class="web-sub-body-500 web-u-text-color-neutral-700 mt-5">
       {bio}
     </p>
-    <ul class="u-margin-block-start-32 flex gap-3">
+    <ul class="mt-8 flex gap-3">
       <li>
         <a
           class="web-icon-button"

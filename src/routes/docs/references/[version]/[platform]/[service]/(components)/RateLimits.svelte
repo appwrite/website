@@ -37,7 +37,7 @@
   }
 </script>
 
-<div class="web-card is-normal u-padding-16">
+<div class="web-card is-normal p-4">
   <div class="flex flex-col gap-6">
     <div class="flex flex-col gap-4">
       {#if platformType === "CLIENT"}

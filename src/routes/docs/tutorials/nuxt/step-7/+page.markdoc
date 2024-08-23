@@ -43,7 +43,7 @@ const handleAddIdea = async (event) => {
   <div>
     <article class="container padding-0">
       <h4 class="heading-level-4">Submit Idea</h4>
-      <form @submit.prevent="handleAddIdea" class="u-margin-block-start-16">
+      <form @submit.prevent="handleAddIdea" class="mt-4">
         <ul class="form-list">
           <li class="form-item">
             <label class="label">Title</label>
@@ -136,7 +136,7 @@ const user = useUserSession();
     <section class="u-margin-32">
       <article class="card">
         <h4 class="heading-level-4">Latest Ideas</h4>
-        <ul class="u-margin-block-start-8">
+        <ul class="mt-2">
           <template v-if="ideas.current.value && ideas.current.value.length">
             <li v-for="idea in ideas.current.value">
               <div class="box">

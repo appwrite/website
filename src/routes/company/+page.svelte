@@ -28,16 +28,8 @@
 </svelte:head>
 
 <Main>
-  <enhanced:img
-    class="u-inset-inline-start-0 u-inset-block-start-0 absolute"
-    src="./bg-left.png"
-    alt=""
-  />
-  <enhanced:img
-    class="u-inset-inline-end-0 u-inset-block-start-0 absolute"
-    src="./bg-right.png"
-    alt=""
-  />
+  <enhanced:img class="absolute top-0" src="./bg-left.png" alt="" />
+  <enhanced:img class="absolute inset-y-0" src="./bg-right.png" alt="" />
   <div class="web-big-padding-section relative">
     <div class="web-big-padding-section-level-1 relative">
       <div class="web-big-padding-section-level-2" style:margin-block="8rem">
@@ -203,7 +195,7 @@
 										<div>
 											<div class="web-card is-white">
 												<div class="web-social-item flex flex-col gap-6">
-													<div class="flex gap-4 u-main-space-between">
+													<div class="flex gap-4 justify-between">
 														<div class="web-user-box">
 															<img class="web-user-box-image" src="/images/avatars/eldad.png" alt="Avatar of Eldad Fux">
 															<div class="web-user-box-name web-sub-body-500">Eldad Fux</div>
@@ -397,19 +389,17 @@
       </div>
       <div class="web-big-padding-section-level-2">
         <div class="web-container">
-          <h5 class="web-title web-u-color-text-primary u-text-center">
+          <h5 class="web-title web-u-color-text-primary text-center">
             Angel Investors
           </h5>
-          <ul class="web-grid-2c-4c u-margin-block-start-48">
+          <ul class="web-grid-2c-4c mt-12">
             <li class="flex flex-col">
               <h6 class="web-main-body-500 web-u-color-text-primary">
                 Aaron Applebaum
               </h6>
               <p class="web-main-body-500">Partner</p>
               <p class="web-main-body-500">MizMaa</p>
-              <ul
-                class="u-padding-block-start-16 u-margin-block-start-auto flex gap-2"
-              >
+              <ul class="mt-auto flex gap-2 pt-4">
                 <li>
                   <a
                     href="https://github.com/aapplbaum"
@@ -440,9 +430,7 @@
               </h6>
               <p class="web-main-body-500">Angel Investor</p>
               <p class="web-main-body-500">Former Apple IL CEO</p>
-              <ul
-                class="u-padding-block-start-16 u-margin-block-start-auto flex gap-2"
-              >
+              <ul class="mt-auto flex gap-2 pt-4">
                 <li>
                   <a
                     href="https://github.com/arielmaislos"
@@ -472,9 +460,7 @@
                 Gilad Engel
               </h6>
               <p class="web-main-body-500">Angel Investor</p>
-              <ul
-                class="u-padding-block-start-16 u-margin-block-start-auto flex gap-2"
-              />
+              <ul class="mt-auto flex gap-2 pt-4" />
             </li>
             <li class="flex flex-col">
               <h6 class="web-main-body-500 web-u-color-text-primary">
@@ -482,9 +468,7 @@
               </h6>
               <p class="web-main-body-500">Co-founder & Partner</p>
               <p class="web-main-body-500">Crane Venture Partners</p>
-              <ul
-                class="u-padding-block-start-16 u-margin-block-start-auto flex gap-2"
-              >
+              <ul class="mt-auto flex gap-2 pt-4">
                 <li>
                   <a
                     href="https://github.com/KVCVP"
@@ -503,9 +487,7 @@
                 Ameet Patel
               </h6>
               <p class="web-main-body-500">Angel Investor</p>
-              <ul
-                class="u-padding-block-start-16 u-margin-block-start-auto flex gap-2"
-              >
+              <ul class="mt-auto flex gap-2 pt-4">
                 <li>
                   <a
                     href="https://github.com/ameet-patel"
@@ -525,9 +507,7 @@
               </h6>
               <p class="web-main-body-500">Partner</p>
               <p class="web-main-body-500">Redline Capital</p>
-              <ul
-                class="u-padding-block-start-16 u-margin-block-start-auto flex gap-2"
-              >
+              <ul class="mt-auto flex gap-2 pt-4">
                 <li>
                   <a
                     href="https://github.com/bennojering/"
@@ -547,9 +527,7 @@
               </h6>
               <p class="web-main-body-500">Co-founder</p>
               <p class="web-main-body-500">Heroku</p>
-              <ul
-                class="u-padding-block-start-16 u-margin-block-start-auto flex gap-2"
-              >
+              <ul class="mt-auto flex gap-2 pt-4">
                 <li>
                   <a
                     href="https://github.com/jnl"
@@ -569,9 +547,7 @@
               </h6>
               <p class="web-main-body-500">Co-Founder</p>
               <p class="web-main-body-500">Elastic</p>
-              <ul
-                class="u-padding-block-start-16 u-margin-block-start-auto flex gap-2"
-              >
+              <ul class="mt-auto flex gap-2 pt-4">
                 <li>
                   <a
                     href="https://twitter.com/uboness"
@@ -590,7 +566,7 @@
       </div>
     </div>
 
-    <div class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden">
+    <div class="web-big-padding-section-level-1 overflow-hidden p-0">
       <div
         class="web-big-padding-section-level-2 is-margin-replace-padding relative"
       >
@@ -611,7 +587,7 @@
               href="https://appwrite.careers"
               target="_blank"
               rel="noopener noreferrer"
-              class="web-button is-transparent u-margin-block-start-16 self-center"
+              class="web-button is-transparent mt-4 self-center"
             >
               <span>Careers</span>
             </a>

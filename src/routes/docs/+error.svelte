@@ -8,7 +8,7 @@
 <Docs variant="two-side-navs">
   <Sidebar />
   <div
-    class="web-article u-padding-block-16 mx-auto flex max-w-[700px] items-center justify-center"
+    class="web-article mx-auto flex max-w-[700px] items-center justify-center py-4"
   >
     <div class="container">
       <div class="web-hero" style="--hero-gap:1.25rem;">

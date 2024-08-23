@@ -82,7 +82,7 @@
       </div>
 
       <div class="info">
-        <p class="web-label u-margin-block-start-16">
+        <p class="web-label mt-4">
           Join us during the week of August 19–23 to celebrate everything new
           with Appwrite.
         </p>

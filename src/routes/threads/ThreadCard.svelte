@@ -20,11 +20,11 @@
       >
         {thread.title}
       </h3>
-      <!-- <time class="web-caption-400 u-margin-inline-start-auto">12 Jan, 2023</time> -->
+      <!-- <time class="web-caption-400 ml-auto">12 Jan, 2023</time> -->
     </div>
 
     <p
-      class="web-main-body-500 u-margin-block-start-4 break-words"
+      class="web-main-body-500 mt-1 break-words"
       use:highlight={highlightTerms}
     >
       {thread.content.length > 200

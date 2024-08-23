@@ -5,7 +5,7 @@
   export let method: SDKMethod;
 </script>
 
-<div class="web-card is-transparent u-padding-16">
+<div class="web-card is-transparent p-4">
   <ul>
     {#each method.responses as response}
       {#if response.models}
@@ -18,7 +18,7 @@
               <span class="web-caption-400">application/json</span>
             </header>
             {#if response.models.length > 0}
-              <ul class="web-sub-body-400 u-margin-block-start-16">
+              <ul class="web-sub-body-400 mt-4">
                 {#each response.models as model}
                   <li>
                     <a

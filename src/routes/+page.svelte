@@ -106,7 +106,7 @@
               </p>
               <a
                 href={PUBLIC_APPWRITE_DASHBOARD}
-                class="web-button is-full-width-mobile u-margin-block-start-32"
+                class="web-button is-full-width-mobile mt-8"
               >
                 <span class="text">Get started</span>
               </a>
@@ -246,7 +246,7 @@
     <div
       class="web-big-padding-section-level-1 web-white-section light relative"
     >
-      <div class="u-inset-inline-start absolute bottom-0 w-full">
+      <div class="absolute bottom-0 w-full">
         <img
           class="block w-full"
           src="/images/bgs/padding-section-1.svg"
@@ -270,7 +270,7 @@
               of mind.
             </p>
           </section>
-          <div class="u-overflow-hidden web-u-margin-block-start-80">
+          <div class="web-u-margin-block-start-80 overflow-hidden">
             <ul class="web-info-boxes web-sub-body-500">
               <li class="web-info-boxes-item">
                 <img
@@ -466,7 +466,7 @@
       </div>
     </div>
 
-    <div class="web-big-padding-section-level-1 u-overflow-hidden relative">
+    <div class="web-big-padding-section-level-1 relative overflow-hidden">
       <div
         class="web-is-not-mobile absolute"
         style:inline-size="768px"
@@ -505,9 +505,9 @@
           </section>
         </div>
       </div>
-      <div class="web-big-padding-section-level-2 u-overflow-hidden relative">
+      <div class="web-big-padding-section-level-2 relative overflow-hidden">
         <div
-          class="u-z-index-0 web-is-not-mobile absolute"
+          class="web-is-not-mobile absolute z-0"
           style:width="50%"
           style:height="100%"
           style:left="0"
@@ -534,7 +534,7 @@
               </h2>
             </section>
             <ul
-              class="web-big-list-info u-margin-inline-start-auto web-u-inline-width-100-percent-mobile-break1 web-u-margin-block-start-48"
+              class="web-big-list-info web-u-inline-width-100-percent-mobile-break1 web-u-margin-block-start-48 ml-auto"
             >
               <li class="web-big-list-info-item">
                 <div class="web-headline web-u-color-text-primary">90K</div>
@@ -557,7 +557,7 @@
         </div>
       </div>
       <div
-        class="web-big-padding-section-level-2 is-margin-replace-padding u-overflow-hidden relative"
+        class="web-big-padding-section-level-2 is-margin-replace-padding relative overflow-hidden"
       >
         <div class="container">
           <PreFooter />

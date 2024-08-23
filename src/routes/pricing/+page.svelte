@@ -33,7 +33,7 @@
 </svelte:head>
 
 <div
-  class="u-overflow-hidden web-location-for-mobile absolute"
+  class="web-location-for-mobile absolute overflow-hidden"
   style="pointer-events:none; inline-size:100%;"
 >
   <enhanced:img
@@ -44,7 +44,7 @@
 </div>
 
 <Main>
-  <div class="web-big-padding-section">
+  <div class="web-big-padding-section mt-2">
     <div class="web-big-padding-section-level-1 theme-dark">
       <div class="web-big-padding-section-level-2">
         <section class="web-container">
@@ -65,24 +65,22 @@
             <ul class="web-pricing-cards-list">
               <li>
                 <article
-                  class="web-card is-transparent has-border-gradient u-height-100-percent"
+                  class="web-card is-transparent has-border-gradient h-full"
                   style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
                 >
                   <div class="web-pricing-cards-item">
                     <header class="web-pricing-cards-header">
                       <h2 id="starter" class="web-label">Free</h2>
-                      <div
-                        class="web-title web-u-color-text-primary u-margin-block-start-8"
-                      >
+                      <div class="web-title web-u-color-text-primary mt-2">
                         $0
                       </div>
-                      <div class="u-margin-block-start-4">&nbsp;</div>
-                      <p class="web-main-body-500 u-margin-block-start-16">
+                      <div class="mt-1">&nbsp;</div>
+                      <p class="web-main-body-500 mt-4">
                         For personal hobby projects and students.
                       </p>
                       <a
                         href="{PUBLIC_APPWRITE_DASHBOARD}/register"
-                        class="web-button is-secondary is-full-width u-margin-block-start-32"
+                        class="web-button is-secondary is-full-width mt-8"
                       >
                         <span class="web-sub-body-500">Start building</span>
                       </a>
@@ -113,24 +111,22 @@
               </li>
               <li>
                 <article
-                  class="web-card is-transparent is-transparent-pink has-border-gradient u-height-100-percent"
+                  class="web-card is-transparent is-transparent-pink has-border-gradient h-full"
                 >
                   <div class="web-pricing-cards-item">
                     <header class="web-pricing-cards-header">
                       <h2 id="pro" class="web-label">Pro</h2>
-                      <div
-                        class="web-title web-u-color-text-primary u-margin-block-start-8"
-                      >
+                      <div class="web-title web-u-color-text-primary mt-2">
                         $15
                       </div>
-                      <div class="u-margin-block-start-4">per member/month</div>
-                      <p class="web-main-body-500 u-margin-block-start-16">
+                      <div class="mt-1">per member/month</div>
+                      <p class="web-main-body-500 mt-4">
                         For pro developers and teams that need to scale their
                         products.
                       </p>
                       <a
                         href="https://cloud.appwrite.io/console?type=createPro"
-                        class="web-button is-full-width u-margin-block-start-32"
+                        class="web-button is-full-width mt-8"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -161,26 +157,22 @@
               </li>
               <li>
                 <article
-                  class="web-card is-transparent has-border-gradient u-height-100-percent"
+                  class="web-card is-transparent has-border-gradient h-full"
                   style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
                 >
                   <div class="web-pricing-cards-item">
                     <header class="web-pricing-cards-header">
                       <h2 id="scale" class="web-label">Scale</h2>
-                      <div
-                        class="web-title web-u-color-text-primary u-margin-block-start-8"
-                      >
+                      <div class="web-title web-u-color-text-primary mt-2">
                         $599
                       </div>
-                      <div class="u-margin-block-start-4">
-                        per organization/month
-                      </div>
-                      <p class="web-main-body-500 u-margin-block-start-16">
+                      <div class="mt-1">per organization/month</div>
+                      <p class="web-main-body-500 mt-4">
                         For scaling teams and agencies that need dedicated
                         support.
                       </p>
                       <button
-                        class="web-button is-secondary is-full-width u-margin-block-start-32"
+                        class="web-button is-secondary is-full-width mt-8"
                         disabled
                       >
                         <span class="web-sub-body-500">Coming soon</span>
@@ -209,7 +201,7 @@
           <ul class="web-grid-1-1-opt-2 web-u-margin-block-start-80 gap-8">
             <li>
               <article
-                class="web-card is-transparent has-border-gradient u-min-height-100-percent"
+                class="web-card is-transparent has-border-gradient min-h-full"
                 style="background:rgba(35, 35, 37, 0.90);"
               >
                 <header class="flex gap-3">
@@ -221,21 +213,18 @@
                   </h3>
                   <div class="web-inline-tag is-pink">Coming Soon</div>
                 </header>
-                <p class="u-margin-block-start-8">
+                <p class="mt-2">
                   Large scale projects seeking greater performance,
                   collaboration and security.
                 </p>
-                <a
-                  href="/contact-us"
-                  class="web-button is-secondary u-margin-block-start-32"
-                >
+                <a href="/contact-us" class="web-button is-secondary mt-8">
                   <span>Contact us</span>
                 </a>
               </article>
             </li>
             <li>
               <article
-                class="web-card is-transparent has-border-gradient u-min-height-100-percent"
+                class="web-card is-transparent has-border-gradient min-h-full"
                 style="background:rgba(35, 35, 37, 0.90);"
               >
                 <header class="flex gap-3">
@@ -246,13 +235,13 @@
                     Open-source teams
                   </h3>
                 </header>
-                <p class="u-margin-block-start-8">
+                <p class="mt-2">
                   We support OSS maintainers with a free Pro Plan. Read our
                   announcement blog to find out more.
                 </p>
                 <a
                   href="/docs/advanced/platform/oss"
-                  class="web-button is-secondary u-margin-block-start-32"
+                  class="web-button is-secondary mt-8"
                 >
                   <span>Learn more</span>
                 </a>
@@ -265,7 +254,7 @@
     <ComparePlans />
 
     <div
-      class="web-big-padding-section-level-1 theme-dark u-overflow-hidden relative"
+      class="web-big-padding-section-level-1 theme-dark relative overflow-hidden"
     >
       <div class="web-big-padding-section-level-2 relative">
         <div class="web-container relative" style:z-index="10">

@@ -102,7 +102,7 @@
                         {tutorial.framework}
                       </h3>
                     </header>
-                    <p class="web-sub-body-400 u-margin-block-start-4">
+                    <p class="web-sub-body-400 mt-1">
                       {tutorial.title}
                     </p>
                   </a>

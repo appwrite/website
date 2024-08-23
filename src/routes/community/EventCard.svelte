@@ -68,14 +68,14 @@
     </ul>
     <svelte:element
       this={headingTag}
-      class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-4"
+      class="web-sub-body-500 web-u-color-text-primary mt-1"
     >
       {title}
     </svelte:element>
     <p class="web-sub-body-500">
       {description}
     </p>
-    <div class="u-padding-block-start-16 mbs-auto flex flex-wrap gap-2">
+    <div class="mbs-auto flex flex-wrap gap-2 pt-4">
       <button class="web-button is-secondary" disabled={hasPast}>
         <span>{buttonText}</span>
       </button>

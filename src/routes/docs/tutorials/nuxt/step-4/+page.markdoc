@@ -111,10 +111,10 @@ const handleRegistration = async (event) => {
       <h2 class="eyebrow-heading-2">Login/Register</h2>
       <AuthForm v-if="isSignUp" :handle-submit="handleRegistration" submit-type="Sign Up"></AuthForm>
       <AuthForm v-else :handle-submit="handleLogin" submit-type="Log In"></AuthForm>
-      <button v-if="isSignUp" @click="isSignUp = false" class="u-margin-block-start-16">
+      <button v-if="isSignUp" @click="isSignUp = false" class="mt-4">
         Already have an account? Log in
       </button>
-      <button v-else @click="isSignUp = true" class="u-margin-block-start-16">
+      <button v-else @click="isSignUp = true" class="mt-4">
         Don't have an account? Sign up
       </button>
     </section>
@@ -138,7 +138,7 @@ The handle submit and submit type are props passed from `pages/login.vue`
 
 <template>
 <form
-  class="form u-width-full-line max-w-[500px] u-margin-block-start-16"
+  class="form u-width-full-line max-w-[500px] mt-4"
   @submit.prevent="handleSubmit"
 >
   <ul class="form-list">
@@ -169,7 +169,7 @@ The handle submit and submit type are props passed from `pages/login.vue`
       </div>
     </li>
   </ul>
-  <ul class="buttons-list u-margin-block-start-16">
+  <ul class="buttons-list mt-4">
     <!-- Login button  -->
     <li class="buttons-list-item">
       <button

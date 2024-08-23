@@ -71,9 +71,7 @@
 <!-- binding for fuse -->
 <Fuse list={data.list} options={fuseOptions} bind:query={$query} bind:result />
 <Main>
-  <header
-    class="web-u-sep-block-end u-padding-block-end-0 u-overflow-hidden relative"
-  >
+  <header class="web-u-sep-block-end relative overflow-hidden pb-0">
     <div class="web-container hero web-u-padding-block-end-0 relative">
       <img
         src="/images/pages/integration/integration-bg-top-1.png"
@@ -132,7 +130,7 @@
             </section>
             <section class="flex flex-col">
               <section class="flex flex-col gap-4">
-                <h2 class="web-side-nav-header web-eyebrow u-un-break-text">
+                <h2 class="web-side-nav-header web-eyebrow whitespace-nowrap">
                   Platform
                 </h2>
                 <ul class="flex flex-wrap gap-2" class:disabled={hasQuery}>
@@ -149,9 +147,9 @@
                   {/each}
                 </ul>
               </section>
-              <div class="web-u-sep-block-start u-margin-block-24"></div>
+              <div class="web-u-sep-block-start my-6"></div>
               <section class="flex flex-col gap-4">
-                <h2 class="web-side-nav-header web-eyebrow u-un-break-text">
+                <h2 class="web-side-nav-header web-eyebrow whitespace-nowrap">
                   Categories
                 </h2>
 
@@ -176,7 +174,7 @@
                     <option value={null}> Select category </option>
                   </select>
                   <span
-                    class="icon-cheveron-down u-inset-inline-end-8 u-inset-block-start-8 web-u-pointer-events-none absolute"
+                    class="icon-cheveron-down web-u-pointer-events-none absolute top-2 right-2"
                     aria-hidden="true"
                   />
                 </div>
@@ -229,7 +227,7 @@
                         <li>
                           <a
                             href={item.href}
-                            class="web-card is-normal u-height-100-percent"
+                            class="web-card is-normal h-full"
                             style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                           >
                             <div
@@ -246,7 +244,7 @@
                                 {item.title}
                               </h4>
                               <span
-                                class="icon-arrow-right u-margin-inline-start-auto"
+                                class="icon-arrow-right ml-auto"
                                 aria-hidden="true"
                               ></span>
                             </div>
@@ -350,7 +348,7 @@
                               <li>
                                 <a
                                   href={integration.href}
-                                  class="web-card is-normal u-height-100-percent"
+                                  class="web-card is-normal h-full"
                                   style="--card-padding:1.5rem; --card-padding-mobile:1.5rem; --card-border-radius: 1.5rem"
                                 >
                                   <div
@@ -364,7 +362,7 @@
                                       height="32"
                                     />
                                     <span
-                                      class="icon-arrow-right u-margin-inline-start-auto"
+                                      class="icon-arrow-right ml-auto"
                                       aria-hidden="true"
                                     ></span>
                                   </div>
@@ -399,7 +397,7 @@
   </div>
 
   <div
-    class="web-big-padding-section-level-1 u-overflow-hidden"
+    class="web-big-padding-section-level-1 overflow-hidden"
     style:margin-top="160px"
   >
     <div class="web-container">
@@ -416,7 +414,7 @@
             class="web-hero web-u-max-width-580 flex items-center justify-center gap-4"
           >
             <h2
-              class="web-display u-max-width-600 web-u-text-align-center web-u-color-text-primary"
+              class="web-display web-u-text-align-center web-u-color-text-primary max-w-[600px]"
             >
               Become a Technology Partner
             </h2>
@@ -427,7 +425,7 @@
             </p>
             <a
               href="/integrations/technology-partner"
-              class="web-button is-primary web-u-cross-child-center u-margin-block-start-16"
+              class="web-button is-primary web-u-cross-child-center mt-4"
             >
               <span class="text">Get Started</span>
             </a>

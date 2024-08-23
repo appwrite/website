@@ -48,8 +48,7 @@
   export let isReferences = false;
 
   const variantClasses: Record<DocsLayoutVariant, string> = {
-    default:
-      "web-grid-side-nav container max-w-[90rem] u-padding-inline-0 !px-0",
+    default: "web-grid-side-nav max-w-[90rem] !px-0",
     expanded: "web-grid-huge-navs",
     "two-side-navs": "web-grid-two-side-navs",
   };
@@ -128,7 +127,7 @@
     class:is-transparent={variant !== "expanded"}
   >
     <div class="web-main-header-wrapper">
-      <div class="web-main-header-start u-stretch">
+      <div class="web-main-header-start flex-1">
         <a href="/" aria-label="homepage">
           <img
             class="web-logo hidden dark:block"
@@ -152,7 +151,7 @@
             </li>
           </ul>
         </nav>
-        <div class="u-stretch web-u-margin-inline-start-48 flex">
+        <div class="web-u-margin-inline-start-48 flex flex-1">
           <button
             class="web-input-button web-u-flex-basis-400"
             on:click={() => ($layoutState.showSearch = true)}
@@ -160,7 +159,7 @@
             <span class="web-icon-search" aria-hidden="true" />
             <span class="text">Search in docs</span>
 
-            <div class="u-margin-inline-start-auto flex gap-1">
+            <div class="ml-auto flex gap-1">
               {#if isMac()}
                 <span class="web-kbd" aria-label="command">⌘</span>
               {:else}

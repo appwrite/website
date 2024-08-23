@@ -173,22 +173,14 @@
 </svelte:head>
 
 <Main>
+  <img class="absolute inset-0 mx-auto block" src={BackgroundHero} alt="" />
+  <img class="e-bg-left-mobile absolute top-0" src={BackgroundLeft} alt="" />
   <img
-    class="blocku-inset-inline-end-0 u-inset-block-start-0 u-inset-0 absolute mx-auto"
-    src={BackgroundHero}
-    alt=""
-  />
-  <img
-    class="u-inset-inline-start-0 u-inset-block-start-0 e-bg-left-mobile absolute"
-    src={BackgroundLeft}
-    alt=""
-  />
-  <img
-    class="u-inset-inline-end-0 u-inset-block-start-0 e-bg-right-mobile absolute"
+    class="e-bg-right-mobile absolute inset-y-0"
     src={BackgroundRight}
     alt=""
   />
-  <div class="web-big-padding-section u-overflow-hidden relative">
+  <div class="web-big-padding-section relative overflow-hidden">
     <div class="web-big-padding-section-level-1 relative">
       <div class="web-big-padding-section-level-2 e-u-margin-block-128-desktop">
         <section class="web-container web-u-padding-block-end-0">
@@ -221,7 +213,7 @@
             class="web-u-flex-vertical-mobile web-u-gap-80 e-u-gap-64-mobile flex"
           >
             <li
-              class="u-stretch mx-auto flex max-w-[350px] flex-col items-center gap-4"
+              class="mx-auto flex max-w-[350px] flex-1 flex-col items-center gap-4"
             >
               <img
                 src="/images/icons/gradients/backend.svg"
@@ -240,7 +232,7 @@
               </div>
             </li>
             <li
-              class="u-stretch mx-auto flex max-w-[350px] flex-col items-center gap-4"
+              class="mx-auto flex max-w-[350px] flex-1 flex-col items-center gap-4"
             >
               <img
                 src="/images/icons/gradients/cloud-credit.svg"
@@ -259,7 +251,7 @@
               </div>
             </li>
             <li
-              class="u-stretch mx-auto flex max-w-[350px] flex-col items-center gap-4"
+              class="mx-auto flex max-w-[350px] flex-1 flex-col items-center gap-4"
             >
               <img
                 src="/images/icons/gradients/support.svg"
@@ -285,9 +277,7 @@
     <div
       class="web-big-padding-section-level-1 web-white-section theme-light relative"
     >
-      <div
-        class="web-big-padding-section-level-2 e-u-margin-block-start-80-mobile"
-      >
+      <div class="web-big-padding-section-level-2 e-mt-20-mobile">
         <div class="web-container">
           <div class="web-timeline-content">
             <ol class="web-timeline-content-list">
@@ -370,7 +360,7 @@
                       growth.
                     </p>
                     <div
-                      class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-u-margin-block-start-16-mobile"
+                      class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-mt-4-mobile"
                     >
                       <p class="aw-sub-body-500">{ryanOconner.text}</p>
                       <div class="web-user-box">
@@ -415,7 +405,7 @@
                       application.
                     </p>
                     <div
-                      class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-u-margin-block-start-16-mobile flex flex-col"
+                      class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-mt-4-mobile flex flex-col"
                     >
                       <p class="aw-sub-body-500">{souvikSarkar.text}</p>
                       <div class="web-user-box">
@@ -445,12 +435,12 @@
                     />
                   </div>
 
-                  <div class="web-is-only-desktop u-overflow-hidden relative">
-                    <div class="u-flex">
+                  <div class="web-is-only-desktop relative overflow-hidden">
+                    <div class="flex">
                       <img
                         src={SecurityOptions}
                         alt=""
-                        class="u-margin-inline-start-auto"
+                        class="ml-auto"
                         style="width:500px; height:auto;"
                       />
                     </div>
@@ -463,7 +453,7 @@
                   style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;"
                 >
                   <div
-                    class="e-u-order-1-mobile e-mx-auto-mobile u-width-full-line web-u-max-width-580"
+                    class="e-u-order-1-mobile e-mx-auto-mobile web-u-max-width-580 w-full"
                   >
                     <div
                       class="web-chat web-u-max-width-580 web-u-margin-block-start-40-mobile"
@@ -591,9 +581,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div
-                    class="u-margin-inline-start-auto web-mx-auto-mobile flex flex-col gap-4"
-                  >
+                  <div class="web-mx-auto-mobile ml-auto flex flex-col gap-4">
                     <h3 class="web-title web-u-color-text-primary">
                       Power of open source community
                     </h3>
@@ -604,7 +592,7 @@
                       help navigate the challenges of startup growth.
                     </p>
                     <div
-                      class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-u-margin-block-start-16-mobile"
+                      class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-mt-4-mobile"
                     >
                       <p class="aw-sub-body-500">{mariusBolik.text}</p>
                       <div class="web-user-box">
@@ -632,7 +620,7 @@
       </div>
 
       <div
-        class="web-big-padding-section-level-2 web-u-overflow-hidden e-u-margin-block-start-200-desktop e-mt-38-mobile"
+        class="web-big-padding-section-level-2 web-u-overflow-hidden e-mt-50-desktop e-mt-38-mobile"
       >
         <h4
           class="web-title web-u-color-text-primary mx-auto max-w-[350px] text-center"
@@ -644,7 +632,7 @@
             {#each testimonials as t}
               <li>
                 <div
-                  class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-u-margin-block-start-48-mobile"
+                  class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-mt-12-mobile"
                   style="inline-size:23.625rem"
                 >
                   <p class="aw-sub-body-500">{t.text}</p>
@@ -671,10 +659,7 @@
       </div>
     </div>
 
-    <div
-      id="form"
-      class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden"
-    >
+    <div id="form" class="web-big-padding-section-level-1 overflow-hidden p-0">
       <div
         class="web-big-padding-section-level-2 is-margin-replace-padding relative"
       >
@@ -708,7 +693,7 @@
 
               <!-- before submit -->
               <div
-                class="u-z-index-1 web-grid-1-1-opt-2 e-u-row-gap-0 relative gap-8"
+                class="web-grid-1-1-opt-2 e-u-row-gap-0 relative z-[1] gap-8"
               >
                 <div>
                   <div
@@ -726,17 +711,13 @@
 
                       <div class="flex flex-col gap-3">
                         <div class="flex gap-4">
-                          <div
-                            class="web-check-bullet u-margin-block-start-4"
-                          ></div>
+                          <div class="web-check-bullet mt-1"></div>
                           <p class="web-description">
                             Appwrite Cloud Scale for 12 months
                           </p>
                         </div>
                         <div class="flex gap-4">
-                          <div
-                            class="web-check-bullet u-margin-block-start-4"
-                          ></div>
+                          <div class="web-check-bullet mt-1"></div>
                           <p class="web-description">
                             Priority email support as part of Scale
                           </p>
@@ -750,10 +731,10 @@
                 </div>
                 {#if submitted}
                   <div
-                    class="u-z-index-1 web-u-max-width-380 web-u-max-inline-size-none-mobile relative mx-auto flex flex-col gap-2 text-center"
+                    class="web-u-max-width-380 web-u-max-inline-size-none-mobile relative z-[1] mx-auto flex flex-col gap-2 text-center"
                   >
                     <h6
-                      class="web-label u-main-center e-mobile-fix-1 flex items-center gap-2"
+                      class="web-label e-mobile-fix-1 flex items-center justify-center gap-2"
                     >
                       <img
                         class="shrink-0"
@@ -770,7 +751,7 @@
                     </p>
                     <button
                       on:click={resetForm}
-                      class="web-button is-secondary is-full-width-mobile blocku-margin-block-start-16 mx-auto"
+                      class="web-button is-secondary is-full-width-mobile blockmt-4 mx-auto"
                       >Back to form</button
                     >
                   </div>
@@ -780,9 +761,9 @@
                     on:submit|preventDefault={handleSubmit}
                     class="flex flex-col gap-4"
                   >
-                    <div class="u-main-end flex">
+                    <div class="flex justify-end">
                       <ul
-                        class="web-form-list u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile gap-4"
+                        class="web-form-list web-u-max-width-580 web-u-max-inline-size-none-mobile w-full gap-4"
                       >
                         <li class="web-form-item flex flex-col gap-1">
                           <div class="block">Full name</div>
@@ -833,7 +814,7 @@
                       </ul>
                     </div>
                     <div
-                      class="u-main-space-between web-u-flex-vertical-reverse-mobile flex gap-4"
+                      class="web-u-flex-vertical-reverse-mobile flex justify-between gap-4"
                     >
                       <p class="web-caption-400 web-u-max-width-380">
                         {#if error}
@@ -926,13 +907,13 @@
     .e-u-margin-block-end-80-mobile {
       margin-block-end: 5rem;
     }
-    .e-u-margin-block-start-80-mobile {
+    .e-mt-20-mobile {
       margin-block-start: 5rem;
     }
-    .e-u-margin-block-start-16-mobile {
+    .e-mt-4-mobile {
       margin-block-start: 1rem;
     }
-    .e-u-margin-block-start-48-mobile {
+    .e-mt-12-mobile {
       margin-block-start: 3rem;
     }
     .e-u-row-gap-0 {
@@ -986,7 +967,7 @@
     .e-u-padding-inline-32-desktop {
       padding-inline: 2rem;
     }
-    .e-u-margin-block-start-200-desktop {
+    .e-mt-50-desktop {
       margin-block-start: 12.5rem;
     }
   }

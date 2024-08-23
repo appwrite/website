@@ -47,10 +47,8 @@
 </svelte:head>
 
 <Main>
-  <div class="web-big-padding-section-level-1 u-overflow-hidden relative">
-    <div
-      class="u-inset-inline-start-0 u-inset-block-end-0 web-u-pointer-events-none absolute"
-    >
+  <div class="web-big-padding-section-level-1 relative overflow-hidden">
+    <div class="web-u-pointer-events-none absolute inset-y-0">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="660"
@@ -118,7 +116,7 @@
           <div>
             <h1 class="web-title web-u-color-text-primary">{name}</h1>
             {#if role}
-              <div class="web-label u-margin-block-start-8">{role}</div>
+              <div class="web-label mt-2">{role}</div>
             {/if}
           </div>
           {#if bio}
@@ -126,7 +124,7 @@
               {bio}
             </p>
           {/if}
-          <ul class="u-main-center u-margin-block-start-16 flex gap-2">
+          <ul class="mt-4 flex justify-center gap-2">
             {#if github}
               <li>
                 <a
@@ -177,7 +175,7 @@
       <div class="web-container">
         <h2 class="web-title web-u-color-text-primary">Articles</h2>
 
-        <!-- <div class="web-is-only-mobile u-margin-block-start-32">
+        <!-- <div class="web-is-only-mobile mt-8">
 					<label class="blockweb-select is-colored" for="articles">
 						<select id="articles">
 							<option>Latest</option>
@@ -190,7 +188,7 @@
 					</label>
 				</div> -->
         <!--<div class="web-is-not-mobile">
-					<div class="flex u-main-space-between gap-4 u-margin-block-start-24">
+					<div class="flex justify-between gap-4 mt-6">
 						<ul
 							class="web-secondary-tabs is-transparent"
 							role="tablist"
@@ -200,7 +198,7 @@
 						>
 							<li class="web-secondary-tabs-item">
 								<button
-									class="web-secondary-tabs-button u-width-full-line is-selected"
+									class="web-secondary-tabs-button w-full is-selected"
 									type="button"
 									role="tab"
 									data-state="active"
@@ -214,7 +212,7 @@
 							</li>
 							<li class="web-secondary-tabs-item">
 								<button
-									class="web-secondary-tabs-button u-width-full-line"
+									class="web-secondary-tabs-button w-full"
 									type="button"
 									role="tab"
 									data-state="inactive"
@@ -228,7 +226,7 @@
 							</li>
 							<li class="web-secondary-tabs-item">
 								<button
-									class="web-secondary-tabs-button u-width-full-line"
+									class="web-secondary-tabs-button w-full"
 									type="button"
 									role="tab"
 									data-state="inactive"
@@ -242,7 +240,7 @@
 							</li>
 							<li class="web-secondary-tabs-item">
 								<button
-									class="web-secondary-tabs-button u-width-full-line"
+									class="web-secondary-tabs-button w-full"
 									type="button"
 									role="tab"
 									data-state="inactive"
@@ -256,7 +254,7 @@
 							</li>
 							<li class="web-secondary-tabs-item">
 								<button
-									class="web-secondary-tabs-button u-width-full-line"
+									class="web-secondary-tabs-button w-full"
 									type="button"
 									role="tab"
 									data-state="inactive"
@@ -276,7 +274,7 @@
 					</div>
 				</div>-->
 
-        <div class="u-margin-block-start-48">
+        <div class="mt-12">
           <ul class="web-grid-articles">
             {#each posts.filter((p) => p.author === author?.slug) as post}
               <Article
@@ -294,7 +292,7 @@
       </div>
     </div>
     <div
-      class="web-big-padding-section-level-2 is-margin-replace-padding u-overflow-hidden relative"
+      class="web-big-padding-section-level-2 is-margin-replace-padding relative overflow-hidden"
     >
       <div class="web-container">
         <FooterNav />

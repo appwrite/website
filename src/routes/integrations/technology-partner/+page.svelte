@@ -79,19 +79,14 @@
 
 <Main>
   <div class="web-big-padding-section">
-    <div
-      id="form"
-      class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden"
-    >
+    <div id="form" class="web-big-padding-section-level-1 overflow-hidden p-0">
       <div
         class="web-big-padding-section-level-2 is-margin-replace-padding relative"
       >
         <div class="relative">
           <div class="web-container relative">
             <!-- before submit -->
-            <div
-              class="u-z-index-1 web-grid-1-1-opt-2 e-u-row-gap-0 relative gap-8"
-            >
+            <div class="web-grid-1-1-opt-2 e-u-row-gap-0 relative z-[1] gap-8">
               <div>
                 <div
                   class="web-u-max-inline-size-none-mobile"
@@ -126,7 +121,7 @@
                     </section>
                   {/if}
                   <section
-                    class="u-padding-block-start-40 u-margin-block-start-40 web-u-sep-block-start flex flex-col gap-3"
+                    class="web-u-sep-block-start mt-10 flex flex-col gap-3 pt-10"
                   >
                     <h2 class="web-label web-u-color-text-primary">
                       Follow us
@@ -158,9 +153,9 @@
                   on:submit|preventDefault={handleSubmit}
                   class="flex flex-col gap-4"
                 >
-                  <div class="u-main-end flex">
+                  <div class="flex justify-end">
                     <ul
-                      class="web-form-list is-two-columns u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile gap-4"
+                      class="web-form-list is-two-columns web-u-max-width-580 web-u-max-inline-size-none-mobile w-full gap-4"
                     >
                       <li class="web-form-item flex flex-col gap-1">
                         <label class="block" for="name"
@@ -222,7 +217,7 @@
                             <option>5000+ employees</option>
                           </select>
                           <span
-                            class="icon-cheveron-down u-inset-inline-end-8 u-inset-block-start-8 web-u-pointer-events-none absolute"
+                            class="icon-cheveron-down web-u-pointer-events-none absolute top-2 right-2"
                             aria-hidden="true"
                           ></span>
                         </div>
@@ -271,7 +266,7 @@
                             >
                           </select>
                           <span
-                            class="icon-cheveron-down u-inset-inline-end-8 u-inset-block-start-8 web-u-pointer-events-none absolute"
+                            class="icon-cheveron-down web-u-pointer-events-none absolute top-2 right-2"
                             aria-hidden="true"
                           ></span>
                         </div>
@@ -325,7 +320,7 @@
                     </ul>
                   </div>
                   <div
-                    class="u-main-space-between web-u-flex-vertical-reverse-mobile flex gap-4"
+                    class="web-u-flex-vertical-reverse-mobile flex justify-between gap-4"
                   >
                     <p class="web-caption-400 web-u-max-width-380">
                       {#if error}

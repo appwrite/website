@@ -16,8 +16,8 @@
   $: prevStep = tutorials.find((tutorial) => tutorial.step === currentStep - 1);
 </script>
 
-<main class="u-contents" id="main">
-  <article class="web-article u-contents">
+<main class="contents" id="main">
+  <article class="web-article contents">
     <header class="web-article-header">
       <div class="web-article-header-start web-u-cross-start flex flex-col">
         <button
@@ -35,7 +35,7 @@
               href={back}
               class="
 						web-button is-text is-only-icon web-items-center web-u-size-40
-						u-inset-inline-start-0 web-u-translate-x-negative absolute"
+						web-u-translate-x-negative absolute top-0"
               aria-label="previous page"
             >
               <span
@@ -99,9 +99,7 @@
                 <span class="web-caption-400">{tutorial.title}</span>
               </a>
               {#if isCurrentStep}
-                <ol
-                  class="web-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
-                >
+                <ol class="web-references-menu-list mt-4 ml-8">
                   {#each toc as parent}
                     <li class="web-references-menu-item">
                       <a
@@ -116,9 +114,7 @@
                         <span class="web-caption-400">{parent.title}</span>
                       </a>
                       {#if parent.children}
-                        <ol
-                          class="web-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
-                        >
+                        <ol class="web-references-menu-list mt-4 ml-8">
                           {#each parent.children as child}
                             <li class="web-references-menu-item">
                               <a
@@ -140,9 +136,9 @@
             </li>
           {/each}
         </ol>
-        <div class="u-sep-block-start u-padding-block-start-20">
+        <div class="border-primary border-t pt-5">
           <button
-            class="web-link u-inline-flex items-center gap-2"
+            class="web-link inline-flex items-center gap-2"
             use:scrollToTop
           >
             <span class="web-icon-arrow-up" aria-hidden="true" />
