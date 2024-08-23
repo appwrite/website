@@ -21,9 +21,13 @@ We use Docker to replicate the production environment for the local deployment o
 
 Use the `appwrite run functions` command to develop your function locally.
 
+| parameter       | Description                                                                                                |
+|-----------------|------------------------------------------------------------------------------------------------------------|
+| `--port`        | You can set your function port; it defaults to `3000`, or the closest available, i.e. `3001`, `3002`, etc. |
+| `--function-id` | You can autoselect a function, so you don't have to click through the list each time.                      |
+
 ```sh
-appwrite run functions
-? Which function would you like to develop locally? My Awesome Function ("<FUNCTION_ID>")
+appwrite run functions --port 3000 --function-id "<FUNCTION_ID>"
 
  runtime   | entrypoint  | path                           | commands     
 -----------|-------------|--------------------------------|--------------
