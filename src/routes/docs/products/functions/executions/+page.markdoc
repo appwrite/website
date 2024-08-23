@@ -17,25 +17,25 @@ Here's the information shown on this table.
 - Column
 - Description
 ---
-- `Execution id`
+- Execution id
 - Unique identifier for each execution
 ---
-- `Status`
+- Status
 - The current status of the execution
 ---
-- `Created`
+- Created
 - Timestamp of when the execution was created
 ---
-- `Trigger`
+- Trigger
 - The [platform event](/docs/advanced/platform/events) that triggered the execution
 ---
-- `Method`
+- Method
 - The HTTP method used to create the execution
 ---
-- `Path`
+- Path
 - The URL path the function execution was called with
 ---
-- `Duration`
+- Duration
 - The time taken for the execution
 {% /table %}
 
@@ -51,7 +51,7 @@ Each execution can have one of the follow status.
 - The function execution will trigger later.
 ---
 - `waiting`
-- The deployment is queued but has not been picked up for processing.
+- The execution is queued but has not been picked up for processing.
 ---
 - `processing`
 - The function execution has begun and has not finished.
