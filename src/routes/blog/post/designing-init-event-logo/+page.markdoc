@@ -83,7 +83,7 @@ const paths = [
 </svg>
 ```
 
-With a few ways not to do the animation under my belt, the final step was finding the correct solution. I started experimenting with CSS animations, and while doing some digging, I landed on [this Stack Overflow post](https://stackoverflow.com/questions/46443036/svg-stroke-animation-increase-length), which gave me the what I needed to start. Utilizing the power of `stroke-dasharray` and `stroke-dashoffset` I was able to create a simple animation, applying it to each path.
+With a few ways not to do the animation under my belt, the final step was finding the correct solution. I started experimenting with CSS animations, and while doing some digging, I landed on [this Stack Overflow post](https://stackoverflow.com/questions/46443036/svg-stroke-animation-increase-length), which gave me what I needed to start. Utilizing the power of `stroke-dasharray` and `stroke-dashoffset` I was able to create a simple animation, applying it to each path.
 
 ```css
 :root {
@@ -246,6 +246,6 @@ This helped expand the concept we began developing with the Init lockup and made
 
 # Conclusion
 
-As a design team, our goal is to do work that sets a standard of excellence for not only ourselves, but also the industry as a whole. Here, we set out to build something that was visually appealing,  pushed the quality up another level from 1.0, was performant, and fit the themes of our event. Through a lot of hard work, learning, and iteration, we feel as though we managed to do all three. We’re constantly evolving, and will build on what we learned here to make our next events, and every other surface even better. Keep an eye out, and thanks for joining Init 2.0!
+As a design team, our goal is to do work that sets a standard of excellence for not only ourselves, but also the industry as a whole. Here, we set out to build something that was visually appealing, pushed the quality from 1.0, was performant, and fit the themes of our event. Through a lot of hard work, learning, and iteration, we feel as though we managed to do all four. We’re constantly evolving, and will build on what we learned here to make our next events, and every other surface even better. Keep an eye out, and thanks for joining Init 2.0!
 
 Shout out to Sara, Jade, Caio, and every other Appwriter who contributed to creating the Init 2.0 design!
