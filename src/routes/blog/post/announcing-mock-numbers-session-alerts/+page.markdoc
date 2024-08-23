@@ -56,7 +56,7 @@ The mock numbers feature will be available for Pro users in 1.6.
 
 When you sign into your Appwrite Cloud account, you will receive an email telling you about the sign-in, including details about the session. 
 
-End-users won't receive an email if it's your first time signing in, or if they haven't set up an email address.
+End-users won't receive an email if it's their first time signing in, or if they haven't set up an email address.
 
 ![Email-session-alert](/images/blog/init-day4/2.png)
 
