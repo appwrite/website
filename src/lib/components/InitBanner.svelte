@@ -36,13 +36,13 @@
                     style:font-size="20px"
                     style:font-family="var(--web-font-family-aeonik-pro)"
                     style:font-weight="600">init</span
-                > is coming
+                > has started
             </span>
             <span class="web-u-color-text-secondary">The start of something new</span>
             <div class="shadow" />
         </div>
-        <a href="/init/tickets" rel="noopener noreferrer" class="action">
-            <span class="web-caption-500">Register now</span>
+        <a href="/init" rel="noopener noreferrer" class="action">
+            <span class="web-caption-500">Join now</span>
             <span class="web-icon-arrow-right" aria-hidden="true" />
             <div class="shadow" />
         </a>
