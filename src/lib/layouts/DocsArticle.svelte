@@ -96,7 +96,7 @@
               </li>
             {/each}
           </ol>
-          <div class="border-primary border-t pt-5">
+          <div class="border-border-primary border-t pt-5">
             <button
               class="web-link inline-flex items-center gap-2"
               use:scrollToTop

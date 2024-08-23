@@ -291,7 +291,7 @@
               </li>
             {/each}
           </ul>
-          <div class="border-primary web-u-padding-block-20 border-t">
+          <div class="border-border-primary web-u-padding-block-20 border-t">
             <button
               class="web-link inline-flex items-center gap-2"
               use:scrollToTop
