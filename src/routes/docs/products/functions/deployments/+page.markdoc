@@ -24,7 +24,7 @@ Throughout the life cycle of a deployment, it could have the following status.
 * A deployment is being built. Check the [build log](#build-logs) for more detailed logs.
 ---
 * `processing`
-* The function execution has begun and has not finished.
+* The function deployment has begun and has not finished.
 ---
 * `waiting`
 * The deployment is queued but has not been picked up for processing.
