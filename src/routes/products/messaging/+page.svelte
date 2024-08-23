@@ -309,7 +309,7 @@ messaging.create_email(
               All of your messages in one place
             </h2>
           </section>
-          <div class="web-u-margin-block-start-80 overflow-hidden">
+          <div class="mt-20 overflow-hidden">
             <ul class="web-info-boxes is-desktop-max-out-3 web-sub-body-500">
               <li class="web-info-boxes-item">
                 <img

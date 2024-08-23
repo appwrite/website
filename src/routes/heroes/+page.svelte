@@ -180,7 +180,7 @@
           <div class="web-hero">
             <div class="web-display web-u-clr-primary">Meet our Heroes</div>
           </div>
-          <ul class="web-multi-columns-1 web-u-margin-block-start-80">
+          <ul class="web-multi-columns-1 mt-20">
             {#each heroCards as heroCardProps}
               <HeroCard {...heroCardProps} />
             {/each}
@@ -216,7 +216,7 @@
               How Appwrite Heroes can benefit you
             </h2>
           </section>
-          <div class="web-u-margin-block-start-80 overflow-hidden">
+          <div class="mt-20 overflow-hidden">
             <ul class="web-info-boxes web-sub-body-500">
               <li class="web-info-boxes-item">
                 <img

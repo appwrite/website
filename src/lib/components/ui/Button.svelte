@@ -37,30 +37,23 @@
   export let variant: $$Props["variant"] = "primary";
   const { class: classes, ...props } = $$restProps;
 
-  const buttonClasses = classNames(button({ variant }), classes);
+  const buttonClasses = classNames(button({ variant }), classes, {
+    gradient: variant === "secondary",
+  });
 </script>
 
 {#if href}
-  <a
-    {...props}
-    {href}
-    class={buttonClasses}
-    class:has-border-gradient={variant === "secondary"}
-  >
+  <a {...props} {href} class={buttonClasses}>
     <slot />
   </a>
 {:else}
-  <button
-    {...props}
-    class={buttonClasses}
-    class:has-border-gradient={variant === "secondary"}
-  >
+  <button {...props} class={buttonClasses}>
     <slot />
   </button>
 {/if}
 
 <style>
-  .has-border-gradient {
+  .gradient {
     --border-gradient-before: linear-gradient(
       to bottom,
       rgba(253, 54, 110, 0.48) 0%,

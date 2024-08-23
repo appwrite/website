@@ -339,7 +339,7 @@
               Loved by developers like you
             </div>
           </div>
-          <ul class="web-multi-columns-1 web-u-margin-block-start-80">
+          <ul class="web-multi-columns-1 mt-20">
             <li>
               <DeveloperCard
                 name="Terry Lennon"

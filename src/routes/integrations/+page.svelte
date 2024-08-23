@@ -11,6 +11,8 @@
   import { goto } from "$app/navigation";
   import { onDestroy, onMount } from "svelte";
   import { browser } from "$app/environment";
+  import { classNames } from "$lib/utils/classnames";
+  import Input from "$lib/components/ui/Input.svelte";
 
   export let data;
 
@@ -123,10 +125,17 @@
         <div class="l-integrations-grid">
           <aside class="sidebar flex flex-col gap-8">
             <section>
-              <label class="web-input-button web-flex-basis-400">
+              <input name="search" bind:value={$query} />
+              <!-- <label
+                class="web-input-button focus:border-greyscale-100 web-flex-basis-400"
+              >
                 <span class="web-icon-search" aria-hidden="true"></span>
-                <input class="text" placeholder="Search" bind:value={$query} />
-              </label>
+                <input
+                  class="border-0 ring-0 outline-none"
+                  placeholder="Search"
+                  bind:value={$query}
+                />
+              </label> -->
             </section>
             <section class="flex flex-col">
               <section class="flex flex-col gap-4">
@@ -137,8 +146,12 @@
                   {#each platforms as platform}
                     <li>
                       <button
-                        class="tag"
-                        class:is-selected={activePlatform === platform}
+                        class={classNames(
+                          "tag bg-greyscale-800 border-greyscale-700 h-8 cursor-pointer rounded-full border px-3 text-sm font-light",
+                          {
+                            "bg-white text-black": activePlatform === platform,
+                          },
+                        )}
                         class:active-tag={activePlatform === platform}
                         on:click={() => (activePlatform = platform)}
                         >{platform}</button
@@ -153,7 +166,7 @@
                   Categories
                 </h2>
 
-                <div class="is-not-desktop relative">
+                <div class="relative block sm:hidden">
                   <select
                     class="web-input-text"
                     bind:value={activeCategory}
@@ -180,7 +193,7 @@
                 </div>
 
                 <ul
-                  class="is-only-desktop flex flex-col gap-4"
+                  class="hidden flex-col gap-4 sm:flex"
                   class:disabled={hasQuery}
                 >
                   {#each data.categories as category}
@@ -265,7 +278,7 @@
                   </header>
 
                   <div>
-                    <ul class="web-feature-grid grid grid-cols-2 gap-4">
+                    <ul class="web-feature-grid grid gap-4 sm:grid-cols-2">
                       {#each data.featured as item}
                         <li
                           class="web-feature-grid-item is-two-columns-desktop-only relative"
@@ -283,29 +296,19 @@
                               class="web-user-box absolute bottom-4 left-4 z-10 gap-x-2"
                             >
                               <img
-                                class="web-user-box-image"
+                                class="row-span-2 block size-12 rounded-full"
                                 src={item.product.avatar}
                                 alt={`Avatar for ${item.product.vendor}`}
                                 width="40"
                                 height="40"
-                                style="border-radius: 50%;"
                               />
-                              <div
-                                class="web-user-box-name web-main-body-500 gap-2"
-                              >
-                                <span class="web-u-color-text-primary mt-3">
+                              <div class="web-main-body-500 gap-2">
+                                <span class="text-primary mt-3">
                                   {item.title}
                                 </span>
-                                <!-- {#if item.isNew}
-                                                                    <span
-                                                                        class="web-inline-tag is-pink"
-                                                                    >
-                                                                        New
-                                                                    </span>
-                                                                {/if} -->
                               </div>
                               <div
-                                class="web-user-box-username web-caption-400 web-u-color-text-secondary"
+                                class="web-caption-400 web-u-color-text-secondary"
                               >
                                 {item.category}
                               </div>
@@ -596,7 +599,8 @@
       }
 
       .tag {
-        min-width: pxToRem(42);
+        min-width: pxToRem(42) !important;
+
         &.active-tag {
           background-color: #fff;
           color: #000;

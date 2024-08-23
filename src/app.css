@@ -105,6 +105,9 @@
   /* base */
   --color-primary: var(--color-greyscale-900);
   --color-secondary: var(--color-greyscale-700);
+
+  /* polyfills for pink 1.0 */
+  --transform-direction: 1;
 }
 
 /* dark theme */
