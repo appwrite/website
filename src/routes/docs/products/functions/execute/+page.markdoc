@@ -235,15 +235,15 @@ func main() {
 		appwrite.WithProject("<PROJECT_ID>"),
 	)
 
-	functions := appwrite.NewFunctions(appwriteClient)
+	functions := appwrite.NewFunctions(client)
 
-	execution, err := appwriteFunctions.CreateExecution(
+	execution, err := functions.CreateExecution(
 		"<FUNCTION_ID>", // functionId
-		appwriteFunctions.WithCreateExecutionBody("<BODY>"), // body (optional)
-		appwriteFunctions.WithCreateExecutionAsync(false), // async (optional)
-		appwriteFunctions.WithCreateExecutionPath("<PATH>"), // path (optional)
-		appwriteFunctions.WithCreateExecutionMethod("GET"), // method (optional)
-		appwriteFunctions.WithCreateExecutionHeaders(map[string]interface{}{})) // headers (optional)
+		functions.WithCreateExecutionBody("<BODY>"), // body (optional)
+		functions.WithCreateExecutionAsync(false), // async (optional)
+		functions.WithCreateExecutionPath("<PATH>"), // path (optional)
+		functions.WithCreateExecutionMethod("GET"), // method (optional)
+		functions.WithCreateExecutionHeaders(map[string]interface{}{})) // headers (optional)
 
 	fmt.Println(execution)
 
@@ -748,20 +748,20 @@ import (
 )
 
 func main() {
-	appwriteClient := appwrite.NewClient(
+	client := appwrite.NewClient(
 		appwrite.WithProject("<PROJECT_ID>"),
 	)
 
-	appwriteFunctions := appwrite.NewFunctions(appwriteClient)
+	functions := appwrite.NewFunctions(client)
 
-	response, err := appwriteFunctions.CreateExecution(
+	response, err := functions.CreateExecution(
 		"<FUNCTION_ID>", // functionId
-		appwriteFunctions.WithCreateExecutionBody("<BODY>"), // body (optional)
-		appwriteFunctions.WithCreateExecutionAsync(true), // Scheduled executions need to be async
-		appwriteFunctions.WithCreateExecutionPath("<PATH>"), // path (optional)
-		appwriteFunctions.WithCreateExecutionMethod("GET"), // method (optional)
-		appwriteFunctions.WithCreateExecutionHeaders(map[string]interface{}{}), // headers (optional)
-		appwriteFunctions.WithCreateExecutionScheduledAt("2025-10-15T06:38:00.000+00:00")) // Schedule execution (optional)
+		functions.WithCreateExecutionBody("<BODY>"), // body (optional)
+		functions.WithCreateExecutionAsync(true), // Scheduled executions need to be async
+		functions.WithCreateExecutionPath("<PATH>"), // path (optional)
+		functions.WithCreateExecutionMethod("GET"), // method (optional)
+		functions.WithCreateExecutionHeaders(map[string]interface{}{}), // headers (optional)
+		functions.WithCreateExecutionScheduledAt("2025-10-15T06:38:00.000+00:00")) // Schedule execution (optional)
 
 	fmt.Println(response)
 
