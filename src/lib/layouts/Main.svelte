@@ -21,7 +21,6 @@
   import { onMount } from "svelte";
   import { page } from "$app/stores";
   import { classNames } from "$lib/utils/classnames";
-  import Button from "$lib/components/ui/Button.svelte";
 
   export let omitMainId = false;
   let theme: "light" | "dark" | null = "dark";

@@ -1,7 +1,6 @@
 <script lang="ts">
   import { page } from "$app/stores";
   import { FooterNav, MainFooter } from "$lib/components";
-  import Button from "$lib/components/ui/Button.svelte";
   import { Main } from "$lib/layouts";
   import DocsError from "./docs/+error.svelte";
 
@@ -29,9 +28,7 @@
                 to explore more of Appwrite's documentation.
               </p>
             {/if}
-            <Button href="/" variant="secondary" class="self-center"
-              >Back to homepage</Button
-            >
+            <a href="/" class="web-button self-center">Back to homepage</a>
           </div>
         </div>
       </div>
