@@ -51,7 +51,7 @@ APIs section:
 
 Tooling section:
 
-- [Command Line](https://appwrite.io/docs/command-line)
+- [CLI](https://appwrite.io/docs/command-line)
 - [Command center](https://appwrite.io/docs/tooling/command-center)
 - [Assistant](https://appwrite.io/docs/tooling/assistant)
 
