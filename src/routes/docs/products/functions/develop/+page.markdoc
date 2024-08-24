@@ -785,7 +785,7 @@ These are provided alongside any custom headers sent to the function.
 | `x-appwrite-continent-eu`   |  Describes if the configured local is within the EU.                                                                                                 |
 
 ## Response {% #response %}
-If you need to send a response to the invoker of the function, such as a user, client app, or an integration, use the response object. 
+Use the response object to send a response to the function caller. This could be a user, client app, or an integration.
 The response information **will not be logged** to the Appwrite Console. 
 There are several possible ways to send a response, explore them in the following Appwrite Function.
 
