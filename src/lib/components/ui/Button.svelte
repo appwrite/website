@@ -14,10 +14,13 @@
       variants: {
         variant: {
           primary: [
-            "to-secondary-100 bg-gradient-to-br from-pink-500 via-pink-500",
-            "hover:shadow-[0_0_2rem_#fd366e52]",
+            "bg-gradient-to-br from-pink-500 via-pink-500 to-secondary-100",
+            "hover:shadow-[0_0_2rem_#fd366e52] active:not:disabled:shadow-[0_0_2rem_#fd366e52]",
           ],
-          secondary: ["bg-[#fd366e0a] relative"],
+          secondary: [
+            "bg-[#fd366e0a] relative",
+            "hover:shadow-[0_-6px_10px_0px_rgba(253,54,110,0.08)_inset]",
+          ],
           text: [
             "bg-transparent border-transparent",
             "hover:bg-gradient-to-b from-[#ffffff0f] via-[#ffffff1a] to-[#ffffff0f];",
@@ -38,22 +41,25 @@
   const { class: classes, ...props } = $$restProps;
 
   const buttonClasses = classNames(button({ variant }), classes, {
-    gradient: variant === "secondary",
+    secondary: variant === "secondary",
+    "leading-tight": $$slots.icon,
   });
 </script>
 
 {#if href}
   <a {...props} {href} class={buttonClasses}>
+    <slot name="icon" />
     <slot />
   </a>
 {:else}
   <button {...props} class={buttonClasses}>
+    <slot name="icon" />
     <slot />
   </button>
 {/if}
 
 <style>
-  .gradient {
+  .secondary {
     --border-gradient-before: linear-gradient(
       to bottom,
       rgba(253, 54, 110, 0.48) 0%,
