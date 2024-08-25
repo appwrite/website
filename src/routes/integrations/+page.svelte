@@ -131,7 +131,13 @@
                 placeholder="Search"
                 bind:value={$query}
                 autocomplete="off"
-              ></Input>
+              >
+                <span
+                  class="web-icon-search"
+                  aria-hidden="true"
+                  slot="icon"
+                /></Input
+              >
 
               <!-- <label
                 class="web-input-button focus:border-greyscale-100 web-flex-basis-400"

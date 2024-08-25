@@ -12,6 +12,7 @@
   import DeveloperCard from "./DeveloperCard.svelte";
   import { PUBLIC_APPWRITE_DASHBOARD } from "$env/static/public";
   import CoverImage from "./dashboard.png";
+  import Button from "$lib/components/ui/Button.svelte";
 
   const title = "Appwrite - Build like a team of hundreds";
   const description = DEFAULT_DESCRIPTION;
@@ -146,12 +147,12 @@
                 Databases, Functions, Storage, and Messaging to your projects
                 using the frameworks and languages of your choice.
               </p>
-              <a
+              <Button
                 href={PUBLIC_APPWRITE_DASHBOARD}
-                class="web-button is-full-width-mobile mt-8"
+                class="mt-8 w-full lg:w-fit"
               >
-                <span class="text">Get started</span>
-              </a>
+                Get started
+              </Button>
             </div>
           </div>
         </section>
@@ -460,13 +461,9 @@
               ensuring you can code with the language you want at any time.
             </p>
             <Technologies />
-            <a
-              href="/docs/sdks"
-              class="web-button is-secondary"
-              style:align-self="start"
+            <Button href="/docs/sdks" variant="secondary"
+              >Explore all SDKs</Button
             >
-              <span class="web-sub-body-500">Explore all SDKs</span>
-            </a>
           </section>
         </div>
       </div>
