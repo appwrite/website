@@ -60,7 +60,7 @@ A comment is made to your PR about the build, unless you enable **Silent mode**.
 ---
 * Starter
 * A simple starter function that returns "Hello, world!"
-* Node.js, Python, PHP, Dart, Node.js (TypeScript), Bun, Deno, Ruby, Kotlin, C++, .NET, Java, Swift
+* Node.js, Python, PHP, Dart, Node.js (TypeScript), Bun, Deno, Ruby, Kotlin, C++, .NET, Java, Swift, Go
 ---
 * Sync with Meilisearch
 * Syncs documents in an Appwrite database collection to a Meilisearch index to add search-as-you-type search boxes to your app.
@@ -88,7 +88,7 @@ A comment is made to your PR about the build, unless you enable **Silent mode**.
 ---
 * Discord Command Bot
 * Add Discord commands to your servers using Discord Interactions.
-* Node.js, Python
+* Node.js, Python, Go
 ---
 * Github Issue Bot
 * Automate the process of responding to newly opened issues on a GitHub repository.
