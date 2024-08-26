@@ -19,6 +19,7 @@
         body: JSON.stringify({
           email,
           key,
+          cloud: true /* not optional on the growth endpoint. */,
         }),
       },
     );

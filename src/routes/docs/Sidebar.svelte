@@ -97,7 +97,7 @@
             label: 'Tooling',
             items: [
                 {
-                    label: 'Command Line',
+                    label: 'CLI',
                     href: '/docs/tooling/command-line/installation',
                     icon: 'icon-terminal',
                     isParent: true

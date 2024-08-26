@@ -29,6 +29,7 @@
   export let timeToRead: string;
   export let cover: string;
   export let category: string;
+  export let lastUpdated: string;
 
   const authors = getContext<AuthorData[]>("authors");
   const authorData = authors.find((a) => a.slug === author);
@@ -246,12 +247,21 @@
                 </div>
               {/if}
 
-              <div class="web-article-content mt-8">
+              <div class="web-article-content u-margin-block-start-32">
+                {#if lastUpdated}
+                  <span class="web-main-body-500 last-updated-text">
+                    Updated:
+                    <time dateTime={lastUpdated}>
+                      {formatDate(lastUpdated)}
+                    </time>
+                  </span>
+                {/if}
+
                 <slot />
               </div>
             </article>
             <!-- {#if categories?.length}
-							<div class="flex gap-4">
+							<div class="u-flex u-gap-16">
 								{#each categories as cat}
 									<a href={cat.href} class="web-tag">{cat.name}</a>
 								{/each}
@@ -329,6 +339,10 @@
 
     .web-icon-copy {
       font-size: 24px;
+    }
+
+    .last-updated-text {
+      color: var(--primary, #e4e4e7);
     }
   }
 </style>
