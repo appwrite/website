@@ -1,8 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  /* Themes */
-
   /* Colors */
   --color-*: initial;
 
@@ -70,7 +68,7 @@
   --color-greyscale-900: hsl(var(--color-greyscale-hue) 5.7% 10.4%);
 
   /* Animations */
-  --animate-scale-in: scale-in 0.2s ease-out forwards;
+  --animate-scale-in: scale-in 200ms ease-out forwards;
 
   /* Keyframes */
   @keyframes scale-in {
@@ -90,6 +88,7 @@
   --font-family-archia: "Archia", arial, sans-serif;
 }
 
+/* Themes */
 :root,
 .light {
   --color-pink-hue: 343;
