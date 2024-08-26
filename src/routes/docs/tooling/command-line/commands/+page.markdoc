@@ -4,65 +4,147 @@ title: Commands
 description: Learn about Appwrites CLI and the powerful, feature complete commands to manage Appwrite's auth, databases, functions, storage, and more.
 ---
 
-Other than commands to create and deploy databases, collections, functions, teams, and buckets, the Appwrite CLI can be used as a Server SDK as well. The Appwrite CLI has a command for every Server API endpoint.
+{% info title="CLI Version" %}
+All commands are compatible with the latest version of the CLI. We recommend running the [CLI on its latest version](/docs/tooling/command-line/installation#update-your-cli).
+{% /info %}
 
-Commands follows the following general syntax:
+
+Other than commands to create and push databases, collections, functions, messaging-topics, teams, and buckets, the Appwrite CLI can be used as a Server SDK as well. The Appwrite CLI has a command for every Server API endpoint.
+
+Commands generally follow the following syntax:
 
 ```sh
 appwrite [COMMAND] [OPTIONS]
 ```
 
-# List {% #list %}
+# Commands {% #commands %}
 
 Below is a list of the available commands in the Appwrite CLI. You can get more information on each command by running `appwrite [COMMAND] --help`.
+
+## General commands {% #general-commands %}
 
 {% table %}
 * Command
 * Description
 ---
-* `login`
-* The login command allows you to authenticate into the CLI. This command expects the console account that you use to log into the Appwrite Console.
+* `assistant`
+* The assistant command allows you to interact with the Appwrite Assistant AI.
 ---
-* `client`
+* `client [options]`
 * The client command allows you to configure your CLI.
----
-* `init`
-* The init command helps you initialize your Appwrite project, databases, collections, functions, teams, and buckets.
----
-* `deploy`
-* The deploy command provides a convenient wrapper for deploying your databases, collections, functions, teams, and buckets.
----
-* `logout`
-* The logout command allows you to logout from the CLI.
----
-* `projects`
-* The projects command allows you to view, create, and manage your Appwrite projects.
----
-* `storage`
-* The storage command allows you to manage your project files.
----
-* `teams`
-* The teams command allows you to group users of your project and to enable them to share access permissions to your project's resources.
----
-* `users`
-* The users command allows you to manage your project users.
----
-* `account`
-* The account command allows you to authenticate as and manage a user account.
----
-* `avatars`
-* The avatars command provides utilities to manage images, icons, and avatars.
----
-* `functions`
-* The functions command allows you view, create and manage your Appwrite Functions.
----
-* `databases`
-* The databases command allows you to create structured collections of documents, query and filter lists of documents.
 ---
 * `locale`
 * The locale command allows you to customize your app based on your users' location.
 ---
+* `graphql`
+* The graphql command allows you to query and mutate any resource type on your Appwrite server.
+---
+{% /table %}
 
+## Account commands {% #account-commands %}
+
+{% table %}
+* Command
+* Description
+---
+* `login [options]`
+* The login command allows you to authenticate into the CLI. This command expects the console account that you use to log into the Appwrite Console.
+---
+* `logout`
+* The logout command allows you to log out of your Appwrite account.
+---
+* `register`
+* Prints link to register an Appwrite account.
+---
+* `whoami`
+* The whomai command gives information about the currently logged-in user.
+---
+{% /table %}
+
+## Deployment commands {% #deployment-commands %}
+
+{% table %}
+* Command
+* Description
+---
+* `init [options]`
+* The init command provides a convenient wrapper for creating and initializing projects, functions, collections, buckets, teams, and messaging-topics in Appwrite.
+---
+* `pull`
+* The pull command helps you pull your Appwrite project, functions, collections, buckets, teams, and messaging-topics.
+---
+* `push`
+* The push command provides a convenient wrapper for pushing your functions, collections, buckets, teams, and topics.
+---
+* `run`
+* The run command allows you to run projects locally to allow easy development and quick debugging.
+---
+{% /table %}
+
+## Project commands {% #appwrite-project-commands %}
+
+{% table %}
+
+* Command
+* Description
+---
+* `account`
+* The account command allows you to authenticate and manage a user account.
+---
+* `users`
+* The users command allows you to manage your project users.
+---
+* `teams`
+* The teams command allows you to group users of your project and enable them to share read and write access to your project resources.
+---
+* `databases`
+* The databases command allows you to create structured collections of documents and query and filter lists of documents.
+---
+* `functions`
+* The functions command allows you to view, create, and manage your Appwrite Functions.
+---
+* `messaging`
+* The messaging command allows you to send, create, edit, and delete messages.
+---
+* `storage`
+* The storage command allows you to manage your project files.
+---
+* `avatars`
+* The avatars command provides utilities to manage images, icons, and avatars.
+---
+{% /table %}
+
+## Command options {% #command-options %}
+
+{% table %}
+
+* Command
+* Description
+---
+* `-v, --version`     
+* Output the version number
+---
+* `-V, --verbose`     
+* Show complete error log
+---
+* `-j, --json`        
+* Output in JSON format
+---
+* `-f,--force`        
+* Flag to confirm all warnings
+---
+* `-a,--all`          
+* Flag to push all resources
+---
+* `--id [id...]`      
+* Flag to pass a list of ids for a given action
+---
+* `--report`          
+* Enable reporting in case of CLI errors
+---
+* `-h, --help`        
+* Display help for command
+---
 {% /table %}
 
 # Verbose {% #verbose %}
@@ -79,6 +161,38 @@ By default, output is rendered in a tabular format. To format the output as JSON
 appwrite users list --json
 ```
 
+# Force {% #force %}
+By default, when pushing or pulling resources, the Appwrite CLI will ask you to confirm destructive operations. Use the `--force` flag to verify all questions.
+
+```sh
+appwrite push collections --force
+```
+
+# All {% #all %}
+By default, when pushing or pulling resources, Appwrite CLI would ask you to select specific resources. Use the `--all` flag to select all available options.
+
+```sh
+appwrite pull functions --all
+```
+
+# Error reporting {% #report %}
+If you encounter errors with any command, you can use the --report flag to generate a GitHub reporting link.
+
+```sh
+appwrite login --report
+```
+
+# View on console {% #console-flow %}
+Many resources support the option to view them in the console. Use the `--console` flag to get a direct link to the console, and add the optional `--open` flag to automatically open it in the default browser.
+
+```sh
+appwrite databases get-document \
+  --database-id "<DATABASE_ID>" \
+  --collection-id "<COLLECTION_ID>" \
+  --document-id "<DOCUMENT_ID>" \
+  --console --open
+```
+
 # Examples {% #examples %}
 
 ## Create user {% #create-user %}
@@ -86,7 +200,7 @@ appwrite users list --json
 To create a new user in your project, you can use the create command.
 
 ```sh
-appwrite users create --userId "unique()" \
+appwrite users create --user-id "unique()" \
     --email hello@appwrite.io \
     --password very_strong_password
 ```
@@ -101,33 +215,33 @@ appwrite users list
 
 ## List collections {% #list-collections %}
 
-To get a list of all your collections, you can use the listCollections command.
+To get a list of all your [collections](/docs/tooling/command-line/collections), you can use the `list-collections` command.
 
 ```sh
-appwrite databases listCollections --databaseId [DATABASE_ID]
+appwrite databases list-collections --database-id "<DATABASE_ID>"
 ```
 
 If you wish to parse the output from the CLI, you can request the CLI output in JSON format using the `--json` flag
 
 ```sh
-appwrite databases listCollections --databaseId [DATABASE_ID]--json
+appwrite databases list-collections --database-id "<DATABASE_ID>" --json
 ```
 
 ## Get collection {% #get-collection %}
 
-To get more information on a particular collection, you can make use of the getCollection command and pass in the collectionId.
+To get more information on a particular collection, you can make use of the `get-collection` command and pass in the collection-id.
 
 ```sh
-appwrite databases getCollection --databaseId [DATABASE_ID] --collectionId [COLLECTION_ID]
+appwrite databases get-collection --database-id "<DATABASE_ID>" --collection-id "<COLLECTION_ID>"
 ```
 
 ## Create document {% #create-document %}
 
-To create a new document in an existing collection, use the `createDocument` command.
+To create a new document in an existing collection, use the `create-document` command.
 
 ```sh
-appwrite databases createDocument \
-    --databaseId [DATABASE_ID] --collectionId [COLLECTION_ID] \
-    --documentId 'unique()' --data '{ "Name": "Iron Man" }' \
+appwrite databases create-document \
+    --database-id "<DATABASE_ID>" --collection-id "<COLLECTION_ID>" \
+    --document-id 'unique()' --data '{ "Name": "Iron Man" }' \
     --permissions 'read("any")' 'write("team:abc")' 
 ```
