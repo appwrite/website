@@ -147,8 +147,4 @@
         position: relative;
         pointer-events: all;
     }
-
-    :global(.web-input-text) {
-        --p-input-placeholder-text-color: var(--web-color-tertiary);
-    }
 </style>
