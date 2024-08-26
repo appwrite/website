@@ -148,47 +148,6 @@
                         <p class="web-caption-400">{authorData.role}</p>
                       </div>
                     </a>
-                    <!-- <ul class="flex gap-2 ml-auto self-center">
-											{#if authorData.twitter}
-												<li>
-													<a
-														href={authorData.twitter}
-														class="web-icon-button"
-														aria-label="Author twitter"
-														target="_blank" rel="noopener noreferrer"
-
-													>
-														<span class="web-icon-x" aria-hidden="true" />
-													</a>
-												</li>
-											{/if}
-											{#if authorData.linkedin}
-												<li>
-													<a
-														href={authorData.linkedin}
-														class="web-icon-button"
-														aria-label="Author LinkedIn"
-														target="_blank" rel="noopener noreferrer"
-
-													>
-														<span class="web-icon-linkedin" aria-hidden="true" />
-													</a>
-												</li>
-											{/if}
-											{#if authorData.github}
-												<li>
-													<a
-														href={authorData.github}
-														class="web-icon-button"
-														aria-label="Author GitHub"
-														target="_blank" rel="noopener noreferrer"
-
-													>
-														<span class="web-icon-github" aria-hidden="true" />
-													</a>
-												</li>
-											{/if}
-										</ul> -->
                   </div>
                 {/if}
 

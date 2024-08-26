@@ -30,7 +30,7 @@
   style:--y={`${y}px`}
   style:--percentage={`${easedPercentage * 100}%`}
 >
-  <div class="absolute -top-[8px] left-1/2 translate-[-50%_var(--y)]" />
+  <div class="absolute -top-[8px] left-1/2" />
 </div>
 
 <style lang="scss">

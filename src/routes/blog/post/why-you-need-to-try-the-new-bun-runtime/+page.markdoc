@@ -205,14 +205,14 @@ describe("getGifs", () => {
 
 Each time we deploy, we can configure Appwrite Functions to run the tests after build. For this example, we use the build commands:
 
-```jsx
+```bash
 bun install
 bun test
 ```
 
 This will install dependencies and run tests before activating a deployment.
 
-```jsx
+```bash
 Preparing for build ...
 Building ...
 bun install v1.0.0 (822a00c4)

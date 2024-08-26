@@ -479,46 +479,6 @@ messaging.create_email(
           </div>
         </div>
       </div>
-      <!-- <div class="web-big-padding-section-level-2 relative z-[1] theme-light">
-                <div class="container relative">
-                    <img
-                        class="absolute z-[1] is-not-mobile"
-                        style="width:1500px; height:auto; max-block-size:none; max-inline-size:none; inset-block-end:-27rem; rotate:145deg; inset-inline-start:-42rem;"
-                        src="/images/messaging/stripes.png"
-                        alt="stripes"
-                    />
-                    <div class="grid-1-1 relative z-[1]">
-                        <section class="web-hero is-align-start">
-                            <span class="web-badges web-eyebrow">PERFORMANCE_</span>
-                            <h2 class="web-display max-w-[600px] web-u-color-text-primary">
-                                Optimized efficiency
-                            </h2>
-                        </section>
-                        <ul
-                            class="web-big-list-info ml-auto web-u-inline-width-100-percent-mobile-break1 web-u-margin-block-start-48"
-                        >
-                            <li class="web-big-list-info-item">
-                                <div class="web-headline web-u-color-text-primary">500+</div>
-                                <div class="web-description web-u-color-text-secondary">
-                                    messages per second
-                                </div>
-                            </li>
-                            <li class="web-big-list-info-item">
-                                <div class="web-headline web-u-color-text-primary">33k+</div>
-                                <div class="web-description web-u-color-text-secondary">
-                                    messages per minute
-                                </div>
-                            </li>
-                            <li class="web-big-list-info-item">
-                                <div class="web-headline web-u-color-text-primary">9</div>
-                                <div class="web-description web-u-color-text-secondary">
-                                    third party providers
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div> -->
     </div>
 
     <div
