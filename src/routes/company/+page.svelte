@@ -31,7 +31,7 @@
   <enhanced:img class="absolute top-0" src="./bg-left.png" alt="" />
   <enhanced:img class="absolute inset-y-0" src="./bg-right.png" alt="" />
   <div class="web-big-padding-section relative">
-    <div class="web-big-padding-section-level-1 relative">
+    <div class="relative py-10">
       <div class="web-big-padding-section-level-2" style:margin-block="8rem">
         <section class="web-container web-u-padding-block-end-0">
           <div
@@ -53,7 +53,7 @@
         </section>
       </div>
     </div>
-    <div class="web-big-padding-section-level-1 relative">
+    <div class="relative py-10">
       <div class="web-big-padding-section-level-2">
         <section class="web-container">
           <section
@@ -98,7 +98,7 @@
       </div>
     </div>
 
-    <!-- <div class="web-big-padding-section-level-1 relative web-white-section theme-light">
+    <!-- <div class="py-10 relative web-white-section theme-light">
 			<div class="web-big-padding-section-level-2">
 				<div class="web-container">
 					<div class="web-hero is-center">
@@ -276,7 +276,7 @@
 				</div>
 			</div>
 		</div> -->
-    <div class="web-big-padding-section-level-1 web-white-section theme-light">
+    <div class="web-white-section theme-light py-10">
       <div class="web-big-padding-section-level-2">
         <div class="web-container">
           <div class="web-hero web-u-max-width-800">
@@ -566,7 +566,7 @@
       </div>
     </div>
 
-    <div class="web-big-padding-section-level-1 overflow-hidden p-0">
+    <div class="overflow-hidden p-0 py-10">
       <div
         class="web-big-padding-section-level-2 is-margin-replace-padding relative"
       >

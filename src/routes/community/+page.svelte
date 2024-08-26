@@ -149,7 +149,7 @@
 
 <Main>
   <div class="web-big-padding-section overflow-hidden">
-    <div class="web-big-padding-section-level-1 relative overflow-hidden">
+    <div class="relative overflow-hidden py-10">
       <div
         class="web-u-z-index-1-negative web-u-hide-mobile absolute"
         style:inline-size="704px"
@@ -213,7 +213,7 @@
       </div>
     </div>
 
-    <div class="web-big-padding-section-level-1 relative">
+    <div class="relative py-10">
       <div class="absolute-container">
         <div class="green-gradient" />
         <div class="pink-gradient" />
@@ -260,7 +260,7 @@
       </div>
     </div>
 
-    <div class="web-big-padding-section-level-1">
+    <div class="py-10">
       <div class="web-big-padding-section-level-2">
         <div class="web-container">
           <div class="web-hero is-align-start">
@@ -456,9 +456,7 @@
       </div>
     </div>
 
-    <div
-      class="web-big-padding-section-level-1 web-white-section theme-light relative"
-    >
+    <div class="web-white-section theme-light relative py-10">
       <div class="web-big-padding-section-level-2">
         <div class="web-container">
           <div class="web-hero is-center">
@@ -473,7 +471,7 @@
               href="https://builtwith.appwrite.io"
               target="_blank"
               rel="noopener noreferrer"
-              class="web-button is-secondary web-u-cross-child-center mt-4 self-center"
+              class="web-button is-secondary mt-4 self-center"
             >
               <span>View all projects</span>
             </a>
@@ -488,7 +486,7 @@
         </div>
       </div>
     </div>
-    <div class="web-big-padding-section-level-1 web-white-section theme-light">
+    <div class="web-white-section theme-light py-10">
       <div class="web-big-padding-section-level-2">
         <div class="web-container">
           <div
@@ -582,7 +580,7 @@
         </div>
       </div>
     </div>
-    <div class="web-big-padding-section-level-1">
+    <div class="py-10">
       <div class="web-big-padding-section-level-2">
         <div class="web-container">
           <div class="web-grid-1-1-opt-2 gap-8">

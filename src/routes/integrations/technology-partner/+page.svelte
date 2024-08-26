@@ -79,7 +79,7 @@
 
 <Main>
   <div class="web-big-padding-section">
-    <div id="form" class="web-big-padding-section-level-1 overflow-hidden p-0">
+    <div id="form" class="overflow-hidden p-0 py-10">
       <div
         class="web-big-padding-section-level-2 is-margin-replace-padding relative"
       >

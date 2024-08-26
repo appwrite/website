@@ -64,7 +64,7 @@
 
 <Main>
   <div class="web-big-padding-section">
-    <div class="web-big-padding-section-level-1">
+    <div class="py-10">
       <div class="web-big-padding-section-level-2">
         <div class="web-container">
           <div class="web-grid-1-1-opt-2 gap-8">

@@ -295,7 +295,7 @@ messaging.create_email(
     </div>
 
     <div
-      class="web-big-padding-section-level-1 web-white-section theme-light web-u-padding-block-end-0 relative"
+      class="web-white-section theme-light web-u-padding-block-end-0 relative py-10"
     >
       <div
         class="web-big-padding-section-level-2"
@@ -570,9 +570,7 @@ messaging.create_email(
       </div>
     </div>
 
-    <section
-      class="web-big-padding-section-level-1 web-u-sep-block-start web-u-padding-block-start-80"
-    >
+    <section class="web-u-sep-block-start web-u-padding-block-start-80 py-10">
       <div class="container">
         <h4 class="web-label web-u-color-text-primary text-center">
           Keep exploring our products

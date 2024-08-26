@@ -32,7 +32,7 @@
 
 <Main>
   <div class="web-big-padding-section" style:overflow-x="hidden">
-    <div class="web-big-padding-section-level-1 relative">
+    <div class="relative py-10">
       <div
         class="absolute"
         style="pointer-events:none;inset-inline-start:0; inset-block-end:0;"
@@ -152,7 +152,7 @@
         </div>
       </div>
     </div>
-    <div class="web-big-padding-section-level-1">
+    <div class="py-10">
       <div class="web-big-padding-section-level-2">
         <div class="container">
           <h2 class="web-title web-u-color-text-primary">Articles</h2>

@@ -181,7 +181,7 @@
     alt=""
   />
   <div class="web-big-padding-section relative overflow-hidden">
-    <div class="web-big-padding-section-level-1 relative">
+    <div class="relative py-10">
       <div class="web-big-padding-section-level-2 e-u-margin-block-128-desktop">
         <section class="web-container web-u-padding-block-end-0">
           <div
@@ -272,9 +272,7 @@
       </div>
     </div>
 
-    <div
-      class="web-big-padding-section-level-1 web-white-section theme-light relative"
-    >
+    <div class="web-white-section theme-light relative py-10">
       <div class="web-big-padding-section-level-2 e-mt-20-mobile">
         <div class="web-container">
           <div class="web-timeline-content">
@@ -657,7 +655,7 @@
       </div>
     </div>
 
-    <div id="form" class="web-big-padding-section-level-1 overflow-hidden p-0">
+    <div id="form" class="overflow-hidden p-0 py-10">
       <div
         class="web-big-padding-section-level-2 is-margin-replace-padding relative"
       >

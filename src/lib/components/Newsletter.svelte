@@ -92,7 +92,7 @@
 </div>
 
 <div class="web-big-padding-section">
-  <div class="web-big-padding-section-level-1">
+  <div class="py-10">
     <div class="web-big-padding-section-level-2">
       <div class="container">
         <div class="grid-cols-2-opt-2 grid gap-8">

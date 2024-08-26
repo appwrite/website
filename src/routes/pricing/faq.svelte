@@ -85,7 +85,7 @@
 </script>
 
 <ul
-  class="collapsible w-full"
+  class="collapsible !divide-border-primary w-full !divide-y"
   style="--p-toggle-border-color: var(--web-color-smooth);"
   use:melt={$root}
   id="faq"
@@ -95,19 +95,19 @@
       <!-- Progressive Enhancement for kbd navigation & animations -->
       {#if browser}
         <div
-          class="collapsible-wrapper"
+          class="collapsible-wrapper py-2"
           use:melt={$item(`${index}`)}
           {...{ open: $isSelected(`${index}`) ? true : undefined }}
         >
           <h3 use:melt={$heading({ level: 3 })}>
             <button
-              class="collapsible-button w-full"
+              class="flex w-full items-center justify-between gap-2.5 py-6 text-left"
               use:melt={$trigger(`${index}`)}
             >
               <span class="web-label web-u-color-text-primary">
                 {faqItem.question}
               </span>
-              <div class="icon web-u-color-text-primary">
+              <div class="icon web-u-color-text-primary self-start">
                 <span class="icon-cheveron-down" aria-hidden="true" />
               </div>
             </button>

@@ -102,7 +102,7 @@
 
 <Main>
   <div class="web-big-padding-section">
-    <div class="web-big-padding-section-level-1">
+    <div class="py-10">
       <div class="container relative">
         <div
           class="web-big-padding-section-level-2 web-max-w-[800px] web-u-margin-block-0 mx-auto flex items-center justify-center"
@@ -188,7 +188,7 @@
       </div>
     </div>
     <div
-      class="web-big-padding-section-level-1 relative flex h-screen items-center justify-center overflow-hidden p-0"
+      class="relative flex h-screen items-center justify-center overflow-hidden p-0 py-10"
     >
       <div class="absolute top-0">
         <svg
@@ -481,7 +481,7 @@
       </div>
     </div>
     <div
-      class="web-big-padding-section-level-1 relative flex h-screen items-center justify-center overflow-hidden p-0"
+      class="relative flex h-screen items-center justify-center overflow-hidden p-0 py-10"
     >
       <div class="absolute top-0">
         <svg
@@ -824,8 +824,8 @@
       </div>
     </div>
     <div
-      class="web-big-padding-section-level-1 web-white-section light
-        relative overflow-hidden p-0"
+      class="web-white-section light relative
+        overflow-hidden p-0 py-10"
     >
       <div class="absolute right-0">
         <svg
@@ -1229,7 +1229,7 @@
       </div>
     </div>
 
-    <div class="web-big-padding-section-level-1 relative p-0">
+    <div class="relative p-0 py-10">
       <div class="absolute top-0 w-full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
