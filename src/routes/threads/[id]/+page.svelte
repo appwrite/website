@@ -25,7 +25,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={data.seo_description ?? description} />
     <meta property="og:description" content={data.seo_description ?? description} />
     <meta name="twitter:description" content={data.seo_description ?? description} />
