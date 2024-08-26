@@ -204,7 +204,9 @@
         <nav class="web-main-header-nav" aria-label="Main">
           <ul class="web-main-header-nav-list">
             {#each navLinks as navLink}
-              <li class="web-main-header-nav-item">
+              <li
+                class="web-main-header-nav-item text-primary hover:text-accent"
+              >
                 <a
                   class={classNames(
                     "data-[badge]:after:animate-scale-in data-[badge]:relative data-[badge]:after:absolute data-[badge]:after:size-1.5 data-[badge]:after:translate-full data-[badge]:after:rounded-full",
