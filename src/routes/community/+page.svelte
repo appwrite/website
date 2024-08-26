@@ -235,9 +235,7 @@
 
       <div class="web-big-padding-section-level-2">
         <div class="web-container relative">
-          <div
-            class="web-hero is-mobile-center web-u-gap-20 web-u-max-width-900"
-          >
+          <div class="web-hero is-mobile-center web-u-max-width-900 gap-5">
             <h1 class="web-headline web-u-color-text-primary">
               The power of open source benefits us all
             </h1>
@@ -280,8 +278,8 @@
             style="--card-padding:2rem; --card-padding-mobile:1.25rem;"
           >
             <div
-              class="web-u-flex-direction-column-mobile web-u-gap-96
-									web-u-row-gap-48 flex"
+              class="web-u-flex-direction-column-mobile web-u-row-gap-48
+									flex gap-24"
             >
               <div>
                 <h3 class="web-label web-u-color-text-primary">
@@ -352,7 +350,7 @@
         <section class="web-container">
           <h4 class="web-label web-u-color-text-primary">Other ways to help</h4>
           <ul
-            class="grid-box web-u-gap-20-mobile mt-5 gap-8"
+            class="mt-5 grid gap-5 md:grid-cols-4 md:gap-8"
             style="--grid-item-size:15rem"
           >
             <li>
@@ -475,7 +473,7 @@
               href="https://builtwith.appwrite.io"
               target="_blank"
               rel="noopener noreferrer"
-              class="web-button is-secondary web-u-cross-child-center mt-4"
+              class="web-button is-secondary web-u-cross-child-center mt-4 self-center"
             >
               <span>View all projects</span>
             </a>
@@ -593,7 +591,7 @@
                 class="web-u-max-inline-size-none-mobile"
                 class:web-u-max-width-380={!submitted}
               >
-                <section class="web-u-gap-20 flex flex-col">
+                <section class="flex flex-col gap-5">
                   <h1 class="web-title web-u-color-text-primary">
                     Appwrite insights
                   </h1>

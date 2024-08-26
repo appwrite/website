@@ -307,7 +307,7 @@
             <h2 class="web-display text-primary">
               Self-host your data or take it to the Cloud
             </h2>
-            <p class="web-description">
+            <p class="web-description !text-secondary">
               Migrate your data from and to any platform at any time with
               Appwrite Migrations. With built-in security and privacy for peace
               of mind.
@@ -323,7 +323,7 @@
                   >
                     {box.label}
                   </h3>
-                  <p class="web-info-boxes-content">
+                  <p class="text-secondary mt-1">
                     {box.description}
                   </p>
                 </li>

@@ -204,7 +204,7 @@
       </div>
       <div class="web-article-header-end" />
     </header>
-    <div class="web-article-content web-u-gap-80">
+    <div class="web-article-content gap-20">
       {#each quickStarts as category}
         <section class="flex flex-col gap-6">
           <h2 class="web-eyebrow">{category.title}</h2>

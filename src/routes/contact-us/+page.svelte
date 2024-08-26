@@ -74,7 +74,7 @@
                 class:web-u-max-width-380={!submitted}
               >
                 {#if submitted}
-                  <section class="web-u-gap-20 flex flex-col">
+                  <section class="flex flex-col gap-5">
                     <h1 class="web-display web-u-color-text-primary">
                       Thank you for your message
                     </h1>
@@ -91,7 +91,7 @@
                     </a>
                   </section>
                 {:else}
-                  <section class="web-u-gap-20 flex flex-col">
+                  <section class="flex flex-col gap-5">
                     <h1 class="web-display web-u-color-text-primary">
                       Contact Us
                     </h1>

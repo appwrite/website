@@ -209,9 +209,7 @@
         class="web-big-padding-section-level-2 e-u-padding-block-start-48-mobile e-u-padding-block-start-80-desktop e-u-margin-block-end-80-mobile"
       >
         <section class="web-container">
-          <ul
-            class="web-u-flex-vertical-mobile web-u-gap-80 e-u-gap-64-mobile flex"
-          >
+          <ul class="web-u-flex-vertical-mobile e-u-gap-64-mobile flex gap-20">
             <li
               class="mx-auto flex max-w-[350px] flex-1 flex-col items-center gap-4"
             >
@@ -300,7 +298,7 @@
                     </p>
                   </div>
                   <div>
-                    <div class="web-card is-white web-u-gap-20 flex flex-col">
+                    <div class="web-card is-white flex flex-col gap-5">
                       <p class="aw-sub-body-500">
                         The integrated user authentication and the ease of
                         creating data structures have undoubtedly saved us
@@ -360,7 +358,7 @@
                       growth.
                     </p>
                     <div
-                      class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-mt-4-mobile"
+                      class="web-card is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
                     >
                       <p class="aw-sub-body-500">{ryanOconner.text}</p>
                       <div class="web-user-box">
@@ -405,7 +403,7 @@
                       application.
                     </p>
                     <div
-                      class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-mt-4-mobile flex flex-col"
+                      class="web-card is-white web-u-margin-block-start-64 e-mt-4-mobile flex flex-col gap-5"
                     >
                       <p class="aw-sub-body-500">{souvikSarkar.text}</p>
                       <div class="web-user-box">
@@ -592,7 +590,7 @@
                       help navigate the challenges of startup growth.
                     </p>
                     <div
-                      class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-mt-4-mobile"
+                      class="web-card is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
                     >
                       <p class="aw-sub-body-500">{mariusBolik.text}</p>
                       <div class="web-user-box">
@@ -632,7 +630,7 @@
             {#each testimonials as t}
               <li>
                 <div
-                  class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-mt-12-mobile"
+                  class="web-card is-white web-u-margin-block-start-64 e-mt-12-mobile gap-5"
                   style="inline-size:23.625rem"
                 >
                   <p class="aw-sub-body-500">{t.text}</p>
@@ -700,7 +698,7 @@
                     class="web-u-max-inline-size-none-mobile"
                     class:web-u-max-width-380={!submitted}
                   >
-                    <section class="web-u-gap-20 flex flex-col">
+                    <section class="flex flex-col gap-5">
                       <h4 class="web-title web-u-color-text-primary">
                         Join the Appwrite Startups program
                       </h4>
