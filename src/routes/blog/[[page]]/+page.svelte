@@ -3,26 +3,25 @@
     import { MainFooter, FooterNav, Article } from '$lib/components';
     import { TITLE_SUFFIX } from '$routes/titles.js';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
-    import { page } from '$app/stores';
-    import { onMount } from 'svelte';
     import { BLOG_POSTS_NAVIGATION_RANGE } from '$lib/constants.js';
 
     export let data;
+
     const featured = data.featured;
 
-    let currentPage = 1;
+    $: isFirstPageRange = chunkIndex !== 0;
 
-    $: isLastPage = currentPage < data.totalPages;
+    $: isLastPageRange = chunkIndex + 1 < totalChunks;
 
-    $: paginatedBlogPosts = data.posts[currentPage - 1] ?? data.posts[0];
+    $: totalChunks = Math.ceil(data.totalPages / BLOG_POSTS_NAVIGATION_RANGE);
 
-    $: chunkIndex = Math.floor((currentPage - 1) / BLOG_POSTS_NAVIGATION_RANGE);
+    $: chunkIndex = Math.floor((data.currentPage - 1) / BLOG_POSTS_NAVIGATION_RANGE);
 
     $: currentPageRange = data.navigation[chunkIndex] || [];
 
     $: nextBatchStartPage = (): number => {
         const nextBatchStart = (chunkIndex + 1) * BLOG_POSTS_NAVIGATION_RANGE + 1;
-        return nextBatchStart <= data.posts.length ? nextBatchStart : currentPage;
+        return nextBatchStart <= data.posts.length ? nextBatchStart : data.currentPage;
     };
 
     $: previousBatchStartPage = (): number => {
@@ -30,13 +29,6 @@
         const prevBatchStart = currentBatchStart - BLOG_POSTS_NAVIGATION_RANGE;
         return prevBatchStart > 0 ? prevBatchStart : 1;
     }
-
-    onMount(() => {
-        return page.subscribe((page) => {
-            const pageParam = page.url.searchParams.get('page') || '1';
-            currentPage = Math.max(parseInt(pageParam), 1);
-        });
-    });
 
     const title = 'Blog' + TITLE_SUFFIX;
     const description = 'Stay updated with the latest product news, insights, and tutorials from the Appwrite team. Discover tips and best practices for hassle-free backend development.';
@@ -183,7 +175,7 @@
 
                     <div class="u-margin-block-start-48">
                         <ul class="web-grid-articles">
-                            {#each paginatedBlogPosts as post}
+                            {#each data.posts as post}
                                 {@const author = data.authors.find(
                                     (author) => author.slug === post.author
                                 )}
@@ -206,8 +198,8 @@
                         <ul class="u-flex u-cross-center u-gap-4" style="justify-content: center">
                             <a
                                 class="u-flex navigation-button"
-                                class:navigation-button-active={currentPage > 1}
-                                href="/blog?page={previousBatchStartPage()}"
+                                href="/blog/{previousBatchStartPage()}"
+                                class:navigation-button-active={isFirstPageRange}
                             >
                                 <span class="web-icon-chevron-left" style="font-size: 20px"/>
                                 Previous
@@ -215,16 +207,16 @@
 
                             {#each currentPageRange as page}
                                 <a
+                                    href="/blog/{page}"
                                     class="pagination-number"
-                                    class:pagination-number-selected={currentPage === page}
-                                    href="/blog?page={page}"
+                                    class:pagination-number-selected={data.currentPage === page}
                                 > {page} </a>
                             {/each}
 
                             <a
                                 class="u-flex navigation-button"
-                                class:navigation-button-active={isLastPage}
-                                href="/blog?page={nextBatchStartPage()}"
+                                class:navigation-button-active={isLastPageRange}
+                                href="/blog/{nextBatchStartPage()}"
                             >
                                 Next
                                 <span class="web-icon-chevron-right"  style="font-size: 20px"/>
