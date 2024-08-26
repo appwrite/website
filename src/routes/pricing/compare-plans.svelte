@@ -7,11 +7,13 @@
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
+    import Tooltip from '../../lib/components/Tooltip.svelte';
 
     type Table = {
         title: string;
         rows: {
             title: string;
+            info?: string;
             free: string | true;
             pro: string | true;
             scale: string | true;
@@ -262,6 +264,7 @@
                 },
                 {
                     title: 'Express builds',
+                    info: 'Dedicated priority queues for build jobs',
                     free: '-',
                     pro: true,
                     scale: true,
@@ -560,7 +563,19 @@
                             <tbody class="web-compare-table-body" use:melt={$content(table.title)}>
                                 {#each table.rows as row}
                                     <tr>
-                                        <th class="web-sub-body-500">{row.title}</th>
+                                        <th class="web-sub-body-500">
+                                            <div class="u-flex u-gap-4">
+                                                {row.title}
+                                                {#if row.info}
+                                                    <Tooltip placement="top">
+                                                        <span class="icon-info" aria-hidden="true" />
+                                                        <svelte:fragment slot="tooltip">
+                                                            {row.info}
+                                                        </svelte:fragment>
+                                                    </Tooltip>
+                                                {/if}
+                                            </div>
+                                        </th>
                                         {#each cols as col, index}
                                             <td
                                                 class="level-{index}"
