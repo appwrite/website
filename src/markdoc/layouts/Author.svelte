@@ -47,7 +47,7 @@
 </svelte:head>
 
 <Main>
-  <div class="web-big-padding-section-level-1 relative overflow-hidden">
+  <div class="relative overflow-hidden py-10">
     <div class="web-u-pointer-events-none absolute inset-y-0">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -170,7 +170,7 @@
     </div>
   </div>
 
-  <div class="web-big-padding-section-level-1">
+  <div class="py-10">
     <div class="web-big-padding-section-level-2">
       <div class="web-container">
         <h2 class="web-title web-u-color-text-primary">Articles</h2>

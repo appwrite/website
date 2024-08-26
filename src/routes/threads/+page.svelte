@@ -113,7 +113,7 @@
 
 <Main>
   <div class="w-big-padding-section">
-    <div class="web-big-padding-section-level-1">
+    <div class="py-10">
       <div
         class="web-big-padding-section-level-2 web-u-margin-block-0 web-u-sep-block-end relative overflow-hidden"
       >

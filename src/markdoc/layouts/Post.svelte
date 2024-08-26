@@ -102,7 +102,7 @@
     }}
   >
     <div class="web-big-padding-section">
-      <div class="web-big-padding-section-level-1">
+      <div class="py-10">
         <div class="web-big-padding-section-level-2">
           <div class="web-container" style="--container-size:42.5rem">
             <article class="web-main-article">
@@ -261,7 +261,7 @@
               </div>
             </article>
             <!-- {#if categories?.length}
-							<div class="u-flex u-gap-16">
+							<div class="flex gap-4">
 								{#each categories as cat}
 									<a href={cat.href} class="web-tag">{cat.name}</a>
 								{/each}
@@ -273,7 +273,7 @@
     </div>
   </div>
 
-  <div class="web-big-padding-section-level-1 web-u-sep-block-start">
+  <div class="web-u-sep-block-start py-10">
     <div class="web-big-padding-section-level-2">
       <div class="web-container">
         <h3 class="web-label web-u-color-text-primary">Read next</h3>

@@ -119,7 +119,7 @@
     </div>
   </header>
 
-  <div class="web-big-padding-section-level-1">
+  <div class="py-10">
     <div>
       <div class="web-container">
         <div class="l-integrations-grid">
@@ -412,10 +412,7 @@
     </div>
   </div>
 
-  <div
-    class="web-big-padding-section-level-1 overflow-hidden"
-    style:margin-top="160px"
-  >
+  <div class="overflow-hidden py-10" style:margin-top="160px">
     <div class="web-container">
       <div class="web-big-padding-section-level-2 relative">
         <img
@@ -441,7 +438,7 @@
             </p>
             <a
               href="/integrations/technology-partner"
-              class="web-button is-primary web-u-cross-child-center mt-4"
+              class="web-button is-primary mt-4 self-center"
             >
               <span class="text">Get Started</span>
             </a>

@@ -70,7 +70,7 @@
 
 <Main>
   <div class="web-big-padding-section">
-    <div class="web-big-padding-section-level-1">
+    <div class="py-10">
       <div class="web-big-padding-section-level-2">
         <div class="container wrapper" style="--container-size:42.5rem">
           <article class="web-main-article">
@@ -149,7 +149,7 @@
           </article>
         </div>
       </div>
-      <div class="web-big-padding-section-level-1 relative overflow-hidden">
+      <div class="relative overflow-hidden py-10">
         <div class="web-big-padding-section-level-2">
           <div class="container">
             <PreFooter />

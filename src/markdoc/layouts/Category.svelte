@@ -39,7 +39,7 @@
 </svelte:head>
 
 <Main>
-  <div class="web-big-padding-section-level-1">
+  <div class="py-10">
     <div class="web-big-padding-section-level-2">
       <div class="web-container">
         <a

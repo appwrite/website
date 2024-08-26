@@ -117,7 +117,7 @@
 
 <Main>
   <div class="web-big-padding-section">
-    <div class="web-big-padding-section-level-1">
+    <div class="py-10">
       <div class="web-big-padding-section-level-2">
         <section class="container web-u-padding-block-end-0">
           <a
@@ -286,9 +286,7 @@
     <Products />
     <ProductsMobile />
 
-    <div
-      class="web-big-padding-section-level-1 web-white-section light relative"
-    >
+    <div class="web-white-section light relative py-10">
       <div class="absolute bottom-0 w-full">
         <img
           class="block w-full"
@@ -432,7 +430,7 @@
       </div>
     </div>
 
-    <div class="web-big-padding-section-level-1 relative overflow-hidden">
+    <div class="relative overflow-hidden py-10">
       <div
         class="web-is-not-mobile absolute"
         style:inline-size="768px"

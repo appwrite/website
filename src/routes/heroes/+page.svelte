@@ -109,7 +109,7 @@
 
 <Main>
   <div class="web-big-padding-section">
-    <div class="web-big-padding-section-level-1">
+    <div class="py-10">
       <div class="web-big-padding-section-level-2">
         <section class="web-container hero web-u-padding-block-end-0">
           <div>
@@ -137,7 +137,7 @@
         </section>
       </div>
     </div>
-    <div class="web-big-padding-section-level-1">
+    <div class="py-10">
       <div class="web-big-padding-section-level-2">
         <section class="web-container">
           <div class="web-hero web-u-max-width-800 about">
@@ -172,9 +172,7 @@
       </div>
     </div>
 
-    <div
-      class="web-big-padding-section-level-1 web-white-section theme-light relative"
-    >
+    <div class="web-white-section theme-light relative py-10">
       <div class="web-big-padding-section-level-2">
         <div class="web-container">
           <div class="web-hero">
@@ -303,7 +301,7 @@
       </div>
     </div>
 
-    <div class="web-big-padding-section-level-1 footer-wrapper relative">
+    <div class="footer-wrapper relative py-10">
       <enhanced:img
         src="./bg-pre.png"
         alt=""
@@ -326,7 +324,7 @@
               href="https://7nxwryuitoy.typeform.com/heroes-apply"
               target="_blank"
               rel="noopener noreferrer"
-              class="web-button is-transparent is-full-width-mobile web-u-cross-child-center mt-5"
+              class="web-button is-transparent is-full-width-mobile mt-5 self-center"
             >
               Become a Hero
             </a>

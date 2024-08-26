@@ -45,12 +45,12 @@
 
 <Main>
   <div class="web-big-padding-section mt-2">
-    <div class="web-big-padding-section-level-1 theme-dark">
+    <div class="theme-dark py-10">
       <div class="web-big-padding-section-level-2">
         <section class="web-container">
           <div class="web-hero">
             <h1
-              class="web-display web-u-max-width-700 web-u-cross-child-center web-u-opacity-90 web-u-mobile-align-text-center"
+              class="web-display web-u-max-width-700 web-u-opacity-90 web-u-mobile-align-text-center self-center"
               style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
             >
@@ -253,9 +253,7 @@
     </div>
     <ComparePlans />
 
-    <div
-      class="web-big-padding-section-level-1 theme-dark relative overflow-hidden"
-    >
+    <div class="theme-dark relative overflow-hidden py-10">
       <div class="web-big-padding-section-level-2 relative">
         <div class="web-container relative" style:z-index="10">
           <section class="web-grid-4-6">

@@ -83,7 +83,7 @@
       </div>
     </div>
   </div>
-  <div class="web-big-padding-section-level-1">
+  <div class="py-10">
     <div class="web-container">
       <article
         class="web-u-gap-60-not-mobile web-u-gap-40-mobile flex flex-col"
@@ -141,9 +141,7 @@
     </div>
   </div>
 
-  <div
-    class="web-big-padding-section-level-1 web-u-sep-block-start mt-12 overflow-hidden"
-  >
+  <div class="web-u-sep-block-start mt-12 overflow-hidden py-10">
     <!-- <ProductsGrid /> -->
 
     <div class="web-container">
@@ -172,7 +170,7 @@
             </p>
             <a
               href="/integrations/technology-partner"
-              class="web-button is-primary web-u-cross-child-center mt-4"
+              class="web-button is-primary mt-4 self-center"
             >
               <span class="text">Get Started</span>
             </a>
