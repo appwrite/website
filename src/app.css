@@ -9,6 +9,7 @@
   /* base */
   --color-primary: hsl(var(--color-primary));
   --color-secondary: hsl(var(--color-secondary));
+  --color-accent: var(--color-secondary);
   --color-border-primary: hsl(var(--color-greyscale-hue) 5.7% 10.4% / 0.04);
 
   /* pink */
@@ -82,7 +83,6 @@
   }
 
   /* Fonts */
-  --font-family-*: initial;
   --font-family-sans: "Inter", arial, sans-serif;
   --font-family-mono: "Fira Code", monospace;
   --font-family-aeonik-fono: "Aenoik Fono", monospace;
@@ -105,14 +105,13 @@
   /* base */
   --color-primary: var(--color-greyscale-900);
   --color-secondary: var(--color-greyscale-700);
-
-  /* polyfills for pink 1.0 */
-  --transform-direction: 1;
+  --color-accent: var(--color-pink-600);
 }
 
 /* dark theme */
 .dark {
   --color-primary: var(--color-greyscale-100);
+  --color-secondary: var(--color-greyscale-300);
 }
 
 /* Container */
