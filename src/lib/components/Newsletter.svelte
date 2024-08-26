@@ -99,7 +99,7 @@
           <div class="">
             <div
               class="web-u-max-inline-size-none-mobile"
-              class:web-max-w-[380px]={!submitted}
+              class:max-w-[380px]={!submitted}
             >
               <section class="web-gap-5 flex flex-col">
                 <h1 class="web-title web-u-color-text-primary">
