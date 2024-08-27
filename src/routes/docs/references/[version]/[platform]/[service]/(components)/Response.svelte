@@ -5,20 +5,20 @@
   export let method: SDKMethod;
 </script>
 
-<div class="web-card is-transparent p-4">
+<div class="web-card is-transparent u-padding-16">
   <ul>
     {#each method.responses as response}
       {#if response.models}
         <li>
           <article>
-            <header class="flex items-baseline gap-2">
+            <header class="u-flex u-cross-baseline u-gap-8">
               <span class="web-eyebrow web-u-color-text-primary">
                 {response.code}
               </span>
               <span class="web-caption-400">application/json</span>
             </header>
             {#if response.models.length > 0}
-              <ul class="web-sub-body-400 mt-4">
+              <ul class="web-sub-body-400 u-margin-block-start-16">
                 {#each response.models as model}
                   <li>
                     <a
