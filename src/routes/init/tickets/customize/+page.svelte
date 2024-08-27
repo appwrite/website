@@ -1,155 +1,146 @@
 <script lang="ts">
-  import FooterNav from "$lib/components/FooterNav.svelte";
-  import MainFooter from "$lib/components/MainFooter.svelte";
-  import Main from "$lib/layouts/Main.svelte";
-  import { dequal } from "dequal/lite";
-  import {
-    TicketPreview,
-    Ticket,
-    TicketActions,
-    TicketDetails,
-  } from "$routes/init/(components)/ticket/index.js";
+    import FooterNav from '$lib/components/FooterNav.svelte';
+    import MainFooter from '$lib/components/MainFooter.svelte';
+    import Main from '$lib/layouts/Main.svelte';
+    import { dequal } from 'dequal/lite';
+    import {
+        TicketPreview,
+        Ticket,
+        TicketActions,
+        TicketDetails
+    } from '$routes/init/(components)/ticket/index.js';
 
-  export let data;
+    export let data;
 
-  let originalName = data.ticket?.name ?? "";
-  let name = originalName;
-  let originalTitle = data.ticket?.title ?? "";
-  let title = originalTitle;
-  let originalShowGitHub = data.ticket?.show_contributions ?? true;
-  let showGitHub = originalShowGitHub;
+    let originalName = data.ticket?.name ?? '';
+    let name = originalName;
+    let originalTitle = data.ticket?.title ?? '';
+    let title = originalTitle;
+    let originalShowGitHub = data.ticket?.show_contributions ?? true;
+    let showGitHub = originalShowGitHub;
 
-  let customizing = false;
-  let saving = false;
+    let customizing = false;
+    let saving = false;
 
-  $: modified = !dequal(
-    {
-      name: originalName,
-      title: originalTitle,
-      showGitHub: originalShowGitHub,
-    },
-    { name, title, showGitHub },
-  );
+    $: modified = !dequal(
+        {
+            name: originalName,
+            title: originalTitle,
+            showGitHub: originalShowGitHub
+        },
+        { name, title, showGitHub }
+    );
 
-  async function saveTicket() {
-    if (!modified) return;
+    async function saveTicket() {
+        if (!modified) return;
 
-    saving = true;
+        saving = true;
 
-    let response = await fetch(`/init/tickets/update`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        title,
-        showGitHub,
-      }),
-    });
+        let response = await fetch(`/init/tickets/update`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name,
+                title,
+                showGitHub
+            })
+        });
 
-    if (response.ok) {
-      originalName = name;
-      originalTitle = title;
-      originalShowGitHub = showGitHub;
+        if (response.ok) {
+            originalName = name;
+            originalTitle = title;
+            originalShowGitHub = showGitHub;
+        }
+
+        customizing = false;
+        saving = false;
     }
-
-    customizing = false;
-    saving = false;
-  }
 </script>
 
 <svelte:head>
-  <title>Customize Ticket - Appwrite</title>
-  <meta
-    name="description"
-    content="Join Init August 19th-23rd. Register today and claim your ticket."
-  />
+    <title>Customize Ticket - Appwrite</title>
+    <meta
+        name="description"
+        content="Join Init August 19th-23rd. Register today and claim your ticket."
+    />
 </svelte:head>
 
 <Main>
-  <div class="hero">
-    <div class="desktop-left">
-      <div class="header">
-        <h1 class="web-display">
-          Ready, set, <span
-            class="web-u-color-text-primary"
-            style:font-weight="500"
-          >
-            init
-          </span>
-        </h1>
-      </div>
+    <div class="hero">
+        <div class="desktop-left">
+            <div class="header">
+                <h1 class="web-display">
+                    Ready, set, <span class="web-u-color-text-primary" style:font-weight="500">
+                        init
+                    </span>
+                </h1>
+            </div>
 
-      <div class="info">
-        <p class="web-label mt-4">
-          Join us during the week of August 19–23 to celebrate everything new
-          with Appwrite.
-        </p>
-      </div>
+            <div class="info">
+                <p class="web-label mt-4">
+                    Join us during the week of August 19–23 to celebrate everything new with
+                    Appwrite.
+                </p>
+            </div>
+        </div>
+
+        <div class="ticket">
+            <TicketPreview>
+                <Ticket
+                    {...data.ticket}
+                    {name}
+                    {title}
+                    contributions={data.streamed?.contributions}
+                    show_contributions={showGitHub}
+                />
+            </TicketPreview>
+            <div class="item">
+                <TicketDetails bind:customizing bind:name bind:title />
+                <TicketActions {saveTicket} bind:customizing bind:showGitHub {modified} {saving} />
+            </div>
+        </div>
     </div>
 
-    <div class="ticket">
-      <TicketPreview>
-        <Ticket
-          {...data.ticket}
-          {name}
-          {title}
-          contributions={data.streamed?.contributions}
-          show_contributions={showGitHub}
-        />
-      </TicketPreview>
-      <div class="item">
-        <TicketDetails bind:customizing bind:name bind:title />
-        <TicketActions
-          {saveTicket}
-          bind:customizing
-          bind:showGitHub
-          {modified}
-          {saving}
-        />
-      </div>
+    <div class="container">
+        <FooterNav />
+        <MainFooter />
     </div>
-  </div>
-
-  <div class="container">
-    <FooterNav />
-    <MainFooter />
-  </div>
 </Main>
 
 <style lang="scss">
-  .desktop-left {
-    h1 {
-      margin-block-start: 3.5rem;
+    .desktop-left {
+        h1 {
+            margin-block-start: 3.5rem;
+        }
     }
-  }
-  .ticket {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    width: 100%;
+    .ticket {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        width: 100%;
 
-    .item {
-      min-height: 75px;
-      width: 100%;
+        .item {
+            min-height: 75px;
+            width: 100%;
+        }
     }
-  }
-  .container {
-    padding-block-start: 0;
+    .container {
+        padding-block-start: 0;
 
-    :global(nav) {
-      margin-block-start: 0;
+        :global(nav) {
+            margin-block-start: 0;
+        }
     }
-  }
 
-  .web-display {
-    margin-bottom: -48px;
-  }
-
-  @media screen and (min-width: 768px) {
     .web-display {
-      margin-bottom: 0;
+        margin-bottom: -48px;
     }
-  }
+
+    @media screen and (min-width: 768px) {
+        .web-display {
+            margin-bottom: 0;
+        }
+    }
 </style>

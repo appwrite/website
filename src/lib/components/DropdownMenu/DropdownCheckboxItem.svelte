@@ -1,24 +1,24 @@
 <script lang="ts">
-  import { DropdownCtx } from "./DropdownMenu.svelte";
+    import { DropdownCtx } from './DropdownMenu.svelte';
 
-  export let checked = false;
+    export let checked = false;
 
-  const {
-    builders: { createCheckboxItem },
-  } = DropdownCtx.get();
+    const {
+        builders: { createCheckboxItem }
+    } = DropdownCtx.get();
 
-  const {
-    elements: { checkboxItem },
-    states: { checked: localChecked },
-  } = createCheckboxItem({
-    defaultChecked: checked,
-    onCheckedChange({ next }) {
-      checked = !!next;
-      return next;
-    },
-  });
+    const {
+        elements: { checkboxItem },
+        states: { checked: localChecked }
+    } = createCheckboxItem({
+        defaultChecked: checked,
+        onCheckedChange({ next }) {
+            checked = !!next;
+            return next;
+        }
+    });
 
-  $: localChecked.set(checked);
+    $: localChecked.set(checked);
 </script>
 
 <slot checkboxItem={$checkboxItem} />
