@@ -206,7 +206,7 @@
                 </div>
               {/if}
 
-              <div class="web-article-content u-margin-block-start-32">
+              <div class="web-article-content mt-8">
                 {#if lastUpdated}
                   <span class="web-main-body-500 last-updated-text">
                     Updated:
