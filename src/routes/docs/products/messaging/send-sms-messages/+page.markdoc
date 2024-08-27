@@ -73,7 +73,7 @@ import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
 const client = new sdk.Client()
     .setProject('<PROJECT_ID>')                    // Your project ID
-    .setJWT('eyJhbVCJ9.eyJ...');                    // Your secret JSON Web Token
+    .setJWT('<USER_JWT>');                    // Your secret JSON Web Token
 
 const users = new sdk.Users(client);
 

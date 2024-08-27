@@ -27,7 +27,7 @@ the request information like request URL, request headers, and request body will
 ```bash
 curl -X POST https://64d4d22db370ae41a32e.appwrite.global \
 -H "X-Custom-Header: 123" \
--H "x-appwrite-user-jwt: <YOUR_JWT_KEY>" \
+-H "x-appwrite-user-jwt:     <USER_JWT>" \
 -H "Content-Type: application/json" \
 -d '{"data":"this is json data"}'
 ```

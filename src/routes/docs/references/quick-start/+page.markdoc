@@ -169,7 +169,7 @@ client = Client()
 
 (client
   .set_project('<PROJECT_ID>')                             # Your project ID
-  .set_jwt('<API_KEY>')                                    # Your secret JSON Web Token
+  .set_jwt('<USER_JWT>')                                    # Your secret JSON Web Token
 )
 ```
 ```ruby
