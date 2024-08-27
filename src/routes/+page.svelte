@@ -141,7 +141,7 @@
               </span>
             </h1>
             <div class="self-end">
-              <p class="web-description">
+              <p class="text-secondary mt-5 text-xl font-medium">
                 Build your entire backend within minutes and scale effortlessly
                 using Appwrite's open-source platform. Add Authentication,
                 Databases, Functions, Storage, and Messaging to your projects
@@ -305,7 +305,7 @@
             <h2 class="web-display text-primary">
               Self-host your data or take it to the Cloud
             </h2>
-            <p class="web-description !text-secondary">
+            <p class="text-secondary mt-5 text-xl font-medium">
               Migrate your data from and to any platform at any time with
               Appwrite Migrations. With built-in security and privacy for peace
               of mind.
@@ -454,7 +454,7 @@
             <h2 class="web-display web-u-color-text-primary max-w-[600px]">
               Code the way you want
             </h2>
-            <p class="web-description max-w-[600px]">
+            <p class="text-secondary mt-5 max-w-[600px] text-xl font-medium">
               We support many SDKs making Appwrite flexible to your needs and
               ensuring you can code with the language you want at any time.
             </p>
