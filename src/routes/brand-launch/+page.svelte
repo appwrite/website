@@ -105,7 +105,7 @@
     <div class="py-10">
       <div class="container relative">
         <div
-          class="web-big-padding-section-level-2 web-max-w-[800px] web-u-margin-block-0 mx-auto flex items-center justify-center"
+          class="web-big-padding-section-level-2 web-u-margin-block-0 mx-auto flex max-w-[800px] items-center justify-center"
           style="block-size:calc(100vh - 6.375rem)"
         >
           <div class="web-hero web-gap-5">
@@ -124,7 +124,7 @@
         <div class="web-big-padding-section-level-2 web-u-sep-block-start">
           <div class="web-u-flex-vertical-mobile flex flex-1">
             <div
-              class="web-hero is-align-start web-max-w-[480px] web-u-padding-block-start-48"
+              class="web-hero is-align-start web-u-padding-block-start-48 max-w-[480px]"
             >
               <h2 class="web-title web-u-color-text-primary">
                 All the tools that developers need
@@ -472,7 +472,7 @@
         <div class="container">
           <div class="web-hero">
             <p
-              class="web-headline web-u-color-text-primary web-max-w-[610px] mx-auto"
+              class="web-headline web-u-color-text-primary mx-auto max-w-[610px]"
             >
               Build like a team of hundreds
             </p>
@@ -1591,7 +1591,7 @@
       <div class="web-big-padding-section-level-2 relative">
         <div class="container">
           <div class="grid grid-cols-2 justify-between gap-8">
-            <div class="web-hero is-align-start web-max-w-[480px]">
+            <div class="web-hero is-align-start max-w-[480px]">
               <h4 class="web-title web-u-color-text-primary">
                 Be a part of #Teamof100
               </h4>
