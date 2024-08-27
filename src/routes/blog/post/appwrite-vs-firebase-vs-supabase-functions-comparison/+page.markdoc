@@ -77,7 +77,7 @@ Appwrite Functions support multiple languages, including Node.js, Python, Ruby, 
 
 # Appwrite vs. Supabase vs. Firebase serverless functions comparison
 
-| FEATURE | **APPWRITE FUNCTIONS** | **SUPABASE EDGE FUNCTIONS** | **FIREBASE CLOUD FUNCTIONS** |
+| FEATURE | APPWRITE FUNCTIONS | SUPABASE EDGE FUNCTIONS | FIREBASE CLOUD FUNCTIONS |
 | --- | --- | --- | --- |
 | Open-source | Yes | Yes | No |
 | Supported languages | JavaScript, TypeScript, Python, Dart, PHP, Ruby, Go. | Typescript | JavaScript, TypeScript, or Python  |
