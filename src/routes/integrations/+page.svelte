@@ -74,7 +74,7 @@
 <Fuse list={data.list} options={fuseOptions} bind:query={$query} bind:result />
 <Main>
   <header class="web-u-sep-block-end relative overflow-hidden pb-0">
-    <div class="web-container hero web-u-padding-block-end-0 relative">
+    <div class="container hero web-u-padding-block-end-0 relative">
       <img
         src="/images/pages/integration/integration-bg-top-1.png"
         alt=""
@@ -121,7 +121,7 @@
 
   <div class="py-10">
     <div>
-      <div class="web-container">
+      <div class="container">
         <div class="l-integrations-grid">
           <aside class="sidebar flex flex-col gap-8">
             <section>
@@ -413,7 +413,7 @@
   </div>
 
   <div class="overflow-hidden py-10" style:margin-top="160px">
-    <div class="web-container">
+    <div class="container">
       <div class="web-big-padding-section-level-2 relative">
         <img
           src="/images/bgs/pre-footer.png"

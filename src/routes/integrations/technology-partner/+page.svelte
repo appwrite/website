@@ -84,7 +84,7 @@
         class="web-big-padding-section-level-2 is-margin-replace-padding relative"
       >
         <div class="relative">
-          <div class="web-container relative">
+          <div class="container relative">
             <!-- before submit -->
             <div class="web-grid-1-1-opt-2 e-u-row-gap-0 relative z-[1] gap-8">
               <div>
@@ -338,7 +338,7 @@
               {/if}
             </div>
           </div>
-          <div class="web-container">
+          <div class="container">
             <FooterNav />
             <MainFooter />
           </div>

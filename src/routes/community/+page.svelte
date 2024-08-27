@@ -160,7 +160,7 @@
         <img src="/images/community/sphere.png" alt="" />
       </div>
       <div class="web-big-padding-section-level-2">
-        <section class="web-container web-u-padding-block-end-0 relative">
+        <section class="container web-u-padding-block-end-0 relative">
           <div class="web-hero is-align-start web-u-max-width-580">
             <h1 class="web-display web-u-color-text-primary">
               Built by a community of 800+ contributors
@@ -198,7 +198,7 @@
         </section>
       </div>
       <div class="web-big-padding-section-level-2">
-        <section class="web-container">
+        <section class="container">
           <ul
             class="web-grid-row-4 web-grid-row-4-mobile-2"
             style="--gap-mobile:1.5rem;"
@@ -234,7 +234,7 @@
       </div>
 
       <div class="web-big-padding-section-level-2">
-        <div class="web-container relative">
+        <div class="container relative">
           <div class="web-hero is-mobile-center web-u-max-width-900 gap-5">
             <h1 class="web-headline web-u-color-text-primary">
               The power of open source benefits us all
@@ -262,7 +262,7 @@
 
     <div class="py-10">
       <div class="web-big-padding-section-level-2">
-        <div class="web-container">
+        <div class="container">
           <div class="web-hero is-align-start">
             <h2 class="web-display web-u-color-text-primary">Get involved</h2>
             <div>
@@ -347,7 +347,7 @@
         </div>
       </div>
       <div class="web-big-padding-section-level-2">
-        <section class="web-container">
+        <section class="container">
           <h4 class="web-label web-u-color-text-primary">Other ways to help</h4>
           <ul
             class="mt-5 grid gap-5 md:grid-cols-4 md:gap-8"
@@ -430,7 +430,7 @@
       </div>
       <div class="web-big-padding-section-level-2">
         <section
-          class="web-container web-u-sep-block-start web-u-padding-block-start-64"
+          class="container web-u-sep-block-start web-u-padding-block-start-64"
         >
           <Carousel size="big">
             <svelte:fragment slot="header">
@@ -458,7 +458,7 @@
 
     <div class="web-white-section theme-light relative py-10">
       <div class="web-big-padding-section-level-2">
-        <div class="web-container">
+        <div class="container">
           <div class="web-hero is-center">
             <h2 class="web-display web-u-color-text-primary">
               Inspire and get inspired
@@ -488,7 +488,7 @@
     </div>
     <div class="web-white-section theme-light py-10">
       <div class="web-big-padding-section-level-2">
-        <div class="web-container">
+        <div class="container">
           <div
             class="web-grid-15-25-desktop web-u-row-gap-48 web-u-column-gap-96"
           >
@@ -582,7 +582,7 @@
     </div>
     <div class="py-10">
       <div class="web-big-padding-section-level-2">
-        <div class="web-container">
+        <div class="container">
           <div class="web-grid-1-1-opt-2 gap-8">
             <div class="">
               <div
@@ -683,7 +683,7 @@
       <div
         class="web-big-padding-section-level-2 is-margin-replace-padding relative"
       >
-        <div class="web-container">
+        <div class="container">
           <PreFooter />
           <FooterNav />
           <MainFooter />

@@ -183,7 +183,7 @@
   <div class="web-big-padding-section relative overflow-hidden">
     <div class="relative py-10">
       <div class="web-big-padding-section-level-2 e-u-margin-block-128-desktop">
-        <section class="web-container web-u-padding-block-end-0">
+        <section class="container web-u-padding-block-end-0">
           <div
             class="web-hero"
             style="--hero-max-inline-size:49.375rem; --hero-gap:1.125rem;"
@@ -208,7 +208,7 @@
       <div
         class="web-big-padding-section-level-2 e-u-padding-block-start-48-mobile e-u-padding-block-start-80-desktop e-u-margin-block-end-80-mobile"
       >
-        <section class="web-container">
+        <section class="container">
           <ul class="web-u-flex-vertical-mobile e-u-gap-64-mobile flex gap-20">
             <li
               class="mx-auto flex max-w-[350px] flex-1 flex-col items-center gap-4"
@@ -274,7 +274,7 @@
 
     <div class="web-white-section theme-light relative py-10">
       <div class="web-big-padding-section-level-2 e-mt-20-mobile">
-        <div class="web-container">
+        <div class="container">
           <div class="web-timeline-content">
             <ol class="web-timeline-content-list">
               <li>
@@ -661,7 +661,7 @@
       >
         <div class="relative">
           <div class="web-big-padding-section-level-2">
-            <div class="web-container relative">
+            <div class="container relative">
               <img
                 class="is-only-desktop absolute"
                 style="inset-inline-end:-650px; inset-block-start:-200px; max-width:none; max-height:none;"
@@ -830,7 +830,7 @@
             </div>
           </div>
           <div class="web-big-padding-section-level-2 relative">
-            <div class="web-container relative" style:z-index="10">
+            <div class="container relative" style:z-index="10">
               <section class="web-grid-4-6">
                 <header>
                   <div class="web-display web-u-color-text-primary">FAQ</div>
@@ -839,7 +839,7 @@
               </section>
             </div>
           </div>
-          <div class="web-container">
+          <div class="container">
             <FooterNav />
             <MainFooter />
           </div>

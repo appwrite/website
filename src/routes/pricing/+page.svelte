@@ -47,7 +47,7 @@
   <div class="web-big-padding-section mt-2">
     <div class="theme-dark py-10">
       <div class="web-big-padding-section-level-2">
-        <section class="web-container">
+        <section class="container">
           <div class="web-hero">
             <h1
               class="web-display web-u-max-width-700 web-u-opacity-90 web-u-mobile-align-text-center self-center"
@@ -60,7 +60,7 @@
         </section>
       </div>
       <div class="web-big-padding-section-level-2">
-        <section class="web-container">
+        <section class="container">
           <div class="web-pricing-cards">
             <ul class="web-pricing-cards-list">
               <li>
@@ -255,7 +255,7 @@
 
     <div class="theme-dark relative overflow-hidden py-10">
       <div class="web-big-padding-section-level-2 relative">
-        <div class="web-container relative" style:z-index="10">
+        <div class="container relative" style:z-index="10">
           <section class="web-grid-4-6">
             <header>
               <div class="web-display web-u-color-text-primary">FAQ</div>
@@ -265,7 +265,7 @@
         </div>
       </div>
       <div class="web-big-padding-section-level-2 relative">
-        <div class="web-container">
+        <div class="container">
           <PreFooter />
           <FooterNav />
           <MainFooter />

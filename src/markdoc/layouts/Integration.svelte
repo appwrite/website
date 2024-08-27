@@ -44,7 +44,7 @@
     class="web-u-sep-block-end pb-0"
     style="background-color:rgba(23, 23, 26, 1); margin-block-end: 2.5rem"
   >
-    <div class="web-container">
+    <div class="container">
       <div class="web-integrations-top-section">
         <div class="web-carousel-wrapper">
           <a href="/integrations" class="web-button is-text mb-12">
@@ -84,7 +84,7 @@
     </div>
   </div>
   <div class="py-10">
-    <div class="web-container">
+    <div class="container">
       <article
         class="web-u-gap-60-not-mobile web-u-gap-40-mobile flex flex-col"
       >
@@ -144,7 +144,7 @@
   <div class="web-u-sep-block-start mt-12 overflow-hidden py-10">
     <!-- <ProductsGrid /> -->
 
-    <div class="web-container">
+    <div class="container">
       <div class="web-big-padding-section-level-2 relative">
         <img
           src="/images/bgs/pre-footer.png"

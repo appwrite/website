@@ -66,7 +66,7 @@
   <div class="web-big-padding-section">
     <div class="py-10">
       <div class="web-big-padding-section-level-2">
-        <div class="web-container">
+        <div class="container">
           <div class="web-grid-1-1-opt-2 gap-8">
             <div>
               <div
@@ -210,7 +210,7 @@
     </div>
   </div>
 
-  <div class="web-container">
+  <div class="container">
     <FooterNav />
     <MainFooter />
   </div>

@@ -103,7 +103,7 @@
     </div>
 
     <div class="web-big-padding-section-level-2 relative">
-      <div class="web-container">
+      <div class="container">
         <div class="web-author-section block">
           {#if avatar}
             <FloatingHead
@@ -172,7 +172,7 @@
 
   <div class="py-10">
     <div class="web-big-padding-section-level-2">
-      <div class="web-container">
+      <div class="container">
         <h2 class="web-title web-u-color-text-primary">Articles</h2>
 
         <!-- <div class="web-is-only-mobile mt-8">
@@ -294,7 +294,7 @@
     <div
       class="web-big-padding-section-level-2 is-margin-replace-padding relative overflow-hidden"
     >
-      <div class="web-container">
+      <div class="container">
         <FooterNav />
         <MainFooter />
       </div>
