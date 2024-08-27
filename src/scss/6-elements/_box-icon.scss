@@ -13,7 +13,7 @@
   -webkit-backdrop-filter:blur(pxToRem(16));
   backdrop-filter:blur(pxToRem(16));
 
-  #{$dark} & {
+  #{$theme-dark} & {
     --p-box-icon-bg-color: var(--web-color-greyscale-850);
   }
 

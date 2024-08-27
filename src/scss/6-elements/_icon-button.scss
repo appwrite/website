@@ -63,6 +63,6 @@
   }
 
   @include light-mode();
-  #{$dark} &  { @include dark-mode(); }
+  #{$theme-dark} &  { @include dark-mode(); }
   #{$theme-light} & { @include light-mode(); }
 }

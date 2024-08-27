@@ -21,7 +21,7 @@
           pxToRem(3) pxToRem(2) var(--p-badges-shadow-border-color);
 
 
-  #{$dark} & {
+  #{$theme-dark} & {
     --p-badges-shadow-bg-color: #2c2c2f;
     --p-badges-shadow-border-color: #39393c;
     --p-badges-shadowopacity: 0.13;

@@ -73,7 +73,7 @@
     }
   }
 
-  #{$dark} & {
+  #{$theme-dark} & {
     --p-grid-articles-item-border-color-default: var(--web-color-white)  / 0.2;
     --p-grid-articles-item-bg-color-default: var(--web-color-white)  / 0.06;
   }
