@@ -73,12 +73,7 @@
     });
 </script>
 
-<ul
-    class="collapsible !divide-border-primary w-full !divide-y"
-    style="--p-toggle-border-color: var(--web-color-smooth);"
-    use:melt={$root}
-    id="faq"
->
+<ul class="collapsible w-full divide-y divide-white/5" use:melt={$root} id="faq">
     {#each items as faqItem, index (index)}
         <li class="collapsible-item">
             <!-- Progressive Enhancement for kbd navigation & animations -->

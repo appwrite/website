@@ -8,7 +8,8 @@
     --color-primary: hsl(var(--color-primary));
     --color-secondary: hsl(var(--color-secondary));
     --color-accent: var(--color-secondary);
-    --color-border-primary: hsl(var(--color-greyscale-hue) 5.7% 10.4% / 0.04);
+    --color-border-primary: var(--color-border-primary)
+        hsl(var(--color-greyscale-hue) 5.7% 10.4% / 0.04);
 
     /* pink */
     --color-pink-200: hsl(var(--color-pink-hue) 98% 84%);
@@ -108,6 +109,8 @@
     --color-primary: var(--color-greyscale-900);
     --color-secondary: var(--color-greyscale-700);
     --color-accent: var(--color-pink-600);
+    --color-border:  
+;
 }
 
 /* dark theme */
