@@ -96,7 +96,7 @@ import { Client } from "appwrite";
 const client = new Client();
 
 client
-    .setProject('<YOUR_PROJECT_ID>')                // Your project ID
+    .setProject('<PROJECT_ID>')                // Your project ID
 ;
 ```
 ```client-flutter
@@ -105,20 +105,20 @@ import 'package:appwrite/appwrite.dart';
 Client client = Client();
 
 client
-    .setProject('<YOUR_PROJECT_ID>')                // Your project ID
+    .setProject('<PROJECT_ID>')                // Your project ID
 ;
 ```
 ```client-apple
 import Appwrite
 
 let client = Client()
-    .setProject("<YOUR_PROJECT_ID>")                            // Your project ID
+    .setProject("<PROJECT_ID>")                            // Your project ID
 ```
 ```client-android-kotlin
 import io.appwrite.Client
 
 val client = Client(context)
-    .setProject("<YOUR_PROJECT_ID>")                // Your project ID
+    .setProject("<PROJECT_ID>")                // Your project ID
 ```
 {% /multicode %}
 {% /tabsitem %}
@@ -135,7 +135,7 @@ const sdk = require('node-appwrite');
 const client = new sdk.Client();
 
 client
-    .setProject('<YOUR_PROJECT_ID>')                            // Your project ID
+    .setProject('<PROJECT_ID>')                            // Your project ID
     .setJWT('<YOUR_API_KEY>')                                   // Your secret JSON Web Token
 ;
 ```
@@ -146,7 +146,7 @@ import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 let client = new sdk.Client();
 
 client
-    .setProject('<YOUR_PROJECT_ID>')                            // Your project ID
+    .setProject('<PROJECT_ID>')                            // Your project ID
     .setJWT('<YOUR_API_KEY>')                                   // Your secret JSON Web Token
 ;
 ```
@@ -158,7 +158,7 @@ use Appwrite\Client;
 $client = new Client();
 
 $client
-    ->setProject('<YOUR_PROJECT_ID>')                           // Your project ID
+    ->setProject('<PROJECT_ID>')                           // Your project ID
     ->setJWT('<YOUR_API_KEY>')                                  // Your secret JSON Web Token
 ;
 ```
@@ -168,7 +168,7 @@ from appwrite.client import Client
 client = Client()
 
 (client
-  .set_project('<YOUR_PROJECT_ID>')                             # Your project ID
+  .set_project('<PROJECT_ID>')                             # Your project ID
   .set_jwt('<YOUR_API_KEY>')                                    # Your secret JSON Web Token
 )
 ```
@@ -178,7 +178,7 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_project('<YOUR_PROJECT_ID>')                           # Your project ID
+    .set_project('<PROJECT_ID>')                           # Your project ID
     .set_jwt('<YOUR_API_KEY>')                                  # Your secret JSON Web Token
 ```
 ```csharp
@@ -186,7 +186,7 @@ using Appwrite;
 using Appwrite.Services;
 
 var client = new Client()
-    .SetProject("<YOUR_PROJECT_ID>")                            // Your project ID
+    .SetProject("<PROJECT_ID>")                            // Your project ID
     .SetJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
 ```
 ```dart
@@ -196,7 +196,7 @@ void main() {                                                   // Init SDK
   Client client = Client();
 
   client
-    .setProject('<YOUR_PROJECT_ID>')                            // Your project ID
+    .setProject('<PROJECT_ID>')                            // Your project ID
     .setJWT('<YOUR_API_KEY>')                                   // Your secret JSON Web Token
   ;
 }
@@ -206,7 +206,7 @@ import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
 
 Client client = new Client()
-    .setProject("<YOUR_PROJECT_ID>")                            // Your project ID
+    .setProject("<PROJECT_ID>")                            // Your project ID
     .setJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
 ```
 ```java
@@ -214,14 +214,14 @@ import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
 
 Client client = new Client()
-    .setProject("<YOUR_PROJECT_ID>")                            // Your project ID
+    .setProject("<PROJECT_ID>")                            // Your project ID
     .setJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
 ```
 ```swift
 import Appwrite
 
 let client = Client()
-    .setProject("<YOUR_PROJECT_ID>")                            // Your project ID
+    .setProject("<PROJECT_ID>")                            // Your project ID
     .setJWT("<YOUR_API_KEY>")                                   // Your secret JSON Web Token
 ```
 {% /multicode %}
@@ -248,7 +248,7 @@ The API key should have the following scope in order to perform authentication:
 import { Client } from "node-appwrite"; // Using the server SDK
 
 const adminClient = new Client()
-    .setProject('<YOUR_PROJECT_ID>')             // Your project ID
+    .setProject('<PROJECT_ID>')             // Your project ID
     .setKey('<YOUR_API_KEY>');                   // Your secret API key
 ```
 ```php
@@ -256,7 +256,7 @@ use Appwrite\Client;
 use Appwrite\Services\Account;
 
 $adminClient = (new Client())
-    ->setProject('<YOUR_PROJECT_ID>')             // Your project ID
+    ->setProject('<PROJECT_ID>')             // Your project ID
     ->setKey('<YOUR_API_KEY>');                   // Your secret API key
 
 
@@ -275,7 +275,7 @@ You should create a new client for each request and **never** share the client b
 {% multicode %}
 ```server-nodejs
 const sessionClient = new Client()
-    .setProject('<YOUR_PROJECT_ID>');            // Your project ID
+    .setProject('<PROJECT_ID>');            // Your project ID
 
 const session = req.cookies.session; // Get the session cookie from the request
 if (session) {
@@ -284,7 +284,7 @@ if (session) {
 ```
 ```php
 $sessionClient = (new Client())
-    ->setProject('<YOUR_PROJECT_ID>');            // Your project ID
+    ->setProject('<PROJECT_ID>');            // Your project ID
 
 $session = $_COOKIE['session']; // Get the session cookie from the request
 if ($session) {

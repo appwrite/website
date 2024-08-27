@@ -75,17 +75,16 @@ function parseCookies(cookies) {
 
 # Environment variables {% #environment-variables %}
 
-`import.meta.env.APPWRITE_KEY`, `import.meta.env.PUBLIC_APPWRITE_ENDPOINT` and `import.meta.env.PUBLIC_APPWRITE_PROJECT` are environment variables that are exported in your project's [.env file](https://kit.Astro.dev/docs/modules#$env-dynamic-public).
+`import.meta.env.APPWRITE_KEY` and `import.meta.env.PUBLIC_APPWRITE_PROJECT` are environment variables that are exported in your project's [.env file](https://kit.Astro.dev/docs/modules#$env-dynamic-public).
 
 For example, your `.env` might look something similar to this.
 
 ```env
 APPWRITE_KEY=<YOUR_API_KEY>
-PUBLIC_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
 PUBLIC_APPWRITE_PROJECT=<YOUR_PROJECT_ID>
 ```
 
-The `PUBLIC_APPWRITE_ENDPOINT` is the endpoint of your Appwrite project, and the `PUBLIC_APPWRITE_PROJECT` is the ID of the project you want to use.
+The `PUBLIC_APPWRITE_PROJECT` is the ID of the project you want to use.
 You can get the values for these variables from the Appwrite console.
 
 {% only_dark %}

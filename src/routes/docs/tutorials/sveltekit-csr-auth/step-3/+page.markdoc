@@ -14,7 +14,6 @@ You can do this by instantiating the services you need in a file like `src/lib/a
 ```js
 // src/lib/appwrite.js
 import {
-  PUBLIC_APPWRITE_ENDPOINT,
   PUBLIC_APPWRITE_PROJECT,
 } from "$env/static/public";
 import { Databases, Account, Client } from "appwrite";
@@ -33,12 +32,11 @@ export const appwrite = {
 };
 ```
 
-`PUBLIC_APPWRITE_ENDPOINT` and `PUBLIC_APPWRITE_PROJECT` are environment variables that are exported in your project's [.env file](https://kit.svelte.dev/docs/modules#$env-dynamic-public).
+`PUBLIC_APPWRITE_PROJECT` are environment variables that are exported in your project's [.env file](https://kit.svelte.dev/docs/modules#$env-dynamic-public).
 
 For example, your `.env` might look something similar to this.
 
 ```env
-PUBLIC_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
 PUBLIC_APPWRITE_PROJECT=642sdddf85b440dc7e5bf
 ```
 

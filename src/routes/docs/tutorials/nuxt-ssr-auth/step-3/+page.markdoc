@@ -61,7 +61,6 @@ export default defineNuxtConfig({
   runtimeConfig: {
     appwriteKey: process.env.APPWRITE_KEY,
     public: {
-      appwriteEndpoint: process.env.PUBLIC_APPWRITE_ENDPOINT,
       appwriteProjectId: process.env.PUBLIC_APPWRITE_PROJECT,
     },
   },
@@ -70,7 +69,7 @@ export default defineNuxtConfig({
 
 Now you can use `.env` files to set the environment variables for your project. Retrieve the values for these variables from the Appwrite console.
 
-The `PUBLIC_APPWRITE_ENDPOINT` is the endpoint of your Appwrite project, and the `PUBLIC_APPWRITE_PROJECT` is the ID of the project you want to use.
+The `PUBLIC_APPWRITE_PROJECT` is the ID of the project you want to use.
 You can get the values for these variables from the Appwrite console.
 
 {% only_dark %}
@@ -101,6 +100,5 @@ For example, your `.env` might look something similar to this.
 
 ```env
 APPWRITE_KEY=<YOUR_API_KEY>
-PUBLIC_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
 PUBLIC_APPWRITE_PROJECT=<YOUR_PROJECT_ID>
 ```

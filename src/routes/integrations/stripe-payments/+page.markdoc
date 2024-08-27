@@ -61,7 +61,7 @@ Head over to the Appwrite console, navigate to the **Functions** page, click th
 
 ![Function template](/images/integrations/stripe-payments/template.png)
 
-During the setup process, click the checkbox to generate an Appwrite API key on completion and add the **Stripe secret key** and **webhook secret** in the **Variables** step. If you are self-hosting Appwrite, click on the **optional variables** dropdown and update the Appwrite endpoint to your instance’s publicly accessible endpoint. 
+During the setup process, click the checkbox to generate an Appwrite API key on completion and add the **Stripe secret key** and **webhook secret** in the **Variables** step. If you are self-hosting Appwrite, click on the **optional variables** dropdown and add your instance’s publicly accessible endpoint. 
 
 ![Env variables](/images/integrations/stripe-payments/variables.png)
 

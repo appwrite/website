@@ -120,7 +120,6 @@ npm i appwrite openai
 Lastly, we must create a `.env` file at the root of the directory and add the following:
 
 ```bash
-PUBLIC_APPWRITE_ENDPOINT=
 PUBLIC_APPWRITE_PROJECT_ID=
 PUBLIC_APPWRITE_DATABASE_ID=
 PUBLIC_APPWRITE_COLLECTION_ID_GITHUBDATA=

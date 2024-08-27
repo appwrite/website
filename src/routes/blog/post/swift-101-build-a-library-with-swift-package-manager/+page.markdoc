@@ -254,7 +254,6 @@ With the package added as a dependency, we can now use the function we defined e
 import FooPackage
 
 FooPackage.login(
-    endpoint: "http://localhost/v1",
     projectId: "6bfgh45fng3",
     email: "test@test.test",
     password: "password"

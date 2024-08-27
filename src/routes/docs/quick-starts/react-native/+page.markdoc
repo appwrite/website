@@ -84,7 +84,7 @@ Find your project's ID in the **Settings** page.
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Open `App.js` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_PLATFORM>` with your application id or package name.
+Open `App.js` and add the following code to it, replace `<PROJECT_ID>` with your project ID and `<YOUR_PLATFORM>` with your application id or package name.
 
 This imports and initializes Appwrite and defines some basic authentication methods.
 

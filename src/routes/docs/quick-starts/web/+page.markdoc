@@ -52,7 +52,7 @@ import { Client, Account } from 'appwrite';
 export const client = new Client();
 
 client
-    .setProject('<YOUR_PROJECT_ID>'); // Replace with your project ID
+    .setProject('<PROJECT_ID>'); // Replace with your project ID
 
 export const account = new Account(client);
 export { ID } from 'appwrite';
@@ -72,7 +72,7 @@ import { type Models } from 'appwrite';
 const client: Client = new Client();
 
 client
-    .setProject('<YOUR_PROJECT_ID>'); // Replace with your project ID
+    .setProject('<PROJECT_ID>'); // Replace with your project ID
 
 export const account: Account = new Account(client);
 export const database: Databases = new Databases(client);

@@ -42,7 +42,7 @@ let client;
 export default async ({ req, res, log, error }) => {
 	// Connect to database
   if(!client) {
-    const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = process.env;
+    const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
     client = postgres({
       host: PGHOST,
       database: PGDATABASE,
@@ -50,9 +50,6 @@ export default async ({ req, res, log, error }) => {
       password: PGPASSWORD,
       port: 5432,
       ssl: 'require',
-      connection: {
-        options: `project=${ENDPOINT_ID}`,
-      },
     });
   }
 

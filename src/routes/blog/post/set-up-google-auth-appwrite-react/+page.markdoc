@@ -105,7 +105,7 @@ export { OAuthProvider }
 
 ```
 
-In the `appwrite.js` file, the `Client` object, used to interact with Appwrite services, is initialized with the Appwrite API endpoint and your project ID. The `account` object is created using the client to interact with the Appwrite account service, while the `OAuthProvider` is an enum that contains the OAuth2 providers supported by Appwrite. We are exporting it from this file so you don't have to import both from `appwrite` and `appwrite.js` when you need to use both account and OAuthProvider in a component.
+In the `appwrite.js` file, the `Client` object, used to interact with Appwrite services, is initialized with your project ID. The `account` object is created using the client to interact with the Appwrite account service, while the `OAuthProvider` is an enum that contains the OAuth2 providers supported by Appwrite. We are exporting it from this file so you don't have to import both from `appwrite` and `appwrite.js` when you need to use both account and OAuthProvider in a component.
 
 # Create authentication functions
 

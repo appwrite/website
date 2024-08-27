@@ -21,7 +21,6 @@ Meilisearch is a flexible and powerful user-focused search engine that can be ad
 To use the function, you need the following set of keys:
 
 - `APPWRITE_KEY` - API Key to talk to Appwrite backend APIs.To generate API Keys you can follow the documentation [here](https://appwrite.io/docs/getting-started-for-server#apiKey)
-- `APPWRITE_ENDPOINT` - To get the Appwrite endpoint, you need to go to [Appwrite](https://cloud.appwrite.io/) and find it under “Settings”
 - `APPWRITE_DATABASE_ID` - The ID of the Appwrite database that contains the collection to sync. You can find the documentation [here](https://appwrite.io/docs/databases).
 - `APPWRITE_COLLECTION_ID` - The ID of the collection in the Appwrite database to sync.
 

@@ -64,7 +64,6 @@ npm i
 Next, we shall create a `.env` file at the root of the directory and add the following:
 
 ```bash
-PUBLIC_APPWRITE_ENDPOINT=
 PUBLIC_APPWRITE_PROJECT_ID=
 APPWRITE_API_KEY=
 ```
@@ -81,10 +80,9 @@ We will then develop our API route `/auth` by creating a file `./src/routes/auth
 
 ```js
 import { Client, Users, ID, Query } from 'node-appwrite';
-import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_ID } from '$env/static/public'; // Gets the public environment variables shared with the client
+import { PUBLIC_APPWRITE_PROJECT_ID } from '$env/static/public'; // Gets the public environment variables shared with the client
 import { env } from '$env/dynamic/private'; // Gets the private server-only environment variable
 
-const endpoint = PUBLIC_APPWRITE_ENDPOINT;
 const projectId = PUBLIC_APPWRITE_PROJECT_ID;
 const apiKey = env.APPWRITE_API_KEY;
 
@@ -175,9 +173,8 @@ npm i appwrite
 
 ```js
 import { Client, Account } from 'appwrite';
-import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_ID } from '$env/static/public';
+import { PUBLIC_APPWRITE_PROJECT_ID } from '$env/static/public';
 
-const endpoint = PUBLIC_APPWRITE_ENDPOINT;
 const projectId = PUBLIC_APPWRITE_PROJECT_ID;
 
 const client = new Client()
