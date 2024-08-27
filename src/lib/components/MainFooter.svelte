@@ -28,11 +28,10 @@
       <div>Copyright © {year} Appwrite</div>
 
       <iframe
-        class="status"
+        class="status max-w-[230px]"
         title="Appwrite Status"
         src="https://status.appwrite.online/badge?theme=dark"
-        width="190"
-        height="30"
+        height="35"
         frameborder="0"
         scrolling="no"
         style:color-scheme="none"
