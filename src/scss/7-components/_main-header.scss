@@ -51,8 +51,8 @@
     }
   }
 
-  #{$dark} &,
-  &#{$dark} {
+  #{$theme-dark} &,
+  &#{$theme-dark} {
     --p-main-header-link-color: var(--web-color-greyscale-100);
     --p-main-header-border-color: rgb(255,255,255, 0.1);
   }

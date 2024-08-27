@@ -16,7 +16,7 @@
   font-size: var(--web-font-size-micro);
   line-height: var(--web-line-height-tiny);
 
-  #{$dark} & {
+  #{$theme-dark} & {
     --p-tag-bg-color: var(--web-color-greyscale-750);
 
     &:where(:hover) {

@@ -13,7 +13,7 @@
   border-radius:pxToRem(4); flex-shrink:0;
   -webkit-user-select:none; user-select:none;
 
-  #{$dark} & {
+  #{$theme-dark} & {
     --p-kbd-text-color: var(--web-color-greyscale-100);
     --p-kbd-bg-color: var(--web-color-white) / 0.18;
   }

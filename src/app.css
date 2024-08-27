@@ -119,6 +119,6 @@
 /* Container */
 @layer components {
   .container {
-    @apply mx-auto box-content max-w-7xl px-8;
+    @apply mx-auto box-content max-w-[75rem] px-8;
   }
 }

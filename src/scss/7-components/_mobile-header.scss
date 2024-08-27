@@ -13,8 +13,8 @@
   &.is-transparent { background-color:transparent; -webkit-backdrop-filter:blur(pxToRem(8)); backdrop-filter:blur(pxToRem(8)); }
   @media #{$break3open} { display:none; }
 
-  #{$dark} &,
-  &#{$dark} {
+  #{$theme-dark} &,
+  &#{$theme-dark} {
     --p-mobile-header-border-color: rgb(255,255,255, 0.1);
   }
 

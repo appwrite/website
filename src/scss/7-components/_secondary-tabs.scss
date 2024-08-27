@@ -80,7 +80,7 @@
     }
   }
 
-  #{$dark} & {
+  #{$theme-dark} & {
     @include dark-mode();
   }
 

@@ -39,7 +39,7 @@
       &:where(#{$disabled}) { opacity:0.4; }
     }
 
-    #{$dark} & {
+    #{$theme-dark} & {
       --p-card-border-color-default: var(--web-color-white) / 0.10;
       --p-card-shadow-color-focus-visible: var(--web-color-white) / 0.06;
     }
@@ -74,7 +74,7 @@
     -webkit-backdrop-filter:blur(pxToRem(8));
     backdrop-filter:blur(pxToRem(8));
 
-    #{$dark} & {
+    #{$theme-dark} & {
       --card-bg-color: var(--web-color-greyscale-850);
     }
 

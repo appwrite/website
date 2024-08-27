@@ -102,7 +102,7 @@
 
   @include color-light; /* default */
   #{$theme-light} { @include color-light; }
-  #{$dark} { @include color-dark; }
+  #{$theme-dark} { @include color-dark; }
 }
 
 .#{$p}-u-color-text-primary { color:hsl(var(--web-color-primary))!important; }

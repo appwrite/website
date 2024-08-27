@@ -54,7 +54,7 @@
   --p-input-border-color: var(--p-input-border-color-default);
 
   @include input-light-mode();
-  #{$dark} &  { @include input-dark-mode(); }
+  #{$theme-dark} &  { @include input-dark-mode(); }
   #{$theme-light} & { @include input-light-mode(); }
 
   color: hsl(var(--p-input-text-color)) !important;

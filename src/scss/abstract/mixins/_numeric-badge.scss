@@ -13,7 +13,7 @@
   display:grid; place-content:center; min-inline-size:pxToRem(24); block-size:pxToRem(24);
   padding-inline:pxToRem(6); border-radius:pxToRem(6); font-size:pxToRem(14); user-select:none;
 
-  #{$dark} & {
+  #{$theme-dark} & {
     --p-numeric-badge-text-color: var(--web-color-greyscale-100);
     --p-numeric-badge-bg-color: calc(var(--web-color-pink-hue) - 13) 23% 14%;
     --p-numeric-badge-border-color: calc(var(--web-color-pink-hue) - 2) 51% 29%;
