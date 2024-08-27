@@ -363,7 +363,7 @@
                   Use these product visuals to enhance your articles,
                   presentations, and content related to Appwrite.
                 </p>
-                <div class="grid-cols-2-opt-2 mt-3 grid gap-8">
+                <div class="mt-3 grid grid-cols-2 gap-8">
                   <div class="media-wrapper">
                     <img
                       class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
