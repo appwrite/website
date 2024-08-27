@@ -754,7 +754,7 @@ func main() {
 
 	functions := appwrite.NewFunctions(client)
 
-	response, err := functions.CreateExecution(
+	execution, err := functions.CreateExecution(
 		"<FUNCTION_ID>", // functionId
 		functions.WithCreateExecutionBody("<BODY>"), // body (optional)
 		functions.WithCreateExecutionAsync(true), // Scheduled executions need to be async
@@ -763,7 +763,7 @@ func main() {
 		functions.WithCreateExecutionHeaders(map[string]interface{}{}), // headers (optional)
 		functions.WithCreateExecutionScheduledAt("2025-10-15T06:38:00.000+00:00")) // Schedule execution (optional)
 
-	fmt.Println(response)
+	fmt.Println(execution)
 
 	if err != nil {
 		fmt.Println(err)
