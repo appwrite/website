@@ -147,7 +147,7 @@
         </div>
 
         <div class="web-big-padding-section-level-2 web-u-sep-block-start">
-          <div class="grid-cols-2-opt-2 grid">
+          <div class="grid grid-cols-2">
             <div class="web-hero is-align-start web-u-padding-block-start-40">
               <h2 class="web-title web-u-color-text-primary">
                 Eliminating complexity
@@ -1590,7 +1590,7 @@
       </div>
       <div class="web-big-padding-section-level-2 relative">
         <div class="container">
-          <div class="grid-cols-2-opt-2 grid justify-between gap-8">
+          <div class="grid grid-cols-2 justify-between gap-8">
             <div class="web-hero is-align-start web-max-w-[480px]">
               <h4 class="web-title web-u-color-text-primary">
                 Be a part of #Teamof100

@@ -70,6 +70,9 @@
   /* Animations */
   --animate-scale-in: scale-in 200ms ease-out forwards;
 
+  /* Pink polyfills */
+  --transition: 0.2s;
+
   /* Keyframes */
   @keyframes scale-in {
     0% {
