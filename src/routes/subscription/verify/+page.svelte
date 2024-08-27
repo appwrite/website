@@ -16,7 +16,8 @@
 			},
 			body: JSON.stringify({
 				email,
-				key
+				key,
+				cloud: true /* not optional on the growth endpoint. */
 			})
 		});
 		if (response.status >= 400) {
