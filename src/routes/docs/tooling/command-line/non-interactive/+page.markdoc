@@ -31,7 +31,7 @@ Some CLI commands won't work with an API key, like the `projects` commands.
 In non-interactive mode, the CLI also uses an API key to authenticate. Your API key must have sufficient permissions to execute the commands you plan to use. [Learn more about API Keys](/docs/advanced/platform/api-keys).
 
 ```sh
-appwrite client --projectId "<PROJECT_ID>" --key "<APY_KEY>"
+appwrite client --project-id "<PROJECT_ID>" --key "<APY_KEY>"
 ```
 
 # Deployment {% #deployment %}
