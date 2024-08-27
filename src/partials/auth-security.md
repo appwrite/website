@@ -32,4 +32,4 @@ Enable email alerts for your users so that whenever another session is created f
 
 You won't receive notifications when logging in using [Magic URL](/docs/products/auth/magic-url), [Email OTP](/docs/products/auth/email-otp), or [OAuth2](/docs/products/auth/oauth2) since these authentication methods already verify user access to their systems, establishing the authentication's legitimacy.
 
-To toggle session alerts, navigate to **Auth** > **Security** > Session Alerts.
+To toggle session alerts, navigate to **Auth** > **Security** > **Session alerts**.
