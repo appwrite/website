@@ -1,5 +1,5 @@
 <div class="web-big-padding-section-level-2">
-  <div class="web-container">
+  <div class="container">
     <h3 class="web-label web-u-color-text-primary text-center">
       Keep exploring similar integrations
     </h3>

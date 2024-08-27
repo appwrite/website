@@ -111,7 +111,7 @@
   <div class="web-big-padding-section">
     <div class="py-10">
       <div class="web-big-padding-section-level-2">
-        <section class="web-container hero web-u-padding-block-end-0">
+        <section class="container hero web-u-padding-block-end-0">
           <div>
             <h1 class="web-display web-u-color-text-primary">
               Appwrite Heroes
@@ -139,7 +139,7 @@
     </div>
     <div class="py-10">
       <div class="web-big-padding-section-level-2">
-        <section class="web-container">
+        <section class="container">
           <div class="web-hero web-u-max-width-800 about">
             <h2 class="web-title web-u-color-text-primary">
               About Appwrite Heroes
@@ -174,7 +174,7 @@
 
     <div class="web-white-section theme-light relative py-10">
       <div class="web-big-padding-section-level-2">
-        <div class="web-container">
+        <div class="container">
           <div class="web-hero">
             <div class="web-display web-u-clr-primary">Meet our Heroes</div>
           </div>
@@ -208,7 +208,7 @@
         </div>
       </div>
       <div class="web-big-padding-section-level-2">
-        <div class="web-container">
+        <div class="container">
           <section class="web-hero is-align-start">
             <h2 class="web-display web-u-color-text-primary max-w-[700px]">
               How Appwrite Heroes can benefit you
@@ -309,7 +309,7 @@
         style:inset-block-start="0"
       />
       <div class="web-big-padding-section-level-2 relative">
-        <div class="web-container">
+        <div class="container">
           <div class="web-hero web-u-max-width-800">
             <h5 class="web-display web-u-color-text-primary">Become a Hero</h5>
             <p
@@ -331,7 +331,7 @@
           </div>
         </div>
         <div class="web-big-padding-section-level-2 relative">
-          <div class="web-container relative">
+          <div class="container relative">
             <FooterNav noBorder />
             <MainFooter />
           </div>

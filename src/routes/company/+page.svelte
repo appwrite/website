@@ -33,7 +33,7 @@
   <div class="web-big-padding-section relative">
     <div class="relative py-10">
       <div class="web-big-padding-section-level-2" style:margin-block="8rem">
-        <section class="web-container web-u-padding-block-end-0">
+        <section class="container web-u-padding-block-end-0">
           <div
             class="web-hero"
             style="--hero-max-inline-size:62.125rem; --hero-gap:1.125rem;"
@@ -55,7 +55,7 @@
     </div>
     <div class="relative py-10">
       <div class="web-big-padding-section-level-2">
-        <section class="web-container">
+        <section class="container">
           <section
             class="web-grid-1-1"
             style="--grid-1-1-gap:2rem; --grid-1-1-gap-desktop:6.25rem;"
@@ -100,7 +100,7 @@
 
     <!-- <div class="py-10 relative web-white-section theme-light">
 			<div class="web-big-padding-section-level-2">
-				<div class="web-container">
+				<div class="container">
 					<div class="web-hero is-center">
 						<h2 class="web-display web-u-color-text-primary">Our Story</h2>
 						<p class="web-description">
@@ -109,7 +109,7 @@
 					</div>
 				</div>
 				<div class="web-big-padding-section-level-2">
-					<div class="web-container">
+					<div class="container">
 						<div class="web-timeline-content">
 							<ol class="web-timeline-content-list">
 								<li class="web-timeline-content-item">
@@ -278,7 +278,7 @@
 		</div> -->
     <div class="web-white-section theme-light py-10">
       <div class="web-big-padding-section-level-2">
-        <div class="web-container">
+        <div class="container">
           <div class="web-hero web-u-max-width-800">
             <h4 class="web-display web-u-color-text-primary">
               Backed by top investors
@@ -388,7 +388,7 @@
         </div>
       </div>
       <div class="web-big-padding-section-level-2">
-        <div class="web-container">
+        <div class="container">
           <h5 class="web-title web-u-color-text-primary text-center">
             Angel Investors
           </h5>
@@ -576,7 +576,7 @@
           class="web-pre-footer-bg"
           style="z-index:-1"
         />
-        <div class="web-container">
+        <div class="container">
           <div class="web-hero web-u-max-width-380">
             <h3 class="web-display web-u-color-text-primary">Join the team</h3>
             <p class="web-u-color-text-primary web-u-opacity-64">

@@ -29,7 +29,7 @@
 </svelte:head>
 
 <Main>
-  <div class="web-container">
+  <div class="container">
     <div class="web-grid-120-1fr-auto" />
 
     <header class="web-grid-120-1fr-auto-header">

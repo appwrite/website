@@ -42,7 +42,7 @@
 </svelte:head>
 
 <Main>
-  <div class="web-container web-u-padding-block-end-0">
+  <div class="container web-u-padding-block-end-0">
     <div class="header">
       <div>
         <a class="web-link is-secondary items-baseline" href="/threads">
@@ -127,7 +127,7 @@
   </div>
 
   <PreFooter />
-  <div class="web-container" style="margin-block-start: -7.75rem;">
+  <div class="container" style="margin-block-start: -7.75rem;">
     <FooterNav />
     <MainFooter />
   </div>

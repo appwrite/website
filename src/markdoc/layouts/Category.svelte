@@ -41,7 +41,7 @@
 <Main>
   <div class="py-10">
     <div class="web-big-padding-section-level-2">
-      <div class="web-container">
+      <div class="container">
         <a
           class="web-link web-u-color-text-secondary items-baseline"
           href="/blog"
@@ -81,7 +81,7 @@
         <div
           class="web-big-padding-section-level-2 is-margin-replace-padding relative overflow-hidden"
         >
-          <div class="web-container">
+          <div class="container">
             <FooterNav />
             <MainFooter />
           </div>

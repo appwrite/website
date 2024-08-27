@@ -67,7 +67,7 @@
 
 <Main omitMainId>
   <TocRoot>
-    <div class="web-container">
+    <div class="container">
       <div class="web-grid-120-1fr-auto">
         <header class="web-grid-120-1fr-auto-header">
           <h1 class="web-title web-u-color-text-primary">{title}</h1>

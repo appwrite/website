@@ -104,7 +104,7 @@
     <div class="web-big-padding-section">
       <div class="py-10">
         <div class="web-big-padding-section-level-2">
-          <div class="web-container" style="--container-size:42.5rem">
+          <div class="container" style="--container-size:42.5rem">
             <article class="web-main-article">
               <header class="web-main-article-header">
                 <a
@@ -234,7 +234,7 @@
 
   <div class="web-u-sep-block-start py-10">
     <div class="web-big-padding-section-level-2">
-      <div class="web-container">
+      <div class="container">
         <h3 class="web-label web-u-color-text-primary">Read next</h3>
         <section class="mt-8">
           <ul class="web-grid-articles">
@@ -257,7 +257,7 @@
       </div>
     </div>
     <div class="web-big-padding-section-level-2 relative overflow-hidden">
-      <div class="web-container">
+      <div class="container">
         <Newsletter />
         <FooterNav />
         <MainFooter />

@@ -364,7 +364,7 @@
   <div class="web-big-padding-section-level-2">
     <div class="relative">
       <article use:melt={$root}>
-        <div class="web-container">
+        <div class="container">
           <header
             class="web-u-text-align-center"
             use:visible
