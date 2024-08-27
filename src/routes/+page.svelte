@@ -13,6 +13,8 @@
   import { PUBLIC_APPWRITE_DASHBOARD } from "$env/static/public";
   import CoverImage from "./dashboard.png";
   import Button from "$lib/components/ui/Button.svelte";
+  import Hero from "$lib/components/ui/Hero.svelte";
+  import GradientText from "$lib/components/ui/GradientText.svelte";
 
   const title = "Appwrite - Build like a team of hundreds";
   const description = DEFAULT_DESCRIPTION;
@@ -119,7 +121,7 @@
   <div class="web-big-padding-section">
     <div class="py-10">
       <div class="my-[7.5rem]">
-        <section class="container web-u-padding-block-end-0">
+        <section class="container pb-0">
           <a
             href="/blog/post/announcing-init-faster-smoother-better"
             class="web-hero-banner-button web-u-margin-block-end-24"
@@ -132,29 +134,26 @@
             >
             <span class="web-icon-arrow-right" aria-hidden="true" />
           </a>
-          <div class="web-hero is-horizontal">
-            <h1 class="web-headline">
-              <span class="web-gradient-text">
-                Build like a team of hundreds<span
-                  class="web-u-color-text-accent">_</span
-                >
-              </span>
-            </h1>
-            <div class="self-end">
-              <p class="text-secondary mt-5 text-xl font-medium">
-                Build your entire backend within minutes and scale effortlessly
-                using Appwrite's open-source platform. Add Authentication,
-                Databases, Functions, Storage, and Messaging to your projects
-                using the frameworks and languages of your choice.
-              </p>
-              <Button
-                href={PUBLIC_APPWRITE_DASHBOARD}
-                class="mt-8 w-full lg:w-fit"
-              >
-                Get started
-              </Button>
-            </div>
-          </div>
+          <Hero>
+            <GradientText slot="title"
+              >Build like a team of hundreds<span class="text-accent">_</span
+              ></GradientText
+            >
+
+            <p slot="description">
+              Build your entire backend within minutes and scale effortlessly
+              using Appwrite's open-source platform. Add Authentication,
+              Databases, Functions, Storage, and Messaging to your projects
+              using the frameworks and languages of your choice.
+            </p>
+            <Button
+              href={PUBLIC_APPWRITE_DASHBOARD}
+              class="mt-8 w-full lg:w-fit"
+              slot="cta"
+            >
+              Get started
+            </Button>
+          </Hero>
         </section>
       </div>
       <div class="my-[7.5rem]">
