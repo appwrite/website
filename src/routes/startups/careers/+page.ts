@@ -1,5 +1,5 @@
-import { redirect } from '@sveltejs/kit';
+import { redirect } from "@sveltejs/kit";
 
 export const load = async () => {
-    redirect(301, 'https://appwrite.careers');
+  redirect(301, "https://appwrite.careers");
 };

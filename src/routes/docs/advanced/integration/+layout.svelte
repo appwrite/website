@@ -1,30 +1,33 @@
 <script lang="ts">
-    import Docs from '$lib/layouts/Docs.svelte';
-    import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
+  import Docs from "$lib/layouts/Docs.svelte";
+  import Sidebar, {
+    type NavParent,
+    type NavTree,
+  } from "$lib/layouts/Sidebar.svelte";
 
-    const parent: NavParent = {
-        href: '/docs',
-        label: 'Integration'
-    };
+  const parent: NavParent = {
+    href: "/docs",
+    label: "Integration",
+  };
 
-    const navigation: NavTree = [
+  const navigation: NavTree = [
+    {
+      label: "Getting started",
+      items: [
         {
-            label: 'Getting started',
-            items: [
-                {
-                    label: 'Overview',
-                    href: '/docs/advanced/integration'
-                }
-            ]
+          label: "Overview",
+          href: "/docs/advanced/integration",
         },
-        {
-            label: 'Guides',
-            items: []
-        }
-    ];
+      ],
+    },
+    {
+      label: "Guides",
+      items: [],
+    },
+  ];
 </script>
 
 <Docs variant="two-side-navs">
-    <Sidebar {navigation} {parent} />
-    <slot />
+  <Sidebar {navigation} {parent} />
+  <slot />
 </Docs>

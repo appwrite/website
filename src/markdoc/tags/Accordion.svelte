@@ -1,7 +1,7 @@
 <script>
-    import { Accordion } from '$lib/components/Accordion';
+  import { Accordion } from "$lib/components/Accordion";
 </script>
 
 <Accordion>
-    <slot />
+  <slot />
 </Accordion>
