@@ -118,7 +118,7 @@
 <Main>
   <div class="web-big-padding-section">
     <div class="py-10">
-      <div class="web-big-padding-section-level-2">
+      <div class="my-[7.5rem]">
         <section class="container web-u-padding-block-end-0">
           <a
             href="/blog/post/announcing-init-faster-smoother-better"
@@ -157,7 +157,7 @@
           </div>
         </section>
       </div>
-      <div class="web-big-padding-section-level-2">
+      <div class="my-[7.5rem]">
         <section
           class="container web-u-padding-block-0"
           style="--container-size:78.75rem"
@@ -172,7 +172,7 @@
           </div>
         </section>
       </div>
-      <div class="web-big-padding-section-level-2">
+      <div class="my-[7.5rem]">
         <div class="container">
           <h2
             class="web-title web-u-color-text-primary web-u-text-align-center web-u-max-width-600 mx-auto"
@@ -296,7 +296,7 @@
         />
       </div>
 
-      <div class="web-big-padding-section-level-2">
+      <div class="my-[7.5rem]">
         <div class="container">
           <section class="web-hero is-align-start max-w-[700px]">
             <span class="web-badges web-eyebrow !text-white"
@@ -331,7 +331,7 @@
         </div>
       </div>
       <OpenSource />
-      <div class="web-big-padding-section-level-2">
+      <div class="my-[7.5rem]">
         <div class="container">
           <div class="web-hero">
             <div class="web-display text-primary">
@@ -430,7 +430,7 @@
       </div>
     </div>
 
-    <div class="relative overflow-hidden py-10">
+    <div class="relative overflow-hidden pt-10">
       <div
         class="web-is-not-mobile absolute"
         style:inline-size="768px"
@@ -447,7 +447,7 @@
           style="position: absolute; display: block;"
         />
       </div>
-      <div class="web-big-padding-section-level-2 is-margin-replace-padding">
+      <div class="py-[7.5rem]">
         <div class="container relative">
           <section class="web-hero is-align-start">
             <span class="web-badges web-eyebrow !text-white">SDKs_</span>
@@ -465,7 +465,7 @@
           </section>
         </div>
       </div>
-      <div class="web-big-padding-section-level-2 relative overflow-hidden">
+      <div class="relative my-[7.5rem] overflow-hidden">
         <div
           class="web-is-not-mobile absolute z-0"
           style:width="50%"
@@ -516,9 +516,7 @@
           </div>
         </div>
       </div>
-      <div
-        class="web-big-padding-section-level-2 is-margin-replace-padding relative overflow-hidden"
-      >
+      <div class="relative overflow-hidden pt-[7.5rem]">
         <div class="container">
           <PreFooter />
           <FooterNav />
