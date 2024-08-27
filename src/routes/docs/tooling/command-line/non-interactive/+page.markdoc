@@ -16,13 +16,19 @@ When you set the global configuration parameters using the `appwrite client` com
 
 In this mode, the CLI can only interact with one project at a time.
 
-Use `appwrite login` with your email, password, and OTP to log in so you can run tests or set up project-per-branch previews, or you log in using an API key.
+# Authentication {% #authentication %}
+
+In non-interactive mode, you can authenticate your users using two methods: email and password or API keys. While using an API key does not require an email and password to authenticate users, the API key needs to be generated and does not work for project API calls.
+
+## Email and password {% #email-and-password %}
+
+Use `appwrite login` with your email, and password to log in so you can run tests or set up project-per-branch previews, or you log in using an API key.
 
 ```sh
-appwrite login --email "<EMAIL>" --password "<PASSWORD>" --mfa totp  
+appwrite login --email "<EMAIL>" --password "<PASSWORD>" 
 ```
 
-# API Keys {% #api-keys %}
+## API Keys {% #api-keys %}
 
 {% info title="Using API keys with CLI" %}
 Some CLI commands won't work with an API key, like the `projects` commands.
@@ -31,7 +37,7 @@ Some CLI commands won't work with an API key, like the `projects` commands.
 In non-interactive mode, the CLI also uses an API key to authenticate. Your API key must have sufficient permissions to execute the commands you plan to use. [Learn more about API Keys](/docs/advanced/platform/api-keys).
 
 ```sh
-appwrite client --project-id "<PROJECT_ID>" --key "<APY_KEY>"
+appwrite client --project-id "<PROJECT_ID>" --key "<API_KEY>"
 ```
 
 # Deployment {% #deployment %}
