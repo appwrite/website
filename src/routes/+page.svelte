@@ -464,7 +464,7 @@
                     </div>
                 </div>
                 <div class="container relative">
-                    <div class="grid grid-cols-2">
+                    <div class="grid md:grid-cols-2">
                         <section class="web-hero is-align-start">
                             <span class="web-badges web-eyebrow !text-white">Scale_</span>
                             <h2 class="web-display web-u-color-text-primary max-w-[600px]">
