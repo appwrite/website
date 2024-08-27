@@ -10,8 +10,6 @@ category: engineering
 featured: false
 ---
 
-*Originally published in October 2021, this article has been updated for relevancy and comprehensiveness.*
-
 The Swift Package Manager, or SwiftPM, has been part of Swift since version 3.0. Initially, it was just for server-side or command-line Swift projects. However, starting with Swift 5 and Xcode 11, SwiftPM now works across the entire Apple ecosystem for building apps. This is great because packages let you organize your code into reusable, logical groups that you can easily share between projects or even with the world.
 
 ## Modules
