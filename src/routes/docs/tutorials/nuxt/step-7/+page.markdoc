@@ -43,7 +43,7 @@ const handleAddIdea = async (event) => {
   <div>
     <article class="container padding-0">
       <h4 class="heading-level-4">Submit Idea</h4>
-      <form @submit.prevent="handleAddIdea" class="mt-4">
+      <form @submit.prevent="handleAddIdea" class="u-margin-block-start-16">
         <ul class="form-list">
           <li class="form-item">
             <label class="label">Title</label>
@@ -87,7 +87,7 @@ const user = useUserSession();
 </script>
 
 <template>
-  <div class="max-w-[650px]" style="margin-inline: auto;">
+  <div class="u-max-width-650" style="margin-inline: auto;">
     <!-- Idea form component for logged in users -->
     <section v-if="user.current.value" class="card u-margin-32">
       <IdeasForm />
@@ -108,10 +108,9 @@ article.box {
   background-color: hsl(var(--color-neutral-0));
 }
 </style>
-```
+````
 
 # Ideas list {% #ideas-list %}
-
 Now that we can get some ideas to show, we go on to build the component for the list of ideas.
 
 Once again, we need to take a moment to think about how this component should work.
@@ -136,13 +135,13 @@ const user = useUserSession();
     <section class="u-margin-32">
       <article class="card">
         <h4 class="heading-level-4">Latest Ideas</h4>
-        <ul class="mt-2">
+        <ul class="u-margin-block-start-8">
           <template v-if="ideas.current.value && ideas.current.value.length">
             <li v-for="idea in ideas.current.value">
               <div class="box">
                 <h5 class="heading-level-6">{{ idea.title }}</h5>
                 <p class="body-text-2">{{ idea.description }}</p>
-                <div class="absolute u-inset-inline-end-8 u-inset-block-start-8">
+                <div class="u-position-absolute u-inset-inline-end-8 u-inset-block-start-8">
                   <button class="button is-small is-text is-only-icon" aria-label="Remove item" v-if="user.current.value &&
                     idea.userId === user.current.value.userId
                     " type="button" @click="ideas.remove(idea.$id)">
@@ -168,14 +167,14 @@ This component should be visible to all users, so no conditional rendering neeed
 <!-- pages/index.vue -->
 
 <template>
-  <div class="max-w-[650px]" style="margin: 0 auto;">
+  <div class="u-max-width-650" style="margin: 0 auto;">
     <!-- ... Some skipped code -->
     <IdeasList />
   </div>
 </template>
 
 <!-- ... Some skipped code -->
-```
+````
 
 Congratulations!
 You now have an ideas tracker built with Nuxt and Appwrite to use locally.

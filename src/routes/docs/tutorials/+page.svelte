@@ -59,16 +59,16 @@
 <main class="web-main-section" id="main">
   <article class="web-article">
     <header class="web-article-header">
-      <div class="web-article-header-start web-u-cross-start flex flex-col">
-        <div class="relative flex items-center">
+      <div class="web-article-header-start u-flex-vertical web-u-cross-start">
+        <div class="u-position-relative u-flex u-cross-center">
           <h1 class="web-title">Tutorials</h1>
         </div>
       </div>
       <div class="web-article-header-end" />
     </header>
-    <div class="web-article-content gap-20">
+    <div class="web-article-content web-u-gap-80">
       {#each data.tutorials as category}
-        <section class="flex flex-col gap-6">
+        <section class="u-flex-vertical u-gap-24">
           <h2 class="web-eyebrow">{category.title}</h2>
           <ul class="web-grid-row-4 web-grid-row-4-mobile-2">
             {#each category.tutorials as tutorial}
@@ -80,7 +80,7 @@
                     aria-disabled="true"
                     tabindex="-1"
                   >
-                    <header class="flex items-baseline gap-1">
+                    <header class="u-flex u-cross-baseline u-gap-4">
                       <span
                         class="{getIcon(tutorial)} web-u-font-size-24"
                         aria-hidden="true"
@@ -93,7 +93,7 @@
                   </a>
                 {:else}
                   <a href={tutorial.href} class="web-card is-normal">
-                    <header class="flex items-baseline gap-1">
+                    <header class="u-flex u-cross-baseline u-gap-4">
                       <span
                         class="{getIcon(tutorial)} web-u-font-size-24"
                         aria-hidden="true"
@@ -102,7 +102,7 @@
                         {tutorial.framework}
                       </h3>
                     </header>
-                    <p class="web-sub-body-400 mt-1">
+                    <p class="web-sub-body-400 u-margin-block-start-4">
                       {tutorial.title}
                     </p>
                   </a>
