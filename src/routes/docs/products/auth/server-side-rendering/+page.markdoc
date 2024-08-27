@@ -59,7 +59,7 @@ import { Client } from "node-appwrite"; // Using the server SDK
 
 const adminClient = new Client()
     .setProject('<PROJECT_ID>') // Your project ID
-    .setKey('<YOUR_API_KEY>');       // Your secret API key
+    .setKey('<API_KEY>');       // Your secret API key
 ```
 ```php
 use Appwrite\Client;
@@ -67,7 +67,7 @@ use Appwrite\Services\Account;
 
 $adminClient = (new Client())
     ->setProject('<PROJECT_ID>') // Your project ID
-    ->setKey('<YOUR_API_KEY>');       // Your secret API key
+    ->setKey('<API_KEY>');       // Your secret API key
 
 
 ```

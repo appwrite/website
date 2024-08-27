@@ -287,7 +287,7 @@ const messaging = new sdk.Messaging(client);
 
 client
     .setProject('<PROJECT_ID>') // Your project ID
-    .setKey('<YOUR_API_KEY>')        // Your secret API key
+    .setKey('<API_KEY>')        // Your secret API key
 ;
 
 const provider = await messaging.updateSendgridProvider(
@@ -311,7 +311,7 @@ let messaging = new sdk.Messaging(client);
 
 client
     .setProject('<PROJECT_ID>') // Your project ID
-    .setKey('<YOUR_API_KEY>')        // Your secret API key
+    .setKey('<API_KEY>')        // Your secret API key
 ;
 
 const provider = await messaging.updateSendgridProvider(
@@ -335,7 +335,7 @@ $client = new Client();
 
 $client
     ->setProject('<PROJECT_ID>') // Your project ID
-    ->setKey('<YOUR_API_KEY>')        // Your secret API key
+    ->setKey('<API_KEY>')        // Your secret API key
 ;
 
 $messaging = new Messaging($client);
@@ -359,7 +359,7 @@ client = Client()
 
 (client
   .set_project('<PROJECT_ID>') # Your project ID
-  .set_key('<YOUR_API_KEY>')        # Your secret API key
+  .set_key('<API_KEY>')        # Your secret API key
 )
 
 messaging = Messaging(client)
@@ -382,7 +382,7 @@ include Appwrite
 
 client = Client.new
     .set_project('<PROJECT_ID>') # Your project ID
-    .set_key('<YOUR_API_KEY>')        # Your secret API key
+    .set_key('<API_KEY>')        # Your secret API key
 
 messaging = Messaging.new(client)
 
@@ -406,7 +406,7 @@ using Appwrite.Models;
 
 var client = new Client()
     .SetProject("<PROJECT_ID>") // Your project ID
-    .SetKey("<YOUR_API_KEY>");       // Your secret API key
+    .SetKey("<API_KEY>");       // Your secret API key
 
 var messaging = new Messaging(client);
 
@@ -431,7 +431,7 @@ void main() {                         // Init SDK
 
   client
     .setProject('<PROJECT_ID>') // Your project ID
-    .setKey('<YOUR_API_KEY>')        // Your secret API key
+    .setKey('<API_KEY>')        // Your secret API key
   ;
 
   Future result = messaging.updateSendgridProvider(
@@ -460,7 +460,7 @@ import io.appwrite.services.Messaging;
 
 Client client = new Client()
     .setProject("<PROJECT_ID>") // Your project ID
-    .setKey("<YOUR_API_KEY>");       // Your secret API key
+    .setKey("<API_KEY>");       // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
@@ -490,7 +490,7 @@ import io.appwrite.services.Messaging;
 
 Client client = new Client()
     .setProject("<PROJECT_ID>") // Your project ID
-    .setKey("<YOUR_API_KEY>");       // Your secret API key
+    .setKey("<API_KEY>");       // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
@@ -518,7 +518,7 @@ import Appwrite
 
 let client = Client()
     .setProject("<PROJECT_ID>") // Your project ID
-    .setKey("<YOUR_API_KEY>")        // Your secret API key
+    .setKey("<API_KEY>")        // Your secret API key
 
 let messaging = Messaging(client)
 

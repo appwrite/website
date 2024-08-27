@@ -61,7 +61,7 @@ Doing so could create security vulnerabilities.
 For example, your `.env` might look something similar to this.
 
 ```env
-NEXT_APPWRITE_KEY=<YOUR_API_KEY>
+NEXT_APPWRITE_KEY=<API_KEY>
 NEXT_PUBLIC_APPWRITE_PROJECT=<YOUR_PROJECT_ID>
 ```
 

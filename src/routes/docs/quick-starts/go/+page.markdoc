@@ -71,7 +71,7 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Create a new file called `app.go`, initialize a function, and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key. Import the Appwrite dependencies for appwrite, client, databases, and models.
+Create a new file called `app.go`, initialize a function, and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<API_KEY>` with your API key. Import the Appwrite dependencies for appwrite, client, databases, and models.
 
 ```go
 package main

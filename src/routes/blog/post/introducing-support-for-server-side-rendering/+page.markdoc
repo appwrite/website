@@ -76,7 +76,7 @@ import { Client } from "node-appwrite"
 
 const adminClient = new Client()
     .setProject('<PROJECT_ID>')
-    .setKey('<YOUR_API_KEY>')
+    .setKey('<API_KEY>')
 ```
 
 ### Session Client

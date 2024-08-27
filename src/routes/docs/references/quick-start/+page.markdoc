@@ -136,7 +136,7 @@ const client = new sdk.Client();
 
 client
     .setProject('<PROJECT_ID>')                            // Your project ID
-    .setJWT('<YOUR_API_KEY>')                                   // Your secret JSON Web Token
+    .setJWT('<USER_JWT>')                                   // Your secret JSON Web Token
 ;
 ```
 ```deno
@@ -147,7 +147,7 @@ let client = new sdk.Client();
 
 client
     .setProject('<PROJECT_ID>')                            // Your project ID
-    .setJWT('<YOUR_API_KEY>')                                   // Your secret JSON Web Token
+    .setJWT('<USER_JWT>')                                   // Your secret JSON Web Token
 ;
 ```
 ```php
@@ -159,7 +159,7 @@ $client = new Client();
 
 $client
     ->setProject('<PROJECT_ID>')                           // Your project ID
-    ->setJWT('<YOUR_API_KEY>')                                  // Your secret JSON Web Token
+    ->setJWT('<USER_JWT>')                                  // Your secret JSON Web Token
 ;
 ```
 ```python
@@ -169,7 +169,7 @@ client = Client()
 
 (client
   .set_project('<PROJECT_ID>')                             # Your project ID
-  .set_jwt('<YOUR_API_KEY>')                                    # Your secret JSON Web Token
+  .set_jwt('<API_KEY>')                                    # Your secret JSON Web Token
 )
 ```
 ```ruby
@@ -179,7 +179,7 @@ include Appwrite
 
 client = Client.new
     .set_project('<PROJECT_ID>')                           # Your project ID
-    .set_jwt('<YOUR_API_KEY>')                                  # Your secret JSON Web Token
+    .set_jwt('<USER_JWT>')                                  # Your secret JSON Web Token
 ```
 ```csharp
 using Appwrite;
@@ -187,7 +187,7 @@ using Appwrite.Services;
 
 var client = new Client()
     .SetProject("<PROJECT_ID>")                            // Your project ID
-    .SetJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
+    .SetJWT("<USER_JWT>");                                  // Your secret JSON Web Token
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -197,7 +197,7 @@ void main() {                                                   // Init SDK
 
   client
     .setProject('<PROJECT_ID>')                            // Your project ID
-    .setJWT('<YOUR_API_KEY>')                                   // Your secret JSON Web Token
+    .setJWT('<USER_JWT>')                                   // Your secret JSON Web Token
   ;
 }
 ```
@@ -207,7 +207,7 @@ import io.appwrite.coroutines.CoroutineCallback;
 
 Client client = new Client()
     .setProject("<PROJECT_ID>")                            // Your project ID
-    .setJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
+    .setJWT("<USER_JWT>");                                  // Your secret JSON Web Token
 ```
 ```java
 import io.appwrite.Client;
@@ -215,14 +215,14 @@ import io.appwrite.coroutines.CoroutineCallback;
 
 Client client = new Client()
     .setProject("<PROJECT_ID>")                            // Your project ID
-    .setJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
+    .setJWT("<USER_JWT>");                                  // Your secret JSON Web Token
 ```
 ```swift
 import Appwrite
 
 let client = Client()
     .setProject("<PROJECT_ID>")                            // Your project ID
-    .setJWT("<YOUR_API_KEY>")                                   // Your secret JSON Web Token
+    .setJWT("<USER_JWT>")                                   // Your secret JSON Web Token
 ```
 {% /multicode %}
 {% /tabsitem %}
@@ -249,7 +249,7 @@ import { Client } from "node-appwrite"; // Using the server SDK
 
 const adminClient = new Client()
     .setProject('<PROJECT_ID>')             // Your project ID
-    .setKey('<YOUR_API_KEY>');                   // Your secret API key
+    .setKey('<API_KEY>');                   // Your secret API key
 ```
 ```php
 use Appwrite\Client;
@@ -257,7 +257,7 @@ use Appwrite\Services\Account;
 
 $adminClient = (new Client())
     ->setProject('<PROJECT_ID>')             // Your project ID
-    ->setKey('<YOUR_API_KEY>');                   // Your secret API key
+    ->setKey('<API_KEY>');                   // Your secret API key
 
 
 ```

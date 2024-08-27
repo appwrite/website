@@ -66,7 +66,7 @@ export function createSessionClient(event) {
 For example, your `.env` might look something similar to this.
 
 ```text
-APPWRITE_KEY=<YOUR_API_KEY>
+APPWRITE_KEY=<API_KEY>
 PUBLIC_APPWRITE_PROJECT=<YOUR_PROJECT_ID>
 ```
 
