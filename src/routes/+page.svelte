@@ -116,10 +116,10 @@
 </div>
 
 <Main>
-  <div class="my-[7.5rem]">
+  <div class="web-big-padding-section">
     <div class="py-10">
-      <div class="my-[7.5rem]">
-        <section class="container pb-0">
+      <div class="web-big-padding-section-level-2">
+        <section class="container web-u-padding-block-end-0">
           <a
             href="/blog/post/announcing-init-faster-smoother-better"
             class="web-hero-banner-button web-u-margin-block-end-24"
@@ -157,7 +157,7 @@
           </div>
         </section>
       </div>
-      <div class="my-[7.5rem]">
+      <div class="web-big-padding-section-level-2">
         <section
           class="container web-u-padding-block-0"
           style="--container-size:78.75rem"
@@ -172,7 +172,7 @@
           </div>
         </section>
       </div>
-      <div class="my-[7.5rem]">
+      <div class="web-big-padding-section-level-2">
         <div class="container">
           <h2
             class="web-title web-u-color-text-primary web-u-text-align-center web-u-max-width-600 mx-auto"
@@ -296,16 +296,16 @@
         />
       </div>
 
-      <div class="my-[7.5rem]">
+      <div class="web-big-padding-section-level-2">
         <div class="container">
-          <section class="web-hero is-align-start">
+          <section class="web-hero is-align-start max-w-[700px]">
             <span class="web-badges web-eyebrow !text-white"
               >PRIVACY & SECURITY_</span
             >
-            <h2 class="web-display text-primary max-w-[700px]">
+            <h2 class="web-display text-primary">
               Self-host your data or take it to the Cloud
             </h2>
-            <p class="web-description !text-secondary max-w-[700px]">
+            <p class="web-description !text-secondary">
               Migrate your data from and to any platform at any time with
               Appwrite Migrations. With built-in security and privacy for peace
               of mind.
@@ -331,7 +331,7 @@
         </div>
       </div>
       <OpenSource />
-      <div class="my-[7.5rem]">
+      <div class="web-big-padding-section-level-2">
         <div class="container">
           <div class="web-hero">
             <div class="web-display text-primary">
@@ -447,7 +447,7 @@
           style="position: absolute; display: block;"
         />
       </div>
-      <div class="py-[7.5rem]">
+      <div class="web-big-padding-section-level-2 is-margin-replace-padding">
         <div class="container relative">
           <section class="web-hero is-align-start">
             <span class="web-badges web-eyebrow !text-white">SDKs_</span>
@@ -465,7 +465,7 @@
           </section>
         </div>
       </div>
-      <div class="relative my-[7.5rem] overflow-hidden">
+      <div class="web-big-padding-section-level-2 relative overflow-hidden">
         <div
           class="web-is-not-mobile absolute z-0"
           style:width="50%"
@@ -486,7 +486,7 @@
           </div>
         </div>
         <div class="container relative">
-          <div class="grid md:grid-cols-2">
+          <div class="grid grid-cols-2">
             <section class="web-hero is-align-start">
               <span class="web-badges web-eyebrow !text-white">Scale_</span>
               <h2 class="web-display web-u-color-text-primary max-w-[600px]">
@@ -516,7 +516,9 @@
           </div>
         </div>
       </div>
-      <div class="relative overflow-hidden py-[7.5rem]">
+      <div
+        class="web-big-padding-section-level-2 is-margin-replace-padding relative overflow-hidden"
+      >
         <div class="container">
           <PreFooter />
           <FooterNav />

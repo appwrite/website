@@ -9,7 +9,7 @@
   style="z-index:-1"
 />
 
-<div class="web-u-row-gap-80 relative grid gap-8 md:grid-cols-2">
+<div class="web-u-row-gap-80 relative grid grid-cols-2 gap-8">
   <section class="web-hero web-u-row-gap-32 flex items-center justify-center">
     <h2 class="web-display web-u-color-text-primary max-w-[500px] text-center">
       Start building today
