@@ -149,7 +149,7 @@ This will create your `appwrite.json` file, where you will configure your variou
 You can run your first CLI command after logging in. Try fetching the users from your Appwrite project.
 
 ```sh
-appwrite users list
+appwrite users list --json
 ```
 
 {% info title="Self-signed certificates" %}
