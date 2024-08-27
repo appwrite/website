@@ -140,12 +140,12 @@
               ></GradientText
             >
 
-            <p slot="description">
+            <svelte:fragment slot="description">
               Build your entire backend within minutes and scale effortlessly
               using Appwrite's open-source platform. Add Authentication,
               Databases, Functions, Storage, and Messaging to your projects
               using the frameworks and languages of your choice.
-            </p>
+            </svelte:fragment>
             <Button
               href={PUBLIC_APPWRITE_DASHBOARD}
               class="mt-8 w-full lg:w-fit"
@@ -297,14 +297,14 @@
 
       <div class="my-[7.5rem]">
         <div class="container">
-          <section class="web-hero is-align-start max-w-[700px]">
+          <section class="web-hero is-align-start">
             <span class="web-badges web-eyebrow !text-white"
               >PRIVACY & SECURITY_</span
             >
-            <h2 class="web-display text-primary">
+            <h2 class="web-display text-primary max-w-[700px]">
               Self-host your data or take it to the Cloud
             </h2>
-            <p class="text-secondary mt-5 text-xl font-medium">
+            <p class="text-secondary mt-5 max-w-[700px] text-xl font-medium">
               Migrate your data from and to any platform at any time with
               Appwrite Migrations. With built-in security and privacy for peace
               of mind.
