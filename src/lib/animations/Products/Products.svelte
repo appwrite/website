@@ -254,7 +254,7 @@
             Your backend, minus the hassle
           </h2>
           <p
-            class="web-description web-max-w-[700px] mx-auto"
+            class="web-description mx-auto max-w-[700px]"
             transition:fly={{
               y: 16,
               delay: 400,
