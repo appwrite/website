@@ -162,7 +162,7 @@
   on:click={handleExit}
 >
   <div
-    class="web-input-text-search-wrapper web-max-w-[680px] web-u-margin-inline-20 w-full"
+    class="web-input-text-search-wrapper web-u-margin-inline-20 w-full max-w-[680px]"
   >
     <span
       class="web-icon-search z-[5]"
@@ -172,12 +172,11 @@
     <div id="searchbox" />
 
     <input
-      class="web-input-button relative z-1"
+      class="web-input-button relative z-1 !rounded-b-none !pl-10"
       type="text"
       id="search"
       bind:value
       placeholder="Search in docs"
-      style="border-end-start-radius:0; border-end-end-radius:0;"
       style:inline-size="100%"
       use:melt={$input}
       bind:this={inputEl}

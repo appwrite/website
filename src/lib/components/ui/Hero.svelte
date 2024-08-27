@@ -11,9 +11,9 @@
     <slot name="title" />
   </h1>
   <div class="flex-[1] self-end">
-    <div class="text-secondary mt-5 text-xl font-medium">
+    <p class="text-secondary mt-5 text-xl font-medium">
       <slot name="description" />
-    </div>
+    </p>
     <slot name="cta" />
   </div>
 </div>
