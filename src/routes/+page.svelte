@@ -299,9 +299,11 @@
                         </p>
                     </section>
                     <div class="mt-20 overflow-hidden">
-                        <ul class="web-info-boxes web-sub-body-500">
+                        <ul
+                            class="web-info-boxes web-sub-body-500 divide-x divide-y divide-black/[0.04]"
+                        >
                             {#each infoBoxes as box}
-                                <li class="web-info-boxes-item">
+                                <li class="relative p-8 last-of-type:border-r border-black/[0.04]">
                                     <img src={box.icon} width="40" height="40" alt="" />
                                     <h3
                                         class="text-primary mt-4 flex flex-wrap items-baseline gap-3"
