@@ -5,10 +5,10 @@
 
     type HeroProps = SvelteHTMLElements['div'];
 
-    const hero = cva(['flex', 'gap-8', 'relative', 'max-w-[600px]'], {
+    const hero = cva(['flex', 'gap-8', 'relative'], {
         variants: {
             layout: {
-                vertical: ['flex-col'],
+                vertical: ['flex-col', 'max-w-[600px]'],
                 horizontal: ['flex-col', 'md:flex-row']
             }
         },
