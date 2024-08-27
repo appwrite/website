@@ -7,7 +7,8 @@
 			},
 			body: JSON.stringify({
 				name,
-				email
+				email,
+				cloud: true /* not optional on the growth endpoint. */
 			})
 		});
 		return response;
