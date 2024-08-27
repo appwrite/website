@@ -1,26 +1,26 @@
 <script lang="ts" context="module">
-    import { hasContext, setContext } from 'svelte';
+  import { hasContext, setContext } from "svelte";
 
-    export type ChangelogData = {
-        title: string;
-        description?: string;
-        date: string;
-        cover?: string;
-    };
+  export type ChangelogData = {
+    title: string;
+    description?: string;
+    date: string;
+    cover?: string;
+  };
 
-    const CONTEXT_KEY = Symbol('changelog');
+  const CONTEXT_KEY = Symbol("changelog");
 
-    function initContext() {
-        setContext(CONTEXT_KEY, null);
-    }
+  function initContext() {
+    setContext(CONTEXT_KEY, null);
+  }
 
-    export function isInChangelog() {
-        return hasContext(CONTEXT_KEY);
-    }
+  export function isInChangelog() {
+    return hasContext(CONTEXT_KEY);
+  }
 </script>
 
 <script lang="ts">
-    initContext();
+  initContext();
 </script>
 
 <!-- Empty so it can be displayed inline -->

@@ -1,12 +1,12 @@
 [
-    {
-        "id": "appwrite",
-        "path": "src/",
-        "schema": {
-            "path": ".svelte-kit/markdoc_schema.js",
-            "type": "esm",
-            "property": "default",
-            "watch": true
-        }
+  {
+    "id": "appwrite",
+    "path": "src/",
+    "schema": {
+      "path": ".svelte-kit/markdoc_schema.js",
+      "type": "esm",
+      "property": "default",
+      "watch": true
     }
+  }
 ]
