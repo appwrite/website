@@ -1,3 +1,3 @@
-import { optimizeSVG } from "./scripts.js";
+import { optimizeSVG } from './scripts.js';
 
 optimizeSVG();

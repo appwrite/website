@@ -1,8 +1,8 @@
-export const isDom = () => typeof window !== "undefined";
+export const isDom = () => typeof window !== 'undefined';
 export function getPlatform() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const agent = (navigator as any).userAgentData;
-  return (agent?.platform ?? navigator.platform) as string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const agent = (navigator as any).userAgentData;
+    return (agent?.platform ?? navigator.platform) as string;
 }
 const pt = (v: RegExp) => isDom() && v.test(getPlatform().toLowerCase());
 const ua = (v: RegExp) => isDom() && v.test(navigator.userAgent);

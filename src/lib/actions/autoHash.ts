@@ -1,12 +1,12 @@
 export const autoHash = (
-  node: Element,
-  callback: (entries: IntersectionObserverEntry[]) => void,
+    node: Element,
+    callback: (entries: IntersectionObserverEntry[]) => void
 ) => {
-  const observer = new IntersectionObserver(callback, {
-    threshold: 1,
-  });
+    const observer = new IntersectionObserver(callback, {
+        threshold: 1
+    });
 
-  observer.observe(node);
+    observer.observe(node);
 
-  return { destroy: () => observer.disconnect() };
+    return { destroy: () => observer.disconnect() };
 };

@@ -1,9 +1,9 @@
 <section class="count-secondary-title">
-  <slot />
+    <slot />
 </section>
 
 <style lang="scss">
-  .count-secondary-title {
-    gap: 0.25rem;
-  }
+    .count-secondary-title {
+        gap: 0.25rem;
+    }
 </style>

@@ -1,4 +1,4 @@
-import type { RequestHandler } from "@sveltejs/kit";
+import type { RequestHandler } from '@sveltejs/kit';
 
 const follow = `# robotstxt.org/
 User-agent: *`;
@@ -8,10 +8,8 @@ User-agent: *
 Disallow: /`;
 
 export const GET: RequestHandler = ({ url }) => {
-  const hostname: string = url.hostname;
-  return new Response(
-    hostname === "www.appwrite.io" || hostname === "appwrite.io"
-      ? follow
-      : nofollow,
-  );
+    const hostname: string = url.hostname;
+    return new Response(
+        hostname === 'www.appwrite.io' || hostname === 'appwrite.io' ? follow : nofollow
+    );
 };
