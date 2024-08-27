@@ -133,12 +133,12 @@
                             >
                                 <div class="flex justify-end">
                                     <ul
-                                        class="web-form-list is-two-columns web-u-max-width-580 web-u-max-inline-size-none-mobile w-full gap-4"
+                                        class="web-form-list grid md:grid-cols-2 web-u-max-width-580 web-u-max-inline-size-none-mobile w-full gap-4"
                                     >
                                         <li class="web-form-item">
                                             <input
                                                 required
-                                                class="web-input-text"
+                                                class="web-input-text w-full"
                                                 type="text"
                                                 placeholder="Name"
                                                 aria-label="Name"
@@ -148,17 +148,17 @@
                                         <li class="web-form-item">
                                             <input
                                                 required
-                                                class="web-input-text"
+                                                class="web-input-text w-full"
                                                 type="email"
                                                 placeholder="Email address"
                                                 aria-label="Email address"
                                                 bind:value={email}
                                             />
                                         </li>
-                                        <li class="web-form-item is-column-span-2">
+                                        <li class="web-form-item col-span-2">
                                             <input
                                                 required
-                                                class="web-input-text"
+                                                class="web-input-text w-full"
                                                 type="text"
                                                 name="subject"
                                                 placeholder="Subject"
@@ -166,11 +166,11 @@
                                                 bind:value={subject}
                                             />
                                         </li>
-                                        <li class="web-form-item is-column-span-2">
+                                        <li class="web-form-item col-span-2">
                                             <textarea
                                                 required
                                                 name="message"
-                                                class="web-input-text"
+                                                class="web-input-text w-full"
                                                 placeholder="Your message"
                                                 aria-label="Message"
                                                 bind:value={message}
