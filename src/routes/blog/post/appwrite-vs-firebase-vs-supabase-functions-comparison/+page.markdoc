@@ -89,6 +89,9 @@ Appwrite Functions support multiple languages, including Node.js, Python, Ruby, 
 | Local development | Yes | Yes | Yes |
 | Binary executions | Yes | Yes | Yes |
 | Scheduled executions | Yes | Yes | Yes |
+| Delayed executions | Yes | No | No |
+| Event triggers | Yes | Yes | Yes |
+| Async executions | Yes | No | Yes |
 | Community support | Discord community | Discord community | Established community |
 
 # Conclusion
