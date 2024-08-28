@@ -101,7 +101,7 @@
                             </li>
                         {/each}
                     </ol>
-                    <div class="border-border-primary border-t pt-5">
+                    <div class="border-greyscale-900/[0.04] border-t pt-5">
                         <button class="web-link inline-flex items-center gap-2" use:scrollToTop>
                             <span class="web-icon-arrow-up" aria-hidden="true" />
                             <span class="web-caption-400">Back to top</span>
