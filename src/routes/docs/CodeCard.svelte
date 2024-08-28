@@ -17,7 +17,7 @@
 
 <a class="web-grid-articles-item is-full-color" {href}>
     <div class="web-grid-articles-item-image">
-        <img src={cover} alt='' loading="lazy" />
+        <img src={cover} alt="" loading="lazy" />
     </div>
     <article class="web-grid-articles-item-content">
         <header class="web-articles-item-header">

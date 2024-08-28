@@ -44,7 +44,7 @@
 
     let copyText = CopyStatus.Copy;
     async function handleCopy() {
-        const blogPostUrl = encodeURI(`https://appwrite.io${$page.url.pathname}`)
+        const blogPostUrl = encodeURI(`https://appwrite.io${$page.url.pathname}`);
 
         await copy(blogPostUrl);
 
@@ -55,7 +55,7 @@
     }
 
     function getShareLink(shareOption: SocialShareOption): string {
-        const blogPostUrl = encodeURI(`https://appwrite.io${$page.url.pathname}`)
+        const blogPostUrl = encodeURI(`https://appwrite.io${$page.url.pathname}`);
         const shareableLink = shareOption.link
             .replace('{TITLE}', title + '.')
             .replace('{URL}', blogPostUrl);
@@ -133,7 +133,9 @@
                                                 />
                                             {/if}
                                             <div class="u-flex-vertical">
-                                                <h4 class="web-sub-body-400 web-u-color-text-primary">
+                                                <h4
+                                                    class="web-sub-body-400 web-u-color-text-primary"
+                                                >
                                                     {authorData.name}
                                                 </h4>
                                                 <p class="web-caption-400">{authorData.role}</p>
@@ -183,15 +185,23 @@
                                     </div>
                                 {/if}
 
-                                <div class="share-post-section u-flex u-gap-16 u-margin-block-start-16 u-cross-center">
-                                    <span class="web-eyebrow u-padding-inline-end-8" style:color="#adadb0">
+                                <div
+                                    class="share-post-section u-flex u-gap-16 u-margin-block-start-16 u-cross-center"
+                                >
+                                    <span
+                                        class="web-eyebrow u-padding-inline-end-8"
+                                        style:color="#adadb0"
+                                    >
                                         SHARE
                                     </span>
 
                                     <ul class="u-flex u-gap-8">
                                         {#each socialSharingOptions as sharingOption}
                                             <li class="share-list-item">
-                                                <Tooltip placement="bottom" disableHoverableContent={true}>
+                                                <Tooltip
+                                                    placement="bottom"
+                                                    disableHoverableContent={true}
+                                                >
                                                     {#if sharingOption.type === 'link'}
                                                         <a
                                                             class="web-icon-button"
@@ -200,24 +210,28 @@
                                                             target="_blank"
                                                             rel="noopener, noreferrer"
                                                         >
-                                                            <span class={sharingOption.icon} aria-hidden="true" />
+                                                            <span
+                                                                class={sharingOption.icon}
+                                                                aria-hidden="true"
+                                                            />
                                                         </a>
                                                     {:else}
                                                         <button
                                                             class="web-icon-button"
                                                             aria-label={sharingOption.label}
-                                                            on:click="{() => handleCopy()}"
+                                                            on:click={() => handleCopy()}
                                                         >
-                                                            <span class={sharingOption.icon} aria-hidden="true" />
+                                                            <span
+                                                                class={sharingOption.icon}
+                                                                aria-hidden="true"
+                                                            />
                                                         </button>
                                                     {/if}
 
                                                     <svelte:fragment slot="tooltip">
-                                                        {
-                                                            sharingOption.type === 'copy'
-                                                                ? copyText
-                                                                : `Share on ${sharingOption.label}`
-                                                        }
+                                                        {sharingOption.type === 'copy'
+                                                            ? copyText
+                                                            : `Share on ${sharingOption.label}`}
                                                     </svelte:fragment>
                                                 </Tooltip>
                                             </li>
@@ -304,26 +318,26 @@
     }
 
     @media (min-width: 1024px) {
-      .web-main-article-header {
-        padding-block-end: 0;
-        border-block-end: unset;
-      }
+        .web-main-article-header {
+            padding-block-end: 0;
+            border-block-end: unset;
+        }
     }
 
     .share-post-section {
-      padding: 16px 0;
-      border-block-end: solid 0.0625rem hsl(var(--web-color-border));
-      border-block-start: solid 0.0625rem hsl(var(--web-color-border));
+        padding: 16px 0;
+        border-block-end: solid 0.0625rem hsl(var(--web-color-border));
+        border-block-start: solid 0.0625rem hsl(var(--web-color-border));
     }
 
     .web-icon-button {
-      .web-icon-x {
-        font-size: 16px;
-      }
+        .web-icon-x {
+            font-size: 16px;
+        }
 
-      .web-icon-copy {
-        font-size: 24px;
-      }
+        .web-icon-copy {
+            font-size: 24px;
+        }
     }
 
     .last-updated-text {

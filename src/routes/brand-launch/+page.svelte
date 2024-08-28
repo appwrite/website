@@ -139,7 +139,9 @@
                 <div class="web-big-padding-section-level-2 web-u-sep-block-start">
                     <div class="web-grid-1-1-opt-2">
                         <div class="web-hero is-align-start web-u-padding-block-start-40">
-                            <h2 class="web-title web-u-color-text-primary">Eliminating complexity</h2>
+                            <h2 class="web-title web-u-color-text-primary">
+                                Eliminating complexity
+                            </h2>
                             <p class="web-main-body-500">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae
                                 diam augue.

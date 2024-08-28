@@ -262,7 +262,7 @@
                     scale: 'Unlimited'
                 }
             ]
-        }, 
+        },
         {
             title: 'Security',
             rows: [
@@ -505,7 +505,10 @@
                                                 {row.title}
                                                 {#if row.info}
                                                     <Tooltip placement="top">
-                                                        <span class="icon-info" aria-hidden="true" />
+                                                        <span
+                                                            class="icon-info"
+                                                            aria-hidden="true"
+                                                        />
                                                         <svelte:fragment slot="tooltip">
                                                             {row.info}
                                                         </svelte:fragment>

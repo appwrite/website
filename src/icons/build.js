@@ -1,3 +1,3 @@
-import { generateIcons } from "./scripts.js";
+import { generateIcons } from './scripts.js';
 
 generateIcons();
