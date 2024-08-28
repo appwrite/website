@@ -53,15 +53,14 @@ const client = new sdk.Client();
 const messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2')                  // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>')        // Your secret API key
 ;
 
 const topic = messaging.createTopic(
-        '[TOPIC_ID]',     // topicId
-        '[NAME]',         // name
-        '[ROLES]'         // permission roles for who can subscribe
+        '<TOPIC_ID>',     // topicId
+        '<NAME>',         // name
+        '<ROLES>'         // permission roles for who can subscribe
     );
 
 ```
@@ -74,16 +73,43 @@ let client = new sdk.Client();
 let messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>')        // Your secret API key
 ;
 
 const topic = messaging.createTopic(
-        '[TOPIC_ID]',     // topicId
-        '[NAME]',         // name
-        '[ROLES]'         // permission roles for who can subscribe
+        '<TOPIC_ID>',     // topicId
+        '<NAME>',         // name
+        '<ROLES>'         // permission roles for who can subscribe
     );
+```
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/appwrite/sdk-for-go/appwrite"
+	"github.com/appwrite/sdk-for-go/permission"
+)
+
+func main() {
+
+	client := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"), // Your project ID
+		appwrite.WithKey("<API_KEY>"),        // Your secret API key
+	)
+
+	messaging := appwrite.NewMessaging(client)
+
+	topic, _ := messaging.CreateTopic(
+		"<TOPIC_ID>",                                                         // topicId 
+		"<NAME>",                                                             // name 
+		messaging.WithCreateTopicSubscribe([]string{permission.Read("any")}), // permission roles for who can subscribe  
+	)
+
+	fmt.Println(topic)
+}
 ```
 ```php
 <?php
@@ -94,17 +120,16 @@ use Appwrite\Services\Messaging;
 $client = new Client();
 
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('5df5acd0d48c2')                 // Your project ID
-    ->setKey('919c2d18fb5d4...a2ae413da83346ad2')                  // Your secret API key
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setKey('<API_KEY>')        // Your secret API key
 ;
 
 $messaging = new Messaging($client);
 
 $topic = $messaging->createTopic( 
-    topicId: '[TOPIC_ID]', 
-    name: '[NAME]',
-    subscribe: '[ROLES]'  // permission roles for who can subscribe
+    topicId: '<TOPIC_ID>', 
+    name: '<NAME>',
+    subscribe: '<ROLES>'  // permission roles for who can subscribe
 
 );
 ```
@@ -115,18 +140,44 @@ from appwrite.services.messaging import Messaging
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-  .set_project('5df5acd0d48c2')                 # Your project ID
-  .set_key('919c2d18fb5d4...a2ae413da83346ad2')                  # Your secret API key
+  .set_project('<PROJECT_ID>')                 # Your project ID
+  .set_key('<API_KEY>')                  # Your secret API key
 )
 
 messaging = Messaging(client)
 
 topic = messaging.create_topic( 
-    topic_id = '[TOPIC_ID]', 
-    name = '[NAME]',
-    subscribe = '[ROLES]'  # permission roles for who can subscribe
+    topic_id = '<TOPIC_ID>', 
+    name = '<NAME>',
+    subscribe = '<ROLES>'  # permission roles for who can subscribe
 )
+```
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+
+	client := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"), // Your project ID
+		appwrite.WithKey("<API_KEY>"),        // Your secret API key
+	)
+
+	messaging := appwrite.NewMessaging(client)
+
+	topic, _ := messaging.CreateTopic(
+		"<TOPIC_ID>",
+		"<NAME>",
+		messaging.WithCreateTopicSubscribe([]string{"ROLES"}),
+	)
+
+	fmt.Println(topic)
+}
 ```
 ```ruby
 require 'appwrite'
@@ -134,16 +185,15 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-    .set_project('5df5acd0d48c2')                 # Your project ID
-    .set_key('919c2d18fb5d4...a2ae413da83346ad2')                  # Your secret API key
+    .set_project('<PROJECT_ID>')                 # Your project ID
+    .set_key('<API_KEY>')                  # Your secret API key
 
 messaging = Messaging.new(client)
 
 topic = messaging.create_topic(
-    topic_id: '[TOPIC_ID]', 
-    name: '[NAME]',
-    subscribe: '[ROLES]'  # permission roles for who can subscribe
+    topic_id: '<TOPIC_ID>', 
+    name: '<NAME>',
+    subscribe: '<ROLES>'  # permission roles for who can subscribe
 )
 
 puts topic.inspect
@@ -154,16 +204,15 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 var client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("5df5acd0d48c2")                 // Your project ID
-    .SetKey("919c2d18fb5d4...a2ae413da83346ad2");                 // Your secret API key
+    .SetProject("<PROJECT_ID>") // Your project ID
+    .SetKey("<API_KEY>");       // Your secret API key
 
 var messaging = new Messaging(client);
 
 Topic topic = await messaging.CreateTopic(
-    topicId: "[TOPIC_ID]",
-    name: "[NAME]",
-    subscribe: "[ROLES]")  // permission roles for who can subscribe
+    topicId: "<TOPIC_ID>",
+    name: "<NAME>",
+    subscribe: "<ROLES>")  // permission roles for who can subscribe
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -175,15 +224,14 @@ void main() {                                    // Init SDK
   Messaging messaging = Messaging(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2')                  // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>')        // Your secret API key
   ;
 
   Future result = messaging.createTopic(
-    topicId: '[TOPIC_ID]',
-    name: '[NAME]',
-    subscribe: '[ROLES]' // permission roles for who can subscribe
+    topicId: '<TOPIC_ID>',
+    name: '<NAME>',
+    subscribe: '<ROLES>' // permission roles for who can subscribe
   );
 
   result
@@ -200,16 +248,15 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                 // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2");                 // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID             
+    .setKey("<API_KEY>");       // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
 messaging.createTopic(
-    "[TOPIC_ID]",       // topicId
-    "[NAME]"            // name
-    "[ROLES]"           // permission roles for who can subscribe
+    "<TOPIC_ID>",       // topicId
+    "<NAME>"            // name
+    "<ROLES>"           // permission roles for who can subscribe
     new CoroutineCallback<>((topic, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -226,16 +273,15 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                  // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>");       // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
 messaging.createTopic(
-    "[TOPIC_ID]",                          // topicId
-    "[NAME]"                               // name
-    "[ROLES]"                              // permission roles for who can subscribe
+    "<TOPIC_ID>",                          // topicId
+    "<NAME>"                               // name
+    "<ROLES>"                              // permission roles for who can subscribe
     new CoroutineCallback<>((topic, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -250,16 +296,15 @@ messaging.createTopic(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                 // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your secret API key
 
 let messaging = Messaging(client)
 
 let topic = try await messaging.createTopic(
-  topicId: "[TOPIC_ID]",
-  name: "[NAME]",
-  subscribe: "[ROLES]" // permission roles for who can subscribe
+  topicId: "<TOPIC_ID>",
+  name: "<NAME>",
+  subscribe: "<ROLES>" // permission roles for who can subscribe
 )
 ```
 {% /multicode %}
@@ -319,33 +364,58 @@ If you can't find the targets you'd like to add, see the [targets page](/docs/pr
 const sdk = require('node-appwrite');
 
 const client = new sdk.Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('5df5acd0d48c2')                    // Your project ID
-    .setJWT('eyJhbVCJ9.eyJ...');                    // Your secret JSON Web Token
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setJWT('<USER_JWT>');      // Your secret JSON Web Token
 
 const messaging = new sdk.Messaging(client);
 
 const subscriber = await messaging.createSubscriber(
-    '[TOPIC_ID]',         // topicId
-    '[SUBSCRIBER_ID]',    // subscriberId
-    '[TARGET_ID]'         // targetId
+    '<TOPIC_ID>',         // topicId
+    '<SUBSCRIBER_ID>',    // subscriberId
+    '<TARGET_ID>'         // targetId
 );
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
 const client = new sdk.Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('5df5acd0d48c2')                    // Your project ID
-    .setJWT('eyJhbVCJ9.eyJ...');                    // Your secret JSON Web Token
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setJWT('<USER_JWT>');      // Your secret JSON Web Token
 
 const messaging = new sdk.Messaging(client);
 
 const subscriber = await messaging.createSubscriber(
-    '[TOPIC_ID]',         // topicId
-    '[SUBSCRIBER_ID]',    // subscriberId
-    '[TARGET_ID]'         // targetId
+    '<TOPIC_ID>',         // topicId
+    '<SUBSCRIBER_ID>',    // subscriberId
+    '<TARGET_ID>'         // targetId
 );
+```
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+
+	client := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"), // Your project ID
+		appwrite.WithKey("<API_KEY>"),        // Your secret API key
+	)
+
+	messaging := appwrite.NewMessaging(client)
+
+	subscriber, _ := messaging.CreateSubscriber(
+		"<TOPIC_ID>",         // topicId
+		"<SUBSCRIBER_ID>",    // subscriberId
+		"<TARGET_ID>",        // targetId
+	)
+
+	fmt.Println(subscriber)
+}
 ```
 ```php
 <?php
@@ -356,16 +426,15 @@ use Appwrite\Services\Messaging;
 $client = new Client();
 
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
-    ->setProject('5df5acd0d48c2')                  // Your project ID
-    ->setJWT('eyJhbVCJ9.eyJ...');                  // Your secret JSON Web Token
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setJWT('<USER_JWT>');      // Your secret JSON Web Token
 
 $messaging = new Messaging($client);
 
 $subscriber = $messaging->createSubscriber(
-    topicId: '[TOPIC_ID]', 
-    subscriberId: '[SUBSCRIBER_ID]', 
-    targetId: '[TARGET_ID]'
+    topicId: '<TOPIC_ID>', 
+    subscriberId: '<SUBSCRIBER_ID>', 
+    targetId: '<TARGET_ID>'
 );
 ```
 ```python
@@ -373,16 +442,15 @@ from appwrite.client import Client
 from appwrite.services.messaging import Messaging
 
 client = Client()
-client.set_endpoint('https://cloud.appwrite.io/v1')  # Your API Endpoint
-client.set_project('5df5acd0d48c2')                  # Your project ID
-client.set_jwt('eyJhbVCJ9.eyJ...')                   # Your secret JSON Web Token
+client.set_project('<PROJECT_ID>') # Your project ID
+client.set_jwt('<USER_JWT>')       # Your secret JSON Web Token
 
 messaging = Messaging(client)
 
 subscriber = messaging.create_subscriber(
-    topic_id = '[TOPIC_ID]', 
-    subscriber_id = '[SUBSCRIBER_ID]', 
-    target_id = '[TARGET_ID]'
+    topic_id = '<TOPIC_ID>', 
+    subscriber_id = '<SUBSCRIBER_ID>', 
+    target_id = '<TARGET_ID>'
 )
 ```
 ```ruby
@@ -391,16 +459,15 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1')  # Your API Endpoint
-    .set_project('5df5acd0d48c2')                  # Your project ID
-    .set_jwt('eyJhbVCJ9.eyJ...')                   # Your secret JSON Web Token
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_jwt('<USER_JWT>')       # Your secret JSON Web Token
 
 messaging = Messaging.new(client)
 
 subscriber = messaging.create_subscriber(
-    topic_id: '[TOPIC_ID]', 
-    subscriber_id: '[SUBSCRIBER_ID]', 
-    target_id: '[TARGET_ID]'
+    topic_id: '<TOPIC_ID>', 
+    subscriber_id: '<SUBSCRIBER_ID>', 
+    target_id: '<TARGET_ID>'
 )
 ```
 ```csharp
@@ -409,16 +476,15 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 Client client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1")  // Your API Endpoint
-    .SetProject("5df5acd0d48c2")                  // Your project ID
-    .SetJWT("eyJhbVCJ9.eyJ...");                  // Your secret JSON Web Token
+    .SetProject("<PROJECT_ID>") // Your project ID
+    .SetJWT("<USER_JWT>");      // Your secret JSON Web Token
 
 Messaging messaging = new Messaging(client);
 
 Subscriber result = await messaging.CreateSubscriber(
-    topicId: "[TOPIC_ID]",
-    subscriberId: "[SUBSCRIBER_ID]",
-    targetId: "[TARGET_ID]");
+    topicId: "<TOPIC_ID>",
+    subscriberId: "<SUBSCRIBER_ID>",
+    targetId: "<TARGET_ID>");
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -426,16 +492,15 @@ import 'package:dart_appwrite/enums.dart';
 import 'package:dart_appwrite/models.dart';
 
 Client client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
-    .setProject('5df5acd0d48c2')                  // Your project ID
-    .setJWT('eyJhbVCJ9.eyJ...');                  // Your secret JSON Web Token
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setJWT('<USER_JWT>');      // Your secret JSON Web Token
 
 Messaging messaging = Messaging(client);
 
 Subscriber subscriber result = await messaging.createSubscriber(
-    topicId: '[TOPIC_ID]',
-    subscriberId: '[SUBSCRIBER_ID]',
-    targetId: '[TARGET_ID]',
+    topicId: '<TOPIC_ID>',
+    subscriberId: '<SUBSCRIBER_ID>',
+    targetId: '<TARGET_ID>',
 );
 ```
 ```kotlin
@@ -444,16 +509,15 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                 // Your project ID
-    .setJWT("eyJhbVCJ9.eyJ...")                  // Your secret JSON Web Token
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setJWT("<USER_JWT>")       // Your secret JSON Web Token
 
 val messaging = new Messaging(client)
 
 val subscriber = messaging.createSubscriber(
-    topicId = "[TOPIC_ID]",
-    subscriberId = "[SUBSCRIBER_ID]",
-    targetId = "[TARGET_ID]"
+    topicId = "<TOPIC_ID>",
+    subscriberId = "<SUBSCRIBER_ID>",
+    targetId = "<TARGET_ID>"
 )
 ```
 ```java
@@ -462,16 +526,15 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")  // Your API Endpoint
-    .setProject("5df5acd0d48c2")                  // Your project ID
-    .setJWT("eyJhbVCJ9.eyJ...");                  // Your secret JSON Web Token
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setJWT("<USER_JWT>");      // Your secret JSON Web Token
 
 Messaging messaging = new Messaging(client);
 
 messaging.createSubscriber(
-    "[TOPIC_ID]",         // topicId
-    "[SUBSCRIBER_ID]",    // subscriberId
-    "[TARGET_ID]"         // targetId
+    "<TOPIC_ID>",         // topicId
+    "<SUBSCRIBER_ID>",    // subscriberId
+    "<TARGET_ID>"         // targetId
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -486,16 +549,15 @@ messaging.createSubscriber(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")  // Your API Endpoint
-    .setProject("5df5acd0d48c2")                  // Your project ID
-    .setJWT("eyJhbVCJ9.eyJ...")                   // Your secret JSON Web Token
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setJWT("<USER_JWT>")       // Your secret JSON Web Token
 
 let messaging = Messaging(client)
 
 let subscriber = try await messaging.createSubscriber(
-    topicId: "[TOPIC_ID]",
-    subscriberId: "[SUBSCRIBER_ID]",
-    targetId: "[TARGET_ID]"
+    topicId: "<TOPIC_ID>",
+    subscriberId: "<SUBSCRIBER_ID>",
+    targetId: "<TARGET_ID>"
 )
 ```
 {% /multicode %}
