@@ -1,5 +1,5 @@
 import { getAllBlogEntriesWithAuthors } from '../content';
-import { BLOG_POSTS_NAVIGATION_RANGE, BLOG_POSTS_PER_PAGE } from '$lib/constants';
+import { BLOG_POSTS_PER_PAGE } from '$lib/constants';
 import { redirect } from '@sveltejs/kit';
 
 export const entries = () => {
@@ -21,7 +21,7 @@ export const load = async ({ params }) => {
     const { posts, authors } = getAllBlogEntriesWithAuthors();
     const totalPages = Math.ceil(posts.length / BLOG_POSTS_PER_PAGE);
 
-    const pageNavigationChunks = generatePageNavigationChunks(totalPages);
+    const pageNavigationChunks = generatePageNavigation(currentPage, totalPages);
 
     const endIndex = currentPage * BLOG_POSTS_PER_PAGE;
     const startIndex = (currentPage - 1) * BLOG_POSTS_PER_PAGE;
@@ -36,11 +36,47 @@ export const load = async ({ params }) => {
     };
 };
 
-function generatePageNavigationChunks(totalPages: number): number[][] {
-    return Array.from({ length: totalPages }, (_, i) => i + 1).reduce((acc: number[][], curr, idx) => {
-        const chunkIdx = Math.floor(idx / BLOG_POSTS_NAVIGATION_RANGE);
-        acc[chunkIdx] = acc[chunkIdx] || [];
-        acc[chunkIdx].push(curr);
-        return acc;
-    }, []);
+function generatePageNavigation(currentPage: number, totalPages: number): number[] {
+    const range = [];
+
+    // adds `...` to range.
+    const ellipseItem = -1;
+
+    const middlePages = 3;
+    const visiblePages = 5;
+
+    if (totalPages <= visiblePages + 2) {
+        // +2 for the first and last page
+        // If the total number of pages is small, show all pages without ellipsis
+        for (let i = 1; i <= totalPages; i++) {
+            range.push(i);
+        }
+    } else {
+        if (currentPage <= 4) {
+            // Case 1: Show first visiblePages pages + ellipsis + last page
+            for (let i = 1; i <= visiblePages; i++) {
+                range.push(i);
+            }
+            range.push(ellipseItem);
+            range.push(totalPages);
+        } else if (currentPage > 4 && currentPage < totalPages - (visiblePages - 1)) {
+            // Case 2: Show first page + ellipsis + middlePages centered around currentPage + ellipsis + last page
+            range.push(1);
+            range.push(ellipseItem);
+            for (let i = currentPage - Math.floor(middlePages / 2); i <= currentPage + Math.floor(middlePages / 2); i++) {
+                range.push(i);
+            }
+            range.push(ellipseItem);
+            range.push(totalPages);
+        } else {
+            // Case 3: Show first page + ellipsis + last visiblePages pages
+            range.push(1);
+            range.push(ellipseItem);
+            for (let i = totalPages - (visiblePages - 1); i <= totalPages; i++) {
+                range.push(i);
+            }
+        }
+    }
+
+    return range;
 }
