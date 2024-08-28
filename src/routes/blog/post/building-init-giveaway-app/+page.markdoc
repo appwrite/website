@@ -156,8 +156,8 @@ The `login` function was called through a button click on the index page of our 
 </script>
 
 <NavBar />
-<section class="flex flex-col">
-	<div class="container flex flex-col">
+<section class="u-flex-vertical">
+	<div class="container u-flex-vertical">
 		<InitHeading heading="Giveaway" />
 
 		<img src="/giveaway.png" alt="Plain black T-shirt with the text Init and a keyboard branded with the Appwrite logo on the Escape key" />
