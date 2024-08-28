@@ -57,9 +57,9 @@
   #{$theme-dark} &  { @include input-dark-mode(); }
   #{$theme-light} & { @include input-light-mode(); }
 
-  color: hsl(var(--p-input-text-color)) !important;
-  background-color: hsl(var(--p-input-bg-color)) !important;
-  border: solid pxToRem(1) hsl(var(--p-input-border-color)) !important;
+  color: hsl(var(--p-input-text-color));
+  background-color: hsl(var(--p-input-bg-color));
+  border: solid pxToRem(1) hsl(var(--p-input-border-color));
 
   display:flex !important; align-items:center !important; gap:pxToRem(4) !important;
   padding-inline:pxToRem(12) !important; padding-block:pxToRem(8) !important;
