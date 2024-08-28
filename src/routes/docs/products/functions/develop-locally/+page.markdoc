@@ -135,7 +135,7 @@ By default, Appwrite CLI hot-reloads your functions, which means you can update 
 * {% only_dark %}{% icon_image src="/images/platforms/dark/bun.svg" alt="Bun logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/bun.svg" alt="Bun logo" size="m" /%}{% /only_light %}
 * Bun
-* package.json, package-lock.json, bunlockb
+* package.json, package-lock.json, bun.lockb
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
