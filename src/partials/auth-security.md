@@ -26,3 +26,11 @@ Encourage passwords that are hard to guess by disallowing users to pick password
 Personal data includes the user's name, email, and phone number.
 
 Disallowing personal data can be enabled in the Auth service's **Security** tab on the Appwrite Console.
+
+# Session alerts {% #session-alerts %}
+
+Enable email alerts for your users so that whenever another session is created for their account, they will be alerted to the new session.
+
+You won't receive notifications when logging in using [Magic URL](/docs/products/auth/magic-url), [Email OTP](/docs/products/auth/email-otp), or [OAuth2](/docs/products/auth/oauth2) since these authentication methods already verify user access to their systems, establishing the authentication's legitimacy.
+
+To toggle session alerts, navigate to **Auth** > **Security** > **Session alerts**.
