@@ -115,7 +115,7 @@ appwrite push collections
 
 The Appwrite CLI will display a table summarizing all pending changes, allowing you to review them before applying. This ensures transparency and gives you a chance to verify changes before they take effect.
 
-![Screenshot 2024-08-09 at 13.33.58.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf760f55-c352-4759-b494-006b8b294dbb/0bf1f296-ee0f-4b99-a4a6-026c71eb773e/0571b157-ae07-42a1-bec4-227384aab1d6.png)
+![Executing database migrations](/images/blog/how-to-migrate-database-with-cli/1.png)
 
 ## Step 5: Confirming changes
 
