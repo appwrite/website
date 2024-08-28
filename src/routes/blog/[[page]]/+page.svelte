@@ -1,34 +1,38 @@
 <script lang="ts">
+    import { page } from '$app/stores';
     import { Main } from '$lib/layouts';
     import { MainFooter, FooterNav, Article } from '$lib/components';
     import { TITLE_SUFFIX } from '$routes/titles.js';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
-    import { BLOG_POSTS_NAVIGATION_RANGE } from '$lib/constants.js';
+    import { onMount, tick } from 'svelte';
+    import { beforeNavigate } from '$app/navigation';
 
     export let data;
 
     const featured = data.featured;
 
-    $: isFirstPageRange = chunkIndex !== 0;
+    $: isFirstPage = data.currentPage !== 1;
 
-    $: isLastPageRange = chunkIndex + 1 < totalChunks;
+    $: isLastPage = data.currentPage !== data.totalPages;
 
-    $: totalChunks = Math.ceil(data.totalPages / BLOG_POSTS_NAVIGATION_RANGE);
+    $: currentPageRange = data.navigation || [];
 
-    $: chunkIndex = Math.floor((data.currentPage - 1) / BLOG_POSTS_NAVIGATION_RANGE);
+    let articlesHeader: HTMLElement;
 
-    $: currentPageRange = data.navigation[chunkIndex] || [];
+    let previousPage: number | null = null;
 
-    $: nextBatchStartPage = (): number => {
-        const nextBatchStart = (chunkIndex + 1) * BLOG_POSTS_NAVIGATION_RANGE + 1;
-        return nextBatchStart <= data.posts.length ? nextBatchStart : data.currentPage;
-    };
+    beforeNavigate(({ from, type }) => {
+        previousPage = type === 'link' ? parseInt(from?.params?.page ?? '1') : null;
+    });
 
-    $: previousBatchStartPage = (): number => {
-        const currentBatchStart = chunkIndex * BLOG_POSTS_NAVIGATION_RANGE + 1;
-        const prevBatchStart = currentBatchStart - BLOG_POSTS_NAVIGATION_RANGE;
-        return prevBatchStart > 0 ? prevBatchStart : 1;
-    }
+    onMount(() => {
+        return page.subscribe(async () => {
+            if (articlesHeader && previousPage) {
+                await tick();
+                articlesHeader?.scrollIntoView({behavior: 'smooth'});
+            }
+        })
+    })
 
     const title = 'Blog' + TITLE_SUFFIX;
     const description = 'Stay updated with the latest product news, insights, and tutorials from the Appwrite team. Discover tips and best practices for hassle-free backend development.';
@@ -171,7 +175,13 @@
         <div class="web-big-padding-section-level-1">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
-                    <h2 id="title" class="web-title web-u-color-text-primary">Articles</h2>
+                    <h2
+                        id="title"
+                        class="web-title web-u-color-text-primary"
+                        bind:this={articlesHeader}
+                    >
+                        Articles
+                    </h2>
 
                     <div class="u-margin-block-start-48">
                         <ul class="web-grid-articles">
@@ -198,25 +208,29 @@
                         <ul class="u-flex u-cross-center u-gap-4" style="justify-content: center">
                             <a
                                 class="u-flex navigation-button"
-                                href="/blog/{previousBatchStartPage()}"
-                                class:navigation-button-active={isFirstPageRange}
+                                href="/blog/{data.currentPage - 1}"
+                                class:navigation-button-active={isFirstPage}
                             >
                                 <span class="web-icon-chevron-left" style="font-size: 20px"/>
                                 Previous
                             </a>
 
                             {#each currentPageRange as page}
-                                <a
-                                    href="/blog/{page}"
-                                    class="pagination-number"
-                                    class:pagination-number-selected={data.currentPage === page}
-                                > {page} </a>
+                                {#if page === -1}
+                                    <span class="pagination-ellipsis">...</span>
+                                {:else}
+                                    <a
+                                        href="/blog/{page}"
+                                        class="pagination-number"
+                                        class:pagination-number-selected={data.currentPage === page}
+                                    > {page} </a>
+                                {/if}
                             {/each}
 
                             <a
                                 class="u-flex navigation-button"
-                                class:navigation-button-active={isLastPageRange}
-                                href="/blog/{nextBatchStartPage()}"
+                                class:navigation-button-active={isLastPage}
+                                href="/blog/{data.currentPage + 1}"
                             >
                                 Next
                                 <span class="web-icon-chevron-right"  style="font-size: 20px"/>
