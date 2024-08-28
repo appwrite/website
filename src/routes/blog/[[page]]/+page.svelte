@@ -1,60 +1,55 @@
 <script lang="ts">
+    import { page } from '$app/stores';
     import { Main } from '$lib/layouts';
     import { MainFooter, FooterNav, Article } from '$lib/components';
     import { TITLE_SUFFIX } from '$routes/titles.js';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
-    import { page } from '$app/stores';
-    import { onMount } from 'svelte';
-    import { BLOG_POSTS_NAVIGATION_RANGE } from '$lib/constants.js';
+    import { onMount, tick } from 'svelte';
+    import { beforeNavigate } from '$app/navigation';
     import { createDebounce } from '$lib/utils/debounce';
 
     export let data;
+
+    let blogPosts = data.posts;
     const featured = data.featured;
     const categories = data.categories.sort((a, b) => a.name.localeCompare(b.name));
 
-    let currentPage = 1;
+    $: isFirstPage = data.currentPage !== 1;
+
+    $: isLastPage = data.currentPage !== data.totalPages;
+
+    $: currentPageRange = data.navigation || [];
+
+    $: showNavigation = query === '' && !selectedCategory
 
     let query = '';
     let isEnd = false;
     let isStart = true;
     let categoriesElement: HTMLElement;
 
-    $: isLastPage = currentPage < data.totalPages;
+    let articlesHeader: HTMLElement;
 
-    $: paginatedBlogPosts = data.posts[currentPage - 1] ?? data.posts[0];
+    let previousPage: number | null = null;
 
-    $: chunkIndex = Math.floor((currentPage - 1) / BLOG_POSTS_NAVIGATION_RANGE);
-
-    $: currentPageRange = data.navigation[chunkIndex] || [];
-
-    $: nextBatchStartPage = (): number => {
-        const nextBatchStart = (chunkIndex + 1) * BLOG_POSTS_NAVIGATION_RANGE + 1;
-        return nextBatchStart <= data.posts.length ? nextBatchStart : currentPage;
-    };
-
-    $: previousBatchStartPage = (): number => {
-        const currentBatchStart = chunkIndex * BLOG_POSTS_NAVIGATION_RANGE + 1;
-        const prevBatchStart = currentBatchStart - BLOG_POSTS_NAVIGATION_RANGE;
-        return prevBatchStart > 0 ? prevBatchStart : 1;
-    }
-
-    $: showNavigation = query === '' && selectedCategories.length === 0
-
-    onMount(() => {
-        return page.subscribe((page) => {
-            const pageParam = page.url.searchParams.get('page') || '1';
-            currentPage = Math.max(parseInt(pageParam), 1);
-        });
+    beforeNavigate(({ from, type }) => {
+        previousPage = type === 'link' ? parseInt(from?.params?.page ?? '1') : null;
     });
 
-    let selectedCategories: string[] = [];
+    onMount(() => {
+        return page.subscribe(async () => {
+            if (articlesHeader && previousPage) {
+                await tick();
+                articlesHeader?.scrollIntoView({behavior: 'smooth'});
+            }
+        })
+    })
+
+    let selectedCategory: string | null;
     function toggleCategory(tag: string) {
         if (tag.toLowerCase() === 'latest') {
-            selectedCategories = [];
+            selectedCategory = null;
         } else {
-            selectedCategories = selectedCategories.includes(tag)
-                ? selectedCategories.filter((t) => t !== tag)
-                : [...selectedCategories, tag];
+            selectedCategory = tag;
         }
 
         handleSearch(query);
@@ -62,12 +57,10 @@
 
     const handleSearch = async (value: string) => {
         query = value.toLowerCase();
-        const tempCategories = selectedCategories.map((cat) =>
-            cat.replace(/\s+/g, '-').toLowerCase()
-        );
+        const tempCategory = selectedCategory?.replace(/\s+/g, '-').toLowerCase();
 
-        paginatedBlogPosts = (!query && !tempCategories.length)
-            ? data.posts[currentPage - 1] ?? data.posts[0]
+        blogPosts = (!query && !tempCategory)
+            ? data.posts
             : data.allPosts.filter((post) => {
                 const postTitle = post.title.toLowerCase();
                 const postCategories = post.category
@@ -75,7 +68,7 @@
                     .map((cat) => cat.trim().replace(/\s+/g, '-').toLowerCase());
 
                 return postTitle.includes(query) &&
-                    (tempCategories.length === 0 || tempCategories.some((cat) => postCategories.includes(cat)));
+                    (!tempCategory || postCategories.includes(tempCategory));
             });
     };
 
@@ -245,9 +238,16 @@
                 </div>
             </div>
         </div>
+
         <div class="u-padding-block-start-80">
             <div class="web-container">
-                <h2 id="title" class="web-title web-u-color-text-primary">Articles</h2>
+                <h2
+                    id="title"
+                    class="web-title web-u-color-text-primary"
+                    bind:this={articlesHeader}
+                >
+                    Articles
+                </h2>
 
                 <div class="u-padding-block-start-16">
                     <div class="u-flex u-cross-center u-gap-32 search-and-categories">
@@ -262,7 +262,7 @@
                                 <li class="u-flex u-cross-center u-cursor-pointer">
                                     <button
                                         class="web-interactive-tag web-caption-400"
-                                        class:is-selected={ selectedCategories.length === 0}
+                                        class:is-selected={ !selectedCategory }
                                         on:click={() => toggleCategory('Latest')}
                                     >
                                         Latest
@@ -273,7 +273,7 @@
                                     <li class="u-flex u-cross-center">
                                         <button
                                             class="web-interactive-tag web-caption-400"
-                                            class:is-selected={ selectedCategories.includes(category.name) }
+                                            class:is-selected={ selectedCategory === category.name }
                                             on:click={() => toggleCategory(category.name)}
                                         >
                                             {category.name}
@@ -304,28 +304,28 @@
 
                         <div
                             class="is-not-mobile web-input-text-search-wrapper u-width-full-line u-max-width-350 web-u-max-inline-size-none-mobile u-margin-inline-start-auto"
-                            >
+                        >
                                 <span
                                     class="web-icon-search u-z-index-5"
                                     aria-hidden="true"
                                     style="inset-block-start:0.9rem"
                                 />
-                                <input
-                                    class="web-input-button -u-padding-block-0 u-position-relative u-z-index-1"
-                                    type="text"
-                                    id="search"
-                                    placeholder="Search"
-                                    use:search
-                                    bind:value={query}
-                                    data-hit="-1"
-                                />
-                            </div>
+                            <input
+                                class="web-input-button -u-padding-block-0 u-position-relative u-z-index-1"
+                                type="text"
+                                id="search"
+                                placeholder="Search"
+                                use:search
+                                bind:value={query}
+                                data-hit="-1"
+                            />
+                        </div>
                     </div>
                 </div>
 
                 <div class="u-margin-block-start-48">
-                    <ul class:web-grid-articles={paginatedBlogPosts.length > 0}>
-                        {#each paginatedBlogPosts as post}
+                    <ul class:web-grid-articles={blogPosts.length > 0}>
+                        {#each blogPosts as post}
                             {@const author = data.authors.find(
                                 (author) => author.slug === post.author
                             )}
@@ -342,12 +342,13 @@
                             {/if}
                         {:else}
                             <div class="u-padding-block-32 u-flex-vertical u-gap-32 u-cross-center">
-                                <span class="web-main-body-500">no results found for "{query ? query : selectedCategories.join(', ')}"</span>
+                                <span class="web-main-body-500">no results found for "{query ? query : selectedCategory}"</span>
 
                                 <button
                                     class="web-button is-secondary"
                                     on:click={() => {
                                         query = '';
+                                        selectedCategory = null;
                                         handleSearch('');
                                     }}>Clear search
                                 </button>
@@ -360,25 +361,29 @@
                     <ul class="u-flex u-cross-center u-gap-4" style="justify-content: center">
                         <a
                             class="u-flex navigation-button"
-                            class:navigation-button-active={currentPage > 1}
-                            href="/blog?page={previousBatchStartPage()}"
+                            href="/blog/{data.currentPage - 1}"
+                            class:navigation-button-active={isFirstPage}
                         >
                             <span class="web-icon-chevron-left" style="font-size: 20px"/>
                             Previous
                         </a>
 
                         {#each currentPageRange as page}
-                            <a
-                                class="pagination-number"
-                                class:pagination-number-selected={currentPage === page}
-                                href="/blog?page={page}"
-                            > {page} </a>
+                            {#if page === -1}
+                                <span class="pagination-ellipsis">...</span>
+                            {:else}
+                                <a
+                                    href="/blog/{page}"
+                                    class="pagination-number"
+                                    class:pagination-number-selected={data.currentPage === page}
+                                > {page} </a>
+                            {/if}
                         {/each}
 
                         <a
                             class="u-flex navigation-button"
                             class:navigation-button-active={isLastPage}
-                            href="/blog?page={nextBatchStartPage()}"
+                            href="/blog/{data.currentPage + 1}"
                         >
                             Next
                             <span class="web-icon-chevron-right"  style="font-size: 20px"/>
@@ -386,11 +391,11 @@
                     </ul>
                 </div>
             </div>
-            <div class="web-big-padding-section-level-2">
-                <div class="web-container">
-                    <FooterNav />
-                    <MainFooter />
-                </div>
+        </div>
+        <div class="web-big-padding-section-level-2">
+            <div class="web-container">
+                <FooterNav />
+                <MainFooter />
             </div>
         </div>
     </div>
