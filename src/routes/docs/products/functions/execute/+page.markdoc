@@ -216,7 +216,6 @@ client
 
 const promise = functions.createExecution(
         '<FUNCTION_ID>',  // functionId
-
         '<BODY>',  // body (optional)
         false,  // async (optional)
         '<PATH>',  // path (optional)
