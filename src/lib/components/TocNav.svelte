@@ -97,6 +97,14 @@
                 </svg>
             </span>
         </div>
-        <TocTree tree={$headingsTree} activeHeadingIdxs={$activeHeadingIdxs} {item} />
+        <TocTree tree={$headingsTree} activeHeadingIdxs={$activeHeadingIdxs} {item} bind:showToc />
     </div>
 </aside>
+
+<style>
+    aside {
+        top: 0;
+        position: sticky;
+        background: hsl(var(--p-body-bg-color));
+    }
+</style>
