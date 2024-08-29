@@ -35,7 +35,7 @@
             {formatTimestamp(message.timestamp)}
         </span>
     </div>
-    <div class="web-sub-body-500 u-margin-block-start-16">
+    <div class="web-sub-body-500 mt-4">
         <SvelteMarkdown
             source={message.message}
             renderers={{

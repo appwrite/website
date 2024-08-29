@@ -262,7 +262,7 @@
                     scale: 'Unlimited'
                 }
             ]
-        }, 
+        },
         {
             title: 'Security',
             rows: [
@@ -357,11 +357,11 @@
 
 <svelte:window on:scroll={() => (scrollDir = getScrollDir())} />
 
-<div class="web-big-padding-section-level-1 web-white-section theme-light">
+<div class="web-white-section theme-light py-10">
     <div class="web-big-padding-section-level-2">
-        <div class="u-position-relative">
+        <div class="relative">
             <article use:melt={$root}>
-                <div class="web-container">
+                <div class="container">
                     <header
                         class="web-u-text-align-center"
                         use:visible
@@ -370,13 +370,13 @@
                         }}
                     >
                         <h3 class="web-title web-u-color-text-primary">Compare plans</h3>
-                        <p class="web-main-body-500 u-margin-block-start-16">
+                        <p class="web-main-body-500 mt-4">
                             Discover our plans and find the one that fits your project’s needs.
                         </p>
                     </header>
 
                     <div
-                        class="web-is-only-mobile web-u-padding-block-start-48 web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 /u-position-sticky /u-z-index-5"
+                        class="web-is-only-mobile web-u-padding-block-start-48 web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 /sticky /z-[5]"
                         style:--inset-block-start="2rem"
                     >
                         <Tabs bind:tab tabs={cols} let:TabsList>
@@ -388,18 +388,18 @@
 								--p-secondary-tabs-bg-color-selected: var(--web-color-accent) / 0.08;"
                                 let:tab
                             >
-                                <span class="web-main-body-500 u-capitalize">{tab}</span>
+                                <span class="web-main-body-500 capitalize">{tab}</span>
                             </TabsList>
                         </Tabs>
                     </div>
 
                     <div
-                        class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border u-gap-32 web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 u-position-sticky u-z-index-5 web-u-container-query-inline"
+                        class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 web-u-container-query-inline sticky z-[5] gap-8"
                         style:--inset-block-start={$isHeaderHidden ? '0px' : '70px'}
                         style:transition="inset-block-start 0.3s ease"
                     >
                         <div
-                            class="web-description web-u-color-text-primary web-u-cross-child-center"
+                            class="web-description web-u-color-text-primary self-center"
                             style:opacity={browser ? 1 : 0}
                             style:position={browser ? 'relative' : undefined}
                         >
@@ -412,7 +412,10 @@
                                         delay: 250,
                                         duration: 250
                                     }}
-                                    out:fly={{ y: scrollDir === 'down' ? -16 : 16, duration: 250 }}
+                                    out:fly={{
+                                        y: scrollDir === 'down' ? -16 : 16,
+                                        duration: 250
+                                    }}
                                 >
                                     {#if shouldShowTable && activeTable}
                                         {activeTable}
@@ -421,9 +424,7 @@
                             {/key}
                         </div>
                         <div class="web-mini-card">
-                            <div
-                                class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between"
-                            >
+                            <div class="flex flex-wrap items-center justify-between gap-4">
                                 <h4 class="web-label web-u-color-text-primary">Free</h4>
                                 <a
                                     href="https://cloud.appwrite.io/register"
@@ -434,9 +435,7 @@
                             </div>
                         </div>
                         <div class="web-mini-card">
-                            <div
-                                class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between"
-                            >
+                            <div class="flex flex-wrap items-center justify-between gap-4">
                                 <h4 class="web-label web-u-color-text-primary">Pro</h4>
                                 <a
                                     class="web-button"
@@ -450,9 +449,7 @@
                             </div>
                         </div>
                         <div class="web-mini-card">
-                            <div
-                                class="u-flex u-cross-center u-gap-16 u-flex-wrap u-main-space-between"
-                            >
+                            <div class="flex flex-wrap items-center justify-between gap-4">
                                 <h4 class="web-label web-u-color-text-primary">Scale</h4>
                                 <button class="web-button is-secondary" disabled>
                                     <span class="web-sub-body-500">Coming soon</span>
@@ -481,7 +478,7 @@
                             }}
                         >
                             <caption
-                                class="web-compare-table-caption web-description web-u-color-text-primary"
+                                class="web-compare-table-caption web-description web-u-color-text-primary text-left"
                                 use:melt={$heading({ level: 3 })}
                                 style:position={browser ? 'unset' : undefined}
                             >
@@ -501,16 +498,8 @@
                                 {#each table.rows as row}
                                     <tr>
                                         <th class="web-sub-body-500">
-                                            <div class="u-flex u-gap-4">
+                                            <div class="flex gap-1">
                                                 {row.title}
-                                                {#if row.info}
-                                                    <Tooltip placement="top">
-                                                        <span class="icon-info" aria-hidden="true" />
-                                                        <svelte:fragment slot="tooltip">
-                                                            {row.info}
-                                                        </svelte:fragment>
-                                                    </Tooltip>
-                                                {/if}
                                             </div>
                                         </th>
                                         {#each cols as col, index}

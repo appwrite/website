@@ -23,7 +23,7 @@
     {/if}
 </h2>
 
-<div class="u-margin-block-start-16">
+<div class="mt-4">
     {#if hasReleased}
         <slot />
     {:else}

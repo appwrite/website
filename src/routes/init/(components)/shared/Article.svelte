@@ -14,7 +14,7 @@
     export let label: $$Props['label'] = 'Read article';
 </script>
 
-<a href={url} class="web-card is-normal has-border-gradient u-overflow-hidden" style:padding="0">
+<a href={url} class="web-card is-normal has-border-gradient overflow-hidden" style:padding="0">
     <div style:padding="1.25rem">
         <h3
             class="web-label web-u-color-text-primary"
@@ -22,7 +22,7 @@
         >
             {title}
         </h3>
-        <div class="web-card-link u-flex u-cross-center" style:margin-top="8px">
+        <div class="web-card-link flex items-center" style:margin-top="8px">
             <span class="text">{label}</span>
             <span class="web-icon-arrow-right" />
         </div>

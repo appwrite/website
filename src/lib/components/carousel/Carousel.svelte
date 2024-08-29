@@ -122,7 +122,7 @@
     };
 </script>
 
-<div class="embla web-carousel">
+<div class="embla relative overflow-hidden">
     {#if hasPrev}
         <button class="web-carousel-button web-carousel-button-start" on:click={onPrev}>
             <span class="web-icon-arrow-left" aria-hidden="true"></span>
@@ -135,7 +135,7 @@
     {/if}
 
     <div class="embla__viewport" use:embla={{ options, plugins }} on:emblaInit={onEmblaInit}>
-        <ul class="embla__container">
+        <ul class="embla__container flex">
             <slot />
         </ul>
     </div>
@@ -155,14 +155,3 @@
         {/each}
     </ul>
 </div>
-
-<style>
-    .embla {
-        overflow: hidden;
-        position: relative;
-    }
-
-    .embla__container {
-        display: flex;
-    }
-</style>

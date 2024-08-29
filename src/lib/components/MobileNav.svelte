@@ -1,6 +1,5 @@
 <script lang="ts">
     import { afterNavigate } from '$app/navigation';
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { IsLoggedIn } from '$lib/components';
     import { GITHUB_STARS } from '$lib/constants';
     import type { NavLink } from '$lib/layouts/Main.svelte';
@@ -15,16 +14,13 @@
 
 <svelte:window on:resize={() => open && (open = false)} />
 
-<nav class="web-side-nav web-is-not-desktop" class:u-hide={!open}>
-    <div class="web-side-nav-wrapper web-u-padding-inline-16">
-        <div class="u-flex items-center u-gap-8">
-            <a
-                href={`${PUBLIC_APPWRITE_DASHBOARD}/register`}
-                class="web-button is-secondary web-u-flex-1"
-            >
+<nav class="web-side-nav web-is-not-desktop" class:hidden={!open}>
+    <div class="web-side-nav-wrapper ps-4 pe-4">
+        <div class="flex items-center gap-2">
+            <a href="https://cloud.appwrite.io/register" class="web-button is-secondary flex-1">
                 Sign up
             </a>
-            <IsLoggedIn classes="web-u-flex-1" />
+            <IsLoggedIn classes="flex-1" />
         </div>
         <div class="web-side-nav-scroll">
             <section>
