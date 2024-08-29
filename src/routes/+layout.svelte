@@ -42,8 +42,9 @@
 </script>
 
 <script lang="ts">
-    import '$icons/output/web-icon.css';
+    import '../app.css';
     import '$scss/index.scss';
+    import '$icons/output/web-icon.css';
 
     import { browser, dev } from '$app/environment';
     import { navigating, page, updated } from '$app/stores';
@@ -54,8 +55,8 @@
 
     function applyTheme(theme: Theme) {
         const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
-        const className = `theme-${resolvedTheme}`;
-        document.body.classList.remove('theme-dark', 'theme-light');
+        const className = `${resolvedTheme}`;
+        document.body.classList.remove('dark', 'light');
         document.body.classList.add(className);
     }
 
@@ -67,17 +68,11 @@
         const utmCampaign = urlParams.get('utm_campaign');
         let referrer = document.referrer.length ? document.referrer : null;
         // Skip our own
-        if(referrer?.includes('//appwrite.io')) {
+        if (referrer?.includes('//appwrite.io')) {
             referrer = null;
         }
         if (ref || referrer || utmSource || utmCampaign || utmMedium) {
-            createSource(
-                ref,
-                referrer,
-                utmSource,
-                utmCampaign,
-                utmMedium
-            );
+            createSource(ref, referrer, utmSource, utmCampaign, utmMedium);
         }
         const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
 
@@ -91,7 +86,7 @@
             const isDocs = n.to.route.id?.startsWith('/docs');
 
             if (isDocs) {
-                if (!document.body.classList.contains(`theme-${$currentTheme}`)) {
+                if (!document.body.classList.contains(`${$currentTheme}`)) {
                     applyTheme($currentTheme);
                 }
             } else {

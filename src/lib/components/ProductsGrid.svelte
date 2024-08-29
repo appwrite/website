@@ -1,16 +1,16 @@
 <div class="web-big-padding-section-level-2">
-    <div class="web-container">
-        <h3 class="web-label web-u-color-text-primary u-text-center">
+    <div class="container">
+        <h3 class="web-label web-u-color-text-primary text-center">
             Keep exploring similar integrations
         </h3>
-        <ul class="u-margin-block-start-32 l-grid-1">
+        <ul class="l-grid-1 mt-8">
             <li>
                 <a
                     href="/docs/products/auth"
-                    class="web-card product-card is-transparent u-block u-height-100-percent"
+                    class="web-card product-card is-transparent block h-full"
                     style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                 >
-                    <div class="u-flex u-cross-center u-gap-8">
+                    <div class="flex items-center gap-2">
                         <img
                             src="/images/icons/illustrated/dark/auth.png"
                             alt=""
@@ -19,10 +19,9 @@
                             height="32"
                         />
                         <h4 class="web-main-body-400 web-u-color-text-primary">Auth</h4>
-                        <span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"
-                        ></span>
+                        <span class="icon-arrow-right ml-0" aria-hidden="true"></span>
                     </div>
-                    <p class="web-sub-body-400 u-margin-block-start-4">
+                    <p class="web-sub-body-400 ml-1">
                         Build secure authentication and manage your users.
                     </p>
                 </a>
@@ -30,10 +29,10 @@
             <li>
                 <a
                     href="/docs/products/functions"
-                    class="web-card product-card is-transparent u-block u-height-100-percent"
+                    class="web-card product-card is-transparent block h-full"
                     style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                 >
-                    <div class="u-flex u-cross-center u-gap-8">
+                    <div class="flex items-center gap-2">
                         <img
                             src="/images/icons/illustrated/dark/functions.png"
                             alt=""
@@ -42,10 +41,9 @@
                             height="32"
                         />
                         <h4 class="web-main-body-400 web-u-color-text-primary">Functions</h4>
-                        <span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"
-                        ></span>
+                        <span class="icon-arrow-right ml-0" aria-hidden="true"></span>
                     </div>
-                    <p class="web-sub-body-400 u-margin-block-start-4">
+                    <p class="web-sub-body-400 ml-1">
                         Scale big and unlock limitless potential with Appwrite functions.
                     </p>
                 </a>
@@ -53,10 +51,10 @@
             <li>
                 <a
                     href="/docs/products/databases"
-                    class="web-card product-card is-transparent u-block u-height-100-percent"
+                    class="web-card product-card is-transparent block h-full"
                     style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                 >
-                    <div class="u-flex u-cross-center u-gap-8">
+                    <div class="flex items-center gap-2">
                         <img
                             src="/images/icons/illustrated/dark/databases.png"
                             alt=""
@@ -65,10 +63,9 @@
                             height="32"
                         />
                         <h4 class="web-main-body-400 web-u-color-text-primary">Databases</h4>
-                        <span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"
-                        ></span>
+                        <span class="icon-arrow-right ml-0" aria-hidden="true"></span>
                     </div>
-                    <p class="web-sub-body-400 u-margin-block-start-4">
+                    <p class="web-sub-body-400 ml-1">
                         Store and query structured data, ensuring scalable storage.
                     </p>
                 </a>
@@ -76,10 +73,10 @@
             <li>
                 <a
                     href="/docs/products/messaging"
-                    class="web-card product-card is-transparent u-block u-height-100-percent"
+                    class="web-card product-card is-transparent block h-full"
                     style="--card-padding:1.5rem;--card-padding-mobile:1.5rem;"
                 >
-                    <div class="u-flex u-cross-center u-gap-8">
+                    <div class="flex items-center gap-2">
                         <img
                             src="/images/icons/illustrated/dark/messaging.png"
                             alt=""
@@ -88,10 +85,9 @@
                             height="32"
                         />
                         <h4 class="web-main-body-400 web-u-color-text-primary">Messaging</h4>
-                        <span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"
-                        ></span>
+                        <span class="icon-arrow-right ml-0" aria-hidden="true"></span>
                     </div>
-                    <p class="web-sub-body-400 u-margin-block-start-4">
+                    <p class="web-sub-body-400 ml-1">
                         Manage your files’ project, using convenient APIs and utilities.
                     </p>
                 </a>
@@ -99,10 +95,10 @@
             <li>
                 <a
                     href="/docs/apis/realtime"
-                    class="web-card product-card is-transparent u-block u-height-100-percent"
+                    class="web-card product-card is-transparent block h-full"
                     style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                 >
-                    <div class="u-flex u-cross-center u-gap-8">
+                    <div class="flex items-center gap-2">
                         <img
                             src="/images/icons/illustrated/dark/realtime.png"
                             alt=""
@@ -111,10 +107,9 @@
                             height="32"
                         />
                         <h4 class="web-main-body-400 web-u-color-text-primary">Realtime</h4>
-                        <span class="icon-arrow-right u-margin-inline-start-auto" aria-hidden="true"
-                        ></span>
+                        <span class="icon-arrow-right ml-0" aria-hidden="true"></span>
                     </div>
-                    <p class="web-sub-body-400 u-margin-block-start-4">
+                    <p class="web-sub-body-400 ml-1">
                         Utilize realtime information from all Appwrite services.
                     </p>
                 </a>

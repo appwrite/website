@@ -5,13 +5,11 @@
 
 <div class="outside">
     <div class="wrapper">
-        <span class="web-badges web-eyebrow">Products_</span>
+        <span class="web-badges web-eyebrow !text-white">Products_</span>
 
-        <h2 class="web-display web-u-color-text-primary u-margin-block-start-16">
-            Your backend, minus the hassle
-        </h2>
+        <h2 class="web-display web-u-color-text-primary mt-4">Your backend, minus the hassle</h2>
 
-        <p class="web-description u-margin-block-start-16">
+        <p class="web-description mt-4">
             Build secure and scalable applications with less code. Add authentication, databases,
             storage, and more using Appwrite's development platform.
         </p>
