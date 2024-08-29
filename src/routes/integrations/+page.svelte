@@ -13,6 +13,8 @@
     import { browser } from '$app/environment';
     import { classNames } from '$lib/utils/classnames';
     import Input from '$lib/components/ui/Input.svelte';
+    import { page } from '$app/stores';
+    import { INTEGRATIONS_PARAM_KEY } from '$lib/constants';
 
     export let data;
 
