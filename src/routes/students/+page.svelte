@@ -4,7 +4,10 @@
     import { addDays, toReleaseDate } from '$lib/utils/date';
     import { buildOpenGraphImage, DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
+    import Community from './(components)/Community.svelte';
+    import GetStarted from './(components)/GetStarted.svelte';
     import Hero from './(components)/Hero.svelte';
+    import Kickstart from './(components)/Kickstart.svelte';
 
     const title = 'Students' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -30,6 +33,11 @@
 
 <Main>
     <Hero />
+    <div class="bg-greyscale-100 light space-y-10 pb-20">
+        <Kickstart />
+        <GetStarted />
+        <Community />
+    </div>
     <div class="container">
         <FooterNav />
         <MainFooter />
