@@ -11,9 +11,9 @@
 
     const featured = data.featured;
 
-    $: isFirstPage = data.currentPage !== 1;
+    $: isFirstPage = data.currentPage === 1;
 
-    $: isLastPage = data.currentPage !== data.totalPages;
+    $: isLastPage = data.currentPage === data.totalPages;
 
     $: currentPageRange = data.navigation || [];
 
@@ -206,14 +206,21 @@
 
                     <div class="u-margin-block-start-48">
                         <ul class="u-flex u-cross-center u-gap-4" style="justify-content: center">
-                            <a
-                                class="u-flex navigation-button"
-                                href="/blog/{data.currentPage - 1}"
-                                class:navigation-button-active={isFirstPage}
-                            >
-                                <span class="web-icon-chevron-left" style="font-size: 20px"/>
-                                Previous
-                            </a>
+                            {#if data.currentPage > 1}
+                                <a
+                                    class="u-flex navigation-button"
+                                    href="/blog/{data.currentPage - 1}"
+                                    class:navigation-button-active={!isFirstPage}
+                                >
+                                    <span class="web-icon-chevron-left" style="font-size: 20px"/>
+                                    Previous
+                                </a>
+                            {:else}
+                                <span class="u-flex navigation-button">
+                                    <span class="web-icon-chevron-left" style="font-size: 20px"/>
+                                    Previous
+                                </span>
+                            {/if}
 
                             {#each currentPageRange as page}
                                 {#if page === -1}
@@ -227,14 +234,21 @@
                                 {/if}
                             {/each}
 
-                            <a
-                                class="u-flex navigation-button"
-                                class:navigation-button-active={isLastPage}
-                                href="/blog/{data.currentPage + 1}"
-                            >
-                                Next
-                                <span class="web-icon-chevron-right"  style="font-size: 20px"/>
-                            </a>
+                            {#if data.currentPage < data.totalPages}
+                                <a
+                                    class="u-flex navigation-button"
+                                    class:navigation-button-active={!isLastPage}
+                                    href="/blog/{data.currentPage + 1}"
+                                >
+                                    Next
+                                    <span class="web-icon-chevron-right"  style="font-size: 20px"/>
+                                </a>
+                            {:else}
+                                <span class="u-flex navigation-button">
+                                    Next
+                                    <span class="web-icon-chevron-right" style="font-size: 20px"/>
+                                </span>
+                            {/if}
                         </ul>
                     </div>
                 </div>
