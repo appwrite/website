@@ -5,7 +5,7 @@
 
     const button = cva(
         [
-            'flex w-fit min-h-10 items-center justify-center gap-2 rounded-lg px-4 text-white transition-all select-none'
+            'flex w-fit py-2 items-center justify-center gap-2 rounded-lg px-4 text-white transition-all select-none'
         ],
         {
             variants: {
