@@ -11,7 +11,7 @@
                 <span class="icon-cheveron-down" aria-hidden="true" />
             </div>
         </summary>
-        <div class="collapsible-content u-flex-vertical">
+        <div class="collapsible-content flex flex-col">
             <slot />
         </div>
     </details>

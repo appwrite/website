@@ -21,7 +21,7 @@
     const { hasReleased, days, hours, minutes, seconds } = createCountdown(day.release);
 </script>
 
-<div class="day" class:border={hasBorder}>
+<div class="day" class:has-border={hasBorder}>
     {#if hasReleased}
         <div style:z-index="10" style="margin-top: auto; margin-bottom: 0;">
             <span
@@ -84,7 +84,7 @@
         overflow: hidden;
         flex: 0 0 var(--day-min-w);
 
-        &.border {
+        &.has-border {
             @include gradients.border-gradient;
             --m-border-radius: 1rem;
             --m-border-gradient-before: linear-gradient(
