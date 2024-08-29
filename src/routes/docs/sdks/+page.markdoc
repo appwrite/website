@@ -20,13 +20,13 @@ Client libraries for integrating with Appwrite to build client-based application
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_light %}
-* Web SDK `14.0.1`
+* Web SDK `15.0.0`
 * [appwrite/sdk-for-web](https://github.com/appwrite/sdk-for-web)
 * 
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/flutter.svg" alt="Flutter logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/flutter.svg" alt="Flutter logo" size="m" /%}{% /only_light %}
-* Flutter SDK `12.0.3`
+* Flutter SDK `12.0.4`
 * [appwrite/sdk-for-flutter](https://github.com/appwrite/sdk-for-flutter)
 * 
 ---
@@ -38,13 +38,13 @@ Client libraries for integrating with Appwrite to build client-based application
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/apple.svg" alt="Apple logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/apple.svg" alt="Apple logo" size="m" /%}{% /only_light %}
-* Apple SDK `5.0.0`
+* Apple SDK `6.0.0`
 * [appwrite/sdk-for-apple](https://github.com/appwrite/sdk-for-apple)
 * 
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/android.svg" alt="Android logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/android.svg" alt="Android logo" size="m" /%}{% /only_light %}
-* Android SDK `5.1.0`
+* Android SDK `5.1.1`
 * [appwrite/sdk-for-android](https://github.com/appwrite/sdk-for-android)
 * 
 {% /table %}
@@ -61,19 +61,19 @@ Server libraries for integrating with Appwrite to build server side integrations
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_light %}
-* Node.js SDK `12.0.1`
+* Node.js SDK `13.0.0`
 * [appwrite/sdk-for-node](https://github.com/appwrite/sdk-for-node)
 * 
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/python.svg" alt="Python logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/python.svg" alt="Python logo" size="m" /%}{% /only_light %}
-* Python SDK `5.0.2`
+* Python SDK `5.0.3`
 * [appwrite/sdk-for-python](https://github.com/appwrite/sdk-for-python)
 * 
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/dart.svg" alt="Dart logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/dart.svg" alt="Dart logo" size="m" /%}{% /only_light %}
-* Dart SDK `11.0.2`
+* Dart SDK `11.0.3`
 * [appwrite/sdk-for-dart](https://github.com/appwrite/sdk-for-dart)
 * 
 ---
@@ -85,13 +85,13 @@ Server libraries for integrating with Appwrite to build server side integrations
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_light %}
-* Ruby SDK `11.0.1`
+* Ruby SDK `11.0.2`
 * [appwrite/sdk-for-ruby](https://github.com/appwrite/sdk-for-ruby)
 * 
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_light %}
-* .NET SDK `0.8.1`
+* .NET SDK `0.8.3`
 * [appwrite/sdk-for-dotnet](https://github.com/appwrite/sdk-for-dotnet)
 * `beta`
 ---
@@ -388,7 +388,7 @@ You can discover the available enums in each SDK at the source.
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/deno.svg" alt="Deno logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/deno.svg" alt="Deno logo" size="m" /%}{% /only_light %}
-* Deno SDK `10.0.1`
+* Deno SDK `11.0.1`
 * [appwrite/sdk-for-deno](https://github.com/appwrite/sdk-for-deno/tree/dev/src/enums)
 *
 ---
@@ -400,13 +400,13 @@ You can discover the available enums in each SDK at the source.
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/swift.svg" alt="Swift logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/swift.svg" alt="Swift logo" size="m" /%}{% /only_light %}
-* Swift SDK `5.0.1`
+* Swift SDK `5.0.2`
 * [appwrite/sdk-for-swift](https://github.com/appwrite/sdk-for-swift/tree/dev/Sources/AppwriteEnums)
 *
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
-* Kotlin SDK `5.0.1`
+* Kotlin SDK `5.0.2`
 * [appwrite/sdk-for-kotlin](https://github.com/appwrite/sdk-for-kotlin/tree/dev/src/main/kotlin/io/appwrite/enums)
 *
 {% /table %}
