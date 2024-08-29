@@ -80,7 +80,11 @@ Learn more about dynamic API keys
 
 # Hot reload {% #hot-reload %}
 
-By default, Appwrite CLI hot-reloads your functions, which means you can update the function code and see the changes happen in real time without restarting. Compiled languages must translate the source code into machine code, causing the system to rebuild continuously. However, interpreted languages only refreshes the function when you change the dependency file. 
+By default, the Appwrite CLI hot-reloads your functions, which means you can update the function code and the changes will be applied automatically. How this happens differs between runtimes with compiled languages versus interpreted ones.
+
+Because runtimes with compiled languages must translate the source code into machine code, the function must rebuild on change.
+
+When the source code in a runtime with an interpreted languages is updated, the function only needs to restart with the updated file. However, if a dependency file for the interpreted language is updated, the function must rebuild to update the dependencies. Refer to the table below for the dependency files of each language.
 
 {% table %}
 * &nbsp; {% width=80 %}
