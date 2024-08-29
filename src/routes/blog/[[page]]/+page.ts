@@ -37,7 +37,7 @@ export const load = async ({ params }) => {
         currentPage,
         posts: blogPosts,
         navigation: pageNavigationChunks,
-        featured: posts.find(post => post.featured)
+        featured: posts.find((post) => post.featured)
     };
 };
 
@@ -68,7 +68,11 @@ function generatePageNavigation(currentPage: number, totalPages: number): number
             // Case 2: Show first page + ellipsis + middlePages centered around currentPage + ellipsis + last page
             range.push(1);
             range.push(ellipseItem);
-            for (let i = currentPage - Math.floor(middlePages / 2); i <= currentPage + Math.floor(middlePages / 2); i++) {
+            for (
+                let i = currentPage - Math.floor(middlePages / 2);
+                i <= currentPage + Math.floor(middlePages / 2);
+                i++
+            ) {
                 range.push(i);
             }
             range.push(ellipseItem);

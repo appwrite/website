@@ -29,13 +29,14 @@
         return page.subscribe(async () => {
             if (articlesHeader && previousPage) {
                 await tick();
-                articlesHeader?.scrollIntoView({behavior: 'smooth'});
+                articlesHeader?.scrollIntoView({ behavior: 'smooth' });
             }
-        })
-    })
+        });
+    });
 
     const title = 'Blog' + TITLE_SUFFIX;
-    const description = 'Stay updated with the latest product news, insights, and tutorials from the Appwrite team. Discover tips and best practices for hassle-free backend development.';
+    const description =
+        'Stay updated with the latest product news, insights, and tutorials from the Appwrite team. Discover tips and best practices for hassle-free backend development.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/blog.png';
 </script>
 
@@ -218,12 +219,12 @@
                                     href="/blog/{data.currentPage - 1}"
                                     class:navigation-button-active={!isFirstPage}
                                 >
-                                    <span class="web-icon-chevron-left" style="font-size: 20px"/>
+                                    <span class="web-icon-chevron-left" style="font-size: 20px" />
                                     Previous
                                 </a>
                             {:else}
                                 <span class="flex navigation-button">
-                                    <span class="web-icon-chevron-left" style="font-size: 20px"/>
+                                    <span class="web-icon-chevron-left" style="font-size: 20px" />
                                     Previous
                                 </span>
                             {/if}
@@ -236,7 +237,9 @@
                                         href="/blog/{page}"
                                         class="pagination-number"
                                         class:pagination-number-selected={data.currentPage === page}
-                                    > {page} </a>
+                                    >
+                                        {page}
+                                    </a>
                                 {/if}
                             {/each}
 
@@ -247,12 +250,12 @@
                                     href="/blog/{data.currentPage + 1}"
                                 >
                                     Next
-                                    <span class="web-icon-chevron-right"  style="font-size: 20px"/>
+                                    <span class="web-icon-chevron-right" style="font-size: 20px" />
                                 </a>
                             {:else}
                                 <span class="flex navigation-button">
                                     Next
-                                    <span class="web-icon-chevron-right" style="font-size: 20px"/>
+                                    <span class="web-icon-chevron-right" style="font-size: 20px" />
                                 </span>
                             {/if}
                         </ul>
@@ -279,13 +282,13 @@
         font-size: var(--font-size-S, 14px);
         font-family: var(--font-family-sansSerif, Inter);
         padding: var(--space-3, 6px) var(--space-6, 12px);
-        color: var(--color-fgColor-neutral-secondary, #C3C3C6);
+        color: var(--color-fgColor-neutral-secondary, #c3c3c6);
     }
 
     .pagination-number-selected {
         border-radius: var(--border-radius-S, 8px);
-        color: var(--color-fgColor-accent-neutral, #FFF);
-        background: var(--color-bgColor-neutral-tertiary, #2D2D31);
+        color: var(--color-fgColor-accent-neutral, #fff);
+        background: var(--color-bgColor-neutral-tertiary, #2d2d31);
     }
 
     .navigation-button {
@@ -303,7 +306,7 @@
         font-size: var(--font-size-S, 14px);
         border-radius: var(--border-radius-S, 8px);
         font-family: var(--font-family-sansSerif, Inter);
-        color: var(--color-fgColor-neutral-secondary, #C3C3C6);
+        color: var(--color-fgColor-neutral-secondary, #c3c3c6);
         padding: var(--space-3, 6px) var(--space-4, 8px) var(--space-3, 6px) var(--space-3, 6px);
     }
 
