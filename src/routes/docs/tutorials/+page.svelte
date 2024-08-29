@@ -4,7 +4,8 @@
     import { DOCS_TITLE_SUFFIX } from '$routes/titles';
 
     const title = 'Tutorials' + DOCS_TITLE_SUFFIX;
-    const description = 'Follow a simple tutorial to get started with Appwrite in your preferred framework quickly and easily.';
+    const description =
+        'Follow a simple tutorial to get started with Appwrite in your preferred framework quickly and easily.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 
     export let data;

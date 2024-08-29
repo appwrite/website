@@ -8,5 +8,5 @@ export type Scale = [number, number];
  * `to` { lower: 0, upper: 100 } => `number` 30
  */
 export function toScale(value: number, from: Scale, to: Scale): number {
-	return ((value - from[0]) * (to[1] - to[0])) / (from[1] - from[0]) + to[0];
+    return ((value - from[0]) * (to[1] - to[0])) / (from[1] - from[0]) + to[0];
 }
