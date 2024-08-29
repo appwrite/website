@@ -1,6 +1,6 @@
 import { getAllBlogEntriesWithAuthors } from '../content';
 import { BLOG_POSTS_PER_PAGE } from '$lib/constants';
-import { redirect } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 
 export const entries = () => {
     const { posts } = getAllBlogEntriesWithAuthors();
@@ -25,13 +25,18 @@ export const load = async ({ params }) => {
 
     const endIndex = currentPage * BLOG_POSTS_PER_PAGE;
     const startIndex = (currentPage - 1) * BLOG_POSTS_PER_PAGE;
+    const blogPosts = posts.slice(startIndex, endIndex);
+
+    if (blogPosts.length === 0) {
+        error(404, 'Not Found');
+    }
 
     return {
         authors,
         totalPages,
         currentPage,
+        posts: blogPosts,
         navigation: pageNavigationChunks,
-        posts: posts.slice(startIndex, endIndex),
         featured: posts.find(post => post.featured)
     };
 };
