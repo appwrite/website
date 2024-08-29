@@ -2,9 +2,9 @@
     import { Main } from '$lib/layouts';
 </script>
 
-<div class="u-position-absolute web-is-only-mobile u-inset-inline-0">
+<div class="web-is-only-mobile absolute inset-x-0">
     <svg
-        class="u-width-full-line"
+        class="w-full"
         xmlns="http://www.w3.org/2000/svg"
         width="360"
         height="661"
@@ -36,12 +36,10 @@
 </div>
 
 <div
-    class="u-position-absolute"
+    class="absolute"
     style="inline-size:100rem; inset-block-start:calc(50% - 250px); inset-inline-start:50%; transform:translateX(-50%);"
 >
-    <div
-        class="u-position-absolute u-inset-inline-start-0 web-u-inset-block-start-100 web-is-not-mobile"
-    >
+    <div class="web-u-inset-block-start-100 web-is-not-mobile absolute top-0">
         <img
             src="/images/pages/brand-lunch/left-side-top-brand.png"
             alt=""
@@ -49,9 +47,7 @@
             style="transform:translateX(-35%)"
         />
     </div>
-    <div
-        class="u-position-absolute u-inset-inline-end-0 web-u-inset-block-start-100 web-is-not-mobile"
-    >
+    <div class="web-u-inset-block-start-100 web-is-not-mobile absolute right-0">
         <img
             src="/images/pages/brand-lunch/right-side-top-brand.png"
             alt=""
@@ -61,14 +57,14 @@
     </div>
 </div>
 
-<div class="u-position-absolute u-width-full-line web-is-not-mobile">
+<div class="web-is-not-mobile absolute w-full">
     <svg
         xmlns="http://www.w3.org/2000/svg"
         width="1728"
         height="617"
         viewBox="0 0 1728 617"
         fill="none"
-        class="u-width-full-line"
+        class="w-full"
     >
         <g opacity="0.24" filter="url(#filter0_f_3260_127073)">
             <ellipse cx="864" cy="36" rx="999" ry="325" fill="#FD366E" />
@@ -96,13 +92,13 @@
 
 <Main>
     <div class="web-big-padding-section">
-        <div class="web-big-padding-section-level-1">
-            <div class="web-container u-position-relative">
+        <div class="py-10">
+            <div class="container relative">
                 <div
-                    class="web-big-padding-section-level-2 web-u-max-width-800 u-flex u-main-center u-cross-center u-margin-inline-auto web-u-margin-block-0"
+                    class="web-big-padding-section-level-2 web-u-margin-block-0 mx-auto flex max-w-[800px] items-center justify-center"
                     style="block-size:calc(100vh - 6.375rem)"
                 >
-                    <div class="web-hero web-u-gap-20">
+                    <div class="web-hero web-gap-5">
                         <h1 class="web-headline web-u-color-text-primary">Brand new Appwrite</h1>
                         <p class="web-description web-u-color-text-primary web-u-opacity-64">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae
@@ -112,9 +108,9 @@
                 </div>
 
                 <div class="web-big-padding-section-level-2 web-u-sep-block-start">
-                    <div class="u-stretch u-flex web-u-flex-vertical-mobile">
+                    <div class="web-u-flex-vertical-mobile flex flex-1">
                         <div
-                            class="web-hero is-align-start web-u-max-width-480 web-u-padding-block-start-48"
+                            class="web-hero is-align-start web-u-padding-block-start-48 max-w-[480px]"
                         >
                             <h2 class="web-title web-u-color-text-primary">
                                 All the tools that developers need
@@ -125,10 +121,10 @@
                             </p>
                         </div>
                         <div
-                            class="u-stretch u-flex web-u-margin-inline-auto-mobile web-u-margin-block-start-40-mobile"
+                            class="web-mx-auto-mobile web-u-margin-block-start-40-mobile flex flex-1"
                         >
                             <img
-                                class="web-u-margin-block-start-8-negative u-margin-inline-start-auto u-width-full-line u-max-width-500"
+                                class="web-u-margin-block-start-8-negative ml-auto w-full max-w-[500px]"
                                 src="/images/pages/brand-lunch/box.png"
                                 alt=""
                             />
@@ -137,16 +133,18 @@
                 </div>
 
                 <div class="web-big-padding-section-level-2 web-u-sep-block-start">
-                    <div class="web-grid-1-1-opt-2">
+                    <div class="grid grid-cols-2">
                         <div class="web-hero is-align-start web-u-padding-block-start-40">
-                            <h2 class="web-title web-u-color-text-primary">Eliminating complexity</h2>
+                            <h2 class="web-title web-u-color-text-primary">
+                                Eliminating complexity
+                            </h2>
                             <p class="web-main-body-500">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae
                                 diam augue.
                             </p>
-                            <div class="u-margin-block-start-48">
+                            <div class="mt-12">
                                 <img
-                                    class="u-max-width-100-percent"
+                                    class="max-w-full"
                                     src="/images/pages/brand-lunch/box-1.png"
                                     alt=""
                                 />
@@ -159,13 +157,13 @@
                             <h2 class="web-title web-u-color-text-primary">
                                 Allowing you to innovate without limits
                             </h2>
-                            <p class="web-main-body-500">
+                            <p class="text-base">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae
                                 diam augue. Praesent sagittis eget ipsum vitae eleifend.
                             </p>
-                            <div class="u-margin-block-start-48">
+                            <div class="mt-12">
                                 <img
-                                    class="u-max-width-100-percent"
+                                    class="max-w-full"
                                     src="/images/pages/brand-lunch/box-2.png"
                                     alt=""
                                 />
@@ -175,12 +173,10 @@
                 </div>
             </div>
         </div>
-        <div
-            class="web-big-padding-section-level-1 u-position-relative u-padding-0 u-full-screen-height u-flex u-main-center u-cross-center u-overflow-hidden"
-        >
-            <div class="u-position-absolute u-inset-inline-start-0">
+        <div class="relative flex h-screen items-center justify-center overflow-hidden p-0 py-10">
+            <div class="absolute top-0">
                 <svg
-                    class="web-u-opacity-40-mobile u-max-width-100-percent web-u-max-height-100-percent"
+                    class="web-u-opacity-40-mobile max-h-full max-h-full max-w-full"
                     xmlns="http://www.w3.org/2000/svg"
                     width="698"
                     height="900"
@@ -319,9 +315,9 @@
                     </defs>
                 </svg>
             </div>
-            <div class="u-position-absolute u-inset-inline-end-0">
+            <div class="absolute right-0">
                 <svg
-                    class="web-u-opacity-40-mobile u-max-width-100-percent web-u-max-height-100-percent"
+                    class="web-u-opacity-40-mobile max-h-full max-w-full"
                     xmlns="http://www.w3.org/2000/svg"
                     width="874"
                     height="900"
@@ -456,24 +452,20 @@
                     </defs>
                 </svg>
             </div>
-            <div class="web-big-padding-section-level-2 u-position-relative">
-                <div class="web-container">
+            <div class="web-big-padding-section-level-2 relative">
+                <div class="container">
                     <div class="web-hero">
-                        <p
-                            class="web-headline web-u-color-text-primary web-u-max-width-610 u-margin-inline-auto"
-                        >
+                        <p class="web-headline web-u-color-text-primary mx-auto max-w-[610px]">
                             Build like a team of hundreds
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-        <div
-            class="web-big-padding-section-level-1 u-position-relative u-padding-0 u-full-screen-height u-flex u-main-center u-cross-center u-overflow-hidden"
-        >
-            <div class="u-position-absolute u-inset-inline-start-0">
+        <div class="relative flex h-screen items-center justify-center overflow-hidden p-0 py-10">
+            <div class="absolute top-0">
                 <svg
-                    class="web-u-opacity-40-mobile u-max-width-100-percent web-u-max-height-100-percent"
+                    class="web-u-opacity-40-mobile max-h-full max-w-full"
                     xmlns="http://www.w3.org/2000/svg"
                     width="698"
                     height="900"
@@ -612,9 +604,9 @@
                     </defs>
                 </svg>
             </div>
-            <div class="u-position-absolute u-inset-inline-end-0">
+            <div class="absolute right-0">
                 <svg
-                    class="web-u-opacity-40-mobile u-max-width-100-percent web-u-max-height-100-percent"
+                    class="web-u-opacity-40-mobile max-h-full max-w-full"
                     xmlns="http://www.w3.org/2000/svg"
                     width="874"
                     height="900"
@@ -749,9 +741,9 @@
                     </defs>
                 </svg>
             </div>
-            <div class="web-big-padding-section-level-2 u-position-relative">
-                <div class="web-container">
-                    <div class="u-flex u-main-center u-cross-center">
+            <div class="web-big-padding-section-level-2 relative">
+                <div class="container">
+                    <div class="flex items-center justify-center">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="584"
@@ -812,10 +804,10 @@
             </div>
         </div>
         <div
-            class="web-big-padding-section-level-1 web-white-section theme-light
-        u-position-relative u-padding-0 u-overflow-hidden"
+            class="web-white-section light relative
+        overflow-hidden p-0 py-10"
         >
-            <div class="u-position-absolute u-inset-inline-end-0">
+            <div class="absolute right-0">
                 <svg
                     style="max-inline-size:100%;"
                     xmlns="http://www.w3.org/2000/svg"
@@ -1083,11 +1075,9 @@
                     </defs>
                 </svg>
             </div>
-            <div class="web-big-padding-section-level-2 u-position-relative">
-                <div class="web-container">
-                    <div
-                        class="u-full-screen-height u-flex-vertical web-u-gap-80 u-main-center u-cross-center"
-                    >
+            <div class="web-big-padding-section-level-2 relative">
+                <div class="container">
+                    <div class="web-gap-20 flex h-screen flex-col items-center justify-center">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="584"
@@ -1143,8 +1133,8 @@
                                 fill="#FD366E"
                             />
                         </svg>
-                        <div class="u-flex web-u-flex-vertical-mobile u-cross-center u-gap-32">
-                            <div class="u-flex-vertical u-cross-center u-gap-12">
+                        <div class="web-u-flex-vertical-mobile flex items-center gap-8">
+                            <div class="flex flex-col items-center gap-3">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="64"
@@ -1162,7 +1152,7 @@
                                 <div class="web-caption-400">Our global community</div>
                             </div>
                             <div>+</div>
-                            <div class="u-flex-vertical u-cross-center u-gap-12">
+                            <div class="flex flex-col items-center gap-3">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="65"
@@ -1200,7 +1190,7 @@
             </div>
 
             <div class="web-big-padding-section-level-2">
-                <div class="web-container">
+                <div class="container">
                     <img
                         src="/images/brand/new-brand-grid-mobile.png"
                         alt="brand visual stuff"
@@ -1217,8 +1207,8 @@
             </div>
         </div>
 
-        <div class="web-big-padding-section-level-1 u-position-relative u-padding-0">
-            <div class="u-position-absolute u-inset-inline-start-0 u-width-full-line">
+        <div class="relative p-0 py-10">
+            <div class="absolute top-0 w-full">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="1280"
@@ -1576,27 +1566,25 @@
                     </defs>
                 </svg>
             </div>
-            <div class="web-big-padding-section-level-2 u-position-relative">
-                <div class="web-container">
-                    <div class="web-grid-1-1-opt-2 u-gap-32 u-main-space-between">
-                        <div class="web-hero is-align-start web-u-max-width-480">
+            <div class="web-big-padding-section-level-2 relative">
+                <div class="container">
+                    <div class="grid grid-cols-2 justify-between gap-8">
+                        <div class="web-hero is-align-start max-w-[480px]">
                             <h4 class="web-title web-u-color-text-primary">
                                 Be a part of #Teamof100
                             </h4>
                             <p
-                                class="web-main-body-500 u-margin-block-start-4 web-u-color-text-primary web-u-opacity-64"
+                                class="web-main-body-500 web-u-color-text-primary web-u-opacity-64 mt-1"
                             >
                                 Join our rebrand celebration by sharing #teamof100 in your socials
                                 for a chance to win brand-new Appwrite swag.
                             </p>
-                            <button
-                                class="web-button is-transparent u-margin-block-start-16 is-full-width-mobile"
-                            >
+                            <button class="web-button is-transparent is-full-width-mobile mt-4">
                                 <span class="web-icon-star" aria-hidden="true" />
                                 <span>Share</span>
                             </button>
                         </div>
-                        <div class="web-media-container u-flex-basis-250 u-stretch">
+                        <div class="web-media-container flex-1 basis-[250px]">
                             <img
                                 src="/images/brand/t-shirts.png"
                                 alt="brand visual stuff"

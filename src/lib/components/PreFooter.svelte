@@ -4,20 +4,17 @@
 
 <img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg" style="z-index:-1" />
 
-<div class="web-grid-1-1 u-gap-32 web-u-row-gap-80 u-position-relative">
-    <section class="web-hero u-flex web-u-row-gap-32 u-main-center u-cross-center">
-        <h2 class="web-display u-max-width-500 web-u-text-align-center web-u-color-text-primary">
+<div class="web-u-row-gap-80 relative grid md:grid-cols-2 gap-8">
+    <section class="web-hero flex items-center justify-center gap-y-8">
+        <h2 class="web-display web-u-color-text-primary max-w-[500px] text-center">
             Start building today
         </h2>
-        <a
-            href={PUBLIC_APPWRITE_DASHBOARD}
-            class="web-button is-transparent web-u-cross-child-center"
-        >
+        <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button is-transparent web-self-center">
             <span class="text">Get started</span>
         </a>
     </section>
     <section
-        class="web-card is-transparent has-border-gradient web-u-max-inline-width-584-mobile web-u-margin-inline-auto-mobile web-u-inline-width-100-percent-mobile"
+        class="web-card is-transparent has-border-gradient web-u-max-inline-width-584-mobile web-mx-auto-mobile web-u-inline-width-100-percent-mobile"
     >
         <header class="web-strip-plans-header">
             <div class="web-strip-plans-header-wrapper web-u-row-gap-24">

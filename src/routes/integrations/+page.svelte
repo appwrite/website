@@ -11,8 +11,8 @@
     import { goto, replaceState } from '$app/navigation';
     import { onDestroy, onMount } from 'svelte';
     import { browser } from '$app/environment';
-    import { page } from '$app/stores';
-    import { INTEGRATIONS_PARAM_KEY } from '$lib/constants';
+    import { classNames } from '$lib/utils/classnames';
+    import Input from '$lib/components/ui/Input.svelte';
 
     export let data;
 
@@ -66,7 +66,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Description -->
+    <!-- Desscription -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -81,32 +81,32 @@
 <!-- binding for fuse -->
 <Fuse list={data.list} options={fuseOptions} bind:query={$query} bind:result />
 <Main>
-    <header class="web-u-sep-block-end u-padding-block-end-0 u-position-relative u-overflow-hidden">
-        <div class="web-container u-position-relative hero web-u-padding-block-end-0">
+    <header class="web-u-sep-block-end relative overflow-hidden pb-0">
+        <div class="container hero web-u-padding-block-end-0 relative">
             <img
                 src="/images/pages/integration/integration-bg-top-1.png"
                 alt=""
                 width="983"
                 height="985"
-                class="l-bg-1 u-position-absolute web-is-not-mobile"
+                class="l-bg-1 web-is-not-mobile absolute"
             />
             <img
                 src="/images/pages/integration/net-desktop.png"
                 alt=""
                 width="895"
                 height="560"
-                class="l-bg-2 u-position-absolute web-is-not-mobile"
+                class="l-bg-2 web-is-not-mobile absolute"
             />
             <img
                 src="/images/pages/integration/net-desktop.png"
                 alt=""
                 width="360"
                 height="560"
-                class="l-bg-2 u-position-absolute web-is-only-mobile"
+                class="l-bg-2 web-is-only-mobile absolute"
             />
             <div class="web-integrations-top-section">
                 <div
-                    class="l-integrations-hero u-flex-vertical u-main-center u-gap-20 web-u-max-width-680"
+                    class="l-integrations-hero web-u-max-width-680 flex flex-col justify-center gap-5"
                 >
                     <div class="web-eyebrow web-u-color-text-primary">
                         INTEGRATIONS<span class="web-u-color-text-accent">_</span>
@@ -127,33 +127,53 @@
         </div>
     </header>
 
-    <div class="web-big-padding-section-level-1">
+    <div class="py-10">
         <div>
-            <div class="web-container">
+            <div class="container">
                 <div class="l-integrations-grid">
-                    <aside class="u-flex-vertical u-gap-32 sidebar">
+                    <aside class="sidebar flex flex-col gap-8">
                         <section>
-                            <label class="web-input-button web-u-flex-basis-400">
-                                <span class="web-icon-search" aria-hidden="true"></span>
-                                <input
-                                    class="text"
-                                    placeholder="Search"
-                                    bind:value={$query}
-                                    on:input={(e) => handleQuery(e.currentTarget.value)}
-                                />
-                            </label>
+                            <Input
+                                label="Search"
+                                name="search"
+                                placeholder="Search"
+                                bind:value={$query}
+                                autocomplete="off"
+                            >
+                                <span
+                                    class="web-icon-search"
+                                    aria-hidden="true"
+                                    slot="icon"
+                                /></Input
+                            >
+
+                            <!-- <label
+                class="web-input-button focus:border-greyscale-100 web-flex-basis-400"
+              >
+                <span class="web-icon-search" aria-hidden="true"></span>
+                <input
+                  class="border-0 ring-0 outline-none"
+                  placeholder="Search"
+                  bind:value={$query}
+                />
+              </label> -->
                         </section>
-                        <section class="u-flex-vertical">
-                            <section class="u-flex-vertical u-gap-16">
-                                <h2 class="web-side-nav-header web-eyebrow u-un-break-text">
+                        <section class="flex flex-col">
+                            <section class="flex flex-col gap-4">
+                                <h2 class="web-side-nav-header web-eyebrow whitespace-nowrap">
                                     Platform
                                 </h2>
-                                <ul class="u-flex u-flex-wrap u-gap-8" class:disabled={hasQuery}>
+                                <ul class="flex flex-wrap gap-2" class:disabled={hasQuery}>
                                     {#each platforms as platform}
                                         <li>
                                             <button
-                                                class="tag"
-                                                class:is-selected={activePlatform === platform}
+                                                class={classNames(
+                                                    'tag bg-greyscale-800 border-greyscale-700 h-8 cursor-pointer rounded-full border px-3 text-sm font-light',
+                                                    {
+                                                        'bg-white text-black':
+                                                            activePlatform === platform
+                                                    }
+                                                )}
                                                 class:active-tag={activePlatform === platform}
                                                 on:click={() => (activePlatform = platform)}
                                                 >{platform}</button
@@ -162,13 +182,13 @@
                                     {/each}
                                 </ul>
                             </section>
-                            <div class="web-u-sep-block-start u-margin-block-24"></div>
-                            <section class="u-flex-vertical u-gap-16">
-                                <h2 class="web-side-nav-header web-eyebrow u-un-break-text">
+                            <div class="web-u-sep-block-start my-6"></div>
+                            <section class="flex flex-col gap-4">
+                                <h2 class="web-side-nav-header web-eyebrow whitespace-nowrap">
                                     Categories
                                 </h2>
 
-                                <div class="u-position-relative is-not-desktop">
+                                <div class="relative block sm:hidden">
                                     <select
                                         class="web-input-text"
                                         bind:value={activeCategory}
@@ -190,15 +210,12 @@
                                         <option value={null}> Select category </option>
                                     </select>
                                     <span
-                                        class="icon-cheveron-down u-position-absolute u-inset-inline-end-8 u-inset-block-start-8 web-u-pointer-events-none"
+                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-2 right-2"
                                         aria-hidden="true"
                                     />
                                 </div>
 
-                                <ul
-                                    class="u-flex-vertical u-gap-16 is-only-desktop"
-                                    class:disabled={hasQuery}
-                                >
+                                <ul class="hidden flex-col gap-4 sm:flex" class:disabled={hasQuery}>
                                     {#each data.categories as category}
                                         {@const integrations = data.integrations.find(
                                             (i) => i.category === category
@@ -223,12 +240,10 @@
                     </aside>
 
                     <section>
-                        <div class="u-flex-vertical u-gap-64">
+                        <div class="flex flex-col gap-16">
                             {#if hasQuery}
-                                <section
-                                    class="l-max-size-list-cards-section u-flex-vertical u-gap-32"
-                                >
-                                    <header class="u-flex-vertical u-gap-4">
+                                <section class="l-max-size-list-cards-section flex flex-col gap-8">
+                                    <header class="flex flex-col gap-1">
                                         <h2 class="web-label web-u-color-text-primary">
                                             Search results
                                         </h2>
@@ -237,18 +252,17 @@
                                             for "{$query}"
                                         </p>
                                     </header>
-                                    <div class="l-max-size-list-cards u-flex-vertical u-gap-32">
+                                    <div class="l-max-size-list-cards flex flex-col gap-8">
                                         <ul class="l-grid-1">
                                             {#each result.map((d) => d.item) as item}
                                                 <li>
                                                     <a
                                                         href={item.href}
-                                                        class="web-card is-normal u-height-100-percent"
+                                                        class="web-card is-normal h-full"
                                                         style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                                                     >
                                                         <div
-                                                            class="u-flex u-cross-center u-gap-8"
-                                                            style:margin-bottom="16px"
+                                                            class="flex items-center justify-between gap-2"
                                                         >
                                                             <img
                                                                 class="web-user-box-image is-32px"
@@ -257,75 +271,72 @@
                                                                 width="32"
                                                                 height="32"
                                                             />
-                                                            <span
-                                                                class="icon-arrow-right u-margin-inline-start-auto"
-                                                                aria-hidden="true"
-                                                            />
-                                                        </div>
-                                                        <div class="u-flex u-cross-center u-gap-8">
-                                                            <h4 class="web-u-color-text-primary">
-                                                                {item.title}
+                                                            <h4
+                                                                class="web-u-color-text-primary mt-3"
+                                                            >
+                                                                <span
+                                                                    class="icon-arrow-right ml-auto"
+                                                                    aria-hidden="true"
+                                                                />
+                                                                <div
+                                                                    class="u-flex u-cross-center u-gap-8"
+                                                                >
+                                                                    <h4
+                                                                        class="web-u-color-text-primary"
+                                                                    >
+                                                                        {item.title}
+                                                                    </h4>
+                                                                </div>
+                                                                <p class="web-sub-body-400 mt-1">
+                                                                    {item.description}
+                                                                </p>
                                                             </h4>
-                                                        </div>
-                                                        <p
-                                                            class="web-sub-body-400 u-margin-block-start-4"
-                                                        >
-                                                            {item.description}
-                                                        </p>
-                                                    </a>
+                                                        </div></a
+                                                    >
                                                 </li>
                                             {/each}
                                         </ul>
                                     </div>
                                 </section>
                             {:else}
-                                <section class="u-flex-vertical u-gap-32">
-                                    <header class="u-flex-vertical u-gap-4">
+                                <section class="flex flex-col gap-8">
+                                    <header class="flex flex-col gap-1">
                                         <h2 class="web-label web-u-color-text-primary">Featured</h2>
                                         <p class="web-description">Top recommended integrations</p>
                                     </header>
 
                                     <div>
-                                        <ul class="web-feature-grid" style="gap: 1rem">
+                                        <ul class="web-feature-grid grid gap-4 sm:grid-cols-2">
                                             {#each data.featured as item}
                                                 <li
-                                                    class="web-feature-grid-item is-two-columns-desktop-only"
+                                                    class="web-feature-grid-item is-two-columns-desktop-only relative"
                                                 >
-                                                    <a class="web-overlay-item" href={item.href}>
+                                                    <a
+                                                        class="block overflow-hidden rounded-2xl before:absolute before:inset-x-0 before:bottom-0 before:block before:h-80 before:rounded-[inherit] before:bg-gradient-to-b before:from-transparent before:via-transparent before:to-black"
+                                                        href={item.href}
+                                                    >
                                                         <img
                                                             src={item.cover}
                                                             alt={item.title}
-                                                            class="u-block web-u-media-ratio-16-9 web-u-media-cover"
+                                                            class="web-u-media-cover block aspect-video"
                                                         />
                                                         <div
-                                                            class="web-user-box u-column-gap-8 u-row-gap-0"
+                                                            class="web-user-box absolute bottom-4 left-4 z-10 gap-x-2"
                                                         >
                                                             <img
-                                                                class="web-user-box-image"
+                                                                class="row-span-2 block size-12 rounded-full"
                                                                 src={item.product.avatar}
                                                                 alt={`Avatar for ${item.product.vendor}`}
                                                                 width="40"
                                                                 height="40"
-                                                                style="border-radius: 50%;"
                                                             />
-                                                            <div
-                                                                class="web-user-box-name web-main-body-500 u-flex u-gap-8"
-                                                            >
-                                                                <span
-                                                                    class="web-u-color-text-primary"
-                                                                >
+                                                            <div class="web-main-body-500 gap-2">
+                                                                <span class="text-primary mt-3">
                                                                     {item.title}
                                                                 </span>
-                                                                <!-- {#if item.isNew}
-                                                                    <span
-                                                                        class="web-inline-tag is-pink"
-                                                                    >
-                                                                        New
-                                                                    </span>
-                                                                {/if} -->
                                                             </div>
                                                             <div
-                                                                class="web-user-box-username web-caption-400 web-u-color-text-secondary"
+                                                                class="web-caption-400 web-u-color-text-secondary"
                                                             >
                                                                 {item.category}
                                                             </div>
@@ -340,7 +351,7 @@
                                 {#each data.integrations as { category, description, integrations }}
                                     {#if integrations?.length > 0 && (activePlatform === 'All' || integrations.some( (i) => i.platform.includes(activePlatform) ))}
                                         <section
-                                            class="l-max-size-list-cards-section u-flex-vertical u-gap-32"
+                                            class="l-max-size-list-cards-section flex flex-col gap-8"
                                             id={category.toLowerCase()}
                                             use:autoHash={(entries) => {
                                                 entries.forEach((entry) => {
@@ -353,7 +364,7 @@
                                                 });
                                             }}
                                         >
-                                            <header class="u-flex-vertical u-gap-4">
+                                            <header class="flex flex-col gap-1">
                                                 <h2 class="web-label web-u-color-text-primary">
                                                     {category}
                                                 </h2>
@@ -361,20 +372,18 @@
                                                     {description}
                                                 </p>
                                             </header>
-                                            <div
-                                                class="l-max-size-list-cards u-flex-vertical u-gap-32"
-                                            >
+                                            <div class="l-max-size-list-cards flex flex-col gap-8">
                                                 <ul class="l-grid-1">
                                                     {#each integrations as integration, index (`${integration.title}-${index}`)}
                                                         {#if activePlatform === 'All' || integration.platform.includes(activePlatform)}
                                                             <li>
                                                                 <a
                                                                     href={integration.href}
-                                                                    class="web-card is-normal u-height-100-percent"
+                                                                    class="web-card is-normal h-full"
                                                                     style="--card-padding:1.5rem; --card-padding-mobile:1.5rem; --card-border-radius: 1.5rem"
                                                                 >
                                                                     <div
-                                                                        class="u-flex u-cross-center u-gap-8"
+                                                                        class="flex items-center justify-between gap-2"
                                                                     >
                                                                         <img
                                                                             class="web-user-box-image is-32px"
@@ -386,18 +395,18 @@
                                                                             height="32"
                                                                         />
                                                                         <span
-                                                                            class="icon-arrow-right u-margin-inline-start-auto"
+                                                                            class="icon-arrow-right ml-auto"
                                                                             aria-hidden="true"
                                                                         ></span>
                                                                     </div>
 
                                                                     <h4
-                                                                        class="web-u-color-text-primary u-margin-block-start-12"
+                                                                        class="web-u-color-text-primary mt-3"
                                                                     >
                                                                         {integration.title}
                                                                     </h4>
                                                                     <p
-                                                                        class="web-sub-body-400 u-margin-block-start-4"
+                                                                        class="web-sub-body-400 mt-1"
                                                                     >
                                                                         {integration.description}
                                                                     </p>
@@ -424,9 +433,9 @@
         </div>
     </div>
 
-    <div class="web-big-padding-section-level-1 u-overflow-hidden" style:margin-top="160px">
-        <div class="web-container">
-            <div class="web-big-padding-section-level-2 u-position-relative">
+    <div class="overflow-hidden py-10" style:margin-top="160px">
+        <div class="container">
+            <div class="web-big-padding-section-level-2 relative">
                 <img
                     src="/images/bgs/pre-footer.png"
                     alt=""
@@ -434,12 +443,12 @@
                     style="z-index:-1"
                 />
 
-                <div class="u-position-relative">
+                <div class="relative">
                     <section
-                        class="web-hero u-flex u-row-gap-16 u-main-center u-cross-center web-u-max-width-580"
+                        class="web-hero web-u-max-width-580 flex items-center justify-center gap-4"
                     >
                         <h2
-                            class="web-display u-max-width-600 web-u-text-align-center web-u-color-text-primary"
+                            class="web-display web-u-text-align-center web-u-color-text-primary max-w-[600px]"
                         >
                             Become a Technology Partner
                         </h2>
@@ -449,7 +458,7 @@
                         </p>
                         <a
                             href="/integrations/technology-partner"
-                            class="web-button is-primary web-u-cross-child-center u-margin-block-start-16"
+                            class="web-button is-primary mt-4 self-center"
                         >
                             <span class="text">Get Started</span>
                         </a>
@@ -620,7 +629,8 @@
             }
 
             .tag {
-                min-width: pxToRem(42);
+                min-width: pxToRem(42) !important;
+
                 &.active-tag {
                     background-color: #fff;
                     color: #000;

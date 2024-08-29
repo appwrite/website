@@ -236,8 +236,9 @@
                 in:fly={{ duration: 250, delay: 250, y: -300 }}
             >
                 {#if scrollInfo.percentage > -0.1}
-                    <span class="web-badges web-eyebrow" transition:slide={{ axis: 'x' }}
-                        >Products_</span
+                    <span
+                        class="web-badges web-eyebrow !text-white"
+                        transition:slide={{ axis: 'x' }}>Products_</span
                     >
 
                     <h2
@@ -247,7 +248,7 @@
                         Your backend, minus the hassle
                     </h2>
                     <p
-                        class="web-description web-u-max-width-700 u-margin-inline-auto"
+                        class="web-description mx-auto max-w-[700px]"
                         transition:fly={{
                             y: 16,
                             delay: 400
