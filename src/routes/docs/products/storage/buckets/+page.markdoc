@@ -40,7 +40,7 @@ client
     .setKey('<API_KEY>') // Your secret API key
 ;
 
-const promise = storage.createBucket('[BUCKET_ID]', '[NAME]');
+const promise = storage.createBucket('<BUCKET_ID>', '<NAME>');
 
 promise.then(function (response) {
     console.log(response);
@@ -62,7 +62,7 @@ client
 ;
 
 
-let promise = storage.createBucket('[BUCKET_ID]', '[NAME]');
+let promise = storage.createBucket('<BUCKET_ID>', '<NAME>');
 
 promise.then(function (response) {
     console.log(response);
@@ -112,7 +112,7 @@ $client
 
 $storage = new Storage($client);
 
-$result = $storage->createBucket('[BUCKET_ID]', '[NAME]');
+$result = $storage->createBucket('<BUCKET_ID>', '<NAME>');
 ```
 ```python
 from appwrite.client import Client
@@ -127,7 +127,7 @@ client = Client()
 
 storage = Storage(client)
 
-result = storage.create_bucket('[BUCKET_ID]', '[NAME]')
+result = storage.create_bucket('<BUCKET_ID>', '<NAME>')
 ```
 ```ruby
 require 'Appwrite'
@@ -140,7 +140,7 @@ client = Client.new
 
 storage = Storage.new(client)
 
-response = storage.create_bucket(bucket_id: '[BUCKET_ID]', name: '[NAME]')
+response = storage.create_bucket(bucket_id: '<BUCKET_ID>', name: '<NAME>')
 
 puts response.inspect
 ```
@@ -156,8 +156,8 @@ var client = new Client()
 var storage = new Storage(client);
 
 Bucket result = await storage.CreateBucket(
-    bucketId: "[BUCKET_ID]",
-    name: "[NAME]");
+    bucketId: "<BUCKET_ID>",
+    name: "<NAME>");
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -172,8 +172,8 @@ void main() { // Init SDK
   ;
 
   Future result = storage.createBucket(
-    bucketId: '[BUCKET_ID]',
-    name: '[NAME]',
+    bucketId: '<BUCKET_ID>',
+    name: '<NAME>',
   );
 
   result
@@ -195,8 +195,8 @@ val client = Client(context)
 val storage = Storage(client)
 
 val response = storage.createBucket(
-    bucketId = "[BUCKET_ID]",
-    name = "[NAME]",
+    bucketId = "<BUCKET_ID>",
+    name = "<NAME>",
 )
 ```
 ```java
@@ -211,8 +211,8 @@ Client client = new Client()
 Storage storage = new Storage(client);
 
 storage.createBucket(
-    "[BUCKET_ID]",
-    "[NAME]",
+    "<BUCKET_ID>",
+    "<NAME>",
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -233,8 +233,8 @@ let client = Client()
 let storage = Storage(client)
 
 let bucket = try await storage.createBucket(
-    bucketId: "[BUCKET_ID]",
-    name: "[NAME]"
+    bucketId: "<BUCKET_ID>",
+    name: "<NAME>"
 )
 
 ```

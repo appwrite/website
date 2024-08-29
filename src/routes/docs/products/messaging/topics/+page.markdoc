@@ -58,9 +58,9 @@ client
 ;
 
 const topic = messaging.createTopic(
-        '<TOPIC_ID>',     // topicId
-        '<NAME>',         // name
-        '<ROLES>'         // permission roles for who can subscribe
+        '<TOPIC_ID>',           // topicId
+        '<NAME>',               // name
+        '<ROLES>'               // permission roles for who can subscribe
     );
 
 ```
@@ -78,9 +78,9 @@ client
 ;
 
 const topic = messaging.createTopic(
-        '<TOPIC_ID>',     // topicId
-        '<NAME>',         // name
-        '<ROLES>'         // permission roles for who can subscribe
+        '<TOPIC_ID>',           // topicId
+        '<NAME>',               // name
+        '<ROLES>'               // permission roles for who can subscribe
     );
 ```
 ```go
@@ -96,8 +96,8 @@ import (
 func main() {
 
 	client := appwrite.NewClient(
-		appwrite.WithProject("<PROJECT_ID>"), // Your project ID
-		appwrite.WithKey("<API_KEY>"),        // Your secret API key
+		appwrite.WithProject("<PROJECT_ID>"),                                 // Your project ID
+		appwrite.WithKey("<API_KEY>"),                                        // Your secret API key
 	)
 
 	messaging := appwrite.NewMessaging(client)
@@ -127,9 +127,9 @@ $client
 $messaging = new Messaging($client);
 
 $topic = $messaging->createTopic( 
-    topicId: '<TOPIC_ID>', 
-    name: '<NAME>',
-    subscribe: '<ROLES>'  // permission roles for who can subscribe
+    topicId: '<TOPIC_ID>',       // topicId
+    name: '<NAME>',              // name 
+    subscribe: '<ROLES>'         // permission roles for who can subscribe
 
 );
 ```
@@ -140,16 +140,16 @@ from appwrite.services.messaging import Messaging
 client = Client()
 
 (client
-  .set_project('<PROJECT_ID>')                 # Your project ID
-  .set_key('<API_KEY>')                  # Your secret API key
+  .set_project('<PROJECT_ID>') # Your project ID
+  .set_key('<API_KEY>')        # Your secret API key
 )
 
 messaging = Messaging(client)
 
 topic = messaging.create_topic( 
-    topic_id = '<TOPIC_ID>', 
-    name = '<NAME>',
-    subscribe = '<ROLES>'  # permission roles for who can subscribe
+    topic_id = '<TOPIC_ID>',   # topicId
+    name = '<NAME>',           # name 
+    subscribe = '<ROLES>'      # permission roles for who can subscribe
 )
 ```
 ```go
@@ -164,16 +164,16 @@ import (
 func main() {
 
 	client := appwrite.NewClient(
-		appwrite.WithProject("<PROJECT_ID>"), // Your project ID
-		appwrite.WithKey("<API_KEY>"),        // Your secret API key
+		appwrite.WithProject("<PROJECT_ID>"),                  // Your project ID
+		appwrite.WithKey("<API_KEY>"),                         // Your secret API key
 	)
 
 	messaging := appwrite.NewMessaging(client)
 
 	topic, _ := messaging.CreateTopic(
-		"<TOPIC_ID>",
-		"<NAME>",
-		messaging.WithCreateTopicSubscribe([]string{"ROLES"}),
+		"<TOPIC_ID>",                                          // topicId
+		"<NAME>",                                              // name 
+		messaging.WithCreateTopicSubscribe([]string{"ROLES"}), // permission roles for who can subscribe
 	)
 
 	fmt.Println(topic)
@@ -185,15 +185,15 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_project('<PROJECT_ID>')                 # Your project ID
-    .set_key('<API_KEY>')                  # Your secret API key
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_key('<API_KEY>')        # Your secret API key
 
 messaging = Messaging.new(client)
 
 topic = messaging.create_topic(
-    topic_id: '<TOPIC_ID>', 
-    name: '<NAME>',
-    subscribe: '<ROLES>'  # permission roles for who can subscribe
+    topic_id: '<TOPIC_ID>',      # topicId
+    name: '<NAME>',              # name 
+    subscribe: '<ROLES>'         # permission roles for who can subscribe
 )
 
 puts topic.inspect
@@ -210,9 +210,9 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Topic topic = await messaging.CreateTopic(
-    topicId: "<TOPIC_ID>",
-    name: "<NAME>",
-    subscribe: "<ROLES>")  // permission roles for who can subscribe
+    topicId: "<TOPIC_ID>",      // topicId
+    name: "<NAME>",             // name 
+    subscribe: "<ROLES>")       // permission roles for who can subscribe
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -229,9 +229,9 @@ void main() {                                    // Init SDK
   ;
 
   Future result = messaging.createTopic(
-    topicId: '<TOPIC_ID>',
-    name: '<NAME>',
-    subscribe: '<ROLES>' // permission roles for who can subscribe
+    topicId: '<TOPIC_ID>',      // topicId
+    name: '<NAME>',             // name 
+    subscribe: '<ROLES>'        // permission roles for who can subscribe
   );
 
   result
@@ -254,9 +254,9 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createTopic(
-    "<TOPIC_ID>",       // topicId
-    "<NAME>"            // name
-    "<ROLES>"           // permission roles for who can subscribe
+    "<TOPIC_ID>",               // topicId
+    "<NAME>"                    // name
+    "<ROLES>"                   // permission roles for who can subscribe
     new CoroutineCallback<>((topic, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -273,8 +273,8 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setProject("<PROJECT_ID>") // Your project ID
-    .setKey("<API_KEY>");       // Your secret API key
+    .setProject("<PROJECT_ID>")            // Your project ID
+    .setKey("<API_KEY>");                  // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
@@ -302,9 +302,9 @@ let client = Client()
 let messaging = Messaging(client)
 
 let topic = try await messaging.createTopic(
-  topicId: "<TOPIC_ID>",
-  name: "<NAME>",
-  subscribe: "<ROLES>" // permission roles for who can subscribe
+  topicId: "<TOPIC_ID>",        // topicId
+  name: "<NAME>",               // name 
+  subscribe: "<ROLES>"          // permission roles for who can subscribe
 )
 ```
 {% /multicode %}
@@ -370,9 +370,9 @@ const client = new sdk.Client()
 const messaging = new sdk.Messaging(client);
 
 const subscriber = await messaging.createSubscriber(
-    '<TOPIC_ID>',         // topicId
-    '<SUBSCRIBER_ID>',    // subscriberId
-    '<TARGET_ID>'         // targetId
+    '<TOPIC_ID>',               // topicId
+    '<SUBSCRIBER_ID>',          // subscriberId
+    '<TARGET_ID>'               // targetId
 );
 ```
 ```deno
@@ -385,9 +385,9 @@ const client = new sdk.Client()
 const messaging = new sdk.Messaging(client);
 
 const subscriber = await messaging.createSubscriber(
-    '<TOPIC_ID>',         // topicId
-    '<SUBSCRIBER_ID>',    // subscriberId
-    '<TARGET_ID>'         // targetId
+    '<TOPIC_ID>',               // topicId
+    '<SUBSCRIBER_ID>',          // subscriberId
+    '<TARGET_ID>'               // targetId
 );
 ```
 ```go
@@ -409,9 +409,9 @@ func main() {
 	messaging := appwrite.NewMessaging(client)
 
 	subscriber, _ := messaging.CreateSubscriber(
-		"<TOPIC_ID>",         // topicId
-		"<SUBSCRIBER_ID>",    // subscriberId
-		"<TARGET_ID>",        // targetId
+		"<TOPIC_ID>",                         // topicId
+		"<SUBSCRIBER_ID>",                    // subscriberId
+		"<TARGET_ID>",                        // targetId
 	)
 
 	fmt.Println(subscriber)
@@ -426,15 +426,15 @@ use Appwrite\Services\Messaging;
 $client = new Client();
 
 $client
-    ->setProject('<PROJECT_ID>') // Your project ID
-    ->setJWT('<USER_JWT>');      // Your secret JSON Web Token
+    ->setProject('<PROJECT_ID>')     // Your project ID
+    ->setJWT('<USER_JWT>');          // Your secret JSON Web Token
 
 $messaging = new Messaging($client);
 
 $subscriber = $messaging->createSubscriber(
-    topicId: '<TOPIC_ID>', 
-    subscriberId: '<SUBSCRIBER_ID>', 
-    targetId: '<TARGET_ID>'
+    topicId: '<TOPIC_ID>',           // topicId
+    subscriberId: '<SUBSCRIBER_ID>', // name   
+    targetId: '<TARGET_ID>'          // permission roles for who can subscribe
 );
 ```
 ```python
@@ -442,15 +442,15 @@ from appwrite.client import Client
 from appwrite.services.messaging import Messaging
 
 client = Client()
-client.set_project('<PROJECT_ID>') # Your project ID
-client.set_jwt('<USER_JWT>')       # Your secret JSON Web Token
+client.set_project('<PROJECT_ID>')     # Your project ID
+client.set_jwt('<USER_JWT>')           # Your secret JSON Web Token
 
 messaging = Messaging(client)
 
 subscriber = messaging.create_subscriber(
-    topic_id = '<TOPIC_ID>', 
-    subscriber_id = '<SUBSCRIBER_ID>', 
-    target_id = '<TARGET_ID>'
+    topic_id = '<TOPIC_ID>',           # topicId 
+    subscriber_id = '<SUBSCRIBER_ID>', # name  
+    target_id = '<TARGET_ID>'          # permission roles for who can subscribe
 )
 ```
 ```ruby
@@ -459,15 +459,15 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_project('<PROJECT_ID>') # Your project ID
-    .set_jwt('<USER_JWT>')       # Your secret JSON Web Token
+    .set_project('<PROJECT_ID>')      # Your project ID
+    .set_jwt('<USER_JWT>')            # Your secret JSON Web Token
 
 messaging = Messaging.new(client)
 
 subscriber = messaging.create_subscriber(
-    topic_id: '<TOPIC_ID>', 
-    subscriber_id: '<SUBSCRIBER_ID>', 
-    target_id: '<TARGET_ID>'
+    topic_id: '<TOPIC_ID>',           # topicId
+    subscriber_id: '<SUBSCRIBER_ID>', # name  
+    target_id: '<TARGET_ID>'          # permission roles for who can subscribe
 )
 ```
 ```csharp
@@ -482,9 +482,9 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Subscriber result = await messaging.CreateSubscriber(
-    topicId: "<TOPIC_ID>",
-    subscriberId: "<SUBSCRIBER_ID>",
-    targetId: "<TARGET_ID>");
+    topicId: "<TOPIC_ID>",           // topicId
+    subscriberId: "<SUBSCRIBER_ID>", // name 
+    targetId: "<TARGET_ID>");        // permission roles for who can subscribe
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -492,15 +492,15 @@ import 'package:dart_appwrite/enums.dart';
 import 'package:dart_appwrite/models.dart';
 
 Client client = Client()
-    .setProject('<PROJECT_ID>') // Your project ID
-    .setJWT('<USER_JWT>');      // Your secret JSON Web Token
+    .setProject('<PROJECT_ID>')      // Your project ID
+    .setJWT('<USER_JWT>');           // Your secret JSON Web Token
 
 Messaging messaging = Messaging(client);
 
 Subscriber subscriber result = await messaging.createSubscriber(
-    topicId: '<TOPIC_ID>',
-    subscriberId: '<SUBSCRIBER_ID>',
-    targetId: '<TARGET_ID>',
+    topicId: '<TOPIC_ID>',           // topicId
+    subscriberId: '<SUBSCRIBER_ID>', // name 
+    targetId: '<TARGET_ID>',         // permission roles for who can subscribe
 );
 ```
 ```kotlin
@@ -509,15 +509,15 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 val client = Client()
-    .setProject("<PROJECT_ID>") // Your project ID
-    .setJWT("<USER_JWT>")       // Your secret JSON Web Token
+    .setProject("<PROJECT_ID>")       // Your project ID
+    .setJWT("<USER_JWT>")             // Your secret JSON Web Token
 
 val messaging = new Messaging(client)
 
 val subscriber = messaging.createSubscriber(
-    topicId = "<TOPIC_ID>",
-    subscriberId = "<SUBSCRIBER_ID>",
-    targetId = "<TARGET_ID>"
+    topicId = "<TOPIC_ID>",           // topicId
+    subscriberId = "<SUBSCRIBER_ID>", // name 
+    targetId = "<TARGET_ID>"          // permission roles for who can subscribe
 )
 ```
 ```java
@@ -532,9 +532,9 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createSubscriber(
-    "<TOPIC_ID>",         // topicId
-    "<SUBSCRIBER_ID>",    // subscriberId
-    "<TARGET_ID>"         // targetId
+    "<TOPIC_ID>",               // topicId
+    "<SUBSCRIBER_ID>",          // subscriberId
+    "<TARGET_ID>"               // targetId
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -549,15 +549,15 @@ messaging.createSubscriber(
 import Appwrite
 
 let client = Client()
-    .setProject("<PROJECT_ID>") // Your project ID
-    .setJWT("<USER_JWT>")       // Your secret JSON Web Token
+    .setProject("<PROJECT_ID>")      // Your project ID
+    .setJWT("<USER_JWT>")            // Your secret JSON Web Token
 
 let messaging = Messaging(client)
 
 let subscriber = try await messaging.createSubscriber(
-    topicId: "<TOPIC_ID>",
-    subscriberId: "<SUBSCRIBER_ID>",
-    targetId: "<TARGET_ID>"
+    topicId: "<TOPIC_ID>",           // topicId
+    subscriberId: "<SUBSCRIBER_ID>", // name 
+    targetId: "<TARGET_ID>"          // permission roles for who can subscribe
 )
 ```
 {% /multicode %}

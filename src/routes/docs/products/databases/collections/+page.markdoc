@@ -31,12 +31,11 @@ const client = new sdk.Client();
 const databases = new sdk.Databases(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>')        // Your secret API key
 ;
 
-const promise = databases.createCollection('<DATABASE_ID>', '[COLLECTION_ID]', '[NAME]');
+const promise = databases.createCollection('<DATABASE_ID>', '<COLLECTION_ID>', '<NAME>');
 
 promise.then(function (response) {
     console.log(response);
@@ -53,13 +52,12 @@ let client = new sdk.Client();
 let databases = new sdk.Databases(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>')        // Your secret API key
 ;
 
 
-let promise = databases.createCollection('<DATABASE_ID>', '[COLLECTION_ID]', '[NAME]');
+let promise = databases.createCollection('<DATABASE_ID>', '<COLLECTION_ID>', '<NAME>');
 
 promise.then(function (response) {
     console.log(response);
@@ -101,16 +99,15 @@ use Appwrite\Client;
 use Appwrite\Services\Databases;
 
 $client = new Client();
-
+<API_KEY>
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('5df5acd0d48c2') // Your project ID
-    ->setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setKey('<API_KEY>')        // Your secret API key
 ;
 
 $databases = new Databases($client);
 
-$result = $databases->createCollection('<DATABASE_ID>', '[COLLECTION_ID]', '[NAME]');
+$result = $databases->createCollection('<DATABASE_ID>', '<COLLECTION_ID>', '<NAME>');
 ```
 ```python
 from appwrite.client import Client
@@ -119,14 +116,13 @@ from appwrite.services.databases import Databases
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-  .set_project('5df5acd0d48c2') # Your project ID
-  .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
+  .set_project('<PROJECT_ID>') # Your project ID
+  .set_key('<API_KEY>')        # Your secret API key
 )
 
 databases = Databases(client)
 
-result = databases.create_collection('<DATABASE_ID>', '[COLLECTION_ID]', '[NAME]')
+result = databases.create_collection('<DATABASE_ID>', '<COLLECTION_ID>', '<NAME>')
 ```
 ```ruby
 require 'Appwrite'
@@ -134,13 +130,12 @@ require 'Appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-    .set_project('5df5acd0d48c2') # Your project ID
-    .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_key('<API_KEY>')        # Your secret API key
 
 databases = Databases.new(client)
 
-response = databases.create_collection(database_id: '<DATABASE_ID>', collection_id: '[COLLECTION_ID]', name: '[NAME]')
+response = databases.create_collection(database_id: '<DATABASE_ID>', collection_id: '<COLLECTION_ID>', name: '<NAME>')
 
 puts response.inspect
 ```
@@ -150,16 +145,15 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 var client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("5df5acd0d48c2") // Your project ID
-    .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .SetProject("<PROJECT_ID>") // Your project ID
+    .SetKey("<API_KEY>");       // Your secret API key
 
 var databases = new Databases(client);
 
 Collection result = await databases.CreateCollection(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
-    name: "[NAME]");
+    name: "<NAME>");
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -169,15 +163,14 @@ void main() { // Init SDK
   Databases databases = Databases(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>')        // Your secret API key
   ;
 
   Future result = databases.createCollection(
     databaseId: '<DATABASE_ID>',
-    collectionId: '[COLLECTION_ID]',
-    name: '[NAME]',
+    collectionId: '<COLLECTION_ID>',
+    name: '<NAME>',
   );
 
   result
@@ -193,16 +186,15 @@ import io.appwrite.Client
 import io.appwrite.services.Databases
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2") // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your secret API key
 
 val databases = Databases(client)
 
 val response = databases.createCollection(
     databaseId = "<DATABASE_ID>",
     collectionId = "<COLLECTION_ID>",
-    name = "[NAME]",
+    name = "<NAME>",
 )
 ```
 ```java
@@ -211,16 +203,15 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Databases;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2") // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>");       // Your secret API key
 
 Databases databases = new Databases(client);
 
 databases.createCollection(
     "<DATABASE_ID>",
     "<COLLECTION_ID>",
-    "[NAME]",
+    "<NAME>",
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -235,16 +226,15 @@ databases.createCollection(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2") // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your secret API key
 
 let databases = Databases(client)
 
 let collection = try await databases.createCollection(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
-    name: "[NAME]"
+    name: "<NAME>"
 )
 ```
 {% /multicode %}

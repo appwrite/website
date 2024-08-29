@@ -96,8 +96,7 @@ import { Client } from "appwrite";
 const client = new Client();
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>')                // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 ```
 ```client-flutter
@@ -106,23 +105,20 @@ import 'package:appwrite/appwrite.dart';
 Client client = Client();
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>')                // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 ```
 ```client-apple
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>")                            // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 ```
 ```client-android-kotlin
 import io.appwrite.Client
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>")                // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 ```
 {% /multicode %}
 {% /tabsitem %}
@@ -139,9 +135,8 @@ const sdk = require('node-appwrite');
 const client = new sdk.Client();
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')                // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>')                            // Your project ID
-    .setJWT('<YOUR_API_KEY>')                                   // Your secret JSON Web Token
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setJWT('<USER_JWT>')       // Your secret JSON Web Token
 ;
 ```
 ```deno
@@ -151,9 +146,8 @@ import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 let client = new sdk.Client();
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')                // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>')                            // Your project ID
-    .setJWT('<YOUR_API_KEY>')                                   // Your secret JSON Web Token
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setJWT('<USER_JWT>')       // Your secret JSON Web Token
 ;
 ```
 ```go
@@ -171,7 +165,7 @@ var (
 func main() {
 	appwriteClient = appwrite.NewClient(
 		appwrite.WithProject("<PROJECT_ID>"), // Your project ID
-		appwrite.WithJWT("<API_KEY>"),        // Your secret API key
+		appwrite.WithJWT("<USER_JWT>"),       // Your secret API key
 	)
 }
 ```
@@ -184,9 +178,8 @@ use Appwrite\Client;
 $client = new Client();
 
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1')               // Your API Endpoint
-    ->setProject('<YOUR_PROJECT_ID>')                           // Your project ID
-    ->setJWT('<YOUR_API_KEY>')                                  // Your secret JSON Web Token
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setJWT('<USER_JWT>')       // Your secret JSON Web Token
 ;
 ```
 ```python
@@ -195,9 +188,8 @@ from appwrite.client import Client
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1')                 # Your API Endpoint
-  .set_project('<YOUR_PROJECT_ID>')                             # Your project ID
-  .set_jwt('<YOUR_API_KEY>')                                    # Your secret JSON Web Token
+  .set_project('<PROJECT_ID>') # Your project ID
+  .set_jwt('<USER_JWT>')       # Your secret JSON Web Token
 )
 ```
 ```ruby
@@ -206,29 +198,26 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1')               # Your API Endpoint
-    .set_project('<YOUR_PROJECT_ID>')                           # Your project ID
-    .set_jwt('<YOUR_API_KEY>')                                  # Your secret JSON Web Token
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_jwt('<USER_JWT>')       # Your secret JSON Web Token
 ```
 ```csharp
 using Appwrite;
 using Appwrite.Services;
 
 var client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1")                // Your API Endpoint
-    .SetProject("<YOUR_PROJECT_ID>")                            // Your project ID
-    .SetJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
+    .SetProject("<PROJECT_ID>") // Your project ID
+    .SetJWT("<USER_JWT>");      // Your secret JSON Web Token
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 
-void main() {                                                   // Init SDK
+void main() {                   // Init SDK
   Client client = Client();
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1')                // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>')                            // Your project ID
-    .setJWT('<YOUR_API_KEY>')                                   // Your secret JSON Web Token
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setJWT('<USER_JWT>')       // Your secret JSON Web Token
   ;
 }
 ```
@@ -237,26 +226,23 @@ import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")                // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>")                            // Your project ID
-    .setJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setJWT("<USER_JWT>");      // Your secret JSON Web Token
 ```
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")                // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>")                            // Your project ID
-    .setJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setJWT("<USER_JWT>");      // Your secret JSON Web Token
 ```
 ```swift
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")                // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>")                            // Your project ID
-    .setJWT("<YOUR_API_KEY>")                                   // Your secret JSON Web Token
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setJWT("<USER_JWT>")       // Your secret JSON Web Token
 ```
 {% /multicode %}
 {% /tabsitem %}
@@ -282,18 +268,16 @@ The API key should have the following scope in order to perform authentication:
 import { Client } from "node-appwrite"; // Using the server SDK
 
 const adminClient = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>')             // Your project ID
-    .setKey('<YOUR_API_KEY>');                   // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>');       // Your secret API key
 ```
 ```php
 use Appwrite\Client;
 use Appwrite\Services\Account;
 
 $adminClient = (new Client())
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('<YOUR_PROJECT_ID>')             // Your project ID
-    ->setKey('<YOUR_API_KEY>');                   // Your secret API key
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setKey('<API_KEY>');       // Your secret API key
 
 
 ```
@@ -311,8 +295,7 @@ You should create a new client for each request and **never** share the client b
 {% multicode %}
 ```server-nodejs
 const sessionClient = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>');            // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 const session = req.cookies.session; // Get the session cookie from the request
 if (session) {
@@ -321,8 +304,7 @@ if (session) {
 ```
 ```php
 $sessionClient = (new Client())
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('<YOUR_PROJECT_ID>');            // Your project ID
+    ->setProject('<PROJECT_ID>'); // Your project ID
 
 $session = $_COOKIE['session']; // Get the session cookie from the request
 if ($session) {

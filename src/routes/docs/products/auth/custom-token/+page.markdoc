@@ -17,13 +17,12 @@ Once you have your server endpoint prepared either in an Appwrite Function or a 
 import { Client, Users } from "node-appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('<PROJECT_ID>');                    // Your project ID
-    .setKey('<API_KEY>');                           // Your project API key
+    .setProject('<PROJECT_ID>'); // Your project ID
+    .setKey('<API_KEY>');        // Your project API key
 
 const users = new Users(client);
 
-const token = await users.createToken('[USER_ID]');
+const token = await users.createToken('<USER_ID>');
 const secret = token.secret;
 ```
 
@@ -32,13 +31,12 @@ use Appwrite\Client;
 use Appwrite\Users;
 
 $client = (new Client())
-    ->setEndpoint('https://cloud.appwrite.io/v1')   // Your API Endpoint
-    ->setProject('<PROJECT_ID>')                    // Your project ID
-    ->setKey('<API_KEY>');                          // Your project API key
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setKey('<API_KEY>');       // Your project API key
 
 $users = new Users($client);
 
-$token = $users->createToken('[USER_ID]');
+$token = $users->createToken('<USER_ID>');
 $secret = $token['secret'];
 ```
 
@@ -49,14 +47,13 @@ from appwrite.users import Users
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-  .set_project('<PROJECT_ID>')                  # Your project ID
-  .set_key('<API_KEY>')                         # Your project API key
+  .set_project('<PROJECT_ID>') # Your project ID
+  .set_key('<API_KEY>')        # Your project API key
 )
 
 users = Users(client)
 
-token = users.create_token('[USER_ID]')
+token = users.create_token('<USER_ID>')
 secret = token.secret
 ```
 
@@ -66,13 +63,12 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1')   # Your API Endpoint
-    .set_project('<PROJECT_ID>')                    # Your project ID
-    .set_key('<API_KEY>')                           # Your project API key
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_key('<API_KEY>')        # Your project API key
 
 users = Users.new(client)
 
-token = users.create_token('[USER_ID]')
+token = users.create_token('<USER_ID>')
 secret = token['secret']
 ```
 
@@ -80,13 +76,12 @@ secret = token['secret']
 import { Client, Users } from "https://deno.land/x/appwrite/mod.ts";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('<PROJECT_ID>')                     // Your project ID
-    .setKey('<API_KEY>');                           // Your project API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>');       // Your project API key
 
 const users = new Users(client);
 
-const token = await users.createToken('[USER_ID]');
+const token = await users.createToken('<USER_ID>');
 const secret = token.secret;
 ```
 
@@ -115,13 +110,12 @@ func main() {
 import 'package:dart_appwrite/dart_appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('<PROJECT_ID>')                     // Your project ID
-    .setKey('<API_KEY>');                           // Your project API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>');       // Your project API key
 
 final users = Users(client);
 
-final token = await users.createToken('[USER_ID]');
+final token = await users.createToken('<USER_ID>');
 final secret = token.secret;
 ```
 
@@ -130,13 +124,12 @@ import io.appwrite.Client
 import io.appwrite.Users
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .setProject("<PROJECT_ID>")                     // Your project ID
-    .setKey("<API_KEY>")                            // Your project API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your project API key
 
 val users = Users(client)
 
-val token = users.createToken("[USER_ID]")
+val token = users.createToken("<USER_ID>")
 val secret = token.secret
 ```
 
@@ -144,13 +137,12 @@ val secret = token.secret
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .setProject("<PROJECT_ID>")                     // Your project ID
-    .setKey("<API_KEY>")                            // Your project API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your project API key
 
 let users = Users(client)
 
-let token = try await users.createToken("[USER_ID]")
+let token = try await users.createToken("<USER_ID>")
 let secret = token.secret
 ```
 
@@ -158,13 +150,12 @@ let secret = token.secret
 using Appwrite;
 
 var client = new Client()
-    .SetEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .SetProject("<PROJECT_ID>")                     // Your project ID
-    .SetKey("<API_KEY>");                           // Your project API key
+    .SetProject("<PROJECT_ID>") // Your project ID
+    .SetKey("<API_KEY>");       // Your project API key
 
 var users = new Users(client);
 
-var token = await users.CreateToken("[USER_ID]");
+var token = await users.CreateToken("<USER_ID>");
 var secret = token.secret;
 ```
 {% /multicode %}
@@ -187,14 +178,13 @@ Once the client receives a token secret, we can use it to authenticate the user 
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('<PROJECT_ID>');
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 const account = new Account(client);
 
 const session = await account.createSession(
-    '[USER_ID]',
-    '[SECRET]'
+    '<USER_ID>',
+    '<SECRET>'
 );
 ```
 
@@ -202,28 +192,26 @@ const session = await account.createSession(
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('<PROJECT_ID>');
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 final account = Account(client);
 
 final session = await account.createSession(
-    userId: '[USER_ID]',
-    secret: '[SECRET]'
+    userId: '<USER_ID>',
+    secret: '<SECRET>'
 );
 ```
 ```client-apple
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<PROJECT_ID>");
+    .setProject("<PROJECT_ID>"); // Your project ID
 
 let account = Account(client);
 
 let session = try await account.createSession(
-    userId: "[USER_ID]",
-    secret: "[SECRET]"
+    userId: "<USER_ID>",
+    secret: "<SECRET>"
 );
 ```
 
@@ -232,20 +220,19 @@ import io.appwrite.Client
 import io.appwrite.services.Account
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<PROJECT_ID>");
+    .setProject("<PROJECT_ID>"); // Your project ID
 
 val account = Account(client);
 
 val session = account.createSession(
-    userId = "[USER_ID]",
-    secret = "[SECRET]"
+    userId = "<USER_ID>",
+    secret = "<SECRET>"
 );
 ```
 
 ```graphql
 mutation {
-    accountcreateSession(userId: "[USER_ID]", secret: "[SECRET]") {
+    accountcreateSession(userId: "<USER_ID>", secret: "<SECRET>") {
         _id
         userId
         provider

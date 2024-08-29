@@ -81,8 +81,8 @@ client
 ;
 
 const message = await messaging.createSms(
-        '[MESSAGE_ID]',                          // messageId
-        '[CONTENT]',                             // content
+        '<MESSAGE_ID>',                          // messageId
+        '<CONTENT>',                             // content
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
@@ -104,8 +104,8 @@ client
 ;
 
 const message = await messaging.createSms(
-        '[MESSAGE_ID]',                          // messageId
-        '[CONTENT]',                             // content
+        '<MESSAGE_ID>',                          // messageId
+        '<CONTENT>',                             // content
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
@@ -160,8 +160,8 @@ $client
 $messaging = new Messaging($client);
 
 $result = $messaging->createSms(
-    messageId: '[MESSAGE_ID]',                    // messageId
-    content: '[CONTENT]',                         // content
+    messageId: '<MESSAGE_ID>',                    // messageId
+    content: '<CONTENT>',                         // content
     topics: [],                                   // topics (optional)
     users: [],                                    // users (optional)
     targets: [],                                  // targets (optional)
@@ -183,8 +183,8 @@ client = Client()
 messaging = Messaging(client)
 
 result = messaging.create_sms(
-    message_id = '[MESSAGE_ID]',                # messageId
-    content = '[CONTENT]',                      # content
+    message_id = '<MESSAGE_ID>',                # messageId
+    content = '<CONTENT>',                      # content
     topics = [],                                # topics (optional)
     users = [],                                 # users (optional)
     targets = [],                               # targets (optional)
@@ -204,8 +204,8 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_sms(
-    message_id: '[MESSAGE_ID]',                   # messageId
-    content: '[CONTENT]',                         # content
+    message_id: '<MESSAGE_ID>',                   # messageId
+    content: '<CONTENT>',                         # content
     topics: [],                                   # topics (optional)
     users: [],                                    # users (optional)
     targets: [],                                  # targets (optional)
@@ -227,8 +227,8 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Message result = await messaging.CreateSMS(
-    messageId: "[MESSAGE_ID]",                    // messageId
-    content: "[CONTENT]"                          // content
+    messageId: "<MESSAGE_ID>",                    // messageId
+    content: "<CONTENT>"                          // content
     topics: new List<string> {}                   // topics (optional)    
     users: new List<string> {}                    // users (optional)    
     targets: new List<string> {}                  // targets (optional)    
@@ -250,8 +250,8 @@ void main() {                                    // Init SDK
   ;
 
   Future result = messaging.createSms(
-    messageId: '[MESSAGE_ID]',                   // messageId
-    content: '[CONTENT]',                        // content
+    messageId: '<MESSAGE_ID>',                   // messageId
+    content: '<CONTENT>',                        // content
     topics: [],                                  // topics (optional)
     users: [],                                   // users (optional)
     targets: [],                                 // targets (optional)
@@ -279,8 +279,8 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createSms(
-    "[MESSAGE_ID]",                               // messageId
-    "[CONTENT]",                                  // content
+    "<MESSAGE_ID>",                               // messageId
+    "<CONTENT>",                                  // content
     listOf(),                                     // topics (optional)
     listOf(),                                     // users (optional)
     listOf(),                                     // targets (optional)
@@ -308,8 +308,8 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createSms(
-    "[MESSAGE_ID]",                               // messageId
-    "[CONTENT]",                                  // content
+    "<MESSAGE_ID>",                               // messageId
+    "<CONTENT>",                                  // content
     listOf(),                                     // topics (optional)
     listOf(),                                     // users (optional)
     listOf(),                                     // targets (optional)
@@ -335,8 +335,8 @@ let client = Client()
 let messaging = Messaging(client)
 
 let message = try await messaging.createSms(
-  messageId: "[MESSAGE_ID]",                     // messageId
-  content: "[CONTENT]",                          // content
+  messageId: "<MESSAGE_ID>",                     // messageId
+  content: "<CONTENT>",                          // content
   topics: [],                                    // topics (optional)
   users: [],                                     // users (optional)
   targets: [],                                   // targets (optional)
@@ -377,12 +377,12 @@ client
 ;
 
 const provider = await messaging.updateVonageProvider(
-        '[PROVIDER_ID]',                         // providerId
-        '[NAME]',                                // name (optional)
+        '<PROVIDER_ID>',                         // providerId
+        '<NAME>',                                // name (optional)
         false,                                   // enabled (optional)
-        '[API_KEY]',                             // apiKey (optional)
-        '[API_SECRET]',                          // apiSecret (optional)
-        '[FROM]'                                 // from (optional)
+        '<API_KEY>',                             // apiKey (optional)
+        '<API_SECRET>',                          // apiSecret (optional)
+        '<FROM>'                                 // from (optional)
     );
 ```
 ```deno
@@ -399,12 +399,12 @@ client
 ;
 
 const provider = await messaging.updateVonageProvider(
-        '[PROVIDER_ID]',                         // providerId
-        '[NAME]',                                // name (optional)
+        '<PROVIDER_ID>',                         // providerId
+        '<NAME>',                                // name (optional)
         false,                                   // enabled (optional)
-        '[API_KEY]',                             // apiKey (optional)
-        '[API_SECRET]',                          // apiSecret (optional)
-        '[FROM]'                                 // from (optional)
+        '<API_KEY>',                             // apiKey (optional)
+        '<API_SECRET>',                          // apiSecret (optional)
+        '<FROM>'                                 // from (optional)
     );
 ```
 ```go
@@ -452,12 +452,12 @@ $client
 $messaging = new Messaging($client);
 
 $result = $messaging->updateVonageProvider(
-    providerId: '[PROVIDER_ID]',                  // providerId
-    name: '[NAME]',                               // name (optional)
+    providerId: '<PROVIDER_ID>',                  // providerId
+    name: '<NAME>',                               // name (optional)
     enabled: false,                               // enabled (optional)
-    apiKey: '[API_KEY]',                          // apiKey (optional)
-    apiSecret: '[API_SECRET]',                    // apiSecret (optional)
-    from: '[FROM]'                                // from (optional)
+    apiKey: '<API_KEY>',                          // apiKey (optional)
+    apiSecret: '<API_SECRET>',                    // apiSecret (optional)
+    from: '<FROM>'                                // from (optional)
 );
 ```
 ```python
@@ -474,12 +474,12 @@ client = Client()
 messaging = Messaging(client)
 
 result = messaging.update_vonage_provider(
-    provider_id = '[PROVIDER_ID]',              # providerId
-    name = '[NAME]',                            # name (optional)
+    provider_id = '<PROVIDER_ID>',              # providerId
+    name = '<NAME>',                            # name (optional)
     enabled = False,                            # enabled (optional)
-    api_key = '[API_KEY]',                      # apiKey (optional)
-    api_secret = '[API_SECRET]',                # apiSecret (optional)
-    from = '[FROM]'                             # from (optional)
+    api_key = '<API_KEY>',                      # apiKey (optional)
+    api_secret = '<API_SECRET>',                # apiSecret (optional)
+    from = '<FROM>'                             # from (optional)
 )
 ```
 ```ruby
@@ -494,12 +494,12 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.update_vonage_provider(
-    provider_id: '[PROVIDER_ID]',                 # providerId
-    name: '[NAME]',                               # name (optional)
+    provider_id: '<PROVIDER_ID>',                 # providerId
+    name: '<NAME>',                               # name (optional)
     enabled: false,                               # enabled (optional)
-    api_key: '[API_KEY]',                         # apiKey (optional)
-    api_secret: '[API_SECRET]',                   # apiSecret (optional)
-    from: '[FROM]'                                # from (optional)
+    api_key: '<API_KEY>',                         # apiKey (optional)
+    api_secret: '<API_SECRET>',                   # apiSecret (optional)
+    from: '<FROM>'                                # from (optional)
 )
 
 puts response.inspect
@@ -516,12 +516,12 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Provider result = await messaging.UpdateVonageProvider(
-    providerId: "[PROVIDER_ID]"                   // providerId
-    name: "[NAME]"                                // name (optional)
+    providerId: "<PROVIDER_ID>"                   // providerId
+    name: "<NAME>"                                // name (optional)
     enabled: false                                // enabled (optional)
-    apiKey: "[API_KEY]"                           // apiKey (optional)
-    apiSecret: "[API_SECRET]"                     // apiSecret (optional)
-    from: "[FROM]");                              // from (optional)
+    apiKey: "<API_KEY>"                           // apiKey (optional)
+    apiSecret: "<API_SECRET>"                     // apiSecret (optional)
+    from: "<FROM>");                              // from (optional)
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -538,12 +538,12 @@ void main() {                                    // Init SDK
   ;
 
   Future result = messaging.updateVonageProvider(
-    providerId: '[PROVIDER_ID]',                 // providerId
-    name: '[NAME]',                              // name (optional)
+    providerId: '<PROVIDER_ID>',                 // providerId
+    name: '<NAME>',                              // name (optional)
     enabled: false,                              // enabled (optional)
-    apiKey: '[API_KEY]',                         // apiKey (optional)
-    apiSecret: '[API_SECRET]',                   // apiSecret (optional)
-    from: '[FROM]',                              // from (optional)
+    apiKey: '<API_KEY>',                         // apiKey (optional)
+    apiSecret: '<API_SECRET>',                   // apiSecret (optional)
+    from: '<FROM>',                              // from (optional)
   );
 
   result
@@ -566,12 +566,12 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.updateVonageProvider(
-    "[PROVIDER_ID]",                              // providerId
-    "[NAME]",                                     // name (optional)
+    "<PROVIDER_ID>",                              // providerId
+    "<NAME>",                                     // name (optional)
     false,                                        // enabled (optional)
-    "[API_KEY]",                                  // apiKey (optional)
-    "[API_SECRET]",                               // apiSecret (optional)
-    "[FROM]"                                      // from (optional)
+    "<API_KEY>",                                  // apiKey (optional)
+    "<API_SECRET>",                               // apiSecret (optional)
+    "<FROM>"                                      // from (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -594,12 +594,12 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.updateVonageProvider(
-    "[PROVIDER_ID]",                              // providerId
-    "[NAME]",                                     // name (optional)
+    "<PROVIDER_ID>",                              // providerId
+    "<NAME>",                                     // name (optional)
     false,                                        // enabled (optional)
-    "[API_KEY]",                                  // apiKey (optional)
-    "[API_SECRET]",                               // apiSecret (optional)
-    "[FROM]"                                      // from (optional)
+    "<API_KEY>",                                  // apiKey (optional)
+    "<API_SECRET>",                               // apiSecret (optional)
+    "<FROM>"                                      // from (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -620,12 +620,12 @@ let client = Client()
 let messaging = Messaging(client)
 
 let provider = try await messaging.updateVonageProvider(
-  providerId: "[PROVIDER_ID]",                   // providerId
-  name: "[NAME]",                                // name (optional)
+  providerId: "<PROVIDER_ID>",                   // providerId
+  name: "<NAME>",                                // name (optional)
   enabled: xfalse,                               // enabled (optional)
-  apiKey: "[API_KEY]",                           // apiKey (optional)
-  apiSecret: "[API_SECRET]",                     // apiSecret (optional)
-  from: "[FROM]"                                 // from (optional)
+  apiKey: "<API_KEY>",                           // apiKey (optional)
+  apiSecret: "<API_SECRET>",                     // apiSecret (optional)
+  from: "<FROM>"                                 // from (optional)
 )
 ```
 {% /multicode %}
