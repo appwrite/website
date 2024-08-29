@@ -79,3 +79,5 @@ export const load = () => {
         featured: integrations.filter((i) => i.featured)
     };
 };
+
+export const prerender = false;
