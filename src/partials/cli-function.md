@@ -7,6 +7,7 @@ To deploy your function with the Appwrite CLI, use the `appwrite init functions`
 ```sh
 appwrite init functions
 ```
+
 To deploy the generated code, add any dependencies and push the function using the following command:
 
 ```sh

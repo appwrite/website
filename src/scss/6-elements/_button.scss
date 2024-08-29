@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 .#{$p}-button {
-  --m-border-radius: var(--border-radius-small);
+  --m-border-radius: var(--border-radius-small, #{pxToRem(8)});
   --m-border-size: #{pxToRem(1)};
 
   background: linear-gradient(135deg, hsl(var(--web-color-pink-500)) 0%, hsl(var(--web-color-pink-500)) 61%, hsl(var(--web-color-secondary-100)) 100%);

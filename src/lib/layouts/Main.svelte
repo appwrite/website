@@ -8,8 +8,6 @@
     };
     export const isHeaderHidden = writable(false);
     export const isMobileNavOpen = writable(false);
-
-    const initialized = writable(false);
 </script>
 
 <script lang="ts">
@@ -22,32 +20,10 @@
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
     import { page } from '$app/stores';
-    import { loggedIn } from '$lib/utils/console';
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
-    import InitBanner from '$lib/components/InitBanner.svelte';
+    import { classNames } from '$lib/utils/classnames';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
-
-    function setupThemeObserver() {
-        const handleVisibility = () => {
-            theme = getVisibleTheme();
-        };
-
-        const observer = new MutationObserver(handleVisibility);
-        observer.observe(document.body, { childList: true, subtree: true });
-
-        const callbacks = [
-            addEventListener(window, 'scroll', handleVisibility),
-            addEventListener(window, 'resize', handleVisibility)
-        ];
-
-        return () => {
-            observer.disconnect();
-            callbacks.forEach((callback) => callback());
-        };
-    }
 
     function isInViewport(element: Element): boolean {
         const mobileHeader = document.querySelector('.aw-mobile-header');
@@ -71,38 +47,29 @@
     }
 
     function getVisibleTheme() {
-        const themes = Array.from(document.querySelectorAll('.theme-dark, .theme-light')).filter(
-            (element) => {
-                const { classList, dataset } = element as HTMLElement;
-                if (
-                    classList.contains('web-mobile-header') ||
-                    classList.contains('web-main-header') ||
-                    element === document.body ||
-                    typeof dataset['themeIgnore'] === 'string'
-                ) {
-                    return false;
-                }
-                return true;
+        const themes = Array.from(document.querySelectorAll('.dark, .light')).filter((element) => {
+            const { classList, dataset } = element as HTMLElement;
+            if (
+                classList.contains('web-mobile-header') ||
+                classList.contains('web-main-header') ||
+                element === document.body ||
+                typeof dataset['themeIgnore'] === 'string'
+            ) {
+                return false;
             }
-        );
+            return true;
+        });
 
         for (const theme of themes) {
             if (isInViewport(theme)) {
-                return theme.classList.contains('theme-light') ? 'light' : 'dark';
+                return theme.classList.contains('light') ? 'light' : 'dark';
             }
         }
 
         return 'dark';
     }
 
-    onMount(() => {
-        setTimeout(() => {
-            $initialized = true;
-        }, 1000);
-        return setupThemeObserver();
-    });
-
-    let navLinks: NavLink[] = [
+    const navLinks: NavLink[] = [
         {
             label: 'Docs',
             href: '/docs'
@@ -114,10 +81,6 @@
         {
             label: 'Blog',
             href: '/blog'
-        },
-        {
-            label: 'Integrations',
-            href: '/integrations'
         },
         {
             label: 'Changelog',
@@ -144,25 +107,30 @@
 
         return $scrollInfo.deltaDirChange < 200;
     })();
+
+    const hideTopBanner = () => {
+        document.body.dataset.bannerHidden = '';
+        localStorage.setItem(BANNER_KEY, 'true');
+    };
 </script>
 
-<div class="u-position-relative">
+<div class="relative">
     <section
-        class="web-mobile-header theme-{resolvedTheme}"
-        class:is-transparent={browser && !$isMobileNavOpen}
+        class="web-mobile-header {resolvedTheme}"
+        class:transparent={browser && !$isMobileNavOpen}
         class:is-hidden={$isHeaderHidden}
     >
         <div class="web-mobile-header-start">
             <a href="/">
                 <img
-                    class="web-logo web-u-only-dark"
+                    class="web-logo block dark:hidden"
                     src="/images/logos/appwrite.svg"
                     alt="appwrite"
                     height="24"
                     width="130"
                 />
                 <img
-                    class="web-logo web-u-only-light"
+                    class="web-logo hidden dark:block"
                     src="/images/logos/appwrite-light.svg"
                     alt="appwrite"
                     height="24"
@@ -172,7 +140,7 @@
         </div>
         <div class="web-mobile-header-end">
             {#if !$isMobileNavOpen}
-                <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button">
+                <a href="https://cloud.appwrite.io" class="web-button">
                     <span class="text">Get started</span>
                 </a>
             {/if}
@@ -190,38 +158,40 @@
         </div>
     </section>
     <header
-        class="web-main-header is-special-padding theme-{resolvedTheme} is-transparent"
+        class="web-main-header is-special-padding {resolvedTheme} is-transparent"
         class:is-hidden={$isHeaderHidden}
-        class:is-special-padding={!BANNER_KEY.startsWith('init-banner-')}
-        style={BANNER_KEY === 'init-banner-02' ? 'padding-inline: 0' : ''}
     >
-        {#if BANNER_KEY.startsWith('init-banner-')}
-            <InitBanner />
-        {:else}
-            <AnnouncementBanner>
+        <div class="web-top-banner">
+            <div class="web-top-banner-content web-u-color-text-primary">
                 <a href="/discord" target="_blank" rel="noopener noreferrer">
                     <span class="web-caption-500">We are having lots of fun on</span>
                     <span class="web-icon-discord" aria-hidden="true" />
                     <span class="web-caption-500">Discord. Come and join us!</span>
                 </a>
-            </AnnouncementBanner>
-        {/if}
+                {#if browser}
+                    <button
+                        class="web-top-banner-button"
+                        aria-label="close discord message"
+                        on:click={hideTopBanner}
+                    >
+                        <span class="web-icon-close" aria-hidden="true" />
+                    </button>
+                {/if}
+            </div>
+        </div>
 
-        <div
-            class="web-main-header-wrapper"
-            class:is-special-padding={BANNER_KEY.startsWith('init-banner-')}
-        >
+        <div class="web-main-header-wrapper">
             <div class="web-main-header-start">
                 <a href="/">
                     <img
-                        class="web-logo web-u-only-dark"
+                        class="web-logo hidden dark:block"
                         src="/images/logos/appwrite.svg"
                         alt="appwrite"
                         height="24"
                         width="130"
                     />
                     <img
-                        class="web-logo web-u-only-light"
+                        class="web-logo block dark:hidden"
                         src="/images/logos/appwrite-light.svg"
                         alt="appwrite"
                         height="24"
@@ -231,11 +201,12 @@
                 <nav class="web-main-header-nav" aria-label="Main">
                     <ul class="web-main-header-nav-list">
                         {#each navLinks as navLink}
-                            <li class="web-main-header-nav-item">
+                            <li class="web-main-header-nav-item text-primary hover:text-accent">
                                 <a
-                                    class="web-link"
+                                    class={classNames(
+                                        'data-[badge]:after:animate-scale-in data-[badge]:relative data-[badge]:after:absolute data-[badge]:after:size-1.5 data-[badge]:after:translate-full data-[badge]:after:rounded-full'
+                                    )}
                                     href={navLink.href}
-                                    data-initialized={$initialized ? '' : undefined}
                                     data-badge={navLink.showBadge ? '' : undefined}
                                     >{navLink.label}
                                 </a>
@@ -249,23 +220,20 @@
                     href="https://github.com/appwrite/appwrite/stargazers"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="web-button is-text"
+                    class="web-button is-text web-u-inline-width-100-percent-mobile"
                 >
-                    <span aria-hidden="true" class="web-icon-star" />
+                    <span class="web-icon-star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>
                     <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span>
                 </a>
+
                 <IsLoggedIn />
             </div>
         </div>
     </header>
     <MobileNav bind:open={$isMobileNavOpen} links={navLinks} />
 
-    <main
-        class="web-main-section"
-        class:web-u-hide-mobile={$isMobileNavOpen}
-        id={omitMainId ? undefined : 'main'}
-    >
+    <main class:web-u-hide-mobile={$isMobileNavOpen} id={omitMainId ? undefined : 'main'}>
         <slot />
     </main>
 </div>
@@ -276,37 +244,12 @@
         padding-inline: 0.375rem;
     }
 
-    @keyframes scale-in {
-        0% {
-            transform: scale(0);
-        }
-        100% {
-            transform: scale(1);
-        }
-    }
-
-    .is-special-padding {
-        padding-inline: clamp(1.25rem, 4vw, 120rem);
-    }
-
     [data-badge] {
-        position: relative;
-
         &::after {
-            content: '';
-            position: absolute;
             background-color: hsl(var(--web-color-accent));
-            border-radius: 100%;
-            width: 0.375rem;
-            height: 0.375rem;
 
             inset-block-start: -2px;
             inset-inline-end: -4px;
-            translate: 100%;
-        }
-
-        &:not([data-initialized])::after {
-            animation: scale-in 0.2s ease-out;
         }
     }
 </style>
