@@ -237,19 +237,19 @@ client
 ;
 
 const message = await messaging.createPush(
-        '[MESSAGE_ID]',                          // messageId
-        '[TITLE]',                               // title
-        '[BODY]',                                // body
+        '<MESSAGE_ID>',                          // messageId
+        '<TITLE>',                               // title
+        '<BODY>',                                // body
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
         {},                                      // data (optional)
-        '[ACTION]',                              // action (optional)
-        '[ICON]',                                // icon (optional)
-        '[SOUND]',                               // sound (optional)
-        '[COLOR]',                               // color (optional)
-        '[TAG]',                                 // tag (optional)
-        '[BADGE]',                               // badge (optional)
+        '<ACTION>',                              // action (optional)
+        '<ICON>',                                // icon (optional)
+        '<SOUND>',                               // sound (optional)
+        '<COLOR>',                               // color (optional)
+        '<TAG>',                                 // tag (optional)
+        '<BADGE>',                               // badge (optional)
         true,                                    // draft (optional)
         ''                                       // scheduledAt (optional)
     );
@@ -268,19 +268,19 @@ client
 ;
 
 const message = await messaging.createPush(
-        '[MESSAGE_ID]',                          // messageId
-        '[TITLE]',                               // title
-        '[BODY]',                                // body
+        '<MESSAGE_ID>',                          // messageId
+        '<TITLE>',                               // title
+        '<BODY>',                                // body
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
         {},                                      // data (optional)
-        '[ACTION]',                              // action (optional)
-        '[ICON]',                                // icon (optional)
-        '[SOUND]',                               // sound (optional)
-        '[COLOR]',                               // color (optional)
-        '[TAG]',                                 // tag (optional)
-        '[BADGE]',                               // badge (optional)
+        '<ACTION>',                              // action (optional)
+        '<ICON>',                                // icon (optional)
+        '<SOUND>',                               // sound (optional)
+        '<COLOR>',                               // color (optional)
+        '<TAG>',                                 // tag (optional)
+        '<BADGE>',                               // badge (optional)
         true,                                    // draft (optional)
         ''                                       // scheduledAt (optional)
     );
@@ -293,31 +293,33 @@ import (
 )
 
 func main() {
-	appwriteClient := appwrite.NewClient(
-		appwrite.WithProject("<PROJECT_ID>"),                           // Your project ID
-		appwrite.WithKey("<API_KEY>"),                                  // Your secret API key
+	client := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"),                   // Your project ID
+		appwrite.WithKey("<API_KEY>"),                          // Your secret API key
 	)
 
-	appwriteMessaging := appwrite.NewMessaging(appwriteClient)
+	messaging := appwrite.NewMessaging(client)
 
-	var _, _ = appwriteMessaging.CreatePush(
-		"<MESSAGING_ID>",                                               // messageId
-		"<TITLE>",                                                      // title
-		"<BODY>",                                                       // body
-		appwriteMessaging.WithCreatePushTopics([]string{}),             // topics (optional)
-		appwriteMessaging.WithCreatePushUsers([]string{}),              // users (optional)
-		appwriteMessaging.WithCreatePushTargets([]string{}),            // targets (optional)
-		appwriteMessaging.WithCreatePushData(map[string]interface{}{}), // data (optional)
-		appwriteMessaging.WithCreatePushAction("<ACTION>"),             // action (optional)
-        appwriteMessaging.WithCreatePushImage("[ID1:ID2]"),             // image (optional)
-		appwriteMessaging.WithCreatePushIcon("<ICON>"),                 // icon (optional)
-		appwriteMessaging.WithCreatePushSound("<SOUND>"),               // sound (optional)
-		appwriteMessaging.WithCreatePushColor("<COLOR>"),               // color (optional)
-		appwriteMessaging.WithCreatePushTag("<TAG>"),                   // tag (optional)
-		appwriteMessaging.WithCreatePushBadge("<BADGE>"),               // badge (optional)
-		appwriteMessaging.WithCreatePushDraft(false),                   // draft (optional)
-		appwriteMessaging.WithCreatePushScheduledAt(""),                // scheduledAt (optional)
+	message := messaging.CreatePush(
+		"<MESSAGING_ID>",                                       // messageId
+		"<TITLE>",                                              // title
+		"<BODY>",                                               // body
+		messaging.WithCreatePushTopics([]string{}),             // topics (optional)
+		messaging.WithCreatePushUsers([]string{}),              // users (optional)
+		messaging.WithCreatePushTargets([]string{}),            // targets (optional)
+		messaging.WithCreatePushData(map[string]interface{}{}), // data (optional)
+		messaging.WithCreatePushAction("<ACTION>"),             // action (optional)
+        messaging.WithCreatePushImage("[ID1:ID2]"),             // image (optional)
+		messaging.WithCreatePushIcon("<ICON>"),                 // icon (optional)
+		messaging.WithCreatePushSound("<SOUND>"),               // sound (optional)
+		messaging.WithCreatePushColor("<COLOR>"),               // color (optional)
+		messaging.WithCreatePushTag("<TAG>"),                   // tag (optional)
+		messaging.WithCreatePushBadge("<BADGE>"),               // badge (optional)
+		messaging.WithCreatePushDraft(false),                   // draft (optional)
+		messaging.WithCreatePushScheduledAt(""),                // scheduledAt (optional)
 	)
+
+    fmt.Println(message)
 }
 ```
 
@@ -648,6 +650,37 @@ const message - await messaging.createEmail(
         ''                                       // scheduledAt (optional)
     );
 ```
+```go
+package main
+
+import (
+	"github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+	client := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"), // Your project ID
+		appwrite.WithKey("<API_KEY>"),        // Your secret API key
+	)
+
+	messaging := appwrite.NewMessaging(client)
+
+	var _, _ = messaging.CreateEmail(
+		"<MESSAGE_ID>",                                   // messageId      
+		"<SUBJECT>",                                      // subject    
+		"<CONTENT>",                                      // content  
+		messaging.WithCreateEmailTopics([]string{}),      // topics (optional)    
+		messaging.WithCreateEmailUsers([]string{}),       // users (optional) 
+		messaging.WithCreateEmailTargets([]string{}),     // targets (optional)   
+		messaging.WithCreateEmailCc([]string{}),          // cc (optional)  
+		messaging.WithCreateEmailBcc([]string{}),         // bcc (optional)  
+		messaging.WithCreateEmailAttachments([]string{}), // attachments (optional)
+		messaging.WithCreateEmailDraft(false),            // draft (optional)
+		messaging.WithCreateEmailHtml(false),             // html (optional) 
+		messaging.WithCreateEmailScheduledAt(""),         // scheduledAt (optional)   
+	)
+}
+```
 ```php
 <?php
 
@@ -934,6 +967,37 @@ const message = await messaging.createSms(
         true,                                    // draft (optional)
         ''                                       // scheduledAt (optional)
     );
+```
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+
+	client := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"),       // Your project ID
+		appwrite.WithKey("<API_KEY>"),              // Your secret API key
+	)
+
+	messaging := appwrite.NewMessaging(client)
+
+	message, _ := messaging.CreateSms(
+		"<MESSAGE_ID>",                             // messageId
+		"<CONTENT>",                                // content
+		messaging.WithCreateSmsTopics([]string{}),  // topics (optional)
+		messaging.WithCreateSmsUsers([]string{}),   // users (optional)
+		messaging.WithCreateSmsTargets([]string{}), // targets (optional)
+		messaging.WithCreateSmsDraft(false),        // draft (optional)
+		messaging.WithCreateSmsScheduledAt(""),     // scheduledAt (optional)
+	)
+
+	fmt.Println(message)
+}
 ```
 ```php
 <?php
