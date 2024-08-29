@@ -44,7 +44,7 @@ Client libraries for integrating with Appwrite to build client-based application
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/android.svg" alt="Android logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/android.svg" alt="Android logo" size="m" /%}{% /only_light %}
-* Android SDK `7.0.0`
+* Android SDK `6.0.0`
 * [appwrite/sdk-for-android](https://github.com/appwrite/sdk-for-android)
 * 
 {% /table %}
