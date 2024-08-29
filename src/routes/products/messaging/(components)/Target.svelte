@@ -68,7 +68,12 @@
                     circlePos: [500, 100],
                     textPos: [250, 80]
                 },
-                { checked: false, type: 'SMS', value: '+1 123 456 2890', circlePos: [1520, 700] }
+                {
+                    checked: false,
+                    type: 'SMS',
+                    value: '+1 123 456 2890',
+                    circlePos: [1520, 700]
+                }
             ]
         },
         {
@@ -345,7 +350,7 @@
                     {/each}
                 </ul>
             </Accordion>
-            <div class="u-flex u-margin-block-start-20">
+            <div class="mt-5 flex">
                 <span class="web-u-color-text-tertiary" style:font-size="0.75rem">
                     Total results: {users.flatMap((u) => u.devices).length}
                 </span>
@@ -353,7 +358,7 @@
 
             <hr />
 
-            <div class="u-flex u-cross-center u-main-end u-gap-16">
+            <div class="flex items-center justify-end gap-4">
                 <span style="font-size: 14px; color: #6C6C71;"
                     >{users.filter((u) => !!u.devices.some((d) => d.checked)).length} Users selected</span
                 >
@@ -362,11 +367,11 @@
         </div>
     </div>
 
-    <div class="u-flex u-flex-vertical u-cross-center u-gap-24 u-margin-block-start-16 target-text">
-        <h3 class="web-title web-u-color-text-primary u-text-center">
+    <div class="target-text mt-4 flex flex-col items-center gap-6">
+        <h3 class="web-title web-u-color-text-primary text-center">
             Target and group your subscribers
         </h3>
-        <p class="web-description u-text-center" style:max-inline-size="580px">
+        <p class="web-description text-center" style:max-inline-size="580px">
             Segment your users based on topics using list subscriptions to send focused messages.
         </p>
     </div>

@@ -9,7 +9,7 @@
 
 <div class="web-media">
     <!-- svelte-ignore a11y-media-has-caption -->
-    <video {src} class="web-u-media-ratio-16-9 u-width-full-line" controls {autoplay} {loop}>
+    <video {src} class="web-u-media-ratio-16-9 w-full" controls {autoplay} {loop}>
         <source {src} {type} />
     </video>
 </div>
