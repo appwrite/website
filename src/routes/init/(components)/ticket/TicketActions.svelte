@@ -47,14 +47,11 @@
 </script>
 
 {#if customizing}
-    <div
-        class="action-container u-flex u-main-between u-gap-16"
-        style:justify-content="space-between"
-    >
-        <div class="u-flex u-gap-16">
+    <div class="action-container flex justify-between gap-4" style:justify-content="space-between">
+        <div class="flex gap-4">
             {#if ticket.gh_user}
-                <div class="u-flex u-cross-center u-gap-8">
-                    <div class="u-flex u-cross-center u-gap-8 web-u-color-text-primary">
+                <div class="flex items-center gap-2">
+                    <div class="web-u-color-text-primary flex items-center gap-2">
                         <span class="web-sub-body-500">Connected to GitHub</span>
                     </div>
 
@@ -90,7 +87,7 @@
             <span class="text">Customize</span>
         </button>
 
-        <div class="u-flex u-gap-8 action-buttons">
+        <div class="action-buttons flex gap-2">
             <button class="web-button is-secondary" on:click={copy}>
                 <div class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary" />
                 <span class="text">Copy URL</span>
