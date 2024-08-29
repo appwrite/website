@@ -8,11 +8,12 @@
     import { writable } from 'svelte/store';
     import { autoHash } from '$lib/actions/autoHash';
     import type { Integration } from './+page';
-    import { goto } from '$app/navigation';
+    import { goto, replaceState } from '$app/navigation';
     import { onDestroy, onMount } from 'svelte';
     import { browser } from '$app/environment';
     import { classNames } from '$lib/utils/classnames';
     import Input from '$lib/components/ui/Input.svelte';
+    import { page } from '$app/stores';
 
     export let data;
 
@@ -29,7 +30,7 @@
     let result: ResultType<Integration> = [];
 
     let hasQuery: boolean;
-    let query = writable('');
+    let query = writable(decodeURIComponent($page.url.searchParams.get('search') ?? ''));
 
     $: query.subscribe((value) => {
         hasQuery = value.length > 0;
@@ -42,6 +43,12 @@
 
     // categories
     let activeCategory: string | null = null;
+
+    const handleQuery = (value: string) => {
+        $page.url.searchParams.set('search', encodeURIComponent(value));
+        query.set(value);
+        replaceState($page.url, $page.state);
+    };
 
     onMount(() => {
         if (browser) document.documentElement.setAttribute('data-scroll-smooth', '');
@@ -129,6 +136,7 @@
                                 name="search"
                                 placeholder="Search"
                                 bind:value={$query}
+                                on:input={(e) => handleQuery(e.detail.value)}
                                 autocomplete="off"
                             >
                                 <span
@@ -181,10 +189,10 @@
 
                                 <div class="relative block sm:hidden">
                                     <select
-                                        class="web-input-text"
-                                        bind:value={activeCategory}
-                                        on:change={() => {
-                                            goto(`#${activeCategory?.toLowerCase()}`);
+                                        class="web-input-text w-full appearance-none"
+                                        disabled={hasQuery}
+                                        on:change={(e) => {
+                                            goto(`#${e.currentTarget.value.toLowerCase()}`);
                                         }}
                                     >
                                         {#each data.categories as category}
@@ -252,7 +260,7 @@
                                                         style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                                                     >
                                                         <div
-                                                            class="flex items-center justify-between gap-2"
+                                                            class="flex items-center justify-between"
                                                         >
                                                             <img
                                                                 class="web-user-box-image is-32px"
@@ -261,15 +269,19 @@
                                                                 width="32"
                                                                 height="32"
                                                             />
+                                                            <span
+                                                                class="icon-arrow-right ml-auto"
+                                                                aria-hidden="true"
+                                                            ></span>
+                                                        </div>
+                                                        <div
+                                                            class="flex items-center justify-between gap-2"
+                                                        >
                                                             <h4
                                                                 class="web-u-color-text-primary mt-3"
                                                             >
                                                                 {item.title}
                                                             </h4>
-                                                            <span
-                                                                class="icon-arrow-right ml-auto"
-                                                                aria-hidden="true"
-                                                            ></span>
                                                         </div>
                                                         <p class="web-sub-body-400 mt-1">
                                                             {item.description}
