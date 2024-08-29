@@ -168,6 +168,7 @@
 ---
 
 -   `users.*.verification.*.update`
--         This event triggers when a verification token for a user is validated.
-          Returns [Token Object](/docs/references/cloud/models/token)
-    {% /table %}
+-   This event triggers when a verification token for a user is validated.
+    Returns [Token Object](/docs/references/cloud/models/token)
+
+{% /table %}

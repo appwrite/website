@@ -142,7 +142,8 @@ Alternatively, use markdoc tables.
 
 -   Row 2 Cell 1
 -   Row 2 cell 2
-    {% /table %}
+
+{% /table %}
 ```
 
 #### Block Quotes
