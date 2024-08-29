@@ -74,7 +74,7 @@
         </TicketPreview>
     </div>
 
-    <div class="web-container">
+    <div class="container">
         <FooterNav />
         <MainFooter />
     </div>
@@ -108,7 +108,7 @@
     }
 
     @media screen and (max-width: 1023px) {
-        .web-container {
+        .container {
             padding-block-start: 0;
 
             :global(nav) {

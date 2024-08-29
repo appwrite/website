@@ -28,7 +28,7 @@ const categoryDescriptions = Object.entries({
     payments: 'Secure online payment processing',
     search: 'Implement search functionalities',
     storage: 'Storage for data and media',
-    deployments: 'Seamlessly deploy your code',
+    deployments: 'Seamlessly deploy your code'
 });
 
 export const load = () => {

@@ -36,10 +36,10 @@
 </svelte:head>
 
 <Main>
-    <div class="web-container web-u-padding-block-end-0">
+    <div class="container web-u-padding-block-end-0">
         <div class="header">
             <div>
-                <a class="web-link is-secondary u-cross-baseline" href="/threads">
+                <a class="web-link is-secondary items-baseline" href="/threads">
                     <span class="web-icon-chevron-left" aria-hidden="true" />
                     <span>Back</span>
                 </a>
@@ -79,10 +79,8 @@
                 {/each}
                 <div class="web-card is-normal has-border-gradient">
                     <span class="web-sub-body-500 web-u-color-text-primary">Reply</span>
-                    <p class="web-sub-body-500 u-margin-block-start-16">
-                        Reply to this thread by joining our Discord
-                    </p>
-                    <a class="web-button u-margin-block-start-24" href={discordLink}>
+                    <p class="web-sub-body-500 mt-4">Reply to this thread by joining our Discord</p>
+                    <a class="web-button mt-6" href={discordLink}>
                         <span class="web-icon-discord" />
                         <span class="text">Reply on Discord</span>
                     </a>
@@ -96,14 +94,14 @@
                     {#each data.related as thread}
                         <li>
                             <a href="/threads/{thread.$id}" data-sveltekit-reload>
-                                <div class="u-flex u-cross-center">
+                                <div class="flex items-center">
                                     <span class="web-sub-body-500 web-u-color-text-primary">
                                         {thread.title.length > 40
                                             ? thread.title.slice(0, 40) + '...'
                                             : thread.title}
                                     </span>
                                 </div>
-                                <p class="web-sub-body-400 u-margin-block-start-8">
+                                <p class="web-sub-body-400 mt-2">
                                     {thread.content.length > 160
                                         ? thread.content.slice(0, 160) + '...'
                                         : thread.content}
@@ -117,7 +115,7 @@
     </div>
 
     <PreFooter />
-    <div class="web-container" style="margin-block-start: -7.75rem;">
+    <div class="container" style="margin-block-start: -7.75rem;">
         <FooterNav />
         <MainFooter />
     </div>
