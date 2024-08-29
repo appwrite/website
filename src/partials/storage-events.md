@@ -48,6 +48,7 @@
 ---
 
 -   `buckets.*.update`
--         This event triggers when a bucket is updated.
-          Returns [Bucket Object](/docs/references/cloud/models/bucket)
-    {% /table %}
+-   This event triggers when a bucket is updated.
+    Returns [Bucket Object](/docs/references/cloud/models/bucket)
+
+{% /table %}

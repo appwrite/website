@@ -84,6 +84,7 @@
 ---
 
 -   `messages.*.update`
--         This event triggers when a message is updated.
-          Returns [Message Object](/docs/references/cloud/models/message)
-    {% /table %}
+-   This event triggers when a message is updated.
+    Returns [Message Object](/docs/references/cloud/models/message)
+
+{% /table %}

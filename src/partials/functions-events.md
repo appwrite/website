@@ -72,6 +72,7 @@
 ---
 
 -   `functions.*.update`
--         This event triggers when a function is updated.
-          Returns [Function Object](/docs/references/cloud/models/function)
-    {% /table %}
+-   This event triggers when a function is updated.
+    Returns [Function Object](/docs/references/cloud/models/function)
+
+{% /table %}
