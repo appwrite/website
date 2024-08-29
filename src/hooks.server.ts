@@ -10,7 +10,7 @@ Sentry.init({
     dsn: SENTRY_DSN,
     tracesSampleRate: 1,
     allowUrls: [/appwrite\.io/]
-})
+});
 
 const redirectMap = new Map(redirects.map(({ link, redirect }) => [link, redirect]));
 

@@ -28,20 +28,12 @@
 </svelte:head>
 
 <Main>
-    <enhanced:img
-        class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-0"
-        src="./bg-left.png"
-        alt=""
-    />
-    <enhanced:img
-        class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0"
-        src="./bg-right.png"
-        alt=""
-    />
-    <div class="web-big-padding-section u-position-relative">
-        <div class="web-big-padding-section-level-1 u-position-relative">
+    <enhanced:img class="absolute top-0" src="./bg-left.png" alt="" />
+    <enhanced:img class="absolute inset-y-0" src="./bg-right.png" alt="" />
+    <div class="web-big-padding-section relative">
+        <div class="relative py-10">
             <div class="web-big-padding-section-level-2" style:margin-block="8rem">
-                <section class="web-container web-u-padding-block-end-0">
+                <section class="container web-u-padding-block-end-0">
                     <div
                         class="web-hero"
                         style="--hero-max-inline-size:62.125rem; --hero-gap:1.125rem;"
@@ -61,20 +53,20 @@
                 </section>
             </div>
         </div>
-        <div class="web-big-padding-section-level-1 u-position-relative">
+        <div class="relative py-10">
             <div class="web-big-padding-section-level-2">
-                <section class="web-container">
+                <section class="container">
                     <section
                         class="web-grid-1-1"
                         style="--grid-1-1-gap:2rem; --grid-1-1-gap-desktop:6.25rem;"
                     >
-                        <div class="u-flex-vertical u-gap-32">
+                        <div class="flex flex-col gap-8">
                             <h2 class="web-display web-u-color-text-primary">
                                 Designed for and by developers
                             </h2>
                             <a
                                 href="https://appwrite.careers"
-                                class="web-button u-cross-child-start web-u-inline-width-100-percent-mobile-break1"
+                                class="web-button web-u-inline-width-100-percent-mobile-break1 self-start"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
@@ -82,7 +74,7 @@
                             </a>
                         </div>
 
-                        <div class="web-description u-flex-vertical u-gap-16">
+                        <div class="web-description flex flex-col gap-4">
                             <p>
                                 At Appwrite it is our mission to eliminate friction and abstract
                                 complexity for every creator. Giving developers all the tools they
@@ -104,9 +96,9 @@
             </div>
         </div>
 
-        <!-- <div class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light">
+        <!-- <div class="py-10 relative web-white-section theme-light">
 			<div class="web-big-padding-section-level-2">
-				<div class="web-container">
+				<div class="container">
 					<div class="web-hero is-center">
 						<h2 class="web-display web-u-color-text-primary">Our Story</h2>
 						<p class="web-description">
@@ -115,13 +107,13 @@
 					</div>
 				</div>
 				<div class="web-big-padding-section-level-2">
-					<div class="web-container">
+					<div class="container">
 						<div class="web-timeline-content">
 							<ol class="web-timeline-content-list">
 								<li class="web-timeline-content-item">
 									<div class="web-timeline-content-item-top web-grid-1-1"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
-										<div class="u-flex-vertical u-gap-16">
+										<div class="flex flex-col gap-4">
 											<span class="web-badges web-eyebrow web-u-cross-child-start">2019_</span>
 											<h3 class="web-title web-u-color-text-primary">
 												A passion project called Appwrite
@@ -146,7 +138,7 @@
 										<div>
 											<div class="web-card is-white web-u-max-width-350">
 												<h6 class="web-label">0.1 - 0.4 released</h6>
-												<p class="web-sub-body-400 u-margin-block-start-12">Early stages of authentication, avatars, database, teams, and storage features</p>
+												<p class="web-sub-body-400 mt-3">Early stages of authentication, avatars, database, teams, and storage features</p>
 											</div>
 										</div>
 									</div>
@@ -154,7 +146,7 @@
 								<li class="web-timeline-content-item">
 									<div class="web-grid-1-1"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
-										<div class="u-flex-vertical u-gap-16">
+										<div class="flex flex-col gap-4">
 											<span class="web-badges web-eyebrow web-u-cross-child-start">2019_</span>
 											<h3 class="web-title web-u-color-text-primary">
 												Building the team
@@ -182,7 +174,7 @@
 								<li class="web-timeline-content-item">
 									<div class="web-grid-1-1"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
-										<div class="u-flex-vertical u-gap-16">
+										<div class="flex flex-col gap-4">
 											<span class="web-badges web-eyebrow web-u-cross-child-start">2019_</span>
 											<h3 class="web-title web-u-color-text-primary">
 												Community validation
@@ -200,8 +192,8 @@
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div>
 											<div class="web-card is-white">
-												<div class="web-social-item u-flex-vertical u-gap-24">
-													<div class="u-flex u-gap-16 u-main-space-between">
+												<div class="web-social-item flex flex-col gap-6">
+													<div class="flex gap-4 justify-between">
 														<div class="web-user-box">
 															<img class="web-user-box-image" src="/images/avatars/eldad.png" alt="Avatar of Eldad Fux">
 															<div class="web-user-box-name web-sub-body-500">Eldad Fux</div>
@@ -224,7 +216,7 @@
 								<li class="web-timeline-content-item">
 									<div class="web-grid-1-1"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
-										<div class="u-flex-vertical u-gap-16">
+										<div class="flex flex-col gap-4">
 											<span class="web-badges web-eyebrow web-u-cross-child-start">2019_</span>
 											<h3 class="web-title web-u-color-text-primary">
 												Continuous improvement
@@ -253,7 +245,7 @@
 								<li class="web-timeline-content-item">
 									<div class="web-grid-1-1"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
-										<div class="u-flex-vertical u-gap-16">
+										<div class="flex flex-col gap-4">
 											<span class="web-badges web-eyebrow web-u-cross-child-start">2019_</span>
 											<h3 class="web-title web-u-color-text-primary">
 												Taking it to the Cloud
@@ -282,12 +274,14 @@
 				</div>
 			</div>
 		</div> -->
-        <div class="web-big-padding-section-level-1 web-white-section theme-light">
+        <div class="web-white-section theme-light py-10">
             <div class="web-big-padding-section-level-2">
-                <div class="web-container">
+                <div class="container">
                     <div class="web-hero web-u-max-width-800">
-                        <h4 class="web-display web-u-color-text-primary">Backed by top investors</h4>
-                        <p class="web-description web-u-max-width-480 u-margin-inline-auto">
+                        <h4 class="web-display web-u-color-text-primary">
+                            Backed by top investors
+                        </h4>
+                        <p class="web-description web-u-max-width-480 mx-auto">
                             Appwrite is proudly backed by some of the top investors in the industry.
                         </p>
                     </div>
@@ -376,18 +370,16 @@
                 </div>
             </div>
             <div class="web-big-padding-section-level-2">
-                <div class="web-container">
-                    <h5 class="web-title web-u-color-text-primary u-text-center">Angel Investors</h5>
-                    <ul class="web-grid-2c-4c u-margin-block-start-48">
-                        <li class="u-flex-vertical">
+                <div class="container">
+                    <h5 class="web-title web-u-color-text-primary text-center">Angel Investors</h5>
+                    <ul class="web-grid-2c-4c mt-12">
+                        <li class="flex flex-col">
                             <h6 class="web-main-body-500 web-u-color-text-primary">
                                 Aaron Applebaum
                             </h6>
                             <p class="web-main-body-500">Partner</p>
                             <p class="web-main-body-500">MizMaa</p>
-                            <ul
-                                class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto"
-                            >
+                            <ul class="mt-auto flex gap-2 pt-4">
                                 <li>
                                     <a
                                         href="https://github.com/aapplbaum"
@@ -412,13 +404,13 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="u-flex-vertical">
-                            <h6 class="web-main-body-500 web-u-color-text-primary">Ariel Maislos</h6>
+                        <li class="flex flex-col">
+                            <h6 class="web-main-body-500 web-u-color-text-primary">
+                                Ariel Maislos
+                            </h6>
                             <p class="web-main-body-500">Angel Investor</p>
                             <p class="web-main-body-500">Former Apple IL CEO</p>
-                            <ul
-                                class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto"
-                            >
+                            <ul class="mt-auto flex gap-2 pt-4">
                                 <li>
                                     <a
                                         href="https://github.com/arielmaislos"
@@ -443,22 +435,18 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="u-flex-vertical">
+                        <li class="flex flex-col">
                             <h6 class="web-main-body-500 web-u-color-text-primary">Gilad Engel</h6>
                             <p class="web-main-body-500">Angel Investor</p>
-                            <ul
-                                class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto"
-                            />
+                            <ul class="mt-auto flex gap-2 pt-4" />
                         </li>
-                        <li class="u-flex-vertical">
+                        <li class="flex flex-col">
                             <h6 class="web-main-body-500 web-u-color-text-primary">
                                 Krishna Visvanathan
                             </h6>
                             <p class="web-main-body-500">Co-founder & Partner</p>
                             <p class="web-main-body-500">Crane Venture Partners</p>
-                            <ul
-                                class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto"
-                            >
+                            <ul class="mt-auto flex gap-2 pt-4">
                                 <li>
                                     <a
                                         href="https://github.com/KVCVP"
@@ -472,12 +460,10 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="u-flex-vertical">
+                        <li class="flex flex-col">
                             <h6 class="web-main-body-500 web-u-color-text-primary">Ameet Patel</h6>
                             <p class="web-main-body-500">Angel Investor</p>
-                            <ul
-                                class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto"
-                            >
+                            <ul class="mt-auto flex gap-2 pt-4">
                                 <li>
                                     <a
                                         href="https://github.com/ameet-patel"
@@ -491,13 +477,11 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="u-flex-vertical">
+                        <li class="flex flex-col">
                             <h6 class="web-main-body-500 web-u-color-text-primary">Benno Jering</h6>
                             <p class="web-main-body-500">Partner</p>
                             <p class="web-main-body-500">Redline Capital</p>
-                            <ul
-                                class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto"
-                            >
+                            <ul class="mt-auto flex gap-2 pt-4">
                                 <li>
                                     <a
                                         href="https://github.com/bennojering/"
@@ -511,15 +495,13 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="u-flex-vertical">
+                        <li class="flex flex-col">
                             <h6 class="web-main-body-500 web-u-color-text-primary">
                                 James Lindenbaum
                             </h6>
                             <p class="web-main-body-500">Co-founder</p>
                             <p class="web-main-body-500">Heroku</p>
-                            <ul
-                                class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto"
-                            >
+                            <ul class="mt-auto flex gap-2 pt-4">
                                 <li>
                                     <a
                                         href="https://github.com/jnl"
@@ -533,13 +515,11 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="u-flex-vertical">
+                        <li class="flex flex-col">
                             <h6 class="web-main-body-500 web-u-color-text-primary">Uri Boness</h6>
                             <p class="web-main-body-500">Co-Founder</p>
                             <p class="web-main-body-500">Elastic</p>
-                            <ul
-                                class="u-flex u-gap-8 u-padding-block-start-16 u-margin-block-start-auto"
-                            >
+                            <ul class="mt-auto flex gap-2 pt-4">
                                 <li>
                                     <a
                                         href="https://twitter.com/uboness"
@@ -558,17 +538,15 @@
             </div>
         </div>
 
-        <div class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden">
-            <div
-                class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
-            >
+        <div class="overflow-hidden p-0 py-10">
+            <div class="web-big-padding-section-level-2 is-margin-replace-padding relative">
                 <img
                     src="/images/bgs/pre-footer.png"
                     alt=""
                     class="web-pre-footer-bg"
                     style="z-index:-1"
                 />
-                <div class="web-container">
+                <div class="container">
                     <div class="web-hero web-u-max-width-380">
                         <h3 class="web-display web-u-color-text-primary">Join the team</h3>
                         <p class="web-u-color-text-primary web-u-opacity-64">
@@ -578,7 +556,7 @@
                             href="https://appwrite.careers"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="web-button is-transparent u-cross-child-center u-margin-block-start-16"
+                            class="web-button is-transparent mt-4 self-center"
                         >
                             <span>Careers</span>
                         </a>

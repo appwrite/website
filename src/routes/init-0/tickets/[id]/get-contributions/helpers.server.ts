@@ -48,9 +48,14 @@ export async function getContributions(id: string): Promise<ContributionsMatrix 
     }
 
     // Update the document with the new contributions
-    await appwriteInitServer.databases.updateDocument(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, id, {
-        contributions: matrix.flat()
-    });
+    await appwriteInitServer.databases.updateDocument(
+        APPWRITE_DB_INIT_ID,
+        APPWRITE_COL_INIT_ID,
+        id,
+        {
+            contributions: matrix.flat()
+        }
+    );
 
     return matrix;
 }
