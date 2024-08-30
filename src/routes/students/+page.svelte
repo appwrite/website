@@ -3,6 +3,7 @@
     import { Main } from '$lib/layouts';
     import { addDays, toReleaseDate } from '$lib/utils/date';
     import { buildOpenGraphImage, DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import CallToAction from '$routes/init/(components)/CallToAction.svelte';
     import { TITLE_SUFFIX } from '$routes/titles';
     import Community from './(components)/Community.svelte';
     import GetStarted from './(components)/GetStarted.svelte';

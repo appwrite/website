@@ -49,7 +49,7 @@
         <slot />
     </a>
 {:else}
-    <button {...props} class={buttonClasses}>
+    <button on:click {...props} class={buttonClasses}>
         <slot name="icon" />
         <slot />
     </button>
