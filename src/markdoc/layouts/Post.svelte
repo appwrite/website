@@ -92,7 +92,7 @@
         <div class="web-big-padding-section">
             <div class="py-10">
                 <div class="web-big-padding-section-level-2">
-                    <div class="container" style="--container-size:42.5rem">
+                    <div class="container max-w-[42.5rem]">
                         <article class="web-main-article">
                             <header class="web-main-article-header">
                                 <a

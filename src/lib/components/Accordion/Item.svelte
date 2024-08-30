@@ -4,10 +4,12 @@
 </script>
 
 <li class="collapsible-item">
-    <details class="collapsible-wrapper" {open}>
-        <summary class="collapsible-button">
+    <details class="collapsible-wrapper group" {open}>
+        <summary class="collapsible-button flex items-center justify-between cursor-pointer">
             <span class="text">{title}</span>
-            <div class="icon web-u-color-text-primary">
+            <div
+                class="icon web-u-color-text-primary group-[&[open]]:rotate-180 transition-transform"
+            >
                 <span class="icon-cheveron-down" aria-hidden="true" />
             </div>
         </summary>
