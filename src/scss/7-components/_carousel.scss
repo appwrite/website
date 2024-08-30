@@ -1,5 +1,7 @@
 @use '../abstract' as *;
-
+:root {
+  --border-radius-circular:50%;
+}
 .#{$p}-carousel {
   position:relative;
 
