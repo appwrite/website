@@ -32,7 +32,7 @@ Appwrite Functions uses [environment variables](/docs/products/functions/develop
 to pass constants and secrets to your Appwrite Functions. You'll provide information like API keys and other
 secrets to integrations in this step. If you need an Appwrite API key, you'll be propted to generate one.
 
-## Connect {% #connect %}
+## Deployment {% #deployment %}
 You can choose to clone a new repository to your GitHub profile or organization, or to connect to an existing repository.
 
 If you choose connect to an existing repository, the function's code will be cloned to the root folder
