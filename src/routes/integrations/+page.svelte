@@ -44,7 +44,9 @@
     // categories
     let activeCategory: string | null = null;
 
-    const handleQuery = (value: string) => {
+    const handleQuery = (e: Event) => {
+        const value = (e.currentTarget as HTMLInputElement).value;
+        console.log(value);
         $page.url.searchParams.set('search', encodeURIComponent(value));
         query.set(value);
         replaceState($page.url, $page.state);
@@ -137,7 +139,7 @@
                                 placeholder="Search"
                                 bind:value={$query}
                                 autocomplete="off"
-                                on:input={(e) => handleQuery('')}
+                                on:input={(e) => handleQuery(e)}
                             >
                                 <span
                                     class="web-icon-search"
