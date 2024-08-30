@@ -144,7 +144,7 @@
 <div class="web-carousel-bullets">
     <ul class="web-carousel-bullets-list">
         {#each Array.from({ length: emblaApi?.scrollSnapList().length }) as _, i}
-            <li class="web-carousel-bullets-item">
+            <li class="web-carousel-bullets-item rounded-full">
                 <button
                     class="web-carousel-bullets-button"
                     class:is-selected={selectedScrollIndex === i}
