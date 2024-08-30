@@ -75,7 +75,7 @@
         --height: 1px;
         --width: 30px;
         --fade-stop: 90%;
-        --x-offset: -100px;
+        --x-offset: 0px;
         --y-offset: 50px;
 
         &::before,
@@ -103,11 +103,6 @@
                     transparent
                 );
                 background-size: var(--width) var(--height);
-
-                mask-composite: intersect;
-                mask: linear-gradient(to left, var(--color-black) var(--fade-stop), transparent),
-                    linear-gradient(to right, var(--color-black) var(--fade-stop), transparent),
-                    linear-gradient(black, black);
             }
 
             &::before {
@@ -134,11 +129,6 @@
                     transparent
                 );
                 background-size: var(--height) var(--width);
-
-                mask-composite: intersect;
-                mask: linear-gradient(to top, var(--color-black) var(--fade-stop), transparent),
-                    linear-gradient(to bottom, var(--color-black) var(--fade-stop), transparent),
-                    linear-gradient(black, black);
             }
 
             &::before {
@@ -180,13 +170,6 @@
                 inset: 0;
                 position: absolute;
                 z-index: -1;
-                mask-image: linear-gradient(
-                    to right,
-                    rgba(0, 0, 0, 1) 0%,
-                    transparent 40%,
-                    transparent
-                );
-                background-color: var(--color-greyscale-900);
             }
         }
 
@@ -196,13 +179,6 @@
                 inset: 0;
                 position: absolute;
                 z-index: -1;
-                mask-image: linear-gradient(
-                    to left,
-                    rgba(0, 0, 0, 1) 0%,
-                    transparent 40%,
-                    transparent
-                );
-                background-color: var(--color-greyscale-900);
             }
         }
     }
