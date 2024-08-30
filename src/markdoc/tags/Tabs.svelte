@@ -27,7 +27,7 @@
 
 <div class="web-card is-normal mt-4" {...$root} use:root>
     <div class="tabs flex gap-4">
-        <ul class="tabs-list" {...$list} use:list>
+        <ul class="tabs-list flex gap-4" {...$list} use:list>
             {#each $ctx.triggers.entries() as [id, title]}
                 <li class="tabs-item">
                     <button
