@@ -162,7 +162,7 @@
                     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                     {@html parse(data.service?.description)}
                 </div>
-                <div class="web-article-content-grid-6-4-column-2 flex flex-col gap-8 items-end">
+                <div class="web-article-content-grid-6-4-column-2 flex flex-col gap-8 j-end">
                     <Fence
                         language="text"
                         badge="Base URL"
@@ -211,7 +211,7 @@
                         </Accordion>
                     </div>
                     <div class="web-article-content-grid-6-4-column-2 flex flex-col gap-8">
-                        <div class="u-contents theme-dark">
+                        <div class="contentss theme-dark">
                             <div
                                 class="sticky"
                                 style="--inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position);"
@@ -267,11 +267,8 @@
                             </li>
                         {/each}
                     </ul>
-                    <div class="u-sep-block-start web-u-padding-block-20">
-                        <button
-                            class="web-link u-inline-flex u-cross-center u-gap-8"
-                            use:scrollToTop
-                        >
+                    <div class="border-t border-greyscale-900/[0.04] web-u-padding-block-20">
+                        <button class="web-link inline-flex items-center gap-2" use:scrollToTop>
                             <span class="web-icon-arrow-up" aria-hidden="true" />
                             <span class="web-caption-400">Back to top</span>
                         </button>
