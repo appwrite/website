@@ -136,8 +136,8 @@
                                 name="search"
                                 placeholder="Search"
                                 bind:value={$query}
-                                on:input={(e) => handleQuery(e.detail.value)}
                                 autocomplete="off"
+                                on:input={(e) => handleQuery('')}
                             >
                                 <span
                                     class="web-icon-search"
