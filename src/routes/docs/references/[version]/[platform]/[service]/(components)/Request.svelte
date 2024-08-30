@@ -5,13 +5,13 @@
     export let method: SDKMethod;
 </script>
 
-<div class="web-card is-transparent u-padding-16">
-    <ul class="u-flex-vertical">
+<div class="web-card is-transparent p-4">
+    <ul class="flex flex-col">
         {#each method.parameters as parameter, i}
             {@const first = i === 0}
-            <li class:u-padding-block-start-16={!first}>
+            <li class:pt-4={!first}>
                 <article>
-                    <header class="u-flex u-cross-baseline u-gap-8">
+                    <header class="flex items-baseline gap-2">
                         <span class="web-code web-u-color-text-primary">
                             {parameter.name}
                         </span>
@@ -20,7 +20,7 @@
                             <div class="web-tag">required</div>
                         {/if}
                     </header>
-                    <p class="web-sub-body-400 u-margin-block-start-16">
+                    <p class="web-sub-body-400 mt-4">
                         <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                         {@html parse(parameter.description)}
                     </p>
