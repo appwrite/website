@@ -26,7 +26,7 @@
 
 <div
     class={classNames(
-        'light min-h-80 relative mt-10 min-h-80',
+        'light min-h-80 relative mt-10',
         'before:h-80 before:absolute before:block before:w-full md:before:w-1/2 before:top-0 before:z-0 before:left-0 before:bg-[radial-gradient(at_25%_0%,_hsla(343,_98%,_60%,_0.4)_0px,_transparent_75%)]',
         'after:h-80 after:absolute after:block after:w-1/2 after:hidden md:after:block after:top-0 after:z-0 after:right-0 after:bg-[radial-gradient(at_100%_0%,_hsla(177,_53%,_69%,_0.6)_0px,_transparent_75%)]'
     )}
