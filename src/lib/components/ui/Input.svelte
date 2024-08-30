@@ -31,7 +31,7 @@
         />
     </label>
 {:else}
-    <label for={name}>
+    <label for={name} class="text-left">
         {label}
     </label>
     <input
