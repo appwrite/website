@@ -29,7 +29,7 @@
         return page.subscribe(async () => {
             if (articlesHeader && previousPage) {
                 await tick();
-                articlesHeader?.scrollIntoView({ behavior: 'smooth' });
+                articlesHeader?.scrollIntoView();
             }
         });
     });
@@ -215,6 +215,7 @@
                         <ul class="flex items-center gap-1" style="justify-content: center">
                             {#if data.currentPage > 1}
                                 <a
+                                    data-sveltekit-noscroll
                                     class="flex navigation-button"
                                     href="/blog/{data.currentPage - 1}"
                                     class:navigation-button-active={!isFirstPage}
@@ -235,6 +236,7 @@
                                 {:else}
                                     <a
                                         href="/blog/{page}"
+                                        data-sveltekit-noscroll
                                         class="pagination-number"
                                         class:pagination-number-selected={data.currentPage === page}
                                     >
@@ -245,9 +247,10 @@
 
                             {#if data.currentPage < data.totalPages}
                                 <a
+                                    data-sveltekit-noscroll
                                     class="flex navigation-button"
-                                    class:navigation-button-active={!isLastPage}
                                     href="/blog/{data.currentPage + 1}"
+                                    class:navigation-button-active={!isLastPage}
                                 >
                                     Next
                                     <span class="web-icon-chevron-right" style="font-size: 20px" />
