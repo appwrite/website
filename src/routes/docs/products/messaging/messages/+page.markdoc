@@ -665,7 +665,7 @@ func main() {
 
 	messaging := appwrite.NewMessaging(client)
 
-	var _, _ = messaging.CreateEmail(
+	var message, _ = messaging.CreateEmail(
 		"<MESSAGE_ID>",                                   // messageId      
 		"<SUBJECT>",                                      // subject    
 		"<CONTENT>",                                      // content  
@@ -679,6 +679,8 @@ func main() {
 		messaging.WithCreateEmailHtml(false),             // html (optional) 
 		messaging.WithCreateEmailScheduledAt(""),         // scheduledAt (optional)   
 	)
+
+    fmt.Println(message)
 }
 ```
 ```php

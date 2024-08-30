@@ -38,9 +38,9 @@ client
 const promise = databases.createCollection('<DATABASE_ID>', '<COLLECTION_ID>', '<NAME>');
 
 promise.then(function (response) {
-    console.log(response);
+    console.log(response); // Success
 }, function (error) {
-    console.log(error);
+    console.log(error); // Failure
 });
 ```
 ```deno
@@ -60,9 +60,9 @@ client
 let promise = databases.createCollection('<DATABASE_ID>', '<COLLECTION_ID>', '<NAME>');
 
 promise.then(function (response) {
-    console.log(response);
+    console.log(response); // Success
 }, function (error) {
-    console.log(error);
+    console.log(error); // Failure
 });
 ```
 ```go
@@ -75,14 +75,14 @@ import (
 )
 
 func main() {
-	appwriteClient := appwrite.NewClient(
+	client := appwrite.NewClient(
 		appwrite.WithProject("<PROJECT_ID>"),
 		appwrite.WithKey("<API_KEY>"),
 	)
 
-	appwriteDatabases := appwrite.NewDatabases(appwriteClient)
+	databases := appwrite.NewDatabases(client)
 
-	promise, _ := appwriteDatabases.CreateCollection(
+	promise, _ := databases.CreateCollection(
 		"<DATABASE_ID>",
 		"<COLLECTION_ID>",
 		"<NAME>",
@@ -175,9 +175,9 @@ void main() { // Init SDK
 
   result
     .then((response) {
-      print(response);
+      print(response); // Success
     }).catchError((error) {
-      print(error.response);
+      print(error.response); // Failure
   });
 }
 ```

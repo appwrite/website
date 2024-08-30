@@ -89,20 +89,24 @@ const secret = token.secret;
 package main
 
 import (
+    "fmt"
+
 	"github.com/appwrite/sdk-for-go/appwrite"
 )
 
 func main() {
-	appwriteClient := appwrite.NewClient(
+	client := appwrite.NewClient(
 		appwrite.WithProject("<PROJECT_ID>"), // Your project ID
 		appwrite.WithKey("<API_KEY>"),        // Your project API key
 	)
 
-	appwriteUsers := appwrite.NewUsers(appwriteClient)
+	users := appwrite.NewUsers(client)
 
-	token, _ := appwriteUsers.CreateToken("<USER_ID>")
+	token, _ := users.CreateToken("<USER_ID>")
 
-	var _ = token.Secret
+	var secret = token.Secret
+
+    fmt.Println(secret)
 }
 ```
 

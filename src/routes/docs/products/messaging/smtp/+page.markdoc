@@ -397,7 +397,7 @@ messaging.deleteProvider('<PROVIDER_ID>')
 });
 ```
 ```go
-package handler
+package main
 
 import (
 	"github.com/appwrite/sdk-for-go/appwrite"

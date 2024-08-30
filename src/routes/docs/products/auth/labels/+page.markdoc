@@ -17,7 +17,7 @@ const client = new sdk.Client()
 const users = new sdk.Users(client);
 
 const promise = users.updateLabels(
-    '[USER_ID]',
+    '<USER_ID>',
     [ 'subscriber' ]
 );
 
@@ -62,7 +62,7 @@ client = Client()
 users = Users(client)
 
 result = users.update_labels(
-    '[USER_ID]',
+    '<USER_ID>',
     [ 'subscriber' ]
 );
 ```
@@ -78,7 +78,7 @@ client = Client.new
 users = Users.new(client)
 
 response = users.update_labels(
-    user_id: '[USER_ID]',
+    user_id: '<USER_ID>',
     labels: [ 'subscriber' ]
 );
 ```
@@ -93,7 +93,7 @@ let client = new sdk.Client()
 let users = new sdk.Users(client);
 
 const promise = users.updateLabels(
-    '[USER_ID]',
+    '<USER_ID>',
     [ 'subscriber' ]
 );
 
@@ -107,29 +107,28 @@ promise.then(function (response) {
 ```go
 package main
 
+
 import (
-	"fmt"
+    "fmt"
 
 	"github.com/appwrite/sdk-for-go/appwrite"
-	"github.com/appwrite/sdk-for-go/client"
-	"github.com/appwrite/sdk-for-go/users"
-)
-
-var (
-	appwriteUsers  *users.Users
 )
 
 func main() {
-	appwriteClient := appwrite.NewClient(
+	client := appwrite.NewClient(
 		appwrite.WithProject("<PROJECT_ID>"),
 		appwrite.WithKey("<API_KEY>"),
 	)
 
-	appwriteUsers = appwrite.NewUsers(appwriteClient)
+	users = appwrite.NewUsers(client)
 
-	promise, _ := appwriteUsers.UpdateLabels("<USER_ID>", []string{"subscriber"})
+	promise, err := users.UpdateLabels("<USER_ID>", []string{"subscriber"})
 
-	fmt.Println(promise)
+    if err != nil {
+		fmt.Println(err) // Failure
+	}
+
+	fmt.Println(promise) // Success
 }
 ```
 
@@ -143,7 +142,7 @@ final client = Client()
 final users = Users(client);
 
 final result = await users.updateLabels(
-    userId: '[USER_ID]',
+    userId: '<USER_ID>',
     labels: [ 'subscriber' ],
 );
 ```
@@ -159,7 +158,7 @@ val client = Client()
 val users = Users(client)
 
 val response = users.updateLabels(
-    userId = "[USER_ID]",
+    userId = "<USER_ID>",
     labels = [ 'subscriber' ]
 );
 ```
@@ -174,7 +173,7 @@ let client = Client()
 let users = Users(client)
 
 let response = try await users.updateLabels(
-    userId: "[USER_ID]",
+    userId: "<USER_ID>",
     labels: [ 'subscriber' ]
 );
 ```
@@ -189,7 +188,7 @@ var client = new Client()
 var users = new Users(client);
 
 var response = await users.UpdateLabels(
-    userId: "[USER_ID]",
+    userId: "<USER_ID>",
     labels: [ 'subscriber' ]
 );
 ```

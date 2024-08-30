@@ -152,33 +152,6 @@ topic = messaging.create_topic(
     subscribe = '<ROLES>'      # permission roles for who can subscribe
 )
 ```
-```go
-package main
-
-import (
-	"fmt"
-
-	"github.com/appwrite/sdk-for-go/appwrite"
-)
-
-func main() {
-
-	client := appwrite.NewClient(
-		appwrite.WithProject("<PROJECT_ID>"),                  // Your project ID
-		appwrite.WithKey("<API_KEY>"),                         // Your secret API key
-	)
-
-	messaging := appwrite.NewMessaging(client)
-
-	topic, _ := messaging.CreateTopic(
-		"<TOPIC_ID>",                                          // topicId
-		"<NAME>",                                              // name 
-		messaging.WithCreateTopicSubscribe([]string{"ROLES"}), // permission roles for who can subscribe
-	)
-
-	fmt.Println(topic)
-}
-```
 ```ruby
 require 'appwrite'
 

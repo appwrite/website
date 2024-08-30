@@ -33,9 +33,9 @@ client
 const promise = databases.create('<DATABASE_ID>', '<NAME>');
 
 promise.then(function (response) {
-    console.log(response);
+    console.log(response); // Success
 }, function (error) {
-    console.log(error);
+    console.log(error); // Failure
 });
 ```
 ```deno
@@ -55,9 +55,9 @@ client
 let promise = databases.create('<DATABASE_ID>', '<NAME>');
 
 promise.then(function (response) {
-    console.log(response);
+    console.log(response); // Success
 }, function (error) {
-    console.log(error);
+    console.log(error); // Failure
 });
 ```
 ```go
@@ -164,9 +164,9 @@ void main() { // Init SDK
 
   result
     .then((response) {
-      print(response);
+      print(response); // Success
     }).catchError((error) {
-      print(error.response);
+      print(error.response); // Failure
   });
 }
 ```
@@ -201,11 +201,11 @@ databases.create(
     "<NAME>",
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
-            error.printStackTrace();
+            error.printStackTrace(); // Failure
             return;
         }
 
-        System.out.println(result);
+        System.out.println(result); // Success
     })
 );
 ```

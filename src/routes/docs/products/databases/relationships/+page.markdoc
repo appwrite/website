@@ -92,14 +92,14 @@ const client = new Client()
 const databases = new Databases(client);
 
 databases.createRelationshipAttribute(
-    'marvel',     // Database ID
-    'movies',     // Collection ID
-    'reviews',    // Related collection ID
-    'oneToMany',  // Relationship type
-    true,         // Is two-way
-    'reviews',    // Attribute key 
-    'movie',      // Two-way attribute key
-    'cascade'     // On delete action
+    'marvel',                    // Database ID
+    'movies',                    // Collection ID
+    'reviews',                   // Related collection ID
+    'oneToMany',                 // Relationship type
+    true,                        // Is two-way
+    'reviews',                   // Attribute key 
+    'movie',                     // Two-way attribute key
+    'cascade'                    // On delete action
 );
 ```
 
@@ -109,7 +109,7 @@ use \Appwrite\Client;
 use \Appwrite\Services\Databases;
 
 $client = (new Client())
-    ->setProject('<PROJECT_ID>'); // Your project ID
+    ->setProject('<PROJECT_ID>');   // Your project ID
 
 $databases = new Databases($client);
 
@@ -131,7 +131,7 @@ from appwrite.client import Client
 from appwrite.services.databases import Databases
 
 client = (Client()
-    .set_project('<PROJECT_ID>'))  # Your project ID
+    .set_project('<PROJECT_ID>'))     # Your project ID
 
 databases = Databases(client)
 
@@ -154,7 +154,7 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_project('<PROJECT_ID>') # Your project ID
+    .set_project('<PROJECT_ID>')       # Your project ID
 
 databases = Databases.new(client)
 
@@ -180,14 +180,14 @@ const client = new Client()
 const databases = new Databases(client);
 
 databases.createRelationshipAttribute(
-    "marvel",    // Database ID         
-    "movies",    // Collection ID           
-    "reviews",   // Related collection ID       
-    "oneToMany", // Relationship type           
-    true,        // Is two-way          
-    "reviews",   // Attribute key           
-    "movie",     // Two-way attribute key           
-    "cascade"    // On delete action            
+    "marvel",                    // Database ID         
+    "movies",                    // Collection ID           
+    "reviews",                   // Related collection ID       
+    "oneToMany",                 // Relationship type           
+    true,                        // Is two-way          
+    "reviews",                   // Attribute key           
+    "movie",                     // Two-way attribute key           
+    "cascade"                    // On delete action            
 );
 ```
 
@@ -201,8 +201,8 @@ import (
 func main() {
 
 	client := appwrite.NewClient(
-		appwrite.WithProject("<PROJECT_ID>"), // Your project ID
-		appwrite.WithKey("<API_KEY>"),        // Your secret API key
+		appwrite.WithProject("<PROJECT_ID>"),                         // Your project ID
+		appwrite.WithKey("<API_KEY>"),                                // Your secret API key
 	)
 
 	databases := appwrite.NewDatabases(client)
@@ -225,7 +225,7 @@ func main() {
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setProject('<PROJECT_ID>'); // Your project ID
+    .setProject('<PROJECT_ID>');    // Your project ID
 
 final databases = Databases(client);
 
@@ -247,7 +247,7 @@ import io.appwrite.Client
 import io.appwrite.services.Databases
 
 val client = Client()
-    .setProject("<PROJECT_ID>") // Your project ID
+    .setProject("<PROJECT_ID>")      // Your project ID
 
 val databases = Databases(client)
 
@@ -268,7 +268,7 @@ databases.createRelationshipAttribute(
 import Appwrite
 
 let client = Client()
-    .setProject("<PROJECT_ID>") // Your project ID
+    .setProject("<PROJECT_ID>")     // Your project ID
 
 let databases = Databases(client)
 
@@ -280,9 +280,7 @@ databases.createRelationshipAttribute(
     twoWay: true,                   // Is two-way               
     key: "reviews",                 // Attribute key            
     twoWayKey: "movie",             // Two-way attribute key        
-    onDelete
-
-: "cascade"             // On delete action         
+    onDelete: "cascade"             // On delete action         
 )
 ```
 
@@ -297,14 +295,15 @@ var client = new Client()
 var databases = new Databases(client);
 
 await databases.CreateRelationshipAttribute(
-    databaseId: "marvel",
-    collectionId: "movies",
-    relatedCollectionId: "reviews",
-    type: "oneToMany",
-    twoWay: true,
-    key: "reviews",
-    twoWayKey: "movie",
-    onDelete: "cascade");
+    databaseId: "marvel",           # Database ID          
+    collectionId: "movies",         # Collection ID        
+    relatedCollectionId: "reviews", # Related collection ID
+    type: "oneToMany",              # Relationship type    
+    twoWay: true,                   # Is two-way            
+    key: "reviews",                 # Attribute key         
+    twoWayKey: "movie",             # Two-way attribute key   
+    onDelete: "cascade"             # On delete action     
+);
 ```
 {% /multicode %}
 {% /tabsitem %}
