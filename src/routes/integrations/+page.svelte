@@ -139,7 +139,10 @@
                                 placeholder="Search"
                                 bind:value={$query}
                                 autocomplete="off"
-                                on:input={(e) => handleQuery(e)}
+                                on:input={(e) => {
+                                    handleQuery(e);
+                                    console.log(e);
+                                }}
                             >
                                 <span
                                     class="web-icon-search"
