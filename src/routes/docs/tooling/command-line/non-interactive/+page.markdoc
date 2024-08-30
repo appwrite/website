@@ -8,11 +8,11 @@ The [Appwrite CLI](/docs/tooling/command-line/installation) can be used in a non
 
 # Authentication {% #authentication %}
 
-In non-interactive mode, you can authenticate your users using two methods: email and password. While using an [API key](/docs/advanced/platform/api-keys) does not require an email and password to authenticate users, you need to configure the API key [scopes](/docs/advanced/platform/api-keys#scopes) of the application and does not work for project API calls that update project settings.
+In non-interactive mode, you can authenticate using two methods: email and password or API keys. While using an [API key](/docs/advanced/platform/api-keys) does not require an email and password to authenticate, the API key needs to have its [scopes](/docs/advanced/platform/api-keys#scopes) configured and the API key does not work for project API calls that update project settings.
 
 ## Email and password {% #email-and-password %}
 
-Use `appwrite login` with your email, and password to log in so you can run tests or set up project-per-branch previews.
+Use `appwrite login` with your email and password to log in.
 
 ```sh
 appwrite login --email "<EMAIL>" --password "<PASSWORD>" 
