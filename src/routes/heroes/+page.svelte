@@ -65,7 +65,7 @@
         {
             name: 'Jason Torres',
             role: 'Freelance Community Manager',
-            bio: "Jason Torres a former film-maker turned developer who is currently exploring Developer Advocacy and Community Management freelance, and hosting The Tech Commute, a series of Twitter Spaces catered towards developers.",
+            bio: 'Jason Torres a former film-maker turned developer who is currently exploring Developer Advocacy and Community Management freelance, and hosting The Tech Commute, a series of Twitter Spaces catered towards developers.',
             github: 'https://github.com/jasonetorres',
             twitter: 'https://twitter.com/tasonjorres',
             linkedin: 'https://www.linkedin.com/in/thejasontorres',
@@ -74,7 +74,7 @@
         {
             name: 'Nishant Jain',
             role: 'Frontend Developer',
-            bio: "Nishant Jain is a frontend developer and community builder from Indore, India. He has been actively contributing to the Appwrite community as a Discord moderator.",
+            bio: 'Nishant Jain is a frontend developer and community builder from Indore, India. He has been actively contributing to the Appwrite community as a Discord moderator.',
             github: 'https://github.com/Nishantjain10',
             twitter: 'https://twitter.com/devnishant10',
             linkedin: 'https://www.linkedin.com/in/nishantj2002/',
@@ -95,7 +95,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -109,12 +109,12 @@
 
 <Main>
     <div class="web-big-padding-section">
-        <div class="web-big-padding-section-level-1">
+        <div class="py-10">
             <div class="web-big-padding-section-level-2">
-                <section class="web-container hero web-u-padding-block-end-0">
+                <section class="container hero web-u-padding-block-end-0">
                     <div>
                         <h1 class="web-display web-u-color-text-primary">Appwrite Heroes</h1>
-                        <p class="web-main-body-500 u-margin-block-start-20">
+                        <p class="web-main-body-500 mt-5">
                             If you love building, writing, speaking, and helping other developers
                             build with Appwrite, help us support you by joining the Appwrite Heroes
                             program and becoming a leader in our developer community.
@@ -123,7 +123,7 @@
                             href="https://7nxwryuitoy.typeform.com/heroes-apply"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="web-button is-secondary u-margin-block-start-32"
+                            class="web-button is-secondary mt-8"
                         >
                             <span class="text">Become a Hero</span>
                         </a>
@@ -134,9 +134,9 @@
                 </section>
             </div>
         </div>
-        <div class="web-big-padding-section-level-1">
+        <div class="py-10">
             <div class="web-big-padding-section-level-2">
-                <section class="web-container">
+                <section class="container">
                     <div class="web-hero web-u-max-width-800 about">
                         <h2 class="web-title web-u-color-text-primary">About Appwrite Heroes</h2>
                         <div>
@@ -163,15 +163,13 @@
             </div>
         </div>
 
-        <div
-            class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light"
-        >
+        <div class="web-white-section theme-light relative py-10">
             <div class="web-big-padding-section-level-2">
-                <div class="web-container">
+                <div class="container">
                     <div class="web-hero">
                         <div class="web-display web-u-clr-primary">Meet our Heroes</div>
                     </div>
-                    <ul class="web-multi-columns-1 web-u-margin-block-start-80">
+                    <ul class="web-multi-columns-1 mt-20">
                         {#each heroCards as heroCardProps}
                             <HeroCard {...heroCardProps} />
                         {/each}
@@ -189,7 +187,7 @@
                                     style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
                                 >
                                     <img
-                                        class="u-block web-u-border-radius-12"
+                                        class="blockweb-u-border-radius-12"
                                         src="/images/heroes/photos/{i + 1}.png"
                                         loading="lazy"
                                         alt=""
@@ -201,13 +199,13 @@
                 </div>
             </div>
             <div class="web-big-padding-section-level-2">
-                <div class="web-container">
+                <div class="container">
                     <section class="web-hero is-align-start">
-                        <h2 class="web-display web-u-color-text-primary u-max-width-700">
+                        <h2 class="web-display web-u-color-text-primary max-w-[700px]">
                             How Appwrite Heroes can benefit you
                         </h2>
                     </section>
-                    <div class="u-overflow-hidden web-u-margin-block-start-80">
+                    <div class="mt-20 overflow-hidden">
                         <ul class="web-info-boxes web-sub-body-500">
                             <li class="web-info-boxes-item">
                                 <img
@@ -294,15 +292,10 @@
             </div>
         </div>
 
-        <div class="web-big-padding-section-level-1 u-position-relative footer-wrapper">
-            <enhanced:img
-                src="./bg-pre.png"
-                alt=""
-                class="u-position-absolute"
-                style:inset-block-start="0"
-            />
-            <div class="web-big-padding-section-level-2 u-position-relative">
-                <div class="web-container">
+        <div class="footer-wrapper relative py-10">
+            <enhanced:img src="./bg-pre.png" alt="" class="absolute" style:inset-block-start="0" />
+            <div class="web-big-padding-section-level-2 relative">
+                <div class="container">
                     <div class="web-hero web-u-max-width-800">
                         <h5 class="web-display web-u-color-text-primary">Become a Hero</h5>
                         <p class="web-description web-u-color-text-primary" style="opacity:0.64">
@@ -313,14 +306,14 @@
                             href="https://7nxwryuitoy.typeform.com/heroes-apply"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="web-button is-transparent is-full-width-mobile web-u-cross-child-center u-margin-block-start-20"
+                            class="web-button is-transparent is-full-width-mobile mt-5 self-center"
                         >
                             Become a Hero
                         </a>
                     </div>
                 </div>
-                <div class="web-big-padding-section-level-2 u-position-relative">
-                    <div class="web-container u-position-relative">
+                <div class="web-big-padding-section-level-2 relative">
+                    <div class="container relative">
                         <FooterNav noBorder />
                         <MainFooter />
                     </div>

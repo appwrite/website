@@ -1,7 +1,6 @@
 import { base } from '$app/paths';
 import type { AuthorData, PostsData } from './content';
 
-
 export function load() {
     const postsGlob = import.meta.glob('./post/**/*.markdoc', {
         eager: true
@@ -23,6 +22,7 @@ export function load() {
                 description: frontmatter.description,
                 featured: frontmatter?.featured ?? false,
                 date: new Date(frontmatter.date),
+                lastUpdated: new Date(frontmatter.lastUpdated),
                 cover: frontmatter.cover,
                 timeToRead: frontmatter.timeToRead,
                 author: frontmatter.author,

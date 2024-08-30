@@ -9,7 +9,8 @@
     import Sidebar from './Sidebar.svelte';
 
     const title = 'Docs' + TITLE_SUFFIX;
-    const description = 'Learn how to build like a team of hundreds. Get started with Authentication, Databases, Storage, Functions, and Messaging in your preferred framework.';
+    const description =
+        'Learn how to build like a team of hundreds. Get started with Authentication, Databases, Storage, Functions, and Messaging in your preferred framework.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 
     const tutorials: CodeCardProps[] = [
@@ -51,7 +52,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -66,37 +67,31 @@
 <Docs variant="default">
     <Sidebar />
 
-    <main
-        class="web-main-section u-position-relative web-u-overflow-hidden-break1-to-break3"
-        id="main"
-    >
-        <div class="u-position-absolute web-u-opacity-40-mobile bg-blur">
+    <main class="web-main-section web-u-overflow-hidden-break1-to-break3 relative" id="main">
+        <div class="web-u-opacity-40-mobile bg-blur absolute">
             <img src="/images/bgs/docs-blur-1.svg" alt="" />
         </div>
 
-        <div
-            class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-16 web-u-opacity-40-mobile"
-            style="    margin-inline-start: -30px;"
-        >
+        <div class="web-u-opacity-40-mobile absolute top-4" style="    margin-inline-start: -30px;">
             <enhanced:img src="./blur-2.png" alt="" />
         </div>
 
-        <section class="web-hero is-align-start u-position-relative e-hero-docs">
-            <h1 class="web-display web-u-color-text-primary u-max-width-600">
+        <section class="web-hero is-align-start e-hero-docs relative">
+            <h1 class="web-display web-u-color-text-primary max-w-[600px]">
                 Learn how to build like a team of hundreds<span class="web-u-color-text-accent"
                     >_
                 </span>
             </h1>
-            <p class="web-description u-max-width-600">
+            <p class="web-description max-w-[600px]">
                 Appwrite helps you build secure and scalable apps, faster. Leverage Appwrite's
                 powerful APIs to stop fighting technologies and start delivering value.
             </p>
         </section>
         <section class="web-hero is-align-start tech-hero">
-            <h2 class="web-title web-u-color-text-primary u-max-width-600">
+            <h2 class="web-title web-u-color-text-primary max-w-[600px]">
                 Get started with your technologies
             </h2>
-            <p class="web-description u-max-width-600">
+            <p class="web-description max-w-[600px]">
                 Start building with your preferred web, mobile, and native frameworks by following a
                 quick start guide.
             </p>
@@ -104,9 +99,9 @@
             <a href="/docs/sdks" class="web-button is-secondary" style:align-self="start">
                 <span class="web-sub-body-500">Explore all technologies</span>
             </a>
-            <div class="u-position-absolute web-is-not-mobile spline-wrapper">
+            <div class="web-is-not-mobile spline-wrapper absolute">
                 <img
-                    class="u-only-dark"
+                    class="hidden dark:block"
                     src="/images/animations/tech-dark-transparent.png"
                     width="660"
                     height="660"
@@ -114,7 +109,7 @@
                     style="position: absolute;"
                 />
                 <img
-                    class="u-only-light"
+                    class="block dark:hidden"
                     src="/images/animations/tech-light-transparent.png"
                     width="660"
                     height="660"
@@ -125,8 +120,8 @@
             <div class="bg-overlay" />
         </section>
         <section>
-            <h2 class="web-title web-u-color-text-primary u-max-width-600">Show me some code</h2>
-            <p class="web-description u-max-width-600 u-margin-block-start-16">
+            <h2 class="web-title web-u-color-text-primary max-w-[600px]">Show me some code</h2>
+            <p class="web-description mt-4 max-w-[600px]">
                 If you learn best from code examples, follow one of our tutorials.
             </p>
             <Carousel size="medium">
@@ -138,35 +133,31 @@
             </Carousel>
         </section>
         <section class="web-hero is-align-start is-no-max-width">
-            <h2 class="web-title web-u-color-text-primary u-max-width-600">Explore capabilities</h2>
-            <p class="web-description u-max-width-600">
+            <h2 class="web-title web-u-color-text-primary max-w-[600px]">Explore capabilities</h2>
+            <p class="web-description max-w-[600px]">
                 All the core functionalities you need with a scalable and flexible API. Explore
                 Appwrite's product offerings.
             </p>
-            <div class="u-margin-block-start-24">
+            <div class="mt-6">
                 <ul class="web-grid-row-4 web-grid-row-4-m-1">
                     <li>
                         <a href="/docs/products/auth" class="web-card is-normal">
                             <img
                                 src="/images/icons/illustrated/dark/auth.png"
                                 alt=""
-                                class="u-only-dark"
+                                class="hidden dark:block"
                                 width="48"
                                 height="48"
                             />
                             <img
                                 src="/images/icons/illustrated/light/auth.png"
                                 alt=""
-                                class="u-only-light"
+                                class="block dark:hidden"
                                 width="48"
                                 height="48"
                             />
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                Auth
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                            <h4 class="web-sub-body-500 web-u-color-text-primary mt-2">Auth</h4>
+                            <p class="web-sub-body-400 mt-1">
                                 Sign in users with multiple OAuth providers.
                             </p>
                         </a>
@@ -176,23 +167,21 @@
                             <img
                                 src="/images/icons/illustrated/dark/databases.png"
                                 alt=""
-                                class="u-only-dark"
+                                class="hidden dark:block"
                                 width="48"
                                 height="48"
                             />
                             <img
                                 src="/images/icons/illustrated/light/databases.png"
                                 alt=""
-                                class="u-only-light"
+                                class="block dark:hidden"
                                 width="48"
                                 height="48"
                             />
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
+                            <h4 class="web-sub-body-500 web-u-color-text-primary mt-2">
                                 Databases
                             </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                            <p class="web-sub-body-400 mt-1">
                                 Store your application and user data.
                             </p>
                         </a>
@@ -202,23 +191,21 @@
                             <img
                                 src="/images/icons/illustrated/dark/functions.png"
                                 alt=""
-                                class="u-only-dark"
+                                class="hidden dark:block"
                                 width="48"
                                 height="48"
                             />
                             <img
                                 src="/images/icons/illustrated/light/functions.png"
                                 alt=""
-                                class="u-only-light"
+                                class="block dark:hidden"
                                 width="48"
                                 height="48"
                             />
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
+                            <h4 class="web-sub-body-500 web-u-color-text-primary mt-2">
                                 Functions
                             </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                            <p class="web-sub-body-400 mt-1">
                                 Extend and customize your server's functionality.
                             </p>
                         </a>
@@ -228,23 +215,21 @@
                             <img
                                 src="/images/icons/illustrated/dark/messaging.png"
                                 alt=""
-                                class="u-only-dark"
+                                class="hidden dark:block"
                                 width="48"
                                 height="48"
                             />
                             <img
                                 src="/images/icons/illustrated/light/messaging.png"
                                 alt=""
-                                class="u-only-light"
+                                class="block dark:hidden"
                                 width="48"
                                 height="48"
                             />
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
+                            <h4 class="web-sub-body-500 web-u-color-text-primary mt-2">
                                 Messaging
                             </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                            <p class="web-sub-body-400 mt-1">
                                 Send and schedule email, SMS, and push notifications.
                             </p>
                         </a>
@@ -254,23 +239,19 @@
                             <img
                                 src="/images/icons/illustrated/dark/storage.png"
                                 alt=""
-                                class="u-only-dark"
+                                class="hidden dark:block"
                                 width="48"
                                 height="48"
                             />
                             <img
                                 src="/images/icons/illustrated/light/storage.png"
                                 alt=""
-                                class="u-only-light"
+                                class="block dark:hidden"
                                 width="48"
                                 height="48"
                             />
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                Storage
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                            <h4 class="web-sub-body-500 web-u-color-text-primary mt-2">Storage</h4>
+                            <p class="web-sub-body-400 mt-1">
                                 Store images, videos, documents, and files.
                             </p>
                         </a>
@@ -280,23 +261,19 @@
                             <img
                                 src="/images/icons/illustrated/dark/realtime.png"
                                 alt=""
-                                class="u-only-dark"
+                                class="hidden dark:block"
                                 width="48"
                                 height="48"
                             />
                             <img
                                 src="/images/icons/illustrated/light/realtime.png"
                                 alt=""
-                                class="u-only-light"
+                                class="block dark:hidden"
                                 width="48"
                                 height="48"
                             />
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                Realtime
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                            <h4 class="web-sub-body-500 web-u-color-text-primary mt-2">Realtime</h4>
+                            <p class="web-sub-body-400 mt-1">
                                 Respond to server events in realtime.
                             </p>
                         </a>
@@ -305,47 +282,35 @@
             </div>
         </section>
         <section class="web-hero is-align-start is-no-max-width">
-            <h2 class="web-title web-u-color-text-primary u-max-width-600">
+            <h2 class="web-title web-u-color-text-primary max-w-[600px]">
                 Explore ways to integrate
             </h2>
-            <p class="web-description u-max-width-600">
+            <p class="web-description max-w-[600px]">
                 Choose how you integrate with Appwrite. Explore references for the Appwrite SDK,
                 REST API, GraphQL API, or Realtime API.
             </p>
-            <div class="u-margin-block-start-24">
+            <div class="mt-6">
                 <ul class="web-grid-row-2">
                     <li>
                         <a href="/docs/sdks" class="web-card is-normal">
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                SDKs
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                            <h4 class="web-sub-body-500 web-u-color-text-primary mt-2">SDKs</h4>
+                            <p class="web-sub-body-400 mt-1">
                                 Light-weight SDKs for your favorite platforms.
                             </p>
                         </a>
                     </li>
                     <li>
                         <a href="/docs/apis/rest" class="web-card is-normal">
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                REST API
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                            <h4 class="web-sub-body-500 web-u-color-text-primary mt-2">REST API</h4>
+                            <p class="web-sub-body-400 mt-1">
                                 Integrate with HTTP requests without the needing an SDK.
                             </p>
                         </a>
                     </li>
                     <li>
                         <a href="/docs/apis/graphql" class="web-card is-normal">
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                GraphQL
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                            <h4 class="web-sub-body-500 web-u-color-text-primary mt-2">GraphQL</h4>
+                            <p class="web-sub-body-400 mt-1">
                                 Leverage GraphQL through our SDKs or integrate directly with REST
                                 endpoints.
                             </p>
@@ -353,12 +318,8 @@
                     </li>
                     <li>
                         <a href="/docs/apis/realtime" class="web-card is-normal">
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                Realtime
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                            <h4 class="web-sub-body-500 web-u-color-text-primary mt-2">Realtime</h4>
+                            <p class="web-sub-body-400 mt-1">
                                 Respond to auth, databases, storage, and function events in
                                 realtime.
                             </p>
@@ -368,56 +329,42 @@
             </div>
         </section>
         <section class="web-hero is-align-start is-no-max-width">
-            <h2 class="web-title web-u-color-text-primary u-max-width-600">Migrate to Appwrite</h2>
-            <p class="web-description u-max-width-600">
+            <h2 class="web-title web-u-color-text-primary max-w-[600px]">Migrate to Appwrite</h2>
+            <p class="web-description max-w-[600px]">
                 Own your data with automatic data migrations.
             </p>
-            <div class="u-margin-block-start-24">
+            <div class="mt-6">
                 <ul class="web-grid-row-4">
                     <li>
                         <a href="/docs/advanced/migrations/self-hosted" class="web-card is-normal">
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
+                            <h4 class="web-sub-body-500 web-u-color-text-primary mt-2">
                                 Self-hosted
                             </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                            <p class="web-sub-body-400 mt-1">
                                 Move data from self-hosted to Appwrite Cloud.
                             </p>
                         </a>
                     </li>
                     <li>
                         <a href="/docs/advanced/migrations/firebase" class="web-card is-normal">
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                Firebase
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                            <h4 class="web-sub-body-500 web-u-color-text-primary mt-2">Firebase</h4>
+                            <p class="web-sub-body-400 mt-1">
                                 Migrate users and data from Firebase to Appwrite.
                             </p>
                         </a>
                     </li>
                     <li>
                         <a href="/docs/advanced/migrations/supabase" class="web-card is-normal">
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                Supabase
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                            <h4 class="web-sub-body-500 web-u-color-text-primary mt-2">Supabase</h4>
+                            <p class="web-sub-body-400 mt-1">
                                 Migrate users and data from Supabase to Appwrite.
                             </p>
                         </a>
                     </li>
                     <li>
                         <a href="/docs/advanced/migrations/nhost" class="web-card is-normal">
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                Nhost
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                            <h4 class="web-sub-body-500 web-u-color-text-primary mt-2">Nhost</h4>
+                            <p class="web-sub-body-400 mt-1">
                                 Migrate users and data from NHost to Appwrite.
                             </p>
                         </a>

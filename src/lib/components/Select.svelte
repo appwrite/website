@@ -70,7 +70,10 @@
             return carry;
         }, {});
 
-        return Object.entries(groups).map(([label, options]) => ({ label, options }));
+        return Object.entries(groups).map(([label, options]) => ({
+            label,
+            options
+        }));
     })();
 
     $: flyParams = {
@@ -106,7 +109,7 @@
         {#each groups as group}
             {@const isDefault = group.label === DEFAULT_GROUP}
             {#if isDefault}
-                <div class="u-flex u-flex-vertical u-gap-2">
+                <div class="flex flex-col gap-0.5">
                     {#each group.options as option}
                         <button class="web-select-option" use:melt={$optionEl(option)}>
                             {#if option.icon}
