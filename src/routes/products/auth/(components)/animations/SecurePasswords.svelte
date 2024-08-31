@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { sleep, write } from '$lib/animations';
+    import { sleep, unwrite, write } from '$lib/animations';
     import Input from '$lib/components/ui/Input.svelte';
     import { classNames } from '$lib/utils/classnames';
     import { onMount } from 'svelte';
@@ -24,6 +24,10 @@
 
     const animation = async () => {
         await write('themagicword', (v) => state.set({ ...$state, password: v }), 500);
+        await sleep(800);
+        await unwrite('themagicword', (v) => state.set({ ...$state, password: v }), 700);
+        await sleep(500);
+        await write('anothertryatPass', (v) => state.set({ ...$state, password: v }), 500);
         await sleep(800);
         state.set({ ...$state, animationComplete: true });
     };
