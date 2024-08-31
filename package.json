@@ -75,7 +75,7 @@
         "svelte-check": "^3.8.1",
         "svelte-markdoc-preprocess": "^2.0.0",
         "svelte-markdown": "^0.4.1",
-        "svgtofont": "^4.2.1",
+        "svgtofont": "^5.0.3",
         "tailwind-merge": "^2.5.2",
         "tailwindcss": "4.0.0-alpha.17",
         "tslib": "^2.6.3",
