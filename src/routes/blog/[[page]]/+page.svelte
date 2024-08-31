@@ -59,17 +59,20 @@
         query = value.toLowerCase();
         const tempCategory = selectedCategory?.replace(/\s+/g, '-').toLowerCase();
 
-        blogPosts = (!query && !tempCategory)
-            ? data.posts
-            : data.allPosts.filter((post) => {
-                const postTitle = post.title.toLowerCase();
-                const postCategories = post.category
-                    .split(',')
-                    .map((cat) => cat.trim().replace(/\s+/g, '-').toLowerCase());
+        blogPosts =
+            !query && !tempCategory
+                ? data.posts
+                : data.allPosts.filter((post) => {
+                      const postTitle = post.title.toLowerCase();
+                      const postCategories = post.category
+                          .split(',')
+                          .map((cat) => cat.trim().replace(/\s+/g, '-').toLowerCase());
 
-                return postTitle.includes(query) &&
-                    (!tempCategory || postCategories.includes(tempCategory));
-            });
+                      return (
+                          postTitle.includes(query) &&
+                          (!tempCategory || postCategories.includes(tempCategory))
+                      );
+                  });
     };
 
     const { debounce, reset } = createDebounce();
@@ -225,7 +228,7 @@
                                         />
                                         <div class="web-author-info">
                                             <a href={author?.href} class="web-sub-body-400 web-link"
-                                            >{author?.name}</a
+                                                >{author?.name}</a
                                             >
                                             <p class="web-caption-400 hidden">{author?.bio}</p>
                                             <ul
@@ -262,14 +265,15 @@
                             class="categories-wrapper"
                             data-state={isStart ? 'start' : isEnd ? 'end' : 'middle'}
                         >
-                            <ul class="categories flex gap-2 overflow-x-auto"
+                            <ul
+                                class="categories flex gap-2 overflow-x-auto"
                                 on:scroll={handleScroll}
-                                bind:this={categoriesElement}>
-
+                                bind:this={categoriesElement}
+                            >
                                 <li class="flex items-center cursor-pointer">
                                     <button
                                         class="web-interactive-tag web-caption-400"
-                                        class:is-selected={ !selectedCategory }
+                                        class:is-selected={!selectedCategory}
                                         on:click={() => toggleCategory('Latest')}
                                     >
                                         Latest
@@ -280,7 +284,7 @@
                                     <li class="flex items-center">
                                         <button
                                             class="web-interactive-tag web-caption-400"
-                                            class:is-selected={ selectedCategory === category.name }
+                                            class:is-selected={selectedCategory === category.name}
                                             on:click={() => toggleCategory(category.name)}
                                         >
                                             {category.name}
@@ -293,11 +297,11 @@
                         <div
                             class="block md:hidden mobile-search-bar web-input-text-search-wrapper w-full"
                         >
-                                <span
-                                    class="web-icon-search z-[5]"
-                                    aria-hidden="true"
-                                    style="inset-block-start:0.9rem"
-                                />
+                            <span
+                                class="web-icon-search z-[5]"
+                                aria-hidden="true"
+                                style="inset-block-start:0.9rem"
+                            />
                             <input
                                 class="web-input-button w-full relative z-1"
                                 type="text"
@@ -313,11 +317,11 @@
                         <div
                             class="web-input-text-search-wrapper web-u-max-inline-size-none-mobile ml-auto w-full max-w-[350px] hidden md:block"
                         >
-                                <span
-                                    class="web-icon-search z-[5]"
-                                    aria-hidden="true"
-                                    style="inset-block-start: 0.9rem;"
-                                />
+                            <span
+                                class="web-icon-search z-[5]"
+                                aria-hidden="true"
+                                style="inset-block-start: 0.9rem;"
+                            />
                             <input
                                 class="web-input-button w-full relative z-1"
                                 type="text"
@@ -361,7 +365,8 @@
                                         query = '';
                                         selectedCategory = null;
                                         handleSearch('');
-                                    }}>Clear search
+                                    }}
+                                    >Clear search
                                 </button>
                             </div>
                         {/each}
@@ -382,10 +387,10 @@
                                     Previous
                                 </a>
                             {:else}
-                                    <span class="flex navigation-button">
-                                        <span class="web-icon-chevron-left" style="font-size: 20px" />
-                                        Previous
-                                    </span>
+                                <span class="flex navigation-button">
+                                    <span class="web-icon-chevron-left" style="font-size: 20px" />
+                                    Previous
+                                </span>
                             {/if}
 
                             {#each currentPageRange as page}
@@ -403,7 +408,6 @@
                                 {/if}
                             {/each}
 
-
                             {#if data.currentPage < data.totalPages}
                                 <a
                                     data-sveltekit-noscroll
@@ -415,10 +419,10 @@
                                     <span class="web-icon-chevron-right" style="font-size: 20px" />
                                 </a>
                             {:else}
-                                    <span class="flex navigation-button">
-                                        Next
-                                        <span class="web-icon-chevron-right" style="font-size: 20px" />
-                                    </span>
+                                <span class="flex navigation-button">
+                                    Next
+                                    <span class="web-icon-chevron-right" style="font-size: 20px" />
+                                </span>
                             {/if}
                         </ul>
                     </div>
@@ -514,9 +518,9 @@
         &::before {
             left: 0;
             background: linear-gradient(
-                    to right,
-                    hsl(var(--web-color-background-docs)),
-                    transparent
+                to right,
+                hsl(var(--web-color-background-docs)),
+                transparent
             );
         }
 
@@ -527,9 +531,9 @@
         &::after {
             right: 0;
             background: linear-gradient(
-                    to left,
-                    hsl(var(--web-color-background-docs)),
-                    transparent
+                to left,
+                hsl(var(--web-color-background-docs)),
+                transparent
             );
         }
 
@@ -559,7 +563,7 @@
             flex-wrap: wrap;
             display: flex !important;
             padding-block-start: 2rem;
-            flex-direction: column-reverse !important
+            flex-direction: column-reverse !important;
         }
 
         .categories {
