@@ -165,7 +165,7 @@
 <Main>
     <img class="absolute inset-0 mx-auto block" src={BackgroundHero} alt="" />
     <img class="e-bg-left-mobile absolute top-0" src={BackgroundLeft} alt="" />
-    <img class="e-bg-right-mobile absolute inset-y-0" src={BackgroundRight} alt="" />
+    <img class="e-bg-right-mobile absolute right-0" src={BackgroundRight} alt="" />
     <div class="web-big-padding-section relative overflow-hidden">
         <div class="relative py-10">
             <div class="web-big-padding-section-level-2 e-u-margin-block-128-desktop">
@@ -641,8 +641,8 @@
             </div>
         </div>
 
-        <div id="form" class="overflow-hidden p-0 py-10">
-            <div class="web-big-padding-section-level-2 is-margin-replace-padding relative">
+        <div id="form" class="overflow-hidden pt-10">
+            <div class="pt-[7.5rem] is-margin-replace-padding relative">
                 <div class="relative">
                     <div class="web-big-padding-section-level-2">
                         <div class="container relative">
@@ -822,11 +822,12 @@
                             </section>
                         </div>
                     </div>
-                    <div class="container">
-                        <FooterNav />
-                        <MainFooter />
-                    </div>
                 </div>
+            </div>
+
+            <div class="container">
+                <FooterNav />
+                <MainFooter />
             </div>
         </div>
     </div>
