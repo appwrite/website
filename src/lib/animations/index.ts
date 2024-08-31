@@ -63,7 +63,9 @@ export type ScrollCallback = {
 };
 
 export function createScrollHandler(callbacks: ScrollCallback[]) {
-    const states: ScrollCallbackState[] = callbacks.map(() => ({ executedCount: 0 }));
+    const states: ScrollCallbackState[] = callbacks.map(() => ({
+        executedCount: 0
+    }));
 
     const handler = function (scrollPercentage: number) {
         callbacks.forEach((callback, i) => {

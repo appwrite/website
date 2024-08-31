@@ -11,8 +11,7 @@ export const BLOG_POSTS_PER_PAGE = 12;
  * init-banner-02
  * pricing-banner-01
  */
-type Banners = 'discord-banner-01' | 'init-banner-02' | 'pricing-banner-01'
-
+type Banners = 'discord-banner-01' | 'init-banner-02' | 'pricing-banner-01';
 
 export type Social = {
     icon: string;
@@ -52,7 +51,7 @@ export const socialSharingOptions: Array<SocialShareOption> = [
         link: '',
         type: 'copy'
     }
-]
+];
 
 export const socials: Array<Social> = [
     {
@@ -79,10 +78,5 @@ export const socials: Array<Social> = [
         icon: 'web-icon-youtube',
         label: 'YouTube',
         link: 'https://www.youtube.com/c/appwrite?sub_confirmation=1'
-    },
-    {
-        icon: 'web-icon-daily-dev',
-        label: 'Daily.dev',
-        link: 'https://app.daily.dev/squads/appwrite'
     }
 ];

@@ -99,6 +99,6 @@ export const categories = Object.values(categoriesGlob).map((categoryList) => {
 export const getAllBlogEntriesWithAuthors = () => {
     return {
         posts,
-        authors,
-    }
-}
+        authors
+    };
+};
