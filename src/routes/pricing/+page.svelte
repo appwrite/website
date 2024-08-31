@@ -254,7 +254,7 @@
         </div>
         <ComparePlans />
 
-        <div class="theme-dark relative overflow-hidden py-10">
+        <div class="theme-dark relative overflow-hidden pt-10">
             <div class="web-big-padding-section-level-2 relative">
                 <div class="container relative" style:z-index="10">
                     <section class="web-grid-4-6">
@@ -265,7 +265,7 @@
                     </section>
                 </div>
             </div>
-            <div class="web-big-padding-section-level-2 relative">
+            <div class="web-big-padding-section-level-2 !mb-0 relative">
                 <div class="container">
                     <PreFooter />
                     <FooterNav />
