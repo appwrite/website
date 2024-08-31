@@ -83,6 +83,10 @@
             href: '/blog'
         },
         {
+            label: 'Integrations',
+            href: '/integrations'
+        },
+        {
             label: 'Changelog',
             href: '/changelog',
             showBadge: hasNewChangelog?.() && !$page.url.pathname.includes('/changelog')
