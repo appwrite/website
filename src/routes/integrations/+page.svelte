@@ -46,7 +46,6 @@
 
     const handleQuery = (e: Event) => {
         const value = (e.currentTarget as HTMLInputElement).value;
-        console.log(value);
         $page.url.searchParams.set('search', encodeURIComponent(value));
         query.set(value);
         replaceState($page.url, $page.state);
@@ -139,28 +138,10 @@
                                 placeholder="Search"
                                 bind:value={$query}
                                 autocomplete="off"
-                                on:input={(e) => {
-                                    handleQuery(e);
-                                    console.log(e);
-                                }}
+                                on:input={handleQuery}
                             >
-                                <span
-                                    class="web-icon-search"
-                                    aria-hidden="true"
-                                    slot="icon"
-                                /></Input
-                            >
-
-                            <!-- <label
-                class="web-input-button focus:border-greyscale-100 web-flex-basis-400"
-              >
-                <span class="web-icon-search" aria-hidden="true"></span>
-                <input
-                  class="border-0 ring-0 outline-none"
-                  placeholder="Search"
-                  bind:value={$query}
-                />
-              </label> -->
+                                <span class="web-icon-search" aria-hidden="true" slot="icon" />
+                            </Input>
                         </section>
                         <section class="flex flex-col">
                             <section class="flex flex-col gap-4">
@@ -196,9 +177,8 @@
                                     <select
                                         class="web-input-text w-full appearance-none"
                                         disabled={hasQuery}
-                                        on:change={(e) => {
-                                            goto(`#${e.currentTarget.value.toLowerCase()}`);
-                                        }}
+                                        on:change={(e) =>
+                                            goto(`#${e.currentTarget.value.toLowerCase()}`)}
                                     >
                                         {#each data.categories as category}
                                             {@const integrations = data.integrations.find(
