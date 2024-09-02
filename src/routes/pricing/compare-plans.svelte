@@ -357,7 +357,7 @@
 
 <svelte:window on:scroll={() => (scrollDir = getScrollDir())} />
 
-<div class="web-white-section theme-light py-10">
+<div class="web-white-section light py-10">
     <div class="web-big-padding-section-level-2">
         <div class="relative">
             <article use:melt={$root}>

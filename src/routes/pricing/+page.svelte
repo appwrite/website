@@ -44,7 +44,7 @@
 
 <Main>
     <div class="web-big-padding-section mt-2">
-        <div class="theme-dark py-10">
+        <div class="dark py-10">
             <div class="web-big-padding-section-level-2">
                 <section class="container">
                     <div class="web-hero">
@@ -254,7 +254,7 @@
         </div>
         <ComparePlans />
 
-        <div class="theme-dark relative overflow-hidden pt-10">
+        <div class="dark relative overflow-hidden pt-10">
             <div class="web-big-padding-section-level-2 relative">
                 <div class="container relative" style:z-index="10">
                     <section class="web-grid-4-6">
