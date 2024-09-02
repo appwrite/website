@@ -84,14 +84,14 @@
         <div class="web-mobile-header-start">
             <a href="/" aria-label="homepage">
                 <img
-                    class="web-logo hidden dark:block"
+                    class="web-logo web-u-only-dark"
                     src="/images/logos/appwrite.svg"
                     alt="appwrite"
                     height="24"
                     width="130"
                 />
                 <img
-                    class="web-logo block dark:hidden"
+                    class="web-logo web-u-only-light"
                     src="/images/logos/appwrite-light.svg"
                     alt="appwrite"
                     height="24"
@@ -124,14 +124,14 @@
             <div class="web-main-header-start flex-1">
                 <a href="/" aria-label="homepage">
                     <img
-                        class="web-logo hidden dark:block"
+                        class="web-logo block web-u-only-dark"
                         src="/images/logos/appwrite.svg"
                         alt="appwrite"
                         height="24"
                         width="130"
                     />
                     <img
-                        class="web-logo block dark:hidden"
+                        class="web-logo block web-u-only-light"
                         src="/images/logos/appwrite-light.svg"
                         alt="appwrite"
                         height="24"
