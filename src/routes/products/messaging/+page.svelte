@@ -481,9 +481,7 @@ messaging.create_email(
                             Start today with your preferred technologies
                         </h2>
                     </div>
-                    <div
-                        class="code-snippets divide-border-primary mt-64 grid grid-cols-2 gap-16"
-                    >
+                    <div class="code-snippets divide-border-primary mt-64 grid grid-cols-2 gap-16">
                         <div class="flex min-w-0 flex-col gap-2">
                             <h3 class="web-label web-u-color-text-primary">Subscribe to a topic</h3>
                             <p class="web-description">
