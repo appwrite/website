@@ -412,7 +412,7 @@
         </div>
     </div>
 
-    <div class="overflow-hidden py-10" style:margin-top="160px">
+    <div class="overflow-hidden pt-10" style:margin-top="160px">
         <div class="container">
             <div class="web-big-padding-section-level-2 relative">
                 <img

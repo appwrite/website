@@ -288,7 +288,7 @@ messaging.create_email(
             <Send />
         </div>
 
-        <div class="web-white-section theme-light web-u-padding-block-end-0 relative py-10">
+        <div class="web-white-section light web-u-padding-block-end-0 relative py-10">
             <div class="web-big-padding-section-level-2" style="margin-block-end: 160px">
                 <div class="container">
                     <section class="web-hero is-align-start">

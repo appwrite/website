@@ -27,11 +27,11 @@
 
 <div class="web-card is-normal mt-4" {...$root} use:root>
     <div class="tabs flex gap-4">
-        <ul class="tabs-list" {...$list} use:list>
+        <ul class="tabs-list flex items-center gap-4" {...$list} use:list>
             {#each $ctx.triggers.entries() as [id, title]}
-                <li class="tabs-item">
+                <li class="tabs-item hover:bg-white/[0.04] rounded-t-[0.625rem]">
                     <button
-                        class="tabs-button"
+                        class="tabs-button px-1 py-[0.625rem] font-light outline-none bg-clip-padding data-[state=active]:text-white cursor-pointer"
                         class:is-selected={$value === id}
                         {...$trigger(id)}
                         use:trigger>{title}</button
