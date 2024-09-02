@@ -16,7 +16,7 @@ In this tutorial, we will get into the details and learn how to develop a Flutte
 
 To continue with this tutorial, you'll need access to an Appwrite project. If you don't have one, you can sign up on [Appwrite Cloud](https://cloud.appwrite.io/).
 
-# Set up database
+# Set up a database
 
 Once you have logged in to the Console and selected your project, click on Databases in the left sidebar of the dashboard.
 
@@ -40,9 +40,9 @@ Switch to the Attributes tab and create the following attribute. Also note down 
 - Default: null
 - Required: true
 - Array: false
+
  ![Create String](/images/blog/appwrite-realtime-with-flutter/3.png)
     
-
 Switch to the Settings tab and scroll down to **Permissions** to configure the permissions for the collection. Add the **Any** role and check create, read, update, and delete so that anyone can read and write.
 
 ![Set permissions](/images/blog/appwrite-realtime-with-flutter/4.png)
@@ -464,7 +464,7 @@ class _HomePageState extends State<HomePage> {
 
 I hope you enjoyed learning and building Flutter applications with Appwrite Realtime service. 
 
-If you have any questions, feel free to ask on our [Discord server](https://appwrite.io/discord). You can also share your apps built Flutter and Appwrite Realtime on (Built with Appwrite)[https://builtwith.appwrite.io/], and we'll feature it on our socials!
+If you have any questions, feel free to ask on our [Discord server](https://appwrite.io/discord). You can also share your apps built Flutter and Appwrite Realtime on [Built with Appwrite](https://builtwith.appwrite.io/), and we'll feature it on our socials!
 
 Happy coding!
 
