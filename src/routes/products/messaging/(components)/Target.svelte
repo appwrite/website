@@ -195,7 +195,7 @@
 <Step title="Step 2: Target">
     <div class="wrapper" bind:this={wrapper}>
         <svg
-            class="is-not-mobile"
+            class="web-is-not-mobile"
             viewBox="0 0 {width} {height}"
             xmlns="http://www.w3.org/2000/svg"
         >

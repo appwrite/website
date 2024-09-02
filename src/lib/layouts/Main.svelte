@@ -8,6 +8,7 @@
     };
     export const isHeaderHidden = writable(false);
     export const isMobileNavOpen = writable(false);
+    const initialized = writable(false);
 </script>
 
 <script lang="ts">
@@ -21,9 +22,31 @@
     import { onMount } from 'svelte';
     import { page } from '$app/stores';
     import { classNames } from '$lib/utils/classnames';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
+    import InitBanner from '$lib/components/InitBanner.svelte';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
+
+    function setupThemeObserver() {
+        const handleVisibility = () => {
+            theme = getVisibleTheme();
+        };
+
+        const observer = new MutationObserver(handleVisibility);
+        observer.observe(document.body, { childList: true, subtree: true });
+
+        const callbacks = [
+            addEventListener(window, 'scroll', handleVisibility),
+            addEventListener(window, 'resize', handleVisibility)
+        ];
+
+        return () => {
+            observer.disconnect();
+            callbacks.forEach((callback) => callback());
+        };
+    }
 
     function isInViewport(element: Element): boolean {
         const mobileHeader = document.querySelector('.aw-mobile-header');
@@ -69,7 +92,14 @@
         return 'dark';
     }
 
-    const navLinks: NavLink[] = [
+    onMount(() => {
+        setTimeout(() => {
+            $initialized = true;
+        }, 1000);
+        return setupThemeObserver();
+    });
+
+    let navLinks: NavLink[] = [
         {
             label: 'Docs',
             href: '/docs'
@@ -111,30 +141,25 @@
 
         return $scrollInfo.deltaDirChange < 200;
     })();
-
-    const hideTopBanner = () => {
-        document.body.dataset.bannerHidden = '';
-        localStorage.setItem(BANNER_KEY, 'true');
-    };
 </script>
 
 <div class="relative">
     <section
         class="web-mobile-header {resolvedTheme}"
-        class:transparent={browser && !$isMobileNavOpen}
+        class:is-transparent={browser && !$isMobileNavOpen}
         class:is-hidden={$isHeaderHidden}
     >
         <div class="web-mobile-header-start">
             <a href="/">
                 <img
-                    class="web-logo block dark:hidden"
+                    class="web-logo web-u-only-dark"
                     src="/images/logos/appwrite.svg"
                     alt="appwrite"
                     height="24"
                     width="130"
                 />
                 <img
-                    class="web-logo hidden dark:block"
+                    class="web-logo web-u-only-light"
                     src="/images/logos/appwrite-light.svg"
                     alt="appwrite"
                     height="24"
@@ -144,7 +169,7 @@
         </div>
         <div class="web-mobile-header-end">
             {#if !$isMobileNavOpen}
-                <a href="https://cloud.appwrite.io" class="web-button">
+                <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button">
                     <span class="text">Get started</span>
                 </a>
             {/if}
@@ -164,38 +189,36 @@
     <header
         class="web-main-header is-special-padding {resolvedTheme} is-transparent"
         class:is-hidden={$isHeaderHidden}
+        class:is-special-padding={!BANNER_KEY.startsWith('init-banner-')}
+        style={BANNER_KEY === 'init-banner-02' ? 'padding-inline: 0' : ''}
     >
-        <div class="web-top-banner">
-            <div class="web-top-banner-content web-u-color-text-primary">
+        {#if BANNER_KEY.startsWith('init-banner-')}
+            <InitBanner />
+        {:else}
+            <AnnouncementBanner>
                 <a href="/discord" target="_blank" rel="noopener noreferrer">
                     <span class="web-caption-500">We are having lots of fun on</span>
                     <span class="web-icon-discord" aria-hidden="true" />
                     <span class="web-caption-500">Discord. Come and join us!</span>
                 </a>
-                {#if browser}
-                    <button
-                        class="web-top-banner-button"
-                        aria-label="close discord message"
-                        on:click={hideTopBanner}
-                    >
-                        <span class="web-icon-close" aria-hidden="true" />
-                    </button>
-                {/if}
-            </div>
-        </div>
+            </AnnouncementBanner>
+        {/if}
 
-        <div class="web-main-header-wrapper">
+        <div
+            class="web-main-header-wrapper"
+            class:is-special-padding={BANNER_KEY.startsWith('init-banner-')}
+        >
             <div class="web-main-header-start">
                 <a href="/">
                     <img
-                        class="web-logo hidden dark:block"
+                        class="web-logo web-u-only-dark"
                         src="/images/logos/appwrite.svg"
                         alt="appwrite"
                         height="24"
                         width="130"
                     />
                     <img
-                        class="web-logo block dark:hidden"
+                        class="web-logo web-u-only-light"
                         src="/images/logos/appwrite-light.svg"
                         alt="appwrite"
                         height="24"
@@ -211,6 +234,7 @@
                                         'data-[badge]:after:animate-scale-in data-[badge]:relative data-[badge]:after:absolute data-[badge]:after:size-1.5 data-[badge]:after:translate-full data-[badge]:after:rounded-full'
                                     )}
                                     href={navLink.href}
+                                    data-initialized={$initialized ? '' : undefined}
                                     data-badge={navLink.showBadge ? '' : undefined}
                                     >{navLink.label}
                                 </a>
@@ -230,14 +254,17 @@
                     <span class="text">Star on GitHub</span>
                     <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span>
                 </a>
-
                 <IsLoggedIn />
             </div>
         </div>
     </header>
     <MobileNav bind:open={$isMobileNavOpen} links={navLinks} />
 
-    <main class:web-u-hide-mobile={$isMobileNavOpen} id={omitMainId ? undefined : 'main'}>
+    <main
+        class="web-main-section"
+        class:web-u-hide-mobile={$isMobileNavOpen}
+        id={omitMainId ? undefined : 'main'}
+    >
         <slot />
     </main>
 </div>
@@ -248,12 +275,37 @@
         padding-inline: 0.375rem;
     }
 
+    @keyframes scale-in {
+        0% {
+            transform: scale(0);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .is-special-padding {
+        padding-inline: clamp(1.25rem, 4vw, 120rem);
+    }
+
     [data-badge] {
+        position: relative;
+
         &::after {
+            content: '';
+            position: absolute;
             background-color: hsl(var(--web-color-accent));
+            border-radius: 100%;
+            width: 0.375rem;
+            height: 0.375rem;
 
             inset-block-start: -2px;
             inset-inline-end: -4px;
+            translate: 100%;
+        }
+
+        &:not([data-initialized])::after {
+            animation: scale-in 0.2s ease-out;
         }
     }
 </style>
