@@ -68,7 +68,7 @@
             {/each}
         </div>
 
-        <div class="time-picker is-only-desktop">
+        <div class="time-picker web-is-only-desktop">
             {#each { length: 11 } as _, i}
                 <div>
                     <span>{(3 + i).toString().padStart(2, '0')}</span>
