@@ -246,7 +246,7 @@
             </div>
         </div>
 
-        <div class="web-white-section theme-light relative py-10">
+        <div class="web-white-section light relative py-10">
             <div class="web-big-padding-section-level-2 e-mt-20-mobile">
                 <div class="container">
                     <div class="web-timeline-content">

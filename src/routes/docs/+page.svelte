@@ -442,13 +442,13 @@
         }
     }
 
-    :global(.theme-dark) .tech-hero {
+    :global(.dark) .tech-hero {
         background: linear-gradient(to right, #19191c80, #19191c00);
         backdrop-filter: blur(1rem);
         -webkit-backdrop-filter: blur(1rem);
     }
 
-    :global(.theme-dark) .bg-overlay {
+    :global(.dark) .bg-overlay {
         background: linear-gradient(to right, #19191c00 0%, #19191c 400px, #19191c);
     }
 </style>
