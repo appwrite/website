@@ -33,7 +33,8 @@
 
 <div
     class="web-location-for-mobile absolute overflow-hidden"
-    style="pointer-events:none; inline-size:100%;"
+    style:pointer-events="none"
+    style:inline-size="100%"
 >
     <enhanced:img
         src={BG}
