@@ -88,6 +88,34 @@ const target = await users.createTarget(
     '<NAME>'                         // name (optional)
 );
 ```
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+	client := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"),              // Your project ID
+		appwrite.WithJWT("<USER_JWT>"),                    // Your secret JSON Web Token
+	)
+
+	users := appwrite.NewUsers(client)
+
+	target, _ := users.CreateTarget(
+		"<USER_ID>",                                       // userId   
+		"<TARGET_ID>",                                     // targetId                      
+		"email",                                           // providerType
+		"<IDENTIFIER>",                                    // identifier
+		users.WithCreateTargetProviderId("<PROVIDER_ID>"), // providerId (optional)
+		users.WithCreateTargetName("<NAME>"),              // name (optional) 
+	)
+	fmt.Println(target)
+}
+```
 ```php
 <?php
 
@@ -318,6 +346,34 @@ const topic = await messaging.createTopic(
     '[NAME]'          // name
 );
 ```
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/appwrite/sdk-for-go/appwrite"
+	"github.com/appwrite/sdk-for-go/permission"
+)
+
+func main() {
+
+	client := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"),                                 // Your project ID
+		appwrite.WithKey("<API_KEY>"),                                        // Your secret API key
+	)
+
+	messaging := appwrite.NewMessaging(client)
+
+	topic, _ := messaging.CreateTopic(
+		"<TOPIC_ID>",                                                         // topicId 
+		"<NAME>",                                                             // name 
+		messaging.WithCreateTopicSubscribe([]string{permission.Read("any")}), // permission roles for who can subscribe  
+	)
+
+	fmt.Println(topic)
+}
+```
 ```php
 <?php
 
@@ -506,6 +562,37 @@ const message = await messaging.createSms(
     false,             // draft (optional)
     ''                 // scheduledAt (optional)
 );
+```
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+
+	client := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"),       // Your project ID
+		appwrite.WithKey("<API_KEY>"),              // Your secret API key
+	)
+
+	messaging := appwrite.NewMessaging(client)
+
+	message, _ := messaging.CreateSms(
+		"<MESSAGE_ID>",                             // messageId
+		"<CONTENT>",                                // content
+		messaging.WithCreateSmsTopics([]string{}),  // topics (optional)
+		messaging.WithCreateSmsUsers([]string{}),   // users (optional)
+		messaging.WithCreateSmsTargets([]string{}), // targets (optional)
+		messaging.WithCreateSmsDraft(false),        // draft (optional)
+		messaging.WithCreateSmsScheduledAt(""),     // scheduledAt (optional)
+	)
+
+	fmt.Println(message)
+}
 ```
 ```php
 <?php
@@ -735,6 +822,37 @@ const message = await messaging.createSms(
     false,                      // draft (optional)
     '2025-02-13T22:01:00+0000'  // scheduledAt (optional)
 );
+```
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+
+	client := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"),       // Your project ID
+		appwrite.WithKey("<API_KEY>"),              // Your secret API key
+	)
+
+	messaging := appwrite.NewMessaging(client)
+
+	message, _ := messaging.CreateSms(
+		"<MESSAGE_ID>",                             // messageId
+		"<CONTENT>",                                // content
+		messaging.WithCreateSmsTopics([]string{}),  // topics (optional)
+		messaging.WithCreateSmsUsers([]string{}),   // users (optional)
+		messaging.WithCreateSmsTargets([]string{}), // targets (optional)
+		messaging.WithCreateSmsDraft(false),        // draft (optional)
+		messaging.WithCreateSmsScheduledAt("2025-02-13T22:01:00+0000"),     // scheduledAt (optional)
+	)
+
+	fmt.Println(message)
+}
 ```
 ```php
 <?php

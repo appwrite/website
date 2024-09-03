@@ -473,25 +473,25 @@ const client = new sdk.Client();
 const messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('5df5acd0d48c2')                    // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2')    // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>')        // Your secret API key
 ;
 
 const messaging = await messaging.createPush(
-        '[MESSAGE_ID]', // messageId
-        '[TITLE]',      // title
-        '[BODY]',       // body
+        '<MESSAGE_ID>', // messageId
+        '<TITLE>',      // title
+        '<BODY>',       // body
         [],             // topics (optional)
         [],             // users (optional)
         [],             // targets (optional)
         {},             // data (optional)
-        '[ACTION]',     // action (optional)
-        '[ICON]',       // icon (optional)
-        '[SOUND]',      // sound (optional)
-        '[COLOR]',      // color (optional)
-        '[TAG]',        // tag (optional)
-        '[BADGE]',      // badge (optional)
+        '<ACTION>',     // action (optional)
+        '<IMAGE>',      // image (optional)
+        '<ICON>',       // icon (optional)
+        '<SOUND>',      // sound (optional)
+        '<COLOR>',      // color (optional)
+        '<TAG>',        // tag (optional)
+        '<BADGE>',      // badge (optional)
         false,          // draft (optional)
         ''              // scheduledAt (optional)
     );
@@ -505,28 +505,66 @@ let client = new sdk.Client();
 let messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('5df5acd0d48c2')                    // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2')    // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>')        // Your secret API key
 ;
 
 const messaging = await messaging.createPush(
-        '[MESSAGE_ID]', // messageId
-        '[TITLE]',      // title
-        '[BODY]',       // body
+        '<MESSAGE_ID>', // messageId
+        '<TITLE>',      // title
+        '<BODY>',       // body
         [],             // topics (optional)
         [],             // users (optional)
         [],             // targets (optional)
         {},             // data (optional)
-        '[ACTION]',     // action (optional)
-        '[ICON]',       // icon (optional)
-        '[SOUND]',      // sound (optional)
-        '[COLOR]',      // color (optional)
-        '[TAG]',        // tag (optional)
-        '[BADGE]',      // badge (optional)
+        '<ACTION>',     // action (optional)
+        '<IMAGE>',      // image (optional)
+        '<ICON>',       // icon (optional)
+        '<SOUND>',      // sound (optional)
+        '<COLOR>',      // color (optional)
+        '<TAG>',        // tag (optional)
+        '<BADGE>',      // badge (optional)
         false,          // draft (optional)
         ''              // scheduledAt (optional)
     );
+```
+```go
+package handler
+
+import (
+	"fmt"
+
+	"github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+	client := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"),                   // Your project ID
+		appwrite.WithKey("<API_KEY>"),                          // Your secret API key
+	)
+
+	messaging := appwrite.NewMessaging(client)
+
+	topic, _ := messaging.CreatePush(
+		"<MESSAGE_ID>",                                         // messageId   
+		"<TITLE>",                                              // title
+		"<BODY>",                                               // body   
+		messaging.WithCreatePushTopics([]string{}),             // topics (optional)    
+		messaging.WithCreatePushUsers([]string{}),              // users (optional) 
+		messaging.WithCreatePushTargets([]string{}),            // targets (optional)
+		messaging.WithCreatePushData(map[string]interface{}{}), // data (optional)
+		messaging.WithCreatePushAction("<ACTION>"),             // image (optional)
+		messaging.WithCreatePushImage("[ID1:ID2]"),             // action (optional)
+		messaging.WithCreatePushIcon("<ICON>"),                 // icon (optional)  
+		messaging.WithCreatePushSound("<SOUND>"),               // sound (optional)
+		messaging.WithCreatePushColor("<COLOR>"),               // color (optional)  
+		messaging.WithCreatePushTag("<TAG>"),                   // tag (optional)  
+		messaging.WithCreatePushBadge("<BADGE>"),               // badge (optional)
+		messaging.WithCreatePushDraft(false),                   // draft (optional) 
+		messaging.WithCreatePushScheduledAt(""),                // scheduledAt (optional)  
+	)
+	fmt.Println(topic)
+}
 ```
 ```php
 <?php
@@ -537,29 +575,29 @@ use Appwrite\Services\Messaging;
 $client = new Client();
 
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1')   // Your API Endpoint
-    ->setProject('5df5acd0d48c2')                   // Your project ID
-    ->setKey('919c2d18fb5d4...a2ae413da83346ad2')   // Your secret API key
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setKey('<API_KEY>')        // Your secret API key
 ;
 
 $messaging = new Messaging($client);
 
 $result = $messaging->createPush(
-    messageId: '[MESSAGE_ID]',
-    title: '[TITLE]',
-    body: '[BODY]',
-    topics: [],         // optional
-    users: [],          // optional
-    targets: [],        // optional
-    data: [],           // optional
-    action: '[ACTION]', // optional
-    icon: '[ICON]',     // optional
-    sound: '[SOUND]',   // optional
-    color: '[COLOR]',   // optional
-    tag: '[TAG]',       // optional
-    badge: '[BADGE]',   // optional
-    draft: false,       // optional
-    scheduledAt: ''     // optional
+    messageId: '<MESSAGE_ID>',   // messageId
+    title: '<TITLE>',            // title
+    body: '<BODY>',              // body
+    topics: [],                  // topics (optional)
+    users: [],                   // users (optional)
+    targets: [],                 // targets (optional)
+    data: [],                    // data (optional)
+    action: '<ACTION>',          // action (optional)
+    image: '<IMAGE>',            // image (optional)
+    icon: '<ICON>',              // icon (optional)
+    sound: '<SOUND>',            // sound (optional)
+    color: '<COLOR>',            // color (optional)
+    tag: '<TAG>',                // tag (optional)
+    badge: '<BADGE>',            // badge (optional)
+    draft: false,                // draft (optional)
+    scheduledAt: ''              // scheduledAt (optional)
 );
 ```
 ```python
@@ -569,29 +607,29 @@ from appwrite.services.messaging import Messaging
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-  .set_project('5df5acd0d48c2')                 # Your project ID
-  .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
+  .set_project('<PROJECT_ID>')   # Your project ID
+  .set_key('<API_KEY>')          # Your secret API key
 )
 
 messaging = Messaging(client)
 
 result = messaging.create_push(
-    message_id = '[MESSAGE_ID]',
-    title = '[TITLE]',
-    body = '[BODY]',
-    topics = [],        # optional
-    users = [],         # optional
-    targets = [],       # optional
-    data = {},          # optional
-    action = '[ACTION]',# optional
-    icon = '[ICON]',    # optional
-    sound = '[SOUND]',  # optional
-    color = '[COLOR]',  # optional
-    tag = '[TAG]',      # optional
-    badge = '[BADGE]',  # optional
-    draft = False,      # optional
-    scheduled_at = ''   # optional
+    message_id = '<MESSAGE_ID>', # messageId
+    title = '<TITLE>',           # title
+    body = '<BODY>',             # body
+    topics = [],                 # topics (optional)
+    users = [],                  # users (optional)
+    targets = [],                # targets (optional)
+    data = {},                   # data (optional)
+    action = '<ACTION>',         # action (optional)
+    image = '<IMAGE>',           # image (optional)
+    icon = '<ICON>',             # icon (optional)
+    sound = '<SOUND>',           # sound (optional)
+    color = '<COLOR>',           # color (optional)
+    tag = '<TAG>',               # tag (optional)
+    badge = '<BADGE>',           # badge (optional)
+    draft = False,               # draft (optional)
+    scheduled_at = ''            # scheduledAt (optional)
 )
 ```
 ```ruby
@@ -600,28 +638,28 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1')   # Your API Endpoint
-    .set_project('5df5acd0d48c2')                   # Your project ID
-    .set_key('919c2d18fb5d4...a2ae413da83346ad2')   # Your secret API key
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_key('<API_KEY>')        # Your secret API key
 
 messaging = Messaging.new(client)
 
 response = messaging.create_push(
-    message_id: '[MESSAGE_ID]',
-    title: '[TITLE]',
-    body: '[BODY]',
-    topics: [],         # optional
-    users: [],          # optional
-    targets: [],        # optional
-    data: {},           # optional
-    action: '[ACTION]', # optional
-    icon: '[ICON]',     # optional
-    sound: '[SOUND]',   # optional
-    color: '[COLOR]',   # optional
-    tag: '[TAG]',       # optional
-    badge: '[BADGE]',   # optional
-    draft: false,       # optional
-    scheduled_at: ''    # optional
+    message_id: '<MESSAGE_ID>',  # messageId
+    title: '<TITLE>',            # title
+    body: '<BODY>',              # body
+    topics: [],                  # topics (optional) 
+    users: [],                   # users (optional) 
+    targets: [],                 # targets (optional) 
+    data: {},                    # data (optional) 
+    action: '<ACTION>',          # action (optional)
+    image: '<IMAGE>',            # image (optional) 
+    icon: '<ICON>',              # icon (optional) 
+    sound: '<SOUND>',            # sound (optional) 
+    color: '<COLOR>',            # color (optional) 
+    tag: '<TAG>',                # tag (optional) 
+    badge: '<BADGE>',            # badge (optional) 
+    draft: false,                # draft (optional) 
+    scheduled_at: ''             # scheduledAt (optional) 
 )
 
 puts response.inspect
@@ -632,28 +670,28 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 var client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .SetProject("5df5acd0d48c2")                    // Your project ID
-    .SetKey("919c2d18fb5d4...a2ae413da83346ad2");   // Your secret API key
+    .SetProject("<PROJECT_ID>")  // Your project ID
+    .SetKey("<API_KEY>");        // Your secret API key
 
 var messaging = new Messaging(client);
 
 Message result = await messaging.CreatePush(
-    messageId: "[MESSAGE_ID]",
-    title: "[TITLE]",
-    body: "[BODY]"    
-    topics: new List<string> {}     // optional    
-    users: new List<string> {}      // optional    
-    targets: new List<string> {}    // optional    
-    data: [object]      // optional    
-    action: "[ACTION]"  // optional    
-    icon: "[ICON]"      // optional    
-    sound: "[SOUND]"    // optional    
-    color: "[COLOR]"    // optional    
-    tag: "[TAG]"        // optional    
-    badge: "[BADGE]"    // optional    
-    draft: false        // optional    
-    scheduledAt: "");   // optional
+    messageId: "<MESSAGE_ID>",   // messageId
+    title: "<TITLE>",            // title
+    body: "<BODY>"               // body
+    topics: new List<string> {}  // topics (optional)  
+    users: new List<string> {}   // users (optional)  
+    targets: new List<string> {} // targets (optional)  
+    data: [object]               // data (optional) 
+    action: "<ACTION>"           // action (optional) 
+    image: "<IMAGE>"             // image (optional)
+    icon: "<ICON>"               // icon (optional) 
+    sound: "<SOUND>"             // sound (optional) 
+    color: "<COLOR>"             // color (optional) 
+    tag: "<TAG>"                 // tag (optional) 
+    badge: "<BADGE>"             // badge (optional) 
+    draft: false                 // draft (optional) 
+    scheduledAt: "");            // scheduledAt (optional) 
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -665,27 +703,27 @@ void main() {   // Init SDK
   Messaging messaging = Messaging(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('5df5acd0d48c2')                    // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2')    // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>')        // Your secret API key
   ;
 
   Future result = messaging.createPush(
-    messageId: '[MESSAGE_ID]',
-    title: '[TITLE]',
-    body: '[BODY]',
-    topics: [],         // optional
-    users: [],          // optional
-    targets: [],        // optional
-    data: {},           // optional
-    action: '[ACTION]', // optional
-    icon: '[ICON]',     // optional
-    sound: '[SOUND]',   // optional
-    color: '[COLOR]',   // optional
-    tag: '[TAG]',       // optional
-    badge: '[BADGE]',   // optional
-    draft: false,       // optional
-    scheduledAt: '',    // optional
+    messageId: '<MESSAGE_ID>',  // messageId
+    title: '<TITLE>',           // title
+    body: '<BODY>',             // body
+    topics: [],                 // topics (optional)
+    users: [],                  // users (optional)
+    targets: [],                // targets (optional)
+    data: {},                   // data (optional)
+    action: '<ACTION>',         // action (optional)
+    image: '<IMAGE>',           // image (optional)
+    icon: '<ICON>',             // icon (optional)
+    sound: '<SOUND>',           // sound (optional)
+    color: '<COLOR>',           // color (optional)
+    tag: '<TAG>',               // tag (optional)
+    badge: '<BADGE>',           // badge (optional)
+    draft: false,               // draft (optional)
+    scheduledAt: '',            // scheduledAt (optional)
   );
 
   result
@@ -701,28 +739,28 @@ import io.appwrite.Client
 import io.appwrite.services.Messaging
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .setProject("5df5acd0d48c2")                    // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2")    // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your secret API key
 
 val messaging = Messaging(client)
 
 val response = messaging.createPush(
-    messageId = "[MESSAGE_ID]",
-    title = "[TITLE]",
-    body = "[BODY]",
-    topics = listOf(),          // optional
-    users = listOf(),           // optional
-    targets = listOf(),         // optional
-    data = mapOf( "a" to "b" ), // optional
-    action = "[ACTION]",        // optional
-    icon = "[ICON]",            // optional
-    sound = "[SOUND]",          // optional
-    color = "[COLOR]",          // optional
-    tag = "[TAG]",              // optional
-    badge = "[BADGE]",          // optional
-    draft = false,              // optional
-    scheduledAt = ""            // optional
+    messageId = "<MESSAGE_ID>", // messageId
+    title = "<TITLE>",          // title
+    body = "<BODY>",            // body
+    topics = listOf(),          // topics (optional)
+    users = listOf(),           // users (optional)
+    targets = listOf(),         // targets (optional)
+    data = mapOf( "a" to "b" ), // data (optional)
+    action = "<ACTION>",        // action (optional)
+    image = "<IMAGE>",          // image (optional)
+    icon = "<ICON>",            // icon (optional)
+    sound = "<SOUND>",          // sound (optional)
+    color = "<COLOR>",          // color (optional)
+    tag = "<TAG>",              // tag (optional)
+    badge = "<BADGE>",          // badge (optional)
+    draft = false,              // draft (optional)
+    scheduledAt = ""            // scheduledAt (optional)
 )
 ```
 ```java
@@ -731,28 +769,28 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .setProject("5df5acd0d48c2")                    // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2");   // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>");       // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
 messaging.createPush(
-    "[MESSAGE_ID]",      // messageId
-    "[TITLE]",           // title
-    "[BODY]",            // body
-    listOf(),            // topics (optional)
-    listOf(),            // users (optional)
-    listOf(),            // targets (optional)
-    mapOf( "a" to "b" ), // data (optional)
-    "[ACTION]",          // action (optional)
-    "[ICON]",            // icon (optional)
-    "[SOUND]",           // sound (optional)
-    "[COLOR]",           // color (optional)
-    "[TAG]",             // tag (optional)
-    "[BADGE]",           // badge (optional)
-    false,               // draft (optional)
-    ""                   // scheduledAt (optional)
+    "<MESSAGE_ID>",             // messageId
+    "<TITLE>",                  // title
+    "<BODY>",                   // body
+    listOf(),                   // topics (optional)
+    listOf(),                   // users (optional)
+    listOf(),                   // targets (optional)
+    mapOf( "a" to "b" ),        // data (optional)
+    "<ACTION>",                 // action (optional)
+    "<IMAGE>",                  // image (optional)
+    "<ICON>",                   // icon (optional)
+    "<SOUND>",                  // sound (optional)
+    "<COLOR>",                  // color (optional)
+    "<TAG>",                    // tag (optional)
+    "<BADGE>",                  // badge (optional)
+    false,                      // draft (optional)
+    ""                          // scheduledAt (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -767,28 +805,28 @@ messaging.createPush(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")  // Your API Endpoint
-    .setProject("5df5acd0d48c2")                  // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2")  // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>")        // Your secret API key
 
 let messaging = Messaging(client)
 
 let message = try await messaging.createPush(
-  messageId: "[MESSAGE_ID]",
-  title: "[TITLE]",
-  body: "[BODY]",
-  topics: [],         // optional
-  users: [],          // optional
-  targets: [],        // optional
-  data: [:],          // optional
-  action: "[ACTION]", // optional
-  icon: "[ICON]",     // optional
-  sound: "[SOUND]",   // optional
-  color: "[COLOR]",   // optional
-  tag: "[TAG]",       // optional
-  badge: "[BADGE]",   // optional
-  draft: false,       // optional
-  scheduledAt: ""     // optional
+  messageId: "<MESSAGE_ID>",    // messageId 
+  title: "<TITLE>",             // title  
+  body: "<BODY>",               // body  
+  topics: [],                   // topics (optional)
+  users: [],                    // users (optional)
+  targets: [],                  // targets (optional)
+  data: [:],                    // data (optional)
+  action: "<ACTION>",           // action (optional)
+  image: "<IMAGE>",             // image (optional)
+  icon: "<ICON>",               // icon (optional)
+  sound: "<SOUND>",             // sound (optional)
+  color: "<COLOR>",             // color (optional)
+  tag: "<TAG>",                 // tag (optional)
+  badge: "<BADGE>",             // badge (optional)
+  draft: false,                 // draft (optional)
+  scheduledAt: ""               // scheduledAt (optional)
 )
 ```
 {% /multicode %}
