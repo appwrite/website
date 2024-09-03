@@ -2,7 +2,6 @@
     import { sleep, unwrite, write } from '$lib/animations';
     import Input from '$lib/components/ui/Input.svelte';
     import { classNames } from '$lib/utils/classnames';
-    import { onMount } from 'svelte';
     import { writable } from 'svelte/store';
 
     const state = writable<{
@@ -25,19 +24,16 @@
     const animation = async () => {
         await write('themagicword', (v) => state.set({ ...$state, password: v }), 500);
         await sleep(800);
-        await unwrite('themagicword', (v) => state.set({ ...$state, password: v }), 700);
-        await sleep(500);
-        await write('anothertryatPass', (v) => state.set({ ...$state, password: v }), 500);
-        await sleep(800);
         state.set({ ...$state, animationComplete: true });
     };
-
-    onMount(async () => {
-        await animation();
-    });
 </script>
 
-<div class="row-span-7 rounded-2xl flex flex-col gap-4 p-2 bg-greyscale-850/90">
+<div
+    class="row-span-7 rounded-2xl flex flex-col gap-4 p-2 bg-greyscale-850/90"
+    role="presentation"
+    on:mouseover={async () => await animation()}
+    on:focus={async () => await animation()}
+>
     <div class="p-4">
         <span class="text-primary">Secure passwords</span>
         <p class="text-secondary">
