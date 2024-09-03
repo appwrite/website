@@ -285,7 +285,7 @@
             </div>
         </div>
         <div
-            class="web-big-padding-section-level-2 is-margin-replace-padding relative overflow-hidden"
+            class="pt-[7.5rem] relative overflow-hidden"
         >
             <div class="container">
                 <FooterNav />

@@ -45,7 +45,7 @@
 
 <Main>
     <div class="web-big-padding-section">
-        <div class="py-10">
+        <div class="pt-10">
             <div class="web-big-padding-section-level-2">
                 <div class="container wrapper">
                     <h1 class="web-display web-u-color-text-primary">Changelog</h1>
@@ -68,8 +68,8 @@
                 </div>
             </div>
         </div>
-        <div class="relative overflow-hidden py-10">
-            <div class="web-big-padding-section-level-2">
+        <div class="relative overflow-hidden pt-10">
+            <div class="pt-[7.5rem]">
                 <div class="container">
                     <PreFooter />
                     <FooterNav />
