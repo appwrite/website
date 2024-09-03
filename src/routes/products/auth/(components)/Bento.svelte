@@ -9,7 +9,7 @@
     import PasswordDictionary from './animations/PasswordDictionary.svelte';
 </script>
 
-<div class={classNames('py-40 relative')}>
+<div class={classNames('py-40 relative')} style="background-image: url(../(assets)/bg-pattern.png)">
     <div class="container">
         <div class="flex flex-col gap-4 text-center max-w-[325px] mx-auto">
             <h2 class="text-4xl font-aeonik-pro text-primary text-pretty">

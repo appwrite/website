@@ -1,19 +1,24 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import { onMount } from 'svelte';
     import { writable } from 'svelte/store';
 
-    const state = writable<{
+    type AnimationState = {
+        hovered: boolean;
         activeInputs: Array<number>;
         currentInput: number;
         animationComplete: boolean;
-    }>({
+    };
+
+    const DEFAULT_STATE: AnimationState = {
+        hovered: false,
         activeInputs: [],
         currentInput: 0,
         animationComplete: false
-    });
+    };
 
-    onMount(() => {
+    const state = writable<AnimationState>(DEFAULT_STATE);
+
+    const animate = () => {
         setInterval(() => {
             if ($state.animationComplete) {
                 return;
@@ -27,10 +32,15 @@
                 currentInput: Math.min($state.currentInput + 1, 5)
             });
         }, 600);
-    });
+    };
 </script>
 
-<div class="row-span-5 rounded-2xl flex flex-col gap-4 p-2 bg-greyscale-850/90">
+<div
+    class="row-span-5 rounded-2xl flex flex-col gap-4 p-2 bg-greyscale-850/90"
+    on:mouseover={animate}
+    on:focus={animate}
+    role="presentation"
+>
     <div class="bg-white/[0.02] rounded-lg flex-1 flex flex-col items-center justify-center p-6">
         <div class="flex gap-1">
             {#each Array.from({ length: 6 }).map(() => Math.floor(Math.random() * 10)) as number, i}
