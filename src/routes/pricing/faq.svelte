@@ -73,30 +73,28 @@
     });
 </script>
 
-<ul
-    class="collapsible u-width-full-line"
-    style="--p-toggle-border-color: var(--web-color-smooth);"
-    use:melt={$root}
-    id="faq"
->
+<ul class="collapsible w-full divide-y divide-white/5" use:melt={$root} id="faq">
     {#each items as faqItem, index (index)}
         <li class="collapsible-item">
             <!-- Progressive Enhancement for kbd navigation & animations -->
             {#if browser}
                 <div
-                    class="collapsible-wrapper"
+                    class="collapsible-wrapper py-2"
                     use:melt={$item(`${index}`)}
                     {...{ open: $isSelected(`${index}`) ? true : undefined }}
                 >
                     <h3 use:melt={$heading({ level: 3 })}>
                         <button
-                            class="collapsible-button u-width-full-line"
+                            class="flex w-full items-center justify-between gap-2.5 py-6 text-left"
                             use:melt={$trigger(`${index}`)}
                         >
                             <span class="web-label web-u-color-text-primary">
                                 {faqItem.question}
                             </span>
-                            <div class="icon web-u-color-text-primary">
+                            <div
+                                class="icon web-u-color-text-primary self-start transition-transform"
+                                class:rotate-180={$isSelected(`${index}`)}
+                            >
                                 <span class="icon-cheveron-down" aria-hidden="true" />
                             </div>
                         </button>

@@ -47,14 +47,14 @@
 </script>
 
 <section class="web-content-footer">
-    <header class="web-content-footer-header u-width-full-line">
+    <header class="web-content-footer-header w-full">
         <div
-            class="u-flex u-gap-32 u-main-space-between u-cross-center u-width-full-line"
+            class="flex w-full items-center justify-between gap-8"
             style="flex-wrap: wrap-reverse;"
         >
-            <div class="u-flex u-gap-16 u-cross-center">
+            <div class="flex items-center gap-4">
                 <h5 class="web-main-body-600 web-u-color-text-primary">Was this page helpful?</h5>
-                <div class="u-flex u-gap-8">
+                <div class="flex gap-2">
                     <button
                         class="web-radio-button"
                         aria-label="helpful"
@@ -88,9 +88,9 @@
                             href="https://github.com/appwrite/website"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="web-link u-flex u-gap-4 u-cross-baseline"
+                            class="web-link flex items-baseline gap-1"
                         >
-                            <span class="icon-pencil-alt u-contents" aria-hidden="true" />
+                            <span class="icon-pencil-alt contents" aria-hidden="true" />
                             <span>Update on GitHub</span>
                         </a>
                     </li>
@@ -104,7 +104,7 @@
             class="web-card is-normal"
             style="--card-padding:1rem"
         >
-            <div class="u-flex-vertical u-gap-8">
+            <div class="flex flex-col gap-2">
                 <label for="message">
                     <span class="web-u-color-text-primary">
                         What did you {feedbackType === 'negative' ? 'dislike' : 'like'}? (optional)
@@ -116,7 +116,7 @@
                     placeholder="Write your message"
                     bind:value={comment}
                 />
-                <label for="message" class="u-margin-block-start-8">
+                <label for="message" class="mt-2">
                     <span class="web-u-color-text-primary">Email</span>
                 </label>
                 <input
@@ -129,17 +129,17 @@
                 />
             </div>
             {#if submitted}
-                <p class="web-u-color-text-primary u-margin-block-start-16">
+                <p class="web-u-color-text-primary mt-4">
                     Your message has been sent successfully. We appreciate your feedback.
                 </p>
             {/if}
             {#if error}
-                <p class="web-u-color-text-primary u-margin-block-start-16">
+                <p class="web-u-color-text-primary mt-4">
                     There was an error submitting your feedback. Please try again later.
                 </p>
             {/if}
 
-            <div class="u-flex u-main-end u-margin-block-start-16 u-gap-8">
+            <div class="mt-4 flex justify-end gap-2">
                 <button class="web-button is-text" on:click={() => (showFeedback = false)}>
                     <span>Cancel</span>
                 </button>

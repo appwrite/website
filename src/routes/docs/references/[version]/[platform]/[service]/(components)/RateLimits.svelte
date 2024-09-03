@@ -37,19 +37,22 @@
     }
 </script>
 
-<div class="web-card is-normal u-padding-16">
-    <div class="u-flex-vertical u-gap-24">
-        <div class="u-flex-vertical u-gap-16">
+<div class="web-card is-normal p-4">
+    <div class="flex flex-col gap-6">
+        <div class="flex flex-col gap-4">
             {#if platformType === 'CLIENT'}
                 <p class="web-sub-body-400">
-                    This endpoint is rate limited. You can only make a limited number of request to his
-                    endpoint within a specific time frame.
+                    This endpoint is rate limited. You can only make a limited number of request to
+                    his endpoint within a specific time frame.
                 </p>
-            {:else }
+            {:else}
                 <p class="web-sub-body-400">
-                    This endpoint is not limited when using Server SDKs with API keys. If you are using SSR 
-                    with <code>setSession</code>, these rate limits will still apply.
-                    <a href="/docs/products/auth/server-side-rendering#rate-limits" class="u-link web-u-color-text-primary">
+                    This endpoint is not limited when using Server SDKs with API keys. If you are
+                    using SSR with <code>setSession</code>, these rate limits will still apply.
+                    <a
+                        href="/docs/products/auth/server-side-rendering#rate-limits"
+                        class="u-link web-u-color-text-primary"
+                    >
                         Learn more about SSR rate limits.
                     </a>
                 </p>
@@ -76,7 +79,8 @@
                         {#if hasMultipleKeys(rateKeys)}
                             {#each rateKeys as key, i}
                                 <tr class="web-table-row">
-                                    <td class="web-table-col">{Math.floor(rateTime / 60)} minutes</td
+                                    <td class="web-table-col"
+                                        >{Math.floor(rateTime / 60)} minutes</td
                                     >
                                     <td class="web-table-col">{rateLimit} requests</td>
                                     <td class="web-table-col">{parseKeys(key)}</td>

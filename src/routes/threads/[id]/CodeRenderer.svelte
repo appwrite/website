@@ -48,7 +48,11 @@
     }
 
     $: result = process
-        ? getCodeHtml({ content: text, language: language ?? 'sh', withLineNumbers })
+        ? getCodeHtml({
+              content: text,
+              language: language ?? 'sh',
+              withLineNumbers
+          })
         : text;
 </script>
 
@@ -58,18 +62,20 @@
         {@html result}
     {/if}
 {:else}
-    <section class="theme-dark web-code-snippet" aria-label="code-snippet panel">
+    <section class="dark web-code-snippet" aria-label="code-snippet panel">
         <header class="web-code-snippet-header">
             <div class="web-code-snippet-header-start">
                 {#if platformMap[language]}
-                    <div class="u-flex u-gap-16">
-                        <div class="web-tag"><span class="text">{platformMap[language]}</span></div>
+                    <div class="flex gap-4">
+                        <div class="web-tag">
+                            <span class="text">{platformMap[language]}</span>
+                        </div>
                     </div>
                 {/if}
             </div>
             <div class="web-code-snippet-header-end">
-                <ul class="buttons-list u-flex u-gap-8">
-                    <li class="buttons-list-item web-u-padding-inline-start-20">
+                <ul class="buttons-list flex gap-2">
+                    <li class="buttons-list-item ps-5">
                         <Tooltip>
                             <button
                                 slot="asChild"

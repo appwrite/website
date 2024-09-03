@@ -19,13 +19,13 @@ const config = {
             layouts: {
                 default: absolute('./src/markdoc/layouts/Article.svelte'),
                 article: absolute('./src/markdoc/layouts/Article.svelte'),
-                integration: absolute('./src/markdoc/layouts/Integration.svelte'),
                 tutorial: absolute('./src/markdoc/layouts/Tutorial.svelte'),
                 post: absolute('./src/markdoc/layouts/Post.svelte'),
                 author: absolute('./src/markdoc/layouts/Author.svelte'),
                 category: absolute('./src/markdoc/layouts/Category.svelte'),
                 policy: absolute('./src/markdoc/layouts/Policy.svelte'),
-                changelog: absolute('./src/markdoc/layouts/Changelog.svelte')
+                changelog: absolute('./src/markdoc/layouts/Changelog.svelte'),
+                integration: absolute('./src/markdoc/layouts/Integration.svelte')
             }
         }),
         preprocessMeltUI()
