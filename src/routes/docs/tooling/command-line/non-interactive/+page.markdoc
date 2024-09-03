@@ -4,7 +4,7 @@ title: Non-interactive
 description: Deploy changes to Appwrite projects to migrate databases and collections schema, functions, teams, buckets, and more.
 ---
 
-The [Appwrite CLI](/docs/tooling/command-line/installation) can be used in a non-interactive and headless manner. This is especially useful when you want to automate tasks on a continuous integration server.
+The [Appwrite CLI](/docs/tooling/command-line/installation) can be used in a non-interactive manner. This is especially useful when you want to automate tasks on a continuous integration server.
 
 # Authentication {% #authentication %}
 
