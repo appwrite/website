@@ -112,8 +112,8 @@ client
 ;
 
 const provider = await messaging.updateFCMProvider(
-        '[PROVIDER_ID]',                         // providerId
-        '[NAME]',                                // name (optional)
+        '<PROVIDER_ID>',                         // providerId
+        '<NAME>',                                // name (optional)
         false,                                   // enabled (optional)
         {}                                       // serviceAccountJSON (optional)
     );
@@ -132,8 +132,8 @@ client
 ;
 
 const provider = await messaging.updateFCMProvider(
-        '[PROVIDER_ID]',                         // providerId
-        '[NAME]',                                // name (optional)
+        '<PROVIDER_ID>',                         // providerId
+        '<NAME>',                                // name (optional)
         false,                                   // enabled (optional)
         {}                                       // serviceAccountJSON (optional)
     );
@@ -154,7 +154,7 @@ func main() {
 	appwriteMessaging := appwrite.NewMessaging(appwriteClient)
 
 	var _, _ = appwriteMessaging.UpdateFcmProvider(
-		"<PROVIDER_ID>", // providerId
+		"<PROVIDER_ID>",                                                                     // providerId
 		appwriteMessaging.WithUpdateFcmProviderName("<NAME>"),                               // name (optional)
 		appwriteMessaging.WithUpdateFcmProviderEnabled(false),                               // enabled (optional)
 		appwriteMessaging.WithUpdateFcmProviderServiceAccountJSON(map[string]interface{}{}), // serviceAccountJSON (optional)
@@ -177,10 +177,10 @@ $client
 $messaging = new Messaging($client);
 
 $result = $messaging->updateFCMProvider(
-    providerId: '[PROVIDER_ID]',
-    name: '[NAME]',                               // optional
-    enabled: false,                               // optional
-    serviceAccountJSON: []                        // optional
+    providerId: <PROVIDER_ID>',                   // providerId
+    name: '<NAME>',                               // name (optional)
+    enabled: false,                               // enabled (optional)
+    serviceAccountJSON: []                        // serviceAccountJSON (optional)
 );
 ```
 ```python
@@ -197,10 +197,10 @@ client = Client()
 messaging = Messaging(client)
 
 result = messaging.update_fcm_provider(
-    provider_id = '[PROVIDER_ID]',
-    name = '[NAME]',                            # optional
-    enabled = False,                            # optional
-    service_account_json = {}                   # optional
+    provider_id = '<PROVIDER_ID>',              # providerId
+    name = '<NAME>',                            # name (optional)
+    enabled = False,                            # enabled (optional)
+    service_account_json = {}                   # serviceAccountJSON (optional)
 )
 ```
 ```ruby
@@ -215,10 +215,10 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.update_fcm_provider(
-    provider_id: '[PROVIDER_ID]',
-    name: '[NAME]',                               # optional
-    enabled: false,                               # optional
-    service_account_json: {}                      # optional
+    provider_id: '<PROVIDER_ID>',                 # providerId
+    name: '<NAME>',                               # name (optional)
+    enabled: false,                               # enabled (optional)
+    service_account_json: {}                      # serviceAccountJSON (optional)
 )
 
 puts response.inspect
@@ -235,10 +235,10 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Provider result = await messaging.UpdateFCMProvider(
-    providerId: "[PROVIDER_ID]"
-    name: "[NAME]"                                // optional
-    enabled: false                                // optional
-    serviceAccountJSON: [object]);                // optional
+    providerId: "<PROVIDER_ID>"                   // providerId
+    name: "<NAME>"                                // name (optional)
+    enabled: false                                // enabled (optional)
+    serviceAccountJSON: [object]);                // serviceAccountJSON (optional)
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -255,10 +255,10 @@ void main() {                                    // Init SDK
   ;
 
   Future result = messaging.updateFCMProvider(
-    providerId: '[PROVIDER_ID]',
-    name: '[NAME]',                              // optional
-    enabled: false,                              // optional
-    serviceAccountJSON: {},                      // optional
+    providerId: '<PROVIDER_ID>',                 // providerId
+    name: '<NAME>',                              // name (optional)
+    enabled: false,                              // enabled (optional)
+    serviceAccountJSON: {},                      // serviceAccountJSON (optional)
   );
 
   result
@@ -281,8 +281,8 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.updateFCMProvider(
-    "[PROVIDER_ID]",                              // providerId
-    "[NAME]",                                     // name (optional)
+    "<PROVIDER_ID>",                              // providerId
+    "<NAME>",                                     // name (optional)
     false,                                        // enabled (optional)
     mapOf( "a" to "b" )                           // serviceAccountJSON (optional)
     new CoroutineCallback<>((result, error) -> {
@@ -307,10 +307,10 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.updateFCMProvider(
-    "[PROVIDER_ID]",                              // providerId
-    "[NAME]",                                     // name (optional)
-    false,                                        // enabled (optional)
-    mapOf( "a" to "b" )                           // serviceAccountJSON (optional)
+    "<PROVIDER_ID>",                              // providerId                   
+    "<NAME>",                                     // name (optional)                   
+    false,                                        // enabled (optional)                   
+    mapOf( "a" to "b" )                           // serviceAccountJSON (optional)                   
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -331,10 +331,10 @@ let client = Client()
 let messaging = Messaging(client)
 
 let provider = try await messaging.updateFCMProvider(
-  providerId: "[PROVIDER_ID]",
-  name: "[NAME]",                                // optional
-  enabled: xfalse,                               // optional
-  serviceAccountJSON: [:]                        // optional
+  providerId: "<PROVIDER_ID>",                   // providerId
+  name: "<NAME>",                                // name (optional)
+  enabled: xfalse,                               // enabled (optional)
+  serviceAccountJSON: [:]                        // serviceAccountJSON (optional)
 )
 ```
 {% /multicode %}

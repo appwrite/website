@@ -82,16 +82,15 @@ func main() {
 
 	databases := appwrite.NewDatabases(client)
 
-	promise, _ := databases.CreateCollection(
-		"<DATABASE_ID>",
-		"<COLLECTION_ID>",
-		"<NAME>",
-	)
+	promise, err := databases.CreateCollection("<DATABASE_ID>", "<COLLECTION_ID>", "<NAME>")
 
-	fmt.Println(promise)
+	if err != nil {
+		fmt.Println(err) // Failure
+	}
+
+	fmt.Println(promise) // Success
 }
 ```
-
 ```php
 <?php
 

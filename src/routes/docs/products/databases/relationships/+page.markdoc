@@ -190,7 +190,6 @@ databases.createRelationshipAttribute(
     "cascade"                    // On delete action            
 );
 ```
-
 ```go
 package main
 

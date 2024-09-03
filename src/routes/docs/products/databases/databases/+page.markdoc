@@ -70,16 +70,20 @@ import (
 )
 
 func main() {
-	appwriteClient := appwrite.NewClient(
+	client := appwrite.NewClient(
 		appwrite.WithProject("<PROJECT_ID>"),
 		appwrite.WithKey("<API_KEY>"),
 	)
 
-	appwriteDatabases := appwrite.NewDatabases(appwriteClient)
+	databases := appwrite.NewDatabases(client)
 
-	promise, _ := appwriteDatabases.Create("<DATABASE_ID", "<NAME>")
+	promise, err := databases.Create("<DATABASE_ID", "<NAME>")
+	
+	if err != nil {
+		fmt.Println(err) // Failure
+	}
 
-	fmt.Println(promise)
+	fmt.Println(promise) // Success
 }
 ```
 

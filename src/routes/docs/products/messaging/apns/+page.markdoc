@@ -110,19 +110,19 @@ const client = new sdk.Client();
 const messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+    .setProject('<PROJECT_ID>')                  // Your project ID
+    .setKey('<API_KEY>')                         // Your secret API key
 ;
 
 const provider = await messaging.updateAPNSProvider(
-        '[PROVIDER_ID]',                         // providerId
-        '[NAME]',                                // name (optional)
+        '<PROVIDER_ID>',                         // providerId
+        '<NAME>',                                // name (optional)
         false,                                   // enabled (optional)
-        '[AUTH_KEY]',                            // authKey (optional)
-        '[AUTH_KEY_ID]',                         // authKeyId (optional)
-        '[TEAM_ID]',                             // teamId (optional)
-        '[BUNDLE_ID]'                            // bundleId (optional)
+        '<AUTH_KEY>',                            // authKey (optional)
+        '<AUTH_KEY_ID>',                         // authKeyId (optional)
+        '<TEAM_ID>',                             // teamId (optional)
+        '<BUNDLE_ID>'                            // bundleId (optional)
+        false                                    // sandbox (optional)
     );
 ```
 ```deno
@@ -134,19 +134,19 @@ let client = new sdk.Client();
 let messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+    .setProject('<PROJECT_ID>')                  // Your project ID
+    .setKey('<API_KEY>')                         // Your secret API key
 ;
 
 const provider = await messaging.updateAPNSProvider(
-        '[PROVIDER_ID]',                         // providerId
-        '[NAME]',                                // name (optional)
+        '<PROVIDER_ID>',                         // providerId
+        '<NAME>',                                // name (optional)
         false,                                   // enabled (optional)
-        '[AUTH_KEY]',                            // authKey (optional)
-        '[AUTH_KEY_ID]',                         // authKeyId (optional)
-        '[TEAM_ID]',                             // teamId (optional)
-        '[BUNDLE_ID]'                            // bundleId (optional)
+        '<AUTH_KEY>',                            // authKey (optional)
+        '<AUTH_KEY_ID>',                         // authKeyId (optional)
+        '<TEAM_ID>',                             // teamId (optional)
+        '<BUNDLE_ID>'                            // bundleId (optional)
+        false                                    // sandbox (optional)
     );
 ```
 ```go
@@ -157,21 +157,22 @@ import (
 )
 
 func main() {
-	appwriteClient := appwrite.NewClient(
-		appwrite.WithProject("5df5acd0d48c2"),                 // Your project ID
-		appwrite.WithKey("919c2d18fb5d4...a2ae413da83346ad2"), // Your secret API key
+	client := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"),                       // Your project ID
+		appwrite.WithKey("<API_KEY>"),                              // Your secret API key
 	)
 
-	appwriteMessaging := appwrite.NewMessaging(appwriteClient)
+	messaging := appwrite.NewMessaging(client)
 
-	var _, _ = appwriteMessaging.UpdateApnsProvider(
-		"<PROVIDER_ID>", // providerId
-		appwriteMessaging.WithUpdateApnsProviderName("<NAME>"),             // name (optional)
-		appwriteMessaging.WithUpdateApnsProviderEnabled(false),             // enabled (optional)
-		appwriteMessaging.WithUpdateApnsProviderAuthKey("<AUTH_KEY>"),      // authKey (optional)
-		appwriteMessaging.WithUpdateApnsProviderAuthKeyId("<AUTH_KEY_ID>"), // authKeyId (optional)
-		appwriteMessaging.WithUpdateApnsProviderTeamId("<TEAM_ID>"),        // teamId (optional)
-		appwriteMessaging.WithUpdateApnsProviderBundleId("<BUNDLE_ID>"),    // bundleId (optional)
+	var _, _ = messaging.UpdateApnsProvider(
+		"<PROVIDER_ID>",                                            // providerId
+		messaging.WithUpdateApnsProviderName("<NAME>"),             // name (optional)
+		messaging.WithUpdateApnsProviderEnabled(false),             // enabled (optional)
+		messaging.WithUpdateApnsProviderAuthKey("<AUTH_KEY>"),      // authKey (optional)
+		messaging.WithUpdateApnsProviderAuthKeyId("<AUTH_KEY_ID>"), // authKeyId (optional)
+		messaging.WithUpdateApnsProviderTeamId("<TEAM_ID>"),        // teamId (optional)
+		messaging.WithUpdateApnsProviderBundleId("<BUNDLE_ID>"),    // bundleId (optional)
+        messaging.WithUpdateApnsProviderSandbox(false),             // sandbox (optional)
 	)
 }
 ```
@@ -184,21 +185,21 @@ use Appwrite\Services\Messaging;
 $client = new Client();
 
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('5df5acd0d48c2')                 // Your project ID
-    ->setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+    ->setProject('<PROJECT_ID>')                  // Your project ID
+    ->setKey('<API_KEY>')                         // Your secret API key
 ;
 
 $messaging = new Messaging($client);
 
 $result = $messaging->updateAPNSProvider(
-    providerId: '[PROVIDER_ID]',
-    name: '[NAME]',                               // optional
-    enabled: false,                               // optional
-    authKey: '[AUTH_KEY]',                        // optional
-    authKeyId: '[AUTH_KEY_ID]',                   // optional
-    teamId: '[TEAM_ID]',                          // optional
-    bundleId: '[BUNDLE_ID]'                       // optional
+    providerId: '<PROVIDER_ID>',                  // providerId
+    name: '<NAME>',                               // name (optional)
+    enabled: false,                               // enabled (optional)
+    authKey: '<AUTH_KEY>',                        // authKey (optional)
+    authKeyId: '<AUTH_KEY_ID>',                   // authKeyId (optional)
+    teamId: '<TEAM_ID>',                          // teamId (optional)
+    bundleId: '<BUNDLE_ID>'                       // bundleId (optional)
+    sandbox: false                                // sandbox (optional)
 );
 ```
 ```python
@@ -208,21 +209,21 @@ from appwrite.services.messaging import Messaging
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-  .set_project('5df5acd0d48c2')                 # Your project ID
-  .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
+  .set_project('<PROJECT_ID>')                  # Your project ID
+  .set_key('<API_KEY>')                         # Your secret API key
 )
 
 messaging = Messaging(client)
 
 result = messaging.update_apns_provider(
-    provider_id = '[PROVIDER_ID]',
-    name = '[NAME]',                            # optional
-    enabled = False,                            # optional
-    auth_key = '[AUTH_KEY]',                    # optional
-    auth_key_id = '[AUTH_KEY_ID]',              # optional
-    team_id = '[TEAM_ID]',                      # optional
-    bundle_id = '[BUNDLE_ID]'                   # optional
+    provider_id = '<PROVIDER_ID>',              # providerId
+    name = '<NAME>',                            # name (optional)
+    enabled = False,                            # enabled (optional)
+    auth_key = '<AUTH_KEY>',                    # authKey (optional)
+    auth_key_id = '<AUTH_KEY_ID>',              # authKeyId (optional)
+    team_id = '<TEAM_ID>',                      # teamId (optional)
+    bundle_id = '<BUNDLE_ID>'                   # bundleId (optional)
+    sandbox = False                             # sandbox (optional)
 )
 ```
 ```ruby
@@ -231,20 +232,20 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-    .set_project('5df5acd0d48c2')                 # Your project ID
-    .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
+    .set_project('<PROJECT_ID>')                  # Your project ID
+    .set_key('<API_KEY>')                         # Your secret API key
 
 messaging = Messaging.new(client)
 
 response = messaging.update_apns_provider(
-    provider_id: '[PROVIDER_ID]',
-    name: '[NAME]',                               # optional
-    enabled: false,                               # optional
-    auth_key: '[AUTH_KEY]',                       # optional
-    auth_key_id: '[AUTH_KEY_ID]',                 # optional
-    team_id: '[TEAM_ID]',                         # optional
-    bundle_id: '[BUNDLE_ID]'                      # optional
+    provider_id: '<PROVIDER_ID>',                 # providerId
+    name: '<NAME>',                               # name (optional)
+    enabled: false,                               # enabled (optional)
+    auth_key: '<AUTH_KEY>',                       # authKey (optional)
+    auth_key_id: '<AUTH_KEY_ID>',                 # authKeyId (optional)
+    team_id: '<TEAM_ID>',                         # teamId (optional)
+    bundle_id: '<BUNDLE_ID>'                      # bundleId (optional)
+    sandbox: false                                # sandbox (optional)
 )
 
 puts response.inspect
@@ -255,20 +256,20 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 var client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("5df5acd0d48c2")                  // Your project ID
-    .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .SetProject("<PROJECT_ID>")                   // Your project ID
+    .SetKey("<API_KEY>");                         // Your secret API key
 
 var messaging = new Messaging(client);
 
 Provider result = await messaging.UpdateAPNSProvider(
-    providerId: "[PROVIDER_ID]"
-    name: "[NAME]"                                // optional
-    enabled: false                                // optional
-    authKey: "[AUTH_KEY]"                         // optional
-    authKeyId: "[AUTH_KEY_ID]"                    // optional
-    teamId: "[TEAM_ID]"                           // optional
-    bundleId: "[BUNDLE_ID]");                     // optional
+    providerId: "<PROVIDER_ID>"                   // providerId
+    name: "<NAME>"                                // name (optional)
+    enabled: false                                // enabled (optional)
+    authKey: "<AUTH_KEY>"                         // authKey (optional)
+    authKeyId: "<AUTH_KEY_ID>"                    // authKeyId (optional)
+    teamId: "<TEAM_ID>"                           // teamId (optional)
+    bundleId: "<BUNDLE_ID>"                       // bundleId (optional)
+    sandbox: false                                // sandbox (optional)
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -280,19 +281,19 @@ void main() {                                    // Init SDK
   Messaging messaging = Messaging(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
-    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+    .setProject('<PROJECT_ID>')                  // Your project ID
+    .setKey('<API_KEY>')                         // Your secret API key
   ;
 
   Future result = messaging.updateAPNSProvider(
-    providerId: '[PROVIDER_ID]',
-    name: '[NAME]',                              // optional
-    enabled: false,                              // optional
-    authKey: '[AUTH_KEY]',                       // optional
-    authKeyId: '[AUTH_KEY_ID]',                  // optional
-    teamId: '[TEAM_ID]',                         // optional
-    bundleId: '[BUNDLE_ID]',                     // optional
+    providerId: '<PROVIDER_ID>',                 // providerId
+    name: '<NAME>',                              // name (optional)
+    enabled: false,                              // enabled (optional)
+    authKey: '<AUTH_KEY>',                       // authKey (optional)
+    authKeyId: '<AUTH_KEY_ID>',                  // authKeyId (optional)
+    teamId: '<TEAM_ID>',                         // teamId (optional)
+    bundleId: '<BUNDLE_ID>',                     // bundleId (optional)
+    sandbox: false                               // sandbox (optional)
   );
 
   result
@@ -309,20 +310,20 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                  // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .setProject("<PROJECT_ID>")                   // Your project ID
+    .setKey("<API_KEY>");                         // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
 messaging.updateAPNSProvider(
-    "[PROVIDER_ID]",                              // providerId
-    "[NAME]",                                     // name (optional)
+    "<PROVIDER_ID>",                              // providerId
+    "<NAME>",                                     // name (optional)
     false,                                        // enabled (optional)
-    "[AUTH_KEY]",                                 // authKey (optional)
-    "[AUTH_KEY_ID]",                              // authKeyId (optional)
-    "[TEAM_ID]",                                  // teamId (optional)
-    "[BUNDLE_ID]"                                 // bundleId (optional)
+    "<AUTH_KEY>",                                 // authKey (optional)
+    "<AUTH_KEY_ID>",                              // authKeyId (optional)
+    "<TEAM_ID>",                                  // teamId (optional)
+    "<BUNDLE_ID>"                                 // bundleId (optional)
+    false                                         // sandbox (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -339,20 +340,20 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                  // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+    .setProject("<PROJECT_ID>")                   // Your project ID
+    .setKey("<API_KEY>");                         // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
 messaging.updateAPNSProvider(
-    "[PROVIDER_ID]",                              // providerId
-    "[NAME]",                                     // name (optional)
+    "<PROVIDER_ID>",                              // providerId
+    "<NAME>",                                     // name (optional)
     false,                                        // enabled (optional)
-    "[AUTH_KEY]",                                 // authKey (optional)
-    "[AUTH_KEY_ID]",                              // authKeyId (optional)
-    "[TEAM_ID]",                                  // teamId (optional)
-    "[BUNDLE_ID]"                                 // bundleId (optional)
+    "<AUTH_KEY>",                                 // authKey (optional)
+    "<AUTH_KEY_ID>",                              // authKeyId (optional)
+    "<TEAM_ID>",                                  // teamId (optional)
+    "<BUNDLE_ID>"                                 // bundleId (optional)
+    false                                         // sandbox (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -367,20 +368,20 @@ messaging.updateAPNSProvider(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                 // Your project ID
-    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+    .setProject("<PROJECT_ID>")                  // Your project ID
+    .setKey("<API_KEY>")                         // Your secret API key
 
 let messaging = Messaging(client)
 
 let provider = try await messaging.updateAPNSProvider(
-  providerId: "[PROVIDER_ID]",
-  name: "[NAME]",                                // optional
-  enabled: xfalse,                               // optional
-  authKey: "[AUTH_KEY]",                         // optional
-  authKeyId: "[AUTH_KEY_ID]",                    // optional
-  teamId: "[TEAM_ID]",                           // optional
-  bundleId: "[BUNDLE_ID]"                        // optional
+  providerId: "<PROVIDER_ID>",                   // providerId
+  name: "<NAME>",                                // name (optional)
+  enabled: false,                                // enabled (optional)
+  authKey: "<AUTH_KEY>",                         // authKey (optional)
+  authKeyId: "<AUTH_KEY_ID>",                    // authKeyId (optional)
+  teamId: "<TEAM_ID>",                           // teamId (optional)
+  bundleId: "<BUNDLE_ID>"                        // bundleId (optional)
+  sandbox: false                                 // sandbox (optional)
 )
 ```
 {% /multicode %}
