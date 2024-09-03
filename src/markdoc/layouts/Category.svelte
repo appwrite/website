@@ -71,9 +71,7 @@
                         {/each}
                     </ul>
                 </div>
-                <div
-                    class="pt-[7.5rem] relative overflow-hidden"
-                >
+                <div class="pt-[7.5rem] relative overflow-hidden">
                     <div class="container">
                         <FooterNav />
                         <MainFooter />
