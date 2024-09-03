@@ -101,7 +101,7 @@
             </a>
             <div class="web-is-not-mobile spline-wrapper absolute">
                 <img
-                    class="hidden dark:block"
+                    class="web-u-only-dark"
                     src="/images/animations/tech-dark-transparent.png"
                     width="660"
                     height="660"
@@ -109,7 +109,7 @@
                     style="position: absolute;"
                 />
                 <img
-                    class="block dark:hidden"
+                    class="web-u-only-light"
                     src="/images/animations/tech-light-transparent.png"
                     width="660"
                     height="660"
@@ -145,14 +145,14 @@
                             <img
                                 src="/images/icons/illustrated/dark/auth.png"
                                 alt=""
-                                class="hidden dark:block"
+                                class="web-u-only-dark"
                                 width="48"
                                 height="48"
                             />
                             <img
                                 src="/images/icons/illustrated/light/auth.png"
                                 alt=""
-                                class="block dark:hidden"
+                                class="web-u-only-light"
                                 width="48"
                                 height="48"
                             />
@@ -167,14 +167,14 @@
                             <img
                                 src="/images/icons/illustrated/dark/databases.png"
                                 alt=""
-                                class="hidden dark:block"
+                                class="web-u-only-dark"
                                 width="48"
                                 height="48"
                             />
                             <img
                                 src="/images/icons/illustrated/light/databases.png"
                                 alt=""
-                                class="block dark:hidden"
+                                class="web-u-only-light"
                                 width="48"
                                 height="48"
                             />
@@ -191,14 +191,14 @@
                             <img
                                 src="/images/icons/illustrated/dark/functions.png"
                                 alt=""
-                                class="hidden dark:block"
+                                class="web-u-only-dark"
                                 width="48"
                                 height="48"
                             />
                             <img
                                 src="/images/icons/illustrated/light/functions.png"
                                 alt=""
-                                class="block dark:hidden"
+                                class="web-u-only-light"
                                 width="48"
                                 height="48"
                             />
@@ -215,14 +215,14 @@
                             <img
                                 src="/images/icons/illustrated/dark/messaging.png"
                                 alt=""
-                                class="hidden dark:block"
+                                class="web-u-only-dark"
                                 width="48"
                                 height="48"
                             />
                             <img
                                 src="/images/icons/illustrated/light/messaging.png"
                                 alt=""
-                                class="block dark:hidden"
+                                class="web-u-only-light"
                                 width="48"
                                 height="48"
                             />
@@ -239,14 +239,14 @@
                             <img
                                 src="/images/icons/illustrated/dark/storage.png"
                                 alt=""
-                                class="hidden dark:block"
+                                class="web-u-only-dark"
                                 width="48"
                                 height="48"
                             />
                             <img
                                 src="/images/icons/illustrated/light/storage.png"
                                 alt=""
-                                class="block dark:hidden"
+                                class="web-u-only-light"
                                 width="48"
                                 height="48"
                             />
@@ -261,14 +261,14 @@
                             <img
                                 src="/images/icons/illustrated/dark/realtime.png"
                                 alt=""
-                                class="hidden dark:block"
+                                class="web-u-only-dark"
                                 width="48"
                                 height="48"
                             />
                             <img
                                 src="/images/icons/illustrated/light/realtime.png"
                                 alt=""
-                                class="block dark:hidden"
+                                class="web-u-only-light"
                                 width="48"
                                 height="48"
                             />
@@ -442,13 +442,13 @@
         }
     }
 
-    :global(.theme-dark) .tech-hero {
+    :global(.dark) .tech-hero {
         background: linear-gradient(to right, #19191c80, #19191c00);
         backdrop-filter: blur(1rem);
         -webkit-backdrop-filter: blur(1rem);
     }
 
-    :global(.theme-dark) .bg-overlay {
+    :global(.dark) .bg-overlay {
         background: linear-gradient(to right, #19191c00 0%, #19191c 400px, #19191c);
     }
 </style>
