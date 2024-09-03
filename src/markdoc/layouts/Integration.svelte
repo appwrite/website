@@ -67,7 +67,7 @@
                         </Root>
                     {:else}
                         <div
-                            class="web-carousel-item"
+                            class="web-carousel-item rounded-xl"
                             style:max-width="584px"
                             style:margin="0 auto"
                         >
