@@ -246,7 +246,7 @@
                 </section>
             </div>
         </div>
-        <div class="web-big-padding-section-level-2 relative overflow-hidden">
+        <div class="pt-[7.5rem] relative overflow-hidden">
             <div class="container">
                 <Newsletter />
                 <FooterNav />
