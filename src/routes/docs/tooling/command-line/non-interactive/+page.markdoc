@@ -4,11 +4,15 @@ title: Non-interactive
 description: Deploy changes to Appwrite projects to migrate databases and collections schema, functions, teams, buckets, and more.
 ---
 
+<<<<<<< Updated upstream
 The [Appwrite CLI](/docs/tooling/command-line/installation) can be used in a non-interactive and headless manner. This is especially useful when you want to automate tasks on a continuous integration server.
+=======
+The [Appwrite CLI](/docs/tooling/command-line/installation) can be used in a non-interactive manner, without saving configuration or sessions. This is especially useful when you want to automate tasks on a continuous integration server.
+>>>>>>> Stashed changes
 
 # Authentication {% #authentication %}
 
-In non-interactive mode, you can authenticate using two methods: email and password or API keys. While using an [API key](/docs/advanced/platform/api-keys) does not require an email and password to authenticate, the API key needs to have its [scopes](/docs/advanced/platform/api-keys#scopes) configured and the API key does not work for project API calls that update project settings.
+In non-interactive mode, you can authenticate using two methods: email and password or API keys. While using an [API key](/docs/advanced/platform/api-keys) does not require an email and password to authenticate, the API key needs to have its [scopes](/docs/advanced/platform/api-keys#scopes) configured. The API key does not work for administrative operations like changing organization billing, deleting projects, or creating a new project.
 
 ## Email and password {% #email-and-password %}
 
