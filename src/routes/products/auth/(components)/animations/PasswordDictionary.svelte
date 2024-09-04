@@ -96,21 +96,23 @@
         class="bg-white/[0.02] rounded-lg flex-1 overflow-hidden relative flex flex-col justify-center items-center"
     >
         <div class="flex gap-x-2 text-sm flex-wrap w-[105%] mx-auto absolute pointer-events-none">
-            {#each options as option}
+            {#each options as option, i}
                 {#if option === '654321'}
-                    <span
+                    <div
                         class={classNames(
                             'text-white z-50 relative bg-gradient-to-r font-mono from-greyscale-800 to-greyscale-900 flex items-center gap-2 px-1 shadow-lg shadow-black/30'
                         )}
                     >
                         <span>6543</span>
                         <span
-                            class="w-px h-[150%] bg-gradient-to-b from-transparent via-white to-transparent"
+                            class="animate-scale-in w-px h-[150%] bg-gradient-to-b from-transparent via-white to-transparent"
                         ></span>
                         <span class="text-white/50">21</span>
-                    </span>
+                    </div>
                 {:else}
-                    <span class={classNames('font-mono text-white/20')}>{option}</span>{/if}
+                    <span class={classNames('font-mono transition-all duration-1000 text-white/20')}
+                        >{option}</span
+                    >{/if}
             {/each}
             <div class="mask inset-0 absolute z-0 backdrop-blur-md" />
         </div>
