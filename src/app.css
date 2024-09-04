@@ -89,6 +89,33 @@
     --font-family-aeonik-fono: 'Aenoik Fono', monospace;
     --font-family-aeonik-pro: 'Aeonik Pro', var(--font-family-sans);
     --font-family-archia: 'Archia', arial, sans-serif;
+
+    --font-size-xs: clamp(0.75rem, 2.5vw + 0.5rem, 1rem);
+    --font-size-xs--line-height: clamp(1rem, 2.5vw + 0.75rem, 1.25rem);
+    --font-size-sm: clamp(0.875rem, 2.5vw + 0.625rem, 1.125rem);
+    --font-size-sm--line-height: clamp(1.25rem, 2.5vw + 0.875rem, 1.5rem);
+    --font-size-base: clamp(1rem, 2.5vw + 0.75rem, 1.25rem);
+    --font-size-base--line-height: clamp(1.5rem, 2.5vw + 1rem, 1.75rem);
+    --font-size-lg: clamp(1.125rem, 2.5vw + 0.875rem, 1.375rem);
+    --font-size-lg--line-height: clamp(1.75rem, 2.5vw + 1.125rem, 2rem);
+    --font-size-xl: clamp(1.25rem, 2.5vw + 1rem, 1.5rem);
+    --font-size-xl--line-height: clamp(1.75rem, 2.5vw + 1.125rem, 2rem);
+    --font-size-2xl: clamp(1.5rem, 2.5vw + 1.25rem, 1.75rem);
+    --font-size-2xl--line-height: clamp(2rem, 2.5vw + 1.25rem, 2.25rem);
+    --font-size-3xl: clamp(1.875rem, 2.5vw + 1.5rem, 2.125rem);
+    --font-size-3xl--line-height: clamp(2.25rem, 2.5vw + 1.5rem, 2.5rem);
+    --font-size-4xl: clamp(2.25rem, 2.5vw + 1.75rem, 2.5rem);
+    --font-size-4xl--line-height: clamp(2.5rem, 2.5vw + 1.75rem, 2.75rem);
+    --font-size-5xl: clamp(3rem, 3vw + 2rem, 4rem);
+    --font-size-5xl--line-height: 1;
+    --font-size-6xl: clamp(3.75rem, 3vw + 2.5rem, 4.5rem);
+    --font-size-6xl--line-height: 1;
+    --font-size-7xl: clamp(4.5rem, 3vw + 3rem, 6rem);
+    --font-size-7xl--line-height: 1;
+    --font-size-8xl: clamp(6rem, 3vw + 4rem, 8rem);
+    --font-size-8xl--line-height: 1;
+    --font-size-9xl: clamp(8rem, 3vw + 5rem, 10rem);
+    --font-size-9xl--line-height: 1;
 }
 
 /* Themes */
