@@ -28,7 +28,8 @@ export function load() {
                 author: frontmatter.author,
                 category: frontmatter.category,
                 href: `${base}/blog/post/${postName}`,
-                draft: frontmatter.draft
+                draft: frontmatter.draft,
+                callToAction: frontmatter.callToAction
             };
         })
         .sort((a, b) => {
