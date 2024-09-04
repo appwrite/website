@@ -84,6 +84,11 @@ Choose from one of the providers below:
 {% only_light %}{% icon_image src="/images/one-click/akamai.svg" alt="Akamai logo" size="m" /%}{% /only_light %}
 * Akamai Compute
 * [Click to install](https://www.linode.com/marketplace/apps/appwrite/appwrite/)
+---
+* {% only_dark %}{% icon_image src="/images/one-click/dark/aws.svg" alt="AWS logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/one-click/aws.svg" alt="AWS logo" size="m" /%}{% /only_light %}
+* AWS Marketplace
+* [Click to install](https://aws.amazon.com/marketplace/pp/prodview-2hiaeo2px4md6)
 {% /table %}
 
 

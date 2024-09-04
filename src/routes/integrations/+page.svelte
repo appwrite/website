@@ -8,7 +8,7 @@
     import { writable } from 'svelte/store';
     import { autoHash } from '$lib/actions/autoHash';
     import type { Integration } from './+page';
-    import { goto, replaceState } from '$app/navigation';
+    import { goto } from '$app/navigation';
     import { onDestroy, onMount } from 'svelte';
     import { browser } from '$app/environment';
     import { classNames } from '$lib/utils/classnames';
@@ -24,7 +24,8 @@
     // search functionality
     let fuseOptions = {
         keys: ['title'],
-        threshold: 0.3
+        threshold: 0.2,
+        distance: 500
     };
 
     let result: ResultType<Integration> = [];
@@ -46,9 +47,7 @@
 
     const handleQuery = (e: Event) => {
         const value = (e.currentTarget as HTMLInputElement).value;
-        $page.url.searchParams.set('search', encodeURIComponent(value));
         query.set(value);
-        replaceState($page.url, $page.state);
     };
 
     onMount(() => {
