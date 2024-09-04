@@ -434,8 +434,9 @@
                 <FooterNav />
                 <MainFooter />
             </div>
-    </div>
-</Main>
+        </div>
+    </div></Main
+>
 
 <style>
     .pagination-number {
