@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <div class="web-big-padding-section-level-2 relative">
+            <div class="pt-[7.5rem] relative">
                 <div class="container">
                     <FooterNav />
                     <MainFooter />

@@ -37,9 +37,9 @@
     }
 </script>
 
-<div class="web-card is-normal u-padding-16">
-    <div class="u-flex-vertical u-gap-24">
-        <div class="u-flex-vertical u-gap-16">
+<div class="web-card is-normal p-4">
+    <div class="flex flex-col gap-6">
+        <div class="flex flex-col gap-4">
             {#if platformType === 'CLIENT'}
                 <p class="web-sub-body-400">
                     This endpoint is rate limited. You can only make a limited number of request to

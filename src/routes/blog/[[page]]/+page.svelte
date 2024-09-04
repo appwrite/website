@@ -179,7 +179,7 @@
                 </div>
             </div>
         </div>
-        <div class="py-10">
+        <div class="pt-10">
             <div class="web-big-padding-section-level-2">
                 <div class="web-container">
                     <h2
@@ -265,7 +265,7 @@
                     </div>
                 </div>
             </div>
-            <div class="web-big-padding-section-level-2">
+            <div class="pt-[7.5rem]">
                 <div class="container">
                     <FooterNav />
                     <MainFooter />
