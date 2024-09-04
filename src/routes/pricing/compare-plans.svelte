@@ -32,35 +32,35 @@
                     free: '10GB',
                     pro: '300GB',
                     scale: '300GB',
-                    enterprise: '300GB'
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Additional bandwidth',
                     free: '-',
                     pro: '$40 per 100GB',
                     scale: '$40 per 100GB',
-                    enterprise: '$40 per 100GB',
+                    enterprise: 'Custom',
                 },
                 {
                     title: 'Storage',
                     free: '2GB',
                     pro: '150GB',
                     scale: '150GB',
-                    enterprise: '150GB'
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Additional storage',
                     free: '-',
                     pro: '$3 per 100GB',
                     scale: '$3 per 100GB',
-                    enterprise: '$3 per 100GB'
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Compute',
                     free: '750K executions',
                     pro: '3.5M executions',
                     scale: '3.5M executions',
-                    enterprise: '3.5M executions'
+                    enterprise: 'Custom'
                 }
             ]
         },
@@ -135,7 +135,7 @@
                     free: '1 hour',
                     pro: '7 days',
                     scale: '28 days',
-                    enterprise: '28 days'
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Budget caps and alerts',
@@ -154,14 +154,14 @@
                     free: '75,000 monthly active users',
                     pro: '200,000 monthly active users',
                     scale: '200,000 monthly active users',
-                    enterprise: '200,000 monthly active users'
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Additional users',
                     free: '-',
                     pro: '$3 per 1,000 users',
                     scale: '$3 per 1,000 users',
-                    enterprise: '$3 per 1,000 users'
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Teams',
@@ -227,7 +227,7 @@
                     free: '50MB',
                     pro: '5GB',
                     scale: '5GB',
-                    enterprise: '5GB'
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Image transformations',
@@ -253,14 +253,14 @@
                     free: '750K',
                     pro: '3.5M',
                     scale: '3.5M',
-                    enterprise: '3.5M'
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Additional executions',
                     free: '-',
                     pro: '$2 per 1 Million',
                     scale: '$2 per 1 Million',
-                    enterprise: '$2 per 1 Million'
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Express builds',
@@ -280,14 +280,14 @@
                     free: '250',
                     pro: '500',
                     scale: '500',
-                    enterprise: '500'
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Additional concurrent connections',
                     free: '-',
                     pro: '$5 per 1,000',
                     scale: '$5 per 1,000',
-                    enterprise: '$5 per 1,000'
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Messages',
