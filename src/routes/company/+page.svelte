@@ -28,8 +28,8 @@
 </svelte:head>
 
 <Main>
-    <enhanced:img class="absolute top-0" src="./bg-left.png" alt="" />
-    <enhanced:img class="absolute inset-y-0" src="./bg-right.png" alt="" />
+    <enhanced:img class="absolute start-0" src="./bg-left.png" alt="" />
+    <enhanced:img class="absolute end-0" src="./bg-right.png" alt="" />
     <div class="web-big-padding-section relative">
         <div class="relative py-10">
             <div class="web-big-padding-section-level-2" style:margin-block="8rem">
@@ -274,7 +274,7 @@
 				</div>
 			</div>
 		</div> -->
-        <div class="web-white-section theme-light py-10">
+        <div class="web-white-section light py-10">
             <div class="web-big-padding-section-level-2">
                 <div class="container">
                     <div class="web-hero web-u-max-width-800">
