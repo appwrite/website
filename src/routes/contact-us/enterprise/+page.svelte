@@ -36,7 +36,7 @@
                 companySize,
                 companyWebsite,
                 firstName: name,
-                message: useCase,
+                message: useCase
             })
         });
 
@@ -81,7 +81,7 @@
                 class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
             >
                 <div class="u-position-relative">
-                    <div class="web-container u-position-relative">
+                    <div class="web-container relative">
                         <!-- before submit -->
                         <div
                             class="u-position-relative u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0"
@@ -108,7 +108,7 @@
                                             </a>
                                         </section>
                                     {:else}
-                                        <section class="u-flex-col web-u-gap-20">
+                                        <section class="flex flex-col gap-5">
                                             <h4 class="web-display web-u-color-text-primary">
                                                 Enterprise Plan
                                             </h4>
@@ -162,7 +162,7 @@
                                                 >
                                                 <input
                                                     required
-                                                    class="web-input-text"
+                                                    class="web-input-text w-full"
                                                     type="text"
                                                     placeholder="Acme Corp"
                                                     id="companyName"
@@ -174,9 +174,9 @@
                                                 >Company size</label
                                                 >
 
-                                                <div class="u-position-relative">
+                                                <div class="relative">
                                                     <select
-                                                        class="web-input-text"
+                                                        class="web-input-text w-full appearance-none"
                                                         id="companySize"
                                                         bind:value={companySize}
                                                     >
@@ -189,11 +189,12 @@
                                                         <option>1001-5000 employees</option>
                                                         <option>5000+ employees</option>
                                                     </select>
-<!--                                                    <span-->
-<!--                                                        class="icon-cheveron-down u-position-absolute u-inset-inline-end-8 u-inset-block-start-8 web-u-pointer-events-none"-->
-<!--                                                        aria-hidden="true"-->
-<!--                                                    ></span>-->
+                                                    <span
+                                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-2 right-2"
+                                                        aria-hidden="true"
+                                                    />
                                                 </div>
+
                                             </li>
                                             <li
                                                 class="web-form-item is-column-span-2 flex-col gap-1"
@@ -227,7 +228,7 @@
                                         </ul>
                                     </div>
                                     <div
-                                        class="u-flex u-gap-16 u-main-space-between web-u-flex-col-reverse-mobile"
+                                        class="ps-6 flex gap-4 justify-between web-u-flex-col-reverse-mobile items-center"
                                     >
                                         <p class="web-caption-400 web-u-max-width-380">
                                             {#if error}
@@ -254,3 +255,11 @@
         </div>
     </div>
 </Main>
+
+<style>
+    .web-form-item {
+        gap: 4px;
+        display: flex;
+        flex-direction: column;
+    }
+</style>
