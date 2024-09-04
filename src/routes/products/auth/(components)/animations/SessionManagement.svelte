@@ -14,13 +14,15 @@
         >
             <div class="ml-2 mt-2 flex flex-col flex-1">
                 <header
-                    class="p-4 rounded-tl-2xl bg-greyscale-850/[0.6] flex gap-2 flex-col border-b border-white/20"
+                    class="p-4 rounded-tl-2xl bg-greyscale-850/60 flex gap-2 flex-col border-b border-white/20"
                 >
                     <div class="flex gap-3 items-center">
                         <span class="text-[18px] font-light font-aeonik-pro text-white"
                             >Walter O'Brien</span
                         >
-                        <span class="font-mono text-xs">637a40ba7</span>
+                        <span class="font-mono text-xs py-1 px-2 bg-greyscale-700/60 rounded-full"
+                            >637a40ba7</span
+                        >
                     </div>
                     <nav class="flex mt-4 -mb-[17px] gap-4 items-center text-xs relative z-10">
                         <button class="border-b border-transparent pb-2 px-1">Overview</button>
