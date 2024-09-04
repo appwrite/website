@@ -80,6 +80,24 @@
                     </button>
                 </div>
             </li>
+            <li class="web-strip-plans-item web-strip-plans-container-query">
+                <div class="web-strip-plans-item-wrapper">
+                    <div class="web-strip-plans-plan">
+                        <h4 class="title web-description">Enterprise</h4>
+                        <div class="web-title web-u-color-text-primary">Custom</div>
+                        <div class="info web-caption-500">per org/month</div>
+                    </div>
+                    <p class="web-strip-plans-info web-caption-500">
+                        For enterprises that need more power and premium support.
+                    </p>
+                    <a
+                        href="/contact-us/enterprise"
+                        class="web-button is-secondary is-full-width-mobile web-u-cross-child-end"
+                    >
+                        <span class="text">Contact us</span>
+                    </a>
+                </div>
+            </li>
         </ul>
     </section>
 </div>
