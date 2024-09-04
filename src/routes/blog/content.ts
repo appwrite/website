@@ -26,7 +26,13 @@ export type PostsData = {
     author: string;
     category: string;
     href: string;
+    slug: string;
     featured?: boolean;
+    callToAction: {
+        heading?: string;
+        label?: string;
+        url?: string;
+    };
 };
 
 const postsGlob = import.meta.glob('./post/**/*.markdoc', {
@@ -59,6 +65,7 @@ export const posts = Object.entries(postsGlob)
             author: frontmatter.author,
             category: frontmatter.category,
             href: `${base}/blog/post/${postName}`,
+            slug,
             draft: frontmatter.draft
         };
     })

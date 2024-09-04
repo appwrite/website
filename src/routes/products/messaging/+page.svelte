@@ -288,7 +288,7 @@ messaging.create_email(
             <Send />
         </div>
 
-        <div class="web-white-section theme-light web-u-padding-block-end-0 relative py-10">
+        <div class="web-white-section light web-u-padding-block-end-0 relative py-10">
             <div class="web-big-padding-section-level-2" style="margin-block-end: 160px">
                 <div class="container">
                     <section class="web-hero is-align-start">
@@ -481,9 +481,7 @@ messaging.create_email(
                             Start today with your preferred technologies
                         </h2>
                     </div>
-                    <div
-                        class="code-snippets divide-border-primary mt-64 grid grid-cols-2 gap-16 divide-x-2"
-                    >
+                    <div class="code-snippets divide-border-primary mt-64 grid grid-cols-2 gap-16">
                         <div class="flex min-w-0 flex-col gap-2">
                             <h3 class="web-label web-u-color-text-primary">Subscribe to a topic</h3>
                             <p class="web-description">
@@ -660,7 +658,7 @@ messaging.create_email(
                 </ul>
             </div>
         </section>
-        <div class="web-big-padding-section-level-2 is-margin-replace-padding relative">
+        <div class="pt-[7.5rem] relative">
             <div class="container">
                 <PreFooter />
                 <FooterNav />

@@ -11,6 +11,7 @@
     import { type SocialShareOption, socialSharingOptions } from '$lib/constants';
     import { copy } from '$lib/utils/copy';
     import { page } from '$app/stores';
+    import CTA from '$lib/components/BlogCta.svelte';
 
     export let title: string;
     export let description: string;
@@ -19,6 +20,13 @@
     export let timeToRead: string;
     export let cover: string;
     export let category: string;
+    export let callToAction:
+        | {
+              label: string;
+              url: string;
+              heading: string;
+          }
+        | boolean;
     export let lastUpdated: string;
 
     const authors = getContext<AuthorData[]>('authors');
@@ -92,7 +100,7 @@
         <div class="web-big-padding-section">
             <div class="py-10">
                 <div class="web-big-padding-section-level-2">
-                    <div class="container" style="--container-size:42.5rem">
+                    <div class="container max-w-[42.5rem]">
                         <article class="web-main-article">
                             <header class="web-main-article-header">
                                 <a
@@ -209,6 +217,7 @@
                                 <slot />
                             </div>
                         </article>
+
                         <!-- {#if categories?.length}
 							<div class="flex gap-4">
 								{#each categories as cat}
@@ -217,6 +226,11 @@
 							</div>
 						{/if} -->
                     </div>
+                    {#if typeof callToAction === 'boolean'}
+                        <CTA />
+                    {:else if typeof callToAction === 'object'}
+                        <CTA {...callToAction} />
+                    {/if}
                 </div>
             </div>
         </div>
@@ -246,7 +260,7 @@
                 </section>
             </div>
         </div>
-        <div class="web-big-padding-section-level-2 relative overflow-hidden">
+        <div class="pt-[7.5rem] relative overflow-hidden">
             <div class="container">
                 <Newsletter />
                 <FooterNav />
