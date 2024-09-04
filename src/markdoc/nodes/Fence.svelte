@@ -1,5 +1,5 @@
 <script lang="ts">
-    import '$scss/hljs.css';
+    import '$scss/shiki.css';
     import { getCodeHtml, type Language } from '$lib/utils/code';
     import { getContext, hasContext } from 'svelte';
     import { platformMap } from '$lib/utils/references';
@@ -14,7 +14,7 @@
     export let process: boolean;
     export let withLineNumbers = true;
     export let badge: string | null = null;
-
+console.log(language);
     const insideMultiCode = hasContext('multi-code');
     const selected = insideMultiCode ? getContext<CodeContext>('multi-code').selected : null;
 
@@ -57,8 +57,10 @@
 
 {#if insideMultiCode}
     {#if $selected === language}
-        <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-        {@html result}
+        {#await result then html}
+            <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+            {@html html}
+        {/await}
     {/if}
 {:else}
     <section class="dark web-code-snippet" aria-label="code-snippet panel">
@@ -93,8 +95,10 @@
             </div>
         </header>
         <div class="web-code-snippet-content">
-            <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-            {@html result}
+            {#await result then html}
+                <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+                {@html html}
+            {/await}
         </div>
     </section>
 {/if}
