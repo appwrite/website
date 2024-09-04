@@ -51,12 +51,9 @@ export const load = async () => {
         return { issues: mockIssues };
     }
 
-    // only open issues and since PRs are also issues, exclude them.
-    const onlyIssues = issues.filter((issue) => issue.state === 'open' && !issue.pull_request);
-
     // map issues to our format
     return {
-        issues: onlyIssues
+        issues: issues
             .map((issue: any) => ({
                 number: issue.number,
                 url: issue.html_url,
