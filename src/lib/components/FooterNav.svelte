@@ -37,7 +37,7 @@
                 { label: 'Functions', href: '/docs/products/functions' },
                 { label: 'Messaging', href: '/products/messaging' },
                 { label: 'Storage', href: '/docs/products/storage' },
-                { label: 'Realtime', href: '/docs/apis/realtime' },
+                { label: 'Realtime', href: '/docs/apis/realtime' }
             ],
             Learn: [
                 { label: 'Docs', href: '/docs' },
@@ -58,13 +58,13 @@
                     href: 'https://github.com/appwrite',
                     target: '_blank',
                     rel: 'noopener noreferrer'
-                },
-                {
-                    label: 'Status',
-                    href: 'https://appwrite.online',
-                    target: '_blank',
-                    rel: 'noopener noreferrer'
                 }
+                // {
+                //     label: 'Status',
+                //     href: 'https://appwrite.online',
+                //     target: '_blank',
+                //     rel: 'noopener noreferrer'
+                // }
             ],
             Programs: [
                 { label: 'Heroes', href: '/heroes' },
@@ -93,7 +93,7 @@
 
 <nav
     aria-label="Footer"
-    class="web-footer-nav u-margin-block-start-100 u-position-relative"
+    class="web-footer-nav relative mt-24"
     class:web-u-sep-block-start={!noBorder}
 >
     <img class="web-logo" src="/images/logos/appwrite.svg" alt="appwrite" height="24" width="130" />

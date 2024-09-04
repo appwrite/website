@@ -48,10 +48,8 @@
             </div>
 
             <div class="info">
-                <p class="web-label u-margin-block-start-16">
-                    Register today and claim your ticket.
-                </p>
-                <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-32">
+                <p class="web-label mt-4">Register today and claim your ticket.</p>
+                <div class="mt-8 flex items-center gap-4">
                     <a class="web-button" href="/init/tickets">
                         <span class="text">Get my ticket</span>
                     </a>
@@ -73,7 +71,7 @@
         </TicketPreview>
     </div>
 
-    <div class="web-container">
+    <div class="container">
         <FooterNav />
         <MainFooter />
     </div>
@@ -93,7 +91,7 @@
             .info {
                 grid-row: 3;
 
-                .u-flex {
+                .flex {
                     flex-direction: column;
                     gap: 0.5rem;
                     margin-block-start: 1rem;
@@ -107,7 +105,7 @@
     }
 
     @media screen and (max-width: 1023px) {
-        .web-container {
+        .container {
             padding-block-start: 0;
 
             :global(nav) {

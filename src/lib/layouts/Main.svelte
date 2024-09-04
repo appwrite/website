@@ -8,7 +8,6 @@
     };
     export const isHeaderHidden = writable(false);
     export const isMobileNavOpen = writable(false);
-
     const initialized = writable(false);
 </script>
 
@@ -22,7 +21,7 @@
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
     import { page } from '$app/stores';
-    import { loggedIn } from '$lib/utils/console';
+    import { classNames } from '$lib/utils/classnames';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
     import InitBanner from '$lib/components/InitBanner.svelte';
@@ -71,24 +70,22 @@
     }
 
     function getVisibleTheme() {
-        const themes = Array.from(document.querySelectorAll('.theme-dark, .theme-light')).filter(
-            (element) => {
-                const { classList, dataset } = element as HTMLElement;
-                if (
-                    classList.contains('web-mobile-header') ||
-                    classList.contains('web-main-header') ||
-                    element === document.body ||
-                    typeof dataset['themeIgnore'] === 'string'
-                ) {
-                    return false;
-                }
-                return true;
+        const themes = Array.from(document.querySelectorAll('.dark, .light')).filter((element) => {
+            const { classList, dataset } = element as HTMLElement;
+            if (
+                classList.contains('web-mobile-header') ||
+                classList.contains('web-main-header') ||
+                element === document.body ||
+                typeof dataset['themeIgnore'] === 'string'
+            ) {
+                return false;
             }
-        );
+            return true;
+        });
 
         for (const theme of themes) {
             if (isInViewport(theme)) {
-                return theme.classList.contains('theme-light') ? 'light' : 'dark';
+                return theme.classList.contains('light') ? 'light' : 'dark';
             }
         }
 
@@ -146,9 +143,9 @@
     })();
 </script>
 
-<div class="u-position-relative">
+<div class="relative">
     <section
-        class="web-mobile-header theme-{resolvedTheme}"
+        class="web-mobile-header {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
         class:is-hidden={$isHeaderHidden}
     >
@@ -190,7 +187,7 @@
         </div>
     </section>
     <header
-        class="web-main-header is-special-padding theme-{resolvedTheme} is-transparent"
+        class="web-main-header is-special-padding {resolvedTheme} is-transparent"
         class:is-hidden={$isHeaderHidden}
         class:is-special-padding={!BANNER_KEY.startsWith('init-banner-')}
         style={BANNER_KEY === 'init-banner-02' ? 'padding-inline: 0' : ''}
@@ -231,9 +228,11 @@
                 <nav class="web-main-header-nav" aria-label="Main">
                     <ul class="web-main-header-nav-list">
                         {#each navLinks as navLink}
-                            <li class="web-main-header-nav-item">
+                            <li class="web-main-header-nav-item text-primary hover:text-accent">
                                 <a
-                                    class="web-link"
+                                    class={classNames(
+                                        'data-[badge]:after:animate-scale-in data-[badge]:relative data-[badge]:after:absolute data-[badge]:after:size-1.5 data-[badge]:after:translate-full data-[badge]:after:rounded-full'
+                                    )}
                                     href={navLink.href}
                                     data-initialized={$initialized ? '' : undefined}
                                     data-badge={navLink.showBadge ? '' : undefined}
@@ -249,9 +248,9 @@
                     href="https://github.com/appwrite/appwrite/stargazers"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="web-button is-text"
+                    class="web-button is-text web-u-inline-width-100-percent-mobile"
                 >
-                    <span aria-hidden="true" class="web-icon-star" />
+                    <span class="web-icon-star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>
                     <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span>
                 </a>

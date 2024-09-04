@@ -4,7 +4,8 @@
     import { DOCS_TITLE_SUFFIX } from '$routes/titles';
 
     const title = 'Tutorials' + DOCS_TITLE_SUFFIX;
-    const description = 'Follow a simple tutorial to get started with Appwrite in your preferred framework quickly and easily.';
+    const description =
+        'Follow a simple tutorial to get started with Appwrite in your preferred framework quickly and easily.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 
     export let data;
@@ -58,8 +59,8 @@
 <main class="web-main-section" id="main">
     <article class="web-article">
         <header class="web-article-header">
-            <div class="web-article-header-start u-flex-vertical web-u-cross-start">
-                <div class="u-position-relative u-flex u-cross-center">
+            <div class="web-article-header-start flex flex-col web-u-cross-start">
+                <div class="relative flex items-center">
                     <h1 class="web-title">Tutorials</h1>
                 </div>
             </div>
@@ -67,7 +68,7 @@
         </header>
         <div class="web-article-content web-u-gap-80">
             {#each data.tutorials as category}
-                <section class="u-flex-vertical u-gap-24">
+                <section class="flex flex-col gap-6">
                     <h2 class="web-eyebrow">{category.title}</h2>
                     <ul class="web-grid-row-4 web-grid-row-4-mobile-2">
                         {#each category.tutorials as tutorial}
@@ -79,7 +80,7 @@
                                         aria-disabled="true"
                                         tabindex="-1"
                                     >
-                                        <header class="u-flex u-cross-baseline u-gap-4">
+                                        <header class="flex items-baseline gap-1">
                                             <span
                                                 class="{getIcon(tutorial)} web-u-font-size-24"
                                                 aria-hidden="true"
@@ -92,7 +93,7 @@
                                     </a>
                                 {:else}
                                     <a href={tutorial.href} class="web-card is-normal">
-                                        <header class="u-flex u-cross-baseline u-gap-4">
+                                        <header class="flex items-baseline gap-1">
                                             <span
                                                 class="{getIcon(tutorial)} web-u-font-size-24"
                                                 aria-hidden="true"
@@ -101,7 +102,7 @@
                                                 {tutorial.framework}
                                             </h3>
                                         </header>
-                                        <p class="web-sub-body-400 u-margin-block-start-4">
+                                        <p class="web-sub-body-400 mt-1">
                                             {tutorial.title}
                                         </p>
                                     </a>
