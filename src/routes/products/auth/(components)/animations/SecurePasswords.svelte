@@ -28,12 +28,7 @@
     };
 </script>
 
-<div
-    class="row-span-7 rounded-2xl flex flex-col gap-4 p-2 bg-greyscale-850/90"
-    role="presentation"
-    on:mouseover={async () => await animation()}
-    on:focus={async () => await animation()}
->
+<div class="row-span-7 rounded-2xl flex flex-col gap-4 p-2 bg-greyscale-850/90" role="presentation">
     <div class="p-4">
         <span class="text-primary">Secure passwords</span>
         <p class="text-secondary">
