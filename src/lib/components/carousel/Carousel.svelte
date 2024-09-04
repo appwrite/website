@@ -122,7 +122,7 @@
     };
 </script>
 
-<div class="embla relative overflow-hidden">
+<div class="embla relative overflow-hidden web-carousel">
     {#if hasPrev}
         <button class="web-carousel-button web-carousel-button-start" on:click={onPrev}>
             <span class="web-icon-arrow-left" aria-hidden="true"></span>
@@ -144,7 +144,7 @@
 <div class="web-carousel-bullets">
     <ul class="web-carousel-bullets-list">
         {#each Array.from({ length: emblaApi?.scrollSnapList().length }) as _, i}
-            <li class="web-carousel-bullets-item">
+            <li class="web-carousel-bullets-item rounded-full">
                 <button
                     class="web-carousel-bullets-button"
                     class:is-selected={selectedScrollIndex === i}

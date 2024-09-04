@@ -13,6 +13,7 @@
     import { browser } from '$app/environment';
     import { classNames } from '$lib/utils/classnames';
     import Input from '$lib/components/ui/Input.svelte';
+    import { page } from '$app/stores';
 
     export let data;
 
@@ -23,13 +24,14 @@
     // search functionality
     let fuseOptions = {
         keys: ['title'],
-        threshold: 0.3
+        threshold: 0.2,
+        distance: 500
     };
 
     let result: ResultType<Integration> = [];
 
     let hasQuery: boolean;
-    let query = writable('');
+    let query = writable(decodeURIComponent($page.url.searchParams.get('search') ?? ''));
 
     $: query.subscribe((value) => {
         hasQuery = value.length > 0;
@@ -42,6 +44,11 @@
 
     // categories
     let activeCategory: string | null = null;
+
+    const handleQuery = (e: Event) => {
+        const value = (e.currentTarget as HTMLInputElement).value;
+        query.set(value);
+    };
 
     onMount(() => {
         if (browser) document.documentElement.setAttribute('data-scroll-smooth', '');
@@ -130,24 +137,10 @@
                                 placeholder="Search"
                                 bind:value={$query}
                                 autocomplete="off"
+                                on:input={handleQuery}
                             >
-                                <span
-                                    class="web-icon-search"
-                                    aria-hidden="true"
-                                    slot="icon"
-                                /></Input
-                            >
-
-                            <!-- <label
-                class="web-input-button focus:border-greyscale-100 web-flex-basis-400"
-              >
-                <span class="web-icon-search" aria-hidden="true"></span>
-                <input
-                  class="border-0 ring-0 outline-none"
-                  placeholder="Search"
-                  bind:value={$query}
-                />
-              </label> -->
+                                <span class="web-icon-search" aria-hidden="true" slot="icon" />
+                            </Input>
                         </section>
                         <section class="flex flex-col">
                             <section class="flex flex-col gap-4">
@@ -181,11 +174,10 @@
 
                                 <div class="relative block sm:hidden">
                                     <select
-                                        class="web-input-text"
-                                        bind:value={activeCategory}
-                                        on:change={() => {
-                                            goto(`#${activeCategory?.toLowerCase()}`);
-                                        }}
+                                        class="web-input-text w-full appearance-none"
+                                        disabled={hasQuery}
+                                        on:change={(e) =>
+                                            goto(`#${e.currentTarget.value.toLowerCase()}`)}
                                     >
                                         {#each data.categories as category}
                                             {@const integrations = data.integrations.find(
@@ -252,7 +244,7 @@
                                                         style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                                                     >
                                                         <div
-                                                            class="flex items-center justify-between gap-2"
+                                                            class="flex items-center justify-between"
                                                         >
                                                             <img
                                                                 class="web-user-box-image is-32px"
@@ -261,15 +253,19 @@
                                                                 width="32"
                                                                 height="32"
                                                             />
+                                                            <span
+                                                                class="icon-arrow-right ml-auto"
+                                                                aria-hidden="true"
+                                                            ></span>
+                                                        </div>
+                                                        <div
+                                                            class="flex items-center justify-between gap-2"
+                                                        >
                                                             <h4
                                                                 class="web-u-color-text-primary mt-3"
                                                             >
                                                                 {item.title}
                                                             </h4>
-                                                            <span
-                                                                class="icon-arrow-right ml-auto"
-                                                                aria-hidden="true"
-                                                            ></span>
                                                         </div>
                                                         <p class="web-sub-body-400 mt-1">
                                                             {item.description}
@@ -415,7 +411,7 @@
         </div>
     </div>
 
-    <div class="overflow-hidden py-10" style:margin-top="160px">
+    <div class="overflow-hidden pt-10" style:margin-top="160px">
         <div class="container">
             <div class="web-big-padding-section-level-2 relative">
                 <img

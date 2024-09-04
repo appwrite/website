@@ -67,7 +67,7 @@
                         </Root>
                     {:else}
                         <div
-                            class="web-carousel-item"
+                            class="web-carousel-item rounded-xl"
                             style:max-width="584px"
                             style:margin="0 auto"
                         >
@@ -113,7 +113,7 @@
                     </div>
                     <div class="l-grid-sidebar">
                         <dl
-                            class="flex-vertical sidebar-desc gap-5"
+                            class="flex flex-col sidebar-desc gap-5"
                             style:top={$isHeaderHidden ? '4rem' : '9rem'}
                         >
                             <div class="flex justify-between gap-2">
