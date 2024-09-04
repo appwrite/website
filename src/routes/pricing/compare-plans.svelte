@@ -561,7 +561,7 @@
                                 {#each table.rows as row}
                                     <tr>
                                         <th class="web-sub-body-500">
-                                            <div class="flex gap-1">
+                                            <div class="flex gap-1 text-left">
                                                 {row.title}
                                                 {#if row.info}
                                                     <Tooltip placement="top">
@@ -606,12 +606,22 @@
     }
 
     .web-label {
-        font-size: var(--web-font-size-small);
+        font-size: var(--web-font-size-medium);
     }
 
     @media (min-width: 1024px) and (max-width: 1204px){
         .web-description:nth-child(2) {
             padding-inline-start: 6rem;
+        }
+    }
+
+    @media (min-width: 1024px) and (max-width: 1085px) {
+        .web-button  {
+            padding-inline: 0.125rem !important;
+        }
+
+        .web-button .web-sub-body-500 {
+            font-size: var(--web-font-size-micro) !important;
         }
     }
 
