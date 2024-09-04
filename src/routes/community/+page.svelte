@@ -448,7 +448,7 @@
             </div>
         </div>
 
-        <div class="web-white-section theme-light relative py-10">
+        <div class="web-white-section light relative py-10">
             <div class="web-big-padding-section-level-2">
                 <div class="container">
                     <div class="web-hero is-center">
@@ -478,7 +478,7 @@
                 </div>
             </div>
         </div>
-        <div class="web-white-section theme-light py-10">
+        <div class="web-white-section light py-10">
             <div class="web-big-padding-section-level-2">
                 <div class="container">
                     <div class="web-grid-15-25-desktop web-u-row-gap-48 web-u-column-gap-96">

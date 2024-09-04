@@ -7,7 +7,6 @@
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
-    import Tooltip from '../../lib/components/Tooltip.svelte';
 
     type Table = {
         title: string;
@@ -357,7 +356,7 @@
 
 <svelte:window on:scroll={() => (scrollDir = getScrollDir())} />
 
-<div class="web-white-section theme-light py-10">
+<div class="web-white-section light py-10">
     <div class="web-big-padding-section-level-2">
         <div class="relative">
             <article use:melt={$root}>
@@ -395,7 +394,7 @@
 
                     <div
                         class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 web-u-container-query-inline sticky z-[5] gap-8"
-                        style:--inset-block-start={$isHeaderHidden ? '0px' : '70px'}
+                        style:top={$isHeaderHidden ? '0px' : '70px'}
                         style:transition="inset-block-start 0.3s ease"
                     >
                         <div
