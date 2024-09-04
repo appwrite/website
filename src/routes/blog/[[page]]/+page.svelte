@@ -192,7 +192,7 @@
 
                     <div class="mt-12">
                         <ul class="web-grid-articles">
-                            {#each data.posts as post}
+                            {#each data.posts as post (post.href)}
                                 {@const author = data.authors.find(
                                     (author) => author.slug === post.author
                                 )}
