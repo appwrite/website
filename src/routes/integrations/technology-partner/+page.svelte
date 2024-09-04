@@ -78,8 +78,8 @@
 
 <Main>
     <div class="web-big-padding-section">
-        <div id="form" class="overflow-hidden p-0 py-10">
-            <div class="web-big-padding-section-level-2 is-margin-replace-padding relative">
+        <div id="form" class="overflow-hidden p-0 pt-10">
+            <div class="pt-[7.5rem] relative">
                 <div class="relative">
                     <div class="container relative">
                         <!-- before submit -->

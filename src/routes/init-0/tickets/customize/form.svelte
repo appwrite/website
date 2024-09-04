@@ -44,7 +44,7 @@
     const variants: TicketVariant[] = ['default', 'pink', 'rainbow'] as const;
 </script>
 
-<div class="u-flex u-flex-vertical u-gap-4 u-margin-block-start-32">
+<div class="flex flex-col u-gap-4 u-margin-block-start-32">
     <label for="name">Your name</label>
     <input
         class="web-input-text"
