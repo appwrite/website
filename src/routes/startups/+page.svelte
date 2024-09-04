@@ -165,7 +165,7 @@
 <Main>
     <img class="absolute inset-0 mx-auto block" src={BackgroundHero} alt="" />
     <img class="e-bg-left-mobile absolute top-0" src={BackgroundLeft} alt="" />
-    <img class="e-bg-right-mobile absolute inset-y-0" src={BackgroundRight} alt="" />
+    <img class="e-bg-right-mobile absolute right-0" src={BackgroundRight} alt="" />
     <div class="web-big-padding-section relative overflow-hidden">
         <div class="relative py-10">
             <div class="web-big-padding-section-level-2 e-u-margin-block-128-desktop">
@@ -246,7 +246,7 @@
             </div>
         </div>
 
-        <div class="web-white-section theme-light relative py-10">
+        <div class="web-white-section light relative py-10">
             <div class="web-big-padding-section-level-2 e-mt-20-mobile">
                 <div class="container">
                     <div class="web-timeline-content">
@@ -296,15 +296,15 @@
                                 </div>
 
                                 <div
-                                    class="is-only-desktop"
+                                    class="web-is-only-desktop"
                                     style="margin-block-start:80px; margin-inline-start: -50px"
                                 >
                                     <img alt="" src={ProjectTimeline} width="1250" />
                                 </div>
 
                                 <div
-                                    class="is-not-desktop"
-                                    style="min-inline-size: 700px; padding-block-start: 48px; margin-inline-start:-32px;"
+                                    class="web-is-not-desktop"
+                                    style="padding-block-start: 48px; margin-inline-start:-32px;"
                                 >
                                     <img alt="" src={ProjectTimeline} />
                                 </div>
@@ -641,31 +641,31 @@
             </div>
         </div>
 
-        <div id="form" class="overflow-hidden p-0 py-10">
-            <div class="web-big-padding-section-level-2 is-margin-replace-padding relative">
+        <div id="form" class="overflow-hidden pt-10">
+            <div class="pt-[7.5rem] is-margin-replace-padding relative">
                 <div class="relative">
                     <div class="web-big-padding-section-level-2">
                         <div class="container relative">
                             <img
-                                class="is-only-desktop absolute"
+                                class="web-is-only-desktop absolute"
                                 style="inset-inline-end:-650px; inset-block-start:-200px; max-width:none; max-height:none;"
                                 src={BlobGreen}
                                 alt=""
                             />
                             <img
-                                class="is-only-desktop absolute"
+                                class="web-is-only-desktop absolute"
                                 style="inset-inline-start:-1000px; inset-block-start:-800px; max-width:none; max-height:none;"
                                 src={BlobPink}
                                 alt=""
                             />
                             <img
-                                class="is-only-mobile absolute"
+                                class="web-is-only-mobile absolute"
                                 style="inset-inline-end:-450px; inset-block-start:400px; max-width:none; max-height:none;"
                                 src={BlobGreenMobile}
                                 alt=""
                             />
                             <img
-                                class="is-only-mobile absolute"
+                                class="web-is-only-mobile absolute"
                                 style="inset-inline-start:-700px; inset-block-start:-400px; max-width:none; max-height:none;"
                                 src={BlobPinkMobile}
                                 alt=""
@@ -822,11 +822,12 @@
                             </section>
                         </div>
                     </div>
-                    <div class="container">
-                        <FooterNav />
-                        <MainFooter />
-                    </div>
                 </div>
+            </div>
+
+            <div class="container">
+                <FooterNav />
+                <MainFooter />
             </div>
         </div>
     </div>

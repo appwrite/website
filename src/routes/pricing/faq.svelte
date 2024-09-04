@@ -91,7 +91,10 @@
                             <span class="web-label web-u-color-text-primary">
                                 {faqItem.question}
                             </span>
-                            <div class="icon web-u-color-text-primary self-start">
+                            <div
+                                class="icon web-u-color-text-primary self-start transition-transform"
+                                class:rotate-180={$isSelected(`${index}`)}
+                            >
                                 <span class="icon-cheveron-down" aria-hidden="true" />
                             </div>
                         </button>

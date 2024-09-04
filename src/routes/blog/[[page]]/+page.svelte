@@ -270,9 +270,9 @@
                                 on:scroll={handleScroll}
                                 bind:this={categoriesElement}
                             >
-                                <li class="flex items-center cursor-pointer">
+                                <li class="flex items-center">
                                     <button
-                                        class="web-interactive-tag web-caption-400"
+                                        class="web-interactive-tag web-caption-400 cursor-pointer"
                                         class:is-selected={!selectedCategory}
                                         on:click={() => toggleCategory('Latest')}
                                     >
@@ -283,7 +283,7 @@
                                 {#each categories as category}
                                     <li class="flex items-center">
                                         <button
-                                            class="web-interactive-tag web-caption-400"
+                                            class="web-interactive-tag web-caption-400 cursor-pointer"
                                             class:is-selected={selectedCategory === category.name}
                                             on:click={() => toggleCategory(category.name)}
                                         >
@@ -338,7 +338,7 @@
 
                 <div class="mt-12">
                     <ul class:web-grid-articles={blogPosts.length > 0}>
-                        {#each blogPosts as post}
+                        {#each blogPosts as post (post.slug)}
                             {@const author = data.authors.find(
                                 (author) => author.slug === post.author
                             )}
@@ -429,12 +429,11 @@
                 {/if}
             </div>
         </div>
-        <div class="web-big-padding-section-level-2">
-            <div class="web-container">
+        <div class="pt-[7.5rem]">
+            <div class="container">
                 <FooterNav />
                 <MainFooter />
             </div>
-        </div>
     </div>
 </Main>
 
