@@ -31,5 +31,7 @@
 </svelte:head>
 
 <Main>
-    <Bento />
+    <div class="space-y-8">
+        <Bento />
+    </div>
 </Main>

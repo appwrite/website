@@ -3,7 +3,7 @@
     import type { HTMLInputAttributes } from 'svelte/elements';
 
     type $$Props = HTMLInputAttributes & {
-        label: string;
+        label?: string;
     };
 
     export let label: $$Props['label'] = '';
@@ -35,9 +35,11 @@
         {/key}
     </label>
 {:else}
-    <label for={name} class="text-left">
-        {label}
-    </label>
+    {#if label}
+        <label for={name} class="text-left">
+            {label}
+        </label>
+    {/if}
     {#key type}
         <input
             {name}
