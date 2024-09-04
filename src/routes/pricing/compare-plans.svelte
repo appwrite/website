@@ -39,7 +39,7 @@
                     free: '-',
                     pro: '$40 per 100GB',
                     scale: '$40 per 100GB',
-                    enterprise: 'Custom',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Storage',
@@ -246,7 +246,7 @@
                     free: '5 per project',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
-                    enterprise: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'Executions',
@@ -507,14 +507,9 @@
                             </div>
                         </div>
                         <div class="web-mini-card">
-                            <div
-                                class="flex items-center justify-between gap-8"
-                            >
+                            <div class="flex items-center justify-between gap-8">
                                 <h4 class="web-label web-u-color-text-primary">Enterprise</h4>
-                                <a
-                                    class="web-button is-secondary"
-                                    href="/contact-us/enterprise"
-                                >
+                                <a class="web-button is-secondary" href="/contact-us/enterprise">
                                     <span class="web-sub-body-500">Contact</span>
                                 </a>
                             </div>
@@ -565,7 +560,10 @@
                                                 {row.title}
                                                 {#if row.info}
                                                     <Tooltip placement="top">
-                                                        <span class="icon-info" aria-hidden="true" />
+                                                        <span
+                                                            class="icon-info"
+                                                            aria-hidden="true"
+                                                        />
                                                         <svelte:fragment slot="tooltip">
                                                             {row.info}
                                                         </svelte:fragment>
@@ -609,14 +607,14 @@
         font-size: var(--web-font-size-medium);
     }
 
-    @media (min-width: 1024px) and (max-width: 1204px){
+    @media (min-width: 1024px) and (max-width: 1204px) {
         .web-description:nth-child(2) {
             padding-inline-start: 6rem;
         }
     }
 
     @media (min-width: 1024px) and (max-width: 1085px) {
-        .web-button  {
+        .web-button {
             padding-inline: 0.125rem !important;
         }
 
@@ -626,7 +624,7 @@
     }
 
     @media (min-width: 1024px) and (max-width: 1210px) {
-        .web-button  {
+        .web-button {
             padding-inline: 0.15rem !important;
         }
 
