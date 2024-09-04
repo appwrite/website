@@ -95,12 +95,12 @@
     <div
         class="bg-white/[0.02] rounded-lg flex-1 overflow-hidden relative flex flex-col justify-center items-center"
     >
-        <div class="flex gap-x-2 text-sm flex-wrap w-[105%] mx-auto absolute">
+        <div class="flex gap-x-2 text-sm flex-wrap w-[105%] mx-auto absolute pointer-events-none">
             {#each options as option}
                 {#if option === '654321'}
                     <span
                         class={classNames(
-                            'text-white relative bg-gradient-to-r font-mono from-greyscale-800 to-greyscale-900 flex items-center gap-2 px-1 shadow-lg shadow-black/30'
+                            'text-white z-50 relative bg-gradient-to-r font-mono from-greyscale-800 to-greyscale-900 flex items-center gap-2 px-1 shadow-lg shadow-black/30'
                         )}
                     >
                         <span>6543</span>
@@ -115,8 +115,10 @@
             <div class="mask inset-0 absolute z-0 backdrop-blur-md" />
         </div>
 
-        <div class="relative z-10 shadow-xl shadow-black/30 w-3/4">
-            <Input type="password" label="Password" value="magicpassword" />
+        <div class="absolute flex items-center justify-center inset-0 z-10 gradient">
+            <div class="w-3/4">
+                <Input type="password" disabled label="Password" value="magicpassword" />
+            </div>
         </div>
     </div>
 </div>
@@ -125,5 +127,14 @@
     .mask {
         mask-composite: intersect;
         mask-image: radial-gradient(ellipse, transparent, rgba(0, 0, 0, 1) 70%);
+    }
+
+    .gradient {
+        background: radial-gradient(
+            circle,
+            var(--color-greyscale-900),
+            transparent 100%,
+            transparent
+        );
     }
 </style>
