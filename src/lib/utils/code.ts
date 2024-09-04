@@ -1,11 +1,48 @@
 import {
-    codeToHtml,
     createCssVariablesTheme,
-    type CodeToHastOptions
+    createHighlighter,
+    type BuiltinLanguage,
+    type PlainTextLanguage
 } from 'shiki';
 import { Platform } from './references';
 
-export type Language = CodeToHastOptions['lang'] | Platform;
+export type Language = BuiltinLanguage | PlainTextLanguage;
+
+const languages: Language[] = [
+    'js',
+    'javascript',
+    'dart',
+    'ts',
+    'typescript',
+    'xml',
+    'html',
+    'sh',
+    'md',
+    'json',
+    'swift',
+    'php',
+    'diff',
+    'python',
+    'ruby',
+    'csharp',
+    'kotlin',
+    'java',
+    'cpp',
+    'bash',
+    'powershell',
+    'cmd',
+    'yaml',
+    'text',
+    'graphql',
+    'http',
+    'go',
+    'py',
+    'rb',
+    'cs',
+    'css',
+    'groovy',
+    'ini'
+];
 
 const platformAliases: Record<string, Language> = {
     [Platform.ClientWeb]: 'js',
@@ -39,23 +76,27 @@ type Args = {
     withLineNumbers?: boolean;
 };
 
-const resolveLanguage = (language: CodeToHastOptions['lang'] | undefined): Language => {
-    if (language === undefined) return 'sh';
-    if (language in platformAliases) return platformAliases[language];
-    return language;
-};
-
 const theme = createCssVariablesTheme({
     name: 'appwrite',
     variablePrefix: '--shiki-',
     fontStyle: true
 });
 
-export const getCodeHtml = async (args: Args) => {
+const highlighter = await createHighlighter({
+    langs: languages,
+    themes: [theme],
+    langAlias: {
+        ...platformAliases,
+        deno: 'typescript',
+        env: 'txt'
+    }
+});
+
+export const getCodeHtml = (args: Args): string => {
     const { content, language, withLineNumbers } = args;
 
-    return codeToHtml(content.trim(), {
-        lang: resolveLanguage(language),
+    return highlighter.codeToHtml(content.trim(), {
+        lang: language ?? 'sh',
         transformers: [
             {
                 code(node) {
@@ -64,6 +105,6 @@ export const getCodeHtml = async (args: Args) => {
                 }
             }
         ],
-        theme
+        theme: 'appwrite'
     });
 };

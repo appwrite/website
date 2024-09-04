@@ -11,3 +11,16 @@
     --shiki-token-punctuation: #e4e4e7;
     --shiki-token-link: #f5ab35;
 }
+
+.shiki .line-numbers .line {
+    counter-increment: line;
+}
+
+.shiki .line-numbers .line:before {
+    content: counter(line);
+    display: inline-block;
+    text-align: right;
+    padding-right: 1rem;
+    color: #6c6c71;
+    width: 2.5rem;
+}

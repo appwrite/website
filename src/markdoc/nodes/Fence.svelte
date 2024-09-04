@@ -57,10 +57,8 @@
 
 {#if insideMultiCode}
     {#if $selected === language}
-        {#await result then html}
-            <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-            {@html html}
-        {/await}
+        <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+        {@html result}
     {/if}
 {:else}
     <section class="dark web-code-snippet" aria-label="code-snippet panel">
@@ -95,10 +93,8 @@
             </div>
         </header>
         <div class="web-code-snippet-content">
-            {#await result then html}
-                <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-                {@html html}
-            {/await}
+            <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+            {@html result}
         </div>
     </section>
 {/if}
