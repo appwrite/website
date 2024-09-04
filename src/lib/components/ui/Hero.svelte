@@ -20,7 +20,7 @@
     const styles = cva('tracking-[-0.022em] text-white', {
         variants: {
             size: {
-                title: ['text-[5.5rem]', 'leading-[5.5rem]', 'flex-[1.3]'],
+                title: ['text-7xl', 'flex-[1.3]'],
                 display: 'text-[4rem] leading-[4.25rem] w-full'
             }
         },
@@ -42,7 +42,7 @@
     </h1>
     {#if $$slots.description}
         <div class="flex-[1] self-end">
-            <p class="text-secondary mt-5 text-xl font-medium tracking-[-0.018em]">
+            <p class="text-secondary mt-5 text-base font-medium tracking-[-0.018em]">
                 <slot name="description" />
             </p>
             <slot name="cta" />
