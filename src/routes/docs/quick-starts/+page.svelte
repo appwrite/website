@@ -120,28 +120,10 @@
                     href: 'python'
                 },
                 {
-                    title: '.NET',
-                    icon: 'icon-dotnet',
-                    image: '/images/blog/placeholder.png',
-                    href: 'dotnet'
-                },
-                {
                     title: 'Dart',
                     icon: 'icon-dart',
                     image: '/images/blog/placeholder.png',
                     href: 'dart'
-                },
-                {
-                    title: 'Ruby',
-                    icon: 'icon-ruby',
-                    image: '/images/blog/placeholder.png',
-                    href: 'ruby'
-                },
-                {
-                    title: 'Deno',
-                    icon: 'icon-deno',
-                    image: '/images/blog/placeholder.png',
-                    href: 'deno'
                 },
                 {
                     title: 'PHP',
@@ -150,23 +132,48 @@
                     href: 'php'
                 },
                 {
-                    title: 'Kotlin',
-                    icon: 'icon-kotlin',
+                    title: 'Ruby',
+                    icon: 'icon-ruby',
                     image: '/images/blog/placeholder.png',
-                    href: 'kotlin'
+                    href: 'ruby'
+                },
+                {
+                    title: '.NET',
+                    icon: 'icon-dotnet',
+                    image: '/images/blog/placeholder.png',
+                    href: 'dotnet'
+                },
+                {
+                    title: 'Deno',
+                    icon: 'icon-deno',
+                    image: '/images/blog/placeholder.png',
+                    href: 'deno'
+                },
+                {
+                    title: 'Go',
+                    icon: 'icon-go',
+                    image: '/images/blog/placeholder.png',
+                    href: 'go'
                 },
                 {
                     title: 'Swift',
                     icon: 'icon-swift',
                     image: '/images/blog/placeholder.png',
                     href: 'swift'
+                },
+                {
+                    title: 'Kotlin',
+                    icon: 'icon-kotlin',
+                    image: '/images/blog/placeholder.png',
+                    href: 'kotlin'
                 }
             ]
         }
     ];
 
     const title = 'Quick starts' + DOCS_TITLE_SUFFIX;
-    const description = 'Get started with your favorite framework and language in just a few clicks.';
+    const description =
+        'Get started with your favorite framework and language in just a few clicks.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 </script>
 
@@ -175,7 +182,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -187,12 +194,11 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-
 <main class="web-main-section" id="main">
     <article class="web-article">
         <header class="web-article-header">
-            <div class="web-article-header-start u-flex-vertical web-u-cross-start">
-                <div class="u-position-relative u-flex u-cross-center">
+            <div class="web-article-header-start flex flex-col web-u-cross-start">
+                <div class="relative flex items-center">
                     <h1 class="web-title">Quick start</h1>
                 </div>
             </div>
@@ -200,7 +206,7 @@
         </header>
         <div class="web-article-content web-u-gap-80">
             {#each quickStarts as category}
-                <section class="u-flex-vertical u-gap-24">
+                <section class="flex flex-col gap-6">
                     <h2 class="web-eyebrow">{category.title}</h2>
                     <ul class="web-grid-row-4 web-grid-row-4-mobile-2">
                         {#each category.quickStarts as quickStart}
@@ -209,7 +215,7 @@
                                     href={`/docs/quick-starts/${quickStart.href}`}
                                     class="web-card is-normal"
                                 >
-                                    <header class="u-flex u-cross-baseline u-gap-4">
+                                    <header class="flex items-baseline gap-1">
                                         <span
                                             class="{quickStart.icon} web-u-font-size-24"
                                             aria-hidden="true"

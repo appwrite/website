@@ -23,7 +23,7 @@
     export let images: Array<string>;
 </script>
 
-<div class="u-position-absolute web-u-hide-mobile root">
+<div class="web-u-hide-mobile root absolute">
     {#each headPositions as [size, top, left], i}
         {@const image = clamp(0, images.length - 1, i % images.length)}
         <FloatingHead
@@ -33,7 +33,7 @@
             {size}
         />
         <div style:margin-block-end="0" style:padding="10%">
-            <img style:border-radius="50%" class="u-block" alt="" />
+            <img style:border-radius="50%" class="block" alt="" />
         </div>
     {/each}
 </div>

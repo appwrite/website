@@ -95,7 +95,7 @@
         <h3 class="web-title web-u-color-text-primary">
             Draft and preview your message before delivering it
         </h3>
-        <p class="web-description u-margin-block-start-24">
+        <p class="web-description mt-6">
             See a preview of your crafted messages on the Console before sending them to your
             audience.
         </p>

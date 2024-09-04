@@ -153,7 +153,7 @@
 
         <img class="shines" src={ShinesSvg} alt="" />
     </div>
-    <div class="web-container">
+    <div class="container">
         <div class="day-cards">
             {#each days as day, i (day.release.toISOString())}
                 <DayCard {day} number={i}>
@@ -209,7 +209,7 @@
     </div>
 
     <div class="events">
-        <div class="web-container">
+        <div class="container">
             <Carousel size="big">
                 <svelte:fragment slot="header">
                     <h2 class="web-label web-u-color-text-primary">Upcoming Events</h2>
@@ -233,7 +233,7 @@
     </div>
 
     <div class="tickets-preview">
-        <div class="web-container">
+        <div class="container">
             <div>
                 <h2 class="web-label web-u-color-text-primary">
                     Init 1.0 ran from February 26 to March 1
@@ -272,7 +272,7 @@
     </div>
 
     <div class="pre-footer">
-        <div class="web-container">
+        <div class="container">
             <div class="text">
                 <h2 class="web-label web-u-color-text-primary">Start building with Appwrite</h2>
                 <p class="web-main-body-500">
@@ -287,7 +287,7 @@
         </div>
     </div>
 
-    <div class="web-container">
+    <div class="container">
         <FooterNav />
         <MainFooter />
     </div>
@@ -452,7 +452,7 @@
 
         border-block: 1px solid hsl(var(--web-color-offset));
 
-        .web-container {
+        .container {
             display: flex;
             flex-direction: column;
             gap: 3rem;
@@ -470,7 +470,7 @@
         padding-block-end: 0rem;
         overflow: hidden;
 
-        .web-container {
+        .container {
             display: flex;
             justify-content: space-between;
 
@@ -540,7 +540,7 @@
         padding-block-end: 0;
         overflow: hidden;
 
-        .web-container {
+        .container {
             position: relative;
             height: 43.75rem;
 
@@ -598,11 +598,11 @@
         }
     }
 
-    .pre-footer :global(+ .web-container) {
+    .pre-footer :global(+ .container) {
         padding-block-start: 0;
     }
 
-    .pre-footer :global(+ .web-container nav) {
+    .pre-footer :global(+ .container nav) {
         margin-block-start: 0;
     }
 </style>
