@@ -28,7 +28,8 @@ export default defineConfig({
         })
     ],
     build: {
-        reportCompressedSize: false
+        target: 'es2022',
+        reportCompressedSize: false,
     },
     test: {
         include: ['src/**/*.{test,spec}.{js,ts}']

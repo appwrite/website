@@ -41,7 +41,9 @@ const languages: Language[] = [
     'cs',
     'css',
     'groovy',
-    'ini'
+    'ini',
+    'txt',
+    'dotenv'
 ];
 
 const platformAliases: Record<string, Language> = {
@@ -65,9 +67,7 @@ const platformAliases: Record<string, Language> = {
     [Platform.ServerKotlin]: 'kotlin',
     [Platform.ServerGraphql]: 'graphql',
     [Platform.ServerRest]: 'http',
-    [Platform.ServerGo]: 'go',
-    vue: 'html',
-    svelte: 'html'
+    [Platform.ServerGo]: 'go'
 };
 
 type Args = {
@@ -86,9 +86,10 @@ const highlighter = await createHighlighter({
     langs: languages,
     themes: [theme],
     langAlias: {
-        ...platformAliases,
-        deno: 'typescript',
-        env: 'txt'
+        deno: 'ts',
+        vue: 'html',
+        svelte: 'html',
+        ...platformAliases
     }
 });
 
@@ -96,7 +97,7 @@ export const getCodeHtml = (args: Args): string => {
     const { content, language, withLineNumbers } = args;
 
     return highlighter.codeToHtml(content.trim(), {
-        lang: language ?? 'sh',
+        lang: language?.toLowerCase() ?? 'sh',
         transformers: [
             {
                 code(node) {

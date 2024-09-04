@@ -12,7 +12,7 @@ Appwrite's REST APIs expect certain headers to be included with each request:
 
 {% table %}
 - Header
-- 
+-
 - Description
 ---
 - X-Appwrite-Project: [PROJECT-ID]
@@ -109,7 +109,7 @@ Upload endpoints in Appwrite, such as [Create File] (/docs/references/cloud/clie
 
 {% table %}
 - Header
-- 
+-
 - Description
 ---
 - X-Appwrite-Project: [PROJECT-ID]
@@ -137,7 +137,7 @@ The multipart form data is structured as follows:
 
 {% table %}
 - Key
-- 
+-
 - Value
 - File Name
 - Description
@@ -192,7 +192,7 @@ read("user:627a958ded6424a98a9f")
 
 Some use cases do not allow custom headers, such as embedding images from Appwrite in HTML. In these cases, you can provide the Appwrite project ID using the query parameter project.
 
-```HTML
+```html
 <img src="[ENDPOINT]/v1/storage/buckets/[BUCKET_ID]/files/[FILE_ID]/preview?project=[PROJECT_ID]"/>
 ```
 
@@ -274,7 +274,7 @@ Appwrite Queries are escaped JSON strings, which look like this.
 "{\"method\":\"equal\",\"attribute\":\"name\",\"values\":[\"John\"]}"
 ```
 
-Query strings are passed to Appwrite using the `queries` parameter. 
+Query strings are passed to Appwrite using the `queries` parameter.
 You can attach multiple query strings by including the array parameter multiple times in the query string: `queries[]="..."&queries[]="..."`
 
 For example, the unescaped query string might look like this.
@@ -314,7 +314,7 @@ For example, to query for all documents with the name "John" or "Jane", the quer
 }
 ```
 
-Here are some more examples of the JSON query format. 
+Here are some more examples of the JSON query format.
 When in doubt, you can use the Appwrite SDKs to generate the query strings for you.
 
 ```json
@@ -338,7 +338,7 @@ When in doubt, you can use the Appwrite SDKs to generate the query strings for y
 ```
 
 ## Query nesting {% #query-nesting %}
-Some Appwrite query methods, like `and` and `or`, allow you to nest queries. 
+Some Appwrite query methods, like `and` and `or`, allow you to nest queries.
 When using Appwrite without an SDK, you can template your own JSON strings.
 
 In these cases, `attribute` is empty and `values` is an array of queries.
