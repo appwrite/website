@@ -14,7 +14,7 @@
     export let process: boolean;
     export let withLineNumbers = true;
     export let badge: string | null = null;
-console.log(language);
+
     const insideMultiCode = hasContext('multi-code');
     const selected = insideMultiCode ? getContext<CodeContext>('multi-code').selected : null;
 
