@@ -111,7 +111,7 @@ export async function getThreadMessages(threadId: string) {
     );
 }
 
-export async function* iterateAllThreads(total: number|undefined = undefined) {
+export async function* iterateAllThreads(total: number | undefined = undefined) {
     let offset = 0;
     const limit = 100;
     while (true) {

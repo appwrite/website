@@ -20,6 +20,7 @@ export type PostsData = {
     title: string;
     description: string;
     date: Date;
+    lastUpdated: Date;
     cover: string;
     timeToRead: number;
     author: string;
@@ -56,6 +57,7 @@ export const posts = Object.entries(postsGlob)
             title: frontmatter.title,
             description: frontmatter.description,
             date: new Date(frontmatter.date),
+            lastUpdated: new Date(frontmatter.lastUpdated),
             cover: frontmatter.cover,
             timeToRead: frontmatter.timeToRead,
             author: frontmatter.author,

@@ -25,7 +25,7 @@
                 <button class="web-icon-button" use:melt={$prevButton}>
                     <div class="web-icon-chevron-left" />
                 </button>
-                <div class="u-flex u-gap-16 u-cross-center">
+                <div class="flex items-center gap-4">
                     <div class="web-label web-u-color-text-primary" use:melt={$heading}>
                         {$headingValue}
                     </div>
@@ -68,7 +68,7 @@
             {/each}
         </div>
 
-        <div class="time-picker is-only-desktop">
+        <div class="time-picker web-is-only-desktop">
             {#each { length: 11 } as _, i}
                 <div>
                     <span>{(3 + i).toString().padStart(2, '0')}</span>

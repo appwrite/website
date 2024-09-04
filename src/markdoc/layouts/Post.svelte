@@ -27,6 +27,7 @@
               heading: string;
           }
         | boolean;
+    export let lastUpdated: string;
 
     const authors = getContext<AuthorData[]>('authors');
     const authorData = authors.find((a) => a.slug === author);
@@ -97,13 +98,13 @@
         }}
     >
         <div class="web-big-padding-section">
-            <div class="web-big-padding-section-level-1">
+            <div class="py-10">
                 <div class="web-big-padding-section-level-2">
-                    <div class="web-container" style="--container-size:42.5rem">
+                    <div class="container max-w-[42.5rem]">
                         <article class="web-main-article">
                             <header class="web-main-article-header">
                                 <a
-                                    class="web-link is-secondary web-u-color-text-secondary u-cross-baseline"
+                                    class="web-link is-secondary web-u-color-text-secondary items-baseline"
                                     href="/blog"
                                 >
                                     <span class="web-icon-chevron-left" aria-hidden="true" />
@@ -119,16 +120,13 @@
                                 </ul>
                                 <h1 class="web-title web-u-color-text-primary">{title}</h1>
                                 {#if description}
-                                    <p class="web-description u-margin-block-start-8">
+                                    <p class="web-description mt-2">
                                         {description}
                                     </p>
                                 {/if}
                                 {#if authorData}
-                                    <div class="web-author u-margin-block-start-16">
-                                        <a
-                                            href={authorData.href}
-                                            class="u-flex u-cross-center u-gap-8"
-                                        >
+                                    <div class="web-author mt-4">
+                                        <a href={authorData.href} class="flex items-center gap-2">
                                             {#if authorData.avatar}
                                                 <img
                                                     class="web-author-image"
@@ -139,7 +137,7 @@
                                                     height="44"
                                                 />
                                             {/if}
-                                            <div class="u-flex-vertical">
+                                            <div class="flex flex-col">
                                                 <h4
                                                     class="web-sub-body-400 web-u-color-text-primary"
                                                 >
@@ -148,61 +146,15 @@
                                                 <p class="web-caption-400">{authorData.role}</p>
                                             </div>
                                         </a>
-                                        <!-- <ul class="u-flex u-gap-8 u-margin-inline-start-auto u-cross-child-center">
-											{#if authorData.twitter}
-												<li>
-													<a
-														href={authorData.twitter}
-														class="web-icon-button"
-														aria-label="Author twitter"
-														target="_blank" rel="noopener noreferrer"
-
-													>
-														<span class="web-icon-x" aria-hidden="true" />
-													</a>
-												</li>
-											{/if}
-											{#if authorData.linkedin}
-												<li>
-													<a
-														href={authorData.linkedin}
-														class="web-icon-button"
-														aria-label="Author LinkedIn"
-														target="_blank" rel="noopener noreferrer"
-
-													>
-														<span class="web-icon-linkedin" aria-hidden="true" />
-													</a>
-												</li>
-											{/if}
-											{#if authorData.github}
-												<li>
-													<a
-														href={authorData.github}
-														class="web-icon-button"
-														aria-label="Author GitHub"
-														target="_blank" rel="noopener noreferrer"
-
-													>
-														<span class="web-icon-github" aria-hidden="true" />
-													</a>
-												</li>
-											{/if}
-										</ul> -->
                                     </div>
                                 {/if}
 
-                                <div
-                                    class="share-post-section u-flex u-gap-16 u-margin-block-start-16 u-cross-center"
-                                >
-                                    <span
-                                        class="web-eyebrow u-padding-inline-end-8"
-                                        style:color="#adadb0"
-                                    >
+                                <div class="share-post-section mt-4 flex items-center gap-4">
+                                    <span class="web-eyebrow pr-2" style:color="#adadb0">
                                         SHARE
                                     </span>
 
-                                    <ul class="u-flex u-gap-8">
+                                    <ul class="flex gap-2">
                                         {#each socialSharingOptions as sharingOption}
                                             <li class="share-list-item">
                                                 <Tooltip
@@ -248,17 +200,26 @@
                             </header>
                             {#if cover}
                                 <div class="web-media-container">
-                                    <Media class="u-block" src={cover} />
+                                    <Media class="block" src={cover} />
                                 </div>
                             {/if}
 
-                            <div class="web-article-content u-margin-block-start-32">
+                            <div class="web-article-content mt-8">
+                                {#if lastUpdated}
+                                    <span class="web-main-body-500 last-updated-text">
+                                        Updated:
+                                        <time dateTime={lastUpdated}>
+                                            {formatDate(lastUpdated)}
+                                        </time>
+                                    </span>
+                                {/if}
+
                                 <slot />
                             </div>
                         </article>
 
                         <!-- {#if categories?.length}
-							<div class="u-flex u-gap-16">
+							<div class="flex gap-4">
 								{#each categories as cat}
 									<a href={cat.href} class="web-tag">{cat.name}</a>
 								{/each}
@@ -275,11 +236,11 @@
         </div>
     </div>
 
-    <div class="web-big-padding-section-level-1 web-u-sep-block-start">
+    <div class="web-u-sep-block-start py-10">
         <div class="web-big-padding-section-level-2">
-            <div class="web-container">
+            <div class="container">
                 <h3 class="web-label web-u-color-text-primary">Read next</h3>
-                <section class="u-margin-block-start-32">
+                <section class="mt-8">
                     <ul class="web-grid-articles">
                         {#each posts.filter((p) => p.title !== title).slice(0, 3) as post}
                             {@const author = authors.find((a) => a.slug === post.author)}
@@ -299,8 +260,8 @@
                 </section>
             </div>
         </div>
-        <div class="web-big-padding-section-level-2 u-position-relative u-overflow-hidden">
-            <div class="web-container">
+        <div class="pt-[7.5rem] relative overflow-hidden">
+            <div class="container">
                 <Newsletter />
                 <FooterNav />
                 <MainFooter />
@@ -341,6 +302,10 @@
 
         .web-icon-copy {
             font-size: 24px;
+        }
+
+        .last-updated-text {
+            color: var(--primary, #e4e4e7);
         }
     }
 </style>

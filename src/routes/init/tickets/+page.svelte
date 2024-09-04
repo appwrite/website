@@ -96,7 +96,7 @@
         <TicketScroll />
     </div>
 
-    <div class="web-container">
+    <div class="container">
         <FooterNav />
         <MainFooter />
     </div>
