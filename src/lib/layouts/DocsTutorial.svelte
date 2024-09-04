@@ -16,26 +16,23 @@
     $: prevStep = tutorials.find((tutorial) => tutorial.step === currentStep - 1);
 </script>
 
-<main class="u-contents" id="main">
-    <article class="web-article u-contents">
+<main class="contents" id="main">
+    <article class="web-article contents">
         <header class="web-article-header">
-            <div class="web-article-header-start u-flex-vertical web-u-cross-start">
-                <button
-                    class="web-icon-button web-is-only-mobile"
-                    aria-label="previous page"
-                >
+            <div class="web-article-header-start web-u-cross-start flex flex-col">
+                <button class="web-icon-button web-is-only-mobile" aria-label="previous page">
                     <span class="icon-cheveron-left" aria-hidden="true" />
                 </button>
                 <ul class="web-metadata web-caption-400">
                     <slot name="metadata" />
                 </ul>
-                <div class="u-position-relative u-flex u-cross-center">
+                <div class="relative flex items-center">
                     {#if back}
                         <a
                             href={back}
                             class="
-						web-button is-text is-only-icon web-u-cross-center web-u-size-40
-						u-position-absolute u-inset-inline-start-0 web-u-translate-x-negative"
+						web-button is-text is-only-icon web-items-center web-u-size-40
+						web-u-translate-x-negative absolute top-0"
                             aria-label="previous page"
                         >
                             <span
@@ -51,7 +48,7 @@
         </header>
         <div class="web-article-content">
             <slot />
-            <div class="u-flex u-main-space-between">
+            <div class="flex justify-between">
                 {#if prevStep}
                     <a href={prevStep.href} class="web-button is-text">
                         <span class="icon-cheveron-left" aria-hidden="true" />
@@ -80,9 +77,9 @@
 
             <Feedback {date} />
         </div>
-        <aside class="web-references-menu web-u-padding-inline-start-24">
+        <aside class="web-references-menu ps-6">
             <div class="web-references-menu-content">
-                <div class="u-flex u-main-space-between u-cross-center u-gap-16">
+                <div class="flex items-center justify-between gap-4">
                     <h5 class="web-references-menu-title web-eyebrow">Tutorial Steps</h5>
                 </div>
                 <ol class="web-references-menu-list">
@@ -99,10 +96,8 @@
                                 <span class="web-caption-400">{tutorial.title}</span>
                             </a>
                             {#if isCurrentStep}
-                                <ol
-                                        class="web-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
-                                >
-                                {#each toc as parent}
+                                <ol class="web-references-menu-list mt-4 ml-8">
+                                    {#each toc as parent}
                                         <li class="web-references-menu-item">
                                             <a
                                                 href={parent.href}
@@ -118,9 +113,7 @@
                                                 <span class="web-caption-400">{parent.title}</span>
                                             </a>
                                             {#if parent.children}
-                                                <ol
-                                                    class="web-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
-                                                >
+                                                <ol class="web-references-menu-list mt-4 ml-8">
                                                     {#each parent.children as child}
                                                         <li class="web-references-menu-item">
                                                             <a
@@ -136,14 +129,14 @@
                                                 </ol>
                                             {/if}
                                         </li>
-                                {/each}
+                                    {/each}
                                 </ol>
                             {/if}
                         </li>
                     {/each}
                 </ol>
-                <div class="u-sep-block-start u-padding-block-start-20">
-                    <button class="web-link u-inline-flex u-cross-center u-gap-8" use:scrollToTop>
+                <div class="border-greyscale-900/[0.04] border-t pt-5">
+                    <button class="web-link inline-flex items-center gap-2" use:scrollToTop>
                         <span class="web-icon-arrow-up" aria-hidden="true" />
                         <span class="web-caption-400">Back to top</span>
                     </button>
@@ -152,5 +145,3 @@
         </aside>
     </article>
 </main>
-
-
