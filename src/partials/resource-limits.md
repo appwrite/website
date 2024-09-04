@@ -42,6 +42,7 @@ Reaching your organization's resource limits will have the following effects unt
 
 -   **Storage**
 -   File uploads are disabled. Persists across billing periods until the amount of storage used is below the plan limit.
+
 {% /table %}
 
 ## Switching to Free plan and reaching limits {% #switching-to-free-plan-reaching-resource-limits %}
@@ -86,4 +87,5 @@ The following consequences should also apply at the project level if the Free pl
 
 -   **Functions**
 -   If more than 5 functions have been created, disable them in order of date created (oldest ones first).
+
 {% /table %}

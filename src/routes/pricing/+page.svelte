@@ -32,8 +32,9 @@
 </svelte:head>
 
 <div
-    class="u-position-absolute u-overflow-hidden web-location-for-mobile"
-    style="pointer-events:none; inline-size:100%;"
+    class="web-location-for-mobile absolute overflow-hidden"
+    style:pointer-events="none"
+    style:inline-size="100%"
 >
     <enhanced:img
         src={BG}
@@ -43,13 +44,13 @@
 </div>
 
 <Main>
-    <div class="web-big-padding-section">
-        <div class="web-big-padding-section-level-1 theme-dark">
+    <div class="web-big-padding-section mt-2">
+        <div class="dark pt-10">
             <div class="web-big-padding-section-level-2">
-                <section class="web-container">
+                <section class="container">
                     <div class="web-hero">
                         <h1
-                            class="web-display web-u-max-width-700 web-u-cross-child-center web-u-opacity-90 web-u-mobile-align-text-center"
+                            class="web-display web-u-max-width-700 web-u-opacity-90 web-u-mobile-align-text-center self-center"
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
@@ -59,29 +60,27 @@
                 </section>
             </div>
             <div class="web-big-padding-section-level-2">
-                <section class="web-container">
+                <section class="container">
                     <div class="web-pricing-cards">
                         <ul class="web-pricing-cards-list">
                             <li>
                                 <article
-                                    class="web-card is-transparent has-border-gradient u-height-100-percent"
+                                    class="web-card is-transparent has-border-gradient h-full"
                                     style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
                                             <h2 id="starter" class="web-label">Free</h2>
-                                            <div
-                                                class="web-title web-u-color-text-primary u-margin-block-start-8"
-                                            >
+                                            <div class="web-title web-u-color-text-primary mt-2">
                                                 $0
                                             </div>
-                                            <div class="u-margin-block-start-4">&nbsp;</div>
-                                            <p class="web-main-body-500 u-margin-block-start-16">
+                                            <div class="mt-1">&nbsp;</div>
+                                            <p class="web-main-body-500 mt-4">
                                                 For personal hobby projects and students.
                                             </p>
                                             <a
                                                 href="{PUBLIC_APPWRITE_DASHBOARD}/register"
-                                                class="web-button is-secondary is-full-width u-margin-block-start-32"
+                                                class="web-button is-secondary is-full-width mt-8"
                                             >
                                                 <span class="web-sub-body-500">Start building</span>
                                             </a>
@@ -113,30 +112,28 @@
                             </li>
                             <li>
                                 <article
-                                    class="web-card is-transparent has-border-gradient u-height-100-percent"
+                                    class="web-card is-transparent is-transparent-pink has-border-gradient h-full"
                                     style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <header class="u-flex u-gap-12">
+                                            <header class="flex gap-3">
                                                 <h2 id="pro" class="web-label">Pro</h2>
                                                 <div class="web-inline-tag is-pink">Popular</div>
                                             </header>
                                             <div
-                                                class="web-title web-u-color-text-primary u-margin-block-start-8"
+                                                class="web-title web-u-color-text-primary mt-2"
                                             >
                                                 $15
                                             </div>
-                                            <div class="u-margin-block-start-4">
-                                                per member/month
-                                            </div>
-                                            <p class="web-main-body-500 u-margin-block-start-16">
+                                            <div class="mt-1">per member/month</div>
+                                            <p class="web-main-body-500 mt-4">
                                                 For pro developers and teams that need to scale
                                                 their products.
                                             </p>
                                             <a
                                                 href="https://cloud.appwrite.io/console?type=createPro"
-                                                class="web-button is-full-width u-margin-block-start-32"
+                                                class="web-button is-full-width mt-8"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
@@ -168,26 +165,22 @@
                             </li>
                             <li>
                                 <article
-                                    class="web-card is-transparent has-border-gradient u-height-100-percent"
+                                    class="web-card is-transparent has-border-gradient h-full"
                                     style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
                                             <h2 id="scale" class="web-label">Scale</h2>
-                                            <div
-                                                class="web-title web-u-color-text-primary u-margin-block-start-8"
-                                            >
+                                            <div class="web-title web-u-color-text-primary mt-2">
                                                 $599
                                             </div>
-                                            <div class="u-margin-block-start-4">
-                                                per organization/month
-                                            </div>
-                                            <p class="web-main-body-500 u-margin-block-start-16">
+                                            <div class="mt-1">per organization/month</div>
+                                            <p class="web-main-body-500 mt-4">
                                                 For scaling teams and agencies that need dedicated
                                                 support.
                                             </p>
                                             <button
-                                                class="web-button is-secondary is-full-width u-margin-block-start-32"
+                                                class="web-button is-secondary is-full-width mt-8"
                                                 disabled
                                             >
                                                 <span class="web-sub-body-500">Coming soon</span>
@@ -219,19 +212,19 @@
                                         <header class="web-pricing-cards-header">
                                             <h2 id="scale" class="web-label">Enterprise</h2>
                                             <div
-                                                class="web-title web-u-color-text-primary u-margin-block-start-8"
+                                                class="web-title web-u-color-text-primary mt-2"
                                             >
                                                 Custom
                                             </div>
-                                            <div class="u-margin-block-start-4">
+                                            <div class="mt-1">
                                                 per organization/month
                                             </div>
-                                            <p class="web-main-body-500 u-margin-block-start-16">
+                                            <p class="web-main-body-500 mt-4">
                                                 For enterprises that need more power and premium support.
                                             </p>
                                             <a
                                                 href="/contact-us/enterprise"
-                                                class="web-button is-secondary is-full-width u-margin-block-start-32"
+                                                class="web-button is-secondary is-full-width  mt-8"
                                                 rel="noopener noreferrer"
                                             >
                                                 <!-- <span class="web-sub-body-500">Start trial</span> -->
@@ -312,11 +305,9 @@
         </div>
         <ComparePlans />
 
-        <div
-            class="web-big-padding-section-level-1 theme-dark u-position-relative u-overflow-hidden"
-        >
-            <div class="web-big-padding-section-level-2 u-position-relative">
-                <div class="web-container u-position-relative" style:z-index="10">
+        <div class="dark relative overflow-hidden pt-10">
+            <div class="web-big-padding-section-level-2 relative">
+                <div class="container relative" style:z-index="10">
                     <section class="web-grid-4-6">
                         <header>
                             <div class="web-display web-u-color-text-primary">FAQ</div>
@@ -325,8 +316,8 @@
                     </section>
                 </div>
             </div>
-            <div class="web-big-padding-section-level-2 u-position-relative">
-                <div class="web-container">
+            <div class="web-big-padding-section-level-2 !mb-0 relative">
+                <div class="container">
                     <PreFooter />
                     <FooterNav />
                     <MainFooter />

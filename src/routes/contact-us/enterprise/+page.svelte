@@ -70,7 +70,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<div class="u-position-absolute" style="pointer-events:none;">
+<div class="absolute" style="pointer-events:none;">
     <img src={Pink} alt="" />
 </div>
 
@@ -92,7 +92,7 @@
                                     class:web-u-max-width-380={!submitted}
                                 >
                                     {#if submitted}
-                                        <section class="u-flex-vertical web-u-gap-20">
+                                        <section class="u-flex-col web-u-gap-20">
                                             <h1 class="web-display web-u-color-text-primary">
                                                 Thank you for your submission
                                             </h1>
@@ -108,7 +108,7 @@
                                             </a>
                                         </section>
                                     {:else}
-                                        <section class="u-flex-vertical web-u-gap-20">
+                                        <section class="u-flex-col web-u-gap-20">
                                             <h4 class="web-display web-u-color-text-primary">
                                                 Enterprise Plan
                                             </h4>
@@ -124,13 +124,13 @@
                                 <form
                                     method="post"
                                     on:submit|preventDefault={handleSubmit}
-                                    class="u-flex-vertical u-gap-16"
+                                    class="flex flex-col gap-4"
                                 >
-                                    <div class="u-flex u-main-end">
+                                    <div class="flex justify-end">
                                         <ul
-                                            class="web-form-list is-two-columns u-gap-16 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
+                                            class="web-form-list grid md:grid-cols-2 web-u-max-width-580 web-u-max-inline-size-none-mobile w-full gap-4"
                                         >
-                                            <li class="web-form-item u-flex-vertical u-gap-4">
+                                            <li class="web-form-item">
                                                 <label class="u-block" for="name"
                                                 >Name of representative</label
                                                 >
@@ -143,7 +143,7 @@
                                                     bind:value={name}
                                                 />
                                             </li>
-                                            <li class="web-form-item u-flex-vertical u-gap-4">
+                                            <li class="web-form-item">
                                                 <label class="u-block" for="workEmail"
                                                 >Work email address</label
                                                 >
@@ -156,7 +156,7 @@
                                                     bind:value={email}
                                                 />
                                             </li>
-                                            <li class="web-form-item u-flex-vertical u-gap-4">
+                                            <li class="web-form-item">
                                                 <label class="u-block" for="companyName"
                                                 >Company name</label
                                                 >
@@ -169,7 +169,7 @@
                                                     bind:value={companyName}
                                                 />
                                             </li>
-                                            <li class="web-form-item u-flex-vertical u-gap-4">
+                                            <li class="web-form-item">
                                                 <label class="u-block" for="companySize"
                                                 >Company size</label
                                                 >
@@ -189,21 +189,21 @@
                                                         <option>1001-5000 employees</option>
                                                         <option>5000+ employees</option>
                                                     </select>
-                                                    <span
-                                                        class="icon-cheveron-down u-position-absolute u-inset-inline-end-8 u-inset-block-start-8 web-u-pointer-events-none"
-                                                        aria-hidden="true"
-                                                    ></span>
+<!--                                                    <span-->
+<!--                                                        class="icon-cheveron-down u-position-absolute u-inset-inline-end-8 u-inset-block-start-8 web-u-pointer-events-none"-->
+<!--                                                        aria-hidden="true"-->
+<!--                                                    ></span>-->
                                                 </div>
                                             </li>
                                             <li
-                                                class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
+                                                class="web-form-item is-column-span-2 flex-col gap-1"
                                             >
                                                 <label class="u-block" for="companyWebsite"
                                                 >Company website</label
                                                 >
                                                 <input
                                                     required
-                                                    class="web-input-text"
+                                                    class="web-input-text w-full"
                                                     type="url"
                                                     placeholder="https://appwrite.io"
                                                     id="companyWebsite"
@@ -211,14 +211,14 @@
                                                 />
                                             </li>
                                             <li
-                                                class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
+                                                class="web-form-item is-column-span-2 flex-col gap-1"
                                             >
                                                 <label class="u-block" for="use-case"
                                                 >Please share more information about your use case</label
                                                 >
                                                 <textarea
                                                     required
-                                                    class="web-input-text"
+                                                    class="web-input-text w-full"
                                                     id="use-case"
                                                     placeholder="Describe your use case and how our Enterprise Plan can support it"
                                                     bind:value={useCase}
@@ -227,7 +227,7 @@
                                         </ul>
                                     </div>
                                     <div
-                                        class="u-flex u-gap-16 u-main-space-between web-u-flex-vertical-reverse-mobile"
+                                        class="u-flex u-gap-16 u-main-space-between web-u-flex-col-reverse-mobile"
                                     >
                                         <p class="web-caption-400 web-u-max-width-380">
                                             {#if error}
@@ -245,11 +245,11 @@
                             {/if}
                         </div>
                     </div>
-                    <div class="web-container">
-                        <FooterNav />
-                        <MainFooter />
-                    </div>
                 </div>
+            </div>
+            <div class="container">
+                <FooterNav />
+                <MainFooter />
             </div>
         </div>
     </div>
