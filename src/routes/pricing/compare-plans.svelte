@@ -135,7 +135,7 @@
                     free: '1 hour',
                     pro: '7 days',
                     scale: '28 days',
-                    enterprise: 'Custom'
+                    enterprise: '90 days'
                 },
                 {
                     title: 'Budget caps and alerts',

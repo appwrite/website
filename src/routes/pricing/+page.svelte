@@ -234,12 +234,16 @@
                                         <div class="web-pricing-cards-content">
                                             <p>Everything in Scale, plus:</p>
                                             <ul class="web-checked-list-circle">
-                                                <li><span>Uptime SLA</span></li>
-                                                <li><span>90 days logs</span></li>
-                                                <li><span>On premise support</span></li>
-                                                <li><span>Dedicated success manager</span></li>
-                                                <li><span>Private Slack / Discord channel</span></li>
-                                                <li><span>Personalized onboarding and training</span></li>
+                                                <li><span>Uptime SLAs</span></li>
+                                                <li><span>Designated Success Manager</span></li>
+                                                <li><span>24×7×365 enterprise support</span></li>
+                                                <li><span>Private Slack channel</span></li>
+                                                <li><span>Volume discounts</span></li>
+                                                <li><span>Advanced permissions</span></li>
+                                                <li><span>Log drains</span></li>
+                                                <li><span>90-day log retention</span></li>
+                                                <li><span>Advanced observability</span></li>
+                                                <li><span>Bring your own Cloud</span></li>
                                             </ul>
                                         </div>
                                     </div>
