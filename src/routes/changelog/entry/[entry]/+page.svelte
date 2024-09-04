@@ -68,7 +68,7 @@
 
 <Main>
     <div class="web-big-padding-section">
-        <div class="py-10">
+        <div class="pt-10">
             <div class="web-big-padding-section-level-2">
                 <div class="container wrapper" style="--container-size:42.5rem">
                     <article class="web-main-article">
@@ -145,8 +145,8 @@
                     </article>
                 </div>
             </div>
-            <div class="relative overflow-hidden py-10">
-                <div class="web-big-padding-section-level-2">
+            <div class="relative overflow-hidden pt-10">
+                <div class="pt-[7.5rem]">
                     <div class="container">
                         <PreFooter />
                         <FooterNav />

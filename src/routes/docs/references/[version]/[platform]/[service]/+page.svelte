@@ -211,7 +211,7 @@
                         </Accordion>
                     </div>
                     <div class="web-article-content-grid-6-4-column-2 flex flex-col gap-8">
-                        <div class="contentss theme-dark">
+                        <div class="contents dark">
                             <div
                                 class="sticky"
                                 style="--inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position);"
