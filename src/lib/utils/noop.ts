@@ -1,3 +1,3 @@
 export const noop = () => {
-	// Do nothing
+    // Do nothing
 };

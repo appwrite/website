@@ -47,7 +47,9 @@
             class="web-card is-normal has-border-gradient u-overflow-hidden"
             style="padding: 1.25rem; --p-aspect-ratio: 0;"
         >
-            <h3 class="web-label web-u-color-text-primary" style="max-width: 18.75rem">CSR vs SSR</h3>
+            <h3 class="web-label web-u-color-text-primary" style="max-width: 18.75rem">
+                CSR vs SSR
+            </h3>
             <div class="web-card-link u-flex u-cross-center">
                 <span class="text">Article</span>
                 <span class="web-icon-arrow-right" />

@@ -36,7 +36,7 @@
 </script>
 
 <nav
-    class="web-side-nav"
+    class="web-side-nav !border-greyscale-800 !border-r"
     use:clickOutside={(e) => {
         const el = e.target;
         if (!(el instanceof HTMLElement)) return;
@@ -59,7 +59,8 @@
                     <a href={parent.href} aria-label="go back">
                         <span class="icon-cheveron-left" aria-hidden="true" />
                     </a>
-                    <span class="web-side-nav-wrapper-parent-title web-eyebrow">{parent.label}</span>
+                    <span class="web-side-nav-wrapper-parent-title web-eyebrow">{parent.label}</span
+                    >
                 </section>
             {/if}
             {#each navigation as navGroup}
@@ -75,7 +76,7 @@
                         {/if}
                     {:else}
                         {#if navGroup.label}
-                            <h2 class="web-side-nav-header web-eyebrow u-un-break-text">
+                            <h2 class="web-side-nav-header web-eyebrow whitespace-nowrap">
                                 {navGroup.label}
                             </h2>
                         {/if}
@@ -102,7 +103,7 @@
         {#if expandable}
             <button
                 on:click={toggleSidenav}
-                class="web-icon-button u-margin-inline-start-auto"
+                class="web-icon-button ml-auto"
                 style:margin-bottom="1rem"
                 aria-label="toggle nav"
             >
