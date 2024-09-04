@@ -26,6 +26,7 @@ export type PostsData = {
     author: string;
     category: string;
     href: string;
+    slug: string;
     featured?: boolean;
     callToAction: {
         heading?: string;
@@ -56,13 +57,16 @@ export const posts = Object.entries(postsGlob)
         return {
             title: frontmatter.title,
             description: frontmatter.description,
+            featured: frontmatter.featured,
             date: new Date(frontmatter.date),
             lastUpdated: new Date(frontmatter.lastUpdated),
             cover: frontmatter.cover,
             timeToRead: frontmatter.timeToRead,
             author: frontmatter.author,
             category: frontmatter.category,
-            href: `${base}/blog/post/${postName}`
+            href: `${base}/blog/post/${postName}`,
+            slug,
+            draft: frontmatter.draft
         };
     })
     .sort((a, b) => {
@@ -98,3 +102,10 @@ export const categories = Object.values(categoriesGlob).map((categoryList) => {
         href: `${base}/blog/category/${frontmatter.name.toLowerCase()}`
     };
 });
+
+export const getAllBlogEntriesWithAuthors = () => {
+    return {
+        posts,
+        authors
+    };
+};
