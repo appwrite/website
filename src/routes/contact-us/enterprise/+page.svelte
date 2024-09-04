@@ -97,8 +97,9 @@
                                                 Thank you for your submission
                                             </h1>
                                             <p class="web-description web-u-padding-block-end-32">
-                                                Your details for the enterprise plan have been sent successfully. Our
-                                                team will back to you as soon as possible.
+                                                Your details for the enterprise plan have been sent
+                                                successfully. Our team will back to you as soon as
+                                                possible.
                                             </p>
                                             <a
                                                 href="/pricing"
@@ -113,8 +114,8 @@
                                                 Enterprise Plan
                                             </h4>
                                             <p class="web-description">
-                                                Apply to our Enterprise Plan by filling
-                                                out this form. Our team will reach out to you soon.
+                                                Apply to our Enterprise Plan by filling out this
+                                                form. Our team will reach out to you soon.
                                             </p>
                                         </section>
                                     {/if}
@@ -132,7 +133,7 @@
                                         >
                                             <li class="web-form-item">
                                                 <label class="u-block" for="name"
-                                                >Name of representative</label
+                                                    >Name of representative</label
                                                 >
                                                 <input
                                                     required
@@ -145,7 +146,7 @@
                                             </li>
                                             <li class="web-form-item">
                                                 <label class="u-block" for="workEmail"
-                                                >Work email address</label
+                                                    >Work email address</label
                                                 >
                                                 <input
                                                     required
@@ -158,7 +159,7 @@
                                             </li>
                                             <li class="web-form-item">
                                                 <label class="u-block" for="companyName"
-                                                >Company name</label
+                                                    >Company name</label
                                                 >
                                                 <input
                                                     required
@@ -171,7 +172,7 @@
                                             </li>
                                             <li class="web-form-item">
                                                 <label class="u-block" for="companySize"
-                                                >Company size</label
+                                                    >Company size</label
                                                 >
 
                                                 <div class="relative">
@@ -194,13 +195,12 @@
                                                         aria-hidden="true"
                                                     />
                                                 </div>
-
                                             </li>
                                             <li
                                                 class="web-form-item is-column-span-2 flex-col gap-1"
                                             >
                                                 <label class="u-block" for="companyWebsite"
-                                                >Company website</label
+                                                    >Company website</label
                                                 >
                                                 <input
                                                     required
@@ -215,7 +215,8 @@
                                                 class="web-form-item is-column-span-2 flex-col gap-1"
                                             >
                                                 <label class="u-block" for="use-case"
-                                                >Please share more information about your use case</label
+                                                    >Please share more information about your use
+                                                    case</label
                                                 >
                                                 <textarea
                                                     required
