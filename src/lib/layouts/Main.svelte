@@ -25,6 +25,7 @@
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
     import InitBanner from '$lib/components/InitBanner.svelte';
+    import Button from '$lib/components/ui/Button.svelte';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -244,6 +245,11 @@
                 </nav>
             </div>
             <div class="web-main-header-end">
+                <Button href="https://github.com/appwrite/appwrite/stargazers" variant="text">
+                    <span class="web-icon-star" aria-hidden="true" />
+                    Star on GitHub
+                    <span class="text-sub-body">{GITHUB_STARS}</span>
+                </Button>
                 <a
                     href="https://github.com/appwrite/appwrite/stargazers"
                     target="_blank"

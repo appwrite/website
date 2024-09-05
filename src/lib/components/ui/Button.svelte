@@ -5,14 +5,14 @@
 
     const button = cva(
         [
-            'flex w-fit min-h-10 items-center justify-center gap-2 rounded-lg px-4 text-white transition-all select-none'
+            'flex w-fit justify-center text-center no-underline select-none min-w-10 bg-origin-border text-white font-medium items-center gap-2 rounded-lg border border-transparent button duration-200'
         ],
         {
             variants: {
                 variant: {
                     primary: [
-                        'bg-gradient-to-br from-pink-500 via-pink-500 to-secondary-100',
-                        'hover:shadow-[0_0_2rem_#fd366e52] active:not:disabled:shadow-[0_0_2rem_#fd366e52]'
+                        'px-[0.875rem] py-[0.4375rem] bg-[linear-gradient(135deg,_var(--color-accent)_0%,_var(--color-accent)_61%,_var(--color-secondary-100)_100%)]',
+                        'hover:shadow-[0_0_2rem_var(--color-accent-200)] active:not:disabled:shadow-[0_0_2rem_var(--color-accent-200)]'
                     ],
                     secondary: [
                         'bg-[#fd366e0a] relative',
@@ -20,7 +20,7 @@
                     ],
                     text: [
                         'bg-transparent border-transparent',
-                        'hover:bg-gradient-to-b from-[#ffffff0f] via-[#ffffff1a] to-[#ffffff0f];'
+                        'hover:backdrop-blur-md hover:bg-[linear-gradient(135deg,_rgba(255,_255,_255,_0.06)_0%,_rgba(255,_255,_255,_0.10)_54.74%,_rgba(255,_255,_255,_0.06)_100%)]'
                     ]
                 }
             }
@@ -54,40 +54,3 @@
         <slot />
     </button>
 {/if}
-
-<style>
-    .secondary {
-        --border-gradient-before: linear-gradient(
-            to bottom,
-            rgba(253, 54, 110, 0.48) 0%,
-            rgba(253, 54, 110, 0) 180%
-        );
-        --border-gradient-after: radial-gradient(
-            42.86% 42.86% at 50.55% -0%,
-            rgba(255, 255, 255, 0.2) 0%,
-            rgba(255, 255, 255, 0) 100%
-        );
-
-        &::before {
-            background: var(--border-gradient-before) border-box;
-        }
-
-        &::after {
-            background: var(--border-gradient-after);
-        }
-
-        &::before,
-        &::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: var(--radius-lg);
-            border: 1px solid transparent;
-            mask:
-                linear-gradient(#fff 0 0) padding-box,
-                linear-gradient(#fff 0 0);
-            mask-composite: exclude;
-            pointer-events: none;
-        }
-    }
-</style>
