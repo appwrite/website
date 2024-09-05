@@ -90,8 +90,6 @@
     --font-family-aeonik-pro: 'Aeonik Pro', var(--font-family-sans);
     --font-family-archia: 'Archia', arial, sans-serif;
 
-    --font-size-xs: clamp(0.75rem, 2.5vw + 0.5rem, 1rem);
-    --font-size-xs--line-height: clamp(1rem, 2.5vw + 0.75rem, 1.25rem);
     --font-size-sm: clamp(0.875rem, 2.5vw + 0.625rem, 1.125rem);
     --font-size-sm--line-height: clamp(1.25rem, 2.5vw + 0.875rem, 1.5rem);
     --font-size-base: clamp(1rem, 2.5vw + 0.75rem, 1.25rem);

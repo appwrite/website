@@ -15,6 +15,7 @@
     import Button from '$lib/components/ui/Button.svelte';
     import Hero from '$lib/components/ui/Hero.svelte';
     import GradientText from '$lib/components/ui/GradientText.svelte';
+    import Badge from '$lib/components/ui/Badge.svelte';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -167,7 +168,7 @@
             <div class="my-[7.5rem]">
                 <div class="container">
                     <h2
-                        class="web-title web-u-color-text-primary web-u-text-align-center web-u-max-width-600 mx-auto"
+                        class="web-title web-u-color-text-primary text-center web-u-max-width-600 mx-auto"
                     >
                         Trusted by developers from the world's leading organizations
                     </h2>
@@ -289,7 +290,7 @@
             <div class="my-[7.5rem]">
                 <div class="container">
                     <section class="web-hero is-align-start">
-                        <span class="web-badges web-eyebrow !text-white">PRIVACY & SECURITY_</span>
+                        <Badge>PRIVACY & SECURITY_</Badge>
                         <h2 class="web-display text-primary max-w-[700px]">
                             Self-host your data or take it to the Cloud
                         </h2>
