@@ -90,30 +90,29 @@
     --font-family-aeonik-pro: 'Aeonik Pro', var(--font-family-sans);
     --font-family-archia: 'Archia', arial, sans-serif;
 
-    --font-size-sm: clamp(0.875rem, 2.5vw + 0.625rem, 1.125rem);
-    --font-size-sm--line-height: clamp(1.25rem, 2.5vw + 0.875rem, 1.5rem);
-    --font-size-base: clamp(1rem, 2.5vw + 0.75rem, 1.25rem);
-    --font-size-base--line-height: clamp(1.5rem, 2.5vw + 1rem, 1.75rem);
-    --font-size-lg: clamp(1.125rem, 2.5vw + 0.875rem, 1.375rem);
-    --font-size-lg--line-height: clamp(1.75rem, 2.5vw + 1.125rem, 2rem);
-    --font-size-xl: clamp(1.25rem, 2.5vw + 1rem, 1.5rem);
-    --font-size-xl--line-height: clamp(1.75rem, 2.5vw + 1.125rem, 2rem);
-    --font-size-2xl: clamp(1.5rem, 2.5vw + 1.25rem, 1.75rem);
-    --font-size-2xl--line-height: clamp(2rem, 2.5vw + 1.25rem, 2.25rem);
-    --font-size-3xl: clamp(1.875rem, 2.5vw + 1.5rem, 2.125rem);
-    --font-size-3xl--line-height: clamp(2.25rem, 2.5vw + 1.5rem, 2.5rem);
-    --font-size-4xl: clamp(2.25rem, 2.5vw + 1.75rem, 2.5rem);
-    --font-size-4xl--line-height: clamp(2.5rem, 2.5vw + 1.75rem, 2.75rem);
-    --font-size-5xl: clamp(3rem, 3vw + 2rem, 4rem);
-    --font-size-5xl--line-height: 1;
-    --font-size-6xl: clamp(3.75rem, 3vw + 2.5rem, 4.5rem);
-    --font-size-6xl--line-height: 1;
-    --font-size-7xl: clamp(4.5rem, 3vw + 3rem, 6rem);
-    --font-size-7xl--line-height: 1;
-    --font-size-8xl: clamp(6rem, 3vw + 4rem, 8rem);
-    --font-size-8xl--line-height: 1;
-    --font-size-9xl: clamp(8rem, 3vw + 5rem, 10rem);
-    --font-size-9xl--line-height: 1;
+    /* Font sizes */
+    --font-size-micro: 0.75rem;
+    --font-size-micro--line-height: 1rem;
+    --font-size-caption: 0.875rem;
+    --font-size-caption--line-height: 1.375rem;
+    --font-size-sub: clamp(0.875rem, 2vw, 1rem);
+    --font-size-sub--line-height: 1.375rem;
+    --font-size-body: clamp(1rem, 2.5vw, 1.125rem);
+    --font-size-body--line-height: clamp(1.375rem, 3vw, 1.625rem);
+    --font-size-paragraph-md: 1rem;
+    --font-size-paragraph-md--line-height: 1.625rem;
+    --font-size-paragraph-lg: 1.125rem;
+    --font-size-paragraph-lg--line-height: 1.75rem;
+    --font-size-description: clamp(1.125rem, 3vw, 1.25rem);
+    --font-size-description--line-height: clamp(1.625rem, 3.5vw, 1.75rem);
+    --font-size-label: 1.5rem;
+    --font-size-label--line-height: 1.75rem;
+    --font-size-title: clamp(2.5rem, 5vw, 2.5rem);
+    --font-size-title--line-height: clamp(2.75rem, 5.5vw, 2.75rem);
+    --font-size-display: clamp(3rem, 7vw, 4rem);
+    --font-size-display--line-height: clamp(3.125rem, 7.5vw, 4.25rem);
+    --font-size-headline: clamp(3.5rem, 8vw, 5.5rem);
+    --font-size-headline--line-height: clamp(3.5rem, 8.5vw, 5.75rem);
 }
 
 /* Themes */
