@@ -75,7 +75,7 @@
     <div class="container">
         <Carousel size="medium">
             <svelte:fragment slot="header">
-                <h4 class="web-label web-u-color-text-primary">Upcoming Events</h4>
+                <h4 class="text-label text-primary">Upcoming Events</h4>
             </svelte:fragment>
             {#each events as event}
                 <li>

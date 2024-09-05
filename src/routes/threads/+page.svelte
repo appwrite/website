@@ -132,7 +132,7 @@
 
                 <div class="container">
                     <h1
-                        class="web-display web-u-color-text-primary web-u-margin-block-80 web-u-padding-block-end-40"
+                        class="text-display font-aeonik-pro text-primary web-u-margin-block-80 web-u-padding-block-end-40"
                     >
                         Threads
                     </h1>
@@ -182,7 +182,7 @@
                     </div>
 
                     {#if threads.length}
-                        <h2 class="web-u-color-text-primary mt-4" aria-live="polite">
+                        <h2 class="text-primary mt-4" aria-live="polite">
                             Found {query.length ? threads.length : '5000+'} results.
                         </h2>
                     {/if}

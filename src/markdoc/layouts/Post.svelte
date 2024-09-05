@@ -118,7 +118,9 @@
                                         <li>{timeToRead} min</li>
                                     {/if}
                                 </ul>
-                                <h1 class="web-title web-u-color-text-primary">{title}</h1>
+                                <h1 class="text-title font-aeonik-pro text-primary">
+                                    {title}
+                                </h1>
                                 {#if description}
                                     <p class="text-description mt-2">
                                         {description}
@@ -138,9 +140,7 @@
                                                 />
                                             {/if}
                                             <div class="flex flex-col">
-                                                <h4
-                                                    class="web-sub-body-400 web-u-color-text-primary"
-                                                >
+                                                <h4 class="web-sub-body-400 text-primary">
                                                     {authorData.name}
                                                 </h4>
                                                 <p class="web-caption-400">{authorData.role}</p>
@@ -239,7 +239,7 @@
     <div class="web-u-sep-block-start py-10">
         <div class="web-big-padding-section-level-2">
             <div class="container">
-                <h3 class="web-label web-u-color-text-primary">Read next</h3>
+                <h3 class="text-label text-primary">Read next</h3>
                 <section class="mt-8">
                     <ul class="web-grid-articles">
                         {#each posts.filter((p) => p.title !== title).slice(0, 3) as post}

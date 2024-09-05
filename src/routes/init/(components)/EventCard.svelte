@@ -49,7 +49,7 @@
                 </li>
             {/if}
         </ul>
-        <svelte:element this={headingTag} class="web-sub-body-500 web-u-color-text-primary mt-1">
+        <svelte:element this={headingTag} class="web-sub-body-500 text-primary mt-1">
             {title}
         </svelte:element>
         <p class="web-sub-body-500">

@@ -43,7 +43,7 @@
                     <span class="web-icon-chevron-left" aria-hidden="true" />
                     <span>Back</span>
                 </a>
-                <h1 class="web-title web-u-color-text-primary">{data.title}</h1>
+                <h1 class="text-title font-aeonik-pro text-primary">{data.title}</h1>
                 <ul class="tags">
                     <li class="web-tag">
                         <span class="web-icon-arrow-up" />
@@ -71,14 +71,14 @@
                     <MessageCard {message}>
                         {#if isFirst}
                             <div class="web-inline-info web-u-margin-block-start-24">
-                                <div class="web-sub-body-500 web-u-color-text-primary">TL;DR</div>
+                                <div class="web-sub-body-500 text-primary">TL;DR</div>
                                 {data.tldr}
                             </div>
                         {/if}
                     </MessageCard>
                 {/each}
                 <div class="web-card is-normal has-border-gradient">
-                    <span class="web-sub-body-500 web-u-color-text-primary">Reply</span>
+                    <span class="web-sub-body-500 text-primary">Reply</span>
                     <p class="web-sub-body-500 mt-4">Reply to this thread by joining our Discord</p>
                     <a class="web-button mt-6" href={discordLink}>
                         <span class="web-icon-discord" />
@@ -88,14 +88,14 @@
             </div>
             <div class="related">
                 {#if data.related.length}
-                    <h2 class="web-eyebrow web-u-color-text-primary">Recommended threads</h2>
+                    <h2 class="web-eyebrow text-primary">Recommended threads</h2>
                 {/if}
                 <ul>
                     {#each data.related as thread}
                         <li>
                             <a href="/threads/{thread.$id}" data-sveltekit-reload>
                                 <div class="flex items-center">
-                                    <span class="web-sub-body-500 web-u-color-text-primary">
+                                    <span class="web-sub-body-500 text-primary">
                                         {thread.title.length > 40
                                             ? thread.title.slice(0, 40) + '...'
                                             : thread.title}

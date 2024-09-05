@@ -168,7 +168,7 @@
             <div class="my-[7.5rem]">
                 <div class="container">
                     <h2
-                        class="web-title web-u-color-text-primary text-center web-u-max-width-600 mx-auto"
+                        class="text-title font-aeonik-pro text-primary text-center web-u-max-width-600 mx-auto"
                     >
                         Trusted by developers from the world's leading organizations
                     </h2>
@@ -291,7 +291,7 @@
                 <div class="container">
                     <section class="web-hero is-align-start">
                         <Badge>PRIVACY & SECURITY_</Badge>
-                        <h2 class="web-display text-primary max-w-[700px]">
+                        <h2 class="text-display font-aeonik-pro text-primary max-w-[700px]">
                             Self-host your data or take it to the Cloud
                         </h2>
                         <p class="text-secondary mt-5 max-w-[700px] text-xl font-medium">
@@ -324,7 +324,9 @@
             <div class="my-[7.5rem]">
                 <div class="container">
                     <div class="web-hero">
-                        <div class="web-display text-primary">Loved by developers like you</div>
+                        <div class="text-display font-aeonik-pro text-primary">
+                            Loved by developers like you
+                        </div>
                     </div>
                     <ul class="web-multi-columns-1 mt-20">
                         <li>
@@ -366,7 +368,7 @@
                                     href="https://twitter.com/appwrite"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-link is-inline">@appwrite</a
+                                    class="web-link underline">@appwrite</a
                                 > handle my authentication process while I focus on the business logic.
                             </DeveloperCard>
                         </li>
@@ -406,7 +408,7 @@
                                     href="https://twitter.com/appwrite"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-link is-inline">@appwrite</a
+                                    class="web-link underline">@appwrite</a
                                 >. With its robust feature set and open-source nature, it's the
                                 perfect choice for developers who want to build secure and scalable
                                 applications.
@@ -438,7 +440,7 @@
                 <div class="container relative">
                     <section class="web-hero is-align-start">
                         <span class="web-badges web-eyebrow !text-white">SDKs_</span>
-                        <h2 class="web-display web-u-color-text-primary max-w-[600px]">
+                        <h2 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                             Code the way you want
                         </h2>
                         <p class="text-secondary mt-5 max-w-[600px] text-xl font-medium">
@@ -470,7 +472,7 @@
                     <div class="grid md:grid-cols-2">
                         <section class="web-hero is-align-start">
                             <span class="web-badges web-eyebrow !text-white">Scale_</span>
-                            <h2 class="web-display web-u-color-text-primary max-w-[600px]">
+                            <h2 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                                 We scale for you
                             </h2>
                         </section>
@@ -478,19 +480,19 @@
                             class="web-big-list-info web-u-inline-width-100-percent-mobile-break1 web-u-margin-block-start-48 ml-auto"
                         >
                             <li class="web-big-list-info-item">
-                                <div class="web-headline web-u-color-text-primary">90K</div>
+                                <div class="text-headline font-aeonik-pro text-primary">90K</div>
                                 <div class="text">Projects</div>
                             </li>
                             <li class="web-big-list-info-item">
-                                <div class="web-headline web-u-color-text-primary">+1B</div>
+                                <div class="text-headline font-aeonik-pro text-primary">+1B</div>
                                 <div class="text">Requests served</div>
                             </li>
                             <li class="web-big-list-info-item">
-                                <div class="web-headline web-u-color-text-primary">20K</div>
+                                <div class="text-headline font-aeonik-pro text-primary">20K</div>
                                 <div class="text">Organizations</div>
                             </li>
                             <li class="web-big-list-info-item">
-                                <div class="web-headline web-u-color-text-primary">99.99%</div>
+                                <div class="text-headline font-aeonik-pro text-primary">99.99%</div>
                                 <div class="text">Guaranteed uptime</div>
                             </li>
                         </ul>

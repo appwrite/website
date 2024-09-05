@@ -119,7 +119,7 @@
 
             <div class="web-big-padding-section-level-2 relative">
                 <div class="container">
-                    <h1 class="web-display web-u-color-text-primary">Blog</h1>
+                    <h1 class="text-display font-aeonik-pro text-primary">Blog</h1>
                     {#if featured}
                         {@const author = data.authors.find(
                             (author) => author.slug === featured.author
@@ -139,7 +139,7 @@
                                         <li>{featured.timeToRead} min</li>
                                     </ul>
                                     <a href={featured.href}>
-                                        <h2 class="web-title web-u-color-text-primary">
+                                        <h2 class="text-title font-aeonik-pro text-primary">
                                             {featured.title}
                                         </h2>
                                     </a>
@@ -184,7 +184,7 @@
                 <div class="web-container">
                     <h2
                         id="title"
-                        class="web-title web-u-color-text-primary"
+                        class="text-title font-aeonik-pro text-primary"
                         bind:this={articlesHeader}
                     >
                         Articles

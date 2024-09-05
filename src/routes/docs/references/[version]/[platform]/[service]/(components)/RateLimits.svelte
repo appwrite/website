@@ -51,7 +51,7 @@
                     using SSR with <code>setSession</code>, these rate limits will still apply.
                     <a
                         href="/docs/products/auth/server-side-rendering#rate-limits"
-                        class="u-link web-u-color-text-primary"
+                        class="u-link text-primary"
                     >
                         Learn more about SSR rate limits.
                     </a>
@@ -65,13 +65,13 @@
                     <thead class="web-table-header">
                         <tr class="web-table-row">
                             <th class="web-table-head-col">
-                                <div class="web-eyebrow web-u-color-text-primary">Time frame</div>
+                                <div class="web-eyebrow text-primary">Time frame</div>
                             </th>
                             <th class="web-table-head-col">
-                                <div class="web-eyebrow web-u-color-text-primary">Attempts</div>
+                                <div class="web-eyebrow text-primary">Attempts</div>
                             </th>
                             <th class="web-table-head-col">
-                                <div class="web-eyebrow web-u-color-text-primary">Key</div>
+                                <div class="web-eyebrow text-primary">Key</div>
                             </th>
                         </tr>
                     </thead>
@@ -98,7 +98,7 @@
             </div>
         </div>
         <div class="">
-            <a href="/docs/advanced/platform/rate-limits" class="u-link web-u-color-text-primary">
+            <a href="/docs/advanced/platform/rate-limits" class="u-link text-primary">
                 <span>Learn more about rate limits</span>
                 <span class="web-icon-arrow-right" aria-hidden="true"></span>
             </a>

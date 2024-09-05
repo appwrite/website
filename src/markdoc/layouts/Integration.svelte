@@ -98,7 +98,7 @@
                                 height="40"
                             />
                             <h1
-                                class="web-title web-u-color-text-primary justif"
+                                class="text-title font-aeonik-pro text-primary justif"
                                 style="max-width: 28.15rem;"
                             >
                                 {title}
@@ -118,7 +118,7 @@
                         >
                             <div class="flex justify-between gap-2">
                                 <dt>Vendor</dt>
-                                <dd class="web-u-color-text-primary">{product.vendor}</dd>
+                                <dd class="text-primary">{product.vendor}</dd>
                             </div>
                             <div class="web-u-sep-block-end"></div>
                             {#if isPartner}
@@ -130,7 +130,7 @@
                             <div class="web-u-sep-block-end"></div>
                             <div class="flex justify-between gap-2">
                                 <dt>Category</dt>
-                                <dd class="web-u-color-text-primary">{category}</dd>
+                                <dd class="text-primary">{category}</dd>
                             </div>
                         </dl>
                     </div>
@@ -156,7 +156,9 @@
                     <section
                         class="web-hero web-u-max-width-580 flex items-center justify-center gap-y-4"
                     >
-                        <h2 class="web-display text-center web-u-color-text-primary max-w-[600px]">
+                        <h2
+                            class="text-display font-aeonik-pro text-center text-primary max-w-[600px]"
+                        >
                             Become a Technology Partner
                         </h2>
                         <p class="web-main-body-500">

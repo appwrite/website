@@ -38,7 +38,7 @@
                         class="web-hero"
                         style="--hero-max-inline-size:62.125rem; --hero-gap:1.125rem;"
                     >
-                        <h1 class="web-headline web-u-color-text-primary">
+                        <h1 class="text-headline font-aeonik-pro text-primary">
                             Unleashing creativity and innovation in every creator
                         </h1>
                         <div>
@@ -61,7 +61,7 @@
                         style="--grid-1-1-gap:2rem; --grid-1-1-gap-desktop:6.25rem;"
                     >
                         <div class="flex flex-col gap-8">
-                            <h2 class="web-display web-u-color-text-primary">
+                            <h2 class="text-display font-aeonik-pro text-primary">
                                 Designed for and by developers
                             </h2>
                             <a
@@ -100,7 +100,7 @@
 			<div class="web-big-padding-section-level-2">
 				<div class="container">
 					<div class="web-hero is-center">
-						<h2 class="web-display web-u-color-text-primary">Our Story</h2>
+						<h2 class="text-display font-aeonik-pro text-primary">Our Story</h2>
 						<p class="text-description">
 							What once started as a passion project is now a beloved and awarded product that helps developers world wide to achieve more/unleash creativity and innovation.
 						</p>
@@ -115,7 +115,7 @@
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div class="flex flex-col gap-4">
 											<span class="web-badges web-eyebrow web-u-cross-child-start">2019_</span>
-											<h3 class="web-title web-u-color-text-primary">
+											<h3 class="text-title font-aeonik-pro text-primary">
 												A passion project called Appwrite
 											</h3>
 											<p class="web-main-body-400">
@@ -137,7 +137,7 @@
 										</div>
 										<div>
 											<div class="web-card is-white web-u-max-width-350">
-												<h6 class="web-label">0.1 - 0.4 released</h6>
+												<h6 class="text-label">0.1 - 0.4 released</h6>
 												<p class="web-sub-body-400 mt-3">Early stages of authentication, avatars, database, teams, and storage features</p>
 											</div>
 										</div>
@@ -148,7 +148,7 @@
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div class="flex flex-col gap-4">
 											<span class="web-badges web-eyebrow web-u-cross-child-start">2019_</span>
-											<h3 class="web-title web-u-color-text-primary">
+											<h3 class="text-title font-aeonik-pro text-primary">
 												Building the team
 											</h3>
 											<p class="aw -main-body-400">
@@ -162,7 +162,7 @@
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div>
 											<div class="web-card is-white web-u-max-width-168">
-												<h6 class="web-title">5k</h6>
+												<h6 class="text-title font-aeonik-pro">5k</h6>
 												<p class="web-sub-body-400 web-u-margin-block-start-6">GitHub Stars</p>
 											</div>
 										</div>
@@ -176,7 +176,7 @@
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div class="flex flex-col gap-4">
 											<span class="web-badges web-eyebrow web-u-cross-child-start">2019_</span>
-											<h3 class="web-title web-u-color-text-primary">
+											<h3 class="text-title font-aeonik-pro text-primary">
 												Community validation
 											</h3>
 											<p class="aw -main-body-400">
@@ -218,7 +218,7 @@
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div class="flex flex-col gap-4">
 											<span class="web-badges web-eyebrow web-u-cross-child-start">2019_</span>
-											<h3 class="web-title web-u-color-text-primary">
+											<h3 class="text-title font-aeonik-pro text-primary">
 												Continuous improvement
 											</h3>
 											<p class="aw -main-body-400">
@@ -247,7 +247,7 @@
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div class="flex flex-col gap-4">
 											<span class="web-badges web-eyebrow web-u-cross-child-start">2019_</span>
-											<h3 class="web-title web-u-color-text-primary">
+											<h3 class="text-title font-aeonik-pro text-primary">
 												Taking it to the Cloud
 											</h3>
 											<p class="aw -main-body-400">
@@ -278,7 +278,7 @@
             <div class="web-big-padding-section-level-2">
                 <div class="container">
                     <div class="web-hero web-u-max-width-800">
-                        <h4 class="web-display web-u-color-text-primary">
+                        <h4 class="text-display font-aeonik-pro text-primary">
                             Backed by top investors
                         </h4>
                         <p class="text-description web-u-max-width-480 mx-auto">
@@ -371,12 +371,12 @@
             </div>
             <div class="web-big-padding-section-level-2">
                 <div class="container">
-                    <h5 class="web-title web-u-color-text-primary text-center">Angel Investors</h5>
+                    <h5 class="text-title font-aeonik-pro text-primary text-center">
+                        Angel Investors
+                    </h5>
                     <ul class="web-grid-2c-4c mt-12">
                         <li class="flex flex-col">
-                            <h6 class="web-main-body-500 web-u-color-text-primary">
-                                Aaron Applebaum
-                            </h6>
+                            <h6 class="web-main-body-500 text-primary">Aaron Applebaum</h6>
                             <p class="web-main-body-500">Partner</p>
                             <p class="web-main-body-500">MizMaa</p>
                             <ul class="mt-auto flex gap-2 pt-4">
@@ -405,9 +405,7 @@
                             </ul>
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="web-main-body-500 web-u-color-text-primary">
-                                Ariel Maislos
-                            </h6>
+                            <h6 class="web-main-body-500 text-primary">Ariel Maislos</h6>
                             <p class="web-main-body-500">Angel Investor</p>
                             <p class="web-main-body-500">Former Apple IL CEO</p>
                             <ul class="mt-auto flex gap-2 pt-4">
@@ -436,14 +434,12 @@
                             </ul>
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="web-main-body-500 web-u-color-text-primary">Gilad Engel</h6>
+                            <h6 class="web-main-body-500 text-primary">Gilad Engel</h6>
                             <p class="web-main-body-500">Angel Investor</p>
                             <ul class="mt-auto flex gap-2 pt-4" />
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="web-main-body-500 web-u-color-text-primary">
-                                Krishna Visvanathan
-                            </h6>
+                            <h6 class="web-main-body-500 text-primary">Krishna Visvanathan</h6>
                             <p class="web-main-body-500">Co-founder & Partner</p>
                             <p class="web-main-body-500">Crane Venture Partners</p>
                             <ul class="mt-auto flex gap-2 pt-4">
@@ -461,7 +457,7 @@
                             </ul>
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="web-main-body-500 web-u-color-text-primary">Ameet Patel</h6>
+                            <h6 class="web-main-body-500 text-primary">Ameet Patel</h6>
                             <p class="web-main-body-500">Angel Investor</p>
                             <ul class="mt-auto flex gap-2 pt-4">
                                 <li>
@@ -478,7 +474,7 @@
                             </ul>
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="web-main-body-500 web-u-color-text-primary">Benno Jering</h6>
+                            <h6 class="web-main-body-500 text-primary">Benno Jering</h6>
                             <p class="web-main-body-500">Partner</p>
                             <p class="web-main-body-500">Redline Capital</p>
                             <ul class="mt-auto flex gap-2 pt-4">
@@ -496,9 +492,7 @@
                             </ul>
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="web-main-body-500 web-u-color-text-primary">
-                                James Lindenbaum
-                            </h6>
+                            <h6 class="web-main-body-500 text-primary">James Lindenbaum</h6>
                             <p class="web-main-body-500">Co-founder</p>
                             <p class="web-main-body-500">Heroku</p>
                             <ul class="mt-auto flex gap-2 pt-4">
@@ -516,7 +510,7 @@
                             </ul>
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="web-main-body-500 web-u-color-text-primary">Uri Boness</h6>
+                            <h6 class="web-main-body-500 text-primary">Uri Boness</h6>
                             <p class="web-main-body-500">Co-Founder</p>
                             <p class="web-main-body-500">Elastic</p>
                             <ul class="mt-auto flex gap-2 pt-4">
@@ -548,8 +542,8 @@
                 />
                 <div class="container">
                     <div class="web-hero web-u-max-width-380">
-                        <h3 class="web-display web-u-color-text-primary">Join the team</h3>
-                        <p class="web-u-color-text-primary web-u-opacity-64">
+                        <h3 class="text-display font-aeonik-pro text-primary">Join the team</h3>
+                        <p class="text-primary web-u-opacity-64">
                             Find your next career at Appwrite and join a team of remote workers.
                         </p>
                         <a

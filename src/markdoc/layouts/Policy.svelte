@@ -70,10 +70,10 @@
         <div class="container">
             <div class="web-grid-120-1fr-auto">
                 <header class="web-grid-120-1fr-auto-header">
-                    <h1 class="web-title web-u-color-text-primary">{title}</h1>
+                    <h1 class="text-title font-aeonik-pro text-primary">{title}</h1>
                 </header>
                 <button
-                    class="toc-btn web-u-padding-20 web-u-margin-inline-20-negative web-u-color-text-primary web-is-only-mobile web-u-sep-block
+                    class="toc-btn web-u-padding-20 web-u-margin-inline-20-negative text-primary web-is-only-mobile web-u-sep-block
                 web-u-filter-blur-8 sticky mt-6 flex
                 w-full items-center justify-between"
                     style:--inset-block-start="4.5rem"

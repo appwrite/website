@@ -11,7 +11,7 @@
     const tag = `h${level + 1}`;
     const ctx = hasContext('headings') ? getContext<LayoutContext>('headings') : undefined;
     const classList: Record<typeof level, string> = {
-        1: 'web-label',
+        1: 'text-label',
         2: 'text-description',
         3: 'web-main-body-500',
         4: 'web-sub-body-500'
@@ -49,7 +49,7 @@
     });
 
     const inPolicy = isInPolicy();
-    $: headingClass = inPolicy && level === 1 ? 'web-title' : classList[level];
+    $: headingClass = inPolicy && level === 1 ? 'text-title font-aeonik-pro' : classList[level];
 </script>
 
 {#if id}
@@ -59,7 +59,7 @@
         bind:this={element}
         class:web-snap-location={id && !inReferences}
         class:web-snap-location-references={id && inReferences}
-        class="{headingClass} web-u-color-text-primary"
+        class="{headingClass} text-primary"
     >
         <a href={`#${id}`} class=""><slot /></a>
     </svelte:element>
@@ -67,7 +67,7 @@
     <svelte:element
         this={tag}
         bind:this={element}
-        class="{headingClass} web-u-color-text-primary"
+        class="{headingClass} text-primary"
         class:in-policy={inPolicy}
     >
         <slot />
@@ -75,7 +75,7 @@
 {/if}
 
 <style>
-    .web-title {
+    .text-title font-aeonik-pro {
         margin-block-end: 1rem;
         margin-block-start: 2rem;
     }

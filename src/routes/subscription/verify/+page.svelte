@@ -33,7 +33,7 @@
             <div class="container">
                 <div class="web-hero" style="--hero-gap:1.25rem;">
                     <span class="web-badges web-eyebrow !text-white">verification</span>
-                    <h1 class="web-headline web-u-color-text-primary">
+                    <h1 class="text-headline font-aeonik-pro text-primary">
                         {#if error}
                             Error
                         {:else}

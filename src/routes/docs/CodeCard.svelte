@@ -21,7 +21,7 @@
     </div>
     <article class="web-grid-articles-item-content">
         <header class="web-articles-item-header">
-            <h3 class="web-sub-body-500 web-u-color-text-primary">{title}</h3>
+            <h3 class="web-sub-body-500 text-primary">{title}</h3>
         </header>
         <p
             class="web-articles-item-paragraph web-sub-body-500 mt-1 line-clamp-2"

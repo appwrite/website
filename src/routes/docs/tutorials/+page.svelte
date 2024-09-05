@@ -61,7 +61,7 @@
         <header class="web-article-header">
             <div class="web-article-header-start flex flex-col web-u-cross-start">
                 <div class="relative flex items-center">
-                    <h1 class="web-title">Tutorials</h1>
+                    <h1 class="text-title font-aeonik-pro">Tutorials</h1>
                 </div>
             </div>
             <div class="web-article-header-end" />
@@ -85,7 +85,7 @@
                                                 class="{getIcon(tutorial)} web-u-font-size-24"
                                                 aria-hidden="true"
                                             />
-                                            <h3 class="web-sub-body-500 web-u-color-text-primary">
+                                            <h3 class="web-sub-body-500 text-primary">
                                                 {tutorial.framework}
                                             </h3>
                                             <span class="badge web-caption-400">Coming Soon</span>
@@ -98,7 +98,7 @@
                                                 class="{getIcon(tutorial)} web-u-font-size-24"
                                                 aria-hidden="true"
                                             />
-                                            <h3 class="web-sub-body-500 web-u-color-text-primary">
+                                            <h3 class="web-sub-body-500 text-primary">
                                                 {tutorial.framework}
                                             </h3>
                                         </header>

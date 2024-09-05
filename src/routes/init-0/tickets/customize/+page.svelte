@@ -83,7 +83,10 @@
 
                     <span>Back</span>
                 </button>
-                <h1 class="web-title web-u-color-text-primary" style:margin-block-start="1.5rem">
+                <h1
+                    class="text-title font-aeonik-pro text-primary"
+                    style:margin-block-start="1.5rem"
+                >
                     Customize ticket<span class="web-u-color-text-accent">_</span>
                 </h1>
 
@@ -94,13 +97,13 @@
         {:else}
             <div class="desktop-left">
                 <div class="header">
-                    <h1 class="web-title web-u-color-text-primary">
+                    <h1 class="text-title font-aeonik-pro text-primary">
                         Thank you for registering for
                         <span style:font-weight="500">
                             init<span class="web-u-color-text-accent">_</span>
                         </span>
                     </h1>
-                    <p class="web-label u-margin-block-start-16">
+                    <p class="text-label u-margin-block-start-16">
                         You have received ticket #{id?.toString().padStart(6, '0')}
                     </p>
                 </div>
@@ -115,11 +118,7 @@
 
                     <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
                         <button class="web-button is-full-width is-secondary" on:click={copy}>
-                            <div
-                                class="web-icon-{$copied
-                                    ? 'check'
-                                    : 'copy'} web-u-color-text-primary"
-                            />
+                            <div class="web-icon-{$copied ? 'check' : 'copy'} text-primary" />
                             <span class="text">Copy ticket URL</span>
                         </button>
                         <a
@@ -127,7 +126,7 @@
                             href="https://twitter.com/intent/tweet?text={twitterText}"
                             target="_blank"
                         >
-                            <div class="web-icon-x web-u-color-text-primary" />
+                            <div class="web-icon-x text-primary" />
                             <span class="text">Share your ticket</span>
                         </a>
                     </div>
@@ -158,7 +157,7 @@
         <div class="drawer" data-state={drawerOpen ? 'open' : 'closed'}>
             <button on:click={() => (drawerOpen = !drawerOpen)}>
                 <div class="inner">
-                    <span class="web-label web-u-color-text-primary">Ticket Editor</span>
+                    <span class="text-label text-primary">Ticket Editor</span>
                     <span class="web-icon-chevron-down" />
                 </div>
             </button>

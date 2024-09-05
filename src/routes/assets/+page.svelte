@@ -63,9 +63,9 @@
         <div class="container">
             <div class="web-grid-120-1fr-auto">
                 <header class="web-grid-120-1fr-auto-header">
-                    <h1 class="web-display web-u-color-text-primary">Brand assets</h1>
+                    <h1 class="text-display font-aeonik-pro text-primary">Brand assets</h1>
                     <button
-                        class="web-u-padding-block-20 web-u-color-text-primary web-is-only-mobile
+                        class="web-u-padding-block-20 text-primary web-is-only-mobile
                         web-u-margin-inline-32-negative web-u-sep-block
                        mt-6 flex w-full w-full"
                     >
@@ -94,7 +94,7 @@
                         <section id={getSectionId(Section.NAMING)}>
                             <div class="web-flex flex-col gap-2">
                                 <h2
-                                    class="web-title web-u-color-text-primary"
+                                    class="text-title font-aeonik-pro text-primary"
                                     use:visible={{ top: 48 }}
                                     on:visible={handleVisibility(Section.NAMING)}
                                 >
@@ -111,7 +111,7 @@
                         <section id={getSectionId(Section.LOGOTYPE)}>
                             <div class="web-flex flex-col gap-2">
                                 <h2
-                                    class="web-title web-u-color-text-primary"
+                                    class="text-title font-aeonik-pro text-primary"
                                     use:visible={{ top: 48 }}
                                     on:visible={handleVisibility(Section.LOGOTYPE)}
                                 >
@@ -195,9 +195,7 @@
                             </div>
                             <section>
                                 <div class="web-flex flex-col gap-2">
-                                    <h3 class="web-label web-u-color-text-primary">
-                                        Co-branding logotypes
-                                    </h3>
+                                    <h3 class="text-label text-primary">Co-branding logotypes</h3>
                                     <p>
                                         Spacing is determined by the Appwrite mark. Unless otherwise
                                         noted by partner brands, each logo is optically equal as a
@@ -219,7 +217,7 @@
                         <section id={getSectionId(Section.LOGOMARK)}>
                             <div class="web-flex flex-col gap-2">
                                 <h3
-                                    class="web-title web-u-color-text-primary"
+                                    class="text-title font-aeonik-pro text-primary"
                                     use:visible={{ top: 48 }}
                                     on:visible={handleVisibility(Section.LOGOMARK)}
                                 >
@@ -304,9 +302,7 @@
                             </div>
                             <section id="">
                                 <div class="web-flex flex-col gap-2">
-                                    <h3 class="web-label web-u-color-text-primary">
-                                        Co-branding lockups
-                                    </h3>
+                                    <h3 class="text-label text-primary">Co-branding lockups</h3>
                                     <p>
                                         Spacing is determined by the Appwrite mark. Unless otherwise
                                         noted by partner brands, each logo is optically equal as a
@@ -327,7 +323,7 @@
 
                         <section id={getSectionId(Section.COLORS)}>
                             <h2
-                                class="web-title web-u-color-text-primary"
+                                class="text-title font-aeonik-pro text-primary"
                                 use:visible={{ top: 48 }}
                                 on:visible={handleVisibility(Section.COLORS)}
                             >
@@ -339,7 +335,7 @@
                                 web-u-min-block-size-160 flex-1 flex-col justify-center
                                 gap-2 px-6"
                                 >
-                                    <h3 class="web-label">Light Grey</h3>
+                                    <h3 class="text-label">Light Grey</h3>
                                     <p class="web-caption-400">#EDEDF0</p>
                                     <div class="buttons | light">
                                         <Copy toCopy="#EDEDF0" />
@@ -350,7 +346,7 @@
                                 web-u-text-color-neutral-50 web-u-bg-color-neutral-900 flex-1 flex-col justify-center
                                 gap-2 px-6"
                                 >
-                                    <h3 class="web-label">Dark Grey</h3>
+                                    <h3 class="text-label">Dark Grey</h3>
                                     <p class="web-caption-400">#19191D</p>
                                     <div class="buttons">
                                         <Copy toCopy="#19191D" />
@@ -361,7 +357,7 @@
                                 web-u-min-block-size-160 flex-1 flex-col justify-center
                                 gap-2 px-6"
                                 >
-                                    <h3 class="web-label">Appwrite Pink</h3>
+                                    <h3 class="text-label">Appwrite Pink</h3>
                                     <p class="web-caption-400">#FD366E</p>
                                     <div class="buttons">
                                         <Copy toCopy="#FD366E" />
@@ -373,7 +369,7 @@
                         <section id={getSectionId(Section.VISUALS)}>
                             <div class="web-flex flex-col gap-2">
                                 <h2
-                                    class="web-title web-u-color-text-primary"
+                                    class="text-title font-aeonik-pro text-primary"
                                     use:visible={{ top: 48 }}
                                     on:visible={handleVisibility(Section.VISUALS)}
                                 >
@@ -579,7 +575,7 @@
                         <section id={getSectionId(Section.CONTACT)}>
                             <div class="web-flex flex-col gap-2">
                                 <h2
-                                    class="web-title web-u-color-text-primary"
+                                    class="text-title font-aeonik-pro text-primary"
                                     use:visible={{ top: 48 }}
                                     on:visible={handleVisibility(Section.CONTACT)}
                                 >
