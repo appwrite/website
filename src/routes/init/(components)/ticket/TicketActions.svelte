@@ -52,7 +52,7 @@
             {#if ticket.gh_user}
                 <div class="flex items-center gap-2">
                     <div class="text-primary flex items-center gap-2">
-                        <span class="web-sub-body-500">Connected to GitHub</span>
+                        <span class="text-sub-body font-medium">Connected to GitHub</span>
                     </div>
 
                     <Tooltip placement="bottom">

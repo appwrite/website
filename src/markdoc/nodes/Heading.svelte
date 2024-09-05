@@ -13,8 +13,8 @@
     const classList: Record<typeof level, string> = {
         1: 'text-label',
         2: 'text-description',
-        3: 'web-main-body-500',
-        4: 'web-sub-body-500'
+        3: 'text-body font-medium',
+        4: 'text-sub-body font-medium'
     };
 
     let element: HTMLElement | undefined;
@@ -80,7 +80,7 @@
         margin-block-start: 2rem;
     }
 
-    .web-sub-body-500.in-policy {
+    .text-sub-body font-medium.in-policy {
         margin-block-end: 1.25rem;
     }
 </style>

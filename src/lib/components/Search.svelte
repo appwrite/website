@@ -184,7 +184,7 @@
             {#if value}
                 <section>
                     {#if results.length > 0}
-                        <h6 class="web-eyebrow">{results.length} results found</h6>
+                        <h6 class="text-micro uppercase">{results.length} results found</h6>
                         <ul class="mt-2 flex flex-col gap-1">
                             {#each results as hit, i (hit.uid)}
                                 {@const relevantSubtitle = getRelevantSubtitle(hit)}
@@ -192,7 +192,7 @@
                                     <a
                                         data-hit={i}
                                         href={createHref(hit)}
-                                        class="web-button web-caption-400 is-text web-u-padding-block-8 web-padding-inline-12 web-u-cross-start flex
+                                        class="web-button text-caption is-text web-u-padding-block-8 web-padding-inline-12 web-u-cross-start flex
                                             max-w-full min-w-full flex-col gap-2"
                                         use:melt={$option({
                                             value: hit,
@@ -218,14 +218,14 @@
                             {/each}
                         </ul>
                     {:else}
-                        <p class="web-caption-400">
+                        <p class="text-caption">
                             No results found for <span class="font-bold">{value}</span>
                         </p>
                     {/if}
                 </section>
             {/if}
             <section>
-                <h6 class="web-eyebrow">Recommended</h6>
+                <h6 class="text-micro uppercase">Recommended</h6>
                 <ul class="mt-2 flex flex-col gap-1">
                     {#each recommended as hit, i (hit.uid)}
                         {@const index = i + (results.length ? results.length : 0)}
@@ -237,7 +237,7 @@
                                     value: hit,
                                     label: hit.title ?? i.toString()
                                 })}
-                                class="web-button web-caption-400 is-text web-u-padding-block-4 web-u-cross-start flex min-w-full flex-col gap-2"
+                                class="web-button text-caption is-text web-u-padding-block-4 web-u-cross-start flex min-w-full flex-col gap-2"
                             >
                                 <div class="web-u-trim-1">
                                     <span class="web-u-color-text-secondary">{hit.h1}</span>

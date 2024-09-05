@@ -181,12 +181,12 @@
                                 <div
                                     class="web-u-flex-vertical-reverse-mobile flex justify-between gap-4"
                                 >
-                                    <p class="web-caption-400 web-u-max-width-380">
+                                    <p class="text-caption web-u-max-width-380">
                                         {#if error}
                                             {error}
                                         {/if}
                                     </p>
-                                    <!-- <p class="web-caption-400 web-u-max-width-380">
+                                    <!-- <p class="text-caption web-u-max-width-380">
 										This form is protected by reCAPTCHA, and the Google <a
 											class="web-link"
 											href="/privacy"

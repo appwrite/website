@@ -193,7 +193,7 @@
                         {:else}
                             <div class="web-card is-normal has-border-gradient empty-card">
                                 <enhanced:img class="img" src="./(assets)/empty-state.png" alt="" />
-                                <span class="web-main-body-500">No support threads found</span>
+                                <span class="text-body font-medium">No support threads found</span>
                                 <button
                                     class="web-button"
                                     on:click={() => {

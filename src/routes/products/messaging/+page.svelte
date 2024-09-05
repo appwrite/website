@@ -255,10 +255,10 @@ messaging.create_email(
                 <div>
                     <div class="product">
                         <img src="/images/icons/illustrated/dark/messaging.png" alt="" />
-                        <span class="web-eyebrow text-primary">
+                        <span class="text-micro uppercase text-primary">
                             Messaging<span class="web-u-color-text-accent">_</span>
                         </span>
-                        <span class="web-hero-banner-button web-eyebrow">BETA</span>
+                        <span class="web-hero-banner-button text-micro uppercase">BETA</span>
                     </div>
                     <h1 class="text-display font-aeonik-pro text-primary">
                         Open source messaging service for developers
@@ -292,13 +292,15 @@ messaging.create_email(
             <div class="web-big-padding-section-level-2" style="margin-block-end: 160px">
                 <div class="container">
                     <section class="web-hero is-align-start">
-                        <span class="web-badges web-eyebrow !text-white">capabilities_</span>
+                        <span class="web-badges text-micro uppercase !text-white"
+                            >capabilities_</span
+                        >
                         <h2 class="text-display font-aeonik-pro text-primary max-w-[700px]">
                             All of your messages in one place
                         </h2>
                     </section>
                     <div class="mt-20 overflow-hidden">
-                        <ul class="web-info-boxes is-desktop-max-out-3 web-sub-body-500">
+                        <ul class="web-info-boxes is-desktop-max-out-3 text-sub-body font-medium">
                             <li class="web-info-boxes-item">
                                 <img
                                     src="/images/icons/gradients/mobile.svg"
@@ -476,7 +478,7 @@ messaging.create_email(
             <div class="web-big-padding-section-level-2">
                 <div class="container">
                     <div class="web-hero is-align-start">
-                        <span class="web-badges web-eyebrow !text-white">SDKs_</span>
+                        <span class="web-badges text-micro uppercase !text-white">SDKs_</span>
                         <h2 class="text-display font-aeonik-pro text-primary max-w-[700px]">
                             Start today with your preferred technologies
                         </h2>
@@ -537,10 +539,10 @@ messaging.create_email(
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="web-main-body-400 text-primary">Auth</h4>
+                                    <h4 class="text-body text-primary">Auth</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
                                 </div>
-                                <p class="web-sub-body-400">
+                                <p class="text-sub-body">
                                     Build secure authentication and manage your users.
                                 </p>
                             </div>
@@ -562,10 +564,10 @@ messaging.create_email(
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="web-main-body-400 text-primary">Functions</h4>
+                                    <h4 class="text-body text-primary">Functions</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
                                 </div>
-                                <p class="web-sub-body-400">
+                                <p class="text-sub-body">
                                     Scale big and unlock limitless potential with Appwrite
                                     functions.
                                 </p>
@@ -588,10 +590,10 @@ messaging.create_email(
                                         width="37"
                                         height="32"
                                     />
-                                    <h4 class="web-main-body-400 text-primary">Databases</h4>
+                                    <h4 class="text-body text-primary">Databases</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
                                 </div>
-                                <p class="web-sub-body-400">
+                                <p class="text-sub-body">
                                     Store and query structured data, ensuring scalable storage.
                                 </p>
                             </div>
@@ -613,10 +615,10 @@ messaging.create_email(
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="web-main-body-400 text-primary">Storage</h4>
+                                    <h4 class="text-body text-primary">Storage</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
                                 </div>
-                                <p class="web-sub-body-400">
+                                <p class="text-sub-body">
                                     Manage your files' project, using convenient APIs and utilities.
                                 </p>
                             </div>
@@ -638,10 +640,10 @@ messaging.create_email(
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="web-main-body-400 text-primary">Realtime</h4>
+                                    <h4 class="text-body text-primary">Realtime</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
                                 </div>
-                                <p class="web-sub-body-400">
+                                <p class="text-sub-body">
                                     Utilize realtime information from all Appwrite services.
                                 </p>
                             </div>

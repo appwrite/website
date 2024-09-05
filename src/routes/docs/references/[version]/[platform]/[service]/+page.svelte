@@ -176,7 +176,7 @@
                     <div class="web-article-content-grid-6-4-column-2 flex flex-col gap-8">
                         <div class="web-inline-info">
                             <span class="icon-info" aria-hidden="true" />
-                            <h5 class="web-sub-body-500 text-primary">
+                            <h5 class="text-sub-body font-medium text-primary">
                                 No endpoint found for this version and platform
                             </h5>
                             Please switch to a newer version or different platform.
@@ -251,7 +251,7 @@
                     <div
                         class="web-references-menu-header flex justify-between items-center gap-4 mt-6"
                     >
-                        <h5 class="web-references-menu-title web-eyebrow">On This Page</h5>
+                        <h5 class="web-references-menu-title text-micro uppercase">On This Page</h5>
                         <button class="web-icon-button" id="refClose" on:click={toggleReferences}>
                             <span class="icon-x" aria-hidden="true" />
                         </button>
@@ -261,7 +261,7 @@
                             <li class="web-references-menu-item">
                                 <a
                                     href={`#${method.id}`}
-                                    class="web-references-menu-link web-caption-400"
+                                    class="web-references-menu-link text-caption"
                                     class:is-selected={method.id === selected}>{method.title}</a
                                 >
                             </li>
@@ -270,7 +270,7 @@
                     <div class="border-t border-greyscale-900/[0.04] web-u-padding-block-20">
                         <button class="web-link inline-flex items-center gap-2" use:scrollToTop>
                             <span class="web-icon-arrow-up" aria-hidden="true" />
-                            <span class="web-caption-400">Back to top</span>
+                            <span class="text-caption">Back to top</span>
                         </button>
                     </div>
                 </div>

@@ -110,7 +110,7 @@
                                     <span class="web-icon-chevron-left" aria-hidden="true" />
                                     <span>Back to blog</span>
                                 </a>
-                                <ul class="web-metadata web-caption-400">
+                                <ul class="web-metadata text-caption">
                                     <li>
                                         <time datetime={date}>{formatDate(date)}</time>
                                     </li>
@@ -140,17 +140,17 @@
                                                 />
                                             {/if}
                                             <div class="flex flex-col">
-                                                <h4 class="web-sub-body-400 text-primary">
+                                                <h4 class="text-sub-body text-primary">
                                                     {authorData.name}
                                                 </h4>
-                                                <p class="web-caption-400">{authorData.role}</p>
+                                                <p class="text-caption">{authorData.role}</p>
                                             </div>
                                         </a>
                                     </div>
                                 {/if}
 
                                 <div class="share-post-section mt-4 flex items-center gap-4">
-                                    <span class="web-eyebrow pr-2" style:color="#adadb0">
+                                    <span class="text-micro uppercase pr-2" style:color="#adadb0">
                                         SHARE
                                     </span>
 
@@ -206,7 +206,7 @@
 
                             <div class="web-article-content mt-8">
                                 {#if lastUpdated}
-                                    <span class="web-main-body-500 last-updated-text">
+                                    <span class="text-body font-medium last-updated-text">
                                         Updated:
                                         <time dateTime={lastUpdated}>
                                             {formatDate(lastUpdated)}

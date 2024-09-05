@@ -71,15 +71,17 @@
                     <MessageCard {message}>
                         {#if isFirst}
                             <div class="web-inline-info web-u-margin-block-start-24">
-                                <div class="web-sub-body-500 text-primary">TL;DR</div>
+                                <div class="text-sub-body font-medium text-primary">TL;DR</div>
                                 {data.tldr}
                             </div>
                         {/if}
                     </MessageCard>
                 {/each}
                 <div class="web-card is-normal has-border-gradient">
-                    <span class="web-sub-body-500 text-primary">Reply</span>
-                    <p class="web-sub-body-500 mt-4">Reply to this thread by joining our Discord</p>
+                    <span class="text-sub-body font-medium text-primary">Reply</span>
+                    <p class="text-sub-body font-medium mt-4">
+                        Reply to this thread by joining our Discord
+                    </p>
                     <a class="web-button mt-6" href={discordLink}>
                         <span class="web-icon-discord" />
                         <span class="text">Reply on Discord</span>
@@ -88,20 +90,20 @@
             </div>
             <div class="related">
                 {#if data.related.length}
-                    <h2 class="web-eyebrow text-primary">Recommended threads</h2>
+                    <h2 class="text-micro uppercase text-primary">Recommended threads</h2>
                 {/if}
                 <ul>
                     {#each data.related as thread}
                         <li>
                             <a href="/threads/{thread.$id}" data-sveltekit-reload>
                                 <div class="flex items-center">
-                                    <span class="web-sub-body-500 text-primary">
+                                    <span class="text-sub-body font-medium text-primary">
                                         {thread.title.length > 40
                                             ? thread.title.slice(0, 40) + '...'
                                             : thread.title}
                                     </span>
                                 </div>
-                                <p class="web-sub-body-400 mt-2">
+                                <p class="text-sub-body mt-2">
                                     {thread.content.length > 160
                                         ? thread.content.slice(0, 160) + '...'
                                         : thread.content}

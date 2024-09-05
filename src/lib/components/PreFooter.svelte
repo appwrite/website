@@ -28,9 +28,9 @@
                     <div class="web-strip-plans-plan">
                         <h4 class="title text-description">Free</h4>
                         <div class="text-title font-aeonik-pro text-primary">$0</div>
-                        <div class="info web-caption-500" />
+                        <div class="info text-caption font-medium" />
                     </div>
-                    <p class="web-strip-plans-info web-caption-500">
+                    <p class="web-strip-plans-info text-caption font-medium">
                         For personal hobby projects and students.
                     </p>
                     <a
@@ -46,9 +46,9 @@
                     <div class="web-strip-plans-plan">
                         <h4 class="title text-description">Pro</h4>
                         <div class="text-title font-aeonik-pro text-primary">$15</div>
-                        <div class="info web-caption-500">per member/month</div>
+                        <div class="info text-caption font-medium">per member/month</div>
                     </div>
-                    <p class="web-strip-plans-info web-caption-500">
+                    <p class="web-strip-plans-info text-caption font-medium">
                         For pro developers and teams that need to scale their products.
                     </p>
                     <a
@@ -67,9 +67,9 @@
                     <div class="web-strip-plans-plan">
                         <h4 class="title text-description">Scale</h4>
                         <div class="text-title font-aeonik-pro text-primary">$599</div>
-                        <div class="info web-caption-500">per org/month</div>
+                        <div class="info text-caption font-medium">per org/month</div>
                     </div>
-                    <p class="web-strip-plans-info web-caption-500">
+                    <p class="web-strip-plans-info text-caption font-medium">
                         For pro developers and production projects that need the ability to scale.
                     </p>
                     <button

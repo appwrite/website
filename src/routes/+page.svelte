@@ -124,9 +124,9 @@
                         class="web-hero-banner-button web-u-margin-block-end-24"
                     >
                         <span class="web-icon-star" aria-hidden="true" />
-                        <span class="web-caption-500">New</span>
+                        <span class="text-caption font-medium">New</span>
                         <div class="web-hero-banner-button-sep" />
-                        <span class="web-caption-400 web-u-trim-1"
+                        <span class="text-caption web-u-trim-1"
                             >Announcing: A new Init. Faster. Smoother. Better.</span
                         >
                         <span class="web-icon-arrow-right" aria-hidden="true" />
@@ -301,7 +301,7 @@
                     </section>
                     <div class="mt-20 overflow-hidden">
                         <ul
-                            class="web-info-boxes web-sub-body-500 divide-x divide-y divide-black/[0.04]"
+                            class="web-info-boxes text-sub-body font-medium divide-x divide-y divide-black/[0.04]"
                         >
                             {#each infoBoxes as box}
                                 <li class="relative p-8 last-of-type:border-r border-black/[0.04]">
@@ -439,7 +439,7 @@
             <div class="py-[7.5rem]">
                 <div class="container relative">
                     <section class="web-hero is-align-start">
-                        <span class="web-badges web-eyebrow !text-white">SDKs_</span>
+                        <span class="web-badges text-micro uppercase !text-white">SDKs_</span>
                         <h2 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                             Code the way you want
                         </h2>
@@ -471,7 +471,7 @@
                 <div class="container relative">
                     <div class="grid md:grid-cols-2">
                         <section class="web-hero is-align-start">
-                            <span class="web-badges web-eyebrow !text-white">Scale_</span>
+                            <span class="web-badges text-micro uppercase !text-white">Scale_</span>
                             <h2 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                                 We scale for you
                             </h2>

@@ -238,7 +238,7 @@
             >
                 {#if scrollInfo.percentage > -0.1}
                     <span
-                        class="web-badges web-eyebrow !text-white"
+                        class="web-badges text-micro uppercase text-white"
                         transition:slide={{ axis: 'x' }}>Products_</span
                     >
 

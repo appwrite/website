@@ -27,13 +27,13 @@
         <div class="flex justify-between gap-4">
             <div class="web-user-box">
                 <img class="web-user-box-image" src={avatar} alt="" />
-                <div class="web-user-box-name web-sub-body-500 web-clr-primary">
+                <div class="web-user-box-name text-sub-body font-medium web-clr-primary">
                     {name}
                 </div>
-                <div class="web-user-box-username web-sub-body-400">{role}</div>
+                <div class="web-user-box-username text-sub-body">{role}</div>
             </div>
         </div>
-        <p class="web-sub-body-500 web-u-text-color-neutral-700 mt-5">
+        <p class="text-sub-body font-medium web-u-text-color-neutral-700 mt-5">
             {bio}
         </p>
         <ul class="mt-8 flex gap-3">

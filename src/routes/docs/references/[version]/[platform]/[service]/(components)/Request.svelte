@@ -15,12 +15,12 @@
                         <span class="web-code text-primary">
                             {parameter.name}
                         </span>
-                        <span class="web-caption-400">{parameter.type}</span>
+                        <span class="text-caption">{parameter.type}</span>
                         {#if parameter.required}
                             <div class="web-tag">required</div>
                         {/if}
                     </header>
-                    <p class="web-sub-body-400 mt-4">
+                    <p class="text-sub-body mt-4">
                         <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                         {@html parse(parameter.description)}
                     </p>

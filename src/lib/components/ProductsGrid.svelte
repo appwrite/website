@@ -16,10 +16,10 @@
                             width="32"
                             height="32"
                         />
-                        <h4 class="web-main-body-400 text-primary">Auth</h4>
+                        <h4 class="text-body text-primary">Auth</h4>
                         <span class="icon-arrow-right ml-0" aria-hidden="true"></span>
                     </div>
-                    <p class="web-sub-body-400 ml-1">
+                    <p class="text-sub-body ml-1">
                         Build secure authentication and manage your users.
                     </p>
                 </a>
@@ -38,10 +38,10 @@
                             width="32"
                             height="32"
                         />
-                        <h4 class="web-main-body-400 text-primary">Functions</h4>
+                        <h4 class="text-body text-primary">Functions</h4>
                         <span class="icon-arrow-right ml-0" aria-hidden="true"></span>
                     </div>
-                    <p class="web-sub-body-400 ml-1">
+                    <p class="text-sub-body ml-1">
                         Scale big and unlock limitless potential with Appwrite functions.
                     </p>
                 </a>
@@ -60,10 +60,10 @@
                             width="32"
                             height="32"
                         />
-                        <h4 class="web-main-body-400 text-primary">Databases</h4>
+                        <h4 class="text-body text-primary">Databases</h4>
                         <span class="icon-arrow-right ml-0" aria-hidden="true"></span>
                     </div>
-                    <p class="web-sub-body-400 ml-1">
+                    <p class="text-sub-body ml-1">
                         Store and query structured data, ensuring scalable storage.
                     </p>
                 </a>
@@ -82,10 +82,10 @@
                             width="32"
                             height="32"
                         />
-                        <h4 class="web-main-body-400 text-primary">Messaging</h4>
+                        <h4 class="text-body text-primary">Messaging</h4>
                         <span class="icon-arrow-right ml-0" aria-hidden="true"></span>
                     </div>
-                    <p class="web-sub-body-400 ml-1">
+                    <p class="text-sub-body ml-1">
                         Manage your files’ project, using convenient APIs and utilities.
                     </p>
                 </a>
@@ -104,10 +104,10 @@
                             width="32"
                             height="32"
                         />
-                        <h4 class="web-main-body-400 text-primary">Realtime</h4>
+                        <h4 class="text-body text-primary">Realtime</h4>
                         <span class="icon-arrow-right ml-0" aria-hidden="true"></span>
                     </div>
-                    <p class="web-sub-body-400 ml-1">
+                    <p class="text-sub-body ml-1">
                         Utilize realtime information from all Appwrite services.
                     </p>
                 </a>

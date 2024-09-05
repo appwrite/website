@@ -20,7 +20,7 @@
         </div>
     {/if}
 
-    <p class="web-sub-body-500">Countdown to next announcement</p>
+    <p class="text-sub-body font-medium">Countdown to next announcement</p>
 </div>
 
 <style lang="scss">
@@ -38,7 +38,7 @@
         margin-block-start: 0.75rem;
     }
 
-    .web-sub-body-500 {
+    .text-sub-body font-medium {
         margin-block-start: 0.5rem;
     }
 </style>

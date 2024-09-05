@@ -336,7 +336,7 @@
                                 gap-2 px-6"
                                 >
                                     <h3 class="text-label">Light Grey</h3>
-                                    <p class="web-caption-400">#EDEDF0</p>
+                                    <p class="text-caption">#EDEDF0</p>
                                     <div class="buttons | light">
                                         <Copy toCopy="#EDEDF0" />
                                     </div>
@@ -347,7 +347,7 @@
                                 gap-2 px-6"
                                 >
                                     <h3 class="text-label">Dark Grey</h3>
-                                    <p class="web-caption-400">#19191D</p>
+                                    <p class="text-caption">#19191D</p>
                                     <div class="buttons">
                                         <Copy toCopy="#19191D" />
                                     </div>
@@ -358,7 +358,7 @@
                                 gap-2 px-6"
                                 >
                                     <h3 class="text-label">Appwrite Pink</h3>
-                                    <p class="web-caption-400">#FD366E</p>
+                                    <p class="text-caption">#FD366E</p>
                                     <div class="buttons">
                                         <Copy toCopy="#FD366E" />
                                     </div>

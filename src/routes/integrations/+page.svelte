@@ -106,7 +106,7 @@
                 <div
                     class="l-integrations-hero web-u-max-width-680 flex flex-col justify-center gap-5"
                 >
-                    <div class="web-eyebrow text-primary">
+                    <div class="text-micro uppercase text-primary">
                         INTEGRATIONS<span class="web-u-color-text-accent">_</span>
                     </div>
                     <h1 class="text-headline font-aeonik-pro text-primary">
@@ -144,7 +144,9 @@
                         </section>
                         <section class="flex flex-col">
                             <section class="flex flex-col gap-4">
-                                <h2 class="web-side-nav-header web-eyebrow whitespace-nowrap">
+                                <h2
+                                    class="web-side-nav-header text-micro uppercase whitespace-nowrap"
+                                >
                                     Platform
                                 </h2>
                                 <ul class="flex flex-wrap gap-2" class:disabled={hasQuery}>
@@ -168,7 +170,9 @@
                             </section>
                             <div class="web-u-sep-block-start my-6"></div>
                             <section class="flex flex-col gap-4">
-                                <h2 class="web-side-nav-header web-eyebrow whitespace-nowrap">
+                                <h2
+                                    class="web-side-nav-header text-micro uppercase whitespace-nowrap"
+                                >
                                     Categories
                                 </h2>
 
@@ -263,7 +267,7 @@
                                                                 {item.title}
                                                             </h4>
                                                         </div>
-                                                        <p class="web-sub-body-400 mt-1">
+                                                        <p class="text-sub-body mt-1">
                                                             {item.description}
                                                         </p>
                                                     </a>
@@ -304,13 +308,15 @@
                                                                 width="40"
                                                                 height="40"
                                                             />
-                                                            <div class="web-main-body-500 gap-2">
+                                                            <div
+                                                                class="text-body font-medium gap-2"
+                                                            >
                                                                 <span class="text-primary mt-3">
                                                                     {item.title}
                                                                 </span>
                                                             </div>
                                                             <div
-                                                                class="web-caption-400 web-u-color-text-secondary"
+                                                                class="text-caption web-u-color-text-secondary"
                                                             >
                                                                 {item.category}
                                                             </div>
@@ -377,9 +383,7 @@
                                                                     <h4 class="text-primary mt-3">
                                                                         {integration.title}
                                                                     </h4>
-                                                                    <p
-                                                                        class="web-sub-body-400 mt-1"
-                                                                    >
+                                                                    <p class="text-sub-body mt-1">
                                                                         {integration.description}
                                                                     </p>
                                                                 </a>
@@ -424,7 +428,7 @@
                         >
                             Become a Technology Partner
                         </h2>
-                        <p class="web-main-body-500">
+                        <p class="text-body font-medium">
                             Join our Technology Partners program to integrate your solutions with
                             Appwrite’s API, enhancing functionality and expanding your reach.
                         </p>
