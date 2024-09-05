@@ -16,7 +16,7 @@
             <h2 class="text-4xl md:text-6xl text-primary font-aeonik-pro">
                 Start building like a team of hundreds with Appwrite
             </h2>
-            <p>
+            <p class="text-xl">
                 Develop your developer skills with Appwrite Pro, join a vibrant community of
                 open-source contributors, and start building with a vast array of frameworks.
             </p>

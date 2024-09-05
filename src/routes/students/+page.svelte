@@ -8,6 +8,7 @@
     import GetStarted from './(components)/GetStarted.svelte';
     import Hero from './(components)/Hero.svelte';
     import Kickstart from './(components)/Kickstart.svelte';
+    import Faq from './(components)/FAQ.svelte';
 
     const title = 'Students' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -38,6 +39,8 @@
         <GetStarted />
         <Community />
     </div>
+
+    <Faq />
     <CallToAction />
     <div class="container">
         <FooterNav />

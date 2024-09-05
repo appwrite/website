@@ -69,11 +69,11 @@
         );
 
         &::before {
-            background: var(--border-gradient-before) border-box;
+            background: var(--border-gradient-after) border-box;
         }
 
         &::after {
-            background: var(--border-gradient-after);
+            background: var(--border-gradient-before);
         }
 
         &::before,
