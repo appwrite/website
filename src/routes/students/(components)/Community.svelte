@@ -4,8 +4,10 @@
 </script>
 
 <div class="container grid md:grid-cols-2 items-center">
-    <div class="space-y-4 md:pr-36">
-        <h2 class="text-primary text-4xl text-pretty">Get help from the Open Source Community</h2>
+    <div class="space-y-4 md:pr-48">
+        <h2 class="text-primary text-title text-pretty font-aeonik-pro">
+            Get help from the open source community
+        </h2>
         <p class="text-secondary text-pretty">
             Join a growing community of developers and founders who use Appwrite to build their
             products. Gain access to a wealth of knowledge, support, and shared experiences to help

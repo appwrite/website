@@ -35,10 +35,10 @@
         <h2 class="text-primary text-4xl font-aeonik-pro">Get started today</h2>
 
         <div
-            class="bg-white mt-12 grid md:grid-cols-3 divide-x divide-greyscale-100/50 shadow shadow-black/20 rounded-2xl p-8"
+            class="bg-white mt-12 grid md:grid-cols-3 divide-x divide-greyscale-100/50 shadow shadow-black/20 rounded-2xl p-4"
         >
             {#each items as item, i}
-                <div class="flex flex-col gap-6 px-8 py-4">
+                <div class="flex flex-col gap-6 px-6 py-4">
                     <Badge>Step {i + 1}</Badge>
                     <div class="flex flex-col gap-2 font-medium">
                         <h3 class="text-primary text-pretty">{item.label}</h3>
