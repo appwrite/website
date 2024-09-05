@@ -47,6 +47,7 @@
 
     /* secondary */
     --color-secondary-100: hsl(var(--color-secondary-hue) 99% 66%);
+    --color-accent-200: hsl(var(--color-secondary-hue), 78%, 60%, 0.32);
 
     /* greyscale */
     --color-white: hsl(0 0% 100%);
