@@ -362,7 +362,7 @@
             <article use:melt={$root}>
                 <div class="container">
                     <header
-                        class="web-u-text-align-center"
+                        class="text-center"
                         use:visible
                         on:visible={(e) => {
                             shouldShowTable = !e.detail;

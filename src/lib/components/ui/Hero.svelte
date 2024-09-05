@@ -9,7 +9,7 @@
         variants: {
             layout: {
                 vertical: ['flex-col', 'max-w-[600px]'],
-                horizontal: ['flex-col', 'md:flex-row']
+                horizontal: ['flex-col', 'lg:flex-row']
             }
         },
         defaultVariants: {

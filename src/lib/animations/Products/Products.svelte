@@ -158,6 +158,7 @@
     import { postController } from './post';
     import Post from './post/post.svelte';
     import { anyify } from '$lib/utils/anyify';
+    import Badge from '$lib/components/ui/Badge.svelte';
 
     /* Basic Animation setup */
     let scrollInfo = {

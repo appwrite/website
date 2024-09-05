@@ -156,9 +156,7 @@
                     <section
                         class="web-hero web-u-max-width-580 flex items-center justify-center gap-y-4"
                     >
-                        <h2
-                            class="web-display web-u-text-align-center web-u-color-text-primary max-w-[600px]"
-                        >
+                        <h2 class="web-display text-center web-u-color-text-primary max-w-[600px]">
                             Become a Technology Partner
                         </h2>
                         <p class="web-main-body-500">
