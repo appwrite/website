@@ -103,6 +103,39 @@
 </div>
 
 <style lang="scss">
+    .web-strip-plans-info {
+        flex-basis: 5rem !important;
+    }
+
+    .web-strip-plans .web-button {
+        flex: 3;
+    }
+
+    .web-strip-plans-item-wrapper {
+        gap: 2.65rem;
+    }
+
+    @media (min-width: 1024px) and (max-width: 1224px) {
+        .web-strip-plans-info {
+            flex-basis: 1rem !important;
+        }
+
+        .web-strip-plans-item-wrapper {
+            gap: 1.25rem !important;
+            inline-size: 100% !important;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .web-strip-plans-info {
+            flex-basis: 3rem !important;
+        }
+
+        .web-strip-plans-item-wrapper {
+            gap: 1.25rem !important;
+        }
+    }
+
     .web-pre-footer-bg {
         position: absolute;
         top: clamp(300px, 50vw, 50%);
