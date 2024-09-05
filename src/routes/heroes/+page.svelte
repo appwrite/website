@@ -140,7 +140,7 @@
             <div class="web-big-padding-section-level-2">
                 <section class="container hero web-u-padding-block-end-0">
                     <div>
-                        <h1 class="web-display web-u-color-text-primary">Appwrite Heroes</h1>
+                        <h1 class="text-display font-aeonik-pro text-primary">Appwrite Heroes</h1>
                         <p class="web-main-body-500 mt-5">
                             If you love building, writing, speaking, and helping other developers
                             build with Appwrite, help us support you by joining the Appwrite Heroes
@@ -165,7 +165,9 @@
             <div class="web-big-padding-section-level-2">
                 <section class="container">
                     <div class="web-hero web-u-max-width-800 about">
-                        <h2 class="web-title web-u-color-text-primary">About Appwrite Heroes</h2>
+                        <h2 class="text-title font-aeonik-pro text-primary">
+                            About Appwrite Heroes
+                        </h2>
                         <div>
                             <p class="web-sub-body-500">
                                 The Appwrite Heroes program is an exclusive group of developers who
@@ -194,7 +196,9 @@
             <div class="web-big-padding-section-level-2">
                 <div class="container">
                     <div class="web-hero">
-                        <div class="web-display web-u-clr-primary">Meet our Heroes</div>
+                        <div class="text-display font-aeonik-pro web-u-clr-primary">
+                            Meet our Heroes
+                        </div>
                     </div>
                     <ul class="web-multi-columns-1 mt-20">
                         {#each heroCards as heroCardProps}
@@ -228,7 +232,7 @@
             <div class="web-big-padding-section-level-2">
                 <div class="container">
                     <section class="web-hero is-align-start">
-                        <h2 class="web-display web-u-color-text-primary max-w-[700px]">
+                        <h2 class="text-display font-aeonik-pro text-primary max-w-[700px]">
                             How Appwrite Heroes can benefit you
                         </h2>
                     </section>
@@ -324,8 +328,8 @@
             <div class="web-big-padding-section-level-2 relative">
                 <div class="container">
                     <div class="web-hero web-u-max-width-800">
-                        <h5 class="web-display web-u-color-text-primary">Become a Hero</h5>
-                        <p class="text-description web-u-color-text-primary" style="opacity:0.64">
+                        <h5 class="text-display font-aeonik-pro text-primary">Become a Hero</h5>
+                        <p class="text-description text-primary" style="opacity:0.64">
                             Have you been actively providing value for the Appwrite community? Apply
                             now to join our hero program! Applications are open every three months.
                         </p>

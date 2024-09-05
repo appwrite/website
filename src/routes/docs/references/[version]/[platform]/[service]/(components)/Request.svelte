@@ -12,7 +12,7 @@
             <li class:pt-4={!first}>
                 <article>
                     <header class="flex items-baseline gap-2">
-                        <span class="web-code web-u-color-text-primary">
+                        <span class="web-code text-primary">
                             {parameter.name}
                         </span>
                         <span class="web-caption-400">{parameter.type}</span>

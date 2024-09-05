@@ -106,10 +106,10 @@
                 <div
                     class="l-integrations-hero web-u-max-width-680 flex flex-col justify-center gap-5"
                 >
-                    <div class="web-eyebrow web-u-color-text-primary">
+                    <div class="web-eyebrow text-primary">
                         INTEGRATIONS<span class="web-u-color-text-accent">_</span>
                     </div>
-                    <h1 class="web-headline web-u-color-text-primary">
+                    <h1 class="text-headline font-aeonik-pro text-primary">
                         Discover infinite possibilities
                     </h1>
                     <p class="text-description">
@@ -226,9 +226,7 @@
                             {#if hasQuery}
                                 <section class="l-max-size-list-cards-section flex flex-col gap-8">
                                     <header class="flex flex-col gap-1">
-                                        <h2 class="web-label web-u-color-text-primary">
-                                            Search results
-                                        </h2>
+                                        <h2 class="text-label text-primary">Search results</h2>
                                         <p class="text-description">
                                             {result.length > 0 ? result.length : 'No'} results found
                                             for "{$query}"
@@ -261,9 +259,7 @@
                                                         <div
                                                             class="flex items-center justify-between gap-2"
                                                         >
-                                                            <h4
-                                                                class="web-u-color-text-primary mt-3"
-                                                            >
+                                                            <h4 class="text-primary mt-3">
                                                                 {item.title}
                                                             </h4>
                                                         </div>
@@ -279,7 +275,7 @@
                             {:else}
                                 <section class="flex flex-col gap-8">
                                     <header class="flex flex-col gap-1">
-                                        <h2 class="web-label web-u-color-text-primary">Featured</h2>
+                                        <h2 class="text-label text-primary">Featured</h2>
                                         <p class="text-description">Top recommended integrations</p>
                                     </header>
 
@@ -343,7 +339,7 @@
                                             }}
                                         >
                                             <header class="flex flex-col gap-1">
-                                                <h2 class="web-label web-u-color-text-primary">
+                                                <h2 class="text-label text-primary">
                                                     {category}
                                                 </h2>
                                                 <p class="text-description">
@@ -378,9 +374,7 @@
                                                                         ></span>
                                                                     </div>
 
-                                                                    <h4
-                                                                        class="web-u-color-text-primary mt-3"
-                                                                    >
+                                                                    <h4 class="text-primary mt-3">
                                                                         {integration.title}
                                                                     </h4>
                                                                     <p
@@ -425,7 +419,9 @@
                     <section
                         class="web-hero web-u-max-width-580 flex items-center justify-center gap-4"
                     >
-                        <h2 class="web-display text-center web-u-color-text-primary max-w-[600px]">
+                        <h2
+                            class="text-display font-aeonik-pro text-center text-primary max-w-[600px]"
+                        >
                             Become a Technology Partner
                         </h2>
                         <p class="web-main-body-500">

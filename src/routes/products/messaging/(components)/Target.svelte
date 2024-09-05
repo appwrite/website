@@ -235,7 +235,7 @@
                 />
 
                 <foreignObject x={textPos[0]} y={textPos[1]} width="360" height="64">
-                    <span class="web-eyebrow web-u-color-text-primary" data-active={$selected[i]}>
+                    <span class="web-eyebrow text-primary" data-active={$selected[i]}>
                         {device.value}
                     </span>
                 </foreignObject>
@@ -281,7 +281,7 @@
         </svg>
 
         <div class="users-modal">
-            <h3 class="web-label web-u-color-text-primary">Select subscribers</h3>
+            <h3 class="text-label text-primary">Select subscribers</h3>
             <Accordion>
                 <ul class="accordion-items">
                     {#each users as user, i}
@@ -320,7 +320,7 @@
                                             return next;
                                         }}
                                     />
-                                    <span class="web-sub-body-500 web-u-color-text-primary">
+                                    <span class="web-sub-body-500 text-primary">
                                         {user.name}
                                     </span>
                                     <span class="web-caption-400">
@@ -368,7 +368,7 @@
     </div>
 
     <div class="target-text mt-4 flex flex-col items-center gap-6">
-        <h3 class="web-title web-u-color-text-primary text-center">
+        <h3 class="text-title font-aeonik-pro text-primary text-center">
             Target and group your subscribers
         </h3>
         <p class="text-description text-center" style:max-inline-size="580px">

@@ -14,7 +14,7 @@
     {/if}
 
     <div class="padded">
-        <h2 class="web-title web-u-color-text-primary">
+        <h2 class="text-title font-aeonik-pro text-primary">
             <a href={entry.href}>
                 {entry.title}
             </a>

@@ -107,9 +107,9 @@
                         <FloatingHead --position="relative" src={avatar} alt={name} size={112} />
                     {/if}
                     <div>
-                        <h1 class="web-title web-u-color-text-primary">{name}</h1>
+                        <h1 class="text-title font-aeonik-pro text-primary">{name}</h1>
                         {#if role}
-                            <div class="web-label mt-2">{role}</div>
+                            <div class="text-label mt-2">{role}</div>
                         {/if}
                     </div>
                     {#if bio}
@@ -166,7 +166,7 @@
     <div class="py-10">
         <div class="web-big-padding-section-level-2">
             <div class="container">
-                <h2 class="web-title web-u-color-text-primary">Articles</h2>
+                <h2 class="text-title font-aeonik-pro text-primary">Articles</h2>
 
                 <!-- <div class="web-is-only-mobile mt-8">
 					<label class="blockweb-select is-colored" for="articles">

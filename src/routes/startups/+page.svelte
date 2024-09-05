@@ -174,7 +174,7 @@
                         class="web-hero"
                         style="--hero-max-inline-size:49.375rem; --hero-gap:1.125rem;"
                     >
-                        <h1 class="web-headline web-u-color-text-primary">
+                        <h1 class="text-headline font-aeonik-pro text-primary">
                             Build your startup with Appwrite
                         </h1>
                         <p
@@ -204,7 +204,7 @@
                                 alt=""
                             />
                             <div class="flex flex-col gap-2 text-center">
-                                <h2 class="web-label web-u-color-text-primary">Complete backend</h2>
+                                <h2 class="text-label text-primary">Complete backend</h2>
                                 <p class="web-main-body-500">
                                     Get access to Appwrite’s Scale plan and build your entire
                                     backend with Appwrite.
@@ -219,7 +219,7 @@
                                 alt=""
                             />
                             <div class="flex flex-col gap-2 text-center">
-                                <h2 class="web-label web-u-color-text-primary">Cloud credits</h2>
+                                <h2 class="text-label text-primary">Cloud credits</h2>
                                 <p class="web-main-body-500">
                                     Get Appwrite Cloud Scale for 12 months and reduce risk at an
                                     early stage.
@@ -234,7 +234,7 @@
                                 alt=""
                             />
                             <div class="flex flex-col gap-2 text-center">
-                                <h2 class="web-label web-u-color-text-primary">Priority support</h2>
+                                <h2 class="text-label text-primary">Priority support</h2>
                                 <p class="web-main-body-500">
                                     Get community support and priority email support from the
                                     Appwrite team.
@@ -257,7 +257,7 @@
                                     style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;"
                                 >
                                     <div class="flex flex-col gap-4">
-                                        <h3 class="web-title web-u-color-text-primary">
+                                        <h3 class="text-title font-aeonik-pro text-primary">
                                             Ship faster
                                         </h3>
                                         <p class="web-main-body-500">
@@ -318,7 +318,7 @@
                                         <img alt="" src={UsageGraphs} />
                                     </div>
                                     <div class="web-u-flex-basis-380 flex flex-col gap-4">
-                                        <h3 class="web-title web-u-color-text-primary">
+                                        <h3 class="text-title font-aeonik-pro text-primary">
                                             Scalable architecture
                                         </h3>
                                         <p class="web-main-body-500">
@@ -365,7 +365,7 @@
                                     style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;"
                                 >
                                     <div class="flex flex-col gap-4">
-                                        <h3 class="web-title web-u-color-text-primary">
+                                        <h3 class="text-title font-aeonik-pro text-primary">
                                             Built-in security and compliance
                                         </h3>
                                         <p class="web-main-body-500">
@@ -451,7 +451,7 @@
                                                                 >
                                                             </div>
                                                             <div
-                                                                class="web-user-box-content web-caption-400 web-u-color-text-primary"
+                                                                class="web-user-box-content web-caption-400 text-primary"
                                                             >
                                                                 Hello devs! I am getting a CORS
                                                                 error when sending a request to the
@@ -482,7 +482,7 @@
                                                                 >
                                                             </div>
                                                             <div
-                                                                class="web-user-box-content web-caption-400 web-u-color-text-primary"
+                                                                class="web-user-box-content web-caption-400 text-primary"
                                                             >
                                                                 Hey Louis! Is this the message you
                                                                 get
@@ -518,7 +518,7 @@
                                                                 >
                                                             </div>
                                                             <div
-                                                                class="web-user-box-content web-caption-400 web-u-color-text-primary"
+                                                                class="web-user-box-content web-caption-400 text-primary"
                                                             >
                                                                 Yes!
                                                             </div>
@@ -547,7 +547,7 @@
                                                                 >
                                                             </div>
                                                             <div
-                                                                class="web-user-box-content web-caption-400 web-u-color-text-primary"
+                                                                class="web-user-box-content web-caption-400 text-primary"
                                                             >
                                                                 You should be able to debug this
                                                                 with a few steps. Just follow this
@@ -566,7 +566,7 @@
                                         </div>
                                     </div>
                                     <div class="web-mx-auto-mobile ml-auto flex flex-col gap-4">
-                                        <h3 class="web-title web-u-color-text-primary">
+                                        <h3 class="text-title font-aeonik-pro text-primary">
                                             Power of open source community
                                         </h3>
                                         <p class="web-main-body-500">
@@ -606,7 +606,9 @@
             <div
                 class="web-big-padding-section-level-2 web-u-overflow-hidden e-mt-50-desktop e-mt-38-mobile"
             >
-                <h4 class="web-title web-u-color-text-primary mx-auto max-w-[350px] text-center">
+                <h4
+                    class="text-title font-aeonik-pro text-primary mx-auto max-w-[350px] text-center"
+                >
                     Focus on building your product
                 </h4>
                 <div class="scroll-carousel" use:infiniteScroll>
@@ -679,7 +681,7 @@
                                         class:web-u-max-width-380={!submitted}
                                     >
                                         <section class="flex flex-col gap-5">
-                                            <h4 class="web-title web-u-color-text-primary">
+                                            <h4 class="text-title font-aeonik-pro text-primary">
                                                 Join the Appwrite Startups program
                                             </h4>
                                             <p class="text-description">
@@ -713,14 +715,14 @@
                                         class="web-u-max-width-380 web-u-max-inline-size-none-mobile relative z-[1] mx-auto flex flex-col gap-2 text-center"
                                     >
                                         <h6
-                                            class="web-label e-mobile-fix-1 flex items-center justify-center gap-2"
+                                            class="text-label e-mobile-fix-1 flex items-center justify-center gap-2"
                                         >
                                             <img
                                                 class="shrink-0"
                                                 src="/images/icons/colored/check.svg"
                                                 alt=""
                                             />
-                                            <span class="web-u-color-text-primary"
+                                            <span class="text-primary"
                                                 >Thank you for your submission</span
                                             >
                                         </h6>
@@ -816,7 +818,7 @@
                         <div class="container relative" style:z-index="10">
                             <section class="web-grid-4-6">
                                 <header>
-                                    <div class="web-display web-u-color-text-primary">FAQ</div>
+                                    <div class="text-display font-aeonik-pro text-primary">FAQ</div>
                                 </header>
                                 <Faq />
                             </section>

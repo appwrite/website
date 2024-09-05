@@ -49,12 +49,12 @@
                             aria-label="previous page"
                         >
                             <span
-                                class="icon-cheveron-left web-u-font-size-24 web-u-color-text-primary web-is-not-mobile"
+                                class="icon-cheveron-left web-u-font-size-24 text-primary web-is-not-mobile"
                                 aria-hidden="true"
                             />
                         </a>
                     {/if}
-                    <h1 class="web-title">{title}</h1>
+                    <h1 class="text-title font-aeonik-pro">{title}</h1>
                 </div>
             </div>
             <div class="web-article-header-end" />

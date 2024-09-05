@@ -29,7 +29,7 @@
             <div class="author-img">
                 <img src={message.author_avatar} alt="" class="h-full w-full rounded-[inherit]" />
             </div>
-            <span class="web-sub-body-500 web-u-color-text-primary">{message.author}</span>
+            <span class="web-sub-body-500 text-primary">{message.author}</span>
         </div>
         <span class="timestamp web-caption-400">
             {formatTimestamp(message.timestamp)}

@@ -255,12 +255,12 @@ messaging.create_email(
                 <div>
                     <div class="product">
                         <img src="/images/icons/illustrated/dark/messaging.png" alt="" />
-                        <span class="web-eyebrow web-u-color-text-primary">
+                        <span class="web-eyebrow text-primary">
                             Messaging<span class="web-u-color-text-accent">_</span>
                         </span>
                         <span class="web-hero-banner-button web-eyebrow">BETA</span>
                     </div>
-                    <h1 class="web-display web-u-color-text-primary">
+                    <h1 class="text-display font-aeonik-pro text-primary">
                         Open source messaging service for developers
                     </h1>
                     <p class="text-description mt-5">
@@ -293,7 +293,7 @@ messaging.create_email(
                 <div class="container">
                     <section class="web-hero is-align-start">
                         <span class="web-badges web-eyebrow !text-white">capabilities_</span>
-                        <h2 class="web-display web-u-color-text-primary max-w-[700px]">
+                        <h2 class="text-display font-aeonik-pro text-primary max-w-[700px]">
                             All of your messages in one place
                         </h2>
                     </section>
@@ -477,13 +477,13 @@ messaging.create_email(
                 <div class="container">
                     <div class="web-hero is-align-start">
                         <span class="web-badges web-eyebrow !text-white">SDKs_</span>
-                        <h2 class="web-display web-u-color-text-primary max-w-[700px]">
+                        <h2 class="text-display font-aeonik-pro text-primary max-w-[700px]">
                             Start today with your preferred technologies
                         </h2>
                     </div>
                     <div class="code-snippets divide-border-primary mt-64 grid grid-cols-2 gap-16">
                         <div class="flex min-w-0 flex-col gap-2">
-                            <h3 class="web-label web-u-color-text-primary">Subscribe to a topic</h3>
+                            <h3 class="text-label text-primary">Subscribe to a topic</h3>
                             <p class="text-description">
                                 Subscribe to receive all messages related to a topic.
                             </p>
@@ -497,7 +497,7 @@ messaging.create_email(
                             </div>
                         </div>
                         <div class="flex min-w-0 flex-col gap-2">
-                            <h3 class="web-label web-u-color-text-primary">Send a message</h3>
+                            <h3 class="text-label text-primary">Send a message</h3>
                             <p class="text-description">
                                 Send a message to all targets on a topic.
                             </p>
@@ -516,9 +516,7 @@ messaging.create_email(
 
         <section class="web-u-sep-block-start web-u-padding-block-start-80 py-10">
             <div class="container">
-                <h4 class="web-label web-u-color-text-primary text-center">
-                    Keep exploring our products
-                </h4>
+                <h4 class="text-label text-primary text-center">Keep exploring our products</h4>
                 <ul
                     class="mt-8 grid gap-8"
                     style="grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr))"
@@ -539,7 +537,7 @@ messaging.create_email(
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="web-main-body-400 web-u-color-text-primary">Auth</h4>
+                                    <h4 class="web-main-body-400 text-primary">Auth</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
                                 </div>
                                 <p class="web-sub-body-400">
@@ -564,9 +562,7 @@ messaging.create_email(
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="web-main-body-400 web-u-color-text-primary">
-                                        Functions
-                                    </h4>
+                                    <h4 class="web-main-body-400 text-primary">Functions</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
                                 </div>
                                 <p class="web-sub-body-400">
@@ -592,9 +588,7 @@ messaging.create_email(
                                         width="37"
                                         height="32"
                                     />
-                                    <h4 class="web-main-body-400 web-u-color-text-primary">
-                                        Databases
-                                    </h4>
+                                    <h4 class="web-main-body-400 text-primary">Databases</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
                                 </div>
                                 <p class="web-sub-body-400">
@@ -619,9 +613,7 @@ messaging.create_email(
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="web-main-body-400 web-u-color-text-primary">
-                                        Storage
-                                    </h4>
+                                    <h4 class="web-main-body-400 text-primary">Storage</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
                                 </div>
                                 <p class="web-sub-body-400">
@@ -646,9 +638,7 @@ messaging.create_email(
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="web-main-body-400 web-u-color-text-primary">
-                                        Realtime
-                                    </h4>
+                                    <h4 class="web-main-body-400 text-primary">Realtime</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
                                 </div>
                                 <p class="web-sub-body-400">

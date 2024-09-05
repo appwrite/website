@@ -90,7 +90,7 @@
                             class:max-w-[380px]={!submitted}
                         >
                             <section class="web-gap-5 flex flex-col">
-                                <h1 class="web-title web-u-color-text-primary">
+                                <h1 class="text-title font-aeonik-pro text-primary">
                                     Subscribe to our newsletter
                                 </h1>
                                 <p class="text-description web-u-padding-block-end-40">

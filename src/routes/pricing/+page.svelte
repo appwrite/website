@@ -50,7 +50,7 @@
                 <section class="container">
                     <div class="web-hero">
                         <h1
-                            class="web-display web-u-max-width-700 web-u-opacity-90 web-u-mobile-align-text-center self-center"
+                            class="text-display font-aeonik-pro web-u-max-width-700 web-u-opacity-90 web-u-mobile-align-text-center self-center"
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
@@ -70,8 +70,10 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="starter" class="web-label">Free</h2>
-                                            <div class="web-title web-u-color-text-primary mt-2">
+                                            <h2 id="starter" class="text-label">Free</h2>
+                                            <div
+                                                class="text-title font-aeonik-pro text-primary mt-2"
+                                            >
                                                 $0
                                             </div>
                                             <div class="mt-1">&nbsp;</div>
@@ -116,8 +118,10 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="pro" class="web-label">Pro</h2>
-                                            <div class="web-title web-u-color-text-primary mt-2">
+                                            <h2 id="pro" class="text-label">Pro</h2>
+                                            <div
+                                                class="text-title font-aeonik-pro text-primary mt-2"
+                                            >
                                                 $15
                                             </div>
                                             <div class="mt-1">per member/month</div>
@@ -164,8 +168,10 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="scale" class="web-label">Scale</h2>
-                                            <div class="web-title web-u-color-text-primary mt-2">
+                                            <h2 id="scale" class="text-label">Scale</h2>
+                                            <div
+                                                class="text-title font-aeonik-pro text-primary mt-2"
+                                            >
                                                 $599
                                             </div>
                                             <div class="mt-1">per organization/month</div>
@@ -207,10 +213,7 @@
                                 style="background:rgba(35, 35, 37, 0.90);"
                             >
                                 <header class="flex gap-3">
-                                    <h3
-                                        id="enterprises"
-                                        class="web-main-body-500 web-u-color-text-primary"
-                                    >
+                                    <h3 id="enterprises" class="web-main-body-500 text-primary">
                                         Enterprises
                                     </h3>
                                     <div class="web-inline-tag is-pink">Coming Soon</div>
@@ -232,7 +235,7 @@
                                 <header class="flex gap-3">
                                     <h3
                                         id="open-source-teams"
-                                        class="web-main-body-500 web-u-color-text-primary"
+                                        class="web-main-body-500 text-primary"
                                     >
                                         Open-source teams
                                     </h3>
@@ -260,7 +263,7 @@
                 <div class="container relative" style:z-index="10">
                     <section class="web-grid-4-6">
                         <header>
-                            <div class="web-display web-u-color-text-primary">FAQ</div>
+                            <div class="text-display font-aeonik-pro text-primary">FAQ</div>
                         </header>
                         <Faq />
                     </section>

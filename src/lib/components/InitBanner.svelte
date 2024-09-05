@@ -29,7 +29,7 @@
 </script>
 
 <div class="banner" class:hidden={$page.url.pathname.includes('init')}>
-    <div class="content web-u-color-text-primary">
+    <div class="content text-primary">
         <div class="headings">
             <span style:font-weight="500"
                 ><span

@@ -12,7 +12,7 @@
                 <li>
                     <article>
                         <header class="flex items-baseline gap-2">
-                            <span class="web-eyebrow web-u-color-text-primary">
+                            <span class="web-eyebrow text-primary">
                                 {response.code}
                             </span>
                             <span class="web-caption-400">application/json</span>

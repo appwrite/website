@@ -368,7 +368,7 @@
                             shouldShowTable = !e.detail;
                         }}
                     >
-                        <h3 class="web-title web-u-color-text-primary">Compare plans</h3>
+                        <h3 class="text-title font-aeonik-pro text-primary">Compare plans</h3>
                         <p class="web-main-body-500 mt-4">
                             Discover our plans and find the one that fits your project’s needs.
                         </p>
@@ -398,7 +398,7 @@
                         style:transition="inset-block-start 0.3s ease"
                     >
                         <div
-                            class="text-description web-u-color-text-primary self-center"
+                            class="text-description text-primary self-center"
                             style:opacity={browser ? 1 : 0}
                             style:position={browser ? 'relative' : undefined}
                         >
@@ -424,7 +424,7 @@
                         </div>
                         <div class="web-mini-card">
                             <div class="flex flex-wrap items-center justify-between gap-4">
-                                <h4 class="web-label web-u-color-text-primary">Free</h4>
+                                <h4 class="text-label text-primary">Free</h4>
                                 <a
                                     href="https://cloud.appwrite.io/register"
                                     class="web-button is-secondary"
@@ -435,7 +435,7 @@
                         </div>
                         <div class="web-mini-card">
                             <div class="flex flex-wrap items-center justify-between gap-4">
-                                <h4 class="web-label web-u-color-text-primary">Pro</h4>
+                                <h4 class="text-label text-primary">Pro</h4>
                                 <a
                                     class="web-button"
                                     href="https://cloud.appwrite.io/console?type=createPro"
@@ -449,7 +449,7 @@
                         </div>
                         <div class="web-mini-card">
                             <div class="flex flex-wrap items-center justify-between gap-4">
-                                <h4 class="web-label web-u-color-text-primary">Scale</h4>
+                                <h4 class="text-label text-primary">Scale</h4>
                                 <button class="web-button is-secondary" disabled>
                                     <span class="web-sub-body-500">Coming soon</span>
                                 </button>
@@ -477,7 +477,7 @@
                             }}
                         >
                             <caption
-                                class="web-compare-table-caption text-description web-u-color-text-primary text-left"
+                                class="web-compare-table-caption text-description text-primary text-left"
                                 use:melt={$heading({ level: 3 })}
                                 style:position={browser ? 'unset' : undefined}
                             >

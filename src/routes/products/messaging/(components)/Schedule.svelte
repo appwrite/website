@@ -26,7 +26,7 @@
                     <div class="web-icon-chevron-left" />
                 </button>
                 <div class="flex items-center gap-4">
-                    <div class="web-label web-u-color-text-primary" use:melt={$heading}>
+                    <div class="text-label text-primary" use:melt={$heading}>
                         {$headingValue}
                     </div>
                     <button
@@ -79,7 +79,7 @@
         </div>
     </div>
 
-    <h3 class="web-title web-u-color-text-primary">Schedule your messages</h3>
+    <h3 class="text-title font-aeonik-pro text-primary">Schedule your messages</h3>
     <p class="text-description">Send messages immediately or schedule them for future delivery.</p>
 </Step>
 

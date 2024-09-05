@@ -91,7 +91,7 @@
                                 >
                                     {#if submitted}
                                         <section class="flex flex-col gap-5">
-                                            <h1 class="web-display web-u-color-text-primary">
+                                            <h1 class="text-display font-aeonik-pro text-primary">
                                                 Thank you for applying
                                             </h1>
                                             <p class="text-description web-u-padding-block-end-32">
@@ -108,7 +108,7 @@
                                         </section>
                                     {:else}
                                         <section class="flex flex-col gap-5">
-                                            <h4 class="web-display web-u-color-text-primary">
+                                            <h4 class="text-display font-aeonik-pro text-primary">
                                                 Become a Technology Partner
                                             </h4>
                                             <p class="text-description">
@@ -121,9 +121,7 @@
                                     <section
                                         class="web-u-sep-block-start mt-10 flex flex-col gap-3 pt-10"
                                     >
-                                        <h2 class="web-label web-u-color-text-primary">
-                                            Follow us
-                                        </h2>
+                                        <h2 class="text-label text-primary">Follow us</h2>
                                         <ul class="flex gap-2">
                                             {#each socials as social}
                                                 <li>

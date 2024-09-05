@@ -203,7 +203,7 @@
                                             <span class="web-u-color-text-secondary">{hit.h1}</span>
                                             {#if relevantSubtitle}
                                                 <span class="web-u-color-text-secondary"> / </span>
-                                                <span class="web-u-color-text-primary">
+                                                <span class="text-primary">
                                                     {relevantSubtitle}
                                                 </span>
                                             {/if}
@@ -243,7 +243,7 @@
                                     <span class="web-u-color-text-secondary">{hit.h1}</span>
                                     {#if hit.h2}
                                         <span class="web-u-color-text-secondary"> / </span>
-                                        <span class="web-u-color-text-primary">{hit.h2}</span>
+                                        <span class="text-primary">{hit.h2}</span>
                                     {/if}
                                 </div>
                             </a>

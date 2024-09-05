@@ -20,8 +20,8 @@
     const styles = cva('text-white', {
         variants: {
             size: {
-                title: ['text-headline', 'flex-[1.3]'],
-                display: ['text-display', 'w-full']
+                title: ['text-headline', 'font-aeonik-pro', 'flex-[1.3]'],
+                display: ['text-display', 'font-aeonik-pro', 'w-full']
             }
         },
         defaultVariants: {
@@ -37,7 +37,7 @@
 </script>
 
 <section class={classNames(hero({ layout }), classes)} {...props}>
-    <h1 class={classNames(styles({ size }), 'font-aeonik-pro')}>
+    <h1 class={classNames(styles({ size }))}>
         <slot name="title" />
     </h1>
     {#if $$slots.description}
