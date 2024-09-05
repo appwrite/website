@@ -82,7 +82,7 @@
                     >_
                 </span>
             </h1>
-            <p class="web-description max-w-[600px]">
+            <p class="text-description max-w-[600px]">
                 Appwrite helps you build secure and scalable apps, faster. Leverage Appwrite's
                 powerful APIs to stop fighting technologies and start delivering value.
             </p>
@@ -91,7 +91,7 @@
             <h2 class="web-title web-u-color-text-primary max-w-[600px]">
                 Get started with your technologies
             </h2>
-            <p class="web-description max-w-[600px]">
+            <p class="text-description max-w-[600px]">
                 Start building with your preferred web, mobile, and native frameworks by following a
                 quick start guide.
             </p>
@@ -121,7 +121,7 @@
         </section>
         <section>
             <h2 class="web-title web-u-color-text-primary max-w-[600px]">Show me some code</h2>
-            <p class="web-description mt-4 max-w-[600px]">
+            <p class="text-description mt-4 max-w-[600px]">
                 If you learn best from code examples, follow one of our tutorials.
             </p>
             <Carousel size="medium">
@@ -134,7 +134,7 @@
         </section>
         <section class="web-hero is-align-start is-no-max-width">
             <h2 class="web-title web-u-color-text-primary max-w-[600px]">Explore capabilities</h2>
-            <p class="web-description max-w-[600px]">
+            <p class="text-description max-w-[600px]">
                 All the core functionalities you need with a scalable and flexible API. Explore
                 Appwrite's product offerings.
             </p>
@@ -285,7 +285,7 @@
             <h2 class="web-title web-u-color-text-primary max-w-[600px]">
                 Explore ways to integrate
             </h2>
-            <p class="web-description max-w-[600px]">
+            <p class="text-description max-w-[600px]">
                 Choose how you integrate with Appwrite. Explore references for the Appwrite SDK,
                 REST API, GraphQL API, or Realtime API.
             </p>
@@ -330,7 +330,7 @@
         </section>
         <section class="web-hero is-align-start is-no-max-width">
             <h2 class="web-title web-u-color-text-primary max-w-[600px]">Migrate to Appwrite</h2>
-            <p class="web-description max-w-[600px]">
+            <p class="text-description max-w-[600px]">
                 Own your data with automatic data migrations.
             </p>
             <div class="mt-6">

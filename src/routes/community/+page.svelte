@@ -163,7 +163,7 @@
                             Built by a community of 800+ contributors
                         </h1>
                         <div>
-                            <p class="web-description">
+                            <p class="text-description">
                                 Inspire and get inspired. Join Appwrite's community of maintainers
                                 and contributors and help us make Appwrite better for developers
                                 worldwide.
@@ -234,7 +234,7 @@
                             The power of open source benefits us all
                         </h1>
                         <div>
-                            <p class="web-description">
+                            <p class="text-description">
                                 See contributors of Appwrite since 2019 and discover how you can
                                 start contributing.
                             </p>
@@ -260,7 +260,7 @@
                     <div class="web-hero is-align-start">
                         <h2 class="web-display web-u-color-text-primary">Get involved</h2>
                         <div>
-                            <p class="web-description">
+                            <p class="text-description">
                                 With every contribution, Appwrite gets better for all of us. Start
                                 contributing today.
                             </p>
@@ -455,7 +455,7 @@
                         <h2 class="web-display web-u-color-text-primary">
                             Inspire and get inspired
                         </h2>
-                        <p class="web-description web-u-margin-block-start-0">
+                        <p class="text-description web-u-margin-block-start-0">
                             Visit our showcase website built with Appwrite to find inspiration for
                             your projects or to showcase what you have built.
                         </p>
@@ -486,7 +486,7 @@
                             <div class="web-display web-u-color-text-primary">
                                 Visit the community
                             </div>
-                            <p class="web-description">
+                            <p class="text-description">
                                 Discover Appwrite's community across platforms and join the fun.
                             </p>
                         </div>
@@ -583,7 +583,7 @@
                                     <h1 class="web-title web-u-color-text-primary">
                                         Appwrite insights
                                     </h1>
-                                    <p class="web-description web-u-padding-block-end-40">
+                                    <p class="text-description web-u-padding-block-end-40">
                                         Sign up to our company blog and get the latest insights from
                                         Appwrite. Learn more about engineering, product design,
                                         building community, and tips & tricks for using Appwrite.

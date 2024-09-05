@@ -12,7 +12,7 @@
     const ctx = hasContext('headings') ? getContext<LayoutContext>('headings') : undefined;
     const classList: Record<typeof level, string> = {
         1: 'web-label',
-        2: 'web-description',
+        2: 'text-description',
         3: 'web-main-body-500',
         4: 'web-sub-body-500'
     };

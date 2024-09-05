@@ -70,7 +70,7 @@
                        mt-6 flex w-full w-full"
                     >
                         <span class="container flex w-full items-center justify-between">
-                            <span class="web-description">Table of contents</span>
+                            <span class="text-description">Table of contents</span>
                             <span class="icon-menu-alt-4" aria-hidden="true" />
                         </span>
                     </button>

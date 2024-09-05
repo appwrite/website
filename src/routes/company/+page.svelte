@@ -42,7 +42,7 @@
                             Unleashing creativity and innovation in every creator
                         </h1>
                         <div>
-                            <p class="web-description">
+                            <p class="text-description">
                                 Software development transforms our everyday lives, relying heavily
                                 on the creativity and innovation of developers. At Appwrite, we
                                 enable them to develop products the world loves by removing
@@ -74,7 +74,7 @@
                             </a>
                         </div>
 
-                        <div class="web-description flex flex-col gap-4">
+                        <div class="text-description flex flex-col gap-4">
                             <p>
                                 At Appwrite it is our mission to eliminate friction and abstract
                                 complexity for every creator. Giving developers all the tools they
@@ -101,7 +101,7 @@
 				<div class="container">
 					<div class="web-hero is-center">
 						<h2 class="web-display web-u-color-text-primary">Our Story</h2>
-						<p class="web-description">
+						<p class="text-description">
 							What once started as a passion project is now a beloved and awarded product that helps developers world wide to achieve more/unleash creativity and innovation.
 						</p>
 					</div>
@@ -281,7 +281,7 @@
                         <h4 class="web-display web-u-color-text-primary">
                             Backed by top investors
                         </h4>
-                        <p class="web-description web-u-max-width-480 mx-auto">
+                        <p class="text-description web-u-max-width-480 mx-auto">
                             Appwrite is proudly backed by some of the top investors in the industry.
                         </p>
                     </div>

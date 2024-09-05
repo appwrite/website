@@ -178,7 +178,7 @@
                             Build your startup with Appwrite
                         </h1>
                         <p
-                            class="web-description web-u-max-width-640 e-u-padding-inline-32-desktop mx-auto"
+                            class="text-description web-u-max-width-640 e-u-padding-inline-32-desktop mx-auto"
                         >
                             The Appwrite Startups Program supports your startup with a complete
                             backend for you to build your products. Eligible startups receive
@@ -682,7 +682,7 @@
                                             <h4 class="web-title web-u-color-text-primary">
                                                 Join the Appwrite Startups program
                                             </h4>
-                                            <p class="web-description">
+                                            <p class="text-description">
                                                 We support VC backed or revenue generating startups
                                                 that have been established within the last decade
                                                 with:
@@ -691,13 +691,13 @@
                                             <div class="flex flex-col gap-3">
                                                 <div class="flex gap-4">
                                                     <div class="web-check-bullet mt-1"></div>
-                                                    <p class="web-description">
+                                                    <p class="text-description">
                                                         Appwrite Cloud Scale for 12 months
                                                     </p>
                                                 </div>
                                                 <div class="flex gap-4">
                                                     <div class="web-check-bullet mt-1"></div>
-                                                    <p class="web-description">
+                                                    <p class="text-description">
                                                         Priority email support as part of Scale
                                                     </p>
                                                 </div>
@@ -875,7 +875,7 @@
             flex-direction: column;
             gap: 32px;
         }
-        .web-hero .web-description {
+        .web-hero .text-description {
             margin-block-start: 0;
         }
         .e-u-padding-block-start-48-mobile {

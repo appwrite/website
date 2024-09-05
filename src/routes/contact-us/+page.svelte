@@ -77,7 +77,7 @@
                                         <h1 class="web-display web-u-color-text-primary">
                                             Thank you for your message
                                         </h1>
-                                        <p class="web-description web-u-padding-block-end-32">
+                                        <p class="text-description web-u-padding-block-end-32">
                                             Your message has been sent successfully. We appreciate
                                             your feedback, our team will try to get back to you as
                                             soon as possible.
@@ -94,7 +94,7 @@
                                         <h1 class="web-display web-u-color-text-primary">
                                             Contact Us
                                         </h1>
-                                        <p class="web-description web-u-padding-block-end-40">
+                                        <p class="text-description web-u-padding-block-end-40">
                                             We'd love your input: questions, feature requests, bugs
                                             or compliments.
                                         </p>

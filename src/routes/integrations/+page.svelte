@@ -112,7 +112,7 @@
                     <h1 class="web-headline web-u-color-text-primary">
                         Discover infinite possibilities
                     </h1>
-                    <p class="web-description">
+                    <p class="text-description">
                         Unlock the full potential of Appwrite by seamlessly integrating your
                         favorite apps with your projects.
                     </p>
@@ -229,7 +229,7 @@
                                         <h2 class="web-label web-u-color-text-primary">
                                             Search results
                                         </h2>
-                                        <p class="web-description">
+                                        <p class="text-description">
                                             {result.length > 0 ? result.length : 'No'} results found
                                             for "{$query}"
                                         </p>
@@ -280,7 +280,7 @@
                                 <section class="flex flex-col gap-8">
                                     <header class="flex flex-col gap-1">
                                         <h2 class="web-label web-u-color-text-primary">Featured</h2>
-                                        <p class="web-description">Top recommended integrations</p>
+                                        <p class="text-description">Top recommended integrations</p>
                                     </header>
 
                                     <div>
@@ -346,7 +346,7 @@
                                                 <h2 class="web-label web-u-color-text-primary">
                                                     {category}
                                                 </h2>
-                                                <p class="web-description">
+                                                <p class="text-description">
                                                     {description}
                                                 </p>
                                             </header>

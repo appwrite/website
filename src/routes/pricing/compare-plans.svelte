@@ -398,7 +398,7 @@
                         style:transition="inset-block-start 0.3s ease"
                     >
                         <div
-                            class="web-description web-u-color-text-primary self-center"
+                            class="text-description web-u-color-text-primary self-center"
                             style:opacity={browser ? 1 : 0}
                             style:position={browser ? 'relative' : undefined}
                         >
@@ -477,7 +477,7 @@
                             }}
                         >
                             <caption
-                                class="web-compare-table-caption web-description web-u-color-text-primary text-left"
+                                class="web-compare-table-caption text-description web-u-color-text-primary text-left"
                                 use:melt={$heading({ level: 3 })}
                                 style:position={browser ? 'unset' : undefined}
                             >

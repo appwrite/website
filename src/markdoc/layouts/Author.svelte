@@ -113,7 +113,7 @@
                         {/if}
                     </div>
                     {#if bio}
-                        <p class="web-author-section-info web-description">
+                        <p class="web-author-section-info text-description">
                             {bio}
                         </p>
                     {/if}
