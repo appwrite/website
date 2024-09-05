@@ -143,7 +143,7 @@
             <span class="sr-only">Init</span>
             <Animations.Logo />
         </h1>
-        <p class="web-description">The start of something new.</p>
+        <p class="text-description">The start of something new.</p>
         <div class="buttons">
             <button on:click={() => scrollIntoView('#kickoff')} class="web-button is-secondary">
                 <div class="web-icon-play" />

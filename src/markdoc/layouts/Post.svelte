@@ -120,7 +120,7 @@
                                 </ul>
                                 <h1 class="web-title web-u-color-text-primary">{title}</h1>
                                 {#if description}
-                                    <p class="web-description mt-2">
+                                    <p class="text-description mt-2">
                                         {description}
                                     </p>
                                 {/if}

@@ -17,11 +17,11 @@
         }
     });
 
-    const styles = cva('tracking-[-0.022em] text-white', {
+    const styles = cva('text-white', {
         variants: {
             size: {
                 title: ['text-headline', 'flex-[1.3]'],
-                display: 'text-[4rem] leading-[4.25rem] w-full'
+                display: ['text-display', 'w-full']
             }
         },
         defaultVariants: {
@@ -41,8 +41,8 @@
         <slot name="title" />
     </h1>
     {#if $$slots.description}
-        <div class="flex-[1] self-end">
-            <p class="text-secondary mt-5 text-description font-medium tracking-[-0.018em]">
+        <div class="flex-1 self-end">
+            <p class="text-secondary mt-5 text-description font-medium">
                 <slot name="description" />
             </p>
             <slot name="cta" />

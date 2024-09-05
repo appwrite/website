@@ -15,7 +15,7 @@
                     {$page.error?.message ?? 'An error has occured'}
                 </h1>
                 {#if $page.status === 404}
-                    <p class="web-description">
+                    <p class="text-description">
                         Sorry, it seems that the page you are looking for does not exist. Feel free
                         to use our navigation menu or the button below to explore more of Appwrite's
                         documentation.

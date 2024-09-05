@@ -94,7 +94,7 @@
                                             <h1 class="web-display web-u-color-text-primary">
                                                 Thank you for applying
                                             </h1>
-                                            <p class="web-description web-u-padding-block-end-32">
+                                            <p class="text-description web-u-padding-block-end-32">
                                                 Your application has been sent successfully. Our
                                                 team will try to get back to you as soon as
                                                 possible.
@@ -111,7 +111,7 @@
                                             <h4 class="web-display web-u-color-text-primary">
                                                 Become a Technology Partner
                                             </h4>
-                                            <p class="web-description">
+                                            <p class="text-description">
                                                 Apply to our Technology Partners Program by filling
                                                 out this form. Our team will reach out to you to
                                                 confirm your application was accepted.

@@ -325,7 +325,7 @@
                 <div class="container">
                     <div class="web-hero web-u-max-width-800">
                         <h5 class="web-display web-u-color-text-primary">Become a Hero</h5>
-                        <p class="web-description web-u-color-text-primary" style="opacity:0.64">
+                        <p class="text-description web-u-color-text-primary" style="opacity:0.64">
                             Have you been actively providing value for the Appwrite community? Apply
                             now to join our hero program! Applications are open every three months.
                         </p>
@@ -501,7 +501,7 @@
         .web-hero {
             gap: 0;
 
-            .web-description {
+            .text-description {
                 margin-block-start: 1.25rem;
             }
 

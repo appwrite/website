@@ -41,7 +41,7 @@
                         {/if}
                     </h1>
 
-                    <p class="web-description">
+                    <p class="text-description">
                         {#if error}
                             Something went wrong, please try again later.
                         {:else}

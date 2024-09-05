@@ -80,7 +80,7 @@
     </div>
 
     <h3 class="web-title web-u-color-text-primary">Schedule your messages</h3>
-    <p class="web-description">Send messages immediately or schedule them for future delivery.</p>
+    <p class="text-description">Send messages immediately or schedule them for future delivery.</p>
 </Step>
 
 <style lang="scss">

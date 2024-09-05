@@ -87,7 +87,7 @@
                                         <h1 class="web-display web-u-color-text-primary">
                                             Thank you for your application
                                         </h1>
-                                        <p class="web-description web-u-padding-block-end-32">
+                                        <p class="text-description web-u-padding-block-end-32">
                                             Your application has been sent. Our team will try to get
                                             back to you as soon as possible.
                                         </p>
@@ -103,7 +103,7 @@
                                         <h1 class="web-display web-u-color-text-primary">
                                             OSS program
                                         </h1>
-                                        <p class="web-description web-u-padding-block-end-40">
+                                        <p class="text-description web-u-padding-block-end-40">
                                             Apply to the OSS Program by filling out this form. Our
                                             team will reach out to you to confirm your application
                                             was accepted.

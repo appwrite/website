@@ -263,7 +263,7 @@ messaging.create_email(
                     <h1 class="web-display web-u-color-text-primary">
                         Open source messaging service for developers
                     </h1>
-                    <p class="web-description mt-5">
+                    <p class="text-description mt-5">
                         Set up messaging within minutes and send push notifications, emails, and SMS
                         directly to your users.
                     </p>
@@ -484,7 +484,7 @@ messaging.create_email(
                     <div class="code-snippets divide-border-primary mt-64 grid grid-cols-2 gap-16">
                         <div class="flex min-w-0 flex-col gap-2">
                             <h3 class="web-label web-u-color-text-primary">Subscribe to a topic</h3>
-                            <p class="web-description">
+                            <p class="text-description">
                                 Subscribe to receive all messages related to a topic.
                             </p>
 
@@ -498,7 +498,9 @@ messaging.create_email(
                         </div>
                         <div class="flex min-w-0 flex-col gap-2">
                             <h3 class="web-label web-u-color-text-primary">Send a message</h3>
-                            <p class="web-description">Send a message to all targets on a topic.</p>
+                            <p class="text-description">
+                                Send a message to all targets on a topic.
+                            </p>
                             <div class="mt-4 min-w-0">
                                 <MultiCodeContextless
                                     data={codeMessage}

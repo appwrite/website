@@ -9,7 +9,7 @@
 
         <h2 class="web-display web-u-color-text-primary mt-4">Your backend, minus the hassle</h2>
 
-        <p class="web-description mt-4">
+        <p class="text-description mt-4">
             Build secure and scalable applications with less code. Add authentication, databases,
             storage, and more using Appwrite's development platform.
         </p>

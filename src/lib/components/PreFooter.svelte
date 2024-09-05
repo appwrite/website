@@ -26,7 +26,7 @@
             <li class="web-strip-plans-item web-strip-plans-container-query">
                 <div class="web-strip-plans-item-wrapper">
                     <div class="web-strip-plans-plan">
-                        <h4 class="title web-description">Free</h4>
+                        <h4 class="title text-description">Free</h4>
                         <div class="web-title web-u-color-text-primary">$0</div>
                         <div class="info web-caption-500" />
                     </div>
@@ -44,7 +44,7 @@
             <li class="web-strip-plans-item web-strip-plans-container-query">
                 <div class="web-strip-plans-item-wrapper">
                     <div class="web-strip-plans-plan">
-                        <h4 class="title web-description">Pro</h4>
+                        <h4 class="title text-description">Pro</h4>
                         <div class="web-title web-u-color-text-primary">$15</div>
                         <div class="info web-caption-500">per member/month</div>
                     </div>
@@ -65,7 +65,7 @@
             <li class="web-strip-plans-item web-strip-plans-container-query">
                 <div class="web-strip-plans-item-wrapper">
                     <div class="web-strip-plans-plan">
-                        <h4 class="title web-description">Scale</h4>
+                        <h4 class="title text-description">Scale</h4>
                         <div class="web-title web-u-color-text-primary">$599</div>
                         <div class="info web-caption-500">per org/month</div>
                     </div>

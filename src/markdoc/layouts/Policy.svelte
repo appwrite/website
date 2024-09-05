@@ -83,7 +83,7 @@
                     style:z-index="1"
                     on:click={() => (showToc = !showToc)}
                 >
-                    <span class="web-description">Table of contents</span>
+                    <span class="text-description">Table of contents</span>
                     <span class="icon-menu-alt-4" aria-hidden="true" />
                 </button>
                 <TocNav />

@@ -47,7 +47,7 @@
                 <div class="web-category-header mt-6">
                     <div class="web-category-header-content">
                         <h1 class="web-display web-u-color-text-primary">{name}</h1>
-                        <p class="web-category-header-description web-description">
+                        <p class="web-category-header-description text-description">
                             {description}
                         </p>
                     </div>
