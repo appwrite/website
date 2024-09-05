@@ -57,7 +57,11 @@ Push the Appwriter switch towards the G if you want to use the wireless mode wit
 
 ## Bluetooth mode {% #bluetooth-mode %}
 
-To switch the keyboard to Bluetooth mode, push the switch to B. The keyboard can pair to three different devices. To connect to a device, short press the `FN + 1/2/3` keys depending on the device you want to connect the keyboard with. Long press the `FN + 1/2/3` keys to connect your keyboard to the specific device. Once the `1`, `2`, or `3` key flashes a fast light, you must search for the Appwriter in your Bluetooth devices to connect the devices.
+To switch the keyboard to Bluetooth mode, push the switch to B. The keyboard can pair to three different devices.
+
+To pair a device, long press the `FN` and `1`, `2`, or `3` keys to enter pairing mode. Once the `1`, `2`, or `3` key flashes quickly, select the Appwriter on your device's Bluetooth devices list.
+
+To connect to a device, short press the `FN + 1/2/3` keys depending on the device you want to connect the keyboard with.
 
 # General keyboard controls {% #general-keyboard-controls %}
 
