@@ -1,15 +1,42 @@
 <script lang="ts">
+    import { page } from '$app/stores';
     import { Main } from '$lib/layouts';
     import { MainFooter, FooterNav, Article } from '$lib/components';
     import { TITLE_SUFFIX } from '$routes/titles.js';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import { onMount, tick } from 'svelte';
+    import { beforeNavigate } from '$app/navigation';
 
     export let data;
 
-    const featured = data.posts.find((post) => post.featured);
+    const featured = data.featured;
+
+    $: isFirstPage = data.currentPage === 1;
+
+    $: isLastPage = data.currentPage === data.totalPages;
+
+    $: currentPageRange = data.navigation || [];
+
+    let articlesHeader: HTMLElement;
+
+    let previousPage: number | null = null;
+
+    beforeNavigate(({ from, type }) => {
+        previousPage = type === 'link' ? parseInt(from?.params?.page ?? '1') : null;
+    });
+
+    onMount(() => {
+        return page.subscribe(async () => {
+            if (articlesHeader && previousPage) {
+                await tick();
+                articlesHeader?.scrollIntoView();
+            }
+        });
+    });
 
     const title = 'Blog' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        'Stay updated with the latest product news, insights, and tutorials from the Appwrite team. Discover tips and best practices for hassle-free backend development.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/blog.png';
 </script>
 
@@ -154,12 +181,18 @@
         </div>
         <div class="pt-10">
             <div class="web-big-padding-section-level-2">
-                <div class="container">
-                    <h2 class="web-title web-u-color-text-primary">Articles</h2>
+                <div class="web-container">
+                    <h2
+                        id="title"
+                        class="web-title web-u-color-text-primary"
+                        bind:this={articlesHeader}
+                    >
+                        Articles
+                    </h2>
 
                     <div class="mt-12">
                         <ul class="web-grid-articles">
-                            {#each data.posts as post}
+                            {#each data.posts as post (post.slug)}
                                 {@const author = data.authors.find(
                                     (author) => author.slug === post.author
                                 )}
@@ -177,6 +210,59 @@
                             {/each}
                         </ul>
                     </div>
+
+                    <div class="mt-12">
+                        <ul class="flex items-center gap-1" style="justify-content: center">
+                            {#if data.currentPage > 1}
+                                <a
+                                    data-sveltekit-noscroll
+                                    class="flex navigation-button"
+                                    href="/blog/{data.currentPage - 1}"
+                                    class:navigation-button-active={!isFirstPage}
+                                >
+                                    <span class="web-icon-chevron-left" style="font-size: 20px" />
+                                    Previous
+                                </a>
+                            {:else}
+                                <span class="flex navigation-button">
+                                    <span class="web-icon-chevron-left" style="font-size: 20px" />
+                                    Previous
+                                </span>
+                            {/if}
+
+                            {#each currentPageRange as page}
+                                {#if page === -1}
+                                    <span class="pagination-ellipsis">...</span>
+                                {:else}
+                                    <a
+                                        href="/blog/{page}"
+                                        data-sveltekit-noscroll
+                                        class="pagination-number"
+                                        class:pagination-number-selected={data.currentPage === page}
+                                    >
+                                        {page}
+                                    </a>
+                                {/if}
+                            {/each}
+
+                            {#if data.currentPage < data.totalPages}
+                                <a
+                                    data-sveltekit-noscroll
+                                    class="flex navigation-button"
+                                    href="/blog/{data.currentPage + 1}"
+                                    class:navigation-button-active={!isLastPage}
+                                >
+                                    Next
+                                    <span class="web-icon-chevron-right" style="font-size: 20px" />
+                                </a>
+                            {:else}
+                                <span class="flex navigation-button">
+                                    Next
+                                    <span class="web-icon-chevron-right" style="font-size: 20px" />
+                                </span>
+                            {/if}
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="pt-[7.5rem]">
@@ -188,3 +274,48 @@
         </div>
     </div>
 </Main>
+
+<style>
+    .pagination-number {
+        font-weight: 500;
+        line-height: 140%;
+        text-align: center;
+        font-style: normal;
+        letter-spacing: -0.063px;
+        font-size: var(--font-size-S, 14px);
+        font-family: var(--font-family-sansSerif, Inter);
+        padding: var(--space-3, 6px) var(--space-6, 12px);
+        color: var(--color-fgColor-neutral-secondary, #c3c3c6);
+    }
+
+    .pagination-number-selected {
+        border-radius: var(--border-radius-S, 8px);
+        color: var(--color-fgColor-accent-neutral, #fff);
+        background: var(--color-bgColor-neutral-tertiary, #2d2d31);
+    }
+
+    .navigation-button {
+        opacity: 0.4;
+        font-weight: 500;
+        line-height: 140%;
+        text-align: center;
+        font-style: normal;
+        align-items: center;
+        cursor: not-allowed;
+        pointer-events: none;
+        justify-content: center;
+        letter-spacing: -0.063px;
+        gap: var(--space-2, 4px);
+        font-size: var(--font-size-S, 14px);
+        border-radius: var(--border-radius-S, 8px);
+        font-family: var(--font-family-sansSerif, Inter);
+        color: var(--color-fgColor-neutral-secondary, #c3c3c6);
+        padding: var(--space-3, 6px) var(--space-4, 8px) var(--space-3, 6px) var(--space-3, 6px);
+    }
+
+    .navigation-button-active {
+        opacity: 1;
+        cursor: pointer;
+        pointer-events: initial;
+    }
+</style>
