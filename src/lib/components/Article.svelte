@@ -37,8 +37,8 @@
                         alt={author}
                     />
                     <div class="web-author-info">
-                        <h4 class="web-sub-body-400 text-primary">{author}</h4>
-                        <ul class="web-metadata web-caption-400 web-is-not-mobile">
+                        <h4 class="text-sub-body text-primary">{author}</h4>
+                        <ul class="web-metadata text-caption web-is-not-mobile">
                             <li>
                                 {formatDate(date)}
                             </li>

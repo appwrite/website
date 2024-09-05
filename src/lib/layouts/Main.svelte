@@ -197,9 +197,9 @@
         {:else}
             <AnnouncementBanner>
                 <a href="/discord" target="_blank" rel="noopener noreferrer">
-                    <span class="web-caption-500">We are having lots of fun on</span>
+                    <span class="text-caption font-medium">We are having lots of fun on</span>
                     <span class="web-icon-discord" aria-hidden="true" />
-                    <span class="web-caption-500">Discord. Come and join us!</span>
+                    <span class="text-caption font-medium">Discord. Come and join us!</span>
                 </a>
             </AnnouncementBanner>
         {/if}
@@ -252,7 +252,7 @@
                 >
                     <span class="web-icon-star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>
-                    <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span>
+                    <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
                 </a>
                 <IsLoggedIn />
             </div>

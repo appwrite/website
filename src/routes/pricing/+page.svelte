@@ -77,14 +77,16 @@
                                                 $0
                                             </div>
                                             <div class="mt-1">&nbsp;</div>
-                                            <p class="web-main-body-500 mt-4">
+                                            <p class="text-body font-medium mt-4">
                                                 For personal hobby projects and students.
                                             </p>
                                             <a
                                                 href="{PUBLIC_APPWRITE_DASHBOARD}/register"
                                                 class="web-button is-secondary is-full-width mt-8"
                                             >
-                                                <span class="web-sub-body-500">Start building</span>
+                                                <span class="text-sub-body font-medium"
+                                                    >Start building</span
+                                                >
                                             </a>
                                         </header>
                                         <div class="web-pricing-cards-content">
@@ -125,7 +127,7 @@
                                                 $15
                                             </div>
                                             <div class="mt-1">per member/month</div>
-                                            <p class="web-main-body-500 mt-4">
+                                            <p class="text-body font-medium mt-4">
                                                 For pro developers and teams that need to scale
                                                 their products.
                                             </p>
@@ -135,8 +137,10 @@
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
-                                                <!-- <span class="web-sub-body-500">Start trial</span> -->
-                                                <span class="web-sub-body-500">Start building</span>
+                                                <!-- <span class="text-sub-body font-medium">Start trial</span> -->
+                                                <span class="text-sub-body font-medium"
+                                                    >Start building</span
+                                                >
                                             </a>
                                         </header>
                                         <div class="web-pricing-cards-content">
@@ -175,7 +179,7 @@
                                                 $599
                                             </div>
                                             <div class="mt-1">per organization/month</div>
-                                            <p class="web-main-body-500 mt-4">
+                                            <p class="text-body font-medium mt-4">
                                                 For scaling teams and agencies that need dedicated
                                                 support.
                                             </p>
@@ -183,7 +187,9 @@
                                                 class="web-button is-secondary is-full-width mt-8"
                                                 disabled
                                             >
-                                                <span class="web-sub-body-500">Coming soon</span>
+                                                <span class="text-sub-body font-medium"
+                                                    >Coming soon</span
+                                                >
                                             </button>
                                         </header>
                                         <div class="web-pricing-cards-content">
@@ -213,7 +219,7 @@
                                 style="background:rgba(35, 35, 37, 0.90);"
                             >
                                 <header class="flex gap-3">
-                                    <h3 id="enterprises" class="web-main-body-500 text-primary">
+                                    <h3 id="enterprises" class="text-body font-medium text-primary">
                                         Enterprises
                                     </h3>
                                     <div class="web-inline-tag is-pink">Coming Soon</div>
@@ -235,7 +241,7 @@
                                 <header class="flex gap-3">
                                     <h3
                                         id="open-source-teams"
-                                        class="web-main-body-500 text-primary"
+                                        class="text-body font-medium text-primary"
                                     >
                                         Open-source teams
                                     </h3>

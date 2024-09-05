@@ -38,7 +38,7 @@
     >
         <div class="inner">
             <div class="header">
-                <h3 class="web-sub-body-500">Push notification</h3>
+                <h3 class="text-sub-body font-medium">Push notification</h3>
                 <div class="web-icon-close" />
             </div>
             <div class="griddy">
@@ -87,7 +87,7 @@
                 <span>APPWRITE</span>
                 <span>now</span>
             </div>
-            <span class="title web-caption-500">{title}</span>
+            <span class="title text-caption font-medium">{title}</span>
             <span class="message">{message}</span>
         </div>
     </div>

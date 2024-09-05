@@ -78,14 +78,14 @@
 {#if ticket.gh_user}
     <div class="u-flex u-cross-center u-gap-8 text-primary">
         <img src="/images/icons/colored/check.svg" alt="" />
-        <span class="web-sub-body-500">GitHub account connected</span>
+        <span class="text-sub-body font-medium">GitHub account connected</span>
     </div>
 
     <div
         class="u-flex u-cross-center u-main-between"
         style="margin-block-start: 0.25rem; gap: 1.25rem"
     >
-        <p class="web-sub-body-500">
+        <p class="text-sub-body font-medium">
             Your ticket has been updated to show your unique GitHub contribution pattern.
         </p>
         <Switch bind:checked={showGitHub} />
@@ -105,8 +105,8 @@
         </button>
     {/if}
 {:else}
-    <h2 class="web-sub-body-500 text-primary">Integrate your GitHub account</h2>
-    <p class="web-sub-body-500" style:margin-block-start="0.25rem">
+    <h2 class="text-sub-body font-medium text-primary">Integrate your GitHub account</h2>
+    <p class="text-sub-body font-medium" style:margin-block-start="0.25rem">
         Sign in with your GitHub account and see the magic happen in your ticket.
     </p>
     <button
@@ -123,15 +123,15 @@
 {#if ticket.aw_email}
     <div class="u-flex u-cross-center u-gap-8 text-primary">
         <img src="/images/icons/colored/check.svg" alt="" />
-        <span class="web-sub-body-500">Appwrite account connected</span>
+        <span class="text-sub-body font-medium">Appwrite account connected</span>
     </div>
 
-    <p class="web-sub-body-500" style="margin-block-start: 0.25rem;">
+    <p class="text-sub-body font-medium" style="margin-block-start: 0.25rem;">
         Your ticket has been upgraded.
     </p>
 {:else}
-    <h2 class="web-sub-body-500 text-primary">Integrate your Appwrite account</h2>
-    <p class="web-sub-body-500" style:margin-block-start="0.25rem">
+    <h2 class="text-sub-body font-medium text-primary">Integrate your Appwrite account</h2>
+    <p class="text-sub-body font-medium" style:margin-block-start="0.25rem">
         Sign in with your Appwrite account and see the magic happen in your ticket.
     </p>
     <a
@@ -144,8 +144,8 @@
 {/if}
 <hr />
 
-<h2 class="web-sub-body-500 text-primary">Add your tribe</h2>
-<p class="web-sub-body-500" style:margin-block-start="0.25rem">
+<h2 class="text-sub-body font-medium text-primary">Add your tribe</h2>
+<p class="text-sub-body font-medium" style:margin-block-start="0.25rem">
     Customize your Init ticket with your technology.
 </p>
 <div class="tribes">

@@ -97,7 +97,7 @@
             </p>
             <Technologies />
             <a href="/docs/sdks" class="web-button is-secondary" style:align-self="start">
-                <span class="web-sub-body-500">Explore all technologies</span>
+                <span class="text-sub-body font-medium">Explore all technologies</span>
             </a>
             <div class="web-is-not-mobile spline-wrapper absolute">
                 <img
@@ -158,8 +158,8 @@
                                 width="48"
                                 height="48"
                             />
-                            <h4 class="web-sub-body-500 text-primary mt-2">Auth</h4>
-                            <p class="web-sub-body-400 mt-1">
+                            <h4 class="text-sub-body font-medium text-primary mt-2">Auth</h4>
+                            <p class="text-sub-body mt-1">
                                 Sign in users with multiple OAuth providers.
                             </p>
                         </a>
@@ -180,10 +180,8 @@
                                 width="48"
                                 height="48"
                             />
-                            <h4 class="web-sub-body-500 text-primary mt-2">Databases</h4>
-                            <p class="web-sub-body-400 mt-1">
-                                Store your application and user data.
-                            </p>
+                            <h4 class="text-sub-body font-medium text-primary mt-2">Databases</h4>
+                            <p class="text-sub-body mt-1">Store your application and user data.</p>
                         </a>
                     </li>
                     <li>
@@ -202,8 +200,8 @@
                                 width="48"
                                 height="48"
                             />
-                            <h4 class="web-sub-body-500 text-primary mt-2">Functions</h4>
-                            <p class="web-sub-body-400 mt-1">
+                            <h4 class="text-sub-body font-medium text-primary mt-2">Functions</h4>
+                            <p class="text-sub-body mt-1">
                                 Extend and customize your server's functionality.
                             </p>
                         </a>
@@ -224,8 +222,8 @@
                                 width="48"
                                 height="48"
                             />
-                            <h4 class="web-sub-body-500 text-primary mt-2">Messaging</h4>
-                            <p class="web-sub-body-400 mt-1">
+                            <h4 class="text-sub-body font-medium text-primary mt-2">Messaging</h4>
+                            <p class="text-sub-body mt-1">
                                 Send and schedule email, SMS, and push notifications.
                             </p>
                         </a>
@@ -246,8 +244,8 @@
                                 width="48"
                                 height="48"
                             />
-                            <h4 class="web-sub-body-500 text-primary mt-2">Storage</h4>
-                            <p class="web-sub-body-400 mt-1">
+                            <h4 class="text-sub-body font-medium text-primary mt-2">Storage</h4>
+                            <p class="text-sub-body mt-1">
                                 Store images, videos, documents, and files.
                             </p>
                         </a>
@@ -268,10 +266,8 @@
                                 width="48"
                                 height="48"
                             />
-                            <h4 class="web-sub-body-500 text-primary mt-2">Realtime</h4>
-                            <p class="web-sub-body-400 mt-1">
-                                Respond to server events in realtime.
-                            </p>
+                            <h4 class="text-sub-body font-medium text-primary mt-2">Realtime</h4>
+                            <p class="text-sub-body mt-1">Respond to server events in realtime.</p>
                         </a>
                     </li>
                 </ul>
@@ -289,24 +285,24 @@
                 <ul class="web-grid-row-2">
                     <li>
                         <a href="/docs/sdks" class="web-card is-normal">
-                            <h4 class="web-sub-body-500 text-primary mt-2">SDKs</h4>
-                            <p class="web-sub-body-400 mt-1">
+                            <h4 class="text-sub-body font-medium text-primary mt-2">SDKs</h4>
+                            <p class="text-sub-body mt-1">
                                 Light-weight SDKs for your favorite platforms.
                             </p>
                         </a>
                     </li>
                     <li>
                         <a href="/docs/apis/rest" class="web-card is-normal">
-                            <h4 class="web-sub-body-500 text-primary mt-2">REST API</h4>
-                            <p class="web-sub-body-400 mt-1">
+                            <h4 class="text-sub-body font-medium text-primary mt-2">REST API</h4>
+                            <p class="text-sub-body mt-1">
                                 Integrate with HTTP requests without the needing an SDK.
                             </p>
                         </a>
                     </li>
                     <li>
                         <a href="/docs/apis/graphql" class="web-card is-normal">
-                            <h4 class="web-sub-body-500 text-primary mt-2">GraphQL</h4>
-                            <p class="web-sub-body-400 mt-1">
+                            <h4 class="text-sub-body font-medium text-primary mt-2">GraphQL</h4>
+                            <p class="text-sub-body mt-1">
                                 Leverage GraphQL through our SDKs or integrate directly with REST
                                 endpoints.
                             </p>
@@ -314,8 +310,8 @@
                     </li>
                     <li>
                         <a href="/docs/apis/realtime" class="web-card is-normal">
-                            <h4 class="web-sub-body-500 text-primary mt-2">Realtime</h4>
-                            <p class="web-sub-body-400 mt-1">
+                            <h4 class="text-sub-body font-medium text-primary mt-2">Realtime</h4>
+                            <p class="text-sub-body mt-1">
                                 Respond to auth, databases, storage, and function events in
                                 realtime.
                             </p>
@@ -335,32 +331,32 @@
                 <ul class="web-grid-row-4">
                     <li>
                         <a href="/docs/advanced/migrations/self-hosted" class="web-card is-normal">
-                            <h4 class="web-sub-body-500 text-primary mt-2">Self-hosted</h4>
-                            <p class="web-sub-body-400 mt-1">
+                            <h4 class="text-sub-body font-medium text-primary mt-2">Self-hosted</h4>
+                            <p class="text-sub-body mt-1">
                                 Move data from self-hosted to Appwrite Cloud.
                             </p>
                         </a>
                     </li>
                     <li>
                         <a href="/docs/advanced/migrations/firebase" class="web-card is-normal">
-                            <h4 class="web-sub-body-500 text-primary mt-2">Firebase</h4>
-                            <p class="web-sub-body-400 mt-1">
+                            <h4 class="text-sub-body font-medium text-primary mt-2">Firebase</h4>
+                            <p class="text-sub-body mt-1">
                                 Migrate users and data from Firebase to Appwrite.
                             </p>
                         </a>
                     </li>
                     <li>
                         <a href="/docs/advanced/migrations/supabase" class="web-card is-normal">
-                            <h4 class="web-sub-body-500 text-primary mt-2">Supabase</h4>
-                            <p class="web-sub-body-400 mt-1">
+                            <h4 class="text-sub-body font-medium text-primary mt-2">Supabase</h4>
+                            <p class="text-sub-body mt-1">
                                 Migrate users and data from Supabase to Appwrite.
                             </p>
                         </a>
                     </li>
                     <li>
                         <a href="/docs/advanced/migrations/nhost" class="web-card is-normal">
-                            <h4 class="web-sub-body-500 text-primary mt-2">Nhost</h4>
-                            <p class="web-sub-body-400 mt-1">
+                            <h4 class="text-sub-body font-medium text-primary mt-2">Nhost</h4>
+                            <p class="text-sub-body mt-1">
                                 Migrate users and data from NHost to Appwrite.
                             </p>
                         </a>

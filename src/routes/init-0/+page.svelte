@@ -197,7 +197,7 @@
                 {:else if i === 4}
                     <Day5 {date} release={day.release} />
                 {:else}
-                    <h2 class="web-eyebrow text-primary">
+                    <h2 class="text-micro uppercase text-primary">
                         <div class="web-dot" />
                         {date}
                         <span class="web-u-color-text-accent">_</span>
@@ -273,7 +273,7 @@
         <div class="container">
             <div class="text">
                 <h2 class="text-label text-primary">Start building with Appwrite</h2>
-                <p class="web-main-body-500">
+                <p class="text-body font-medium">
                     Appwrite's open-source platform lets you add Auth, DBs, Functions and Storage to
                     your product and build any application at any scale, own your data, and use your
                     preferred coding languages and tools.

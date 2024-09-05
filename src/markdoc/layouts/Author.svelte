@@ -200,7 +200,7 @@
 									data-orientation="horizontal"
 									data-melt-tabs-trigger=""
 								>
-									<span class="web-main-body-500">Latest</span>
+									<span class="text-body font-medium">Latest</span>
 								</button>
 							</li>
 							<li class="web-secondary-tabs-item">
@@ -214,7 +214,7 @@
 									data-orientation="horizontal"
 									data-melt-tabs-trigger=""
 								>
-									<span class="web-main-body-500">News</span>
+									<span class="text-body font-medium">News</span>
 								</button>
 							</li>
 							<li class="web-secondary-tabs-item">
@@ -228,7 +228,7 @@
 									data-orientation="horizontal"
 									data-melt-tabs-trigger=""
 								>
-									<span class="web-main-body-500">Insights</span>
+									<span class="text-body font-medium">Insights</span>
 								</button>
 							</li>
 							<li class="web-secondary-tabs-item">
@@ -242,7 +242,7 @@
 									data-orientation="horizontal"
 									data-melt-tabs-trigger=""
 								>
-									<span class="web-main-body-500">Tutorials</span>
+									<span class="text-body font-medium">Tutorials</span>
 								</button>
 							</li>
 							<li class="web-secondary-tabs-item">
@@ -256,7 +256,7 @@
 									data-orientation="horizontal"
 									data-melt-tabs-trigger=""
 								>
-									<span class="web-main-body-500">Changelog</span>
+									<span class="text-body font-medium">Changelog</span>
 								</button>
 							</li>
 						</ul> -->

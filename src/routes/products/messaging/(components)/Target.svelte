@@ -235,7 +235,7 @@
                 />
 
                 <foreignObject x={textPos[0]} y={textPos[1]} width="360" height="64">
-                    <span class="web-eyebrow text-primary" data-active={$selected[i]}>
+                    <span class="text-micro uppercase text-primary" data-active={$selected[i]}>
                         {device.value}
                     </span>
                 </foreignObject>
@@ -320,10 +320,10 @@
                                             return next;
                                         }}
                                     />
-                                    <span class="web-sub-body-500 text-primary">
+                                    <span class="text-sub-body font-medium text-primary">
                                         {user.name}
                                     </span>
-                                    <span class="web-caption-400">
+                                    <span class="text-caption">
                                         &nbsp;({selectedDevices}/{user.devices.length} targets)
                                     </span>
                                 </div>
@@ -340,7 +340,7 @@
                                             />
                                             <label for="device-{i}-{j}">
                                                 <span class="type">{device.type}</span>
-                                                <span class="web-caption-400">{device.value}</span>
+                                                <span class="text-caption">{device.value}</span>
                                             </label>
                                         </li>
                                     {/each}

@@ -53,7 +53,7 @@
             style="flex-wrap: wrap-reverse;"
         >
             <div class="flex items-center gap-4">
-                <h5 class="web-main-body-600 text-primary">Was this page helpful?</h5>
+                <h5 class="text-body font-semibold text-primary">Was this page helpful?</h5>
                 <div class="flex gap-2">
                     <button
                         class="web-radio-button"
@@ -79,7 +79,7 @@
                 </div>
             </div>
             <div class="web-content-footer-header-end">
-                <ul class="web-metadata web-caption-400">
+                <ul class="web-metadata text-caption">
                     {#if date}
                         <li>Last updated on {new Date(date)?.toLocaleDateString()}</li>
                     {/if}

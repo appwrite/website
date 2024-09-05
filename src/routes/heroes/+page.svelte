@@ -141,7 +141,7 @@
                 <section class="container hero web-u-padding-block-end-0">
                     <div>
                         <h1 class="text-display font-aeonik-pro text-primary">Appwrite Heroes</h1>
-                        <p class="web-main-body-500 mt-5">
+                        <p class="text-body font-medium mt-5">
                             If you love building, writing, speaking, and helping other developers
                             build with Appwrite, help us support you by joining the Appwrite Heroes
                             program and becoming a leader in our developer community.
@@ -169,7 +169,7 @@
                             About Appwrite Heroes
                         </h2>
                         <div>
-                            <p class="web-sub-body-500">
+                            <p class="text-sub-body font-medium">
                                 The Appwrite Heroes program is an exclusive group of developers who
                                 are experts in Appwrite and dedicated to creating valuable content
                                 to assist other developers in achieving success. Appwrite Heroes
@@ -237,7 +237,7 @@
                         </h2>
                     </section>
                     <div class="mt-20 overflow-hidden">
-                        <ul class="web-info-boxes web-sub-body-500">
+                        <ul class="web-info-boxes text-sub-body font-medium">
                             <li class="web-info-boxes-item">
                                 <img
                                     src="/images/icons/gradients/discussion.svg"

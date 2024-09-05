@@ -185,9 +185,7 @@
                                 >
                                     <span aria-hidden="true" class="web-icon-star" />
                                     <span>Star on GitHub</span>
-                                    <span class="web-inline-tag web-sub-body-400"
-                                        >{GITHUB_STARS}</span
-                                    >
+                                    <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
                                 </a>
                             </div>
                         </div>
@@ -277,7 +275,7 @@
                         >
                             <div>
                                 <h3 class="text-label text-primary">Check our Open Issues</h3>
-                                <p class="web-main-body-500 mt-1">
+                                <p class="text-body font-medium mt-1">
                                     Anyone can join and help Appwrite become better.
                                 </p>
                                 <a
@@ -305,8 +303,7 @@
                                         {#each data.issues as issue}
                                             <tr class="web-table-line-row">
                                                 <td class="web-table-line-cell whitespace-nowrap">
-                                                    <span class="web-caption-400"
-                                                        >#{issue.number}</span
+                                                    <span class="text-caption">#{issue.number}</span
                                                     >
                                                 </td>
                                                 <td class="web-table-line-cell">
@@ -315,7 +312,7 @@
                                                             href={issue.url}
                                                             target="_blank"
                                                             rel="noopener noreferrer"
-                                                            class="web-link web-sub-body-500"
+                                                            class="web-link text-sub-body font-medium"
                                                         >
                                                             {issue.title}
                                                         </a>
@@ -349,8 +346,10 @@
                             <div
                                 class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
                             >
-                                <div class="web-sub-body-500 text-primary">Create content</div>
-                                <div class="web-sub-body-400">
+                                <div class="text-sub-body font-medium text-primary">
+                                    Create content
+                                </div>
+                                <div class="text-sub-body">
                                     Help others discover Appwrite with videos and blogs.
                                 </div>
                             </div>
@@ -359,8 +358,10 @@
                             <div
                                 class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
                             >
-                                <div class="web-sub-body-500 text-primary">Present at meetups</div>
-                                <div class="web-sub-body-400">
+                                <div class="text-sub-body font-medium text-primary">
+                                    Present at meetups
+                                </div>
+                                <div class="text-sub-body">
                                     Share your experience and represent Appwrite in public.
                                 </div>
                             </div>
@@ -369,8 +370,10 @@
                             <div
                                 class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
                             >
-                                <div class="web-sub-body-500 text-primary">Report bugs</div>
-                                <div class="web-sub-body-400">
+                                <div class="text-sub-body font-medium text-primary">
+                                    Report bugs
+                                </div>
+                                <div class="text-sub-body">
                                     Find bugs and submit PRs to fix them.
                                 </div>
                             </div>
@@ -379,8 +382,10 @@
                             <div
                                 class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
                             >
-                                <div class="web-sub-body-500 text-primary">Submit new ideas</div>
-                                <div class="web-sub-body-400">
+                                <div class="text-sub-body font-medium text-primary">
+                                    Submit new ideas
+                                </div>
+                                <div class="text-sub-body">
                                     Suggest features, integrations, or SDKs for our roadmap.
                                 </div>
                             </div>
@@ -389,10 +394,10 @@
                             <div
                                 class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
                             >
-                                <div class="web-sub-body-500 text-primary">
+                                <div class="text-sub-body font-medium text-primary">
                                     Improve documentation
                                 </div>
-                                <div class="web-sub-body-400">
+                                <div class="text-sub-body">
                                     Find improvements in our docs and improve accessibility.
                                 </div>
                             </div>
@@ -401,8 +406,10 @@
                             <div
                                 class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
                             >
-                                <div class="web-sub-body-500 text-primary">Helping others</div>
-                                <div class="web-sub-body-400">
+                                <div class="text-sub-body font-medium text-primary">
+                                    Helping others
+                                </div>
+                                <div class="text-sub-body">
                                     Support developers with their projects and contributions.
                                 </div>
                             </div>

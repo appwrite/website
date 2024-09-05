@@ -42,7 +42,7 @@
             <div class="shadow" />
         </div>
         <a href="/init" rel="noopener noreferrer" class="action">
-            <span class="web-caption-500">Join now</span>
+            <span class="text-caption font-medium">Join now</span>
             <span class="web-icon-arrow-right" aria-hidden="true" />
             <div class="shadow" />
         </a>
