@@ -40,9 +40,17 @@ The keyboard comes with Mac layout keys pre-installed for macOS which can also b
 |Switch support|Hot-swappable switches with 3 & 5 pin|
 |Rollover|N-key rollover|
 
-# How to change the backlight {% #how-to-change-the-backlight %}
+# Controlling the backlighting {% #controlling-the-backlighting %}
 
-Press `Fn + Home` to change the RGB backlight effect and cycle through all the lights.
+|Key Combination|Function|
+|----|----|
+|`Fn + PgDn`|Toggle backlighting|
+|`Fn + Del`|Cycle lighting patterns|
+|`Fn + Home`|Adjust color of current pattern|
+|`Fn + Up`|Increase brightness|
+|`Fn + Down`|Decrease brightness|
+|`Fn + Right`|Increase speed of effect|
+|`Fn + Left`|Decrease speed of effect|
 
 # How to get the Appwriter {% #how-to-get-the-appwriter %}
 
