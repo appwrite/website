@@ -34,7 +34,7 @@
 
 <Main>
     <Hero />
-    <div class="bg-greyscale-100 light space-y-10 pb-20">
+    <div class="bg-greyscale-100 light space-y-10 pb-32">
         <Kickstart />
         <GetStarted />
         <Community />

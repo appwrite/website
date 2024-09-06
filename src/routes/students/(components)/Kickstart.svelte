@@ -2,9 +2,9 @@
     import Kickstart from '../(assets)/kickstart.svg';
 </script>
 
-<div class="container grid md:grid-cols-2 place-content-center items-center min-h-80 py-20">
-    <div class="space-y-8 text-secondary md:max-w-[75%]">
-        <h2 class="text-4xl text-primary font-aeonik-pro">
+<div class="container grid min-h-80 place-content-center items-center py-40 md:grid-cols-2">
+    <div class="text-secondary space-y-8 md:max-w-[75%]">
+        <h2 class="text-primary font-aeonik-pro text-4xl">
             Kickstart your developer journey with Appwrite
         </h2>
         <p>
