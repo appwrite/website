@@ -9,7 +9,7 @@
 
 <span
     class={classNames(
-        'badge text-xs self-start uppercase font-aeonik-fono text-white py-[0.375rem] px-3 rounded-[0.375rem] backdrop-blur-2xl',
+        'badge font-aeonik-fono self-start rounded-[0.375rem] py-[0.375rem] px-3 text-xs uppercase text-white backdrop-blur-2xl',
         classes
     )}
     {...props}
