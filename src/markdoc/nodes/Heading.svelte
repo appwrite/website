@@ -74,14 +74,3 @@
         <slot />
     </svelte:element>
 {/if}
-
-<style>
-    .text-title font-aeonik-pro {
-        margin-block-end: 1rem;
-        margin-block-start: 2rem;
-    }
-
-    .text-sub-body font-medium.in-policy {
-        margin-block-end: 1.25rem;
-    }
-</style>
