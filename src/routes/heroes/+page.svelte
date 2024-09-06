@@ -79,6 +79,33 @@
             twitter: 'https://twitter.com/devnishant10',
             linkedin: 'https://www.linkedin.com/in/nishantj2002/',
             avatar: 'images/heroes/avatars/nishant.png'
+        },
+        {
+            name: 'Vincent Ge',
+            role: 'DevRel Engineer',
+            bio: 'Vincent Ge is a DevRel Engineer who has actively been supporting open-source developers and communities for the last few years. He is a former member of the Appwrite DevRel team and a forever beloved part of our community.',
+            github: 'https://github.com/gewenyu99/',
+            twitter: 'https://x.com/WenYuGe1',
+            linkedin: 'https://www.linkedin.com/in/wen-yu-ge/',
+            avatar: 'images/heroes/avatars/vincent.png'
+        },
+        {
+            name: 'Taylor Desseyn',
+            role: 'Recruiter Advocate',
+            bio: 'Taylor Desseyn is a skilled people connector and has helped 600+ individuals find their perfect career fit in tech. His knack for creating community shines through his use of social media and content creation',
+            github: 'https://github.com/tdesseyn',
+            twitter: 'https://x.com/tdesseyn',
+            linkedin: 'https://www.linkedin.com/in/taylordesseyn/',
+            avatar: 'images/heroes/avatars/taylor.png'
+        },
+        {
+            name: 'Demola Malomo',
+            role: 'Software Engineer & Technical Writer',
+            bio: 'Demola Malomo is a software engineer and technical writer from Lagos, Nigeria. He primarily code in JavaScript and TypeScript and has been learning Rust and Go.',
+            github: 'https://github.com/Mr-Malomz',
+            twitter: 'https://x.com/malomz',
+            linkedin: 'https://www.linkedin.com/in/malomoademola/',
+            avatar: 'images/heroes/avatars/demola.png'
         }
     ];
 
