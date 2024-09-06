@@ -115,8 +115,8 @@
     --font-size-description--letter-spacing: var(--letter-spacing-tighter);
     --font-size-label: 1.5rem;
     --font-size-label--line-height: 1.75rem;
-    --font-size-title: clamp(2.5rem, 5vw, 2.5rem);
-    --font-size-title--line-height: clamp(2.75rem, 5.5vw, 2.75rem);
+    --font-size-title: clamp(2rem, 5vw, 2.5rem);
+    --font-size-title--line-height: clamp(2.125rem, 5.5vw, 2.75rem);
     --font-size-title--letter-spacing: var(--letter-spacing-squeezed);
     --font-size-display: clamp(3rem, 7vw, 4rem);
     --font-size-display--line-height: clamp(3.125rem, 7.5vw, 4.25rem);
