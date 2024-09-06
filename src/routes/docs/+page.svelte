@@ -72,7 +72,7 @@
             <img src="/images/bgs/docs-blur-1.svg" alt="" />
         </div>
 
-        <div class="web-u-opacity-40-mobile absolute top-4" style="    margin-inline-start: -30px;">
+        <div class="web-u-opacity-40-mobile absolute top-4 left-0">
             <enhanced:img src="./blur-2.png" alt="" />
         </div>
 
@@ -158,7 +158,7 @@
                                 width="48"
                                 height="48"
                             />
-                            <h4 class="text-sub-body font-medium text-primary mt-2">Auth</h4>
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Auth</h4>
                             <p class="text-sub-body mt-1">
                                 Sign in users with multiple OAuth providers.
                             </p>
@@ -180,7 +180,7 @@
                                 width="48"
                                 height="48"
                             />
-                            <h4 class="text-sub-body font-medium text-primary mt-2">Databases</h4>
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Databases</h4>
                             <p class="text-sub-body mt-1">Store your application and user data.</p>
                         </a>
                     </li>
@@ -200,7 +200,7 @@
                                 width="48"
                                 height="48"
                             />
-                            <h4 class="text-sub-body font-medium text-primary mt-2">Functions</h4>
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Functions</h4>
                             <p class="text-sub-body mt-1">
                                 Extend and customize your server's functionality.
                             </p>
@@ -222,7 +222,7 @@
                                 width="48"
                                 height="48"
                             />
-                            <h4 class="text-sub-body font-medium text-primary mt-2">Messaging</h4>
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Messaging</h4>
                             <p class="text-sub-body mt-1">
                                 Send and schedule email, SMS, and push notifications.
                             </p>
@@ -244,7 +244,7 @@
                                 width="48"
                                 height="48"
                             />
-                            <h4 class="text-sub-body font-medium text-primary mt-2">Storage</h4>
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Storage</h4>
                             <p class="text-sub-body mt-1">
                                 Store images, videos, documents, and files.
                             </p>
@@ -266,7 +266,7 @@
                                 width="48"
                                 height="48"
                             />
-                            <h4 class="text-sub-body font-medium text-primary mt-2">Realtime</h4>
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Realtime</h4>
                             <p class="text-sub-body mt-1">Respond to server events in realtime.</p>
                         </a>
                     </li>
@@ -285,7 +285,7 @@
                 <ul class="web-grid-row-2">
                     <li>
                         <a href="/docs/sdks" class="web-card is-normal">
-                            <h4 class="text-sub-body font-medium text-primary mt-2">SDKs</h4>
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">SDKs</h4>
                             <p class="text-sub-body mt-1">
                                 Light-weight SDKs for your favorite platforms.
                             </p>
@@ -293,7 +293,7 @@
                     </li>
                     <li>
                         <a href="/docs/apis/rest" class="web-card is-normal">
-                            <h4 class="text-sub-body font-medium text-primary mt-2">REST API</h4>
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">REST API</h4>
                             <p class="text-sub-body mt-1">
                                 Integrate with HTTP requests without the needing an SDK.
                             </p>
@@ -301,7 +301,7 @@
                     </li>
                     <li>
                         <a href="/docs/apis/graphql" class="web-card is-normal">
-                            <h4 class="text-sub-body font-medium text-primary mt-2">GraphQL</h4>
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">GraphQL</h4>
                             <p class="text-sub-body mt-1">
                                 Leverage GraphQL through our SDKs or integrate directly with REST
                                 endpoints.
@@ -310,7 +310,7 @@
                     </li>
                     <li>
                         <a href="/docs/apis/realtime" class="web-card is-normal">
-                            <h4 class="text-sub-body font-medium text-primary mt-2">Realtime</h4>
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Realtime</h4>
                             <p class="text-sub-body mt-1">
                                 Respond to auth, databases, storage, and function events in
                                 realtime.
@@ -331,7 +331,7 @@
                 <ul class="web-grid-row-4">
                     <li>
                         <a href="/docs/advanced/migrations/self-hosted" class="web-card is-normal">
-                            <h4 class="text-sub-body font-medium text-primary mt-2">Self-hosted</h4>
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Self-hosted</h4>
                             <p class="text-sub-body mt-1">
                                 Move data from self-hosted to Appwrite Cloud.
                             </p>
@@ -339,7 +339,7 @@
                     </li>
                     <li>
                         <a href="/docs/advanced/migrations/firebase" class="web-card is-normal">
-                            <h4 class="text-sub-body font-medium text-primary mt-2">Firebase</h4>
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Firebase</h4>
                             <p class="text-sub-body mt-1">
                                 Migrate users and data from Firebase to Appwrite.
                             </p>
@@ -347,7 +347,7 @@
                     </li>
                     <li>
                         <a href="/docs/advanced/migrations/supabase" class="web-card is-normal">
-                            <h4 class="text-sub-body font-medium text-primary mt-2">Supabase</h4>
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Supabase</h4>
                             <p class="text-sub-body mt-1">
                                 Migrate users and data from Supabase to Appwrite.
                             </p>
@@ -355,7 +355,7 @@
                     </li>
                     <li>
                         <a href="/docs/advanced/migrations/nhost" class="web-card is-normal">
-                            <h4 class="text-sub-body font-medium text-primary mt-2">Nhost</h4>
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Nhost</h4>
                             <p class="text-sub-body mt-1">
                                 Migrate users and data from NHost to Appwrite.
                             </p>
