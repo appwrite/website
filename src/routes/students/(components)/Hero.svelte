@@ -31,21 +31,21 @@
 
 <section
     class={classNames(
-        'grid md:grid-cols-3 h-screen relative place-items-center h-full w-full gridLine horizontal mt-12 min-h-[50vh]'
+        'gridLine horizontal relative mt-32 grid h-full min-h-[50vh] w-full place-items-center md:grid-cols-3'
     )}
 >
     <div class="pattern relative" />
     <div
-        class="py-10 flex w-full flex-col items-center text-center gap-8 px-8 justify-center h-full relative gridLine vertical bg-gradient-to-t from-accent/5 to-transparent"
+        class="gridLine vertical from-accent/5 relative flex h-full w-full flex-col items-center justify-center gap-8 bg-gradient-to-t to-transparent py-10 px-8 text-center"
     >
         <Logos />
-        <h1 class="text-white text-5xl font-aeonik-pro">Build your next project with Appwrite</h1>
+        <h1 class="font-aeonik-pro text-5xl text-white">Build your next project with Appwrite</h1>
         <p class="text-secondary font-medium">
             Appwrite is part of the GitHub student program. Students receive two years of Appwrite
             cloud for free.
         </p>
 
-        <div class="flex gap-4 items-center">
+        <div class="flex items-center gap-4">
             <Button href={PUBLIC_APPWRITE_DASHBOARD}>Sign up now</Button>
             <Button href={PUBLIC_APPWRITE_DASHBOARD} variant="secondary">
                 <span class="web-icon-github" slot="icon" />
@@ -57,12 +57,12 @@
 </section>
 
 <div
-    class="container grid md:grid-cols-3 py-20 gap-16 text-center min-h-40 items-start place-content-center"
+    class="container grid min-h-40 place-content-center items-start gap-16 py-32 text-center md:grid-cols-3"
 >
     {#each items as { label, description, icon }}
         <div class="flex flex-col justify-center">
-            <img src={icon} alt={label} class="size-12 mb-3 mx-auto" />
-            <h3 class="text-primary text-lg font-aeonik-pro">{label}</h3>
+            <img src={icon} alt={label} class="mx-auto mb-3 size-12" />
+            <h3 class="text-primary font-aeonik-pro text-lg">{label}</h3>
             <p class="text-secondary">
                 {description}
             </p>

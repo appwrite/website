@@ -3,9 +3,9 @@
     import Button from '$lib/components/ui/Button.svelte';
 </script>
 
-<div class="container grid md:grid-cols-2 items-center">
+<div class="container grid items-center md:grid-cols-2">
     <div class="space-y-4 md:pr-48">
-        <h2 class="text-primary text-title text-pretty font-aeonik-pro">
+        <h2 class="text-primary text-title font-aeonik-pro text-pretty">
             Get help from the open source community
         </h2>
         <p class="text-secondary text-pretty">
@@ -13,9 +13,9 @@
             products. Gain access to a wealth of knowledge, support, and shared experiences to help
             navigate the challenges of startup growth.
         </p>
-        <Button variant="secondary" href="/discord" class="text-accent py-1 text-sm mt-10">
-            <span slot="icon" class="web-icon-discord" />
-            Join our Discord</Button
+        <a href="/discord" class="web-button is-secondary text-accent mt-10 py-1 text-sm">
+            <span class="web-icon-discord" />
+            Join our Discord</a
         >
     </div>
     <img src={Chat} alt="Chat" />
