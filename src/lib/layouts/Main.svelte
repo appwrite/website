@@ -245,11 +245,6 @@
                 </nav>
             </div>
             <div class="web-main-header-end">
-                <Button href="https://github.com/appwrite/appwrite/stargazers" variant="text">
-                    <span class="web-icon-star" aria-hidden="true" />
-                    Star on GitHub
-                    <span class="text-sub-body">{GITHUB_STARS}</span>
-                </Button>
                 <a
                     href="https://github.com/appwrite/appwrite/stargazers"
                     target="_blank"

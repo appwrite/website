@@ -106,7 +106,7 @@
                 <div
                     class="l-integrations-hero web-u-max-width-680 flex flex-col justify-center gap-5"
                 >
-                    <div class="text-micro uppercase text-primary">
+                    <div class="text-micro text-primary uppercase">
                         INTEGRATIONS<span class="web-u-color-text-accent">_</span>
                     </div>
                     <h1 class="text-headline font-aeonik-pro text-primary">
@@ -145,7 +145,7 @@
                         <section class="flex flex-col">
                             <section class="flex flex-col gap-4">
                                 <h2
-                                    class="web-side-nav-header text-micro uppercase whitespace-nowrap"
+                                    class="web-side-nav-header text-micro whitespace-nowrap uppercase"
                                 >
                                     Platform
                                 </h2>
@@ -171,7 +171,7 @@
                             <div class="web-u-sep-block-start my-6"></div>
                             <section class="flex flex-col gap-4">
                                 <h2
-                                    class="web-side-nav-header text-micro uppercase whitespace-nowrap"
+                                    class="web-side-nav-header text-micro whitespace-nowrap uppercase"
                                 >
                                     Categories
                                 </h2>
@@ -245,27 +245,24 @@
                                                         class="web-card is-normal h-full"
                                                         style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                                                     >
-                                                        <div
-                                                            class="flex items-center justify-between"
-                                                        >
-                                                            <img
-                                                                class="web-user-box-image is-32px"
-                                                                src={item.product.avatar}
-                                                                alt={item.product.vendor}
-                                                                width="32"
-                                                                height="32"
-                                                            />
+                                                        <div class="mb-4 flex justify-between">
+                                                            <div class="flex items-center gap-4">
+                                                                <img
+                                                                    class="web-user-box-image is-32px"
+                                                                    src={item.product.avatar}
+                                                                    alt={item.product.vendor}
+                                                                    width="32"
+                                                                    height="32"
+                                                                />
+
+                                                                <h4 class="text-primary">
+                                                                    {item.title}
+                                                                </h4>
+                                                            </div>
                                                             <span
                                                                 class="icon-arrow-right ml-auto"
                                                                 aria-hidden="true"
                                                             ></span>
-                                                        </div>
-                                                        <div
-                                                            class="flex items-center justify-between gap-2"
-                                                        >
-                                                            <h4 class="text-primary mt-3">
-                                                                {item.title}
-                                                            </h4>
                                                         </div>
                                                         <p class="text-sub-body mt-1">
                                                             {item.description}
@@ -309,7 +306,7 @@
                                                                 height="40"
                                                             />
                                                             <div
-                                                                class="text-body font-medium gap-2"
+                                                                class="text-body gap-2 font-medium"
                                                             >
                                                                 <span class="text-primary mt-3">
                                                                     {item.title}
@@ -363,26 +360,33 @@
                                                                     style="--card-padding:1.5rem; --card-padding-mobile:1.5rem; --card-border-radius: 1.5rem"
                                                                 >
                                                                     <div
-                                                                        class="flex items-center justify-between gap-2"
+                                                                        class="mb-4 flex justify-between"
                                                                     >
-                                                                        <img
-                                                                            class="web-user-box-image is-32px"
-                                                                            src={integration.product
-                                                                                .avatar}
-                                                                            alt={integration.product
-                                                                                .vendor}
-                                                                            width="32"
-                                                                            height="32"
-                                                                        />
+                                                                        <div
+                                                                            class="flex items-center gap-4"
+                                                                        >
+                                                                            <img
+                                                                                class="web-user-box-image is-32px"
+                                                                                src={integration
+                                                                                    .product.avatar}
+                                                                                alt={integration
+                                                                                    .product.vendor}
+                                                                                width="32"
+                                                                                height="32"
+                                                                            />
+
+                                                                            <h4
+                                                                                class="text-primary"
+                                                                            >
+                                                                                {integration.title}
+                                                                            </h4>
+                                                                        </div>
                                                                         <span
                                                                             class="icon-arrow-right ml-auto"
                                                                             aria-hidden="true"
                                                                         ></span>
                                                                     </div>
 
-                                                                    <h4 class="text-primary mt-3">
-                                                                        {integration.title}
-                                                                    </h4>
                                                                     <p class="text-sub-body mt-1">
                                                                         {integration.description}
                                                                     </p>
@@ -424,7 +428,7 @@
                         class="web-hero web-u-max-width-580 flex items-center justify-center gap-4"
                     >
                         <h2
-                            class="text-display font-aeonik-pro text-center text-primary max-w-[600px]"
+                            class="text-display font-aeonik-pro text-primary max-w-[600px] text-center"
                         >
                             Become a Technology Partner
                         </h2>
