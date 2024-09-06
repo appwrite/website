@@ -127,12 +127,12 @@
 
     /* Letter spacing */
     --letter-spacing-*: initial;
-    --letter-spacing-compressed: -0.022em;
-    --letter-spacing-squeezed: -0.01em;
-    --letter-spacing-tighter: -0.018em;
-    --letter-spacing-tight: -0.0045em;
-    --letter-spacing-none: 0em;
-    --letter-spacing-loose: 0.08em;
+    --letter-spacing-compressed: -0.022rem;
+    --letter-spacing-squeezed: -0.01rem;
+    --letter-spacing-tighter: -0.018rem;
+    --letter-spacing-tight: -0.0045rem;
+    --letter-spacing-none: 0rem;
+    --letter-spacing-loose: 0.08rem;
 }
 
 /* Themes */
