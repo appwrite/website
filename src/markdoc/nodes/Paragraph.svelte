@@ -15,7 +15,7 @@
     export { className as class };
 
     $: classes = (() => {
-        if (inDocs) return 'text-paragraph-md';
+        if (inDocs) return 'text-paragraph-md mb-8';
         if (inPolicy) return 'text-paragraph-md mb-4';
         if (inTable) return 'text-paragraph-md';
         if (inChangelog) return 'text-paragraph-lg mb-4 font-normal';
