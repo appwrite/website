@@ -11,7 +11,7 @@
     const tag = `h${level + 1}`;
     const ctx = hasContext('headings') ? getContext<LayoutContext>('headings') : undefined;
     const classList: Record<typeof level, string> = {
-        1: 'text-label',
+        1: 'text-label mb-4 mt-8',
         2: 'text-description',
         3: 'text-body font-medium',
         4: 'text-sub-body font-medium'
@@ -49,7 +49,8 @@
     });
 
     const inPolicy = isInPolicy();
-    $: headingClass = inPolicy && level === 1 ? 'text-title font-aeonik-pro' : classList[level];
+    $: headingClass =
+        inPolicy && level === 1 ? 'text-title font-aeonik-pro mb-4 mt-8' : classList[level];
 </script>
 
 {#if id}
