@@ -46,10 +46,10 @@
         </p>
 
         <div class="flex items-center gap-4">
-            <Button href={PUBLIC_APPWRITE_DASHBOARD}>Sign up now</Button>
-            <Button href={PUBLIC_APPWRITE_DASHBOARD} variant="secondary">
-                <span class="web-icon-github" slot="icon" />
-                GitHub Education</Button
+            <a class="web-button" href={PUBLIC_APPWRITE_DASHBOARD}>Sign up now</a>
+            <a class="web-button is-secondary" href={PUBLIC_APPWRITE_DASHBOARD}>
+                <span class="web-icon-github !text-white" />
+                GitHub Education</a
             >
         </div>
     </div>
