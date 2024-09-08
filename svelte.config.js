@@ -4,6 +4,7 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { preprocessMeltUI, sequence } from '@melt-ui/pp';
 import { markdoc } from 'svelte-markdoc-preprocess';
 import nodeAdapter from '@sveltejs/adapter-node';
+import { thumbnailPreprocess } from './scripts/thumbnails.js';
 
 /** @type {import('@sveltejs/kit').Config}*/
 const config = {
@@ -28,7 +29,8 @@ const config = {
                 integration: absolute('./src/markdoc/layouts/Integration.svelte')
             }
         }),
-        preprocessMeltUI()
+        preprocessMeltUI(),
+        thumbnailPreprocess()
     ]),
     extensions: ['.markdoc', '.svelte', '.md'],
     kit: {

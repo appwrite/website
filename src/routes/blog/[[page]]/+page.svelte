@@ -6,6 +6,7 @@
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { onMount, tick } from 'svelte';
     import { beforeNavigate } from '$app/navigation';
+    import { BlogPostCover } from '$lib/UI';
 
     export let data;
 
@@ -126,11 +127,11 @@
                         )}
                         <article class="web-feature-article mt-12">
                             <a href={featured.href} class="web-feature-article-image">
-                                <img
+                                <BlogPostCover
+                                    alt="cover"
+                                    isFeatured
                                     src={featured.cover}
                                     class="web-image-ratio-4/3"
-                                    loading="lazy"
-                                    alt="cover"
                                 />
                             </a>
                             <div class="web-feature-article-content">
@@ -198,6 +199,7 @@
                                 )}
                                 {#if author && !post.draft}
                                     <Article
+                                        thumbnail
                                         title={post.title}
                                         href={post.href}
                                         cover={post.cover}

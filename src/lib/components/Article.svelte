@@ -1,6 +1,6 @@
 <script lang="ts">
-    import Media from '$lib/UI/Media.svelte';
     import { formatDate } from '$lib/utils/date';
+    import { BlogPostCover, Media } from '$lib/UI';
 
     export let title: string;
     export let cover: string;
@@ -9,18 +9,23 @@
     export let timeToRead: number;
     export let author: string;
     export let avatar: string;
+    export let thumbnail: boolean = false;
 </script>
 
 <li>
     <a class="web-grid-articles-item is-transparent" {href}>
         <div class="web-grid-articles-item-image">
-            <Media
-                src={cover}
-                class="web-u-media-ratio-16-9"
-                alt={title}
-                autoplay
-                controls={false}
-            />
+            {#if thumbnail}
+                <BlogPostCover src={cover} alt={title} class="web-u-media-ratio-16-9" />
+            {:else}
+                <Media
+                    src={cover}
+                    class="web-u-media-ratio-16-9"
+                    alt={title}
+                    autoplay
+                    controls={false}
+                />
+            {/if}
         </div>
         <div class="web-grid-articles-item-content">
             <h4 class="web-label web-u-color-text-primary">
