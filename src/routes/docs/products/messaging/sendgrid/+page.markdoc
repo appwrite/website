@@ -86,7 +86,6 @@ const client = new sdk.Client();
 const messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>') // Your secret API key
 ;
@@ -102,13 +101,38 @@ let client = new sdk.Client();
 let messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>') // Your secret API key
 ;
 
 
 const messaging = await messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
+```
+```go
+package main
+
+import (
+    "fmt"
+
+	"github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+	client := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"), // Your project ID
+		appwrite.WithKey("<API_KEY>"), // Your secret API key
+	)
+
+	messaging := appwrite.NewMessaging(client)
+
+	var message, _ = messaging.CreateEmail(
+		"<MESSAGE_ID>",          
+		"<SUBJECT>",
+		"<CONTENT>",
+    )
+
+    fmt.Println(message)
+}
 ```
 ```php
 <?php
@@ -119,7 +143,6 @@ use Appwrite\Services\Messaging;
 $client = new Client();
 
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     ->setProject('<PROJECT_ID>') // Your project ID
     ->setKey('<API_KEY>') // Your secret API key
 ;
@@ -134,7 +157,6 @@ from appwrite.client import Client
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
   .set_project('<PROJECT_ID>') # Your project ID
   .set_key('<API_KEY>') # Your secret API key
 )
@@ -149,7 +171,6 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
     .set_project('<PROJECT_ID>') # Your project ID
     .set_key('<API_KEY>') # Your secret API key
 
@@ -168,7 +189,6 @@ using Appwrite.Enums;
 using Appwrite.Enums;
 
 var client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .SetProject("<PROJECT_ID>") // Your project ID
     .SetKey("<API_KEY>"); // Your secret API key
 
@@ -189,7 +209,6 @@ void main() { // Init SDK
   Messaging messaging = Messaging(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>') // Your secret API key
   ;
@@ -214,7 +233,6 @@ import io.appwrite.coroutines.CoroutineCallback
 import io.appwrite.services.Messaging
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("<API_KEY>") // Your secret API key
 
@@ -232,7 +250,6 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("<API_KEY>"); // Your secret API key
 
@@ -256,7 +273,6 @@ messaging.createEmail(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("<API_KEY>") // Your secret API key
 
@@ -296,20 +312,19 @@ const client = new sdk.Client();
 const messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>') // Your project ID
     .setKey('<YOUR_API_KEY>')        // Your secret API key
 ;
 
 const provider = await messaging.updateSendgridProvider(
-        '[PROVIDER_ID]',             // providerId
-        '[NAME]',                    // name (optional)
-        '[API_KEY]',                 // apiKey (optional)
+        '<PROVIDER_ID>',             // providerId
+        '<NAME>',                    // name (optional)
+        '<API_KEY>',                 // apiKey (optional)
         false,                       // enabled (optional)
-        '[FROM_NAME]',               // fromName (optional)
+        '<FROM_NAME>',               // fromName (optional)
         'email@example.com',         // fromEmail (optional)
-        '[REPLY_TO_NAME]',           // replyToName (optional)
-        '[REPLY_TO_EMAIL]'           // replyToEmail (optional)
+        '<REPLY_TO_NAME>',           // replyToName (optional)
+        '<REPLY_TO_EMAIL>'           // replyToEmail (optional)
     );
 ```
 ```deno
@@ -321,21 +336,51 @@ let client = new sdk.Client();
 let messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>') // Your project ID
     .setKey('<YOUR_API_KEY>')        // Your secret API key
 ;
 
 const provider = await messaging.updateSendgridProvider(
-        '[PROVIDER_ID]',             // providerId
-        '[NAME]',                    // name (optional)
-        '[API_KEY]',                 // apiKey (optional)
+        '<PROVIDER_ID>',             // providerId
+        '<NAME>',                    // name (optional)
+        '<API_KEY>',                 // apiKey (optional)
         false,                       // enabled (optional)
-        '[FROM_NAME]',               // fromName (optional)
+        '<FROM_NAME>',               // fromName (optional)
         'email@example.com',         // fromEmail (optional)
-        '[REPLY_TO_NAME]',           // replyToName (optional)
-        '[REPLY_TO_EMAIL]'           // replyToEmail (optional)
+        '<REPLY_TO_NAME>',           // replyToName (optional)
+        '<REPLY_TO_EMAIL>'           // replyToEmail (optional)
     );
+```
+```go
+package handler
+
+import (
+	"fmt"
+
+	"github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+	client := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"),                                 // Your project ID
+		appwrite.WithKey("<API_KEY>"),                                        // Your secret API key
+	)
+
+	messaging := appwrite.NewMessaging(client)
+
+	provider, _ := messaging.UpdateSendgridProvider(
+		"<PROVIDER_ID>",                                                      // providerId     
+		messaging.WithUpdateSendgridProviderName("<NAME>"),                   // name (optional)  
+		messaging.WithUpdateSendgridProviderEnabled(false),                   // apiKey (optional)   
+		messaging.WithUpdateSendgridProviderApiKey("<API_KEY>"),              // enabled (optional)     
+		messaging.WithUpdateSendgridProviderFromName("<FROM_NAME>"),          // fromName (optional)
+		messaging.WithUpdateSendgridProviderFromEmail("email@example.com"),   // fromEmail (optional)
+		messaging.WithUpdateSendgridProviderReplyToName("<REPLY_TO_NAME>"),   // replyToName (optional) 
+		messaging.WithUpdateSendgridProviderReplyToEmail("<REPLY_TO_EMAIL>"), // replyToEmail (optional)
+	)
+
+	fmt.Println(provider)
+}
 ```
 ```php
 <?php
@@ -346,7 +391,6 @@ use Appwrite\Services\Messaging;
 $client = new Client();
 
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     ->setProject('<YOUR_PROJECT_ID>') // Your project ID
     ->setKey('<YOUR_API_KEY>')        // Your secret API key
 ;
@@ -354,14 +398,14 @@ $client
 $messaging = new Messaging($client);
 
 $result = $messaging->updateSendgridProvider(
-    providerId: '[PROVIDER_ID]',
-    name: '[NAME]',                   // optional
-    apiKey: '[API_KEY]',              // optional
-    enabled: false,                   // optional
-    fromName: '[FROM_NAME]',          // optional
-    fromEmail: 'email@example.com',   // optional
-    replyToName: '[REPLY_TO_NAME]',   // optional
-    replyToEmail: '[REPLY_TO_EMAIL]'  // optional
+    providerId: '<PROVIDER_ID>',      // providerId     
+    name: '<NAME>',                   // name (optional)  
+    apiKey: '<API_KEY>',              // apiKey (optional)   
+    enabled: false,                   // enabled (optional)     
+    fromName: '<ROM_NAME>',          // fromName (optional)
+    fromEmail: 'email@example.com',   // fromEmail (optional)
+    replyToName: '<REPLY_TO_NAME>',   // replyToName (optional) 
+    replyToEmail: '<REPLY_TO_EMAIL>'  // replyToEmail (optional)
 );
 ```
 ```python
@@ -371,7 +415,6 @@ from appwrite.services.messaging import Messaging
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
   .set_project('<YOUR_PROJECT_ID>')     # Your project ID
   .set_key('<YOUR_API_KEY>')            # Your secret API key
 )
@@ -379,14 +422,14 @@ client = Client()
 messaging = Messaging(client)
 
 result = messaging.update_sendgrid_provider(
-    provider_id = '[PROVIDER_ID]',
-    name = '[NAME]',                    # optional
-    api_key = '[API_KEY]',              # optional
-    enabled = False,                    # optional
-    from_name = '[FROM_NAME]',          # optional
-    from_email = 'email@example.com',   # optional
-    reply_to_name = '[REPLY_TO_NAME]',  # optional
-    reply_to_email = '[REPLY_TO_EMAIL]' # optional
+    provider_id = '<PROVIDER_ID>',      # providerId     
+    name = '<NAME>',                    # name (optional)  
+    api_key = '<API_KEY>',              # apiKey (optional)   
+    enabled = False,                    # enabled (optional)     
+    from_name = '<FROM_NAME>',          # fromName (optional)
+    from_email = 'email@example.com',   # fromEmail (optional)
+    reply_to_name = '<REPLY_TO_NAME>',  # replyToName (optional) 
+    reply_to_email = '<REPLY_TO_EMAIL>' # replyToEmail (optional)
 )
 ```
 ```ruby
@@ -395,21 +438,20 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
     .set_project('<YOUR_PROJECT_ID>')  # Your project ID
     .set_key('<YOUR_API_KEY>')         # Your secret API key
 
 messaging = Messaging.new(client)
 
 response = messaging.update_sendgrid_provider(
-    provider_id: '[PROVIDER_ID]',
-    name: '[NAME]',                    # optional
-    api_key: '[API_KEY]',              # optional
-    enabled: false,                    # optional
-    from_name: '[FROM_NAME]',          # optional
-    from_email: 'email@example.com',   # optional
-    reply_to_name: '[REPLY_TO_NAME]',  # optional
-    reply_to_email: '[REPLY_TO_EMAIL]' # optional
+    provider_id: '<PROVIDER_ID>',      # providerId     
+    name: '<NAME>',                    # name (optional)  
+    api_key: '<API_KEY>',              # apiKey (optional)   
+    enabled: false,                    # enabled (optional)     
+    from_name: '<FROM_NAME>',          # fromName (optional)
+    from_email: 'email@example.com',   # fromEmail (optional)
+    reply_to_name: '<REPLY_TO_NAME>',  # replyToName (optional) 
+    reply_to_email: '<REPLY_TO_EMAIL>' # replyToEmail (optional)
 )
 
 puts response.inspect
@@ -420,21 +462,20 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 var client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .SetProject("<YOUR_PROJECT_ID>")   // Your project ID
     .SetKey("<YOUR_API_KEY>");         // Your secret API key
 
 var messaging = new Messaging(client);
 
 Provider result = await messaging.UpdateSendgridProvider(
-    providerId: "[PROVIDER_ID]"
-    name: "[NAME]"                     // optional
-    apiKey: "[API_KEY]"                // optional
-    enabled: false                     // optional
-    fromName: "[FROM_NAME]"            // optional
-    fromEmail: "email@example.com"     // optional
-    replyToName: "[REPLY_TO_NAME]"     // optional
-    replyToEmail: "[REPLY_TO_EMAIL]"); // optional
+    providerId: "<PROVIDER_ID>"        // providerId     
+    name: "<NAME>"                     // name (optional)  
+    apiKey: "<API_KEY>"                // apiKey (optional)   
+    enabled: false                     // enabled (optional)     
+    fromName: "<FROM_NAME>"            // fromName (optional)
+    fromEmail: "email@example.com"     // fromEmail (optional)
+    replyToName: "<REPLY_TO_NAME>"     // replyToName (optional) 
+    replyToEmail: "<REPLY_TO_EMAIL>"); // replyToEmail (optional)
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -446,20 +487,19 @@ void main() {                         // Init SDK
   Messaging messaging = Messaging(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>')  // Your project ID
     .setKey('<YOUR_API_KEY>')         // Your secret API key
   ;
 
   Future result = messaging.updateSendgridProvider(
-    providerId: '[PROVIDER_ID]',
-    name: '[NAME]',                   // optional
-    apiKey: '[API_KEY]',              // optional
-    enabled: false,                   // optional
-    fromName: '[FROM_NAME]',          // optional
-    fromEmail: 'email@example.com',   // optional
-    replyToName: '[REPLY_TO_NAME]',   // optional
-    replyToEmail: '[REPLY_TO_EMAIL]', // optional
+    providerId: '<PROVIDER_ID>',      // providerId     
+    name: '<NAME>',                   // name (optional)  
+    apiKey: '<API_KEY>',              // apiKey (optional)   
+    enabled: false,                   // enabled (optional)     
+    fromName: '<FROM_NAME>',          // fromName (optional)
+    fromEmail: 'email@example.com',   // fromEmail (optional)
+    replyToName: '<REPLY_TO_NAME>',   // replyToName (optional) 
+    replyToEmail: '<REPLY_TO_EMAIL>', // replyToEmail (optional)
   );
 
   result
@@ -476,21 +516,20 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<YOUR_PROJECT_ID>") // Your project ID
     .setKey("<YOUR_API_KEY>");       // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
 messaging.updateSendgridProvider(
-    "[PROVIDER_ID]",                 // providerId
-    "[NAME]",                        // name (optional)
-    "[API_KEY]",                     // apiKey (optional)
+    "<PROVIDER_ID>",                 // providerId
+    "<NAME>",                        // name (optional)
+    "<API_KEY>",                     // apiKey (optional)
     false,                           // enabled (optional)
-    "[FROM_NAME]",                   // fromName (optional)
+    "<FROM_NAME>",                   // fromName (optional)
     "email@example.com",             // fromEmail (optional)
-    "[REPLY_TO_NAME]",               // replyToName (optional)
-    "[REPLY_TO_EMAIL]"               // replyToEmail (optional)
+    "<REPLY_TO_NAME>",               // replyToName (optional)
+    "<REPLY_TO_EMAIL>"               // replyToEmail (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -507,21 +546,20 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<YOUR_PROJECT_ID>") // Your project ID
     .setKey("<YOUR_API_KEY>");       // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
 messaging.updateSendgridProvider(
-    "[PROVIDER_ID]",                 // providerId
-    "[NAME]",                        // name (optional)
-    "[API_KEY]",                     // apiKey (optional)
+    "<PROVIDER_ID>",                 // providerId
+    "<NAME>",                        // name (optional)
+    "<API_KEY>",                     // apiKey (optional)
     false,                           // enabled (optional)
-    "[FROM_NAME]",                   // fromName (optional)
+    "<FROM_NAME>",                   // fromName (optional)
     "email@example.com",             // fromEmail (optional)
-    "[REPLY_TO_NAME]",               // replyToName (optional)
-    "[REPLY_TO_EMAIL]"               // replyToEmail (optional)
+    "<REPLY_TO_NAME>",               // replyToName (optional)
+    "<REPLY_TO_EMAIL>"               // replyToEmail (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -536,21 +574,20 @@ messaging.updateSendgridProvider(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<YOUR_PROJECT_ID>") // Your project ID
     .setKey("<YOUR_API_KEY>")        // Your secret API key
 
 let messaging = Messaging(client)
 
 let provider = try await messaging.updateSendgridProvider(
-  providerId: "[PROVIDER_ID]",
-  name: "[NAME]",                    // optional
-  apiKey: "[API_KEY]",               // optional
-  enabled: xfalse,                   // optional
-  fromName: "[FROM_NAME]",           // optional
-  fromEmail: "email@example.com",    // optional
-  replyToName: "[REPLY_TO_NAME]",    // optional
-  replyToEmail: "[REPLY_TO_EMAIL]"   // optional
+  providerId: "<PROVIDER_ID>",       // providerId     
+  name: "<NAME>",                    // name (optional)  
+  apiKey: "<API_KEY>",               // apiKey (optional)   
+  enabled: xfalse,                   // enabled (optional)     
+  fromName: "<FROM_NAME>",           // fromName (optional)
+  fromEmail: "email@example.com",    // fromEmail (optional)
+  replyToName: "<REPLY_TO_NAME>",    // replyToName (optional) 
+  replyToEmail: "<REPLY_TO_EMAIL>"   // replyToEmail (optional)
 )
 ```
 {% /multicode %}

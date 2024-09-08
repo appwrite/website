@@ -27,8 +27,7 @@ You can generate a JWT like this on a [Client SDK](/docs/sdks#client).
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>');                 // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 const account = new Account(client);
 
@@ -38,8 +37,7 @@ const user = await account.createJWT();
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>');                 // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 final account = Account(client);
 
@@ -49,8 +47,7 @@ final jwt = await account.createJWT();
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                  // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 let account = Account(client)
 
@@ -61,8 +58,7 @@ import io.appwrite.Client
 import io.appwrite.services.Account
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                  // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 val account = Account(client)
 
@@ -81,22 +77,20 @@ Your server application can use the JWT to act on behalf of the user by creating
 
 Use JWTs tokens like this in a [Server SDK](/docs/sdks#server).
 {% multicode %}
-```js
+```server-nodejs
 const { Client } = require('node-appwrite');
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>')                  // Your project ID
-    .setJWT('eyJJ9.eyJ...886ca');                // Your secret JSON Web Token
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setJWT('<USER_JWT>');      // Your secret JSON Web Token
 ```
 
 ```php
 use Appwrite\Client;
 
 $client = (new Client())
-    ->setEndpoint('https://cloud.appwrite.io/v1')            // Your API Endpoint
-    ->setProject('<PROJECT_ID>')                             // Your project ID
-    ->setJWT('eyJJ9.eyJ...886ca');                           // Your secret JSON Web Token
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setJWT('<USER_JWT>');      // Your secret JSON Web Token
 ```
 
 ```python
@@ -105,9 +99,8 @@ from appwrite.client import Client
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-  .set_project('<PROJECT_ID>')                  # Your project ID
-  .set_jwt('eyJJ9.eyJ...886ca')                 # Your secret JSON Web Token
+  .set_project('<PROJECT_ID>') # Your project ID
+  .set_jwt('<USER_JWT>')       # Your secret JSON Web Token
 )
 ```
 
@@ -117,54 +110,63 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1')   # Your API Endpoint
-    .set_project('<PROJECT_ID>')                    # Your project ID
-    .set_jwt('eyJJ9.eyJ...886ca')                   # Your secret JSON Web Token
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_jwt('<USER_JWT>')       # Your secret JSON Web Token
 ```
 
 ```deno
 import { Client } from "https://deno.land/x/appwrite/mod.ts";
 
 let client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('<PROJECT_ID>')                     // Your project ID
-    .setJWT('eyJJ9.eyJ...886ca');                   // Your secret JSON Web Token
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setJWT('<USER_JWT>');      // Your secret JSON Web Token
+```
+
+```go
+package main
+
+import (
+	"github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+	client := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"), // Your project ID
+		appwrite.WithJWT("<USER_JWT>"),       // Your secret JSON Web Token
+	)
+}
 ```
 
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('<PROJECT_ID>')                     // Your project ID
-    .setJWT('eyJJ9.eyJ...886ca');                   // Your secret JSON Web Token
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setJWT('<USER_JWT>');      // Your secret JSON Web Token
 ```
 
 ```kotlin
 import io.appwrite.Client
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .setProject("<PROJECT_ID>")                     // Your project ID
-    .setJWT("eyJJ9.eyJ...886ca")                    // Your secret JSON Web Token
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setJWT("<USER_JWT>")       // Your secret JSON Web Token
 ```
 
 ```swift
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .setProject("<PROJECT_ID>")                     // Your project ID
-    .setJWT("eyJJ9.eyJ...886ca")                    // Your secret JSON Web Token
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setJWT("<USER_JWT>")       // Your secret JSON Web Token
 ```
 
 ```csharp
 using Appwrite;
 
 var client = new Client()
-    .SetEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .SetProject("<PROJECT_ID>")                     // Your project ID
-    .SetJWT("eyJJ9.eyJ...886ca");                   // Your secret JSON Web Token
+    .SetProject("<PROJECT_ID>") // Your project ID
+    .SetJWT("<USER_JWT>");      // Your secret JSON Web Token
 ```
 {% /multicode %}
 
@@ -187,22 +189,21 @@ Here's an example collection of birthdays with the following documents. Notice h
 | bc7fc866ad1e| Laura | 1999-09-22| "read(\"user:user-b\")"|
 | cc2fc886ad1e| Bob   | 1982-05-11| "read(\"user:user-c\")"|
 
-If you're authenticated on the client-side as `user-a` and created a JWT `'eyJJ9.eyJ...886ca'`, you can pass this JWT to a Server SDK on the backend server to fetch only the birthdays `user-a` can read.
+If you're authenticated on the client-side as `user-a` and created a JWT `'<USER_JWT>'`, you can pass this JWT to a Server SDK on the backend server to fetch only the birthdays `user-a` can read.
 
 {% multicode %}
-```js
+```server-nodejs
 const { Client } = require('node-appwrite');
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>')                  // Your project ID
-    .setJWT('eyJJ9.eyJ...886ca');                // Your secret JSON Web Token
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setJWT('<USER_JWT>');      // Your secret JSON Web Token
 
 const databases = new sdk.Databases(client);
 
 const documents = await databases.listDocuments(
-    '642f358bf4084c662590',
-    '642f3592aa5fc856ad1e'
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>'
 );
 // ... More code to manipulate the results
 ```
@@ -210,15 +211,14 @@ const documents = await databases.listDocuments(
 use Appwrite\Client;
 
 $client = (new Client())
-    .setEndpoint('https://cloud.appwrite.io/v1')            // Your API Endpoint
-    .setProject('<PROJECT_ID>')                           // Your project ID
-    .setJWT('eyJJ9.eyJ...886ca');                          // Your secret JSON Web Tokens
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setJWT('<USER_JWT>');      // Your secret JSON Web Tokens
 
 $databases = new Databases($client);
 
 $documents = $databases->listDocuments(
-    databaseId: '642f358bf4084c662590',
-    collectionId: '642f3592aa5fc856ad1e'
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>'
 );
 // ... More code to manipulate the results
 ```
@@ -228,16 +228,15 @@ from appwrite.client import Client
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1')              # Your API Endpoint
-  .set_project('<PROJECT_ID>')                             # Your project ID
-  .set_jwt('eyJJ9.eyJ...886ca')                             # Your secret JSON Web Token
+  .set_project('<PROJECT_ID>') # Your project ID
+  .set_jwt('<USER_JWT>')       # Your secret JSON Web Token
 )
 
 databases = Databases(client)
 
 documents = databases.list_documents(
-    database_id='642f358bf4084c662590',
-    collection_id='642f3592aa5fc856ad1e'
+    database_id='<DATABASE_ID>',
+    collection_id='<COLLECTION_ID>'
 )
 # ... More code to manipulate the results
 ```
@@ -247,15 +246,14 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1')            # Your API Endpoint
-    .set_project('<PROJECT_ID>')                           # Your project ID
-    .set_jwt('eyJJ9.eyJ...886ca')                           # Your secret JSON Web Token
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_jwt('<USER_JWT>')       # Your secret JSON Web Token
 
 databases = Databases.new(client)
 
 documents = databases.list_documents(
-    database_id: '642f358bf4084c662590',
-    collection_id: '642f3592aa5fc856ad1e'
+    database_id: '<DATABASE_ID>',
+    collection_id: '<COLLECTION_ID>'
 )
 # ... More code to manipulate the results
 ```
@@ -263,31 +261,51 @@ documents = databases.list_documents(
 import { Client } from "https://deno.land/x/appwrite/mod.ts";
 
 let client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('<PROJECT_ID>')                     // Your project ID
-    .setJWT('eyJJ9.eyJ...886ca');                   // Your secret JSON Web Token
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setJWT('<USER_JWT>');      // Your secret JSON Web Token
 
 let databases = new sdk.Databases(client);
 
 let documents = await databases.listDocuments(
-    '642f358bf4084c662590',
-    '642f3592aa5fc856ad1e'
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>'
 );
 // ... More code to manipulate the results
+```
+```go
+package main
+
+import (
+	"github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+	client := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"), // Your project ID
+		appwrite.WithJWT("<JWT_KEY>"),        // Your secret JSON Web Token
+	)
+
+	databases := appwrite.NewDatabases(client)
+
+	documents, _ := databases.ListDocuments(
+		"<DOCUMENT_ID>",
+		"<COLLECTION_ID>",
+	)
+    // ... More code to manipulate the results
+}
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('<PROJECT_ID>')                     // Your project ID
-    .setJWT('eyJJ9.eyJ...886ca');                   // Your secret JSON Web Token
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setJWT('<USER_JWT>');      // Your secret JSON Web Token
 
 final databases = Databases(client);
 
 final documents = await databases.listDocuments(
-    databaseId: '642f358bf4084c662590',
-    collectionId: '642f3592aa5fc856ad1e',
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
 );
 // ... More code to manipulate the results
 ```
@@ -295,15 +313,14 @@ final documents = await databases.listDocuments(
 import io.appwrite.Client
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .setProject("<PROJECT_ID>")                     // Your project ID
-    .setJWT("eyJJ9.eyJ...886ca")                    // Your secret JSON Web Token
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setJWT("<USER_JWT>")       // Your secret JSON Web Token
 
 val databases = Databases(client)
 
 val documents = databases.listDocuments(
-    databaseId = "642f358bf4084c662590",
-    collectionId = "642f3592aa5fc856ad1e",
+    databaseId = "<DATABASE_ID>",
+    collectionId = "<COLLECTION_ID>",
 )
 // ... More code to manipulate the results
 ```
@@ -311,15 +328,14 @@ val documents = databases.listDocuments(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .setProject("<PROJECT_ID>")                     // Your project ID
-    .setJWT("eyJJ9.eyJ...886ca")                    // Your secret JSON Web Token
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setJWT("<USER_JWT>")       // Your secret JSON Web Token
     
 let databases = Databases(client)
 
 let documents = try await databases.listDocuments(
-    databaseId: "642f358bf4084c662590",
-    collectionId: "642f3592aa5fc856ad1e"
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>"
 )
 // ... More code to manipulate the results
 ```
@@ -329,15 +345,14 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 var client = new Client()
-    .SetEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .SetProject("<PROJECT_ID>")                     // Your project ID
-    .SetJWT("eyJJ9.eyJ...886ca");                   // Your secret JSON Web Token
+    .SetProject("<PROJECT_ID>") // Your project ID
+    .SetJWT("<USER_JWT>");      // Your secret JSON Web Token
 
 var databases = new Databases(client);
 
 var documents = await databases.ListDocuments(
-    databaseId: "642f358bf4084c662590",
-    collectionId: "642f3592aa5fc856ad1e");
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>");
 
 // ... More code to manipulate the results
 ```
@@ -346,7 +361,7 @@ var documents = await databases.ListDocuments(
 
 Only Kevin's birthday is returned and documents where `user-A` has no permissions to access are not returned.
 
-```js
+```json
 {
   "total": 1,
   "documents": [
@@ -357,8 +372,8 @@ Only Kevin's birthday is returned and documents where `user-A` has no permission
       "$permissions": [
         "read(\"user:user-a\")"
       ],
-      "$collectionId": "642f3592aa5fc856ad1e",
-      "$databaseId": "642f358bf4084c662590",
+      "$collectionId": "<COLLECTION_ID>",
+      "$databaseId": "<DATABASE_ID>",
       ...
     }
   ]
@@ -368,19 +383,18 @@ Only Kevin's birthday is returned and documents where `user-A` has no permission
 If the same request is made where the [Server SDK](/docs/sdks#server)'s `client` is authenticated with an API key instead of a JWT, the results returned will be different.
 
 {% multicode %}
-```js
+```server-nodejs
 const { Client } = require('node-appwrite');
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>')                  // Your project ID
-    .setKey('98fd4...a2ad2');                    // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>');       // Your secret API key
 
 const databases = new sdk.Databases(client);
 
 const documents = await databases.listDocuments(
-    '642f358bf4084c662590',
-    '642f3592aa5fc856ad1e'
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>'
 );
 // ... More code to manipulate the results
 ```
@@ -389,15 +403,14 @@ const documents = await databases.listDocuments(
 use Appwrite\Client;
 
 $client = (new Client())
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('<PROJECT_ID>')                  // Your project ID
-    ->setKey('98fd4...a2ad2');                    // Your secret API key
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setKey('<API_KEY>');       // Your secret API key
 
 $databases = new Databases($client);
 
 $documents = $databases->listDocuments(
-    databaseId: '642f358bf4084c662590',
-    collectionId: '642f3592aa5fc856ad1e'
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>'
 );
 // ... More code to manipulate the results
 ```
@@ -407,16 +420,15 @@ from appwrite.client import Client
 
 client = Client()
 (client
-    .set_endpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .set_project('<PROJECT_ID>')                  // Your project ID
-    .set_key('98fd4...a2ad2')                     // Your secret API key
+    .set_project('<PROJECT_ID>') // Your project ID
+    .set_key('<API_KEY>')        // Your secret API key
 )
 
 databases = Databases(client)
 
 documents = databases.list_documents(
-    database_id='642f358bf4084c662590',
-    collection_id='642f3592aa5fc856ad1e'
+    database_id='<DATABASE_ID>',
+    collection_id='<COLLECTION_ID>'
 )
 // ... More code to manipulate the results
 ```
@@ -426,15 +438,14 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-    .set_project('<PROJECT_ID>')                  # Your project ID
-    .set_key('98fd4...a2ad2')                     # Your secret API key
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_key('<API_KEY>')        # Your secret API key
 
 databases = Databases.new(client)
 
 documents = databases.list_documents(
-    database_id: '642f358bf4084c662590',
-    collection_id: '642f3592aa5fc856ad1e'
+    database_id: '<DATABASE_ID>',
+    collection_id: '<COLLECTION_ID>'
 )
 # ... More code to manipulate the results
 ```
@@ -442,31 +453,51 @@ documents = databases.list_documents(
 import { Client } from "https://deno.land/x/appwrite/mod.ts";
 
 let client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>')                  // Your project ID
-    .setKey('98fd4...a2ad2');                    // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>');       // Your secret API key
 
 let databases = new sdk.Databases(client);
 
 let documents = await databases.listDocuments(
-    '642f358bf4084c662590',
-    '642f3592aa5fc856ad1e'
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>'
 );
 // ... More code to manipulate the results
+```
+```go
+package main
+
+import (
+	"github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+	client := appwrite.NewClient(
+		appwrite.WithProject("<PROJECT_ID>"), // Your project ID
+		appwrite.WithKey("<API_KEY>"),        // Your secret API key
+	)
+
+	databases := appwrite.NewDatabases(client)
+
+	documents, _ := databases.ListDocuments(
+		"<DOCUMENT_ID>",
+		"<COLLECTION_ID>",
+	)
+    // ... More code to manipulate the results
+}
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>')                  // Your project ID
-    .setKey('98fd4...a2ad2');                    // Your secret API key
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>');       // Your secret API key
 
 final databases = Databases(client);
 
 final documents = await databases.listDocuments(
-    databaseId: '642f358bf4084c662590',
-    collectionId: '642f3592aa5fc856ad1e',
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
 );
 // ... More code to manipulate the results
 ```
@@ -474,15 +505,14 @@ final documents = await databases.listDocuments(
 import io.appwrite.Client
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                  // Your project ID
-    .setKey('98fd4...a2ad2');                    // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey('<API_KEY>');       // Your secret API key
 
 val databases = Databases(client)
 
 val documents = databases.listDocuments(
-    databaseId = "642f358bf4084c662590",
-    collectionId = "642f3592aa5fc856ad1e",
+    databaseId = "<DATABASE_ID>",
+    collectionId = "<COLLECTION_ID>",
 )
 // ... More code to manipulate the results
 ```
@@ -490,15 +520,14 @@ val documents = databases.listDocuments(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                  // Your project ID
-    .setKey('98fd4...a2ad2');                    // Your secret API key
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey('<API_KEY>');       // Your secret API key
 
 let databases = Databases(client)
 
 let documents = try await databases.listDocuments(
-    databaseId: "642f358bf4084c662590",
-    collectionId: "642f3592aa5fc856ad1e"
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>"
 )
 // ... More code to manipulate the results
 ```
@@ -508,15 +537,14 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 var client = new Client()
-    .SetEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("<PROJECT_ID>")                  // Your project ID
-    .SetKey('98fd4...a2ad2');                    // Your secret API key
+    .SetProject("<PROJECT_ID>") // Your project ID
+    .SetKey('<API_KEY>');       // Your secret API key
 
 var databases = new Databases(client);
 
 var documents = await databases.ListDocuments(
-    databaseId: "642f358bf4084c662590",
-    collectionId: "642f3592aa5fc856ad1e");
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>");
 
 // ... More code to manipulate the results
 ```
@@ -535,8 +563,8 @@ This will return every document regardless of permissions, which could lead to p
       "$permissions": [
         "read(\"user:user-a\")"
       ],
-      "$collectionId": "642f3592aa5fc856ad1e",
-      "$databaseId": "642f358bf4084c662590",
+      "$collectionId": "<COLLECTION_ID>",
+      "$databaseId": "<DATABASE_ID>",
       ...
     },
     {
@@ -546,8 +574,8 @@ This will return every document regardless of permissions, which could lead to p
       "$permissions": [
         "read(\"user:user-b\")"
       ],
-      "$collectionId": "642f3592aa5fc856ad1e",
-      "$databaseId": "642f358bf4084c662590",
+      "$collectionId": "<COLLECTION_ID>",
+      "$databaseId": "<DATABASE_ID>",
       ...
     },
     {
@@ -557,8 +585,8 @@ This will return every document regardless of permissions, which could lead to p
       "$permissions": [
         "read(\"user:user-c\")"
       ],
-      "$collectionId": "642f3592aa5fc856ad1e",
-      "$databaseId": "642f358bf4084c662590",
+      "$collectionId": "<COLLECTION_ID>",
+      "$databaseId": "<DATABASE_ID>",
       ...
     }
   ]
