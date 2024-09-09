@@ -93,7 +93,7 @@
                             class="flex w-full items-center justify-between gap-2.5 py-6 text-left"
                             use:melt={$trigger(`${index}`)}
                         >
-                            <span class="text-label text-primary">
+                            <span class="text-label font-aeonik-pro text-primary">
                                 {faqItem.question}
                             </span>
                             <div
