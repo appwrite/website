@@ -7,6 +7,8 @@
         type EmblaPluginType
     } from 'embla-carousel';
     import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
+    import ArrowRight from '$lib/icons/ArrowRight.svelte';
+    import ArrowLeft from '$lib/icons/ArrowLeft.svelte';
 
     let emblaApi: EmblaCarouselType;
 
@@ -122,15 +124,15 @@
     };
 </script>
 
-<div class="embla relative overflow-hidden web-carousel">
+<div class="embla web-carousel relative overflow-hidden">
     {#if hasPrev}
         <button class="web-carousel-button web-carousel-button-start" on:click={onPrev}>
-            <span class="web-icon-arrow-left" aria-hidden="true"></span>
+            <ArrowLeft aria-hidden="true" />
         </button>
     {/if}
     {#if hasNext}
         <button class="web-carousel-button web-carousel-button-end" on:click={onNext}>
-            <span class="web-icon-arrow-right" aria-hidden="true"></span>
+            <ArrowRight aria-hidden="true" />
         </button>
     {/if}
 

@@ -10,6 +10,7 @@
     import MultiCodeContextless from './(components)/MultiCodeContextless.svelte';
     import { Platform } from '$lib/utils/references';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import ArrowRight from '$lib/icons/ArrowRight.svelte';
 
     const title = 'Messaging' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -255,7 +256,7 @@ messaging.create_email(
                 <div>
                     <div class="product">
                         <img src="/images/icons/illustrated/dark/messaging.png" alt="" />
-                        <span class="text-micro uppercase text-primary">
+                        <span class="text-micro text-primary uppercase">
                             Messaging<span class="web-u-color-text-accent">_</span>
                         </span>
                         <span class="web-hero-banner-button text-micro uppercase">BETA</span>
@@ -540,7 +541,7 @@ messaging.create_email(
                                         height="32"
                                     />
                                     <h4 class="text-body text-primary">Auth</h4>
-                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
+                                    <ArrowRight class="ml-auto" aria-hidden="true" />
                                 </div>
                                 <p class="text-sub-body">
                                     Build secure authentication and manage your users.
@@ -565,7 +566,7 @@ messaging.create_email(
                                         height="32"
                                     />
                                     <h4 class="text-body text-primary">Functions</h4>
-                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
+                                    <ArrowRight class="ml-auto" aria-hidden="true" />
                                 </div>
                                 <p class="text-sub-body">
                                     Scale big and unlock limitless potential with Appwrite
@@ -591,7 +592,7 @@ messaging.create_email(
                                         height="32"
                                     />
                                     <h4 class="text-body text-primary">Databases</h4>
-                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
+                                    <ArrowRight class="ml-auto" aria-hidden="true" />
                                 </div>
                                 <p class="text-sub-body">
                                     Store and query structured data, ensuring scalable storage.
@@ -616,7 +617,7 @@ messaging.create_email(
                                         height="32"
                                     />
                                     <h4 class="text-body text-primary">Storage</h4>
-                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
+                                    <ArrowRight class="ml-auto" aria-hidden="true" />
                                 </div>
                                 <p class="text-sub-body">
                                     Manage your files' project, using convenient APIs and utilities.
@@ -641,7 +642,7 @@ messaging.create_email(
                                         height="32"
                                     />
                                     <h4 class="text-body text-primary">Realtime</h4>
-                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
+                                    <ArrowRight class="ml-auto" aria-hidden="true" />
                                 </div>
                                 <p class="text-sub-body">
                                     Utilize realtime information from all Appwrite services.
@@ -652,7 +653,7 @@ messaging.create_email(
                 </ul>
             </div>
         </section>
-        <div class="pt-[7.5rem] relative">
+        <div class="relative pt-[7.5rem]">
             <div class="container">
                 <PreFooter />
                 <FooterNav />

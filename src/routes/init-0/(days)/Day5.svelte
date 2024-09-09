@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { ArrowRight } from '$lib/icons';
     import illustration from '../(assets)/integrations.png';
     import thumbnail from '../(assets)/thumbnail-runtimes-event.png';
     import Day from './Day.svelte';
@@ -22,7 +23,7 @@
                 </p>
                 <div class="web-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
                     <span class="text">Announcement</span>
-                    <span class="web-icon-arrow-right" />
+                    <ArrowRight />
                 </div>
             </div>
             <img src={illustration} alt="" />
@@ -36,7 +37,7 @@
             <h3 class="text-label text-primary">Documentation</h3>
             <div class="web-card-link u-flex u-cross-center">
                 <span class="text">Learn more</span>
-                <span class="web-icon-arrow-right" />
+                <ArrowRight />
             </div>
         </a>
 
@@ -50,7 +51,7 @@
                 <h3 class="text-label text-primary" style="max-width: 300px">Closing party</h3>
                 <div class="web-card-link u-flex u-cross-center">
                     <span class="text">Watch</span>
-                    <span class="web-icon-arrow-right" />
+                    <ArrowRight />
                 </div>
             </div>
             <img

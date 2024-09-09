@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { ArrowRight } from '$lib/icons';
+
     type $$Props = {
         url: string;
         title: string;
@@ -22,7 +24,7 @@
             style:color="#fff"
         >
             <span class="text">Announcement</span>
-            <span class="web-icon-arrow-right" />
+            <ArrowRight />
         </div>
     </div>
     <div class="illustration">

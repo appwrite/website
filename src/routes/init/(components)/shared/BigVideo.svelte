@@ -1,4 +1,5 @@
 <script lang="ts">
+    import ArrowRight from '$lib/icons/ArrowRight.svelte';
     import Video from './Video.svelte';
 
     type $$Props = {
@@ -23,7 +24,7 @@
             </h3>
             <div class="web-card-link flex items-center">
                 <span class="text">{label}</span>
-                <span class="web-icon-arrow-right" />
+                <ArrowRight />
             </div>
         </div>
     </Video>

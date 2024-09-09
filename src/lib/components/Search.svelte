@@ -2,6 +2,7 @@
     import { afterNavigate, goto } from '$app/navigation';
     import { layoutState } from '$lib/layouts/Docs.svelte';
     import { isMac } from '$lib/utils/platform';
+    import SearchIcon from '$lib/icons/Search.svelte';
 
     import { createCombobox, melt } from '@melt-ui/svelte';
 
@@ -157,7 +158,7 @@
     on:click={handleExit}
 >
     <div class="web-input-text-search-wrapper web-u-margin-inline-20 w-full max-w-[680px]">
-        <span class="web-icon-search z-[5]" aria-hidden="true" style="inset-block-start:0.9rem" />
+        <SearchIcon class="z-[5] mt-4" aria-hidden="true" />
         <div id="searchbox" />
 
         <input

@@ -43,6 +43,7 @@
     import { getContext, setContext } from 'svelte';
     import { GITHUB_STARS } from '$lib/constants';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import SearchIcon from '$lib/icons/Search.svelte';
 
     export let variant: DocsLayoutVariant = 'default';
     export let isReferences = false;
@@ -150,7 +151,7 @@
                         class="web-input-button web-u-flex-basis-400"
                         on:click={() => ($layoutState.showSearch = true)}
                     >
-                        <span class="web-icon-search" aria-hidden="true" />
+                        <SearchIcon aria-hidden="true" />
                         <span class="text">Search in docs</span>
 
                         <div class="ml-auto flex gap-1">

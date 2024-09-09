@@ -2,6 +2,7 @@
     import { afterNavigate } from '$app/navigation';
     import { IsLoggedIn } from '$lib/components';
     import { GITHUB_STARS } from '$lib/constants';
+    import Star from '$lib/icons/Star.svelte';
     import type { NavLink } from '$lib/layouts/Main.svelte';
 
     export let open = false;
@@ -42,7 +43,7 @@
                 rel="noopener noreferrer"
                 class="web-button is-text web-u-inline-width-100-percent-mobile"
             >
-                <span class="web-icon-star" aria-hidden="true" />
+                <Star aria-hidden="true" />
                 <span class="text">Star on GitHub</span>
                 <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
             </a>

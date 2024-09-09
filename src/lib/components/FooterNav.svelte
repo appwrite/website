@@ -1,4 +1,6 @@
 <script lang="ts">
+    import ChevronDown from '$lib/icons/ChevronDown.svelte';
+    import { classNames } from '$lib/utils/classnames';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
 
@@ -101,7 +103,7 @@
         {#each Object.entries(links) as [title, items]}
             <li class="web-footer-nav-main-item web-is-not-mobile">
                 <h2
-                    class="web-footer-nav-main-title web-is-not-mobile text-caption uppercase font-medium"
+                    class="web-footer-nav-main-title web-is-not-mobile text-caption font-medium uppercase"
                 >
                     {title}
                 </h2>
@@ -123,10 +125,10 @@
                         use:melt={$trigger({ value: title })}
                     >
                         <span class="text-caption font-medium uppercase">{title}</span>
-                        <span
-                            class="web-icon-chevron-down web-u-transition"
-                            class:web-u-rotate-180={$isSelected(title)}
-                            style:font-size="1rem"
+                        <ChevronDown
+                            class={classNames('web-u-transition size-4', {
+                                'rotate-180': $isSelected(title)
+                            })}
                         />
                     </button>
                 </h5>

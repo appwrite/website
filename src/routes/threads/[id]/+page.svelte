@@ -8,6 +8,7 @@
     import SeoOgImage from '$lib/components/SeoOgImage.svelte';
     import PreFooter from '../PreFooter.svelte';
     import MessageCard from './MessageCard.svelte';
+    import Discord from '$lib/icons/Discord.svelte';
 
     export let data;
 
@@ -58,7 +59,7 @@
             </div>
             <div class="buttons">
                 <a class="web-button" href={discordLink}>
-                    <span class="web-icon-discord" />
+                    <Discord />
                     <span class="text">View on Discord</span>
                 </a>
             </div>
@@ -71,33 +72,33 @@
                     <MessageCard {message}>
                         {#if isFirst}
                             <div class="web-inline-info web-u-margin-block-start-24">
-                                <div class="text-sub-body font-medium text-primary">TL;DR</div>
+                                <div class="text-sub-body text-primary font-medium">TL;DR</div>
                                 {data.tldr}
                             </div>
                         {/if}
                     </MessageCard>
                 {/each}
                 <div class="web-card is-normal has-border-gradient">
-                    <span class="text-sub-body font-medium text-primary">Reply</span>
-                    <p class="text-sub-body font-medium mt-4">
+                    <span class="text-sub-body text-primary font-medium">Reply</span>
+                    <p class="text-sub-body mt-4 font-medium">
                         Reply to this thread by joining our Discord
                     </p>
                     <a class="web-button mt-6" href={discordLink}>
-                        <span class="web-icon-discord" />
+                        <Discord />
                         <span class="text">Reply on Discord</span>
                     </a>
                 </div>
             </div>
             <div class="related">
                 {#if data.related.length}
-                    <h2 class="text-micro uppercase text-primary">Recommended threads</h2>
+                    <h2 class="text-micro text-primary uppercase">Recommended threads</h2>
                 {/if}
                 <ul>
                     {#each data.related as thread}
                         <li>
                             <a href="/threads/{thread.$id}" data-sveltekit-reload>
                                 <div class="flex items-center">
-                                    <span class="text-sub-body font-medium text-primary">
+                                    <span class="text-sub-body text-primary font-medium">
                                         {thread.title.length > 40
                                             ? thread.title.slice(0, 40) + '...'
                                             : thread.title}

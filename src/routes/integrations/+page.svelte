@@ -14,6 +14,7 @@
     import { classNames } from '$lib/utils/classnames';
     import Input from '$lib/components/ui/Input.svelte';
     import { page } from '$app/stores';
+    import Search from '$lib/icons/Search.svelte';
 
     export let data;
 
@@ -139,7 +140,7 @@
                                 autocomplete="off"
                                 on:input={handleQuery}
                             >
-                                <span class="web-icon-search" aria-hidden="true" slot="icon" />
+                                <Search aria-hidden="true" slot="icon" />
                             </Input>
                         </section>
                         <section class="flex flex-col">

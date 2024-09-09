@@ -7,6 +7,7 @@
     import twillio from '../(assets)/messaging-1.png';
     import { Animations } from '../(animations)';
     import VideoWrapper from '../(components)/VideoWrapper.svelte';
+    import ArrowRight from '$lib/icons/ArrowRight.svelte';
 
     export let release: Date;
     export let date: string;
@@ -27,7 +28,7 @@
                 </p>
                 <div class="web-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
                     <span class="text">Announcement</span>
-                    <span class="web-icon-arrow-right" />
+                    <ArrowRight />
                 </div>
             </div>
             <img src={illustration} alt="" />
@@ -53,7 +54,7 @@
             </h3>
             <div class="web-card-link u-flex u-cross-center">
                 <span class="text">Article</span>
-                <span class="web-icon-arrow-right" />
+                <ArrowRight />
             </div>
             <img
                 src={twillio}
@@ -71,7 +72,7 @@
             </h3>
             <div class="web-card-link u-flex u-cross-center">
                 <span class="text">Article</span>
-                <span class="web-icon-arrow-right" />
+                <ArrowRight />
             </div>
             <div>
                 <Animations.Messaging />
@@ -87,7 +88,7 @@
                     <h3 class="text-label text-primary" style="max-width: 300px">Product tour</h3>
                     <div class="web-card-link u-flex u-cross-center">
                         <span class="text">Watch</span>
-                        <span class="web-icon-arrow-right" />
+                        <ArrowRight />
                     </div>
                 </div>
                 <Video
@@ -107,7 +108,7 @@
             <h3 class="text-label text-primary">Documentation</h3>
             <span class="web-card-link u-flex u-cross-center">
                 <span class="text">Learn more</span>
-                <span class="web-icon-arrow-right" />
+                <ArrowRight />
             </span>
         </a>
         <a
@@ -118,7 +119,7 @@
             <h3 class="text-label text-primary">Win swag</h3>
             <span class="web-card-link u-flex u-cross-center">
                 <span class="text">Enter giveaway</span>
-                <span class="web-icon-arrow-right" />
+                <ArrowRight />
             </span>
         </a>
         <a
@@ -132,7 +133,7 @@
                 <h3 class="text-label text-primary">Event: Welcome to Init</h3>
                 <div class="web-card-link u-flex u-cross-center">
                     <span class="text">Join</span>
-                    <span class="web-icon-arrow-right" />
+                    <ArrowRight />
                 </div>
             </div>
             <img

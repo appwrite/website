@@ -8,6 +8,7 @@
 
     import { melt } from '@melt-ui/svelte';
     import type { CodeContext } from '$markdoc/tags/MultiCode.svelte';
+    import Copy from '$lib/icons/Copy.svelte';
 
     export let text: string;
     export let language: Language = 'typescript';
@@ -82,10 +83,13 @@
                                 let:trigger
                                 use:melt={trigger}
                                 on:click={handleCopy}
-                                class="web-icon-button"
+                                class="relative"
                                 aria-label="copy code from code-snippet"
                             >
-                                <span class="web-icon-copy" aria-hidden="true" />
+                                <Copy
+                                    class="absolute top-1/2 left-1/2 -translate-1/2"
+                                    aria-hidden="true"
+                                />
                             </button>
                             <svelte:fragment slot="tooltip">
                                 {copyText}
@@ -103,17 +107,6 @@
 {/if}
 
 <style lang="scss">
-    button {
-        position: relative;
-
-        .web-icon-copy {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-    }
-
     .web-code-snippet {
         margin-block-end: 1rem;
         margin-top: 1rem;

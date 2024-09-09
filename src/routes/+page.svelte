@@ -16,6 +16,8 @@
     import Hero from '$lib/components/ui/Hero.svelte';
     import GradientText from '$lib/components/ui/GradientText.svelte';
     import Badge from '$lib/components/ui/Badge.svelte';
+    import ArrowRight from '$lib/icons/ArrowRight.svelte';
+    import Star from '$lib/icons/Star.svelte';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -121,15 +123,15 @@
                 <section class="container pb-0">
                     <a
                         href="/blog/post/announcing-init-faster-smoother-better"
-                        class="web-hero-banner-button web-u-margin-block-end-24"
+                        class="web-hero-banner-button web-u-margin-block-end-24 flex !items-center justify-center"
                     >
-                        <span class="web-icon-star" aria-hidden="true" />
+                        <Star aria-hidden="true" />
                         <span class="text-caption font-medium">New</span>
                         <div class="web-hero-banner-button-sep" />
                         <span class="text-caption web-u-trim-1"
                             >Announcing: A new Init. Faster. Smoother. Better.</span
                         >
-                        <span class="web-icon-arrow-right" aria-hidden="true" />
+                        <ArrowRight aria-hidden="true" />
                     </a>
                     <Hero>
                         <GradientText slot="title"
@@ -168,7 +170,7 @@
             <div class="my-[7.5rem]">
                 <div class="container">
                     <h2
-                        class="text-title font-aeonik-pro text-primary text-center web-u-max-width-600 mx-auto"
+                        class="text-title font-aeonik-pro text-primary web-u-max-width-600 mx-auto text-center"
                     >
                         Trusted by developers from the world's leading organizations
                     </h2>
@@ -301,10 +303,10 @@
                     </section>
                     <div class="mt-20 overflow-hidden">
                         <ul
-                            class="web-info-boxes text-sub-body font-medium divide-x divide-y divide-black/[0.04]"
+                            class="web-info-boxes text-sub-body divide-x divide-y divide-black/[0.04] font-medium"
                         >
                             {#each infoBoxes as box}
-                                <li class="relative p-8 last-of-type:border-r border-black/[0.04]">
+                                <li class="relative border-black/[0.04] p-8 last-of-type:border-r">
                                     <img src={box.icon} width="40" height="40" alt="" />
                                     <h3
                                         class="text-primary mt-4 flex flex-wrap items-baseline gap-3"

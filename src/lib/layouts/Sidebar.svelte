@@ -23,6 +23,7 @@
     import { clickOutside } from '$lib/actions/clickOutside';
     import { Tooltip, IsLoggedIn } from '$lib/components';
     import { GITHUB_STARS } from '$lib/constants';
+    import Search from '$lib/icons/Search.svelte';
     import { layoutState, toggleSidenav } from './Docs.svelte';
     import SidebarNavButton from './SidebarNavButton.svelte';
 
@@ -50,7 +51,7 @@
             class="web-input-text web-is-not-desktop"
             on:click={() => ($layoutState.showSearch = true)}
         >
-            <span class="web-icon-search" />
+            <Search />
             <span class="text">Search in docs</span>
         </button>
         <div class="web-side-nav-scroll">
@@ -77,7 +78,7 @@
                         {/if}
                     {:else}
                         {#if navGroup.label}
-                            <h2 class="web-side-nav-header text-micro uppercase whitespace-nowrap">
+                            <h2 class="web-side-nav-header text-micro whitespace-nowrap uppercase">
                                 {navGroup.label}
                             </h2>
                         {/if}

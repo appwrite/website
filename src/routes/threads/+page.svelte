@@ -11,6 +11,7 @@
     import PreFooter from './PreFooter.svelte';
     import TagsDropdown from './TagsDropdown.svelte';
     import { getThreads } from './helpers';
+    import { Search } from '$lib/icons';
 
     const title = 'Threads' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -164,11 +165,7 @@
                         <div
                             class="web-input-text-search-wrapper web-u-max-inline-size-none-mobile ml-auto w-full max-w-[350px]"
                         >
-                            <span
-                                class="web-icon-search z-[5]"
-                                aria-hidden="true"
-                                style="inset-block-start:0.9rem"
-                            />
+                            <Search class="z-[5] mt-4" aria-hidden="true" />
                             <input
                                 class="web-input-button relative z-1"
                                 type="text"

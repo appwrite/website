@@ -1,4 +1,7 @@
 <script lang="ts">
+    import ArrowLeft from '$lib/icons/ArrowLeft.svelte';
+    import ArrowRight from '$lib/icons/ArrowRight.svelte';
+
     let carousel: HTMLElement;
 
     export let size: 'default' | 'medium' | 'big' = 'default';
@@ -51,7 +54,7 @@
                 disabled={isStart}
                 on:click={prev}
             >
-                <span class="web-icon-arrow-left" aria-hidden="true" />
+                <ArrowLeft aria-hidden="true" />
             </button>
             <button
                 class="web-icon-button"
@@ -59,7 +62,7 @@
                 disabled={isEnd}
                 on:click={next}
             >
-                <span class="web-icon-arrow-right" aria-hidden="true" />
+                <ArrowRight aria-hidden="true" />
             </button>
         </div>
     </div>

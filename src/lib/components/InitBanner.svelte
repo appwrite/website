@@ -1,5 +1,6 @@
 <script lang="ts">
     import { page } from '$app/stores';
+    import ArrowRight from '$lib/icons/ArrowRight.svelte';
     import { onMount } from 'svelte';
 
     let mounted = false;
@@ -43,7 +44,7 @@
         </div>
         <a href="/init" rel="noopener noreferrer" class="action">
             <span class="text-caption font-medium">Join now</span>
-            <span class="web-icon-arrow-right" aria-hidden="true" />
+            <ArrowRight aria-hidden="true" />
             <div class="shadow" />
         </a>
     </div>

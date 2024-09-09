@@ -1,4 +1,5 @@
 <script lang="ts">
+    import ArrowRight from '$lib/icons/ArrowRight.svelte';
     import type { SDKMethod } from '$lib/utils/specs';
 
     export let method: SDKMethod;
@@ -65,13 +66,13 @@
                     <thead class="web-table-header">
                         <tr class="web-table-row">
                             <th class="web-table-head-col">
-                                <div class="text-micro uppercase text-primary">Time frame</div>
+                                <div class="text-micro text-primary uppercase">Time frame</div>
                             </th>
                             <th class="web-table-head-col">
-                                <div class="text-micro uppercase text-primary">Attempts</div>
+                                <div class="text-micro text-primary uppercase">Attempts</div>
                             </th>
                             <th class="web-table-head-col">
-                                <div class="text-micro uppercase text-primary">Key</div>
+                                <div class="text-micro text-primary uppercase">Key</div>
                             </th>
                         </tr>
                     </thead>
@@ -100,7 +101,7 @@
         <div class="">
             <a href="/docs/advanced/platform/rate-limits" class="u-link text-primary">
                 <span>Learn more about rate limits</span>
-                <span class="web-icon-arrow-right" aria-hidden="true"></span>
+                <ArrowRight aria-hidden="true" />
             </a>
         </div>
     </div>
