@@ -85,6 +85,9 @@
     }
 
     /* Fonts */
+    --default-font-feature-settings: initial;
+    --default-font-variation-settings: initial;
+
     --font-family-sans: 'Inter', arial, sans-serif;
     --font-family-mono: 'Fira Code', monospace;
     --font-family-aeonik-fono: 'Aenoik Fono', monospace;
