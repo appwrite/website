@@ -32,8 +32,8 @@
         <div class="web-big-padding-section-level-2">
             <div class="container">
                 <div class="web-hero" style="--hero-gap:1.25rem;">
-                    <span class="web-badges web-eyebrow !text-white">verification</span>
-                    <h1 class="web-headline web-u-color-text-primary">
+                    <span class="web-badges text-micro uppercase text-white">verification</span>
+                    <h1 class="text-headline font-aeonik-pro text-primary">
                         {#if error}
                             Error
                         {:else}
@@ -41,7 +41,7 @@
                         {/if}
                     </h1>
 
-                    <p class="web-description">
+                    <p class="text-description">
                         {#if error}
                             Something went wrong, please try again later.
                         {:else}

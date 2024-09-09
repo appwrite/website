@@ -48,7 +48,7 @@
         <div class="pt-10">
             <div class="web-big-padding-section-level-2">
                 <div class="container wrapper">
-                    <h1 class="web-display web-u-color-text-primary">Changelog</h1>
+                    <h1 class="text-display font-aeonik-pro text-primary">Changelog</h1>
                     <ul>
                         {#each data.entries as entry}
                             <li>

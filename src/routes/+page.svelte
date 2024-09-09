@@ -15,6 +15,7 @@
     import Button from '$lib/components/ui/Button.svelte';
     import Hero from '$lib/components/ui/Hero.svelte';
     import GradientText from '$lib/components/ui/GradientText.svelte';
+    import Badge from '$lib/components/ui/Badge.svelte';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -123,9 +124,9 @@
                         class="web-hero-banner-button web-u-margin-block-end-24"
                     >
                         <span class="web-icon-star" aria-hidden="true" />
-                        <span class="web-caption-500">New</span>
+                        <span class="text-caption font-medium">New</span>
                         <div class="web-hero-banner-button-sep" />
-                        <span class="web-caption-400 web-u-trim-1"
+                        <span class="text-caption web-u-trim-1"
                             >Announcing: A new Init. Faster. Smoother. Better.</span
                         >
                         <span class="web-icon-arrow-right" aria-hidden="true" />
@@ -167,7 +168,7 @@
             <div class="my-[7.5rem]">
                 <div class="container">
                     <h2
-                        class="web-title web-u-color-text-primary web-u-text-align-center web-u-max-width-600 mx-auto"
+                        class="text-title font-aeonik-pro text-primary text-center web-u-max-width-600 mx-auto"
                     >
                         Trusted by developers from the world's leading organizations
                     </h2>
@@ -289,8 +290,8 @@
             <div class="my-[7.5rem]">
                 <div class="container">
                     <section class="web-hero is-align-start">
-                        <span class="web-badges web-eyebrow !text-white">PRIVACY & SECURITY_</span>
-                        <h2 class="web-display text-primary max-w-[700px]">
+                        <Badge>PRIVACY & SECURITY_</Badge>
+                        <h2 class="text-display font-aeonik-pro text-primary max-w-[700px]">
                             Self-host your data or take it to the Cloud
                         </h2>
                         <p class="text-secondary mt-5 max-w-[700px] text-xl font-medium">
@@ -300,7 +301,7 @@
                     </section>
                     <div class="mt-20 overflow-hidden">
                         <ul
-                            class="web-info-boxes web-sub-body-500 divide-x divide-y divide-black/[0.04]"
+                            class="web-info-boxes text-sub-body font-medium divide-x divide-y divide-black/[0.04]"
                         >
                             {#each infoBoxes as box}
                                 <li class="relative p-8 last-of-type:border-r border-black/[0.04]">
@@ -323,7 +324,9 @@
             <div class="my-[7.5rem]">
                 <div class="container">
                     <div class="web-hero">
-                        <div class="web-display text-primary">Loved by developers like you</div>
+                        <div class="text-display font-aeonik-pro text-primary">
+                            Loved by developers like you
+                        </div>
                     </div>
                     <ul class="web-multi-columns-1 mt-20">
                         <li>
@@ -365,7 +368,7 @@
                                     href="https://twitter.com/appwrite"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-link is-inline">@appwrite</a
+                                    class="web-link underline">@appwrite</a
                                 > handle my authentication process while I focus on the business logic.
                             </DeveloperCard>
                         </li>
@@ -405,7 +408,7 @@
                                     href="https://twitter.com/appwrite"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-link is-inline">@appwrite</a
+                                    class="web-link underline">@appwrite</a
                                 >. With its robust feature set and open-source nature, it's the
                                 perfect choice for developers who want to build secure and scalable
                                 applications.
@@ -436,8 +439,8 @@
             <div class="py-[7.5rem]">
                 <div class="container relative">
                     <section class="web-hero is-align-start">
-                        <span class="web-badges web-eyebrow !text-white">SDKs_</span>
-                        <h2 class="web-display web-u-color-text-primary max-w-[600px]">
+                        <span class="web-badges text-micro uppercase !text-white">SDKs_</span>
+                        <h2 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                             Code the way you want
                         </h2>
                         <p class="text-secondary mt-5 max-w-[600px] text-xl font-medium">
@@ -468,8 +471,8 @@
                 <div class="container relative">
                     <div class="grid md:grid-cols-2">
                         <section class="web-hero is-align-start">
-                            <span class="web-badges web-eyebrow !text-white">Scale_</span>
-                            <h2 class="web-display web-u-color-text-primary max-w-[600px]">
+                            <span class="web-badges text-micro uppercase !text-white">Scale_</span>
+                            <h2 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                                 We scale for you
                             </h2>
                         </section>
@@ -477,19 +480,19 @@
                             class="web-big-list-info web-u-inline-width-100-percent-mobile-break1 web-u-margin-block-start-48 ml-auto"
                         >
                             <li class="web-big-list-info-item">
-                                <div class="web-headline web-u-color-text-primary">90K</div>
+                                <div class="text-headline font-aeonik-pro text-primary">90K</div>
                                 <div class="text">Projects</div>
                             </li>
                             <li class="web-big-list-info-item">
-                                <div class="web-headline web-u-color-text-primary">+1B</div>
+                                <div class="text-headline font-aeonik-pro text-primary">+1B</div>
                                 <div class="text">Requests served</div>
                             </li>
                             <li class="web-big-list-info-item">
-                                <div class="web-headline web-u-color-text-primary">20K</div>
+                                <div class="text-headline font-aeonik-pro text-primary">20K</div>
                                 <div class="text">Organizations</div>
                             </li>
                             <li class="web-big-list-info-item">
-                                <div class="web-headline web-u-color-text-primary">99.99%</div>
+                                <div class="text-headline font-aeonik-pro text-primary">99.99%</div>
                                 <div class="text">Guaranteed uptime</div>
                             </li>
                         </ul>
