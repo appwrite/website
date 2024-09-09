@@ -88,7 +88,7 @@
                                         <div class="web-pricing-cards-content">
                                             <ul class="web-checked-list-circle">
                                                 <li>
-                                                    <span>Unlimited projects (never paused)</span>
+                                                    <span>Unlimited projects</span>
                                                 </li>
                                                 <li><span>10GB bandwidth</span></li>
                                                 <li><span>2GB storage</span></li>
@@ -142,14 +142,13 @@
                                         <div class="web-pricing-cards-content">
                                             <ul class="web-checked-list-circle">
                                                 <li>
-                                                    <span>Unlimited projects (never paused)</span>
+                                                    <span>Unlimited projects</span>
                                                 </li>
                                                 <li><span>300GB bandwidth</span></li>
                                                 <li><span>150GB storage</span></li>
                                                 <li><span>3.5M executions</span></li>
                                                 <li><span>200K monthly active users</span></li>
                                                 <li><span>Email support</span></li>
-                                                <li><span>Removable Appwrite branding</span></li>
                                                 <li><span>Add-ons</span></li>
                                                 <li>
                                                     <span
@@ -231,7 +230,7 @@
                                             <ul class="web-checked-list-circle">
                                                 <li><span>Uptime SLAs</span></li>
                                                 <li><span>Designated Success Manager</span></li>
-                                                <li><span>24×7×365 enterprise support</span></li>
+                                                <li><span>24/7 enterprise support</span></li>
                                                 <li><span>Private Slack channel</span></li>
                                                 <li><span>Volume discounts</span></li>
                                                 <li><span>Advanced permissions</span></li>
