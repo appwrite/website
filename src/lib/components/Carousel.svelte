@@ -49,7 +49,7 @@
         <slot name="header" />
         <div class="nav ml-auto flex items-end gap-3">
             <button
-                class="web-icon-button"
+                class="web-icon-button flex items-center justify-center"
                 aria-label="Move carousel backward"
                 disabled={isStart}
                 on:click={prev}
@@ -57,7 +57,7 @@
                 <ArrowLeft aria-hidden="true" />
             </button>
             <button
-                class="web-icon-button"
+                class="web-icon-button flex items-center justify-center"
                 aria-label="Move carousel forward"
                 disabled={isEnd}
                 on:click={next}
