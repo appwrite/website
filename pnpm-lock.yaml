@@ -159,6 +159,9 @@ importers:
       svelte-markdown:
         specifier: ^0.4.1
         version: 0.4.1(svelte@4.2.18)
+      svelvg:
+        specifier: ^0.12.2
+        version: 0.12.2
       svgtofont:
         specifier: ^4.2.1
         version: 4.2.2
@@ -3898,9 +3901,17 @@ packages:
       typescript:
         optional: true
 
+  svelte@3.59.2:
+    resolution: {integrity: sha512-vzSyuGr3eEoAtT/A6bmajosJZIUWySzY2CzB3w2pgPvnkUjGqlDnsNnA0PMO+mMAhuyMul6C2uuZzY6ELSkzyA==}
+    engines: {node: '>= 8'}
+
   svelte@4.2.18:
     resolution: {integrity: sha512-d0FdzYIiAePqRJEb90WlJDkjUEx42xhivxN8muUBmfZnP+tzUgz12DJ2hRJi8sIHCME7jeK1PTMgKPSfTd8JrA==}
     engines: {node: '>=16'}
+
+  svelvg@0.12.2:
+    resolution: {integrity: sha512-vBZaPP0+P5xkCWwd+QGT8XLA+/f2Bemyjs33UOD4+M0lOtatRkY7rUsIiY1NX+VdeTDzEB0GQQqlZ8xZ+j6+VA==}
+    hasBin: true
 
   svg-pathdata@6.0.3:
     resolution: {integrity: sha512-qsjeeq5YjBZ5eMdFuUa4ZosMLxgr5RZ+F+Y1OrDhuOCEInRMA3x74XdBtggJcj9kOeInz0WE+LgCPDkZFlBYJw==}
@@ -8354,6 +8365,8 @@ snapshots:
       sass: 1.77.8
       typescript: 5.5.4
 
+  svelte@3.59.2: {}
+
   svelte@4.2.18:
     dependencies:
       '@ampproject/remapping': 2.3.0
@@ -8370,6 +8383,11 @@ snapshots:
       locate-character: 3.0.0
       magic-string: 0.30.11
       periscopic: 3.1.0
+
+  svelvg@0.12.2:
+    dependencies:
+      svelte: 3.59.2
+      tiny-glob: 0.2.9
 
   svg-pathdata@6.0.3: {}
 
