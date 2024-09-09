@@ -123,13 +123,13 @@
                         href="/blog/post/announcing-init-faster-smoother-better"
                         class="web-hero-banner-button mb-4"
                     >
-                        <span class="web-icon-star" aria-hidden="true" />
-                        <span class="text-caption font-medium">New</span>
+                        <span class="web-icon-star shrink-0" aria-hidden="true" />
+                        <span class="text-caption font-medium shrink-0">New</span>
                         <div class="web-hero-banner-button-sep" />
                         <span class="text-caption web-u-trim-1"
                             >Announcing: A new Init. Faster. Smoother. Better.</span
                         >
-                        <span class="web-icon-arrow-right" aria-hidden="true" />
+                        <span class="web-icon-arrow-right shrink-0" aria-hidden="true" />
                     </a>
                     <Hero>
                         <GradientText slot="title"
