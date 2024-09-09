@@ -110,16 +110,18 @@
 
 <div
     class="web-is-only-desktop absolute"
-    style="top: 42rem; left: 49%; translate: calc(-50% + 800px); width: 60rem;"
+    style="top: 42rem; width: calc(50% - 5rem); right: 0;"
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
-    <img src="/images/bgs/hero-lines-2.png" alt="" />
+    <div style="left: 0;">
+        <img src="/images/bgs/hero-lines-2.png" alt="" />
+    </div>
 </div>
 
 <Main>
     <div class="web-big-padding-section">
-        <div class="py-10">
-            <div class="my-[7.5rem]">
+        <div class="pb-10">
+            <div class="my-12 lg:my-[7.5rem]">
                 <section class="container pb-0">
                     <a
                         href="/blog/post/announcing-init-faster-smoother-better"
@@ -155,7 +157,7 @@
                     </Hero>
                 </section>
             </div>
-            <div class="my-[7.5rem]">
+            <div class="mb-12 lg:my-[7.5rem]">
                 <section class="container web-u-padding-block-0" style="--container-size:78.75rem">
                     <div class="web-media-container">
                         <img
@@ -167,7 +169,7 @@
                     </div>
                 </section>
             </div>
-            <div class="my-[7.5rem]">
+            <div class="mb-12 lg:my-[7.5rem]">
                 <div class="container">
                     <h2
                         class="text-title font-aeonik-pro text-primary web-u-max-width-600 mx-auto text-center"
