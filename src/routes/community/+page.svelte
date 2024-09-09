@@ -270,8 +270,7 @@
                         style="--card-padding:2rem; --card-padding-mobile:1.25rem;"
                     >
                         <div
-                            class="web-u-flex-direction-column-mobile web-u-row-gap-48
-									flex gap-24"
+                            class="web-u-flex-direction-column-mobile web-u-row-gap-48 flex gap-28"
                         >
                             <div>
                                 <h3 class="text-label text-primary">Check our Open Issues</h3>
@@ -293,10 +292,10 @@
                                     <thead class="web-table-line-head">
                                         <tr class="web-table-line-row">
                                             <th
-                                                class="web-table-line-cell text-primary whitespace-nowrap"
+                                                class="web-table-line-cell text-primary whitespace-nowrap text-start"
                                                 >Issue #</th
                                             >
-                                            <th class="web-table-line-cell text-primary">Title</th>
+                                            <th class="web-table-line-cell text-primary text-start">Title</th>
                                         </tr>
                                     </thead>
                                     <tbody class="web-table-line-body">
@@ -318,13 +317,15 @@
                                                         </a>
                                                         <span>({issue.repository})</span>
                                                     </div>
-                                                    <ul class="mt-2 flex flex-wrap gap-2">
-                                                        {#each issue.tags as tag}
-                                                            <li>
-                                                                <div class="web-tag">{tag}</div>
-                                                            </li>
-                                                        {/each}
-                                                    </ul>
+                                                    {#if issue.tags.length > 0}
+                                                        <ul class="mt-2 flex flex-wrap gap-2">
+                                                            {#each issue.tags as tag}
+                                                                <li>
+                                                                    <div class="web-tag">{tag}</div>
+                                                                </li>
+                                                            {/each}
+                                                        </ul>
+                                                    {/if}
                                                 </td>
                                             </tr>
                                         {/each}
