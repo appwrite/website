@@ -1,12 +1,12 @@
 <script lang="ts" context="module">
     export const events: EventCardProps[] = [
         {
-            href: 'https://discord.com/events/564160730845151244/1218597329024843837',
+            href: 'https://discord.com/events/564160730845151244/1279026334496067669/1286356126924800000',
             cover: {
-                src: '/images/community/events/28march-office-hours.png',
+                src: '/images/community/events/19sept-office-hours.png',
                 alt: ''
             },
-            date: '2024-03-28',
+            date: '2024-09-19',
             location: 'Discord',
             title: 'Office Hours: Ask me anything!',
             description:
@@ -14,12 +14,12 @@
             buttonText: 'View event'
         },
         {
-            href: 'https://discord.com/events/564160730845151244/1218597959017431192',
+            href: 'https://discord.com/events/564160730845151244/1279026334496067669/1288892841984000000',
             cover: {
-                src: '/images/community/events/4april-office-hours.png',
+                src: '/images/community/events/26sept-office-hours.png',
                 alt: ''
             },
-            date: '2024-04-04',
+            date: '2024-09-26',
             location: 'Discord',
             title: 'Office Hours: Ask me anything!',
             description:
@@ -27,12 +27,12 @@
             buttonText: 'View event'
         },
         {
-            href: 'https://discord.com/events/564160730845151244/1218598369363230872',
+            href: 'https://discord.com/events/564160730845151244/1279026334496067669/1291429557043200000',
             cover: {
-                src: '/images/community/events/11april-office-hours.png',
+                src: '/images/community/events/3oct-office-hours.png',
                 alt: ''
             },
-            date: '2024-04-11',
+            date: '2024-10-03',
             location: 'Discord',
             title: 'Office Hours: Ask me anything!',
             description:
