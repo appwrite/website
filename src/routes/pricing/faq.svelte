@@ -115,7 +115,7 @@
                 </div>
             {:else}
                 <details class="collapsible-wrapper" open={index === 0}>
-                    <summary class="collapsible-button">
+                    <summary class="collapsible-button appearance-none">
                         <span class="text-label text-primary">
                             {faqItem.question}
                         </span>
