@@ -1,7 +1,7 @@
 <svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink">
     <g id="Logo/Dark" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Icon" transform="translate(4.000000, 11.000000)" fill="#151618">
+        <g id="Icon" transform="translate(4.000000, 11.000000)" fill="currentColor">
             <g id="Secound" opacity="0.56" transform="translate(21.000000, 0.930000)">
                 <path
                     d="M6.47910463,8.01371418 L2.94663391,4.48124347 L4.71194884,0.95 L10.4515234,6.68957458 C11.1828255,7.42087669 11.1828255,8.60655167 10.4515234,9.33785378 L3.38719562,16.4021816 C2.65589351,17.1334837 1.47021853,17.1334837 0.738916421,16.4021816 C0.00761431424,15.6708795 0.00761431424,14.4852045 0.738916421,13.7539024 L6.47910463,8.01371418 Z"

@@ -1,0 +1,1 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" {...$$restProps}><slot /><path fill="currentColor" d="M21 3H3v18h18z"/><path fill="currentColor" d="M11.4 13.2 8.28 7.38h1.44l1.8 3.66c0 .06.06.12.12.18s.06.12.12.24l.06.06v.06c.06.12.06.18.12.3.06.06.06.18.12.24.06-.18.18-.3.24-.54.06-.18.18-.36.3-.54l1.8-3.66h1.32l-3.12 5.88v3.72h-1.2z"/></svg>

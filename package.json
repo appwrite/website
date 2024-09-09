@@ -11,7 +11,7 @@
         "dev": "vite dev",
         "download-contributors": "node ./scripts/download-contributor-data.js",
         "format": "prettier --write .",
-        "icons:generate": "pnpx tsx svg.config.ts",
+        "icons:generate": "pnpx svgo -f src/icons/svg -o src/icons/optimized && pnpx tsx svg.config.ts",
         "lint": "prettier --check . && eslint .",
         "preview": "vite preview",
         "test": "npm run test:integration && npm run test:unit",
@@ -23,7 +23,8 @@
     "dependencies": {
         "@sentry/sveltekit": "^8.12.0",
         "h3": "^1.12.0",
-        "sharp": "^0.33.4"
+        "sharp": "^0.33.4",
+        "svgo": "^3.3.2"
     },
     "devDependencies": {
         "@appwrite.io/console": "^0.6.2",

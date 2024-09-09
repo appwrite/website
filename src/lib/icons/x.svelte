@@ -1,0 +1,1 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" {...$$restProps}><slot /><path fill="#000" d="M15.13 2h2.715l-5.93 6.777L18.891 18h-5.462L9.15 12.407 4.256 18H1.54l6.342-7.25L1.19 2h5.6l3.868 5.113zm-.952 14.375h1.504L5.974 3.54H4.36z"/></svg>
