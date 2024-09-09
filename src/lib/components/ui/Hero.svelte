@@ -5,7 +5,7 @@
 
     type HeroProps = SvelteHTMLElements['div'];
 
-    const hero = cva(['flex', 'gap-8', 'relative'], {
+    const hero = cva(['flex', 'relative'], {
         variants: {
             layout: {
                 vertical: ['flex-col', 'max-w-[600px]'],
@@ -42,7 +42,7 @@
     </h1>
     {#if $$slots.description}
         <div class="flex-1 self-end">
-            <p class="text-secondary mt-5 text-description font-medium">
+            <p class="text-secondary mt-6 text-description font-medium">
                 <slot name="description" />
             </p>
             <slot name="cta" />
