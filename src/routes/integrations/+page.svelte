@@ -106,13 +106,13 @@
                 <div
                     class="l-integrations-hero web-u-max-width-680 flex flex-col justify-center gap-5"
                 >
-                    <div class="web-eyebrow web-u-color-text-primary">
+                    <div class="text-micro text-primary uppercase">
                         INTEGRATIONS<span class="web-u-color-text-accent">_</span>
                     </div>
-                    <h1 class="web-headline web-u-color-text-primary">
+                    <h1 class="text-headline font-aeonik-pro text-primary">
                         Discover infinite possibilities
                     </h1>
-                    <p class="web-description">
+                    <p class="text-description">
                         Unlock the full potential of Appwrite by seamlessly integrating your
                         favorite apps with your projects.
                     </p>
@@ -144,7 +144,9 @@
                         </section>
                         <section class="flex flex-col">
                             <section class="flex flex-col gap-4">
-                                <h2 class="web-side-nav-header web-eyebrow whitespace-nowrap">
+                                <h2
+                                    class="web-side-nav-header text-micro whitespace-nowrap uppercase"
+                                >
                                     Platform
                                 </h2>
                                 <ul class="flex flex-wrap gap-2" class:disabled={hasQuery}>
@@ -168,7 +170,9 @@
                             </section>
                             <div class="web-u-sep-block-start my-6"></div>
                             <section class="flex flex-col gap-4">
-                                <h2 class="web-side-nav-header web-eyebrow whitespace-nowrap">
+                                <h2
+                                    class="web-side-nav-header text-micro whitespace-nowrap uppercase"
+                                >
                                     Categories
                                 </h2>
 
@@ -226,10 +230,8 @@
                             {#if hasQuery}
                                 <section class="l-max-size-list-cards-section flex flex-col gap-8">
                                     <header class="flex flex-col gap-1">
-                                        <h2 class="web-label web-u-color-text-primary">
-                                            Search results
-                                        </h2>
-                                        <p class="web-description">
+                                        <h2 class="text-label text-primary">Search results</h2>
+                                        <p class="text-description">
                                             {result.length > 0 ? result.length : 'No'} results found
                                             for "{$query}"
                                         </p>
@@ -243,31 +245,26 @@
                                                         class="web-card is-normal h-full"
                                                         style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                                                     >
-                                                        <div
-                                                            class="flex items-center justify-between"
-                                                        >
-                                                            <img
-                                                                class="web-user-box-image is-32px"
-                                                                src={item.product.avatar}
-                                                                alt={item.product.vendor}
-                                                                width="32"
-                                                                height="32"
-                                                            />
+                                                        <div class="mb-4 flex justify-between">
+                                                            <div class="flex items-center gap-4">
+                                                                <img
+                                                                    class="web-user-box-image is-32px"
+                                                                    src={item.product.avatar}
+                                                                    alt={item.product.vendor}
+                                                                    width="32"
+                                                                    height="32"
+                                                                />
+
+                                                                <h4 class="text-primary">
+                                                                    {item.title}
+                                                                </h4>
+                                                            </div>
                                                             <span
                                                                 class="icon-arrow-right ml-auto"
                                                                 aria-hidden="true"
                                                             ></span>
                                                         </div>
-                                                        <div
-                                                            class="flex items-center justify-between gap-2"
-                                                        >
-                                                            <h4
-                                                                class="web-u-color-text-primary mt-3"
-                                                            >
-                                                                {item.title}
-                                                            </h4>
-                                                        </div>
-                                                        <p class="web-sub-body-400 mt-1">
+                                                        <p class="text-sub-body mt-1">
                                                             {item.description}
                                                         </p>
                                                     </a>
@@ -279,8 +276,8 @@
                             {:else}
                                 <section class="flex flex-col gap-8">
                                     <header class="flex flex-col gap-1">
-                                        <h2 class="web-label web-u-color-text-primary">Featured</h2>
-                                        <p class="web-description">Top recommended integrations</p>
+                                        <h2 class="text-label text-primary">Featured</h2>
+                                        <p class="text-description">Top recommended integrations</p>
                                     </header>
 
                                     <div>
@@ -308,13 +305,15 @@
                                                                 width="40"
                                                                 height="40"
                                                             />
-                                                            <div class="web-main-body-500 gap-2">
+                                                            <div
+                                                                class="text-body gap-2 font-medium"
+                                                            >
                                                                 <span class="text-primary mt-3">
                                                                     {item.title}
                                                                 </span>
                                                             </div>
                                                             <div
-                                                                class="web-caption-400 web-u-color-text-secondary"
+                                                                class="text-caption web-u-color-text-secondary"
                                                             >
                                                                 {item.category}
                                                             </div>
@@ -343,10 +342,10 @@
                                             }}
                                         >
                                             <header class="flex flex-col gap-1">
-                                                <h2 class="web-label web-u-color-text-primary">
+                                                <h2 class="text-label text-primary">
                                                     {category}
                                                 </h2>
-                                                <p class="web-description">
+                                                <p class="text-description">
                                                     {description}
                                                 </p>
                                             </header>
@@ -361,31 +360,34 @@
                                                                     style="--card-padding:1.5rem; --card-padding-mobile:1.5rem; --card-border-radius: 1.5rem"
                                                                 >
                                                                     <div
-                                                                        class="flex items-center justify-between gap-2"
+                                                                        class="mb-4 flex justify-between"
                                                                     >
-                                                                        <img
-                                                                            class="web-user-box-image is-32px"
-                                                                            src={integration.product
-                                                                                .avatar}
-                                                                            alt={integration.product
-                                                                                .vendor}
-                                                                            width="32"
-                                                                            height="32"
-                                                                        />
+                                                                        <div
+                                                                            class="flex items-center gap-4"
+                                                                        >
+                                                                            <img
+                                                                                class="web-user-box-image is-32px"
+                                                                                src={integration
+                                                                                    .product.avatar}
+                                                                                alt={integration
+                                                                                    .product.vendor}
+                                                                                width="32"
+                                                                                height="32"
+                                                                            />
+
+                                                                            <h4
+                                                                                class="text-primary"
+                                                                            >
+                                                                                {integration.title}
+                                                                            </h4>
+                                                                        </div>
                                                                         <span
                                                                             class="icon-arrow-right ml-auto"
                                                                             aria-hidden="true"
                                                                         ></span>
                                                                     </div>
 
-                                                                    <h4
-                                                                        class="web-u-color-text-primary mt-3"
-                                                                    >
-                                                                        {integration.title}
-                                                                    </h4>
-                                                                    <p
-                                                                        class="web-sub-body-400 mt-1"
-                                                                    >
+                                                                    <p class="text-sub-body mt-1">
                                                                         {integration.description}
                                                                     </p>
                                                                 </a>
@@ -426,11 +428,11 @@
                         class="web-hero web-u-max-width-580 flex items-center justify-center gap-4"
                     >
                         <h2
-                            class="web-display web-u-text-align-center web-u-color-text-primary max-w-[600px]"
+                            class="text-display font-aeonik-pro text-primary max-w-[600px] text-center"
                         >
                             Become a Technology Partner
                         </h2>
-                        <p class="web-main-body-500">
+                        <p class="text-body font-medium">
                             Join our Technology Partners program to integrate your solutions with
                             Appwrite’s API, enhancing functionality and expanding your reach.
                         </p>

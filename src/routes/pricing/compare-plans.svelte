@@ -362,14 +362,14 @@
             <article use:melt={$root}>
                 <div class="container">
                     <header
-                        class="web-u-text-align-center"
+                        class="text-center"
                         use:visible
                         on:visible={(e) => {
                             shouldShowTable = !e.detail;
                         }}
                     >
-                        <h3 class="web-title web-u-color-text-primary">Compare plans</h3>
-                        <p class="web-main-body-500 mt-4">
+                        <h3 class="text-title font-aeonik-pro text-primary">Compare plans</h3>
+                        <p class="text-body font-medium mt-4">
                             Discover our plans and find the one that fits your project’s needs.
                         </p>
                     </header>
@@ -387,7 +387,7 @@
 								--p-secondary-tabs-bg-color-selected: var(--web-color-accent) / 0.08;"
                                 let:tab
                             >
-                                <span class="web-main-body-500 capitalize">{tab}</span>
+                                <span class="text-body font-medium capitalize">{tab}</span>
                             </TabsList>
                         </Tabs>
                     </div>
@@ -398,7 +398,7 @@
                         style:transition="inset-block-start 0.3s ease"
                     >
                         <div
-                            class="web-description web-u-color-text-primary self-center"
+                            class="text-description text-primary self-center"
                             style:opacity={browser ? 1 : 0}
                             style:position={browser ? 'relative' : undefined}
                         >
@@ -424,34 +424,34 @@
                         </div>
                         <div class="web-mini-card">
                             <div class="flex flex-wrap items-center justify-between gap-4">
-                                <h4 class="web-label web-u-color-text-primary">Free</h4>
+                                <h4 class="text-label text-primary">Free</h4>
                                 <a
                                     href="https://cloud.appwrite.io/register"
                                     class="web-button is-secondary"
                                 >
-                                    <span class="web-sub-body-500">Start building</span>
+                                    <span class="text-sub-body font-medium">Start building</span>
                                 </a>
                             </div>
                         </div>
                         <div class="web-mini-card">
                             <div class="flex flex-wrap items-center justify-between gap-4">
-                                <h4 class="web-label web-u-color-text-primary">Pro</h4>
+                                <h4 class="text-label text-primary">Pro</h4>
                                 <a
                                     class="web-button"
                                     href="https://cloud.appwrite.io/console?type=createPro"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <!-- <span class="web-sub-body-500">Start trial</span> -->
-                                    <span class="web-sub-body-500">Start building</span>
+                                    <!-- <span class="text-sub-body font-medium">Start trial</span> -->
+                                    <span class="text-sub-body font-medium">Start building</span>
                                 </a>
                             </div>
                         </div>
                         <div class="web-mini-card">
                             <div class="flex flex-wrap items-center justify-between gap-4">
-                                <h4 class="web-label web-u-color-text-primary">Scale</h4>
+                                <h4 class="text-label text-primary">Scale</h4>
                                 <button class="web-button is-secondary" disabled>
-                                    <span class="web-sub-body-500">Coming soon</span>
+                                    <span class="text-sub-body font-medium">Coming soon</span>
                                 </button>
                             </div>
                         </div>
@@ -461,7 +461,7 @@
                     {#each tables as table}
                         {@const isOpen = $value?.includes(table.title)}
                         <table
-                            class="web-compare-table web-sub-body-400"
+                            class="web-compare-table text-sub-body"
                             class:is-open-in-mobile={isOpen}
                             use:melt={$item(table.title)}
                             use:visible={{ top: 128 }}
@@ -477,7 +477,7 @@
                             }}
                         >
                             <caption
-                                class="web-compare-table-caption web-description web-u-color-text-primary text-left"
+                                class="web-compare-table-caption text-description text-primary text-left"
                                 use:melt={$heading({ level: 3 })}
                                 style:position={browser ? 'unset' : undefined}
                             >
@@ -496,7 +496,7 @@
                             <tbody class="web-compare-table-body" use:melt={$content(table.title)}>
                                 {#each table.rows as row}
                                     <tr>
-                                        <th class="web-sub-body-500">
+                                        <th class="text-sub-body font-medium">
                                             <div class="flex gap-1">
                                                 {row.title}
                                             </div>

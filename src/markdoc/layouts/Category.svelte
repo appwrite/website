@@ -46,8 +46,10 @@
                 </a>
                 <div class="web-category-header mt-6">
                     <div class="web-category-header-content">
-                        <h1 class="web-display web-u-color-text-primary">{name}</h1>
-                        <p class="web-category-header-description web-description">
+                        <h1 class="text-display font-aeonik-pro text-primary">
+                            {name}
+                        </h1>
+                        <p class="web-category-header-description text-description">
                             {description}
                         </p>
                     </div>
