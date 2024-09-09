@@ -24,6 +24,10 @@
     border: solid pxToRem(1) hsl(var(--p-card-border-color));
     padding: var(--p-card-padding);
     border-radius: var(--p-card-border-radius);
+    display: flex;
+    flex-direction: column;
+    gap: #{pxToRem(4)};
+    padding: #{pxToRem(20)};
 
     &:where(a, button) {
       cursor:pointer;
