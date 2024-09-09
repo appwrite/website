@@ -150,7 +150,7 @@
                                 {/if}
 
                                 <div class="share-post-section mt-4 flex items-center gap-4">
-                                    <span class="text-micro uppercase pr-2" style:color="#adadb0">
+                                    <span class="text-micro pr-2 uppercase" style:color="#adadb0">
                                         SHARE
                                     </span>
 
@@ -163,25 +163,27 @@
                                                 >
                                                     {#if sharingOption.type === 'link'}
                                                         <a
-                                                            class="web-icon-button"
+                                                            class="web-icon-button flex items-center justify-center"
                                                             aria-label={sharingOption.label}
                                                             href={getShareLink(sharingOption)}
                                                             target="_blank"
                                                             rel="noopener, noreferrer"
                                                         >
-                                                            <span
-                                                                class={sharingOption.icon}
+                                                            <svelte:component
+                                                                this={sharingOption.icon}
                                                                 aria-hidden="true"
+                                                                class="text-white"
                                                             />
                                                         </a>
                                                     {:else}
                                                         <button
-                                                            class="web-icon-button"
+                                                            class="web-icon-button flex items-center justify-center"
                                                             aria-label={sharingOption.label}
                                                             on:click={() => handleCopy()}
                                                         >
-                                                            <span
-                                                                class={sharingOption.icon}
+                                                            <svelte:component
+                                                                this={sharingOption.icon}
+                                                                class="text-white"
                                                                 aria-hidden="true"
                                                             />
                                                         </button>
@@ -206,7 +208,7 @@
 
                             <div class="web-article-content mt-8">
                                 {#if lastUpdated}
-                                    <span class="text-body font-medium last-updated-text">
+                                    <span class="text-body last-updated-text font-medium">
                                         Updated:
                                         <time dateTime={lastUpdated}>
                                             {formatDate(lastUpdated)}
@@ -260,7 +262,7 @@
                 </section>
             </div>
         </div>
-        <div class="pt-[7.5rem] relative overflow-hidden">
+        <div class="relative overflow-hidden pt-[7.5rem]">
             <div class="container">
                 <Newsletter />
                 <FooterNav />

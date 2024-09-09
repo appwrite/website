@@ -1,3 +1,15 @@
+import {
+    Copy,
+    DailyDev,
+    Discord,
+    Github,
+    Linkedin,
+    X,
+    Ycombinator,
+    Youtube,
+    type SvgComponent
+} from './icons';
+
 export const GITHUB_STARS = '42.8K';
 export const BANNER_KEY: Banners = 'discord-banner-01'; // Change key to force banner to show again
 export const SENTRY_DSN =
@@ -14,13 +26,13 @@ export const BLOG_POSTS_PER_PAGE = 12;
 type Banners = 'discord-banner-01' | 'init-banner-02' | 'pricing-banner-01';
 
 export type Social = {
-    icon: string;
+    icon: typeof SvgComponent;
     label: string;
     link: string;
 };
 
 export type SocialShareOption = {
-    icon: string;
+    icon: typeof SvgComponent;
     label: string;
     link: string;
     type: 'link' | 'copy';
@@ -28,25 +40,25 @@ export type SocialShareOption = {
 
 export const socialSharingOptions: Array<SocialShareOption> = [
     {
-        icon: 'web-icon-x',
+        icon: X,
         label: 'Twitter',
         link: 'https://x.com/intent/post?text={TITLE}\n&url={URL}',
         type: 'link'
     },
     {
-        icon: 'web-icon-linkedin',
+        icon: Linkedin,
         label: 'LinkedIn',
         link: 'https://www.linkedin.com/sharing/share-offsite?text={TITLE}\n&url={URL}',
         type: 'link'
     },
     {
-        icon: 'web-icon-ycombinator',
+        icon: Ycombinator,
         label: 'YCombinator',
         link: 'https://news.ycombinator.com/submitlink?t={TITLE}\n&u={URL}',
         type: 'link'
     },
     {
-        icon: 'web-icon-copy',
+        icon: Copy,
         label: 'Copy',
         link: '',
         type: 'copy'
@@ -55,32 +67,32 @@ export const socialSharingOptions: Array<SocialShareOption> = [
 
 export const socials: Array<Social> = [
     {
-        icon: 'web-icon-discord',
+        icon: Discord,
         label: 'Discord',
         link: 'https://appwrite.io/discord'
     },
     {
-        icon: 'web-icon-github',
+        icon: Github,
         label: 'Github',
         link: 'https://github.com/appwrite'
     },
     {
-        icon: 'web-icon-x',
+        icon: X,
         label: 'Twitter',
         link: 'https://twitter.com/intent/follow?screen_name=appwrite'
     },
     {
-        icon: 'web-icon-linkedin',
+        icon: Linkedin,
         label: 'LinkedIn',
         link: 'https://www.linkedin.com/company/appwrite'
     },
     {
-        icon: 'web-icon-youtube',
+        icon: Youtube,
         label: 'YouTube',
         link: 'https://www.youtube.com/c/appwrite?sub_confirmation=1'
     },
     {
-        icon: 'web-icon-daily-dev',
+        icon: DailyDev,
         label: 'Daily.dev',
         link: 'https://app.daily.dev/squads/appwrite'
     }

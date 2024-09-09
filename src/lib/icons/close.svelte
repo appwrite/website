@@ -1,2 +1,2 @@
-<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...$$restProps}><slot /><path d="M5.5 5.5L14.5 14.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
-    <path d="M5.5 14.5L14.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" /></svg>
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...$$restProps}><slot /><path d="M5.5 5.5L14.5 14.5" stroke="#19191C" stroke-width="1.2" stroke-linecap="round"/>
+<path d="M5.5 14.5L14.5 5.5" stroke="#19191C" stroke-width="1.2" stroke-linecap="round"/></svg>
