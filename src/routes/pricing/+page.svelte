@@ -88,7 +88,7 @@
                                         <div class="web-pricing-cards-content">
                                             <ul class="web-checked-list-circle">
                                                 <li>
-                                                    <span>Unlimited projects</span>
+                                                    <span>Unlimited projects (never paused)</span>
                                                 </li>
                                                 <li><span>10GB bandwidth</span></li>
                                                 <li><span>2GB storage</span></li>
@@ -142,7 +142,7 @@
                                         <div class="web-pricing-cards-content">
                                             <ul class="web-checked-list-circle">
                                                 <li>
-                                                    <span>Unlimited projects</span>
+                                                    <span>Unlimited projects (never paused)</span>
                                                 </li>
                                                 <li><span>300GB bandwidth</span></li>
                                                 <li><span>150GB storage</span></li>
