@@ -1,0 +1,4 @@
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...$$restProps}><slot /><path d="M11 10H4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+    <path d="M7.5 6.5L4 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+    <path d="M7.5 13.5L4 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+    <path d="M15.5 5L15.5 15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" /></svg>

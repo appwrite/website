@@ -1,3 +1,7 @@
+<script>
+    import Discord from '$lib/icons/Discord.svelte';
+</script>
+
 <div class="wrapper">
     <img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg -z-1" />
     <div class="container">
@@ -9,7 +13,7 @@
                     Get community support by joining our Discord server.
                 </p>
                 <a class="web-button mt-6" href="https://appwrite.io/discord">
-                    <span class="web-icon-discord" />
+                    <Discord />
                     <span class="text">Join Discord</span>
                 </a>
             </div>

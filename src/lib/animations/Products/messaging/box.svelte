@@ -2,6 +2,8 @@
     import { fade, slide } from 'svelte/transition';
     import { messagingController } from '.';
     import { flip } from '$lib/utils/flip';
+    import Copy from '$lib/icons/Copy.svelte';
+    import Check from '$lib/icons/Check.svelte';
 
     const { state } = messagingController;
 </script>
@@ -15,7 +17,7 @@
     {#each $state.messages.slice(0, $state.tableSlice) as task (task.id)}
         <div class="row" transition:slide={{ duration: 150 }} animate:flip={{ duration: 150 }}>
             <div class="copy-button">
-                <span class="web-icon-copy" />
+                <Copy class="color-greyscale-600 size-8" />
                 <span>{task.id}</span>
             </div>
             <div class="icon-button">
@@ -25,11 +27,11 @@
                 <span class="truncated">{task.type}</span>
             </div>
 
-            <div class="status-indicator">
+            <div class="flex items-center justify-center">
                 {#if task.status === 'sending'}
                     <div class="loader is-small" in:fade />
                 {:else}
-                    <span class="web-icon-check" />
+                    <Check class="text-greyscale-600 size-5" />
                 {/if}
             </div>
         </div>
@@ -54,11 +56,6 @@
         border: 1px solid rgba(255, 255, 255, 0.08);
         background: rgba(255, 255, 255, 0.04);
         backdrop-filter: blur(2.6666667461395264px);
-
-        [class*='icon-'] {
-            font-size: 1.25rem;
-            color: hsl(var(--web-color-greyscale-600));
-        }
 
         span:not([class*='icon-']) {
             color: var(--greyscale-400, #adadb1);
@@ -100,17 +97,6 @@
 
             overflow: hidden;
             text-overflow: ellipsis;
-        }
-    }
-
-    .status-indicator {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        [class*='icon-'] {
-            font-size: 1.25rem;
-            color: hsl(var(--web-color-greyscale-600));
         }
     }
 </style>

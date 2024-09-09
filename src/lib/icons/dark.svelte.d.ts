@@ -1,1 +1,1 @@
-export { dark as default } from "./";
+export { Dark as default } from "./";

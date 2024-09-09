@@ -1,1 +1,1 @@
-export { ycombinator as default } from "./";
+export { Ycombinator as default } from "./";

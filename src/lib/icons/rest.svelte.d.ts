@@ -1,1 +1,1 @@
-export { rest as default } from "./";
+export { Rest as default } from "./";

@@ -3,6 +3,8 @@
     import Code from '$lib/animations/CodeWindow/Code.svelte';
     import { fade } from 'svelte/transition';
     import { functionsController } from '.';
+    import Github from '$lib/icons/Github.svelte';
+    import Check from '$lib/icons/Check.svelte';
 
     let content = `
 const userId = req.headers['user-id'];
@@ -25,14 +27,16 @@ return res.json({ success: true });`.trim();
 
 <div use:portal={{ target: '#code-bottom' }} class="bottom">
     {#if $state.submit !== 'idle'}
-        <span class="web-icon-github" in:fade />
+        <span in:fade>
+            <Github />
+        </span>
     {/if}
     {#if $state.submit === 'loading'}
         <span in:fade>Pushing to GitHub...</span>
         <div class="loader is-small" in:fade />
     {:else if $state.submit === 'success'}
         <span>Deployed to Appwrite Cloud</span>
-        <span class="web-icon-check" />
+        <Check />
     {/if}
 </div>
 

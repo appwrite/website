@@ -25,7 +25,7 @@
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
     import InitBanner from '$lib/components/InitBanner.svelte';
-    import Button from '$lib/components/ui/Button.svelte';
+    import Discord from '$lib/icons/Discord.svelte';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -197,9 +197,15 @@
             <InitBanner />
         {:else}
             <AnnouncementBanner>
-                <a href="/discord" target="_blank" rel="noopener noreferrer">
+                <a
+                    href="/discord"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-1"
+                >
                     <span class="text-caption font-medium">We are having lots of fun on</span>
-                    <span class="web-icon-discord" aria-hidden="true" />
+                    <Discord />
+
                     <span class="text-caption font-medium">Discord. Come and join us!</span>
                 </a>
             </AnnouncementBanner>

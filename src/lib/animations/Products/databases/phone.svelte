@@ -2,6 +2,7 @@
     import { fly } from 'svelte/transition';
     import { databasesController } from '.';
     import TaskCheckbox from '../TaskCheckbox.svelte';
+    import Plus from '$lib/icons/Plus.svelte';
 
     const { state } = databasesController;
 </script>
@@ -23,7 +24,7 @@
     </div>
 
     <button class="add-btn">
-        <span class="web-icon-plus" />
+        <Plus />
     </button>
 </div>
 

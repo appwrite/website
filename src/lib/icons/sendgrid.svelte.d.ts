@@ -1,1 +1,1 @@
-export { sendgrid as default } from "./";
+export { Sendgrid as default } from "./";

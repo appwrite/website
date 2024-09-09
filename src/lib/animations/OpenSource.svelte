@@ -3,6 +3,10 @@
     import { spring, type AnimationListOptions, type SpringOptions } from 'motion';
     import { animation, createScrollHandler, scroll, type Animation } from '.';
     import { GITHUB_STARS } from '$lib/constants';
+    import Discord from '$lib/icons/Discord.svelte';
+    import Github from '$lib/icons/Github.svelte';
+    import Twitter from '$lib/icons/Twitter.svelte';
+    import Youtube from '$lib/icons/Youtube.svelte';
 
     const springOptions: SpringOptions = {
         stiffness: 58.78,
@@ -187,11 +191,7 @@
                 id="oss-discord"
             >
                 <div class="flex flex-col justify-between gap-8">
-                    <span
-                        class="web-icon-discord web-u-font-size-40"
-                        aria-hidden="true"
-                        aria-label="Discord"
-                    />
+                    <Discord aria-hidden="true" class="size-10 opacity-50" aria-label="Discord" />
                 </div>
                 <div class="text-title font-aeonik-pro mt-auto">17k+ Discord Members</div>
             </a>
@@ -202,11 +202,7 @@
                 href="https://github.com/appwrite/appwrite"
             >
                 <div class="flex flex-col justify-between gap-8">
-                    <span
-                        class="web-icon-github web-u-font-size-40"
-                        aria-hidden="true"
-                        aria-label="GitHub"
-                    />
+                    <Github aria-hidden="true" class="size-10 opacity-50" aria-label="Github" />
                 </div>
                 <div class="text-title font-aeonik-pro mt-auto">
                     {GITHUB_STARS}+ GitHub Stars
@@ -219,11 +215,7 @@
                 id="oss-twitter"
             >
                 <div class="flex flex-col justify-between gap-8">
-                    <span
-                        class="web-icon-x web-u-font-size-40"
-                        aria-hidden="true"
-                        aria-label="Twitter"
-                    />
+                    <Twitter aria-hidden="true" class="size-10 opacity-50" aria-label="Twitter" />
                 </div>
                 <div class="text-title font-aeonik-pro mt-auto">128k+ Twitter Followers</div>
             </a>
@@ -234,11 +226,7 @@
                 id="oss-youtube"
             >
                 <div class="flex flex-col justify-between gap-8">
-                    <span
-                        class="web-icon-youtube web-u-font-size-40"
-                        aria-hidden="true"
-                        aria-label="YouTube"
-                    />
+                    <Youtube aria-hidden="true" class="size-10 opacity-50" aria-label="YouTube" />
                 </div>
                 <div class="text-title font-aeonik-pro mt-auto">7k+ Youtube Subscribers</div>
             </a>
@@ -249,11 +237,7 @@
                 href="https://github.com/appwrite/appwrite"
             >
                 <div class="flex flex-col justify-between gap-8">
-                    <span
-                        class="web-icon-github web-u-font-size-40"
-                        aria-hidden="true"
-                        aria-label="GitHub"
-                    />
+                    <Github aria-hidden="true" class="size-10 opacity-50" aria-label="Github" />
                 </div>
                 <div class="text-title font-aeonik-pro mt-auto">21k+ Code Commits</div>
             </a>
@@ -346,10 +330,6 @@
         position: absolute;
         left: calc(50% - calc(var(--w) / 2));
         transform: translateX(-1200px);
-
-        [class*='icon'] {
-            opacity: 48%;
-        }
     }
 
     @media (min-width: 1024px) {

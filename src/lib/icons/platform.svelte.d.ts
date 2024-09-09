@@ -1,1 +1,1 @@
-export { platform as default } from "./";
+export { Platform as default } from "./";

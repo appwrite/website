@@ -1,1 +1,1 @@
-export { system as default } from "./";
+export { System as default } from "./";

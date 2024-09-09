@@ -1,1 +1,1 @@
-export { discord as default } from "./";
+export { Discord as default } from "./";

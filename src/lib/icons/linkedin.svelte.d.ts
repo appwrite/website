@@ -1,1 +1,1 @@
-export { linkedin as default } from "./";
+export { Linkedin as default } from "./";

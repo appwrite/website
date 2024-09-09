@@ -4,6 +4,7 @@
     import { elId } from '../Products.svelte';
     import TaskCheckbox from '../TaskCheckbox.svelte';
     import { databasesController } from '../databases';
+    import { Plus } from '$lib/icons';
 
     const { state: dbState } = databasesController;
     const fixedTasks = $dbState.tasks;
@@ -28,7 +29,7 @@
     </div>
 
     <button class="add-btn">
-        <span class="web-icon-plus" />
+        <Plus />
     </button>
 
     <div class="overlay" id="overlay-{$elId}">

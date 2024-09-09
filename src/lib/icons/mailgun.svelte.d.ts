@@ -1,1 +1,1 @@
-export { mailgun as default } from "./";
+export { Mailgun as default } from "./";

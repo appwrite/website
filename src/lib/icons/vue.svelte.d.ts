@@ -1,1 +1,1 @@
-export { vue as default } from "./";
+export { Vue as default } from "./";

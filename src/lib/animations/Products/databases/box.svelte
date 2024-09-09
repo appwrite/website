@@ -2,6 +2,7 @@
     import { slide } from 'svelte/transition';
     import { databasesController } from '.';
     import { flip } from '$lib/utils/flip';
+    import Copy from '$lib/icons/Copy.svelte';
 
     const { state } = databasesController;
 </script>
@@ -14,7 +15,7 @@
     {#each $state.tasks.slice(0, $state.tableSlice) as task (task.id)}
         <div class="row" transition:slide={{ duration: 150 }} animate:flip={{ duration: 150 }}>
             <div class="copy-button">
-                <span class="web-icon-copy" />
+                <Copy class="text-greyscale-600 size-8" />
                 <span>{task.id}</span>
             </div>
             <span class="truncated">{task.title}</span>
@@ -34,12 +35,7 @@
         background: rgba(255, 255, 255, 0.04);
         backdrop-filter: blur(2.6666667461395264px);
 
-        [class*='icon-'] {
-            font-size: 1.25rem;
-            color: hsl(var(--web-color-greyscale-600));
-        }
-
-        span:not([class*='icon-']) {
+        span {
             color: var(--greyscale-400, #adadb1);
             font-family: Inter;
             font-size: 0.875rem;

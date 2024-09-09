@@ -5,6 +5,7 @@
     import { elId } from '../Products.svelte';
     import { flip } from '$lib/utils/flip';
     import { toScale } from '$lib/utils/toScale';
+    import Search from '$lib/icons/Search.svelte';
 
     const { state } = realtimeController;
 
@@ -61,7 +62,7 @@
             </div>
             <div class="row">
                 <div class="search">
-                    <span class="web-icon-search" />
+                    <Search />
                     <span class="text"> Search </span>
                 </div>
                 <div class="flow gap-8">

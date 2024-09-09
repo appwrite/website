@@ -1,1 +1,1 @@
-export { nuxt as default } from "./";
+export { Nuxt as default } from "./";

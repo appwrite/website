@@ -11,7 +11,7 @@
         "dev": "vite dev",
         "download-contributors": "node ./scripts/download-contributor-data.js",
         "format": "prettier --write .",
-        "icons:generate": "pnpx svgo -f src/icons/svg -o src/icons/optimized && pnpx tsx svg.config.ts",
+        "icons:generate": "pnpx svelvg glob=../src/icons/svg outDir=src/lib/icons iconIndex=ICONS.md",
         "lint": "prettier --check . && eslint .",
         "preview": "vite preview",
         "test": "npm run test:integration && npm run test:unit",

@@ -1,1 +1,1 @@
-export { textmagic as default } from "./";
+export { Textmagic as default } from "./";

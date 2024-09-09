@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Check from '$lib/icons/Check.svelte';
     import { createCheckbox, melt } from '@melt-ui/svelte';
 
     export let checked = false;
@@ -22,7 +23,7 @@
 <div class="wrapper">
     <button use:melt={$root} class="anim-checkbox">
         {#if $isChecked}
-            <span class="web-icon-check" />
+            <Check class="text-white" />
         {/if}
     </button>
 </div>
@@ -37,6 +38,8 @@
         width: 1rem;
         height: 1rem;
         flex-shrink: 0;
+        display: flex;
+        align-items: center;
 
         border-radius: 0.125rem;
         border: 1.5px solid var(--greyscale-500, #818186);

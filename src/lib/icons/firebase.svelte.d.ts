@@ -1,1 +1,1 @@
-export { firebase as default } from "./";
+export { Firebase as default } from "./";

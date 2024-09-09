@@ -1,1 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" {...$$restProps}><slot /><rect width="12" height="9" x="4" y="5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" rx="2"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M9 16h2"/></svg>
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...$$restProps}><slot /><rect x="4" y="5" width="12" height="9" rx="2" stroke="currentColor" stroke-width="1.2"
+        stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M9 16L11 16" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+        stroke-linejoin="round" /></svg>

@@ -1,1 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" {...$$restProps}><slot /><path stroke="currentColor" stroke-linecap="round" stroke-width="1.2" d="M9.76 4.756v7M6.26 8.256l3.5 3.5M13.26 8.256l-3.5 3.5M4.728 15.256h10"/></svg>
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...$$restProps}><slot /><path d="M9.75974 4.7562L9.75974 11.7562" stroke="currentColor" stroke-width="1.2"
+        stroke-linecap="round" />
+    <path d="M6.25974 8.2562L9.75973 11.7562" stroke="currentColor" stroke-width="1.2"
+        stroke-linecap="round" />
+    <path d="M13.2597 8.2562L9.75974 11.7562" stroke="currentColor" stroke-width="1.2"
+        stroke-linecap="round" />
+    <path d="M4.72839 15.2563H14.7284" stroke="currentColor" stroke-width="1.2"
+        stroke-linecap="round" /></svg>

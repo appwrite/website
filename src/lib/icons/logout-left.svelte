@@ -1,1 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" {...$$restProps}><slot /><path stroke="currentColor" stroke-linecap="round" stroke-width="1.2" d="M11 10H4M7.5 6.5 4 10M7.5 13.5 4 10M15.5 5v10"/></svg>
