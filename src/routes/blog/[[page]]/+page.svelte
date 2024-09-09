@@ -119,7 +119,7 @@
 
             <div class="web-big-padding-section-level-2 relative">
                 <div class="container">
-                    <h1 class="web-display web-u-color-text-primary">Blog</h1>
+                    <h1 class="text-display font-aeonik-pro text-primary">Blog</h1>
                     {#if featured}
                         {@const author = data.authors.find(
                             (author) => author.slug === featured.author
@@ -135,16 +135,16 @@
                             </a>
                             <div class="web-feature-article-content">
                                 <header class="web-feature-article-header">
-                                    <ul class="web-metadata web-caption-400 web-is-only-mobile">
+                                    <ul class="web-metadata text-caption web-is-only-mobile">
                                         <li>{featured.timeToRead} min</li>
                                     </ul>
                                     <a href={featured.href}>
-                                        <h2 class="web-title web-u-color-text-primary">
+                                        <h2 class="text-title font-aeonik-pro text-primary">
                                             {featured.title}
                                         </h2>
                                     </a>
                                 </header>
-                                <p class="web-sub-body-400">
+                                <p class="text-sub-body">
                                     {featured.description}
                                 </p>
                                 <div class="web-author">
@@ -158,13 +158,11 @@
                                             height="24"
                                         />
                                         <div class="web-author-info">
-                                            <a href={author?.href} class="web-sub-body-400 web-link"
+                                            <a href={author?.href} class="text-sub-body web-link"
                                                 >{author?.name}</a
                                             >
-                                            <p class="web-caption-400 hidden">{author?.bio}</p>
-                                            <ul
-                                                class="web-metadata web-caption-400 web-is-not-mobile"
-                                            >
+                                            <p class="text-caption hidden">{author?.bio}</p>
+                                            <ul class="web-metadata text-caption web-is-not-mobile">
                                                 <li>{featured.timeToRead} min</li>
                                             </ul>
                                         </div>
@@ -184,7 +182,7 @@
                 <div class="web-container">
                     <h2
                         id="title"
-                        class="web-title web-u-color-text-primary"
+                        class="text-title font-aeonik-pro text-primary"
                         bind:this={articlesHeader}
                     >
                         Articles
