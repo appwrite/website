@@ -288,6 +288,7 @@
 
 <style lang="scss">
     .web-card {
+        --web-color-border: 240, 4%, 18%;
         --p-card-padding: 1.25rem;
     }
     @media (min-width: 360px) and (max-width: 550px) {
