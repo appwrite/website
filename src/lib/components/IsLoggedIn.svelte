@@ -6,7 +6,10 @@
     export let classes = '';
 </script>
 
-<a class={classNames('web-button', classes)} href={PUBLIC_APPWRITE_DASHBOARD}>
+<a
+    class={classNames('web-button web-u-inline-width-100-percent-mobile', classes)}
+    href={PUBLIC_APPWRITE_DASHBOARD}
+>
     <span class="hidden group-[&[data-logged-in]]/body:block">Go to Console</span>
     <span class="block group-[&[data-logged-in]]/body:hidden">Get started</span>
 </a>
