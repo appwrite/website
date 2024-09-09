@@ -16,7 +16,7 @@
     $: hasReleased = now >= release;
 </script>
 
-<h2 class="web-eyebrow web-u-color-text-primary">
+<h2 class="text-micro uppercase text-primary">
     <div class="web-dot" />
     {#if day !== undefined}
         {day}<span class="web-u-color-text-accent">_</span>

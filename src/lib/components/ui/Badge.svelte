@@ -1,13 +1,48 @@
-<script>
+<script lang="ts">
     import { classNames } from '$lib/utils/classnames';
+    import type { SvelteHTMLElements } from 'svelte/elements';
+
+    type $$Props = SvelteHTMLElements['span'];
+
+    const { class: classes, ...props } = $$restProps;
 </script>
 
-<div
+<span
     class={classNames(
-        'self-start font-aeonik-fono text-xs tracking-[0.08em] uppercase leading-4 text-white backdrop-blur-2xl py-[6px] px-3 rounded-md',
-        'bg-[radial-gradient(98.13%_199.7%_at_98.13%_100%,_#FE6947_0%,_#FD366E_41.6%,_#FD366E_100%)]',
-        'shadow-[3px_3px_var(--color-badge-bg),4px_3px_var(--color-badge-border),2px_3px_var(--color-badge-border),3px_2px_var(--color-badge-border)]'
+        'badge font-aeonik-fono self-start rounded-[0.375rem] py-[0.375rem] px-3 text-xs uppercase text-white backdrop-blur-2xl',
+        classes
     )}
+    {...props}
 >
-    <slot />_
-</div>
+    <slot />
+</span>
+
+<style>
+    :root,
+    .light {
+        --shadow-bg-color: #f2c8d6;
+        --shadow-border-color: #f69db7;
+        --shadow-opacity: 0.4;
+    }
+
+    .dark {
+        --shadow-bg-color: #2c2c2f;
+        --shadow-border-color: #39393c;
+        --shadow-opacity: 0.13;
+    }
+
+    .badge {
+        background: radial-gradient(
+            98.13% 199.7% at 98.13% 100%,
+            #fe6947 0%,
+            #fd366e 41.6%,
+            #fd366e 100%
+        );
+        box-shadow:
+            0.1875rem 0.1875rem var(--shadow-bg-color),
+            0.25rem 0.1875rem var(--shadow-border-color),
+            0.1875rem 0.25rem var(--shadow-border-color),
+            0.125rem 0.1875rem var(--shadow-border-color),
+            0.1875rem 0.125rem var(--shadow-border-color);
+    }
+</style>

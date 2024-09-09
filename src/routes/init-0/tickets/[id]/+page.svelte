@@ -41,15 +41,15 @@
     <div class="hero">
         <div class="desktop-left">
             <div class="header">
-                <h1 class="web-display">
-                    Join <span class="web-u-color-text-primary" style:font-weight="500">
+                <h1 class="text-display font-aeonik-pro">
+                    Join <span class="text-primary" style:font-weight="500">
                         init<span class="web-u-color-text-accent">_</span>
                     </span><br />26 Feb - 1 March
                 </h1>
             </div>
 
             <div class="info">
-                <p class="web-label u-margin-block-start-16">
+                <p class="text-label u-margin-block-start-16">
                     Register today and claim your Init ticket.
                 </p>
                 <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-32">
@@ -57,9 +57,7 @@
                         <span class="text">Get my Init ticket</span>
                     </a>
                     <button class="web-button is-secondary" on:click={copy}>
-                        <span
-                            class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary"
-                        />
+                        <span class="web-icon-{$copied ? 'check' : 'copy'} text-primary" />
 
                         <span class="text">Copy ticket URL</span>
                     </button>
