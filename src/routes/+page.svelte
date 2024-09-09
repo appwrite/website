@@ -108,10 +108,12 @@
 
 <div
     class="web-is-only-desktop absolute"
-    style="top: 42rem; left: 49%; translate: calc(-50% + 800px); width: 60rem;"
+    style="top: 42rem; width: calc(50% - 5rem); right: 0;"
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
-    <img src="/images/bgs/hero-lines-2.png" alt="" />
+    <div style="left: 0;">
+        <img src="/images/bgs/hero-lines-2.png" alt="" />
+    </div>
 </div>
 
 <Main>
