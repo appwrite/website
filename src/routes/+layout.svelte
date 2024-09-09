@@ -44,6 +44,7 @@
 <script lang="ts">
     import '../app.css';
     import '$scss/index.scss';
+    import '$icons/output/web-icon.css';
 
     import { browser, dev } from '$app/environment';
     import { navigating, page, updated } from '$app/stores';
