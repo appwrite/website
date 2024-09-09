@@ -80,14 +80,18 @@
                                 <span class="web-icon-chevron-left" aria-hidden="true" />
                                 <span>Back to Changelog</span>
                             </a>
-                            <ul class="web-metadata web-caption-400">
+                            <ul class="web-metadata text-caption">
                                 <li>
                                     <time datetime={data.date}>{formatDate(data.date)}</time>
                                 </li>
                             </ul>
-                            <h1 class="web-title web-u-color-text-primary">{data.title}</h1>
+                            <h1 class="text-title font-aeonik-pro text-primary">
+                                {data.title}
+                            </h1>
                             <div class="share-post-section mt-4 flex items-center gap-4">
-                                <span class="web-eyebrow pr-2" style:color="#adadb0"> SHARE </span>
+                                <span class="text-micro uppercase pr-2" style:color="#adadb0">
+                                    SHARE
+                                </span>
 
                                 <ul class="flex gap-2">
                                     {#each sharingOptions as sharingOption}

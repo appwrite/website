@@ -27,7 +27,7 @@
     rel="noopener noreferrer"
 >
     <div class="p-3">
-        <h3 class="web-main-body-500 web-u-color-text-primary">{title}</h3>
+        <h3 class="text-body font-medium text-primary">{title}</h3>
         <p class="line-clamp-2">
             {description}
         </p>

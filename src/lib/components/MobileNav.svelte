@@ -28,7 +28,7 @@
                     {#each links as { href, label }}
                         <li>
                             <a class="web-side-nav-button" {href}>
-                                <span class="web-caption-400">{label}</span>
+                                <span class="text-caption">{label}</span>
                             </a>
                         </li>
                     {/each}
@@ -44,7 +44,7 @@
             >
                 <span class="web-icon-star" aria-hidden="true" />
                 <span class="text">Star on GitHub</span>
-                <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span>
+                <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
             </a>
         </div>
     </div>

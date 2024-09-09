@@ -101,7 +101,7 @@
         </div>
         <div class="web-mobile-header-end">
             <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button web-is-only-desktop">
-                <span class="web-sub-body-500">Go to Console</span>
+                <span class="text-sub-body font-medium">Go to Console</span>
             </a>
             <button
                 class="web-button is-text"
@@ -174,7 +174,7 @@
                     >
                         <span class="web-icon-star" aria-hidden="true" />
                         <span class="text">Star on GitHub</span>
-                        <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span>
+                        <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
                     </a>
                     <IsLoggedIn />
                 </div>
