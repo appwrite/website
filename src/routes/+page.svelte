@@ -107,7 +107,7 @@
 
 <div
     class="web-is-only-desktop absolute"
-    style="top: 42rem; right: 0;"
+    style="top: 42rem; right: 50%; translate: 42rem;"
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
     <img src="/images/bgs/hero-lines-2.png" alt="" />
