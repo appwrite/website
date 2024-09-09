@@ -116,12 +116,12 @@
 
 <Main>
     <div class="web-big-padding-section">
-        <div class="py-10">
-            <div class="my-[7.5rem]">
+        <div class="pb-10">
+            <div class="my-12 lg:my-[7.5rem]">
                 <section class="container pb-0">
                     <a
                         href="/blog/post/announcing-init-faster-smoother-better"
-                        class="web-hero-banner-button web-u-margin-block-end-24"
+                        class="web-hero-banner-button mb-4"
                     >
                         <span class="web-icon-star" aria-hidden="true" />
                         <span class="text-caption font-medium">New</span>
@@ -153,7 +153,7 @@
                     </Hero>
                 </section>
             </div>
-            <div class="my-[7.5rem]">
+            <div class="mb-12 lg:my-[7.5rem]">
                 <section class="container web-u-padding-block-0" style="--container-size:78.75rem">
                     <div class="web-media-container">
                         <img
@@ -165,7 +165,7 @@
                     </div>
                 </section>
             </div>
-            <div class="my-[7.5rem]">
+            <div class="mb-12 lg:my-[7.5rem]">
                 <div class="container">
                     <h2
                         class="text-title font-aeonik-pro text-primary text-center web-u-max-width-600 mx-auto"
