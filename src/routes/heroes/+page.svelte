@@ -141,7 +141,7 @@
                 <section class="container hero web-u-padding-block-end-0">
                     <div>
                         <h1 class="text-display font-aeonik-pro text-primary">Appwrite Heroes</h1>
-                        <p class="text-body mt-5 font-medium">
+                        <p class="text-body font-medium mt-5">
                             If you love building, writing, speaking, and helping other developers
                             build with Appwrite, help us support you by joining the Appwrite Heroes
                             program and becoming a leader in our developer community.
@@ -196,7 +196,7 @@
             <div class="web-big-padding-section-level-2">
                 <div class="container">
                     <div class="web-hero">
-                        <div class="text-display font-aeonik-pro text-primary web-u-clr-primary">
+                        <div class="text-display font-aeonik-pro web-u-clr-primary">
                             Meet our Heroes
                         </div>
                     </div>
@@ -218,7 +218,7 @@
                                     style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
                                 >
                                     <img
-                                        class="rounded-xl"
+                                        class="blockweb-u-border-radius-12"
                                         src="/images/heroes/photos/{i + 1}.png"
                                         loading="lazy"
                                         alt=""
