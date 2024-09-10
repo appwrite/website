@@ -386,7 +386,7 @@
                                             src="/assets/visuals/dashboard.png"
                                             alt="Dashboard"
                                         />
-                                        <div class="buttons">
+                                        <div class="buttons visuals">
                                             <a
                                                 class="web-button is-secondary"
                                                 href="/assets/visuals/dashboard.jpg"
@@ -417,7 +417,7 @@
                                             src="/assets/visuals/auth.png"
                                             alt="Appwrite Auth"
                                         />
-                                        <div class="buttons">
+                                        <div class="buttons visuals">
                                             <a
                                                 class="web-button is-secondary"
                                                 href="/assets/visuals/auth.jpg"
@@ -448,7 +448,7 @@
                                             src="/assets/visuals/databases.png"
                                             alt="Appwrite Databases"
                                         />
-                                        <div class="buttons">
+                                        <div class="buttons visuals">
                                             <a
                                                 class="web-button is-secondary"
                                                 href="/assets/visuals/databases.jpg"
@@ -480,7 +480,7 @@
                                             src="/assets/visuals/storage.png"
                                             alt="Appwrite Storage"
                                         />
-                                        <div class="buttons">
+                                        <div class="buttons visuals">
                                             <a
                                                 class="web-button is-secondary"
                                                 href="/assets/visuals/storage.jpg"
@@ -512,7 +512,7 @@
                                             src="/assets/visuals/functions.png"
                                             alt="Appwrite Functions"
                                         />
-                                        <div class="buttons">
+                                        <div class="buttons visuals">
                                             <a
                                                 class="web-button is-secondary"
                                                 href="/assets/visuals/functions.jpg"
@@ -543,7 +543,7 @@
                                             src="/assets/visuals/messaging.png"
                                             alt="Appwrite Messaging"
                                         />
-                                        <div class="buttons">
+                                        <div class="buttons visuals">
                                             <a
                                                 class="web-button is-secondary"
                                                 href="/assets/visuals/messaging.jpg"
@@ -615,6 +615,14 @@
             position: absolute;
             right: 1rem;
             bottom: 1rem;
+
+          &.visuals {
+            justify-content: left;
+            top: auto;
+            position: relative;
+            margin-top: 2rem;
+          }
         }
+
     }
 </style>
