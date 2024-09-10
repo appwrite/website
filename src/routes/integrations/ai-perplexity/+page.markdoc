@@ -7,7 +7,7 @@ featured: false
 isPartner: true
 isNew: true
 cover: /images/integrations/ai-perplexity/cover.png
-category: AI
+category: ai
 product: 
     avatar: '/images/integrations/avatars/perplexity.png'
     vendor: Perplexity
