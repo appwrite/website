@@ -1,0 +1,28 @@
+---
+layout: tutorial
+title: Build an expense tracker with Next.js
+description: Build a Next.js project using Appwrite.
+step: 1
+difficulty: beginner
+readtime: 18
+---
+
+**Expense tracker** is a simple web application that allows you to track your expenses. It is built using [Next.js](https://nextjs.org/) [app router](https://nextjs.org/docs/app) and [Appwrite](https://appwrite.io/).
+
+![Create project screen](/images/docs/tutorials/expense-tracker-app.png)
+
+# Concepts {% #concepts %}
+This tutorial will introduce the following concepts:
+
+1. Introduction to Appwrite
+2. Make first request
+3. Implement authtentication
+4. Intro to databases
+5. Create, read, update and delete documents
+5. Queries documents
+6. Add pagination
+
+
+# Prerequisites {% #prerequisites %}
+1. Basic knowledge of JavaScript, [React](https://react.dev/learn) and [Next.js](https://nextjs.org/docs).
+2. Have [Node.js](https://nodejs.org/en) and [NPM](https://www.npmjs.com/) installed on your computer
