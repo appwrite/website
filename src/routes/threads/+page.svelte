@@ -11,6 +11,7 @@
     import PreFooter from './PreFooter.svelte';
     import TagsDropdown from './TagsDropdown.svelte';
     import { getThreads } from './helpers';
+    import Input from '$lib/components/ui/Input.svelte';
 
     const title = 'Threads' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -169,14 +170,16 @@
                                 aria-hidden="true"
                                 style="inset-block-start:0.9rem"
                             />
+
                             <input
-                                class="web-input-button relative z-1 ml-10 pl-10"
+                                class="web-input-button relative z-1 !pl-10"
                                 type="text"
                                 id="search"
                                 placeholder="Search for threads"
                                 data-hit="-1"
                                 use:search
                                 bind:value={query}
+                                style:width="100%"
                             />
                         </div>
                     </div>
