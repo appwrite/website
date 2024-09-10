@@ -172,7 +172,7 @@
                             />
 
                             <input
-                                class="web-input-button relative z-1"
+                                class="web-input-button relative z-1 !pl-10"
                                 type="text"
                                 id="search"
                                 placeholder="Search for threads"
