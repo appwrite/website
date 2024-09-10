@@ -94,7 +94,7 @@
                         <section id={getSectionId(Section.NAMING)}>
                             <div class="web-flex flex-col gap-2">
                                 <h2
-                                    class="text-title font-aeonik-pro text-primary"
+                                    class="text-title font-aeonik-pro text-primary mb-4"
                                     use:visible={{ top: 48 }}
                                     on:visible={handleVisibility(Section.NAMING)}
                                 >
@@ -111,7 +111,7 @@
                         <section id={getSectionId(Section.LOGOTYPE)}>
                             <div class="web-flex flex-col gap-2">
                                 <h2
-                                    class="text-title font-aeonik-pro text-primary"
+                                    class="text-title font-aeonik-pro text-primary mb-4"
                                     use:visible={{ top: 48 }}
                                     on:visible={handleVisibility(Section.LOGOTYPE)}
                                 >
@@ -323,7 +323,7 @@
 
                         <section id={getSectionId(Section.COLORS)}>
                             <h2
-                                class="text-title font-aeonik-pro text-primary"
+                                class="text-title font-aeonik-pro text-primary mb-4"
                                 use:visible={{ top: 48 }}
                                 on:visible={handleVisibility(Section.COLORS)}
                             >
@@ -369,7 +369,7 @@
                         <section id={getSectionId(Section.VISUALS)}>
                             <div class="web-flex flex-col gap-2">
                                 <h2
-                                    class="text-title font-aeonik-pro text-primary"
+                                    class="text-title font-aeonik-pro text-primary mb-4"
                                     use:visible={{ top: 48 }}
                                     on:visible={handleVisibility(Section.VISUALS)}
                                 >
@@ -575,7 +575,7 @@
                         <section id={getSectionId(Section.CONTACT)}>
                             <div class="web-flex flex-col gap-2">
                                 <h2
-                                    class="text-title font-aeonik-pro text-primary"
+                                    class="text-title font-aeonik-pro text-primary mb-4"
                                     use:visible={{ top: 48 }}
                                     on:visible={handleVisibility(Section.CONTACT)}
                                 >
