@@ -9,7 +9,7 @@
     scroll-snap-align:start; scroll-margin-top:pxToRem(120);
   }
   a:not(.web-button) {
-    @include break-word();   word-break:break-all; 
+    @include break-word();
     &:where(:hover, :focus) { text-decoration:underline; }
   }
 
