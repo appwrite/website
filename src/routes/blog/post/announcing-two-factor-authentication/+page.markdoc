@@ -47,7 +47,7 @@ const client = new Client();
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 const account = new Account(client);
 

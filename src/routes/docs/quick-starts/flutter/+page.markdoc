@@ -172,7 +172,7 @@ Find your project's ID in the **Settings** page.
 {% only_light %}
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
-Open the generated `lib/main.dart` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
+Open the generated `lib/main.dart` and add the following code to it, replace `<PROJECT_ID>` with your project ID.
 This imports and initializes Appwrite.
 
 ```dart
@@ -184,7 +184,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Client client = Client()
       .setEndpoint("https://cloud.appwrite.io/v1")
-      .setProject("<YOUR_PROJECT_ID>");
+      .setProject("<PROJECT_ID>");
   Account account = Account(client);
 
   runApp(MaterialApp(
