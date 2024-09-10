@@ -55,7 +55,7 @@
     border-radius: var(--p-card-border-radius);
   }
   &.is-transparent {
-    --p-card-padding: var(--card-padding, #{pxToRem(32)});
+    --p-card-padding: var(--card-padding, #{pxToRem(20)});
     padding: var(--p-card-padding);
     border:solid pxToRem(1) rgba(255 255 255 / 0.12);
     border-radius:pxToRem(16);
