@@ -26,6 +26,7 @@
     import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
     import InitBanner from '$lib/components/InitBanner.svelte';
     import Discord from '$lib/icons/Discord.svelte';
+    import Star from '$lib/icons/Star.svelte';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -257,7 +258,7 @@
                     rel="noopener noreferrer"
                     class="web-button is-text web-u-inline-width-100-percent-mobile"
                 >
-                    <span class="web-icon-star" aria-hidden="true" />
+                    <Star class="text-secondary" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>
                     <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
                 </a>

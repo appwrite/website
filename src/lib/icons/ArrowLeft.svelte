@@ -1,3 +1,3 @@
-<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...$$restProps}><slot /><path d="M14.5 10H5.5" stroke="#19191C" stroke-width="1.2" stroke-linecap="round"/>
-<path d="M10 5.5L5.5 10" stroke="#19191C" stroke-width="1.2" stroke-linecap="round"/>
-<path d="M10 14.5L5.5 10" stroke="#19191C" stroke-width="1.2" stroke-linecap="round"/></svg>
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...$$restProps}><slot /><path d="M14.5 10H5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+    <path d="M10 5.5L5.5 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+    <path d="M10 14.5L5.5 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" /></svg>

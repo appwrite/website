@@ -9,6 +9,8 @@
     import PreFooter from '../PreFooter.svelte';
     import MessageCard from './MessageCard.svelte';
     import Discord from '$lib/icons/Discord.svelte';
+    import ArrowUp from '$lib/icons/ArrowUp.svelte';
+    import ChevronLeft from '$lib/icons/ChevronLeft.svelte';
 
     export let data;
 
@@ -41,13 +43,13 @@
         <div class="header">
             <div>
                 <a class="web-link is-secondary items-baseline" href="/threads">
-                    <span class="web-icon-chevron-left" aria-hidden="true" />
+                    <ChevronLeft aria-hidden="true" />
                     <span>Back</span>
                 </a>
                 <h1 class="text-title font-aeonik-pro text-primary">{data.title}</h1>
                 <ul class="tags">
                     <li class="web-tag">
-                        <span class="web-icon-arrow-up" />
+                        <ArrowUp />
                         <span class="text">{data.vote_count}</span>
                     </li>
                     {#each data.tags ?? [] as tag}

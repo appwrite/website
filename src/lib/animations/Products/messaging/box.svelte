@@ -31,7 +31,7 @@
                 {#if task.status === 'sending'}
                     <div class="loader is-small" in:fade />
                 {:else}
-                    <Check class="text-greyscale-600 size-5" />
+                    <Check class="text-greyscale-600" />
                 {/if}
             </div>
         </div>

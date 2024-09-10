@@ -1,4 +1,6 @@
 <script lang="ts">
+    import Check from '$lib/icons/Check.svelte';
+    import Minus from '$lib/icons/Minus.svelte';
     import { createCheckbox, melt, type CreateCheckboxProps, createSync } from '@melt-ui/svelte';
 
     export let checked: NonNullable<CreateCheckboxProps['defaultChecked']> = false;
@@ -21,9 +23,9 @@
 
 <button {id} use:melt={$root} aria-label={ariaLabel} on:click|stopPropagation>
     {#if $isIndeterminate}
-        <div class="web-icon-minus" />
+        <Minus class="text-primary absolute top-1/2 left-1/2 -translate-1/2" />
     {:else if $isChecked}
-        <div class="web-icon-check" />
+        <Check class="text-primary absolute top-1/2 left-1/2 -translate-1/2" />
     {/if}
 </button>
 
@@ -58,15 +60,6 @@
 
         &:not([data-state='unchecked']) {
             background-color: hsl(var(--web-color-accent));
-        }
-
-        > [class^='web-icon-'] {
-            color: hsl(var(--web-color-primary));
-            position: absolute;
-            inset-block-start: 50%;
-            inset-inline-start: 50%;
-            transform: translate(-50%, -50%);
-            font-size: calc(var(--p-size) * 0.875);
         }
     }
 </style>
