@@ -477,7 +477,7 @@
                         </div>
                         <div class="web-mini-card">
                             <div class="flex items-center justify-between gap-8">
-                                <h4 class="web-label web-u-color-text-primary">Free</h4>
+                                <h4 class="text-label text-primary">Free</h4>
                                 <a
                                     href="https://cloud.appwrite.io/register"
                                     class="web-button is-secondary"
