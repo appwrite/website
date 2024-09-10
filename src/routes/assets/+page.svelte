@@ -122,7 +122,7 @@
                                     identity. Refrain from altering our logo and preferably use our
                                     logo on a neutral background.
                                 </p>
-                                <div class="web-flex flex-col-mobile mt-3 flex flex-wrap gap-8">
+                                <div class="web-flex flex-col-mobile mt-5 flex flex-wrap gap-8">
                                     <div
                                         class="media-wrapper | light |
                                     web-u-flex-basis-300 web-u-bg-color-neutral-100 web-u-min-block-size-320 flex flex-1 items-center justify-center rounded-lg
@@ -195,14 +195,14 @@
                             </div>
                             <section>
                                 <div class="web-flex flex-col gap-2">
-                                    <h3 class="text-label text-primary">Co-branding logotypes</h3>
+                                    <h3 class="text-label text-primary mt-3 mb-4">Co-branding logotypes</h3>
                                     <p>
                                         Spacing is determined by the Appwrite mark. Unless otherwise
                                         noted by partner brands, each logo is optically equal as a
                                         collection of shapes.
                                     </p>
                                     <div
-                                        class="web-u-border-radius-8 web-u-bg-color-neutral-800 web-u-min-block-size-320 mt-3 flex items-center
+                                        class="web-u-border-radius-8 web-u-bg-color-neutral-800 web-u-min-block-size-320 mt-5 flex items-center
                                                 justify-center px-4"
                                     >
                                         <img
@@ -217,7 +217,7 @@
                         <section id={getSectionId(Section.LOGOMARK)}>
                             <div class="web-flex flex-col gap-2">
                                 <h3
-                                    class="text-title font-aeonik-pro text-primary"
+                                    class="text-title font-aeonik-pro text-primary mb-4"
                                     use:visible={{ top: 48 }}
                                     on:visible={handleVisibility(Section.LOGOMARK)}
                                 >
@@ -229,7 +229,7 @@
                                     situations where space constraints make it challenging to
                                     showcase the complete logotype.
                                 </p>
-                                <div class="web-flex flex-col-mobile mt-3 flex flex-wrap gap-8">
+                                <div class="web-flex flex-col-mobile mt-5 flex flex-wrap gap-8">
                                     <div
                                         class="media-wrapper | light |
                                     web-u-flex-basis-300 web-u-border-radius-8 web-u-bg-color-neutral-100 web-u-min-block-size-320 flex flex-1 items-center justify-center
@@ -302,14 +302,14 @@
                             </div>
                             <section id="">
                                 <div class="web-flex flex-col gap-2">
-                                    <h3 class="text-label text-primary">Co-branding lockups</h3>
+                                    <h3 class="text-label text-primary mt-3 mb-4">Co-branding lockups</h3>
                                     <p>
                                         Spacing is determined by the Appwrite mark. Unless otherwise
                                         noted by partner brands, each logo is optically equal as a
                                         collection of shapes.
                                     </p>
                                     <div
-                                        class="web-u-border-radius-8 web-u-bg-color-neutral-800 web-u-min-block-size-320 mt-3 flex items-center
+                                        class="web-u-border-radius-8 web-u-bg-color-neutral-800 web-u-min-block-size-320 mt-4 flex items-center
                                                 justify-center px-4"
                                     >
                                         <img
@@ -323,7 +323,7 @@
 
                         <section id={getSectionId(Section.COLORS)}>
                             <h2
-                                class="text-title font-aeonik-pro text-primary mb-4"
+                                class="text-title font-aeonik-pro text-primary"
                                 use:visible={{ top: 48 }}
                                 on:visible={handleVisibility(Section.COLORS)}
                             >
@@ -331,7 +331,7 @@
                             </h2>
                             <div class="flex flex-wrap gap-8">
                                 <div
-                                    class="media-wrapper | web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-text-color-neutral-900 web-u-bg-color-neutral-50 web-u-media-ratio-1-1
+                                    class="media-wrapper | flex aspect-square web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-text-color-neutral-900 web-u-bg-color-neutral-50
                                 web-u-min-block-size-160 flex-1 flex-col justify-center
                                 gap-2 px-6"
                                 >
@@ -342,7 +342,7 @@
                                     </div>
                                 </div>
                                 <div
-                                    class="media-wrapper | web-u-sep web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-media-ratio-1-1 web-u-min-block-size-160
+                                    class="media-wrapper | aspect-square flex web-u-sep web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-min-block-size-160
                                 web-u-text-color-neutral-50 web-u-bg-color-neutral-900 flex-1 flex-col justify-center
                                 gap-2 px-6"
                                 >
@@ -353,7 +353,7 @@
                                     </div>
                                 </div>
                                 <div
-                                    class="media-wrapper | web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-text-color-neutral-50 web-u-bg-color-primary-500 web-u-aspect-ratio-1-1
+                                    class="media-wrapper | flex aspect-square web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-text-color-neutral-50 web-u-bg-color-primary-500
                                 web-u-min-block-size-160 flex-1 flex-col justify-center
                                 gap-2 px-6"
                                 >
@@ -379,7 +379,7 @@
                                     Use these product visuals to enhance your articles,
                                     presentations, and content related to Appwrite.
                                 </p>
-                                <div class="mt-3 grid grid-cols-2 gap-8">
+                                <div class="mt-5 grid grid-cols-2 gap-8">
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
