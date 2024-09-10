@@ -85,7 +85,7 @@ Find your project's ID in the **Settings** page.
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Create a new file `Appwrite.kt` and add the following code to it, replacing `[YOUR_PROJECT_ID]` with your project ID.
+Create a new file `Appwrite.kt` and add the following code to it, replacing `[PROJECT_ID]` with your project ID.
 
 ```kotlin
 package <YOUR_ROOT_PACKAGE_HERE>
@@ -103,7 +103,7 @@ object Appwrite {
     fun init(context: Context) {
         client = Client(context)
             .setEndpoint("https://cloud.appwrite.io/v1")
-            .setProject("[YOUR_PROJECT_ID]")
+            .setProject("[PROJECT_ID]")
 
         account = Account(client)
     }
