@@ -286,7 +286,7 @@ const storage = new Storage(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('PROJECT_ID') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
 const promise = storage.getFile('[BUCKET_ID]', '[FILE_ID]');
@@ -306,7 +306,7 @@ void main() { // Init SDK
 
   client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('PROJECT_ID') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
   ;
   // downloading file
   Future result = storage.getFile(
@@ -393,7 +393,7 @@ const storage = new Storage(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('PROJECT_ID') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
 const result = storage.getFileDownload('[BUCKET_ID]', '[FILE_ID]');
@@ -409,7 +409,7 @@ void main() { // Init SDK
 
   client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('PROJECT_ID') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
   ;
   // downloading file
   Future result = storage.getFileDownload(
@@ -496,7 +496,7 @@ const storage = new Storage(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('PROJECT_ID') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
 const result = storage.getFilePreview('[BUCKET_ID]', '[FILE_ID]');
@@ -512,7 +512,7 @@ void main() { // Init SDK
 
   client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('PROJECT_ID') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
   ;
   // downloading file
   Future result = storage.getFilePreview(
@@ -600,7 +600,7 @@ const storage = new Storage(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('PROJECT_ID') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
 const result = storage.getFileView('[BUCKET_ID]', '[FILE_ID]');
@@ -616,7 +616,7 @@ void main() { // Init SDK
 
   client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('PROJECT_ID') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
   ;
   // downloading file
   Future result = storage.getFileView(

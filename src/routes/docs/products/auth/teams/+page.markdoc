@@ -25,7 +25,7 @@ const teams = new Teams(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('PROJECT_ID') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
 const promise = teams.create(
@@ -49,7 +49,7 @@ void main() { // Init SDK
 
   client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('PROJECT_ID') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
   ;
   Future result = teams.create(
     teamId: 'teachers',
@@ -113,7 +113,7 @@ const teams = new Teams(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('PROJECT_ID') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
 const promise = teams.createMembership(
@@ -137,7 +137,7 @@ void main() { // Init SDK
 
   client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('PROJECT_ID') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
   ;
   Future result = teams.createMembership(
     teamId: 'teachers',

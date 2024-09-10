@@ -291,7 +291,7 @@ const account = new sdk.Account(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('PROJECT_ID') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
 const promise = account.createAnonymousSession();
@@ -312,7 +312,7 @@ $client = new Client();
 
 $client
     ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('PROJECT_ID') // Your project ID
+    ->setProject('<PROJECT_ID>') // Your project ID
 ;
 
 $account = new Account($client);

@@ -54,7 +54,7 @@ const messaging = new sdk.Messaging(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('PROJECT_ID')                 // Your project ID
+    .setProject('<PROJECT_ID>')                 // Your project ID
     .setKey('919c2d18fb5d4...a2ae413da83346ad2')                  // Your secret API key
 ;
 
@@ -75,7 +75,7 @@ let messaging = new sdk.Messaging(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('PROJECT_ID')                 // Your project ID
+    .setProject('<PROJECT_ID>')                 // Your project ID
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
@@ -95,7 +95,7 @@ $client = new Client();
 
 $client
     ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('PROJECT_ID')                 // Your project ID
+    ->setProject('<PROJECT_ID>')                 // Your project ID
     ->setKey('919c2d18fb5d4...a2ae413da83346ad2')                  // Your secret API key
 ;
 
@@ -116,7 +116,7 @@ client = Client()
 
 (client
   .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-  .set_project('PROJECT_ID')                 # Your project ID
+  .set_project('<PROJECT_ID>')                 # Your project ID
   .set_key('919c2d18fb5d4...a2ae413da83346ad2')                  # Your secret API key
 )
 
@@ -135,7 +135,7 @@ include Appwrite
 
 client = Client.new
     .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-    .set_project('PROJECT_ID')                 # Your project ID
+    .set_project('<PROJECT_ID>')                 # Your project ID
     .set_key('919c2d18fb5d4...a2ae413da83346ad2')                  # Your secret API key
 
 messaging = Messaging.new(client)
@@ -176,7 +176,7 @@ void main() {                                    // Init SDK
 
   client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('PROJECT_ID')                 // Your project ID
+    .setProject('<PROJECT_ID>')                 // Your project ID
     .setKey('919c2d18fb5d4...a2ae413da83346ad2')                  // Your secret API key
   ;
 
@@ -320,7 +320,7 @@ const sdk = require('node-appwrite');
 
 const client = new sdk.Client()
     .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('PROJECT_ID')                    // Your project ID
+    .setProject('<PROJECT_ID>')                    // Your project ID
     .setJWT('eyJhbVCJ9.eyJ...');                    // Your secret JSON Web Token
 
 const messaging = new sdk.Messaging(client);
@@ -336,7 +336,7 @@ import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 
 const client = new sdk.Client()
     .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('PROJECT_ID')                    // Your project ID
+    .setProject('<PROJECT_ID>')                    // Your project ID
     .setJWT('eyJhbVCJ9.eyJ...');                    // Your secret JSON Web Token
 
 const messaging = new sdk.Messaging(client);
@@ -357,7 +357,7 @@ $client = new Client();
 
 $client
     ->setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
-    ->setProject('PROJECT_ID')                  // Your project ID
+    ->setProject('<PROJECT_ID>')                  // Your project ID
     ->setJWT('eyJhbVCJ9.eyJ...');                  // Your secret JSON Web Token
 
 $messaging = new Messaging($client);
@@ -374,7 +374,7 @@ from appwrite.services.messaging import Messaging
 
 client = Client()
 client.set_endpoint('https://cloud.appwrite.io/v1')  # Your API Endpoint
-client.set_project('PROJECT_ID')                  # Your project ID
+client.set_project('<PROJECT_ID>')                  # Your project ID
 client.set_jwt('eyJhbVCJ9.eyJ...')                   # Your secret JSON Web Token
 
 messaging = Messaging(client)
@@ -392,7 +392,7 @@ include Appwrite
 
 client = Client.new
     .set_endpoint('https://cloud.appwrite.io/v1')  # Your API Endpoint
-    .set_project('PROJECT_ID')                  # Your project ID
+    .set_project('<PROJECT_ID>')                  # Your project ID
     .set_jwt('eyJhbVCJ9.eyJ...')                   # Your secret JSON Web Token
 
 messaging = Messaging.new(client)
@@ -427,7 +427,7 @@ import 'package:dart_appwrite/models.dart';
 
 Client client = Client()
     .setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
-    .setProject('PROJECT_ID')                  // Your project ID
+    .setProject('<PROJECT_ID>')                  // Your project ID
     .setJWT('eyJhbVCJ9.eyJ...');                  // Your secret JSON Web Token
 
 Messaging messaging = Messaging(client);
