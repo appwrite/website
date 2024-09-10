@@ -53,7 +53,7 @@
             style="flex-wrap: wrap-reverse;"
         >
             <div class="flex items-center gap-4">
-                <h5 class="text-body font-semibold text-primary">Was this page helpful?</h5>
+                <h5 class="text-body text-primary font-semibold">Was this page helpful?</h5>
                 <div class="flex gap-2">
                     <button
                         class="web-radio-button"
@@ -85,7 +85,7 @@
                     {/if}
                     <li>
                         <a
-                            href="https://github.com/appwrite/website"
+                            href={`https://github.com/appwrite/website/tree/main/src/routes${$page.route.id}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="web-link flex items-baseline gap-1"
