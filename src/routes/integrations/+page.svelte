@@ -129,7 +129,7 @@
         <div>
             <div class="container">
                 <div class="l-integrations-grid">
-                    <aside class="sidebar flex flex-col gap-8">
+                    <aside class="sidebar flex flex-col gap-8" id="integrations-side">
                         <section>
                             <Input
                                 label="Search"
@@ -606,6 +606,11 @@
                 position: sticky;
                 top: 50px;
                 height: 500px;
+                transition: top 0.3s ease;
+
+              &.menu-visible {
+                top: 122px;
+              }
             }
 
             .tag {
