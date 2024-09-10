@@ -244,7 +244,9 @@
                                                         class="web-card is-normal h-full"
                                                         style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                                                     >
-                                                        <div class="mb-4 flex justify-between">
+                                                        <div
+                                                            class="mb-3 flex items-center justify-between"
+                                                        >
                                                             <img
                                                                 class="web-user-box-image is-32px"
                                                                 src={item.product.avatar}
@@ -359,7 +361,7 @@
                                                                     style="--card-padding:1.5rem; --card-padding-mobile:1.5rem; --card-border-radius: 1.5rem"
                                                                 >
                                                                     <div
-                                                                        class="mb-4 flex justify-between"
+                                                                        class="mb-3 flex items-center justify-between"
                                                                     >
                                                                         <img
                                                                             class="web-user-box-image is-32px"
