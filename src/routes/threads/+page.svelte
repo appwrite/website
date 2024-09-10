@@ -11,6 +11,7 @@
     import PreFooter from './PreFooter.svelte';
     import TagsDropdown from './TagsDropdown.svelte';
     import { getThreads } from './helpers';
+    import Input from '$lib/components/ui/Input.svelte';
 
     const title = 'Threads' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -169,6 +170,7 @@
                                 aria-hidden="true"
                                 style="inset-block-start:0.9rem"
                             />
+
                             <input
                                 class="web-input-button relative z-1"
                                 type="text"
@@ -177,6 +179,7 @@
                                 data-hit="-1"
                                 use:search
                                 bind:value={query}
+                                style:width="100%"
                             />
                         </div>
                     </div>
