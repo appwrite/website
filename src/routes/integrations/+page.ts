@@ -114,12 +114,26 @@ export const load = () => {
         }
     );
 
+    const featuredIntegrations = integrations.filter((i) => i.featured);
+
+    const featuredIntegrationsWithCategoryHeadings = Object.entries(featuredIntegrations).map(
+        ([_, integration]) => {
+            const integrationCategory = categoryDescriptions.find(
+                ( key ) => key.slug === integration.category.toLowerCase()
+            );
+            return {
+                heading: integrationCategory?.heading,
+                integration
+            };
+        }
+    );
+
     return {
         integrations: integrationsWithDescriptions,
         list: integrations,
         categories: new Set(categories),
         platforms: new Set(platforms),
-        featured: integrations.filter((i) => i.featured)
+        featured: featuredIntegrationsWithCategoryHeadings
     };
 };
 
