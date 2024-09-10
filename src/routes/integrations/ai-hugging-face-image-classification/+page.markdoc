@@ -7,7 +7,7 @@ featured: false
 isPartner: true
 isNew: true
 cover: /images/integrations/ai-hugging-face-image-classification/cover.png
-category: AI
+category: ai
 product: 
     avatar: '/images/integrations/avatars/hugging-face.png'
     vendor: Hugging Face

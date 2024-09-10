@@ -185,11 +185,11 @@
                                     >
                                         {#each data.categories as category}
                                             {@const integrations = data.integrations.find(
-                                                (i) => i.category === category
+                                                (i) => i.category === category.slug
                                             )}
                                             {#if integrations && (activePlatform === 'All' || integrations.integrations.some( (i) => i.platform.includes(activePlatform) ))}
-                                                <option value={category.toLowerCase()}>
-                                                    {category}
+                                                <option value={category.slug}>
+                                                    {category.heading}
                                                 </option>
                                             {/if}
                                         {/each}
@@ -204,18 +204,18 @@
                                 <ul class="hidden flex-col gap-4 sm:flex" class:disabled={hasQuery}>
                                     {#each data.categories as category}
                                         {@const integrations = data.integrations.find(
-                                            (i) => i.category === category
+                                            (i) => i.category === category.slug
                                         )}
                                         {#if integrations && (activePlatform === 'All' || integrations.integrations.some( (i) => i.platform.includes(activePlatform) ))}
                                             <li>
                                                 <a
-                                                    href={`#${category.toLowerCase()}`}
+                                                    href={`#${category.slug}`}
                                                     class="web-link"
-                                                    class:is-pink={category.toLowerCase() ===
+                                                    class:is-pink={category.slug ===
                                                         activeCategory}
                                                     on:click={() =>
-                                                        activeCategory === category.toLowerCase()}
-                                                    >{category}</a
+                                                        activeCategory === category.slug}
+                                                    >{category.heading}</a
                                                 >
                                             </li>
                                         {/if}
@@ -288,11 +288,11 @@
                                                 >
                                                     <a
                                                         class="block overflow-hidden rounded-2xl before:absolute before:inset-x-0 before:bottom-0 before:block before:h-80 before:rounded-[inherit] before:bg-gradient-to-b before:from-transparent before:via-transparent before:to-black"
-                                                        href={item.href}
+                                                        href={item.integration.href}
                                                     >
                                                         <img
-                                                            src={item.cover}
-                                                            alt={item.title}
+                                                            src={item.integration.cover}
+                                                            alt={item.integration.title}
                                                             class="web-u-media-cover block aspect-video"
                                                         />
                                                         <div
@@ -300,8 +300,8 @@
                                                         >
                                                             <img
                                                                 class="row-span-2 block size-12 rounded-full"
-                                                                src={item.product.avatar}
-                                                                alt={`Avatar for ${item.product.vendor}`}
+                                                                src={item.integration.product.avatar}
+                                                                alt={`Avatar for ${item.integration.product.vendor}`}
                                                                 width="40"
                                                                 height="40"
                                                             />
@@ -309,13 +309,13 @@
                                                                 class="text-body gap-2 font-medium"
                                                             >
                                                                 <span class="text-primary mt-3">
-                                                                    {item.title}
+                                                                    {item.integration.title}
                                                                 </span>
                                                             </div>
                                                             <div
                                                                 class="text-caption web-u-color-text-secondary"
                                                             >
-                                                                {item.category}
+                                                                {item.heading}
                                                             </div>
                                                         </div>
                                                     </a>
@@ -325,7 +325,7 @@
                                     </div>
                                 </section>
 
-                                {#each data.integrations as { category, description, integrations }}
+                                {#each data.integrations as { category, heading, description, integrations }}
                                     {#if integrations?.length > 0 && (activePlatform === 'All' || integrations.some( (i) => i.platform.includes(activePlatform) ))}
                                         <section
                                             class="l-max-size-list-cards-section flex flex-col gap-8"
@@ -343,7 +343,7 @@
                                         >
                                             <header class="flex flex-col gap-1">
                                                 <h2 class="text-label text-primary">
-                                                    {category}
+                                                    {heading}
                                                 </h2>
                                                 <p class="text-description">
                                                     {description}
