@@ -132,7 +132,7 @@
 
                 <div class="container">
                     <h1
-                        class="web-display web-u-color-text-primary web-u-margin-block-80 web-u-padding-block-end-40"
+                        class="text-display font-aeonik-pro text-primary web-u-margin-block-80 web-u-padding-block-end-40"
                     >
                         Threads
                     </h1>
@@ -170,7 +170,7 @@
                                 style="inset-block-start:0.9rem"
                             />
                             <input
-                                class="web-input-button relative z-1"
+                                class="web-input-button relative z-1 ml-10 pl-10"
                                 type="text"
                                 id="search"
                                 placeholder="Search for threads"
@@ -182,7 +182,7 @@
                     </div>
 
                     {#if threads.length}
-                        <h2 class="web-u-color-text-primary mt-4" aria-live="polite">
+                        <h2 class="text-primary mt-4" aria-live="polite">
                             Found {query.length ? threads.length : '5000+'} results.
                         </h2>
                     {/if}
@@ -193,7 +193,7 @@
                         {:else}
                             <div class="web-card is-normal has-border-gradient empty-card">
                                 <enhanced:img class="img" src="./(assets)/empty-state.png" alt="" />
-                                <span class="web-main-body-500">No support threads found</span>
+                                <span class="text-body font-medium">No support threads found</span>
                                 <button
                                     class="web-button"
                                     on:click={() => {

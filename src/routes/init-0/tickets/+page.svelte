@@ -33,10 +33,10 @@
 <Main>
     <div class="hero">
         <div class="desktop-left">
-            <h1 class="web-display">
+            <h1 class="text-display font-aeonik-pro">
                 <span style:font-weight="500">
-                    <span class="web-u-color-text-primary">init</span><span
-                        class="web-u-color-text-accent">_</span
+                    <span class="text-primary">init</span><span class="web-u-color-text-accent"
+                        >_</span
                     >
                 </span>
                 launched on February 26th, 2024

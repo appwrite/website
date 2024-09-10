@@ -50,7 +50,7 @@
                 <section class="container">
                     <div class="web-hero">
                         <h1
-                            class="web-display web-u-max-width-700 web-u-opacity-90 web-u-mobile-align-text-center self-center"
+                            class="text-display font-aeonik-pro web-u-max-width-700 web-u-opacity-90 web-u-mobile-align-text-center self-center"
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
@@ -70,19 +70,23 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="starter" class="web-label">Free</h2>
-                                            <div class="web-title web-u-color-text-primary mt-2">
+                                            <h2 id="starter" class="text-label">Free</h2>
+                                            <div
+                                                class="text-title font-aeonik-pro text-primary mt-2"
+                                            >
                                                 $0
                                             </div>
                                             <div class="mt-1">&nbsp;</div>
-                                            <p class="web-main-body-500 mt-4">
+                                            <p class="text-body mt-4 font-medium">
                                                 For personal hobby projects and students.
                                             </p>
                                             <a
                                                 href="{PUBLIC_APPWRITE_DASHBOARD}/register"
                                                 class="web-button is-secondary is-full-width mt-8"
                                             >
-                                                <span class="web-sub-body-500">Start building</span>
+                                                <span class="text-sub-body font-medium"
+                                                    >Start building</span
+                                                >
                                             </a>
                                         </header>
                                         <div class="web-pricing-cards-content">
@@ -118,14 +122,14 @@
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
                                             <header class="flex gap-3">
-                                                <h2 id="pro" class="web-label">Pro</h2>
+                                                <h2 id="pro" class="text-label">Pro</h2>
                                                 <div class="web-inline-tag is-pink">Popular</div>
                                             </header>
                                             <div class="web-title web-u-color-text-primary mt-2">
                                                 $15
                                             </div>
                                             <div class="mt-1">per member/month</div>
-                                            <p class="web-main-body-500 mt-4">
+                                            <p class="text-body mt-4 font-medium">
                                                 For pro developers and teams that need to scale
                                                 their products.
                                             </p>
@@ -135,8 +139,10 @@
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
-                                                <!-- <span class="web-sub-body-500">Start trial</span> -->
-                                                <span class="web-sub-body-500">Start building</span>
+                                                <!-- <span class="text-sub-body font-medium">Start trial</span> -->
+                                                <span class="text-sub-body font-medium"
+                                                    >Start building</span
+                                                >
                                             </a>
                                         </header>
                                         <div class="web-pricing-cards-content">
@@ -167,12 +173,14 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="scale" class="web-label">Scale</h2>
-                                            <div class="web-title web-u-color-text-primary mt-2">
+                                            <h2 id="scale" class="text-label">Scale</h2>
+                                            <div
+                                                class="text-title font-aeonik-pro text-primary mt-2"
+                                            >
                                                 $599
                                             </div>
                                             <div class="mt-1">per organization/month</div>
-                                            <p class="web-main-body-500 mt-4">
+                                            <p class="text-body mt-4 font-medium">
                                                 For scaling teams and agencies that need dedicated
                                                 support.
                                             </p>
@@ -180,7 +188,9 @@
                                                 class="web-button is-secondary is-full-width mt-8"
                                                 disabled
                                             >
-                                                <span class="web-sub-body-500">Coming soon</span>
+                                                <span class="text-sub-body font-medium"
+                                                    >Coming soon</span
+                                                >
                                             </button>
                                         </header>
                                         <div class="web-pricing-cards-content">
@@ -246,6 +256,7 @@
                         </ul>
                     </div>
 
+<<<<<<< HEAD
                     <!--                    <ul class="web-grid-1-1-opt-2 u-gap-32 web-u-margin-block-start-80">-->
                     <!--                        <li>-->
                     <!--                            <article-->
@@ -298,6 +309,55 @@
                     <!--                            </article>-->
                     <!--                        </li>-->
                     <!--                    </ul>-->
+=======
+                    <ul class="web-grid-1-1-opt-2 mt-20 gap-8">
+                        <li>
+                            <article
+                                class="web-card is-transparent has-border-gradient min-h-full"
+                                style="background:rgba(35, 35, 37, 0.90);"
+                            >
+                                <header class="flex gap-3">
+                                    <h3 id="enterprises" class="text-body text-primary font-medium">
+                                        Enterprises
+                                    </h3>
+                                    <div class="web-inline-tag is-pink">Coming Soon</div>
+                                </header>
+                                <p class="mt-2">
+                                    Large scale projects seeking greater performance, collaboration
+                                    and security.
+                                </p>
+                                <a href="/contact-us" class="web-button is-secondary mt-8">
+                                    <span>Contact us</span>
+                                </a>
+                            </article>
+                        </li>
+                        <li>
+                            <article
+                                class="web-card is-transparent has-border-gradient min-h-full"
+                                style="background:rgba(35, 35, 37, 0.90);"
+                            >
+                                <header class="flex gap-3">
+                                    <h3
+                                        id="open-source-teams"
+                                        class="text-body text-primary font-medium"
+                                    >
+                                        Open-source teams
+                                    </h3>
+                                </header>
+                                <p class="mt-2">
+                                    We support OSS maintainers with a free Pro Plan. Read our
+                                    announcement blog to find out more.
+                                </p>
+                                <a
+                                    href="/docs/advanced/platform/oss"
+                                    class="web-button is-secondary mt-8"
+                                >
+                                    <span>Learn more</span>
+                                </a>
+                            </article>
+                        </li>
+                    </ul>
+>>>>>>> c726ba925ce064a5fd56f3a875d1ea0d583ac9da
                 </section>
             </div>
         </div>
@@ -308,13 +368,13 @@
                 <div class="container relative" style:z-index="10">
                     <section class="web-grid-4-6">
                         <header>
-                            <div class="web-display web-u-color-text-primary">FAQ</div>
+                            <div class="text-display font-aeonik-pro text-primary">FAQ</div>
                         </header>
                         <Faq />
                     </section>
                 </div>
             </div>
-            <div class="web-big-padding-section-level-2 !mb-0 relative">
+            <div class="web-big-padding-section-level-2 relative !mb-0">
                 <div class="container">
                     <PreFooter />
                     <FooterNav />
@@ -326,6 +386,10 @@
 </Main>
 
 <style lang="scss">
+    .web-card {
+        --web-color-border: 240, 4%, 18%;
+        --p-card-padding: 1.25rem;
+    }
     @media (min-width: 360px) and (max-width: 550px) {
         .web-location-for-mobile {
             inset-block-start: 90px;
