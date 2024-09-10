@@ -8,6 +8,10 @@ Each time an Appwrite Function runs, an **execution** is created.
 Each execution has a unique ID. If [you enable execution logs](/docs/products/functions/functions#execution-logs) in your function,
 you can find function executions logged in the **Executions** tab.
 
+# Synchronous executions {% #synchronous-executions %}
+
+# Asynchronous executions {% #asynchronous-executions %}
+
 # Execution table {% #execution-table %}
 
 In your function's **Executions** tab, you will see a table of your recent executions.

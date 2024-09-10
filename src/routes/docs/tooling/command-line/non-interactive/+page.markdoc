@@ -3,21 +3,36 @@ layout: article
 title: Non-interactive
 description: Deploy changes to Appwrite projects to migrate databases and collections schema, functions, teams, buckets, and more.
 ---
-The Appwrite CLI can be used in a non-interactive and headless manner, without saving configuration or sessions. This is especially useful when you want to automate tasks on a continuous integration server. You can enable the non-interactive mode for the Appwrite CLI by setting the `project ID`, `endpoint`, and `API Key`:
+
+The [Appwrite CLI](/docs/tooling/command-line/installation) can be used in a non-interactive manner. This is especially useful when you want to automate tasks on a continuous integration server.
+
+# Authentication {% #authentication %}
+
+In non-interactive mode, you can authenticate using two methods: email and password or API keys. While using an [API key](/docs/advanced/platform/api-keys) does not require an email and password to authenticate, the API key needs to have its [scopes](/docs/advanced/platform/api-keys#scopes) configured. The API key does not work for administrative operations like changing organization billing, deleting projects, or creating a new project.
+
+## Email and password {% #email-and-password %}
+
+Use `appwrite login` with your email and password to log in.
 
 ```sh
-appwrite client \
-    --endpoint https://cloud.appwrite.io/v1 \
-    --project-id [YOUR_PROJECT_ID] \
-    --key YOUR_API_KEY
+appwrite login --email "<EMAIL>" --password "<PASSWORD>" 
 ```
 
-When you set the global configuration parameters using the `appwrite client` command, they take precedence over the local configuration parameters in your `appwrite.json` thereby switching the CLI to non-interactive mode.
+## API Key {% #api-key %}
 
-In this mode, the CLI can only interact with one project at a time.
+{% info title="Using API key with CLI" %}
+Some CLI commands won't work with an API key, like the `projects` commands.
+{% /info %}
 
-# API Keys {% #api-keys %}
-In non-interactive mode, the CLI uses an API key to authenticate. Your API key must have sufficient permissions to execute the commands you plan to use. [Learn more about API Keys](/docs/advanced/platform/api-keys).
+In non-interactive mode, the CLI also uses an API key to authenticate. Your API key must have sufficient permissions to execute the commands you plan to use.
+
+```sh
+appwrite client --project-id "<PROJECT_ID>" --key "<API_KEY>"
+```
+
+{% arrow_link href="/docs/advanced/platform/api-keys" %}
+Learn more about API Keys
+{% /arrow_link %}
 
 # Deployment {% #deployment %}
 Appwrite's `push` commands can also be executed in a non-interactive mode. This applies to the following resources: functions, collections, buckets, teams, and messaging topics.
