@@ -331,7 +331,7 @@
                         <h5 class="text-display font-aeonik-pro text-primary">Become a Hero</h5>
                         <p class="text-description text-primary" style="opacity:0.64">
                             Have you been actively providing value for the Appwrite community? Apply
-                            now to join our hero program! Applications are open every three months.
+                            now to join our hero program! Applications open every three months.
                         </p>
                         <a
                             href="https://7nxwryuitoy.typeform.com/heroes-apply"
