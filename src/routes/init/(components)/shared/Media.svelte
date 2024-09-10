@@ -17,7 +17,7 @@
         style="padding: 0.5rem;"
     >
         <div class="details" style="padding: 0.75rem;">
-            <h3 class="web-label web-u-color-text-primary">
+            <h3 class="text-label text-primary">
                 {title}
             </h3>
             <div class="web-card-link flex items-center" style:margin-top="8px">
@@ -32,7 +32,7 @@
 {:else}
     <div class="web-card is-normal has-border-gradient overflow-hidden" style="padding: 0.5rem;">
         <div class="details" style="padding: 0.75rem;">
-            <h3 class="web-label web-u-color-text-primary">
+            <h3 class="text-label text-primary">
                 {title}
             </h3>
             <div class="web-card-link flex items-center">
