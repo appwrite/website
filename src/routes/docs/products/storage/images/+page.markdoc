@@ -48,7 +48,7 @@ const storage = new Storage(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('PROJECT_ID') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
 const result = storage.getFilePreview(
@@ -78,7 +78,7 @@ void main() { // Init SDK
 
   client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('PROJECT_ID') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
   ;
   // downloading file
   Future result = storage.getFilePreview(
