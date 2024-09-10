@@ -256,60 +256,6 @@
                         </ul>
                     </div>
 
-<<<<<<< HEAD
-                    <!--                    <ul class="web-grid-1-1-opt-2 u-gap-32 web-u-margin-block-start-80">-->
-                    <!--                        <li>-->
-                    <!--                            <article-->
-                    <!--                                class="web-card is-transparent has-border-gradient u-min-height-100-percent"-->
-                    <!--                                style="background:rgba(35, 35, 37, 0.90);"-->
-                    <!--                            >-->
-                    <!--                                <header class="u-flex u-gap-12">-->
-                    <!--                                    <h3-->
-                    <!--                                        id="insurance"-->
-                    <!--                                        class="web-main-body-500 web-u-color-text-primary"-->
-                    <!--                                    >-->
-                    <!--                                        Side Project Insurance-->
-                    <!--                                    </h3>-->
-                    <!--                                </header>-->
-                    <!--                                <p class="u-margin-block-start-8">-->
-                    <!--                                    Lorem Ipsum is simply dummy text of the printing and typesetting-->
-                    <!--                                    industry.-->
-                    <!--                                </p>-->
-                    <!--                                <a-->
-                    <!--                                    href="/contact-us"-->
-                    <!--                                    class="web-button is-secondary u-margin-block-start-32"-->
-                    <!--                                >-->
-                    <!--                                    <span>Contact us</span>-->
-                    <!--                                </a>-->
-                    <!--                            </article>-->
-                    <!--                        </li>-->
-                    <!--                        <li>-->
-                    <!--                            <article-->
-                    <!--                                class="web-card is-transparent has-border-gradient u-min-height-100-percent"-->
-                    <!--                                style="background:rgba(35, 35, 37, 0.90);"-->
-                    <!--                            >-->
-                    <!--                                <header class="u-flex u-gap-12">-->
-                    <!--                                    <h3-->
-                    <!--                                        id="open-source-teams"-->
-                    <!--                                        class="web-main-body-500 web-u-color-text-primary"-->
-                    <!--                                    >-->
-                    <!--                                        Open-source teams-->
-                    <!--                                    </h3>-->
-                    <!--                                </header>-->
-                    <!--                                <p class="u-margin-block-start-8">-->
-                    <!--                                    We support OSS maintainers with a free Pro Plan. Read our-->
-                    <!--                                    announcement blog to find out more.-->
-                    <!--                                </p>-->
-                    <!--                                <a-->
-                    <!--                                    href="/docs/advanced/platform/oss"-->
-                    <!--                                    class="web-button is-secondary u-margin-block-start-32"-->
-                    <!--                                >-->
-                    <!--                                    <span>Learn more</span>-->
-                    <!--                                </a>-->
-                    <!--                            </article>-->
-                    <!--                        </li>-->
-                    <!--                    </ul>-->
-=======
                     <ul class="web-grid-1-1-opt-2 mt-20 gap-8">
                         <li>
                             <article
@@ -357,7 +303,6 @@
                             </article>
                         </li>
                     </ul>
->>>>>>> c726ba925ce064a5fd56f3a875d1ea0d583ac9da
                 </section>
             </div>
         </div>
