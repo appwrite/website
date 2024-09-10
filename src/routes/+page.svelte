@@ -147,13 +147,13 @@
                             Functions, Storage, and Messaging to your projects using the frameworks
                             and languages of your choice.
                         </svelte:fragment>
-                        <Button
+                        <a
                             href={PUBLIC_APPWRITE_DASHBOARD}
-                            class="mt-8 w-full lg:w-fit"
+                            class="web-button mt-8 w-full lg:w-fit"
                             slot="cta"
                         >
                             Get started
-                        </Button>
+                        </a>
                     </Hero>
                 </section>
             </div>
@@ -452,7 +452,7 @@
                             you can code with the language you want at any time.
                         </p>
                         <Technologies />
-                        <Button href="/docs/sdks" variant="secondary">Explore all SDKs</Button>
+                        <a href="/docs/sdks" class="web-button is-secondary">Explore all SDKs</a>
                     </section>
                 </div>
             </div>

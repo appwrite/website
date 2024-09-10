@@ -54,7 +54,7 @@
                             />
                         </a>
                     {/if}
-                    <h1 class="text-title font-aeonik-pro">{title}</h1>
+                    <h1 class="text-title font-aeonik-pro text-primary">{title}</h1>
                 </div>
             </div>
             <div class="web-article-header-end" />
