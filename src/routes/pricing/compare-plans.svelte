@@ -375,6 +375,13 @@
                     pro: '-',
                     scale: true,
                     enterprise: true
+                },
+                {
+                    title: 'Private Slack channel',
+                    free: '-',
+                    pro: '-',
+                    scale: '-',
+                    enterprise: true
                 }
             ]
         }
