@@ -145,13 +145,13 @@
                             Functions, Storage, and Messaging to your projects using the frameworks
                             and languages of your choice.
                         </svelte:fragment>
-                        <Button
+                        <a
                             href={PUBLIC_APPWRITE_DASHBOARD}
-                            class="mt-8 w-full lg:w-fit"
+                            class="web-button mt-8 w-full lg:w-fit"
                             slot="cta"
                         >
                             Get started
-                        </Button>
+                        </a>
                     </Hero>
                 </section>
             </div>
@@ -170,7 +170,7 @@
             <div class="mb-12 lg:my-[7.5rem]">
                 <div class="container">
                     <h2
-                        class="text-title font-aeonik-pro text-primary text-center web-u-max-width-600 mx-auto"
+                        class="text-title font-aeonik-pro text-primary web-u-max-width-600 mx-auto text-center"
                     >
                         Trusted by developers from the world's leading organizations
                     </h2>
@@ -303,10 +303,10 @@
                     </section>
                     <div class="mt-20 overflow-hidden">
                         <ul
-                            class="web-info-boxes text-sub-body font-medium divide-x divide-y divide-black/[0.04]"
+                            class="web-info-boxes text-sub-body divide-x divide-y divide-black/[0.04] font-medium"
                         >
                             {#each infoBoxes as box}
-                                <li class="relative p-8 last-of-type:border-r border-black/[0.04]">
+                                <li class="relative border-black/[0.04] p-8 last-of-type:border-r">
                                     <img src={box.icon} width="40" height="40" alt="" />
                                     <h3
                                         class="text-primary mt-4 flex flex-wrap items-baseline gap-3"
@@ -450,7 +450,7 @@
                             you can code with the language you want at any time.
                         </p>
                         <Technologies />
-                        <Button href="/docs/sdks" variant="secondary">Explore all SDKs</Button>
+                        <a href="/docs/sdks" class="web-button is-secondary">Explore all SDKs</a>
                     </section>
                 </div>
             </div>
