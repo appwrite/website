@@ -77,7 +77,7 @@
                                                 $0
                                             </div>
                                             <div class="mt-1">&nbsp;</div>
-                                            <p class="text-body font-medium mt-4">
+                                            <p class="text-body mt-4 font-medium">
                                                 For personal hobby projects and students.
                                             </p>
                                             <a
@@ -127,7 +127,7 @@
                                                 $15
                                             </div>
                                             <div class="mt-1">per member/month</div>
-                                            <p class="text-body font-medium mt-4">
+                                            <p class="text-body mt-4 font-medium">
                                                 For pro developers and teams that need to scale
                                                 their products.
                                             </p>
@@ -179,7 +179,7 @@
                                                 $599
                                             </div>
                                             <div class="mt-1">per organization/month</div>
-                                            <p class="text-body font-medium mt-4">
+                                            <p class="text-body mt-4 font-medium">
                                                 For scaling teams and agencies that need dedicated
                                                 support.
                                             </p>
@@ -219,7 +219,7 @@
                                 style="background:rgba(35, 35, 37, 0.90);"
                             >
                                 <header class="flex gap-3">
-                                    <h3 id="enterprises" class="text-body font-medium text-primary">
+                                    <h3 id="enterprises" class="text-body text-primary font-medium">
                                         Enterprises
                                     </h3>
                                     <div class="web-inline-tag is-pink">Coming Soon</div>
@@ -241,7 +241,7 @@
                                 <header class="flex gap-3">
                                     <h3
                                         id="open-source-teams"
-                                        class="text-body font-medium text-primary"
+                                        class="text-body text-primary font-medium"
                                     >
                                         Open-source teams
                                     </h3>
@@ -275,7 +275,7 @@
                     </section>
                 </div>
             </div>
-            <div class="web-big-padding-section-level-2 !mb-0 relative">
+            <div class="web-big-padding-section-level-2 relative !mb-0">
                 <div class="container">
                     <PreFooter />
                     <FooterNav />
@@ -287,6 +287,10 @@
 </Main>
 
 <style lang="scss">
+    .web-card {
+        --web-color-border: 240, 4%, 18%;
+        --p-card-padding: 1.25rem;
+    }
     @media (min-width: 360px) and (max-width: 550px) {
         .web-location-for-mobile {
             inset-block-start: 90px;
