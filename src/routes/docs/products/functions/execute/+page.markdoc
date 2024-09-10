@@ -103,7 +103,7 @@ void main() { // Init SDK
 import Appwrite
 
 let client = Client()
-    .setProject("<PROJECT_ID>") // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 
 let functions = Functions(client)
 
@@ -121,7 +121,7 @@ import io.appwrite.Client
 import io.appwrite.services.Functions
 
 val client = Client(context)
-    .setProject("<PROJECT_ID>") // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 
 val functions = Functions(client)
 
@@ -140,7 +140,7 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Functions;
 
 Client client = new Client(context)
-    .setProject("<PROJECT_ID>"); // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 Functions functions = new Functions(client);
 
@@ -232,7 +232,7 @@ import (
 
 func main() {
 	client := appwrite.NewClient(
-		appwrite.WithProject("<PROJECT_ID>"),
+		appwrite.WithProject('<PROJECT_ID>'),
 	)
 
 	functions := appwrite.NewFunctions(client)
@@ -323,7 +323,7 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 var client = new Client()
-    .SetProject("<PROJECT_ID>"); // Your project ID
+    .SetProject('<PROJECT_ID>'); // Your project ID
 
 var functions = new Functions(client);
 
@@ -369,7 +369,7 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Functions;
 
 Client client = new Client()
-    .setProject("<PROJECT_ID>"); // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 Functions functions = new Functions(client);
 
@@ -396,7 +396,7 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Functions;
 
 Client client = new Client()
-    .setProject("<PROJECT_ID>"); // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 Functions functions = new Functions(client);
 
@@ -421,7 +421,7 @@ functions.createExecution(
 import Appwrite
 
 let client = Client()
-    .setProject("<PROJECT_ID>") // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 
 let functions = Functions(client)
 
@@ -584,7 +584,7 @@ import Appwrite
 import AppwriteEnums
 
 let client = Client()
-    .setProject("<PROJECT_ID>") // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 
 let functions = Functions(client)
 
@@ -605,7 +605,7 @@ import io.appwrite.coroutines.CoroutineCallback
 import io.appwrite.services.Functions
 
 val client = Client(context)
-    .setProject("<PROJECT_ID>") // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 
 val functions = Functions(client)
 
@@ -660,7 +660,7 @@ mutation {
 
 ```http
 POST https://cloud.appwrite.io/v1/functions/<FUNCTION_ID>/executions HTTP/1.1
-X-Appwrite-Project: "<PROJECT_ID>"
+X-Appwrite-Project: '<PROJECT_ID>'
 X-Appwrite-Response-Format: 1.5.0
 Content-Type: application/json
 
@@ -749,7 +749,7 @@ import (
 
 func main() {
 	client := appwrite.NewClient(
-		appwrite.WithProject("<PROJECT_ID>"),
+		appwrite.WithProject('<PROJECT_ID>'),
 	)
 
 	functions := appwrite.NewFunctions(client)
@@ -844,7 +844,7 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 var client = new Client()
-    .SetProject("<PROJECT_ID>"); // Your project ID
+    .SetProject('<PROJECT_ID>'); // Your project ID
 
 var functions = new Functions(client);
 
@@ -892,7 +892,7 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Functions;
 
 Client client = new Client()
-    .setProject("<PROJECT_ID>"); // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 Functions functions = new Functions(client);
 
@@ -920,7 +920,7 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Functions;
 
 Client client = new Client()
-    .setProject("<PROJECT_ID>"); // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 Functions functions = new Functions(client);
 
@@ -946,7 +946,7 @@ functions.createExecution(
 import Appwrite
 
 let client = Client()
-    .setProject("<PROJECT_ID>") // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 
 let functions = Functions(client)
 

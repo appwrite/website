@@ -308,7 +308,7 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                // Your project ID
+    .setProject('<PROJECT_ID>')                // Your project ID
 
 let graphql = Graphql(client)
 
@@ -349,7 +349,7 @@ import io.appwrite.services.Graphql
 
 val client = Client(context)
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                // Your project ID
+    .setProject('<PROJECT_ID>')                // Your project ID
 
 val graphql = Graphql(client)
 

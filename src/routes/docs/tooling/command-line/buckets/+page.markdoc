@@ -30,7 +30,7 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
 
 ```json
 {
-    "projectId": "<PROJECT_ID>",
+    "projectId": '<PROJECT_ID>',
     "buckets": [
         {
             "$id": "<BUCKET_ID>",

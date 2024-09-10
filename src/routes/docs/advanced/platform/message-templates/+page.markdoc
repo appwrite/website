@@ -173,7 +173,7 @@ import io.appwrite.services.Account
 
 val client = Client(context)
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                 // Your project ID
+    .setProject('<PROJECT_ID>')                 // Your project ID
     .setLocale('fr')                             // Your locale
 
 val account = Account(client)
@@ -186,7 +186,7 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                 // Your project ID
+    .setProject('<PROJECT_ID>')                 // Your project ID
     .setLocale('fr')                             // Your locale
 
 let account = Account(client)

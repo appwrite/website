@@ -84,7 +84,7 @@ var client = new Client();
 
 client
     .SetEndpoint("https://cloud.appwrite.io/v1")
-    .SetProject("<PROJECT_ID>")
+    .SetProject('<PROJECT_ID>')
     .SetKey("<YOUR_API_KEY>");
 ```
 

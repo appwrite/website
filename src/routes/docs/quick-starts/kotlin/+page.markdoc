@@ -92,7 +92,7 @@ import kotlinx.coroutines.coroutineScope
 
 val client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<PROJECT_ID>")
+    .setProject('<PROJECT_ID>')
     .setKey("<YOUR_API_KEY>");
 ```
 

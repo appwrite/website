@@ -79,7 +79,7 @@ var client = Client();
 Future<void> main() async {
   client
     .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<PROJECT_ID>")
+    .setProject('<PROJECT_ID>')
     .setKey("<YOUR_API_KEY>");
 }
 ```
@@ -201,7 +201,7 @@ Finally, revisit the `main()` function and call the functions created in previou
 Future<void> main() async {
   client
     .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<PROJECT_ID>")
+    .setProject('<PROJECT_ID>')
     .setKey("<YOUR_API_KEY>");
 
     await prepareDatabase();

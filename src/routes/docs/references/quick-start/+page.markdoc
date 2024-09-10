@@ -115,14 +115,14 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .setProject("<PROJECT_ID>")                            // Your project ID
+    .setProject('<PROJECT_ID>')                            // Your project ID
 ```
 ```client-android-kotlin
 import io.appwrite.Client
 
 val client = Client(context)
     .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .setProject("<PROJECT_ID>")                // Your project ID
+    .setProject('<PROJECT_ID>')                // Your project ID
 ```
 {% /multicode %}
 {% /tabsitem %}
@@ -196,7 +196,7 @@ using Appwrite.Services;
 
 var client = new Client()
     .SetEndPoint("https://cloud.appwrite.io/v1")                // Your API Endpoint
-    .SetProject("<PROJECT_ID>")                            // Your project ID
+    .SetProject('<PROJECT_ID>')                            // Your project ID
     .SetJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
 ```
 ```dart
@@ -218,7 +218,7 @@ import io.appwrite.coroutines.CoroutineCallback;
 
 Client client = new Client()
     .setEndpoint("https://cloud.appwrite.io/v1")                // Your API Endpoint
-    .setProject("<PROJECT_ID>")                            // Your project ID
+    .setProject('<PROJECT_ID>')                            // Your project ID
     .setJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
 ```
 ```java
@@ -227,7 +227,7 @@ import io.appwrite.coroutines.CoroutineCallback;
 
 Client client = new Client()
     .setEndpoint("https://cloud.appwrite.io/v1")                // Your API Endpoint
-    .setProject("<PROJECT_ID>")                            // Your project ID
+    .setProject('<PROJECT_ID>')                            // Your project ID
     .setJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
 ```
 ```swift
@@ -235,7 +235,7 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1")                // Your API Endpoint
-    .setProject("<PROJECT_ID>")                            // Your project ID
+    .setProject('<PROJECT_ID>')                            // Your project ID
     .setJWT("<YOUR_API_KEY>")                                   // Your secret JSON Web Token
 ```
 {% /multicode %}

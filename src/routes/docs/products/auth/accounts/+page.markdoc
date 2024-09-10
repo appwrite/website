@@ -65,7 +65,7 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                  // Your project ID
+    .setProject('<PROJECT_ID>')                  // Your project ID
 
 let account = Account(client)
 
@@ -82,7 +82,7 @@ import io.appwrite.services.Account
 
 val client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                  // Your project ID
+    .setProject('<PROJECT_ID>')                  // Your project ID
 
 val account = Account(client)
 
@@ -145,7 +145,7 @@ import io.appwrite.services.Account
 
 val client = Client(context)
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                  // Your project ID
+    .setProject('<PROJECT_ID>')                  // Your project ID
 
 val account = Account(client)
 
@@ -156,7 +156,7 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                  // Your project ID
+    .setProject('<PROJECT_ID>')                  // Your project ID
 
 let account = Account(client)
 

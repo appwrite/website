@@ -30,7 +30,7 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
 
 ```json
 {
-    "projectId": "<PROJECT_ID>",
+    "projectId": '<PROJECT_ID>',
     "functions": [
         {
             "$id": "<FUNCTION_ID>",
@@ -44,7 +44,7 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
             "live": true,
             "logging": true,
             "runtime": "node-18.0",
-            "deployment": "<PROJECT_ID>",
+            "deployment": '<PROJECT_ID>',
             "vars": [
                 {
                     "$id": "eyJhbGciOiJIUzI1N",
@@ -68,8 +68,8 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
                     "$id": "OicGbhJyeN1IzUIJi",
                     "$createdAt": "2024-04-22T23:32:12.910+00:00",
                     "$updatedAt": "2024-04-22T23:32:12.910+00:00",
-                    "key": "<PROJECT_ID>",
-                    "value": "<PROJECT_ID>",
+                    "key": '<PROJECT_ID>',
+                    "value": '<PROJECT_ID>',
                     "resourceType": "function",
                     "resourceId": "OicGbhJyeN1IzUIJi"
                 },

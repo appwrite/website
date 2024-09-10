@@ -62,7 +62,7 @@ You can also upload files programmatically using our SDKs:
   suspend fun main() {
       val client = Client(applicationContext)
           .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-          .setProject("<PROJECT_ID>") // Your project ID
+          .setProject('<PROJECT_ID>') // Your project ID
 
       val storage = Storage(client)
 
@@ -80,7 +80,7 @@ You can also upload files programmatically using our SDKs:
   func main() async throws {
       let client = Client()
         .setEndpoint("https://cloud.appwrite.io/v1")
-        .setProject("<PROJECT_ID>")
+        .setProject('<PROJECT_ID>')
 
       let storage = Storage(client)
 
@@ -341,7 +341,7 @@ import Appwrite
 func main() async throws {
     let client = Client()
       .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-      .setProject("<PROJECT_ID>") // Your project ID
+      .setProject('<PROJECT_ID>') // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFile(
         bucketId: "[BUCKET_ID]",
@@ -366,7 +366,7 @@ class MainActivity : AppCompatActivity() {
 
         val client = Client(applicationContext)
             .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-            .setProject("<PROJECT_ID>") // Your project ID
+            .setProject('<PROJECT_ID>') // Your project ID
 
         val storage = Storage(client)
 
@@ -444,7 +444,7 @@ import Appwrite
 func main() async throws {
     let client = Client()
       .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-      .setProject("<PROJECT_ID>") // Your project ID
+      .setProject('<PROJECT_ID>') // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFileDownload(
         bucketId: "[BUCKET_ID]",
@@ -469,7 +469,7 @@ class MainActivity : AppCompatActivity() {
 
         val client = Client(applicationContext)
             .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-            .setProject("<PROJECT_ID>") // Your project ID
+            .setProject('<PROJECT_ID>') // Your project ID
 
         val storage = Storage(client)
 
@@ -547,7 +547,7 @@ import Appwrite
 func main() async throws {
     let client = Client()
       .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-      .setProject("<PROJECT_ID>") // Your project ID
+      .setProject('<PROJECT_ID>') // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFilePreview(
         bucketId: "[BUCKET_ID]",
@@ -572,7 +572,7 @@ class MainActivity : AppCompatActivity() {
 
         val client = Client(applicationContext)
             .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-            .setProject("<PROJECT_ID>") // Your project ID
+            .setProject('<PROJECT_ID>') // Your project ID
 
         val storage = Storage(client)
 
@@ -651,7 +651,7 @@ import Appwrite
 func main() async throws {
     let client = Client()
       .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-      .setProject("<PROJECT_ID>") // Your project ID
+      .setProject('<PROJECT_ID>') // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFileView(
         bucketId: "[BUCKET_ID]",
@@ -676,7 +676,7 @@ class MainActivity : AppCompatActivity() {
 
         val client = Client(applicationContext)
             .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-            .setProject("<PROJECT_ID>") // Your project ID
+            .setProject('<PROJECT_ID>') // Your project ID
 
         val storage = Storage(client)
 
