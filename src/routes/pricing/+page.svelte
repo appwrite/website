@@ -45,7 +45,7 @@
 
 <Main>
     <div class="web-big-padding-section mt-2">
-        <div class="dark py-10">
+        <div class="dark pt-10">
             <div class="web-big-padding-section-level-2">
                 <section class="container">
                     <div class="web-hero">
@@ -70,14 +70,14 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="starter" class="text-label">Free</h2>
+                                            <h2 id="starter" class="text-label font-aeonik-pro">Free</h2>
                                             <div
                                                 class="text-title font-aeonik-pro text-primary mt-2"
                                             >
                                                 $0
                                             </div>
                                             <div class="mt-1">&nbsp;</div>
-                                            <p class="text-body mt-4 font-medium">
+                                            <p class="text-body mt-4 font-medium h-[5rem]">
                                                 For personal hobby projects and students.
                                             </p>
                                             <a
@@ -92,8 +92,9 @@
                                         <div class="web-pricing-cards-content">
                                             <ul class="web-checked-list-circle">
                                                 <li>
-                                                    <span>Unlimited projects (never paused)</span>
+                                                    <span>Unlimited projects</span>
                                                 </li>
+                                                <li><span>Never paused</span></li>
                                                 <li><span>10GB bandwidth</span></li>
                                                 <li><span>2GB storage</span></li>
                                                 <li><span>750K executions</span></li>
@@ -102,7 +103,6 @@
                                                 <li>
                                                     <span>Non-removable Appwrite branding</span>
                                                 </li>
-                                                <li><span>No Add-ons</span></li>
                                                 <li>
                                                     <span
                                                         >1 Database, 3 Buckets, 5 Functions per
@@ -117,17 +117,21 @@
                             <li>
                                 <article
                                     class="web-card is-transparent is-transparent-pink has-border-gradient h-full"
+                                    style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="pro" class="text-label">Pro</h2>
+                                            <header class="flex gap-3">
+                                                <h2 id="pro" class="text-label font-aeonik-pro">Pro</h2>
+                                                <div class="web-inline-tag is-pink">Popular</div>
+                                            </header>
                                             <div
                                                 class="text-title font-aeonik-pro text-primary mt-2"
                                             >
                                                 $15
                                             </div>
                                             <div class="mt-1">per member/month</div>
-                                            <p class="text-body mt-4 font-medium">
+                                            <p class="text-body mt-4 font-medium h-[5rem]">
                                                 For pro developers and teams that need to scale
                                                 their products.
                                             </p>
@@ -144,16 +148,13 @@
                                             </a>
                                         </header>
                                         <div class="web-pricing-cards-content">
+                                            <p>Everything in Free, plus:</p>
                                             <ul class="web-checked-list-circle">
-                                                <li>
-                                                    <span>Unlimited projects (never paused)</span>
-                                                </li>
                                                 <li><span>300GB bandwidth</span></li>
                                                 <li><span>150GB storage</span></li>
                                                 <li><span>3.5M executions</span></li>
                                                 <li><span>200K monthly active users</span></li>
                                                 <li><span>Email support</span></li>
-                                                <li><span>Removable Appwrite branding</span></li>
                                                 <li><span>Add-ons</span></li>
                                                 <li>
                                                     <span
@@ -172,14 +173,14 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="scale" class="text-label">Scale</h2>
+                                            <h2 id="scale" class="text-label font-aeonik-pro">Scale</h2>
                                             <div
                                                 class="text-title font-aeonik-pro text-primary mt-2"
                                             >
                                                 $599
                                             </div>
                                             <div class="mt-1">per organization/month</div>
-                                            <p class="text-body mt-4 font-medium">
+                                            <p class="text-body mt-4 font-medium h-[5rem]">
                                                 For scaling teams and agencies that need dedicated
                                                 support.
                                             </p>
@@ -204,6 +205,51 @@
                                                 <li><span>SSO</span></li>
                                                 <li><span>Activity logs</span></li>
                                                 <li><span>Priority support</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </article>
+                            </li>
+                            <li>
+                                <article
+                                    class="web-card is-transparent has-border-gradient u-height-100-percent"
+                                    style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
+                                >
+                                    <div class="web-pricing-cards-item">
+                                        <header class="web-pricing-cards-header">
+                                            <h2 id="enterprise" class="text-label font-aeonik-pro">Enterprise</h2>
+                                            <div
+                                                class="text-title font-aeonik-pro text-primary mt-2"
+                                            >
+                                                Custom
+                                            </div>
+                                            <div class="mt-1">per organization/month</div>
+                                            <p class="text-body mt-4 font-medium h-[5rem]">
+                                                For enterprises that need more power and premium
+                                                support.
+                                            </p>
+                                            <a
+                                                href="/contact-us/enterprise"
+                                                class="web-button is-secondary is-full-width mt-8"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <!-- <span class="web-sub-body-500">Start trial</span> -->
+                                                <span class="web-sub-body-500">Contact us</span>
+                                            </a>
+                                        </header>
+                                        <div class="web-pricing-cards-content">
+                                            <p>Everything in Scale, plus:</p>
+                                            <ul class="web-checked-list-circle">
+                                                <li><span>Uptime SLAs</span></li>
+                                                <li><span>Designated Success Manager</span></li>
+                                                <li><span>24/7 enterprise support</span></li>
+                                                <li><span>Private Slack channel</span></li>
+                                                <li><span>Volume discounts</span></li>
+                                                <li><span>Advanced permissions</span></li>
+                                                <li><span>Log drains</span></li>
+                                                <li><span>90-day log retention</span></li>
+                                                <li><span>Advanced observability</span></li>
+                                                <li><span>Bring your own Cloud</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -295,5 +341,16 @@
         .web-location-for-mobile {
             inset-block-start: 90px;
         }
+    }
+
+    .web-pricing-cards-list {
+        gap: 1rem;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .web-pricing-cards-list .web-main-body-500 {
+        height: 78px;
+        --p-font-size: unset !important;
+        --p-line-height: var(--web-line-height-sm);
     }
 </style>
