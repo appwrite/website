@@ -79,7 +79,7 @@
 <!-- binding for fuse -->
 <Fuse list={data.list} options={fuseOptions} bind:query={$query} bind:result />
 <Main>
-    <header class="web-u-sep-block-end relative overflow-hidden pb-0">
+    <header class="web-u-sep-block-end relative overflow-hidden pb-0 web-u-padding-block-end-0">
         <div class="container hero web-u-padding-block-end-0 relative">
             <img
                 src="/images/pages/integration/integration-bg-top-1.png"
