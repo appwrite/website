@@ -230,7 +230,7 @@ using Appwrite.Models;
 
 var client = new Client()
     .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("PROJECT_ID")                  // Your project ID
+    .SetProject("<PROJECT_ID>")                  // Your project ID
     .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
 var messaging = new Messaging(client);
@@ -284,7 +284,7 @@ import io.appwrite.services.Messaging;
 
 Client client = new Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("PROJECT_ID")                  // Your project ID
+    .setProject("<PROJECT_ID>")                  // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
 Messaging messaging = new Messaging(client);
@@ -314,7 +314,7 @@ import io.appwrite.services.Messaging;
 
 Client client = new Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("PROJECT_ID")                  // Your project ID
+    .setProject("<PROJECT_ID>")                  // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
 Messaging messaging = new Messaging(client);
@@ -342,7 +342,7 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("PROJECT_ID")                 // Your project ID
+    .setProject("<PROJECT_ID>")                 // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
 
 let messaging = Messaging(client)

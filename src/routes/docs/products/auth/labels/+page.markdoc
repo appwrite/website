@@ -130,7 +130,7 @@ import io.appwrite.services.Users
 
 val client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("PROJECT_ID")                 // Your project ID
+    .setProject("<PROJECT_ID>")                 // Your project ID
     .setKey("98fd4...a2ad2")                     // Your secret API key
 
 val users = Users(client)
@@ -146,7 +146,7 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("PROJECT_ID")                 // Your project ID
+    .setProject("<PROJECT_ID>")                 // Your project ID
     .setKey("98fd4...a2ad2")                     // Your secret API key
 
 let users = Users(client)
@@ -162,7 +162,7 @@ using Appwrite;
 
 var client = new Client()
     .SetEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("PROJECT_ID")                 // Your project ID
+    .SetProject("<PROJECT_ID>")                 // Your project ID
     .SetKey("98fd4...a2ad2");                    // Your secret API key
 
 var users = new Users(client);
