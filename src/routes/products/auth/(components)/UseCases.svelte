@@ -1,12 +1,44 @@
 <script lang="ts">
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import Android from '../(assets)/platforms/android.svg';
+    import Apple from '../(assets)/platforms/apple.svg';
+    import Flutter from '../(assets)/platforms/flutter.svg';
+    import JavaScript from '../(assets)/platforms/javascript.svg';
+    import React from '../(assets)/platforms/react.svg';
+
+    const platforms = [
+        { icon: Android, size: 24 },
+        { icon: Apple, size: 28 },
+        { icon: JavaScript, size: 32 },
+        { icon: Flutter, size: 28 },
+        { icon: React, size: 24 }
+    ];
+
+    const migrations = [{ icon: JavaScript }, { icon: Flutter }, { icon: React }];
 </script>
 
-<section class="light bg-white py-40">
-    <div class="container grid gap-8 overflow-x-hidden md:grid-cols-2">
+<section class="light bg-greyscale-50 py-40">
+    <div class="container grid gap-y-8 overflow-x-hidden md:grid-cols-2">
         <div
             class="mx-auto mb-20 flex flex max-w-[25rem] flex-col items-center justify-center gap-y-6 text-center"
         >
+            <div class="flex items-center gap-2">
+                {#each platforms as platform}
+                    {@const size = (platform.size / 6) * 10}
+                    <div
+                        class="flex items-center justify-center rounded-lg bg-white"
+                        style:height="{size}px"
+                        style:width="{size}px"
+                    >
+                        <img
+                            src={platform.icon}
+                            height={platform.size}
+                            width={platform.size}
+                            alt="icon"
+                        />
+                    </div>
+                {/each}
+            </div>
             <h2 class="text-title text-primary font-aeonik-pro">
                 Integrate with easy-to-use APIs and SDKs
             </h2>
@@ -18,6 +50,21 @@
         <div
             class="mx-auto mb-20 flex flex max-w-[25rem] flex-col items-center justify-center gap-y-6 text-center"
         >
+            <div class="flex items-center gap-2">
+                {#each migrations as migration}
+                    <div class="flex size-10 items-center justify-center rounded-lg bg-white">
+                        <img src={migration.icon} alt="icon" class="size-6" />
+                    </div>
+                {/each}
+
+                <div class="to-accent -mr-2 h-px w-24 flex-1 bg-gradient-to-r from-white" />
+
+                <div
+                    class="border-accent flex size-14 items-center justify-center rounded-lg border bg-white"
+                >
+                    <img src={JavaScript} alt="icon" class="size-8" />
+                </div>
+            </div>
             <h2 class="text-title text-primary font-aeonik-pro">
                 Migrate your users to Appwrite effortlessly
             </h2>
