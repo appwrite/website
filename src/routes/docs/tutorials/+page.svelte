@@ -70,7 +70,7 @@
             {#each data.tutorials as category}
                 <section class="flex flex-col gap-6">
                     <h2 class="text-micro uppercase">{category.title}</h2>
-                    <ul class="web-grid-row-4 web-grid-row-4-mobile-2">
+                    <ul class="web-grid-row-4 web-grid-row-4-mobile-1 ">
                         {#each category.tutorials as tutorial}
                             <li>
                                 {#if tutorial.draft === true}

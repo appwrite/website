@@ -72,7 +72,7 @@
     border-block-end:solid pxToRem(1) hsl(var(--web-color-smooth));
   }
   &-cell {
-    &:nth-child(n + 2) { padding-inline-start:pxToRem(24); }
+    &:nth-child(n + 2) { padding-inline-start:pxToRem(48); }
   }
 
   &-head {
