@@ -108,28 +108,30 @@
 
 <div
     class="web-is-only-desktop absolute"
-    style="top: 42rem; left: 49%; translate: calc(-50% + 800px); width: 60rem;"
+    style="top: 42rem; width: calc(50% - 5rem); right: 0;"
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
-    <img src="/images/bgs/hero-lines-2.png" alt="" />
+    <div style="left: 0;">
+        <img src="/images/bgs/hero-lines-2.png" alt="" />
+    </div>
 </div>
 
 <Main>
     <div class="web-big-padding-section">
-        <div class="py-10">
-            <div class="my-[7.5rem]">
+        <div class="pb-10">
+            <div class="my-12 lg:my-[7.5rem]">
                 <section class="container pb-0">
                     <a
                         href="/blog/post/announcing-init-faster-smoother-better"
-                        class="web-hero-banner-button web-u-margin-block-end-24"
+                        class="web-hero-banner-button mb-4"
                     >
-                        <span class="web-icon-star" aria-hidden="true" />
-                        <span class="text-caption font-medium">New</span>
+                        <span class="web-icon-star shrink-0" aria-hidden="true" />
+                        <span class="text-caption font-medium shrink-0">New</span>
                         <div class="web-hero-banner-button-sep" />
                         <span class="text-caption web-u-trim-1"
                             >Announcing: A new Init. Faster. Smoother. Better.</span
                         >
-                        <span class="web-icon-arrow-right" aria-hidden="true" />
+                        <span class="web-icon-arrow-right shrink-0" aria-hidden="true" />
                     </a>
                     <Hero>
                         <GradientText slot="title"
@@ -143,17 +145,17 @@
                             Functions, Storage, and Messaging to your projects using the frameworks
                             and languages of your choice.
                         </svelte:fragment>
-                        <Button
+                        <a
                             href={PUBLIC_APPWRITE_DASHBOARD}
-                            class="mt-8 w-full lg:w-fit"
+                            class="web-button mt-8 w-full lg:w-fit"
                             slot="cta"
                         >
                             Get started
-                        </Button>
+                        </a>
                     </Hero>
                 </section>
             </div>
-            <div class="my-[7.5rem]">
+            <div class="mb-12 lg:my-[7.5rem]">
                 <section class="container web-u-padding-block-0" style="--container-size:78.75rem">
                     <div class="web-media-container">
                         <img
@@ -165,10 +167,10 @@
                     </div>
                 </section>
             </div>
-            <div class="my-[7.5rem]">
+            <div class="mb-12 lg:my-[7.5rem]">
                 <div class="container">
                     <h2
-                        class="text-title font-aeonik-pro text-primary text-center web-u-max-width-600 mx-auto"
+                        class="text-title font-aeonik-pro text-primary web-u-max-width-600 mx-auto text-center"
                     >
                         Trusted by developers from the world's leading organizations
                     </h2>
@@ -301,10 +303,10 @@
                     </section>
                     <div class="mt-20 overflow-hidden">
                         <ul
-                            class="web-info-boxes text-sub-body font-medium divide-x divide-y divide-black/[0.04]"
+                            class="web-info-boxes text-sub-body divide-x divide-y divide-black/[0.04] font-medium"
                         >
                             {#each infoBoxes as box}
-                                <li class="relative p-8 last-of-type:border-r border-black/[0.04]">
+                                <li class="relative border-black/[0.04] p-8 last-of-type:border-r">
                                     <img src={box.icon} width="40" height="40" alt="" />
                                     <h3
                                         class="text-primary mt-4 flex flex-wrap items-baseline gap-3"
@@ -448,7 +450,7 @@
                             you can code with the language you want at any time.
                         </p>
                         <Technologies />
-                        <Button href="/docs/sdks" variant="secondary">Explore all SDKs</Button>
+                        <a href="/docs/sdks" class="web-button is-secondary">Explore all SDKs</a>
                     </section>
                 </div>
             </div>
