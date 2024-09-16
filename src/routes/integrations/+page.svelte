@@ -79,7 +79,7 @@
 <!-- binding for fuse -->
 <Fuse list={data.list} options={fuseOptions} bind:query={$query} bind:result />
 <Main>
-    <header class="web-u-sep-block-end relative overflow-hidden pb-0">
+    <header class="web-u-sep-block-end web-u-padding-block-end-0 relative overflow-hidden pb-0">
         <div class="container hero web-u-padding-block-end-0 relative">
             <img
                 src="/images/pages/integration/integration-bg-top-1.png"
@@ -129,7 +129,7 @@
         <div>
             <div class="container">
                 <div class="l-integrations-grid">
-                    <aside class="sidebar flex flex-col gap-8">
+                    <aside class="sidebar flex flex-col gap-8" id="integrations-side">
                         <section>
                             <Input
                                 label="Search"
@@ -185,11 +185,11 @@
                                     >
                                         {#each data.categories as category}
                                             {@const integrations = data.integrations.find(
-                                                (i) => i.category === category
+                                                (i) => i.category === category.slug
                                             )}
                                             {#if integrations && (activePlatform === 'All' || integrations.integrations.some( (i) => i.platform.includes(activePlatform) ))}
-                                                <option value={category.toLowerCase()}>
-                                                    {category}
+                                                <option value={category.slug}>
+                                                    {category.heading}
                                                 </option>
                                             {/if}
                                         {/each}
@@ -204,18 +204,17 @@
                                 <ul class="hidden flex-col gap-4 sm:flex" class:disabled={hasQuery}>
                                     {#each data.categories as category}
                                         {@const integrations = data.integrations.find(
-                                            (i) => i.category === category
+                                            (i) => i.category === category.slug
                                         )}
                                         {#if integrations && (activePlatform === 'All' || integrations.integrations.some( (i) => i.platform.includes(activePlatform) ))}
                                             <li>
                                                 <a
-                                                    href={`#${category.toLowerCase()}`}
+                                                    href={`#${category.slug}`}
                                                     class="web-link"
-                                                    class:is-pink={category.toLowerCase() ===
-                                                        activeCategory}
+                                                    class:is-pink={category.slug === activeCategory}
                                                     on:click={() =>
-                                                        activeCategory === category.toLowerCase()}
-                                                    >{category}</a
+                                                        activeCategory === category.slug}
+                                                    >{category.heading}</a
                                                 >
                                             </li>
                                         {/if}
@@ -245,25 +244,26 @@
                                                         class="web-card is-normal h-full"
                                                         style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                                                     >
-                                                        <div class="mb-4 flex justify-between">
-                                                            <div class="flex items-center gap-4">
-                                                                <img
-                                                                    class="web-user-box-image is-32px"
-                                                                    src={item.product.avatar}
-                                                                    alt={item.product.vendor}
-                                                                    width="32"
-                                                                    height="32"
-                                                                />
+                                                        <div
+                                                            class="mb-3 flex items-center justify-between"
+                                                        >
+                                                            <img
+                                                                class="web-user-box-image is-32px"
+                                                                src={item.product.avatar}
+                                                                alt={item.product.vendor}
+                                                                width="32"
+                                                                height="32"
+                                                            />
 
-                                                                <h4 class="text-primary">
-                                                                    {item.title}
-                                                                </h4>
-                                                            </div>
                                                             <span
                                                                 class="icon-arrow-right ml-auto"
                                                                 aria-hidden="true"
-                                                            ></span>
+                                                            />
                                                         </div>
+
+                                                        <h4 class="text-primary">
+                                                            {item.title}
+                                                        </h4>
                                                         <p class="text-sub-body mt-1">
                                                             {item.description}
                                                         </p>
@@ -288,11 +288,11 @@
                                                 >
                                                     <a
                                                         class="block overflow-hidden rounded-2xl before:absolute before:inset-x-0 before:bottom-0 before:block before:h-80 before:rounded-[inherit] before:bg-gradient-to-b before:from-transparent before:via-transparent before:to-black"
-                                                        href={item.href}
+                                                        href={item.integration.href}
                                                     >
                                                         <img
-                                                            src={item.cover}
-                                                            alt={item.title}
+                                                            src={item.integration.cover}
+                                                            alt={item.integration.title}
                                                             class="web-u-media-cover block aspect-video"
                                                         />
                                                         <div
@@ -300,8 +300,9 @@
                                                         >
                                                             <img
                                                                 class="row-span-2 block size-12 rounded-full"
-                                                                src={item.product.avatar}
-                                                                alt={`Avatar for ${item.product.vendor}`}
+                                                                src={item.integration.product
+                                                                    .avatar}
+                                                                alt={`Avatar for ${item.integration.product.vendor}`}
                                                                 width="40"
                                                                 height="40"
                                                             />
@@ -309,13 +310,13 @@
                                                                 class="text-body gap-2 font-medium"
                                                             >
                                                                 <span class="text-primary mt-3">
-                                                                    {item.title}
+                                                                    {item.integration.title}
                                                                 </span>
                                                             </div>
                                                             <div
                                                                 class="text-caption web-u-color-text-secondary"
                                                             >
-                                                                {item.category}
+                                                                {item.heading}
                                                             </div>
                                                         </div>
                                                     </a>
@@ -325,7 +326,7 @@
                                     </div>
                                 </section>
 
-                                {#each data.integrations as { category, description, integrations }}
+                                {#each data.integrations as { category, heading, description, integrations }}
                                     {#if integrations?.length > 0 && (activePlatform === 'All' || integrations.some( (i) => i.platform.includes(activePlatform) ))}
                                         <section
                                             class="l-max-size-list-cards-section flex flex-col gap-8"
@@ -343,7 +344,7 @@
                                         >
                                             <header class="flex flex-col gap-1">
                                                 <h2 class="text-label text-primary">
-                                                    {category}
+                                                    {heading}
                                                 </h2>
                                                 <p class="text-description">
                                                     {description}
@@ -360,32 +361,26 @@
                                                                     style="--card-padding:1.5rem; --card-padding-mobile:1.5rem; --card-border-radius: 1.5rem"
                                                                 >
                                                                     <div
-                                                                        class="mb-4 flex justify-between"
+                                                                        class="mb-3 flex items-center justify-between"
                                                                     >
-                                                                        <div
-                                                                            class="flex items-center gap-4"
-                                                                        >
-                                                                            <img
-                                                                                class="web-user-box-image is-32px"
-                                                                                src={integration
-                                                                                    .product.avatar}
-                                                                                alt={integration
-                                                                                    .product.vendor}
-                                                                                width="32"
-                                                                                height="32"
-                                                                            />
-
-                                                                            <h4
-                                                                                class="text-primary"
-                                                                            >
-                                                                                {integration.title}
-                                                                            </h4>
-                                                                        </div>
+                                                                        <img
+                                                                            class="web-user-box-image is-32px"
+                                                                            src={integration.product
+                                                                                .avatar}
+                                                                            alt={integration.product
+                                                                                .vendor}
+                                                                            width="32"
+                                                                            height="32"
+                                                                        />
                                                                         <span
                                                                             class="icon-arrow-right ml-auto"
                                                                             aria-hidden="true"
-                                                                        ></span>
+                                                                        />
                                                                     </div>
+
+                                                                    <h4 class="text-primary">
+                                                                        {integration.title}
+                                                                    </h4>
 
                                                                     <p class="text-sub-body mt-1">
                                                                         {integration.description}
@@ -606,6 +601,11 @@
                 position: sticky;
                 top: 50px;
                 height: 500px;
+                transition: top 0.3s ease;
+
+                &.menu-visible {
+                    top: 122px;
+                }
             }
 
             .tag {

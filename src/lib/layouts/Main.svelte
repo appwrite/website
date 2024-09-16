@@ -140,8 +140,20 @@
             return true;
         }
 
+
         return $scrollInfo.deltaDirChange < 200;
     })();
+
+    function updateSideNav() {
+        if(browser) {
+            const integrationsSide = document.getElementById('integrations-side');
+            if (integrationsSide) {
+                $isHeaderHidden ? integrationsSide.classList.remove('menu-visible') : integrationsSide.classList.add('menu-visible');
+            }
+        }
+    }
+
+    $: $isHeaderHidden, updateSideNav();
 </script>
 
 <div class="relative">

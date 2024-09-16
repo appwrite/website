@@ -7,7 +7,7 @@ featured: false
 isPartner: true
 isNew: true
 cover: /images/integrations/logging-sentry/cover.png
-category: Logging
+category: logging
 product: 
     avatar: '/images/integrations/avatars/sentry.png'
     vendor: Sentry

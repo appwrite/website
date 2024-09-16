@@ -67,7 +67,7 @@
 <Docs variant="default">
     <Sidebar />
 
-    <main class="web-main-section web-u-overflow-hidden-break1-to-break3 relative" id="main">
+    <main class="web-main-section relative lg:overflow-hidden" id="main">
         <div class="web-u-opacity-40-mobile bg-blur absolute">
             <img src="/images/bgs/docs-blur-1.svg" alt="" />
         </div>
@@ -148,15 +148,15 @@
                                 src="/images/icons/illustrated/dark/auth.png"
                                 alt=""
                                 class="web-u-only-dark"
-                                width="48"
-                                height="48"
+                                width="40"
+                                height="40"
                             />
                             <img
                                 src="/images/icons/illustrated/light/auth.png"
                                 alt=""
                                 class="web-u-only-light"
-                                width="48"
-                                height="48"
+                                width="40"
+                                height="40"
                             />
                             <h4 class="text-sub-body text-primary mt-2 font-medium">Auth</h4>
                             <p class="text-sub-body mt-1">
@@ -170,15 +170,15 @@
                                 src="/images/icons/illustrated/dark/databases.png"
                                 alt=""
                                 class="web-u-only-dark"
-                                width="48"
-                                height="48"
+                                width="40"
+                                height="40"
                             />
                             <img
                                 src="/images/icons/illustrated/light/databases.png"
                                 alt=""
                                 class="web-u-only-light"
-                                width="48"
-                                height="48"
+                                width="40"
+                                height="40"
                             />
                             <h4 class="text-sub-body text-primary mt-2 font-medium">Databases</h4>
                             <p class="text-sub-body mt-1">Store your application and user data.</p>
@@ -190,15 +190,15 @@
                                 src="/images/icons/illustrated/dark/functions.png"
                                 alt=""
                                 class="web-u-only-dark"
-                                width="48"
-                                height="48"
+                                width="40"
+                                height="40"
                             />
                             <img
                                 src="/images/icons/illustrated/light/functions.png"
                                 alt=""
                                 class="web-u-only-light"
-                                width="48"
-                                height="48"
+                                width="40"
+                                height="40"
                             />
                             <h4 class="text-sub-body text-primary mt-2 font-medium">Functions</h4>
                             <p class="text-sub-body mt-1">
@@ -212,15 +212,15 @@
                                 src="/images/icons/illustrated/dark/messaging.png"
                                 alt=""
                                 class="web-u-only-dark"
-                                width="48"
-                                height="48"
+                                width="40"
+                                height="40"
                             />
                             <img
                                 src="/images/icons/illustrated/light/messaging.png"
                                 alt=""
                                 class="web-u-only-light"
-                                width="48"
-                                height="48"
+                                width="40"
+                                height="40"
                             />
                             <h4 class="text-sub-body text-primary mt-2 font-medium">Messaging</h4>
                             <p class="text-sub-body mt-1">
@@ -234,15 +234,15 @@
                                 src="/images/icons/illustrated/dark/storage.png"
                                 alt=""
                                 class="web-u-only-dark"
-                                width="48"
-                                height="48"
+                                width="40"
+                                height="40"
                             />
                             <img
                                 src="/images/icons/illustrated/light/storage.png"
                                 alt=""
                                 class="web-u-only-light"
-                                width="48"
-                                height="48"
+                                width="40"
+                                height="40"
                             />
                             <h4 class="text-sub-body text-primary mt-2 font-medium">Storage</h4>
                             <p class="text-sub-body mt-1">
@@ -256,15 +256,15 @@
                                 src="/images/icons/illustrated/dark/realtime.png"
                                 alt=""
                                 class="web-u-only-dark"
-                                width="48"
-                                height="48"
+                                width="40"
+                                height="40"
                             />
                             <img
                                 src="/images/icons/illustrated/light/realtime.png"
                                 alt=""
                                 class="web-u-only-light"
-                                width="48"
-                                height="48"
+                                width="40"
+                                height="40"
                             />
                             <h4 class="text-sub-body text-primary mt-2 font-medium">Realtime</h4>
                             <p class="text-sub-body mt-1">Respond to server events in realtime.</p>
