@@ -890,7 +890,7 @@ def main(context)
         when 'json'
             return context.res.json({"type": "This is a JSON response"})
         when 'binary'
-            file_contents = File.binread('dir/file.png')
+            file_contents = File.binread('file.png')
             return context.res.binary(file_contents)
         when 'redirect'
             return context.res.redirect("https://appwrite.io", 301)
@@ -912,8 +912,7 @@ export default async ({ req, res, log }) => {
         case 'json':
             return res.json({type: "This is a JSON response"});
         case 'binary':
-            const fileContents = Deno.readFileSync('/path/to/file.png');
-            // or const fileContents = await Deno.readFile('/path/to/file.png');
+            const fileContents = await Deno.readFile('file.png');
             return res.binary(fileContents);
         case 'redirect':
             return res.redirect("https://appwrite.io", 301);
@@ -933,9 +932,12 @@ package handler
 import (
 	"io"
 	"os"
-
+	"embed"
 	"github.com/open-runtimes/types-for-go/v4/openruntimes"
 )
+
+//go:embed images/*.png
+var images embed.FS
 
 func Main(Context openruntimes.Context) openruntimes.Response {
 	switch Context.Req.Query["type"] {
@@ -944,8 +946,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 	case "json":
 		return Context.Res.Json(map[string]string{"type": "This is a JSON response"})
 	case "binary":
-		file, _ := os.Open("./file.png")
-		imageData, _ := io.ReadAll(file)
+		imageData, _ := images.ReadFile("file.png")
 		return Context.Res.Binary(imageData)
 	case "redirect":
 		return Context.Res.Redirect("https://appwrite.io")
@@ -967,9 +968,8 @@ Future<dynamic> main(final context) async {
         case 'json':
             return context.res.json({'type': 'This is a JSON response'});
         case 'binary':
-            final file = File('./path-to-files/file.jpg');
-            final fileContents = await file.readAsBytesSync();
-            // or final fileContents = await file.readAsBytes();
+            final file = File('file.png');
+            final fileContents = await file.readAsBytes();
             return context.res.binary(fileContents);
         case 'redirect':
             return context.res.redirect('https://appwrite.io', 301);
@@ -1015,7 +1015,7 @@ public class Handler {
             case "json":
                 return Context.Res.Text(new Dictionary<string, object>() { { "type", "This is a JSON response" } });
             case "binary":
-                return Context.Res.Binary(File.ReadAllBytes("./path-to-files/file.jpg"));
+                return Context.Res.Binary(File.ReadAllBytes("file.png"));
             case "redirect":
                 return Context.Res.Redirect("https://appwrite.io", 301);
             case "html":
