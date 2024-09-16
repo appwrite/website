@@ -92,14 +92,14 @@
                                     class:web-u-max-width-380={!submitted}
                                 >
                                     {#if submitted}
-                                        <section class="u-flex-col web-u-gap-20">
+                                        <section class="flex flex-col gap-5">
                                             <h1 class="web-display web-u-color-text-primary">
                                                 Thank you for your submission
                                             </h1>
                                             <p class="web-description web-u-padding-block-end-32">
                                                 Your details for the enterprise plan have been sent
-                                                successfully. Our team will back to you as soon as
-                                                possible.
+                                                successfully. Our team will get back to you as soon
+                                                as possible.
                                             </p>
                                             <a
                                                 href="/pricing"
@@ -114,8 +114,8 @@
                                                 Enterprise Plan
                                             </h4>
                                             <p class="web-description">
-                                                Apply to our Enterprise Plan by filling out this
-                                                form. Our team will reach out to you soon.
+                                                Interested in a pricing solution that fits your
+                                                specific requirements? Let’s talk.
                                             </p>
                                         </section>
                                     {/if}
@@ -238,7 +238,7 @@
                                         </p>
                                         <button
                                             type="submit"
-                                            class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1"
+                                            class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1 cursor-pointer"
                                         >
                                             <span>Submit</span>
                                         </button>
