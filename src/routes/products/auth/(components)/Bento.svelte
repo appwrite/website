@@ -9,10 +9,13 @@
     import PasswordDictionary from './animations/PasswordDictionary.svelte';
 </script>
 
-<div class={classNames('py-40 relative')} style="background-image: url(../(assets)/bg-pattern.png)">
+<section
+    class={classNames('relative py-40')}
+    style="background-image: url(../(assets)/bg-pattern.png)"
+>
     <div class="container">
-        <div class="flex flex-col gap-4 text-center max-w-[325px] mx-auto">
-            <h2 class="text-4xl font-aeonik-pro text-primary text-pretty">
+        <div class="mx-auto flex max-w-[325px] flex-col gap-4 text-center">
+            <h2 class="font-aeonik-pro text-primary text-pretty text-4xl">
                 Built-in<br /> advanced security
             </h2>
             <p>
@@ -20,7 +23,7 @@
             </p>
         </div>
 
-        <div class="grid md:grid-cols-3 grid-rows-12 min-h-[900px] gap-4 mt-10">
+        <div class="mt-10 grid min-h-[900px] grid-rows-12 gap-4 md:grid-cols-3">
             <SessionManagement />
             <MultiFactor />
             <SecurePasswords />
@@ -29,4 +32,4 @@
             <PasswordDictionary />
         </div>
     </div>
-</div>
+</section>

@@ -85,7 +85,7 @@
     ];
 </script>
 
-<div class="row-span-5 flex flex-col gap-4 rounded-2xl p-2 bg-greyscale-850/90">
+<div class="bg-greyscale-850/90 row-span-5 flex flex-col gap-4 rounded-2xl p-2">
     <div class="p-4">
         <span class="text-primary">Password dictionary</span>
         <p class="text-secondary">
@@ -93,31 +93,31 @@
         </p>
     </div>
     <div
-        class="bg-white/[0.02] rounded-lg flex-1 overflow-hidden relative flex flex-col justify-center items-center"
+        class="relative flex flex-1 flex-col items-center justify-center overflow-hidden rounded-lg bg-white/[0.02]"
     >
-        <div class="flex gap-x-2 text-sm flex-wrap w-[105%] mx-auto absolute pointer-events-none">
+        <div class="pointer-events-none absolute mx-auto flex w-[105%] flex-wrap gap-x-2 text-sm">
             {#each options as option, i}
                 {#if option === '654321'}
                     <div
                         class={classNames(
-                            'text-white z-50 relative bg-gradient-to-r font-mono from-greyscale-800 to-greyscale-900 flex items-center gap-2 px-1 shadow-lg shadow-black/30'
+                            'from-greyscale-800 to-greyscale-900 relative z-50 flex items-center gap-2 bg-gradient-to-r px-1 font-mono text-white shadow-lg shadow-black/30'
                         )}
                     >
                         <span>6543</span>
                         <span
-                            class="animate-scale-in w-px h-[150%] bg-gradient-to-b from-transparent via-white to-transparent"
+                            class="animate-scale-in h-[150%] w-px bg-gradient-to-b from-transparent via-white to-transparent"
                         ></span>
                         <span class="text-white/50">21</span>
                     </div>
                 {:else}
-                    <span class={classNames('font-mono transition-all duration-1000 text-white/20')}
+                    <span class={classNames('font-mono text-white/20 transition-all duration-1000')}
                         >{option}</span
                     >{/if}
             {/each}
-            <div class="mask inset-0 absolute z-0 backdrop-blur-md" />
+            <div class="mask absolute inset-0 z-0 backdrop-blur-md" />
         </div>
 
-        <div class="absolute flex items-center justify-center inset-0 z-10 gradient">
+        <div class="gradient absolute inset-0 z-10 flex items-center justify-center">
             <div class="w-3/4">
                 <Input type="password" disabled label="Password" value="magicpassword" />
             </div>
