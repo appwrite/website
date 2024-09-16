@@ -33,7 +33,7 @@
 <Main>
     <div class="space-y-8">
         <Bento />
-        <div class="bg-white">
+        <div class="bg-greyscale-50">
             <Access />
             <SSR />
             <UseCases />
