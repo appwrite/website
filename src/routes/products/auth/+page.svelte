@@ -1,12 +1,11 @@
 <script>
-    import { FooterNav, MainFooter, PreFooter } from '$lib/components';
     import Main from '$lib/layouts/Main.svelte';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
+    import Access from './(components)/Access.svelte';
 
-    import { Platform } from '$lib/utils/references';
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import Bento from './(components)/Bento.svelte';
+    import SSR from './(components)/SSR.svelte';
 
     const title = 'Auth' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -33,5 +32,9 @@
 <Main>
     <div class="space-y-8">
         <Bento />
+        <div class="bg-white">
+            <Access />
+            <SSR />
+        </div>
     </div>
 </Main>
