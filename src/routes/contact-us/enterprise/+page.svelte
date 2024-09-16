@@ -114,8 +114,8 @@
                                                 Enterprise Plan
                                             </h4>
                                             <p class="web-description">
-                                                Apply to our Enterprise Plan by filling out this
-                                                form. Our team will reach out to you soon.
+                                                Interested in a pricing solution that fits your 
+                                                specific requirements? Let’s talk.
                                             </p>
                                         </section>
                                     {/if}
