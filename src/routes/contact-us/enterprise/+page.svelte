@@ -125,7 +125,7 @@
                                 <form
                                     method="post"
                                     on:submit|preventDefault={handleSubmit}
-                                    class="flex flex-col gap-4"
+                                    class="flex flex-col gap-4 mt-4 lg:mt-0"
                                 >
                                     <div class="flex justify-end">
                                         <ul
@@ -197,7 +197,7 @@
                                                 </div>
                                             </li>
                                             <li
-                                                class="web-form-item is-column-span-2 flex-col gap-1"
+                                                class="web-form-item md:col-span-2 flex-col gap-1"
                                             >
                                                 <label class="u-block" for="companyWebsite"
                                                     >Company website</label
@@ -212,7 +212,7 @@
                                                 />
                                             </li>
                                             <li
-                                                class="web-form-item is-column-span-2 flex-col gap-1"
+                                                class="web-form-item md:col-span-2 sm:col-span-1 flex-col gap-1"
                                             >
                                                 <label class="u-block" for="use-case"
                                                     >Please share more information about your use
@@ -229,10 +229,10 @@
                                         </ul>
                                     </div>
                                     <div
-                                        class="ps-6 flex gap-4 justify-between web-u-flex-col-reverse-mobile items-center"
+                                        class="flex flex-col gap-4 justify-between items-center sm:flex-col md:flex-col lg:flex-row"
                                     >
-                                        <p class="web-caption-400 web-u-max-width-380">
-                                            {#if error}
+                                        <p class="web-caption-400 self-start lg:self-center web-u-max-width-380">
+                                        {#if error}
                                                 {error}
                                             {/if}
                                         </p>
