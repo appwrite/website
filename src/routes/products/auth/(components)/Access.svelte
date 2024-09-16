@@ -25,7 +25,9 @@
         >
             <span class="web-badges text-micro font-aeonik-fono uppercase !text-white">Access_</span
             >
-            <h2 class="text-title text-primary">Easily manage teams and permissions</h2>
+            <h2 class="text-title text-primary font-aeonik-pro">
+                Easily manage teams and permissions
+            </h2>
             <p class="text-body text-secondary font-medium">
                 Create custom roles and level of access to resources such as projects, files, etc.
             </p>
