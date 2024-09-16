@@ -7,6 +7,7 @@
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
+    import { Tooltip } from '$lib/components';
 
     type Table = {
         title: string;
@@ -16,10 +17,11 @@
             free: string | true;
             pro: string | true;
             scale: string | true;
+            enterprise: string | true;
         }[];
     };
 
-    const cols = ['free', 'pro', 'scale'] as const;
+    const cols = ['free', 'pro', 'scale', 'enterprise'] as const;
 
     const tables = [
         {
@@ -29,31 +31,36 @@
                     title: 'Bandwidth',
                     free: '10GB',
                     pro: '300GB',
-                    scale: '300GB'
+                    scale: '300GB',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Additional bandwidth',
                     free: '-',
                     pro: '$40 per 100GB',
-                    scale: '$40 per 100GB'
+                    scale: '$40 per 100GB',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Storage',
                     free: '2GB',
                     pro: '150GB',
-                    scale: '150GB'
+                    scale: '150GB',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Additional storage',
                     free: '-',
                     pro: '$3 per 100GB',
-                    scale: '$3 per 100GB'
+                    scale: '$3 per 100GB',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Compute',
                     free: '750K executions',
                     pro: '3.5M executions',
-                    scale: '3.5M executions'
+                    scale: '3.5M executions',
+                    enterprise: 'Custom'
                 }
             ]
         },
@@ -64,67 +71,78 @@
                     title: 'Number of projects',
                     free: 'Unlimited',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'Projects pausing',
                     free: 'Never',
                     pro: 'Never',
-                    scale: 'Never'
+                    scale: 'Never',
+                    enterprise: 'Never'
                 },
                 {
                     title: 'Organization Members',
                     free: '1',
                     pro: '1',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'Additional Organization members',
                     free: '-',
                     pro: '$15 per member',
-                    scale: '$0'
+                    scale: '$0',
+                    enterprise: '$0'
                 },
                 {
                     title: 'Connected websites and apps',
                     free: '3 per project',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'Custom domains',
                     free: 'Unlimited',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'No Appwrite branding on emails',
                     free: '-',
                     pro: true,
-                    scale: true
+                    scale: true,
+                    enterprise: true
                 },
                 {
                     title: 'Custom SMTP',
                     free: '-',
                     pro: true,
-                    scale: true
+                    scale: true,
+                    enterprise: true
                 },
                 {
                     title: 'Webhooks',
                     free: '2 per project',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'Logs retention',
                     free: '1 hour',
                     pro: '7 days',
-                    scale: '28 days'
+                    scale: '28 days',
+                    enterprise: '90 days'
                 },
                 {
                     title: 'Budget caps and alerts',
                     free: 'Not needed',
                     pro: true,
-                    scale: true
+                    scale: true,
+                    enterprise: true
                 }
             ]
         },
@@ -135,25 +153,29 @@
                     title: 'Users',
                     free: '75,000 monthly active users',
                     pro: '200,000 monthly active users',
-                    scale: '200,000 monthly active users'
+                    scale: '200,000 monthly active users',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Additional users',
                     free: '-',
                     pro: '$3 per 1,000 users',
-                    scale: '$3 per 1,000 users'
+                    scale: '$3 per 1,000 users',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Teams',
                     free: '100 per project',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'SSO',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming soon'
+                    scale: 'Coming soon',
+                    enterprise: 'Coming soon'
                 }
             ]
         },
@@ -164,25 +186,29 @@
                     title: 'Databases',
                     free: '1 per project',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'Documents',
                     free: 'Unlimited',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'Reads & Writes',
                     free: 'Unlimited',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'Dedicated databases',
                     free: '-',
                     pro: 'Coming Soon',
-                    scale: 'Coming soon'
+                    scale: 'Coming soon',
+                    enterprise: 'Coming soon'
                 }
             ]
         },
@@ -193,19 +219,22 @@
                     title: 'Buckets',
                     free: '3 per project',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'File size limit',
                     free: '50MB',
                     pro: '5GB',
-                    scale: '5GB'
+                    scale: '5GB',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Image transformations',
                     free: 'Unlimited',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 }
             ]
         },
@@ -216,26 +245,30 @@
                     title: 'Functions',
                     free: '5 per project',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'Executions',
                     free: '750K',
                     pro: '3.5M',
-                    scale: '3.5M'
+                    scale: '3.5M',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Additional executions',
                     free: '-',
                     pro: '$2 per 1 Million',
-                    scale: '$2 per 1 Million'
+                    scale: '$2 per 1 Million',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Express builds',
                     info: 'Dedicated priority queues for build jobs',
                     free: '-',
                     pro: true,
-                    scale: true
+                    scale: true,
+                    enterprise: true
                 }
             ]
         },
@@ -246,19 +279,22 @@
                     title: 'Concurrent connections',
                     free: '250',
                     pro: '500',
-                    scale: '500'
+                    scale: '500',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Additional concurrent connections',
                     free: '-',
                     pro: '$5 per 1,000',
-                    scale: '$5 per 1,000'
+                    scale: '$5 per 1,000',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Messages',
                     free: '3M',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 }
             ]
         },
@@ -269,37 +305,43 @@
                     title: 'SOC-2',
                     free: '-',
                     pro: '-',
-                    scale: true
+                    scale: true,
+                    enterprise: true
                 },
                 {
                     title: 'HIPAA',
                     free: '-',
                     pro: '-',
-                    scale: true
+                    scale: true,
+                    enterprise: true
                 },
                 {
                     title: 'BAA',
                     free: '-',
                     pro: '-',
-                    scale: true
+                    scale: true,
+                    enterprise: true
                 },
                 {
                     title: 'Additional organization roles',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming Soon'
+                    scale: 'Coming Soon',
+                    enterprise: 'Coming Soon'
                 },
                 {
                     title: 'Network logs',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming Soon'
+                    scale: 'Coming Soon',
+                    enterprise: 'Coming Soon'
                 },
                 {
                     title: 'Activity logs',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming Soon'
+                    scale: 'Coming Soon',
+                    enterprise: 'Coming Soon'
                 }
             ]
         },
@@ -310,25 +352,36 @@
                     title: 'Community',
                     free: true,
                     pro: true,
-                    scale: true
+                    scale: true,
+                    enterprise: true
                 },
                 {
                     title: 'Email',
                     free: '-',
                     pro: true,
-                    scale: true
+                    scale: true,
+                    enterprise: true
                 },
                 {
                     title: 'Priority',
                     free: '-',
                     pro: '-',
-                    scale: true
+                    scale: true,
+                    enterprise: true
                 },
                 {
                     title: 'SLA',
                     free: '-',
                     pro: '-',
-                    scale: true
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Private Slack channel',
+                    free: '-',
+                    pro: '-',
+                    scale: '-',
+                    enterprise: true
                 }
             ]
         }
@@ -423,7 +476,7 @@
                             {/key}
                         </div>
                         <div class="web-mini-card">
-                            <div class="flex flex-wrap items-center justify-between gap-4">
+                            <div class="flex items-center justify-between gap-8">
                                 <h4 class="text-label text-primary">Free</h4>
                                 <a
                                     href="https://cloud.appwrite.io/register"
@@ -434,7 +487,7 @@
                             </div>
                         </div>
                         <div class="web-mini-card">
-                            <div class="flex flex-wrap items-center justify-between gap-4">
+                            <div class="flex items-center justify-between gap-8">
                                 <h4 class="text-label text-primary">Pro</h4>
                                 <a
                                     class="web-button"
@@ -442,17 +495,29 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <!-- <span class="text-sub-body font-medium">Start trial</span> -->
                                     <span class="text-sub-body font-medium">Start building</span>
                                 </a>
                             </div>
                         </div>
                         <div class="web-mini-card">
-                            <div class="flex flex-wrap items-center justify-between gap-4">
+                            <div class="flex items-center justify-between gap-8">
                                 <h4 class="text-label text-primary">Scale</h4>
-                                <button class="web-button is-secondary" disabled>
-                                    <span class="text-sub-body font-medium">Coming soon</span>
-                                </button>
+                                <a
+                                    class="web-button is-secondary"
+                                    href="https://cloud.appwrite.io/console?type=createScale"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <span class="text-sub-body font-medium">Start now</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="web-mini-card">
+                            <div class="flex items-center justify-between gap-8">
+                                <h4 class="text-label text-primary">Enterprise</h4>
+                                <a class="web-button is-secondary" href="/contact-us/enterprise">
+                                    <span class="text-sub-body font-medium">Contact</span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -497,8 +562,19 @@
                                 {#each table.rows as row}
                                     <tr>
                                         <th class="text-sub-body font-medium">
-                                            <div class="flex gap-1">
+                                            <div class="flex gap-1 text-left">
                                                 {row.title}
+                                                {#if row.info}
+                                                    <Tooltip placement="top">
+                                                        <span
+                                                            class="icon-info"
+                                                            aria-hidden="true"
+                                                        />
+                                                        <svelte:fragment slot="tooltip">
+                                                            {row.info}
+                                                        </svelte:fragment>
+                                                    </Tooltip>
+                                                {/if}
                                             </div>
                                         </th>
                                         {#each cols as col, index}
@@ -526,3 +602,40 @@
         </div>
     </div>
 </div>
+
+<style>
+    .web-u-grid-auto-column-1fr {
+        grid-auto-columns: max-content;
+        grid-template-columns: repeat(5, 2fr);
+    }
+
+    .web-label {
+        font-size: var(--web-font-size-medium);
+    }
+
+    @media (min-width: 1024px) and (max-width: 1204px) {
+        .web-description:nth-child(2) {
+            padding-inline-start: 6rem;
+        }
+    }
+
+    @media (min-width: 1024px) and (max-width: 1085px) {
+        .web-button {
+            padding-inline: 0.125rem !important;
+        }
+
+        .web-button .web-sub-body-500 {
+            font-size: var(--web-font-size-micro) !important;
+        }
+    }
+
+    @media (min-width: 1024px) and (max-width: 1210px) {
+        .web-button {
+            padding-inline: 0.15rem !important;
+        }
+
+        .web-button .web-sub-body-500 {
+            font-size: var(--web-font-size-tiny);
+        }
+    }
+</style>

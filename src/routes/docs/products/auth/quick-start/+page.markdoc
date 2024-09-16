@@ -502,7 +502,7 @@ class Appwrite {
     public init() {
         self.client = Client()
             .setEndpoint("https://cloud.appwrite.io/v1")
-            .setProject("<YOUR_PROJECT_ID>")
+            .setProject("<PROJECT_ID>")
         
         self.account = Account(client)
     }
@@ -572,7 +572,7 @@ You can find a version of this example in the [Appwrite Android tutorial](/docs/
 
 object Appwrite {
     private const val ENDPOINT = "https://cloud.appwrite.io/v1"
-    private const val PROJECT_ID = "<YOUR_PROJECT_ID>"
+    private const val PROJECT_ID = "<PROJECT_ID>"
 
     private lateinit var client: Client
 

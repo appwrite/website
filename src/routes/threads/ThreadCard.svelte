@@ -12,7 +12,7 @@
     <a href="/threads/{thread.discord_id}" class="web-card is-normal has-border-gradient thread">
         <div class="flex gap-2">
             <h3
-                class="text-body font-medium text-primary break-words"
+                class="text-body text-primary break-words font-medium"
                 use:highlight={highlightTerms}
             >
                 {thread.title}
@@ -20,7 +20,7 @@
             <!-- <time class="text-caption ml-auto">12 Jan, 2023</time> -->
         </div>
 
-        <p class="text-body font-medium mt-1 break-words" use:highlight={highlightTerms}>
+        <p class="text-body mt-1 break-words font-medium" use:highlight={highlightTerms}>
             {thread.content.length > 200 ? thread.content.slice(0, 200) + '...' : thread.content}
         </p>
 
@@ -34,11 +34,11 @@
             </ul>
 
             <div
-                class="web-icon-button is-more-content web-u-pointer-events-none"
+                class="web-icon-button is-more-content web-u-pointer-events-none flex items-center"
                 aria-label="Replies"
             >
                 <span class="web-icon-message web-u-font-size-16" aria-hidden="true" />
-                <span class="text-caption web-u-line-height-1-2">{thread.message_count}</span>
+                <span class="text-caption font-sans">{thread.message_count}</span>
             </div>
         </div>
     </a>

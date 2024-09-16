@@ -36,7 +36,7 @@
 </script>
 
 <nav
-    class="web-side-nav !border-greyscale-800 !border-r"
+    class="web-side-nav"
     use:clickOutside={(e) => {
         const el = e.target;
         if (!(el instanceof HTMLElement)) return;

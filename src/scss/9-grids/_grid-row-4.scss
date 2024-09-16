@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 .#{$p}-grid-row-4 {
-  --p-gap: #{pxToRem(32)};
+  --p-gap: #{pxToRem(20)};
 
   display:grid; gap:var(--p-gap);
 
