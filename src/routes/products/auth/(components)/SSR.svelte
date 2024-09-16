@@ -31,7 +31,9 @@ await messaging.createSubscriber(
             <span class="web-badges text-micro font-aeonik-fono mr-auto ml-0 uppercase !text-white"
                 >SSR_</span
             >
-            <h2 class="text-title text-primary">Server-side rendering made simple</h2>
+            <h2 class="text-title text-primary font-aeonik-pro">
+                Server-side rendering made simple
+            </h2>
             <p class="text-body text-secondary font-medium">
                 Streamline your development process and enhance performance without sacrificing
                 functionality.

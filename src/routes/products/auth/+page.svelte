@@ -6,6 +6,7 @@
 
     import Bento from './(components)/Bento.svelte';
     import SSR from './(components)/SSR.svelte';
+    import UseCases from './(components)/UseCases.svelte';
 
     const title = 'Auth' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -35,6 +36,7 @@
         <div class="bg-white">
             <Access />
             <SSR />
+            <UseCases />
         </div>
     </div>
 </Main>
