@@ -13,14 +13,14 @@
 {#if url}
     <a
         href={url}
-        class="web-card is-normal has-border-gradient u-overflow-hidden"
+        class="web-card is-normal has-border-gradient overflow-hidden"
         style="padding: 0.5rem;"
     >
         <div class="details" style="padding: 0.75rem;">
-            <h3 class="web-label web-u-color-text-primary">
+            <h3 class="text-label text-primary">
                 {title}
             </h3>
-            <div class="web-card-link u-flex u-cross-center" style:margin-top="8px">
+            <div class="web-card-link flex items-center" style:margin-top="8px">
                 <span class="text">{label}</span>
                 <span class="web-icon-arrow-right" />
             </div>
@@ -30,12 +30,12 @@
         </div>
     </a>
 {:else}
-    <div class="web-card is-normal has-border-gradient u-overflow-hidden" style="padding: 0.5rem;">
+    <div class="web-card is-normal has-border-gradient overflow-hidden" style="padding: 0.5rem;">
         <div class="details" style="padding: 0.75rem;">
-            <h3 class="web-label web-u-color-text-primary">
+            <h3 class="text-label text-primary">
                 {title}
             </h3>
-            <div class="web-card-link u-flex u-cross-center">
+            <div class="web-card-link flex items-center">
                 <span class="text">{label}</span>
                 <span class="web-icon-arrow-right" />
             </div>

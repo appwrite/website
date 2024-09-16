@@ -25,13 +25,13 @@
             <Thead>
                 <Tr>
                     <Th>
-                        <span class="web-eyebrow">NAME</span>
+                        <span class="text-micro uppercase">NAME</span>
                     </Th>
                     <Th>
-                        <span class="web-eyebrow">TYPE</span>
+                        <span class="text-micro uppercase">TYPE</span>
                     </Th>
                     <Th>
-                        <span class="web-eyebrow">DESCRIPTION</span>
+                        <span class="text-micro uppercase">DESCRIPTION</span>
                     </Th>
                 </Tr>
             </Thead>
@@ -53,14 +53,14 @@
         <Heading id="example" level={2}>Example</Heading>
         <Tabs>
             {#each data.examples as example}
-            <TabsItem id={example.type.toLowerCase()} title={example.type}>
-                <Fence
-                content={JSON.stringify(example.example, null, 4)}
-                language="json"
-                process
-                withLineNumbers
-                />
-            </TabsItem>
+                <TabsItem id={example.type.toLowerCase()} title={example.type}>
+                    <Fence
+                        content={JSON.stringify(example.example, null, 4)}
+                        language="json"
+                        process
+                        withLineNumbers
+                    />
+                </TabsItem>
             {/each}
         </Tabs>
     </article>

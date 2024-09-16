@@ -47,15 +47,12 @@
 </script>
 
 {#if customizing}
-    <div
-        class="action-container u-flex u-main-between u-gap-16"
-        style:justify-content="space-between"
-    >
-        <div class="u-flex u-gap-16">
+    <div class="action-container flex justify-between gap-4" style:justify-content="space-between">
+        <div class="flex gap-4">
             {#if ticket.gh_user}
-                <div class="u-flex u-cross-center u-gap-8">
-                    <div class="u-flex u-cross-center u-gap-8 web-u-color-text-primary">
-                        <span class="web-sub-body-500">Connected to GitHub</span>
+                <div class="flex items-center gap-2">
+                    <div class="text-primary flex items-center gap-2">
+                        <span class="text-sub-body font-medium">Connected to GitHub</span>
                     </div>
 
                     <Tooltip placement="bottom">
@@ -65,7 +62,7 @@
                 </div>
             {:else}
                 <button class="web-button is-secondary" on:click={loginGithub}>
-                    <div class="web-icon-github web-u-color-text-primary" />
+                    <div class="web-icon-github text-primary" />
                     <span class="text">Log in to GitHub</span>
                 </button>
             {/if}
@@ -90,9 +87,9 @@
             <span class="text">Customize</span>
         </button>
 
-        <div class="u-flex u-gap-8 action-buttons">
+        <div class="action-buttons flex gap-2">
             <button class="web-button is-secondary" on:click={copy}>
-                <div class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary" />
+                <div class="web-icon-{$copied ? 'check' : 'copy'} text-primary" />
                 <span class="text">Copy URL</span>
             </button>
             <a
@@ -100,7 +97,7 @@
                 href="https://twitter.com/intent/tweet?text={twitterText}"
                 target="_blank"
             >
-                <div class="web-icon-x web-u-color-text-primary" />
+                <div class="web-icon-x text-primary" />
                 <span class="text">Share</span>
             </a>
         </div>

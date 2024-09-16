@@ -19,24 +19,66 @@ export type Integration = {
     images: string[];
 };
 
-const categoryDescriptions = Object.entries({
-    ai: 'Machine learning and AI capabilities',
-    auth: 'User authentication and authorization',
-    databases: 'Manage database systems',
-    logging: 'Monitor and analyze application logs',
-    messaging: 'Real-time communication platforms',
-    payments: 'Secure online payment processing',
-    search: 'Implement search functionalities',
-    storage: 'Storage for data and media',
-    deployments: 'Seamlessly deploy your code',
-});
+export type IntegrationCategory = {
+    slug: string;
+    heading: string;
+    description: string;
+}
+
+const categoryDescriptions : IntegrationCategory[] = [
+    {
+        slug: 'ai',
+        heading: 'AI',
+        description: 'Machine learning and AI capabilities'
+    },
+    {
+        slug: 'auth',
+        heading: 'Auth',
+        description: 'User authentication and authorization'
+    },
+    {
+        slug: 'databases',
+        heading: 'Databases',
+        description: 'Manage database systems'
+    },
+    {
+        slug: 'logging',
+        heading: 'Logging',
+        description: 'Monitor and analyze application logs'
+    },
+    {
+        slug: 'messaging',
+        heading: 'Messaging',
+        description: 'Real-time communication platforms'
+    },
+    {
+        slug: 'payments',
+        heading: 'Payments',
+        description: 'Secure online payment processing'
+    },
+    {
+        slug: 'search',
+        heading: 'Search',
+        description: 'Implement search functionalities'
+    },
+    {
+        slug: 'storage',
+        heading: 'Storage',
+        description: 'Storage for data and media'
+    },
+    {
+        slug: 'deployments',
+        heading: 'Deployments',
+        description: 'Seamlessly deploy your code'
+    }
+]
 
 export const load = () => {
     const integrationsGlob = import.meta.glob('./**/*.markdoc', {
         eager: true
     });
 
-    const categories: string[] = [];
+    const categories: IntegrationCategory[] = [];
     const platforms: string[] = [];
 
     const integrations = Object.entries(integrationsGlob).map(([filepath, integrationList]) => {
@@ -48,7 +90,7 @@ export const load = () => {
         const integrationName = slug.slice(slug.lastIndexOf('/') + 1);
 
         frontmatter.platform.map((platform) => platforms.push(platform));
-        categories.push(frontmatter.category);
+        categories.push(categoryDescriptions.find((i) => i.slug === frontmatter.category) ?? {} as IntegrationCategory);
 
         return {
             ...frontmatter,
@@ -60,13 +102,28 @@ export const load = () => {
 
     const integrationsWithDescriptions = Object.entries(groupedIntegrations).map(
         ([category, integrations]) => {
-            const description = categoryDescriptions.find(
-                ([key]) => key.toLowerCase() === category.toLowerCase()
-            )?.[1];
+            const integrationCategory = categoryDescriptions.find(
+                ( key ) => key.slug === category.toLowerCase()
+            );
             return {
                 category,
-                description,
+                heading: integrationCategory?.heading,
+                description: integrationCategory?.description,
                 integrations
+            };
+        }
+    );
+
+    const featuredIntegrations = integrations.filter((i) => i.featured);
+
+    const featuredIntegrationsWithCategoryHeadings = Object.entries(featuredIntegrations).map(
+        ([_, integration]) => {
+            const integrationCategory = categoryDescriptions.find(
+                ( key ) => key.slug === integration.category.toLowerCase()
+            );
+            return {
+                heading: integrationCategory?.heading,
+                integration
             };
         }
     );
@@ -76,6 +133,8 @@ export const load = () => {
         list: integrations,
         categories: new Set(categories),
         platforms: new Set(platforms),
-        featured: integrations.filter((i) => i.featured)
+        featured: featuredIntegrationsWithCategoryHeadings
     };
 };
+
+export const prerender = false;
