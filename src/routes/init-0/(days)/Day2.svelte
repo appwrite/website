@@ -19,7 +19,7 @@
             style:padding="0"
         >
             <div style:padding="2rem" style:padding-block-end="0">
-                <h3 class="web-label web-u-color-text-primary">Server-side rendering</h3>
+                <h3 class="text-label text-primary">Server-side rendering</h3>
                 <p style:margin-block-start="0.625rem">
                     We introduce improved support for server-side rendering in Appwrite
                     Authentication.
@@ -47,7 +47,7 @@
             class="web-card is-normal has-border-gradient u-overflow-hidden"
             style="padding: 1.25rem; --p-aspect-ratio: 0;"
         >
-            <h3 class="web-label web-u-color-text-primary" style="max-width: 18.75rem">CSR vs SSR</h3>
+            <h3 class="text-label text-primary" style="max-width: 18.75rem">CSR vs SSR</h3>
             <div class="web-card-link u-flex u-cross-center">
                 <span class="text">Article</span>
                 <span class="web-icon-arrow-right" />
@@ -64,7 +64,7 @@
             style="padding: 0.5rem; display: flex; justify-content: space-between; "
         >
             <div style="padding: 0.75rem;">
-                <h3 class="web-label web-u-color-text-primary">Event: Speed</h3>
+                <h3 class="text-label text-primary">Event: Speed</h3>
                 <div class="web-card-link u-flex u-cross-center">
                     <span class="text">Join</span>
                     <span class="web-icon-arrow-right" />
@@ -83,9 +83,7 @@
                 style="padding: 0.5rem; display: flex; justify-content: space-between; "
             >
                 <div style="padding: 0.75rem;">
-                    <h3 class="web-label web-u-color-text-primary" style="max-width: 300px">
-                        Product tour
-                    </h3>
+                    <h3 class="text-label text-primary" style="max-width: 300px">Product tour</h3>
                     <div class="web-card-link u-flex u-cross-center">
                         <span class="text">Watch</span>
                         <span class="web-icon-arrow-right" />
@@ -104,7 +102,7 @@
             class="web-card is-normal has-border-gradient"
             style="padding: 1.25rem"
         >
-            <h3 class="web-label web-u-color-text-primary">Documentation</h3>
+            <h3 class="text-label text-primary">Documentation</h3>
             <div class="web-card-link u-flex u-cross-center">
                 <span class="text">Learn more</span>
                 <span class="web-icon-arrow-right" />

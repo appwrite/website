@@ -20,7 +20,7 @@
             style:padding="0"
         >
             <div style:padding="2rem" style:padding-block-end="0">
-                <h3 class="web-label web-u-color-text-primary">Messaging</h3>
+                <h3 class="text-label text-primary">Messaging</h3>
                 <p style:margin-block-start="0.625rem">
                     Introducing multimedia messaging service to communicate to your users across
                     platforms.
@@ -48,7 +48,7 @@
             class="web-card is-normal has-border-gradient u-overflow-hidden"
             style="padding: 1.25rem; --p-aspect-ratio: 0;"
         >
-            <h3 class="web-label web-u-color-text-primary" style="max-width: 18.75rem">
+            <h3 class="text-label text-primary" style="max-width: 18.75rem">
                 How tools like Twilio can simplify messaging for developers
             </h3>
             <div class="web-card-link u-flex u-cross-center">
@@ -66,7 +66,7 @@
             class="web-card is-normal has-border-gradient u-overflow-hidden"
             style="padding: 20px"
         >
-            <h3 class="web-label web-u-color-text-primary" style="max-width: 300px">
+            <h3 class="text-label text-primary" style="max-width: 300px">
                 Best practices for sending push notifications
             </h3>
             <div class="web-card-link u-flex u-cross-center">
@@ -84,9 +84,7 @@
                 style="padding: 0.5rem; display: flex; justify-content: space-between; "
             >
                 <div style="padding: 0.75rem;">
-                    <h3 class="web-label web-u-color-text-primary" style="max-width: 300px">
-                        Product tour
-                    </h3>
+                    <h3 class="text-label text-primary" style="max-width: 300px">Product tour</h3>
                     <div class="web-card-link u-flex u-cross-center">
                         <span class="text">Watch</span>
                         <span class="web-icon-arrow-right" />
@@ -106,7 +104,7 @@
             class="web-card is-normal has-border-gradient"
             style="padding: 1.25rem"
         >
-            <h3 class="web-label web-u-color-text-primary">Documentation</h3>
+            <h3 class="text-label text-primary">Documentation</h3>
             <span class="web-card-link u-flex u-cross-center">
                 <span class="text">Learn more</span>
                 <span class="web-icon-arrow-right" />
@@ -117,7 +115,7 @@
             class="web-card is-normal has-border-gradient"
             style="padding: 1.25rem"
         >
-            <h3 class="web-label web-u-color-text-primary">Win swag</h3>
+            <h3 class="text-label text-primary">Win swag</h3>
             <span class="web-card-link u-flex u-cross-center">
                 <span class="text">Enter giveaway</span>
                 <span class="web-icon-arrow-right" />
@@ -131,7 +129,7 @@
             style="padding: 0.5rem; display: flex; justify-content: space-between; "
         >
             <div style="padding: 0.75rem;">
-                <h3 class="web-label web-u-color-text-primary">Event: Welcome to Init</h3>
+                <h3 class="text-label text-primary">Event: Welcome to Init</h3>
                 <div class="web-card-link u-flex u-cross-center">
                     <span class="text">Join</span>
                     <span class="web-icon-arrow-right" />

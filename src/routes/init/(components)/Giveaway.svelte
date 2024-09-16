@@ -4,9 +4,9 @@
 </script>
 
 <div class="wrapper">
-    <div class="web-container">
+    <div class="container">
         <div class="details">
-            <h3 class="web-label">Get a ticket and enter our special Init giveaway</h3>
+            <h3 class="text-label">Get a ticket and enter our special Init giveaway</h3>
             <p class="web-u-color-text-secondary">
                 Create, customize, and share your Init ticket to enter our general giveaway.
             </p>
@@ -14,7 +14,7 @@
         </div>
 
         <div
-            class="web-card is-normal has-border-gradient u-overflow-hidden img"
+            class="web-card is-normal has-border-gradient img overflow-hidden"
             style:padding="0.5rem"
         >
             <img src={swag} alt="Enter our Init giveaway." />
@@ -39,7 +39,7 @@
             rgba(0, 0, 0, 0) 100%
         );
 
-        .web-container {
+        .container {
             display: flex;
             justify-content: space-between;
             gap: 64px;

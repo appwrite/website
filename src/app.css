@@ -1,0 +1,168 @@
+@import 'tailwindcss';
+
+@theme {
+    /* Colors */
+    --color-*: initial;
+
+    /* base */
+    --color-primary: hsl(var(--color-primary));
+    --color-secondary: hsl(var(--color-secondary));
+    --color-accent: var(--color-secondary);
+
+    /* pink */
+    --color-pink-200: hsl(var(--color-pink-hue) 98% 84%);
+    --color-pink-500: hsl(var(--color-pink-hue) 98% 60%);
+    --color-pink-600: hsl(var(--color-pink-hue) 65% 48%);
+    --color-pink-700: hsl(var(--color-pink-hue) 65% 36%);
+
+    /* red */
+    --color-red-200: calc(hsl(var(--color-red-hue) - 2) 100% 92%);
+    --color-red-500: hsl(var(--color-red-hue) 100% 61%);
+    --color-red-700: calc(hsl(var(--color-red-hue) - 3) 82% 39%);
+
+    /* orange */
+    --color-orange-200: hsl(var(--color-orange-hue) 100% 88%);
+    --color-orange-500: hsl(var(--color-orange-hue) 99% 70%);
+    --color-orange-700: hsl(var(--color-orange-hue) 42% 42%);
+
+    /* mint */
+    --color-mint-200: hsl(var(--color-mint-hue) 56% 88%);
+    --color-mint-500: calc(hsl(var(--color-mint-hue) + 1) 54% 69%);
+    --color-mint-700: calc(hsl(var(--color-mint-hue) + 2) 24% 41%);
+
+    /* purple */
+    --color-purple-200: hsl(var(--color-purple-hue) 100% 88%);
+    --color-purple-500: calc(hsl(var(--color-purple-hue) - 1) 99% 70%);
+    --color-purple-700: calc(hsl(var(--color-purple-hue) - 1) 42% 42%);
+
+    /* yellow */
+    --color-yellow-200: hsl(var(--color-yellow-hue) 100% 88%);
+    --color-yellow-500: hsl(var(--color-yellow-hue) 99% 70%);
+    --color-yellow-700: calc(hsl(var(--color-yellow-hue) + 1) 42% 42%);
+
+    /* blue */
+    --color-blue-200: hsl(var(--color-blue-hue) 100% 88%);
+    --color-blue-500: calc(hsl(var(--color-blue-hue) - 1) 99% 70%);
+    --color-blue-700: calc(hsl(var(--color-blue-hue) - 1) 42% 42%);
+
+    /* secondary */
+    --color-secondary-100: hsl(var(--color-secondary-hue) 99% 66%);
+    --color-accent-200: hsl(var(--color-secondary-hue), 78%, 60%, 0.32);
+
+    /* greyscale */
+    --color-white: hsl(0 0% 100%);
+    --color-black: hsl(0 0% 0%);
+    --color-transparent: rgba(0, 0, 0, 0);
+    --color-greyscale-25: hsl(var(--color-greyscale-hue) 11% 98%);
+    --color-greyscale-50: hsl(var(--color-greyscale-hue) 11% 94%);
+    --color-greyscale-100: hsl(var(--color-greyscale-hue) 6% 90%);
+    --color-greyscale-200: hsl(var(--color-greyscale-hue) 4% 85%);
+    --color-greyscale-250: hsl(var(--color-greyscale-hue) 3% 77%);
+    --color-greyscale-300: hsl(var(--color-greyscale-hue) 2% 68%);
+    --color-greyscale-400: hsl(var(--color-greyscale-hue) 2% 60%);
+    --color-greyscale-500: hsl(var(--color-greyscale-hue) 2% 52%);
+    --color-greyscale-600: hsl(var(--color-greyscale-hue) 2% 43%);
+    --color-greyscale-700: hsl(var(--color-greyscale-hue) 3% 35%);
+    --color-greyscale-750: hsl(var(--color-greyscale-hue) 4% 26%);
+    --color-greyscale-800: hsl(var(--color-greyscale-hue) 4% 18%);
+    --color-greyscale-850: hsl(var(--color-greyscale-hue) 3% 14%);
+    --color-greyscale-900: hsl(var(--color-greyscale-hue) 5.7% 10.4%);
+
+    /* Animations */
+    --animate-scale-in: scale-in 200ms ease-out forwards;
+
+    /* Pink polyfills */
+    --transition: 0.2s;
+
+    /* Keyframes */
+    @keyframes scale-in {
+        0% {
+            transform: scale(0);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    /* Fonts */
+    --font-family-sans: 'Inter', arial, sans-serif;
+    --font-family-mono: 'Fira Code', monospace;
+    --font-family-aeonik-fono: 'Aenoik Fono', monospace;
+    --font-family-aeonik-pro: 'Aeonik Pro', var(--font-family-sans);
+    --font-family-archia: 'Archia', arial, sans-serif;
+
+    /* Font sizes */
+    --font-size-micro: 0.75rem;
+    --font-size-micro--line-height: 1rem;
+    --font-size-micro--letter-spacing: var(--letter-spacing-loose);
+    --font-size-caption: 0.875rem;
+    --font-size-caption--line-height: 1.375rem;
+    --font-size-caption--letter-spacing: var(--letter-spacing-tight);
+    --font-size-sub-body: clamp(0.875rem, 2vw, 1rem);
+    --font-size-sub-body--line-height: 1.375rem;
+    --font-size-sub-body--letter-spacing: var(--letter-spacing-tight);
+    --font-size-body: clamp(1rem, 2.5vw, 1.125rem);
+    --font-size-body--line-height: clamp(1.375rem, 3vw, 1.625rem);
+    --font-size-body--letter-spacing: var(--letter-spacing-tight);
+    --font-size-paragraph-md: 1rem;
+    --font-size-paragraph-md--line-height: 1.625rem;
+    --font-size-paragraph-md--letter-spacing: var(--letter-spacing-tight);
+    --font-size-paragraph-lg: 1.125rem;
+    --font-size-paragraph-lg--line-height: 1.75rem;
+    --font-size-paragraph-lg--letter-spacing: var(--letter-spacing-tight);
+    --font-size-description: clamp(1.125rem, 3vw, 1.25rem);
+    --font-size-description--line-height: clamp(1.625rem, 3.5vw, 1.75rem);
+    --font-size-description--letter-spacing: var(--letter-spacing-tighter);
+    --font-size-label: 1.5rem;
+    --font-size-label--line-height: 1.75rem;
+    --font-size-title: clamp(2rem, 5vw, 2.5rem);
+    --font-size-title--line-height: clamp(2.125rem, 5.5vw, 2.75rem);
+    --font-size-title--letter-spacing: var(--letter-spacing-squeezed);
+    --font-size-display: clamp(3rem, 7vw, 4rem);
+    --font-size-display--line-height: clamp(3.125rem, 7.5vw, 4.25rem);
+    --font-size-display--letter-spacing: var(--letter-spacing-compressed);
+    --font-size-headline: clamp(3.5rem, 8vw, 5.5rem);
+    --font-size-headline--line-height: clamp(3.5rem, 8.5vw, 5.75rem);
+    --font-size-headline--letter-spacing: var(--letter-spacing-compressed);
+
+    /* Letter spacing */
+    --letter-spacing-*: initial;
+    --letter-spacing-compressed: -0.022em;
+    --letter-spacing-squeezed: -0.01em;
+    --letter-spacing-tighter: -0.018em;
+    --letter-spacing-tight: -0.0045em;
+    --letter-spacing-none: 0em;
+    --letter-spacing-loose: 0.08em;
+}
+
+/* Themes */
+:root,
+.light {
+    --color-pink-hue: 343;
+    --color-secondary-hue: 351;
+    --color-red-hue: 3;
+    --color-orange-hue: 18;
+    --color-mint-hue: 177;
+    --color-purple-hue: 249;
+    --color-yellow-hue: 42;
+    --color-blue-hue: 217;
+    --color-greyscale-hue: 240;
+
+    /* base */
+    --color-primary: var(--color-greyscale-900);
+    --color-secondary: var(--color-greyscale-700);
+    --color-accent: var(--color-pink-600);
+}
+
+/* dark theme */
+.dark {
+    --color-primary: var(--color-greyscale-100);
+    --color-secondary: var(--color-greyscale-300);
+}
+
+/* Container */
+@layer components {
+    .container {
+        @apply mx-auto box-content max-w-[75rem] px-5;
+    }
+}
