@@ -36,7 +36,7 @@
                         <span class="icon-cheveron-left" aria-hidden="true" />
                     </a>
                 {/if}
-                <ul class="web-metadata web-caption-400">
+                <ul class="web-metadata text-caption">
                     <slot name="metadata" />
                 </ul>
                 <div class="relative flex items-center">
@@ -49,12 +49,12 @@
                             aria-label="previous page"
                         >
                             <span
-                                class="icon-cheveron-left web-u-font-size-24 web-u-color-text-primary web-is-not-mobile"
+                                class="icon-cheveron-left web-u-font-size-24 text-primary web-is-not-mobile"
                                 aria-hidden="true"
                             />
                         </a>
                     {/if}
-                    <h1 class="web-title">{title}</h1>
+                    <h1 class="text-title font-aeonik-pro text-primary">{title}</h1>
                 </div>
             </div>
             <div class="web-article-header-end" />
@@ -67,7 +67,7 @@
             <div class="web-references-menu-content">
                 {#if toc && toc.length > 0}
                     <div class="flex items-center justify-between gap-4">
-                        <h5 class="web-references-menu-title web-eyebrow">On This Page</h5>
+                        <h5 class="web-references-menu-title text-micro uppercase">On This Page</h5>
                     </div>
                     <ol class="web-references-menu-list">
                         {#each toc as parent (parent.href)}
@@ -80,7 +80,7 @@
                                     {#if parent?.step}
                                         <span class="web-numeric-badge">{parent.step}</span>
                                     {/if}
-                                    <span class="web-caption-400">{parent.title}</span>
+                                    <span class="text-caption">{parent.title}</span>
                                 </a>
                                 {#if parent.children}
                                     <ol class="web-references-menu-list mt-4 ml-8">
@@ -90,9 +90,7 @@
                                                     href={child.href}
                                                     class="web-references-menu-link"
                                                 >
-                                                    <span class="web-caption-400"
-                                                        >{child.title}</span
-                                                    >
+                                                    <span class="text-caption">{child.title}</span>
                                                 </a>
                                             </li>
                                         {/each}
@@ -104,7 +102,7 @@
                     <div class="border-greyscale-900/[0.04] border-t pt-5">
                         <button class="web-link inline-flex items-center gap-2" use:scrollToTop>
                             <span class="web-icon-arrow-up" aria-hidden="true" />
-                            <span class="web-caption-400">Back to top</span>
+                            <span class="text-caption">Back to top</span>
                         </button>
                     </div>
                 {/if}

@@ -9,7 +9,7 @@
     }[] = [
         {
             question: 'Can I self-host Appwrite for free?',
-            answer: 'Yes! Appwrite Self Hosted will always be Open Source and free for you to use, without any limits. You can find the latest version of Appwrite in our <a rel="noopener noreferrer" class="web-link is-inline" href="https://github.com/appwrite/appwrite">GitHub repository</a>, and you can follow <a class="web-link is-inline" href="/docs/advanced/self-hosting/">Self Hosting docs</a> to learn how to install Appwrite on your server.'
+            answer: 'Yes! Appwrite Self Hosted will always be Open Source and free for you to use, without any limits. You can find the latest version of Appwrite in our <a rel="noopener noreferrer" class="web-link underline" href="https://github.com/appwrite/appwrite">GitHub repository</a>, and you can follow <a class="web-link underline" href="/docs/advanced/self-hosting/">Self Hosting docs</a> to learn how to install Appwrite on your server.'
         },
         // {
         //     question: 'Does Appwrite have a trial period?',
@@ -17,27 +17,27 @@
         // },
         {
             question: 'What payment methods does Appwrite support?',
-            answer: 'Appwrite currently supports <a class="web-link is-inline" href="/docs/advanced/platform/billing#payment-methods">credit and debit card payments</a>. We are actively working on adding support for more methods. Please <a class="web-link is-inline" href="/contact-us">contact us</a> in case this is an issue for you.'
+            answer: 'Appwrite currently supports <a class="web-link underline" href="/docs/advanced/platform/billing#payment-methods">credit and debit card payments</a>. We are actively working on adding support for more methods. Please <a class="web-link underline" href="/contact-us">contact us</a> in case this is an issue for you.'
         },
         {
             question: 'What happens if I reach a resource limit in my Pro plan?',
-            answer: 'Your project will continue to run, and additional charges will apply. You can find the costs for additional resources in the <a class="web-link is-inline" href="/pricing">pricing plans comparison</a>. We will also send you email reminders when you hit 75% and 100% of your resource limits. To avoid unexpected payments, you can set up a <a class="web-link is-inline" href="/docs/advanced/platform/pro#budget-cap">budget cap</a> on your organization. <a class="web-link is-inline" href="/docs/advanced/platform/pro#reaching-resource-limits">Learn more in our docs</a>.'
+            answer: 'Your project will continue to run, and additional charges will apply. You can find the costs for additional resources in the <a class="web-link underline" href="/pricing">pricing plans comparison</a>. We will also send you email reminders when you hit 75% and 100% of your resource limits. To avoid unexpected payments, you can set up a <a class="web-link underline" href="/docs/advanced/platform/pro#budget-cap">budget cap</a> on your organization. <a class="web-link underline" href="/docs/advanced/platform/pro#reaching-resource-limits">Learn more in our docs</a>.'
         },
         {
             question: 'What happens if I reach a resource limit in my Free plan?',
-            answer: 'Your project will freeze, and Appwrite Console will continue running in read-only mode. You need to upgrade to Pro, remove resources that exceed their limit, or wait for the next billing cycle, which resets usage limits. <a class="web-link is-inline" href="/docs/advanced/platform/pro#reaching-resource-limits">Learn more in our docs</a>.'
+            answer: 'Your project will freeze, and Appwrite Console will continue running in read-only mode. You need to upgrade to Pro, remove resources that exceed their limit, or wait for the next billing cycle, which resets usage limits. <a class="web-link underline" href="/docs/advanced/platform/pro#reaching-resource-limits">Learn more in our docs</a>.'
         },
         {
             question: 'Why does Appwrite ask for payment verification for up to $150?',
-            answer: 'The Reserve Bank of India (RBI) mandates additional security measures for recurring payments on Indian cards. Appwrite is obligated to ask for verification before billing your card. Appwrite asks for verification for up to $150 in case you use add-ons, but will not charge more than the actual amount used or your budget cap. If you need higher limits, <a class="web-link is-inline" href="mailto:billing@appwrite.io">contact us</a>.'
+            answer: 'The Reserve Bank of India (RBI) mandates additional security measures for recurring payments on Indian cards. Appwrite is obligated to ask for verification before billing your card. Appwrite asks for verification for up to $150 in case you use add-ons, but will not charge more than the actual amount used or your budget cap. If you need higher limits, <a class="web-link underline" href="mailto:billing@appwrite.io">contact us</a>.'
         },
         {
             question: 'How can I join the OSS program?',
-            answer: `The OSS program is exclusively for active open-source maintainers using Appwrite Cloud. You can find more information on how to join the program in our <a class="web-link is-inline" href="/blog/post/announcing-the-appwrite-oss-program">announcement blog</a>.`
+            answer: `The OSS program is exclusively for active open-source maintainers using Appwrite Cloud. You can find more information on how to join the program in our <a class="web-link underline" href="/blog/post/announcing-the-appwrite-oss-program">announcement blog</a>.`
         },
         {
             question: 'How can I join the Startups program?',
-            answer: `Are you a founder looking to build with Appwrite? Learn more about our Startups program on our Startups <a class="web-link is-inline" href="/startups">landing page.</a>.`
+            answer: `Are you a founder looking to build with Appwrite? Learn more about our Startups program on our Startups <a class="web-link underline" href="/startups">landing page.</a>.`
         },
         {
             question: 'I have a Free plan account. How do I upgrade to a paid plan?',
@@ -59,7 +59,7 @@
         {
             question:
                 'I work with sensitive data and need to sign a BAA. Does Appwrite provide this?',
-            answer: 'Yes, you can sign a BAA with Appwrite. Learn more about our security and compliance in our <a class="web-link is-inline" href="/docs/advanced/security">documentation</a>.'
+            answer: 'Yes, you can sign a BAA with Appwrite. Learn more about our security and compliance in our <a class="web-link underline" href="/docs/advanced/security">documentation</a>.'
         }
     ];
 
@@ -88,11 +88,11 @@
                             class="flex w-full items-center justify-between gap-2.5 py-6 text-left"
                             use:melt={$trigger(`${index}`)}
                         >
-                            <span class="web-label web-u-color-text-primary">
+                            <span class="text-label font-aeonik-pro text-primary">
                                 {faqItem.question}
                             </span>
                             <div
-                                class="icon web-u-color-text-primary self-start transition-transform"
+                                class="icon text-primary self-start transition-transform"
                                 class:rotate-180={$isSelected(`${index}`)}
                             >
                                 <span class="icon-cheveron-down" aria-hidden="true" />
@@ -106,7 +106,7 @@
                             use:melt={$content(`${index}`)}
                             transition:slide
                         >
-                            <p class="web-main-body-400">
+                            <p class="text-body">
                                 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                                 {@html faqItem.answer}
                             </p>
@@ -115,17 +115,17 @@
                 </div>
             {:else}
                 <details class="collapsible-wrapper" open={index === 0}>
-                    <summary class="collapsible-button">
-                        <span class="web-label web-u-color-text-primary">
+                    <summary class="collapsible-button appearance-none">
+                        <span class="text-label text-primary">
                             {faqItem.question}
                         </span>
-                        <div class="icon web-u-color-text-primary">
+                        <div class="icon text-primary">
                             <span class="icon-cheveron-down" aria-hidden="true" />
                         </div>
                     </summary>
 
                     <div class="collapsible-content">
-                        <p class="web-main-body-400">
+                        <p class="text-body">
                             <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                             {@html faqItem.answer}
                         </p>

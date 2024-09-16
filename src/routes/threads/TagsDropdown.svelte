@@ -21,7 +21,7 @@
             use:melt={menu}
             transition:fly={{ y: 8, duration: 250 }}
         >
-            <ul class="web-sub-body-400">
+            <ul class="text-sub-body">
                 {#each tags as tag}
                     {@const checked = selectedTags?.includes(tag)}
                     <DropdownCheckboxItem let:checkboxItem {checked}>
