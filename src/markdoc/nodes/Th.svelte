@@ -12,7 +12,7 @@
     class="web-table-head-col"
     {align}
 >
-    <span class="web-eyebrow">
+    <span class="text-micro uppercase">
         <slot />
     </span>
 </td>

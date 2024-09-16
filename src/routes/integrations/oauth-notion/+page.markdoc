@@ -7,7 +7,7 @@ featured: false
 isPartner: true
 isNew: true
 cover: /images/integrations/oauth-notion/cover.png
-category: Auth
+category: auth
 product: 
     avatar: '/images/integrations/avatars/notion.png'
     vendor: Notion

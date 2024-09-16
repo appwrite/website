@@ -2,7 +2,7 @@
 
 .#{$p}-input-text {
   @mixin input-light-mode {
-    --p-input-placeholder-text-color: var(--web-color-secondary);
+    --p-input-placeholder-text-color: var(--web-color-tertiary);
     --p-input-focus-box-shadow-color: var(--web-color-black) / 0.10;
 
     --p-input-text-color-default: var(--web-color-primary);

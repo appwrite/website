@@ -19,7 +19,7 @@
             style:padding="0"
         >
             <div style:padding="2rem" style:padding-block-end="0">
-                <h3 class="web-label web-u-color-text-primary">Enum SDK support</h3>
+                <h3 class="text-label text-primary">Enum SDK support</h3>
                 <p style:margin-block-start="0.625rem">
                     A new feature that enhances the experience across all Appwrite client and
                     server-side SDKs.
@@ -38,7 +38,7 @@
             style:padding="0"
         >
             <div style:padding="2rem" style:padding-block-end="0">
-                <h3 class="web-label web-u-color-text-primary">Two-factor authentication</h3>
+                <h3 class="text-label text-primary">Two-factor authentication</h3>
                 <p style:margin-block-start="0.625rem">
                     Add an additional layer of protection to your end users accounts with 2FA.
                 </p>
@@ -58,7 +58,7 @@
             style="padding: 0.5rem; display: flex; justify-content: space-between; "
         >
             <div style="padding: 0.75rem;">
-                <h3 class="web-label web-u-color-text-primary">Event: Safety</h3>
+                <h3 class="text-label text-primary">Event: Safety</h3>
                 <div class="web-card-link u-flex u-cross-center">
                     <span class="text">Join</span>
                     <span class="web-icon-arrow-right" />
@@ -77,9 +77,7 @@
                 style="padding: 0.5rem; display: flex; justify-content: space-between; "
             >
                 <div style="padding: 0.75rem;">
-                    <h3 class="web-label web-u-color-text-primary" style="max-width: 300px">
-                        Release video
-                    </h3>
+                    <h3 class="text-label text-primary" style="max-width: 300px">Release video</h3>
                     <div class="web-card-link u-flex u-cross-center">
                         <span class="text">Watch</span>
                         <span class="web-icon-arrow-right" />
@@ -99,7 +97,7 @@
             class="web-card is-normal has-border-gradient"
             style="padding: 1.25rem"
         >
-            <h3 class="web-label web-u-color-text-primary">Enum Documentation</h3>
+            <h3 class="text-label text-primary">Enum Documentation</h3>
             <div class="web-card-link u-flex u-cross-center">
                 <span class="text">Learn more</span>
                 <span class="web-icon-arrow-right" />
@@ -110,7 +108,7 @@
             class="web-card is-normal has-border-gradient"
             style="padding: 1.25rem"
         >
-            <h3 class="web-label web-u-color-text-primary">2FA Documentation</h3>
+            <h3 class="text-label text-primary">2FA Documentation</h3>
             <div class="web-card-link u-flex u-cross-center">
                 <span class="text">Learn more</span>
                 <span class="web-icon-arrow-right" />

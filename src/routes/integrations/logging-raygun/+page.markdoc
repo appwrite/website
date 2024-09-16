@@ -7,7 +7,7 @@ featured: false
 isPartner: true
 isNew: true
 cover: /images/integrations/logging-raygun/cover.png
-category: Logging
+category: logging
 product: 
     avatar: '/images/integrations/avatars/raygun.png'
     vendor: Raygun

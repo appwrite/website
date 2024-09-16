@@ -5,11 +5,13 @@
 
 <div class="outside">
     <div class="wrapper">
-        <span class="web-badges web-eyebrow !text-white">Products_</span>
+        <span class="web-badges text-micro uppercase !text-white">Products_</span>
 
-        <h2 class="web-display web-u-color-text-primary mt-4">Your backend, minus the hassle</h2>
+        <h2 class="text-display font-aeonik-pro text-primary mt-4">
+            Your backend, minus the hassle
+        </h2>
 
-        <p class="web-description mt-4">
+        <p class="text-description mt-4">
             Build secure and scalable applications with less code. Add authentication, databases,
             storage, and more using Appwrite's development platform.
         </p>
@@ -23,10 +25,10 @@
                     <div class="info">
                         <h3>
                             <img src={info.icon.active} alt="" />
-                            <span class="web-label web-u-color-text-primary">{info.title}</span>
+                            <span class="text-label text-primary">{info.title}</span>
                         </h3>
 
-                        <h4 class="web-title">{info.subtitle}</h4>
+                        <h4 class="text-title font-aeonik-pro">{info.subtitle}</h4>
                         <p>
                             {info.description}
                         </p>
