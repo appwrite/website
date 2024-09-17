@@ -6,7 +6,7 @@ description: Protecting your and your users' data privacy is a priority at Appwr
 
 Appwrite is compliant with the California Consumer Privacy Act (CCPA). The CCPA is a privacy law that gives California residents more control over their personal information, helping ensure their data privacy rights.
 
-To confirm Appwrite's compliance with the CCPA, we have ensured the following rights for our users:
+To confirm Appwrite's compliance with the CCPA, we have ensured the following rights for users:
 
 - **Right to know:** Appwrite users can request information about the personal data that is collected, shared, or sold.
 - **Right to delete:** Users can request that Appwrite delete their personal data, with certain exceptions.
@@ -14,8 +14,6 @@ To confirm Appwrite's compliance with the CCPA, we have ensured the following ri
 - **Right to non-discrimination:** Appwrite does not discriminate against users who exercise their CCPA rights.
 - **Right to correct:** Users can correct inaccurate personal information held by Appwrite.
 - **Right to limit:** Users can limit how Appwrite uses and shares their sensitive personal information.
-
-You can learn more in our [Privacy policy](https://appwrite.io/privacy) and [Cookie policy](https://appwrite.io/cookies). You can also reach us at `privacy@appwrite.io` for more questions.
 
 Some of the measures that Appwrite has taken for compliance include:
 
