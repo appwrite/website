@@ -6,22 +6,21 @@ description: Protecting your and your users' data privacy is a priority at Appwr
 
 Appwrite is compliant with the California Consumer Privacy Act (CCPA). The CCPA is a privacy law that gives California residents more control over their personal information, helping ensure their data privacy rights.
 
-By confirming that Appwrite is CCPA-compliant, we have done the following:
+To confirm Appwrite's compliance with the CCPA, we have ensured the following rights for our users:
 
-- **Right to Know:** Appwrite users can request information about the personal data that is collected, shared, or sold.
-- **Right to Delete:** Users can request that Appwrite delete their personal data, with certain exceptions.
-- **Right to Opt-Out:** Users can opt out of the sale or sharing of their personal data with third parties.
-- **Right to Non-Discrimination:** Appwrite does not discriminate against users who exercise their CCPA rights.
-- **Right to Correct:** Users can correct inaccurate personal information held by Appwrite.
-- **Right to Limit:** Users can limit how Appwrite uses and shares their sensitive personal information.
+- **Right to know:** Appwrite users can request information about the personal data that is collected, shared, or sold.
+- **Right to delete:** Users can request that Appwrite delete their personal data, with certain exceptions.
+- **Right to opt-out:** Users can opt out of the sale or sharing of their personal data with third parties.
+- **Right to non-discrimination:** Appwrite does not discriminate against users who exercise their CCPA rights.
+- **Right to correct:** Users can correct inaccurate personal information held by Appwrite.
+- **Right to limit:** Users can limit how Appwrite uses and shares their sensitive personal information.
 
-The CCPA applies to businesses that meet specific criteria, such as having annual gross revenues of over $25 million or handling the personal information of 50,000 or more consumers.
+You can learn more in our [Privacy policy](https://appwrite.io/privacy) and [Cookie policy](https://appwrite.io/cookies). You can also reach us at `privacy@appwrite.io` for more questions.
 
-You can learn more in our [Privacy Policy](https://appwrite.io/privacy) and [Cookie Policy](https://appwrite.io/cookies). You can also reach us at `privacy@appwrite.io` for more questions.
+Some of the measures that Appwrite has taken for compliance include:
 
-Appwrite has implemented the following security measures to achieve technical compliance:
-
-- **Multi-layered Security Approach:** Appwrite employs centralized IAM (Identity and Access Management) to control access to production resources.
-- **Cloud Security Processes:** These are applied for provisioning, configuring, monitoring, and accessing cloud resources. Production environment changes are managed through Infrastructure as Code (IaC).
-- **Encryption Protocols:** Industry-standard encryption protocols like TLS/SSL safeguard data transmission over networks. Data stored in databases and file storage is encrypted using AES encryption. Regular key rotations are performed to maintain data security.
-- **Security Audits and Vulnerability Scans:** Appwrite conducts regular security audits and vulnerability scans at both the application and infrastructure levels to ensure compliance with the latest security standards.
+- CCPA references in the DPA for both customers and vendors.
+- A detailed summary of data subject rights under CCPA, with a commitment to assist customers in compliance.
+- Employee training on handling privacy-related inquiries and Appwrite's adherence to CCPA requirements.
+- Updates to Appwrite's data retention and deletion policies.
+- Revisions to the data breach and incident response policies.
