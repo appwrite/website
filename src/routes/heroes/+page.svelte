@@ -79,6 +79,33 @@
             twitter: 'https://twitter.com/devnishant10',
             linkedin: 'https://www.linkedin.com/in/nishantj2002/',
             avatar: 'images/heroes/avatars/nishant.png'
+        },
+        {
+            name: 'Vincent Ge',
+            role: 'DevRel Engineer',
+            bio: 'Vincent Ge is a DevRel Engineer who has actively been supporting open-source developers and communities for the last few years. He is a former member of the Appwrite DevRel team and a forever beloved part of our community.',
+            github: 'https://github.com/gewenyu99/',
+            twitter: 'https://x.com/WenYuGe1',
+            linkedin: 'https://www.linkedin.com/in/wen-yu-ge/',
+            avatar: 'images/heroes/avatars/vincent.png'
+        },
+        {
+            name: 'Taylor Desseyn',
+            role: 'Recruiter Advocate',
+            bio: 'Taylor Desseyn is a skilled people connector and has helped 600+ individuals find their perfect career fit in tech. His knack for creating community shines through his use of social media and content creation',
+            github: 'https://github.com/tdesseyn',
+            twitter: 'https://x.com/tdesseyn',
+            linkedin: 'https://www.linkedin.com/in/taylordesseyn/',
+            avatar: 'images/heroes/avatars/taylor.png'
+        },
+        {
+            name: 'Demola Malomo',
+            role: 'Software Engineer & Technical Writer',
+            bio: 'Demola Malomo is a software engineer and technical writer from Lagos, Nigeria. He primarily code in JavaScript and TypeScript and has been learning Rust and Go.',
+            github: 'https://github.com/Mr-Malomz',
+            twitter: 'https://x.com/malomz',
+            linkedin: 'https://www.linkedin.com/in/malomoademola/',
+            avatar: 'images/heroes/avatars/demola.png'
         }
     ];
 
@@ -113,8 +140,8 @@
             <div class="web-big-padding-section-level-2">
                 <section class="container hero web-u-padding-block-end-0">
                     <div>
-                        <h1 class="web-display web-u-color-text-primary">Appwrite Heroes</h1>
-                        <p class="web-main-body-500 mt-5">
+                        <h1 class="text-display font-aeonik-pro text-primary">Appwrite Heroes</h1>
+                        <p class="text-body mt-5 font-medium">
                             If you love building, writing, speaking, and helping other developers
                             build with Appwrite, help us support you by joining the Appwrite Heroes
                             program and becoming a leader in our developer community.
@@ -138,9 +165,11 @@
             <div class="web-big-padding-section-level-2">
                 <section class="container">
                     <div class="web-hero web-u-max-width-800 about">
-                        <h2 class="web-title web-u-color-text-primary">About Appwrite Heroes</h2>
+                        <h2 class="text-title font-aeonik-pro text-primary">
+                            About Appwrite Heroes
+                        </h2>
                         <div>
-                            <p class="web-sub-body-500">
+                            <p class="text-sub-body font-medium">
                                 The Appwrite Heroes program is an exclusive group of developers who
                                 are experts in Appwrite and dedicated to creating valuable content
                                 to assist other developers in achieving success. Appwrite Heroes
@@ -167,7 +196,9 @@
             <div class="web-big-padding-section-level-2">
                 <div class="container">
                     <div class="web-hero">
-                        <div class="web-display web-u-clr-primary">Meet our Heroes</div>
+                        <div class="text-display font-aeonik-pro web-u-clr-primary">
+                            Meet our Heroes
+                        </div>
                     </div>
                     <ul class="web-multi-columns-1 mt-20">
                         {#each heroCards as heroCardProps}
@@ -187,7 +218,7 @@
                                     style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
                                 >
                                     <img
-                                        class="blockweb-u-border-radius-12"
+                                        class="rounded-xl"
                                         src="/images/heroes/photos/{i + 1}.png"
                                         loading="lazy"
                                         alt=""
@@ -201,12 +232,12 @@
             <div class="web-big-padding-section-level-2">
                 <div class="container">
                     <section class="web-hero is-align-start">
-                        <h2 class="web-display web-u-color-text-primary max-w-[700px]">
+                        <h2 class="text-display font-aeonik-pro text-primary max-w-[700px]">
                             How Appwrite Heroes can benefit you
                         </h2>
                     </section>
                     <div class="mt-20 overflow-hidden">
-                        <ul class="web-info-boxes web-sub-body-500">
+                        <ul class="web-info-boxes text-sub-body font-medium">
                             <li class="web-info-boxes-item">
                                 <img
                                     src="/images/icons/gradients/discussion.svg"
@@ -297,10 +328,10 @@
             <div class="web-big-padding-section-level-2 relative">
                 <div class="container">
                     <div class="web-hero web-u-max-width-800">
-                        <h5 class="web-display web-u-color-text-primary">Become a Hero</h5>
-                        <p class="web-description web-u-color-text-primary" style="opacity:0.64">
+                        <h5 class="text-display font-aeonik-pro text-primary">Become a Hero</h5>
+                        <p class="text-description text-primary" style="opacity:0.64">
                             Have you been actively providing value for the Appwrite community? Apply
-                            now to join our hero program! Applications are open every three months.
+                            now to join our hero program! Applications open every three months.
                         </p>
                         <a
                             href="https://7nxwryuitoy.typeform.com/heroes-apply"
@@ -474,7 +505,7 @@
         .web-hero {
             gap: 0;
 
-            .web-description {
+            .text-description {
                 margin-block-start: 1.25rem;
             }
 

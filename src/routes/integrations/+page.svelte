@@ -79,7 +79,7 @@
 <!-- binding for fuse -->
 <Fuse list={data.list} options={fuseOptions} bind:query={$query} bind:result />
 <Main>
-    <header class="web-u-sep-block-end relative overflow-hidden pb-0">
+    <header class="web-u-sep-block-end web-u-padding-block-end-0 relative overflow-hidden pb-0">
         <div class="container hero web-u-padding-block-end-0 relative">
             <img
                 src="/images/pages/integration/integration-bg-top-1.png"
@@ -106,13 +106,13 @@
                 <div
                     class="l-integrations-hero web-u-max-width-680 flex flex-col justify-center gap-5"
                 >
-                    <div class="web-eyebrow web-u-color-text-primary">
+                    <div class="text-micro text-primary uppercase">
                         INTEGRATIONS<span class="web-u-color-text-accent">_</span>
                     </div>
-                    <h1 class="web-headline web-u-color-text-primary">
+                    <h1 class="text-headline font-aeonik-pro text-primary">
                         Discover infinite possibilities
                     </h1>
-                    <p class="web-description">
+                    <p class="text-description">
                         Unlock the full potential of Appwrite by seamlessly integrating your
                         favorite apps with your projects.
                     </p>
@@ -129,7 +129,7 @@
         <div>
             <div class="container">
                 <div class="l-integrations-grid">
-                    <aside class="sidebar flex flex-col gap-8">
+                    <aside class="sidebar flex flex-col gap-8" id="integrations-side">
                         <section>
                             <Input
                                 label="Search"
@@ -144,7 +144,9 @@
                         </section>
                         <section class="flex flex-col">
                             <section class="flex flex-col gap-4">
-                                <h2 class="web-side-nav-header web-eyebrow whitespace-nowrap">
+                                <h2
+                                    class="web-side-nav-header text-micro whitespace-nowrap uppercase"
+                                >
                                     Platform
                                 </h2>
                                 <ul class="flex flex-wrap gap-2" class:disabled={hasQuery}>
@@ -168,7 +170,9 @@
                             </section>
                             <div class="web-u-sep-block-start my-6"></div>
                             <section class="flex flex-col gap-4">
-                                <h2 class="web-side-nav-header web-eyebrow whitespace-nowrap">
+                                <h2
+                                    class="web-side-nav-header text-micro whitespace-nowrap uppercase"
+                                >
                                     Categories
                                 </h2>
 
@@ -181,11 +185,11 @@
                                     >
                                         {#each data.categories as category}
                                             {@const integrations = data.integrations.find(
-                                                (i) => i.category === category
+                                                (i) => i.category === category.slug
                                             )}
                                             {#if integrations && (activePlatform === 'All' || integrations.integrations.some( (i) => i.platform.includes(activePlatform) ))}
-                                                <option value={category.toLowerCase()}>
-                                                    {category}
+                                                <option value={category.slug}>
+                                                    {category.heading}
                                                 </option>
                                             {/if}
                                         {/each}
@@ -200,18 +204,17 @@
                                 <ul class="hidden flex-col gap-4 sm:flex" class:disabled={hasQuery}>
                                     {#each data.categories as category}
                                         {@const integrations = data.integrations.find(
-                                            (i) => i.category === category
+                                            (i) => i.category === category.slug
                                         )}
                                         {#if integrations && (activePlatform === 'All' || integrations.integrations.some( (i) => i.platform.includes(activePlatform) ))}
                                             <li>
                                                 <a
-                                                    href={`#${category.toLowerCase()}`}
+                                                    href={`#${category.slug}`}
                                                     class="web-link"
-                                                    class:is-pink={category.toLowerCase() ===
-                                                        activeCategory}
+                                                    class:is-pink={category.slug === activeCategory}
                                                     on:click={() =>
-                                                        activeCategory === category.toLowerCase()}
-                                                    >{category}</a
+                                                        activeCategory === category.slug}
+                                                    >{category.heading}</a
                                                 >
                                             </li>
                                         {/if}
@@ -226,10 +229,8 @@
                             {#if hasQuery}
                                 <section class="l-max-size-list-cards-section flex flex-col gap-8">
                                     <header class="flex flex-col gap-1">
-                                        <h2 class="web-label web-u-color-text-primary">
-                                            Search results
-                                        </h2>
-                                        <p class="web-description">
+                                        <h2 class="text-label text-primary">Search results</h2>
+                                        <p class="text-description">
                                             {result.length > 0 ? result.length : 'No'} results found
                                             for "{$query}"
                                         </p>
@@ -244,7 +245,7 @@
                                                         style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                                                     >
                                                         <div
-                                                            class="flex items-center justify-between"
+                                                            class="mb-3 flex items-center justify-between"
                                                         >
                                                             <img
                                                                 class="web-user-box-image is-32px"
@@ -253,21 +254,17 @@
                                                                 width="32"
                                                                 height="32"
                                                             />
+
                                                             <span
                                                                 class="icon-arrow-right ml-auto"
                                                                 aria-hidden="true"
-                                                            ></span>
+                                                            />
                                                         </div>
-                                                        <div
-                                                            class="flex items-center justify-between gap-2"
-                                                        >
-                                                            <h4
-                                                                class="web-u-color-text-primary mt-3"
-                                                            >
-                                                                {item.title}
-                                                            </h4>
-                                                        </div>
-                                                        <p class="web-sub-body-400 mt-1">
+
+                                                        <h4 class="text-primary">
+                                                            {item.title}
+                                                        </h4>
+                                                        <p class="text-sub-body mt-1">
                                                             {item.description}
                                                         </p>
                                                     </a>
@@ -279,8 +276,8 @@
                             {:else}
                                 <section class="flex flex-col gap-8">
                                     <header class="flex flex-col gap-1">
-                                        <h2 class="web-label web-u-color-text-primary">Featured</h2>
-                                        <p class="web-description">Top recommended integrations</p>
+                                        <h2 class="text-label text-primary">Featured</h2>
+                                        <p class="text-description">Top recommended integrations</p>
                                     </header>
 
                                     <div>
@@ -291,11 +288,11 @@
                                                 >
                                                     <a
                                                         class="block overflow-hidden rounded-2xl before:absolute before:inset-x-0 before:bottom-0 before:block before:h-80 before:rounded-[inherit] before:bg-gradient-to-b before:from-transparent before:via-transparent before:to-black"
-                                                        href={item.href}
+                                                        href={item.integration.href}
                                                     >
                                                         <img
-                                                            src={item.cover}
-                                                            alt={item.title}
+                                                            src={item.integration.cover}
+                                                            alt={item.integration.title}
                                                             class="web-u-media-cover block aspect-video"
                                                         />
                                                         <div
@@ -303,20 +300,23 @@
                                                         >
                                                             <img
                                                                 class="row-span-2 block size-12 rounded-full"
-                                                                src={item.product.avatar}
-                                                                alt={`Avatar for ${item.product.vendor}`}
+                                                                src={item.integration.product
+                                                                    .avatar}
+                                                                alt={`Avatar for ${item.integration.product.vendor}`}
                                                                 width="40"
                                                                 height="40"
                                                             />
-                                                            <div class="web-main-body-500 gap-2">
+                                                            <div
+                                                                class="text-body gap-2 font-medium"
+                                                            >
                                                                 <span class="text-primary mt-3">
-                                                                    {item.title}
+                                                                    {item.integration.title}
                                                                 </span>
                                                             </div>
                                                             <div
-                                                                class="web-caption-400 web-u-color-text-secondary"
+                                                                class="text-caption web-u-color-text-secondary"
                                                             >
-                                                                {item.category}
+                                                                {item.heading}
                                                             </div>
                                                         </div>
                                                     </a>
@@ -326,7 +326,7 @@
                                     </div>
                                 </section>
 
-                                {#each data.integrations as { category, description, integrations }}
+                                {#each data.integrations as { category, heading, description, integrations }}
                                     {#if integrations?.length > 0 && (activePlatform === 'All' || integrations.some( (i) => i.platform.includes(activePlatform) ))}
                                         <section
                                             class="l-max-size-list-cards-section flex flex-col gap-8"
@@ -343,10 +343,10 @@
                                             }}
                                         >
                                             <header class="flex flex-col gap-1">
-                                                <h2 class="web-label web-u-color-text-primary">
-                                                    {category}
+                                                <h2 class="text-label text-primary">
+                                                    {heading}
                                                 </h2>
-                                                <p class="web-description">
+                                                <p class="text-description">
                                                     {description}
                                                 </p>
                                             </header>
@@ -361,7 +361,7 @@
                                                                     style="--card-padding:1.5rem; --card-padding-mobile:1.5rem; --card-border-radius: 1.5rem"
                                                                 >
                                                                     <div
-                                                                        class="flex items-center justify-between gap-2"
+                                                                        class="mb-3 flex items-center justify-between"
                                                                     >
                                                                         <img
                                                                             class="web-user-box-image is-32px"
@@ -375,17 +375,14 @@
                                                                         <span
                                                                             class="icon-arrow-right ml-auto"
                                                                             aria-hidden="true"
-                                                                        ></span>
+                                                                        />
                                                                     </div>
 
-                                                                    <h4
-                                                                        class="web-u-color-text-primary mt-3"
-                                                                    >
+                                                                    <h4 class="text-primary">
                                                                         {integration.title}
                                                                     </h4>
-                                                                    <p
-                                                                        class="web-sub-body-400 mt-1"
-                                                                    >
+
+                                                                    <p class="text-sub-body mt-1">
                                                                         {integration.description}
                                                                     </p>
                                                                 </a>
@@ -426,11 +423,11 @@
                         class="web-hero web-u-max-width-580 flex items-center justify-center gap-4"
                     >
                         <h2
-                            class="web-display web-u-text-align-center web-u-color-text-primary max-w-[600px]"
+                            class="text-display font-aeonik-pro text-primary max-w-[600px] text-center"
                         >
                             Become a Technology Partner
                         </h2>
-                        <p class="web-main-body-500">
+                        <p class="text-body font-medium">
                             Join our Technology Partners program to integrate your solutions with
                             Appwrite’s API, enhancing functionality and expanding your reach.
                         </p>
@@ -604,6 +601,11 @@
                 position: sticky;
                 top: 50px;
                 height: 500px;
+                transition: top 0.3s ease;
+
+                &.menu-visible {
+                    top: 122px;
+                }
             }
 
             .tag {
