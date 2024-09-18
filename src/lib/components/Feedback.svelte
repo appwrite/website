@@ -53,7 +53,7 @@
             style="flex-wrap: wrap-reverse;"
         >
             <div class="flex items-center gap-4">
-                <h5 class="web-main-body-600 web-u-color-text-primary">Was this page helpful?</h5>
+                <h5 class="text-body text-primary font-semibold">Was this page helpful?</h5>
                 <div class="flex gap-2">
                     <button
                         class="web-radio-button"
@@ -79,13 +79,13 @@
                 </div>
             </div>
             <div class="web-content-footer-header-end">
-                <ul class="web-metadata web-caption-400">
+                <ul class="web-metadata text-caption">
                     {#if date}
                         <li>Last updated on {new Date(date)?.toLocaleDateString()}</li>
                     {/if}
                     <li>
                         <a
-                            href="https://github.com/appwrite/website"
+                            href={`https://github.com/appwrite/website/tree/main/src/routes${$page.route.id}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="web-link flex items-baseline gap-1"
@@ -106,7 +106,7 @@
         >
             <div class="flex flex-col gap-2">
                 <label for="message">
-                    <span class="web-u-color-text-primary">
+                    <span class="text-primary">
                         What did you {feedbackType === 'negative' ? 'dislike' : 'like'}? (optional)
                     </span>
                 </label>
@@ -117,7 +117,7 @@
                     bind:value={comment}
                 />
                 <label for="message" class="mt-2">
-                    <span class="web-u-color-text-primary">Email</span>
+                    <span class="text-primary">Email</span>
                 </label>
                 <input
                     class="web-input-text"
@@ -129,12 +129,12 @@
                 />
             </div>
             {#if submitted}
-                <p class="web-u-color-text-primary mt-4">
+                <p class="text-primary mt-4">
                     Your message has been sent successfully. We appreciate your feedback.
                 </p>
             {/if}
             {#if error}
-                <p class="web-u-color-text-primary mt-4">
+                <p class="text-primary mt-4">
                     There was an error submitting your feedback. Please try again later.
                 </p>
             {/if}

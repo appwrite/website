@@ -7,7 +7,7 @@ featured: false
 isPartner: true
 isNew: true
 cover: /images/integrations/query-mongodb/cover.png
-category: Databases
+category: databases
 product: 
     avatar: '/images/integrations/avatars/mongodb.png'
     vendor: MongoDB
