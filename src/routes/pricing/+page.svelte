@@ -136,7 +136,7 @@
                                                 their products.
                                             </p>
                                             <a
-                                                href="https://cloud.appwrite.io/console?type=createPro"
+                                                href="{PUBLIC_APPWRITE_DASHBOARD}/console?type=createPro"
                                                 class="web-button is-full-width mt-8"
                                                 target="_blank"
                                                 rel="noopener noreferrer"

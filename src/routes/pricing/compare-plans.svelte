@@ -8,6 +8,7 @@
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
     import { Tooltip } from '$lib/components';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     type Table = {
         title: string;
@@ -479,7 +480,7 @@
                             <div class="flex items-center justify-between gap-8">
                                 <h4 class="text-label text-primary">Free</h4>
                                 <a
-                                    href="https://cloud.appwrite.io/register"
+                                    href="{PUBLIC_APPWRITE_DASHBOARD}/register"
                                     class="web-button is-secondary"
                                 >
                                     <span class="text-sub-body font-medium">Start building</span>
@@ -491,7 +492,7 @@
                                 <h4 class="text-label text-primary">Pro</h4>
                                 <a
                                     class="web-button"
-                                    href="https://cloud.appwrite.io/console?type=createPro"
+                                    href="{PUBLIC_APPWRITE_DASHBOARD}/console?type=createPro"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -504,7 +505,7 @@
                                 <h4 class="text-label text-primary">Scale</h4>
                                 <a
                                     class="web-button is-secondary"
-                                    href="https://cloud.appwrite.io/console?type=createScale"
+                                    href="{PUBLIC_APPWRITE_DASHBOARD}/console?type=createScale"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
