@@ -298,7 +298,7 @@
                             <span
                                 class="web-icon-search z-[5]"
                                 aria-hidden="true"
-                                style="inset-block-start:0.9rem"
+                                style="inset-block-start:0.65rem"
                             />
                             <input
                                 class="web-input-button w-full relative z-1"
@@ -318,7 +318,7 @@
                             <span
                                 class="web-icon-search z-[5]"
                                 aria-hidden="true"
-                                style="inset-block-start: 0.9rem;"
+                                style="inset-block-start: 0.65rem;"
                             />
                             <input
                                 class="web-input-button w-full relative z-1"
@@ -540,19 +540,31 @@
         }
     }
 
-    .categories {
-        max-width: calc(0.5 * 100vw);
+    .categories-wrapper {
+        flex-grow: 1;
+        max-width: 50%;
     }
 
-    @media (min-width: 1024px) and (max-width: 1280px) {
-        .categories {
-            max-width: calc(0.6 * 100vw);
+    .search-and-categories > .mobile-search-bar,
+    .search-and-categories > .web-input-text-search-wrapper {
+        flex-grow: 1;
+    }
+
+    .web-input-button {
+        max-height: 40px;
+    }
+
+    @media (min-width: 1024px) {
+        .categories-wrapper {
+            flex-grow: 1;
+            max-width: 60%;
         }
     }
 
-    @media (min-width: 1280px) and (max-width: 1359px) {
-        .categories {
-            max-width: calc(0.6 * 100vw);
+    @media (min-width: 1080px) {
+        .categories-wrapper {
+            flex-grow: 1;
+            max-width: 62.5%;
         }
     }
 
@@ -564,7 +576,7 @@
             flex-direction: column-reverse !important;
         }
 
-        .categories {
+        .categories-wrapper {
             max-width: 90vw;
         }
 
