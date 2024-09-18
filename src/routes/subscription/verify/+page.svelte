@@ -5,7 +5,7 @@
 	import { onMount } from 'svelte';
 	import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
 
-	let error: string | undefined;
+  let error: string | undefined;
 
 	onMount(async () => {
 		const email = $page.url.searchParams.get('email');
@@ -28,37 +28,37 @@
 </script>
 
 <Main>
-	<div class="web-big-padding-section">
-		<div class="web-big-padding-section-level-2">
-			<div class="web-container">
-				<div class="web-hero" style="--hero-gap:1.25rem;">
-					<span class="web-badges web-eyebrow">verification</span>
-					<h1 class="web-headline web-u-color-text-primary">
-						{#if error}
-							Error
-						{:else}
-							Success
-						{/if}
-					</h1>
+    <div class="web-big-padding-section">
+        <div class="web-big-padding-section-level-2">
+            <div class="container">
+                <div class="web-hero" style="--hero-gap:1.25rem;">
+                    <span class="web-badges text-micro uppercase text-white">verification</span>
+                    <h1 class="text-headline font-aeonik-pro text-primary">
+                        {#if error}
+                            Error
+                        {:else}
+                            Success
+                        {/if}
+                    </h1>
 
-					<p class="web-description">
-						{#if error}
-							Something went wrong, please try again later.
-						{:else}
-							Your email has been verified successfully.
-						{/if}
-					</p>
-					<a href="/" class="web-button is-secondary u-cross-child-center u-margin-block-start-12">
-						<span>Back to homepage</span>
-					</a>
-				</div>
-			</div>
-		</div>
-		<div class="web-big-padding-section-level-2 u-position-relative">
-			<div class="web-container">
-				<FooterNav />
-				<MainFooter />
-			</div>
-		</div>
-	</div>
+                    <p class="text-description">
+                        {#if error}
+                            Something went wrong, please try again later.
+                        {:else}
+                            Your email has been verified successfully.
+                        {/if}
+                    </p>
+                    <a href="/" class="web-button is-secondary mt-3 self-center">
+                        <span>Back to homepage</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="web-big-padding-section-level-2 relative">
+            <div class="container">
+                <FooterNav />
+                <MainFooter />
+            </div>
+        </div>
+    </div>
 </Main>

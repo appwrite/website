@@ -8,8 +8,8 @@
 </script>
 
 {#if variant === 'homepage'}
-    <footer class="web-main-footer u-position-relative u-margin-block-start-48">
-        <ul class="u-flex u-gap-8">
+    <footer class="web-main-footer relative mt-12">
+        <ul class="flex gap-2">
             {#each socials as social}
                 <li>
                     <a
@@ -28,18 +28,17 @@
             <div>Copyright © {year} Appwrite</div>
 
             <iframe
-                class="status"
+                class="status w-fit max-w-[230px]"
                 title="Appwrite Status"
                 src="https://status.appwrite.online/badge?theme=dark"
-                width="190"
-                height="30"
+                height="35"
                 frameborder="0"
                 scrolling="no"
                 style:color-scheme="none"
                 style:margin-top="-4px"
             />
 
-            <ul class="u-flex u-gap-16">
+            <ul class="flex gap-4">
                 <li><a class="web-link" href="/terms">Terms</a></li>
                 <li><a class="web-link" href="/privacy">Privacy</a></li>
                 <li><a class="web-link" href="/cookies">Cookies</a></li>
@@ -47,11 +46,9 @@
         </div>
     </footer>
 {:else if variant === 'docs'}
-    <footer
-        class="web-main-footer is-with-bg-color u-margin-block-start-32 u-small u-position-relative"
-    >
+    <footer class="web-main-footer is-with-bg-color relative mt-8 text-sm">
         <div class="web-main-footer-grid-1">
-            <ul class="web-main-footer-grid-1-column-1 u-flex u-gap-8">
+            <ul class="web-main-footer-grid-1-column-1 flex gap-2">
                 {#each socials as social}
                     <li>
                         <a
@@ -69,7 +66,7 @@
             <div class="web-main-footer-grid-1-column-2">
                 <ThemeSelect />
             </div>
-            <ul class="web-main-footer-grid-1-column-3 u-cross-center web-main-footer-links">
+            <ul class="web-main-footer-grid-1-column-3 web-main-footer-links items-start">
                 <li>
                     <a href="/discord" target="_blank" rel="noopener noreferrer">Support</a>
                 </li>

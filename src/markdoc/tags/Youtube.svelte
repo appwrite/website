@@ -6,9 +6,5 @@
 </script>
 
 <div class="web-media">
-    <Video
-        {thumbnail}
-        src={src}
-        --p-aspect-ratio="16/9"
-    />
+    <Video {thumbnail} {src} --p-aspect-ratio="16/9" />
 </div>

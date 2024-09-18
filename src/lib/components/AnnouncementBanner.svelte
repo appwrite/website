@@ -9,7 +9,7 @@
 </script>
 
 <div class="web-top-banner">
-    <div class="web-top-banner-content web-u-color-text-primary">
+    <div class="web-top-banner-content text-primary">
         <slot />
         {#if browser}
             <button

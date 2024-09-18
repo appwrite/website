@@ -202,7 +202,7 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2") // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 let account = Account(client)
 
@@ -221,7 +221,7 @@ import io.appwrite.services.Account
 
 val client = Client(context)
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2") // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 val account = Account(client)
 
@@ -273,7 +273,7 @@ import 'package:appwrite/appwrite.dart';
 
 final client = Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2');                // Your project ID
+    .setProject('<PROJECT_ID>');                // Your project ID
 
 Account account = Account(client);
 
@@ -286,7 +286,7 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2") // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 let account = Account(client)
 
@@ -300,7 +300,7 @@ import io.appwrite.services.Account
 
 val client = Client(context)
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                 // Your project ID
+    .setProject("<PROJECT_ID>")                 // Your project ID
 
 val account = Account(client)
 

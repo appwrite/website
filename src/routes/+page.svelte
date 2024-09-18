@@ -12,10 +12,52 @@
     import DeveloperCard from './DeveloperCard.svelte';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import CoverImage from './dashboard.png';
+    import Button from '$lib/components/ui/Button.svelte';
+    import Hero from '$lib/components/ui/Hero.svelte';
+    import GradientText from '$lib/components/ui/GradientText.svelte';
+    import Badge from '$lib/components/ui/Badge.svelte';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
     const ogImage = `${DEFAULT_HOST}/images/open-graph/website.png`;
+
+    const infoBoxes: Array<{ label: string; description: string; icon: string }> = [
+        {
+            label: 'Self-Hosted',
+            description: 'Own your data or host it on a cloud region of choice.',
+            icon: '/images/icons/gradients/self-hosted.svg'
+        },
+        {
+            label: 'Encryption',
+            description: 'Built-in data encryption both in rest and in transit.',
+            icon: '/images/icons/gradients/lock.svg'
+        },
+        {
+            label: 'Abuse protection',
+            description: 'Protect your APIs from abuse with built-in protection.',
+            icon: '/images/icons/gradients/shield.svg'
+        },
+        {
+            label: 'Data migrations',
+            description: 'Easily transfer data from 3rd parties or between Cloud and self-hosted.',
+            icon: '/images/icons/gradients/database.svg'
+        },
+        {
+            label: 'GDPR',
+            description: 'Safeguard user data and privacy with provided GDPR regulations.',
+            icon: '/images/icons/gradients/star.svg'
+        },
+        {
+            label: 'SOC-2',
+            description: 'Ensure the highest level of security and privacy protection.',
+            icon: '/images/icons/gradients/soc-2.svg'
+        },
+        {
+            label: 'HIPAA',
+            description: 'Protect sensitive user health data.',
+            icon: '/images/icons/gradients/hipaa.svg'
+        }
+    ];
 </script>
 
 <svelte:head>
@@ -44,7 +86,7 @@
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
     <div
-        class="u-position-absolute"
+        class="absolute"
         style="top: -800px; left: 50%; translate: -50%; pointer-events:none; z-index: 10"
     >
         <enhanced:img
@@ -57,7 +99,7 @@
 </div>
 
 <div
-    class="u-position-absolute web-is-only-desktop"
+    class="web-is-only-desktop absolute"
     style="top: 22rem; left: 54%; translate: calc(-50% - 900px); width: 75.9375rem;"
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
@@ -65,63 +107,59 @@
 </div>
 
 <div
-    class="u-position-absolute web-is-only-desktop"
-    style="top: 42rem; left: 49%; translate: calc(-50% + 800px); width: 60rem;"
+    class="web-is-only-desktop absolute"
+    style="top: 42rem; width: calc(50% - 5rem); right: 0;"
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
-    <img src="/images/bgs/hero-lines-2.png" alt="" />
+    <div style="left: 0;">
+        <img src="/images/bgs/hero-lines-2.png" alt="" />
+    </div>
 </div>
 
 <Main>
     <div class="web-big-padding-section">
-        <div class="web-big-padding-section-level-1">
-            <div class="web-big-padding-section-level-2">
-                <section class="web-container web-u-padding-block-end-0">
+        <div class="pb-10">
+            <div class="my-12 lg:my-[7.5rem]">
+                <section class="container pb-0">
                     <a
                         href="/blog/post/announcing-init-faster-smoother-better"
-                        class="web-hero-banner-button web-u-margin-block-end-24"
+                        class="web-hero-banner-button mb-4"
                     >
-                        <span class="web-icon-star" aria-hidden="true" />
-                        <span class="web-caption-500">New</span>
+                        <span class="web-icon-star shrink-0" aria-hidden="true" />
+                        <span class="text-caption font-medium shrink-0">New</span>
                         <div class="web-hero-banner-button-sep" />
-                        <span class="web-caption-400 web-u-trim-1"
+                        <span class="text-caption web-u-trim-1"
                             >Announcing: A new Init. Faster. Smoother. Better.</span
                         >
-                        <span class="web-icon-arrow-right" aria-hidden="true" />
+                        <span class="web-icon-arrow-right shrink-0" aria-hidden="true" />
                     </a>
-                    <div class="web-hero is-horizontal">
-                        <h1 class="web-headline">
-                            <span class="web-gradient-text">
-                                Build like a team of hundreds<span class="web-u-color-text-accent"
-                                    >_</span
-                                >
-                            </span>
-                        </h1>
-                        <div class="u-cross-child-end">
-                            <p class="web-description">
-                                Build your entire backend within minutes and scale effortlessly
-                                using Appwrite's open-source platform. Add Authentication,
-                                Databases, Functions, Storage, and Messaging to your projects using
-                                the frameworks and languages of your choice.
-                            </p>
-                            <a
-                                href={PUBLIC_APPWRITE_DASHBOARD}
-                                class="web-button is-full-width-mobile u-margin-block-start-32"
-                            >
-                                <span class="text">Get started</span>
-                            </a>
-                        </div>
-                    </div>
+                    <Hero>
+                        <GradientText slot="title"
+                            >Build like a team of hundreds<span class="text-accent">_</span
+                            ></GradientText
+                        >
+
+                        <svelte:fragment slot="description">
+                            Build your entire backend within minutes and scale effortlessly using
+                            Appwrite's open-source platform. Add Authentication, Databases,
+                            Functions, Storage, and Messaging to your projects using the frameworks
+                            and languages of your choice.
+                        </svelte:fragment>
+                        <a
+                            href={PUBLIC_APPWRITE_DASHBOARD}
+                            class="web-button mt-8 w-full lg:w-fit"
+                            slot="cta"
+                        >
+                            Get started
+                        </a>
+                    </Hero>
                 </section>
             </div>
-            <div class="web-big-padding-section-level-2">
-                <section
-                    class="web-container web-u-padding-block-0"
-                    style="--container-size:78.75rem"
-                >
+            <div class="mb-12 lg:my-[7.5rem]">
+                <section class="container web-u-padding-block-0" style="--container-size:78.75rem">
                     <div class="web-media-container">
                         <img
-                            class="u-block"
+                            class="block"
                             src={CoverImage}
                             alt="console dashboard"
                             style:aspect-ratio="1244 / 717"
@@ -129,10 +167,10 @@
                     </div>
                 </section>
             </div>
-            <div class="web-big-padding-section-level-2">
-                <div class="web-container">
+            <div class="mb-12 lg:my-[7.5rem]">
+                <div class="container">
                     <h2
-                        class="web-title web-u-color-text-primary web-u-text-align-center web-u-max-width-600 u-margin-inline-auto"
+                        class="text-title font-aeonik-pro text-primary web-u-max-width-600 mx-auto text-center"
                     >
                         Trusted by developers from the world's leading organizations
                     </h2>
@@ -241,136 +279,58 @@
         <Products />
         <ProductsMobile />
 
-        <div
-            class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light"
-        >
-            <div
-                class="u-position-absolute u-inset-block-end-0 u-inset-inline-start u-width-full-line"
-            >
+        <div class="web-white-section light relative py-10">
+            <div class="absolute bottom-0 w-full">
                 <img
-                    class="u-block u-width-full-line"
+                    class="block w-full"
                     src="/images/bgs/padding-section-1.svg"
                     alt=""
                     style:max-height="48rem"
                 />
             </div>
 
-            <div class="web-big-padding-section-level-2">
-                <div class="web-container">
+            <div class="my-[7.5rem]">
+                <div class="container">
                     <section class="web-hero is-align-start">
-                        <span class="web-badges web-eyebrow">PRIVACY & SECURITY_</span>
-                        <h2 class="web-display web-u-color-text-primary u-max-width-700">
+                        <Badge>PRIVACY & SECURITY_</Badge>
+                        <h2 class="text-display font-aeonik-pro text-primary max-w-[700px]">
                             Self-host your data or take it to the Cloud
                         </h2>
-                        <p class="web-description u-max-width-700">
+                        <p class="text-secondary mt-5 max-w-[700px] text-xl font-medium">
                             Migrate your data from and to any platform at any time with Appwrite
                             Migrations. With built-in security and privacy for peace of mind.
                         </p>
                     </section>
-                    <div class="u-overflow-hidden web-u-margin-block-start-80">
-                        <ul class="web-info-boxes web-sub-body-500">
-                            <li class="web-info-boxes-item">
-                                <img
-                                    src="/images/icons/gradients/self-hosted.svg"
-                                    width="40"
-                                    height="40"
-                                    alt=""
-                                />
-                                <h3 class="web-info-boxes-title">Self-Hosted</h3>
-                                <p class="web-info-boxes-content">
-                                    Own your data or host it on a cloud region of choice.
-                                </p>
-                            </li>
-                            <li class="web-info-boxes-item">
-                                <img
-                                    src="/images/icons/gradients/lock.svg"
-                                    width="40"
-                                    height="40"
-                                    alt=""
-                                />
-                                <h3 class="web-info-boxes-title">Encryption</h3>
-                                <p class="web-info-boxes-content">
-                                    Built-in data encryption both in rest and in transit.
-                                </p>
-                            </li>
-                            <li class="web-info-boxes-item">
-                                <img
-                                    src="/images/icons/gradients/shield.svg"
-                                    width="40"
-                                    height="40"
-                                    alt=""
-                                />
-                                <h3 class="web-info-boxes-title">Abuse protection</h3>
-                                <p class="web-info-boxes-content">
-                                    Protect your APIs from abuse with built-in protection.
-                                </p>
-                            </li>
-                            <li class="web-info-boxes-item">
-                                <img
-                                    src="/images/icons/gradients/database.svg"
-                                    width="40"
-                                    height="40"
-                                    alt=""
-                                />
-                                <h3 class="web-info-boxes-title">Data migrations</h3>
-                                <p class="web-info-boxes-content">
-                                    Easily transfer data from 3rd parties or between Cloud and
-                                    self-hosted.
-                                </p>
-                            </li>
-                            <li class="web-info-boxes-item">
-                                <img
-                                    src="/images/icons/gradients/star.svg"
-                                    width="40"
-                                    height="40"
-                                    alt=""
-                                />
-                                <h3 class="aw-info-boxes-title">GDPR</h3>
-                                <p class="aw-info-boxes-content">
-                                    Safeguard user data and privacy with provided GDPR regulations.
-                                </p>
-                            </li>
-                            <li class="web-info-boxes-item">
-                                <img
-                                    src="/images/icons/gradients/soc-2.svg"
-                                    width="40"
-                                    height="40"
-                                    alt=""
-                                />
-                                <h3 class="web-info-boxes-title">
-                                    <span>SOC-2</span>
-                                </h3>
-                                <p class="web-info-boxes-content">
-                                    Ensure the highest level of security and privacy protection.
-                                </p>
-                            </li>
-                            <li class="web-info-boxes-item">
-                                <img
-                                    src="/images/icons/gradients/hipaa.svg"
-                                    width="40"
-                                    height="40"
-                                    alt=""
-                                />
-                                <h3 class="web-info-boxes-title">
-                                    <span>HIPAA</span>
-                                </h3>
-                                <p class="web-info-boxes-content">
-                                    Protect sensitive user health data.
-                                </p>
-                            </li>
+                    <div class="mt-20 overflow-hidden">
+                        <ul
+                            class="web-info-boxes text-sub-body divide-x divide-y divide-black/[0.04] font-medium"
+                        >
+                            {#each infoBoxes as box}
+                                <li class="relative border-black/[0.04] p-8 last-of-type:border-r">
+                                    <img src={box.icon} width="40" height="40" alt="" />
+                                    <h3
+                                        class="text-primary mt-4 flex flex-wrap items-baseline gap-3"
+                                    >
+                                        {box.label}
+                                    </h3>
+                                    <p class="text-secondary mt-1">
+                                        {box.description}
+                                    </p>
+                                </li>
+                            {/each}
                         </ul>
                     </div>
                 </div>
             </div>
             <OpenSource />
-            <div class="web-big-padding-section-level-2">
-                <div class="web-container">
+            <div class="my-[7.5rem]">
+                <div class="container">
                     <div class="web-hero">
-                        <div class="web-display web-u-color-text-primary">
+                        <div class="text-display font-aeonik-pro text-primary">
                             Loved by developers like you
                         </div>
                     </div>
-                    <ul class="web-multi-columns-1 web-u-margin-block-start-80">
+                    <ul class="web-multi-columns-1 mt-20">
                         <li>
                             <DeveloperCard
                                 name="Terry Lennon"
@@ -410,7 +370,7 @@
                                     href="https://twitter.com/appwrite"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-link is-inline">@appwrite</a
+                                    class="web-link underline">@appwrite</a
                                 > handle my authentication process while I focus on the business logic.
                             </DeveloperCard>
                         </li>
@@ -450,7 +410,7 @@
                                     href="https://twitter.com/appwrite"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-link is-inline">@appwrite</a
+                                    class="web-link underline">@appwrite</a
                                 >. With its robust feature set and open-source nature, it's the
                                 perfect choice for developers who want to build secure and scalable
                                 applications.
@@ -461,9 +421,9 @@
             </div>
         </div>
 
-        <div class="web-big-padding-section-level-1 u-position-relative u-overflow-hidden">
+        <div class="relative overflow-hidden pt-10">
             <div
-                class="u-position-absolute web-is-not-mobile"
+                class="web-is-not-mobile absolute"
                 style:inline-size="768px"
                 style:block-size="768px"
                 style:inset-block-start="0rem"
@@ -478,31 +438,25 @@
                     style="position: absolute; display: block;"
                 />
             </div>
-            <div class="web-big-padding-section-level-2 is-margin-replace-padding">
-                <div class="web-container u-position-relative">
+            <div class="py-[7.5rem]">
+                <div class="container relative">
                     <section class="web-hero is-align-start">
-                        <span class="web-badges web-eyebrow">SDKs_</span>
-                        <h2 class="web-display web-u-color-text-primary u-max-width-600">
+                        <span class="web-badges text-micro uppercase !text-white">SDKs_</span>
+                        <h2 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                             Code the way you want
                         </h2>
-                        <p class="web-description u-max-width-600">
+                        <p class="text-secondary mt-5 max-w-[600px] text-xl font-medium">
                             We support many SDKs making Appwrite flexible to your needs and ensuring
                             you can code with the language you want at any time.
                         </p>
                         <Technologies />
-                        <a
-                            href="/docs/sdks"
-                            class="web-button is-secondary"
-                            style:align-self="start"
-                        >
-                            <span class="web-sub-body-500">Explore all SDKs</span>
-                        </a>
+                        <a href="/docs/sdks" class="web-button is-secondary">Explore all SDKs</a>
                     </section>
                 </div>
             </div>
-            <div class="web-big-padding-section-level-2 u-position-relative u-overflow-hidden">
+            <div class="relative my-[7.5rem] overflow-hidden">
                 <div
-                    class="u-position-absolute u-z-index-0 web-is-not-mobile"
+                    class="web-is-not-mobile absolute z-0"
                     style:width="50%"
                     style:height="100%"
                     style:left="0"
@@ -516,41 +470,39 @@
                         />
                     </div>
                 </div>
-                <div class="web-container u-position-relative">
-                    <div class="grid-1-1">
+                <div class="container relative">
+                    <div class="grid md:grid-cols-2">
                         <section class="web-hero is-align-start">
-                            <span class="web-badges web-eyebrow">Scale_</span>
-                            <h2 class="web-display u-max-width-600 web-u-color-text-primary">
+                            <span class="web-badges text-micro uppercase !text-white">Scale_</span>
+                            <h2 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                                 We scale for you
                             </h2>
                         </section>
                         <ul
-                            class="web-big-list-info u-margin-inline-start-auto web-u-inline-width-100-percent-mobile-break1 web-u-margin-block-start-48"
+                            class="web-big-list-info web-u-inline-width-100-percent-mobile-break1 web-u-margin-block-start-48 ml-auto"
                         >
                             <li class="web-big-list-info-item">
-                                <div class="web-headline web-u-color-text-primary">90K</div>
+                                <div class="text-headline font-aeonik-pro text-primary">90K</div>
                                 <div class="text">Projects</div>
                             </li>
                             <li class="web-big-list-info-item">
-                                <div class="web-headline web-u-color-text-primary">+1B</div>
+                                <div class="text-headline font-aeonik-pro text-primary">+1B</div>
                                 <div class="text">Requests served</div>
                             </li>
                             <li class="web-big-list-info-item">
-                                <div class="web-headline web-u-color-text-primary">20K</div>
+                                <div class="text-headline font-aeonik-pro text-primary">20K</div>
                                 <div class="text">Organizations</div>
                             </li>
                             <li class="web-big-list-info-item">
-                                <div class="web-headline web-u-color-text-primary">99.99%</div>
+                                <div class="text-headline font-aeonik-pro text-primary">99.99%</div>
                                 <div class="text">Guaranteed uptime</div>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div
-                class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
-            >
-                <div class="web-container">
+            <div class="relative overflow-hidden pt-[7.5rem]">
+                <div class="container">
                     <PreFooter />
                     <FooterNav />
                     <MainFooter />

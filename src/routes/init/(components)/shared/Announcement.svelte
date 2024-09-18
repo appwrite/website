@@ -12,12 +12,12 @@
 
 <a href={url} class="web-card is-normal has-border-gradient" style:padding="0">
     <div style:padding="1.25rem" style:padding-block-end="0" style:max-width="32rem">
-        <h3 class="web-label web-u-color-text-primary">{title}</h3>
+        <h3 class="text-label text-primary">{title}</h3>
         <p style:margin-block-start="0.625rem">
             {description}
         </p>
         <div
-            class="web-card-link u-flex u-cross-center"
+            class="web-card-link flex items-center"
             style:margin-block-start="1.25rem"
             style:color="#fff"
         >

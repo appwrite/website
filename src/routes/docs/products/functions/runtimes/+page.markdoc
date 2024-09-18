@@ -43,7 +43,7 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 ---
 * {% icon icon="go" size="l" /%}
 * [Go](https://hub.docker.com/r/openruntimes/go/tags)
-* `go-1.22`
+* `go-1.23`
 * x86 / arm64
 ---
 * {% icon icon="python" size="l" /%}
@@ -149,7 +149,7 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 ---
 * {% icon icon="go" size="l" /%}
 * [Go](https://hub.docker.com/r/openruntimes/go/tags)
-* `go-1.22`
+* `go-1.23`
 * x86 / arm64
 ---
 * {% icon icon="python" size="l" /%}
