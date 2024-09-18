@@ -40,7 +40,7 @@ export const load = async ({ params, url }) => {
 
     const totalPages = Math.ceil(posts.length / BLOG_POSTS_PER_PAGE);
 
-    const effectivePage = (searchQuery || categoryQuery) ? 1 : currentPage;
+    const effectivePage = searchQuery || categoryQuery ? 1 : currentPage;
 
     const pageNavigationChunks = generatePageNavigation(effectivePage, totalPages);
 
