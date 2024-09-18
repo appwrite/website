@@ -5,12 +5,11 @@
     import { TITLE_SUFFIX } from '$routes/titles.js';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { onMount, tick } from 'svelte';
-    import { beforeNavigate } from '$app/navigation';
+    import { beforeNavigate, goto } from '$app/navigation';
     import { createDebounce } from '$lib/utils/debounce';
 
     export let data;
 
-    let blogPosts = data.posts;
     const featured = data.featured;
     const categories = data.categories.sort((a, b) => a.name.localeCompare(b.name));
 
@@ -19,8 +18,6 @@
     $: isLastPage = data.currentPage === data.totalPages;
 
     $: currentPageRange = data.navigation || [];
-
-    $: showNavigation = query === '' && !selectedCategory;
 
     let query = '';
     let isEnd = false;
@@ -44,35 +41,21 @@
         });
     });
 
-    let selectedCategory: string | null;
-    function toggleCategory(tag: string) {
-        if (tag.toLowerCase() === 'latest') {
-            selectedCategory = null;
-        } else {
-            selectedCategory = tag;
-        }
-
-        handleSearch(query);
-    }
+    let selectedCategory = $page.url.searchParams.get('category') ?? 'Latest';
 
     const handleSearch = async (value: string) => {
-        query = value.toLowerCase();
-        const tempCategory = selectedCategory?.replace(/\s+/g, '-').toLowerCase();
+        const query = value.toLowerCase();
 
-        blogPosts =
-            !query && !tempCategory
-                ? data.posts
-                : data.allPosts.filter((post) => {
-                      const postTitle = post.title.toLowerCase();
-                      const postCategories = post.category
-                          .split(',')
-                          .map((cat) => cat.trim().replace(/\s+/g, '-').toLowerCase());
+        const url = new URL($page.url);
+        query ? url.searchParams.set('search', query) : url.searchParams.delete('search');
+        selectedCategory && selectedCategory !== 'Latest'
+            ? url.searchParams.set('category', selectedCategory)
+            : url.searchParams.delete('category');
 
-                      return (
-                          postTitle.includes(query) &&
-                          (!tempCategory || postCategories.includes(tempCategory))
-                      );
-                  });
+        await goto(url.toString(), {
+            noScroll: true,
+            keepFocus: true
+        });
     };
 
     const { debounce, reset } = createDebounce();
@@ -258,7 +241,7 @@
                 </h2>
 
                 <div class="pt-4">
-                    <div class="flex items-center gap-8 search-and-categories">
+                    <div class="search-and-categories flex items-center gap-8">
                         <div
                             class="categories-wrapper"
                             data-state={isStart ? 'start' : isEnd ? 'end' : 'middle'}
@@ -271,8 +254,11 @@
                                 <li class="flex items-center">
                                     <button
                                         class="web-interactive-tag web-caption-400 cursor-pointer"
-                                        class:is-selected={!selectedCategory}
-                                        on:click={() => toggleCategory('Latest')}
+                                        class:is-selected={selectedCategory === 'Latest'}
+                                        on:click={() => {
+                                            selectedCategory = 'Latest';
+                                            handleSearch(query);
+                                        }}
                                     >
                                         Latest
                                     </button>
@@ -283,7 +269,10 @@
                                         <button
                                             class="web-interactive-tag web-caption-400 cursor-pointer"
                                             class:is-selected={selectedCategory === category.name}
-                                            on:click={() => toggleCategory(category.name)}
+                                            on:click={() => {
+                                                selectedCategory = category.name;
+                                                handleSearch(query);
+                                            }}
                                         >
                                             {category.name}
                                         </button>
@@ -293,7 +282,7 @@
                         </div>
 
                         <div
-                            class="block md:hidden mobile-search-bar web-input-text-search-wrapper w-full"
+                            class="mobile-search-bar web-input-text-search-wrapper block w-full md:hidden"
                         >
                             <span
                                 class="web-icon-search z-[5]"
@@ -301,7 +290,7 @@
                                 style="inset-block-start:0.65rem"
                             />
                             <input
-                                class="web-input-button w-full relative z-1"
+                                class="web-input-button relative z-1 w-full"
                                 type="text"
                                 id="search"
                                 placeholder="Search"
@@ -313,7 +302,7 @@
                         </div>
 
                         <div
-                            class="web-input-text-search-wrapper web-u-max-inline-size-none-mobile ml-auto w-full max-w-[350px] hidden md:block"
+                            class="web-input-text-search-wrapper web-u-max-inline-size-none-mobile ml-auto hidden w-full max-w-[350px] md:block"
                         >
                             <span
                                 class="web-icon-search z-[5]"
@@ -321,7 +310,7 @@
                                 style="inset-block-start: 0.65rem;"
                             />
                             <input
-                                class="web-input-button w-full relative z-1"
+                                class="web-input-button relative z-1 w-full"
                                 type="text"
                                 id="search"
                                 placeholder="Search"
@@ -335,8 +324,8 @@
                 </div>
 
                 <div class="mt-12">
-                    <ul class:web-grid-articles={blogPosts.length > 0}>
-                        {#each blogPosts as post (post.slug)}
+                    <ul class:web-grid-articles={data.posts.length > 0}>
+                        {#each data.posts as post (post.slug)}
                             {@const author = data.authors.find(
                                 (author) => author.slug === post.author
                             )}
@@ -361,7 +350,7 @@
                                     class="web-button is-secondary"
                                     on:click={() => {
                                         query = '';
-                                        selectedCategory = null;
+                                        selectedCategory = 'Latest';
                                         handleSearch('');
                                     }}
                                     >Clear search
@@ -371,13 +360,13 @@
                     </ul>
                 </div>
 
-                {#if showNavigation}
+                {#if data.posts.length > 0}
                     <div class="mt-12">
                         <ul class="flex items-center gap-1" style="justify-content: center">
                             {#if data.currentPage > 1}
                                 <a
                                     data-sveltekit-noscroll
-                                    class="flex navigation-button"
+                                    class="navigation-button flex"
                                     href="/blog/{data.currentPage - 1}"
                                     class:navigation-button-active={!isFirstPage}
                                 >
@@ -385,7 +374,7 @@
                                     Previous
                                 </a>
                             {:else}
-                                <span class="flex navigation-button">
+                                <span class="navigation-button flex">
                                     <span class="web-icon-chevron-left" style="font-size: 20px" />
                                     Previous
                                 </span>
@@ -409,7 +398,7 @@
                             {#if data.currentPage < data.totalPages}
                                 <a
                                     data-sveltekit-noscroll
-                                    class="flex navigation-button"
+                                    class="navigation-button flex"
                                     href="/blog/{data.currentPage + 1}"
                                     class:navigation-button-active={!isLastPage}
                                 >
@@ -417,7 +406,7 @@
                                     <span class="web-icon-chevron-right" style="font-size: 20px" />
                                 </a>
                             {:else}
-                                <span class="flex navigation-button">
+                                <span class="navigation-button flex">
                                     Next
                                     <span class="web-icon-chevron-right" style="font-size: 20px" />
                                 </span>
@@ -433,8 +422,8 @@
                 <MainFooter />
             </div>
         </div>
-    </div></Main
->
+    </div>
+</Main>
 
 <style>
     .pagination-number {
