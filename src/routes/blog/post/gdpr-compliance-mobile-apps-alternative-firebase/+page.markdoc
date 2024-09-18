@@ -112,7 +112,7 @@ For example, if you’re using a backend platform like Firebase that handles you
 
 Appwrite provides a GDPR-compliant alternative to Firebase. Appwrite is an open-source backend-as-a-service platform that gives you full control over where your data is stored and processed. With Appwrite, you can ensure that all user data stays within the EU, making GDPR compliance much simpler. 
 
-![GDPR-compliant alternative to Firebase](/images/blog/static/images/blog/gdpr-mobile-apps-guide/1.png)
+![GDPR-compliant alternative to Firebase](/images/blog/gdpr-mobile-apps-guide/1.png)
 
 # Final thoughts
 
