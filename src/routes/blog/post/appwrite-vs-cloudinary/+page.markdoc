@@ -7,6 +7,7 @@ cover: /images/blog/appwrite-compared-to-supabase/cover.png
 timeToRead: 5
 author: aditya-oberai
 category: product
+unlisted: true
 ---
 Efficient and versatile storage solutions are essential in application development. While Cloudinary is a popular choice for media storage and management, many developers are searching for an open-source alternative that offers greater flexibility.
 
