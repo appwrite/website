@@ -43,11 +43,11 @@
 
     let selectedCategory = $page.url.searchParams.get('category') ?? 'Latest';
 
-    const handleSearch = async (value: string) => {
-        const query = value.toLowerCase();
+    const handleSearch = async () => {
+        const searchQuery = query.toLowerCase();
 
         const url = new URL($page.url);
-        query ? url.searchParams.set('search', query) : url.searchParams.delete('search');
+        searchQuery ? url.searchParams.set('search', searchQuery) : url.searchParams.delete('search');
         selectedCategory && selectedCategory !== 'Latest'
             ? url.searchParams.set('category', selectedCategory)
             : url.searchParams.delete('category');
@@ -61,11 +61,11 @@
     const { debounce, reset } = createDebounce();
 
     const search = (node: HTMLInputElement) => {
-        const inputHandler = () => debounce(() => handleSearch(node.value.toLowerCase()));
+        const inputHandler = () => debounce(() => handleSearch());
         const keydownHandler = (event: KeyboardEvent) => {
             if (event.key === 'Enter') {
                 reset();
-                handleSearch(node.value.toLowerCase());
+                handleSearch();
             }
         };
 
@@ -257,7 +257,7 @@
                                         class:is-selected={selectedCategory === 'Latest'}
                                         on:click={() => {
                                             selectedCategory = 'Latest';
-                                            handleSearch(query);
+                                            handleSearch();
                                         }}
                                     >
                                         Latest
@@ -271,7 +271,7 @@
                                             class:is-selected={selectedCategory === category.name}
                                             on:click={() => {
                                                 selectedCategory = category.name;
-                                                handleSearch(query);
+                                                handleSearch();
                                             }}
                                         >
                                             {category.name}
