@@ -2,6 +2,8 @@ import { getAllBlogEntriesWithAuthors } from '../content';
 import { BLOG_POSTS_PER_PAGE } from '$lib/constants';
 import { error, redirect } from '@sveltejs/kit';
 
+export const prerender = false;
+
 export const entries = () => {
     const { posts } = getAllBlogEntriesWithAuthors();
     const totalPages = Math.ceil(posts.length / BLOG_POSTS_PER_PAGE);
