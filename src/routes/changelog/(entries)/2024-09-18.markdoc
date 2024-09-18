@@ -42,3 +42,11 @@ cover: /images/changelog/2024-09-18.png
 ### Miscellaneous
 
 * Updated the DBIP
+
+You can update by following the [upgrade docs](/docs/advanced/self-hosting/update).
+
+Note that upgrading to 1.6.0 requires running a [migration](/docs/advanced/self-hosting/update#running-the-migration).
+
+{% arrow_link href="https://github.com/appwrite/appwrite/releases/tag/1.6.0" %}
+View the changelog on GitHub
+{% /arrow_link %}
