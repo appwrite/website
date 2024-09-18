@@ -285,7 +285,7 @@
                                             <div class="web-user-box">
                                                 <img
                                                     class="web-user-box-image"
-                                                    src="/images/community/avatars/myshoefitter.png"
+                                                    src="/images/testimonials/marius-bolik2.png"
                                                     alt="Avatar of Kap.ts"
                                                     width="48"
                                                     height="48"
