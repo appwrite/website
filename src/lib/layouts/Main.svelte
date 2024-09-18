@@ -8,7 +8,6 @@
     };
     export const isHeaderHidden = writable(false);
     export const isMobileNavOpen = writable(false);
-
     const initialized = writable(false);
 </script>
 
@@ -22,7 +21,11 @@
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
     import { page } from '$app/stores';
-    import { loggedIn } from '$lib/utils/console';
+    import { classNames } from '$lib/utils/classnames';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
+    import InitBanner from '$lib/components/InitBanner.svelte';
+    import Button from '$lib/components/ui/Button.svelte';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -68,24 +71,22 @@
     }
 
     function getVisibleTheme() {
-        const themes = Array.from(document.querySelectorAll('.theme-dark, .theme-light')).filter(
-            (element) => {
-                const { classList, dataset } = element as HTMLElement;
-                if (
-                    classList.contains('web-mobile-header') ||
-                    classList.contains('web-main-header') ||
-                    element === document.body ||
-                    typeof dataset['themeIgnore'] === 'string'
-                ) {
-                    return false;
-                }
-                return true;
+        const themes = Array.from(document.querySelectorAll('.dark, .light')).filter((element) => {
+            const { classList, dataset } = element as HTMLElement;
+            if (
+                classList.contains('web-mobile-header') ||
+                classList.contains('web-main-header') ||
+                element === document.body ||
+                typeof dataset['themeIgnore'] === 'string'
+            ) {
+                return false;
             }
-        );
+            return true;
+        });
 
         for (const theme of themes) {
             if (isInViewport(theme)) {
-                return theme.classList.contains('theme-light') ? 'light' : 'dark';
+                return theme.classList.contains('light') ? 'light' : 'dark';
             }
         }
 
@@ -113,6 +114,10 @@
             href: '/blog'
         },
         {
+            label: 'Integrations',
+            href: '/integrations'
+        },
+        {
             label: 'Changelog',
             href: '/changelog',
             showBadge: hasNewChangelog?.() && !$page.url.pathname.includes('/changelog')
@@ -135,18 +140,25 @@
             return true;
         }
 
+
         return $scrollInfo.deltaDirChange < 200;
     })();
 
-    const hideTopBanner = () => {
-        document.body.dataset.bannerHidden = '';
-        localStorage.setItem(BANNER_KEY, 'true');
-    };
+    function updateSideNav() {
+        if(browser) {
+            const integrationsSide = document.getElementById('integrations-side');
+            if (integrationsSide) {
+                $isHeaderHidden ? integrationsSide.classList.remove('menu-visible') : integrationsSide.classList.add('menu-visible');
+            }
+        }
+    }
+
+    $: $isHeaderHidden, updateSideNav();
 </script>
 
-<div class="u-position-relative">
+<div class="relative">
     <section
-        class="web-mobile-header theme-{resolvedTheme}"
+        class="web-mobile-header {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
         class:is-hidden={$isHeaderHidden}
     >
@@ -170,7 +182,7 @@
         </div>
         <div class="web-mobile-header-end">
             {#if !$isMobileNavOpen}
-                <a href="https://cloud.appwrite.io" class="web-button">
+                <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button">
                     <span class="text">Get started</span>
                 </a>
             {/if}
@@ -188,29 +200,27 @@
         </div>
     </section>
     <header
-        class="web-main-header is-special-padding theme-{resolvedTheme} is-transparent"
+        class="web-main-header is-special-padding {resolvedTheme} is-transparent"
         class:is-hidden={$isHeaderHidden}
+        class:is-special-padding={!BANNER_KEY.startsWith('init-banner-')}
+        style={BANNER_KEY === 'init-banner-02' ? 'padding-inline: 0' : ''}
     >
-        <div class="web-top-banner">
-            <div class="web-top-banner-content web-u-color-text-primary">
+        {#if BANNER_KEY.startsWith('init-banner-')}
+            <InitBanner />
+        {:else}
+            <AnnouncementBanner>
                 <a href="/discord" target="_blank" rel="noopener noreferrer">
-                    <span class="web-caption-500">We are having lots of fun on</span>
+                    <span class="text-caption font-medium">We are having lots of fun on</span>
                     <span class="web-icon-discord" aria-hidden="true" />
-                    <span class="web-caption-500">Discord. Come and join us!</span>
+                    <span class="text-caption font-medium">Discord. Come and join us!</span>
                 </a>
-                {#if browser}
-                    <button
-                        class="web-top-banner-button"
-                        aria-label="close discord message"
-                        on:click={hideTopBanner}
-                    >
-                        <span class="web-icon-close" aria-hidden="true" />
-                    </button>
-                {/if}
-            </div>
-        </div>
+            </AnnouncementBanner>
+        {/if}
 
-        <div class="web-main-header-wrapper">
+        <div
+            class="web-main-header-wrapper"
+            class:is-special-padding={BANNER_KEY.startsWith('init-banner-')}
+        >
             <div class="web-main-header-start">
                 <a href="/">
                     <img
@@ -231,9 +241,11 @@
                 <nav class="web-main-header-nav" aria-label="Main">
                     <ul class="web-main-header-nav-list">
                         {#each navLinks as navLink}
-                            <li class="web-main-header-nav-item">
+                            <li class="web-main-header-nav-item text-primary hover:text-accent">
                                 <a
-                                    class="web-link"
+                                    class={classNames(
+                                        'data-[badge]:after:animate-scale-in data-[badge]:relative data-[badge]:after:absolute data-[badge]:after:size-1.5 data-[badge]:after:translate-full data-[badge]:after:rounded-full'
+                                    )}
                                     href={navLink.href}
                                     data-initialized={$initialized ? '' : undefined}
                                     data-badge={navLink.showBadge ? '' : undefined}
@@ -249,11 +261,11 @@
                     href="https://github.com/appwrite/appwrite/stargazers"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="web-button is-text"
+                    class="web-button is-text web-u-inline-width-100-percent-mobile"
                 >
-                    <span aria-hidden="true" class="web-icon-star" />
+                    <span class="web-icon-star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>
-                    <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span>
+                    <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
                 </a>
                 <IsLoggedIn />
             </div>
@@ -283,6 +295,10 @@
         100% {
             transform: scale(1);
         }
+    }
+
+    .is-special-padding {
+        padding-inline: clamp(1.25rem, 4vw, 120rem);
     }
 
     [data-badge] {

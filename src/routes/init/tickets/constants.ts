@@ -8,16 +8,14 @@ export const invalidateTicket = () => {
 
 export type ContributionsMatrix = number[][];
 
-export type TicketVariant = 'default' | 'pink' | 'rainbow';
-
 export type TicketData = Pick<Models.Document, '$id'> & {
     name: string;
-    tribe?: string | null
+    tribe?: string | null;
+    title?: string;
     gh_user?: string;
     aw_email?: string;
     id: number;
     show_contributions?: boolean;
-    variant?: TicketVariant;
     is_pro?: boolean;
     contributions?: number[];
 };

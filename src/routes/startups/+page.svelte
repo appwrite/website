@@ -156,7 +156,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -169,43 +169,28 @@
 </svelte:head>
 
 <Main>
-    <img
-        class="u-block u-position-absolute u-inset-inline-end-0 u-inset-block-start-0 u-margin-inline-auto u-inset-0"
-        src={BackgroundHero}
-        alt=""
-    />
-    <img
-        class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-0 e-bg-left-mobile"
-        src={BackgroundLeft}
-        alt=""
-    />
-    <img
-        class="u-position-absolute u-inset-inline-end-0 u-inset-block-start-0 e-bg-right-mobile"
-        src={BackgroundRight}
-        alt=""
-    />
-    <div class="web-big-padding-section u-position-relative u-overflow-hidden">
-        <div class="web-big-padding-section-level-1 u-position-relative">
+    <img class="absolute inset-0 mx-auto block" src={BackgroundHero} alt="" />
+    <img class="e-bg-left-mobile absolute top-0" src={BackgroundLeft} alt="" />
+    <img class="e-bg-right-mobile absolute right-0" src={BackgroundRight} alt="" />
+    <div class="web-big-padding-section relative overflow-hidden">
+        <div class="relative py-10">
             <div class="web-big-padding-section-level-2 e-u-margin-block-128-desktop">
-                <section class="web-container web-u-padding-block-end-0">
+                <section class="container web-u-padding-block-end-0">
                     <div
                         class="web-hero"
                         style="--hero-max-inline-size:49.375rem; --hero-gap:1.125rem;"
                     >
-                        <h1 class="web-headline web-u-color-text-primary">
+                        <h1 class="text-headline font-aeonik-pro text-primary">
                             Build your startup with Appwrite
                         </h1>
                         <p
-                            class="web-description web-u-max-width-640 u-margin-inline-auto e-u-padding-inline-32-desktop"
+                            class="text-description web-u-max-width-640 e-u-padding-inline-32-desktop mx-auto"
                         >
                             The Appwrite Startups Program supports your startup with a complete
                             backend for you to build your products. Eligible startups receive
                             Appwrite Cloud Scale for 12 months.
                         </p>
-                        <button
-                            on:click={scrollToForm}
-                            class="web-button u-margin-inline-auto u-margin-block-start-12"
-                        >
+                        <button on:click={scrollToForm} class="web-button mt-3 mx-auto">
                             Apply now
                         </button>
                     </div>
@@ -215,54 +200,48 @@
             <div
                 class="web-big-padding-section-level-2 e-u-padding-block-start-48-mobile e-u-padding-block-start-80-desktop e-u-margin-block-end-80-mobile"
             >
-                <section class="web-container">
-                    <ul class="u-flex web-u-flex-vertical-mobile web-u-gap-80 e-u-gap-64-mobile">
-                        <li
-                            class="u-flex-vertical u-cross-center u-gap-16 u-stretch u-max-width-350 u-margin-inline-auto"
-                        >
+                <section class="container">
+                    <ul class="web-u-flex-vertical-mobile e-u-gap-64-mobile flex gap-20">
+                        <li class="mx-auto flex max-w-[350px] flex-1 flex-col items-center gap-4">
                             <img
                                 src="/images/icons/gradients/backend.svg"
                                 width="48"
                                 height="48"
                                 alt=""
                             />
-                            <div class="u-flex-vertical u-gap-8 u-text-center">
-                                <h2 class="web-label web-u-color-text-primary">Complete backend</h2>
-                                <p class="web-main-body-500">
-                                    Get access to Appwrite's Scale plan and build your entire
+                            <div class="flex flex-col gap-2 text-center">
+                                <h2 class="text-label text-primary">Complete backend</h2>
+                                <p class="text-body font-medium">
+                                    Get access to Appwrite’s Scale plan and build your entire
                                     backend with Appwrite.
                                 </p>
                             </div>
                         </li>
-                        <li
-                            class="u-flex-vertical u-cross-center u-gap-16 u-stretch u-max-width-350 u-margin-inline-auto"
-                        >
+                        <li class="mx-auto flex max-w-[350px] flex-1 flex-col items-center gap-4">
                             <img
                                 src="/images/icons/gradients/cloud-credit.svg"
                                 width="48"
                                 height="48"
                                 alt=""
                             />
-                            <div class="u-flex-vertical u-gap-8 u-text-center">
-                                <h2 class="web-label web-u-color-text-primary">Cloud credits</h2>
-                                <p class="web-main-body-500">
+                            <div class="flex flex-col gap-2 text-center">
+                                <h2 class="text-label text-primary">Cloud credits</h2>
+                                <p class="text-body font-medium">
                                     Get Appwrite Cloud Scale for 12 months and reduce risk at an
                                     early stage.
                                 </p>
                             </div>
                         </li>
-                        <li
-                            class="u-flex-vertical u-cross-center u-gap-16 u-stretch u-max-width-350 u-margin-inline-auto"
-                        >
+                        <li class="mx-auto flex max-w-[350px] flex-1 flex-col items-center gap-4">
                             <img
                                 src="/images/icons/gradients/support.svg"
                                 width="48"
                                 height="48"
                                 alt=""
                             />
-                            <div class="u-flex-vertical u-gap-8 u-text-center">
-                                <h2 class="web-label web-u-color-text-primary">Priority support</h2>
-                                <p class="web-main-body-500">
+                            <div class="flex flex-col gap-2 text-center">
+                                <h2 class="text-label text-primary">Priority support</h2>
+                                <p class="text-body font-medium">
                                     Get community support and priority email support from the
                                     Appwrite team.
                                 </p>
@@ -273,11 +252,9 @@
             </div>
         </div>
 
-        <div
-            class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light"
-        >
-            <div class="web-big-padding-section-level-2 e-u-margin-block-start-80-mobile">
-                <div class="web-container">
+        <div class="web-white-section light relative py-10">
+            <div class="web-big-padding-section-level-2 e-mt-20-mobile">
+                <div class="container">
                     <div class="web-timeline-content">
                         <ol class="web-timeline-content-list">
                             <li>
@@ -285,11 +262,11 @@
                                     class="web-timeline-content-item-top web-grid-1-1"
                                     style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;"
                                 >
-                                    <div class="u-flex-vertical u-gap-16">
-                                        <h3 class="web-title web-u-color-text-primary">
+                                    <div class="flex flex-col gap-4">
+                                        <h3 class="text-title font-aeonik-pro text-primary">
                                             Ship faster
                                         </h3>
-                                        <p class="web-main-body-500">
+                                        <p class="text-body font-medium">
                                             Utilizing Appwrite as your backend, you significantly
                                             cut down the time and resources spent on building a
                                             backend infrastructure from scratch. This means you can
@@ -299,7 +276,7 @@
                                         </p>
                                     </div>
                                     <div>
-                                        <div class="web-card is-white u-flex-vertical web-u-gap-20">
+                                        <div class="web-card is-white flex flex-col gap-5">
                                             <p class="aw-sub-body-500">
                                                 The integrated user authentication and the ease of
                                                 creating data structures have undoubtedly saved us
@@ -313,10 +290,12 @@
                                                     width="48"
                                                     height="48"
                                                 />
-                                                <div class="web-user-box-name web-sub-body-500">
+                                                <div
+                                                    class="web-user-box-name text-sub-body font-medium"
+                                                >
                                                     Marius Bolik
                                                 </div>
-                                                <div class="web-user-box-username web-sub-body-400">
+                                                <div class="web-user-box-username text-sub-body">
                                                     CTO // mySHOEFITTER
                                                 </div>
                                             </div>
@@ -325,15 +304,15 @@
                                 </div>
 
                                 <div
-                                    class="is-only-desktop"
+                                    class="web-is-only-desktop"
                                     style="margin-block-start:80px; margin-inline-start: -50px"
                                 >
                                     <img alt="" src={ProjectTimeline} width="1250" />
                                 </div>
 
                                 <div
-                                    class="is-not-desktop"
-                                    style="min-inline-size: 700px; padding-block-start: 48px; margin-inline-start:-32px;"
+                                    class="web-is-not-desktop"
+                                    style="padding-block-start: 48px; margin-inline-start:-32px;"
                                 >
                                     <img alt="" src={ProjectTimeline} />
                                 </div>
@@ -346,11 +325,11 @@
                                     <div class="web-is-not-mobile">
                                         <img alt="" src={UsageGraphs} />
                                     </div>
-                                    <div class="u-flex-vertical u-gap-16 web-u-flex-basis-380">
-                                        <h3 class="web-title web-u-color-text-primary">
+                                    <div class="web-u-flex-basis-380 flex flex-col gap-4">
+                                        <h3 class="text-title font-aeonik-pro text-primary">
                                             Scalable architecture
                                         </h3>
-                                        <p class="web-main-body-500">
+                                        <p class="text-body font-medium">
                                             Appwrite's scalable architecture ensures you can build
                                             your product with growth in mind. Whether you're just
                                             testing the waters or ready to scale up rapidly, our
@@ -359,7 +338,7 @@
                                             growth.
                                         </p>
                                         <div
-                                            class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-u-margin-block-start-16-mobile"
+                                            class="web-card is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
                                         >
                                             <p class="aw-sub-body-500">{ryanOconner.text}</p>
                                             <div class="web-user-box">
@@ -370,10 +349,12 @@
                                                     width="48"
                                                     height="48"
                                                 />
-                                                <div class="web-user-box-name web-sub-body-500">
+                                                <div
+                                                    class="web-user-box-name text-sub-body font-medium"
+                                                >
                                                     {ryanOconner.name}
                                                 </div>
-                                                <div class="web-user-box-username web-sub-body-400">
+                                                <div class="web-user-box-username text-sub-body">
                                                     {ryanOconner.handle}
                                                 </div>
                                             </div>
@@ -382,7 +363,7 @@
                                 </div>
                                 <div class="web-is-only-mobile">
                                     <img
-                                        class="u-block u-max-width-450 u-margin-inline-auto"
+                                        class="blockmx-auto max-w-[450px]"
                                         alt=""
                                         src={UsageGraphs}
                                     />
@@ -393,18 +374,18 @@
                                     class="web-timeline-content-item-top web-grid-1-1"
                                     style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;"
                                 >
-                                    <div class="u-flex-vertical u-gap-16">
-                                        <h3 class="web-title web-u-color-text-primary">
+                                    <div class="flex flex-col gap-4">
+                                        <h3 class="text-title font-aeonik-pro text-primary">
                                             Built-in security and compliance
                                         </h3>
-                                        <p class="web-main-body-500">
+                                        <p class="text-body font-medium">
                                             Appwrite comes with built-in security features like
                                             authentication, database security, and more, reducing
                                             the time and effort you need to spend on securing your
                                             application.
                                         </p>
                                         <div
-                                            class="web-card is-white u-flex-vertical web-u-gap-20 web-u-margin-block-start-64 e-u-margin-block-start-16-mobile"
+                                            class="web-card is-white web-u-margin-block-start-64 e-mt-4-mobile flex flex-col gap-5"
                                         >
                                             <p class="aw-sub-body-500">{souvikSarkar.text}</p>
                                             <div class="web-user-box">
@@ -415,33 +396,33 @@
                                                     width="48"
                                                     height="48"
                                                 />
-                                                <div class="web-user-box-name web-sub-body-500">
+                                                <div
+                                                    class="web-user-box-name text-sub-body font-medium"
+                                                >
                                                     {souvikSarkar.name}
                                                 </div>
-                                                <div class="web-user-box-username web-sub-body-400">
+                                                <div class="web-user-box-username text-sub-body">
                                                     {souvikSarkar.handle}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="web-is-not-desktop u-position-relative">
+                                    <div class="web-is-not-desktop relative">
                                         <img
-                                            class="u-block u-max-width-450 u-margin-inline-auto"
+                                            class="blockmx-auto max-w-[450px]"
                                             src={SecurityOptions}
                                             alt=""
                                             style="height:auto;"
                                         />
                                     </div>
 
-                                    <div
-                                        class="web-is-only-desktop u-position-relative u-overflow-hidden"
-                                    >
-                                        <div class="u-flex">
+                                    <div class="web-is-only-desktop relative overflow-hidden">
+                                        <div class="flex">
                                             <img
                                                 src={SecurityOptions}
                                                 alt=""
-                                                class="u-margin-inline-start-auto"
+                                                class="ml-auto"
                                                 style="width:500px; height:auto;"
                                             />
                                         </div>
@@ -454,7 +435,7 @@
                                     style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;"
                                 >
                                     <div
-                                        class="e-u-order-1-mobile e-u-margin-inline-auto-mobile u-width-full-line web-u-max-width-580"
+                                        class="e-u-order-1-mobile e-mx-auto-mobile web-u-max-width-580 w-full"
                                     >
                                         <div
                                             class="web-chat web-u-max-width-580 web-u-margin-block-start-40-mobile"
@@ -465,24 +446,25 @@
                                                         <div class="web-user-box">
                                                             <img
                                                                 class="web-user-box-image"
-                                                                src="/images/community/avatars/6.avif"
+                                                                src="/images/community/avatars/walter.avif"
                                                                 height="40"
                                                                 width="40"
-                                                                alt="Avatar of Teri"
+                                                                alt="Avatar of Walter"
                                                             />
                                                             <div
-                                                                class="web-user-box-name u-flex u-gap-8"
+                                                                class="web-user-box-name flex gap-2"
                                                             >
-                                                                <span class="web-sub-body-500"
-                                                                    >Louis Baker</span
+                                                                <span
+                                                                    class="text-sub-body font-medium"
+                                                                    >Walter O'Brien</span
                                                                 >
                                                                 <time
-                                                                    class="web-caption-400 web-u-color-text-tertiary"
+                                                                    class="text-caption web-u-color-text-tertiary"
                                                                     >8:32 AM</time
                                                                 >
                                                             </div>
                                                             <div
-                                                                class="web-user-box-content web-caption-400 web-u-color-text-primary"
+                                                                class="web-user-box-content text-caption text-primary"
                                                             >
                                                                 Hello devs! I am getting a CORS
                                                                 error when sending a request to the
@@ -499,21 +481,22 @@
                                                                 src="/images/avatars/steven.avif"
                                                                 width="48"
                                                                 height="48"
-                                                                alt="Avatar of Teri"
+                                                                alt="Avatar of Steven"
                                                             />
                                                             <div
-                                                                class="web-user-box-name u-flex u-gap-8"
+                                                                class="web-user-box-name flex gap-2"
                                                             >
-                                                                <span class="web-sub-body-500"
+                                                                <span
+                                                                    class="text-sub-body font-medium"
                                                                     >Steven</span
                                                                 >
                                                                 <time
-                                                                    class="web-caption-400 web-u-color-text-tertiary"
+                                                                    class="text-caption web-u-color-text-tertiary"
                                                                     >8:38 AM</time
                                                                 >
                                                             </div>
                                                             <div
-                                                                class="web-user-box-content web-caption-400 web-u-color-text-primary"
+                                                                class="web-user-box-content text-caption text-primary"
                                                             >
                                                                 Hey Louis! Is this the message you
                                                                 get
@@ -521,7 +504,7 @@
                                                                     class="web-link is-pink"
                                                                     href="/blog/post/cors-error"
                                                                     target="_blank"
-                                                                    >`Access blocked by CORS policy`</a
+                                                                    >"Access blocked by CORS policy"</a
                                                                 >?
                                                             </div>
                                                         </div>
@@ -532,24 +515,25 @@
                                                         <div class="web-user-box">
                                                             <img
                                                                 class="web-user-box-image"
-                                                                src="/images/community/avatars/6.avif"
+                                                                src="/images/community/avatars/walter.avif"
                                                                 height="40"
                                                                 width="40"
-                                                                alt="Avatar of Teri"
+                                                                alt="Avatar of Walter"
                                                             />
                                                             <div
-                                                                class="web-user-box-name u-flex u-gap-8"
+                                                                class="web-user-box-name flex gap-2"
                                                             >
-                                                                <span class="web-sub-body-500"
-                                                                    >Louis Baker</span
+                                                                <span
+                                                                    class="text-sub-body font-medium"
+                                                                    >Walter O'Brien</span
                                                                 >
                                                                 <time
-                                                                    class="web-caption-400 web-u-color-text-tertiary"
+                                                                    class="text-caption web-u-color-text-tertiary"
                                                                     >9:05 AM</time
                                                                 >
                                                             </div>
                                                             <div
-                                                                class="web-user-box-content web-caption-400 web-u-color-text-primary"
+                                                                class="web-user-box-content text-caption text-primary"
                                                             >
                                                                 Yes!
                                                             </div>
@@ -564,21 +548,22 @@
                                                                 src="/images/avatars/steven.avif"
                                                                 width="48"
                                                                 height="48"
-                                                                alt="Avatar of Teri"
+                                                                alt="Avatar of Steven"
                                                             />
                                                             <div
-                                                                class="web-user-box-name u-flex u-gap-8"
+                                                                class="web-user-box-name flex gap-2"
                                                             >
-                                                                <span class="web-sub-body-500"
+                                                                <span
+                                                                    class="text-sub-body font-medium"
                                                                     >Steven</span
                                                                 >
                                                                 <time
-                                                                    class="web-caption-400 web-u-color-text-tertiary"
-                                                                    >8:38 AM</time
+                                                                    class="text-caption web-u-color-text-tertiary"
+                                                                    >9:08 AM</time
                                                                 >
                                                             </div>
                                                             <div
-                                                                class="web-user-box-content web-caption-400 web-u-color-text-primary"
+                                                                class="web-user-box-content text-caption text-primary"
                                                             >
                                                                 You should be able to debug this
                                                                 with a few steps. Just follow this
@@ -587,7 +572,7 @@
                                                                     class="web-link is-pink"
                                                                     href="/blog/post/cors-error"
                                                                     target="_blank"
-                                                                    >/blog/post/cors-error</a
+                                                                    >https://appwrite.io/blog/post/cors-error</a
                                                                 >. Let me know if this helps 🙂
                                                             </div>
                                                         </div>
@@ -596,20 +581,18 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div
-                                        class="u-flex-vertical u-gap-16 u-margin-inline-start-auto web-u-margin-inline-auto-mobile"
-                                    >
-                                        <h3 class="web-title web-u-color-text-primary">
+                                    <div class="web-mx-auto-mobile ml-auto flex flex-col gap-4">
+                                        <h3 class="text-title font-aeonik-pro text-primary">
                                             Power of open source community
                                         </h3>
-                                        <p class="web-main-body-500">
+                                        <p class="text-body font-medium">
                                             Join a growing community of developers and founders who
                                             use Appwrite to build their products. Gain access to a
                                             wealth of knowledge, support, and shared experiences to
                                             help navigate the challenges of startup growth.
                                         </p>
                                         <div
-                                            class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-u-margin-block-start-16-mobile"
+                                            class="web-card is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
                                         >
                                             <p class="aw-sub-body-500">{mariusBolik.text}</p>
                                             <div class="web-user-box">
@@ -620,10 +603,12 @@
                                                     width="48"
                                                     height="48"
                                                 />
-                                                <div class="web-user-box-name web-sub-body-500">
+                                                <div
+                                                    class="web-user-box-name text-sub-body font-medium"
+                                                >
                                                     {mariusBolik.name}
                                                 </div>
-                                                <div class="web-user-box-username web-sub-body-400">
+                                                <div class="web-user-box-username text-sub-body">
                                                     {mariusBolik.handle}
                                                 </div>
                                             </div>
@@ -637,19 +622,19 @@
             </div>
 
             <div
-                class="web-big-padding-section-level-2 web-u-overflow-hidden e-u-margin-block-start-200-desktop e-u-margin-block-start-128-mobile"
+                class="web-big-padding-section-level-2 web-u-overflow-hidden e-mt-50-desktop e-mt-38-mobile"
             >
                 <h4
-                    class="web-title web-u-color-text-primary u-text-center u-max-width-350 u-margin-inline-auto"
+                    class="text-title font-aeonik-pro text-primary mx-auto max-w-[350px] text-center"
                 >
                     Focus on building your product
                 </h4>
                 <div class="scroll-carousel" use:infiniteScroll>
-                    <ul class="inner u-gap-32">
+                    <ul class="inner gap-8">
                         {#each testimonials as t}
                             <li>
                                 <div
-                                    class="web-card is-white web-u-gap-20 web-u-margin-block-start-64 e-u-margin-block-start-48-mobile"
+                                    class="web-card is-white web-u-margin-block-start-64 e-mt-12-mobile gap-5"
                                     style="inline-size:23.625rem"
                                 >
                                     <p class="aw-sub-body-500">{t.text}</p>
@@ -661,10 +646,10 @@
                                             width="48"
                                             height="48"
                                         />
-                                        <div class="web-user-box-name web-sub-body-500">
+                                        <div class="web-user-box-name text-sub-body font-medium">
                                             {t.name}
                                         </div>
-                                        <div class="web-user-box-username web-sub-body-400">
+                                        <div class="web-user-box-username text-sub-body">
                                             {t.handle}
                                         </div>
                                     </div>
@@ -676,71 +661,63 @@
             </div>
         </div>
 
-        <div id="form" class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden">
-            <div
-                class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
-            >
-                <div class="u-position-relative">
+        <div id="form" class="overflow-hidden pt-10">
+            <div class="pt-[7.5rem] is-margin-replace-padding relative">
+                <div class="relative">
                     <div class="web-big-padding-section-level-2">
-                        <div class="web-container u-position-relative">
+                        <div class="container relative">
                             <img
-                                class="u-position-absolute is-only-desktop"
+                                class="web-is-only-desktop absolute"
                                 style="inset-inline-end:-650px; inset-block-start:-200px; max-width:none; max-height:none;"
                                 src={BlobGreen}
                                 alt=""
                             />
                             <img
-                                class="u-position-absolute is-only-desktop"
+                                class="web-is-only-desktop absolute"
                                 style="inset-inline-start:-1000px; inset-block-start:-800px; max-width:none; max-height:none;"
                                 src={BlobPink}
                                 alt=""
                             />
                             <img
-                                class="u-position-absolute is-only-mobile"
+                                class="web-is-only-mobile absolute"
                                 style="inset-inline-end:-450px; inset-block-start:400px; max-width:none; max-height:none;"
                                 src={BlobGreenMobile}
                                 alt=""
                             />
                             <img
-                                class="u-position-absolute is-only-mobile"
+                                class="web-is-only-mobile absolute"
                                 style="inset-inline-start:-700px; inset-block-start:-400px; max-width:none; max-height:none;"
                                 src={BlobPinkMobile}
                                 alt=""
                             />
 
                             <!-- before submit -->
-                            <div
-                                class="u-position-relative u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0"
-                            >
+                            <div class="web-grid-1-1-opt-2 e-u-row-gap-0 relative z-[1] gap-8">
                                 <div>
                                     <div
                                         class="web-u-max-inline-size-none-mobile"
                                         class:web-u-max-width-380={!submitted}
                                     >
-                                        <section class="u-flex-vertical web-u-gap-20">
-                                            <h4 class="web-title web-u-color-text-primary">
+                                        <section class="flex flex-col gap-5">
+                                            <h4 class="text-title font-aeonik-pro text-primary">
                                                 Join the Appwrite Startups program
                                             </h4>
-                                            <p class="web-description">
+                                            <p class="text-description">
                                                 We support VC backed or revenue generating startups
                                                 that have been established within the last decade
                                                 with:
                                             </p>
 
-                                            <div class="u-flex-vertical u-gap-12">
-                                                <div class="u-flex u-gap-16">
-                                                    <div
-                                                        class="web-check-bullet u-margin-block-start-4"
-                                                    ></div>
-                                                    <p class="web-description">
+                                            <div class="flex flex-col gap-3">
+                                                <div class="flex gap-4">
+                                                    <div class="web-check-bullet mt-1"></div>
+                                                    <p class="text-description">
                                                         Appwrite Cloud Scale for 12 months
                                                     </p>
                                                 </div>
-                                                <div class="u-flex u-gap-16">
-                                                    <div
-                                                        class="web-check-bullet u-margin-block-start-4"
-                                                    ></div>
-                                                    <p class="web-description">
+                                                <div class="flex gap-4">
+                                                    <div class="web-check-bullet mt-1"></div>
+                                                    <p class="text-description">
                                                         Priority email support as part of Scale
                                                     </p>
                                                 </div>
@@ -753,27 +730,27 @@
                                 </div>
                                 {#if submitted}
                                     <div
-                                        class="u-position-relative u-z-index-1 u-flex-vertical u-gap-8 u-text-center web-u-max-width-380 web-u-max-inline-size-none-mobile u-margin-inline-auto"
+                                        class="web-u-max-width-380 web-u-max-inline-size-none-mobile relative z-[1] mx-auto flex flex-col gap-2 text-center"
                                     >
                                         <h6
-                                            class="web-label u-flex u-main-center u-cross-center u-gap-8 e-mobile-fix-1"
+                                            class="text-label e-mobile-fix-1 flex items-center justify-center gap-2"
                                         >
                                             <img
-                                                class="u-flex-shrink-0"
+                                                class="shrink-0"
                                                 src="/images/icons/colored/check.svg"
                                                 alt=""
                                             />
-                                            <span class="web-u-color-text-primary"
+                                            <span class="text-primary"
                                                 >Thank you for your submission</span
                                             >
                                         </h6>
-                                        <p class="web-main-body-400">
+                                        <p class="text-body">
                                             Our team will review your application and get back to
                                             you soon.
                                         </p>
                                         <button
                                             on:click={resetForm}
-                                            class="web-button is-secondary is-full-width-mobile u-block u-margin-inline-auto u-margin-block-start-16"
+                                            class="web-button is-secondary is-full-width-mobile blockmt-4 mx-auto"
                                             >Back to form</button
                                         >
                                     </div>
@@ -781,14 +758,14 @@
                                     <form
                                         method="post"
                                         on:submit|preventDefault={handleSubmit}
-                                        class="u-flex-vertical u-gap-16"
+                                        class="flex flex-col gap-4"
                                     >
-                                        <div class="u-flex u-main-end">
+                                        <div class="flex justify-end">
                                             <ul
-                                                class="web-form-list u-gap-16 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
+                                                class="web-form-list web-u-max-width-580 web-u-max-inline-size-none-mobile w-full gap-4"
                                             >
-                                                <li class="web-form-item u-flex-vertical u-gap-4">
-                                                    <div class="u-block">Full name</div>
+                                                <li class="web-form-item flex flex-col gap-1">
+                                                    <div class="block">Full name</div>
                                                     <input
                                                         required
                                                         class="web-input-text"
@@ -798,8 +775,8 @@
                                                         bind:value={personName}
                                                     />
                                                 </li>
-                                                <li class="web-form-item u-flex-vertical u-gap-4">
-                                                    <div class="u-block">Email address</div>
+                                                <li class="web-form-item flex flex-col gap-1">
+                                                    <div class="block">Email address</div>
                                                     <input
                                                         required
                                                         class="web-input-text"
@@ -809,8 +786,8 @@
                                                         bind:value={personEmail}
                                                     />
                                                 </li>
-                                                <li class="web-form-item u-flex-vertical u-gap-4">
-                                                    <div class="u-block">Company name</div>
+                                                <li class="web-form-item flex flex-col gap-1">
+                                                    <div class="block">Company name</div>
                                                     <input
                                                         required
                                                         class="web-input-text"
@@ -821,8 +798,8 @@
                                                         bind:value={companyName}
                                                     />
                                                 </li>
-                                                <li class="web-form-item u-flex-vertical u-gap-4">
-                                                    <div class="u-block">Company website</div>
+                                                <li class="web-form-item flex flex-col gap-1">
+                                                    <div class="block">Company website</div>
                                                     <input
                                                         required
                                                         class="web-input-text"
@@ -836,16 +813,16 @@
                                             </ul>
                                         </div>
                                         <div
-                                            class="u-flex u-gap-16 u-main-space-between web-u-flex-vertical-reverse-mobile"
+                                            class="web-u-flex-vertical-reverse-mobile flex justify-between gap-4"
                                         >
-                                            <p class="web-caption-400 web-u-max-width-380">
+                                            <p class="text-caption web-u-max-width-380">
                                                 {#if error}
                                                     {error}
                                                 {/if}
                                             </p>
                                             <button
                                                 type="submit"
-                                                class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1"
+                                                class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
                                             >
                                                 <span>Apply</span>
                                             </button>
@@ -855,21 +832,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="web-big-padding-section-level-2 u-position-relative">
-                        <div class="web-container u-position-relative" style:z-index="10">
+                    <div class="web-big-padding-section-level-2 relative">
+                        <div class="container relative" style:z-index="10">
                             <section class="web-grid-4-6">
                                 <header>
-                                    <div class="web-display web-u-color-text-primary">FAQ</div>
+                                    <div class="text-display font-aeonik-pro text-primary">FAQ</div>
                                 </header>
                                 <Faq />
                             </section>
                         </div>
                     </div>
-                    <div class="web-container">
-                        <FooterNav />
-                        <MainFooter />
-                    </div>
                 </div>
+            </div>
+
+            <div class="container">
+                <FooterNav />
+                <MainFooter />
             </div>
         </div>
     </div>
@@ -917,7 +895,7 @@
             flex-direction: column;
             gap: 32px;
         }
-        .web-hero .web-description {
+        .web-hero .text-description {
             margin-block-start: 0;
         }
         .e-u-padding-block-start-48-mobile {
@@ -929,13 +907,13 @@
         .e-u-margin-block-end-80-mobile {
             margin-block-end: 5rem;
         }
-        .e-u-margin-block-start-80-mobile {
+        .e-mt-20-mobile {
             margin-block-start: 5rem;
         }
-        .e-u-margin-block-start-16-mobile {
+        .e-mt-4-mobile {
             margin-block-start: 1rem;
         }
-        .e-u-margin-block-start-48-mobile {
+        .e-mt-12-mobile {
             margin-block-start: 3rem;
         }
         .e-u-row-gap-0 {
@@ -944,10 +922,10 @@
         .e-u-order-1-mobile {
             order: 1;
         }
-        .e-u-margin-inline-auto-mobile {
+        .e-mx-auto-mobile {
             margin-inline: auto;
         }
-        .e-u-margin-block-start-128-mobile {
+        .e-mt-38-mobile {
             margin-block-start: 8rem;
         }
         .e-bg-left-mobile {
@@ -989,7 +967,7 @@
         .e-u-padding-inline-32-desktop {
             padding-inline: 2rem;
         }
-        .e-u-margin-block-start-200-desktop {
+        .e-mt-50-desktop {
             margin-block-start: 12.5rem;
         }
     }

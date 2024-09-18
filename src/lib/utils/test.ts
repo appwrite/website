@@ -2,6 +2,6 @@
 type UnknownFn = (...args: any[]) => any;
 
 export type TestCases<Fn extends UnknownFn> = {
-	args: Parameters<Fn>;
-	expected: ReturnType<Fn>;
+    args: Parameters<Fn>;
+    expected: ReturnType<Fn>;
 }[];

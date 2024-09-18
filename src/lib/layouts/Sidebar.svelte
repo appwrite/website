@@ -59,7 +59,9 @@
                     <a href={parent.href} aria-label="go back">
                         <span class="icon-cheveron-left" aria-hidden="true" />
                     </a>
-                    <span class="web-side-nav-wrapper-parent-title web-eyebrow">{parent.label}</span>
+                    <span class="web-side-nav-wrapper-parent-title text-micro uppercase"
+                        >{parent.label}</span
+                    >
                 </section>
             {/if}
             {#each navigation as navGroup}
@@ -75,7 +77,7 @@
                         {/if}
                     {:else}
                         {#if navGroup.label}
-                            <h2 class="web-side-nav-header web-eyebrow u-un-break-text">
+                            <h2 class="web-side-nav-header text-micro uppercase whitespace-nowrap">
                                 {navGroup.label}
                             </h2>
                         {/if}
@@ -102,7 +104,7 @@
         {#if expandable}
             <button
                 on:click={toggleSidenav}
-                class="web-icon-button u-margin-inline-start-auto"
+                class="web-icon-button ml-auto"
                 style:margin-bottom="1rem"
                 aria-label="toggle nav"
             >
@@ -120,7 +122,7 @@
             >
                 <span class="web-icon-star" aria-hidden="true" />
                 <span class="text">Star on GitHub</span>
-                <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span>
+                <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
             </a>
         </div>
     </div>

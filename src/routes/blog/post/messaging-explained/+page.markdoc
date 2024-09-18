@@ -59,14 +59,14 @@ const sdk = require('node-appwrite');
 
 const client = new sdk.Client()
     .setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
-    .setProject('5df5acd0d48c2')                  // Your project ID
+    .setProject('<PROJECT_ID>')                  // Your project ID
     .setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
 
 const messaging = new sdk.Messaging(client);
 .
 .
 .
-const message = await messaging.createSMS(
+const message = await messaging.createSms(
     sdk.ID.unique(),
     'Hello from Appwrite Messaging!',
     [smsTopic], // topic to send SMS to
@@ -108,6 +108,6 @@ We hope this blog improved your understanding of how Appwrite Messaging works. W
 
 - [Play around with Messaging on the product page](https://appwrite.io/products/messaging)
 - [Best practices for sending push notifications](https://appwrite.io/blog/post/push-notifications-best-practices)
-- [How tools like Twilio can simplify messaging for developers](https://appwrite.io/blog/post/simplify-messaging-twilio)
+- [How Twilio simplifies messaging for developers](https://appwrite.io/blog/post/simplify-messaging-twilio)
 - [Documentation](https://appwrite.io/docs/products/messaging)
 - [Product video tour](https://www.youtube.com/watch?v=QdDgPeuBZ1I)

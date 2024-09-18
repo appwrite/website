@@ -75,7 +75,7 @@ docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
     --entrypoint="install" \
-    appwrite/appwrite:1.5.7
+    appwrite/appwrite:1.5.11
 ```
 
 For one-click setups, check out the [installation docs](https://appwrite.io/docs/self-hosting). 
@@ -129,7 +129,7 @@ export default async ({ res }) => {
     </>
   );
 
-  return res.send(renderToString(html), 200, {
+  return res.text(renderToString(html), 200, {
     "Content-Type": "text/html",
   });
 };

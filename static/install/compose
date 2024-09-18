@@ -32,7 +32,7 @@ services:
       - appwrite
 
   appwrite:
-    image: appwrite/appwrite:1.5.7
+    image: appwrite/appwrite:1.5.11
     container_name: appwrite
     <<: *x-logging
     restart: unless-stopped
@@ -72,7 +72,7 @@ services:
       - _APP_CONSOLE_HOSTNAMES
       - _APP_SYSTEM_EMAIL_NAME
       - _APP_SYSTEM_EMAIL_ADDRESS
-      - _APP_SYSTEM_SECURITY_EMAIL_ADDRESS
+      - _APP_EMAIL_SECURITY
       - _APP_SYSTEM_RESPONSE_FORMAT
       - _APP_OPTIONS_ABUSE
       - _APP_OPTIONS_ROUTER_PROTECTION
@@ -157,7 +157,7 @@ services:
       - _APP_ASSISTANT_OPENAI_API_KEY
 
   appwrite-realtime:
-    image: appwrite/appwrite:1.5.7
+    image: appwrite/appwrite:1.5.11
     entrypoint: realtime
     container_name: appwrite-realtime
     <<: *x-logging
@@ -201,7 +201,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-audits:
-    image: appwrite/appwrite:1.5.7
+    image: appwrite/appwrite:1.5.11
     entrypoint: worker-audits
     <<: *x-logging
     container_name: appwrite-worker-audits
@@ -228,7 +228,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-webhooks:
-    image: appwrite/appwrite:1.5.7
+    image: appwrite/appwrite:1.5.11
     entrypoint: worker-webhooks
     <<: *x-logging
     container_name: appwrite-worker-webhooks
@@ -242,6 +242,7 @@ services:
       - _APP_ENV
       - _APP_WORKER_PER_CORE
       - _APP_OPENSSL_KEY_V1
+      - _APP_EMAIL_SECURITY
       - _APP_SYSTEM_SECURITY_EMAIL_ADDRESS
       - _APP_DB_HOST
       - _APP_DB_PORT
@@ -256,7 +257,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-deletes:
-    image: appwrite/appwrite:1.5.7
+    image: appwrite/appwrite:1.5.11
     entrypoint: worker-deletes
     <<: *x-logging
     container_name: appwrite-worker-deletes
@@ -310,9 +311,12 @@ services:
       - _APP_LOGGING_CONFIG
       - _APP_EXECUTOR_SECRET
       - _APP_EXECUTOR_HOST
+      - _APP_MAINTENANCE_RETENTION_ABUSE
+      - _APP_MAINTENANCE_RETENTION_AUDIT
+      - _APP_MAINTENANCE_RETENTION_EXECUTION
 
   appwrite-worker-databases:
-    image: appwrite/appwrite:1.5.7
+    image: appwrite/appwrite:1.5.11
     entrypoint: worker-databases
     <<: *x-logging
     container_name: appwrite-worker-databases
@@ -339,7 +343,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-builds:
-    image: appwrite/appwrite:1.5.7
+    image: appwrite/appwrite:1.5.11
     entrypoint: worker-builds
     <<: *x-logging
     container_name: appwrite-worker-builds
@@ -403,7 +407,7 @@ services:
       - _APP_STORAGE_WASABI_BUCKET
 
   appwrite-worker-certificates:
-    image: appwrite/appwrite:1.5.7
+    image: appwrite/appwrite:1.5.11
     entrypoint: worker-certificates
     <<: *x-logging
     container_name: appwrite-worker-certificates
@@ -423,7 +427,7 @@ services:
       - _APP_DOMAIN
       - _APP_DOMAIN_TARGET
       - _APP_DOMAIN_FUNCTIONS
-      - _APP_SYSTEM_SECURITY_EMAIL_ADDRESS
+      - _APP_EMAIL_CERTIFICATES
       - _APP_REDIS_HOST
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
@@ -437,7 +441,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-functions:
-    image: appwrite/appwrite:1.5.7
+    image: appwrite/appwrite:1.5.11
     entrypoint: worker-functions
     <<: *x-logging
     container_name: appwrite-worker-functions
@@ -474,7 +478,7 @@ services:
       - _APP_LOGGING_PROVIDER
 
   appwrite-worker-mails:
-    image: appwrite/appwrite:1.5.7
+    image: appwrite/appwrite:1.5.11
     entrypoint: worker-mails
     <<: *x-logging
     container_name: appwrite-worker-mails
@@ -507,7 +511,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-messaging:
-    image: appwrite/appwrite:1.5.7
+    image: appwrite/appwrite:1.5.11
     entrypoint: worker-messaging
     <<: *x-logging
     container_name: appwrite-worker-messaging
@@ -558,7 +562,7 @@ services:
       - _APP_STORAGE_WASABI_BUCKET
 
   appwrite-worker-migrations:
-    image: appwrite/appwrite:1.5.7
+    image: appwrite/appwrite:1.5.11
     entrypoint: worker-migrations
     <<: *x-logging
     container_name: appwrite-worker-migrations
@@ -573,7 +577,7 @@ services:
       - _APP_OPENSSL_KEY_V1
       - _APP_DOMAIN
       - _APP_DOMAIN_TARGET
-      - _APP_SYSTEM_SECURITY_EMAIL_ADDRESS
+      - _APP_EMAIL_SECURITY
       - _APP_REDIS_HOST
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
@@ -589,7 +593,7 @@ services:
       - _APP_MIGRATIONS_FIREBASE_CLIENT_SECRET
 
   appwrite-task-maintenance:
-    image: appwrite/appwrite:1.5.7
+    image: appwrite/appwrite:1.5.11
     entrypoint: maintenance
     <<: *x-logging
     container_name: appwrite-task-maintenance
@@ -623,7 +627,7 @@ services:
       - _APP_MAINTENANCE_RETENTION_SCHEDULES
 
   appwrite-worker-usage:
-    image: appwrite/appwrite:1.5.7
+    image: appwrite/appwrite:1.5.11
     entrypoint: worker-usage
     container_name: appwrite-worker-usage
     <<: *x-logging
@@ -652,7 +656,7 @@ services:
       - _APP_USAGE_AGGREGATION_INTERVAL
 
   appwrite-worker-usage-dump:
-    image: appwrite/appwrite:1.5.7
+    image: appwrite/appwrite:1.5.11
     entrypoint: worker-usage-dump
     <<: *x-logging
     container_name: appwrite-worker-usage-dump
@@ -680,7 +684,7 @@ services:
       - _APP_USAGE_AGGREGATION_INTERVAL
 
   appwrite-task-scheduler-functions:
-    image: appwrite/appwrite:1.5.7
+    image: appwrite/appwrite:1.5.11
     entrypoint: schedule-functions
     container_name: appwrite-task-scheduler-functions
     <<: *x-logging
@@ -705,7 +709,7 @@ services:
       - _APP_DB_PASS
 
   appwrite-task-scheduler-messages:
-    image: appwrite/appwrite:1.5.7
+    image: appwrite/appwrite:1.5.11
     entrypoint: schedule-messages
     container_name: appwrite-task-scheduler-messages
     <<: *x-logging
@@ -745,7 +749,7 @@ services:
     <<: *x-logging
     restart: unless-stopped
     stop_signal: SIGINT
-    image: openruntimes/executor:0.5.5
+    image: openruntimes/executor:0.5.10
     networks:
       - appwrite
       - runtimes

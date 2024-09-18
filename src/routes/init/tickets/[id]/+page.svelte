@@ -4,8 +4,7 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import { createCopy } from '$lib/utils/copy';
-    import TicketPreview from '$routes/init/(components)/TicketPreview.svelte';
-    import Ticket from '../../(components)/Ticket.svelte';
+    import { TicketPreview, Ticket } from '$routes/init/(components)/ticket';
 
     export let data;
 
@@ -41,25 +40,20 @@
     <div class="hero">
         <div class="desktop-left">
             <div class="header">
-                <h1 class="web-display">
-                    Join <span class="web-u-color-text-primary" style:font-weight="500">
-                        init<span class="web-u-color-text-accent">_</span>
-                    </span><br />26 Feb - 1 March
+                <h1 class="text-display font-aeonik-pro">
+                    Join <span class="text-primary" style:font-weight="500"> init </span><br
+                    />August 19th-23rd
                 </h1>
             </div>
 
             <div class="info">
-                <p class="web-label u-margin-block-start-16">
-                    Register today and claim your Init ticket.
-                </p>
-                <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-32">
+                <p class="text-label mt-4">Register today and claim your ticket.</p>
+                <div class="mt-8 flex items-center gap-4">
                     <a class="web-button" href="/init/tickets">
-                        <span class="text">Get my Init ticket</span>
+                        <span class="text">Get my ticket</span>
                     </a>
                     <button class="web-button is-secondary" on:click={copy}>
-                        <span
-                            class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary"
-                        />
+                        <span class="web-icon-{$copied ? 'check' : 'copy'} text-primary" />
 
                         <span class="text">Copy ticket URL</span>
                     </button>
@@ -74,7 +68,7 @@
         </TicketPreview>
     </div>
 
-    <div class="web-container">
+    <div class="container">
         <FooterNav />
         <MainFooter />
     </div>
@@ -94,7 +88,7 @@
             .info {
                 grid-row: 3;
 
-                .u-flex {
+                .flex {
                     flex-direction: column;
                     gap: 0.5rem;
                     margin-block-start: 1rem;
@@ -108,7 +102,7 @@
     }
 
     @media screen and (max-width: 1023px) {
-        .web-container {
+        .container {
             padding-block-start: 0;
 
             :global(nav) {

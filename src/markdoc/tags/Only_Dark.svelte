@@ -1,1 +1,1 @@
-<span class="u-only-dark"><slot /></span>
+<span class="web-u-only-dark"><slot /></span>

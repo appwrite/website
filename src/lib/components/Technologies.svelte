@@ -38,7 +38,7 @@
             href: '/docs/quick-starts/angular',
             image: `/images/platforms/${$themeInUse}/angular.svg`
         },
-         {
+        {
             name: 'Refine',
             href: '/docs/quick-starts/refine',
             image: `/images/platforms/${$themeInUse}/refine.svg`
@@ -57,8 +57,7 @@
             name: 'React Native',
             href: '/docs/quick-starts/react-native',
             image: `/images/platforms/${$themeInUse}/react-native.svg`
-        },
-       
+        }
     ] as Array<{
         name: string;
         href: string;
@@ -66,12 +65,17 @@
     }>;
 </script>
 
-<ul class="u-flex u-flex-wrap u-gap-16 web-u-margin-block-32-mobile web-u-margin-block-40-not-mobile">
+<ul class="web-u-margin-block-32-mobile web-u-margin-block-40-not-mobile flex flex-wrap gap-4">
     {#each platforms as platform}
         <Tooltip>
             <li>
                 <a href={platform.href} class="web-icon-button web-box-icon has-border-gradient">
-                    <img src={platform.image} alt="{platform.name} quick start" width="32" height="32" />
+                    <img
+                        src={platform.image}
+                        alt="{platform.name} quick start"
+                        width="32"
+                        height="32"
+                    />
                 </a>
             </li>
             <svelte:fragment slot="tooltip">{platform.name}</svelte:fragment>

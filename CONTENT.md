@@ -49,9 +49,9 @@ Create ordered (numbered) and unordered (bulleted) lists using 1., \*, or -.
 **Unordered List**:
 
 ```md
-- Apple
-- Banana
-- Cherry
+-   Apple
+-   Banana
+-   Cherry
 ```
 
 #### Links
@@ -129,14 +129,20 @@ Alternatively, use markdoc tables.
 
 ```md
 {% table %}
-* Heading 1
-* Heading 2
+
+-   Heading 1
+-   Heading 2
+
 ---
-* Row 1 Cell 1
-* Row 1 Cell 2
+
+-   Row 1 Cell 1
+-   Row 1 Cell 2
+
 ---
-* Row 2 Cell 1
-* Row 2 cell 2
+
+-   Row 2 Cell 1
+-   Row 2 cell 2
+
 {% /table %}
 ```
 
@@ -186,7 +192,9 @@ print('test');
 </pre>
 
 #### Sections
+
 Use sections when there is a clear step-by-step format to a page. This is used mainly in journey pages and tutorials.
+
 ```md
 {% section #featured-products-1 step=1 title="Title" %}
 Lorem ipsum dolor sit amet consectetur.
@@ -243,6 +251,7 @@ Available sizes are `s`, `m`, `l` and `xl`. Default: `s`.
 ```
 
 #### Cards
+
 We use cards when we reference a list of links for navigation
 
 ```
@@ -268,6 +277,7 @@ Get started with Appwrite and SvelteKit
 ```
 
 #### Cards with icons
+
 We use cards when we reference a list of links for navigation, this variation has icons for extra hints visually.
 
 ```
@@ -285,6 +295,7 @@ Configure FCM for push notification to Android and Apple devices.
 ```
 
 #### Accordions
+
 Use accordions to reduce page size and collapse information that's not important when a reader is skilling the page.
 
 ```
