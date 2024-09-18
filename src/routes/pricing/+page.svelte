@@ -184,14 +184,14 @@
                                                 For scaling teams and agencies that need dedicated
                                                 support.
                                             </p>
-                                            <button
+                                            <a
+                                                href="{PUBLIC_APPWRITE_DASHBOARD}/console?type=createScale"
                                                 class="web-button is-secondary is-full-width mt-8"
-                                                disabled
                                             >
                                                 <span class="text-sub-body font-medium"
-                                                    >Coming soon</span
+                                                    >Start now</span
                                                 >
-                                            </button>
+                                            </a>
                                         </header>
                                         <div class="web-pricing-cards-content">
                                             <p>Everything in Pro, plus:</p>
