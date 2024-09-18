@@ -48,7 +48,7 @@
     export let isReferences = false;
 
     const variantClasses: Record<DocsLayoutVariant, string> = {
-        default: 'web-grid-side-nav [max-inline-size: 90rem] mx-auto',
+        default: 'web-grid-side-nav max-w-[90rem] mx-auto',
         expanded: 'web-grid-huge-navs',
         'two-side-navs': 'web-grid-two-side-navs'
     };
