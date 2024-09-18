@@ -2,7 +2,7 @@
 layout: post
 title: "7 practical steps to achieve GDPR compliance for your startup"
 description: All you need to know about GDPR compliance for startups, the do's, don'ts and best practices.
-date: 2024-09-10
+date: 2024-09-25
 cover: /images/blog/7-steps-gdpr-startups/cover.png
 timeToRead: 4
 author: snezhanna
@@ -31,7 +31,7 @@ To help you stay compliant and build user confidence, here are 7 essential steps
 
 ## 1. Understand what data you’re collecting
 
-The first step is to audit what personal data your app collects, such as:
+The first step is to examine what personal data your app collects, such as:
 
 - Names, emails, and phone numbers
 - Location data
@@ -48,7 +48,7 @@ Before collecting any personal data, you must get explicit consent from users. T
 - Inform users about what data you’re collecting, why you’re collecting it, and how it will be used.
 - Provide an option for users to opt-in and ensure they can withdraw consent just as easily.
 
-For example, if your app tracks user behavior for analytics or advertising, users need to actively opt into these practices.
+For example, if your app or website tracks user behavior for analytics or advertising, users need to actively opt into these practices.
 
 ## 3. Change your cookie policy
 
@@ -68,7 +68,7 @@ Encrypting personal data is a crucial step for GDPR compliance and a smart way t
 
 Here’s how to get it right:
 
-- Encrypt data in transit using protocols like TLS (Transport Layer Security). This keeps data secure while it’s being sent between users and your servers.
+- [Encrypt data](https://appwrite.io/docs/advanced/security/encryption) in transit using protocols like TLS (Transport Layer Security). This keeps data secure while it’s being sent between users and your servers.
 - Encrypt data at rest with strong algorithms to protect it while it’s stored, whether in your database or backup files.
 - Keep encryption keys safe by following best practices for their storage and management. Regularly update and protect these keys to prevent unauthorized access.
 
@@ -87,8 +87,8 @@ Your app can integrate a data management portal that allows users to manage thei
 To protect user data, you must ensure that your app uses strong security measures during authentication and authorization. This includes:
 
 - Implementing **multi-factor authentication (MFA)** to add an extra layer of security for logging in.
-- Using **encrypted tokens** or **OAuth2** for secure authorization processes.
-- Enforcing strong password policies to prevent weak credentials like [password hashing](https://appwrite.io/blog/post/password-hashing-algorithms) or common passwords.
+- Using **encrypted tokens** or [**OAuth2**](https://appwrite.io/docs/products/auth/oauth2) for secure authorization processes.
+- Enforcing strong password policies to prevent weak credentials like [password hashing](https://appwrite.io/blog/post/password-hashing-algorithms) or [common passwords](https://appwrite.io/blog/post/goodbye-plaintext-passwords).
 
 These practices not only comply with GDPR’s requirements for secure data handling but also reduce the risk of breaches and unauthorized access.
 
