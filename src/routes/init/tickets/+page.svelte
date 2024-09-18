@@ -1,16 +1,50 @@
 <script lang="ts">
-    import { page } from '$app/stores';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
-    import Ticket from '../(components)/Ticket.svelte';
-    import TicketPreview from '../(components)/TicketPreview.svelte';
+    import { Ticket } from '../(components)/ticket';
     import { getMockContributions, loginGithub } from '../helpers';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
+    import TicketScroll from '../(components)/TicketScroll.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
     const ogImage = buildOpenGraphImage('init', description);
+
+    const tickets = [
+        {
+            name: 'Eldad',
+            title: 'Founder'
+        },
+        {
+            name: 'Jesse',
+            title: 'Design Engineer'
+        },
+        {
+            name: 'Bradley',
+            title: 'Platform Engineer'
+        },
+        {
+            name: 'Caio',
+            title: 'Visual Designer'
+        },
+        {
+            name: 'Matej',
+            title: 'Platform Engineer'
+        },
+        {
+            name: 'Torsten',
+            title: 'Product Architect'
+        },
+        {
+            name: 'Jade',
+            title: 'Visual Designer'
+        },
+        {
+            name: 'Kushboo',
+            title: 'Platform Engineer'
+        }
+    ];
 </script>
 
 <svelte:head>
@@ -31,163 +65,111 @@
 </svelte:head>
 
 <Main>
-    <div class="hero">
-        <div class="desktop-left">
-            <h1 class="web-display">
-                <span style:font-weight="500">
-                    <span class="web-u-color-text-primary">init</span><span
-                        class="web-u-color-text-accent">_</span
-                    >
-                </span>
-                launches on February 26th
-            </h1>
-
+    <div class="top">
+        <div class="signup">
             <div class="info">
-                <p class="web-label web-u-color-text-primary">
-                    Register today and claim your Init ticket
-                </p>
-                <button
-                    class="web-button is-full-width u-margin-block-start-16"
-                    on:click={loginGithub}
-                >
-                    <div class="web-icon-github" />
-                    <span class="text">Register with GitHub account</span>
-                </button>
-                <a
-                    href="https://cloud.appwrite.io/login?forceRedirect={$page.url
-                        .origin}/init/tickets"
-                    class="web-button is-full-width is-secondary u-margin-block-start-8"
-                >
-                    <div class="web-icon-appwrite web-u-color-text-primary" />
-                    <span class="text">Register with Appwrite account</span>
-                </a>
-                <p class="u-margin-block-start-16">
-                    By registering, you agree to our <a href="/terms" class="web-link is-inline"
+                <hgroup>
+                    <h1 class="text-display font-aeonik-pro">
+                        <span style:font-weight="500">init</span>
+                        launches on August 19th
+                    </h1>
+                    <p class="text-label text-primary">Register today and claim your Init ticket</p>
+                </hgroup>
+                <div class="buttons">
+                    <button class="web-button" on:click={loginGithub}>
+                        <div class="web-icon-github" />
+                        <span class="text">Register with GitHub</span>
+                    </button>
+                </div>
+                <p class="privacy">
+                    By registering, you agree to our <a href="/terms" class="web-link underline"
                         >Terms and Conditions</a
                     >
-                    and <a href="/privacy" class="web-link is-inline">Privacy Policy</a>
+                    and <a href="/privacy" class="web-link underline">Privacy Policy</a>
                 </p>
             </div>
+            <div class="shadow"></div>
         </div>
 
-        <div class="ticket-preview-wrapper">
-            <TicketPreview>
-                <div class="ticket-1">
-                    <Ticket name="eldadfux" id={123123} />
-                </div>
-                <div class="ticket-2">
-                    <Ticket
-                        name="Walter"
-                        gh_user="walterob"
-                        id={1}
-                        contributions={getMockContributions()}
-                    />
-                </div>
-                <div class="ticket-3">
-                    <Ticket name="Sara" gh_user="sara_k" id={10} />
-                </div>
-            </TicketPreview>
-        </div>
+        <TicketScroll />
     </div>
 
-    <div class="web-container">
+    <div class="container">
         <FooterNav />
         <MainFooter />
     </div>
 </Main>
 
 <style lang="scss">
-    h1 {
-        margin-block-start: 3.5rem;
-    }
+    .top {
+        min-height: 80vh;
+        margin: 48px 0 -96px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
 
-    .info {
-        p:first-child {
-            margin-block-start: 4rem;
-        }
-    }
-
-    .ticket-preview-wrapper {
-        display: contents;
-    }
-
-    :global(.ticket-preview) {
-        .ticket-1 {
-            --base-width: 24.375rem;
-            inset-inline-start: 50%;
-            --p-translate-x: calc(-50% - 480px);
-            block-size: auto;
-            opacity: 0.5;
-        }
-
-        .ticket-2 {
-            inset-inline-start: 50%;
-            --p-translate-x: -50%;
-            --base-width: min(40vw, 28.75rem);
-        }
-
-        .ticket-3 {
-            --base-width: 24.375rem;
-            inset-inline-start: 50%;
-            --p-translate-x: calc(-50% + 480px);
-            opacity: 0.25;
-        }
-
-        [class^='ticket-'] {
+        .signup {
+            margin: 0 auto;
+            width: 100%;
             position: absolute;
-            inset-block-start: 50%;
-            translate: var(--p-translate-x, 0) -50%;
-        }
-    }
+            top: 50%;
+            left: 50%;
+            padding: 0 48px;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: 1100;
+            text-align: center;
 
-    .ticket-preview-wrapper :global(.ticket-preview::after) {
-        content: '';
-        position: absolute;
-        inset: 1px;
-        background: linear-gradient(
-            0deg,
-            #19191c 7.06%,
-            rgba(25, 25, 28, 0.9) 21.93%,
-            rgba(25, 25, 28, 0) 88.57%
-        );
-        border-radius: var(--p-border-radius);
-        z-index: 10;
-    }
+            .info {
+                position: relative;
+                z-index: 11;
+                display: flex;
+                flex-direction: column;
+                gap: 32px;
+                color: #fff;
 
-    @media screen and (max-width: 511px) {
-        .ticket-preview-wrapper {
-            :global(.ticket-preview) {
-                border-radius: 0;
-            }
-        }
-    }
+                hgroup {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
 
-    @media screen and (max-width: 1023px) {
-        h1 {
-            margin-block-start: 0;
-        }
-
-        .info {
-            grid-row: 3;
-
-            p:first-child {
-                margin-block-start: 0;
-                text-align: center;
-            }
-        }
-
-        .ticket-preview-wrapper {
-            :global(.ticket-preview) {
-                grid-column: 1 / -1;
+                .privacy {
+                    font-size: 12px;
+                }
+                .buttons {
+                    display: flex;
+                    gap: 16px;
+                    margin: 0 auto;
+                }
             }
 
-            .ticket-1,
-            .ticket-3 {
-                opacity: 0;
-            }
-
-            .ticket-2 {
-                --base-width: min(60vw, 300px);
+            .shadow {
+                width: 100vw;
+                height: 80vh;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                z-index: 10;
+                backdrop-filter: blur(6px);
+                background-color: hsl(var(--web-color-background) / 50%);
+                mask-composite: intersect;
+                mask-image: linear-gradient(
+                        to top,
+                        transparent,
+                        rgba(0, 0, 0, 1) 25%,
+                        rgba(0, 0, 0, 1) 75%,
+                        transparent
+                    ),
+                    linear-gradient(
+                        to right,
+                        transparent,
+                        rgba(0, 0, 0, 1) 25%,
+                        rgba(0, 0, 0, 1) 75%,
+                        transparent
+                    );
             }
         }
     }

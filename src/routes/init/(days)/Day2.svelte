@@ -1,230 +1,125 @@
 <script lang="ts">
+    import illustration from '../(assets)/day-2/functions-announcement.svg';
+    import Video from '../(components)/shared/Video.svelte';
+    import thumbnail from '../(assets)/day-2/video-thumb.png';
+    import { Grid } from '../(components)/grid';
+    import Announcement from '../(components)/shared/Announcement.svelte';
+    import Media from '../(components)/shared/Media.svelte';
+    import Article from '../(components)/shared/Article.svelte';
+    import functionComparison from '../(assets)/day-2/function-comparison.svg';
+    import functionComparisonMobile from '../(assets)/day-2/function-comparison-mobile.svg';
+    import dynamicKeys from '../(assets)/day-2/dynamic-keys.svg';
+    import dynamicKeysMobile from '../(assets)/day-2/dynamic-keys-mobile.svg';
+    import DayCard from '../(components)/DayCard.svelte';
     import { Animations } from '../(animations)';
-    import illustration from '../(assets)/ssr.png';
-    import thumbnail from '../(assets)/thumbnail-ssr.png';
-    import thumbnailProduct from '../(assets)/thumbnail-ssr-product.png';
-    import VideoWrapper from '../(components)/VideoWrapper.svelte';
-    import Day from './Day.svelte';
-    import Video from '../(components)/Video.svelte';
+    import { format } from 'date-fns';
 
     export let release: Date;
-    export let date: string;
 </script>
 
-<Day day={date} {release}>
-    <div class="mosaic">
-        <a
-            href="/blog/post/introducing-support-for-server-side-rendering"
-            class="web-card is-normal has-border-gradient"
-            style:padding="0"
+<Grid.Root columns={12} rows={2}>
+    <Grid.Cell columns={7} rows={2}>
+        <Announcement
+            title="Function ecosystem"
+            description="New features are being added to vastly improve your Appwrite Functions experience."
+            url="/blog/post/introducing-functions-ecosystem"
         >
-            <div style:padding="2rem" style:padding-block-end="0">
-                <h3 class="web-label web-u-color-text-primary">Server-side rendering</h3>
-                <p style:margin-block-start="0.625rem">
-                    We introduce improved support for server-side rendering in Appwrite
-                    Authentication.
-                </p>
-                <div class="web-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
-                    <span class="text">Announcement</span>
-                    <span class="web-icon-arrow-right" />
+            <div class="illustration-wrapper">
+                <div class="illustration">
+                    <img src={illustration} alt="" />
                 </div>
             </div>
-            <img src={illustration} alt="" />
-            <div class="circle" />
-        </a>
-        <div
-            class="web-card is-normal has-border-gradient"
-            style="padding: 0.5rem; --p-aspect-ratio: 0;"
-        >
-            <Video
-                src="https://www.youtube-nocookie.com/embed/jeL4cSovOBA?si=0tMDecmUucWOYASg"
-                {thumbnail}
-            />
-        </div>
+        </Announcement>
+    </Grid.Cell>
+    <Grid.Cell columns={5}>
+        <Article
+            title="Comparing serverless functions: Appwrite vs. Supabase vs. Firebase"
+            illustration={functionComparison}
+            mobileIllustration={functionComparisonMobile}
+            url="/blog/post/appwrite-vs-firebase-vs-supabase-functions-comparison"
+            label="Learn more"
+        />
+    </Grid.Cell>
+    <Grid.Cell columns={5}>
+        <Article
+            title="How to leverage Appwrite Dynamic Keys for enhanced security"
+            illustration={dynamicKeys}
+            mobileIllustration={dynamicKeysMobile}
+            url="/blog/post/how-to-leverage-dynamic-api-keys-for-better-security"
+            label="Learn more"
+        />
+    </Grid.Cell>
 
-        <a
-            href="/blog/post/csr-vs-ssr-with-nextjs"
-            class="web-card is-normal has-border-gradient u-overflow-hidden"
-            style="padding: 1.25rem; --p-aspect-ratio: 0;"
-        >
-            <h3 class="web-label web-u-color-text-primary" style="max-width: 18.75rem">CSR vs SSR</h3>
-            <div class="web-card-link u-flex u-cross-center">
-                <span class="text">Article</span>
-                <span class="web-icon-arrow-right" />
-            </div>
-            <div>
-                <Animations.SSR />
-            </div>
-        </a>
-        <a
-            href="https://discord.com/events/564160730845151244/1209117245859569754"
-            target="_blank"
-            rel="noreferrer noopener"
-            class="web-card is-normal has-border-gradient"
-            style="padding: 0.5rem; display: flex; justify-content: space-between; "
-        >
-            <div style="padding: 0.75rem;">
-                <h3 class="web-label web-u-color-text-primary">Event: Speed</h3>
-                <div class="web-card-link u-flex u-cross-center">
-                    <span class="text">Join</span>
-                    <span class="web-icon-arrow-right" />
-                </div>
-            </div>
-            <img
-                src="/images/community/events/init-1.png"
-                alt=""
-                style="aspect-ratio: 16/9; border-radius: 0.75rem;  object-fit: cover;"
+    <Grid.Cell columns={4}>
+        <Article
+            url="/docs/products/functions/execute"
+            title="Docs: Binary executions"
+            label="Read docs"
+        />
+    </Grid.Cell>
+    <Grid.Cell columns={4}>
+        <Article
+            url="/docs/products/functions/develop"
+            title="Docs: Dynamic keys"
+            label="Read docs"
+        />
+    </Grid.Cell>
+    <Grid.Cell columns={4}>
+        <Article
+            url="/docs/products/functions/executions"
+            title="Docs: Delayed executions"
+            label="Read docs"
+        />
+    </Grid.Cell>
+    <Grid.Cell columns={6}>
+        <Media title="Product demo" label="Watch">
+            <Video
+                src="https://www.youtube-nocookie.com/embed/G2UBTOBumII?si=2kMcQnu1SV0VcE1w&amp;controls=0"
+                title="Product demo"
+                {thumbnail}
+                --p-aspect-ratio="2.35/1"
             />
-        </a>
-        <VideoWrapper let:openVideo>
-            <button
-                on:click={openVideo}
-                class="web-card is-normal has-border-gradient u-overflow-hidden"
-                style="padding: 0.5rem; display: flex; justify-content: space-between; "
-            >
-                <div style="padding: 0.75rem;">
-                    <h3 class="web-label web-u-color-text-primary" style="max-width: 300px">
-                        Product tour
-                    </h3>
-                    <div class="web-card-link u-flex u-cross-center">
-                        <span class="text">Watch</span>
-                        <span class="web-icon-arrow-right" />
-                    </div>
-                </div>
-                <Video
-                    thumbnail={thumbnailProduct}
-                    --p-aspect-ratio="16/9"
-                    --p-border-radius="0.75rem"
-                    src="https://www.youtube-nocookie.com/embed/7LN05c-ov_0?si=Gb0gS-k4M24F1AOg"
-                />
-            </button>
-        </VideoWrapper>
-        <a
-            href="/docs/products/auth/server-side-rendering"
-            class="web-card is-normal has-border-gradient"
-            style="padding: 1.25rem"
+        </Media>
+    </Grid.Cell>
+    <Grid.Cell columns={6}>
+        <Media
+            title="Discord Stage: Day 2"
+            url="https://discord.gg/zzj9pTzB?event=1268847922590650378"
+            label="Join"
         >
-            <h3 class="web-label web-u-color-text-primary">Documentation</h3>
-            <div class="web-card-link u-flex u-cross-center">
-                <span class="text">Learn more</span>
-                <span class="web-icon-arrow-right" />
-            </div>
-        </a>
-    </div>
-</Day>
+            <DayCard
+                hasBorder={false}
+                day={{
+                    title: 'Day 2',
+                    release,
+                    subtitle: format(release, 'MMM dd')
+                }}
+                --p-aspect-ratio="2.35/1"
+            >
+                <svelte:component this={Animations.Functions} />
+            </DayCard>
+        </Media>
+    </Grid.Cell>
+</Grid.Root>
 
 <style lang="scss">
-    p {
-        text-wrap: balance;
-    }
+    .illustration-wrapper {
+        min-height: 275px;
 
-    .mosaic {
-        display: grid;
-        grid-template-columns: repeat(24, 1fr);
-        grid-template-rows: repeat(2, 224px) 126px 60px;
-        gap: 2rem;
-
-        min-height: 660px;
-
-        > :nth-child(1) {
-            grid-column: 1 / 15;
-            grid-row: 1 / 3;
-
-            position: relative;
-            overflow: hidden;
-
-            img {
-                display: block;
-                margin-block-start: 1rem;
-                position: relative;
-                z-index: 10;
-            }
-
-            .circle {
-                $size: 200px;
-                width: $size;
-                height: $size;
-                background: hsl(var(--web-color-accent));
-                filter: blur(200px);
-
-                position: absolute;
-                inset-block-end: calc(-1 * $size / 2);
-                inset-inline-start: 50%;
-                translate: -50%;
-                z-index: 1;
-            }
+        @media screen and (max-width: 768px) {
+            min-height: 200px;
         }
 
-        > :nth-child(2) {
-            grid-column: 15 / 25;
-            grid-row: 1 / 2;
-        }
+        .illustration {
+            position: absolute;
+            right: -100px;
+            top: 50px;
+            height: 500px;
 
-        > :nth-child(3) {
-            grid-column: 15 / 25;
-            grid-row: 2 / 3;
-
-            > div:last-child {
-                position: absolute;
-                inset-block-start: 2rem;
-                inset-inline-end: -3rem;
-            }
-
-            @media screen and (max-width: 1023px) {
-                height: 280px;
-
-                > div:last-child {
-                    inset-block-start: unset;
-                    inset-block-end: -7rem;
-                    inset-inline-end: -3rem;
-                }
-            }
-        }
-
-        > :nth-child(4) {
-            grid-column: 1 / 10;
-            grid-row: 3 / 4;
-
-            @media screen and (max-width: 1023px) {
-                display: flex;
-                flex-direction: column;
-            }
-        }
-
-        > :nth-child(5) {
-            grid-column: 10 / 19;
-            grid-row: 3 / 4;
-
-            @media screen and (max-width: 1023px) {
-                display: flex;
-                flex-direction: column;
-            }
-        }
-
-        > :nth-child(6) {
-            grid-column: 19 / 25;
-            grid-row: 3 / 4;
-        }
-        > :nth-child(7) {
-            grid-column: 1 / 25;
-            grid-row: 4 / 5;
-        }
-
-        @media screen and (max-width: 1023px) {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .web-card {
-            .web-card-link {
-                color: var(--web-color-primary);
-            }
-
-            &:hover {
-                .web-card-link {
-                    color: hsl(var(--web-color-accent-darker));
-                }
+            @media screen and (max-width: 768px) {
+                height: 350px;
+                top: 150px;
+                right: -50px;
             }
         }
     }

@@ -17,9 +17,9 @@
         },
         {
             question: 'I am a Pro user. Can I apply?',
-            answer: "Yes, if you are currently on a Free or Pro plan, you can apply for the program."
+            answer: 'Yes, if you are currently on a Free or Pro plan, you can apply for the program.'
         },
-         {
+        {
             question: 'I am already a Scale user. Can I apply?',
             answer: "If you are currently on a Scale plan, you can't apply for the program as the program is intended for Startups to help them relieve financial burdens at an early stage. If you're able to pay for a Scale plan, we will consider you uneligible."
         },
@@ -29,7 +29,7 @@
         },
         {
             question: 'What are the limits of the Scale plan?',
-            answer: 'The Appwrite Scale plan has ample room for growth and can handle production applications of all sizes. We have set generous limits to ensure most applications can grow comfortably within those limits without incurring high bills. Please review our <a class="web-link is-inline" href="/pricing">pricing page</a> for a full overview of the Scale plan limits.'
+            answer: 'The Appwrite Scale plan has ample room for growth and can handle production applications of all sizes. We have set generous limits to ensure most applications can grow comfortably within those limits without incurring high bills. Please review our <a class="web-link underline" href="/pricing">pricing page</a> for a full overview of the Scale plan limits.'
         },
         {
             question: 'What happens if we scale overnight?',
@@ -37,7 +37,7 @@
         },
         {
             question: "What's included in the Appwrite for Startups program?",
-            answer: 'Startups joining the program get access to everything Appwrite Scale offers. This includes Cloud credits, unlimited seats, and premium email support. In addition, we provide you with special swag, and you get a program manager and a private Discord channel. Read more about it in our <a class="web-link is-inline" href="/blog/post/announcing-appwrite-startups-program">announcement</a>.'
+            answer: 'Startups joining the program get access to everything Appwrite Scale offers. This includes Cloud credits, unlimited team members, and premium email support. In addition, we provide you with special swag, and you get a program manager and a private Discord channel. Read more about it in our <a class="web-link underline" href="/blog/post/announcing-appwrite-startups-program">announcement</a>.'
         },
         {
             question: 'What kind of support do we get?',
@@ -51,13 +51,13 @@
         {
             question:
                 'I am already using another backend as a service provider. How do I migrate to Appwrite?',
-            answer: 'We have a <a class="web-link is-inline" href="/docs/advanced/migrations">migration tool</a> to help you transition from other platforms. If you need additional assistance, we are here to help.'
+            answer: 'We have a <a class="web-link underline" href="/docs/advanced/migrations">migration tool</a> to help you transition from other platforms. If you need additional assistance, we are here to help.'
         },
         {
             question: 'What happens after the 12 months run out?',
             answer: 'A month before the end of the term, we will re-evaluate your situation together and provide you with a fitting plan. Depending on your situation, this could mean you have to start paying full price, a reduced price, or nothing at all.'
         },
-         {
+        {
             question: 'I need to sign a BAA. Can I do this with Appwrite?',
             answer: 'Yes, we can provide you with this.'
         }
@@ -74,7 +74,7 @@
 </script>
 
 <ul
-    class="collapsible u-width-full-line"
+    class="collapsible w-full divide-y divide-white/5"
     style="--p-toggle-border-color: var(--web-color-smooth);"
     use:melt={$root}
     id="faq"
@@ -84,19 +84,22 @@
             <!-- Progressive Enhancement for kbd navigation & animations -->
             {#if browser}
                 <div
-                    class="collapsible-wrapper"
+                    class="collapsible-wrapper py-2"
                     use:melt={$item(`${index}`)}
                     {...{ open: $isSelected(`${index}`) ? true : undefined }}
                 >
                     <h3 use:melt={$heading({ level: 3 })}>
                         <button
-                            class="collapsible-button u-width-full-line"
+                            class="flex w-full items-center justify-between gap-2.5 py-6 text-left"
                             use:melt={$trigger(`${index}`)}
                         >
-                            <span class="web-label web-u-color-text-primary">
+                            <span class="text-label font-aeonik-pro text-primary">
                                 {faqItem.question}
                             </span>
-                            <div class="icon web-u-color-text-primary">
+                            <div
+                                class="icon text-primary self-start transition-transform"
+                                class:rotate-180={$isSelected(`${index}`)}
+                            >
                                 <span class="icon-cheveron-down" aria-hidden="true" />
                             </div>
                         </button>
@@ -108,7 +111,7 @@
                             use:melt={$content(`${index}`)}
                             transition:slide
                         >
-                            <p class="web-main-body-400">
+                            <p class="text-body">
                                 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                                 {@html faqItem.answer}
                             </p>
@@ -117,17 +120,17 @@
                 </div>
             {:else}
                 <details class="collapsible-wrapper" open={index === 0}>
-                    <summary class="collapsible-button">
-                        <span class="web-label web-u-color-text-primary">
+                    <summary class="collapsible-button appearance-none">
+                        <span class="text-label text-primary">
                             {faqItem.question}
                         </span>
-                        <div class="icon web-u-color-text-primary">
+                        <div class="icon text-primary">
                             <span class="icon-cheveron-down" aria-hidden="true" />
                         </div>
                     </summary>
 
                     <div class="collapsible-content">
-                        <p class="web-main-body-400">
+                        <p class="text-body">
                             <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                             {@html faqItem.answer}
                         </p>

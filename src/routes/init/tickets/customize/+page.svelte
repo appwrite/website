@@ -1,173 +1,110 @@
 <script lang="ts">
-    import { page } from '$app/stores';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
-    import { createCopy } from '$lib/utils/copy';
-    import TicketPreview from '$routes/init/(components)/TicketPreview.svelte';
     import { dequal } from 'dequal/lite';
-    import { slide } from 'svelte/transition';
-    import Ticket from '../../(components)/Ticket.svelte';
-    import Form from './form.svelte';
-    import type { TicketVariant } from '../constants';
+    import {
+        TicketPreview,
+        Ticket,
+        TicketActions,
+        TicketDetails
+    } from '$routes/init/(components)/ticket/index.js';
 
     export let data;
 
-    let name = data.ticket?.name ?? '';
-    const id = data.ticket?.id ?? 0;
-    let tribe: string | undefined = data.ticket?.tribe ?? undefined;
-    let showGitHub = data.ticket?.show_contributions ?? true;
-    let drawerOpen = false;
+    let originalName = data.ticket?.name ?? '';
+    let name = originalName;
+    let originalTitle = data.ticket?.title ?? '';
+    let title = originalTitle;
+    let originalShowGitHub = data.ticket?.show_contributions ?? true;
+    let showGitHub = originalShowGitHub;
+
     let customizing = false;
-    let variant: TicketVariant = data.ticket.variant ?? 'default';
+    let saving = false;
 
     $: modified = !dequal(
         {
-            name: data.ticket?.name,
-            tribe: data.ticket?.tribe,
-            showGitHub: data.ticket?.show_contributions
+            name: originalName,
+            title: originalTitle,
+            showGitHub: originalShowGitHub
         },
-        { name, tribe, showGitHub }
+        { name, title, showGitHub }
     );
 
     async function saveTicket() {
-        const ticketId = data.ticket?.$id;
-        if (ticketId === undefined || !modified) {
-            return;
-        }
+        if (!modified) return;
 
-        await fetch(`/init/tickets/update`, {
+        saving = true;
+
+        let response = await fetch(`/init/tickets/update`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                ticketId,
                 name,
-                tribe,
+                title,
                 showGitHub
             })
         });
-    }
 
-    async function goBack() {
+        if (response.ok) {
+            originalName = name;
+            originalTitle = title;
+            originalShowGitHub = showGitHub;
+        }
+
         customizing = false;
-        saveTicket();
+        saving = false;
     }
-
-    const ticketUrl = `${$page.url.origin}/init/tickets/${data.ticket.$id}`;
-    const { copied, copy } = createCopy(ticketUrl);
-    $: twitterText = encodeURIComponent(
-        [
-            `Join Init and celebrate everything new with @appwrite`,
-            ``,
-            `Claim your ticket. ${ticketUrl}`
-        ].join('\n')
-    );
 </script>
 
 <svelte:head>
     <title>Customize Ticket - Appwrite</title>
     <meta
         name="description"
-        content="Join Init February 26-March 1. Register today and claim your Init ticket."
+        content="Join Init August 19th-23rd. Register today and claim your ticket."
     />
 </svelte:head>
 
 <Main>
     <div class="hero">
-        {#if customizing}
-            <div style:margin-block-start="0.625rem">
-                <button class="web-link is-secondary u-cross-center" on:click={goBack}>
-                    <span class="web-icon-chevron-left" aria-hidden="true" />
-
-                    <span>Back</span>
-                </button>
-                <h1 class="web-title web-u-color-text-primary" style:margin-block-start="1.5rem">
-                    Customize ticket<span class="web-u-color-text-accent">_</span>
+        <div class="desktop-left">
+            <div class="header">
+                <h1 class="text-display font-aeonik-pro">
+                    Ready, set, <span class="text-primary" style:font-weight="500"> init </span>
                 </h1>
-
-                <div class="desktop">
-                    <Form bind:name bind:tribe bind:showGitHub bind:variant />
-                </div>
             </div>
-        {:else}
-            <div class="desktop-left">
-                <div class="header">
-                    <h1 class="web-title web-u-color-text-primary">
-                        Thank you for registering for
-                        <span style:font-weight="500">
-                            init<span class="web-u-color-text-accent">_</span>
-                        </span>
-                    </h1>
-                    <p class="web-label u-margin-block-start-16">
-                        You have received ticket #{id?.toString().padStart(6, '0')}
-                    </p>
-                </div>
 
-                <div class="info">
-                    <button
-                        on:click={() => (customizing = true)}
-                        class="web-button is-full-width u-margin-block-start-32"
-                    >
-                        <span class="text">Customize ticket</span>
-                    </button>
-
-                    <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
-                        <button class="web-button is-full-width is-secondary" on:click={copy}>
-                            <div
-                                class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary"
-                            />
-                            <span class="text">Copy ticket URL</span>
-                        </button>
-                        <a
-                            class="web-button is-full-width is-secondary"
-                            href="https://twitter.com/intent/tweet?text={twitterText}"
-                            target="_blank"
-                        >
-                            <div class="web-icon-x web-u-color-text-primary" />
-                            <span class="text">Share your ticket</span>
-                        </a>
-                    </div>
-                </div>
+            <div class="info">
+                <p class="text-label mt-4">
+                    Join us during the week of August 19–23 to celebrate everything new with
+                    Appwrite.
+                </p>
             </div>
-        {/if}
+        </div>
 
-        <TicketPreview>
-            <div class="ticket-holder">
+        <div class="ticket">
+            <TicketPreview>
                 <Ticket
                     {...data.ticket}
-                    {variant}
-                    {tribe}
                     {name}
-                    contributions={data.streamed.contributions}
+                    {title}
+                    contributions={data.streamed?.contributions}
                     show_contributions={showGitHub}
                 />
+            </TicketPreview>
+            <div class="item">
+                <TicketDetails bind:customizing bind:name bind:title />
+                <TicketActions {saveTicket} bind:customizing bind:showGitHub {modified} {saving} />
             </div>
-        </TicketPreview>
+        </div>
     </div>
 
-    <div class="web-container">
+    <div class="container">
         <FooterNav />
         <MainFooter />
     </div>
-
-    {#if customizing}
-        <div class="drawer" data-state={drawerOpen ? 'open' : 'closed'}>
-            <button on:click={() => (drawerOpen = !drawerOpen)}>
-                <div class="inner">
-                    <span class="web-label web-u-color-text-primary">Ticket Editor</span>
-                    <span class="web-icon-chevron-down" />
-                </div>
-            </button>
-            {#if drawerOpen}
-                <hr />
-                <div class="form-wrapper" transition:slide>
-                    <Form bind:name bind:tribe bind:showGitHub bind:variant />
-                </div>
-            {/if}
-        </div>
-    {/if}
 </Main>
 
 <style lang="scss">
@@ -175,104 +112,33 @@
         h1 {
             margin-block-start: 3.5rem;
         }
+    }
+    .ticket {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        width: 100%;
 
-        @media screen and (max-width: 1023px) {
-            h1 {
-                margin-block-start: 0;
-            }
+        .item {
+            min-height: 75px;
+            width: 100%;
+        }
+    }
+    .container {
+        padding-block-start: 0;
 
-            .info {
-                grid-row: 3;
-
-                .u-flex {
-                    flex-direction: column;
-                    gap: 0.5rem;
-                    margin-block-start: 0.5rem;
-                }
-            }
+        :global(nav) {
+            margin-block-start: 0;
         }
     }
 
-    .desktop {
-        display: contents;
+    .text-display font-aeonik-pro {
+        margin-bottom: -48px;
     }
 
-    .drawer {
-        display: none;
-    }
-
-    @media screen and (max-width: 1024px) {
-        .desktop {
-            display: none;
-        }
-
-        .drawer {
-            display: flex;
-            flex-direction: column;
-
-            position: sticky;
-            bottom: 0;
-            padding-block: 0;
-            background-color: hsl(var(--web-color-background));
-            backdrop-filter: blur(40px);
-            z-index: 9999999;
-
-            max-height: 100vh;
-            overflow-y: auto;
-
-            [class^='web-icon-'] {
-                transition: var(--transition);
-                transform: rotate(180deg);
-            }
-
-            &[data-state='open'] {
-                [class^='web-icon-'] {
-                    transform: rotate(0deg);
-                }
-            }
-
-            > button {
-                background: linear-gradient(
-                        93deg,
-                        rgba(253, 54, 110, 0.2) 0.29%,
-                        rgba(35, 35, 37, 0.2) 52.57%,
-                        rgba(35, 35, 37, 0.2) 100%
-                    ),
-                    #232325;
-                padding-block: 1.8125rem;
-                width: 100%;
-
-                .inner {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    max-width: 512px;
-                    margin-inline: auto;
-                    padding-inline: var(--p-padding-inline);
-                }
-            }
-
-            hr {
-                border-block-start: 1px solid hsl(var(--web-color-smooth));
-            }
-
-            > .form-wrapper {
-                max-width: 512px;
-                height: 100%;
-                overflow-y: auto;
-
-                margin-inline: auto;
-                padding-block-end: 1rem;
-                padding-inline: 1.25rem;
-            }
-        }
-
-        .web-container {
-            padding-block-start: 0;
-
-            :global(nav) {
-                margin-block-start: 0;
-            }
+    @media screen and (min-width: 768px) {
+        .text-display font-aeonik-pro {
+            margin-bottom: 0;
         }
     }
 </style>

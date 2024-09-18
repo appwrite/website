@@ -1,15 +1,13 @@
-import Logo from './Logo.svelte';
-import Messaging from './Messaging.svelte';
-import SSR from './SSR.svelte';
-import Enum from './Enum.svelte';
-import Operators from './Operators.svelte';
-import Integrations from './Integrations.svelte';
+import LocalDev from './LocalDev.svelte';
+import CLI from './CLI.svelte';
+import Functions from './Functions.svelte';
+import Go from './Go.svelte';
+import Numbers from './Numbers.svelte';
 
 export const Animations = {
-    Logo,
-    Messaging,
-    SSR,
-    Enum,
-    Operators,
-    Integrations
+    LocalDev,
+    CLI,
+    Functions,
+    Go,
+    Numbers
 };

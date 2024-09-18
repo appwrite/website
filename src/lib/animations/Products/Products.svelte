@@ -158,6 +158,7 @@
     import { postController } from './post';
     import Post from './post/post.svelte';
     import { anyify } from '$lib/utils/anyify';
+    import Badge from '$lib/components/ui/Badge.svelte';
 
     /* Basic Animation setup */
     let scrollInfo = {
@@ -236,18 +237,19 @@
                 in:fly={{ duration: 250, delay: 250, y: -300 }}
             >
                 {#if scrollInfo.percentage > -0.1}
-                    <span class="web-badges web-eyebrow" transition:slide={{ axis: 'x' }}
-                        >Products_</span
+                    <span
+                        class="web-badges text-micro uppercase !text-white"
+                        transition:slide={{ axis: 'x' }}>Products_</span
                     >
 
                     <h2
-                        class="web-display web-u-color-text-primary"
+                        class="text-display font-aeonik-pro text-primary"
                         transition:fly={{ y: 16, delay: 250 }}
                     >
                         Your backend, minus the hassle
                     </h2>
                     <p
-                        class="web-description web-u-max-width-700 u-margin-inline-auto"
+                        class="text-description mx-auto max-w-[700px]"
                         transition:fly={{
                             y: 16,
                             delay: 400
@@ -283,11 +285,13 @@
                                             width="32"
                                             height="32"
                                         />
-                                        <span class="web-label">{copy.title}</span>
+                                        <span class="text-label">{copy.title}</span>
                                     </h3>
                                     {#if isActive}
                                         <div transition:slide>
-                                            <h4 class="web-title">{copy.subtitle}</h4>
+                                            <h4 class="text-title font-aeonik-pro">
+                                                {copy.subtitle}
+                                            </h4>
                                             <p>
                                                 {copy.description}
                                             </p>

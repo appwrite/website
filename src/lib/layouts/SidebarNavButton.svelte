@@ -13,9 +13,9 @@
     {#if groupItem.icon}
         <span class="icon {groupItem.icon}" aria-hidden="true" />
     {/if}
-    <span class="web-caption-400">{groupItem.label} </span>
+    <span class="text-caption">{groupItem.label} </span>
     {#if groupItem.isParent}
-        <span class="icon-cheveron-right u-margin-inline-start-auto" aria-hidden="true" />
+        <span class="icon-cheveron-right ml-auto" aria-hidden="true" />
     {/if}
 </a>
 

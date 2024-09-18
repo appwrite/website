@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How tools like Twilio can simplify messaging for developers
+title: How Twilio simplifies messaging for developers
 description: Learn the challenges of building a messaging system and how Twilio helps in simplifying implementation.
 date: 2024-02-26
 cover: /images/blog/simplify-messaging-twilio.png
@@ -80,7 +80,7 @@ const messaging = new sdk.Messaging(client);
 
 client
 	.setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-	.setProject('5df5acd0d48c2')                 // Your project ID
+	.setProject('<PROJECT_ID>')                 // Your project ID
 	.setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Why you need to try the new Bun function runtime
-description: Why Bun's feature sare perfect for building Appwrite Functions.
+description: Why Bun's features are perfect for building Appwrite Functions.
 date: 2024-03-01
 cover: /images/blog/why-you-need-to-try-the-new-bun-runtime/cover.png
 timeToRead: 15
@@ -24,7 +24,7 @@ Bun is also fast, like really fast. I ran package installs on fresh containers f
 
 Good ol’ NPM.
 
-```jsx
+```bash
 $ npm create svelte@latest my-app-node
 $ cd my-app-node && npm install
 
@@ -40,7 +40,7 @@ found 0 vulnerabilities
 
 Bun install.
 
-```jsx
+```bash
 $ bun create svelte@latest my-app-bun
 $ cd my-app-bun && bun install
 
@@ -83,13 +83,13 @@ Bun implements many web standards, like `fetch`, `FormData`, `WebSocket`, and ot
 
 For example, I can write this Appwrite Function to fetch random Capybara with 0 dependencies.
 
-```jsx
+```js
 export default async ({ req, res, log, error }) => {
     if(req.method !== 'GET') {
-            return res.send('Not found', 404);
-        }
+        return res.text('Not found', 404);
+    }
 
-        const response = await fetch(`https://api.giphy.com/v1/gifs/random?api_key=${process.env["GIPHY_API_KEY"]}&tag=capybara`);
+    const response = await fetch(`https://api.giphy.com/v1/gifs/random?api_key=${process.env["GIPHY_API_KEY"]}&tag=capybara`);
     const data = await response.json();
     const gifUrl = data.data.images.fixed_height.url;
     return res.json({
@@ -156,16 +156,16 @@ export default async function handler({ req, res, log, error }: any) {
     // We're returning JSX!
     const html = await renderToReadableStream(
     <>
-        <style>{styles}</style>
+        <style dangerouslySetInnerHTML={{__html: styles }}/>
         <div>
-        <img src={gifUrl} alt="Random capybara" />
+        <img src={gifUrl} alt="Random capybara" /> 
         <h1>Capybara of the day!</h1>
         </div>
     </>
     );
 
-    return res.send(html, 200, {
-    "Content-Type": "text/html; charset=utf-8",
+    return res.text(html, 200, {
+        "Content-Type": "text/html; charset=utf-8",
     });
 }
 ```
@@ -180,7 +180,7 @@ It’s lightweight, no configuration is needed, and it is perfect for Appwrite F
 
 For example, we can define these tests.
 
-```jsx
+```js
 import { describe, expect, test, beforeAll } from "bun:test";
 // import some files to test
 import { getGif } from "../src/getGif";
@@ -205,14 +205,14 @@ describe("getGifs", () => {
 
 Each time we deploy, we can configure Appwrite Functions to run the tests after build. For this example, we use the build commands:
 
-```jsx
+```bash
 bun install
 bun test
 ```
 
 This will install dependencies and run tests before activating a deployment.
 
-```jsx
+```bash
 Preparing for build ...
 Building ...
 bun install v1.0.0 (822a00c4)
@@ -253,7 +253,7 @@ This increased performance is particularly noticeable when you write long-runnin
 
 There’s a lot to love about [Bun](https://bun.sh/), and we only explored a few exciting differences that can be leveraged in the Bun Appwrite Function runtime. Bun also has a built-in web server, high-performance file I/O, snapshot testing, and much more to offer.
 
-If you’re curious, you can also try Bun in an Appwrite Function by creating your first [Appwrite Cloud](https://cloud.appwrite.io/) project. The free Free plan gives you access to three Functions, which lets you compare and contrast Node.js, Deno, and Bun in identical containerized environments.
+If you’re curious, you can also try Bun in an Appwrite Function by creating your first [Appwrite Cloud](https://cloud.appwrite.io/) project. The free plan gives you access to three Functions, which lets you compare and contrast Node.js, Deno, and Bun in identical containerized environments.
 
 You can try your first Bun, Node.js, or Deno function on Appwrite Cloud without writing a single line of code through Appwrite Function templates. Appwrite will clone template functions to your GitHub profile and set up automatic deployments so you can start building immediately.
 
