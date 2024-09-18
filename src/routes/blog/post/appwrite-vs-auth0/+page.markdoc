@@ -7,6 +7,7 @@ cover: /images/blog/appwrite-compared-to-supabase/cover.png
 timeToRead: 5
 author: aditya-oberai
 category: product
+unlisted: true
 ---
 When it comes to building modern applications, user authentication is one of the most critical components. Ensuring that your app is secure, user-friendly, and scalable can be a complicated, time-consuming task. Auth0 is a popular choice for handling authentication, but what if you're looking for an open-source alternative? 
 
