@@ -21,18 +21,18 @@
     const { hasReleased, days, hours, minutes, seconds } = createCountdown(day.release);
 </script>
 
-<div class="day" class:border={hasBorder}>
+<div class="day" class:has-border={hasBorder}>
     {#if hasReleased}
         <div style:z-index="10" style="margin-top: auto; margin-bottom: 0;">
             <span
-                class="web-u-color-text-primary web-u-uppercase"
+                class="text-primary web-u-uppercase"
                 style:opacity="0.6"
                 style:margin-bottom="-8px"
                 style:display="block"
             >
                 {day.subtitle}
             </span>
-            <h2 class="web-label web-u-color-text-primary">
+            <h2 class="text-label text-primary">
                 {day.title}<span class="web-u-color-text-accent">_</span>
             </h2>
         </div>
@@ -43,14 +43,14 @@
     {:else}
         <div style:z-index="10" style="margin-top: auto; margin-bottom: 0;">
             <span
-                class="web-u-color-text-primary web-eyebrow web-u-uppercase"
+                class="text-primary text-micro uppercase web-u-uppercase"
                 style:margin-bottom="-8px"
                 style:display="block"
             >
                 {day.subtitle} <span class="web-u-color-text-accent">_</span>
             </span>
             <h2
-                class="web-title web-u-color-text-primary"
+                class="text-title font-aeonik-pro text-primary"
                 style="--height:3rem;--line-height:3rem;"
             >
                 {#if $hours > 24}
@@ -84,7 +84,7 @@
         overflow: hidden;
         flex: 0 0 var(--day-min-w);
 
-        &.border {
+        &.has-border {
             @include gradients.border-gradient;
             --m-border-radius: 1rem;
             --m-border-gradient-before: linear-gradient(

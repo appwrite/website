@@ -7,7 +7,7 @@ featured: false
 isPartner: true
 isNew: true
 cover: /images/integrations/lemon-squeezy-subscriptions/cover.png
-category: Payments
+category: payments
 product: 
     avatar: '/images/integrations/avatars/lemon-squeezy.png'
     vendor: Lemon Squeezy

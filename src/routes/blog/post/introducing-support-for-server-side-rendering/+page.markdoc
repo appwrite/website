@@ -76,7 +76,7 @@ import { Client } from "node-appwrite"
 
 const adminClient = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('<YOUR_PROJECT_ID>')
+    .setProject('<PROJECT_ID>')
     .setKey('<YOUR_API_KEY>')
 ```
 
@@ -87,7 +87,7 @@ A session client will allow us to make requests as an authenticated end-user wit
 ```jsx
 const sessionClient = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('<YOUR_PROJECT_ID>')
+    .setProject('<PROJECT_ID>')
 
 const session = req.cookies.session
 

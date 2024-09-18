@@ -16,7 +16,7 @@ All it took to lose interest was the giant form I had to fill out to add a recei
 With over [30+ apps installed on a typical user's phone](https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/average-number-of-apps-on-smartphones/)
 on average, fighting for engagement and retention is tougher than ever.
 Users are sensitive to friction, with a reported 50% of users [opting for new online merchants just for lowered friction](https://www.pwc.co.uk/industries/documents/frictionless-retail-the-future-of-shopping.pdf)
-and Shopify reporting [low-friction payment methods and flows can lead to >50% increase in conversion](https://web-assets.bcg.com/e4/0c/a1acfc2a4e52a029cb37c6fe83ba/bcg-leading-online-shoppers-to-the-finish-line-june-2023.pdf).
+and Shoppify reporting [low-friction payment methods and flows can lead to >50% increase in conversion](https://web-assets.bcg.com/e4/0c/a1acfc2a4e52a029cb37c6fe83ba/bcg-leading-online-shoppers-to-the-finish-line-june-2023.pdf).
 
 No one has time to fill out giant forms.
 To help you and your users avoid filling out giant forms, we're going to build a simple receipt processing endpoint with Appwrite

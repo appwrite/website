@@ -58,27 +58,27 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<div class="u-position-absolute" style="pointer-events:none;">
+<div class="absolute" style="pointer-events:none;">
     <enhanced:img src="./bg.png" alt="" />
 </div>
 
 <Main>
     <div class="web-big-padding-section">
-        <div class="web-big-padding-section-level-1">
+        <div class="py-10">
             <div class="web-big-padding-section-level-2">
-                <div class="web-container">
-                    <div class="web-grid-1-1-opt-2 u-gap-32">
+                <div class="container">
+                    <div class="web-grid-1-1-opt-2 gap-8">
                         <div>
                             <div
                                 class="web-u-max-inline-size-none-mobile"
                                 class:web-u-max-width-380={!submitted}
                             >
                                 {#if submitted}
-                                    <section class="u-flex-vertical web-u-gap-20">
-                                        <h1 class="web-display web-u-color-text-primary">
+                                    <section class="flex flex-col gap-5">
+                                        <h1 class="text-display font-aeonik-pro text-primary">
                                             Thank you for your message
                                         </h1>
-                                        <p class="web-description web-u-padding-block-end-32">
+                                        <p class="text-description web-u-padding-block-end-32">
                                             Your message has been sent successfully. We appreciate
                                             your feedback, our team will try to get back to you as
                                             soon as possible.
@@ -91,21 +91,21 @@
                                         </a>
                                     </section>
                                 {:else}
-                                    <section class="u-flex-vertical web-u-gap-20">
-                                        <h1 class="web-display web-u-color-text-primary">
+                                    <section class="flex flex-col gap-5">
+                                        <h1 class="text-display font-aeonik-pro text-primary">
                                             Contact Us
                                         </h1>
-                                        <p class="web-description web-u-padding-block-end-40">
+                                        <p class="text-description web-u-padding-block-end-40">
                                             We'd love your input: questions, feature requests, bugs
                                             or compliments.
                                         </p>
                                     </section>
                                 {/if}
                                 <section
-                                    class="u-flex-vertical u-gap-12 web-u-padding-block-start-40 web-u-sep-block-start"
+                                    class="web-u-padding-block-start-40 web-u-sep-block-start flex flex-col gap-3"
                                 >
-                                    <h2 class="web-label web-u-color-text-primary">Follow us</h2>
-                                    <ul class="u-flex u-gap-8">
+                                    <h2 class="text-label text-primary">Follow us</h2>
+                                    <ul class="flex gap-2">
                                         {#each socials as social}
                                             <li>
                                                 <a
@@ -130,16 +130,16 @@
                             <form
                                 method="post"
                                 on:submit|preventDefault={handleSubmit}
-                                class="u-flex-vertical u-gap-16"
+                                class="flex flex-col gap-4"
                             >
-                                <div class="u-flex u-main-end">
+                                <div class="flex justify-end">
                                     <ul
-                                        class="web-form-list is-two-columns u-gap-16 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
+                                        class="web-form-list grid md:grid-cols-2 web-u-max-width-580 web-u-max-inline-size-none-mobile w-full gap-4"
                                     >
                                         <li class="web-form-item">
                                             <input
                                                 required
-                                                class="web-input-text"
+                                                class="web-input-text w-full"
                                                 type="text"
                                                 placeholder="Name"
                                                 aria-label="Name"
@@ -149,17 +149,17 @@
                                         <li class="web-form-item">
                                             <input
                                                 required
-                                                class="web-input-text"
+                                                class="web-input-text w-full"
                                                 type="email"
                                                 placeholder="Email address"
                                                 aria-label="Email address"
                                                 bind:value={email}
                                             />
                                         </li>
-                                        <li class="web-form-item is-column-span-2">
+                                        <li class="web-form-item col-span-2">
                                             <input
                                                 required
-                                                class="web-input-text"
+                                                class="web-input-text w-full"
                                                 type="text"
                                                 name="subject"
                                                 placeholder="Subject"
@@ -167,11 +167,11 @@
                                                 bind:value={subject}
                                             />
                                         </li>
-                                        <li class="web-form-item is-column-span-2">
+                                        <li class="web-form-item col-span-2">
                                             <textarea
                                                 required
                                                 name="message"
-                                                class="web-input-text"
+                                                class="web-input-text w-full"
                                                 placeholder="Your message"
                                                 aria-label="Message"
                                                 bind:value={message}
@@ -180,14 +180,14 @@
                                     </ul>
                                 </div>
                                 <div
-                                    class="u-flex u-gap-16 u-main-space-between web-u-flex-vertical-reverse-mobile"
+                                    class="web-u-flex-vertical-reverse-mobile flex justify-between gap-4"
                                 >
-                                    <p class="web-caption-400 web-u-max-width-380">
+                                    <p class="text-caption web-u-max-width-380">
                                         {#if error}
                                             {error}
                                         {/if}
                                     </p>
-                                    <!-- <p class="web-caption-400 web-u-max-width-380">
+                                    <!-- <p class="text-caption web-u-max-width-380">
 										This form is protected by reCAPTCHA, and the Google <a
 											class="web-link"
 											href="/privacy"
@@ -197,7 +197,7 @@
 									</p> -->
                                     <button
                                         type="submit"
-                                        class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1"
+                                        class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
                                     >
                                         <span>Submit</span>
                                     </button>
@@ -210,7 +210,7 @@
         </div>
     </div>
 
-    <div class="web-container">
+    <div class="container">
         <FooterNav />
         <MainFooter />
     </div>

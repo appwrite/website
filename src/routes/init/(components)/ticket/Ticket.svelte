@@ -131,11 +131,11 @@
 <div class="wrapper">
     <div class="ticket" use:onMouse style={styles}>
         <div class="lockup">
-            <p class="web-title web-u-color-text-primary">
+            <p class="text-title font-aeonik-pro text-primary">
                 {name?.trim() || '-'}
             </p>
 
-            <p class="web-label">{title}</p>
+            <p class="text-label">{title}</p>
 
             <div class="logo" style:width="75%">
                 {#if disableEffects}
@@ -363,7 +363,7 @@
             border-radius: pxToRem(16);
             overflow: hidden;
 
-            .web-label {
+            .text-label {
                 position: absolute;
                 font-size: clamp(12px, 1vw, 16px);
             }
@@ -385,7 +385,7 @@
             }
         }
     }
-    .web-title {
+    .text-title font-aeonik-pro {
         font-size: clamp(20px, 1vw, 24px);
         line-height: 1;
     }

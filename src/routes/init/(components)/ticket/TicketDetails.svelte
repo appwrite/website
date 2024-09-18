@@ -5,8 +5,8 @@
 </script>
 
 {#if customizing}
-    <div class="u-flex u-gap-16 input-container">
-        <div class="u-flex-vertical input">
+    <div class="input-container flex gap-4">
+        <div class="input flex flex-col">
             <label for="name">Name</label>
             <input
                 class="web-input-text"
@@ -19,7 +19,7 @@
                 maxlength="42"
             />
         </div>
-        <div class="u-flex-vertical input">
+        <div class="input flex flex-col">
             <label for="name">Title</label>
             <input
                 class="web-input-text"
