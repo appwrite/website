@@ -1,0 +1,44 @@
+---
+layout: changelog
+title: "Appwrite 1.6 now available for self-hosting"
+date: 2024-09-18
+cover: /images/changelog/2024-09-18.png
+---
+
+### Notable changes
+
+* Filter options for function deployments
+* Allow cancelling function deployments
+* Filter options for function executions
+* Support deleting executions
+* Ensure function executions with 4XX status code are not marked as failed
+* [Scheduled function executions](https://appwrite.io/docs/products/functions/execute#schedule)
+* [Delayed function executions](https://appwrite.io/docs/products/functions/execute#delayed-executions)
+* [Dynamic API keys](https://appwrite.io/docs/products/functions/develop#dynamic-api-key)
+* Support [binary Function input](https://appwrite.io/docs/products/functions/develop#request)
+* Add Go [function runtime](https://appwrite.io/docs/products/functions/runtimes#available-runtimes)
+* Automatically restart function on crash
+* DSN formatted `_APP_LOGGING_CONFIG` environment variable
+* [Create user JWT endpoint](https://appwrite.io/docs/references/1.6.x/server-nodejs/users#createJWT)
+* [New session alerts](https://appwrite.io/docs/products/auth/security#session-alerts)
+* [Mock phone numbers](https://appwrite.io/docs/products/auth/security#mock-phone-numbers)
+* Add OTP email template
+* Containerized Console
+* Support renaming [attributes](https://appwrite.io/docs/products/databases/collections#attributes)
+* Support updating string [attribute](https://appwrite.io/docs/products/databases/collections#attributes) size
+* Show function storage metrics
+
+### Fixes
+
+* Fix error due to large function build
+* Fix function disconnecting from git when deploying via CLI
+* Fix error when uploading multi-GB files
+* Fix retention variables not working
+* Fix function domain execution stats
+* Fix internal tenant being returned
+* Fix MFA rate limit
+* Fix git deployments where path had spaces
+
+### Miscellaneous
+
+* Updated the DBIP
