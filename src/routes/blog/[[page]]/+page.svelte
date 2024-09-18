@@ -416,7 +416,7 @@
                 {/if}
             </div>
         </div>
-        <div class="pt-[7.5rem]">
+        <div>
             <div class="container">
                 <FooterNav />
                 <MainFooter />
