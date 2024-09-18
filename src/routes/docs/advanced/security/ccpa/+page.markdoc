@@ -22,3 +22,6 @@ Some of the measures that Appwrite has taken for compliance include:
 - Employee training on handling privacy-related inquiries and Appwrite's adherence to CCPA requirements.
 - Updates to Appwrite's data retention and deletion policies.
 - Revisions to the data breach and incident response policies.
+
+Please note that while Appwrite Cloud serves as a CCPA-compliant platform to handle data, it is the responsibility of developers to ensure that their application is also compliant with CCPA regulations.
+You can reach us at privacy@appwrite.io for more questions.
