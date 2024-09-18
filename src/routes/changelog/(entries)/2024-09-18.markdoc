@@ -1,51 +1,15 @@
 ---
 layout: changelog
-title: "Appwrite 1.6 now available for self-hosting"
+title: "Appwrite 1.6 is now available"
 date: 2024-09-18
 cover: /images/changelog/2024-09-18.png
 ---
 
-### Notable changes
+Appwrite 1.6 is now available for self hosting! Packed with all the updates and improvements from [Appwrite Init](https://appwrite.io/init), this release puts a strong emphasis on the functions ecosystem including scheduled and delayed executions, dynamic API keys and the introduction of binary executions. With the addition of Go to the function runtimes, we continue to broaden our ecosystem to meet your needs. The all new CLI and Local Development offer an improved developer experience when working with functions. Furthermore, new features like Mock numbers and session alerts strengthen security and development flexibility.
 
-* Filter options for function deployments
-* Allow cancelling function deployments
-* Filter options for function executions
-* Support deleting executions
-* Ensure function executions with 4XX status code are not marked as failed
-* [Scheduled function executions](https://appwrite.io/docs/products/functions/execute#schedule)
-* [Delayed function executions](https://appwrite.io/docs/products/functions/execute#delayed-executions)
-* [Dynamic API keys](https://appwrite.io/docs/products/functions/develop#dynamic-api-key)
-* Support [binary Function input](https://appwrite.io/docs/products/functions/develop#request)
-* Add Go [function runtime](https://appwrite.io/docs/products/functions/runtimes#available-runtimes)
-* Automatically restart function on crash
-* DSN formatted `_APP_LOGGING_CONFIG` environment variable
-* [Create user JWT endpoint](https://appwrite.io/docs/references/1.6.x/server-nodejs/users#createJWT)
-* [New session alerts](https://appwrite.io/docs/products/auth/security#session-alerts)
-* [Mock phone numbers](https://appwrite.io/docs/products/auth/security#mock-phone-numbers)
-* Add OTP email template
-* Containerized Console
-* Support renaming [attributes](https://appwrite.io/docs/products/databases/collections#attributes)
-* Support updating string [attribute](https://appwrite.io/docs/products/databases/collections#attributes) size
-* Show function storage metrics
+In addition to these new features, we've addressed several important issues, from resolving large function build errors to improving Git integration during deployments. These fixes, along with updates to function execution metrics and database attribute management, ensure an overall smoother experience. 
 
-### Fixes
-
-* Fix error due to large function build
-* Fix function disconnecting from git when deploying via CLI
-* Fix error when uploading multi-GB files
-* Fix retention variables not working
-* Fix function domain execution stats
-* Fix internal tenant being returned
-* Fix MFA rate limit
-* Fix git deployments where path had spaces
-
-### Miscellaneous
-
-* Updated the DBIP
-
-You can update by following the [upgrade docs](/docs/advanced/self-hosting/update).
-
-Note that upgrading to 1.6.0 requires running a [migration](/docs/advanced/self-hosting/update#running-the-migration).
+We're excited to see what you build! Head over to our [migration guide](https://appwrite.io/docs/advanced/self-hosting/update) to learn how you can upgrade your Appwrite instance. For the complete list of updates and fixes, check out the changelog below.
 
 {% arrow_link href="https://github.com/appwrite/appwrite/releases/tag/1.6.0" %}
 View the changelog on GitHub
