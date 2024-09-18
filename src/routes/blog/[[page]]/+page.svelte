@@ -480,7 +480,6 @@
 
     .overflow-x-auto {
         scrollbar-width: none;
-        -ms-overflow-style: none;
     }
 
     .overflow-x-auto::-webkit-scrollbar {
