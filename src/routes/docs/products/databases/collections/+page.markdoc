@@ -285,6 +285,10 @@ If an attribute must be populated in all documents, set it as `required`.
 If not, you may optionally set a default value.
 Additionally, decide if the attribute should be a single value or an array of values.
 
+If needed, you can change an attribute's key, default value, size (for strings), and whether it is required or not after creation.
+
+You can increase a string attribute's size without any restrictions. When decreasing size, you must ensure that your existing data is less than or equal to the new size, or the operation will fail.
+
 # Indexes {% #indexes %}
 
 Databases use indexes to quickly locate data without having to search through every document for matches.
