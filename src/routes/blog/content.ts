@@ -67,7 +67,7 @@ export const posts = Object.entries(postsGlob)
             category: frontmatter.category,
             href: `${base}/blog/post/${postName}`,
             slug,
-            unlisted: frontmatter.unlisted ?? false,
+            unlisted: frontmatter.unlisted,
             draft: frontmatter.draft
         };
     })
