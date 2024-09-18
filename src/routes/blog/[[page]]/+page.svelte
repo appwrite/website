@@ -546,7 +546,7 @@
 
     @media (min-width: 1024px) and (max-width: 1280px) {
         .categories {
-            max-width: calc(0.55 * 100vw);
+            max-width: calc(0.6 * 100vw);
         }
     }
 
