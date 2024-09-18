@@ -302,7 +302,7 @@
                         </div>
 
                         <div
-                            class="web-input-text-search-wrapper web-u-max-inline-size-none-mobile ml-auto hidden w-full max-w-[350px] md:block"
+                            class="desktop-search-bar web-input-text-search-wrapper web-u-max-inline-size-none-mobile ml-auto hidden w-full max-w-[350px] md:block"
                         >
                             <span
                                 class="web-icon-search z-[5]"
@@ -529,40 +529,41 @@
         }
     }
 
-    .categories-wrapper {
-        flex-grow: 1;
-        max-width: 50%;
+    .search-and-categories {
+        display: flex;
+        overflow: hidden;
+        align-items: center;
     }
 
-    .search-and-categories > .mobile-search-bar,
-    .search-and-categories > .web-input-text-search-wrapper {
-        flex-grow: 1;
+    .categories-wrapper {
+        min-width: 0;
+        flex: 1 0 auto;
+        max-width: 66%;
+    }
+
+    .desktop-search-bar {
+        min-width: 0;
+        flex: 1 1 auto;
+        max-width: 33%;
+    }
+
+    @media (max-width: 945px) {
+        .categories-wrapper,
+        .desktop-search-bar {
+            max-width: 50%;
+        }
     }
 
     .web-input-button {
         max-height: 40px;
     }
 
-    @media (min-width: 1024px) {
-        .categories-wrapper {
-            flex-grow: 1;
-            max-width: 60%;
-        }
-    }
-
-    @media (min-width: 1080px) {
-        .categories-wrapper {
-            flex-grow: 1;
-            max-width: 62.5%;
-        }
-    }
-
     @media (max-width: 768px) {
         .search-and-categories {
             flex-wrap: wrap;
-            display: flex !important;
+            display: flex;
             padding-block-start: 2rem;
-            flex-direction: column-reverse !important;
+            flex-direction: column-reverse;
         }
 
         .categories-wrapper {
@@ -574,7 +575,7 @@
         }
 
         .search-and-categories > .web-input-text-search-wrapper {
-            min-inline-size: unset !important;
+            min-inline-size: unset;
         }
     }
 </style>
