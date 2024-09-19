@@ -40,12 +40,10 @@ export const load = async ({ params, url }) => {
 
     const totalPages = Math.ceil(posts.length / BLOG_POSTS_PER_PAGE);
 
-    const effectivePage = searchQuery || categoryQuery ? 1 : currentPage;
+    const pageNavigationChunks = generatePageNavigation(currentPage, totalPages);
 
-    const pageNavigationChunks = generatePageNavigation(effectivePage, totalPages);
-
-    const endIndex = effectivePage * BLOG_POSTS_PER_PAGE;
-    const startIndex = (effectivePage - 1) * BLOG_POSTS_PER_PAGE;
+    const endIndex = currentPage * BLOG_POSTS_PER_PAGE;
+    const startIndex = (currentPage - 1) * BLOG_POSTS_PER_PAGE;
     const blogPosts = posts.slice(startIndex, endIndex);
 
     if (!searchQuery && !categoryQuery && blogPosts.length === 0) {
