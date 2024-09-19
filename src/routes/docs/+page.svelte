@@ -67,7 +67,7 @@
 <Docs variant="default">
     <Sidebar />
 
-    <main class="web-main-section relative" id="main">
+    <main class="web-main-section relative overflow-x-hidden" id="main">
         <div class="absolute translate-x-96">
                 <img src="/images/bgs/docs-blur-1.svg" alt=""/>
         </div>
