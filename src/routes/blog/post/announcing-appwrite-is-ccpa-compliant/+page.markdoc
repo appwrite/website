@@ -13,7 +13,7 @@ featured: true
 At Appwrite, we're committed to helping you build secure, privacy-focused applications that meet the highest data protection standards. Now, Appwrite is **fully CCPA-compliant**, providing secure and reliable data management.
 
 # What is CCPA, and why does it matter?
-The [**California Consumer Privacy Act](https://oag.ca.gov/privacy/ccpa) (CCPA)** is a landmark data privacy law that enhances consumer rights for residents of California. It was signed into law in 2018 and enacted on January 1, 2020. The law aims to give California residents more control over the personal data that businesses collect about them. Although CCPA is specific to California residents, its impact is often felt nationwide and across borders. Many companies that do business in California implement CCPA protections for all users simply because it's easier than maintaining separate data policies for different regions.
+The [California Consumer Privacy Act](https://oag.ca.gov/privacy/ccpa) (CCPA) is a landmark data privacy law that enhances consumer rights for residents of California. It was signed into law in 2018 and enacted on January 1, 2020. The law aims to give California residents more control over the personal data that businesses collect about them. Although CCPA is specific to California residents, its impact is often felt nationwide and across borders. Many companies that do business in California implement CCPA protections for all users simply because it's easier than maintaining separate data policies for different regions.
 
 Key rights granted by the CCPA include:
 
@@ -26,7 +26,7 @@ Key rights granted by the CCPA include:
 
 The CCPA applies to businesses that meet certain criteria, including having annual gross revenues of over $25 million, handling the personal information of 50,000 or more consumers, or deriving 50% or more of their annual revenues from selling consumers' personal information.
 
-It's similar to the [**GDPR**](https://appwrite.io/docs/advanced/security/gdpr) (General Data Protection Regulation) in Europe, though the two have some differences in scope and enforcement. Learn more about [CCPA vs GDPR](https://appwrite.io/blog/post/ccpa-vs-gdpr).
+It's similar to the [GDPR](https://appwrite.io/docs/advanced/security/gdpr) (General Data Protection Regulation) in Europe, though the two have some differences in scope and enforcement. Learn more about [CCPA vs GDPR](https://appwrite.io/blog/post/ccpa-vs-gdpr).
 
 # What does Appwrite’s CCPA compliance mean for you?
 
