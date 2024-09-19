@@ -97,7 +97,7 @@
         'Marius Bolik',
         'CTO // mySHOEFITTER',
         'Appwrite has been a tremendous asset in implementing our IT infrastructure. Not only is the software an absolute game-changer, but the team is always there when you need them.',
-        'marius-bolik'
+        'marius-bolik2'
     );
 
     const souvikSarkar = testimonial(
@@ -132,7 +132,7 @@
         testimonial(
             'Diego Ferreyra',
             '@diego_ferreyra1',
-            'Loving it. I’ve been a web developer for 20+ years and I’ve never gotten from 0 lines to actual useful coding so fast. 100% recommend.',
+            "Loving it. I've been a web developer for 20+ years and I've never gotten from 0 lines to actual useful coding so fast. 100% recommend.",
             'diego-ferreyra'
         ),
         testimonial(
@@ -140,6 +140,12 @@
             '@alexparton',
             "I just migrated a project from Firebase to Appwrite: Authentication, Users, Databases and Storage. And I can't be more in love with it.",
             'alejandro-morales'
+        ),
+        testimonial(
+            'Jonas Janssen',
+            'Founder',
+            'Thanks to Appwrite and advances in technology, we were able to get an MVP out in 2-3 months with 1 developer.',
+            'jonas-janssen'
         ),
         mariusBolik
     ];
@@ -279,7 +285,7 @@
                                             <div class="web-user-box">
                                                 <img
                                                     class="web-user-box-image"
-                                                    src="/images/community/avatars/myshoefitter.png"
+                                                    src="/images/testimonials/marius-bolik2.png"
                                                     alt="Avatar of Kap.ts"
                                                     width="48"
                                                     height="48"
