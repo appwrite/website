@@ -67,7 +67,7 @@
 <Docs variant="default">
     <Sidebar />
 
-    <main class="web-main-section relative lg:overflow-hidden" id="main">
+    <main class="web-main-section relative" id="main">
         <div class="web-u-opacity-40-mobile bg-blur absolute w-[calc(50%-18rem)]" style="right: 0;">
             <div class="left-0">
                 <img src="/images/bgs/docs-blur-1.svg" alt="" class="max-w-max"/>
