@@ -482,7 +482,7 @@
                             class="web-big-list-info web-u-inline-width-100-percent-mobile-break1 web-u-margin-block-start-48 ml-auto"
                         >
                             <li class="web-big-list-info-item">
-                                <div class="text-headline font-aeonik-pro text-primary">90K</div>
+                                <div class="text-headline font-aeonik-pro text-primary">100K</div>
                                 <div class="text">Projects</div>
                             </li>
                             <li class="web-big-list-info-item">
