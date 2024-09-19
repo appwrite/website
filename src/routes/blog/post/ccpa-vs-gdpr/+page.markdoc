@@ -17,11 +17,11 @@ If you’re here, you probably want to understand how to handle this responsibil
 
 ## What is GDPR?
 
-The **General Data Protection Regulation [GDPR](https://appwrite.io/docs/advanced/security/gdpr)is a comprehensive **data protection** law that came into effect on May 25, 2018, across the European Union (EU). It aims to protect the **personal data** of EU citizens and harmonize privacy laws across Europe. GDPR applies to all businesses, regardless of location, that process the personal data of EU residents. Any developers building applications for EU residents must be GDPR-compliant.
+The General Data Protection Regulation [GDPR](https://appwrite.io/docs/advanced/security/gdpr)is a comprehensive **data protection** law that came into effect on May 25, 2018, across the European Union (EU). It aims to protect the **personal data** of EU citizens and harmonize privacy laws across Europe. GDPR applies to all businesses, regardless of location, that process the personal data of EU residents. Any developers building applications for EU residents must be GDPR-compliant.
 
 ## What is CCPA?
 
-The **California Consumer Privacy Act [CCPA](https://oag.ca.gov/privacy/ccpa), enacted on January 1, 2020, is a state-level privacy law in the United States that applies to residents of California. The **CCPA for developers** is often considered the most significant U.S. privacy regulation, giving Californians more control over their personal data and how businesses handle it. Developers looking to build **CCPA-compliant apps** must implement features that allow users to exercise their rights under the CCPA.
+The California Consumer Privacy Act [CCPA](https://oag.ca.gov/privacy/ccpa), enacted on January 1, 2020, is a state-level privacy law in the United States that applies to residents of California. The **CCPA for developers** is often considered the most significant U.S. privacy regulation, giving Californians more control over their personal data and how businesses handle it. Developers looking to build **CCPA-compliant apps** must implement features that allow users to exercise their rights under the CCPA.
 
 Here is a straightforward overview to compare the two:
 
