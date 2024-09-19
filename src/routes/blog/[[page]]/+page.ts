@@ -1,11 +1,11 @@
-import { getAllBlogEntriesWithAuthors } from '../content';
+import { getBlogEntries, normalizeCategory } from '../content';
 import { BLOG_POSTS_PER_PAGE } from '$lib/constants';
 import { error, redirect } from '@sveltejs/kit';
 
 export const prerender = false;
 
 export const entries = () => {
-    const { posts } = getAllBlogEntriesWithAuthors();
+    const { posts } = getBlogEntries();
     const totalPages = Math.ceil(posts.length / BLOG_POSTS_PER_PAGE);
 
     return Array.from({ length: totalPages }, (_, i) => ({
@@ -15,15 +15,14 @@ export const entries = () => {
 
 export const load = async ({ params, url }) => {
     const currentPage = parseInt(params.page || '1', 10);
-    const searchQuery = url.searchParams.get('search') || '';
-    const categoryQuery =
-        url.searchParams.get('category')?.replace(/\s+/g, '-').toLowerCase() || '';
+    const searchQuery = (url.searchParams.get('search') || '').toLowerCase();
+    const categoryQuery = normalizeCategory(url.searchParams.get('category') || '');
 
     if (params.page === '1') {
         redirect(302, '/blog');
     }
 
-    const entries = getAllBlogEntriesWithAuthors();
+    const entries = getBlogEntries();
 
     let posts = entries.posts;
     const authors = entries.authors;
@@ -32,8 +31,8 @@ export const load = async ({ params, url }) => {
     if (searchQuery || categoryQuery) {
         posts = posts.filter((post) => {
             return (
-                post.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
-                (!categoryQuery || post.category.includes(categoryQuery))
+                post.title.toLowerCase().includes(searchQuery) &&
+                (!categoryQuery || normalizeCategory(post.category).includes(categoryQuery))
             );
         });
     }
@@ -56,7 +55,8 @@ export const load = async ({ params, url }) => {
         currentPage,
         posts: blogPosts,
         featured: featuredPost,
-        navigation: pageNavigationChunks
+        navigation: pageNavigationChunks,
+        filteredCategories: entries.filteredCategories
     };
 };
 
