@@ -211,7 +211,7 @@
                                         />
                                         <div class="web-author-info">
                                             <a href={author?.href} class="text-sub-body web-link"
-                                                >{author?.name}</a
+                                            >{author?.name}</a
                                             >
                                             <p class="text-caption hidden">{author?.bio}</p>
                                             <ul class="web-metadata text-caption web-is-not-mobile">
@@ -241,7 +241,7 @@
                 </h2>
 
                 <div class="pt-4">
-                    <div class="search-and-categories flex items-center gap-8">
+                    <div class="search-and-categories flex items-center md:gap-[40px] gap-8">
                         <div
                             class="categories-wrapper"
                             data-state={isStart ? 'start' : isEnd ? 'end' : 'middle'}
@@ -282,27 +282,7 @@
                         </div>
 
                         <div
-                            class="mobile-search-bar web-input-text-search-wrapper block w-full md:hidden"
-                        >
-                            <span
-                                class="web-icon-search z-[5]"
-                                aria-hidden="true"
-                                style="inset-block-start:0.65rem"
-                            />
-                            <input
-                                class="web-input-button relative z-1 w-full"
-                                type="text"
-                                id="search"
-                                placeholder="Search"
-                                use:search
-                                bind:value={query}
-                                data-hit="-1"
-                                style="padding-inline-start: 2.5rem !important"
-                            />
-                        </div>
-
-                        <div
-                            class="desktop-search-bar web-input-text-search-wrapper web-u-max-inline-size-none-mobile ml-auto hidden w-full max-w-[350px] md:block"
+                            class="search-bar web-input-text-search-wrapper ml-auto w-full max-w-[350px]"
                         >
                             <span
                                 class="web-icon-search z-[5]"
@@ -351,9 +331,9 @@
                                     on:click={() => {
                                         query = '';
                                         selectedCategory = 'Latest';
-                                        handleSearch('');
+                                        handleSearch();
                                     }}
-                                    >Clear search
+                                >Clear search
                                 </button>
                             </div>
                         {/each}
@@ -504,9 +484,9 @@
         &::before {
             left: 0;
             background: linear-gradient(
-                to right,
-                hsl(var(--web-color-background-docs)),
-                transparent
+                    to right,
+                    hsl(var(--web-color-background-docs)),
+                    transparent
             );
         }
 
@@ -517,9 +497,9 @@
         &::after {
             right: 0;
             background: linear-gradient(
-                to left,
-                hsl(var(--web-color-background-docs)),
-                transparent
+                    to left,
+                    hsl(var(--web-color-background-docs)),
+                    transparent
             );
         }
 
@@ -540,16 +520,41 @@
         max-width: 66%;
     }
 
-    .desktop-search-bar {
+    .categories {
+        margin-inline-end: 6px;
+    }
+
+    .search-bar {
         min-width: 0;
         flex: 1 1 auto;
         max-width: 33%;
+        margin-inline-start: 2px;
     }
 
     @media (max-width: 945px) {
         .categories-wrapper,
-        .desktop-search-bar {
+        .search-bar {
             max-width: 50%;
+        }
+
+        .categories {
+            margin-inline-end: 12px;
+        }
+
+        .search-bar {
+            margin-inline-start: -1.5rem;
+        }
+    }
+
+    @media (min-width: 946px) {
+        .search-bar {
+            margin-inline-start: -0.75rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .search-bar {
+            margin-inline-start: unset;
         }
     }
 
@@ -559,18 +564,23 @@
 
     @media (max-width: 768px) {
         .search-and-categories {
-            flex-wrap: wrap;
             display: flex;
+            flex-wrap: wrap;
             padding-block-start: 2rem;
             flex-direction: column-reverse;
         }
 
         .categories-wrapper {
-            max-width: 90vw;
+            max-width: 99%;
         }
 
-        .search-and-categories > .mobile-search-bar {
-            align-self: baseline;
+        .categories {
+            margin-inline-end: unset;
+        }
+
+        .search-and-categories > .search-bar {
+            max-width: 100%;
+            margin-inline-start: unset;
         }
 
         .search-and-categories > .web-input-text-search-wrapper {
