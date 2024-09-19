@@ -1,6 +1,7 @@
 <script lang="ts">
     import { highlight } from '$lib/actions/highlight';
     import type { DiscordThread } from './types';
+    import { sanitizeContent } from '$routes/threads/helpers';
 
     export let thread: DiscordThread;
     export let query: string;
@@ -20,8 +21,8 @@
             <!-- <time class="text-caption ml-auto">12 Jan, 2023</time> -->
         </div>
 
-        <p class="text-body mt-1 break-words font-medium" use:highlight={highlightTerms}>
-            {thread.content.length > 200 ? thread.content.slice(0, 200) + '...' : thread.content}
+        <p class="web-main-body-500 u-margin-block-start-4 u-break-word" use:highlight={highlightTerms}>
+            {sanitizeContent(thread.content)}
         </p>
 
         <div class="mt-4 flex justify-between gap-4">
