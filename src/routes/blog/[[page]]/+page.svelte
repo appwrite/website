@@ -47,6 +47,12 @@
         const searchQuery = query.toLowerCase();
 
         const url = new URL($page.url);
+        /**
+         * Navigate to the first page on search/filter to ensure consistent
+         * navigation experience when changing categories or search queries.
+         */
+        url.pathname = '/blog';
+
         searchQuery
             ? url.searchParams.set('search', searchQuery)
             : url.searchParams.delete('search');
