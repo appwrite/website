@@ -68,8 +68,10 @@
     <Sidebar />
 
     <main class="web-main-section relative lg:overflow-hidden" id="main">
-        <div class="web-u-opacity-40-mobile bg-blur absolute">
-            <img src="/images/bgs/docs-blur-1.svg" alt="" />
+        <div class="web-u-opacity-40-mobile bg-blur absolute w-[calc(50%-18rem)]" style="right: 0;">
+            <div class="left-0">
+                <img src="/images/bgs/docs-blur-1.svg" alt="" class="max-w-max"/>
+            </div>
         </div>
 
         <div class="web-u-opacity-40-mobile absolute top-4 left-0">
@@ -386,7 +388,6 @@
     }
 
     .bg-blur {
-        inset-inline-end: -300px;
         inset-block-start: -100px;
     }
 
