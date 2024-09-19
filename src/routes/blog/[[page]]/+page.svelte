@@ -47,7 +47,9 @@
         const searchQuery = query.toLowerCase();
 
         const url = new URL($page.url);
-        searchQuery ? url.searchParams.set('search', searchQuery) : url.searchParams.delete('search');
+        searchQuery
+            ? url.searchParams.set('search', searchQuery)
+            : url.searchParams.delete('search');
         selectedCategory && selectedCategory !== 'Latest'
             ? url.searchParams.set('category', selectedCategory)
             : url.searchParams.delete('category');
@@ -211,7 +213,7 @@
                                         />
                                         <div class="web-author-info">
                                             <a href={author?.href} class="text-sub-body web-link"
-                                            >{author?.name}</a
+                                                >{author?.name}</a
                                             >
                                             <p class="text-caption hidden">{author?.bio}</p>
                                             <ul class="web-metadata text-caption web-is-not-mobile">
@@ -241,7 +243,7 @@
                 </h2>
 
                 <div class="pt-4">
-                    <div class="search-and-categories flex items-center md:gap-[40px] gap-8">
+                    <div class="search-and-categories flex items-center gap-8 md:gap-[40px]">
                         <div
                             class="categories-wrapper"
                             data-state={isStart ? 'start' : isEnd ? 'end' : 'middle'}
@@ -333,7 +335,7 @@
                                         selectedCategory = 'Latest';
                                         handleSearch();
                                     }}
-                                >Clear search
+                                    >Clear search
                                 </button>
                             </div>
                         {/each}
@@ -484,9 +486,9 @@
         &::before {
             left: 0;
             background: linear-gradient(
-                    to right,
-                    hsl(var(--web-color-background-docs)),
-                    transparent
+                to right,
+                hsl(var(--web-color-background-docs)),
+                transparent
             );
         }
 
@@ -497,9 +499,9 @@
         &::after {
             right: 0;
             background: linear-gradient(
-                    to left,
-                    hsl(var(--web-color-background-docs)),
-                    transparent
+                to left,
+                hsl(var(--web-color-background-docs)),
+                transparent
             );
         }
 
