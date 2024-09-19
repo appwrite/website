@@ -11,7 +11,7 @@
     export let data;
 
     const featured = data.featured;
-    const categories = data.categories.sort((a, b) => a.name.localeCompare(b.name));
+    const categories = data.filteredCategories.sort((a, b) => a.name.localeCompare(b.name));
 
     $: isFirstPage = data.currentPage === 1;
 
