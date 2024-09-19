@@ -29,6 +29,7 @@ export type PostsData = {
     href: string;
     slug: string;
     featured?: boolean;
+    unlisted?: boolean;
     callToAction: {
         heading?: string;
         label?: string;
@@ -67,6 +68,7 @@ export const posts = Object.entries(postsGlob)
             category: frontmatter.category,
             href: `${base}/blog/post/${postName}`,
             slug,
+            unlisted: frontmatter.unlisted,
             draft: frontmatter.draft
         };
     })
@@ -112,8 +114,8 @@ export const getBlogEntries = () => {
     );
 
     return {
-        posts,
         authors,
-        filteredCategories
+        filteredCategories,
+        posts: posts.filter((post) => !post.unlisted)
     };
 };
