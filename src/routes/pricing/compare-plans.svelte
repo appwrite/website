@@ -502,14 +502,9 @@
                         <div class="web-mini-card">
                             <div class="flex items-center justify-between gap-8">
                                 <h4 class="text-label text-primary">Scale</h4>
-                                <a
-                                    class="web-button is-secondary"
-                                    href="https://cloud.appwrite.io/console?type=createScale"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <span class="text-sub-body font-medium">Start now</span>
-                                </a>
+                                <button class="web-button is-secondary" disabled>
+                                    <span class="text-sub-body font-medium">Coming soon</span>
+                                </button>
                             </div>
                         </div>
                         <div class="web-mini-card">
