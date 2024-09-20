@@ -823,7 +823,7 @@ export default async ({ req, res, log }) => {
         case 'json':
             return res.json({"type": "This is a JSON response"});
         case 'binary':
-            const bytes = await fs.readFile('/path/to/file');
+            const bytes = await fs.readFile('file.png');
             return res.binary(bytes);
         case 'redirect':
             return res.redirect("https://appwrite.io", 301);
