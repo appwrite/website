@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to optimize your Appwrite project for cost and performance
-description: Learn how to optimize your Appwrite project for cost and performance by reducing API requests, caching data, compressing files, and more.
+description: Learn how to optimize your Appwrite project, manage resource usage, costs, and ensure smooth performance as yout application scales.
 date: 2024-09-20
 cover: /images/blog/how-to-optimize-your-appwrite-project/cover.png
 timeToRead: 12
