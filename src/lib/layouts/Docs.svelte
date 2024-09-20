@@ -56,8 +56,6 @@
     $: variantClass = variantClasses[variant];
     $: $layoutState.currentVariant = variant;
 
-    $: $layoutState, console.log('value has been updated', $layoutState.currentVariant );
-
     navigating.subscribe(() => {
         layoutState.update((n) => ({
             ...n,
