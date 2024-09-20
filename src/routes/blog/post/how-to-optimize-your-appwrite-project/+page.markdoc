@@ -80,6 +80,11 @@ const unsubscribe = client.subscribe('files', (response) => {
 })
 ```
 
+In addition to handling real-time updates, Appwrite's Realtime API can help decide when further requests are needed. Instead of continuously fetching data to check for updates, you can create a versioning system.
+
+1. **Versioning Document**: Create a document with a single column, `version`, to track updates.
+2. **Subscribe to Changes**: Use the Realtime API to monitor changes in this document. If the `version` field updates, it signals that the data has changed and needs re-fetching.
+
 Appwrite's Realtime API supports multiple channels, such as `files`, `account`, and specific `collections`, ensuring updates from any part of your app. To learn more about the Realtime API, refer to the [Appwrite Realtime documentation](https://appwrite.io/docs/realtime).
 
 By using Appwrite's real-time feature, you drastically reduce API request overhead, especially for high-traffic apps like live dashboards or messaging platforms, while maintaining instant, event-driven updates.
@@ -202,20 +207,6 @@ Tasks like generating reports, processing data, or transforming files can be off
 # 5. Setting up usage limits, alerts, and budget controls
 
 Proactively managing your resource usage in Appwrite is key to avoiding unexpected overages and optimizing costs. Appwrite offers built-in tools for setting up usage alerts and budget controls to help developers manage their consumption.
-
-## Usage limits and alerts
-
-Through the Appwrite Console, you can set up usage limits to track your project's consumption of API requests, database operations, storage, and more. When you approach these limits, Appwrite can automatically send alerts to warn you, allowing you to optimize your app before hitting critical thresholds.
-
-For example, if your project approaches its storage limit, you can receive an alert prompting you to compress or delete unnecessary files, thus avoiding overage charges:
-
-```javascript
-// Check storage usage programmatically
-const usage = await client.getUsage()
-if (usage.storage.used > 80) {
-  console.log('Storage usage exceeds 80%. Consider optimizing or upgrading.')
-}
-```
 
 ## Budget controls
 
