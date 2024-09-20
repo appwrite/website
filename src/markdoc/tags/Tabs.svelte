@@ -26,12 +26,12 @@
 </script>
 
 <div class="web-card is-normal mt-4" {...$root} use:root>
-    <div class="tabs flex gap-4">
+    <div class="tabs flex gap-4 overflow-scroll" style="scrollbar-width: none; -ms-overflow-style: none;">
         <ul class="tabs-list flex items-center gap-4" {...$list} use:list>
             {#each $ctx.triggers.entries() as [id, title]}
                 <li class="tabs-item hover:bg-white/[0.04] rounded-t-[0.625rem]">
                     <button
-                        class="tabs-button px-1 py-[0.625rem] font-light outline-none bg-clip-padding data-[state=active]:text-white cursor-pointer"
+                        class="tabs-button px-1 py-[0.625rem] font-light outline-none bg-clip-padding cursor-pointer"
                         class:is-selected={$value === id}
                         {...$trigger(id)}
                         use:trigger>{title}</button
