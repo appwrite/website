@@ -9,7 +9,7 @@
 <section class="web-article-content-section is-with-line">
     <section class="web-article-content-sub-section">
         <header class="web-article-content-header">
-            <span class="web-numeric-badge">{step}</span>
+            <span class="web-numeric-badge mb-4">{step}</span>
             <Heading level={2} {id} {step}>
                 {title}
             </Heading>
