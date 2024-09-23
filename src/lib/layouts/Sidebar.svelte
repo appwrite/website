@@ -3,6 +3,7 @@
         label: string;
         href: string;
         icon?: string;
+        new?: boolean;
         isParent?: boolean;
     };
 
