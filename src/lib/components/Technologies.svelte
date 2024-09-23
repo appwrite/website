@@ -65,7 +65,7 @@
     }>;
 </script>
 
-<ul class="web-u-margin-block-32-mobile web-u-margin-block-40-not-mobile flex flex-wrap gap-4">
+<ul class="web-u-margin-block-32-mobile web-u-margin-block-40-not-mobile flex flex-wrap gap-4 lg:max-w-[34rem]">
     {#each platforms as platform}
         <Tooltip>
             <li>
