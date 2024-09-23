@@ -17,7 +17,7 @@
         <span>{groupItem.label}</span>
 
         {#if groupItem.new}
-            <span class="web-inline-tag is-pink" style="font-size: 0.75rem;">New</span>
+            <span class="web-inline-tag is-pink" style="">New</span>
         {/if}
     </span>
     {#if groupItem.isParent}
@@ -28,5 +28,11 @@
 <style lang="scss">
   [class*='icon'] {
     font-size: 1rem;
+  }
+
+  .web-inline-tag {
+    font-size: 0.75rem;
+    padding-inline: 3px;
+    margin-block-start: 1px;
   }
 </style>
