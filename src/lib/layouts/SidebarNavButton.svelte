@@ -32,7 +32,7 @@
 
   .web-inline-tag {
     font-size: 0.75rem;
-    padding-inline: 3px;
+    padding-block: 2px;
     margin-block-start: 1px;
   }
 </style>
