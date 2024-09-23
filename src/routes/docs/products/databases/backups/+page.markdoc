@@ -4,15 +4,15 @@ title: Database Backups
 description: Learn how to efficiently back up your databases on Appwrite Cloud, ensuring data security and seamless recovery.
 ---
 
-Appwrite Backups enables seamless database backups on Cloud.
+Appwrite Backups enables seamless, **encrypted** database backups on Cloud.
 Learn how to efficiently back up your databases, ensuring data security and smooth recovery.
 
-{% info title="Backups are available on Appwrite Cloud & Enterprise plan" %}
+{% info title="Backups are an Appwrite Cloud feature and available on the Enterprise plan" %}
 {% /info %}
 
 Appwrite Backups enable you to automate database backups using Backup Policies, with support for both pre-defined and custom retention options. You can also create manual backups whenever necessary.
 
-# Backups
+# Backups {% #backups %}
 
 ## Create Backups {% #create-backups %}
 
@@ -38,3 +38,21 @@ In order to restore a database, you must have a backup of the database you are t
 6. Click **Restore**
 
 Note that depending on the size of your database, it can take a while for it to be restored. You can observe its status in a floating bar that is shown across you project
+
+# Best Practices {% #create-backups %}
+
+To ensure your backups are robust and effective, consider the following best practices:
+
+1. **Schedule Regular Backups**:
+   Add multiple backup policies based on the frequency of database changes. Daily or weekly backups are often sufficient for most use cases.
+
+2. **Retain Critical Backups Longer**:
+   Use custom retention on Policies to keep backups of critical data for extended periods, ensuring historical records are available when needed.
+
+3. **Monitor Backup Status**:
+   Regularly check the backup status in the Backups Tab to ensure no scheduled backups have failed.
+   All backups are stored in an **encrypted** format to protect your data.
+
+4. **Optimize Backup Policies Based on Data Sensitivity**:
+   Tailor your backup frequency and retention settings according to the sensitivity and importance of the data.
+   Critical data may require more frequent backups, while less essential data can have longer retention and fewer backups.
