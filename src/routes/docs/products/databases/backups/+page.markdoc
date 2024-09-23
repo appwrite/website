@@ -1,0 +1,40 @@
+---
+layout: article
+title: Database Backups
+description: Learn how to efficiently back up your databases on Appwrite Cloud, ensuring data security and seamless recovery.
+---
+
+Appwrite Backups enables seamless database backups on Cloud.
+Learn how to efficiently back up your databases, ensuring data security and smooth recovery.
+
+{% info title="Backups are available on Appwrite Cloud & Enterprise plan" %}
+{% /info %}
+
+Appwrite Backups enable you to automate database backups using Backup Policies, with support for both pre-defined and custom retention options. You can also create manual backups whenever necessary.
+
+# Backups
+
+## Create Backups {% #create-backups %}
+
+To automate your database backups, you first need to create Backup Policies that run at scheduled intervals.
+
+1. In the Appwrite Console's sidebar, click **Databases**
+2. Select & navigate to your database and click on the **Backups** Tab
+3. Click on **Create Policies** & adjust your settings or select a pre-defined policy
+4. Click on **Create**
+
+Your database is now set up for automated backups with just a few clicks.\
+Note that you can always navigate to the same tab and click **Create Manual** to create a backup on-demand.
+
+## Restoring Backups {% #restoring-backups %}
+
+In order to restore a database, you must have a backup of the database you are trying to restore.
+
+1. In the Appwrite Console's sidebar, click **Databases**
+2. Select & navigate to your database and click on the **Backups** Tab
+3. Click on the options menu in the far corner of your backup
+4. When the dropdown shows up, click on **Restore**
+5. Enter the new database name and an optional database id
+6. Click **Restore**
+
+Note that depending on the size of your database, it can take a while for it to be restored. You can observe its status in a floating bar that is shown across you project
