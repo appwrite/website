@@ -429,6 +429,7 @@
                 style:inset-block-start="0rem"
                 style:z-index="-1"
                 style:left="calc(50% - 384px + 350px)"
+                style:margin-top="6.25rem"
             >
                 <img
                     src="/images/animations/tech-dark.png"
