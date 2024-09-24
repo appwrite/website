@@ -1,32 +1,287 @@
 ---
 layout: article
-title: Console Roles
+title: Roles
 description: Learn how to setup RBAC roles for the Appwrite Console 
 ---
 
-Roles
+The Appwrite Console supports granular permissions to improve team collaboration and security. Each member of your Console team can be assigned a specific role that grants them access to certain areas of your organization's projects. Below is a breakdown of the new roles available, detailing their permissions and intended use cases.
 
-The Appwrite Console supports granular permissions to improve team collaboration and security. Each members of your Console team can be assigned with a specific role that grant them access to specific areas in your organization’s projects. Below is a breakdown of the new roles available, detailing their permissions and intended use cases.
+{% info title="Note" %}
+This page covers team member roles for the Appwrite console. Visit the Auth product [roles documentation](https://appwrite.io/docs/products/auth/teams#permissions) if you want to learn more about roles for the [Teams service](https://appwrite.io/docs/references/cloud/client-web/teams).
+{% /info %}
 
-> This page covers team roles for the Appwrite console. Visit the Auth product [roles documentation](https://appwrite.io/docs/products/auth/teams#permissions) if you want to learn more about roles for the [Teams service](https://appwrite.io/docs/references/cloud/client-web/teams).
-
-## Breakdown
-
-Owner
+## Owner {% #owner %}
 The highest level of access, the Owner role has full control over all aspects of the console, including team management, billing, and all development resources. Only owners can create new projects.
 
-Developer
+## Developer {% #developer %}
 Developers have access to all resources and scopes available to the Owner, with the exception of team management and billing writes. This role is ideal for team members focusing solely on development tasks.
 
-Editor
+## Editor {% #editor %}
 Editors can modify most resources but do not have write permissions for critical backend elements like collections, buckets, topics, and others. This role is intended for users who need to modify content or make changes but should not alter key infrastructure elements. This is great if you need to give access for updating your documents, creating messages or uploading files.
 
-Analyst
+## Analyst {% #analyst %}
 Analysts are limited to read-only access across all resources. This role is suitable for team members who need to view data, analytics, or reports but do not require editing permissions.
 
-Billing
+## Billing {% #billing %}
 Billing users are restricted to billing-related actions, with access to billing.read and billing.write scopes only. They can view and manage billing details but cannot interact with other parts of the system.
 
-## Custom roles
+## Scopes {% #scopes %}
+Here is a detailed breakdown of the allowed scopes for each of the above roles
 
+{% table %}
+* Scope
+* Billing {% align="center" %} {% width=28 %}
+* Analyst {% align="center" %} {% width=28 %}
+* Editor {% align="center" %} {% width=28 %}
+* Developer {% align="center" %} {% width=28 %}
+* Owner {% align="center" %} {% width=28 %}
+---
+* `billing.read`
+* {% icon icon="check" /%} {% align="center" %}
+* 
+* 
+* 
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `billing.write`
+* {% icon icon="check" /%} {% align="center" %}
+* 
+* 
+* 
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `teams.read`
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `users.read`
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `databases.read`
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `collections.read`
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `attributes.read`
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `indexes.read`
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `documents.read`
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `files.read`
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `buckets.read`
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `functions.read`
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `execution.read`
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `rules.read`
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `migrations.read`
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `vcs.read`
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `locale.read`
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `avatars.read`
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `health.read`
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `assistant.read`
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `documents.write`
+* 
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `files.write`
+* 
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `execution.write`
+* 
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `teams.write`
+* 
+* 
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `users.write`
+* 
+* 
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `databases.write`
+* 
+* 
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `collections.write`
+* 
+* 
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `attributes.write`
+* 
+* 
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `indexes.write`
+* 
+* 
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `buckets.write`
+* 
+* 
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `functions.write`
+* 
+* 
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `rules.write`
+* 
+* 
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `migrations.write`
+* 
+* 
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `vcs.write`
+* 
+* 
+* 
+* {% icon icon="check" /%} {% align="center" %}
+* {% icon icon="check" /%} {% align="center" %}
+---
+* `projects.write`
+* 
+* 
+* 
+* 
+* {% icon icon="check" /%} {% align="center" %}
+{% /table %}
+
+
+## Custom roles {% #custom-roles %}
 Custom roles will soon be available on the Appwrite Console. Custom roles will be a Scale and Enterprise plans feature.
