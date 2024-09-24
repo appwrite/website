@@ -122,14 +122,14 @@
             <div class="my-12 lg:my-[7.5rem]">
                 <section class="container pb-0">
                     <a
-                        href="/blog/post/announcing-init-faster-smoother-better"
+                        href="/blog/post/announcing-appwrite-is-ccpa-compliant"
                         class="web-hero-banner-button mb-4"
                     >
                         <span class="web-icon-star shrink-0" aria-hidden="true" />
                         <span class="text-caption font-medium shrink-0">New</span>
                         <div class="web-hero-banner-button-sep" />
                         <span class="text-caption web-u-trim-1"
-                            >Announcing: A new Init. Faster. Smoother. Better.</span
+                            >Appwrite is now CCPA compliant.</span
                         >
                         <span class="web-icon-arrow-right shrink-0" aria-hidden="true" />
                     </a>
@@ -482,7 +482,7 @@
                             class="web-big-list-info web-u-inline-width-100-percent-mobile-break1 web-u-margin-block-start-48 ml-auto"
                         >
                             <li class="web-big-list-info-item">
-                                <div class="text-headline font-aeonik-pro text-primary">90K</div>
+                                <div class="text-headline font-aeonik-pro text-primary">100K</div>
                                 <div class="text">Projects</div>
                             </li>
                             <li class="web-big-list-info-item">
