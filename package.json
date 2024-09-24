@@ -51,6 +51,7 @@
         "cva": "npm:class-variance-authority@^0.7.0",
         "date-fns": "^3.6.0",
         "dequal": "^2.0.3",
+        "dotted-map": "^2.2.3",
         "embla-carousel": "^8.1.5",
         "embla-carousel-svelte": "^8.1.5",
         "embla-carousel-wheel-gestures": "^8.0.1",
