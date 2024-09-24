@@ -34,7 +34,7 @@ Choosing an open-source solution comes with several benefits:
 
 ## Customer identity
 
-**Appwrite Auth**:
+**Auth**:
 
 - **Complete customer identity**: Appwrite offers a full-fledged authentication system that supports multiple methods. Whether you prefer email/password, OAuth (Google, Facebook, GitHub, etc.), or passwordless, Appwrite has you covered.
 - **User management**: Easily manage user accounts with features like account creation, login, password reset, and email verification. Appwrite Teams allow you to create groups of users that support your chosen roles and permissions with a few clicks.
@@ -49,7 +49,7 @@ Choosing an open-source solution comes with several benefits:
 
 ## Customization and flexibility
 
-**Appwrite Auth**:
+**Auth**:
 
 - **Open-source**: As an open-source platform, Appwrite gives you the freedom to modify the authentication system to fit your specific needs. Whether you're building a small app or a large-scale enterprise solution, Appwrite can be tailored to your requirements.
 - **Flexible SDKs and APIs**: Appwrite offers a variety of SDKs and APIs that integrate seamlessly with your frontend and backend systems. Plus, Appwrite isn't locked into any specific language, so you can use your existing language and framework without having to learn something new.
@@ -61,7 +61,7 @@ Choosing an open-source solution comes with several benefits:
 
 ## Community and support
 
-**Appwrite Auth**:
+**Auth**:
 
 - **Vibrant community**: Appwrite benefits from a growing community of open-source developers who contribute to its continuous improvement. You can find support on our [Discord server](https://appwrite.io/discord), share ideas, and collaborate with others to make the platform even better.
 - **Active development**: Frequent updates and enhancements driven by the community ensure that Appwrite stays up-to-date with the latest trends and technologies.
@@ -71,9 +71,9 @@ Choosing an open-source solution comes with several benefits:
 - **Professional support**: Auth0 provides professional support plans, ensuring you have access to expert assistance when needed.
 - **Community engagement**: Auth0 also has a strong community and ecosystem, offering resources, forums, and documentation to help you succeed.
 
-# Feature comparison: Appwrite Auth vs Auth0
+# Feature comparison: Appwrite's Auth feature vs Auth0
 
-| **FEATURE** | **APPWRITE AUTH** | **AUTH0** |
+| **FEATURE** | **AUTH** | **AUTH0** |
 | --- | --- | --- |
 | Deployment | Self-hosted or cloud-hosted | Cloud |
 | Free plan | 75K monthly users | 7.5K monthly users |
