@@ -50,7 +50,7 @@
     import MetricCard from '$lib/components/MetricCard.svelte';
     import { newsletter } from '$lib/components/Newsletter.svelte';
     import PreFooter from '$lib/components/PreFooter.svelte';
-    import { GITHUB_STARS } from '$lib/constants';
+    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import { Main } from '$lib/layouts';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
@@ -178,7 +178,7 @@
                                     <span class="text">Join our Discord</span>
                                 </a>
                                 <a
-                                    href="https://github.com/appwrite/appwrite/stargazers"
+                                    href="{GITHUB_REPO_LINK}"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="web-button is-secondary is-full-width-mobile"
@@ -238,7 +238,7 @@
                             </p>
                             <div class="mt-8 flex flex-wrap justify-center gap-3">
                                 <a
-                                    href="https://github.com/appwrite/appwrite/graphs/contributors"
+                                    href="{GITHUB_REPO_LINK}/graphs/contributors"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="web-button is-secondary is-full-width-mobile"
@@ -278,7 +278,7 @@
                                     Anyone can join and help Appwrite become better.
                                 </p>
                                 <a
-                                    href="https://github.com/appwrite/appwrite/issues"
+                                    href="{GITHUB_REPO_LINK}/issues"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="web-button is-secondary mt-8"
@@ -527,7 +527,7 @@
                             </li>
                             <li>
                                 <a
-                                    href="https://github.com/appwrite/appwrite"
+                                    href="{GITHUB_REPO_LINK}"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="web-card is-white web-u-min-block-size-320 flex flex-col"
