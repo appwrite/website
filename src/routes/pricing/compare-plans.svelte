@@ -422,7 +422,7 @@
                         }}
                     >
                         <h3 class="text-title font-aeonik-pro text-primary">Compare plans</h3>
-                        <p class="text-body font-medium mt-4">
+                        <p class="text-body mt-4 font-medium">
                             Discover our plans and find the one that fits your project’s needs.
                         </p>
                     </header>
@@ -476,21 +476,21 @@
                             {/key}
                         </div>
                         <div class="web-mini-card">
-                            <div class="flex items-center justify-between gap-8">
-                                <h4 class="text-label text-primary">Free</h4>
+                            <div class="flex flex-col items-center justify-between gap-2">
+                                <h4 class="text-sub-body text-primary font-medium">Free</h4>
                                 <a
                                     href="https://cloud.appwrite.io/register"
-                                    class="web-button is-secondary"
+                                    class="web-button is-secondary !w-full"
                                 >
                                     <span class="text-sub-body font-medium">Start building</span>
                                 </a>
                             </div>
                         </div>
                         <div class="web-mini-card">
-                            <div class="flex items-center justify-between gap-8">
-                                <h4 class="text-label text-primary">Pro</h4>
+                            <div class="flex flex-col items-center justify-between gap-2">
+                                <h4 class="text-sub-body text-primary font-medium">Pro</h4>
                                 <a
-                                    class="web-button"
+                                    class="web-button !w-full"
                                     href="https://cloud.appwrite.io/console?type=createPro"
                                     target="_blank"
                                     rel="noopener noreferrer"
@@ -500,17 +500,20 @@
                             </div>
                         </div>
                         <div class="web-mini-card">
-                            <div class="flex items-center justify-between gap-8">
-                                <h4 class="text-label text-primary">Scale</h4>
-                                <button class="web-button is-secondary" disabled>
+                            <div class="flex flex-col items-center justify-between gap-2">
+                                <h4 class="text-sub-body text-primary font-medium">Scale</h4>
+                                <button class="web-button is-secondary !w-full" disabled>
                                     <span class="text-sub-body font-medium">Coming soon</span>
                                 </button>
                             </div>
                         </div>
                         <div class="web-mini-card">
-                            <div class="flex items-center justify-between gap-8">
-                                <h4 class="text-label text-primary">Enterprise</h4>
-                                <a class="web-button is-secondary" href="/contact-us/enterprise">
+                            <div class="flex flex-col items-center justify-between gap-2">
+                                <h4 class="text-sub-body text-primary font-medium">Enterprise</h4>
+                                <a
+                                    class="web-button is-secondary !w-full"
+                                    href="/contact-us/enterprise"
+                                >
                                     <span class="text-sub-body font-medium">Contact</span>
                                 </a>
                             </div>
@@ -555,11 +558,11 @@
 
                             <tbody class="web-compare-table-body" use:melt={$content(table.title)}>
                                 {#each table.rows as row}
-                                    <tr>
+                                    <tr class="text-center">
                                         <th class="text-sub-body font-medium">
-                                            <div class="flex gap-1 text-left">
+                                            <div class="flex gap-1 text-center">
                                                 {row.title}
-                                                {#if row.info}
+                                                <!-- {#if row.info}
                                                     <Tooltip placement="top">
                                                         <span
                                                             class="icon-info"
@@ -569,7 +572,7 @@
                                                             {row.info}
                                                         </svelte:fragment>
                                                     </Tooltip>
-                                                {/if}
+                                                {/if} -->
                                             </div>
                                         </th>
                                         {#each cols as col, index}
