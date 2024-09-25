@@ -56,10 +56,10 @@
                     enterprise: 'Custom'
                 },
                 {
-                    title: 'Compute',
-                    free: '750K executions /month',
-                    pro: '3.5M executions /month',
-                    scale: '3.5M executions /month',
+                    title: 'Executions',
+                    free: '750K /month',
+                    pro: '3.5M /month',
+                    scale: '3.5M /month',
                     enterprise: 'Custom'
                 }
             ]
