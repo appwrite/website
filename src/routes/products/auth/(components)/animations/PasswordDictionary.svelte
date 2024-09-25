@@ -93,10 +93,10 @@
         </p>
     </div>
     <div
-        class="relative flex flex-1 flex-col items-center justify-center overflow-hidden rounded-lg bg-white/[0.02]"
+        class="relative flex min-h-60 flex-1 flex-col items-center justify-center overflow-hidden rounded-lg bg-white/[0.02]"
     >
         <div class="pointer-events-none absolute mx-auto flex w-[105%] flex-wrap gap-x-2 text-sm">
-            {#each options as option, i}
+            {#each options as option}
                 {#if option === '654321'}
                     <div
                         class={classNames(
