@@ -13,7 +13,7 @@
     const classList: Record<typeof level, string> = {
         1: 'text-label mb-4 mt-8',
         2: 'text-description mb-4',
-        3: 'text-body font-medium',
+        3: 'text-body font-medium mb-4',
         4: 'text-sub-body font-medium'
     };
 
