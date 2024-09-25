@@ -29,16 +29,16 @@
             rows: [
                 {
                     title: 'Bandwidth',
-                    free: '10GB',
-                    pro: '300GB',
-                    scale: '300GB',
+                    free: '10GB per month',
+                    pro: '300GB per month',
+                    scale: '300GB per month',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Additional bandwidth',
                     free: '-',
-                    pro: '$40 per 100GB',
-                    scale: '$40 per 100GB',
+                    pro: '$40 per 100GB per month',
+                    scale: '$40 per 100GB per month',
                     enterprise: 'Custom'
                 },
                 {
@@ -51,15 +51,15 @@
                 {
                     title: 'Additional storage',
                     free: '-',
-                    pro: '$3 per 100GB',
+                    pro: '$3 per 100GB ',
                     scale: '$3 per 100GB',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Compute',
-                    free: '750K executions',
-                    pro: '3.5M executions',
-                    scale: '3.5M executions',
+                    free: '750K executions per month',
+                    pro: '3.5M executions per month',
+                    scale: '3.5M executions per month',
                     enterprise: 'Custom'
                 }
             ]
