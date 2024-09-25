@@ -25,7 +25,7 @@ await messaging.createSubscriber(
     ];
 </script>
 
-<section class="light bg-greyscale-50 py-40">
+<section class="light bg-greyscale-50 py-20">
     <div class="container grid gap-8 overflow-x-hidden md:grid-cols-2">
         <div class="mb-20 flex max-w-md flex-col gap-y-6">
             <span class="web-badges text-micro font-aeonik-fono mr-auto ml-0 uppercase !text-white"

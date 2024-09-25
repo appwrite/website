@@ -17,7 +17,7 @@
     const migrations = [{ icon: JavaScript }, { icon: Flutter }, { icon: React }];
 </script>
 
-<section class="light bg-greyscale-50 py-40">
+<section class="light bg-greyscale-50 py-20">
     <div class="container grid gap-y-8 overflow-x-hidden md:grid-cols-2">
         <div
             class="mx-auto mb-20 flex flex max-w-[25rem] flex-col items-center justify-center gap-y-6 text-center"
