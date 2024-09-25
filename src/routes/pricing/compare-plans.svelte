@@ -387,7 +387,7 @@
                     title: 'Private Slack channel',
                     free: '-',
                     pro: '-',
-                    scale: '-',
+                    scale: true,
                     enterprise: true
                 }
             ]
