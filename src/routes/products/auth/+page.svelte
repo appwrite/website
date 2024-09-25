@@ -7,6 +7,8 @@
     import Bento from './(components)/Bento.svelte';
     import SSR from './(components)/SSR.svelte';
     import UseCases from './(components)/UseCases.svelte';
+    import OpenSource from './(components)/OpenSource.svelte';
+    import { PreFooter, FooterNav, MainFooter } from '$lib/components';
 
     const title = 'Auth' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -31,12 +33,158 @@
 </svelte:head>
 
 <Main>
-    <div class="space-y-8">
-        <Bento />
-        <div class="bg-greyscale-50">
-            <Access />
-            <SSR />
-            <UseCases />
+    <div class="overflow-hidden">
+        <div class="space-y-20">
+            <Bento />
+            <div class="bg-greyscale-50">
+                <Access />
+                <SSR />
+                <UseCases />
+                <OpenSource />
+            </div>
+        </div>
+        <section class="web-u-sep-block-start web-u-padding-block-start-80 -mt-8 py-10">
+            <div class="container">
+                <h4 class="text-label text-primary text-center">Keep exploring our products</h4>
+                <ul
+                    class="mt-8 grid gap-8"
+                    style="grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr))"
+                >
+                    <li class="web-u-flex-basis-378">
+                        <a
+                            class="web-card is-normal"
+                            href="/docs/products/auth"
+                            style="background: rgba(255, 255, 255, 0.04);"
+                        >
+                            <div
+                                class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
+                            >
+                                <div class="flex items-center gap-2">
+                                    <img
+                                        src="/images/icons/illustrated/dark/auth.png"
+                                        alt="auth"
+                                        width="32"
+                                        height="32"
+                                    />
+                                    <h4 class="text-body text-primary">Auth</h4>
+                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
+                                </div>
+                                <p class="text-sub-body">
+                                    Build secure authentication and manage your users.
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="web-u-flex-basis-378">
+                        <a
+                            class="web-card is-normal"
+                            href="/docs/products/functions"
+                            style="background: rgba(255, 255, 255, 0.04);"
+                        >
+                            <div
+                                class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
+                            >
+                                <div class="flex items-center gap-2">
+                                    <img
+                                        src="/images/icons/illustrated/dark/functions.png"
+                                        alt="functions"
+                                        width="32"
+                                        height="32"
+                                    />
+                                    <h4 class="text-body text-primary">Functions</h4>
+                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
+                                </div>
+                                <p class="text-sub-body">
+                                    Scale big and unlock limitless potential with Appwrite
+                                    functions.
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="web-u-flex-basis-378">
+                        <a
+                            class="web-card is-normal"
+                            href="/docs/products/databases"
+                            style="background: rgba(255, 255, 255, 0.04);"
+                        >
+                            <div
+                                class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
+                            >
+                                <div class="flex items-center gap-2">
+                                    <img
+                                        src="/images/icons/illustrated/dark/databases.png"
+                                        alt=""
+                                        width="37"
+                                        height="32"
+                                    />
+                                    <h4 class="text-body text-primary">Databases</h4>
+                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
+                                </div>
+                                <p class="text-sub-body">
+                                    Store and query structured data, ensuring scalable storage.
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="web-u-flex-basis-378">
+                        <a
+                            class="web-card is-normal"
+                            href="/docs/products/storage"
+                            style="background: rgba(255, 255, 255, 0.04);"
+                        >
+                            <div
+                                class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
+                            >
+                                <div class="flex items-center gap-2">
+                                    <img
+                                        src="/images/icons/illustrated/dark/storage.png"
+                                        alt="storage"
+                                        width="32"
+                                        height="32"
+                                    />
+                                    <h4 class="text-body text-primary">Storage</h4>
+                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
+                                </div>
+                                <p class="text-sub-body">
+                                    Manage your files' project, using convenient APIs and utilities.
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="web-u-flex-basis-378">
+                        <a
+                            class="web-card is-normal"
+                            href="/docs/apis/realtime"
+                            style="background: rgba(255, 255, 255, 0.04);"
+                        >
+                            <div
+                                class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
+                            >
+                                <div class="flex items-center gap-2">
+                                    <img
+                                        src="/images/icons/illustrated/dark/realtime.png"
+                                        alt="realtime"
+                                        width="32"
+                                        height="32"
+                                    />
+                                    <h4 class="text-body text-primary">Realtime</h4>
+                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
+                                </div>
+                                <p class="text-sub-body">
+                                    Utilize realtime information from all Appwrite services.
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <div class="relative">
+            <div class="container">
+                <PreFooter />
+                <FooterNav />
+                <MainFooter />
+            </div>
         </div>
     </div>
 </Main>
