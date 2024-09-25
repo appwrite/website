@@ -7,7 +7,7 @@
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
-    import { Tooltip } from '$lib/components';
+    import { classNames } from '$lib/utils/classnames';
 
     type Table = {
         title: string;
@@ -446,7 +446,7 @@
                     </div>
 
                     <div
-                        class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 web-u-container-query-inline sticky z-[5] gap-8"
+                        class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 web-u-container-query-inline sticky top-0 z-10 gap-8"
                         style:top={$isHeaderHidden ? '0px' : '70px'}
                         style:transition="inset-block-start 0.3s ease"
                     >
@@ -540,7 +540,7 @@
                             }}
                         >
                             <caption
-                                class="web-compare-table-caption text-description text-primary text-left"
+                                class="web-compare-table-caption text-body text-primary text-left font-medium"
                                 use:melt={$heading({ level: 3 })}
                                 style:position={browser ? 'unset' : undefined}
                             >
@@ -559,8 +559,8 @@
                             <tbody class="web-compare-table-body" use:melt={$content(table.title)}>
                                 {#each table.rows as row}
                                     <tr class="text-center">
-                                        <th class="text-sub-body font-medium">
-                                            <div class="flex gap-1 text-center">
+                                        <th class="text-caption font-medium">
+                                            <div class="flex items-center gap-1 text-left">
                                                 {row.title}
                                                 <!-- {#if row.info}
                                                     <Tooltip placement="top">
@@ -575,15 +575,21 @@
                                                 {/if} -->
                                             </div>
                                         </th>
-                                        {#each cols as col, index}
+                                        {#each cols as col}
                                             <td
-                                                class="level-{index}"
+                                                class={classNames(
+                                                    'text-caption flex justify-center font-normal',
+                                                    {
+                                                        'bg-greyscale-100': col === 'pro'
+                                                    }
+                                                )}
                                                 class:is-selected={col === tab}
                                             >
                                                 {#if typeof row[col] === 'string'}
                                                     {row[col]}
                                                 {:else}
                                                     <img
+                                                        class="mx-auto self-center"
                                                         src="/images/icons/gradients/v-icon.svg"
                                                         alt="yes"
                                                     />
