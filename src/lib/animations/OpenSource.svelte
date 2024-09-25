@@ -2,7 +2,7 @@
     import { toScale, type Scale } from '$lib/utils/toScale';
     import { spring, type AnimationListOptions, type SpringOptions } from 'motion';
     import { animation, createScrollHandler, scroll, type Animation } from '.';
-    import { GITHUB_STARS } from '$lib/constants';
+    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
 
     const springOptions: SpringOptions = {
         stiffness: 58.78,
@@ -199,7 +199,7 @@
             <a
                 class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
                 id="oss-github"
-                href="https://github.com/appwrite/appwrite"
+                href="{GITHUB_REPO_LINK}"
             >
                 <div class="flex flex-col justify-between gap-8">
                     <span
@@ -246,7 +246,7 @@
             <a
                 class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
                 id="oss-commits"
-                href="https://github.com/appwrite/appwrite"
+                href="{GITHUB_REPO_LINK}"
             >
                 <div class="flex flex-col justify-between gap-8">
                     <span
