@@ -23,7 +23,7 @@
 <script lang="ts">
     import { clickOutside } from '$lib/actions/clickOutside';
     import { Tooltip, IsLoggedIn } from '$lib/components';
-    import { GITHUB_STARS } from '$lib/constants';
+    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import { layoutState, toggleSidenav } from './Docs.svelte';
     import SidebarNavButton from './SidebarNavButton.svelte';
 
@@ -116,7 +116,7 @@
             <IsLoggedIn />
 
             <a
-                href="https://github.com/appwrite/appwrite/stargazers"
+                href="{GITHUB_REPO_LINK}"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="web-button is-text web-u-inline-width-100-percent-mobile"
