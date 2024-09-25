@@ -4,24 +4,31 @@ import sharp from 'sharp';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const srcDir = join(__dirname, '../static/images/blog');
-const destDir = join(srcDir, 'thumbnails');
+// Define the base path for static images
+const srcDir = join(__dirname, '../static/images');
+
+const authorDir = join(srcDir, 'avatars');
+const blogCoverDir = join(srcDir, 'blog');
+const authorDestDir = join(authorDir, 'thumbnails');
+const blogCoverDestDir = join(blogCoverDir, 'thumbnails');
+
 const articlesDir = join(__dirname, '../src/routes/blog/post');
+const authorsDir = join(__dirname, '../src/routes/blog/author');
 
 function isPNG(file) {
     return file.endsWith('.png');
 }
 
-function parseFrontmatter(file) {
+function parseFrontmatter(file, key = 'cover') {
     const content = readFileSync(file, 'utf8');
     const fmRegex = /---\s*([\s\S]*?)\s*---/;
     const match = content.match(fmRegex);
     if (match) {
         const fmContent = match[1];
-        const coverRegex = /^cover:\s*(.+)$/m;
-        const coverMatch = fmContent.match(coverRegex);
-        if (coverMatch) {
-            return coverMatch[1].trim();
+        const regex = new RegExp(`^${key}:\\s*(.+)$`, 'm');
+        const imageMatch = fmContent.match(regex);
+        if (imageMatch) {
+            return imageMatch[1].trim();
         }
     }
     return null;
@@ -49,10 +56,12 @@ function ensureDir(path) {
     }
 }
 
-async function createThumbnails(coverImages, width, height) {
-    for (const file of coverImages) {
-        const relativePath = file.substring(srcDir.length);
+async function createThumbnails(images, destDir, width, height) {
+    for (const file of images) {
+        let relativePath = file.substring(srcDir.length)
+            .replace(/\/blog\/|\/avatars\//, '');
         const thumbBasePath = join(destDir, relativePath);
+
         ensureDir(dirname(thumbBasePath));
 
         const pngThumbPath = thumbBasePath.replace(/\.[^/.]+$/, '.png');
@@ -76,11 +85,9 @@ async function createThumbnails(coverImages, width, height) {
     }
 }
 
-// images are optimized strictly at 1280x1280, this scales them down 4x.
-export async function thumbnailPreprocess(width = 320, height = 320) {
+function getBlogCovers() {
     const markdocFiles = walkDirectory(articlesDir);
-
-    const coverImages = markdocFiles
+    return markdocFiles
         .map((filePath) => {
             const coverPath = parseFrontmatter(filePath);
             if (coverPath && isPNG(coverPath)) {
@@ -88,7 +95,31 @@ export async function thumbnailPreprocess(width = 320, height = 320) {
             }
         })
         .filter(Boolean);
+}
 
-    await createThumbnails(coverImages, width, height);
+function getAuthorAvatars() {
+    const authorFiles = walkDirectory(authorsDir);
+    return authorFiles
+        .map((filePath) => {
+            const avatarPath = parseFrontmatter(filePath, 'avatar');
+            if (avatarPath && isPNG(avatarPath)) {
+                return join(__dirname, '../static', avatarPath);
+            }
+        })
+        .filter(Boolean);
+}
+
+export async function thumbnailPreprocess(options = {
+    cover: { width: 320, height: 320 }, author: { width: 112, height: 112 }
+}) {
+
+    const coverImages = getBlogCovers();
+    const authorAvatars = getAuthorAvatars();
+
+    await Promise.all([
+        createThumbnails(coverImages, blogCoverDestDir, options.cover.width, options.cover.height),
+        createThumbnails(authorAvatars, authorDestDir, options.author.width, options.author.height)
+    ]);
+
     return { name: 'thumbnail-creator-preprocessor' };
 }

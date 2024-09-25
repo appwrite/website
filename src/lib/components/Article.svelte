@@ -1,6 +1,6 @@
 <script lang="ts">
     import { formatDate } from '$lib/utils/date';
-    import { BlogPostCover, Media } from '$lib/UI';
+    import { AuthorCover, BlogPostCover, Media } from '$lib/UI';
 
     export let title: string;
     export let cover: string;
@@ -33,13 +33,10 @@
             </h4>
             <div class="web-author">
                 <div class="flex items-center gap-2">
-                    <img
-                        class="web-author-image"
-                        loading="lazy"
-                        src={avatar}
-                        width="24"
-                        height="24"
-                        alt={author}
+                    <AuthorCover
+                        {author}
+                        {avatar}
+                        {thumbnail}
                     />
                     <div class="web-author-info">
                         <h4 class="text-sub-body text-primary">{author}</h4>

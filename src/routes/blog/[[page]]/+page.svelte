@@ -1,12 +1,12 @@
 <script lang="ts">
     import { page } from '$app/stores';
     import { Main } from '$lib/layouts';
-    import { MainFooter, FooterNav, Article } from '$lib/components';
+    import { Article, FooterNav, MainFooter } from '$lib/components';
     import { TITLE_SUFFIX } from '$routes/titles.js';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { onMount, tick } from 'svelte';
     import { beforeNavigate } from '$app/navigation';
-    import { BlogPostCover } from '$lib/UI';
+    import { AuthorCover, BlogPostCover } from '$lib/UI';
 
     export let data;
 
@@ -150,17 +150,14 @@
                                 </p>
                                 <div class="web-author">
                                     <div class="flex items-center gap-2">
-                                        <img
-                                            class="web-author-image"
-                                            src={author?.avatar}
-                                            alt={author?.name}
-                                            loading="lazy"
-                                            width="24"
-                                            height="24"
+                                        <AuthorCover
+                                            thumbnail={true}
+                                            author={author?.name}
+                                            avatar={author?.avatar}
                                         />
                                         <div class="web-author-info">
                                             <a href={author?.href} class="text-sub-body web-link"
-                                                >{author?.name}</a
+                                            >{author?.name}</a
                                             >
                                             <p class="text-caption hidden">{author?.bio}</p>
                                             <ul class="web-metadata text-caption web-is-not-mobile">
