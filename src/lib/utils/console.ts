@@ -17,14 +17,14 @@ enum BillingPlan {
     SCALE = 'tier-2'
 }
 
-export async function createSource(
+export function createSource(
     ref: string | null,
     referrer: string | null,
     utmSource: string | null,
     utmCampaign: string | null,
     utmMedium: string | null
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-): Promise<any> {
+) {
     const path = `/console/sources`;
     const params = {
         ref,
@@ -35,14 +35,14 @@ export async function createSource(
     };
 
     const uri = new URL(client.config.endpoint + path);
-    return await client.call(
+    client.call(
         'POST',
         uri,
         {
             'content-type': 'application/json'
         },
         params
-    );
+    ).then();
 }
 
 export async function isProUser() {
