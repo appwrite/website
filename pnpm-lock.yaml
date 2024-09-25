@@ -29,7 +29,7 @@ importers:
         version: 0.26.0
       '@appwrite.io/repo':
         specifier: github:appwrite/appwrite#1.6.x
-        version: https://codeload.github.com/appwrite/appwrite/tar.gz/5374336048c4fc665873e08c0e28ac4a8801e28e
+        version: https://codeload.github.com/appwrite/appwrite/tar.gz/507f8c69555e8f5774199b0b44eb9b4b8dbdf985
       '@internationalized/date':
         specifier: 3.5.0
         version: 3.5.0
@@ -202,8 +202,8 @@ packages:
   '@appwrite.io/pink@0.26.0':
     resolution: {integrity: sha512-iPeGE56pauzxuIXt15ZswjKCErwp3QdF3XOlJZfyYY7J2nirra85JNTL+3lWuFIf8yYWL7NbvCjhf8ig79TgwA==}
 
-  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/5374336048c4fc665873e08c0e28ac4a8801e28e':
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/5374336048c4fc665873e08c0e28ac4a8801e28e}
+  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/507f8c69555e8f5774199b0b44eb9b4b8dbdf985':
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/507f8c69555e8f5774199b0b44eb9b4b8dbdf985}
     version: 0.0.0
 
   '@babel/code-frame@7.24.7':
@@ -4332,6 +4332,11 @@ packages:
     engines: {node: '>= 14'}
     hasBin: true
 
+  yaml@2.5.1:
+    resolution: {integrity: sha512-bLQOjaX/ADgQ20isPJRvF0iRUHIxVhYvr53Of7wGcWlO2jvtUlH5m87DsmulFVxRpNLOnI4tB6p/oh8D7kpn9Q==}
+    engines: {node: '>= 14'}
+    hasBin: true
+
   yargs-parser@20.2.9:
     resolution: {integrity: sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==}
     engines: {node: '>=10'}
@@ -4373,7 +4378,7 @@ snapshots:
       normalize.css: 8.0.1
       the-new-css-reset: 1.11.2
 
-  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/5374336048c4fc665873e08c0e28ac4a8801e28e': {}
+  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/507f8c69555e8f5774199b0b44eb9b4b8dbdf985': {}
 
   '@babel/code-frame@7.24.7':
     dependencies:
@@ -7879,7 +7884,7 @@ snapshots:
   postcss-load-config@4.0.2(postcss@8.4.39):
     dependencies:
       lilconfig: 3.1.2
-      yaml: 2.5.0
+      yaml: 2.5.1
     optionalDependencies:
       postcss: 8.4.39
     optional: true
@@ -8796,6 +8801,9 @@ snapshots:
   yaml@1.10.2: {}
 
   yaml@2.5.0: {}
+
+  yaml@2.5.1:
+    optional: true
 
   yargs-parser@20.2.9: {}
 
