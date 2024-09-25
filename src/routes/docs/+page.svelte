@@ -67,9 +67,9 @@
 <Docs variant="default">
     <Sidebar />
 
-    <main class="web-main-section relative lg:overflow-hidden" id="main">
-        <div class="web-u-opacity-40-mobile bg-blur absolute">
-            <img src="/images/bgs/docs-blur-1.svg" alt="" />
+    <main class="web-main-section relative overflow-x-hidden" id="main">
+        <div class="absolute translate-x-96">
+                <img src="/images/bgs/docs-blur-1.svg" alt=""/>
         </div>
 
         <div class="web-u-opacity-40-mobile absolute top-4 left-0">
@@ -386,7 +386,6 @@
     }
 
     .bg-blur {
-        inset-inline-end: -300px;
         inset-block-start: -100px;
     }
 
@@ -416,21 +415,7 @@
             block-size: var(--p-size);
             inset-block-start: -3rem;
             z-index: -1;
-            left: calc(50% - 384px + 600px);
-        }
-
-        .bg-overlay {
-            position: absolute;
-
-            background: linear-gradient(to right, #ffffff00 0%, #ffffff00 400px, #ffffff);
-
-            top: 0;
-            right: 10rem;
-            translate: 100%;
-            width: 100rem;
-            height: 100%;
-            content: '';
-            z-index: 9999;
+            left: calc(50% - 384px + 400px);
         }
     }
 

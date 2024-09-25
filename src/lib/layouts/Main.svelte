@@ -14,7 +14,7 @@
 <script lang="ts">
     import { browser } from '$app/environment';
     import { MobileNav, IsLoggedIn } from '$lib/components';
-    import { BANNER_KEY, GITHUB_STARS } from '$lib/constants';
+    import { BANNER_KEY, GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';
     import { hasNewChangelog } from '$routes/changelog/utils';
@@ -258,7 +258,7 @@
             </div>
             <div class="web-main-header-end">
                 <a
-                    href="https://github.com/appwrite/appwrite/stargazers"
+                    href="{GITHUB_REPO_LINK}"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="web-button is-text web-u-inline-width-100-percent-mobile"
