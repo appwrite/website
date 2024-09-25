@@ -7,7 +7,7 @@ cover: /images/blog/ccpa.png
 timeToRead: 6
 author: jake-barnby
 category: security
-featured: true
+featured: false
 ---
 
 At Appwrite, we're committed to helping you build secure, privacy-focused applications that meet the highest data protection standards. Now, Appwrite is **fully CCPA-compliant**, providing secure and reliable data management.
