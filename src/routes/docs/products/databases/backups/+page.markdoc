@@ -13,7 +13,11 @@ Learn how to efficiently back up your databases, ensuring data security and smoo
 
 Appwrite Backups enable you to automate database backups using Backup Policies, with support for both pre-defined, custom retention and many other options. You can also create manual backups whenever necessary.
 
-# Create backups {% #create-backups %}
+# Backup policies {% #backup-policies %}
+
+Backup policies allow you to automate your backup creation process with options like how often backups should occur, how long they should be retained, and when they should run.
+
+## Creating a backup policy {% #creating-backup-policy %}
 
 To automate your database backups, you first need to create Backup Policies that run at scheduled intervals.
 
@@ -24,6 +28,16 @@ To automate your database backups, you first need to create Backup Policies that
 
 Your database is now set up for automated backups with just a few clicks.
 Note that you can always navigate to the same tab and click **Create Manual** to create a backup on-demand.
+
+# Manual backups {% #manual-backups %}
+
+You can always create an on-demand backup whenever necessary.
+
+1. In the Appwrite Console's sidebar, click **Databases**
+2. Select & navigate to your database and click on the **Backups** Tab
+3. Click on **Manual Backup**
+
+Depending on the size of your database, it can take a while for the backup process to complete. You can monitor its progress via the floating status bar at the bottom of your screen..
 
 # Restoring backups {% #restoring-backups %}
 
