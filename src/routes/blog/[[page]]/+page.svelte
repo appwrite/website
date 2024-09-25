@@ -157,7 +157,7 @@
                                         />
                                         <div class="web-author-info">
                                             <a href={author?.href} class="text-sub-body web-link"
-                                            >{author?.name}</a
+                                                >{author?.name}</a
                                             >
                                             <p class="text-caption hidden">{author?.bio}</p>
                                             <ul class="web-metadata text-caption web-is-not-mobile">
@@ -213,7 +213,7 @@
                             {#if data.currentPage > 1}
                                 <a
                                     data-sveltekit-noscroll
-                                    class="flex navigation-button"
+                                    class="navigation-button flex"
                                     href="/blog/{data.currentPage - 1}"
                                     class:navigation-button-active={!isFirstPage}
                                 >
@@ -221,7 +221,7 @@
                                     Previous
                                 </a>
                             {:else}
-                                <span class="flex navigation-button">
+                                <span class="navigation-button flex">
                                     <span class="web-icon-chevron-left" style="font-size: 20px" />
                                     Previous
                                 </span>
@@ -245,7 +245,7 @@
                             {#if data.currentPage < data.totalPages}
                                 <a
                                     data-sveltekit-noscroll
-                                    class="flex navigation-button"
+                                    class="navigation-button flex"
                                     href="/blog/{data.currentPage + 1}"
                                     class:navigation-button-active={!isLastPage}
                                 >
@@ -253,7 +253,7 @@
                                     <span class="web-icon-chevron-right" style="font-size: 20px" />
                                 </a>
                             {:else}
-                                <span class="flex navigation-button">
+                                <span class="navigation-button flex">
                                     Next
                                     <span class="web-icon-chevron-right" style="font-size: 20px" />
                                 </span>
