@@ -76,8 +76,8 @@ Choosing an open-source solution comes with several benefits:
 | **FEATURE** | **AUTH** | **AUTH0** |
 | --- | --- | --- |
 | Deployment | Self-hosted or cloud-hosted | Cloud |
-| Free plan | 75K monthly users | 7.5K monthly users |
-| Paid plan | $15 per developer/month for increased bandwidth, users and storage | $150 to $800 per month for increased users, orgs, support and addons |
+| Free plan | 75K monthly active users | 25K monthly active users |
+| Paid plan | $15 per developer/month for increased bandwidth, users and storage | $35 to $800 per month for increased users, orgs, support and addons |
 | Open source | Yes ✅ | No ❌ |
 | Support | Discord and email, dedicated channels for startups | Community and email, paid support options |
 | Community | Growing open-source community | Large established community |
