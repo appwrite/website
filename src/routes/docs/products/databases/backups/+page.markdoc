@@ -1,20 +1,19 @@
 ---
 layout: article
-title: Database Backups
+title: Backups
 description: Learn how to efficiently back up your databases on Appwrite Cloud, ensuring data security and seamless recovery.
 ---
 
-Appwrite Backups enables seamless, **encrypted** database backups on Cloud.
+Appwrite Backups enable seamless, **encrypted** database backups on Cloud.
+All backups are **hot** backups, ensuring zero downtime and fast recovery.
 Learn how to efficiently back up your databases, ensuring data security and smooth recovery.
 
-{% info title="Backups are an Appwrite Cloud feature and available on the Enterprise plan" %}
+{% info title="Backups are available on Appwrite Cloud for all Pro, Scale, and Enterprise customers." %}
 {% /info %}
 
-Appwrite Backups enable you to automate database backups using Backup Policies, with support for both pre-defined and custom retention options. You can also create manual backups whenever necessary.
+Appwrite Backups enable you to automate database backups using Backup Policies, with support for both pre-defined, custom retention and many other options. You can also create manual backups whenever necessary.
 
-# Backups {% #backups %}
-
-## Create Backups {% #create-backups %}
+# Create backups {% #create-backups %}
 
 To automate your database backups, you first need to create Backup Policies that run at scheduled intervals.
 
@@ -23,10 +22,10 @@ To automate your database backups, you first need to create Backup Policies that
 3. Click on **Create Policies** & adjust your settings or select a pre-defined policy
 4. Click on **Create**
 
-Your database is now set up for automated backups with just a few clicks.\
+Your database is now set up for automated backups with just a few clicks.
 Note that you can always navigate to the same tab and click **Create Manual** to create a backup on-demand.
 
-## Restoring Backups {% #restoring-backups %}
+# Restoring backups {% #restoring-backups %}
 
 In order to restore a database, you must have a backup of the database you are trying to restore.
 
@@ -39,7 +38,20 @@ In order to restore a database, you must have a backup of the database you are t
 
 Note that depending on the size of your database, it can take a while for it to be restored. You can observe its status in a floating bar that is shown across you project
 
-# Best Practices {% #create-backups %}
+# Backup security & performance {% #security-and-performance %}
+
+All backups created with Appwrite are:
+
+1. **Encrypted**:
+    All backups are securely encrypted to ensure your data remains protected at all times.
+
+2. **Remotely Stored**:
+    Backups are stored in a remote location, providing an additional layer of security and ensuring your data is always recoverable.
+
+3. **Hot Backups**:
+    Backups are **hot**, meaning they occur with zero downtime, allowing you to recover data quickly without interrupting your projects and services.
+
+# Best practices {% #best-practices %}
 
 To ensure your backups are robust and effective, consider the following best practices:
 
@@ -49,10 +61,6 @@ To ensure your backups are robust and effective, consider the following best pra
 2. **Retain Critical Backups Longer**:
    Use custom retention on Policies to keep backups of critical data for extended periods, ensuring historical records are available when needed.
 
-3. **Monitor Backup Status**:
-   Regularly check the backup status in the Backups Tab to ensure no scheduled backups have failed.
-   All backups are stored in an **encrypted** format to protect your data.
-
-4. **Optimize Backup Policies Based on Data Sensitivity**:
+3. **Optimize Backup Policies Based on Data Sensitivity**:
    Tailor your backup frequency and retention settings according to the sensitivity and importance of the data.
    Critical data may require more frequent backups, while less essential data can have longer retention and fewer backups.
