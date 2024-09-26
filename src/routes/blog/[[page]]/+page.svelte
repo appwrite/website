@@ -46,12 +46,11 @@
     const handleSearch = async () => {
         const searchQuery = query.toLowerCase();
 
-        const url = new URL($page.url);
         /**
          * Navigate to the first page on search/filter to ensure consistent
          * navigation experience when changing categories or search queries.
          */
-        url.pathname = '/blog';
+        const url = new URL('/blog', $page.url);
 
         searchQuery
             ? url.searchParams.set('search', searchQuery)
@@ -64,6 +63,17 @@
             noScroll: true,
             keepFocus: true
         });
+    };
+
+    $: navigationLink = (pageNumber: number): string => {
+        const currentUrl = $page.url;
+        const url = new URL(`/blog/${pageNumber}`, currentUrl);
+
+        if (currentUrl.search) {
+            url.search = currentUrl.search;
+        }
+
+        return url.toString();
     };
 
     const { debounce, reset } = createDebounce();
@@ -355,7 +365,7 @@
                                 <a
                                     data-sveltekit-noscroll
                                     class="navigation-button flex"
-                                    href="/blog/{data.currentPage - 1}"
+                                    href={navigationLink(data.currentPage - 1)}
                                     class:navigation-button-active={!isFirstPage}
                                 >
                                     <span class="web-icon-chevron-left" style="font-size: 20px" />
@@ -373,7 +383,7 @@
                                     <span class="pagination-ellipsis">...</span>
                                 {:else}
                                     <a
-                                        href="/blog/{page}"
+                                        href={navigationLink(page)}
                                         data-sveltekit-noscroll
                                         class="pagination-number"
                                         class:pagination-number-selected={data.currentPage === page}
@@ -387,7 +397,7 @@
                                 <a
                                     data-sveltekit-noscroll
                                     class="navigation-button flex"
-                                    href="/blog/{data.currentPage + 1}"
+                                    href={navigationLink(data.currentPage + 1)}
                                     class:navigation-button-active={!isLastPage}
                                 >
                                     Next
