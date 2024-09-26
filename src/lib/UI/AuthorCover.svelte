@@ -7,7 +7,9 @@
         ? avatar?.replace('/images/avatars/', '/images/avatars/thumbnails/')
         : avatar;
 
-    const authorThumbnailWebp = thumbnail ? authorThumbnail?.replace(/\.png$/, '.webp') : authorThumbnail;
+    const authorThumbnailWebp = thumbnail
+        ? authorThumbnail?.replace(/\.png$/, '.webp')
+        : authorThumbnail;
 </script>
 
 <picture>
