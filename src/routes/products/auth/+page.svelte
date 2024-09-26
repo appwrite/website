@@ -9,6 +9,7 @@
     import UseCases from './(components)/UseCases.svelte';
     import OpenSource from './(components)/OpenSource.svelte';
     import { PreFooter, FooterNav, MainFooter } from '$lib/components';
+    import { Hero } from './(components)/hero';
 
     const title = 'Auth' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -35,6 +36,7 @@
 <Main>
     <div class="overflow-hidden">
         <div class="space-y-20">
+            <Hero />
             <Bento />
             <div class="bg-greyscale-50">
                 <Access />
