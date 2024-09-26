@@ -189,7 +189,7 @@ Kotlin Multiplatform Mobile (KMM) is a powerful framework developed by JetBrains
 2. **Netflix**: Implements KMM in parts of its application to manage shared logic while providing a native experience on both platforms.
 3. **Subway Surfers**: The popular game leverages KMM to share core logic, improving development speed and efficiency.
 
-## **Why choose KMM?
+## Why choose KMM?
 
 Kotlin Multiplatform Mobile is an ideal choice for developers looking to create high-performance, cross-platform applications without sacrificing the native experience. Its ability to share business logic while allowing for platform-specific customizations makes it a powerful tool for modern mobile development, reducing overhead and increasing productivity.
 
