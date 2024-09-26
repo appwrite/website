@@ -47,7 +47,7 @@
 
         <div class="flex items-center gap-4">
             <a class="web-button" href={PUBLIC_APPWRITE_DASHBOARD}>Sign up now</a>
-            <a class="web-button is-secondary" href={PUBLIC_APPWRITE_DASHBOARD}>
+            <a class="web-button is-secondary !whitespace-normal" href={PUBLIC_APPWRITE_DASHBOARD}>
                 <span class="web-icon-github !text-white" />
                 GitHub Education</a
             >
