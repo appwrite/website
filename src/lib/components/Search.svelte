@@ -5,7 +5,7 @@
 
     import { createCombobox, melt } from '@melt-ui/svelte';
 
-    import { MeiliSearch, type Hit, type Hits } from 'meilisearch';
+    import { type Hit, type Hits, MeiliSearch } from 'meilisearch';
     import { tick } from 'svelte';
 
     export let open = true;
@@ -137,8 +137,11 @@
         }
     }
 
-    function getRelevantSubtitle(hit: Hit): string {
-        return hit.h2 ?? hit.h3 ?? hit.h4 ?? hit.h5 ?? hit.h6 ?? null;
+    function getSubtitleContent(hit: Hit): { header?: string; subtitle?: string } {
+        return {
+            header: hit.h1,
+            subtitle: hit.h2 ?? hit.h3 ?? hit.h4 ?? hit.h5 ?? hit.h6
+        };
     }
 </script>
 
@@ -187,7 +190,7 @@
                         <h6 class="text-micro uppercase">{results.length} results found</h6>
                         <ul class="mt-2 flex flex-col gap-1">
                             {#each results as hit, i (hit.uid)}
-                                {@const relevantSubtitle = getRelevantSubtitle(hit)}
+                                {@const subtitleContent = getSubtitleContent(hit)}
                                 <li>
                                     <a
                                         data-hit={i}
@@ -200,17 +203,26 @@
                                         })}
                                     >
                                         <div class="web-u-trim-1">
-                                            <span class="web-u-color-text-secondary">{hit.h1}</span>
-                                            {#if relevantSubtitle}
-                                                <span class="web-u-color-text-secondary"> / </span>
-                                                <span class="text-primary">
-                                                    {relevantSubtitle}
-                                                </span>
+                                            {#if subtitleContent.header}
+                                                <span class="web-u-color-text-secondary"
+                                                    >{subtitleContent.header}</span
+                                                >
+                                                {#if subtitleContent.subtitle}
+                                                    <span class="web-u-color-text-secondary">
+                                                        /
+                                                    </span>
+                                                {/if}
+                                            {/if}
+
+                                            {#if subtitleContent.subtitle}
+                                                <span class="text-primary"
+                                                    >{subtitleContent.subtitle}</span
+                                                >
                                             {/if}
                                         </div>
                                         {#if hit.p}
                                             <div
-                                                class="web-u-color-text-secondary w-full overflow-hidden text-ellipsis whitespace-nowrap"
+                                                class="web-u-color-text-secondary w-full overflow-hidden text-ellipsis whitespace-nowrap text-left"
                                             >
                                                 {hit.p}
                                             </div>
