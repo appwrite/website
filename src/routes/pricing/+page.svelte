@@ -154,11 +154,12 @@
                                                 <li><span>150GB storage</span></li>
                                                 <li><span>3.5M executions</span></li>
                                                 <li><span>200K monthly active users</span></li>
+                                                <li><span>Organization roles</span></li>
                                                 <li><span>Email support</span></li>
                                                 <li><span>Add-ons</span></li>
                                                 <li>
                                                     <span
-                                                        >Unlimited Databases, Buckets and Functions</span
+                                                        >Unlimited Databases, Buckets, and Functions</span
                                                     >
                                                 </li>
                                             </ul>
@@ -201,7 +202,7 @@
                                                 <li><span>BAA</span></li>
                                                 <li><span>Network logs</span></li>
                                                 <li><span>28-day log retention</span></li>
-                                                <li><span>Organization roles</span></li>
+                                                <li><span>Custom organization roles</span></li>
                                                 <li><span>SSO</span></li>
                                                 <li><span>Activity logs</span></li>
                                                 <li><span>Priority support</span></li>
@@ -245,7 +246,6 @@
                                                 <li><span>24/7 enterprise support</span></li>
                                                 <li><span>Private Slack channel</span></li>
                                                 <li><span>Volume discounts</span></li>
-                                                <li><span>Advanced permissions</span></li>
                                                 <li><span>Log drains</span></li>
                                                 <li><span>90-day log retention</span></li>
                                                 <li><span>Advanced observability</span></li>
