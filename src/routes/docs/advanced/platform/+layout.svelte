@@ -18,6 +18,10 @@
                 {
                     label: 'Shortcuts',
                     href: '/docs/advanced/platform/shortcuts'
+                },
+                {
+                    label: 'Roles',
+                    href: '/docs/advanced/platform/roles'
                 }
             ]
         },
