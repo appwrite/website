@@ -13,7 +13,10 @@
             products. Gain access to a wealth of knowledge, support, and shared experiences to help
             navigate the challenges of startup growth.
         </p>
-        <a href="/discord" class="web-button is-secondary text-accent mt-10 py-1 text-sm">
+        <a
+            href="/discord"
+            class="web-button is-secondary text-accent mt-10 !whitespace-normal py-1 text-sm"
+        >
             <span class="web-icon-discord" />
             Join our Discord</a
         >
