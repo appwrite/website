@@ -277,6 +277,7 @@
                                 date={post.date}
                                 timeToRead={post.timeToRead}
                                 {avatar}
+                                thumbnail
                                 author={name}
                             />
                         {/each}
