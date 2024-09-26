@@ -446,7 +446,7 @@
                     </div>
 
                     <div
-                        class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 web-u-container-query-inline sticky top-0 z-10 gap-8"
+                        class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 web-u-container-query-inline sticky z-10 gap-8"
                         style:top={$isHeaderHidden ? '0px' : '70px'}
                         style:transition="inset-block-start 0.3s ease"
                     >
@@ -558,7 +558,7 @@
 
                             <tbody class="web-compare-table-body" use:melt={$content(table.title)}>
                                 {#each table.rows as row}
-                                    <tr class="text-center">
+                                    <tr class="md:text-center">
                                         <th class="text-caption font-medium">
                                             <div class="flex items-center gap-1 text-left">
                                                 {row.title}
@@ -575,12 +575,12 @@
                                                 {/if} -->
                                             </div>
                                         </th>
-                                        {#each cols as col}
+                                        {#each cols as col, index}
                                             <td
                                                 class={classNames(
-                                                    'text-caption flex justify-center font-normal',
+                                                    `text-caption flex justify-center font-normal level-${index}`,
                                                     {
-                                                        'bg-greyscale-100': col === 'pro'
+                                                        'md:bg-greyscale-100': col === 'pro'
                                                     }
                                                 )}
                                                 class:is-selected={col === tab}
