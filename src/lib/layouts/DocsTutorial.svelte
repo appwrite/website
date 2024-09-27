@@ -23,7 +23,7 @@
                 <button class="web-icon-button web-is-only-mobile" aria-label="previous page">
                     <span class="icon-cheveron-left" aria-hidden="true" />
                 </button>
-                <ul class="web-metadata web-caption-400">
+                <ul class="web-metadata text-caption">
                     <slot name="metadata" />
                 </ul>
                 <div class="relative flex items-center">
@@ -36,12 +36,12 @@
                             aria-label="previous page"
                         >
                             <span
-                                class="icon-cheveron-left web-u-font-size-24 web-u-color-text-primary web-is-not-mobile"
+                                class="icon-cheveron-left web-u-font-size-24 text-primary web-is-not-mobile"
                                 aria-hidden="true"
                             />
                         </a>
                     {/if}
-                    <h1 class="web-title">{title}</h1>
+                    <h1 class="text-title font-aeonik-pro">{title}</h1>
                 </div>
             </div>
             <div class="web-article-header-end" />
@@ -52,7 +52,7 @@
                 {#if prevStep}
                     <a href={prevStep.href} class="web-button is-text">
                         <span class="icon-cheveron-left" aria-hidden="true" />
-                        <span class="web-sub-body-500">
+                        <span class="text-sub-body font-medium">
                             Step {prevStep.step}<span class="web-is-not-mobile"
                                 >: {prevStep.title}</span
                             >
@@ -65,7 +65,7 @@
                         class="web-button is-secondary"
                         style:margin-left={prevStep ? undefined : 'auto'}
                     >
-                        <span class="web-sub-body-500">
+                        <span class="text-sub-body font-medium">
                             Step {nextStep.step}<span class="web-is-not-mobile"
                                 >: {nextStep.title}</span
                             >
@@ -80,7 +80,7 @@
         <aside class="web-references-menu ps-6">
             <div class="web-references-menu-content">
                 <div class="flex items-center justify-between gap-4">
-                    <h5 class="web-references-menu-title web-eyebrow">Tutorial Steps</h5>
+                    <h5 class="web-references-menu-title text-micro uppercase">Tutorial Steps</h5>
                 </div>
                 <ol class="web-references-menu-list">
                     {#each tutorials as tutorial}
@@ -93,7 +93,7 @@
                                 class:is-selected={isCurrentStep}
                             >
                                 <span class="web-numeric-badge">{tutorial.step}</span>
-                                <span class="web-caption-400">{tutorial.title}</span>
+                                <span class="text-caption">{tutorial.title}</span>
                             </a>
                             {#if isCurrentStep}
                                 <ol class="web-references-menu-list mt-4 ml-8">
@@ -110,7 +110,7 @@
                                                         >{parent.step}</span
                                                     >
                                                 {/if}
-                                                <span class="web-caption-400">{parent.title}</span>
+                                                <span class="text-caption">{parent.title}</span>
                                             </a>
                                             {#if parent.children}
                                                 <ol class="web-references-menu-list mt-4 ml-8">
@@ -120,7 +120,7 @@
                                                                 href={child.href}
                                                                 class="web-references-menu-link"
                                                             >
-                                                                <span class="web-caption-400"
+                                                                <span class="text-caption"
                                                                     >{child.title}</span
                                                                 >
                                                             </a>
@@ -138,7 +138,7 @@
                 <div class="border-greyscale-900/[0.04] border-t pt-5">
                     <button class="web-link inline-flex items-center gap-2" use:scrollToTop>
                         <span class="web-icon-arrow-up" aria-hidden="true" />
-                        <span class="web-caption-400">Back to top</span>
+                        <span class="text-caption">Back to top</span>
                     </button>
                 </div>
             </div>

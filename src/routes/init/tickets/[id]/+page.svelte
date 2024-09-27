@@ -40,23 +40,20 @@
     <div class="hero">
         <div class="desktop-left">
             <div class="header">
-                <h1 class="web-display">
-                    Join <span class="web-u-color-text-primary" style:font-weight="500">
-                        init
-                    </span><br />August 19th-23rd
+                <h1 class="text-display font-aeonik-pro">
+                    Join <span class="text-primary" style:font-weight="500"> init </span><br
+                    />August 19th-23rd
                 </h1>
             </div>
 
             <div class="info">
-                <p class="web-label mt-4">Register today and claim your ticket.</p>
+                <p class="text-label mt-4">Register today and claim your ticket.</p>
                 <div class="mt-8 flex items-center gap-4">
                     <a class="web-button" href="/init/tickets">
                         <span class="text">Get my ticket</span>
                     </a>
                     <button class="web-button is-secondary" on:click={copy}>
-                        <span
-                            class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary"
-                        />
+                        <span class="web-icon-{$copied ? 'check' : 'copy'} text-primary" />
 
                         <span class="text">Copy ticket URL</span>
                     </button>

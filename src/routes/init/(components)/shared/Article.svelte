@@ -16,10 +16,7 @@
 
 <a href={url} class="web-card is-normal has-border-gradient overflow-hidden" style:padding="0">
     <div style:padding="1.25rem">
-        <h3
-            class="web-label web-u-color-text-primary"
-            style="max-width: 18.75rem;text-wrap:pretty;"
-        >
+        <h3 class="text-label text-primary" style="max-width: 18.75rem;text-wrap:pretty;">
             {title}
         </h3>
         <div class="web-card-link flex items-center" style:margin-top="8px">

@@ -6,7 +6,7 @@
 
 <div class="call-to-action">
     <div class="details">
-        <h2 class="web-label">{heading}</h2>
+        <h2 class="text-label">{heading}</h2>
         <a href={url} class="web-button">{label}</a>
     </div>
 </div>

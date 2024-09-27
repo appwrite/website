@@ -11,10 +11,10 @@
     const tag = `h${level + 1}`;
     const ctx = hasContext('headings') ? getContext<LayoutContext>('headings') : undefined;
     const classList: Record<typeof level, string> = {
-        1: 'web-label',
-        2: 'web-description',
-        3: 'web-main-body-500',
-        4: 'web-sub-body-500'
+        1: 'text-label mb-4 mt-8',
+        2: 'text-description mb-4',
+        3: 'text-body font-medium mb-4',
+        4: 'text-sub-body font-medium'
     };
 
     let element: HTMLElement | undefined;
@@ -49,7 +49,8 @@
     });
 
     const inPolicy = isInPolicy();
-    $: headingClass = inPolicy && level === 1 ? 'web-title' : classList[level];
+    $: headingClass =
+        inPolicy && level === 1 ? 'text-title font-aeonik-pro mb-4 mt-8' : classList[level];
 </script>
 
 {#if id}
@@ -59,7 +60,7 @@
         bind:this={element}
         class:web-snap-location={id && !inReferences}
         class:web-snap-location-references={id && inReferences}
-        class="{headingClass} web-u-color-text-primary"
+        class="{headingClass} text-primary"
     >
         <a href={`#${id}`} class=""><slot /></a>
     </svelte:element>
@@ -67,20 +68,9 @@
     <svelte:element
         this={tag}
         bind:this={element}
-        class="{headingClass} web-u-color-text-primary"
+        class="{headingClass} text-primary"
         class:in-policy={inPolicy}
     >
         <slot />
     </svelte:element>
 {/if}
-
-<style>
-    .web-title {
-        margin-block-end: 1rem;
-        margin-block-start: 2rem;
-    }
-
-    .web-sub-body-500.in-policy {
-        margin-block-end: 1.25rem;
-    }
-</style>

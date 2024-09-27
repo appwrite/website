@@ -14,7 +14,7 @@
 <script lang="ts">
     import { browser } from '$app/environment';
     import { MobileNav, IsLoggedIn } from '$lib/components';
-    import { BANNER_KEY, GITHUB_STARS } from '$lib/constants';
+    import { BANNER_KEY, GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';
     import { hasNewChangelog } from '$routes/changelog/utils';
@@ -25,6 +25,7 @@
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
     import InitBanner from '$lib/components/InitBanner.svelte';
+    import Button from '$lib/components/ui/Button.svelte';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -139,8 +140,20 @@
             return true;
         }
 
+
         return $scrollInfo.deltaDirChange < 200;
     })();
+
+    function updateSideNav() {
+        if(browser) {
+            const integrationsSide = document.getElementById('integrations-side');
+            if (integrationsSide) {
+                $isHeaderHidden ? integrationsSide.classList.remove('menu-visible') : integrationsSide.classList.add('menu-visible');
+            }
+        }
+    }
+
+    $: $isHeaderHidden, updateSideNav();
 </script>
 
 <div class="relative">
@@ -197,9 +210,9 @@
         {:else}
             <AnnouncementBanner>
                 <a href="/discord" target="_blank" rel="noopener noreferrer">
-                    <span class="web-caption-500">We are having lots of fun on</span>
+                    <span class="text-caption font-medium">We are having lots of fun on</span>
                     <span class="web-icon-discord" aria-hidden="true" />
-                    <span class="web-caption-500">Discord. Come and join us!</span>
+                    <span class="text-caption font-medium">Discord. Come and join us!</span>
                 </a>
             </AnnouncementBanner>
         {/if}
@@ -245,14 +258,14 @@
             </div>
             <div class="web-main-header-end">
                 <a
-                    href="https://github.com/appwrite/appwrite/stargazers"
+                    href="{GITHUB_REPO_LINK}"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="web-button is-text web-u-inline-width-100-percent-mobile"
                 >
                     <span class="web-icon-star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>
-                    <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span>
+                    <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
                 </a>
                 <IsLoggedIn />
             </div>
