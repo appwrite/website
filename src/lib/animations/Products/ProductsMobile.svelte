@@ -39,7 +39,7 @@
                         </ul>
 
                         {#if info.shot}
-                            <enhanced:img class="img" src={info.shot} alt="" />
+                            <img class="img" src={info.shot} alt="" loading="lazy" />
                         {/if}
                     </div>
 
@@ -51,7 +51,7 @@
         </div>
 
         <div class="post-wrapper">
-            <img src="/images/products/post.png" alt="" />
+            <img src="/images/products/post.png" alt="" loading="lazy" />
 
             <h2>See your products grow</h2>
             <p>
@@ -101,7 +101,7 @@
 
         display: flex;
         flex-direction: column;
-        gap: 3rem;
+        gap: 1rem;
 
         .info {
             h3 {

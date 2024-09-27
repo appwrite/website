@@ -1,11 +1,4 @@
 <script lang="ts" context="module">
-    import AuthShot from './(assets)/auth-shot.png?enhanced';
-    import DatabasesShot from './(assets)/db-shot.png?enhanced';
-    import FunctionsShot from './(assets)/fn-shot.png?enhanced';
-    import StorageShot from './(assets)/storage-shot.png?enhanced';
-    import RealtimeShot from './(assets)/realtime-shot.png?enhanced';
-    import MessagingShot from './(assets)/messaging-shot.png?enhanced';
-
     export const elId = writable(0);
 
     export function getElSelector(el: string) {
@@ -51,7 +44,7 @@
                 'Rate-limits and advanced user protection',
                 'Custom SMTP and email templates'
             ],
-            shot: AuthShot
+            shot: '/images/products/showcase/auth-shot.png'
         },
         databases: {
             icon: {
@@ -68,7 +61,7 @@
                 'Custom data validation',
                 'Relationships support'
             ],
-            shot: DatabasesShot
+            shot: '/images/products/showcase/db-shot.png'
         },
         functions: {
             icon: {
@@ -84,7 +77,7 @@
                 'Support for 30+ runtimes in 13 languages',
                 'Custom domain support'
             ],
-            shot: FunctionsShot
+            shot: '/images/products/showcase/fn-shot.png'
         },
         messaging: {
             icon: {
@@ -101,7 +94,7 @@
                 'Send push notifications, emails, and SMS',
                 'Supports real-time and location-based messaging'
             ],
-            shot: MessagingShot
+            shot: '/images/products/showcase/messaging-shot.png'
         },
         storage: {
             icon: {
@@ -117,7 +110,7 @@
                 'Built-in image transformation capabilities',
                 'Advanced compression with WebP/Brotli support'
             ],
-            shot: StorageShot
+            shot: '/images/products/showcase/storage-shot.png'
         },
         realtime: {
             icon: {
@@ -132,7 +125,7 @@
                 'Built-in permission management',
                 'Support for DBs, Auth, Storage & Functions'
             ],
-            shot: RealtimeShot
+            shot: '/images/products/showcase/realtime-shot.png'
         }
     };
 </script>
@@ -284,6 +277,7 @@
                                             alt=""
                                             width="32"
                                             height="32"
+                                            loading="lazy"
                                         />
                                         <span class="text-label">{copy.title}</span>
                                     </h3>

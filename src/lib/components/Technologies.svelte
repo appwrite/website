@@ -75,6 +75,7 @@
                         alt="{platform.name} quick start"
                         width="32"
                         height="32"
+                        loading="lazy"
                     />
                 </a>
             </li>

@@ -11,7 +11,6 @@
     import MainFooter from '../lib/components/MainFooter.svelte';
     import DeveloperCard from './DeveloperCard.svelte';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import CoverImage from './dashboard.png';
     import Button from '$lib/components/ui/Button.svelte';
     import Hero from '$lib/components/ui/Hero.svelte';
     import GradientText from '$lib/components/ui/GradientText.svelte';
@@ -89,10 +88,11 @@
         class="absolute"
         style="top: -800px; left: 50%; translate: -50%; pointer-events:none; z-index: 10"
     >
-        <enhanced:img
+        <img
             style="width:1466px; height:804px; transform:rotate(150.348deg); opacity: 0.65; filter: blur(127.5px);
 		max-block-size: unset; max-inline-size: unset;"
-            src="./top-page-dark.png"
+            src="/images/top-page-dark.png"
+            loading="eager"
             alt=""
         />
     </div>
@@ -103,7 +103,8 @@
     style="top: 22rem; left: 54%; translate: calc(-50% - 900px); width: 75.9375rem;"
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
-    <img src="/images/bgs/hero-lines-1.png" alt="" />
+    <!-- Mark lazy as this image isn't loaded on mobile -->
+    <img src="/images/bgs/hero-lines-1.png" alt="" loading="lazy" />
 </div>
 
 <div
@@ -112,7 +113,8 @@
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
     <div style="left: 0;">
-        <img src="/images/bgs/hero-lines-2.png" alt="" />
+        <!-- Mark lazy as this image isn't loaded on mobile -->
+        <img src="/images/bgs/hero-lines-2.png" alt="" loading="lazy" />
     </div>
 </div>
 
@@ -160,7 +162,7 @@
                     <div class="web-media-container">
                         <img
                             class="block"
-                            src={CoverImage}
+                            src='/images/dashboard.png'
                             alt="console dashboard"
                             style:aspect-ratio="1244 / 717"
                         />
@@ -435,6 +437,7 @@
                     width="768"
                     height="768"
                     alt=""
+                    loading="lazy"
                     style="position: absolute; display: block;"
                 />
             </div>

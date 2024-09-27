@@ -9,7 +9,7 @@
     <div class="web-social-item flex flex-col gap-6">
         <div class="flex justify-between gap-4">
             <div class="web-user-box">
-                <img class="web-user-box-image" src={avatarSrc} alt="Avatar of {name}" />
+                <img class="web-user-box-image" src={avatarSrc} alt="Avatar of {name}" loading="lazy" />
                 <div class="web-user-box-name text-sub-body font-medium">{name}</div>
                 <div class="web-user-box-username text-sub-body">{tag}</div>
             </div>

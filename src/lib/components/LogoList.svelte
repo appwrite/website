@@ -89,7 +89,7 @@
         >
             {#each logos as { src, alt, width, height }, i}
                 <li class="grid place-content-center">
-                    <img {src} {alt} {width} {height} />
+                    <img {src} {alt} {width} {height} loading="lazy" />
                 </li>
             {/each}
         </ul>
