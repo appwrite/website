@@ -1,5 +1,16 @@
 <script lang="ts">
     import DottedMap, { type DottedMapLib } from 'dotted-map';
+    import { mousePosition } from '../mouse-position';
+
+    let x: number;
+    let y: number;
+
+    mousePosition.subscribe(({ x: newX, y: newY }) => {
+        x = newX;
+        y = newY;
+    });
+
+    let showTooltip = false;
 
     const map = new DottedMap({
         height: 50,
@@ -117,8 +128,20 @@
                 <circle cx={point.x} cy={point.y} r="0.25" class="fill-black/[.08]" />
             {/each}
             {#each pins as pin}
+                <circle
+                    cx={pin.x}
+                    cy={pin.y}
+                    r="2"
+                    class="fill-transparent"
+                    on:mouseenter={() => (showTooltip = true)}
+                    on:mouseleave={() => (showTooltip = false)}
+                    role="presentation"
+                />
                 <circle cx={pin.x} cy={pin.y} r="0.25" class="fill-black" />
             {/each}
         </svg>
+        {#if showTooltip}
+            <span class="absolute" style:left={`${x}px`} style:top={`${y}px`}>Tooltip</span>
+        {/if}
     </div>
 </div>
