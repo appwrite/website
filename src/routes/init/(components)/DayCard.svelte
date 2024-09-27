@@ -25,14 +25,14 @@
     {#if hasReleased}
         <div style:z-index="10" style="margin-top: auto; margin-bottom: 0;">
             <span
-                class="web-u-color-text-primary web-u-uppercase"
+                class="text-primary web-u-uppercase"
                 style:opacity="0.6"
                 style:margin-bottom="-8px"
                 style:display="block"
             >
                 {day.subtitle}
             </span>
-            <h2 class="web-label web-u-color-text-primary">
+            <h2 class="text-label text-primary">
                 {day.title}<span class="web-u-color-text-accent">_</span>
             </h2>
         </div>
@@ -43,14 +43,14 @@
     {:else}
         <div style:z-index="10" style="margin-top: auto; margin-bottom: 0;">
             <span
-                class="web-u-color-text-primary web-eyebrow web-u-uppercase"
+                class="text-primary text-micro uppercase web-u-uppercase"
                 style:margin-bottom="-8px"
                 style:display="block"
             >
                 {day.subtitle} <span class="web-u-color-text-accent">_</span>
             </span>
             <h2
-                class="web-title web-u-color-text-primary"
+                class="text-title font-aeonik-pro text-primary"
                 style="--height:3rem;--line-height:3rem;"
             >
                 {#if $hours > 24}

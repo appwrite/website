@@ -5,7 +5,7 @@
 
     import { createCombobox, melt } from '@melt-ui/svelte';
 
-    import { MeiliSearch, type Hit, type Hits } from 'meilisearch';
+    import { type Hit, type Hits, MeiliSearch } from 'meilisearch';
     import { tick } from 'svelte';
 
     export let open = true;
@@ -137,8 +137,11 @@
         }
     }
 
-    function getRelevantSubtitle(hit: Hit): string {
-        return hit.h2 ?? hit.h3 ?? hit.h4 ?? hit.h5 ?? hit.h6 ?? null;
+    function getSubtitleContent(hit: Hit): { header?: string; subtitle?: string } {
+        return {
+            header: hit.h1,
+            subtitle: hit.h2 ?? hit.h3 ?? hit.h4 ?? hit.h5 ?? hit.h6
+        };
     }
 </script>
 
@@ -184,15 +187,15 @@
             {#if value}
                 <section>
                     {#if results.length > 0}
-                        <h6 class="web-eyebrow">{results.length} results found</h6>
+                        <h6 class="text-micro uppercase">{results.length} results found</h6>
                         <ul class="mt-2 flex flex-col gap-1">
                             {#each results as hit, i (hit.uid)}
-                                {@const relevantSubtitle = getRelevantSubtitle(hit)}
+                                {@const subtitleContent = getSubtitleContent(hit)}
                                 <li>
                                     <a
                                         data-hit={i}
                                         href={createHref(hit)}
-                                        class="web-button web-caption-400 is-text web-u-padding-block-8 web-padding-inline-12 web-u-cross-start flex
+                                        class="web-button text-caption is-text web-u-padding-block-8 web-padding-inline-12 web-u-cross-start flex
                                             max-w-full min-w-full flex-col gap-2"
                                         use:melt={$option({
                                             value: hit,
@@ -200,16 +203,27 @@
                                         })}
                                     >
                                         <div class="web-u-trim-1">
-                                            <span class="web-u-color-text-secondary">{hit.h1}</span>
-                                            {#if relevantSubtitle}
-                                                <span class="web-u-color-text-secondary"> / </span>
-                                                <span class="web-u-color-text-primary">
-                                                    {relevantSubtitle}
-                                                </span>
+                                            {#if subtitleContent.header}
+                                                <span class="web-u-color-text-secondary"
+                                                    >{subtitleContent.header}</span
+                                                >
+                                                {#if subtitleContent.subtitle}
+                                                    <span class="web-u-color-text-secondary">
+                                                        /
+                                                    </span>
+                                                {/if}
+                                            {/if}
+
+                                            {#if subtitleContent.subtitle}
+                                                <span class="text-primary"
+                                                    >{subtitleContent.subtitle}</span
+                                                >
                                             {/if}
                                         </div>
                                         {#if hit.p}
-                                            <div class="web-u-color-text-secondary web-u-trim-1">
+                                            <div
+                                                class="web-u-color-text-secondary w-full overflow-hidden text-ellipsis whitespace-nowrap text-left"
+                                            >
                                                 {hit.p}
                                             </div>
                                         {/if}
@@ -218,14 +232,14 @@
                             {/each}
                         </ul>
                     {:else}
-                        <p class="web-caption-400">
+                        <p class="text-caption">
                             No results found for <span class="font-bold">{value}</span>
                         </p>
                     {/if}
                 </section>
             {/if}
             <section>
-                <h6 class="web-eyebrow">Recommended</h6>
+                <h6 class="text-micro uppercase">Recommended</h6>
                 <ul class="mt-2 flex flex-col gap-1">
                     {#each recommended as hit, i (hit.uid)}
                         {@const index = i + (results.length ? results.length : 0)}
@@ -237,13 +251,13 @@
                                     value: hit,
                                     label: hit.title ?? i.toString()
                                 })}
-                                class="web-button web-caption-400 is-text web-u-padding-block-4 web-u-cross-start flex min-w-full flex-col gap-2"
+                                class="web-button text-caption is-text web-u-padding-block-4 web-u-cross-start flex min-w-full flex-col gap-2"
                             >
                                 <div class="web-u-trim-1">
                                     <span class="web-u-color-text-secondary">{hit.h1}</span>
                                     {#if hit.h2}
                                         <span class="web-u-color-text-secondary"> / </span>
-                                        <span class="web-u-color-text-primary">{hit.h2}</span>
+                                        <span class="text-primary">{hit.h2}</span>
                                     {/if}
                                 </div>
                             </a>
