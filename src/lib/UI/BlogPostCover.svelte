@@ -45,7 +45,10 @@
 </script>
 
 {#if isFeatured}
-    <img {alt} {src} loading="eager" class={className} />
+    <picture>
+        <source srcset={thumbnailWebpSrc} type="image/webp" />
+        <img {alt} src={thumbnailSrc} loading="eager" class={className} />
+    </picture>
 {:else}
     <div
         class="image-wrapper"

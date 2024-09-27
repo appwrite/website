@@ -22,13 +22,29 @@ function isPNG(file) {
 function parseFrontmatter(file, key = 'cover') {
     const content = readFileSync(file, 'utf8');
     const fmRegex = /---\s*([\s\S]*?)\s*---/;
+    const searchForFeaturedPost = key === 'cover';
+
+    const featuredRegex = new RegExp(`^featured:\\s*['"]?(.+?)['"]?$`, 'm');
+
     const match = content.match(fmRegex);
     if (match) {
         const fmContent = match[1];
         const regex = new RegExp(`^${key}:\\s*(.+)$`, 'm');
         const imageMatch = fmContent.match(regex);
         if (imageMatch) {
-            return imageMatch[1].trim();
+            let withFeature = {};
+            withFeature.image = imageMatch[1].trim();
+
+            if (searchForFeaturedPost) {
+                const featureMatch = fmContent.match(featuredRegex);
+                if (featureMatch) {
+                    withFeature.featured = featureMatch[1] === 'true';
+                } else {
+                    withFeature.featured = false;
+                }
+            }
+
+            return withFeature;
         }
     }
     return null;
@@ -56,10 +72,11 @@ function ensureDir(path) {
     }
 }
 
-async function createThumbnails(images, destDir, width, height) {
+async function createThumbnails(images, destDir, options) {
+    const { width, height } = options;
+
     for (const file of images) {
-        let relativePath = file.substring(srcDir.length)
-            .replace(/\/blog\/|\/avatars\//, '');
+        let relativePath = file.substring(srcDir.length).replace(/\/blog\/|\/avatars\//, '');
         const thumbBasePath = join(destDir, relativePath);
 
         ensureDir(dirname(thumbBasePath));
@@ -89,9 +106,13 @@ function getBlogCovers() {
     const markdocFiles = walkDirectory(articlesDir);
     return markdocFiles
         .map((filePath) => {
-            const coverPath = parseFrontmatter(filePath);
+            const { featured, image: coverPath } = parseFrontmatter(filePath);
+
             if (coverPath && isPNG(coverPath)) {
-                return join(__dirname, '../static', coverPath);
+                return {
+                    featured: featured,
+                    coverPath: join(__dirname, '../static', coverPath)
+                };
             }
         })
         .filter(Boolean);
@@ -101,7 +122,7 @@ function getAuthorAvatars() {
     const authorFiles = walkDirectory(authorsDir);
     return authorFiles
         .map((filePath) => {
-            const avatarPath = parseFrontmatter(filePath, 'avatar');
+            const { image: avatarPath } = parseFrontmatter(filePath, 'avatar');
             if (avatarPath && isPNG(avatarPath)) {
                 return join(__dirname, '../static', avatarPath);
             }
@@ -109,16 +130,25 @@ function getAuthorAvatars() {
         .filter(Boolean);
 }
 
-export async function thumbnailPreprocess(options = {
-    cover: { width: 320, height: 320 }, author: { width: 112, height: 112 }
-}) {
-
+export async function thumbnailPreprocess(
+    options = {
+        cover: {
+            normal: { width: 320, height: 320 },
+            featured: { width: 640, height: 640 }
+        },
+        author: { width: 112, height: 112 }
+    }
+) {
     const coverImages = getBlogCovers();
     const authorAvatars = getAuthorAvatars();
 
+    const normalCovers = coverImages.filter((img) => !img.featured).map((img) => img.coverPath);
+    const featuredCovers = coverImages.filter((img) => img.featured).map((img) => img.coverPath);
+
     await Promise.all([
-        createThumbnails(coverImages, blogCoverDestDir, options.cover.width, options.cover.height),
-        createThumbnails(authorAvatars, authorDestDir, options.author.width, options.author.height)
+        createThumbnails(authorAvatars, authorDestDir, options.author),
+        createThumbnails(normalCovers, blogCoverDestDir, options.cover.normal),
+        createThumbnails(featuredCovers, blogCoverDestDir, options.cover.featured)
     ]);
 
     return { name: 'thumbnail-creator-preprocessor' };
