@@ -302,6 +302,13 @@
             title: 'Security',
             rows: [
                 {
+                    title: 'Organization roles',
+                    free: '-',
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
                     title: 'SOC-2',
                     free: '-',
                     pro: '-',
@@ -323,7 +330,7 @@
                     enterprise: true
                 },
                 {
-                    title: 'Additional organization roles',
+                    title: 'Custom organization roles',
                     free: '-',
                     pro: '-',
                     scale: 'Coming Soon',
@@ -380,7 +387,7 @@
                     title: 'Private Slack channel',
                     free: '-',
                     pro: '-',
-                    scale: '-',
+                    scale: true,
                     enterprise: true
                 }
             ]
