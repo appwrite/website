@@ -59,22 +59,22 @@ All backups created with Appwrite are:
 1. **Encrypted**:
     All backups are securely encrypted to ensure your data remains protected at all times.
 
-2. **Remotely Stored**:
+2. **Remotely stored**:
     Backups are stored in a remote location, providing an additional layer of security and ensuring your data is always recoverable.
 
-3. **Hot Backups**:
+3. **Hot backups**:
     Backups are **hot**, meaning they occur with zero downtime, allowing you to recover data quickly without interrupting your projects and services.
 
 # Best practices {% #best-practices %}
 
 To ensure your backups are robust and effective, consider the following best practices:
 
-1. **Schedule Regular Backups**:
+1. **Schedule regular backups**:
    Add multiple backup policies based on the frequency of database changes. Daily or weekly backups are often sufficient for most use cases.
 
-2. **Retain Critical Backups Longer**:
+2. **Retain critical backups longer**:
    Use custom retention on Policies to keep backups of critical data for extended periods, ensuring historical records are available when needed.
 
-3. **Optimize Backup Policies Based on Data Sensitivity**:
+3. **Optimize backup policies based on data sensitivity**:
    Tailor your backup frequency and retention settings according to the sensitivity and importance of the data.
    Critical data may require more frequent backups, while less essential data can have longer retention and fewer backups.
