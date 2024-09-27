@@ -10,8 +10,6 @@ category: product
 featured: false
 ---
 
-# **Building a chat app with Appwrite and Google Gemini**
-
 If you're looking to build a chat app that doesn't just handle basic messages but actually understands and responds intelligently, you found the right tutorial! In this guide, we'll learn how to create a chat application using Appwrite's local function development and the Google Gemini API to generate AI responses.
 
 Appwrite takes care of the backend so you can focus on the functionality, while Google's Gemini provides the AI that will give your app the ability to respond to user messages in real-time. By the end, you'll have a working chat app that does more than just send and receive messages — but interacts with users in a way that feels almost human.
@@ -20,7 +18,7 @@ Appwrite takes care of the backend so you can focus on the functionality, while 
 
 This project is practical for anyone interested in enhancing their apps with intelligent, real-time interactions without getting too deep into managing servers or infrastructure. Let's get started!
 
-## **Prerequisites**
+ # Prerequisites
 
 Before we begin, make sure you have the following tools installed:
 
@@ -30,11 +28,11 @@ Before we begin, make sure you have the following tools installed:
 - **A Google Gemini API key**: You'll need this for accessing Google's AI models. We'll cover how to get one in this guide.
 - **A code editor**: Any code editor, such as VS Code, will work.
 
-## **Step 1: Setting up Appwrite locally**
+ # Step 1: Setting up Appwrite locally
 
 To get started, we need to set up Appwrite on your local machine. This will enable us to test our serverless function locally before deploying it.
 
-### **Step 1.1: Installing the Appwrite CLI**
+ ## Step 1.1: Installing the Appwrite CLI
 
 Appwrite provides a CLI tool that helps manage functions and projects from your terminal. Install it globally with the following command:
 
@@ -50,7 +48,7 @@ appwrite --version
 
 If everything is set up correctly, you should see the version number of the CLI printed in your terminal.
 
-### **Step 1.2: Logging into Appwrite**
+ ## Step 1.2: Logging into Appwrite
 
 Next, log into Appwrite so the CLI can authenticate your session. Run:
 
@@ -60,7 +58,7 @@ appwrite login
 
 This will prompt you to log in with your Appwrite credentials. If you don't already have an account, head over to [our cloud console](https://cloud.appwrite.io/) and create one.
 
-### **Step 1.3: Creating a new Appwrite project**
+ ## Step 1.3: Creating a new Appwrite project
 
 After logging in, we need to create a new Appwrite project. Navigate to the directory where you want to build the project and run:
 
@@ -70,11 +68,11 @@ appwrite init project
 
 Appwrite will ask you if you want to create a new project or link to an existing one. Choose **Create new project**, then provide a name (e.g., `AI Chat`) and an ID for your project. This will create a new Appwrite project in your current directory.
 
-## **Step 2: Creating the Appwrite serverless function**
+ # Step 2: Creating the Appwrite serverless function
 
 With your Appwrite project set up, let's move on to creating the serverless function that will handle the chat logic. This function will accept user messages, forward them to the Google Gemini API, and return AI-generated responses.
 
-### **Step 2.1: Initializing the function**
+ ## Step 2.1: Initializing the function
 
 To create a new function, run the following command:
 
@@ -98,11 +96,11 @@ appwrite run function
 
 When you run the command, you'll see a prompt to select the function you want to run. Choose the `Chat Gemini` function, and the function will start running locally. Click the provided link to access the function in your browser or you can use an API client like Postman to test it.
 
-### **Step 2.2: Writing the function logic**
+ ## Step 2.2: Writing the function logic
 
 Open the `src/main.js` file in your editor. This is where we'll handle user input, communicate with the Google Gemini API, and return AI-generated responses. Let's break down the process step by step.
 
-### **Import required modules**
+ ## Import required modules
 
 At the top of the file, import the necessary modules. We'll use `node-fetch` to handle HTTP requests, and we'll import a helper function (`getStaticFile`) that will serve the HTML frontend later.
 
@@ -120,7 +118,7 @@ To install `node-fetch`, run:
 npm install node-fetch
 ```
 
-### **Initialize conversation context**
+ ## Initialize conversation context
 
 Next, we'll set up an array to store the conversation context. This array will store the last 5 messages exchanged between the user and the AI. Keeping the conversation history allows the AI to respond with more context-aware replies.
 
@@ -130,7 +128,7 @@ let conversationContext = []
 
 We're storing the conversation context in memory, so that the chat history is maintained for the current session. For a production app, you might want to use a database to store this data.
 
-### **Handling GET requests**
+ ## Handling GET requests
 
 Now, let's handle **GET requests**. When a user accesses the root URL (`/`), we'll serve an HTML page that acts as the frontend for the chat app. To do this, we'll use the `getStaticFile` function (which we'll define later) to return the `index.html` file.
 
@@ -145,7 +143,7 @@ if (req.method === 'GET') {
 - This checks if the request method is `GET`. If it is, we use the helper function `getStaticFile` to serve the `index.html` page.
 - The `200` status code indicates that the request was successful, and we specify the content type as `text/html`.
 
-### **Handling POST requests**
+ ## Handling POST requests
 
 Next, let's handle **POST requests**. When a user submits a message, the function captures that message, appends it to the conversation context, and forwards it to the Google Gemini API.
 
@@ -174,7 +172,7 @@ Let's break it down:
 3. **Build the AI prompt**: We generate the prompt that will be sent to the AI. The prompt consists of the conversation context followed by an instruction telling the AI to respond in HTML and avoid using body or heading tags. This is so that our frontend can display the AI's response correctly.
 4. **Construct the API URL**: We use the Google Gemini API URL and append the API key as a query parameter. The API key is stored in an environment variable (`process.env.GEMINI_API_KEY`), which we'll set up later.
 
-### **Send the prompt to Google Gemini API**
+ ## Send the prompt to Google Gemini API
 
 Next, let's send this prompt to the Google Gemini API to generate an AI response. We'll use the `fetch` function for this, passing in the API URL and the prompt.
 
@@ -195,7 +193,7 @@ In the above code:
 - **Constructing the fetch request**: We send a POST request to the Google Gemini API URL with the user's prompt in the request body. The response from the AI is returned in JSON format.
 - **Extracting the response**: The AI response is extracted from `data.candidates[0]`. If the response is empty, we return a default message: "No response received."
 
-### **Return the AI response to the user**
+ ## Return the AI response to the user
 
 Once we have the AI's response, we append it to the `conversationContext` array and return it to the frontend.
 
@@ -215,30 +213,30 @@ return res.json({ ok: true, output: generatedText })
 - **Adding the AI response to the conversation**: Just like the user message, the AI's response is added to the conversation context.
 - **Returning the response**: The AI-generated response is returned to the frontend as JSON. If any error occurs (e.g., network issues or API failures), an error message is returned instead.
 
-## **Step 3: Getting your Google Gemini API key**
+ # Step 3: Getting your Google Gemini API key
 
 Before running your function, you need an API key from Google to access the Gemini API.
 
-### **Step 3.1: Create your Google Gemini API key**
+ ## Step 3.1: Create your Google Gemini API key
 
 Follow these steps to generate an API key:
 
 1. Visit [Google AI Studio](https://aistudio.google.com/).
 2. Click **"Get API Key"** in the top-left corner.
 
-    ![Screenshot of the Google AI Studio dashboard with the "Get API Key" button highlighted](/images/blog/google-ai-studio-dashboard.png)
+![Screenshot of the Google AI Studio dashboard with the "Get API Key" button highlighted](/images/blog/build-a-chat-app-with-appwrite-and-gemini/google-ai-studio-dashboard.png)
 
 3. On the API key page, click **"Create API Key"**.
 
-    ![*Screenshot of the API key creation page*](/images/blog/build-a-chat-app-with-appwrite-and-gemini/api-creation-page.png)
+![*Screenshot of the API key creation page*](/images/blog/build-a-chat-app-with-appwrite-and-gemini/api-creation-page.png)
 
 4. Choose your project (or create a new one), then click **"Create API Key"**.
 5. Copy the API key and save it securely—you'll need it in the next step.
 
-    ![*Screenshot of the API key generated*](/images/blog/build-a-chat-app-with-appwrite-and-gemini/api-key-generated.png)
+![*Screenshot of the API key generated*](/images/blog/build-a-chat-app-with-appwrite-and-gemini/api-key-generated.png)
 
 
-### **Step 3.2: Store the API key in an environment file**
+ ## Step 3.2: Store the API key in an environment file
 
 Now that you have your Google Gemini API key, we need to store it securely. In the root of your function's folder, create a `.env` file with the following content:
 
@@ -248,15 +246,15 @@ GEMINI_API_KEY=your-google-gemini-api-key
 
 Replace `your-google-gemini-api-key` with the actual key you generated earlier.
 
-## **Step 4: Writing our utility function**
+ # Step 4: Writing our utility function
 
 Before we can serve the HTML frontend, we need the helper function `getStaticFile` to read static files from the filesystem. Let's write that utility now.
 
-### **Step 4.1: Create the `utils` folder**
+ ## Step 4.1: Create the `utils` folder
 
 Inside your `src` directory, create a new folder named `utils`. This folder will store helper functions that we'll use in the app.
 
-### **Step 4.2: Write the static file reader**
+ ## Step 4.2: Write the static file reader
 
 In the `utils` folder, create a file called `staticFile.js`. This file will contain our function that reads and returns static HTML files from disk, which we'll use to serve the frontend:
 
@@ -278,11 +276,11 @@ export function getStaticFile(fileName) {
 
 Our `getStaticFile` function reads files from the `static` folder and returns their content as a string. We'll use this function to serve the HTML frontend.
 
-## **Step 5: Building the frontend**
+ # Step 5: Building the frontend
 
 Now that we've set up the backend logic, let's create a simple HTML frontend where users can interact with our Gemini chatbot.
 
-### **Step 5.1: Create the `index.html` file**
+ ## Step 5.1: Create the `index.html` file
 
 In the `static` folder of your project, create a file named `index.html`. This file will serve as the user interface for the chat app.
 
@@ -386,7 +384,7 @@ With the current structure, you can open the `index.html` file directly in your 
 
 Before we run the function, let's add some CSS styles to make the chat interface visually appealing.
 
-### **Step 5.2: Adding CSS styles**
+ ## Step 5.2: Adding CSS styles
 
 To make the chat interface visually appealing, let's add some CSS styles. Update the `<style>` section in the `index.html` file with the following styles:
 
@@ -478,11 +476,11 @@ To make the chat interface visually appealing, let's add some CSS styles. Update
 
 This styling will give the chat interface a modern look and feel. The chat messages will be displayed in alternating colors for user and Gemini messages, and the chat box will scroll automatically as new messages are added.
 
-## **Step 6: Running and testing locally**
+ # Step 6: Running and testing locally
 
 Now that everything is set up, let's run the application locally and test it. If you already have the function running, you can skip the next step.
 
-### **Step 6.1: Running the function locally**
+ ## Step 6.1: Running the function locally
 
 Ensure Docker is running, then use the following command to start the serverless function locally:
 
@@ -492,13 +490,11 @@ appwrite run function
 
 This will start the Appwrite function in your local environment. You should see a message indicating that the function is running and a link to access it.
 
-### **Step 6.2: Testing the application**
+ ## Step 6.2: Testing the application
 
 Open the link provided by the Appwrite CLI in your browser. You should see the chat interface with the message input field. Try sending a message to the AI, and you should receive a response in the chat box!
 
 ![Gif of the chat app in action](/images/blog/build-a-chat-app-with-appwrite-and-gemini/chat-gemini-demo.gif)
-
-*Gif of the chat app in action*
 
 You can also use cURL or Postman to test the serverless function by sending a POST request with a sample prompt:
 
@@ -508,11 +504,11 @@ curl -X POST http://localhost:3000/ \
 -d '{"prompt": "Hello, how are you?"}'
 ```
 
-## **Step 7: Deploying the application**
+ # Step 7: Deploying the application
 
 Once you've verified that the application works locally, it's time to deploy it to the Appwrite cloud. This will make your chat app accessible to anyone with an internet connection.
 
-### **Step 7.1: Deploying the function to the cloud**
+ ## Step 7.1: Deploying the function to the cloud
 
 To deploy the serverless function, run the following command:
 
@@ -538,7 +534,7 @@ You can now navigate to your [Appwrite cloud console](https://cloud.appwrite.io/
 
 With the function deployed, you now have a live chat application built with Appwrite and Google Gemini API. Users can interact with the AI chatbot in real-time, and you can continue to enhance the app with more features, customizations, and integrations.
 
-## **Conclusion**
+ # Conclusion
 
 In this tutorial, you've learned how to build a chat application using Appwrite local function development and Google Gemini API. We covered everything from setting up the environment to writing the serverless function, creating a frontend, and testing the app locally before deploying it to the cloud.
 
@@ -546,7 +542,7 @@ Appwrite's local function development is a powerful tool for building and testin
 
 If you have any questions or feedback, feel free to reach out to the Appwrite community on [Discord](https://appwrite.io/discord) or send me a message on [LinkedIn](https://www.linkedin.com/in/ebenezerdon/).
 
-You can view the complete codebase for our Gemini + Appwrite chat app on [GitHub](https://github.com/ebenezerdon/chat-gemini).
+You can view the complete codebase for our Gemini + Appwrite chat app on [GitHub](https://github.com/appwrite-community/chat-gemini-appwrite).
 
 Further reading:
 
