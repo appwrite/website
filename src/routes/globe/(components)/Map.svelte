@@ -106,7 +106,7 @@
         }
     ];
 
-    pinsData.forEach((pin) => {
+    pinsData.forEach((pin, index) => {
         map.addPin({
             lat: pin.lat,
             lng: pin.lng,
@@ -130,6 +130,7 @@
         const svgRect = mapContainer.getBoundingClientRect();
         const viewBox = mapContainer.viewBox.baseVal;
 
+        // Calculate scaling factors
         const scaleX = svgRect.width / viewBox.width;
         const scaleY = svgRect.height / viewBox.height;
 
@@ -137,11 +138,11 @@
             const marker = document.querySelector(`#marker-${index}`) as HTMLElement;
             if (!marker) return;
 
-            const x = pin.x * scaleX;
-            const y = pin.y * scaleY;
+            const x = pin.x * scaleX + svgRect.left;
+            const y = pin.y * scaleY + svgRect.top;
 
-            marker.style.left = `${svgRect.left + x}px`;
-            marker.style.top = `${svgRect.top + y}px`;
+            marker.style.left = `${x}px`;
+            marker.style.top = `${y}px`;
         });
     };
 
@@ -160,10 +161,9 @@
             {#each pins as pin, i}
                 <div
                     id="marker-{i}"
-                    class="z-50 size-3 rotate-45 rounded-t-full rounded-r-full rounded-b-full border-black bg-black"
+                    class="absolute z-50 h-4 w-4 -translate-1/2 rounded-full bg-black"
                     role="presentation"
                     on:mouseenter={() => {
-                        console.log('hovered');
                         handleTooltip({
                             activeCity: pin.data.city,
                             activeCountry: pin.data.country,
@@ -186,7 +186,7 @@
         {#if showTooltip}
             <div
                 class="pointer-events-none absolute top-0 left-0 z-10 rounded-2xl bg-white p-3"
-                style:transform={`translateX(${x}px) translateY(${y}px)`}
+                style:transform={`translate(${x}px, ${y}px)`}
             >
                 {tooltip.city}, {tooltip.country}
             </div>
