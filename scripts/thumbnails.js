@@ -130,15 +130,39 @@ function getAuthorAvatars() {
         .filter(Boolean);
 }
 
-export async function thumbnailPreprocess(
-    options = {
+/**
+ * @typedef {{ width: number, height: number }} ThumbnailSize
+ *
+ * @typedef {{
+ *   cover: {
+ *     normal: ThumbnailSize,
+ *     featured: ThumbnailSize
+ *   },
+ *   author: ThumbnailSize
+ * }} ThumbnailOptions
+ */
+
+/**
+ * Preprocess thumbnails for cover and author images.
+ *
+ * @param {Object} [options={}] - Options to configure the thumbnail sizes.
+ * @param {{
+ *   cover?: {
+ *     normal?: ThumbnailSize,
+ *     featured?: ThumbnailSize
+ *   },
+ *   author?: ThumbnailSize
+ * }} [options] - The optional thumbnail configuration.
+ */
+export async function thumbnailPreprocess(options = {}) {
+    const {
         cover: {
-            normal: { width: 320, height: 320 },
-            featured: { width: 640, height: 640 }
-        },
-        author: { width: 112, height: 112 }
-    }
-) {
+            normal: normalCover = { width: 320, height: 320 },
+            featured: featuredCover = { width: 640, height: 640 }
+        } = {},
+        author: authorOption = { width: 112, height: 112 }
+    } = options;
+
     const coverImages = getBlogCovers();
     const authorAvatars = getAuthorAvatars();
 
@@ -146,9 +170,9 @@ export async function thumbnailPreprocess(
     const featuredCovers = coverImages.filter((img) => img.featured).map((img) => img.coverPath);
 
     await Promise.all([
-        createThumbnails(authorAvatars, authorDestDir, options.author),
-        createThumbnails(normalCovers, blogCoverDestDir, options.cover.normal),
-        createThumbnails(featuredCovers, blogCoverDestDir, options.cover.featured)
+        createThumbnails(authorAvatars, authorDestDir, authorOption),
+        createThumbnails(normalCovers, blogCoverDestDir, normalCover),
+        createThumbnails(featuredCovers, blogCoverDestDir, featuredCover)
     ]);
 
     return { name: 'thumbnail-creator-preprocessor' };

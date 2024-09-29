@@ -5,7 +5,7 @@ import { preprocessMeltUI, sequence } from '@melt-ui/pp';
 import { markdoc } from 'svelte-markdoc-preprocess';
 import nodeAdapter from '@sveltejs/adapter-node';
 import { thumbnailPreprocess } from './scripts/thumbnails.js';
-import htmlMinifierAdaptor from "sveltekit-html-minifier";
+import htmlMinifierAdaptor from 'sveltekit-html-minifier';
 
 /** @type {import('@sveltejs/kit').Config}*/
 const config = {
@@ -31,7 +31,12 @@ const config = {
             }
         }),
         preprocessMeltUI(),
-        thumbnailPreprocess()
+        thumbnailPreprocess({
+            author: {
+                width: 64,
+                height: 64
+            }
+        })
     ]),
     extensions: ['.markdoc', '.svelte', '.md'],
     kit: {

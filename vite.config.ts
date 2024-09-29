@@ -4,7 +4,7 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vitest/config';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import { enhancedImages } from '@sveltejs/enhanced-img';
-import { ViteMinifyPlugin } from 'vite-plugin-minify'
+import { ViteMinifyPlugin } from 'vite-plugin-minify';
 
 export default defineConfig({
     plugins: [
@@ -29,11 +29,21 @@ export default defineConfig({
         }),
         ViteMinifyPlugin({
             removeAttributeQuotes: true
-        }),
+        })
     ],
     build: {
         minify: true,
-        reportCompressedSize: false
+        reportCompressedSize: false,
+        rollupOptions: {
+            cache: true,
+            output: {
+                manualChunks(id) {
+                    if (id.includes('node_modules')) {
+                        return 'vendor';
+                    }
+                }
+            }
+        }
     },
     test: {
         include: ['src/**/*.{test,spec}.{js,ts}']
