@@ -34,16 +34,6 @@ export default defineConfig({
     build: {
         minify: true,
         reportCompressedSize: false,
-        rollupOptions: {
-            cache: true,
-            output: {
-                manualChunks(id) {
-                    if (id.includes('node_modules')) {
-                        return 'vendor';
-                    }
-                }
-            }
-        }
     },
     test: {
         include: ['src/**/*.{test,spec}.{js,ts}']
