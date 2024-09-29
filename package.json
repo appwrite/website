@@ -85,6 +85,6 @@
         "vite-plugin-image-optimizer": "^1.1.8",
         "vitest": "^1.6.0",
         "vite-plugin-minify": "^2.0.0",
-        "sveltekit-html-minifier": "^1.0.3"
+        "html-minifier-terser": "^7.2.0"
     }
 }
