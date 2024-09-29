@@ -35,7 +35,7 @@ jobs:
               run: pnpm install --frozen-lockfile
             - name: Build Website
               env:
-                  NODE_OPTIONS: '--max_old_space_size=8192'
+                  NODE_OPTIONS: '--max_old_space_size=12288'
                   PUBLIC_APPWRITE_ENDPOINT: ${{ secrets.PUBLIC_APPWRITE_ENDPOINT }}
                   PUBLIC_APPWRITE_DASHBOARD: ${{ secrets.PUBLIC_APPWRITE_DASHBOARD }}
                   PUBLIC_APPWRITE_PROJECT_ID: ${{ secrets.PUBLIC_APPWRITE_PROJECT_ID }}
