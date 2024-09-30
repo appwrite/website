@@ -8,6 +8,7 @@
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
     import { classNames } from '$lib/utils/classnames';
+    import { Tooltip } from '$lib/components';
 
     type Table = {
         title: string;
@@ -23,7 +24,7 @@
 
     const cols = ['free', 'pro', 'scale', 'enterprise'] as const;
 
-    const tables = [
+    const tables: Array<Table> = [
         {
             title: 'Resources',
             rows: [
@@ -569,7 +570,7 @@
                                         <th class="text-caption font-medium">
                                             <div class="flex items-center gap-1 text-left">
                                                 {row.title}
-                                                <!-- {#if row.info}
+                                                {#if row.info}
                                                     <Tooltip placement="top">
                                                         <span
                                                             class="icon-info"
@@ -579,7 +580,7 @@
                                                             {row.info}
                                                         </svelte:fragment>
                                                     </Tooltip>
-                                                {/if} -->
+                                                {/if}
                                             </div>
                                         </th>
                                         {#each cols as col, index}
