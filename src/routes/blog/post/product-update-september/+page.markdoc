@@ -12,8 +12,9 @@ Right after Init, we hit the ground running with a busy month. We introduced the
 
 Let’s dive into it!
 
-# New roles
 ![New roles announcement](/images/blog/product-update-september/3.png)
+# New roles
+
 We’ve introduced Roles, a feature designed to bring granular permissions to the Appwrite Console, available for both the Pro and Scale plans.
 Alongside the existing owner role, you can now assign these new roles to your team members:
 
@@ -26,8 +27,9 @@ To celebrate the new feature, you can invite members with the new roles to your 
 
 [Read the annoucement.](https://appwrite.io/blog/post/announcing-roles-for-enhanced-collaboration-and-security)
 
-# Hacktoberfest Hackathon
+
 ![Hacktoberfest Hackathon](/images/blog/product-update-september/4.png)
+# Hacktoberfest Hackathon
 
 We’ve heard your requests, and we're excited to deliver — Appwrite is organizing its very first Hacktoberfest Hackathon this October! Here’s what you need to know:
 
@@ -40,8 +42,8 @@ Ready to join? Registration is open now until Oct 31.
 
 [Register here.](https://apwr.dev/htf24-hackathon)
 
-# 1.6 for self-hosted
 ![1.6 for self-hosted](/images/blog/product-update-september/1.png)
+# 1.6 for self-hosted
 
 Appwrite 1.6 is now LIVE for self-hosted instances!
 
@@ -57,8 +59,9 @@ Everything we launched during Init is now ready for your self-hosted instance, i
 
 [Check out the release notes for more details.](https://github.com/appwrite/appwrite/releases/tag/1.6.0)
 
-# CCPA
 ![CCPA announcement](/images/blog/product-update-september/2.png)
+# CCPA
+
 Appwrite is now fully CCPA-compliant, bringing you even more security and peace of mind when building your apps. 
 
 The [California Consumer Privacy Act (CCPA)](https://oag.ca.gov/privacy/ccpa) is a landmark data privacy law that enhances consumer rights for residents of California. 
