@@ -7,19 +7,19 @@
         {
             label: 'Enroll to the GitHub Student Developer Pack',
             description: 'Sign up for the Student Developer pack and explore the benefits.',
-            cta: { url: 'https://github.com', label: 'Click now' }
+            cta: { url: 'https://github.com', label: 'Enroll on GitHub Education' }
         },
         {
             label: 'Redeem your $250 credits',
             description:
                 'Create your Appwrite account and add a valid payment method. Once verified, your $250 credit will be applied.',
-            cta: { url: 'https://github.com', label: 'Click now' }
+            cta: { url: 'https://github.com', label: 'Sign up' }
         },
         {
             label: 'Start from our docs',
             description:
                 'Once your Appwrite account is created, go to our Docs and get started with Appwrite Cloud.',
-            cta: { url: 'https://github.com', label: 'Click now' }
+            cta: { url: 'https://appwrite.io/docs', label: 'Go to Appwrite Docs' }
         }
     ];
 </script>
@@ -35,17 +35,20 @@
         <h2 class="text-primary font-aeonik-pro text-4xl">Get started today</h2>
 
         <div
-            class="mt-12 grid place-items-center gap-16 rounded-2xl bg-white p-4 shadow shadow-black/20 md:grid-cols-3"
+            class="mt-12 grid place-items-center gap-8 divide-[#19191C]/4 rounded-2xl bg-white p-5 shadow-[-6px_8px_24px_rgba(0,_0,_0,_0.06),_0px_0px_0px_rgba(0,_0,_0,_0.06)] max-sm:divide-y md:grid-cols-3 md:divide-x"
         >
             {#each items as item, i}
-                <div class="group relative flex flex-col gap-6 py-4 px-6">
+                <div
+                    class="group relative flex h-full flex-col gap-6 last-of-type:pb-0 max-sm:pb-8 md:px-8"
+                >
                     <Badge>Step {i + 1}</Badge>
-                    <div class={classNames('flex flex-col gap-2 font-medium')}>
+                    <div class={classNames('flex flex-1 flex-col gap-2 font-medium')}>
                         <h3 class="text-primary text-pretty">{item.label}</h3>
                         <p class="text-secondary text-pretty">{item.description}</p>
                     </div>
-                    <a class="web-button is-secondary text-accent mt-auto mb-0" href={item.cta.url}
-                        >{item.cta.label}</a
+                    <a
+                        class="web-button is-secondary text-accent mt-auto mb-0 !w-full md:!w-fit"
+                        href={item.cta.url}>{item.cta.label}</a
                     >
                 </div>
             {/each}
