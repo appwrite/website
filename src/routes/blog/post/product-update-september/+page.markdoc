@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "September product update: CCPA | 1.6 for self-hosted | New Roles"
+title: "September product update: New Roles | Hackathon | CCPA | 1.6 for self-hosted"
 description: "A recap of everything new at Appwrite in September."
 date: 2024-09-30
 cover: /images/blog/product-update-september/cover.png
@@ -79,6 +79,7 @@ If you are using a self-hosted Appwrite instance, we strongly recommend upgradin
 [Check out the changelog for more details.](https://appwrite.io/changelog/entry/2024-09-17)
 
 ---
+
 ## Updating collection attribute names and sizes
 
 You can now update attribute names and sizes directly from your Cloud Console.
