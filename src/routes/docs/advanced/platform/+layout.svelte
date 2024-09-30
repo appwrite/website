@@ -20,6 +20,7 @@
                     href: '/docs/advanced/platform/shortcuts'
                 },
                 {
+                    new: true,
                     label: 'Roles',
                     href: '/docs/advanced/platform/roles'
                 }
