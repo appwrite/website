@@ -8,34 +8,9 @@ timeToRead: 5
 author: dennis-ivy
 category: product
 ---
-Right after Init, we hit the ground running with a busy month. We announced **CCPA compliance**, introduced the new **Roles** feature, and kicked off the **Appwrite** **Hacktoberfest Hackathon.**
+Right after Init, we hit the ground running with a busy month. We introduced the new **Roles** feature, announced **CCPA compliance**, and kicked off the **Appwrite** **Hacktoberfest Hackathon.**
 
 Let’s dive into it!
-
-# 1.6 for self-hosted
-![1.6 for self-hosted](/images/blog/product-update-september/1.png)
-
-Appwrite 1.6 is now LIVE for self-hosted instances!
-
-Everything we launched during Init is now ready for your self-hosted instance, including:
-
-- Local Development
-- New Appwrite CLI
-- Binary executions
-- Dynamic keys
-- Delayed executions
-- Go SDK & Runtime
-- Session alerts
-
-[Check out the release notes for more details.](https://github.com/appwrite/appwrite/releases/tag/1.6.0)
-
-# CCPA
-![CCPA announcement](/images/blog/product-update-september/2.png)
-Appwrite is now fully CCPA-compliant, bringing you even more security and peace of mind when building your apps. 
-
-The [California Consumer Privacy Act (CCPA)](https://oag.ca.gov/privacy/ccpa) is a landmark data privacy law that enhances consumer rights for residents of California. 
-
-[Read the announcement.](https://appwrite.io/blog/post/announcing-appwrite-is-ccpa-compliant) 
 
 # New roles
 ![New roles announcement](/images/blog/product-update-september/3.png)
@@ -65,6 +40,30 @@ Ready to join? Registration is open now until Oct 31.
 
 [Register here.](https://apwr.dev/htf24-hackathon)
 
+# 1.6 for self-hosted
+![1.6 for self-hosted](/images/blog/product-update-september/1.png)
+
+Appwrite 1.6 is now LIVE for self-hosted instances!
+
+Everything we launched during Init is now ready for your self-hosted instance, including:
+
+- Local Development
+- New Appwrite CLI
+- Binary executions
+- Dynamic keys
+- Delayed executions
+- Go SDK & Runtime
+- Session alerts
+
+[Check out the release notes for more details.](https://github.com/appwrite/appwrite/releases/tag/1.6.0)
+
+# CCPA
+![CCPA announcement](/images/blog/product-update-september/2.png)
+Appwrite is now fully CCPA-compliant, bringing you even more security and peace of mind when building your apps. 
+
+The [California Consumer Privacy Act (CCPA)](https://oag.ca.gov/privacy/ccpa) is a landmark data privacy law that enhances consumer rights for residents of California. 
+
+[Read the announcement.](https://appwrite.io/blog/post/announcing-appwrite-is-ccpa-compliant) 
 ---
 
 # Product updates
@@ -79,6 +78,7 @@ If you are using a self-hosted Appwrite instance, we strongly recommend upgradin
 
 [Check out the changelog for more details.](https://appwrite.io/changelog/entry/2024-09-17)
 
+---
 ## Updating collection attribute names and sizes
 
 You can now update attribute names and sizes directly from your Cloud Console.
@@ -111,9 +111,6 @@ If you'd like to participate in next month's Community Recognitions, [join our D
 - [Read](https://appwrite.io/blog/post/hacktoberfest-ideas-2024): Get inspired for Hacktoberfest 2024 with these ideas
 - [Read](https://appwrite.io/blog/post/ccpa-vs-gdpr): CCPA vs GDPR: Understanding the differences and implications
 - [Read](https://appwrite.io/blog/post/appwrite-realtime-for-flutter): Get started with Appwrite Realtime for Flutter
-
-# Open source and community updates
-
 - [Repository:](https://github.com/PinguApps/AppwriteSdk) Appwrite SDK for .NET by [Pingu](https://github.com/pingu2k4)
 
 ---
@@ -122,7 +119,7 @@ If you'd like to participate in next month's Community Recognitions, [join our D
 
 October will be jam-packed with announcements and new features, so stay tuned! 
 
-- Appwrite Cloud coming to a region near you;
+- New Cloud and Database features are to be revealed soon!
 - A certain Backups teaser made waves on our [Discord channel](https://appwrite.io/discord)…
 - And we filmed some exciting new stuff while at our Camp in Barcelona!
 
