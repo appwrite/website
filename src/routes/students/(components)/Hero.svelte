@@ -36,7 +36,7 @@
 >
     <div class="pattern relative" />
     <div
-        class="gridLine vertical from-accent/5 relative flex h-full w-full flex-col items-center justify-center gap-8 bg-gradient-to-t to-transparent py-10 px-8 text-center"
+        class="gridLine vertical from-accent/5 relative flex h-full w-full flex-col items-center justify-center gap-8 to-transparent py-10 px-8 text-center md:bg-gradient-to-t"
     >
         <Logos />
         <h1 class="font-aeonik-pro text-5xl text-white">Build your next project with Appwrite</h1>
@@ -45,9 +45,12 @@
             cloud for free.
         </p>
 
-        <div class="flex items-center gap-4">
-            <a class="web-button" href={PUBLIC_APPWRITE_DASHBOARD}>Sign up now</a>
-            <a class="web-button is-secondary !whitespace-normal" href={PUBLIC_APPWRITE_DASHBOARD}>
+        <div class="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
+            <a class="web-button !w-full md:!w-fit" href={PUBLIC_APPWRITE_DASHBOARD}>Sign up now</a>
+            <a
+                class="web-button is-secondary !w-full !whitespace-normal md:!w-fit"
+                href={PUBLIC_APPWRITE_DASHBOARD}
+            >
                 <span class="web-icon-github !text-white" />
                 GitHub Education</a
             >
