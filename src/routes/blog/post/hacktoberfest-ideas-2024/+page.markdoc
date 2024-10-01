@@ -28,6 +28,7 @@ Seasoned hackathon contributor Aditya Oberai [shared his 4-step approach](https:
 We have 3 projects we'd like to share that demonstrate a variety of ideas and approaches. We hope these examples provide some inspiration as you start thinking about your own Hacktoberfest projects.
 
 
+
 ![Terrazone](/images/blog/get-inspired-for-hackathon/1.png)
 
 # Terrazone: Revolutionizing global workforce management
@@ -52,6 +53,8 @@ Working remotely can come with challenges, such as scheduling meetings, dealing 
 - [Local development](https://appwrite.io/blog/post/announcing-local-development) to test functions
 - [Appwrite Authentication](https://appwrite.io/docs/products/auth/oauth2) for authentication
 
+
+
 ![MailMemo](/images/blog/get-inspired-for-hackathon/2.png)
 
 # MailMemo: Simplifying calendar notifications
@@ -73,6 +76,8 @@ Managing multiple personal and work calendars can be overwhelming, especially wi
 - [Mailgun provider](https://appwrite.io/docs/references/cloud/server-nodejs/messaging) on Messaging
 - [New Go runtime and SDK](https://appwrite.io/blog/post/announcing-go-support) for Functions
 - [New Functions ecosystem](https://appwrite.io/blog/post/introducing-functions-ecosystem) to sync calendars and schedule emails
+
+
 
 ![Cord](/images/blog/get-inspired-for-hackathon/3.png)
 
