@@ -1,6 +1,6 @@
 <script lang="ts">
     import DottedMap, { type DottedMapLib } from 'dotted-map';
-    import { fly } from 'svelte/transition';
+    import { flip } from 'svelte/animate';
     import MobileMap from './MobileMap.svelte';
     import Germany from '../(assets)/germany.png';
     import Australia from '../(assets)/australia.png';
@@ -8,18 +8,18 @@
     import India from '../(assets)/india.png';
     import Singapore from '../(assets)/singapore.png';
     import USA from '../(assets)/usa.png';
+    import { quintOut } from 'svelte/easing';
+    import { fly } from 'svelte/transition';
 
     let tooltip: {
         x: number;
         y: number;
-        isActive: boolean;
         country: null | string;
         city: null | string;
         available: null | boolean;
     } = {
         x: 0,
         y: 0,
-        isActive: false,
         country: null,
         city: null,
         available: null
@@ -27,38 +27,10 @@
 
     let showTooltip: boolean = false;
 
-    const handleTooltip = ({
-        event,
-        activeCity,
-        activeCountry,
-        isAvailable
-    }: {
-        event: MouseEvent;
-        activeCity: string;
-        activeCountry: string;
-        isAvailable: boolean;
-    }) => {
-        tooltip.x = event.clientX;
-        tooltip.y = event.clientY;
-        showTooltip = true;
-        tooltip.city = activeCity;
-        tooltip.country = activeCountry;
-        tooltip.available = isAvailable;
-    };
-
     const map = new DottedMap({
         height: 50,
         grid: 'diagonal'
     });
-
-    const mapSvg = map.getSVG({
-        radius: 0.22,
-        color: '#423B38',
-        shape: 'circle',
-        backgroundColor: '#020300'
-    });
-
-    console.log(mapSvg);
 
     type Pin = DottedMapLib.Pin & {
         data: {
@@ -152,7 +124,32 @@
     });
 
     const points = map.getPoints();
-    const pins: DottedMapLib.Point[] = points.filter((point) => point.data);
+    let pins: DottedMapLib.Point[] = points.filter((point) => point.data);
+
+    const handleTooltip = ({
+        event,
+        activeCity,
+        activeCountry,
+        isAvailable
+    }: {
+        event: MouseEvent;
+        activeCity: string;
+        activeCountry: string;
+        isAvailable: boolean;
+        index: number;
+    }) => {
+        const group = event.currentTarget as SVGSVGElement;
+        if (group && group.parentNode) {
+            group.parentNode.appendChild(group);
+        }
+
+        tooltip.x = event.clientX;
+        tooltip.y = event.clientY;
+        showTooltip = true;
+        tooltip.city = activeCity;
+        tooltip.country = activeCountry;
+        tooltip.available = isAvailable;
+    };
 </script>
 
 <div class="light bg-[#EDEDF0] !py-10">
@@ -192,15 +189,17 @@
                 <circle cx={point.x} cy={point.y} r="0.25" class="fill-black/[.08]" />
             {/each}
 
-            {#each pins as pin}
+            {#each pins as pin, index (index)}
                 {@const circleRadius = 1.75}
                 {@const imageSize = circleRadius * 2}
                 <g
                     style:transform="translateX({pin.x - 1.75}px) translateY({pin.y - 4}px)"
                     role="presentation"
-                    class="will-change-transform"
+                    class="animate-fade-in cursor-pointer opacity-0"
+                    style:animation-delay={`calc(${index} * 0.1s)`}
                     on:mouseenter={(event) => {
                         handleTooltip({
+                            index,
                             event,
                             activeCity: pin.data.city,
                             activeCountry: pin.data.country,
@@ -220,7 +219,7 @@
                     <clipPath id="clip-circle">
                         <circle cx={imageSize / 2} cy={imageSize / 2} r={circleRadius} />
                     </clipPath>
-                    <g style:transform="scale(0.1) translate(-1.8px, -3px)">
+                    <g style:transform="scale(0.1) translate(-2.2px, -3px)">
                         <path
                             fill-rule="evenodd"
                             clip-rule="evenodd"
@@ -239,6 +238,15 @@
                         height={imageSize}
                         clip-path="url(#clip-circle)"
                         preserveAspectRatio="xMidYMid slice"
+                    />
+                    <circle
+                        cx={imageSize / 2 + circleRadius - 0.25}
+                        cy={imageSize / 2 - circleRadius + 0.8}
+                        r="0.5"
+                        class="stroke-white"
+                        class:fill-greyscale-300={!pin.data.available}
+                        class:fill-[#10B981]={pin.data.available}
+                        stroke-width="0.15"
                     />
                 </g>
             {/each}

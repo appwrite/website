@@ -70,6 +70,7 @@
 
     /* Animations */
     --animate-scale-in: scale-in 200ms ease-out forwards;
+    --animate-fade-in: fade-in 500ms ease-out forwards;
 
     /* Pink polyfills */
     --transition: 0.2s;
@@ -81,6 +82,15 @@
         }
         100% {
             transform: scale(1);
+        }
+    }
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
         }
     }
 
