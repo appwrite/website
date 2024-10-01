@@ -151,7 +151,7 @@
             <div
                 in:fly={{ y: 10, duration: 200 }}
                 out:fly={{ y: -10, duration: 200 }}
-                class="pointer-events-none absolute z-100 block flex w-[190px] flex-col gap-2 rounded-[10px] border border-white bg-gradient-to-br from-white/64 to-white/32 p-2 backdrop-blur-sm"
+                class="absolute z-100 block flex w-[190px] flex-col gap-2 rounded-[10px] border border-white bg-gradient-to-br from-white/64 to-white/32 p-2 backdrop-blur-sm"
                 style:left="{tooltip.x - 100}px"
                 style:top="{tooltip.y - 100}px"
             >
@@ -176,27 +176,19 @@
         {/if}
         <svg
             viewBox="0 0 105 50"
-            class="relative z-10 h-full w-[250%] rotate-x-45 md:w-full"
+            class="h-full w-[250%] rotate-x-45 md:w-full"
             bind:this={mapContainer}
         >
             {#each points as point}
                 <circle cx={point.x} cy={point.y} r="0.25" class="fill-black/[.08]" />
             {/each}
             {#each pins as pin}
-                <defs>
-                    <clipPath id="icon">
-                        <circle cx={pin.x} cy={pin.y} r="0.25" fill="#000" role="presentation" />
-                    </clipPath>
-                </defs>
-
-                <image
-                    width="100"
-                    height="100"
+                <circle
                     role="presentation"
-                    xlink:href={pin.data.flag}
-                    clip-path="url(#icon)"
                     cx={pin.x}
                     cy={pin.y}
+                    r="0.25"
+                    fill="#000"
                     on:mouseenter={(event) => {
                         handleTooltip({
                             event,
