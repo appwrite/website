@@ -155,7 +155,7 @@
     const pins: DottedMapLib.Point[] = points.filter((point) => point.data);
 </script>
 
-<div class="light bg-[#EDEDF0] !py-20">
+<div class="light bg-[#EDEDF0] !py-10">
     <div
         class="container relative mx-auto flex items-center justify-center perspective-distant transform-3d"
     >
