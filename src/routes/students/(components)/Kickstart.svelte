@@ -7,12 +7,12 @@
         <h2 class="text-primary font-aeonik-pro text-4xl">
             Kickstart your developer journey with Appwrite
         </h2>
-        <p>
+        <p class="font-medium">
             Earn free credits through GitHub Education to build your next project on Appwrite Cloud.
             Sign up for the GitHub Student Developer Pack to receive a $250 Appwrite Cloud credit.
         </p>
 
-        <p>
+        <p class="font-medium">
             This credit is available only for new users who are verified through the GitHub program
             as students. The credit is valid until you graduate from GitHub Education.
         </p>
