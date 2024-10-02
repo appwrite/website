@@ -214,8 +214,8 @@
                     title: 'Backups',
                     free: '-',
                     pro: '$20 per policy / month',
-                    scale: '$20 per policy / month',
-                    enterprise: '$20 per policy / month'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'Dedicated databases',
