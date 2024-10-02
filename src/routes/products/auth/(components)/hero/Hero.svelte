@@ -1,5 +1,4 @@
 <script lang="ts">
-    import Anonymous from './Anonymous.svelte';
     import Email from './Email.svelte';
     import Identity from './Identity.svelte';
     import MultiFactor from './MultiFactor.svelte';
@@ -21,14 +20,17 @@
 </script>
 
 <div class="container py-10">
-    <MultiFactor />
-    <Phone />
-    <VerificationCode />
-    <Email />
-    <Identity />
-    <Anonymous />
+    <div class="relative mx-auto max-w-[75vw] py-10">
+        <MultiFactor />
+        <Phone />
+        <VerificationCode />
+        <Email />
+        <Identity />
+    </div>
 
-    <div class="flex flex-col gap-y-4 text-center">
+    <div
+        class="flex flex-col gap-y-4 text-center after:inset-0 after:bottom-0 after:bg-gradient-to-b after:from-transparent after:to-black"
+    >
         <div class="mx-auto max-w-xl">
             <h2 class="text-display text-primary font-aeonik-pro">Customer identity</h2>
             <p class="text-description">
