@@ -26,6 +26,8 @@
     };
 
     let showTooltip: boolean = false;
+    let tooltipElement: HTMLElement;
+    let mapContainer: HTMLElement;
 
     const map = new DottedMap({
         height: 50,
@@ -89,7 +91,7 @@
             data: {
                 city: 'Sydney',
                 country: 'AUS',
-                available: false,
+                available: true,
                 flag: Australia
             }
         },
@@ -99,7 +101,7 @@
             data: {
                 city: 'New York, NY',
                 country: 'USA',
-                available: false,
+                available: true,
                 flag: USA
             }
         },
@@ -142,28 +144,35 @@
         if (group && group.parentNode) {
             group.parentNode.appendChild(group);
         }
+        const mapRect = mapContainer.getBoundingClientRect();
+        const mouseX = event.clientX - mapRect.left;
+        const mouseY = event.clientY - mapRect.top;
 
-        tooltip.x = event.clientX;
-        tooltip.y = event.clientY;
         showTooltip = true;
-        tooltip.city = activeCity;
-        tooltip.country = activeCountry;
-        tooltip.available = isAvailable;
+        tooltip = {
+            x: mouseX,
+            y: mouseY,
+            city: activeCity,
+            country: activeCountry,
+            available: isAvailable
+        };
     };
 </script>
 
 <div class="light bg-[#EDEDF0] !py-10">
     <div
         class="container relative mx-auto flex items-center justify-center perspective-distant transform-3d"
+        bind:this={mapContainer}
     >
         <MobileMap {pins} />
         {#if showTooltip}
             <div
+                bind:this={tooltipElement}
                 in:fly={{ y: 10, duration: 200 }}
                 out:fly={{ y: -10, duration: 200 }}
                 class="pointer-events-none absolute z-100 block flex w-[190px] flex-col gap-2 rounded-[10px] border border-white bg-gradient-to-br from-white/64 to-white/32 p-2 backdrop-blur-sm"
-                style:left="{tooltip.x - 100}px"
-                style:top="{tooltip.y - 200}px"
+                style:left="{tooltip.x}px"
+                style:top="{tooltip.y - (tooltipElement?.offsetHeight || 0) - 10}px"
             >
                 <span class="text-primary text-caption w-fit"
                     >{tooltip.city}
@@ -176,10 +185,17 @@
                         <span class="text-micro -tracking-tight">Available now</span>
                     </div>
                 {:else}
-                    <div
-                        class="text-caption bg-greyscale-200/32 text-primary flex h-5 items-center justify-center place-self-start rounded-[6px] p-1 text-center"
-                    >
-                        <span class="text-micro -tracking-tight">Available soon</span>
+                    <div class="flex items-center gap-1">
+                        <div
+                            class="text-caption flex h-5 items-center justify-center place-self-start rounded-[6px] bg-[#FE7C43]/16 p-1 text-center text-[#61250A]"
+                        >
+                            <span class="text-micro -tracking-tight">In work</span>
+                        </div>
+                        <div
+                            class="text-caption flex h-5 items-center justify-center place-self-start rounded-[6px] bg-black/6 p-1 text-center text-[#56565C]"
+                        >
+                            <span class="text-micro -tracking-tight">Q4 2024</span>
+                        </div>
                     </div>
                 {/if}
             </div>
