@@ -8,7 +8,7 @@ timeToRead: 4
 author: snezhanna
 category: hacktoberfest
 ---
-Appwrite has just announced our very own **Hacktoberfest 2024 Hackathon**, and if we know our community, you're probably buzzing with ideas! Hacktoberfest is the perfect chance to collaborate, build, and showcase your creativity, whether you’re an experienced developer or just getting started. But with so many possibilities, where do you start?
+Appwrite has just announced our very own **Hacktoberfest 2024 Hackathon**, and if we know the open source community, you're probably buzzing with ideas! Hacktoberfest is the perfect chance to collaborate, build, and showcase your creativity, whether you’re an experienced developer or just getting started. But with so many possibilities, where do you start?
 
 A few months ago, we hosted our own internal hackathon to foster collaboration, spark creativity, and put the new 1.6 features to the test before [their official release](https://appwrite.io/changelog/entry/2024-09-18). The Appwrite team rose to the challenge and delivered some amazing projects.
 
@@ -27,9 +27,11 @@ Seasoned hackathon contributor Aditya Oberai [shared his 4-step approach](https:
 
 We have 3 projects we'd like to share that demonstrate a variety of ideas and approaches. We hope these examples provide some inspiration as you start thinking about your own Hacktoberfest projects.
 
-# Terrazone: Revolutionizing global workforce management
+
 
 ![Terrazone](/images/blog/get-inspired-for-hackathon/1.png)
+
+# Terrazone: Revolutionizing global workforce management
 
 Terrazone is a platform designed to help remote teams work better together across different time zones through a simple, user-friendly interface. 
 
@@ -51,9 +53,11 @@ Working remotely can come with challenges, such as scheduling meetings, dealing 
 - [Local development](https://appwrite.io/blog/post/announcing-local-development) to test functions
 - [Appwrite Authentication](https://appwrite.io/docs/products/auth/oauth2) for authentication
 
-# MailMemo: Simplifying calendar notifications
+
 
 ![MailMemo](/images/blog/get-inspired-for-hackathon/2.png)
+
+# MailMemo: Simplifying calendar notifications
 
 ## What problem does it solve?
 
@@ -73,9 +77,11 @@ Managing multiple personal and work calendars can be overwhelming, especially wi
 - [New Go runtime and SDK](https://appwrite.io/blog/post/announcing-go-support) for Functions
 - [New Functions ecosystem](https://appwrite.io/blog/post/introducing-functions-ecosystem) to sync calendars and schedule emails
 
-# Cord: A new way to do async
+
 
 ![Cord](/images/blog/get-inspired-for-hackathon/3.png)
+
+# Cord: A new way to do async
 
 Cord is a Discord bot designed to help teams be more effective when communicating through async. It comes with a few handy features like timezone and location in bio, automatic starting messages, and standup summaries.
 
