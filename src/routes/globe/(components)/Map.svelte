@@ -195,8 +195,7 @@
                 <g
                     style:transform="translateX({pin.x - 1.75}px) translateY({pin.y - 4}px)"
                     role="presentation"
-                    class="animate-fade-in cursor-pointer opacity-0"
-                    style:animation-delay={`calc(${index} * 0.1s)`}
+                    class="cursor-pointer"
                     on:mouseenter={(event) => {
                         handleTooltip({
                             index,
