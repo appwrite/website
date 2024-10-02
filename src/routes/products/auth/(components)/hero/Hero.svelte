@@ -1,7 +1,9 @@
 <script lang="ts">
+    import Anonymous from './Anonymous.svelte';
     import Email from './Email.svelte';
     import Identity from './Identity.svelte';
     import MultiFactor from './MultiFactor.svelte';
+    import Phone from './Phone.svelte';
     import VerificationCode from './VerificationCode.svelte';
 
     const platforms = [
@@ -20,13 +22,15 @@
 
 <div class="container py-10">
     <MultiFactor />
+    <Phone />
     <VerificationCode />
     <Email />
     <Identity />
+    <Anonymous />
 
     <div class="flex flex-col gap-y-4 text-center">
         <div class="mx-auto max-w-xl">
-            <h2 class="text-display text-primary">Customer identity</h2>
+            <h2 class="text-display text-primary font-aeonik-pro">Customer identity</h2>
             <p class="text-description">
                 Create a seamless experience for your users by providing various authentication
                 methods for them to identify and login.

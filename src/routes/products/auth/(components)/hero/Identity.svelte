@@ -1,6 +1,6 @@
 <script lang="ts">
-    const columns = 20;
-    const rows = 20;
+    const columns = 30;
+    const rows = 30;
 </script>
 
 <div
