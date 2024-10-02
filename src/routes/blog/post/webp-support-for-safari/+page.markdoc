@@ -8,7 +8,7 @@ timeToRead: 3
 author: eldad-fux
 category: product
 ---
-We’re happy to share that Appwrite Cloud users now has full WebP support across all versions of Safari browsers and devices.
+We’re happy to share that Appwrite Cloud users now have full WebP support across all versions of Safari browsers and devices.
 
 When we first introduced this feature in the early versions of Appwrite, Safari didn’t support WebP, which created challenges for developers using this format. To maintain application integrity, we automatically fell back to the PNG format, ensuring cross-browser compatibility but at the cost of larger file sizes and slower load times.
 
