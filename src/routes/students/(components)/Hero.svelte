@@ -31,7 +31,7 @@
 
 <section
     class={classNames(
-        'gridLine horizontal relative mt-32 grid h-full min-h-[50vh] w-full place-items-center md:grid-cols-3'
+        'gridLine horizontal relative mt-8 grid h-full min-h-[50vh] w-full place-items-center md:mt-32 md:grid-cols-3'
     )}
 >
     <div class="pattern relative" />
@@ -60,7 +60,7 @@
 </section>
 
 <div
-    class="container grid min-h-40 place-content-center items-start gap-16 py-32 text-center md:grid-cols-3"
+    class="container grid min-h-40 place-content-center items-start gap-16 py-24 text-center md:grid-cols-3"
 >
     {#each items as { label, description, icon }}
         <div class="flex flex-col justify-center">
