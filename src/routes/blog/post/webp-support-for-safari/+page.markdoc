@@ -18,4 +18,4 @@ However, as outlined on [Can I use WebP?](https://caniuse.com/webp), Safari has 
 
 WebP is a modern image format offering superior compression while maintaining high image quality. Compared to traditional formats like JPEG and PNG, WebP can reduce image sizes by up to 30%, resulting in faster page load times, lower bandwidth usage, and an overall better user experience. This is especially critical for developers looking to optimize their applications for performance and scalability.
 
-With WebP now fully supported in Safari, Appwrite developers can take full advantage of this format across all browsers and devices. This will lead to reduced latency, less bandwidth consumption, and cost savings - particularly for Cloud accounts, where efficiency matters most.
+With WebP now fully supported in Safari, Appwrite developers can take full advantage of this format across all browsers and devices. This improvement will lead to reduced latency, less bandwidth consumption, and cost savings - particularly for Cloud accounts, where efficiency matters most.
