@@ -95,6 +95,13 @@
                     scale: '$0',
                     enterprise: '$0'
                 },
+		{
+                    title: 'Roles',
+                    free: '-',
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
                 {
                     title: 'Connected websites and apps',
                     free: '3 per project',
@@ -202,6 +209,13 @@
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
+                },
+ 		{
+                    title: 'Backups',
+                    free: '-',
+                    pro: '$20 per policy / month',
+                    scale: '$20 per policy / month',
+                    enterprise: '$20 per policy / month'
                 },
                 {
                     title: 'Dedicated databases',
