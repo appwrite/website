@@ -15,7 +15,7 @@ In this tutorial, we will explore a straightforward method for implementing prot
 
 To accomplish this, we will create a component called `ProtectedRoutes` that wraps around any routes that need protection. This setup allows us to run an authentication check before rendering these pages. Here are the steps.
 
-**Creating the component**
+## Creating the component
 
 First, create a new file named `ProtectedRoutes.jsx`. In this file, you will import `Outlet` and `Navigate` from React Router Dom. `Outlet` allows for rendering nested routes, while `Navigate` will be used to redirect our users if they are not authenticated.
 
@@ -33,7 +33,7 @@ export default ProtectedRoutes;
 
 ```
 
-**Integrating the component into your app**
+## Integrating the component into your app
 
 With the `ProtectedRoutes` component created, the next step is to wrap the routes we want to protect. We can nest all child routes by using the standard  `<Route>` component and by passing in `<ProtectedRoutes/>` as the element into the parent route.
 
@@ -61,13 +61,13 @@ function App()｛
 
 ```
 
-**Understanding the flow**
+## Understanding the flow
 
-When a user attempts to access `/home` or `/profile`, the `ProtectedRoutes` component checks if a user is authenticated. If the user exists, the corresponding component uses `Outlet` to allow routing to continue down to the nested routes.. If not, the user is redirected to the login page.
+When a user attempts to access `/home` or `/profile`, the `ProtectedRoutes` component checks if a user is authenticated. If the user exists, the corresponding component uses `Outlet` to allow routing to continue down to the nested routes. If not, the user is redirected to the login page.
 
 # Testing your setup
 
-After completing the setup, it’s important to test the application. Try navigating to the protected routes. If authentication has not been established, the redirection to the login page should occur.
+After completing the setup, it’s important to test the application. Try navigating to the protected routes. If authentication has not been established, you should be redirected to the login page.
 
 # Conclusion
 
