@@ -1,32 +1,45 @@
 <script>
-    import { flip } from 'svelte/animate';
-
     import { fade } from 'svelte/transition';
 </script>
 
-<div class="phone h-[550px] w-[275px] shrink-0 bg-white/0.08 p-2">
-    <div class="relative h-full w-full rounded-4xl bg-white">
-        <div data-theme-ignore class="inner-phone light">
-            <p class="title">Sign up</p>
-            <p class="subtitle">Please enter your details to create an account</p>
+<div
+    class="phone absolute left-1/2 h-[550px] w-[275px] shrink-0 -translate-x-1/2 bg-white/0.08 p-2"
+>
+    <div class="inner relative h-full w-full rounded-4xl bg-white">
+        <div class="inner-phone light">
+            <div class="text-center">
+                <p class="text-label font-aeonik-pro">Sign up</p>
+                <p class="text-sub-body text-secondary">
+                    Please enter your details to create an account
+                </p>
+            </div>
 
             <span class="with-sep" transition:fade={{ duration: 100 }}>or</span>
             <div class="oauth-btns" transition:fade={{ duration: 100 }}></div>
 
-            <div class="inputs">
-                <fieldset>
-                    <input type="email" id="email" placeholder="Email address" autocomplete="off" />
-                </fieldset>
-                <fieldset>
-                    <input
-                        type="password"
-                        id="password"
-                        placeholder="Password"
-                        autocomplete="off"
-                    />
-                </fieldset>
+            <div class="inputs mt-7 flex flex-col gap-3">
+                <input
+                    disabled
+                    type="email"
+                    id="email"
+                    placeholder="Email address"
+                    autocomplete="off"
+                    class="text-micro flex h-7 rounded-lg border border-[#d8d8db] py-2 px-3 -tracking-tight"
+                />
+
+                <input
+                    disabled
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    autocomplete="off"
+                    class="text-micro flex h-7 rounded-lg border border-[#d8d8db] py-2 px-3 -tracking-tight"
+                />
             </div>
-            <button class="sign-up">Sign Up</button>
+            <button
+                class="text-micro mt-3 flex h-7 w-full items-center justify-center rounded-lg bg-[#0F172A] font-medium -tracking-tight text-white"
+                >Sign up</button
+            >
         </div>
     </div>
 </div>
@@ -68,91 +81,6 @@
         color: rgba(67, 67, 71, 1);
         text-align: left;
 
-        .title {
-            color: #434347;
-            font-family: Inter;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 22px; /* 137.5% */
-            letter-spacing: -0.224px;
-        }
-
-        .subtitle {
-            color: var(--greyscale-700, var(--color-greyscale-700, #56565c));
-            font-family: Inter;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 20px; /* 142.857% */
-            letter-spacing: -0.196px;
-        }
-
-        .inputs {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            margin-block-start: 1.5rem;
-
-            fieldset {
-                display: flex;
-                flex-direction: column;
-                gap: 0.3125rem;
-                width: 100%;
-
-                label {
-                    color: var(--color-greyscale-700, #56565c);
-                    font-family: Inter;
-                    font-size: 12px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: 16px; /* 133.333% */
-                    letter-spacing: -0.168px;
-                }
-
-                input {
-                    all: unset;
-                    display: flex;
-                    padding: 8px 12px;
-                    align-items: flex-start;
-                    align-self: stretch;
-                    border-radius: 8px;
-                    border: 1px solid #d8d8db;
-
-                    background-color: transparent;
-                    color: #434347;
-                    font-family: Inter;
-                    font-size: 12px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: 16px; /* 133.333% */
-                    letter-spacing: -0.168px;
-                }
-            }
-        }
-
-        .sign-up {
-            padding: 0.375rem 0.75rem;
-            text-align: center;
-            width: 100%;
-            margin-block-start: 1.25rem;
-
-            border-radius: 0.5rem;
-            background: var(--appwrite-purple, #7c67fe);
-            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.06);
-
-            color: var(--color-bw-white, #fff);
-            text-align: center;
-
-            /* Responsive/SubBody-500 */
-            font-family: Inter;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 22px; /* 157.143% */
-            letter-spacing: -0.07px;
-        }
-
         .with-sep {
             display: flex;
             align-items: center;
@@ -184,42 +112,6 @@
             flex-wrap: wrap;
             gap: var(--gap);
             margin-block-start: 0.75rem;
-        }
-
-        .oauth {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            border-radius: 0.5rem;
-            border: 1px solid #d9d9d9;
-            color: hsl(var(--web-color-greyscale-750));
-            text-align: center;
-
-            /* Responsive/Caption-500 */
-            font-family: Inter;
-            font-size: 0.875rem;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 1.375rem; /* 157.143% */
-            letter-spacing: -0.01575rem;
-
-            flex: 1 1 calc(50% - var(--gap));
-            padding-block: 0.375rem;
-            position: relative;
-            height: 2.125rem;
-
-            .inner {
-                position: absolute;
-                left: 50%;
-                top: 50%;
-
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 0.5rem;
-                transform: translate(-50%, -50%) scale(var(--inverse-sx, 1), var(--inverse-sy, 1));
-            }
         }
     }
 </style>
