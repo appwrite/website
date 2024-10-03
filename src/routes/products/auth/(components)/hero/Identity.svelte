@@ -1,11 +1,88 @@
 <script lang="ts">
+    import { classNames } from '$lib/utils/classnames';
+    import { onMount } from 'svelte';
+
     const columns = 30;
-    const rows = 30;
+    const rows = 20;
+
+    const getRandomIndexes = (arrayLength: number, count = 20) => {
+        const indexes: Array<number> = [];
+        while (indexes.length < count) {
+            const randomIndex = Math.floor(Math.random() * arrayLength);
+            if (!indexes.includes(randomIndex)) {
+                indexes.push(randomIndex);
+            }
+        }
+        return indexes;
+    };
+
+    const getRandomNumber = (first: number, second: number) => {
+        return Math.floor(Math.random() * (second - first + 1) + first);
+    };
+
+    let ref: HTMLDivElement;
+    const transitionDuration = 500;
+    const indices = getRandomIndexes(columns * rows);
+
+    const states = ['off', 'medium', 'high'] as const;
+
+    onMount(() => {
+        const timeoutIds: Array<ReturnType<typeof setTimeout>> = [];
+
+        const interval = setInterval(() => {
+            indices.forEach((index) => {
+                const light = ref.querySelector(`[data-index="${index}"]`) as HTMLElement;
+
+                if (!light) {
+                    return;
+                }
+
+                // Pick a random next state
+                const nextState = states[Math.floor(Math.random() * states.length)];
+                const currentState = light.dataset.state;
+
+                const pulse =
+                    Math.random() > 0.2 &&
+                    // Make sure we only pulsate going from "off" → "medium" → "high"
+                    ((currentState === 'off' && nextState === 'high') ||
+                        (currentState === 'off' && nextState === 'medium') ||
+                        (currentState === 'medium' && nextState === 'high'));
+
+                if (pulse) {
+                    const delay = getRandomNumber(100, 500);
+
+                    timeoutIds.push(
+                        setTimeout(() => {
+                            light.style.transform = 'scale(2)';
+                        }, delay)
+                    );
+
+                    timeoutIds.push(
+                        setTimeout(() => {
+                            light.style.transform = 'scale(1)';
+                        }, transitionDuration + delay)
+                    );
+                }
+
+                // After a pulse, don't transition from "high" → "medium"
+                if (currentState === 'high' && nextState === 'medium' && pulse) {
+                    light.dataset.state = 'off';
+                } else {
+                    light.dataset.state = nextState;
+                }
+            });
+        }, 1000);
+
+        return () => {
+            clearInterval(interval);
+            timeoutIds.forEach(clearTimeout);
+        };
+    });
 </script>
 
-<div class="absolute right-1/4 bottom-4 z-0 flex w-[120px] flex-col gap-4">
+<div class="absolute right-1/4 bottom-4 flex w-[120px] flex-col gap-4">
     <div
-        class="flex size-20 items-center justify-center overflow-hidden rounded-2xl border border-white/5 bg-white/5 backdrop-blur-2xl"
+        class="relative z-0 z-10 flex size-20 items-center justify-center overflow-hidden rounded-2xl border border-white/5 bg-white/5 backdrop-blur-2xl"
     >
         <svg
             width="48"
@@ -46,18 +123,26 @@
                 stroke-linecap="round"
             />
         </svg>
+
         <div
-            class="relative grid h-full w-full place-items-center overflow-hidden rounded-2xl shadow-[inset_0px_0px_7px_7px_rgba(0,_0,_0,_0.2)]"
-            style:grid-template-columns="repeat({columns}, minmax(0, 1fr))"
+            class="relative flex h-full w-full flex-wrap place-items-center items-center justify-center gap-0.5 overflow-hidden rounded-2xl shadow-[inset_0px_0px_7px_7px_rgba(0,_0,_0,_0.2)]"
+            bind:this={ref}
         >
             {#each Array.from({ length: columns * rows }) as _, i}
-                <div class="size-[1.5px] bg-white/10" data-index={i} />
+                <div
+                    data-state="off"
+                    data-index={i}
+                    class={classNames(
+                        'data-[state=high]:bg-accent/30 data-[state=medium]:bg-accent/20 size-[1.5px] data-[state=off]:bg-white/10'
+                    )}
+                    style:transition-duration={`${transitionDuration}ms`}
+                />
             {/each}
         </div>
     </div>
 
     <div
-        class="flex size-12 items-center justify-center self-end overflow-hidden rounded-xl border border-white/5 bg-white/5 backdrop-blur-2xl"
+        class="z-0 flex size-12 items-center justify-center self-end overflow-hidden rounded-xl border border-white/5 bg-white/5 backdrop-blur-2xl"
     >
         <div class="relative grid h-full w-full place-items-center overflow-hidden rounded-2xl">
             <div class="absolute">
