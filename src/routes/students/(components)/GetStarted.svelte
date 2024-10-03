@@ -34,7 +34,7 @@
         <h2 class="text-primary font-aeonik-pro text-4xl">Get started today</h2>
 
         <div
-            class="divide-smooth mt-12 grid place-items-center gap-8 rounded-2xl bg-white py-10 shadow-[-6px_8px_24px_rgba(0,_0,_0,_0.06),_0px_0px_0px_rgba(0,_0,_0,_0.06)] max-sm:divide-y md:grid-cols-3 md:divide-x"
+            class="divide-smooth mt-12 grid place-items-center gap-8 rounded-2xl bg-white py-10 px-5 shadow-[-6px_8px_24px_rgba(0,_0,_0,_0.06),_0px_0px_0px_rgba(0,_0,_0,_0.06)] max-sm:divide-y md:grid-cols-3 md:divide-x md:px-0"
         >
             {#each items as item, i}
                 <div
