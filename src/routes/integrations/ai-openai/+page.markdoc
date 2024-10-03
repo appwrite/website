@@ -7,7 +7,7 @@ featured: true
 isPartner: true
 isNew: true
 cover: /images/integrations/ai-openai/cover.png
-category: AI
+category: ai
 product: 
     avatar: '/images/integrations/avatars/openai.png'
     vendor: OpenAI

@@ -152,7 +152,7 @@ This code will download a bunch of sample images of flowers, create two groups o
 Next, initialize a new function using the Appwrite CLI by using:
 
 ```bash
-appwrite init project // Use if you don't already have an appwrite.json
+appwrite init project # Use if you don't already have an appwrite.json
 appwrite init function
 ```
 

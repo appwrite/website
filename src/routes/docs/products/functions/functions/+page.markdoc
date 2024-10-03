@@ -66,22 +66,9 @@ Remember to specify the build commands for your function to install dependencies
 {% /tabsitem %}
 
 {% tabsitem #cli title="CLI" %}
-You can create functions using the CLI, without needing to access the Console.
-Before you can deploy with the Appwrite CLI, make sure you've [initialized the CLI.](/docs/tooling/command-line/installation)
 
-To deploy with the Appwrite CLI, your function must be added to your `appwrite.json` config file. 
-Use the `appwrite init function` method to create a starter function, then paste in your function code.
+{% partial file="cli-function.md" /%}
 
-```bash
-appwrite init function
-```
-
-The init command will initialize a folder with a starter function code.
-To deploy the generated code, add dependencies, and deploy the function using the following command:
-
-```bash
-appwrite deploy function
-```
 {% /tabsitem %}
 {% /tabs %}
 
@@ -178,3 +165,11 @@ You can access environment variables inside functions using your [runtime langua
 ## Timeout {% #timeout %}
 You can limit the execution time of your function by navigating to your function > **Settings** > **Timeout**.
 There is a system wide maximum timeout of 900 seconds (15 minutes).
+
+## Scopes {% #scopes %}
+
+You can configure the permission scopes for the function [dynamic API key](/docs/products/functions/develop#dynamic-api-key). The dynamic API key is automatically generated to access your project resources like users and buckets but can only be used inside of Appwrite functions. Navigate to your function > **Settings** > **Scopes** to configure your dynamic API key permission scopes.
+
+{% arrow_link href="/docs/advanced/platform/api-keys#scopes" %}
+Learn more about scopes
+{% /arrow_link %}

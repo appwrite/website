@@ -56,7 +56,7 @@ export default async ({ req, res, log, error }) => {
   // Allows using direct execution or file create event
   const fileId = req.body.$id || req.body.imageId;
   if (!fileId) {
-    return res.send('Bad request', 400);
+    return res.text('Bad request', 400);
   }
 
   // Only allow specific bucketId
@@ -64,7 +64,7 @@ export default async ({ req, res, log, error }) => {
     req.body.bucketId &&
     req.body.bucketId != bucketId
   ) {
-    return res.send('Bad request', 400);
+    return res.text('Bad request', 400);
   }
 }
 ```
