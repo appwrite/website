@@ -5,11 +5,11 @@
     const emails = [
         {
             title: 'Thank you for registering.',
-            copy: 'Before we get started, confirm your identity be clicking the link belo...',
+            copy: 'Before we get started, confirm your identity by clicking the link below...',
             open: false
         },
         {
-            title: 'Your have been invited',
+            title: 'You have been invited',
             copy: 'Create a user in Acme corp. You can accept or decline this invitation...',
             open: true
         }
