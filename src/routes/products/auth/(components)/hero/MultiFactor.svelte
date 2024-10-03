@@ -3,7 +3,7 @@
 </script>
 
 <div
-    class="absolute bottom-0 z-10 flex max-w-xs flex-col items-center justify-center gap-4 rounded-2xl border border-white/[0.02] bg-gradient-to-br from-white/[0.02] to-white/[0.005] p-8 text-center"
+    class="absolute bottom-0 left-16 z-10 flex max-w-xs flex-col items-center justify-center gap-4 rounded-2xl border border-white/[0.02] bg-gradient-to-br from-white/[0.02] to-white/[0.005] p-8 text-center"
 >
     <div class="space-y-1">
         <h3 class="text-description text-primary">Verify your identity</h3>
