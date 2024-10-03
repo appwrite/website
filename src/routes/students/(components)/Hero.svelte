@@ -31,10 +31,10 @@
 
 <section
     class={classNames(
-        'gridLine horizontal relative mt-8 grid h-full min-h-[50vh] w-full place-items-center md:mt-32 lg:grid-cols-[20%_1fr_20%] xl:grid-cols-3'
+        'gridLine horizontal relative mt-8 grid h-full min-h-[50vh] w-full place-items-center md:mt-32 md:grid-cols-[10%_1fr_10%] lg:grid-cols-[20%_1fr_20%] xl:grid-cols-3'
     )}
 >
-    <div class="pattern relative hidden h-full w-full lg:block" />
+    <div class="pattern relative hidden h-full w-full md:block" />
     <div
         class="gridLine vertical from-accent/5 relative flex h-full w-full flex-1 basis-[calc(100vw_/_3)] flex-col items-center justify-center gap-8 to-transparent py-10 px-8 text-center lg:bg-gradient-to-t"
     >
@@ -56,7 +56,7 @@
             >
         </div>
     </div>
-    <div class="pattern relative hidden h-full w-full lg:block" />
+    <div class="pattern relative hidden h-full w-full md:block" />
 </section>
 
 <div
@@ -87,7 +87,7 @@
             position: absolute;
             display: none;
 
-            @media screen and (width >= 64rem) {
+            @media screen and (width >= 48rem) {
                 display: block;
             }
         }
