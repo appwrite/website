@@ -1,15 +1,14 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
     import createGlobe from 'cobe';
 
-    let canvas: HTMLCanvasElement;
     let phi = 0;
+    let width = 0;
 
-    onMount(() => {
-        let width = 0;
-        const onResize = () => canvas && (width = canvas.offsetWidth);
+    const globe = (canvas: HTMLCanvasElement) => {
+        const onResize = () => (width = canvas.offsetWidth);
         window.addEventListener('resize', onResize);
         onResize();
+
         const globe = createGlobe(canvas, {
             devicePixelRatio: 2,
             width: width * 2,
@@ -21,7 +20,7 @@
             mapSamples: 16000,
             mapBrightness: 6,
             baseColor: [255 / 30, 255 / 30, 255 / 30],
-            markerColor: [1, 1, 1],
+            markerColor: [1, 0.5, 1],
             glowColor: [1.2, 1.2, 1.2],
             markers: [
                 { location: [50.1109, 8.6821], size: 0.03 },
@@ -41,18 +40,22 @@
                 phi += 0.004;
             }
         });
+
         setTimeout(() => (canvas.style.opacity = '1'));
-        return () => {
-            globe.destroy();
-            window.removeEventListener('resize', onResize);
+
+        return {
+            destroy() {
+                window.removeEventListener('resize', onResize);
+                globe.destroy();
+            }
         };
-    });
+    };
 </script>
 
 <div class="bg-white">
     <div
         class="container relative mx-auto flex items-center justify-center perspective-distant transform-3d"
     >
-        <canvas bind:this={canvas} class="h-[650px] w-screen" />
+        <canvas use:globe class="h-[650px] w-screen" />
     </div>
 </div>

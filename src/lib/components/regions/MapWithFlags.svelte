@@ -1,12 +1,12 @@
 <script lang="ts">
     import DottedMap, { type DottedMapLib } from 'dotted-map';
     import MobileMap from './MobileMap.svelte';
-    import Germany from '../(assets)/germany.png';
-    import Australia from '../(assets)/australia.png';
-    import France from '../(assets)/france.png';
-    import India from '../(assets)/india.png';
-    import Singapore from '../(assets)/singapore.png';
-    import USA from '../(assets)/usa.png';
+    import Germany from './(assets)/germany.png';
+    import Australia from './(assets)/australia.png';
+    import France from './(assets)/france.png';
+    import India from './(assets)/india.png';
+    import Singapore from './(assets)/singapore.png';
+    import USA from './(assets)/usa.png';
     import { fly } from 'svelte/transition';
 
     let tooltip: {
