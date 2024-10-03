@@ -41,14 +41,14 @@
     import { Search, IsLoggedIn } from '$lib/components';
     import { isMac } from '$lib/utils/platform';
     import { getContext, setContext } from 'svelte';
-    import { GITHUB_STARS } from '$lib/constants';
+    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     export let variant: DocsLayoutVariant = 'default';
     export let isReferences = false;
 
     const variantClasses: Record<DocsLayoutVariant, string> = {
-        default: 'web-grid-side-nav [max-inline-size: 90rem] mx-auto',
+        default: 'web-grid-side-nav max-w-[90rem] mx-auto',
         expanded: 'web-grid-huge-navs',
         'two-side-navs': 'web-grid-two-side-navs'
     };
@@ -167,7 +167,7 @@
             <div class="web-main-header-end">
                 <div class="flex gap-2">
                     <a
-                        href="https://github.com/appwrite/appwrite/stargazers"
+                        href="{GITHUB_REPO_LINK}"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="web-button is-text"
