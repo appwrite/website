@@ -1,6 +1,5 @@
 <script lang="ts">
     import DottedMap, { type DottedMapLib } from 'dotted-map';
-    import { flip } from 'svelte/animate';
     import MobileMap from './MobileMap.svelte';
     import Germany from '../(assets)/germany.png';
     import Australia from '../(assets)/australia.png';
@@ -8,7 +7,6 @@
     import India from '../(assets)/india.png';
     import Singapore from '../(assets)/singapore.png';
     import USA from '../(assets)/usa.png';
-    import { quintOut } from 'svelte/easing';
     import { fly } from 'svelte/transition';
 
     let tooltip: {
