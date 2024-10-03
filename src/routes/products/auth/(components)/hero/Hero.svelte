@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { classNames } from '$lib/utils/classnames';
     import Email from './Email.svelte';
     import Identity from './Identity.svelte';
     import MultiFactor from './MultiFactor.svelte';
@@ -20,21 +21,21 @@
 </script>
 
 <div class="container py-10">
-    <div class="relative mx-auto max-w-[75vw] py-10">
+    <div
+        class={classNames(
+            'relative mx-auto max-h-[50vh] max-w-[75vw] overflow-hidden py-10',
+            'before:to-greyscale-900 before:absolute before:right-0 before:bottom-0 before:left-0 before:z-0 before:h-[350px] before:bg-gradient-to-b before:from-transparent',
+            'after:to-greyscale-900 after:absolute after:right-0 after:bottom-0 after:left-0 after:z-0 after:h-[350px] after:bg-gradient-to-b after:from-transparent'
+        )}
+    >
         <Phone />
         <Identity />
         <MultiFactor />
         <VerificationCode />
         <Email />
-
-        <div
-            class="to-greyscale-900 via-greyscale-900 absolute right-0 bottom-0 left-0 z-0 h-[400px] bg-gradient-to-b from-transparent via-75%"
-        />
     </div>
 
-    <div
-        class="flex flex-col gap-y-4 text-center after:inset-0 after:bottom-0 after:bg-gradient-to-b after:from-transparent after:to-black"
-    >
+    <div class="mt-16 flex flex-col gap-y-4 text-center">
         <div class="mx-auto max-w-xl">
             <h2 class="text-display text-primary font-aeonik-pro">Customer identity</h2>
             <p class="text-description">
