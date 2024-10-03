@@ -34,11 +34,11 @@
         <h2 class="text-primary font-aeonik-pro text-4xl">Get started today</h2>
 
         <div
-            class="divide-smooth mt-12 grid place-items-center gap-8 rounded-2xl bg-white py-10 px-5 shadow-[-6px_8px_24px_rgba(0,_0,_0,_0.06),_0px_0px_0px_rgba(0,_0,_0,_0.06)] max-sm:divide-y md:grid-cols-3 md:divide-x md:px-0"
+            class="divide-smooth mt-12 grid gap-8 divide-y rounded-2xl bg-white py-10 px-5 shadow-[-6px_8px_24px_rgba(0,_0,_0,_0.06),_0px_0px_0px_rgba(0,_0,_0,_0.06)] lg:grid-cols-3 lg:divide-x lg:divide-y-0"
         >
             {#each items as item, i}
                 <div
-                    class="group relative flex h-full flex-col gap-6 last-of-type:pb-0 max-sm:pb-8 md:px-8"
+                    class="group relative flex h-full flex-col gap-6 px-4 pb-8 last-of-type:pb-0 lg:pb-0"
                 >
                     <Badge>Step {i + 1}</Badge>
                     <div class={classNames('flex flex-1 flex-col gap-2 font-medium')}>
