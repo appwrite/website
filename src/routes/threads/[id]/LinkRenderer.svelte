@@ -8,4 +8,4 @@
     const rel = isExternal ? 'noopener nofollow' : undefined;
 </script>
 
-<a class="web-link is-inline" {href} {title} {target} {rel}>{text}</a>
+<a class="web-link underline" {href} {title} {target} {rel}>{text}</a>

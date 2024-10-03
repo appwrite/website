@@ -65,7 +65,7 @@
     <title>{seoTitle}</title>
     <meta property="og:title" content={seoTitle} />
     <meta name="twitter:title" content={seoTitle} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />

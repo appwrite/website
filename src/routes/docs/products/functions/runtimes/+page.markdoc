@@ -41,6 +41,11 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 `deno-1.40`
 * x86
 ---
+* {% icon icon="go" size="l" /%}
+* [Go](https://hub.docker.com/r/openruntimes/go/tags)
+* `go-1.23`
+* x86 / arm64
+---
 * {% icon icon="python" size="l" /%}
 * [Python](https://hub.docker.com/r/openruntimes/python/tags)
 * `python-3.8` 
@@ -140,6 +145,11 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 * {% icon icon="bun-sh" size="l" /%}
 * [Bun](https://hub.docker.com/r/openruntimes/bun/tags)
 * `bun-1.0`
+* x86 / arm64
+---
+* {% icon icon="go" size="l" /%}
+* [Go](https://hub.docker.com/r/openruntimes/go/tags)
+* `go-1.23`
 * x86 / arm64
 ---
 * {% icon icon="python" size="l" /%}
