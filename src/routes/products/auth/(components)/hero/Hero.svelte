@@ -21,11 +21,15 @@
 
 <div class="container py-10">
     <div class="relative mx-auto max-w-[75vw] py-10">
-        <MultiFactor />
         <Phone />
+        <Identity />
+        <MultiFactor />
         <VerificationCode />
         <Email />
-        <Identity />
+
+        <div
+            class="to-greyscale-900 via-greyscale-900 absolute right-0 bottom-0 left-0 z-0 h-[400px] bg-gradient-to-b from-transparent via-75%"
+        />
     </div>
 
     <div

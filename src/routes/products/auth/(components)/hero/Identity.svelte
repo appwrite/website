@@ -3,7 +3,7 @@
     const rows = 30;
 </script>
 
-<div class="absolute right-0 bottom-0">
+<div class="absolute right-0 bottom-0 z-10">
     <div
         class="flex size-20 items-center justify-center overflow-hidden rounded-2xl border border-white/5 bg-white/5 backdrop-blur-2xl"
     >
