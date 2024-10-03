@@ -19,5 +19,5 @@
             as students. The credit is valid until you graduate from GitHub Education.
         </p>
     </div>
-    <img src={Kickstart} alt="Kickstart" />
+    <img src={Kickstart} alt="Kickstart" class="mx-auto" />
 </div>

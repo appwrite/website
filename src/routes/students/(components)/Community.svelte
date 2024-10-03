@@ -20,5 +20,5 @@
             Join our Discord</a
         >
     </div>
-    <img src={Chat} alt="Chat" />
+    <img src={Chat} alt="Chat" class="mx-auto" />
 </div>
