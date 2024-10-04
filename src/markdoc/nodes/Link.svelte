@@ -20,7 +20,7 @@
 </script>
 
 <a
-    class="web-link underline [&_>_.web-inline-code]:underline [&_>_.web-inline-code]:underline-offset-2 {classes}"
+    class="web-link [&_>_.web-inline-code]:hover:!text-primary underline [&_>_.web-inline-code]:underline [&_>_.web-inline-code]:underline-offset-2 [&_>_.web-inline-code]:transition-colors {classes}"
     {href}
     {title}
     {target}
