@@ -1,0 +1,12 @@
+@use '../../abstract/functions/pxToRem' as *;
+@mixin cross-badge {
+  content: "";
+  display:block;
+  inline-size:pxToRem(20);
+  min-inline-size:pxToRem(20);
+  block-size:pxToRem(24);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxMCIgY3k9IjEwIiByPSI4IiBmaWxsPSJ3aGl0ZSIgZmlsbC1vcGFjaXR5PSIwLjA4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utb3BhY2l0eT0iMC4zMiIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGQ9Ik03LjMwMDA1IDcuMzAwMDVMMTIuNyAxMi43IiBzdHJva2U9IiNFNEU0RTciIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNNy4zMDAwNSAxMi43MDAxTDEyLjcgNy4zMDAwNyIgc3Ryb2tlPSIjRTRFNEU3IiBzdHJva2Utd2lkdGg9IjEuMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+);
+  background-position-y: center;
+}

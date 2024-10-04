@@ -8,10 +8,20 @@
     import Faq from './faq.svelte';
     import BG from './bg.png?enhanced';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import Toggle from '$lib/components/ui/Toggle.svelte';
 
     const title = 'Pricing' + TITLE_SUFFIX;
     const description = 'Explore our straightforward pricing plans that scale with your project.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+
+    const pageStateOptions: Array<{label: string, key: string, isActive?: true}> = [{label: 'Cloud', key: 'cloud'},{label: 'Self hosted', key: 'self-hosted', isActive: true}];
+    let activePageState: string = 'self-hosted';
+
+    function changePageState(newPageState: string) {
+        console.log('triggered');
+        activePageState = newPageState;
+        console.log('activePageState', activePageState);
+    }
 </script>
 
 <svelte:head>
@@ -56,10 +66,13 @@
                         >
                             Simple, transparent pricing with no surprises
                         </h1>
+                        <div class="flex justify-center">
+                        <Toggle options={pageStateOptions} onChange={changePageState} />
+                        </div>
                     </div>
                 </section>
             </div>
-            <div class="web-big-padding-section-level-2">
+            <div class="web-big-padding-section-level-2" class:hidden={activePageState !== 'cloud'}>
                 <section class="container">
                     <div class="web-pricing-cards">
                         <ul class="web-pricing-cards-list">
@@ -257,54 +270,108 @@
                             </li>
                         </ul>
                     </div>
-
-<!--                    <ul class="web-grid-1-1-opt-2 mt-20 gap-8">-->
-<!--                        <li>-->
-<!--                            <article-->
-<!--                                class="web-card is-transparent has-border-gradient min-h-full"-->
-<!--                                style="background:rgba(35, 35, 37, 0.90);"-->
-<!--                            >-->
-<!--                                <header class="flex gap-3">-->
-<!--                                    <h3 id="enterprises" class="text-body text-primary font-medium">-->
-<!--                                        Enterprises-->
-<!--                                    </h3>-->
-<!--                                    <div class="web-inline-tag is-pink">Coming Soon</div>-->
-<!--                                </header>-->
-<!--                                <p class="mt-2">-->
-<!--                                    Large scale projects seeking greater performance, collaboration-->
-<!--                                    and security.-->
-<!--                                </p>-->
-<!--                                <a href="/contact-us" class="web-button is-secondary mt-8">-->
-<!--                                    <span>Contact us</span>-->
-<!--                                </a>-->
-<!--                            </article>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <article-->
-<!--                                class="web-card is-transparent has-border-gradient min-h-full"-->
-<!--                                style="background:rgba(35, 35, 37, 0.90);"-->
-<!--                            >-->
-<!--                                <header class="flex gap-3">-->
-<!--                                    <h3-->
-<!--                                        id="open-source-teams"-->
-<!--                                        class="text-body text-primary font-medium"-->
-<!--                                    >-->
-<!--                                        Open-source teams-->
-<!--                                    </h3>-->
-<!--                                </header>-->
-<!--                                <p class="mt-2">-->
-<!--                                    We support OSS maintainers with a free Pro Plan. Read our-->
-<!--                                    announcement blog to find out more.-->
-<!--                                </p>-->
-<!--                                <a-->
-<!--                                    href="/docs/advanced/platform/oss"-->
-<!--                                    class="web-button is-secondary mt-8"-->
-<!--                                >-->
-<!--                                    <span>Learn more</span>-->
-<!--                                </a>-->
-<!--                            </article>-->
-<!--                        </li>-->
-<!--                    </ul>-->
+                </section>
+            </div>
+            <div class="web-big-padding-section-level-2" class:hidden={activePageState !== 'self-hosted'}>
+                <section class="container">
+                    <div class="web-pricing-cards">
+                        <ul class="web-pricing-cards-list-self-hosted">
+                            <li>
+                                <article
+                                    class="web-card is-transparent has-border-gradient h-full"
+                                    style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
+                                >
+                                    <div class="web-pricing-cards-item">
+                                        <header class="web-pricing-cards-header">
+                                            <h2 id="starter" class="text-label font-aeonik-pro">Community version</h2>
+                                            <div
+                                                class="text-title font-aeonik-pro text-primary mt-2"
+                                            >
+                                                $0
+                                            </div>
+                                            <div class="mt-1">Free forever</div>
+                                            <p class="text-body mt-4 font-medium h-[5rem]">
+                                                For developers who choose to manage their own infrastructure and hosting, with more setup and maintenance required.
+                                            </p>
+                                            <a
+                                                href="{PUBLIC_APPWRITE_DASHBOARD}/docs"
+                                                class="web-button is-secondary mt-8"
+                                            >
+                                                <span class="text-sub-body font-medium"
+                                                >Docs</span
+                                                >
+                                            </a>
+                                        </header>
+                                        <div class="web-pricing-cards-content">
+                                            <span>Includes:</span>
+                                            <ul class="web-checked-list-circle">
+                                                <li>
+                                                    <span>All core features of Appwrite</span>
+                                                </li>
+                                                <li><span>Community support through our Discord server</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="web-pricing-cards-content">
+                                            <span>Does not include:</span>
+                                            <ul class="web-checked-list-cross">
+                                                <li>
+                                                    <span>Automatic updates to latest Appwrite version</span>
+                                                </li>
+                                                <li><span>Edge nodes multi region support</span></li>
+                                                <li><span>Roles with granular permissions</span></li>
+                                                <li><span>Support by the core team</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </article>
+                            </li>
+                            <li>
+                                <article
+                                    class="web-card is-transparent is-transparent-pink has-border-gradient h-full bg-[linear-gradient(180deg,_#FD366E1E_38%,_#FD366E00_99%)]"
+                                >
+                                    <div class="web-pricing-cards-item">
+                                        <header class="web-pricing-cards-header">
+                                            <header class="flex gap-3">
+                                                <h2 id="pro" class="text-label font-aeonik-pro">Enterprise</h2>
+                                            </header>
+                                            <div
+                                                class="text-title font-aeonik-pro text-primary mt-2"
+                                            >
+                                                Custom
+                                            </div>
+                                            <div class="mt-1">per organization/month</div>
+                                            <p class="text-body mt-4 font-medium h-[5rem] text-[#FFFFFF]">
+                                                For organizations that need to self-host with full control, but also want premium support for scaling, monitoring, and advanced features.
+                                            </p>
+                                            <a
+                                                href="https://cloud.appwrite.io/contact-us/enterprise"
+                                                class="web-button mt-8"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <span class="text-sub-body font-medium"
+                                                >Contact</span
+                                                >
+                                            </a>
+                                        </header>
+                                        <div class="web-pricing-cards-content text-[#FFFFFF]">
+                                            <p>Everything in the Community version, plus:</p>
+                                            <ul class="web-checked-list-circle">
+                                                <li><span>Host your database or entire instance on AWS or any provider of your choice</span></li>
+                                                <li><span>Expert guidance for scaling your infrastructure</span></li>
+                                                <li><span>Assistance with upgrading to the latest Appwrite version</span></li>
+                                                <li><span>Monitoring and alerts</span></li>
+                                                <li><span>O24/7 premium support</span></li>
+                                                <li><span>SSO login</span></li>
+                                                <li><span>Add-ons</span></li>
+                                                <li><span>Roles with granular permissions</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </article>
+                            </li>
+                        </ul>
+                    </div>
                 </section>
             </div>
         </div>
@@ -346,6 +413,12 @@
     .web-pricing-cards-list {
         gap: 1rem;
         grid-template-columns: repeat(4, 1fr);
+    }
+
+    .web-pricing-cards-list-self-hosted {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(2, 1fr);
     }
 
     .web-pricing-cards-list .web-main-body-500 {
