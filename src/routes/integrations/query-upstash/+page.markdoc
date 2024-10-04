@@ -7,7 +7,7 @@ featured: false
 isPartner: true
 isNew: true
 cover: /images/integrations/query-upstash/cover.png
-category: Databases
+category: databases
 product: 
     avatar: '/images/integrations/avatars/upstash.png'
     vendor: Upstash

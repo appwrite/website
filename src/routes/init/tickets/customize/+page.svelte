@@ -2,11 +2,13 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
-    import TicketPreview from '$routes/init/(components)/TicketPreview.svelte';
     import { dequal } from 'dequal/lite';
-    import Ticket from '../../(components)/Ticket.svelte';
-    import TicketDetails from '$routes/init/(components)/TicketDetails.svelte';
-    import TicketActions from '$routes/init/(components)/TicketActions.svelte';
+    import {
+        TicketPreview,
+        Ticket,
+        TicketActions,
+        TicketDetails
+    } from '$routes/init/(components)/ticket/index.js';
 
     export let data;
 
@@ -69,15 +71,13 @@
     <div class="hero">
         <div class="desktop-left">
             <div class="header">
-                <h1 class="web-display">
-                    Ready, set, <span class="web-u-color-text-primary" style:font-weight="500">
-                        init
-                    </span>
+                <h1 class="text-display font-aeonik-pro">
+                    Ready, set, <span class="text-primary" style:font-weight="500"> init </span>
                 </h1>
             </div>
 
             <div class="info">
-                <p class="web-label u-margin-block-start-16">
+                <p class="text-label mt-4">
                     Join us during the week of August 19–23 to celebrate everything new with
                     Appwrite.
                 </p>
@@ -101,7 +101,7 @@
         </div>
     </div>
 
-    <div class="web-container">
+    <div class="container">
         <FooterNav />
         <MainFooter />
     </div>
@@ -124,7 +124,7 @@
             width: 100%;
         }
     }
-    .web-container {
+    .container {
         padding-block-start: 0;
 
         :global(nav) {
@@ -132,12 +132,12 @@
         }
     }
 
-    .web-display {
+    .text-display font-aeonik-pro {
         margin-bottom: -48px;
     }
 
     @media screen and (min-width: 768px) {
-        .web-display {
+        .text-display font-aeonik-pro {
             margin-bottom: 0;
         }
     }

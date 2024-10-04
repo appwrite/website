@@ -40,8 +40,8 @@
     });
 </script>
 
-<main class="u-contents" id="main">
-    <article class="web-article u-contents">
+<main class="contents" id="main">
+    <article class="web-article contents">
         <header class="web-article-header">
             <div class="web-article-header-start u-flex-vertical web-u-cross-start">
                 <ul class="web-metadata web-caption-400">
@@ -103,10 +103,10 @@
 
             <Feedback {date} />
         </div>
-        <aside class="web-references-menu web-u-padding-inline-start-24">
+        <aside class="web-references-menu ps-6">
             <div class="web-references-menu-content">
-                <div class="u-flex u-main-space-between u-cross-center u-gap-16">
-                    <h5 class="web-references-menu-title web-eyebrow">Tutorial Steps</h5>
+                <div class="flex items-center justify-between gap-4">
+                    <h5 class="web-references-menu-title text-micro uppercase">Tutorial Steps</h5>
                 </div>
                 <ol class="web-references-menu-list">
                     {#each tutorials as tutorial, index}
@@ -137,16 +137,14 @@
                                                 <span class="web-caption-400">{parent.title}</span>
                                             </a>
                                             {#if parent.children}
-                                                <ol
-                                                    class="web-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
-                                                >
+                                                <ol class="web-references-menu-list mt-4 ml-8">
                                                     {#each parent.children as child}
                                                         <li class="web-references-menu-item">
                                                             <a
                                                                 href={child.href}
                                                                 class="web-references-menu-link"
                                                             >
-                                                                <span class="web-caption-400"
+                                                                <span class="text-caption"
                                                                     >{child.title}</span
                                                                 >
                                                             </a>
@@ -155,16 +153,16 @@
                                                 </ol>
                                             {/if}
                                         </li>
-                                {/each}
+                                    {/each}
                                 </ol>
                             {/if}
                         </li>
                     {/each}
                 </ol>
-                <div class="u-sep-block-start u-padding-block-start-20">
-                    <button class="web-link u-inline-flex u-cross-center u-gap-8" use:scrollToTop>
+                <div class="border-greyscale-900/[0.04] border-t pt-5">
+                    <button class="web-link inline-flex items-center gap-2" use:scrollToTop>
                         <span class="web-icon-arrow-up" aria-hidden="true" />
-                        <span class="web-caption-400">Back to top</span>
+                        <span class="text-caption">Back to top</span>
                     </button>
                 </div>
             </div>
@@ -172,17 +170,16 @@
     </article>
 </main>
 
-
 <style>
     .web-article-header {
-        margin-block-end: 2rem !important;
-        padding-inline-start: unset !important;
+        margin-block-end: 2rem;
+        padding-inline-start: unset;
     }
 
     .previous-step-anchor {
-        border: unset !important;
-        outline: unset !important;
-        background: unset !important;
-        padding-inline-start: unset !important;
+        border: unset;
+        outline: unset;
+        background: unset;
+        padding-inline-start: unset;
     }
 </style>

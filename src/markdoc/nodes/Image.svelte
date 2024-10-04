@@ -22,7 +22,7 @@
 
 {#if inTable || isAudio}
     {#if isAudio}
-        <audio {src} controls class="u-width-full-line">
+        <audio {src} controls class="w-full">
             Your browser does not support the audio element.
         </audio>
     {:else}
@@ -30,7 +30,7 @@
     {/if}
 {:else}
     <div class="web-media main">
-        <img {src} {alt} {title} loading="lazy" class="web-u-media-ratio-16-9 u-width-full-line" />
+        <img {src} {alt} {title} loading="lazy" class="web-u-media-ratio-16-9 w-full" />
         <div class="abs">
             <Tooltip closeOnPointerDown>
                 <button class="web-button is-secondary" use:melt={$trigger}>
