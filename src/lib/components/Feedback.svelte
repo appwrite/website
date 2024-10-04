@@ -1,5 +1,6 @@
 <script lang="ts">
     import { page } from '$app/stores';
+    import { getAppwriteUser } from '$lib/utils/console';
 
     export let date: string | undefined = undefined;
     let showFeedback = false;
@@ -13,6 +14,11 @@
     async function handleSubmit() {
         submitting = true;
         error = undefined;
+        const user = await getAppwriteUser();
+
+        const cloudUserId = user?.$id;
+        const cloudUserEmail = user?.email;
+
         const response = await fetch('https://growth.appwrite.io/v1/feedback/docs', {
             method: 'POST',
             headers: {
@@ -22,7 +28,11 @@
                 email,
                 type: feedbackType,
                 route: $page.route.id,
-                comment
+                comment,
+                metaFields: {
+                    cloudUserId,
+                    cloudUserEmail
+                }
             })
         });
         submitting = false;
