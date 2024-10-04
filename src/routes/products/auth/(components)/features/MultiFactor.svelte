@@ -3,7 +3,7 @@
 </script>
 
 <div
-    class="absolute -bottom-8 z-10 flex scale-65 flex-col items-center justify-center gap-4 rounded-lg border border-white/[0.02] bg-gradient-to-br to-white/[0.005] py-6 px-4 text-center backdrop-blur-3xl max-sm:-left-14 md:bottom-0 md:left-16 md:max-w-xs md:scale-100 md:rounded-2xl md:from-white/[0.02] md:p-8"
+    class="absolute -bottom-6 z-10 flex scale-80 flex-col items-center justify-center gap-4 rounded-lg border border-white/[0.02] bg-gradient-to-br from-white/[0.02] to-white/[0.005] py-6 px-4 text-center backdrop-blur-2xl max-sm:-left-14 md:bottom-0 md:left-16 md:max-w-xs md:scale-100 md:rounded-2xl md:p-8"
 >
     <div class="space-y-1">
         <h3 class="text-description text-primary">Verify your identity</h3>
