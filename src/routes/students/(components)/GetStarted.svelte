@@ -48,6 +48,7 @@
                     <a
                         class="web-button is-secondary text-accent mt-auto mb-0 !w-full md:!w-fit"
                         href={item.cta.url}
+                        target="_blank"
                     >
                         {#if item.cta.icon}
                             <span class="web-icon-{item.cta.icon}" />
