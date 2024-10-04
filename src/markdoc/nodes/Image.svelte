@@ -99,10 +99,7 @@
     }
 
     .content {
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        inset: 0;
         margin: auto;
         position: fixed;
         transform-origin: center;
