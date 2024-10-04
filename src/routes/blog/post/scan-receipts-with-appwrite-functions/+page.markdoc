@@ -16,7 +16,7 @@ All it took to lose interest was the giant form I had to fill out to add a recei
 With over [30+ apps installed on a typical user's phone](https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/average-number-of-apps-on-smartphones/)
 on average, fighting for engagement and retention is tougher than ever.
 Users are sensitive to friction, with a reported 50% of users [opting for new online merchants just for lowered friction](https://www.pwc.co.uk/industries/documents/frictionless-retail-the-future-of-shopping.pdf)
-and Shopify reporting [low-friction payment methods and flows can lead to >50% increase in conversion](https://web-assets.bcg.com/e4/0c/a1acfc2a4e52a029cb37c6fe83ba/bcg-leading-online-shoppers-to-the-finish-line-june-2023.pdf).
+and Shoppify reporting [low-friction payment methods and flows can lead to >50% increase in conversion](https://web-assets.bcg.com/e4/0c/a1acfc2a4e52a029cb37c6fe83ba/bcg-leading-online-shoppers-to-the-finish-line-june-2023.pdf).
 
 No one has time to fill out giant forms.
 To help you and your users avoid filling out giant forms, we're going to build a simple receipt processing endpoint with Appwrite
@@ -122,11 +122,11 @@ import os
 def main(context):
     # Why not try the Appwrite SDK?
     #
+    # Set project and set API key
     # client = (
     #     Client()
-    #     .set_endpoint("https://cloud.appwrite.io/v1")
-    #     .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
-    #     .set_key(os.environ["APPWRITE_API_KEY"])
+    #        .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
+    #        .set_key(context.req.headers["x-appwrite-key"])
     # )
 
     # You can log messages to the console
@@ -138,8 +138,8 @@ def main(context):
     # The `ctx.req` object contains the request data
     if context.req.method == "GET":
         # Send a response with the res object helpers
-        # `ctx.res.send()` dispatches a string back to the client
-        return context.res.send("Hello, World!")
+        # `ctx.res.text()` dispatches a string back to the client
+        return context.res.text("Hello, World!")
 
     # `ctx.res.json()` is a handy helper for sending JSON
     return context.res.json(
@@ -167,14 +167,13 @@ def main(context):
     HF_API_KEY = os.environ['HF_API_KEY']
     HF_ENDPOINT = os.environ['HF_ENDPOINT']
     BUCKET_ID = os.environ['BUCKET_ID']
-    headers = {"Authorization": HF_API_KEY}
+    headers = {'Authorization': HF_API_KEY}
 
-    client = (
-        Client()
-        .set_endpoint("https://cloud.appwrite.io/v1")
-        .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
-        .set_key(os.environ["APPWRITE_API_KEY"])
-    )
+    # Set project and set API key
+    # client = new Client()
+    #   .set_project(os.environ['APPWRITE_FUNCTION_PROJECT_ID'])
+    #   .set_key(context.req.headers['x-appwrite-key']);
+  
     storage = Storage(client)
 
     # ... rest of the code
@@ -283,4 +282,3 @@ Visit our documentation to learn more about Appwrite, join us on Discord to be p
 - [Blog](/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
 - [GitHub](https://github.com/appwrite/appwrite)
-

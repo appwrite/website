@@ -7,7 +7,7 @@ featured: false
 isPartner: true
 isNew: true
 cover: /images/integrations/search-algolia/cover.png
-category: Search
+category: search
 product: 
     avatar: '/images/integrations/avatars/algolia.png'
     vendor: Algolia

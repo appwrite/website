@@ -3,46 +3,58 @@
     import { Main } from '$lib/layouts';
     import { addDays, toReleaseDate } from '$lib/utils/date';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
-    import { fade } from 'svelte/transition';
     import DayCard, { type DayType } from './(components)/DayCard.svelte';
-    import Lockup from './(components)/Hero.svelte';
-    import Video from './(components)/Video.svelte';
+    import Hero from './(components)/Hero.svelte';
     import CountdownCard from './(components)/CountdownCard.svelte';
-    import Day1 from '$routes/init-0/(days)/Day1.svelte';
+    import { Animations } from './(animations)';
+    import Day0 from './(days)/Day0.svelte';
+    import Day1 from './(days)/Day1.svelte';
+    import Day2 from './(days)/Day2.svelte';
+    import Day3 from './(days)/Day3.svelte';
+    import Day4 from './(days)/Day4.svelte';
+    import Day from './(days)/Day.svelte';
+    import EventCarousel from './(components)/EventCarousel.svelte';
+    import Giveaway from './(components)/Giveaway.svelte';
+    import CallToAction from './(components)/CallToAction.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
     const ogImage = buildOpenGraphImage('init', description);
 
-    let base = new Date('2024-08-19T15:00:00.000Z');
-    const kickoff = new Date('2024-08-23T15:00:00.000Z');
+    let base = new Date('2024-08-19T13:00:00.000Z');
 
     $: days = [
         {
-            title: 'Messaging',
-            release: base
+            title: 'Local development',
+            subtitle: 'Day 0',
+            release: base,
+            animation: Animations.LocalDev
         },
         {
-            title: 'SSR',
-            release: addDays(base, 1)
+            title: 'New Appwrite CLI',
+            subtitle: 'Day 1',
+            release: addDays(base, 1),
+            animation: Animations.CLI
         },
         {
-            title: 'Enum and 2FA',
-            release: addDays(base, 2)
+            title: 'Function ecosystem',
+            subtitle: 'Day 2',
+            release: addDays(base, 2),
+            animation: Animations.Functions
         },
         {
-            title: 'Operators',
-            release: addDays(base, 3)
+            title: 'GO support',
+            subtitle: 'Day 3',
+            release: addDays(base, 3),
+            animation: Animations.Go
         },
         {
-            title: 'New runtimes',
-            release: addDays(base, 4)
+            title: 'Mock numbers',
+            subtitle: 'Day 4',
+            release: addDays(base, 4),
+            animation: Animations.Numbers
         }
     ] as DayType[];
-
-    function ff() {
-        base = addDays(base, -1);
-    }
 </script>
 
 <svelte:head>
@@ -63,51 +75,62 @@
 </svelte:head>
 
 <Main>
-    <div class="hero">
-        <Lockup />
-
-        <p class="web-description">The start of something new.</p>
-        <div class="buttons">
-            <a href="/init/tickets" class="web-button">Claim your ticket</a>
+    <div style:background="#171719">
+        <div class="hero">
+            <Hero />
         </div>
+
+        <div class="container divide-border-primary divide-y">
+            <div class="day-cards">
+                {#each days as day, i (day.release.toISOString())}
+                    <a href="#day-{i}" class="contents">
+                        <DayCard {day} --p-aspect-ratio="5/2">
+                            <svelte:component this={day.animation} />
+                        </DayCard>
+                    </a>
+                {/each}
+            </div>
+
+            <div class="days">
+                {#each days as day, i}
+                    {@const date = `DAY ${i} - ${toReleaseDate(day.release)}`}
+                    <Day day={date} release={day.release}>
+                        <div id="day-{i}" style:scroll-margin="100px" />
+                        {#if i === 0}
+                            <Day0 release={day.release} />
+                        {:else if i === 1}
+                            <Day1 release={day.release} />
+                        {:else if i === 2}
+                            <Day2 release={day.release} />
+                        {:else if i === 3}
+                            <Day3 release={day.release} />
+                        {:else if i === 4}
+                            <Day4 release={day.release} />
+                        {:else}
+                            <h2 class="text-micro uppercase text-primary">
+                                <div class="web-dot" />
+                                {date}
+                                <span class="web-u-color-text-accent">_</span>
+                            </h2>
+                            <CountdownCard date={day.release} />
+                        {/if}
+                    </Day>
+                {/each}
+            </div>
+        </div>
+
+        <EventCarousel />
+
+        <Giveaway />
     </div>
-
-    <div class="web-container">
-        <div class="day-cards">
-            {#each days as day, i (day.release.toISOString())}
-                <DayCard {day} number={i}>
-                    <div class="web-card is-normal has-border-gradient">
-                        <h3 class="web-title web-u-color-text-primary">{day.title}</h3>
-                    </div>
-                </DayCard>
-            {/each}
-        </div>
-        <hr />
-        <div class="days">
-            {#each days as day, i}
-                {@const date = `DAY ${i} - ${toReleaseDate(day.release)}`}
-
-                <h2 class="web-eyebrow web-u-color-text-primary">
-                    <div class="web-dot" />
-                    {date}
-                    <span class="web-u-color-text-accent">_</span>
-                </h2>
-                <CountdownCard date={day.release} />
-            {/each}
-        </div>
-    </div>
-
-    <div class="web-container">
+    <CallToAction />
+    <div class="container">
         <FooterNav />
         <MainFooter />
     </div>
 </Main>
 
 <style lang="scss">
-    hr {
-        border-block-start: 1px solid hsl(var(--web-color-offset));
-    }
-
     .hero {
         height: 75vh;
 
@@ -119,27 +142,6 @@
 
         position: relative;
         overflow-x: clip;
-
-        p {
-            max-width: 23.125rem;
-            text-align: center;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 0.5rem;
-
-            padding-block-start: 1rem;
-
-            @media screen and (max-width: 1023px) {
-                flex-direction: column;
-                align-items: center;
-
-                .web-button {
-                    width: 300px;
-                }
-            }
-        }
     }
 
     .day-cards {
@@ -160,6 +162,22 @@
         position: relative;
         margin-block-start: 5rem;
 
+        :global(h2) {
+            position: relative;
+            margin-block-end: 1rem;
+
+            &:not(:first-child) {
+                margin-block-start: 5rem;
+            }
+
+            :global(.web-dot) {
+                position: absolute;
+                left: -40px;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
         &::before {
             /* Gradient line */
             content: '';
@@ -176,22 +194,6 @@
                 hsl(var(--web-color-subtle)) 90%,
                 transparent 100%
             );
-        }
-
-        :global(h2) {
-            position: relative;
-            margin-block-end: 1rem;
-
-            &:not(:first-child) {
-                margin-block-start: 5rem;
-            }
-
-            :global(.web-dot) {
-                position: absolute;
-                left: -40px;
-                top: 50%;
-                transform: translate(-50%, -50%);
-            }
         }
     }
 </style>

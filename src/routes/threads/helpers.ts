@@ -20,6 +20,14 @@ type FilterThreadsArgs = {
     allTags?: boolean;
 };
 
+export function sanitizeContent(rawContent: string, maxLength: number = 200): string {
+    const cleaned = rawContent.replace(/```(?:\w+)?\n([\s\S]*?)```|```([\s\S]*?)```/g, (_, withLang, withoutLang) => {
+        return (withLang || withoutLang).trim();
+    });
+
+    return cleaned.length > maxLength ? cleaned.slice(0, maxLength) + '...' : cleaned;
+}
+
 export function filterThreads({ q, threads: threadDocs, tags, allTags }: FilterThreadsArgs) {
     const threads = tags
         ? threadDocs.filter((thread) => {
@@ -111,7 +119,7 @@ export async function getThreadMessages(threadId: string) {
     );
 }
 
-export async function* iterateAllThreads(total: number|undefined = undefined) {
+export async function* iterateAllThreads(total: number | undefined = undefined) {
     let offset = 0;
     const limit = 100;
     while (true) {
