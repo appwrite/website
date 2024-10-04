@@ -8,7 +8,7 @@
 </script>
 
 <section
-    class="relative bg-[url(/images/bgs/checker-bg.png)] bg-contain bg-no-repeat py-4 md:py-20"
+    class="relative bg-[url(/images/bgs/checker-bg.png)] [background-size:350%] bg-center bg-top bg-no-repeat py-10 md:bg-contain md:py-20"
 >
     <div class="container">
         <div class="mx-auto flex max-w-[325px] flex-col gap-4 text-center">

@@ -23,7 +23,7 @@
 <div class="md:container relative py-32">
     <div
         class={classNames(
-            'relative mx-auto max-h-[50vh] md:max-w-[75vw]',
+            'relative mx-auto max-h-[50vh] lg:max-w-[85vw] xl:max-w-[75vw]',
             'before:to-greyscale-900 before:absolute before:right-0 before:bottom-0 before:left-0 before:z-0 before:h-[350px] before:bg-gradient-to-b before:from-transparent',
             'after:to-greyscale-900 after:absolute after:right-0 after:bottom-0 after:left-0 after:z-0 after:h-[350px] after:bg-gradient-to-b after:from-transparent'
         )}
