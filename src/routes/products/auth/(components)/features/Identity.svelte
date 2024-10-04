@@ -1,9 +1,11 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import { onMount } from 'svelte';
+    import fingerprint from '../../(assets)/identity-bg.svg';
 
     const columns = 40;
     const rows = 40;
+
+    let animate = false;
 
     const getRandomIndexes = (arrayLength: number, count = 40) => {
         const indexes: Array<number> = [];
@@ -26,6 +28,7 @@
     const states = ['off', 'medium', 'high'] as const;
 
     const action = (node: HTMLDivElement) => {
+        if (!animate) return;
         const timeoutIds: Array<ReturnType<typeof setTimeout>> = [];
 
         const interval = setInterval(() => {
@@ -80,9 +83,11 @@
     };
 </script>
 
-<div class="absolute right-1/4 bottom-4 flex w-[120px] flex-col gap-4">
+<div
+    class="absolute right-0 flex w-[120px] scale-75 flex-col gap-4 max-md:top-10 md:right-1/4 md:bottom-8 md:scale-100"
+>
     <div
-        class="relative z-0 z-10 flex size-20 items-center justify-center overflow-hidden rounded-2xl border border-white/5 bg-white/5 backdrop-blur-2xl"
+        class="relative z-20 flex size-20 items-center justify-center overflow-hidden rounded-2xl border border-white/5 bg-white/16 backdrop-blur-2xl"
     >
         <svg
             width="48"
@@ -124,22 +129,26 @@
             />
         </svg>
 
-        <div
-            class="relative flex h-full w-full flex-wrap place-items-center items-center justify-center gap-[1px] overflow-hidden rounded-2xl shadow-[inset_0px_0px_7px_7px_rgba(0,_0,_0,_0.2)]"
-            use:action
-        >
-            {#each Array.from({ length: columns * rows }) as _, i}
-                <div
-                    data-state="off"
-                    data-index={i}
-                    class={classNames(
-                        'relative size-[1.5px] rounded-[0.5px] transition-all',
-                        'data-[state=high]:bg-white/30 data-[state=medium]:bg-white/20 data-[state=off]:bg-white/10'
-                    )}
-                    style:transition-duration={`${transitionDuration}ms`}
-                />
-            {/each}
-        </div>
+        {#if animate}
+            <div
+                class="relative flex h-full w-full flex-wrap place-items-center items-center justify-center gap-[1px] overflow-hidden rounded-2xl shadow-[inset_0px_0px_7px_7px_rgba(0,_0,_0,_0.2)]"
+                use:action
+            >
+                {#each Array.from({ length: columns * rows }) as _, i}
+                    <div
+                        data-state="off"
+                        data-index={i}
+                        class={classNames(
+                            'relative size-[1.5px] rounded-[0.5px] transition-all',
+                            'data-[state=high]:bg-white/30 data-[state=medium]:bg-white/20 data-[state=off]:bg-white/10'
+                        )}
+                        style:transition-duration={`${transitionDuration}ms`}
+                    />
+                {/each}
+            </div>
+        {:else}
+            <img src={fingerprint} alt="" class="absolute inset-0 object-cover" />
+        {/if}
     </div>
 
     <div

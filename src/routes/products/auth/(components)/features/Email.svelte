@@ -17,20 +17,20 @@
 </script>
 
 <div
-    class="absolute top-16 right-0 flex max-w-sm flex-col gap-4 rounded-2xl border border-white/[0.02] bg-gradient-to-br from-white/[0.016] to-white/[0.005]"
+    class="absolute flex max-w-sm scale-95 flex-col gap-4 rounded-lg border border-white/[0.02] bg-gradient-to-br from-white/[0.016] to-white/[0.005] backdrop-blur-2xl max-md:bottom-20 max-sm:-right-48 md:top-16 md:right-0 md:scale-100 md:rounded-2xl"
 >
     <div class="flex flex-col gap-1 divide-y divide-white/5">
         {#each emails as email}
             <div class="flex items-center gap-3 p-4">
                 {#if email.open}
                     <div
-                        class="border-accent flex size-6 shrink-0 items-center justify-center rounded-[6px] border"
+                        class="border-greyscale-600 flex size-6 shrink-0 items-center justify-center rounded-[6px] border"
                     >
                         <img src={Open} class="size-4" alt="Open envelope" />
                     </div>
                 {:else}
                     <div
-                        class="border-greyscale-600 flex size-6 shrink-0 items-center justify-center rounded-[6px] border"
+                        class="border-accent flex size-6 shrink-0 items-center justify-center rounded-[6px] border"
                     >
                         <img src={Closed} class="size-4" alt="Closed envelope" />
                     </div>
