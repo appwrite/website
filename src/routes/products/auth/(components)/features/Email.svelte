@@ -17,7 +17,7 @@
 </script>
 
 <div
-    class="absolute z-10 flex max-w-sm scale-95 flex-col gap-4 rounded-lg border border-white/[0.02] bg-gradient-to-br from-white/[0.02] to-white/[0.005] backdrop-blur-2xl max-md:bottom-20 max-sm:-right-48 md:top-16 md:right-0 md:scale-100 md:rounded-2xl"
+    class="absolute z-10 flex max-w-sm scale-95 flex-col gap-4 rounded-lg border border-white/[0.02] bg-gradient-to-br from-white/[0.02] to-white/[0.005] backdrop-blur-2xl max-md:-right-32 max-md:bottom-20 max-sm:-right-48 md:top-16 md:right-0 md:scale-100 md:rounded-2xl"
 >
     <div class="flex flex-col gap-1 divide-y divide-white/5">
         {#each emails as email}
