@@ -16,10 +16,10 @@
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     const pageStateOptions: Array<{ label: string; key: string; isActive?: true }> = [
-        { label: 'Cloud', key: 'cloud' },
-        { label: 'Self hosted', key: 'self-hosted', isActive: true }
+        { label: 'Cloud', key: 'cloud', isActive: true  },
+        { label: 'Self hosted', key: 'self-hosted'}
     ];
-    let activePageState: string = 'self-hosted';
+    let activePageState: string = 'cloud';
 
     function changePageState(newPageState: string) {
         console.log('triggered');
