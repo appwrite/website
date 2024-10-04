@@ -5,7 +5,7 @@
 
     const codeSnippets = [
         {
-            language: 'client-web',
+            language: 'server-nodejs',
             platform: 'Next.js',
             content: `import { Account, Messaging, ID } from "appwrite"
 
@@ -21,12 +21,31 @@ await messaging.createSubscriber(
     ID.unique(),         // Subscription ID
     targetId,            // Target ID
 )`
+        },
+        {
+            language: 'server-nodejs',
+            platform: 'SvelteKit',
+            content: `import { Client, Account } from 'node-appwrite'
+
+async function getLoggedInUser() {
+  const session = cookies().get("custom-session-cookie");  if (!session) return
+
+  const client = new Client()
+    .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT)    
+    .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID)
+
+      client.setSession(session.value)
+  const account = new Account(client);
+
+    return await account.get()
+}
+)`
         }
     ];
 </script>
 
 <section class="light bg-greyscale-50 py-4 md:py-20">
-    <div class="container grid gap-8 overflow-x-hidden md:grid-cols-2">
+    <div class="container grid gap-8 md:grid-cols-2">
         <div class="mb-20 flex max-w-md flex-col gap-y-6">
             <span class="web-badges text-micro font-aeonik-fono mr-auto ml-0 uppercase !text-white"
                 >SSR_</span
@@ -41,6 +60,6 @@ await messaging.createSubscriber(
             <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button is-secondary mt-2">Learn more</a>
         </div>
 
-        <MultiCodeContextless data={codeSnippets} selected={Platform.ClientWeb} height={450} />
+        <MultiCodeContextless data={codeSnippets} selected={Platform.ServerNodeJs} height={375} />
     </div>
 </section>

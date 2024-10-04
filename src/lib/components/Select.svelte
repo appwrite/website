@@ -115,7 +115,7 @@
                             {#if option.icon}
                                 <span class={option.icon} aria-hidden="true" />
                             {/if}
-                            <span style:text-transform="capitalize">{option.label}</span>
+                            <span>{option.label}</span>
                         </button>
                     {/each}
                 </div>
