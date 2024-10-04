@@ -143,7 +143,7 @@
     /* Font sizes */
     --font-size-micro: 0.75rem;
     --font-size-micro--line-height: 1rem;
-    --font-size-micro--letter-spacing: var(--letter-spacing-loose);
+    --font-size-micro--letter-spacing: var(--letter-spacing-tight);
     --font-size-caption: 0.875rem;
     --font-size-caption--line-height: 1.375rem;
     --font-size-caption--letter-spacing: var(--letter-spacing-tight);
