@@ -1,7 +1,7 @@
 <script lang="ts">
     import Tooltip from '$lib/components/Tooltip.svelte';
     import { createDialog, melt } from '@melt-ui/svelte';
-    import { getContext, hasContext, onDestroy, onMount } from 'svelte';
+    import { getContext, hasContext } from 'svelte';
     import { fade, scale } from 'svelte/transition';
     import { quadInOut } from 'svelte/easing';
 
@@ -23,11 +23,9 @@
     const handleScroll = () => {
         if ($open) open.set(false);
     };
-
-    onMount(() => window.addEventListener('scroll', handleScroll));
-
-    onDestroy(() => window.removeEventListener('scroll', handleScroll));
 </script>
+
+<svelte:window on:scroll={handleScroll} />
 
 {#if inTable || isAudio}
     {#if isAudio}
