@@ -1,6 +1,5 @@
 ---
 layout: policy
-description: Understand how we collect, use, and protect your personal information.
 title: Privacy Policy
 ---
 This privacy policy (“Privacy Policy”) governs how we, Appwrite Code Ltd. (together, “Appwrite” “we”, “our” or “us”) use, collect and store Personal Data we collect or receive from or about you (“you”) such as in the following use cases:
@@ -330,7 +329,7 @@ How we protect and retain your personal data
 We have implemented appropriate technical, organizational and security measures designed to protect your Personal Data. However, please note that we cannot guarantee that the information will not be compromised as a result of unauthorized penetration to our servers. As the security of information depends in part on the security of the computer, device or network you use to communicate with us and the security you use to protect your user IDs and passwords, please make sure to take appropriate measures to protect this information.
 
 {% count_title title="Retention of your personal data" / %}
-Your Personal Data will be stored until we delete the record and we proactively delete it or you send a valid deletion request, please note that in some circumstances we may store your Personal Data for longer periods of time, for example (i) where we are required to do so in accordance with legal, regulatory, tax or accounting requirements, or (ii) for us to have an accurate record of your dealings with us in the event of any complaints or challenges, or (iii) if we reasonably believe there is a prospect of litigation relating to your Personal Data or dealings. Regarding retention of cookies, you can [read more in our cookie policy](https://appwrite.io/policy/cookies).
+Your Personal Data will be stored until we delete the record and we proactively delete it or you send a valid deletion request, please note that in some circumstances we may store your Personal Data for longer periods of time, for example (i) where we are required to do so in accordance with legal, regulatory, tax or accounting requirements, or (ii) for us to have an accurate record of your dealings with us in the event of any complaints or challenges, or (iii) if we reasonably believe there is a prospect of litigation relating to your Personal Data or dealings. Regaioention of cookies, you can read more in our cookie policy [https://appwrite.io/policy/cookies](https://appwrite.io/policy/cookies).
 {% /count_section %}
 
 {% count_section %}

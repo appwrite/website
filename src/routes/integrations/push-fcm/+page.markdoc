@@ -7,7 +7,7 @@ featured: false
 isPartner: true
 isNew: true
 cover: /images/integrations/push-fcm/cover.png
-category: Messaging
+category: messaging
 product: 
     avatar: '/images/integrations/avatars/fcm.png'
     vendor: Firebase
