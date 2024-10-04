@@ -2,10 +2,10 @@
     import { classNames } from '$lib/utils/classnames';
     import { onMount } from 'svelte';
 
-    const columns = 30;
-    const rows = 20;
+    const columns = 40;
+    const rows = 40;
 
-    const getRandomIndexes = (arrayLength: number, count = 20) => {
+    const getRandomIndexes = (arrayLength: number, count = 40) => {
         const indexes: Array<number> = [];
         while (indexes.length < count) {
             const randomIndex = Math.floor(Math.random() * arrayLength);
@@ -20,18 +20,17 @@
         return Math.floor(Math.random() * (second - first + 1) + first);
     };
 
-    let ref: HTMLDivElement;
     const transitionDuration = 500;
     const indices = getRandomIndexes(columns * rows);
 
     const states = ['off', 'medium', 'high'] as const;
 
-    onMount(() => {
+    const action = (node: HTMLDivElement) => {
         const timeoutIds: Array<ReturnType<typeof setTimeout>> = [];
 
         const interval = setInterval(() => {
             indices.forEach((index) => {
-                const light = ref.querySelector(`[data-index="${index}"]`) as HTMLElement;
+                const light = node.querySelector(`[data-index="${index}"]`) as HTMLElement;
 
                 if (!light) {
                     return;
@@ -43,7 +42,6 @@
 
                 const pulse =
                     Math.random() > 0.2 &&
-                    // Make sure we only pulsate going from "off" → "medium" → "high"
                     ((currentState === 'off' && nextState === 'high') ||
                         (currentState === 'off' && nextState === 'medium') ||
                         (currentState === 'medium' && nextState === 'high'));
@@ -53,7 +51,7 @@
 
                     timeoutIds.push(
                         setTimeout(() => {
-                            light.style.transform = 'scale(2)';
+                            light.style.transform = 'scale(1.1)';
                         }, delay)
                     );
 
@@ -73,11 +71,11 @@
             });
         }, 1000);
 
-        return () => {
-            clearInterval(interval);
-            timeoutIds.forEach(clearTimeout);
-        };
-    });
+        // return () => {
+        //     clearInterval(interval);
+        //     timeoutIds.forEach(clearTimeout);
+        // };
+    };
 </script>
 
 <div class="absolute right-1/4 bottom-4 flex w-[120px] flex-col gap-4">
@@ -125,15 +123,16 @@
         </svg>
 
         <div
-            class="relative flex h-full w-full flex-wrap place-items-center items-center justify-center gap-0.5 overflow-hidden rounded-2xl shadow-[inset_0px_0px_7px_7px_rgba(0,_0,_0,_0.2)]"
-            bind:this={ref}
+            class="relative flex h-full w-full flex-wrap place-items-center items-center justify-center gap-[1px] overflow-hidden rounded-2xl shadow-[inset_0px_0px_7px_7px_rgba(0,_0,_0,_0.2)]"
+            use:action
         >
             {#each Array.from({ length: columns * rows }) as _, i}
                 <div
                     data-state="off"
                     data-index={i}
                     class={classNames(
-                        'data-[state=high]:bg-accent/30 data-[state=medium]:bg-accent/20 size-[1.5px] data-[state=off]:bg-white/10'
+                        'relative size-[1.5px] rounded-[0.5px] transition-all',
+                        'data-[state=high]:bg-white/30 data-[state=medium]:bg-white/20 data-[state=off]:bg-white/10'
                     )}
                     style:transition-duration={`${transitionDuration}ms`}
                 />
