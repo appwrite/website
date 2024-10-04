@@ -150,9 +150,9 @@ Before diving into platform-specific code, let's break down the OAuth2 flow in A
 
 1. **Initialization**: Your app uses Appwrite's SDK to initiate an OAuth2 session by redirecting the user to Apple's login page.
 2. **Authentication**: The user authenticates with their Apple ID credentials on Apple's login page.
-3. **Token Exchange**: Once authenticated, Apple redirects the user back to your app with an authorization code.
-4. **Session Creation**: Appwrite exchanges the authorization code for an access token from Apple, creates a session for the user, and returns the user to your app with the session.
-5. **Session Management**: After login, your app can use Appwrite's [Account API](https://appwrite.io/docs/references/cloud/client-web/account) to manage the user's session, check login status, and handle logouts.
+3. **Token exchange**: Once authenticated, Apple redirects the user back to your app with an authorization code.
+4. **Session creation**: Appwrite exchanges the authorization code for an access token from Apple, creates a session for the user, and returns the user to your app with the session.
+5. **Session management**: After login, your app can use Appwrite's [Account API](https://appwrite.io/docs/references/cloud/client-web/account) to manage the user's session, check login status, and handle logouts.
 
 Now, let's move on to platform-specific implementations.
 
