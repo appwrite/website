@@ -71,10 +71,12 @@
             });
         }, 1000);
 
-        // return () => {
-        //     clearInterval(interval);
-        //     timeoutIds.forEach(clearTimeout);
-        // };
+        return {
+            destroy() {
+                clearInterval(interval);
+                timeoutIds.forEach((id) => clearTimeout(id));
+            }
+        };
     };
 </script>
 
