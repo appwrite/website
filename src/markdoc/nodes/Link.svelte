@@ -19,7 +19,13 @@
     })();
 </script>
 
-<a class="web-link underline {classes}" {href} {title} {target} {rel}><slot /></a>
+<a
+    class="web-link underline [&_>_.web-inline-code]:underline [&_>_.web-inline-code]:underline-offset-2 {classes}"
+    {href}
+    {title}
+    {target}
+    {rel}><slot /></a
+>
 
 <style lang="scss">
     .in-changelog:last-child {
