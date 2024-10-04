@@ -53,6 +53,7 @@
     --color-white: hsl(0 0% 100%);
     --color-black: hsl(0 0% 0%);
     --color-transparent: rgba(0, 0, 0, 0);
+    --color-smooth: hsl(var(--color-greyscale-hue) 6%, 10%, 0.04);
     --color-greyscale-25: hsl(var(--color-greyscale-hue) 11% 98%);
     --color-greyscale-50: hsl(var(--color-greyscale-hue) 11% 94%);
     --color-greyscale-100: hsl(var(--color-greyscale-hue) 6% 90%);
@@ -68,9 +69,17 @@
     --color-greyscale-850: hsl(var(--color-greyscale-hue) 3% 14%);
     --color-greyscale-900: hsl(var(--color-greyscale-hue) 5.7% 10.4%);
 
+    /* utility colors */
+    --color-badge-bg-light: #f2c8d6;
+    --color-badge-border-light: #f69db7;
+    --color-badge-bg-dark: #2c2c2f;
+    --color-badge-border-dark: #39393c;
+
     /* Animations */
     --animate-scale-in: scale-in 200ms ease-out forwards;
     --animate-caret-blink: caret-blink 1s ease-in-out infinite;
+    --animate-text: fade-in 0.75s ease-in-out both, blur 0.75s ease-in-out both,
+        up 0.75s ease-in-out both;
 
     /* Pink polyfills */
     --transition: 0.2s;
@@ -94,6 +103,33 @@
         20%,
         50% {
             opacity: 0;
+        }
+    }
+
+    @keyframes blur {
+        0% {
+            filter: blur(5px);
+        }
+        100% {
+            filter: blur(0);
+        }
+    }
+
+    @keyframes up {
+        0% {
+            transform: translateY(8px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
         }
     }
 
@@ -165,12 +201,16 @@
     --color-primary: var(--color-greyscale-900);
     --color-secondary: var(--color-greyscale-700);
     --color-accent: var(--color-pink-600);
+    --color-badge-bg: var(--color-badge-bg-light);
+    --color-badge-border: var(--color-badge-border-light);
 }
 
 /* dark theme */
 .dark {
     --color-primary: var(--color-greyscale-100);
     --color-secondary: var(--color-greyscale-300);
+    --color-badge-bg: var(--color-badge-bg-dark);
+    --color-badge-border: var(--color-badge-border-dark);
 }
 
 /* Container */
