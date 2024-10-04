@@ -20,7 +20,7 @@
     ];
 </script>
 
-<div class="md:container py-20">
+<div class="md:container relative py-32">
     <div
         class={classNames(
             'relative mx-auto max-h-[50vh] md:max-w-[75vw]',

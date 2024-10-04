@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
-
     import SessionManagement from './animations/SessionManagement.svelte';
     import MultiFactor from './animations/MultiFactor.svelte';
     import SecurePasswords from './animations/SecurePasswords.svelte';
@@ -9,7 +7,9 @@
     import PasswordDictionary from './animations/PasswordDictionary.svelte';
 </script>
 
-<section class="relative py-4 md:py-20" style="background-image: url(../(assets)/bg-pattern.png)">
+<section
+    class="relative bg-[url(/images/bgs/checker-bg.png)] bg-contain bg-no-repeat py-4 md:py-20"
+>
     <div class="container">
         <div class="mx-auto flex max-w-[325px] flex-col gap-4 text-center">
             <h2 class="font-aeonik-pro text-primary text-pretty text-4xl">

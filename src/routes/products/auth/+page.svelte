@@ -37,7 +37,7 @@
 <Main>
     <div class="overflow-hidden">
         <Hero />
-        <div class="space-y-20">
+        <div>
             <Features />
             <Bento />
             <div class="bg-greyscale-50">
