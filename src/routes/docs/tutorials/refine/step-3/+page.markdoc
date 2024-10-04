@@ -47,7 +47,7 @@ Navigate to `src/utility/appwriteClient.ts` and add your API credentials.
 import { Account, Appwrite, Storage } from "@refinedev/appwrite";
 
 const APPWRITE_URL = '<YOUR_API_ENDPOINT>'; // Replace with your Appwrite API Endpoint
-const APPWRITE_PROJECT = "<YOUR_PROJECT_ID>"; // Replace with your project ID
+const APPWRITE_PROJECT = "<PROJECT_ID>"; // Replace with your project ID
 
 const appwriteClient = new Appwrite();
 

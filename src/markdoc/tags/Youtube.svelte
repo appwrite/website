@@ -2,13 +2,9 @@
     import Video from '$routes/init/(components)/Video.svelte';
 
     export let src: string;
-    export let thumbnail: string;    
+    export let thumbnail: string;
 </script>
 
 <div class="web-media">
-    <!-- svelte-ignore a11y-media-has-caption -->
-    <Video
-        {thumbnail}
-        src={src}
-    />
+    <Video {thumbnail} {src} --p-aspect-ratio="16/9" />
 </div>

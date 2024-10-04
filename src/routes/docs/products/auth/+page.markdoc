@@ -40,7 +40,7 @@ Deligate access for a user through passing JWT tokens.
 {% cards_item href="/docs/products/auth/server-side-rendering" title="Server-side rendering (SSR)" %}
 Authenticate users in server-side rendered applications.
 {% /cards_item %}
-{% cards_item href="/docs/products/auth/custom-token" title="Custom Token" %}
+{% cards_item href="/docs/products/auth/custom-token" title="Custom token" %}
 Implement custom authentication methods like biometric and passkey login by generating custom tokens.
 {% /cards_item %}
 {% cards_item href="/docs/products/auth/mfa" title="Multifactor authentication (MFA)" %}

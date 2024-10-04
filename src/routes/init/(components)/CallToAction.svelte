@@ -8,10 +8,10 @@
 </script>
 
 <div class="call-to-action">
-    <div class="web-container">
+    <div class="container">
         <div class="text">
-            <h2 class="web-title web-u-color-text-primary">{title}</h2>
-            <p class="web-main-body-500">
+            <h2 class="text-title font-aeonik-pro text-primary">{title}</h2>
+            <p class="text-body font-medium">
                 {description}
             </p>
             <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button">Get started</a>
@@ -29,7 +29,7 @@
         margin-bottom: -125px;
         border-top: 1px solid hsl(var(--web-color-offset));
 
-        .web-container {
+        .container {
             position: relative;
             height: 43.75rem;
 
