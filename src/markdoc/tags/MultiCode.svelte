@@ -14,6 +14,7 @@
     import type { Language } from '$lib/utils/code';
     import { copy } from '$lib/utils/copy';
     import { Select, Tooltip } from '$lib/components';
+    import { setLastStateDevLanguage, getLastStateDevLanguage } from '$lib/utils/persisted';
 
     setContext<CodeContext>('multi-code', {
         selected: writable(null),
@@ -24,9 +25,24 @@
     const { snippets, selected, content } = getContext<CodeContext>('multi-code');
 
     snippets.subscribe((n) => {
-        if ($selected === null && n.size > 0) {
+        const state = getLastStateDevLanguage();
+
+        if (n.size > 0 && (Array.from(n).includes(state.client) 
+            || Array.from(n).includes(state.others))) {
+            if(state.client && Array.from(n).includes(state.client)){
+                $selected = state.client;
+            }
+            else if(state.others && Array.from(n).includes(state.others)){
+                 $selected = state.others;
+            }
+            else {
+                $selected = Array.from(n)[0];
+            }  
+        }
+        else{
             $selected = Array.from(n)[0];
         }
+        
     });
 
     enum CopyStatus {
@@ -41,6 +57,12 @@
         setTimeout(() => {
             copyText = CopyStatus.Copy;
         }, 1000);
+    }
+
+    function checkLastState({ curr, next }) {
+        if(curr?.value && curr?.value !== next?.value){
+            setLastStateDevLanguage(next?.value);
+        }
     }
 </script>
 
@@ -60,6 +82,7 @@
                             value: language,
                             label: platformMap[language]
                         }))}
+                        onSelectedChange={checkLastState}
                     />
                 </li>
 
