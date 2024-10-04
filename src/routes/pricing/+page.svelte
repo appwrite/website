@@ -418,7 +418,12 @@
     .web-pricing-cards-list-self-hosted {
       display: grid;
       gap: 1rem;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(1, 1fr);
+
+      @media (min-width: 1023px){
+        grid-template-columns: repeat(2, 1fr);
+      }
+
     }
 
     .web-pricing-cards-list .web-main-body-500 {
