@@ -2,6 +2,7 @@
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import MultiCodeContextless from '$routes/products/messaging/(components)/MultiCodeContextless.svelte';
     import { Platform } from '$lib/utils/references';
+    import MultiFrameworkCode from './MultiFrameworkCode.svelte';
 
     const codeSnippets = [
         {
@@ -23,7 +24,7 @@ await messaging.createSubscriber(
 )`
         },
         {
-            language: 'server-nodejs',
+            language: 'client-web',
             platform: 'SvelteKit',
             content: `import { Client, Account } from 'node-appwrite'
 
@@ -60,6 +61,6 @@ async function getLoggedInUser() {
             <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button is-secondary mt-2">Learn more</a>
         </div>
 
-        <MultiCodeContextless data={codeSnippets} selected={Platform.ServerNodeJs} height={375} />
+        <MultiFrameworkCode data={codeSnippets} selected={Platform.ClientWeb} height={375} />
     </div>
 </section>
