@@ -217,7 +217,7 @@
                                 style="--inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position);"
                             >
                                 <Fence
-                                    language="text"
+                                    language="http"
                                     badge="Endpoint"
                                     content="{method.method.toUpperCase()} {method.url}"
                                     toCopy={method.url}

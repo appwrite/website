@@ -1,5 +1,5 @@
 <script lang="ts">
-    import '$scss/hljs.css';
+    import '$scss/shiki.css';
     import { getCodeHtml, type Language } from '$lib/utils/code';
     import { getContext, hasContext } from 'svelte';
     import { platformMap } from '$lib/utils/references';
