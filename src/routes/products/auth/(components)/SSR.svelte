@@ -1,46 +1,114 @@
 <script lang="ts">
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import MultiCodeContextless from '$routes/products/messaging/(components)/MultiCodeContextless.svelte';
-    import { Platform } from '$lib/utils/references';
+    import { Framework, Platform } from '$lib/utils/references';
     import MultiFrameworkCode from './MultiFrameworkCode.svelte';
 
     const codeSnippets = [
         {
-            language: 'server-nodejs',
-            platform: 'Next.js',
-            content: `import { Account, Messaging, ID } from "appwrite"
-
-// Fetch target ID
-const account = new Account(client)
-const user = await account.get()
-const targetId = user.targets[0].$id
-
-// Subscribe to a topic
-const messaging = new Messaging(client)
-await messaging.createSubscriber(
-    ['news', 'sport'],   // Topic ID
-    ID.unique(),         // Subscription ID
-    targetId,            // Target ID
-)`
-        },
-        {
-            language: 'client-web',
-            platform: 'SvelteKit',
+            language: Platform.ClientWeb,
+            platform: Framework.NextJs,
             content: `import { Client, Account } from 'node-appwrite'
+import { cookies } from 'next/headers'
 
 async function getLoggedInUser() {
-  const session = cookies().get("custom-session-cookie");  if (!session) return
+  const session = cookies().get("custom-session-cookie");  
+  if (!session) return
 
-  const client = new Client()
-    .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT)    
+    const client = new Client()
+    .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT)
     .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID)
 
-      client.setSession(session.value)
-  const account = new Account(client);
+    client.setSession(session.value)
+    const account = new Account(client);
 
     return await account.get()
 }
-)`
+  `
+        },
+        {
+            language: Platform.ClientWeb,
+            platform: Framework.SvelteKit,
+            content: `import { Client, Account } from 'node-appwrite'
+
+async function getLoggedInUser() {
+  const session = cookies().get("custom-session-cookie");  
+  if (!session) return
+
+  const client = new Client()
+    .setEndpoint(process.env.PUBLIC_APPWRITE_ENDPOINT)    
+    .setProject(process.env.PUBLIC_APPWRITE_PROJECT_ID)
+
+      client.setSession(session.value)
+      const account = new Account(client);
+
+    return await account.get()
+  }
+`
+        },
+        {
+            language: Platform.ClientWeb,
+            platform: Framework.Astro,
+            content: `import { Client, Account } from 'node-appwrite'
+
+async function getLoggedInUser(context) {
+  const session = cookies().get("custom-session-cookie");  
+  if (!session) return
+
+  const client = new Client()
+    .setEndpoint(import.meta.env.PUBLIC_APPWRITE_ENDPOINT)    
+    .setProject(import.meta.env.PUBLIC_APPWRITE_PROJECT_ID)
+
+      client.setSession(session.value)
+      const account = new Account(client);
+
+    return await account.get()
+  }
+`
+        },
+        {
+            language: Platform.ClientWeb,
+            platform: Framework.Nuxt3,
+            content: `import { Client, Account } from 'node-appwrite'
+import { H3Event, getCookie } from 'h3'
+
+async function getLoggedInUser(event) {
+  const session = getCookie(event, "custom-session-cookie");  
+  if (!session) return
+
+  const client = new Client()
+    .setEndpoint(process.env.PUBLIC_APPWRITE_ENDPOINT)    
+    .setProject(process.env.PUBLIC_APPWRITE_PROJECT_ID)
+
+      client.setSession(session.value)
+      const account = new Account(client);
+
+    return await account.get()
+  }`
+        },
+        {
+            language: Platform.ClientWeb,
+            platform: Framework.Remix,
+            content: `import { Client, Account } from 'node-appwrite'
+import { createCookie } from '@remix-run/node'
+
+export const customSessionCookie = createCookie("custom-session-cookie", {
+  maxAge: 604800,
+})
+
+async function getLoggedInUser(request) {
+  const cookies = request.headers.get("Cookie")  
+  const session = await customSessionCookie.parse(cookies)  
+  if (!session) return
+
+  const client = new Client()
+    .setEndpoint(process.env.PUBLIC_APPWRITE_ENDPOINT)    
+    .setProject(process.env.PUBLIC_APPWRITE_PROJECT_ID)
+
+      client.setSession(session.value)
+      const account = new Account(client);
+
+    return await account.get()
+  }`
         }
     ];
 </script>
@@ -61,6 +129,6 @@ async function getLoggedInUser() {
             <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button is-secondary mt-2">Learn more</a>
         </div>
 
-        <MultiFrameworkCode data={codeSnippets} selected={Platform.ClientWeb} height={375} />
+        <MultiFrameworkCode data={codeSnippets} selected={Framework.NextJs} />
     </div>
 </section>

@@ -14,7 +14,7 @@
 
     $: content = data.find((d) => `${d.platform}` === selected)?.content ?? '';
 
-    $: ({ platform, language } =
+    $: ({ language } =
         data.find((d) => `${d.platform}` === selected) ?? ({} as (typeof data)[number]));
 
     snippets?.subscribe((n) => {
@@ -44,6 +44,7 @@
     });
     $: options = Array.from($snippets).map((key) => {
         const [platform] = key.split('-');
+
         return {
             value: key,
             label: platform
@@ -61,8 +62,8 @@
     <header class="web-code-snippet-header">
         <div class="web-code-snippet-header-start">
             <div class="flex gap-4">
-                {#if platform}
-                    <div class="web-tag"><span class="text">{platform}</span></div>
+                {#if language}
+                    <div class="web-tag"><span class="text">{platformMap[language]}</span></div>
                 {/if}
             </div>
         </div>
