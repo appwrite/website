@@ -1,7 +1,7 @@
 ---
 layout: post
 title: SSR vs CSR with Next.js
-description: Learn the differences between SSR and CSR and how Appwrite Authentication can be leveraged with both in Next.js. 
+description: Learn the differences between SSR and CSR and how Appwrite Authentication can be leveraged with both in Next.js.
 date: 2024-02-27
 cover: /images/blog/ssr-vs-csr/cover.png
 timeToRead: 10
@@ -10,7 +10,7 @@ category: product
 featured: false
 ---
 
-With modern web development frameworks, the age-old debate around server-side rendering (SSR) and client-side rendering (CSR), which rendering method is more effective, has returned to the general tech community. Since Appwrite aims to enable all developers, regardless of their preferences, in this debate, we decided to research and extend our support for both paradigms. This article will explore the differences between SSR and CSR and how Appwrite Authentication can be leveraged with both in Next.js. 
+With modern web development frameworks, the age-old debate around server-side rendering (SSR) and client-side rendering (CSR), which rendering method is more effective, has returned to the general tech community. Since Appwrite aims to enable all developers, regardless of their preferences, in this debate, we decided to research and extend our support for both paradigms. This article will explore the differences between SSR and CSR and how Appwrite Authentication can be leveraged with both in Next.js.
 
 # How server-side and client-side rendering differ
 
@@ -50,7 +50,7 @@ For this purpose, we rely on Appwrite's server SDKs for Next.js apps, we use our
 
 ## Admin and Session clients
 
-The first step of understanding how we initialize the client in SSR apps. In this scenario, we need to create two types of Appwrite clients: 
+The first step of understanding how we initialize the client in SSR apps. In this scenario, we need to create two types of Appwrite clients:
 
 - Admin client: performs admin requests using an API key.
 - Session client: performs authenticated requests on behalf of a user.
@@ -94,7 +94,7 @@ const sessionClient = new Client()
     .setProject('<PROJECT_ID>')
 ```
 
-We use the session secret to authenticate a user from an API route. This can also be done at the page component level. 
+We use the session secret to authenticate a user from an API route. This can also be done at the page component level.
 
 ```jsx
 export async function GET(request){
@@ -105,7 +105,7 @@ export async function GET(request){
     if (session) {
         client.setSession(session.value)
     }
-    
+
     try {
         const user = await account.get()
         return Response.json(user)
@@ -118,8 +118,8 @@ export async function GET(request){
 # Resources
 Visit our documentation to learn more about push notifications, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
-- [Docs](https://appwrite.io/docs/products/auth/server-side-rendering)
+- [Docs](/docs/products/auth/server-side-rendering)
 - [Discord](https://appwrite.io/discord)
-- [Blog](https://appwrite.io/blog)
+- [Blog](/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
 - [GitHub](https://github.com/appwrite/appwrite)

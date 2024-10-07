@@ -41,6 +41,11 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 `deno-1.40`
 * x86
 ---
+* {% icon icon="go" size="l" /%}
+* [Go](https://hub.docker.com/r/openruntimes/go/tags)
+* `go-1.23`
+* x86 / arm64
+---
 * {% icon icon="python" size="l" /%}
 * [Python](https://hub.docker.com/r/openruntimes/python/tags)
 * `python-3.8` 
@@ -49,6 +54,11 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 `python-3.11`
 `python-3.12`
 * x86 / arm64 / armv7 / armv8
+---
+* {% icon icon="python" size="l" /%}
+* [Python ML](https://hub.docker.com/r/openruntimes/python-ml)
+* `python-ml-3.11`
+* x86 / arm64
 ---
 * {% icon icon="dart" size="l" /%}
 * [Dart](https://hub.docker.com/r/openruntimes/dart/tags)
@@ -137,6 +147,11 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 * `bun-1.0`
 * x86 / arm64
 ---
+* {% icon icon="go" size="l" /%}
+* [Go](https://hub.docker.com/r/openruntimes/go/tags)
+* `go-1.23`
+* x86 / arm64
+---
 * {% icon icon="python" size="l" /%}
 * [Python](https://hub.docker.com/r/openruntimes/python/tags)
 * `python-3.8` 
@@ -145,6 +160,11 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 `python-3.11`
 `python-3.12`
 * x86 / arm64 / armv7 / armv8
+---
+* {% icon icon="python" size="l" /%}
+* [Python ML](https://hub.docker.com/r/openruntimes/python-ml)
+* `python-ml-3.11`
+* x86 / arm64
 ---
 * {% icon icon="dart" size="l" /%}
 * [Dart](https://hub.docker.com/r/openruntimes/dart/tags)

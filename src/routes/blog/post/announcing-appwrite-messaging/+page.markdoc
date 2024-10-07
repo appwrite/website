@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Announcing Messaging: Push, Email and SMS directly from your Appwrite backend"
-description:
+title: "Announcing Messaging: Push, Email and SMS"
+description: You can now send emails, SMS and push notifications with Appwrite’s easy-to-use APIs.
 date: 2024-02-26
 cover: /images/blog/messaging-announcement.png
 timeToRead: 6
@@ -57,8 +57,8 @@ Use MSG91 for SMS notifications to mobile devices.
 {% cards_item href="/docs/products/messaging/telesign" title="Telesign" icon="icon-telesign" %}
 Use Telesign for SMS notifications to mobile devices.
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/textmagic" title="TextMagic" icon="web-icon-textmagic" %}
-Use TextMagic for SMS notifications to mobile devices.
+{% cards_item href="/docs/products/messaging/textmagic" title="Textmagic" icon="web-icon-textmagic" %}
+Use Textmagic for SMS notifications to mobile devices.
 {% /cards_item %}
 {% cards_item href="/docs/products/messaging/vonage" title="Vonage" icon="icon-vonage" %}
 Use Vonage for SMS notifications to mobile devices.
@@ -93,13 +93,13 @@ You can send messages immediately or schedule them for future delivery. The Appw
 
 To get started with messaging, you connect a provider, add topics and targets, and send your first message today for your project.
 
-We will be adding more adopters over time and are open to contributions. Visit our [community page](https://appwrite.io/community) to learn more about contributing or add your issues directly to [GitHub](https://github.com/appwrite/appwrite/issues).
+We will be adding more adopters over time and are open to contributions. Visit our [community page](/community) to learn more about contributing or add your issues directly to [GitHub](https://github.com/appwrite/appwrite/issues).
 
 Visit our documentation to learn more about Messaging, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
-- [Docs](http://appwrite.io/docs/products/messaging)
+- [Docs](/docs/products/messaging)
 - [Discord](https://appwrite.io/discord)
-- [Blog](https://appwrite.io/blog)
+- [Blog](/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
 - [GitHub](https://github.com/appwrite/appwrite)
 

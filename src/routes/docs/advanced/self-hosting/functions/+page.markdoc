@@ -122,10 +122,10 @@ To enable a runtime, add it to the `_APP_FUNCTIONS_RUNTIMES` environment variabl
 The example below would enable Dart 2.15, .NET 6.0, and Java 18 runtimes.
 
 ```bash
-_APP_FUNCTIONS_RUNTIMES=dart-2.15, dotnet-6.0, java-18.0
+_APP_FUNCTIONS_RUNTIMES=dart-2.15,dotnet-6.0,java-18.0
 ```
 
-You can find a full list of supported runtimes on the [environment variables page](/docs/advanced/self-hosting/environment-variables).
+You can find a full list of supported runtimes [here](/docs/products/functions/runtimes#available-runtimes).
 
 You can also configure the maximum timeout that can be set on individual Appwrite Functions. The maximum configurable timeout can be increased by changing the `_APP_FUNCTIONS_TIMEOUT` environment variable. This environment variable changes the configurable maximum but does not alter existing configurations of individual functions.
 

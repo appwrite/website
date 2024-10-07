@@ -1,7 +1,7 @@
 ---
 layout: post
 title: See what is new with Appwrite 1.5
-description: Here is a recap off all announcements for Appwrite 1.5. 
+description: Here is a recap off all announcements for Appwrite 1.5.
 date: 2024-03-05
 cover: /images/blog/everything-new-with-appwrite-1.5/1.5-recap.png
 timeToRead: 6
@@ -19,7 +19,7 @@ A new product that allows you to send SMS, email, and push notifications through
 With just a few lines of backend code, you can set up a full-functioning messaging service under one unified platform.
 
 ```ts
-messaging.createSMS(
+messaging.createSms(
     '6541...ea30',
     'Thanks for signing up!',
     ['65415281565570ca1f9c'],
@@ -86,40 +86,40 @@ You can find all the official release announcements and documentation for each d
 
 - [Announcement Video](https://youtu.be/w-izHSKXqtU)
 - [Product tour](https://youtu.be/QdDgPeuBZ1I)
-- [Announcement article](https://appwrite.io/blog/post/announcing-appwrite-messaging)
-- [Docs](https://appwrite.io/docs/products/messaging)
+- [Announcement article](/blog/post/announcing-appwrite-messaging)
+- [Docs](/docs/products/messaging)
 
 ### Day 1: SSR
 
 - [Announcement Video](https://youtu.be/jeL4cSovOBA)
 - [Product tour](https://youtu.be/7LN05c-ov_0)
-- [Announcement article](https://appwrite.io/blog/post/introducing-support-for-server-side-rendering)
-- [Docs](https://appwrite.io/docs/products/auth/server-side-rendering)
+- [Announcement article](/blog/post/introducing-support-for-server-side-rendering)
+- [Docs](/docs/products/auth/server-side-rendering)
 
 ### Day 2: 2FA & Enum SDK support
 
 - [Announcement Video](https://youtu.be/hpdUXOFay4M) - 2FA
 - [Product tour](https://youtu.be/OWRju8ZZuQ8) - 2FA
-- [Announcement article](https://appwrite.io/blog/post/announcing-two-factor-authentication) - 2FA
-- [Announcement article - Enum SDK support](https://appwrite.io/blog/post/introducing-enum-sdk-support)
-- [Docs - 2FA](https://appwrite.io/docs/products/auth/2fa)
-- [Docs - Enum SDK support](https://appwrite.io/docs/sdks#enums)
+- [Announcement article](/blog/post/announcing-two-factor-authentication) - 2FA
+- [Announcement article - Enum SDK support](/blog/post/introducing-enum-sdk-support)
+- [Docs - 2FA](/docs/products/auth/mfa)
+- [Docs - Enum SDK support](/docs/sdks#enums)
 
 ### Day 3:  Database Operators
 
 - [Announcement Video](https://youtu.be/73flN6mZqAs)
 - [Product tour](https://youtu.be/IMgl9f_iht4)
-- [Announcement article](https://appwrite.io/blog/post/introducing-new-database-operators)
-- [Docs](https://appwrite.io/docs/products/databases/queries)
+- [Announcement article](/blog/post/introducing-new-database-operators)
+- [Docs](/docs/products/databases/queries)
 
 ### Day 4:  New runtimes
 
-- [Announcement article](https://appwrite.io/blog/post/introducing-enum-sdk-support)
-- [Docs](https://appwrite.io/docs/products/functions/runtimes)
+- [Announcement article](/blog/post/introducing-enum-sdk-support)
+- [Docs](/docs/products/functions/runtimes)
 
 Join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
 - [Discord](https://appwrite.io/discord)
-- [Blog](https://appwrite.io/blog)
+- [Blog](/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
 - [GitHub](https://github.com/appwrite/appwrite)

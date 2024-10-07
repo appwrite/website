@@ -5,3 +5,15 @@ export const formatDate = (date: string | Date | number): string => {
     const year = dt.getFullYear();
     return `${month} ${day}, ${year}`;
 };
+
+export const addDays = (date: Date, days: number) => {
+    return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
+};
+
+export const toReleaseDate = (date: Date) => {
+    return date.toLocaleDateString('en-US', {
+        weekday: 'long',
+        month: 'short',
+        day: 'numeric'
+    });
+};

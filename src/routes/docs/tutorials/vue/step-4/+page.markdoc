@@ -31,7 +31,7 @@ export const user = reactive({
     await this.login(email, password);
   },
   async login(email, password) {
-    await account.createEmailSession(email, password);
+    await account.createEmailPasswordSession(email, password);
     window.location.href = "/"; // Redirect to home page
   },
   async logout() {

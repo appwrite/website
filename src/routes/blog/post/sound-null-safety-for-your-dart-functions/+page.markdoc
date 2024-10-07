@@ -43,7 +43,7 @@ The JSON would look like this under ideal situations.
         },
         ... more profiles
     ],
-    "count": 15 
+    "count": 15
 }
 ```
 
@@ -131,7 +131,7 @@ In Dart 2, without null safety, this code will happily compile and run. Well, un
 }
 ```
 
-This will give you an unexpected runtime error. If you’re building integrations or new APIs with Appwrite functions, you’d want to gracefully handle the null values instead of seeing this error in your logs. 
+This will give you an unexpected runtime error. If you’re building integrations or new APIs with Appwrite functions, you’d want to gracefully handle the null values instead of seeing this error in your logs.
 
 ```dart
 The getter 'age' was called on null.
@@ -155,7 +155,7 @@ Try adding either an explicit non-'null' default value or the 'required' modifie
 
 While this is annoying, forcing you to explicitly handle nulls at compile times make sure you get no surprises at runtime.
 
-Let’s add some null handling to our function. First, lets look at the Profile class. 
+Let’s add some null handling to our function. First, lets look at the Profile class.
 
 ```dart
 class Profile {
@@ -294,8 +294,8 @@ If you’re still on Dart 2.x, I strongly recommend you migrate to Dart 3 to ben
 
 Visit our documentation to learn more about Dart, join us on Discord to be part of the discussion, view our blog and YouTube channel, or visit our GitHub repository to see our open-source code.
 
-- [Docs](https://appwrite.io/docs/products/functions/runtimes)
+- [Docs](/docs/products/functions/runtimes)
 - [Discord](https://appwrite.io/discord)
-- [Blog](https://appwrite.io/blog)
+- [Blog](/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
 - [GitHub](https://github.com/appwrite/appwrite)

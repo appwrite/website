@@ -52,12 +52,17 @@ export type AppwriteSchemaObject = OpenAPIV3.SchemaObject & {
 };
 
 export interface Property {
-        name: string;
-        items?: {
-            type?: string;
-            oneOf?: OpenAPIV3.ReferenceObject[];
-        } & OpenAPIV3.ReferenceObject;
-} 
+    name: string;
+    items?: {
+        type?: string;
+        oneOf?: OpenAPIV3.ReferenceObject[];
+    } & OpenAPIV3.ReferenceObject;
+}
+
+export enum ModelType {
+    REST = 'REST',
+    GRAPHQL = 'GraphQL'
+}
 
 function getExamples(version: string) {
     switch (version) {
@@ -96,13 +101,22 @@ function getExamples(version: string) {
                 query: '?raw',
                 import: 'default'
             });
+        case '1.6.x':
+            return import.meta.glob('$appwrite/docs/examples/1.6.x/**/*.md', {
+                query: '?raw',
+                import: 'default'
+            });
     }
 }
 
 function* iterateAllMethods(
     api: OpenAPIV3.Document,
     service: string
-): Generator<{ method: OpenAPIV3.HttpMethods; value: OpenAPIV3.OperationObject; url: string }> {
+): Generator<{
+    method: OpenAPIV3.HttpMethods;
+    value: OpenAPIV3.OperationObject;
+    url: string;
+}> {
     for (const url in api.paths) {
         const methods = api.paths[url];
         if (methods?.get?.tags?.includes(service)) {
@@ -118,7 +132,11 @@ function* iterateAllMethods(
             yield { method: OpenAPIV3.HttpMethods.PATCH, value: methods.patch, url };
         }
         if (methods?.delete?.tags?.includes(service)) {
-            yield { method: OpenAPIV3.HttpMethods.DELETE, value: methods.delete, url };
+            yield {
+                method: OpenAPIV3.HttpMethods.DELETE,
+                value: methods.delete,
+                url
+            };
         }
     }
 }
@@ -177,7 +195,8 @@ export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.Schema
     if (schema) {
         return schema;
     }
-    throw new Error(`Schema doesn't exist for id: ${id}`);}
+    throw new Error(`Schema doesn't exist for id: ${id}`);
+}
 
 const specs = import.meta.glob(
     '$appwrite/app/config/specs/open-api3*-(client|server|console).json',
@@ -198,6 +217,7 @@ async function getSpec(version: string, platform: string) {
 export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
     const raw = await getSpec(version, platform);
     const api = JSON.parse(raw);
+
     return api;
 }
 
@@ -215,7 +235,10 @@ export async function getDescription(service: string): Promise<string> {
     if (!(target in descriptions)) {
         throw new Error('Missing service description');
     }
-    return descriptions[target]();
+
+    const description = descriptions[target]();
+
+    return description;
 }
 
 export async function getService(
@@ -303,6 +326,7 @@ export async function getService(
         if (!(path in examples)) {
             continue;
         }
+
         data.methods.push({
             id: operation['x-appwrite'].method,
             demo: await examples[path](),
@@ -344,71 +368,96 @@ export function resolveReference(
     throw new Error("Schema doesn't exist");
 }
 
-export const generateExample = (schema: OpenAPIV3.SchemaObject, api: OpenAPIV3.Document<{}>): Object => {
-
-    const properties = Object.keys(schema.properties ?? {}).map((key) =>{
+export const generateExample = (
+    schema: OpenAPIV3.SchemaObject,
+    api: OpenAPIV3.Document<{}>,
+    modelType: ModelType = ModelType.REST
+): Object => {
+    const properties = Object.keys(schema.properties ?? {}).map((key) => {
         const name = key;
-        const fields = schema.properties?.[key]; 
+        const fields = schema.properties?.[key];
         return {
             name,
             ...fields
-        }
+        };
     });
 
     const example = properties.reduce((carry, currentValue) => {
         const property = currentValue as AppwriteSchemaObject & Property;
+        let propertyName;
+        switch (modelType) {
+            case ModelType.REST:
+                propertyName = property.name;
+                break;
+            case ModelType.GRAPHQL:
+                propertyName = property.name.replace('$', '_');
+                break;
+            default:
+                propertyName = property.name;
+                break;
+        }
+
         if (property.type === 'array') {
             // If it's an array type containing primatives
-            if (property.items?.type){
+            if (property.items?.type) {
                 return {
                     ...carry,
-                    [property.name]: property['x-example']
-                }
+                    [propertyName]: property['x-example']
+                };
             }
 
             if (property.items && 'anyOf' in property.items) {
                 // default to first child type if multiple available
                 const firstSchema = (property.items as unknown as AppwriteSchemaObject)?.anyOf?.[0];
-                const schema = getSchema(getIdFromReference(firstSchema as OpenAPIV3.ReferenceObject), api)
-                
+                const schema = getSchema(
+                    getIdFromReference(firstSchema as OpenAPIV3.ReferenceObject),
+                    api
+                );
+
                 return {
                     ...carry,
-                    [property.name]: [generateExample(schema, api)]
+                    [propertyName]: [generateExample(schema, api, modelType)]
                 };
             }
 
             // if an array of objects without child types
-            const schema = getSchema(getIdFromReference(property.items as OpenAPIV3.ReferenceObject), api);
+            const schema = getSchema(
+                getIdFromReference(property.items as OpenAPIV3.ReferenceObject),
+                api
+            );
             return {
                 ...carry,
-                [property.name]: [generateExample(schema, api)]
-            }
+                [propertyName]: [generateExample(schema, api, modelType)]
+            };
         }
 
         // If it's an object type, but not in an array.
         if (property.type === 'object') {
-            if (property.items?.oneOf){
+            if (property.items?.oneOf) {
                 // default to first child type if multiple available
-                const schema = getSchema(getIdFromReference(property.items.oneOf[0] as OpenAPIV3.ReferenceObject), api);
+                const schema = getSchema(
+                    getIdFromReference(property.items.oneOf[0] as OpenAPIV3.ReferenceObject),
+                    api
+                );
                 return {
                     ...carry,
-                    [property.name]: generateExample(schema, api)
-                }
+                    [propertyName]: generateExample(schema, api, modelType)
+                };
             }
 
-            if (property.items){
+            if (property.items) {
                 const schema = getSchema(getIdFromReference(property.items), api);
                 return {
                     ...carry,
-                    [property.name]: generateExample(schema, api)
-                }
+                    [propertyName]: generateExample(schema, api, modelType)
+                };
             }
         }
 
         return {
             ...carry,
-            [property.name]: property['x-example']
-        }
+            [propertyName]: property['x-example']
+        };
     }, {});
     return example;
-}
+};

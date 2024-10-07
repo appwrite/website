@@ -4,11 +4,6 @@ title: MSG91
 description: Send SMS messages to your Appwrite users using MSG91 and Appwrite Messaging.
 back: /docs/
 ---
-{% info title="Unreleased on Cloud" %}
-This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
-This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
-{% /info %}
-
 MSG91 lets you send customized SMS messages to your users.
 These SMS messages can be sent immediately or scheduled.
 You can send SMS messages for purposes like reminders, promotions, announcements, and even custom authentication flows.
@@ -56,10 +51,10 @@ make sure you've configured [a topic](/docs/products/messaging/topics) and [a ta
 {% tabsitem #console title="Console" %}
 To send a test message, navigate to **Messaging** > **Messages** > {% icon icon="plus" size="m" /%} **Create message** > **SMS**.
 {% only_dark %}
-![Create an sms message](/images/docs/messaging/messages/dark/create-sms-message.png)
+![Create an SMS message](/images/docs/messaging/messages/dark/create-sms-message.png)
 {% /only_dark %}
 {% only_light %}
-![Create an sms message](/images/docs/messaging/messages/create-sms-message.png)
+![Create an SMS message](/images/docs/messaging/messages/create-sms-message.png)
 {% /only_light %}
 
 Add your message and in the targets step, select one of your test targets. Set the schedule to **Now** and click **Send**.
@@ -81,11 +76,11 @@ const messaging = new sdk.Messaging(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setProject('<PROJECT_ID>')                 // Your project ID
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const message = await messaging.createSMS(
+const message = await messaging.createSms(
         '[MESSAGE_ID]',                          // messageId
         '[CONTENT]',                             // content
         [],                                      // topics (optional)
@@ -105,11 +100,11 @@ let messaging = new sdk.Messaging(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setProject('<PROJECT_ID>')                 // Your project ID
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const message = await messaging.createSMS(
+const message = await messaging.createSms(
         '[MESSAGE_ID]',                          // messageId
         '[CONTENT]',                             // content
         [],                                      // topics (optional)
@@ -129,13 +124,13 @@ $client = new Client();
 
 $client
     ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('5df5acd0d48c2')                 // Your project ID
+    ->setProject('<PROJECT_ID>')                 // Your project ID
     ->setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
 $messaging = new Messaging($client);
 
-$result = $messaging->createSMS(
+$result = $messaging->createSms(
     messageId: '[MESSAGE_ID]',
     content: '[CONTENT]',
     topics: [],                                   // optional
@@ -153,7 +148,7 @@ client = Client()
 
 (client
   .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-  .set_project('5df5acd0d48c2')                 # Your project ID
+  .set_project('<PROJECT_ID>')                 # Your project ID
   .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
 )
 
@@ -176,7 +171,7 @@ include Appwrite
 
 client = Client.new
     .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-    .set_project('5df5acd0d48c2')                 # Your project ID
+    .set_project('<PROJECT_ID>')                 # Your project ID
     .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
 
 messaging = Messaging.new(client)
@@ -200,7 +195,7 @@ using Appwrite.Models;
 
 var client = new Client()
     .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("5df5acd0d48c2")                  // Your project ID
+    .SetProject("<PROJECT_ID>")                  // Your project ID
     .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
 var messaging = new Messaging(client);
@@ -225,11 +220,11 @@ void main() {                                    // Init SDK
 
   client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setProject('<PROJECT_ID>')                 // Your project ID
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
   ;
 
-  Future result = messaging.createSMS(
+  Future result = messaging.createSms(
     messageId: '[MESSAGE_ID]',
     content: '[CONTENT]',
     topics: [],                                  // optional
@@ -254,12 +249,12 @@ import io.appwrite.services.Messaging;
 
 Client client = new Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                  // Your project ID
+    .setProject("<PROJECT_ID>")                  // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
-messaging.createSMS(
+messaging.createSms(
     "[MESSAGE_ID]",                               // messageId
     "[CONTENT]",                                  // content
     listOf(),                                     // topics (optional)
@@ -284,12 +279,12 @@ import io.appwrite.services.Messaging;
 
 Client client = new Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                  // Your project ID
+    .setProject("<PROJECT_ID>")                  // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
-messaging.createSMS(
+messaging.createSms(
     "[MESSAGE_ID]",                               // messageId
     "[CONTENT]",                                  // content
     listOf(),                                     // topics (optional)
@@ -312,12 +307,12 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                 // Your project ID
+    .setProject("<PROJECT_ID>")                 // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
 
 let messaging = Messaging(client)
 
-let message = try await messaging.createSMS(
+let message = try await messaging.createSms(
   messageId: "[MESSAGE_ID]",
   content: "[CONTENT]",
   topics: [],                                    // optional
@@ -357,7 +352,7 @@ const messaging = new sdk.Messaging(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setProject('<PROJECT_ID>')                 // Your project ID
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
@@ -380,7 +375,7 @@ let messaging = new sdk.Messaging(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setProject('<PROJECT_ID>')                 // Your project ID
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
@@ -403,7 +398,7 @@ $client = new Client();
 
 $client
     ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('5df5acd0d48c2')                 // Your project ID
+    ->setProject('<PROJECT_ID>')                 // Your project ID
     ->setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
@@ -426,7 +421,7 @@ client = Client()
 
 (client
   .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-  .set_project('5df5acd0d48c2')                 # Your project ID
+  .set_project('<PROJECT_ID>')                 # Your project ID
   .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
 )
 
@@ -448,7 +443,7 @@ include Appwrite
 
 client = Client.new
     .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-    .set_project('5df5acd0d48c2')                 # Your project ID
+    .set_project('<PROJECT_ID>')                 # Your project ID
     .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
 
 messaging = Messaging.new(client)
@@ -471,7 +466,7 @@ using Appwrite.Models;
 
 var client = new Client()
     .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("5df5acd0d48c2")                  // Your project ID
+    .SetProject("<PROJECT_ID>")                  // Your project ID
     .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
 var messaging = new Messaging(client);
@@ -495,7 +490,7 @@ void main() {                                    // Init SDK
 
   client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setProject('<PROJECT_ID>')                 // Your project ID
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
   ;
 
@@ -523,7 +518,7 @@ import io.appwrite.services.Messaging;
 
 Client client = new Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                  // Your project ID
+    .setProject("<PROJECT_ID>")                  // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
 Messaging messaging = new Messaging(client);
@@ -552,7 +547,7 @@ import io.appwrite.services.Messaging;
 
 Client client = new Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                  // Your project ID
+    .setProject("<PROJECT_ID>")                  // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
 Messaging messaging = new Messaging(client);
@@ -579,7 +574,7 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                 // Your project ID
+    .setProject("<PROJECT_ID>")                 // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
 
 let messaging = Messaging(client)

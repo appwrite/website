@@ -1,5 +1,6 @@
 import type { LanguageFn } from 'highlight.js';
 import hljs from 'highlight.js/lib/core';
+import go from 'highlight.js/lib/languages/go';
 import dart from 'highlight.js/lib/languages/dart';
 import javascript from 'highlight.js/lib/languages/javascript';
 import typescript from 'highlight.js/lib/languages/typescript';
@@ -56,6 +57,7 @@ const languages = {
     text: plaintext,
     graphql: graphql,
     http: http,
+    go: go,
     py: python,
     rb: ruby,
     cs: csharp,
@@ -68,9 +70,10 @@ const languages = {
 const platformAliases: Record<string, keyof typeof languages> = {
     [Platform.ClientWeb]: 'js',
     [Platform.ClientFlutter]: 'dart',
+    [Platform.ClientApple]: 'swift',
     [Platform.ClientAndroidJava]: 'java',
     [Platform.ClientAndroidKotlin]: 'kotlin',
-    [Platform.ClientApple]: 'swift',
+    [Platform.ClientReactNative]: 'js',
     [Platform.ClientGraphql]: 'graphql',
     [Platform.ClientRest]: 'http',
     [Platform.ServerDart]: 'dart',
@@ -85,6 +88,7 @@ const platformAliases: Record<string, keyof typeof languages> = {
     [Platform.ServerKotlin]: 'kotlin',
     [Platform.ServerGraphql]: 'graphql',
     [Platform.ServerRest]: 'http',
+    [Platform.ServerGo]: 'go',
     vue: 'html',
     svelte: 'html'
 };

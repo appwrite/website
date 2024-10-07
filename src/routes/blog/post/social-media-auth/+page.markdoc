@@ -46,10 +46,10 @@ Developers have several alternative authentication methods at their disposal, of
 - **Smart cards and USB keys**: Physical devices like smart cards or USB keys can be used for authentication. They provide a high level of security but require users to have the physical device on hand.
 - **Federated identity**: This involves linking the user's identity across multiple systems and services, allowing for the portability of identity and personal information. It's complex to implement but offers a seamless user experience. One major platform that leverages this method is Mastodon.
 
-Of these methods, Appwrite offers email-password authentication, magic links, and OTP-based authentication as a part of its suite of authentication offerings. You can learn more about them in [Appwrite’s documentation](https://appwrite.io/docs/products/auth).
+Of these methods, Appwrite offers email-password authentication, magic links, and OTP-based authentication as a part of its suite of authentication offerings. You can learn more about them in [Appwrite’s documentation](/docs/products/auth).
 
 # Moving forward
 
 Social media login is convenient but has privacy and security issues. It's important for both users and developers to understand these risks. Fortunately, there are other ways to log in, like using email and password, biometric data, magic links, etc. These alternatives can protect user privacy better in certain circumstances and reduce dependence on social media platforms. Ultimately, the choice of authentication method should be guided by a thorough understanding of its benefits and limitations, always with the end user's best interests in mind.
 
-Learn more about Appwrite Authentication from our [docs](https://appwrite.io/docs/products/auth) and join our [Discord community](https://appwrite.io/discord) to interact with fellow developers using the same.
+Learn more about Appwrite Authentication from our [docs](/docs/products/auth) and join our [Discord community](https://appwrite.io/discord) to interact with fellow developers using the same.

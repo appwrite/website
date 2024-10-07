@@ -15,7 +15,7 @@ Forgetting to complete one of these steps will result in errors later when tryin
 
 # 1 - Add a platform
 
-After creating a new project in the Appwrite console, you’ll need to add a platform in order to connect an SDK. You can add a platform from the “overview” tab under the “Add a platform” section. From here, you’ll need to choose between one of the four [client-side SDK’s](https://appwrite.io/docs/sdks#client) or generate an API key with a [server-side SDK](https://appwrite.io/docs/sdks#server).
+After creating a new project in the Appwrite console, you’ll need to add a platform in order to connect an SDK. You can add a platform from the “overview” tab under the “Add a platform” section. From here, you’ll need to choose between one of the four [client-side SDK’s](/docs/sdks#client) or generate an API key with a [server-side SDK](/docs/sdks#server).
 
 If you’re adding an API key to use one of the server SDK’s, you’ll be asked to set scopes for the key. This sets permissions, allowing us to dictate what permissions this API key has over certain parts of our application.
 
@@ -23,7 +23,7 @@ If you’re adding an API key to use one of the server SDK’s, you’ll be aske
 
 # 2 - Add a hostname
 
-When using the Web SDK, you’ll need to set a hostname. This just tells Appwrite what origin you’ll be connecting from. Failing to set the right hostname will result in CORS error later, so be sure you pay attention when setting this. I just put out a full video and [article](https://appwrite.io/blog/post/cors-error) on this topic, so be sure to check that out if you have questions or face any problems.
+When using the Web SDK, you’ll need to set a hostname. This just tells Appwrite what origin you’ll be connecting from. Failing to set the right hostname will result in CORS error later, so be sure you pay attention when setting this. I just put out a full video and [an article about handling CORS errors](/blog/post/cors-error), so be sure to check that out if you have questions or face any problems.
 
 ![Hostname](/images/blog/three-important-steps-you-need-to-complete-with-appwrite/hostname.png)
 
@@ -38,7 +38,7 @@ With these three steps to complete, you should be set to connect to an Appwrite 
 # Resources
 Visit our documentation to get started, join us on Discord to be part of the discussion, or visit our blog and YouTube channel to learn more!
 
-- [Docs](https://appwrite.io/docs)
+- [Docs](/docs)
 - [Discord](https://appwrite.io/discord)
-- [Blog](https://appwrite.io/blog)
+- [Blog](/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)

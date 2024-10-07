@@ -13,7 +13,7 @@ that only the owner of the idea can remove it.
 
 Overwrite the contents of `views/Home.jsx` with the following:
 
-```js
+```client-react-native
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ScrollView } from 'react-native';
 import { useUser } from '../contexts/UserContext';

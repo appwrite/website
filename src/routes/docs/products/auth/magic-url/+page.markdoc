@@ -8,7 +8,7 @@ Magic URL is a password-less way to authenticate users. When a user logs in by p
 
 # Send email {% #init %}
 
-Initialize the log in process with the [Create Magic URL Session](/docs/references/cloud/client-web/account#createMagicURLSession) route. If the email has never been used, a **new account is generated**, then the user will receive an email. If the email is already attached to an account, the **user ID is ignored** and the user will receive a link in their email.
+Initialize the log in process with the [Create Magic URL Token](/docs/references/cloud/client-web/account#createMagicURLToken) route. If the email has never been used, a **new account is generated**, then the user will receive an email. If the email is already attached to an account, the **user ID is ignored** and the user will receive a link in their email.
 
 {% multicode %}
 ```client-web
@@ -20,18 +20,12 @@ const client = new Client()
 
 const account = new Account(client);
 
-const promise = account.createMagicURLSession(ID.unique(), 'email@example.com');
-
-promise.then(function (response) {
-    console.log(response); // Success
-}, function (error) {
-    console.log(error); // Failure
-});
+const token = await account.createMagicURLToken(ID.unique(), 'email@example.com');
 ```
 
 ```graphql
 mutation {
-    accountCreateMagicURLSession(
+    accountCreateMagicURLToken(
         userId: "ID.unique()",
         email: "email@example.com"
     ) {
@@ -65,11 +59,11 @@ const urlParams = new URLSearchParams(window.location.search);
 const secret = urlParams.get('secret');
 const userId = urlParams.get('userId');
 
-const user = await account.updateMagicURLSession(userId, secret);
+const user = await account.createSession(userId, secret);
 ```
 ```graphql
 mutation {
-    accountUpdateMagicURLSession(
+    accountCreateSession(
         userId: "unique()",
         secret: "[SECRET]"
     ) {
