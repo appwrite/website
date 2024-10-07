@@ -1,6 +1,6 @@
 import { APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID } from '$env/static/private';
 import { appwriteInitServer } from '$lib/appwrite/init.server';
-import parse from 'node-html-parser';
+import { parse } from 'node-html-parser';
 import type { TicketData, ContributionsMatrix } from '../../constants';
 
 export async function getContributions(id: string): Promise<ContributionsMatrix | null> {
@@ -21,7 +21,7 @@ export async function getContributions(id: string): Promise<ContributionsMatrix 
         return matrix;
     }
 
-    const res = await fetch(`https://github.com/${gh_user}`);
+    const res = await fetch(`https://github.com/users/${gh_user}/contributions`);
 
     const html = await res.text();
     const root = parse(html);
@@ -48,9 +48,14 @@ export async function getContributions(id: string): Promise<ContributionsMatrix 
     }
 
     // Update the document with the new contributions
-    await appwriteInitServer.databases.updateDocument(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, id, {
-        contributions: matrix.flat()
-    });
+    await appwriteInitServer.databases.updateDocument(
+        APPWRITE_DB_INIT_ID,
+        APPWRITE_COL_INIT_ID,
+        id,
+        {
+            contributions: matrix.flat()
+        }
+    );
 
     return matrix;
 }

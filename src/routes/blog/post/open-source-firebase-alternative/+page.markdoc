@@ -9,13 +9,13 @@ author: aditya-oberai
 category: product
 ---
 
-If you are looking to build a mobile app, website, tool, or any other application that needs a backend, then you also know the daunting tasks that await. This is probably what brought you to this blog in the first place: looking for a solution to take care of your backend. BaaS provides pre-built backend infrastructure and services to simplify app development, handling server-side tasks like data storage, user management, APIs, server maintenance, security, database management, and more. Two of these services are Firebase and Appwrite. 
+If you are looking to build a mobile app, website, tool, or any other application that needs a backend, then you also know the daunting tasks that await. This is probably what brought you to this blog in the first place: looking for a solution to take care of your backend. BaaS provides pre-built backend infrastructure and services to simplify app development, handling server-side tasks like data storage, user management, APIs, server maintenance, security, database management, and more. Two of these services are Firebase and Appwrite.
 
 Appwrite and Firebase are both solid options to choose as the Backend-as-a-Service (BaaS) for your app. However, their feature sets can vary substantially. In this article, we will give you a rundown of Appwrite and Firebase to understand how each provider will fit your specific needs.
 
 # Appwrite - Open-source backend platform
 
-In 2019, [Appwrite](https://appwrite.io/) started as an open-source project to make software development more accessible and enjoyable. It is a Backend as a Service platform with a vibrant developer community. You can self-host Appwrite on your server or utilize [Appwrite Cloud](https://cloud.appwrite.io/). Appwrite provides many features, including user authentication, databases, storage, real-time features, and functions. It is known for its flexibility, security, and extensibility, enabling you to customize backend logic and build applications tailored to your needs. You can view Appwrite’s source code on [GitHub](https://github.com/appwrite/appwrite).
+In 2019, [Appwrite](/) started as an open-source project to make software development more accessible and enjoyable. It is a Backend as a Service platform with a vibrant developer community. You can self-host Appwrite on your server or utilize [Appwrite Cloud](https://cloud.appwrite.io/). Appwrite provides many features, including user authentication, databases, storage, real-time features, and functions. It is known for its flexibility, security, and extensibility, enabling you to customize backend logic and build applications tailored to your needs. You can view Appwrite’s source code on [GitHub](https://github.com/appwrite/appwrite).
 
 # Firebase - Google-owned BaaS
 
@@ -38,7 +38,7 @@ Authentication is the process of verifying a user's identity. This is typically 
 
 *Differences:*
 
-- Appwrite's authentication system allows developers to integrate with any existing external authentication systems through [custom token login](https://appwrite.io/docs/products/auth/custom-token), which allows for various new use cases such as passkey authentication. It also allows for password [history](https://appwrite.io/docs/products/auth/security#password-history) and [dictionary](https://appwrite.io/docs/products/auth/security#password-dictionary), [session limits](https://appwrite.io/docs/products/auth/security#session-limits), and [personal data](https://appwrite.io/docs/products/auth/security#personal-data) checks on your passwords.
+- Appwrite's authentication system allows developers to integrate with any existing external authentication systems through [custom token login](/docs/products/auth/custom-token), which allows for various new use cases such as passkey authentication. It also allows for password [history](/docs/products/auth/security#password-history) and [dictionary](/docs/products/auth/security#password-dictionary), [session limits](/docs/products/auth/security#session-limits), and [personal data](/docs/products/auth/security#personal-data) checks on your passwords.
 - Firebase offers a user-friendly authentication system that seamlessly integrates with other Firebase services, providing developers with a streamlined experience.
 
 ## Database
@@ -54,7 +54,7 @@ Both Appwrite and Firebase provide databases that can be used depending on the n
 
 *Differences:*
 
-- Appwrite's database offers an abstraction layer on top of MariaDB, allowing developers to develop custom schema and use queries without any pre-existing SQL knowledge. Also, you can [configure permissions](https://appwrite.io/docs/advanced/platform/permissions#appwrite-resource) in Appwrite within the Console, making this an easy task.
+- Appwrite's database offers an abstraction layer on top of MariaDB, allowing developers to develop custom schema and use queries without any pre-existing SQL knowledge. Also, you can [configure permissions](/docs/advanced/platform/permissions#appwrite-resource) in Appwrite within the Console, making this an easy task.
 - Firebase provides a NoSQL, document-oriented database called Cloud Firestore for storing and managing data in a non-relational manner. To manage permissions, they offer a different product called Security Rules, which allows more flexibility but increases the learning curve.
 
 ## Storage
@@ -70,7 +70,7 @@ Storage allows you to manage files in your project. It can store images, videos,
 *Differences:*
 
 - Firebase's storage system is a direct extension of Google Cloud Storage and has additional out-of-the-box integrations such as image filtering and video transcoding.
-- Appwrite Storage offers a dedicated API for [image transformations](https://appwrite.io/docs/products/storage/images), including functionalities such as manipulating resolution, image reformatting, caching, and compression.
+- Appwrite Storage offers a dedicated API for [image transformations](/docs/products/storage/images), including functionalities such as manipulating resolution, image reformatting, caching, and compression.
 - Appwrite Storage offers file encryption for increased security as well as gzip and zstd compression for network transfer optimization.
 
 ## Functions
@@ -87,8 +87,8 @@ Functions are "self-contained" modules of code that accomplish a specific task. 
 
 *Differences:*
 
-- Appwrite offers easy and quick deployment of [functions using Git](https://appwrite.io/docs/products/functions/deploy-from-git), has ready-to-use templates, and supports a large number of runtimes.
-- Appwrite supports [function runtimes across over 10 different languages](https://appwrite.io/docs/products/functions/runtimes), including Dart, Bun, Kotlin, and Swift, whereas Firebase only supports JavaScript, TypeScript, and Python.
+- Appwrite offers easy and quick deployment of [functions using Git](/docs/products/functions/deploy-from-git), has ready-to-use templates, and supports a large number of runtimes.
+- Appwrite supports [function runtimes across over 10 different languages](/docs/products/functions/runtimes), including Dart, Bun, Kotlin, and Swift, whereas Firebase only supports JavaScript, TypeScript, and Python.
 - Firebase offers additional event triggers for different Google Cloud services.
 
 ## Realtime
@@ -126,21 +126,21 @@ While both Appwrite and Firebase are great Backend-as-a-Service offerings that s
 
 Here’s a table that compares both Appwrite and Firebase:
 
-| Feature | Appwrite | Firebase |
-| --- | --- | --- |
-| Deployment | Self-hosted or cloud-hosted | Cloud-hosted only |
-| Free plan | Yes, Starter plan | Yes, Spark plan |
-| Paid plan | Yes, Pro plan - $15 per month per member and addons | Yes, Blaze plan - Pay-as-you-go |
-| Open source | Yes | No |
-| Support | Community and email | Community, Support Portal, and help center |
-| Functions marketplace | Has a marketplace featuring a variety of function templates and integrations such as Discord bots, payments with Stripe, ChatGPT API, etc. | Has an extensions hub featuring pre-built functions ready to deploy. |
-| Messaging providers | 10 providers covering SMS, email, and push notifications | No external providers, but offers the infrastructure for FCM and In-App Messaging |
+| Feature                                                                                                                                    | Appwrite                                                                                                                                   | Firebase                                                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Deployment                                                                                                                                 | Self-hosted or cloud-hosted                                                                                                                | Cloud-hosted only                                                                                                                          |
+| Free plan                                                                                                                                  | Yes, Free plan                                                                                                                             | Yes, Spark plan                                                                                                                            |
+| Paid plan                                                                                                                                  | Yes, Pro plan - $15 per month per member and addons                                                                                        | Yes, Blaze plan - Pay-as-you-go                                                                                                            |
+| Open source                                                                                                                                | Yes                                                                                                                                        | No                                                                                                                                         |
+| Support                                                                                                                                    | Community and email                                                                                                                        | Community, Support Portal, and help center                                                                                                 |
+| Functions marketplace                                                                                                                      | Has a marketplace featuring a variety of function templates and integrations such as Discord bots, payments with Stripe, ChatGPT API, etc. | Has an extensions hub featuring pre-built functions ready to deploy.                                                                       |
+| Messaging providers                                                                                                                        | 10 providers covering SMS, email, and push notifications                                                                                   | No external providers, but offers the infrastructure for FCM and In-App Messaging                                                          |
 
 # Resources
 
 If you want to learn more about Appwrite, you can find more resources below.
 
-- [Appwrite documentation](https://appwrite.io/docs) - Visit Appwrite’s docs to learn how to get started and more about Appwrite’s functionality.
+- [Appwrite documentation](/docs) - Visit Appwrite’s docs to learn how to get started and more about Appwrite’s functionality.
 - [Appwrite GitHub repository](https://github.com/appwrite/appwrite/stargazers)Explore the code and architecture and see how you can contribute to Appwrite.
 - [Appwrite Discord](https://appwrite.io/discord) - Join Appwrite’s Discord server, be part of a vibrant community, and get support.
-- [Appwrite YouTub](https://www.youtube.com/@Appwrite)
+- [Appwrite YouTube](https://www.youtube.com/@Appwrite)

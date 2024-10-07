@@ -2,7 +2,17 @@ import { writable } from 'svelte/store';
 import type { Language } from './code';
 import { browser } from '$app/environment';
 
-const allVersions = ['1.5.x', '1.4.x', '1.3.x', '1.2.x', '1.1.x', '1.0.x', '0.15.x', 'cloud'] as const;
+const allVersions = [
+    '1.6.x',
+    '1.5.x',
+    '1.4.x',
+    '1.3.x',
+    '1.2.x',
+    '1.1.x',
+    '1.0.x',
+    '0.15.x',
+    'cloud'
+] as const;
 
 export type Version = (typeof allVersions)[number];
 
@@ -20,12 +30,13 @@ export enum Service {
     Locale = 'locale',
     Storage = 'storage',
     Teams = 'teams',
-    Users = 'users',
+    Users = 'users'
 }
 
 export enum Platform {
     ClientWeb = 'client-web',
     ClientFlutter = 'client-flutter',
+    ClientReactNative = 'client-react-native',
     ClientApple = 'client-apple',
     ClientAndroidKotlin = 'client-android-kotlin',
     ClientAndroidJava = 'client-android-java',
@@ -34,13 +45,14 @@ export enum Platform {
     ServerNodeJs = 'server-nodejs',
     ServerPython = 'server-python',
     ServerDart = 'server-dart',
-    ServerDeno = 'server-deno',
     ServerPhp = 'server-php',
     ServerRuby = 'server-ruby',
+    ServerDotNet = 'server-dotnet',
+    ServerDeno = 'server-deno',
+    ServerGo = 'server-go',
     ServerSwift = 'server-swift',
     ServerKotlin = 'server-kotlin',
     ServerJava = 'server-java',
-    ServerDotNet = 'server-dotnet',
     ServerGraphql = 'server-graphql',
     ServerRest = 'server-rest'
 }
@@ -51,6 +63,7 @@ export const platformMap: Record<Language | string, string> = {
     [Platform.ClientWeb]: 'Web',
     [Platform.ClientAndroidKotlin]: 'Android (Kotlin)',
     [Platform.ClientAndroidJava]: 'Android (Java)',
+    [Platform.ClientReactNative]: 'React Native',
     [Platform.ClientGraphql]: 'GraphQL',
     [Platform.ClientRest]: 'REST',
     [Platform.ServerDart]: 'Dart',
@@ -65,6 +78,7 @@ export const platformMap: Record<Language | string, string> = {
     [Platform.ServerJava]: 'Java',
     [Platform.ServerGraphql]: 'GraphQL',
     [Platform.ServerRest]: 'REST',
+    [Platform.ServerGo]: 'Go',
     sh: 'Shell',
     js: 'JavaScript',
     ts: 'TypeScript',
@@ -99,7 +113,8 @@ export const platformMap: Record<Language | string, string> = {
     text: 'Text',
     vue: 'Vue',
     svelte: 'Svelte',
-    groovy: 'Groovy'
+    groovy: 'Groovy',
+    go: 'Go'
 };
 
 export const serviceMap: Record<Service, string> = {
@@ -112,7 +127,7 @@ export const serviceMap: Record<Service, string> = {
     [Service.Locale]: 'Locale',
     [Service.Storage]: 'Storage',
     [Service.Teams]: 'Teams',
-    [Service.Users]: 'Users',
+    [Service.Users]: 'Users'
 };
 
 export const preferredVersion = writable<Version | null>(

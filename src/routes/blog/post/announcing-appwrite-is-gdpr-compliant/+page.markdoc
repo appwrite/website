@@ -26,6 +26,6 @@ Here are some technical insights into how we enhance data security:
 
 As always, with Appwrite, developers can continue creating with peace of mind. Your personal data will not be mistreated.
 
-Appwrite is also HIPAA compliant while actively working towards compliance with SOC 2 standards which will be announced at a later date.
+Appwrite is also [HIPAA](https://appwrite.io/docs/advanced/security/hipaa) and [SOC 2](https://appwrite.io/docs/advanced/security/soc2) compliant as of April 24th, 2024.
 
 Further resources: [Documentation](https://appwrite.io/docs/advanced/security/gdpr), [Privacy policy](https://appwrite.io/privacy) , [Cookie policy](https://appwrite.io/cookies)

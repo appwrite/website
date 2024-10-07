@@ -24,7 +24,7 @@ The problem we faced was that there was no way to access a session secret when u
 
 # Getting started with SSR
 
-As you get started with SSR it’s important to note that all methods we will be working with are based on Appwrite’s server SDKs. In the examples below, we will use the [Node JS SDK.](https://appwrite.io/docs/sdks#server)
+As you get started with SSR it’s important to note that all methods we will be working with are based on Appwrite’s server SDKs. In the examples below, we will use the [Node JS SDK.](/docs/sdks#server)
 
 It’s also recommended that as you follow along with this article, you do not install any client SDK’s as that may lead to confusion. All examples use `node-appwrite`.
 
@@ -72,12 +72,12 @@ With the new authentication patterns for SSR, you’ll need to create two differ
 The admin client will need to be initialized with an API key in order to bypass rate limits when performing unauthenticated request or when we need to perform actions that bypass permissions. Without an API key our server will be rate limited when trying to make request to certain endpoints.
 
 ```jsx
-import { Client } from "node-appwrite" 
+import { Client } from "node-appwrite"
 
 const adminClient = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') 
-    .setProject('<YOUR_PROJECT_ID>')           
-    .setKey('<YOUR_API_KEY>')     
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>')
 ```
 
 ### Session Client
@@ -86,14 +86,14 @@ A session client will allow us to make requests as an authenticated end-user wit
 
 ```jsx
 const sessionClient = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') 
-    .setProject('<YOUR_PROJECT_ID>')          
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
 
-const session = req.cookies.session 
+const session = req.cookies.session
 
 if (session) {
     sessionClient.setSession(session)
-}   
+}
 
 const user = await account.get()
 ```
@@ -160,7 +160,7 @@ export async function POST(request){
 
     const { email, password } = await request.json()
     const session = await account.createEmailPasswordSession(email, password)
-   
+
     cookies().set('session', session.secret, {
         httpOnly: true,
         secure: true,
@@ -196,12 +196,12 @@ export async function GET(request){
 
 Visit our documentation to learn more about SSR, join us on Discord to be part of the discussion, visit our blog and YouTube channel to learn more, or visit our GitHub repository to see our source code.
 
-- [Docs](https://appwrite.io/docs/products/auth/server-side-rendering)
+- [Docs](/docs/products/auth/server-side-rendering)
 - [Discord](https://appwrite.io/discord)
-- [Blog](https://appwrite.io/blog)
+- [Blog](/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
 - [GitHub repository](https://github.com/appwrite/appwrite)
 
 SSR will be available as part of the Appwrite 1.5 release on [GitHub](https://github.com/appwrite/appwrite) and [Cloud](https://cloud.appwrite.io/register) in March 2024.
 
-[Go back to Init](http://appwrite.io/init)
+[Go back to Init](/init)

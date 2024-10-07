@@ -43,6 +43,8 @@ Then, under **Add a platform**, add a **Android app** or a **Apple app**.
 {% tabsitem #ios title="iOS" %}
 Add your app **name** and **Bundle ID**. You can find your **Bundle Identifier** in the **General** tab for your app's primary target in XCode.
 
+**Note**: If you've followed the commands above, you have created an Expo project. This means you need to define the Bundle Identifier in the `app.json` configuration. [More info](https://docs.expo.dev/versions/latest/config/app/#bundleidentifier)
+
 {% only_dark %}
 ![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
 {% /only_dark %}
@@ -54,6 +56,8 @@ Add your app **name** and **Bundle ID**. You can find your **Bundle Identifier**
 
 {% tabsitem #android title="Android" %}
 Add your app's **name** and **package name**, Your package name is generally the `applicationId` in your app-level [build.gradle](https://github.com/appwrite/playground-for-flutter/blob/master/android/app/build.gradle#L41) file.
+
+**Note**: If you've followed the commands above, you have created an Expo project. This means you need to define the package name in the `app.json` configuration. [More info](https://docs.expo.dev/versions/latest/config/app/#package)
 
 {% arrow_link
    href="https://developer.android.com/build/configure-app-module" %}
@@ -84,38 +88,38 @@ Find your project's ID in the **Settings** page.
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Open `App.js` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_PLATFORM>` with your application id or package name.
+Open `app/(tabs)/index.tsx` and add the following code to it, replace `<PROJECT_ID>` with your project ID and `<YOUR_PLATFORM>` with your application id or package name.
 
 This imports and initializes Appwrite and defines some basic authentication methods.
 
-```ts
+```client-react-native
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-import { Client, Account, ID } from 'react-native-appwrite';
+import { Client, Account, ID, Models } from 'react-native-appwrite';
 import React, { useState } from 'react';
 
-let client;
-let account;
+let client: Client;
+let account: Account;
 
 client = new Client();
 client
   .setEndpoint('https://cloud.appwrite.io/v1')
-  .setProject('sisyphus')
-  .setPlatform('com.example.my-app');
+  .setProject('66e943139f030e2feaf8')   // Your Project ID
+  .setPlatform('com.example.my-app');   // Your package name / bundle identifier
 
 account = new Account(client);
 export default function App() {
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [loggedInUser, setLoggedInUser] = useState<Models.User<Models.Preferences> | null>(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
 
-  async function login(email, password) {
-    await account.createEmailSession(email, password);
+  async function login(email: string, password: string) {
+    await account.createEmailPasswordSession(email, password);
     setLoggedInUser(await account.get());
   }
 
-  async function register(email, password, name) {
+  async function register(email: string, password: string, name: string) {
     await account.create(ID.unique(), email, password, name);
     await login(email, password);
     setLoggedInUser(await account.get());
@@ -137,7 +141,7 @@ With `Client` and `Account` service initialized, you can now use them to make yo
 
 Add the following components to your `App.js` file to create a simple login form.
 
-```ts
+```client-react-native
 <View style={styles.root}>
     <Text>
     {loggedInUser ? `Logged in as ${loggedInUser.name}` : 'Not logged in'}
@@ -192,7 +196,7 @@ Add the following components to your `App.js` file to create a simple login form
 
 You can also add some simple styling to your app by adding the following styles to your `App.js` file.
 
-```ts
+```client-react-native
 const styles = StyleSheet.create({
   root: {
     marginTop: 40, 

@@ -10,19 +10,19 @@ category: engineering
 featured: false
 ---
 
-In the light of recent unsettling revelations regarding a backdoor discovered in the widely-used XZ Utils, 
-a compression tool used in Linux environments, including Red Hat and Debian systems, the cyber-security landscape has been abuzz with concern. 
+In the light of recent unsettling revelations regarding a backdoor discovered in the widely-used XZ Utils,
+a compression tool used in Linux environments, including Red Hat and Debian systems, the cyber-security landscape has been abuzz with concern.
 This discovery had a large potential impact on encrypted SSH connections, a backbone of secure communications in the tech world.
 
-At Appwrite, ensuring the security and trust of our developers and users is paramount. 
-We understand the concerns that arise from such vulnerabilities and their potential implications. 
+At Appwrite, ensuring the security and trust of our developers and users is paramount.
+We understand the concerns that arise from such vulnerabilities and their potential implications.
 
-It's crucial for the Appwrite community to know that Appwrite's services **remain unaffected** by the XZ Utils backdoor. 
+It's crucial for the Appwrite community to know that Appwrite's services **remain unaffected** by the XZ Utils backdoor.
 This issue affected beta and test versions of Red Hat and Debian distributions, which Appwrite **does not use**.
 
 # What does this mean for self-hosting Appwrite?
 
-For our valued users who prefer the self-hosted route, leveraging Appwrite on affected operating systems (OS), 
+For our valued users who prefer the self-hosted route, leveraging Appwrite on affected operating systems (OS),
 we understand your concerns. Here are our recommendations to ensure your self-hosted Appwrite instances remain secure:
 
 - Immediate Update/Removal: The first and foremost step is to check if you have the affect versions (`5.6.0`,` 5.6.1`) of the XZ Utils installed. If so, downgrade to a safe version or remove the utility altogether.
@@ -38,11 +38,11 @@ The Appwrite team has taken necessary measures to ensure that containers in our 
 We also took further steps to restrict SSH access to our cloud infrastructure to reduce attack surfaces further.
 No actions are required from Appwrite Cloud developers at this time.
 
-In a world where cyber threats are evolving at an alarming pace, 
+In a world where cyber threats are evolving at an alarming pace,
 the Appwrite team is committed to ensuring the security and reliability of Appwrite Cloud's infrastructure,
 so you can build applications with peace of mind.
 The team will continue to monitor the situation closely, take necessary actions to mitigate any potential risks,
 and communicate any updates transparently to the community.
 
-For any further questions or concerns, please reach out through [email](https://appwrite.io/contact-us) or on [Discord](https://appwrite.io/discord).
+For any further questions or concerns, please reach out through [email](/contact-us) or on [Discord](https://appwrite.io/discord).
 We're here to support you every step of the way.

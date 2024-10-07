@@ -3,11 +3,6 @@ layout: article
 title: Tokens
 description: What are tokens and how to use them in Appwrite
 ---
-{% info title="Unreleased on Cloud" %}
-This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
-This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
-{% /info %}
-
 Tokens are short-lived secrets created by an [Appwrite Server SDK](/docs/sdks#server) that can be exchanged for session by a [Client SDK](/docs/sdks#client) to log in users.
 Some auth methods like [Magic URL login](/docs/products/auth/magic-url), 
 [Email OTP login](/docs/products/auth/email-otp), or [Phone (SMS) login](/docs/products/auth/phone-sms) already generate tokens.

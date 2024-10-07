@@ -42,16 +42,11 @@ Learn more about Appwrite status codes
 
 When moving to dev mode, your server will produce much more verbose error messages. Instead of getting a general 500 error, you'll be able to view the exact error that happened on the server, debug the issue further or [report it to the Appwrite team](https://github.com/appwrite/appwrite/issues/new?body=500%20Error).
 
-To change your dev environment, edit your server `_APP_ENV` environment variable from 'production' to 'development' in your Appwrite `docker-compose.yml` file located in the `appwrite` directory in the location where you first installed Appwrite.
+To change your dev environment, edit your server `_APP_ENV` environment variable from 'production' to 'development' in your `.env` file located in the `appwrite` directory in the location where you first installed Appwrite.
 
-```yaml
-...
-    - influxdb
-    - telegraf
-environment:
-    - _APP_ENV=development
-    - _APP_OPENSSL_KEY_V1=your-secret-key
-    - _APP_DOMAIN=localhost
-...
+```text
+_APP_ENV=development
+_APP_OPENSSL_KEY_V1=your-secret-key
+_APP_DOMAIN=localhost
 ```
 {% partial file="update-variables.md" /%}

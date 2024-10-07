@@ -1,6 +1,10 @@
 <script lang="ts">
     import { fade } from 'svelte/transition';
 
+    type $$Props = {
+        value: number;
+    };
+
     export let value = 0;
 
     const getTransform = (value: number) => `translateY(-${value * 100}%)`;
@@ -28,7 +32,6 @@
                 <span>{char}</span>
             {:else}
                 <ul style:transform={getTransform(Number(char))} use:transform={Number(char)}>
-                    <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
                     {#each { length: 10 } as _, i}
                         <li>{i}</li>
                     {/each}
@@ -48,8 +51,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 3rem;
-        line-height: 3rem;
+        height: var(--height, 1rem);
+        line-height: var(--line-height, 1rem);
         transition: 0.5s ease;
     }
 </style>

@@ -6,6 +6,8 @@ description: Enhance security with phone and SMS authentication in Appwrite. Dis
 
 Phone authentication lets users create accounts using their phone numbers and log in through SMS messages.
 
+Create and use [mock phone numbers](/docs/products/auth/security#mock-phone-numbers) to initiate a phone authentication process without an actual phone number.
+
 # Send SMS message {% #init %}
 
 Phone authentication is done using a two-step authentication process. When using phone authentication, the authentication request is initiated from the client application and an SMS message is sent to the user's phone. The SMS message will contain a secret the user can use to log in.
@@ -23,12 +25,12 @@ const client = new Client()
 
 const account = new Account(client);
 
-const sessionToken = await account.createPhoneSession(
+const token = await account.createPhoneToken(
     ID.unique(),
     '+14255550123'
 );
 
-const userId = sessionToken.userId;
+const userId = token.userId;
 ```
 
 ```client-flutter
@@ -40,12 +42,12 @@ final client = Client()
 
 final account = Account(client);
 
-final sessionToken = await account.createPhoneSession(
+final token = await account.createPhoneToken(
     userId: ID.unique(),
     phone: '+14255550123'
 );
 
-final userId = sessionToken.userId;
+final userId = token.userId;
 ```
 ```client-apple
 import Appwrite
@@ -56,12 +58,12 @@ let client = Client()
 
 let account = Account(client);
 
-let sessionToken = try await account.createPhoneSession(
+let token = try await account.createPhoneToken(
     userId: ID.unique(),
     phone: "+14255550123"
 );
 
-let userId = sessionToken.userId;
+let userId = token.userId;
 ```
 
 ```client-android-kotlin
@@ -75,17 +77,17 @@ val client = Client()
 
 val account = Account(client);
 
-val sessionToken = account.createPhoneSession(
+val token = account.createPhoneToken(
     userId = ID.unique(),
     phone = "+14255550123"
 );
 
-val userId = sessionToken.userId;
+val userId = token.userId;
 ```
 
 ```graphql
 mutation {
-    accountCreatePhoneSession(userId: "unique()", phone: "+14255550123") {
+    accountCreatePhoneToken(userId: "unique()", phone: "+14255550123") {
         _id
         userId
         secret
@@ -111,7 +113,7 @@ const client = new Client()
 
 const account = new Account(client);
 
-const session = await account.updatePhoneSession(
+const session = await account.createSession(
     userId,
     '[SECRET]'
 );
@@ -126,7 +128,7 @@ final client = Client()
 
 final account = Account(client);
 
-final session = await account.updatePhoneSession(
+final session = await account.createSession(
     userId: userId,
     secret: '[SECRET]'
 );
@@ -140,7 +142,7 @@ let client = Client()
 
 let account = Account(client);
 
-let session = try await account.updatePhoneSession(
+let session = try await account.createSession(
     userId: userId,
     secret: "[SECRET]"
 );
@@ -156,7 +158,7 @@ val client = Client()
 
 val account = Account(client);
 
-val session = account.updatePhoneSession(
+val session = account.createSession(
     userId = userId,
     secret = "[SECRET]"
 );
@@ -164,7 +166,7 @@ val session = account.updatePhoneSession(
 
 ```graphql
 mutation {
-    accountUpdatePhoneSession(userId: "[USER_ID]", secret: "[SECRET]") {
+    accountCreateSession(userId: "[USER_ID]", secret: "[SECRET]") {
         _id
         userId
         provider

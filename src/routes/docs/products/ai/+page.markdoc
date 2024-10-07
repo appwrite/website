@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Artifical intelligence
+title: Artificial intelligence
 description: "Learn how to implement machine learning models in your applications."
 ---
 
@@ -52,5 +52,8 @@ Process speech audio into text
 {% /cards_item %}
 {% cards_item href="/docs/products/ai/tutorials/text-to-speech" title="Text to speech" %}
 Convert text into speech
+{% /cards_item %}
+{% cards_item href="/docs/products/ai/tutorials/music-generation" title="Music generation" %}
+Generate music from a text prompt
 {% /cards_item %}
 {% /cards %}

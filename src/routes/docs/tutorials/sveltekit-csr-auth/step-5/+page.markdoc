@@ -52,7 +52,7 @@ Now we just need to create a form to let the user input sign in data.
 		}
 
 		try {
-			await appwrite.account.createEmailSession(email, password);
+			await appwrite.account.createEmailPasswordSession(email, password);
 			await invalidateAll();
 		} catch (e) {
 			formError = /** @type {import('appwrite').AppwriteException} */ (e).message;

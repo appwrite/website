@@ -4,11 +4,6 @@ title: Multi-factor authentication
 description: Add multiple layers of authentication to your applications powered by Appwrite Authentication.
 ---
 
-{% info title="Unreleased on Cloud" %}
-This feature is not yet released on Cloud, which is on Appwrite `1.4.x`.
-This is a feature available in Appwrite `1.5.x` and will be available on Appwrite Cloud later.
-{% /info %}
-
 Multi-factor authentication (MFA) greatly increases the security of your apps by adding additional layers of protection.
 When MFA is enabled, a malicious actor needs to compromise multiple authentication factors to gain unauthorized access.
 Appwrite Authentication lets you easily implement MFA in your apps, letting you build more securely and quickly.
@@ -38,7 +33,7 @@ const avatars = new Avatars(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>') // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 ```
 
@@ -52,7 +47,7 @@ void main() { // Init SDK
 
   client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>')             // Your project ID
+    .setProject('<PROJECT_ID>')             // Your project ID
   ;
 }
 ```
@@ -62,7 +57,7 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 let account = Account(client)
 let avatars = Avatars(client)
@@ -74,7 +69,7 @@ import io.appwrite.services.Account
 
 val client = Client(context)
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+    .setProject("<PROJECT_ID>") // Your project ID
 
 val account = Account(client)
 val avatars = Avatars(client)
@@ -305,6 +300,7 @@ const response = await account.updatePhone(
     '+12065550100',  // phone
     'password' // password
 );
+```
 ```client-flutter
 Future result = account.updatePhone(
     phone: '+12065550100',
@@ -349,6 +345,7 @@ Then, initiate verification for the phone number by calling `account.createPhone
 {% multicode %}
 ```client-web
 const response = await account.createPhoneVerification();
+```
 ```client-flutter
 Future result = account.createPhoneVerification();
 
@@ -384,6 +381,7 @@ const response = await account.updatePhoneVerification(
     '<USER_ID>',  // userId
     '<SECRET>' // secret
 );
+```
 ```client-flutter
 Future result = account.updatePhoneVerification(
     userId: '<USER_ID>',
@@ -434,6 +432,7 @@ First, add a TOTP authenticator to the user's account by calling `account.addAut
 const { secret, uri } = await account.createMfaAuthenticator(
     'totp' // type
 );
+```
 ```client-flutter
 Future result = account.createMfaAuthenticator(
     type: 'totp',

@@ -315,7 +315,7 @@ val realtime = Realtime(client)
 
 val subscription = realtime.subscribe("files") {
     // Callback will be executed on changes for all files.
-    print(param.toString())
+    print(it.toString())
 }
 
 // Closes the subscription.

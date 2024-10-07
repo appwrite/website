@@ -1,10 +1,14 @@
 <script lang="ts">
+    import { toScale, type Scale } from '$lib/utils/toScale';
     import { spring, type AnimationListOptions, type SpringOptions } from 'motion';
     import { animation, createScrollHandler, scroll, type Animation } from '.';
-    import { toScale, type Scale } from '$lib/utils/toScale';
-    import { browser } from '$app/environment';
+    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
 
-    const springOptions: SpringOptions = { stiffness: 58.78, mass: 1, damping: 17.14 };
+    const springOptions: SpringOptions = {
+        stiffness: 58.78,
+        mass: 1,
+        damping: 17.14
+    };
     const animationOptions: AnimationListOptions = {
         x: { easing: spring(springOptions) },
         y: { easing: spring(springOptions) }
@@ -21,7 +25,11 @@
     }[] = [
         {
             mobile: {
-                main: animation('#oss-discord', { x: 0, y: 0, rotate: 1 }, animationOptions),
+                main: animation(
+                    '#oss-discord',
+                    { x: 0, y: [1200, 0], rotate: 1 },
+                    animationOptions
+                ),
                 reversed: animation('#oss-discord', { y: 1200, x: 0, rotate: 1 }, animationOptions)
             },
             desktop: {
@@ -39,7 +47,11 @@
         },
         {
             mobile: {
-                main: animation('#oss-github', { x: 0, y: -10, rotate: -2 }, animationOptions),
+                main: animation(
+                    '#oss-github',
+                    { x: 0, y: [1200, -10], rotate: -2 },
+                    animationOptions
+                ),
                 reversed: animation('#oss-github', { y: 1200, x: 10, rotate: -2 }, animationOptions)
             },
             desktop: {
@@ -57,7 +69,11 @@
         },
         {
             mobile: {
-                main: animation('#oss-twitter', { x: 0, y: 10, rotate: -3 }, animationOptions),
+                main: animation(
+                    '#oss-twitter',
+                    { x: 0, y: [1200, 10], rotate: -3 },
+                    animationOptions
+                ),
                 reversed: animation(
                     '#oss-twitter',
                     { y: 1200, x: -10, rotate: -3 },
@@ -79,7 +95,11 @@
         },
         {
             mobile: {
-                main: animation('#oss-youtube', { x: 0, y: 5, rotate: 2 }, animationOptions),
+                main: animation(
+                    '#oss-youtube',
+                    { x: 0, y: [1200, 5], rotate: 2 },
+                    animationOptions
+                ),
                 reversed: animation('#oss-youtube', { y: 1200, x: -5, rotate: 2 }, animationOptions)
             },
             desktop: {
@@ -97,7 +117,11 @@
         },
         {
             mobile: {
-                main: animation('#oss-commits', { x: 0, y: -4, rotate: -1 }, animationOptions),
+                main: animation(
+                    '#oss-commits',
+                    { x: 0, y: [1200, -4], rotate: -1 },
+                    animationOptions
+                ),
                 reversed: animation('#oss-commits', { y: 1200, x: 4, rotate: -1 }, animationOptions)
             },
             desktop: {
@@ -121,7 +145,7 @@
     }
 
     const animScale: Scale = [0, animations.length - 1];
-    const percentScale: Scale = [0.1, 0.9];
+    const percentScale: Scale = [0.1, 0.8];
     const scrollHandler = createScrollHandler(
         animations.map(({ mobile, desktop }, i) => {
             return {
@@ -152,84 +176,86 @@
     }}
 >
     <div class="sticky-wrapper">
-        <h3 class="web-display web-u-color-text-primary">Powered by Open Source</h3>
+        <h3 class="text-display font-aeonik-pro text-primary">Powered by Open Source</h3>
 
         <div class="cards-wrapper">
             <a
                 href="/discord"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="web-card is-white web-u-min-block-size-320 u-flex-vertical oss-card"
+                class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
                 id="oss-discord"
             >
-                <div class="u-flex-vertical u-main-space-between u-gap-32">
+                <div class="flex flex-col justify-between gap-8">
                     <span
                         class="web-icon-discord web-u-font-size-40"
                         aria-hidden="true"
                         aria-label="Discord"
                     />
                 </div>
-                <div class="web-title u-margin-block-start-auto">17k+ Discord Members</div>
+                <div class="text-title font-aeonik-pro mt-auto">17k+ Discord Members</div>
             </a>
 
             <a
-                class="web-card is-white web-u-min-block-size-320 u-flex-vertical oss-card"
+                class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
                 id="oss-github"
-                href="https://github.com/appwrite/appwrite"
+                href="{GITHUB_REPO_LINK}"
             >
-                <div class="u-flex-vertical u-main-space-between u-gap-32">
+                <div class="flex flex-col justify-between gap-8">
                     <span
                         class="web-icon-github web-u-font-size-40"
                         aria-hidden="true"
                         aria-label="GitHub"
                     />
                 </div>
-                <div class="web-title u-margin-block-start-auto">38k+ GitHub Stars</div>
+                <div class="text-title font-aeonik-pro mt-auto">
+                    {GITHUB_STARS}+ GitHub Stars
+                </div>
             </a>
 
             <a
                 href="https://twitter.com/appwrite"
-                class="web-card is-white web-u-min-block-size-320 u-flex-vertical oss-card"
+                class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
                 id="oss-twitter"
             >
-                <div class="u-flex-vertical u-main-space-between u-gap-32">
+                <div class="flex flex-col justify-between gap-8">
                     <span
                         class="web-icon-x web-u-font-size-40"
                         aria-hidden="true"
                         aria-label="Twitter"
                     />
                 </div>
-                <div class="web-title u-margin-block-start-auto">128k+ Twitter Followers</div>
+                <div class="text-title font-aeonik-pro mt-auto">128k+ Twitter Followers</div>
             </a>
 
             <a
                 href="https://www.youtube.com/@Appwrite"
-                class="web-card is-white web-u-min-block-size-320 u-flex-vertical oss-card"
+                class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
                 id="oss-youtube"
             >
-                <div class="u-flex-vertical u-main-space-between u-gap-32">
+                <div class="flex flex-col justify-between gap-8">
                     <span
                         class="web-icon-youtube web-u-font-size-40"
                         aria-hidden="true"
                         aria-label="YouTube"
                     />
                 </div>
-                <div class="web-title u-margin-block-start-auto">4k+ Youtube Subscribers</div>
+                <div class="text-title font-aeonik-pro mt-auto">7k+ Youtube Subscribers</div>
             </a>
 
             <a
-                class="web-card is-white web-u-min-block-size-320 u-flex-vertical oss-card"
+                class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
                 id="oss-commits"
-                href="https://github.com/appwrite/appwrite"
+                href="{GITHUB_REPO_LINK}"
             >
-                <div class="u-flex-vertical u-main-space-between u-gap-32">
+                <div class="flex flex-col justify-between gap-8">
                     <span
                         class="web-icon-github web-u-font-size-40"
                         aria-hidden="true"
                         aria-label="GitHub"
                     />
                 </div>
-                <div class="web-title u-margin-block-start-auto">18k+ Code Commits</div>
+                <div class="text-title font-aeonik-pro mt-auto">21k+ Code Commits</div>
             </a>
         </div>
     </div>
@@ -237,11 +263,12 @@
 
 <style lang="scss">
     #open-source {
-        min-height: 1500px;
-        height: 250vh;
+        min-height: 150vh;
+        height: 3500px;
         position: relative;
+
         @media (min-width: 1024px) {
-            height: 150vh;
+            height: 1500px;
         }
     }
 

@@ -22,5 +22,6 @@
 
   &.is-inline { text-decoration:underline; }
   &.is-secondary { --p-link-color-text-default: var(--web-color-secondary); }
+  &.is-pink { --p-link-color-text-default: var(--web-color-accent); }
 }
 

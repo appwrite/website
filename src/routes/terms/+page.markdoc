@@ -1,10 +1,11 @@
 ---
 layout: policy
 title: Terms and Conditions
+description: Review our Terms of Service to understand the rules and guidelines for using our open-source backend-as-a-service platform.
 ---
 
 
-These Terms and Conditions ("Terms," "Terms and Conditions") govern your relationship with [https://appwrite.io](https://appwrite.io) website (the "Service") operated by Appwrite ("us," "we," or "our").
+These Terms and Conditions ("Terms," "Terms and Conditions") govern your relationship with [Appwrite (https://appwrite.io)](https://appwrite.io) website (the "Service") operated by Appwrite ("Us," "We," or "Our").
 
 Please read these Terms and Conditions carefully before using the Service.
 
@@ -62,6 +63,22 @@ You agree not to disclose your password to any third party. You must notify us i
 # Intellectual Property
 
 The Service and its original content (excluding Content provided by users), features, and functionality are and will remain the exclusive property of Appwrite and its licensors. The Service is protected by copyright, trademark, and other laws of both Israel and foreign countries. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of Appwrite.
+
+Notwithstanding any other provision of these Terms, to the maximum extent permitted by law, we may collect, generate, process, use and/or publish Anonymous Information (defined below) relating to your, your users’ use of the Service, and/or disclose it, in order to provide, improve and publicize the Service and our products and services, in order to track general industry trends, develop and publish white papers, reports and summaries, and for other legitimate business purposes, all the foregoing without restriction or limitation of any kind.  “Anonymous Information” means information that does not enable the identification of an individual, such as aggregated and analytics information. For clarity, Anonymous Information will not include any personally identifiable information, and Appwrite shall own all Anonymous Information collected or obtained by Appwrite.
+
+# Prohibited Use of the SMS Messages Service
+
+You agree not to use the Service for the sending of unsolicited or spam SMS messages. This includes but is not limited to the prohibition of 
+- using the Service in connection with any content, product, or service the recipient has not explicitly requested.
+- sending SMS messages through the Service unless you have obtained prior express consent from the recipients, as required by applicable law.
+
+Failure to adhere to these prohibitions and/or any applicable law relating to the use of such SMS Service can result in immediate termination of your account and further legal action. You shall comply with any and all applicable laws and regulations. 
+
+Furthermore, you agree to indemnify and hold harmless Appwrite, its affiliates, directors, employees, and agents against any claims, proceedings, damages, liabilities, fines, or costs arising from your misuse of the SMS services, which includes, but is not limited to the sending of unsolicited SMS messages, your failure to secure the necessary consents from recipients or not adhering to applicable laws and regulations in relevant jurisdictions.
+
+# Privacy
+
+Appwrite’s privacy policy is available at [https://appwrite.io/privacy](https://appwrite.io/privacy).
 
 # Links To Other Web Sites
 

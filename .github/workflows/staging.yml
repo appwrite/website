@@ -1,6 +1,7 @@
 name: Staging deployment
 
 on:
+    workflow_dispatch:
     push:
         branches:
             - main
@@ -32,16 +33,20 @@ jobs:
                   push: true
                   tags: ghcr.io/appwrite/website:${{ env.TAG }}
                   build-args: |
+                      "PUBLIC_APPWRITE_ENDPOINT=${{ secrets.PUBLIC_APPWRITE_ENDPOINT }}"
+                      "PUBLIC_APPWRITE_DASHBOARD=${{ secrets.PUBLIC_APPWRITE_DASHBOARD }}"
                       "PUBLIC_APPWRITE_PROJECT_ID=${{ vars.PUBLIC_APPWRITE_PROJECT_ID }}"
                       "PUBLIC_APPWRITE_DB_MAIN_ID=${{ vars.PUBLIC_APPWRITE_DB_MAIN_ID }}"
                       "PUBLIC_APPWRITE_COL_THREADS_ID=${{ vars.PUBLIC_APPWRITE_COL_THREADS_ID }}"
                       "PUBLIC_APPWRITE_COL_MESSAGES_ID=${{ vars.PUBLIC_APPWRITE_COL_MESSAGES_ID }}"
                       "PUBLIC_APPWRITE_FN_TLDR_ID=${{ vars.PUBLIC_APPWRITE_FN_TLDR_ID }}"
                       "PUBLIC_APPWRITE_PROJECT_INIT_ID=${{ vars.PUBLIC_APPWRITE_PROJECT_INIT_ID }}"
+                      "PUBLIC_GROWTH_ENDPOINT=${{ vars.PUBLIC_GROWTH_ENDPOINT }}"
                       "APPWRITE_DB_INIT_ID=${{ secrets.APPWRITE_DB_INIT_ID }}"
                       "APPWRITE_COL_INIT_ID=${{ secrets.APPWRITE_COL_INIT_ID }}"
                       "APPWRITE_API_KEY_INIT=${{ secrets.APPWRITE_API_KEY_INIT }}"
                       "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}"
+                      "SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}"
 
     deploy:
         needs: build
