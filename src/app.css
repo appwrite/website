@@ -80,6 +80,7 @@
     --animate-fade-in: fade-in 500ms ease-out forwards;
     --animate-text: fade-in 0.75s ease-in-out both, blur 0.75s ease-in-out both,
         up 0.75s ease-in-out both;
+    --animate-map: map 0.75s ease-in-out both;
 
     /* Pink polyfills */
     --transition: 0.2s;
@@ -118,6 +119,17 @@
         }
         100% {
             opacity: 1;
+        }
+    }
+
+    @keyframes map {
+        0% {
+            opacity: 0;
+            transform: scale(0.98);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
         }
     }
 
