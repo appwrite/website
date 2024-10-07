@@ -7,7 +7,7 @@
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
-    import { Tooltip } from '$lib/components';
+    import { classNames } from '$lib/utils/classnames';
 
     type Table = {
         title: string;
@@ -302,6 +302,13 @@
             title: 'Security',
             rows: [
                 {
+                    title: 'Organization roles',
+                    free: '-',
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
                     title: 'SOC-2',
                     free: '-',
                     pro: '-',
@@ -323,7 +330,7 @@
                     enterprise: true
                 },
                 {
-                    title: 'Additional organization roles',
+                    title: 'Custom organization roles',
                     free: '-',
                     pro: '-',
                     scale: 'Coming Soon',
@@ -380,7 +387,7 @@
                     title: 'Private Slack channel',
                     free: '-',
                     pro: '-',
-                    scale: '-',
+                    scale: true,
                     enterprise: true
                 }
             ]
@@ -422,7 +429,7 @@
                         }}
                     >
                         <h3 class="text-title font-aeonik-pro text-primary">Compare plans</h3>
-                        <p class="text-body font-medium mt-4">
+                        <p class="text-body mt-4 font-medium">
                             Discover our plans and find the one that fits your project’s needs.
                         </p>
                     </header>
@@ -446,7 +453,7 @@
                     </div>
 
                     <div
-                        class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 web-u-container-query-inline sticky z-[5] gap-8"
+                        class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 web-u-container-query-inline sticky z-10 gap-8"
                         style:top={$isHeaderHidden ? '0px' : '70px'}
                         style:transition="inset-block-start 0.3s ease"
                     >
@@ -476,21 +483,21 @@
                             {/key}
                         </div>
                         <div class="web-mini-card">
-                            <div class="flex items-center justify-between gap-8">
-                                <h4 class="text-label text-primary">Free</h4>
+                            <div class="flex flex-col items-center justify-between gap-2">
+                                <h4 class="text-sub-body text-primary font-medium">Free</h4>
                                 <a
                                     href="https://cloud.appwrite.io/register"
-                                    class="web-button is-secondary"
+                                    class="web-button is-secondary !w-full"
                                 >
                                     <span class="text-sub-body font-medium">Start building</span>
                                 </a>
                             </div>
                         </div>
                         <div class="web-mini-card">
-                            <div class="flex items-center justify-between gap-8">
-                                <h4 class="text-label text-primary">Pro</h4>
+                            <div class="flex flex-col items-center justify-between gap-2">
+                                <h4 class="text-sub-body text-primary font-medium">Pro</h4>
                                 <a
-                                    class="web-button"
+                                    class="web-button !w-full"
                                     href="https://cloud.appwrite.io/console?type=createPro"
                                     target="_blank"
                                     rel="noopener noreferrer"
@@ -500,22 +507,20 @@
                             </div>
                         </div>
                         <div class="web-mini-card">
-                            <div class="flex items-center justify-between gap-8">
-                                <h4 class="text-label text-primary">Scale</h4>
-                                <a
-                                    class="web-button is-secondary"
-                                    href="https://cloud.appwrite.io/console?type=createScale"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <span class="text-sub-body font-medium">Start now</span>
-                                </a>
+                            <div class="flex flex-col items-center justify-between gap-2">
+                                <h4 class="text-sub-body text-primary font-medium">Scale</h4>
+                                <button class="web-button is-secondary !w-full" disabled>
+                                    <span class="text-sub-body font-medium">Coming soon</span>
+                                </button>
                             </div>
                         </div>
                         <div class="web-mini-card">
-                            <div class="flex items-center justify-between gap-8">
-                                <h4 class="text-label text-primary">Enterprise</h4>
-                                <a class="web-button is-secondary" href="/contact-us/enterprise">
+                            <div class="flex flex-col items-center justify-between gap-2">
+                                <h4 class="text-sub-body text-primary font-medium">Enterprise</h4>
+                                <a
+                                    class="web-button is-secondary !w-full"
+                                    href="/contact-us/enterprise"
+                                >
                                     <span class="text-sub-body font-medium">Contact</span>
                                 </a>
                             </div>
@@ -542,7 +547,7 @@
                             }}
                         >
                             <caption
-                                class="web-compare-table-caption text-description text-primary text-left"
+                                class="web-compare-table-caption text-body text-primary text-left font-medium"
                                 use:melt={$heading({ level: 3 })}
                                 style:position={browser ? 'unset' : undefined}
                             >
@@ -560,11 +565,11 @@
 
                             <tbody class="web-compare-table-body" use:melt={$content(table.title)}>
                                 {#each table.rows as row}
-                                    <tr>
-                                        <th class="text-sub-body font-medium">
-                                            <div class="flex gap-1 text-left">
+                                    <tr class="md:text-center">
+                                        <th class="text-caption font-medium">
+                                            <div class="flex items-center gap-1 text-left">
                                                 {row.title}
-                                                {#if row.info}
+                                                <!-- {#if row.info}
                                                     <Tooltip placement="top">
                                                         <span
                                                             class="icon-info"
@@ -574,18 +579,24 @@
                                                             {row.info}
                                                         </svelte:fragment>
                                                     </Tooltip>
-                                                {/if}
+                                                {/if} -->
                                             </div>
                                         </th>
                                         {#each cols as col, index}
                                             <td
-                                                class="level-{index}"
+                                                class={classNames(
+                                                    `text-caption flex justify-center font-normal level-${index}`,
+                                                    {
+                                                        'md:bg-greyscale-100': col === 'pro'
+                                                    }
+                                                )}
                                                 class:is-selected={col === tab}
                                             >
                                                 {#if typeof row[col] === 'string'}
                                                     {row[col]}
                                                 {:else}
                                                     <img
+                                                        class="mx-auto self-center"
                                                         src="/images/icons/gradients/v-icon.svg"
                                                         alt="yes"
                                                     />

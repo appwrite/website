@@ -122,15 +122,13 @@
             <div class="my-12 lg:my-[7.5rem]">
                 <section class="container pb-0">
                     <a
-                        href="/blog/post/announcing-appwrite-is-ccpa-compliant"
+                        href="/blog/post/announcing-roles-for-enhanced-collaboration-and-security"
                         class="web-hero-banner-button mb-4"
                     >
                         <span class="web-icon-star shrink-0" aria-hidden="true" />
-                        <span class="text-caption font-medium shrink-0">New</span>
+                        <span class="text-caption shrink-0 font-medium">New</span>
                         <div class="web-hero-banner-button-sep" />
-                        <span class="text-caption web-u-trim-1"
-                            >Appwrite is now CCPA compliant.</span
-                        >
+                        <span class="text-caption web-u-trim-1">Introducing Console Roles</span>
                         <span class="web-icon-arrow-right shrink-0" aria-hidden="true" />
                     </a>
                     <Hero>
@@ -303,10 +301,10 @@
                     </section>
                     <div class="mt-20 overflow-hidden">
                         <ul
-                            class="web-info-boxes text-sub-body divide-x divide-y divide-black/[0.04] font-medium"
+                            class="web-info-boxes text-sub-body divide-x divide-y divide-black/4 font-medium"
                         >
                             {#each infoBoxes as box}
-                                <li class="relative border-black/[0.04] p-8 last-of-type:border-r">
+                                <li class="relative border-black/4 p-8 last-of-type:border-r">
                                     <img src={box.icon} width="40" height="40" alt="" />
                                     <h3
                                         class="text-primary mt-4 flex flex-wrap items-baseline gap-3"
@@ -482,7 +480,7 @@
                             class="web-big-list-info web-u-inline-width-100-percent-mobile-break1 web-u-margin-block-start-48 ml-auto"
                         >
                             <li class="web-big-list-info-item">
-                                <div class="text-headline font-aeonik-pro text-primary">90K</div>
+                                <div class="text-headline font-aeonik-pro text-primary">100K</div>
                                 <div class="text">Projects</div>
                             </li>
                             <li class="web-big-list-info-item">
