@@ -3,6 +3,7 @@
     import { createDialog, melt } from '@melt-ui/svelte';
     import { getContext, hasContext } from 'svelte';
     import { fade, scale } from 'svelte/transition';
+    import { quadInOut } from 'svelte/easing';
 
     export let src: string;
     export let alt: string;
@@ -18,7 +19,13 @@
         preventScroll: false,
         forceVisible: true
     });
+
+    const handleScroll = () => {
+        if ($open) open.set(false);
+    };
 </script>
+
+<svelte:window on:scroll={handleScroll} />
 
 {#if inTable || isAudio}
     {#if isAudio}
@@ -33,7 +40,7 @@
         <img {src} {alt} {title} loading="lazy" class="web-u-media-ratio-16-9 w-full" />
         <div class="abs">
             <Tooltip closeOnPointerDown>
-                <button class="web-button is-secondary" use:melt={$trigger}>
+                <button class="web-button is-secondary cursor-pointer" use:melt={$trigger}>
                     <span class="icon-arrow-expand" aria-hidden="true" />
                 </button>
                 <svelte:fragment slot="tooltip">Expand</svelte:fragment>
@@ -43,7 +50,7 @@
 
     {#if $open}
         <div use:melt={$portalled}>
-            <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }} />
+            <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 350 }} />
 
             <img
                 class="web-media content"
@@ -52,7 +59,7 @@
                 {alt}
                 {title}
                 loading="lazy"
-                transition:scale={{ duration: 250, start: 0.95 }}
+                transition:scale={{ duration: 350, start: 0.8, easing: quadInOut }}
             />
         </div>
     {/if}
@@ -85,17 +92,17 @@
     }
 
     .overlay {
-        position: fixed;
         inset: 0;
-        background-color: rgba(0, 0, 0, 0.25);
-        z-index: 1000;
+        z-index: 25;
+        position: fixed;
+        background-color: rgba(27, 27, 27, 0.98);
     }
 
     .content {
+        inset: 0;
+        margin: auto;
         position: fixed;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
+        transform-origin: center;
 
         display: block;
         object-fit: contain;
