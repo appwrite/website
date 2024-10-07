@@ -13,7 +13,13 @@
     {#if groupItem.icon}
         <span class="icon {groupItem.icon}" aria-hidden="true" />
     {/if}
-    <span class="text-caption">{groupItem.label} </span>
+    <span class="text-caption flex gap-2">
+        <span>{groupItem.label}</span>
+
+        {#if groupItem.new}
+            <span class="web-inline-tag is-pink" style="">New</span>
+        {/if}
+    </span>
     {#if groupItem.isParent}
         <span class="icon-cheveron-right ml-auto" aria-hidden="true" />
     {/if}
@@ -22,5 +28,11 @@
 <style lang="scss">
     [class*='icon'] {
         font-size: 1rem;
+    }
+
+    .web-inline-tag {
+        font-size: 0.75rem;
+        padding-block: 2px;
+        margin-block-start: 1px;
     }
 </style>
