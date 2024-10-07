@@ -97,7 +97,7 @@
         'Marius Bolik',
         'CTO // mySHOEFITTER',
         'Appwrite has been a tremendous asset in implementing our IT infrastructure. Not only is the software an absolute game-changer, but the team is always there when you need them.',
-        'marius-bolik'
+        'marius-bolik2'
     );
 
     const souvikSarkar = testimonial(
@@ -132,7 +132,7 @@
         testimonial(
             'Diego Ferreyra',
             '@diego_ferreyra1',
-            'Loving it. I’ve been a web developer for 20+ years and I’ve never gotten from 0 lines to actual useful coding so fast. 100% recommend.',
+            "Loving it. I've been a web developer for 20+ years and I've never gotten from 0 lines to actual useful coding so fast. 100% recommend.",
             'diego-ferreyra'
         ),
         testimonial(
@@ -140,6 +140,12 @@
             '@alexparton',
             "I just migrated a project from Firebase to Appwrite: Authentication, Users, Databases and Storage. And I can't be more in love with it.",
             'alejandro-morales'
+        ),
+        testimonial(
+            'Jonas Janssen',
+            'Founder',
+            'Thanks to Appwrite and advances in technology, we were able to get an MVP out in 2-3 months with 1 developer.',
+            'jonas-janssen'
         ),
         mariusBolik
     ];
@@ -165,7 +171,7 @@
 <Main>
     <img class="absolute inset-0 mx-auto block" src={BackgroundHero} alt="" />
     <img class="e-bg-left-mobile absolute top-0" src={BackgroundLeft} alt="" />
-    <img class="e-bg-right-mobile absolute inset-y-0" src={BackgroundRight} alt="" />
+    <img class="e-bg-right-mobile absolute right-0" src={BackgroundRight} alt="" />
     <div class="web-big-padding-section relative overflow-hidden">
         <div class="relative py-10">
             <div class="web-big-padding-section-level-2 e-u-margin-block-128-desktop">
@@ -174,11 +180,11 @@
                         class="web-hero"
                         style="--hero-max-inline-size:49.375rem; --hero-gap:1.125rem;"
                     >
-                        <h1 class="web-headline web-u-color-text-primary">
+                        <h1 class="text-headline font-aeonik-pro text-primary">
                             Build your startup with Appwrite
                         </h1>
                         <p
-                            class="web-description web-u-max-width-640 e-u-padding-inline-32-desktop mx-auto"
+                            class="text-description web-u-max-width-640 e-u-padding-inline-32-desktop mx-auto"
                         >
                             The Appwrite Startups Program supports your startup with a complete
                             backend for you to build your products. Eligible startups receive
@@ -204,8 +210,8 @@
                                 alt=""
                             />
                             <div class="flex flex-col gap-2 text-center">
-                                <h2 class="web-label web-u-color-text-primary">Complete backend</h2>
-                                <p class="web-main-body-500">
+                                <h2 class="text-label text-primary">Complete backend</h2>
+                                <p class="text-body font-medium">
                                     Get access to Appwrite’s Scale plan and build your entire
                                     backend with Appwrite.
                                 </p>
@@ -219,8 +225,8 @@
                                 alt=""
                             />
                             <div class="flex flex-col gap-2 text-center">
-                                <h2 class="web-label web-u-color-text-primary">Cloud credits</h2>
-                                <p class="web-main-body-500">
+                                <h2 class="text-label text-primary">Cloud credits</h2>
+                                <p class="text-body font-medium">
                                     Get Appwrite Cloud Scale for 12 months and reduce risk at an
                                     early stage.
                                 </p>
@@ -234,8 +240,8 @@
                                 alt=""
                             />
                             <div class="flex flex-col gap-2 text-center">
-                                <h2 class="web-label web-u-color-text-primary">Priority support</h2>
-                                <p class="web-main-body-500">
+                                <h2 class="text-label text-primary">Priority support</h2>
+                                <p class="text-body font-medium">
                                     Get community support and priority email support from the
                                     Appwrite team.
                                 </p>
@@ -246,7 +252,7 @@
             </div>
         </div>
 
-        <div class="web-white-section theme-light relative py-10">
+        <div class="web-white-section light relative py-10">
             <div class="web-big-padding-section-level-2 e-mt-20-mobile">
                 <div class="container">
                     <div class="web-timeline-content">
@@ -257,10 +263,10 @@
                                     style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;"
                                 >
                                     <div class="flex flex-col gap-4">
-                                        <h3 class="web-title web-u-color-text-primary">
+                                        <h3 class="text-title font-aeonik-pro text-primary">
                                             Ship faster
                                         </h3>
-                                        <p class="web-main-body-500">
+                                        <p class="text-body font-medium">
                                             Utilizing Appwrite as your backend, you significantly
                                             cut down the time and resources spent on building a
                                             backend infrastructure from scratch. This means you can
@@ -279,15 +285,17 @@
                                             <div class="web-user-box">
                                                 <img
                                                     class="web-user-box-image"
-                                                    src="/images/community/avatars/myshoefitter.png"
+                                                    src="/images/testimonials/marius-bolik2.png"
                                                     alt="Avatar of Kap.ts"
                                                     width="48"
                                                     height="48"
                                                 />
-                                                <div class="web-user-box-name web-sub-body-500">
+                                                <div
+                                                    class="web-user-box-name text-sub-body font-medium"
+                                                >
                                                     Marius Bolik
                                                 </div>
-                                                <div class="web-user-box-username web-sub-body-400">
+                                                <div class="web-user-box-username text-sub-body">
                                                     CTO // mySHOEFITTER
                                                 </div>
                                             </div>
@@ -296,15 +304,15 @@
                                 </div>
 
                                 <div
-                                    class="is-only-desktop"
+                                    class="web-is-only-desktop"
                                     style="margin-block-start:80px; margin-inline-start: -50px"
                                 >
                                     <img alt="" src={ProjectTimeline} width="1250" />
                                 </div>
 
                                 <div
-                                    class="is-not-desktop"
-                                    style="min-inline-size: 700px; padding-block-start: 48px; margin-inline-start:-32px;"
+                                    class="web-is-not-desktop"
+                                    style="padding-block-start: 48px; margin-inline-start:-32px;"
                                 >
                                     <img alt="" src={ProjectTimeline} />
                                 </div>
@@ -318,10 +326,10 @@
                                         <img alt="" src={UsageGraphs} />
                                     </div>
                                     <div class="web-u-flex-basis-380 flex flex-col gap-4">
-                                        <h3 class="web-title web-u-color-text-primary">
+                                        <h3 class="text-title font-aeonik-pro text-primary">
                                             Scalable architecture
                                         </h3>
-                                        <p class="web-main-body-500">
+                                        <p class="text-body font-medium">
                                             Appwrite's scalable architecture ensures you can build
                                             your product with growth in mind. Whether you're just
                                             testing the waters or ready to scale up rapidly, our
@@ -341,10 +349,12 @@
                                                     width="48"
                                                     height="48"
                                                 />
-                                                <div class="web-user-box-name web-sub-body-500">
+                                                <div
+                                                    class="web-user-box-name text-sub-body font-medium"
+                                                >
                                                     {ryanOconner.name}
                                                 </div>
-                                                <div class="web-user-box-username web-sub-body-400">
+                                                <div class="web-user-box-username text-sub-body">
                                                     {ryanOconner.handle}
                                                 </div>
                                             </div>
@@ -365,10 +375,10 @@
                                     style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;"
                                 >
                                     <div class="flex flex-col gap-4">
-                                        <h3 class="web-title web-u-color-text-primary">
+                                        <h3 class="text-title font-aeonik-pro text-primary">
                                             Built-in security and compliance
                                         </h3>
-                                        <p class="web-main-body-500">
+                                        <p class="text-body font-medium">
                                             Appwrite comes with built-in security features like
                                             authentication, database security, and more, reducing
                                             the time and effort you need to spend on securing your
@@ -386,10 +396,12 @@
                                                     width="48"
                                                     height="48"
                                                 />
-                                                <div class="web-user-box-name web-sub-body-500">
+                                                <div
+                                                    class="web-user-box-name text-sub-body font-medium"
+                                                >
                                                     {souvikSarkar.name}
                                                 </div>
-                                                <div class="web-user-box-username web-sub-body-400">
+                                                <div class="web-user-box-username text-sub-body">
                                                     {souvikSarkar.handle}
                                                 </div>
                                             </div>
@@ -442,16 +454,17 @@
                                                             <div
                                                                 class="web-user-box-name flex gap-2"
                                                             >
-                                                                <span class="web-sub-body-500"
+                                                                <span
+                                                                    class="text-sub-body font-medium"
                                                                     >Walter O'Brien</span
                                                                 >
                                                                 <time
-                                                                    class="web-caption-400 web-u-color-text-tertiary"
+                                                                    class="text-caption web-u-color-text-tertiary"
                                                                     >8:32 AM</time
                                                                 >
                                                             </div>
                                                             <div
-                                                                class="web-user-box-content web-caption-400 web-u-color-text-primary"
+                                                                class="web-user-box-content text-caption text-primary"
                                                             >
                                                                 Hello devs! I am getting a CORS
                                                                 error when sending a request to the
@@ -473,16 +486,17 @@
                                                             <div
                                                                 class="web-user-box-name flex gap-2"
                                                             >
-                                                                <span class="web-sub-body-500"
+                                                                <span
+                                                                    class="text-sub-body font-medium"
                                                                     >Steven</span
                                                                 >
                                                                 <time
-                                                                    class="web-caption-400 web-u-color-text-tertiary"
+                                                                    class="text-caption web-u-color-text-tertiary"
                                                                     >8:38 AM</time
                                                                 >
                                                             </div>
                                                             <div
-                                                                class="web-user-box-content web-caption-400 web-u-color-text-primary"
+                                                                class="web-user-box-content text-caption text-primary"
                                                             >
                                                                 Hey Louis! Is this the message you
                                                                 get
@@ -509,16 +523,17 @@
                                                             <div
                                                                 class="web-user-box-name flex gap-2"
                                                             >
-                                                                <span class="web-sub-body-500"
+                                                                <span
+                                                                    class="text-sub-body font-medium"
                                                                     >Walter O'Brien</span
                                                                 >
                                                                 <time
-                                                                    class="web-caption-400 web-u-color-text-tertiary"
+                                                                    class="text-caption web-u-color-text-tertiary"
                                                                     >9:05 AM</time
                                                                 >
                                                             </div>
                                                             <div
-                                                                class="web-user-box-content web-caption-400 web-u-color-text-primary"
+                                                                class="web-user-box-content text-caption text-primary"
                                                             >
                                                                 Yes!
                                                             </div>
@@ -538,16 +553,17 @@
                                                             <div
                                                                 class="web-user-box-name flex gap-2"
                                                             >
-                                                                <span class="web-sub-body-500"
+                                                                <span
+                                                                    class="text-sub-body font-medium"
                                                                     >Steven</span
                                                                 >
                                                                 <time
-                                                                    class="web-caption-400 web-u-color-text-tertiary"
+                                                                    class="text-caption web-u-color-text-tertiary"
                                                                     >9:08 AM</time
                                                                 >
                                                             </div>
                                                             <div
-                                                                class="web-user-box-content web-caption-400 web-u-color-text-primary"
+                                                                class="web-user-box-content text-caption text-primary"
                                                             >
                                                                 You should be able to debug this
                                                                 with a few steps. Just follow this
@@ -566,10 +582,10 @@
                                         </div>
                                     </div>
                                     <div class="web-mx-auto-mobile ml-auto flex flex-col gap-4">
-                                        <h3 class="web-title web-u-color-text-primary">
+                                        <h3 class="text-title font-aeonik-pro text-primary">
                                             Power of open source community
                                         </h3>
-                                        <p class="web-main-body-500">
+                                        <p class="text-body font-medium">
                                             Join a growing community of developers and founders who
                                             use Appwrite to build their products. Gain access to a
                                             wealth of knowledge, support, and shared experiences to
@@ -587,10 +603,12 @@
                                                     width="48"
                                                     height="48"
                                                 />
-                                                <div class="web-user-box-name web-sub-body-500">
+                                                <div
+                                                    class="web-user-box-name text-sub-body font-medium"
+                                                >
                                                     {mariusBolik.name}
                                                 </div>
-                                                <div class="web-user-box-username web-sub-body-400">
+                                                <div class="web-user-box-username text-sub-body">
                                                     {mariusBolik.handle}
                                                 </div>
                                             </div>
@@ -606,7 +624,9 @@
             <div
                 class="web-big-padding-section-level-2 web-u-overflow-hidden e-mt-50-desktop e-mt-38-mobile"
             >
-                <h4 class="web-title web-u-color-text-primary mx-auto max-w-[350px] text-center">
+                <h4
+                    class="text-title font-aeonik-pro text-primary mx-auto max-w-[350px] text-center"
+                >
                     Focus on building your product
                 </h4>
                 <div class="scroll-carousel" use:infiniteScroll>
@@ -626,10 +646,10 @@
                                             width="48"
                                             height="48"
                                         />
-                                        <div class="web-user-box-name web-sub-body-500">
+                                        <div class="web-user-box-name text-sub-body font-medium">
                                             {t.name}
                                         </div>
-                                        <div class="web-user-box-username web-sub-body-400">
+                                        <div class="web-user-box-username text-sub-body">
                                             {t.handle}
                                         </div>
                                     </div>
@@ -641,31 +661,31 @@
             </div>
         </div>
 
-        <div id="form" class="overflow-hidden p-0 py-10">
-            <div class="web-big-padding-section-level-2 is-margin-replace-padding relative">
+        <div id="form" class="overflow-hidden pt-10">
+            <div class="pt-[7.5rem] is-margin-replace-padding relative">
                 <div class="relative">
                     <div class="web-big-padding-section-level-2">
                         <div class="container relative">
                             <img
-                                class="is-only-desktop absolute"
+                                class="web-is-only-desktop absolute"
                                 style="inset-inline-end:-650px; inset-block-start:-200px; max-width:none; max-height:none;"
                                 src={BlobGreen}
                                 alt=""
                             />
                             <img
-                                class="is-only-desktop absolute"
+                                class="web-is-only-desktop absolute"
                                 style="inset-inline-start:-1000px; inset-block-start:-800px; max-width:none; max-height:none;"
                                 src={BlobPink}
                                 alt=""
                             />
                             <img
-                                class="is-only-mobile absolute"
+                                class="web-is-only-mobile absolute"
                                 style="inset-inline-end:-450px; inset-block-start:400px; max-width:none; max-height:none;"
                                 src={BlobGreenMobile}
                                 alt=""
                             />
                             <img
-                                class="is-only-mobile absolute"
+                                class="web-is-only-mobile absolute"
                                 style="inset-inline-start:-700px; inset-block-start:-400px; max-width:none; max-height:none;"
                                 src={BlobPinkMobile}
                                 alt=""
@@ -679,10 +699,10 @@
                                         class:web-u-max-width-380={!submitted}
                                     >
                                         <section class="flex flex-col gap-5">
-                                            <h4 class="web-title web-u-color-text-primary">
+                                            <h4 class="text-title font-aeonik-pro text-primary">
                                                 Join the Appwrite Startups program
                                             </h4>
-                                            <p class="web-description">
+                                            <p class="text-description">
                                                 We support VC backed or revenue generating startups
                                                 that have been established within the last decade
                                                 with:
@@ -691,13 +711,13 @@
                                             <div class="flex flex-col gap-3">
                                                 <div class="flex gap-4">
                                                     <div class="web-check-bullet mt-1"></div>
-                                                    <p class="web-description">
+                                                    <p class="text-description">
                                                         Appwrite Cloud Scale for 12 months
                                                     </p>
                                                 </div>
                                                 <div class="flex gap-4">
                                                     <div class="web-check-bullet mt-1"></div>
-                                                    <p class="web-description">
+                                                    <p class="text-description">
                                                         Priority email support as part of Scale
                                                     </p>
                                                 </div>
@@ -713,18 +733,18 @@
                                         class="web-u-max-width-380 web-u-max-inline-size-none-mobile relative z-[1] mx-auto flex flex-col gap-2 text-center"
                                     >
                                         <h6
-                                            class="web-label e-mobile-fix-1 flex items-center justify-center gap-2"
+                                            class="text-label e-mobile-fix-1 flex items-center justify-center gap-2"
                                         >
                                             <img
                                                 class="shrink-0"
                                                 src="/images/icons/colored/check.svg"
                                                 alt=""
                                             />
-                                            <span class="web-u-color-text-primary"
+                                            <span class="text-primary"
                                                 >Thank you for your submission</span
                                             >
                                         </h6>
-                                        <p class="web-main-body-400">
+                                        <p class="text-body">
                                             Our team will review your application and get back to
                                             you soon.
                                         </p>
@@ -795,7 +815,7 @@
                                         <div
                                             class="web-u-flex-vertical-reverse-mobile flex justify-between gap-4"
                                         >
-                                            <p class="web-caption-400 web-u-max-width-380">
+                                            <p class="text-caption web-u-max-width-380">
                                                 {#if error}
                                                     {error}
                                                 {/if}
@@ -816,17 +836,18 @@
                         <div class="container relative" style:z-index="10">
                             <section class="web-grid-4-6">
                                 <header>
-                                    <div class="web-display web-u-color-text-primary">FAQ</div>
+                                    <div class="text-display font-aeonik-pro text-primary">FAQ</div>
                                 </header>
                                 <Faq />
                             </section>
                         </div>
                     </div>
-                    <div class="container">
-                        <FooterNav />
-                        <MainFooter />
-                    </div>
                 </div>
+            </div>
+
+            <div class="container">
+                <FooterNav />
+                <MainFooter />
             </div>
         </div>
     </div>
@@ -874,7 +895,7 @@
             flex-direction: column;
             gap: 32px;
         }
-        .web-hero .web-description {
+        .web-hero .text-description {
             margin-block-start: 0;
         }
         .e-u-padding-block-start-48-mobile {

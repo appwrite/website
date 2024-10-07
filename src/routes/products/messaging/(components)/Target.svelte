@@ -195,7 +195,7 @@
 <Step title="Step 2: Target">
     <div class="wrapper" bind:this={wrapper}>
         <svg
-            class="is-not-mobile"
+            class="web-is-not-mobile"
             viewBox="0 0 {width} {height}"
             xmlns="http://www.w3.org/2000/svg"
         >
@@ -235,7 +235,7 @@
                 />
 
                 <foreignObject x={textPos[0]} y={textPos[1]} width="360" height="64">
-                    <span class="web-eyebrow web-u-color-text-primary" data-active={$selected[i]}>
+                    <span class="text-micro uppercase text-primary" data-active={$selected[i]}>
                         {device.value}
                     </span>
                 </foreignObject>
@@ -281,7 +281,7 @@
         </svg>
 
         <div class="users-modal">
-            <h3 class="web-label web-u-color-text-primary">Select subscribers</h3>
+            <h3 class="text-label text-primary">Select subscribers</h3>
             <Accordion>
                 <ul class="accordion-items">
                     {#each users as user, i}
@@ -320,10 +320,10 @@
                                             return next;
                                         }}
                                     />
-                                    <span class="web-sub-body-500 web-u-color-text-primary">
+                                    <span class="text-sub-body font-medium text-primary">
                                         {user.name}
                                     </span>
-                                    <span class="web-caption-400">
+                                    <span class="text-caption">
                                         &nbsp;({selectedDevices}/{user.devices.length} targets)
                                     </span>
                                 </div>
@@ -340,7 +340,7 @@
                                             />
                                             <label for="device-{i}-{j}">
                                                 <span class="type">{device.type}</span>
-                                                <span class="web-caption-400">{device.value}</span>
+                                                <span class="text-caption">{device.value}</span>
                                             </label>
                                         </li>
                                     {/each}
@@ -368,10 +368,10 @@
     </div>
 
     <div class="target-text mt-4 flex flex-col items-center gap-6">
-        <h3 class="web-title web-u-color-text-primary text-center">
+        <h3 class="text-title font-aeonik-pro text-primary text-center">
             Target and group your subscribers
         </h3>
-        <p class="web-description text-center" style:max-inline-size="580px">
+        <p class="text-description text-center" style:max-inline-size="580px">
             Segment your users based on topics using list subscriptions to send focused messages.
         </p>
     </div>

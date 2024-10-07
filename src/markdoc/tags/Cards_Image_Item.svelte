@@ -11,12 +11,12 @@
 
 <li>
     <a {href} class="web-card is-normal" style:margin-block-end="0">
-        <img src={dark} alt="" class="hidden dark:block" width="32" height="32" />
-        <img src={light} alt="" class="block dark:hidden" width="32" height="32" />
-        <h4 class="web-sub-body-500 web-u-color-text-primary mt-2">
+        <img src={dark} alt="" class="web-u-only-dark" width="32" height="32" />
+        <img src={light} alt="" class="web-u-only-light" width="32" height="32" />
+        <h4 class="text-sub-body font-medium text-primary mt-2">
             {title}
         </h4>
-        <p class="web-sub-body-400 mt-1">
+        <p class="text-sub-body mt-1">
             <slot />
         </p>
     </a>

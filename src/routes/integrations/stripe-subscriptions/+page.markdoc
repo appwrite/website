@@ -7,7 +7,7 @@ featured: true
 isPartner: true
 isNew: true
 cover: /images/integrations/stripe-subscriptions/cover.png
-category: Payments
+category: payments
 product: 
     avatar: '/images/integrations/avatars/stripe.png'
     vendor: Stripe

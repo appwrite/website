@@ -1,1 +1,1 @@
-<span class="hidden dark:block"><slot /></span>
+<span class="web-u-only-dark"><slot /></span>

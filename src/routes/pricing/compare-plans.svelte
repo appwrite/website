@@ -7,7 +7,7 @@
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
-    import Tooltip from '../../lib/components/Tooltip.svelte';
+    import { classNames } from '$lib/utils/classnames';
 
     type Table = {
         title: string;
@@ -17,10 +17,11 @@
             free: string | true;
             pro: string | true;
             scale: string | true;
+            enterprise: string | true;
         }[];
     };
 
-    const cols = ['free', 'pro', 'scale'] as const;
+    const cols = ['free', 'pro', 'scale', 'enterprise'] as const;
 
     const tables = [
         {
@@ -30,31 +31,36 @@
                     title: 'Bandwidth',
                     free: '10GB',
                     pro: '300GB',
-                    scale: '300GB'
+                    scale: '300GB',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Additional bandwidth',
                     free: '-',
                     pro: '$40 per 100GB',
-                    scale: '$40 per 100GB'
+                    scale: '$40 per 100GB',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Storage',
                     free: '2GB',
                     pro: '150GB',
-                    scale: '150GB'
+                    scale: '150GB',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Additional storage',
                     free: '-',
                     pro: '$3 per 100GB',
-                    scale: '$3 per 100GB'
+                    scale: '$3 per 100GB',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Compute',
                     free: '750K executions',
                     pro: '3.5M executions',
-                    scale: '3.5M executions'
+                    scale: '3.5M executions',
+                    enterprise: 'Custom'
                 }
             ]
         },
@@ -65,67 +71,78 @@
                     title: 'Number of projects',
                     free: 'Unlimited',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'Projects pausing',
                     free: 'Never',
                     pro: 'Never',
-                    scale: 'Never'
+                    scale: 'Never',
+                    enterprise: 'Never'
                 },
                 {
                     title: 'Organization Members',
                     free: '1',
                     pro: '1',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'Additional Organization members',
                     free: '-',
                     pro: '$15 per member',
-                    scale: '$0'
+                    scale: '$0',
+                    enterprise: '$0'
                 },
                 {
                     title: 'Connected websites and apps',
                     free: '3 per project',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'Custom domains',
                     free: 'Unlimited',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'No Appwrite branding on emails',
                     free: '-',
                     pro: true,
-                    scale: true
+                    scale: true,
+                    enterprise: true
                 },
                 {
                     title: 'Custom SMTP',
                     free: '-',
                     pro: true,
-                    scale: true
+                    scale: true,
+                    enterprise: true
                 },
                 {
                     title: 'Webhooks',
                     free: '2 per project',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'Logs retention',
                     free: '1 hour',
                     pro: '7 days',
-                    scale: '28 days'
+                    scale: '28 days',
+                    enterprise: '90 days'
                 },
                 {
                     title: 'Budget caps and alerts',
                     free: 'Not needed',
                     pro: true,
-                    scale: true
+                    scale: true,
+                    enterprise: true
                 }
             ]
         },
@@ -136,25 +153,29 @@
                     title: 'Users',
                     free: '75,000 monthly active users',
                     pro: '200,000 monthly active users',
-                    scale: '200,000 monthly active users'
+                    scale: '200,000 monthly active users',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Additional users',
                     free: '-',
                     pro: '$3 per 1,000 users',
-                    scale: '$3 per 1,000 users'
+                    scale: '$3 per 1,000 users',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Teams',
                     free: '100 per project',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'SSO',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming soon'
+                    scale: 'Coming soon',
+                    enterprise: 'Coming soon'
                 }
             ]
         },
@@ -165,25 +186,29 @@
                     title: 'Databases',
                     free: '1 per project',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'Documents',
                     free: 'Unlimited',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'Reads & Writes',
                     free: 'Unlimited',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'Dedicated databases',
                     free: '-',
                     pro: 'Coming Soon',
-                    scale: 'Coming soon'
+                    scale: 'Coming soon',
+                    enterprise: 'Coming soon'
                 }
             ]
         },
@@ -194,19 +219,22 @@
                     title: 'Buckets',
                     free: '3 per project',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'File size limit',
                     free: '50MB',
                     pro: '5GB',
-                    scale: '5GB'
+                    scale: '5GB',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Image transformations',
                     free: 'Unlimited',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 }
             ]
         },
@@ -217,26 +245,30 @@
                     title: 'Functions',
                     free: '5 per project',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
                 {
                     title: 'Executions',
                     free: '750K',
                     pro: '3.5M',
-                    scale: '3.5M'
+                    scale: '3.5M',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Additional executions',
                     free: '-',
                     pro: '$2 per 1 Million',
-                    scale: '$2 per 1 Million'
+                    scale: '$2 per 1 Million',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Express builds',
                     info: 'Dedicated priority queues for build jobs',
                     free: '-',
                     pro: true,
-                    scale: true
+                    scale: true,
+                    enterprise: true
                 }
             ]
         },
@@ -247,19 +279,22 @@
                     title: 'Concurrent connections',
                     free: '250',
                     pro: '500',
-                    scale: '500'
+                    scale: '500',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Additional concurrent connections',
                     free: '-',
                     pro: '$5 per 1,000',
-                    scale: '$5 per 1,000'
+                    scale: '$5 per 1,000',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Messages',
                     free: '3M',
                     pro: 'Unlimited',
-                    scale: 'Unlimited'
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 }
             ]
         },
@@ -267,40 +302,53 @@
             title: 'Security',
             rows: [
                 {
+                    title: 'Organization roles',
+                    free: '-',
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
                     title: 'SOC-2',
                     free: '-',
                     pro: '-',
-                    scale: true
+                    scale: true,
+                    enterprise: true
                 },
                 {
                     title: 'HIPAA',
                     free: '-',
                     pro: '-',
-                    scale: true
+                    scale: true,
+                    enterprise: true
                 },
                 {
                     title: 'BAA',
                     free: '-',
                     pro: '-',
-                    scale: true
+                    scale: true,
+                    enterprise: true
                 },
                 {
-                    title: 'Additional organization roles',
+                    title: 'Custom organization roles',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming Soon'
+                    scale: 'Coming Soon',
+                    enterprise: 'Coming Soon'
                 },
                 {
                     title: 'Network logs',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming Soon'
+                    scale: 'Coming Soon',
+                    enterprise: 'Coming Soon'
                 },
                 {
                     title: 'Activity logs',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming Soon'
+                    scale: 'Coming Soon',
+                    enterprise: 'Coming Soon'
                 }
             ]
         },
@@ -311,25 +359,36 @@
                     title: 'Community',
                     free: true,
                     pro: true,
-                    scale: true
+                    scale: true,
+                    enterprise: true
                 },
                 {
                     title: 'Email',
                     free: '-',
                     pro: true,
-                    scale: true
+                    scale: true,
+                    enterprise: true
                 },
                 {
                     title: 'Priority',
                     free: '-',
                     pro: '-',
-                    scale: true
+                    scale: true,
+                    enterprise: true
                 },
                 {
                     title: 'SLA',
                     free: '-',
                     pro: '-',
-                    scale: true
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Private Slack channel',
+                    free: '-',
+                    pro: '-',
+                    scale: true,
+                    enterprise: true
                 }
             ]
         }
@@ -357,20 +416,20 @@
 
 <svelte:window on:scroll={() => (scrollDir = getScrollDir())} />
 
-<div class="web-white-section theme-light py-10">
+<div class="web-white-section light py-10">
     <div class="web-big-padding-section-level-2">
         <div class="relative">
             <article use:melt={$root}>
                 <div class="container">
                     <header
-                        class="web-u-text-align-center"
+                        class="text-center"
                         use:visible
                         on:visible={(e) => {
                             shouldShowTable = !e.detail;
                         }}
                     >
-                        <h3 class="web-title web-u-color-text-primary">Compare plans</h3>
-                        <p class="web-main-body-500 mt-4">
+                        <h3 class="text-title font-aeonik-pro text-primary">Compare plans</h3>
+                        <p class="text-body mt-4 font-medium">
                             Discover our plans and find the one that fits your project’s needs.
                         </p>
                     </header>
@@ -388,18 +447,18 @@
 								--p-secondary-tabs-bg-color-selected: var(--web-color-accent) / 0.08;"
                                 let:tab
                             >
-                                <span class="web-main-body-500 capitalize">{tab}</span>
+                                <span class="text-body font-medium capitalize">{tab}</span>
                             </TabsList>
                         </Tabs>
                     </div>
 
                     <div
-                        class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 web-u-container-query-inline sticky z-[5] gap-8"
-                        style:--inset-block-start={$isHeaderHidden ? '0px' : '70px'}
+                        class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 web-u-container-query-inline sticky z-10 gap-8"
+                        style:top={$isHeaderHidden ? '0px' : '70px'}
                         style:transition="inset-block-start 0.3s ease"
                     >
                         <div
-                            class="web-description web-u-color-text-primary self-center"
+                            class="text-description text-primary self-center"
                             style:opacity={browser ? 1 : 0}
                             style:position={browser ? 'relative' : undefined}
                         >
@@ -424,36 +483,46 @@
                             {/key}
                         </div>
                         <div class="web-mini-card">
-                            <div class="flex flex-wrap items-center justify-between gap-4">
-                                <h4 class="web-label web-u-color-text-primary">Free</h4>
+                            <div class="flex flex-col items-center justify-between gap-2">
+                                <h4 class="text-sub-body text-primary font-medium">Free</h4>
                                 <a
                                     href="https://cloud.appwrite.io/register"
-                                    class="web-button is-secondary"
+                                    class="web-button is-secondary !w-full"
                                 >
-                                    <span class="web-sub-body-500">Start building</span>
+                                    <span class="text-sub-body font-medium">Start building</span>
                                 </a>
                             </div>
                         </div>
                         <div class="web-mini-card">
-                            <div class="flex flex-wrap items-center justify-between gap-4">
-                                <h4 class="web-label web-u-color-text-primary">Pro</h4>
+                            <div class="flex flex-col items-center justify-between gap-2">
+                                <h4 class="text-sub-body text-primary font-medium">Pro</h4>
                                 <a
-                                    class="web-button"
+                                    class="web-button !w-full"
                                     href="https://cloud.appwrite.io/console?type=createPro"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <!-- <span class="web-sub-body-500">Start trial</span> -->
-                                    <span class="web-sub-body-500">Start building</span>
+                                    <span class="text-sub-body font-medium">Start building</span>
                                 </a>
                             </div>
                         </div>
                         <div class="web-mini-card">
-                            <div class="flex flex-wrap items-center justify-between gap-4">
-                                <h4 class="web-label web-u-color-text-primary">Scale</h4>
-                                <button class="web-button is-secondary" disabled>
-                                    <span class="web-sub-body-500">Coming soon</span>
+                            <div class="flex flex-col items-center justify-between gap-2">
+                                <h4 class="text-sub-body text-primary font-medium">Scale</h4>
+                                <button class="web-button is-secondary !w-full" disabled>
+                                    <span class="text-sub-body font-medium">Coming soon</span>
                                 </button>
+                            </div>
+                        </div>
+                        <div class="web-mini-card">
+                            <div class="flex flex-col items-center justify-between gap-2">
+                                <h4 class="text-sub-body text-primary font-medium">Enterprise</h4>
+                                <a
+                                    class="web-button is-secondary !w-full"
+                                    href="/contact-us/enterprise"
+                                >
+                                    <span class="text-sub-body font-medium">Contact</span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -462,7 +531,7 @@
                     {#each tables as table}
                         {@const isOpen = $value?.includes(table.title)}
                         <table
-                            class="web-compare-table web-sub-body-400"
+                            class="web-compare-table text-sub-body"
                             class:is-open-in-mobile={isOpen}
                             use:melt={$item(table.title)}
                             use:visible={{ top: 128 }}
@@ -478,7 +547,7 @@
                             }}
                         >
                             <caption
-                                class="web-compare-table-caption web-description web-u-color-text-primary text-left"
+                                class="web-compare-table-caption text-body text-primary text-left font-medium"
                                 use:melt={$heading({ level: 3 })}
                                 style:position={browser ? 'unset' : undefined}
                             >
@@ -496,21 +565,38 @@
 
                             <tbody class="web-compare-table-body" use:melt={$content(table.title)}>
                                 {#each table.rows as row}
-                                    <tr>
-                                        <th class="web-sub-body-500">
-                                            <div class="flex gap-1">
+                                    <tr class="md:text-center">
+                                        <th class="text-caption font-medium">
+                                            <div class="flex items-center gap-1 text-left">
                                                 {row.title}
+                                                <!-- {#if row.info}
+                                                    <Tooltip placement="top">
+                                                        <span
+                                                            class="icon-info"
+                                                            aria-hidden="true"
+                                                        />
+                                                        <svelte:fragment slot="tooltip">
+                                                            {row.info}
+                                                        </svelte:fragment>
+                                                    </Tooltip>
+                                                {/if} -->
                                             </div>
                                         </th>
                                         {#each cols as col, index}
                                             <td
-                                                class="level-{index}"
+                                                class={classNames(
+                                                    `text-caption flex justify-center font-normal level-${index}`,
+                                                    {
+                                                        'md:bg-greyscale-100': col === 'pro'
+                                                    }
+                                                )}
                                                 class:is-selected={col === tab}
                                             >
                                                 {#if typeof row[col] === 'string'}
                                                     {row[col]}
                                                 {:else}
                                                     <img
+                                                        class="mx-auto self-center"
                                                         src="/images/icons/gradients/v-icon.svg"
                                                         alt="yes"
                                                     />
@@ -527,3 +613,40 @@
         </div>
     </div>
 </div>
+
+<style>
+    .web-u-grid-auto-column-1fr {
+        grid-auto-columns: max-content;
+        grid-template-columns: repeat(5, 2fr);
+    }
+
+    .web-label {
+        font-size: var(--web-font-size-medium);
+    }
+
+    @media (min-width: 1024px) and (max-width: 1204px) {
+        .web-description:nth-child(2) {
+            padding-inline-start: 6rem;
+        }
+    }
+
+    @media (min-width: 1024px) and (max-width: 1085px) {
+        .web-button {
+            padding-inline: 0.125rem !important;
+        }
+
+        .web-button .web-sub-body-500 {
+            font-size: var(--web-font-size-micro) !important;
+        }
+    }
+
+    @media (min-width: 1024px) and (max-width: 1210px) {
+        .web-button {
+            padding-inline: 0.15rem !important;
+        }
+
+        .web-button .web-sub-body-500 {
+            font-size: var(--web-font-size-tiny);
+        }
+    }
+</style>

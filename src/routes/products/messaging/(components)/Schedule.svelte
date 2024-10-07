@@ -26,7 +26,7 @@
                     <div class="web-icon-chevron-left" />
                 </button>
                 <div class="flex items-center gap-4">
-                    <div class="web-label web-u-color-text-primary" use:melt={$heading}>
+                    <div class="text-label text-primary" use:melt={$heading}>
                         {$headingValue}
                     </div>
                     <button
@@ -45,7 +45,7 @@
             {#each $months as month}
                 <div class="grid" use:melt={$grid}>
                     {#each weekdays as day}
-                        <span class="web-eyebrow">
+                        <span class="text-micro uppercase">
                             {day}
                         </span>
                     {/each}
@@ -68,7 +68,7 @@
             {/each}
         </div>
 
-        <div class="time-picker is-only-desktop">
+        <div class="time-picker web-is-only-desktop">
             {#each { length: 11 } as _, i}
                 <div>
                     <span>{(3 + i).toString().padStart(2, '0')}</span>
@@ -79,8 +79,8 @@
         </div>
     </div>
 
-    <h3 class="web-title web-u-color-text-primary">Schedule your messages</h3>
-    <p class="web-description">Send messages immediately or schedule them for future delivery.</p>
+    <h3 class="text-title font-aeonik-pro text-primary">Schedule your messages</h3>
+    <p class="text-description">Send messages immediately or schedule them for future delivery.</p>
 </Step>
 
 <style lang="scss">

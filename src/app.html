@@ -17,7 +17,7 @@
         %sveltekit.head%
     </head>
 
-    <body class="dark theme-dark group/body" data-sveltekit-preload-data="hover">
+    <body class="dark group/body antialiased" data-sveltekit-preload-data="hover">
         <script>
             // Theme
             const isDocs = window.location.pathname.startsWith('/docs');
@@ -30,9 +30,9 @@
                             .matches
                             ? 'dark'
                             : 'light';
-                        document.body.classList.add(`${systemTheme}`);
+                        document.body.classList.add(systemTheme);
                     } else {
-                        document.body.classList.add(`${theme}`);
+                        document.body.classList.add(theme);
                         // Color scheme in html
                         document.documentElement.style.setProperty('color-scheme', theme);
                     }

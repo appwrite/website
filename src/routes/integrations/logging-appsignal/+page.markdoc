@@ -7,7 +7,7 @@ featured: false
 isPartner: true
 isNew: true
 cover: /images/integrations/logging-appsignal/cover.png
-category: Logging
+category: logging
 product: 
     avatar: '/images/integrations/avatars/appsignal.png'
     vendor: AppSignal

@@ -51,8 +51,8 @@
         <div class="flex gap-4">
             {#if ticket.gh_user}
                 <div class="flex items-center gap-2">
-                    <div class="web-u-color-text-primary flex items-center gap-2">
-                        <span class="web-sub-body-500">Connected to GitHub</span>
+                    <div class="text-primary flex items-center gap-2">
+                        <span class="text-sub-body font-medium">Connected to GitHub</span>
                     </div>
 
                     <Tooltip placement="bottom">
@@ -62,7 +62,7 @@
                 </div>
             {:else}
                 <button class="web-button is-secondary" on:click={loginGithub}>
-                    <div class="web-icon-github web-u-color-text-primary" />
+                    <div class="web-icon-github text-primary" />
                     <span class="text">Log in to GitHub</span>
                 </button>
             {/if}
@@ -89,7 +89,7 @@
 
         <div class="action-buttons flex gap-2">
             <button class="web-button is-secondary" on:click={copy}>
-                <div class="web-icon-{$copied ? 'check' : 'copy'} web-u-color-text-primary" />
+                <div class="web-icon-{$copied ? 'check' : 'copy'} text-primary" />
                 <span class="text">Copy URL</span>
             </button>
             <a
@@ -97,7 +97,7 @@
                 href="https://twitter.com/intent/tweet?text={twitterText}"
                 target="_blank"
             >
-                <div class="web-icon-x web-u-color-text-primary" />
+                <div class="web-icon-x text-primary" />
                 <span class="text">Share</span>
             </a>
         </div>

@@ -44,7 +44,7 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
             "live": true,
             "logging": true,
             "runtime": "node-18.0",
-            "deployment": "5df5acd0d48c2",
+            "deployment": "<PROJECT_ID>",
             "vars": [
                 {
                     "$id": "eyJhbGciOiJIUzI1N",

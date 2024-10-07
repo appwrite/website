@@ -11,6 +11,7 @@
     import { type SocialShareOption, socialSharingOptions } from '$lib/constants';
     import { copy } from '$lib/utils/copy';
     import { page } from '$app/stores';
+    import CTA from '$lib/components/BlogCta.svelte';
 
     export let title: string;
     export let description: string;
@@ -19,6 +20,13 @@
     export let timeToRead: string;
     export let cover: string;
     export let category: string;
+    export let callToAction:
+        | {
+              label: string;
+              url: string;
+              heading: string;
+          }
+        | boolean;
     export let lastUpdated: string;
 
     const authors = getContext<AuthorData[]>('authors');
@@ -102,7 +110,7 @@
                                     <span class="web-icon-chevron-left" aria-hidden="true" />
                                     <span>Back to blog</span>
                                 </a>
-                                <ul class="web-metadata web-caption-400">
+                                <ul class="web-metadata text-caption">
                                     <li>
                                         <time datetime={date}>{formatDate(date)}</time>
                                     </li>
@@ -110,9 +118,11 @@
                                         <li>{timeToRead} min</li>
                                     {/if}
                                 </ul>
-                                <h1 class="web-title web-u-color-text-primary">{title}</h1>
+                                <h1 class="text-title font-aeonik-pro text-primary">
+                                    {title}
+                                </h1>
                                 {#if description}
-                                    <p class="web-description mt-2">
+                                    <p class="text-description mt-2">
                                         {description}
                                     </p>
                                 {/if}
@@ -130,19 +140,17 @@
                                                 />
                                             {/if}
                                             <div class="flex flex-col">
-                                                <h4
-                                                    class="web-sub-body-400 web-u-color-text-primary"
-                                                >
+                                                <h4 class="text-sub-body text-primary">
                                                     {authorData.name}
                                                 </h4>
-                                                <p class="web-caption-400">{authorData.role}</p>
+                                                <p class="text-caption">{authorData.role}</p>
                                             </div>
                                         </a>
                                     </div>
                                 {/if}
 
                                 <div class="share-post-section mt-4 flex items-center gap-4">
-                                    <span class="web-eyebrow pr-2" style:color="#adadb0">
+                                    <span class="text-micro uppercase pr-2" style:color="#adadb0">
                                         SHARE
                                     </span>
 
@@ -198,7 +206,7 @@
 
                             <div class="web-article-content mt-8">
                                 {#if lastUpdated}
-                                    <span class="web-main-body-500 last-updated-text">
+                                    <span class="text-body font-medium last-updated-text">
                                         Updated:
                                         <time dateTime={lastUpdated}>
                                             {formatDate(lastUpdated)}
@@ -209,6 +217,7 @@
                                 <slot />
                             </div>
                         </article>
+
                         <!-- {#if categories?.length}
 							<div class="flex gap-4">
 								{#each categories as cat}
@@ -217,6 +226,11 @@
 							</div>
 						{/if} -->
                     </div>
+                    {#if typeof callToAction === 'boolean'}
+                        <CTA />
+                    {:else if typeof callToAction === 'object'}
+                        <CTA {...callToAction} />
+                    {/if}
                 </div>
             </div>
         </div>
@@ -225,7 +239,7 @@
     <div class="web-u-sep-block-start py-10">
         <div class="web-big-padding-section-level-2">
             <div class="container">
-                <h3 class="web-label web-u-color-text-primary">Read next</h3>
+                <h3 class="text-label text-primary">Read next</h3>
                 <section class="mt-8">
                     <ul class="web-grid-articles">
                         {#each posts.filter((p) => p.title !== title).slice(0, 3) as post}
@@ -246,7 +260,7 @@
                 </section>
             </div>
         </div>
-        <div class="web-big-padding-section-level-2 relative overflow-hidden">
+        <div class="pt-[7.5rem] relative overflow-hidden">
             <div class="container">
                 <Newsletter />
                 <FooterNav />

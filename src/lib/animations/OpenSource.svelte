@@ -2,7 +2,7 @@
     import { toScale, type Scale } from '$lib/utils/toScale';
     import { spring, type AnimationListOptions, type SpringOptions } from 'motion';
     import { animation, createScrollHandler, scroll, type Animation } from '.';
-    import { GITHUB_STARS } from '$lib/constants';
+    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
 
     const springOptions: SpringOptions = {
         stiffness: 58.78,
@@ -176,7 +176,7 @@
     }}
 >
     <div class="sticky-wrapper">
-        <h3 class="web-display !text-primary">Powered by Open Source</h3>
+        <h3 class="text-display font-aeonik-pro text-primary">Powered by Open Source</h3>
 
         <div class="cards-wrapper">
             <a
@@ -193,13 +193,13 @@
                         aria-label="Discord"
                     />
                 </div>
-                <div class="web-title mt-auto">17k+ Discord Members</div>
+                <div class="text-title font-aeonik-pro mt-auto">17k+ Discord Members</div>
             </a>
 
             <a
                 class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
                 id="oss-github"
-                href="https://github.com/appwrite/appwrite"
+                href="{GITHUB_REPO_LINK}"
             >
                 <div class="flex flex-col justify-between gap-8">
                     <span
@@ -208,7 +208,7 @@
                         aria-label="GitHub"
                     />
                 </div>
-                <div class="web-title mt-auto">
+                <div class="text-title font-aeonik-pro mt-auto">
                     {GITHUB_STARS}+ GitHub Stars
                 </div>
             </a>
@@ -225,7 +225,7 @@
                         aria-label="Twitter"
                     />
                 </div>
-                <div class="web-title mt-auto">128k+ Twitter Followers</div>
+                <div class="text-title font-aeonik-pro mt-auto">128k+ Twitter Followers</div>
             </a>
 
             <a
@@ -240,13 +240,13 @@
                         aria-label="YouTube"
                     />
                 </div>
-                <div class="web-title mt-auto">7k+ Youtube Subscribers</div>
+                <div class="text-title font-aeonik-pro mt-auto">7k+ Youtube Subscribers</div>
             </a>
 
             <a
                 class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
                 id="oss-commits"
-                href="https://github.com/appwrite/appwrite"
+                href="{GITHUB_REPO_LINK}"
             >
                 <div class="flex flex-col justify-between gap-8">
                     <span
@@ -255,7 +255,7 @@
                         aria-label="GitHub"
                     />
                 </div>
-                <div class="web-title mt-auto">21k+ Code Commits</div>
+                <div class="text-title font-aeonik-pro mt-auto">21k+ Code Commits</div>
             </a>
         </div>
     </div>

@@ -74,10 +74,10 @@
                             >
                                 {#if submitted}
                                     <section class="flex flex-col gap-5">
-                                        <h1 class="web-display web-u-color-text-primary">
+                                        <h1 class="text-display font-aeonik-pro text-primary">
                                             Thank you for your message
                                         </h1>
-                                        <p class="web-description web-u-padding-block-end-32">
+                                        <p class="text-description web-u-padding-block-end-32">
                                             Your message has been sent successfully. We appreciate
                                             your feedback, our team will try to get back to you as
                                             soon as possible.
@@ -91,10 +91,10 @@
                                     </section>
                                 {:else}
                                     <section class="flex flex-col gap-5">
-                                        <h1 class="web-display web-u-color-text-primary">
+                                        <h1 class="text-display font-aeonik-pro text-primary">
                                             Contact Us
                                         </h1>
-                                        <p class="web-description web-u-padding-block-end-40">
+                                        <p class="text-description web-u-padding-block-end-40">
                                             We'd love your input: questions, feature requests, bugs
                                             or compliments.
                                         </p>
@@ -103,7 +103,7 @@
                                 <section
                                     class="web-u-padding-block-start-40 web-u-sep-block-start flex flex-col gap-3"
                                 >
-                                    <h2 class="web-label web-u-color-text-primary">Follow us</h2>
+                                    <h2 class="text-label text-primary">Follow us</h2>
                                     <ul class="flex gap-2">
                                         {#each socials as social}
                                             <li>
@@ -181,12 +181,12 @@
                                 <div
                                     class="web-u-flex-vertical-reverse-mobile flex justify-between gap-4"
                                 >
-                                    <p class="web-caption-400 web-u-max-width-380">
+                                    <p class="text-caption web-u-max-width-380">
                                         {#if error}
                                             {error}
                                         {/if}
                                     </p>
-                                    <!-- <p class="web-caption-400 web-u-max-width-380">
+                                    <!-- <p class="text-caption web-u-max-width-380">
 										This form is protected by reCAPTCHA, and the Google <a
 											class="web-link"
 											href="/privacy"
