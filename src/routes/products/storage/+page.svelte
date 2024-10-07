@@ -29,14 +29,12 @@
 </svelte:head>
 
 <Main>
-    <div class="web-big-padding-section u-overflow-hidden">
-        <div
-            class="web-big-padding-section-level-1 u-position-relative u-overflow-hidden l-bgs-section-1"
-        >
-            <div class="web-big-padding-section-level-2 u-position-relative">
-                <section class="web-container hero web-u-padding-block-end-0">
-                    <div class="web-u-max-width-580 u-margin-inline-auto">
-                        <div class="u-flex u-cross-center u-gap-8 u-line-height-1">
+    <div class="web-big-padding-section overflow-hidden">
+        <div class="web-big-padding-section-level-1 l-bgs-section-1 relative overflow-hidden">
+            <div class="web-big-padding-section-level-2 relative">
+                <section class="container hero web-u-padding-block-end-0">
+                    <div class="web-u-max-width-580 mx-auto">
+                        <div class="u-line-height-1 flex items-center gap-2">
                             <img
                                 src="/images/icons/illustrated/dark/storage.png"
                                 alt=""
@@ -47,16 +45,14 @@
                                 >Storage<span class="web-u-text-color-primary-500">_</span></span
                             >
                         </div>
-                        <h1 class="web-display web-u-color-text-primary u-margin-block-start-20">
+                        <h1 class="text-display text-primary mt-5">
                             Robust and secure storage infrastructure
                         </h1>
-                        <p class="web-main-body-500 u-margin-block-start-20">
+                        <p class="text-body mt-5 font-medium">
                             Securely store files with advanced compression, encryption and image
                             transformations.
                         </p>
-                        <div
-                            class="u-flex u-gap-8 web-u-flex-vertical-mobile u-margin-block-start-32"
-                        >
+                        <div class="web-u-flex-vertical-mobile mt-8 flex gap-2">
                             <a href="/" class="web-button is-full-width-mobile">
                                 <span class="text">Get started</span>
                             </a>
@@ -65,82 +61,8 @@
                             </a>
                         </div>
                     </div>
-                    <div class="u-position-relative l-media-1">
+                    <div class="l-media-1 relative">
                         <div class="l-is-desktop">
-                            <!--                            <section class="web-card is-normal web-u-max-width-580 u-position-relative u-z-index-0 l-card-photos" style="&#45;&#45;card-padding:0.5rem;&#45;&#45;card-padding-mobile:0.5rem;">-->
-                            <!--                                <header class="u-flex u-gap-16 u-main-space-between u-cross-center u-padding-block-8 u-padding-inline-16 l-card-photos-header">-->
-                            <!--                                    <h5 class="heading-level-5 u-trim-1 u-line-height-1 web-u-color-text-primary l-image-header">Photos</h5>-->
-                            <!--                                    <button class="button is-secondary l-image-button" style="height:2rem">-->
-                            <!--                                        <span class="icon-plus" aria-hidden="true"></span>-->
-                            <!--                                        <span class="text">Create File</span>-->
-                            <!--                                    </button>-->
-                            <!--                                </header>-->
-                            <!--                                <div class="table l-dark-table" role="table">-->
-                            <!--                                    <div class="table-thead web-u-font-size-12" role="rowheader">-->
-                            <!--                                        <div class="table-row" role="row">-->
-                            <!--                                            <div style="" class="table-thead-col" role="columnheader">-->
-                            <!--                                                <span class="eyebrow-heading">Filename</span>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div style="&#45;&#45;p-col-width: 100;" class="table-thead-col" role="columnheader">-->
-                            <!--                                                <span class="eyebrow-heading">Type</span>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div style="&#45;&#45;p-col-width: 70;" class="table-thead-col" role="columnheader">-->
-                            <!--                                                <span class="eyebrow-heading">Size</span>-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                    <div class="table-tbody" role="rowgroup">-->
-                            <!--                                        <div class="table-row" role="row">-->
-                            <!--                                            <div style="" class="table-col " data-title="Name" role="cell">-->
-                            <!--                                                <div class="u-flex u-gap-12 u-cross-center">-->
-                            <!--                                                    <img width="32" height="32" class="avatar" src="/images/pages/storage/file-1.png" title="CiutatVella.mp4" alt="CiutatVella.mp4" style="&#45;&#45;size: 2rem; background-color: transparent;">-->
-                            <!--                                                    <span class="text u-trim">CiutatVella.mp4</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="table-col" data-title="Type" role="cell" data-private="">-->
-                            <!--                                            <span class="text u-trim">-->
-                            <!--                                                <span>image/png</span>-->
-                            <!--                                            </span>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="table-col" data-title="Size" role="cell" data-private="">-->
-                            <!--                                                120K-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                        <div class="table-row" role="row">-->
-                            <!--                                            <div style="" class="table-col " data-title="Name" role="cell">-->
-                            <!--                                                <div class="u-flex u-gap-12 u-cross-center">-->
-                            <!--                                                    <img width="32" height="32" class="avatar" src="/images/pages/storage/file-2.png" title="Eixample.mp4" alt="Eixample.mp4" style="&#45;&#45;size: 2rem; background-color: transparent;">-->
-                            <!--                                                    <span class="text u-trim">Eixample.mp4</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="table-col" data-title="Type" role="cell" data-private="">-->
-                            <!--                                            <span class="text u-trim">-->
-                            <!--                                                <span>image/jpg</span>-->
-                            <!--                                            </span>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="table-col" data-title="Size" role="cell" data-private="">-->
-                            <!--                                                145K-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                        <div class="table-row" role="row">-->
-                            <!--                                            <div style="" class="table-col " data-title="Name" role="cell">-->
-                            <!--                                                <div class="u-flex u-gap-12 u-cross-center">-->
-                            <!--                                                    <img width="32" height="32" class="avatar" src="/images/pages/storage/file-3.png" title="SantsMontjuïc.mp4" alt="SantsMontjuïc.mp4" style="&#45;&#45;size: 2rem; background-color: transparent;">-->
-                            <!--                                                    <span class="text u-trim">SantsMontjuïc.mp4</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="table-col" data-title="Type" role="cell" data-private="">-->
-                            <!--                                            <span class="text u-trim">-->
-                            <!--                                                <span>image/webp</span>-->
-                            <!--                                            </span>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="table-col" data-title="Size" role="cell" data-private="">-->
-                            <!--                                                85K-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                            <!--                            </section>-->
                             <img
                                 src="/images/pages/storage/photos.png"
                                 alt=""
@@ -148,7 +70,7 @@
                                 height="308"
                             />
                             <section
-                                class="web-media-container u-width-fit-content u-position-absolute u-z-index-1 web-u-inset-block-start-100 web-u-inset-inline-end-32-negative l-frame-parrot"
+                                class="web-media-container l-frame-parrot absolute top-20 -right-8 z-1 w-fit"
                             >
                                 <img
                                     src="images/pages/storage/green-parrots.avif"
@@ -158,10 +80,10 @@
                                 />
                             </section>
                             <section
-                                class="web-card is-normal web-code-console web-u-max-width-380 u-margin-block-start-56 u-position-relative u-z-index-5"
+                                class="web-card is-normal web-code-console web-u-max-width-380 u-margin-block-start-56 relative z-5"
                                 style="--card-padding:0.25rem; --card-padding-mobile:0.25rem;"
                             >
-                                <header class="web-code-console-header u-flex web-u-gap-6">
+                                <header class="web-code-console-header web-u-gap-6 flex">
                                     <span class="web-code-console-button is-red"></span>
                                     <span class="web-code-console-button is-yellow"></span>
                                     <span class="web-code-console-button is-green"></span>
@@ -181,12 +103,10 @@
                 </section>
             </div>
         </div>
-        <div
-            class="web-big-padding-section-level-1 u-position-relative web-u-sep-block-start l-bgs-section-2"
-        >
+        <div class="web-big-padding-section-level-1 web-u-sep-block-start l-bgs-section-2 relative">
             <div class="web-big-padding-section-level-2">
-                <section class="web-container hero web-u-padding-block-end-0">
-                    <div class="web-u-max-width-580 u-margin-inline-auto">
+                <section class="container hero web-u-padding-block-end-0">
+                    <div class="web-u-max-width-580 mx-auto">
                         <h2 class="web-title web-u-color-text-primary">
                             Preview media files however you want
                         </h2>
@@ -194,51 +114,49 @@
                             Appwrite Storage's preview endpoint lets you manipulate image previews
                             while also managing different formats and compression algorithms.
                         </p>
-                        <div class="u-flex u-gap-8 u-margin-block-start-32">
+                        <div class="u-margin-block-start-32 flex gap-2">
                             <a href="/" class="web-button is-secondary is-full-width-mobile">
                                 <span class="text">Learn more</span>
                             </a>
                         </div>
                     </div>
-                    <div class="u-position-relative l-media-2">
-                        <section
-                            class="web-media-container u-width-fit-content u-position-relative u-z-index-0 l-media-2-1"
-                        >
+                    <div class="l-media-2 relative">
+                        <section class="web-media-container l-media-2-1 relative z-0 w-fit">
                             <img
                                 src="images/pages/storage/exploring-the-world.png"
-                                alt="mountain photo"
+                                alt=""
                                 width="326"
                                 height="320"
                                 loading="lazy"
                             />
                         </section>
-                        <div class="u-z-index-1 l-box-image-1 l-media-2-2">
+                        <div class="l-box-image-1 l-media-2-2 z-1">
                             <img
                                 src="/images/pages/storage/corner-circle.svg"
                                 width="12"
                                 height="12"
-                                class="u-position-absolute web-u-inset-inline-start-6-negative web-u-inset-block-start-6-negative"
+                                class="web-u-inset-inline-start-6-negative web-u-inset-block-start-6-negative absolute"
                                 alt=""
                             />
                             <img
                                 src="/images/pages/storage/corner-circle.svg"
                                 width="12"
                                 height="12"
-                                class="u-position-absolute web-u-inset-inline-end-6-negative web-u-inset-block-start-6-negative"
+                                class="web-u-inset-inline-end-6-negative web-u-inset-block-start-6-negative absolute"
                                 alt=""
                             />
                             <img
                                 src="/images/pages/storage/corner-circle.svg"
                                 width="12"
                                 height="12"
-                                class="u-position-absolute web-u-inset-inline-start-6-negative web-u-inset-block-end-6-negative"
+                                class="web-u-inset-inline-start-6-negative web-u-inset-block-end-6-negative absolute"
                                 alt=""
                             />
                             <img
                                 src="/images/pages/storage/corner-circle.svg"
                                 width="12"
                                 height="12"
-                                class="u-position-absolute web-u-inset-inline-end-6-negative web-u-inset-block-end-6-negative"
+                                class="web-u-inset-inline-end-6-negative web-u-inset-block-end-6-negative absolute"
                                 alt=""
                             />
 
@@ -252,10 +170,10 @@
                             />
                         </div>
                         <section
-                            class="web-card is-normal web-code-console web-u-max-width-380 u-margin-block-start-56-negative u-position-relative u-z-index-5 l-media-2-3"
+                            class="web-card is-normal web-code-console web-u-max-width-380 u-margin-block-start-56-negative l-media-2-3 relative z-5"
                             style="--card-padding:0.25rem; --card-padding-mobile:0.25rem; margin-block-start:-200px;margin-inline-start:-40px;"
                         >
-                            <header class="web-code-console-header u-flex web-u-gap-6">
+                            <header class="web-code-console-header web-u-gap-6 flex">
                                 <span class="web-code-console-button is-red"></span>
                                 <span class="web-code-console-button is-yellow"></span>
                                 <span class="web-code-console-button is-green"></span>
@@ -269,13 +187,13 @@
                 </section>
             </div>
         </div>
-        <div class="web-big-padding-section-level-1 u-position-relative e-bg-image-pattern-bottom">
+        <div class="web-big-padding-section-level-1 e-bg-image-pattern-bottom relative">
             <div class="web-big-padding-section-level-2">
-                <section class="web-container hero-flipped web-u-padding-block-end-0">
+                <section class="container hero-flipped web-u-padding-block-end-0">
                     <div class="web-is-only-desktop">
                         <img src="/images/pages/storage/product-shot-3.png" width="687" alt="" />
                     </div>
-                    <div class="web-u-max-width-580 u-margin-inline-auto">
+                    <div class="web-u-max-width-580 mx-auto">
                         <h2 class="web-title web-u-color-text-primary">
                             Optimized for small and large files
                         </h2>
@@ -283,7 +201,7 @@
                             Appwrite offers chunked uploads for large files and several compression
                             options for optimized upload times.
                         </p>
-                        <div class="u-flex u-gap-8 u-margin-block-start-32">
+                        <div class="u-margin-block-start-32 flex gap-2">
                             <a href="/" class="web-button is-secondary is-full-width-mobile">
                                 <span class="text">Learn more</span>
                             </a>
@@ -294,31 +212,29 @@
                             src="/images/pages/storage/product-shot-3.png"
                             width="100%"
                             alt=""
-                            class="u-block web-u-max-width-580 u-margin-inline-auto"
+                            class="u-block web-u-max-width-580 mx-auto"
                         />
                     </div>
                 </section>
             </div>
             <div class="web-big-padding-section-level-2">
-                <div class="web-container">
+                <div class="container">
                     <div class="web-hero" style="--hero-max-inline-size:24rem; --hero-gap:1rem;">
                         <h1 class="web-title web-u-color-text-primary">
                             Protect your files and set permissions
                         </h1>
-                        <p class="web-main-body-500 web-u-max-width-380 u-margin-inline-auto">
+                        <p class="web-main-body-500 web-u-max-width-380 mx-auto">
                             Set up file encryption and granular user permissions in your storage
                             infrastructure
                         </p>
                         <a
                             href="/"
-                            class="web-button is-secondary is-full-width-mobile u-margin-inline-auto u-margin-block-start-16"
+                            class="web-button is-secondary is-full-width-mobile u-margin-block-start-16 mx-auto"
                             >Learn more</a
                         >
                     </div>
                 </div>
-                <div
-                    class="web-container u-flex u-main-center u-cross-start u-margin-block-start-64"
-                >
+                <div class="container u-main-center u-cross-start u-margin-block-start-64 flex">
                     <div
                         class="web-media-container u-flex-vertical u-max-width-100-percent is-only-desktop"
                         style="flex-basis:586px; border-radius:1.5rem"
@@ -329,7 +245,7 @@
                             <header
                                 class="e-header-console is-dark u-padding-block-end-0 u-flex-vertical u-gap-16"
                             >
-                                <div class=" u-flex u-gap-16">
+                                <div class=" u-gap-16 flex">
                                     <h4
                                         class="heading-level-5 web-u-color-text-primary u-trim-1 u-line-height-1"
                                         style="font-family: var(--web-font-family-aeonik-pro);"
@@ -374,7 +290,7 @@
                                 style="background: linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 100%), var(--background, #19191C);"
                             >
                                 <div class="web-card is-normal">
-                                    <div class="u-flex u-cross-center web-u-gap-20">
+                                    <div class="web-u-gap-20 flex items-center justify-center">
                                         <input type="checkbox" class="switch" checked />
                                         <div class="u-flex-vertical">
                                             <h5 class="web-caption-500 web-u-color-text-primary">
@@ -387,7 +303,7 @@
                                     </div>
                                 </div>
                                 <div class="web-card is-normal">
-                                    <div class="u-flex u-cross-center web-u-gap-20">
+                                    <div class="web-u-gap-20 flex items-center justify-center">
                                         <input type="checkbox" class="switch" checked />
                                         <div class="u-flex-vertical">
                                             <h5 class="web-caption-500 web-u-color-text-primary">
@@ -401,7 +317,7 @@
                                     </div>
                                 </div>
                                 <div class="web-card is-normal">
-                                    <div class="u-flex u-cross-center web-u-gap-20">
+                                    <div class="web-u-gap-20 flex items-center justify-center">
                                         <input type="checkbox" class="switch" checked />
                                         <div class="u-flex-vertical">
                                             <h5 class="web-caption-500 web-u-color-text-primary">
@@ -414,7 +330,7 @@
                                     </div>
                                 </div>
                                 <div class="web-card is-normal">
-                                    <div class="u-flex u-cross-center web-u-gap-20">
+                                    <div class="web-u-gap-20 flex items-center justify-center">
                                         <input type="checkbox" class="switch" />
                                         <div class="u-flex-vertical">
                                             <h5 class="web-caption-500 web-u-color-text-primary">
@@ -620,11 +536,9 @@
             </div>
         </div>
 
-        <div
-            class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light"
-        >
+        <div class="web-big-padding-section-level-1 web-white-section theme-light relative">
             <div class="web-big-padding-section-level-2">
-                <div class="web-container">
+                <div class="container">
                     <div class="web-hero is-center web-u-max-width-380">
                         <span class="web-badges web-eyebrow">Dashboard_</span>
                         <h2 class="web-title text-primary">
@@ -647,11 +561,11 @@
             </div>
 
             <div class="web-big-padding-section-level-2">
-                <div class="web-container">
-                    <div class="u-flex u-gap-32 web-u-flex-vertical-mobile">
+                <div class="container">
+                    <div class="u-gap-32 web-u-flex-vertical-mobile flex">
                         <div class="u-flex-vertical u-gap-32 u-stretch">
                             <div
-                                class="web-u-flex-vertical web-u-gap-2 web-u-max-width-580 u-margin-inline-auto"
+                                class="web-u-flex-vertical web-u-gap-2 web-u-max-width-580 mx-auto"
                             >
                                 <h3 class="web-main-body-500 web-u-color-text-primary">
                                     File management dashboard
@@ -662,7 +576,7 @@
                                 </p>
                             </div>
                             <img
-                                class="u-height-auto web-u-max-width-580 u-margin-inline-auto"
+                                class="u-height-auto web-u-max-width-580 mx-auto"
                                 src="/images/pages/storage/console-illustration.png"
                                 alt=""
                                 width="568"
@@ -672,7 +586,7 @@
                             <!--                            <div class="web-media" style="border-radius:1.5rem">-->
                             <!--                                <section class="web-card e-console-card is-white u-padding-0">-->
                             <!--                                    <header class="e-header-console is-light u-padding-block-end-0 u-flex-vertical u-gap-16">-->
-                            <!--                                        <div class=" u-flex u-gap-16">-->
+                            <!--                                        <div class=" flex u-gap-16">-->
                             <!--                                            <h4 class="heading-level-5 u-trim-1 u-line-height-1">Files</h4>-->
                             <!--                                            <div class="tag u-cross-child-end">-->
                             <!--                                                <code class="web-u-font-size-10">65f935a927c927931b68</code>-->
@@ -699,7 +613,7 @@
                             <!--                                        </div>-->
                             <!--                                    </header>-->
                             <!--                                    <div class="e-console-card-content u-flex-vertical u-gap-16 u-padding-block-start-16 u-padding-inline-start-24">-->
-                            <!--                                        <div class="u-flex u-gap-8">-->
+                            <!--                                        <div class="flex gap-2">-->
                             <!--                                            <div-->
                             <!--                                                    class="input-text-wrapper is-with-end-button u-width-full-line u-width-200"-->
                             <!--                                                    style="&#45;&#45;amount-of-buttons:1"-->
@@ -733,7 +647,7 @@
                             <!--                                                <div class="table-tbody" role="rowgroup">-->
                             <!--                                                    <div class="table-row" role="row">-->
                             <!--                                                        <div style="" class="table-col " data-title="Name" role="cell">-->
-                            <!--                                                            <div class="u-flex u-gap-12 u-cross-center">-->
+                            <!--                                                            <div class="flex u-gap-12 items-center justify-center">-->
                             <!--                                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-1.png" title="CiutatVella.mp4" alt="CiutatVella.mp4" style="&#45;&#45;size: 2rem; background-color: transparent;">-->
                             <!--                                                                <span class="text u-trim">CiutatVella.mp4</span>-->
                             <!--                                                            </div>-->
@@ -750,7 +664,7 @@
                             <!--                                                    </div>-->
                             <!--                                                    <div class="table-row" role="row">-->
                             <!--                                                        <div style="" class="table-col " data-title="Name" role="cell">-->
-                            <!--                                                            <div class="u-flex u-gap-12 u-cross-center">-->
+                            <!--                                                            <div class="flex u-gap-12 items-center justify-center">-->
                             <!--                                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-2.png" title="Eixample.mp4" alt="Eixample.mp4" style="&#45;&#45;size: 2rem; background-color: transparent;">-->
                             <!--                                                                <span class="text u-trim">Eixample.mp4</span>-->
                             <!--                                                            </div>-->
@@ -767,7 +681,7 @@
                             <!--                                                    </div>-->
                             <!--                                                    <div class="table-row" role="row">-->
                             <!--                                                        <div style="" class="table-col " data-title="Name" role="cell">-->
-                            <!--                                                            <div class="u-flex u-gap-12 u-cross-center">-->
+                            <!--                                                            <div class="flex u-gap-12 items-center justify-center">-->
                             <!--                                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-3.png" title="SantsMontjuïc.mp4" alt="SantsMontjuïc.mp4" style="&#45;&#45;size: 2rem; background-color: transparent;">-->
                             <!--                                                                <span class="text u-trim">SantsMontjuïc.mp4</span>-->
                             <!--                                                            </div>-->
@@ -784,7 +698,7 @@
                             <!--                                                    </div>-->
                             <!--                                                    <div class="table-row" role="row">-->
                             <!--                                                        <div style="" class="table-col " data-title="Name" role="cell">-->
-                            <!--                                                            <div class="u-flex u-gap-12 u-cross-center">-->
+                            <!--                                                            <div class="flex u-gap-12 items-center justify-center">-->
                             <!--                                                                <img width="32" height="32" class="avatar" src="/images/pages/storage/file-4.png" title="Barceloneta.mp4" alt="Barceloneta.mp4" style="&#45;&#45;size: 2rem; background-color: transparent;">-->
                             <!--                                                                <span class="text u-trim">Barceloneta.mp4</span>-->
                             <!--                                                            </div>-->
@@ -810,9 +724,7 @@
                             class="web-u-flex-sep"
                             style="--web-color-border: 240 5.7% 10.4% / 0.04;"
                         ></div>
-                        <div
-                            class="u-flex-vertical u-gap-32 u-stretch web-u-max-width-580 u-margin-inline-auto"
-                        >
+                        <div class="u-flex-vertical u-gap-32 u-stretch web-u-max-width-580 mx-auto">
                             <div class="web-u-flex-vertical web-u-gap-2">
                                 <h3 class="web-main-body-500 web-u-color-text-primary">
                                     Extensive settings options
@@ -839,7 +751,7 @@
                             <!--                                            <h4 class="web-caption-500 web-u-color-text-primary">Maximum file size</h4>-->
                             <!--                                            <p class="web-caption-500">Set the maximum file size (in bytes) allowed in the bucket.</p>-->
                             <!--                                        </div>-->
-                            <!--                                        <div class="u-flex u-gap-8">-->
+                            <!--                                        <div class="flex gap-2">-->
                             <!--                                            <div class="form-item u-stretch">-->
                             <!--                                                <label class="label" for="input1" style="&#45;&#45;p-label-text-color: var(&#45;&#45;color-neutral-80);">Size</label>-->
                             <!--                                                <input id="input1" class="input-text e-pink-input-light" placeholder="300">-->
@@ -863,7 +775,7 @@
                             <!--                                            <h4 class="web-caption-500 web-u-color-text-primary">Compression algorithm</h4>-->
                             <!--                                            <p class="web-caption-500">For files larger than 20MB, compression will be skipped even if it's enabled.</p>-->
                             <!--                                        </div>-->
-                            <!--                                        <div class="u-flex u-gap-8">-->
+                            <!--                                        <div class="flex gap-2">-->
                             <!--                                            <div class="form-item u-stretch">-->
                             <!--                                                <label class="label" for="input3" style="&#45;&#45;p-label-text-color: var(&#45;&#45;color-neutral-80);">Compression algorithm</label>-->
                             <!--                                                <div class="select e-pink-input-light">-->
@@ -883,7 +795,7 @@
                             <!--                                            <h4 class="web-caption-500 web-u-color-text-primary">File extensions</h4>-->
                             <!--                                            <p class="web-caption-500">Up to 100 file extensions can be added. Leave blank to allow all file types.</p>-->
                             <!--                                        </div>-->
-                            <!--                                        <div class="u-flex u-gap-8">-->
+                            <!--                                        <div class="flex gap-2">-->
                             <!--                                            <div class="form-item u-stretch u-max-width-100-percent">-->
                             <!--                                                <label class="label" for="input3" style="&#45;&#45;p-label-text-color: var(&#45;&#45;color-neutral-80);">Allowed file extensions</label>-->
                             <!--                                                <div class="input-text-wrapper">-->
@@ -902,7 +814,7 @@
                             <!--                                                        </div>-->
                             <!--                                                        <input id="read" placeholder="Allowed file extensions (mp4, jpg, pdf, etc.)" type="text" class="tags-input-text e-pink-input-light">-->
                             <!--                                                    </div>-->
-                            <!--                                                    <div class="u-flex u-gap-12 u-margin-block-start-8 u-overflow-x-auto" style="inline-size:calc(100% + 18px)">-->
+                            <!--                                                    <div class="flex u-gap-12 u-margin-block-start-8 u-overflow-x-auto" style="inline-size:calc(100% + 18px)">-->
                             <!--                                                        <button type="button" class="tag is-selected"><span class="icon-plus" aria-hidden="true"></span> jpg </button>-->
                             <!--                                                        <button type="button" class="tag"><span class="icon-plus" aria-hidden="true"></span> png </button>-->
                             <!--                                                        <button type="button" class="tag"><span class="icon-plus" aria-hidden="true"></span> svg </button>-->
@@ -924,11 +836,9 @@
         </div>
         <div class="web-big-padding-section-level-1 web-white-section theme-light">
             <div class="web-big-padding-section-level-2">
-                <div class="web-container">
+                <div class="container">
                     <div class="web-grid-1-1 u-row-gap-64">
-                        <div
-                            class="web-hero is-align-start web-u-max-width-580 web-u-margin-inline-auto-mobile"
-                        >
+                        <div class="web-hero is-align-start web-u-max-width-580 web-mx-auto-mobile">
                             <span class="web-badges web-eyebrow">APIs_</span>
                             <h2 class="web-title web-u-color-text-primary web-u-max-width-380">
                                 What you can do with Storage APIs
@@ -952,7 +862,7 @@
                             class="u-flex-vertical web-u-gap-20 u-min-width-0 u-max-width-100-percent"
                         >
                             <div
-                                class="l-scroll-in-mobile u-flex u-min-width-0 u-gap-8 u-overflow-x-auto"
+                                class="l-scroll-in-mobile u-min-width-0 u-overflow-x-auto flex gap-2"
                                 style=""
                             >
                                 <button class="tag is-selected"> List files </button>
@@ -966,14 +876,14 @@
                             >
                                 <header class="web-code-snippet-header">
                                     <div class="web-code-snippet-header-start">
-                                        <div class="u-flex u-gap-16">
+                                        <div class="u-gap-16 flex">
                                             <div class="web-tag">
                                                 <span class="text">Node.js</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="web-code-snippet-header-end">
-                                        <ul class="buttons-list u-flex u-gap-8">
+                                        <ul class="buttons-list flex gap-2">
                                             <li class="buttons-list-item">
                                                 <!-- REPLACE with dynamic partial used in Header of docs -->
                                                 <button class="web-select is-colored">
@@ -1012,8 +922,8 @@
                     </div>
                 </div>
             </div>
-            <div class="web-big-padding-section-level-2 u-position-relative l-bgs-purple">
-                <div class="web-container">
+            <div class="web-big-padding-section-level-2 l-bgs-purple relative">
+                <div class="container">
                     <ul class="web-multi-columns-1">
                         <li class="u-flex-vertical web-u-gap-20">
                             <div class="web-card is-white u-flex-vertical u-gap-20">
@@ -1082,11 +992,11 @@
                 </div>
             </div>
             <div class="web-big-padding-section-level-2">
-                <div class="web-container">
-                    <div class="web-hero is-center web-u-max-width-580 u-margin-inline-auto">
+                <div class="container">
+                    <div class="web-hero is-center web-u-max-width-580 mx-auto">
                         <h2 class="web-display web-u-color-text-primary">Powered by open source</h2>
                         <p
-                            class="web-main-body-500 web-u-margin-block-start-0 web-u-max-width-580 u-margin-inline-auto"
+                            class="web-main-body-500 web-u-margin-block-start-0 web-u-max-width-580 mx-auto"
                         >
                             Appwrite is a 100% open source project, giving you the flexibility and
                             support you need to get your project started.
@@ -1103,8 +1013,8 @@
                 </div>
             </div>
             <div class="web-big-padding-section-level-2">
-                <div class="web-container web-u-max-width-993">
-                    <div class="u-overflow-hidden web-u-margin-block-start-80">
+                <div class="container web-u-max-width-993">
+                    <div class="web-u-margin-block-start-80 overflow-hidden">
                         <ul
                             class="web-info-boxes is-one-inline-mobile items-centered web-sub-body-500 u-margin-inline-start-0"
                         >
@@ -1156,7 +1066,7 @@
 
         <div class="web-big-padding-section-level-1">
             <div class="web-big-padding-section-level-2">
-                <div class="web-container">
+                <div class="container">
                     <h5 class="web-label web-u-color-text-primary u-text-center">
                         Keep exploring our products
                     </h5>
@@ -1167,7 +1077,7 @@
                                 class="web-card is-transparent u-height-100-percent"
                                 style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                             >
-                                <div class="u-flex u-cross-center u-gap-8">
+                                <div class="flex items-center justify-center gap-2">
                                     <img
                                         src="/images/icons/illustrated/dark/auth.png"
                                         alt=""
@@ -1192,7 +1102,7 @@
                                 class="web-card is-transparent u-height-100-percent"
                                 style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                             >
-                                <div class="u-flex u-cross-center u-gap-8">
+                                <div class="flex items-center justify-center gap-2">
                                     <img
                                         src="/images/icons/illustrated/dark/functions.png"
                                         alt=""
@@ -1220,7 +1130,7 @@
                                 class="web-card is-transparent u-height-100-percent"
                                 style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                             >
-                                <div class="u-flex u-cross-center u-gap-8">
+                                <div class="flex items-center justify-center gap-2">
                                     <img
                                         src="/images/icons/illustrated/dark/databases.png"
                                         alt=""
@@ -1247,7 +1157,7 @@
                                 class="web-card is-transparent u-height-100-percent"
                                 style="--card-padding:1.5rem;--card-padding-mobile:1.5rem;"
                             >
-                                <div class="u-flex u-cross-center u-gap-8">
+                                <div class="flex items-center justify-center gap-2">
                                     <img
                                         src="/images/icons/illustrated/dark/messaging.png"
                                         alt=""
@@ -1274,7 +1184,7 @@
                                 class="web-card is-transparent u-height-100-percent"
                                 style="--card-padding:1.5rem; --card-padding-mobile:1.5rem;"
                             >
-                                <div class="u-flex u-cross-center u-gap-8">
+                                <div class="flex items-center justify-center gap-2">
                                     <img
                                         src="/images/icons/illustrated/dark/realtime.png"
                                         alt=""
@@ -1299,10 +1209,8 @@
                 </div>
             </div>
 
-            <div
-                class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
-            >
-                <div class="web-container">
+            <div class="web-big-padding-section-level-2 is-margin-replace-padding relative">
+                <div class="container">
                     <PreFooter />
                     <FooterNav />
                     <MainFooter />
