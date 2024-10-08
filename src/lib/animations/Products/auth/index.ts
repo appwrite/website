@@ -32,7 +32,7 @@ type State = {
 const state = createResettable<State>({
     email: '',
     password: '',
-    name: "Walter O'Brian",
+    name: "Walter O'Brien",
     showControls: false,
     submitted: false,
     controls: {
