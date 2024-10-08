@@ -1,7 +1,7 @@
 <script lang="ts">
     import { afterNavigate } from '$app/navigation';
     import { IsLoggedIn } from '$lib/components';
-    import { GITHUB_STARS } from '$lib/constants';
+    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import type { NavLink } from '$lib/layouts/Main.svelte';
 
     export let open = false;
@@ -37,7 +37,7 @@
         </div>
         <div class="web-side-nav-mobile-footer-buttons">
             <a
-                href="https://github.com/appwrite/appwrite/stargazers"
+                href="{GITHUB_REPO_LINK}"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="web-button is-text web-u-inline-width-100-percent-mobile"
