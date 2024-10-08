@@ -1,4 +1,5 @@
 import { base } from '$app/paths';
+
 export type CategoryData = {
     name: string;
     description: string;
@@ -105,9 +106,16 @@ export const categories = Object.values(categoriesGlob).map((categoryList) => {
     };
 });
 
-export const getAllBlogEntriesWithAuthors = () => {
+export const normalizeCategory = (str: string) => str?.replace(/\s+/g, '-').toLowerCase();
+
+export const getBlogEntries = () => {
+    const filteredCategories = categories.filter((category) =>
+        posts.some((post) => normalizeCategory(post.category) === normalizeCategory(category.name))
+    );
+
     return {
         authors,
+        filteredCategories,
         posts: posts.filter((post) => !post.unlisted)
     };
 };

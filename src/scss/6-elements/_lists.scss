@@ -28,6 +28,7 @@
   }
   >li {
     display:flex;
+    line-height: var(--web-line-height-md);
     &::before {
       counter-increment: numeric-list;
       content:counter(numeric-list); align-self:start;
