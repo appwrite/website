@@ -126,9 +126,11 @@
                         class="web-hero-banner-button mb-4"
                     >
                         <span class="web-icon-star shrink-0" aria-hidden="true" />
-                        <span class="text-caption shrink-0 font-medium">New</span>
+                        <span class="text-caption font-medium shrink-0">New</span>
                         <div class="web-hero-banner-button-sep" />
-                        <span class="text-caption web-u-trim-1">Introducing Console Roles</span>
+                        <span class="text-caption web-u-trim-1"
+                            >Introducing Console Roles</span
+                        >
                         <span class="web-icon-arrow-right shrink-0" aria-hidden="true" />
                     </a>
                     <Hero>
@@ -301,10 +303,10 @@
                     </section>
                     <div class="mt-20 overflow-hidden">
                         <ul
-                            class="web-info-boxes text-sub-body divide-x divide-y divide-black/4 font-medium"
+                            class="web-info-boxes text-sub-body divide-x divide-y divide-black/[0.04] font-medium"
                         >
                             {#each infoBoxes as box}
-                                <li class="relative border-black/4 p-8 last-of-type:border-r">
+                                <li class="relative border-black/[0.04] p-8 last-of-type:border-r">
                                     <img src={box.icon} width="40" height="40" alt="" />
                                     <h3
                                         class="text-primary mt-4 flex flex-wrap items-baseline gap-3"
