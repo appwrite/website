@@ -12,7 +12,7 @@
 
     export let tutorials: Array<Tutorial>;
 
-    const firstStepItem = tutorials[0];
+    const firstStepItem: Tutorial | null = tutorials[0] ?? null;
     // currentStep starts from 1, the arrays start from 0.
     const currentStepItem = (tutorials[currentStep - 1] ?? firstStepItem);
 
@@ -53,7 +53,7 @@
                     {/if}
                 </ul>
                 <div class="u-position-relative u-flex u-cross-center">
-                    <h1 class="web-title">{firstStepItem.title}</h1>
+                    <h1 class="web-title">{firstStepItem?.title}</h1>
                 </div>
             </div>
             <div class="web-article-header-end" />
