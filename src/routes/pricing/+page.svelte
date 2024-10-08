@@ -155,6 +155,7 @@
                                                 <li><span>3.5M executions</span></li>
                                                 <li><span>200K monthly active users</span></li>
                                                 <li><span>Email support</span></li>
+                                                <li><span>Daily backups stored for 7 days</span></li>
                                                 <li><span>Add-ons</span></li>
                                                 <li>
                                                     <span
@@ -204,6 +205,7 @@
                                                 <li><span>Organization roles</span></li>
                                                 <li><span>SSO</span></li>
                                                 <li><span>Activity logs</span></li>
+                                                 <li><span>Custom backup policies</span></li>
                                                 <li><span>Priority support</span></li>
                                             </ul>
                                         </div>
