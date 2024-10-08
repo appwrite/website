@@ -823,7 +823,8 @@ export default async ({ req, res, log }) => {
         case 'json':
             return res.json({"type": "This is a JSON response"});
         case 'binary':
-            return res.binary(InputFile.fromPath('/path/to/file', 'filename'));
+            const bytes = await fs.readFile('file.png');
+            return res.binary(bytes);
         case 'redirect':
             return res.redirect("https://appwrite.io", 301);
         case 'html':
@@ -838,7 +839,6 @@ export default async ({ req, res, log }) => {
 ```
 ```php
 <?php
-use Appwrite\InputFile;
 
 return function ($context) {
     switch ($context->req->query['type']) {
@@ -847,7 +847,8 @@ return function ($context) {
         case 'json':
             return $context->res->json(["type" => "This is a JSON response"]);
         case 'binary':
-            return $context->res->binary(InputFile::withPath('file.png'));
+            $fileContent = file_get_contents('file.png');
+            return $context->res->binary($fileContent);
         case 'redirect':
             return $context->res->redirect("https://appwrite.io", 301);
         case 'html':
@@ -860,7 +861,6 @@ return function ($context) {
 };
 ```
 ```python
-from appwrite.input_file import InputFile
 
 def main(context):
     type = context.req.query['type']
@@ -870,7 +870,9 @@ def main(context):
     elif type == 'json':
         return context.res.json({"type": "This is a JSON response"})
     elif type == 'binary':
-        return context.res.binary(InputFile.from_path('file.png'))
+        with open('file.png', 'rb') as file:
+            file_contents = file.read()
+        return context.res.binary(file_contents)
     elif type == 'redirect':
         return context.res.redirect("https://appwrite.io", 301)
     elif type == 'html':
@@ -888,7 +890,8 @@ def main(context)
         when 'json'
             return context.res.json({"type": "This is a JSON response"})
         when 'binary'
-            return context.res.binary(InputFile.from_path('dir/file.png'))
+            file_contents = File.binread('file.png')
+            return context.res.binary(file_contents)
         when 'redirect'
             return context.res.redirect("https://appwrite.io", 301)
         when 'html'
@@ -909,7 +912,8 @@ export default async ({ req, res, log }) => {
         case 'json':
             return res.json({type: "This is a JSON response"});
         case 'binary':
-            return res.binary(InputFile.fromPath('/path/to/file.png', 'file.png'));
+            const fileContents = await Deno.readFile('file.png');
+            return res.binary(fileContents);
         case 'redirect':
             return res.redirect("https://appwrite.io", 301);
         case 'html':
@@ -928,9 +932,12 @@ package handler
 import (
 	"io"
 	"os"
-
+	"embed"
 	"github.com/open-runtimes/types-for-go/v4/openruntimes"
 )
+
+//go:embed images/*.png
+var images embed.FS
 
 func Main(Context openruntimes.Context) openruntimes.Response {
 	switch Context.Req.Query["type"] {
@@ -939,8 +946,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 	case "json":
 		return Context.Res.Json(map[string]string{"type": "This is a JSON response"})
 	case "binary":
-		file, _ := os.Open("./destiny.png")
-		imageData, _ := io.ReadAll(file)
+		imageData, _ := images.ReadFile("file.png")
 		return Context.Res.Binary(imageData)
 	case "redirect":
 		return Context.Res.Redirect("https://appwrite.io")
@@ -952,6 +958,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 }
 ```
 ```dart
+import 'dart:io';
 import 'dart:async';
 
 Future<dynamic> main(final context) async {
@@ -961,7 +968,9 @@ Future<dynamic> main(final context) async {
         case 'json':
             return context.res.json({'type': 'This is a JSON response'});
         case 'binary':
-            return context.res.binary(InputFile(path: './path-to-files/image.jpg', filename: 'image.jpg'));
+            final file = File('file.png');
+            final fileContents = await file.readAsBytes();
+            return context.res.binary(fileContents);
         case 'redirect':
             return context.res.redirect('https://appwrite.io', 301);
         case 'html':
@@ -982,7 +991,8 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     case "json":
         return context.res.text(["type": "This is a JSON response"])
     case "binary":
-        return context.res.binary(InputFile.fromPath("file.png"))
+        let fileContents = FileManager.default.contents(atPath: "file.png")
+        return context.res.binary(fileContents)
     case "redirect":
         return context.res.redirect("https://appwrite.io", 301)
     case "html":
@@ -1005,7 +1015,7 @@ public class Handler {
             case "json":
                 return Context.Res.Text(new Dictionary<string, object>() { { "type", "This is a JSON response" } });
             case "binary":
-                return Context.Res.Binary(InputFile.FromPath("./path-to-files/image.jpg"));
+                return Context.Res.Binary(File.ReadAllBytes("file.png"));
             case "redirect":
                 return Context.Res.Redirect("https://appwrite.io", 301);
             case "html":
@@ -1023,14 +1033,13 @@ package io.openruntimes.kotlin.src
 
 import io.openruntimes.kotlin.RuntimeContext
 import io.openruntimes.kotlin.RuntimeOutput
-import io.appwrite.models.InputFile
 
 class Main {
     fun main(context: RuntimeContext): RuntimeOutput {
         when (context.req.query["type"]) {
             "empty" -> return context.res.empty()
             "json" -> return context.res.text(mapOf("type" to "This is a JSON response"))
-            "binary" -> return context.res.binary(InputFile.fromPath("file.png"))
+            "binary" -> return context.res.binary(File("file.png").readBytes())
             "redirect" -> return context.res.redirect("https://appwrite.io", 301)
             "html" -> return context.res.text("<h1>This is an HTML response</h1>", 200, mapOf("content-type" to "text/html"))
             else -> return context.res.text("This is a text response")
@@ -1043,7 +1052,6 @@ package io.openruntimes.java.src;
 
 import io.openruntimes.java.RuntimeContext;
 import io.openruntimes.java.RuntimeOutput;
-import io.appwrite.models.InputFile;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -1057,7 +1065,7 @@ public class Main {
                 data.put("type", "This is a JSON response");
                 return context.getRes().text(data);
             case "binary"
-                return context.getRes().binary(InputFile.fromPath("file.png"));
+                return context.getRes().binary(Files.readAllBytes(Paths.get("file.png")));
             case "redirect":
                 return context.getRes().redirect("https://appwrite.io", 301);
             case "html":
@@ -1087,7 +1095,8 @@ namespace runtime {
           data["type"] = "This is a JSON response";
           return context.res.text(data);
         } else if (type == "binary") {
-          return context.res.binary(InputFile.fromPath("file.png"))
+          std::vector<char> buffer(std::istreambuf_iterator<char>(std::ifstream("file.png", std::ios::binary)), {});
+          return context.res.binary(buffer)
         } else if (type == "redirect") {
           return context.res.redirect("https://appwrite.io", 301);
         } else if (type == "html") {
