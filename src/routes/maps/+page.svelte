@@ -1,8 +1,8 @@
 <script lang="ts">
-    import MapWithMarkers from '$lib/components/regions/MapWithMarkers.svelte';
+    import Map from '$lib/components/regions/Map.svelte';
     import Main from '$lib/layouts/Main.svelte';
 </script>
 
 <Main>
-    <MapWithMarkers />
+    <Map />
 </Main>
