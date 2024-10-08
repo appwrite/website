@@ -125,7 +125,10 @@
                     style:animation-delay="{i * 100 + 800}ms"
                     style:animation-duration="500ms"
                 >
-                    <g class="group relative flex origin-center" style="--radius:{radius}px">
+                    <g
+                        class="group relative flex origin-center cursor-pointer"
+                        style="--radius:{radius}px"
+                    >
                         <circle
                             cx={pin.cx}
                             cy={pin.cy}
