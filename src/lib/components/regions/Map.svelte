@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
     import { fly } from 'svelte/transition';
 
     const width = 1200;
@@ -13,6 +12,8 @@
         available?: boolean;
         release?: string;
     };
+
+    type TooltipData = Omit<Pin, 'lat' | 'lng'> & { x: number; y: number };
 
     const getPins = (locations: Array<Pin>) => {
         const mapWidth = 1000;
@@ -97,18 +98,13 @@
         }
     ]);
 
-    let tooltip: {
-        x: number;
-        y: number;
-        country: null | string;
-        city: null | string;
-        available: null | boolean;
-    } = {
+    let tooltip: TooltipData = {
         x: 0,
         y: 0,
-        country: null,
-        city: null,
-        available: null
+        city: '',
+        code: '',
+        release: '',
+        available: undefined
     };
 
     let showTooltip: boolean = false;
@@ -117,16 +113,10 @@
 
     const handleTooltip = ({
         event,
-        activeCity,
-        activeCountry,
-        isAvailable
+        ...pin
     }: {
         event: MouseEvent;
-        activeCity: string;
-        activeCountry: string;
-        isAvailable: boolean;
-        index: number;
-    }) => {
+    } & Omit<TooltipData, 'x' | 'y'>) => {
         const mapRect = mapContainer.getBoundingClientRect();
         const mouseX = event.clientX - mapRect.left;
         const mouseY = event.clientY - mapRect.top;
@@ -135,13 +125,12 @@
         tooltip = {
             x: mouseX,
             y: mouseY,
-            city: activeCity,
-            country: activeCountry,
-            available: isAvailable
+            city: pin.city,
+            code: pin.code,
+            available: pin.available,
+            release: pin.release
         };
     };
-
-    console.log(showTooltip);
 </script>
 
 <div class="light bg-[#EDEDF0] !py-10">
@@ -160,7 +149,7 @@
             >
                 <span class="text-primary text-caption w-fit"
                     >{tooltip.city}
-                    ({tooltip.country})</span
+                    ({tooltip.code})</span
                 >
                 {#if tooltip.available}
                     <div
@@ -172,7 +161,7 @@
                     <div
                         class="text-caption flex h-5 items-center justify-center place-self-start rounded-[6px] bg-black/6 p-1 text-center text-[#56565C]"
                     >
-                        <span class="text-micro -tracking-tight">Q4 2024</span>
+                        <span class="text-micro -tracking-tight">{tooltip.release}</span>
                     </div>
                 {/if}
             </div>
@@ -201,11 +190,11 @@
                     role="presentation"
                     on:mouseenter={(event) => {
                         handleTooltip({
-                            index,
                             event,
-                            activeCity: pin.city,
-                            activeCountry: pin.code,
-                            isAvailable: Boolean(pin.available)
+                            city: pin.city,
+                            code: pin.code,
+                            available: pin.available,
+                            release: pin.release
                         });
                     }}
                     on:mouseleave={() => (showTooltip = false)}
