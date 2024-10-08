@@ -213,9 +213,9 @@
  		{
                     title: 'Backups',
                     free: '-',
-                    pro: 'true',
-                    scale: 'true',
-                    enterprise: 'true'
+                    pro: '7 days retention,',
+                    scale: 'Custom',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Dedicated databases',
