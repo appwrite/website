@@ -70,16 +70,14 @@ export async function GET(event) {
   const session = await account.createSession(userId, secret);
 
   // Redirect to the account page, and set the session cookie
-  const headers = new Headers({
-    location: "/account",
-    "set-cookie": event.cookies.serialize(SESSION_COOKIE, session.secret, {
-      sameSite: "strict",
-      expires: new Date(session.expire),
-      secure: true,
-      path: "/",
-    }),
+  event.cookies.set(SESSION_COOKIE, session.secret, {
+   httpOnly: true,
+   sameSite: "lax", // allows cookies to be includen on get requests (e.g. Redirects)
+   secure: true,
+   expires: new Date(session.expire),
+   path: "/",
   });
 
-  return new Response(null, { status: 302, headers });
+  redirect(302, "/account");
 }
 ```
