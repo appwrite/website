@@ -20,7 +20,7 @@
     $: prevStep = tutorials.find((tutorial) => tutorial.step === currentStep - 1);
 
     // `any` for compatibility with reactive variables.
-    function getCorrectTitle(tutorial: any | Tutorial, checkAt: number): string {
+    function getCorrectTitle(tutorial: Tutorial, checkAt: number): string {
         if (tutorial.step === checkAt) {
             return 'Introduction';
         } else {
