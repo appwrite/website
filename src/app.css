@@ -53,7 +53,6 @@
     --color-white: hsl(0 0% 100%);
     --color-black: hsl(0 0% 0%);
     --color-transparent: rgba(0, 0, 0, 0);
-    --color-smooth: hsl(var(--color-greyscale-hue) 6%, 10%, 0.04);
     --color-greyscale-25: hsl(var(--color-greyscale-hue) 11% 98%);
     --color-greyscale-50: hsl(var(--color-greyscale-hue) 11% 94%);
     --color-greyscale-100: hsl(var(--color-greyscale-hue) 6% 90%);
@@ -68,12 +67,6 @@
     --color-greyscale-800: hsl(var(--color-greyscale-hue) 4% 18%);
     --color-greyscale-850: hsl(var(--color-greyscale-hue) 3% 14%);
     --color-greyscale-900: hsl(var(--color-greyscale-hue) 5.7% 10.4%);
-
-    /* utility colors */
-    --color-badge-bg-light: #f2c8d6;
-    --color-badge-border-light: #f69db7;
-    --color-badge-bg-dark: #2c2c2f;
-    --color-badge-border-dark: #39393c;
 
     /* Animations */
     --animate-scale-in: scale-in 200ms ease-out forwards;
@@ -201,16 +194,12 @@
     --color-primary: var(--color-greyscale-900);
     --color-secondary: var(--color-greyscale-700);
     --color-accent: var(--color-pink-600);
-    --color-badge-bg: var(--color-badge-bg-light);
-    --color-badge-border: var(--color-badge-border-light);
 }
 
 /* dark theme */
 .dark {
     --color-primary: var(--color-greyscale-100);
     --color-secondary: var(--color-greyscale-300);
-    --color-badge-bg: var(--color-badge-bg-dark);
-    --color-badge-border: var(--color-badge-border-dark);
 }
 
 /* Container */
