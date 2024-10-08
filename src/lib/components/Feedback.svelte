@@ -1,5 +1,6 @@
 <script lang="ts">
     import { page } from '$app/stores';
+    import { fade } from 'svelte/transition';
     import { loggedIn, user } from '$lib/utils/console';
 
     export let date: string | undefined = undefined;
@@ -16,7 +17,6 @@
         error = undefined;
 
         const cloudUserId = loggedIn && $user?.$id ? $user.$id : undefined;
-        const cloudUserEmail = loggedIn && $user?.email ? $user.email : undefined;
 
         const response = await fetch('https://growth.appwrite.io/v1/feedback/docs', {
             method: 'POST',
@@ -29,8 +29,7 @@
                 route: $page.route.id,
                 comment,
                 metaFields: {
-                    cloudUserId,
-                    cloudUserEmail
+                    cloudUserId
                 }
             })
         });
@@ -41,6 +40,7 @@
         }
         comment = email = '';
         submitted = true;
+        setTimeout(() => (showFeedback = false), 500);
     }
 
     function reset() {
@@ -52,6 +52,10 @@
 
     $: if (!showFeedback) {
         reset();
+    }
+
+    $: if (showFeedback && loggedIn && $user?.email) {
+        email = $user?.email;
     }
 </script>
 
@@ -112,6 +116,7 @@
             on:submit|preventDefault={handleSubmit}
             class="web-card is-normal"
             style="--card-padding:1rem"
+            out:fade={{ duration: 450 }}
         >
             <div class="flex flex-col gap-2">
                 <label for="message">
