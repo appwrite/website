@@ -133,7 +133,7 @@
     };
 </script>
 
-<div class="light:bg-[#EDEDF0] !py-10">
+<div class="light bg-[#EDEDF0] !py-10">
     <div
         class="container relative mx-auto flex h-full items-center justify-center py-10"
         bind:this={mapContainer}
