@@ -59,19 +59,23 @@ When dependency resolution is complete, click **Add Package** again to add the S
 In order to allow creating OAuth sessions, the following URL scheme must be added to your **Info.plist** file.
 
 ```xml
-<key>CFBundleURLTypes</key>
-<array>
+<plist version="1.0">
 <dict>
-    <key>CFBundleTypeRole</key>
-    <string>Editor</string>
-    <key>CFBundleURLName</key>
-    <string>io.appwrite</string>
-    <key>CFBundleURLSchemes</key>
-    <array>
-        <string>appwrite-callback-[PROJECT_ID]</string>
-    </array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>io.appwrite</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>appwrite-callback-[PROJECT_ID]</string>
+			</array>
+		</dict>
+	</array>
 </dict>
-</array>
+</plist>
 ```
 
 If you're using UIKit as opposed to SwiftUI, you will also need to add the following to your **SceneDelegate.swift** file.
