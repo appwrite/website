@@ -24,21 +24,21 @@
         Permissions
     </h4>
     <div class="flex w-full flex-1 flex-col p-6">
-        <div class="flex justify-between border-b border-white/10 pb-4">
-            <span class="web-eyebrow">Role</span>
+        <div class="flex border-b border-white/10 pb-4">
+            <span class="web-eyebrow flex-[1.5]">Role</span>
 
             {#each headings as heading}
-                <span class="web-eyebrow">{heading}</span>
+                <span class="web-eyebrow flex-1">{heading}</span>
             {/each}
         </div>
 
         <div class="flex flex-1 flex-col items-stretch divide-y divide-white/10">
             {#each $permissions as { label, options }, index}
-                <div class="flex grow justify-between">
-                    <span class="text-primary">{label}</span>
+                <div class="flex grow items-center justify-between">
+                    <span class="text-primary text-caption flex-[1.5]">{label}</span>
 
                     {#each options as option, i}
-                        <div>
+                        <div class="flex-1">
                             <input
                                 type="checkbox"
                                 aria-label={`role ${label} ${headings[i].toLowerCase()}`}
