@@ -122,7 +122,7 @@ You can add the `--force` flag to any command that may ask you questions, such a
 Till this generation, Appwrite CLI supported non-interactive login for API-key-based authorization only, as follows:
 
 ```bash
-appwrite client --projectId PROJECT_ID --key APY_KEY
+appwrite client --project-id PROJECT_ID --key APY_KEY
 ```
 
 In this version, we've added a headless login, which allows users to log in and execute commands from the user level.
