@@ -5,6 +5,9 @@
     import { Main } from '$lib/layouts';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
+    import { Permission } from '@appwrite.io/console';
+    import Checkbox from '../messaging/(components)/Checkbox.svelte';
+    import Permissions from './(components)/Permissions.svelte';
 
     const title = 'Storage' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -52,7 +55,7 @@
                             Securely store files with advanced compression, encryption and image
                             transformations.
                         </p>
-                        <div class="web-u-flex-vertical-mobile mt-8 flex gap-2">
+                        <div class="web-flex flex-col-mobile mt-8 flex gap-2">
                             <a href="/" class="web-button is-full-width-mobile">
                                 <span class="text">Get started</span>
                             </a>
@@ -236,20 +239,17 @@
                 </div>
                 <div class="container u-main-center u-cross-start u-margin-block-start-64 flex">
                     <div
-                        class="web-media-container u-flex-vertical u-max-width-100-percent is-only-desktop"
+                        class="web-media-container u-max-width-100-percent is-only-desktop flex flex-col"
                         style="flex-basis:586px; border-radius:1.5rem"
                     >
                         <section
-                            class="web-card e-console-card is-dark u-padding-0 u-flex-vertical u-stretch"
+                            class="web-card e-console-card is-dark u-padding-0 flex flex-1 flex-col"
                         >
                             <header
-                                class="e-header-console is-dark u-padding-block-end-0 u-flex-vertical u-gap-16"
+                                class="e-header-console is-dark u-padding-block-end-0 u-gap-16 flex flex-col"
                             >
                                 <div class=" u-gap-16 flex">
-                                    <h4
-                                        class="heading-level-5 web-u-color-text-primary u-trim-1 u-line-height-1"
-                                        style="font-family: var(--web-font-family-aeonik-pro);"
-                                    >
+                                    <h4 class="text-label text-primary font-aeonik-pro">
                                         My Bucket
                                     </h4>
                                     <div class="tag u-cross-child-end web-u-color-text-secondary">
@@ -286,30 +286,30 @@
                                 </div>
                             </header>
                             <div
-                                class="e-console-card-content u-flex-vertical u-gap-16 u-padding-24 u-stretch"
+                                class="e-console-card-content flex flex-1 flex-col gap-4 p-6"
                                 style="background: linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 100%), var(--background, #19191C);"
                             >
                                 <div class="web-card is-normal">
-                                    <div class="web-u-gap-20 flex items-center justify-center">
+                                    <div class="flex items-center justify-center gap-5">
                                         <input type="checkbox" class="switch" checked />
-                                        <div class="u-flex-vertical">
-                                            <h5 class="web-caption-500 web-u-color-text-primary">
+                                        <div class="flex flex-col">
+                                            <h5 class="text-caption text-primary font-medium">
                                                 Enable encryption
                                             </h5>
-                                            <p class="web-caption-500">
+                                            <p class="text-caption font-medium">
                                                 Files larger than 20MB will not be encrypted
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="web-card is-normal">
-                                    <div class="web-u-gap-20 flex items-center justify-center">
+                                    <div class="flex items-center justify-center gap-5">
                                         <input type="checkbox" class="switch" checked />
-                                        <div class="u-flex-vertical">
-                                            <h5 class="web-caption-500 web-u-color-text-primary">
+                                        <div class="flex flex-col">
+                                            <h5 class="text-caption text-primary font-medium">
                                                 Strip metadata
                                             </h5>
-                                            <p class="web-caption-500">
+                                            <p class="text-caption font-medium">
                                                 Remove metadata for all files uploaded to the
                                                 bucket.
                                             </p>
@@ -319,11 +319,13 @@
                                 <div class="web-card is-normal">
                                     <div class="web-u-gap-20 flex items-center justify-center">
                                         <input type="checkbox" class="switch" checked />
-                                        <div class="u-flex-vertical">
-                                            <h5 class="web-caption-500 web-u-color-text-primary">
+                                        <div class="flex flex-col">
+                                            <h5
+                                                class="text-caption text-primary font-aeonik-pro font-medium"
+                                            >
                                                 Permissions
                                             </h5>
-                                            <p class="web-caption-500">
+                                            <p class="text-caption font-medium">
                                                 Choose who can access the files in the bucket.
                                             </p>
                                         </div>
@@ -332,7 +334,7 @@
                                 <div class="web-card is-normal">
                                     <div class="web-u-gap-20 flex items-center justify-center">
                                         <input type="checkbox" class="switch" />
-                                        <div class="u-flex-vertical">
+                                        <div class="flex flex-col">
                                             <h5 class="web-caption-500 web-u-color-text-primary">
                                                 File level permissions
                                             </h5>
@@ -346,189 +348,7 @@
                         </section>
                     </div>
 
-                    <div
-                        class="web-media-container u-flex-vertical u-padding-0 u-cross-child-start l-permission-card"
-                        style="flex-basis:602px; border-radius:1.5rem; background:rgba(255, 255, 255, 0.04); backdrop-filter: blur(24px);
-                                margin-block-start:60px; margin-inline-start:-80px"
-                    >
-                        <h4
-                            class="heading-level-5 web-u-color-text-primary u-trim-1 u-line-height-1 u-sep-block-end"
-                            style="border-radius:0; --color-border: var(--web-color-offset); font-family: var(--web-font-family-aeonik-pro);"
-                        >
-                            Permissions
-                        </h4>
-                        <div class="l-permission-table-wrapper">
-                            <table class="is-remove-outer-styles u-sep-block-start table">
-                                <thead class="table-thead">
-                                    <tr class="table-row">
-                                        <th class="table-thead-col" style="--p-col-width:150">
-                                            <div class="web-eyebrow">Role</div>
-                                        </th>
-                                        <th class="table-thead-col">
-                                            <div class="web-eyebrow">Create</div>
-                                        </th>
-                                        <th class="table-thead-col">
-                                            <div class="web-eyebrow">Read</div>
-                                        </th>
-                                        <th class="table-thead-col">
-                                            <div class="web-eyebrow">Update</div>
-                                        </th>
-                                        <th class="table-thead-col">
-                                            <div class="web-eyebrow">Delete</div>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody class="table-tbody">
-                                    <tr class="table-row">
-                                        <td class="table-col">
-                                            <div class="web-u-color-text-primary">Any</div>
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role any create" />
-                                        </td>
-                                        <td class="table-col">
-                                            <input
-                                                type="checkbox"
-                                                aria-label="role any read"
-                                                checked
-                                            />
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role any update" />
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role any delete" />
-                                        </td>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <td class="table-col">
-                                            <div class="web-u-color-text-primary">Guests</div>
-                                        </td>
-                                        <td class="table-col">
-                                            <input
-                                                type="checkbox"
-                                                aria-label="role guests create"
-                                                checked
-                                            />
-                                        </td>
-                                        <td class="table-col">
-                                            <input type="checkbox" aria-label="role guests read" />
-                                        </td>
-                                        <td class="table-col">
-                                            <input
-                                                type="checkbox"
-                                                aria-label="role guests update"
-                                            />
-                                        </td>
-                                        <td class="table-col">
-                                            <input
-                                                type="checkbox"
-                                                aria-label="role guests delete"
-                                            />
-                                        </td>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <td class="table-col">
-                                            <div class="web-u-color-text-primary">Users</div>
-                                        </td>
-                                        <td class="table-col">
-                                            <input
-                                                type="checkbox"
-                                                aria-label="role users create"
-                                                checked
-                                            />
-                                        </td>
-                                        <td class="table-col">
-                                            <input
-                                                type="checkbox"
-                                                aria-label="role users read"
-                                                checked
-                                            />
-                                        </td>
-                                        <td class="table-col">
-                                            <input
-                                                type="checkbox"
-                                                aria-label="role users update"
-                                                checked
-                                            />
-                                        </td>
-                                        <td class="table-col">
-                                            <input
-                                                type="checkbox"
-                                                aria-label="role users delete"
-                                                checked
-                                            />
-                                        </td>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <td class="table-col">
-                                            <div class="web-u-color-text-primary">user:62f8b5b</div>
-                                        </td>
-                                        <td class="table-col">
-                                            <input
-                                                type="checkbox"
-                                                aria-label="role user:62f8b5b create"
-                                                checked
-                                            />
-                                        </td>
-                                        <td class="table-col">
-                                            <input
-                                                type="checkbox"
-                                                aria-label="role user:62f8b5b read"
-                                            />
-                                        </td>
-                                        <td class="table-col">
-                                            <input
-                                                type="checkbox"
-                                                aria-label="role user:62f8b5b update"
-                                            />
-                                        </td>
-                                        <td class="table-col">
-                                            <input
-                                                type="checkbox"
-                                                aria-label="role user:62f8b5b delete"
-                                            />
-                                        </td>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <td class="table-col">
-                                            <div class="web-u-color-text-primary">user:62e1544</div>
-                                        </td>
-                                        <td class="table-col">
-                                            <input
-                                                type="checkbox"
-                                                aria-label="role user:62e1544 create"
-                                                checked
-                                            />
-                                        </td>
-                                        <td class="table-col">
-                                            <input
-                                                type="checkbox"
-                                                aria-label="role user:62e1544 read"
-                                            />
-                                        </td>
-                                        <td class="table-col">
-                                            <input
-                                                type="checkbox"
-                                                aria-label="role user:62e1544 update"
-                                            />
-                                        </td>
-                                        <td class="table-col">
-                                            <input
-                                                type="checkbox"
-                                                aria-label="role user:62e1544 delete"
-                                            />
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <button class="web-button is-small is-text">
-                                <span class="icon-plus web-u-color-text-primary" aria-hidden="true"
-                                ></span>
-                                <span class="text">Add role</span>
-                            </button>
-                        </div>
-                    </div>
+                    <Permissions />
 
                     <!--<img src="/images/pages/storage/bucket-modal.png" width="708" alt="" />-->
                     <!--<img src="/images/pages/storage/permission-modal.png" width="708" alt="" class="u-margin-block-start-56 u-margin-inline-start-negative-64" />-->
@@ -562,11 +382,9 @@
 
             <div class="web-big-padding-section-level-2">
                 <div class="container">
-                    <div class="u-gap-32 web-u-flex-vertical-mobile flex">
-                        <div class="u-flex-vertical u-gap-32 u-stretch">
-                            <div
-                                class="web-u-flex-vertical web-u-gap-2 web-u-max-width-580 mx-auto"
-                            >
+                    <div class="u-gap-32 web-flex flex-col-mobile flex">
+                        <div class="u-gap-32 flex flex-1 flex-col">
+                            <div class="web-flex web-u-gap-2 web-u-max-width-580 mx-auto flex-col">
                                 <h3 class="web-main-body-500 web-u-color-text-primary">
                                     File management dashboard
                                 </h3>
@@ -585,7 +403,7 @@
                             />
                             <!--                            <div class="web-media" style="border-radius:1.5rem">-->
                             <!--                                <section class="web-card e-console-card is-white u-padding-0">-->
-                            <!--                                    <header class="e-header-console is-light u-padding-block-end-0 u-flex-vertical u-gap-16">-->
+                            <!--                                    <header class="e-header-console is-light u-padding-block-end-0 flex flex-col u-gap-16">-->
                             <!--                                        <div class=" flex u-gap-16">-->
                             <!--                                            <h4 class="heading-level-5 u-trim-1 u-line-height-1">Files</h4>-->
                             <!--                                            <div class="tag u-cross-child-end">-->
@@ -612,7 +430,7 @@
                             <!--                                            </ul>-->
                             <!--                                        </div>-->
                             <!--                                    </header>-->
-                            <!--                                    <div class="e-console-card-content u-flex-vertical u-gap-16 u-padding-block-start-16 u-padding-inline-start-24">-->
+                            <!--                                    <div class="e-console-card-content flex flex-col u-gap-16 u-padding-block-start-16 u-padding-inline-start-24">-->
                             <!--                                        <div class="flex gap-2">-->
                             <!--                                            <div-->
                             <!--                                                    class="input-text-wrapper is-with-end-button u-width-full-line u-width-200"-->
@@ -724,8 +542,8 @@
                             class="web-u-flex-sep"
                             style="--web-color-border: 240 5.7% 10.4% / 0.04;"
                         ></div>
-                        <div class="u-flex-vertical u-gap-32 u-stretch web-u-max-width-580 mx-auto">
-                            <div class="web-u-flex-vertical web-u-gap-2">
+                        <div class="u-gap-32 web-u-max-width-580 mx-auto flex flex-1 flex-col">
+                            <div class="web-flex web-u-gap-2 flex-col">
                                 <h3 class="web-main-body-500 web-u-color-text-primary">
                                     Extensive settings options
                                 </h3>
@@ -746,13 +564,13 @@
                             </div>
                             <!--                            <div>-->
                             <!--                                <div class="web-card is-white u-padding-20">-->
-                            <!--                                    <div class="u-flex-vertical u-gap-16">-->
-                            <!--                                        <div class="-u-flex-vertical">-->
+                            <!--                                    <div class="flex flex-col u-gap-16">-->
+                            <!--                                        <div class="-flex flex-col">-->
                             <!--                                            <h4 class="web-caption-500 web-u-color-text-primary">Maximum file size</h4>-->
                             <!--                                            <p class="web-caption-500">Set the maximum file size (in bytes) allowed in the bucket.</p>-->
                             <!--                                        </div>-->
                             <!--                                        <div class="flex gap-2">-->
-                            <!--                                            <div class="form-item u-stretch">-->
+                            <!--                                            <div class="form-item flex-1">-->
                             <!--                                                <label class="label" for="input1" style="&#45;&#45;p-label-text-color: var(&#45;&#45;color-neutral-80);">Size</label>-->
                             <!--                                                <input id="input1" class="input-text e-pink-input-light" placeholder="300">-->
                             <!--                                            </div>-->
@@ -770,13 +588,13 @@
                             <!--                                    </div>-->
                             <!--                                </div>-->
                             <!--                                <div class="web-card is-white u-padding-20">-->
-                            <!--                                    <div class="u-flex-vertical u-gap-16">-->
-                            <!--                                        <div class="-u-flex-vertical">-->
+                            <!--                                    <div class="flex flex-col u-gap-16">-->
+                            <!--                                        <div class="-flex flex-col">-->
                             <!--                                            <h4 class="web-caption-500 web-u-color-text-primary">Compression algorithm</h4>-->
                             <!--                                            <p class="web-caption-500">For files larger than 20MB, compression will be skipped even if it's enabled.</p>-->
                             <!--                                        </div>-->
                             <!--                                        <div class="flex gap-2">-->
-                            <!--                                            <div class="form-item u-stretch">-->
+                            <!--                                            <div class="form-item flex-1">-->
                             <!--                                                <label class="label" for="input3" style="&#45;&#45;p-label-text-color: var(&#45;&#45;color-neutral-80);">Compression algorithm</label>-->
                             <!--                                                <div class="select e-pink-input-light">-->
                             <!--                                                    <select id="input3" class="e-pink-input-light">-->
@@ -790,13 +608,13 @@
                             <!--                                    </div>-->
                             <!--                                </div>-->
                             <!--                                <div class="web-card is-white u-padding-20">-->
-                            <!--                                    <div class="u-flex-vertical u-gap-16">-->
-                            <!--                                        <div class="-u-flex-vertical">-->
+                            <!--                                    <div class="flex flex-col u-gap-16">-->
+                            <!--                                        <div class="-flex flex-col">-->
                             <!--                                            <h4 class="web-caption-500 web-u-color-text-primary">File extensions</h4>-->
                             <!--                                            <p class="web-caption-500">Up to 100 file extensions can be added. Leave blank to allow all file types.</p>-->
                             <!--                                        </div>-->
                             <!--                                        <div class="flex gap-2">-->
-                            <!--                                            <div class="form-item u-stretch u-max-width-100-percent">-->
+                            <!--                                            <div class="form-item flex-1 u-max-width-100-percent">-->
                             <!--                                                <label class="label" for="input3" style="&#45;&#45;p-label-text-color: var(&#45;&#45;color-neutral-80);">Allowed file extensions</label>-->
                             <!--                                                <div class="input-text-wrapper">-->
                             <!--                                                    <div class="tags-input e-pink-input-light">-->
@@ -859,7 +677,7 @@
                             </a>
                         </div>
                         <div
-                            class="u-flex-vertical web-u-gap-20 u-min-width-0 u-max-width-100-percent"
+                            class="web-u-gap-20 u-min-width-0 u-max-width-100-percent flex flex-col"
                         >
                             <div
                                 class="l-scroll-in-mobile u-min-width-0 u-overflow-x-auto flex gap-2"
@@ -876,7 +694,7 @@
                             >
                                 <header class="web-code-snippet-header">
                                     <div class="web-code-snippet-header-start">
-                                        <div class="u-gap-16 flex">
+                                        <div class="flex gap-4">
                                             <div class="web-tag">
                                                 <span class="text">Node.js</span>
                                             </div>
@@ -925,8 +743,8 @@
             <div class="web-big-padding-section-level-2 l-bgs-purple relative">
                 <div class="container">
                     <ul class="web-multi-columns-1">
-                        <li class="u-flex-vertical web-u-gap-20">
-                            <div class="web-card is-white u-flex-vertical u-gap-20">
+                        <li class="web-u-gap-20 flex flex-col">
+                            <div class="web-card is-white u-gap-20 flex flex-col">
                                 <q
                                     >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
                                     in ultrices lacus.</q
@@ -946,8 +764,8 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="u-flex-vertical web-u-gap-20">
-                            <div class="web-card is-white u-flex-vertical u-gap-20">
+                        <li class="web-u-gap-20 flex flex-col">
+                            <div class="web-card is-white u-gap-20 flex flex-col">
                                 <q
                                     >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
                                     in ultrices lacus.</q
@@ -967,8 +785,8 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="u-flex-vertical web-u-gap-20">
-                            <div class="web-card is-white u-flex-vertical u-gap-20">
+                        <li class="web-u-gap-20 flex flex-col">
+                            <div class="web-card is-white u-gap-20 flex flex-col">
                                 <q
                                     >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
                                     in ultrices lacus.</q
