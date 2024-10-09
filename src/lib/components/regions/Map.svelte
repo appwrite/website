@@ -133,16 +133,16 @@
     };
 </script>
 
-<div class="light bg-[#EDEDF0] !py-10">
+<div class="light:bg-[#EDEDF0] !py-10">
     <div
-        class="container relative mx-auto flex items-center justify-center"
+        class="container relative mx-auto flex h-full items-center justify-center py-10"
         bind:this={mapContainer}
     >
         {#if showTooltip}
             <div
                 bind:this={tooltipElement}
-                in:fly={{ y: 10, duration: 200 }}
-                out:fly={{ y: -10, duration: 200 }}
+                in:fly={{ y: 10, duration: 500 }}
+                out:fly={{ y: -10, duration: 500 }}
                 class="pointer-events-none absolute z-100 block flex w-[190px] flex-col gap-2 rounded-[10px] border border-white bg-gradient-to-br from-white/64 to-white/32 p-2 backdrop-blur-sm"
                 style:left="{tooltip.x}px"
                 style:top="{tooltip.y - (tooltipElement?.offsetHeight || 0) - 10}px"
@@ -166,7 +166,35 @@
                 {/if}
             </div>
         {/if}
-        <svg viewBox="0 0 {width} {height}" class="animate-map h-full w-full">
+        <div class="relative z-10 block w-full space-y-4 md:hidden">
+            {#each pins as pin}
+                <div
+                    class="z-100 block flex w-full flex-col gap-2 rounded-[10px] border border-white bg-gradient-to-br from-white/64 to-white/32 p-3 backdrop-blur-sm"
+                >
+                    <span class="text-primary text-caption w-fit"
+                        >{pin.city}
+                        ({pin.code})</span
+                    >
+                    {#if pin.available}
+                        <div
+                            class="text-caption flex h-5 items-center justify-center place-self-start rounded-[6px] bg-[#10B981]/16 p-1 text-center text-[#0A714F]"
+                        >
+                            <span class="text-micro -tracking-tight">Available now</span>
+                        </div>
+                    {:else}
+                        <div
+                            class="text-caption flex h-5 items-center justify-center place-self-start rounded-[6px] bg-black/6 p-1 text-center text-[#56565C]"
+                        >
+                            <span class="text-micro -tracking-tight">{pin.release}</span>
+                        </div>
+                    {/if}
+                </div>
+            {/each}
+        </div>
+        <svg
+            viewBox="0 0 {width} {height}"
+            class="animate-map absolute w-full scale-250 md:static md:scale-100"
+        >
             <clipPath id="map">
                 <path
                     fill-opacity=".08"
@@ -225,6 +253,7 @@
                 </g>
             {/each}
         </svg>
+        <div class="overlay absolute inset-0 right-0 hidden [clip-path:url(#map)]" />
     </div>
 </div>
 
