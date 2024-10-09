@@ -34,7 +34,7 @@ The runtime also benefits from Deno’s comprehensive toolset, including its bui
 Our support for Deno comes at an especially exciting time with the recent release of **Deno 2.0**. This version introduces substantial improvements, making the integration even more powerful for Appwrite developers:
 
 - **Improved Node.js compatibility**: Deno 2.0 introduces the process global variable, which allows for better interoperability with existing Node.js codebases.
-- **Enhanced dependency Management**: Deno 2.0 is fully compatible with NPM, and introduces monorepo support to fit needs of large codebases.
+- **Enhanced dependency management**: Deno 2.0 is fully compatible with NPM, and introduces monorepo support to fit needs of large codebases.
 - **Upgraded TypeScript support**: With TypeScript 5.6 included, Deno 2.0 ensures you’re working with the latest features and optimizations in the language.
 - **Upgraded security**: The updated permission system in Deno 2.0 adds more granular control over application access, including the introduction of Deno.errors.NotCapable to distinguish between system and Deno-specific issues, providing a clearer security model for your projects.
 - **Better web framework support**: Deno 2.0 now works with well-known meta frameworks such as Next.js, Remix, Svelte, Qwik, and more. Support for those, as well as typical web toolings like Vite, Parcel, and Rollup, all make Deno 2.0 a great candidate for building modern web applications.
