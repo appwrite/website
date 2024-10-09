@@ -44,7 +44,7 @@ Our support for Deno comes at an especially exciting time with the recent releas
 It’s easy to begin building with Deno on Appwrite Cloud. Here’s how:
 
 1. **Create a new function** in your Appwrite Cloud project using Deno Quick Start. Here's our Functions [quickstart guide](https://appwrite.io/docs/products/functions/quick-start).
-2. **Connect git repository**, or choose to connect later if you just want to see it in action.
+2. **Connect GitHub repository**, or choose to connect later if you just want to see it in action.
 3. **Visit your function’s domain** to make your first execution.
 4. **Implement your function** and benefit from Deno’s amazing performance and tooling features, all within the powerful Appwrite ecosystem.
 
