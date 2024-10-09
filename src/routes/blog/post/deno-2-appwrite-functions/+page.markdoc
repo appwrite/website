@@ -19,7 +19,7 @@ This article will give you an overview of Deno 2.0, its benefits, key features, 
 
 Deno 2.0 builds on the foundation laid by the earlier versions, introducing several new features and improvements. Here are some of the key features of Deno 2.0:
 
-## 1. Security by default
+## 1. Secure by default
 
 Deno has always prioritized security, but version 2.0 refines its permission system even further. One of the major distinctions between Deno and Node.js is how they handle permissions. In Node.js, your code can access the file system, environment variables, or network without any restrictions, posing potential security risks, particularly in cloud environments. Deno, on the other hand, requires explicit permission for each of these actions. When running a Deno program, developers must specify flags to allow access to specific resources.
 
