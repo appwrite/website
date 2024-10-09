@@ -45,7 +45,7 @@
                                 aria-label={`role ${label} ${headings[i].toLowerCase()}`}
                                 checked={option}
                                 class={classNames(
-                                    'checkbox peer size-5 cursor-pointer appearance-none rounded border-0 bg-white/12 backdrop-blur-lg transition-all',
+                                    'checkbox peer size-5 cursor-pointer appearance-none rounded border-0 bg-white/12 backdrop-blur-lg transition-all duration-100',
                                     'checked:bg-pink-500'
                                 )}
                                 on:change={() => {
@@ -57,7 +57,7 @@
                                 }}
                             />
                             <span
-                                class="web-icon-check pointer-events-none absolute top-0 block leading-none text-white opacity-0 transition-opacity peer-checked:opacity-100"
+                                class="web-icon-check pointer-events-none absolute top-0 block leading-none text-white opacity-0 transition-opacity duration-100 peer-checked:opacity-100"
                             />
                         </div>
                     {/each}
