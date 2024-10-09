@@ -109,7 +109,7 @@ Despite these challenges, Deno 2.0 looks compelling and will likely gain more tr
 
 Deno 2.0 just released today, and Appwrite is already ahead of the curve in supporting it. In Appwrite, you can now build serverless functions using Deno, and take advantage of its security features, TypeScript support, and modern module management. To get started with Deno in Appwrite, head over to the [Appwrite console](https://cloud.appwrite.io/), and just like you would with Node.js when creating a new function, select Deno as the runtime.
 
-We'll be releasing a detailed tutorial on building serverless functions with Deno and Appwrite soon, so stay connected with us on [Discord](https://appwrite.io/discord) and [Twitter](https://twitter.com/appwrite_io) to see it first.
+We will release a detailed tutorial on building serverless functions with Deno and Appwrite soon, so stay connected with us on [Discord](https://appwrite.io/discord) and [Twitter](https://twitter.com/appwrite) to see it first.
 
 # Conclusion
 
