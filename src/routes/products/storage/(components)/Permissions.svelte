@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { classNames } from '$lib/utils/classnames';
     import { writable } from 'svelte/store';
 
     type Permission = {
@@ -38,12 +39,15 @@
                     <span class="text-primary text-caption flex-[1.5]">{label}</span>
 
                     {#each options as option, i}
-                        <div class="flex-1">
+                        <div class="relative flex-1 items-center justify-center">
                             <input
                                 type="checkbox"
                                 aria-label={`role ${label} ${headings[i].toLowerCase()}`}
                                 checked={option}
-                                class="checkbox size-5 appearance-none rounded border-0 bg-white/12 backdrop-blur-lg transition-all checked:bg-pink-500"
+                                class={classNames(
+                                    'checkbox peer size-5 cursor-pointer appearance-none rounded border-0 bg-white/12 backdrop-blur-lg transition-all',
+                                    'checked:bg-pink-500'
+                                )}
                                 on:change={() => {
                                     permissions.update((permissions) => {
                                         permissions[index].options[i] =
@@ -51,6 +55,9 @@
                                         return permissions;
                                     });
                                 }}
+                            />
+                            <span
+                                class="web-icon-check pointer-events-none absolute top-0 block leading-none text-white opacity-0 transition-opacity peer-checked:opacity-100"
                             />
                         </div>
                     {/each}
