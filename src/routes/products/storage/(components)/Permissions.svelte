@@ -9,16 +9,16 @@
     const headings = ['Create', 'Read', 'Update', 'Delete'];
 
     const permissions = writable<Array<Permission>>([
-        { label: 'Any', options: [true, false, false, true] },
-        { label: 'Guest', options: [true, false, false, true] },
-        { label: 'Users', options: [true, false, false, true] },
-        { label: 'user:62f8b5b', options: [true, false, false, true] },
-        { label: 'user:62e1544', options: [true, false, false, true] }
+        { label: 'Any', options: [false, true, false, false] },
+        { label: 'Guest', options: [false, true, false, false] },
+        { label: 'Users', options: [true, true, true, true] },
+        { label: 'user:62f8b5b', options: [true, false, false, false] },
+        { label: 'user:62e1544', options: [true, false, false, false] }
     ]);
 </script>
 
 <div
-    class="mt-[60px] ml-[-80px] flex flex-1 basis-[602px] flex-col rounded-3xl border border-white/10 bg-white/0.04 backdrop-blur-xl"
+    class="mt-[60px] -mb-8 ml-[-80px] flex flex-1 basis-[602px] flex-col rounded-3xl border border-white/10 bg-white/0.04 backdrop-blur-xl"
 >
     <h4 class="text-label text-primary font-aeonik-pro border-b border-white/10 p-6">
         Permissions

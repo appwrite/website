@@ -8,6 +8,7 @@
     import { Permission } from '@appwrite.io/console';
     import Checkbox from '../messaging/(components)/Checkbox.svelte';
     import Permissions from './(components)/Permissions.svelte';
+    import Bucket from './(components)/Bucket.svelte';
 
     const title = 'Storage' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -237,126 +238,14 @@
                         >
                     </div>
                 </div>
-                <div class="container u-main-center u-cross-start u-margin-block-start-64 flex">
-                    <div
-                        class="web-media-container u-max-width-100-percent is-only-desktop flex flex-col"
-                        style="flex-basis:586px; border-radius:1.5rem"
-                    >
-                        <section
-                            class="web-card e-console-card is-dark u-padding-0 flex flex-1 flex-col"
-                        >
-                            <header
-                                class="e-header-console is-dark u-padding-block-end-0 u-gap-16 flex flex-col"
-                            >
-                                <div class=" u-gap-16 flex">
-                                    <h4 class="text-label text-primary font-aeonik-pro">
-                                        My Bucket
-                                    </h4>
-                                    <div class="tag u-cross-child-end web-u-color-text-secondary">
-                                        <code class="web-u-font-size-10">637a40ba7a703e3936e2</code>
-                                    </div>
-                                </div>
-                                <div class="tabs">
-                                    <ul class="tabs-list scroll-shadow-horizontal">
-                                        <li class="tabs-item">
-                                            <button class="tabs-button" tabindex="-1" role="tab">
-                                                <span class="text">Files</span>
-                                            </button>
-                                        </li>
-                                        <li class="tabs-item">
-                                            <button class="tabs-button" tabindex="-1" role="tab">
-                                                <span class="text">Usage</span>
-                                            </button>
-                                        </li>
-                                        <li class="tabs-item">
-                                            <button class="tabs-button" tabindex="-1" role="tab">
-                                                <span class="text">Settings</span>
-                                            </button>
-                                        </li>
-                                        <li class="tabs-item">
-                                            <button
-                                                class="tabs-button is-selected"
-                                                tabindex="0"
-                                                role="tab"
-                                            >
-                                                <span class="text">Security</span>
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </header>
-                            <div
-                                class="e-console-card-content flex flex-1 flex-col gap-4 p-6"
-                                style="background: linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 100%), var(--background, #19191C);"
-                            >
-                                <div class="web-card is-normal">
-                                    <div class="flex items-center justify-center gap-5">
-                                        <input type="checkbox" class="switch" checked />
-                                        <div class="flex flex-col">
-                                            <h5 class="text-caption text-primary font-medium">
-                                                Enable encryption
-                                            </h5>
-                                            <p class="text-caption font-medium">
-                                                Files larger than 20MB will not be encrypted
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="web-card is-normal">
-                                    <div class="flex items-center justify-center gap-5">
-                                        <input type="checkbox" class="switch" checked />
-                                        <div class="flex flex-col">
-                                            <h5 class="text-caption text-primary font-medium">
-                                                Strip metadata
-                                            </h5>
-                                            <p class="text-caption font-medium">
-                                                Remove metadata for all files uploaded to the
-                                                bucket.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="web-card is-normal">
-                                    <div class="web-u-gap-20 flex items-center justify-center">
-                                        <input type="checkbox" class="switch" checked />
-                                        <div class="flex flex-col">
-                                            <h5
-                                                class="text-caption text-primary font-aeonik-pro font-medium"
-                                            >
-                                                Permissions
-                                            </h5>
-                                            <p class="text-caption font-medium">
-                                                Choose who can access the files in the bucket.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="web-card is-normal">
-                                    <div class="web-u-gap-20 flex items-center justify-center">
-                                        <input type="checkbox" class="switch" />
-                                        <div class="flex flex-col">
-                                            <h5 class="web-caption-500 web-u-color-text-primary">
-                                                File level permissions
-                                            </h5>
-                                            <p class="web-caption-500">
-                                                Enable to set permissions at the File level.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-
+                <div class="container u-main-center u-cross-start mt-8 flex">
+                    <Bucket />
                     <Permissions />
-
-                    <!--<img src="/images/pages/storage/bucket-modal.png" width="708" alt="" />-->
-                    <!--<img src="/images/pages/storage/permission-modal.png" width="708" alt="" class="u-margin-block-start-56 u-margin-inline-start-negative-64" />-->
                 </div>
             </div>
         </div>
 
-        <div class="web-big-padding-section-level-1 web-white-section theme-light relative">
+        <div class="web-big-padding-section-level-1 web-white-section light relative">
             <div class="web-big-padding-section-level-2">
                 <div class="container">
                     <div class="web-hero is-center web-u-max-width-380">
@@ -652,7 +541,7 @@
                 </div>
             </div>
         </div>
-        <div class="web-big-padding-section-level-1 web-white-section theme-light">
+        <div class="web-big-padding-section-level-1 web-white-section light">
             <div class="web-big-padding-section-level-2">
                 <div class="container">
                     <div class="web-grid-1-1 u-row-gap-64">
@@ -809,7 +698,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="web-big-padding-section-level-2">
+            <div class="web-big-padding-section-level-2 light">
                 <div class="container">
                     <div class="web-hero is-center web-u-max-width-580 mx-auto">
                         <h2 class="web-display web-u-color-text-primary">Powered by open source</h2>
@@ -830,7 +719,7 @@
                     </div>
                 </div>
             </div>
-            <div class="web-big-padding-section-level-2">
+            <div class="web-big-padding-section-level-2 light">
                 <div class="container web-u-max-width-993">
                     <div class="web-u-margin-block-start-80 overflow-hidden">
                         <ul
