@@ -43,6 +43,7 @@
                                 type="checkbox"
                                 aria-label={`role ${label} ${headings[i].toLowerCase()}`}
                                 checked={option}
+                                class="checkbox size-5 appearance-none rounded border-0 bg-white/12 backdrop-blur-lg transition-all checked:bg-pink-500"
                                 on:change={() => {
                                     permissions.update((permissions) => {
                                         permissions[index].options[i] =
@@ -62,3 +63,16 @@
         </button>
     </div>
 </div>
+
+<style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+    .checkbox {
+        @include gradients.border-gradient;
+        --m-border-radius: calc(1.125rem / 4);
+        --m-border-gradient-before: linear-gradient(
+            to bottom,
+            hsl(0, 0%, 100%, 0.16),
+            hsl(0, 0%, 100%, 0)
+        );
+    }
+</style>
