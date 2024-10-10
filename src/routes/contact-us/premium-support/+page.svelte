@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { page } from '$app/stores';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { Main } from '$lib/layouts';
     import { TITLE_SUFFIX } from '$routes/titles';
@@ -7,6 +8,8 @@
     import Pink from '../bg.png';
     import { loggedIn, user } from '$lib/utils/console';
     import { sendSalesEmail } from '$routes/contact-us';
+    import { supportOptions } from '../../pricing/index';
+    import { onMount } from 'svelte';
 
     let email = '';
     let name = '';
@@ -16,10 +19,15 @@
     let useCase = '';
     let error: string | undefined;
     let submitted = false;
+    let supportTier = null;
+
+    onMount(() => {
+        supportTier = $page.url.searchParams.get('supportTier') ?? null;
+    });
 
     async function handleSubmit() {
         error = undefined;
-        const subject = `Enterprise Plan Application: ${companyName}`;
+        const subject = `Premium Support: ${companyName}`;
 
         const cloudEmail = loggedIn && $user?.email ? $user.email : undefined;
 
@@ -31,7 +39,8 @@
             companySize,
             companyWebsite,
             firstName: name,
-            message: useCase
+            message: useCase,
+            supportTier
         });
 
         if (response.status >= 400) {
@@ -42,7 +51,7 @@
         submitted = true;
     }
 
-    const title = 'Enterprise' + TITLE_SUFFIX;
+    const title = 'Self hosted premium support' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
@@ -91,9 +100,9 @@
                                                 Thank you for your submission
                                             </h1>
                                             <p class="web-description web-u-padding-block-end-32">
-                                                Your details for the enterprise plan have been sent
-                                                successfully. Our team will get back to you as soon
-                                                as possible.
+                                                Your details for the self hosted support have been
+                                                sent successfully. Our team will get back to you as
+                                                soon as possible.
                                             </p>
                                             <a
                                                 href="/pricing"
@@ -105,11 +114,10 @@
                                     {:else}
                                         <section class="flex flex-col gap-5">
                                             <h4 class="web-display web-u-color-text-primary">
-                                                Enterprise Plan
+                                                Premium support
                                             </h4>
                                             <p class="web-description">
-                                                Interested in a pricing solution that fits your
-                                                specific requirements? Let’s talk.
+                                                Looking for self hosted premium support? Let’s talk.
                                             </p>
                                         </section>
                                     {/if}
@@ -191,6 +199,30 @@
                                                 </div>
                                             </li>
                                             <li class="web-form-item flex-col gap-1 md:col-span-2">
+                                                <label class="u-block" for="companySize"
+                                                    >Support tier</label
+                                                >
+
+                                                <div class="relative">
+                                                    <select
+                                                        class="web-input-text w-full appearance-none"
+                                                        id="supportTier"
+                                                        bind:value={supportTier}
+                                                    >
+                                                        <option value={null}>Select tier</option>
+                                                        {#each supportOptions as supportOption}
+                                                            <option value={supportOption.key}
+                                                                >{`${supportOption.header.title} - ${supportOption.header.price}`}</option
+                                                            >
+                                                        {/each}
+                                                    </select>
+                                                    <span
+                                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-2 right-2"
+                                                        aria-hidden="true"
+                                                    />
+                                                </div>
+                                            </li>
+                                            <li class="web-form-item flex-col gap-1 md:col-span-2">
                                                 <label class="u-block" for="companyWebsite"
                                                     >Company website</label
                                                 >
@@ -214,7 +246,7 @@
                                                     required
                                                     class="web-input-text w-full"
                                                     id="use-case"
-                                                    placeholder="Describe your use case and how our Enterprise Plan can support it"
+                                                    placeholder="Describe your use case and how our premium support would help out"
                                                     bind:value={useCase}
                                                 />
                                             </li>
