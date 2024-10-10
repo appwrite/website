@@ -1,33 +1,93 @@
 <script lang="ts">
-    import Button from '$lib/components/ui/Button.svelte';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import { Select } from '$lib/components';
 
-    const supportOptions = [
-        {
-            header: {
-                title: 'Basic',
-                price: '$50/month',
-                button: 'secondary',
-                href: '/contact-us'
-            }
-        },
-        {
-            header: {
-                title: 'Standard',
-                price: '$99/month',
-                button: 'primary',
-                href: '/contact-us'
-            }
-        },
-        {
-            header: {
-                title: 'Premium',
-                price: '$999/month',
-                button: 'secondary',
-                href: '/contact-us'
-            }
-        }
+    let selectedOptionKey = 'basic';
+
+    type SupportFeatureKeys =
+        | 'response'
+        | 'resolutionTime'
+        | 'availability'
+        | 'channels'
+        | 'agents';
+
+    const supportFeatureKeyValues = [
+        { key: 'response', label: 'Response time' },
+        { key: 'resolutionTime', label: 'Resolution time' },
+        { key: 'availability', label: 'Availability' },
+        { key: 'channels', label: 'Support channels' },
+        { key: 'agents', label: 'Support agents' }
     ];
+
+    type SupportHeader = { title: string; price: string; button: string; href: string };
+    type SupportFeature = {
+        [K in SupportFeatureKeys]: string;
+    };
+
+    const supportOptions: Array<{ key: string; header: SupportHeader; features: SupportFeature }> =
+        [
+            {
+                key: 'basic',
+                header: {
+                    title: 'Basic',
+                    price: '$50/month',
+                    button: 'secondary',
+                    href: '/contact-us'
+                },
+                features: {
+                    response: '7 days',
+                    resolutionTime: '7 days',
+                    availability: '-',
+                    channels: 'email',
+                    agents: 'Community'
+                }
+            },
+            {
+                key: 'standard',
+                header: {
+                    title: 'Standard',
+                    price: '$99/month',
+                    button: 'primary',
+                    href: '/contact-us'
+                },
+                features: {
+                    response: '2 days',
+                    resolutionTime: '2 days',
+                    availability: '24/5',
+                    channels: 'email, chat',
+                    agents: 'Random agent'
+                }
+            },
+            {
+                key: 'premium',
+                header: {
+                    title: 'Premium',
+                    price: '$999/month',
+                    button: 'secondary',
+                    href: '/contact-us'
+                },
+                features: {
+                    response: '1 days',
+                    resolutionTime: '1 days',
+                    availability: '24/7',
+                    channels: 'email, chat, phone',
+                    agents: 'Dedicated agent'
+                }
+            }
+        ];
+
+    $: selectedOption = supportOptions.find((option) => option.key === selectedOptionKey);
+
+    function getFeatureValue(features: SupportFeature, key: string) {
+        return features[key as SupportFeatureKeys];
+    }
+
+    const supportOptionsSelect = supportOptions.map((option) => {
+        return {
+            value: option.key,
+            label: `${option.header.title} - ${option.header.price}`
+        };
+    });
 </script>
 
 <div class="dark bg-[linear-gradient(180deg,_#232325E6_0%,#19191C_100%)] py-10">
@@ -43,7 +103,41 @@
                         </p>
                     </header>
                 </div>
-                <section class="mt-16 grid grid-cols-[200px_repeat(3,_1fr)]">
+                <section class="flex justify-center lg:hidden">
+                    <div class="mt-4 w-52">
+                        <Select
+                            id="platform"
+                            bind:value={selectedOptionKey}
+                            options={supportOptionsSelect}
+                            nativeMobile
+                        />
+                    </div>
+                </section>
+                {#if selectedOption}
+                    <div class="flex justify-center lg:hidden">
+                        <a
+                            href="{PUBLIC_APPWRITE_DASHBOARD}/{selectedOption.header.href}"
+                            class="web-button mt-8"
+                            class:is-secondary={selectedOption.header.button === 'secondary'}
+                        >
+                            <span class="text-sub-body font-medium">Contact us</span>
+                        </a>
+                    </div>
+                    <section class="mt-16 grid grid-cols-2 lg:hidden">
+                        {#each supportFeatureKeyValues as supportFeatureKeyValue}
+                            <div class="border-t border-[#FFFFFF0F] py-4">
+                                {supportFeatureKeyValue.label}
+                            </div>
+                            <div class="border-t border-[#FFFFFF0F] py-4 text-center">
+                                {getFeatureValue(
+                                    selectedOption.features,
+                                    supportFeatureKeyValue.key
+                                )}
+                            </div>
+                        {/each}
+                    </section>
+                {/if}
+                <section class="mt-16 hidden grid-cols-[200px_repeat(3,_1fr)] lg:grid">
                     <div></div>
                     {#each supportOptions as supportOption}
                         <div
