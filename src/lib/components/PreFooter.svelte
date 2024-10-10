@@ -2,7 +2,7 @@
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 </script>
 
-<img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg" style="z-index:-1" />
+<img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg" loading="lazy" style="z-index:-1" />
 
 <div class="web-u-row-gap-80 relative grid md:grid-cols-2 gap-8">
     <section class="web-hero flex items-center justify-center gap-y-8">
@@ -145,5 +145,6 @@
         height: auto;
         max-inline-size: unset;
         max-block-size: unset;
+        filter: blur(100px);
     }
 </style>

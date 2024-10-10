@@ -199,7 +199,7 @@
             <a
                 class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
                 id="oss-github"
-                href="{GITHUB_REPO_LINK}"
+                href={GITHUB_REPO_LINK}
             >
                 <div class="flex flex-col justify-between gap-8">
                     <span
@@ -246,7 +246,7 @@
             <a
                 class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
                 id="oss-commits"
-                href="{GITHUB_REPO_LINK}"
+                href={GITHUB_REPO_LINK}
             >
                 <div class="flex flex-col justify-between gap-8">
                     <span
