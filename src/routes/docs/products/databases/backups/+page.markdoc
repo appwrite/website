@@ -4,7 +4,7 @@ title: Backups
 description: Learn how to efficiently back up your databases on Appwrite Cloud, ensuring data security and seamless recovery.
 ---
 
-Appwrite Backups enable seamless, **encrypted** database backups on the Cloud.
+Appwrite Backups enable seamless, **encrypted** database backups on Cloud.
 All backups are **hot** backups, ensuring zero downtime and fast recovery.
 Learn how to efficiently back up your databases to ensure data security and smooth recovery.
 
@@ -15,7 +15,7 @@ Appwrite Backups allow you to automate database backups using backup policies, s
 
 # Backup policies {% #backup-policies %}
 
-Backup policies allow you to automate your backup process with options like how often backups should occur, how long they should be retained, and when they should run.
+Backup policies allow you to automate your backup process. The Scale and Enterprise plans allow for more customization and offer options like how often backups should occur, how long they should be retained, and when they should run.
 
 ## Creating a backup policy {% #creating-backup-policy %}
 
@@ -32,7 +32,7 @@ To automate your database backups, you need to create backup policies that run a
 2. Create or select & navigate to your database and click on the **Backups** Tab
 3. Click on **Create Policies** & select a pre-defined policy\
 &nbsp;
-    * On a **Pro** plan, you get access to a Daily backup policy -
+    * On a **Pro** plan, you get access to a Daily backup policy
     {% only_dark %}
     ![Pro plan policy](/images/docs/databases/dark/pro-policy.png)
     {% /only_dark %}
@@ -40,7 +40,7 @@ To automate your database backups, you need to create backup policies that run a
     ![Pro plan policy](/images/docs/databases/pro-policy.png)
     {% /only_light %}
 
-    * On **Scale** and above plans, you get access to more & custom policies -\
+    * On **Scale** and **Enterprise** plans, you get access to more & custom policies\
     &nbsp;
         * Select a pre-defined policy
             {% only_dark %}
