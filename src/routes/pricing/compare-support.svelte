@@ -156,31 +156,29 @@
                             </a>
                         </div>
                     {/each}
-
-                    <div class="border-t border-[#FFFFFF0F] py-4">Response times</div>
-                    <div class="border-t border-[#FFFFFF0F] py-4 text-center">10GB</div>
-                    <div class="border-t border-[#FFFFFF0F] py-4 text-center">300GB</div>
-                    <div class="border-t border-[#FFFFFF0F] py-4 text-center">300GB</div>
-
-                    <div class="border-t border-[#FFFFFF0F] py-4">Avg resolution time</div>
-                    <div class="border-t border-[#FFFFFF0F] py-4 text-center">-</div>
-                    <div class="border-t border-[#FFFFFF0F] py-4 text-center">$40 per 100GB</div>
-                    <div class="border-t border-[#FFFFFF0F] py-4 text-center">$40 per 100GB</div>
-
-                    <div class="border-t border-[#FFFFFF0F] py-4">Availability</div>
-                    <div class="border-t border-[#FFFFFF0F] py-4 text-center">2GB</div>
-                    <div class="border-t border-[#FFFFFF0F] py-4 text-center">150GB</div>
-                    <div class="border-t border-[#FFFFFF0F] py-4 text-center">150GB</div>
-
-                    <div class="border-t border-[#FFFFFF0F] py-4">Support channels</div>
-                    <div class="border-t border-[#FFFFFF0F] py-4 text-center">-</div>
-                    <div class="border-t border-[#FFFFFF0F] py-4 text-center">$3 per 100GB</div>
-                    <div class="border-t border-[#FFFFFF0F] py-4 text-center">$3 per 100GB</div>
-
-                    <div class="border-y border-[#FFFFFF0F] py-4">Support agents</div>
-                    <div class="border-y border-[#FFFFFF0F] py-4 text-center">750k Executions</div>
-                    <div class="border-y border-[#FFFFFF0F] py-4 text-center">3.5M Executions</div>
-                    <div class="border-y border-[#FFFFFF0F] py-4 text-center">3.5M Executions</div>
+                    {#each supportFeatureKeyValues as supportFeatureKeyValue}
+                        <div class="border-t border-[#FFFFFF0F] py-4">
+                            {supportFeatureKeyValue.label}
+                        </div>
+                        <div class="border-t border-[#FFFFFF0F] py-4 text-center">
+                            {getFeatureValue(
+                                supportOptions[0].features,
+                                supportFeatureKeyValue.key
+                            )}
+                        </div>
+                        <div class="border-t border-[#FFFFFF0F] py-4 text-center">
+                            {getFeatureValue(
+                                supportOptions[1].features,
+                                supportFeatureKeyValue.key
+                            )}
+                        </div>
+                        <div class="border-t border-[#FFFFFF0F] py-4 text-center">
+                            {getFeatureValue(
+                                supportOptions[2].features,
+                                supportFeatureKeyValue.key
+                            )}
+                        </div>
+                    {/each}
                 </section>
             </article>
         </div>
