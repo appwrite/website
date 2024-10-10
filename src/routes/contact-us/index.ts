@@ -9,6 +9,7 @@ export async function sendSalesEmail(body: {
     companyWebsite: string;
     firstName: string;
     message: string;
+    supportTier?: string | null;
 }) {
     return await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback/sales`, {
         method: 'POST',

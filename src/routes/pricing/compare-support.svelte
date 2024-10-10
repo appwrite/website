@@ -1,80 +1,14 @@
 <script lang="ts">
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { Select } from '$lib/components';
+    import {
+        supportOptions,
+        type SupportFeature,
+        type SupportFeatureKeys,
+        supportFeatureKeyValues
+    } from '$routes/pricing/index';
 
     let selectedOptionKey = 'basic';
-
-    type SupportFeatureKeys =
-        | 'response'
-        | 'resolutionTime'
-        | 'availability'
-        | 'channels'
-        | 'agents';
-
-    const supportFeatureKeyValues = [
-        { key: 'response', label: 'Response time' },
-        { key: 'resolutionTime', label: 'Resolution time' },
-        { key: 'availability', label: 'Availability' },
-        { key: 'channels', label: 'Support channels' },
-        { key: 'agents', label: 'Support agents' }
-    ];
-
-    type SupportHeader = { title: string; price: string; button: string; href: string };
-    type SupportFeature = {
-        [K in SupportFeatureKeys]: string;
-    };
-
-    const supportOptions: Array<{ key: string; header: SupportHeader; features: SupportFeature }> =
-        [
-            {
-                key: 'basic',
-                header: {
-                    title: 'Basic',
-                    price: '$50/month',
-                    button: 'secondary',
-                    href: '/contact-us'
-                },
-                features: {
-                    response: '7 days',
-                    resolutionTime: '7 days',
-                    availability: '-',
-                    channels: 'email',
-                    agents: 'Community'
-                }
-            },
-            {
-                key: 'standard',
-                header: {
-                    title: 'Standard',
-                    price: '$99/month',
-                    button: 'primary',
-                    href: '/contact-us'
-                },
-                features: {
-                    response: '2 days',
-                    resolutionTime: '2 days',
-                    availability: '24/5',
-                    channels: 'email, chat',
-                    agents: 'Random agent'
-                }
-            },
-            {
-                key: 'premium',
-                header: {
-                    title: 'Premium',
-                    price: '$999/month',
-                    button: 'secondary',
-                    href: '/contact-us'
-                },
-                features: {
-                    response: '1 days',
-                    resolutionTime: '1 days',
-                    availability: '24/7',
-                    channels: 'email, chat, phone',
-                    agents: 'Dedicated agent'
-                }
-            }
-        ];
 
     $: selectedOption = supportOptions.find((option) => option.key === selectedOptionKey);
 
@@ -116,7 +50,7 @@
                 {#if selectedOption}
                     <div class="flex justify-center lg:hidden">
                         <a
-                            href="{PUBLIC_APPWRITE_DASHBOARD}/{selectedOption.header.href}"
+                            href={selectedOption.header.href}
                             class="web-button mt-8"
                             class:is-secondary={selectedOption.header.button === 'secondary'}
                         >
@@ -148,7 +82,7 @@
                                 ><span>{supportOption.header.price}</span>
                             </div>
                             <a
-                                href="{PUBLIC_APPWRITE_DASHBOARD}/{supportOption.header.href}"
+                                href={supportOption.header.href}
                                 class="web-button"
                                 class:is-secondary={supportOption.header.button === 'secondary'}
                             >
