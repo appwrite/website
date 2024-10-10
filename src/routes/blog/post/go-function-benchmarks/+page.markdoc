@@ -9,7 +9,7 @@ author: matej-baco
 category: open-source
 ---
 
-It is undeniable that Go has grown to become one of the most popular programming languages among developers worldwide. Recently, during Init, we announced the introduction of the new Golang (or Go) runtime for Appwrite Functions. However, it is one thing for us to claim that our Go functions runtime is performant, it is a whole other thing for us to justify the same. To do so, we planned a benchmark to test the performance of our Go runtime in comparison with other Appwrite Functions runtimes.
+It is undeniable that Go has grown to become one of the most popular programming languages among developers worldwide. Recently, during Init, we announced the [new Golang (or Go) runtime](https://appwrite.io/blog/post/announcing-go-support) for Appwrite Functions. However, it is one thing for us to claim that our Go functions runtime is performant, it is a whole other thing for us to justify the same. To do so, we planned a benchmark to test the performance of our Go runtime in comparison with other Appwrite Functions runtimes.
 
 # Setting up the benchmark
 
@@ -208,7 +208,11 @@ Additionally, .NET was the only runtime other than Go that was able to utilize a
 
 ### Requests per second for a single CPU core
 
-We also compared each runtime's single-core performance. Go showed balanced performance across different scenarios, excelling particularly in tasks involving high computational needs (e.g., the Fibonacci calculation). While it was not always the top performer in every scenario, its consistency across different types of workloads showed its versatility and reliability.
+We also compared each runtime's single-core performance. Go showed balanced performance across different scenarios, excelling particularly in tasks involving high computational needs (e.g., the Fibonacci calculation). 
+
+![Requests for the Fibonacci](/images/blog/go-function-benchmarks/requests-per-core-fibonacci.png)
+
+While it was not always the top performer in every scenario (Bun, PHP, and .NET demonstrated better performance in the Hello World function), Go's consistency across different types of workloads showed its versatility and reliability.
 
 ![Requests per second for a single CPU core](/images/blog/go-function-benchmarks/requests-per-core.png)
 
@@ -221,5 +225,6 @@ These benchmarks consistently showed us why the Go runtime is one of the best ru
 Learn more about Appwrite Functions and Go by reading:
 
 - [Appwrite Functions docs](https://appwrite.io/docs/products/functions)
+- [Appwrite Go quick start](https://appwrite.io/docs/quick-starts/go)
 - [3 things you can build with the Go runtime](https://appwrite.io/blog/post/3-things-you-can-build-with-go-runtime)
 - [Appwrite Discord server](https://appwrite.io/discord)
