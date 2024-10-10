@@ -7,7 +7,7 @@ cover: /images/blog/new-roles/cover.png
 timeToRead: 8
 author: eldad-fux
 category: product
-featured: true
+featured: false
 ---
 
 We’re excited to announce a new feature available in the Pro and Scale plans: **Roles**. This enhancement is designed to bring granular permissions to the Appwrite Console, improving both team collaboration and security across your projects. 
