@@ -32,7 +32,7 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 * {% icon icon="bun-sh" size="l" /%}
 * [Bun](https://hub.docker.com/r/openruntimes/bun/tags)
 * `bun-1.0`
-* `bun-1.1`
+`bun-1.1`
 * x86 / arm64
 ---
 * {% icon icon="deno" size="l" /%}
