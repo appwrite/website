@@ -1,85 +1,26 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
-    import { writable } from 'svelte/store';
-
-    type Permission = {
-        label: string;
-        options: Array<boolean>;
-    };
-
-    const headings = ['Create', 'Read', 'Update', 'Delete'];
-
-    const permissions = writable<Array<Permission>>([
-        { label: 'Any', options: [false, true, false, false] },
-        { label: 'Guest', options: [false, true, false, false] },
-        { label: 'Users', options: [true, true, true, true] },
-        { label: 'user:62f8b5b', options: [true, false, false, false] },
-        { label: 'user:62e1544', options: [true, false, false, false] }
-    ]);
+    import ProductShot from './ProductShot.svelte';
 </script>
 
-<div
-    class="mt-[60px] -mb-8 ml-[-80px] flex flex-1 basis-[602px] flex-col rounded-3xl border border-white/10 bg-white/0.04 backdrop-blur-xl"
->
-    <h4 class="text-label text-primary font-aeonik-pro border-b border-white/10 p-6">
-        Permissions
-    </h4>
-    <div class="flex w-full flex-1 flex-col p-6">
-        <div class="flex border-b border-white/10 pb-4">
-            <span class="web-eyebrow flex-[1.5]">Role</span>
-
-            {#each headings as heading}
-                <span class="web-eyebrow flex-1">{heading}</span>
-            {/each}
+<div class="web-big-padding-section-level-2">
+    <div class="container">
+        <div
+            class="mx-auto flex max-w-[380px] flex-col items-center justify-center gap-4 text-center"
+        >
+            <h1 class="text-title font-aeonik-pro text-primary">
+                Protect your files and set permissions
+            </h1>
+            <p class="text-body max-width-[380px] mx-auto font-medium">
+                Set up file encryption and granular user permissions in your storage infrastructure
+            </p>
+            <a
+                href="/"
+                class="web-button is-secondary is-full-width-mobile u-margin-block-start-16 mx-auto"
+                >Learn more</a
+            >
         </div>
-
-        <div class="flex flex-1 flex-col items-stretch divide-y divide-white/10">
-            {#each $permissions as { label, options }, index}
-                <div class="flex grow items-center justify-between">
-                    <span class="text-primary text-caption flex-[1.5]">{label}</span>
-
-                    {#each options as option, i}
-                        <div class="relative flex-1 items-center justify-center">
-                            <input
-                                type="checkbox"
-                                aria-label={`role ${label} ${headings[i].toLowerCase()}`}
-                                checked={option}
-                                class={classNames(
-                                    'checkbox peer size-5 cursor-pointer appearance-none rounded border-0 bg-white/12 backdrop-blur-lg transition-all duration-100',
-                                    'checked:bg-pink-500'
-                                )}
-                                on:change={() => {
-                                    permissions.update((permissions) => {
-                                        permissions[index].options[i] =
-                                            !permissions[index].options[i];
-                                        return permissions;
-                                    });
-                                }}
-                            />
-                            <span
-                                class="web-icon-check pointer-events-none absolute top-0 block leading-none text-white opacity-0 transition-opacity duration-100 peer-checked:opacity-100"
-                            />
-                        </div>
-                    {/each}
-                </div>
-            {/each}
-        </div>
-        <button class="web-button is-small is-text">
-            <span class="icon-plus web-u-color-text-primary" aria-hidden="true"></span>
-            <span class="text">Add role</span>
-        </button>
+    </div>
+    <div class="container u-main-center u-cross-start mt-8 flex">
+        <ProductShot />
     </div>
 </div>
-
-<style lang="scss">
-    @use '$scss/abstract/mixins/border-gradient' as gradients;
-    .checkbox {
-        @include gradients.border-gradient;
-        --m-border-radius: calc(1.125rem / 4);
-        --m-border-gradient-before: linear-gradient(
-            to bottom,
-            hsl(0, 0%, 100%, 0.16),
-            hsl(0, 0%, 100%, 0)
-        );
-    }
-</style>
