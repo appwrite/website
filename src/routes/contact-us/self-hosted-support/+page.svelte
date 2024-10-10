@@ -19,7 +19,7 @@
 
     async function handleSubmit() {
         error = undefined;
-        const subject = `Enterprise Plan Application: ${companyName}`;
+        const subject = `Self Hosted Support: ${companyName}`;
 
         const cloudEmail = loggedIn && $user?.email ? $user.email : undefined;
 
@@ -42,7 +42,7 @@
         submitted = true;
     }
 
-    const title = 'Enterprise' + TITLE_SUFFIX;
+    const title = 'Self hosted support' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
@@ -91,9 +91,9 @@
                                                 Thank you for your submission
                                             </h1>
                                             <p class="web-description web-u-padding-block-end-32">
-                                                Your details for the enterprise plan have been sent
-                                                successfully. Our team will get back to you as soon
-                                                as possible.
+                                                Your details for the self hosted support have been
+                                                sent successfully. Our team will get back to you as
+                                                soon as possible.
                                             </p>
                                             <a
                                                 href="/pricing"
@@ -105,11 +105,10 @@
                                     {:else}
                                         <section class="flex flex-col gap-5">
                                             <h4 class="web-display web-u-color-text-primary">
-                                                Enterprise Plan
+                                                Self hosted support
                                             </h4>
                                             <p class="web-description">
-                                                Interested in a pricing solution that fits your
-                                                specific requirements? Let’s talk.
+                                                Need help with your self hosted setup? Let’s talk.
                                             </p>
                                         </section>
                                     {/if}
@@ -214,7 +213,7 @@
                                                     required
                                                     class="web-input-text w-full"
                                                     id="use-case"
-                                                    placeholder="Describe your use case and how our Enterprise Plan can support it"
+                                                    placeholder="Describe what you are running into"
                                                     bind:value={useCase}
                                                 />
                                             </li>
