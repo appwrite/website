@@ -75,7 +75,7 @@
                                 class="web-media-container l-frame-parrot absolute top-20 -right-8 z-1 w-fit"
                             >
                                 <img
-                                    src="images/pages/storage/green-parrots.avif"
+                                    src="/images/pages/storage/green-parrots.avif"
                                     alt="two green parrots"
                                     width="326"
                                     height="320"
