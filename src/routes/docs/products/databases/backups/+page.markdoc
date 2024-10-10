@@ -32,23 +32,31 @@ To automate your database backups, you need to create backup policies that run a
 2. Create or select & navigate to your database and click on the **Backups** Tab
 3. Click on **Create Policies** & select a pre-defined policy\
 &nbsp;
-    * Select a pre-defined policy\
-&nbsp;
-        {% only_dark %}
-        ![Create databases screen](/images/docs/databases/dark/policies.png)
-        {% /only_dark %}
-        {% only_light %}
-        ![Create databases screen](/images/docs/databases/policies.png)
-        {% /only_light %}
+    * On a **Pro** plan, you get access to a Daily backup policy -
+    {% only_dark %}
+    ![Pro plan policy](/images/docs/databases/dark/pro-policy.png)
+    {% /only_dark %}
+    {% only_light %}
+    ![Pro plan policy](/images/docs/databases/pro-policy.png)
+    {% /only_light %}
 
-    * Or create a custom policy and adjust the settings as you like\
-&nbsp;
-         {% only_dark %}
-         ![Create databases screen](/images/docs/databases/dark/custom-policies.png)
-         {% /only_dark %}
-         {% only_light %}
-         ![Create databases screen](/images/docs/databases/custom-policies.png)
-         {% /only_light %}
+    * On **Scale** and above plans, you get access to more & custom policies -\
+    &nbsp;
+        * Select a pre-defined policy
+            {% only_dark %}
+            ![Scale plan policies](/images/docs/databases/dark/scale-policies.png)
+            {% /only_dark %}
+            {% only_light %}
+            ![Scale plan policies](/images/docs/databases/scale-policies.png)
+            {% /only_light %}
+        * Or create a custom policy and adjust the settings as you like
+            {% only_dark %}
+            ![Custom policies for Scale plan](/images/docs/databases/dark/scale-custom-policies.png)
+            {% /only_dark %}
+            {% only_light %}
+            ![Custom policies for Scale plan](/images/docs/databases/scale-custom-policies.png)
+            {% /only_light %}
+
 4. Click on **Create**
 
 Your database is now set up for automated backups with just a few clicks.
