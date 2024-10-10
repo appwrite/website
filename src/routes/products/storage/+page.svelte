@@ -6,6 +6,7 @@
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import Permissions from './(components)/Permissions.svelte';
+    import Testimonials from './(components)/Testimonials.svelte';
 
     const title = 'Storage' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -111,11 +112,11 @@
                         <h2 class="web-title web-u-color-text-primary">
                             Preview media files however you want
                         </h2>
-                        <p class="web-main-body-500 u-margin-block-start-16">
+                        <p class="web-main-body-500 mt-4">
                             Appwrite Storage's preview endpoint lets you manipulate image previews
                             while also managing different formats and compression algorithms.
                         </p>
-                        <div class="u-margin-block-start-32 flex gap-2">
+                        <div class="mt-8 flex gap-2">
                             <a href="/" class="web-button is-secondary is-full-width-mobile">
                                 <span class="text">Learn more</span>
                             </a>
@@ -198,11 +199,11 @@
                         <h2 class="web-title web-u-color-text-primary">
                             Optimized for small and large files
                         </h2>
-                        <p class="web-main-body-500 u-margin-block-start-16">
+                        <p class="web-main-body-500 mt-4">
                             Appwrite offers chunked uploads for large files and several compression
                             options for optimized upload times.
                         </p>
-                        <div class="u-margin-block-start-32 flex gap-2">
+                        <div class="mt-8 flex gap-2">
                             <a href="/" class="web-button is-secondary is-full-width-mobile">
                                 <span class="text">Learn more</span>
                             </a>
@@ -384,75 +385,7 @@
                     </div>
                 </div>
             </div>
-            <div class="web-big-padding-section-level-2 l-bgs-purple relative">
-                <div class="container">
-                    <ul class="web-multi-columns-1">
-                        <li class="web-u-gap-20 flex flex-col">
-                            <div class="web-card is-white u-gap-20 flex flex-col">
-                                <q
-                                    >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                                    in ultrices lacus.</q
-                                >
-                                <div class="web-user-box">
-                                    <img
-                                        class="web-user-box-image"
-                                        src="/images/community/avatars/kap.png"
-                                        alt="Avatar of Kap.ts"
-                                        height="48"
-                                        width="48"
-                                    />
-                                    <div class="web-user-box-name web-sub-body-500">Kap.ts</div>
-                                    <div class="web-user-box-username web-sub-body-400">
-                                        @Kaperskyguru
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="web-u-gap-20 flex flex-col">
-                            <div class="web-card is-white u-gap-20 flex flex-col">
-                                <q
-                                    >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                                    in ultrices lacus.</q
-                                >
-                                <div class="web-user-box">
-                                    <img
-                                        class="web-user-box-image"
-                                        src="/images/community/avatars/kap.png"
-                                        alt="Avatar of Kap.ts"
-                                        height="48"
-                                        width="48"
-                                    />
-                                    <div class="web-user-box-name web-sub-body-500">Kap.ts</div>
-                                    <div class="web-user-box-username web-sub-body-400">
-                                        @Kaperskyguru
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="web-u-gap-20 flex flex-col">
-                            <div class="web-card is-white u-gap-20 flex flex-col">
-                                <q
-                                    >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                                    in ultrices lacus.</q
-                                >
-                                <div class="web-user-box">
-                                    <img
-                                        class="web-user-box-image"
-                                        src="/images/community/avatars/kap.png"
-                                        alt="Avatar of Kap.ts"
-                                        height="48"
-                                        width="48"
-                                    />
-                                    <div class="web-user-box-name web-sub-body-500">Kap.ts</div>
-                                    <div class="web-user-box-username web-sub-body-400">
-                                        @Kaperskyguru
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <Testimonials />
             <div class="web-big-padding-section-level-2 light">
                 <div class="container">
                     <div class="web-hero is-center web-u-max-width-580 mx-auto">
