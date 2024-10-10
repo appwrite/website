@@ -122,14 +122,14 @@
             <div class="my-12 lg:my-[7.5rem]">
                 <section class="container pb-0">
                     <a
-                        href="/blog/post/announcing-appwrite-is-ccpa-compliant"
+                        href="/blog/post/announcing-roles-for-enhanced-collaboration-and-security"
                         class="web-hero-banner-button mb-4"
                     >
                         <span class="web-icon-star shrink-0" aria-hidden="true" />
                         <span class="text-caption font-medium shrink-0">New</span>
                         <div class="web-hero-banner-button-sep" />
                         <span class="text-caption web-u-trim-1"
-                            >Appwrite is now CCPA compliant.</span
+                            >Introducing Console Roles</span
                         >
                         <span class="web-icon-arrow-right shrink-0" aria-hidden="true" />
                     </a>
