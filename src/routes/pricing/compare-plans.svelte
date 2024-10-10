@@ -95,13 +95,6 @@
                     scale: '$0',
                     enterprise: '$0'
                 },
-		{
-                    title: 'Roles',
-                    free: '-',
-                    pro: true,
-                    scale: true,
-                    enterprise: true
-                },
                 {
                     title: 'Connected websites and apps',
                     free: '3 per project',
