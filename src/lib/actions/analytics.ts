@@ -1,0 +1,99 @@
+import Analytics, { type AnalyticsPlugin } from 'analytics';
+import Plausible from 'plausible-tracker';
+import { get } from 'svelte/store';
+import { page } from '$app/stores';
+
+import { ENV } from '$lib/system';
+import { browser } from '$app/environment';
+
+type Payload = {
+    payload: {
+        event: string;
+        properties: {
+            path: string;
+            referrer: string;
+            width: number;
+        };
+    };
+};
+
+function plausible(domain: string): AnalyticsPlugin {
+    if (!browser) return { name: 'analytics-plugin-plausible' };
+
+    const instance = Plausible({
+        domain
+    });
+
+    return {
+        name: 'analytics-plugin-plausible',
+        page: ({ payload }: Payload) => {
+            instance.trackPageview({
+                url: payload.properties.path,
+                referrer: payload.properties.referrer,
+                deviceWidth: payload.properties.width
+            });
+        },
+        track: ({ payload }: Payload) => {
+            instance.trackEvent(
+                payload.event,
+                {
+                    props: payload.properties
+                },
+                {
+                    url: payload.properties.path,
+                    deviceWidth: payload.properties.width
+                }
+            );
+        },
+        loaded: () => true
+    };
+}
+
+const analytics = Analytics({
+    app: 'appwrite',
+    plugins: [plausible('https://growth.appwrite.io')]
+});
+
+export function trackEvent(name: string, data: object = {}): void {
+    if (!isTrackingAllowed()) {
+        return;
+    }
+
+    const currentPage = get(page);
+    const path = currentPage.route.id ?? '';
+
+    if (ENV.DEV || ENV.PREVIEW) {
+        console.log(`[Analytics] Event ${name} ${path}`, data);
+    } else {
+        analytics.track(name, { ...data, path });
+    }
+}
+
+export function trackPageView(path: string) {
+    // if (!isTrackingAllowed()) {
+    //     return;
+    // }
+
+    if (ENV.DEV || ENV.PREVIEW) {
+        console.debug(`[Analytics] Pageview ${path}`);
+    } else {
+        analytics.page({
+            path
+        });
+    }
+}
+
+export function isTrackingAllowed() {
+    if (ENV.TEST) {
+        return;
+    }
+    if (window.navigator?.doNotTrack) {
+        if (navigator.doNotTrack === '1' || navigator.doNotTrack === 'yes') {
+            return false;
+        } else {
+            return true;
+        }
+    } else {
+        return true;
+    }
+}
