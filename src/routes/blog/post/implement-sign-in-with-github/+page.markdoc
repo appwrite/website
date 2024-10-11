@@ -6,7 +6,7 @@ date: 2024-10-11
 cover: /images/blog/implement-sign-in-with-github/cover.png
 timeToRead: 10
 author: ebenezer-don
-category: auth
+category: tutorial
 ---
 
 If you're building an app that developers will use, adding GitHub login makes things easier for your users. In this tutorial, you'll learn how to create a GitHub login system using Vanilla JavaScript and Appwrite. By the end, your users will be able to log in with their GitHub accounts, see personalized details, and log out.
