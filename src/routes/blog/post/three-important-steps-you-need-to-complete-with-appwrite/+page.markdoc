@@ -6,7 +6,7 @@ date: 2024-02-15
 cover: /images/blog/three-important-steps-you-need-to-complete-with-appwrite/3-important-steps.png
 timeToRead: 3
 author: dennis-ivy
-category: engineering
+category: product
 ---
 
 When creating a new project, there are three important things you need to do to ensure you have things set up properly and can connect to your Appwrite backend.
