@@ -1,0 +1,15 @@
+---
+layout: changelog
+title: "Update to Python runtime for better performance"
+date: 2024-10-11
+---
+
+We've updated the Python runtime on Appwrite Cloud to significantly improve performance.
+
+In the new runtime, we've transitioned from `Flask`, resulting in faster startup times and overall execution speed.
+
+All other runtimes have received patch updates.
+
+{% arrow_link href="/docs/products/functions/runtimes" %}
+See our runtime documentation
+{% /arrow_link %}
