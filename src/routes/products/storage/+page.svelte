@@ -7,6 +7,8 @@
     import { TITLE_SUFFIX } from '$routes/titles';
     import Permissions from './(components)/Permissions.svelte';
     import Testimonials from './(components)/Testimonials.svelte';
+    import PreviewFiles from './(components)/PreviewFiles.svelte';
+    import MultiCodeContextless from '$lib/components/MultiCodeContextless.svelte';
 
     const title = 'Storage' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -72,7 +74,7 @@
                                 height="308"
                             />
                             <section
-                                class="web-media-container l-frame-parrot absolute top-20 -right-8 z-1 w-fit"
+                                class="web-media-container l-frame-parrot !absolute top-32 -right-8 z-1 w-fit"
                             >
                                 <img
                                     src="/images/pages/storage/green-parrots.avif"
@@ -80,19 +82,6 @@
                                     width="326"
                                     height="320"
                                 />
-                            </section>
-                            <section
-                                class="web-card is-normal web-code-console web-u-max-width-380 u-margin-block-start-56 relative z-5"
-                                style="--card-padding:0.25rem; --card-padding-mobile:0.25rem;"
-                            >
-                                <header class="web-code-console-header web-u-gap-6 flex">
-                                    <span class="web-code-console-button is-red"></span>
-                                    <span class="web-code-console-button is-yellow"></span>
-                                    <span class="web-code-console-button is-green"></span>
-                                </header>
-                                <div class="web-code-console-content" style="min-block-size:166px">
-                                    [CODE WILL BE HERE]
-                                </div>
                             </section>
                         </div>
                         <img
@@ -107,86 +96,7 @@
         </div>
         <div class="web-big-padding-section-level-1 web-u-sep-block-start l-bgs-section-2 relative">
             <div class="web-big-padding-section-level-2">
-                <section class="container hero web-u-padding-block-end-0">
-                    <div class="web-u-max-width-580 mx-auto">
-                        <h2 class="web-title web-u-color-text-primary">
-                            Preview media files however you want
-                        </h2>
-                        <p class="web-main-body-500 mt-4">
-                            Appwrite Storage's preview endpoint lets you manipulate image previews
-                            while also managing different formats and compression algorithms.
-                        </p>
-                        <div class="mt-8 flex gap-2">
-                            <a href="/" class="web-button is-secondary is-full-width-mobile">
-                                <span class="text">Learn more</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="l-media-2 relative">
-                        <section class="web-media-container l-media-2-1 relative z-0 w-fit">
-                            <img
-                                src="images/pages/storage/exploring-the-world.png"
-                                alt=""
-                                width="326"
-                                height="320"
-                                loading="lazy"
-                            />
-                        </section>
-                        <div class="l-box-image-1 l-media-2-2 z-1">
-                            <img
-                                src="/images/pages/storage/corner-circle.svg"
-                                width="12"
-                                height="12"
-                                class="web-u-inset-inline-start-6-negative web-u-inset-block-start-6-negative absolute"
-                                alt=""
-                            />
-                            <img
-                                src="/images/pages/storage/corner-circle.svg"
-                                width="12"
-                                height="12"
-                                class="web-u-inset-inline-end-6-negative web-u-inset-block-start-6-negative absolute"
-                                alt=""
-                            />
-                            <img
-                                src="/images/pages/storage/corner-circle.svg"
-                                width="12"
-                                height="12"
-                                class="web-u-inset-inline-start-6-negative web-u-inset-block-end-6-negative absolute"
-                                alt=""
-                            />
-                            <img
-                                src="/images/pages/storage/corner-circle.svg"
-                                width="12"
-                                height="12"
-                                class="web-u-inset-inline-end-6-negative web-u-inset-block-end-6-negative absolute"
-                                alt=""
-                            />
-
-                            <img
-                                src="/images/pages/storage/mountain.avif"
-                                class="u-block"
-                                alt=""
-                                width="409"
-                                height="294"
-                                style="filter: drop-shadow(-4px 4px 42px rgba(0, 0, 0, 0.16)) drop-shadow(0px 4px 40px rgba(0, 0, 0, 0.32));"
-                            />
-                        </div>
-                        <section
-                            class="web-card is-normal web-code-console web-u-max-width-380 u-margin-block-start-56-negative l-media-2-3 relative z-5"
-                            style="--card-padding:0.25rem; --card-padding-mobile:0.25rem; margin-block-start:-200px;margin-inline-start:-40px;"
-                        >
-                            <header class="web-code-console-header web-u-gap-6 flex">
-                                <span class="web-code-console-button is-red"></span>
-                                <span class="web-code-console-button is-yellow"></span>
-                                <span class="web-code-console-button is-green"></span>
-                            </header>
-                            <div class="web-code-console-content" style="min-block-size:260px">
-                                [CODE WILL BE HERE]
-                            </div>
-                        </section>
-                        <!--<img src="/images/pages/storage/product-shot-2.png" width="708" alt="" />-->
-                    </div>
-                </section>
+                <PreviewFiles />
             </div>
         </div>
         <div class="web-big-padding-section-level-1 e-bg-image-pattern-bottom relative">
