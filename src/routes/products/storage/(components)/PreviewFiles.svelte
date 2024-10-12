@@ -13,7 +13,7 @@
 	 'CDCA30',           // border color
 	 15,                 // border radius
 	 'heic'              // output heic format
-;`,
+);`,
             platform: 'Node.js',
             language: 'server-nodejs'
         }
@@ -21,14 +21,16 @@
 </script>
 
 <section class="container hero web-u-padding-block-end-0">
-    <div class="web-u-max-width-580 mx-auto">
-        <h2 class="web-title web-u-color-text-primary">Preview media files however you want</h2>
-        <p class="web-main-body-500 mt-4">
+    <div class="mx-auto max-w-[580px]">
+        <h2 class="text-title font-aeonik-pro text-primary">
+            Preview media files however you want
+        </h2>
+        <p class="text-body mt-4 font-medium">
             Appwrite Storage's preview endpoint lets you manipulate image previews while also
             managing different formats and compression algorithms.
         </p>
         <div class="mt-8 flex gap-2">
-            <a href="/" class="web-button is-secondary is-full-width-mobile">
+            <a href="/" class="web-button is-secondary !w-full md:w-fit">
                 <span class="text">Learn more</span>
             </a>
         </div>
