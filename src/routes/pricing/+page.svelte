@@ -10,6 +10,8 @@
     import BG from './bg.png?enhanced';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import Toggle from '$lib/components/ui/Toggle.svelte';
+    import { goto } from '$app/navigation';
+    import { onMount } from 'svelte';
 
     const title = 'Pricing' + TITLE_SUFFIX;
     const description = 'Explore our straightforward pricing plans that scale with your project.';
@@ -19,7 +21,24 @@
         { label: 'Cloud', key: 'cloud' },
         { label: 'Self hosted', key: 'self-hosted' }
     ];
-    let activeToggle: string = 'self-hosted';
+
+    let activeToggle: string = 'cloud';
+
+    $: if (activeToggle && typeof window !== 'undefined') {
+        const params = new URLSearchParams(window.location.search);
+        params.set('type', activeToggle);
+        goto(`?${params.toString()}`, { replaceState: true });
+    }
+
+    onMount(() => {
+        if (typeof window !== 'undefined') {
+            const params = new URLSearchParams(window.location.search);
+            const type = params.get('type');
+            if (type) {
+                activeToggle = type;
+            }
+        }
+    });
 </script>
 
 <svelte:head>

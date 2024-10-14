@@ -11,7 +11,7 @@
 
     let width = 0;
     let backgroundOffset = 0;
-    let activeIndex = options.findIndex((option) => option.key === activeToggle);
+    let activeIndex = 0;
 
     function handleClick(event: MouseEvent) {
         if (event.target) {
@@ -33,9 +33,10 @@
         width = buttonRect.width;
     }
 
-    onMount(() => {
+    $: if (activeToggle && typeof window !== 'undefined') {
         const activeOption = options.find((option) => option.key === activeToggle);
         if (activeOption) {
+            activeIndex = options.findIndex((option) => option.key === activeToggle);
             const activeButton = document.getElementById(
                 `toggle-${activeOption.key}`
             ) as HTMLButtonElement;
@@ -43,7 +44,7 @@
                 handleButtonClick(activeButton);
             });
         }
-    });
+    }
 </script>
 
 <section
