@@ -133,7 +133,7 @@
                             >
                                 <div class="flex justify-end">
                                     <ul
-                                        class="web-form-list grid md:grid-cols-2 web-u-max-width-580 web-u-max-inline-size-none-mobile w-full gap-4"
+                                        class="web-form-list web-u-max-width-580 web-u-max-inline-size-none-mobile grid w-full gap-4 md:grid-cols-2"
                                     >
                                         <li class="web-form-item">
                                             <input
