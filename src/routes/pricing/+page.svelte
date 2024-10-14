@@ -373,7 +373,7 @@
                                                 monitoring, and advanced features.
                                             </p>
                                             <a
-                                                href="https://cloud.appwrite.io/contact-us/enterprise"
+                                                href="/contact-us/premium-support?supportTier=standard"
                                                 class="web-button mt-8"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
