@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
-
     type $$props = {
         options: Array<{ label: string; key: string }>;
         onChange: (key: string) => void;
