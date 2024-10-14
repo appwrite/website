@@ -15,15 +15,11 @@
     const description = 'Explore our straightforward pricing plans that scale with your project.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
-    const pageStateOptions: Array<{ label: string; key: string; isActive?: true }> = [
-        { label: 'Cloud', key: 'cloud', isActive: true },
+    const pageStateOptions: Array<{ label: string; key: string }> = [
+        { label: 'Cloud', key: 'cloud' },
         { label: 'Self hosted', key: 'self-hosted' }
     ];
-    let activePageState: string = 'cloud';
-
-    function changePageState(newPageState: string) {
-        activePageState = newPageState;
-    }
+    let activeToggle: string = 'self-hosted';
 </script>
 
 <svelte:head>
@@ -69,12 +65,12 @@
                             Simple, transparent pricing with no surprises
                         </h1>
                         <div class="flex justify-center">
-                            <Toggle options={pageStateOptions} onChange={changePageState} />
+                            <Toggle options={pageStateOptions} bind:activeToggle />
                         </div>
                     </div>
                 </section>
             </div>
-            <div class="web-big-padding-section-level-2" class:hidden={activePageState !== 'cloud'}>
+            <div class="web-big-padding-section-level-2" class:hidden={activeToggle !== 'cloud'}>
                 <section class="container">
                     <div class="web-pricing-cards">
                         <ul class="web-pricing-cards-list">
@@ -284,7 +280,7 @@
             </div>
             <div
                 class="web-big-padding-section-level-2"
-                class:hidden={activePageState !== 'self-hosted'}
+                class:hidden={activeToggle !== 'self-hosted'}
             >
                 <section class="container">
                     <div class="web-pricing-cards">
@@ -425,10 +421,10 @@
                 </section>
             </div>
         </div>
-        <div class:hidden={activePageState !== 'cloud'}>
+        <div class:hidden={activeToggle !== 'cloud'}>
             <ComparePlans />
         </div>
-        <div class:hidden={activePageState !== 'self-hosted'}>
+        <div class:hidden={activeToggle !== 'self-hosted'}>
             <CompareSupport />
         </div>
 
