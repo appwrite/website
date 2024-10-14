@@ -1,7 +1,7 @@
 <script lang="ts">
-    import Media from '$lib/UI/Media.svelte';
     import { formatDate } from '$lib/utils/date';
-
+    import { transformer } from '$lib/utils/image';
+    import { Image } from '@unpic/svelte';
     export let title: string;
     export let cover: string;
     export let href: string;
@@ -14,12 +14,14 @@
 <li>
     <a class="web-grid-articles-item is-transparent" {href}>
         <div class="web-grid-articles-item-image">
-            <Media
+            <Image
+                layout="constrained"
                 src={cover}
                 class="web-u-media-ratio-16-9"
+                width={368}
+                height={207}
                 alt={title}
-                autoplay
-                controls={false}
+                {transformer}
             />
         </div>
         <div class="web-grid-articles-item-content">
