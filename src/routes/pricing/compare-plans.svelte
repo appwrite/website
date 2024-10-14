@@ -203,14 +203,14 @@
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 },
-		{
+                {
                     title: 'Backups',
                     free: '-',
                     pro: 'Daily,',
                     scale: 'Custom',
                     enterprise: 'Custom'
                 },
- 		{
+                {
                     title: 'Backups retention',
                     free: '-',
                     pro: '7 days retention,',

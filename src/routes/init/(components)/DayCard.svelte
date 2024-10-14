@@ -43,7 +43,7 @@
     {:else}
         <div style:z-index="10" style="margin-top: auto; margin-bottom: 0;">
             <span
-                class="text-primary text-micro uppercase web-u-uppercase"
+                class="text-primary text-micro web-u-uppercase uppercase"
                 style:margin-bottom="-8px"
                 style:display="block"
             >

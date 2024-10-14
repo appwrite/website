@@ -21,9 +21,12 @@ type FilterThreadsArgs = {
 };
 
 export function sanitizeContent(rawContent: string, maxLength: number = 200): string {
-    const cleaned = rawContent.replace(/```(?:\w+)?\n([\s\S]*?)```|```([\s\S]*?)```/g, (_, withLang, withoutLang) => {
-        return (withLang || withoutLang).trim();
-    });
+    const cleaned = rawContent.replace(
+        /```(?:\w+)?\n([\s\S]*?)```|```([\s\S]*?)```/g,
+        (_, withLang, withoutLang) => {
+            return (withLang || withoutLang).trim();
+        }
+    );
 
     return cleaned.length > maxLength ? cleaned.slice(0, maxLength) + '...' : cleaned;
 }
