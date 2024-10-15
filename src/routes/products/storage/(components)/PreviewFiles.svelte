@@ -30,22 +30,24 @@
             managing different formats and compression algorithms.
         </p>
         <div class="mt-8 flex gap-2">
-            <a href="/" class="web-button is-secondary !w-full md:w-fit">
+            <a href="/" class="web-button is-secondary !w-full md:!w-fit">
                 <span class="text">Learn more</span>
             </a>
         </div>
     </div>
     <div class="l-media-2 relative">
-        <section class="web-media-container l-media-2-1 relative z-0 hidden w-full md:block">
+        <section
+            class="web-media-container l-media-2-1 relative -left-5 z-0 hidden max-h-[328px] w-full max-w-[550px] overflow-hidden md:block"
+        >
             <img
                 src="/images/pages/storage/exploring-the-world.png"
                 alt=""
                 width="326"
-                height="320"
+                height="300"
                 loading="lazy"
             />
         </section>
-        <div class="l-box-image-1 l-media-2-2 z-1 border border-[#85dbd8] p-2">
+        <div class="l-box-image-1 l-media-2-2 relative z-1 border border-[#85dbd8] p-2">
             <img
                 src="/images/pages/storage/corner-circle.svg"
                 width="12"
@@ -77,7 +79,7 @@
 
             <img
                 src="/images/pages/storage/mountain.avif"
-                class="block"
+                class="block rounded-xl"
                 alt=""
                 width="409"
                 height="294"
@@ -85,7 +87,7 @@
             />
         </div>
 
-        <div class="relative -top-60 -left-16 z-10">
+        <div class="relative -top-32 -left-16 z-10">
             <MultiCodeContextless selected={Platform.ServerNodeJs} data={snippet} width={550} />
         </div>
     </div>
