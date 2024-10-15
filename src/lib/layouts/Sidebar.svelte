@@ -78,7 +78,7 @@
                         {/if}
                     {:else}
                         {#if navGroup.label}
-                            <h2 class="web-side-nav-header text-micro uppercase whitespace-nowrap">
+                            <h2 class="web-side-nav-header text-micro whitespace-nowrap uppercase">
                                 {navGroup.label}
                             </h2>
                         {/if}
@@ -116,7 +116,7 @@
             <IsLoggedIn />
 
             <a
-                href="{GITHUB_REPO_LINK}"
+                href={GITHUB_REPO_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="web-button is-text web-u-inline-width-100-percent-mobile"

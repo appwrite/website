@@ -195,7 +195,9 @@
                             </div>
                             <section>
                                 <div class="web-flex flex-col gap-2">
-                                    <h3 class="text-label text-primary mt-3 mb-4">Co-branding logotypes</h3>
+                                    <h3 class="text-label text-primary mt-3 mb-4">
+                                        Co-branding logotypes
+                                    </h3>
                                     <p>
                                         Spacing is determined by the Appwrite mark. Unless otherwise
                                         noted by partner brands, each logo is optically equal as a
@@ -302,7 +304,9 @@
                             </div>
                             <section id="">
                                 <div class="web-flex flex-col gap-2">
-                                    <h3 class="text-label text-primary mt-3 mb-4">Co-branding lockups</h3>
+                                    <h3 class="text-label text-primary mt-3 mb-4">
+                                        Co-branding lockups
+                                    </h3>
                                     <p>
                                         Spacing is determined by the Appwrite mark. Unless otherwise
                                         noted by partner brands, each logo is optically equal as a
@@ -331,8 +335,8 @@
                             </h2>
                             <div class="flex flex-wrap gap-8">
                                 <div
-                                    class="media-wrapper | flex aspect-square web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-text-color-neutral-900 web-u-bg-color-neutral-50
-                                web-u-min-block-size-160 flex-1 flex-col justify-center
+                                    class="media-wrapper | web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-text-color-neutral-900 web-u-bg-color-neutral-50 web-u-min-block-size-160 flex
+                                aspect-square flex-1 flex-col justify-center
                                 gap-2 px-6"
                                 >
                                     <h3 class="text-label">Light Grey</h3>
@@ -342,8 +346,8 @@
                                     </div>
                                 </div>
                                 <div
-                                    class="media-wrapper | aspect-square flex web-u-sep web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-min-block-size-160
-                                web-u-text-color-neutral-50 web-u-bg-color-neutral-900 flex-1 flex-col justify-center
+                                    class="media-wrapper | web-u-sep web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-min-block-size-160 web-u-text-color-neutral-50 web-u-bg-color-neutral-900
+                                flex aspect-square flex-1 flex-col justify-center
                                 gap-2 px-6"
                                 >
                                     <h3 class="text-label">Dark Grey</h3>
@@ -353,8 +357,8 @@
                                     </div>
                                 </div>
                                 <div
-                                    class="media-wrapper | flex aspect-square web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-text-color-neutral-50 web-u-bg-color-primary-500
-                                web-u-min-block-size-160 flex-1 flex-col justify-center
+                                    class="media-wrapper | web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-text-color-neutral-50 web-u-bg-color-primary-500 web-u-min-block-size-160 flex
+                                aspect-square flex-1 flex-col justify-center
                                 gap-2 px-6"
                                 >
                                     <h3 class="text-label">Appwrite Pink</h3>
@@ -616,13 +620,12 @@
             right: 1rem;
             bottom: 1rem;
 
-          &.visuals {
-            justify-content: left;
-            top: auto;
-            position: relative;
-            margin-top: 2rem;
-          }
+            &.visuals {
+                justify-content: left;
+                top: auto;
+                position: relative;
+                margin-top: 2rem;
+            }
         }
-
     }
 </style>
