@@ -126,11 +126,9 @@
                         class="web-hero-banner-button mb-4"
                     >
                         <span class="web-icon-star shrink-0" aria-hidden="true" />
-                        <span class="text-caption font-medium shrink-0">New</span>
+                        <span class="text-caption shrink-0 font-medium">New</span>
                         <div class="web-hero-banner-button-sep" />
-                        <span class="text-caption web-u-trim-1"
-                            >Introducing Console Roles</span
-                        >
+                        <span class="text-caption web-u-trim-1">Introducing Console Roles</span>
                         <span class="web-icon-arrow-right shrink-0" aria-hidden="true" />
                     </a>
                     <Hero>
@@ -429,6 +427,7 @@
                 style:inset-block-start="0rem"
                 style:z-index="-1"
                 style:left="calc(50% - 384px + 350px)"
+                style:margin-top="6.25rem"
             >
                 <img
                     src="/images/animations/tech-dark.png"

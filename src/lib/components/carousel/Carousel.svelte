@@ -122,7 +122,7 @@
     };
 </script>
 
-<div class="embla relative overflow-hidden web-carousel">
+<div class="embla web-carousel relative overflow-hidden">
     {#if hasPrev}
         <button class="web-carousel-button web-carousel-button-start" on:click={onPrev}>
             <span class="web-icon-arrow-left" aria-hidden="true"></span>
