@@ -60,7 +60,7 @@ To overcome the limitations of SMS OTPs, several more secure and technically adv
 Appwrite Authentication also features three passwordless authentication methods: [magic links](https://appwrite.io/docs/products/auth/magic-url), [email OTPs](https://appwrite.io/docs/products/auth/email-otp), and [SMS OTPs](https://appwrite.io/docs/products/auth/phone-sms), which can be integrated into applications seamlessly with Appwrite's client-side SDKs.
 
 {% tabs %}
-{% tabsitem #js title="Magic URLs" %}
+{% tabsitem #magicurl title="Magic URLs" %}
 
 Magic URL authentication is a two-step process in Appwrite.
 
@@ -90,7 +90,7 @@ const user = await account.createSession(userId, secret);
 
 {% /tabsitem %}
 
-{% tabsitem #js title="Email OTPs" %}
+{% tabsitem #emailotp title="Email OTPs" %}
 
 Email OTP authentication is a two-step process in Appwrite.
 
@@ -125,7 +125,7 @@ const session = await account.createSession(
 
 {% /tabsitem %}
 
-{% tabsitem #flutter title="SMS OTPs" %}
+{% tabsitem #smsotp title="SMS OTPs" %}
 
 SMS OTP authentication is a two-step process in Appwrite.
 
