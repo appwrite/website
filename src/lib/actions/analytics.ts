@@ -54,7 +54,7 @@ const analytics = Analytics({
     plugins: [plausible('https://appwrite.io')]
 });
 
-export function trackEvent(name: string, data: object = {}): void {
+export const trackEvent = async (name: string, data: object = {}) => {
     if (!isTrackingAllowed()) {
         return;
     }
@@ -65,23 +65,9 @@ export function trackEvent(name: string, data: object = {}): void {
     if (ENV.DEV || ENV.PREVIEW) {
         console.log(`[Analytics] Event ${name} ${path}`, data);
     } else {
-        analytics.track(name, { ...data, path });
+        await analytics.track(name, { ...data, path });
     }
-}
-
-export function trackPageView(path: string) {
-    if (!isTrackingAllowed()) {
-        return;
-    }
-
-    if (ENV.DEV || ENV.PREVIEW) {
-        console.debug(`[Analytics] Pageview ${path}`);
-    } else {
-        analytics.page({
-            path
-        });
-    }
-}
+};
 
 export function isTrackingAllowed() {
     if (ENV.TEST) {
