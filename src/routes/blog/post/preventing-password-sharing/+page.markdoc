@@ -6,7 +6,7 @@ date: 2024-03-07
 cover: /images/blog/preventing-password-sharing.png
 timeToRead: 6
 author: aditya-oberai
-category: authentication, security
+category: security
 ---
 
 Over the last few years, password sharing has emerged as a notable challenge for developers and companies, intertwining concerns of security, privacy, and revenue. Although seemingly benign, this practice has significant implications, especially for platforms with seat-based pricing models. Netflix made waves in 2023 with its [ban on account sharing](https://www.techradar.com/news/netflix-password-sharing), spotlighting the potential revenue loss businesses face when users circumvent subscription models designed to reflect actual usage. Beyond financial repercussions, the critical importance of addressing password sharing simply cannot go unaddressed today.
