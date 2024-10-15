@@ -528,7 +528,6 @@
 
     .search-and-categories {
         display: flex;
-        overflow: hidden;
         align-items: center;
     }
 
