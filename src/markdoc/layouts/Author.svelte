@@ -284,7 +284,7 @@
                 </div>
             </div>
         </div>
-        <div class="pt-[7.5rem] relative overflow-hidden">
+        <div class="relative overflow-hidden pt-[7.5rem]">
             <div class="container">
                 <FooterNav />
                 <MainFooter />
