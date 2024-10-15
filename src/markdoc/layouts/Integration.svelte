@@ -113,7 +113,7 @@
                     </div>
                     <div class="l-grid-sidebar">
                         <dl
-                            class="flex flex-col sidebar-desc gap-5"
+                            class="sidebar-desc flex flex-col gap-5"
                             style:top={$isHeaderHidden ? '4rem' : '9rem'}
                         >
                             <div class="flex justify-between gap-2">
@@ -157,7 +157,7 @@
                         class="web-hero web-u-max-width-580 flex items-center justify-center gap-y-4"
                     >
                         <h2
-                            class="text-display font-aeonik-pro text-center text-primary max-w-[600px]"
+                            class="text-display font-aeonik-pro text-primary max-w-[600px] text-center"
                         >
                             Become a Technology Partner
                         </h2>
