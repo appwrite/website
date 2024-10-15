@@ -6,7 +6,7 @@ date: 2024-10-09
 cover: /images/blog/deno-2-appwrite-functions/cover.png
 timeToRead: 6
 author: ebenezer-don
-category: functions
+category: product
 ---
 
 Deno 2.0 is the latest version of the secure, modern runtime created by Ryan Dahl, the same developer behind Node.js. For years, Node.js has been the go-to runtime for building server-side JavaScript applications. It's familiar, it's powerful, and it has a huge ecosystem of libraries. But like any technology, Node.js isn't without its flaws.

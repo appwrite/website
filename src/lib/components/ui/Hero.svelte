@@ -42,7 +42,7 @@
     </h1>
     {#if $$slots.description}
         <div class="flex-1 self-end">
-            <p class="text-secondary mt-6 text-description font-medium">
+            <p class="text-secondary text-description mt-6 font-medium">
                 <slot name="description" />
             </p>
             <slot name="cta" />

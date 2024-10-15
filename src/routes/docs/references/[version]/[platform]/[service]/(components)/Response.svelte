@@ -12,7 +12,7 @@
                 <li>
                     <article>
                         <header class="flex items-baseline gap-2">
-                            <span class="text-micro uppercase text-primary">
+                            <span class="text-micro text-primary uppercase">
                                 {response.code}
                             </span>
                             <span class="text-caption">application/json</span>

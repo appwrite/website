@@ -4,7 +4,7 @@
 
 <img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg" style="z-index:-1" />
 
-<div class="web-u-row-gap-80 relative grid md:grid-cols-2 gap-8">
+<div class="web-u-row-gap-80 relative grid gap-8 md:grid-cols-2">
     <section class="web-hero flex items-center justify-center gap-y-8">
         <h2 class="text-display font-aeonik-pro text-primary max-w-[500px] text-center">
             Start building today

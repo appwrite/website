@@ -19,7 +19,7 @@
                 aria-hidden="true"
             />
         </div>
-        <p class="text-sub-body font-medium web-u-text-color-neutral-700">
+        <p class="text-sub-body web-u-text-color-neutral-700 font-medium">
             <slot />
         </p>
     </div>
