@@ -19,7 +19,9 @@
 
     const state = writable<AnimationState>(DEFAULT_STATE);
 
-    const animate = () => {
+    export let animate: boolean = false;
+
+    const animation = () => {
         setInterval(() => {
             if ($state.animationComplete) {
                 return;
@@ -36,20 +38,21 @@
     };
 
     onMount(() => {
-        animate();
+        if (!animate) return;
+        animation();
     });
 </script>
 
-<div class="row-span-5 rounded-2xl flex flex-col gap-4 p-2 bg-greyscale-850/90" role="presentation">
-    <div class="bg-white/[0.02] rounded-lg flex-1 flex flex-col items-center justify-center p-6">
+<div class="bg-greyscale-850/90 row-span-5 flex flex-col gap-4 rounded-2xl p-2" role="presentation">
+    <div class="flex flex-1 flex-col items-center justify-center rounded-lg bg-white/[0.02] p-6">
         <div class="flex gap-1">
             {#each Array.from({ length: 6 }).map(() => Math.floor(Math.random() * 10)) as number, i}
                 <!-- svelte-ignore a11y-autofocus -->
                 <div
                     class={classNames(
-                        'relative flex items-center justify-center outline-none duration-500 pointer-events-none text-center text-primary text-lg space-x-4 size-10 bg-greyscale-850 rounded-lg border transition-all duration-500 border-white/10 shadow-lg shadow-black/5',
+                        'text-primary bg-greyscale-850 pointer-events-none relative flex size-10 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-lg shadow-lg shadow-black/5 outline-none transition-all duration-500',
                         {
-                            'border-accent shadow-md shadow-accent/10': $state.currentInput === i
+                            'border-accent shadow-accent/10 shadow-md': $state.currentInput === i
                         }
                     )}
                 >
@@ -58,8 +61,7 @@
                             'opacity-0': !$state.activeInputs.includes(i)
                         })}>{number}</span
                     >
-                </div>
-            {/each}
+                </div>{/each}
         </div>
     </div>
     <div class="p-4">
