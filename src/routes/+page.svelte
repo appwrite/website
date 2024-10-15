@@ -122,14 +122,16 @@
             <div class="my-12 lg:my-[7.5rem]">
                 <section class="container pb-0">
                     <a
-                        href="/blog/post/announcing-roles-for-enhanced-collaboration-and-security"
+                        href="/blog/post/introducing-database-backups"
                         class="web-hero-banner-button mb-4"
                         on:click={() => trackEvent('Banner button click')}
                     >
                         <span class="web-icon-star shrink-0" aria-hidden="true" />
                         <span class="text-caption shrink-0 font-medium">New</span>
                         <div class="web-hero-banner-button-sep" />
-                        <span class="text-caption web-u-trim-1">Introducing Console Roles</span>
+                        <span class="text-caption web-u-trim-1"
+                            >Introducing Database Backups</span
+                        >
                         <span class="web-icon-arrow-right shrink-0" aria-hidden="true" />
                     </a>
                     <Hero>
