@@ -8,7 +8,7 @@
     import Permissions from './(components)/Permissions.svelte';
     import Testimonials from './(components)/Testimonials.svelte';
     import PreviewFiles from './(components)/PreviewFiles.svelte';
-    import MultiCodeContextless from '$lib/components/MultiCodeContextless.svelte';
+    import WhatYouCanDo from './(components)/WhatYouCanDo.svelte';
 
     const title = 'Storage' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -231,67 +231,7 @@
                                 <span>View docs</span>
                             </a>
                         </div>
-                        <div
-                            class="web-u-gap-20 u-min-width-0 u-max-width-100-percent flex flex-col"
-                        >
-                            <div
-                                class="l-scroll-in-mobile u-min-width-0 u-overflow-x-auto flex gap-2"
-                                style=""
-                            >
-                                <button class="tag is-selected"> List files </button>
-                                <button class="tag"> Create file </button>
-                                <button class="tag"> Get file </button>
-                                <button class="tag"> Delete file </button>
-                            </div>
-                            <section
-                                class="theme-dark web-code-snippet"
-                                aria-label="code-snippet panel"
-                            >
-                                <header class="web-code-snippet-header">
-                                    <div class="web-code-snippet-header-start">
-                                        <div class="flex gap-4">
-                                            <div class="web-tag">
-                                                <span class="text">Node.js</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="web-code-snippet-header-end">
-                                        <ul class="buttons-list flex gap-2">
-                                            <li class="buttons-list-item">
-                                                <!-- REPLACE with dynamic partial used in Header of docs -->
-                                                <button class="web-select is-colored">
-                                                    <div class="physical-select">
-                                                        <span>Web</span>
-                                                    </div>
-                                                    <span
-                                                        class="icon-cheveron-down"
-                                                        aria-hidden="true"
-                                                    ></span>
-                                                </button>
-                                            </li>
-                                            <li class="buttons-list-item u-padding-inline-start-8">
-                                                <button
-                                                    aria-describedby="SESItRlYoy"
-                                                    id="zSXaeTV-HF"
-                                                    data-state="closed"
-                                                    data-melt-tooltip-trigger=""
-                                                    class="web-icon-button"
-                                                    aria-label="copy code from code-snippet"
-                                                >
-                                                    <span class="web-icon-copy" aria-hidden="true"
-                                                    ></span>
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </header>
-                                <div class="web-code-snippet-content" style="block-size:13rem">
-                                    <pre><code class="web-code language-text"
-                                            ><span class="line">[code]</span></code
-                                        ></pre>
-                                </div>
-                            </section>
-                        </div>
+                        <WhatYouCanDo />
                     </div>
                 </div>
             </div>
