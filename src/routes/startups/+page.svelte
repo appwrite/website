@@ -143,7 +143,7 @@
         ),
         testimonial(
             'Jonas Janssen',
-            'Founder',
+            'Founder // UNDO',
             'Thanks to Appwrite and advances in technology, we were able to get an MVP out in 2-3 months with 1 developer.',
             'jonas-janssen'
         ),
@@ -187,8 +187,8 @@
                             class="text-description web-u-max-width-640 e-u-padding-inline-32-desktop mx-auto"
                         >
                             The Appwrite Startups Program supports your startup with a complete
-                            backend for you to build your products. Eligible startups receive
-                            Appwrite Cloud Scale for 12 months.
+                            backend for you to build your products. You will receive
+                            $20,000 Cloud credits for Appwrite Scale for 12 months.
                         </p>
                         <button on:click={scrollToForm} class="web-button mt-3 mx-auto">
                             Apply now
@@ -662,7 +662,7 @@
         </div>
 
         <div id="form" class="overflow-hidden pt-10">
-            <div class="pt-[7.5rem] is-margin-replace-padding relative">
+            <div class="is-margin-replace-padding relative pt-[7.5rem]">
                 <div class="relative">
                     <div class="web-big-padding-section-level-2">
                         <div class="container relative">
@@ -703,9 +703,7 @@
                                                 Join the Appwrite Startups program
                                             </h4>
                                             <p class="text-description">
-                                                We support VC backed or revenue generating startups
-                                                that have been established within the last decade
-                                                with:
+                                                We support your startup with:
                                             </p>
 
                                             <div class="flex flex-col gap-3">

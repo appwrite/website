@@ -167,7 +167,7 @@
             <div class="web-main-header-end">
                 <div class="flex gap-2">
                     <a
-                        href="{GITHUB_REPO_LINK}"
+                        href={GITHUB_REPO_LINK}
                         target="_blank"
                         rel="noopener noreferrer"
                         class="web-button is-text"
