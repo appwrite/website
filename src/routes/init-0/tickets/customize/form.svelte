@@ -44,7 +44,7 @@
     const variants: TicketVariant[] = ['default', 'pink', 'rainbow'] as const;
 </script>
 
-<div class="flex flex-col u-gap-4 u-margin-block-start-32">
+<div class="u-gap-4 u-margin-block-start-32 flex flex-col">
     <label for="name">Your name</label>
     <input
         class="web-input-text"
@@ -105,7 +105,7 @@
         </button>
     {/if}
 {:else}
-    <h2 class="text-sub-body font-medium text-primary">Integrate your GitHub account</h2>
+    <h2 class="text-sub-body text-primary font-medium">Integrate your GitHub account</h2>
     <p class="text-sub-body font-medium" style:margin-block-start="0.25rem">
         Sign in with your GitHub account and see the magic happen in your ticket.
     </p>
@@ -130,7 +130,7 @@
         Your ticket has been upgraded.
     </p>
 {:else}
-    <h2 class="text-sub-body font-medium text-primary">Integrate your Appwrite account</h2>
+    <h2 class="text-sub-body text-primary font-medium">Integrate your Appwrite account</h2>
     <p class="text-sub-body font-medium" style:margin-block-start="0.25rem">
         Sign in with your Appwrite account and see the magic happen in your ticket.
     </p>
@@ -144,7 +144,7 @@
 {/if}
 <hr />
 
-<h2 class="text-sub-body font-medium text-primary">Add your tribe</h2>
+<h2 class="text-sub-body text-primary font-medium">Add your tribe</h2>
 <p class="text-sub-body font-medium" style:margin-block-start="0.25rem">
     Customize your Init ticket with your technology.
 </p>

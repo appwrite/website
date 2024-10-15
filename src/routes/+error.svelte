@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div class="pt-[7.5rem] relative">
+            <div class="relative pt-[7.5rem]">
                 <div class="container">
                     <FooterNav />
                     <MainFooter />
