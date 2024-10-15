@@ -70,14 +70,16 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="starter" class="text-label font-aeonik-pro">Free</h2>
+                                            <h2 id="starter" class="text-label font-aeonik-pro">
+                                                Free
+                                            </h2>
                                             <div
                                                 class="text-title font-aeonik-pro text-primary mt-2"
                                             >
                                                 $0
                                             </div>
                                             <div class="mt-1">&nbsp;</div>
-                                            <p class="text-body mt-4 font-medium h-[5rem]">
+                                            <p class="text-body mt-4 h-[5rem] font-medium">
                                                 For personal hobby projects and students.
                                             </p>
                                             <a
@@ -122,7 +124,9 @@
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
                                             <header class="flex gap-3">
-                                                <h2 id="pro" class="text-label font-aeonik-pro">Pro</h2>
+                                                <h2 id="pro" class="text-label font-aeonik-pro">
+                                                    Pro
+                                                </h2>
                                                 <div class="web-inline-tag is-pink">Popular</div>
                                             </header>
                                             <div
@@ -131,7 +135,7 @@
                                                 $15
                                             </div>
                                             <div class="mt-1">per member/month</div>
-                                            <p class="text-body mt-4 font-medium h-[5rem]">
+                                            <p class="text-body mt-4 h-[5rem] font-medium">
                                                 For pro developers and teams that need to scale
                                                 their products.
                                             </p>
@@ -156,7 +160,9 @@
                                                 <li><span>200K monthly active users</span></li>
                                                 <li><span>Organization roles</span></li>
                                                 <li><span>Email support</span></li>
-                                                <li><span>Daily backups stored for 7 days</span></li>
+                                                <li>
+                                                    <span>Daily backups stored for 7 days</span>
+                                                </li>
                                                 <li><span>Add-ons</span></li>
                                                 <li>
                                                     <span
@@ -175,14 +181,16 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="scale" class="text-label font-aeonik-pro">Scale</h2>
+                                            <h2 id="scale" class="text-label font-aeonik-pro">
+                                                Scale
+                                            </h2>
                                             <div
                                                 class="text-title font-aeonik-pro text-primary mt-2"
                                             >
                                                 $599
                                             </div>
                                             <div class="mt-1">per organization/month</div>
-                                            <p class="text-body mt-4 font-medium h-[5rem]">
+                                            <p class="text-body mt-4 h-[5rem] font-medium">
                                                 For scaling teams and agencies that need dedicated
                                                 support.
                                             </p>
@@ -206,7 +214,7 @@
                                                 <li><span>Custom organization roles</span></li>
                                                 <li><span>SSO</span></li>
                                                 <li><span>Activity logs</span></li>
-                                                 <li><span>Custom backup policies</span></li>
+                                                <li><span>Custom backup policies</span></li>
                                                 <li><span>Priority support</span></li>
                                             </ul>
                                         </div>
@@ -220,14 +228,16 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="enterprise" class="text-label font-aeonik-pro">Enterprise</h2>
+                                            <h2 id="enterprise" class="text-label font-aeonik-pro">
+                                                Enterprise
+                                            </h2>
                                             <div
                                                 class="text-title font-aeonik-pro text-primary mt-2"
                                             >
                                                 Custom
                                             </div>
                                             <div class="mt-1">per organization/month</div>
-                                            <p class="text-body mt-4 font-medium h-[5rem]">
+                                            <p class="text-body mt-4 h-[5rem] font-medium">
                                                 For enterprises that need more power and premium
                                                 support.
                                             </p>
@@ -260,53 +270,53 @@
                         </ul>
                     </div>
 
-<!--                    <ul class="web-grid-1-1-opt-2 mt-20 gap-8">-->
-<!--                        <li>-->
-<!--                            <article-->
-<!--                                class="web-card is-transparent has-border-gradient min-h-full"-->
-<!--                                style="background:rgba(35, 35, 37, 0.90);"-->
-<!--                            >-->
-<!--                                <header class="flex gap-3">-->
-<!--                                    <h3 id="enterprises" class="text-body text-primary font-medium">-->
-<!--                                        Enterprises-->
-<!--                                    </h3>-->
-<!--                                    <div class="web-inline-tag is-pink">Coming Soon</div>-->
-<!--                                </header>-->
-<!--                                <p class="mt-2">-->
-<!--                                    Large scale projects seeking greater performance, collaboration-->
-<!--                                    and security.-->
-<!--                                </p>-->
-<!--                                <a href="/contact-us" class="web-button is-secondary mt-8">-->
-<!--                                    <span>Contact us</span>-->
-<!--                                </a>-->
-<!--                            </article>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <article-->
-<!--                                class="web-card is-transparent has-border-gradient min-h-full"-->
-<!--                                style="background:rgba(35, 35, 37, 0.90);"-->
-<!--                            >-->
-<!--                                <header class="flex gap-3">-->
-<!--                                    <h3-->
-<!--                                        id="open-source-teams"-->
-<!--                                        class="text-body text-primary font-medium"-->
-<!--                                    >-->
-<!--                                        Open-source teams-->
-<!--                                    </h3>-->
-<!--                                </header>-->
-<!--                                <p class="mt-2">-->
-<!--                                    We support OSS maintainers with a free Pro Plan. Read our-->
-<!--                                    announcement blog to find out more.-->
-<!--                                </p>-->
-<!--                                <a-->
-<!--                                    href="/docs/advanced/platform/oss"-->
-<!--                                    class="web-button is-secondary mt-8"-->
-<!--                                >-->
-<!--                                    <span>Learn more</span>-->
-<!--                                </a>-->
-<!--                            </article>-->
-<!--                        </li>-->
-<!--                    </ul>-->
+                    <!--                    <ul class="web-grid-1-1-opt-2 mt-20 gap-8">-->
+                    <!--                        <li>-->
+                    <!--                            <article-->
+                    <!--                                class="web-card is-transparent has-border-gradient min-h-full"-->
+                    <!--                                style="background:rgba(35, 35, 37, 0.90);"-->
+                    <!--                            >-->
+                    <!--                                <header class="flex gap-3">-->
+                    <!--                                    <h3 id="enterprises" class="text-body text-primary font-medium">-->
+                    <!--                                        Enterprises-->
+                    <!--                                    </h3>-->
+                    <!--                                    <div class="web-inline-tag is-pink">Coming Soon</div>-->
+                    <!--                                </header>-->
+                    <!--                                <p class="mt-2">-->
+                    <!--                                    Large scale projects seeking greater performance, collaboration-->
+                    <!--                                    and security.-->
+                    <!--                                </p>-->
+                    <!--                                <a href="/contact-us" class="web-button is-secondary mt-8">-->
+                    <!--                                    <span>Contact us</span>-->
+                    <!--                                </a>-->
+                    <!--                            </article>-->
+                    <!--                        </li>-->
+                    <!--                        <li>-->
+                    <!--                            <article-->
+                    <!--                                class="web-card is-transparent has-border-gradient min-h-full"-->
+                    <!--                                style="background:rgba(35, 35, 37, 0.90);"-->
+                    <!--                            >-->
+                    <!--                                <header class="flex gap-3">-->
+                    <!--                                    <h3-->
+                    <!--                                        id="open-source-teams"-->
+                    <!--                                        class="text-body text-primary font-medium"-->
+                    <!--                                    >-->
+                    <!--                                        Open-source teams-->
+                    <!--                                    </h3>-->
+                    <!--                                </header>-->
+                    <!--                                <p class="mt-2">-->
+                    <!--                                    We support OSS maintainers with a free Pro Plan. Read our-->
+                    <!--                                    announcement blog to find out more.-->
+                    <!--                                </p>-->
+                    <!--                                <a-->
+                    <!--                                    href="/docs/advanced/platform/oss"-->
+                    <!--                                    class="web-button is-secondary mt-8"-->
+                    <!--                                >-->
+                    <!--                                    <span>Learn more</span>-->
+                    <!--                                </a>-->
+                    <!--                            </article>-->
+                    <!--                        </li>-->
+                    <!--                    </ul>-->
                 </section>
             </div>
         </div>
