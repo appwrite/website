@@ -1,4 +1,4 @@
-import Analytics, { type AnalyticsPlugin } from 'analytics';
+import { Analytics, type AnalyticsPlugin } from 'analytics';
 import Plausible from 'plausible-tracker';
 import { get } from 'svelte/store';
 import { page } from '$app/stores';
@@ -17,7 +17,7 @@ type Payload = {
     };
 };
 
-function plausible(domain: string): AnalyticsPlugin {
+const plausible = (domain: string): AnalyticsPlugin => {
     if (!browser) return { name: 'analytics-plugin-plausible' };
 
     const instance = Plausible({
@@ -47,11 +47,11 @@ function plausible(domain: string): AnalyticsPlugin {
         },
         loaded: () => true
     };
-}
+};
 
 const analytics = Analytics({
     app: 'appwrite',
-    plugins: [plausible('https://growth.appwrite.io')]
+    plugins: [plausible('https://appwrite.io')]
 });
 
 export function trackEvent(name: string, data: object = {}): void {
@@ -70,9 +70,9 @@ export function trackEvent(name: string, data: object = {}): void {
 }
 
 export function trackPageView(path: string) {
-    // if (!isTrackingAllowed()) {
-    //     return;
-    // }
+    if (!isTrackingAllowed()) {
+        return;
+    }
 
     if (ENV.DEV || ENV.PREVIEW) {
         console.debug(`[Analytics] Pageview ${path}`);
