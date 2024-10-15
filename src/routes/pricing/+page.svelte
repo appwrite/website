@@ -392,7 +392,7 @@
                                                 monitoring, and advanced features.
                                             </p>
                                             <a
-                                                href="/contact-us/premium-support?supportTier=standard"
+                                                href="/contact-us/enterprise"
                                                 class="web-button mt-8"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
