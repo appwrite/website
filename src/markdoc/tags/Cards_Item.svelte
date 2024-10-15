@@ -14,7 +14,7 @@
             {#if icon}
                 <span class="{icon} web-u-font-size-24" aria-hidden="true" />
             {/if}
-            <h4 class="text-sub-body font-medium text-primary">
+            <h4 class="text-sub-body text-primary font-medium">
                 {title}
             </h4>
         </header>
