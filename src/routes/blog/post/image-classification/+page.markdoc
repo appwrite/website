@@ -6,7 +6,7 @@ date: 2024-08-06
 cover: /images/blog/image-classification.png
 timeToRead: 9
 author: bradley-schofield
-category: AI
+category: product
 ---
 
 Image classification is an exciting field of computer vision that tries to understand and label images in their entirety. It has many applications: you can integrate it into your app to automatically categorize photos, filter inappropriate content from social media feeds, or even organize your online store's product catalog.

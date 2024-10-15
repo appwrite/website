@@ -6,7 +6,7 @@ date: 2024-05-17
 cover: /images/blog/personal-chatbot-gpt-4o/cover.png
 timeToRead: 5
 author: aditya-oberai
-category: functions
+category: tutorial
 ---
 
 Recently, at the OpenAI Spring Update, OpenAI CTO Mira Murati announced the launch of their new flagship model,&nbsp;**GPT-4o**. GPT-4o happens to be OpenAI's fastest and most affordable model so far, which led us to wonder if we could use it to build our very own chatbot.
