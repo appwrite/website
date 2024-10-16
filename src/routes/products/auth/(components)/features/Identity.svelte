@@ -1,6 +1,6 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import fingerprint from '../../(assets)/identity-bg.svg';
+    import fingerprint from '../../(assets)/identity-bg.png';
 
     const columns = 40;
     const rows = 40;
