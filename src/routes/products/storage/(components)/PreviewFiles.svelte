@@ -87,8 +87,8 @@
             />
         </div>
 
-        <div class="relative -top-32 -left-16 z-10">
-            <MultiCodeContextless selected={Platform.ServerNodeJs} data={snippet} width={550} />
+        <div class="relative -top-32 z-10 mx-auto max-w-[95%] px-8 md:-left-16 md:max-w-none">
+            <MultiCodeContextless selected={Platform.ServerNodeJs} data={snippet} />
         </div>
     </div>
 </section>
