@@ -99,7 +99,7 @@
     </section>
 </div>
 <div
-    class="mt-[60px] -mb-8 flex flex-1 flex-col rounded-3xl border border-white/10 bg-white/0.04 backdrop-blur-xl md:ml-[-80px] md:basis-[602px]"
+    class="mt-16 flex flex-1 flex-col rounded-3xl border border-white/10 bg-white/0.04 backdrop-blur-xl md:ml-[-80px] md:basis-[602px]"
 >
     <h4 class="text-label text-primary font-aeonik-pro border-b border-white/10 p-6">
         Permissions
@@ -107,25 +107,34 @@
     <table class="w-full table-fixed p-6">
         <thead>
             <tr class="border-b border-white/10 pb-4">
-                <th class="web-eyebrow pl-6 text-left">Role</th>
+                <th
+                    class="text-micro font-aeonik-fono text-secondary w-[120px] pl-6 text-left font-normal uppercase md:w-[200px]"
+                    >Role</th
+                >
                 {#each headings as heading}
-                    <th class="web-eyebrow py-4 text-left">{heading}</th>
+                    <th
+                        class="text-micro font-aeonik-fono text-secondary py-4 text-left font-normal uppercase"
+                        >{heading}</th
+                    >
                 {/each}
             </tr>
         </thead>
         <tbody class="divide-y divide-white/10">
             {#each $permissions as { label, options }, index}
                 <tr>
-                    <td class="text-primary text-caption py-4 px-6">{label}</td>
+                    <td
+                        class="text-primary text-micro md:text-caption w-[120px] py-4 px-6 md:w-[200px]"
+                        >{label}</td
+                    >
                     {#each options as option, i}
-                        <td class="py-2">
-                            <div class="relative inline-block">
+                        <td class="h-full py-4">
+                            <div class="relative inline-flex items-center justify-center">
                                 <input
                                     type="checkbox"
                                     aria-label={`role ${label} ${headings[i].toLowerCase()}`}
                                     checked={option}
                                     class={classNames(
-                                        'checkbox peer size-5 cursor-pointer appearance-none rounded border-0 bg-white/12 backdrop-blur-lg transition-all duration-100',
+                                        'checkbox peer size-4 cursor-pointer appearance-none rounded-sm border-0 bg-white/12 backdrop-blur-lg transition-all duration-100 md:size-5 md:rounded',
                                         'checked:bg-pink-500'
                                     )}
                                     on:change={() => {
@@ -137,7 +146,7 @@
                                     }}
                                 />
                                 <span
-                                    class="web-icon-check pointer-events-none absolute top-0 left-0 block scale-0 leading-none text-white opacity-0 transition-all duration-100 peer-checked:scale-100 peer-checked:opacity-100"
+                                    class="web-icon-check pointer-events-none absolute top-0 left-0 mx-auto block scale-0 !text-[16px] leading-none text-white opacity-0 transition-all duration-100 peer-checked:scale-100 peer-checked:opacity-100 md:!text-[20px]"
                                 />
                             </div>
                         </td>
@@ -147,7 +156,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan={headings.length + 1} class="pt-4">
+                <td colspan={headings.length + 1} class="py-4 pl-4">
                     <button class="web-button is-small is-text">
                         <span class="icon-plus web-u-color-text-primary" aria-hidden="true"></span>
                         <span class="text">Add role</span>
