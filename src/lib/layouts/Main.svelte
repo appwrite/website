@@ -26,6 +26,7 @@
     import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
     import InitBanner from '$lib/components/InitBanner.svelte';
     import Button from '$lib/components/ui/Button.svelte';
+    import { trackEvent } from '$lib/actions/analytics';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -263,6 +264,7 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     class="web-button is-text web-u-inline-width-100-percent-mobile"
+                    on:click={() => trackEvent('Star on GitHub in header')}
                 >
                     <span class="web-icon-star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>
