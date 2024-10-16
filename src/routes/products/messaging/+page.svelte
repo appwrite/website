@@ -255,7 +255,7 @@ messaging.create_email(
                 <div>
                     <div class="product">
                         <img src="/images/icons/illustrated/dark/messaging.png" alt="" />
-                        <span class="text-micro uppercase text-primary">
+                        <span class="text-micro text-primary uppercase">
                             Messaging<span class="web-u-color-text-accent">_</span>
                         </span>
                         <span class="web-hero-banner-button text-micro uppercase">BETA</span>
@@ -652,7 +652,7 @@ messaging.create_email(
                 </ul>
             </div>
         </section>
-        <div class="pt-[7.5rem] relative">
+        <div class="relative pt-[7.5rem]">
             <div class="container">
                 <PreFooter />
                 <FooterNav />

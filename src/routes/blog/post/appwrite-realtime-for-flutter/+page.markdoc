@@ -6,7 +6,7 @@ cover: /images/blog/appwrite-realtime-with-flutter/cover.png
 timeToRead: 6
 date: 2024-09-02
 author: damodar-lohani
-category: product
+category: tutorial
 ---
 Realtime service is one of Appwrite’s most popular features. It allows you to subscribe and react to any Appwrite event using the Realtime API.
 
