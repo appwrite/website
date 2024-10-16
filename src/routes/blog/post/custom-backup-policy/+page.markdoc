@@ -1,13 +1,12 @@
 ---
 layout: post
 title: "Custom backup policies for compliance and security"
-description: Learn why regular backups are no longer enough for data security.
+description: "Learn why regular backups are no longer enough for data security."
 date: 2024-10-16
 cover: /images/blog/custom-backup-policy/cover.png
 timeToRead: 5
 author: aditya-oberai
 category: product
-featured: false
 ---
 If you’re still relying on standard backups with just a 7-day retention, your company’s data could be at risk. Today, data security is non-negotiable, regardless of your industry or business size. Losing it can lead to massive financial, legal and reputational setbacks.
 
@@ -15,7 +14,7 @@ That’s why having a custom backup policy is crucial.
 
 In this post, we'll explore the top reasons why you should consider creating a custom backup policy and how to set up a policy that works for you.
 
-# **Data prioritization & backup frequency**
+# Data prioritization & backup frequency
 
 Not all data is created equal. Some files or databases are mission-critical and need to be backed up frequently, while others may not require the same level of urgency. A business that processes thousands of transactions per day will require frequent backups (e.g., hourly or real-time), whereas a small design agency might only need daily or weekly backups. Critical information, such as financial transactions or customer records, may need multiple backups throughout the day, while less essential data (like system logs) might only require periodic backups.
 
@@ -29,7 +28,7 @@ A **custom backup policy** lets you prioritize the data that matters most to you
 
 By categorizing your data this way, you can ensure the most important assets are always safe, while reducing storage costs and improving backup speed.
 
-# **Compliance and industry regulations**
+# Compliance and industry regulations
 
 Many industries, such as finance and healthcare, have strict compliance requirements regarding data retention. Depending on the jurisdiction and regulations, organizations may need to retain data for months or even years. A simple daily backup with a 7-day retention period would be insufficient to meet these legal requirements. Custom backup policies allow a company to comply with regulations by offering tailored backup schedules and retention periods. 
 
@@ -56,7 +55,7 @@ With a custom backup policy, you can define RTO and RPO based on the nature of y
 
 Custom policies allow you to fine-tune these settings, ensuring you’re not paying for more than you need or risking extended downtime that could disrupt business.
 
-# **Cost efficiency**
+# Cost efficiency
 
 Generic backup solutions often come with rigid pricing structures that can end up costing more than necessary, especially if you’re backing up more data than needed or storing it for longer than required. Custom backup policies are essential for managing storage costs efficiently. By implementing incremental or differential backups rather than full daily backups, you can reduce storage requirements, especially in cloud environments where costs can escalate quickly. Tailoring retention periods based on data importance also helps manage overall backup expenses.
 
@@ -68,7 +67,7 @@ By creating a custom backup policy, you can:
 
 This ensures you're making the most of your budget, paying for exactly what you need, and not a penny more.
 
-# **Security and encryption**
+# Security and encryption
 
 Data security is non-negotiable, especially in an age where cyber threats are on the rise. While many generic backup services offer basic security features, a custom backup policy allows you to take control over:
 
@@ -78,7 +77,7 @@ Data security is non-negotiable, especially in an age where cyber threats are on
 
 This heightened level of control allows you to protect your data against unauthorized access, breaches, or even insider threats.
 
-# **Scalability**
+# Scalability
 
 As businesses grow, so do their data needs. Custom backup policies provide the flexibility to scale with your organization, adapting to new data sources, applications, and compliance requirements. Additionally, they allow companies to integrate new technologies and adjust backup strategies as business processes evolve, ensuring continued data protection without being constrained by rigid systems. You might need more frequent backups, larger storage capacities, or even different security measures as your data grows in both volume and complexity.
 
