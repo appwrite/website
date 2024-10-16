@@ -29,7 +29,7 @@ importers:
         version: 0.26.0
       '@appwrite.io/repo':
         specifier: github:appwrite/appwrite#1.6.x
-        version: https://codeload.github.com/appwrite/appwrite/tar.gz/8a5a1609fe99a424790948d989c2ee630c02066b
+        version: https://codeload.github.com/appwrite/appwrite/tar.gz/16b360e77eb13b17282d42408575f37db069cb3c
       '@internationalized/date':
         specifier: 3.5.0
         version: 3.5.0
@@ -202,8 +202,8 @@ packages:
   '@appwrite.io/pink@0.26.0':
     resolution: {integrity: sha512-iPeGE56pauzxuIXt15ZswjKCErwp3QdF3XOlJZfyYY7J2nirra85JNTL+3lWuFIf8yYWL7NbvCjhf8ig79TgwA==}
 
-  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/8a5a1609fe99a424790948d989c2ee630c02066b':
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/8a5a1609fe99a424790948d989c2ee630c02066b}
+  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/16b360e77eb13b17282d42408575f37db069cb3c':
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/16b360e77eb13b17282d42408575f37db069cb3c}
     version: 0.0.0
 
   '@babel/code-frame@7.25.7':
@@ -4308,7 +4308,7 @@ snapshots:
       normalize.css: 8.0.1
       the-new-css-reset: 1.11.3
 
-  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/8a5a1609fe99a424790948d989c2ee630c02066b': {}
+  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/16b360e77eb13b17282d42408575f37db069cb3c': {}
 
   '@babel/code-frame@7.25.7':
     dependencies:
@@ -5674,7 +5674,7 @@ snapshots:
       '@sentry/core': 8.34.0
       '@sentry/types': 8.34.0
       '@sentry/utils': 8.34.0
-      magic-string: 0.30.7
+      magic-string: 0.30.12
       svelte: 4.2.19
 
   '@sentry/sveltekit@8.34.0(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.53.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.27.0)(@sveltejs/kit@2.7.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.9(@types/node@22.7.5)(lightningcss@1.27.0)(sass@1.79.5)))(svelte@4.2.19)(vite@5.4.9(@types/node@22.7.5)(lightningcss@1.27.0)(sass@1.79.5)))(encoding@0.1.13)(svelte@4.2.19)(vite@5.4.9(@types/node@22.7.5)(lightningcss@1.27.0)(sass@1.79.5))':
