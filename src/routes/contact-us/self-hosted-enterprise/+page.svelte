@@ -91,9 +91,9 @@
                                                 Thank you for your submission
                                             </h1>
                                             <p class="web-description web-u-padding-block-end-32">
-                                                Your details for the self hosted support have been
-                                                sent successfully. Our team will get back to you as
-                                                soon as possible.
+                                                Your details for the self hosted enterprise have
+                                                been sent successfully. Our team will get back to
+                                                you as soon as possible.
                                             </p>
                                             <a
                                                 href="/pricing"
@@ -105,10 +105,11 @@
                                     {:else}
                                         <section class="flex flex-col gap-5">
                                             <h4 class="web-display web-u-color-text-primary">
-                                                Self hosted support
+                                                Self hosted Enterprise
                                             </h4>
                                             <p class="web-description">
-                                                Need help with your self hosted setup? Let’s talk.
+                                                Need Enterprise support with your self hosted setup?
+                                                Let’s talk.
                                             </p>
                                         </section>
                                     {/if}
