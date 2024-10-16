@@ -51,7 +51,7 @@ const plausible = (domain: string): AnalyticsPlugin => {
 
 const analytics = Analytics({
     app: 'appwrite',
-    plugins: [plausible('https://appwrite.io')]
+    plugins: [plausible('appwrite.io')]
 });
 
 export const trackEvent = async (name: string, data: object = {}) => {
