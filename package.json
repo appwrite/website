@@ -49,6 +49,7 @@
         "@typescript-eslint/parser": "^7.13.1",
         "analytics": "^0.8.14",
         "clsx": "^2.1.1",
+        "cobe": "^0.6.3",
         "cva": "npm:class-variance-authority@^0.7.0",
         "date-fns": "^3.6.0",
         "dequal": "^2.0.3",
