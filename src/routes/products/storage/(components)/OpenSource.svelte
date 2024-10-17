@@ -43,12 +43,12 @@
     <div class="container web-u-max-width-993">
         <div class="mt-20 overflow-hidden">
             <div
-                class="text-sub-body grid place-items-center gap-8 divide-x divide-black/4 font-medium md:grid-cols-3"
+                class="text-sub-body grid place-items-center gap-8 divide-black/4 font-medium md:grid-cols-3 md:divide-x"
             >
                 {#each items as { title, content, icon }, i}
                     <div
                         class={classNames(
-                            'relative flex max-w-[290px] flex-col items-center justify-center text-center'
+                            'relative flex flex-col items-center justify-center text-center md:max-w-[290px]'
                         )}
                     >
                         <img src={icon} width="40" height="40" alt="" />
