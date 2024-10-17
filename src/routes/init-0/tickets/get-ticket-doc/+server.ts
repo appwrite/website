@@ -4,6 +4,7 @@ import { isProUser } from '$lib/utils/console.js';
 import type { User } from '$routes/init-0/helpers.js';
 import { ID, Query } from '@appwrite.io/console';
 import type { TicketData, TicketDoc } from '../constants.js';
+import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
 
 type SendToHubspotArgs = {
     name: string;
@@ -11,7 +12,7 @@ type SendToHubspotArgs = {
 };
 
 async function sendToHubspot({ name, email }: SendToHubspotArgs) {
-    await fetch('https://growth.appwrite.io/v1/mailinglists/init', {
+    await fetch(`${PUBLIC_GROWTH_ENDPOINT}/mailinglists/init`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
