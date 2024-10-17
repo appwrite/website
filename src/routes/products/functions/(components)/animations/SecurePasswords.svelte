@@ -28,7 +28,7 @@
     };
 </script>
 
-<div class="bg-greyscale-850/90 row-span-7 flex flex-col gap-4 rounded-2xl p-2" role="presentation">
+<div class="bg-greyscale-850/90 flex flex-col gap-4 rounded-2xl p-2" role="presentation">
     <div class="p-4">
         <span class="text-primary">Secure passwords</span>
         <p class="text-secondary">

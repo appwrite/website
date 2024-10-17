@@ -43,25 +43,34 @@
     });
 </script>
 
-<div class="bg-greyscale-850/90 row-span-5 flex flex-col gap-4 rounded-2xl p-2" role="presentation">
+<div class="bg-greyscale-850/90 flex flex-col gap-4 rounded-2xl p-2" role="presentation">
     <div class="flex flex-1 flex-col items-center justify-center rounded-lg bg-white/[0.02] p-6">
-        <div class="flex gap-1">
-            {#each Array.from({ length: 6 }).map(() => Math.floor(Math.random() * 10)) as number, i}
-                <!-- svelte-ignore a11y-autofocus -->
-                <div
-                    class={classNames(
-                        'text-primary bg-greyscale-850 pointer-events-none relative flex size-10 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-lg shadow-lg shadow-black/5 outline-none transition-all duration-500',
-                        {
-                            'border-accent shadow-accent/10 shadow-md': $state.currentInput === i
-                        }
-                    )}
-                >
-                    <span
-                        class={classNames('transition-opacity', {
-                            'opacity-0': !$state.activeInputs.includes(i)
-                        })}>{number}</span
-                    >
-                </div>{/each}
+        <div class="flex gap-2">
+            <div
+                class="text-primary bg-greyscale-850 pointer-events-none relative flex size-12 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-lg shadow-lg shadow-black/5 outline-none transition-all duration-500"
+            >
+                <span>5</span>
+            </div>
+            <div
+                class="text-primary bg-greyscale-850 pointer-events-none relative flex size-12 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-lg shadow-lg shadow-black/5 outline-none transition-all duration-500"
+            >
+                <span>*</span>
+            </div>
+            <div
+                class="text-primary bg-greyscale-850 pointer-events-none relative flex size-12 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-lg shadow-lg shadow-black/5 outline-none transition-all duration-500"
+            >
+                <span>*</span>
+            </div>
+            <div
+                class="text-primary bg-greyscale-850 pointer-events-none relative flex size-12 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-lg shadow-lg shadow-black/5 outline-none transition-all duration-500"
+            >
+                <span>*</span>
+            </div>
+            <div
+                class="text-primary bg-greyscale-850 pointer-events-none relative flex size-12 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-lg shadow-lg shadow-black/5 outline-none transition-all duration-500"
+            >
+                <span>*</span>
+            </div>
         </div>
     </div>
     <div class="p-4">
