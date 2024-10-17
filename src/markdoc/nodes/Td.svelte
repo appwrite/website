@@ -6,6 +6,6 @@
     export let rowspan: HTMLTdAttributes['rowspan'] = undefined;
 </script>
 
-<td class="web-table-col" {align} {colspan} {rowspan}>
+<td class="py-[0.5625rem] px-3 text-sm leading-[1.375rem]" {align} {colspan} {rowspan}>
     <slot />
 </td>
