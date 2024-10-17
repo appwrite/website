@@ -96,6 +96,6 @@ A **custom backup policy** is a smart investment.
 By tailoring your backup approach to your business needs, you’re not just safeguarding your data— you’re optimizing resources, ensuring compliance, and future-proofing your business.
 
 Appwrite Database Backups allows you to customize your backup policy down to pre-defined schedules (e.g., daily, weekly, monthly), retention periods and even precise execution times on Pro and Scale plans. Learn more about Database Backups:
-- [Appwrite Database Backups](/blog/post/introducing-database-backups)
-- [Database Backups docs](/docs/products/databases/backups)
-- [Should I encrypt my backups?](/blog/post/backup-encryption)
+- [Appwrite Database Backups](https://appwrite.io/blog/post/introducing-database-backups)
+- [Database Backups docs](https://appwrite.io/docs/products/databases/backups)
+- [Should I encrypt my backups?](https://appwrite.io/blog/post/backup-encryption)
