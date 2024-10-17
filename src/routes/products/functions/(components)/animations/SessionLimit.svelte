@@ -3,7 +3,7 @@
     import { classNames } from '$lib/utils/classnames';
 </script>
 
-<div class={classNames('row-span-5 gap-4 rounded-2xl flex flex-col p-2 bg-greyscale-850/90')}>
+<div class={classNames('bg-greyscale-850/90 flex flex-col gap-4 rounded-2xl p-2')}>
     <div class="p-4">
         <span class="text-primary">Session limit</span>
         <p class="text-secondary">
@@ -11,12 +11,12 @@
         </p>
     </div>
     <div
-        class="bg-white/[0.02] rounded-lg flex-1 gap-4 overflow-hidden relative flex flex-col justify-center items-center"
+        class="relative flex flex-1 flex-col items-center justify-center gap-4 overflow-hidden rounded-lg bg-white/[0.02]"
     >
         <div
-            class="-mt-[40%] flex flex-col px-6 py-4 border-l border-y border-white/[0.06] bg-greyscale-800 to-transparent rounded-l-2xl mr-0 ml-auto"
+            class="bg-greyscale-800 -mt-[40%] mr-0 ml-auto flex flex-col rounded-l-2xl border-y border-l border-white/[0.06] to-transparent py-4 px-6"
         >
-            <div class="flex items-center justify-center inset-0 z-10 gradient">
+            <div class="gradient inset-0 z-10 flex items-center justify-center">
                 <div class="text-xs">
                     <span class="text-primary">Sessions limit</span>
                     <p>Maximum number of active sessions allowed per user.</p>
@@ -27,9 +27,9 @@
             </div>
         </div>
         <div
-            class="flex flex-col px-6 py-4 border-l border-y border-white/[0.06] bg-greyscale-800 to-transparent rounded-l-2xl mr-0 ml-auto"
+            class="bg-greyscale-800 mr-0 ml-auto flex flex-col rounded-l-2xl border-y border-l border-white/[0.06] to-transparent py-4 px-6"
         >
-            <div class="flex items-center justify-center inset-0 z-10 gradient">
+            <div class="gradient inset-0 z-10 flex items-center justify-center">
                 <div class="text-xs">
                     <span class="text-primary">Sessions limit</span>
                     <p>Maximum number of active sessions allowed per user.</p>
