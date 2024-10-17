@@ -9,6 +9,7 @@
     import Testimonials from './(components)/Testimonials.svelte';
     import PreviewFiles from './(components)/PreviewFiles.svelte';
     import WhatYouCanDo from './(components)/WhatYouCanDo.svelte';
+    import OpenSource from './(components)/OpenSource.svelte';
 
     const title = 'Storage' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -236,77 +237,7 @@
                 </div>
             </div>
             <Testimonials />
-            <div class="web-big-padding-section-level-2 light">
-                <div class="container">
-                    <div class="web-hero is-center web-u-max-width-580 mx-auto">
-                        <h2 class="web-display web-u-color-text-primary">Powered by open source</h2>
-                        <p
-                            class="web-main-body-500 web-u-margin-block-start-0 web-u-max-width-580 mx-auto"
-                        >
-                            Appwrite is a 100% open source project, giving you the flexibility and
-                            support you need to get your project started.
-                        </p>
-                        <a
-                            href="/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="web-button is-secondary is-full-width-mobile web-u-cross-child-center u-margin-block-start-16"
-                        >
-                            <span>Join the community</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="web-big-padding-section-level-2 light">
-                <div class="container web-u-max-width-993">
-                    <div class="web-u-margin-block-start-80 overflow-hidden">
-                        <ul
-                            class="web-info-boxes is-one-inline-mobile items-centered web-sub-body-500 u-margin-inline-start-0"
-                        >
-                            <li class="web-info-boxes-item">
-                                <img
-                                    src="/images/icons/gradients/community.svg"
-                                    width="40"
-                                    height="40"
-                                    alt=""
-                                />
-                                <h3 class="web-info-boxes-title u-main-center">
-                                    Join the community and share knowledge
-                                </h3>
-                                <p class="web-info-boxes-content">Lorem ipsum dolor sit amet.</p>
-                            </li>
-                            <li class="web-info-boxes-item">
-                                <img
-                                    src="/images/icons/gradients/self-hosted.svg"
-                                    width="40"
-                                    height="40"
-                                    alt=""
-                                />
-                                <h3 class="web-info-boxes-title u-main-center">
-                                    Self-host or go Cloud
-                                </h3>
-                                <p class="web-info-boxes-content">
-                                    Lorem ipsum dolor sit amet consectetur. Nullam ligula blandit.
-                                </p>
-                            </li>
-                            <li class="web-info-boxes-item">
-                                <img
-                                    src="/images/icons/gradients/lock.svg"
-                                    width="40"
-                                    height="40"
-                                    alt=""
-                                />
-                                <h3 class="web-info-boxes-title u-main-center">
-                                    No vendor lock-in
-                                </h3>
-                                <p class="web-info-boxes-content">
-                                    Lorem ipsum dolor sit amet consectetur. Nullam ligula blandit.
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <OpenSource />
         </div>
 
         <div class="relative pt-20">
@@ -320,171 +251,6 @@
 </Main>
 
 <style lang="scss">
-    input[type='checkbox'] {
-        --p-icon-color-default: var(--web-color-greyscale-100);
-        --p-bg-color-default: var(--web-color-greyscale-750);
-        --p-border-color-default: var(--web-color-greyscale-750);
-        --p-bg-color-checked: var(--web-color-accent);
-        --p-border-color-checked: var(--web-color-accent);
-        --p-bg-color-hover-checked: var(--web-color-accent);
-        --p-border-color-hover-checked: var(--web-color-accent);
-        --p-bg-color-active-checked: var(--web-color-accent);
-        --p-border-color-active-checked: var(--web-color-accent);
-    }
-    .table {
-        --p-table-border-color: var(--web-color-offset) !important;
-        :where(.table-thead-col) {
-            padding-block: 1.33rem;
-        }
-        :where(.table-col) {
-            padding-block: 0.66rem;
-        }
-        &.is-light {
-            --p-table-bg-color: var(--color-neutral-0);
-            --p-table-bg-color-focus: var(--color-neutral-5);
-            //--p-table-bg-even-row-color: var(--color-neutral-0);
-            --p-table-border-color: var(--color-neutral-10);
-            --p-tbody-color-text: var(--color-neutral-60);
-            box-shadow: none;
-            border-radius: 16px 0 16px 0;
-        }
-    }
-    .e-console-card {
-        &-content {
-            border-radius: 0 0 16px 16px;
-        }
-        .tag {
-            box-sizing: content-box;
-            block-size: 15px;
-            padding: 2.46px 8.45px;
-            border: none;
-        }
-        &.is-light {
-            .e-console-card {
-                background-color: hsl(var(--color-neutral-5));
-            }
-        }
-    }
-    .e-header-console {
-        padding: 1.5rem;
-        border-radius: 16px 16px 0 0;
-        border-block-end: solid 1px hsl(var(--web-color-border));
-        &.is-light {
-            background-color: #fff;
-        }
-        &.is-dark {
-            background-color: #27272a;
-        }
-    }
-    .tabs.is-light {
-        --p-tabs-text-color: var(--p-tabs-text-color-default);
-        --p-tabs-text-color-default: var(--color-neutral-50);
-        --p-tabs-text-color-hover: var(--color-neutral-80);
-        --p-tabs-text-color-active: var(--color-neutral-80);
-        --p-tabs-text-color-selected: var(--color-neutral-80);
-
-        --p-tabs-bg-color: var(--p-tabs-bg-defalut);
-        --p-tabs-bg-defalut: var(--transparent);
-        --p-tabs-bg-color-hover: var(--color-neutral-10);
-
-        --p-tabs-outline-color: var(--p-tabs-outline-color-default);
-        --p-tabs-outline-color-default: var(--transparent);
-        --p-tabs-outline-color-focus: var(--color-neutral-1000) / 0.16;
-
-        --p-tabs-border-color: var(--p-tabs-border-color-default);
-        --p-tabs-border-color-default: var(--transparent);
-        --p-tabs-border-color-selected: var(--color-neutral-80);
-
-        --tabs-shadow-color: var(--color-neutral-0);
-        --tabs-button-arrow-color: var(--color-neutral-80);
-    }
-    .button {
-        &.is-light {
-            /* Light Theme */
-            --p-text-color-default: var(--color-neutral-60);
-            --p-button-color-default: var(--color-neutral-5);
-            --p-border-color-default: var(--color-neutral-15);
-
-            --p-text-color-hover: var(--p-text-color-default);
-            --p-button-color-hover: var(--color-neutral-10);
-            --p-border-color-hover: var(--p-border-color-default);
-
-            --p-text-color-focus: var(--p-text-color-default);
-            --p-button-color-focus: var(--p-button-color-default);
-            --p-border-color-focus: var(--transparent);
-
-            --p-text-color-active: var(--color-neutral-90);
-            --p-button-color-active: var(--color-neutral-15);
-            --p-border-color-active: var(--color-neutral-15);
-        }
-    }
-    .tag {
-        --p-tag-text-color-default: var(--color-neutral-70);
-        --p-tag-bg-color-default: var(--web-color-offset);
-        --p-tag-border-color-default: var(--web-color-offset);
-
-        --p-tag-text-color-clickable: var(--color-neutral-60);
-        --p-tag-bg-color-clickable: var(--color-neutral-5);
-        --p-tag-border-color-clickable: var(--color-neutral-10);
-
-        --p-tag-text-color-hover: var(--color-neutral-70);
-        --p-tag-bg-color-hover: var(--color-neutral-10);
-        --p-tag-border-color-hover: var(--p-tag-bg-color-hover);
-
-        --p-tag-text-color-active: var(--color-neutral-70);
-        --p-tag-bg-color-active: var(--color-neutral-15);
-        --p-tag-border-color-active: var(--p-tag-bg-color-active);
-
-        --p-tag-text-color-selected: var(--p-tag-text-color-clickable);
-        --p-tag-bg-color-selected: var(--p-tag-bg-color-clickable);
-        --p-tag-border-color-selected: var(--color-neutral-50);
-
-        --p-tag-text-color-disabled: var(--color-neutral-20);
-        --p-tag-bg-color-disabled: var(--color-neutral-5);
-        --p-tag-border-color-disabled: var(--color-neutral-10);
-    }
-    .switch {
-        --p-bg-color: var(--color-neutral-1000);
-        &:where(:checked) {
-            --p-bg-color: var(--web-color-accent);
-        }
-    }
-
-    .inline-tag {
-        --p-inline-tag-text-color-default: var(--p-text-color, var(--color-neutral-60));
-        --p-inline-tag-bg-color-default: var(--color-neutral-10);
-    }
-    .heading-level-5 {
-        --p-heading-text-color: var(--color-neutral-80);
-    }
-
-    .e-pink-input-light {
-        --p-text-color-default: var(--color-neutral-60);
-        --p-bg-color-default: var(--color-neutral-0);
-        --p-border-color-default: var(--color-neutral-15);
-
-        --p-text-color-hover: var(--p-text-color-default);
-        --p-bg-color-hover: var(--p-bg-color-default);
-        --p-border-color-hover: var(--color-neutral-20);
-
-        --p-text-color-focus: var(--p-text-color-default);
-        --p-bg-color-focus: var(--p-bg-color-default);
-        --p-border-color-focus: var(--color-neutral-20);
-
-        --p-text-color-readonly: var(--color-neutral-20);
-        --p-bg-color-readonly: var(--color-neutral-5);
-        --p-border-color-readonly: var(--p-border-color-default);
-
-        --p-text-color-disabled: var(--color-neutral-20);
-        --p-bg-color-disabled: var(--color-neutral-0);
-        --p-border-color-disabled: var(--p-border-color-default);
-    }
-
-    .l-box-image-1 {
-        inline-size: 427px;
-        padding: 0.5rem;
-        border: solid 1px #85dbd8;
-    }
     .l-drop-shadow {
         filter: drop-shadow(0 16px 32px rgb(55 59 77 / 0.04));
     }
@@ -537,17 +303,6 @@
         }
     }
 
-    .web-multi-columns-1 {
-        .web-card {
-            border: 1px solid hsl(var(--web-color-offset));
-        }
-        @media (max-width: 1235px) {
-            --p-col-gap: 2rem !important;
-            .web-card {
-                rotate: none !important;
-            }
-        }
-    }
     .e-bg-image-pattern-bottom {
         background: url('/images/pages/storage/pattern-1.png') no-repeat center bottom;
         background-size: 1500px;
@@ -589,32 +344,6 @@
             }
         }
     }
-    .l-media-2 {
-        @media (max-width: 1023px) {
-            inline-size: 100%;
-            &-1 {
-                display: none !important;
-            }
-            &-2 {
-                position: relative;
-                margin-inline: auto;
-                inline-size: 342px;
-            }
-            &-3 {
-                position: static !important;
-                margin-block-start: 0 !important;
-                margin-inline: auto !important;
-                margin-block-start: -60px !important;
-            }
-        }
-        @media (min-width: 1024px) {
-            &-2 {
-                position: absolute;
-                inset-inline-end: 0;
-                inset-block-start: -2.5rem;
-            }
-        }
-    }
     .l-bgs-section-1::before {
         content: '';
         display: block;
@@ -639,112 +368,5 @@
         background-position: top 160px right 0;
         background-size: 300px 640px;
         filter: blur(30px);
-    }
-
-    .l-bgs-purple::before {
-        content: '';
-        display: block;
-        position: absolute;
-        inset-inline-start: -150px;
-        inset-block-start: -150px;
-        background-image: url('/images/pages/storage/purple-gradient.png');
-        background-repeat: no-repeat;
-        background-size: 100%;
-        inline-size: 517px;
-        block-size: 542px;
-        //filter: blur(30px);
-    }
-
-    .l-dark-table {
-        color: hsl(var(--web-color-greyscale-400));
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.04);
-        backdrop-filter: blur(30px);
-        .table-thead-col {
-            padding-block: 16px;
-        }
-        .table-col {
-            padding-block: 8px;
-        }
-        .table-tbody {
-            color: hsl(var(--web-color-greyscale-400));
-        }
-        .table-row {
-            border-block-start-width: 0;
-        }
-        img {
-            inline-size: 40px;
-            block-size: 40px;
-            border-radius: 12px;
-            border-width: 0;
-        }
-    }
-    .l-permission-card {
-        .table * {
-            font-size: 14px;
-        }
-        .heading-level-5 {
-            padding: 24px;
-        }
-        .l-permission-table-wrapper {
-            padding-inline: 20px;
-        }
-        .web-button {
-            block-size: 32px;
-            padding-inline-start: 0;
-            margin-block: 12px;
-        }
-        @media (max-width: 764px) {
-            margin-inline-start: 0 !important;
-            .heading-level-5 {
-                padding: 12px 16px;
-                line-height: 1.3;
-            }
-            .table * {
-                font-size: 10px;
-            }
-            .table-thead-col:first-child {
-                inline-size: 80px !important;
-            }
-            .l-permission-table-wrapper {
-                padding-inline: 12px;
-            }
-            .table-thead-col,
-            .table-col {
-                padding-block: 12px;
-            }
-            .table-col {
-                block-size: 18px;
-            }
-            .web-button {
-                block-size: 18px;
-                line-height: 18px;
-                padding-block: 4px;
-                padding-inline-end: 6px;
-                margin-block: 0;
-                margin-block-end: 4px;
-                font-size: 12px;
-            }
-            input[type='checkbox'] {
-                inline-size: 14px;
-                block-size: 14px;
-                &::before {
-                    font-size: 10px;
-                }
-            }
-        }
-    }
-    .l-grid-1 {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 2rem;
-        @media (max-width: 600px) {
-            gap: 1.25rem;
-        }
-    }
-    .l-scroll-in-mobile {
-        @media (max-width: 600px) {
-            inline-size: calc(100vw - 20px) !important;
-        }
     }
 </style>
