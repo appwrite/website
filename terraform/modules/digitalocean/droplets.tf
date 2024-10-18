@@ -29,6 +29,10 @@ resource "digitalocean_project" "homepage" {
     digitalocean_droplet.worker[*].urn,
     digitalocean_droplet.nfs.urn
   ])
+
+  lifecycle {
+    ignore_changes = all
+  }
 }
 
 # Tags
@@ -124,7 +128,7 @@ resource "digitalocean_loadbalancer" "public" {
   }
 
   healthcheck {
-    port                     = 8080
+    port                     = 80
     path                     = "/ping"
     protocol                 = "http"
     check_interval_seconds   = 3
