@@ -1,0 +1,379 @@
+---
+layout: tutorial
+title: Habit UI
+description: Add, update and query Database in SwiftUI
+step: 7
+---
+
+# HomeView UI {% #homeview-ui %}
+
+Using `TabView` user will be able to switch between multiple tab from home screen to progress to setting/preference. And with ``blur`` modifier we able to blur the home view and show modal of medium size for user to update the habit goal completed. Also performing async task inside ``task`` modifier in order to fetch habits record
+
+```swift
+import SwiftUI
+
+struct HomeView: View {
+    
+    @EnvironmentObject private var router: Router
+    @EnvironmentObject private var userViewModel: UserViewModel
+    @EnvironmentObject private var habitViewModel: HabitViewModel
+    
+    var currentDate: Date {
+        return Date()
+    }
+        
+    var formattedDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM d, yyyy"
+        return dateFormatter.string(from: currentDate)
+    }
+    
+    
+    var body: some View {
+        TabView(selection: $router.selectedTab) {
+            
+            HomeScreen()
+                .onTapGesture { router.selectedTab = .home }
+                .tabItem {
+                    Label("Home", systemImage: "house")
+                }
+                .tag(Tabs.home)
+            ProgressScreen()
+                .onTapGesture { router.selectedTab = .progress }
+                .tabItem {
+                    Label("Progress", systemImage: "chart.bar.xaxis")
+                }
+                .tag(Tabs.progress)
+            SettingScreen()
+                .onTapGesture { router.selectedTab = .setting }
+                .tabItem {
+                    Label("Setting", systemImage: "gearshape")
+                }
+                .tag(Tabs.setting)
+            
+            
+        }
+        .toolbar {
+            switch router.selectedTab {
+            case .home:
+                ToolbarItem(placement: .topBarLeading) {
+                    VStack(alignment: .leading){
+                        Text("Today")
+                            .font(.title3)
+                            .fontWeight(.bold)
+                        Text("\(formattedDate)")
+                            .font(.caption)
+                            .fontWeight(.medium)
+                    }
+                    
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        router.push(.add_habit)
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+            case .progress:
+                ToolbarItem(placement: .topBarLeading) {
+                    Text("Progress")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                }
+            case .setting:
+                
+                ToolbarItem(placement: .topBarLeading) {
+                    Text("Setting")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                }
+                
+            }
+        }
+        .task {
+            await habitViewModel.fetchHabits()
+        }
+        .navigationBarBackButtonHidden(true)
+        .blur(radius: habitViewModel.selectedHabitState.isSelected ? 20 : 0)
+        
+        if habitViewModel.selectedHabitState.isSelected {
+            UpdateHabitView()
+        }
+    }
+}
+```
+
+Add the following code to HomeScreen.swift inside **Home/View** folder. Here we will be using newly introduce `ContentUnavailableView` if the habits is empty else render ``HabitCellView`` inside the loop.
+
+```swift
+import SwiftUI
+
+struct HomeScreen: View {
+    
+    @EnvironmentObject private var habitViewModel: HabitViewModel
+    @EnvironmentObject private var router: Router
+    @State var selectedDay: Int? = nil
+    
+    var currentMonth: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM"
+        
+        let currentDate = Date()
+        return dateFormatter.string(from: currentDate)
+    }
+    
+    
+    var numberOfDaysInTheMonth: Int {
+        
+        let calendar = Calendar.current
+        let currentDate = Date()
+            
+        // Get the range of days for the current month
+        if let range = calendar.range(of: .day, in: .month, for: currentDate) {
+            return range.count
+        }
+            
+        // Default to 0 if the range cannot be determined
+        return 0
+        
+    }
+    
+    var body: some View {
+        ScrollView(showsIndicators: false) {
+            Spacer(minLength: 15)
+            
+            if numberOfDaysInTheMonth > 0 {
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(1..<numberOfDaysInTheMonth, id: \.self) { index in
+                            DateFilterView(month: currentMonth, day: index, selectedDay: $selectedDay)
+                        }
+                    }
+                    .padding()
+                }
+                
+            }
+            
+            
+            ForEach(habitViewModel.habitState.habits) { habit in
+                HabitCellView(habit: habit)
+            }
+            .padding(.leading, 20)
+            .padding(.trailing, 20)
+            .padding(.bottom, 5)
+            
+        }
+        .overlay {
+            if habitViewModel.habitState.habits.isEmpty {
+                ContentUnavailableView(label: {
+                    Label("No habits", systemImage: "calendar")
+                }, description: {
+                    Text("Start adding habit to see your list")
+                }, actions: {
+                    Button("Add Habit") {
+                        router.push(.add_habit)
+                    }
+                })
+            }
+        }
+        
+    }
+}
+```
+
+For `HabitCellView`, create new SwiftUI View inside **Home/Components** folder and add the following code.
+
+```swift
+import SwiftUI
+
+struct HabitCellView: View {
+    
+    @Environment(\.colorScheme) private var theme
+    @EnvironmentObject private var habitViewModel: HabitViewModel
+    
+    var habit: HabitModel
+    
+    var isCompleted: Bool {
+        
+        let totalGoal : Int = habit.goals ?? 0;
+        let goalCompleted : Int = habit.goalCompleted ?? 0;
+        
+        if totalGoal == 0 || totalGoal == goalCompleted {
+            return true
+        } else {
+            return false
+        }
+        
+    }
+    
+    var width : CGFloat {
+        
+        let totalGoal : Int = habit.goals ?? 0;
+        let goalCompleted : Int = habit.goalCompleted ?? 0;
+        
+        let screenWidth : CGFloat = UIScreen.main.bounds.width
+        
+        if totalGoal == 0 {
+            return screenWidth
+        }
+        
+        if totalGoal > 0 && goalCompleted == 0 {
+            return 0
+        }
+        
+        return (screenWidth / CGFloat(totalGoal)) * CGFloat(goalCompleted)
+    }
+
+    var body: some View {
+        ZStack(alignment: .leading) {
+            
+            Theme.pink
+                .frame(width: width)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+            
+            HStack(spacing: 10) {
+                HStack {
+                    
+                    Image(systemName: habit.icon)
+                        .renderingMode(.original)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundColor(Theme.blue)
+                        .padding(.all, 3)
+                        .frame(width: 30, height: 30)
+                        .background(Theme.blueLight)
+                        .clipShape(RoundedRectangle(cornerRadius: 99))
+                    
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(habit.title)
+                            .font(.system(size: 16))
+                        Text("\(habit.goalCompleted ?? 0)/\(habit.goals ?? 0)")
+                            .font(.system(size: 12))
+                    }
+                }
+                Spacer()
+                if isCompleted == false {
+                    Button {
+                        habitViewModel.selectedHabitState = SelectedHabitState(habit: habit, isSelected: true)
+                    } label: {
+                        Image(systemName: "plus")
+                            .foregroundStyle(theme == .dark ? .white : .black)
+                    }
+                    
+                } 
+            }
+            .padding(EdgeInsets(top: 6, leading: 20, bottom: 6, trailing: 20))
+        }
+        .background(theme == .dark ? .white.opacity(0.2) : .white)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .shadow(color: Color.black.opacity(0.1), radius: 10, x: 4, y: 4)
+ 
+    }
+}
+```
+
+Do the samething for `DateFilterView`
+
+```swift
+import SwiftUI
+
+struct DateFilterView: View {
+    var month: String
+    var day: Int
+    @Binding var selectedDay: Int?
+    
+    
+    var body: some View {
+        Button {
+            selectedDay = day
+        } label: {
+            VStack(spacing: 4) {
+                Text(month)
+                    .font(.system(size: 14))
+                Text("\(day)")
+                    .font(.system(size: 12))
+                
+            }
+        }
+        .frame(width: 50, height: 50)
+        .background(selectedDay == day ? Theme.blue : Theme.blueLight)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .foregroundColor(selectedDay == day ? .white : Theme.blue)
+    }
+}
+```
+
+Lastly, for UpdateHabitView
+
+```swift
+import SwiftUI
+
+struct UpdateHabitView: View {
+    
+    @EnvironmentObject private var habitViewModel: HabitViewModel
+    @State private var goalCompleted: Int = 1
+    
+    var body: some View {
+        VStack {
+            
+            Image(systemName: habitViewModel.selectedHabitState.habit?.icon ?? "calendar")
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .foregroundColor(Theme.blue)
+                .padding(.all, 10)
+                .frame(width: 100, height: 100)
+                .background(Theme.blueLight)
+                .clipShape(RoundedRectangle(cornerRadius: 99))
+        
+            
+                Text("Goal Completed")
+                    .font(.caption)
+                    .padding(.bottom, 20)
+                
+                Button {
+                    Task {
+                        
+                        if habitViewModel.selectedHabitState.habit != nil && goalCompleted < habitViewModel.selectedHabitState.habit!.goals! {
+                            
+                            let data: Int = goalCompleted + (habitViewModel.selectedHabitState.habit!.goalCompleted ?? 0)
+                            
+                            await habitViewModel.update(habitViewModel.selectedHabitState.habit!.id!, data)
+                            
+                            // Update record
+                            await habitViewModel.fetchHabits()
+                            
+                            habitViewModel.selectedHabitState = SelectedHabitState()
+                            
+                        }
+                        
+                    }
+                } label: {
+                    Text("Update Habit")
+                }
+        }
+        .frame(width: 300, height: 300)
+        .background(Color(.systemBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .shadow(radius: 20)
+        .overlay(alignment: .topTrailing) {
+            Button {
+                habitViewModel.selectedHabitState = SelectedHabitState()
+            } label: {
+                ZStack {
+                    Circle()
+                        .frame(width: 30, height: 30)
+                        .foregroundStyle(.white)
+                        .opacity(0.6)
+                    Image(systemName: "xmark")
+                        .imageScale(.small)
+                        .frame(width: 44, height: 44)
+                        .foregroundStyle(.black)
+                }
+            }
+        }
+    }
+}
+```
+
