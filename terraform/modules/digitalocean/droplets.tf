@@ -96,10 +96,10 @@ resource "digitalocean_droplet" "manager" {
 resource "digitalocean_loadbalancer" "public" {
   name        = "${var.project_name}-${var.region}-${var.environment}"
   region      = var.region
-  size_unit   = var.loadbalancer_size_unit
-  project_id  = digitalocean_project.appwrite_cloud.id
+  size_unit   =  1
+  project_id  = digitalocean_project.homepage.id
   vpc_uuid    = digitalocean_vpc.subnet.id
-  droplet_ids = digitalocean_droplet.loadbalancer_v3.*.id
+  droplet_ids = digitalocean_droplet.manager.*.id
 
   redirect_http_to_https   = false
   enable_backend_keepalive = true
@@ -109,7 +109,7 @@ resource "digitalocean_loadbalancer" "public" {
     entry_port     = 80
     entry_protocol = "http"
 
-    target_port     = 8080
+    target_port     = 80
     target_protocol = "http"
   }
 
@@ -117,7 +117,7 @@ resource "digitalocean_loadbalancer" "public" {
     entry_port     = 443
     entry_protocol = "http2"
 
-    target_port     = 8443
+    target_port     = 443
     target_protocol = "http2"
 
     tls_passthrough = true
