@@ -1,5 +1,6 @@
 <script lang="ts">
     import { page } from '$app/stores';
+    import posthog from 'posthog-js';
     import { onMount } from 'svelte';
 
     let mounted = false;
