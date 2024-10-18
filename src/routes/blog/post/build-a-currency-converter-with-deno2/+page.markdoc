@@ -15,13 +15,13 @@ You'll learn how to set up your Deno project using Appwrite, how to fetch and pa
 
 Let's get started.
 
- # Setting up your Deno project
+# Setting up your Deno project
 
 Before we dive into the code, we need to set up our project. If you've already worked with Appwrite before, this will be familiar. If not, don't worry—I'll guide you through it.
 
 There are two ways you can set up a Deno project with Appwrite: through the Appwrite cloud console or using the Appwrite CLI.
 
- ## To use the Appwrite Cloud console
+## To use the Appwrite Cloud console
 
 1. Go to the [Appwrite dashboard](https://cloud.appwrite.io/).
 2. Create a new project if you don't have one already.
@@ -35,7 +35,7 @@ There are two ways you can set up a Deno project with Appwrite: through the Appw
 
 If you're developing locally, the [Appwrite CLI](https://appwrite.io/docs/tooling/command-line/installation) is much more convenient. It allows you to set up and manage your projects, functions, and other Appwrite resources without deploying to the cloud after every change.
 
- ## To use the Appwrite CLI
+## To use the Appwrite CLI
 
 First, make sure you have docker installed and running. If you don't, you can download it from the [official Docker website](https://www.docker.com/products/docker-desktop).
 
@@ -59,7 +59,7 @@ Once you're logged in, create a new project with:
 appwrite init project
 ```
 
- # Initializing the Function with Deno
+# Initializing the Function with Deno
 
 With the project set up, let's create the Deno function that will handle our currency conversion. Appwrite Functions support the Deno runtime out of the box, so it's easy to get started.
 
@@ -85,7 +85,7 @@ This will list the available functions in your project. Select the function you 
 curl 'your-function-url'
 ```
 
- # Fetching exchange rates
+# Fetching exchange rates
 
 The first feature we need for our API is fetching the exchange rates. We'll be using the **ExchangeRate API** to do this. It's a free API that provides real-time exchange rates for over 170 currencies. You can sign up for a free API key on their [website](https://www.exchangerate-api.com/).
 
@@ -126,7 +126,7 @@ What's happening here is straightforward. We're using `Deno.env.get()` to access
 
 Then, we use Deno's built-in `fetch` function to call the ExchangeRate API. Unlike in Node.js, where you'd need to install a library like `node-fetch` to make HTTP requests, Deno includes this functionality natively, making things a little simpler. After fetching the data, we check if the request was successful, and if it is, we return the exchange rates. If something goes wrong, we throw an error to signal the issue.
 
- # Converting the currency
+# Converting the currency
 
 Now that we have a way to fetch exchange rates, the next step is to convert between two currencies. For the conversion logic: we'll take an amount, the currency to convert from, and the currency to convert to, and use the exchange rates to calculate the result.
 
@@ -172,7 +172,7 @@ async function convertCurrency(
 
 This function uses the rates we fetched earlier to calculate the conversion. First, it checks whether the `from` and `to` currencies exist in the list of rates. If either currency is missing, we throw an error. Then, we calculate the conversion rate by dividing the `to` currency rate by the `from` currency rate. Finally, we multiply the amount by this conversion rate to get the converted amount, and return the result along with some additional information like the rate and timestamp.
 
- # Validating user input with Zod
+# Validating user input with Zod
 
 It's important to make sure that the data coming into our API is valid. For example, we don't want users sending negative amounts or invalid currency codes. To handle this, we'll use **Zod**, a TypeScript-first schema validation library. The great thing about **Deno 2** is that it allows us to easily use Node.js packages like Zod without extra configuration.
 
@@ -197,7 +197,7 @@ Here, `CurrencyCodeSchema` ensures that the currency code is a string of exactly
 
 Using Zod in this way ensures that the data entering our API is clean and valid before we try to process it. Catching bad input early can prevent many headaches later.
 
- # Handling API requests
+# Handling API requests
 
 Now that we've validated the user input and written the conversion logic, we need to handle incoming requests to our API. We'll create two main routes:
 
@@ -206,7 +206,7 @@ Now that we've validated the user input and written the conversion logic, we nee
 
 We'll also create a default route that provides some basic information about how to use the API.
 
- ## Handling currency conversion requests (`/convert`)
+## Handling currency conversion requests (`/convert`)
 
 Let's start with the `/convert` endpoint. This is where users will send a request to convert an amount from one currency to another. The request needs to include three query parameters: `amount`, `from` (the currency to convert from), and `to` (the currency to convert to).
 
@@ -251,7 +251,7 @@ Let's break down what's happening here:
 
 This way, we're ensuring that invalid input is caught early and that the user gets meaningful feedback on what went wrong.
 
- ## Handling available currencies requests (`/currencies`)
+## Handling available currencies requests (`/currencies`)
 
 Next, let's handle the `/currencies` endpoint. This will return a list of all available currencies that our API supports. It's a simple GET request, and we'll use the exchange rates we fetched earlier to get the list of currencies.
 
@@ -277,7 +277,7 @@ Let's walk through it:
 
 If everything works fine, the user will receive a list of available currencies in JSON format.
 
- ## Providing a default response
+## Providing a default response
 
 Lastly, we'll handle any requests that don't match `/convert` or `/currencies`. Instead of just returning a 404 error, it's helpful to give users a bit more information about how to use the API.
 
@@ -307,7 +307,7 @@ This is a simple but effective way to guide users. Here's what it does:
 
 Note that you have to change `localhost:3000` to the URL of your Appwrite function or deployed API.
 
- # Wrapping it all together
+# Wrapping it all together
 
 - The `/convert` endpoint handles currency conversions and validates user input to prevent errors.
 - The `/currencies` endpoint provides a list of supported currencies.
@@ -315,7 +315,7 @@ Note that you have to change `localhost:3000` to the URL of your Appwrite functi
 
 With that, the API is complete and ready to be tested locally or deployed to your Appwrite instance.
 
- # Testing your Deno API
+# Testing your Deno API
 
 Now that the API is ready, let's test it locally. If you already have your function running locally, you can test it by sending requests to the endpoints we created. If not, you can start the function by running:
 
@@ -339,7 +339,7 @@ curl 'http://localhost:3000/currencies'
 
 Remember to change `localhost:3000` to the URL of your function if you're running it on a different port.
 
- # **Deploying your Deno API**
+# Deploying your Deno API
 
 Once you're happy with how the API works locally, you can deploy it to your Appwrite cloud project. This will make it accessible to anyone who has the URL. To deploy your function, run:
 
@@ -351,7 +351,7 @@ You'll get a response asking you to choose the function you want to deploy. Sele
 
 ![Function overview page](/images/blog/build-a-currency-converter-with-deno2/function-overview-page.png)
 
- # Wrapping up
+# Wrapping up
 
 Congrats on building a working currency converter API using **Appwrite Functions** and **Deno 2**. Along the way, we explored how Deno's built-in TypeScript support and its straightforward integration with Node.js packages like Zod make the development process easier. You also saw how Appwrite's Functions allow you to test everything locally, ensuring smooth deployment when you're ready.
 
@@ -359,7 +359,7 @@ This project should give you a solid foundation for building more complex APIs i
 
 Feel free to experiment with and extend this API however you see fit. If you have any questions or run into issues, reach out to us on the [Appwrite Discord server](https://appwrite.io/discord) or send me a message on [LinkedIn](https://www.linkedin.com/in/ebenezerdon/).
 
- # **Further reading**
+# Further reading
 
 - [Deno 2.0 and what it means for Appwrite Functions](https://appwrite.io/blog/post/deno-2-appwrite-functions)
 - [Local serverless function development with the new Appwrite CLI](https://appwrite.io/blog/post/functions-local-development-guide)
