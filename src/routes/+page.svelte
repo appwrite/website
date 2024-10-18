@@ -17,6 +17,8 @@
     import Badge from '$lib/components/ui/Badge.svelte';
     import { trackEvent } from '$lib/actions/analytics';
 
+    export let data;
+
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
     const ogImage = `${DEFAULT_HOST}/images/open-graph/website.png`;
@@ -129,9 +131,7 @@
                         <span class="web-icon-star shrink-0" aria-hidden="true" />
                         <span class="text-caption shrink-0 font-medium">New</span>
                         <div class="web-hero-banner-button-sep" />
-                        <span class="text-caption web-u-trim-1"
-                            >Introducing Database Backups</span
-                        >
+                        <span class="text-caption web-u-trim-1">Introducing Database Backups</span>
                         <span class="web-icon-arrow-right shrink-0" aria-hidden="true" />
                     </a>
                     <Hero>
@@ -152,7 +152,7 @@
                             slot="cta"
                             on:click={() => trackEvent('Get started in hero')}
                         >
-                            Get started
+                            {data.ctaText}
                         </a>
                     </Hero>
                 </section>
