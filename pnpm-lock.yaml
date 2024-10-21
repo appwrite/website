@@ -29,7 +29,7 @@ importers:
         version: 0.26.0
       '@appwrite.io/repo':
         specifier: github:appwrite/appwrite#1.6.x
-        version: https://codeload.github.com/appwrite/appwrite/tar.gz/16b360e77eb13b17282d42408575f37db069cb3c
+        version: https://codeload.github.com/appwrite/appwrite/tar.gz/8a5a1609fe99a424790948d989c2ee630c02066b
       '@internationalized/date':
         specifier: 3.5.0
         version: 3.5.0
@@ -75,6 +75,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^7.13.1
         version: 7.18.0(eslint@8.57.1)(typescript@5.6.3)
+      analytics:
+        specifier: ^0.8.14
+        version: 0.8.14(@types/dlv@1.1.4)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -129,6 +132,9 @@ importers:
       oslllo-svg-fixer:
         specifier: ^3.0.0
         version: 3.0.0
+      plausible-tracker:
+        specifier: ^0.3.9
+        version: 0.3.9
       postcss:
         specifier: ^8.4.39
         version: 8.4.47
@@ -193,6 +199,27 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
+  '@analytics/cookie-utils@0.2.12':
+    resolution: {integrity: sha512-2h/yuIu3kmu+ZJlKmlT6GoRvUEY2k1BbQBezEv5kGhnn9KpmzPz715Y3GmM2i+m7Y0QmBdVUoA260dQZkofs2A==}
+
+  '@analytics/core@0.12.15':
+    resolution: {integrity: sha512-Y+zxTNIbONXKxeEUOtcXs4b3uuiGjF5sy1zHl8ZNkIBwrOpTM8ZGNhi0xGL8ZhaQLGbi03BrT6DaoNNG3sBQOg==}
+
+  '@analytics/global-storage-utils@0.1.7':
+    resolution: {integrity: sha512-V+spzGLZYm4biZT4uefaylm80SrLXf8WOTv9hCgA46cLcyxx3LD4GCpssp1lj+RcWLl/uXJQBRO4Mnn/o1x6Gw==}
+
+  '@analytics/localstorage-utils@0.1.10':
+    resolution: {integrity: sha512-uJS+Jp1yLG5VFCgA5T82ZODYBS0xuDQx0NtAZrgbqt9j51BX3TcgmOez5LVkrUNu/lpbxjCLq35I4TKj78VmOQ==}
+
+  '@analytics/session-storage-utils@0.0.7':
+    resolution: {integrity: sha512-PSv40UxG96HVcjY15e3zOqU2n8IqXnH8XvTkg1X43uXNTKVSebiI2kUjA3Q7ESFbw5DPwcLbJhV7GforpuBLDw==}
+
+  '@analytics/storage-utils@0.4.2':
+    resolution: {integrity: sha512-AXObwyVQw9h2uJh1t2hUgabtVxzYpW+7uKVbdHQK80vr3Td5rrmCxrCxarh7HUuAgSDZ0bZWqmYxVgmwKceaLg==}
+
+  '@analytics/type-utils@0.6.2':
+    resolution: {integrity: sha512-TD+xbmsBLyYy/IxFimW/YL/9L2IEnM7/EoV9Aeh56U64Ify8o27HJcKjo38XY9Tcn0uOq1AX3thkKgvtWvwFQg==}
+
   '@appwrite.io/console@0.6.4':
     resolution: {integrity: sha512-0LPeeHR3fLQpTiX/AjguXqHYRgjMLf2lxie5TevBPxMssi1tcipctTGmj0YMyjWxQKD05NBmgvkJwAXEsm9rRA==}
 
@@ -202,8 +229,8 @@ packages:
   '@appwrite.io/pink@0.26.0':
     resolution: {integrity: sha512-iPeGE56pauzxuIXt15ZswjKCErwp3QdF3XOlJZfyYY7J2nirra85JNTL+3lWuFIf8yYWL7NbvCjhf8ig79TgwA==}
 
-  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/16b360e77eb13b17282d42408575f37db069cb3c':
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/16b360e77eb13b17282d42408575f37db069cb3c}
+  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/8a5a1609fe99a424790948d989c2ee630c02066b':
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/8a5a1609fe99a424790948d989c2ee630c02066b}
     version: 0.0.0
 
   '@babel/code-frame@7.25.7':
@@ -1663,6 +1690,9 @@ packages:
   '@types/cookie@0.6.0':
     resolution: {integrity: sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==}
 
+  '@types/dlv@1.1.4':
+    resolution: {integrity: sha512-m8KmImw4Jt+4rIgupwfivrWEOnj1LzkmKkqbh075uG13eTQ1ZxHWT6T0vIdSQhLIjQCiR0n0lZdtyDOPO1x2Mw==}
+
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
 
@@ -1860,6 +1890,14 @@ packages:
 
   ajv@6.12.6:
     resolution: {integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==}
+
+  analytics-utils@1.0.12:
+    resolution: {integrity: sha512-WvV2YWgsnXLxaY0QYux0crpBAg/0JA763NmbMVz22jKhMPo7dpTBet8G2IlF7ixTjLDzGlkHk1ZaKqqQmjJ+4w==}
+    peerDependencies:
+      '@types/dlv': ^1.0.0
+
+  analytics@0.8.14:
+    resolution: {integrity: sha512-ZKpqWHEHBrN0lvIsrUKmt0fcXNyQuKa0JUWDRAz7LgJ+Sf4ZX+a66/ai28W4H8kJJlLeItCrhIi/xvdbV08RlA==}
 
   ansi-colors@4.1.3:
     resolution: {integrity: sha512-/6w/C21Pm1A7aZitlI5Ni/2J6FFQN8i1Cvz3kHABAAbw93v/NlvKdVOqz7CCWz/3iv/JplRSEEZ83XION15ovw==}
@@ -2238,6 +2276,9 @@ packages:
   dir-glob@3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
     engines: {node: '>=8'}
+
+  dlv@1.1.3:
+    resolution: {integrity: sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==}
 
   doctrine@3.0.0:
     resolution: {integrity: sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==}
@@ -3363,6 +3404,10 @@ packages:
   pkg-types@1.2.1:
     resolution: {integrity: sha512-sQoqa8alT3nHjGuTjuKgOnvjo4cljkufdtLMnO2LBP/wRwuDlo1tkaEdMxCRhyGRPacv/ztlZgDPm2b7FAmEvw==}
 
+  plausible-tracker@0.3.9:
+    resolution: {integrity: sha512-hMhneYm3GCPyQon88SZrVJx+LlqhM1kZFQbuAgXPoh/Az2YvO1B6bitT9qlhpiTdJlsT5lsr3gPmzoVjb5CDXA==}
+    engines: {node: '>=10'}
+
   playwright-core@1.48.0:
     resolution: {integrity: sha512-RBvzjM9rdpP7UUFrQzRwR8L/xR4HyC1QXMzGYTbf1vjw25/ya9NRAVnXi/0fvFopjebvyPzsmoK58xxeEOaVvA==}
     engines: {node: '>=18'}
@@ -4298,6 +4343,40 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
+  '@analytics/cookie-utils@0.2.12':
+    dependencies:
+      '@analytics/global-storage-utils': 0.1.7
+
+  '@analytics/core@0.12.15(@types/dlv@1.1.4)':
+    dependencies:
+      '@analytics/global-storage-utils': 0.1.7
+      '@analytics/type-utils': 0.6.2
+      analytics-utils: 1.0.12(@types/dlv@1.1.4)
+    transitivePeerDependencies:
+      - '@types/dlv'
+
+  '@analytics/global-storage-utils@0.1.7':
+    dependencies:
+      '@analytics/type-utils': 0.6.2
+
+  '@analytics/localstorage-utils@0.1.10':
+    dependencies:
+      '@analytics/global-storage-utils': 0.1.7
+
+  '@analytics/session-storage-utils@0.0.7':
+    dependencies:
+      '@analytics/global-storage-utils': 0.1.7
+
+  '@analytics/storage-utils@0.4.2':
+    dependencies:
+      '@analytics/cookie-utils': 0.2.12
+      '@analytics/global-storage-utils': 0.1.7
+      '@analytics/localstorage-utils': 0.1.10
+      '@analytics/session-storage-utils': 0.0.7
+      '@analytics/type-utils': 0.6.2
+
+  '@analytics/type-utils@0.6.2': {}
+
   '@appwrite.io/console@0.6.4': {}
 
   '@appwrite.io/pink-icons@0.26.0': {}
@@ -4308,7 +4387,7 @@ snapshots:
       normalize.css: 8.0.1
       the-new-css-reset: 1.11.3
 
-  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/16b360e77eb13b17282d42408575f37db069cb3c': {}
+  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/8a5a1609fe99a424790948d989c2ee630c02066b': {}
 
   '@babel/code-frame@7.25.7':
     dependencies:
@@ -5674,7 +5753,7 @@ snapshots:
       '@sentry/core': 8.34.0
       '@sentry/types': 8.34.0
       '@sentry/utils': 8.34.0
-      magic-string: 0.30.12
+      magic-string: 0.30.7
       svelte: 4.2.19
 
   '@sentry/sveltekit@8.34.0(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.53.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.27.0)(@sveltejs/kit@2.7.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.9(@types/node@22.7.5)(lightningcss@1.27.0)(sass@1.79.5)))(svelte@4.2.19)(vite@5.4.9(@types/node@22.7.5)(lightningcss@1.27.0)(sass@1.79.5)))(encoding@0.1.13)(svelte@4.2.19)(vite@5.4.9(@types/node@22.7.5)(lightningcss@1.27.0)(sass@1.79.5))':
@@ -5868,6 +5947,8 @@ snapshots:
       '@types/node': 22.7.5
 
   '@types/cookie@0.6.0': {}
+
+  '@types/dlv@1.1.4': {}
 
   '@types/estree@1.0.6': {}
 
@@ -6115,6 +6196,19 @@ snapshots:
       fast-json-stable-stringify: 2.1.0
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
+
+  analytics-utils@1.0.12(@types/dlv@1.1.4):
+    dependencies:
+      '@analytics/type-utils': 0.6.2
+      '@types/dlv': 1.1.4
+      dlv: 1.1.3
+
+  analytics@0.8.14(@types/dlv@1.1.4):
+    dependencies:
+      '@analytics/core': 0.12.15(@types/dlv@1.1.4)
+      '@analytics/storage-utils': 0.4.2
+    transitivePeerDependencies:
+      - '@types/dlv'
 
   ansi-colors@4.1.3: {}
 
@@ -6500,6 +6594,8 @@ snapshots:
   dir-glob@3.0.1:
     dependencies:
       path-type: 4.0.0
+
+  dlv@1.1.3: {}
 
   doctrine@3.0.0:
     dependencies:
@@ -7677,6 +7773,8 @@ snapshots:
       confbox: 0.1.8
       mlly: 1.7.2
       pathe: 1.1.2
+
+  plausible-tracker@0.3.9: {}
 
   playwright-core@1.48.0: {}
 
