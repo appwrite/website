@@ -84,10 +84,10 @@
 </script>
 
 <div
-    class="absolute right-0 flex w-[120px] scale-75 flex-col gap-4 max-md:top-10 md:right-1/4 md:bottom-8 md:scale-100"
+    class="absolute right-0 flex w-[120px] scale-75 flex-col gap-4 max-md:top-10 md:right-1.65/7 md:bottom-8 md:scale-100"
 >
     <div
-        class="relative z-20 flex size-20 items-center justify-center overflow-hidden rounded-2xl border border-white/5 bg-white/16 backdrop-blur-2xl"
+        class="gradient relative z-20 flex size-20 items-center justify-center overflow-hidden rounded-2xl backdrop-blur-2xl"
     >
         <svg
             width="48"
@@ -152,7 +152,8 @@
     </div>
 
     <div
-        class="z-0 flex size-12 items-center justify-center self-end overflow-hidden rounded-xl border border-white/5 bg-white/5 backdrop-blur-2xl"
+        class="gradient z-0 flex size-12 items-center justify-center self-end overflow-hidden rounded-2xl backdrop-blur-[32px]"
+        style="--m-border-radius: 0.75rem"
     >
         <div class="relative grid h-full w-full place-items-center overflow-hidden rounded-2xl">
             <div class="absolute">
@@ -174,3 +175,23 @@
         </div>
     </div>
 </div>
+
+<style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
+    .gradient {
+        @include gradients.border-gradient;
+
+        --m-border-radius: var(--radius-2xl, 0.75rem);
+        --m-border-gradient-before: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.12) 0%,
+            rgba(255, 255, 255, 0) 125.11%
+        );
+        background: linear-gradient(
+            138.4deg,
+            rgba(255, 255, 255, 0.064) 9.61%,
+            rgba(255, 255, 255, 0) 105.41%
+        );
+    }
+</style>
