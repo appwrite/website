@@ -3,9 +3,9 @@
 </script>
 
 <div
-    class="phone absolute left-1/2 h-[600px] w-[320px] shrink-0 -translate-x-1/2 bg-white/0.08 p-2"
+    class="phone absolute left-1/2 h-[600px] w-[320px] shrink-0 -translate-x-1/2 rounded-[2.75rem] !bg-white/8 p-2"
 >
-    <div class="inner relative h-full w-full rounded-4xl bg-white p-5">
+    <div class="inner relative h-full w-full rounded-[2.25rem] bg-white p-5">
         <div class="inner-phone light">
             <div class="mx-auto max-w-3xs space-y-2 text-center">
                 <p class="text-label font-aeonik-pro">Sign up</p>
@@ -64,14 +64,13 @@
 
     .phone {
         @include gradients.border-gradient;
-        --m-border-size: 24px;
-        --m-border-radius: 2.5rem;
-        --m-border-gradient-after: linear-gradient(
+
+        --m-border-radius: 2.75rem;
+        --m-border-gradient-before: linear-gradient(
             180deg,
             rgba(255, 255, 255, 0.12) 0%,
             rgba(255, 255, 255, 0) 125.11%
         );
-
         .inner {
             &::after {
                 content: '';
