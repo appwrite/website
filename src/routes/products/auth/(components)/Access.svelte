@@ -3,6 +3,7 @@
 
     import TeamsConsole from '../(assets)/teams-console.png';
     import PermissionsConsole from '../(assets)/permissions-console.png';
+    import { classNames } from '$lib/utils/classnames';
 
     const consoles: Array<{ title: string; copy: string; image: string }> = [
         {
@@ -36,18 +37,25 @@
         </div>
     </div>
 
-    <div class="container grid gap-8 overflow-x-hidden pr-0 pl-5 md:grid-cols-2 md:px-5">
+    <div
+        class="container grid place-items-center gap-12 overflow-x-hidden pr-0 pl-5 md:grid-cols-2 md:px-5"
+    >
         {#each consoles as console}
-            <div>
+            <div
+                class={classNames(
+                    'relative',
+                    'first-of-type:after:absolute first-of-type:after:top-0 first-of-type:after:-right-6 first-of-type:after:bottom-0 first-of-type:after:ml-8 first-of-type:after:w-px first-of-type:after:bg-[#19191C]/4'
+                )}
+            >
                 <div class="space-y-2 pr-5 md:pr-0">
                     <h3 class="text-primary font-medium">{console.title}</h3>
                     <p class="text-secondary max-w-[26rem]">{console.copy}</p>
                 </div>
 
                 <div
-                    class="mt-8 w-[150%] rounded-3xl bg-gradient-to-br from-black/6 via-black/4 via-[61%] to-black/6 p-3 md:w-full"
+                    class="mt-8 w-[150%] rounded-3xl border border-black/8 bg-gradient-to-br from-black/6 via-black/4 via-[61%] to-black/6 p-2 md:w-full"
                 >
-                    <img class="rounded-xl" src={console.image} alt="{console.title} image" />
+                    <img class="rounded-2xl" src={console.image} alt="{console.title} image" />
                 </div>
             </div>
         {/each}

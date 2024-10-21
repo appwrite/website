@@ -1,5 +1,7 @@
 <script lang="ts">
+    import { sleep, unwrite, write } from '$lib/animations';
     import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
+    import { onMount } from 'svelte';
     import collaboration from '../(assets)/collaboration.svg';
     import customization from '../(assets)/customization.svg';
     import transparency from '../(assets)/transparency.svg';
@@ -21,17 +23,35 @@
             icon: customization
         }
     ];
+
+    const platforms = ['Auth0', 'Firebase', 'Supabase', 'Cognito', 'Okta'];
+
+    let activeIndex = 0;
+    let activePlatform = platforms[activeIndex];
+
+    const rotatePlatforms = async () => {
+        await write(platforms[activeIndex], (v) => (activePlatform = v), 500);
+        sleep(3000);
+        await unwrite(platforms[activeIndex], (v) => (activePlatform = v), 500);
+        activeIndex = (activeIndex + 1) % platforms.length;
+        sleep(1000);
+        await write(platforms[activeIndex], (v) => (activePlatform = v), 500);
+    };
+
+    onMount(() => {
+        rotatePlatforms();
+    });
 </script>
 
 <section class="light bg-greyscale-50 py-4 md:py-20">
     <div class="container overflow-x-hidden">
-        <div class="mx-auto mb-20 flex max-w-xl flex-col items-center gap-y-6 text-center">
+        <div class="mx-auto mb-20 flex max-w-2xl flex-col items-center gap-y-6 text-center">
             <h2 class="text-display text-primary font-aeonik-pro">
-                Open source alternative to
+                Open source <br />alternative to
                 <span
                     class="inline-block bg-[linear-gradient(-146deg,_#FD376F,_#19191D_47%,_#19191D)] bg-clip-text text-transparent"
                 >
-                    Auth0
+                    {activePlatform}
                 </span>
             </h2>
             <p class="text-body text-secondary font-medium">
