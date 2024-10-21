@@ -2,22 +2,35 @@
     import { fade } from 'svelte/transition';
 </script>
 
-<div
-    class="phone absolute left-1/2 h-[550px] w-[275px] shrink-0 -translate-x-1/2 bg-white/0.08 p-2"
->
-    <div class="inner relative h-full w-full rounded-4xl bg-white">
+<div class="phone absolute left-1/2 h-[600px] w-[320px] shrink-0 -translate-x-1/2 bg-white/0.08">
+    <div class="inner relative h-full w-full rounded-4xl bg-white p-5">
         <div class="inner-phone light">
-            <div class="text-center">
+            <div class="mx-auto max-w-3xs space-y-2 text-center">
                 <p class="text-label font-aeonik-pro">Sign up</p>
                 <p class="text-sub-body text-secondary">
                     Please enter your details to create an account
                 </p>
             </div>
 
+            <div class="mt-8 mb-5 flex items-center gap-2">
+                <button
+                    class="text-micro flex flex-1 items-center justify-center gap-1 rounded-md border border-[#E2E8F0] py-1 font-medium text-[#0F172A]"
+                >
+                    <span class="web-icon-google !text-sm" />
+                    Google</button
+                >
+                <button
+                    class="text-micro flex flex-1 items-center justify-center gap-1 rounded-md border border-[#E2E8F0] py-1 font-medium text-[#0F172A]"
+                >
+                    <span class="web-icon-github !text-sm" />
+                    GitHub</button
+                >
+            </div>
+
             <span class="with-sep" transition:fade={{ duration: 100 }}>or</span>
             <div class="oauth-btns" transition:fade={{ duration: 100 }}></div>
 
-            <div class="inputs mt-7 flex flex-col gap-3">
+            <div class="inputs mt-2 flex flex-col gap-3">
                 <input
                     disabled
                     type="email"
@@ -76,7 +89,6 @@
 
     .inner-phone {
         padding-block: 3rem;
-        padding-inline: 1rem;
 
         color: rgba(67, 67, 71, 1);
         text-align: left;

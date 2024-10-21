@@ -3,7 +3,7 @@
 </script>
 
 <div
-    class="absolute -bottom-6 z-10 flex scale-80 flex-col items-center justify-center gap-4 rounded-lg border border-white/[0.02] bg-gradient-to-br from-white/[0.02] to-white/[0.005] py-6 px-4 text-center backdrop-blur-2xl max-sm:-left-14 md:bottom-0 md:left-16 md:max-w-xs md:scale-100 md:rounded-2xl md:p-8"
+    class="gradient !absolute -bottom-6 z-10 flex scale-80 flex-col items-center justify-center gap-4 rounded-2xl py-6 px-4 text-center backdrop-blur-[32px] max-sm:-left-14 md:bottom-0 md:left-16 md:max-w-xs md:scale-100 md:rounded-2xl md:p-8"
 >
     <div class="space-y-1">
         <h3 class="text-description text-primary">Verify your identity</h3>
@@ -26,3 +26,23 @@
             </div>{/each}
     </div>
 </div>
+
+<style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
+    .gradient {
+        @include gradients.border-gradient;
+
+        --m-border-radius: var(--radius-2xl, 0.75rem);
+        --m-border-gradient-before: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.12) 0%,
+            rgba(255, 255, 255, 0) 125.11%
+        );
+        background: linear-gradient(
+            138.4deg,
+            rgba(255, 255, 255, 0.064) 9.61%,
+            rgba(255, 255, 255, 0) 105.41%
+        );
+    }
+</style>

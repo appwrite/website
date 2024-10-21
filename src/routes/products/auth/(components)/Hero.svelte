@@ -4,9 +4,9 @@
 </script>
 
 <div
-    class="flex min-h-[85vh] items-center bg-[url(/images/bgs/mobile-auth-hero.png)] bg-cover bg-bottom py-4 px-4 md:bg-[url(/images/bgs/auth-hero.png)] md:bg-center md:py-0 md:py-20 lg:px-8 xl:px-16"
+    class="box-content flex min-h-[85vh] items-center bg-[url(/images/bgs/mobile-auth-hero.png)] bg-cover bg-bottom py-4 px-5 md:bg-[url(/images/bgs/auth-hero.png)] md:bg-center md:py-0 md:py-20 lg:px-8 xl:px-16"
 >
-    <div class="grid items-center gap-16 md:grid-cols-2">
+    <div class="mx-auto grid max-w-[75rem] items-center gap-16 md:grid-cols-2">
         <div class="space-y-6">
             <div class="flex items-center gap-2">
                 <img src="/images/icons/illustrated/dark/auth.png" class="size-8" alt="" />

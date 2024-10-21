@@ -17,14 +17,14 @@
 </script>
 
 <div
-    class="absolute z-10 flex max-w-sm scale-95 flex-col gap-4 rounded-lg border border-white/[0.02] bg-gradient-to-br from-white/[0.02] to-white/[0.005] backdrop-blur-2xl max-md:-right-32 max-md:bottom-20 max-sm:-right-48 md:top-16 md:right-0 md:scale-100 md:rounded-2xl"
+    class="gradient !absolute z-10 flex max-w-sm scale-95 flex-col gap-4 rounded-lg backdrop-blur-[32px] max-md:-right-32 max-md:bottom-20 max-sm:-right-48 md:top-16 md:right-0 md:scale-100 md:rounded-2xl"
 >
     <div class="flex flex-col gap-1 divide-y divide-white/5">
         {#each emails as email}
             <div class="flex items-center gap-3 p-4">
                 {#if email.open}
                     <div
-                        class="border-greyscale-600 flex size-6 shrink-0 items-center justify-center rounded-[6px] border"
+                        class="border-greyscale-500 flex size-6 shrink-0 items-center justify-center rounded-[6px] border"
                     >
                         <img src={Open} class="size-4" alt="Open envelope" />
                     </div>
@@ -43,3 +43,23 @@
         {/each}
     </div>
 </div>
+
+<style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
+    .gradient {
+        @include gradients.border-gradient;
+
+        --m-border-radius: var(--radius-2xl, 0.75rem);
+        --m-border-gradient-before: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.12) 0%,
+            rgba(255, 255, 255, 0) 125.11%
+        );
+        background: linear-gradient(
+            138.4deg,
+            rgba(255, 255, 255, 0.064) 9.61%,
+            rgba(255, 255, 255, 0) 105.41%
+        );
+    }
+</style>
