@@ -2,7 +2,9 @@
     import { fade } from 'svelte/transition';
 </script>
 
-<div class="phone absolute left-1/2 h-[600px] w-[320px] shrink-0 -translate-x-1/2 bg-white/0.08">
+<div
+    class="phone absolute left-1/2 h-[600px] w-[320px] shrink-0 -translate-x-1/2 bg-white/0.08 p-2"
+>
     <div class="inner relative h-full w-full rounded-4xl bg-white p-5">
         <div class="inner-phone light">
             <div class="mx-auto max-w-3xs space-y-2 text-center">
@@ -62,7 +64,7 @@
 
     .phone {
         @include gradients.border-gradient;
-        --m-border-size: 1px;
+        --m-border-size: 24px;
         --m-border-radius: 2.5rem;
         --m-border-gradient-after: linear-gradient(
             180deg,
