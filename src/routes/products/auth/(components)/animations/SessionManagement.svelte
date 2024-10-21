@@ -24,30 +24,30 @@
     ];
 </script>
 
-<div class="row-span-7 p-2 flex flex-col gap-4 rounded-2xl bg-greyscale-850/90">
-    <div class="p-6">
+<div class="bg-greyscale-850/90 row-span-7 flex flex-col gap-4 rounded-2xl p-2">
+    <div class="text-sub-body p-3 font-medium">
         <span class="text-primary">Session management</span>
         <p class="text-secondary">
             Manage user sessions with timeouts and auto-renewal to prevent logouts.
         </p>
     </div>
-    <div class="bg-white/[0.02] rounded-lg flex-1 flex flex-col justify-center pl-6 pt-6">
+    <div class="flex flex-1 flex-col justify-center rounded-lg bg-white/[0.02] pt-6 pl-6">
         <div
-            class="bg-gradient-to-br flex flex-col flex-1 border-l border-t border-white/[0.16] from-white/[0.1] via-[61%] via-white/[0.04] to-white/[0.1] to-transparent rounded-tl-2xl w-[95%] h-[90%] mb-0 mt-auto mr-0 ml-auto"
+            class="mt-auto mr-0 mb-0 ml-auto flex h-[90%] w-[95%] flex-1 flex-col rounded-tl-2xl border-t border-l border-white/[0.16] bg-gradient-to-br from-white/[0.1] via-white/[0.04] via-[61%] to-transparent to-white/[0.1]"
         >
-            <div class="ml-2 mt-2 flex flex-col flex-1">
+            <div class="mt-2 ml-2 flex flex-1 flex-col">
                 <header
-                    class="p-4 rounded-tl-2xl bg-greyscale-850/60 flex gap-2 flex-col border-b border-white/20"
+                    class="bg-greyscale-850/60 flex flex-col gap-2 rounded-tl-2xl border-b border-white/20 p-4"
                 >
-                    <div class="flex gap-3 items-center">
-                        <span class="text-[18px] font-light font-aeonik-pro text-white"
+                    <div class="flex items-center gap-3">
+                        <span class="font-aeonik-pro text-[18px] font-light text-white"
                             >Walter O'Brien</span
                         >
-                        <span class="font-mono text-xs py-1 px-2 bg-greyscale-700/60 rounded-full"
+                        <span class="bg-greyscale-700/60 rounded-full py-1 px-2 font-mono text-xs"
                             >637a40ba7</span
                         >
                     </div>
-                    <nav class="flex mt-4 pl-1 -mb-[17px] gap-4 items-center text-xs relative z-10">
+                    <nav class="relative z-10 mt-4 -mb-[17px] flex items-center gap-4 pl-1 text-xs">
                         {#each ['Overview', 'Memberships', 'Sessions', 'Activity'] as heading, i}
                             <button
                                 class={classNames('border-b border-transparent pb-2', {
@@ -57,21 +57,21 @@
                         {/each}
                     </nav>
                 </header>
-                <div class="pl-4 pt-4 bg-greyscale-850 flex-1 flex flex-col">
-                    <div class="bg-greyscale-800 flex-1 rounded-tl-2xl flex flex-col">
+                <div class="bg-greyscale-850 flex flex-1 flex-col pt-4 pl-4">
+                    <div class="bg-greyscale-800 flex flex-1 flex-col rounded-tl-2xl">
                         <div
-                            class="px-6 py-4 gap-8 border-b border-y-greyscale-600/40 flex justify-between"
+                            class="border-y-greyscale-600/40 flex justify-between gap-8 border-b py-4 px-6"
                         >
                             {#each ['Client', 'Location'] as heading}
-                                <span class="text-xs basis-1/2 font-mono uppercase">{heading}</span>
+                                <span class="basis-1/2 font-mono text-xs uppercase">{heading}</span>
                             {/each}
                         </div>
-                        <div class="flex flex-col flex-1 divide-y divide-greyscale-600/40">
+                        <div class="divide-greyscale-600/40 flex flex-1 flex-col divide-y">
                             {#each sessionData as data}
                                 <div
-                                    class="px-6 flex justify-between text-xs items-center flex-1 py-2"
+                                    class="flex flex-1 items-center justify-between py-2 px-6 text-xs"
                                 >
-                                    <div class="flex basis-2/3 text-left gap-2 items-center h-8">
+                                    <div class="flex h-8 basis-2/3 items-center gap-2 text-left">
                                         <img src={data.icon} alt={data.device} class="size-8" />
                                         <span class="font-sans">{data.device}</span>
                                     </div>

@@ -86,7 +86,7 @@
 </script>
 
 <div class="bg-greyscale-850/90 row-span-5 flex flex-col gap-4 rounded-2xl p-2">
-    <div class="p-4">
+    <div class="text-sub-body p-3 font-medium">
         <span class="text-primary">Password dictionary</span>
         <p class="text-secondary">
             Check if the user's password matches any of the top 10K commonly used passwords.
