@@ -23,7 +23,8 @@
         <div
             class="mx-auto mb-20 flex max-w-md flex-col items-center justify-center gap-y-6 text-center"
         >
-            <span class="web-badges text-micro font-aeonik-fono uppercase !text-white">Access_</span
+            <span class="web-badges web-eyebrow text-micro font-aeonik-fono uppercase !text-white"
+                >Access_</span
             >
             <h2 class="text-title text-primary font-aeonik-pro">
                 Easily manage teams and permissions

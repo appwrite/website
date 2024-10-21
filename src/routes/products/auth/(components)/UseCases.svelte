@@ -18,7 +18,7 @@
 </script>
 
 <section class="light bg-greyscale-50 py-4 md:py-20">
-    <div class="container grid gap-y-8 overflow-x-hidden md:grid-cols-2">
+    <div class="container grid gap-y-8 md:grid-cols-2">
         <div
             class="mx-auto mb-20 flex flex max-w-[25rem] flex-col items-center justify-center gap-y-6 text-center"
         >
@@ -57,12 +57,12 @@
                     </div>
                 {/each}
 
-                <div class="to-accent -mr-2 h-px w-24 flex-1 bg-gradient-to-r from-white" />
+                <div class="-mr-2 h-px w-24 flex-1 bg-gradient-to-r from-white to-[#FD366E]" />
 
                 <div
-                    class="border-accent flex size-14 items-center justify-center rounded-lg border bg-white"
+                    class="flex size-14 items-center justify-center rounded-lg border border-[#FD366E] bg-white shadow-[0px_0px_8px_rgba(253,_54,_110,_0.24),_0px_5.35209px_10.7042px_rgba(0,_0,_0,_0.02)]"
                 >
-                    <img src={JavaScript} alt="icon" class="size-8" />
+                    <img src="/images/logos/logo.svg" alt="icon" class="size-6" />
                 </div>
             </div>
             <h2 class="text-title text-primary font-aeonik-pro">
