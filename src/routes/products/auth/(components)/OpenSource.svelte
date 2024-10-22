@@ -44,10 +44,10 @@
     });
 </script>
 
-<section class="light bg-greyscale-50 py-4 md:py-20">
+<section class="light bg-greyscale-50 py-20">
     <div class="container overflow-x-hidden">
         <div class="mx-auto mb-20 flex max-w-2xl flex-col items-center gap-y-4 text-center">
-            <h2 class="text-display text-primary font-aeonik-pro">
+            <h2 class="md:text-display text-title text-primary font-aeonik-pro">
                 Open source <br />alternative to
 
                 <div
@@ -59,22 +59,27 @@
                     />
                 </div>
             </h2>
-            <p class="text-description text-secondary font-medium">
-                Appwrite is a 100% open source project, giving you the <br />flexibility and support
-                you need to get your project started.
+            <p class="md:text-description text-body text-secondary font-medium">
+                Appwrite is a 100% open source project, giving you the flexibility and support you
+                need to get your project started.
             </p>
-            <div class="mt-2 flex items-center gap-2">
+            <div
+                class="mt-2 mx-auto flex w-full flex-col items-center justify-center gap-2 md:flex-row"
+            >
                 <a
                     href={GITHUB_REPO_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="web-button is-secondary web-u-inline-width-100-percent-mobile h-10"
+                    class="web-button is-secondary h-10 !w-full md:!w-fit"
                 >
                     <span class="web-icon-star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>
                     <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
                 </a>
-                <a class="web-button is-secondary" href="https://appwrite.io/discord">
+                <a
+                    class="web-button is-secondary h-10 !w-full md:!w-fit"
+                    href="https://appwrite.io/discord"
+                >
                     <span class="web-icon-discord" />
                     <span class="text">Join Discord</span>
                 </a>
@@ -85,8 +90,8 @@
             {#each items as item}
                 <div class="max-w-[275px] text-center">
                     <img src={item.icon} alt={item.title} class="mx-auto" />
-                    <h3 class="text-sub-body text-primary mt-8 font-medium">{item.title}</h3>
-                    <p class="text-sub-body text-secondary mt-4 font-normal">{item.copy}</p>
+                    <h3 class="text-sub-body text-primary mt-4 font-medium">{item.title}</h3>
+                    <p class="text-sub-body text-secondary mt-2 font-normal">{item.copy}</p>
                 </div>
             {/each}
         </div>
