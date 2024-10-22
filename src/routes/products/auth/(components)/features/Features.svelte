@@ -28,16 +28,26 @@
             'after:to-greyscale-900 after:absolute after:right-0 after:bottom-0 after:left-0 after:z-0 after:h-[350px] after:bg-gradient-to-b after:from-transparent'
         )}
     >
-        <div class="max-h-[50vh] overflow-hidden">
+        <div class="max-h-[40vh] overflow-hidden md:max-h-[50vh]">
             <Phone />
         </div>
-        <Identity />
-        <MultiFactor />
-        <VerificationCode />
-        <Email />
+        <div
+            class="absolute -right-6 scale-75 max-md:top-8 md:right-20 md:bottom-14 md:scale-100 lg:right-40"
+        >
+            <Identity />
+        </div>
+        <div class="absolute -bottom-20 -left-16 z-10 scale-90 md:-bottom-6 md:left-4 md:scale-100">
+            <MultiFactor />
+        </div>
+        <div class="absolute -top-14 -left-4 scale-75 md:left-10 md:scale-100 lg:left-40">
+            <VerificationCode />
+        </div>
+        <div class="absolute -right-52 bottom-12 md:-right-40 md:bottom-10">
+            <Email />
+        </div>
     </div>
 
-    <div class="mt-16 flex flex-col gap-y-4 p-4 md:p-0 md:text-center">
+    <div class="mt-32 flex flex-col gap-y-4 p-4 md:mt-16 md:p-0 md:text-center">
         <div class="mx-auto max-w-xl space-y-4">
             <h2 class="md:text-display text-title text-primary font-aeonik-pro">
                 Customer identity

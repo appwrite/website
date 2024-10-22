@@ -3,7 +3,7 @@
 </script>
 
 <div
-    class="gradient !absolute -bottom-6 z-10 flex scale-80 flex-col items-center justify-center gap-4 rounded-2xl py-6 px-4 text-center backdrop-blur-[32px] max-sm:-left-14 md:bottom-0 md:left-16 md:max-w-xs md:scale-100 md:rounded-2xl md:p-8"
+    class="gradient flex flex-col items-center justify-center gap-4 rounded-2xl py-6 px-4 text-center backdrop-blur-[32px] md:max-w-xs md:rounded-2xl md:p-8"
 >
     <div class="space-y-1">
         <h3 class="text-description text-primary">Verify your identity</h3>
