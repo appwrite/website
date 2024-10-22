@@ -11,6 +11,7 @@
     import { PreFooter, FooterNav, MainFooter } from '$lib/components';
     import { Features } from './(components)/features';
     import Hero from './(components)/Hero.svelte';
+    import Testimonials from './(components)/Testimonials.svelte';
 
     const title = 'Auth' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -44,6 +45,7 @@
                 <Access />
                 <SSR />
                 <UseCases />
+                <Testimonials />
                 <OpenSource />
             </div>
         </div>
