@@ -47,7 +47,7 @@
                 <OpenSource />
             </div>
         </div>
-        <section class="web-u-sep-block-start web-u-padding-block-start-80 -mt-8 py-10">
+        <section class="web-u-sep-block-start -mt-8 py-40">
             <div class="container">
                 <h4 class="text-label text-primary text-center">Keep exploring our products</h4>
                 <ul
