@@ -5,9 +5,9 @@
     import Flutter from '../(assets)/platforms/flutter.svg';
     import JavaScript from '../(assets)/platforms/javascript.svg';
     import React from '../(assets)/platforms/react.svg';
-    import NotSupabase from '../(assets)/platforms/not-supabase.png';
-    import Supabase from '../(assets)/platforms/supabase.png';
-    import Firebase from '../(assets)/platforms/firebase.png';
+    import NHost from '../(assets)/platforms/nhost.svg';
+    import Supabase from '../(assets)/platforms/supabase.svg';
+    import Firebase from '../(assets)/platforms/firebase.svg';
 
     const platforms = [
         { icon: Android, size: 24 },
@@ -17,7 +17,7 @@
         { icon: React, size: 24 }
     ];
 
-    const migrations = [{ icon: NotSupabase }, { icon: Supabase }, { icon: Firebase }];
+    const migrations = [{ icon: NHost }, { icon: Supabase }, { icon: Firebase }];
 </script>
 
 <section class="light bg-greyscale-50 py-4 md:py-20">
