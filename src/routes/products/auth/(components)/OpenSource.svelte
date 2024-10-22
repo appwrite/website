@@ -30,12 +30,13 @@
     let activePlatform = platforms[activeIndex];
 
     const rotatePlatforms = async () => {
-        await write(platforms[activeIndex], (v) => (activePlatform = v), 500);
-        sleep(3000);
-        await unwrite(platforms[activeIndex], (v) => (activePlatform = v), 500);
-        activeIndex = (activeIndex + 1) % platforms.length;
-        sleep(1000);
-        await write(platforms[activeIndex], (v) => (activePlatform = v), 500);
+        while (true) {
+            await write(platforms[activeIndex], (v) => (activePlatform = v), 500);
+            await sleep(3000);
+            await unwrite(platforms[activeIndex], (v) => (activePlatform = v), 500);
+            activeIndex = (activeIndex + 1) % platforms.length;
+            await sleep(1000);
+        }
     };
 
     onMount(() => {
@@ -45,20 +46,21 @@
 
 <section class="light bg-greyscale-50 py-4 md:py-20">
     <div class="container overflow-x-hidden">
-        <div class="mx-auto mb-20 flex max-w-2xl flex-col items-center gap-y-6 text-center">
+        <div class="mx-auto mb-20 flex max-w-2xl flex-col items-center gap-y-4 text-center">
             <h2 class="text-display text-primary font-aeonik-pro">
                 Open source <br />alternative to
+
                 <span
-                    class="inline-block bg-[linear-gradient(-146deg,_#FD376F,_#19191D_47%,_#19191D)] bg-clip-text text-transparent"
+                    class="inline-block bg-[linear-gradient(-146deg,_#FD376F,_#19191D_47%,_#19191D)] bg-clip-text text-left text-transparent"
                 >
                     {activePlatform}
                 </span>
             </h2>
-            <p class="text-body text-secondary font-medium">
+            <p class="text-description text-secondary font-medium">
                 Appwrite is a 100% open source project, giving you the <br />flexibility and support
                 you need to get your project started.
             </p>
-            <div class="flex items-center gap-2">
+            <div class="mt-2 flex items-center gap-2">
                 <a
                     href={GITHUB_REPO_LINK}
                     target="_blank"
