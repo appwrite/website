@@ -24,7 +24,7 @@
         }
     ];
 
-    const platforms = ['Auth0', 'Firebase', 'Supabase', 'Cognito', 'Okta'];
+    const platforms = ['Auth0', 'Firebase', 'Supabase', 'NHost'];
 
     let activeIndex = 0;
     let activePlatform = platforms[activeIndex];
@@ -35,7 +35,7 @@
             await sleep(3000);
             await unwrite(platforms[activeIndex], (v) => (activePlatform = v), 500);
             activeIndex = (activeIndex + 1) % platforms.length;
-            await sleep(1000);
+            await sleep(3000);
         }
     };
 
@@ -50,11 +50,14 @@
             <h2 class="text-display text-primary font-aeonik-pro">
                 Open source <br />alternative to
 
-                <span
-                    class="inline-block bg-[linear-gradient(-146deg,_#FD376F,_#19191D_47%,_#19191D)] bg-clip-text text-left text-transparent"
+                <div
+                    class="relative inline-flex items-center justify-center bg-[linear-gradient(-146deg,_#FD376F,_#19191D_47%,_#19191D)] bg-clip-text text-transparent"
                 >
-                    {activePlatform}
-                </span>
+                    {activePlatform}{' '}
+                    <div
+                        class="animate-caret-blink absolute top-1/2 -right-2 bottom-0 block h-[75%] w-px -translate-y-1/2 bg-[linear-gradient(-146deg,_#FD376F,_#19191D_47%,_#19191D)]"
+                    />
+                </div>
             </h2>
             <p class="text-description text-secondary font-medium">
                 Appwrite is a 100% open source project, giving you the <br />flexibility and support
