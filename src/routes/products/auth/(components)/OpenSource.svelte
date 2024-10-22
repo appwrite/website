@@ -32,10 +32,10 @@
     const rotatePlatforms = async () => {
         while (true) {
             await write(platforms[activeIndex], (v) => (activePlatform = v), 500);
-            await sleep(3000);
+            await sleep(5000);
             await unwrite(platforms[activeIndex], (v) => (activePlatform = v), 500);
             activeIndex = (activeIndex + 1) % platforms.length;
-            await sleep(3000);
+            await sleep(500);
         }
     };
 
@@ -51,7 +51,7 @@
                 Open source <br />alternative to
 
                 <div
-                    class="relative inline-flex items-center justify-center bg-[linear-gradient(-146deg,_#FD376F,_#19191D_47%,_#19191D)] bg-clip-text text-transparent"
+                    class="relative inline-flex bg-[linear-gradient(-146deg,_#FD376F,_#19191D_47%,_#19191D)] bg-clip-text text-transparent"
                 >
                     {activePlatform}{' '}
                     <div

@@ -119,7 +119,7 @@
 
         <div class="gradient absolute inset-0 z-10 flex items-center justify-center">
             <div class="w-3/4">
-                <Input type="password" disabled label="Password" value="magicpassword" />
+                <Input type="password" readonly label="Password" value="magicpassword" />
             </div>
         </div>
     </div>
