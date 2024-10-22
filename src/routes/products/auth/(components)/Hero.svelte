@@ -4,10 +4,10 @@
 </script>
 
 <div
-    class="box-content flex min-h-[85vh] items-center bg-[url(/images/bgs/mobile-auth-hero.png)] bg-cover bg-bottom py-4 px-5 md:bg-[url(/images/bgs/auth-hero.png)] md:bg-center md:py-0 md:py-20 lg:px-8 xl:px-16"
+    class="box-content flex min-h-[85vh] items-center bg-[url(/images/bgs/mobile-auth-hero.png)] bg-cover bg-bottom py-12 px-5 md:bg-[url(/images/bgs/auth-hero.png)] md:bg-center md:py-0 md:py-20 lg:px-8 xl:px-16"
 >
     <div class="mx-auto grid max-w-[75rem] items-center gap-16 md:grid-cols-2">
-        <div class="space-y-6">
+        <div class="space-y-4">
             <div class="flex items-center gap-2">
                 <img src="/images/icons/illustrated/dark/auth.png" class="size-8" alt="" />
                 <span class="text-micro text-primary uppercase">
@@ -17,12 +17,12 @@
             <h1 class="text-display font-aeonik-pro text-primary max-sm:max-w-[300px] md:max-w-md">
                 Secure login for all users
             </h1>
-            <p class="text-description text-secondary">
+            <p class="text-description text-secondary font-medium">
                 Authenticate users securely with multiple login methods like Email/Password, SMS,
                 OAuth, Anonymous, Magic URLs, and more.
             </p>
 
-            <div class="flex flex-col items-center gap-4 md:flex-row">
+            <div class="flex flex-col items-center gap-2 md:flex-row">
                 <a href="/docs/products/auth" class="web-button !w-full md:!w-fit"> Get started </a>
                 <a href="/docs/products/auth" class="web-button is-secondary !w-full md:!w-fit">
                     Documentation

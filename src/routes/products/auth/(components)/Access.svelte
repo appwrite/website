@@ -19,10 +19,10 @@
     ];
 </script>
 
-<section class="light bg-greyscale-50 py-4 md:py-20">
+<section class="light bg-greyscale-50 py-20">
     <div class="container">
         <div
-            class="mx-auto mb-20 flex max-w-md flex-col items-center justify-center gap-y-6 text-center"
+            class="mx-auto mb-20 flex max-w-md flex-col items-center justify-center gap-y-4 text-center"
         >
             <span class="web-badges web-eyebrow text-micro font-aeonik-fono uppercase !text-white"
                 >Access_</span
@@ -33,7 +33,10 @@
             <p class="text-body text-secondary font-medium">
                 Create custom roles and level of access to resources such as projects, files, etc.
             </p>
-            <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button is-secondary mt-2">Learn more</a>
+            <a
+                href={PUBLIC_APPWRITE_DASHBOARD}
+                class="web-button is-secondary mt-2 !w-full md:!w-fit">Learn more</a
+            >
         </div>
     </div>
 

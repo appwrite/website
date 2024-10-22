@@ -39,7 +39,6 @@
                     return;
                 }
 
-                // Pick a random next state
                 const nextState = states[Math.floor(Math.random() * states.length)];
                 const currentState = light.dataset.state;
 
@@ -65,7 +64,6 @@
                     );
                 }
 
-                // After a pulse, don't transition from "high" → "medium"
                 if (currentState === 'high' && nextState === 'medium' && pulse) {
                     light.dataset.state = 'off';
                 } else {
