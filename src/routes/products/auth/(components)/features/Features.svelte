@@ -34,14 +34,14 @@
         <div class="absolute -top-14 -left-4 scale-75 md:left-10 md:scale-100 lg:left-40">
             <VerificationCode />
         </div>
-        <div class="absolute -right-52 bottom-12 md:top-10 md:right-0">
+        <div class="absolute -right-52 bottom-12 md:top-10 md:-right-36 lg:right-0">
             <Email />
         </div>
         <div class="absolute -bottom-20 -left-16 z-10 scale-90 md:-bottom-6 md:left-4 md:scale-100">
             <MultiFactor />
         </div>
         <div
-            class="absolute -right-8 bottom-48 scale-75 md:bottom-0 md:bottom-14 md:scale-100 lg:right-[19rem]"
+            class="absolute -right-8 bottom-48 scale-75 md:right-36 md:bottom-0 md:bottom-14 md:scale-100 lg:right-[19rem]"
         >
             <Identity />
         </div>
