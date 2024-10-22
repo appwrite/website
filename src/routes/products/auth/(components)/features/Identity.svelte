@@ -81,9 +81,7 @@
     };
 </script>
 
-<div
-    class="absolute right-0 flex w-[120px] scale-75 flex-col gap-4 max-md:top-8 md:right-[27%] md:bottom-14 md:scale-100"
->
+<div class="right-0 flex w-[120px] flex-col gap-4">
     <div
         class="gradient relative z-20 flex size-20 items-center justify-center overflow-hidden rounded-2xl backdrop-blur-2xl"
     >
