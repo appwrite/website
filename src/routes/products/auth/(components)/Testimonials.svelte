@@ -1,64 +1,91 @@
 <script lang="ts">
-    import { Root, Slide } from '$lib/components/carousel';
+    import KCollect from '../(assets)/k-collect.png';
 
     const testimonials = [
         {
             name: 'Ryan O’Conner',
             copy: `The switch to using Appwrite brought infinite value that I'm still discovering today, but a major impact that it made was the amount of time and stress that it saved me as it simply just works.`,
-            image: '/',
+            image: KCollect,
             title: 'Founder',
             company: 'K-Collect'
         },
         {
             name: 'Ryan O’Conner',
             copy: `The switch to using Appwrite brought infinite value that I'm still discovering today, but a major impact that it made was the amount of time and stress that it saved me as it simply just works.`,
-            image: '/',
+            image: KCollect,
             title: 'Founder',
             company: 'K-Collect'
         },
         {
             name: 'Ryan O’Conner',
             copy: `The switch to using Appwrite brought infinite value that I'm still discovering today, but a major impact that it made was the amount of time and stress that it saved me as it simply just works.`,
-            image: '/',
+            image: KCollect,
             title: 'Founder',
             company: 'K-Collect'
         },
         {
             name: 'Ryan O’Conner',
             copy: `The switch to using Appwrite brought infinite value that I'm still discovering today, but a major impact that it made was the amount of time and stress that it saved me as it simply just works.`,
-            image: '/',
+            image: KCollect,
             title: 'Founder',
             company: 'K-Collect'
         },
         {
             name: 'Ryan O’Conner',
             copy: `The switch to using Appwrite brought infinite value that I'm still discovering today, but a major impact that it made was the amount of time and stress that it saved me as it simply just works.`,
-            image: '/',
+            image: KCollect,
+            title: 'Founder',
+            company: 'K-Collect'
+        },
+        {
+            name: 'Ryan O’Conner',
+            copy: `The switch to using Appwrite brought infinite value that I'm still discovering today, but a major impact that it made was the amount of time and stress that it saved me as it simply just works.`,
+            image: KCollect,
+            title: 'Founder',
+            company: 'K-Collect'
+        },
+        {
+            name: 'Ryan O’Conner',
+            copy: `The switch to using Appwrite brought infinite value that I'm still discovering today, but a major impact that it made was the amount of time and stress that it saved me as it simply just works.`,
+            image: KCollect,
+            title: 'Founder',
+            company: 'K-Collect'
+        },
+        {
+            name: 'Ryan O’Conner',
+            copy: `The switch to using Appwrite brought infinite value that I'm still discovering today, but a major impact that it made was the amount of time and stress that it saved me as it simply just works.`,
+            image: KCollect,
             title: 'Founder',
             company: 'K-Collect'
         }
     ];
 </script>
 
-<div class="light flex justify-center gap-3">
-    <Root
-        showBullets={false}
-        showArrows={false}
-        showGradient={false}
-        autoScrollOptions={{
-            active: true,
-            speed: 0.5
-        }}
-    >
+<div class="overflow-hidden">
+    <div class="light animate-scroll flex w-[200vw] items-center justify-center">
         {#each testimonials as testimonial}
-            <Slide class="md:flex-[0_0_25%]">
-                <div class="w-full rounded-2xl bg-white p-5">
-                    <p class="text-sub-body text-secondary font-medium">{testimonial.copy}</p>
-                    <span class="text-sub-body text-secondary"
-                        >{testimonial.name} // {testimonial.company}</span
-                    >
+            <div
+                class="mr-4 rounded-2xl bg-white p-5"
+                style:width={`${200 / testimonials.length}vw`}
+            >
+                <p class="text-sub-body text-secondary font-medium">{testimonial.copy}</p>
+
+                <div class="mt-4 flex items-center gap-3">
+                    <img
+                        src={testimonial.image}
+                        class="size-12 rounded-full"
+                        alt="{testimonial.company} Logo"
+                    />
+                    <div>
+                        <span class="text-secondary text-sub-body block font-medium">
+                            {testimonial.name}
+                        </span>
+                        <span class="text-sub-body text-secondary block"
+                            >{testimonial.title} // {testimonial.company}</span
+                        >
+                    </div>
                 </div>
-            </Slide>
+            </div>
         {/each}
-    </Root>
+    </div>
 </div>

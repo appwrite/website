@@ -73,6 +73,7 @@
     --animate-caret-blink: caret-blink 1s ease-in-out infinite;
     --animate-text: fade-in 0.75s ease-in-out both, blur 0.75s ease-in-out both,
         up 0.75s ease-in-out both;
+    --animate-scroll: scroll 120s linear infinite;
 
     /* Pink polyfills */
     --transition: 0.2s;
@@ -123,6 +124,15 @@
         }
         100% {
             opacity: 1;
+        }
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(-50vw);
+        }
+        100% {
+            transform: translateX(50vw);
         }
     }
 
