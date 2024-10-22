@@ -28,22 +28,22 @@
             'after:to-greyscale-900 after:absolute after:right-0 after:bottom-0 after:left-0 after:z-0 after:h-[350px] after:bg-gradient-to-b after:from-transparent'
         )}
     >
-        <div class="max-h-[40vh] overflow-hidden md:max-h-[50vh]">
+        <div class="max-h-[40vh] scale-90 overflow-hidden md:max-h-[50vh] md:scale-100">
             <Phone />
-        </div>
-        <div
-            class="absolute -right-6 scale-75 max-md:top-8 md:right-20 md:bottom-14 md:scale-100 lg:right-40"
-        >
-            <Identity />
-        </div>
-        <div class="absolute -bottom-20 -left-16 z-10 scale-90 md:-bottom-6 md:left-4 md:scale-100">
-            <MultiFactor />
         </div>
         <div class="absolute -top-14 -left-4 scale-75 md:left-10 md:scale-100 lg:left-40">
             <VerificationCode />
         </div>
-        <div class="absolute -right-52 bottom-12 md:-right-40 md:bottom-10">
+        <div class="absolute -right-52 bottom-12 md:top-10 md:right-0">
             <Email />
+        </div>
+        <div class="absolute -bottom-20 -left-16 z-10 scale-90 md:-bottom-6 md:left-4 md:scale-100">
+            <MultiFactor />
+        </div>
+        <div
+            class="absolute -right-8 bottom-48 scale-75 md:bottom-0 md:bottom-14 md:scale-100 lg:right-[19rem]"
+        >
+            <Identity />
         </div>
     </div>
 
