@@ -3,7 +3,7 @@
     import { classNames } from '$lib/utils/classnames';
 </script>
 
-<div class={classNames('bg-greyscale-850/90 row-span-5 flex flex-col gap-4 rounded-2xl p-2')}>
+<div class={classNames('bg-greyscale-850/90 flex flex-col gap-4 rounded-2xl p-2 lg:row-span-5')}>
     <div class="text-sub-body p-3 font-medium">
         <span class="text-primary">Session limit</span>
         <p class="text-secondary">

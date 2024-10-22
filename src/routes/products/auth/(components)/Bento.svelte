@@ -20,7 +20,7 @@
             </p>
         </div>
 
-        <div class="mt-10 grid min-h-[900px] grid-rows-12 gap-4 md:grid-cols-3">
+        <div class="mt-10 grid min-h-[900px] gap-4 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-12">
             <SessionManagement />
             <MultiFactor />
             <SecurePasswords />

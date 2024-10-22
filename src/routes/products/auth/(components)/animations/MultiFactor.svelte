@@ -1,4 +1,7 @@
-<div class="bg-greyscale-850/90 row-span-5 flex flex-col gap-4 rounded-2xl p-2" role="presentation">
+<div
+    class="bg-greyscale-850/90 flex flex-col gap-4 rounded-2xl p-2 lg:row-span-5"
+    role="presentation"
+>
     <div class="flex flex-1 flex-col items-center justify-center rounded-lg bg-white/[0.02] p-6">
         <div class="flex gap-1">
             {#each [5, 1, 8] as number}
