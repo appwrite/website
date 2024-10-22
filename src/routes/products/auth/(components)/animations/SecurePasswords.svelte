@@ -24,7 +24,7 @@
         <Input
             label="Password"
             type="password"
-            disabled={true}
+            readonly
             value="appwriter"
             class="text-primary text-[20px] tracking-tighter"
         />
