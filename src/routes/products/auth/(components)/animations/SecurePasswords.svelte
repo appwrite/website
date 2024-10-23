@@ -1,7 +1,5 @@
 <script lang="ts">
     import Input from '$lib/components/ui/Input.svelte';
-    import { classNames } from '$lib/utils/classnames';
-    import { writable } from 'svelte/store';
 
     const conditions = [
         'Minimum 8 characters',
@@ -36,10 +34,7 @@
                 <span
                     class="text-secondary flex items-center gap-0.5 rounded-full bg-white/[0.08] py-0.5 px-2 pl-1 text-xs"
                 >
-                    <span
-                        style:transition-delay={`${i * 200}ms`}
-                        class="web-icon-check text-sm transition-colors duration-500"
-                    />
+                    <span class="web-icon-check text-sm duration-500" />
                     {condition}</span
                 >
             {/each}
