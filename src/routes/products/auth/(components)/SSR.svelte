@@ -1,5 +1,6 @@
 <script lang="ts">
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import { trackEvent } from '$lib/actions/analytics';
     import { Tooltip } from '$lib/components';
     import { Framework, Platform } from '$lib/utils/references';
     import MultiFrameworkCode from './MultiFrameworkCode.svelte';
@@ -183,6 +184,7 @@ async function getLoggedInUser(request) {
                             <a
                                 href={platform.href}
                                 class="platform flex size-14 items-center justify-center rounded-lg bg-white p-2"
+                                on:click={() => trackEvent(`${platform.name} clicked`)}
                             >
                                 <img
                                     src={platform.image}
