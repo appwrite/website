@@ -4,7 +4,6 @@
     import ShoeFitter from '../(assets)/shoefitter.png';
     import SmartBee from '../(assets)/smartbee.png';
     import MajikKids from '../(assets)/majik.png';
-    import { onMount } from 'svelte';
 
     const testimonials = [
         {
