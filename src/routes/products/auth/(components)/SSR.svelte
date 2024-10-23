@@ -4,6 +4,7 @@
     import { Tooltip } from '$lib/components';
     import { Framework, Platform } from '$lib/utils/references';
     import MultiFrameworkCode from './MultiFrameworkCode.svelte';
+    import Checkmark from '../(assets)/checkmark.svg';
 
     const codeSnippets = [
         {
@@ -170,34 +171,7 @@ async function getLoggedInUser(request) {
             <ul class="space-y-4">
                 {#each bullets as bullet}
                     <li class="text-body text-secondary flex items-center gap-2 font-medium">
-                        <svg
-                            width="20"
-                            height="20"
-                            viewBox="0 0 20 20"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <circle
-                                cx="10"
-                                cy="10"
-                                r="8"
-                                fill="#FD366E"
-                                fill-opacity="0.08"
-                                stroke="#FD366E"
-                                stroke-opacity="0.32"
-                                stroke-width="1.2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                            <path
-                                d="M6.25 11.5L8.75 13.5L13.75 7"
-                                stroke="#FD366E"
-                                stroke-width="1.2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-
+                        <img src={Checkmark} alt="checkmark" class="size-5" />
                         {bullet}
                     </li>
                 {/each}
