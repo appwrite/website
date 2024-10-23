@@ -43,7 +43,7 @@
 <main class="contents" id="main">
     <article class="web-article contents">
         <header class="web-article-header">
-            <div class="web-article-header-start u-flex-vertical web-u-cross-start">
+            <div class="web-article-header-start web-u-cross-start flex flex-col">
                 <ul class="web-metadata web-caption-400">
                     {#if currentStepItem.difficulty}
                         <li>{currentStepItem.difficulty}</li>
@@ -52,7 +52,7 @@
                         <li>{currentStepItem.readtime} min</li>
                     {/if}
                 </ul>
-                <div class="u-position-relative u-flex u-cross-center">
+                <div class="u-cross-center relative flex">
                     <h1 class="web-title">{firstStepItem?.title}</h1>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                         <slot />
                     </div>
 
-                    <div class="u-flex u-main-space-between">
+                    <div class="flex justify-between">
                         {#if prevStep}
                             <a href={prevStep.href} class="web-button is-text previous-step-anchor">
                                 <span class="icon-cheveron-left" aria-hidden="true" />
