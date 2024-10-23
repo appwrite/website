@@ -29,19 +29,19 @@
     let activeIndex = 0;
     let activePlatform = platforms[activeIndex];
 
-    // const rotatePlatforms = async () => {
-    //     while (true) {
-    //         await write(platforms[activeIndex], (v) => (activePlatform = v), 500);
-    //         await sleep(5000);
-    //         await unwrite(platforms[activeIndex], (v) => (activePlatform = v), 500);
-    //         activeIndex = (activeIndex + 1) % platforms.length;
-    //         await sleep(500);
-    //     }
-    // };
+    const rotatePlatforms = async () => {
+        while (true) {
+            await write(platforms[activeIndex], (v) => (activePlatform = v), 500);
+            await sleep(5000);
+            await unwrite(platforms[activeIndex], (v) => (activePlatform = v), 500);
+            activeIndex = (activeIndex + 1) % platforms.length;
+            await sleep(500);
+        }
+    };
 
-    // onMount(() => {
-    //     rotatePlatforms();
-    // });
+    onMount(() => {
+        rotatePlatforms();
+    });
 </script>
 
 <section class="light bg-greyscale-50 py-20">
