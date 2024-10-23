@@ -136,17 +136,17 @@ async function getLoggedInUser(request) {
             name: 'Nuxt',
             href: '/docs/quick-starts/nuxt',
             image: `/images/platforms/light/nuxt.svg`
-        },
-        {
-            name: 'Gatsby',
-            href: '/docs/quick-starts/gatsby',
-            image: `/images/platforms/light/gatsby.svg`
-        },
-        {
-            name: 'Remix',
-            href: '/docs/quick-starts/remix',
-            image: `/images/platforms/light/remix.svg`
         }
+        // {
+        //     name: 'Gatsby',
+        //     href: '/docs/quick-starts/gatsby',
+        //     image: `/images/platforms/light/gatsby.svg`
+        // },
+        // {
+        //     name: 'Remix',
+        //     href: '/docs/quick-starts/remix',
+        //     image: `/images/platforms/light/remix.svg`
+        // }
     ] as Array<{
         name: string;
         href: string;
