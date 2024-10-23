@@ -86,7 +86,7 @@ In `src/App.jsx`, wrap the `main` element with the `IdeaProvider` component.
 import { Login } from "./pages/Login";
 import { Home } from "./pages/Home";
 import { UserProvider } from "./lib/context/user";
-import { IdeaProvider } from "./lib/context/ideas";
+import { IdeasProvider } from "./lib/context/ideas";
 
 function App() {
   const isLoginPage = window.location.pathname === "/login";
@@ -94,10 +94,10 @@ function App() {
   return (
     <div>
       <UserProvider>
-        <IdeaProvider>
+        <IdeasProvider>
           <Navbar /> {/* Add the navbar before page content */}
           <main>{isLoginPage ? <Login /> : <Home />}</main>
-        </IdeaProvider>
+        </IdeasProvider>
       <UserProvider>
     </div>
   );
