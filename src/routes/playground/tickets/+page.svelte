@@ -30,7 +30,7 @@
 <Main>
     <div class="relative flex h-screen w-full items-center justify-center bg-[#F4F4F7]">
         <div
-            class="absolute inset-0 m-6 flex flex-col border-t-2 border-r-4 border-b-4 border-l-2 border-t-white border-r-[#87878A] border-b-[#87878A] border-l-white bg-[#FAFAFB] p-4"
+            class="window absolute inset-0 m-6 flex flex-col border-t-2 border-r-4 border-b-4 border-l-2 border-t-white border-r-[#87878A] border-b-[#87878A] border-l-white bg-[#FAFAFB] p-4"
         >
             <div
                 class="flex h-10 w-full items-center justify-between border-2 border-t-white border-r-[#87878A] border-b-[#87878A] border-l-white bg-[#EDEDF0] px-4"
@@ -50,8 +50,10 @@
                 </div>
             </div>
             <div
-                class="mt-4 flex-1 border-b border-b-black bg-white outline outline-[#D8D8DB]"
-            ></div>
+                class="mt-4 flex flex-1 items-center justify-between border-b-2 border-l-2 border-black bg-white p-8 outline-2 outline-[#D8D8DB] [outline-style:inset]"
+            >
+                <div class="ticket relative h-[450px] w-[60%] bg-[#1D1D21]" />
+            </div>
         </div>
     </div>
     <div class="container">
@@ -59,3 +61,26 @@
         <MainFooter />
     </div>
 </Main>
+
+<style>
+    @keyframes stutter {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    .window {
+        box-shadow: 10px 10px 0 0 #c7c7c9;
+    }
+
+    .ticket {
+        animation: stutter 1.25s steps(2, end) infinite;
+        box-shadow: 10px 10px 0 0 #d2d2d3;
+    }
+</style>
