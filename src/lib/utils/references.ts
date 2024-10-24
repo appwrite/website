@@ -57,6 +57,15 @@ export enum Platform {
     ServerRest = 'server-rest'
 }
 
+export enum Framework {
+    NextJs = 'Next.js',
+    SvelteKit = 'SvelteKit',
+    VueJs = 'Vue.js',
+    Nuxt3 = 'Nuxt3',
+    Astro = 'Astro',
+    Remix = 'Remix'
+}
+
 export const platformMap: Record<Language | string, string> = {
     [Platform.ClientApple]: 'Apple',
     [Platform.ClientFlutter]: 'Flutter',

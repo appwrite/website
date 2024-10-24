@@ -2,8 +2,7 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
-    import { Ticket } from '../(components)/ticket';
-    import { getMockContributions, loginGithub } from '../helpers';
+    import { loginGithub } from '../helpers';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
     import TicketScroll from '../(components)/TicketScroll.svelte';
 
