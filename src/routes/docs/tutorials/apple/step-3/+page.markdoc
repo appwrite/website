@@ -1,0 +1,75 @@
+---
+layout: tutorial
+title: Set up Appwrite
+description: Import and configure a project with Appwrite Cloud and Xcode.
+step: 3
+---
+
+# Create project {% #create-project %}
+
+Head to the [Appwrite Console](https://cloud.appwrite.io/console).
+
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/quick-starts/create-project.png)
+{% /only_light %}
+
+If this is your first time using Appwrite, create an account and create your first project.
+
+Then, under **Add a platform**, add an **Apple app**. Choose any of **iOS**, **macOS**, **watchOS** or **tvOS** as your Apple platform. If you are creating a multi-platform app, you can add more platforms later.
+
+Add your app's **product name** and **bundle identifier**, your bundle identifier is the one entered when creating an Xcode project. For existing projects, you should use the **bundle identifier** from your project files **Identity** section.
+
+{% only_dark %}
+![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
+{% /only_dark %}
+{% only_light %}
+![Add a platform](/images/docs/quick-starts/add-platform.png)
+{% /only_light %}
+
+# Setup Database {% #setup-database %}
+
+In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our habits.
+
+# Create database {% #create-database %}
+
+Head to your [Appwrite Console](https://cloud.appwrite.io/console/) and create a database and name it `Habit-SwiftUI`.
+Optionally, add a custom database ID.
+
+# Create collection {% #create-collection %}
+Create a collection and name it `habits`. Optionally, add a custom collection ID.
+
+Navigate to **Attributes** and create attributes by clicking **Create attribute** and add the following attributes. 
+
+| Field          | Type     | Required | Size | Min | Max | Default Value |
+|----------------|----------|----------|------|-----|-----|---------------|
+| userId         | String   | Yes      | 250  |     |     |               |
+| title          | String   | Yes      | 250  |     |     |               |
+| description    | String   | No       |      |     |     |               |
+| icon           | String   | No       | 200  |     |     | calendar      |
+| goals          | Integer  | Yes      |      | 1   | 10  | 1             |
+| goalCompleted  | Integer  | Yes      |      | 0   | 10  | 0             |
+| startDate      | DateTime | No       |      |     |     |               |
+| endDate        | DateTime | No       |      |     |     |               |
+
+Attributes define the structure of your collection's documents. Enter **Attribute key** and **Size**. For example, `title` and `100`.
+
+Navigate to **Settings** > **Permissions** and add a new role **All Users**.
+Check the **CREATE**, **UPDATE**, **DELETE** and **READ** permissions, so anyone can create and read documents.
+
+Create a swift file name `Database` in the `Shared/Constant` folder. We will use this file to store the database id and collection id from Appwrite as enum.
+
+```swift
+import Foundation
+
+enum Database: String {
+    case habit = "[DATABASE_ID]"
+}
+
+
+enum DatabaseCollections : String {
+    case habits = "[COLLECTION_ID]"
+}
+```
