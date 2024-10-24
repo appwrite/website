@@ -41,13 +41,14 @@
     import { Search, IsLoggedIn } from '$lib/components';
     import { isMac } from '$lib/utils/platform';
     import { getContext, setContext } from 'svelte';
-    import { GITHUB_STARS } from '$lib/constants';
+    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     export let variant: DocsLayoutVariant = 'default';
     export let isReferences = false;
 
     const variantClasses: Record<DocsLayoutVariant, string> = {
-        default: 'web-grid-side-nav web-container u-padding-inline-0',
+        default: 'web-grid-side-nav max-w-[90rem] mx-auto',
         expanded: 'web-grid-huge-navs',
         'two-side-navs': 'web-grid-two-side-navs'
     };
@@ -78,19 +79,19 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<div class="u-position-relative">
+<div class="relative">
     <section class="web-mobile-header is-transparent">
         <div class="web-mobile-header-start">
             <a href="/" aria-label="homepage">
                 <img
-                    class="web-logo u-only-dark"
+                    class="web-logo web-u-only-dark"
                     src="/images/logos/appwrite.svg"
                     alt="appwrite"
                     height="24"
                     width="130"
                 />
                 <img
-                    class="web-logo u-only-light"
+                    class="web-logo web-u-only-light"
                     src="/images/logos/appwrite-light.svg"
                     alt="appwrite"
                     height="24"
@@ -99,10 +100,14 @@
             </a>
         </div>
         <div class="web-mobile-header-end">
-            <a href="https://cloud.appwrite.io" class="web-button web-is-only-desktop">
-                <span class="web-sub-body-500">Go to Console</span>
+            <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button web-is-only-desktop">
+                <span class="text-sub-body font-medium">Go to Console</span>
             </a>
-            <button class="web-button is-text" aria-label="open navigation" on:click={toggleSidenav}>
+            <button
+                class="web-button is-text"
+                aria-label="open navigation"
+                on:click={toggleSidenav}
+            >
                 {#if $layoutState.showSidenav}
                     <span aria-hidden="true" class="web-icon-close" />
                 {:else}
@@ -116,17 +121,17 @@
         class:is-transparent={variant !== 'expanded'}
     >
         <div class="web-main-header-wrapper">
-            <div class="web-main-header-start u-stretch">
+            <div class="web-main-header-start flex-1">
                 <a href="/" aria-label="homepage">
                     <img
-                        class="web-logo u-only-dark"
+                        class="web-logo web-u-only-dark"
                         src="/images/logos/appwrite.svg"
                         alt="appwrite"
                         height="24"
                         width="130"
                     />
                     <img
-                        class="web-logo u-only-light"
+                        class="web-logo web-u-only-light"
                         src="/images/logos/appwrite-light.svg"
                         alt="appwrite"
                         height="24"
@@ -140,7 +145,7 @@
                         </li>
                     </ul>
                 </nav>
-                <div class="u-flex u-stretch web-u-margin-inline-start-48">
+                <div class="web-u-margin-inline-start-48 flex flex-1">
                     <button
                         class="web-input-button web-u-flex-basis-400"
                         on:click={() => ($layoutState.showSearch = true)}
@@ -148,7 +153,7 @@
                         <span class="web-icon-search" aria-hidden="true" />
                         <span class="text">Search in docs</span>
 
-                        <div class="u-flex u-gap-4 u-margin-inline-start-auto">
+                        <div class="ml-auto flex gap-1">
                             {#if isMac()}
                                 <span class="web-kbd" aria-label="command">⌘</span>
                             {:else}
@@ -160,16 +165,16 @@
                 </div>
             </div>
             <div class="web-main-header-end">
-                <div class="u-flex u-gap-8">
+                <div class="flex gap-2">
                     <a
-                        href="https://github.com/appwrite/appwrite/stargazers"
+                        href={GITHUB_REPO_LINK}
                         target="_blank"
                         rel="noopener noreferrer"
                         class="web-button is-text"
                     >
                         <span class="web-icon-star" aria-hidden="true" />
                         <span class="text">Star on GitHub</span>
-                        <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span>
+                        <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
                     </a>
                     <IsLoggedIn />
                 </div>

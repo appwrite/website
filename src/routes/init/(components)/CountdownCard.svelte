@@ -7,22 +7,20 @@
     const { days, hours, minutes, seconds } = createCountdown(date);
 </script>
 
-<div class="web-card is-normal web-u-color-text-primary">
+<div class="web-card is-normal text-primary">
     <img src="/images/icons/gradients/lock.svg" alt="Lock" />
-    {#if $days > 1}
-        <p class="web-title">
+    {#if $hours > 24}
+        <p class="text-title font-aeonik-pro">
             {$days}
-            {$days > 1 ? 'days' : 'day'}<span class="web-u-color-text-accent">_</span>
+            {$days > 1 ? 'days' : 'day'}
         </p>
     {:else}
-        <div class="web-title">
-            <Counter value={$hours} />:<Counter value={$minutes} />:<Counter
-                value={$seconds}
-            /><span class="web-u-color-text-accent">_</span>
+        <div class="text-title font-aeonik-pro" style="--height:3rem;--line-height:3rem;">
+            <Counter value={$hours} />:<Counter value={$minutes} />:<Counter value={$seconds} />
         </div>
     {/if}
 
-    <p class="web-sub-body-500">Countdown to next announcement</p>
+    <p class="text-sub-body font-medium">Countdown to next announcement</p>
 </div>
 
 <style lang="scss">
@@ -33,13 +31,14 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        background-color: hsl(var(--web-color-subtle));
     }
 
-    .web-title {
+    .text-title font-aeonik-pro {
         margin-block-start: 0.75rem;
     }
 
-    .web-sub-body-500 {
+    .text-sub-body font-medium {
         margin-block-start: 0.5rem;
     }
 </style>

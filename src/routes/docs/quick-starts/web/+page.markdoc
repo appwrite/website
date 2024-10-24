@@ -53,7 +53,7 @@ export const client = new Client();
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('<YOUR_PROJECT_ID>'); // Replace with your project ID
+    .setProject('<PROJECT_ID>'); // Replace with your project ID
 
 export const account = new Account(client);
 export { ID } from 'appwrite';
@@ -74,7 +74,7 @@ const client: Client = new Client();
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('<YOUR_PROJECT_ID>'); // Replace with your project ID
+    .setProject('<PROJECT_ID>'); // Replace with your project ID
 
 export const account: Account = new Account(client);
 export const database: Databases = new Databases(client);
@@ -135,16 +135,16 @@ Get started with Appwrite and Angular
 
 Learn to use Appwrite by building an idea tracker app.
 {% cards %}
-{% cards_item href="/docs/quick-starts/react" title="React" %}
+{% cards_item href="/docs/tutorials/react" title="React" %}
 Get started with Appwrite and React
 {% /cards_item %}
-{% cards_item href="/docs/quick-starts/vue" title="Vue.js" %}
+{% cards_item href="/docs/tutorials/vue" title="Vue.js" %}
 Get started with Appwrite and Vue.js
 {% /cards_item %}
-{% cards_item href="/docs/quick-starts/nuxt" title="Nuxt" %}
+{% cards_item href="/docs/tutorials/nuxt" title="Nuxt" %}
 Get started with Appwrite and Nuxt
 {% /cards_item %}
-{% cards_item href="/docs/quick-starts/sveltekit" title="SvelteKit" %}
+{% cards_item href="/docs/tutorials/sveltekit" title="SvelteKit" %}
 Get started with Appwrite and SvelteKit
 {% /cards_item %}
 {% /cards %}

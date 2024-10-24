@@ -6,7 +6,7 @@ date: 2024-05-01
 cover: /images/blog/receipt-scan.png
 timeToRead: 15
 author: vincent-ge
-category: functions
+category: tutorial
 ---
 I downloaded a personal finance app a few weeks ago to help me track my expenses.
 I uninstalled that app about five minutes later.
@@ -122,11 +122,11 @@ import os
 def main(context):
     # Why not try the Appwrite SDK?
     #
+    # Set project and set API key
     # client = (
     #     Client()
-    #     .set_endpoint("https://cloud.appwrite.io/v1")
-    #     .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
-    #     .set_key(os.environ["APPWRITE_API_KEY"])
+    #        .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
+    #        .set_key(context.req.headers["x-appwrite-key"])
     # )
 
     # You can log messages to the console
@@ -138,8 +138,8 @@ def main(context):
     # The `ctx.req` object contains the request data
     if context.req.method == "GET":
         # Send a response with the res object helpers
-        # `ctx.res.send()` dispatches a string back to the client
-        return context.res.send("Hello, World!")
+        # `ctx.res.text()` dispatches a string back to the client
+        return context.res.text("Hello, World!")
 
     # `ctx.res.json()` is a handy helper for sending JSON
     return context.res.json(
@@ -167,14 +167,13 @@ def main(context):
     HF_API_KEY = os.environ['HF_API_KEY']
     HF_ENDPOINT = os.environ['HF_ENDPOINT']
     BUCKET_ID = os.environ['BUCKET_ID']
-    headers = {"Authorization": HF_API_KEY}
+    headers = {'Authorization': HF_API_KEY}
 
-    client = (
-        Client()
-        .set_endpoint("https://cloud.appwrite.io/v1")
-        .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
-        .set_key(os.environ["APPWRITE_API_KEY"])
-    )
+    # Set project and set API key
+    # client = new Client()
+    #   .set_project(os.environ['APPWRITE_FUNCTION_PROJECT_ID'])
+    #   .set_key(context.req.headers['x-appwrite-key']);
+  
     storage = Storage(client)
 
     # ... rest of the code
@@ -283,4 +282,3 @@ Visit our documentation to learn more about Appwrite, join us on Discord to be p
 - [Blog](/blog)
 - [YouTube](https://www.youtube.com/channel/UCtBJ1v69gm8NgbCju_03Fiw)
 - [GitHub](https://github.com/appwrite/appwrite)
-

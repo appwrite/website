@@ -19,8 +19,8 @@ const client = new Client()
 
 const account = new Account(client);
 
-const user await = account.create(
-    'ID.unique()', 
+const user = await account.create(
+    ID.unique(), 
     'email@example.com', 
     'password'
 );
@@ -90,8 +90,8 @@ const client = new Client()
 
 const account = new Account(client);
 
-const user await = account.create(
-    'ID.unique()', 
+const user = await account.create(
+    ID.unique(), 
     'email@example.com', 
     'password'
 );
@@ -238,6 +238,9 @@ Before routing to a page, you can check if the user is logged in and redirect th
 {% tabs %}
 {% tabsitem #react-router title="React router" %}
 You can use [React router loaders](https://reactrouter.com/en/main/route/loader) to check if the user is logged in before rendering a route.
+
+You can find a similar example in this [YouTube video](https://youtu.be/pyfwQUc5Ssk).
+
 ```client-web 
 import * as React from "react";
 import {
@@ -499,7 +502,7 @@ class Appwrite {
     public init() {
         self.client = Client()
             .setEndpoint("https://cloud.appwrite.io/v1")
-            .setProject("<YOUR_PROJECT_ID>")
+            .setProject("<PROJECT_ID>")
         
         self.account = Account(client)
     }
@@ -569,7 +572,7 @@ You can find a version of this example in the [Appwrite Android tutorial](/docs/
 
 object Appwrite {
     private const val ENDPOINT = "https://cloud.appwrite.io/v1"
-    private const val PROJECT_ID = "<YOUR_PROJECT_ID>"
+    private const val PROJECT_ID = "<PROJECT_ID>"
 
     private lateinit var client: Client
 
