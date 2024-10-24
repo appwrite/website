@@ -2,49 +2,12 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
-    import { Ticket } from '../(components)/ticket';
-    import { getMockContributions, loginGithub } from '../helpers';
+    import { loginGithub } from '../helpers';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
-    import TicketScroll from '../(components)/TicketScroll.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
     const ogImage = buildOpenGraphImage('init', description);
-
-    const tickets = [
-        {
-            name: 'Eldad',
-            title: 'Founder'
-        },
-        {
-            name: 'Jesse',
-            title: 'Design Engineer'
-        },
-        {
-            name: 'Bradley',
-            title: 'Platform Engineer'
-        },
-        {
-            name: 'Caio',
-            title: 'Visual Designer'
-        },
-        {
-            name: 'Matej',
-            title: 'Platform Engineer'
-        },
-        {
-            name: 'Torsten',
-            title: 'Product Architect'
-        },
-        {
-            name: 'Jade',
-            title: 'Visual Designer'
-        },
-        {
-            name: 'Kushboo',
-            title: 'Platform Engineer'
-        }
-    ];
 </script>
 
 <svelte:head>
@@ -65,112 +28,34 @@
 </svelte:head>
 
 <Main>
-    <div class="top">
-        <div class="signup">
-            <div class="info">
-                <hgroup>
-                    <h1 class="text-display font-aeonik-pro">
-                        <span style:font-weight="500">init</span>
-                        launches on August 19th
-                    </h1>
-                    <p class="text-label text-primary">Register today and claim your Init ticket</p>
-                </hgroup>
-                <div class="buttons">
-                    <button class="web-button" on:click={loginGithub}>
-                        <div class="web-icon-github" />
-                        <span class="text">Register with GitHub</span>
-                    </button>
+    <div class="relative flex h-screen w-full items-center justify-center bg-[#F4F4F7]">
+        <div
+            class="absolute inset-0 m-6 flex flex-col border-t-2 border-r-4 border-b-4 border-l-2 border-t-white border-r-[#87878A] border-b-[#87878A] border-l-white bg-[#FAFAFB] p-4"
+        >
+            <div
+                class="flex h-10 w-full items-center justify-between border-2 border-t-white border-r-[#87878A] border-b-[#87878A] border-l-white bg-[#EDEDF0] px-4"
+            >
+                <div class="flex-1 space-y-1.5">
+                    <div class="h-0.5 w-full bg-[#d8d8d8]" />
+                    <div class="h-0.5 w-full bg-[#d8d8d8]" />
+                    <div class="h-0.5 w-full bg-[#d8d8d8]" />
                 </div>
-                <p class="privacy">
-                    By registering, you agree to our <a href="/terms" class="web-link underline"
-                        >Terms and Conditions</a
-                    >
-                    and <a href="/privacy" class="web-link underline">Privacy Policy</a>
-                </p>
+                <span class="font-aeonik-fono tracking-loose px-6 text-sm uppercase text-[#2D2D31]"
+                    >Init</span
+                >
+                <div class="flex-1 space-y-1.5">
+                    <div class="h-0.5 w-full bg-[#d8d8d8]" />
+                    <div class="h-0.5 w-full bg-[#d8d8d8]" />
+                    <div class="h-0.5 w-full bg-[#d8d8d8]" />
+                </div>
             </div>
-            <div class="shadow"></div>
+            <div
+                class="mt-4 flex-1 border-b border-b-black bg-white outline outline-[#D8D8DB]"
+            ></div>
         </div>
-
-        <TicketScroll />
     </div>
-
     <div class="container">
         <FooterNav />
         <MainFooter />
     </div>
 </Main>
-
-<style lang="scss">
-    .top {
-        min-height: 80vh;
-        margin: 48px 0 -96px 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
-
-        .signup {
-            margin: 0 auto;
-            width: 100%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            padding: 0 48px;
-            transform: translateX(-50%) translateY(-50%);
-            z-index: 1100;
-            text-align: center;
-
-            .info {
-                position: relative;
-                z-index: 11;
-                display: flex;
-                flex-direction: column;
-                gap: 32px;
-                color: #fff;
-
-                hgroup {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 8px;
-                }
-
-                .privacy {
-                    font-size: 12px;
-                }
-                .buttons {
-                    display: flex;
-                    gap: 16px;
-                    margin: 0 auto;
-                }
-            }
-
-            .shadow {
-                width: 100vw;
-                height: 80vh;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translateX(-50%) translateY(-50%);
-                z-index: 10;
-                backdrop-filter: blur(6px);
-                background-color: hsl(var(--web-color-background) / 50%);
-                mask-composite: intersect;
-                mask-image: linear-gradient(
-                        to top,
-                        transparent,
-                        rgba(0, 0, 0, 1) 25%,
-                        rgba(0, 0, 0, 1) 75%,
-                        transparent
-                    ),
-                    linear-gradient(
-                        to right,
-                        transparent,
-                        rgba(0, 0, 0, 1) 25%,
-                        rgba(0, 0, 0, 1) 75%,
-                        transparent
-                    );
-            }
-        }
-    }
-</style>
