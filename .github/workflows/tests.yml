@@ -1,25 +1,24 @@
 name: Tests
 
 on:
-    push:
+    pull_request_target:
         branches: ['**']
-    pull_request:
-        branches: ['**']
+
+permissions: read-all
 
 jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
+              with:
+                  ref: ${{ github.event.pull_request.head.sha }}
             - name: Use Node.js
               uses: actions/setup-node@v3
               with:
-                  node-version: 18
-            - uses: pnpm/action-setup@v2
-              name: Install pnpm
-              with:
-                  version: 8
-                  run_install: false
+                  node-version: 20
+            - name: Install pnpm
+              run: corepack enable
             - name: Get pnpm store directory
               shell: bash
               run: |
@@ -37,6 +36,8 @@ jobs:
             - name: Build Website
               env:
                   NODE_OPTIONS: '--max_old_space_size=8192'
+                  PUBLIC_APPWRITE_ENDPOINT: ${{ secrets.PUBLIC_APPWRITE_ENDPOINT }}
+                  PUBLIC_APPWRITE_DASHBOARD: ${{ secrets.PUBLIC_APPWRITE_DASHBOARD }}
                   PUBLIC_APPWRITE_PROJECT_ID: ${{ secrets.PUBLIC_APPWRITE_PROJECT_ID }}
                   PUBLIC_APPWRITE_DB_MAIN_ID: ${{ secrets.PUBLIC_APPWRITE_DB_MAIN_ID }}
                   PUBLIC_APPWRITE_COL_THREADS_ID: ${{ secrets.PUBLIC_APPWRITE_COL_THREADS_ID }}

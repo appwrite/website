@@ -1,25 +1,25 @@
 ---
 layout: post
-title: Build a personal chatbot with GPT-4o and Appwrite Functions
+title: Build a chatbot with GPT-4o and Appwrite Functions
 description: Learn how to use OpenAI's new flagship model, GPT-4o to create an intelligent chatbot.
 date: 2024-05-17
 cover: /images/blog/personal-chatbot-gpt-4o/cover.png
 timeToRead: 5
 author: aditya-oberai
-category: functions
+category: tutorial
 ---
 
-Recently, at the OpenAI Spring Update, OpenAI CTO Mira Murati announced the launch of their new flagship model, **GPT-4o**. GPT-4o happens to be OpenAI's fastest and most affordable model so far, which led us to wonder if we could use it to build our very own chatbot. 
+Recently, at the OpenAI Spring Update, OpenAI CTO Mira Murati announced the launch of their new flagship model,&nbsp;**GPT-4o**. GPT-4o happens to be OpenAI's fastest and most affordable model so far, which led us to wonder if we could use it to build our very own chatbot.
 
 Therefore, in this blog, we will learn how to use Appwrite Functions and the OpenAI GPT-4o API to build a personal chatbot.
 
 ## Setting up the OpenAI Platform
 
-To use the OpenAI GPT-4o API, we must first create an API key on their platform. To do that, we must first create an account on the [OpenAI platform](https://platform.openai.com/). Once the account is set up and a project is created, we can visit their [API keys](https://platform.openai.com/account/api-keys) page and create an API key. Ensure you copy and save this key in a safe place, as the OpenAI platform will not let you view the key after it is created.
+To use the OpenAI GPT-4o API, we must first create an API key on their platform. To do that, we must first create an account on the&nbsp;[OpenAI platform](https://platform.openai.com/). Once the account is set up and a project is created, we can visit their&nbsp;[API keys](https://platform.openai.com/account/api-keys)&nbsp;page and create an&nbsp;API key. Ensure you copy and save this key in a safe place, as the OpenAI platform will not let you view the key after it is created.
 
 ![Create an OpenAI API Key](/images/blog/personal-chatbot-gpt-4o/openai.png)
 
-> Note: To use the GPT-4o API, your account must be upgraded to Usage tier 1 (you must purchase at least $5 worth of credits). To learn more, visit their [Usage tiers documentation](https://platform.openai.com/docs/guides/rate-limits/usage-tiers?context=tier-one).
+> Note: To use the GPT-4o API, your account must be upgraded to&nbsp;Usage tier 1 (you must purchase at least $5 worth of credits). To learn more, visit their&nbsp;[Usage tiers documentation](https://platform.openai.com/docs/guides/rate-limits/usage-tiers?context=tier-one).
 
 ## Initializing the Appwrite Function
 
@@ -30,7 +30,7 @@ Now that we have our OpenAI API Key, let's prepare the function on [Appwrite](ht
 Once the function is ready, we must visit the Settings tab on the Function page and add the following environment variables:
 
 - `OPENAI_API_KEY`: API Key from our OpenAI account
-- `OPENAI_MAX_TOKENS`: Maximum number of tokens that the OpenAI response should contain (we'll set this as `512`)
+- `OPENAI_MAX_TOKENS`: Maximum number of tokens that the OpenAI response should contain (we'll set this as&nbsp;`512`)
 
 Once that is done, visit the function's GitHub repository and clone the project.
 
@@ -85,18 +85,18 @@ To get our chatbot up and running, we must first develop a UI you can interact w
     <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink" />
     <link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink-icons" />
   </head>
-  <body class="theme-dark">
+  <body class="dark">
     <main class="main-content">
-      <div class="top-cover u-padding-block-end-56">
+      <div class="top-cover pb-14">
         <div class="container">
           <div
-            class="u-flex u-gap-16 u-flex-justify-center u-margin-block-start-16"
+            class="flex gap-4 justify-center mt-4"
           >
             <h1 class="heading-level-1">Prompt ChatGPT demo</h1>
             <code class="u-un-break-text"></code>
           </div>
           <p
-            class="body-text-1 u-normal u-margin-block-start-8"
+            class="body-text-1 u-normal mt-2"
             style="max-width: 50rem"
           >
             Use this page to test your implementation with OpenAI GPT-4o API. Enter
@@ -108,10 +108,10 @@ To get our chatbot up and running, we must first develop a UI you can interact w
         class="container u-margin-block-start-negative-56"
         x-data="{ prompt: '', answer: '', loading: false }"
       >
-        <div class="card u-flex u-gap-24 u-flex-vertical">
-          <div class="u-flex u-cross-center u-gap-8">
+        <div class="card flex gap-6 flex flex-col">
+          <div class="flex items-center gap-2">
             <div
-              class="input-text-wrapper is-with-end-button u-width-full-line"
+              class="input-text-wrapper is-with-end-button w-full"
             >
               <input x-model="prompt" type="search" placeholder="Question" />
               <div class="icon-search" aria-hidden="true"></div>
@@ -126,9 +126,9 @@ To get our chatbot up and running, we must first develop a UI you can interact w
             </button>
           </div>
           <template x-if="answer">
-            <div class="u-flex u-flex-vertical u-gap-12">
-              <div class="u-flex u-flex-vertical u-gap-12 card">
-                <div class="u-flex u-gap-12">
+            <div class="flex flex-col gap-3">
+              <div class="flex flex-col gap-3 card">
+                <div class="flex gap-3">
                   <h5 class="eyebrow-heading-2">ChatGPT:</h5>
                 </div>
 
@@ -147,12 +147,12 @@ To get our chatbot up and running, we must first develop a UI you can interact w
 
 ### Preparing our utility functions
 
-To simplify the function logic, we create additional utility functions to 
+To simplify the function logic, we create additional utility functions to
 
 - return the contents of a file in the static folder as a string (to send our UI to the client browser)
 - throw an error if any of the keys are missing from the object (to check for missing environment variables)
 
-For that, we shall enter the `src` folder and create a file `utils.js` with the following code:
+For that, we shall enter the&nbsp;`src`&nbsp;folder and create a file&nbsp;`utils.js`&nbsp;with the following code:
 
 ```js
 import path from 'path';
@@ -193,7 +193,7 @@ export function throwIfMissing(obj, keys) {
 
 ### Creating the function logic
 
-Now that our chatbot UI and utility functions are ready, we can develop our final function logic. For that, we must first install the `openai` NPM package. Open your terminal in the project directory and run the following command:
+Now that our chatbot UI and utility functions are ready, we can develop our final function logic. For that, we must first install the&nbsp;`openai`&nbsp;NPM package. Open your terminal in the project directory and run the following command:
 
 ```bash
 npm i openai
@@ -209,7 +209,7 @@ export default async ({ req, res }) => {
   throwIfMissing(process.env, ['OPENAI_API_KEY']);
 
   if (req.method === 'GET') {
-    return res.send(getStaticFile('index.html'), 200, {
+    return res.text(getStaticFile('index.html'), 200, {
       'Content-Type': 'text/html; charset=utf-8',
     });
   }
@@ -267,7 +267,7 @@ Here is what an example of this looks like: [apwr.dev/gpt-4o-demo](https://apwr.
 
 ## Next steps
 
-And with that, you have successfully deployed your personal chatbot powered by GPT-4o and Appwrite Functions. If you liked this project or want to investigate the full project code, visit our [GitHub repository](https://github.com/appwrite-community/gpt-4o-function).
+And with that, you have successfully deployed your personal chatbot powered by GPT-4o and Appwrite Functions. If you liked this project or want to investigate the full project code, visit our&nbsp;[GitHub repository](https://github.com/appwrite-community/gpt-4o-function).
 
 Additionally, if you would like to learn more about Appwrite Functions, here are some resources:
 

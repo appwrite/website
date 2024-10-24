@@ -7,11 +7,12 @@
     import ChangelogEntry from '../ChangelogEntry.svelte';
     import { page } from '$app/stores';
     import { CHANGELOG_KEY } from '../utils';
+    import { TITLE_SUFFIX } from '$routes/titles';
 
     export let data;
 
     const seo = {
-        title: 'Changelog',
+        title: 'Changelog' + TITLE_SUFFIX,
         description: DEFAULT_DESCRIPTION,
         ogImage: `${DEFAULT_HOST}/images/open-graph/website.png`
     };
@@ -30,7 +31,7 @@
     <title>{seo.title}</title>
     <meta property="og:title" content={seo.title} />
     <meta name="twitter:title" content={seo.title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={seo.description} />
     <meta property="og:description" content={seo.description} />
     <meta name="twitter:description" content={seo.description} />
@@ -44,10 +45,10 @@
 
 <Main>
     <div class="web-big-padding-section">
-        <div class="web-big-padding-section-level-1">
+        <div class="pt-10">
             <div class="web-big-padding-section-level-2">
-                <div class="web-container wrapper">
-                    <h1 class="web-display web-u-color-text-primary">Changelog</h1>
+                <div class="container wrapper">
+                    <h1 class="text-display font-aeonik-pro text-primary">Changelog</h1>
                     <ul>
                         {#each data.entries as entry}
                             <li>
@@ -60,14 +61,16 @@
                     </ul>
 
                     {#if data.nextPage}
-                        <button class="web-button is-secondary" on:click={loadMore}>Load more</button>
+                        <button class="web-button is-secondary" on:click={loadMore}
+                            >Load more</button
+                        >
                     {/if}
                 </div>
             </div>
         </div>
-        <div class="web-big-padding-section-level-1 u-position-relative u-overflow-hidden">
-            <div class="web-big-padding-section-level-2">
-                <div class="web-container">
+        <div class="relative overflow-hidden pt-10">
+            <div class="pt-[7.5rem]">
+                <div class="container">
                     <PreFooter />
                     <FooterNav />
                     <MainFooter />

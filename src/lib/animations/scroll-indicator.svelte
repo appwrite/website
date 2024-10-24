@@ -25,34 +25,21 @@
 </script>
 
 <div
-    class="scroll-indicator"
+    class="scroll-indicator relative h-full w-px shrink-0 rounded-full"
     use:rect={elRect}
     style:--y={`${y}px`}
     style:--percentage={`${easedPercentage * 100}%`}
 >
-    <div class="web-dot" />
+    <div class="absolute -top-[8px] left-1/2" />
 </div>
 
 <style lang="scss">
     .scroll-indicator {
-        position: relative;
-
-        width: 1px;
-        flex-shrink: 0;
-        height: 100%;
         background: linear-gradient(
             to bottom,
             hsl(var(--web-color-accent)) 0%,
             hsl(var(--web-color-greyscale-700)) var(--percentage),
             hsl(var(--web-color-greyscale-700)) 100%
         );
-        border-radius: 100%;
-    }
-
-    .web-dot {
-        position: absolute;
-        left: 50%;
-        translate: -50% var(--y, 0);
-        top: -8px;
     }
 </style>

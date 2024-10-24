@@ -18,6 +18,11 @@
     text-align:start; margin-inline:0;
     .#{$p}-badges { align-self:start; }
   }
+  &.is-mobile-center {
+    @media #{$break1} {
+      justify-content:center; text-align:center; margin-inline:auto;
+    }
+  }
   &.is-horizontal {
     display:flex; flex-direction:column; margin-inline:initial;
     text-align:start;

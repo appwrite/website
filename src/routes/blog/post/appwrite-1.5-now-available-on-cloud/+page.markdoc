@@ -38,7 +38,7 @@ import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                 // Your project ID
+    .setProject("<PROJECT_ID>")                 // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
 
 let messaging = Messaging(client)
@@ -58,21 +58,21 @@ Learn how to get started with [email in our documentation](/docs/products/messag
 
 ## SMS
 
-To send SMS messages to you users you will need to add SMPT provider. Appwrite supports [Twilio](/docs/products/messaging/twilio/), [MSG91](/docs/products/messaging/msg91/), [Telesign](/docs/products/messaging/telesign/), [TextMagic](/docs/products/messaging/textmagic/), and [Vonage](/docs/products/messaging/vonage/).
+To send SMS messages to you users you will need to add SMPT provider. Appwrite supports [Twilio](/docs/products/messaging/twilio/), [MSG91](/docs/products/messaging/msg91/), [Telesign](/docs/products/messaging/telesign/), [Textmagic](/docs/products/messaging/textmagic/), and [Vonage](/docs/products/messaging/vonage/).
 
-You can send SMS messages using a Server SDK. To send SMS messages immediately, you can call the `createSMS` endpoint without passing either the draft or `scheduled` parameters.
+You can send SMS messages using a Server SDK. To send SMS messages immediately, you can call the `createSms` endpoint without passing either the draft or `scheduled` parameters.
 
 ```swift
 import Appwrite
 
 let client = Client()
     .setEndpoint("https://cloud.appwrite.io/v1")  // Your API Endpoint
-    .setProject("5df5acd0d48c2")                  // Your project ID
+    .setProject("<PROJECT_ID>")                  // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2")  // Your secret API key
 
 let messaging = Messaging(client)
 
-let message = try await messaging.createSMS(
+let message = try await messaging.createSms(
     messageId: ID.unique(),
     content: "Don't forget your Wednesday meeting at 10am!",
     users: ["413da83346a"]
@@ -175,7 +175,7 @@ const client = new Client();
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 const account = new Account(client);
 

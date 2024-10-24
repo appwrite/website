@@ -6,7 +6,7 @@ date: 2024-02-15
 cover: /images/blog/three-important-steps-you-need-to-complete-with-appwrite/3-important-steps.png
 timeToRead: 3
 author: dennis-ivy
-category: engineering
+category: product
 ---
 
 When creating a new project, there are three important things you need to do to ensure you have things set up properly and can connect to your Appwrite backend.
@@ -23,7 +23,7 @@ If you’re adding an API key to use one of the server SDK’s, you’ll be aske
 
 # 2 - Add a hostname
 
-When using the Web SDK, you’ll need to set a hostname. This just tells Appwrite what origin you’ll be connecting from. Failing to set the right hostname will result in CORS error later, so be sure you pay attention when setting this. I just put out a full video and [article](/blog/post/cors-error) on this topic, so be sure to check that out if you have questions or face any problems.
+When using the Web SDK, you’ll need to set a hostname. This just tells Appwrite what origin you’ll be connecting from. Failing to set the right hostname will result in CORS error later, so be sure you pay attention when setting this. I just put out a full video and [an article about handling CORS errors](/blog/post/cors-error), so be sure to check that out if you have questions or face any problems.
 
 ![Hostname](/images/blog/three-important-steps-you-need-to-complete-with-appwrite/hostname.png)
 

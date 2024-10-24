@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "From passwords to protection: Implementing 2FA in your applications"
-description: Understand the importance and process of integrating 2FA into their applications, enhancing security, and protecting user data effectively.
+title: How to implement 2FA in your applications
+description: Understand the importance and process of integrating 2FA into your applications, enhancing security, and protecting user data effectively.
 date: 2024-02-28
 cover: /images/blog/password-protection-2fa.png
 timeToRead: 7
 author: aditya-oberai
-category: engineering
+category: security
 featured: false
 ---
 

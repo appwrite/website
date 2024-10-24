@@ -1,19 +1,19 @@
 ---
 layout: post
-title: Building cross platform applications with React Native
+title: How to build cross-platform applications with React Native
 description: With the launch of our new React Native SDK in open beta we want to take a deeper dive into cross platform development and when you should use it.
 date: 2024-05-05
 cover: /images/blog/react-nativecross.png
 timeToRead: 9
 author: damodar-lohani
-category: engineering
+category: tutorial
 ---
 
-Android, iOS, macOS, Linux, Windows, and the Web. Different platforms with different codebases. As a developer, you might have faced the challenge of building one application for multiple platforms. Considering the challenge of mastering all of the skills to build an application that performs well cross-platform, it’s no wonder we have seen the rise of cross platform frameworks such as React Native and Flutter. Frameworks that allow you to create applications that operate seamlessly across multiple operating systems from a single codebase. Saving time, cutting costs, and targeting a larger user base.
+Android, iOS, macOS, Linux, Windows, and the Web. Different platforms with different codebases. As a developer, you might have faced the challenge of building one application for multiple platforms. Considering the challenge of mastering all of the skills to build an application that performs well cross-platform, it’s no wonder we have seen the rise of cross platform frameworks such as React Native and Flutter. These frameworks allow you to create applications that run smoothly on multiple operating systems from a single codebase. This saves time, reduces costs, and reaches a larger user base.
 
-# Why cross platform?
+# Why cross-platform?
 
-Why might one choose cross platform development over developing applications for each platform? Based on the intro, it might seem logical, but let’s take a deeper look at why this is beneficial in some cases.
+Why might one choose cross-platform development over developing applications for each platform? Based on the intro, it might seem logical, but let’s take a deeper look at why this is beneficial in some cases.
 
 There might be several reasons, but the most important ones are as follows:
 
