@@ -80,7 +80,18 @@
     }
 
     .ticket {
-        animation: stutter 1.25s steps(2, end) infinite;
+        animation:
+            stutter 1.25s steps(2, end) 1.5s infinite,
+            load 1.25s steps(5) forwards;
         box-shadow: 10px 10px 0 0 #d2d2d3;
+    }
+
+    @keyframes load {
+        0% {
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        }
+        100% {
+            clip-path: polygon(0 0, 110% 0, 110% 110%, 0 110%);
+        }
     }
 </style>
