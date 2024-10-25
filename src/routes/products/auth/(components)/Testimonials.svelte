@@ -80,15 +80,15 @@
 </div> -->
 
 <div class="relative my-8 w-full max-w-[100vw] overflow-hidden">
-    <div class="group flex w-fit gap-4">
+    <div class="group light flex w-fit gap-4">
         {#each Array.from({ length: 4 }) as _, i}
             <div
-                class="animate-scroll flex gap-4 group-hover:[animation-play-state:paused;]"
+                class="animate-scroll flex items-center gap-4 group-hover:[animation-play-state:paused;]"
                 aria-hidden={i !== 0}
             >
                 {#each testimonials as testimonial}
                     <div
-                        class="flex w-xl shrink-0 flex-col justify-center rounded-2xl bg-white p-6 transition-all"
+                        class="flex h-fit w-lg flex-col justify-center rounded-2xl bg-white p-6 transition-all"
                     >
                         <p class="text-sub-body text-secondary flex-1 font-medium">
                             {testimonial.copy}
