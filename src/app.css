@@ -125,7 +125,7 @@
             transform: translateX(0);
         }
         100% {
-            transform: translateX(calc((var(--width-xl) + var(--spacing-4)) * var(--length)));
+            transform: translateX(-100%);
         }
     }
 

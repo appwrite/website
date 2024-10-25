@@ -7,16 +7,16 @@
     import VerificationCode from './VerificationCode.svelte';
 
     const platforms = [
-        'Email and Password',
-        'Phone (SMS)',
-        'Magic URL',
-        'Email OTP',
-        'OAuth2',
-        'JWT',
-        'SSR',
-        'Custom token',
-        'Anonymous login',
-        'Multi-factor authentication'
+        { label: 'Email and Password', docs: '/docs/products/auth/email-password' },
+        { label: 'Phone (SMS)', docs: '/docs/products/auth/phone-sms' },
+        { label: 'Magic URL', docs: '/docs/products/auth/magic-url' },
+        { label: 'Email OTP', docs: '/docs/products/auth/email-otp' },
+        { label: 'OAuth2', docs: '/docs/products/auth/oauth2' },
+        { label: 'JWT', docs: '/docs/products/auth/jwt' },
+        { label: 'SSR', docs: '/docs/products/auth/server-side-rendering' },
+        { label: 'Custom token', docs: '/docs/products/auth/tokens' },
+        { label: 'Anonymous login', docs: '/docs/products/auth/anonymous' },
+        { label: 'Multi-factor authentication', docs: '/docs/products/auth/mfa' }
     ];
 </script>
 
@@ -59,10 +59,11 @@
         </div>
         <div class="mt-8 mx-auto max-w-md md:max-w-2xl">
             <div class="flex flex-wrap items-center gap-3 md:justify-center">
-                {#each platforms as platform}
-                    <span
-                        class="text-caption text-primary flex h-[28px] items-center justify-center rounded-full bg-white/5 px-3"
-                        >{platform}</span
+                {#each platforms as { label, docs }}
+                    <a
+                        href={docs}
+                        class="text-caption text-primary flex h-[28px] items-center justify-center rounded-full bg-white/5 px-3 transition-colors hover:bg-gradient-to-br hover:from-transparent hover:to-white/10"
+                        >{label}</a
                     >
                 {/each}
             </div>
