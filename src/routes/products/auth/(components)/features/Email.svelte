@@ -21,7 +21,7 @@
 >
     <div class="flex flex-col gap-1 divide-y divide-white/5">
         {#each emails as email}
-            <div class="flex items-center gap-3 p-4">
+            <div class="flex items-center gap-3 p-3">
                 {#if email.open}
                     <div
                         class="border-greyscale-500 flex size-6 shrink-0 items-center justify-center rounded-[6px] border"

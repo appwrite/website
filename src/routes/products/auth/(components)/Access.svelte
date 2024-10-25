@@ -19,7 +19,7 @@
     ];
 </script>
 
-<section class="light bg-greyscale-50 py-20">
+<section class="light bg-greyscale-50 pt-32 pb-40">
     <div class="container">
         <div
             class="mx-auto mb-20 flex max-w-md flex-col items-center justify-center gap-y-4 text-center"

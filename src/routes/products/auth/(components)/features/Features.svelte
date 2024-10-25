@@ -20,7 +20,7 @@
     ];
 </script>
 
-<div class="md:container relative py-32">
+<div class="md:container relative pt-40 pb-32">
     <div
         class={classNames(
             'relative mx-auto max-h-[50vh] lg:max-w-[85vw] xl:max-w-[75vw]',
@@ -31,7 +31,7 @@
         <div class="max-h-[40vh] scale-90 overflow-hidden md:max-h-[50vh] md:scale-100">
             <Phone />
         </div>
-        <div class="absolute -top-14 -left-4 scale-75 md:left-10 md:scale-100 lg:left-40">
+        <div class="absolute -top-14 -left-4 scale-75 md:left-10 md:scale-100 lg:left-44">
             <VerificationCode />
         </div>
         <div class="absolute -right-52 bottom-12 md:top-10 md:-right-36 lg:right-0">
