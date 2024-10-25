@@ -8,6 +8,7 @@
     import NHost from '../(assets)/platforms/nhost.svg';
     import Supabase from '../(assets)/platforms/supabase.svg';
     import Firebase from '../(assets)/platforms/firebase.svg';
+    import { classNames } from '$lib/utils/classnames';
 
     const platforms = [
         { icon: Android, size: 24 },
@@ -21,9 +22,12 @@
 </script>
 
 <section class="light bg-greyscale-50 py-20">
-    <div class="container grid gap-y-8 lg:grid-cols-2">
+    <div
+        class="container grid items-stretch gap-y-8 divide-[#19191C]/4 [grid-gap:initial] md:divide-x lg:grid-cols-2"
+    >
         <div
-            class="mx-auto mb-20 flex flex max-w-[25rem] flex-col items-center justify-center gap-y-6 text-center"
+            class="relative mx-auto mb-20 flex flex flex-col items-center justify-center gap-y-6 text-center md:px-20
+               "
         >
             <div class="flex items-center gap-2">
                 {#each platforms as platform}
@@ -54,7 +58,7 @@
             >
         </div>
         <div
-            class="mx-auto mb-20 flex flex max-w-[25rem] flex-col items-center justify-center gap-y-6 text-center"
+            class="mx-auto mb-20 flex flex flex-col items-center justify-center gap-y-6 text-center md:px-20"
         >
             <div class="flex items-center gap-2">
                 {#each migrations as migration}

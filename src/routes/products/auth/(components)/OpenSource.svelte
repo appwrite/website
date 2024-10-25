@@ -44,11 +44,11 @@
     });
 </script>
 
-<section class="light bg-greyscale-50 py-20">
+<section class="light bg-greyscale-50 pt-32 pb-40">
     <div class="container overflow-x-hidden">
         <div class="mx-auto mb-20 flex max-w-2xl flex-col items-center gap-y-4 text-center">
             <h2 class="md:text-display text-title text-primary font-aeonik-pro">
-                Open source <br />alternative to
+                Open source <br class="hidden md:block" />alternative to
 
                 <div
                     class="relative inline-flex bg-[linear-gradient(-146deg,_#FD376F,_#19191D_47%,_#19191D)] bg-clip-text text-transparent"
