@@ -156,19 +156,19 @@ async function getLoggedInUser(request) {
 
 <section class="light bg-greyscale-50 py-4 md:py-20">
     <div class="container grid gap-6 md:grid-cols-2">
-        <div class="mb-10 flex max-w-lg flex-col gap-y-9">
+        <div class="mb-10 flex max-w-lg flex-col">
             <span class="web-badges text-micro font-aeonik-fono mr-auto ml-0 uppercase !text-white"
                 >SSR_</span
             >
-            <h2 class="text-title text-primary font-aeonik-pro">
-                Server-side rendering made simple
+            <h2 class="text-title text-primary font-aeonik-pro my-4">
+                Server-side rendering <br /> made simple
             </h2>
-            <p class="text-body text-secondary font-medium">
+            <p class="text-body text-secondary mb-6 font-medium">
                 Streamline your development process and enhance performance without sacrificing
                 functionality.
             </p>
 
-            <ul class="space-y-4">
+            <ul class="block space-y-4">
                 {#each bullets as bullet}
                     <li class="text-body text-secondary flex items-center gap-2 font-medium">
                         <img src={Checkmark} alt="checkmark" class="size-5" />
@@ -177,7 +177,7 @@ async function getLoggedInUser(request) {
                 {/each}
             </ul>
 
-            <ul class="flex gap-4">
+            <ul class="mt-6 flex gap-4">
                 {#each platforms as platform}
                     <Tooltip>
                         <li>
@@ -198,7 +198,7 @@ async function getLoggedInUser(request) {
                     </Tooltip>
                 {/each}
             </ul>
-            <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button is-secondary mt-2">Learn more</a>
+            <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button is-secondary mt-6">Learn more</a>
         </div>
 
         <MultiFrameworkCode data={codeSnippets} selected={Framework.NextJs} />
