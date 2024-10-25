@@ -28,7 +28,7 @@
                 >Access_</span
             >
             <h2 class="text-title text-primary font-aeonik-pro">
-                Easily manage teams and permissions
+                Easily manage teams <br /> and permissions
             </h2>
             <p class="text-body text-secondary font-medium">
                 Create custom roles and level of access to resources such as projects, files, etc.
@@ -50,9 +50,9 @@
                     'first-of-type:after:absolute first-of-type:after:top-0 first-of-type:after:-right-6 first-of-type:after:bottom-0 first-of-type:after:ml-8 first-of-type:after:w-px first-of-type:after:bg-[#19191C]/4'
                 )}
             >
-                <div class="space-y-2 pr-5 md:pr-0">
-                    <h3 class="text-primary font-medium">{console.title}</h3>
-                    <p class="text-secondary max-w-[26rem]">{console.copy}</p>
+                <div class="space-y-1 pr-5 md:pr-0">
+                    <h3 class="text-primary text-body font-medium">{console.title}</h3>
+                    <p class="text-secondary text-body max-w-[30rem] font-medium">{console.copy}</p>
                 </div>
 
                 <div
