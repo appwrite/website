@@ -16,7 +16,7 @@
             <div
                 class="text-primary bg-greyscale-850 border-primary pointer-events-none relative flex size-10 items-center justify-center space-x-4 rounded-lg border text-center text-lg shadow-lg shadow-black/5 outline-none transition-all duration-500"
             >
-                <span class="animate-caret-blink h-[20px] w-px bg-white" />
+                <span class="h-[20px] w-px bg-white" />
             </div>
             <div
                 class="text-primary bg-greyscale-850 border-primary pointer-events-none relative flex size-10 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-lg shadow-lg shadow-black/5 outline-none transition-all duration-500"

@@ -13,7 +13,6 @@
     </div>
     <div class="flex gap-1">
         {#each Array.from({ length: 6 }).map(() => Math.floor(Math.random() * 10)) as number, i}
-            <!-- svelte-ignore a11y-autofocus -->
             <div
                 class={classNames(
                     'text-primary bg-greyscale-850 pointer-events-none relative flex size-10 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-lg shadow-lg shadow-black/5 outline-none transition-all duration-500',
@@ -22,7 +21,7 @@
                     }
                 )}
             >
-                <span>{number} </span>
+                <span>{number}</span>
             </div>{/each}
     </div>
 </div>
