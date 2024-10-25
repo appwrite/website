@@ -2,22 +2,20 @@
     export let cols = 8;
     export let rows = 5;
 
-    const randomNumberFromColsAndRows = () => {
-        return Math.floor(Math.random() * rows);
-    };
+    const randomNumberBetween = () => Math.random() * (800 - 350) + 250;
 </script>
 
-<div class="relative h-full w-full items-center justify-center">
+<div class="relative flex h-full w-full items-center justify-center">
     <div
-        class="absolute inset-0 grid"
+        class="absolute inset-0 z-100 grid"
         style:grid-template-columns="repeat({cols}, 1fr)"
         style:grid-template-rows="repeat({rows}, 1fr)"
         style="--cols:{cols};--rows:{rows}"
     >
         {#each Array.from({ length: cols * rows }) as _, i}
             <div
-                class="cell h-full w-full bg-white"
-                style:animation-delay="{randomNumberFromColsAndRows()}s"
+                class="cell bg-greyscale-850 h-full w-full"
+                style:animation-delay="{randomNumberBetween().toFixed()}ms"
             />
         {/each}
     </div>
@@ -36,7 +34,6 @@
             animation-name: poof;
             animation-duration: 0.25s;
             animation-fill-mode: forwards;
-            background: #fff;
         }
     }
 </style>
