@@ -37,7 +37,7 @@
         >
             <div class="mt-2 ml-2 flex flex-1 flex-col">
                 <header
-                    class="bg-greyscale-850/60 flex flex-col gap-2 rounded-tl-2xl border-b border-white/20 p-4"
+                    class="bg-greyscale-850/60 flex flex-col gap-2 rounded-tl-xl border-b border-white/20 p-4"
                 >
                     <div class="flex items-center gap-3">
                         <span class="font-aeonik-pro text-[18px] font-light text-white"

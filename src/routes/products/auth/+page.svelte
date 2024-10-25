@@ -9,9 +9,9 @@
     import UseCases from './(components)/UseCases.svelte';
     import OpenSource from './(components)/OpenSource.svelte';
     import { PreFooter, FooterNav, MainFooter } from '$lib/components';
-    import { Features } from './(components)/features';
     import Hero from './(components)/Hero.svelte';
     import Testimonials from './(components)/Testimonials.svelte';
+    import Features from './(components)/features/Features.svelte';
 
     const title = 'Auth' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
