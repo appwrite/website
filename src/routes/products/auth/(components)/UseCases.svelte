@@ -5,9 +5,9 @@
     import Flutter from '../(assets)/platforms/flutter.svg';
     import JavaScript from '../(assets)/platforms/javascript.svg';
     import React from '../(assets)/platforms/react.svg';
-    // import NHost from '../(assets)/platforms/nhost.svg';
-    // import Supabase from '../(assets)/platforms/supabase.svg';
-    // import Firebase from '../(assets)/platforms/firebase.svg';
+    import NHost from '../(assets)/platforms/nhost.svg';
+    import Supabase from '../(assets)/platforms/supabase.svg';
+    import Firebase from '../(assets)/platforms/firebase.svg';
 
     const platforms = [
         { icon: Android, size: 24 },
@@ -17,7 +17,7 @@
         { icon: React, size: 24 }
     ];
 
-    //const migrations = [{ icon: NHost }, { icon: Supabase }, { icon: Firebase }];
+    const migrations = [{ icon: NHost }, { icon: Supabase }, { icon: Firebase }];
 </script>
 
 <section class="light bg-greyscale-50 py-20">
@@ -57,11 +57,11 @@
             class="mx-auto mb-20 flex flex max-w-[25rem] flex-col items-center justify-center gap-y-6 text-center"
         >
             <div class="flex items-center gap-2">
-                <!-- {#each migrations as migration}
+                {#each migrations as migration}
                     <div class="flex size-10 items-center justify-center rounded-lg bg-white">
                         <img src={migration.icon} alt="icon" class="size-6" />
                     </div>
-                {/each} -->
+                {/each}
 
                 <div class="-mr-2 h-px w-24 flex-1 bg-gradient-to-r from-white to-[#FD366E]" />
 
