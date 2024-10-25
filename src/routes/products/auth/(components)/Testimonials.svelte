@@ -42,19 +42,16 @@
             company: 'Majik Kids'
         }
     ];
-
-    const viewportWidth = 150;
 </script>
 
-<div class="overflow-hidden">
+<div class="w-screen">
     <div
-        class="light animate-scroll flex items-center justify-center hover:[animation-play-state:paused]"
-        style:width={`${viewportWidth}vw`}
+        class="light animate-scroll flex items-center justify-center gap-4 hover:[animation-play-state:paused]"
+        style="--length:{testimonials.length}"
     >
-        {#each testimonials as testimonial, i}
+        {#each testimonials as testimonial}
             <div
-                class="mr-4 flex h-[175px] origin-left flex-col justify-center rounded-2xl bg-white p-6 transition-all"
-                style:width={`${viewportWidth / testimonials.length}vw`}
+                class="flex h-[175px] w-xl shrink-0 flex-col justify-center rounded-2xl bg-white p-6 transition-all"
             >
                 <p class="text-sub-body text-secondary flex-1 font-medium">{testimonial.copy}</p>
 
