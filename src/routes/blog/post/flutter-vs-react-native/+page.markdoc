@@ -61,7 +61,7 @@ One of the primary differences between Flutter and React Native is the programmi
 **Dart** comes with several notable benefits:
 
 - **Ahead-of-time (AOT) compilation**: Dart compiles your code into native machine code ahead of time. This allows Flutter apps to start quickly and run efficiently, which is especially important for data-intensive apps or apps with complex animations.
-- **Just-intTime (JIT) compilation**: During development, Dart uses JIT, allowing for fast development cycles through **hot reloads**. You can see changes in your app almost instantly without restarting.
+- **Just-in-time (JIT) compilation**: During development, Dart uses JIT, allowing for fast development cycles through **hot reloads**. You can see changes in your app almost instantly without restarting.
 
 Dart's ability to compile directly into native code can significantly improve performance, especially for apps that:
 
