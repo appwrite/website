@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { isInDocs } from '$lib/layouts/Docs.svelte';
     import { isInChangelog } from '$markdoc/layouts/Changelog.svelte';
 
     export let href: string;
@@ -9,11 +8,9 @@
     const target = isExternal ? '_blank' : undefined;
     const rel = isExternal ? 'noopener nofollow' : undefined;
 
-    const inDocs = isInDocs();
     const inChangelog = isInChangelog();
 
     $: classes = (() => {
-        if (inDocs) return 'text-paragraph-md';
         if (inChangelog) return 'text-paragraph-lg in-changelog';
         return '';
     })();
