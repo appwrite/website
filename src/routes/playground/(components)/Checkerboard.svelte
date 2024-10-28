@@ -14,7 +14,7 @@
     >
         {#each Array.from({ length: cols * rows }) as _, i}
             <div
-                class="cell bg-greyscale-850 h-full w-full"
+                class="cell h-full w-full bg-white"
                 style:animation-delay="{randomNumberBetween().toFixed()}ms"
             />
         {/each}
