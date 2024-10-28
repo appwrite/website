@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Background from './Background.svelte';
     import Checkerboard from './Checkerboard.svelte';
     import Lockup from './Lockup.svelte';
 </script>
@@ -14,3 +15,5 @@
         </div>
     </div>
 </div>
+
+<Background />
