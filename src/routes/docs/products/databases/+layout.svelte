@@ -43,6 +43,11 @@
                 {
                     label: 'Relationships',
                     href: '/docs/products/databases/relationships'
+                },
+                {
+                    label: 'Backups',
+                    new: true,
+                    href: '/docs/products/databases/backups'
                 }
             ]
         },
