@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Start with Deno
-description: Dive into our step-by-step guide on integrating Appwrite with your Deno server backend application. Get your backend up and running quickly with this tutorial.
+description: Learn how to integrate Appwrite with your Deno server and get your backend up and running quickly.
 difficulty: beginner
 readtime: 5
 back: /docs/quick-starts
