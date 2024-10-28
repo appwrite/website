@@ -21,7 +21,7 @@
 {#if hasReleased}
     <div class="day">
         <div class="circle" aria-hidden />
-        <span class="text-micro uppercase text-primary"
+        <span class="text-micro text-primary uppercase"
             >Day {number}<span class="web-u-color-text-accent">_</span></span
         >
         <h2 class="text-label text-primary">{day.title}</h2>
@@ -31,7 +31,7 @@
     </div>
 {:else}
     <div class="release">
-        <span class="text-micro uppercase text-primary"
+        <span class="text-micro text-primary uppercase"
             >Day {number}<span class="web-u-color-text-accent">_</span></span
         >
         <div class="bottom">

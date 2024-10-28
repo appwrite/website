@@ -78,13 +78,13 @@
     <div class="web-big-padding-section">
         <div id="form" class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden">
             <div
-                class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
+                class="web-big-padding-section-level-2 is-margin-replace-padding relative"
             >
-                <div class="u-position-relative">
+                <div class="relative">
                     <div class="web-container relative">
                         <!-- before submit -->
                         <div
-                            class="u-position-relative u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0"
+                            class="relative u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0"
                         >
                             <div>
                                 <div
@@ -125,11 +125,11 @@
                                 <form
                                     method="post"
                                     on:submit|preventDefault={handleSubmit}
-                                    class="flex flex-col gap-4 mt-4 lg:mt-0"
+                                    class="mt-4 flex flex-col gap-4 lg:mt-0"
                                 >
                                     <div class="flex justify-end">
                                         <ul
-                                            class="web-form-list grid md:grid-cols-2 web-u-max-width-580 web-u-max-inline-size-none-mobile w-full gap-4"
+                                            class="web-form-list web-u-max-width-580 web-u-max-inline-size-none-mobile grid w-full gap-4 md:grid-cols-2"
                                         >
                                             <li class="web-form-item">
                                                 <label class="u-block" for="name"
@@ -196,9 +196,7 @@
                                                     />
                                                 </div>
                                             </li>
-                                            <li
-                                                class="web-form-item md:col-span-2 flex-col gap-1"
-                                            >
+                                            <li class="web-form-item flex-col gap-1 md:col-span-2">
                                                 <label class="u-block" for="companyWebsite"
                                                     >Company website</label
                                                 >
@@ -212,7 +210,7 @@
                                                 />
                                             </li>
                                             <li
-                                                class="web-form-item md:col-span-2 sm:col-span-1 flex-col gap-1"
+                                                class="web-form-item flex-col gap-1 sm:col-span-1 md:col-span-2"
                                             >
                                                 <label class="u-block" for="use-case"
                                                     >Please share more information about your use
@@ -229,10 +227,12 @@
                                         </ul>
                                     </div>
                                     <div
-                                        class="flex flex-col gap-4 justify-between items-center sm:flex-col md:flex-col lg:flex-row"
+                                        class="flex flex-col items-center justify-between gap-4 sm:flex-col md:flex-col lg:flex-row"
                                     >
-                                        <p class="web-caption-400 self-start lg:self-center web-u-max-width-380">
-                                        {#if error}
+                                        <p
+                                            class="web-caption-400 web-u-max-width-380 self-start lg:self-center"
+                                        >
+                                            {#if error}
                                                 {error}
                                             {/if}
                                         </p>
