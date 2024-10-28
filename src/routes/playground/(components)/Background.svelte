@@ -4,9 +4,8 @@
 
 <div
     class={classNames(
-        'relative grid h-[500px] w-screen',
-        'before:absolute before:right-0 before:left-0 before:z-10 before:h-1/4 before:bg-gradient-to-b before:from-white before:to-transparent',
-        'after:absolute after:right-0 after:bottom-0 after:left-0 after:z-10 after:h-1/2 after:bg-gradient-to-t after:from-[var(--color)] after:to-transparent'
+        'relative grid h-[586px] w-screen',
+        'after:absolute after:inset-0 after:z-10 after:bg-gradient-to-b after:from-white after:via-[#19191C]/64 after:to-[#19191C]'
     )}
 />
 

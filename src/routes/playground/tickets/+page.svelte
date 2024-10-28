@@ -2,7 +2,6 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
-    import { loginGithub } from '../helpers';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
 
     const title = 'Init - Appwrite';

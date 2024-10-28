@@ -2,6 +2,8 @@
     import { FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
+    import DayBrowser from './(components)/DayBrowser.svelte';
+    import DayGrid from './(components)/DayGrid.svelte';
     import Hero from './(components)/Hero.svelte';
 
     const title = 'Init - Appwrite';
@@ -28,6 +30,7 @@
 
 <Main>
     <Hero />
+    <DayGrid />
     <div class="container">
         <FooterNav />
         <MainFooter />
