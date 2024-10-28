@@ -178,7 +178,7 @@
                                     <span class="text">Join our Discord</span>
                                 </a>
                                 <a
-                                    href="{GITHUB_REPO_LINK}"
+                                    href={GITHUB_REPO_LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="web-button is-secondary is-full-width-mobile"
@@ -274,7 +274,7 @@
                         >
                             <div>
                                 <h3 class="text-label text-primary">Check our Open Issues</h3>
-                                <p class="text-body font-medium mt-1">
+                                <p class="text-body mt-1 font-medium">
                                     Anyone can join and help Appwrite become better.
                                 </p>
                                 <a
@@ -295,7 +295,9 @@
                                                 class="web-table-line-cell text-primary whitespace-nowrap text-start"
                                                 >Issue #</th
                                             >
-                                            <th class="web-table-line-cell text-primary text-start">Title</th>
+                                            <th class="web-table-line-cell text-primary text-start"
+                                                >Title</th
+                                            >
                                         </tr>
                                     </thead>
                                     <tbody class="web-table-line-body">
@@ -347,7 +349,7 @@
                             <div
                                 class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
                             >
-                                <div class="text-sub-body font-medium text-primary">
+                                <div class="text-sub-body text-primary font-medium">
                                     Create content
                                 </div>
                                 <div class="text-sub-body">
@@ -359,7 +361,7 @@
                             <div
                                 class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
                             >
-                                <div class="text-sub-body font-medium text-primary">
+                                <div class="text-sub-body text-primary font-medium">
                                     Present at meetups
                                 </div>
                                 <div class="text-sub-body">
@@ -371,7 +373,7 @@
                             <div
                                 class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
                             >
-                                <div class="text-sub-body font-medium text-primary">
+                                <div class="text-sub-body text-primary font-medium">
                                     Report bugs
                                 </div>
                                 <div class="text-sub-body">
@@ -383,7 +385,7 @@
                             <div
                                 class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
                             >
-                                <div class="text-sub-body font-medium text-primary">
+                                <div class="text-sub-body text-primary font-medium">
                                     Submit new ideas
                                 </div>
                                 <div class="text-sub-body">
@@ -395,7 +397,7 @@
                             <div
                                 class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
                             >
-                                <div class="text-sub-body font-medium text-primary">
+                                <div class="text-sub-body text-primary font-medium">
                                     Improve documentation
                                 </div>
                                 <div class="text-sub-body">
@@ -407,7 +409,7 @@
                             <div
                                 class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
                             >
-                                <div class="text-sub-body font-medium text-primary">
+                                <div class="text-sub-body text-primary font-medium">
                                     Helping others
                                 </div>
                                 <div class="text-sub-body">
@@ -527,7 +529,7 @@
                             </li>
                             <li>
                                 <a
-                                    href="{GITHUB_REPO_LINK}"
+                                    href={GITHUB_REPO_LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="web-card is-white web-u-min-block-size-320 flex flex-col"
@@ -669,7 +671,7 @@
                 </div>
             </div>
 
-            <div class="pt-[7.5rem] relative">
+            <div class="relative pt-[7.5rem]">
                 <div class="container">
                     <PreFooter />
                     <FooterNav />
