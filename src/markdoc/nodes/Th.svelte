@@ -12,7 +12,7 @@
     class="py-[0.5625rem] px-3"
     {align}
 >
-    <span class="text-sm uppercase leading-[1.375rem] text-[hsl(var(--web-color-primary))]">
+    <span class="text-sm leading-[1.375rem] text-[hsl(var(--web-color-primary))]">
         <slot />
     </span>
 </td>
