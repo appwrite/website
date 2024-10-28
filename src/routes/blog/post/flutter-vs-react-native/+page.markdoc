@@ -61,7 +61,7 @@ One of the primary differences between Flutter and React Native is the programmi
 **Dart** comes with several notable benefits:
 
 - **Ahead-of-time (AOT) compilation**: Dart compiles your code into native machine code ahead of time. This allows Flutter apps to start quickly and run efficiently, which is especially important for data-intensive apps or apps with complex animations.
-- **Just-intTime (JIT) compilation**: During development, Dart uses JIT, allowing for fast development cycles through **hot reloads**. You can see changes in your app almost instantly without restarting.
+- **Just-in-Time (JIT) compilation**: During development, Dart uses JIT, allowing for fast development cycles through **hot reloads**. You can see changes in your app almost instantly without restarting.
 
 Dart's ability to compile directly into native code can significantly improve performance, especially for apps that:
 
@@ -94,10 +94,10 @@ JavaScript's main advantage is its widespread use. Most development teams are al
 
 Another significant difference between Flutter and React Native is how each framework handles the **user interface (UI)**. UI design plays an important role in how users interact with your app, and each framework offers different levels of control and customization.
 
-## Flutter's approach to UI: Skia rendering engine
+## Flutter's approach to UI: Impeller rendering engine
 
-- Flutter uses its own rendering engine, **Skia**, to draw every pixel on the screen.
-- This means developers have **complete control** over the app's look and behavior, allowing for **pixel-perfect designs** that are consistent across both iOS and Android.
+- Flutter uses the **Impeller rendering engine** by default on iOS, optimizing for smoother animations and reduced "jank" during interactions.
+- Flutter provides **Material** and **Cupertino widgets** that align with Android and iOS styles, minimizing the need to mimic native behavior while allowing for a consistent UI across platforms.
 
 This control is particularly valuable for:
 
@@ -106,7 +106,7 @@ This control is particularly valuable for:
 
 **Downsides** of Flutter's UI approach:
 
-- Since Flutter doesn't use native UI components, the app may not feel as “native” as a React Native app.
+- Since Flutter doesn't use native UI components directly, the app may not feel as “native” as a React Native app.
 - Flutter provides **widgets** that mimic native components, but these aren't identical, and users might notice slight differences in look and behavior.
 
 ## React Native's approach to UI: Native components
@@ -182,7 +182,7 @@ Both frameworks provide a smooth development experience, but their approaches di
 | **Programming Language** | Dart                                      | JavaScript                                           |
 | **Compilation**          | Ahead-of-Time (AOT), Just-in-Time (JIT)   | JavaScript Bridge (with Hermes engine)               |
 | **Performance**          | High due to native code compilation       | Slower due to JavaScript bridge overhead             |
-| **UI Customization**     | Full control (Skia rendering engine)      | Native UI components                                 |
+| **UI Customization**     | Full control (Impeller rendering engine on iOS)      | Native UI components                                 |
 | **Learning Curve**       | Higher (Dart is less common)              | Lower (JavaScript is widely used)                    |
 | **Ecosystem**            | Growing, high-quality packages on pub.dev | Large but fragmented npm ecosystem                   |
 | **Development Tools**    | Strong IDE integration, robust debugging  | Good tools, but native code often needed             |
