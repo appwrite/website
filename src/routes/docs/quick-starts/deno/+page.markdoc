@@ -24,27 +24,47 @@ If this is your first time using Appwrite, create an account and create your fir
 Next, click **Functions** > **Create Function**, and select **Deno** as the runtime.
 
 {% only_dark %}
-![Create Function screen](/images/docs/quick-starts/dark/integrate-server.png)
+![Create Function screen](/images/docs/quick-starts/dark/create-function.png)
 {% /only_dark %}
 {% only_light %}
-![Create Function screen](/images/docs/quick-starts/integrate-server.png)
+![Create Function screen](/images/docs/quick-starts/create-function.png)
 {% /only_light %}
 
 In the page that opens, give your function a name and an ID. You can leave the ID blank, and Appwrite will generate a unique one for you.
 
-[!image here]
+{% only_dark %}
+![Create Function screen](/images/docs/quick-starts/dark/configure-deno-function.png)
+{% /only_dark %}
+{% only_light %}
+![Create Function screen](/images/docs/quick-starts/configure-deno-function.png)
+{% /only_light %}
 
 Click **Next** to set up your function permissions. Configure the Execute permissions and Function scopes as needed, then click **Next** to set up Deployment.
 
-[!image here]
+{% only_dark %}
+![Create Function screen](/images/docs/quick-starts/dark/execute-permissions.png)
+{% /only_dark %}
+{% only_light %}
+![Create Function screen](/images/docs/quick-starts/execute-permissions.png)
+{% /only_light %}
 
 Here, you can choose to create a new repository, add to an existing one, or connect later.
 
-[!image here]
+{% only_dark %}
+![Create Function screen](/images/docs/quick-starts/dark/configure-deployment.png)
+{% /only_dark %}
+{% only_light %}
+![Create Function screen](/images/docs/quick-starts/configure-deployment.png)
+{% /only_light %}
 
 When you're done, click **Create**. This will create and deploy a new Deno function in your project. In the Function Deployments page, you'll see the URL to access your function.
 
-[!image here]
+{% only_dark %}
+![Create Function screen](/images/docs/quick-starts/dark/deployments-page.png)
+{% /only_dark %}
+{% only_light %}
+![Create Function screen](/images/docs/quick-starts/deployments-page.png)
+{% /only_light %}
 
 Click the link to test your Deno function.
 
