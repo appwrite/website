@@ -10,7 +10,7 @@ APNs will save the last message for 30 days or less and attempt delivery as soon
 
 {% section #add-provider step=1 title="Add provider" %}
 
-To add APNs as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Push notification**.
+To add APNs as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Create provider** > **Push notification**.
 
 {% only_dark %}
 ![Add a FCM provider](/images/docs/messaging/providers/apns/dark/provider.png)
