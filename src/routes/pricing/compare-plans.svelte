@@ -29,16 +29,16 @@
             rows: [
                 {
                     title: 'Bandwidth',
-                    free: '10GB',
-                    pro: '300GB',
-                    scale: '300GB',
+                    free: '10GB / month',
+                    pro: '300GB / month',
+                    scale: '300GB / month',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Additional bandwidth',
                     free: '-',
-                    pro: '$40 per 100GB',
-                    scale: '$40 per 100GB',
+                    pro: '$40 per 100GB / month',
+                    scale: '$40 per 100GB / month',
                     enterprise: 'Custom'
                 },
                 {
@@ -51,15 +51,15 @@
                 {
                     title: 'Additional storage',
                     free: '-',
-                    pro: '$3 per 100GB',
+                    pro: '$3 per 100GB ',
                     scale: '$3 per 100GB',
                     enterprise: 'Custom'
                 },
                 {
-                    title: 'Compute',
-                    free: '750K executions',
-                    pro: '3.5M executions',
-                    scale: '3.5M executions',
+                    title: 'Executions',
+                    free: '750K / month',
+                    pro: '3.5M / month',
+                    scale: '3.5M / month',
                     enterprise: 'Custom'
                 }
             ]
@@ -204,6 +204,20 @@
                     enterprise: 'Unlimited'
                 },
                 {
+                    title: 'Backups',
+                    free: '-',
+                    pro: 'Daily',
+                    scale: 'Custom',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Backups retention',
+                    free: '-',
+                    pro: '7 days retention',
+                    scale: 'Custom',
+                    enterprise: 'Custom'
+                },
+                {
                     title: 'Dedicated databases',
                     free: '-',
                     pro: 'Coming Soon',
@@ -250,9 +264,9 @@
                 },
                 {
                     title: 'Executions',
-                    free: '750K',
-                    pro: '3.5M',
-                    scale: '3.5M',
+                    free: '750K / month',
+                    pro: '3.5M / month',
+                    scale: '3.5M / month',
                     enterprise: 'Custom'
                 },
                 {

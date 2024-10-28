@@ -37,7 +37,7 @@
         </div>
         <div class="web-side-nav-mobile-footer-buttons">
             <a
-                href="{GITHUB_REPO_LINK}"
+                href={GITHUB_REPO_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="web-button is-text web-u-inline-width-100-percent-mobile"
