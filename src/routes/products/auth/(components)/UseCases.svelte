@@ -50,7 +50,7 @@
                 Integrate with easy-to-use APIs and SDKs
             </h2>
             <p class="text-body text-secondary font-medium">
-                Integrate seamlessly into your projects with your favorite technology.
+                Integrate Auth seamlessly into your projects with your favorite technology.
             </p>
             <a
                 href={PUBLIC_APPWRITE_DASHBOARD}
@@ -79,7 +79,7 @@
                 Migrate your users to Appwrite effortlessly
             </h2>
             <p class="text-body text-secondary font-medium">
-                Seamless migration process that allows you to transfer your existing users.
+                Use Appwrite's migration process to transfer your existing users with a few clicks.
             </p>
             <a
                 href={PUBLIC_APPWRITE_DASHBOARD}
