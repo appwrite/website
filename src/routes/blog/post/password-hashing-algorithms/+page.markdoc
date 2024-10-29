@@ -6,7 +6,7 @@ date: 2023-10-20
 cover: /images/blog/password-hashing-algorithms.png
 timeToRead: 7
 author: aditya-oberai
-category: authentication, security
+category: security
 ---
 
 In today's digital world, keeping sensitive information like passwords secure is extremely important. Password hashing algorithms are essential for protecting user credentials and ensuring authentication systems are reliable. 
