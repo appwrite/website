@@ -17,7 +17,7 @@
         {
             label: 'Build with any framework',
             description:
-                'Get $250 cloud credits to build with Appwrite Pro, valid throughout your student career and reduce risk at an early stage.',
+                'Get $250 cloud credits to build with Appwrite Pro, valid throughout your student career.',
             icon: Beaker
         },
         {
@@ -41,8 +41,8 @@
         <Logos />
         <h1 class="font-aeonik-pro text-5xl text-white">Build your next project with Appwrite</h1>
         <p class="text-secondary font-medium">
-            Appwrite is part of the GitHub student program. Students receive two years of Appwrite
-            cloud for free.
+            Join the Appwrite Education program in collaboration with the GitHub Student Developer
+            Pack. Students receive two years of Appwrite Cloud Pro for free.
         </p>
 
         <div class="flex w-full flex-col items-center justify-center gap-4 md:flex-row">

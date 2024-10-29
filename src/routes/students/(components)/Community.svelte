@@ -8,7 +8,7 @@
             Get help from the open source community
         </h2>
         <p class="text-secondary text-pretty">
-            Join a growing community of developers and founders who use Appwrite to build their
+            Join a growing community of developers and students who use Appwrite to build their
             products. Gain access to a wealth of knowledge, support, and shared experiences to help
             navigate the challenges of startup growth.
         </p>
