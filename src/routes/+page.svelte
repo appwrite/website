@@ -12,10 +12,10 @@
     import DeveloperCard from './DeveloperCard.svelte';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import CoverImage from './dashboard.png';
-    import Button from '$lib/components/ui/Button.svelte';
     import Hero from '$lib/components/ui/Hero.svelte';
     import GradientText from '$lib/components/ui/GradientText.svelte';
     import Badge from '$lib/components/ui/Badge.svelte';
+    import { trackEvent } from '$lib/actions/analytics';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -122,13 +122,17 @@
             <div class="my-12 lg:my-[7.5rem]">
                 <section class="container pb-0">
                     <a
-                        href="/blog/post/announcing-roles-for-enhanced-collaboration-and-security"
+                        href="/blog/post/introducing-database-backups"
                         class="web-hero-banner-button mb-4"
+                        on:click={() => trackEvent('Banner button click')}
                     >
                         <span class="web-icon-star shrink-0" aria-hidden="true" />
                         <span class="text-caption shrink-0 font-medium">New</span>
                         <div class="web-hero-banner-button-sep" />
-                        <span class="text-caption web-u-trim-1">Introducing Console Roles</span>
+                        <span class="text-caption web-u-trim-1"
+                            >Introducing Database Backups</span
+                        >
+
                         <span class="web-icon-arrow-right shrink-0" aria-hidden="true" />
                     </a>
                     <Hero>
@@ -147,6 +151,7 @@
                             href={PUBLIC_APPWRITE_DASHBOARD}
                             class="web-button mt-8 w-full lg:w-fit"
                             slot="cta"
+                            on:click={() => trackEvent('Get started in hero')}
                         >
                             Get started
                         </a>
@@ -427,6 +432,7 @@
                 style:inset-block-start="0rem"
                 style:z-index="-1"
                 style:left="calc(50% - 384px + 350px)"
+                style:margin-top="6.25rem"
             >
                 <img
                     src="/images/animations/tech-dark.png"
@@ -448,7 +454,11 @@
                             you can code with the language you want at any time.
                         </p>
                         <Technologies />
-                        <a href="/docs/sdks" class="web-button is-secondary">Explore all SDKs</a>
+                        <a
+                            href="/docs/sdks"
+                            class="web-button is-secondary"
+                            on:click={() => trackEvent('Explore all SDKs')}>Explore all SDKs</a
+                        >
                     </section>
                 </div>
             </div>

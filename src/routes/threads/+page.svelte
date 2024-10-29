@@ -114,9 +114,9 @@
 
 <Main>
     <div class="w-big-padding-section">
-        <div class="py-10">
+        <div>
             <div
-                class="web-big-padding-section-level-2 web-u-margin-block-0 web-u-sep-block-end relative overflow-hidden"
+                class="web-big-padding-section-level-2 web-u-margin-block-0 web-u-sep-block-end relative overflow-hidden py-10"
             >
                 <div
                     class="absolute"
