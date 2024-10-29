@@ -4,7 +4,6 @@
     import { Tooltip } from '$lib/components';
     import { Framework, Platform } from '$lib/utils/references';
     import MultiFrameworkCode from './MultiFrameworkCode.svelte';
-    import Checkmark from '../(assets)/checkmark.svg';
 
     const codeSnippets = [
         {
@@ -115,12 +114,6 @@ async function getLoggedInUser(request) {
         }
     ];
 
-    const bullets = [
-        'Accelerates loading times and overall performance',
-        'Improves search engine optimization',
-        'Simplifies development processes'
-    ];
-
     const platforms = [
         {
             name: 'Next',
@@ -137,16 +130,6 @@ async function getLoggedInUser(request) {
             href: '/docs/quick-starts/nuxt',
             image: `/images/platforms/light/nuxt.svg`
         }
-        // {
-        //     name: 'Gatsby',
-        //     href: '/docs/quick-starts/gatsby',
-        //     image: `/images/platforms/light/gatsby.svg`
-        // },
-        // {
-        //     name: 'Remix',
-        //     href: '/docs/quick-starts/remix',
-        //     image: `/images/platforms/light/remix.svg`
-        // }
     ] as Array<{
         name: string;
         href: string;
@@ -164,18 +147,10 @@ async function getLoggedInUser(request) {
                 Server-side rendering <br /> made simple
             </h2>
             <p class="text-body text-secondary mb-6 font-medium">
-                Streamline your development process and enhance performance without sacrificing
-                functionality.
+                Optimize your auth with Appwrite's server-side SDK, enhancing your application's
+                performance without sacrificing functionality. Start with our ready-to-ship
+                snippets, or follow our quick starts for your favorite framework.
             </p>
-
-            <ul class="block space-y-4">
-                {#each bullets as bullet}
-                    <li class="text-body text-secondary flex items-center gap-2 font-medium">
-                        <img src={Checkmark} alt="checkmark" class="size-5" />
-                        {bullet}
-                    </li>
-                {/each}
-            </ul>
 
             <ul class="mt-6 flex gap-4">
                 {#each platforms as platform}
