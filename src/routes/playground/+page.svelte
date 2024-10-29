@@ -5,6 +5,7 @@
     import DayBrowser from './(components)/DayBrowser.svelte';
     import DayGrid from './(components)/DayGrid.svelte';
     import Hero from './(components)/Hero.svelte';
+    import PixelGrid from './(components)/PixelGrid.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
@@ -30,6 +31,7 @@
 
 <Main>
     <Hero />
+    <PixelGrid />
     <DayGrid />
     <div class="container">
         <FooterNav />
