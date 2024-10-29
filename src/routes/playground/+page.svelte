@@ -2,10 +2,10 @@
     import { FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
-    import DayBrowser from './(components)/DayBrowser.svelte';
-    import DayGrid from './(components)/DayGrid.svelte';
+
+    import ScheduleGrid from './(components)/ScheduleGrid.svelte';
     import Hero from './(components)/Hero.svelte';
-    import PixelGrid from './(components)/PixelGrid.svelte';
+    import DayGrid from './(components)/day/DayGrid.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
@@ -31,7 +31,7 @@
 
 <Main>
     <Hero />
-    <PixelGrid />
+    <ScheduleGrid />
     <DayGrid />
     <div class="container">
         <FooterNav />
