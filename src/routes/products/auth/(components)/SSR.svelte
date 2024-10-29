@@ -138,7 +138,7 @@ async function getLoggedInUser(request) {
 </script>
 
 <section class="light bg-greyscale-50 py-4 md:py-20">
-    <div class="container grid gap-6 md:grid-cols-2">
+    <div class="container flex flex-col gap-6 md:flex-row">
         <div class="mb-10 flex max-w-lg flex-col">
             <span class="web-badges text-micro font-aeonik-fono mr-auto ml-0 uppercase !text-white"
                 >SSR_</span
