@@ -9,7 +9,7 @@ back: /docs/quick-starts
 
 Learn how to set up your first Deno project in Appwrite.
 
-{% section #step-1 step=1 title="Create project" %}
+{% section #step-1 step=1 title="Setting up in the Console" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 If this is your first time using Appwrite, create an account and create your first project.
