@@ -297,39 +297,41 @@ export default async ({ req, res, log, error }: any) => {
 
 {% section #step-8 step=8 title="Test your routes locally" %}
 
-To test your project locally, use the following command:
+To test your project locally, run the following command:
 
 ```bash
 appwrite run function
 ```
 
-You can test different routes using `curl` or any API testing tool:
+You should see a prompt asking you to select a function. Select your Deno function.
+This will start a local server where you can test your routes.
+
+You can test different routes using `curl` or any API testing tool.
+For example, if your function is running on `http://localhost:3000`, you can test the following routes:
 
 - **Add a Todo:**
 
   ```bash
-  curl -X POST -H "Content-Type: application/json" -d '{"title": "New Task", "description": "Task description", "isComplete": false}' "http://localhost/v1/functions/{functionId}/executions?path=/addTodo"
+  curl -X POST -H "Content-Type: application/json" -d '{"title": "New Task", "description": "Task description", "isComplete": false}' "http://localhost:3000/addTodo"
   ```
 
 - **Get Todos:**
 
   ```bash
-  curl "http://localhost/v1/functions/{functionId}/executions?path=/getTodos"
+  curl "http://localhost:3000/getTodos"
   ```
 
 - **Seed Database:**
 
   ```bash
-  curl "http://localhost/v1/functions/{functionId}/executions?path=/seedDatabase"
+  curl "http://localhost:3000/seedDatabase"
   ```
 
 - **Run All Tasks:**
 
   ```bash
-  curl "http://localhost/v1/functions/{functionId}/executions?path=/runAllTasks"
+  curl "http://localhost:3000/runAllTasks"
   ```
-
-Replace `{functionId}` with your function's ID.
 
 {% /section %}
 
