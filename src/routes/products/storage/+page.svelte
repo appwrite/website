@@ -138,7 +138,9 @@
                 <div class="container">
                     <div class="web-hero is-center web-u-max-width-380">
                         <span class="web-badges web-eyebrow !text-white">Dashboard_</span>
-                        <h2 class="web-title text-primary">Manage your storage infrastructure</h2>
+                        <h2 class="web-title text-primary">
+                            Manage your storage infrastructure from the Console
+                        </h2>
                         <p class="web-main-body-500 web-u-margin-block-start-0">
                             Organize your buckets and files with ease in your dashboard, as well as
                             manage security, permissions, compression, and more.
