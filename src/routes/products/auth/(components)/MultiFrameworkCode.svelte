@@ -51,7 +51,10 @@
     });
 </script>
 
-<section class="dark web-code-snippet mx-auto !max-w-[90vw]" aria-label="code-snippet panel">
+<section
+    class="dark web-code-snippet mx-auto !max-w-[90vw] md:min-w-2xl"
+    aria-label="code-snippet panel"
+>
     <header class="web-code-snippet-header">
         <div class="web-code-snippet-header-start">
             <div class="flex gap-4">

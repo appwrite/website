@@ -33,7 +33,7 @@
     </div>
     <div class="flex flex-1 flex-col justify-center rounded-lg bg-white/[0.02] pt-6 pl-6">
         <div
-            class="mt-auto mr-0 mb-0 ml-auto flex h-[90%] w-[95%] flex-1 flex-col rounded-tl-2xl border-t border-l border-white/[0.16] bg-gradient-to-br from-white/[0.1] via-white/[0.04] via-[61%] to-transparent to-white/[0.1]"
+            class="mt-auto mb-0 ml-auto flex h-[90%] w-[95%] flex-1 flex-col overflow-hidden rounded-tl-2xl border-t border-l border-white/[0.16] bg-gradient-to-br from-white/[0.1] via-white/[0.04] via-[61%] to-transparent to-white/[0.1]"
         >
             <div class="mt-2 ml-2 flex flex-1 flex-col">
                 <header
