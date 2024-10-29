@@ -10,5 +10,10 @@ Backups are crucial for:
 - Recovering in case of malicious alteration or deletion of data.
 - Reducing downtime in the event of accidental data loss, corruption, or malicious attacks.
 
-Appwrite Cloud uses multiple databases for its products. Some data bases will have access to point-in-time recovery from the past 7 days.
-Other databases performs regular data backups every 4 hours. Each backup is kept for 7 days.
+Appwrite Cloud provides both automated and self-managed backups.
+Users can configure automatic backup policies or initiate manual backups directly from the Console.
+
+Additionally, some databases support point-in-time recovery
+for the past 7 days, while others perform backups every 4 hours, with each retained for 7 days.
+
+For more information, see our [Backup Documentation](/docs/products/databases/backups).
