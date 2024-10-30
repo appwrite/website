@@ -29,13 +29,13 @@
             <div class="author-img">
                 <img src={message.author_avatar} alt="" class="h-full w-full rounded-[inherit]" />
             </div>
-            <span class="text-sub-body font-medium text-primary">{message.author}</span>
+            <span class="text-sub-body text-primary font-medium">{message.author}</span>
         </div>
         <span class="timestamp text-caption">
             {formatTimestamp(message.timestamp)}
         </span>
     </div>
-    <div class="text-sub-body font-medium mt-4">
+    <div class="text-sub-body mt-4 font-medium">
         <SvelteMarkdown
             source={message.message}
             renderers={{

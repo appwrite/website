@@ -190,6 +190,9 @@
                                                 <li><span>200K monthly active users</span></li>
                                                 <li><span>Organization roles</span></li>
                                                 <li><span>Email support</span></li>
+                                                <li>
+                                                    <span>Daily backups stored for 7 days</span>
+                                                </li>
                                                 <li><span>Add-ons</span></li>
                                                 <li>
                                                     <span
@@ -241,6 +244,7 @@
                                                 <li><span>Custom organization roles</span></li>
                                                 <li><span>SSO</span></li>
                                                 <li><span>Activity logs</span></li>
+                                                <li><span>Custom backup policies</span></li>
                                                 <li><span>Priority support</span></li>
                                             </ul>
                                         </div>
@@ -295,6 +299,54 @@
                             </li>
                         </ul>
                     </div>
+
+                    <!--                    <ul class="web-grid-1-1-opt-2 mt-20 gap-8">-->
+                    <!--                        <li>-->
+                    <!--                            <article-->
+                    <!--                                class="web-card is-transparent has-border-gradient min-h-full"-->
+                    <!--                                style="background:rgba(35, 35, 37, 0.90);"-->
+                    <!--                            >-->
+                    <!--                                <header class="flex gap-3">-->
+                    <!--                                    <h3 id="enterprises" class="text-body text-primary font-medium">-->
+                    <!--                                        Enterprises-->
+                    <!--                                    </h3>-->
+                    <!--                                    <div class="web-inline-tag is-pink">Coming Soon</div>-->
+                    <!--                                </header>-->
+                    <!--                                <p class="mt-2">-->
+                    <!--                                    Large scale projects seeking greater performance, collaboration-->
+                    <!--                                    and security.-->
+                    <!--                                </p>-->
+                    <!--                                <a href="/contact-us" class="web-button is-secondary mt-8">-->
+                    <!--                                    <span>Contact us</span>-->
+                    <!--                                </a>-->
+                    <!--                            </article>-->
+                    <!--                        </li>-->
+                    <!--                        <li>-->
+                    <!--                            <article-->
+                    <!--                                class="web-card is-transparent has-border-gradient min-h-full"-->
+                    <!--                                style="background:rgba(35, 35, 37, 0.90);"-->
+                    <!--                            >-->
+                    <!--                                <header class="flex gap-3">-->
+                    <!--                                    <h3-->
+                    <!--                                        id="open-source-teams"-->
+                    <!--                                        class="text-body text-primary font-medium"-->
+                    <!--                                    >-->
+                    <!--                                        Open-source teams-->
+                    <!--                                    </h3>-->
+                    <!--                                </header>-->
+                    <!--                                <p class="mt-2">-->
+                    <!--                                    We support OSS maintainers with a free Pro Plan. Read our-->
+                    <!--                                    announcement blog to find out more.-->
+                    <!--                                </p>-->
+                    <!--                                <a-->
+                    <!--                                    href="/docs/advanced/platform/oss"-->
+                    <!--                                    class="web-button is-secondary mt-8"-->
+                    <!--                                >-->
+                    <!--                                    <span>Learn more</span>-->
+                    <!--                                </a>-->
+                    <!--                            </article>-->
+                    <!--                        </li>-->
+                    <!--                    </ul>-->
                 </section>
             </div>
             <div
