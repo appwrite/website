@@ -6,7 +6,7 @@ import { appwriteInit } from '$lib/appwrite/init';
 import { getAppwriteUser, type AppwriteUser } from '$lib/utils/console';
 import type { ContributionsMatrix, TicketData, TicketDoc } from './tickets/constants';
 
-export function createCountdown(date: Date) {
+export const createCountdown = (date: Date) => {
     const today = new Date();
     const hasReleased = today >= date;
 
@@ -53,7 +53,7 @@ export function createCountdown(date: Date) {
         minutes,
         seconds
     };
-}
+};
 
 export async function isLoggedIn() {
     const user = await getUser();

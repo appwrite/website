@@ -1,8 +1,8 @@
 <script lang="ts">
-    export let cols = 8;
-    export let rows = 5;
+    export let cols = 80;
+    export let rows = 25;
 
-    const randomNumberBetween = () => Math.random() * (800 - 350) + 250;
+    const getDelay = () => Math.random() * (800 - 350) + 250;
 </script>
 
 <div class="relative flex h-full w-full items-center justify-center">
@@ -13,10 +13,7 @@
         style="--cols:{cols};--rows:{rows}"
     >
         {#each Array.from({ length: cols * rows }) as _, i}
-            <div
-                class="cell h-full w-full bg-white"
-                style:animation-delay="{randomNumberBetween().toFixed()}ms"
-            />
+            <div class="cell h-full w-full bg-white" style:animation-delay="{getDelay()}ms" />
         {/each}
     </div>
     <slot />
@@ -32,7 +29,7 @@
     @media screen and (prefers-reduced-motion: no-preference) {
         .cell {
             animation-name: poof;
-            animation-duration: 0.25s;
+            animation-duration: 0.2s;
             animation-fill-mode: forwards;
         }
     }

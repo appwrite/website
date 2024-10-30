@@ -3,7 +3,7 @@
     import { Main } from '$lib/layouts';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
 
-    import ScheduleGrid from './(components)/ScheduleGrid.svelte';
+    import CountdownGrid from './(components)/CountdownGrid.svelte';
     import Hero from './(components)/Hero.svelte';
     import DayGrid from './(components)/day/DayGrid.svelte';
 
@@ -31,7 +31,7 @@
 
 <Main>
     <Hero />
-    <ScheduleGrid />
+    <CountdownGrid />
     <DayGrid />
     <div class="container">
         <FooterNav />
