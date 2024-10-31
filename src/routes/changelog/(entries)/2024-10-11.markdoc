@@ -1,7 +1,7 @@
 ---
 layout: changelog
 title: "Update to Python runtime for better performance"
-date: 2024-10-11
+date: 2024-10-31
 ---
 
 We've updated the Python runtime on Appwrite Cloud to significantly improve performance.
