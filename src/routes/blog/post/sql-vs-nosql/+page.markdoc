@@ -60,6 +60,8 @@ One major benefit of NoSQL databases is their ability to work with varied data m
 
 Instead of following SQL's strict ACID properties, many NoSQL databases use **BASE principles** (Basically Available, Soft state, Eventually consistent). BASE principles allow data to be handled more flexibly, sacrificing strict consistency for better availability and response time. In distributed NoSQL systems, **eventual consistency** means that data will sync over time across all servers, even if there are temporary differences. This approach works well in applications where availability matters more than real-time data accuracy.
 
+In contrast, SQL databases maintain a structured schema, which can provide clarity and consistency over time. While adding or altering attributes in SQL databases typically involves table locking, meaning affected tables may experience temporary downtime during updates, this structured approach supports strict data validation, which ensures consistent data across the database.
+
 ## **Scalability and high availability in NoSQL**
 
 NoSQL databases are built for **horizontal scaling**, meaning they can distribute data across multiple servers as needed. This model lets NoSQL databases handle large amounts of data by balancing the load across different servers. Partitioning and replication are typically built into NoSQL systems, which makes it easier to manage larger amounts of data while keeping it accessible even if some servers fail.
