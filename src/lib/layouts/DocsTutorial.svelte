@@ -7,6 +7,7 @@
     import { onMount } from 'svelte';
 
     export let toc: Array<TocItem>;
+    export let back: string;
     export let currentStep: number;
     export let date: string;
 
@@ -53,6 +54,20 @@
                     {/if}
                 </ul>
                 <div class="u-cross-center relative flex">
+                    {#if back}
+                        <a
+                            href={back}
+                            class="
+						web-button is-text is-only-icon web-u-cross-center web-u-size-40
+						u-position-absolute u-inset-inline-start-0 -translate-x-1/2"
+                            aria-label="previous page"
+                        >
+                            <span
+                                class="icon-cheveron-left web-u-font-size-24 web-u-color-text-primary web-is-not-mobile"
+                                aria-hidden="true"
+                            />
+                        </a>
+                    {/if}
                     <h1 class="web-title">{firstStepItem?.title}</h1>
                 </div>
             </div>
