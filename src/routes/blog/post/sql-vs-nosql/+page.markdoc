@@ -18,7 +18,7 @@ This choice impacts everything from application performance and scalability to d
 
 # **Understanding SQL databases**
 
-**SQL databases**, also known as **relational databases**, structure data into tables with rows and columns. Common SQL databases include **MySQL**, **PostgreSQL**, **SQL Server**, and **Oracle**. The relational model links data across tables using **primary** and **foreign keys**, providing a highly organized, consistent data structure.
+**SQL databases**, also known as **relational databases**, structure data into tables with rows and columns. Common SQL databases include **MySQL**, **MariaDB**, **PostgreSQL**, and **Oracle**. The relational model links data across tables using **primary** and **foreign keys**, providing a highly organized, consistent data structure.
 
 ## **Key SQL features and how they impact projects**
 
