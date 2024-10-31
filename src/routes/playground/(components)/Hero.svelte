@@ -1,34 +1,58 @@
 <script lang="ts">
     import Checkerboard from './Checkerboard.svelte';
+    import Loader from './Loader.svelte';
     import Lockup from './Lockup.svelte';
 </script>
 
 <div class="bg-white">
-    <div class="light container flex min-h-[75vh] flex-col items-center justify-center">
-        <div class="relative w-full max-w-3xl overflow-hidden">
-            <div class="relative flex w-full flex-col items-center justify-center gap-8">
-                <Checkerboard><Lockup /></Checkerboard>
+    <div class="light relative flex min-h-[75vh] flex-col items-center justify-center gap-8">
+        <div class="pointer-events-none relative z-10"><Loader><Lockup /></Loader></div>
+        <div class="relative z-10 flex w-full max-w-lg flex-col items-center justify-center gap-8">
+            <div class="text flex flex-col gap-4" style:animation-delay=".75s">
+                <p class="text-description text-secondary block max-w-lg text-center">
+                    Join us at Appwrite for another week of exciting new announcements and events.
+                </p>
 
-                <div class="text flex flex-col gap-4" style:animation-delay=".75s">
-                    <p class="text-description text-secondary block max-w-lg text-center">
-                        Join us at Appwrite for another week of exciting new announcements and
-                        events.
-                    </p>
-
-                    <nav class="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
-                        <a href="/tickets" class="web-button !w-full md:!w-fit">Claim your ticket</a
-                        >
-                        <button class="web-button is-secondary !w-full md:!w-fit"
-                            >Announcement video</button
-                        >
-                    </nav>
-                </div>
+                <nav class="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
+                    <a href="/tickets" class="web-button !w-full md:!w-fit">Claim your ticket</a>
+                    <button class="web-button is-secondary !w-full md:!w-fit"
+                        >Announcement video</button
+                    >
+                </nav>
             </div>
         </div>
+        <div class="absolute inset-0 top-0 z-0">
+            <Checkerboard flickerIntensity={0.1} rows={30} cols={30} />
+        </div>
+        <div class="pointer-events-none absolute inset-0 z-1 shadow" />
     </div>
 </div>
 
 <style>
+    .shadow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        backdrop-filter: blur(20px);
+        background-color: hsl(var(--web-color-background) / 50%);
+        mask-composite: intersect;
+        mask-image: linear-gradient(
+                to top,
+                transparent,
+                rgba(0, 0, 0, 1) 25%,
+                rgba(0, 0, 0, 1) 75%,
+                transparent
+            ),
+            linear-gradient(
+                to right,
+                transparent,
+                rgba(0, 0, 0, 1) 25%,
+                rgba(0, 0, 0, 1) 75%,
+                transparent
+            );
+    }
+
     @keyframes animate-blur {
         0% {
             filter: blur(10px);
