@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="absolute inset-0 top-0 z-0">
-            <Checkerboard rows={30} cols={30} />
+            <Checkerboard cols={30} />
         </div>
         <div class="pointer-events-none absolute inset-0 z-1 shadow" />
     </div>

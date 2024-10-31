@@ -1,5 +1,4 @@
 <script>
-    import { activeDay } from '$routes/playground/state';
     import DayDetails from './DayDetails.svelte';
     import DayWindow from './DayWindow.svelte';
 </script>
@@ -16,6 +15,16 @@
                         index={i}
                         description="The new Appwrite CLI allows you to test your functions locally, easily migrate databases and more."
                         articles={[
+                            {
+                                title: 'Serverless functions 101: best practices',
+                                url: '/',
+                                label: 'Read article'
+                            },
+                            {
+                                title: 'Serverless functions 101: best practices',
+                                url: '/',
+                                label: 'Read article'
+                            },
                             {
                                 title: 'Serverless functions 101: best practices',
                                 url: '/',

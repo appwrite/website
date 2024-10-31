@@ -11,13 +11,13 @@
         clicked: 'bg-[#FF81A4]'
     };
 
-    export let rows = 8;
     export let cols = 8;
+    let rows = cols / 2;
     export let intervalMs = 1000;
 
-    const MAX_HIGH_SQUARES = 3;
-    const RETURN_TO_OFF_PROBABILITY = 0.2; // High probability to return to off state
-    const ADVANCE_STATE_PROBABILITY = 0.015; // Lower probability to advance to next state
+    const MAX_HIGH_SQUARES = 8;
+    const RETURN_TO_OFF_PROBABILITY = 0.2;
+    const ADVANCE_STATE_PROBABILITY = 0.015;
 
     let squares: SquareState[][] = Array(rows)
         .fill(null)
@@ -50,12 +50,10 @@
     }
 
     const handleSquareClick = (rowIndex: number, colIndex: number) => {
-        // First, set all squares to 'off' except clicked squares
-        squares = squares.map((row, r) =>
+        squares = squares.map((row) =>
             row.map((state, c) => (state === 'clicked' ? 'clicked' : 'off'))
         );
 
-        // Set the clicked square
         squares[rowIndex][colIndex] = 'clicked';
 
         timeout = setTimeout(() => {
@@ -106,19 +104,16 @@
 
                     if (state === 'clicked') return state;
 
-                    // High chance to return to off state
                     if (state !== 'off' && Math.random() < RETURN_TO_OFF_PROBABILITY) {
                         if (state === 'high') highCount--;
                         return 'off';
                     }
 
-                    // Lower chance to advance to next state
                     if (Math.random() < ADVANCE_STATE_PROBABILITY) {
                         const states: SquareState[] = ['off', 'medium', 'high'];
                         const currentIndex = states.indexOf(state);
                         const nextState = states[(currentIndex + 1) % states.length];
 
-                        // Don't exceed MAX_HIGH_SQUARES
                         if (nextState === 'high' && highCount >= MAX_HIGH_SQUARES) {
                             return state;
                         }

@@ -1,5 +1,6 @@
 <script lang="ts">
     import { createCountdown } from '$routes/playground/helpers';
+    import Checkerboard from './Checkerboard.svelte';
     import Counter from './Counter.svelte';
 
     type $$Props = {
@@ -20,7 +21,7 @@
         >Day {index}</span
     >
     <div
-        class="light flex aspect-square flex-col items-center justify-center justify-center gap-4 bg-white"
+        class="light relative flex aspect-square flex-col items-center justify-center justify-center gap-4 bg-white"
     >
         <div class="bg-accent size-20 rounded-full" />
         <div class="font-aeonik-fono text-primary text-base uppercase">
