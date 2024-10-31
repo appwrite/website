@@ -6,7 +6,7 @@
 
     const stateColors: Record<SquareState, string> = {
         off: 'bg-white',
-        medium: 'bg-[#FFEEF3]/40',
+        medium: 'bg-[#FFEEF3]',
         high: 'bg-[#FF81A4]/40',
         clicked: 'bg-[#FF81A4]'
     };
@@ -14,14 +14,17 @@
     export let rows = 8;
     export let cols = 8;
     export let intervalMs = 1000;
-    export let flickerIntensity = 0.02;
+
     const MAX_HIGH_SQUARES = 3;
+    const RETURN_TO_OFF_PROBABILITY = 0.2; // High probability to return to off state
+    const ADVANCE_STATE_PROBABILITY = 0.015; // Lower probability to advance to next state
 
     let squares: SquareState[][] = Array(rows)
         .fill(null)
         .map(() => Array(cols).fill('off' as SquareState));
 
     let interval: NodeJS.Timeout;
+    let timeout: NodeJS.Timeout;
 
     function getAdjacentSquares(
         rowIndex: number,
@@ -47,11 +50,17 @@
     }
 
     const handleSquareClick = (rowIndex: number, colIndex: number) => {
+        // First, set all squares to 'off' except clicked squares
         squares = squares.map((row, r) =>
             row.map((state, c) => (state === 'clicked' ? 'clicked' : 'off'))
         );
 
+        // Set the clicked square
         squares[rowIndex][colIndex] = 'clicked';
+
+        timeout = setTimeout(() => {
+            squares[rowIndex][colIndex] = 'off';
+        }, 1000);
 
         let potentialSquares = new Set<string>();
         getAdjacentSquares(rowIndex, colIndex).forEach(({ row, col }) => {
@@ -70,7 +79,6 @@
             const selectedSquare = squaresArray[randomIndex];
 
             potentialSquares.delete(`${selectedSquare.row},${selectedSquare.col}`);
-
             selectedSquares.push(selectedSquare);
 
             getAdjacentSquares(selectedSquare.row, selectedSquare.col).forEach(({ row, col }) => {
@@ -96,11 +104,21 @@
                 row.map((state) => {
                     if (state === 'high') highCount++;
 
-                    if (Math.random() < flickerIntensity) {
+                    if (state === 'clicked') return state;
+
+                    // High chance to return to off state
+                    if (state !== 'off' && Math.random() < RETURN_TO_OFF_PROBABILITY) {
+                        if (state === 'high') highCount--;
+                        return 'off';
+                    }
+
+                    // Lower chance to advance to next state
+                    if (Math.random() < ADVANCE_STATE_PROBABILITY) {
                         const states: SquareState[] = ['off', 'medium', 'high'];
                         const currentIndex = states.indexOf(state);
                         const nextState = states[(currentIndex + 1) % states.length];
 
+                        // Don't exceed MAX_HIGH_SQUARES
                         if (nextState === 'high' && highCount >= MAX_HIGH_SQUARES) {
                             return state;
                         }
@@ -110,6 +128,7 @@
 
                         return nextState;
                     }
+
                     return state;
                 })
             );
@@ -118,6 +137,7 @@
 
     onDestroy(() => {
         clearInterval(interval);
+        clearTimeout(timeout);
     });
 </script>
 

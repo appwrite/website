@@ -6,7 +6,7 @@
 
 <div class="bg-white">
     <div class="light relative flex min-h-[75vh] flex-col items-center justify-center gap-8">
-        <div class="pointer-events-none relative z-10"><Loader><Lockup /></Loader></div>
+        <div class="lockup pointer-events-none relative z-10"><Lockup /></div>
         <div class="relative z-10 flex w-full max-w-lg flex-col items-center justify-center gap-8">
             <div class="text flex flex-col gap-4" style:animation-delay=".75s">
                 <p class="text-description text-secondary block max-w-lg text-center">
@@ -22,20 +22,35 @@
             </div>
         </div>
         <div class="absolute inset-0 top-0 z-0">
-            <Checkerboard flickerIntensity={0.1} rows={30} cols={30} />
+            <Checkerboard rows={30} cols={30} />
         </div>
         <div class="pointer-events-none absolute inset-0 z-1 shadow" />
     </div>
 </div>
 
 <style>
+    .lockup {
+        animation: load steps(5) 0.5s forwards;
+    }
+
+    @keyframes load {
+        0% {
+            filter: blur(10px);
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        }
+        100% {
+            filter: blur(0px);
+            clip-path: polygon(0 0, 110% 0, 110% 110%, 0 110%);
+        }
+    }
+
     .shadow {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
-        backdrop-filter: blur(20px);
-        background-color: hsl(var(--web-color-background) / 50%);
+        backdrop-filter: blur(4px);
+
         mask-composite: intersect;
         mask-image: linear-gradient(
                 to top,
