@@ -6,7 +6,7 @@
 
 <div
     class={classNames('flex h-10 w-full items-center justify-between border-2 px-4', {
-        'border-t-white border-r-[#87878A] border-b-[#87878A] border-l-white bg-[#1D1D21]':
+        'border-t-white/76 border-r-[rgba(0,_0,_0_,24%)] border-b-[rgba(0,_0,_0_,24%)] border-l-white/76 bg-[#1D1D21]':
             mode === 'dark',
         'border-t-white border-r-[#87878A] border-b-[#87878A] border-l-white bg-[#EDEDF0]':
             mode === 'light'
@@ -22,8 +22,11 @@
             />
         {/each}
     </div>
-    <span class="font-aeonik-fono tracking-loose px-6 text-xs uppercase text-[#2D2D31]"
-        ><slot /></span
+    <span
+        class={classNames('font-aeonik-fono tracking-loose px-6 text-xs uppercase', {
+            'text-[#EDEDF0]': mode === 'dark',
+            'text-[#2D2D31]': mode === 'light'
+        })}><slot /></span
     >
     <div class="flex-1 space-y-1.5">
         {#each Array.from({ length: 3 }) as _}

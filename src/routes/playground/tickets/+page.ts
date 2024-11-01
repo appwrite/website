@@ -1,6 +1,7 @@
 import { redirect } from '@sveltejs/kit';
 import { auth, isLoggedIn } from '../helpers.js';
 import { goto } from '$app/navigation';
+import { BASE_URL } from './constants.js';
 
 export const load = async ({ url }) => {
     const secret = url.searchParams.get('secret');
@@ -10,9 +11,9 @@ export const load = async ({ url }) => {
 
         if (response?.cookieFallback) {
             localStorage.setItem('cookieFallback', response.cookieFallback);
-            goto('/init/tickets/customize');
+            goto(`${BASE_URL}/customize`);
         }
     } else if (await isLoggedIn()) {
-        redirect(307, '/init/tickets/customize');
+        redirect(307, `${BASE_URL}/customize`);
     }
 };

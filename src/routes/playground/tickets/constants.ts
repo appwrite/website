@@ -6,6 +6,8 @@ export const invalidateTicket = () => {
     invalidate(TICKET_DEP);
 };
 
+export const BASE_URL = '/playground/tickets';
+
 export type ContributionsMatrix = number[][];
 
 export type TicketData = Pick<Models.Document, '$id'> & {

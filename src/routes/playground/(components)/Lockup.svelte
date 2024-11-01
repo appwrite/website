@@ -1,10 +1,16 @@
+<script lang="ts">
+    let classNames = '';
+
+    export { classNames as class };
+</script>
+
 <svg
-    id="lockup"
     width="441"
     height="230"
     viewBox="0 0 441 230"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    class={classNames}
 >
     <path
         d="M362.403 24.3479V30.4349H356.316V42.6088H362.403V30.4349H386.75V24.3479H362.403Z"
