@@ -26,7 +26,8 @@
         "@number-flow/svelte": "^0.1.2",
         "@sentry/sveltekit": "^8.12.0",
         "h3": "^1.12.0",
-        "sharp": "^0.33.4"
+        "sharp": "^0.33.4",
+        "zod": "^3.23.8"
     },
     "devDependencies": {
         "@appwrite.io/console": "^0.6.2",

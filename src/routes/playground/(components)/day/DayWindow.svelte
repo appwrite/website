@@ -1,15 +1,14 @@
 <script>
     import Toolbar from '../retro-ui/Toolbar.svelte';
+    import Window from '../retro-ui/Window.svelte';
 </script>
 
 <div class="sticky top-32 h-fit">
-    <div
-        class="relative z-10 flex aspect-square flex-col border-2 border-t-white/50 border-r-black/24 border-b-black/24 border-l-white/50 bg-[#2D2D31] p-2"
-    >
+    <Window class="aspect-square" mode="dark">
         <Toolbar>
             <span class="text-micro text-white">Init<span class="text-accent">_</span>Day0</span>
         </Toolbar>
-        <div class="m-4 flex flex-1 flex-col items-center justify-center bg-white">
+        <div slot="content" class="m-4 flex flex-1 flex-col items-center justify-center bg-white">
             <svg
                 width="171"
                 height="171"
@@ -235,18 +234,21 @@
                 </defs>
             </svg>
         </div>
-    </div>
+    </Window>
     {#each Array.from({ length: 2 }) as _, i}
         {@const index = i + 1}
         <div
-            class="absolute inset-0 box-border aspect-square border-2 border-t-white/50 border-r-black/24 border-b-black/24 border-l-white/50 bg-[#2D2D31] p-1 opacity-60"
+            class="absolute inset-0 aspect-square opacity-60"
             style:transform="translate({index * 16}px, {index * 16}px)"
             style:z-index="-{index}"
         >
-            <Toolbar>
-                <span class="text-micro text-white">Init<span class="text-accent">_</span>Day0</span
-                >
-            </Toolbar>
+            <Window class="aspect-square" mode="dark">
+                <Toolbar>
+                    <span class="text-micro text-white"
+                        >Init<span class="text-accent">_</span>Day0</span
+                    >
+                </Toolbar>
+            </Window>
         </div>
     {/each}
 </div>

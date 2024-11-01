@@ -3,6 +3,7 @@ import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_INIT_ID } from '$env/
 import { appwriteInitServer } from '$lib/appwrite/init.server';
 import type { GithubUser } from '$routes/init/helpers';
 import { Account, Client, Query } from '@appwrite.io/console';
+import { z } from 'zod';
 
 export async function POST({ request, cookies }) {
     const secret = cookies.get(`a_session_${PUBLIC_APPWRITE_PROJECT_INIT_ID}`);
@@ -75,7 +76,14 @@ export async function POST({ request, cookies }) {
 
         const document = documentsList.documents[0];
 
-        const data = await request.json();
+        const schema = z.object({
+            name: z.string(),
+            title: z.string(),
+            showGitHub: z.boolean(),
+            stickers: z.array(z.number())
+        });
+
+        const data = schema.parse(await request.json());
 
         await appwriteInitServer.databases.updateDocument(
             APPWRITE_DB_INIT_ID,
