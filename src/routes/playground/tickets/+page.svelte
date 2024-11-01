@@ -3,6 +3,9 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
+    import Toolbar from '../(components)/retro-ui/Toolbar.svelte';
+    import Window from '../(components)/retro-ui/Window.svelte';
+    import Ticket from '../(components)/ticket/Ticket.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
@@ -27,70 +30,20 @@
 </svelte:head>
 
 <Main>
-    <div class="relative flex h-screen w-full items-center justify-center bg-[#F4F4F7]">
-        <div
-            class="window absolute inset-0 m-6 flex flex-col border-t-2 border-r-4 border-b-4 border-l-2 border-t-white border-r-[#87878A] border-b-[#87878A] border-l-white bg-[#FAFAFB] p-4"
-        >
+    <div class="relative flex h-full w-full items-center justify-center bg-[#F4F4F7]">
+        <Window mode="light" class="flex h-full flex-1 flex-col">
+            <Toolbar slot="toolbar">Init_Ticket</Toolbar>
             <div
-                class="flex h-10 w-full items-center justify-between border-2 border-t-white border-r-[#87878A] border-b-[#87878A] border-l-white bg-[#EDEDF0] px-4"
-            >
-                <div class="flex-1 space-y-1.5">
-                    <div class="h-0.5 w-full bg-[#d8d8d8]" />
-                    <div class="h-0.5 w-full bg-[#d8d8d8]" />
-                    <div class="h-0.5 w-full bg-[#d8d8d8]" />
-                </div>
-                <span class="font-aeonik-fono tracking-loose px-6 text-sm uppercase text-[#2D2D31]"
-                    >Init</span
-                >
-                <div class="flex-1 space-y-1.5">
-                    <div class="h-0.5 w-full bg-[#d8d8d8]" />
-                    <div class="h-0.5 w-full bg-[#d8d8d8]" />
-                    <div class="h-0.5 w-full bg-[#d8d8d8]" />
-                </div>
-            </div>
-            <div
+                slot="content"
                 class="mt-4 flex flex-1 items-center justify-between border-b-2 border-l-2 border-black bg-white p-8 outline-2 outline-[#D8D8DB] [outline-style:inset]"
             >
-                <div class="ticket relative h-[450px] w-[60%] bg-[#1D1D21]" />
+                <Ticket />
             </div>
-        </div>
+        </Window>
     </div>
+
     <div class="container">
         <FooterNav />
         <MainFooter />
     </div>
 </Main>
-
-<style>
-    @keyframes stutter {
-        0% {
-            transform: translateY(0px);
-        }
-        50% {
-            transform: translateY(-10px);
-        }
-        100% {
-            transform: translateY(0px);
-        }
-    }
-
-    .window {
-        box-shadow: 10px 10px 0 0 #c7c7c9;
-    }
-
-    .ticket {
-        animation:
-            stutter 1.25s steps(2, end) 1.5s infinite,
-            load 1.25s steps(5) forwards;
-        box-shadow: 10px 10px 0 0 #d2d2d3;
-    }
-
-    @keyframes load {
-        0% {
-            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-        }
-        100% {
-            clip-path: polygon(0 0, 110% 0, 110% 110%, 0 110%);
-        }
-    }
-</style>

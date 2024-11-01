@@ -17,7 +17,6 @@ export const createCountdown = (date: Date) => {
         const timeRemaining = date.getTime() - today.getTime();
 
         if (timeRemaining <= 0) {
-            // Target date has passed, stop the countdown
             return;
         }
 

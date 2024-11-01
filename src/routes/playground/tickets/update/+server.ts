@@ -1,4 +1,4 @@
-import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
+import { APPWRITE_COL_INIT_ID_NEW, APPWRITE_DB_INIT_ID } from '$env/static/private';
 import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_INIT_ID } from '$env/static/public';
 import { appwriteInitServer } from '$lib/appwrite/init.server';
 import type { GithubUser } from '$routes/init/helpers';
@@ -55,7 +55,7 @@ export async function POST({ request, cookies }) {
 
         const documentsList = await appwriteInitServer.databases.listDocuments(
             APPWRITE_DB_INIT_ID,
-            APPWRITE_COL_INIT_ID,
+            APPWRITE_COL_INIT_ID_NEW,
             [Query.equal('gh_user', user.login)]
         );
 
@@ -79,7 +79,7 @@ export async function POST({ request, cookies }) {
 
         await appwriteInitServer.databases.updateDocument(
             APPWRITE_DB_INIT_ID,
-            APPWRITE_COL_INIT_ID,
+            APPWRITE_COL_INIT_ID_NEW,
             document.$id,
             {
                 name: data.name,

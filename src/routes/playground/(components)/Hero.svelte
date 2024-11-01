@@ -8,13 +8,15 @@
     <div class="light relative flex min-h-[75vh] flex-col items-center justify-center gap-8">
         <div class="lockup pointer-events-none relative z-10"><Lockup /></div>
         <div class="relative z-10 flex w-full max-w-lg flex-col items-center justify-center gap-8">
-            <div class="text flex flex-col gap-4" style:animation-delay=".75s">
+            <div class="text flex flex-col gap-4 [animation-delay:0.75s]">
                 <p class="text-description text-secondary block max-w-lg text-center">
                     Join us at Appwrite for another week of exciting new announcements and events.
                 </p>
 
                 <nav class="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
-                    <a href="/tickets" class="web-button !w-full md:!w-fit">Claim your ticket</a>
+                    <a href="/playground/tickets" class="web-button !w-full md:!w-fit"
+                        >Claim your ticket</a
+                    >
                     <button class="web-button is-secondary !w-full md:!w-fit"
                         >Announcement video</button
                     >

@@ -1,4 +1,4 @@
-import { APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID } from '$env/static/private';
+import { APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID_NEW } from '$env/static/private';
 import { appwriteInitServer } from '$lib/appwrite/init.server';
 import { parse } from 'node-html-parser';
 import type { TicketData, ContributionsMatrix } from '../../constants';
@@ -6,7 +6,7 @@ import type { TicketData, ContributionsMatrix } from '../../constants';
 export async function getContributions(id: string): Promise<ContributionsMatrix | null> {
     const { gh_user, contributions } = (await appwriteInitServer.databases.getDocument(
         APPWRITE_DB_INIT_ID,
-        APPWRITE_COL_INIT_ID,
+        APPWRITE_COL_INIT_ID_NEW,
         id
     )) as unknown as TicketData;
 
@@ -50,7 +50,7 @@ export async function getContributions(id: string): Promise<ContributionsMatrix 
     // Update the document with the new contributions
     await appwriteInitServer.databases.updateDocument(
         APPWRITE_DB_INIT_ID,
-        APPWRITE_COL_INIT_ID,
+        APPWRITE_COL_INIT_ID_NEW,
         id,
         {
             contributions: matrix.flat()

@@ -14,7 +14,6 @@
         style="--cols:{cols};--rows:{rows}"
     >
         {#each Array.from({ length: cols * rows }) as _, i}
-            <!-- Calculate the row and column based on the index -->
             <div
                 class="cell h-full w-full bg-white"
                 style:animation-delay="{getDelay(i % cols, Math.floor(i / cols))}ms"
@@ -28,7 +27,6 @@
     @keyframes poof {
         to {
             opacity: 0;
-            transform: scale(0.9); /* Optional: shrink cells slightly during animation */
         }
     }
 

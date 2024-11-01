@@ -1,5 +1,5 @@
 <script>
-    import Toolbar from '../ui/Toolbar.svelte';
+    import Toolbar from '../retro-ui/Toolbar.svelte';
 </script>
 
 <div class="sticky top-32 h-fit">

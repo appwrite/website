@@ -2,7 +2,7 @@
     import { classNames } from '$lib/utils/classnames';
     import { addDays } from 'date-fns';
     import CountdownCard from './CountdownCard.svelte';
-    import Window from './ui/Window.svelte';
+    import Window from './retro-ui/Window.svelte';
 
     let base = new Date('2024-10-30T13:00:00.000Z');
     let days = [
