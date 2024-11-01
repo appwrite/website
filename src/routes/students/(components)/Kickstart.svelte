@@ -11,7 +11,8 @@
         </h2>
         <p class="font-medium">
             Earn free credits through GitHub Education to build your next project on Appwrite Cloud.
-            Sign up for the GitHub Student Developer Pack to receive a $250 Appwrite Cloud credit.
+            Sign up for the GitHub Student Developer Pack to receive Appwrite Cloud for the duration
+            of your studies.
         </p>
 
         <p class="font-medium">

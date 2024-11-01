@@ -13,7 +13,7 @@
         },
         {
             question: 'Who is eligible to apply?',
-            answer: 'Any student enrolled in the GitHub Student Developer Pack can apply for free and get $250 worth of Appwrite Pro credits until they graduate.'
+            answer: 'Any student enrolled in the GitHub Student Developer Pack can apply for free and receive Appwrite Pro until graudation.'
         },
         {
             question: 'How do I apply?',

@@ -1,6 +1,5 @@
 <script>
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import Button from '$lib/components/ui/Button.svelte';
     import { classNames } from '$lib/utils/classnames';
     import Logos from './Logos.svelte';
     import ChatIcon from '../(assets)/chat-icon.svg';
@@ -42,7 +41,7 @@
         <h1 class="font-aeonik-pro text-5xl text-white">Build your next project with Appwrite</h1>
         <p class="text-secondary font-medium">
             Join the Appwrite Education program in collaboration with the GitHub Student Developer
-            Pack. Students receive two years of Appwrite Cloud Pro for free.
+            Pack. Students receive Appwrite Cloud for free throughout their studies.
         </p>
 
         <div class="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
