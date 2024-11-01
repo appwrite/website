@@ -45,6 +45,15 @@
     <article class="web-article contents">
         <header class="web-article-header">
             <div class="web-article-header-start web-u-cross-start flex flex-col">
+                {#if back}
+                    <a
+                        href={back}
+                        class="web-icon-button web-is-only-mobile"
+                        aria-label="previous page"
+                    >
+                        <span class="icon-cheveron-left" aria-hidden="true" />
+                    </a>
+                {/if}
                 <ul class="web-metadata web-caption-400">
                     {#if currentStepItem.difficulty}
                         <li>{currentStepItem.difficulty}</li>
@@ -59,11 +68,11 @@
                             href={back}
                             class="
 						web-button is-text is-only-icon web-u-cross-center web-u-size-40
-						u-position-absolute u-inset-inline-start-0 -translate-x-1/2"
+						u-position-absolute u-inset-inline-start-0 web-is-not-mobile -translate-x-1/2"
                             aria-label="previous page"
                         >
                             <span
-                                class="icon-cheveron-left web-u-font-size-24 web-u-color-text-primary web-is-not-mobile"
+                                class="icon-cheveron-left web-u-font-size-24 web-u-color-text-primary"
                                 aria-hidden="true"
                             />
                         </a>
