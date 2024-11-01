@@ -67,8 +67,8 @@
                         <a
                             href={back}
                             class="
-						web-button is-text is-only-icon web-u-cross-center web-u-size-40
-						u-position-absolute u-inset-inline-start-0 web-is-not-mobile -translate-x-1/2"
+						web-button is-text is-only-icon web-u-cross-center
+						web-is-not-mobile -translate-x-1/2"
                             aria-label="previous page"
                         >
                             <span
@@ -77,7 +77,7 @@
                             />
                         </a>
                     {/if}
-                    <h1 class="web-title">{firstStepItem?.title}</h1>
+                    <h1 class="web-title lg:-ml-5">{firstStepItem?.title}</h1>
                 </div>
             </div>
             <div class="web-article-header-end" />
