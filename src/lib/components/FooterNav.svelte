@@ -101,7 +101,7 @@
         {#each Object.entries(links) as [title, items]}
             <li class="web-footer-nav-main-item web-is-not-mobile">
                 <h2
-                    class="web-footer-nav-main-title web-is-not-mobile text-caption uppercase font-medium"
+                    class="web-footer-nav-main-title web-is-not-mobile text-caption font-medium uppercase"
                 >
                     {title}
                 </h2>

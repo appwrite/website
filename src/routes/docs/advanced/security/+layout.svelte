@@ -25,6 +25,10 @@
                     href: '/docs/advanced/security/gdpr'
                 },
                 {
+                    label: 'PCI',
+                    href: '/docs/advanced/security/pci'
+                },
+                {
                     label: 'SOC 2',
                     href: '/docs/advanced/security/soc2'
                 },
@@ -33,8 +37,8 @@
                     href: '/docs/advanced/security/hipaa'
                 },
                 {
-                    label: 'PCI',
-                    href: '/docs/advanced/security/pci'
+                    label: 'CCPA',
+                    href: '/docs/advanced/security/ccpa'
                 }
             ]
         },

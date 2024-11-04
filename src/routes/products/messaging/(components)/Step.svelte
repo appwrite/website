@@ -5,7 +5,7 @@
 
 <div class="step" data-hideline={hideLine}>
     <div class="web-dot" />
-    <h2 class="text-micro uppercase text-primary step-title">{title}</h2>
+    <h2 class="text-micro text-primary step-title uppercase">{title}</h2>
     <div class="step-content mt-8">
         <slot />
     </div>
