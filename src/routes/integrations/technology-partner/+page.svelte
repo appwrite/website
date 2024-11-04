@@ -9,6 +9,7 @@
     //import BlobPink from "$routes/startups/(assets)/blob-pink.svg";
     // import BlobPinkMobile from "$routes/startups/(assets)/blob-pink-mobile.svg";
     import Pink from './bg.png';
+    import { getReferrerAndUtmSource } from '$lib/utils/utm';
 
     let email = '';
     let name = '';
@@ -39,7 +40,8 @@
                 email,
                 firstName: name,
                 subject,
-                message
+                message,
+                ...getReferrerAndUtmSource()
             })
         });
         if (response.status >= 400) {
