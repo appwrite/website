@@ -11,7 +11,7 @@
     import { Features } from './(components)/features';
     import Hero from './(components)/Hero.svelte';
 
-    const title = 'Auth' + TITLE_SUFFIX;
+    const title = 'Functions' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>

@@ -1,32 +1,32 @@
 <script lang="ts">
-    import SessionManagement from './animations/SessionManagement.svelte';
-    import MultiFactor from './animations/MultiFactor.svelte';
-    import SecurePasswords from './animations/SecurePasswords.svelte';
+    import CustomDomains from './animations/CustomDomains.svelte';
+    import ScheduledFunctions from './animations/ScheduledFunctions.svelte';
+    import HttpRequests from './animations/HttpRequests.svelte';
     import Events from './animations/Events.svelte';
-    import SessionLimit from './animations/SessionLimit.svelte';
-    import PasswordDictionary from './animations/PasswordDictionary.svelte';
+    import DelayedExecutions from './animations/DelayedExecutions.svelte';
+    import Logging from './animations/Logging.svelte';
 </script>
 
-<section
-    class="relative [background-size:350%] bg-center bg-top bg-no-repeat py-10 md:bg-contain md:py-20"
->
+<section class="relative py-10 md:py-20">
     <div class="container">
-        <div class="mx-auto flex max-w-[325px] flex-col gap-4 text-center">
+        <div
+            class="mx-auto flex max-w-[350px] flex-col items-center justify-center gap-4 text-center"
+        >
             <h2 class="font-aeonik-pro text-primary text-pretty text-4xl">
-                Built-in<br /> advanced security
+                Execute functions<br /> with ease
             </h2>
-            <p>
-                Provide top security and protection with built-in security and compliance features.
-            </p>
+            <p>Execute your functions effortlessly through the Appwrite console, SDKs, or API.</p>
+
+            <a href="/" class="web-button is-secondary mt-4">Learn more</a>
         </div>
 
-        <div class="mt-10 grid min-h-[900px] gap-4 md:grid-cols-3">
-            <SessionManagement />
-            <MultiFactor />
-            <SecurePasswords />
+        <div class="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <ScheduledFunctions />
             <Events />
-            <SessionLimit />
-            <PasswordDictionary />
+            <CustomDomains />
+            <HttpRequests />
+            <DelayedExecutions />
+            <Logging />
         </div>
     </div>
 </section>
