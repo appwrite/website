@@ -1,18 +1,22 @@
 <script lang="ts">
     import Badge from '$lib/components/ui/Badge.svelte';
     import { classNames } from '$lib/utils/classnames';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    
+
+    const educationSignUp = `${PUBLIC_APPWRITE_DASHBOARD}/console/education`;
 
     const items = [
         {
             label: 'Enroll to the GitHub Student Developer Pack',
             description: 'Sign up for the Student Developer pack and explore the benefits.',
-            cta: { url: 'https://github.com', label: 'Enroll on GitHub Education', icon: 'github' }
+            cta: { url: 'https://github.com/education', label: 'Enroll on GitHub Education', icon: 'github' }
         },
         {
             label: 'Redeem your Cloud credits',
             description:
                 'Create your Appwrite account and add a valid payment method. Once verified, your credits will be applied.',
-            cta: { url: 'https://github.com', label: 'Sign up' }
+            cta: { url: educationSignUp, label: 'Sign up' }
         },
         {
             label: 'Start from our docs',

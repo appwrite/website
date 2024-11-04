@@ -26,6 +26,8 @@
             icon: ChatIcon
         }
     ];
+
+    const educationSignUp = `${PUBLIC_APPWRITE_DASHBOARD}/console/education`;
 </script>
 
 <section
@@ -45,7 +47,7 @@
         </p>
 
         <div class="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
-            <a class="web-button !w-full md:!w-fit" href={PUBLIC_APPWRITE_DASHBOARD}>Sign up now</a>
+            <a class="web-button !w-full md:!w-fit" href={educationSignUp}>Sign up now</a>
             <a
                 class="web-button is-secondary !w-full !whitespace-normal md:!w-fit"
                 href="https://github.com/education"
