@@ -364,7 +364,7 @@
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
                                             <h2 id="starter" class="text-label font-aeonik-pro">
-                                                Community version
+                                                Free
                                             </h2>
                                             <div
                                                 class="text-title font-aeonik-pro text-primary mt-2"
@@ -455,12 +455,12 @@
                                             </a>
                                         </header>
                                         <div class="web-pricing-cards-content text-[#FFFFFF]">
-                                            <p>Everything in the Community version, plus:</p>
+                                            <p>Everything in the Free plan, plus:</p>
                                             <ul class="web-checked-list-circle">
                                                 <li>
                                                     <span
                                                         >Host your database or entire instance on
-                                                        AWS or any provider of your choice</span
+                                                        any provider of your choice</span
                                                     >
                                                 </li>
                                                 <li>
@@ -476,11 +476,13 @@
                                                     >
                                                 </li>
                                                 <li><span>Monitoring and alerts</span></li>
-                                                <li><span>O24/7 premium support</span></li>
-                                                <li><span>SSO login</span></li>
+                                                <li><span>24/7 enterprise support</span></li>
+                                                <li><span>SSO</span></li>
+                                                <li><span>Private Slack channel</span></li>
+                                                <li><span>Designated Success Manager</span></li>
                                                 <li><span>Add-ons</span></li>
                                                 <li>
-                                                    <span>Roles with granular permissions</span>
+                                                    <span>Custom Roles</span>
                                                 </li>
                                             </ul>
                                         </div>
