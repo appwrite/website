@@ -9,9 +9,9 @@
             cta: { url: 'https://github.com', label: 'Enroll on GitHub Education', icon: 'github' }
         },
         {
-            label: 'Redeem your $250 credits',
+            label: 'Redeem your Cloud credits',
             description:
-                'Create your Appwrite account and add a valid payment method. Once verified, your $250 credit will be applied.',
+                'Create your Appwrite account and add a valid payment method. Once verified, your credits will be applied.',
             cta: { url: 'https://github.com', label: 'Sign up' }
         },
         {
