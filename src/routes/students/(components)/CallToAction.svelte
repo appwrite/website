@@ -1,6 +1,8 @@
 <script>
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { classNames } from '$lib/utils/classnames';
+
+    const educationSignUp = `${PUBLIC_APPWRITE_DASHBOARD}/console/education`;
 </script>
 
 <div
@@ -19,7 +21,7 @@
                 Develop your developer skills with Appwrite Pro, join a vibrant community of
                 open-source contributors, and start building with a vast array of frameworks.
             </p>
-            <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button mt-4 !w-full md:!w-fit">Sign up</a
+            <a href={educationSignUp} class="web-button mt-4 !w-full md:!w-fit">Sign up</a
             >
         </div>
     </div>

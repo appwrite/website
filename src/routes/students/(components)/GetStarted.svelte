@@ -3,7 +3,6 @@
     import { classNames } from '$lib/utils/classnames';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     
-
     const educationSignUp = `${PUBLIC_APPWRITE_DASHBOARD}/console/education`;
 
     const items = [
@@ -15,7 +14,7 @@
         {
             label: 'Redeem your Cloud credits',
             description:
-                'Create your Appwrite account and add a valid payment method. Once verified, your credits will be applied.',
+                'Create your Appwrite account through the Education program sign up page. Once verified, your credits will be applied.',
             cta: { url: educationSignUp, label: 'Sign up' }
         },
         {
