@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Backups
-description: Appwrite provides both self-managed project backups and automated disaster recovery backups to ensure data security and availability.
+description: "Appwrite provides both self-managed project backups and automated disaster recovery backups to ensure data security and availability."
 ---
 
 Preventing downtime and maintaining data availability is crucial for digital security. Appwrite provides both self-managed backups and automated disaster recovery backups.
