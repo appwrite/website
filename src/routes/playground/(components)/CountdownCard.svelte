@@ -1,6 +1,5 @@
 <script lang="ts">
     import { createCountdown } from '$routes/playground/helpers';
-    import Checkerboard from './Checkerboard.svelte';
     import Counter from './Counter.svelte';
 
     type $$Props = {
@@ -33,7 +32,7 @@
                     {$days > 1 ? 'days' : 'day'}
                 </p>
             {:else}
-                <div class="flex items-center gap-0.5">
+                <div class="flex items-center gap-0.5 text-center">
                     <Counter value={$hours} />:<Counter value={$minutes} />:<Counter
                         value={$seconds}
                     />
