@@ -5,6 +5,7 @@
     import FooterNav from '../../lib/components/FooterNav.svelte';
     import MainFooter from '../../lib/components/MainFooter.svelte';
     import { socials } from '$lib/constants';
+    import { getReferrerAndUtmSource } from '$lib/utils/utm';
 
     let email = '';
     let firstName = '';
@@ -24,7 +25,8 @@
                 email,
                 firstName,
                 subject,
-                message
+                message,
+                ...getReferrerAndUtmSource()
             })
         });
         if (response.status >= 400) {

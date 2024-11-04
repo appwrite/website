@@ -6,6 +6,7 @@
     import MainFooter from '../../lib/components/MainFooter.svelte';
     import { socials } from '$lib/constants';
     import GradientBackground from './bg.png';
+    import { getReferrerAndUtmSource } from '$lib/utils/utm';
 
     let personName = '';
     let personEmail = '';
@@ -34,7 +35,8 @@
                 githubUrl,
                 websiteUrl,
                 license,
-                message
+                message,
+                ...getReferrerAndUtmSource()
             })
         });
         if (response.status >= 400) {

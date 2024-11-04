@@ -7,6 +7,7 @@
     import Pink from '../bg.png';
     import { loggedIn, user } from '$lib/utils/console';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+    import { getReferrerAndUtmSource } from '$lib/utils/utm';
 
     let email = '';
     let name = '';
@@ -36,7 +37,8 @@
                 companySize,
                 companyWebsite,
                 firstName: name,
-                message: useCase
+                message: useCase,
+                ...getReferrerAndUtmSource()
             })
         });
 
@@ -77,15 +79,11 @@
 <Main>
     <div class="web-big-padding-section">
         <div id="form" class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden">
-            <div
-                class="web-big-padding-section-level-2 is-margin-replace-padding relative"
-            >
+            <div class="web-big-padding-section-level-2 is-margin-replace-padding relative">
                 <div class="relative">
                     <div class="web-container relative">
                         <!-- before submit -->
-                        <div
-                            class="relative u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0"
-                        >
+                        <div class="u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0 relative">
                             <div>
                                 <div
                                     class="web-u-max-inline-size-none-mobile"
