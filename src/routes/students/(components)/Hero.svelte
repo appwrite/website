@@ -16,7 +16,7 @@
         {
             label: 'Build with any framework',
             description:
-                'Get $250 cloud credits to build with Appwrite Pro, valid throughout your student career.',
+                'Get free access to build with Appwrite Pro, valid throughout your student career.',
             icon: Beaker
         },
         {
