@@ -206,14 +206,14 @@
                 {
                     title: 'Backups',
                     free: '-',
-                    pro: 'Daily,',
+                    pro: 'Daily',
                     scale: 'Custom',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Backups retention',
                     free: '-',
-                    pro: '7 days retention,',
+                    pro: '7 days retention',
                     scale: 'Custom',
                     enterprise: 'Custom'
                 },
