@@ -48,7 +48,7 @@
             <a class="web-button !w-full md:!w-fit" href={PUBLIC_APPWRITE_DASHBOARD}>Sign up now</a>
             <a
                 class="web-button is-secondary !w-full !whitespace-normal md:!w-fit"
-                href={PUBLIC_APPWRITE_DASHBOARD}
+                href="https://github.com/education"
             >
                 <span class="web-icon-github !text-white" />
                 GitHub Education</a
