@@ -4,7 +4,7 @@
     import CountdownCard from './CountdownCard.svelte';
     import Window from './retro-ui/Window.svelte';
 
-    let base = new Date('2024-10-30T13:00:00.000Z');
+    let base = new Date('2024-11-04T13:00:00.000Z');
     let days = [
         {
             title: 'Domains',

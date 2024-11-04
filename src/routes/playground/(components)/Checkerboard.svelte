@@ -6,9 +6,9 @@
 
     const stateColors: Record<SquareState, string> = {
         off: 'bg-white',
-        medium: 'bg-[#FFEEF3]',
-        high: 'bg-[#FF81A4]/40',
-        clicked: 'bg-[#FF81A4]'
+        medium: 'bg-[#FFEEF3]/60',
+        high: 'bg-[#FF81A4]/30',
+        clicked: 'bg-[#FF81A4]/90'
     };
 
     export let cols = 8;
@@ -17,7 +17,7 @@
 
     const MAX_HIGH_SQUARES = 8;
     const RETURN_TO_OFF_PROBABILITY = 0.2;
-    const ADVANCE_STATE_PROBABILITY = 0.015;
+    const ADVANCE_STATE_PROBABILITY = 0.007;
 
     let squares: SquareState[][] = Array(rows)
         .fill(null)

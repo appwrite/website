@@ -1,6 +1,5 @@
 <script lang="ts">
     import Checkerboard from './Checkerboard.svelte';
-    import Loader from './Loader.svelte';
     import Lockup from './Lockup.svelte';
 </script>
 
@@ -24,7 +23,7 @@
             </div>
         </div>
         <div class="absolute inset-0 top-0 z-0">
-            <Checkerboard cols={30} />
+            <Checkerboard cols={40} />
         </div>
         <div class="pointer-events-none absolute inset-0 z-1 shadow" />
     </div>

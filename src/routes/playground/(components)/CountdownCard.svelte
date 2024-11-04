@@ -33,7 +33,7 @@
                     {$days > 1 ? 'days' : 'day'}
                 </p>
             {:else}
-                <div class="flex items-center">
+                <div class="flex items-center gap-0.5">
                     <Counter value={$hours} />:<Counter value={$minutes} />:<Counter
                         value={$seconds}
                     />
