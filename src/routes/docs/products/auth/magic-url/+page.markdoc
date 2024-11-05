@@ -47,7 +47,6 @@ mutation {
 
 The `url` parameter specifies where users will be redirected after clicking the magic link.
 The secret and userId will be automatically appended as query parameters to this URL.
-If you're building a mobile app, you can leave the URL parameter empty to use your Appwrite instance's default handling.
 
 # Login {% #login %}
 
