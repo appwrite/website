@@ -8,7 +8,6 @@
     import UseCases from './(components)/UseCases.svelte';
     import OpenSource from './(components)/OpenSource.svelte';
     import { PreFooter, FooterNav, MainFooter } from '$lib/components';
-    import { Features } from './(components)/features';
     import Hero from './(components)/Hero.svelte';
 
     const title = 'Functions' + TITLE_SUFFIX;
@@ -37,7 +36,6 @@
     <div class="overflow-hidden">
         <Hero />
         <div>
-            <Features />
             <Bento />
             <div class="bg-greyscale-50">
                 <Access />
