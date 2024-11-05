@@ -146,13 +146,13 @@ async function getLoggedInUser(request) {
             <h2 class="text-title text-primary font-aeonik-pro my-4">
                 Server-side rendering <br /> made simple
             </h2>
-            <p class="text-body text-secondary mb-6 font-medium">
+            <p class="text-body text-secondary font-medium">
                 Optimize your auth with Appwrite's server-side SDK, enhancing your application's
                 performance without sacrificing functionality. Start with our ready-to-ship
                 snippets, or follow our quick starts for your favorite framework.
             </p>
 
-            <ul class="mt-6 flex gap-4">
+            <ul class="mt-8 flex gap-4">
                 {#each platforms as platform}
                     <Tooltip>
                         <li>
@@ -173,7 +173,7 @@ async function getLoggedInUser(request) {
                     </Tooltip>
                 {/each}
             </ul>
-            <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button is-secondary mt-6">Learn more</a>
+            <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button is-secondary mt-8">Learn more</a>
         </div>
 
         <MultiFrameworkCode data={codeSnippets} selected={Framework.NextJs} />
