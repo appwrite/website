@@ -114,14 +114,14 @@ client
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://[region].cloud.appwrite.io/v1")    // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")    // Your API Endpoint
     .setProject("<PROJECT_ID>")                            // Your project ID
 ```
 ```client-android-kotlin
 import io.appwrite.Client
 
 val client = Client(context)
-    .setEndpoint("https://[region].cloud.appwrite.io/v1")    // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")    // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 ```
 {% /multicode %}
@@ -195,7 +195,7 @@ using Appwrite;
 using Appwrite.Services;
 
 var client = new Client()
-    .SetEndPoint("https://[region].cloud.appwrite.io/v1")                // Your API Endpoint
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")                // Your API Endpoint
     .SetProject("<PROJECT_ID>")                            // Your project ID
     .SetJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
 ```
@@ -217,7 +217,7 @@ import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
 
 Client client = new Client()
-    .setEndpoint("https://[region].cloud.appwrite.io/v1")                // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")                // Your API Endpoint
     .setProject("<PROJECT_ID>")                            // Your project ID
     .setJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
 ```
@@ -226,7 +226,7 @@ import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
 
 Client client = new Client()
-    .setEndpoint("https://[region].cloud.appwrite.io/v1")                // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")                // Your API Endpoint
     .setProject("<PROJECT_ID>")                            // Your project ID
     .setJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
 ```
@@ -234,7 +234,7 @@ Client client = new Client()
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://[region].cloud.appwrite.io/v1")                // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")                // Your API Endpoint
     .setProject("<PROJECT_ID>")                            // Your project ID
     .setJWT("<YOUR_API_KEY>")                                   // Your secret JSON Web Token
 ```

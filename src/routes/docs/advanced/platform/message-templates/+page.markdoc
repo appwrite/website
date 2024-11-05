@@ -172,7 +172,7 @@ import io.appwrite.Client
 import io.appwrite.services.Account
 
 val client = Client(context)
-    .setEndpoint("https://[region].cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                 // Your project ID
     .setLocale('fr')                             // Your locale
 
@@ -185,7 +185,7 @@ val response = account.createVerification('https://example.com')
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://[region].cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                 // Your project ID
     .setLocale('fr')                             // Your locale
 

@@ -179,7 +179,7 @@ databases.create_relationship_attribute(
 import { Client, Databases } from "https://deno.land/x/appwrite/mod.ts";
 
 const client = new Client()
-    .setEndpoint("https://[region].cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>");               // Your project ID
 
 const databases = new Databases(client);
@@ -224,7 +224,7 @@ import io.appwrite.Client
 import io.appwrite.services.Databases
 
 val client = Client()
-    .setEndpoint("https://[region].cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 
 val databases = Databases(client)
@@ -246,7 +246,7 @@ databases.createRelationshipAttribute(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://[region].cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 
 let databases = Databases(client)
@@ -271,7 +271,7 @@ using Appwrite;
 using Appwrite.Services;
 
 var client = new Client()
-    .SetEndpoint("https://[region].cloud.appwrite.io/v1")
+    .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .SetProject("<PROJECT_ID>");
 
 var databases = new Databases(client);
@@ -351,7 +351,7 @@ await databases.createDocument(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://[region].cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 
 let databases = Database(client: client)
@@ -377,7 +377,7 @@ import io.appwrite.services.Database
 import io.appwrite.ID
 
 val client = Client()
-    .setEndpoint("https://[region].cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 
 val databases = Database(client)
@@ -460,7 +460,7 @@ await databases.createDocument(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://[region].cloud.appwrite.io/v1") // Your API Endpoint        
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint        
     .setProject("<PROJECT_ID>")                // Your project ID      
 
 let databases = Database(client: client)
@@ -486,7 +486,7 @@ import io.appwrite.services.Database
 import io.appwrite.ID
 
 val client = Client()
-    .setEndpoint("https://[region].cloud.appwrite.io/v1") // Your API Endpoint    
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint    
     .setProject("<PROJECT_ID>")                // Your project ID  
 
 val databases = Database(client)
@@ -568,7 +568,7 @@ await databases.updateDocument(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://[region].cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 let databases = Database(client: client)
@@ -593,7 +593,7 @@ import io.appwrite.Client
 import io.appwrite.services.Database
 
 val client = Client()
-    .setEndpoint("https://[region].cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 val databases = Database(client)
@@ -671,7 +671,7 @@ await databases.deleteDocument(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://[region].cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 let databases = Database(client: client)
@@ -688,7 +688,7 @@ import io.appwrite.Client
 import io.appwrite.services.Database
 
 val client = Client()
-    .setEndpoint("https://[region].cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 val databases = Database(client)
@@ -771,7 +771,7 @@ await databases.createDocument(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://[region].cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 let databases = Database(client: client)
@@ -799,7 +799,7 @@ databases.createDocument(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://[region].cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 let databases = Database(client: client)
