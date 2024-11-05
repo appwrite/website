@@ -61,6 +61,7 @@
             <div class="flex flex-wrap items-center gap-3 md:justify-center">
                 {#each platforms as { label, docs }}
                     <a
+                        target="_blank"
                         href={docs}
                         class="text-caption text-primary flex h-[28px] items-center justify-center rounded-full bg-white/5 px-3 transition-colors hover:bg-gradient-to-br hover:from-transparent hover:to-white/10"
                         >{label}</a

@@ -59,7 +59,7 @@
                     <li class="web-u-flex-basis-378">
                         <a
                             class="web-card is-normal"
-                            href="/docs/products/auth"
+                            href="/products/messaging"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
@@ -67,16 +67,17 @@
                             >
                                 <div class="flex items-center gap-2">
                                     <img
-                                        src="/images/icons/illustrated/dark/auth.png"
+                                        src="/images/icons/illustrated/dark/messaging.png"
                                         alt="auth"
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="text-body text-primary">Auth</h4>
+                                    <h4 class="text-body text-primary">Messaging</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
                                 </div>
                                 <p class="text-sub-body">
-                                    Build secure authentication and manage your users.
+                                    Use Appwrite messaging to send email, SMS, and push
+                                    notifications.
                                 </p>
                             </div>
                         </a>
