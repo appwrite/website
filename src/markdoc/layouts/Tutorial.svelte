@@ -8,6 +8,7 @@
         draft?: boolean;
         difficulty?: string;
         readtime?: string;
+        back: string;
     };
 </script>
 
@@ -25,6 +26,7 @@
     export let description: string;
     export let step: number;
     export let date: string;
+    export let back: string;
 
     setContext<LayoutContext>('headings', writable({}));
 
@@ -76,7 +78,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<DocsTutorial {toc} {tutorials} {date} currentStep={step}>
+<DocsTutorial {toc} {back} {tutorials} {date} currentStep={step}>
     <slot />
 </DocsTutorial>
 <MainFooter variant="docs" />
