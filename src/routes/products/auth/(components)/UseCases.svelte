@@ -52,9 +52,8 @@
             <p class="text-body text-secondary font-medium">
                 Integrate Auth seamlessly into your projects with your favorite technology.
             </p>
-            <a
-                href={PUBLIC_APPWRITE_DASHBOARD}
-                class="web-button is-secondary mt-2 !w-full md:!w-fit">Learn more</a
+            <a href="/docs/sdks" class="web-button is-secondary mt-2 !w-full md:!w-fit"
+                >Learn more</a
             >
         </div>
         <div
@@ -82,7 +81,7 @@
                 Use Appwrite's migration process to transfer your existing users with a few clicks.
             </p>
             <a
-                href={PUBLIC_APPWRITE_DASHBOARD}
+                href="/docs/advanced/migrations"
                 class="web-button is-secondary mt-2 !w-full md:!w-fit">Learn more</a
             >
         </div>

@@ -173,7 +173,7 @@ async function getLoggedInUser(request) {
                     </Tooltip>
                 {/each}
             </ul>
-            <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button is-secondary mt-8">Learn more</a>
+            <a href="/docs/sdks#server" class="web-button is-secondary mt-8">Learn more</a>
         </div>
 
         <MultiFrameworkCode data={codeSnippets} selected={Framework.NextJs} />
