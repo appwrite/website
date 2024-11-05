@@ -20,9 +20,6 @@ importers:
       sharp:
         specifier: ^0.33.4
         version: 0.33.5
-      zod:
-        specifier: ^3.23.8
-        version: 3.23.8
     devDependencies:
       '@appwrite.io/console':
         specifier: ^0.6.2
@@ -63,27 +60,12 @@ importers:
       '@tailwindcss/postcss':
         specifier: 4.0.0-alpha.17
         version: 4.0.0-alpha.17(postcss@8.4.47)
-      '@threlte/core':
-        specifier: ^7.3.1
-        version: 7.3.1(svelte@4.2.19)(three@0.169.0)
-      '@threlte/extras':
-        specifier: ^8.12.0
-        version: 8.12.0(@types/three@0.169.0)(svelte@4.2.19)(three@0.169.0)
       '@types/compression':
         specifier: ^1.7.5
         version: 1.7.5
-      '@types/glob':
-        specifier: ^8.1.0
-        version: 8.1.0
       '@types/markdown-it':
         specifier: ^13.0.8
         version: 13.0.9
-      '@types/morgan':
-        specifier: ^1.9.9
-        version: 1.9.9
-      '@types/three':
-        specifier: ^0.169.0
-        version: 0.169.0
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.13.1
         version: 7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)(typescript@5.6.3)
@@ -189,9 +171,6 @@ importers:
       tailwindcss:
         specifier: 4.0.0-alpha.17
         version: 4.0.0-alpha.17
-      three:
-        specifier: ^0.169.0
-        version: 0.169.0
       tslib:
         specifier: ^2.6.3
         version: 2.7.0
@@ -210,6 +189,9 @@ importers:
       vitest:
         specifier: ^1.6.0
         version: 1.6.0(@types/node@22.7.5)(lightningcss@1.27.0)(sass@1.79.5)
+      zod:
+        specifier: ^3.23.8
+        version: 3.23.8
 
 packages:
 
@@ -1684,23 +1666,6 @@ packages:
   '@tailwindcss/postcss@4.0.0-alpha.17':
     resolution: {integrity: sha512-N0DQOSy+5c1/JkKt1yPja5Kb0QqpkYFFEcV5SK+Cnko+ncsDYOesEfIm00qAtb/9S9SWy5PGNHP7s0U21pWGyA==}
 
-  '@threejs-kit/instanced-sprite-mesh@2.4.7':
-    resolution: {integrity: sha512-31erNfFEF+msFyWH46sIbjaACXqBke/8qMr/xhv9E3INPCLTrLuN4C4W93znnyTiyuCQ3Waf5UOCT18OBWTUtw==}
-    peerDependencies:
-      three: '>=0.151.0'
-
-  '@threlte/core@7.3.1':
-    resolution: {integrity: sha512-qGfpboBL5PWYGqPIpnRmvp0ssW551ULRZsXRpWAwSPWGughiOSL9dBZjiwWQTQHUFMEErgquo6hbFJCuWE0uTg==}
-    peerDependencies:
-      svelte: '>=4'
-      three: '>=0.152'
-
-  '@threlte/extras@8.12.0':
-    resolution: {integrity: sha512-rWlY9xWCcr5+KkPFcV5K2lHxshM9QjpfJK98Vhsm+VnL7/tLq4FEnghalrz2289cY9ZiiD0soO34WGqFYu7ZyA==}
-    peerDependencies:
-      svelte: '>=4'
-      three: '>=0.152'
-
   '@tokenizer/token@0.3.0':
     resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==}
 
@@ -1714,9 +1679,6 @@ packages:
 
   '@tsbb/copy-template-dir@1.4.0':
     resolution: {integrity: sha512-WXezrpwkm+JGoH5eh/7bngabXriDe7bhqCATWV6e+um8Qw0nNCkE4hfQ791CoiIdSe4LLyzoIfomwH1kR0GYvQ==}
-
-  '@tweenjs/tween.js@23.1.3':
-    resolution: {integrity: sha512-vJmvvwFxYuGnF2axRtPYocag6Clbb5YS7kLL+SO/TeVFzHqDIWrNKYtcsPMibjDx9O+bu+psAy9NKfWklassUA==}
 
   '@types/body-parser@1.19.5':
     resolution: {integrity: sha512-fB3Zu92ucau0iQ0JMCFQE7b/dv8Ot07NI3KaZIkIUNXq82k4eBAqUaneXfleGY9JWskeS9y+u0nXMyspcuQrCg==}
@@ -1745,9 +1707,6 @@ packages:
   '@types/express@5.0.0':
     resolution: {integrity: sha512-DvZriSMehGHL1ZNLzi6MidnsDhUZM/x2pRdDIKdwbUNqqwHxMlRdkxtn6/EPKyqKpHqTl/4nRZsRNLpZxZRpPQ==}
 
-  '@types/glob@8.1.0':
-    resolution: {integrity: sha512-IO+MJPVhoqz+28h1qLAcBEH2+xHMK6MTyHJc7MTnnYb6wsoLR29POVGJ7LycmVXIqyy/4/2ShP5sUwTXuOwb/w==}
-
   '@types/http-errors@2.0.4':
     resolution: {integrity: sha512-D0CFMMtydbJAegzOyHjtiKPLlvnm3iTZyZRSZoLq2mRhDdmLfIWOCYPfQJ4cu2erKghU++QvjcUjp/5h7hESpA==}
 
@@ -1774,12 +1733,6 @@ packages:
 
   '@types/mime@1.3.5':
     resolution: {integrity: sha512-/pyBZWSLD2n0dcHE3hq8s8ZvcETHtEuF+3E7XVt0Ig2nvsVQXdghHVcEkIWjy9A0wKfTn97a/PSDYohKIlnP/w==}
-
-  '@types/minimatch@5.1.2':
-    resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
-
-  '@types/morgan@1.9.9':
-    resolution: {integrity: sha512-iRYSDKVaC6FkGSpEVVIvrRGw0DfJMiQzIn3qr2G5B3C//AWkulhXgaBd7tS9/J79GWSYMTHGs7PfI5b3Y8m+RQ==}
 
   '@types/mysql@2.15.26':
     resolution: {integrity: sha512-DSLCOXhkvfS5WNNPbfn2KdICAmk8lLc+/PNvnPnF7gOdMZCxopXduqv0OQ13y/yA/zXTSikZZqVgybUxOEg6YQ==}
@@ -1816,15 +1769,6 @@ packages:
 
   '@types/shimmer@1.2.0':
     resolution: {integrity: sha512-UE7oxhQLLd9gub6JKIAhDq06T0F6FnztwMNRvYgjeQSBeMc1ZG/tA47EwfduvkuQS8apbkM/lpLpWsaCeYsXVg==}
-
-  '@types/stats.js@0.17.3':
-    resolution: {integrity: sha512-pXNfAD3KHOdif9EQXZ9deK82HVNaXP5ZIF5RP2QG6OQFNTaY2YIetfrE9t528vEreGQvEPRDDc8muaoYeK0SxQ==}
-
-  '@types/three@0.169.0':
-    resolution: {integrity: sha512-oan7qCgJBt03wIaK+4xPWclYRPG9wzcg7Z2f5T8xYTNEF95kh0t0lklxLLYBDo7gQiGLYzE6iF4ta7nXF2bcsw==}
-
-  '@types/webxr@0.5.20':
-    resolution: {integrity: sha512-JGpU6qiIJQKUuVSKx1GtQnHJGxRjtfGIhzO2ilq43VZZS//f1h1Sgexbdk+Lq+7569a6EYhOWrUpIruR/1Enmg==}
 
   '@typescript-eslint/eslint-plugin@7.18.0':
     resolution: {integrity: sha512-94EQTWZ40mzBc42ATNIBimBEDltSJ9RQHCC8vc/PDbxi4k8dVwUAv4o98dk50M1zB+JGFxp43FP7f8+FP8R6Sw==}
@@ -1901,9 +1845,6 @@ packages:
 
   '@vitest/utils@1.6.0':
     resolution: {integrity: sha512-21cPiuGMoMZwiOHa2i4LXkMkMkCGzA+MVFV70jRwHo95dL4x/ts5GZhML1QWuy7yfp3WzK3lRvZi3JnXTYqrBw==}
-
-  '@webgpu/types@0.1.49':
-    resolution: {integrity: sha512-NMmS8/DofhH/IFeW+876XrHVWel+J/vdcFCHLDqeJgkH9x0DeiwjVd8LcBdaxdG/T7Rf8VUAYsA8X1efMzLjRQ==}
 
   '@xmldom/xmldom@0.7.13':
     resolution: {integrity: sha512-lm2GW5PkosIzccsaZIz7tp8cPADSIlIHWDFTR1N0SzfinhhYgeIQjFMz4rYzanCScr3DqQLeomUDArp6MWKm+g==}
@@ -2034,9 +1975,6 @@ packages:
 
   base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
-
-  bidi-js@1.0.3:
-    resolution: {integrity: sha512-RKshQI1R3YQ+n9YJz2QQ147P66ELpa1FQEg20Dk8oW9t2KgLbpDLLp9aGZ7y8WHSshDknG0bknqGw5/tyCs5tw==}
 
   binary-extensions@2.3.0:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
@@ -2327,9 +2265,6 @@ packages:
   devalue@5.1.1:
     resolution: {integrity: sha512-maua5KUiapvEwiEAe+XnlZ3Rh0GD+qI1J/nb9vrJc3muPXvcF/8gXYTWF76+5DAqHyDUtOIImEuo0YKE9mshVw==}
 
-  diet-sprite@0.0.1:
-    resolution: {integrity: sha512-zSHI2WDAn1wJqJYxcmjWfJv3Iw8oL9reQIbEyx2x2/EZ4/qmUTIo8/5qOCurnAcq61EwtJJaZ0XTy2NRYqpB5A==}
-
   diff-sequences@29.6.3:
     resolution: {integrity: sha512-EjePK1srD3P08o2j4f0ExnylqRs5B9tJjcp9t1krH2qRi8CCdsYfwe9JgSLurFBWwq4uOlipzfk5fHNvwFKr8Q==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -2367,9 +2302,6 @@ packages:
   dotenv@16.4.5:
     resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
     engines: {node: '>=12'}
-
-  earcut@2.2.4:
-    resolution: {integrity: sha512-/pjZsA1b4RPHbeWZQn66SWS8nZZWLQQ23oE3Eam7aroEFGEvwKAsJfZ9ytiEMycfzXWpca4FA9QIOehf7PocBQ==}
 
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
@@ -2545,9 +2477,6 @@ packages:
 
   fastq@1.17.1:
     resolution: {integrity: sha512-sRVD3lWVIXWg6By68ZN7vho9a1pQcN/WBFaAAsDDFzlJjvoGx0P8z7V1t72grFJfJhu3YPZBuu25f7Kaw2jN1w==}
-
-  fflate@0.8.2:
-    resolution: {integrity: sha512-cPJU47OaAoCbg0pBvzsgpTPhmhqI5eJjh/JIu8tPj5q+T7iLvW/JAYUqmE7KOB4R1ZyEhzBaIQpQpardBF5z8A==}
 
   file-entry-cache@6.0.1:
     resolution: {integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==}
@@ -3054,12 +2983,6 @@ packages:
     resolution: {integrity: sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA==}
     engines: {node: '>=12'}
 
-  maath@0.10.8:
-    resolution: {integrity: sha512-tRvbDF0Pgqz+9XUa4jjfgAQ8/aPKmQdWXilFu2tMy4GWj4NOsx99HlULO4IeREfbO3a0sA145DZYyvXPkybm0g==}
-    peerDependencies:
-      '@types/three': '>=0.134.0'
-      three: '>=0.134.0'
-
   magic-string@0.30.12:
     resolution: {integrity: sha512-Ea8I3sQMVXr8JhN4z+H/d8zwo+tYDgHE9+5G4Wnrwhs0gaK9fXTKx0Tw5Xwsd/bCPTTZNRAdpyzvoeORe9LYpw==}
 
@@ -3111,9 +3034,6 @@ packages:
   merge2@1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
     engines: {node: '>= 8'}
-
-  meshoptimizer@0.18.1:
-    resolution: {integrity: sha512-ZhoIoL7TNV4s5B6+rx5mC//fw8/POGyNxS/DZyCJeiZ12ScLfVwRE/GfsxwiTkMYYD5DmK2/JXnEVXqL4rF+Sw==}
 
   microbuffer@1.0.0:
     resolution: {integrity: sha512-O/SUXauVN4x6RaEJFqSPcXNtLFL+QzJHKZlyDVYFwcDDRVca3Fa/37QXXC+4zAGGa4YhHrHxKXuuHvLDIQECtA==}
@@ -3200,9 +3120,6 @@ packages:
   minizlib@2.1.2:
     resolution: {integrity: sha512-bAxsR8BVfj60DWXHE3u30oHzfl4G7khkSuPW+qvpd7jFRHm7dLxOjUk1EHACJ/hxLY8phGJ0YhYHZo7jil7Qdg==}
     engines: {node: '>= 8'}
-
-  mitt@3.0.1:
-    resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==}
 
   mkdirp@0.5.6:
     resolution: {integrity: sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw==}
@@ -3720,10 +3637,6 @@ packages:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
     engines: {node: '>=0.10.0'}
 
-  require-from-string@2.0.2:
-    resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
-    engines: {node: '>=0.10.0'}
-
   require-in-the-middle@7.4.0:
     resolution: {integrity: sha512-X34iHADNbNDfr6OTStIAHWSAvvKQRYgLO6duASaVf7J2VA3lvmNYboAHOuLC2huav1IwgZJtyEcJCKVzFxOSMQ==}
     engines: {node: '>=8.6.0'}
@@ -4074,24 +3987,6 @@ packages:
   thenify@3.3.1:
     resolution: {integrity: sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==}
 
-  three-instanced-uniforms-mesh@0.49.1:
-    resolution: {integrity: sha512-qPgPLA6JR2nQau2zAODwiVRknYndXNE6aYmTe5zESiwg9hO8AaNq1xC0hWDYOyyH+NbN2G8278NxX1hpZ+2ZgQ==}
-    peerDependencies:
-      three: '>=0.125.0'
-
-  three-mesh-bvh@0.7.6:
-    resolution: {integrity: sha512-rCjsnxEqR9r1/C/lCqzGLS67NDty/S/eT6rAJfDvsanrIctTWdNoR4ZOGWewCB13h1QkVo2BpmC0wakj1+0m8A==}
-    peerDependencies:
-      three: '>= 0.151.0'
-
-  three-perf@1.0.10:
-    resolution: {integrity: sha512-lCur/i8U6m0ysWYhQ1yFGWOZB0QA2oVsDsfynYd65HhXxLxJfiAt8OsXmpv9PnTLacfaZclBcZHUOB9QKk3eaw==}
-    peerDependencies:
-      three: '>=0.151'
-
-  three@0.169.0:
-    resolution: {integrity: sha512-Ed906MA3dR4TS5riErd4QBsRGPcx+HBDX2O5yYE5GqJeFQTPU+M56Va/f/Oph9X7uZo3W3o4l2ZhBZ6f6qUv0w==}
-
   through2@2.0.5:
     resolution: {integrity: sha512-/mrRod8xqpA+IHSLyGCQ2s8SPHiCDEeQJSep1jqLYeEUClOFG2Qsh+4FU6G9VeqpZnGW/Su8LQGc4YKni5rYSQ==}
 
@@ -4141,32 +4036,6 @@ packages:
   tr46@0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
 
-  troika-three-text@0.47.2:
-    resolution: {integrity: sha512-qylT0F+U7xGs+/PEf3ujBdJMYWbn0Qci0kLqI5BJG2kW1wdg4T1XSxneypnF05DxFqJhEzuaOR9S2SjiyknMng==}
-    peerDependencies:
-      three: '>=0.125.0'
-
-  troika-three-text@0.49.1:
-    resolution: {integrity: sha512-lXGWxgjJP9kw4i4Wh+0k0Q/7cRfS6iOME4knKht/KozPu9GcFA9NnNpRvehIhrUawq9B0ZRw+0oiFHgRO+4Wig==}
-    peerDependencies:
-      three: '>=0.125.0'
-
-  troika-three-utils@0.47.2:
-    resolution: {integrity: sha512-/28plhCxfKtH7MSxEGx8e3b/OXU5A0xlwl+Sbdp0H8FXUHKZDoksduEKmjQayXYtxAyuUiCRunYIv/8Vi7aiyg==}
-    peerDependencies:
-      three: '>=0.125.0'
-
-  troika-three-utils@0.49.0:
-    resolution: {integrity: sha512-umitFL4cT+Fm/uONmaQEq4oZlyRHWwVClaS6ZrdcueRvwc2w+cpNQ47LlJKJswpqtMFWbEhOLy0TekmcPZOdYA==}
-    peerDependencies:
-      three: '>=0.125.0'
-
-  troika-worker-utils@0.47.2:
-    resolution: {integrity: sha512-mzss4MeyzUkYBppn4x5cdAqrhBHFEuVmMMgLMTyFV23x6GvQMyo+/R5E5Lsbrt7WSt5RfvewjcwD1DChRTA9lA==}
-
-  troika-worker-utils@0.49.0:
-    resolution: {integrity: sha512-1xZHoJrG0HFfCvT/iyN41DvI/nRykiBtHqFkGaGgJwq5iXfIZFBiPPEHFpPpgyKM3Oo5ITHXP5wM2TNQszYdVg==}
-
   ts-api-utils@1.3.0:
     resolution: {integrity: sha512-UQMIo7pb8WRomKR1/+MFVLTroIvDVtMX3K6OUir8ynLyzB8Jeriont2bTAtmNPa1ekAgN7YPDyf6V+ygrdU+eQ==}
     engines: {node: '>=16'}
@@ -4191,9 +4060,6 @@ packages:
   ttf2woff@3.0.0:
     resolution: {integrity: sha512-OvmFcj70PhmAsVQKfC15XoKH55cRWuaRzvr2fpTNhTNer6JBpG8n6vOhRrIgxMjcikyYt88xqYXMMVapJ4Rjvg==}
     hasBin: true
-
-  tweakpane@3.1.10:
-    resolution: {integrity: sha512-rqwnl/pUa7+inhI2E9ayGTqqP0EPOOn/wVvSWjZsRbZUItzNShny7pzwL3hVlaN4m9t/aZhsP0aFQ9U5VVR2VQ==}
 
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
@@ -4350,9 +4216,6 @@ packages:
         optional: true
       jsdom:
         optional: true
-
-  webgl-sdf-generator@1.1.1:
-    resolution: {integrity: sha512-9Z0JcMTFxeE+b2x1LJTdnaT8rT8aEp7MVxkNwoycNmJWwPdzoXzMh0BjJSh/AEFP+KPYZUli814h8bJZFIZ2jA==}
 
   webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
@@ -6055,34 +5918,6 @@ snapshots:
     transitivePeerDependencies:
       - postcss
 
-  '@threejs-kit/instanced-sprite-mesh@2.4.7(@types/three@0.169.0)(three@0.169.0)':
-    dependencies:
-      diet-sprite: 0.0.1
-      earcut: 2.2.4
-      maath: 0.10.8(@types/three@0.169.0)(three@0.169.0)
-      three: 0.169.0
-      three-instanced-uniforms-mesh: 0.49.1(three@0.169.0)
-      troika-three-utils: 0.49.0(three@0.169.0)
-    transitivePeerDependencies:
-      - '@types/three'
-
-  '@threlte/core@7.3.1(svelte@4.2.19)(three@0.169.0)':
-    dependencies:
-      mitt: 3.0.1
-      svelte: 4.2.19
-      three: 0.169.0
-
-  '@threlte/extras@8.12.0(@types/three@0.169.0)(svelte@4.2.19)(three@0.169.0)':
-    dependencies:
-      '@threejs-kit/instanced-sprite-mesh': 2.4.7(@types/three@0.169.0)(three@0.169.0)
-      svelte: 4.2.19
-      three: 0.169.0
-      three-mesh-bvh: 0.7.6(three@0.169.0)
-      three-perf: 1.0.10(three@0.169.0)
-      troika-three-text: 0.49.1(three@0.169.0)
-    transitivePeerDependencies:
-      - '@types/three'
-
   '@tokenizer/token@0.3.0': {}
 
   '@tootallnate/once@2.0.0': {}
@@ -6100,8 +5935,6 @@ snapshots:
       pump: 1.0.3
       readdirp: 3.6.0
       run-parallel: 1.2.0
-
-  '@tweenjs/tween.js@23.1.3': {}
 
   '@types/body-parser@1.19.5':
     dependencies:
@@ -6140,11 +5973,6 @@ snapshots:
       '@types/qs': 6.9.16
       '@types/serve-static': 1.15.7
 
-  '@types/glob@8.1.0':
-    dependencies:
-      '@types/minimatch': 5.1.2
-      '@types/node': 22.7.5
-
   '@types/http-errors@2.0.4': {}
 
   '@types/linkify-it@3.0.5': {}
@@ -6171,12 +5999,6 @@ snapshots:
     optional: true
 
   '@types/mime@1.3.5': {}
-
-  '@types/minimatch@5.1.2': {}
-
-  '@types/morgan@1.9.9':
-    dependencies:
-      '@types/node': 22.7.5
 
   '@types/mysql@2.15.26':
     dependencies:
@@ -6218,19 +6040,6 @@ snapshots:
       '@types/send': 0.17.4
 
   '@types/shimmer@1.2.0': {}
-
-  '@types/stats.js@0.17.3': {}
-
-  '@types/three@0.169.0':
-    dependencies:
-      '@tweenjs/tween.js': 23.1.3
-      '@types/stats.js': 0.17.3
-      '@types/webxr': 0.5.20
-      '@webgpu/types': 0.1.49
-      fflate: 0.8.2
-      meshoptimizer: 0.18.1
-
-  '@types/webxr@0.5.20': {}
 
   '@typescript-eslint/eslint-plugin@7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)(typescript@5.6.3)':
     dependencies:
@@ -6343,8 +6152,6 @@ snapshots:
       estree-walker: 3.0.3
       loupe: 2.3.7
       pretty-format: 29.7.0
-
-  '@webgpu/types@0.1.49': {}
 
   '@xmldom/xmldom@0.7.13': {}
 
@@ -6462,10 +6269,6 @@ snapshots:
   balanced-match@1.0.2: {}
 
   base64-js@1.5.1: {}
-
-  bidi-js@1.0.3:
-    dependencies:
-      require-from-string: 2.0.2
 
   binary-extensions@2.3.0: {}
 
@@ -6782,8 +6585,6 @@ snapshots:
 
   devalue@5.1.1: {}
 
-  diet-sprite@0.0.1: {}
-
   diff-sequences@29.6.3: {}
 
   dir-glob@3.0.1:
@@ -6819,8 +6620,6 @@ snapshots:
       domhandler: 5.0.3
 
   dotenv@16.4.5: {}
-
-  earcut@2.2.4: {}
 
   eastasianwidth@0.2.0: {}
 
@@ -7046,8 +6845,6 @@ snapshots:
   fastq@1.17.1:
     dependencies:
       reusify: 1.0.4
-
-  fflate@0.8.2: {}
 
   file-entry-cache@6.0.1:
     dependencies:
@@ -7537,11 +7334,6 @@ snapshots:
 
   lru-cache@7.18.3: {}
 
-  maath@0.10.8(@types/three@0.169.0)(three@0.169.0):
-    dependencies:
-      '@types/three': 0.169.0
-      three: 0.169.0
-
   magic-string@0.30.12:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
@@ -7618,8 +7410,6 @@ snapshots:
 
   merge2@1.4.1: {}
 
-  meshoptimizer@0.18.1: {}
-
   microbuffer@1.0.0: {}
 
   micromatch@4.0.8:
@@ -7695,8 +7485,6 @@ snapshots:
     dependencies:
       minipass: 3.3.6
       yallist: 4.0.0
-
-  mitt@3.0.1: {}
 
   mkdirp@0.5.6:
     dependencies:
@@ -8140,8 +7928,6 @@ snapshots:
 
   require-directory@2.1.1: {}
 
-  require-from-string@2.0.2: {}
-
   require-in-the-middle@7.4.0:
     dependencies:
       debug: 4.3.7
@@ -8560,23 +8346,6 @@ snapshots:
     dependencies:
       any-promise: 1.3.0
 
-  three-instanced-uniforms-mesh@0.49.1(three@0.169.0):
-    dependencies:
-      three: 0.169.0
-      troika-three-utils: 0.49.0(three@0.169.0)
-
-  three-mesh-bvh@0.7.6(three@0.169.0):
-    dependencies:
-      three: 0.169.0
-
-  three-perf@1.0.10(three@0.169.0):
-    dependencies:
-      three: 0.169.0
-      troika-three-text: 0.47.2(three@0.169.0)
-      tweakpane: 3.1.10
-
-  three@0.169.0: {}
-
   through2@2.0.5:
     dependencies:
       readable-stream: 2.3.8
@@ -8618,34 +8387,6 @@ snapshots:
 
   tr46@0.0.3: {}
 
-  troika-three-text@0.47.2(three@0.169.0):
-    dependencies:
-      bidi-js: 1.0.3
-      three: 0.169.0
-      troika-three-utils: 0.47.2(three@0.169.0)
-      troika-worker-utils: 0.47.2
-      webgl-sdf-generator: 1.1.1
-
-  troika-three-text@0.49.1(three@0.169.0):
-    dependencies:
-      bidi-js: 1.0.3
-      three: 0.169.0
-      troika-three-utils: 0.49.0(three@0.169.0)
-      troika-worker-utils: 0.49.0
-      webgl-sdf-generator: 1.1.1
-
-  troika-three-utils@0.47.2(three@0.169.0):
-    dependencies:
-      three: 0.169.0
-
-  troika-three-utils@0.49.0(three@0.169.0):
-    dependencies:
-      three: 0.169.0
-
-  troika-worker-utils@0.47.2: {}
-
-  troika-worker-utils@0.49.0: {}
-
   ts-api-utils@1.3.0(typescript@5.6.3):
     dependencies:
       typescript: 5.6.3
@@ -8672,8 +8413,6 @@ snapshots:
     dependencies:
       argparse: 2.0.1
       pako: 1.0.11
-
-  tweakpane@3.1.10: {}
 
   type-check@0.4.0:
     dependencies:
@@ -8826,8 +8565,6 @@ snapshots:
       - sugarss
       - supports-color
       - terser
-
-  webgl-sdf-generator@1.1.1: {}
 
   webidl-conversions@3.0.1: {}
 
