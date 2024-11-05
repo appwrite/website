@@ -174,7 +174,7 @@ import { Client, Account } from "appwrite";
 const client = new Client();
 
 client
-    .setEndpoint('https://[region].cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>'); // Your project ID
 
 const account = new Account(client);
@@ -243,7 +243,7 @@ One of the most common examples of SDK Enums is OAuth providers. To log in with 
 import { Client, Account, OAuthProvider } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://[region].cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 const account = new Account(client);

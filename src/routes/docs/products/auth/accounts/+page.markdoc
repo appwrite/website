@@ -31,7 +31,7 @@ Preferences are stored as a key-value JSON object. The maximum allowed size for 
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://[region].cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
 const account = new Account(client);
@@ -48,7 +48,7 @@ promise.then(function (response) {
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://[region].cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
 final account = Account(client);
@@ -115,7 +115,7 @@ After a user's preferences are updated, they can be retrieved using the [get acc
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://[region].cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
 const account = new Account(client);
@@ -132,7 +132,7 @@ promise.then(function (response) {
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://[region].cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
 final account = Account(client);

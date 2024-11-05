@@ -24,7 +24,7 @@ const client = new Client();
 const teams = new Teams(client);
 
 client
-    .setEndpoint('https://[region].cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
@@ -48,7 +48,7 @@ void main() { // Init SDK
   Teams teams = Teams(client);
 
   client
-    .setEndpoint('https://[region].cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
   ;
   Future result = teams.create(
@@ -112,7 +112,7 @@ const client = new Client();
 const teams = new Teams(client);
 
 client
-    .setEndpoint('https://[region].cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
@@ -136,7 +136,7 @@ void main() { // Init SDK
   Teams teams = Teams(client);
 
   client
-    .setEndpoint('https://[region].cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
   ;
   Future result = teams.createMembership(

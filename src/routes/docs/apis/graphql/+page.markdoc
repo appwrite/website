@@ -233,7 +233,7 @@ Appwrite SDKs also support GraphQL in addition to the REST services.
 import { Client, Graphql } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://[region].cloud.appwrite.io/v1') // Your Appwrite Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your Appwrite Endpoint
     .setProject('<PROJECT_ID>');                // Your project ID
 
 const graphql = new Graphql(client);
@@ -270,7 +270,7 @@ mutation.then(response => {
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://[region].cloud.appwrite.io/v1') // Your Appwrite Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your Appwrite Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
 final graphql = Graphql(client);

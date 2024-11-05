@@ -14,7 +14,7 @@ You can use the Appwrite [Client SDKs](/docs/sdks#client) to create an account u
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://[region].cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
 const account = new Account(client);
@@ -29,7 +29,7 @@ const user = await account.create(
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://[region].cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
 final account = Account(client);
@@ -85,7 +85,7 @@ mutation {
 ```client-react-native
 import { Client, Account, ID } from "appwrite";
 const client = new Client()
-    .setEndpoint('https://[region].cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
 const account = new Account(client);
