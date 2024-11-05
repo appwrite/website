@@ -31,7 +31,9 @@
 
 <Main>
     <Hero />
+
     <CountdownGrid />
+
     <DayGrid />
     <div class="container">
         <FooterNav />

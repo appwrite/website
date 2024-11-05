@@ -1,14 +1,25 @@
 <script lang="ts">
     import Globe from '../../(assets)/globe.svg';
-    import Window from '../../(assets)/window.svg';
+    import WindowSticker from '../../(assets)/window.svg';
     import Logo from '../../(assets)/logo.svg';
     import { writable } from 'svelte/store';
+    import Window from '../retro-ui/Window.svelte';
+    import Lockup from '../Lockup.svelte';
+    import type { ContributionsMatrix, TicketData } from '$routes/playground/tickets/constants';
+    import { fade } from 'svelte/transition';
 
     let order = writable<Array<number>>([2, 1, 0]);
 
+    type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
+        contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;
+        disableEffects?: boolean;
+    };
+
+    $: ({ name, title, id, contributions, show_contributions = true } = $$props as $$Props);
+
     const stickers = [
         { src: Globe, alt: 'Globe' },
-        { src: Window, alt: 'Window' },
+        { src: WindowSticker, alt: 'Window' },
         { src: Logo, alt: 'Logo' }
     ];
 
@@ -17,21 +28,53 @@
     };
 </script>
 
-<div class="relative h-[450px] w-[60%] bg-[#1D1D21]">
-    {#each $order as i, index}
-        <div data-index={index}>
-            <img
-                draggable
-                src={stickers[i].src}
-                alt={stickers[i].alt}
-                class="absolute object-cover"
-                style:top={index * 100 + 'px'}
-                style:left={index * 20 + '%'}
-            />
+<Window mode="dark" alignment="left" class="aspect-video w-full flex-1 shrink-0">
+    <span slot="toolbar"
+        >Ticket <span class="text-accent">#</span>{id?.toString().padStart(6, '0')}</span
+    >
+    <div slot="content" class="relative flex flex-1 bg-white p-4">
+        <div class="font-aeonik-pro mt-auto mb-0 block flex w-full items-end justify-between">
+            <div>
+                <h2 class="text-label text-primary">
+                    {name?.split(' ')[0]}
+                </h2>
+                <span class="text-secondary">#{id?.toString().padStart(6, '0')}</span>
+            </div>
+            <Lockup class="mt-auto mb-0 h-[75px] w-[150px]" />
         </div>
-    {/each}
-</div>
-<button on:click={changeOrder}>Random</button>
+
+        {#each $order as i, index}
+            <div data-index={index} class="z-0">
+                <img
+                    draggable
+                    class="absolute"
+                    src={stickers[i].src}
+                    alt={stickers[i].alt}
+                    style:top={index * 100 + 'px'}
+                    style:left={index * 20 + '%'}
+                />
+            </div>
+        {/each}
+        <div class="absolute inset-0 z-0">
+            {#await contributions then c}
+                {#if c && show_contributions}
+                    <div class="flex flex-wrap gap-1" out:fade={{ duration: 100 }}>
+                        {#each c as row}
+                            <div class="flex gap-1">
+                                {#each row as level, index}
+                                    <div
+                                        class="bg-greyscale-300 size-2 data-[level='0']:opacity-8 data-[level='1']:opacity-25 data-[level='2']:opacity-50 data-[level='3']:opacity-75"
+                                        data-level={level}
+                                    />
+                                {/each}
+                            </div>
+                        {/each}
+                    </div>
+                {/if}
+            {/await}
+        </div>
+    </div>
+</Window>
 
 <style>
     @keyframes stutter {

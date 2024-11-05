@@ -5,7 +5,7 @@
 
 <div class="bg-white">
     <div class="light relative flex min-h-[75vh] flex-col items-center justify-center gap-8">
-        <div class="lockup pointer-events-none relative z-10"><Lockup /></div>
+        <div class="lockup pointer-events-none relative z-10 w-full"><Lockup class="w-full" /></div>
         <div class="relative z-10 flex w-full max-w-lg flex-col items-center justify-center gap-8">
             <div class="text flex flex-col gap-4 [animation-delay:0.75s]">
                 <p class="text-description text-secondary block max-w-lg text-center">

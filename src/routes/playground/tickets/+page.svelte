@@ -39,7 +39,7 @@
                 class="mt-4 flex flex-1 items-center justify-between gap-12 border-b-2 border-l-2 border-black bg-white p-8 outline-2 outline-[#D8D8DB] [outline-style:inset]"
             >
                 <div class="flex flex-col gap-2">
-                    <Lockup class="w-3/4" />
+                    <Lockup class="!w-full" />
                     <h2 class="text-title text-secondary font-aeonik-pro">
                         launches on<br /> December 5th
                     </h2>
@@ -51,10 +51,6 @@
                         <button class="web-button !w-full cursor-pointer" on:click={loginGithub}>
                             <div class="web-icon-github" />
                             <span class="text">Register with GitHub account</span>
-                        </button>
-                        <button class="web-button is-secondary !w-full">
-                            <div class="web-icon-appwrite" />
-                            <span class="text">Register with Appwrite account</span>
                         </button>
                     </div>
                 </div>

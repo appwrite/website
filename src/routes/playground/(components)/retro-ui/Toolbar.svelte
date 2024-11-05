@@ -2,6 +2,7 @@
     import { classNames } from '$lib/utils/classnames';
 
     export let mode: 'dark' | 'light' = 'light';
+    export let alignment: 'left' | 'center' = 'left';
 </script>
 
 <div
@@ -12,7 +13,11 @@
             mode === 'light'
     })}
 >
-    <div class="flex-1 space-y-1.5">
+    <div
+        class={classNames('flex-1 space-y-1.5', {
+            'order-2': alignment === 'left'
+        })}
+    >
         {#each Array.from({ length: 3 }) as _}
             <div
                 class={classNames('h-0.5 w-full', {
@@ -25,17 +30,20 @@
     <span
         class={classNames('font-aeonik-fono tracking-loose px-6 text-xs uppercase', {
             'text-[#EDEDF0]': mode === 'dark',
-            'text-[#2D2D31]': mode === 'light'
+            'text-[#2D2D31]': mode === 'light',
+            'order-1 !pl-0': alignment === 'left'
         })}><slot /></span
     >
-    <div class="flex-1 space-y-1.5">
-        {#each Array.from({ length: 3 }) as _}
-            <div
-                class={classNames('h-0.5 w-full', {
-                    'bg-[#414146]': mode === 'dark',
-                    'bg-[#d8d8d8]': mode === 'light'
-                })}
-            />
-        {/each}
-    </div>
+    {#if alignment === 'center'}
+        <div class="flex-1 space-y-1.5">
+            {#each Array.from({ length: 3 }) as _}
+                <div
+                    class={classNames('h-0.5 w-full', {
+                        'bg-[#414146]': mode === 'dark',
+                        'bg-[#d8d8d8]': mode === 'light'
+                    })}
+                />
+            {/each}
+        </div>
+    {/if}
 </div>

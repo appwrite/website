@@ -12,6 +12,7 @@
         TicketDetails
     } from '$routes/init/(components)/ticket/index.js';
     import { BASE_URL } from '../constants.js';
+    import { loginGithub } from '$routes/playground/helpers';
 
     export let data;
 
@@ -71,24 +72,40 @@
 </svelte:head>
 
 <Main>
-    <div class="relative flex h-full w-full items-center justify-center bg-[#F4F4F7]">
+    <div class="relative flex h-full w-full items-center justify-center bg-[#F4F4F7] px-8">
         <Window mode="light" class="flex h-full flex-1 flex-col">
             <span slot="toolbar">Init_Ticket</span>
             <div
                 slot="content"
-                class="mt-4 flex flex-1 items-center justify-between gap-12 border-b-2 border-l-2 border-black bg-white p-8 outline-2 outline-[#D8D8DB] [outline-style:inset]"
+                class="mt-4 flex flex-1 flex-col items-center justify-between gap-48 border-b-2 border-l-2 border-black bg-white p-8 outline-2 outline-[#D8D8DB] [outline-style:inset] md:flex-row"
             >
-                <div class="flex flex-col gap-2">
+                <div class="flex flex-col">
                     <Lockup class="w-3/4" />
                     <h2 class="text-title text-secondary font-aeonik-pro">
                         launches on<br /> December 5th
                     </h2>
 
-                    <p class="text-body text-secondary font-medium">
+                    <div class="my-6 h-px w-full bg-black/8" />
+
+                    <p class="text-body text-secondary mb-2 font-medium">
                         Register today and claim your ticket
                     </p>
+                    <div class="my-2">
+                        <button class="web-button !w-full cursor-pointer" on:click={loginGithub}>
+                            <div class="web-icon-github" />
+                            <span class="text">Register with GitHub account</span>
+                        </button>
+
+                        <p class="text-caption text-secondary mt-2">
+                            By registering, you agree to our <a
+                                href="/terms"
+                                class="web-link underline">Terms and Conditions</a
+                            >
+                            and <a href="/privacy" class="web-link underline">Privacy Policy</a>
+                        </p>
+                    </div>
                 </div>
-                <Ticket />
+                <Ticket {...data.ticket} contributions={data.streamed.contributions} />
             </div>
         </Window>
     </div>

@@ -35,14 +35,16 @@
         'after:absolute after:inset-0 after:z-0 after:bg-gradient-to-b after:from-white after:via-[#19191C]/64 after:to-[#19191C]'
     )}
 >
-    <Window mode="dark">
-        <span slot="toolbar">Init<span class="text-accent">_</span>Schedule</span>
-        <div slot="content" class="grid gap-4 pt-10 px-4 pb-4 md:grid-cols-5">
-            {#each days as day, i}
-                <CountdownCard title={day.title} index={i} date={day.release} />
-            {/each}
-        </div>
-    </Window>
+    <div class="container">
+        <Window mode="dark">
+            <span slot="toolbar">Init<span class="text-accent">_</span>Schedule</span>
+            <div slot="content" class="grid gap-4 pt-10 px-4 pb-4 md:grid-cols-5">
+                {#each days as day, i}
+                    <CountdownCard title={day.title} index={i} date={day.release} />
+                {/each}
+            </div>
+        </Window>
+    </div>
 </div>
 
 <style>
