@@ -44,10 +44,9 @@
         </div>
 
         {#each $order as i, index}
-            <div data-index={index} class="z-0">
+            <div data-index={index} class="absolute z-10">
                 <img
                     draggable
-                    class="absolute"
                     src={stickers[i].src}
                     alt={stickers[i].alt}
                     style:top={index * 100 + 'px'}
@@ -60,14 +59,12 @@
                 {#if c && show_contributions}
                     <div class="flex flex-wrap gap-1" out:fade={{ duration: 100 }}>
                         {#each c as row}
-                            <div class="flex gap-1">
-                                {#each row as level, index}
-                                    <div
-                                        class="bg-greyscale-300 size-2 data-[level='0']:opacity-8 data-[level='1']:opacity-25 data-[level='2']:opacity-50 data-[level='3']:opacity-75"
-                                        data-level={level}
-                                    />
-                                {/each}
-                            </div>
+                            {#each row as level, index}
+                                <div
+                                    class="bg-greyscale-300 size-2 data-[level='0']:opacity-8 data-[level='1']:opacity-25 data-[level='2']:opacity-50 data-[level='3']:opacity-75"
+                                    data-level={level}
+                                />
+                            {/each}
                         {/each}
                     </div>
                 {/if}
