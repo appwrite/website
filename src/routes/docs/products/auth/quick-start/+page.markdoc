@@ -571,7 +571,7 @@ You can find a version of this example in the [Appwrite Android tutorial](/docs/
 //... imports
 
 object Appwrite {
-    private const val ENDPOINT = "https://cloud.appwrite.io/v1"
+    private const val ENDPOINT = "https://<REGION>.cloud.appwrite.io/v1"
     private const val PROJECT_ID = "<PROJECT_ID>"
 
     private lateinit var client: Client
