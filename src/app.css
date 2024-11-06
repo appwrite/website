@@ -68,9 +68,6 @@
     --color-greyscale-850: hsl(var(--color-greyscale-hue) 3% 14%);
     --color-greyscale-900: hsl(var(--color-greyscale-hue) 5.7% 10.4%);
 
-    /* Animations */
-    --animate-scale-in: scale-in 200ms ease-out forwards;
-
     /* Pink polyfills */
     --transition: 0.2s;
 
@@ -84,6 +81,61 @@
         }
     }
 
+    @keyframes caret-blink {
+        0%,
+        70%,
+        100% {
+            opacity: 1;
+        }
+        20%,
+        50% {
+            opacity: 0;
+        }
+    }
+
+    @keyframes blur {
+        0% {
+            filter: blur(5px);
+        }
+        100% {
+            filter: blur(0);
+        }
+    }
+
+    @keyframes up {
+        0% {
+            transform: translateY(8px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    /* Animations */
+    --animate-scale-in: scale-in 200ms ease-out forwards;
+    --animate-caret-blink: caret-blink 1s ease-in-out infinite;
+    --animate-text: fade-in 0.75s ease-in-out both, blur 0.75s ease-in-out both,
+        up 0.75s ease-in-out both;
+    --animate-scroll: scroll 60s linear infinite;
+
     /* Fonts */
     --font-family-sans: 'Inter', arial, sans-serif;
     --font-family-mono: 'Fira Code', monospace;
@@ -94,7 +146,7 @@
     /* Font sizes */
     --font-size-micro: 0.75rem;
     --font-size-micro--line-height: 1rem;
-    --font-size-micro--letter-spacing: var(--letter-spacing-loose);
+    --font-size-micro--letter-spacing: var(--letter-spacing-tight);
     --font-size-caption: 0.875rem;
     --font-size-caption--line-height: 1.375rem;
     --font-size-caption--letter-spacing: var(--letter-spacing-tight);
@@ -152,17 +204,37 @@
     --color-primary: var(--color-greyscale-900);
     --color-secondary: var(--color-greyscale-700);
     --color-accent: var(--color-pink-600);
+    --carousel-gradient: transparent;
 }
 
 /* dark theme */
 .dark {
     --color-primary: var(--color-greyscale-100);
     --color-secondary: var(--color-greyscale-300);
+    --carousel-gradient: 23, 23, 26;
 }
 
 /* Container */
 @layer components {
     .container {
         @apply mx-auto box-content max-w-[75rem] px-5;
+    }
+
+    .retro {
+        @apply border-2 border-t-white border-r-[#87878A] border-b-[#87878A] border-l-white bg-[#FAFAFB];
+
+        &.window {
+            @apply shadow-[10px_10px_0_0_#c7c7c9];
+        }
+    }
+
+    .dark {
+        .retro {
+            @apply border-t-white/76 border-r-[rgba(0,_0,_0_,24%)] border-b-[rgba(0,_0,_0_,24%)] border-l-white/76 bg-[#2D2D31];
+
+            &.window {
+                @apply shadow-[8px_8px_0_0_rgba(0,_0,_0_,16%)];
+            }
+        }
     }
 }

@@ -28,50 +28,52 @@
     };
 </script>
 
-<Window mode="dark" alignment="left" class="aspect-video w-full flex-1 shrink-0">
-    <span slot="toolbar"
-        >Ticket <span class="text-accent">#</span>{id?.toString().padStart(6, '0')}</span
-    >
-    <div slot="content" class="relative flex flex-1 bg-white p-4">
-        <div class="font-aeonik-pro mt-auto mb-0 block flex w-full items-end justify-between">
-            <div>
-                <h2 class="text-label text-primary">
-                    {name?.split(' ')[0]}
-                </h2>
-                <span class="text-secondary">#{id?.toString().padStart(6, '0')}</span>
+<div class="ticket w-full">
+    <Window mode="dark" alignment="left" class="aspect-video w-full flex-1 shrink-0">
+        <span slot="toolbar"
+            >Ticket <span class="text-accent">#</span>{id?.toString().padStart(6, '0')}</span
+        >
+        <div slot="content" class="light relative flex flex-1 bg-white p-4">
+            <div class="font-aeonik-pro mt-auto mb-0 block flex w-full items-end justify-between">
+                <div>
+                    <h2 class="text-label text-primary">
+                        {name?.split(' ')[0]}
+                    </h2>
+                    <span class="text-secondary">#{id?.toString().padStart(6, '0')}</span>
+                </div>
+                <Lockup class="mt-auto mb-0 h-[75px] w-[150px]" />
             </div>
-            <Lockup class="mt-auto mb-0 h-[75px] w-[150px]" />
-        </div>
 
-        {#each $order as i, index}
-            <div data-index={index} class="absolute z-10">
-                <img
-                    draggable
-                    src={stickers[i].src}
-                    alt={stickers[i].alt}
-                    style:top={index * 100 + 'px'}
-                    style:left={index * 20 + '%'}
-                />
-            </div>
-        {/each}
-        <div class="absolute inset-0 z-0">
-            {#await contributions then c}
-                {#if c && show_contributions}
-                    <div class="flex flex-wrap gap-1" out:fade={{ duration: 100 }}>
-                        {#each c as row}
-                            {#each row as level, index}
-                                <div
-                                    class="bg-greyscale-300 size-2 data-[level='0']:opacity-8 data-[level='1']:opacity-25 data-[level='2']:opacity-50 data-[level='3']:opacity-75"
-                                    data-level={level}
-                                />
+            {#each $order as i, index}
+                <div data-index={index} class="absolute z-10">
+                    <img
+                        draggable
+                        src={stickers[i].src}
+                        alt={stickers[i].alt}
+                        style:top={index * 100 + 'px'}
+                        style:left={index * 20 + '%'}
+                    />
+                </div>
+            {/each}
+            <div class="absolute inset-0 z-0">
+                {#await contributions then c}
+                    {#if c && show_contributions}
+                        <div class="flex flex-wrap gap-1" out:fade={{ duration: 100 }}>
+                            {#each c as row}
+                                {#each row as level, index}
+                                    <div
+                                        class="bg-greyscale-300 size-2 data-[level='0']:opacity-8 data-[level='1']:opacity-25 data-[level='2']:opacity-50 data-[level='3']:opacity-75"
+                                        data-level={level}
+                                    />
+                                {/each}
                             {/each}
-                        {/each}
-                    </div>
-                {/if}
-            {/await}
+                        </div>
+                    {/if}
+                {/await}
+            </div>
         </div>
-    </div>
-</Window>
+    </Window>
+</div>
 
 <style>
     @keyframes stutter {
@@ -95,10 +97,9 @@
         }
     }
 
-    /* .ticket {
+    .ticket {
         animation:
             stutter 1.25s steps(2, end) 1.5s infinite,
             load 1.25s steps(5) forwards;
-        box-shadow: 10px 10px 0 0 #d2d2d3;
-    } */
+    }
 </style>

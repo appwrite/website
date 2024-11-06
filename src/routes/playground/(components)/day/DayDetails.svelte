@@ -22,7 +22,7 @@
     };
 </script>
 
-<div use:scroll class="relative flex min-h-[75vh] flex-col gap-5 py-20 px-4">
+<div use:scroll class="relative flex flex-col gap-5 py-20 px-4">
     <span class="text-caption font-aeonik-fono block uppercase text-white">
         Day {index} - {format(date, 'E, MMM d')}<span class="text-accent">_</span>
     </span>
@@ -30,23 +30,13 @@
     <p class="text-secondary text-body max-w-sm font-medium">{description}</p>
 
     <div class="relative">
-        <div
-            class="pointer-events-none absolute top-0 z-10 h-12 w-full"
-            style="background: linear-gradient(to bottom, hsl(var(--p-body-bg-color)) 0%, rgba(51, 51, 51, 0) 100%);"
-        />
-
-        <div
-            class="pointer-events-none absolute bottom-0 z-10 h-12 w-full"
-            style="background: linear-gradient(to top, hsl(var(--p-body-bg-color)) 0%, rgba(51, 51, 51, 0) 100%);"
-        />
-
-        <div class={classNames('relative max-h-[28rem] space-y-5 overflow-y-scroll py-12')}>
+        <div class={classNames('relative space-y-5 py-12')}>
             {#each articles as article}
                 <a
                     href={article.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="flex flex-col gap-4 bg-[#2D2D31] py-4 px-5"
+                    class="retro flex flex-col gap-4 bg-[#2D2D31] py-4 px-5"
                 >
                     <span class="text-body font-medium text-white md:max-w-[16rem]"
                         >{article.title}</span
