@@ -34,7 +34,7 @@
                 Create custom roles and level of access to resources such as projects, files, etc.
             </p>
             <a
-                href={PUBLIC_APPWRITE_DASHBOARD}
+                href="/docs/advanced/platform/permissions"
                 class="web-button is-secondary mt-2 !w-full md:!w-fit">Learn more</a
             >
         </div>
