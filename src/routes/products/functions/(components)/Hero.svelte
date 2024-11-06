@@ -9,20 +9,20 @@
     <div class="grid items-center gap-16 md:grid-cols-2">
         <div class="space-y-6">
             <div class="flex items-center gap-2">
-                <img src="/images/icons/illustrated/dark/auth.png" class="size-8" alt="" />
+                <img src="/images/icons/illustrated/dark/functions.png" class="size-8" alt="" />
                 <span class="text-micro text-primary uppercase">
-                    Auth<span class="web-u-color-text-accent">_</span>
+                    Functions<span class="web-u-color-text-accent">_</span>
                 </span>
             </div>
             <h1 class="text-display font-aeonik-pro text-primary max-sm:max-w-[300px] md:max-w-md">
-                Secure login for all users
+                Serverless functions done your way
             </h1>
             <p class="text-description text-secondary">
-                Authenticate users securely with multiple login methods like Email/Password, SMS,
-                OAuth, Anonymous, Magic URLs, and more.
+                Deploy and scale serverless functions with<br /> seamless integration,
+                multi-language support,<br /> and zero server management.
             </p>
 
-            <div class="flex flex-col items-center gap-4 md:flex-row">
+            <div class="flex flex-col items-center gap-2 md:flex-row">
                 <a href="/docs/products/auth" class="web-button !w-full md:!w-fit"> Get started </a>
                 <a href="/docs/products/auth" class="web-button is-secondary !w-full md:!w-fit">
                     Documentation

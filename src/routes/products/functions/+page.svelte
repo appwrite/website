@@ -39,7 +39,6 @@
             <Bento />
             <div class="bg-greyscale-50">
                 <Access />
-
                 <UseCases />
                 <OpenSource />
             </div>
@@ -87,12 +86,12 @@
                             >
                                 <div class="flex items-center gap-2">
                                     <img
-                                        src="/images/icons/illustrated/dark/functions.png"
+                                        src="/images/icons/illustrated/dark/messaging.png"
                                         alt="functions"
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="text-body text-primary">Functions</h4>
+                                    <h4 class="text-body text-primary">Messaging</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
                                 </div>
                                 <p class="text-sub-body">
