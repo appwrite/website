@@ -132,7 +132,8 @@
                     label: 'Integrations',
                     href: '/integrations',
                     icon: 'icon-puzzle',
-                    isParent: true
+                    isParent: true,
+                    openInNewTab: true
                 },
                 {
                     label: 'Migrations',
