@@ -1,10 +1,10 @@
 <script lang="ts">
-    import Checkerboard from './Checkerboard.svelte';
+    import PixelBoard from './PixelBoard.svelte';
     import Lockup from './Lockup.svelte';
 </script>
 
 <div class="bg-white">
-    <div class="light relative flex min-h-[75vh] flex-col items-center justify-center gap-8">
+    <div class="light relative flex min-h-[75vh] flex-col items-center justify-center gap-8 px-8">
         <div class="lockup pointer-events-none relative z-10 w-full"><Lockup class="w-full" /></div>
         <div class="relative z-10 flex w-full max-w-lg flex-col items-center justify-center gap-8">
             <div class="text flex flex-col gap-4 [animation-delay:0.75s]">
@@ -22,8 +22,8 @@
                 </nav>
             </div>
         </div>
-        <div class="absolute inset-0 top-0 z-0">
-            <Checkerboard cols={40} />
+        <div class="absolute inset-0 top-0 z-0 w-screen overflow-hidden">
+            <PixelBoard cols={40} />
         </div>
         <div class="pointer-events-none absolute inset-0 z-1 shadow" />
     </div>

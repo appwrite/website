@@ -1,14 +1,14 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
 
-    export let mode: 'dark' | 'light' = 'light';
+    export let theme: 'dark' | 'light' = 'light';
     export let alignment: 'left' | 'center' = 'left';
     let className: string = '';
 
     export { className as class };
 </script>
 
-<div class="w-full" class:light={mode === 'light'} class:dark={mode === 'dark'}>
+<div class={classNames('w-full', theme)}>
     <div
         class={classNames(
             'retro flex h-10 w-full items-center justify-between border-2 px-4',
@@ -17,36 +17,28 @@
     >
         <div
             class={classNames('flex-1 space-y-1.5', {
-                'order-2': alignment === 'left'
+                '': alignment === 'left'
             })}
         >
             {#each Array.from({ length: 3 }) as _}
-                <div
-                    class={classNames('h-0.5 w-full', {
-                        'bg-[#414146]': mode === 'dark',
-                        'bg-[#d8d8d8]': mode === 'light'
-                    })}
-                />
+                <div class="h-0.5 w-full bg-[#d8d8d8] dark:bg-[#414146]" />
             {/each}
         </div>
         <span
-            class={classNames('font-aeonik-fono tracking-loose px-6 text-xs uppercase', {
-                'text-[#EDEDF0]': mode === 'dark',
-                'text-[#2D2D31]': mode === 'light',
-                'order-1 !pl-0': alignment === 'left'
-            })}><slot /></span
+            class={classNames(
+                'font-aeonik-fono tracking-loose px-6 text-xs uppercase text-[#2D2D31] dark:text-[#EDEDF0]'
+            )}><slot /></span
         >
-        {#if alignment === 'center'}
-            <div class="flex-1 space-y-1.5">
-                {#each Array.from({ length: 3 }) as _}
-                    <div
-                        class={classNames('h-0.5 w-full', {
-                            'bg-[#414146]': mode === 'dark',
-                            'bg-[#d8d8d8]': mode === 'light'
-                        })}
-                    />
-                {/each}
-            </div>
-        {/if}
+
+        <div
+            class={classNames('space-y-1.5', {
+                'basis-[80%]': alignment === 'left',
+                'flex-1': alignment === 'center'
+            })}
+        >
+            {#each Array.from({ length: 3 }) as _}
+                <div class="h-0.5 w-full bg-[#d8d8d8] dark:bg-[#414146]" />
+            {/each}
+        </div>
     </div>
 </div>

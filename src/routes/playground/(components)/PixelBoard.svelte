@@ -136,7 +136,10 @@
     });
 </script>
 
-<div class="grid h-full w-full" style="grid-template-columns: repeat({cols}, 1fr);">
+<div
+    class="grid h-full w-full grid-cols-[repeat(calc(var(--columns)_/_2),_1fr)] md:grid-cols-[repeat(var(--columns),_1fr)]"
+    style="--columns:{cols};"
+>
     {#each squares as row, rowIndex}
         {#each row as state, colIndex}
             <button

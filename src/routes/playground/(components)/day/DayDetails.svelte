@@ -1,7 +1,5 @@
 <script lang="ts">
     import { format } from 'date-fns';
-    import { inView } from 'motion';
-    import { activeDay } from '../../state';
     import { classNames } from '$lib/utils/classnames';
 
     export let index: number;
@@ -14,15 +12,9 @@
         label: string;
         url: string;
     }> = [];
-
-    const scroll = (node: HTMLElement) => {
-        inView(node, () => {
-            activeDay.set(index);
-        });
-    };
 </script>
 
-<div use:scroll class="relative flex flex-col gap-5 py-20 px-4">
+<div class="relative flex flex-col gap-5 py-20 px-4">
     <span class="text-caption font-aeonik-fono block uppercase text-white">
         Day {index} - {format(date, 'E, MMM d')}<span class="text-accent">_</span>
     </span>

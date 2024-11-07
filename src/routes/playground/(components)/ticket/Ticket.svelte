@@ -15,21 +15,17 @@
         disableEffects?: boolean;
     };
 
-    $: ({ name, title, id, contributions, show_contributions = true } = $$props as $$Props);
+    $: ({ name, id, contributions, show_contributions = true } = $$props as $$Props);
 
     const stickers = [
         { src: Globe, alt: 'Globe' },
         { src: WindowSticker, alt: 'Window' },
         { src: Logo, alt: 'Logo' }
     ];
-
-    const changeOrder = () => {
-        order.set($order.map((i) => (i + 1) % stickers.length));
-    };
 </script>
 
 <div class="ticket w-full">
-    <Window mode="dark" alignment="left" class="aspect-video w-full flex-1 shrink-0">
+    <Window theme="dark" alignment="left" class="aspect-video w-full flex-1 shrink-0">
         <span slot="toolbar"
             >Ticket <span class="text-accent">#</span>{id?.toString().padStart(6, '0')}</span
         >
