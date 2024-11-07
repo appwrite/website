@@ -43,5 +43,6 @@
 
     .icon-secondary {
         color: var(--color-fgcolor-neutral-secondary, #56565c);
+        margin-left: -0.375rem;
     }
 </style>
