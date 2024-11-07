@@ -9,6 +9,7 @@
     import OpenSource from './(components)/OpenSource.svelte';
     import { PreFooter, FooterNav, MainFooter } from '$lib/components';
     import Hero from './(components)/Hero.svelte';
+    import SSR from './(components)/SSR.svelte';
 
     const title = 'Functions' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -35,6 +36,7 @@
 <Main>
     <div class="overflow-hidden">
         <Hero />
+        <SSR />
         <div>
             <Bento />
             <div class="bg-greyscale-50">
