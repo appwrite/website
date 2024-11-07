@@ -23,9 +23,9 @@ export type IntegrationCategory = {
     slug: string;
     heading: string;
     description: string;
-}
+};
 
-const categoryDescriptions : IntegrationCategory[] = [
+const categoryDescriptions: IntegrationCategory[] = [
     {
         slug: 'ai',
         heading: 'AI',
@@ -71,7 +71,7 @@ const categoryDescriptions : IntegrationCategory[] = [
         heading: 'Deployments',
         description: 'Seamlessly deploy your code'
     }
-]
+];
 
 export const load = () => {
     const integrationsGlob = import.meta.glob('./**/*.markdoc', {
@@ -90,7 +90,10 @@ export const load = () => {
         const integrationName = slug.slice(slug.lastIndexOf('/') + 1);
 
         frontmatter.platform.map((platform) => platforms.push(platform));
-        categories.push(categoryDescriptions.find((i) => i.slug === frontmatter.category) ?? {} as IntegrationCategory);
+        categories.push(
+            categoryDescriptions.find((i) => i.slug === frontmatter.category) ??
+                ({} as IntegrationCategory)
+        );
 
         return {
             ...frontmatter,
@@ -103,7 +106,7 @@ export const load = () => {
     const integrationsWithDescriptions = Object.entries(groupedIntegrations).map(
         ([category, integrations]) => {
             const integrationCategory = categoryDescriptions.find(
-                ( key ) => key.slug === category.toLowerCase()
+                (key) => key.slug === category.toLowerCase()
             );
             return {
                 category,
@@ -119,7 +122,7 @@ export const load = () => {
     const featuredIntegrationsWithCategoryHeadings = Object.entries(featuredIntegrations).map(
         ([_, integration]) => {
             const integrationCategory = categoryDescriptions.find(
-                ( key ) => key.slug === integration.category.toLowerCase()
+                (key) => key.slug === integration.category.toLowerCase()
             );
             return {
                 heading: integrationCategory?.heading,

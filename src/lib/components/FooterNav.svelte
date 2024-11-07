@@ -68,8 +68,7 @@
             ],
             Programs: [
                 { label: 'Heroes', href: '/heroes' },
-                { label: 'Startups', href: '/startups' },
-                { label: 'Students', href: '/students' }
+                { label: 'Startups', href: '/startups' }
             ],
             About: [
                 { label: 'Company', href: '/company' },
