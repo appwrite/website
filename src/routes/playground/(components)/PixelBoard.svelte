@@ -138,7 +138,7 @@
 
 <div
     class="grid h-full w-full grid-cols-[repeat(calc(var(--columns)_/_2),_1fr)] md:grid-cols-[repeat(var(--columns),_1fr)]"
-    style="--columns:{cols};"
+    style="--columns:{cols}"
 >
     {#each squares as row, rowIndex}
         {#each row as state, colIndex}
