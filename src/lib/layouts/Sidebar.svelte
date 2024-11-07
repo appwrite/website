@@ -5,6 +5,7 @@
         icon?: string;
         new?: boolean;
         isParent?: boolean;
+        openInNewTab?: boolean;
     };
 
     export type NavGroup = {
