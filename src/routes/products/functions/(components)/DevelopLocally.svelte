@@ -1,147 +1,26 @@
 <script lang="ts">
-    import { trackEvent } from '$lib/actions/analytics';
-    import { Tooltip } from '$lib/components';
-    import { Framework, Platform } from '$lib/utils/references';
-    import MultiFrameworkCode from './MultiFrameworkCode.svelte';
+    import { classNames } from '$lib/utils/classnames';
+    import Hat from '../(assets)/hat.png';
+    import Shirt from '../(assets)/shirt.png';
 
-    const codeSnippets = [
+    const products = [
         {
-            language: Platform.ClientWeb,
-            platform: Framework.NextJs,
-            content: `import { Client, Account } from 'node-appwrite'
-import { cookies } from 'next/headers'
-
-async function getLoggedInUser() {
-  const session = cookies().get("custom-session-cookie");  
-  if (!session) return
-
-    const client = new Client()
-    .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT)
-    .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID)
-
-    client.setSession(session.value)
-    const account = new Account(client);
-
-    return await account.get()
-}
-  `
+            name: 'Corduroy hat',
+            price: '23.50',
+            image: Hat
         },
         {
-            language: Platform.ClientWeb,
-            platform: Framework.SvelteKit,
-            content: `import { Client, Account } from 'node-appwrite'
-
-async function getLoggedInUser() {
-  const session = cookies().get("custom-session-cookie");  
-  if (!session) return
-
-  const client = new Client()
-    .setEndpoint(process.env.PUBLIC_APPWRITE_ENDPOINT)    
-    .setProject(process.env.PUBLIC_APPWRITE_PROJECT_ID)
-
-      client.setSession(session.value)
-      const account = new Account(client);
-
-    return await account.get()
-  }
-`
-        },
-        {
-            language: Platform.ClientWeb,
-            platform: Framework.Astro,
-            content: `import { Client, Account } from 'node-appwrite'
-
-async function getLoggedInUser(context) {
-  const session = cookies().get("custom-session-cookie");  
-  if (!session) return
-
-  const client = new Client()
-    .setEndpoint(import.meta.env.PUBLIC_APPWRITE_ENDPOINT)    
-    .setProject(import.meta.env.PUBLIC_APPWRITE_PROJECT_ID)
-
-      client.setSession(session.value)
-      const account = new Account(client);
-
-    return await account.get()
-  }
-`
-        },
-        {
-            language: Platform.ClientWeb,
-            platform: Framework.Nuxt3,
-            content: `import { Client, Account } from 'node-appwrite'
-import { H3Event, getCookie } from 'h3'
-
-async function getLoggedInUser(event) {
-  const session = getCookie(event, "custom-session-cookie");  
-  if (!session) return
-
-  const client = new Client()
-    .setEndpoint(process.env.PUBLIC_APPWRITE_ENDPOINT)    
-    .setProject(process.env.PUBLIC_APPWRITE_PROJECT_ID)
-
-      client.setSession(session.value)
-      const account = new Account(client);
-
-    return await account.get()
-  }`
-        },
-        {
-            language: Platform.ClientWeb,
-            platform: Framework.Remix,
-            content: `import { Client, Account } from 'node-appwrite'
-import { createCookie } from '@remix-run/node'
-
-export const customSessionCookie = createCookie("custom-session-cookie", {
-  maxAge: 604800,
-})
-
-async function getLoggedInUser(request) {
-  const cookies = request.headers.get("Cookie")  
-  const session = await customSessionCookie.parse(cookies)  
-  if (!session) return
-
-  const client = new Client()
-    .setEndpoint(process.env.PUBLIC_APPWRITE_ENDPOINT)    
-    .setProject(process.env.PUBLIC_APPWRITE_PROJECT_ID)
-
-      client.setSession(session.value)
-      const account = new Account(client);
-
-    return await account.get()
-  }`
+            name: 'Unisex garment-dyed heavyweight t-shirt',
+            price: '17.50',
+            image: Shirt
         }
     ];
-
-    const platforms = [
-        {
-            name: 'Next',
-            href: '/docs/quick-starts/nextjs',
-            image: `/images/platforms/light/nextjs.svg`
-        },
-        {
-            name: 'Svelte',
-            href: '/docs/quick-starts/sveltekit',
-            image: `/images/platforms/light/svelte.svg`
-        },
-        {
-            name: 'Nuxt',
-            href: '/docs/quick-starts/nuxt',
-            image: `/images/platforms/light/nuxt.svg`
-        }
-    ] as Array<{
-        name: string;
-        href: string;
-        image: string;
-    }>;
 </script>
 
 <section class="py-4 md:py-20">
-    <div
-        class="container grid grid-cols-1 items-center justify-between gap-12 md:grid-cols-12 md:flex-row"
-    >
+    <div class="container grid grid-cols-1 items-center justify-between gap-12 md:grid-cols-12">
         <div
-            class="window col-span-7 flex h-[420px] w-full flex-col bg-[#232325]/94 px-3 pb-3 backdrop-blur-lg"
+            class="window flex aspect-[6.87/4.2] w-full flex-col bg-[#232325]/94 px-3 pb-3 backdrop-blur-lg md:col-span-7 md:scale-100"
         >
             <header class="grid h-12 w-full grid-cols-12 place-items-center">
                 <div class="col-span-2 flex gap-1">
@@ -152,7 +31,7 @@ async function getLoggedInUser(request) {
                 <div
                     class="col-span-6 col-start-4 flex h-6 w-full items-center justify-center rounded-full bg-[#1B1B1C]/94 backdrop-blur-lg"
                 >
-                    <span class="text-[0.625rem] -tracking-[.045%] text-white">localhost:3000</span>
+                    <span class="text-x-micro -tracking-[.045%] text-white">localhost:3000</span>
                 </div>
             </header>
 
@@ -160,13 +39,122 @@ async function getLoggedInUser(request) {
                 <div
                     class="grid size-full flex-1 grid-cols-1 grid-rows-12 gap-2 overflow-hidden rounded-xl"
                 >
-                    <div class="row-span-8 bg-[#1B1B1C]/94" />
-                    <div class="row-span-4 bg-[#1B1B1C]/94" />
+                    <div class="row-span-8 bg-[#1B1B1C]/94 p-1">
+                        <span class="bg-badge-bg-dark ml-1 rounded-full py-0.5 px-2 text-[.5265rem]"
+                            >main.ts</span
+                        >
+
+                        <ul
+                            class={classNames(
+                                'text-greyscale-600 pointer-events-none relative mt-2 px-2 font-mono',
+                                'after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:via-transparent after:to-[#1B1B1C]/94'
+                            )}
+                        >
+                            {#each Array.from({ length: 15 }) as _, i}
+                                {@const lineNumber = i + 25}
+                                <li class="text-x-micro">{lineNumber}</li>
+                            {/each}
+                        </ul>
+                    </div>
+                    <div class="row-span-4 bg-[#1B1B1C]/94">
+                        <span class="bg-badge-bg-dark ml-1 rounded-full py-0.5 px-2 text-[.5265rem]"
+                            >Terminal</span
+                        >
+                    </div>
                 </div>
-                <div class="size-full flex-1 rounded-xl bg-white"></div>
+                <div class="light size-full flex-1 rounded-xl bg-white p-4">
+                    <h2 class="text-primary text-[.8125rem] font-semibold tracking-tighter">
+                        Checkout
+                    </h2>
+
+                    <div class="mt-4 flex w-full flex-col gap-2 divide-y divide-black/8">
+                        {#each products as product}
+                            <div class="flex items-center justify-between pb-2">
+                                <div class="flex w-3/4">
+                                    <img
+                                        src={product.image}
+                                        alt={product.name}
+                                        class="size-12 rounded-md"
+                                    />
+                                    <div class="ml-4 flex flex-col pt-0.5">
+                                        <span class="text-x-micro font-medium text-black"
+                                            >{product.name}</span
+                                        >
+                                        <span class="text-secondary text-[9px]"
+                                            >${product.price}</span
+                                        >
+                                    </div>
+                                </div>
+                                <div
+                                    class="text-primary text-micro grid grid-cols-3 place-items-center items-center divide-x divide-black/8 rounded-md border border-black/8 bg-[#19191C]/4 text-center"
+                                >
+                                    <button class="web-icon-minus size-6" />
+                                    <span class="flex size-6 items-center justify-center">1</span>
+                                    <button class="web-icon-plus size-6" />
+                                </div>
+                            </div>
+                        {/each}
+                        <div
+                            class="text-primary text-x-micro flex w-full items-center justify-between rounded-lg border border-black/8 bg-[#19191C]/4 py-1.5 px-2 font-medium"
+                        >
+                            <span>Coupon code</span>
+                            <span class="text-[#7C67FE]">Apply</span>
+                        </div>
+                        <div
+                            class="-mt-1 flex w-fit items-center gap-1 rounded-[0.1875rem] bg-[#10B981]/32 py-0.5 px-1 text-[0.5rem] uppercase text-green-700"
+                        >
+                            GET30OFF
+                            <span class=""
+                                ><svg
+                                    width="10"
+                                    height="10"
+                                    viewBox="0 0 10 10"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M2.75 2.75L7.25 7.25"
+                                        stroke="#0A714F"
+                                        stroke-linecap="round"
+                                    />
+                                    <path
+                                        d="M2.75 7.25L7.25 2.75"
+                                        stroke="#0A714F"
+                                        stroke-linecap="round"
+                                    />
+                                </svg>
+                            </span>
+                        </div>
+
+                        <div class="space-y-1.5 px-1">
+                            <div class="flex justify-between">
+                                <span class="text-secondary text-x-micro">Subtotal</span>
+                                <span class="text-primary text-x-micro">$41.00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-secondary text-x-micro">Delivery</span>
+                                <span class="text-primary text-x-micro">$5.90</span>
+                            </div>
+                            <div class="flex justify-between border-b border-black/8 pb-2">
+                                <span class="text-secondary text-x-micro">Discount</span>
+                                <span class="text-primary text-x-micro">-$14.07</span>
+                            </div>
+
+                            <div class="flex justify-between font-semibold">
+                                <span class="text-secondary text-micro">Total</span>
+                                <span class="text-primary text-micro">$32.83</span>
+                            </div>
+
+                            <button
+                                class="text-micro mt-2 w-full rounded-lg bg-[#7C67FE] py-1.5 font-medium text-white"
+                                >Place order</button
+                            >
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-span-4 col-start-9 mb-10 flex flex-col">
+        <div class="mb-10 flex flex-col md:col-span-4 md:col-start-9">
             <h2 class="text-title text-primary font-aeonik-pro my-4 text-pretty">
                 Develop your functions locally
             </h2>
