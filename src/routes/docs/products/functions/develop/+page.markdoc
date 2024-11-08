@@ -1552,6 +1552,8 @@ However, you can only use dynamic API keys inside Appwrite functions.
 
 During the build process, dynamic API keys are automatically provided as the environment variable `APPWRITE_FUNCTION_API_KEY`. This environment variable doesn't need to be initialized.
 
+During execution, dynamic API keys are automatically provided in the `x-appwrite-key` [header](#headers).
+
 Dynamic API keys grant access and operate without sessions.
 They allow your function to act as an admin-type role instead of acting on behalf of a user.
 Update the function settings to configure the scopes of the function.
