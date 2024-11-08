@@ -156,16 +156,14 @@ async function getLoggedInUser(request) {
                 </div>
             </header>
 
-            <div
-                class="grid size-full grid-cols-2 place-items-center gap-3 overflow-hidden rounded-xl"
-            >
+            <div class="grid size-full grid-cols-2 place-items-center gap-3 rounded-xl">
                 <div
-                    class="grid size-full flex-1 grid-cols-1 grid-rows-12 gap-2 overflow-hidden rounded-lg"
+                    class="grid size-full flex-1 grid-cols-1 grid-rows-12 gap-2 overflow-hidden rounded-xl"
                 >
                     <div class="row-span-8 bg-[#1B1B1C]/94" />
                     <div class="row-span-4 bg-[#1B1B1C]/94" />
                 </div>
-                <div class="size-full flex-1 rounded-lg bg-white"></div>
+                <div class="size-full flex-1 rounded-xl bg-white"></div>
             </div>
         </div>
         <div class="col-span-4 col-start-9 mb-10 flex flex-col">
