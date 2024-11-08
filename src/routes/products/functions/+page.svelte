@@ -5,11 +5,13 @@
     import Access from './(components)/Access.svelte';
 
     import Bento from './(components)/Bento.svelte';
-    import UseCases from './(components)/UseCases.svelte';
     import OpenSource from './(components)/OpenSource.svelte';
     import { PreFooter, FooterNav, MainFooter } from '$lib/components';
     import Hero from './(components)/Hero.svelte';
-    import SSR from './(components)/SSR.svelte';
+    import Languages from './(components)/Languages.svelte';
+    import Platforms from './(components)/Platforms.svelte';
+    import DevelopLocally from './(components)/DevelopLocally.svelte';
+    import DeploySeamlessly from './(components)/DeploySeamlessly.svelte';
 
     const title = 'Functions' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -36,12 +38,14 @@
 <Main>
     <div class="overflow-hidden">
         <Hero />
-        <SSR />
+        <Languages />
+        <Platforms />
+        <DevelopLocally />
+        <DeploySeamlessly />
         <div>
             <Bento />
             <div class="bg-greyscale-50">
                 <Access />
-                <UseCases />
                 <OpenSource />
             </div>
         </div>
