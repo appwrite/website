@@ -2,7 +2,7 @@
     import Main from '$lib/layouts/Main.svelte';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
-    import Access from './(components)/Access.svelte';
+    import Templates from './(components)/Templates.svelte';
 
     import Bento from './(components)/Bento.svelte';
     import OpenSource from './(components)/OpenSource.svelte';
@@ -45,7 +45,7 @@
         <div>
             <Bento />
             <div class="bg-greyscale-50">
-                <Access />
+                <Templates />
                 <OpenSource />
             </div>
         </div>
