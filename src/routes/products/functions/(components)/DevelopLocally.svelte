@@ -140,19 +140,33 @@ async function getLoggedInUser(request) {
     <div
         class="container grid grid-cols-1 items-center justify-between gap-12 md:grid-cols-12 md:flex-row"
     >
-        <div class="window col-span-7 h-[420px] w-full bg-[#232325]/94 backdrop-blur-lg">
-            <header class="flex h-12 w-full items-center px-4">
-                <div class="flex gap-1">
+        <div
+            class="window col-span-7 flex h-[420px] w-full flex-col bg-[#232325]/94 px-3 pb-3 backdrop-blur-lg"
+        >
+            <header class="grid h-12 w-full grid-cols-12 place-items-center">
+                <div class="col-span-2 flex gap-1">
                     <button class="size-2 rounded-full bg-[#EC6A5E]" />
                     <button class="size-2 rounded-full bg-[#F5BF4F]" />
                     <button class="size-2 rounded-full bg-[#6d9e66]" />
                 </div>
                 <div
-                    class="flex h-6 w-xs items-center justify-center rounded-full bg-[#1B1B1C]/94 backdrop-blur-lg"
+                    class="col-span-6 col-start-4 flex h-6 w-full items-center justify-center rounded-full bg-[#1B1B1C]/94 backdrop-blur-lg"
                 >
                     <span class="text-[0.625rem] -tracking-[.045%] text-white">localhost:3000</span>
                 </div>
             </header>
+
+            <div
+                class="grid size-full grid-cols-2 place-items-center gap-3 overflow-hidden rounded-xl"
+            >
+                <div
+                    class="grid size-full flex-1 grid-cols-1 grid-rows-12 gap-2 overflow-hidden rounded-lg"
+                >
+                    <div class="row-span-8 bg-[#1B1B1C]/94" />
+                    <div class="row-span-4 bg-[#1B1B1C]/94" />
+                </div>
+                <div class="size-full flex-1 rounded-lg bg-white"></div>
+            </div>
         </div>
         <div class="col-span-4 col-start-9 mb-10 flex flex-col">
             <h2 class="text-title text-primary font-aeonik-pro my-4 text-pretty">
