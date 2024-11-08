@@ -31,6 +31,13 @@
 </a>
 
 <style lang="scss">
+    :global(.light) {
+        --color-secondary-icon: var(--greyscale-400, #97979b);
+    }
+    :global(.dark) {
+        --color-secondary-icon: var(--greyscale-700, #56565c);
+    }
+
     [class*='icon'] {
         font-size: 1rem;
     }
@@ -42,7 +49,7 @@
     }
 
     .icon-secondary {
-        color: var(--color-fgcolor-neutral-secondary, #56565c);
+        color: var(--color-secondary-icon);
         margin-left: -0.375rem;
     }
 </style>
