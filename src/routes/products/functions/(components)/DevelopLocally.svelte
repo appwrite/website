@@ -22,14 +22,14 @@
         <div
             class="window flex aspect-[6.87/4.2] w-full flex-col bg-[#232325]/94 px-3 pb-3 backdrop-blur-lg md:col-span-7 md:scale-100"
         >
-            <header class="grid h-12 w-full grid-cols-12 place-items-center">
+            <header class="grid h-12 w-full grid-cols-12 items-center pl-2">
                 <div class="col-span-2 flex gap-1">
                     <button class="size-2 rounded-full bg-[#EC6A5E]" />
                     <button class="size-2 rounded-full bg-[#F5BF4F]" />
                     <button class="size-2 rounded-full bg-[#6d9e66]" />
                 </div>
                 <div
-                    class="col-span-6 col-start-4 flex h-6 w-full items-center justify-center rounded-full bg-[#1B1B1C]/94 backdrop-blur-lg"
+                    class="col-span-6 col-start-4 flex h-6 w-full flex-1 items-center justify-center rounded-full bg-[#1B1B1C]/94 backdrop-blur-lg"
                 >
                     <span class="text-x-micro -tracking-[.045%] text-white">localhost:3000</span>
                 </div>
@@ -46,13 +46,13 @@
 
                         <ul
                             class={classNames(
-                                'text-greyscale-600 pointer-events-none relative mt-2 px-2 font-mono',
+                                'text-greyscale-600 relative mt-2 px-2 font-mono',
                                 'after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:via-transparent after:to-[#1B1B1C]/94'
                             )}
                         >
                             {#each Array.from({ length: 15 }) as _, i}
                                 {@const lineNumber = i + 25}
-                                <li class="text-x-micro">{lineNumber}</li>
+                                <li class="text-x-micro pointer-events-none pl-2">{lineNumber}</li>
                             {/each}
                         </ul>
                     </div>
