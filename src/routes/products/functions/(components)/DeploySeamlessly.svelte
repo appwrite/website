@@ -1,6 +1,7 @@
 <script lang="ts">
     import { trackEvent } from '$lib/actions/analytics';
     import { Tooltip } from '$lib/components';
+    import { classNames } from '$lib/utils/classnames';
     import { Framework, Platform } from '$lib/utils/references';
     import MultiFrameworkCode from './MultiFrameworkCode.svelte';
 
@@ -142,18 +143,18 @@ async function getLoggedInUser(request) {
     >
         <div class="col-span-4 mb-10 flex flex-col">
             <h2 class="text-title text-primary font-aeonik-pro my-4 text-pretty">
-                Develop your functions locally
+                Deploy seamlessly with no effort
             </h2>
             <p class="text-body text-secondary text-pretty font-medium">
-                Code and test your functions locally with Appwrite Functions, ensuring full control
-                over your development.
+                Appwrite offers to deploy functions directly from Git repositories to track changes
+                within your development workflow seamlessly.
             </p>
 
             <a href="/docs/sdks#server" class="web-button is-secondary mt-8">Learn more</a>
         </div>
 
         <div
-            class="window col-span-7 col-start-6 h-[420px] w-full bg-[#232325]/94 backdrop-blur-lg"
+            class="window col-span-7 col-start-6 flex h-[420px] w-full flex-col bg-[#1B1B1C]/94 pb-4 backdrop-blur-lg"
         >
             <header class="grid h-12 w-full grid-cols-12 items-center px-4">
                 <div class="col-span-2 flex gap-1">
@@ -162,7 +163,7 @@ async function getLoggedInUser(request) {
                     <button class="size-2 rounded-full bg-[#6d9e66]" />
                 </div>
                 <div
-                    class="col-span-6 col-start-4 flex h-6 w-full items-center rounded-full bg-[#1B1B1C]/94 px-2 backdrop-blur-lg"
+                    class="col-span-6 col-start-4 flex h-6 w-full items-center rounded-full bg-[#232325]/94 px-2 backdrop-blur-lg"
                 >
                     <span
                         class="text-secondary flex items-center gap-2 text-[0.625rem] -tracking-[.045%]"
@@ -186,6 +187,153 @@ async function getLoggedInUser(request) {
                     >
                 </div>
             </header>
+
+            <div class="grid w-full flex-1 grid-cols-12 gap-2 overflow-hidden px-4">
+                <div class="col-span-3 col-start-1 flex flex-col">
+                    <span class="text-x-micro font-medium text-white">Changes</span>
+                    <ul class="mt-2 space-y-1 pr-4 text-[9px]">
+                        <li class="flex items-center justify-between">
+                            <span>app/src/../<span class="text-white">main.js</span></span>
+                            <svg
+                                width="8"
+                                height="9"
+                                viewBox="0 0 8 9"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <g clip-path="url(#clip0_3913_35763)">
+                                    <rect
+                                        x="0.5"
+                                        y="1"
+                                        width="7"
+                                        height="7"
+                                        rx="1.5"
+                                        stroke="#DBAB09"
+                                        stroke-width="0.75"
+                                    />
+                                    <circle cx="4" cy="4.5" r="1" fill="#DBAB09" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_3913_35763">
+                                        <rect
+                                            width="8"
+                                            height="8"
+                                            fill="white"
+                                            transform="translate(0 0.5)"
+                                        />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span>app/../<span class="text-white">server.js</span></span>
+                            <svg
+                                width="8"
+                                height="9"
+                                viewBox="0 0 8 9"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <g clip-path="url(#clip0_3913_35768)">
+                                    <rect
+                                        x="0.5"
+                                        y="1"
+                                        width="7"
+                                        height="7"
+                                        rx="1.5"
+                                        stroke="#28A745"
+                                        stroke-width="0.75"
+                                    />
+                                    <path
+                                        d="M4 3V6"
+                                        stroke="#28A745"
+                                        stroke-width="0.75"
+                                        stroke-linecap="round"
+                                    />
+                                    <path
+                                        d="M5.5 4.5L2.5 4.5"
+                                        stroke="#28A745"
+                                        stroke-width="0.75"
+                                        stroke-linecap="round"
+                                    />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_3913_35768">
+                                        <rect
+                                            width="8"
+                                            height="8"
+                                            fill="white"
+                                            transform="translate(0 0.5)"
+                                        />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span>app/../<span class="text-white">app.js</span></span>
+                            <svg
+                                width="8"
+                                height="9"
+                                viewBox="0 0 8 9"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <g clip-path="url(#clip0_3913_35763)">
+                                    <rect
+                                        x="0.5"
+                                        y="1"
+                                        width="7"
+                                        height="7"
+                                        rx="1.5"
+                                        stroke="#DBAB09"
+                                        stroke-width="0.75"
+                                    />
+                                    <circle cx="4" cy="4.5" r="1" fill="#DBAB09" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_3913_35763">
+                                        <rect
+                                            width="8"
+                                            height="8"
+                                            fill="white"
+                                            transform="translate(0 0.5)"
+                                        />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </li>
+                    </ul>
+
+                    <button
+                        class="text-micro mt-auto mb-0 rounded-md border border-white/8 bg-[#19191C] py-2 font-medium text-white"
+                        >Commit and push</button
+                    >
+                </div>
+                <div class="col-span-9 col-start-4 overflow-hidden rounded-xl bg-[#232325] p-2">
+                    <ul
+                        class={classNames(
+                            'text-greyscale-600 relative px-1 font-mono',
+                            'after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:via-transparent after:to-[#232325]'
+                        )}
+                    >
+                        {#each Array.from({ length: 22 }) as _, i}
+                            {@const lineNumber = i + 37}
+                            <li
+                                class={classNames('pointer-events-none pl-2 text-[10px]', {
+                                    'rounded bg-[#FF453A]/8 text-white': lineNumber === 41,
+                                    'bg-[#7ADF82]/8 text-white': [47, 48, 49, 50].includes(
+                                        lineNumber
+                                    )
+                                })}
+                            >
+                                {lineNumber}
+                            </li>
+                        {/each}
+                    </ul>
+
+                    ANIMATION TODO
+                </div>
+            </div>
         </div>
     </div>
 </section>
