@@ -1,0 +1,38 @@
+---
+layout: article
+title: Regions
+description: Learn about Appwrite regions, where core services like databases, auth, functons, sites and storage are hosted. Understand data sovereignty, fault isolation, and scalability for compliant, high-performance deployments
+---
+
+Appwrite regions are geographic locations where all your application's core infrastructure is deployed. Each region operates as an independent, highly available cluster, managing the storage, processing, and serving of your data and Appwrite services.
+
+# Availability {% #availability %}
+
+Appwrite is currently available in the following regions:
+
+| Region              | Code   | Status       | Endpoint                                | Timeline    |
+|---------------------|--------|--------------|-----------------------------------------|-------------|
+| Frankfurt           | FRA    | Operational  | `https://fra.cloud.appwrite.io/v1`      | Available   |
+| New York            | NYC    | In work      | `https://nyc.cloud.appwrite.io/v1`      | Q4 2024     |
+| Singapore           | SGP    | In work      | `https://sgp.cloud.appwrite.io/v1`      | Q4 2024     |
+| San Francisco       | SFO    | In work      | `https://sfo.cloud.appwrite.io/v1`      | Q1 2025     |
+| Bangalore           | BLR    | In work      | `https://blr.cloud.appwrite.io/v1`      | Q2 2025     |
+
+Regions are designed to be entirely independent unless explicitly connected, which provides control over data replication and compliance.
+
+# Choosing a region {% #choosing-a-region %}
+
+Selecting a region impacts both your application’s performance and its compliance with local regulations. Regions are isolated from each other, so your data and services remain contained within the selected location. When choosing a region, consider proximity to your primary user base to reduce latency and improve response times. Additionally, ensure the region aligns with legal requirements for data residency and sovereignty specific to your application's domain.
+
+# Technical design {% #technical-design %}
+
+Regions are isolated environments designed for predictable performance and data security. Key aspects include:
+
+- Data Sovereignty: All data remains within the region and adheres to local data residency laws.
+- Fault isolation: Each region is self-contained, so failures in one region do not impact others.
+- Scalability: Resources within a region scale dynamically to meet application demands.
+- Networking: Regions connect via secure, low-latency private networks.
+- Resource Management: Horizontal scaling for services and storage within each region.
+- High Availability: Redundant power, networking, and hardware configurations in data centers.
+
+Regions provide the foundation for running scalable, reliable applications with full control over data locality and compliance.

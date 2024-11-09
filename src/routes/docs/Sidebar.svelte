@@ -66,15 +66,15 @@
                     isParent: true
                 },
                 {
-                    label: 'AI',
-                    href: '/docs/products/ai',
-                    icon: 'icon-chip',
+                    label: 'Network',
+                    href: '/docs/products/network',
+                    icon: 'icon-cloud',
                     isParent: true
                 },
                 {
-                    label: 'Network',
+                    label: 'AI',
                     href: '/docs/products/ai',
-                    icon: 'icon-cloud',
+                    icon: 'icon-chip',
                     isParent: true
                 }
             ]
