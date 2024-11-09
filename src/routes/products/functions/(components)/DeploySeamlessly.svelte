@@ -2,7 +2,7 @@
     import { classNames } from '$lib/utils/classnames';
 </script>
 
-<section class="py-4 md:py-20">
+<section class="pt-32 pb-40">
     <div
         class="container grid grid-cols-1 items-center justify-between gap-12 md:grid-cols-12 md:flex-row"
     >

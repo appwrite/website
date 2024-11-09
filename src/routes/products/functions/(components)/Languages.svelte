@@ -136,7 +136,7 @@ async function getLoggedInUser(request) {
     }>;
 </script>
 
-<section class="py-4 md:py-20">
+<section class="pt-32 pb-40">
     <div class="container flex flex-col justify-between gap-6 md:flex-row">
         <div class="mb-10 flex max-w-lg flex-col">
             <h2 class="text-title text-primary font-aeonik-pro my-4">

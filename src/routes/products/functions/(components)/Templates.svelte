@@ -46,7 +46,7 @@
     ];
 </script>
 
-<section class="light bg-greyscale-50 py-4 md:py-20">
+<section class="light bg-greyscale-50 pt-32 pb-40">
     <div class="container flex flex-col justify-between gap-8 overflow-x-hidden md:flex-row">
         <div class="mb-10 flex max-w-sm flex-col">
             <span class="web-badges text-micro font-aeonik-fono mr-auto ml-0 uppercase !text-white"

@@ -17,7 +17,7 @@
     ];
 </script>
 
-<section class="py-4 md:py-20">
+<section class="pt-32 pb-40">
     <div class="container grid grid-cols-1 items-center justify-between gap-12 md:grid-cols-12">
         <div
             class="window flex aspect-[6.87/4.2] w-full flex-col bg-[#232325]/94 px-3 pb-3 backdrop-blur-lg md:col-span-7 md:scale-100"
