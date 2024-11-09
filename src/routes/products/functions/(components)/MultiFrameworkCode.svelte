@@ -7,7 +7,6 @@
 
     export let selected: string = '';
     export let data: { language: string; content: string; platform: string }[] = [];
-    export let width: number | null = null;
     export let height: number | null = null;
 
     $: snippets = writable(new Set(data.map((d) => `${d.platform}`)));
@@ -53,11 +52,8 @@
 </script>
 
 <section
-    class="dark web-code-snippet"
+    class="dark web-code-snippet mx-auto !max-w-[90vw] md:min-w-2xl"
     aria-label="code-snippet panel"
-    style={`width: ${width ? width / 16 + 'rem' : 'inherit'}; height: ${
-        height ? height / 16 + 'rem' : 'inherit'
-    }`}
 >
     <header class="web-code-snippet-header">
         <div class="web-code-snippet-header-start">
