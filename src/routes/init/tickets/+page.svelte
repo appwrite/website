@@ -10,41 +10,6 @@
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
     const ogImage = buildOpenGraphImage('init', description);
-
-    const tickets = [
-        {
-            name: 'Eldad',
-            title: 'Founder'
-        },
-        {
-            name: 'Jesse',
-            title: 'Design Engineer'
-        },
-        {
-            name: 'Bradley',
-            title: 'Platform Engineer'
-        },
-        {
-            name: 'Caio',
-            title: 'Visual Designer'
-        },
-        {
-            name: 'Matej',
-            title: 'Platform Engineer'
-        },
-        {
-            name: 'Torsten',
-            title: 'Product Architect'
-        },
-        {
-            name: 'Jade',
-            title: 'Visual Designer'
-        },
-        {
-            name: 'Kushboo',
-            title: 'Platform Engineer'
-        }
-    ];
 </script>
 
 <svelte:head>

@@ -210,7 +210,8 @@
     --retro-bg: #fafafb;
     --retro-border-tl: white;
     --retro-border-br: #87878a;
-    --retro-shadow: 10px 10px 0 0 #c7c7c9;
+    --retro-shadow: 10px 10px 0 0 rgba(199, 199, 201, 50%);
+    --retro-divider: #d8d8db;
 }
 
 /* dark theme */
@@ -221,9 +222,10 @@
 
     /* init 3.0 */
     --retro-bg: #2d2d31;
-    --retro-border-tl: white;
-    --retro-border-br: #87878a;
+    --retro-border-tl: rgba(255, 255, 255, 76%);
+    --retro-border-br: rgba(0, 0, 0, 24%);
     --retro-shadow: 8px 8px 0 0 rgba(0, 0, 0, 16%);
+    --retro-divider: #414146;
 }
 
 /* Container */
@@ -233,7 +235,7 @@
     }
 
     .retro {
-        @apply border-2 border-t-[var(--retro-border-tl)] border-r-[var(--retro-border-br)] border-b-[var(--retro-border-br)] border-l-[var(--retro-border-tl)] bg-[#FAFAFB];
+        @apply border-2 border-t-[var(--retro-border-tl)] border-r-[var(--retro-border-br)] border-b-[var(--retro-border-br)] border-l-[var(--retro-border-tl)] bg-[var(--retro-bg)];
 
         &.window {
             @apply shadow-[var(--retro-shadow)];

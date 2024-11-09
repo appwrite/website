@@ -14,18 +14,14 @@
             className
         )}
     >
-        <div
-            class={classNames('flex-1 space-y-1.5', {
-                '': alignment === 'left'
-            })}
-        >
+        <div class={classNames('flex-1 space-y-1.5')}>
             {#each Array.from({ length: 3 }) as _}
-                <div class="h-0.5 w-full bg-[#d8d8d8] dark:bg-[#414146]" />
+                <div class="h-0.5 w-full bg-[var(--retro-divider)]" />
             {/each}
         </div>
         <span
             class={classNames(
-                'font-aeonik-fono tracking-loose px-3 text-xs uppercase text-[#2D2D31] dark:text-[#EDEDF0]'
+                'font-aeonik-fono tracking-loose text-primary px-3 text-xs uppercase'
             )}><slot /></span
         >
 
@@ -36,7 +32,7 @@
             })}
         >
             {#each Array.from({ length: 3 }) as _}
-                <div class="h-0.5 w-full bg-[#d8d8d8] dark:bg-[#414146]" />
+                <div class="h-0.5 w-full bg-[var(--retro-divider)]" />
             {/each}
         </div>
     </div>
