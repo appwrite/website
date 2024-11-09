@@ -12,6 +12,7 @@
     import Platforms from './(components)/Platforms.svelte';
     import DevelopLocally from './(components)/DevelopLocally.svelte';
     import DeploySeamlessly from './(components)/DeploySeamlessly.svelte';
+    import Testimonials from './(components)/Testimonials.svelte';
 
     const title = 'Functions' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -42,13 +43,13 @@
         <Platforms />
         <DevelopLocally />
         <DeploySeamlessly />
-        <div>
-            <Bento />
-            <div class="bg-greyscale-50">
-                <Templates />
-                <OpenSource />
-            </div>
+        <Bento />
+        <div class="bg-greyscale-50">
+            <Templates />
+            <Testimonials />
+            <OpenSource />
         </div>
+
         <section class="web-u-sep-block-start web-u-padding-block-start-80 -mt-8 py-10">
             <div class="container">
                 <h4 class="text-label text-primary text-center">Keep exploring our products</h4>
