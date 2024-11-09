@@ -7,7 +7,7 @@
     import Logging from './animations/Logging.svelte';
 </script>
 
-<section class="relative py-10 md:py-20">
+<section class="relative pt-32 pb-40">
     <div class="container">
         <div
             class="mx-auto flex max-w-[350px] flex-col items-center justify-center gap-4 text-center"

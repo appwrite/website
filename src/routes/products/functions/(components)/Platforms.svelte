@@ -31,7 +31,7 @@
 
 <div
     class={classNames(
-        'container relative',
+        'container relative pt-32 pb-40',
         'after:absolute after:inset-0 after:bg-gradient-to-r after:from-[hsl(var(--p-body-bg-color))] after:via-transparent after:to-[hsl(var(--p-body-bg-color))]'
     )}
 >
