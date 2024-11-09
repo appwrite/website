@@ -52,7 +52,7 @@
             <OpenSource />
         </div>
 
-        <section class="web-u-sep-block-start web-u-padding-block-start-80 -mt-8 py-10">
+        <section class="web-u-sep-block-start -mt-8 py-40">
             <div class="container">
                 <h4 class="text-label text-primary text-center">Keep exploring our products</h4>
                 <ul
@@ -62,7 +62,7 @@
                     <li class="web-u-flex-basis-378">
                         <a
                             class="web-card is-normal"
-                            href="/docs/products/auth"
+                            href="/products/messaging"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
@@ -70,16 +70,17 @@
                             >
                                 <div class="flex items-center gap-2">
                                     <img
-                                        src="/images/icons/illustrated/dark/auth.png"
+                                        src="/images/icons/illustrated/dark/messaging.png"
                                         alt="auth"
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="text-body text-primary">Auth</h4>
+                                    <h4 class="text-body text-primary">Messaging</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
                                 </div>
                                 <p class="text-sub-body">
-                                    Build secure authentication and manage your users.
+                                    Use Appwrite messaging to send email, SMS, and push
+                                    notifications.
                                 </p>
                             </div>
                         </a>
@@ -95,12 +96,12 @@
                             >
                                 <div class="flex items-center gap-2">
                                     <img
-                                        src="/images/icons/illustrated/dark/messaging.png"
+                                        src="/images/icons/illustrated/dark/functions.png"
                                         alt="functions"
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="text-body text-primary">Messaging</h4>
+                                    <h4 class="text-body text-primary">Functions</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
                                 </div>
                                 <p class="text-sub-body">
