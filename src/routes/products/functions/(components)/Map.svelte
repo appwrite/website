@@ -133,7 +133,14 @@
     };
 </script>
 
-<div class="light bg-[#EDEDF0] !py-10">
+<div class="light bg-[#EDEDF0] pt-32 pb-40">
+    <div class="container flex flex-col items-center justify-center gap-8 text-center">
+        <h2 class="text-display text-primary">Optimize performance</h2>
+        <p class="text-description text-secondary max-w-xl">
+            Leverage the Appwrite Network for seamless auto-scaling. Explore regions for optimal
+            performance.
+        </p>
+    </div>
     <div
         class="container relative mx-auto flex h-full items-center justify-center py-10"
         bind:this={mapContainer}
