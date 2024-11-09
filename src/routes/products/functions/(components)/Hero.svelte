@@ -4,7 +4,7 @@
 </script>
 
 <div
-    class="flex min-h-[85vh] items-center bg-cover bg-bottom py-4 px-4 md:bg-center md:py-0 md:py-20 lg:px-8 xl:px-16"
+    class="flex min-h-[85vh] items-center bg-cover bg-bottom py-20 px-4 px-5 md:bg-center md:pt-32 md:pb-40 lg:px-8 xl:px-16"
 >
     <div class="grid items-center gap-16 md:grid-cols-2">
         <div class="space-y-6">
