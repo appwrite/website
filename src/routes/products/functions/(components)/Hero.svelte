@@ -30,14 +30,8 @@
             </div>
         </div>
         <img
-            class="hidden md:block"
             src={Phone}
-            alt="Phone screen alongside of a users table and a code snippet that controls Appwrite's messaging."
-        />
-        <img
-            class="block md:hidden"
-            src={PhoneMobile}
-            alt="Phone screen alongside of a users table and a code snippet that controls Appwrite's messaging."
+            alt="Phone screen alongside of a users table and a code snippet that controls Appwrite's functions."
         />
     </div>
 </div>
