@@ -5,7 +5,7 @@
 
     import CountdownGrid from './(components)/CountdownGrid.svelte';
     import Hero from './(components)/Hero.svelte';
-    import DayGrid from './(components)/day/DayGrid.svelte';
+    import DayOne from './(components)/days/DayOne.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
@@ -32,7 +32,11 @@
 <Main>
     <Hero />
     <CountdownGrid />
-    <DayGrid />
+
+    <div class="container divide-y divide-white/8">
+        <DayOne />
+        <DayOne />
+    </div>
     <div class="container">
         <FooterNav />
         <MainFooter />

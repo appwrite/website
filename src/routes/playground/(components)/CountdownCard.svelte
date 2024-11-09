@@ -18,7 +18,7 @@
     const { days, hours, minutes, seconds, hasReleased } = createCountdown(release);
 </script>
 
-<div>
+<a href="#{title.toLowerCase()}">
     <span class="text-caption font-aeonik-fono text-secondary mb-2 block uppercase"
         >Day {index}</span
     >
@@ -47,4 +47,4 @@
             >Domains<span class="text-accent">_</span>
         </span> -->
     </div>
-</div>
+</a>
