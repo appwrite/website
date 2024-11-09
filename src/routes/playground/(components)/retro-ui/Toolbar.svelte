@@ -1,14 +1,13 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
 
-    export let theme: 'dark' | 'light' = 'light';
     export let alignment: 'left' | 'center' = 'left';
     let className: string = '';
 
     export { className as class };
 </script>
 
-<div class={classNames('w-full', theme)}>
+<div class={classNames('w-full')}>
     <div
         class={classNames(
             'retro flex h-10 w-full items-center justify-between border-2 px-4',

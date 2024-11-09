@@ -13,6 +13,7 @@
     } from '$routes/init/(components)/ticket/index.js';
     import { BASE_URL } from '../constants.js';
     import { loginGithub } from '$routes/playground/helpers';
+    import { classNames } from '$lib/utils/classnames';
 
     export let data;
 
@@ -72,12 +73,17 @@
 </svelte:head>
 
 <Main>
-    <div class="relative flex h-full w-full items-center justify-center bg-[#F4F4F7] px-8">
-        <Window theme="light" class="flex h-full flex-1 flex-col">
+    <div
+        class={classNames(
+            'checkerboard relative flex h-full w-full items-center justify-center bg-[#F4F4F7] !py-20 px-8',
+            'after:absolute after:inset-0 after:-z-0 after:bg-gradient-to-t after:from-transparent after:via-white after:via-75% after:to-white'
+        )}
+    >
+        <Window theme="light" class="flex aspect-[12.8/7.4] h-full flex-1 flex-col">
             <span slot="toolbar">Init_Ticket</span>
             <div
                 slot="content"
-                class="mt-4 flex flex-1 flex-col items-center justify-between gap-48 border-b-2 border-l-2 border-black bg-white p-8 outline-2 outline-[#D8D8DB] [outline-style:inset] md:flex-row"
+                class="mt-4 flex flex-1 flex-col items-center justify-between gap-24 border-b-2 border-l-2 border-black bg-white p-8 outline-2 outline-[#D8D8DB] [outline-style:inset] md:flex-row"
             >
                 <div class="flex flex-col">
                     <Lockup class="w-3/4" />

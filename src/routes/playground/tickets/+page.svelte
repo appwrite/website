@@ -31,7 +31,7 @@
 </svelte:head>
 
 <Main>
-    <div class="relative flex h-full w-full items-center justify-center bg-[#F4F4F7]">
+    <div class="checkerboard relative flex h-full w-full items-center justify-center bg-[#F4F4F7]">
         <Window theme="light" class="flex h-full flex-1 flex-col">
             <span slot="toolbar">Init_Ticket</span>
             <div
@@ -54,7 +54,6 @@
                         </button>
                     </div>
                 </div>
-                <Ticket />
             </div>
         </Window>
     </div>

@@ -10,13 +10,8 @@
 </script>
 
 <div class={classNames('w-full', theme)}>
-    <div
-        class={classNames(
-            'retro window relative z-10 flex flex-1 flex-col border-2 p-2',
-            className
-        )}
-    >
-        <Toolbar {alignment} {theme}><slot name="toolbar" /></Toolbar>
+    <div class={classNames('retro window relative z-10 flex flex-col border-2 p-2', className)}>
+        <Toolbar {alignment}><slot name="toolbar" /></Toolbar>
 
         <div class="flex flex-1 flex-col">
             <slot name="content" />

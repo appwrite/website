@@ -46,26 +46,3 @@
         </div>
     </Window>
 </div>
-
-<style>
-    .checkerboard {
-        --color: #222;
-        --size: var(--spacing-2);
-        --gap: calc(var(--size) * 0.5);
-        background-color: var(--color);
-        background-image: repeating-linear-gradient(
-                to right,
-                transparent,
-                transparent var(--size),
-                #111 var(--size),
-                #111 calc(var(--size) + var(--gap))
-            ),
-            repeating-linear-gradient(
-                to bottom,
-                transparent,
-                transparent var(--size),
-                #111 var(--size),
-                #111 calc(var(--size) + var(--gap))
-            );
-    }
-</style>
