@@ -10,4 +10,4 @@
     export let format: $$Props['format'] = { notation: 'compact', minimumIntegerDigits: 2 };
 </script>
 
-<NumberFlow class="min-w-[20px] text-center" {format} {value} />
+<NumberFlow class="text-center" {format} {value} />

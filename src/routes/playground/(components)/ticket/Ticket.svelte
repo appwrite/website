@@ -1,7 +1,7 @@
 <script lang="ts">
     import Globe from '../../(assets)/globe.svg';
-    import WindowSticker from '../../(assets)/window.svg';
-    import Logo from '../../(assets)/logo.svg';
+    import WindowSticker from '../../(assets)/stickers/window.svg';
+    import Logo from '../../(assets)/stickers/logo.svg';
     import { writable } from 'svelte/store';
     import Window from '../retro-ui/Window.svelte';
     import Lockup from '../Lockup.svelte';
@@ -58,8 +58,9 @@
                             {#each c as row}
                                 {#each row as level, index}
                                     <div
-                                        class="bg-greyscale-300 size-2 data-[level='0']:opacity-8 data-[level='1']:opacity-25 data-[level='2']:opacity-50 data-[level='3']:opacity-75"
+                                        class="grid-block size-2 data-[level='0']:opacity-8 data-[level='1']:opacity-25 data-[level='2']:opacity-50 data-[level='3']:opacity-75"
                                         data-level={level}
+                                        style:animation-delay={`${(index + 1) * 100 + 250}ms`}
                                     />
                                 {/each}
                             {/each}
@@ -84,6 +85,15 @@
         }
     }
 
+    @keyframes grid {
+        0% {
+            background-color: hsl(var(--color-greyscale-hue) 2% 68% / 0);
+        }
+        100% {
+            background-color: hsl(var(--color-greyscale-hue) 2% 68% / 1);
+        }
+    }
+
     @keyframes load {
         0% {
             clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
@@ -91,6 +101,10 @@
         100% {
             clip-path: polygon(0 0, 110% 0, 110% 110%, 0 110%);
         }
+    }
+
+    .grid-block {
+        animation: grid 1.5s forwards;
     }
 
     .ticket {

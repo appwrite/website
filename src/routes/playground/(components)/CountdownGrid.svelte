@@ -3,28 +3,34 @@
     import { addDays } from 'date-fns';
     import CountdownCard from './CountdownCard.svelte';
     import Window from './retro-ui/Window.svelte';
+    import Domains from '../(assets)/illustrations/domains.svg';
 
-    let base = new Date('2024-11-04T13:00:00.000Z');
+    let base = new Date('2024-11-09T13:00:00.000Z');
     let days = [
         {
             title: 'Domains',
-            release: base
+            release: base,
+            illustration: Domains
         },
         {
             title: 'Sites',
-            release: addDays(base, 1)
+            release: addDays(base, 1),
+            illustration: Domains
         },
         {
             title: 'Domains',
-            release: addDays(base, 2)
+            release: addDays(base, 2),
+            illustration: Domains
         },
         {
             title: 'Sites',
-            release: addDays(base, 3)
+            release: addDays(base, 3),
+            illustration: Domains
         },
         {
             title: 'Domains',
-            release: addDays(base, 4)
+            release: addDays(base, 4),
+            illustration: Domains
         }
     ];
 </script>
@@ -39,8 +45,8 @@
         <Window theme="dark">
             <span slot="toolbar">Init<span class="text-accent">_</span>Schedule</span>
             <div slot="content" class="grid gap-4 pt-10 px-4 pb-4 md:grid-cols-5">
-                {#each days as day, i}
-                    <CountdownCard title={day.title} index={i} date={day.release} />
+                {#each days as day, index}
+                    <CountdownCard {...day} {index} />
                 {/each}
             </div>
         </Window>
