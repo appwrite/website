@@ -1,38 +1,9 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import { addDays } from 'date-fns';
     import CountdownCard from './CountdownCard.svelte';
     import Window from './retro-ui/Window.svelte';
-    import Domains from '../(assets)/illustrations/domains.svg';
 
-    let base = new Date('2024-11-09T13:00:00.000Z');
-    let days = [
-        {
-            title: 'Domains',
-            release: base,
-            illustration: Domains
-        },
-        {
-            title: 'Sites',
-            release: addDays(base, 1),
-            illustration: Domains
-        },
-        {
-            title: 'Domains',
-            release: addDays(base, 2),
-            illustration: Domains
-        },
-        {
-            title: 'Sites',
-            release: addDays(base, 3),
-            illustration: Domains
-        },
-        {
-            title: 'Domains',
-            release: addDays(base, 4),
-            illustration: Domains
-        }
-    ];
+    export let days: Array<{ title: string; release: Date; illustration: string }> = [];
 </script>
 
 <div

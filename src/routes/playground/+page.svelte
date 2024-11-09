@@ -6,10 +6,42 @@
     import CountdownGrid from './(components)/CountdownGrid.svelte';
     import Hero from './(components)/Hero.svelte';
     import DayOne from './(components)/days/DayOne.svelte';
+    import Domains from './(assets)/illustrations/domains.svg';
+    import { addDays } from 'date-fns';
+    import Day from './(components)/days/Day.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
     const ogImage = buildOpenGraphImage('init', description);
+
+    let base = new Date('2024-11-08T13:00:00.000Z');
+    let days = [
+        {
+            title: 'Domains',
+            release: base,
+            illustration: Domains
+        },
+        {
+            title: 'Sites',
+            release: addDays(base, 1),
+            illustration: Domains
+        },
+        {
+            title: 'Domains',
+            release: addDays(base, 2),
+            illustration: Domains
+        },
+        {
+            title: 'Sites',
+            release: addDays(base, 3),
+            illustration: Domains
+        },
+        {
+            title: 'Domains',
+            release: addDays(base, 4),
+            illustration: Domains
+        }
+    ];
 </script>
 
 <svelte:head>
@@ -31,11 +63,26 @@
 
 <Main>
     <Hero />
-    <CountdownGrid />
+    <CountdownGrid {days} />
 
-    <div class="container divide-y divide-white/8">
-        <DayOne />
-        <DayOne />
+    <div class="container space-y-20 divide-y divide-white/8 py-20">
+        {#each days as day, i}
+            <Day release={day.release}>
+                {#if i === 0}
+                    <DayOne index={i} release={day.release} />
+                {:else if i === 1}
+                    <DayOne index={i} release={day.release} />
+                {:else if i === 2}
+                    <DayOne index={i} release={day.release} />
+                {:else if i === 3}
+                    <DayOne index={i} release={day.release} />
+                {:else if i === 4}
+                    <DayOne index={i} release={day.release} />
+                {:else}
+                    <DayOne index={i} release={day.release} />
+                {/if}
+            </Day>
+        {/each}
     </div>
     <div class="container">
         <FooterNav />

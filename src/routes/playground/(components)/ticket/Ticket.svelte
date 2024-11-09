@@ -40,7 +40,7 @@
                 <Lockup class="mt-auto mb-0 h-[75px] w-[150px]" />
             </div>
 
-            {#each $order as i, index}
+            <!-- {#each $order as i, index}
                 <div data-index={index} class="absolute z-10">
                     <img
                         draggable
@@ -50,8 +50,8 @@
                         style:left={index * 20 + '%'}
                     />
                 </div>
-            {/each}
-            <div class="absolute inset-0 z-0">
+            {/each} -->
+            <div class="absolute inset-x-0 top-0 z-0">
                 {#await contributions then c}
                     {#if c && show_contributions}
                         <div class="flex flex-wrap gap-1" out:fade={{ duration: 100 }}>
@@ -108,8 +108,6 @@
     }
 
     .ticket {
-        animation:
-            stutter 1.25s steps(2, end) 1.5s infinite,
-            load 1.25s steps(5) forwards;
+        animation: load 1.25s steps(5) forwards;
     }
 </style>

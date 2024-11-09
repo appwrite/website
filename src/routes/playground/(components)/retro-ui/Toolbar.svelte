@@ -26,7 +26,7 @@
         </div>
         <span
             class={classNames(
-                'font-aeonik-fono tracking-loose px-6 text-xs uppercase text-[#2D2D31] dark:text-[#EDEDF0]'
+                'font-aeonik-fono tracking-loose px-3 text-xs uppercase text-[#2D2D31] dark:text-[#EDEDF0]'
             )}><slot /></span
         >
 

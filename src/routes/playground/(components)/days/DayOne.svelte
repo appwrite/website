@@ -1,17 +1,25 @@
-<script>
+<script lang="ts">
     import Globe from '../../(assets)/globe.svg';
     import { Grid } from '../grid';
     import KeyIllustration from './KeyIllustration.svelte';
+
+    type $$Props = {
+        release: Date;
+        index: number;
+    };
+
+    export let release: $$Props['release'];
+    export let index: $$Props['index'];
 </script>
 
-<div class="scroll-mt-10 space-y-4 py-20" id="sites">
+<div class="scroll-mt-10 space-y-4 pb-20" id="day-{index}">
     <KeyIllustration
         title="Sites"
         description="The new Appwrite CLI allows you to test your functions locally, easily migrate databases and more."
         url="/"
-        index={0}
         illustration={Globe}
-        release={new Date()}
+        {index}
+        {release}
     />
 
     <Grid.Root columns={2}>
