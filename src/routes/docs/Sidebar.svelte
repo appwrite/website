@@ -70,6 +70,12 @@
                     href: '/docs/products/ai',
                     icon: 'icon-chip',
                     isParent: true
+                },
+                {
+                    label: 'Network',
+                    href: '/docs/products/ai',
+                    icon: 'icon-cloud',
+                    isParent: true
                 }
             ]
         },
