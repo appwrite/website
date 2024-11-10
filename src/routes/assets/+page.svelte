@@ -66,26 +66,11 @@
             <div class="web-grid-120-1fr-auto">
                 <header class="web-grid-120-1fr-auto-header">
                     <h1 class="text-display font-aeonik-pro text-primary">Brand assets</h1>
-                    <div class="web-is-only-mobile">
-                        <button
-                            class="web-u-padding-block-20 text-primary web-is-only-mobile
-                        web-u-margin-inline-32-negative web-u-sep-block
-                       mt-6 flex w-full w-full"
-                            style="inline-size: 100vw;"
-                           on:click={() => (showToc = !showToc)}
-                        >
-                            <span
-                                class="container flex w-full items-center justify-between"
-                                style="inline-size: 100%;"
-                            >
-                                <span class="text-description">Table of contents</span>
-                                <span class="icon-menu-alt-4" aria-hidden="true" />
-                            </span>
-                        </button>
-                    </div>
                 </header>
+
                 <TocNav bind:showToc />
-                <main class="web-grid-120-1fr-auto-main /web-is-mobile-closed" id="main">
+
+                <main class="web-grid-120-1fr-auto-main" id="main">
                     <div class="web-content" class:web-is-mobile-closed={showToc && !showToc}>
                         <section>
                             <p>
@@ -635,6 +620,23 @@
                 position: relative;
                 margin-top: 2rem;
             }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+        header {
+            padding-block-end: unset;
+        }
+
+        header,
+        main {
+            padding-left: var(--spacing-5, 1.25rem);
+            padding-right: var(--spacing-5, 1.25rem);
         }
     }
 </style>
