@@ -30,11 +30,36 @@
                 },
                 {
                     label: 'CDN',
-                    href: '/docs/products/network/edges'
+                    href: '/docs/products/network/cdn'
+                },
+                {
+                    label: 'Endpoints',
+                    href: '/docs/products/network/endpoints'
+                }
+            ]
+        },
+        {
+            label: 'Features',
+            items: [
+                {
+                    label: 'DDoS mitigation',
+                    href: '/docs/products/network/ddos'
+                },
+                {
+                    label: 'TLS',
+                    href: '/docs/products/network/tls'
+                },
+                {
+                    label: 'WAF',
+                    href: '/docs/products/network/waf'
                 },
                 {
                     label: 'Compression',
                     href: '/docs/products/network/compression'
+                },
+                {
+                    label: 'Caching',
+                    href: '/docs/products/network/caching'
                 }
             ]
         }

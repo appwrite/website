@@ -68,7 +68,7 @@
                 {
                     label: 'Network',
                     href: '/docs/products/network',
-                    icon: 'icon-cloud',
+                    icon: 'icon-share',
                     isParent: true
                 },
                 {
