@@ -3,6 +3,7 @@ layout: tutorial
 title: Build an ideas tracker with Android
 description: Learn to build an Android app with no backend code using an Appwrite backend.
 framework: Android
+back: /docs/tutorials
 category: Mobile and native
 step: 1
 ---

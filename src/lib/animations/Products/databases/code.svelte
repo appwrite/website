@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Code from '$lib/animations/CodeWindow/Code.svelte';
+    import Code from '$lib/animations/CodeWindow/Code.svelte';
 
-	let content = `
+    let content = `
 const result = databases.createDocument(  
 	'Your-tasks',  
 	tasks,  

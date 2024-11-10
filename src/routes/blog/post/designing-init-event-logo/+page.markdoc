@@ -12,7 +12,7 @@ featured: false
 
 After the success of our first [Init](https://appwrite.io/init) event in Spring of 2024, we knew there would be more coming soon, and that, visually, we had set ourselves a high bar. Even though Init is a fully online, virtual event, Appwrite’s visual design team created something tangible and interactive with the fully customizable, and shareable [Init event tickets](https://appwrite.io/init/tickets). In early July, knowing that our next event was just around the corner, we gathered again and began to brainstorm the visual design style that we wanted to bring to Init 2.0.
 
-# The Design Process
+# The Design process
 
 As a team, we always begin these design sprints with an empty FigJam board, where we can add notes, add screenshots that might give us inspiration, and have discussions about the things we like and dislike. Since this was our second time ideating for Init, we were able to apply many learnings from previous processes, which made this (and subsequent phases) feel more streamlined.
 
@@ -42,7 +42,7 @@ We all agreed this was the right direction- it felt snappy and performant, but w
 
 What we ended up shipping was much simpler, and significantly more performant, relying entirely on CSS.
 
-# Animating the Event Logo
+# Animating the event logo
 
 > At Appwrite, we build our marketing site in SvelteKit, but these principles will easily translate into any component based framework.
 
@@ -83,7 +83,7 @@ const paths = [
 </svg>
 ```
 
-With a few ways not to do the animation under my belt, the final step was finding the correct solution. I started experimenting with CSS animations, and while doing some digging, I landed on [this Stack Overflow post](https://stackoverflow.com/questions/46443036/svg-stroke-animation-increase-length), which gave me the what I needed to start. Utilizing the power of `stroke-dasharray` and `stroke-dashoffset` I was able to create a simple animation, applying it to each path.
+With a few ways not to do the animation under my belt, the final step was finding the correct solution. I started experimenting with CSS animations, and while doing some digging, I landed on [this Stack Overflow post](https://stackoverflow.com/questions/46443036/svg-stroke-animation-increase-length), which gave me what I needed to start. Utilizing the power of `stroke-dasharray` and `stroke-dashoffset` I was able to create a simple animation, applying it to each path.
 
 ```css
 :root {
@@ -125,7 +125,7 @@ Applying the same animation properties to 75% and 100% is a nice little hack to 
 
 {% video src="/images/blog/designing-init/final.mov" /%}
 
-## Animated Lines
+## Animated lines
 
 The background lines were much simpler.
 
@@ -246,6 +246,8 @@ This helped expand the concept we began developing with the Init lockup and made
 
 # Conclusion
 
-As a design team, our goal is to do work that sets a standard of excellence for not only ourselves, but also the industry as a whole. Here, we set out to build something that was visually appealing,  pushed the quality up another level from 1.0, was performant, and fit the themes of our event. Through a lot of hard work, learning, and iteration, we feel as though we managed to do all three. We’re constantly evolving, and will build on what we learned here to make our next events, and every other surface even better. Keep an eye out, and thanks for joining Init 2.0!
+As a design team, our goal is to do work that sets a standard of excellence for not only ourselves, but also the industry as a whole. Here, we set out to build something that was visually appealing, pushed the quality from 1.0, was performant, and fit the themes of our event. Through a lot of hard work, learning, and iteration, we feel as though we managed to do all four. We’re constantly evolving, and will build on what we learned here to make our next events, and every other surface even better. Keep an eye out, and thanks for joining Init!
 
-Shout out to Sara, Jade, Caio, and every other Appwriter who contributed to creating the Init 2.0 design!
+- More about [Init](https://appwrite.io/init)
+- [How to create tickets for your digital event](https://appwrite.io/blog/post/how-to-build-your-digital-event-tickets)
+- Join us on [Discord](https://appwrite.io/discord)

@@ -8,7 +8,7 @@
     <Lines />
 
     <div class="details">
-        <p class="web-description">The start of something new.</p>
+        <p class="text-description">The start of something new.</p>
         <div class="buttons">
             <a href="/init/tickets" class="web-button">Claim your ticket</a>
         </div>

@@ -67,10 +67,10 @@
 
 <Main omitMainId>
     <TocRoot>
-        <div class="web-container">
+        <div class="container">
             <div class="web-grid-120-1fr-auto">
                 <header class="web-grid-120-1fr-auto-header">
-                    <h1 class="web-title web-u-color-text-primary">{title}</h1>
+                    <h1 class="text-title font-aeonik-pro text-primary">{title}</h1>
                 </header>
                 <div class="web-is-only-mobile mobile-header"
                      style={showToc ? 'padding-block-end: 1.5rem;' : ''}>
@@ -89,7 +89,7 @@
                         class="u-flex u-main-space-between u-cross-center"
                         style="inline-size: 100%;"
                     >
-                        <span class="web-description">Table of contents</span>
+                        <span class="text-description">Table of contents</span>
                         <span class="icon-menu-alt-4" aria-hidden="true" />
                     </span>
                 </button>

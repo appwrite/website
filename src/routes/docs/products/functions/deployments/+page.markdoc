@@ -23,6 +23,12 @@ Throughout the life cycle of a deployment, it could have the following status.
 * `building`
 * A deployment is being built. Check the [build log](#build-logs) for more detailed logs.
 ---
+* `processing`
+* The function deployment has begun and has not finished.
+---
+* `waiting`
+* The deployment is queued but has not been picked up for processing.
+---
 * `failed`
 * A deployment was not successful. Check the [build log](#build-logs) for detailed logs for debugging.
 {% /table %}

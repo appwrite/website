@@ -16,7 +16,7 @@
     } = getTocCtx();
 </script>
 
-<ul class="web-page-steps-list web-sub-body-500">
+<ul class="web-page-steps-list text-sub-body font-medium">
     {#if tree && tree.length}
         {#each tree as heading, i (i)}
             <li>
