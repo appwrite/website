@@ -21,21 +21,21 @@
 {#if hasReleased}
     <div class="day">
         <div class="circle" aria-hidden />
-        <span class="web-eyebrow web-u-color-text-primary"
+        <span class="text-micro text-primary uppercase"
             >Day {number}<span class="web-u-color-text-accent">_</span></span
         >
-        <h2 class="web-label web-u-color-text-primary">{day.title}</h2>
+        <h2 class="text-label text-primary">{day.title}</h2>
         <div class="slot-wrapper">
             <slot />
         </div>
     </div>
 {:else}
     <div class="release">
-        <span class="web-eyebrow web-u-color-text-primary"
+        <span class="text-micro text-primary uppercase"
             >Day {number}<span class="web-u-color-text-accent">_</span></span
         >
         <div class="bottom">
-            <div class="countdown web-title">
+            <div class="countdown text-title font-aeonik-pro">
                 {#if $hours > 24}
                     {$days} {$days > 1 ? 'days' : 'day'}
                 {:else}

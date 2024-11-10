@@ -6,15 +6,15 @@
 </script>
 
 <div class="changelog-entry">
-    <time class="web-caption-400 padded" datetime={entry.date}>{formatDate(entry.date)}</time>
+    <time class="text-caption padded" datetime={entry.date}>{formatDate(entry.date)}</time>
     {#if entry.cover}
         <a href={entry.href} class="web-media">
-            <img src={entry.cover} alt="" loading="lazy" class="web-u-media-ratio-16-9 u-width-full-line" />
+            <img src={entry.cover} alt="" loading="lazy" class="web-u-media-ratio-16-9 w-full" />
         </a>
     {/if}
 
     <div class="padded">
-        <h2 class="web-title web-u-color-text-primary">
+        <h2 class="text-title font-aeonik-pro text-primary">
             <a href={entry.href}>
                 {entry.title}
             </a>

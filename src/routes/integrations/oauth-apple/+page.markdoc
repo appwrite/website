@@ -7,7 +7,7 @@ featured: false
 isPartner: true
 isNew: true
 cover: /images/integrations/oauth-apple/cover.png
-category: Auth
+category: auth
 product: 
     avatar: '/images/integrations/avatars/apple.png'
     vendor: Apple

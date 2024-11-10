@@ -6,6 +6,9 @@
         step: number;
         href: string;
         draft?: boolean;
+        difficulty?: string;
+        readtime?: string;
+        back: string;
     };
 </script>
 
@@ -21,11 +24,9 @@
 
     export let title: string;
     export let description: string;
-    export let difficulty: string;
-    export let readtime: string;
     export let step: number;
-    export let back: string;
     export let date: string;
+    export let back: string;
 
     setContext<LayoutContext>('headings', writable({}));
 
@@ -77,15 +78,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<DocsTutorial {title} {back} {toc} {tutorials} {date} currentStep={step}>
-    <svelte:fragment slot="metadata">
-        {#if difficulty}
-            <li>{difficulty}</li>
-        {/if}
-        {#if readtime}
-            <li>{readtime} min</li>
-        {/if}
-    </svelte:fragment>
+<DocsTutorial {toc} {back} {tutorials} {date} currentStep={step}>
     <slot />
 </DocsTutorial>
 <MainFooter variant="docs" />

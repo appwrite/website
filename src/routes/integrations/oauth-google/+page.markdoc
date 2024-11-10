@@ -7,7 +7,7 @@ featured: true
 isPartner: true
 isNew: true
 cover: /images/integrations/oauth-google/cover.png
-category: Auth
+category: auth
 product: 
     avatar: '/images/integrations/avatars/google.png'
     vendor: Google

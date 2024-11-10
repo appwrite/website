@@ -35,26 +35,6 @@
         />
     </Grid.Cell>
     <Grid.Cell columns={5}>
-        <Article
-            title="Celebrating 1.6 contributors"
-            illustration={contributors}
-            mobileIllustration={contributorsMobile}
-            url="/blog/post/contributors-1.6"
-            label="Learn more"
-        />
-    </Grid.Cell>
-
-    <Grid.Cell columns={3}>
-        <Article
-            url="/blog/post/designing-init-event-logo"
-            title="Designing Init"
-            label="Learn more"
-        />
-    </Grid.Cell>
-    <Grid.Cell columns={3}>
-        <Article url="/docs/products/auth/phone-sms" title="Docs: Mock numbers" label="Read docs" />
-    </Grid.Cell>
-    <Grid.Cell columns={6}>
         <Media
             title="Discord Stage: Day 4"
             url="https://discord.gg/zzj9pTzB?event=1268848185422381118"
@@ -67,10 +47,20 @@
                     release,
                     subtitle: format(release, 'MMM dd')
                 }}
-                --p-aspect-ratio="2.35/1"
             >
                 <svelte:component this={Animations.Numbers} />
             </DayCard>
         </Media>
+    </Grid.Cell>
+
+    <Grid.Cell columns={6}>
+        <Article
+            url="/blog/post/designing-init-event-logo"
+            title="Designing Init"
+            label="Learn more"
+        />
+    </Grid.Cell>
+    <Grid.Cell columns={6}>
+        <Article url="/docs/products/auth/phone-sms" title="Docs: Mock numbers" label="Read docs" />
     </Grid.Cell>
 </Grid.Root>
