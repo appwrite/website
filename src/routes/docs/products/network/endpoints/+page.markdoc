@@ -14,7 +14,7 @@ The **`appwrite.network`** domain provides geo-balanced endpoints that route tra
 - **Global traffic distribution**: Automatically balancing traffic across the edge network for consistent performance.  
 
 Example:  
-`https://[ID].appwrite.network`  
+- `https://[ID].appwrite.network`  
 
 Use this endpoint when optimizing for low-latency and global availability is critical for your functions.
 
@@ -26,7 +26,8 @@ The **`[REGION].cloud.appwrite.io`** domain directs traffic specifically to the 
 - **Regulatory compliance**: Ensuring data residency requirements are met by targeting specific regions.  
 
 Example:  
-`https://fra.cloud.appwrite.io`  
+- `https://fra.cloud.appwrite.io`  
+- `https://nyc.cloud.appwrite.io`  
 
 Use this endpoint when direct access to region-specific infrastructure is required, this is the endpoint you will use to access your Appwrite API or if you want to execute functions directly from your Appwrite SDK.
 
