@@ -72,31 +72,14 @@
                 <header class="web-grid-120-1fr-auto-header">
                     <h1 class="text-title font-aeonik-pro text-primary">{title}</h1>
                 </header>
-                <div class="web-is-only-mobile mobile-header"
-                     style={showToc ? 'padding-block-end: 1.5rem;' : ''}>
-                    <button
-                    class="toc-btn u-position-sticky u-main-space-between u-cross-center
-                web-u-padding-20 web-u-margin-inline-20-negative web-u-color-text-primary web-is-only-mobile
-                u-margin-block-start-24 web-u-sep-block web-u-filter-blur-8"
-                    style:--inset-block-start="4.5rem"
-                    style:inline-size="100vw"
-                    style:background-color="hsl(var(--p-body-bg-color) / 0.1)"
-                    style:translate="0 {$isHeaderHidden ? '-4.5rem' : '0'}"
-                    style:z-index="1"
-                    on:click={() => (showToc = !showToc)}
-                >
-                    <span
-                        class="u-flex u-main-space-between u-cross-center"
-                        style="inline-size: 100%;"
-                    >
-                        <span class="text-description">Table of contents</span>
-                        <span class="icon-menu-alt-4" aria-hidden="true" />
-                    </span>
-                </button>
-                </div>
+
                 <TocNav bind:showToc />
+
                 <main class="web-grid-120-1fr-auto-main /web-is-mobile-closed" id="main">
-                    <div class="web-content is-count-headers" class:web-is-mobile-closed={showToc && !showToc}>
+                    <div
+                        class="web-content is-count-headers"
+                        class:web-is-mobile-closed={showToc && !showToc}
+                    >
                         <!-- svelte-ignore a11y-hidden -->
                         <h2 aria-hidden="true">Introduction</h2>
                         <slot />
@@ -115,17 +98,20 @@
         opacity: 0;
     }
 
-    .toc-btn {
-        display: flex;
-        transition: translate 0.3s ease;
-    }
-
     @media (max-width: 768px) {
-      .mobile-header {
-        top: 0;
-        z-index: 1200;
-        position: sticky;
-        //background: hsl(var(--p-body-bg-color));
-      }
+        .container {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+        header {
+            padding-block-end: unset;
+        }
+
+        header,
+        main {
+            padding-left: var(--spacing-5, 1.25rem);
+            padding-right: var(--spacing-5, 1.25rem);
+        }
     }
 </style>
