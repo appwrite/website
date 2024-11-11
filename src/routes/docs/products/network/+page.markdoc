@@ -23,7 +23,7 @@ Edge nodes for fast request processing and reduced round-trip times.
 {% cards_item href="/docs/products/network/cdn" title="CDN" %}
 Distributed caching with optimized routing for faster, more reliable data delivery.
 {% /cards_item %}
-{% cards_item href="/docs/products/network/entrypoints" title="Entrypoints" %}
+{% cards_item href="/docs/products/network/endpoints" title="Entrypoints" %}
 Distributed caching with optimized routing for faster, more reliable data delivery.
 {% /cards_item %}
 {% /cards %}

@@ -52,4 +52,4 @@ Use this endpoint for scenarios where compute needs to happen close to your data
 | `https://[REGION].cloud.appwrite.io` | Direct access to region services                     |
 | `https://[ID].[REGION].appwrite.run` | Region-based compute and function execution          |
 
-Knowing how these entrypoints work helps you choose the right one for your needs, ensuring better performance and alignment with your application's compliance requirements.
+Knowing how these endpoints work helps you choose the right one for your needs, ensuring better performance and alignment with your application's compliance requirements.
