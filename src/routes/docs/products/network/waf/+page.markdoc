@@ -39,7 +39,7 @@ The WAF functions as a protective barrier at the application layer (Layer 7) of 
 
 If you're an enterprise customer, reach out to your success manager to enable WAF for your applications. They'll guide you through the setup process, help configure custom rules, and ensure your application is fully protected.  
 
-For more information on upgrading to the enterprise tier, [contact sales](https://appwrite.io/contact-us/enterprise).
+For more information on upgrading to the enterprise plan, [contact sales](https://appwrite.io/contact-us/enterprise).
 
 ## Configuration {% #configuration %}
 
