@@ -7,6 +7,7 @@
     import { onMount } from 'svelte';
 
     export let toc: Array<TocItem>;
+    export let back: string;
     export let currentStep: number;
     export let date: string;
 
@@ -44,6 +45,15 @@
     <article class="web-article contents">
         <header class="web-article-header">
             <div class="web-article-header-start web-u-cross-start flex flex-col">
+                {#if back}
+                    <a
+                        href={back}
+                        class="web-icon-button web-is-only-mobile"
+                        aria-label="previous page"
+                    >
+                        <span class="icon-cheveron-left" aria-hidden="true" />
+                    </a>
+                {/if}
                 <ul class="web-metadata web-caption-400">
                     {#if currentStepItem.difficulty}
                         <li>{currentStepItem.difficulty}</li>
@@ -53,7 +63,21 @@
                     {/if}
                 </ul>
                 <div class="u-cross-center relative flex">
-                    <h1 class="web-title">{firstStepItem?.title}</h1>
+                    {#if back}
+                        <a
+                            href={back}
+                            class="
+						web-button is-text is-only-icon web-u-cross-center
+						web-is-not-mobile -translate-x-1/2"
+                            aria-label="previous page"
+                        >
+                            <span
+                                class="icon-cheveron-left web-u-font-size-24 web-u-color-text-primary"
+                                aria-hidden="true"
+                            />
+                        </a>
+                    {/if}
+                    <h1 class="web-title lg:-ml-5">{firstStepItem?.title}</h1>
                 </div>
             </div>
             <div class="web-article-header-end" />
@@ -161,7 +185,7 @@
                         </li>
                     {/each}
                 </ol>
-                <div class="border-greyscale-900/[0.04] border-t pt-5">
+                <div class="border-greyscale-900/4 border-t pt-5">
                     <button class="web-link inline-flex items-center gap-2" use:scrollToTop>
                         <span class="web-icon-arrow-up" aria-hidden="true" />
                         <span class="text-caption">Back to top</span>
