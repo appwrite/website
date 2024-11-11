@@ -4,6 +4,7 @@ title: Server-side authentication with Astro
 description: Add SSR authentication to your Astro app with Appwrite
 step: 1
 difficulty: beginner
+back: /docs/tutorials
 readtime: 20
 framework: Astro SSR
 category: Auth
