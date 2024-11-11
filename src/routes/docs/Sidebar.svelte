@@ -69,7 +69,8 @@
                     label: 'Network',
                     href: '/docs/products/network',
                     icon: 'icon-share',
-                    isParent: true
+                    isParent: true,
+                    new: true,
                 },
                 {
                     label: 'AI',
