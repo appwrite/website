@@ -1,6 +1,6 @@
 <script lang="ts">
     import { flip } from '$lib/utils/flip';
-    import { crossfade, scale, slide } from 'svelte/transition';
+    import { scale, slide } from 'svelte/transition';
     import { functionsController } from '.';
 
     const { state } = functionsController;

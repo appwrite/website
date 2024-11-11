@@ -355,6 +355,7 @@
 </Main>
 
 <style lang="scss">
+    @use '$scss/abstract/functions' as f;
     @use '$scss/abstract/mixins/border-gradient' as gradients;
 
     .hero {
@@ -456,7 +457,7 @@
             padding-inline: 4rem;
 
             display: flex;
-            gap: pxToRem(32);
+            gap: f.pxToRem(32);
             flex-shrink: 0;
 
             > * {
