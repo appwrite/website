@@ -98,7 +98,7 @@ function App() {
           <Navbar /> {/* Add the navbar before page content */}
           <main>{isLoginPage ? <Login /> : <Home />}</main>
         </IdeasProvider>
-      <UserProvider>
+      </UserProvider>
     </div>
   );
 }

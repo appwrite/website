@@ -16,7 +16,7 @@ This allows anyone to create and read files in this bucket.
 
 # Create file {% #create-file %}
 
-To upload a file, add this to you web, Flutter, Apple, or Android app.
+To upload a file, add this to your web, Flutter, Apple, or Android app.
 
 {% multicode %}
   ```client-web
