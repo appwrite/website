@@ -271,7 +271,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/products/storage" class="web-card is-normal">
+                        <a href="/docs/products/network" class="web-card is-normal">
                             <img
                                 src="/images/icons/illustrated/dark/storage.png"
                                 alt=""
