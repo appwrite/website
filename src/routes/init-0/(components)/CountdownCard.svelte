@@ -34,12 +34,4 @@
         justify-content: center;
         align-items: center;
     }
-
-    .text-title font-aeonik-pro {
-        margin-block-start: 0.75rem;
-    }
-
-    .text-sub-body font-medium {
-        margin-block-start: 0.5rem;
-    }
 </style>

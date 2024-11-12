@@ -108,10 +108,6 @@
                 display: flex;
                 align-items: center;
                 gap: 0.75rem;
-
-                .web-label {
-                    margin-block-start: 0.25rem;
-                }
             }
 
             h4 {
