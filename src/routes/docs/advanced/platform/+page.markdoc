@@ -73,7 +73,7 @@ Coming soon.
 {% /cards_item %}
 
 {% cards_item href="/docs/advanced/platform/enterprise" title="Enterprise" %}
-Coming soon.
+Learn about Appwrite Enterprise, for large organizations with advanced needs.
 {% /cards_item %}
 
 {% cards_item href="/docs/advanced/platform/oss" title="Open source" %}
