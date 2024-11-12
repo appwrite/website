@@ -8,6 +8,7 @@
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
     import { classNames } from '$lib/utils/classnames';
+    import Tooltip from '$lib/components/Tooltip.svelte';
 
     type Table = {
         title: string;
@@ -220,7 +221,7 @@
                 {
                     title: 'Dedicated databases',
                     free: '-',
-                    pro: 'Coming Soon',
+                    pro: 'Coming soon',
                     scale: 'Coming soon',
                     enterprise: 'Coming soon'
                 }
@@ -297,7 +298,7 @@
                     enterprise: 'Custom'
                 },
                 {
-                    title: 'Additional concurrent connections',
+                    title: 'Additional connections',
                     free: '-',
                     pro: '$5 per 1,000',
                     scale: '$5 per 1,000',
@@ -338,6 +339,7 @@
                 },
                 {
                     title: 'Content compression',
+                    info: 'Support for brotli, zstd and gzip for text compression and webp for image compression',
                     free: true,
                     pro: true,
                     scale: true,
@@ -354,8 +356,8 @@
                     title: 'Logs',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming Soon',
-                    enterprise: 'Coming Soon'
+                    scale: 'Coming soon',
+                    enterprise: 'Coming soon'
                 },
                 {
                     title: 'Firewall',
@@ -408,15 +410,15 @@
                     title: 'Custom organization roles',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming Soon',
-                    enterprise: 'Coming Soon'
+                    scale: 'Coming soon',
+                    enterprise: 'Coming soon'
                 },
                 {
                     title: 'Activity logs',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming Soon',
-                    enterprise: 'Coming Soon'
+                    scale: 'Coming soon',
+                    enterprise: 'Coming soon'
                 }
             ]
         },
@@ -637,7 +639,7 @@
                                         <th class="text-caption font-medium">
                                             <div class="flex items-center gap-1 text-left">
                                                 {row.title}
-                                                <!-- {#if row.info}
+                                                {#if row.info}
                                                     <Tooltip placement="top">
                                                         <span
                                                             class="icon-info"
@@ -647,7 +649,7 @@
                                                             {row.info}
                                                         </svelte:fragment>
                                                     </Tooltip>
-                                                {/if} -->
+                                                {/if}
                                             </div>
                                         </th>
                                         {#each cols as col, index}
