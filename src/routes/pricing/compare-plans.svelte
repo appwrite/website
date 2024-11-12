@@ -82,14 +82,14 @@
                     enterprise: 'Never'
                 },
                 {
-                    title: 'Organization Members',
+                    title: 'Organization members',
                     free: '1',
                     pro: '1',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 },
                 {
-                    title: 'Additional Organization members',
+                    title: 'Additional members',
                     free: '-',
                     pro: '$15 per member',
                     scale: '$0',
@@ -272,8 +272,8 @@
                 {
                     title: 'Additional executions',
                     free: '-',
-                    pro: '$2 per 1 Million',
-                    scale: '$2 per 1 Million',
+                    pro: '$2 per 1m',
+                    scale: '$2 per 1m',
                     enterprise: 'Custom'
                 },
                 {
@@ -313,6 +313,67 @@
             ]
         },
         {
+            title: 'Network',
+            rows: [
+                {
+                    title: 'Edge compute',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'DDoS mitigation',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Content delivery network',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Content compression',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'TLS encryption',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Logs',
+                    free: '-',
+                    pro: '-',
+                    scale: 'Coming Soon',
+                    enterprise: 'Coming Soon'
+                },
+                {
+                    title: 'Firewall',
+                    free: '-',
+                    pro: '-',
+                    scale: '-',
+                    enterprise: 'Custom rules'
+                },
+                {
+                    title: 'WAF',
+                    free: '-',
+                    pro: '-',
+                    scale: '-',
+                    enterprise: 'Custom rules'
+                },
+            ]
+        },
+        {
             title: 'Security',
             rows: [
                 {
@@ -345,13 +406,6 @@
                 },
                 {
                     title: 'Custom organization roles',
-                    free: '-',
-                    pro: '-',
-                    scale: 'Coming Soon',
-                    enterprise: 'Coming Soon'
-                },
-                {
-                    title: 'Network logs',
                     free: '-',
                     pro: '-',
                     scale: 'Coming Soon',
