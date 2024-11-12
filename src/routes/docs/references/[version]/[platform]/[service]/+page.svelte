@@ -267,7 +267,7 @@
                             </li>
                         {/each}
                     </ul>
-                    <div class="border-greyscale-900/[0.04] web-u-padding-block-20 border-t">
+                    <div class="border-greyscale-900/4 web-u-padding-block-20 border-t">
                         <button class="web-link inline-flex items-center gap-2" use:scrollToTop>
                             <span class="web-icon-arrow-up" aria-hidden="true" />
                             <span class="text-caption">Back to top</span>
