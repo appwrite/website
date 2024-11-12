@@ -25,7 +25,7 @@
                     icon: 'icon-cog'
                 },
                 {
-                    label: 'API reference',
+                    label: 'API references',
                     href: '/docs/references',
                     icon: 'icon-document',
                     isParent: true

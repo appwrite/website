@@ -7,7 +7,7 @@ description: Appwrite is a development platform designed to adapt you unique use
 Appwrite is a development platform designed to adapt your unique use cases.
 Appwrite provides features that help you maintain, scale, and integrate Appwrite with other platforms.
 
-# Integration
+# Integration {% #integration %}
 
 Appwrite is designed to integrate with both frontend and backend apps.
 Learn about advanced integrations and API response codes.
@@ -28,7 +28,7 @@ Learn about response codes and errors returned by Appwrite APIs.
 {% /cards_item %}
 {% /cards %}
 
-# Access control
+# Access control {% #access-control %}
 
 Appwrite is secure by default and provides tools for you to manage
 access control and prevent abuse.
@@ -51,7 +51,7 @@ Create and manage API keys use by Server SDKs.
 {% /cards_item %}
 {% /cards %}
 
-# Plans
+# Plans {% #plans %}
 
 Learn which plan best suits your organization and how to manage billing.
 
@@ -81,7 +81,7 @@ Appwrite provides special plans for open source projects.
 {% /cards_item %}
 {% /cards %}
 
-# Configuration
+# Configuration {% #configuration %}
 
 Configure custom domains and customize communication templates.
 
