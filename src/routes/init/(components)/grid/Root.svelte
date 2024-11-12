@@ -8,11 +8,11 @@
 </div>
 
 <style lang="scss">
-    @use '$scss/abstract' as *;
+    @use '$scss/abstract/functions' as f;
 
     .grid {
         display: flex;
-        gap: pxToRem(32);
+        gap: f.pxToRem(32);
         flex-direction: column;
 
         @media screen and (min-width: 768px) {

@@ -138,7 +138,7 @@ app.post('/login', async (req, res) => {
             httpOnly: true,
             secure: true,
             sameSite: 'strict',
-            maxAge: sesion.expire
+            expires: new Date(session.expire),
             path: '/',
         });
 

@@ -1,5 +1,4 @@
 <script lang="ts">
-    import Button from './ui/Button.svelte';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { classNames } from '$lib/utils/classnames';
     import { trackEvent } from '$lib/actions/analytics';
