@@ -27,6 +27,13 @@ export default defineConfig({
             includePublic: true
         })
     ],
+    css: {
+        preprocessorOptions: {
+            scss: {
+                api: 'modern'
+            }
+        }
+    },
     build: {
         reportCompressedSize: false
     },
