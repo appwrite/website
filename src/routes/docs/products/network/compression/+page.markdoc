@@ -40,7 +40,7 @@ This selection is based on the nature of these content types being easily compre
 ## Prioritizations {% #prioritizations %}
 Appwrite prioritizes Brotli over Gzip due to Brotli’s more efficient compression ratio, especially when dealing with text-based content like HTML, CSS, and JSON files. Brotli uses a sliding window dictionary that results in higher compression ratios at slower speeds, but in an HTTP/2 or HTTP/3 environment, the benefits outweigh the costs. Gzip is used as a fallback when Brotli is not supported by the client.
 
-| Algorithm | Ratio             | Browsers              | Notes                                             |
+| Algorithm {% width=120 %} | Ratio {% width=120 %}            | Browsers              | Notes                                             |
 |-----------|-------------------|-----------------------|---------------------------------------------------|
 | Brotli    | High              | All modern browsers   | Optimal for small text files; highly efficient.   |
 | Gzip      | Medium            | Universal             | Broad compatibility with older and modern clients.|
@@ -99,7 +99,7 @@ const result = storage.getFilePreview(
 console.log(result.href);
 ```
 
-| Algorithm | Formats           | Ratio             | Notes                |
+| Algorithm {% width=120 %} | Formats           | Ratio {% width=120 %}             | Notes                |
 | --------- | ----------------- | ----------------- | -------------------- |
 | WebP      | PNG, JPEG, GIF    | High              | Great balance of compression efficiency and visual quality |
 | AVIF      | PNG, JPEG, GIF    | Best              | Highest compression rate for modern use cases |

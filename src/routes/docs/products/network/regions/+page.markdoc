@@ -12,7 +12,7 @@ Appwrite regions are geographic locations where all your application's core infr
 
 Appwrite is currently available in the following list of regions:
 
-| Region              | Code   | Endpoint                                | Status          |
+| Region {% width=120 %}             | Code{% width=120 %}   | Endpoint                                | Status{% width=120 %}          |
 |---------------------|--------|-----------------------------------------|-----------------|
 | Frankfurt           | FRA    | `https://fra.cloud.appwrite.io/v1`      | Available       |
 | New York            | NYC    | `https://nyc.cloud.appwrite.io/v1`      | Available       |
