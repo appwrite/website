@@ -11,7 +11,7 @@ With distributed infrastructure and multiple deployment regions, Appwrite enable
 [NETWORK MAP HERE - REGIONS, EDGES AND POPs INCLUDED]
 
 # Components {% #components %}
-The Appwrite network is composed of multiple components that work together to deliver a seamless experience for developers and end-users. These components include:
+The Appwrite Network is composed of multiple components that work together to deliver a seamless experience for developers and end-users. These components include:
 
 {% cards %}
 {% cards_item href="/docs/products/network/regions" title="Regions" %}
