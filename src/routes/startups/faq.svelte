@@ -25,7 +25,7 @@
         },
         {
             question: 'Who is eligible to apply?',
-            answer: "We welcome early-stage startups as well as startups established within the last decade. So whether you are still looking to build your backend or want to switch to Appwrite, we welcome you to join."
+            answer: 'We welcome early-stage startups as well as startups established within the last decade. So whether you are still looking to build your backend or want to switch to Appwrite, we welcome you to join.'
         },
         {
             question: 'What are the limits of the Scale plan?',
