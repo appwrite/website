@@ -24,7 +24,7 @@ TLS operates at the **transport layer** of the OSI model (Layer 4), encrypting a
    Only strong, industry-standard cipher suites are used to ensure robust encryption.  
 
 4. **End-to-End Security**  
-   TLS secures every connection in Appwrite’s network, including communication between edge nodes and regions, protecting your data at every step.
+   TLS secures every connection in Appwrite's network, including communication between edge nodes and regions, protecting your data at every step.
 
 # Getting started {% #getting-started %}
 

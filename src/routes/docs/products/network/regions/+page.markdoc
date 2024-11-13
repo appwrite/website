@@ -12,17 +12,17 @@ Appwrite regions are geographic locations where all your application's core infr
 
 Appwrite is currently available in the following list of regions:
 
-| Region              | Planet          | Code   | Endpoint                                | Status          |
-|---------------------|-----------------|--------|-----------------------------------------|-----------------|
-| Frankfurt           | Earth           | FRA    | `https://fra.cloud.appwrite.io/v1`      | Available       |
-| New York            | Earth           | NYC    | `https://nyc.cloud.appwrite.io/v1`      | Available       |
-| Sydney              | Earth           | SYD    | `https://syd.cloud.appwrite.io/v1`      | Available       |
-| Singapore           | Earth           | SGP    | `coming soon`                           | Q1 2025         |
-| San Francisco       | Earth           | SFO    | `coming soon`                           | Q1 2025         |
-| Bangalore           | Earth           | BLR    | `coming soon`                           | Q2 2025         |
-| Amsterdam           | Earth           | AMS    | `coming soon`                           | Q2 2025         |
-| London              | Earth           | LON    | `coming soon`                           | Q2 2025         |
-| Toronto             | Earth           | TOR    | `coming soon`                           | Q2 2025         |
+| Region              | Code   | Endpoint                                | Status          |
+|---------------------|--------|-----------------------------------------|-----------------|
+| Frankfurt           | FRA    | `https://fra.cloud.appwrite.io/v1`      | Available       |
+| New York            | NYC    | `https://nyc.cloud.appwrite.io/v1`      | Available       |
+| Sydney              | SYD    | `https://syd.cloud.appwrite.io/v1`      | Available       |
+| Singapore           | SGP    | `coming soon`                           | Q1 2025         |
+| San Francisco       | SFO    | `coming soon`                           | Q1 2025         |
+| Bangalore           | BLR    | `coming soon`                           | Q2 2025         |
+| Amsterdam           | AMS    | `coming soon`                           | Q2 2025         |
+| London              | LON    | `coming soon`                           | Q2 2025         |
+| Toronto             | TOR    | `coming soon`                           | Q2 2025         |
 
 Regions are designed to be entirely independent unless explicitly connected, which provides control over data replication and compliance. We're constantly working to add new regions to our network to provide developers with more options for deploying their applications.
 

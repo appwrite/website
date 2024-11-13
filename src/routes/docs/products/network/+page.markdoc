@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Network
-description: Discover Appwrite’s network architecture with global regions, edge nodes, and optimized routing. Explore how it ensures low latency, reliable performance, and scalable infrastructure for modern applications.
+description: Discover Appwrite's network architecture with global regions, edge nodes, and optimized routing. Explore how it ensures low latency, reliable performance, and scalable infrastructure for modern applications.
 ---
 
 Appwrite's network is designed to deliver low-latency, high-performance experiences for developers and end-users alike. It leverages a robust Content Delivery Network (CDN) with edge locations across multiple regions to ensure fast and reliable data delivery.

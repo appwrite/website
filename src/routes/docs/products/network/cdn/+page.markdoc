@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Content Delivery Network (CDN)
-description: Learn about Appwrite’s CDN, designed to optimize content delivery with compression, and edge optimization for improved performance and reduced latency.
+description: Learn about Appwrite's CDN, designed to optimize content delivery with compression, and edge optimization for improved performance and reduced latency.
 ---
 
 Appwrite's CDN (Content Delivery Network) is a globally distributed system designed to enhance the speed, reliability, and security of your application's content delivery. With points of presence (PoPs) in over 120 cities worldwide, the CDN ensures low latency and consistent performance for users, no matter their location.

@@ -51,8 +51,7 @@ Appwrite prioritizes Brotli over Gzip due to Brotli’s more efficient compressi
 Compression is enabled by default for eligible API responses in Appwrite. You do not need to manually enable it; Appwrite dynamically selects the best algorithm based on the client’s `Accept-Encoding` headers and the MIME type of the response.
 
 # Image transformations {% #image-transformations %}
-
-Appwrite’s API supports the [compression of image files](/docs/products/storage/images) during manipulation and preview generation. The primary reason for compressing images is to minimize file sizes while maintaining visual quality, thus reducing both bandwidth usage and storage costs.
+Appwrite's API supports the [compression of image files](/docs/products/storage/images) during manipulation and preview generation. The primary reason for compressing images is to minimize file sizes while maintaining visual quality, thus reducing both bandwidth usage and storage costs.
 
 Appwrite supports both legacy and modern image formats, including:
 
@@ -108,4 +107,4 @@ console.log(result.href);
 | PNG       | PNG               | Lossless          | Necessary for lossless compression requirements |
 
 ## Enabling compression {% #enabling-compression-2 %}
-You can enable image compression through the **Image Preview API** by specifying the desired output format in API calls. For example, requesting a WebP or AVIF conversion automatically triggers Appwrite’s compression algorithms to optimize the image size.
+You can enable image compression through the **Image Preview API** by specifying the desired output format in API calls. For example, requesting a WebP or AVIF conversion automatically triggers Appwrite's compression algorithms to optimize the image size.
