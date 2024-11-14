@@ -105,7 +105,7 @@ Based on the defined rules, the WAF can perform various actions to handle traffi
 - **Expression**: Limit requests to sensitive endpoints (e.g., `/login`) to prevent abuse.  
 - **Action**: Throttle or temporarily block repeated requests from the same IP.  
 
-#### GEO-based blocking
+#### Geo-based blocking
 - **Expression**: Match requests originating from specific regions or countries.  
 - **Action**: Block or redirect users to a region-specific notice page.  
 
