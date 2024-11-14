@@ -21,10 +21,10 @@ Multi-region deployments for geo-redundancy, compliance and low-latency.
 Edge nodes for fast request processing and reduced round-trip times.
 {% /cards_item %}
 {% cards_item href="/docs/products/network/cdn" title="CDN" %}
-Distributed caching with optimized routing for faster, more reliable data delivery.
+Global infrastructure for optimized routing, enabling faster and more consistent data delivery.
 {% /cards_item %}
-{% cards_item href="/docs/products/network/endpoints" title="Entrypoints" %}
-Distributed caching with optimized routing for faster, more reliable data delivery.
+{% cards_item href="/docs/products/network/endpoints" title="Endpoints" %}
+Dedicated endpoints for region-specific, edge, and compute workloads.
 {% /cards_item %}
 {% /cards %}
 
