@@ -26,6 +26,7 @@
     import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
     import InitBanner from '$lib/components/InitBanner.svelte';
     import { trackEvent } from '$lib/actions/analytics';
+    import ProductsSubmenu from '$lib/components/ProductsSubmenu.svelte';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -254,6 +255,7 @@
                                 </a>
                             </li>
                         {/each}
+                        <ProductsSubmenu />
                     </ul>
                 </nav>
             </div>
