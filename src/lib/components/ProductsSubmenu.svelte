@@ -4,6 +4,8 @@
         elements: { menu, item, trigger }
     } = createDropdownMenu();
 
+    export let label: string;
+
     const products = [
         {
             name: 'Auth',
@@ -50,14 +52,14 @@
     ];
 </script>
 
-<li class="text-primary hover:text-accent" use:melt={$trigger}>Products</li>
+<li class="text-primary hover:text-accent" use:melt={$trigger}>{label}</li>
 <div class="fixed !left-0 z-10 size-full bg-black/48" use:melt={$menu}>
     <div
         class="flex h-[600px] w-full flex-col items-center bg-[#232325]/90 px-12 pb-4 backdrop-blur-2xl"
     >
         <div class="flex w-full flex-1 flex-col justify-center">
             <span class="font-aeonik-fono text-primary text-xs uppercase"
-                >Products<span class="text-accent">_</span></span
+                >{label}<span class="text-accent">_</span></span
             >
             <div
                 class="mt-8 grid w-full grid-cols-1 place-content-between gap-16 md:grid-cols-2 lg:grid-cols-4"
