@@ -27,6 +27,7 @@
     import InitBanner from '$lib/components/InitBanner.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import ProductsSubmenu from '$lib/components/ProductsSubmenu.svelte';
+    import MainNav from '$lib/components/MainNav.svelte';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -240,24 +241,7 @@
                         width="130"
                     />
                 </a>
-                <nav class="web-main-header-nav" aria-label="Main">
-                    <ul class="web-main-header-nav-list">
-                        {#each navLinks as navLink}
-                            <li class="web-main-header-nav-item text-primary hover:text-accent">
-                                <a
-                                    class={classNames(
-                                        'data-[badge]:after:animate-scale-in data-[badge]:relative data-[badge]:after:absolute data-[badge]:after:size-1.5 data-[badge]:after:translate-full data-[badge]:after:rounded-full'
-                                    )}
-                                    href={navLink.href}
-                                    data-initialized={$initialized ? '' : undefined}
-                                    data-badge={navLink.showBadge ? '' : undefined}
-                                    >{navLink.label}
-                                </a>
-                            </li>
-                        {/each}
-                        <ProductsSubmenu />
-                    </ul>
-                </nav>
+                <MainNav initialized={$initialized} />
             </div>
             <div class="web-main-header-end">
                 <a
