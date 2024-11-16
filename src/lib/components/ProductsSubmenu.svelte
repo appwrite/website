@@ -15,7 +15,7 @@
         },
         {
             name: 'Database',
-            href: '/products/database',
+            href: '/products/databases',
             description: 'Scalable and robust database backed by the latest technologies.',
             icon: '/images/icons/illustrated/dark/databases.png'
         },
