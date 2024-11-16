@@ -10,5 +10,5 @@ Backups are crucial for:
 - Recovering in case of malicious alteration or deletion of data.
 - Reducing downtime in the event of accidental data loss, corruption, or malicious attacks.
 
-Appwrite Cloud uses multiple databases for its products. Some data bases will have access to point-in-time recovery from the past 7 days.
+Appwrite Cloud uses multiple databases for its products. Some databases will have access to point-in-time recovery from the past 7 days.
 Other databases performs regular data backups every 4 hours. Each backup is kept for 7 days.
