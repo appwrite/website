@@ -1,8 +1,13 @@
 <script lang="ts">
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
+    import { fly } from 'svelte/transition';
     const {
-        elements: { menu, item, trigger }
-    } = createDropdownMenu();
+        elements: { trigger, menu, item, overlay },
+        states: { open }
+    } = createDropdownMenu({
+        forceVisible: true,
+        loop: true
+    });
 
     export let label: string;
 
@@ -53,9 +58,12 @@
 </script>
 
 <li class="text-primary hover:text-accent" use:melt={$trigger}>{label}</li>
-<div class="fixed !left-0 z-10 size-full bg-black/48" use:melt={$menu}>
+
+{#if open}
     <div
-        class="flex h-[600px] w-full flex-col items-center bg-[#232325]/90 px-12 pb-4 backdrop-blur-2xl"
+        use:melt={$menu}
+        transition:fly={{ duration: 150, y: -10 }}
+        class="fixed !right-0 !left-0 flex h-[600px] w-full flex-col items-center bg-[#232325]/90 px-12 pb-4 outline-none backdrop-blur-2xl"
     >
         <div class="flex w-full flex-1 flex-col justify-center">
             <span class="font-aeonik-fono text-primary text-xs uppercase"
@@ -82,4 +90,4 @@
             </div>
         </div>
     </div>
-</div>
+{/if}
