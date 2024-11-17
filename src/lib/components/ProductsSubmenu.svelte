@@ -5,7 +5,6 @@
         elements: { trigger, menu, item, overlay },
         states: { open }
     } = createDropdownMenu({
-        forceVisible: true,
         loop: true
     });
 
@@ -63,6 +62,7 @@
     <div
         use:melt={$menu}
         transition:fly={{ duration: 150, y: -10 }}
+        class:animate-scale-in={$open}
         class="fixed !right-0 !left-0 flex h-[600px] w-full flex-col items-center bg-[#232325]/90 px-12 pb-4 outline-none backdrop-blur-2xl"
     >
         <div class="flex w-full flex-1 flex-col justify-center">
