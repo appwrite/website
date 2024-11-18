@@ -99,6 +99,11 @@
 
     let navLinks: NavLink[] = [
         {
+            label: 'Products',
+            submenu: ProductsSubmenu,
+            mobileSubmenu: ProductsMobileSubmenu
+        },
+        {
             label: 'Docs',
             href: '/docs'
         },
@@ -109,11 +114,6 @@
         {
             label: 'Blog',
             href: '/blog'
-        },
-        {
-            label: 'Products',
-            submenu: ProductsSubmenu,
-            mobileSubmenu: ProductsMobileSubmenu
         },
         {
             label: 'Integrations',
