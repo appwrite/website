@@ -12,6 +12,7 @@ export const load = async () => {
         }
     } catch (error) {
         ctaText = 'Error';
+        console.error('Error fetching feature flag', error);
     }
     return { ctaText };
 };
