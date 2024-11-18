@@ -77,8 +77,10 @@
 
     /* Animations */
     --animate-scale-in: scale-in 200ms ease-out forwards;
-    --animate-text: fade-in 0.75s ease-in-out both, blur 0.75s ease-in-out both,
+    --animate-text: fade 0.75s ease-in-out both, blur 0.75s ease-in-out both,
         up 0.75s ease-in-out both;
+    --animate-fade-in: fade 0.25s ease-in-out both;
+    --animate-fade-out: fade 0.25s ease-in-out both reverse;
 
     /* Pink polyfills */
     --transition: 0.2s;
@@ -111,7 +113,7 @@
         }
     }
 
-    @keyframes fade-in {
+    @keyframes fade {
         0% {
             opacity: 0;
         }

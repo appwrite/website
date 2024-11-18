@@ -9,15 +9,15 @@
 
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import { createDropdownMenu, melt } from '@melt-ui/svelte';
-
-    const {
-        elements: { trigger, menu, item }
-    } = createDropdownMenu({
-        loop: true
-    });
+    import { melt, createCollapsible } from '@melt-ui/svelte';
+    import { slide } from 'svelte/transition';
 
     export let label: string;
+
+    const {
+        elements: { root, content, trigger },
+        states: { open }
+    } = createCollapsible();
 
     let products: Array<SubmenuItem> = [
         {
@@ -65,36 +65,44 @@
     ];
 </script>
 
-<li class="text-primary hover:text-accent cursor-pointer" use:melt={$trigger}>{label}</li>
+<div use:melt={$root} class="relative mx-auto block md:hidden">
+    <div class="flex items-center justify-between">
+        <button
+            use:melt={$trigger}
+            class="text-caption web-side-nav-button flex items-center justify-between"
+            >{label}
+            <span
+                class={classNames('web-icon-chevron-down transition-transform', {
+                    'rotate-180': $open
+                })}
+            /></button
+        >
+    </div>
 
-<div
-    use:melt={$menu}
-    class={classNames(
-        'data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in fixed !right-0 !left-0 flex h-[600px] w-full flex-col items-center bg-[#232325]/90 px-12 pb-4 outline-none backdrop-blur-2xl'
-    )}
->
-    <div class="flex w-full flex-1 flex-col justify-center">
-        <span class="font-aeonik-fono text-primary text-xs uppercase"
-            >{label}<span class="text-accent">_</span></span
-        >
-        <div
-            class="mt-8 grid w-full grid-cols-1 place-content-between gap-16 md:grid-cols-2 lg:grid-cols-4"
-        >
-            {#each products as product}
-                <a
-                    href={product.href}
-                    use:melt={$item}
-                    class="group flex flex-col gap-3 rounded-lg text-white outline-none transition-colors"
-                >
-                    <img
-                        src={product.icon}
-                        alt={product.name}
-                        class="mb-5 size-8 grayscale transition-all group-focus:grayscale-0"
-                    />
-                    <span class="text-sub-body text-primary font-medium">{product.name}</span>
-                    <p class="text-caption text-secondary">{product.description}</p>
-                </a>
-            {/each}
-        </div>
+    <div>
+        {#if $open}
+            <div use:melt={$content} transition:slide>
+                <div class="flex flex-col gap-2 py-8 px-4">
+                    {#each products as product}
+                        <a
+                            href={product.href}
+                            class="group flex flex-col gap-2 rounded-lg text-white outline-none transition-colors"
+                        >
+                            <div class="flex items-center gap-2 py-4">
+                                <img
+                                    src={product.icon}
+                                    alt={product.name}
+                                    class="size-8 grayscale transition-all group-focus:grayscale-0"
+                                />
+                                <span class="text-sub-body text-primary font-medium"
+                                    >{product.name}</span
+                                >
+                            </div>
+                            <p class="text-caption text-secondary">{product.description}</p>
+                        </a>
+                    {/each}
+                </div>
+            </div>
+        {/if}
     </div>
 </div>

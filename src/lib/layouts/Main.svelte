@@ -1,11 +1,6 @@
 <script lang="ts" context="module">
     import { writable } from 'svelte/store';
 
-    export type NavLink = {
-        label: string;
-        href: string;
-        showBadge?: boolean;
-    };
     export const isHeaderHidden = writable(false);
     export const isMobileNavOpen = writable(false);
     const initialized = writable(false);
@@ -21,13 +16,13 @@
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
     import { page } from '$app/stores';
-    import { classNames } from '$lib/utils/classnames';
+    import ProductsSubmenu from '$lib/components/ProductsSubmenu.svelte';
+    import ProductsMobileSubmenu from '$lib/components/ProductsMobileSubmenu.svelte';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
     import InitBanner from '$lib/components/InitBanner.svelte';
     import { trackEvent } from '$lib/actions/analytics';
-    import ProductsSubmenu from '$lib/components/ProductsSubmenu.svelte';
-    import MainNav from '$lib/components/MainNav.svelte';
+    import MainNav, { type NavLink } from '$lib/components/MainNav.svelte';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -114,6 +109,11 @@
         {
             label: 'Blog',
             href: '/blog'
+        },
+        {
+            label: 'Products',
+            submenu: ProductsSubmenu,
+            mobileSubmenu: ProductsMobileSubmenu
         },
         {
             label: 'Integrations',
@@ -241,7 +241,7 @@
                         width="130"
                     />
                 </a>
-                <MainNav initialized={$initialized} />
+                <MainNav initialized={$initialized} links={navLinks} />
             </div>
             <div class="web-main-header-end">
                 <a
@@ -287,26 +287,5 @@
 
     .is-special-padding {
         padding-inline: clamp(1.25rem, 4vw, 120rem);
-    }
-
-    [data-badge] {
-        position: relative;
-
-        &::after {
-            content: '';
-            position: absolute;
-            background-color: hsl(var(--web-color-accent));
-            border-radius: 100%;
-            width: 0.375rem;
-            height: 0.375rem;
-
-            inset-block-start: -2px;
-            inset-inline-end: -4px;
-            translate: 100%;
-        }
-
-        &:not([data-initialized])::after {
-            animation: scale-in 0.2s ease-out;
-        }
     }
 </style>
