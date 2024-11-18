@@ -4,7 +4,7 @@ title: Abuse protection
 description: Learn how Appwrite protects your apps from abuse through rate limiting and cross-site scripting protection.
 ---
 Appwrite comes packaged with tools to protect against various forms of abuse, like brute force attacks, data scraping, and many
-other common forms of abuse. 
+other common forms of abuse.
 
 # Rate limiting {% #rate-limiting %}
 Appwrite uses rate limits on some endpoints to avoid abuse or brute-force attacks against Appwrite's REST API.
@@ -22,7 +22,7 @@ Learn more about rate limits
 Appwrite limits who can make requests to Appwrite's APIs by default.
 This means that unless your app's domain is added to Appwrite as a platform, requests are rejected.
 By being explicit with the domains that are allowed
-to make requests to your Appwrite project, requests from JavaScript hosted on unknown domains 
+to make requests to your Appwrite project, requests from JavaScript hosted on unknown domains
 will not be accepted.
 
 You can add new platforms by navigating to **Overview** > **Platforms** > **Add platform**.
@@ -36,6 +36,7 @@ You can add new platforms by navigating to **Overview** > **Platforms** > **Add 
 
 # DDoS protection {% #ddos-protection %}
 Appwrite Cloud's infrastructure is protected with always-on DDoS protection.
-Appwrite's DDoS protection operates in Network (layer 3) and Transport (layer 4) layers.
-This protects Appwrite's infrastructure against volumetric attacks such as UDP floods, ICMP floods, TCP floods, 
-and DNS reflection attacks, as well as protocol-layer attacks such as SYN floods, BGP attacks, and ping-of-death attacks.
+Appwrite's DDoS protection operates across multiple layers, including the Network (layer 3), Transport (layer 4), and Application (layer 7) layers.
+This comprehensive protection safeguards Appwrite's infrastructure against volumetric attacks such as UDP floods, ICMP floods, TCP floods, and DNS reflection attacks, as well as protocol-layer attacks like SYN floods, BGP attacks, and ping-of-death attacks.
+
+Additionally, we have implemented advanced security rules that monitor traffic patterns to detect and block increased suspicious activity, ensuring the security and stability of your applications.

@@ -25,7 +25,6 @@
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
     import InitBanner from '$lib/components/InitBanner.svelte';
-    import Button from '$lib/components/ui/Button.svelte';
     import { trackEvent } from '$lib/actions/analytics';
 
     export let omitMainId = false;
@@ -277,7 +276,7 @@
     <MobileNav bind:open={$isMobileNavOpen} links={navLinks} />
 
     <main
-        class="web-main-section"
+        class="space-y-6"
         class:web-u-hide-mobile={$isMobileNavOpen}
         id={omitMainId ? undefined : 'main'}
     >
