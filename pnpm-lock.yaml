@@ -9,17 +9,17 @@ importers:
   .:
     dependencies:
       '@sentry/sveltekit':
-        specifier: ^8.12.0
+        specifier: ^8.38.0
         version: 8.38.0(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.28.0(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.54.2(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.28.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.27.0)(@sveltejs/kit@2.8.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.11(@types/node@22.9.0)(lightningcss@1.28.1)(sass@1.81.0)))(svelte@4.2.19)(vite@5.4.11(@types/node@22.9.0)(lightningcss@1.28.1)(sass@1.81.0)))(encoding@0.1.13)(svelte@4.2.19)(vite@5.4.11(@types/node@22.9.0)(lightningcss@1.28.1)(sass@1.81.0))
       h3:
-        specifier: ^1.12.0
+        specifier: ^1.13.0
         version: 1.13.0
       sharp:
-        specifier: ^0.33.4
+        specifier: ^0.33.5
         version: 0.33.5
     devDependencies:
       '@appwrite.io/console':
-        specifier: ^0.6.2
+        specifier: ^0.6.4
         version: 0.6.4
       '@appwrite.io/pink':
         specifier: ~0.26.0
@@ -35,13 +35,13 @@ importers:
         version: 3.5.0
       '@melt-ui/pp':
         specifier: ^0.3.2
-        version: 0.3.2(@melt-ui/svelte@0.86.0(svelte@4.2.19))(svelte@4.2.19)
+        version: 0.3.2(@melt-ui/svelte@0.74.4(svelte@4.2.19))(svelte@4.2.19)
       '@melt-ui/svelte':
-        specifier: ^0.86.0
-        version: 0.86.0(svelte@4.2.19)
+        specifier: ^0.74.4
+        version: 0.74.4(svelte@4.2.19)
       '@playwright/test':
-        specifier: ^1.44.1
-        version: 1.48.2
+        specifier: ^1.49.0
+        version: 1.49.0
       '@sveltejs/adapter-node':
         specifier: ^4.0.1
         version: 4.0.1(@sveltejs/kit@2.8.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.11(@types/node@22.9.0)(lightningcss@1.28.1)(sass@1.81.0)))(svelte@4.2.19)(vite@5.4.11(@types/node@22.9.0)(lightningcss@1.28.1)(sass@1.81.0)))
@@ -49,10 +49,10 @@ importers:
         specifier: ^0.1.9
         version: 0.1.9(rollup@4.27.3)(svelte@4.2.19)
       '@sveltejs/kit':
-        specifier: ^2.5.17
+        specifier: ^2.8.1
         version: 2.8.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.11(@types/node@22.9.0)(lightningcss@1.28.1)(sass@1.81.0)))(svelte@4.2.19)(vite@5.4.11(@types/node@22.9.0)(lightningcss@1.28.1)(sass@1.81.0))
       '@sveltejs/vite-plugin-svelte':
-        specifier: ^3.1.1
+        specifier: ^3.1.2
         version: 3.1.2(svelte@4.2.19)(vite@5.4.11(@types/node@22.9.0)(lightningcss@1.28.1)(sass@1.81.0))
       '@tailwindcss/postcss':
         specifier: 4.0.0-alpha.17
@@ -64,7 +64,7 @@ importers:
         specifier: ^8.1.0
         version: 8.1.0
       '@types/markdown-it':
-        specifier: ^13.0.8
+        specifier: ^13.0.9
         version: 13.0.9
       '@types/morgan':
         specifier: ^1.9.9
@@ -85,22 +85,22 @@ importers:
         specifier: ^2.0.3
         version: 2.0.3
       embla-carousel:
-        specifier: ^8.1.5
+        specifier: ^8.4.0
         version: 8.4.0
       embla-carousel-svelte:
-        specifier: ^8.1.5
+        specifier: ^8.4.0
         version: 8.4.0(svelte@4.2.19)
       embla-carousel-wheel-gestures:
         specifier: ^8.0.1
         version: 8.0.1(embla-carousel@8.4.0)
       eslint:
-        specifier: ^9.7.0
+        specifier: ^9.15.0
         version: 9.15.0(jiti@1.21.6)
       eslint-config-prettier:
         specifier: ^9.1.0
         version: 9.1.0(eslint@9.15.0(jiti@1.21.6))
       eslint-plugin-svelte:
-        specifier: ^2.40.0
+        specifier: ^2.46.0
         version: 2.46.0(eslint@9.15.0(jiti@1.21.6))(svelte@4.2.19)
       fuse.js:
         specifier: ^7.0.0
@@ -109,7 +109,7 @@ importers:
         specifier: ^15.12.0
         version: 15.12.0
       highlight.js:
-        specifier: ^11.9.0
+        specifier: ^11.10.0
         version: 11.10.0
       markdown-it:
         specifier: ^14.1.0
@@ -133,58 +133,58 @@ importers:
         specifier: ^0.3.9
         version: 0.3.9
       postcss:
-        specifier: ^8.4.39
+        specifier: ^8.4.49
         version: 8.4.49
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
       prettier-plugin-svelte:
-        specifier: ^3.2.5
+        specifier: ^3.2.8
         version: 3.2.8(prettier@3.3.3)(svelte@4.2.19)
       prettier-plugin-tailwindcss:
-        specifier: ^0.6.6
+        specifier: ^0.6.8
         version: 0.6.8(prettier-plugin-svelte@3.2.8(prettier@3.3.3)(svelte@4.2.19))(prettier@3.3.3)
       remeda:
-        specifier: ^2.10.0
+        specifier: ^2.17.3
         version: 2.17.3
       sass:
-        specifier: ^1.77.6
+        specifier: ^1.81.0
         version: 1.81.0
       svelte:
-        specifier: ^4.2.18
+        specifier: ^4.2.19
         version: 4.2.19
       svelte-check:
-        specifier: ^3.8.1
+        specifier: ^3.8.6
         version: 3.8.6(@babel/core@7.26.0)(postcss-load-config@3.1.4(postcss@8.4.49))(postcss@8.4.49)(sass@1.81.0)(svelte@4.2.19)
       svelte-markdoc-preprocess:
-        specifier: ^2.0.0
+        specifier: ^2.1.0
         version: 2.1.0
       svelte-markdown:
         specifier: ^0.4.1
         version: 0.4.1(svelte@4.2.19)
       svgtofont:
-        specifier: ^4.2.1
+        specifier: ^4.2.3
         version: 4.2.3
       tailwind-merge:
-        specifier: ^2.5.2
+        specifier: ^2.5.4
         version: 2.5.4
       tailwindcss:
         specifier: 4.0.0-alpha.17
         version: 4.0.0-alpha.17
       tslib:
-        specifier: ^2.6.3
+        specifier: ^2.8.1
         version: 2.8.1
       typescript:
-        specifier: ^5.5.2
+        specifier: ^5.6.3
         version: 5.6.3
       typescript-eslint:
-        specifier: ^8.13.0
+        specifier: ^8.15.0
         version: 8.15.0(eslint@9.15.0(jiti@1.21.6))(typescript@5.6.3)
       vite:
-        specifier: ^5.3.1
+        specifier: ^5.4.11
         version: 5.4.11(@types/node@22.9.0)(lightningcss@1.28.1)(sass@1.81.0)
       vite-plugin-dynamic-import:
-        specifier: ^1.5.0
+        specifier: ^1.6.0
         version: 1.6.0
       vite-plugin-image-optimizer:
         specifier: ^1.1.8
@@ -824,10 +824,10 @@ packages:
       '@melt-ui/svelte': '>= 0.29.0'
       svelte: ^3.55.0 || ^4.0.0 || ^5.0.0-next.1
 
-  '@melt-ui/svelte@0.86.0':
-    resolution: {integrity: sha512-kFyioxwvDZfD7nChq+sHaJKyLQPleJlzIORNJx1Ou1NavMrwK1sJkAdtgxuyEzief7SU3f4skSF0Cpvjewx5fA==}
+  '@melt-ui/svelte@0.74.4':
+    resolution: {integrity: sha512-EeDP3C1grK+bPTezJQXKid2k4RRGZakyHTghD/zg//fM6Gqe4JykVtV0Yih4QJs+yGTgJq/EaNQMQ6JkTnvHxg==}
     peerDependencies:
-      svelte: ^3.0.0 || ^4.0.0 || ^5.0.0-next.118
+      svelte: '>=3 <5'
 
   '@motionone/animation@10.18.0':
     resolution: {integrity: sha512-9z2p5GFGCm0gBsZbi8rVMOAJCtw1WqBTIPw3ozk06gDvZInBPIsQcHgYogEJ4yuHJ+akuW8g1SEIOpTOvYs8hw==}
@@ -1276,8 +1276,8 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@playwright/test@1.48.2':
-    resolution: {integrity: sha512-54w1xCWfXuax7dz4W2M9uw0gDyh+ti/0K/MxcCUxChFh37kkdxPdfZDw5QBbuPUJHr1CiHJ1hXgSs+GgeQc5Zw==}
+  '@playwright/test@1.49.0':
+    resolution: {integrity: sha512-DMulbwQURa8rNIQrf94+jPJQ4FmOVdpE5ZppRNvWVjvhC+6sOeo28r8MgIpQRYouXRtt/FCCXU7zn20jnHR4Qw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -2358,8 +2358,8 @@ packages:
     engines: {node: '>=0.10.0'}
     hasBin: true
 
-  electron-to-chromium@1.5.62:
-    resolution: {integrity: sha512-t8c+zLmJHa9dJy96yBZRXGQYoiCEnHYgFwn1asvSPZSUdVxnB62A4RASd7k41ytG3ErFBA0TpHlKg9D9SQBmLg==}
+  electron-to-chromium@1.5.63:
+    resolution: {integrity: sha512-ddeXKuY9BHo/mw145axlyWjlJ1UBt4WK3AlvkT7W2AbqfRQoacVoRUCF6wL3uIx/8wT9oLKXzI+rFqHHscByaA==}
 
   embla-carousel-reactive-utils@8.4.0:
     resolution: {integrity: sha512-yi/2paSYQqMGgh983Sj8G4+zt4bhABC1pzN4P4Vmc7UhSxqo9I7r15tR7s3/zS0JEl3orRSw7TxX92IZqj5NXA==}
@@ -3042,8 +3042,8 @@ packages:
     resolution: {integrity: sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA==}
     engines: {node: '>=12'}
 
-  magic-string@0.30.12:
-    resolution: {integrity: sha512-Ea8I3sQMVXr8JhN4z+H/d8zwo+tYDgHE9+5G4Wnrwhs0gaK9fXTKx0Tw5Xwsd/bCPTTZNRAdpyzvoeORe9LYpw==}
+  magic-string@0.30.13:
+    resolution: {integrity: sha512-8rYBO+MsWkgjDSOvLomYnzhdwEG51olQ4zL5KXnNJWV5MNmrb4rTZdrtkhxjnD/QyZUqR/Z/XDsUs/4ej2nx0g==}
 
   magic-string@0.30.7:
     resolution: {integrity: sha512-8vBuFF/I/+OSLRmdf2wwFCJCz+nSn0m6DPvGH1fS/KiQoSaR+sETbov0eIk9KhEKy8CYqIkIAnbohxT/4H0kuA==}
@@ -3467,13 +3467,13 @@ packages:
     resolution: {integrity: sha512-hMhneYm3GCPyQon88SZrVJx+LlqhM1kZFQbuAgXPoh/Az2YvO1B6bitT9qlhpiTdJlsT5lsr3gPmzoVjb5CDXA==}
     engines: {node: '>=10'}
 
-  playwright-core@1.48.2:
-    resolution: {integrity: sha512-sjjw+qrLFlriJo64du+EK0kJgZzoQPsabGF4lBvsid+3CNIZIYLgnMj9V6JY5VhM2Peh20DJWIVpVljLLnlawA==}
+  playwright-core@1.49.0:
+    resolution: {integrity: sha512-R+3KKTQF3npy5GTiKH/T+kdhoJfJojjHESR1YEWhYuEKRVfVaxH3+4+GvXE5xyCngCxhxnykk0Vlah9v8fs3jA==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.48.2:
-    resolution: {integrity: sha512-NjYvYgp4BPmiwfe31j4gHLa3J7bD2WiBz8Lk2RoSsmX38SVIARZ18VYjxLjAcDsAhA+F4iSEXTSGgjua0rrlgQ==}
+  playwright@1.49.0:
+    resolution: {integrity: sha512-eKpmys0UFDnfNb3vfsf8Vx2LEOtflgRebl0Im2eQQnYMA4Aqd+Zw8bEOB+7ZKvN76901mRnqdsiOGKxzVTbi7A==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -5046,14 +5046,14 @@ snapshots:
     optionalDependencies:
       '@types/markdown-it': 12.2.3
 
-  '@melt-ui/pp@0.3.2(@melt-ui/svelte@0.86.0(svelte@4.2.19))(svelte@4.2.19)':
+  '@melt-ui/pp@0.3.2(@melt-ui/svelte@0.74.4(svelte@4.2.19))(svelte@4.2.19)':
     dependencies:
-      '@melt-ui/svelte': 0.86.0(svelte@4.2.19)
+      '@melt-ui/svelte': 0.74.4(svelte@4.2.19)
       estree-walker: 3.0.3
-      magic-string: 0.30.12
+      magic-string: 0.30.13
       svelte: 4.2.19
 
-  '@melt-ui/svelte@0.86.0(svelte@4.2.19)':
+  '@melt-ui/svelte@0.74.4(svelte@4.2.19)':
     dependencies:
       '@floating-ui/core': 1.6.8
       '@floating-ui/dom': 1.6.12
@@ -5544,9 +5544,9 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@playwright/test@1.48.2':
+  '@playwright/test@1.49.0':
     dependencies:
-      playwright: 1.48.2
+      playwright: 1.49.0
 
   '@polka/url@1.0.0-next.28': {}
 
@@ -5616,7 +5616,7 @@ snapshots:
       estree-walker: 2.0.2
       glob: 8.1.0
       is-reference: 1.2.1
-      magic-string: 0.30.12
+      magic-string: 0.30.13
     optionalDependencies:
       rollup: 4.27.3
 
@@ -5908,7 +5908,7 @@ snapshots:
 
   '@sveltejs/enhanced-img@0.1.9(rollup@4.27.3)(svelte@4.2.19)':
     dependencies:
-      magic-string: 0.30.12
+      magic-string: 0.30.13
       svelte-parse-markup: 0.1.5(svelte@4.2.19)
       vite-imagetools: 6.2.9(rollup@4.27.3)
     transitivePeerDependencies:
@@ -5924,7 +5924,7 @@ snapshots:
       esm-env: 1.1.4
       import-meta-resolve: 4.1.0
       kleur: 4.1.5
-      magic-string: 0.30.12
+      magic-string: 0.30.13
       mrmime: 2.0.0
       sade: 1.8.1
       set-cookie-parser: 2.7.1
@@ -5948,7 +5948,7 @@ snapshots:
       debug: 4.3.7
       deepmerge: 4.3.1
       kleur: 4.1.5
-      magic-string: 0.30.12
+      magic-string: 0.30.13
       svelte: 4.2.19
       svelte-hmr: 0.16.0(svelte@4.2.19)
       vite: 5.4.11(@types/node@22.9.0)(lightningcss@1.28.1)(sass@1.81.0)
@@ -6248,7 +6248,7 @@ snapshots:
 
   '@vitest/snapshot@1.6.0':
     dependencies:
-      magic-string: 0.30.12
+      magic-string: 0.30.13
       pathe: 1.1.2
       pretty-format: 29.7.0
 
@@ -6402,7 +6402,7 @@ snapshots:
   browserslist@4.24.2:
     dependencies:
       caniuse-lite: 1.0.30001680
-      electron-to-chromium: 1.5.62
+      electron-to-chromium: 1.5.63
       node-releases: 2.0.18
       update-browserslist-db: 1.1.1(browserslist@4.24.2)
 
@@ -6717,7 +6717,7 @@ snapshots:
     dependencies:
       jake: 10.9.2
 
-  electron-to-chromium@1.5.62: {}
+  electron-to-chromium@1.5.63: {}
 
   embla-carousel-reactive-utils@8.4.0(embla-carousel@8.4.0):
     dependencies:
@@ -7430,7 +7430,7 @@ snapshots:
 
   lru-cache@7.18.3: {}
 
-  magic-string@0.30.12:
+  magic-string@0.30.13:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
 
@@ -7871,11 +7871,11 @@ snapshots:
 
   plausible-tracker@0.3.9: {}
 
-  playwright-core@1.48.2: {}
+  playwright-core@1.49.0: {}
 
-  playwright@1.48.2:
+  playwright@1.49.0:
     dependencies:
-      playwright-core: 1.48.2
+      playwright-core: 1.49.0
     optionalDependencies:
       fsevents: 2.3.2
 
@@ -8335,7 +8335,7 @@ snapshots:
     dependencies:
       '@types/pug': 2.0.10
       detect-indent: 6.1.0
-      magic-string: 0.30.12
+      magic-string: 0.30.13
       sorcery: 0.11.1
       strip-indent: 3.0.0
       svelte: 4.2.19
@@ -8360,7 +8360,7 @@ snapshots:
       estree-walker: 3.0.3
       is-reference: 3.0.3
       locate-character: 3.0.0
-      magic-string: 0.30.12
+      magic-string: 0.30.13
       periscopic: 3.1.0
 
   svg-pathdata@6.0.3: {}
@@ -8610,7 +8610,7 @@ snapshots:
       acorn: 8.14.0
       es-module-lexer: 1.5.4
       fast-glob: 3.3.2
-      magic-string: 0.30.12
+      magic-string: 0.30.13
 
   vite-plugin-image-optimizer@1.1.8(vite@5.4.11(@types/node@22.9.0)(lightningcss@1.28.1)(sass@1.81.0)):
     dependencies:
@@ -8645,7 +8645,7 @@ snapshots:
       debug: 4.3.7
       execa: 8.0.1
       local-pkg: 0.5.0
-      magic-string: 0.30.12
+      magic-string: 0.30.13
       pathe: 1.1.2
       picocolors: 1.1.1
       std-env: 3.8.0
