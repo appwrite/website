@@ -359,10 +359,4 @@
         gap: 1rem;
         grid-template-columns: repeat(4, 1fr);
     }
-
-    .web-pricing-cards-list .web-main-body-500 {
-        height: 78px;
-        --p-font-size: unset !important;
-        --p-line-height: var(--web-line-height-sm);
-    }
 </style>
