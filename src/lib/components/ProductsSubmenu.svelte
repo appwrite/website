@@ -4,6 +4,7 @@
         href: string;
         description: string;
         icon: string;
+        beta?: boolean;
     };
 </script>
 
@@ -59,6 +60,7 @@
         {
             name: 'Sites',
             href: '/products/sites',
+            beta: true,
             description: 'Host your domain and take control over your page’s analytics.',
             icon: '/images/icons/illustrated/dark/sites.png'
         }
@@ -91,7 +93,16 @@
                         alt={product.name}
                         class="mb-5 size-8 grayscale transition-all group-focus:grayscale-0"
                     />
-                    <span class="text-sub-body text-primary font-medium">{product.name}</span>
+                    <span class="text-sub-body text-primary font-medium"
+                        >{product.name}
+
+                        {#if product.beta}
+                            <span
+                                class="text-caption ml-2 rounded bg-white/24 py-1 px-2 font-medium text-white"
+                                >Coming soon</span
+                            >
+                        {/if}
+                    </span>
                     <p class="text-caption text-secondary">{product.description}</p>
                 </a>
             {/each}
