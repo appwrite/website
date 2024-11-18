@@ -8,7 +8,7 @@ We've resolved several issues to improve reliability across Appwrite:
 
 - Fixed a bug where 409 responses during runtime creation were incorrectly treated as errors. Requests now retry until the runtime is ready.
 - Fixed CDN 502 errors by refining the server compression strategy.
-- Addressed S3 503 errors by adding retry logic, following S3's recommended guidelines.
+- Addressed storage provider 503 errors by adding retry logic, following storage provider's recommended guidelines.
 
 These fixes improve stability and make Appwrite more reliable for your projects.
 
