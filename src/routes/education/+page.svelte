@@ -10,7 +10,7 @@
     import Kickstart from './(components)/Kickstart.svelte';
     import Faq from './(components)/FAQ.svelte';
 
-    const title = 'Students' + TITLE_SUFFIX;
+    const title = 'Education' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
