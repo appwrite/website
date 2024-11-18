@@ -13,7 +13,7 @@
     import DevelopLocally from './(components)/DevelopLocally.svelte';
     import DeploySeamlessly from './(components)/DeploySeamlessly.svelte';
     import Testimonials from './(components)/Testimonials.svelte';
-    import Map from './(components)/Map.svelte';
+    import RegionsMap from './(components)/RegionsMap.svelte';
 
     const title = 'Functions' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -47,7 +47,7 @@
         <Bento />
         <div class="bg-greyscale-50">
             <Templates />
-            <Map />
+            <RegionsMap />
             <Testimonials />
             <OpenSource />
         </div>
