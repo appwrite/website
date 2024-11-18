@@ -82,7 +82,7 @@
     <div>
         {#if $open}
             <div use:melt={$content} transition:slide>
-                <div class="flex flex-col gap-2 py-8 px-4">
+                <div class="flex flex-col gap-2 py-3 px-4">
                     {#each products as product}
                         <a
                             href={product.href}
