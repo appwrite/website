@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-    type SubmenuItem = {
+    export type SubmenuItem = {
         name: string;
         href: string;
         description: string;

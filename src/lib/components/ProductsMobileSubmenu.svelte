@@ -1,16 +1,8 @@
-<script lang="ts" context="module">
-    type SubmenuItem = {
-        name: string;
-        href: string;
-        description: string;
-        icon: string;
-    };
-</script>
-
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import { melt, createCollapsible } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
+    import type { SubmenuItem } from './ProductsSubmenu.svelte';
 
     export let label: string;
 
@@ -59,6 +51,7 @@
         {
             name: 'Sites',
             href: '/products/sites',
+            beta: true,
             description: 'Host your domain and take control over your page’s analytics.',
             icon: '/images/icons/illustrated/dark/sites.png'
         }
@@ -95,8 +88,15 @@
                                     class="size-8 grayscale transition-all group-focus:grayscale-0"
                                 />
                                 <span class="text-sub-body text-primary font-medium"
-                                    >{product.name}</span
-                                >
+                                    >{product.name}
+
+                                    {#if product.beta}
+                                        <span
+                                            class="ml-2 rounded bg-white/24 py-1 px-2 text-xs font-medium text-white"
+                                            >Coming soon</span
+                                        >
+                                    {/if}
+                                </span>
                             </div>
                             <p class="text-caption text-secondary">{product.description}</p>
                         </a>
