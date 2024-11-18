@@ -4,57 +4,24 @@
         href?: string;
         showBadge?: boolean;
         submenu?: ComponentType;
+        mobileSubmenu?: ComponentType;
     };
 </script>
 
 <script lang="ts">
-    import { page } from '$app/stores';
     import { classNames } from '$lib/utils/classnames';
-
-    import { hasNewChangelog } from '$routes/changelog/utils';
     import type { ComponentType } from 'svelte';
-    import ProductsSubmenu from './ProductsSubmenu.svelte';
 
     export let initialized = false;
 
-    let navLinks: NavLink[] = [
-        {
-            label: 'Docs',
-            href: '/docs'
-        },
-        {
-            label: 'Community',
-            href: '/community'
-        },
-        {
-            label: 'Blog',
-            href: '/blog'
-        },
-        {
-            label: 'Products',
-            submenu: ProductsSubmenu
-        },
-        {
-            label: 'Integrations',
-            href: '/integrations'
-        },
-        {
-            label: 'Changelog',
-            href: '/changelog',
-            showBadge: hasNewChangelog?.() && !$page.url.pathname.includes('/changelog')
-        },
-        {
-            label: 'Pricing',
-            href: '/pricing'
-        }
-    ];
+    export let links: NavLink[] = [];
 </script>
 
 <nav class="web-main-header-nav" aria-label="Main">
     <ul class="web-main-header-nav-list">
-        {#each navLinks as navLink}
+        {#each links as link}
             <li class="web-main-header-nav-item text-primary hover:text-accent">
-                {#if navLink.submenu}
+                {#if link.submenu}
                     <button
                         class="web-main-header-nav-item-button"
                         aria-haspopup="true"
@@ -62,17 +29,17 @@
                         aria-controls="submenu"
                         data-submenu-button
                     >
-                        <svelte:component this={navLink.submenu} label={navLink.label} />
+                        <svelte:component this={link.submenu} label={link.label} />
                     </button>
                 {:else}
                     <a
                         class={classNames(
                             'data-[badge]:after:animate-scale-in data-[badge]:relative data-[badge]:after:absolute data-[badge]:after:size-1.5 data-[badge]:after:translate-full data-[badge]:after:rounded-full'
                         )}
-                        href={navLink.href}
+                        href={link.href}
                         data-initialized={initialized ? '' : undefined}
-                        data-badge={navLink.showBadge ? '' : undefined}
-                        >{navLink.label}
+                        data-badge={link.showBadge ? '' : undefined}
+                        >{link.label}
                     </a>
                 {/if}
             </li>
