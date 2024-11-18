@@ -131,14 +131,4 @@
             margin-block-start: 0;
         }
     }
-
-    .text-display font-aeonik-pro {
-        margin-bottom: -48px;
-    }
-
-    @media screen and (min-width: 768px) {
-        .text-display font-aeonik-pro {
-            margin-bottom: 0;
-        }
-    }
 </style>

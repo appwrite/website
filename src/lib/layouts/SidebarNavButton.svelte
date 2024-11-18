@@ -9,6 +9,7 @@
     class="web-side-nav-button"
     class:is-selected={$page.url?.pathname === groupItem.href}
     href={groupItem.href}
+    target={groupItem.openInNewTab ? '_blank' : '_self'}
 >
     {#if groupItem.icon}
         <span class="icon {groupItem.icon}" aria-hidden="true" />
@@ -19,6 +20,10 @@
         {#if groupItem.new}
             <span class="web-inline-tag is-pink" style="">New</span>
         {/if}
+
+        {#if groupItem.openInNewTab}
+            <span class="icon icon-external-link icon-secondary" aria-hidden="true" />
+        {/if}
     </span>
     {#if groupItem.isParent}
         <span class="icon-cheveron-right ml-auto" aria-hidden="true" />
@@ -26,6 +31,13 @@
 </a>
 
 <style lang="scss">
+    :global(.light) {
+        --color-secondary-icon: var(--greyscale-400, #97979b);
+    }
+    :global(.dark) {
+        --color-secondary-icon: var(--greyscale-700, #56565c);
+    }
+
     [class*='icon'] {
         font-size: 1rem;
     }
@@ -34,5 +46,10 @@
         font-size: 0.75rem;
         padding-block: 2px;
         margin-block-start: 1px;
+    }
+
+    .icon-secondary {
+        color: var(--color-secondary-icon);
+        margin-left: -0.375rem;
     }
 </style>
