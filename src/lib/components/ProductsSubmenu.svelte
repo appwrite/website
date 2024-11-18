@@ -13,7 +13,8 @@
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
 
     const {
-        elements: { trigger, menu, item }
+        elements: { trigger, menu, item },
+        states: { open }
     } = createDropdownMenu({
         loop: true
     });
@@ -67,12 +68,28 @@
     ];
 </script>
 
-<li class="text-primary hover:text-accent cursor-pointer" use:melt={$trigger}>{label}</li>
+<li
+    class={classNames(
+        'text-primary focus:text-accent hover:text-accent inline-flex cursor-pointer items-center justify-between outline-none',
+        {
+            'text-accent': $open
+        }
+    )}
+    use:melt={$trigger}
+>
+    {label}
+
+    <span
+        class={classNames('web-icon-chevron-down block transition-transform', {
+            'rotate-180': $open
+        })}
+    />
+</li>
 
 <div
     use:melt={$menu}
     class={classNames(
-        'data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in fixed !right-0 !left-0 flex h-[600px] w-full flex-col items-center bg-[#232325]/90 px-12 pb-4 outline-none backdrop-blur-2xl'
+        'data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in fixed !right-0 !left-0 flex h-[550px] w-full flex-col items-center bg-[#232325]/90 px-12 pb-4 outline-none backdrop-blur-2xl'
     )}
 >
     <div class="flex w-full flex-1 flex-col justify-center">
