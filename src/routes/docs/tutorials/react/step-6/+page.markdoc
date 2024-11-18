@@ -8,7 +8,7 @@ step: 6
 To store your ideas, you need to create a database first.
 
 1. Go to the Databases section in your Appwrite Console
-2. Click "Create Database"
+2. Click *Create Database*
 3. Give it a name (e.g. "ideas-tracker")
 4. Save the database ID as you'll need it later
 
