@@ -200,8 +200,6 @@
                             </li>
                         {/each}
                     </ul>
-
-                    ANIMATION TODO
                 </div>
             </div>
         </div>
