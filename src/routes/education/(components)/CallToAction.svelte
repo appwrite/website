@@ -21,8 +21,7 @@
                 Develop your developer skills with Appwrite Pro, join a vibrant community of
                 open-source contributors, and start building with a vast array of frameworks.
             </p>
-            <a href={educationSignUp} class="web-button mt-4 !w-full md:!w-fit">Sign up</a
-            >
+            <a href={educationSignUp} class="web-button mt-4 !w-full md:!w-fit">Sign up</a>
         </div>
     </div>
 </div>

@@ -385,10 +385,6 @@
         }
     }
 
-    .bg-blur {
-        inset-block-start: -100px;
-    }
-
     .tech-hero {
         @include gradients.border-block-gradient;
 
