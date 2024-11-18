@@ -187,8 +187,8 @@
                             class="text-description web-u-max-width-640 e-u-padding-inline-32-desktop mx-auto"
                         >
                             The Appwrite Startups Program supports your startup with a complete
-                            backend for you to build your products. You will receive
-                            $20,000 Cloud credits for Appwrite Scale for 12 months.
+                            backend for you to build your products. You will receive $20,000 Cloud
+                            credits for Appwrite Scale for 12 months.
                         </p>
                         <button on:click={scrollToForm} class="web-button mt-3 mx-auto">
                             Apply now

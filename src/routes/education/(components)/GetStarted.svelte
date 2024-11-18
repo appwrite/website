@@ -2,14 +2,18 @@
     import Badge from '$lib/components/ui/Badge.svelte';
     import { classNames } from '$lib/utils/classnames';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    
+
     const educationSignUp = `${PUBLIC_APPWRITE_DASHBOARD}/console/education`;
 
     const items = [
         {
             label: 'Enroll to the GitHub Student Developer Pack',
             description: 'Sign up for the Student Developer pack and explore the benefits.',
-            cta: { url: 'https://github.com/education', label: 'Enroll on GitHub Education', icon: 'github' }
+            cta: {
+                url: 'https://github.com/education',
+                label: 'Enroll on GitHub Education',
+                icon: 'github'
+            }
         },
         {
             label: 'Redeem your Cloud credits',
