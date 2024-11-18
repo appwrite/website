@@ -18,7 +18,7 @@
 </script>
 
 <nav class="web-main-header-nav" aria-label="Main">
-    <ul class="web-main-header-nav-list">
+    <ul class="web-main-header-nav-list flex items-center">
         {#each links as link}
             <li class="web-main-header-nav-item text-primary hover:text-accent">
                 {#if link.submenu}
