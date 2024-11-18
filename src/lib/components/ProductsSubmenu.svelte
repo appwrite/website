@@ -21,46 +21,47 @@
 
     export let label: string;
 
+    // TO DO: ADD LINKS
     let products: Array<SubmenuItem> = [
         {
             name: 'Auth',
-            href: '/products/auth',
+            href: '/',
             description: 'Secure login for all users with multi-factor authentication and more.',
             icon: '/images/icons/illustrated/dark/auth.png'
         },
         {
             name: 'Database',
-            href: '/products/databases',
+            href: '/',
             description: 'Scalable and robust database backed by the latest technologies.',
             icon: '/images/icons/illustrated/dark/databases.png'
         },
         {
             name: 'Storage',
-            href: '/products/storage',
+            href: '/',
             description: 'Securely store files with advanced compression and encryption.',
             icon: '/images/icons/illustrated/dark/storage.png'
         },
         {
             name: 'Functions',
-            href: '/products/functions',
+            href: '/',
             description: 'Deploy & scale serverless functions in secure, isolated runtimes.',
             icon: '/images/icons/illustrated/dark/functions.png'
         },
         {
             name: 'Messaging',
-            href: '/products/messaging',
+            href: '/',
             description: 'Set up a full-functioning messaging service for your application.',
             icon: '/images/icons/illustrated/dark/messaging.png'
         },
         {
             name: 'Realtime',
-            href: '/products/realtime',
+            href: '/',
             description: 'Subscribe and react to any Appwrite event using the Realtime API.',
             icon: '/images/icons/illustrated/dark/realtime.png'
         },
         {
             name: 'Sites',
-            href: '/products/sites',
+            href: '/',
             beta: true,
             description: 'Host your domain and take control over your page’s analytics.',
             icon: '/images/icons/illustrated/dark/sites.png'
