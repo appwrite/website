@@ -31,13 +31,13 @@
 
 <div
     class={classNames(
-        'container relative pb-40',
-        'after:absolute after:inset-0 after:bg-gradient-to-r after:from-[hsl(var(--p-body-bg-color))] after:via-transparent after:to-[hsl(var(--p-body-bg-color))]'
+        'container relative mb-40',
+        'mix-blend-exclusion after:absolute after:inset-0'
     )}
 >
     <div
         style="--columns:{platforms.length}"
-        class="grid grid-cols-[repeat(calc(var(--columns)/4),minmax(0,1fr))] place-items-center gap-4 md:grid-cols-[repeat(calc(var(--columns)/2),minmax(0,1fr))] lg:grid-cols-[repeat(var(--columns),minmax(0,1fr))]"
+        class="grid grid-cols-[repeat(calc(var(--columns)/4),minmax(0,1fr))] place-items-center gap-4 [filter:brightness(1.5)] [mask-image:linear-gradient(to_right,rgba(255,255,255,0.08)_0%,_rgba(255,255,255,1)_50%,_rgba(255,255,255,0.08)_100%)] [mask-mode:alpha] md:grid-cols-[repeat(calc(var(--columns)/2),minmax(0,1fr))] lg:grid-cols-[repeat(var(--columns),minmax(0,1fr))]"
     >
         {#each platforms as platform}
             <img src={platform.icon} alt={platform.name} class="h-16 w-16" />
