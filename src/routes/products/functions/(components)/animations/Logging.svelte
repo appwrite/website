@@ -36,7 +36,7 @@
     ];
 </script>
 
-<div class="bg-greyscale-850/90 flex flex-col gap-4 rounded-2xl p-2">
+<div class="bg-greyscale-850/90 flex flex-col rounded-2xl p-2">
     <div
         class="relative flex h-[250px] flex-col items-center justify-center overflow-hidden rounded-lg bg-white/[0.02]"
     >
@@ -67,7 +67,7 @@
             </div>
         </div>
     </div>
-    <div class="p-2">
+    <div class="p-4">
         <span class="text-primary">Logging</span>
         <p class="text-secondary">
             Monitor function execution with detailed logging from Appwrite.

@@ -22,7 +22,7 @@
     ];
 </script>
 
-<div class="bg-greyscale-850/90 flex flex-col gap-4 rounded-2xl p-2">
+<div class="bg-greyscale-850/90 flex flex-col rounded-2xl p-2">
     <div
         class="grid h-[250px] grid-cols-3 place-items-center justify-center rounded-lg bg-white/[0.02] p-6"
     >
