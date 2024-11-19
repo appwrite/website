@@ -8,6 +8,7 @@
     --color-primary: hsl(var(--color-primary));
     --color-secondary: hsl(var(--color-secondary));
     --color-accent: var(--color-secondary);
+    --color-smooth: var(--color-smooth);
 
     /* pink */
     --color-pink-200: hsl(var(--color-pink-hue) 98% 84%);
@@ -56,7 +57,6 @@
     --color-white: hsl(0 0% 100%);
     --color-black: hsl(0 0% 0%);
     --color-transparent: rgba(0, 0, 0, 0);
-    --color-smooth: hsl(var(--color-greyscale-hue) 6%, 10%, 0.04);
     --color-offset: hsl(var(--color-greyscale-hue) 2%, 11%, 0.94);
     --color-greyscale-25: hsl(var(--color-greyscale-hue) 11% 98%);
     --color-greyscale-50: hsl(var(--color-greyscale-hue) 11% 94%);
@@ -221,6 +221,7 @@
     --color-accent: var(--color-pink-600);
     --color-badge-bg: var(--color-badge-bg-light);
     --color-badge-border: var(--color-badge-border-light);
+    --color-smooth: hsl(var(--color-greyscale-hue) 6%, 10%, 0.04);
 }
 
 /* dark theme */
@@ -229,6 +230,7 @@
     --color-secondary: var(--color-greyscale-300);
     --color-badge-bg: var(--color-badge-bg-dark);
     --color-badge-border: var(--color-badge-border-dark);
+    --color-smooth: hsl(0 0%, 100%, 0.06);
 }
 
 /* Container */
