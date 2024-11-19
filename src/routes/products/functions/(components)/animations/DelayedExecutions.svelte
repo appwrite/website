@@ -7,10 +7,9 @@
     const curr = today(getLocalTimeZone());
 
     const {
-        elements: { calendar, heading, grid, cell, prevButton, nextButton },
-        states: { months, headingValue, value },
-        helpers: { isDateDisabled, isDateUnavailable },
-        options: { locale }
+        elements: { calendar, heading, grid, cell },
+        states: { months, headingValue },
+        helpers: { isDateDisabled, isDateUnavailable }
     } = createCalendar({
         defaultValue: curr
     });

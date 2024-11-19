@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
     import { onMount } from 'svelte';
     import { writable } from 'svelte/store';
 
