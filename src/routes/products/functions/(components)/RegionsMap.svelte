@@ -150,7 +150,7 @@
                 bind:this={tooltipElement}
                 in:fly={{ y: 10, duration: 500 }}
                 out:fly={{ y: -10, duration: 500 }}
-                class="pointer-events-none absolute z-100 block flex w-[190px] flex-col gap-2 rounded-[10px] border border-white bg-gradient-to-br from-white/64 to-white/32 p-2 backdrop-blur-sm"
+                class="pointer-events-none absolute z-100 flex w-[190px] flex-col gap-2 rounded-[10px] border border-white bg-gradient-to-br from-white/64 to-white/32 p-2 backdrop-blur-sm"
                 style:left="{tooltip.x}px"
                 style:top="{tooltip.y - (tooltipElement?.offsetHeight || 0) - 10}px"
             >
@@ -176,7 +176,7 @@
         <div class="relative z-10 block w-full space-y-4 md:hidden">
             {#each pins as pin}
                 <div
-                    class="z-100 block flex w-full flex-col gap-2 rounded-[10px] border border-white bg-gradient-to-br from-white/64 to-white/32 p-3 backdrop-blur-sm"
+                    class="z-100 flex w-full flex-col gap-2 rounded-[10px] border border-white bg-gradient-to-br from-white/64 to-white/32 p-3 backdrop-blur-sm"
                 >
                     <span class="text-primary text-caption w-fit"
                         >{pin.city}
