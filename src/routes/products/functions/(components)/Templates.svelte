@@ -1,6 +1,7 @@
 <script lang="ts">
     import Templates from '../(assets)/templates.png';
     import Avatar from '../(assets)/avatar.png';
+    import { classNames } from '$lib/utils/classnames';
 
     const templates = [
         {
@@ -59,8 +60,9 @@
                 Appwrite offers a wide variety of ready-to-use templates to speed up development.
             </p>
         </div>
+
         <div
-            class="rounded-3xl bg-gradient-to-br from-black/6 via-black/4 via-[61%] to-black/6 p-3 outline-1 outline-black/8 md:w-[60%]"
+            class="mt-8 w-[200%] rounded-3xl border border-black/8 bg-gradient-to-br from-black/6 via-black/4 via-[61%] to-black/6 p-2 md:w-full"
         >
             <img class="rounded-xl" src={Templates} alt="Templates console" />
         </div>
