@@ -142,7 +142,7 @@
         </p>
     </div>
     <div
-        class="container relative mt-[7.5rem] mx-auto flex h-full items-center justify-center py-10"
+        class="container relative mx-auto flex h-full items-center justify-center py-10 md:mt-[7.5rem]"
         bind:this={mapContainer}
     >
         {#if showTooltip}
@@ -200,7 +200,7 @@
         </div>
         <svg
             viewBox="0 0 {width} {height}"
-            class="animate-map absolute w-full scale-250 md:static md:scale-100"
+            class="animate-map absolute hidden w-full scale-250 md:static md:flex md:scale-100"
         >
             <clipPath id="map">
                 <path
