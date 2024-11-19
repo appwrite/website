@@ -6,13 +6,13 @@
     <div
         class="container grid grid-cols-1 items-center justify-between gap-12 md:grid-cols-12 md:flex-row"
     >
-        <div class="col-span-4 mb-10 flex flex-col">
+        <div class="col-span-5 mb-10 flex flex-col">
             <h2 class="text-title text-primary font-aeonik-pro my-4 text-pretty">
-                Deploy seamlessly with no effort
+                Deploy seamlessly<br /> with no effort
             </h2>
-            <p class="text-body text-secondary text-pretty font-medium">
-                Appwrite offers to deploy functions directly from Git repositories to track changes
-                within your development workflow seamlessly.
+            <p class="text-body text-secondary font-medium">
+                Appwrite offers to deploy functions directly<br /> from Git repositories to track
+                changes within<br /> your development workflow seamlessly.
             </p>
 
             <a href="/docs/sdks#server" class="web-button is-secondary mt-8">Learn more</a>
