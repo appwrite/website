@@ -2,26 +2,26 @@
     import { classNames } from '$lib/utils/classnames';
 </script>
 
-<section class="pt-32 pb-40">
-    <div
-        class="container grid grid-cols-1 items-center justify-between gap-12 md:grid-cols-12 md:flex-row"
-    >
-        <div class="col-span-5 mb-10 flex flex-col">
+<section class="pt-12 pb-20">
+    <div class="container flex flex-col items-center justify-between gap-16 md:flex-row">
+        <div class="mb-10 flex max-w-sm flex-col">
             <h2 class="text-title text-primary font-aeonik-pro my-4 text-pretty">
                 Deploy seamlessly<br /> with no effort
             </h2>
-            <p class="text-body text-secondary font-medium">
-                Appwrite offers to deploy functions directly<br /> from Git repositories to track
-                changes within<br /> your development workflow seamlessly.
+            <p class="text-body text-secondary text-pretty font-medium">
+                Appwrite offers to deploy functions directly from Git repositories to track changes
+                within your development workflow seamlessly.
             </p>
 
-            <a href="/docs/sdks#server" class="web-button is-secondary mt-8">Learn more</a>
+            <a href="/docs/sdks#server" class="web-button is-secondary mt-8 !w-full md:!w-fit"
+                >Learn more</a
+            >
         </div>
 
         <div
-            class="window bg-offset col-span-7 col-start-6 flex h-[420px] w-full flex-col pb-4 backdrop-blur-lg"
+            class="window bg-offset -my-40 flex aspect-[6.87/4.2] scale-55 flex-col pb-4 backdrop-blur-lg md:my-0 md:scale-100"
         >
-            <header class="grid h-12 w-full grid-cols-12 items-center px-4">
+            <header class="grid w-full grid-cols-12 items-center py-2 px-4">
                 <div class="col-span-2 flex gap-1">
                     <button class="size-2 rounded-full bg-[#EC6A5E]" />
                     <button class="size-2 rounded-full bg-[#F5BF4F]" />

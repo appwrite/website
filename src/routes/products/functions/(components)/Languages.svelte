@@ -462,9 +462,9 @@ public class Handler {
     ];
 </script>
 
-<section class="pt-20 pb-40 md:pt-32">
+<section class="pt-12 pb-40 md:pt-32">
     <div class="container flex flex-col items-center justify-between md:flex-row md:gap-6">
-        <div class="mb-10 flex max-w-lg flex-col">
+        <div class="mb-10 flex w-full flex-col md:max-w-lg">
             <h2 class="text-title text-primary font-aeonik-pro my-4">
                 Run in your preferred<br /> languages
             </h2>
