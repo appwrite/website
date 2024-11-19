@@ -463,7 +463,7 @@ public class Handler {
 </script>
 
 <section class="pt-32 pb-40">
-    <div class="container flex flex-col justify-between gap-6 md:flex-row">
+    <div class="container flex flex-col items-center justify-between gap-6 md:flex-row">
         <div class="mb-10 flex max-w-lg flex-col">
             <h2 class="text-title text-primary font-aeonik-pro my-4">
                 Run in your preferred<br /> languages
