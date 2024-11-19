@@ -17,12 +17,12 @@
     ];
 </script>
 
-<section class="pt-32 pb-40">
-    <div class="container grid grid-cols-1 items-center justify-between gap-12 md:grid-cols-12">
+<section class="pt-12 pb-20">
+    <div class="container flex flex-col items-center justify-between gap-16 md:flex-row">
         <div
-            class="window flex aspect-[6.87/4.2] w-full flex-col bg-[#232325]/94 px-3 pb-3 backdrop-blur-lg md:col-span-7 md:scale-100"
+            class="window bg-offset -mb-40 flex aspect-[6.87/4.2] scale-46 flex-col pb-4 backdrop-blur-lg md:my-0 md:scale-100"
         >
-            <header class="grid h-12 w-full grid-cols-12 items-center pl-2">
+            <header class="grid w-full grid-cols-12 items-center py-2 pl-2">
                 <div class="col-span-2 flex gap-1">
                     <button class="size-2 rounded-full bg-[#EC6A5E]" />
                     <button class="size-2 rounded-full bg-[#F5BF4F]" />
@@ -154,7 +154,7 @@
                 </div>
             </div>
         </div>
-        <div class="mb-10 flex flex-col md:col-span-4 md:col-start-9">
+        <div class="mb-10 flex max-w-sm flex-col">
             <h2 class="text-title text-primary font-aeonik-pro my-4 text-pretty">
                 Develop your functions locally
             </h2>
@@ -163,7 +163,9 @@
                 over your development.
             </p>
 
-            <a href="/docs/sdks#server" class="web-button is-secondary mt-8">Learn more</a>
+            <a href="/docs/sdks#server" class="web-button is-secondary mt-8 !w-full md:!w-fit"
+                >Learn more</a
+            >
         </div>
     </div>
 </section>
