@@ -1,13 +1,14 @@
 <script lang="ts">
     import Phone from '../(assets)/phone.png';
     import PhoneMobile from '../(assets)/phone-mobile.png';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 </script>
 
 <div
     class="box-content flex items-center bg-[url(/images/bgs/mobile-auth-hero.png)] bg-cover bg-bottom pt-20 px-5 pb-20 md:bg-[url(/images/bgs/auth-hero.png)] md:bg-center md:pt-32 md:pb-40 lg:px-8 xl:px-16"
 >
-    <div class="grid items-center gap-16 md:grid-cols-2">
-        <div class="space-y-6">
+    <div class="mx-auto grid max-w-[75rem] items-center gap-16 md:grid-cols-2">
+        <div class="space-y-4">
             <div class="flex items-center gap-2">
                 <img src="/images/icons/illustrated/dark/functions.png" class="size-8" alt="" />
                 <span class="text-micro text-primary uppercase">
@@ -17,21 +18,23 @@
             <h1 class="text-display font-aeonik-pro text-primary max-sm:max-w-[300px] md:max-w-md">
                 Serverless functions done your way
             </h1>
-            <p class="text-description text-secondary">
-                Deploy and scale serverless functions with<br /> seamless integration,
-                multi-language support,<br /> and zero server management.
+            <p class="text-description text-secondary font-medium">
+                Deploy and scale serverless functions with seamless integration, multi-language
+                support, and zero server management.
             </p>
 
             <div class="flex flex-col items-center gap-2 md:flex-row">
-                <a href="/docs/products/auth" class="web-button !w-full md:!w-fit"> Get started </a>
-                <a href="/docs/products/auth" class="web-button is-secondary !w-full md:!w-fit">
+                <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button !w-full md:!w-fit">
+                    Get started
+                </a>
+                <a
+                    href="/docs/products/functions"
+                    class="web-button is-secondary !w-full md:!w-fit"
+                >
                     Documentation
                 </a>
             </div>
         </div>
-        <img
-            src={Phone}
-            alt="Phone screen alongside of a users table and a code snippet that controls Appwrite's functions."
-        />
+        <img src={Phone} alt="Phone screen" />
     </div>
 </div>
