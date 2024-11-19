@@ -184,19 +184,52 @@
                         {#each Array.from({ length: 22 }) as _, i}
                             {@const lineNumber = i + 37}
                             {@const highlightedNumbers = [47, 48, 49, 50]}
+                            {@const isError = lineNumber === 41}
+                            {@const isGood = highlightedNumbers.includes(lineNumber)}
                             <li
                                 class={classNames('pointer-events-none pl-2 text-[10px]', {
-                                    'rounded bg-[#FF453A]/8 text-white': lineNumber === 41,
-                                    'bg-[#7ADF82]/8 text-white': [47, 48, 49, 50].includes(
-                                        lineNumber
-                                    ),
+                                    'rounded bg-[#FF453A]/8 text-white': isError,
+                                    'bg-[#7ADF82]/8 text-white': isGood,
                                     'rounded-t': lineNumber === highlightedNumbers[0],
                                     'rounded-b':
                                         lineNumber ===
                                         highlightedNumbers[highlightedNumbers.length - 1]
                                 })}
                             >
-                                {lineNumber}
+                                <span class="flex items-center gap-2">
+                                    {lineNumber}
+                                    {#if isError}
+                                        <svg
+                                            width="8"
+                                            height="8"
+                                            viewBox="0 0 8 8"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M4 8C6.20914 8 8 6.20914 8 4C8 1.79086 6.20914 0 4 0C1.79086 0 0 1.79086 0 4C0 6.20914 1.79086 8 4 8ZM2.39844 3.625C2.19133 3.625 2.02344 3.79289 2.02344 4C2.02344 4.20711 2.19133 4.375 2.39844 4.375H5.59844C5.80554 4.375 5.97344 4.20711 5.97344 4C5.97344 3.79289 5.80554 3.625 5.59844 3.625H2.39844Z"
+                                                fill="#FF453A"
+                                            />
+                                        </svg>
+                                    {:else if isGood}
+                                        <svg
+                                            width="8"
+                                            height="8"
+                                            viewBox="0 0 8 8"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M4 8C6.20914 8 8 6.20914 8 4C8 1.79086 6.20914 0 4 0C1.79086 0 0 1.79086 0 4C0 6.20914 1.79086 8 4 8ZM4 2.0249C4.20711 2.0249 4.375 2.1928 4.375 2.3999V3.6249H5.59844C5.80554 3.6249 5.97344 3.7928 5.97344 3.9999C5.97344 4.20701 5.80554 4.3749 5.59844 4.3749H4.375V5.5999C4.375 5.80701 4.20711 5.9749 4 5.9749C3.79289 5.9749 3.625 5.80701 3.625 5.5999V4.3749H2.39844C2.19133 4.3749 2.02344 4.20701 2.02344 3.9999C2.02344 3.7928 2.19133 3.6249 2.39844 3.6249H3.625V2.3999C3.625 2.1928 3.79289 2.0249 4 2.0249Z"
+                                                fill="#7ADF82"
+                                            />
+                                        </svg>
+                                    {/if}
+                                </span>
                             </li>
                         {/each}
                     </ul>
