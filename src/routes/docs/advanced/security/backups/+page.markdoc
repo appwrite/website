@@ -12,6 +12,6 @@ Self-managed backups are available for Pro plans and above. These backups allow 
 - Recover from accidental data deletion
 - Restore data to a previous point in time
 
-For detailed information about self-managed backup features, configuration options, and restoration procedures, visit our [Backup Documentation](/docs/products/cloud/backups).
+For detailed information about self-managed backup features, configuration options, and restoration procedures, visit our [Backup Documentation](/docs/products/databases/backups).
 
 For platform-wide disaster recovery, Appwrite maintains automated internal backups of the underlying infrastructure. Some databases support point-in-time recovery for the past 7 days, while others are automatically backed up every 4 hours and retained for 7 days.
