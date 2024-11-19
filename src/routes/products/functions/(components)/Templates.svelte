@@ -47,7 +47,7 @@
 </script>
 
 <section class="light bg-greyscale-50 pt-32 pb-40">
-    <div class="container flex flex-col justify-between gap-8 overflow-x-hidden md:flex-row">
+    <div class="container flex flex-col justify-between gap-8 md:flex-row">
         <div class="mb-10 flex max-w-sm flex-col">
             <span class="web-badges text-micro font-aeonik-fono mr-auto ml-0 uppercase !text-white"
                 >Getting Started_</span
@@ -60,7 +60,7 @@
             </p>
         </div>
         <div
-            class="rounded-3xl bg-gradient-to-br from-black/6 via-black/4 via-[61%] to-black/6 p-3 md:w-[60%]"
+            class="rounded-3xl bg-gradient-to-br from-black/6 via-black/4 via-[61%] to-black/6 p-3 outline-1 outline-black/8 md:w-[60%]"
         >
             <img class="rounded-xl" src={Templates} alt="Templates console" />
         </div>
