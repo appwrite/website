@@ -18,9 +18,9 @@
     const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 </script>
 
-<div class={classNames('bg-greyscale-850/90 flex flex-col gap-4 rounded-2xl p-2')}>
+<div class={classNames('bg-greyscale-850/90 flex flex-col rounded-2xl p-2')}>
     <div
-        class="relative flex h-[250px] flex-1 flex-col items-center justify-center gap-4 overflow-hidden overflow-hidden rounded-lg bg-white/[0.02]"
+        class="relative flex h-[250px] flex-1 flex-col items-center justify-center gap-4 overflow-hidden rounded-lg bg-white/[0.02]"
     >
         <div
             class="calendar mt-6 -mb-12 w-[75%] bg-[hsl(240,_6%,_12%,_0.64)] p-4"
