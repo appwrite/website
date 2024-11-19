@@ -47,7 +47,7 @@
     ];
 </script>
 
-<section class="light bg-greyscale-50 pt-32 pb-40">
+<section class="light bg-greyscale-50 pt-12 pb-20">
     <div class="container flex flex-col justify-between gap-8 md:flex-row">
         <div class="mb-10 flex max-w-sm flex-col">
             <span class="web-badges text-micro font-aeonik-fono mr-auto ml-0 uppercase !text-white"
@@ -70,12 +70,14 @@
 
     <div class="container mt-20 space-y-8">
         <div class="flex items-center justify-between">
-            <h2 class="text-label text-primary">Explore templates</h2>
-            <button class="web-button is-secondary">View all templates</button>
+            <h2 class="text-label text-primary font-aeonik-pro">Explore templates</h2>
+            <button class="web-button is-secondary !hidden md:!block">View all templates</button>
         </div>
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {#each templates as template}
-                <div class="flex flex-col gap-2 rounded-2xl border border-black/8 bg-white p-4">
+                <div
+                    class="hidden flex-col gap-2 rounded-2xl border border-black/8 bg-white p-4 md:flex"
+                >
                     <div class="flex w-full items-center justify-between">
                         <span class="text-sub-body text-primary font-medium">{template.title}</span>
                         <img src={template.avatar} class="size-6" alt={template.title} />
@@ -83,6 +85,21 @@
                     <p class="text-sub-body text-secondary line-clamp-2">{template.description}</p>
                 </div>
             {/each}
+            {#each templates.slice(0, 4) as template}
+                <div
+                    class="flex flex-col gap-2 rounded-2xl border border-black/8 bg-white p-4 md:hidden"
+                >
+                    <div class="flex w-full items-center justify-between">
+                        <span class="text-sub-body text-primary font-medium">{template.title}</span>
+                        <img src={template.avatar} class="size-6" alt={template.title} />
+                    </div>
+                    <p class="text-sub-body text-secondary line-clamp-2">{template.description}</p>
+                </div>
+            {/each}
+
+            <button class="web-button is-secondary block !w-full md:hidden md:!w-fit"
+                >View all templates</button
+            >
         </div>
     </div>
 </section>
