@@ -19,7 +19,7 @@
         </div>
 
         <div
-            class="window col-span-7 col-start-6 flex h-[420px] w-full flex-col bg-[#1B1B1C]/94 pb-4 backdrop-blur-lg"
+            class="window bg-offset col-span-7 col-start-6 flex h-[420px] w-full flex-col pb-4 backdrop-blur-lg"
         >
             <header class="grid h-12 w-full grid-cols-12 items-center px-4">
                 <div class="col-span-2 flex gap-1">

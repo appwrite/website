@@ -29,7 +29,7 @@
                     <button class="size-2 rounded-full bg-[#6d9e66]" />
                 </div>
                 <div
-                    class="col-span-6 col-start-4 flex h-6 w-full flex-1 items-center justify-center rounded-full bg-[#1B1B1C]/94 backdrop-blur-lg"
+                    class="bg-offset col-span-6 col-start-4 flex h-6 w-full flex-1 items-center justify-center rounded-full backdrop-blur-lg"
                 >
                     <span class="text-x-micro -tracking-[.045%] text-white">localhost:3000</span>
                 </div>
@@ -39,7 +39,7 @@
                 <div
                     class="grid size-full flex-1 grid-cols-1 grid-rows-12 gap-2 overflow-hidden rounded-xl"
                 >
-                    <div class="row-span-8 bg-[#1B1B1C]/94 p-1">
+                    <div class="bg-offset row-span-8 p-1">
                         <span class="bg-badge-bg-dark ml-1 rounded-full py-0.5 px-2 text-[.5265rem]"
                             >main.ts</span
                         >
@@ -47,7 +47,7 @@
                         <ul
                             class={classNames(
                                 'text-greyscale-600 relative mt-2 px-2 font-mono',
-                                'after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:via-transparent after:to-[#1B1B1C]/94'
+                                'after:to-offset after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:via-transparent'
                             )}
                         >
                             {#each Array.from({ length: 15 }) as _, i}
@@ -56,7 +56,7 @@
                             {/each}
                         </ul>
                     </div>
-                    <div class="row-span-4 bg-[#1B1B1C]/94">
+                    <div class="bg-offset row-span-4">
                         <span class="bg-badge-bg-dark ml-1 rounded-full py-0.5 px-2 text-[.5265rem]"
                             >Terminal</span
                         >
