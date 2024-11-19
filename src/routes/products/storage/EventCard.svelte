@@ -56,9 +56,6 @@
             <button class="web-button is-secondary">
                 <span>{buttonText}</span>
             </button>
-            <!-- <button class="web-button is-text">
-        <span>Add to calendar</span>
-      </button> -->
         </div>
     </div>
 </a>
