@@ -462,8 +462,8 @@ public class Handler {
     ];
 </script>
 
-<section class="pt-32 pb-40">
-    <div class="container flex flex-col items-center justify-between gap-6 md:flex-row">
+<section class="pt-20 pb-40 md:pt-32">
+    <div class="container flex flex-col items-center justify-between md:flex-row md:gap-6">
         <div class="mb-10 flex max-w-lg flex-col">
             <h2 class="text-title text-primary font-aeonik-pro my-4">
                 Run in your preferred<br /> languages
@@ -473,7 +473,9 @@ public class Handler {
                 /> compatibility in your projects.
             </p>
 
-            <a href="/docs/sdks#server" class="web-button is-secondary mt-8">Learn more</a>
+            <a href="/docs/sdks#server" class="web-button is-secondary mt-8 !w-full md:!w-fit"
+                >Learn more</a
+            >
         </div>
 
         <div>

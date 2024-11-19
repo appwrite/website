@@ -7,17 +7,17 @@
     import Logging from './animations/Logging.svelte';
 </script>
 
-<section class="relative pt-32 pb-40">
+<section class="relative pt-24 pb-20 md:pb-40">
     <div class="container">
         <div
-            class="mx-auto flex max-w-[350px] flex-col items-center justify-center gap-4 text-center"
+            class="mx-auto flex max-w-[350px] flex-col justify-center gap-4 md:items-center md:text-center"
         >
             <h2 class="font-aeonik-pro text-primary text-pretty text-4xl">
                 Execute functions<br /> with ease
             </h2>
             <p>Execute your functions effortlessly through the Appwrite console, SDKs, or API.</p>
 
-            <a href="/" class="web-button is-secondary mt-4">Learn more</a>
+            <a href="/" class="web-button is-secondary mt-4 !w-full md:!w-fit">Learn more</a>
         </div>
 
         <div class="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
