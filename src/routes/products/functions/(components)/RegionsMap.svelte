@@ -133,7 +133,7 @@
     };
 </script>
 
-<div class="light bg-[#EDEDF0] pt-32 pb-40">
+<div class="light bg-[#EDEDF0] pt-12 pb-20">
     <div class="container flex flex-col items-center justify-center gap-8 text-center">
         <h2 class="text-display text-primary font-aeonik-pro">Optimize performance</h2>
         <p class="text-description text-secondary max-w-xl font-medium">
