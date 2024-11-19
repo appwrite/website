@@ -4,16 +4,18 @@
     import { TITLE_SUFFIX } from '$routes/titles';
     import Templates from './(components)/Templates.svelte';
 
+    import Phone from './(assets)/phone.png';
     import Bento from './(components)/Bento.svelte';
     import OpenSource from './(components)/OpenSource.svelte';
     import { PreFooter, FooterNav, MainFooter } from '$lib/components';
-    import Hero from './(components)/Hero.svelte';
+    import Hero from '$lib/components/product-pages/hero.svelte';
     import Languages from './(components)/Languages.svelte';
     import Platforms from './(components)/Platforms.svelte';
     import DevelopLocally from './(components)/DevelopLocally.svelte';
     import DeploySeamlessly from './(components)/DeploySeamlessly.svelte';
     import Testimonials from './(components)/Testimonials.svelte';
     import RegionsMap from './(components)/RegionsMap.svelte';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     const title = 'Functions' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -39,7 +41,25 @@
 
 <Main>
     <div class="overflow-hidden">
-        <Hero />
+        <Hero
+            eyebrow="Functions"
+            icon="/images/icons/illustrated/dark/functions.png"
+            title="Serverless functions done your way"
+            image={{
+                url: Phone,
+                alt: 'Phone screen with example function running on an e-commerce site.'
+            }}
+            description="Deploy and scale serverless functions with seamless integration, multi-language support, and zero server management."
+            cta={{
+                label: 'Get started',
+                url: PUBLIC_APPWRITE_DASHBOARD
+            }}
+            secondaryCta={{
+                label: 'Documentation',
+                url: '/docs/products/functions'
+            }}
+        />
+
         <Languages />
         <Platforms />
         <DevelopLocally />
