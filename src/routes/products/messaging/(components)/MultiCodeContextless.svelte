@@ -63,8 +63,8 @@
             </div>
         </div>
         <div class="web-code-snippet-header-end">
-            <ul class="buttons-list flex gap-3">
-                <li class="buttons-list-item flex self-center">
+            <ul class="buttons-list divide-greyscale-750 flex gap-3 divide-x">
+                <li class="buttons-list-item flex self-center pr-6">
                     <Select bind:value={selected} bind:options />
                 </li>
                 <li class="buttons-list-item" style="padding-inline-start: 13px">
