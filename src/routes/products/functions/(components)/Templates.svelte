@@ -73,10 +73,10 @@
         </div>
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {#each templates as template}
-                <div class="flex flex-col gap-4 rounded-2xl border border-black/8 bg-white p-4">
+                <div class="flex flex-col gap-2 rounded-2xl border border-black/8 bg-white p-4">
                     <div class="flex w-full items-center justify-between">
                         <span class="text-sub-body text-primary font-medium">{template.title}</span>
-                        <img src={template.avatar} class="size-8" alt={template.title} />
+                        <img src={template.avatar} class="size-6" alt={template.title} />
                     </div>
                     <p class="text-sub-body text-secondary line-clamp-2">{template.description}</p>
                 </div>
