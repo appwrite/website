@@ -277,7 +277,7 @@
     .hero-flipped {
         display: grid;
         grid-template-columns: minmax(0, 1fr) 30.0625rem;
-        gap: 5vw;
+        gap: 4.5rem;
         justify-content: space-between;
         align-items: center;
         position: relative;
