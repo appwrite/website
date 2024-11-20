@@ -22,9 +22,7 @@
     ];
 </script>
 
-<div
-    class="relative pt-32 pb-40 after:absolute after:right-0 after:bottom-0 after:z-0 after:hidden after:h-80 after:w-1/2 after:bg-[radial-gradient(circle,_hsla(177,_53%,_69%,_0.3)_0px,_transparent_73%,_transparent_100%)] after:md:block"
->
+<div class="relative bg-right bg-no-repeat pt-32 pb-40 md:bg-[url(/images/bgs/files-bg.png)]">
     <section class="container relative flex flex-col items-center justify-between md:flex-row">
         <div class="max-w-md">
             <h2 class="text-title font-aeonik-pro text-primary">
