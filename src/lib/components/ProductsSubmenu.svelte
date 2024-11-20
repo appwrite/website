@@ -140,10 +140,15 @@
                 class="col-span-4 rounded-2xl border border-white/12 bg-white/6 p-4"
                 use:melt={$item}
             >
-                <span
-                    class="font-aeonik-fono tracking-loose text-secondary mb-4 block text-xs uppercase"
-                    >Case studies<span class="text-accent">_</span></span
-                >
+                <header class="flex items-center justify-between">
+                    <span
+                        class="font-aeonik-fono tracking-loose text-secondary block text-xs uppercase"
+                        >Case studies<span class="text-accent">_</span></span
+                    >
+                    <a href="/" class="text-primary text-caption flex items-center gap-2"
+                        >See more <span class="web-icon-chevron-right" /></a
+                    >
+                </header>
             </div>
         </div>
     </div>
