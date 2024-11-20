@@ -59,8 +59,8 @@
             }}
         />
 
-        <div class="web-big-padding-section-level-1 web-u-sep-block-start l-bgs-section-2 relative">
-            <div class="web-big-padding-section-level-2">
+        <div class="relative">
+            <div>
                 <PreviewFiles />
             </div>
         </div>
@@ -71,7 +71,7 @@
                         <img src="/images/pages/storage/product-shot-3.png" width="687" alt="" />
                     </div>
                     <div class="web-u-max-width-580 mx-auto">
-                        <h2 class="web-title web-u-color-text-primary">
+                        <h2 class="text-title font-aeonik-pro text-primary">
                             Optimized for small and large files
                         </h2>
                         <p class="web-main-body-500 mt-4">
