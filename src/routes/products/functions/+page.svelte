@@ -42,8 +42,10 @@
 <Main>
     <div class="overflow-hidden">
         <Hero
-            eyebrow="Functions"
-            icon="/images/icons/illustrated/dark/functions.png"
+            eyebrow={{
+                label: 'Functions',
+                icon: '/images/icons/illustrated/dark/functions.png'
+            }}
             title="Serverless functions done your way"
             image={{
                 url: Phone,
