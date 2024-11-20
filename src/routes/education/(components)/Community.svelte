@@ -1,5 +1,5 @@
 <script>
-    import Chat from '../(assets)/chat.svg';
+    import Chat from '../(assets)/chat.png';
 </script>
 
 <div class="container grid items-center gap-8 md:grid-cols-2">
