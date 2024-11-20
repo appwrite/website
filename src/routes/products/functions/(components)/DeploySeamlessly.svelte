@@ -1,5 +1,6 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
+    import Window from '../(assets)/deploy-window.png';
 </script>
 
 <section class="pt-12 pb-20">
@@ -20,8 +21,13 @@
             >
         </div>
 
+        <img
+            src={Window}
+            alt="Checkout window"
+            class="block md:col-span-7 md:col-start-6 md:hidden"
+        />
         <div
-            class="window bg-offset flex aspect-[6.87/4.2] flex-col pb-4 backdrop-blur-lg md:col-span-7 md:col-start-6 md:scale-100"
+            class="window bg-offset hidden aspect-[6.87/4.2] flex-col pb-4 backdrop-blur-lg md:col-span-7 md:col-start-6 md:flex md:scale-100"
         >
             <header class="grid w-full grid-cols-12 items-center py-2 px-4">
                 <div class="col-span-2 flex gap-1">
