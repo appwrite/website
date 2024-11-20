@@ -5,7 +5,7 @@
 <div class="web-big-padding-section-level-2">
     <div class="container">
         <div
-            class="mx-auto flex max-w-[380px] flex-col items-center justify-center gap-4 text-center"
+            class="mx-auto flex max-w-[380px] flex-col items-center justify-center gap-4 md:text-center"
         >
             <h1 class="text-title font-aeonik-pro text-primary">
                 Protect your files and set permissions
@@ -13,9 +13,7 @@
             <p class="text-body max-width-[380px] mx-auto font-medium">
                 Set up file encryption and granular user permissions in your storage infrastructure
             </p>
-            <a
-                href="/"
-                class="web-button is-secondary is-full-width-mobile u-margin-block-start-16 mx-auto"
+            <a href="/" class="web-button is-secondary is-full-width-mobile mt-8 mx-auto"
                 >Learn more</a
             >
         </div>

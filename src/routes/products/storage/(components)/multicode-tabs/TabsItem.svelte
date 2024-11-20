@@ -15,6 +15,6 @@
     });
 </script>
 
-<div class="pt-4" {...$content(id)} use:content>
+<div class="pt-4 text-xs" {...$content(id)} use:content>
     <slot />
 </div>

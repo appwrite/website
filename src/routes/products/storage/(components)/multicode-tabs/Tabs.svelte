@@ -39,7 +39,7 @@
                     )}
                 >
                     <button
-                        class="cursor-pointer py-1 px-2 font-light outline-none"
+                        class="cursor-pointer py-1 px-2 text-xs font-light outline-none md:text-sm"
                         class:is-selected={$value === id}
                         {...$trigger(id)}
                         use:trigger>{title}</button
