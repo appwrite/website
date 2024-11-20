@@ -1,8 +1,9 @@
 <script lang="ts">
     import Tabs from './multicode-tabs/Tabs.svelte';
     import TabsItem from './multicode-tabs/TabsItem.svelte';
-    import MultiCodeContextless from '$lib/components/MultiCodeContextless.svelte';
+
     import { Platform } from '$lib/utils/references';
+    import MultiCodeContextless from '$lib/components/MultiCodeContextless.svelte';
 
     const tabs = [
         {
@@ -52,7 +53,11 @@ const files = await storage.deleteFiles('[BUCKET_ID]');`
     <Tabs>
         {#each tabs as tab}
             <TabsItem id={tab.label.toLowerCase()} title={tab.label}>
-                <MultiCodeContextless selected={Platform.ServerNodeJs} data={tab.content} />
+                <MultiCodeContextless
+                    selected={Platform.ServerNodeJs}
+                    data={tab.content}
+                    height={100}
+                />
             </TabsItem>
         {/each}
     </Tabs>
