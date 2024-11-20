@@ -79,6 +79,7 @@
     --animate-scale-in: scale-in 200ms ease-out forwards;
     --animate-text: fade-in 0.75s ease-in-out both, blur 0.75s ease-in-out both,
         up 0.75s ease-in-out both;
+    --animate-marquee: marquee var(--speed, 30s) linear infinite var(--direction, forwards);
 
     /* Pink polyfills */
     --transition: 0.2s;
@@ -117,6 +118,12 @@
         }
         100% {
             opacity: 1;
+        }
+    }
+
+    @keyframes marquee {
+        to {
+            transform: translateX(-50%);
         }
     }
 

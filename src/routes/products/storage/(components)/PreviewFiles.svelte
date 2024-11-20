@@ -22,7 +22,7 @@
     ];
 </script>
 
-<div class="relative bg-right bg-no-repeat pt-32 pb-40 md:bg-[url(/images/bgs/files-bg.png)]">
+<div class="relative bg-right bg-no-repeat pt-32 pb-40 md:bg-[url(/images/bgs/mint-gradient.png)]">
     <section class="container relative flex flex-col items-center justify-between md:flex-row">
         <div class="max-w-md">
             <h2 class="text-title font-aeonik-pro text-primary">
