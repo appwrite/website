@@ -23,10 +23,10 @@
 </script>
 
 <div
-    class="after:absolute after:right-0 after:bottom-0 after:z-0 after:hidden after:h-[420px] after:w-1/2 after:bg-[radial-gradient(circle,_hsla(177,_53%,_69%,_0.3)_0px,_transparent_73%,_transparent_100%)] after:md:block"
+    class="relative pt-32 pb-40 after:absolute after:right-0 after:bottom-0 after:z-0 after:hidden after:h-80 after:w-1/2 after:bg-[radial-gradient(circle,_hsla(177,_53%,_69%,_0.3)_0px,_transparent_73%,_transparent_100%)] after:md:block"
 >
-    <section class="container hero relative">
-        <div class="mx-auto max-w-[580px]">
+    <section class="container relative flex flex-col items-center justify-between md:flex-row">
+        <div class="max-w-md">
             <h2 class="text-title font-aeonik-pro text-primary">
                 Preview media files however you want
             </h2>
@@ -40,7 +40,7 @@
                 </a>
             </div>
         </div>
-        <div class="l-media-2 relative">
+        <div class="relative">
             <section
                 class="web-media-container l-media-2-1 relative -left-5 z-0 hidden max-h-[328px] w-full max-w-[550px] overflow-hidden md:block"
             >
@@ -102,26 +102,6 @@
 <style lang="scss">
     .l-box-image-1 {
         inline-size: 427px;
-    }
-
-    .hero {
-        display: grid;
-        grid-template-columns: 30.0625rem minmax(0, 1fr);
-        gap: 5vw;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-
-        @media (max-width: 1023px) {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-
-            > :first-child {
-                max-inline-size: 40rem;
-                margin-inline: auto;
-            }
-        }
     }
 
     .l-media-2 {
