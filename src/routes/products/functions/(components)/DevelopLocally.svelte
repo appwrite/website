@@ -37,7 +37,7 @@
 
             <div class="grid size-full grid-cols-2 place-items-center gap-3 rounded-xl">
                 <div
-                    class="grid size-full flex-1 grid-cols-1 grid-rows-12 gap-2 overflow-hidden rounded-xl"
+                    class="grid size-full min-h-0 flex-1 grid-cols-1 grid-rows-3 grid-rows-12 gap-2 overflow-hidden rounded-xl"
                 >
                     <div class="bg-offset row-span-8 p-1">
                         <span class="bg-badge-bg-dark ml-1 rounded-full py-0.5 px-2 text-[.5265rem]"
@@ -52,7 +52,9 @@
                         >
                             {#each Array.from({ length: 15 }) as _, i}
                                 {@const lineNumber = i + 25}
-                                <li class="text-x-micro pointer-events-none pl-2">{lineNumber}</li>
+                                <li class="md:text-x-micro pointer-events-none pl-2 text-[6px]">
+                                    {lineNumber}
+                                </li>
                             {/each}
                         </ul>
                     </div>
