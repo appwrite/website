@@ -168,7 +168,9 @@
                 </div>
             </div>
         </div>
-        <div class="web-big-padding-section-level-1 web-white-section light">
+        <div
+            class="web-big-padding-section-level-1 web-white-section light bg-[url(/images/bgs/purple-gradient.png)] bg-left bg-no-repeat"
+        >
             <div class="web-big-padding-section-level-2">
                 <div class="container">
                     <div class="web-grid-1-1 u-row-gap-64">
