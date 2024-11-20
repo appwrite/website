@@ -29,13 +29,16 @@
     ];
 </script>
 
-<div class={classNames('container relative', 'mix-blend-exclusion after:absolute after:inset-0')}>
+<div class="container relative mb-10 max-w-[100vw]">
     <div
         style="--columns:{platforms.length}"
-        class="grid grid-cols-[repeat(var(--columns),minmax(0,1fr))] place-items-center gap-4 [filter:brightness(1.5)] [mask-image:linear-gradient(to_right,rgba(255,255,255,0.08)_0%,_rgba(255,255,255,1)_50%,_rgba(255,255,255,0.08)_100%)] [mask-mode:alpha]"
+        class={classNames(
+            'grid grid-cols-[repeat(var(--columns),minmax(0,1fr))] place-items-center gap-4',
+            '[filter:brightness(1.5)] [mask-image:linear-gradient(to_right,rgba(255,255,255,0.08)_0%,_rgba(255,255,255,1)_50%,_rgba(255,255,255,0.08)_100%)] [mask-mode:alpha]'
+        )}
     >
         {#each platforms as platform}
-            <img src={platform.icon} alt={platform.name} class="size-10 md:size-16" />
+            <img src={platform.icon} alt={platform.name} class="size-16" />
         {/each}
     </div>
 </div>
