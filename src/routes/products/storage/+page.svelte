@@ -250,6 +250,7 @@
         background: url('/images/pages/storage/pattern-1.png') no-repeat center bottom;
         background-size: 1350px;
         @media (max-width: 650px) {
+            background-size: 1100px;
             background-position: center bottom -50%;
         }
     }

@@ -115,7 +115,7 @@
                 >
                 {#each headings as heading}
                     <th
-                        class="text-micro font-aeonik-fono text-secondary py-4 text-left font-normal uppercase"
+                        class="text-micro font-aeonik-fono text-secondary py-2 text-left font-normal uppercase md:py-4"
                         >{heading}</th
                     >
                 {/each}
@@ -125,11 +125,11 @@
             {#each $permissions as { label, options }, index}
                 <tr>
                     <td
-                        class="text-primary text-micro md:text-caption w-[120px] py-4 px-6 md:w-[200px]"
+                        class="text-primary text-micro md:text-caption w-[120px] py-2 px-6 md:w-[200px] md:py-4"
                         >{label}</td
                     >
                     {#each options as option, i}
-                        <td class="h-full py-4">
+                        <td class="h-full py-2 md:py-4">
                             <div class="relative inline-flex items-center justify-center">
                                 <input
                                     type="checkbox"
@@ -158,7 +158,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan={headings.length + 1} class="py-4 pl-4">
+                <td colspan={headings.length + 1} class="py-2 pl-4 md:py-4">
                     <button class="web-button is-small is-text">
                         <span class="icon-plus web-u-color-text-primary" aria-hidden="true"></span>
                         <span class="text">Add role</span>
