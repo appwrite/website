@@ -45,7 +45,7 @@
             <div
                 class="text-sub-body grid place-items-center gap-8 divide-black/4 font-medium md:grid-cols-3 md:divide-x"
             >
-                {#each items as { title, content, icon }, i}
+                {#each items as { title, content, icon }}
                     <div
                         class={classNames(
                             'relative flex flex-col items-center justify-center text-center md:max-w-[290px]'
