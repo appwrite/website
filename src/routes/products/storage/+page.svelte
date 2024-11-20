@@ -10,6 +10,9 @@
     import PreviewFiles from './(components)/PreviewFiles.svelte';
     import WhatYouCanDo from './(components)/WhatYouCanDo.svelte';
     import OpenSource from './(components)/OpenSource.svelte';
+    import Hero from '$lib/components/product-pages/hero.svelte';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import HeroImage from './(assets)/hero-image.png';
 
     const title = 'Storage' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -34,67 +37,27 @@
 </svelte:head>
 
 <Main>
-    <div class="web-big-padding-section overflow-hidden">
-        <div class="web-big-padding-section-level-1 l-bgs-section-1 relative overflow-hidden">
-            <div class="web-big-padding-section-level-2 relative">
-                <section class="container hero web-u-padding-block-end-0">
-                    <div class="web-u-max-width-580 mx-auto">
-                        <div class="u-line-height-1 flex items-center gap-2">
-                            <img
-                                src="/images/icons/illustrated/dark/storage.png"
-                                alt=""
-                                width="48"
-                                height="48"
-                            />
-                            <span class="web-eyebrow web-u-color-text-accent-click"
-                                >Storage<span class="web-u-text-color-primary-500">_</span></span
-                            >
-                        </div>
-                        <h1 class="text-display text-primary mt-5">
-                            Robust and secure storage infrastructure
-                        </h1>
-                        <p class="text-body mt-5 font-medium">
-                            Securely store files with advanced compression, encryption and image
-                            transformations.
-                        </p>
-                        <div class="web-flex flex-col-mobile mt-8 flex gap-2">
-                            <a href="/" class="web-button is-full-width-mobile">
-                                <span class="text">Get started</span>
-                            </a>
-                            <a href="/" class="web-button is-secondary is-full-width-mobile">
-                                <span class="text">Read the docs</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="l-media-1 relative">
-                        <div class="l-is-desktop">
-                            <img
-                                src="/images/pages/storage/photos.png"
-                                alt=""
-                                width="486"
-                                height="308"
-                            />
-                            <section
-                                class="web-media-container l-frame-parrot !absolute top-32 -right-8 z-1 w-fit"
-                            >
-                                <img
-                                    src="/images/pages/storage/green-parrots.avif"
-                                    alt="two green parrots"
-                                    width="326"
-                                    height="320"
-                                />
-                            </section>
-                        </div>
-                        <img
-                            src="/images/pages/storage/product-shot.png"
-                            class="l-is-mobile"
-                            alt=""
-                            width="100%"
-                        />
-                    </div>
-                </section>
-            </div>
-        </div>
+    <div class="overflow-hidden">
+        <Hero
+            eyebrow={{
+                label: 'Storage',
+                icon: '/images/icons/illustrated/dark/storage.png'
+            }}
+            title="Robust and secure storage infrastructure"
+            description="Securely store files with advanced compression, encryption and image transformations."
+            image={{
+                url: HeroImage
+            }}
+            cta={{
+                label: 'Get started',
+                url: PUBLIC_APPWRITE_DASHBOARD
+            }}
+            secondaryCta={{
+                label: 'Documentation',
+                url: '/docs/storage'
+            }}
+        />
+
         <div class="web-big-padding-section-level-1 web-u-sep-block-start l-bgs-section-2 relative">
             <div class="web-big-padding-section-level-2">
                 <PreviewFiles />
@@ -255,25 +218,6 @@
         filter: drop-shadow(0 16px 32px rgb(55 59 77 / 0.04));
     }
 
-    .hero {
-        display: grid;
-        grid-template-columns: 30.0625rem minmax(0, 1fr);
-        gap: 5vw;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-
-        @media (max-width: 1023px) {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-
-            > :first-child {
-                max-inline-size: 40rem;
-                margin-inline: auto;
-            }
-        }
-    }
     .hero-flipped {
         display: grid;
         grid-template-columns: minmax(0, 1fr) 30.0625rem;
