@@ -6,6 +6,12 @@
             icon: '/images/icons/illustrated/dark/messaging.png',
             url: '/products/messaging'
         },
+        auth: {
+            title: 'Auth',
+            description: 'Build secure authentication and manage your users.',
+            icon: '/images/icons/illustrated/dark/auth.png',
+            url: '/products/auth'
+        },
         functions: {
             title: 'Functions',
             description: ' Scale big and unlock limitless potential with Appwrite functions.',
