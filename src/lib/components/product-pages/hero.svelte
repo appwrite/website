@@ -36,7 +36,7 @@
 </script>
 
 <div
-    class="border-smooth box-content flex items-center border-b bg-[url(/images/bgs/mobile-auth-hero.png)] bg-cover bg-bottom py-12 px-5 md:bg-[url(/images/bgs/auth-hero.png)] md:bg-center md:pt-32 md:pb-40 lg:px-8 xl:px-16"
+    class="border-smooth box-content flex items-center border-b bg-[url(/images/bgs/mobile-hero.png)] bg-cover bg-bottom py-12 px-5 md:bg-[url(/images/bgs/hero.png)] md:bg-center md:pt-32 md:pb-40 lg:px-8 xl:px-16"
 >
     <div class="mx-auto grid max-w-[75rem] items-center gap-16 md:grid-cols-2">
         <div class="space-y-4">
