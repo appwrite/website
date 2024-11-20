@@ -60,8 +60,8 @@
         />
 
         <PreviewFiles />
-        <div class="web-big-padding-section-level-1 e-bg-image-pattern-bottom relative">
-            <div class="web-big-padding-section-level-2">
+        <div class="e-bg-image-pattern-bottom relative">
+            <div>
                 <section class="container hero-flipped web-u-padding-block-end-0">
                     <div class="web-is-only-desktop">
                         <img src="/images/pages/storage/product-shot-3.png" width="687" alt="" />
