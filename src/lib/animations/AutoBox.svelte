@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { rect } from '$lib/actions';
+    import { rect } from '$lib/actions/rect';
     import { writable } from 'svelte/store';
 
     const bodyRect = writable<DOMRect | null>(null);

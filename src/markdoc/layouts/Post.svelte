@@ -1,7 +1,11 @@
 <script lang="ts">
     import { Media } from '$lib/UI';
     import { scroll } from '$lib/animations';
-    import { Article, FooterNav, MainFooter, Newsletter, Tooltip } from '$lib/components';
+    import Article from '$lib/components/Article.svelte';
+    import FooterNav from '$lib/components/FooterNav.svelte';
+    import MainFooter from '$lib/components/MainFooter.svelte';
+    import Newsletter from '$lib/components/Newsletter.svelte';
+    import Tooltip from '$lib/components/Tooltip.svelte';
     import { Main } from '$lib/layouts';
     import { formatDate } from '$lib/utils/date';
     import { DEFAULT_HOST } from '$lib/utils/metadata';

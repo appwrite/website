@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { MainFooter } from '$lib/components';
+    import MainFooter from '$lib/components/MainFooter.svelte';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { DOCS_TITLE_SUFFIX } from '$routes/titles';
 

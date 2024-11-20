@@ -1,6 +1,6 @@
 <script lang="ts">
     import { page } from '$app/stores';
-    import { Switch } from '$lib/components';
+    import  Switch from '$lib/components/Switch.svelte';
     import { createCopy } from '$lib/utils/copy';
     import { loginGithub } from '$routes/init/helpers';
     import Tooltip from '$lib/components/Tooltip.svelte';

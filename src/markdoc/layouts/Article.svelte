@@ -14,7 +14,7 @@
 </script>
 
 <script lang="ts">
-    import { MainFooter } from '$lib/components';
+    import MainFooter from '$lib/components/MainFooter.svelte';
     import SeoOgImage from '$lib/components/SeoOgImage.svelte';
     import { DocsArticle } from '$lib/layouts';
     import type { TocItem } from '$lib/layouts/DocsArticle.svelte';

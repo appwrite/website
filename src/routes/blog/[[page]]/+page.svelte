@@ -1,7 +1,9 @@
 <script lang="ts">
     import { page } from '$app/stores';
     import { Main } from '$lib/layouts';
-    import { Article, FooterNav, MainFooter } from '$lib/components';
+    import Article from '$lib/components/Article.svelte';
+    import FooterNav from '$lib/components/FooterNav.svelte';
+    import MainFooter from '$lib/components/MainFooter.svelte';
     import { TITLE_SUFFIX } from '$routes/titles.js';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { onMount, tick } from 'svelte';

@@ -3,7 +3,7 @@
     import { getCodeHtml, type Language } from '$lib/utils/code';
     import { getContext, hasContext } from 'svelte';
     import { platformMap } from '$lib/utils/references';
-    import { Tooltip } from '$lib/components';
+    import Tooltip from '$lib/components/Tooltip.svelte';
     import { copy } from '$lib/utils/copy';
     import type { CodeContext } from '../tags/MultiCode.svelte';
     import { melt } from '@melt-ui/svelte';

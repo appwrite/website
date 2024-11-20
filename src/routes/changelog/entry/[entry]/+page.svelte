@@ -1,5 +1,7 @@
 <script lang="ts">
-    import { FooterNav, MainFooter, Tooltip } from '$lib/components';
+    import FooterNav from '$lib/components/FooterNav.svelte';
+    import MainFooter from '$lib/components/MainFooter.svelte';
+    import Tooltip from '$lib/components/Tooltip.svelte';
     import PreFooter from '$lib/components/PreFooter.svelte';
     import { Main } from '$lib/layouts';
     import { formatDate } from '$lib/utils/date';

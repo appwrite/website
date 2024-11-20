@@ -38,7 +38,8 @@
 </script>
 
 <script lang="ts">
-    import { Search, IsLoggedIn } from '$lib/components';
+    import Search from '$lib/components/Search.svelte';
+    import IsLoggedIn from '$lib/components/IsLoggedIn.svelte';
     import { isMac } from '$lib/utils/platform';
     import { getContext, setContext } from 'svelte';
     import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';

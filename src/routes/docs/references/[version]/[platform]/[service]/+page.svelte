@@ -1,7 +1,8 @@
 <script lang="ts">
     import { goto } from '$app/navigation';
     import { page } from '$app/stores';
-    import { MainFooter, Select } from '$lib/components';
+    import MainFooter from '$lib/components/MainFooter.svelte';
+    import Select from '$lib/components/Select.svelte';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { layoutState, toggleReferences } from '$lib/layouts/Docs.svelte';
     import { parse } from '$lib/utils/markdown';

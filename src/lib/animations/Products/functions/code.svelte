@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { portal } from '$lib/actions';
+    import { portal } from '$lib/actions/portal';
     import Code from '$lib/animations/CodeWindow/Code.svelte';
     import { fade } from 'svelte/transition';
     import { functionsController } from '.';

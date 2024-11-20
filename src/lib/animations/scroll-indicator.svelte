@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { rect } from '$lib/actions';
+    import { rect } from '$lib/actions/rect';
     import { clamp } from '$lib/utils/clamp';
     import { onMount } from 'svelte';
     import { writable } from 'svelte/store';

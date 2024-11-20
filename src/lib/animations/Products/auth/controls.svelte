@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Switch } from '$lib/components';
+    import Switch from '$lib/components/Switch.svelte';
     import { objectKeys } from '$lib/utils/object';
     import { authController } from '.';
 

@@ -43,7 +43,7 @@
 </script>
 
 <script lang="ts">
-    import { Carousel } from '$lib/components';
+    import Carousel from '$lib/components/Carousel.svelte';
     import FloatingHeads from '$lib/components/FloatingHeads.svelte';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
