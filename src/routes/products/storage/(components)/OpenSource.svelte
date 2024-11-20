@@ -32,14 +32,14 @@
                 href="/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="web-button is-secondary is-full-width-mobile web-u-cross-child-center u-margin-block-start-16"
+                class="web-button is-secondary is-full-width-mobile web-u-cross-child-center mt-8"
             >
                 <span>Join the community</span>
             </a>
         </div>
     </div>
 </div>
-<div class="web-big-padding-section-level-2 light">
+<div class="web-big-padding-section-level-2 light mt-20 !pt-0">
     <div class="container web-u-max-width-993">
         <div class="mt-20 overflow-hidden">
             <div
@@ -52,7 +52,7 @@
                         )}
                     >
                         <img src={icon} width="40" height="40" alt="" />
-                        <h3 class="text-sub-body text-primary font-medium">
+                        <h3 class="text-sub-body text-primary mt-4 font-medium">
                             {title}
                         </h3>
                         <p class="text-sub-body">{content}</p>
