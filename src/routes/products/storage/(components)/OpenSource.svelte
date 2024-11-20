@@ -22,7 +22,7 @@
 
 <div class="web-big-padding-section-level-2 light">
     <div class="container">
-        <div class="web-hero is-center web-u-max-width-580 mx-auto">
+        <div class="web-hero is-center mx-auto">
             <h2 class="web-display web-u-color-text-primary">Powered by open source</h2>
             <p class="web-main-body-500 web-u-margin-block-start-0 web-u-max-width-580 mx-auto">
                 Appwrite is a 100% open source project, giving you the flexibility and support you
