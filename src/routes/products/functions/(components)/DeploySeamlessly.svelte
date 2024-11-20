@@ -21,7 +21,7 @@
         </div>
 
         <div
-            class="window bg-offset flex aspect-[6.87/4.2] h-[420px] scale-50 flex-col pb-4 backdrop-blur-lg md:col-span-7 md:col-start-6 md:scale-100"
+            class="window bg-offset flex aspect-[6.87/4.2] flex-col pb-4 backdrop-blur-lg md:col-span-7 md:col-start-6 md:scale-100"
         >
             <header class="grid w-full grid-cols-12 items-center py-2 px-4">
                 <div class="col-span-2 flex gap-1">
@@ -172,7 +172,7 @@
                     </ul>
 
                     <button
-                        class="text-micro mt-auto mb-0 rounded-md border border-white/8 bg-[#19191C] py-2 font-medium text-white"
+                        class="md:text-micro mt-auto mb-0 rounded-md border border-white/8 bg-[#19191C] py-1 text-[8px] font-medium text-white md:py-2"
                         >Commit and push</button
                     >
                 </div>
@@ -189,21 +189,23 @@
                             {@const isError = lineNumber === 41}
                             {@const isGood = highlightedNumbers.includes(lineNumber)}
                             <li
-                                class={classNames('pointer-events-none pl-2 text-[10px]', {
-                                    'rounded bg-[#FF453A]/8 text-white': isError,
-                                    'bg-[#7ADF82]/8 text-white': isGood,
-                                    'rounded-t': lineNumber === highlightedNumbers[0],
-                                    'rounded-b':
-                                        lineNumber ===
-                                        highlightedNumbers[highlightedNumbers.length - 1]
-                                })}
+                                class={classNames(
+                                    'md:text-x-micro pointer-events-none pl-2 text-[6px]',
+                                    {
+                                        'rounded bg-[#FF453A]/8 text-white': isError,
+                                        'bg-[#7ADF82]/8 text-white': isGood,
+                                        'rounded-t': lineNumber === highlightedNumbers[0],
+                                        'rounded-b':
+                                            lineNumber ===
+                                            highlightedNumbers[highlightedNumbers.length - 1]
+                                    }
+                                )}
                             >
                                 <span class="flex items-center gap-2">
                                     {lineNumber}
                                     {#if isError}
                                         <svg
-                                            width="8"
-                                            height="8"
+                                            class="size-1.5 md:size-2"
                                             viewBox="0 0 8 8"
                                             fill="none"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -217,8 +219,7 @@
                                         </svg>
                                     {:else if isGood}
                                         <svg
-                                            width="8"
-                                            height="8"
+                                            class="size-1.5 md:size-2"
                                             viewBox="0 0 8 8"
                                             fill="none"
                                             xmlns="http://www.w3.org/2000/svg"
