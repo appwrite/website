@@ -29,16 +29,18 @@
     ];
 </script>
 
-<div class="container relative mb-10 max-w-[100vw]">
-    <div
-        style="--columns:{platforms.length}"
-        class={classNames(
-            'grid grid-cols-[repeat(var(--columns),minmax(0,1fr))] place-items-center gap-4',
-            '[filter:brightness(1.5)] [mask-image:linear-gradient(to_right,rgba(255,255,255,0.08)_0%,_rgba(255,255,255,1)_50%,_rgba(255,255,255,0.08)_100%)] [mask-mode:alpha]'
-        )}
-    >
+<div
+    class={classNames(
+        'container mb-10 overflow-clip',
+        '[filter:brightness(1.5)] [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]'
+    )}
+>
+    <div class="animate-marquee flex w-max gap-4 pl-4 md:[animation-play-state:paused]">
         {#each platforms as platform}
             <img src={platform.icon} alt={platform.name} class="size-16" />
+        {/each}
+        {#each platforms as platform}
+            <img src={platform.icon} alt={platform.name} class="size-16" aria-hidden="true" />
         {/each}
     </div>
 </div>
