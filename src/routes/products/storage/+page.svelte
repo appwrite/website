@@ -59,11 +59,7 @@
             }}
         />
 
-        <div class="relative">
-            <div>
-                <PreviewFiles />
-            </div>
-        </div>
+        <PreviewFiles />
         <div class="web-big-padding-section-level-1 e-bg-image-pattern-bottom relative">
             <div class="web-big-padding-section-level-2">
                 <section class="container hero-flipped web-u-padding-block-end-0">
@@ -250,12 +246,9 @@
 
     .e-bg-image-pattern-bottom {
         background: url('/images/pages/storage/pattern-1.png') no-repeat center bottom;
-        background-size: 1500px;
+        background-size: 1350px;
         @media (max-width: 650px) {
             background-position: center bottom -50%;
-        }
-        @media (max-width: 1198px) {
-            background-size: 1350px;
         }
     }
 </style>

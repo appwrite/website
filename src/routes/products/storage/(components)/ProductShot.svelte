@@ -51,28 +51,30 @@
             <div class="flex gap-4 pt-6 px-6">
                 <h4 class="text-label text-primary font-aeonik-pro">My Bucket</h4>
                 <div class="tag u-cross-child-end web-u-color-text-secondary">
-                    <code class="web-u-font-size-10">637a40ba7a703e3936e2</code>
+                    <code class="web-u-font-size-10 rounded-full bg-white/10 py-1 px-2"
+                        >637a40ba7a703e3936e2</code
+                    >
                 </div>
             </div>
 
             <ul class="mt-4 flex gap-4 px-6 pb-2">
-                <li class="tabs-item">
+                <li class="tabs-item px-2">
                     <button class="tabs-button" tabindex="-1" role="tab">
                         <span class="text-micro">Files</span>
                     </button>
                 </li>
-                <li class="tabs-item">
+                <li class="tabs-item px-2">
                     <button class="tabs-button" tabindex="-1" role="tab">
                         <span class="text-micro">Usage</span>
                     </button>
                 </li>
-                <li class="tabs-item">
+                <li class="tabs-item px-2">
                     <button class="tabs-button" tabindex="-1" role="tab">
                         <span class="text-micro">Settings</span>
                     </button>
                 </li>
-                <li class="tabs-item">
-                    <button class="tabs-button is-selected" tabindex="0" role="tab">
+                <li class="tabs-item border-secondary -mb-2 border-b px-2 pb-1.5">
+                    <button class="tabs-button" tabindex="0" role="tab">
                         <span class="text-micro">Security</span>
                     </button>
                 </li>
@@ -80,7 +82,7 @@
         </header>
         <div
             class="e-console-card-content flex flex-1 flex-col gap-4 p-6"
-            style="background: linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 100%), var(--background, #19191C);"
+            style="background: linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 100%), var(--background, #19191C);"
         >
             {#each buttons as button}
                 <div class="web-card is-normal">

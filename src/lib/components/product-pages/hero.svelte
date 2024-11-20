@@ -46,10 +46,12 @@
                     {eyebrow.label}<span class="web-u-color-text-accent">_</span>
                 </span>
             </div>
-            <h1 class="text-display font-aeonik-pro text-primary max-sm:max-w-[300px] md:max-w-md">
+            <h1
+                class="text-display font-aeonik-pro text-primary text-pretty max-sm:max-w-[300px] md:max-w-md"
+            >
                 {title}
             </h1>
-            <p class="text-description text-secondary font-medium">
+            <p class="text-description text-secondary text-pretty font-medium">
                 {description}
             </p>
 
