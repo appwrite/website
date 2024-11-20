@@ -13,6 +13,7 @@
     import Hero from '$lib/components/product-pages/hero.svelte';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import HeroImage from './(assets)/hero-image.png';
+    import ProductCards from '$lib/components/product-pages/product-cards.svelte';
 
     const title = 'Storage' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -203,6 +204,7 @@
             <OpenSource />
         </div>
 
+        <ProductCards exclude="storage" />
         <div class="relative pt-20">
             <div class="container">
                 <PreFooter />
