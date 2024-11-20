@@ -79,26 +79,32 @@
                     {#each products as product}
                         <a
                             href={product.href}
-                            class="group flex flex-col gap-2 rounded-lg text-white outline-none transition-colors"
+                            class="group flex gap-3 rounded-xl p-2 text-white outline-none transition-colors focus:bg-white/8"
                         >
-                            <div class="flex items-center gap-2 py-4">
+                            <div
+                                class="flex size-12 shrink-0 items-center justify-center rounded-lg border border-white/12 bg-white/6"
+                            >
                                 <img
                                     src={product.icon}
                                     alt={product.name}
-                                    class="size-8 grayscale transition-all group-focus:grayscale-0"
+                                    class="size-6 grayscale transition-all group-focus:grayscale-0"
                                 />
+                            </div>
+                            <div class="">
                                 <span class="text-sub-body text-primary font-medium"
                                     >{product.name}
 
                                     {#if product.beta}
                                         <span
-                                            class="ml-2 rounded bg-white/24 py-1 px-2 text-xs font-medium text-white"
+                                            class="text-caption bg-accent/24 ml-1 rounded py-1 px-2 font-medium text-white"
                                             >Coming soon</span
                                         >
                                     {/if}
                                 </span>
+                                <p class="text-caption text-secondary text-pretty">
+                                    {product.description}
+                                </p>
                             </div>
-                            <p class="text-caption text-secondary">{product.description}</p>
                         </a>
                     {/each}
                 </div>
