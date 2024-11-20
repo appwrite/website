@@ -3,8 +3,10 @@
 </script>
 
 <section class="pt-12 pb-20">
-    <div class="container flex flex-col items-center justify-between gap-16 md:flex-row">
-        <div class="mb-10 flex max-w-sm flex-col">
+    <div
+        class="container grid grid-cols-1 items-center justify-between gap-12 md:grid-cols-12 md:flex-row"
+    >
+        <div class="mb-10 flex flex-col md:col-span-5">
             <h2 class="text-title text-primary font-aeonik-pro my-4 text-pretty">
                 Deploy seamlessly<br /> with no effort
             </h2>
@@ -19,7 +21,7 @@
         </div>
 
         <div
-            class="window bg-offset -my-40 flex aspect-[6.87/4.2] scale-55 flex-col pb-4 backdrop-blur-lg md:my-0 md:scale-100"
+            class="window bg-offset flex aspect-[6.87/4.2] h-[420px] scale-50 flex-col pb-4 backdrop-blur-lg md:col-span-7 md:col-start-6 md:scale-100"
         >
             <header class="grid w-full grid-cols-12 items-center py-2 px-4">
                 <div class="col-span-2 flex gap-1">
