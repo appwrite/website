@@ -89,10 +89,12 @@
 <div
     use:melt={$menu}
     class={classNames(
-        'data-[state=closed]:animate-fade-out container data-[state=open]:animate-fade-in relative z-10 mt-6 mx-auto hidden w-full flex-col rounded-2xl border border-white/8 bg-[#232325] p-0 outline-none md:flex'
+        'data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in relative z-10 mt-6 mx-auto hidden w-full flex-col items-center p-0 outline-none md:flex'
     )}
 >
-    <div class="p-6">
+    <div
+        class="is-special-padding w-full rounded-2xl border border-white/8 bg-[#232325] p-6 [max-inline-size:86.875rem]"
+    >
         <div class="grid w-full grid-cols-1 place-content-between gap-16 lg:grid-cols-12">
             <div class="col-span-8">
                 <span
