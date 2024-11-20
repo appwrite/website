@@ -48,7 +48,7 @@
                 {#each items as { title, content, icon }}
                     <div
                         class={classNames(
-                            'relative flex flex-col items-center justify-center text-center md:max-w-[290px]'
+                            'relative -mr-8 flex flex-col items-center justify-center pr-8 text-center md:max-w-[290px]'
                         )}
                     >
                         <img src={icon} width="40" height="40" alt="" />
