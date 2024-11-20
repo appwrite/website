@@ -64,9 +64,11 @@
         </div>
         <div class="web-code-snippet-header-end">
             <ul class="buttons-list flex gap-3">
-                <li class="buttons-list-item flex self-center">
-                    <Select bind:value={selected} bind:options />
-                </li>
+                {#if $snippets.entries.length}
+                    <li class="buttons-list-item flex self-center">
+                        <Select bind:value={selected} bind:options />
+                    </li>
+                {/if}
                 <li class="buttons-list-item" style="padding-inline-start: 13px">
                     <Tooltip>
                         <button
