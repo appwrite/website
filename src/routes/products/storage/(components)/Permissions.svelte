@@ -18,7 +18,7 @@
             >
         </div>
     </div>
-    <div class="container u-main-center u-cross-start mt-8 flex">
+    <div class="container flex">
         <ProductShot />
     </div>
 </div>
