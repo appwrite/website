@@ -2,8 +2,10 @@
     import { classNames } from '$lib/utils/classnames';
 
     type $$Props = {
-        icon: string;
-        eyebrow: string;
+        eyebrow: {
+            label: string;
+            icon: string;
+        };
         title: string;
         description: string;
         cta: {
@@ -24,7 +26,6 @@
         };
     };
 
-    export let icon: $$Props['icon'];
     export let eyebrow: $$Props['eyebrow'];
     export let title: $$Props['title'];
     export let description: $$Props['description'];
@@ -40,9 +41,9 @@
     <div class="mx-auto grid max-w-[75rem] items-center gap-16 md:grid-cols-2">
         <div class="space-y-4">
             <div class="flex items-center gap-2">
-                <img src={icon} class="size-8" alt="" />
+                <img src={eyebrow.icon} class="size-8" alt="" />
                 <span class="text-micro text-primary uppercase">
-                    {eyebrow}<span class="web-u-color-text-accent">_</span>
+                    {eyebrow.label}<span class="web-u-color-text-accent">_</span>
                 </span>
             </div>
             <h1 class="text-display font-aeonik-pro text-primary max-sm:max-w-[300px] md:max-w-md">
