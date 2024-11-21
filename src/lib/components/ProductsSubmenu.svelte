@@ -9,6 +9,7 @@
 </script>
 
 <script lang="ts">
+    import { dev } from '$app/environment';
     import { classNames } from '$lib/utils/classnames';
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
 
@@ -57,13 +58,6 @@
             href: '/',
             description: 'Subscribe and react to any event.',
             icon: '/images/icons/illustrated/dark/realtime.png'
-        },
-        {
-            name: 'Sites',
-            href: '/',
-            beta: true,
-            description: 'Subscribe and react to any event.',
-            icon: '/images/icons/illustrated/dark/sites.png'
         }
     ];
 </script>
@@ -96,7 +90,7 @@
         class="is-special-padding w-full rounded-2xl border border-white/8 bg-[#232325] p-6 [max-inline-size:86.875rem]"
     >
         <div class="grid w-full grid-cols-1 place-content-between gap-16 lg:grid-cols-12">
-            <div class="col-span-8">
+            <div class="col-span-8 -mr-12 pr-12">
                 <span
                     class="font-aeonik-fono text-secondary tracking-loose mb-4 block text-xs uppercase"
                     >{label}<span class="text-accent">_</span></span
@@ -138,21 +132,47 @@
                     {/each}
                 </div>
             </div>
-            <a
-                href="/blog"
-                class="col-span-4 rounded-2xl border border-white/12 bg-white/6 p-4 outline-none focus:bg-white/8"
-                use:melt={$item}
-            >
-                <header class="flex items-center justify-between">
-                    <span
-                        class="font-aeonik-fono tracking-loose text-secondary block text-xs uppercase"
-                        >Case studies<span class="text-accent">_</span></span
-                    >
-                    <a href="/" class="text-primary text-caption flex items-center gap-2"
-                        >See more <span class="web-icon-chevron-right" /></a
-                    >
-                </header>
-            </a>
+            <div class="col-span-4 -ml-12 border-l border-white/6 pl-12">
+                <div
+                    class="rounded-2xl border border-white/12 bg-white/6 p-4 outline-none focus:bg-white/8"
+                >
+                    <header class="flex items-center justify-between">
+                        <span
+                            class="font-aeonik-fono tracking-loose text-secondary block text-xs uppercase"
+                            >Case studies<span class="text-accent">_</span></span
+                        >
+                        <a href="/" class="text-primary text-caption flex items-center gap-2"
+                            >See more <span class="web-icon-chevron-right" /></a
+                        >
+                    </header>
+
+                    <a href="/blog" class="flex-1" use:melt={$item}>
+                        <img
+                            src="/images/blog/case-study-undo/cover.png"
+                            alt="Case study cover"
+                            class="my-6 aspect-[3/1] rounded-xl object-cover"
+                        />
+                        <p>
+                            Pioneering asset management solutions for the circular economy with UNDŌ
+                        </p>
+                    </a>
+                </div>
+                {#if dev}
+                    <div class="mt-8">
+                        <span
+                            class="font-aeonik-fono tracking-loose text-secondary block text-xs uppercase"
+                            >This is a title<span class="text-accent">_</span></span
+                        >
+                        <ul class="mt-3 space-y-3">
+                            {#each Array.from({ length: 3 }) as _}
+                                <li class="text-caption text-primary flex items-center gap-2">
+                                    This is a link <span class="web-icon-chevron-right" />
+                                </li>
+                            {/each}
+                        </ul>
+                    </div>
+                {/if}
+            </div>
         </div>
     </div>
     <div
