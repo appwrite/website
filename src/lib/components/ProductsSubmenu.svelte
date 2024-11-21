@@ -138,8 +138,9 @@
                     {/each}
                 </div>
             </div>
-            <div
-                class="col-span-4 rounded-2xl border border-white/12 bg-white/6 p-4"
+            <a
+                href="/blog"
+                class="col-span-4 rounded-2xl border border-white/12 bg-white/6 p-4 outline-none focus:bg-white/8"
                 use:melt={$item}
             >
                 <header class="flex items-center justify-between">
@@ -151,7 +152,7 @@
                         >See more <span class="web-icon-chevron-right" /></a
                     >
                 </header>
-            </div>
+            </a>
         </div>
     </div>
     <div
