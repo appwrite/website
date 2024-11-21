@@ -199,26 +199,17 @@ export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.Schema
 }
 
 const specs = import.meta.glob(
-    '$appwrite/app/config/specs/open-api3*-(client|server|console).json',
-    {
-        query: '?raw',
-        import: 'default'
-    }
+    '$appwrite/app/config/specs/open-api3*-(client|server|console).json'
 );
-async function getSpec(version: string, platform: string) {
+
+export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
     const isClient = platform.startsWith('client-');
     const isServer = platform.startsWith('server-');
     const target = `/node_modules/@appwrite.io/repo/app/config/specs/open-api3-${version}-${
         isServer ? 'server' : isClient ? 'client' : 'console'
     }.json`;
+
     return specs[target]();
-}
-
-export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
-    const raw = await getSpec(version, platform);
-    const api = JSON.parse(raw);
-
-    return api;
 }
 
 const descriptions = import.meta.glob(
@@ -236,9 +227,7 @@ export async function getDescription(service: string): Promise<string> {
         throw new Error('Missing service description');
     }
 
-    const description = descriptions[target]();
-
-    return description;
+    return descriptions[target]();
 }
 
 export async function getService(
@@ -327,9 +316,11 @@ export async function getService(
             continue;
         }
 
+        const demo = await examples[path]();
+
         data.methods.push({
             id: operation['x-appwrite'].method,
-            demo: await examples[path](),
+            demo: demo ?? '',
             title: operation.summary ?? '',
             description: operation.description ?? '',
             parameters: parameters ?? [],
@@ -370,9 +361,9 @@ export function resolveReference(
 
 export const generateExample = (
     schema: OpenAPIV3.SchemaObject,
-    api: OpenAPIV3.Document<{}>,
+    api: OpenAPIV3.Document<object>,
     modelType: ModelType = ModelType.REST
-): Object => {
+): object => {
     const properties = Object.keys(schema.properties ?? {}).map((key) => {
         const name = key;
         const fields = schema.properties?.[key];
