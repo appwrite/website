@@ -2,7 +2,8 @@
     import { classNames } from '$lib/utils/classnames';
     import { melt, createCollapsible } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
-    import type { SubmenuItem } from './ProductsSubmenu.svelte';
+    import { products, sublinks } from './ProductsSubmenu.svelte';
+    import { dev } from '$app/environment';
 
     export let label: string;
 
@@ -10,52 +11,6 @@
         elements: { root, content, trigger },
         states: { open }
     } = createCollapsible();
-
-    let products: Array<SubmenuItem> = [
-        {
-            name: 'Auth',
-            href: '/products/auth',
-            description: 'Secure login for all users with multi-factor authentication and more.',
-            icon: '/images/icons/illustrated/dark/auth.png'
-        },
-        {
-            name: 'Database',
-            href: '/products/databases',
-            description: 'Scalable and robust database backed by the latest technologies.',
-            icon: '/images/icons/illustrated/dark/databases.png'
-        },
-        {
-            name: 'Storage',
-            href: '/products/storage',
-            description: 'Securely store files with advanced compression and encryption.',
-            icon: '/images/icons/illustrated/dark/storage.png'
-        },
-        {
-            name: 'Functions',
-            href: '/products/functions',
-            description: 'Deploy & scale serverless functions in secure, isolated runtimes.',
-            icon: '/images/icons/illustrated/dark/functions.png'
-        },
-        {
-            name: 'Messaging',
-            href: '/products/messaging',
-            description: 'Set up a full-functioning messaging service for your application.',
-            icon: '/images/icons/illustrated/dark/messaging.png'
-        },
-        {
-            name: 'Realtime',
-            href: '/products/realtime',
-            description: 'Subscribe and react to any Appwrite event using the Realtime API.',
-            icon: '/images/icons/illustrated/dark/realtime.png'
-        },
-        {
-            name: 'Sites',
-            href: '/products/sites',
-            beta: true,
-            description: 'Host your domain and take control over your page’s analytics.',
-            icon: '/images/icons/illustrated/dark/sites.png'
-        }
-    ];
 </script>
 
 <div use:melt={$root} class="relative mx-auto block md:hidden">
@@ -74,8 +29,8 @@
 
     <div>
         {#if $open}
-            <div use:melt={$content} transition:slide>
-                <div class="flex flex-col gap-2 py-3 px-4">
+            <div use:melt={$content} transition:slide class="py-3 px-4">
+                <div class="flex flex-col gap-2">
                     {#each products as product}
                         <a
                             href={product.href}
@@ -108,6 +63,24 @@
                         </a>
                     {/each}
                 </div>
+                {#if dev}
+                    <div class="mt-8">
+                        <span
+                            class="font-aeonik-fono tracking-loose text-secondary block text-xs uppercase"
+                            >This is a title<span class="text-accent">_</span></span
+                        >
+                        <div class="mt-3 space-y-3">
+                            {#each sublinks as sublink}
+                                <a
+                                    href={sublink.href}
+                                    class="text-caption text-primary flex items-center gap-2"
+                                >
+                                    {sublink.label} <span class="web-icon-chevron-right" />
+                                </a>
+                            {/each}
+                        </div>
+                    </div>
+                {/if}
             </div>
         {/if}
     </div>
