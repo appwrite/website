@@ -62,7 +62,7 @@
         <PreviewFiles />
         <div class="e-bg-image-pattern-bottom relative">
             <div>
-                <section class="container hero-flipped web-u-padding-block-end-0">
+                <section class="container hero-flipped web-u-padding-block-end-0 -mt-32">
                     <div class="web-is-only-desktop">
                         <img src="/images/pages/storage/product-shot-3.png" width="687" alt="" />
                     </div>
@@ -250,7 +250,7 @@
         background: url('/images/pages/storage/pattern-1.png') no-repeat center bottom;
         background-size: 1350px;
         @media (max-width: 650px) {
-            background-size: 1100px;
+            background-size: 1500px;
             background-position: center bottom -50%;
         }
     }
