@@ -4,37 +4,31 @@
             title: 'Messaging',
             description: 'Use Appwrite messaging to send email, SMS, and push notifications.',
             icon: '/images/icons/illustrated/dark/messaging.png',
-            url: '/products/messaging'
+            url: '/docs/products/messaging'
         },
         auth: {
             title: 'Auth',
             description: 'Build secure authentication and manage your users.',
             icon: '/images/icons/illustrated/dark/auth.png',
-            url: '/products/auth'
+            url: '/docs/products/auth'
         },
         functions: {
             title: 'Functions',
             description: ' Scale big and unlock limitless potential with Appwrite functions.',
             icon: '/images/icons/illustrated/dark/functions.png',
-            url: '/products/functions'
+            url: '/docs/products/functions'
         },
         databases: {
             title: 'Databases',
             description: 'Store and query structured data, ensuring scalable storage.',
             icon: '/images/icons/illustrated/dark/databases.png',
-            url: '/products/databases'
+            url: '/docs/products/databases'
         },
         storage: {
             title: 'Storage',
             description: 'Manage your files project, using convenient APIs and utilities.',
             icon: '/images/icons/illustrated/dark/storage.png',
-            url: '/products/storage'
-        },
-        realtime: {
-            title: 'Realtime',
-            description: 'Utilize realtime information from all Appwrite services.',
-            icon: '/images/icons/illustrated/dark/realtime.png',
-            url: '/products/realtime'
+            url: '/docs/products/storage'
         }
     } as const;
 
