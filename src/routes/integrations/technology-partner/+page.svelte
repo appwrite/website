@@ -9,6 +9,7 @@
     //import BlobPink from "$routes/startups/(assets)/blob-pink.svg";
     // import BlobPinkMobile from "$routes/startups/(assets)/blob-pink-mobile.svg";
     import Pink from './bg.png';
+    import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
 
     let email = '';
     let name = '';
@@ -27,19 +28,22 @@
 
     async function handleSubmit() {
         error = undefined;
-        message = `Name of representative: ${name}\n\nWork Email: ${email}\n\nCompany Name: ${companyName}\n\nCompany Size: ${companySize}\n\nCompany Website: ${companyWebsite}\n\nIntegration status: ${integrationStatus}\n\nLink to Documentation: ${linkToDocumentation}\n\nLink to product/company assets: ${productUrl}\n\nDetails: ${extraDetails}`;
-        subject = `Technology Partner Application: ${companyName}`;
 
-        const response = await fetch('https://growth.appwrite.io/v1/feedback', {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/conversations/technology-partner`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                name: name,
                 email,
-                firstName: name,
-                subject,
-                message
+                companyName,
+                companySize,
+                companyWebsite,
+                integrationStatus,
+                integrationDocs: linkToDocumentation,
+                brandAssets: productUrl,
+                extraDetails
             })
         });
         if (response.status >= 400) {
