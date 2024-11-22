@@ -6,11 +6,11 @@
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import Permissions from './(components)/Permissions.svelte';
-    import Testimonials from './(components)/Testimonials.svelte';
     import PreviewFiles from './(components)/PreviewFiles.svelte';
     import WhatYouCanDo from './(components)/WhatYouCanDo.svelte';
     import OpenSource from './(components)/OpenSource.svelte';
     import Hero from '$lib/components/product-pages/hero.svelte';
+    import Testimonials from '$lib/components/product-pages/testimonials.svelte';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import HeroImage from './(assets)/hero-image.png';
     import ProductCards from '$lib/components/product-pages/product-cards.svelte';
