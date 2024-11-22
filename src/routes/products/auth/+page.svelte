@@ -10,7 +10,7 @@
     import OpenSource from './(components)/OpenSource.svelte';
     import { PreFooter, FooterNav, MainFooter } from '$lib/components';
     import Hero from './(components)/Hero.svelte';
-    import Testimonials from './(components)/Testimonials.svelte';
+    import Testimonials from '$lib/components/product-pages/testimonials.svelte';
     import Features from './(components)/features/Features.svelte';
 
     const title = 'Auth' + TITLE_SUFFIX;
