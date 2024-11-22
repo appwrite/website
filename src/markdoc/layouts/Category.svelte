@@ -45,7 +45,7 @@
                     <span>Back to blog</span>
                 </a>
                 <div class="web-category-header mt-6">
-                    <div class="flex items-center justify-between">
+                    <div class="flex flex-col justify-between gap-6 md:flex-row md:items-center">
                         <h1 class="text-display font-aeonik-pro text-primary">
                             {name}
                         </h1>
