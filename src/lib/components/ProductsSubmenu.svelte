@@ -154,7 +154,7 @@
             </div>
             <div class="col-span-4 -ml-12 border-l border-white/6 pl-12">
                 <div
-                    class="rounded-2xl border border-white/12 bg-white/6 p-4 outline-none focus:bg-white/8"
+                    class="rounded-2xl border border-white/12 bg-white/6 p-4 outline-none focus-within:bg-white/12"
                 >
                     <header class="flex items-center justify-between">
                         <span
@@ -166,7 +166,11 @@
                         >
                     </header>
 
-                    <a href="/blog" class="flex-1" use:melt={$item}>
+                    <a
+                        href="/blog/post/case-study-undo"
+                        class="flex-1 outline-none"
+                        use:melt={$item}
+                    >
                         <img
                             src="/images/blog/case-study-undo/cover.png"
                             alt="Case study cover"
