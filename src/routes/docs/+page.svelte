@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Carousel } from '$lib/components';
+    import Carousel from '$lib/components/Carousel.svelte';
     import Technologies from '$lib/components/Technologies.svelte';
     import Docs from '$lib/layouts/Docs.svelte';
     import { DEFAULT_HOST } from '$lib/utils/metadata';

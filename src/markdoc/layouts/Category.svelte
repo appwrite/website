@@ -1,6 +1,8 @@
 <script lang="ts">
     import { page } from '$app/stores';
-    import { Article, FooterNav, MainFooter } from '$lib/components';
+    import Article from '$lib/components/Article.svelte';
+    import FooterNav from '$lib/components/FooterNav.svelte';
+    import MainFooter from '$lib/components/MainFooter.svelte';
     import { Main } from '$lib/layouts';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import type { AuthorData, PostsData } from '$routes/blog/content';

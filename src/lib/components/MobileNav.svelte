@@ -1,6 +1,6 @@
 <script lang="ts">
     import { afterNavigate } from '$app/navigation';
-    import { IsLoggedIn } from '$lib/components';
+    import IsLoggedIn from '$lib/components/IsLoggedIn.svelte';
     import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import type { NavLink } from '$lib/layouts/Main.svelte';
 

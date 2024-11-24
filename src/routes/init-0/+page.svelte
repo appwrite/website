@@ -1,5 +1,7 @@
 <script lang="ts">
-    import { Carousel, FooterNav, MainFooter } from '$lib/components';
+    import Carousel from '$lib/components/Carousel.svelte';
+    import FooterNav from '$lib/components/FooterNav.svelte';
+    import MainFooter from '$lib/components/MainFooter.svelte';
     import { Main } from '$lib/layouts';
     import EventCard from '$routes/community/EventCard.svelte';
     import ShinesSvg from './(assets)/shines.svg';

@@ -1,5 +1,7 @@
 <script lang="ts">
-    import { Article, FooterNav, MainFooter } from '$lib/components';
+    import Article from '$lib/components/Article.svelte';
+    import FooterNav from '$lib/components/FooterNav.svelte';
+    import MainFooter from '$lib/components/MainFooter.svelte';
     import { page } from '$app/stores';
     import { Main } from '$lib/layouts';
     import { getContext } from 'svelte';

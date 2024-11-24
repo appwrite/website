@@ -1,6 +1,8 @@
 <script lang="ts">
     import { goto } from '$app/navigation';
-    import { FooterNav, MainFooter, PreFooter } from '$lib/components';
+    import FooterNav from '$lib/components/FooterNav.svelte';
+    import MainFooter from '$lib/components/MainFooter.svelte';
+    import PreFooter from '$lib/components/PreFooter.svelte';
     import { Main } from '$lib/layouts';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { onMount } from 'svelte';

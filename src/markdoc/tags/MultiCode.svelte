@@ -13,7 +13,8 @@
     import { writable } from 'svelte/store';
     import type { Language } from '$lib/utils/code';
     import { copy } from '$lib/utils/copy';
-    import { Select, Tooltip } from '$lib/components';
+    import Select from '$lib/components/Select.svelte';
+    import Tooltip from '$lib/components/Tooltip.svelte';
 
     setContext<CodeContext>('multi-code', {
         selected: writable(null),

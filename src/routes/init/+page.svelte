@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { FooterNav, MainFooter } from '$lib/components';
+    import FooterNav from '$lib/components/FooterNav.svelte';
+    import MainFooter from '$lib/components/MainFooter.svelte';
     import { Main } from '$lib/layouts';
     import { addDays, toReleaseDate } from '$lib/utils/date';
     import { buildOpenGraphImage } from '$lib/utils/metadata';

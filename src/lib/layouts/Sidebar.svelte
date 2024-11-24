@@ -23,7 +23,8 @@
 
 <script lang="ts">
     import { clickOutside } from '$lib/actions/clickOutside';
-    import { Tooltip, IsLoggedIn } from '$lib/components';
+    import Tooltip from '$lib/components/Tooltip.svelte';
+    import IsLoggedIn from '$lib/components/IsLoggedIn.svelte';
     import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import { layoutState, toggleSidenav } from './Docs.svelte';
     import SidebarNavButton from './SidebarNavButton.svelte';

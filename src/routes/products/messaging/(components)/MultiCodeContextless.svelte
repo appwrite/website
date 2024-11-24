@@ -3,7 +3,8 @@
     import { writable } from 'svelte/store';
     import { getCodeHtml, type Language } from '$lib/utils/code';
     import { copy } from '$lib/utils/copy';
-    import { Select, Tooltip } from '$lib/components';
+    import Select from '$lib/components/Select.svelte';
+    import Tooltip from '$lib/components/Tooltip.svelte';
 
     export let selected: Language = 'js';
     export let data: { language: string; content: string; platform?: string }[] = [];

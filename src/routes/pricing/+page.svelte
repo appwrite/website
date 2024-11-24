@@ -1,5 +1,7 @@
 <script lang="ts">
-    import { FooterNav, MainFooter, PreFooter } from '$lib/components';
+    import FooterNav from '$lib/components/FooterNav.svelte';
+    import MainFooter from '$lib/components/MainFooter.svelte';
+    import PreFooter from '$lib/components/PreFooter.svelte';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
 
     import { Main } from '$lib/layouts';

@@ -15,7 +15,7 @@
 <script lang="ts">
     import { scrollToTop } from '$lib/actions/scrollToTop';
 
-    import { Feedback } from '$lib/components';
+    import Feedback from '$lib/components/Feedback.svelte';
 
     export let title: string;
     export let toc: Array<TocItem>;

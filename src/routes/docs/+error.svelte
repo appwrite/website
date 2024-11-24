@@ -1,6 +1,6 @@
 <script lang="ts">
     import { page } from '$app/stores';
-    import { MainFooter } from '$lib/components';
+    import MainFooter from '$lib/components/MainFooter.svelte';
     import { Docs } from '$lib/layouts';
     import Sidebar from './Sidebar.svelte';
 </script>

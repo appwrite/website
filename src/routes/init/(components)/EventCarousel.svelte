@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-    import { Carousel } from '$lib/components';
+    import Carousel from '$lib/components/Carousel.svelte';
     import day0 from '../(assets)/discord/day-0.png';
     import day1 from '../(assets)/discord/day-1.png';
     import day2 from '../(assets)/discord/day-2.png';

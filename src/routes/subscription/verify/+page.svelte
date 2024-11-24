@@ -1,6 +1,7 @@
 <script lang="ts">
     import { page } from '$app/stores';
-    import { FooterNav, MainFooter } from '$lib/components';
+    import FooterNav from '$lib/components/FooterNav.svelte';
+    import MainFooter from '$lib/components/MainFooter.svelte';
     import { Main } from '$lib/layouts';
     import { onMount } from 'svelte';
 

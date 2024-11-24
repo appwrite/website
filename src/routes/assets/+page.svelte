@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { visible } from '$lib/actions';
+    import { visible } from '$lib/actions/visible';
     import TocNav from '$lib/components/TocNav.svelte';
     import TocRoot from '$lib/components/TocRoot.svelte';
     import { Main } from '$lib/layouts';

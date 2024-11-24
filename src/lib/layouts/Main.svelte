@@ -13,7 +13,8 @@
 
 <script lang="ts">
     import { browser } from '$app/environment';
-    import { MobileNav, IsLoggedIn } from '$lib/components';
+    import MobileNav from '$lib/components/MobileNav.svelte';
+    import IsLoggedIn from '$lib/components/IsLoggedIn.svelte';
     import { BANNER_KEY, GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';

@@ -28,7 +28,7 @@
     import { page } from '$app/stores';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { appwriteInit } from '$lib/appwrite/init';
-    import { Switch } from '$lib/components';
+    import Switch from '$lib/components/Switch.svelte';
     import { loginGithub } from '$routes/init-0/helpers';
     import type { TicketVariant } from '../constants';
 
