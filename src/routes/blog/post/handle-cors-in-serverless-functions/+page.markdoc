@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Handle CORS errors in Appwrite serverless functions
-description: Learn how to handle CORS errors in Appwrite serverless functions.
+title: Handle CORS errors in Appwrite functions
+description: Learn how to handle CORS errors in Appwrite functions.
 date: 2024-07-08
 cover: /images/blog/handle-cors-in-serverless-functions/cover.png
 timeToRead: 3
