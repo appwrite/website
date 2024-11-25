@@ -197,7 +197,7 @@
 <main class="web-main-section" id="main">
     <article class="web-article">
         <header class="web-article-header">
-            <div class="web-article-header-start flex flex-col web-u-cross-start">
+            <div class="web-article-header-start web-u-cross-start flex flex-col">
                 <div class="relative flex items-center">
                     <h1 class="text-title font-aeonik-pro">Quick start</h1>
                 </div>
@@ -220,7 +220,7 @@
                                             class="{quickStart.icon} web-u-font-size-24"
                                             aria-hidden="true"
                                         />
-                                        <h4 class="text-sub-body font-medium text-primary">
+                                        <h4 class="text-sub-body text-primary font-medium">
                                             {quickStart.title}
                                         </h4>
                                     </header>

@@ -6,7 +6,7 @@ date: 2024-05-10
 cover: /images/blog/ai-crystal-ball/cover.png
 timeToRead: 9
 author: aditya-oberai
-category: open-source
+category: tutorial
 ---
 
 Have you ever wondered what you would be doing as a developer 5 years from now? I, for sure, have, which is why recently I developed an AI Crystal Ball to use information from my GitHub account and predict what my destiny as a developer would look like. This project picked up a lot more attention than anticipated as well as a number of requests asking how this project was developed.

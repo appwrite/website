@@ -10,7 +10,7 @@ APNs will save the last message for 30 days or less and attempt delivery as soon
 
 {% section #add-provider step=1 title="Add provider" %}
 
-To add APNs as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Push notification**.
+To add APNs as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Create provider** > **Push notification**.
 
 {% only_dark %}
 ![Add a FCM provider](/images/docs/messaging/providers/apns/dark/provider.png)
@@ -115,7 +115,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const provider = await messaging.updateAPNSProvider(
+const provider = await messaging.updateApnsProvider(
         '[PROVIDER_ID]',                         // providerId
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
@@ -139,7 +139,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const provider = await messaging.updateAPNSProvider(
+const provider = await messaging.updateApnsProvider(
         '[PROVIDER_ID]',                         // providerId
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
@@ -165,7 +165,7 @@ $client
 
 $messaging = new Messaging($client);
 
-$result = $messaging->updateAPNSProvider(
+$result = $messaging->updateApnsProvider(
     providerId: '[PROVIDER_ID]',
     name: '[NAME]',                               // optional
     enabled: false,                               // optional
@@ -235,7 +235,7 @@ var client = new Client()
 
 var messaging = new Messaging(client);
 
-Provider result = await messaging.UpdateAPNSProvider(
+Provider result = await messaging.updateApnsProvider(
     providerId: "[PROVIDER_ID]"
     name: "[NAME]"                                // optional
     enabled: false                                // optional
@@ -259,7 +259,7 @@ void main() {                                    // Init SDK
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
   ;
 
-  Future result = messaging.updateAPNSProvider(
+  Future result = messaging.updateApnsProvider(
     providerId: '[PROVIDER_ID]',
     name: '[NAME]',                              // optional
     enabled: false,                              // optional
@@ -289,7 +289,7 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-messaging.updateAPNSProvider(
+messaging.updateApnsProvider(
     "[PROVIDER_ID]",                              // providerId
     "[NAME]",                                     // name (optional)
     false,                                        // enabled (optional)
@@ -319,7 +319,7 @@ Client client = new Client()
 
 Messaging messaging = new Messaging(client);
 
-messaging.updateAPNSProvider(
+messaging.updateApnsProvider(
     "[PROVIDER_ID]",                              // providerId
     "[NAME]",                                     // name (optional)
     false,                                        // enabled (optional)
@@ -347,7 +347,7 @@ let client = Client()
 
 let messaging = Messaging(client)
 
-let provider = try await messaging.updateAPNSProvider(
+let provider = try await messaging.updateApnsProvider(
   providerId: "[PROVIDER_ID]",
   name: "[NAME]",                                // optional
   enabled: xfalse,                               // optional

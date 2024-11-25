@@ -2,7 +2,6 @@
     import { clamp } from '$lib/utils/clamp';
     import { withPrevious } from '$lib/utils/withPrevious';
     import { withRaf } from '$lib/utils/withRaf';
-    import { get } from 'svelte/store';
     import Accordion from './Accordion/Accordion.svelte';
     import AccordionItem from './Accordion/AccordionItem.svelte';
     import Checkbox from './Checkbox.svelte';
@@ -235,7 +234,7 @@
                 />
 
                 <foreignObject x={textPos[0]} y={textPos[1]} width="360" height="64">
-                    <span class="text-micro uppercase text-primary" data-active={$selected[i]}>
+                    <span class="text-micro text-primary uppercase" data-active={$selected[i]}>
                         {device.value}
                     </span>
                 </foreignObject>
@@ -320,7 +319,7 @@
                                             return next;
                                         }}
                                     />
-                                    <span class="text-sub-body font-medium text-primary">
+                                    <span class="text-sub-body text-primary font-medium">
                                         {user.name}
                                     </span>
                                     <span class="text-caption">
