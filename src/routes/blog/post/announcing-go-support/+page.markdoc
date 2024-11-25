@@ -6,7 +6,7 @@ date: 2024-08-22
 cover: /images/blog/go-cover.png
 timeToRead: 7
 author: matej-baco
-category: product
+category: init
 featured: false
 ---
 
@@ -41,7 +41,7 @@ Steadily, the Go runtime demonstrated the best performance compared to other run
 
 ## Developing the Go functions
 
-To use Go in Appwrite, you need to use the latest version of Appwrite. You can either [sign up on Appwrite Cloud](https://appwrite.io/cloud) or [self-host](https://appwrite.io/docs/advanced/self-hosting) Appwrite 1.6 with the `go-1.23` runtime added to your [environment](https://appwrite.io/docs/advanced/self-hosting/environment-variables#functions:~:text=preserve%20harddrive%20health.-,_APP_FUNCTIONS_RUNTIMES,-version%20%3E%3D%200.8.0%20This). The runtime will be available on Appwrite Cloud after Init. Next, go ahead and create a Go function using the [Appwrite CLI](https://appwrite.io/docs/tooling/command-line/installation#Installation) by running `appwrite init function`.
+To use Go in Appwrite, you need to use the latest version of Appwrite. You can either [sign up on Appwrite Cloud](https://cloud.appwrite.io/) or [self-host](https://appwrite.io/docs/advanced/self-hosting) Appwrite 1.6 with the `go-1.23` runtime added to your [environment](https://appwrite.io/docs/advanced/self-hosting/environment-variables#functions:~:text=preserve%20harddrive%20health.-,_APP_FUNCTIONS_RUNTIMES,-version%20%3E%3D%200.8.0%20This). The runtime will be available on Appwrite Cloud after Init. Next, go ahead and create a Go function using the [Appwrite CLI](https://appwrite.io/docs/tooling/command-line/installation#Installation) by running `appwrite init function`.
 
 Every Go function starts with a `go.mod` file, which contains the name of the module Appwrite’s runtime requires, the Go version (do not change either of these two), and any dependencies your function requires.
 

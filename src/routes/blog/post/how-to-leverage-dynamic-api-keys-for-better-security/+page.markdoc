@@ -9,7 +9,7 @@ author: ebenezer-don
 category: product
 featured: false
 ---
-Appwrite now features dynamic keys, significantly improving how you manage API keys within your projects. These keys are designed to enhance security and facilitate easier local development and environment setup. As part of the Appwrite Functions ecosystem, they reduce the need for manual key management and rotation, making your applications (and functions!) easier to maintain.
+Appwrite now features dynamic keys, significantly improving how you manage API keys within your projects. These keys (also known as ephemeral keys) are designed to enhance security and facilitate easier local development and environment setup. As part of the Appwrite Functions ecosystem, they reduce the need for manual key management and rotation, making your applications (and functions!) easier to maintain.
 
 This guide will walk you through understanding, setting up, and effectively using dynamic API keys in your projects.
 
@@ -36,17 +36,17 @@ Dynamic API keys are short-lived API keys that Appwrite automatically generates 
 
 # How dynamic keys differ from standard keys
 
-Dynamic keys and standard keys differ in several fundamental ways. Standard API keys are manually created and long-lived, meaning they require regular rotation and diligent management to ensure security. In contrast, dynamic API keys are automatically generated per execution and are short-lived, expiring after the function completes. This automatic generation means there is no need to embed these keys in environment variables manually, reducing setup complexity and maintenance.
+Ephemeral keys and standard keys differ in several fundamental ways. Standard API keys are manually created and long-lived, meaning they require regular rotation and diligent management to ensure security. In contrast, dynamic API keys are automatically generated per execution and are short-lived, expiring after the function completes. This automatic generation means there is no need to embed these keys in environment variables manually, reducing setup complexity and maintenance.
 
-While we generally recommend using dynamic keys, some third-party services may require long-lived keys, or may not support Appwrite's dynamic key generation. In such cases, you can still use standard API keys, but use caution and ensure proper key management practices.
+While we generally recommend using ephemeral keys, some third-party services may require long-lived keys, or may not support Appwrite's dynamic key generation. In such cases, you can still use standard API keys, but use caution and ensure proper key management practices.
 
-# Benefits of dynamic API keys
+# Benefits of ephemeral keys
 
 Dynamic API keys offer several advantages:
 
 1. **Enhanced security:** The short-lived nature of dynamic API keys minimizes the risk of key exposure and misuse. Each key is unique to a specific function execution, reducing the attack surface.
 2. **Simplified management:** Since these keys are automatically generated and do not require manual rotation or embedding in environment variables, the administrative overhead is significantly reduced.
-3. **Granular control:** Each dynamic key can be assigned specific scopes tailored to the function's overall needs. This ensures that functions only have the permissions they require, adhering to the principle of least privilege.
+3. **Granular control:** Each ephemeral key can be assigned specific scopes tailored to the function's overall needs. This ensures that functions only have the permissions they require, adhering to the principle of least privilege.
 4. **Consistency in development and production:** In Appwrite, dynamic keys respect the scopes set in `appwrite.json`, ensuring that the behavior is consistent across both local development and production environments.
 
 # Setting up and using dynamic API keys

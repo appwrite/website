@@ -37,7 +37,7 @@
                 { label: 'Functions', href: '/docs/products/functions' },
                 { label: 'Messaging', href: '/products/messaging' },
                 { label: 'Storage', href: '/docs/products/storage' },
-                { label: 'Realtime', href: '/docs/apis/realtime' },
+                { label: 'Realtime', href: '/docs/apis/realtime' }
             ],
             Learn: [
                 { label: 'Docs', href: '/docs' },
@@ -68,7 +68,8 @@
             ],
             Programs: [
                 { label: 'Heroes', href: '/heroes' },
-                { label: 'Startups', href: '/startups' }
+                { label: 'Startups', href: '/startups' },
+                { label: 'Education', href: '/education' }
             ],
             About: [
                 { label: 'Company', href: '/company' },
@@ -93,17 +94,19 @@
 
 <nav
     aria-label="Footer"
-    class="web-footer-nav u-margin-block-start-100 u-position-relative"
+    class="web-footer-nav relative mt-24"
     class:web-u-sep-block-start={!noBorder}
 >
     <img class="web-logo" src="/images/logos/appwrite.svg" alt="appwrite" height="24" width="130" />
     <ul class="web-footer-nav-main-list" use:melt={$root}>
         {#each Object.entries(links) as [title, items]}
             <li class="web-footer-nav-main-item web-is-not-mobile">
-                <h2 class="web-footer-nav-main-title web-is-not-mobile web-caption-500 web-eyebrow">
+                <h2
+                    class="web-footer-nav-main-title web-is-not-mobile text-caption font-medium uppercase"
+                >
                     {title}
                 </h2>
-                <ul class="web-footer-nav-secondary-list web-sub-body-400">
+                <ul class="web-footer-nav-secondary-list text-sub-body">
                     {#each items as { href, label, target, rel }}
                         <li>
                             <a class="web-link" {href} {target} {rel}>{label}</a>
@@ -120,7 +123,7 @@
                         class="web-footer-nav-button web-is-only-mobile"
                         use:melt={$trigger({ value: title })}
                     >
-                        <span class="web-caption-500 web-eyebrow">{title}</span>
+                        <span class="text-caption font-medium uppercase">{title}</span>
                         <span
                             class="web-icon-chevron-down web-u-transition"
                             class:web-u-rotate-180={$isSelected(title)}
@@ -130,7 +133,7 @@
                 </h5>
                 {#if $isSelected(title)}
                     <ul
-                        class="web-footer-nav-secondary-list web-sub-body-400"
+                        class="web-footer-nav-secondary-list text-sub-body"
                         use:melt={$content({ value: title })}
                         transition:slide={{ duration: 250 }}
                     >
