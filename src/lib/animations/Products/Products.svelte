@@ -158,7 +158,6 @@
     import { postController } from './post';
     import Post from './post/post.svelte';
     import { anyify } from '$lib/utils/anyify';
-    import Badge from '$lib/components/ui/Badge.svelte';
 
     /* Basic Animation setup */
     let scrollInfo = {
@@ -508,10 +507,6 @@
                     display: flex;
                     align-items: center;
                     gap: 0.75rem;
-
-                    .web-label {
-                        margin-block-start: 0.25rem;
-                    }
                 }
 
                 h4 {
