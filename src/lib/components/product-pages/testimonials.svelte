@@ -3,21 +3,21 @@
         {
             name: 'Ryan O’Conner',
             copy: `The switch to using Appwrite brought infinite value that I'm still discovering today, but a major impact that it made was the amount of time and stress that it saved me as it simply just works.`,
-            image: '/images/testimonials/k-collect.png',
+            image: '/images/testimonials/ryan-oconner.png',
             title: 'Founder',
             company: 'K-Collect'
         },
         {
             name: 'David Forster',
             copy: `We really loved working with Appwrite for launching our bootstrapped "Open Mind" App. I am still surprised how easy the implementation into Flutter was.`,
-            image: '/images/testimonials/open-mind.png',
+            image: '/images/testimonials/david-forster.png',
             title: 'Founder',
             company: 'Open Mind'
         },
         {
             name: 'Marius Bolik',
             copy: `The integrated user authentication and the ease of creating data structures have undoubtedly saved us several weeks' worth of time.`,
-            image: '/images/testimonials/shoefitter.png',
+            image: '/images/testimonials/marius-bolik2.png',
             title: 'CTO',
             company: 'mySHOEFITTER'
         },
