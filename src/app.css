@@ -94,6 +94,18 @@
         }
     }
 
+    @keyframes caret-blink {
+        0%,
+        70%,
+        100% {
+            opacity: 1;
+        }
+        20%,
+        50% {
+            opacity: 0;
+        }
+    }
+
     @keyframes blur {
         0% {
             filter: blur(5px);
@@ -126,6 +138,22 @@
             transform: translateX(-50%);
         }
     }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    /* Animations */
+    --animate-scale-in: scale-in 200ms ease-out forwards;
+    --animate-caret-blink: caret-blink 1s ease-in-out infinite;
+    --animate-text: fade-in 0.75s ease-in-out both, blur 0.75s ease-in-out both,
+        up 0.75s ease-in-out both;
+    --animate-scroll: scroll 60s linear infinite;
 
     /* Fonts */
     --font-family-sans: 'Inter', arial, sans-serif;
@@ -195,6 +223,7 @@
     --color-primary: var(--color-greyscale-900);
     --color-secondary: var(--color-greyscale-700);
     --color-accent: var(--color-pink-600);
+    --carousel-gradient: transparent;
     --color-badge-bg: var(--color-badge-bg-light);
     --color-badge-border: var(--color-badge-border-light);
 }
@@ -203,6 +232,7 @@
 .dark {
     --color-primary: var(--color-greyscale-100);
     --color-secondary: var(--color-greyscale-300);
+    --carousel-gradient: 23, 23, 26;
     --color-badge-bg: var(--color-badge-bg-dark);
     --color-badge-border: var(--color-badge-border-dark);
 }
