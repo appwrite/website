@@ -97,7 +97,7 @@
                 </div>
             {/each}
 
-            <button class="web-button is-secondary block !w-full md:hidden md:!w-fit"
+            <button class="web-button is-secondary block !w-full md:!hidden md:!w-fit"
                 >View all templates</button
             >
         </div>
