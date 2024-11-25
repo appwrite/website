@@ -153,8 +153,10 @@
                 </div>
             </div>
             <div class="col-span-4 -ml-12 border-l border-white/6 pl-12">
-                <div
-                    class="rounded-2xl border border-white/12 bg-white/6 p-4 outline-none focus-within:bg-white/12"
+                <a
+                    href="/blog/post/case-study-undo"
+                    use:melt={$item}
+                    class="block rounded-2xl border border-white/12 bg-white/6 p-4 outline-none focus-within:bg-white/12"
                 >
                     <header class="flex items-center justify-between">
                         <span
@@ -166,11 +168,7 @@
                         >
                     </header>
 
-                    <a
-                        href="/blog/post/case-study-undo"
-                        class="flex-1 outline-none"
-                        use:melt={$item}
-                    >
+                    <div class="flex-1 outline-none">
                         <img
                             src="/images/blog/case-study-undo/cover.png"
                             alt="Case study cover"
@@ -179,8 +177,8 @@
                         <p>
                             Pioneering asset management solutions for the circular economy with UNDŌ
                         </p>
-                    </a>
-                </div>
+                    </div>
+                </a>
                 {#if dev}
                     <div class="mt-8">
                         <span
