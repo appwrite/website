@@ -29,7 +29,7 @@ export function UserProvider(props) {
   async function login(email, password) {
     const loggedIn = await account.createEmailPasswordSession(email, password);
     setUser(loggedIn);
-    window.location.replace("/"); // you can use different redirect method for your application
+    window.location.replace("/");
   }
 
   async function logout() {
@@ -60,7 +60,7 @@ export function UserProvider(props) {
       {props.children}
     </UserContext.Provider>
   );
-}
+};
 ```
 
 Now, we can use the `useUser` hook to access the user's data from any component. However, we first need to wrap our app with the `UserProvider`.
