@@ -625,8 +625,8 @@
 
     @media (max-width: 768px) {
         .container {
-            padding-left: 0 !important;
-            padding-right: 0 !important;
+            padding-left: 0;
+            padding-right: 0;
         }
 
         header {
