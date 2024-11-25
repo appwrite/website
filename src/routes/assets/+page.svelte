@@ -71,7 +71,7 @@
                 <TocNav bind:showToc />
 
                 <main class="web-grid-120-1fr-auto-main" id="main">
-                    <div class="web-content" class:web-is-mobile-closed={showToc && !showToc}>
+                    <div class="web-content">
                         <section>
                             <p>
                                 Resources for presenting the Appwrite brand to maintain consistency
