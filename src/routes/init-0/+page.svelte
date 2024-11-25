@@ -197,7 +197,7 @@
                 {:else if i === 4}
                     <Day5 {date} release={day.release} />
                 {:else}
-                    <h2 class="text-micro uppercase text-primary">
+                    <h2 class="text-micro text-primary uppercase">
                         <div class="web-dot" />
                         {date}
                         <span class="web-u-color-text-accent">_</span>

@@ -7,6 +7,7 @@
     import { onMount } from 'svelte';
 
     export let toc: Array<TocItem>;
+    export let back: string;
     export let currentStep: number;
     export let date: string;
 
@@ -14,7 +15,7 @@
 
     const firstStepItem: Tutorial | null = tutorials[0] ?? null;
     // currentStep starts from 1, the arrays start from 0.
-    const currentStepItem = (tutorials[currentStep - 1] ?? firstStepItem);
+    const currentStepItem = tutorials[currentStep - 1] ?? firstStepItem;
 
     $: nextStep = tutorials.find((tutorial) => tutorial.step === currentStep + 1);
     $: prevStep = tutorials.find((tutorial) => tutorial.step === currentStep - 1);
@@ -34,7 +35,7 @@
         if (!slotContent) return;
 
         // dynamically modify all `label` headers to `body`.
-        slotContent.querySelectorAll<HTMLHeadingElement>('h2.web-label').forEach(header => {
+        slotContent.querySelectorAll<HTMLHeadingElement>('h2.web-label').forEach((header) => {
             header.classList.replace('web-label', 'web-main-body-500');
         });
     });
@@ -43,7 +44,16 @@
 <main class="contents" id="main">
     <article class="web-article contents">
         <header class="web-article-header">
-            <div class="web-article-header-start u-flex-vertical web-u-cross-start">
+            <div class="web-article-header-start web-u-cross-start flex flex-col">
+                {#if back}
+                    <a
+                        href={back}
+                        class="web-icon-button web-is-only-mobile"
+                        aria-label="previous page"
+                    >
+                        <span class="icon-cheveron-left" aria-hidden="true" />
+                    </a>
+                {/if}
                 <ul class="web-metadata web-caption-400">
                     {#if currentStepItem.difficulty}
                         <li>{currentStepItem.difficulty}</li>
@@ -52,8 +62,22 @@
                         <li>{currentStepItem.readtime} min</li>
                     {/if}
                 </ul>
-                <div class="u-position-relative u-flex u-cross-center">
-                    <h1 class="web-title">{firstStepItem?.title}</h1>
+                <div class="u-cross-center relative flex">
+                    {#if back}
+                        <a
+                            href={back}
+                            class="
+						web-button is-text is-only-icon web-u-cross-center
+						web-is-not-mobile -translate-x-1/2"
+                            aria-label="previous page"
+                        >
+                            <span
+                                class="icon-cheveron-left web-u-font-size-24 web-u-color-text-primary"
+                                aria-hidden="true"
+                            />
+                        </a>
+                    {/if}
+                    <h1 class="web-title lg:-ml-5">{firstStepItem?.title}</h1>
                 </div>
             </div>
             <div class="web-article-header-end" />
@@ -72,14 +96,14 @@
                         <slot />
                     </div>
 
-                    <div class="u-flex u-main-space-between">
+                    <div class="flex justify-between">
                         {#if prevStep}
                             <a href={prevStep.href} class="web-button is-text previous-step-anchor">
                                 <span class="icon-cheveron-left" aria-hidden="true" />
                                 <span class="web-sub-body-500">
                                     Step {prevStep.step}<span class="web-is-not-mobile"
-                                >: {getCorrectTitle(prevStep, 1)}</span
-                                >
+                                        >: {getCorrectTitle(prevStep, 1)}</span
+                                    >
                                 </span>
                             </a>
                         {/if}
@@ -91,8 +115,8 @@
                             >
                                 <span class="web-sub-body-500">
                                     Step {nextStep.step}<span class="web-is-not-mobile"
-                                >: {nextStep.title}</span
-                                >
+                                        >: {nextStep.title}</span
+                                    >
                                 </span>
                                 <span class="icon-cheveron-right" aria-hidden="true" />
                             </a>
@@ -120,13 +144,15 @@
                             >
                                 <span class="web-numeric-badge">{tutorial.step}</span>
                                 <!-- first item will always be introduction -->
-                                <span class="web-caption-400">{index === 0 ? 'Introduction' : tutorial.title}</span>
+                                <span class="web-caption-400"
+                                    >{index === 0 ? 'Introduction' : tutorial.title}</span
+                                >
                             </a>
                             {#if isCurrentStep && toc.length}
                                 <ol
-                                        class="web-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
+                                    class="web-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
                                 >
-                                {#each toc.slice(1) as parent}
+                                    {#each toc.slice(1) as parent}
                                         <li class="web-references-menu-item">
                                             <a
                                                 href={parent.href}
@@ -159,7 +185,7 @@
                         </li>
                     {/each}
                 </ol>
-                <div class="border-greyscale-900/[0.04] border-t pt-5">
+                <div class="border-greyscale-900/4 border-t pt-5">
                     <button class="web-link inline-flex items-center gap-2" use:scrollToTop>
                         <span class="web-icon-arrow-up" aria-hidden="true" />
                         <span class="text-caption">Back to top</span>

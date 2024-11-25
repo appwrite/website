@@ -6,7 +6,7 @@ date: 2024-03-22
 cover: /images/blog/goodbye-plaintext-passwords/cover.png
 timeToRead: 6
 author: aditya-oberai
-category: authentication
+category: security
 ---
 
 Recently, we came across a report by [BleepingComputer](https://www.bleepingcomputer.com/news/security/misconfigured-firebase-instances-leaked-19-million-plaintext-passwords/), which shared how misconfigured Firebase projects led to the leakage of 19 million plaintext passwords on the public internet. This was primarily caused by missing or incorrectly configured security rules on Firebase instances that consequently permitted read access to databases, resulting in a massive data leak that exposed:

@@ -21,11 +21,11 @@
         },
         {
             question: 'I am already a Scale user. Can I apply?',
-            answer: "If you are currently on a Scale plan, you can't apply for the program as the program is intended for Startups to help them relieve financial burdens at an early stage. If you're able to pay for a Scale plan, we will consider you uneligible."
+            answer: "If you are currently on a Scale plan, you can't apply for the program as the program is intended for Startups to help them relieve financial burdens at an early stage. If you're able to pay for a Scale plan, we will consider you ineligible."
         },
         {
             question: 'Who is eligible to apply?',
-            answer: "We're supporting startups established in the last decade with VC funding or bootstrapped/self-funded. If you don't meet these requirements yet but are in the process of meeting them, feel free to reach out so we can see how we can support your startup."
+            answer: 'We welcome early-stage startups as well as startups established within the last decade. So whether you are still looking to build your backend or want to switch to Appwrite, we welcome you to join.'
         },
         {
             question: 'What are the limits of the Scale plan?',

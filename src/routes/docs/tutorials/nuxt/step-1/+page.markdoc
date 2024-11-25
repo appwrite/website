@@ -7,7 +7,7 @@ difficulty: beginner
 readtime: 25
 framework: Nuxt
 category: Web
-back: /docs
+back: /docs/tutorials
 ---
 
 **Idea tracker**: an app to track all the side project ideas that you'll start, but probably never finish.

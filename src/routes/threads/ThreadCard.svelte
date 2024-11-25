@@ -21,7 +21,10 @@
             <!-- <time class="text-caption ml-auto">12 Jan, 2023</time> -->
         </div>
 
-        <p class="web-main-body-500 u-margin-block-start-4 u-break-word" use:highlight={highlightTerms}>
+        <p
+            class="web-main-body-500 u-margin-block-start-4 u-break-word"
+            use:highlight={highlightTerms}
+        >
             {sanitizeContent(thread.content)}
         </p>
 
