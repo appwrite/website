@@ -97,7 +97,7 @@
             label: 'Tooling',
             items: [
                 {
-                    label: 'Command Line',
+                    label: 'CLI',
                     href: '/docs/tooling/command-line/installation',
                     icon: 'icon-terminal',
                     isParent: true
@@ -113,7 +113,7 @@
                     icon: 'icon-sparkles'
                 },
                 {
-                    label: "The Appwriter",
+                    label: 'The Appwriter',
                     href: '/docs/tooling/appwriter',
                     icon: 'icon-text'
                 }
@@ -132,7 +132,8 @@
                     label: 'Integrations',
                     href: '/integrations',
                     icon: 'icon-puzzle',
-                    isParent: true
+                    isParent: true,
+                    openInNewTab: true
                 },
                 {
                     label: 'Migrations',

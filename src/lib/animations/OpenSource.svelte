@@ -2,9 +2,13 @@
     import { toScale, type Scale } from '$lib/utils/toScale';
     import { spring, type AnimationListOptions, type SpringOptions } from 'motion';
     import { animation, createScrollHandler, scroll, type Animation } from '.';
-    import { GITHUB_STARS } from '$lib/constants';
+    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
 
-    const springOptions: SpringOptions = { stiffness: 58.78, mass: 1, damping: 17.14 };
+    const springOptions: SpringOptions = {
+        stiffness: 58.78,
+        mass: 1,
+        damping: 17.14
+    };
     const animationOptions: AnimationListOptions = {
         x: { easing: spring(springOptions) },
         y: { easing: spring(springOptions) }
@@ -172,84 +176,86 @@
     }}
 >
     <div class="sticky-wrapper">
-        <h3 class="web-display web-u-color-text-primary">Powered by Open Source</h3>
+        <h3 class="text-display font-aeonik-pro text-primary">Powered by Open Source</h3>
 
         <div class="cards-wrapper">
             <a
                 href="/discord"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="web-card is-white web-u-min-block-size-320 u-flex-vertical oss-card"
+                class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
                 id="oss-discord"
             >
-                <div class="u-flex-vertical u-main-space-between u-gap-32">
+                <div class="flex flex-col justify-between gap-8">
                     <span
                         class="web-icon-discord web-u-font-size-40"
                         aria-hidden="true"
                         aria-label="Discord"
                     />
                 </div>
-                <div class="web-title u-margin-block-start-auto">17k+ Discord Members</div>
+                <div class="text-title font-aeonik-pro mt-auto">17k+ Discord Members</div>
             </a>
 
             <a
-                class="web-card is-white web-u-min-block-size-320 u-flex-vertical oss-card"
+                class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
                 id="oss-github"
-                href="https://github.com/appwrite/appwrite"
+                href={GITHUB_REPO_LINK}
             >
-                <div class="u-flex-vertical u-main-space-between u-gap-32">
+                <div class="flex flex-col justify-between gap-8">
                     <span
                         class="web-icon-github web-u-font-size-40"
                         aria-hidden="true"
                         aria-label="GitHub"
                     />
                 </div>
-                <div class="web-title u-margin-block-start-auto">{GITHUB_STARS}+ GitHub Stars</div>
+                <div class="text-title font-aeonik-pro mt-auto">
+                    {GITHUB_STARS}+ GitHub Stars
+                </div>
             </a>
 
             <a
                 href="https://twitter.com/appwrite"
-                class="web-card is-white web-u-min-block-size-320 u-flex-vertical oss-card"
+                class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
                 id="oss-twitter"
             >
-                <div class="u-flex-vertical u-main-space-between u-gap-32">
+                <div class="flex flex-col justify-between gap-8">
                     <span
                         class="web-icon-x web-u-font-size-40"
                         aria-hidden="true"
                         aria-label="Twitter"
                     />
                 </div>
-                <div class="web-title u-margin-block-start-auto">128k+ Twitter Followers</div>
+                <div class="text-title font-aeonik-pro mt-auto">128k+ Twitter Followers</div>
             </a>
 
             <a
                 href="https://www.youtube.com/@Appwrite"
-                class="web-card is-white web-u-min-block-size-320 u-flex-vertical oss-card"
+                class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
                 id="oss-youtube"
             >
-                <div class="u-flex-vertical u-main-space-between u-gap-32">
+                <div class="flex flex-col justify-between gap-8">
                     <span
                         class="web-icon-youtube web-u-font-size-40"
                         aria-hidden="true"
                         aria-label="YouTube"
                     />
                 </div>
-                <div class="web-title u-margin-block-start-auto">7k+ Youtube Subscribers</div>
+                <div class="text-title font-aeonik-pro mt-auto">7k+ Youtube Subscribers</div>
             </a>
 
             <a
-                class="web-card is-white web-u-min-block-size-320 u-flex-vertical oss-card"
+                class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
                 id="oss-commits"
-                href="https://github.com/appwrite/appwrite"
+                href={GITHUB_REPO_LINK}
             >
-                <div class="u-flex-vertical u-main-space-between u-gap-32">
+                <div class="flex flex-col justify-between gap-8">
                     <span
                         class="web-icon-github web-u-font-size-40"
                         aria-hidden="true"
                         aria-label="GitHub"
                     />
                 </div>
-                <div class="web-title u-margin-block-start-auto">21k+ Code Commits</div>
+                <div class="text-title font-aeonik-pro mt-auto">21k+ Code Commits</div>
             </a>
         </div>
     </div>

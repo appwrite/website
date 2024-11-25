@@ -80,17 +80,17 @@
             <Hero />
         </div>
 
-        <div class="web-container">
+        <div class="container divide-border-primary divide-y">
             <div class="day-cards">
                 {#each days as day, i (day.release.toISOString())}
-                    <a href="#day-{i}" style="display:contents;">
+                    <a href="#day-{i}" class="contents">
                         <DayCard {day} --p-aspect-ratio="5/2">
                             <svelte:component this={day.animation} />
                         </DayCard>
                     </a>
                 {/each}
             </div>
-            <hr />
+
             <div class="days">
                 {#each days as day, i}
                     {@const date = `DAY ${i} - ${toReleaseDate(day.release)}`}
@@ -107,7 +107,7 @@
                         {:else if i === 4}
                             <Day4 release={day.release} />
                         {:else}
-                            <h2 class="web-eyebrow web-u-color-text-primary">
+                            <h2 class="text-micro text-primary uppercase">
                                 <div class="web-dot" />
                                 {date}
                                 <span class="web-u-color-text-accent">_</span>
@@ -118,14 +118,13 @@
                 {/each}
             </div>
         </div>
-        <hr />
 
         <EventCarousel />
-        <hr />
+
         <Giveaway />
     </div>
     <CallToAction />
-    <div class="web-container">
+    <div class="container">
         <FooterNav />
         <MainFooter />
     </div>

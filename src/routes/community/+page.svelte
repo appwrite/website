@@ -1,12 +1,12 @@
 <script lang="ts" context="module">
     export const events: EventCardProps[] = [
         {
-            href: 'https://discord.com/events/564160730845151244/1218597329024843837',
+            href: 'https://discord.com/events/564160730845151244/1279026334496067669/1286356126924800000',
             cover: {
-                src: '/images/community/events/28march-office-hours.png',
+                src: '/images/community/events/19sept-office-hours.png',
                 alt: ''
             },
-            date: '2024-03-28',
+            date: '2024-09-19',
             location: 'Discord',
             title: 'Office Hours: Ask me anything!',
             description:
@@ -14,12 +14,12 @@
             buttonText: 'View event'
         },
         {
-            href: 'https://discord.com/events/564160730845151244/1218597959017431192',
+            href: 'https://discord.com/events/564160730845151244/1279026334496067669/1288892841984000000',
             cover: {
-                src: '/images/community/events/4april-office-hours.png',
+                src: '/images/community/events/26sept-office-hours.png',
                 alt: ''
             },
-            date: '2024-04-04',
+            date: '2024-09-26',
             location: 'Discord',
             title: 'Office Hours: Ask me anything!',
             description:
@@ -27,12 +27,12 @@
             buttonText: 'View event'
         },
         {
-            href: 'https://discord.com/events/564160730845151244/1218598369363230872',
+            href: 'https://discord.com/events/564160730845151244/1279026334496067669/1291429557043200000',
             cover: {
-                src: '/images/community/events/11april-office-hours.png',
+                src: '/images/community/events/3oct-office-hours.png',
                 alt: ''
             },
-            date: '2024-04-11',
+            date: '2024-10-03',
             location: 'Discord',
             title: 'Office Hours: Ask me anything!',
             description:
@@ -50,7 +50,7 @@
     import MetricCard from '$lib/components/MetricCard.svelte';
     import { newsletter } from '$lib/components/Newsletter.svelte';
     import PreFooter from '$lib/components/PreFooter.svelte';
-    import { GITHUB_STARS } from '$lib/constants';
+    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import { Main } from '$lib/layouts';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
@@ -122,7 +122,8 @@
     }
 
     const title = 'Community' + TITLE_SUFFIX;
-    const description = 'Join our vibrant community of developers. Ask questions, contribute solutions, and inspire others to improve the backend development experience.';
+    const description =
+        'Join our vibrant community of developers. Ask questions, contribute solutions, and inspire others to improve the backend development experience.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
@@ -144,10 +145,10 @@
 </svelte:head>
 
 <Main>
-    <div class="web-big-padding-section u-overflow-hidden">
-        <div class="web-big-padding-section-level-1 u-position-relative u-overflow-hidden">
+    <div class="web-big-padding-section overflow-hidden">
+        <div class="relative overflow-hidden py-10">
             <div
-                class="u-position-absolute web-u-z-index-1-negative web-u-hide-mobile"
+                class="web-u-z-index-1-negative web-u-hide-mobile absolute"
                 style:inline-size="704px"
                 style:block-size="670px"
                 style:left="calc((50% - 704px / 2) + 18rem)"
@@ -156,18 +157,18 @@
                 <img src="/images/community/sphere.png" alt="" />
             </div>
             <div class="web-big-padding-section-level-2">
-                <section class="web-container web-u-padding-block-end-0 u-position-relative">
+                <section class="container web-u-padding-block-end-0 relative">
                     <div class="web-hero is-align-start web-u-max-width-580">
-                        <h1 class="web-display web-u-color-text-primary">
+                        <h1 class="text-display font-aeonik-pro text-primary">
                             Built by a community of 800+ contributors
                         </h1>
                         <div>
-                            <p class="web-description">
+                            <p class="text-description">
                                 Inspire and get inspired. Join Appwrite's community of maintainers
                                 and contributors and help us make Appwrite better for developers
                                 worldwide.
                             </p>
-                            <div class="u-flex u-flex-wrap u-gap-12 u-margin-block-start-32">
+                            <div class="mt-8 flex flex-wrap gap-3">
                                 <a
                                     href="/discord"
                                     target="_blank"
@@ -177,16 +178,14 @@
                                     <span class="text">Join our Discord</span>
                                 </a>
                                 <a
-                                    href="https://github.com/appwrite/appwrite/stargazers"
+                                    href={GITHUB_REPO_LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="web-button is-secondary is-full-width-mobile"
                                 >
                                     <span aria-hidden="true" class="web-icon-star" />
                                     <span>Star on GitHub</span>
-                                    <span class="web-inline-tag web-sub-body-400"
-                                        >{GITHUB_STARS}</span
-                                    >
+                                    <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
                                 </a>
                             </div>
                         </div>
@@ -194,7 +193,7 @@
                 </section>
             </div>
             <div class="web-big-padding-section-level-2">
-                <section class="web-container">
+                <section class="container">
                     <ul class="web-grid-row-4 web-grid-row-4-mobile-2" style="--gap-mobile:1.5rem;">
                         {#each metrics as props}
                             <li>
@@ -206,7 +205,7 @@
             </div>
         </div>
 
-        <div class="web-big-padding-section-level-1 u-position-relative">
+        <div class="relative py-10">
             <div class="absolute-container">
                 <div class="green-gradient" />
                 <div class="pink-gradient" />
@@ -227,21 +226,19 @@
             </div>
 
             <div class="web-big-padding-section-level-2">
-                <div class="web-container u-position-relative">
-                    <div class="web-hero is-mobile-center web-u-gap-20 web-u-max-width-900">
-                        <h1 class="web-headline web-u-color-text-primary">
+                <div class="container relative">
+                    <div class="web-hero is-mobile-center web-u-max-width-900 gap-5">
+                        <h1 class="text-headline font-aeonik-pro text-primary">
                             The power of open source benefits us all
                         </h1>
                         <div>
-                            <p class="web-description">
+                            <p class="text-description">
                                 See contributors of Appwrite since 2019 and discover how you can
                                 start contributing.
                             </p>
-                            <div
-                                class="u-flex u-flex-wrap u-main-center u-gap-12 u-margin-block-start-32"
-                            >
+                            <div class="mt-8 flex flex-wrap justify-center gap-3">
                                 <a
-                                    href="https://github.com/appwrite/appwrite/graphs/contributors"
+                                    href="{GITHUB_REPO_LINK}/graphs/contributors"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="web-button is-secondary is-full-width-mobile"
@@ -255,13 +252,13 @@
             </div>
         </div>
 
-        <div class="web-big-padding-section-level-1">
+        <div class="py-10">
             <div class="web-big-padding-section-level-2">
-                <div class="web-container">
+                <div class="container">
                     <div class="web-hero is-align-start">
-                        <h2 class="web-display web-u-color-text-primary">Get involved</h2>
+                        <h2 class="text-display font-aeonik-pro text-primary">Get involved</h2>
                         <div>
-                            <p class="web-description">
+                            <p class="text-description">
                                 With every contribution, Appwrite gets better for all of us. Start
                                 contributing today.
                             </p>
@@ -269,39 +266,36 @@
                     </div>
 
                     <div
-                        class="web-card is-normal u-margin-block-start-32"
+                        class="web-card is-normal mt-8"
                         style="--card-padding:2rem; --card-padding-mobile:1.25rem;"
                     >
                         <div
-                            class="u-flex web-u-flex-direction-column-mobile
-									web-u-gap-96 web-u-row-gap-48"
+                            class="web-u-flex-direction-column-mobile web-u-row-gap-48 flex gap-28"
                         >
                             <div>
-                                <h3 class="web-label web-u-color-text-primary">
-                                    Check our Open Issues
-                                </h3>
-                                <p class="web-main-body-500 u-margin-block-start-4">
+                                <h3 class="text-label text-primary">Check our Open Issues</h3>
+                                <p class="text-body mt-1 font-medium">
                                     Anyone can join and help Appwrite become better.
                                 </p>
                                 <a
-                                    href="https://github.com/appwrite/appwrite/issues"
+                                    href="{GITHUB_REPO_LINK}/issues"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-button is-secondary u-margin-block-start-32"
+                                    class="web-button is-secondary mt-8"
                                 >
                                     <span class="web-icon-github" aria-hidden="true" />
                                     <span class="">View all Open Issues</span>
                                 </a>
                             </div>
-                            <div class="u-stretch">
+                            <div class="flex-1">
                                 <table class="web-table-line">
                                     <thead class="web-table-line-head">
                                         <tr class="web-table-line-row">
                                             <th
-                                                class="web-table-line-cell web-u-color-text-primary u-un-break-text"
+                                                class="web-table-line-cell text-primary whitespace-nowrap text-start"
                                                 >Issue #</th
                                             >
-                                            <th class="web-table-line-cell web-u-color-text-primary"
+                                            <th class="web-table-line-cell text-primary text-start"
                                                 >Title</th
                                             >
                                         </tr>
@@ -309,9 +303,8 @@
                                     <tbody class="web-table-line-body">
                                         {#each data.issues as issue}
                                             <tr class="web-table-line-row">
-                                                <td class="web-table-line-cell u-un-break-text">
-                                                    <span class="web-caption-400"
-                                                        >#{issue.number}</span
+                                                <td class="web-table-line-cell whitespace-nowrap">
+                                                    <span class="text-caption">#{issue.number}</span
                                                     >
                                                 </td>
                                                 <td class="web-table-line-cell">
@@ -320,21 +313,21 @@
                                                             href={issue.url}
                                                             target="_blank"
                                                             rel="noopener noreferrer"
-                                                            class="web-link web-sub-body-500"
+                                                            class="web-link text-sub-body font-medium"
                                                         >
                                                             {issue.title}
                                                         </a>
                                                         <span>({issue.repository})</span>
                                                     </div>
-                                                    <ul
-                                                        class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-8"
-                                                    >
-                                                        {#each issue.tags as tag}
-                                                            <li>
-                                                                <div class="web-tag">{tag}</div>
-                                                            </li>
-                                                        {/each}
-                                                    </ul>
+                                                    {#if issue.tags.length > 0}
+                                                        <ul class="mt-2 flex flex-wrap gap-2">
+                                                            {#each issue.tags as tag}
+                                                                <li>
+                                                                    <div class="web-tag">{tag}</div>
+                                                                </li>
+                                                            {/each}
+                                                        </ul>
+                                                    {/if}
                                                 </td>
                                             </tr>
                                         {/each}
@@ -346,80 +339,80 @@
                 </div>
             </div>
             <div class="web-big-padding-section-level-2">
-                <section class="web-container">
-                    <h4 class="web-label web-u-color-text-primary">Other ways to help</h4>
+                <section class="container">
+                    <h4 class="text-label text-primary">Other ways to help</h4>
                     <ul
-                        class="grid-box u-gap-32 web-u-gap-20-mobile u-margin-block-start-20"
+                        class="mt-5 grid gap-5 md:grid-cols-4 md:gap-8"
                         style="--grid-item-size:15rem"
                     >
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
+                                class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
                             >
-                                <div class="web-sub-body-500 web-u-color-text-primary">
+                                <div class="text-sub-body text-primary font-medium">
                                     Create content
                                 </div>
-                                <div class="web-sub-body-400">
+                                <div class="text-sub-body">
                                     Help others discover Appwrite with videos and blogs.
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
+                                class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
                             >
-                                <div class="web-sub-body-500 web-u-color-text-primary">
+                                <div class="text-sub-body text-primary font-medium">
                                     Present at meetups
                                 </div>
-                                <div class="web-sub-body-400">
+                                <div class="text-sub-body">
                                     Share your experience and represent Appwrite in public.
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
+                                class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
                             >
-                                <div class="web-sub-body-500 web-u-color-text-primary">
+                                <div class="text-sub-body text-primary font-medium">
                                     Report bugs
                                 </div>
-                                <div class="web-sub-body-400">
+                                <div class="text-sub-body">
                                     Find bugs and submit PRs to fix them.
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
+                                class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
                             >
-                                <div class="web-sub-body-500 web-u-color-text-primary">
+                                <div class="text-sub-body text-primary font-medium">
                                     Submit new ideas
                                 </div>
-                                <div class="web-sub-body-400">
+                                <div class="text-sub-body">
                                     Suggest features, integrations, or SDKs for our roadmap.
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
+                                class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
                             >
-                                <div class="web-sub-body-500 web-u-color-text-primary">
+                                <div class="text-sub-body text-primary font-medium">
                                     Improve documentation
                                 </div>
-                                <div class="web-sub-body-400">
+                                <div class="text-sub-body">
                                     Find improvements in our docs and improve accessibility.
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient u-flex-vertical web-u-gap-6"
+                                class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
                             >
-                                <div class="web-sub-body-500 web-u-color-text-primary">
+                                <div class="text-sub-body text-primary font-medium">
                                     Helping others
                                 </div>
-                                <div class="web-sub-body-400">
+                                <div class="text-sub-body">
                                     Support developers with their projects and contributions.
                                 </div>
                             </div>
@@ -428,10 +421,10 @@
                 </section>
             </div>
             <div class="web-big-padding-section-level-2">
-                <section class="web-container web-u-sep-block-start web-u-padding-block-start-64">
+                <section class="container web-u-sep-block-start web-u-padding-block-start-64">
                     <Carousel size="big">
                         <svelte:fragment slot="header">
-                            <h4 class="web-label web-u-color-text-primary">Upcoming Events</h4>
+                            <h4 class="text-label text-primary">Upcoming Events</h4>
                         </svelte:fragment>
                         {#each events as event}
                             <li>
@@ -451,16 +444,14 @@
             </div>
         </div>
 
-        <div
-            class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light"
-        >
+        <div class="web-white-section light relative py-10">
             <div class="web-big-padding-section-level-2">
-                <div class="web-container">
+                <div class="container">
                     <div class="web-hero is-center">
-                        <h2 class="web-display web-u-color-text-primary">
+                        <h2 class="text-display font-aeonik-pro text-primary">
                             Inspire and get inspired
                         </h2>
-                        <p class="web-description web-u-margin-block-start-0">
+                        <p class="text-description web-u-margin-block-start-0">
                             Visit our showcase website built with Appwrite to find inspiration for
                             your projects or to showcase what you have built.
                         </p>
@@ -468,7 +459,7 @@
                             href="https://builtwith.appwrite.io"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="web-button is-secondary web-u-cross-child-center u-margin-block-start-16"
+                            class="web-button is-secondary mt-4 self-center"
                         >
                             <span>View all projects</span>
                         </a>
@@ -483,15 +474,15 @@
                 </div>
             </div>
         </div>
-        <div class="web-big-padding-section-level-1 web-white-section theme-light">
+        <div class="web-white-section light py-10">
             <div class="web-big-padding-section-level-2">
-                <div class="web-container">
+                <div class="container">
                     <div class="web-grid-15-25-desktop web-u-row-gap-48 web-u-column-gap-96">
                         <div class="web-hero is-align-start web-u-max-width-380">
-                            <div class="web-display web-u-color-text-primary">
+                            <div class="text-display font-aeonik-pro text-primary">
                                 Visit the community
                             </div>
-                            <p class="web-description">
+                            <p class="text-description">
                                 Discover Appwrite's community across platforms and join the fun.
                             </p>
                         </div>
@@ -501,17 +492,17 @@
                                     href="/discord"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-card is-white web-u-min-block-size-320 u-flex-vertical"
+                                    class="web-card is-white web-u-min-block-size-320 flex flex-col"
                                     style="--card-padding:2rem;rotate: 6deg"
                                 >
-                                    <div class="u-flex-vertical u-main-space-between u-gap-32">
+                                    <div class="flex flex-col justify-between gap-8">
                                         <span
                                             class="icon-discord web-u-font-size-40"
                                             aria-hidden="true"
                                             aria-label="Discord"
                                         />
                                     </div>
-                                    <div class="web-title u-margin-block-start-auto">
+                                    <div class="text-title font-aeonik-pro mt-auto">
                                         17K+ members
                                     </div>
                                 </a>
@@ -521,37 +512,37 @@
                                     href="https://twitter.com/intent/follow?screen_name=appwrite"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-card is-white web-u-min-block-size-320 u-flex-vertical"
+                                    class="web-card is-white web-u-min-block-size-320 flex flex-col"
                                     style="--card-padding:2rem; rotate: 2deg"
                                 >
-                                    <div class="u-flex-vertical u-main-space-between u-gap-32">
+                                    <div class="flex flex-col justify-between gap-8">
                                         <span
                                             class="web-icon-x web-u-font-size-40"
                                             aria-hidden="true"
                                             aria-label="X"
                                         />
                                     </div>
-                                    <div class="web-title u-margin-block-start-auto">
+                                    <div class="text-title font-aeonik-pro mt-auto">
                                         128K+ followers
                                     </div>
                                 </a>
                             </li>
                             <li>
                                 <a
-                                    href="https://github.com/appwrite/appwrite"
+                                    href={GITHUB_REPO_LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-card is-white web-u-min-block-size-320 u-flex-vertical"
+                                    class="web-card is-white web-u-min-block-size-320 flex flex-col"
                                     style="--card-padding:2rem; rotate: -10deg"
                                 >
-                                    <div class="u-flex-vertical u-main-space-between u-gap-32">
+                                    <div class="flex flex-col justify-between gap-8">
                                         <span
                                             class="icon-github web-u-font-size-40"
                                             aria-hidden="true"
                                             aria-label="GitHub"
                                         />
                                     </div>
-                                    <div class="web-title u-margin-block-start-auto">
+                                    <div class="text-title font-aeonik-pro mt-auto">
                                         {GITHUB_STARS}+ stargazers
                                     </div>
                                 </a>
@@ -561,17 +552,17 @@
                                     href="https://www.youtube.com/c/appwrite?sub_confirmation=1"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-card is-white web-u-min-block-size-320 u-flex-vertical"
+                                    class="web-card is-white web-u-min-block-size-320 flex flex-col"
                                     style="--card-padding:2rem; rotate: -6deg"
                                 >
-                                    <div class="u-flex-vertical u-main-space-between u-gap-32">
+                                    <div class="flex flex-col justify-between gap-8">
                                         <span
                                             class="icon-youtube web-u-font-size-40"
                                             aria-hidden="true"
                                             aria-label="Youtube"
                                         />
                                     </div>
-                                    <div class="web-title u-margin-block-start-auto">
+                                    <div class="text-title font-aeonik-pro mt-auto">
                                         4K+ subscribers
                                     </div>
                                 </a>
@@ -581,20 +572,20 @@
                 </div>
             </div>
         </div>
-        <div class="web-big-padding-section-level-1">
+        <div class="pt-10">
             <div class="web-big-padding-section-level-2">
-                <div class="web-container">
-                    <div class="web-grid-1-1-opt-2 u-gap-32">
+                <div class="container">
+                    <div class="web-grid-1-1-opt-2 gap-8">
                         <div class="">
                             <div
                                 class="web-u-max-inline-size-none-mobile"
                                 class:web-u-max-width-380={!submitted}
                             >
-                                <section class="u-flex-vertical web-u-gap-20">
-                                    <h1 class="web-title web-u-color-text-primary">
+                                <section class="flex flex-col gap-5">
+                                    <h1 class="text-title font-aeonik-pro text-primary">
                                         Appwrite insights
                                     </h1>
-                                    <p class="web-description web-u-padding-block-end-40">
+                                    <p class="text-description web-u-padding-block-end-40">
                                         Sign up to our company blog and get the latest insights from
                                         Appwrite. Learn more about engineering, product design,
                                         building community, and tips & tricks for using Appwrite.
@@ -603,7 +594,7 @@
                             </div>
                         </div>
                         {#if submitted}
-                            <div class="u-flex u-gap-8 u-cross-center">
+                            <div class="flex items-center gap-2">
                                 <svg
                                     width="18"
                                     height="18"
@@ -640,9 +631,9 @@
                             <form
                                 method="post"
                                 on:submit|preventDefault={submit}
-                                class="u-flex-vertical u-gap-16"
+                                class="flex flex-col gap-4"
                             >
-                                <div class="u-flex u-flex-vertical u-gap-4">
+                                <div class="flex flex-col gap-1">
                                     <label for="name">Your name</label>
                                     <input
                                         class="web-input-text"
@@ -654,7 +645,7 @@
                                         bind:value={name}
                                     />
                                 </div>
-                                <div class="u-flex u-flex-vertical u-gap-4">
+                                <div class="flex flex-col gap-1">
                                     <label for="email">Your email</label>
                                     <input
                                         class="web-input-text"
@@ -680,10 +671,8 @@
                 </div>
             </div>
 
-            <div
-                class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
-            >
-                <div class="web-container">
+            <div class="relative pt-[7.5rem]">
+                <div class="container">
                     <PreFooter />
                     <FooterNav />
                     <MainFooter />

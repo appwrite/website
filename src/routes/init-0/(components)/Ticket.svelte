@@ -189,9 +189,9 @@
     {/if}
     <div class="ticket" data-variant={variant} use:mouse style={styles}>
         <img src={bg} alt="" class="bg" />
-        <p class="web-title web-u-color-text-primary">{name?.trim() || '-'}</p>
+        <p class="text-title font-aeonik-pro text-primary">{name?.trim() || '-'}</p>
         {#if gh_user}
-            <p class="web-label">@{gh_user}</p>
+            <p class="text-label">@{gh_user}</p>
         {/if}
         <div class="bottom-left">
             <img src={Logo} alt="init_" />
@@ -330,7 +330,8 @@
             );
             background-blend-mode: color-dodge;
             background-size: var(--imgsize);
-            background-position: 0% calc(var(--background-y) * 1),
+            background-position:
+                0% calc(var(--background-y) * 1),
                 var(--background-x) var(--background-y);
             filter: brightness(calc((var(--pointer-from-center) * 0.3) + 0.5)) contrast(2.3)
                 saturate(1);
@@ -412,13 +413,7 @@
         z-index: -1;
     }
 
-    .web-title {
-        font-size: adjusted(2.5);
-        line-height: #{math.div(44, 40)}em;
-        overflow-wrap: break-word;
-    }
-
-    .web-label {
+    .text-label {
         font-size: adjusted(1.5);
         line-height: #{math.div(28, 24)}em;
         margin-block-start: adjusted(0.25);

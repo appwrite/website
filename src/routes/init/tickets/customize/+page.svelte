@@ -71,15 +71,13 @@
     <div class="hero">
         <div class="desktop-left">
             <div class="header">
-                <h1 class="web-display">
-                    Ready, set, <span class="web-u-color-text-primary" style:font-weight="500">
-                        init
-                    </span>
+                <h1 class="text-display font-aeonik-pro">
+                    Ready, set, <span class="text-primary" style:font-weight="500"> init </span>
                 </h1>
             </div>
 
             <div class="info">
-                <p class="web-label u-margin-block-start-16">
+                <p class="text-label mt-4">
                     Join us during the week of August 19–23 to celebrate everything new with
                     Appwrite.
                 </p>
@@ -103,7 +101,7 @@
         </div>
     </div>
 
-    <div class="web-container">
+    <div class="container">
         <FooterNav />
         <MainFooter />
     </div>
@@ -126,21 +124,11 @@
             width: 100%;
         }
     }
-    .web-container {
+    .container {
         padding-block-start: 0;
 
         :global(nav) {
             margin-block-start: 0;
-        }
-    }
-
-    .web-display {
-        margin-bottom: -48px;
-    }
-
-    @media screen and (min-width: 768px) {
-        .web-display {
-            margin-bottom: 0;
         }
     }
 </style>

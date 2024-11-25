@@ -30,7 +30,7 @@ export enum Service {
     Locale = 'locale',
     Storage = 'storage',
     Teams = 'teams',
-    Users = 'users',
+    Users = 'users'
 }
 
 export enum Platform {
@@ -54,7 +54,7 @@ export enum Platform {
     ServerKotlin = 'server-kotlin',
     ServerJava = 'server-java',
     ServerGraphql = 'server-graphql',
-    ServerRest = 'server-rest',
+    ServerRest = 'server-rest'
 }
 
 export const platformMap: Record<Language | string, string> = {
@@ -114,7 +114,7 @@ export const platformMap: Record<Language | string, string> = {
     vue: 'Vue',
     svelte: 'Svelte',
     groovy: 'Groovy',
-    go: 'Go',
+    go: 'Go'
 };
 
 export const serviceMap: Record<Service, string> = {
@@ -127,7 +127,7 @@ export const serviceMap: Record<Service, string> = {
     [Service.Locale]: 'Locale',
     [Service.Storage]: 'Storage',
     [Service.Teams]: 'Teams',
-    [Service.Users]: 'Users',
+    [Service.Users]: 'Users'
 };
 
 export const preferredVersion = writable<Version | null>(
