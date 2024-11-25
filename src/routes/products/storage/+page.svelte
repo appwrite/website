@@ -62,7 +62,7 @@
         <PreviewFiles />
         <div class="e-bg-image-pattern-bottom relative">
             <div>
-                <section class="container hero-flipped web-u-padding-block-end-0 -mt-32">
+                <section class="container hero-flipped web-u-padding-block-end-0">
                     <div class="web-is-only-desktop">
                         <img src="/images/pages/storage/product-shot-3.png" width="687" alt="" />
                     </div>
@@ -94,11 +94,11 @@
         </div>
 
         <div class="web-big-padding-section-level-1 web-white-section light relative">
-            <div class="web-big-padding-section-level-2">
+            <div class="web-big-padding-section-level-2 max-sm:!py-20">
                 <div class="container">
-                    <div class="web-hero is-center web-u-max-width-380">
+                    <div class="web-hero is-center !max-w-xl">
                         <span class="web-badges web-eyebrow !text-white">Dashboard_</span>
-                        <h2 class="web-title text-primary">
+                        <h2 class="web-title text-primary text-pretty">
                             Manage your storage infrastructure from the Console
                         </h2>
                         <p class="web-main-body-500 web-u-margin-block-start-0">
@@ -117,7 +117,7 @@
                 </div>
             </div>
 
-            <div class="web-big-padding-section-level-2">
+            <div class="web-big-padding-section-level-2 !my-0">
                 <div class="container">
                     <div class="flex flex-col gap-8 md:flex-row">
                         <div class="flex flex-1 flex-col gap-8">
@@ -169,9 +169,9 @@
             </div>
         </div>
         <div
-            class="web-big-padding-section-level-1 web-white-section light bg-[url(/images/bgs/purple-gradient.png)] bg-left bg-no-repeat"
+            class="web-big-padding-section-level-1 web-white-section light bg-[url(/images/bgs/purple-gradient.png)] bg-left bg-no-repeat pb-20"
         >
-            <div class="web-big-padding-section-level-2">
+            <div class="web-big-padding-section-level-2 !my-0 max-sm:py-20">
                 <div class="container">
                     <div class="web-grid-1-1 u-row-gap-64">
                         <div class="web-hero is-align-start web-u-max-width-580 web-mx-auto-mobile">
