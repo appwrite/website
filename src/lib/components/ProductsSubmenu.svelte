@@ -15,37 +15,37 @@
     export const products: Array<SubmenuItem> = [
         {
             name: 'Auth',
-            href: '/',
+            href: '/docs/products/auth',
             description: 'Secure login with multi-factor auth.',
             icon: '/images/icons/illustrated/dark/auth.png'
         },
         {
             name: 'Database',
-            href: '/',
+            href: '/docs/products/databases',
             description: 'Scalable and robust databases.',
             icon: '/images/icons/illustrated/dark/databases.png'
         },
         {
             name: 'Storage',
-            href: '/',
+            href: '/docs/products/storage',
             description: 'Advanced compression and encryption.',
             icon: '/images/icons/illustrated/dark/storage.png'
         },
         {
             name: 'Functions',
-            href: '/',
+            href: '/docs/products/functions',
             description: 'Deploy & scale serverless functions.',
             icon: '/images/icons/illustrated/dark/functions.png'
         },
         {
             name: 'Messaging',
-            href: '/',
+            href: '/docs/products/messaging',
             description: 'Set up a full-functioning messaging service.',
             icon: '/images/icons/illustrated/dark/messaging.png'
         },
         {
             name: 'Realtime',
-            href: '/',
+            href: '/docs/apis/realtime',
             description: 'Subscribe and react to any event.',
             icon: '/images/icons/illustrated/dark/realtime.png'
         }
