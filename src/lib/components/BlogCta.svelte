@@ -18,7 +18,7 @@
         min-height: 180px;
         margin-top: 48px;
         display: flex;
-        margin-bottom: -24px;
+        margin-bottom: -184px;
         flex-direction: column;
         align-items: center;
         justify-content: center;

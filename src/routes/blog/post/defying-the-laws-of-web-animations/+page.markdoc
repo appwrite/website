@@ -173,8 +173,6 @@ The video above showcases both Motion and Svelte transitions in action. The tabl
 {/if}
 ```
 
-{% call_to_action /%}
-
 ## Transitioning between sections
 
 There's one other nifty feature of Motion that I didn't mention: It can seamlessly interrupt ongoing animations.
