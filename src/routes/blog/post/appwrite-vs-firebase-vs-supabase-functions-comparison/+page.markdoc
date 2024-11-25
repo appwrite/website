@@ -8,8 +8,9 @@ timeToRead: 8
 author: aditya-oberai
 category: product
 featured: false
+callToAction: true
 ---
-Serverless functions are a powerful tool for developers designed to provide flexibility and simplify backend tasks. With serverless functions, you can focus more on writing code and less on managing infrastructure, making your work faster and more efficient. 
+Serverless functions are a powerful tool for developers designed to provide flexibility and simplify backend tasks. With serverless functions, you can focus more on writing code and less on managing infrastructure, making your work faster and more efficient.
 
 In this comparison, we'll take a look at the serverless functions offered by three popular backend-as-a-service platforms: Firebase, Supabase, and Appwrite.
 
@@ -38,7 +39,7 @@ Firebase Cloud Functions allow you to run backend code in response to events tri
 ![Supabase-functions](/images/blog/comparing-functions/2.png)
 
 ## Overview:
-Supabase, an open-source Firebase alternative, is rapidly gaining popularity for its seamless integration with PostgreSQL. It provides developers with a powerful SQL database, real-time capabilities, and serverless functions. 
+Supabase, an open-source Firebase alternative, is rapidly gaining popularity for its seamless integration with PostgreSQL. It provides developers with a powerful SQL database, real-time capabilities, and serverless functions.
 
 ## Serverless functions:
 Supabase functions, also known as Edge Functions, are deployed at the edge, ensuring fast execution times with built-in observability. These functions are written in TypeScript and are designed to work closely with your PostgreSQL database, allowing you to execute SQL queries directly from your functions. Edge Functions run server-side logic geographically close to users, offering low latency and great performance.
@@ -96,11 +97,11 @@ Appwrite Functions support multiple languages, including Node.js, Python, Ruby, 
 
 # Conclusion
 
-Choosing the right serverless function provider depends on your specific needs and project requirements. 
+Choosing the right serverless function provider depends on your specific needs and project requirements.
 
-Supabase offers excellent SQL integration and low latency with its edge functions, making it ideal for applications that require real-time data handling and minimal delays. 
+Supabase offers excellent SQL integration and low latency with its edge functions, making it ideal for applications that require real-time data handling and minimal delays.
 
-Firebase stands out with its mature ecosystem and seamless integration with Google services, perfect for developers looking for a comprehensive and reliable platform. 
+Firebase stands out with its mature ecosystem and seamless integration with Google services, perfect for developers looking for a comprehensive and reliable platform.
 
 Appwrite's flexibility in language support and modularity makes it a great choice for developers seeking a highly customizable backend solution.
 
