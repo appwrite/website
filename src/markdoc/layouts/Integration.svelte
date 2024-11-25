@@ -2,7 +2,6 @@
     import { Root, Slide } from '$lib/components/carousel';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
-    import ProductsGrid from '$lib/components/ProductsGrid.svelte';
     import { Main } from '$lib/layouts';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import type { Integration } from '$routes/integrations/+page';
@@ -113,7 +112,7 @@
                     </div>
                     <div class="l-grid-sidebar">
                         <dl
-                            class="flex flex-col sidebar-desc gap-5"
+                            class="sidebar-desc flex flex-col gap-5"
                             style:top={$isHeaderHidden ? '4rem' : '9rem'}
                         >
                             <div class="flex justify-between gap-2">
@@ -157,7 +156,7 @@
                         class="web-hero web-u-max-width-580 flex items-center justify-center gap-y-4"
                     >
                         <h2
-                            class="text-display font-aeonik-pro text-center text-primary max-w-[600px]"
+                            class="text-display font-aeonik-pro text-primary max-w-[600px] text-center"
                         >
                             Become a Technology Partner
                         </h2>
@@ -181,13 +180,8 @@
 </Main>
 
 <style lang="scss">
-    @use '$scss/abstract' as *;
-
-    .cta {
-        min-height: pxToRem(560);
-        display: flex;
-        align-items: center;
-    }
+    @use '$scss/abstract/functions' as f;
+    @use '$scss/abstract/variables/devices';
 
     .web-pre-footer-bg {
         position: absolute;
@@ -199,24 +193,15 @@
         max-inline-size: unset;
         max-block-size: unset;
     }
-    /* more tha 9 items */
-
-    .l-side-column {
-        display: flex;
-        gap: pxToRem(16);
-        @media #{$break1} {
-            flex-direction: column;
-        }
-    }
 
     .l-grid-2-1 {
-        @media #{$break1} {
+        @media #{devices.$break1} {
             display: flex;
             flex-direction: column;
         }
-        @media #{$break2open} {
+        @media #{devices.$break2open} {
             display: grid;
-            gap: pxToRem(64);
+            gap: f.pxToRem(64);
             grid-template-columns: repeat(12, 1fr);
         }
 

@@ -413,12 +413,6 @@
         z-index: -1;
     }
 
-    .text-title font-aeonik-pro {
-        font-size: adjusted(2.5);
-        line-height: #{math.div(44, 40)}em;
-        overflow-wrap: break-word;
-    }
-
     .text-label {
         font-size: adjusted(1.5);
         line-height: #{math.div(28, 24)}em;
