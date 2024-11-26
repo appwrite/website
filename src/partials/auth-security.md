@@ -37,7 +37,7 @@ To toggle session alerts, navigate to **Auth** > **Security** > **Session alerts
 
 # Memberships privacy {% #memberships-privacy %}
 
-Hide specific membership details from other users by marking them as private. To set this up, go to **Auth** > **Security** > **Memberships privacy**
+In certain use cases, your app may not need to share members’ personal information with others. You can safeguard privacy by marking specific membership details as private. To configure this setting, navigate to **Auth** > **Security** > **Memberships privacy**
 
 These details can be made private:
 
