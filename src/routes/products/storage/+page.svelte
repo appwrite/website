@@ -14,6 +14,7 @@
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import HeroImage from './(assets)/hero-image.png';
     import ProductCards from '$lib/components/product-pages/product-cards.svelte';
+    import Optimized from './(components)/Optimized.svelte';
 
     const title = 'Storage' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -60,41 +61,15 @@
         />
 
         <PreviewFiles />
-        <div class="e-bg-image-pattern-bottom relative">
-            <div>
-                <section class="container hero-flipped web-u-padding-block-end-0">
-                    <div class="web-is-only-desktop">
-                        <img src="/images/pages/storage/product-shot-3.png" width="687" alt="" />
-                    </div>
-                    <div class="web-u-max-width-580 mx-auto">
-                        <h2 class="text-title font-aeonik-pro text-primary">
-                            Optimized for small and large files
-                        </h2>
-                        <p class="web-main-body-500 mt-4">
-                            Appwrite offers chunked uploads for large files and several compression
-                            options for optimized upload times.
-                        </p>
-                        <div class="mt-8 flex gap-2">
-                            <a href="/" class="web-button is-secondary is-full-width-mobile">
-                                <span class="text">Learn more</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="web-is-only-mobile">
-                        <img
-                            src="/images/pages/storage/product-shot-3.png"
-                            width="100%"
-                            alt=""
-                            class="u-block web-u-max-width-580 mx-auto"
-                        />
-                    </div>
-                </section>
-            </div>
+        <div
+            class="relative bg-[url('/images/pages/storage/pattern-1.png')] [background-size:1500px] [background-position:center_bottom_-50%] bg-no-repeat md:[background-size:1350px] md:[background-position:center_bottom]"
+        >
+            <Optimized />
             <Permissions />
         </div>
 
         <div class="web-big-padding-section-level-1 web-white-section light relative">
-            <div class="web-big-padding-section-level-2 max-sm:!py-20">
+            <div class="web-big-padding-section-level-2 max-lg:py-20">
                 <div class="container">
                     <div class="web-hero is-center !max-w-xl">
                         <span class="web-badges web-eyebrow !text-white">Dashboard_</span>
@@ -119,7 +94,7 @@
 
             <div class="web-big-padding-section-level-2 !my-0">
                 <div class="container">
-                    <div class="flex flex-col gap-8 md:flex-row">
+                    <div class="flex flex-col gap-8 lg:flex-row">
                         <div class="flex flex-1 flex-col gap-8">
                             <div class="web-u-max-width-580 mx-auto flex flex-col gap-2">
                                 <h3 class="web-main-body-500 web-u-color-text-primary">
@@ -171,17 +146,15 @@
         <div
             class="web-big-padding-section-level-1 web-white-section light bg-[url(/images/bgs/purple-gradient.png)] bg-left bg-no-repeat pb-20"
         >
-            <div class="web-big-padding-section-level-2 !my-0 max-sm:py-20">
+            <div class="web-big-padding-section-level-2 !my-0 py-20">
                 <div class="container">
-                    <div class="web-grid-1-1 u-row-gap-64">
-                        <div class="web-hero is-align-start web-u-max-width-580 web-mx-auto-mobile">
+                    <div class="grid grid-cols-1 gap-16 lg:grid-cols-2">
+                        <div class="web-hero is-align-start mb-12 md:mb-0">
                             <span class="web-badges web-eyebrow !text-white">APIs_</span>
-                            <h2 class="web-title web-u-color-text-primary web-u-max-width-380">
+                            <h2 class="web-title text-primary">
                                 What you can do with Storage APIs
                             </h2>
-                            <p
-                                class="web-main-body-500 web-u-margin-block-start-0 web-u-max-width-380"
-                            >
+                            <p class="text-body font-medium">
                                 Appwrite's Storage APIs allow you to create and update your files,
                                 apply image transformations, and more.
                             </p>
@@ -198,7 +171,9 @@
                     </div>
                 </div>
             </div>
-            <Testimonials />
+            <div class="py-12">
+                <Testimonials />
+            </div>
             <OpenSource />
         </div>
 
@@ -243,15 +218,6 @@
                 width: 100%;
                 position: relative;
             }
-        }
-    }
-
-    .e-bg-image-pattern-bottom {
-        background: url('/images/pages/storage/pattern-1.png') no-repeat center bottom;
-        background-size: 1350px;
-        @media (max-width: 650px) {
-            background-size: 1500px;
-            background-position: center bottom -50%;
         }
     }
 </style>

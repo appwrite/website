@@ -26,7 +26,7 @@
     class="relative bg-right-top bg-no-repeat pt-32 pb-40 md:bg-[url(/images/bgs/mint-gradient.png)]"
 >
     <section
-        class="container relative flex flex-col items-center justify-between gap-x-32 gap-y-12 md:flex-row"
+        class="container relative grid grid-cols-1 items-center justify-between gap-x-16 gap-y-12 md:grid-cols-2"
     >
         <div class="max-w-md">
             <h2 class="text-title font-aeonik-pro text-primary">
