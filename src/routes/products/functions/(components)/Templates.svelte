@@ -1,48 +1,37 @@
 <script lang="ts">
     import Templates from '../(assets)/templates.png';
-    import Avatar from '../(assets)/avatar.png';
-    import { classNames } from '$lib/utils/classnames';
 
     const templates = [
         {
-            title: 'Query upstash vector',
-            description: 'Vector database that stores text embeddings and context.',
-            avatar: Avatar
+            title: 'Prompt ChatGPT',
+            description: 'Ask questions and let OpenAI GPT-3.5-turbo answer.',
+            avatar: '/images/platforms/light/nodejs.svg'
+        },
+        {
+            title: 'Subscriptions with Stripe',
+            description: 'Receive recurring card payments and grant subscribers extra permissions.',
+            avatar: '/images/platforms/light/nodejs.svg'
+        },
+        {
+            title: 'Sync with Algolia',
+            description: 'Intuitive search bar for any data in Appwrite Databases.',
+            avatar: '/images/platforms/dark/nodejs.svg'
         },
         {
             title: 'Query upstash vector',
             description: 'Vector database that stores text embeddings and context.',
-            avatar: Avatar
+            avatar: '/images/platforms/dark/nodejs.svg'
         },
         {
-            title: 'Query upstash vector',
-            description: 'Vector database that stores text embeddings and context.',
-            avatar: Avatar
+            title: 'Query MongoDB Atlas',
+            description:
+                'Realtime NoSQL document database with geospecial, graph, search, and vector suport.',
+            avatar: '/images/platforms/dark/nodejs.svg'
         },
         {
-            title: 'Query upstash vector',
-            description: 'Vector database that stores text embeddings and context.',
-            avatar: Avatar
-        },
-        {
-            title: 'Query upstash vector',
-            description: 'Vector database that stores text embeddings and context.',
-            avatar: Avatar
-        },
-        {
-            title: 'Query upstash vector',
-            description: 'Vector database that stores text embeddings and context.',
-            avatar: Avatar
-        },
-        {
-            title: 'Query upstash vector',
-            description: 'Vector database that stores text embeddings and context.',
-            avatar: Avatar
-        },
-        {
-            title: 'Query upstash vector',
-            description: 'Vector database that stores text embeddings and context.',
-            avatar: Avatar
+            title: 'WhatsApp with Vonage',
+            description: 'Simple bot to answer WhatsApp messages.',
+            avatar: '/images/platforms/dark/nodejs.svg'
         }
     ];
 </script>
@@ -71,34 +60,39 @@
     <div class="container mt-20 space-y-8">
         <div class="flex items-center justify-between">
             <h2 class="text-label text-primary font-aeonik-pro">Explore templates</h2>
-            <button class="web-button is-secondary !hidden md:!block">View all templates</button>
+            <a
+                href="/docs/products/functions/templates"
+                class="web-button is-secondary !hidden md:!block">View all templates</a
+            >
         </div>
-        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
             {#each templates as template}
                 <div
                     class="hidden flex-col gap-2 rounded-2xl border border-black/8 bg-white p-4 md:flex"
                 >
                     <div class="flex w-full items-center justify-between">
                         <span class="text-sub-body text-primary font-medium">{template.title}</span>
-                        <img src={template.avatar} class="size-6" alt={template.title} />
+                        <img src={template.avatar} class="hidden size-6" alt={template.title} />
                     </div>
                     <p class="text-sub-body text-secondary line-clamp-2">{template.description}</p>
                 </div>
             {/each}
-            {#each templates.slice(0, 4) as template}
+            {#each templates.slice(0, 3) as template}
                 <div
                     class="flex flex-col gap-2 rounded-2xl border border-black/8 bg-white p-4 md:hidden"
                 >
                     <div class="flex w-full items-center justify-between">
                         <span class="text-sub-body text-primary font-medium">{template.title}</span>
-                        <img src={template.avatar} class="size-6" alt={template.title} />
+                        <img src={template.avatar} class="hidden size-6" alt={template.title} />
                     </div>
                     <p class="text-sub-body text-secondary line-clamp-2">{template.description}</p>
                 </div>
             {/each}
 
-            <button class="web-button is-secondary block !w-full md:!hidden md:!w-fit"
-                >View all templates</button
+            <a
+                href="/docs/products/functions/templates"
+                class="web-button is-secondary block !w-full md:!hidden md:!w-fit"
+                >View all templates</a
             >
         </div>
     </div>
