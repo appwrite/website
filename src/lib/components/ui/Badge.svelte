@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
     import type { SvelteHTMLElements } from 'svelte/elements';
 
     type $$Props = SvelteHTMLElements['span'];
@@ -8,7 +8,7 @@
 </script>
 
 <span
-    class={classNames(
+    class={cn(
         'badge font-aeonik-fono self-start rounded-[0.375rem] py-[0.375rem] px-3 text-xs uppercase text-white backdrop-blur-2xl',
         classes
     )}

@@ -9,7 +9,7 @@
 </script>
 
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
     import type { ComponentType } from 'svelte';
 
     export let initialized = false;
@@ -33,7 +33,7 @@
                     </button>
                 {:else}
                     <a
-                        class={classNames(
+                        class={cn(
                             'data-[badge]:after:animate-scale-in data-[badge]:relative data-[badge]:after:absolute data-[badge]:after:size-1.5 data-[badge]:after:translate-full data-[badge]:after:rounded-full'
                         )}
                         href={link.href}

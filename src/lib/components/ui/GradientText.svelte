@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
 
     let className = '';
 
@@ -7,7 +7,7 @@
 </script>
 
 <span
-    class={classNames(
+    class={cn(
         'block bg-[linear-gradient(6deg,_#f8a1ba,_#fff_35%)] bg-clip-text text-transparent',
         className
     )}

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
 </script>
 
 <div
@@ -14,7 +14,7 @@
     <div class="flex gap-1">
         {#each Array.from({ length: 6 }).map(() => Math.floor(Math.random() * 10)) as number, i}
             <div
-                class={classNames(
+                class={cn(
                     'text-primary bg-greyscale-850 pointer-events-none relative flex size-10 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-lg shadow-lg shadow-black/5 outline-none transition-all duration-500',
                     {
                         'border-accent shadow-accent/10 shadow-md': i === 3

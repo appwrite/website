@@ -2,6 +2,9 @@
     import { FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
+    import Cell from './(components)/grid-system/cell.svelte';
+    import Grid from './(components)/grid-system/grid.svelte';
+    import Hero from './(components)/hero.svelte';
 
     const title = 'Cloud GA - Appwrite';
     const description = 'Appwrite Cloud is now generally available.';
@@ -26,6 +29,8 @@
 </svelte:head>
 
 <Main>
+    <Hero />
+
     <div class="container">
         <FooterNav />
         <MainFooter />

@@ -7,7 +7,7 @@
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
 
     type Table = {
         title: string;
@@ -598,7 +598,7 @@
                                         </th>
                                         {#each cols as col, index}
                                             <td
-                                                class={classNames(
+                                                class={cn(
                                                     `text-caption flex justify-center font-normal level-${index}`,
                                                     {
                                                         'md:bg-greyscale-100': col === 'pro'
