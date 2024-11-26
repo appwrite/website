@@ -3,6 +3,7 @@
 
     export let columns: number = 4;
     export let rows: number = 4;
+    export let bottomBorder: boolean = false;
 </script>
 
 <div
@@ -11,6 +12,7 @@
         'border-smooth border-l border-dashed',
         'relative'
     )}
+    class:border-b={bottomBorder}
     style:--columns={columns}
     style:--rows={rows}
 >

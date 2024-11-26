@@ -4,9 +4,9 @@
 </script>
 
 <div
-    class="flex items-center justify-center"
+    class="flex h-full items-center justify-center"
     style:grid-row={row}
-    style:grid-column="span {column} / span {column}"
+    style:grid-column={column}
 >
     <slot />
 </div>

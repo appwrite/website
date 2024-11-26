@@ -4,12 +4,12 @@
 </script>
 
 <div
-    class="gradient relative flex h-[75vh] justify-center bg-gradient-to-b from-transparent to-[rgba(253,_54,_110,_0.09)]"
+    class="gradient border-smooth relative flex h-[75vh] justify-center border-b bg-gradient-to-b from-transparent to-[rgba(253,_54,_110,_0.09)]"
 >
-    <div class="flex w-full max-w-6xl flex-col justify-center px-8">
+    <div class="flex w-full max-w-6xl flex-col justify-center">
         <Grid rows={1}>
             <Cell column={3}>
-                <div class="max-w-4xl space-y-8">
+                <div class="max-w-4xl space-y-8 px-8">
                     <h1 class="text-headline text-primary text-pretty">
                         Appwrite Cloud is Generally Available<span class="text-accent">_</span>
                     </h1>
