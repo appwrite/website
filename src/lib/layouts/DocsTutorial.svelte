@@ -77,7 +77,9 @@
                             />
                         </a>
                     {/if}
-                    <h1 class="web-title lg:-ml-5">{firstStepItem?.title}</h1>
+                    <h1 class="web-title {currentStep === 1 ? 'lg:-ml-5' : ''}">
+                        {firstStepItem?.title}
+                    </h1>
                 </div>
             </div>
             <div class="web-article-header-end" />
