@@ -31,7 +31,7 @@
 
 <Step title="Step 1: Draft">
     <div
-        class="console"
+        class="console !px-4"
         style:--marker-active="url('{MarkerActive}')"
         style:--marker="url('{Marker}')"
         bind:this={wrapper}
@@ -116,7 +116,6 @@
 
         aspect-ratio: 16 / 11;
         position: relative;
-        overflow: hidden;
 
         @media screen and (max-width: 1024px) {
             --m-border-gradient-before: transparent;
