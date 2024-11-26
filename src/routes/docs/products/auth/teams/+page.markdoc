@@ -227,7 +227,3 @@ These details can be made private:
 - `userEmail` - The member's email address
 - `mfa` - Whether the member has enabled multi-factor authentication
 
-{% info title="Scale plan feature" %}
-Memberships privacy is available on the Appwrite Cloud scale plan.
-{% /info %}
-
