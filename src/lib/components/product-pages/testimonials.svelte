@@ -3,21 +3,19 @@
         {
             name: 'Ryan O’Conner',
             copy: `The switch to using Appwrite brought infinite value that I'm still discovering today, but a major impact that it made was the amount of time and stress that it saved me as it simply just works.`,
-            image: '/images/testimonials/k-collect.png',
+            image: '/images/testimonials/ryan-oconner.png',
             title: 'Founder',
             company: 'K-Collect'
         },
         {
             name: 'David Forster',
             copy: `We really loved working with Appwrite for launching our bootstrapped "Open Mind" App. I am still surprised how easy the implementation into Flutter was.`,
-            image: '/images/testimonials/open-mind.png',
-            title: 'Founder',
-            company: 'Open Mind'
+            image: '/images/testimonials/david-forster.png'
         },
         {
             name: 'Marius Bolik',
             copy: `The integrated user authentication and the ease of creating data structures have undoubtedly saved us several weeks' worth of time.`,
-            image: '/images/testimonials/shoefitter.png',
+            image: '/images/testimonials/marius-bolik2.png',
             title: 'CTO',
             company: 'mySHOEFITTER'
         },
@@ -74,7 +72,7 @@
 </div> -->
 
 <div class="relative my-8 w-full max-w-[100vw] overflow-hidden">
-    <div class="group light flex w-fit gap-4">
+    <div class="light group flex w-fit gap-4">
         {#each Array.from({ length: 4 }) as _, i}
             <div
                 class="animate-scroll flex items-center gap-4 group-hover:[animation-play-state:paused;]"
@@ -82,7 +80,7 @@
             >
                 {#each testimonials as testimonial}
                     <div
-                        class="flex h-fit w-lg flex-col justify-center rounded-2xl bg-white p-6 transition-all"
+                        class="w-lg flex h-fit flex-col justify-center rounded-2xl bg-white p-6 transition-all"
                     >
                         <p class="text-sub-body text-secondary flex-1 font-medium">
                             {testimonial.copy}
