@@ -216,3 +216,18 @@ individual roles in the team using the `Role.team(<TEAM_ID>, [<ROLE_1>, <ROLE_2>
 {% arrow_link href="/docs/advanced/platform/permissions" %}
 Learn more about permissions
 {% /arrow_link %}
+
+# Memberships privacy {% #memberships-privacy %}
+
+Hide specific membership details from other users by marking them as private. To set this up, go to **Auth** > **Security** > **Memberships privacy**
+
+These details can be made private:
+
+- `userName` - The member's name
+- `userEmail` - The member's email address
+- `mfa` - Whether the member has enabled multi-factor authentication
+
+{% info title="Scale plan feature" %}
+Memberships privacy is available on the Appwrite Cloud scale plan.
+{% /info %}
+
