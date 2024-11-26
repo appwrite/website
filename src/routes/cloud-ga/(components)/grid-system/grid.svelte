@@ -22,7 +22,7 @@
             {@const y = Math.floor(index / columns) + 1}
             <div
                 class={cn(
-                    'absolute inset-0',
+                    'animate-fade-in absolute inset-0',
                     '[grid-column-start:var(--x)] [grid-column-end:span_1]',
                     '[grid-row-start:var(--y)] [grid-row-end:span_1]',
                     'border-smooth border-r border-dashed'
