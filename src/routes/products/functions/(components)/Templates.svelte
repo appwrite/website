@@ -94,7 +94,7 @@
                         <ul class="flex h-12 gap-1">
                             {#each baseRuntimes as runtime}
                                 <li
-                                    class="border-smooth -mr-3 flex size-8 items-center justify-center rounded-full border bg-white"
+                                    class="border-smooth -ml-3 flex size-8 items-center justify-center rounded-full border bg-white"
                                 >
                                     <img src={icons[runtime]} alt={runtime} class="size-5" />
                                 </li>
@@ -102,7 +102,7 @@
                             {#if hiddenRuntimes.length > 0}
                                 <Tooltip>
                                     <li
-                                        class="border-smooth flex size-8 cursor-pointer items-center justify-center rounded-full border bg-white"
+                                        class="border-smooth -ml-3 flex size-8 cursor-pointer items-center justify-center rounded-full border bg-white"
                                     >
                                         <span class="text-micro text-secondary font-medium">
                                             +{hiddenRuntimes.length}
