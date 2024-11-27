@@ -1,37 +1,49 @@
 <script lang="ts">
+    import Tooltip from '$lib/components/Tooltip.svelte';
+    import { classNames } from '$lib/utils/classnames';
     import Templates from '../(assets)/templates.png';
+
+    const icons = {
+        node: '/images/platforms/nodejs.svg',
+        php: '/images/platforms/php.svg',
+        ruby: '/images/platforms/ruby.svg',
+        python: '/images/platforms/python.svg',
+        dart: '/images/platforms/dart.svg',
+        bun: '/images/platforms/bun.svg',
+        go: '/images/platforms/go.svg'
+    } as const;
 
     const templates = [
         {
             title: 'Prompt ChatGPT',
             description: 'Ask questions and let OpenAI GPT-3.5-turbo answer.',
-            avatar: '/images/platforms/light/nodejs.svg'
+            runtimes: ['node', 'python', 'php'] as const
         },
         {
             title: 'Subscriptions with Stripe',
             description: 'Receive recurring card payments and grant subscribers extra permissions.',
-            avatar: '/images/platforms/light/nodejs.svg'
+            runtimes: ['node'] as const
         },
         {
             title: 'Sync with Algolia',
             description: 'Intuitive search bar for any data in Appwrite Databases.',
-            avatar: '/images/platforms/dark/nodejs.svg'
+            runtimes: ['node', 'python'] as const
         },
         {
             title: 'Query upstash vector',
             description: 'Vector database that stores text embeddings and context.',
-            avatar: '/images/platforms/dark/nodejs.svg'
+            runtimes: ['node'] as const
         },
         {
             title: 'Query MongoDB Atlas',
             description:
                 'Realtime NoSQL document database with geospecial, graph, search, and vector suport.',
-            avatar: '/images/platforms/dark/nodejs.svg'
+            runtimes: ['node'] as const
         },
         {
             title: 'WhatsApp with Vonage',
             description: 'Simple bot to answer WhatsApp messages.',
-            avatar: '/images/platforms/dark/nodejs.svg'
+            runtimes: ['node', 'python', 'php', 'dart', 'bun'] as const
         }
     ];
 </script>
@@ -66,24 +78,42 @@
             >
         </div>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-            {#each templates as template}
+            {#each templates as template, i}
+                {@const baseRuntimes = template.runtimes.slice(0, 2)}
+                {@const hiddenRuntimes = template.runtimes.slice(2)}
                 <div
-                    class="hidden flex-col gap-2 rounded-2xl border border-black/8 bg-white p-4 md:flex"
+                    class={classNames(
+                        'flex-col gap-2 rounded-2xl border border-black/8 bg-white p-4',
+                        {
+                            'hidden md:flex': i > 3
+                        }
+                    )}
                 >
                     <div class="flex w-full items-center justify-between">
                         <span class="text-sub-body text-primary font-medium">{template.title}</span>
-                        <img src={template.avatar} class="hidden size-6" alt={template.title} />
-                    </div>
-                    <p class="text-sub-body text-secondary line-clamp-2">{template.description}</p>
-                </div>
-            {/each}
-            {#each templates.slice(0, 3) as template}
-                <div
-                    class="flex flex-col gap-2 rounded-2xl border border-black/8 bg-white p-4 md:hidden"
-                >
-                    <div class="flex w-full items-center justify-between">
-                        <span class="text-sub-body text-primary font-medium">{template.title}</span>
-                        <img src={template.avatar} class="hidden size-6" alt={template.title} />
+                        <ul class="flex h-12 gap-1">
+                            {#each baseRuntimes as runtime}
+                                <li
+                                    class="border-smooth -ml-3 flex size-8 items-center justify-center rounded-full border bg-white"
+                                >
+                                    <img src={icons[runtime]} alt={runtime} class="size-5" />
+                                </li>
+                            {/each}
+                            {#if hiddenRuntimes.length > 0}
+                                <Tooltip>
+                                    <li
+                                        class="border-smooth -ml-3 flex size-8 cursor-pointer items-center justify-center rounded-full border bg-white"
+                                    >
+                                        <span class="text-micro text-secondary font-medium">
+                                            +{hiddenRuntimes.length}
+                                        </span>
+                                    </li>
+                                    <svelte:fragment slot="tooltip">
+                                        <span class="text-micro">{hiddenRuntimes.join(', ')}</span>
+                                    </svelte:fragment>
+                                </Tooltip>
+                            {/if}
+                        </ul>
                     </div>
                     <p class="text-sub-body text-secondary line-clamp-2">{template.description}</p>
                 </div>
