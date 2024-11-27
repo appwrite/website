@@ -34,3 +34,30 @@ Enable email alerts for your users so that whenever another session is created f
 You won't receive notifications when logging in using [Magic URL](/docs/products/auth/magic-url), [Email OTP](/docs/products/auth/email-otp), or [OAuth2](/docs/products/auth/oauth2) since these authentication methods already verify user access to their systems, establishing the authentication's legitimacy.
 
 To toggle session alerts, navigate to **Auth** > **Security** > **Session alerts**.
+
+# Persistence {% #persistence %}
+
+Appwrite handles the persistence of the session in a consistent way across SDKs. After authenticating with an SDK, the SDK will persist the session so that the user will not need to log in again the next time they open the app. The mechanism for persistence depends on the SDK.
+
+{% info title="Best Practice" %}
+Only keep user sessions active as long as needed and maintain exactly **one** instance of the Client SDK in your app to avoid conflicting session data.
+{% /info %}
+
+# Session limits {% #session-limits %}
+
+In Appwrite versions 1.2 and above, you can limit the number of active sessions created per user to prevent the accumulation of unused but active sessions. New sessions created by the same user past the session limit delete the oldest session.
+
+You can change the session limit in the **Security** tab of the Auth Service in your Appwrite Console. The default session limit is 10 with a maximum configurable limit of 100.
+
+# Permissions {% #permissions %}
+
+Security is very important to protect users' data and privacy.
+Appwrite uses a [permissions model](/docs/advanced/platform/permissions) coupled with user sessions to ensure users need correct permissions to access resources.
+With all Appwrite services, including databases and storage, access is granted at the collection, bucket, document, or file level.
+These permissions are enforced for client SDKs and server SDKs when using JWT, but are ignored when using a server SDK with an API key.
+
+# Mock phone numbers {% #mock-phone-numbers %}
+
+Creating and using mock phone numbers allows users to test SMS authentication without needing an actual phone number. This can be useful for testing edge cases where a user doesn't have a phone number but needs to sign in to your application using SMS.
+
+To create a mock phone number, navigate to **Auth** > **Security** > Mock Phone Numbers. After defining a mock phone number, you need to define a specific OTP code that will be used for SMS sign-in instead of the SMS secret code sent to a real phone number.
