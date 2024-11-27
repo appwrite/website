@@ -6,6 +6,7 @@
     import MainFooter from '../../lib/components/MainFooter.svelte';
     import { socials } from '$lib/constants';
     import GradientBackground from './bg.png';
+    import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
 
     let personName = '';
     let personEmail = '';
@@ -22,7 +23,7 @@
     async function handleSubmit() {
         error = undefined;
         submitting = true;
-        const response = await fetch('https://growth.appwrite.io/v1/conversations/oss', {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/conversations/oss`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -84,10 +85,10 @@
                             >
                                 {#if submitted}
                                     <section class="flex flex-col gap-5">
-                                        <h1 class="web-display web-u-color-text-primary">
+                                        <h1 class="text-display font-aeonik-pro text-primary">
                                             Thank you for your application
                                         </h1>
-                                        <p class="web-description web-u-padding-block-end-32">
+                                        <p class="text-description web-u-padding-block-end-32">
                                             Your application has been sent. Our team will try to get
                                             back to you as soon as possible.
                                         </p>
@@ -100,10 +101,10 @@
                                     </section>
                                 {:else}
                                     <section class="flex flex-col gap-5">
-                                        <h1 class="web-display web-u-color-text-primary">
+                                        <h1 class="text-display font-aeonik-pro text-primary">
                                             OSS program
                                         </h1>
-                                        <p class="web-description web-u-padding-block-end-40">
+                                        <p class="text-description web-u-padding-block-end-40">
                                             Apply to the OSS Program by filling out this form. Our
                                             team will reach out to you to confirm your application
                                             was accepted.
@@ -113,7 +114,7 @@
                                 <section
                                     class="web-u-padding-block-start-40 web-u-sep-block-start flex flex-col gap-3"
                                 >
-                                    <h2 class="web-label web-u-color-text-primary">Follow us</h2>
+                                    <h2 class="text-label text-primary">Follow us</h2>
                                     <ul class="flex gap-2">
                                         {#each socials as social}
                                             <li>
@@ -231,7 +232,7 @@
                                 <div
                                     class="web-u-flex-vertical-reverse-mobile flex justify-between gap-4"
                                 >
-                                    <p class="web-caption-400 web-u-max-width-380">
+                                    <p class="text-caption web-u-max-width-380">
                                         {#if error}
                                             {error}
                                         {/if}

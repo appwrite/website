@@ -1,11 +1,6 @@
 <script lang="ts" context="module">
     import { writable } from 'svelte/store';
 
-    export type NavLink = {
-        label: string;
-        href: string;
-        showBadge?: boolean;
-    };
     export const isHeaderHidden = writable(false);
     export const isMobileNavOpen = writable(false);
     const initialized = writable(false);
@@ -14,17 +9,20 @@
 <script lang="ts">
     import { browser } from '$app/environment';
     import { MobileNav, IsLoggedIn } from '$lib/components';
-    import { BANNER_KEY, GITHUB_STARS } from '$lib/constants';
+    import { BANNER_KEY, GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';
     import { hasNewChangelog } from '$routes/changelog/utils';
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
     import { page } from '$app/stores';
-    import { classNames } from '$lib/utils/classnames';
+    import ProductsSubmenu from '$lib/components/ProductsSubmenu.svelte';
+    import ProductsMobileSubmenu from '$lib/components/ProductsMobileSubmenu.svelte';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
     import InitBanner from '$lib/components/InitBanner.svelte';
+    import { trackEvent } from '$lib/actions/analytics';
+    import MainNav, { type NavLink } from '$lib/components/MainNav.svelte';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -101,6 +99,11 @@
 
     let navLinks: NavLink[] = [
         {
+            label: 'Products',
+            submenu: ProductsSubmenu,
+            mobileSubmenu: ProductsMobileSubmenu
+        },
+        {
             label: 'Docs',
             href: '/docs'
         },
@@ -141,6 +144,19 @@
 
         return $scrollInfo.deltaDirChange < 200;
     })();
+
+    function updateSideNav() {
+        if (browser) {
+            const integrationsSide = document.getElementById('integrations-side');
+            if (integrationsSide) {
+                $isHeaderHidden
+                    ? integrationsSide.classList.remove('menu-visible')
+                    : integrationsSide.classList.add('menu-visible');
+            }
+        }
+    }
+
+    $: $isHeaderHidden, updateSideNav();
 </script>
 
 <div class="relative">
@@ -197,9 +213,9 @@
         {:else}
             <AnnouncementBanner>
                 <a href="/discord" target="_blank" rel="noopener noreferrer">
-                    <span class="web-caption-500">We are having lots of fun on</span>
+                    <span class="text-caption font-medium">We are having lots of fun on</span>
                     <span class="web-icon-discord" aria-hidden="true" />
-                    <span class="web-caption-500">Discord. Come and join us!</span>
+                    <span class="text-caption font-medium">Discord. Come and join us!</span>
                 </a>
             </AnnouncementBanner>
         {/if}
@@ -225,34 +241,19 @@
                         width="130"
                     />
                 </a>
-                <nav class="web-main-header-nav" aria-label="Main">
-                    <ul class="web-main-header-nav-list">
-                        {#each navLinks as navLink}
-                            <li class="web-main-header-nav-item text-primary hover:text-accent">
-                                <a
-                                    class={classNames(
-                                        'data-[badge]:after:animate-scale-in data-[badge]:relative data-[badge]:after:absolute data-[badge]:after:size-1.5 data-[badge]:after:translate-full data-[badge]:after:rounded-full'
-                                    )}
-                                    href={navLink.href}
-                                    data-initialized={$initialized ? '' : undefined}
-                                    data-badge={navLink.showBadge ? '' : undefined}
-                                    >{navLink.label}
-                                </a>
-                            </li>
-                        {/each}
-                    </ul>
-                </nav>
+                <MainNav initialized={$initialized} links={navLinks} />
             </div>
             <div class="web-main-header-end">
                 <a
-                    href="https://github.com/appwrite/appwrite/stargazers"
+                    href={GITHUB_REPO_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
                     class="web-button is-text web-u-inline-width-100-percent-mobile"
+                    on:click={() => trackEvent('Star on GitHub in header')}
                 >
                     <span class="web-icon-star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>
-                    <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span>
+                    <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
                 </a>
                 <IsLoggedIn />
             </div>
@@ -261,7 +262,7 @@
     <MobileNav bind:open={$isMobileNavOpen} links={navLinks} />
 
     <main
-        class="web-main-section"
+        class="space-y-6"
         class:web-u-hide-mobile={$isMobileNavOpen}
         id={omitMainId ? undefined : 'main'}
     >
@@ -286,26 +287,5 @@
 
     .is-special-padding {
         padding-inline: clamp(1.25rem, 4vw, 120rem);
-    }
-
-    [data-badge] {
-        position: relative;
-
-        &::after {
-            content: '';
-            position: absolute;
-            background-color: hsl(var(--web-color-accent));
-            border-radius: 100%;
-            width: 0.375rem;
-            height: 0.375rem;
-
-            inset-block-start: -2px;
-            inset-inline-end: -4px;
-            translate: 100%;
-        }
-
-        &:not([data-initialized])::after {
-            animation: scale-in 0.2s ease-out;
-        }
     }
 </style>

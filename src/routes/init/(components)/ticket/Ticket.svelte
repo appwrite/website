@@ -131,11 +131,11 @@
 <div class="wrapper">
     <div class="ticket" use:onMouse style={styles}>
         <div class="lockup">
-            <p class="web-title web-u-color-text-primary">
+            <p class="text-title font-aeonik-pro text-primary">
                 {name?.trim() || '-'}
             </p>
 
-            <p class="web-label">{title}</p>
+            <p class="text-label">{title}</p>
 
             <div class="logo" style:width="75%">
                 {#if disableEffects}
@@ -178,7 +178,7 @@
 </div>
 
 <style lang="scss">
-    @use '$scss/abstract' as *;
+    @use '$scss/abstract/functions' as f;
     $base-width: 22;
 
     .wrapper {
@@ -231,7 +231,7 @@
         grid-template-columns: repeat(12, minmax(0, 1fr));
         gap: 4px;
         overflow: hidden;
-        border-radius: pxToRem(16);
+        border-radius: f.pxToRem(16);
         aspect-ratio: 2 / 1;
         animation: fade 1s ease-out;
         transition: transform 100ms;
@@ -245,7 +245,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border-radius: pxToRem(8);
+            border-radius: f.pxToRem(8);
             line-height: 1;
             position: relative;
             overflow: hidden;
@@ -270,7 +270,7 @@
                 justify-content: space-between;
                 width: fit-content;
                 gap: 4px;
-                padding: pxToRem(24) 0;
+                padding: f.pxToRem(24) 0;
                 left: 80%;
 
                 span {
@@ -288,17 +288,17 @@
                 --delay: 700ms;
                 display: flex;
                 flex-direction: column;
-                gap: pxToRem(4);
+                gap: f.pxToRem(4);
                 width: 60%;
-                margin: pxToRem(16);
-                border-radius: pxToRem(16);
+                margin: f.pxToRem(16);
+                border-radius: f.pxToRem(16);
 
                 &[data-remove-delay] {
                     --delay: 0ms;
                 }
 
                 .row {
-                    gap: pxToRem(4);
+                    gap: f.pxToRem(4);
                     display: flex;
 
                     div {
@@ -307,13 +307,13 @@
                         height: var(--size);
                         flex-shrink: 0;
 
-                        @media screen and (min-width: 768px) {
-                            --size: 8px;
-                        }
-
                         border-radius: calc(var(--size) / 4);
                         animation: fade-in 500ms ease calc(calc(75ms * var(--index)) + var(--delay))
                             forwards;
+
+                        @media screen and (min-width: 768px) {
+                            --size: 8px;
+                        }
 
                         &[data-level] {
                             --bg-color: var(--web-color-accent);
@@ -358,12 +358,12 @@
             grid-column: span 9 / span 9;
             height: 100%;
             background: #000;
-            padding: pxToRem(20);
+            padding: f.pxToRem(20);
             position: relative;
-            border-radius: pxToRem(16);
+            border-radius: f.pxToRem(16);
             overflow: hidden;
 
-            .web-label {
+            .text-label {
                 position: absolute;
                 font-size: clamp(12px, 1vw, 16px);
             }
@@ -384,9 +384,5 @@
                 }
             }
         }
-    }
-    .web-title {
-        font-size: clamp(20px, 1vw, 24px);
-        line-height: 1;
     }
 </style>

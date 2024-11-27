@@ -7,14 +7,14 @@ featured: false
 isPartner: true
 isNew: true
 cover: /images/integrations/logging-raygun/cover.png
-category: Logging
-product: 
+category: logging
+product:
     avatar: '/images/integrations/avatars/raygun.png'
     vendor: Raygun
     description: 'Raygun is an application performance monitoring (APM) and error tracking tool designed for software developers to identify and resolve issues in their applications quickly. It provides real-time insights into software performance, error diagnostics, and user experience, helping teams to detect, diagnose, and fix errors faster. With features like crash reporting, real user monitoring, and deployment tracking, Raygun helps ensure the stability and efficiency of applications.'
-platform: 
+platform:
     - 'Self-hosted'
-images: 
+images:
     - /images/integrations/logging-raygun/cover.png
     - /images/integrations/logging-raygun/api-key.png
     - /images/integrations/logging-raygun/crash-reporting.png
@@ -57,7 +57,7 @@ docker compose exec appwrite vars
 
 ## Step 3: Test the provider
 
-Once the Sentry provider is configured, run the following command in your terminal:
+Once the Raygun provider is configured, run the following command in your terminal:
 
 ```bash
 docker compose exec appwrite ssl --domain="wrongdomain.com"

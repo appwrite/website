@@ -5,11 +5,11 @@
 
 <li class="collapsible-item">
     <details class="collapsible-wrapper group" {open}>
-        <summary class="collapsible-button flex items-center justify-between cursor-pointer">
+        <summary
+            class="collapsible-button flex cursor-pointer list-none appearance-none items-center justify-between marker:hidden [&::-webkit-details-marker]:hidden"
+        >
             <span class="text">{title}</span>
-            <div
-                class="icon web-u-color-text-primary group-[&[open]]:rotate-180 transition-transform"
-            >
+            <div class="icon text-primary transition-transform group-[&[open]]:rotate-180">
                 <span class="icon-cheveron-down" aria-hidden="true" />
             </div>
         </summary>

@@ -1,4 +1,5 @@
 import { base } from '$app/paths';
+
 export type CategoryData = {
     name: string;
     description: string;
@@ -28,6 +29,7 @@ export type PostsData = {
     href: string;
     slug: string;
     featured?: boolean;
+    unlisted?: boolean;
     callToAction: {
         heading?: string;
         label?: string;
@@ -66,6 +68,7 @@ export const posts = Object.entries(postsGlob)
             category: frontmatter.category,
             href: `${base}/blog/post/${postName}`,
             slug,
+            unlisted: frontmatter.unlisted,
             draft: frontmatter.draft
         };
     })
@@ -103,9 +106,16 @@ export const categories = Object.values(categoriesGlob).map((categoryList) => {
     };
 });
 
-export const getAllBlogEntriesWithAuthors = () => {
+export const normalizeCategory = (str: string) => str?.replace(/\s+/g, '-').toLowerCase();
+
+export const getBlogEntries = () => {
+    const filteredCategories = categories.filter((category) =>
+        posts.some((post) => normalizeCategory(post.category) === normalizeCategory(category.name))
+    );
+
     return {
-        posts,
-        authors
+        authors,
+        filteredCategories,
+        posts: posts.filter((post) => !post.unlisted)
     };
 };

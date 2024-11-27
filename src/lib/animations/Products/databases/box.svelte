@@ -8,8 +8,8 @@
 
 <div class="pseudo-table">
     <div class="header">
-        <span class="web-eyebrow">Document ID</span>
-        <span class="web-eyebrow">Task</span>
+        <span class="text-micro uppercase">Document ID</span>
+        <span class="text-micro uppercase">Task</span>
     </div>
     {#each $state.tasks.slice(0, $state.tableSlice) as task (task.id)}
         <div class="row" transition:slide={{ duration: 150 }} animate:flip={{ duration: 150 }}>

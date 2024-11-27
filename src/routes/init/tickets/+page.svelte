@@ -2,8 +2,7 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
-    import { Ticket } from '../(components)/ticket';
-    import { getMockContributions, loginGithub } from '../helpers';
+    import { loginGithub } from '../helpers';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
     import TicketScroll from '../(components)/TicketScroll.svelte';
 
@@ -69,13 +68,11 @@
         <div class="signup">
             <div class="info">
                 <hgroup>
-                    <h1 class="web-display">
+                    <h1 class="text-display font-aeonik-pro">
                         <span style:font-weight="500">init</span>
                         launches on August 19th
                     </h1>
-                    <p class="web-label web-u-color-text-primary">
-                        Register today and claim your Init ticket
-                    </p>
+                    <p class="text-label text-primary">Register today and claim your Init ticket</p>
                 </hgroup>
                 <div class="buttons">
                     <button class="web-button" on:click={loginGithub}>
@@ -84,10 +81,10 @@
                     </button>
                 </div>
                 <p class="privacy">
-                    By registering, you agree to our <a href="/terms" class="web-link is-inline"
+                    By registering, you agree to our <a href="/terms" class="web-link underline"
                         >Terms and Conditions</a
                     >
-                    and <a href="/privacy" class="web-link is-inline">Privacy Policy</a>
+                    and <a href="/privacy" class="web-link underline">Privacy Policy</a>
                 </p>
             </div>
             <div class="shadow"></div>

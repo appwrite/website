@@ -28,7 +28,7 @@
             <div>Copyright © {year} Appwrite</div>
 
             <iframe
-                class="status max-w-[230px]"
+                class="status w-fit max-w-[230px]"
                 title="Appwrite Status"
                 src="https://status.appwrite.online/badge?theme=dark"
                 height="35"
@@ -66,7 +66,7 @@
             <div class="web-main-footer-grid-1-column-2">
                 <ThemeSelect />
             </div>
-            <ul class="web-main-footer-grid-1-column-3 web-main-footer-links items-center">
+            <ul class="web-main-footer-grid-1-column-3 web-main-footer-links items-start">
                 <li>
                     <a href="/discord" target="_blank" rel="noopener noreferrer">Support</a>
                 </li>

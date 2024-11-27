@@ -1,21 +1,28 @@
 <script lang="ts">
     import { page } from '$app/stores';
     import { Main } from '$lib/layouts';
-    import { MainFooter, FooterNav, Article } from '$lib/components';
+    import { Article, FooterNav, MainFooter } from '$lib/components';
     import { TITLE_SUFFIX } from '$routes/titles.js';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { onMount, tick } from 'svelte';
-    import { beforeNavigate } from '$app/navigation';
+    import { beforeNavigate, goto } from '$app/navigation';
+    import { createDebounce } from '$lib/utils/debounce';
 
     export let data;
 
     const featured = data.featured;
+    const categories = data.filteredCategories.sort((a, b) => a.name.localeCompare(b.name));
 
     $: isFirstPage = data.currentPage === 1;
 
     $: isLastPage = data.currentPage === data.totalPages;
 
     $: currentPageRange = data.navigation || [];
+
+    let query = '';
+    let isEnd = false;
+    let isStart = true;
+    let categoriesElement: HTMLElement;
 
     let articlesHeader: HTMLElement;
 
@@ -33,6 +40,69 @@
             }
         });
     });
+
+    let selectedCategory = $page.url.searchParams.get('category') ?? 'Latest';
+
+    const handleSearch = async () => {
+        const searchQuery = query.toLowerCase();
+
+        /**
+         * Navigate to the first page on search/filter to ensure consistent
+         * navigation experience when changing categories or search queries.
+         */
+        const url = new URL('/blog', $page.url);
+
+        searchQuery
+            ? url.searchParams.set('search', searchQuery)
+            : url.searchParams.delete('search');
+        selectedCategory && selectedCategory !== 'Latest'
+            ? url.searchParams.set('category', selectedCategory)
+            : url.searchParams.delete('category');
+
+        await goto(url.toString(), {
+            noScroll: true,
+            keepFocus: true
+        });
+    };
+
+    $: navigationLink = (pageNumber: number): string => {
+        const currentUrl = $page.url;
+        const url = new URL(`/blog/${pageNumber}`, currentUrl);
+
+        if (currentUrl.search) {
+            url.search = currentUrl.search;
+        }
+
+        return url.toString();
+    };
+
+    const { debounce, reset } = createDebounce();
+
+    const search = (node: HTMLInputElement) => {
+        const inputHandler = () => debounce(() => handleSearch());
+        const keydownHandler = (event: KeyboardEvent) => {
+            if (event.key === 'Enter') {
+                reset();
+                handleSearch();
+            }
+        };
+
+        node.addEventListener('input', inputHandler);
+        node.addEventListener('keydown', keydownHandler);
+
+        return {
+            destroy() {
+                node.removeEventListener('input', inputHandler);
+                node.removeEventListener('keydown', keydownHandler);
+            }
+        };
+    };
+
+    function handleScroll() {
+        const { scrollLeft, offsetWidth, scrollWidth } = categoriesElement;
+        isStart = scrollLeft <= 0;
+        isEnd = Math.ceil(scrollLeft + offsetWidth) >= scrollWidth;
+    }
 
     const title = 'Blog' + TITLE_SUFFIX;
     const description =
@@ -119,7 +189,7 @@
 
             <div class="web-big-padding-section-level-2 relative">
                 <div class="container">
-                    <h1 class="web-display web-u-color-text-primary">Blog</h1>
+                    <h1 class="text-display font-aeonik-pro text-primary">Blog</h1>
                     {#if featured}
                         {@const author = data.authors.find(
                             (author) => author.slug === featured.author
@@ -135,16 +205,16 @@
                             </a>
                             <div class="web-feature-article-content">
                                 <header class="web-feature-article-header">
-                                    <ul class="web-metadata web-caption-400 web-is-only-mobile">
+                                    <ul class="web-metadata text-caption web-is-only-mobile">
                                         <li>{featured.timeToRead} min</li>
                                     </ul>
                                     <a href={featured.href}>
-                                        <h2 class="web-title web-u-color-text-primary">
+                                        <h2 class="text-title font-aeonik-pro text-primary">
                                             {featured.title}
                                         </h2>
                                     </a>
                                 </header>
-                                <p class="web-sub-body-400">
+                                <p class="text-sub-body">
                                     {featured.description}
                                 </p>
                                 <div class="web-author">
@@ -158,13 +228,11 @@
                                             height="24"
                                         />
                                         <div class="web-author-info">
-                                            <a href={author?.href} class="web-sub-body-400 web-link"
+                                            <a href={author?.href} class="text-sub-body web-link"
                                                 >{author?.name}</a
                                             >
-                                            <p class="web-caption-400 hidden">{author?.bio}</p>
-                                            <ul
-                                                class="web-metadata web-caption-400 web-is-not-mobile"
-                                            >
+                                            <p class="text-caption hidden">{author?.bio}</p>
+                                            <ul class="web-metadata text-caption web-is-not-mobile">
                                                 <li>{featured.timeToRead} min</li>
                                             </ul>
                                         </div>
@@ -179,52 +247,132 @@
                 </div>
             </div>
         </div>
-        <div class="pt-10">
-            <div class="web-big-padding-section-level-2">
-                <div class="web-container">
-                    <h2
-                        id="title"
-                        class="web-title web-u-color-text-primary"
-                        bind:this={articlesHeader}
-                    >
-                        Articles
-                    </h2>
 
-                    <div class="mt-12">
-                        <ul class="web-grid-articles">
-                            {#each data.posts as post (post.slug)}
-                                {@const author = data.authors.find(
-                                    (author) => author.slug === post.author
-                                )}
-                                {#if author && !post.draft}
-                                    <Article
-                                        title={post.title}
-                                        href={post.href}
-                                        cover={post.cover}
-                                        date={post.date}
-                                        timeToRead={post.timeToRead}
-                                        avatar={author.avatar}
-                                        author={author.name}
-                                    />
-                                {/if}
-                            {/each}
-                        </ul>
+        <div class="pt-20">
+            <div class="web-container">
+                <h2
+                    id="title"
+                    class="text-title font-aeonik-pro text-primary"
+                    bind:this={articlesHeader}
+                >
+                    Articles
+                </h2>
+
+                <div class="pt-4">
+                    <div class="search-and-categories flex items-center gap-8 md:gap-[40px]">
+                        <div
+                            class="categories-wrapper"
+                            data-state={isStart ? 'start' : isEnd ? 'end' : 'middle'}
+                        >
+                            <ul
+                                class="categories flex gap-2 overflow-x-auto"
+                                on:scroll={handleScroll}
+                                bind:this={categoriesElement}
+                            >
+                                <li class="flex items-center">
+                                    <button
+                                        class="web-interactive-tag web-caption-400 cursor-pointer"
+                                        class:is-selected={selectedCategory === 'Latest'}
+                                        on:click={() => {
+                                            selectedCategory = 'Latest';
+                                            handleSearch();
+                                        }}
+                                    >
+                                        Latest
+                                    </button>
+                                </li>
+
+                                {#each categories as category}
+                                    <li class="flex items-center">
+                                        <button
+                                            class="web-interactive-tag web-caption-400 cursor-pointer"
+                                            class:is-selected={selectedCategory === category.name}
+                                            on:click={() => {
+                                                selectedCategory = category.name;
+                                                handleSearch();
+                                            }}
+                                        >
+                                            {category.name}
+                                        </button>
+                                    </li>
+                                {/each}
+                            </ul>
+                        </div>
+
+                        <div
+                            class="search-bar web-input-text-search-wrapper ml-auto w-full max-w-[350px]"
+                        >
+                            <span
+                                class="web-icon-search z-[5]"
+                                aria-hidden="true"
+                                style="inset-block-start: 0.65rem;"
+                            />
+                            <input
+                                class="web-input-button relative z-1 w-full"
+                                type="text"
+                                id="search"
+                                placeholder="Search"
+                                use:search
+                                bind:value={query}
+                                data-hit="-1"
+                                style="padding-inline-start: 2.5rem !important"
+                            />
+                        </div>
                     </div>
+                </div>
 
+                <div class="mt-12">
+                    <ul class:web-grid-articles={data.posts.length > 0}>
+                        {#each data.posts as post (post.slug)}
+                            {@const author = data.authors.find(
+                                (author) => author.slug === post.author
+                            )}
+                            {#if author && !post.draft}
+                                <Article
+                                    title={post.title}
+                                    href={post.href}
+                                    cover={post.cover}
+                                    date={post.date}
+                                    timeToRead={post.timeToRead}
+                                    avatar={author.avatar}
+                                    author={author.name}
+                                />
+                            {/if}
+                        {:else}
+                            <div class="w-full p-8 flex flex-col gap-8 items-center">
+                                <p class="web-main-body-500">
+                                    No results found for "{query ? query : selectedCategory}"
+                                </p>
+
+                                <button
+                                    class="web-button is-secondary"
+                                    on:click={() => {
+                                        query = '';
+                                        selectedCategory = 'Latest';
+                                        handleSearch();
+                                    }}
+                                    >Clear search
+                                </button>
+                            </div>
+                        {/each}
+                    </ul>
+                </div>
+
+                {#if data.posts.length > 0}
                     <div class="mt-12">
                         <ul class="flex items-center gap-1" style="justify-content: center">
                             {#if data.currentPage > 1}
                                 <a
                                     data-sveltekit-noscroll
-                                    class="flex navigation-button"
-                                    href="/blog/{data.currentPage - 1}"
+                                    class="navigation-button flex"
+                                    href={navigationLink(data.currentPage - 1)}
                                     class:navigation-button-active={!isFirstPage}
                                 >
                                     <span class="web-icon-chevron-left" style="font-size: 20px" />
                                     Previous
                                 </a>
                             {:else}
-                                <span class="flex navigation-button">
+                                <span class="navigation-button flex">
                                     <span class="web-icon-chevron-left" style="font-size: 20px" />
                                     Previous
                                 </span>
@@ -235,7 +383,7 @@
                                     <span class="pagination-ellipsis">...</span>
                                 {:else}
                                     <a
-                                        href="/blog/{page}"
+                                        href={navigationLink(page)}
                                         data-sveltekit-noscroll
                                         class="pagination-number"
                                         class:pagination-number-selected={data.currentPage === page}
@@ -248,28 +396,28 @@
                             {#if data.currentPage < data.totalPages}
                                 <a
                                     data-sveltekit-noscroll
-                                    class="flex navigation-button"
-                                    href="/blog/{data.currentPage + 1}"
+                                    class="navigation-button flex"
+                                    href={navigationLink(data.currentPage + 1)}
                                     class:navigation-button-active={!isLastPage}
                                 >
                                     Next
                                     <span class="web-icon-chevron-right" style="font-size: 20px" />
                                 </a>
                             {:else}
-                                <span class="flex navigation-button">
+                                <span class="navigation-button flex">
                                     Next
                                     <span class="web-icon-chevron-right" style="font-size: 20px" />
                                 </span>
                             {/if}
                         </ul>
                     </div>
-                </div>
+                {/if}
             </div>
-            <div class="pt-[7.5rem]">
-                <div class="container">
-                    <FooterNav />
-                    <MainFooter />
-                </div>
+        </div>
+        <div>
+            <div class="container">
+                <FooterNav />
+                <MainFooter />
             </div>
         </div>
     </div>
@@ -317,5 +465,143 @@
         opacity: 1;
         cursor: pointer;
         pointer-events: initial;
+    }
+
+    .web-interactive-tag {
+        white-space: nowrap;
+    }
+
+    .is-selected {
+        color: hsl(var(--web-color-black));
+        background: hsl(var(--web-color-white));
+    }
+
+    .overflow-x-auto {
+        scrollbar-width: none;
+    }
+
+    .overflow-x-auto::-webkit-scrollbar {
+        display: none;
+    }
+
+    .categories-wrapper {
+        position: relative;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 60px;
+            height: 100%;
+            transition: ease 250ms;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        &::before {
+            left: 0;
+            background: linear-gradient(
+                to right,
+                hsl(var(--web-color-background-docs)),
+                transparent
+            );
+        }
+
+        &[data-state='start']::before {
+            opacity: 0;
+        }
+
+        &::after {
+            right: 0;
+            background: linear-gradient(
+                to left,
+                hsl(var(--web-color-background-docs)),
+                transparent
+            );
+        }
+
+        &[data-state='end']::after {
+            opacity: 0;
+        }
+    }
+
+    .search-and-categories {
+        display: flex;
+        align-items: center;
+    }
+
+    .categories-wrapper {
+        min-width: 0;
+        flex: 1 0 auto;
+        max-width: 66%;
+    }
+
+    .categories {
+        margin-inline-end: 6px;
+    }
+
+    .search-bar {
+        min-width: 0;
+        flex: 1 1 auto;
+        max-width: 33%;
+        margin-inline-start: 2px;
+    }
+
+    @media (max-width: 945px) {
+        .categories-wrapper,
+        .search-bar {
+            max-width: 50%;
+        }
+
+        .categories {
+            margin-inline-end: 12px;
+        }
+
+        .search-bar {
+            margin-inline-start: -1.5rem;
+        }
+    }
+
+    @media (min-width: 946px) {
+        .search-bar {
+            margin-inline-start: -0.75rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .search-bar {
+            margin-inline-start: unset;
+        }
+    }
+
+    .web-input-button {
+        max-height: 40px;
+    }
+
+    @media (max-width: 768px) {
+        .search-and-categories {
+            display: flex;
+            flex-wrap: wrap;
+            padding-block-start: 2rem;
+            flex-direction: column-reverse;
+        }
+
+        .categories-wrapper {
+            max-width: 99%;
+        }
+
+        .categories {
+            margin-inline-end: unset;
+        }
+
+        .search-and-categories > .search-bar {
+            max-width: 100%;
+            margin-inline-start: unset;
+        }
+
+        .search-and-categories > .web-input-text-search-wrapper {
+            min-inline-size: unset;
+        }
     }
 </style>

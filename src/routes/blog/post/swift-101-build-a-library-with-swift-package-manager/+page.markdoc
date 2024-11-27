@@ -22,14 +22,14 @@ So, what is a Swift package? A package is a collection of Swift source code file
 
 ## Anatomy of a package
 
-- **Products** define the libraries and executables produced by a package. A library is simply a collection of files for use as a dependency by other Swift code. An executable is a package that can be run, such as a web server.
-- **Dependencies** are other Swift Packages you want to use code from within your package.
-- **Targets** are what defines the module(s) that a package contains and that other packages can import. Targets define their own dependencies and can depend on other targets in the package or products from packages that this package depends on.
+- **Products** define the libraries and executables produced by a package. A library is simply a collection of files for use as a dependency by other Swift code. An executable is a package that can be run, such as a web server.
+- **Dependencies** are other Swift Packages you want to use code from within your package.
+- **Targets** define the modules within a package. Each target specifies the code that makes up the module, and any dependencies. The dependencies can be other targets within the same package, or products from external packages.
 
 ## Creating a Swift package
 
 > This tutorial assumes you already have Swift installed. You can check by running swift-help from your terminal.
-> 
+>
 
 Creating a Swift Package from the command line is easy and can be completed with one simple command from the directory in which you want to create your package. For this example, we'll start with a directory named `FooPackage`.
 
@@ -167,10 +167,10 @@ $ swift package resolve
 This will update the `Package.resolved` to contain the version metadata about the `Appwrite` module we just added.
 
 > **What's going on here?**
-> 
-> 
+>
+>
 > Swift Package Manager uses a lockfile system similar to `package.lock` for NPM and `composer.lock` for Composer. This comes in the form of a file called `Package.resolved`, which contains metadata about the packages dependencies versions, as well as their transitive dependencies. When you run `swift build` and the dependencies are fetched, the versions from the `Package.resolved` file will be used if found.
-> 
+>
 
 Once resolved, we can build our package with `swift build` again. This time we'll see the `sdk-for-swift` repository pulled into the build checkouts, as well as built with the rest of the library.
 

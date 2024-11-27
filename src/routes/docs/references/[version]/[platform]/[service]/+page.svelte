@@ -106,13 +106,13 @@
     <article class="web-article contents">
         <header class="web-article-header">
             <div class="web-article-header-start">
-                <h1 class="web-title">{serviceName}</h1>
+                <h1 class="text-title font-aeonik-pro">{serviceName}</h1>
                 <div class="web-inline-code">{platformType}</div>
             </div>
             <div class="web-article-header-end">
-                <div class="gap-6 flex flex-col md:flex-row web-u-color-text-primary">
+                <div class="text-primary flex flex-col gap-6 md:flex-row">
                     <div class="flex items-center gap-2">
-                        <label class="text-xs web-is-not-mobile" for="platform">Platform</label>
+                        <label class="web-is-not-mobile text-xs" for="platform">Platform</label>
                         <Select
                             --min-width="10rem"
                             id="platform"
@@ -138,7 +138,7 @@
                         />
                     </div>
                     <div class="flex items-center gap-2">
-                        <label class="text-xs web-is-not-mobile" for="version">Version</label>
+                        <label class="web-is-not-mobile text-xs" for="version">Version</label>
 
                         <Select
                             nativeMobile
@@ -162,7 +162,7 @@
                     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                     {@html parse(data.service?.description)}
                 </div>
-                <div class="web-article-content-grid-6-4-column-2 flex flex-col gap-8 j-end">
+                <div class="web-article-content-grid-6-4-column-2 j-end flex flex-col gap-8">
                     <Fence
                         language="text"
                         badge="Base URL"
@@ -176,7 +176,7 @@
                     <div class="web-article-content-grid-6-4-column-2 flex flex-col gap-8">
                         <div class="web-inline-info">
                             <span class="icon-info" aria-hidden="true" />
-                            <h5 class="web-sub-body-500 web-u-color-text-primary">
+                            <h5 class="text-sub-body text-primary font-medium">
                                 No endpoint found for this version and platform
                             </h5>
                             Please switch to a newer version or different platform.
@@ -211,7 +211,7 @@
                         </Accordion>
                     </div>
                     <div class="web-article-content-grid-6-4-column-2 flex flex-col gap-8">
-                        <div class="contents dark">
+                        <div class="dark contents">
                             <div
                                 class="sticky"
                                 style="--inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position);"
@@ -249,9 +249,9 @@
                 </button>
                 <div class="web-references-menu-content">
                     <div
-                        class="web-references-menu-header flex justify-between items-center gap-4 mt-6"
+                        class="web-references-menu-header mt-6 flex items-center justify-between gap-4"
                     >
-                        <h5 class="web-references-menu-title web-eyebrow">On This Page</h5>
+                        <h5 class="web-references-menu-title text-micro uppercase">On This Page</h5>
                         <button class="web-icon-button" id="refClose" on:click={toggleReferences}>
                             <span class="icon-x" aria-hidden="true" />
                         </button>
@@ -261,16 +261,16 @@
                             <li class="web-references-menu-item">
                                 <a
                                     href={`#${method.id}`}
-                                    class="web-references-menu-link web-caption-400"
+                                    class="web-references-menu-link text-caption"
                                     class:is-selected={method.id === selected}>{method.title}</a
                                 >
                             </li>
                         {/each}
                     </ul>
-                    <div class="border-t border-greyscale-900/[0.04] web-u-padding-block-20">
+                    <div class="border-greyscale-900/4 web-u-padding-block-20 border-t">
                         <button class="web-link inline-flex items-center gap-2" use:scrollToTop>
                             <span class="web-icon-arrow-up" aria-hidden="true" />
-                            <span class="web-caption-400">Back to top</span>
+                            <span class="text-caption">Back to top</span>
                         </button>
                     </div>
                 </div>

@@ -14,11 +14,11 @@
             {#if icon}
                 <span class="{icon} web-u-font-size-24" aria-hidden="true" />
             {/if}
-            <h4 class="web-sub-body-500 web-u-color-text-primary">
+            <h4 class="text-sub-body text-primary font-medium">
                 {title}
             </h4>
         </header>
-        <p class="web-sub-body-400 mt-1" style:margin-block="0">
+        <p class="text-sub-body mt-1" style:margin-block="0">
             <slot />
         </p>
     </a>

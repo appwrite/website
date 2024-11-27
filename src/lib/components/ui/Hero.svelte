@@ -5,11 +5,11 @@
 
     type HeroProps = SvelteHTMLElements['div'];
 
-    const hero = cva(['flex', 'gap-8', 'relative'], {
+    const hero = cva(['flex', 'relative'], {
         variants: {
             layout: {
                 vertical: ['flex-col', 'max-w-[600px]'],
-                horizontal: ['flex-col', 'md:flex-row']
+                horizontal: ['flex-col', 'lg:flex-row']
             }
         },
         defaultVariants: {
@@ -17,11 +17,11 @@
         }
     });
 
-    const styles = cva('tracking-[-0.022em] text-white', {
+    const styles = cva('text-white', {
         variants: {
             size: {
-                title: ['text-[5.5rem]', 'leading-[5.5rem]', 'flex-[1.3]'],
-                display: 'text-[4rem] leading-[4.25rem] w-full'
+                title: ['text-headline', 'font-aeonik-pro', 'flex-[1.3]'],
+                display: ['text-display', 'font-aeonik-pro', 'w-full']
             }
         },
         defaultVariants: {
@@ -37,12 +37,12 @@
 </script>
 
 <section class={classNames(hero({ layout }), classes)} {...props}>
-    <h1 class={classNames(styles({ size }), 'font-aeonik-pro')}>
+    <h1 class={classNames(styles({ size }))}>
         <slot name="title" />
     </h1>
     {#if $$slots.description}
-        <div class="flex-[1] self-end">
-            <p class="text-secondary mt-5 text-xl font-medium tracking-[-0.018em]">
+        <div class="flex-1 self-end">
+            <p class="text-secondary text-description mt-6 font-medium">
                 <slot name="description" />
             </p>
             <slot name="cta" />

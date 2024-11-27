@@ -20,6 +20,17 @@ type FilterThreadsArgs = {
     allTags?: boolean;
 };
 
+export function sanitizeContent(rawContent: string, maxLength: number = 200): string {
+    const cleaned = rawContent.replace(
+        /```(?:\w+)?\n([\s\S]*?)```|```([\s\S]*?)```/g,
+        (_, withLang, withoutLang) => {
+            return (withLang || withoutLang).trim();
+        }
+    );
+
+    return cleaned.length > maxLength ? cleaned.slice(0, maxLength) + '...' : cleaned;
+}
+
 export function filterThreads({ q, threads: threadDocs, tags, allTags }: FilterThreadsArgs) {
     const threads = tags
         ? threadDocs.filter((thread) => {
