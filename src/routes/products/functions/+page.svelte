@@ -69,7 +69,6 @@
         <Bento />
         <div class="bg-greyscale-50">
             <Templates />
-            <RegionsMap />
             <Testimonials />
             <OpenSource />
         </div>
