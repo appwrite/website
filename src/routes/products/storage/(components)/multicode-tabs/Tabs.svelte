@@ -7,7 +7,7 @@
 </script>
 
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
     import { createTabs } from '@melt-ui/svelte';
     import { setContext } from 'svelte';
     import { writable } from 'svelte/store';
@@ -31,7 +31,7 @@
         <ul class="flex items-center gap-2" {...$list} use:list>
             {#each $ctx.triggers.entries() as [id, title]}
                 <li
-                    class={classNames(
+                    class={cn(
                         'text-caption rounded-full border border-transparent bg-[#19191C]/4 text-black',
                         {
                             'border-black/8 bg-white': $value === id
