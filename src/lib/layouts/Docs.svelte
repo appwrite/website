@@ -41,7 +41,7 @@
     import { Search, IsLoggedIn } from '$lib/components';
     import { isMac } from '$lib/utils/platform';
     import { getContext, setContext } from 'svelte';
-    import { GITHUB_STARS } from '$lib/constants';
+    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     export let variant: DocsLayoutVariant = 'default';
@@ -101,7 +101,7 @@
         </div>
         <div class="web-mobile-header-end">
             <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button web-is-only-desktop">
-                <span class="web-sub-body-500">Go to Console</span>
+                <span class="text-sub-body font-medium">Go to Console</span>
             </a>
             <button
                 class="web-button is-text"
@@ -167,14 +167,14 @@
             <div class="web-main-header-end">
                 <div class="flex gap-2">
                     <a
-                        href="https://github.com/appwrite/appwrite/stargazers"
+                        href={GITHUB_REPO_LINK}
                         target="_blank"
                         rel="noopener noreferrer"
                         class="web-button is-text"
                     >
                         <span class="web-icon-star" aria-hidden="true" />
                         <span class="text">Star on GitHub</span>
-                        <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span>
+                        <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
                     </a>
                     <IsLoggedIn />
                 </div>

@@ -63,14 +63,14 @@
         <div class="container">
             <div class="web-grid-120-1fr-auto">
                 <header class="web-grid-120-1fr-auto-header">
-                    <h1 class="web-display web-u-color-text-primary">Brand assets</h1>
+                    <h1 class="text-display font-aeonik-pro text-primary">Brand assets</h1>
                     <button
-                        class="web-u-padding-block-20 web-u-color-text-primary web-is-only-mobile
+                        class="web-u-padding-block-20 text-primary web-is-only-mobile
                         web-u-margin-inline-32-negative web-u-sep-block
                        mt-6 flex w-full w-full"
                     >
                         <span class="container flex w-full items-center justify-between">
-                            <span class="web-description">Table of contents</span>
+                            <span class="text-description">Table of contents</span>
                             <span class="icon-menu-alt-4" aria-hidden="true" />
                         </span>
                     </button>
@@ -94,7 +94,7 @@
                         <section id={getSectionId(Section.NAMING)}>
                             <div class="web-flex flex-col gap-2">
                                 <h2
-                                    class="web-title web-u-color-text-primary"
+                                    class="text-title font-aeonik-pro text-primary mb-4"
                                     use:visible={{ top: 48 }}
                                     on:visible={handleVisibility(Section.NAMING)}
                                 >
@@ -111,7 +111,7 @@
                         <section id={getSectionId(Section.LOGOTYPE)}>
                             <div class="web-flex flex-col gap-2">
                                 <h2
-                                    class="web-title web-u-color-text-primary"
+                                    class="text-title font-aeonik-pro text-primary mb-4"
                                     use:visible={{ top: 48 }}
                                     on:visible={handleVisibility(Section.LOGOTYPE)}
                                 >
@@ -122,7 +122,7 @@
                                     identity. Refrain from altering our logo and preferably use our
                                     logo on a neutral background.
                                 </p>
-                                <div class="web-flex flex-col-mobile mt-3 flex flex-wrap gap-8">
+                                <div class="web-flex flex-col-mobile mt-5 flex flex-wrap gap-8">
                                     <div
                                         class="media-wrapper | light |
                                     web-u-flex-basis-300 web-u-bg-color-neutral-100 web-u-min-block-size-320 flex flex-1 items-center justify-center rounded-lg
@@ -195,7 +195,7 @@
                             </div>
                             <section>
                                 <div class="web-flex flex-col gap-2">
-                                    <h3 class="web-label web-u-color-text-primary">
+                                    <h3 class="text-label text-primary mt-3 mb-4">
                                         Co-branding logotypes
                                     </h3>
                                     <p>
@@ -204,7 +204,7 @@
                                         collection of shapes.
                                     </p>
                                     <div
-                                        class="web-u-border-radius-8 web-u-bg-color-neutral-800 web-u-min-block-size-320 mt-3 flex items-center
+                                        class="web-u-border-radius-8 web-u-bg-color-neutral-800 web-u-min-block-size-320 mt-5 flex items-center
                                                 justify-center px-4"
                                     >
                                         <img
@@ -219,7 +219,7 @@
                         <section id={getSectionId(Section.LOGOMARK)}>
                             <div class="web-flex flex-col gap-2">
                                 <h3
-                                    class="web-title web-u-color-text-primary"
+                                    class="text-title font-aeonik-pro text-primary mb-4"
                                     use:visible={{ top: 48 }}
                                     on:visible={handleVisibility(Section.LOGOMARK)}
                                 >
@@ -231,7 +231,7 @@
                                     situations where space constraints make it challenging to
                                     showcase the complete logotype.
                                 </p>
-                                <div class="web-flex flex-col-mobile mt-3 flex flex-wrap gap-8">
+                                <div class="web-flex flex-col-mobile mt-5 flex flex-wrap gap-8">
                                     <div
                                         class="media-wrapper | light |
                                     web-u-flex-basis-300 web-u-border-radius-8 web-u-bg-color-neutral-100 web-u-min-block-size-320 flex flex-1 items-center justify-center
@@ -304,7 +304,7 @@
                             </div>
                             <section id="">
                                 <div class="web-flex flex-col gap-2">
-                                    <h3 class="web-label web-u-color-text-primary">
+                                    <h3 class="text-label text-primary mt-3 mb-4">
                                         Co-branding lockups
                                     </h3>
                                     <p>
@@ -313,7 +313,7 @@
                                         collection of shapes.
                                     </p>
                                     <div
-                                        class="web-u-border-radius-8 web-u-bg-color-neutral-800 web-u-min-block-size-320 mt-3 flex items-center
+                                        class="web-u-border-radius-8 web-u-bg-color-neutral-800 web-u-min-block-size-320 mt-4 flex items-center
                                                 justify-center px-4"
                                     >
                                         <img
@@ -327,7 +327,7 @@
 
                         <section id={getSectionId(Section.COLORS)}>
                             <h2
-                                class="web-title web-u-color-text-primary"
+                                class="text-title font-aeonik-pro text-primary"
                                 use:visible={{ top: 48 }}
                                 on:visible={handleVisibility(Section.COLORS)}
                             >
@@ -335,34 +335,34 @@
                             </h2>
                             <div class="flex flex-wrap gap-8">
                                 <div
-                                    class="media-wrapper | web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-text-color-neutral-900 web-u-bg-color-neutral-50 web-u-media-ratio-1-1
-                                web-u-min-block-size-160 flex-1 flex-col justify-center
+                                    class="media-wrapper | web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-text-color-neutral-900 web-u-bg-color-neutral-50 web-u-min-block-size-160 flex
+                                aspect-square flex-1 flex-col justify-center
                                 gap-2 px-6"
                                 >
-                                    <h3 class="web-label">Light Grey</h3>
-                                    <p class="web-caption-400">#EDEDF0</p>
+                                    <h3 class="text-label">Light Grey</h3>
+                                    <p class="text-caption">#EDEDF0</p>
                                     <div class="buttons | light">
                                         <Copy toCopy="#EDEDF0" />
                                     </div>
                                 </div>
                                 <div
-                                    class="media-wrapper | web-u-sep web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-media-ratio-1-1 web-u-min-block-size-160
-                                web-u-text-color-neutral-50 web-u-bg-color-neutral-900 flex-1 flex-col justify-center
+                                    class="media-wrapper | web-u-sep web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-min-block-size-160 web-u-text-color-neutral-50 web-u-bg-color-neutral-900
+                                flex aspect-square flex-1 flex-col justify-center
                                 gap-2 px-6"
                                 >
-                                    <h3 class="web-label">Dark Grey</h3>
-                                    <p class="web-caption-400">#19191D</p>
+                                    <h3 class="text-label">Dark Grey</h3>
+                                    <p class="text-caption">#19191D</p>
                                     <div class="buttons">
                                         <Copy toCopy="#19191D" />
                                     </div>
                                 </div>
                                 <div
-                                    class="media-wrapper | web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-text-color-neutral-50 web-u-bg-color-primary-500 web-u-aspect-ratio-1-1
-                                web-u-min-block-size-160 flex-1 flex-col justify-center
+                                    class="media-wrapper | web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-text-color-neutral-50 web-u-bg-color-primary-500 web-u-min-block-size-160 flex
+                                aspect-square flex-1 flex-col justify-center
                                 gap-2 px-6"
                                 >
-                                    <h3 class="web-label">Appwrite Pink</h3>
-                                    <p class="web-caption-400">#FD366E</p>
+                                    <h3 class="text-label">Appwrite Pink</h3>
+                                    <p class="text-caption">#FD366E</p>
                                     <div class="buttons">
                                         <Copy toCopy="#FD366E" />
                                     </div>
@@ -373,7 +373,7 @@
                         <section id={getSectionId(Section.VISUALS)}>
                             <div class="web-flex flex-col gap-2">
                                 <h2
-                                    class="web-title web-u-color-text-primary"
+                                    class="text-title font-aeonik-pro text-primary mb-4"
                                     use:visible={{ top: 48 }}
                                     on:visible={handleVisibility(Section.VISUALS)}
                                 >
@@ -383,14 +383,14 @@
                                     Use these product visuals to enhance your articles,
                                     presentations, and content related to Appwrite.
                                 </p>
-                                <div class="mt-3 grid grid-cols-2 gap-8">
+                                <div class="mt-5 grid grid-cols-2 gap-8">
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
                                             src="/assets/visuals/dashboard.png"
                                             alt="Dashboard"
                                         />
-                                        <div class="buttons">
+                                        <div class="buttons visuals">
                                             <a
                                                 class="web-button is-secondary"
                                                 href="/assets/visuals/dashboard.jpg"
@@ -421,7 +421,7 @@
                                             src="/assets/visuals/auth.png"
                                             alt="Appwrite Auth"
                                         />
-                                        <div class="buttons">
+                                        <div class="buttons visuals">
                                             <a
                                                 class="web-button is-secondary"
                                                 href="/assets/visuals/auth.jpg"
@@ -452,7 +452,7 @@
                                             src="/assets/visuals/databases.png"
                                             alt="Appwrite Databases"
                                         />
-                                        <div class="buttons">
+                                        <div class="buttons visuals">
                                             <a
                                                 class="web-button is-secondary"
                                                 href="/assets/visuals/databases.jpg"
@@ -484,7 +484,7 @@
                                             src="/assets/visuals/storage.png"
                                             alt="Appwrite Storage"
                                         />
-                                        <div class="buttons">
+                                        <div class="buttons visuals">
                                             <a
                                                 class="web-button is-secondary"
                                                 href="/assets/visuals/storage.jpg"
@@ -516,7 +516,7 @@
                                             src="/assets/visuals/functions.png"
                                             alt="Appwrite Functions"
                                         />
-                                        <div class="buttons">
+                                        <div class="buttons visuals">
                                             <a
                                                 class="web-button is-secondary"
                                                 href="/assets/visuals/functions.jpg"
@@ -547,7 +547,7 @@
                                             src="/assets/visuals/messaging.png"
                                             alt="Appwrite Messaging"
                                         />
-                                        <div class="buttons">
+                                        <div class="buttons visuals">
                                             <a
                                                 class="web-button is-secondary"
                                                 href="/assets/visuals/messaging.jpg"
@@ -579,7 +579,7 @@
                         <section id={getSectionId(Section.CONTACT)}>
                             <div class="web-flex flex-col gap-2">
                                 <h2
-                                    class="web-title web-u-color-text-primary"
+                                    class="text-title font-aeonik-pro text-primary mb-4"
                                     use:visible={{ top: 48 }}
                                     on:visible={handleVisibility(Section.CONTACT)}
                                 >
@@ -619,6 +619,13 @@
             position: absolute;
             right: 1rem;
             bottom: 1rem;
+
+            &.visuals {
+                justify-content: left;
+                top: auto;
+                position: relative;
+                margin-top: 2rem;
+            }
         }
     }
 </style>

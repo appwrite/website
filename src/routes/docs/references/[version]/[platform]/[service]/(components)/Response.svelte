@@ -12,13 +12,13 @@
                 <li>
                     <article>
                         <header class="flex items-baseline gap-2">
-                            <span class="web-eyebrow web-u-color-text-primary">
+                            <span class="text-micro text-primary uppercase">
                                 {response.code}
                             </span>
-                            <span class="web-caption-400">application/json</span>
+                            <span class="text-caption">application/json</span>
                         </header>
                         {#if response.models.length > 0}
-                            <ul class="web-sub-body-400 mt-4">
+                            <ul class="text-sub-body mt-4">
                                 {#each response.models as model}
                                     <li>
                                         <a

@@ -11,6 +11,7 @@
     import PreFooter from './PreFooter.svelte';
     import TagsDropdown from './TagsDropdown.svelte';
     import { getThreads } from './helpers';
+    import Input from '$lib/components/ui/Input.svelte';
 
     const title = 'Threads' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -113,9 +114,9 @@
 
 <Main>
     <div class="w-big-padding-section">
-        <div class="py-10">
+        <div>
             <div
-                class="web-big-padding-section-level-2 web-u-margin-block-0 web-u-sep-block-end relative overflow-hidden"
+                class="web-big-padding-section-level-2 web-u-margin-block-0 web-u-sep-block-end relative overflow-hidden py-10"
             >
                 <div
                     class="absolute"
@@ -132,7 +133,7 @@
 
                 <div class="container">
                     <h1
-                        class="web-display web-u-color-text-primary web-u-margin-block-80 web-u-padding-block-end-40"
+                        class="text-display font-aeonik-pro text-primary web-u-margin-block-80 web-u-padding-block-end-40"
                     >
                         Threads
                     </h1>
@@ -169,20 +170,22 @@
                                 aria-hidden="true"
                                 style="inset-block-start:0.9rem"
                             />
+
                             <input
-                                class="web-input-button relative z-1"
+                                class="web-input-button relative z-1 !pl-10"
                                 type="text"
                                 id="search"
                                 placeholder="Search for threads"
                                 data-hit="-1"
                                 use:search
                                 bind:value={query}
+                                style:width="100%"
                             />
                         </div>
                     </div>
 
                     {#if threads.length}
-                        <h2 class="web-u-color-text-primary mt-4" aria-live="polite">
+                        <h2 class="text-primary mt-4" aria-live="polite">
                             Found {query.length ? threads.length : '5000+'} results.
                         </h2>
                     {/if}
@@ -193,7 +196,7 @@
                         {:else}
                             <div class="web-card is-normal has-border-gradient empty-card">
                                 <enhanced:img class="img" src="./(assets)/empty-state.png" alt="" />
-                                <span class="web-main-body-500">No support threads found</span>
+                                <span class="text-body font-medium">No support threads found</span>
                                 <button
                                     class="web-button"
                                     on:click={() => {

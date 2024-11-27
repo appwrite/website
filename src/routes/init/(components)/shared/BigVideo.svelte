@@ -18,7 +18,7 @@
 <div class="web-card is-normal has-border-gradient overflow-hidden" style="padding: 0.5rem;">
     <Video {thumbnail} {src}>
         <div class="details">
-            <h3 class="web-label web-u-color-text-primary">
+            <h3 class="text-label text-primary">
                 {title}
             </h3>
             <div class="web-card-link flex items-center">

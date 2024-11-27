@@ -107,13 +107,13 @@
                         <FloatingHead --position="relative" src={avatar} alt={name} size={112} />
                     {/if}
                     <div>
-                        <h1 class="web-title web-u-color-text-primary">{name}</h1>
+                        <h1 class="text-title font-aeonik-pro text-primary">{name}</h1>
                         {#if role}
-                            <div class="web-label mt-2">{role}</div>
+                            <div class="text-label mt-2">{role}</div>
                         {/if}
                     </div>
                     {#if bio}
-                        <p class="web-author-section-info web-description">
+                        <p class="web-author-section-info text-description">
                             {bio}
                         </p>
                     {/if}
@@ -166,7 +166,7 @@
     <div class="py-10">
         <div class="web-big-padding-section-level-2">
             <div class="container">
-                <h2 class="web-title web-u-color-text-primary">Articles</h2>
+                <h2 class="text-title font-aeonik-pro text-primary">Articles</h2>
 
                 <!-- <div class="web-is-only-mobile mt-8">
 					<label class="blockweb-select is-colored" for="articles">
@@ -200,7 +200,7 @@
 									data-orientation="horizontal"
 									data-melt-tabs-trigger=""
 								>
-									<span class="web-main-body-500">Latest</span>
+									<span class="text-body font-medium">Latest</span>
 								</button>
 							</li>
 							<li class="web-secondary-tabs-item">
@@ -214,7 +214,7 @@
 									data-orientation="horizontal"
 									data-melt-tabs-trigger=""
 								>
-									<span class="web-main-body-500">News</span>
+									<span class="text-body font-medium">News</span>
 								</button>
 							</li>
 							<li class="web-secondary-tabs-item">
@@ -228,7 +228,7 @@
 									data-orientation="horizontal"
 									data-melt-tabs-trigger=""
 								>
-									<span class="web-main-body-500">Insights</span>
+									<span class="text-body font-medium">Insights</span>
 								</button>
 							</li>
 							<li class="web-secondary-tabs-item">
@@ -242,7 +242,7 @@
 									data-orientation="horizontal"
 									data-melt-tabs-trigger=""
 								>
-									<span class="web-main-body-500">Tutorials</span>
+									<span class="text-body font-medium">Tutorials</span>
 								</button>
 							</li>
 							<li class="web-secondary-tabs-item">
@@ -256,7 +256,7 @@
 									data-orientation="horizontal"
 									data-melt-tabs-trigger=""
 								>
-									<span class="web-main-body-500">Changelog</span>
+									<span class="text-body font-medium">Changelog</span>
 								</button>
 							</li>
 						</ul> -->
@@ -284,7 +284,7 @@
                 </div>
             </div>
         </div>
-        <div class="pt-[7.5rem] relative overflow-hidden">
+        <div class="relative overflow-hidden pt-[7.5rem]">
             <div class="container">
                 <FooterNav />
                 <MainFooter />

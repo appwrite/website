@@ -10,12 +10,12 @@
     <div class="web-article mx-auto flex max-w-[700px] items-center justify-center py-4">
         <div class="container">
             <div class="web-hero" style="--hero-gap:1.25rem;">
-                <span class="web-badges web-eyebrow !text-white">{$page.status}</span>
-                <h1 class="web-headline web-u-color-text-primary">
+                <span class="web-badges text-micro uppercase !text-white">{$page.status}</span>
+                <h1 class="text-headline font-aeonik-pro text-primary">
                     {$page.error?.message ?? 'An error has occured'}
                 </h1>
                 {#if $page.status === 404}
-                    <p class="web-description">
+                    <p class="text-description">
                         Sorry, it seems that the page you are looking for does not exist. Feel free
                         to use our navigation menu or the button below to explore more of Appwrite's
                         documentation.

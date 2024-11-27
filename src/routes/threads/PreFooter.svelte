@@ -1,11 +1,11 @@
 <div class="wrapper">
     <img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg -z-1" />
     <div class="container">
-        <h2 class="web-display web-u-color-text-primary">Need support?</h2>
+        <h2 class="text-display font-aeonik-pro text-primary">Need support?</h2>
         <div class="cards">
             <div class="cardy">
-                <h3 class="web-label web-u-color-text-primary">Join our Discord</h3>
-                <p class="web-main-body-400 web-u-color-text-primary mt-4">
+                <h3 class="text-label text-primary">Join our Discord</h3>
+                <p class="text-body text-primary mt-4">
                     Get community support by joining our Discord server.
                 </p>
                 <a class="web-button mt-6" href="https://appwrite.io/discord">
@@ -14,8 +14,8 @@
                 </a>
             </div>
             <div class="cardy">
-                <h3 class="web-label web-u-color-text-primary">Get premium support</h3>
-                <p class="web-main-body-400 web-u-color-text-primary mt-4">
+                <h3 class="text-label text-primary">Get premium support</h3>
+                <p class="text-body text-primary mt-4">
                     Join Appwrite Pro and get email support from our team.
                 </p>
                 <a class="web-button mt-6" href="https://appwrite.io/pricing">

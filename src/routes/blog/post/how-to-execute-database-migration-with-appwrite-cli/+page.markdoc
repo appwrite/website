@@ -6,7 +6,7 @@ date: 2024-08-26
 cover: /images/blog/how-to-migrate-database-with-cli/cover.png
 timeToRead: 5
 author: ebenezer-don
-category: engineering
+category: product
 ---
 Database migration is a critical task in the lifecycle of any application. It involves making schema changes while ensuring that data remains intact, often to accommodate new features, improve performance, or ensure scalability. With the release of the new Appwrite CLI, the process of planning and executing database migrations has become significantly easier. The new CLI features allow you to manage your database schemas more efficiently, ensuring smooth transitions and minimal downtime.
 

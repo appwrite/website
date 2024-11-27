@@ -24,9 +24,17 @@ export default defineConfig({
             }
         }),
         ViteImageOptimizer({
-            includePublic: true
+            cache: true,
+            cacheLocation: '.cache'
         })
     ],
+    css: {
+        preprocessorOptions: {
+            scss: {
+                api: 'modern'
+            }
+        }
+    },
     build: {
         reportCompressedSize: false
     },

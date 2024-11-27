@@ -5,7 +5,7 @@
 </script>
 
 <blockquote class="web-blockquote">
-    <p class="web-description">
+    <p class="text-description">
         <slot />
     </p>
 </blockquote>

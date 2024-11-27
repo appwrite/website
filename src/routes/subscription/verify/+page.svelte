@@ -1,30 +1,30 @@
 <script lang="ts">
-    import { page } from '$app/stores';
-    import { FooterNav, MainFooter } from '$lib/components';
-    import { Main } from '$lib/layouts';
-    import { onMount } from 'svelte';
+	import { page } from '$app/stores';
+	import { FooterNav, MainFooter } from '$lib/components';
+	import { Main } from '$lib/layouts';
+	import { onMount } from 'svelte';
+	import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
 
-    let error: string | undefined;
+  let error: string | undefined;
 
-    onMount(async () => {
-        const email = $page.url.searchParams.get('email');
-        const key = $page.url.searchParams.get('key');
-        const response = await fetch('https://growth.appwrite.io/v1/newsletter/verify', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email,
-                key,
-                cloud: true /* not optional on the growth endpoint. */
-            })
-        });
-        if (response.status >= 400) {
-            error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
-            return;
-        }
-    });
+	onMount(async () => {
+		const email = $page.url.searchParams.get('email');
+		const key = $page.url.searchParams.get('key');
+		const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/newsletter/verify`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				email,
+				key
+			})
+		});
+		if (response.status >= 400) {
+			error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
+			return;
+		}
+	});
 </script>
 
 <Main>
@@ -32,8 +32,8 @@
         <div class="web-big-padding-section-level-2">
             <div class="container">
                 <div class="web-hero" style="--hero-gap:1.25rem;">
-                    <span class="web-badges web-eyebrow !text-white">verification</span>
-                    <h1 class="web-headline web-u-color-text-primary">
+                    <span class="web-badges text-micro uppercase text-white">verification</span>
+                    <h1 class="text-headline font-aeonik-pro text-primary">
                         {#if error}
                             Error
                         {:else}
@@ -41,7 +41,7 @@
                         {/if}
                     </h1>
 
-                    <p class="web-description">
+                    <p class="text-description">
                         {#if error}
                             Something went wrong, please try again later.
                         {:else}
