@@ -53,11 +53,7 @@ const files = await storage.deleteFiles('[BUCKET_ID]');`
     <Tabs>
         {#each tabs as tab}
             <TabsItem id={tab.label.toLowerCase()} title={tab.label}>
-                <MultiCodeContextless
-                    selected={Platform.ServerNodeJs}
-                    data={tab.content}
-                    height={100}
-                />
+                <MultiCodeContextless selected={Platform.ServerNodeJs} data={tab.content} />
             </TabsItem>
         {/each}
     </Tabs>

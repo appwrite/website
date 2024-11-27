@@ -20,7 +20,7 @@
     ];
 </script>
 
-<div class="light py-20">
+<div class="light py-12 md:py-20">
     <div class="container">
         <div class="web-hero is-center mx-auto">
             <h2 class="web-display web-u-color-text-primary">Powered by open source</h2>
@@ -32,14 +32,14 @@
                 href="/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="web-button is-secondary is-full-width-mobile web-u-cross-child-center mt-4"
+                class="web-button is-secondary mt-4 mx-auto !w-full md:!w-fit"
             >
                 <span>Join the community</span>
             </a>
         </div>
     </div>
 </div>
-<div class="light !-mb-8 !pt-0 pb-40">
+<div class="light !pt-0 pb-20 md:pb-40">
     <div class="container web-u-max-width-993">
         <div class="overflow-hidden">
             <div
@@ -48,7 +48,7 @@
                 {#each items as { title, content, icon }}
                     <div
                         class={classNames(
-                            'relative -mr-8 flex flex-col items-center justify-center pr-8 text-center md:max-w-[290px]'
+                            'relative flex flex-col items-center justify-center px-11 text-center md:-mr-8 md:max-w-[290px] md:px-0 md:pr-8'
                         )}
                     >
                         <img src={icon} width="40" height="40" alt="" />

@@ -1,4 +1,4 @@
-<section class="container grid grid-cols-1 place-items-center gap-16 pt-20 md:grid-cols-2">
+<section class="container grid grid-cols-1 place-items-center gap-16 pt-12 md:grid-cols-2 md:pt-20">
     <div class="hidden md:block">
         <img src="/images/pages/storage/product-shot-3.png" width="687" alt="" />
     </div>
@@ -9,7 +9,7 @@
             optimized upload times.
         </p>
         <div class="mt-8 flex gap-2">
-            <a href="/" class="web-button is-secondary is-full-width-mobile">
+            <a href="/" class="web-button is-secondary !w-full md:!w-fit">
                 <span class="text">Learn more</span>
             </a>
         </div>
