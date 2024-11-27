@@ -89,9 +89,11 @@
                 <section class="web-article-content-sub-section">
                     <header class="web-article-content-header">
                         <span class="web-numeric-badge">{currentStep}</span>
-                        <Heading level={1} id={currentStepItem.href} step={currentStep}>
-                            {getCorrectTitle(currentStepItem, 1)}
-                        </Heading>
+                        <div class="tutorial-heading">
+                            <Heading level={1} id={currentStepItem.href} step={currentStep}>
+                                {getCorrectTitle(currentStepItem, 1)}
+                            </Heading>
+                        </div>
                     </header>
 
                     <div class="web-u-padding-block-start-32" bind:this={slotContent}>
@@ -228,5 +230,9 @@
 
     .web-references-menu-item:has(.is-selected)::before {
         block-size: 1.375rem;
+    }
+
+    :global(.tutorial-heading h2) {
+        margin-bottom: unset;
     }
 </style>
