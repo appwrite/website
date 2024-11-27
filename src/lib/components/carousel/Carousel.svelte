@@ -11,7 +11,6 @@
 
     let emblaApi: EmblaCarouselType;
 
-    export let showGradient: boolean = true;
     export let showBullets: boolean = true;
     export let showArrows: boolean = true;
     export let autoScrollOptions: AutoScrollOptionsType = {
