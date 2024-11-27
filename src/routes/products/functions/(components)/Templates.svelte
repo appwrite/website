@@ -114,7 +114,6 @@
                                 </Tooltip>
                             {/if}
                         </ul>
-                        <img src={template.title} class="hidden size-6" alt={template.title} />
                     </div>
                     <p class="text-sub-body text-secondary line-clamp-2">{template.description}</p>
                 </div>
