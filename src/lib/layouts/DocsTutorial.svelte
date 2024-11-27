@@ -210,4 +210,12 @@
         background: unset;
         padding-inline-start: unset;
     }
+
+    .u-margin-block-start-16 {
+        margin-block-start: 1rem;
+    }
+
+    .u-margin-inline-start-32 {
+        margin-inline-start: 2rem;
+    }
 </style>
