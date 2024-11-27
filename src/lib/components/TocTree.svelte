@@ -1,6 +1,7 @@
 <script lang="ts">
     import { type TableOfContentsItem, type TableOfContentsElements, melt } from '@melt-ui/svelte';
     import { getTocCtx } from './TocRoot.svelte';
+    import { browser } from '$app/environment';
 
     export let tree: TableOfContentsItem[] = [];
     export let activeHeadingIdxs: number[];
@@ -14,6 +15,11 @@
             helpers: { isActive }
         }
     } = getTocCtx();
+
+    function onItemClick() {
+        const isDesktop = browser ? window.innerWidth >= 1024 : false;
+        if (!isDesktop) showToc = !showToc;
+    }
 </script>
 
 <ul class="web-page-steps-list text-sub-body font-medium">
@@ -24,7 +30,7 @@
                     class:is-selected={$isActive(heading.id)}
                     href="#{heading.id}"
                     use:melt={$item(heading.id)}
-                    on:click|preventDefault={() => showToc = !showToc}
+                    on:click|preventDefault={onItemClick}
                 >
                     <!--  eslint-disable-next-line svelte/no-at-html-tags -->
                     {@html heading.node.innerHTML}

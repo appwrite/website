@@ -2,6 +2,7 @@
     import TocTree from './TocTree.svelte';
     import { cubicOut } from 'svelte/easing';
     import { getTocCtx } from './TocRoot.svelte';
+    import { onMount } from 'svelte';
 
     export let showToc = true;
 
@@ -37,7 +38,16 @@
             }
         };
     }
+
+    // show toc by default on desktop
+    function handleResizeForTocTree() {
+        showToc = window.innerWidth >= 1024;
+    }
+
+    onMount(handleResizeForTocTree);
 </script>
+
+<svelte:window on:resize={handleResizeForTocTree} />
 
 <section class="web-mobile-header">
     <div class="web-is-only-mobile">
@@ -170,7 +180,7 @@
         border-block-start: unset;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
         .web-mobile-header {
             top: 0;
             margin: 1rem 0;
@@ -201,6 +211,17 @@
         .web-mobile-header {
             top: 7rem;
             display: block;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .web-mobile-header {
+            border-block-end: unset;
+            border-block-start: unset;
+        }
+
+        .toc-tree-holder {
+            margin-top: unset;
         }
     }
 </style>
