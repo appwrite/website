@@ -59,42 +59,42 @@
             lng: -74.006,
             city: 'New York City',
             code: 'NYC',
-            available: true
+            available: false
         },
         {
             lat: -33.8688,
             lng: 151.2093,
             city: 'Syndey',
             code: 'AUS',
-            available: true
+            available: false
         },
         {
             lat: 37.7749,
             lng: -122.4194,
             city: 'San Francisco',
             code: 'SFO',
-            release: 'Q4 2024'
+            available: false
         },
         {
             lat: 52.3676,
             lng: 4.9041,
             city: 'Amsterdam',
             code: 'AMS',
-            release: 'Q4 2024'
+            available: false
         },
         {
             lat: 12.9716,
             lng: 77.5946,
             city: 'Bangalore',
             code: 'IND',
-            release: 'Q4 2024'
+            available: false
         },
         {
             lat: 1.3521,
             lng: 103.8198,
             city: 'Signapore',
             code: 'SGP',
-            release: 'Q4 2024'
+            available: false
         }
     ]);
 
@@ -168,7 +168,7 @@
                     <div
                         class="text-caption flex h-5 items-center justify-center place-self-start rounded-[6px] bg-black/6 p-1 text-center text-[#56565C]"
                     >
-                        <span class="text-micro -tracking-tight">{tooltip.release}</span>
+                        <span class="text-micro -tracking-tight">Planned</span>
                     </div>
                 {/if}
             </div>
