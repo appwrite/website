@@ -25,3 +25,7 @@ body {
 	color: hsl(var(--web-color-black)); -webkit-text-fill-color: hsl(var(--web-color-black));
 	background-color: hsl(var(--web-color-mint-500)); background-clip:revert; -webkit-background-clip:revert;
 }
+
+code {
+	word-break: break-word;
+}
