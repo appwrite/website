@@ -20,7 +20,7 @@
     ];
 </script>
 
-<div class="web-big-padding-section-level-2 light">
+<div class="light py-20">
     <div class="container">
         <div class="web-hero is-center mx-auto">
             <h2 class="web-display web-u-color-text-primary">Powered by open source</h2>
@@ -32,16 +32,16 @@
                 href="/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="web-button is-secondary is-full-width-mobile web-u-cross-child-center mt-8"
+                class="web-button is-secondary is-full-width-mobile web-u-cross-child-center mt-4"
             >
                 <span>Join the community</span>
             </a>
         </div>
     </div>
 </div>
-<div class="web-big-padding-section-level-2 light mt-20 !-mb-8 !pt-0 pb-20">
+<div class="light !-mb-8 !pt-0 pb-40">
     <div class="container web-u-max-width-993">
-        <div class="mt-20 overflow-hidden">
+        <div class="overflow-hidden">
             <div
                 class="text-sub-body grid place-items-center gap-8 divide-black/4 font-medium md:grid-cols-3 md:divide-x"
             >
@@ -52,7 +52,7 @@
                         )}
                     >
                         <img src={icon} width="40" height="40" alt="" />
-                        <h3 class="text-sub-body text-primary mt-4 font-medium">
+                        <h3 class="text-sub-body text-primary mt-4 mb-1 font-medium">
                             {title}
                         </h3>
                         <p class="text-sub-body">{content}</p>
