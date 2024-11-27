@@ -3,18 +3,18 @@
 
     const items = [
         {
-            title: 'Join the community and share knowledge',
-            content: 'Lorem ipsum dolor sit amet.',
+            title: 'Join the community',
+            content: 'Get on the go support from a very active and welcoming community.',
             icon: '/images/icons/gradients/community.svg'
         },
         {
             title: 'Self-host or go Cloud',
-            content: 'Lorem ipsum dolor sit amet consectetur. Nullam ligula blandit.',
+            content: 'Build the way you want. Pick between self hosting or cloud.',
             icon: '/images/icons/gradients/self-hosted.svg'
         },
         {
             title: 'No vendor lock-in',
-            content: 'Lorem ipsum dolor sit amet consectetur. Nullam ligula blandit.',
+            content: 'You own your data and can easily move to and from Appwrite.',
             icon: '/images/icons/gradients/lock.svg'
         }
     ];
