@@ -36,51 +36,16 @@
     ];
 </script>
 
-<!-- <div class="relative w-screen overflow-hidden">
-    <div
-        class="light animate-scroll flex w-fit items-center justify-center gap-4 hover:[animation-play-state:paused]"
-        style="--testimonial-length:{testimonials.length}"
-    >
-        {#each Array.from({ length: 4 }) as _}
-            {#each testimonials as testimonial}
-                <div
-                    class="flex w-xl shrink-0 flex-col justify-center rounded-2xl bg-white p-6 transition-all"
-                >
-                    <p class="text-sub-body text-secondary flex-1 font-medium">
-                        {testimonial.copy}
-                    </p>
-
-                    <div class="mt-4 flex items-center gap-3">
-                        <img
-                            src={testimonial.image}
-                            class="size-12 rounded-full"
-                            alt="{testimonial.company} Logo"
-                        />
-                        <div>
-                            <span class="text-secondary text-sub-body block font-medium">
-                                {testimonial.name}
-                            </span>
-                            <span class="text-sub-body text-secondary block"
-                                >{testimonial.title} // {testimonial.company}</span
-                            >
-                        </div>
-                    </div>
-                </div>
-            {/each}
-        {/each}
-    </div>
-</div> -->
-
-<div class="relative my-8 w-full max-w-[100vw] overflow-hidden">
-    <div class="light group flex w-fit gap-4">
+<div class="relative w-full max-w-[100vw] overflow-hidden">
+    <div class="group light flex w-fit gap-4">
         {#each Array.from({ length: 4 }) as _, i}
             <div
-                class="animate-scroll flex items-center gap-4 group-hover:[animation-play-state:paused;]"
+                class="animate-scroll flex items-center gap-8 group-hover:[animation-play-state:paused;]"
                 aria-hidden={i !== 0}
             >
                 {#each testimonials as testimonial}
                     <div
-                        class="w-lg flex h-fit flex-col justify-center rounded-2xl bg-white p-6 transition-all"
+                        class="flex h-fit w-[90vw] flex-col justify-center rounded-2xl bg-white p-6 transition-all md:w-lg"
                     >
                         <p class="text-sub-body text-secondary flex-1 font-medium">
                             {testimonial.copy}
