@@ -5,20 +5,20 @@
     import { copy } from '$lib/utils/copy';
     import { Select, Tooltip } from '$lib/components';
 
-    export let selected: Language = 'js';
-    export let data: { language: string; content: string; platform?: string }[] = [];
-    export let width: number | null = null;
+    export let selected: string = '';
+    export let data: { language: string; content: string; platform: string }[] = [];
     export let height: number | null = null;
 
-    $: snippets = writable(new Set(data.map((d) => d.language)));
+    $: snippets = writable(new Set(data.map((d) => `${d.platform}`)));
 
-    $: content = data.find((d) => d.language === selected)?.content ?? '';
+    $: content = data.find((d) => `${d.platform}` === selected)?.content ?? '';
 
-    $: platform = data.find((d) => d.language === selected)?.platform ?? '';
+    $: ({ language } =
+        data.find((d) => `${d.platform}` === selected) ?? ({} as (typeof data)[number]));
 
     snippets?.subscribe((n) => {
-        if (selected === null && n.size > 0) {
-            selected = Array.from(n)[0] as Language;
+        if (selected === '' && n.size > 0) {
+            selected = Array.from(n)[0];
         }
     });
 
@@ -38,33 +38,34 @@
 
     $: result = getCodeHtml({
         content,
-        language: selected ?? 'sh',
+        language: (language as Language) ?? 'sh',
         withLineNumbers: true
     });
-    $: options = Array.from($snippets).map((language) => ({
-        value: language,
-        label: platformMap[language]
-    }));
+    $: options = Array.from($snippets).map((key) => {
+        const [platform] = key.split('-');
+
+        return {
+            value: key,
+            label: platform
+        };
+    });
 </script>
 
 <section
-    class="dark web-code-snippet !max-w-[90vw] md:!max-w-3xl md:min-w-3xl"
+    class="dark web-code-snippet mx-auto !max-w-[90vw] md:min-w-2xl"
     aria-label="code-snippet panel"
-    style={`width: ${width ? width / 16 + 'rem' : 'inherit'}; height: ${
-        height ? height / 16 + 'rem' : 'inherit'
-    }`}
 >
     <header class="web-code-snippet-header">
         <div class="web-code-snippet-header-start">
             <div class="flex gap-4">
-                {#if platform}
-                    <div class="web-tag"><span class="text">{platform}</span></div>
+                {#if language}
+                    <div class="web-tag"><span class="text">{platformMap[language]}</span></div>
                 {/if}
             </div>
         </div>
         <div class="web-code-snippet-header-end">
-            <ul class="buttons-list divide-greyscale-750 flex gap-3 divide-x">
-                <li class="buttons-list-item flex self-center pr-6">
+            <ul class="buttons-list flex gap-3">
+                <li class="buttons-list-item flex self-center">
                     <Select bind:value={selected} bind:options />
                 </li>
                 <li class="buttons-list-item" style="padding-inline-start: 13px">
@@ -87,7 +88,6 @@
         class="web-code-snippet-content"
         style={`height: ${height ? height / 16 + 'rem' : 'inherit'}`}
     >
-        <!-- eslint-disable-next-line svelte/no-at-html-tags -->
         {@html result}
     </div>
 </section>
