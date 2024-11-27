@@ -1,39 +1,63 @@
 <script lang="ts">
+    import { classNames } from '$lib/utils/classnames';
     import Templates from '../(assets)/templates.png';
 
     const templates = [
         {
             title: 'Prompt ChatGPT',
             description: 'Ask questions and let OpenAI GPT-3.5-turbo answer.',
-            avatar: '/images/platforms/light/nodejs.svg'
+            runtimes: ['node', 'python', 'php']
         },
         {
             title: 'Subscriptions with Stripe',
             description: 'Receive recurring card payments and grant subscribers extra permissions.',
-            avatar: '/images/platforms/light/nodejs.svg'
+            runtimes: ['node']
         },
         {
             title: 'Sync with Algolia',
             description: 'Intuitive search bar for any data in Appwrite Databases.',
-            avatar: '/images/platforms/dark/nodejs.svg'
+            runtimes: ['node', 'python']
         },
         {
             title: 'Query upstash vector',
             description: 'Vector database that stores text embeddings and context.',
-            avatar: '/images/platforms/dark/nodejs.svg'
+            runtimes: ['node']
         },
         {
             title: 'Query MongoDB Atlas',
             description:
                 'Realtime NoSQL document database with geospecial, graph, search, and vector suport.',
-            avatar: '/images/platforms/dark/nodejs.svg'
+            runtimes: ['node']
         },
         {
             title: 'WhatsApp with Vonage',
             description: 'Simple bot to answer WhatsApp messages.',
-            avatar: '/images/platforms/dark/nodejs.svg'
+            runtimes: ['node', 'python', 'php', 'dart', 'bun']
         }
     ];
+
+    function getIconFromRuntime(runtime: string) {
+        switch (true) {
+            case runtime.includes('node'):
+                return 'node';
+            case runtime.includes('php'):
+                return 'php';
+            case runtime.includes('ruby'):
+                return 'ruby';
+            case runtime.includes('python'):
+                return 'python';
+            case runtime.includes('dart'):
+                return 'dart';
+            case runtime.includes('bun'):
+                return 'bun';
+            case runtime.includes('go'):
+                return 'go';
+            case runtime.includes('deno'):
+                return 'deno';
+            default:
+                return undefined;
+        }
+    }
 </script>
 
 <section class="light bg-greyscale-50 pt-12 pb-20">
@@ -66,24 +90,18 @@
             >
         </div>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-            {#each templates as template}
+            {#each templates as template, i}
                 <div
-                    class="hidden flex-col gap-2 rounded-2xl border border-black/8 bg-white p-4 md:flex"
+                    class={classNames(
+                        'flex-col gap-2 rounded-2xl border border-black/8 bg-white p-4',
+                        {
+                            'hidden md:flex': i > 3
+                        }
+                    )}
                 >
                     <div class="flex w-full items-center justify-between">
                         <span class="text-sub-body text-primary font-medium">{template.title}</span>
-                        <img src={template.avatar} class="hidden size-6" alt={template.title} />
-                    </div>
-                    <p class="text-sub-body text-secondary line-clamp-2">{template.description}</p>
-                </div>
-            {/each}
-            {#each templates.slice(0, 3) as template}
-                <div
-                    class="flex flex-col gap-2 rounded-2xl border border-black/8 bg-white p-4 md:hidden"
-                >
-                    <div class="flex w-full items-center justify-between">
-                        <span class="text-sub-body text-primary font-medium">{template.title}</span>
-                        <img src={template.avatar} class="hidden size-6" alt={template.title} />
+                        <img src={template.title} class="hidden size-6" alt={template.title} />
                     </div>
                     <p class="text-sub-body text-secondary line-clamp-2">{template.description}</p>
                 </div>
