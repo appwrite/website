@@ -15,7 +15,7 @@
     export const products: Array<SubmenuItem> = [
         {
             name: 'Auth',
-            href: '/docs/products/auth',
+            href: '/products/auth',
             description: 'Secure login with multi-factor auth.',
             icon: '/images/icons/illustrated/dark/auth.png'
         },
@@ -39,7 +39,7 @@
         },
         {
             name: 'Messaging',
-            href: '/docs/products/messaging',
+            href: '/products/messaging',
             description: 'Set up a full-functioning messaging service.',
             icon: '/images/icons/illustrated/dark/messaging.png'
         },
@@ -103,12 +103,10 @@
 <div
     use:melt={$menu}
     class={classNames(
-        'data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in relative z-10 mt-6 mx-auto hidden w-full flex-col items-center p-0 outline-none md:flex'
+        'data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in relative !left-1/2 z-10 mt-6 mx-auto hidden w-full -translate-x-1/2 flex-col items-center p-0 outline-none [max-inline-size:86.875rem] md:flex'
     )}
 >
-    <div
-        class="is-special-padding w-full rounded-2xl border border-white/8 bg-[#232325] p-6 [max-inline-size:86.875rem]"
-    >
+    <div class="is-special-padding w-full rounded-2xl border border-white/8 bg-[#232325] p-6">
         <div class="grid w-full grid-cols-1 place-content-between gap-16 lg:grid-cols-12">
             <div class="col-span-8 -mr-12 pr-12">
                 <span
@@ -163,7 +161,9 @@
                             class="font-aeonik-fono tracking-loose text-secondary block text-xs uppercase"
                             >Case studies<span class="text-accent">_</span></span
                         >
-                        <a href="/" class="text-primary text-caption flex items-center gap-2"
+                        <a
+                            href="/blog/category/case-studies"
+                            class="text-primary text-caption flex items-center gap-2"
                             >See more <span class="web-icon-chevron-right" /></a
                         >
                     </header>
