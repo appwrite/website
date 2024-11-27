@@ -4,13 +4,13 @@
     import Templates from '../(assets)/templates.png';
 
     const icons = {
-        node: '/images/platforms/dark/nodejs.svg',
-        php: '/images/platforms/dark/php.svg',
-        ruby: '/images/platforms/dark/ruby.svg',
-        python: '/images/platforms/dark/python.svg',
-        dart: '/images/platforms/dark/dart.svg',
-        bun: '/images/platforms/dark/bun.svg',
-        go: '/images/platforms/dark/go.svg'
+        node: '/images/platforms/nodejs.svg',
+        php: '/images/platforms/php.svg',
+        ruby: '/images/platforms/ruby.svg',
+        python: '/images/platforms/python.svg',
+        dart: '/images/platforms/dart.svg',
+        bun: '/images/platforms/bun.svg',
+        go: '/images/platforms/go.svg'
     } as const;
 
     const templates = [
@@ -91,25 +91,25 @@
                 >
                     <div class="flex w-full items-center justify-between">
                         <span class="text-sub-body text-primary font-medium">{template.title}</span>
-                        <ul class="flex">
+                        <ul class="flex h-12 gap-1">
                             {#each baseRuntimes as runtime}
-                                <li class="-ml-4">
-                                    <img src={icons[runtime]} alt={runtime} class="mr-2 h-6 w-6" />
+                                <li
+                                    class="border-smooth -mr-3 flex size-8 items-center justify-center rounded-full border bg-white"
+                                >
+                                    <img src={icons[runtime]} alt={runtime} class="size-5" />
                                 </li>
                             {/each}
                             {#if hiddenRuntimes.length > 0}
                                 <Tooltip>
-                                    <li class="-ml-4">
-                                        <button
-                                            class="flex h-6 w-6 items-center justify-center rounded-full bg-black/8"
-                                        >
-                                            <span class="text-sub-body text-secondary font-medium">
-                                                +{hiddenRuntimes.length}
-                                            </span>
-                                        </button>
+                                    <li
+                                        class="border-smooth flex size-8 cursor-pointer items-center justify-center rounded-full border bg-white"
+                                    >
+                                        <span class="text-micro text-secondary font-medium">
+                                            +{hiddenRuntimes.length}
+                                        </span>
                                     </li>
                                     <svelte:fragment slot="tooltip">
-                                        {hiddenRuntimes.join(', ')}
+                                        <span class="text-micro">{hiddenRuntimes.join(', ')}</span>
                                     </svelte:fragment>
                                 </Tooltip>
                             {/if}
