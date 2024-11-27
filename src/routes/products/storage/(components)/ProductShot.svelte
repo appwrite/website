@@ -101,7 +101,7 @@
     </section>
 </div>
 <div
-    class="relative top-5 flex flex-1 flex-col rounded-3xl border border-white/10 bg-white/0.04 backdrop-blur-xl md:mt-16 md:ml-[-80px] md:basis-[602px]"
+    class="relative flex flex-1 flex-col rounded-3xl border border-white/10 bg-white/0.04 backdrop-blur-xl md:top-5 md:mt-16 md:ml-[-80px] md:basis-[602px]"
 >
     <h4 class="text-label text-primary font-aeonik-pro border-b border-white/10 p-6">
         Permissions

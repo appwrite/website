@@ -60,10 +60,10 @@
             }}
         />
 
-        <div class="bg-right-top bg-no-repeat md:bg-[url(/images/bgs/mint-gradient.png)]">
+        <div class="!mb-0 bg-right-top bg-no-repeat md:bg-[url(/images/bgs/mint-gradient.png)]">
             <PreviewFiles />
             <div
-                class="relative bg-[url('/images/pages/storage/pattern-1.png')] [background-size:1500px] [background-position:center_bottom_-50%] bg-no-repeat md:[background-size:1350px] md:[background-position:center_bottom]"
+                class="relative bg-[url('/images/pages/storage/pattern-1.png')] [background-size:1200px] [background-position:center_bottom_-50%] bg-no-repeat md:[background-size:1350px] md:[background-position:center_bottom]"
             >
                 <Optimized />
                 <Permissions />
@@ -71,7 +71,7 @@
         </div>
 
         <div class="web-big-padding-section-level-1 web-white-section light relative">
-            <div class="web-big-padding-section-level-2 max-lg:py-20">
+            <div class="max-lg:py-20">
                 <div class="container">
                     <div class="web-hero is-center !max-w-xl">
                         <span class="web-badges web-eyebrow !text-white">Dashboard_</span>
@@ -86,7 +86,7 @@
                             href="https://builtwith.appwrite.io"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="web-button is-secondary is-full-width-mobile web-u-cross-child-center u-margin-block-start-16"
+                            class="web-button is-secondary mt-4 mx-auto !w-full md:!w-fit"
                         >
                             <span>Learn more</span>
                         </a>
@@ -132,8 +132,16 @@
                             </div>
                             <div>
                                 <img
-                                    class="l-drop-shadow u-height-auto"
+                                    class="l-drop-shadow u-height-auto hidden md:block"
                                     src="/images/pages/storage/settings.png"
+                                    alt=""
+                                    width="568"
+                                    height="536"
+                                    loading="lazy"
+                                />
+                                <img
+                                    class="l-drop-shadow u-height-auto block md:hidden"
+                                    src="/images/pages/storage/settings-mobile.png"
                                     alt=""
                                     width="568"
                                     height="536"
@@ -148,10 +156,10 @@
         <div
             class="web-big-padding-section-level-1 web-white-section light bg-[url(/images/bgs/purple-gradient.png)] bg-left bg-no-repeat pb-20"
         >
-            <div class="web-big-padding-section-level-2 !my-0 py-20">
+            <div class="!my-0 py-24 md:py-20">
                 <div class="container">
                     <div class="grid grid-cols-1 gap-16 lg:grid-cols-2">
-                        <div class="web-hero is-align-start mb-12 !max-w-md md:mb-0">
+                        <div class="web-hero is-align-start mx-auto md:mb-0 lg:!max-w-md">
                             <span class="web-badges web-eyebrow !text-white">APIs_</span>
                             <h2 class="web-title text-primary">
                                 What you can do with Storage APIs
@@ -164,7 +172,7 @@
                                 href="/docs"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="web-button is-full-width-mobile mt-4"
+                                class="web-button mt-4 !w-full md:!w-fit"
                             >
                                 <span>View docs</span>
                             </a>
@@ -173,9 +181,8 @@
                     </div>
                 </div>
             </div>
-            <div class="py-12">
-                <Testimonials />
-            </div>
+            <Testimonials />
+
             <OpenSource />
         </div>
 
@@ -193,33 +200,5 @@
 <style lang="scss">
     .l-drop-shadow {
         filter: drop-shadow(0 16px 32px rgb(55 59 77 / 0.04));
-    }
-
-    .hero-flipped {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) 30.0625rem;
-        gap: 4.5rem;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-
-        @media (max-width: 1023px) {
-            display: flex;
-            flex-direction: column;
-
-            overflow: hidden;
-            gap: 3rem;
-
-            > :first-child {
-                max-width: 40rem;
-                margin-inline: auto;
-            }
-
-            > :nth-child(2) {
-                scale: 1;
-                width: 100%;
-                position: relative;
-            }
-        }
     }
 </style>

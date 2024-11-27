@@ -46,7 +46,7 @@
         .map(([_, value]) => value);
 </script>
 
-<section class="border-smooth border-t py-40">
+<section class="border-smooth border-t py-20 md:py-40">
     <div class="container">
         <h4 class="text-label text-primary text-center">Keep exploring our products</h4>
         <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
