@@ -1,63 +1,51 @@
 <script lang="ts">
+    import Tooltip from '$lib/components/Tooltip.svelte';
     import { classNames } from '$lib/utils/classnames';
     import Templates from '../(assets)/templates.png';
+
+    const icons = {
+        node: '/images/platforms/dark/nodejs.svg',
+        php: '/images/platforms/dark/php.svg',
+        ruby: '/images/platforms/dark/ruby.svg',
+        python: '/images/platforms/dark/python.svg',
+        dart: '/images/platforms/dark/dart.svg',
+        bun: '/images/platforms/dark/bun.svg',
+        go: '/images/platforms/dark/go.svg'
+    } as const;
 
     const templates = [
         {
             title: 'Prompt ChatGPT',
             description: 'Ask questions and let OpenAI GPT-3.5-turbo answer.',
-            runtimes: ['node', 'python', 'php']
+            runtimes: ['node', 'python', 'php'] as const
         },
         {
             title: 'Subscriptions with Stripe',
             description: 'Receive recurring card payments and grant subscribers extra permissions.',
-            runtimes: ['node']
+            runtimes: ['node'] as const
         },
         {
             title: 'Sync with Algolia',
             description: 'Intuitive search bar for any data in Appwrite Databases.',
-            runtimes: ['node', 'python']
+            runtimes: ['node', 'python'] as const
         },
         {
             title: 'Query upstash vector',
             description: 'Vector database that stores text embeddings and context.',
-            runtimes: ['node']
+            runtimes: ['node'] as const
         },
         {
             title: 'Query MongoDB Atlas',
             description:
                 'Realtime NoSQL document database with geospecial, graph, search, and vector suport.',
-            runtimes: ['node']
+            runtimes: ['node'] as const
         },
         {
             title: 'WhatsApp with Vonage',
             description: 'Simple bot to answer WhatsApp messages.',
-            runtimes: ['node', 'python', 'php', 'dart', 'bun']
+            runtimes: ['node', 'python', 'php', 'dart', 'bun'] as const
         }
     ];
-
-    function getIconFromRuntime(runtime: string) {
-        switch (true) {
-            case runtime.includes('node'):
-                return 'node';
-            case runtime.includes('php'):
-                return 'php';
-            case runtime.includes('ruby'):
-                return 'ruby';
-            case runtime.includes('python'):
-                return 'python';
-            case runtime.includes('dart'):
-                return 'dart';
-            case runtime.includes('bun'):
-                return 'bun';
-            case runtime.includes('go'):
-                return 'go';
-            case runtime.includes('deno'):
-                return 'deno';
-            default:
-                return undefined;
-        }
-    }
 </script>
 
 <section class="light bg-greyscale-50 pt-12 pb-20">
@@ -91,6 +79,8 @@
         </div>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
             {#each templates as template, i}
+                {@const baseRuntimes = template.runtimes.slice(0, 2)}
+                {@const hiddenRuntimes = template.runtimes.slice(2)}
                 <div
                     class={classNames(
                         'flex-col gap-2 rounded-2xl border border-black/8 bg-white p-4',
@@ -101,6 +91,29 @@
                 >
                     <div class="flex w-full items-center justify-between">
                         <span class="text-sub-body text-primary font-medium">{template.title}</span>
+                        <ul class="flex">
+                            {#each baseRuntimes as runtime}
+                                <li class="-ml-4">
+                                    <img src={icons[runtime]} alt={runtime} class="mr-2 h-6 w-6" />
+                                </li>
+                            {/each}
+                            {#if hiddenRuntimes.length > 0}
+                                <Tooltip>
+                                    <li class="-ml-4">
+                                        <button
+                                            class="flex h-6 w-6 items-center justify-center rounded-full bg-black/8"
+                                        >
+                                            <span class="text-sub-body text-secondary font-medium">
+                                                +{hiddenRuntimes.length}
+                                            </span>
+                                        </button>
+                                    </li>
+                                    <svelte:fragment slot="tooltip">
+                                        {hiddenRuntimes.join(', ')}
+                                    </svelte:fragment>
+                                </Tooltip>
+                            {/if}
+                        </ul>
                         <img src={template.title} class="hidden size-6" alt={template.title} />
                     </div>
                     <p class="text-sub-body text-secondary line-clamp-2">{template.description}</p>
