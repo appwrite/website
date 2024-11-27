@@ -60,12 +60,14 @@
             }}
         />
 
-        <PreviewFiles />
-        <div
-            class="relative bg-[url('/images/pages/storage/pattern-1.png')] [background-size:1500px] [background-position:center_bottom_-50%] bg-no-repeat md:[background-size:1350px] md:[background-position:center_bottom]"
-        >
-            <Optimized />
-            <Permissions />
+        <div class="bg-right-top bg-no-repeat md:bg-[url(/images/bgs/mint-gradient.png)]">
+            <PreviewFiles />
+            <div
+                class="relative bg-[url('/images/pages/storage/pattern-1.png')] [background-size:1500px] [background-position:center_bottom_-50%] bg-no-repeat md:[background-size:1350px] md:[background-position:center_bottom]"
+            >
+                <Optimized />
+                <Permissions />
+            </div>
         </div>
 
         <div class="web-big-padding-section-level-1 web-white-section light relative">
@@ -149,7 +151,7 @@
             <div class="web-big-padding-section-level-2 !my-0 py-20">
                 <div class="container">
                     <div class="grid grid-cols-1 gap-16 lg:grid-cols-2">
-                        <div class="web-hero is-align-start mb-12 md:mb-0">
+                        <div class="web-hero is-align-start mb-12 !max-w-md md:mb-0">
                             <span class="web-badges web-eyebrow !text-white">APIs_</span>
                             <h2 class="web-title text-primary">
                                 What you can do with Storage APIs
@@ -162,7 +164,7 @@
                                 href="/docs"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="web-button is-full-width-mobile u-margin-block-start-16"
+                                class="web-button is-full-width-mobile mt-4"
                             >
                                 <span>View docs</span>
                             </a>

@@ -2,7 +2,7 @@
     <div class="hidden md:block">
         <img src="/images/pages/storage/product-shot-3.png" width="687" alt="" />
     </div>
-    <div class="mx-auto max-w-[580px]">
+    <div class="mx-auto max-w-md">
         <h2 class="text-title font-aeonik-pro text-primary">Optimized for small and large files</h2>
         <p class="text-body mt-4 font-medium">
             Appwrite offers chunked uploads for large files and several compression options for
