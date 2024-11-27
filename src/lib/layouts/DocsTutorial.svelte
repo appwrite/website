@@ -137,6 +137,7 @@
                 <ol class="web-references-menu-list">
                     {#each tutorials as tutorial, index}
                         {@const isCurrentStep = currentStep === tutorial.step}
+                        {@const absoluteToc = toc.slice(1)}
                         <li class="web-references-menu-item">
                             <a
                                 href={tutorial.href}
@@ -150,17 +151,15 @@
                                     >{index === 0 ? 'Introduction' : tutorial.title}</span
                                 >
                             </a>
-                            {#if isCurrentStep && toc.length}
+                            {#if isCurrentStep && absoluteToc.length}
                                 <ol
-                                    class="web-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
+                                    class="web-references-menu-list-inner u-margin-block-start-16 u-margin-inline-start-32"
                                 >
-                                    {#each toc.slice(1) as parent}
+                                    {#each absoluteToc as parent}
                                         <li class="web-references-menu-item">
                                             <a
                                                 href={parent.href}
                                                 class="web-references-menu-link is-inner"
-                                                class:tutorial-scroll-indicator={parent.selected}
-                                                class:is-selected={parent.selected}
                                             >
                                                 <span class="web-caption-400">{parent.title}</span>
                                             </a>
@@ -217,5 +216,17 @@
 
     .u-margin-inline-start-32 {
         margin-inline-start: 2rem;
+    }
+
+    .web-references-menu-list-inner {
+        gap: 1rem;
+        display: flex;
+        flex-direction: column;
+        padding-block: 0.25rem;
+        padding-inline: 0.25rem;
+    }
+
+    .web-references-menu-item:has(.is-selected)::before {
+        block-size: 1.375rem;
     }
 </style>
