@@ -35,8 +35,8 @@
         if (!slotContent) return;
 
         // dynamically modify all `label` headers to `body`.
-        slotContent.querySelectorAll<HTMLHeadingElement>('h2.web-label').forEach((header) => {
-            header.classList.replace('web-label', 'web-main-body-500');
+        slotContent.querySelectorAll<HTMLHeadingElement>('h2.text-label').forEach((header) => {
+            header.classList.replace('text-label', 'web-main-body-500');
         });
     });
 </script>
@@ -94,7 +94,7 @@
                         </Heading>
                     </header>
 
-                    <div class="u-padding-block-start-32" bind:this={slotContent}>
+                    <div class="web-u-padding-block-start-32" bind:this={slotContent}>
                         <slot />
                     </div>
 
