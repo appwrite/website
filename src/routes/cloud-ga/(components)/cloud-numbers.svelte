@@ -3,8 +3,9 @@
     import Cell from './grid-system/cell.svelte';
     import NumberFlow from '@number-flow/svelte';
     import { inView } from 'motion';
+    import { cn } from '$lib/utils/classnames';
 
-    let features: Array<{ number: number; label: string; suffix?: string }> = [
+    let featuredNumbers: Array<{ number: number; label: string; suffix?: string }> = [
         { number: 0, label: 'GitHub Stars', suffix: 'k+' },
         { number: 0, label: 'Pull Requests', suffix: 'k+' },
         { number: 0, label: 'Commits', suffix: 'k+' },
@@ -18,22 +19,27 @@
     const numbers = [32, 8, 15, 2.5, 625, 1.9, 4.9, 20];
 
     const updateNumbers = () => {
-        features = features.map((feature, index) => {
+        featuredNumbers = featuredNumbers.map((feature, index) => {
             return { ...feature, number: numbers[index] };
         });
     };
 
+    let animate: boolean = false;
+
     const useInView = (node: HTMLElement) => {
         inView(node, () => {
+            animate = true;
             updateNumbers();
         });
     };
 </script>
 
 <div
-    class="relative h-full before:absolute before:inset-x-0 before:h-[350px] before:bg-gradient-to-b before:from-[#232325]/90 before:to-transparent"
+    class={cn(
+        'relative h-full before:absolute before:inset-x-0 before:h-[350px] before:bg-gradient-to-b before:from-[#232325]/90 before:to-transparent before:transition-transform'
+    )}
 >
-    <div class="mx-auto flex w-full max-w-6xl flex-col justify-center">
+    <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" data-animate={animate}>
         <Grid rows={2} bottomBorder>
             <Cell column={2} columnStart={1}>
                 <h2
@@ -55,7 +61,7 @@
                     use:useInView
                     class="grid grid-cols-1 place-content-between gap-y-4 md:grid-cols-2 lg:grid-cols-4"
                 >
-                    {#each features as { number, label, suffix }}
+                    {#each featuredNumbers as { number, label, suffix }}
                         <div class="number-card mx-2 rounded-2xl bg-[#232325]/90 p-4">
                             <h3 class="text-title text-primary text-pretty">
                                 <NumberFlow value={number} {suffix} />

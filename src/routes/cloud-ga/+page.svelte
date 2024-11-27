@@ -2,9 +2,7 @@
     import { FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
-    import CloudFeatures from './(components)/cloud-features.svelte';
-    import Cell from './(components)/grid-system/cell.svelte';
-    import Grid from './(components)/grid-system/grid.svelte';
+    import CloudNumbers from './(components)/cloud-numbers.svelte';
     import Hero from './(components)/hero.svelte';
 
     const title = 'Cloud GA - Appwrite';
@@ -31,7 +29,7 @@
 
 <Main>
     <Hero />
-    <CloudFeatures />
+    <CloudNumbers />
 
     <div class="container">
         <FooterNav />
