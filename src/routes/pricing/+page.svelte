@@ -75,7 +75,7 @@
         <div class="dark pt-10">
             <div class="web-big-padding-section-level-2">
                 <section class="container">
-                    <div class="web-hero">
+                    <div class="flex flex-col gap-9 text-center">
                         <h1
                             class="text-display font-aeonik-pro web-u-max-width-700 web-u-opacity-90 web-u-mobile-align-text-center self-center"
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
