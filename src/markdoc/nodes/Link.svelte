@@ -6,7 +6,13 @@
 
     const isExternal = ['http://', 'https://'].some((prefix) => href.startsWith(prefix));
     const target = isExternal ? '_blank' : undefined;
-    const rel = isExternal ? 'noopener nofollow' : undefined;
+
+    const doFollow = href.includes('?dofollow=true') || href.includes('&dofollow=true');
+    if (doFollow) {
+        href = href.replace(/[?&]dofollow=true/g, '').replace(/[?&]$/, '');
+    }
+
+    const rel = isExternal ? `noopener${doFollow ? '' : ' nofollow'}` : undefined;
 
     const inChangelog = isInChangelog();
 
