@@ -155,13 +155,15 @@
                             </a>
                             {#if isCurrentStep && absoluteToc.length}
                                 <ol
-                                    class="web-references-menu-list-inner u-margin-block-start-16 u-margin-inline-start-32"
+                                    class="web-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
                                 >
                                     {#each absoluteToc as parent}
                                         <li class="web-references-menu-item">
                                             <a
                                                 href={parent.href}
                                                 class="web-references-menu-link is-inner"
+                                                class:tutorial-scroll-indicator={parent.selected}
+                                                class:is-selected={parent.selected}
                                             >
                                                 <span class="web-caption-400">{parent.title}</span>
                                             </a>
@@ -220,16 +222,37 @@
         margin-inline-start: 2rem;
     }
 
-    .web-references-menu-list-inner {
-        gap: 1rem;
-        display: flex;
-        flex-direction: column;
-        padding-block: 0.25rem;
-        padding-inline: 0.25rem;
+    .web-references-menu-item:has(.is-selected)::before {
+        /* maintains the distance correctly for the children items */
+        inset-inline-start: -3.55rem;
     }
 
-    .web-references-menu-item:has(.is-selected)::before {
+    /* Static slider: default slider for each selected link */
+    .web-references-menu-list > .web-references-menu-item > .is-selected::before {
+        content: ' ';
+        position: absolute;
+        inset-block-start: 0;
         block-size: 1.375rem;
+        inline-size: 0.0625rem;
+        inset-inline-start: -1.3125rem;
+        background-color: hsl(var(--p-references-menu-link-color-text));
+    }
+
+    /* Hide static slider if any child menu item is selected */
+    .web-references-menu-list
+        > .web-references-menu-item:has(.web-references-menu-list .is-selected)
+        > .is-selected::before {
+        background-color: transparent;
+    }
+
+    /* Transparent slider for selected child items because we use parent level */
+    .web-references-menu-list
+        > .web-references-menu-item
+        > .web-references-menu-list
+        > .web-references-menu-item
+        > .is-selected::before {
+        content: '';
+        background-color: transparent;
     }
 
     :global(.tutorial-heading h2) {
