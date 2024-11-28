@@ -4,6 +4,7 @@ title: Add app subscriptions with Stripe
 description: Add paid app subscription plans to your app with Stripe and Appwrite Functions.
 step: 1
 difficulty: easy
+back: /docs/tutorials
 readtime: 10
 framework: Stripe
 category: Functions

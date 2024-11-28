@@ -2,7 +2,6 @@
     import { clamp } from '$lib/utils/clamp';
     import { withPrevious } from '$lib/utils/withPrevious';
     import { withRaf } from '$lib/utils/withRaf';
-    import { get } from 'svelte/store';
     import Accordion from './Accordion/Accordion.svelte';
     import AccordionItem from './Accordion/AccordionItem.svelte';
     import Checkbox from './Checkbox.svelte';

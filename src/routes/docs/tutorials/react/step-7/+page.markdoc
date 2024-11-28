@@ -21,6 +21,16 @@ export function Home() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
+  const handleSubmit = async () => {
+    try {
+      await ideas.add({ userId: user.current.$id, title, description });
+      setTitle("");
+      setDescription("");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <>
       {/* Show the submit form to logged in users. */}
@@ -45,9 +55,7 @@ export function Home() {
             />
             <button
               type="button"
-              onClick={() =>
-                ideas.add({ userId: user.current.$id, title, description })
-              }
+              onClick={handleSubmit}
             >
               Submit
             </button>
@@ -80,7 +88,7 @@ export function Home() {
 }
 ```
 
-In `src/App.jsx`, wrap the `main` element with the `IdeaProvider` component.
+In `src/App.jsx`, wrap the `main` element with the `IdeasProvider` component.
 
 ```client-web
 import { Login } from "./pages/Login";
@@ -95,10 +103,10 @@ function App() {
     <div>
       <UserProvider>
         <IdeasProvider>
-          <Navbar /> {/* Add the navbar before page content */}
+          <Navbar />
           <main>{isLoginPage ? <Login /> : <Home />}</main>
         </IdeasProvider>
-      <UserProvider>
+      </UserProvider>
     </div>
   );
 }

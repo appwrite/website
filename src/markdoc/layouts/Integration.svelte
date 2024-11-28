@@ -2,7 +2,6 @@
     import { Root, Slide } from '$lib/components/carousel';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
-    import ProductsGrid from '$lib/components/ProductsGrid.svelte';
     import { Main } from '$lib/layouts';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import type { Integration } from '$routes/integrations/+page';
@@ -44,7 +43,7 @@
         class="web-u-sep-block-end pb-0"
         style="background-color:rgba(23, 23, 26, 1); margin-block-end: 2.5rem"
     >
-        <div class="container">
+        <div class="container dark">
             <div class="web-integrations-top-section">
                 <div class="web-carousel-wrapper">
                     <a href="/integrations" class="web-button is-text mb-12">
@@ -181,13 +180,8 @@
 </Main>
 
 <style lang="scss">
-    @use '$scss/abstract' as *;
-
-    .cta {
-        min-height: pxToRem(560);
-        display: flex;
-        align-items: center;
-    }
+    @use '$scss/abstract/functions' as f;
+    @use '$scss/abstract/variables/devices';
 
     .web-pre-footer-bg {
         position: absolute;
@@ -199,24 +193,15 @@
         max-inline-size: unset;
         max-block-size: unset;
     }
-    /* more tha 9 items */
-
-    .l-side-column {
-        display: flex;
-        gap: pxToRem(16);
-        @media #{$break1} {
-            flex-direction: column;
-        }
-    }
 
     .l-grid-2-1 {
-        @media #{$break1} {
+        @media #{devices.$break1} {
             display: flex;
             flex-direction: column;
         }
-        @media #{$break2open} {
+        @media #{devices.$break2open} {
             display: grid;
-            gap: pxToRem(64);
+            gap: f.pxToRem(64);
             grid-template-columns: repeat(12, 1fr);
         }
 
