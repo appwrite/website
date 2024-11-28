@@ -2,7 +2,7 @@
     import { afterNavigate } from '$app/navigation';
     import { IsLoggedIn } from '$lib/components';
     import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
-    import type { NavLink } from '$lib/layouts/Main.svelte';
+    import type { NavLink } from './MainNav.svelte';
 
     export let open = false;
     export let links: NavLink[];
@@ -25,11 +25,15 @@
         <div class="web-side-nav-scroll">
             <section>
                 <ul>
-                    {#each links as { href, label }}
+                    {#each links as { href, label, mobileSubmenu }}
                         <li>
-                            <a class="web-side-nav-button" {href}>
-                                <span class="text-caption">{label}</span>
-                            </a>
+                            {#if mobileSubmenu}
+                                <svelte:component this={mobileSubmenu} {label} />
+                            {:else}
+                                <a class="web-side-nav-button" {href}>
+                                    <span class="text-caption">{label}</span>
+                                </a>
+                            {/if}
                         </li>
                     {/each}
                 </ul>
