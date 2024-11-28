@@ -4,7 +4,8 @@
     import type { Tutorial } from '$markdoc/layouts/Tutorial.svelte';
     import type { TocItem } from './DocsArticle.svelte';
     import Heading from '$markdoc/nodes/Heading.svelte';
-    import { onMount } from 'svelte';
+    import { onMount, tick } from 'svelte';
+    import { page } from '$app/stores';
 
     export let toc: Array<TocItem>;
     export let back: string;
@@ -31,6 +32,34 @@
 
     let slotContent: HTMLElement | null = null;
 
+    /**
+     * Due to underlying logic with anchor links & the auto-scroll via hash values in the URL,
+     * we have an issue where if the first item is not scrolled enough it isn't marked as `selected`.
+     *
+     * We do below workaround for the time being without breaking things to scroll to the first item.
+     */
+    async function preSelectItemOnInit() {
+        await tick();
+
+        if (!$page.url.hash) return;
+        const tocItem = toc.slice(1);
+
+        // no sub-items, return.
+        if (!tocItem.length) return;
+
+        const pageHash = $page.url.hash.replace('#', '');
+        const tocItemHref = tocItem[0].href.replace('#', '');
+
+        if (pageHash !== tocItemHref) return;
+
+        const element = document.getElementById(pageHash);
+        if (element) {
+            const offset = 50;
+            const rect = element.getBoundingClientRect();
+            window.scroll({ top: window.scrollY + rect.top - offset });
+        }
+    }
+
     onMount(() => {
         if (!slotContent) return;
 
@@ -38,6 +67,8 @@
         slotContent.querySelectorAll<HTMLHeadingElement>('h2.text-label').forEach((header) => {
             header.classList.replace('text-label', 'web-main-body-500');
         });
+
+        preSelectItemOnInit();
     });
 </script>
 
