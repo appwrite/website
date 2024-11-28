@@ -532,7 +532,7 @@
             </div>
         </div>
 
-        <div class="overflow-hidden p-0 py-10">
+        <div class="overflow-hidden p-0 pt-10">
             <div class="web-big-padding-section-level-2 is-margin-replace-padding relative">
                 <img
                     src="/images/bgs/pre-footer.png"
@@ -573,5 +573,9 @@
         height: auto;
         max-inline-size: unset;
         max-block-size: unset;
+    }
+
+    .web-big-padding-section-level-2.is-margin-replace-padding {
+        padding-bottom: 0;
     }
 </style>

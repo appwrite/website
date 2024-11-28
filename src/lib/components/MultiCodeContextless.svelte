@@ -48,7 +48,7 @@
 </script>
 
 <section
-    class="dark web-code-snippet !max-w-[90vw] md:!max-w-3xl md:min-w-3xl"
+    class="dark web-code-snippet mx-auto lg:!max-w-[90vw]"
     aria-label="code-snippet panel"
     style={`width: ${width ? width / 16 + 'rem' : 'inherit'}; height: ${
         height ? height / 16 + 'rem' : 'inherit'
@@ -63,10 +63,12 @@
             </div>
         </div>
         <div class="web-code-snippet-header-end">
-            <ul class="buttons-list divide-greyscale-750 flex gap-3 divide-x">
-                <li class="buttons-list-item flex self-center pr-6">
-                    <Select bind:value={selected} bind:options />
-                </li>
+            <ul class="buttons-list flex gap-3">
+                {#if $snippets.entries.length}
+                    <li class="buttons-list-item flex self-center">
+                        <Select bind:value={selected} bind:options />
+                    </li>
+                {/if}
                 <li class="buttons-list-item" style="padding-inline-start: 13px">
                     <Tooltip>
                         <button

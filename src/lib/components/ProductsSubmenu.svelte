@@ -27,13 +27,13 @@
         },
         {
             name: 'Storage',
-            href: '/docs/products/storage',
+            href: '/products/storage',
             description: 'Advanced compression and encryption.',
             icon: '/images/icons/illustrated/dark/storage.png'
         },
         {
             name: 'Functions',
-            href: '/docs/products/functions',
+            href: '/products/functions',
             description: 'Deploy & scale serverless functions.',
             icon: '/images/icons/illustrated/dark/functions.png'
         },
