@@ -32,6 +32,15 @@
 
     let slotContent: HTMLElement | null = null;
 
+    function scrollToElement(pageHash: string) {
+        const element = document.getElementById(pageHash);
+        if (element) {
+            const offset = 50;
+            const rect = element.getBoundingClientRect();
+            window.scroll({ top: window.scrollY + rect.top - offset });
+        }
+    }
+
     /**
      * Due to underlying logic with anchor links & the auto-scroll via hash values in the URL,
      * we have an issue where if the first item is not scrolled enough it isn't marked as `selected`.
@@ -52,12 +61,26 @@
 
         if (pageHash !== tocItemHref) return;
 
-        const element = document.getElementById(pageHash);
-        if (element) {
-            const offset = 50;
-            const rect = element.getBoundingClientRect();
-            window.scroll({ top: window.scrollY + rect.top - offset });
+        scrollToElement(pageHash);
+    }
+
+    // same issue as above, only happens on the first item.
+    function scrollToItem(parent: TocItem, index: number) {
+        const tocItem = toc.slice(1);
+
+        if (!tocItem.length) return;
+        const tocItemHref = parent.href.replace('#', '');
+
+        const element = document.getElementById(tocItemHref);
+
+        if (index === 0) {
+            scrollToElement(tocItemHref);
+        } else {
+            element?.scrollIntoView();
         }
+
+        // because we used `preventDefault`.
+        history.pushState(null, '', parent.href);
     }
 
     onMount(() => {
@@ -188,15 +211,12 @@
                                 <ol
                                     class="web-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
                                 >
-                                    {#each absoluteToc as parent}
+                                    {#each absoluteToc as parent, innerIndex}
                                         <li class="web-references-menu-item">
                                             <a
                                                 href={parent.href}
-                                                on:click={() => {
-                                                    if (isCurrentStep) {
-                                                        parent.selected = true;
-                                                    }
-                                                }}
+                                                on:click|preventDefault={() =>
+                                                    scrollToItem(parent, innerIndex)}
                                                 class="web-references-menu-link is-inner"
                                                 class:tutorial-scroll-indicator={parent.selected}
                                                 class:is-selected={parent.selected}
