@@ -161,6 +161,11 @@
                                         <li class="web-references-menu-item">
                                             <a
                                                 href={parent.href}
+                                                on:click={() => {
+                                                    if (isCurrentStep) {
+                                                        parent.selected = true;
+                                                    }
+                                                }}
                                                 class="web-references-menu-link is-inner"
                                                 class:tutorial-scroll-indicator={parent.selected}
                                                 class:is-selected={parent.selected}
