@@ -1,19 +1,19 @@
 <script context="module" lang="ts">
-	import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+    import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
 
-	export async function newsletter(name: string, email: string) {
-		const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/newsletter/subscribe`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				name,
-				email
-			})
-		});
-		return response;
-	}
+    export async function newsletter(name: string, email: string) {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/newsletter/subscribe`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name,
+                email
+            })
+        });
+        return response;
+    }
 </script>
 
 <script lang="ts">
