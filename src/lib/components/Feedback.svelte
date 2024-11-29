@@ -2,6 +2,7 @@
     import { page } from '$app/stores';
     import { fade } from 'svelte/transition';
     import { loggedIn, user } from '$lib/utils/console';
+    import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
 
     export let date: string | undefined = undefined;
     let showFeedback = false;
@@ -18,7 +19,7 @@
 
         const cloudUserId = loggedIn && $user?.$id ? $user.$id : undefined;
 
-        const response = await fetch('https://growth.appwrite.io/v1/feedback/docs', {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback/docs`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
