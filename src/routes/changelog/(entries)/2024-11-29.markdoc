@@ -1,10 +1,10 @@
 ---
 layout: changelog
-title: Fixes and improvements to the Console
+title: Fixes and improvements to the Appwrite Cloud
 date: 2024-11-29
 ---
 
-We've made several updates to the Appwrite Console for a smoother experience:
+We've made several updates to the Appwrite Cloud for a smoother experience:
 
 - The backups feature popup modal now appears only on Cloud environments, avoiding confusion for self-hosted users.
 - Improved database screen UI for self-hosted users by removing an unnecessary column.
