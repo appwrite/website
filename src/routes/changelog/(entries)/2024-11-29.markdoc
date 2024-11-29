@@ -18,7 +18,7 @@ We've shipped several updates and improvements to Appwrite Cloud for a smoother 
 - Improved API performance under load.
 - Improved Functions performance for more stable and consistent function executions.
 
-These updates improve the overall usability and consistency of the Appwrite Console. Let us know if you encounter any issues!
+These updates are aimed at improving the overall usability and performance of Appwrite Cloud. Let us know if you encounter any issues!
 
 {% arrow_link href="https://cloud.appwrite.io/console" %}
 Explore the Console to see the updates
