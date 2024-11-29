@@ -34,21 +34,33 @@
     };
 </script>
 
-<div
-    class={cn(
-        'relative h-full',
-        'before:absolute before:inset-x-0 before:h-[350px] before:bg-gradient-to-b before:from-[#232325]/90 before:to-transparent'
-    )}
->
+<div class="relative h-full">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center">
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1}>
+            <Cell column={2} columnStart={1} class="px-8">
                 <h2
-                    data-animate={animate}
-                    class="text-title text-primary before:bg-accent text-pretty py-16 px-8 before:absolute before:left-0 before:mt-2.5 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
+                    class="text-title text-primary before:bg-accent text-pretty pt-16 before:absolute before:left-0 before:mt-2.5 before:h-6 before:w-px"
                 >
-                    Appwrite Cloud in<br /> numbers
+                    Building Appwrite<br /> Cloud for you
                 </h2>
+                <div class="space-y-8">
+                    <p>
+                        When we started working on our plans for Appwrite Cloud we knew we had a
+                        hard task ahead of us as we we didn’t want to just be a wrapper on top of
+                        AWS or Cloudflare. With no pre-built building blocks, we wanted to customize
+                        every piece in the platform to create the most complete developer experience
+                        we can imagine.
+                    </p>
+                    <p class="font-medium">
+                        We wanted to create a developer experience that rethinks how an idea goes to
+                        production and scale, without worries, without limits.
+                    </p>
+                    <p>
+                        Another benefit of this approach is the ability to control the cost of
+                        building with Appwrite as we reduce our vendor dependency. Making Appwrite’s
+                        pricing more accessible as part of our mission.
+                    </p>
+                </div>
             </Cell>
             <Cell column={4} columnStart={3}
                 ><p class="p-16">
@@ -58,39 +70,6 @@
                     step.
                 </p></Cell
             >
-            <Cell column={4} columnStart={1}
-                ><div
-                    use:useInView
-                    class="grid grid-cols-1 place-content-between gap-y-4 pb-20 md:grid-cols-2 lg:grid-cols-4"
-                >
-                    {#each featuredNumbers as { number, label, suffix }}
-                        <div class="number-card mx-2 rounded-2xl bg-[#232325]/90 p-4">
-                            <h3 class="text-title text-primary text-pretty">
-                                <NumberFlow value={number} {suffix} />
-                            </h3>
-                            <p class="text-description text-secondary">{label}</p>
-                        </div>
-                    {/each}
-                </div></Cell
-            >
         </Grid>
     </div>
 </div>
-
-<style lang="scss">
-    @use '$scss/abstract/mixins/border-gradient' as gradients;
-
-    .number-card {
-        @include gradients.border-gradient;
-        --p-radius: 16px;
-
-        background-color: hsl(var(--web-color-card));
-        border-radius: var(--p-radius);
-        --m-border-radius: var(--p-radius);
-        --m-border-gradient-before: linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.12) 0%,
-            rgba(255, 255, 255, 0) 125.11%
-        );
-    }
-</style>
