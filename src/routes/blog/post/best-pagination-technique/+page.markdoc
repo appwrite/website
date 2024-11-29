@@ -7,6 +7,7 @@ cover: /images/blog/best-pagination-technique/cover.png
 timeToRead: 8
 author: matej-baco
 category: tutorial
+callToAction: true
 ---
 
 The Database is one of the cornerstones of every application. It's where you store everything your app needs to remember, compute later, or display to other users online. It's all smooth sailing until your database grows and your application starts lagging because it's trying to fetch and render 1,000 posts simultaneously. As a smart engineer, you quickly patch this with a `Show more` button. However, a few weeks later, you encounter a `Timeout` error. Turning to Stack Overflow, you find that copying and pasting solutions is no longer helping. With no other options, you start debugging and discover that the database returns over 50,000 posts each time a user opens your app. What do you do now?
@@ -196,7 +197,7 @@ const config = JSON.parse(open("config.json"));
 export default function () {
 		const offset = Query.offset(__ENV.OFFSET);
 		const limit = 10;
-		
+
     http.get(`${config.endpoint}/databases/main/collections/posts/documents?queries[]=${offset}&queries[]=${limit}`, {
         headers: {
             'content-type': 'application/json',
@@ -264,7 +265,7 @@ const config = JSON.parse(open("config.json"));
 export default function () {
 		const cursor = Query.cursorAfter(__ENV.CURSOR);
 		const limit = 10;
-		
+
     http.get(`${config.endpoint}/databases/main/collections/posts/documents?queries[]=${offset}&queries[]=${limit}`, {
             headers: {
             'content-type': 'application/json',
