@@ -18,6 +18,6 @@ We've made several updates to the Appwrite Console for a smoother experience:
 
 These updates improve the overall usability and consistency of the Appwrite Console. Let us know if you encounter any issues!
 
-{% arrow_link href="/console" %}
+{% arrow_link href="https://cloud.appwrite.io/console" %}
 Explore the Console to see the updates
 {% /arrow_link %}
