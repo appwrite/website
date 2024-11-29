@@ -34,12 +34,7 @@
     };
 </script>
 
-<div
-    class={cn(
-        'relative h-full',
-        'before:absolute before:inset-x-0 before:h-[350px] before:bg-gradient-to-b before:from-[#232325]/90 before:to-transparent'
-    )}
->
+<div class="relative h-full">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center">
         <Grid rows={2} bottomBorder>
             <Cell column={2} columnStart={1} class="px-8">

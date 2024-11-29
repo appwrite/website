@@ -12,10 +12,9 @@
 </script>
 
 <div
-    class={cn('grid h-full grid-cols-1', classNames)}
-    style:grid-row={row}
-    style:grid-column="span {column} / span {column}"
-    style:grid-column-start={columnStart}
+    class={cn('col-span-[var(--column)] col-start-[var(--col-start)]', classNames)}
+    style:--column={column}
+    style:--col-start={columnStart}
     class:items-center={horizontalCenter}
     class:justify-center={verticalCenter}
 >

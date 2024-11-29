@@ -5,6 +5,7 @@
     import BuildingCloud from './(components)/building-cloud.svelte';
     import CloudNumbers from './(components)/cloud-numbers.svelte';
     import Hero from './(components)/hero.svelte';
+    import OpenSourceCommunity from './(components)/open-source-community.svelte';
 
     const title = 'Cloud GA - Appwrite';
     const description = 'Appwrite Cloud is now generally available.';
@@ -32,6 +33,7 @@
     <Hero />
     <CloudNumbers />
     <BuildingCloud />
+    <OpenSourceCommunity />
 
     <div class="container">
         <FooterNav />

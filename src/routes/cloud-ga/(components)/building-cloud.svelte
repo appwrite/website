@@ -1,48 +1,30 @@
 <script lang="ts">
     import Grid from './grid-system/grid.svelte';
     import Cell from './grid-system/cell.svelte';
-    import NumberFlow from '@number-flow/svelte';
-    import { inView } from 'motion';
-    import { cn } from '$lib/utils/classnames';
+    import BuildingCloudGraph from './building-cloud-graph.svelte';
 
-    let featuredNumbers: Array<{ number: number; label: string; suffix?: string }> = [
-        { number: 0, label: 'GitHub Stars', suffix: 'k+' },
-        { number: 0, label: 'Pull Requests', suffix: 'k+' },
-        { number: 0, label: 'Commits', suffix: 'k+' },
-        { number: 0, label: 'Issues', suffix: 'k+' },
-        { number: 0, label: 'Open Issues' },
-        { number: 0, label: 'Closed Issues', suffix: 'k+' },
-        { number: 0, label: 'Forks', suffix: 'k' },
-        { number: 0, label: 'Contributors', suffix: 'k+' }
+    const milestones = [
+        'Developer experience',
+        'Infrastructure and scalability',
+        'Security and compliance',
+        'Reliability and uptime',
+        'Networking and latency',
+        'Dedicated support'
     ];
-
-    const numbers = [32, 8, 15, 2.5, 625, 1.9, 4.9, 20];
-
-    const updateNumbers = () => {
-        featuredNumbers = featuredNumbers.map((feature, index) => {
-            return { ...feature, number: numbers[index] };
-        });
-    };
-
-    let animate: boolean = false;
-
-    const useInView = (node: HTMLElement) => {
-        inView(node, () => {
-            animate = true;
-            updateNumbers();
-        });
-    };
 </script>
 
 <div class="relative h-full">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center">
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1} class="px-8">
+            <Cell column={2} columnStart={1} class="space-y-8 px-8">
                 <h2
-                    class="text-title text-primary before:bg-accent text-pretty pt-16 before:absolute before:left-0 before:mt-2.5 before:h-6 before:w-px"
+                    class="text-title text-primary before:bg-accent text-pretty before:absolute before:left-0 before:mt-2.5 before:h-6 before:w-px"
                 >
                     Building Appwrite<br /> Cloud for you
                 </h2>
+            </Cell>
+
+            <Cell column={2} columnStart={3} class="px-8">
                 <div class="space-y-8">
                     <p>
                         When we started working on our plans for Appwrite Cloud we knew we had a
@@ -62,14 +44,52 @@
                     </p>
                 </div>
             </Cell>
-            <Cell column={4} columnStart={3}
-                ><p class="p-16">
-                    The milestone we achieved today officially started 22 months ago when we
-                    launched Appwrite private beta and enrolled users onto the platform bit by bit.
-                    Since then, we have reached many milestones before taking Cloud to the next
-                    step.
-                </p></Cell
-            >
+
+            <Cell column={4} columnStart={1}>
+                <div class="chart bg-card bg-blur-lg relative h-[400px] overflow-hidden pt-8 pl-8">
+                    <h2 class="text-primary text-description max-w-[250px]">
+                        Our DevEx commitment with Appwrite Cloud
+                    </h2>
+                    <BuildingCloudGraph />
+                </div>
+            </Cell>
+
+            <Cell columnStart={3} column={2}
+                ><p class="font-medium text-white">
+                    To become Generally Available, we set a few milestones that we had to achieve
+                    across different factors. Some are easier to measure than others, but never less
+                    important:
+                </p>
+                <ul class="mt-8 space-y-4">
+                    {#each milestones as milestone, i}
+                        {@const index = `0${i + 1}`}
+                        <li class="flex items-center gap-2 text-white">
+                            <span
+                                class="bg-accent/8 text-caption border-accent/32 flex size-6 items-center justify-center rounded-md border p-3"
+                                >{index}</span
+                            >
+                            <span class="font-medium">{milestone}</span>
+                        </li>
+                    {/each}
+                </ul>
+            </Cell>
         </Grid>
     </div>
 </div>
+
+<style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
+    .chart {
+        @include gradients.border-gradient;
+        --p-radius: 16px;
+
+        border-radius: var(--p-radius);
+        --m-border-radius: var(--p-radius);
+        --m-border-gradient-before: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.12) 0%,
+            rgba(255, 255, 255, 0) 125.11%
+        );
+    }
+</style>

@@ -4,13 +4,18 @@
     export let columns: number = 4;
     export let rows: number = 4;
     export let bottomBorder: boolean = false;
+
+    let classNames: string = '';
+
+    export { classNames as class };
 </script>
 
 <div
     class={cn(
-        'grid h-full w-full grid-cols-[repeat(var(--columns),_1fr)] grid-rows-[repeat(var(--rows),_1fr)]',
+        'grid h-full w-full auto-rows-min grid-cols-[repeat(var(--columns),_1fr)] grid-rows-[1fr]',
         'border-smooth border-l border-dashed',
-        'relative'
+        'relative',
+        classNames
     )}
     class:border-b={bottomBorder}
     style:--columns={columns}
