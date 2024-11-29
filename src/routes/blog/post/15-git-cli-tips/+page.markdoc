@@ -8,6 +8,7 @@ timeToRead: 6
 author: ebenezer-don
 category: tutorial
 featured: false
+callToAction: true
 ---
 
 While the command line interface can seem intimidating on the surface, it's actually a very useful tool that gives you control over your code in ways that GUIs often don't. If you can get comfortable with even a few git commands, you'll find yourself being more productive.
