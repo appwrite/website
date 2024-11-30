@@ -14,7 +14,6 @@
     import DevelopLocally from './(components)/DevelopLocally.svelte';
     import DeploySeamlessly from './(components)/DeploySeamlessly.svelte';
     import Testimonials from './(components)/Testimonials.svelte';
-    import RegionsMap from './(components)/RegionsMap.svelte';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     const title = 'Functions' + TITLE_SUFFIX;

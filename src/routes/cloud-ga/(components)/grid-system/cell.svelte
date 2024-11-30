@@ -12,7 +12,11 @@
 </script>
 
 <div
-    class={cn('col-span-[var(--column)] col-start-[var(--col-start)]', classNames)}
+    class={cn(
+        'col-span-[var(--column)] col-start-[var(--col-start)] row-span-[var(--row)]',
+        classNames
+    )}
+    style:--row={row}
     style:--column={column}
     style:--col-start={columnStart}
     class:items-center={horizontalCenter}

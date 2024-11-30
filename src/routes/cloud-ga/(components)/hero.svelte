@@ -13,7 +13,7 @@
             <Cell column={3} horizontalCenter verticalCenter>
                 <div class="max-w-4xl space-y-8 p-8">
                     <h1
-                        class="text-headline text-primary flex max-w-4xl flex-wrap gap-4 text-balance"
+                        class="text-headline font-aeonik-pro text-primary flex max-w-4xl flex-wrap gap-4 text-balance"
                     >
                         {#each title as word, i}
                             <span
