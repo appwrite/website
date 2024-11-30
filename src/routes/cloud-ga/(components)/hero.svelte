@@ -51,9 +51,8 @@
                     <div class="absolute left-0 -ml-px flex flex-col gap-5">
                         {#each lines as line}
                             <div
-                                class="animate-bottom-to-top h-[var(--height)] w-px bg-[var(--color)]"
+                                class="animate-bottom-to-top bg-accent/80 h-[var(--height)] w-px"
                                 style:--height="{line.height}px"
-                                style:--color={line.color}
                             />
                         {/each}
                     </div>
