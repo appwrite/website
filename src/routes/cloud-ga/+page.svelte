@@ -8,6 +8,7 @@
     import NetworkingLatency from './(components)/networking-latency.svelte';
     import OpenSourceCommunity from './(components)/open-source-community.svelte';
     import ReliabilityUptime from './(components)/reliability-uptime.svelte';
+    import ScaleWithoutWorries from './(components)/scale-without-worries.svelte';
     import SecurityCompliance from './(components)/security-compliance.svelte';
     import TeamOfExperts from './(components)/team-of-experts.svelte';
     import TheFuture from './(components)/the-future.svelte';
@@ -39,6 +40,7 @@
     <CloudNumbers />
     <BuildingCloud />
     <SecurityCompliance />
+    <ScaleWithoutWorries />
     <ReliabilityUptime />
     <NetworkingLatency />
     <OpenSourceCommunity />
