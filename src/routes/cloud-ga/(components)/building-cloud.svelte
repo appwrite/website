@@ -2,6 +2,7 @@
     import Grid from './grid-system/grid.svelte';
     import Cell from './grid-system/cell.svelte';
     import BuildingCloudGraph from './building-cloud-graph.svelte';
+    import { inView } from 'motion';
 
     const milestones = [
         'Developer experience',
@@ -16,7 +17,7 @@
 <div class="relative h-full">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center">
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1} class="space-y-8 px-8">
+            <Cell column={2} columnStart={1} class="py-20 px-8">
                 <h2
                     class="font-aeonik-pro text-title text-primary before:bg-accent text-pretty before:absolute before:left-0 before:mt-2.5 before:h-6 before:w-px"
                 >
@@ -24,7 +25,7 @@
                 </h2>
             </Cell>
 
-            <Cell column={2} columnStart={3} class="px-8">
+            <Cell column={2} columnStart={3} class="pt-20 px-8">
                 <div class="space-y-8">
                     <p>
                         When we started working on our plans for Appwrite Cloud we knew we had a
@@ -45,7 +46,7 @@
                 </div>
             </Cell>
 
-            <Cell column={4} columnStart={1}>
+            <Cell column={4} columnStart={1} class="py-20">
                 <div class="chart bg-card bg-blur-lg relative h-[400px] overflow-hidden pt-8 pl-8">
                     <h2 class="text-primary text-description max-w-[250px]">
                         Our DevEx commitment with Appwrite Cloud
@@ -54,7 +55,7 @@
                 </div>
             </Cell>
 
-            <Cell columnStart={3} column={2}
+            <Cell columnStart={3} column={2} class="px-8 pb-20"
                 ><p class="font-medium text-white">
                     To become Generally Available, we set a few milestones that we had to achieve
                     across different factors. Some are easier to measure than others, but never less

@@ -6,11 +6,11 @@
 </script>
 
 <div
-    class="border-smooth to-accent/9 relative flex h-[75vh] justify-center border-b bg-gradient-to-b from-transparent"
+    class="border-smooth to-accent/9 relative flex justify-center border-b bg-gradient-to-b from-transparent"
 >
     <div class="flex w-full max-w-6xl flex-col justify-center">
         <Grid rows={1}>
-            <Cell column={3} horizontalCenter verticalCenter>
+            <Cell column={3} horizontalCenter verticalCenter class="py-40">
                 <div class="max-w-4xl space-y-8 p-8">
                     <h1
                         class="text-headline font-aeonik-pro text-primary flex max-w-4xl flex-wrap gap-4 text-balance"

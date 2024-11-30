@@ -1,3 +1,15 @@
+<script lang="ts">
+    import { inView } from 'motion';
+
+    let animate: boolean = false;
+
+    const useInView = (node: SVGSVGElement) => {
+        inView(node, () => {
+            animate = true;
+        });
+    };
+</script>
+
 <svg
     width="1166"
     height="400"
@@ -5,6 +17,8 @@
     fill="none"
     class="graph absolute inset-0"
     xmlns="http://www.w3.org/2000/svg"
+    use:useInView
+    style:animation-play-state={animate ? 'running' : 'paused'}
 >
     <path
         d="M1189 -40C949.932 376.543 168.486 380 1 380V410H1189V-40Z"

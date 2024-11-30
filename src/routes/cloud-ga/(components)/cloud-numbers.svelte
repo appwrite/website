@@ -42,7 +42,7 @@
 >
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center">
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1} class="px-8">
+            <Cell column={2} columnStart={1} class="py-20 px-8">
                 <h2
                     data-animate={animate}
                     class="text-title text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:left-0 before:mt-2.5 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
@@ -50,7 +50,7 @@
                     Appwrite Cloud in<br /> numbers
                 </h2>
             </Cell>
-            <Cell column={4} columnStart={3}
+            <Cell column={4} columnStart={3} class="pt-40 px-8 pb-20"
                 ><p>
                     The milestone we achieved today officially started 22 months ago when we
                     launched Appwrite private beta and enrolled users onto the platform bit by bit.
@@ -58,7 +58,7 @@
                     step.
                 </p></Cell
             >
-            <Cell column={4} columnStart={1}
+            <Cell column={4} columnStart={1} class="pb-20"
                 ><div
                     use:useInView
                     class="grid grid-cols-1 place-content-between gap-y-4 md:grid-cols-2 lg:grid-cols-4"
