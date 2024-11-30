@@ -13,7 +13,7 @@
 
 <div
     class={cn(
-        'md:col-span-[var(--column)] md:col-start-[var(--col-start)] md:row-span-[var(--row)]',
+        'relative md:col-span-[var(--column)] md:col-start-[var(--col-start)] md:row-span-[var(--row)]',
         classNames
     )}
     style:--row={row}

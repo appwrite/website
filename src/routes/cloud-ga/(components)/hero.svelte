@@ -6,7 +6,7 @@
 </script>
 
 <div
-    class="border-smooth to-accent/9 relative flex justify-center border-b bg-gradient-to-b from-transparent"
+    class="border-smooth to-accent/9 relative flex justify-center overflow-y-hidden border-b bg-gradient-to-b from-transparent"
 >
     <div class="flex w-full max-w-6xl flex-col justify-center">
         <Grid rows={1}>
@@ -36,6 +36,34 @@
                             excited to announce its transition to general availability.
                         </p>
                     </div>
+                </div>
+            </Cell>
+            {#each Array.from({ length: 4 }) as _, i}
+                {@const columnStart = i + 1}
+                {@const lineArray = Math.floor(Math.random() * 5) + 8}
+                {@const lines = Array.from({ length: lineArray }).map((_, i) => {
+                    return {
+                        height: Math.floor(Math.random() * 70) + 10,
+                        color: `#${Math.floor(Math.random() * 16777215).toString(16)}`
+                    };
+                })}
+                <Cell {columnStart}>
+                    <div class="absolute left-0 -ml-px flex flex-col gap-5">
+                        {#each lines as line}
+                            <div
+                                class="animate-bottom-to-top h-[var(--height)] w-px bg-[var(--color)]"
+                                style:--height="{line.height}px"
+                                style:--color={line.color}
+                            />
+                        {/each}
+                    </div>
+                </Cell>
+            {/each}
+
+            <Cell column={5}>
+                <div class="absolute right-0 -mr-px flex flex-col gap-5">
+                    <div class="animate-bottom-to-top bg-accent h-[40px] w-px" />
+                    <div class="animate-bottom-to-top h-[25px] w-px bg-[#85DBD8]" />
                 </div>
             </Cell>
         </Grid>

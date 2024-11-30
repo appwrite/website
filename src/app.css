@@ -80,6 +80,9 @@
     --color-badge-bg-dark: #2c2c2f;
     --color-badge-border-dark: #39393c;
 
+    /* Pink polyfills */
+    --transition: 0.2s;
+
     /* Animations */
     --animate-scale-in: scale-in 200ms ease-out forwards;
     --animate-caret-blink: caret-blink 1s ease-in-out infinite;
@@ -88,9 +91,7 @@
     --animate-scroll: scroll 60s linear infinite;
     --animate-fade-in: fade 0.5s ease-in-out both;
     --animate-marquee: marquee var(--speed, 30s) linear infinite var(--direction, forwards);
-
-    /* Pink polyfills */
-    --transition: 0.2s;
+    --animate-bottom-to-top: bottom-to-top var(--speed, 10s) ease-in-out infinite;
 
     /* Keyframes */
     @keyframes scale-in {
@@ -153,6 +154,15 @@
     @keyframes marquee {
         to {
             transform: translateX(-50%);
+        }
+    }
+
+    @keyframes bottom-to-top {
+        from {
+            transform: translateY(0vh);
+        }
+        to {
+            transform: translateY(-100vh);
         }
     }
 
