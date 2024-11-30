@@ -2,7 +2,7 @@
     import Grid from './grid-system/grid.svelte';
     import Cell from './grid-system/cell.svelte';
     import { inView } from 'motion';
-    import RegionsMap from '$routes/products/functions/(components)/RegionsMap.svelte';
+    import Map from '$lib/components/regions-map/map.svelte';
 
     let animate: boolean = false;
 
@@ -46,7 +46,7 @@
                 </div>
             </Cell>
             <Cell column={4} class="pb-20">
-                <RegionsMap />
+                <Map />
             </Cell>
         </Grid>
     </div>

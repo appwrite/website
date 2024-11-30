@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { cn } from '$lib/utils/classnames';
     import { inView } from 'motion';
 
     let animate: boolean = false;
@@ -8,6 +9,10 @@
             animate = true;
         });
     };
+
+    let classNames = '';
+
+    export { classNames as class };
 </script>
 
 <svg
@@ -15,7 +20,7 @@
     height="400"
     viewBox="0 0 1166 400"
     fill="none"
-    class="graph absolute inset-0"
+    class={cn(classNames)}
     xmlns="http://www.w3.org/2000/svg"
     use:useInView
     style:animation-play-state={animate ? 'running' : 'paused'}

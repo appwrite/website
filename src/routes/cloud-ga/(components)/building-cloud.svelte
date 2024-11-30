@@ -2,9 +2,8 @@
     import Grid from './grid-system/grid.svelte';
     import Cell from './grid-system/cell.svelte';
     import BuildingCloudGraph from './building-cloud-graph.svelte';
-    import { inView } from 'motion';
 
-    const milestones = [
+    const missions = [
         'Developer experience',
         'Infrastructure and scalability',
         'Security and compliance',
@@ -51,7 +50,41 @@
                     <h2 class="text-primary text-description max-w-[250px]">
                         Our DevEx commitment with Appwrite Cloud
                     </h2>
-                    <BuildingCloudGraph />
+                    <div class="absolute bottom-0 left-0 flex w-full justify-between py-8">
+                        <div
+                            class="text-caption text-primary relative flex max-w-[200px] items-center px-4 font-medium"
+                        >
+                            New product idea
+                        </div>
+
+                        <div
+                            class="text-caption text-primary relative flex max-w-[175px] items-center px-4 font-medium"
+                        >
+                            Product up-and-running in seconds with Appwrite
+                        </div>
+
+                        <div
+                            class="text-caption text-primary relative flex max-w-[200px] items-center px-4 font-medium"
+                        >
+                            MVP built in days
+                        </div>
+                        <div
+                            class="text-caption text-primary relative flex max-w-[200px] items-center px-4 font-medium"
+                        >
+                            First 100 users
+                        </div>
+                        <div
+                            class="text-caption text-primary relative flex max-w-[200px] items-center px-4 font-medium"
+                        >
+                            Stripe integrated in seconds
+                        </div>
+                        <div
+                            class="text-caption text-primary relative flex max-w-[200px] items-center px-4 font-medium"
+                        >
+                            Scaled overnight
+                        </div>
+                    </div>
+                    <BuildingCloudGraph class="absolute inset-0 bottom-0" />
                 </div>
             </Cell>
 
@@ -62,14 +95,14 @@
                     important:
                 </p>
                 <ul class="mt-8 space-y-4">
-                    {#each milestones as milestone, i}
+                    {#each missions as mission, i}
                         {@const index = `0${i + 1}`}
                         <li class="flex items-center gap-2 text-white">
                             <span
                                 class="bg-accent/8 text-caption border-accent/32 flex size-6 items-center justify-center rounded-md border p-3"
                                 >{index}</span
                             >
-                            <span class="font-medium">{milestone}</span>
+                            <span class="font-medium">{mission}</span>
                         </li>
                     {/each}
                 </ul>
