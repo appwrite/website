@@ -16,7 +16,7 @@
 
 <div class="relative h-full">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center">
-        <Grid rows={2} bottomBorder>
+        <Grid bottomBorder>
             <Cell column={2} columnStart={1} class="py-20 px-8">
                 <h2
                     class="font-aeonik-pro text-title text-primary before:bg-accent text-pretty before:absolute before:left-0 before:mt-2.5 before:h-6 before:w-px"

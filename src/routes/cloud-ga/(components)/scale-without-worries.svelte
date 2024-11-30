@@ -38,7 +38,11 @@
                         confident that we have reached this state as the numbers show, Appwrite
                         Cloud is stable for any project to grow rapidly unexpectedly.
                     </p>
-                    <img class="rounded-3xl" src={Placeholder} alt="Placeholder" />
+                    <img
+                        class="aspect-video rounded-3xl object-cover"
+                        src={Placeholder}
+                        alt="Placeholder"
+                    />
                     <p>
                         Building the infrastructure to support this goal wasn't easy, especially
                         with our vision of developing Appwrite Cloud from the ground up. However, we

@@ -12,8 +12,8 @@
 
 <div
     class={cn(
-        'grid h-full w-full auto-rows-min grid-cols-[repeat(var(--columns),_1fr)] grid-rows-[1fr]',
-        'border-smooth border-l border-dashed',
+        'grid h-full w-full auto-rows-min grid-cols-1 grid-rows-[1fr] md:grid-cols-[repeat(var(--columns),_1fr)]',
+        'border-smooth border-dashed md:border-l',
         'relative',
         classNames
     )}
@@ -30,7 +30,7 @@
                     'animate-fade-in absolute inset-0',
                     '[grid-column-start:var(--x)] [grid-column-end:span_1]',
                     '[grid-row-start:var(--y)] [grid-row-end:span_1]',
-                    'border-smooth border-r border-dashed'
+                    'border-smooth border-dashed md:border-r'
                 )}
                 style:--x={x}
                 style:--y={y}
