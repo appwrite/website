@@ -1,4 +1,5 @@
 <script>
+    import { cn } from '$lib/utils/classnames';
     import Cell from './grid-system/cell.svelte';
     import Grid from './grid-system/grid.svelte';
 
@@ -40,18 +41,23 @@
             </Cell>
             {#each Array.from({ length: 4 }) as _, i}
                 {@const columnStart = i + 1}
-                {@const lineArray = Math.floor(Math.random() * 5) + 8}
+                {@const lineArray = Math.floor(Math.random() * 5) + 3}
                 {@const lines = Array.from({ length: lineArray }).map((_, i) => {
                     return {
-                        height: Math.floor(Math.random() * 70) + 10,
-                        color: `#${Math.floor(Math.random() * 16777215).toString(16)}`
+                        height: Math.floor(Math.random() * 40) + 10,
+                        color: Math.random() > 0.5 ? 'bg-accent' : 'bg-mint-200'
                     };
                 })}
                 <Cell {columnStart}>
                     <div class="absolute left-0 -ml-px flex flex-col gap-5">
                         {#each lines as line}
                             <div
-                                class="animate-bottom-to-top bg-accent/80 h-[var(--height)] w-px"
+                                class={cn(
+                                    'animate-bottom-to-top h-[var(--height)] w-px',
+                                    line.color
+                                )}
+                                style:--speed="{Math.random() * 2 + 1}s"
+                                style:animation-delay="{Math.random() * 2}s"
                                 style:--height="{line.height}px"
                             />
                         {/each}

@@ -1,30 +1,62 @@
 <script lang="ts">
+    import { inView } from 'motion';
     import MapMarker from './map-marker.svelte';
+
+    let mouse = { x: 0, y: 0 };
+
+    const useMousePosition = (node: HTMLElement) => {
+        const handleMouseMove = (event: MouseEvent) => {
+            mouse = {
+                x: event.clientX,
+                y: event.clientY
+            };
+        };
+
+        inView(
+            node,
+            () => {
+                node.addEventListener('mousemove', handleMouseMove);
+            },
+            { amount: 'all' }
+        );
+
+        return {
+            destroy() {
+                node.removeEventListener('mousemove', handleMouseMove);
+            }
+        };
+    };
 
     const pins = [
         {
-            city: 'Frankfurt',
-            code: 'GER',
-            available: true
+            city: 'San Francisco',
+            code: 'SFO',
+            available: false,
+            x: 55,
+            y: 100
         },
         {
             city: 'New York City',
             code: 'NYC',
+            available: false,
+            x: 55,
+            y: 80
+        },
+        {
+            city: 'Frankfurt',
+            code: 'GER',
+            available: true,
+            x: 55,
+            y: 80
+        },
+        {
+            city: 'Amsterdam',
+            code: 'AMS',
             available: false
         },
         {
             city: 'Syndey',
             code: 'AUS',
-            available: false
-        },
-        {
-            city: 'San Francisco',
-            code: 'SFO',
-            available: false
-        },
-        {
-            city: 'Amsterdam',
-            code: 'AMS',
             available: false
         },
         {
@@ -40,7 +72,10 @@
     ];
 </script>
 
-<div class="container relative mx-auto flex h-full items-center justify-center">
+<div
+    class="container relative mx-auto flex h-full items-center justify-center"
+    use:useMousePosition
+>
     <div class="relative z-10 block w-full space-y-4 md:hidden">
         {#each pins as pin}
             <div
@@ -66,12 +101,37 @@
             </div>
         {/each}
     </div>
-    <div class="relative flex w-full">
-        <img src="/images/regions/map.svg" class="map" alt="Map of the world" />
-        <div class="absolute inset-0">
+    <div class="relative hidden w-full origin-bottom transition-all md:block">
+        <div
+            class="absolute inset-0 [mask-image:url('/images/regions/map.svg')] [mask-repeat:no-repeat] [mask-size:contain]"
+        >
+            <div
+                class="gradient aspect-square size-40 rounded-full blur-3xl"
+                style:--mouse-x="{mouse.x}px"
+                style:--mouse-y="{mouse.y}px"
+            />
+        </div>
+        <img src="/images/regions/map.svg" class="opacity-10" alt="Map of the world" />
+        <div class="absolute inset-0 flex justify-between">
             {#each pins as pin, index}
                 <MapMarker {...pin} {index} />
             {/each}
         </div>
     </div>
 </div>
+
+<style>
+    .gradient {
+        background: radial-gradient(
+            circle at center,
+            hsla(0, 0%, 100%, 0.7),
+            hsla(0, 0%, 100%, 0.7),
+            hsla(0, 0%, 100%, 0.7)
+        );
+        transform: translate3d(
+            calc(var(--mouse-x, -100%) * 1 - 18rem),
+            calc(var(--mouse-y, -100%) * 1 - 25rem),
+            0
+        );
+    }
+</style>

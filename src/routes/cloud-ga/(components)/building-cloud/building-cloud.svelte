@@ -1,7 +1,18 @@
 <script lang="ts">
-    import Grid from './grid-system/grid.svelte';
-    import Cell from './grid-system/cell.svelte';
-    import BuildingCloudGraph from './building-cloud-graph.svelte';
+    import Grid from '../grid-system/grid.svelte';
+    import Cell from '../grid-system/cell.svelte';
+    import Graph from './graph.svelte';
+    import GraphMarker from './graph-marker.svelte';
+    import { inView } from 'motion';
+
+    const steps = [
+        'New product idea',
+        'Product up-and-running in seconds with Appwrite',
+        'MVP built in days',
+        'First 100 users',
+        'Stripe integrated in seconds',
+        'Scaled overnight'
+    ];
 
     const missions = [
         'Developer experience',
@@ -11,6 +22,15 @@
         'Networking and latency',
         'Dedicated support'
     ];
+
+    const BASE_DELAY = 150;
+    let animate: boolean = false;
+
+    const useInView = (node: HTMLElement) => {
+        inView(node, () => {
+            animate = true;
+        });
+    };
 </script>
 
 <div class="relative h-full">
@@ -50,41 +70,21 @@
                     <h2 class="text-primary text-description max-w-[250px]">
                         Our DevEx commitment with Appwrite Cloud
                     </h2>
-                    <div class="absolute bottom-0 left-0 flex w-full justify-between py-8">
-                        <div
-                            class="text-caption text-primary relative flex max-w-[200px] items-center px-4 font-medium"
-                        >
-                            New product idea
-                        </div>
-
-                        <div
-                            class="text-caption text-primary relative flex max-w-[175px] items-center px-4 font-medium"
-                        >
-                            Product up-and-running in seconds with Appwrite
-                        </div>
-
-                        <div
-                            class="text-caption text-primary relative flex max-w-[200px] items-center px-4 font-medium"
-                        >
-                            MVP built in days
-                        </div>
-                        <div
-                            class="text-caption text-primary relative flex max-w-[200px] items-center px-4 font-medium"
-                        >
-                            First 100 users
-                        </div>
-                        <div
-                            class="text-caption text-primary relative flex max-w-[200px] items-center px-4 font-medium"
-                        >
-                            Stripe integrated in seconds
-                        </div>
-                        <div
-                            class="text-caption text-primary relative flex max-w-[200px] items-center px-4 font-medium"
-                        >
-                            Scaled overnight
-                        </div>
+                    <div
+                        class="absolute bottom-0 left-0 flex w-full justify-between pt-8 pb-3"
+                        use:useInView
+                    >
+                        {#each steps as step, i}
+                            <GraphMarker
+                                delay={BASE_DELAY * i + 1}
+                                align={i === 2 ? 'right' : 'left'}
+                                {animate}
+                            >
+                                {step}
+                            </GraphMarker>
+                        {/each}
                     </div>
-                    <BuildingCloudGraph class="absolute inset-0 bottom-0" />
+                    <Graph class="absolute inset-0 bottom-0" {animate} />
                 </div>
             </Cell>
 
@@ -97,13 +97,17 @@
                 <ul class="mt-8 space-y-4">
                     {#each missions as mission, i}
                         {@const index = `0${i + 1}`}
-                        <li class="flex items-center gap-2 text-white">
+                        <a href="/" class="group flex items-center gap-2 text-white">
                             <span
-                                class="bg-accent/8 text-caption border-accent/32 flex size-6 items-center justify-center rounded-md border p-3"
-                                >{index}</span
+                                class="bg-accent/8 text-caption border-accent/32 relative flex size-6 items-center justify-center overflow-hidden rounded-md border p-3"
+                            >
+                                <div
+                                    class="from-accent/12 to-accent/8 absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                                />
+                                {index}</span
                             >
                             <span class="font-medium">{mission}</span>
-                        </li>
+                        </a>
                     {/each}
                 </ul>
             </Cell>

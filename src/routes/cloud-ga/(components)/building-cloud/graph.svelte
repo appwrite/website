@@ -2,13 +2,7 @@
     import { cn } from '$lib/utils/classnames';
     import { inView } from 'motion';
 
-    let animate: boolean = false;
-
-    const useInView = (node: SVGSVGElement) => {
-        inView(node, () => {
-            animate = true;
-        });
-    };
+    export let animate: boolean = false;
 
     let classNames = '';
 
@@ -20,9 +14,8 @@
     height="400"
     viewBox="0 0 1166 400"
     fill="none"
-    class={cn(classNames)}
+    class={cn('graph', classNames)}
     xmlns="http://www.w3.org/2000/svg"
-    use:useInView
     style:animation-play-state={animate ? 'running' : 'paused'}
 >
     <path

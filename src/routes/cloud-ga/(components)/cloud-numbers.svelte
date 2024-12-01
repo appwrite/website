@@ -50,7 +50,7 @@
                     Appwrite Cloud in<br /> numbers
                 </h2>
             </Cell>
-            <Cell column={4} columnStart={3} class="pt-40 px-8 pb-20"
+            <Cell column={4} columnStart={3} class="pt-20 px-8 pb-20"
                 ><p>
                     The milestone we achieved today officially started 22 months ago when we
                     launched Appwrite private beta and enrolled users onto the platform bit by bit.

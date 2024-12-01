@@ -7,6 +7,8 @@
     type $$Props = {
         city: string;
         code: string;
+        x?: number;
+        y?: number;
         available?: boolean;
         class?: string;
         index: number;
@@ -18,6 +20,8 @@
     export let code: $$Props['code'];
     export let index: $$Props['index'] = 0;
     export let available: $$Props['available'] = false;
+    export let x: $$Props['x'] = 0;
+    export let y: $$Props['y'] = 0;
     export { className as class };
 
     const {
@@ -40,10 +44,13 @@
 </script>
 
 <div
-    class="animate-fade-in group relative flex size-5 cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)]"
-    role="presentation"
+    class={cn(
+        'animate-fade-in group relative z-10 flex size-5 translate-x-[var(--x)] translate-y-[var(--y)] cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)]'
+    )}
     use:melt={$trigger}
     style:--delay="{index * 100}ms"
+    style:--x="{x}px"
+    style:--y="{y}px"
 >
     <span
         class="bg-accent absolute inline-flex h-full w-full rounded-full opacity-75 group-hover:animate-ping"
@@ -53,6 +60,7 @@
         class="absolute size-1/2 rounded-full bg-white transition-transform group-hover:scale-110"
     />
 </div>
+
 {#if $open}
     <div
         use:melt={$content}
