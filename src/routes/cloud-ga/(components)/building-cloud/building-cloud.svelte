@@ -2,18 +2,8 @@
     import Grid from '../grid-system/grid.svelte';
     import Cell from '../grid-system/cell.svelte';
     import Graph from './graph.svelte';
-    import GraphMarker from './graph-marker.svelte';
     import { inView } from 'motion';
     import { cn } from '$lib/utils/classnames';
-
-    const steps = [
-        'New product idea',
-        'Product up-and-running in seconds with Appwrite',
-        'MVP built in days',
-        'First 100 users',
-        'Stripe integrated in seconds',
-        'Scaled overnight'
-    ];
 
     const missions = [
         'Developer experience',
@@ -74,17 +64,7 @@
                     <div
                         class="absolute bottom-0 left-0 flex w-full justify-between pt-8 pb-3"
                         use:useInView
-                    >
-                        {#each steps as step, i}
-                            <GraphMarker
-                                delay={BASE_DELAY * i + 1}
-                                align={i === 2 ? 'right' : 'left'}
-                                {animate}
-                            >
-                                {step}
-                            </GraphMarker>
-                        {/each}
-                    </div>
+                    ></div>
                     <Graph class="absolute inset-0 bottom-0" {animate} />
                 </div>
             </Cell>
