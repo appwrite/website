@@ -36,7 +36,7 @@
 <div class="relative h-full">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center">
         <Grid bottomBorder>
-            <Cell column={2} columnStart={1} class="py-20 px-8">
+            <Cell column={2} columnStart={1} class="py-12 px-8 md:py-20">
                 <h2
                     class="font-aeonik-pro text-title text-primary before:bg-accent text-pretty before:absolute before:left-0 before:mt-2.5 before:h-6 before:w-px"
                 >
@@ -44,7 +44,7 @@
                 </h2>
             </Cell>
 
-            <Cell column={2} columnStart={3} class="pt-20 px-8">
+            <Cell column={2} columnStart={3} class="px-8 pb-8 md:py-20">
                 <div class="space-y-8">
                     <p>
                         When we started working on our plans for Appwrite Cloud we knew we had a

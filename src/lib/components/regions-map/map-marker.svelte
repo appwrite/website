@@ -47,7 +47,7 @@
 
 <div
     class={cn(
-        'group absolute flex size-4 translate-x-[var(--x)] translate-y-[var(--y)] cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)]',
+        'group relative flex size-4 translate-x-[var(--x)] translate-y-[var(--y)] cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)]',
         { 'animate-fade-in': animate }
     )}
     use:melt={$trigger}
