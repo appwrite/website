@@ -11,7 +11,7 @@
 >
     <div class="flex w-full max-w-6xl flex-col justify-center">
         <Grid rows={1}>
-            <Cell column={3} horizontalCenter verticalCenter class="py-40">
+            <Cell column={3} horizontalCenter verticalCenter class="py-20 md:py-40">
                 <div class="max-w-4xl space-y-8 p-8">
                     <h1
                         class="text-headline font-aeonik-pro text-primary flex max-w-4xl flex-wrap gap-4 text-balance"
@@ -39,22 +39,27 @@
                     </div>
                 </div>
             </Cell>
-            {#each Array.from({ length: 4 }) as _, i}
+            {#each Array.from({ length: 5 }) as _, i}
                 {@const columnStart = i + 1}
                 {@const lineArray = Math.floor(Math.random() * 5) + 3}
                 {@const lines = Array.from({ length: lineArray }).map((_, i) => {
                     return {
-                        height: Math.floor(Math.random() * 40) + 10,
-                        color: Math.random() > 0.5 ? 'bg-accent/40' : 'bg-mint-[#85DBD8]/40'
+                        height: Math.floor(Math.random() * 40) + 30,
+                        from: Math.random() > 0.5 ? 'from-accent' : 'from-mint-[#85DBD8]'
                     };
                 })}
                 <Cell {columnStart}>
-                    <div class="absolute left-0 -ml-px flex flex-col gap-5">
+                    <div
+                        class={cn('absolute flex flex-col gap-80', {
+                            'left-0 -ml-px': i !== 4,
+                            'right-0 -mr-px': i === 4
+                        })}
+                    >
                         {#each lines as line}
                             <div
                                 class={cn(
-                                    'animate-bottom-to-top h-[var(--height)] w-px',
-                                    line.color
+                                    'animate-drop h-[var(--height)] w-px bg-gradient-to-t to-transparent',
+                                    line.from
                                 )}
                                 style:--speed="2s"
                                 style:animation-delay="{Math.random() * 2}s"
@@ -64,13 +69,6 @@
                     </div>
                 </Cell>
             {/each}
-
-            <Cell column={5}>
-                <div class="absolute right-0 -mr-px flex flex-col gap-5">
-                    <div class="animate-bottom-to-top bg-accent/40 h-[40px] w-px" />
-                    <div class="animate-bottom-to-top h-[25px] w-px bg-[#85DBD8]/40" />
-                </div>
-            </Cell>
         </Grid>
     </div>
 </div>

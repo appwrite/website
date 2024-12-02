@@ -4,6 +4,7 @@
     import Graph from './graph.svelte';
     import GraphMarker from './graph-marker.svelte';
     import { inView } from 'motion';
+    import { cn } from '$lib/utils/classnames';
 
     const steps = [
         'New product idea',
@@ -65,7 +66,7 @@
                 </div>
             </Cell>
 
-            <Cell column={4} columnStart={1} class="py-20">
+            <Cell column={4} columnStart={1} class="py-12 px-4 md:py-20">
                 <div class="chart bg-card bg-blur-lg relative h-[400px] overflow-hidden pt-8 pl-8">
                     <h2 class="text-primary text-description max-w-[250px]">
                         Our DevEx commitment with Appwrite Cloud
@@ -89,7 +90,7 @@
             </Cell>
 
             <Cell columnStart={3} column={2} class="px-8 pb-20"
-                ><p class="font-medium text-white">
+                ><p class="animate-text font-medium text-white">
                     To become Generally Available, we set a few milestones that we had to achieve
                     across different factors. Some are easier to measure than others, but never less
                     important:
@@ -97,7 +98,16 @@
                 <ul class="mt-8 space-y-4">
                     {#each missions as mission, i}
                         {@const index = `0${i + 1}`}
-                        <a href="/" class="group flex items-center gap-2 text-white">
+                        <a
+                            href="/"
+                            class={cn(
+                                'group flex items-center gap-2 text-white [animation-delay:var(--delay)]',
+                                {
+                                    'animate-text': animate
+                                }
+                            )}
+                            style:--delay={`${BASE_DELAY * i}ms`}
+                        >
                             <span
                                 class="bg-accent/8 text-caption border-accent/32 relative flex size-6 items-center justify-center overflow-hidden rounded-md border p-3"
                             >

@@ -91,7 +91,7 @@
     --animate-scroll: scroll 60s linear infinite;
     --animate-fade-in: fade 0.5s ease-in-out both;
     --animate-marquee: marquee var(--speed, 30s) linear infinite var(--direction, forwards);
-    --animate-bottom-to-top: bottom-to-top var(--speed, 2s) linear infinite;
+    --animate-drop: drop var(--speed, 4s) linear infinite;
 
     /* Keyframes */
     @keyframes scale-in {
@@ -157,12 +157,12 @@
         }
     }
 
-    @keyframes bottom-to-top {
+    @keyframes drop {
         from {
-            transform: translateY(0vh);
+            transform: translateY(-100vh);
         }
         to {
-            transform: translateY(-100vh);
+            transform: translateY(0vh);
         }
     }
 

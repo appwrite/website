@@ -33,7 +33,7 @@
                 animate = true;
                 updateNumbers();
             },
-            { amount: 0.5 }
+            { amount: 0.25 }
         );
     };
 </script>
