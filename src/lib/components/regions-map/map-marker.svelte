@@ -7,21 +7,23 @@
     type $$Props = {
         city: string;
         code: string;
+        index: number;
         x?: number;
         y?: number;
         available?: boolean;
         class?: string;
-        index: number;
+        animate?: boolean;
     };
 
     let className: $$Props['class'] = '';
 
     export let city: $$Props['city'];
     export let code: $$Props['code'];
-    export let index: $$Props['index'] = 0;
     export let available: $$Props['available'] = false;
     export let x: $$Props['x'] = 0;
     export let y: $$Props['y'] = 0;
+    export let index: $$Props['index'] = 0;
+    export let animate: $$Props['animate'] = false;
     export { className as class };
 
     const {
@@ -45,12 +47,13 @@
 
 <div
     class={cn(
-        'animate-fade-in group relative z-10 flex size-5 translate-x-[var(--x)] translate-y-[var(--y)] cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)]'
+        'group absolute flex size-4 translate-x-[var(--x)] translate-y-[var(--y)] cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)]',
+        { 'animate-fade-in': animate }
     )}
     use:melt={$trigger}
+    style:--x="{x}vw"
+    style:--y="{y}vh"
     style:--delay="{index * 100}ms"
-    style:--x="{x}px"
-    style:--y="{y}px"
 >
     <span
         class="bg-accent absolute inline-flex h-full w-full rounded-full opacity-75 group-hover:animate-ping"

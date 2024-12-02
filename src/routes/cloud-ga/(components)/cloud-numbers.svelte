@@ -27,10 +27,14 @@
     let animate: boolean = false;
 
     const useInView = (node: HTMLElement) => {
-        inView(node, () => {
-            animate = true;
-            updateNumbers();
-        });
+        inView(
+            node,
+            () => {
+                animate = true;
+                updateNumbers();
+            },
+            { amount: 0.5 }
+        );
     };
 </script>
 

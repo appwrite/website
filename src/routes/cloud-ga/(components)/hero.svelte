@@ -45,7 +45,7 @@
                 {@const lines = Array.from({ length: lineArray }).map((_, i) => {
                     return {
                         height: Math.floor(Math.random() * 40) + 10,
-                        color: Math.random() > 0.5 ? 'bg-accent' : 'bg-mint-200'
+                        color: Math.random() > 0.5 ? 'bg-accent/40' : 'bg-mint-[#85DBD8]/40'
                     };
                 })}
                 <Cell {columnStart}>
@@ -56,7 +56,7 @@
                                     'animate-bottom-to-top h-[var(--height)] w-px',
                                     line.color
                                 )}
-                                style:--speed="{Math.random() * 2 + 1}s"
+                                style:--speed="2s"
                                 style:animation-delay="{Math.random() * 2}s"
                                 style:--height="{line.height}px"
                             />
@@ -67,8 +67,8 @@
 
             <Cell column={5}>
                 <div class="absolute right-0 -mr-px flex flex-col gap-5">
-                    <div class="animate-bottom-to-top bg-accent h-[40px] w-px" />
-                    <div class="animate-bottom-to-top h-[25px] w-px bg-[#85DBD8]" />
+                    <div class="animate-bottom-to-top bg-accent/40 h-[40px] w-px" />
+                    <div class="animate-bottom-to-top h-[25px] w-px bg-[#85DBD8]/40" />
                 </div>
             </Cell>
         </Grid>
