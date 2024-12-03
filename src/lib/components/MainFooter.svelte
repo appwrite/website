@@ -4,17 +4,17 @@
 
     export let variant: 'homepage' | 'docs' = 'homepage';
 
-    const year = new Date().getFullYear()
+    const year = new Date().getFullYear();
 </script>
 
 {#if variant === 'homepage'}
-    <footer class="aw-main-footer u-position-relative u-margin-block-start-48">
-        <ul class="u-flex u-gap-8">
+    <footer class="web-main-footer relative mt-12">
+        <ul class="flex gap-2">
             {#each socials as social}
                 <li>
                     <a
                         href={social.link}
-                        class="aw-icon-button"
+                        class="web-icon-button"
                         aria-label={social.label}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -24,19 +24,36 @@
                 </li>
             {/each}
         </ul>
-        <div>Copyright © {year} Appwrite</div>
+        <div class="e-main-footer">
+            <div>Copyright © {year} Appwrite</div>
+
+            <iframe
+                class="status w-fit max-w-[230px]"
+                title="Appwrite Status"
+                src="https://status.appwrite.online/badge?theme=dark"
+                height="35"
+                frameborder="0"
+                scrolling="no"
+                style:color-scheme="none"
+                style:margin-top="-4px"
+            />
+
+            <ul class="flex gap-4">
+                <li><a class="web-link" href="/terms">Terms</a></li>
+                <li><a class="web-link" href="/privacy">Privacy</a></li>
+                <li><a class="web-link" href="/cookies">Cookies</a></li>
+            </ul>
+        </div>
     </footer>
 {:else if variant === 'docs'}
-    <footer
-        class="aw-main-footer is-with-bg-color u-margin-block-start-32 u-small u-position-relative"
-    >
-        <div class="aw-main-footer-grid-1">
-            <ul class="aw-main-footer-grid-1-column-1 u-flex u-gap-8">
+    <footer class="web-main-footer is-with-bg-color relative mt-8 text-sm">
+        <div class="web-main-footer-grid-1">
+            <ul class="web-main-footer-grid-1-column-1 flex gap-2">
                 {#each socials as social}
                     <li>
                         <a
                             href={social.link}
-                            class="aw-icon-button"
+                            class="web-icon-button"
                             aria-label={social.label}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -46,10 +63,10 @@
                     </li>
                 {/each}
             </ul>
-            <div class="aw-main-footer-grid-1-column-2">
+            <div class="web-main-footer-grid-1-column-2">
                 <ThemeSelect />
             </div>
-            <ul class="aw-main-footer-grid-1-column-3 aw-main-footer-links">
+            <ul class="web-main-footer-grid-1-column-3 web-main-footer-links items-start">
                 <li>
                     <a href="/discord" target="_blank" rel="noopener noreferrer">Support</a>
                 </li>
@@ -62,7 +79,7 @@
 					<a href="https://github.com/appwrite/appwrite/releases" target="_blank" rel="noopener noreferrer">Changelog</a>
 				</li> -->
             </ul>
-            <div class="aw-main-footer-grid-1-column-4 aw-main-footer-copyright">
+            <div class="web-main-footer-grid-1-column-4 web-main-footer-copyright">
                 Copyright © {year} Appwrite
             </div>
         </div>
@@ -70,7 +87,32 @@
 {/if}
 
 <style lang="scss">
-  .aw-icon-button {
-    display: grid;
-  }
+    @use '$scss/abstract/variables/devices';
+    .web-icon-button {
+        display: grid;
+    }
+
+    @media #{devices.$break1} {
+        .status {
+            height: 55px;
+            margin-bottom: 6px; /* balancing due to style:margin-top="-4px" & the `iframe` has some spacings too I think */
+        }
+    }
+
+    .e-main-footer {
+        display: flex;
+        @media #{devices.$break1} {
+            flex-direction: column;
+            > * {
+                padding-block: 1rem;
+                &:not(:first-child) {
+                    border-block-start: solid 0.0625rem hsl(var(--web-color-border));
+                }
+            }
+        }
+        @media #{devices.$break2open} {
+            display: flex;
+            gap: 2rem;
+        }
+    }
 </style>

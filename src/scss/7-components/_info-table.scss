@@ -10,16 +10,16 @@
   &-col-header {
     @include break-word();
     min-inline-size:pxToRem(224); padding-block:pxToRem(18); padding-inline:pxToRem(12);
-    border:solid pxToRem(1) hsl(var(--aw-color-smooth));
+    border:solid pxToRem(1) hsl(var(--web-color-smooth));
   }
   &-col {  }
   &-col-header {
-    background-color:hsl(var(--aw-color-greyscale-850)); color:hsl(var(--aw-color-primary)); text-align:start;
+    background-color:hsl(var(--web-color-greyscale-850)); color:hsl(var(--web-color-primary)); text-align:start;
     &:first-child { max-inline-size:pxToRem(224); }
   }
 
   &-scroll {
-    border-radius:pxToRem(8); border:solid pxToRem(1) hsl(var(--aw-color-smooth));
+    border-radius:pxToRem(8); border:solid pxToRem(1) hsl(var(--web-color-smooth));
     overflow-x:auto;
     @media #{$break1} {
       min-inline-size: calc(100vw - #{pxToRem(32)});

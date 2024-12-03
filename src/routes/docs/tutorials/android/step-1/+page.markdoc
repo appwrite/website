@@ -3,6 +3,7 @@ layout: tutorial
 title: Build an ideas tracker with Android
 description: Learn to build an Android app with no backend code using an Appwrite backend.
 framework: Android
+back: /docs/tutorials
 category: Mobile and native
 step: 1
 ---
@@ -17,7 +18,7 @@ This tutorial will introduce the following concepts:
 2. Authentication 
 3. Databases and collections
 4. Queries and pagination
-5. Storage
+
 
 # Prerequisites {% #prerequisites %}
 1. Basic knowledge of Kotlin and Android development.

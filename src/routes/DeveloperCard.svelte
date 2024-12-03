@@ -1,22 +1,26 @@
 <script lang="ts">
-	export let name: string;
-	export let tag: string;
-	export let icon: 'x' | 'linkedin' | 'discord' | 'product-hunt';
-	export let avatarSrc: string;
+    export let name: string;
+    export let tag: string;
+    export let icon: 'x' | 'linkedin' | 'discord' | 'product-hunt';
+    export let avatarSrc: string;
 </script>
 
-<div class="aw-card is-white">
-	<div class="aw-social-item u-flex-vertical u-gap-24">
-		<div class="u-flex u-gap-16 u-main-space-between">
-			<div class="aw-user-box">
-				<img class="aw-user-box-image" src={avatarSrc} alt="Avatar of {name}" />
-				<div class="aw-user-box-name aw-sub-body-500">{name}</div>
-				<div class="aw-user-box-username aw-sub-body-400">{tag}</div>
-			</div>
-			<span class="aw-social-item-icon aw-icon-{icon}" aria-label={icon} aria-hidden="true" />
-		</div>
-		<p class="aw-sub-body-500 aw-u-text-color-neutral-700">
-			<slot />
-		</p>
-	</div>
+<div class="web-card is-white">
+    <div class="web-social-item flex flex-col gap-6">
+        <div class="flex justify-between gap-4">
+            <div class="web-user-box">
+                <img class="web-user-box-image" src={avatarSrc} alt="Avatar of {name}" />
+                <div class="web-user-box-name text-sub-body font-medium">{name}</div>
+                <div class="web-user-box-username text-sub-body">{tag}</div>
+            </div>
+            <span
+                class="web-social-item-icon web-icon-{icon}"
+                aria-label={icon}
+                aria-hidden="true"
+            />
+        </div>
+        <p class="text-sub-body web-u-text-color-neutral-700 font-medium">
+            <slot />
+        </p>
+    </div>
 </div>

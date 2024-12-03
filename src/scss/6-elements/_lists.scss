@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 .#{$p}-list {
-  --p-list-text-color: var(--aw-color-greyscale-700);
+  --p-list-text-color: var(--web-color-greyscale-700);
   color: hsl(var(--p-list-text-color));
 
   display:flex; flex-direction:column; gap:pxToRem(4);
@@ -14,17 +14,21 @@
       background-color:currentColor;
     }
   }
-  #{$theme-dark} & { --p-list-text-color:var(--aw-color-greyscale-300); }
+  #{$theme-dark} & { --p-list-text-color:var(--web-color-greyscale-300); }
 }
 
 .#{$p}-numeric-list {
-  --p-list-text-color: var(--aw-color-greyscale-700);
+  --p-list-text-color: var(--web-color-greyscale-700);
   display:flex; flex-direction:column; gap:pxToRem(8);
   color: hsl(var(--p-list-text-color));
   counter-reset: numeric-list;
-  li::before { color:hsl(var(--aw-color-accent-click)); padding-inline-end:pxToRem(12); }
-  li {
+  li::before {
+    color:hsl(var(--web-color-accent-click)); padding-inline-end:pxToRem(12);
+    line-height:var(--web-line-height-md);
+  }
+  >li {
     display:flex;
+    line-height: var(--web-line-height-md);
     &::before {
       counter-increment: numeric-list;
       content:counter(numeric-list); align-self:start;
@@ -33,7 +37,7 @@
   .#{$p}-numeric-list {
     counter-reset: numeric-list-level-2;
     padding-inline-start: pxToRem(24);
-    li {
+    >li {
       &::before {
         color:revert;
         counter-increment: numeric-list-level-2;
@@ -42,7 +46,7 @@
     }
     .#{$p}-numeric-list {
       counter-reset: numeric-list-level-3;
-      li {
+      >li {
         &::before {
           counter-increment: numeric-list-level-3;
           content:counter(numeric-list-level-3, lower-latin);
@@ -50,11 +54,11 @@
       }
     }
   }
-  #{$theme-dark} & { --p-list-text-color:var(--aw-color-greyscale-300); }
+  #{$theme-dark} & { --p-list-text-color:var(--web-color-greyscale-300); }
 }
 
 .#{$p}-checked-list {
-  --p-list-text-color: var(--aw-color-greyscale-700);
+  --p-list-text-color: var(--web-color-greyscale-700);
   color: hsl(var(--p-list-text-color));
 
   display:flex; flex-direction:column; gap:pxToRem(8);
@@ -63,7 +67,7 @@
     display:flex; gap:pxToRem(8);
   }
   [type="checkbox"] { cursor:initial; }
-  #{$theme-dark} & { --p-list-text-color:var(--aw-color-greyscale-300); }
+  #{$theme-dark} & { --p-list-text-color:var(--web-color-greyscale-300); }
 }
 
 .#{$p}-checked-list-circle {
@@ -79,7 +83,7 @@
   list-style:disc; padding-inline-start:pxToRem(24);
   > li {
     display:list-item; list-style-type:disc;
-    &::marker { content:revert; color:hsl(var(--aw-color-pink-500)); }
+    &::marker { content:revert; color:hsl(var(--web-color-pink-500)); }
   }
   .#{$p}-pink-dots {
     margin-block-start:0!important;

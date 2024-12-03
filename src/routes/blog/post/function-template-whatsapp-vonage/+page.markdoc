@@ -6,7 +6,7 @@ date: 2023-11-15
 cover: /images/blog/function-template-whatsapp-vonage/cover.png
 timeToRead: 5
 author: aditya-oberai
-category: functions
+category: integrations
 ---
 
 Function templates are pre-built Appwrite Functions that can be integrated into your Appwrite project with just a few clicks. Using them, you can easily incorporate new features and integrations into your app without writing additional code or managing infrastructure.
@@ -51,7 +51,7 @@ Open the WhatsApp app on your phone, join the Vonage WhatsApp Channel (via the s
 
 ![WhatsApp](/images/blog/function-template-whatsapp-vonage/whatsapp.png)
 
-## Next Steps
+## Next steps
 
 We’ve covered the basics, and now it’s your time to shine! With a few changes, you should be able to extend this template to fit your app. Be sure to check out the other available Function Templates. We’ve created many that could be of use in your projects. You can find the [templates GitHub repository here](https://github.com/appwrite/templates).
 

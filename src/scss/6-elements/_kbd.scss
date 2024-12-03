@@ -1,8 +1,8 @@
 @use '../abstract' as *;
 
 .#{$p}-kbd {
-  --p-kbd-text-color: var(--aw-color-greyscale-700);
-  --p-kbd-bg-color: var(--aw-color-black) / 0.08;
+  --p-kbd-text-color: var(--web-color-greyscale-700);
+  --p-kbd-bg-color: var(--web-color-black) / 0.08;
 
   color: hsl(var(--p-kbd-text-color));
   background-color: hsl(var(--p-kbd-bg-color));
@@ -14,7 +14,7 @@
   -webkit-user-select:none; user-select:none;
 
   #{$theme-dark} & {
-    --p-kbd-text-color: var(--aw-color-greyscale-100);
-    --p-kbd-bg-color: var(--aw-color-white) / 0.18;
+    --p-kbd-text-color: var(--web-color-greyscale-100);
+    --p-kbd-bg-color: var(--web-color-white) / 0.18;
   }
 }

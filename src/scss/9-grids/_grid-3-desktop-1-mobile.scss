@@ -1,5 +1,5 @@
 @use '../abstract' as *;
-.aw-grid-3-desktop-1-mobile {
+.web-grid-3-desktop-1-mobile {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: pxToRem(32);

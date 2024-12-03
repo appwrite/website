@@ -1,53 +1,55 @@
 <script lang="ts">
-	import AutoHeight from '../AutoBox.svelte';
+    import AutoHeight from '../AutoBox.svelte';
 </script>
 
 <div class="anim-box">
-	<div class="top"><slot name="top" /></div>
-	<div class="content">
-		<AutoHeight>
-			<slot />
-		</AutoHeight>
-	</div>
+    <div class="top"><slot name="top" /></div>
+    <div class="content">
+        <AutoHeight>
+            <slot />
+        </AutoHeight>
+    </div>
 </div>
 
 <style lang="scss">
-	.anim-box {
-		@include border-gradient;
-		--m-border-radius: 1rem;
-		--m-border-gradient-before: linear-gradient(
-			180deg,
-			rgba(255, 255, 255, 0.12) 0%,
-			rgba(255, 255, 255, 0) 125.11%
-		);
-		border-radius: var(--m-border-radius);
-		background: hsl(var(--aw-color-card));
-		backdrop-filter: blur(8px);
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
 
-		padding: 0.5rem;
-		padding-block-start: 0;
+    .anim-box {
+        @include gradients.border-gradient;
+        --m-border-radius: 1rem;
+        --m-border-gradient-before: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.12) 0%,
+            rgba(255, 255, 255, 0) 125.11%
+        );
+        border-radius: var(--m-border-radius);
+        background: hsl(var(--web-color-card));
+        backdrop-filter: blur(8px);
 
-		text-align: left;
+        padding: 0.5rem;
+        padding-block-start: 0;
 
-		.top {
-			color: var(--greyscale-50, #ededf0);
-			font-family: Aeonik Pro;
-			font-size: 1.25rem;
-			font-style: normal;
-			font-weight: 400;
-			line-height: 2rem; /* 160% */
-			letter-spacing: -0.0125rem;
+        text-align: left;
 
-			padding: 1rem;
-			text-align: left;
-		}
+        .top {
+            color: var(--greyscale-50, #ededf0);
+            font-family: Aeonik Pro;
+            font-size: 1.25rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 2rem; /* 160% */
+            letter-spacing: -0.0125rem;
 
-		.content {
-			border-radius: 0.75rem;
-			background: rgba(255, 255, 255, 0.04);
-			backdrop-filter: blur(30px);
+            padding: 1rem;
+            text-align: left;
+        }
 
-			position: relative;
-		}
-	}
+        .content {
+            border-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(30px);
+
+            position: relative;
+        }
+    }
 </style>

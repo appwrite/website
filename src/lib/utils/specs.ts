@@ -1,7 +1,10 @@
 import { OpenAPIV3 } from 'openapi-types';
 import { Platform, type Service } from './references';
 
-type SDKMethod = {
+export type SDKMethod = {
+    'rate-limit': number;
+    'rate-time': number;
+    'rate-key': string | string[];
     id: string;
     title: string;
     description: string;
@@ -48,31 +51,60 @@ export type AppwriteSchemaObject = OpenAPIV3.SchemaObject & {
     'x-example': string;
 };
 
+export interface Property {
+    name: string;
+    items?: {
+        type?: string;
+        oneOf?: OpenAPIV3.ReferenceObject[];
+    } & OpenAPIV3.ReferenceObject;
+}
+
+export enum ModelType {
+    REST = 'REST',
+    GRAPHQL = 'GraphQL'
+}
+
 function getExamples(version: string) {
     switch (version) {
         case '0.15.x':
             return import.meta.glob('$appwrite/docs/examples/0.15.x/**/*.md', {
-                as: 'raw'
+                query: '?raw',
+                import: 'default'
             });
         case '1.0.x':
             return import.meta.glob('$appwrite/docs/examples/1.0.x/**/*.md', {
-                as: 'raw'
+                query: '?raw',
+                import: 'default'
             });
         case '1.1.x':
             return import.meta.glob('$appwrite/docs/examples/1.1.x/**/*.md', {
-                as: 'raw'
+                query: '?raw',
+                import: 'default'
             });
         case '1.2.x':
             return import.meta.glob('$appwrite/docs/examples/1.2.x/**/*.md', {
-                as: 'raw'
+                query: '?raw',
+                import: 'default'
             });
         case '1.3.x':
             return import.meta.glob('$appwrite/docs/examples/1.3.x/**/*.md', {
-                as: 'raw'
+                query: '?raw',
+                import: 'default'
             });
         case '1.4.x':
             return import.meta.glob('$appwrite/docs/examples/1.4.x/**/*.md', {
-                as: 'raw'
+                query: '?raw',
+                import: 'default'
+            });
+        case '1.5.x':
+            return import.meta.glob('$appwrite/docs/examples/1.5.x/**/*.md', {
+                query: '?raw',
+                import: 'default'
+            });
+        case '1.6.x':
+            return import.meta.glob('$appwrite/docs/examples/1.6.x/**/*.md', {
+                query: '?raw',
+                import: 'default'
             });
     }
 }
@@ -80,7 +112,11 @@ function getExamples(version: string) {
 function* iterateAllMethods(
     api: OpenAPIV3.Document,
     service: string
-): Generator<{ method: OpenAPIV3.HttpMethods; value: OpenAPIV3.OperationObject; url: string }> {
+): Generator<{
+    method: OpenAPIV3.HttpMethods;
+    value: OpenAPIV3.OperationObject;
+    url: string;
+}> {
     for (const url in api.paths) {
         const methods = api.paths[url];
         if (methods?.get?.tags?.includes(service)) {
@@ -96,7 +132,11 @@ function* iterateAllMethods(
             yield { method: OpenAPIV3.HttpMethods.PATCH, value: methods.patch, url };
         }
         if (methods?.delete?.tags?.includes(service)) {
-            yield { method: OpenAPIV3.HttpMethods.DELETE, value: methods.delete, url };
+            yield {
+                method: OpenAPIV3.HttpMethods.DELETE,
+                value: methods.delete,
+                url
+            };
         }
     }
 }
@@ -155,34 +195,28 @@ export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.Schema
     if (schema) {
         return schema;
     }
-    throw new Error("Schema doesn't exist");
+    throw new Error(`Schema doesn't exist for id: ${id}`);
 }
 
 const specs = import.meta.glob(
-    '$appwrite/app/config/specs/open-api3*-(client|server|console).json',
-    {
-        as: 'raw'
-    }
+    '$appwrite/app/config/specs/open-api3*-(client|server|console).json'
 );
-async function getSpec(version: string, platform: string) {
+
+export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
     const isClient = platform.startsWith('client-');
     const isServer = platform.startsWith('server-');
     const target = `/node_modules/@appwrite.io/repo/app/config/specs/open-api3-${version}-${
         isServer ? 'server' : isClient ? 'client' : 'console'
     }.json`;
-    return specs[target]();
-}
 
-export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
-    const raw = await getSpec(version, platform);
-    const api = JSON.parse(raw);
-    return api;
+    return specs[target]();
 }
 
 const descriptions = import.meta.glob(
     '/src/routes/docs/references/[version]/[platform]/[service]/descriptions/*.md',
     {
-        as: 'raw'
+        query: '?raw',
+        import: 'default'
     }
 );
 
@@ -192,6 +226,7 @@ export async function getDescription(service: string): Promise<string> {
     if (!(target in descriptions)) {
         throw new Error('Missing service description');
     }
+
     return descriptions[target]();
 }
 
@@ -216,11 +251,10 @@ export async function getService(
     const isAndroid = isAndroidJava || isAndroidKotlin;
     const isAndroidServer = platform === Platform.ServerJava || platform === Platform.ServerKotlin;
     const api = await getApi(version, platform);
-    const tag = api.tags?.find((n) => n.name === service);
 
     const data: Awaited<ReturnType<typeof getService>> = {
         service: {
-            name: tag?.name as Service,
+            name: service as Service,
             description: await getDescription(service)
         },
         methods: []
@@ -281,15 +315,21 @@ export async function getService(
         if (!(path in examples)) {
             continue;
         }
+
+        const demo = await examples[path]();
+
         data.methods.push({
             id: operation['x-appwrite'].method,
-            demo: await examples[path](),
+            demo: demo ?? '',
             title: operation.summary ?? '',
             description: operation.description ?? '',
             parameters: parameters ?? [],
             responses: responses ?? [],
             method,
-            url
+            url,
+            'rate-limit': operation['x-appwrite']['rate-limit'],
+            'rate-time': operation['x-appwrite']['rate-time'],
+            'rate-key': operation['x-appwrite']['rate-key']
         });
     }
 
@@ -318,3 +358,97 @@ export function resolveReference(
     }
     throw new Error("Schema doesn't exist");
 }
+
+export const generateExample = (
+    schema: OpenAPIV3.SchemaObject,
+    api: OpenAPIV3.Document<object>,
+    modelType: ModelType = ModelType.REST
+): object => {
+    const properties = Object.keys(schema.properties ?? {}).map((key) => {
+        const name = key;
+        const fields = schema.properties?.[key];
+        return {
+            name,
+            ...fields
+        };
+    });
+
+    const example = properties.reduce((carry, currentValue) => {
+        const property = currentValue as AppwriteSchemaObject & Property;
+        let propertyName;
+        switch (modelType) {
+            case ModelType.REST:
+                propertyName = property.name;
+                break;
+            case ModelType.GRAPHQL:
+                propertyName = property.name.replace('$', '_');
+                break;
+            default:
+                propertyName = property.name;
+                break;
+        }
+
+        if (property.type === 'array') {
+            // If it's an array type containing primatives
+            if (property.items?.type) {
+                return {
+                    ...carry,
+                    [propertyName]: property['x-example']
+                };
+            }
+
+            if (property.items && 'anyOf' in property.items) {
+                // default to first child type if multiple available
+                const firstSchema = (property.items as unknown as AppwriteSchemaObject)?.anyOf?.[0];
+                const schema = getSchema(
+                    getIdFromReference(firstSchema as OpenAPIV3.ReferenceObject),
+                    api
+                );
+
+                return {
+                    ...carry,
+                    [propertyName]: [generateExample(schema, api, modelType)]
+                };
+            }
+
+            // if an array of objects without child types
+            const schema = getSchema(
+                getIdFromReference(property.items as OpenAPIV3.ReferenceObject),
+                api
+            );
+            return {
+                ...carry,
+                [propertyName]: [generateExample(schema, api, modelType)]
+            };
+        }
+
+        // If it's an object type, but not in an array.
+        if (property.type === 'object') {
+            if (property.items?.oneOf) {
+                // default to first child type if multiple available
+                const schema = getSchema(
+                    getIdFromReference(property.items.oneOf[0] as OpenAPIV3.ReferenceObject),
+                    api
+                );
+                return {
+                    ...carry,
+                    [propertyName]: generateExample(schema, api, modelType)
+                };
+            }
+
+            if (property.items) {
+                const schema = getSchema(getIdFromReference(property.items), api);
+                return {
+                    ...carry,
+                    [propertyName]: generateExample(schema, api, modelType)
+                };
+            }
+        }
+
+        return {
+            ...carry,
+            [propertyName]: property['x-example']
+        };
+    }, {});
+    return example;
+};

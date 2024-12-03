@@ -11,12 +11,12 @@ First, let's create a load function for our ideas page. This will load the lates
 
 To do so, create a file called `src/routes/+page.js` with the following content:
 
-```js
+```client-web
 import { getIdeas } from '$lib/ideas';
 
 export async function load() {
 	return {
-		ideas: getIdeas()
+		ideas: await getIdeas()
 	};
 }
 ```

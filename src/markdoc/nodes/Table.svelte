@@ -14,9 +14,9 @@
     const transparentCells = inPolicy ? getPolicyCtx().transparentTableCells : false;
 </script>
 
-<div class="aw-table-wrapper" class:in-policy={inPolicy} class:transparentCells>
-    <div class="aw-table-scroll">
-        <table class="aw-table">
+<div class="web-table-wrapper" class:in-policy={inPolicy} class:transparentCells>
+    <div class="web-table-scroll">
+        <table class="web-table">
             <slot />
         </table>
     </div>
@@ -33,7 +33,7 @@
 
         :global(td) {
             background-color: transparent;
-            border-right: 1px solid hsl(var(--aw-color-smooth));
+            border-right: 1px solid hsl(var(--web-color-smooth));
             font-family: Inter;
             font-size: 0.875rem;
             font-style: normal;
@@ -43,13 +43,13 @@
             text-transform: none;
         }
 
-        :global(td .aw-eyebrow) {
+        :global(td .text-micro uppercase) {
             all: unset;
         }
 
         :global(:is(td:first-child, thead td)) {
-            background-color: hsl(var(--aw-color-greyscale-850));
-            color: hsl(var(--aw-color-primary));
+            background-color: hsl(var(--web-color-greyscale-850));
+            color: hsl(var(--web-color-primary));
             font-weight: 500;
         }
 

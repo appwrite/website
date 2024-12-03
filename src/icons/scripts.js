@@ -17,10 +17,10 @@ export const optimizeSVG = async () => {
 
 export const generateIcons = async () => {
     await svgtofont({
-        classNamePrefix: 'aw-icon',
+        classNamePrefix: 'web-icon',
         src: optimized,
         dist: dist,
-        fontName: 'aw-icon',
+        fontName: 'web-icon',
         styleTemplates: resolve(process.cwd(), 'src/icons/templates'),
         css: {
             fontSize: '20px'

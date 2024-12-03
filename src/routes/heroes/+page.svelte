@@ -65,7 +65,7 @@
         {
             name: 'Jason Torres',
             role: 'Freelance Community Manager',
-            bio: "Jason Torres a former film-maker turned developer who is currently exploring Developer Advocacy and Community Management freelance, and hosting The Tech Commute, a series of Twitter Spaces catered towards developers.",
+            bio: 'Jason Torres a former film-maker turned developer who is currently exploring Developer Advocacy and Community Management freelance, and hosting The Tech Commute, a series of Twitter Spaces catered towards developers.',
             github: 'https://github.com/jasonetorres',
             twitter: 'https://twitter.com/tasonjorres',
             linkedin: 'https://www.linkedin.com/in/thejasontorres',
@@ -74,11 +74,38 @@
         {
             name: 'Nishant Jain',
             role: 'Frontend Developer',
-            bio: "Nishant Jain is a frontend developer and community builder from Indore, India. He has been actively contributing to the Appwrite community as a Discord moderator.",
+            bio: 'Nishant Jain is a frontend developer and community builder from Indore, India. He has been actively contributing to the Appwrite community as a Discord moderator.',
             github: 'https://github.com/Nishantjain10',
             twitter: 'https://twitter.com/devnishant10',
             linkedin: 'https://www.linkedin.com/in/nishantj2002/',
             avatar: 'images/heroes/avatars/nishant.png'
+        },
+        {
+            name: 'Vincent Ge',
+            role: 'DevRel Engineer',
+            bio: 'Vincent Ge is a DevRel Engineer who has actively been supporting open-source developers and communities for the last few years. He is a former member of the Appwrite DevRel team and a forever beloved part of our community.',
+            github: 'https://github.com/gewenyu99/',
+            twitter: 'https://x.com/WenYuGe1',
+            linkedin: 'https://www.linkedin.com/in/wen-yu-ge/',
+            avatar: 'images/heroes/avatars/vincent.png'
+        },
+        {
+            name: 'Taylor Desseyn',
+            role: 'Recruiter Advocate',
+            bio: 'Taylor Desseyn is a skilled people connector and has helped 600+ individuals find their perfect career fit in tech. His knack for creating community shines through his use of social media and content creation',
+            github: 'https://github.com/tdesseyn',
+            twitter: 'https://x.com/tdesseyn',
+            linkedin: 'https://www.linkedin.com/in/taylordesseyn/',
+            avatar: 'images/heroes/avatars/taylor.png'
+        },
+        {
+            name: 'Demola Malomo',
+            role: 'Software Engineer & Technical Writer',
+            bio: 'Demola Malomo is a software engineer and technical writer from Lagos, Nigeria. He primarily code in JavaScript and TypeScript and has been learning Rust and Go.',
+            github: 'https://github.com/Mr-Malomz',
+            twitter: 'https://x.com/malomz',
+            linkedin: 'https://www.linkedin.com/in/malomoademola/',
+            avatar: 'images/heroes/avatars/demola.png'
         }
     ];
 
@@ -95,7 +122,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -108,13 +135,13 @@
 </svelte:head>
 
 <Main>
-    <div class="aw-big-padding-section">
-        <div class="aw-big-padding-section-level-1">
-            <div class="aw-big-padding-section-level-2">
-                <section class="aw-container hero aw-u-padding-block-end-0">
+    <div class="web-big-padding-section">
+        <div class="py-10">
+            <div class="web-big-padding-section-level-2">
+                <section class="container hero web-u-padding-block-end-0">
                     <div>
-                        <h1 class="aw-display aw-u-color-text-primary">Appwrite Heroes</h1>
-                        <p class="aw-main-body-500 u-margin-block-start-20">
+                        <h1 class="text-display font-aeonik-pro text-primary">Appwrite Heroes</h1>
+                        <p class="text-body mt-5 font-medium">
                             If you love building, writing, speaking, and helping other developers
                             build with Appwrite, help us support you by joining the Appwrite Heroes
                             program and becoming a leader in our developer community.
@@ -123,7 +150,7 @@
                             href="https://7nxwryuitoy.typeform.com/heroes-apply"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="aw-button is-secondary u-margin-block-start-32"
+                            class="web-button is-secondary mt-8"
                         >
                             <span class="text">Become a Hero</span>
                         </a>
@@ -134,13 +161,15 @@
                 </section>
             </div>
         </div>
-        <div class="aw-big-padding-section-level-1">
-            <div class="aw-big-padding-section-level-2">
-                <section class="aw-container">
-                    <div class="aw-hero aw-u-max-width-800 about">
-                        <h2 class="aw-title aw-u-color-text-primary">About Appwrite Heroes</h2>
+        <div class="py-10">
+            <div class="web-big-padding-section-level-2">
+                <section class="container">
+                    <div class="web-hero web-u-max-width-800 about">
+                        <h2 class="text-title font-aeonik-pro text-primary">
+                            About Appwrite Heroes
+                        </h2>
                         <div>
-                            <p class="aw-sub-body-500">
+                            <p class="text-sub-body font-medium">
                                 The Appwrite Heroes program is an exclusive group of developers who
                                 are experts in Appwrite and dedicated to creating valuable content
                                 to assist other developers in achieving success. Appwrite Heroes
@@ -163,34 +192,35 @@
             </div>
         </div>
 
-        <div
-            class="aw-big-padding-section-level-1 u-position-relative aw-white-section theme-light"
-        >
-            <div class="aw-big-padding-section-level-2">
-                <div class="aw-container">
-                    <div class="aw-hero">
-                        <div class="aw-display aw-u-clr-primary">Meet our Heroes</div>
+        <div class="web-white-section light relative py-10">
+            <div class="web-big-padding-section-level-2">
+                <div class="container">
+                    <div class="web-hero">
+                        <div class="text-display font-aeonik-pro web-u-clr-primary">
+                            Meet our Heroes
+                        </div>
                     </div>
-                    <ul class="aw-multi-columns-1 aw-u-margin-block-start-80">
+                    <ul class="web-multi-columns-1 mt-20">
                         {#each heroCards as heroCardProps}
                             <HeroCard {...heroCardProps} />
                         {/each}
                     </ul>
                 </div>
             </div>
-            <div class="aw-big-padding-section-level-2 aw-u-overflow-hidden">
+            <div class="web-big-padding-section-level-2 web-u-overflow-hidden">
                 <div class="scroll-carousel" use:infiniteScroll>
                     <ul class="inner">
                         <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
                         {#each { length: 5 } as _, i}
                             <li>
                                 <div
-                                    class="aw-card is-white carousel-img"
+                                    class="web-card is-white carousel-img"
                                     style="--p-card-padding:0.5rem; --card-border-radius:1.25rem"
                                 >
                                     <img
-                                        class="u-block aw-u-border-radius-12"
+                                        class="rounded-xl"
                                         src="/images/heroes/photos/{i + 1}.png"
+                                        loading="lazy"
                                         alt=""
                                     />
                                 </div>
@@ -199,91 +229,91 @@
                     </ul>
                 </div>
             </div>
-            <div class="aw-big-padding-section-level-2">
-                <div class="aw-container">
-                    <section class="aw-hero is-align-start">
-                        <h2 class="aw-display aw-u-color-text-primary u-max-width-700">
+            <div class="web-big-padding-section-level-2">
+                <div class="container">
+                    <section class="web-hero is-align-start">
+                        <h2 class="text-display font-aeonik-pro text-primary max-w-[700px]">
                             How Appwrite Heroes can benefit you
                         </h2>
                     </section>
-                    <div class="u-overflow-hidden aw-u-margin-block-start-80">
-                        <ul class="aw-info-boxes aw-sub-body-500">
-                            <li class="aw-info-boxes-item">
+                    <div class="mt-20 overflow-hidden">
+                        <ul class="web-info-boxes text-sub-body font-medium">
+                            <li class="web-info-boxes-item">
                                 <img
                                     src="/images/icons/gradients/discussion.svg"
                                     width="40"
                                     height="40"
                                     alt=""
                                 />
-                                <h3 class="aw-info-boxes-title">Channel access</h3>
-                                <p class="aw-info-boxes-content">
+                                <h3 class="web-info-boxes-title">Channel access</h3>
+                                <p class="web-info-boxes-content">
                                     Access to internal channel with Appwrite’s Engineering and
                                     DevRel teams.
                                 </p>
                             </li>
-                            <li class="aw-info-boxes-item">
+                            <li class="web-info-boxes-item">
                                 <img
                                     src="/images/icons/gradients/community.svg"
                                     width="40"
                                     height="40"
                                     alt=""
                                 />
-                                <h3 class="aw-info-boxes-title">In-person gatherings</h3>
-                                <p class="aw-info-boxes-content">
+                                <h3 class="web-info-boxes-title">In-person gatherings</h3>
+                                <p class="web-info-boxes-content">
                                     Top contributors get invited to an in-person gathering with the
                                     Appwrite team.
                                 </p>
                             </li>
-                            <li class="aw-info-boxes-item">
+                            <li class="web-info-boxes-item">
                                 <img
                                     src="/images/icons/gradients/verified.svg"
                                     width="40"
                                     height="40"
                                     alt=""
                                 />
-                                <h3 class="aw-info-boxes-title">Digital badge</h3>
-                                <p class="aw-info-boxes-content">
+                                <h3 class="web-info-boxes-title">Digital badge</h3>
+                                <p class="web-info-boxes-content">
                                     Exclusive digital badge to share on Discord and LinkedIn.
                                 </p>
                             </li>
-                            <li class="aw-info-boxes-item">
+                            <li class="web-info-boxes-item">
                                 <img
                                     src="/images/icons/gradients/travel.svg"
                                     width="40"
                                     height="40"
                                     alt=""
                                 />
-                                <h3 class="aw-info-boxes-title">Travel</h3>
-                                <p class="aw-info-boxes-content">
+                                <h3 class="web-info-boxes-title">Travel</h3>
+                                <p class="web-info-boxes-content">
                                     Travel paid for top contributors (case-by-case) to attend dev
                                     conferences.
                                 </p>
                             </li>
-                            <li class="aw-info-boxes-item">
+                            <li class="web-info-boxes-item">
                                 <img
                                     src="/images/icons/gradients/labs.svg"
                                     width="40"
                                     height="40"
                                     alt=""
                                 />
-                                <h3 class="aw-info-boxes-title">
+                                <h3 class="web-info-boxes-title">
                                     <span>Beta-test</span>
                                 </h3>
-                                <p class="aw-info-boxes-content">
+                                <p class="web-info-boxes-content">
                                     Opportunity to beta-test Appwrite releases.
                                 </p>
                             </li>
-                            <li class="aw-info-boxes-item">
+                            <li class="web-info-boxes-item">
                                 <img
                                     src="/images/icons/gradients/unlock.svg"
                                     width="40"
                                     height="40"
                                     alt=""
                                 />
-                                <h3 class="aw-info-boxes-title">
+                                <h3 class="web-info-boxes-title">
                                     <span>Roadmap access</span>
                                 </h3>
-                                <p class="aw-info-boxes-content">
+                                <p class="web-info-boxes-content">
                                     Special access to a more in-depth roadmap.
                                 </p>
                             </li>
@@ -293,33 +323,28 @@
             </div>
         </div>
 
-        <div class="aw-big-padding-section-level-1 u-position-relative footer-wrapper">
-            <enhanced:img
-                src="./bg-pre.png"
-                alt=""
-                class="u-position-absolute"
-                style:inset-block-start="0"
-            />
-            <div class="aw-big-padding-section-level-2 u-position-relative">
-                <div class="aw-container">
-                    <div class="aw-hero aw-u-max-width-800">
-                        <h5 class="aw-display aw-u-color-text-primary">Become a Hero</h5>
-                        <p class="aw-description aw-u-color-text-primary" style="opacity:0.64">
+        <div class="footer-wrapper relative py-10">
+            <enhanced:img src="./bg-pre.png" alt="" class="absolute" style:inset-block-start="0" />
+            <div class="web-big-padding-section-level-2 relative">
+                <div class="container">
+                    <div class="web-hero web-u-max-width-800">
+                        <h5 class="text-display font-aeonik-pro text-primary">Become a Hero</h5>
+                        <p class="text-description text-primary" style="opacity:0.64">
                             Have you been actively providing value for the Appwrite community? Apply
-                            now to join our hero program! Applications are open every three months.
+                            now to join our hero program! Applications open every three months.
                         </p>
                         <a
                             href="https://7nxwryuitoy.typeform.com/heroes-apply"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="aw-button is-transparent is-full-width-mobile aw-u-cross-child-center u-margin-block-start-20"
+                            class="web-button is-transparent is-full-width-mobile mt-5 self-center"
                         >
                             Become a Hero
                         </a>
                     </div>
                 </div>
-                <div class="aw-big-padding-section-level-2 u-position-relative">
-                    <div class="aw-container u-position-relative">
+                <div class="web-big-padding-section-level-2 relative">
+                    <div class="container relative">
                         <FooterNav noBorder />
                         <MainFooter />
                     </div>
@@ -330,6 +355,9 @@
 </Main>
 
 <style lang="scss">
+    @use '$scss/abstract/functions' as f;
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     .hero {
         display: grid;
         grid-template-columns: 30.0625rem minmax(0, 1fr);
@@ -429,7 +457,7 @@
             padding-inline: 4rem;
 
             display: flex;
-            gap: pxToRem(32);
+            gap: f.pxToRem(32);
             flex-shrink: 0;
 
             > * {
@@ -438,7 +466,7 @@
             } /* items */
 
             .carousel-img {
-                @include border-gradient;
+                @include gradients.border-gradient;
                 --m-border-gradient-before: linear-gradient(
                     135.1deg,
                     #ffffff 10.1%,
@@ -470,19 +498,19 @@
         overflow: hidden;
 
         @media (max-width: 1024px) {
-            .aw-hero {
+            .web-hero {
                 padding-block-start: 5rem;
             }
         }
 
-        .aw-hero {
+        .web-hero {
             gap: 0;
 
-            .aw-description {
+            .text-description {
                 margin-block-start: 1.25rem;
             }
 
-            .aw-button {
+            .web-button {
                 margin-block-start: 1.5rem;
             }
         }

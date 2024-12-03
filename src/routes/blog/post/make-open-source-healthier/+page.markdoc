@@ -6,7 +6,7 @@ date: 2023-10-23
 cover: /images/blog/make-open-source-healthier.png
 timeToRead: 5
 author: aditya-oberai
-category: opensource
+category: open-source
 ---
 
 For the last few years, every single time Hacktoberfest comes, one challenge that has constantly been discussed is how to make open source healthier for everyone. This isn’t to say that open source is an unhealthy space; rather, it has a much larger positive impact than most people can imagine. However, Hacktoberfest sees the entry of a flurry of new contributors trying their hands at getting in their first Pull Requests. This period is a particularly impressionable phase for new contributors to open source, and gaining a better understanding of how contributors should participate in a healthy manner only makes for a better, more welcoming community. Therefore, in this blog, we will explore what community health means in the context of open-source communities and the role contributors play in making it better.

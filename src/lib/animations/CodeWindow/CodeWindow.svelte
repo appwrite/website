@@ -1,94 +1,96 @@
 <script>
-	import AutoBox from '../AutoBox.svelte';
-	import Code from './Code.svelte';
+    import AutoBox from '../AutoBox.svelte';
+    import Code from './Code.svelte';
 </script>
 
 <div class="code-console">
-	<div class="header">
-		<div class="ellipse" />
-		<div class="ellipse-2" />
-		<div class="ellipse-3" />
-	</div>
-	<div class="block">
-		<AutoBox>
-			<slot {Code} />
-		</AutoBox>
-	</div>
-	<div id="code-bottom" />
+    <div class="header">
+        <div class="ellipse" />
+        <div class="ellipse-2" />
+        <div class="ellipse-3" />
+    </div>
+    <div class="block">
+        <AutoBox>
+            <slot {Code} />
+        </AutoBox>
+    </div>
+    <div id="code-bottom" />
 </div>
 
 <style lang="scss">
-	.code-console {
-		@include border-gradient;
-		--p-radius: 16px;
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
 
-		display: flex;
-		flex-direction: column;
+    .code-console {
+        @include gradients.border-gradient;
+        --p-radius: 16px;
 
-		background-color: hsl(var(--aw-color-card));
-		border-radius: var(--p-radius);
-		--m-border-radius: var(--p-radius);
-		--m-border-gradient-before: linear-gradient(
-			180deg,
-			rgba(255, 255, 255, 0.12) 0%,
-			rgba(255, 255, 255, 0) 125.11%
-		);
-		backdrop-filter: blur(8px);
+        display: flex;
+        flex-direction: column;
 
-		min-width: 330px;
-		width: fit-content;
-		padding: 0 0.25rem 0.25rem;
-	}
+        background-color: hsl(var(--web-color-card));
+        border-radius: var(--p-radius);
+        --m-border-radius: var(--p-radius);
+        --m-border-gradient-before: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.12) 0%,
+            rgba(255, 255, 255, 0) 125.11%
+        );
+        backdrop-filter: blur(8px);
 
-	.block {
-		width: 100%;
-		flex-grow: 1;
-		text-align: left;
+        min-width: 330px;
+        width: fit-content;
+        padding: 0 0.25rem 0.25rem;
+    }
 
-		border-radius: 12px;
-		background: linear-gradient(129deg, rgba(0, 0, 0, 0.48) 22.38%, rgba(0, 0, 0, 0) 136.5%);
-		padding: 20px;
+    .block {
+        width: 100%;
+        flex-grow: 1;
+        text-align: left;
 
-		position: relative;
-	}
+        border-radius: 12px;
+        background: linear-gradient(129deg, rgba(0, 0, 0, 0.48) 22.38%, rgba(0, 0, 0, 0) 136.5%);
+        padding: 20px;
 
-	.header {
-		position: relative;
-		display: flex;
-		align-items: center;
-		gap: 0.375rem;
-		padding: 0.75rem;
+        position: relative;
+    }
 
-		.ellipse {
-			background-color: #ec6a5e;
+    .header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0.75rem;
 
-			width: 8px;
-			height: 8px;
-			top: 12px;
-			border-radius: 4px;
-		}
+        .ellipse {
+            background-color: #ec6a5e;
 
-		.ellipse-2 {
-			background-color: #f5bf4f;
+            width: 8px;
+            height: 8px;
+            top: 12px;
+            border-radius: 4px;
+        }
 
-			width: 8px;
-			height: 8px;
-			top: 12px;
-			border-radius: 4px;
-		}
+        .ellipse-2 {
+            background-color: #f5bf4f;
 
-		.ellipse-3 {
-			background-color: #61c554;
+            width: 8px;
+            height: 8px;
+            top: 12px;
+            border-radius: 4px;
+        }
 
-			width: 8px;
-			height: 8px;
-			top: 12px;
-			border-radius: 4px;
-		}
-	}
+        .ellipse-3 {
+            background-color: #61c554;
 
-	.code-console :global(code) {
-		white-space: pre;
-		tab-size: 4;
-	}
+            width: 8px;
+            height: 8px;
+            top: 12px;
+            border-radius: 4px;
+        }
+    }
+
+    .code-console :global(code) {
+        white-space: pre;
+        tab-size: 4;
+    }
 </style>

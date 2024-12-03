@@ -49,7 +49,7 @@ You can skip optional steps.
 To add the Appwrite SDK for Android as a dependency, add the following to your app-level **build.gradle.kts** file inside the **dependencies** block.
 
 ```kotlin
-implementation("io.appwrite:sdk-for-android:4.0.0")
+implementation("io.appwrite:sdk-for-android:5.1.0")
 ```
 
 In order to allow creating OAuth sessions, the following activity needs to be added inside the `<application>` tag, along side the existing `<activity>` tags in your [AndroidManifest.xml](https://github.com/appwrite/playground-for-flutter/blob/master/android/app/src/main/AndroidManifest.xml). 
@@ -85,7 +85,7 @@ Find your project's ID in the **Settings** page.
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Create a new file `Appwrite.kt` and add the following code to it, replacing `[YOUR_PROJECT_ID]` with your project ID.
+Create a new file `Appwrite.kt` and add the following code to it, replacing `[PROJECT_ID]` with your project ID.
 
 ```kotlin
 package <YOUR_ROOT_PACKAGE_HERE>
@@ -103,7 +103,7 @@ object Appwrite {
     fun init(context: Context) {
         client = Client(context)
             .setEndpoint("https://cloud.appwrite.io/v1")
-            .setProject("[YOUR_PROJECT_ID]")
+            .setProject("[PROJECT_ID]")
 
         account = Account(client)
     }
@@ -112,7 +112,7 @@ object Appwrite {
         email: String,
         password: String,
     ): Session {
-        return account.createEmailSession(
+        return account.createEmailPasswordSession(
             email,
             password,
         )

@@ -9,14 +9,19 @@
   .#{$p}-sub-title { margin-block-end:pxToRem(4); }
 
   :where(.#{$p}-title, .#{$p}-display, .#{$p}-headline):not(:frist-child) {
-    color:hsl(var(--aw-color-primary)); margin-block-start:pxToRem(8);
+    color:hsl(var(--web-color-primary)); margin-block-start:pxToRem(8);
   }
 
-  .#{$p}-description { margin-block-start:pxToRem(20); color:hsl(var(--aw-color-secondary)); }
+  .#{$p}-description { margin-block-start:pxToRem(20); color:hsl(var(--web-color-secondary)); }
 
   &.is-align-start {
     text-align:start; margin-inline:0;
     .#{$p}-badges { align-self:start; }
+  }
+  &.is-mobile-center {
+    @media #{$break1} {
+      justify-content:center; text-align:center; margin-inline:auto;
+    }
   }
   &.is-horizontal {
     display:flex; flex-direction:column; margin-inline:initial;

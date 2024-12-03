@@ -1,7 +1,8 @@
 <script lang="ts">
     import { afterNavigate } from '$app/navigation';
-    import { GITHUB_STARS } from '$lib/constants';
-    import type { NavLink } from '$lib/layouts/Main.svelte';
+    import { IsLoggedIn } from '$lib/components';
+    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
+    import type { NavLink } from './MainNav.svelte';
 
     export let open = false;
     export let links: NavLink[];
@@ -13,38 +14,41 @@
 
 <svelte:window on:resize={() => open && (open = false)} />
 
-<nav class="aw-side-nav aw-is-not-desktop" class:u-hide={!open}>
-    <div class="aw-side-nav-wrapper aw-u-padding-inline-16">
-        <div class="u-flex items-center u-gap-8">
-            <a href="https://cloud.appwrite.io/register" class="aw-button is-secondary aw-u-flex-1">
+<nav class="web-side-nav web-is-not-desktop" class:hidden={!open}>
+    <div class="web-side-nav-wrapper ps-4 pe-4">
+        <div class="flex items-center gap-2 px-4">
+            <a href="https://cloud.appwrite.io/register" class="web-button is-secondary flex-1">
                 Sign up
             </a>
-
-            <a href="https://cloud.appwrite.io" class="aw-button aw-u-flex-1">Get started</a>
+            <IsLoggedIn classes="flex-1" />
         </div>
-        <div class="aw-side-nav-scroll">
+        <div class="web-side-nav-scroll">
             <section>
                 <ul>
-                    {#each links as { href, label }}
+                    {#each links as { href, label, mobileSubmenu }}
                         <li>
-                            <a class="aw-side-nav-button" {href}>
-                                <span class="aw-caption-400">{label}</span>
-                            </a>
+                            {#if mobileSubmenu}
+                                <svelte:component this={mobileSubmenu} {label} />
+                            {:else}
+                                <a class="web-side-nav-button" {href}>
+                                    <span class="text-caption">{label}</span>
+                                </a>
+                            {/if}
                         </li>
                     {/each}
                 </ul>
             </section>
         </div>
-        <div class="aw-side-nav-mobile-footer-buttons">
+        <div class="web-side-nav-mobile-footer-buttons">
             <a
-                href="https://github.com/appwrite/appwrite/stargazers"
+                href={GITHUB_REPO_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="aw-button is-text aw-u-inline-width-100-percent-mobile"
+                class="web-button is-text web-u-inline-width-100-percent-mobile"
             >
-                <span class="aw-icon-star" aria-hidden="true" />
+                <span class="web-icon-star" aria-hidden="true" />
                 <span class="text">Star on GitHub</span>
-                <span class="aw-inline-tag aw-sub-body-400">{GITHUB_STARS}</span>
+                <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
             </a>
         </div>
     </div>

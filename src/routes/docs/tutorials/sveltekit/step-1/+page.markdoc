@@ -4,6 +4,7 @@ title: Build an ideas tracker with SvelteKit
 description: Build a SvelteKit project using Appwrite.
 step: 1
 difficulty: beginner
+back: /docs/tutorials
 readtime: 10
 framework: SvelteKit
 category: Web
@@ -26,7 +27,7 @@ This tutorial will introduce the following concepts:
 2. Authentication 
 3. Databases and collections
 4. Queries and pagination
-5. Storage
+
 
 # Prerequisites {% #prerequisites %}
 1. Basic knowledge of JavaScript and Svelte.
