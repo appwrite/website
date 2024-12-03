@@ -1,5 +1,6 @@
 import type { LanguageFn } from 'highlight.js';
 import hljs from 'highlight.js/lib/core';
+import go from 'highlight.js/lib/languages/go';
 import dart from 'highlight.js/lib/languages/dart';
 import javascript from 'highlight.js/lib/languages/javascript';
 import typescript from 'highlight.js/lib/languages/typescript';
@@ -25,6 +26,7 @@ import graphql from 'highlight.js/lib/languages/graphql';
 import http from 'highlight.js/lib/languages/http';
 import css from 'highlight.js/lib/languages/css';
 import groovy from 'highlight.js/lib/languages/groovy';
+import ini from 'highlight.js/lib/languages/ini';
 import { Platform } from './references';
 
 const languages = {
@@ -55,20 +57,23 @@ const languages = {
     text: plaintext,
     graphql: graphql,
     http: http,
+    go: go,
     py: python,
     rb: ruby,
     cs: csharp,
     css: css,
     groovy: groovy,
-    svelte: xml
+    ini: ini,
+    env: ini
 } as const satisfies Record<string, LanguageFn>;
 
 const platformAliases: Record<string, keyof typeof languages> = {
     [Platform.ClientWeb]: 'js',
     [Platform.ClientFlutter]: 'dart',
+    [Platform.ClientApple]: 'swift',
     [Platform.ClientAndroidJava]: 'java',
     [Platform.ClientAndroidKotlin]: 'kotlin',
-    [Platform.ClientApple]: 'swift',
+    [Platform.ClientReactNative]: 'js',
     [Platform.ClientGraphql]: 'graphql',
     [Platform.ClientRest]: 'http',
     [Platform.ServerDart]: 'dart',
@@ -83,6 +88,7 @@ const platformAliases: Record<string, keyof typeof languages> = {
     [Platform.ServerKotlin]: 'kotlin',
     [Platform.ServerGraphql]: 'graphql',
     [Platform.ServerRest]: 'http',
+    [Platform.ServerGo]: 'go',
     vue: 'html',
     svelte: 'html'
 };
@@ -119,7 +125,7 @@ export const getCodeHtml = (args: Args) => {
         return carry;
     }, '');
 
-    return `<pre><code class="aw-code language-${language} ${
+    return `<pre><code class="web-code language-${language} ${
         withLineNumbers ? 'line-numbers' : ''
     }">${final}</code></pre>`;
 };

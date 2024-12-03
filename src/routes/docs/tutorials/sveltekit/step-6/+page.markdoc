@@ -33,7 +33,7 @@ Let's create some methods to manage ideas in our app.
 
 Create a new file `src/lib/ideas.js` and add the following code:
 
-```js
+```client-web
 import { ID, Query } from 'appwrite';
 import { databases } from '$lib/appwrite';
 

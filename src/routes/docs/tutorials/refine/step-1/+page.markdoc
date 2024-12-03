@@ -4,6 +4,7 @@ title: Build a blog admin panel with Refine
 description: Learn to build a Refine app with no backend code using an Appwrite backend.
 step: 1
 difficulty: beginner
+back: /docs/tutorials
 readtime: 10
 framework: Refine
 category: Web
@@ -29,7 +30,7 @@ This tutorial will introduce the following concepts:
 2. Authentication 
 3. Databases and collections
 4. Queries and pagination
-5. Storage
+
 
 
 # Prerequisites {% #prerequisites %}

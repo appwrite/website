@@ -1,84 +1,108 @@
 <script lang="ts">
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import { trackEvent } from '$lib/actions/analytics';
 </script>
 
-<img src="/images/bgs/pre-footer.png" alt="" class="aw-pre-footer-bg" style="z-index:-1" />
+<img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg" loading="lazy" style="z-index:-1" />
 
-<div class="aw-grid-1-1 u-gap-32 aw-u-row-gap-80 u-position-relative">
-    <section class="aw-hero u-flex aw-u-row-gap-32 u-main-center u-cross-center">
-        <h2 class="aw-display u-max-width-500 aw-u-text-align-center aw-u-color-text-primary">
+<div class="web-u-row-gap-80 relative grid gap-8 md:grid-cols-2">
+    <section class="web-hero flex items-center justify-center gap-y-8">
+        <h2 class="text-display font-aeonik-pro text-primary max-w-[500px] text-center">
             Start building today
         </h2>
         <a
-            href="https://cloud.appwrite.io"
-            class="aw-button is-transparent aw-u-cross-child-center"
+            href={PUBLIC_APPWRITE_DASHBOARD}
+            class="web-button is-transparent web-self-center"
+            on:click={() => trackEvent('Get started in pre footer')}
         >
             <span class="text">Get started</span>
         </a>
     </section>
     <section
-        class="aw-card is-transparent has-border-gradient aw-u-max-inline-width-584-mobile aw-u-margin-inline-auto-mobile aw-u-inline-width-100-percent-mobile"
+        class="web-card is-transparent has-border-gradient web-u-max-inline-width-584-mobile web-mx-auto-mobile web-u-inline-width-100-percent-mobile"
     >
-        <header class="aw-strip-plans-header">
-            <div class="aw-strip-plans-header-wrapper aw-u-row-gap-24">
-                <h3 class="aw-title aw-u-color-text-primary">Our plans</h3>
+        <header class="web-strip-plans-header">
+            <div class="web-strip-plans-header-wrapper web-u-row-gap-24">
+                <h3 class="text-title font-aeonik-pro text-primary">Our plans</h3>
             </div>
         </header>
 
-        <ul class="aw-strip-plans">
-            <li class="aw-strip-plans-item aw-strip-plans-container-query">
-                <div class="aw-strip-plans-item-wrapper">
-                    <div class="aw-strip-plans-plan">
-                        <h4 class="title aw-description">Starter</h4>
-                        <div class="aw-title aw-u-color-text-primary">$0</div>
-                        <div class="info aw-caption-500" />
+        <ul class="web-strip-plans">
+            <li class="web-strip-plans-item web-strip-plans-container-query">
+                <div class="web-strip-plans-item-wrapper">
+                    <div class="web-strip-plans-plan">
+                        <h4 class="title text-description">Free</h4>
+                        <div class="text-title font-aeonik-pro text-primary">$0</div>
+                        <div class="info text-caption font-medium" />
                     </div>
-                    <p class="aw-strip-plans-info aw-caption-500">
+                    <p class="web-strip-plans-info text-caption font-medium">
                         For personal hobby projects and students.
                     </p>
                     <a
-                        href="https://cloud.appwrite.io/register"
-                        class="aw-button is-secondary is-full-width-mobile aw-u-cross-child-end"
+                        href={`${PUBLIC_APPWRITE_DASHBOARD}/register`}
+                        class="web-button is-secondary is-full-width-mobile web-u-cross-child-end"
+                        on:click={() => trackEvent('Get started Free plan')}
                     >
                         <span class="text">Get started</span>
                     </a>
                 </div>
             </li>
-            <li class="aw-strip-plans-item aw-strip-plans-container-query">
-                <div class="aw-strip-plans-item-wrapper">
-                    <div class="aw-strip-plans-plan">
-                        <h4 class="title aw-description">Pro</h4>
-                        <div class="aw-title aw-u-color-text-primary">$15</div>
-                        <div class="info aw-caption-500">per member/month</div>
+            <li class="web-strip-plans-item web-strip-plans-container-query">
+                <div class="web-strip-plans-item-wrapper">
+                    <div class="web-strip-plans-plan">
+                        <h4 class="title text-description">Pro</h4>
+                        <div class="text-title font-aeonik-pro text-primary">$15</div>
+                        <div class="info text-caption font-medium">per member/month</div>
                     </div>
-                    <p class="aw-strip-plans-info aw-caption-500">
+                    <p class="web-strip-plans-info text-caption font-medium">
                         For pro developers and teams that need to scale their products.
                     </p>
                     <a
-                        href="https://cloud.appwrite.io/console?type=createPro"
-                        class="aw-button is-full-width-mobile aw-u-cross-child-end"
+                        href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=createPro`}
+                        class="web-button is-full-width-mobile web-u-cross-child-end"
                         target="_blank"
                         rel="noopener noreferrer"
+                        on:click={() => trackEvent('Get started Pro plan')}
                     >
-                        <span class="text">Start trial</span>
+                        <!-- <span class="text">Start trial</span> -->
+                        <span class="text">Start building</span>
                     </a>
                 </div>
             </li>
-            <li class="aw-strip-plans-item aw-strip-plans-container-query">
-                <div class="aw-strip-plans-item-wrapper">
-                    <div class="aw-strip-plans-plan">
-                        <h4 class="title aw-description">Scale</h4>
-                        <div class="aw-title aw-u-color-text-primary">$685</div>
-                        <div class="info aw-caption-500">per org/month</div>
+            <li class="web-strip-plans-item web-strip-plans-container-query">
+                <div class="web-strip-plans-item-wrapper">
+                    <div class="web-strip-plans-plan">
+                        <h4 class="title text-description">Scale</h4>
+                        <div class="text-title font-aeonik-pro text-primary">$599</div>
+                        <div class="info text-caption font-medium">per org/month</div>
                     </div>
-                    <p class="aw-strip-plans-info aw-caption-500">
+                    <p class="web-strip-plans-info text-caption font-medium">
                         For pro developers and production projects that need the ability to scale.
                     </p>
                     <button
-                        class="aw-button is-full-width-mobile is-secondary aw-u-cross-child-end"
+                        class="web-button is-full-width-mobile is-secondary web-u-cross-child-end"
                         disabled
                     >
                         <span class="text">Coming soon</span>
                     </button>
+                </div>
+            </li>
+            <li class="web-strip-plans-item web-strip-plans-container-query">
+                <div class="web-strip-plans-item-wrapper">
+                    <div class="web-strip-plans-plan">
+                        <h4 class="title web-description">Enterprise</h4>
+                        <div class="web-title web-u-color-text-primary">Custom</div>
+                        <div class="info web-caption-500">per org/month</div>
+                    </div>
+                    <p class="web-strip-plans-info web-caption-500">
+                        For enterprises that need more power and premium support.
+                    </p>
+                    <a
+                        href="/contact-us/enterprise"
+                        class="web-button is-secondary is-full-width-mobile web-u-cross-child-end"
+                    >
+                        <span class="text">Contact us</span>
+                    </a>
                 </div>
             </li>
         </ul>
@@ -86,7 +110,40 @@
 </div>
 
 <style lang="scss">
-    .aw-pre-footer-bg {
+    .web-strip-plans-info {
+        flex-basis: 5rem !important;
+    }
+
+    .web-strip-plans .web-button {
+        flex: 3;
+    }
+
+    .web-strip-plans-item-wrapper {
+        gap: 2.65rem;
+    }
+
+    @media (min-width: 1024px) and (max-width: 1224px) {
+        .web-strip-plans-info {
+            flex-basis: 1rem !important;
+        }
+
+        .web-strip-plans-item-wrapper {
+            gap: 1.25rem !important;
+            inline-size: 100% !important;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .web-strip-plans-info {
+            flex-basis: 3rem !important;
+        }
+
+        .web-strip-plans-item-wrapper {
+            gap: 1.25rem !important;
+        }
+    }
+
+    .web-pre-footer-bg {
         position: absolute;
         top: clamp(300px, 50vw, 50%);
         left: clamp(300px, 50vw, 50%);
@@ -95,5 +152,6 @@
         height: auto;
         max-inline-size: unset;
         max-block-size: unset;
+        filter: blur(100px);
     }
 </style>

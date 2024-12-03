@@ -1,13 +1,17 @@
 <script lang="ts">
     import { Media } from '$lib/UI';
     import { scroll } from '$lib/animations';
-    import { Article, FooterNav, MainFooter, Newsletter } from '$lib/components';
+    import { Article, FooterNav, MainFooter, Newsletter, Tooltip } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { formatDate } from '$lib/utils/date';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import type { AuthorData, CategoryData, PostsData } from '$routes/blog/content';
     import { BLOG_TITLE_SUFFIX } from '$routes/titles';
     import { getContext } from 'svelte';
+    import { type SocialShareOption, socialSharingOptions } from '$lib/constants';
+    import { copy } from '$lib/utils/copy';
+    import { page } from '$app/stores';
+    import CTA from '$lib/components/BlogCta.svelte';
 
     export let title: string;
     export let description: string;
@@ -16,6 +20,14 @@
     export let timeToRead: string;
     export let cover: string;
     export let category: string;
+    export let callToAction:
+        | {
+              label: string;
+              url: string;
+              heading: string;
+          }
+        | boolean;
+    export let lastUpdated: string;
 
     const authors = getContext<AuthorData[]>('authors');
     const authorData = authors.find((a) => a.slug === author);
@@ -32,6 +44,32 @@
     }
 
     let readPercentage = 0;
+
+    enum CopyStatus {
+        Copy = 'Copy URL',
+        Copied = 'Copied'
+    }
+
+    let copyText = CopyStatus.Copy;
+    async function handleCopy() {
+        const blogPostUrl = encodeURI(`https://appwrite.io${$page.url.pathname}`);
+
+        await copy(blogPostUrl);
+
+        copyText = CopyStatus.Copied;
+        setTimeout(() => {
+            copyText = CopyStatus.Copy;
+        }, 1000);
+    }
+
+    function getShareLink(shareOption: SocialShareOption): string {
+        const blogPostUrl = encodeURI(`https://appwrite.io${$page.url.pathname}`);
+        const shareableLink = shareOption.link
+            .replace('{TITLE}', title + '.')
+            .replace('{URL}', blogPostUrl);
+
+        return shareableLink;
+    }
 </script>
 
 <svelte:head>
@@ -39,7 +77,7 @@
     <title>{title + BLOG_TITLE_SUFFIX}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -53,26 +91,26 @@
 
 <Main>
     <div
-        class="aw-big-padding-section"
+        class="web-big-padding-section"
         use:scroll
-        on:aw-scroll={(e) => {
+        on:web-scroll={(e) => {
             readPercentage = e.detail.percentage;
         }}
     >
-        <div class="aw-big-padding-section">
-            <div class="aw-big-padding-section-level-1">
-                <div class="aw-big-padding-section-level-2">
-                    <div class="aw-container" style="--container-size:42.5rem">
-                        <article class="aw-main-article">
-                            <header class="aw-main-article-header">
+        <div class="web-big-padding-section">
+            <div class="py-10">
+                <div class="web-big-padding-section-level-2">
+                    <div class="container max-w-[42.5rem]">
+                        <article class="web-main-article">
+                            <header class="web-main-article-header">
                                 <a
-                                    class="aw-link is-secondary aw-u-color-text-secondary u-cross-baseline"
+                                    class="web-link is-secondary web-u-color-text-secondary items-baseline"
                                     href="/blog"
                                 >
-                                    <span class="aw-icon-chevron-left" aria-hidden="true" />
+                                    <span class="web-icon-chevron-left" aria-hidden="true" />
                                     <span>Back to blog</span>
                                 </a>
-                                <ul class="aw-metadata aw-caption-400">
+                                <ul class="web-metadata text-caption">
                                     <li>
                                         <time datetime={date}>{formatDate(date)}</time>
                                     </li>
@@ -80,107 +118,130 @@
                                         <li>{timeToRead} min</li>
                                     {/if}
                                 </ul>
-                                <h1 class="aw-title aw-u-color-text-primary">{title}</h1>
+                                <h1 class="text-title font-aeonik-pro text-primary">
+                                    {title}
+                                </h1>
                                 {#if description}
-                                    <p class="aw-description u-margin-block-start-8">
+                                    <p class="text-description mt-2">
                                         {description}
                                     </p>
                                 {/if}
                                 {#if authorData}
-                                    <div class="aw-author u-margin-block-start-16">
-                                        <a
-                                            href={authorData.href}
-                                            class="u-flex u-cross-center u-gap-8"
-                                        >
+                                    <div class="web-author mt-4">
+                                        <a href={authorData.href} class="flex items-center gap-2">
                                             {#if authorData.avatar}
                                                 <img
-                                                    class="aw-author-image"
+                                                    class="web-author-image"
                                                     src={authorData.avatar}
+                                                    alt={authorData.name}
+                                                    loading="lazy"
                                                     width="44"
                                                     height="44"
-                                                    alt=""
                                                 />
                                             {/if}
-                                            <div class="u-flex-vertical">
-                                                <h4 class="aw-sub-body-400 aw-u-color-text-primary">
+                                            <div class="flex flex-col">
+                                                <h4 class="text-sub-body text-primary">
                                                     {authorData.name}
                                                 </h4>
-                                                <p class="aw-caption-400">{authorData.role}</p>
+                                                <p class="text-caption">{authorData.role}</p>
                                             </div>
                                         </a>
-                                        <!-- <ul class="u-flex u-gap-8 u-margin-inline-start-auto u-cross-child-center">
-											{#if authorData.twitter}
-												<li>
-													<a
-														href={authorData.twitter}
-														class="aw-icon-button"
-														aria-label="Author twitter"
-														target="_blank" rel="noopener noreferrer"
-														
-													>
-														<span class="aw-icon-x" aria-hidden="true" />
-													</a>
-												</li>
-											{/if}
-											{#if authorData.linkedin}
-												<li>
-													<a
-														href={authorData.linkedin}
-														class="aw-icon-button"
-														aria-label="Author LinkedIn"
-														target="_blank" rel="noopener noreferrer"
-														
-													>
-														<span class="aw-icon-linkedin" aria-hidden="true" />
-													</a>
-												</li>
-											{/if}
-											{#if authorData.github}
-												<li>
-													<a
-														href={authorData.github}
-														class="aw-icon-button"
-														aria-label="Author GitHub"
-														target="_blank" rel="noopener noreferrer"
-														
-													>
-														<span class="aw-icon-github" aria-hidden="true" />
-													</a>
-												</li>
-											{/if}
-										</ul> -->
                                     </div>
                                 {/if}
+
+                                <div class="share-post-section mt-4 flex items-center gap-4">
+                                    <span class="text-micro pr-2 uppercase" style:color="#adadb0">
+                                        SHARE
+                                    </span>
+
+                                    <ul class="flex gap-2">
+                                        {#each socialSharingOptions as sharingOption}
+                                            <li class="share-list-item">
+                                                <Tooltip
+                                                    placement="bottom"
+                                                    disableHoverableContent={true}
+                                                >
+                                                    {#if sharingOption.type === 'link'}
+                                                        <a
+                                                            class="web-icon-button"
+                                                            aria-label={sharingOption.label}
+                                                            href={getShareLink(sharingOption)}
+                                                            target="_blank"
+                                                            rel="noopener, noreferrer"
+                                                        >
+                                                            <span
+                                                                class={sharingOption.icon}
+                                                                aria-hidden="true"
+                                                            />
+                                                        </a>
+                                                    {:else}
+                                                        <button
+                                                            class="web-icon-button"
+                                                            aria-label={sharingOption.label}
+                                                            on:click={() => handleCopy()}
+                                                        >
+                                                            <span
+                                                                class={sharingOption.icon}
+                                                                aria-hidden="true"
+                                                            />
+                                                        </button>
+                                                    {/if}
+
+                                                    <svelte:fragment slot="tooltip">
+                                                        {sharingOption.type === 'copy'
+                                                            ? copyText
+                                                            : `Share on ${sharingOption.label}`}
+                                                    </svelte:fragment>
+                                                </Tooltip>
+                                            </li>
+                                        {/each}
+                                    </ul>
+                                </div>
                             </header>
                             {#if cover}
-                                <div class="aw-media-container">
-                                    <Media class="u-block" src={cover} />
+                                <div class="web-media-container">
+                                    <Media class="block" src={cover} />
                                 </div>
                             {/if}
 
-                            <div class="aw-article-content u-margin-block-start-32">
+                            <div class="web-article-content mt-8">
+                                {#if lastUpdated}
+                                    <span class="text-body last-updated-text font-medium">
+                                        Updated:
+                                        <time dateTime={lastUpdated}>
+                                            {formatDate(lastUpdated)}
+                                        </time>
+                                    </span>
+                                {/if}
+
                                 <slot />
                             </div>
                         </article>
+
                         <!-- {#if categories?.length}
-							<div class="u-flex u-gap-16">
+							<div class="flex gap-4">
 								{#each categories as cat}
-									<a href={cat.href} class="aw-tag">{cat.name}</a>
+									<a href={cat.href} class="web-tag">{cat.name}</a>
 								{/each}
 							</div>
 						{/if} -->
                     </div>
+                    {#if typeof callToAction === 'boolean'}
+                        <CTA />
+                    {:else if typeof callToAction === 'object'}
+                        <CTA {...callToAction} />
+                    {/if}
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="aw-big-padding-section-level-1 aw-u-sep-block-start">
-        <div class="aw-big-padding-section-level-2">
-            <div class="aw-container">
-                <h3 class="aw-label aw-u-color-text-primary">Read next</h3>
-                <section class="u-margin-block-start-32">
-                    <ul class="aw-grid-articles">
+    <div class="web-u-sep-block-start py-10">
+        <div class="web-big-padding-section-level-2">
+            <div class="container">
+                <h3 class="text-label text-primary">Read next</h3>
+                <section class="mt-8">
+                    <ul class="web-grid-articles">
                         {#each posts.filter((p) => p.title !== title).slice(0, 3) as post}
                             {@const author = authors.find((a) => a.slug === post.author)}
                             {#if author}
@@ -199,8 +260,8 @@
                 </section>
             </div>
         </div>
-        <div class="aw-big-padding-section-level-2 u-position-relative u-overflow-hidden">
-            <div class="aw-container">
+        <div class="relative overflow-hidden pt-[7.5rem]">
+            <div class="container">
                 <Newsletter />
                 <FooterNav />
                 <MainFooter />
@@ -217,7 +278,34 @@
         top: 0;
         height: 2px;
         width: var(--percentage);
-        background: hsl(var(--aw-color-accent));
+        background: hsl(var(--web-color-accent));
         z-index: 10000;
+    }
+
+    @media (min-width: 1024px) {
+        .web-main-article-header {
+            padding-block-end: 0;
+            border-block-end: unset;
+        }
+    }
+
+    .share-post-section {
+        padding: 16px 0;
+        border-block-end: solid 0.0625rem hsl(var(--web-color-border));
+        border-block-start: solid 0.0625rem hsl(var(--web-color-border));
+    }
+
+    .web-icon-button {
+        .web-icon-x {
+            font-size: 16px;
+        }
+
+        .web-icon-copy {
+            font-size: 24px;
+        }
+
+        .last-updated-text {
+            color: var(--primary, #e4e4e7);
+        }
     }
 </style>

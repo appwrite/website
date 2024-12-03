@@ -43,7 +43,7 @@ npx create-next-app@latest && cd my-app
 Install the JavaScript Appwrite SDK.
 
 ```sh
-npm install appwrite
+npm install appwrite@14.0.1
 ```
 {% /section %}
 {% section #step-4 step=4 title="Define Appwrite service" %}
@@ -56,16 +56,16 @@ Find your project's ID in the **Settings** page.
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Create a new file `app/appwrite.js` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
+Create a new file `app/appwrite.js` and add the following code to it, replace `<PROJECT_ID>` with your project ID.
 
-```js
+```client-web
 import { Client, Account } from 'appwrite';
 
 export const client = new Client();
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('<YOUR_PROJECT_ID>'); // Replace with your project ID
+    .setProject('<PROJECT_ID>'); // Replace with your project ID
 
 export const account = new Account(client);
 export { ID } from 'appwrite';
@@ -86,7 +86,7 @@ const LoginPage = () => {
   const [name, setName] = useState("");
 
   const login = async (email, password) => {
-    const session = await account.createEmailSession(email, password);
+    const session = await account.createEmailPasswordSession(email, password);
     setLoggedInUser(await account.get());
   };
 

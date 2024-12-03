@@ -1,20 +1,20 @@
 @use '../../abstract' as *;
 .#{$p}-description {
-  --p-font-family: var(--aw-font-family-inter);
-  --p-font-size: var(--aw-font-size-medium);
-  --p-line-height: var(--aw-line-height-sm);
-  --p-letter-spacing: var(--aw-letter-spacing-tighter);
-  --p-font-weight: var(--aw-font-weight-medium);
+  --p-font-family: var(--web-font-family-inter);
+  --p-font-size: var(--web-font-size-medium);
+  --p-line-height: var(--web-line-height-sm);
+  --p-letter-spacing: var(--web-letter-spacing-tighter);
+  --p-font-weight: var(--web-font-weight-medium);
 
   font-family: var(--p-font-family);
   font-size: var(--p-font-size);
   line-height: var(--p-line-height);
   letter-spacing: var(--p-letter-spacing);
   font-weight: var(--p-font-weight);
-  color: hsl(var(--aw-color-secondary));
+  color: hsl(var(--web-color-secondary));
 
   @media #{$break2open} {
-    --p-font-size: var(--aw-font-size-large);
-    --p-line-height: var(--aw-line-height-md);
+    --p-font-size: var(--web-font-size-large);
+    --p-line-height: var(--web-line-height-md);
   }
 }

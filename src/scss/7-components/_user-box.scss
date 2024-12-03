@@ -4,7 +4,10 @@
   display:grid; column-gap:pxToRem(16); grid-template-columns:auto 1fr;
   font-size:pxToRem(18); line-height:pxToRem(24);
 
-  &-image    { grid-row:span 2; display:block; inline-size:pxToRem(48); block-size:pxToRem(48); border-radius:50%; }
-  &-name     { color:hsl(var(--aw-color-greyscale-700)); }
-  &-username { color:hsl(var(--aw-color-greyscale-600)); }
+  &-image    {
+    grid-row:span 2; display:block; inline-size:pxToRem(48); block-size:pxToRem(48); border-radius:50%;
+    &.is-32px { inline-size:pxToRem(32); block-size:pxToRem(32); }
+  }
+  &-name     { color:hsl(var(--web-color-greyscale-700)); }
+  &-username { color:hsl(var(--web-color-greyscale-600)); }
 }

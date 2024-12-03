@@ -63,7 +63,9 @@ export type ScrollCallback = {
 };
 
 export function createScrollHandler(callbacks: ScrollCallback[]) {
-    const states: ScrollCallbackState[] = callbacks.map(() => ({ executedCount: 0 }));
+    const states: ScrollCallbackState[] = callbacks.map(() => ({
+        executedCount: 0
+    }));
 
     const handler = function (scrollPercentage: number) {
         callbacks.forEach((callback, i) => {
@@ -107,8 +109,8 @@ export const scroll: Action<
     HTMLElement,
     undefined,
     {
-        'on:aw-scroll': (e: CustomEvent<ScrollInfo>) => void;
-        'on:aw-resize': (e: CustomEvent<ScrollInfo>) => void;
+        'on:web-scroll': (e: CustomEvent<ScrollInfo>) => void;
+        'on:web-resize': (e: CustomEvent<ScrollInfo>) => void;
     }
 > = (node) => {
     function getScrollInfo(): ScrollInfo {
@@ -128,7 +130,7 @@ export const scroll: Action<
         };
     }
 
-    const createHandler = (eventName: 'aw-scroll' | 'aw-resize') => {
+    const createHandler = (eventName: 'web-scroll' | 'web-resize') => {
         return () => {
             node.dispatchEvent(
                 new CustomEvent<ScrollInfo>(eventName, {
@@ -138,8 +140,8 @@ export const scroll: Action<
         };
     };
 
-    const handleScroll = createHandler('aw-scroll');
-    const handleResize = createHandler('aw-resize');
+    const handleScroll = createHandler('web-scroll');
+    const handleResize = createHandler('web-resize');
 
     handleScroll();
     handleResize();
@@ -222,6 +224,20 @@ export function write(text: string, cb: (v: string) => void, duration = 500) {
         const interval = setInterval(() => {
             cb(text.slice(0, ++i));
             if (i === text.length) {
+                clearInterval(interval);
+                resolve(undefined);
+            }
+        }, step);
+    });
+}
+
+export function unwrite(text: string, cb: (v: string) => void, duration = 500) {
+    const step = duration / text.length;
+    let i = text.length;
+    return new Promise((resolve) => {
+        const interval = setInterval(() => {
+            cb(text.slice(0, --i));
+            if (i === 0) {
                 clearInterval(interval);
                 resolve(undefined);
             }

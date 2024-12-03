@@ -33,7 +33,6 @@
         preventScroll,
         positioning: {
             sameWidth: true,
-            fitViewport: true,
             placement
         },
         forceVisible: true,
@@ -45,7 +44,9 @@
             dispatch('change', next?.value);
 
             return next;
-        }
+        },
+        portal: null,
+        scrollAlignment: 'center'
     });
 
     $: selectedOption = options.find((o) => o.value === value);
@@ -69,7 +70,10 @@
             return carry;
         }, {});
 
-        return Object.entries(groups).map(([label, options]) => ({ label, options }));
+        return Object.entries(groups).map(([label, options]) => ({
+            label,
+            options
+        }));
     })();
 
     $: flyParams = {
@@ -79,9 +83,9 @@
 </script>
 
 <button
-    class="aw-select is-colored"
+    class="web-select is-colored"
     {id}
-    class:aw-is-not-mobile={nativeMobile}
+    class:web-is-not-mobile={nativeMobile}
     use:melt={$trigger}
     aria-label="Select theme"
 >
@@ -96,8 +100,8 @@
 
 {#if $open}
     <div
-        class="aw-select-menu"
-        class:aw-is-not-mobile={nativeMobile}
+        class="web-select-menu"
+        class:web-is-not-mobile={nativeMobile}
         style:z-index={10000}
         use:melt={$menu}
         transition:fly={flyParams}
@@ -105,24 +109,24 @@
         {#each groups as group}
             {@const isDefault = group.label === DEFAULT_GROUP}
             {#if isDefault}
-                <div class="u-flex u-flex-vertical u-gap-2">
+                <div class="flex flex-col gap-0.5">
                     {#each group.options as option}
-                        <button class="aw-select-option" use:melt={$optionEl(option)}>
+                        <button class="web-select-option" use:melt={$optionEl(option)}>
                             {#if option.icon}
                                 <span class={option.icon} aria-hidden="true" />
                             {/if}
-                            <span style:text-transform="capitalize">{option.label}</span>
+                            <span>{option.label}</span>
                         </button>
                     {/each}
                 </div>
             {:else}
-                <div class="aw-select-group" use:melt={$groupEl(group.label)}>
-                    <span class="aw-select-group-label" use:melt={$groupLabel(group.label)}>
+                <div class="web-select-group" use:melt={$groupEl(group.label)}>
+                    <span class="web-select-group-label" use:melt={$groupLabel(group.label)}>
                         {group.label}
                     </span>
 
                     {#each group.options as option}
-                        <button class="aw-select-option" use:melt={$optionEl(option)}>
+                        <button class="web-select-option" use:melt={$optionEl(option)}>
                             {#if option.icon}
                                 <span class={option.icon} aria-hidden="true" />
                             {/if}
@@ -136,7 +140,7 @@
 {/if}
 
 <div
-    class="aw-select is-colored aw-is-only-mobile aw-u-inline-width-100-percent-mobile-break1"
+    class="web-select is-colored web-is-only-mobile web-u-inline-width-100-percent-mobile-break1"
     style:display={nativeMobile ? undefined : 'none'}
 >
     {#if selectedOption?.icon}
@@ -166,7 +170,7 @@
 </div>
 
 <style lang="scss">
-    .aw-select {
+    .web-select {
         min-width: var(--min-width, var(--p-select-min-width));
     }
 </style>

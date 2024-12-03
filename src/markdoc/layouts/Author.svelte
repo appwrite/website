@@ -32,7 +32,7 @@
     <title>{seoTitle}</title>
     <meta property="og:title" content={seoTitle} />
     <meta name="twitter:title" content={seoTitle} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -45,10 +45,8 @@
 </svelte:head>
 
 <Main>
-    <div class="aw-big-padding-section-level-1 u-position-relative u-overflow-hidden">
-        <div
-            class="u-position-absolute u-inset-inline-start-0 u-inset-block-end-0 aw-u-pointer-events-none"
-        >
+    <div class="relative overflow-hidden py-10">
+        <div class="web-u-pointer-events-none absolute inset-y-0">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="660"
@@ -102,32 +100,34 @@
             </svg>
         </div>
 
-        <div class="aw-big-padding-section-level-2 u-position-relative">
-            <div class="aw-container">
-                <div class="aw-author-section u-block">
+        <div class="web-big-padding-section-level-2 relative">
+            <div class="container">
+                <div class="web-author-section block">
                     {#if avatar}
                         <FloatingHead --position="relative" src={avatar} alt={name} size={112} />
                     {/if}
-                    <h1 class="aw-title aw-u-color-text-primary">{name}</h1>
-                    {#if role}
-                        <div class="aw-label u-margin-block-start-8">{role}</div>
-                    {/if}
+                    <div>
+                        <h1 class="text-title font-aeonik-pro text-primary">{name}</h1>
+                        {#if role}
+                            <div class="text-label mt-2">{role}</div>
+                        {/if}
+                    </div>
                     {#if bio}
-                        <p class="aw-author-section-info aw-description">
+                        <p class="web-author-section-info text-description">
                             {bio}
                         </p>
                     {/if}
-                    <ul class="u-flex u-main-center u-gap-8">
+                    <ul class="mt-4 flex justify-center gap-2">
                         {#if github}
                             <li>
                                 <a
                                     href={github}
-                                    class="aw-icon-button"
+                                    class="web-icon-button"
                                     aria-label="Author GitHub"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <span class="aw-icon-github" aria-hidden="true" />
+                                    <span class="web-icon-github" aria-hidden="true" />
                                 </a>
                             </li>
                         {/if}
@@ -135,12 +135,12 @@
                             <li>
                                 <a
                                     href={twitter}
-                                    class="aw-icon-button"
+                                    class="web-icon-button"
                                     aria-label="Author twitter"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <span class="aw-icon-x" aria-hidden="true" />
+                                    <span class="web-icon-x" aria-hidden="true" />
                                 </a>
                             </li>
                         {/if}
@@ -148,12 +148,12 @@
                             <li>
                                 <a
                                     href={linkedin}
-                                    class="aw-icon-button"
+                                    class="web-icon-button"
                                     aria-label="Author LinkedIn"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <span class="aw-icon-linkedin" aria-hidden="true" />
+                                    <span class="web-icon-linkedin" aria-hidden="true" />
                                 </a>
                             </li>
                         {/if}
@@ -163,13 +163,13 @@
         </div>
     </div>
 
-    <div class="aw-big-padding-section-level-1">
-        <div class="aw-big-padding-section-level-2">
-            <div class="aw-container">
-                <h2 class="aw-title aw-u-color-text-primary">Articles</h2>
+    <div class="py-10">
+        <div class="web-big-padding-section-level-2">
+            <div class="container">
+                <h2 class="text-title font-aeonik-pro text-primary">Articles</h2>
 
-                <!-- <div class="aw-is-only-mobile u-margin-block-start-32">
-					<label class="u-block aw-select is-colored" for="articles">
+                <!-- <div class="web-is-only-mobile mt-8">
+					<label class="blockweb-select is-colored" for="articles">
 						<select id="articles">
 							<option>Latest</option>
 							<option>News</option>
@@ -180,18 +180,18 @@
 						<span class="icon-cheveron-down" aria-hidden="true" />
 					</label>
 				</div> -->
-                <!--<div class="aw-is-not-mobile">
-					<div class="u-flex u-main-space-between u-gap-16 u-margin-block-start-24">
+                <!--<div class="web-is-not-mobile">
+					<div class="flex justify-between gap-4 mt-6">
 						<ul
-							class="aw-secondary-tabs is-transparent"
+							class="web-secondary-tabs is-transparent"
 							role="tablist"
 							aria-orientation="horizontal"
 							data-orientation="horizontal"
 							data-melt-tabs-list=""
 						>
-							<li class="aw-secondary-tabs-item">
+							<li class="web-secondary-tabs-item">
 								<button
-									class="aw-secondary-tabs-button u-width-full-line is-selected"
+									class="web-secondary-tabs-button w-full is-selected"
 									type="button"
 									role="tab"
 									data-state="active"
@@ -200,12 +200,12 @@
 									data-orientation="horizontal"
 									data-melt-tabs-trigger=""
 								>
-									<span class="aw-main-body-500">Latest</span>
+									<span class="text-body font-medium">Latest</span>
 								</button>
 							</li>
-							<li class="aw-secondary-tabs-item">
+							<li class="web-secondary-tabs-item">
 								<button
-									class="aw-secondary-tabs-button u-width-full-line"
+									class="web-secondary-tabs-button w-full"
 									type="button"
 									role="tab"
 									data-state="inactive"
@@ -214,12 +214,12 @@
 									data-orientation="horizontal"
 									data-melt-tabs-trigger=""
 								>
-									<span class="aw-main-body-500">News</span>
+									<span class="text-body font-medium">News</span>
 								</button>
 							</li>
-							<li class="aw-secondary-tabs-item">
+							<li class="web-secondary-tabs-item">
 								<button
-									class="aw-secondary-tabs-button u-width-full-line"
+									class="web-secondary-tabs-button w-full"
 									type="button"
 									role="tab"
 									data-state="inactive"
@@ -228,12 +228,12 @@
 									data-orientation="horizontal"
 									data-melt-tabs-trigger=""
 								>
-									<span class="aw-main-body-500">Insights</span>
+									<span class="text-body font-medium">Insights</span>
 								</button>
 							</li>
-							<li class="aw-secondary-tabs-item">
+							<li class="web-secondary-tabs-item">
 								<button
-									class="aw-secondary-tabs-button u-width-full-line"
+									class="web-secondary-tabs-button w-full"
 									type="button"
 									role="tab"
 									data-state="inactive"
@@ -242,12 +242,12 @@
 									data-orientation="horizontal"
 									data-melt-tabs-trigger=""
 								>
-									<span class="aw-main-body-500">Tutorials</span>
+									<span class="text-body font-medium">Tutorials</span>
 								</button>
 							</li>
-							<li class="aw-secondary-tabs-item">
+							<li class="web-secondary-tabs-item">
 								<button
-									class="aw-secondary-tabs-button u-width-full-line"
+									class="web-secondary-tabs-button w-full"
 									type="button"
 									role="tab"
 									data-state="inactive"
@@ -256,19 +256,19 @@
 									data-orientation="horizontal"
 									data-melt-tabs-trigger=""
 								>
-									<span class="aw-main-body-500">Changelog</span>
+									<span class="text-body font-medium">Changelog</span>
 								</button>
 							</li>
 						</ul> -->
-                <!-- <div class="aw-input-text-search-wrapper">
+                <!-- <div class="web-input-text-search-wrapper">
 							<span class="icon-search" aria-hidden="true" />
-							<input class="aw-input-text aw-u-block-size-48" type="search" placeholder="Search" />
+							<input class="web-input-text web-u-block-size-48" type="search" placeholder="Search" />
 						</div> 
 					</div>
 				</div>-->
 
-                <div class="u-margin-block-start-48">
-                    <ul class="aw-grid-articles">
+                <div class="mt-12">
+                    <ul class="web-grid-articles">
                         {#each posts.filter((p) => p.author === author?.slug) as post}
                             <Article
                                 title={post.title}
@@ -284,10 +284,8 @@
                 </div>
             </div>
         </div>
-        <div
-            class="aw-big-padding-section-level-2 is-margin-replace-padding u-position-relative u-overflow-hidden"
-        >
-            <div class="aw-container">
+        <div class="relative overflow-hidden pt-[7.5rem]">
+            <div class="container">
                 <FooterNav />
                 <MainFooter />
             </div>

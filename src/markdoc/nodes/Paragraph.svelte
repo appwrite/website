@@ -15,11 +15,11 @@
     export { className as class };
 
     $: classes = (() => {
-        if (inDocs) return 'aw-paragraph-md';
-        if (inPolicy) return 'aw-paragraph-md in-policy';
-        if (inTable) return 'aw-paragraph-md';
-        if (inChangelog) return 'aw-paragraph-lg in-changelog';
-        return 'aw-paragraph-lg';
+        if (inDocs) return 'text-paragraph-md mb-8';
+        if (inPolicy) return 'text-paragraph-md mb-4';
+        if (inTable) return 'text-paragraph-md';
+        if (inChangelog) return 'text-paragraph-lg mb-4 font-normal';
+        return 'text-paragraph-lg mb-8';
     })();
 </script>
 
@@ -28,18 +28,3 @@
 {:else}
     <p class="{classes} {className}"><slot /></p>
 {/if}
-
-<style lang="scss">
-    p.aw-paragraph-lg {
-        margin-block-end: 2rem;
-    }
-
-    .in-policy {
-        margin-block-end: 1rem;
-    }
-
-    .in-changelog {
-        margin-block-end: 1rem !important;
-        font-weight: 400;
-    }
-</style>

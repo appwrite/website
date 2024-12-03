@@ -47,7 +47,7 @@ Before migrating to Appwrite make sure you've read the [migration overview](/doc
 
 1. Remember to [add appropriate permissions](/docs/advanced/platform/permissions) to the migrated resources to protect user data and privacy.
 
-1. Migrate functions manually, by [pick a runtime](/docs/products/functions/runtimes) and [learn to develop Appwrite Functions](/docs/products/functions/development).
+1. Migrate functions manually, by [pick a runtime](/docs/products/functions/runtimes) and [learn to develop Appwrite Functions](/docs/products/functions/develop).
 
 1. Explore Appwrite's unique features by exploring the rest of the [Appwrite Documentation](/docs).
 

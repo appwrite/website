@@ -4,6 +4,7 @@
     import FunctionsShot from './(assets)/fn-shot.png?enhanced';
     import StorageShot from './(assets)/storage-shot.png?enhanced';
     import RealtimeShot from './(assets)/realtime-shot.png?enhanced';
+    import MessagingShot from './(assets)/messaging-shot.png?enhanced';
 
     export const elId = writable(0);
 
@@ -12,7 +13,15 @@
     }
 
     /* Products infos */
-    const products = ['auth', 'databases', 'storage', 'functions', 'realtime', 'post'] as const;
+    const products = [
+        'auth',
+        'databases',
+        'storage',
+        'functions',
+        'messaging',
+        'realtime',
+        'post'
+    ] as const;
     type Product = (typeof products)[number];
 
     type ProductInfo = {
@@ -35,7 +44,7 @@
             title: 'Auth',
             subtitle: 'Secure login for all users',
             description:
-                'Authenticate users securely with multiple login methods like Email/Password, SMS, OAuth, Annoymous, Magic URLs and more.',
+                'Authenticate users securely with multiple login methods like Email/Password, SMS, OAuth, Anonymous, Magic URLs and more.',
             features: [
                 '30+ login methods',
                 'Support for teams, roles and user labels',
@@ -76,6 +85,23 @@
                 'Custom domain support'
             ],
             shot: FunctionsShot
+        },
+        messaging: {
+            icon: {
+                active: './images/icons/illustrated/dark/messaging.png',
+                inactive: './images/icons/illustrated/dark/messaging-transparent.png'
+            },
+            title: 'Messaging',
+            subtitle: 'Communicate with your users',
+            description:
+                'Set up a full-functioning messaging service for your application that covers multiple channels under one unified platform.',
+            features: [
+                'Draft and preview your messages before delivery',
+                'Segment your users for specific targeting',
+                'Send push notifications, emails, and SMS',
+                'Supports real-time and location-based messaging'
+            ],
+            shot: MessagingShot
         },
         storage: {
             icon: {
@@ -128,6 +154,7 @@
     import { Storage, storageController } from './storage';
     import { Functions, functionsController } from './functions';
     import { Realtime, realtimeController } from './realtime';
+    import { Messaging, messagingController } from './messaging';
     import { postController } from './post';
     import Post from './post/post.svelte';
     import { anyify } from '$lib/utils/anyify';
@@ -151,8 +178,8 @@
             return scrollInfo.percentage >= min && scrollInfo.percentage < max;
         });
 
-        const product = products[activeIdx] as Product | undefined;
-        const scale = productsScales[activeIdx] as Scale | undefined;
+        const product = products[activeIdx] as Product;
+        const scale = productsScales[activeIdx] as Scale;
         const percent = scale ? toScale(scrollInfo.percentage, scale, [0, 1]) : 0;
 
         return {
@@ -169,6 +196,7 @@
         databases: databasesController,
         storage: storageController,
         functions: functionsController,
+        messaging: messagingController,
         realtime: realtimeController,
         post: postController
     };
@@ -193,14 +221,14 @@
 <div
     id="products"
     use:scroll
-    on:aw-scroll={({ detail }) => {
+    on:web-scroll={({ detail }) => {
         scrollInfo = detail;
     }}
 >
     <div class="sticky-wrapper">
         <!-- <div class="debug">
-			<pre>{scrollInfo.percentage}</pre>
-		</div> -->
+            <pre>{scrollInfo.percentage}</pre>
+        </div> -->
         {#if scrollInfo.percentage < 0.075}
             <div
                 class="main-text"
@@ -208,18 +236,19 @@
                 in:fly={{ duration: 250, delay: 250, y: -300 }}
             >
                 {#if scrollInfo.percentage > -0.1}
-                    <span class="aw-badges aw-eyebrow" transition:slide={{ axis: 'x' }}
-                        >Products_</span
+                    <span
+                        class="web-badges text-micro uppercase !text-white"
+                        transition:slide={{ axis: 'x' }}>Products_</span
                     >
 
                     <h2
-                        class="aw-display aw-u-color-text-primary"
+                        class="text-display font-aeonik-pro text-primary"
                         transition:fly={{ y: 16, delay: 250 }}
                     >
                         Your backend, minus the hassle
                     </h2>
                     <p
-                        class="aw-description aw-u-max-width-700 u-margin-inline-auto"
+                        class="text-description mx-auto max-w-[700px]"
                         transition:fly={{
                             y: 16,
                             delay: 400
@@ -255,11 +284,13 @@
                                             width="32"
                                             height="32"
                                         />
-                                        <span class="aw-label">{copy.title}</span>
+                                        <span class="text-label">{copy.title}</span>
                                     </h3>
                                     {#if isActive}
                                         <div transition:slide>
-                                            <h4 class="aw-title">{copy.subtitle}</h4>
+                                            <h4 class="text-title font-aeonik-pro">
+                                                {copy.subtitle}
+                                            </h4>
                                             <p>
                                                 {copy.description}
                                             </p>
@@ -289,6 +320,8 @@
                                         Files
                                     {:else if active.product === 'functions'}
                                         <!-- oblivion -->
+                                    {:else if active.product === 'messaging'}
+                                        Messages
                                     {:else if active.product === 'realtime'}
                                         Realtime
                                     {/if}
@@ -297,6 +330,8 @@
 
                             {#if active.product === 'auth'}
                                 <Auth.Box />
+                            {:else if active.product === 'messaging'}
+                                <Messaging.Box />
                             {:else if active.product === 'databases'}
                                 <Databases.Box />
                             {:else if active.product === 'storage'}
@@ -315,6 +350,8 @@
                                 <Storage.Code />
                             {:else if active.product === 'functions'}
                                 <Functions.Code />
+                            {:else if active.product === 'messaging'}
+                                <Messaging.Code />
                             {/if}
                         </CodeWindow>
                     </div>
@@ -334,15 +371,17 @@
                             <Databases.Phone />
                         {:else if active.product === 'storage'}
                             <Storage.Phone />
+                        {:else if active.product === 'messaging'}
+                            <Messaging.Phone />
                         {:else if active.product === 'functions'}
                             <Functions.Phone />
-                        {:else if !['auth', 'databases', 'storage', 'functions'].includes(anyify(active.product))}
+                        {:else if !['auth', 'databases', 'storage', 'messaging', 'functions'].includes(active.product)}
                             <Realtime.Phone />
                         {/if}
                     </div>
                 </div>
 
-                {#if !['auth', 'databases', 'storage', 'functions', 'realtime'].includes(anyify(active.product))}
+                {#if !['auth', 'databases', 'storage', 'functions', 'messaging', 'realtime'].includes(anyify(active.product))}
                     <Post />
                 {/if}
             </div>
@@ -351,9 +390,11 @@
 </div>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     #products {
         min-height: 500vh;
-        height: 5000px;
+        height: fit-content;
         position: relative;
 
         --debug-bg: transparent;
@@ -383,7 +424,7 @@
         padding-inline: 1.25rem;
 
         width: 100%;
-        height: 100vh;
+        height: 60vh;
 
         > .main-text {
             position: absolute;
@@ -394,7 +435,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 15rem;
+            min-height: 5rem;
             text-align: center;
 
             h2 {
@@ -456,7 +497,7 @@
 
                     &[data-active] {
                         h3 {
-                            color: hsl(var(--aw-color-primary));
+                            color: hsl(var(--web-color-primary));
                             margin-block-end: 0.75rem;
                         }
                     }
@@ -466,14 +507,10 @@
                     display: flex;
                     align-items: center;
                     gap: 0.75rem;
-
-                    .aw-label {
-                        margin-block-start: 0.25rem;
-                    }
                 }
 
                 h4 {
-                    color: hsl(var(--aw-color-primary));
+                    color: hsl(var(--web-color-primary));
                 }
 
                 p {
@@ -520,7 +557,7 @@
     }
 
     .phone {
-        @include border-gradient;
+        @include gradients.border-gradient;
         --m-border-size: 1px;
         --m-border-radius: 2.5rem;
         --m-border-gradient-after: linear-gradient(
@@ -530,7 +567,7 @@
         );
 
         background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(8px);
+        //backdrop-filter: blur(8px);
         padding: 0.5rem;
 
         width: 275px;
@@ -589,7 +626,7 @@
         }
 
         :global(.header) {
-            border-bottom: 1px solid hsl(var(--aw-color-greyscale-700));
+            border-bottom: 1px solid hsl(var(--web-color-greyscale-700));
             color: var(--greyscale-400, #adadb1);
 
             text-transform: uppercase;
@@ -609,8 +646,8 @@
         }
 
         :global(.avatar) {
-            background-color: hsl(var(--aw-color-greyscale-700));
-            border-color: hsl(var(--aw-color-greyscale-700));
+            background-color: hsl(var(--web-color-greyscale-700));
+            border-color: hsl(var(--web-color-greyscale-700));
         }
 
         :global(.truncated) {
@@ -630,7 +667,7 @@
     }
 
     .controls {
-        @include border-gradient;
+        @include gradients.border-gradient;
         --m-border-radius: 1rem;
         --m-border-gradient-before: linear-gradient(
             180deg,
@@ -645,9 +682,13 @@
         opacity: 0;
 
         background: rgba(255, 255, 255, 0.08);
-        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.06), -2px 4px 9px 0px rgba(0, 0, 0, 0.06),
-            -8px 15px 17px 0px rgba(0, 0, 0, 0.05), -19px 34px 23px 0px rgba(0, 0, 0, 0.03),
-            -33px 60px 27px 0px rgba(0, 0, 0, 0.01), -52px 94px 30px 0px rgba(0, 0, 0, 0);
+        box-shadow:
+            0px 0px 0px 0px rgba(0, 0, 0, 0.06),
+            -2px 4px 9px 0px rgba(0, 0, 0, 0.06),
+            -8px 15px 17px 0px rgba(0, 0, 0, 0.05),
+            -19px 34px 23px 0px rgba(0, 0, 0, 0.03),
+            -33px 60px 27px 0px rgba(0, 0, 0, 0.01),
+            -52px 94px 30px 0px rgba(0, 0, 0, 0);
         backdrop-filter: blur(20px);
     }
 </style>

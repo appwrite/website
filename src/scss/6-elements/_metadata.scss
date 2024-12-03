@@ -2,7 +2,7 @@
 
 .#{$p}-metadata {
   display: flex;
-  color: hsl(var(--aw-color-secondary));
+  color: hsl(var(--web-color-secondary));
   > * { display:flex; }
   > *:nth-child(n+2)::before {
     content:"•"; display:block; margin-inline:pxToRem(4);

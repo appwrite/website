@@ -7,6 +7,7 @@
             store.set(value);
             if (browser) {
                 localStorage.setItem('theme', value);
+                document.documentElement.style.setProperty('color-scheme', value);
             }
         };
 
@@ -41,22 +42,38 @@
 </script>
 
 <script lang="ts">
-    import '$icons/output/aw-icon.css';
+    import '../app.css';
     import '$scss/index.scss';
+    import '$icons/output/web-icon.css';
 
     import { browser, dev } from '$app/environment';
-    import { derived, writable } from 'svelte/store';
-    import { navigating, page } from '$app/stores';
+    import { navigating, page, updated } from '$app/stores';
     import { onMount } from 'svelte';
+    import { derived, writable } from 'svelte/store';
+    import { createSource, loggedIn } from '$lib/utils/console';
+    import { beforeNavigate } from '$app/navigation';
 
     function applyTheme(theme: Theme) {
         const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
-        const className = `theme-${resolvedTheme}`;
-        document.body.classList.remove('theme-dark', 'theme-light');
+        const className = `${resolvedTheme}`;
+        document.body.classList.remove('dark', 'light');
         document.body.classList.add(className);
     }
 
     onMount(() => {
+        const urlParams = $page.url.searchParams;
+        const ref = urlParams.get('ref');
+        const utmSource = urlParams.get('utm_source');
+        const utmMedium = urlParams.get('utm_medium');
+        const utmCampaign = urlParams.get('utm_campaign');
+        let referrer = document.referrer.length ? document.referrer : null;
+        // Skip our own
+        if (referrer?.includes('//appwrite.io')) {
+            referrer = null;
+        }
+        if (ref || referrer || utmSource || utmCampaign || utmMedium) {
+            createSource(ref, referrer, utmSource, utmCampaign, utmMedium);
+        }
         const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
 
         applyTheme(initialTheme);
@@ -69,7 +86,7 @@
             const isDocs = n.to.route.id?.startsWith('/docs');
 
             if (isDocs) {
-                if (!document.body.classList.contains(`theme-${$currentTheme}`)) {
+                if (!document.body.classList.contains(`${$currentTheme}`)) {
                     applyTheme($currentTheme);
                 }
             } else {
@@ -78,7 +95,16 @@
         });
     });
 
+    beforeNavigate(({ willUnload, to }) => {
+        if ($updated && !willUnload && to?.url) {
+            location.href = to.url.href;
+        }
+    });
+
     $: if (browser) currentTheme.subscribe((theme) => applyTheme(theme));
+    $: if (browser && $loggedIn) {
+        document.body.dataset.loggedIn = '';
+    }
 </script>
 
 <svelte:head>
@@ -92,14 +118,18 @@
 <slot />
 
 <style lang="scss">
+    :global(html) {
+        color-scheme: dark;
+    }
+
     .skip {
         position: absolute;
         inset-block-start: 0;
         z-index: 9999;
 
         display: block;
-        background-color: hsl(var(--aw-color-mint-500));
-        color: hsl(var(--aw-color-black));
+        background-color: hsl(var(--web-color-mint-500));
+        color: hsl(var(--web-color-black));
         text-decoration: underline;
         opacity: 0;
 
