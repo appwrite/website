@@ -1,0 +1,17 @@
+@use '../abstract' as *;
+.#{$p}-code-console {
+  background: rgba(35, 35, 37, 0.94); backdrop-filter: blur(9.430656433105469px);
+  &-header { padding-block-start:pxToRem(8); padding-block-end:pxToRem(12); padding-inline:pxToRem(8); }
+  &-content {
+    background:hsl(var(--web-color-greyscale-900));
+    padding:pxToRem(20); border-radius:pxToRem(12);
+  }
+  &-button {
+    --p-code-coonsole-button-color: var(--color-neutral-5);
+    inline-size:pxToRem(8); block-size:pxToRem(8); border-radius:var(--border-radius-circular);
+    background-color: hsl(var(--p-code-coonsole-button-color));
+    &.is-red    { --p-code-coonsole-button-color:5 79% 65% / 1; }
+    &.is-yellow { --p-code-coonsole-button-color:40 89% 64% / 1; }
+    &.is-green  { --p-code-coonsole-button-color:113 49% 55% / 1; }
+  }
+}

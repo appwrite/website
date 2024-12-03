@@ -2,9 +2,9 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
-    import Ticket from '../(components)/Ticket.svelte';
-    import { getMockContributions, loginGithub } from '../helpers';
+    import { loginGithub } from '../helpers';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
+    import TicketScroll from '../(components)/TicketScroll.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
@@ -68,13 +68,11 @@
         <div class="signup">
             <div class="info">
                 <hgroup>
-                    <h1 class="web-display">
+                    <h1 class="text-display font-aeonik-pro">
                         <span style:font-weight="500">init</span>
                         launches on August 19th
                     </h1>
-                    <p class="web-label web-u-color-text-primary">
-                        Register today and claim your Init ticket
-                    </p>
+                    <p class="text-label text-primary">Register today and claim your Init ticket</p>
                 </hgroup>
                 <div class="buttons">
                     <button class="web-button" on:click={loginGithub}>
@@ -83,47 +81,25 @@
                     </button>
                 </div>
                 <p class="privacy">
-                    By registering, you agree to our <a href="/terms" class="web-link is-inline"
+                    By registering, you agree to our <a href="/terms" class="web-link underline"
                         >Terms and Conditions</a
                     >
-                    and <a href="/privacy" class="web-link is-inline">Privacy Policy</a>
+                    and <a href="/privacy" class="web-link underline">Privacy Policy</a>
                 </p>
             </div>
             <div class="shadow"></div>
         </div>
 
-        <div class="col">
-            {#each Array.from({ length: 2 }) as _}
-                <div class="ticket-preview-wrapper">
-                    {#each tickets as { name, title }, i}
-                        {@const id = i + 1}
-                        <div class="ticket">
-                            <Ticket
-                                contributions={getMockContributions()}
-                                disableEffects
-                                {name}
-                                {title}
-                                {id}
-                            />
-                        </div>
-                    {/each}
-                </div>
-            {/each}
-        </div>
+        <TicketScroll />
     </div>
 
-    <div class="web-container">
+    <div class="container">
         <FooterNav />
         <MainFooter />
     </div>
 </Main>
 
 <style lang="scss">
-    .col {
-        display: flex;
-        flex-direction: column;
-        gap: 32px;
-    }
     .top {
         min-height: 80vh;
         margin: 48px 0 -96px 0;
@@ -193,48 +169,6 @@
                         rgba(0, 0, 0, 1) 75%,
                         transparent
                     );
-            }
-        }
-    }
-
-    @keyframes scroll {
-        0% {
-            transform: translateX(var(--x-translate-start)) translateZ(0);
-        }
-        100% {
-            transform: translateX(var(--x-translate-end)) translateZ(0);
-        }
-    }
-
-    .ticket-preview-wrapper {
-        display: flex;
-        width: 400vw;
-        animation: scroll 60s linear infinite;
-        overflow: hidden;
-        pointer-events: none;
-        touch-action: none;
-
-        --x-translate-start: -100vw;
-        --x-translate-end: 100vw;
-
-        .ticket {
-            width: 50vw;
-            margin-right: 32px;
-        }
-
-        &:nth-of-type(even) {
-            animation-direction: reverse;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            animation-play-state: paused;
-        }
-
-        @media screen and (max-width: 768px) {
-            width: 800vw;
-
-            .ticket {
-                width: 100vw;
             }
         }
     }

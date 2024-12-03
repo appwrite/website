@@ -4,11 +4,13 @@ const perPage = 100;
 
 const outputFile = `./src/lib/contributors.ts`;
 
-const headers = process.env.GITHUB_TOKEN ? {
-    Authorization: `token ${process.env.GITHUB_TOKEN}`
-} : {}
+const headers = process.env.GITHUB_TOKEN
+    ? {
+          Authorization: `token ${process.env.GITHUB_TOKEN}`
+      }
+    : {};
 
-console.log(`using github token: ${!!process.env.GITHUB_TOKEN}`)
+console.log(`using github token: ${!!process.env.GITHUB_TOKEN}`);
 
 async function fetchRepositories() {
     let page = 1;
@@ -73,7 +75,7 @@ async function fetchContributors(apiUrl) {
     return contributorsData;
 }
 
-async function main() {
+export async function downloadContributors() {
     const contributors = new Set();
 
     for (const repo of ['appwrite/appwrite', 'appwrite/console', 'appwrite/sdk-generator']) {
@@ -96,5 +98,3 @@ async function main() {
 
     fs.writeFileSync(outputFile, contributorsFile);
 }
-
-main();

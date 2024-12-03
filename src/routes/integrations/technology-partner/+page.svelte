@@ -9,6 +9,7 @@
     //import BlobPink from "$routes/startups/(assets)/blob-pink.svg";
     // import BlobPinkMobile from "$routes/startups/(assets)/blob-pink-mobile.svg";
     import Pink from './bg.png';
+    import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
 
     let email = '';
     let name = '';
@@ -30,7 +31,7 @@
         message = `Name of representative: ${name}\n\nWork Email: ${email}\n\nCompany Name: ${companyName}\n\nCompany Size: ${companySize}\n\nCompany Website: ${companyWebsite}\n\nIntegration status: ${integrationStatus}\n\nLink to Documentation: ${linkToDocumentation}\n\nLink to product/company assets: ${productUrl}\n\nDetails: ${extraDetails}`;
         subject = `Technology Partner Application: ${companyName}`;
 
-        const response = await fetch('https://growth.appwrite.io/v1/feedback', {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -60,7 +61,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -72,33 +73,29 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<div class="u-position-absolute" style="pointer-events:none;">
+<div class="absolute" style="pointer-events:none;">
     <img src={Pink} alt="" />
 </div>
 
 <Main>
     <div class="web-big-padding-section">
-        <div id="form" class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden">
-            <div
-                class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
-            >
-                <div class="u-position-relative">
-                    <div class="web-container u-position-relative">
+        <div id="form" class="overflow-hidden p-0 pt-10">
+            <div class="relative pt-[7.5rem]">
+                <div class="relative">
+                    <div class="container relative">
                         <!-- before submit -->
-                        <div
-                            class="u-position-relative u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0"
-                        >
+                        <div class="web-grid-1-1-opt-2 e-u-row-gap-0 relative z-[1] gap-8">
                             <div>
                                 <div
                                     class="web-u-max-inline-size-none-mobile"
                                     class:web-u-max-width-380={!submitted}
                                 >
                                     {#if submitted}
-                                        <section class="u-flex-vertical web-u-gap-20">
-                                            <h1 class="web-display web-u-color-text-primary">
+                                        <section class="flex flex-col gap-5">
+                                            <h1 class="text-display font-aeonik-pro text-primary">
                                                 Thank you for applying
                                             </h1>
-                                            <p class="web-description web-u-padding-block-end-32">
+                                            <p class="text-description web-u-padding-block-end-32">
                                                 Your application has been sent successfully. Our
                                                 team will try to get back to you as soon as
                                                 possible.
@@ -111,11 +108,11 @@
                                             </a>
                                         </section>
                                     {:else}
-                                        <section class="u-flex-vertical web-u-gap-20">
-                                            <h4 class="web-display web-u-color-text-primary">
+                                        <section class="flex flex-col gap-5">
+                                            <h4 class="text-display font-aeonik-pro text-primary">
                                                 Become a Technology Partner
                                             </h4>
-                                            <p class="web-description">
+                                            <p class="text-description">
                                                 Apply to our Technology Partners Program by filling
                                                 out this form. Our team will reach out to you to
                                                 confirm your application was accepted.
@@ -123,12 +120,10 @@
                                         </section>
                                     {/if}
                                     <section
-                                        class="u-flex-vertical u-gap-12 u-padding-block-start-40 u-margin-block-start-40 web-u-sep-block-start"
+                                        class="web-u-sep-block-start mt-10 flex flex-col gap-3 pt-10"
                                     >
-                                        <h2 class="web-label web-u-color-text-primary">
-                                            Follow us
-                                        </h2>
-                                        <ul class="u-flex u-gap-8">
+                                        <h2 class="text-label text-primary">Follow us</h2>
+                                        <ul class="flex gap-2">
                                             {#each socials as social}
                                                 <li>
                                                     <a
@@ -156,14 +151,14 @@
                                 <form
                                     method="post"
                                     on:submit|preventDefault={handleSubmit}
-                                    class="u-flex-vertical u-gap-16"
+                                    class="flex flex-col gap-4"
                                 >
-                                    <div class="u-flex u-main-end">
+                                    <div class="flex justify-end">
                                         <ul
-                                            class="web-form-list is-two-columns u-gap-16 u-width-full-line web-u-max-width-580 web-u-max-inline-size-none-mobile"
+                                            class="web-form-list is-two-columns web-u-max-width-580 web-u-max-inline-size-none-mobile w-full gap-4"
                                         >
-                                            <li class="web-form-item u-flex-vertical u-gap-4">
-                                                <label class="u-block" for="name"
+                                            <li class="web-form-item flex flex-col gap-1">
+                                                <label class="block" for="name"
                                                     >Name of representative</label
                                                 >
                                                 <input
@@ -175,8 +170,8 @@
                                                     bind:value={name}
                                                 />
                                             </li>
-                                            <li class="web-form-item u-flex-vertical u-gap-4">
-                                                <label class="u-block" for="workEmail"
+                                            <li class="web-form-item flex flex-col gap-1">
+                                                <label class="block" for="workEmail"
                                                     >Work email address</label
                                                 >
                                                 <input
@@ -188,8 +183,8 @@
                                                     bind:value={email}
                                                 />
                                             </li>
-                                            <li class="web-form-item u-flex-vertical u-gap-4">
-                                                <label class="u-block" for="companyName"
+                                            <li class="web-form-item flex flex-col gap-1">
+                                                <label class="block" for="companyName"
                                                     >Company name</label
                                                 >
                                                 <input
@@ -201,12 +196,12 @@
                                                     bind:value={companyName}
                                                 />
                                             </li>
-                                            <li class="web-form-item u-flex-vertical u-gap-4">
-                                                <label class="u-block" for="companySize"
+                                            <li class="web-form-item flex flex-col gap-1">
+                                                <label class="block" for="companySize"
                                                     >Company size</label
                                                 >
 
-                                                <div class="u-position-relative">
+                                                <div class="relative">
                                                     <select
                                                         class="web-input-text"
                                                         id="companySize"
@@ -222,15 +217,15 @@
                                                         <option>5000+ employees</option>
                                                     </select>
                                                     <span
-                                                        class="icon-cheveron-down u-position-absolute u-inset-inline-end-8 u-inset-block-start-8 web-u-pointer-events-none"
+                                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-2 right-2"
                                                         aria-hidden="true"
                                                     ></span>
                                                 </div>
                                             </li>
                                             <li
-                                                class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
+                                                class="web-form-item is-column-span-2 flex flex-col gap-1"
                                             >
-                                                <label class="u-block" for="companyWebsite"
+                                                <label class="block" for="companyWebsite"
                                                     >Company website</label
                                                 >
                                                 <input
@@ -243,13 +238,13 @@
                                                 />
                                             </li>
                                             <li
-                                                class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
+                                                class="web-form-item is-column-span-2 flex flex-col gap-1"
                                             >
-                                                <label class="u-block" for="integration"
+                                                <label class="block" for="integration"
                                                     >Have you already created an integration with
                                                     Appwrite?</label
                                                 >
-                                                <div class="u-position-relative">
+                                                <div class="relative">
                                                     <select
                                                         class="web-input-text"
                                                         id="integration"
@@ -273,16 +268,16 @@
                                                         >
                                                     </select>
                                                     <span
-                                                        class="icon-cheveron-down u-position-absolute u-inset-inline-end-8 u-inset-block-start-8 web-u-pointer-events-none"
+                                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-2 right-2"
                                                         aria-hidden="true"
                                                     ></span>
                                                 </div>
                                             </li>
                                             {#if hasCreatedIntegration}
                                                 <li
-                                                    class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
+                                                    class="web-form-item is-column-span-2 flex flex-col gap-1"
                                                 >
-                                                    <label class="u-block" for="linkToDocumentation"
+                                                    <label class="block" for="linkToDocumentation"
                                                         >Link to the integration's documentation</label
                                                     >
                                                     <input
@@ -296,9 +291,9 @@
                                                 </li>
                                             {/if}
                                             <li
-                                                class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
+                                                class="web-form-item is-column-span-2 flex flex-col gap-1"
                                             >
-                                                <label class="u-block" for="productUrl"
+                                                <label class="block" for="productUrl"
                                                     >Link to the product/company's brand assets</label
                                                 >
                                                 <input
@@ -311,9 +306,9 @@
                                                 />
                                             </li>
                                             <li
-                                                class="web-form-item is-column-span-2 u-flex-vertical u-gap-4"
+                                                class="web-form-item is-column-span-2 flex flex-col gap-1"
                                             >
-                                                <label class="u-block" for="details"
+                                                <label class="block" for="details"
                                                     >Any other details you'd like to share with us?</label
                                                 >
                                                 <textarea
@@ -327,16 +322,16 @@
                                         </ul>
                                     </div>
                                     <div
-                                        class="u-flex u-gap-16 u-main-space-between web-u-flex-vertical-reverse-mobile"
+                                        class="web-u-flex-vertical-reverse-mobile flex justify-between gap-4"
                                     >
-                                        <p class="web-caption-400 web-u-max-width-380">
+                                        <p class="text-caption web-u-max-width-380">
                                             {#if error}
                                                 {error}
                                             {/if}
                                         </p>
                                         <button
                                             type="submit"
-                                            class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1"
+                                            class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
                                         >
                                             <span>Submit</span>
                                         </button>
@@ -345,7 +340,7 @@
                             {/if}
                         </div>
                     </div>
-                    <div class="web-container">
+                    <div class="container">
                         <FooterNav />
                         <MainFooter />
                     </div>

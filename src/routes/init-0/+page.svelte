@@ -143,7 +143,7 @@
             <span class="sr-only">Init</span>
             <Animations.Logo />
         </h1>
-        <p class="web-description">The start of something new.</p>
+        <p class="text-description">The start of something new.</p>
         <div class="buttons">
             <button on:click={() => scrollIntoView('#kickoff')} class="web-button is-secondary">
                 <div class="web-icon-play" />
@@ -153,7 +153,7 @@
 
         <img class="shines" src={ShinesSvg} alt="" />
     </div>
-    <div class="web-container">
+    <div class="container">
         <div class="day-cards">
             {#each days as day, i (day.release.toISOString())}
                 <DayCard {day} number={i}>
@@ -171,7 +171,7 @@
                     transition:fade={{ delay: 0, duration: 600 }}
                 >
                     <h3
-                        class="web-title web-u-color-text-primary"
+                        class="text-title font-aeonik-pro text-primary"
                         id="kickoff"
                         style:scroll-margin-top="5rem"
                     >
@@ -197,7 +197,7 @@
                 {:else if i === 4}
                     <Day5 {date} release={day.release} />
                 {:else}
-                    <h2 class="web-eyebrow web-u-color-text-primary">
+                    <h2 class="text-micro text-primary uppercase">
                         <div class="web-dot" />
                         {date}
                         <span class="web-u-color-text-accent">_</span>
@@ -209,10 +209,10 @@
     </div>
 
     <div class="events">
-        <div class="web-container">
+        <div class="container">
             <Carousel size="big">
                 <svelte:fragment slot="header">
-                    <h2 class="web-label web-u-color-text-primary">Upcoming Events</h2>
+                    <h2 class="text-label text-primary">Upcoming Events</h2>
                 </svelte:fragment>
                 {#each events as event}
                     <li>
@@ -233,11 +233,9 @@
     </div>
 
     <div class="tickets-preview">
-        <div class="web-container">
+        <div class="container">
             <div>
-                <h2 class="web-label web-u-color-text-primary">
-                    Init 1.0 ran from February 26 to March 1
-                </h2>
+                <h2 class="text-label text-primary">Init 1.0 ran from February 26 to March 1</h2>
             </div>
 
             <div class="web-card is-normal has-border-gradient">
@@ -272,10 +270,10 @@
     </div>
 
     <div class="pre-footer">
-        <div class="web-container">
+        <div class="container">
             <div class="text">
-                <h2 class="web-label web-u-color-text-primary">Start building with Appwrite</h2>
-                <p class="web-main-body-500">
+                <h2 class="text-label text-primary">Start building with Appwrite</h2>
+                <p class="text-body font-medium">
                     Appwrite's open-source platform lets you add Auth, DBs, Functions and Storage to
                     your product and build any application at any scale, own your data, and use your
                     preferred coding languages and tools.
@@ -287,7 +285,7 @@
         </div>
     </div>
 
-    <div class="web-container">
+    <div class="container">
         <FooterNav />
         <MainFooter />
     </div>
@@ -452,7 +450,7 @@
 
         border-block: 1px solid hsl(var(--web-color-offset));
 
-        .web-container {
+        .container {
             display: flex;
             flex-direction: column;
             gap: 3rem;
@@ -470,7 +468,7 @@
         padding-block-end: 0rem;
         overflow: hidden;
 
-        .web-container {
+        .container {
             display: flex;
             justify-content: space-between;
 
@@ -540,7 +538,7 @@
         padding-block-end: 0;
         overflow: hidden;
 
-        .web-container {
+        .container {
             position: relative;
             height: 43.75rem;
 
@@ -598,11 +596,11 @@
         }
     }
 
-    .pre-footer :global(+ .web-container) {
+    .pre-footer :global(+ .container) {
         padding-block-start: 0;
     }
 
-    .pre-footer :global(+ .web-container nav) {
+    .pre-footer :global(+ .container nav) {
         margin-block-start: 0;
     }
 </style>

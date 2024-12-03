@@ -1,5 +1,6 @@
 <script lang="ts">
     export let fill: boolean = true;
+    export let fillColor: string = 'hsl(var(--web-color-background))';
     export let duration: number = 8;
     export let animate: boolean = true;
 
@@ -18,7 +19,8 @@
     class="lockup"
     viewBox={`0 0 ${width} ${height}`}
     xmlns="http://www.w3.org/2000/svg"
-    style="--duration:{duration}s"
+    style="--duration:{duration}s;--fill:{fillColor}"
+    class:animate
 >
     {#each paths as path}
         <path d={path} class="base" class:fill />
@@ -30,7 +32,6 @@
                 stroke="url(#stroke)"
                 pathLength="1000"
                 style:animation-delay="{index * delay}s"
-                class:animate
             />
         {/each}
     {/each}
@@ -56,17 +57,21 @@
     .lockup {
         --stroke-color: #333;
         --stroke-width: 2;
-        --fill: hsl(var(--web-color-background));
+
         fill: none;
-        animation: fade 1s ease-out;
-        max-width: 50vw;
+        max-width: 40vw;
         margin: 0 auto;
 
         width: 100%;
         display: block;
-        position: relative;
-        z-index: 12;
-        padding: 0 24px;
+
+        &.animate {
+            animation: fade 1s ease-out;
+
+            .stroke {
+                animation: stroke var(--duration) linear infinite;
+            }
+        }
 
         @media screen and (max-width: 768px) {
             max-width: 100vw;
@@ -104,10 +109,6 @@
             stroke-dashoffset: 0;
             stroke-width: var(--stroke-width);
             filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 0.4));
-
-            &.animate {
-                animation: stroke var(--duration) linear infinite;
-            }
 
             @keyframes stroke {
                 0% {

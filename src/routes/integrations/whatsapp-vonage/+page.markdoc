@@ -7,7 +7,7 @@ featured: false
 isPartner: true
 isNew: true
 cover: /images/integrations/whatsapp-vonage/cover.png
-category: Messaging
+category: messaging
 product: 
     avatar: '/images/integrations/avatars/vonage.png'
     vendor: Vonage

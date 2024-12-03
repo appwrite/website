@@ -4,12 +4,12 @@
 
     export let variant: 'homepage' | 'docs' = 'homepage';
 
-    const year = new Date().getFullYear()
+    const year = new Date().getFullYear();
 </script>
 
 {#if variant === 'homepage'}
-    <footer class="web-main-footer u-position-relative u-margin-block-start-48">
-        <ul class="u-flex u-gap-8">
+    <footer class="web-main-footer relative mt-12">
+        <ul class="flex gap-2">
             {#each socials as social}
                 <li>
                     <a
@@ -24,21 +24,31 @@
                 </li>
             {/each}
         </ul>
-        <div class="u-flex u-gap-16">
-            <ul class="u-flex u-gap-8">
+        <div class="e-main-footer">
+            <div>Copyright © {year} Appwrite</div>
+
+            <iframe
+                class="status w-fit max-w-[230px]"
+                title="Appwrite Status"
+                src="https://status.appwrite.online/badge?theme=dark"
+                height="35"
+                frameborder="0"
+                scrolling="no"
+                style:color-scheme="none"
+                style:margin-top="-4px"
+            />
+
+            <ul class="flex gap-4">
                 <li><a class="web-link" href="/terms">Terms</a></li>
                 <li><a class="web-link" href="/privacy">Privacy</a></li>
                 <li><a class="web-link" href="/cookies">Cookies</a></li>
             </ul>
-            <div>Copyright © {year} Appwrite</div>
         </div>
     </footer>
 {:else if variant === 'docs'}
-    <footer
-        class="web-main-footer is-with-bg-color u-margin-block-start-32 u-small u-position-relative"
-    >
+    <footer class="web-main-footer is-with-bg-color relative mt-8 text-sm">
         <div class="web-main-footer-grid-1">
-            <ul class="web-main-footer-grid-1-column-1 u-flex u-gap-8">
+            <ul class="web-main-footer-grid-1-column-1 flex gap-2">
                 {#each socials as social}
                     <li>
                         <a
@@ -56,7 +66,7 @@
             <div class="web-main-footer-grid-1-column-2">
                 <ThemeSelect />
             </div>
-            <ul class="web-main-footer-grid-1-column-3 u-cross-center web-main-footer-links">
+            <ul class="web-main-footer-grid-1-column-3 web-main-footer-links items-start">
                 <li>
                     <a href="/discord" target="_blank" rel="noopener noreferrer">Support</a>
                 </li>
@@ -77,13 +87,32 @@
 {/if}
 
 <style lang="scss">
-  .web-icon-button {
-    display: grid;
-  }
-
-  @media (max-width: 1023.9px), (min-width: 1024px) and (max-width: 1279.9px) {
-    .web-main-footer-links {
-      flex-direction: unset !important;
+    @use '$scss/abstract/variables/devices';
+    .web-icon-button {
+        display: grid;
     }
-  }
+
+    @media #{devices.$break1} {
+        .status {
+            height: 55px;
+            margin-bottom: 6px; /* balancing due to style:margin-top="-4px" & the `iframe` has some spacings too I think */
+        }
+    }
+
+    .e-main-footer {
+        display: flex;
+        @media #{devices.$break1} {
+            flex-direction: column;
+            > * {
+                padding-block: 1rem;
+                &:not(:first-child) {
+                    border-block-start: solid 0.0625rem hsl(var(--web-color-border));
+                }
+            }
+        }
+        @media #{devices.$break2open} {
+            display: flex;
+            gap: 2rem;
+        }
+    }
 </style>

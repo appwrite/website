@@ -1,9 +1,9 @@
 <script lang="ts">
-	export let title: string;
+    export let title: string;
 </script>
 
 <div class="web-inline-info">
-	<span class="icon-info" aria-hidden="true" />
-	<h5 class="web-sub-body-500 web-u-color-text-primary">{title}</h5>
-	<slot />
+    <span class="icon-info" aria-hidden="true" />
+    <h5 class="text-sub-body text-primary font-medium">{title}</h5>
+    <slot />
 </div>
