@@ -83,7 +83,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -102,17 +102,17 @@
     {/if}
 </svelte:head>
 
-<main class="u-contents" id="main">
-    <article class="web-article u-contents">
+<main class="contents" id="main">
+    <article class="web-article contents">
         <header class="web-article-header">
             <div class="web-article-header-start">
-                <h1 class="web-title">{serviceName}</h1>
+                <h1 class="text-title font-aeonik-pro">{serviceName}</h1>
                 <div class="web-inline-code">{platformType}</div>
             </div>
             <div class="web-article-header-end">
-                <div class="u-flex u-gap-24 web-u-flex-vertical-mobile web-u-color-text-primary">
-                    <div class="u-flex u-cross-center u-gap-8">
-                        <label class="u-small web-is-not-mobile" for="platform">Platform</label>
+                <div class="text-primary flex flex-col gap-6 md:flex-row">
+                    <div class="flex items-center gap-2">
+                        <label class="web-is-not-mobile text-xs" for="platform">Platform</label>
                         <Select
                             --min-width="10rem"
                             id="platform"
@@ -137,8 +137,8 @@
                             nativeMobile
                         />
                     </div>
-                    <div class="u-flex u-cross-center u-gap-8">
-                        <label class="u-small web-is-not-mobile" for="version">Version</label>
+                    <div class="flex items-center gap-2">
+                        <label class="web-is-not-mobile text-xs" for="version">Version</label>
 
                         <Select
                             nativeMobile
@@ -158,13 +158,11 @@
         </header>
         <div class="web-article-content" style:gap="6rem">
             <section class="web-article-content-grid-6-4">
-                <div class="web-article-content-grid-6-4-column-1 u-flex-vertical u-gap-8">
+                <div class="web-article-content-grid-6-4-column-1 flex flex-col gap-2">
                     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                     {@html parse(data.service?.description)}
                 </div>
-                <div
-                    class="web-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32 u-main-end"
-                >
+                <div class="web-article-content-grid-6-4-column-2 j-end flex flex-col gap-8">
                     <Fence
                         language="text"
                         badge="Base URL"
@@ -175,10 +173,10 @@
                 </div>
 
                 {#if data.methods.length === 0}
-                    <div class="web-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32">
+                    <div class="web-article-content-grid-6-4-column-2 flex flex-col gap-8">
                         <div class="web-inline-info">
                             <span class="icon-info" aria-hidden="true" />
-                            <h5 class="web-sub-body-500 web-u-color-text-primary">
+                            <h5 class="text-sub-body text-primary font-medium">
                                 No endpoint found for this version and platform
                             </h5>
                             Please switch to a newer version or different platform.
@@ -188,11 +186,11 @@
             </section>
             {#each data.methods as method (method.id)}
                 <section class="web-article-content-grid-6-4">
-                    <div class="web-article-content-grid-6-4-column-1 u-flex-vertical u-gap-32">
+                    <div class="web-article-content-grid-6-4-column-1 flex flex-col gap-8">
                         <header class="web-article-content-header">
                             <Heading id={method.id} level={2} inReferences>{method.title}</Heading>
                         </header>
-                        <div class="u-flex-vertical u-gap-8">
+                        <div class="flex flex-col gap-2">
                             <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                             {@html parse(method.description)}
                         </div>
@@ -212,10 +210,10 @@
                             {/if}
                         </Accordion>
                     </div>
-                    <div class="web-article-content-grid-6-4-column-2 u-flex-vertical u-gap-32">
-                        <div class="u-contents theme-dark">
+                    <div class="web-article-content-grid-6-4-column-2 flex flex-col gap-8">
+                        <div class="dark contents">
                             <div
-                                class="u-position-sticky"
+                                class="sticky"
                                 style="--inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position);"
                             >
                                 <Fence
@@ -226,7 +224,7 @@
                                     process
                                     withLineNumbers={false}
                                 />
-                                <div class="u-margin-block-start-24">
+                                <div class="mt-6">
                                     <Fence
                                         language={platform}
                                         content={method.demo}
@@ -251,9 +249,9 @@
                 </button>
                 <div class="web-references-menu-content">
                     <div
-                        class="web-references-menu-header u-flex u-main-space-between u-cross-center u-gap-16 u-margin-block-start-24"
+                        class="web-references-menu-header mt-6 flex items-center justify-between gap-4"
                     >
-                        <h5 class="web-references-menu-title web-eyebrow">On This Page</h5>
+                        <h5 class="web-references-menu-title text-micro uppercase">On This Page</h5>
                         <button class="web-icon-button" id="refClose" on:click={toggleReferences}>
                             <span class="icon-x" aria-hidden="true" />
                         </button>
@@ -263,19 +261,16 @@
                             <li class="web-references-menu-item">
                                 <a
                                     href={`#${method.id}`}
-                                    class="web-references-menu-link web-caption-400"
+                                    class="web-references-menu-link text-caption"
                                     class:is-selected={method.id === selected}>{method.title}</a
                                 >
                             </li>
                         {/each}
                     </ul>
-                    <div class="u-sep-block-start web-u-padding-block-20">
-                        <button
-                            class="web-link u-inline-flex u-cross-center u-gap-8"
-                            use:scrollToTop
-                        >
+                    <div class="border-greyscale-900/4 web-u-padding-block-20 border-t">
+                        <button class="web-link inline-flex items-center gap-2" use:scrollToTop>
                             <span class="web-icon-arrow-up" aria-hidden="true" />
-                            <span class="web-caption-400">Back to top</span>
+                            <span class="text-caption">Back to top</span>
                         </button>
                     </div>
                 </div>

@@ -2,7 +2,6 @@
     import { Root, Slide } from '$lib/components/carousel';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
-    import ProductsGrid from '$lib/components/ProductsGrid.svelte';
     import { Main } from '$lib/layouts';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import type { Integration } from '$routes/integrations/+page';
@@ -27,7 +26,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -41,13 +40,13 @@
 
 <Main>
     <div
-        class="web-u-sep-block-end u-padding-block-end-0"
+        class="web-u-sep-block-end pb-0"
         style="background-color:rgba(23, 23, 26, 1); margin-block-end: 2.5rem"
     >
-        <div class="web-container">
+        <div class="container dark">
             <div class="web-integrations-top-section">
                 <div class="web-carousel-wrapper">
-                    <a href="/integrations" class="web-button is-text u-margin-block-end-48">
+                    <a href="/integrations" class="web-button is-text mb-12">
                         <span class="icon-cheveron-left" aria-hidden="true"></span>
                         <span>Back to catalog</span>
                     </a>
@@ -67,7 +66,7 @@
                         </Root>
                     {:else}
                         <div
-                            class="web-carousel-item"
+                            class="web-carousel-item rounded-xl"
                             style:max-width="584px"
                             style:margin="0 auto"
                         >
@@ -83,12 +82,12 @@
             </div>
         </div>
     </div>
-    <div class="web-big-padding-section-level-1">
-        <div class="web-container">
-            <article class="u-flex-vertical web-u-gap-60-not-mobile web-u-gap-40-mobile">
+    <div class="py-10">
+        <div class="container">
+            <article class="web-u-gap-60-not-mobile web-u-gap-40-mobile flex flex-col">
                 <div class="l-grid-2-1 web-u-row-gap-56 web-u-gap-40-mobile">
                     <div class="l-grid-content">
-                        <div class="u-flex u-cross-start u-gap-20">
+                        <div class="flex items-start gap-5">
                             <img
                                 class="web-author-image"
                                 src={product.avatar}
@@ -98,7 +97,7 @@
                                 height="40"
                             />
                             <h1
-                                class="web-title web-u-color-text-primary"
+                                class="text-title font-aeonik-pro text-primary justif"
                                 style="max-width: 28.15rem;"
                             >
                                 {title}
@@ -113,24 +112,24 @@
                     </div>
                     <div class="l-grid-sidebar">
                         <dl
-                            class="u-flex-vertical u-gap-20 sidebar-desc"
+                            class="sidebar-desc flex flex-col gap-5"
                             style:top={$isHeaderHidden ? '4rem' : '9rem'}
                         >
-                            <div class="u-flex u-main-space-between u-gap-8">
+                            <div class="flex justify-between gap-2">
                                 <dt>Vendor</dt>
-                                <dd class="web-u-color-text-primary">{product.vendor}</dd>
+                                <dd class="text-primary">{product.vendor}</dd>
                             </div>
                             <div class="web-u-sep-block-end"></div>
                             {#if isPartner}
-                                <div class="u-flex u-main-space-between u-gap-8">
+                                <div class="flex justify-between gap-2">
                                     <dt>Partner</dt>
                                     <dd><div class="web-inline-tag">Verified</div></dd>
                                 </div>
                             {/if}
                             <div class="web-u-sep-block-end"></div>
-                            <div class="u-flex u-main-space-between u-gap-8">
+                            <div class="flex justify-between gap-2">
                                 <dt>Category</dt>
-                                <dd class="web-u-color-text-primary">{category}</dd>
+                                <dd class="text-primary">{category}</dd>
                             </div>
                         </dl>
                     </div>
@@ -139,13 +138,11 @@
         </div>
     </div>
 
-    <div
-        class="web-big-padding-section-level-1 u-overflow-hidden web-u-sep-block-start u-margin-block-start-48"
-    >
+    <div class="web-u-sep-block-start mt-12 overflow-hidden py-10">
         <!-- <ProductsGrid /> -->
 
-        <div class="web-container">
-            <div class="web-big-padding-section-level-2 u-position-relative">
+        <div class="container">
+            <div class="web-big-padding-section-level-2 relative">
                 <img
                     src="/images/bgs/pre-footer.png"
                     alt=""
@@ -153,23 +150,23 @@
                     style="z-index:-1"
                 />
 
-                <!-- <div class="u-position-relative cta"> -->
-                <div class="u-position-relative">
+                <!-- <div class="relative cta"> -->
+                <div class="relative">
                     <section
-                        class="web-hero u-flex u-row-gap-16 u-main-center u-cross-center web-u-max-width-580"
+                        class="web-hero web-u-max-width-580 flex items-center justify-center gap-y-4"
                     >
                         <h2
-                            class="web-display u-max-width-600 web-u-text-align-center web-u-color-text-primary"
+                            class="text-display font-aeonik-pro text-primary max-w-[600px] text-center"
                         >
                             Become a Technology Partner
                         </h2>
-                        <p class="web-main-body-500">
+                        <p class="text-body font-medium">
                             Join our Technology Partners program to integrate your solutions with
                             Appwrite’s API, enhancing functionality and expanding your reach.
                         </p>
                         <a
                             href="/integrations/technology-partner"
-                            class="web-button is-primary web-u-cross-child-center u-margin-block-start-16"
+                            class="web-button is-primary mt-4 self-center"
                         >
                             <span class="text">Get Started</span>
                         </a>
@@ -183,13 +180,8 @@
 </Main>
 
 <style lang="scss">
-    @use '$scss/abstract' as *;
-
-    .cta {
-        min-height: pxToRem(560);
-        display: flex;
-        align-items: center;
-    }
+    @use '$scss/abstract/functions' as f;
+    @use '$scss/abstract/variables/devices';
 
     .web-pre-footer-bg {
         position: absolute;
@@ -201,24 +193,15 @@
         max-inline-size: unset;
         max-block-size: unset;
     }
-    /* more tha 9 items */
-
-    .l-side-column {
-        display: flex;
-        gap: pxToRem(16);
-        @media #{$break1} {
-            flex-direction: column;
-        }
-    }
 
     .l-grid-2-1 {
-        @media #{$break1} {
+        @media #{devices.$break1} {
             display: flex;
             flex-direction: column;
         }
-        @media #{$break2open} {
+        @media #{devices.$break2open} {
             display: grid;
-            gap: pxToRem(64);
+            gap: f.pxToRem(64);
             grid-template-columns: repeat(12, 1fr);
         }
 

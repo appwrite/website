@@ -36,7 +36,11 @@
         }, 1000);
     }
 
-    $: result = getCodeHtml({ content, language: selected ?? 'sh', withLineNumbers: true });
+    $: result = getCodeHtml({
+        content,
+        language: selected ?? 'sh',
+        withLineNumbers: true
+    });
     $: options = Array.from($snippets).map((language) => ({
         value: language,
         label: platformMap[language]
@@ -44,7 +48,7 @@
 </script>
 
 <section
-    class="theme-dark web-code-snippet"
+    class="dark web-code-snippet !max-w-[90vw] md:!max-w-3xl md:min-w-3xl"
     aria-label="code-snippet panel"
     style={`width: ${width ? width / 16 + 'rem' : 'inherit'}; height: ${
         height ? height / 16 + 'rem' : 'inherit'
@@ -52,15 +56,15 @@
 >
     <header class="web-code-snippet-header">
         <div class="web-code-snippet-header-start">
-            <div class="u-flex u-gap-16">
+            <div class="flex gap-4">
                 {#if platform}
                     <div class="web-tag"><span class="text">{platform}</span></div>
                 {/if}
             </div>
         </div>
         <div class="web-code-snippet-header-end">
-            <ul class="buttons-list u-flex u-gap-12">
-                <li class="buttons-list-item u-flex u-cross-child-scenter">
+            <ul class="buttons-list divide-greyscale-750 flex gap-3 divide-x">
+                <li class="buttons-list-item flex self-center pr-6">
                     <Select bind:value={selected} bind:options />
                 </li>
                 <li class="buttons-list-item" style="padding-inline-start: 13px">
