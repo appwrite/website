@@ -42,7 +42,9 @@
                         use:trigger>{title}</button
                     >
                     {#if $value === id}
-                        <div class="absolute mt-0.5 h-px overflow-hidden bg-[var(--color-primary)]">
+                        <div
+                            class="absolute mt-0.5 h-px overflow-hidden bg-[var(--color-primary)] px-1"
+                        >
                             {title}
                         </div>
                     {/if}
