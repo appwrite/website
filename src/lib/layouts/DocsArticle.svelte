@@ -16,11 +16,22 @@
     import { scrollToTop } from '$lib/actions/scrollToTop';
 
     import { Feedback } from '$lib/components';
+    import { onMount } from 'svelte';
 
     export let title: string;
     export let toc: Array<TocItem>;
     export let back: string | undefined = undefined;
     export let date: string | undefined = undefined;
+
+    let reducedArticleSize = false;
+
+    onMount(() => {
+        // reduces size for articles using numbered sections.
+        const slotWrapper = document.querySelector('.slot-wrapper');
+        reducedArticleSize = !!slotWrapper?.querySelector(
+            '.web-article-content-section.is-with-line .web-numeric-badge'
+        );
+    })
 </script>
 
 <main class="contents" id="main">
@@ -59,8 +70,14 @@
             </div>
             <div class="web-article-header-end" />
         </header>
-        <div class="web-article-content">
-            <slot />
+        <div
+            class="web-article-content"
+            class:reduced-article-size={reducedArticleSize}
+        >
+            <div class="slot-wrapper">
+                <slot />
+            </div>
+
             <Feedback {date} />
         </div>
         <aside class="web-references-menu ps-6">
@@ -110,3 +127,12 @@
         </aside>
     </article>
 </main>
+
+<style>
+    @media (min-width: 1280px) and (max-width: 1330px) {
+        .reduced-article-size {
+            /* original/default is 41.5rem */
+            max-inline-size: 40.5rem !important;
+        }
+    }
+</style>
