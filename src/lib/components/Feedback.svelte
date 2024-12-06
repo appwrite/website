@@ -1,5 +1,7 @@
 <script lang="ts">
     import { page } from '$app/stores';
+    import { fade } from 'svelte/transition';
+    import { loggedIn, user } from '$lib/utils/console';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
 
     export let date: string | undefined = undefined;
@@ -14,6 +16,9 @@
     async function handleSubmit() {
         submitting = true;
         error = undefined;
+
+        const cloudUserId = loggedIn && $user?.$id ? $user.$id : undefined;
+
         const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback/docs`, {
             method: 'POST',
             headers: {
@@ -23,7 +28,10 @@
                 email,
                 type: feedbackType,
                 route: $page.route.id,
-                comment
+                comment,
+                metaFields: {
+                    cloudUserId
+                }
             })
         });
         submitting = false;
@@ -33,6 +41,7 @@
         }
         comment = email = '';
         submitted = true;
+        setTimeout(() => (showFeedback = false), 500);
     }
 
     function reset() {
@@ -44,6 +53,10 @@
 
     $: if (!showFeedback) {
         reset();
+    }
+
+    $: if (showFeedback && loggedIn && $user?.email) {
+        email = $user?.email;
     }
 </script>
 
@@ -104,6 +117,7 @@
             on:submit|preventDefault={handleSubmit}
             class="web-card is-normal"
             style="--card-padding:1rem"
+            out:fade={{ duration: 450 }}
         >
             <div class="flex flex-col gap-2">
                 <label for="message">
