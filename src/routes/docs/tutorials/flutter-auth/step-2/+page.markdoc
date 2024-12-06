@@ -1,0 +1,51 @@
+---
+layout: tutorial
+title: Create project
+description: Add Authentication to a Flutter project using Appwrite.
+step: 2
+---
+
+
+You can create a Flutter project using the following command
+
+```sh
+flutter create my_flutter_project
+```
+
+The command will automatically create a Flutter project with the name `my_flutter_project`. You can change the name of the project by changing the name of the project in the command.
+
+You will see the following output after the project is created.
+
+```sh
+Creating project my_flutter_project...
+Resolving dependencies in my_flutter_project... (1.9s)
+Got dependencies in my_flutter_project.
+Wrote 129 files.
+
+All done!
+You can find general documentation for Flutter at: https://docs.flutter.dev/
+Detailed API documentation is available at: https://api.flutter.dev/
+If you prefer video documentation, consider: https://www.youtube.com/c/flutterdev
+
+In order to run your application, type:
+
+  $ cd my_flutter_project
+  $ flutter run
+
+Your application code is in my_flutter_project\lib\main.dart.
+```
+
+After the prompt is finished, you can head over to the newly create project.
+
+```sh
+cd my_flutter_project
+flutter run
+```
+
+## Adding Appwrite to Your Flutter App
+
+Appwrite provides a Web SDK that can be used in your Flutter apps. You can use Appwrite by installing the Flutter pub package.
+
+```sh
+flutter pub add appwrite
+```
