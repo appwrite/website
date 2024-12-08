@@ -77,7 +77,7 @@ We can now start the migration. Navigate to the `appwrite` directory where your 
 
 ```sh
 cd appwrite/
-docker compose exec appwrite migrate
+docker-compose exec appwrite migrate
 ```
 
 The data migration can take longer depending on the amount of data your Appwrite instance contains. The Appwrite migration command uses multi-threading to speed up the process, meaning that adding more CPU cores can help speed up the process.
