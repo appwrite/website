@@ -1,7 +1,7 @@
 <script lang="ts">
+    import { cn } from '$lib/utils/classnames';
     import { inView } from 'motion';
     import MapMarker from './map-marker.svelte';
-    import { cn } from '$lib/utils/classnames';
 
     let mouse = { x: 0, y: 0 };
     let animate: boolean = false;
@@ -41,50 +41,50 @@
 
     const pins = [
         {
-            x: 1,
-            y: 11,
+            x: 1.25,
+            y: 8,
             city: 'San Francisco',
             code: 'SFO',
             available: false
         },
         {
-            x: 13,
-            y: 9,
+            x: 12,
+            y: 7,
             city: 'New York City',
             code: 'NYC',
             available: false
         },
         {
-            x: 27,
-            y: 8,
+            x: 28,
+            y: 5.5,
             city: 'Frankfurt',
             code: 'GER',
             available: true
         },
         {
             x: 28,
-            y: 6.5,
+            y: 4.5,
             city: 'Amsterdam',
             code: 'AMS',
             available: false
         },
         {
-            x: 45,
-            y: 20,
+            x: 44.5,
+            y: 15,
             city: 'Bangalore',
             code: 'IND',
             available: false
         },
         {
-            x: 53,
-            y: 24,
+            x: 51,
+            y: 19,
             city: 'Signapore',
             code: 'SGP',
             available: false
         },
         {
-            x: 68,
-            y: 35,
+            x: 62,
+            y: 29,
             city: 'Syndey',
             code: 'AUS',
             available: false
