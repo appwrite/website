@@ -674,5 +674,41 @@
     {
         "link": "/cli/install.sh",
         "redirect": "https://raw.githubusercontent.com/appwrite/sdk-for-cli/master/install.sh"
+    },
+    {
+        "link": "/case-studies",
+        "redirect": "/customer-stories"
+    },
+    {
+        "link": "/blog/category/case-studies",
+        "redirect": "/blog/category/customer-stories"
+    },
+    {
+        "link": "/blog/post/case-study-smartbee",
+        "redirect": "/blog/post/customer-stories-smartbee"
+    },
+    {
+        "link": "/blog/post/case-study-kcollect",
+        "redirect": "/blog/post/customer-stories-kcollect"
+    },
+    {
+        "link": "/blog/post/case-study-majik-kids",
+        "redirect": "/blog/post/customer-stories-majik-kids"
+    },
+    {
+        "link": "/blog/post/case-study-myshoefitter",
+        "redirect": "/blog/post/customer-stories-myshoefitter"
+    },
+    {
+        "link": "/blog/post/case-study-open-mind",
+        "redirect": "/blog/post/customer-stories-open-mind"
+    },
+    {
+        "link": "/blog/post/case-study-langx",
+        "redirect": "/blog/post/customer-stories-langx"
+    },
+    {
+        "link": "/blog/post/case-study-undo",
+        "redirect": "/blog/post/customer-stories-undo"
     }
 ]
