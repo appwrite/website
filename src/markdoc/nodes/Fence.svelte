@@ -7,6 +7,7 @@
     import { copy } from '$lib/utils/copy';
     import type { CodeContext } from '../tags/MultiCode.svelte';
     import { melt } from '@melt-ui/svelte';
+    import { isInTutorialDocs } from '$lib/layouts/Docs.svelte';
 
     export let content: string;
     export let toCopy: string | undefined = undefined;
@@ -15,6 +16,7 @@
     export let withLineNumbers = true;
     export let badge: string | null = null;
 
+    const inTutorialDocs = isInTutorialDocs();
     const insideMultiCode = hasContext('multi-code');
     const selected = insideMultiCode ? getContext<CodeContext>('multi-code').selected : null;
 
@@ -61,7 +63,11 @@
         {@html result}
     {/if}
 {:else}
-    <section class="dark web-code-snippet" aria-label="code-snippet panel">
+    <section
+        class="dark web-code-snippet"
+        class:no-top-margin={inTutorialDocs}
+        aria-label="code-snippet panel"
+    >
         <header class="web-code-snippet-header">
             <div class="web-code-snippet-header-start">
                 {#if badgeValue}
@@ -98,3 +104,9 @@
         </div>
     </section>
 {/if}
+
+<style>
+    .no-top-margin {
+        margin-top: unset !important;
+    }
+</style>

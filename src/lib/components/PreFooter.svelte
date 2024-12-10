@@ -3,7 +3,13 @@
     import { trackEvent } from '$lib/actions/analytics';
 </script>
 
-<img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg" loading="lazy" style="z-index:-1" />
+<img
+    src="/images/bgs/pre-footer.png"
+    alt=""
+    class="web-pre-footer-bg"
+    loading="lazy"
+    style="z-index:-1"
+/>
 
 <div class="web-u-row-gap-80 relative grid gap-8 md:grid-cols-2">
     <section class="web-hero flex items-center justify-center gap-y-8">

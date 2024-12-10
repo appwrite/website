@@ -34,7 +34,9 @@
     }
 
     const CTX_KEY = Symbol('docs');
+    const TUT_CTX_KEY = Symbol('tut-docs');
     export const isInDocs = () => getContext<boolean>(CTX_KEY) ?? false;
+    export const isInTutorialDocs = () => getContext<boolean>(TUT_CTX_KEY) ?? false;
 </script>
 
 <script lang="ts">
@@ -43,6 +45,7 @@
     import { getContext, setContext } from 'svelte';
     import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import { page } from '$app/stores';
 
     export let variant: DocsLayoutVariant = 'default';
     export let isReferences = false;
@@ -63,7 +66,9 @@
             showSidenav: false
         }));
     });
-    setContext(CTX_KEY, true);
+
+    const key = $page.route.id?.includes('tutorials') ? TUT_CTX_KEY : CTX_KEY;
+    setContext(key, true);
 
     const handleKeydown = (e: KeyboardEvent) => {
         if (e.key === 'Escape' && ($layoutState.showReferences || $layoutState.showSidenav)) {
