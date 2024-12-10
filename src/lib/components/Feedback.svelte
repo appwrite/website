@@ -17,7 +17,7 @@
         submitting = true;
         error = undefined;
 
-        const cloudUserId = loggedIn && $user?.$id ? $user.$id : undefined;
+        const userId = loggedIn && $user?.$id ? $user.$id : undefined;
 
         const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback/docs`, {
             method: 'POST',
@@ -30,7 +30,7 @@
                 route: $page.route.id,
                 comment,
                 metaFields: {
-                    cloudUserId
+                    userId
                 }
             })
         });
@@ -73,7 +73,7 @@
                         class="web-radio-button"
                         aria-label="helpful"
                         on:click={() => {
-                            showFeedback = feedbackType === 'positive' ? false : true;
+                            showFeedback = feedbackType !== 'positive';
                             feedbackType = 'positive';
                         }}
                     >
@@ -83,7 +83,7 @@
                         class="web-radio-button"
                         aria-label="unhelpful"
                         on:click={() => {
-                            showFeedback = feedbackType === 'negative' ? false : true;
+                            showFeedback = feedbackType !== 'negative';
                             feedbackType = 'negative';
                         }}
                     >
