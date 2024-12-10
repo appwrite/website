@@ -34,3 +34,13 @@ Enable email alerts for your users so that whenever another session is created f
 You won't receive notifications when logging in using [Magic URL](/docs/products/auth/magic-url), [Email OTP](/docs/products/auth/email-otp), or [OAuth2](/docs/products/auth/oauth2) since these authentication methods already verify user access to their systems, establishing the authentication's legitimacy.
 
 To toggle session alerts, navigate to **Auth** > **Security** > **Session alerts**.
+
+# Memberships privacy {% #memberships-privacy %}
+
+In certain use cases, your app may not need to share members’ personal information with others. You can safeguard privacy by marking specific membership details as private. To configure this setting, navigate to **Auth** > **Security** > **Memberships privacy**
+
+These details can be made private:
+
+- `userName` - The member's name
+- `userEmail` - The member's email address
+- `mfa` - Whether the member has enabled multi-factor authentication
