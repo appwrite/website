@@ -1,0 +1,23 @@
+---
+layout: tutorial
+title: Create app
+description: Create and app with Appwrite Cloud and Xcode.
+step: 2
+---
+
+# Setup new project {% #new-project %}
+
+Open Xcode and select **Create new project**, then select app as template for iOS and click **Next**. Fill out all of the required information, such as Product Name, Organization identifier, Interface (SwiftUI), and click **Next**. Select the folder where you want to set up the project and click **Create**.
+
+![Create project screen](/images/docs/tutorials/xcode-new-project-setup.png)
+
+# Add the Appwrite SDK {% #appwrite-sdk %}
+To add the Appwrite SDK for Apple as a dependency, open the **File** menu and click **Add Package Dependencies**.
+
+In the **Package URL** search box, enter `https://github.com/appwrite/sdk-for-apple`. 
+
+Once the SDK is found, select **Up to Next Major Version** as your **Dependency Rule** and click **Add Package**.
+
+When dependency resolution is complete, click **Add Package** again to add the SDK package to your target.
+
+![Create project screen](/images/docs/tutorials/xcode-add-appwrite-sdk.png)
