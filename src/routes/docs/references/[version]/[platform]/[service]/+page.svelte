@@ -177,9 +177,9 @@
                         <div class="web-inline-info">
                             <span class="icon-info" aria-hidden="true" />
                             <h5 class="text-sub-body text-primary font-medium">
-                                No endpoint found for this version and platform
+                                This API is a Server Side API Component, not available on Client SDKs
                             </h5>
-                            Please switch to a newer version or different platform.
+                            Please select Server SDKs from the language selector at the top of this section.
                         </div>
                     </div>
                 {/if}
