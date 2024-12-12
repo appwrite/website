@@ -14,6 +14,7 @@
 
 <script lang="ts">
     import { setContext } from 'svelte';
+    import { writable } from 'svelte/store';
     import { Feedback } from '$lib/components';
     import { scrollToTop } from '$lib/actions/scrollToTop';
 
@@ -22,9 +23,7 @@
     export let back: string | undefined = undefined;
     export let date: string | undefined = undefined;
 
-    let reducedArticleSize = false;
-
-    setContext('articleHasNumericBadge', () => (reducedArticleSize = true));
+    const reducedArticleSize = setContext('articleHasNumericBadge', writable(false));
 </script>
 
 <main class="contents" id="main">
@@ -63,7 +62,7 @@
             </div>
             <div class="web-article-header-end" />
         </header>
-        <div class="web-article-content" class:web-reduced-article-size={reducedArticleSize}>
+        <div class="web-article-content" class:web-reduced-article-size={$reducedArticleSize}>
             <slot />
 
             <Feedback {date} />
@@ -115,3 +114,12 @@
         </aside>
     </article>
 </main>
+
+<style>
+    @media (min-width: 1280px) and (max-width: 1330px) {
+        .web-reduced-article-size {
+            /* original/default is 41.5rem */
+            max-inline-size: 40.5rem;
+        }
+    }
+</style>

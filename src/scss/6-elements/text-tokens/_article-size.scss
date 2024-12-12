@@ -1,8 +1,0 @@
-@use '../../abstract' as *;
-
-@media (min-width: 1280px) and (max-width: 1330px) {
-  .#{$p}-reduced-article-size {
-    /* original/default is 41.5rem */
-    max-inline-size: 40.5rem !important;
-  }
-}
