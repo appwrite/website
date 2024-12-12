@@ -8,6 +8,7 @@ timeToRead: 9
 author: ebenezer-don
 category: tutorial
 featured: false
+callToAction: true
 ---
 
 In this article, we'll explore how to set up Google authentication in a React application using Appwrite. Appwrite is an open-source backend solution that provides a wide array of integrated tools and services, covering everything from server-side logic to user management and data storage. While this tutorial focuses on Google OAuth2, Appwrite supports many authentication methods, including [passwordless authentication](https://www.appwrite.io/blog/post/improve-ux-passwordless-auth), magic URL, email OTP, phone number OTP, email/password and various OAuth2 providers.
