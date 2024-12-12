@@ -7,7 +7,7 @@
     import Schedule from './(components)/Schedule.svelte';
     import Send from './(components)/Send.svelte';
     import Target from './(components)/Target.svelte';
-    import MultiCodeContextless from './(components)/MultiCodeContextless.svelte';
+    import MultiCodeContextless from '$lib/components/MultiCodeContextless.svelte';
     import { Platform } from '$lib/utils/references';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
