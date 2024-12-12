@@ -1,9 +1,12 @@
 <script lang="ts">
+    import { getContext } from 'svelte';
     import Heading from '../nodes/Heading.svelte';
 
     export let id: string;
     export let step: number;
     export let title: string;
+
+    getContext<() => void>('articleHasNumericBadge')?.();
 </script>
 
 <section class="web-article-content-section is-with-line">
