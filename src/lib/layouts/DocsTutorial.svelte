@@ -154,7 +154,7 @@
                         <slot />
                     </div>
 
-                    <div class="flex justify-between">
+                    <div class="web-u-padding-block-start-32 flex justify-between">
                         {#if prevStep}
                             <a href={prevStep.href} class="web-button is-text previous-step-anchor">
                                 <span class="icon-cheveron-left" aria-hidden="true" />
