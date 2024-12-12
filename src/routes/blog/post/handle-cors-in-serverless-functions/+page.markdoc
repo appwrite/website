@@ -1,7 +1,7 @@
 ---
 layout: post
-title: How to handle CORS in Appwrite serverless functions
-description: Learn how to handle Cross-Origin Resource Sharing (CORS) in Appwrite serverless functions.
+title: Handle CORS errors in Appwrite Functions
+description: Learn how to handle CORS errors in Appwrite Functions.
 date: 2024-07-08
 cover: /images/blog/handle-cors-in-serverless-functions/cover.png
 timeToRead: 3
@@ -28,13 +28,13 @@ For certain types of requests, the browser sends a preflight (OPTIONS) request t
 
 # CORS in Appwrite serverless functions
 
-In traditional Node.js and Express setups, CORS headers are often set using `res.setHeader()`. However, in Appwrite serverless functions, this approach won't work due to the way Appwrite handles responses. Instead, you should directly include CORS headers in the response returned by the function.
+In traditional Node.js and Express setups, CORS headers are often set using `res.setHeader()`. However, in Appwrite serverless functions, this approach won't work due to the way Appwrite handles responses. Instead, you should directly include CORS headers in the response returned by the function.
 
 ## Steps to handle CORS
 
 ### 1. Create and deploy your serverless function
 
-Start by creating and deploying your serverless function through the Appwrite console or CLI. This ensures your function is set up correctly within the Appwrite environment. Detailed steps can be found in the [Appwrite Functions documentation](https://appwrite.io/docs/products/functions).
+Start by creating and deploying your serverless function through the Appwrite console or CLI. This ensures your function is set up correctly within the Appwrite environment. Detailed steps can be found in the [Appwrite Functions documentation](https://appwrite.io/docs/products/functions).
 
 ### 2. Handle preflight (OPTIONS) requests
 
@@ -53,7 +53,7 @@ if (req.method === 'OPTIONS') {
 
 ### 3. Include CORS headers in responses
 
-For other requests (POST, GET, etc.), include the `Access-Control-Allow-Origin` header in the response to specify which origins are allowed to access the resource:
+For other requests (POST, GET, etc.), include the `Access-Control-Allow-Origin` header in the response to specify which origins are allowed to access the resource:
 
 ```javascript
 if (req.method === 'POST') {
@@ -63,18 +63,19 @@ if (req.method === 'POST') {
     })
   } catch (error) {
     return res.json({ error: 'Internal Server Error' }, 500, {
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': 'YOUR_DOMAIN_HERE',
     })
   }
 }
 ```
 
 
-# Security considerations
+# Using the wildcard `*` to allow all origins
 
-Using the wildcard `*` in the `Access-Control-Allow-Origin` header allows any origin to access the resource. While this simplifies development, it can pose security risks if handled incorrectly. Malicious websites could exploit this vulnerability to make unauthorized requests to your serverless functions.
+It is possible to use the wildcard `*` in the `Access-Control-Allow-Origin` header to allow any origin to access the resource.
+While this simplifies development, it can pose security risks. For this reason, you might encounter errors when using the wildcard `*` in your Appwrite production environment.
 
-For example, here’s how you might configure CORS to allow access from any origin:
+When developing locally, here's how you might configure CORS to allow access from any origin:
 
 ```javascript
 return res.json(completion, 200, {
@@ -86,7 +87,7 @@ For better security, replace `*` with your specific domain name to restrict acce
 
 ```javascript
 return res.json(completion, 200, {
-  'Access-Control-Allow-Origin': 'https://yourdomain.com',
+  'Access-Control-Allow-Origin': 'YOUR_DOMAIN_HERE',
 })
 
 ```
