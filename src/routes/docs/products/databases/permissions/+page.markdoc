@@ -40,9 +40,9 @@ First, configure your collection to:
 2. Grant only **CREATE** permission to **all users** at the collection level
 
 {% info title="Why this setup?" %}
-- Document Security enables per-document permissions
-- Collection-level CREATE permission allows users to create documents
-- Omitting READ/UPDATE/DELETE at collection level prevents users from accessing all documents
+- **Document Security** enables per-document permissions
+- Collection-level **CREATE** permission allows users to create documents
+- Omitting **READ/UPDATE/DELETE** at collection level prevents users from accessing all documents
 {% /info %}
 
 ### Create a document for a user
@@ -165,8 +165,6 @@ suspend fun main() {
 3. These document-level permissions ensure only the creator can read, update, or delete their documents
 4. Other users can create their own documents but cannot access documents they didn't create
 {% /info %}
-
-Replace `<USER_ID>` with the ID of the user who should have access to the document. You can get the current user's ID from the account object after they log in.
 
 [Learn more about permissions and roles](/docs/advanced/platform/permissions)
 
