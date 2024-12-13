@@ -16,9 +16,9 @@ This policy applies to all resources provided by Appwrite Cloud, including but n
 
 # Usage limits and thresholds {% #usage-limits-and-thresholds %}
 
-Each user plan includes specific resource limits, which are available to view on our [Pricing page](https://appwrite.io/pricing).
+Each user plan includes specific resource limits, which are available to view on our [Pricing page](/pricing).
 
-Exceeding these limits may lead to throttling or suspension of services, as described in Section 4.
+Exceeding these limits may lead to throttling or suspension of services, as described under [Enforcement actions](#enforcement-actions).
 
 # Prohibited activities {% #prohibited-activities %}
 
@@ -55,7 +55,7 @@ We continuously monitor resource usage to ensure compliance with this policy. Us
 Users who consistently exceed usage limits have the following options:
 
 - **Upgrade to a higher plan:** Users may select a plan that better fits their needs.
-- **Resource upgrades:** Pro and Scale plan users may upgrade the usage limits for specific resources. Pricing details are available [here](https://appwrite.io/pricing).
+- **Resource upgrades:** Pro and Scale plan users may upgrade the usage limits for specific resources. Pricing details are available [here](/pricing).
 
 # Policy updates and communication {% #policy-updates-and-communication %}
 
@@ -63,4 +63,4 @@ Appwrite reserves the right to update this FUP to reflect evolving platform capa
 
 # Contact us {% #contact-us %}
 
-For questions or further clarification, please [contact our support team](https://appwrite.io/contact-us).
+For questions or further clarification, please [contact our support team](/contact-us).
