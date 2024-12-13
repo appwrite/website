@@ -1,0 +1,66 @@
+---
+layout: article
+title: Fair use policy
+description: Understand Appwrite's usage limits, prohibited activities, and enforcement actions.
+---
+
+At Appwrite, we are committed to providing high-quality, reliable, and scalable backend services for all users. Our Fair Use Policy (FUP) ensures that resources are used responsibly and that every user receives a consistent experience. This FUP applies to all users and outlines acceptable usage patterns and limitations.
+
+# Definitions and scope {% #definitions-and-scope %}
+
+- **Normal usage:** Resource usage that falls within expected thresholds for a user’s selected plan.
+- **Excessive usage:** Usage that exceeds defined thresholds and may affect the platform’s performance for other users.
+- **Prohibited activities:** Actions or behaviors that violate this FUP, including, but not limited to, abuse of resources and security breaches.
+
+This policy applies to all resources provided by Appwrite Cloud, including but not limited to API requests, data storage, compute resources, and database operations.
+
+# Usage limits and thresholds {% #usage-limits-and-thresholds %}
+
+Each user plan includes specific resource limits, which are available to view on our [Pricing page](https://appwrite.io/pricing).
+
+Exceeding these limits may lead to throttling or suspension of services, as described in Section 4.
+
+# Prohibited activities {% #prohibited-activities %}
+
+The following actions are prohibited on the Appwrite platform and may lead to immediate suspension or termination:
+
+- **Abuse of resources:** Excessive or continuous usage beyond normal levels, including but not limited to running heavy computations continuously or monopolizing API calls. Examples include:
+    - Crypto mining
+    - Hosting illegal content
+- **Security violations:** Attempting unauthorized access, exploiting vulnerabilities, or interfering with the services provided to other users. Examples include:
+    - Penetration testing
+    - Denial-of-Services (DoS) attacks
+    - Malware distribution
+    - Hosting phishing schemes
+- **Automated abuse:** Excessive or automated high-volume requests. Examples include:
+    - Unauthorized load testing
+    - Unauthorized penetration testing
+- **Avoidance of payments:** Attempting any manipulations to avoid payment duties.
+
+# Enforcement actions {% #enforcement-actions %}
+
+In cases of excessive or prohibited usage, Appwrite reserves the right to enforce the following actions:
+
+- **Temporary suspension** of access to the project or organization until the next billing cycle.
+- **Permanent suspension** of the account for repeated or serious FUP violations.
+
+In all cases, users will be notified of the action taken and provided with guidance on how to correct the issue.
+
+# Monitoring and compliance {% #monitoring-and-compliance %}
+
+We continuously monitor resource usage to ensure compliance with this policy. Users will receive automated alerts when nearing their plan limits and may review their usage statistics in the dashboard at any time. If users believe their usage has been unfairly flagged, they can contact support to discuss and resolve the issue.
+
+# Options for users exceeding limits {% #options-for-users-exceeding-limits %}
+
+Users who consistently exceed usage limits have the following options:
+
+- **Upgrade to a higher plan:** Users may select a plan that better fits their needs.
+- **Resource upgrades:** Pro and Scale plan users may upgrade the usage limits for specific resources. Pricing details are available [here](https://appwrite.io/pricing).
+
+# Policy updates and communication {% #policy-updates-and-communication %}
+
+Appwrite reserves the right to update this FUP to reflect evolving platform capabilities or changing usage patterns. We will provide a 30-day notice before any major changes take effect, and users will be informed via email and dashboard notifications.
+
+# Contact us {% #contact-us %}
+
+For questions or further clarification, please [contact our support team](https://appwrite.io/contact-us).
