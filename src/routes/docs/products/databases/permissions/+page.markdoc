@@ -45,7 +45,7 @@ First, configure your collection to:
 - Omitting READ/UPDATE/DELETE at collection level prevents users from accessing all documents
 {% /info %}
 
-### 2. Document creation with permissions
+### Create a document for a user
 When creating documents in your application, set document-level permissions to restrict access to only the creator:
 
 {% multicode %}
