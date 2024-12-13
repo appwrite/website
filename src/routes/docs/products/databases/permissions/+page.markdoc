@@ -36,7 +36,7 @@ A common use case is to allow users to create documents that are only accessible
 
 ### 1. Collection setup
 First, configure your collection to:
-1. Enable Document Security in **Collection Settings**
+1. Enable **Document Security** in Collection **Settings**
 2. Grant only CREATE permission to users at the collection level
 
 {% info title="Why this setup?" %}
