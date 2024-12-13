@@ -2,6 +2,8 @@
     import { inView } from 'motion';
     import MapMarker from './map-marker.svelte';
     import { slugify } from '$lib/utils/slugify';
+    import { cn } from '$lib/utils/classnames';
+    import { tick } from 'svelte';
 
     let mouse = { x: 0, y: 0 };
     let animate: boolean = true;
@@ -95,10 +97,9 @@
     let activeRegion: string | null = null;
     let hasActiveMarker: boolean = false;
 
-    const handleSetActiveMarker = (region: string) => {
+    const handleSetActiveMarker = async (region: string) => {
         const activeRegionString = slugify(region);
 
-        // If the clicked region is the same as the current active region, deactivate
         if (activeRegion === activeRegionString) {
             hasActiveMarker = false;
             activeMarker = null;
@@ -106,28 +107,31 @@
             return;
         }
 
-        // Update the active region
-        activeRegion = activeRegionString;
         hasActiveMarker = true;
 
-        // Use a reactive reference instead of querySelector
         activeMarker = document.querySelector(`[data-region="${activeRegionString}"]`);
 
         if (activeMarker) {
-            activeMarker.scrollIntoView({
-                behavior: 'smooth',
-                block: 'nearest',
-                inline: 'center'
+            // Separate the scroll into its own function
+            const scrollToMarker = () => {
+                activeMarker!.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'center'
+                });
+            };
+
+            await new Promise<void>((resolve) => {
+                scrollToMarker();
+
+                requestAnimationFrame(() => {
+                    resolve();
+                });
             });
-            activeMarker.focus();
+
+            activeRegion = activeRegionString;
         }
     };
-
-    // mobile implementation
-    // - set a width that is 5x the screen width
-    // hide the overflow
-    // scrollTo the active element
-    // scale 1.5
 </script>
 
 <div class="w-full overflow-scroll [scrollbar-width:none]">
@@ -136,7 +140,15 @@
     >
         {#each pins as pin}
             <button
-                class="bg-greyscale-800/30 border-greyscale-700/20 inline grow text-nowrap rounded-full border py-1 px-4 backdrop-blur-lg"
+                class={cn(
+                    'grow text-nowrap rounded-full border-0.5 bg-gradient-to-br py-1 px-4 text-white backdrop-blur-lg transition-colors',
+                    {
+                        'from-accent to-accent/50 border-accent':
+                            activeRegion === slugify(pin.city),
+                        'from-greyscale-800/30 to-greyscale-700/30 border-greyscale-700/20':
+                            activeRegion !== slugify(pin.city)
+                    }
+                )}
                 on:click={() => handleSetActiveMarker(pin.city)}>{pin.city}</button
             >
         {/each}

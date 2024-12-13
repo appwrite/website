@@ -9,8 +9,8 @@
         city: string;
         code: string;
         index: number;
-        x?: number;
-        y?: number;
+        x: number;
+        y: number;
         available?: boolean;
         class?: string;
         animate?: boolean;
@@ -48,11 +48,8 @@
     });
 
     $: {
-        console.log('reacting', { isOpen });
         open.set(isOpen);
     }
-
-    $: console.log({ isOpen, city, $open });
 </script>
 
 <div
@@ -62,7 +59,7 @@
     )}
     use:melt={$trigger}
     style:--x-desktop="{x}vw"
-    style:--x-mobile="{x * 3}vw"
+    style:--x-mobile="{x * 3.25}vw"
     style:--y="{y}vh"
     style:--delay="{index * 100}ms"
     data-region={slugify(city)}
@@ -82,7 +79,7 @@
         use:melt={$content}
         transition:fly={{ duration: 200, easing: cubicInOut, y: 6 }}
         class={cn(
-            'bg-card flex w-[190px] flex-col gap-2 rounded-[10px] border border-white/6 p-2 backdrop-blur-sm',
+            'from-card/75 to-greyscale-800/75 flex w-[190px] flex-col gap-2 rounded-[10px] border border-white/3 bg-gradient-to-tl p-2 backdrop-blur-sm',
             className
         )}
     >
