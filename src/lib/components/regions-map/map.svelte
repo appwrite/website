@@ -97,6 +97,8 @@
     let activeRegion: string | null = null;
     let hasActiveMarker: boolean = false;
 
+    $: console.log(activeRegion);
+
     const handleSetActiveMarker = async (region: string) => {
         const activeRegionString = slugify(region);
 
@@ -112,7 +114,6 @@
         activeMarker = document.querySelector(`[data-region="${activeRegionString}"]`);
 
         if (activeMarker) {
-            // Separate the scroll into its own function
             const scrollToMarker = () => {
                 activeMarker!.scrollIntoView({
                     behavior: 'smooth',
@@ -127,9 +128,9 @@
                 requestAnimationFrame(() => {
                     resolve();
                 });
+            }).then(() => {
+                activeRegion = activeRegionString;
             });
-
-            activeRegion = activeRegionString;
         }
     };
 </script>
@@ -173,8 +174,13 @@
             </div>
             <img src="/images/regions/map.svg" class="opacity-10" alt="Map of the world" />
             <div class="absolute inset-0 flex w-full">
-                {#each pins.map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city) }) ) as pin, index}
-                    <MapMarker {...pin} {animate} {index} />
+                {#each pins as pin, index}
+                    <MapMarker
+                        isOpen={activeRegion === slugify(pin.city)}
+                        {...pin}
+                        {animate}
+                        {index}
+                    />
                 {/each}
             </div>
         </div>
