@@ -2,9 +2,10 @@
     import { cn } from '$lib/utils/classnames';
     import { inView } from 'motion';
     import MapMarker from './map-marker.svelte';
+    import { slugify } from '$lib/utils/slugify';
 
     let mouse = { x: 0, y: 0 };
-    let animate: boolean = false;
+    let animate: boolean = true;
 
     const useMousePosition = (node: HTMLElement) => {
         const handleMouseMove = (event: MouseEvent) => {
@@ -90,58 +91,87 @@
             available: false
         }
     ];
+
+    let activeMarker: HTMLElement | null = null;
+    let hasActiveMarker: boolean = false;
+
+    const handleSetActiveMarker = (region: string) => {
+        const activeRegion = slugify(region);
+
+        hasActiveMarker = true;
+
+        if (activeMarker?.dataset.region === activeRegion) {
+            hasActiveMarker = false;
+            activeMarker = null;
+            return;
+        }
+
+        activeMarker = document.querySelector(`[data-region=${activeRegion}]`);
+        if (activeMarker) {
+            activeMarker.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+                inline: 'center'
+            });
+        }
+    };
+
+    // mobile implementation
+    // - set a width that is 5x the screen width
+    // hide the overflow
+    // scrollTo the active element
+    // scale 1.5
 </script>
 
-<div
-    class="container relative mx-auto flex h-full items-center justify-center"
-    use:useMousePosition
-    use:useInView
->
-    <div class="relative z-10 block w-full space-y-4 md:hidden">
-        {#each pins as pin}
-            <div
-                class="bg-card z-100 flex w-full flex-col gap-2 rounded-[10px] border border-white/6 py-4 px-2 backdrop-blur-sm"
-            >
-                <span class="text-primary text-caption w-fit"
-                    >{pin.city}
-                    ({pin.code})</span
-                >
-                {#if pin.available}
-                    <div
-                        class="text-caption flex h-5 items-center justify-center place-self-start rounded-[6px] bg-[#10B981]/16 p-1 text-center text-[#0A714F]"
-                    >
-                        <span class="text-micro -tracking-tight">Available now</span>
-                    </div>
-                {:else}
-                    <div
-                        class="text-caption flex h-5 items-center justify-center place-self-start rounded-[6px] bg-black/6 p-1 text-center text-[#56565C]"
-                    >
-                        <span class="text-micro -tracking-tight">Coming soon</span>
-                    </div>
-                {/if}
-            </div>
-        {/each}
-    </div>
-    <div class="relative hidden w-full origin-bottom transition-all md:block">
+<div class=" w-full overflow-scroll">
+    <div
+        class="container relative mx-auto flex h-full w-[250vw] flex-col items-center justify-center overflow-scroll transition-all delay-250 duration-250 md:flex-row md:overflow-auto"
+        use:useMousePosition
+        use:useInView
+    >
         <div
-            class="absolute inset-0 [mask-image:url('/images/regions/map.svg')] [mask-repeat:no-repeat] [mask-size:contain]"
+            class="sticky left-0 z-10 flex w-screen gap-2 space-y-4 overflow-scroll px-8 md:hidden"
+        >
+            {#each pins as pin}
+                <button
+                    class="bg-greyscale-800/30 border-greyscale-700/20 inline grow text-nowrap rounded-full border py-1 px-4 backdrop-blur-lg"
+                    on:click={() => handleSetActiveMarker(pin.city)}>{pin.city}</button
+                >
+            {/each}
+        </div>
+        <div
+            class="map relative w-full origin-bottom overflow-scroll transition-all"
+            data-active-marker={hasActiveMarker}
         >
             <div
-                class="gradient overlay relative block aspect-square size-40 rounded-full blur-3xl transition-opacity"
-                style:--mouse-x="{mouse.x}px"
-                style:--mouse-y="{mouse.y}px"
-            />
-        </div>
-        <img src="/images/regions/map.svg" class="opacity-10" alt="Map of the world" />
-        <div class="absolute inset-0 flex">
-            {#each pins as pin, index}
-                <MapMarker {...pin} {animate} {index} />
-            {/each}
+                class="absolute inset-0 [mask-image:url('/images/regions/map.svg')] [mask-repeat:no-repeat] [mask-size:contain]"
+            >
+                <div
+                    class="gradient overlay relative block aspect-square size-40 rounded-full blur-3xl transition-opacity"
+                    style:--mouse-x="{mouse.x}px"
+                    style:--mouse-y="{mouse.y}px"
+                />
+            </div>
+            <img src="/images/regions/map.svg" class="opacity-10" alt="Map of the world" />
+            <div class="absolute inset-0 flex w-full">
+                {#each pins as pin, index}
+                    <MapMarker {...pin} {animate} {index} />
+                {/each}
+            </div>
         </div>
     </div>
 </div>
 
 <style>
+    .map {
+        scroll-snap-type: x mandatory;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        overscroll-behavior-x: contain;
+    }
+    [data-active-marker='true'] {
+        transform: scale(1.2);
+    }
     .gradient {
         background: radial-gradient(
             circle at center,

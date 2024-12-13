@@ -1,5 +1,6 @@
 <script lang="ts">
     import { cn } from '$lib/utils/classnames';
+    import { slugify } from '$lib/utils/slugify';
     import { melt, createTooltip } from '@melt-ui/svelte';
     import { cubicInOut } from 'svelte/easing';
     import { fly } from 'svelte/transition';
@@ -54,6 +55,7 @@
     style:--x="{x}vw"
     style:--y="{y}vh"
     style:--delay="{index * 100}ms"
+    data-region={slugify(city)}
 >
     <span
         class="bg-accent absolute inline-flex h-full w-full rounded-full opacity-75 group-hover:animate-ping"
