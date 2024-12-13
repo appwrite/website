@@ -14,6 +14,7 @@
         available?: boolean;
         class?: string;
         animate?: boolean;
+        isOpen: boolean;
     };
 
     let className: $$Props['class'] = '';
@@ -25,6 +26,7 @@
     export let y: $$Props['y'] = 0;
     export let index: $$Props['index'] = 0;
     export let animate: $$Props['animate'] = false;
+    export let isOpen: $$Props['isOpen'] = false;
     export { className as class };
 
     const {
@@ -44,21 +46,30 @@
         closeOnPointerDown: false,
         forceVisible: true
     });
+
+    $: {
+        console.log('reacting', { isOpen });
+        open.set(isOpen);
+    }
+
+    $: console.log({ isOpen, city, $open });
 </script>
 
 <div
     class={cn(
-        'group relative flex size-4 translate-x-[var(--x)] translate-y-[var(--y)] cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)]',
+        'group relative flex size-4 translate-x-[var(--x-mobile)] translate-y-[var(--y)] cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)] md:translate-x-[var(--x-desktop)]',
         { 'animate-fade-in': animate }
     )}
     use:melt={$trigger}
-    style:--x="{x}vw"
+    style:--x-desktop="{x}vw"
+    style:--x-mobile="{x * 3}vw"
     style:--y="{y}vh"
     style:--delay="{index * 100}ms"
     data-region={slugify(city)}
+    data-active={isOpen}
 >
     <span
-        class="bg-accent absolute inline-flex h-full w-full rounded-full opacity-75 group-hover:animate-ping"
+        class="bg-accent absolute inline-flex h-full w-full rounded-full opacity-75 group-hover:animate-ping group-data-[active=true]:animate-ping"
     />
     <span class="bg-accent absolute inline-flex h-full w-full rounded-full" />
     <span
