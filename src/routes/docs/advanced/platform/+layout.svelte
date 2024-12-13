@@ -108,6 +108,11 @@
                 {
                     label: 'Release policy',
                     href: '/docs/advanced/platform/release-policy'
+                },
+                {
+                    new: true,
+                    label: 'Fair use policy',
+                    href: '/docs/advanced/platform/fair-use-policy'
                 }
             ]
         }
