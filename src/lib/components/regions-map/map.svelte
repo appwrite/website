@@ -3,7 +3,6 @@
     import MapMarker from './map-marker.svelte';
     import { slugify } from '$lib/utils/slugify';
     import { cn } from '$lib/utils/classnames';
-    import { tick } from 'svelte';
 
     let mouse = { x: 0, y: 0 };
     let animate: boolean = true;
@@ -97,8 +96,6 @@
     let activeRegion: string | null = null;
     let hasActiveMarker: boolean = false;
 
-    $: console.log(activeRegion);
-
     const handleSetActiveMarker = async (region: string) => {
         const activeRegionString = slugify(region);
 
@@ -114,22 +111,30 @@
         activeMarker = document.querySelector(`[data-region="${activeRegionString}"]`);
 
         if (activeMarker) {
-            const scrollToMarker = () => {
+            return new Promise<void>((resolve) => {
                 activeMarker!.scrollIntoView({
                     behavior: 'smooth',
                     block: 'nearest',
                     inline: 'center'
                 });
-            };
 
-            await new Promise<void>((resolve) => {
-                scrollToMarker();
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        const entry = entries[0];
 
-                requestAnimationFrame(() => {
-                    resolve();
-                });
-            }).then(() => {
-                activeRegion = activeRegionString;
+                        // Only update if the marker is more than 50% in view
+                        if (entry.intersectionRatio > 0.5) {
+                            activeRegion = activeRegionString;
+                            observer.disconnect();
+                            resolve();
+                        }
+                    },
+                    {
+                        threshold: [0, 0.25, 0.5, 0.75, 1]
+                    }
+                );
+
+                observer.observe(activeMarker!);
             });
         }
     };
@@ -155,7 +160,7 @@
         {/each}
     </div>
     <div
-        class="container relative mx-auto flex h-full w-[250vw] flex-col justify-center overflow-scroll transition-all delay-250 duration-250 md:w-fit md:flex-row md:overflow-auto"
+        class="container relative mx-auto flex h-full w-[250vw] flex-col justify-center overflow-scroll py-10 transition-all delay-250 duration-250 md:w-fit md:flex-row md:overflow-auto md:py-0"
         use:useMousePosition
         use:useInView
         data-active-marker={hasActiveMarker}
@@ -174,13 +179,10 @@
             </div>
             <img src="/images/regions/map.svg" class="opacity-10" alt="Map of the world" />
             <div class="absolute inset-0 flex w-full">
-                {#each pins as pin, index}
-                    <MapMarker
-                        isOpen={activeRegion === slugify(pin.city)}
-                        {...pin}
-                        {animate}
-                        {index}
-                    />
+                {#each pins.map((pin) => {
+                    return { ...pin, isOpen: activeRegion === slugify(pin.city) };
+                }) as pin, index}
+                    <MapMarker {...pin} {animate} {index} />
                 {/each}
             </div>
         </div>
@@ -188,15 +190,6 @@
 </div>
 
 <style>
-    .map {
-        scroll-snap-type: x mandatory;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        overscroll-behavior-x: contain;
-    }
-    /* [data-active-marker='true'] {
-        transform: scale(1.2);
-    } */
     .gradient {
         background: radial-gradient(
             circle at center,

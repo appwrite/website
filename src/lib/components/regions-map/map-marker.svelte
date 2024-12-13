@@ -70,7 +70,7 @@
     />
     <span class="bg-accent absolute inline-flex h-full w-full rounded-full" />
     <span
-        class="absolute size-1/2 rounded-full bg-white transition-transform group-hover:scale-110"
+        class="absolute size-1/2 rounded-full bg-white transition-all group-hover:scale-110 group-data-[active=true]:size-2/3"
     />
 </div>
 
