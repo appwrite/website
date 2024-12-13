@@ -257,7 +257,7 @@ suspend fun main() {
 {% /multicode %}
 
 {% info title="Understanding the flow" %}
-1. Collection-level CREATE permission allows users to create new documents
+1. Collection-level **CREATE** permission allows users to create new documents
 2. When a document is created, we set permissions for only the creator
 3. These document-level permissions ensure only the creator can read, update, or delete their documents
 4. Other users can create their own documents but cannot access documents they didn't create
