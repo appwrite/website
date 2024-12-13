@@ -9,8 +9,7 @@
             "watch": true
         },
         "partials": {
-            "auth-security.md": "./src/partials/auth-security.md",
-            "cli-disclaimer.md": "./src/partials/cli-disclaimer.md"
+            "auth-security.md": "./src/partials/auth-security.md"
         }
     }
 ]
