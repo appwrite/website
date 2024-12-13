@@ -10,10 +10,12 @@ User verification in Appwrite allows you to verify user email addresses and phon
 
 To verify a user's email, first send a verification email with a redirect URL. The verification secrets will be appended as query parameters to the redirect URL:
 
+{% multicode %}
 ```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>') // Your project ID
 
 const account = new Account(client);
@@ -27,15 +29,69 @@ promise.then(function (response) {
 });
 ```
 
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+void main() {
+  Client client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+  Account account = Account(client);
+
+  Future result = account.createVerification(
+    url: 'https://example.com/verify'
+  );
+
+  result.then((response) {
+    print(response);
+  }).catchError((error) {
+    print(error.response);
+  });
+}
+```
+
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let account = Account(client)
+
+let token = try await account.createVerification(
+    url: "https://example.com/verify"
+)
+```
+
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Account
+
+val client = Client(context)
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val account = Account(client)
+
+val response = account.createVerification(
+    url = "https://example.com/verify"
+)
+```
+{% /multicode %}
+
 After the user clicks the link in the email, they will be redirected to your site with the query parameters `userId` and `secret`. If you're on a mobile platform, you will need to create the appropriate deep link to handle the verification.
 
 Next, implement the verification page that handles the redirect:
 
+{% multicode %}
 ```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setProject('<PROJECT_ID>'); // Your project ID
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
 
 const account = new Account(client);
 
@@ -52,10 +108,66 @@ promise.then(function (response) {
 });
 ```
 
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+void main() {
+  Client client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+  Account account = Account(client);
+
+  Future result = account.updateVerification(
+    userId: '<USER_ID>',
+    secret: '<SECRET>'
+  );
+
+  result.then((response) {
+    print(response);
+  }).catchError((error) {
+    print(error.response);
+  });
+}
+```
+
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let account = Account(client)
+
+let response = try await account.updateVerification(
+    userId: "<USER_ID>",
+    secret: "<SECRET>"
+)
+```
+
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Account
+
+val client = Client(context)
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val account = Account(client)
+
+val response = account.updateVerification(
+    userId = "<USER_ID>",
+    secret = "<SECRET>"
+)
+```
+{% /multicode %}
+
 # Phone verification {% #phone-verification %}
 
 To verify a phone number, first ensure the user has a phone number set on their account:
 
+{% multicode %}
 ```client-web
 const response = await account.updatePhone(
     '+12065550100',  // phone
@@ -63,20 +175,97 @@ const response = await account.updatePhone(
 );
 ```
 
+```client-flutter
+Future result = account.updatePhone(
+    phone: '+12065550100',
+    password: 'password'
+);
+
+result.then((response) {
+    print(response);
+}).catchError((error) {
+    print(error.response);
+});
+```
+
+```client-apple
+let response = try await account.updatePhone(
+    phone: "+12065550100",
+    password: "password"
+)
+```
+
+```client-android-kotlin
+val response = account.updatePhone(
+    phone = "+12065550100",
+    password = "password"
+)
+```
+{% /multicode %}
+
 Then initiate verification by calling `createPhoneVerification`:
 
+{% multicode %}
 ```client-web
 const response = await account.createPhoneVerification();
 ```
 
+```client-flutter
+Future result = account.createPhoneVerification();
+
+result.then((response) {
+    print(response);
+}).catchError((error) {
+    print(error.response);
+});
+```
+
+```client-apple
+let response = try await account.createPhoneVerification()
+```
+
+```client-android-kotlin
+val response = account.createPhoneVerification()
+```
+{% /multicode %}
+
 After the user receives the verification code, complete verification by calling `updatePhoneVerification`:
 
+{% multicode %}
 ```client-web
 const response = await account.updatePhoneVerification(
     '[USER_ID]',  // userId
     '[SECRET]' // secret
 );
 ```
+
+```client-flutter
+Future result = account.updatePhoneVerification(
+    userId: '[USER_ID]',
+    secret: '[SECRET]'
+);
+
+result.then((response) {
+    print(response);
+}).catchError((error) {
+    print(error.response);
+});
+```
+
+```client-apple
+let response = try await account.updatePhoneVerification(
+    userId: "[USER_ID]",
+    secret: "[SECRET]"
+)
+```
+
+```client-android-kotlin
+val response = account.updatePhoneVerification(
+    userId = "[USER_ID]",
+    secret = "[SECRET]"
+)
+```
+{% /multicode %}
 
 # Role-based access {% #role-based-access %}
 
