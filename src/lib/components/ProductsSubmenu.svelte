@@ -20,7 +20,7 @@
             icon: '/images/icons/illustrated/dark/auth.png'
         },
         {
-            name: 'Database',
+            name: 'Databases',
             href: '/docs/products/databases',
             description: 'Scalable and robust databases.',
             icon: '/images/icons/illustrated/dark/databases.png'
