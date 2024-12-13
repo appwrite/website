@@ -39,8 +39,8 @@ Deliver custom SMS messages to users using MSG91.
 {% cards_item href="/docs/products/messaging/telesign" title="Telesign" icon="icon-telesign" %}
 Deliver custom SMS messages to users using Telesign.
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/textmagic" title="TextMagic" icon="icon-textmagic" %}
-Deliver custom SMS messages to users using TextMagic.
+{% cards_item href="/docs/products/messaging/textmagic" title="Textmagic" icon="icon-textmagic" %}
+Deliver custom SMS messages to users using Textmagic.
 {% /cards_item %}
 {% cards_item href="/docs/products/messaging/vonage" title="Vonage" icon="icon-vonage" %}
 Deliver custom SMS messages to users using Vonage.
