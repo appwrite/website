@@ -3,21 +3,21 @@
     import { FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { onMount } from 'svelte';
+    import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
 
     let error: string | undefined;
 
     onMount(async () => {
         const email = $page.url.searchParams.get('email');
         const key = $page.url.searchParams.get('key');
-        const response = await fetch('https://growth.appwrite.io/v1/newsletter/verify', {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/newsletter/verify`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 email,
-                key,
-                cloud: true /* not optional on the growth endpoint. */
+                key
             })
         });
         if (response.status >= 400) {
