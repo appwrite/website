@@ -3,7 +3,7 @@ import type { Tutorial } from '$markdoc/layouts/Tutorial.svelte';
 
 export function globToTutorial(data: { tutorials: Record<string, unknown>; pathname: string }) {
     let isFound = false;
-    let difficulty, readtime;
+    let difficulty: string | undefined, readtime: string | undefined;
 
     return Object.entries(data.tutorials)
         .map(([filepath, tutorial]) => {
