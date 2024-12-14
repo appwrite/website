@@ -15,8 +15,7 @@
 
 <button on:click={() => (show = true)} class="web-button is-secondary cursor-pointer">
     <span>Appwrite in 100 seconds</span>
-    <!-- TODO: get checked if we can use this. I also liked `icon-video` -->
-    <span class="icon-cheveron-right" />
+    <span class="icon-video" />
 </button>
 
 {#if show}
