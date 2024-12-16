@@ -11,7 +11,7 @@
     import MainFooter from '../lib/components/MainFooter.svelte';
     import DeveloperCard from './DeveloperCard.svelte';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import CoverImage from './dashboard.png';
+    import CoverImage from './dashboard.webp';
     import Hero from '$lib/components/ui/Hero.svelte';
     import GradientText from '$lib/components/ui/GradientText.svelte';
     import Badge from '$lib/components/ui/Badge.svelte';
@@ -92,7 +92,7 @@
         <enhanced:img
             style="width:1466px; height:804px; transform:rotate(150.348deg); opacity: 0.65; filter: blur(127.5px);
 		max-block-size: unset; max-inline-size: unset;"
-            src="./top-page-dark.png"
+            src="./top-page-dark.webp"
             alt=""
         />
     </div>
@@ -103,7 +103,7 @@
     style="top: 22rem; left: 54%; translate: calc(-50% - 900px); width: 75.9375rem;"
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
-    <img src="/images/bgs/hero-lines-1.png" alt="" />
+    <img src="/images/bgs/hero-lines-1.webp" alt="" />
 </div>
 
 <div
@@ -112,7 +112,7 @@
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
     <div style="left: 0;">
-        <img src="/images/bgs/hero-lines-2.png" alt="" />
+        <img src="/images/bgs/hero-lines-2.webp" alt="" />
     </div>
 </div>
 
