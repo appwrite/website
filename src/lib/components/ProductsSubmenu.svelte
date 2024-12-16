@@ -82,7 +82,7 @@
     export let label: string;
 </script>
 
-<li
+<button
     class={classNames(
         'text-primary focus:text-accent hover:text-accent inline-flex cursor-pointer items-center justify-between outline-none',
         {
@@ -98,7 +98,7 @@
             'rotate-180': $open
         })}
     />
-</li>
+</button>
 
 <div
     use:melt={$menu}
