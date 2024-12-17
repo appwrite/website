@@ -18,7 +18,7 @@
 
     let error: string | undefined;
     let submitted = false;
-    let submitting = true;
+    let submitting = false;
 
     async function handleSubmit() {
         error = undefined;
