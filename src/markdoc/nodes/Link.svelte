@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { isInDocs } from '$lib/layouts/Docs.svelte';
     import { isInChangelog } from '$markdoc/layouts/Changelog.svelte';
 
     export let href: string;
@@ -7,13 +6,17 @@
 
     const isExternal = ['http://', 'https://'].some((prefix) => href.startsWith(prefix));
     const target = isExternal ? '_blank' : undefined;
-    const rel = isExternal ? 'noopener nofollow' : undefined;
 
-    const inDocs = isInDocs();
+    const doFollow = href.includes('?dofollow=true') || href.includes('&dofollow=true');
+    if (doFollow) {
+        href = href.replace(/[?&]dofollow=true/g, '').replace(/[?&]$/, '');
+    }
+
+    const rel = isExternal ? `noopener${doFollow ? '' : ' nofollow'}` : undefined;
+
     const inChangelog = isInChangelog();
 
     $: classes = (() => {
-        if (inDocs) return 'text-paragraph-md';
         if (inChangelog) return 'text-paragraph-lg in-changelog';
         return '';
     })();

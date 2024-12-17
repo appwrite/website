@@ -4,9 +4,11 @@
     import type { Tutorial } from '$markdoc/layouts/Tutorial.svelte';
     import type { TocItem } from './DocsArticle.svelte';
     import Heading from '$markdoc/nodes/Heading.svelte';
-    import { onMount } from 'svelte';
+    import { onMount, tick } from 'svelte';
+    import { page } from '$app/stores';
 
     export let toc: Array<TocItem>;
+    export let back: string;
     export let currentStep: number;
     export let date: string;
 
@@ -30,13 +32,66 @@
 
     let slotContent: HTMLElement | null = null;
 
+    function scrollToElement(pageHash: string) {
+        const element = document.getElementById(pageHash);
+        if (element) {
+            const offset = 50;
+            const rect = element.getBoundingClientRect();
+            window.scroll({ top: window.scrollY + rect.top - offset });
+        }
+    }
+
+    /**
+     * Due to underlying logic with anchor links & the auto-scroll via hash values in the URL,
+     * we have an issue where if the first item is not scrolled enough it isn't marked as `selected`.
+     *
+     * We do below workaround for the time being without breaking things to scroll to the first item.
+     */
+    async function preSelectItemOnInit() {
+        await tick();
+
+        if (!$page.url.hash) return;
+        const tocItem = toc.slice(1);
+
+        // no sub-items, return.
+        if (!tocItem.length) return;
+
+        const pageHash = $page.url.hash.replace('#', '');
+        const tocItemHref = tocItem[0].href.replace('#', '');
+
+        if (pageHash !== tocItemHref) return;
+
+        scrollToElement(pageHash);
+    }
+
+    // same issue as above, only happens on the first item.
+    function scrollToItem(parent: TocItem, index: number) {
+        const tocItem = toc.slice(1);
+
+        if (!tocItem.length) return;
+        const tocItemHref = parent.href.replace('#', '');
+
+        const element = document.getElementById(tocItemHref);
+
+        if (index === 0) {
+            scrollToElement(tocItemHref);
+        } else {
+            element?.scrollIntoView();
+        }
+
+        // because we used `preventDefault`.
+        history.pushState(null, '', parent.href);
+    }
+
     onMount(() => {
         if (!slotContent) return;
 
         // dynamically modify all `label` headers to `body`.
-        slotContent.querySelectorAll<HTMLHeadingElement>('h2.web-label').forEach((header) => {
-            header.classList.replace('web-label', 'web-main-body-500');
+        slotContent.querySelectorAll<HTMLHeadingElement>('h2.text-label').forEach((header) => {
+            header.classList.replace('text-label', 'web-main-body-500');
         });
+
+        preSelectItemOnInit();
     });
 </script>
 
@@ -44,6 +99,15 @@
     <article class="web-article contents">
         <header class="web-article-header">
             <div class="web-article-header-start web-u-cross-start flex flex-col">
+                {#if back}
+                    <a
+                        href={back}
+                        class="web-icon-button web-is-only-mobile"
+                        aria-label="previous page"
+                    >
+                        <span class="icon-cheveron-left" aria-hidden="true" />
+                    </a>
+                {/if}
                 <ul class="web-metadata web-caption-400">
                     {#if currentStepItem.difficulty}
                         <li>{currentStepItem.difficulty}</li>
@@ -53,7 +117,23 @@
                     {/if}
                 </ul>
                 <div class="u-cross-center relative flex">
-                    <h1 class="web-title">{firstStepItem?.title}</h1>
+                    {#if back}
+                        <a
+                            href={back}
+                            class="
+						web-button is-text is-only-icon web-u-cross-center
+						web-is-not-mobile -translate-x-1/2"
+                            aria-label="previous page"
+                        >
+                            <span
+                                class="icon-cheveron-left web-u-font-size-24 web-u-color-text-primary"
+                                aria-hidden="true"
+                            />
+                        </a>
+                    {/if}
+                    <h1 class="web-title {currentStep === 1 ? 'lg:-ml-5' : ''}">
+                        {firstStepItem?.title}
+                    </h1>
                 </div>
             </div>
             <div class="web-article-header-end" />
@@ -63,16 +143,18 @@
                 <section class="web-article-content-sub-section">
                     <header class="web-article-content-header">
                         <span class="web-numeric-badge">{currentStep}</span>
-                        <Heading level={1} id={currentStepItem.href} step={currentStep}>
-                            {getCorrectTitle(currentStepItem, 1)}
-                        </Heading>
+                        <div class="tutorial-heading">
+                            <Heading level={1} id={currentStepItem.href} step={currentStep}>
+                                {getCorrectTitle(currentStepItem, 1)}
+                            </Heading>
+                        </div>
                     </header>
 
-                    <div class="u-padding-block-start-32" bind:this={slotContent}>
+                    <div class="web-u-padding-block-start-32" bind:this={slotContent}>
                         <slot />
                     </div>
 
-                    <div class="flex justify-between">
+                    <div class="web-u-padding-block-start-32 flex justify-between">
                         {#if prevStep}
                             <a href={prevStep.href} class="web-button is-text previous-step-anchor">
                                 <span class="icon-cheveron-left" aria-hidden="true" />
@@ -111,6 +193,7 @@
                 <ol class="web-references-menu-list">
                     {#each tutorials as tutorial, index}
                         {@const isCurrentStep = currentStep === tutorial.step}
+                        {@const absoluteToc = toc.slice(1)}
                         <li class="web-references-menu-item">
                             <a
                                 href={tutorial.href}
@@ -124,14 +207,16 @@
                                     >{index === 0 ? 'Introduction' : tutorial.title}</span
                                 >
                             </a>
-                            {#if isCurrentStep && toc.length}
+                            {#if isCurrentStep && absoluteToc.length}
                                 <ol
                                     class="web-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
                                 >
-                                    {#each toc.slice(1) as parent}
+                                    {#each absoluteToc as parent, innerIndex}
                                         <li class="web-references-menu-item">
                                             <a
                                                 href={parent.href}
+                                                on:click|preventDefault={() =>
+                                                    scrollToItem(parent, innerIndex)}
                                                 class="web-references-menu-link is-inner"
                                                 class:tutorial-scroll-indicator={parent.selected}
                                                 class:is-selected={parent.selected}
@@ -161,7 +246,7 @@
                         </li>
                     {/each}
                 </ol>
-                <div class="border-greyscale-900/[0.04] border-t pt-5">
+                <div class="border-greyscale-900/4 border-t pt-5">
                     <button class="web-link inline-flex items-center gap-2" use:scrollToTop>
                         <span class="web-icon-arrow-up" aria-hidden="true" />
                         <span class="text-caption">Back to top</span>
@@ -183,5 +268,50 @@
         outline: unset;
         background: unset;
         padding-inline-start: unset;
+    }
+
+    .u-margin-block-start-16 {
+        margin-block-start: 1rem;
+    }
+
+    .u-margin-inline-start-32 {
+        margin-inline-start: 2rem;
+    }
+
+    .web-references-menu-item:has(.is-selected)::before {
+        /* maintains the distance correctly for the children items */
+        inset-inline-start: -3.55rem;
+    }
+
+    /* Static slider: default slider for each selected link */
+    .web-references-menu-list > .web-references-menu-item > .is-selected::before {
+        content: ' ';
+        position: absolute;
+        inset-block-start: 0;
+        block-size: 1.375rem;
+        inline-size: 0.0625rem;
+        inset-inline-start: -1.3125rem;
+        background-color: hsl(var(--p-references-menu-link-color-text));
+    }
+
+    /* Hide static slider if any child menu item is selected */
+    .web-references-menu-list
+        > .web-references-menu-item:has(.web-references-menu-list .is-selected)
+        > .is-selected::before {
+        background-color: transparent;
+    }
+
+    /* Transparent slider for selected child items because we use parent level */
+    .web-references-menu-list
+        > .web-references-menu-item
+        > .web-references-menu-list
+        > .web-references-menu-item
+        > .is-selected::before {
+        content: '';
+        background-color: transparent;
+    }
+
+    :global(.tutorial-heading h2) {
+        margin-bottom: unset;
     }
 </style>

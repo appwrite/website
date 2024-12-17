@@ -10,6 +10,7 @@
     // import BlobPinkMobile from "$routes/startups/(assets)/blob-pink-mobile.svg";
     import Pink from './bg.png';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
+    import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
 
     let email = '';
     let name = '';
@@ -31,7 +32,7 @@
         message = `Name of representative: ${name}\n\nWork Email: ${email}\n\nCompany Name: ${companyName}\n\nCompany Size: ${companySize}\n\nCompany Website: ${companyWebsite}\n\nIntegration status: ${integrationStatus}\n\nLink to Documentation: ${linkToDocumentation}\n\nLink to product/company assets: ${productUrl}\n\nDetails: ${extraDetails}`;
         subject = `Technology Partner Application: ${companyName}`;
 
-        const response = await fetch('https://growth.appwrite.io/v1/feedback', {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
