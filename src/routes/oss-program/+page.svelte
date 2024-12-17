@@ -18,7 +18,7 @@
 
     let error: string | undefined;
     let submitted = false;
-    let submitting = true;
+    let submitting = false;
 
     async function handleSubmit() {
         error = undefined;
@@ -239,7 +239,7 @@
                                     </p>
                                     <button
                                         type="submit"
-                                        class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
+                                        class="web-button web-u-inline-width-100-percent-mobile-break1 cursor-pointer self-center"
                                         disabled={submitting}
                                     >
                                         <span>Submit</span>
