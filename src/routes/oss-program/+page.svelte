@@ -7,6 +7,7 @@
     import { socials } from '$lib/constants';
     import GradientBackground from './bg.png';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+    import { getReferrerAndUtmSource } from '$lib/utils/utm';
 
     let personName = '';
     let personEmail = '';
@@ -35,7 +36,8 @@
                 githubUrl,
                 websiteUrl,
                 license,
-                message
+                message,
+                ...getReferrerAndUtmSource()
             })
         });
         if (response.status >= 400) {
