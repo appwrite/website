@@ -92,6 +92,13 @@
         display: grid;
     }
 
+    @media #{devices.$break1} {
+        .status {
+            height: 55px;
+            margin-bottom: 6px; /* balancing due to style:margin-top="-4px" & the `iframe` has some spacings too I think */
+        }
+    }
+
     .e-main-footer {
         display: flex;
         @media #{devices.$break1} {

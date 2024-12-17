@@ -4,7 +4,7 @@ title: Authentication
 description: Learn how Appwrite protects your passwords and helps users pick better passwords.
 ---
 
-Appwrite helps you implement secure authentication in your applications by using advanced password hashing to protect passwords in storage. 
+Appwrite helps you implement secure authentication in your applications by using password hashing to protect passwords in storage.
 Appwrite also provides tools to help users pick better passwords, making them harder to break.
 
 {% partial file="auth-security.md" /%}

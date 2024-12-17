@@ -4,6 +4,7 @@ title: Authentication with SvelteKit
 description: Add Authentication to a SvelteKit project using Appwrite.
 step: 1
 difficulty: beginner
+back: /docs/tutorials
 readtime: 20
 framework: SvelteKit
 category: Auth

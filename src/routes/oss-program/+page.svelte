@@ -6,6 +6,7 @@
     import MainFooter from '../../lib/components/MainFooter.svelte';
     import { socials } from '$lib/constants';
     import GradientBackground from './bg.png';
+    import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
 
     let personName = '';
@@ -23,7 +24,7 @@
     async function handleSubmit() {
         error = undefined;
         submitting = true;
-        const response = await fetch('https://growth.appwrite.io/v1/conversations/oss', {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/conversations/oss`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

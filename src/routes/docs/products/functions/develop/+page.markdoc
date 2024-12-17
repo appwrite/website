@@ -473,7 +473,7 @@ You'll find these properties in the context object.
 | req      | Contains request information like method, body, and headers. See full examples [in the request section](#request).                                     |
 | res      | Contains methods to build a response and return information. See full examples [in the response section](#response).                                     |
 | log()    | Method to log information to the Appwrite Console, end users will not be able to see these logs. See full examples [in the logging section](#logging). |
-| error()  | Methoc to log errors to the Appwrite Console, end users will not be able to see these errors. See full examples [in the logging section](#logging).    |
+| error()  | Method to log errors to the Appwrite Console, end users will not be able to see these errors. See full examples [in the logging section](#logging).    |
 
 {% info title="Depreciation notice" %}
 Use `req.bodyText` instead of `req.bodyRaw`. Use `res.text` instead of `res.send`. Use `req.bodyText` or `req.bodyJson` instead of `req.body` depending on the expected input data type.
@@ -1551,6 +1551,8 @@ They are generated in your functions per execution.
 However, you can only use dynamic API keys inside Appwrite functions.
 
 During the build process, dynamic API keys are automatically provided as the environment variable `APPWRITE_FUNCTION_API_KEY`. This environment variable doesn't need to be initialized.
+
+During execution, dynamic API keys are automatically provided in the `x-appwrite-key` [header](#headers).
 
 Dynamic API keys grant access and operate without sessions.
 They allow your function to act as an admin-type role instead of acting on behalf of a user.

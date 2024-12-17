@@ -7,6 +7,7 @@ cover: /images/blog/open-source-firebase-alternative/cover.png
 timeToRead: 7
 author: aditya-oberai
 category: product
+callToAction: true
 ---
 
 If you are looking to build a mobile app, website, tool, or any other application that needs a backend, then you also know the daunting tasks that await. This is probably what brought you to this blog in the first place: looking for a solution to take care of your backend. BaaS provides pre-built backend infrastructure and services to simplify app development, handling server-side tasks like data storage, user management, APIs, server maintenance, security, database management, and more. Two of these services are Firebase and Appwrite.

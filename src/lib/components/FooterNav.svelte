@@ -32,11 +32,11 @@
                 { label: 'Solid', href: '/docs/quick-starts/solid' }
             ],
             Products: [
-                { label: 'Auth', href: '/docs/products/auth' },
+                { label: 'Auth', href: '/products/auth' },
                 { label: 'Databases', href: '/docs/products/databases' },
-                { label: 'Functions', href: '/docs/products/functions' },
+                { label: 'Functions', href: '/products/functions' },
                 { label: 'Messaging', href: '/products/messaging' },
-                { label: 'Storage', href: '/docs/products/storage' },
+                { label: 'Storage', href: '/products/storage' },
                 { label: 'Realtime', href: '/docs/apis/realtime' }
             ],
             Learn: [
@@ -68,7 +68,8 @@
             ],
             Programs: [
                 { label: 'Heroes', href: '/heroes' },
-                { label: 'Startups', href: '/startups' }
+                { label: 'Startups', href: '/startups' },
+                { label: 'Education', href: '/education' }
             ],
             About: [
                 { label: 'Company', href: '/company' },

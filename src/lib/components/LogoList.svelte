@@ -87,7 +87,7 @@
         <ul
             class="web-u-padding-block-start-80 grid grid-cols-3 text-center md:grid-cols-6 md:gap-10"
         >
-            {#each logos as { src, alt, width, height }, i}
+            {#each logos as { src, alt, width, height }}
                 <li class="grid place-content-center">
                     <img {src} {alt} {width} {height} />
                 </li>
