@@ -19,6 +19,7 @@
 
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import Faq from './faq.svelte';
+    import { getReferrerAndUtmSource } from '$lib/utils/utm';
 
     const title = 'Startups' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -58,7 +59,8 @@
                 personName,
                 personEmail,
                 companyName,
-                companyUrl: companyUrl.startsWith('http') ? companyUrl : `https://${companyUrl}`
+                companyUrl: companyUrl.startsWith('http') ? companyUrl : `https://${companyUrl}`,
+                ...getReferrerAndUtmSource()
             })
         });
 
