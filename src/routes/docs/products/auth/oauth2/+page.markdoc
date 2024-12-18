@@ -118,6 +118,37 @@ try await account.createOAuth2Session(
 ```
 {% /tabsitem %}
 
+{% tabsitem #react-native title="React Native" %}
+
+```client-react-native
+import { Client, Account, OAuthProvider } from "appwrite";
+import * as Linking from 'expo-linking';
+import * as WebBrowser from 'expo-web-browser';
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');                 // Your project ID
+
+const account = new Account(client);
+
+// Go to OAuth provider login page
+const loginUrl = await account.createOAuth2Token(
+    OAuthProvider.Github, // provider
+    Linking.createURL('/success'),
+    Linking.createURL('/failed'),
+    ['repo', 'user'] // scopes (optional)
+);
+const result = WebBrowser.openBrowserAsync(loginUrl);
+
+// On your `/success` route, create a session from the result
+const url = new URL(result.url);
+const secret = url.searchParams.get("secret");
+const userId = url.searchParams.get("userId");
+
+await account.createSession(userId, secret);
+```
+{% /tabsitem %}
+
 {% tabsitem #android title="Android" %}
 For Android, add the following activity inside the `<application>` tag in your `AndroidManifest.xml`. 
 Replace `<PROJECT_ID>` with your actual Appwrite project ID.
