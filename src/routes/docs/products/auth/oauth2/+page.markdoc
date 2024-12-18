@@ -138,7 +138,7 @@ const loginUrl = await account.createOAuth2Token(
     Linking.createURL('/failed'),
     ['repo', 'user'] // scopes (optional)
 );
-const result = WebBrowser.openAuthSessionAsync(loginUrl);
+const result = await WebBrowser.openAuthSessionAsync(loginUrl);
 
 // On your `/success` route, create a session from the result
 const url = new URL(result.url);
