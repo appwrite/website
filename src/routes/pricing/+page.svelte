@@ -27,7 +27,7 @@
     $: if (activeToggle && typeof window !== 'undefined') {
         const params = new URLSearchParams(window.location.search);
         params.set('type', activeToggle);
-        goto(`?${params.toString()}`, { replaceState: true });
+        goto(`?${params.toString()}`, { replaceState: true, noScroll: true });
     }
 
     onMount(() => {
