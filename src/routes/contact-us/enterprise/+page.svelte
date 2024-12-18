@@ -6,7 +6,6 @@
     import MainFooter from '../../../lib/components/MainFooter.svelte';
     import Pink from '../bg.png';
     import { loggedIn, user } from '$lib/utils/console';
-    import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import { sendSalesEmail } from '$routes/contact-us';
 
@@ -32,6 +31,7 @@
             companyName,
             companySize,
             companyWebsite,
+            ...getReferrerAndUtmSource(),
             firstName: name,
             message: useCase
         });

@@ -7,6 +7,7 @@
     import Pink from '../bg.png';
     import { loggedIn, user } from '$lib/utils/console';
     import { sendSalesEmail } from '$routes/contact-us';
+    import { getReferrerAndUtmSource } from '$lib/utils/utm';
 
     let email = '';
     let name = '';
@@ -30,6 +31,7 @@
             companyName,
             companySize,
             companyWebsite,
+            ...getReferrerAndUtmSource(),
             firstName: name,
             message: useCase
         });

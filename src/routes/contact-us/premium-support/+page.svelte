@@ -8,8 +8,9 @@
     import Pink from '../bg.png';
     import { loggedIn, user } from '$lib/utils/console';
     import { sendSalesEmail } from '$routes/contact-us';
-    import { supportOptions } from '../../pricing/index';
+    import { supportOptions } from '$routes/pricing';
     import { onMount } from 'svelte';
+    import { getReferrerAndUtmSource } from '$lib/utils/utm';
 
     let email = '';
     let name = '';
@@ -40,7 +41,8 @@
             companyWebsite,
             firstName: name,
             message: useCase,
-            supportTier
+            supportTier,
+            ...getReferrerAndUtmSource()
         });
 
         if (response.status >= 400) {
