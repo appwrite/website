@@ -7,6 +7,7 @@
 </script>
 
 <script lang="ts">
+    import { classNames } from '$lib/utils/classnames';
     import { createTabs } from '@melt-ui/svelte';
     import { setContext } from 'svelte';
     import { writable } from 'svelte/store';
@@ -32,10 +33,18 @@
     >
         <ul class="tabs-list flex items-center gap-4" {...$list} use:list>
             {#each $ctx.triggers.entries() as [id, title]}
-                <li class="tabs-item rounded-t-[0.625rem] hover:bg-white/4">
+                <li
+                    class="tabs-item rounded-t-[0.625rem] text-center hover:bg-white/4"
+                    class:text-[var(--color-primary)]={$value === id}
+                >
                     <button
-                        class="tabs-button cursor-pointer bg-clip-padding py-[0.625rem] px-1 font-light outline-none"
-                        class:is-selected={$value === id}
+                        class={classNames(
+                            'tabs-button relative cursor-pointer bg-clip-padding py-[0.625rem] px-1 font-light outline-none',
+                            'after:relative after:top-1 after:bottom-0 after:block after:h-px after:transition-all',
+                            {
+                                'after:bg-[var(--color-primary)]': $value === id
+                            }
+                        )}
                         {...$trigger(id)}
                         use:trigger>{title}</button
                     >
