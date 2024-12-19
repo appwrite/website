@@ -295,7 +295,13 @@
                                         </p>
                                     </div>
                                     <div>
-                                        <div class="web-card is-white flex flex-col gap-5">
+                                        <a
+                                            href="/blog/post/case-study-undo"
+                                            class="web-card is-white group flex flex-col gap-5"
+                                        >
+                                            <div class="border-card">
+                                                <div class="glow" />
+                                            </div>
                                             <p class="aw-sub-body-500">
                                                 The integrated user authentication and the ease of
                                                 creating data structures have undoubtedly saved us
@@ -318,14 +324,13 @@
                                                     CTO // mySHOEFITTER
                                                 </div>
                                             </div>
-                                            <a
+                                            <span
                                                 class="text-sub-body text-primary flex items-center gap-1"
-                                                href="/blog/post/case-study-undo"
                                                 >Read customer story <span
-                                                    class="web-icon-arrow-right"
-                                                /></a
+                                                    class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
+                                                /></span
                                             >
-                                        </div>
+                                        </a>
                                     </div>
                                 </div>
 
@@ -363,9 +368,13 @@
                                             the transition through different stages of your business
                                             growth.
                                         </p>
-                                        <div
-                                            class="web-card is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
+                                        <a
+                                            href="/blog/post/case-study-kcollect"
+                                            class="web-card group is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
                                         >
+                                            <div class="border-card">
+                                                <div class="glow" />
+                                            </div>
                                             <p class="aw-sub-body-500">{ryanOconner.text}</p>
                                             <div class="web-user-box">
                                                 <img
@@ -384,14 +393,13 @@
                                                     {ryanOconner.handle}
                                                 </div>
                                             </div>
-                                            <a
+                                            <span
                                                 class="text-sub-body text-primary flex items-center gap-1"
-                                                href="/blog/post/case-study-kcollect"
                                                 >Read customer story <span
-                                                    class="web-icon-arrow-right"
-                                                /></a
+                                                    class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
+                                                /></span
                                             >
-                                        </div>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="web-is-only-mobile">
@@ -624,9 +632,13 @@
                                             wealth of knowledge, support, and shared experiences to
                                             help navigate the challenges of startup growth.
                                         </p>
-                                        <div
+                                        <a
+                                            href="/blog/post/case-study-myshoefitter"
                                             class="web-card is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
                                         >
+                                            <div class="border-card">
+                                                <div class="glow" />
+                                            </div>
                                             <p class="aw-sub-body-500">{mariusBolik.text}</p>
                                             <div class="web-user-box">
                                                 <img
@@ -645,14 +657,13 @@
                                                     {mariusBolik.handle}
                                                 </div>
                                             </div>
-                                            <a
+                                            <span
                                                 class="text-sub-body text-primary flex items-center gap-1"
-                                                href="/blog/post/case-study-myshoefitter"
                                                 >Read customer story <span
                                                     class="web-icon-arrow-right"
-                                                /></a
+                                                /></span
                                             >
-                                        </div>
+                                        </a>
                                     </div>
                                 </div>
                             </li>
@@ -916,6 +927,49 @@
                 flex-shrink: 0;
                 scroll-snap-align: start;
             } /* items */
+        }
+    }
+
+    .border-card {
+        position: absolute;
+        inset: 0;
+        border: 1px solid transparent;
+        mask-clip: padding-box, border-box;
+        mask-composite: intersect;
+        border-radius: inherit;
+        mask-image: linear-gradient(transparent, transparent), linear-gradient(#000, #000);
+
+        &:hover {
+            .glow {
+                opacity: 1;
+            }
+        }
+
+        .glow {
+            opacity: 0;
+            transition: opacity 0.25s ease-out;
+            position: absolute;
+            inset: 0;
+            width: 60px;
+            aspect-ratio: 1/1;
+            offset-path: rect(0 auto auto 0 round 60px);
+            offset-distance: 0;
+            offset-rotate: auto;
+            animation: glow 6s infinite linear forwards;
+            background-color: var(--color-pink-200);
+            box-shadow:
+                var(--color-pink-200) 0px 0px 60px 30px,
+                var(--color-pink-200) 0px 0px 100px 60px,
+                var(--color-pink-200) 0px 0px 140px 90px;
+        }
+
+        @keyframes glow {
+            0% {
+                offset-distance: 0;
+            }
+            100% {
+                offset-distance: 100%;
+            }
         }
     }
 
