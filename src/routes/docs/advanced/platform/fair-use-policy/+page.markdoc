@@ -8,8 +8,8 @@ At Appwrite, we are committed to providing high-quality, reliable, and scalable 
 
 # Definitions and scope {% #definitions-and-scope %}
 
-- **Normal usage:** Resource usage that falls within expected thresholds for a user’s selected plan.
-- **Excessive usage:** Usage that exceeds defined thresholds and may affect the platform’s performance for other users.
+- **Normal usage:** Resource usage that falls within expected thresholds for a user's selected plan.
+- **Excessive usage:** Usage that exceeds defined thresholds and may affect the platform's performance for other users.
 - **Prohibited activities:** Actions or behaviors that violate this policy, including, but not limited to, abuse of resources and security breaches.
 
 This policy applies to all resources provided by Appwrite Cloud, including but not limited to API requests, data storage, compute resources, and database operations.
