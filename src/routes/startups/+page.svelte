@@ -25,13 +25,6 @@
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
-    const infiniteScroll = (node: HTMLElement) => {
-        if (window.matchMedia('prefers-reduced-motion').matches) return;
-        const content = node.querySelector('.inner') as HTMLElement;
-        content.innerHTML += content?.innerHTML;
-        node.dataset.animated = 'true';
-    };
-
     let personName: string;
     let personEmail: string;
     let companyName: string;
@@ -132,6 +125,24 @@
             'eddie-jaoude'
         ),
         testimonial(
+            'David Forster',
+            'Creator // Open Mind',
+            'Appwrite saved us a lot of money in comparison to Firebase since the amount of users grew quite fast and we needed a quick switch. I am still surprised how easy the implementation into Flutter was.',
+            'david-forster'
+        ),
+        testimonial(
+            'Marius Bolik',
+            'CTO // mySHOEFITTER',
+            'The integrated user authentication and the ease of creating data structures have undoubtedly saved us several weeks worth of time.',
+            'marius-bolik2'
+        ),
+        testimonial(
+            "Ryan O'Conner",
+            'Founder // K-Collect',
+            'For me, Appwrite is the perfect backend solution. All you have to do is sign up, and your backend is ready to go. I have never seen such an innovative and easy-to-understand backend solution before!',
+            'ryan-oconner'
+        ),
+        testimonial(
             'Diego Ferreyra',
             '@diego_ferreyra1',
             "Loving it. I've been a web developer for 20+ years and I've never gotten from 0 lines to actual useful coding so fast. 100% recommend.",
@@ -142,6 +153,12 @@
             '@alexparton',
             "I just migrated a project from Firebase to Appwrite: Authentication, Users, Databases and Storage. And I can't be more in love with it.",
             'alejandro-morales'
+        ),
+        testimonial(
+            'Marius Bolik',
+            'CTO // mySHOEFITTER',
+            'The integrated user authentication and the ease of creating data structures have undoubtedly saved us several weeks worth of time.',
+            'marius-bolik2'
         ),
         testimonial(
             'Jonas Janssen',
@@ -301,6 +318,13 @@
                                                     CTO // mySHOEFITTER
                                                 </div>
                                             </div>
+                                            <a
+                                                class="text-sub-body text-primary flex items-center gap-1"
+                                                href="/blog/post/case-study-undo"
+                                                >Read customer story <span
+                                                    class="web-icon-arrow-right"
+                                                /></a
+                                            >
                                         </div>
                                     </div>
                                 </div>
@@ -360,6 +384,13 @@
                                                     {ryanOconner.handle}
                                                 </div>
                                             </div>
+                                            <a
+                                                class="text-sub-body text-primary flex items-center gap-1"
+                                                href="/blog/post/case-study-kcollect"
+                                                >Read customer story <span
+                                                    class="web-icon-arrow-right"
+                                                /></a
+                                            >
                                         </div>
                                     </div>
                                 </div>
@@ -614,6 +645,13 @@
                                                     {mariusBolik.handle}
                                                 </div>
                                             </div>
+                                            <a
+                                                class="text-sub-body text-primary flex items-center gap-1"
+                                                href="/blog/post/case-study-myshoefitter"
+                                                >Read customer story <span
+                                                    class="web-icon-arrow-right"
+                                                /></a
+                                            >
                                         </div>
                                     </div>
                                 </div>
@@ -631,7 +669,7 @@
                 >
                     Focus on building your product
                 </h4>
-                <div class="scroll-carousel" use:infiniteScroll>
+                <div class="scroll-carousel">
                     <ul class="inner gap-8">
                         {#each testimonials as t}
                             <li>
@@ -880,12 +918,21 @@
             } /* items */
         }
     }
-    :global([data-animated]).scroll-carousel {
-        overflow: hidden;
 
-        .inner {
-            padding-inline: 0;
-            animation: scroll 40s linear infinite;
+    @media (prefers-reduced-motion: no-preference) {
+        .scroll-carousel {
+            overflow: hidden;
+
+            &:hover {
+                .inner {
+                    animation-play-state: paused;
+                }
+            }
+
+            .inner {
+                padding-inline: 0;
+                animation: scroll 40s linear infinite;
+            }
         }
     }
 
