@@ -1,19 +1,35 @@
 ---
 layout: tutorial
-title: Coming soon
+title: Build an habit tracker with SwiftUI
 description: Learn to build an Apple app with no backend code using an Appwrite backend.
 framework: Apple
 back: /docs/tutorials
 category: Mobile and native
 step: 1
-draft: true
+back: /docs
 ---
 
-Improve the docs, add this guide.
+**Habit tracker**: an app to keep track of your habit.
+In this tutorial, you will build Habit tracker with Appwrite and SwiftUI.
 
-We still don't have this guide in place, but we do have some great news. 
-The Appwrite docs, just like Appwrite, is completely open sourced.
-This means, anyone can help improve them and add new guides and tutorials. 
+{% only_dark %}
+![Habit Tracker Screenshot](/images/docs/tutorials/dark/apple-habit-tracker.png)
+{% /only_dark %}
+{% only_light %}
+![Habit Tracker Screenshot](/images/docs/tutorials/apple-habit-tracker.png)
+{% /only_light %}
 
-If you see this page, **we're actively looking for contributions to this page**.
-Follow our contribution guidelines, open a PR to [our Website repo](https://github.com/appwrite/website), and collaborate with our core team to improve this page.
+# Concepts {% #concepts %}
+
+This tutorial will introduce the following concepts:
+
+1. Setting up your first project
+2. Authentication 
+3. Databases and collections
+4. Queries and pagination
+
+
+# Prerequisites {% #prerequisites %}
+
+1. Basic knowledge of Swift and SwiftUI.
+2. Have [Xcode](https://developer.apple.com/download/all/?q=Xcode) installed on your computer.  
