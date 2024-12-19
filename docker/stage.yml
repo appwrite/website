@@ -116,12 +116,11 @@ services:
 
     resource-monitor:
         image: ghcr.io/appwrite/monitoring:0.0.1-rc.3
-        entrypoint: task-system-monitoring
+        entrypoint: monitoring
         command:
-            - monitoring
             - "--url=${_APP_BETTER_STACK_INCIDENT_URL}"
             - "--interval=10"
-            - "--cpu-limit=90"
+            - "--cpu-limit=85"
             - "--memory-limit=80"
             - "--disk-limit=85"
         hostname: "{{.Node.Hostname}}"
