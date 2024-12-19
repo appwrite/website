@@ -373,7 +373,7 @@
                                             </div>
                                             <div class="mt-1">Free forever</div>
                                             <p class="text-body mt-4 h-[5rem] font-medium">
-                                                For developers who choose to manage their own
+                                                For developers who want to manage their own
                                                 infrastructure and hosting, with more setup and
                                                 maintenance required.
                                             </p>
@@ -439,9 +439,9 @@
                                             <p
                                                 class="text-body mt-4 h-[5rem] font-medium text-[#FFFFFF]"
                                             >
-                                                For organizations that need to self-host with full
-                                                control, but also want premium support for scaling,
-                                                monitoring, and advanced features.
+                                                For organizations that want to self-host and get
+                                                premium support for scaling, monitoring,
+                                                and advanced features.
                                             </p>
                                             <a
                                                 href="/contact-us/self-hosted-enterprise"
@@ -459,20 +459,16 @@
                                             <ul class="web-checked-list-circle">
                                                 <li>
                                                     <span
-                                                        >Host your database or entire instance on
-                                                        any provider of your choice</span
+                                                        >Host on a provider of your choice</span
                                                     >
                                                 </li>
                                                 <li>
                                                     <span
-                                                        >Expert guidance for scaling your
-                                                        infrastructure</span
-                                                    >
+                                                        >Premium support</span>
                                                 </li>
                                                 <li>
                                                     <span
-                                                        >Assistance with upgrading to the latest
-                                                        Appwrite version</span
+                                                        >Assistance with upgrading</span
                                                     >
                                                 </li>
                                                 <li><span>Monitoring and alerts</span></li>
