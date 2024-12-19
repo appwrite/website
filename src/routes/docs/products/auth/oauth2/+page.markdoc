@@ -151,6 +151,44 @@ account.createOAuth2Session(
 )
 ```
 {% /tabsitem %}
+
+{% tabsitem #react-native title="React Native" %}
+```client-react-native
+import { Client, Account, OAuthProvider } from "appwrite";
+import * as Linking from 'expo-linking';
+import * as WebBrowser from 'expo-web-browser';
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');                 // Your project ID
+
+const account = new Account(client);
+
+// Create OAuth URL that works across Expo environments
+const deepLink = new URL(Linking.createURL('oauth-callback', { isTripleSlashed: true }));
+if (!deepLink.hostname) {
+    deepLink.hostname = 'localhost';
+}
+
+// Start OAuth flow
+const loginUrl = await account.createOAuth2Token(
+    OAuthProvider.Github,
+    `${deepLink}/success`,
+    `${deepLink}/failure`,
+    ['repo', 'user'] // scopes (optional)
+);
+
+const result = await WebBrowser.openAuthSessionAsync(loginUrl);
+
+// Extract credentials from OAuth redirect URL
+const url = new URL(result.url);
+const secret = url.searchParams.get('secret');
+const userId = url.searchParams.get('userId');
+
+// Create session with OAuth credentials
+await account.createSession(userId, secret);
+```
+{% /tabsitem %}
 {% /tabs %}
 
 You'll be redirected to the OAuth 2 provider's login page to log in. Once complete, your user will be redirected back to your app.
