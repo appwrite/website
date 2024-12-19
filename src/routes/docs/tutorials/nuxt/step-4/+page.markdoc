@@ -30,9 +30,11 @@ import { ref } from "vue";
 import { account } from "../appwrite";
 import { type Models } from 'appwrite';
 
-const current = ref<Models.Session | null>(null); // Reference to current user object
+export const useCurrentUser = () => useState<Models.Session | null>('current-user', () => null); // Reference to current user object.
 
 export const useUserSession = () =>  {
+    const current = useCurrentUser()
+
     const register = async (email: string, password: string): Promise<void> => {
         await account.create(ID.unique(), email, password); // Register new user in Appwrite
         await login(email, password); // Login registered user
