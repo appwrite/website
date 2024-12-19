@@ -15,7 +15,7 @@
 
 <button on:click={() => (show = true)} class="web-button is-secondary cursor-pointer">
     <span>Appwrite in 100 seconds</span>
-    <span class="web-icon-play" />
+    <span class="web-icon-play" style:color="unset" />
 </button>
 
 {#if show}
