@@ -151,7 +151,7 @@ Additionally, environment variables can also be read from a `.env` file in you
 You can impersonate a user during local function executions to automatically set the correct values for `x-appwrite-user-id` and `x-appwrite-user-jwt` headers:
 
 ```bash
-appwrite run function --user-d="YOUR_USER_ID"
+appwrite run function --user-id="YOUR_USER_ID"
 ```
 
 # Conclusion
