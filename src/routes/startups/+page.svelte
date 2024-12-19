@@ -634,7 +634,7 @@
                                         </p>
                                         <a
                                             href="/blog/post/case-study-myshoefitter"
-                                            class="web-card is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
+                                            class="web-card group is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
                                         >
                                             <div class="border-card">
                                                 <div class="glow" />
@@ -660,7 +660,7 @@
                                             <span
                                                 class="text-sub-body text-primary flex items-center gap-1"
                                                 >Read customer story <span
-                                                    class="web-icon-arrow-right"
+                                                    class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
                                                 /></span
                                             >
                                         </a>
