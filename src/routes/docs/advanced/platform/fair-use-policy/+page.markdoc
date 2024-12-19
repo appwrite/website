@@ -33,7 +33,7 @@ In all cases, users will be notified of the action taken and provided with guida
 
 # Monitoring and compliance {% #monitoring-and-compliance %}
 
-We continuously monitor resource usage to ensure compliance with this policy. Users will receive automated alerts when nearing their plan limits and may review their usage statistics in the dashboard at any time. If users believe their usage has been unfairly flagged, they can contact support to discuss and resolve the issue.
+We continuously monitor resource usage to ensure compliance with this policy. Users will receive automated alerts when nearing their plan limits and may review their usage statistics in the [Console](https://cloud.appwrite.io/) at any time. If users believe their usage has been unfairly flagged, they can contact support to discuss and resolve the issue.
 
 # Options for users exceeding limits {% #options-for-users-exceeding-limits %}
 
