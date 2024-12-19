@@ -21,9 +21,9 @@
             label: 'Concepts',
             items: [
                 {
-					label: 'Providers',
-					href: '/docs/products/messaging/providers'
-				},
+                    label: 'Providers',
+                    href: '/docs/products/messaging/providers'
+                },
                 {
                     label: 'Topics',
                     href: '/docs/products/messaging/topics'
