@@ -78,6 +78,14 @@
   }
 }
 
+.#{$p}-checked-list-cross {
+  display:flex; flex-direction:column; gap:pxToRem(20);
+  li {
+    display:flex; align-items: start; gap:pxToRem(8);
+    &::before { @include cross-badge; }
+  }
+}
+
 .#{$p}-pink-dots {
   display:flex; flex-direction:column; gap:pxToRem(8);
   list-style:disc; padding-inline-start:pxToRem(24);
