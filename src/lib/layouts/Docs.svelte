@@ -90,7 +90,7 @@
 
 <div class="relative">
     <section
-        class="sticky inset-x-0 top-0 z-120 flex items-center justify-between gap-4 border-b border-white/10 py-4 px-5 backdrop-blur-[10px] md:hidden"
+        class="web-mobile-header sticky inset-x-0 top-0 z-120 flex items-center justify-between gap-4 border-b border-white/10 py-4 px-5 backdrop-blur-[10px] md:hidden"
     >
         <div class="flex items-center">
             <a href="/" aria-label="homepage">
