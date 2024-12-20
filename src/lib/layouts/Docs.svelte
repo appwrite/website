@@ -3,12 +3,14 @@
     import { writable } from 'svelte/store';
 
     export type DocsLayoutVariant = 'default' | 'expanded' | 'two-side-navs';
+
     export type DocsLayoutState = {
         showReferences: boolean;
         showSidenav: boolean;
         showSearch: boolean;
         currentVariant: DocsLayoutVariant | null;
     };
+
     export const layoutState = writable<DocsLayoutState>({
         showReferences: false,
         showSidenav: false,
@@ -24,6 +26,7 @@
         }));
     }
     export function toggleSidenav() {
+        console.log('toggling');
         layoutState.update((state) => {
             return {
                 ...state,
@@ -87,7 +90,7 @@
 
 <div class="relative">
     <section
-        class="sticky inset-x-0 top-0 z-999 flex items-center justify-between gap-4 border-b border-white/10 py-4 px-5 backdrop-blur-[10px] md:hidden"
+        class="sticky inset-x-0 top-0 z-120 flex items-center justify-between gap-4 border-b border-white/10 py-4 px-5 backdrop-blur-[10px] md:hidden"
     >
         <div class="flex items-center">
             <a href="/" aria-label="homepage">
@@ -108,7 +111,7 @@
             </a>
         </div>
         <div class="flex items-center gap-2">
-            <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button hidden md:block">
+            <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button !hidden md:!block">
                 <span class="text-sub-body font-medium">Go to Console</span>
             </a>
             <button
