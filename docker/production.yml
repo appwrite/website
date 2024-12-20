@@ -120,12 +120,12 @@ services:
             - UNUSED_TIME=6h
 
     resource-monitor:
-        image: ghcr.io/appwrite/monitoring:0.0.1-rc.3
+        image: ghcr.io/appwrite/monitoring:0.1.0
         entrypoint: monitoring
         command:
             - "--url=${_APP_BETTER_STACK_INCIDENT_URL}"
-            - "--interval=10"
-            - "--cpu-limit=90"
+            - "--interval=60"
+            - "--cpu-limit=85"
             - "--memory-limit=80"
             - "--disk-limit=85"
         hostname: "{{.Node.Hostname}}"
