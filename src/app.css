@@ -230,7 +230,7 @@
     --color-badge-bg: var(--color-badge-bg-light);
     --color-badge-border: var(--color-badge-border-light);
     --color-smooth: hsl(var(--color-greyscale-hue) 6%, 10%, 0.04);
-    --color-bg-docs: hsl(var(--color-greyscale-25));
+    --color-bg-docs: var(--color-greyscale-900);
 }
 
 /* dark theme */
@@ -240,7 +240,7 @@
     --color-badge-bg: var(--color-badge-bg-dark);
     --color-badge-border: var(--color-badge-border-dark);
     --color-smooth: hsl(0 0%, 100%, 0.06);
-    --color-bg-docs: hsl(var(--color-greyscale-900));
+    --color-bg-docs: var(--color-greyscale-25);
 }
 
 /* Container */

@@ -87,7 +87,7 @@
 
 <div class="relative">
     <section
-        class="bg-docs sticky inset-x-0 top-0 z-120 flex items-center justify-between gap-4 py-4 px-5 md:hidden"
+        class="sticky inset-x-0 top-0 z-999 flex items-center justify-between gap-4 border-b border-white/10 py-4 px-5 backdrop-blur-[10px] md:hidden"
     >
         <div class="flex items-center">
             <a href="/" aria-label="homepage">
@@ -108,7 +108,7 @@
             </a>
         </div>
         <div class="flex items-center gap-2">
-            <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button web-is-only-desktop">
+            <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button hidden md:block">
                 <span class="text-sub-body font-medium">Go to Console</span>
             </a>
             <button
@@ -126,7 +126,7 @@
     </section>
     <header
         class={classNames(
-            'sticky flex w-full items-center justify-center gap-2 border-b border-white/10 px-8 [min-block-size:4.5625rem]',
+            'sticky top-0 z-999 hidden w-full items-center justify-center gap-2 border-b border-white/10 px-8 backdrop-blur-[10px] [min-block-size:4.5625rem] md:flex',
             {
                 'is-reference': isReferences,
                 'is-docs': !isReferences
@@ -154,8 +154,8 @@
                         width="130"
                     />
                 </a>
-                <nav class="web-main-header-nav" aria-label="Top">
-                    <ul class="web-main-header-nav-list">
+                <nav class="self-center text-base select-none" aria-label="Top">
+                    <ul class="flex gap-8">
                         <li class="web-main-header-nav-item">
                             <a class="web-link" href="/docs">Docs</a>
                         </li>
