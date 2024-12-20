@@ -78,6 +78,7 @@
     --color-badge-border-light: #f69db7;
     --color-badge-bg-dark: #2c2c2f;
     --color-badge-border-dark: #39393c;
+    --color-docs: var(--color-bg-docs);
 
     /* Animations */
     --animate-scale-in: scale-in 200ms ease-out forwards;
@@ -229,6 +230,7 @@
     --color-badge-bg: var(--color-badge-bg-light);
     --color-badge-border: var(--color-badge-border-light);
     --color-smooth: hsl(var(--color-greyscale-hue) 6%, 10%, 0.04);
+    --color-bg-docs: hsl(var(--color-greyscale-25));
 }
 
 /* dark theme */
@@ -238,6 +240,7 @@
     --color-badge-bg: var(--color-badge-bg-dark);
     --color-badge-border: var(--color-badge-border-dark);
     --color-smooth: hsl(0 0%, 100%, 0.06);
+    --color-bg-docs: hsl(var(--color-greyscale-900));
 }
 
 /* Container */

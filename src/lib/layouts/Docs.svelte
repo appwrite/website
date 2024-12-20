@@ -46,6 +46,7 @@
     import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { page } from '$app/stores';
+    import { classNames } from '$lib/utils/classnames';
 
     export let variant: DocsLayoutVariant = 'default';
     export let isReferences = false;
@@ -85,8 +86,10 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <div class="relative">
-    <section class="web-mobile-header is-transparent">
-        <div class="web-mobile-header-start">
+    <section
+        class="bg-docs sticky inset-x-0 top-0 z-120 flex items-center justify-between gap-4 py-4 px-5 md:hidden"
+    >
+        <div class="flex items-center">
             <a href="/" aria-label="homepage">
                 <img
                     class="web-logo web-u-only-dark"
@@ -104,7 +107,7 @@
                 />
             </a>
         </div>
-        <div class="web-mobile-header-end">
+        <div class="flex items-center gap-2">
             <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button web-is-only-desktop">
                 <span class="text-sub-body font-medium">Go to Console</span>
             </a>
@@ -122,21 +125,29 @@
         </div>
     </section>
     <header
-        class="web-main-header {isReferences ? 'is-reference' : 'is-docs'}"
+        class={classNames(
+            'sticky flex w-full items-center justify-center gap-2 border-b border-white/10 px-8 [min-block-size:4.5625rem]',
+            {
+                'is-reference': isReferences,
+                'is-docs': !isReferences
+            }
+        )}
         class:is-transparent={variant !== 'expanded'}
     >
-        <div class="web-main-header-wrapper">
-            <div class="web-main-header-start flex-1">
+        <div
+            class="mx-auto hidden w-full max-w-[1728px] flex-wrap justify-center gap-4 py-4 md:flex"
+        >
+            <div class="flex flex-1 items-center">
                 <a href="/" aria-label="homepage">
                     <img
-                        class="web-logo web-u-only-dark"
+                        class="web-u-only-dark mr-8"
                         src="/images/logos/appwrite.svg"
                         alt="appwrite"
                         height="24"
                         width="130"
                     />
                     <img
-                        class="web-logo web-u-only-light"
+                        class="web-u-only-light mr-8"
                         src="/images/logos/appwrite-light.svg"
                         alt="appwrite"
                         height="24"
@@ -169,20 +180,19 @@
                     </button>
                 </div>
             </div>
-            <div class="web-main-header-end">
-                <div class="flex gap-2">
-                    <a
-                        href={GITHUB_REPO_LINK}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="web-button is-text"
-                    >
-                        <span class="web-icon-star" aria-hidden="true" />
-                        <span class="text">Star on GitHub</span>
-                        <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
-                    </a>
-                    <IsLoggedIn />
-                </div>
+
+            <div class="flex gap-2">
+                <a
+                    href={GITHUB_REPO_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="web-button is-text"
+                >
+                    <span class="web-icon-star" aria-hidden="true" />
+                    <span class="text">Star on GitHub</span>
+                    <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
+                </a>
+                <IsLoggedIn />
             </div>
         </div>
     </header>
