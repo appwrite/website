@@ -92,6 +92,10 @@
                 {
                     label: 'Multi-factor authentication',
                     href: '/docs/products/auth/mfa'
+                },
+                {
+                    label: 'User verification',
+                    href: '/docs/products/auth/verification'
                 }
             ]
         },
