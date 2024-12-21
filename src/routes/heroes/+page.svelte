@@ -106,6 +106,15 @@
             twitter: 'https://x.com/malomz',
             linkedin: 'https://www.linkedin.com/in/malomoademola/',
             avatar: 'images/heroes/avatars/demola.png'
+        },
+        {
+            name: 'Danny Thompson',
+            role: 'Director of Technology',
+            bio: 'Danny Thompson is the Director of Technology at This Dot Labs, a software development consultancy specializing in digital innovation and modernization. In addition to his leadership role, he co-hosts "The Programming Podcast" alongside Leon Noel, where they discuss technical challenges, industry insights, and career advice.  Danny is also active in organizing tech conferences, such as Commit Your Code, and engages with the tech community through various platforms.',
+            github: 'https://github.com/TheDThompsonDev',
+            twitter: 'https://x.com/DThompsonDev',
+            linkedin: 'https://www.linkedin.com/in/dthompsondev',
+            avatar: 'images/heroes/avatars/danny.png'
         }
     ];
 
