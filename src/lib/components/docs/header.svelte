@@ -12,7 +12,7 @@
 
 <header
     class={classNames(
-        'sticky top-0 z-999 mx-auto hidden w-full items-center justify-center gap-2 border-b border-white/10 px-12 backdrop-blur-[10px] [max-block-size:86.875rem] [min-block-size:4.5625rem] lg:flex',
+        'sticky top-0 z-999 mx-auto hidden w-full items-center justify-center gap-2 border-b border-white/10 px-12 backdrop-blur-[10px] [max-block-size:86.875rem] [min-block-size:4.5rem] lg:flex',
         {
             'is-reference': isReferences,
             'is-docs': !isReferences
@@ -20,7 +20,7 @@
     )}
     class:is-transparent={variant !== 'expanded'}
 >
-    <div class="mx-auto hidden w-full flex-wrap justify-center gap-4 py-4 md:flex">
+    <div class="mx-auto hidden w-full max-w-[86.875rem] flex-wrap justify-center py-3 md:flex">
         <div class="flex flex-1 items-center">
             <a href="/" aria-label="homepage">
                 <img

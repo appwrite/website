@@ -13,7 +13,7 @@
     const reducedArticleSize = setContext('articleHasNumericBadge', writable(false));
 </script>
 
-<main class="relative ml-24 grid [grid-template-columns:minmax(0,_1fr)_280px]" id="main">
+<main class="relative ml-[5.5rem] grid [grid-template-columns:minmax(0,_1fr)_288px]" id="main">
     <article class="[max-inline-size:43.5rem]">
         <header class="mt-10 mb-6 border-b border-white/5 px-7 pb-8">
             <div class="web-article-header-start web-u-cross-start flex flex-col">

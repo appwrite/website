@@ -18,8 +18,10 @@
     export let toc: Array<TocItem> = [];
 </script>
 
-<aside class="web-references-menu sticky top-12 border-l border-white/10 pt-2">
-    <div class="web-references-menu-content">
+<aside
+    class="web-references-menu relative z-10 mt-8 flex flex-col border-l border-white/5 pt-2 px-4"
+>
+    <div class="sticky top-[7.5rem] flex flex-col gap-6 [inline-size:255px]">
         {#if toc && toc.length > 0}
             <div class="flex items-center justify-between gap-4">
                 <h5 class="web-references-menu-title text-micro uppercase">On This Page</h5>
