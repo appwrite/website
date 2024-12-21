@@ -42,9 +42,7 @@
   @media #{$break2} {
     display: grid;
     grid-template-columns: 1fr auto;
-    grid-template-areas:  "a-header side-b"
-                          "main     side-b"
-                          "footer   footer";
+
     .#{$p}-side-nav       {
       display:none;
       position:fixed; inset-inline-start:pxToRem(0); inset-block-start:var(--p-grid-huge-navs-main-header-height); inset-block-end:0;
