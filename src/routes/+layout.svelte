@@ -74,6 +74,12 @@
         if (ref || referrer || utmSource || utmCampaign || utmMedium) {
             createSource(ref, referrer, utmSource, utmCampaign, utmMedium);
         }
+        if (referrer) {
+            sessionStorage.setItem('referrer', referrer);
+        }
+        if (utmSource) {
+            sessionStorage.setItem('utmSource', utmSource);
+        }
         const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
 
         applyTheme(initialTheme);
