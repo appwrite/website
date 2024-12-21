@@ -14,7 +14,7 @@
 </script>
 
 <script lang="ts">
-    import { MainFooter } from '$lib/components';
+    import Footer from '$lib/components/docs/footer.svelte';
     import SeoOgImage from '$lib/components/SeoOgImage.svelte';
     import { DocsArticle } from '$lib/layouts';
     import { DOCS_TITLE_SUFFIX, OVERVIEW_TITLE_SUFFIX } from '$routes/titles';
@@ -87,4 +87,4 @@
     </svelte:fragment>
     <slot />
 </DocsArticle>
-<MainFooter variant="docs" />
+<Footer />
