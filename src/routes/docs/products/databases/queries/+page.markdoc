@@ -185,20 +185,20 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
 | `Query.and([Query.lessThan("size", 10), Query.greaterThan("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
 | `Query.or([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
-| `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
-| `Query.notEqual("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
-| `Query.lessThan("score", 10)`      | Returns document if attribute is less than the provided value.                                                         |
-| `Query.lessThanEqual("score", 10)` | Returns document if attribute is less than or equal to the provided value.                                             |
-| `Query.greaterThan("score", 10)`   | Returns document if attribute is greater than the provided value.                                                      |
-| `Query.greaterThanEqual("score", 10)` | Returns document if attribute is greater than or equal to the provided value.                                         |
-| `Query.between("price", 5, 10)`    | Returns document if attribute value falls between the two values. The boundary values are inclusive and can be strings or numbers. |
+| `Query.equal("title", value: ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
+| `Query.notEqual("title", value: ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
+| `Query.lessThan("score", value: 10)`      | Returns document if attribute is less than the provided value.                                                         |
+| `Query.lessThanEqual("score", value: 10)` | Returns document if attribute is less than or equal to the provided value.                                             |
+| `Query.greaterThan("score",value:  10)`   | Returns document if attribute is greater than the provided value.                                                      |
+| `Query.greaterThanEqual("score", value: 10)` | Returns document if attribute is greater than or equal to the provided value.                                         |
+| `Query.between("price", start: 5, end: 10)`    | Returns document if attribute value falls between the two values. The boundary values are inclusive and can be strings or numbers. |
 | `Query.isNull("name")`             | Returns documents where attribute value is null.                                                                      |
 | `Query.isNotNull("name")`          | Returns documents where attribute value is **not** null.                                                              |
-| `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
-| `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
-| `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
+| `Query.startsWith("name", value: "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
+| `Query.endsWith("name", value: "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
+| `Query.contains("ingredients", value: ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
+| `Query.contains("name", value: "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
+| `Query.search("text", value: "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
 | `Query.orderAsc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
 | `Query.limit(25)`                  | Limits the number of results returned by the query. Used for [pagination](/docs/products/databases/pagination). If the limit query is not used, the limit defaults to 25 results. |
