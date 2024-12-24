@@ -74,8 +74,8 @@
         if (ref || referrer || utmSource || utmCampaign || utmMedium) {
             createSource(ref, referrer, utmSource, utmCampaign, utmMedium);
         }
-        if (referrer) {
-            sessionStorage.setItem('referrer', referrer);
+        if (referrer || ref) {
+            sessionStorage.setItem('referrer', referrer ? referrer : (ref ?? ''));
         }
         if (utmSource) {
             sessionStorage.setItem('utmSource', utmSource);
