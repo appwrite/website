@@ -44,7 +44,7 @@
     flex:1;
     display:flex; flex-direction:column; gap:pxToRem(24);
     padding-inline:pxToRem(16); margin-right: pxToRem(-16);
-    margin-left: pxToRem(-8);
+    margin-left: pxToRem(-16);
 
     .#{$p}-is-only-mobile  & {
       border-block-start: 1px solid hsl(var(--web-color-smooth));
