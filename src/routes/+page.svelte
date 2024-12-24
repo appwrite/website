@@ -16,6 +16,7 @@
     import GradientText from '$lib/components/ui/GradientText.svelte';
     import Badge from '$lib/components/ui/Badge.svelte';
     import { trackEvent } from '$lib/actions/analytics';
+    import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -145,14 +146,17 @@
                             Functions, Storage, and Messaging to your projects using the frameworks
                             and languages of your choice.
                         </svelte:fragment>
-                        <a
-                            href={PUBLIC_APPWRITE_DASHBOARD}
-                            class="web-button mt-8 w-full lg:w-fit"
-                            slot="cta"
-                            on:click={() => trackEvent('Get started in hero')}
-                        >
-                            Get started
-                        </a>
+                        <div class="mt-8 flex flex-col gap-4 sm:flex-row" slot="cta">
+                            <a
+                                href={PUBLIC_APPWRITE_DASHBOARD}
+                                class="web-button w-full lg:w-fit"
+                                on:click={() => trackEvent('Get started in hero')}
+                            >
+                                Get started
+                            </a>
+
+                            <AppwriteIn100Seconds />
+                        </div>
                     </Hero>
                 </section>
             </div>
