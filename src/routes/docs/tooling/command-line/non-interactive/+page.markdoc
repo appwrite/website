@@ -7,7 +7,7 @@ The Appwrite CLI can be used in a non-interactive and headless manner, without s
 
 ```sh
 appwrite client \
-    --endpoint https://cloud.appwrite.io/v1 \
+    --endpoint https://<REGION>.cloud.appwrite.io/v1 \
     --project-id [PROJECT_ID] \
     --key YOUR_API_KEY
 ```

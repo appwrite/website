@@ -64,7 +64,7 @@ For example, your `.env` might look something similar to this.
 
 ```env
 NEXT_APPWRITE_KEY=<YOUR_API_KEY>
-NEXT_PUBLIC_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+NEXT_PUBLIC_APPWRITE_ENDPOINT=https://<REGION>.cloud.appwrite.io/v1
 NEXT_PUBLIC_APPWRITE_PROJECT=<PROJECT_ID>
 ```
 

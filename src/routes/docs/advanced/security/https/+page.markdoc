@@ -12,7 +12,7 @@ Redirected requests will show a `301` response status.
 ```http
 HTTP/1.1 301 Moved Permanently
 Content-Type: application/json
-Location: https://cloud.appwrite.io/v1/<ENDPOINT>
+Location: https://<REGION>.cloud.appwrite.io/v1/<ENDPOINT>
 ```
 
 Appwrite Cloud does not support HTTP, which is a common practice in modern development, because unencrypted

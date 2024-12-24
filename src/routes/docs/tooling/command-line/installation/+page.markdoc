@@ -187,7 +187,7 @@ appwrite help
 At any point, if you would like to change your server's endpoint, project ID, or self-signed certificate acceptance, use the `client` command.
 
 ```sh
-appwrite client --endpoint https://cloud.appwrite.io/v1
+appwrite client --endpoint https://<REGION>.cloud.appwrite.io/v1
 appwrite client --key 23f24gwrhSDgefaY
 appwrite client --self-signed true
 appwrite client --reset // Resets your CLI configuration

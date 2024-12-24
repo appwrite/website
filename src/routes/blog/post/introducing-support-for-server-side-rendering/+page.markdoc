@@ -75,7 +75,7 @@ The admin client will need to be initialized with an API key in order to bypass 
 import { Client } from "node-appwrite"
 
 const adminClient = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>')
     .setKey('<YOUR_API_KEY>')
 ```
@@ -86,7 +86,7 @@ A session client will allow us to make requests as an authenticated end-user wit
 
 ```jsx
 const sessionClient = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>')
 
 const session = req.cookies.session

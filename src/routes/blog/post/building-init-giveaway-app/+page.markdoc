@@ -88,7 +88,7 @@ We then entered the application directory, installed the Appwrite Web SDK and Pi
 ```js
 // ./src/lib/constants.js
 
-export const APPWRITE_ENDPOINT = 'https://cloud.appwrite.io/v1';
+export const APPWRITE_ENDPOINT = 'https://<REGION>.cloud.appwrite.io/v1';
 
 export const APPWRITE_PROJECT = '<PROJECT_ID>';
 
