@@ -1,0 +1,22 @@
+---
+layout: changelog
+title: Faster Python Functions with new runtime
+date: 2024-11-06
+---
+
+We've updated the Python runtime on Appwrite Cloud to significantly improve performance by transitioning from Flask to AIOHTTP.
+
+The new runtime brings several improvements:
+- Faster startup times and overall execution speed
+- Better handling of async workloads
+- Improved resource utilization
+
+All existing Python functions have been automatically migrated to the new runtime, so you'll immediately benefit from these performance improvements without any action required.
+
+If you experience any issues with your Python functions, please reach out to us on [Discord](https://appwrite.io/discord) or [GitHub](https://github.com/appwrite/appwrite/issues).
+
+All other runtimes have been updated to the next patch version.
+
+{% arrow_link href="/docs/products/functions/runtimes" %}
+See our runtime documentation
+{% /arrow_link %}
