@@ -71,14 +71,10 @@ export const trackEvent = async (name: string, data: object = {}) => {
 
 export function isTrackingAllowed() {
     if (ENV.TEST) {
-        return;
+        return false;
     }
     if (window.navigator?.doNotTrack) {
-        if (navigator.doNotTrack === '1' || navigator.doNotTrack === 'yes') {
-            return false;
-        } else {
-            return true;
-        }
+        return !(navigator.doNotTrack === '1' || navigator.doNotTrack === 'yes');
     } else {
         return true;
     }
