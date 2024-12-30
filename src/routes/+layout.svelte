@@ -75,10 +75,13 @@
             createSource(ref, referrer, utmSource, utmCampaign, utmMedium);
         }
         if (referrer || ref) {
-            sessionStorage.setItem('referrer', referrer ? referrer : (ref ?? ''));
+            sessionStorage.setItem('utmReferral', referrer ? referrer : (ref ?? ''));
         }
         if (utmSource) {
             sessionStorage.setItem('utmSource', utmSource);
+        }
+        if (utmMedium) {
+            sessionStorage.setItem('utmMedium', utmMedium);
         }
         const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
 
