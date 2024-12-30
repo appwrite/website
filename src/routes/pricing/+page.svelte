@@ -97,7 +97,7 @@
                                                     <span>Unlimited projects</span>
                                                 </li>
                                                 <li><span>Never paused</span></li>
-                                                <li><span>10GB bandwidth</span></li>
+                                                <li><span>5GB bandwidth</span></li>
                                                 <li><span>2GB storage</span></li>
                                                 <li><span>750K executions</span></li>
                                                 <li><span>75K monthly active users</span></li>
