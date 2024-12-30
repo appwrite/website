@@ -8,6 +8,7 @@ timeToRead: 7
 author: aditya-oberai
 category: product
 unlisted: true
+callToAction: true
 ---
 
 If you are looking to build a mobile app, website, tool, or any other application that needs a backend, then you also know the daunting tasks that await. This is probably what brought you to this blog in the first place: looking for a solution to take care of your backend. One of these solutions is a Backend-as-a-Service (BaaS). It provides pre-built backend infrastructure and services to simplify app development, handling server-side tasks like data storage, user management, APIs, server maintenance, security, database management, and more. Two of these solutions are Appwrite and Supabase, and although both are solid options for your BaaS, they’re somewhat different.
