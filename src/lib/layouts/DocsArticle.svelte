@@ -17,16 +17,28 @@
     import { writable } from 'svelte/store';
     import { Feedback } from '$lib/components';
     import { scrollToTop } from '$lib/actions/scrollToTop';
+    import { scroll } from '$lib/animations';
+    import TableOfContents from '$lib/components/ui/table-of-contents.svelte';
 
     export let title: string;
     export let toc: Array<TocItem>;
     export let back: string | undefined = undefined;
     export let date: string | undefined = undefined;
 
+    let readPercentage = 0;
+
     const reducedArticleSize = setContext('articleHasNumericBadge', writable(false));
 </script>
 
-<main class="contents" id="main">
+<main
+    class="contents"
+    id="main"
+    use:scroll
+    on:web-scroll={(e) => {
+        readPercentage = e.detail.percentage;
+    }}
+>
+    <TableOfContents items={toc} progress={readPercentage} />
     <article class="web-article contents">
         <header class="web-article-header">
             <div class="web-article-header-start web-u-cross-start flex flex-col">

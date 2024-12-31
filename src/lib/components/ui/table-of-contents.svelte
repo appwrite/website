@@ -3,6 +3,7 @@
     let open = false;
     import NumberFlow from '@number-flow/svelte';
     import { fade } from 'svelte/transition';
+    import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
 
     let dimensions = spring(
         {
@@ -25,6 +26,7 @@
     };
 
     export let progress: number = 0;
+    export let items: Array<TocItem> = [];
 
     const clamp = (num: number, lower: number, upper: number) => {
         return Math.floor(Math.min(Math.max(num, lower), upper));
@@ -35,6 +37,7 @@
 
 <div
     class="fixed top-20 left-1/2 z-20 -translate-x-1/2 overflow-hidden rounded-[32px] shadow-lg shadow-black/70"
+    style:--duration="{items.length * 100}ms"
 >
     <div class="drop" />
     <div
