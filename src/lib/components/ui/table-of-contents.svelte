@@ -2,6 +2,7 @@
     import { spring } from 'svelte/motion';
     let open = false;
     import NumberFlow from '@number-flow/svelte';
+    import { fade } from 'svelte/transition';
 
     let dimensions = spring(
         {
@@ -24,22 +25,42 @@
     };
 
     export let progress: number = 0;
+
+    const clamp = (num: number, lower: number, upper: number) => {
+        return Math.floor(Math.min(Math.max(num, lower), upper));
+    };
 </script>
 
 <svelte:window on:keydown={handleEscape} />
 
 <div
-    class="fixed top-20 left-1/2 z-10 flex -translate-x-1/2 items-center justify-center overflow-hidden rounded-[32px] shadow-lg shadow-black/70"
+    class="fixed top-20 left-1/2 z-20 -translate-x-1/2 overflow-hidden rounded-[32px] shadow-lg shadow-black/70"
 >
     <div class="drop" />
     <div
         style:width="{$dimensions.target.width}px"
         style:height="{$dimensions.target.height}px"
-        class="relative mx-auto flex items-center justify-center bg-black"
+        class="relative mx-auto flex bg-black"
     >
-        <button on:click={toggleOpen}><NumberFlow value={progress} suffix="%" /> </button>
+        <div class="flex w-full items-start justify-between py-2 px-4">
+            <button on:click={toggleOpen} class="cursor-pointer outline-none"> Index</button>
+            <NumberFlow
+                value={clamp(progress * 100, 0, 100)}
+                format={{
+                    roundingMode: 'ceil'
+                }}
+                suffix="%"
+            />
+        </div>
     </div>
 </div>
+{#if open}
+    <div
+        class="fixed inset-0 z-10 h-screen w-screen backdrop-blur-sm"
+        in:fade={{ duration: 250 }}
+        out:fade={{ duration: 250 }}
+    />
+{/if}
 
 <style lang="scss">
     .drop {
@@ -50,7 +71,6 @@
         z-index: -2;
         backdrop-filter: blur(6px);
         background-color: hsl(var(--web-color-background) / 50%);
-        mask-composite: intersect;
         mask-image: linear-gradient(
             to top,
             transparent,
