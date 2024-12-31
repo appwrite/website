@@ -5,9 +5,7 @@
     let animate: boolean = false;
 
     onMount(() => {
-        setTimeout(() => {
-            animate = true;
-        }, 1000);
+        animate = true;
     });
 </script>
 
@@ -798,40 +796,7 @@
     }
 
     .leftPiece {
-        --color-left: white;
-        transform: translateX(-90px) translateY(24px);
-        transition: 0.5s ease-in-out;
-        transition-property: transform, filter;
-
-        &.active {
-            --color-left: #fd366e;
-            transform: translateX(0px) translateY(0px);
-        }
-    }
-
-    .rightPiece {
-        --color-left: white;
-        transform: translateX(90px) translateY(-24px);
-        transition: 0.5s ease-in-out;
-        transition-property: transform, filter;
-
-        &.active {
-            --color-left: #fd366e;
-            transform: translateX(0px) translateY(0px);
-        }
-    }
-
-    .logo {
-        opacity: 0;
-        display: block;
-        filter: blur(4px);
-        transition: 0.5s ease-in-out;
-        transition-property: opacity, filter, transform;
-
-        &.active {
-            opacity: 1;
-            filter: blur(0);
-        }
+        --color-left: #fd366e;
     }
 
     .circles {
