@@ -12,6 +12,7 @@
     import { copy } from '$lib/utils/copy';
     import { page } from '$app/stores';
     import CTA from '$lib/components/BlogCta.svelte';
+    import TableOfContents from '$lib/components/ui/table-of-contents.svelte';
 
     export let title: string;
     export let description: string;
@@ -70,6 +71,8 @@
 
         return shareableLink;
     }
+
+    console.log(readPercentage);
 </script>
 
 <svelte:head>
@@ -90,6 +93,7 @@
 </svelte:head>
 
 <Main>
+    <TableOfContents progress={readPercentage} />
     <div
         class="web-big-padding-section"
         use:scroll
