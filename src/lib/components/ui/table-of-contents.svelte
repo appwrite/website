@@ -1,10 +1,12 @@
 <script lang="ts">
-    import { spring } from 'svelte/motion';
     let open = false;
     import NumberFlow from '@number-flow/svelte';
     import { fade } from 'svelte/transition';
     import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
     import { writable } from 'svelte/store';
+
+    export let progress: number = 0;
+    export let items: Array<TocItem> = [];
 
     let dimensions = writable({ width: 220, height: 44 });
 
@@ -22,9 +24,6 @@
         }
     };
 
-    export let progress: number = 0;
-    export let items: Array<TocItem> = [];
-
     const clamp = (num: number, lower: number, upper: number) => {
         return Math.floor(Math.min(Math.max(num, lower), upper));
     };
@@ -33,34 +32,37 @@
 <svelte:window on:keydown={handleEscape} />
 
 <div
-    class="fixed top-20 left-1/2 z-20 -translate-x-1/2 overflow-scroll rounded-[32px] bg-black shadow-lg shadow-black/70"
+    class="fixed top-20 left-1/2 z-20 -translate-x-1/2 overflow-auto rounded-[32px] bg-black shadow-lg shadow-black/70"
 >
-    <div class="drop" />
+    <div class="blur" />
     <div
         style:width="{$dimensions.width}px"
         style:height="{$dimensions.height}px"
-        style:transition-duration="{items.length * 25}ms"
+        style:transition-duration="{items.length * 50}ms"
         class="relative mx-auto flex flex-col transition-all ease-in-out"
     >
-        <div class="flex w-full items-start justify-between py-2 px-4">
-            <button on:click={toggleOpen} class="cursor-pointer outline-none"> Index</button>
-            <NumberFlow
-                value={clamp(progress * 100, 0, 100)}
-                format={{
-                    roundingMode: 'ceil'
-                }}
-                suffix="%"
-            />
-        </div>
-        <ul>
-            {#each items as item}
-                <li>
-                    <a href={item.href} class="block py-2 px-4 text-white hover:bg-gray-800">
-                        {item.title}
-                    </a>
-                </li>
-            {/each}
-        </ul>
+        <header class="sticky top-0 flex w-full items-start justify-between py-3 px-4">
+            <button on:click={toggleOpen} class="relative z-10 cursor-pointer outline-none"
+                >Index</button
+            >
+            <NumberFlow value={clamp(progress * 100, 0, 100)} suffix="%" />
+        </header>
+        <!-- <div class="overflow-scroll">
+            {#if open}
+                <ul>
+                    {#each items as item}
+                        <li>
+                            <a
+                                href={item.href}
+                                class="block py-2 px-4 text-white hover:bg-gray-800"
+                            >
+                                {item.title}
+                            </a>
+                        </li>
+                    {/each}
+                </ul>
+            {/if}
+        </div> -->
     </div>
 </div>
 {#if open}
@@ -72,7 +74,7 @@
 {/if}
 
 <style lang="scss">
-    .drop {
+    .blur {
         position: absolute;
         width: 100%;
         height: 40px;
