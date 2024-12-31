@@ -4,18 +4,15 @@
     import NumberFlow from '@number-flow/svelte';
     import { fade } from 'svelte/transition';
     import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
+    import { writable } from 'svelte/store';
 
-    let dimensions = spring(
-        {
-            target: { width: 220, height: 44 }
-        },
-        { stiffness: 0.05, damping: 0.2 }
-    );
+    let dimensions = writable({ width: 220, height: 44 });
 
     const toggleOpen = () => {
         open = !open;
         dimensions.set({
-            target: { width: open ? 332 : 220, height: open ? 240 : 44 }
+            width: open ? 332 : 220,
+            height: open ? 240 : 44
         });
     };
 
@@ -36,14 +33,14 @@
 <svelte:window on:keydown={handleEscape} />
 
 <div
-    class="fixed top-20 left-1/2 z-20 -translate-x-1/2 overflow-hidden rounded-[32px] shadow-lg shadow-black/70"
-    style:--duration="{items.length * 100}ms"
+    class="fixed top-20 left-1/2 z-20 -translate-x-1/2 overflow-scroll rounded-[32px] bg-black shadow-lg shadow-black/70"
 >
     <div class="drop" />
     <div
-        style:width="{$dimensions.target.width}px"
-        style:height="{$dimensions.target.height}px"
-        class="relative mx-auto flex bg-black"
+        style:width="{$dimensions.width}px"
+        style:height="{$dimensions.height}px"
+        style:transition-duration="{items.length * 25}ms"
+        class="relative mx-auto flex flex-col transition-all ease-in-out"
     >
         <div class="flex w-full items-start justify-between py-2 px-4">
             <button on:click={toggleOpen} class="cursor-pointer outline-none"> Index</button>
@@ -55,6 +52,15 @@
                 suffix="%"
             />
         </div>
+        <ul>
+            {#each items as item}
+                <li>
+                    <a href={item.href} class="block py-2 px-4 text-white hover:bg-gray-800">
+                        {item.title}
+                    </a>
+                </li>
+            {/each}
+        </ul>
     </div>
 </div>
 {#if open}
