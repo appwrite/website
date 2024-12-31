@@ -27,7 +27,9 @@
 </svelte:head>
 
 <Main>
-    <div class="border-smooth box-content flex items-center border-b py-12 px-5 lg:px-8 xl:px-16">
+    <div
+        class="grid-bg border-smooth box-content flex items-center border-b py-12 px-5 lg:px-8 xl:px-16"
+    >
         <div class="mx-auto grid items-center gap-16 md:grid-cols-2">
             <div class="max-w-lg space-y-8">
                 <div class="flex items-center gap-2">
@@ -51,3 +53,24 @@
         </div>
     </div>
 </Main>
+
+<style>
+    .grid-bg {
+        --line-color: var(--color-smooth);
+        --size: 150px;
+        background-image: repeating-linear-gradient(
+                0deg,
+                var(--line-color),
+                var(--line-color) 1px,
+                transparent 1px,
+                transparent var(--size)
+            ),
+            repeating-linear-gradient(
+                90deg,
+                var(--line-color),
+                var(--line-color) 1px,
+                transparent 1px,
+                transparent var(--size)
+            );
+    }
+</style>
