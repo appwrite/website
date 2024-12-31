@@ -21,6 +21,7 @@
     import { DOCS_TITLE_SUFFIX, OVERVIEW_TITLE_SUFFIX } from '$routes/titles';
     import { getContext, setContext } from 'svelte';
     import { page } from '$app/stores';
+    import { scroll } from '$lib/animations';
 
     export let title: string;
     export let description: string;
@@ -58,10 +59,12 @@
         return carry;
     }, []);
 
-    const isProductsPage = /^\/docs\/products\/[^/]+$/.test($page.route.id.toString());
+    const isProductsPage = /^\/docs\/products\/[^/]+$/.test($page.route.id!.toString());
 
     let seoTitle = title + DOCS_TITLE_SUFFIX;
     if (isProductsPage) seoTitle = title + OVERVIEW_TITLE_SUFFIX;
+
+    let readPercentage: number = 0;
 </script>
 
 <svelte:head>
@@ -76,7 +79,7 @@
     <SeoOgImage {title} {description} />
 </svelte:head>
 
-<DocsArticle {title} {back} {toc} {date}>
+<DocsArticle {readPercentage} {title} {back} {toc} {date}>
     <svelte:fragment slot="metadata">
         {#if difficulty}
             <li>{difficulty}</li>
@@ -85,6 +88,13 @@
             <li>{readtime} min</li>
         {/if}
     </svelte:fragment>
-    <slot />
+    <div
+        use:scroll
+        on:web-scroll={(e) => {
+            readPercentage = e.detail.percentage;
+        }}
+    >
+        <slot />
+    </div>
 </DocsArticle>
 <MainFooter variant="docs" />

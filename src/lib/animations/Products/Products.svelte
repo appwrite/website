@@ -163,7 +163,7 @@
     let scrollInfo = {
         percentage: 0,
         traversed: 0,
-        remaning: Infinity
+        remaining: Infinity
     };
 
     const animScale: Scale = [0.075, 1];

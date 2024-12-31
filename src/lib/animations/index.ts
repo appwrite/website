@@ -102,7 +102,7 @@ export function createScrollHandler(callbacks: ScrollCallback[]) {
 export type ScrollInfo = {
     percentage: number;
     traversed: number;
-    remaning: number;
+    remaining: number;
 };
 
 export const scroll: Action<
@@ -121,12 +121,12 @@ export const scroll: Action<
         const scrollPercentage = (-1 * top) / scrollHeight;
 
         const traversed = scrollPercentage * scrollHeight;
-        const remaning = scrollHeight - traversed;
+        const remaining = scrollHeight - traversed;
 
         return {
             percentage: scrollPercentage,
             traversed,
-            remaning
+            remaining
         };
     }
 

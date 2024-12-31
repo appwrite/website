@@ -25,19 +25,12 @@
     export let back: string | undefined = undefined;
     export let date: string | undefined = undefined;
 
-    let readPercentage = 0;
+    export let readPercentage = 0;
 
     const reducedArticleSize = setContext('articleHasNumericBadge', writable(false));
 </script>
 
-<main
-    class="contents"
-    id="main"
-    use:scroll
-    on:web-scroll={(e) => {
-        readPercentage = e.detail.percentage;
-    }}
->
+<main class="contents" id="main">
     <TableOfContents items={toc} progress={readPercentage} />
     <article class="web-article contents">
         <header class="web-article-header">
