@@ -71,6 +71,7 @@
     import { dev } from '$app/environment';
     import { classNames } from '$lib/utils/classnames';
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
+    import { trackEvent } from '$lib/actions/analytics';
 
     const {
         elements: { trigger, menu, item, overlay },
@@ -82,7 +83,7 @@
     export let label: string;
 </script>
 
-<li
+<button
     class={classNames(
         'text-primary focus:text-accent hover:text-accent inline-flex cursor-pointer items-center justify-between outline-none',
         {
@@ -98,7 +99,7 @@
             'rotate-180': $open
         })}
     />
-</li>
+</button>
 
 <div
     use:melt={$menu}
@@ -120,6 +121,7 @@
                         <a
                             href={product.href}
                             use:melt={$item}
+                            on:click={() => trackEvent(`${product.name} in products submenu`)}
                             class="group flex gap-3 rounded-xl p-1 text-white outline-none transition-colors focus:bg-white/8"
                         >
                             <div
@@ -159,7 +161,7 @@
                     <header class="flex items-center justify-between">
                         <span
                             class="font-aeonik-fono tracking-loose text-secondary block text-xs uppercase"
-                            >Case studies<span class="text-accent">_</span></span
+                            >Customer stories<span class="text-accent">_</span></span
                         >
                         <a
                             href="/blog/category/case-studies"
