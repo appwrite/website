@@ -94,8 +94,8 @@
                     href: '/docs/products/auth/mfa'
                 },
                 {
-                    label: 'User verification',
-                    href: '/docs/products/auth/verification'
+                    label: 'Verify user',
+                    href: '/docs/products/auth/verify-user'
                 }
             ]
         },
