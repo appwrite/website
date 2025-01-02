@@ -1,6 +1,6 @@
 ---
 layout: article
-title: User verification
+title: Verify user
 description: Learn about Appwrite's email and phone verification system, including verification flows and role-based access control.
 ---
 
