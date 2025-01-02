@@ -279,7 +279,7 @@ You can choose between the following types.
 | `ip`         | IP address attribute for IPv4 and IPv6.                          |
 | `email`      | Email address attribute.                                         |
 | `url`        | URL attribute.                                                   |
-| `relationship` | Relationship attribute relates one collection to another. [Learn more about relationships.](/docs/products/databases) |
+| `relationship` | Relationship attribute relates one collection to another. [Learn more about relationships.](/docs/products/databases/relationships) |
 
 If an attribute must be populated in all documents, set it as `required`.
 If not, you may optionally set a default value.
