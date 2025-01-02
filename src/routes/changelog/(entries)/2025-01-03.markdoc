@@ -6,7 +6,7 @@ date: 2025-01-03
 
 We've shipped several improvements to make Appwrite easier to use, including a clearer billing system, UI updates, and fixes for collections and mobile experiences.
 
-# What's New
+# What's new
 
 - Premium support checks now rely on a backend plan attribute instead of manual frontend validation
 - The Git authorize page now shows the new Appwrite logo
