@@ -236,7 +236,7 @@
         </div>
     </div>
 
-    <div class="web-u-sep-block-start py-10">
+    <div class="web-u-sep-block-start pt-10">
         <div class="web-big-padding-section-level-2">
             <div class="container">
                 <h3 class="text-label text-primary">Read next</h3>

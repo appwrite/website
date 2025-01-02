@@ -6,7 +6,7 @@
 </script>
 
 <a
-    class="web-side-nav-button"
+    class="web-side-nav-button flex size-10 w-full items-center whitespace-nowrap rounded-lg p-2"
     class:is-selected={$page.url?.pathname === groupItem.href}
     href={groupItem.href}
     target={groupItem.openInNewTab ? '_blank' : '_self'}
