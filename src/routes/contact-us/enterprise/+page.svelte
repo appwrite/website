@@ -7,6 +7,7 @@
     import Pink from '../bg.png';
     import { loggedIn, user } from '$lib/utils/console';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+    import { getReferrerAndUtmSource } from '$lib/utils/utm';
 
     let email = '';
     let name = '';
@@ -36,7 +37,8 @@
                 companySize,
                 companyWebsite,
                 firstName: name,
-                message: useCase
+                message: useCase,
+                ...getReferrerAndUtmSource()
             })
         });
 
