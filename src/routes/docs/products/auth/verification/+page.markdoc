@@ -163,7 +163,7 @@ val response = account.updateVerification(
 ```
 {% /multicode %}
 
-# Phone verification {% #phone-verification %}
+# Verify phone {% #verify-phone %}
 
 To verify a phone number, first ensure the user has a phone number set on their account:
 
