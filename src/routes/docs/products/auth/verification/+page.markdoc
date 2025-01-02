@@ -267,7 +267,7 @@ val response = account.updatePhoneVerification(
 ```
 {% /multicode %}
 
-# Role-based access {% #role-based-access %}
+# Restrict access {% #restrict-access %}
 
 You can restrict resource access to verified users only using permissions through the `user([USER_ID], "verified")` role. This role is automatically assigned after successful verification.
 
