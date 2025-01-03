@@ -131,7 +131,6 @@
                         <span class="text-caption shrink-0 font-medium">New</span>
                         <div class="web-hero-banner-button-sep" />
                         <span class="text-caption web-u-trim-1">Introducing Database Backups</span>
-
                         <span class="web-icon-arrow-right shrink-0" aria-hidden="true" />
                     </a>
                     <Hero>
@@ -161,7 +160,7 @@
                 </section>
             </div>
             <div class="mb-12 lg:my-[7.5rem]">
-                <section class="container web-u-padding-block-0" style="--container-size:78.75rem">
+                <section class="web-u-padding-block-0 container" style="--container-size:78.75rem">
                     <div class="web-media-container">
                         <img
                             class="block"
