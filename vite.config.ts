@@ -37,9 +37,11 @@ export default defineConfig({
             scss: {
                 api: 'modern'
             }
-        }
+        },
+        devSourcemap: process.env.NODE_ENV !== 'production'
     },
     build: {
+        sourcemap: process.env.NODE_ENV !== 'production',
         reportCompressedSize: false
     },
     test: {
