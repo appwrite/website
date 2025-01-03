@@ -2,6 +2,7 @@
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { classNames } from '$lib/utils/classnames';
     import { trackEvent } from '$lib/actions/analytics';
+    import posthog from 'posthog-js';
     import { browser } from '$app/environment';
 
     export let classes = '';
@@ -19,7 +20,12 @@
     class={classNames('web-button web-u-inline-width-100-percent-mobile', classes)}
     href={PUBLIC_APPWRITE_DASHBOARD}
     on:click={() => {
-        trackEvent(`${getTrackingEventName()} in header`);
+        trackEvent({
+            plausible: { name: `${getTrackingEventName()} in header` },
+            posthog: {
+                name: 'get-started-btn_nav_click'
+            }
+        });
     }}
 >
     <span class="hidden group-[&[data-logged-in]]/body:block">Go to Console</span>
