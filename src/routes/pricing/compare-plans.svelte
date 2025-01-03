@@ -30,7 +30,7 @@
             rows: [
                 {
                     title: 'Bandwidth',
-                    free: '10GB / month',
+                    free: '5GB / month',
                     pro: '300GB / month',
                     scale: '300GB / month',
                     enterprise: 'Custom'

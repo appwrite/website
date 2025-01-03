@@ -4,6 +4,7 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vitest/config';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import { enhancedImages } from '@sveltejs/enhanced-img';
+import manifestSRI from 'vite-plugin-manifest-sri';
 
 export default defineConfig({
     plugins: [
@@ -24,7 +25,11 @@ export default defineConfig({
             }
         }),
         ViteImageOptimizer({
-            includePublic: true
+            cache: true,
+            cacheLocation: '.cache'
+        }),
+        manifestSRI({
+            algorithms: ['sha384']
         })
     ],
     css: {
