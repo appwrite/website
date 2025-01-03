@@ -1,34 +1,38 @@
 import posthog from 'posthog-js';
 import { browser } from '$app/environment';
+import crypto from 'crypto';
 
 import { posthog as posthogServer } from '$lib/system';
 
 import { getAllChangelogEntries } from './changelog/utils';
 import { PUBLIC_POSTHOG_API_KEY } from '$env/static/public';
-import { getUser } from './init/helpers';
-
 export const prerender = true;
 export const trailingSlash = 'never';
 
-export const load = async ({ cookies }) => {
-    const posthogCookie = cookies.get(`ph_${PUBLIC_POSTHOG_API_KEY}_posthog`);
-    let distinctId: string = 'jesse@appwrite.io';
-    let isHeaderExperiment: boolean = false;
+export const load = async ({ request, getClientAddress }) => {
+    const clientAddress = getClientAddress();
+    const headers = Object.fromEntries(request.headers);
+    const fingerprintData = {
+        ip: clientAddress,
+        userAgent: headers['user-agent'],
+        acceptLanguage: headers['accept-language'],
+        platform: headers['sec-ch-ua-platform'],
+        mobile: headers['sec-ch-ua-mobile'],
+        browserBrand: headers['sec-ch-ua']
+    };
 
-    const user = await getUser();
+    const distinctId = crypto
+        .createHash('sha256')
+        .update(JSON.stringify(fingerprintData))
+        .digest('hex');
+
+    let isHeaderExperiment: boolean = false;
 
     if (browser) {
         posthog.init(PUBLIC_POSTHOG_API_KEY, {
             api_host: 'https://eu.i.posthog.com',
             person_profiles: 'identified_only'
         });
-    }
-
-    if (user.appwrite) {
-        distinctId = user.appwrite.email;
-    } else if (posthogCookie) {
-        const { distinct_id } = JSON.parse(posthogCookie);
-        distinctId = distinct_id;
     }
 
     try {
