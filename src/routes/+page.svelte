@@ -80,9 +80,7 @@
 
 <div
     style:position="absolute"
-    style:top="0"
-    style:width="100vw"
-    style:height="100vh"
+    style:inset="0"
     style:overflow="hidden"
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
