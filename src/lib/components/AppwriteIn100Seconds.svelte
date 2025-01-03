@@ -24,7 +24,6 @@
 
 {#if $open}
     <div use:melt={$portalled}>
-        ">
         <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }} />
 
         <div
