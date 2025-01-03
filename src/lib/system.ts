@@ -14,5 +14,5 @@ export const ENV = {
 };
 
 export const posthog = new PostHog(PUBLIC_POSTHOG_API_KEY, {
-    host: 'https://us.i.posthog.com'
+    host: 'https://eu.i.posthog.com'
 });
