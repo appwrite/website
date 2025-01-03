@@ -129,4 +129,20 @@ You can find a full list of supported runtimes [here](/docs/products/functions/r
 
 You can also configure the maximum timeout that can be set on individual Appwrite Functions. The maximum configurable timeout can be increased by changing the `_APP_FUNCTIONS_TIMEOUT` environment variable. This environment variable changes the configurable maximum but does not alter existing configurations of individual functions.
 
+# SSL Certificates for Function Domains {% #ssl-certificates %}
+
+When using function domains (e.g. `asdf.appwrite.global`), Appwrite does not directly handle the SSL certificates since these domains require wildcard certificates. Instead, Traefik (the reverse proxy used by Appwrite) is configured to automatically generate certificates using DNS Challenge.
+
+The DNS Challenge method is required because wildcard certificates (like *.appwrite.global) can only be issued by Let's Encrypt through DNS verification. This is a standard limitation - while regular certificates can use HTTP Challenge, wildcard certificates require proving ownership of the entire DNS zone through DNS records.
+
+When a new function domain is created, Traefik will automatically attempt to generate a certificate for it using DNS Challenge. This involves:
+1. Adding specific TXT records to your DNS zone
+2. Let's Encrypt verifying these records
+3. Issuing the wildcard certificate upon successful verification
+
+For this to work properly, ensure that:
+1. Your DNS provider is properly configured and allows automated TXT record management
+2. Your function domain is correctly set up
+3. Your DNS records are properly propagated (this can take up to 48 hours)
+
 {% partial file="update-variables.md" /%}
