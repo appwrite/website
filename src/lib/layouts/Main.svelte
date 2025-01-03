@@ -97,38 +97,54 @@
         return setupThemeObserver();
     });
 
-    let navLinks: NavLink[] = [
-        {
-            label: 'Products',
-            submenu: ProductsSubmenu,
-            mobileSubmenu: ProductsMobileSubmenu
-        },
-        {
-            label: 'Docs',
-            href: '/docs'
-        },
-        {
-            label: 'Community',
-            href: '/community'
-        },
-        {
-            label: 'Blog',
-            href: '/blog'
-        },
-        {
-            label: 'Integrations',
-            href: '/integrations'
-        },
-        {
-            label: 'Changelog',
-            href: '/changelog',
-            showBadge: hasNewChangelog?.() && !$page.url.pathname.includes('/changelog')
-        },
-        {
-            label: 'Pricing',
-            href: '/pricing'
-        }
-    ];
+    let navLinks: NavLink[] = $page.data.isHeaderExperiment
+        ? [
+              {
+                  label: 'Products',
+                  submenu: ProductsSubmenu,
+                  mobileSubmenu: ProductsMobileSubmenu
+              },
+              {
+                  label: 'Docs',
+                  href: '/docs'
+              },
+              {
+                  label: 'Pricing',
+                  href: '/pricing'
+              }
+          ]
+        : [
+              {
+                  label: 'Products',
+                  submenu: ProductsSubmenu,
+                  mobileSubmenu: ProductsMobileSubmenu
+              },
+              {
+                  label: 'Docs',
+                  href: '/docs'
+              },
+              {
+                  label: 'Community',
+                  href: '/community'
+              },
+              {
+                  label: 'Blog',
+                  href: '/blog'
+              },
+              {
+                  label: 'Integrations',
+                  href: '/integrations'
+              },
+              {
+                  label: 'Changelog',
+                  href: '/changelog',
+                  showBadge: hasNewChangelog?.() && !$page.url.pathname.includes('/changelog')
+              },
+              {
+                  label: 'Pricing',
+                  href: '/pricing'
+              }
+          ];
 
     $: resolvedTheme = $isMobileNavOpen ? 'dark' : theme;
 
@@ -157,13 +173,15 @@
     }
 
     $: $isHeaderHidden, updateSideNav();
+
+    const isSticky = true;
 </script>
 
 <div class="relative">
     <section
         class="web-mobile-header {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
-        class:is-hidden={$isHeaderHidden}
+        class:is-hidden={$isHeaderHidden && !$page.data.isHeaderExperiment}
     >
         <div class="web-mobile-header-start">
             <a href="/">
@@ -204,20 +222,22 @@
     </section>
     <header
         class="web-main-header is-special-padding {resolvedTheme} is-transparent"
-        class:is-hidden={$isHeaderHidden}
+        class:is-hidden={$isHeaderHidden && !$page.data.isHeaderExperiment}
         class:is-special-padding={!BANNER_KEY.startsWith('init-banner-')}
         style={BANNER_KEY === 'init-banner-02' ? 'padding-inline: 0' : ''}
     >
-        {#if BANNER_KEY.startsWith('init-banner-')}
-            <InitBanner />
-        {:else}
-            <AnnouncementBanner>
-                <a href="/discord" target="_blank" rel="noopener noreferrer">
-                    <span class="text-caption font-medium">We are having lots of fun on</span>
-                    <span class="web-icon-discord" aria-hidden="true" />
-                    <span class="text-caption font-medium">Discord. Come and join us!</span>
-                </a>
-            </AnnouncementBanner>
+        {#if !$page.data.isHeaderExperiment}
+            {#if BANNER_KEY.startsWith('init-banner-')}
+                <InitBanner />
+            {:else}
+                <AnnouncementBanner>
+                    <a href="/discord" target="_blank" rel="noopener noreferrer">
+                        <span class="text-caption font-medium">We are having lots of fun on</span>
+                        <span class="web-icon-discord" aria-hidden="true" />
+                        <span class="text-caption font-medium">Discord. Come and join us!</span>
+                    </a>
+                </AnnouncementBanner>
+            {/if}
         {/if}
 
         <div
