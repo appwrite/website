@@ -1,0 +1,221 @@
+---
+layout: article
+title: OTP SMS
+description: Learn how Appwrite handles OTP and SMS-based authentication for secure user verification.
+---
+
+Appwrite supports OTP (One-Time Password) and SMS-based authentication to provide secure and reliable user verification. This feature enhances your app's security by adding an extra layer of authentication.
+
+# Free messages {% #free-messages %}
+
+All Appwrite plans include **10 free SMS messages** per month, which allows you to test and implement OTP functionality without immediate costs.
+
+# Additional messages {% #additional-messages %}
+
+To send more than 10 SMS messages per month, you need to upgrade to the **Pro plan**. You can find more information about the Pro plan [here](/docs/advanced/platform/pro).
+
+## Pricing {% #pricing %}
+
+The cost for additional messages is calculated based on two factors:
+1. The number of messages sent
+2. The destination country of each message
+
+Appwrite works with various telecom providers to ensure affordable and reliable SMS delivery across countries.
+
+## Country-specific rates {% #country-rates %}
+
+SMS rates vary by country due to differences in telecom infrastructure and regulations. Here is a breakdown of the rates:
+
+| Country Code | Country Name                                                 | Price (USD) |
+|--------------|--------------------------------------------------------------|-------------|
+| 213          | Algeria                                                      | 0.1885      |
+| 376          | Andorra                                                      | 0.0676      |
+| 244          | Angola                                                       | 0.0563      |
+| 54           | Argentina                                                    | 0.047       |
+| 374          | Armenia                                                      | 0.0845      |
+| 297          | Aruba                                                        | 0.0429      |
+| 61           | Australia                                                    | 0.0241      |
+| 43           | Austria                                                      | 0.0195      |
+| 994          | Azerbaijan                                                   | 0.1755      |
+| 973          | Bahrain                                                      | 0.026       |
+| 880          | Bangladesh                                                   | 0.2015      |
+| 375          | Belarus                                                      | 0.1315      |
+| 32           | Belgium                                                      | 0.0671      |
+| 501          | Belize                                                       | 0.1744      |
+| 229          | Benin                                                        | 0.0949      |
+| 975          | Bhutan                                                       | 0.1435      |
+| 591          | Bolivia                                                      | 0.047       |
+| 387          | Bosnia and Herzegovina                                       | 0.0443      |
+| 267          | Botswana                                                     | 0.0234      |
+| 55           | Brazil                                                       | 0.0241      |
+| 673          | Brunei                                                       | 0.0174      |
+| 359          | Bulgaria                                                     | 0.0923      |
+| 226          | Burkina Faso                                                 | 0.0741      |
+| 257          | Burundi                                                      | 0.1435      |
+| 855          | Cambodia                                                     | 0.1339      |
+| 237          | Cameroon                                                     | 0.0805      |
+| 1            | North America                                                | 0.0054      |
+| 238          | Cape Verde Islands                                           | 0.0936      |
+| 56           | Chile                                                        | 0.0335      |
+| 86           | China                                                        | 0.0161      |
+| 57           | Colombia                                                     | 0.026       |
+| 269          | Comoros and Mayotte                                          | 0.0778      |
+| 242          | Congo                                                        | 0.0805      |
+| 682          | Cook Islands                                                 | 0.0322      |
+| 506          | Costa Rica                                                   | 0.0091      |
+| 385          | Croatia                                                      | 0.0402      |
+| 53           | Cuba                                                         | 0.0604      |
+| 357          | Cyprus                                                       | 0.0091      |
+| 420          | Czech Republic                                               | 0.0455      |
+| 45           | Denmark                                                      | 0.0389      |
+| 253          | Djibouti                                                     | 0.0832      |
+| 593          | Ecuador                                                      | 0.1811      |
+| 20           | Egypt                                                        | 0.1878      |
+| 503          | El Salvador                                                  | 0.0402      |
+| 240          | Equatorial Guinea                                            | 0.0728      |
+| 291          | Eritrea                                                      | 0.1194      |
+| 372          | Estonia                                                      | 0.039       |
+| 251          | Ethiopia                                                     | 0.1194      |
+| 500          | Falkland Islands                                             | 0.0322      |
+| 298          | Faroe Islands                                                | 0.0228      |
+| 679          | Fiji                                                         | 0.0988      |
+| 358          | Finland                                                      | 0.0468      |
+| 33           | France                                                       | 0.051       |
+| 594          | French Guiana                                                | 0.078       |
+| 689          | French Polynesia                                             | 0.0805      |
+| 241          | Gabon                                                        | 0.0979      |
+| 220          | Gambia                                                       | 0.0715      |
+| 995          | Georgia                                                      | 0.104       |
+| 49           | Germany                                                      | 0.0698      |
+| 233          | Ghana                                                        | 0.156       |
+| 350          | Gibraltar                                                    | 0.0429      |
+| 30           | Greece                                                       | 0.0402      |
+| 299          | Greenland                                                    | 0.0215      |
+| 590          | Guadeloupe                                                   | 0.0537      |
+| 1671         | Guam                                                         | 0.0228      |
+| 502          | Guatemala                                                    | 0.0376      |
+| 224          | Guinea                                                       | 0.091       |
+| 245          | Guinea-Bissau                                                | 0.0604      |
+| 592          | Guyana                                                       | 0.078       |
+| 509          | Haiti                                                        | 0.0671      |
+| 504          | Honduras                                                     | 0.0282      |
+| 852          | Hong Kong                                                    | 0.0416      |
+| 36           | Hungary                                                      | 0.0563      |
+| 354          | Iceland                                                      | 0.0537      |
+| 91           | India                                                        | 0.0572      |
+| 62           | Indonesia                                                    | 0.2254      |
+| 98           | Iran                                                         | 0.1637      |
+| 964          | Iraq                                                         | 0.1878      |
+| 353          | Ireland                                                      | 0.0442      |
+| 972          | Israel                                                       | 0.0912      |
+| 39           | Italy                                                        | 0.0376      |
+| 81           | Japan                                                        | 0.0468      |
+| 962          | Jordan                                                       | 0.2015      |
+| 254          | Kenya                                                        | 0.208       |
+| 686          | Kiribati                                                     | 0.0537      |
+| 850          | North Korea                                                  | 0.0143      |
+| 82           | South Korea                                                  | 0.0143      |
+| 965          | Kuwait                                                       | 0.1625      |
+| 996          | Kyrgyzstan                                                   | 0.2015      |
+| 856          | Laos                                                         | 0.1339      |
+| 371          | Latvia                                                       | 0.0322      |
+| 961          | Lebanon                                                      | 0.1729      |
+| 266          | Lesotho                                                      | 0.0899      |
+| 231          | Liberia                                                      | 0.0644      |
+| 218          | Libya                                                        | 0.1959      |
+| 423          | Liechtenstein                                                | 0.026       |
+| 370          | Lithuania                                                    | 0.0322      |
+| 352          | Luxembourg                                                   | 0.0698      |
+| 853          | Macao                                                        | 0.0215      |
+| 389          | Macedonia                                                    | 0.0201      |
+| 261          | Madagascar                                                   | 0.0939      |
+| 265          | Malawi                                                       | 0.0711      |
+| 60           | Malaysia                                                     | 0.1495      |
+| 960          | Maldives                                                     | 0.1404      |
+| 223          | Mali                                                         | 0.1079      |
+| 356          | Malta                                                        | 0.0403      |
+| 692          | Marshall Islands                                             | 0.0174      |
+| 596          | Martinique                                                   | 0.0715      |
+| 222          | Mauritania                                                   | 0.1391      |
+| 52           | Mexico                                                       | 0.052       |
+| 691          | Micronesia                                                   | 0.0174      |
+| 373          | Moldova                                                      | 0.0546      |
+| 377          | Monaco                                                       | 0.0711      |
+| 976          | Mongolia                                                     | 0.0899      |
+| 212          | Morocco                                                      | 0.1612      |
+| 258          | Mozambique                                                   | 0.0791      |
+| 95           | Myanmar                                                      | 0.1234      |
+| 264          | Namibia                                                      | 0.0377      |
+| 674          | Nauru                                                        | 0.0537      |
+| 977          | Nepal                                                        | 0.195       |
+| 31           | Netherlands                                                  | 0.0805      |
+| 687          | New Caledonia                                                | 0.0617      |
+| 64           | New Zealand                                                  | 0.0537      |
+| 505          | Nicaragua                                                    | 0.0728      |
+| 227          | Niger                                                        | 0.0751      |
+| 234          | Nigeria                                                      | 0.286       |
+| 683          | Niue                                                         | 0.0295      |
+| 672          | Norfolk Islands                                              | 0.0402      |
+| 1670         | Northern Mariana Islands                                     | 0.0724      |
+| 47           | Norway                                                       | 0.0403      |
+| 968          | Oman                                                         | 0.1274      |
+| 680          | Palau                                                        | 0.0174      |
+| 507          | Panama                                                       | 0.0791      |
+| 675          | Papua New Guinea                                             | 0.13        |
+| 595          | Paraguay                                                     | 0.065       |
+| 51           | Peru                                                         | 0.0228      |
+| 63           | Philippines                                                  | 0.1456      |
+| 48           | Poland                                                       | 0.0148      |
+| 351          | Portugal                                                     | 0.0174      |
+| 974          | Qatar                                                        | 0.1521      |
+| 262          | Reunion                                                      | 0.0443      |
+| 40           | Romania                                                      | 0.0456      |
+| 7            | Russia, Kazakhstan, Uzbekistan, Turkmenistan, and Tajikistan | 0.2951      |
+| 250          | Rwanda                                                       | 0.0845      |
+| 378          | San Marino                                                   | 0.0376      |
+| 239          | Sao Tome and Principe                                        | 0.0715      |
+| 966          | Saudi Arabia                                                 | 0.117       |
+| 221          | Senegal                                                      | 0.1781      |
+| 381          | Serbia                                                       | 0.0975      |
+| 248          | Seychelles                                                   | 0.0416      |
+| 232          | Sierra Leone                                                 | 0.13        |
+| 65           | Singapore                                                    | 0.0335      |
+| 421          | Slovak Republic                                              | 0.0483      |
+| 386          | Slovenia                                                     | 0.0778      |
+| 677          | Solomon Islands                                              | 0.051       |
+| 252          | Somalia                                                      | 0.1222      |
+| 27           | South Africa                                                 | 0.0215      |
+| 34           | Spain                                                        | 0.0402      |
+| 94           | Sri Lanka                                                    | 0.2613      |
+| 290          | St. Helena                                                   | 0.0416      |
+| 249          | Sudan                                                        | 0.2015      |
+| 597          | Suriname                                                     | 0.0715      |
+| 268          | Swaziland                                                    | 0.0872      |
+| 46           | Sweden                                                       | 0.0443      |
+| 41           | Switzerland                                                  | 0.0325      |
+| 963          | Syria                                                        | 0.195       |
+| 886          | Taiwan                                                       | 0.1851      |
+| 66           | Thailand                                                     | 0.0161      |
+| 228          | Togo                                                         | 0.1001      |
+| 676          | Tonga                                                        | 0.0295      |
+| 216          | Tunisia                                                      | 0.0805      |
+| 90           | Turkey                                                       | 0.0065      |
+| 688          | Tuvalu                                                       | 0.0912      |
+| 256          | Uganda                                                       | 0.1033      |
+| 380          | Ukraine                                                      | 0.11        |
+| 971          | United Arab Emirates                                         | 0.0754      |
+| 44           | United Kingdom                                               | 0.0338      |
+| 598          | Uruguay                                                      | 0.0442      |
+| 678          | Vanuatu                                                      | 0.0912      |
+| 58           | Venezuela                                                    | 0.0585      |
+| 84           | Vietnam                                                      | 0.0949      |
+| 967          | Yemen                                                        | 0.1476      |
+| 260          | Zambia                                                       | 0.1154      |
+| 255          | Zanzibar                                                     | 0.0872      |
+| 263          | Zimbabwe                                                     | 0.0872      |
+
+# Improving reliability {% #improving-reliability %}
+
+Appwrite continuously works to enhance SMS delivery reliability and expand country coverage. We partner with multiple providers to ensure the best possible service for your users worldwide.
+
+For any questions about OTP SMS functionality or pricing, please [contact our support team](https://appwrite.io/support).
