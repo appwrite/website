@@ -25,6 +25,7 @@ export default defineConfig({
             }
         }),
         ViteImageOptimizer({
+            exclude: ['**/*.avif', '**/*.webp'],
             cache: true,
             cacheLocation: '.cache'
         }),
@@ -37,9 +38,11 @@ export default defineConfig({
             scss: {
                 api: 'modern'
             }
-        }
+        },
+        devSourcemap: process.env.NODE_ENV !== 'production'
     },
     build: {
+        sourcemap: process.env.NODE_ENV !== 'production',
         reportCompressedSize: false
     },
     test: {
