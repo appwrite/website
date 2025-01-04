@@ -90,6 +90,15 @@
             ]
         },
         {
+            label: 'Add ons',
+            items: [
+                {
+                    label: 'OTP SMS',
+                    href: '/docs/advanced/platform/otp-sms'
+                }
+            ]
+        },
+        {
             label: 'Configuration',
             items: [
                 {
