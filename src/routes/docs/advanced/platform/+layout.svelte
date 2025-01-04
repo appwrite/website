@@ -93,6 +93,7 @@
             label: 'Add ons',
             items: [
                 {
+                    new: true,
                     label: 'OTP SMS',
                     href: '/docs/advanced/platform/otp-sms'
                 }
