@@ -52,6 +52,23 @@ account.createOAuth2Session(
 {% /tabsitem %}
 
 {% tabsitem #flutter title="Flutter" %}
+
+For Android, add the following activity inside the `<application>` tag in your `AndroidManifest.xml`. Replace `<PROJECT_ID>` with your actual Appwrite project ID.
+
+```xml
+<!-- Add this inside the <application> tag, along side the existing <activity> tags -->
+<activity android:exported="true" android:name="com.linusu.flutter_web_auth_2.CallbackActivity" >
+  <intent-filter android:label="flutter_web_auth_2">
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="appwrite-callback-[PROJECT_ID]" />
+  </intent-filter>
+</activity>
+```
+
+No other configuration is required for iOS.
+
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/enums.dart';
@@ -64,7 +81,7 @@ final account = Account(client);
 
 // Go to OAuth provider login page
 await account.createOAuth2Session(
-    provider: 'OAuthProvider.github',
+    provider: OAuthProvider.github,
     scopes: ['repo', 'user']
 );
 ```
