@@ -94,8 +94,8 @@
             items: [
                 {
                     new: true,
-                    label: 'OTP SMS',
-                    href: '/docs/advanced/platform/otp-sms'
+                    label: 'Phone OTP',
+                    href: '/docs/advanced/platform/phone-otp'
                 }
             ]
         },
