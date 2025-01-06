@@ -25,6 +25,7 @@ export default defineConfig({
             }
         }),
         ViteImageOptimizer({
+            include: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg'],
             exclude: ['**/*.avif', '**/*.webp'],
             cache: true,
             cacheLocation: '.cache'
