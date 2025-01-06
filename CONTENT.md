@@ -296,7 +296,7 @@ Configure FCM for push notification to Android and Apple devices.
 
 #### Accordions
 
-Use accordions to reduce page size and collapse information that's not important when a reader is skilling the page.
+Use accordions to reduce page size and collapse information that's not important when a reader is scrolling the page.
 
 ```
 {% accordion %}

@@ -1,5 +1,6 @@
 <script lang="ts">
     import { fade, scale } from 'svelte/transition';
+    import { trackEvent } from '$lib/actions/analytics';
 
     let show = false;
 
@@ -13,7 +14,13 @@
 
 <svelte:window on:keydown={handleKeypress} />
 
-<button on:click={() => (show = true)} class="web-button is-secondary cursor-pointer">
+<button
+    on:click={() => {
+        show = true;
+        trackEvent('Appwrite in 100 seconds');
+    }}
+    class="web-button is-secondary cursor-pointer"
+>
     <span class="web-icon-play" style:color="unset" />
     <span>Appwrite in 100 seconds</span>
 </button>
