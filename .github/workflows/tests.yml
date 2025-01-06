@@ -33,9 +33,6 @@ jobs:
                       ${{ runner.os }}-pnpm-store-
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
-            - name: Debug variables
-              run: |
-                  echo "PostHog Key exists: ${{ vars.PUBLIC_POSTHOG_API_KEY != '' }}"
             - name: Build Website
               env:
                   NODE_OPTIONS: '--max_old_space_size=8192'
