@@ -1,5 +1,5 @@
 import { redirect } from '@sveltejs/kit';
 
 export function load() {
-    redirect(301, '/blog/category/case-studies');
+    redirect(301, '/blog/category/customer-stories');
 }
