@@ -131,18 +131,18 @@ You can also configure the maximum timeout that can be set on individual Appwrit
 
 # SSL certificates for Function domains {% #ssl-certificates %}
 
-Appwrite does not directly handle certificates for function domains (e.g. `6772722a00331315adc3.appwrite.global`) since they require wildcard certificates.
+Appwrite does not directly handle certificates for function domains (e.g. `6772722a00331315adc3.appwrite.myapp.com`) since they require wildcard certificates.
 There are two ways to handle certificate generation:
 
 ## Manual certificate generation
 
-The simplest way to generate certificates for function domains is to use the Appwrite SSL command:
+The simplest way to generate certificates for function domains is to use the Appwrite SSL command.
 
 ```bash
-docker compose exec appwrite ssl --domain="6772722a00331315adc3.appwrite.global"
+docker compose exec appwrite ssl --domain="6772722a00331315adc3.appwrite.myapp.com"
 ```
 
-The certificate should be generated within a few seconds. If you encounter any issues, you can check the certificate worker logs:
+The certificate should be generated within a few seconds. If you encounter any issues, you can check the certificate worker logs.
 
 ```bash
 docker compose logs appwrite-worker-certificates
@@ -151,37 +151,59 @@ docker compose logs appwrite-worker-certificates
 ## Automated certificate generation
 
 For automated certificate generation, Appwrite uses Traefik's DNS Challenge feature.
-This is required for wildcard certificates (like `*.appwrite.global`) because Let's Encrypt uses the DNS-01 challenge to validate wildcard domain ownership.
+This is required for wildcard certificates (like `*.appwrite.myapp.com`) because Let's Encrypt uses the DNS-01 challenge to validate wildcard domain ownership.
 
-### Using DNS challenge
-Traefik can be configured to use various DNS providers for automated certificate generation. For example, with DigitalOcean:
+### Using DNS challenge with DigitalOcean
+To configure Traefik for automated certificate generation with DigitalOcean, you need to modify your `docker-compose.yml`:
 
-{% multicode %}
+1. Add the following under the `traefik` service's `command` section.
 ```yaml
-certificatesResolvers:
-  myresolver:
-    acme:
-      dnsChallenge:
-        provider: digitalocean
-        delayBeforeCheck: 0
+command:
+    # ... existing commands ...
+    - --certificatesresolvers.digitalocean.acme.dnschallenge=true
+    - --certificatesresolvers.digitalocean.acme.dnschallenge.provider=digitalocean
+    - --certificatesresolvers.digitalocean.acme.email=$_APP_SYSTEM_SECURITY_EMAIL_ADDRESS
+    - --certificatesresolvers.digitalocean.acme.storage=/storage/certificates/digitalocean.json
 ```
-```toml
-[certificatesResolvers.myresolver.acme]
-  [certificatesResolvers.myresolver.acme.dnsChallenge]
-    provider = "digitalocean"
-    delayBeforeCheck = 0
+
+2. Add environment variables under the `traefik` service.
+```yaml
+environment:
+    - DO_AUTH_TOKEN=$_APP_DOMAIN_DO_TOKEN
 ```
+
+3. Add the following labels under the `appwrite` service.
+```yaml
+labels:
+    # ... existing labels ...
+    - traefik.http.routers.appwrite_api_https.tls.certresolver=digitalocean
+    - traefik.http.routers.appwrite_api_https.tls.domains[0].main=$_APP_DOMAIN_FUNCTIONS
+    - traefik.http.routers.appwrite_api_https.tls.domains[0].sans=*.$_APP_DOMAIN_FUNCTIONS
+```
+
+4. Ensure these environment variables are properly configured in your `.env` file before proceeding:
+   - `_APP_SYSTEM_SECURITY_EMAIL_ADDRESS` must be set to a valid email for Let's Encrypt notifications
+   - `_APP_DOMAIN_FUNCTIONS` must be correctly set to your function domain (e.g., `functions.example.com`)
+   - `_APP_DOMAIN_DO_TOKEN` must be set to a valid DigitalOcean API token (generate this in the DigitalOcean Console)
+
+5. Apply the changes.
 ```bash
---certificatesresolvers.myresolver.acme.dnschallenge.provider=digitalocean
---certificatesresolvers.myresolver.acme.dnschallenge.delaybeforecheck=0
+docker compose up -d --force-recreate
 ```
-{% /multicode %}
 
-The configuration requires:
-1. Setting up your DNS provider credentials (e.g., `DO_AUTH_TOKEN` for DigitalOcean)
-2. Configuring Traefik's certificate resolver
-3. Ensuring your DNS provider allows automated TXT record management
+### Troubleshooting DNS Propagation
 
-For configuration with other DNS providers, refer to [Traefik's DNS providers documentation](https://doc.traefik.io/traefik/https/acme/#providers).
+If certificate generation fails due to DNS propagation delays, you have two options:
+
+1. Restart and try again (note: Let's Encrypt has strict rate limits, so you may need to wait a few hours between attempts)
+2. Configure longer timeouts in your `docker-compose.yml` under the `traefik` service.
+```yaml
+environment:
+    - DO_AUTH_TOKEN=$_APP_DOMAIN_DO_TOKEN
+    - DO_POLLING_INTERVAL=1m
+    - DO_PROPAGATION_TIMEOUT=1h
+```
+
+For other DNS providers, refer to [Traefik's DNS providers documentation](https://doc.traefik.io/traefik/https/acme/#providers).
 
 {% partial file="update-variables.md" /%}
