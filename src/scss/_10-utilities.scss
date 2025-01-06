@@ -278,12 +278,16 @@
   @media #{$break1}, #{$break2} { display:none!important; }
 }
 
+.#{$p}-is-only-large-desktop {
+  @media #{$break0} { display:none!important; }
+}
+
 .#{$p}-is-not-mobile {
   @media #{$break1} { display:none!important; }
 }
 
 .#{$p}-is-not-desktop {
-  @media #{$break3open} { display:none!important; }
+  @media #{$break2open} { display:none!important; }
 }
 
 .#{$p}-u-gradient-mobile-align {
