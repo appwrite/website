@@ -15,17 +15,17 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout the repo
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
 
             - name: Login to DockerHub
-              uses: docker/login-action@v1
+              uses: docker/login-action@v3
               with:
                   registry: ghcr.io
                   username: ${{ github.actor }}
                   password: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Build and push
-              uses: docker/build-push-action@v2
+              uses: docker/build-push-action@v6
               with:
                   context: .
                   push: true
@@ -45,6 +45,7 @@ jobs:
                       "APPWRITE_API_KEY_INIT=${{ secrets.APPWRITE_API_KEY_INIT }}"
                       "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}"
                       "SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}"
+
 
     deploy:
         needs: build
