@@ -1,0 +1,245 @@
+---
+layout: article
+title: Team Invites
+description: Learn how to manage team invites in Appwrite. Explore both client-side and server-side approaches for inviting users to teams.
+---
+
+Teams in Appwrite allow users to share access to resources. When you invite users to a team, they can access resources based on their team roles and permissions. There are two main approaches to handling team invites: client-side (using email) and server-side (for custom flows).
+
+# Client-side invites {% #client-side %}
+
+Client-side invites are the simplest way to invite users to a team. When you create a membership, Appwrite automatically sends an email invitation to the user.
+
+{% multicode %}
+```client-web
+import { Client, Teams } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const teams = new Teams(client);
+
+// Invite a user by email
+const membership = await teams.createMembership(
+    'team_id',
+    ['developer'],     // roles
+    'user@example.com' // email
+);
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final teams = Teams(client);
+
+// Invite a user by email
+final membership = await teams.createMembership(
+    teamId: 'team_id',
+    roles: ['developer'],
+    email: 'user@example.com'
+);
+```
+{% /multicode %}
+
+The invited user will receive an email with a link to accept the invitation. When they click the link, they'll be redirected to your app where you can handle the invitation acceptance:
+
+{% multicode %}
+```client-web
+// Handle the invitation acceptance
+const membership = await teams.updateMembershipStatus(
+    'team_id',
+    'membership_id',
+    'user_id',
+    'secret'
+);
+```
+```client-flutter
+// Handle the invitation acceptance
+final membership = await teams.updateMembershipStatus(
+    teamId: 'team_id',
+    membershipId: 'membership_id',
+    userId: 'user_id',
+    secret: 'secret'
+);
+```
+{% /multicode %}
+
+# Server-side invites {% #server-side %}
+
+Server-side invites give you more control over the invitation process. Instead of sending automatic emails, you can create custom flows using the server SDK.
+
+{% multicode %}
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<API_KEY>');
+
+const teams = new sdk.Teams(client);
+
+// Create membership directly with userId
+const membership = await teams.createMembership(
+    teamId: 'team_id',
+    roles: ['developer'],
+    userId: 'user_id',
+    name: 'John Doe'  // optional
+);
+```
+```python
+from appwrite.client import Client
+from appwrite.services.teams import Teams
+
+client = Client()
+client.set_endpoint('https://cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<API_KEY>')
+
+teams = Teams(client)
+
+# Create membership directly with userId
+membership = teams.create_membership(
+    team_id='team_id',
+    roles=['developer'],
+    user_id='user_id',
+    name='John Doe'  # optional
+)
+```
+{% /multicode %}
+
+Server-side invites are useful when:
+- You want to implement your own invitation email system
+- You're building a custom invitation workflow
+- You want to automatically add users to teams based on certain conditions
+- You need to handle bulk invites efficiently
+
+# Understanding roles {% #roles %}
+
+Team roles help you control what members can do within a team. When creating a membership, you can assign one or more roles:
+
+1. **owner** - Special role that can:
+   - Invite new members
+   - Remove members
+   - Update team settings
+   - Delete the team
+
+2. **Custom roles** - You define what these roles mean in your permissions:
+   - Can be any string (e.g., 'admin', 'developer', 'viewer')
+   - Used in combination with [permissions](/docs/advanced/platform/permissions)
+   - Multiple roles can be assigned to one member
+
+Example of using roles in permissions:
+
+```javascript
+// Grant access to users with 'developer' role in team_123
+['team:team_123/developer']
+
+// Grant access to all members of team_123
+['team:team_123']
+```
+
+# Custom invitation flows {% #custom-flows %}
+
+Here's an example of implementing a custom invitation flow:
+
+1. Create a server-side function to handle invites:
+
+{% multicode %}
+```server-nodejs
+const sdk = require('node-appwrite');
+
+async function inviteToTeam(teamId, userId, roles) {
+    const client = new sdk.Client()
+        .setEndpoint('https://cloud.appwrite.io/v1')
+        .setProject('<PROJECT_ID>')
+        .setKey('<API_KEY>');
+
+    const teams = new sdk.Teams(client);
+
+    try {
+        // Create membership
+        const membership = await teams.createMembership(
+            teamId,
+            roles,
+            userId,
+            'John Doe'  // optional name
+        );
+
+        // Implement your custom notification logic here
+        // For example, send a custom email, push notification, etc.
+
+        return membership;
+    } catch (error) {
+        console.error('Failed to invite user:', error);
+        throw error;
+    }
+}
+```
+```python
+from appwrite.client import Client
+from appwrite.services.teams import Teams
+
+async def invite_to_team(team_id, user_id, roles):
+    client = Client()
+    client.set_endpoint('https://cloud.appwrite.io/v1')
+    client.set_project('<PROJECT_ID>')
+    client.set_key('<API_KEY>')
+
+    teams = Teams(client)
+
+    try:
+        # Create membership
+        membership = teams.create_membership(
+            team_id=team_id,
+            roles=roles,
+            user_id=user_id,
+            name='John Doe'  # optional
+        )
+
+        # Implement your custom notification logic here
+        # For example, send a custom email, push notification, etc.
+
+        return membership
+    except Exception as error:
+        print('Failed to invite user:', error)
+        raise error
+```
+{% /multicode %}
+
+2. Implement custom notification logic:
+   - Send custom emails using [Appwrite's email service](/docs/products/messaging/email)
+   - Send push notifications
+   - Create in-app notifications
+   - Use webhooks to trigger external systems
+
+3. Handle invitation acceptance:
+   - Create custom UI for accepting/rejecting invites
+   - Implement your own invitation tracking system
+   - Add additional validation or requirements
+
+# Best practices {% #best-practices %}
+
+1. **Security**
+   - Only allow team owners to invite new members
+   - Validate user permissions before creating memberships
+   - Use appropriate API key scopes for server-side operations
+
+2. **User Experience**
+   - Provide clear feedback about invitation status
+   - Show pending invitations in your UI
+   - Allow canceling invitations before they're accepted
+
+3. **Error Handling**
+   - Handle cases where users are already team members
+   - Manage invitation expiration
+   - Provide clear error messages to users
+
+4. **Scalability**
+   - Use server-side invites for bulk operations
+   - Implement rate limiting for invitation requests
+   - Cache team membership data when appropriate
