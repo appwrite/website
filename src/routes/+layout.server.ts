@@ -2,12 +2,16 @@ import posthog from 'posthog-js';
 import { browser } from '$app/environment';
 import crypto from 'crypto';
 
-import { posthog as posthogServer } from '$lib/system';
+import { getFeatureFlag } from '$lib/experiments';
 
 import { getAllChangelogEntries } from './changelog/utils';
 import { PUBLIC_POSTHOG_API_KEY } from '$env/static/public';
 export const prerender = true;
 export const trailingSlash = 'never';
+
+const generateDistinctId = (fingerprintData: Record<string, string>) => {
+    return crypto.createHash('sha256').update(JSON.stringify(fingerprintData)).digest('hex');
+};
 
 export const load = async ({ request, getClientAddress }) => {
     const clientAddress = getClientAddress();
@@ -21,10 +25,7 @@ export const load = async ({ request, getClientAddress }) => {
         browserBrand: headers['sec-ch-ua']
     };
 
-    const distinctId = crypto
-        .createHash('sha256')
-        .update(JSON.stringify(fingerprintData))
-        .digest('hex');
+    const distinctId = generateDistinctId(fingerprintData);
 
     let isHeaderExperiment: boolean = false;
 
@@ -36,10 +37,7 @@ export const load = async ({ request, getClientAddress }) => {
     }
 
     try {
-        const enabledVariant = await posthogServer.getFeatureFlag(
-            'sticky-navigation_ab-test',
-            distinctId
-        );
+        const enabledVariant = await getFeatureFlag('sticky-navigation_ab-test', distinctId);
 
         if (enabledVariant === 'control') return;
 
@@ -52,6 +50,7 @@ export const load = async ({ request, getClientAddress }) => {
 
     return {
         isHeaderExperiment,
+        distinctId,
         changelogEntries: (await getAllChangelogEntries()).length
     };
 };
