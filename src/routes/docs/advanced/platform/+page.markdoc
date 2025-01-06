@@ -104,7 +104,7 @@ Create custom branding and messages when you communicate with users.
 Learn about additional features and functionalities that Appwrite offers.
 
 {% cards %}
-{% cards_item href="/docs/advanced/platform/otp-sms" title="OTP SMS" %}
+{% cards_item href="/docs/advanced/platform/phone-otp" title="Phone OTP" %}
 Learn how Appwrite handles OTP and SMS-based authentication.
 {% /cards_item %}
 {% /cards %}
