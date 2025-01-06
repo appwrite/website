@@ -6,7 +6,7 @@ import { getFeatureFlag } from '$lib/experiments';
 
 import { getAllChangelogEntries } from './changelog/utils';
 import { PUBLIC_POSTHOG_API_KEY } from '$env/static/public';
-export const prerender = true;
+export const prerender = false;
 export const trailingSlash = 'never';
 
 const generateDistinctId = (fingerprintData: Record<string, string>) => {
