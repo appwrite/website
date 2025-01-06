@@ -20,18 +20,11 @@
 <a
     class={classNames('web-button web-u-inline-width-100-percent-mobile', classes)}
     href={PUBLIC_APPWRITE_DASHBOARD}
-    on:click={() => {
-        isLoggedIn
-            ? trackEvent({
-                  plausible: { name: `${getTrackingEventName()} in header` }
-              })
-            : trackEvent({
-                  plausible: { name: `${getTrackingEventName()} in header` },
-                  posthog: {
-                      name: 'get-started-btn_nav_click'
-                  }
-              });
-    }}
+    on:click={() =>
+        trackEvent({
+            plausible: { name: `${getTrackingEventName()} in header` },
+            ...(isLoggedIn ? {} : { posthog: { name: 'get-started-btn_nav_click' } })
+        })}
 >
     <span class="hidden group-[&[data-logged-in]]/body:block">Go to Console</span>
     <span class="block group-[&[data-logged-in]]/body:hidden">Get started</span>
