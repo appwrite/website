@@ -164,8 +164,8 @@
                     enterprise: 'Custom'
                 },
   		{
-                    title: 'OTP SMS',
-                    free: '10 OTP / month',
+                    title: 'Phone OTP',
+                    free: '10 SMS / month',
                     pro: '[View rates](/docs/advanced/platform/otp-sms',
                     scale: '[View rates](/docs/advanced/platform/otp-sms',
                     enterprise: '[View rates](/docs/advanced/platform/otp-sms'
