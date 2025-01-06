@@ -129,20 +129,59 @@ You can find a full list of supported runtimes [here](/docs/products/functions/r
 
 You can also configure the maximum timeout that can be set on individual Appwrite Functions. The maximum configurable timeout can be increased by changing the `_APP_FUNCTIONS_TIMEOUT` environment variable. This environment variable changes the configurable maximum but does not alter existing configurations of individual functions.
 
-# SSL Certificates for Function Domains {% #ssl-certificates %}
+# SSL certificates for Function domains {% #ssl-certificates %}
 
-When using function domains (e.g. `asdf.appwrite.global`), Appwrite does not directly handle the SSL certificates since these domains require wildcard certificates. Instead, Traefik (the reverse proxy used by Appwrite) is configured to automatically generate certificates using DNS Challenge.
+Appwrite does not directly handle certificates for function domains (e.g. `6772722a00331315adc3.appwrite.global`) since they require wildcard certificates.
+There are two ways to handle certificate generation:
 
-The DNS Challenge method is required because wildcard certificates (like *.appwrite.global) can only be issued by Let's Encrypt through DNS verification. This is a standard limitation - while regular certificates can use HTTP Challenge, wildcard certificates require proving ownership of the entire DNS zone through DNS records.
+## Manual certificate generation
 
-When a new function domain is created, Traefik will automatically attempt to generate a certificate for it using DNS Challenge. This involves:
-1. Adding specific TXT records to your DNS zone
-2. Let's Encrypt verifying these records
-3. Issuing the wildcard certificate upon successful verification
+The simplest way to generate certificates for function domains is to use the Appwrite SSL command:
 
-For this to work properly, ensure that:
-1. Your DNS provider is properly configured and allows automated TXT record management
-2. Your function domain is correctly set up
-3. Your DNS records are properly propagated (this can take up to 48 hours)
+```bash
+docker compose exec appwrite ssl --domain="6772722a00331315adc3.appwrite.global"
+```
+
+The certificate should be generated within a few seconds. If you encounter any issues, you can check the certificate worker logs:
+
+```bash
+docker compose logs appwrite-worker-certificates
+```
+
+## Automated certificate generation
+
+For automated certificate generation, Appwrite uses Traefik's DNS Challenge feature.
+This is required for wildcard certificates (like `*.appwrite.global`) because Let's Encrypt uses the DNS-01 challenge to validate wildcard domain ownership.
+
+### Using DNS challenge
+Traefik can be configured to use various DNS providers for automated certificate generation. For example, with DigitalOcean:
+
+{% multicode %}
+```yaml
+certificatesResolvers:
+  myresolver:
+    acme:
+      dnsChallenge:
+        provider: digitalocean
+        delayBeforeCheck: 0
+```
+```toml
+[certificatesResolvers.myresolver.acme]
+  [certificatesResolvers.myresolver.acme.dnsChallenge]
+    provider = "digitalocean"
+    delayBeforeCheck = 0
+```
+```bash
+--certificatesresolvers.myresolver.acme.dnschallenge.provider=digitalocean
+--certificatesresolvers.myresolver.acme.dnschallenge.delaybeforecheck=0
+```
+{% /multicode %}
+
+The configuration requires:
+1. Setting up your DNS provider credentials (e.g., `DO_AUTH_TOKEN` for DigitalOcean)
+2. Configuring Traefik's certificate resolver
+3. Ensuring your DNS provider allows automated TXT record management
+
+For configuration with other DNS providers, refer to [Traefik's DNS providers documentation](https://doc.traefik.io/traefik/https/acme/#providers).
 
 {% partial file="update-variables.md" /%}
