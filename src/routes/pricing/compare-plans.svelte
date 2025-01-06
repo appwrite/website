@@ -163,6 +163,13 @@
                     scale: '$3 per 1,000 users',
                     enterprise: 'Custom'
                 },
+  		{
+                    title: 'OTP SMS',
+                    free: '10 OTP / month',
+                    pro: '[View rates](/docs/advanced/platform/otp-sms',
+                    scale: '[View rates](/docs/advanced/platform/otp-sms',
+                    enterprise: '[View rates](/docs/advanced/platform/otp-sms'
+                },
                 {
                     title: 'Teams',
                     free: '100 per project',
