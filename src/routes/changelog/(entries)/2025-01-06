@@ -1,0 +1,16 @@
+---
+layout: changelog
+title: "New Database operators: OR & contains query methods"
+date: 2025-01-06
+cover: /images/changelog/2025-01-06.png
+---
+
+As Appwrite continues to grow, we need to ensure that the platform remains sustainable and that we can provide the best possible service to all our users. Starting February 10th, we will begin charging for OTP login attempts. This change will help cover the costs associated with providing this valuable service and allow us to keep improving and expanding the platform.
+
+When we launched Appwrite Cloud in beta, we focused on enabling the platform and providing you with as much value as possible. We intentionally didn’t charge for every service, even in cases where we were absorbing significant costs ourselves - like OTP logins, where sending SMS messages through various telecom companies incurred a considerable expense.
+
+Please refer to our rates page for a breakdown of the new pricing, including rates by region and specific SMS costs.
+
+{% arrow_link href="/blog/post/announcing-phone-otp-pricing" %}
+Read the announcement to learn more
+{% /arrow_link %}
