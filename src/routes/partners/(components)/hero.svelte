@@ -1,9 +1,14 @@
 <script>
+    import { classNames } from '$lib/utils/classnames';
     import Puzzle from './puzzle.svelte';
 </script>
 
 <div
-    class="grid-bg border-smooth relative box-content flex items-center border-b py-12 px-5 after:absolute after:inset-0 after:-z-1 after:bg-linear-to-r after:from-black/32 after:to-transparent lg:px-8 xl:px-16"
+    class={classNames(
+        'grid-bg border-smooth relative box-content flex items-center border-b px-5 py-12 lg:px-8 xl:px-16',
+        'before:absolute before:inset-0 before:-z-1 before:bg-linear-to-r before:from-black/32 before:to-transparent',
+        'after:absolute after:inset-0 after:-z-1 after:bg-gradient-to-l after:from-[#19191C] after:from-32% after:to-transparent'
+    )}
 >
     <div class="mx-auto grid items-center gap-16 md:grid-cols-2">
         <div class="max-w-lg space-y-8">
@@ -15,7 +20,7 @@
             <h1 class="text-display font-aeonik-pro text-primary text-pretty">
                 Boost businesses with Appwrite<span class="text-accent">_</span>
             </h1>
-            <p class="text-description text-secondary text-pretty font-medium">
+            <p class="text-description text-secondary font-medium text-pretty">
                 Join the Appwrite Partner program to unlock growth opportunities with tools,
                 resources, and support to boost revenue and expand your reach.
             </p>
