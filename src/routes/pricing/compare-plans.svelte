@@ -278,7 +278,7 @@
                 },
                 {
                     title: 'Compute options',
-                    free: '0.5 CPU - 512MB RAM',
+                    free: '0.5 CPU & 512MB RAM',
                     pro: '0.5 CPU & 512MB RAM<br/>1 CPU & 512MB RAM<br/>1 CPU & 1GB RAM<br/>1 CPU & 2GB RAM<br/>2 CPU & 4GB RAM<br/>4 CPU & 4GB RAM',
                     scale: '0.5 CPU & 512MB RAM<br/>1 CPU & 512MB RAM<br/>1 CPU & 1GB RAM<br/>1 CPU & 2GB RAM<br/>2 CPU & 4GB RAM<br/>4 CPU & 4GB RAM',
                     enterprise: 'Custom'
