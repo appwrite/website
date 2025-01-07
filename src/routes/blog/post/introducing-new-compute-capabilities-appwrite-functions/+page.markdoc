@@ -39,7 +39,7 @@ GB-hours is calculated by multiplying the build and execution time of your funct
 ## Allocation and pricing plans
 
 - Free plan users will have up to 100GB of execution and build time per month.
-- Pro, and Scale users will have up to 1,000GB of execution and build time per month. Additional usage is available at a rate of $0.10 per GB-hour.
+- Pro, and Scale users will have up to 1,000GB of execution and build time per month. Additional usage is available at a rate of $0.09 per GB-hour.
 
 Once the monthly GB-hours limit is reached, additional usage will automatically apply add-ons to your Pro or Scale account. To prevent unexpected charges, we strongly recommend setting a **budget cap**. The budget cap is designed to safeguard your organization by pausing services once the budget is reached for additional usage, allowing you to adjust your usage or modify your budget as needed.
 
