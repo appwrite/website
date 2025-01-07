@@ -269,28 +269,18 @@
                     scale: '3.5M / month',
                     enterprise: 'Custom'
                 },
- 		{
+                {
                     title: 'GB Hours',
                     free: '100 GB-hour / month',
                     pro: '1,000 GB-hour / month then $0.18 per GB-hour',
                     scale: '1,000 GB-hour / month then $0.18 per GB-hour',
                     enterprise: 'Custom'
                 },
- 		{
+                {
                     title: 'Compute options',
                     free: '0.5 CPU - 512MB RAM',
-                    pro: '0.5 CPU & 512MB RAM
-			  1 CPU & 512MB RAM
-			  1 CPU & 1GB RAM
-			  1 CPU & 2GB RAM
-			  2 CPU & 4GB RAM
-			  4 CPU & 4GB RAM',
-                    scale: '0.5 CPU & 512MB RAM
-			  1 CPU & 512MB RAM
-			  1 CPU & 1GB RAM
-			  1 CPU & 2GB RAM
-			  2 CPU & 4GB RAM
-			  4 CPU & 4GB RAM',
+                    pro: '0.5 CPU & 512MB RAM<br/>1 CPU & 512MB RAM<br/>1 CPU & 1GB RAM<br/>1 CPU & 2GB RAM<br/>2 CPU & 4GB RAM<br/>4 CPU & 4GB RAM',
+                    scale: '0.5 CPU & 512MB RAM<br/>1 CPU & 512MB RAM<br/>1 CPU & 1GB RAM<br/>1 CPU & 2GB RAM<br/>2 CPU & 4GB RAM<br/>4 CPU & 4GB RAM',
                     enterprise: 'Custom'
                 },
                 {
@@ -631,7 +621,7 @@
                                                 class:is-selected={col === tab}
                                             >
                                                 {#if typeof row[col] === 'string'}
-                                                    {row[col]}
+                                                    {@html row[col]}
                                                 {:else}
                                                     <img
                                                         class="mx-auto self-center"
