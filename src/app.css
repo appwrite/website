@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@variant dark (&:is(.dark *));
 
 @theme {
     /* Colors */
