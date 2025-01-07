@@ -269,6 +269,33 @@
                     scale: '3.5M / month',
                     enterprise: 'Custom'
                 },
+ 		{
+                    title: 'GB Hours',
+                    free: '100 GB-hour / month',
+                    pro: '1,000 GB-hour / month then $0.18 per GB-hour',
+                    scale: '1,000 GB-hour / month then $0.18 per GB-hour',
+                    enterprise: 'Custom'
+                },
+ 		{
+                    title: 'Compute options',
+                    free: '0.5 CPU - 512MB RAM',
+                    pro: '0.5 CPU & 512MB RAM
+			  1 CPU & 512MB RAM
+			  1 CPU & 1GB RAM
+			  1 CPU & 2GB RAM
+			  2 CPU & 4GB RAM
+			  4 CPU & 4GB RAM',
+                    scale: '0.5 CPU & 512MB RAM
+			  1 CPU & 512MB RAM
+			  1 CPU & 1GB RAM
+			  1 CPU & 2GB RAM
+			  2 CPU & 4GB RAM
+			  4 CPU & 4GB RAM
+			  4 CPU & 8GB RAM
+			  8 CPU & 4GB RAM
+			  8 CPU & 8GB RAM',
+                    enterprise: 'Custom'
+                },
                 {
                     title: 'Additional executions',
                     free: '-',
