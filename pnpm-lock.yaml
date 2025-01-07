@@ -75,9 +75,6 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
-      cookie:
-        specifier: ^1.0.2
-        version: 1.0.2
       cva:
         specifier: npm:class-variance-authority@^0.7.0
         version: class-variance-authority@0.7.0
@@ -142,8 +139,8 @@ importers:
         specifier: ^8.4.49
         version: 8.4.49
       posthog-js:
-        specifier: ^1.174.2
-        version: 1.174.2
+        specifier: ^1.204.0
+        version: 1.204.0
       posthog-node:
         specifier: ^4.2.1
         version: 4.2.1
@@ -2247,10 +2244,6 @@ packages:
     resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
     engines: {node: '>= 0.6'}
 
-  cookie@1.0.2:
-    resolution: {integrity: sha512-9Kr/j4O16ISv8zBBhJoi4bXOYNTkFLOqSL3UDB0njXxCXNezjeyVrJyGOWtgfs/q2km1gwBcfH8q1yEGoMYunA==}
-    engines: {node: '>=18'}
-
   core-js@3.38.1:
     resolution: {integrity: sha512-OP35aUorbU3Zvlx7pjsFdu1rGNnD4pgw/CWoYzRY3t2EzoVT7shKHY1dlAy3f41cGIO7ZDPQimhGFTlEYkG/Hw==}
 
@@ -3610,8 +3603,8 @@ packages:
     resolution: {integrity: sha512-9ZhXKM/rw350N1ovuWHbGxnGh/SNJ4cnxHiM0rxE4VN41wsg8P8zWn9hv/buK00RP4WvlOyr/RBDiptyxVbkZQ==}
     engines: {node: '>=0.10.0'}
 
-  posthog-js@1.174.2:
-    resolution: {integrity: sha512-UgS7eRcDVvVz2XSJ09NMX8zBcdpFnPayfiWDNF3xEbJTsIu1GipkkYNrVlsWlq8U1PIrviNm6i0Dyq8daaxssw==}
+  posthog-js@1.204.0:
+    resolution: {integrity: sha512-wVt948wKPPztCZ3OeDq8y0dtaPbhbY8vFuEVBUNHOn7PohbTXr7HZ4CNhH8fXgFkx5COEzz/20wWJmEsSU5oCA==}
 
   posthog-node@4.2.1:
     resolution: {integrity: sha512-l+fsjYEkTik3m/G0pE7gMr4qBJP84LhK779oQm6MBzhBGpd4By4qieTW+4FUAlNCyzQTynn3Nhsa50c0IELSxQ==}
@@ -6716,8 +6709,6 @@ snapshots:
 
   cookie@0.6.0: {}
 
-  cookie@1.0.2: {}
-
   core-js@3.38.1: {}
 
   core-util-is@1.0.3: {}
@@ -8087,7 +8078,7 @@ snapshots:
     dependencies:
       xtend: 4.0.2
 
-  posthog-js@1.174.2:
+  posthog-js@1.204.0:
     dependencies:
       core-js: 3.38.1
       fflate: 0.4.8
