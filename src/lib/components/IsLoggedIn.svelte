@@ -6,21 +6,21 @@
 
     export let classes = '';
 
+    const isLoggedIn = 'loggedIn' in document.body.dataset;
+
     function getTrackingEventName() {
-        return browser
-            ? 'loggedIn' in document.body.dataset
-                ? 'Go to console'
-                : 'Get started'
-            : 'Get started';
+        return browser ? (isLoggedIn ? 'Go to console' : 'Get started') : 'Get started';
     }
 </script>
 
 <a
     class={classNames('web-button web-u-inline-width-100-percent-mobile', classes)}
     href={PUBLIC_APPWRITE_DASHBOARD}
-    on:click={() => {
-        trackEvent(`${getTrackingEventName()} in header`);
-    }}
+    on:click={() =>
+        trackEvent({
+            plausible: { name: `${getTrackingEventName()} in header` },
+            ...(isLoggedIn ? {} : { posthog: { name: 'get-started-btn_nav_click' } })
+        })}
 >
     <span class="hidden group-[&[data-logged-in]]/body:block">Go to Console</span>
     <span class="block group-[&[data-logged-in]]/body:hidden">Get started</span>
