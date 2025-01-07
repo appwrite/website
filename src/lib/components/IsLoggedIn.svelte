@@ -6,7 +6,7 @@
 
     export let classes = '';
 
-    const isLoggedIn = 'loggedIn' in document.body.dataset;
+    const isLoggedIn = browser && 'loggedIn' in document.body.dataset;
 
     function getTrackingEventName() {
         return browser ? (isLoggedIn ? 'Go to console' : 'Get started') : 'Get started';

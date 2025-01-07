@@ -10,8 +10,7 @@ export const load = async () => {
     if (browser) {
         posthog.init(PUBLIC_POSTHOG_API_KEY, {
             api_host: 'https://eu.i.posthog.com',
-            person_profiles: 'identified_only',
-            persistence: 'localStorage'
+            person_profiles: 'identified_only'
         });
     }
 
