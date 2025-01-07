@@ -1,5 +1,5 @@
 import { getAllChangelogEntries } from './changelog/utils';
-import { browser, dev } from '$app/environment';
+import { browser } from '$app/environment';
 import posthog from 'posthog-js';
 import { PUBLIC_POSTHOG_API_KEY } from '$env/static/public';
 
