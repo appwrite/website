@@ -272,8 +272,8 @@
                 {
                     title: 'GB Hours',
                     free: '100 GB-hour / month',
-                    pro: '1,000 GB-hour / month then $0.18 per GB-hour',
-                    scale: '1,000 GB-hour / month then $0.18 per GB-hour',
+                    pro: '1,000 GB-hour / month then $0.09 per GB-hour',
+                    scale: '1,000 GB-hour / month then $0.09 per GB-hour',
                     enterprise: 'Custom'
                 },
                 {
