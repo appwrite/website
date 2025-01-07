@@ -290,10 +290,7 @@
 			  1 CPU & 1GB RAM
 			  1 CPU & 2GB RAM
 			  2 CPU & 4GB RAM
-			  4 CPU & 4GB RAM
-			  4 CPU & 8GB RAM
-			  8 CPU & 4GB RAM
-			  8 CPU & 8GB RAM',
+			  4 CPU & 4GB RAM',
                     enterprise: 'Custom'
                 },
                 {
