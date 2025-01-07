@@ -26,7 +26,7 @@
 </script>
 
 <div use:melt={$portalled}>
-    <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }} />
+    <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }}></div>
 
     <div
         class="web-media content"
@@ -40,7 +40,7 @@
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
-            />
+            ></iframe>
         {/key}
     </div>
 </div>
@@ -56,7 +56,7 @@
         pointer-events: none;
         transition: 200ms ease;
 
-        :global(&[data-state='open']) {
+        &:global([data-state='open']) {
             opacity: 1;
             pointer-events: all;
         }
@@ -82,7 +82,7 @@
         pointer-events: none;
         transition: 200ms ease;
 
-        :global(&[data-state='open']) {
+        &:global([data-state='open']) {
             opacity: 1;
             transform: scale(1);
             pointer-events: all;
