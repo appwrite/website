@@ -6,6 +6,7 @@
     import Hero from './(components)/hero.svelte';
     import Partners from './(components)/partners.svelte';
     import Puzzle from './(components)/puzzle.svelte';
+    import Why from './(components)/why.svelte';
 
     const title = 'Partners' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -33,4 +34,5 @@
     <Hero />
     <Benefits />
     <Partners />
+    <Why />
 </Main>

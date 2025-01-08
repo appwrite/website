@@ -41,21 +41,28 @@
             </div>
         </div>
 
-        <div class="mask relative">
+        <div class="relative">
             {#each tiers as { title, icon }, i}
                 <div
-                    class="border-smooth relative flex items-center gap-4 overflow-hidden rounded-[40px] border-2 bg-black bg-gradient-to-br from-black to-white/20 py-1 pr-6"
+                    class="animate relative opacity-0"
                     style:z-index={tiers.length - i}
-                    style:margin-bottom={i === tiers.length - 1 ? 0 : `-${clamp(32, i * 40, 80)}px`}
-                    style:transform="scale({1 - i * 0.15})"
+                    style:animation-delay="calc({i} * 0.2s)"
                 >
-                    <div class="flex items-center gap-2">
-                        <img src={icon} alt="{title} Icon" class="h-32 w-auto" />
-                        <div>
-                            <span class="text-primary -mb-2 block font-medium uppercase"
-                                >{title}<span class="text-accent">_</span></span
-                            >
-                            <h3 class="text-primary text-[48px]">Appwrite Partner</h3>
+                    <div
+                        class="border-smooth flex items-center gap-4 overflow-hidden rounded-[40px] border-2 bg-black bg-gradient-to-br from-black to-white/20 py-1 pr-6"
+                        style:margin-bottom={i === tiers.length - 1
+                            ? 0
+                            : `-${clamp(32, i * 40, 80)}px`}
+                        style:transform="scale({1 - i * 0.15})"
+                    >
+                        <div class="flex items-center gap-2">
+                            <img src={icon} alt="{title} Icon" class="h-32 w-auto" />
+                            <div>
+                                <span class="text-primary -mb-2 block font-medium uppercase"
+                                    >{title}<span class="text-accent">_</span></span
+                                >
+                                <h3 class="text-primary text-[48px]">Appwrite Partner</h3>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -63,3 +70,21 @@
         </div>
     </div>
 </div>
+
+<style>
+    .animate {
+        animation: card-in 600ms ease-out forwards;
+    }
+    @keyframes card-in {
+        0% {
+            transform: translateY(100%);
+            opacity: 0;
+            filter: blur(2px);
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+            filter: blur(0);
+        }
+    }
+</style>
