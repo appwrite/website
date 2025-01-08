@@ -2,12 +2,12 @@
 layout: post
 title: Introducing new compute capabilities for Appwrite Functions
 description: Learn more about the new compute capabilities for Appwrite Functions. 
-date: 2024-07-29
+date: 2025-01-07
 cover: /images/blog/gb-hours.png
 timeToRead: 6
 author: eldad-fux
 category: product
-featured: false
+featured: true
 callToAction: true
 ---
 
