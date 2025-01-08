@@ -15,12 +15,12 @@ At Appwrite, we're always working to make our serverless platform better for dev
 
 Starting today, Appwrite developers have the ability to customize runtime specifications, allowing for tailored performance and resource allocation. Previously, all functions operated with a standard configuration of 0.5 CPU and 512MB memory. Now, Pro and Scale users can select from a range of configurations to suit their application needs better:
 
-• 0.5 CPU & 512MB RAM
-• 1 CPU & 512MB RAM
-• 1 CPU & 1GB RAM
-• 1 CPU & 2GB RAM
-• 2 CPU & 4GB RAM
-• 4 CPU & 4GB RAM
+- 0.5 CPU & 512MB RAM
+- 1 CPU & 512MB RAM
+- 1 CPU & 1GB RAM
+- 1 CPU & 2GB RAM
+- 2 CPU & 4GB RAM
+- 4 CPU & 4GB RAM
 
 These options enable greater performance and flexibility, allowing developers to optimize their functions based on specific requirements. For instance, resource-intensive tasks such as real-time data processing or complex computational operations can now be executed more efficiently. Additionally, enhanced memory configurations support larger datasets and more demanding applications, broadening the scope of what can be achieved with Appwrite Functions.
 
