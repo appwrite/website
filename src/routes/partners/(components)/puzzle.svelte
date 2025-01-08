@@ -359,10 +359,6 @@
         <defs>
             <filter
                 id="filter0_b_71_1348"
-                x="16.0545"
-                y="324.138"
-                width="397.734"
-                height="313.478"
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
             >
