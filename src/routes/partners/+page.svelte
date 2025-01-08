@@ -2,7 +2,9 @@
     import Main from '$lib/layouts/Main.svelte';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
+    import Benefits from './(components)/benefits.svelte';
     import Hero from './(components)/hero.svelte';
+    import Partners from './(components)/partners.svelte';
     import Puzzle from './(components)/puzzle.svelte';
 
     const title = 'Partners' + TITLE_SUFFIX;
@@ -29,4 +31,6 @@
 
 <Main>
     <Hero />
+    <Benefits />
+    <Partners />
 </Main>
