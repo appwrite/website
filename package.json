@@ -19,13 +19,15 @@
         "test": "npm run test:integration && npm run test:unit",
         "test:integration": "playwright test",
         "test:unit": "vitest",
-        "optimize": "node ./scripts/optimize-assets.js"
+        "optimize": "node ./scripts/optimize-assets.js",
+        "optimize:all": "node ./scripts/optimize-all.js"
     },
     "packageManager": "pnpm@9.4.0+sha512.f549b8a52c9d2b8536762f99c0722205efc5af913e77835dbccc3b0b0b2ca9e7dc8022b78062c17291c48e88749c70ce88eb5a74f1fa8c4bf5e18bb46c8bd83a",
     "dependencies": {
         "@number-flow/svelte": "^0.2.1",
         "@sentry/sveltekit": "^8.38.0",
         "h3": "^1.13.0",
+        "posthog-js": "^1.204.0",
         "sharp": "^0.33.5"
     },
     "devDependencies": {
@@ -87,6 +89,7 @@
         "vite": "^5.4.11",
         "vite-plugin-dynamic-import": "^1.6.0",
         "vite-plugin-image-optimizer": "^1.1.8",
+        "vite-plugin-manifest-sri": "^0.2.0",
         "vitest": "^1.6.0"
     }
 }

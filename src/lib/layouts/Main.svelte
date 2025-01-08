@@ -23,9 +23,28 @@
     import InitBanner from '$lib/components/InitBanner.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import MainNav, { type NavLink } from '$lib/components/MainNav.svelte';
+    import posthog from 'posthog-js';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
+
+    // posthog
+    let isHeaderExperiment: boolean = false;
+    let mounted: boolean = false;
+
+    onMount(async () => {
+        if (posthog) {
+            if (posthog.getFeatureFlag('sticky-navigation_ab-test') === 'control') {
+                isHeaderExperiment = false;
+            }
+
+            if (posthog.getFeatureFlag('sticky-navigation_ab-test') === 'sticky-nav') {
+                isHeaderExperiment = true;
+            }
+
+            mounted = true;
+        }
+    });
 
     function setupThemeObserver() {
         const handleVisibility = () => {
@@ -97,7 +116,7 @@
         return setupThemeObserver();
     });
 
-    let navLinks: NavLink[] = [
+    let navLinks: Array<NavLink> = [
         {
             label: 'Products',
             submenu: ProductsSubmenu,
@@ -249,7 +268,11 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     class="web-button is-text web-u-inline-width-100-percent-mobile"
-                    on:click={() => trackEvent('Star on GitHub in header')}
+                    on:click={() =>
+                        trackEvent({
+                            plausible: { name: 'Star on GitHub in header' },
+                            posthog: { name: 'github-stars_nav_click' }
+                        })}
                 >
                     <span class="web-icon-star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>

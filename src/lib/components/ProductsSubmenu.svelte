@@ -71,6 +71,7 @@
     import { dev } from '$app/environment';
     import { cn } from '$lib/utils/classnames';
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
+    import { trackEvent } from '$lib/actions/analytics';
 
     const {
         elements: { trigger, menu, item, overlay },
@@ -82,7 +83,7 @@
     export let label: string;
 </script>
 
-<li
+<button
     class={cn(
         'text-primary focus:text-accent hover:text-accent inline-flex cursor-pointer items-center justify-between outline-none',
         {
@@ -98,15 +99,15 @@
             'rotate-180': $open
         })}
     />
-</li>
+</button>
 
 <div
     use:melt={$menu}
     class={cn(
-        'data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in relative !left-1/2 z-10 mt-6 mx-auto hidden w-full -translate-x-1/2 flex-col items-center p-0 outline-none [max-inline-size:86.875rem] md:flex'
+        'data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in relative !left-1/2 z-10 mx-auto mt-6 hidden w-full -translate-x-1/2 flex-col items-center p-0 outline-none [max-inline-size:86.875rem] md:flex'
     )}
 >
-    <div class="is-special-padding w-full rounded-2xl border border-white/8 bg-[#232325] p-6">
+    <div class="is-special-padding border-white/8 w-full rounded-2xl border bg-[#232325] p-6">
         <div class="grid w-full grid-cols-1 place-content-between gap-16 lg:grid-cols-12">
             <div class="col-span-8 -mr-12 pr-12">
                 <span
@@ -120,10 +121,16 @@
                         <a
                             href={product.href}
                             use:melt={$item}
-                            class="group flex gap-3 rounded-xl p-1 text-white outline-none transition-colors focus:bg-white/8"
+                            on:click={() =>
+                                trackEvent({
+                                    plausible: {
+                                        name: `${product.name} in products submenu`
+                                    }
+                                })}
+                            class="focus:bg-white/8 group flex gap-3 rounded-xl p-1 text-white outline-none transition-colors"
                         >
                             <div
-                                class="flex size-12 shrink-0 items-center justify-center rounded-lg border border-white/12 bg-white/6"
+                                class="border-white/12 bg-white/6 flex size-12 shrink-0 items-center justify-center rounded-lg border"
                             >
                                 <img
                                     src={product.icon}
@@ -137,7 +144,7 @@
 
                                     {#if product.beta}
                                         <span
-                                            class="text-caption bg-accent/24 ml-1 rounded py-1 px-2 font-medium text-white"
+                                            class="text-caption bg-accent/24 ml-1 rounded px-2 py-1 font-medium text-white"
                                             >Coming soon</span
                                         >
                                     {/if}
@@ -150,16 +157,16 @@
                     {/each}
                 </div>
             </div>
-            <div class="col-span-4 -ml-12 border-l border-white/6 pl-12">
+            <div class="border-white/6 col-span-4 -ml-12 border-l pl-12">
                 <a
                     href="/blog/post/case-study-undo"
                     use:melt={$item}
-                    class="block rounded-2xl border border-white/12 bg-white/6 p-4 outline-none focus-within:bg-white/12"
+                    class="border-white/12 bg-white/6 focus-within:bg-white/12 block rounded-2xl border p-4 outline-none"
                 >
                     <header class="flex items-center justify-between">
                         <span
                             class="font-aeonik-fono tracking-loose text-secondary block text-xs uppercase"
-                            >Case studies<span class="text-accent">_</span></span
+                            >Customer stories<span class="text-accent">_</span></span
                         >
                         <a
                             href="/blog/category/case-studies"

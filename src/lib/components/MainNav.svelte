@@ -22,7 +22,7 @@
         {#each links as link}
             <li class="web-main-header-nav-item text-primary hover:text-accent">
                 {#if link.submenu}
-                    <button
+                    <div
                         class="web-main-header-nav-item-button"
                         aria-haspopup="true"
                         aria-expanded="false"
@@ -30,7 +30,7 @@
                         data-submenu-button
                     >
                         <svelte:component this={link.submenu} label={link.label} />
-                    </button>
+                    </div>
                 {:else}
                     <a
                         class={cn(
