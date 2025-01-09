@@ -7,7 +7,7 @@ export const prerender = true;
 export const trailingSlash = 'never';
 
 export const load = async () => {
-    if (browser) {
+    if (browser && PUBLIC_POSTHOG_API_KEY) {
         posthog.init(PUBLIC_POSTHOG_API_KEY, {
             api_host: 'https://eu.i.posthog.com',
             person_profiles: 'identified_only',
