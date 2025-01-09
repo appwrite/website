@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Phone OTP
-description: Learn how Appwrite handles OTP and SMS-based authentication for secure user verification.
+description: Learn how Appwrite handles SMS-based OTP authentication for secure user verification.
 ---
 
 {% info title="Note" %}
