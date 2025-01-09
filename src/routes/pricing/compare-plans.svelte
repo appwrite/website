@@ -3,11 +3,11 @@
     import { Tabs } from '$lib/UI';
     import { visible } from '$lib/actions/visible';
     import { isHeaderHidden } from '$lib/layouts/Main.svelte';
+    import { classNames } from '$lib/utils/classnames';
     import { getScrollDir } from '$lib/utils/getScrollDir';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
-    import { classNames } from '$lib/utils/classnames';
 
     type Table = {
         title: string;
@@ -163,12 +163,13 @@
                     scale: '$3 per 1,000 users',
                     enterprise: 'Custom'
                 },
-  		{
+                {
                     title: 'Phone OTP',
                     free: '10 SMS / month',
-                    pro: '[View rates](/docs/advanced/platform/otp-sms',
-                    scale: '[View rates](/docs/advanced/platform/otp-sms',
-                    enterprise: '[View rates](/docs/advanced/platform/otp-sms'
+                    pro: '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>',
+                    scale: '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>',
+                    enterprise:
+                        '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>'
                 },
                 {
                     title: 'Teams',
@@ -614,7 +615,7 @@
                                                 class:is-selected={col === tab}
                                             >
                                                 {#if typeof row[col] === 'string'}
-                                                    {row[col]}
+                                                    {@html row[col]}
                                                 {:else}
                                                     <img
                                                         class="mx-auto self-center"
