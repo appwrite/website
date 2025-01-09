@@ -169,7 +169,7 @@
                                 apply image transformations, and more.
                             </p>
                             <a
-                                href="/docs"
+                                href="/docs/references/cloud/client-web/storage"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="web-button mt-4 !w-full md:!w-fit"
