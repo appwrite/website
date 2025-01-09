@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { FooterNav, MainFooter, PreFooter } from '$lib/components';
     import Main from '$lib/layouts/Main.svelte';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
@@ -6,6 +7,8 @@
     import Hero from './(components)/hero.svelte';
     import Partners from './(components)/partners.svelte';
     import Puzzle from './(components)/puzzle.svelte';
+    import SubmissionForm from './(components)/submission-form.svelte';
+    import Ways from './(components)/ways.svelte';
     import Why from './(components)/why.svelte';
 
     const title = 'Partners' + TITLE_SUFFIX;
@@ -34,5 +37,13 @@
     <Hero />
     <Benefits />
     <Partners />
+    <Ways />
     <Why />
+    <SubmissionForm />
+    <div class="relative overflow-hidden">
+        <div class="container">
+            <FooterNav />
+            <MainFooter />
+        </div>
+    </div>
 </Main>

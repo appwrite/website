@@ -184,6 +184,49 @@
         </g>
 
         <g id="rightPiece" class={classNames('rightPiece', animate && 'active')}>
+            <g id="circles" class={classNames('circles', animate && 'active')}>
+                <g transform="matrix(0.866025 -0.5 -0.0643594 0.997927 416.079 229.215)">
+                    <circle
+                        opacity="0.2"
+                        cx="51.2988"
+                        cy="51.2988"
+                        r="51.2988"
+                        fill="white"
+                        fill-opacity="0.04"
+                        stroke="white"
+                        stroke-dasharray="4 4"
+                        class="rotate"
+                        style:--offset-to="750"
+                    />
+                </g>
+                <g transform="matrix(0.866025 -0.5 -0.0643594 0.997927 428.802 237.408)">
+                    <circle
+                        opacity="0.4"
+                        cx="34.4004"
+                        cy="34.4004"
+                        r="34.4004"
+                        fill="white"
+                        fill-opacity="0.04"
+                        stroke="white"
+                        stroke-dasharray="4 4"
+                        class="rotate"
+                        style:--offset-to="-500"
+                    />
+                </g>
+                <g transform="matrix(0.866025 -0.5 -0.0643594 0.997927 441.184 245.682)">
+                    <circle
+                        cx="16.8984"
+                        cy="16.8984"
+                        r="16.8984"
+                        fill="white"
+                        fill-opacity="0.02"
+                        stroke="white"
+                        stroke-dasharray="4 4"
+                        class="rotate"
+                        style:--offset-to="250"
+                    />
+                </g>
+            </g>
             <g filter="url(#filter9_b_71_1348)">
                 <path
                     d="M574.624 287.407L574.626 28.4716L549.708 14.0791L549.71 273.022L574.624 287.407Z"
@@ -250,49 +293,7 @@
                 />
             </g>
         </g>
-        <g id="circles" class={classNames('circles', animate && 'active')}>
-            <g transform="matrix(0.866025 -0.5 -0.0643594 0.997927 416.079 229.215)">
-                <circle
-                    opacity="0.2"
-                    cx="51.2988"
-                    cy="51.2988"
-                    r="51.2988"
-                    fill="white"
-                    fill-opacity="0.04"
-                    stroke="white"
-                    stroke-dasharray="4 4"
-                    class="rotate"
-                    style:--offset-to="750"
-                />
-            </g>
-            <g transform="matrix(0.866025 -0.5 -0.0643594 0.997927 428.802 237.408)">
-                <circle
-                    opacity="0.4"
-                    cx="34.4004"
-                    cy="34.4004"
-                    r="34.4004"
-                    fill="white"
-                    fill-opacity="0.04"
-                    stroke="white"
-                    stroke-dasharray="4 4"
-                    class="rotate"
-                    style:--offset-to="-500"
-                />
-            </g>
-            <g transform="matrix(0.866025 -0.5 -0.0643594 0.997927 441.184 245.682)">
-                <circle
-                    cx="16.8984"
-                    cy="16.8984"
-                    r="16.8984"
-                    fill="white"
-                    fill-opacity="0.02"
-                    stroke="white"
-                    stroke-dasharray="4 4"
-                    class="rotate"
-                    style:--offset-to="250"
-                />
-            </g>
-        </g>
+
         <g id="gridLines" class={classNames('gridLines', animate && 'active')}>
             <path
                 d="M401.439 99.6807L241.225 192.181"
@@ -791,8 +792,50 @@
         --cubic-bezier: (0.185, 0.84, 0.44, 1);
     }
 
+    // .rightPiece {
+    //     @keyframes right-piece {
+    //         0% {
+    //             transform: translateY(-50vh);
+    //         }
+    //         75% {
+    //             transform: translateY(10vh);
+    //         }
+    //         95% {
+    //             transform: translateY(-2vh);
+    //         }
+    //         100% {
+    //             transform: translateY(0);
+    //         }
+    //     }
+
+    //     &.active {
+    //         animation: cubic-bezier(0.6, -0.28, 0.735, 0.045) right-piece 1s forwards;
+    //         animation-play-state: paused;
+    //     }
+    // }
+
     .leftPiece {
         --color-left: #fd366e;
+
+        // @keyframes left-piece {
+        //     0% {
+        //         transform: translateY(50vh);
+        //     }
+        //     75% {
+        //         transform: translateY(-10vh);
+        //     }
+        //     95% {
+        //         transform: translateY(2vh);
+        //     }
+        //     100% {
+        //         transform: translateY(0);
+        //     }
+        // }
+
+        // &.active {
+        //     animation: cubic-bezier(0.6, -0.28, 0.735, 0.045) left-piece 1s forwards;
+        //     animation-play-state: paused;
+        // }
     }
 
     .circles {
@@ -825,8 +868,12 @@
     }
 
     .gridLines {
-        transition: 0.5s ease-in-out;
-        transition-property: opacity, filter, transform;
+        .gridLine {
+            opacity: 0;
+            transition: 0.5s ease-in-out;
+            transition-delay: 1.1s;
+            transition-property: opacity, filter, transform;
+        }
 
         @keyframes rotation {
             from {
@@ -841,6 +888,7 @@
         &.active {
             .gridLine {
                 animation: rotation 60s linear infinite;
+                opacity: 1;
             }
         }
     }
