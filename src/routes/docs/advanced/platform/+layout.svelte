@@ -94,6 +94,11 @@
             items: [
                 {
                     new: true,
+                    label: 'Compute',
+                    href: '/docs/advanced/platform/compute'
+                },
+                {
+                    new: true,
                     label: 'Phone OTP',
                     href: '/docs/advanced/platform/phone-otp'
                 }
