@@ -5,7 +5,7 @@ description: Learn how Appwrite handles OTP and SMS-based authentication for sec
 ---
 
 {% info title="Note" %}
-Changes will take effect on February 10th, 2025. Check out [this blog post](/blog/post/announcing-phone-OTP-pricing) for more information.
+Changes will take effect on February 10th, 2025. Check out [this blog post](https://appwrite.io/blog/post/announcing-phone-OTP-pricing) for more information.
 {% /info %}
 
 Appwrite supports SMS-based OTP (One-Time Password) authentication to provide secure and reliable user verification. This feature enhances your app's security by adding an extra layer of authentication.
