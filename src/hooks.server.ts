@@ -50,7 +50,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
         "frame-ancestors 'self' https://www.youtube.com https://*.vimeo.com",
         'block-all-mixed-content',
         'upgrade-insecure-requests',
-        "connect-src 'self' https://cloud.appwrite.io",
+        "connect-src 'self' https://*.appwrite.io", // example: cloud, growth, etc.
         "frame-src 'self' https://www.youtube.com https://status.appwrite.online https://www.youtube-nocookie.com https://player.vimeo.com"
     ];
 
