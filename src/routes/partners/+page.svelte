@@ -1,5 +1,6 @@
 <script lang="ts">
     import { FooterNav, MainFooter, PreFooter } from '$lib/components';
+    import Testimonials from '$lib/components/product-pages/testimonials.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
@@ -39,6 +40,9 @@
     <Partners />
     <Ways />
     <Why />
+    <div class="border-smooth mb-0 border-b py-24">
+        <Testimonials />
+    </div>
     <SubmissionForm />
     <div class="relative overflow-hidden">
         <div class="container">

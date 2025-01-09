@@ -61,9 +61,11 @@
                                 <span class="text-secondary text-sub-body block font-medium">
                                     {testimonial.name}
                                 </span>
-                                <span class="text-sub-body text-secondary block"
-                                    >{testimonial.title} // {testimonial.company}</span
-                                >
+                                {#if testimonial.title}
+                                    <span class="text-sub-body text-secondary block">
+                                        {testimonial.title} // {testimonial.company}
+                                    </span>
+                                {/if}
                             </div>
                         </div>
                     </div>
