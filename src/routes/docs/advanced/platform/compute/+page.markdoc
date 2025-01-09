@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Compute
-Learn about Appwrite Functions compute add-ons and the different CPU and memory options for function runtimes.```
+description: Learn about Appwrite Functions compute add-ons and the different CPU and memory options for function runtimes.
 ---
 
 {% info title="Note" %}
@@ -16,21 +16,21 @@ These options enable greater performance and flexibility, allowing developers to
 
 Appwrite Cloud has the following specifications available:
 
-| Memory | CPU Cores | GB Hours per hour |
-|--------|-----------|-------------------|
-| 512MB  | 0.5       | 0.25              |
-| 512MB  | 1         | 0.5               |
-| 1GB    | 1         | 1                 |
-| 2GB    | 2         | 4                 |
-| 4GB    | 2         | 8                 |
-| 4GB    | 4         | 16                |
+| Memory | CPU Cores | Hourly Usage |
+|--------|-----------|--------------|
+| 512MB  | 0.5       | 0.25         |
+| 512MB  | 1         | 0.5          |
+| 1GB    | 1         | 1            |
+| 2GB    | 2         | 4            |
+| 4GB    | 2         | 8            |
+| 4GB    | 4         | 16           |
 
 {% info title="Note" %}
 Only customers on either Pro or Scale are able to change their specification from the default 512MB & 0.5 CPU option. For custom compute options please contact our [sales team](https://appwrite.io/contact-us/enterprise).
 {% /info %}
 
 # GB-Hours
-```suggestion
+
 GB-hours is a metric used to quantify the consumption of compute resources by combining both memory usage and the duration of that usage. Specifically, it represents the number of gigabytes (GB) of memory utilized multiplied by the number of hours those resources are active. This metric provides a comprehensive view of resource usage over time, allowing for accurate tracking, optimization, and billing based on actual compute needs.
 
 How It Works:
