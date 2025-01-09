@@ -13,17 +13,17 @@ of events or updates. Configure one of the following providers to send push noti
 {% cards_item href="/docs/products/messaging/apns" title="APNS" icon="icon-apple" %}
 Send push notifications to apps on Apple devices through Apple Push Notification service (APNs).
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/fcm" title="FCM" icon="icon-firebase" %}
+{% cards_item href="/docs/products/messaging/fcm" title="FCM" icon="web-icon-firebase" %}
 Send push notifications to Android, Apple, or Web app with Firebase Cloud Messaging (FCM).
 {% /cards_item %}
 {% /cards %}
 # Email {% #email %}
 Deliver customized emails to users to send reminders, updates, promotions, and custom authentication logic.
 {% cards %}
-{% cards_item href="/docs/products/messaging/mailgun" title="Mailgun" icon="icon-mailgun" %}
+{% cards_item href="/docs/products/messaging/mailgun" title="Mailgun" icon="web-icon-mailgun" %}
 Deliver custom email messages to users using Mailgun.
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/sendgrid" title="SendGrid" icon="icon-sendgrid" %}
+{% cards_item href="/docs/products/messaging/sendgrid" title="SendGrid" icon="web-icon-sendgrid" %}
 Deliver custom email messages to users using SendGrid.
 {% /cards_item %}
 {% /cards %}
