@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Compute
-description: Learn about Appwrite's function billing and it's different CPU and Memory options.
+Learn about Appwrite Functions compute add-ons and the different CPU and memory options for function runtimes.```
 ---
 
 {% info title="Note" %}
@@ -30,23 +30,26 @@ Only customers on either Pro or Scale are able to change their specification fro
 {% /info %}
 
 # GB-Hours
-Function and Builds usage is calculated using GB Hours, you will recieve a set amount of GB Hours included within your plan.
+```suggestion
+GB-hours is a metric used to quantify the consumption of compute resources by combining both memory usage and the duration of that usage. Specifically, it represents the number of gigabytes (GB) of memory utilized multiplied by the number of hours those resources are active. This metric provides a comprehensive view of resource usage over time, allowing for accurate tracking, optimization, and billing based on actual compute needs.
 
-GB Hours are calculated like so: ```memory in GB * duration in hours * CPU Cores```. 
+How It Works:
+- Memory Allocation: Determine the amount of memory (in GB) that your application or function requires while running.
+- Duration: Measure the total time (in hours) that the allocated memory is in use.
+- Calculation: Multiply the memory allocated by the duration to obtain the total GB-hours consumed.
 
-So, for example. A function that takes 10 seconds to execute on the 4GB & 2 CPUs specification and it was executed a million times, the 
+Example:
 
-- Seconds: 1,000,000
-- GB-Seconds: 4 * 1,000,000 = 4,000,000
-- GB-Seconds with CPUs: 4,000,000 * 2 = 8,000,000
-- GB-Hours: 8,000,000 / 3600 = 2,222
+Assuming you have a function that requires 4 GB of memory to operate. If this function runs continuously for 2 hours, the compute resource usage would be:
 
-The total amount of GB Hours used is 2,222
+**4GB * 2 hours = 8 GB-hours**
+
+This means the function has consumed 8 GB-hours of compute resources.
 
 ## Allocation and pricing plans
 
-- Free plan users will have up to 100GB of execution and build time per month.
+- Free plan includes up to 100 GB-hours of execution and build time per month.
 
-- Pro, and Scale users will have up to 1,000GB of execution and build time per month. Additional usage is available at a rate of $0.09 per GB-hour.
+- Pro and Scale plans include up to 1,000GB of execution and build time per month. Additional usage is available at a rate of $0.09 per GB-hour.
 
-Once the monthly GB-hours limit is reached, additional usage will automatically apply add-ons to your Pro or Scale account.
+Once the monthly GB-hours limit is reached, additional usage will automatically apply add-ons to your Pro or Scale account. It is recommended to set budget alerts and a budget cap to prevent unexpected payments. 
