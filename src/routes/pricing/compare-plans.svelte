@@ -284,7 +284,7 @@
                     scale: '1,000 GB-hour / month',
                     enterprise: 'Custom'
                 },
- 		{
+                {
                     title: 'Additional GB-hours',
                     free: '-',
                     pro: '$0.09 per GB-hour',
