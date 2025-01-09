@@ -16,6 +16,7 @@
         viewBox="0 0 695 555"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        class="h-full w-full"
     >
         <g id="leftPiece" class={classNames('leftPiece', animate && 'active')}>
             <g id="logo" class={classNames('logo', animate && 'active')}>

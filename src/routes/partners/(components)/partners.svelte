@@ -28,7 +28,7 @@
         'after:absolute after:inset-0 after:top-0 after:right-0 after:mt-auto after:mb-0 after:block after:h-full after:bg-[radial-gradient(circle_at_120%_-40%,_hsla(343,_98%,_60%,_0.2)_0px,_transparent_40%)]'
     )}
 >
-    <div class="mx-auto grid items-center gap-16 md:grid-cols-2">
+    <div class="container mx-auto grid items-center gap-16 md:grid-cols-2">
         <div class="max-w-lg space-y-8">
             <h1 class="font-aeonik-pro text-title text-primary text-pretty">Partner Tiers</h1>
             <p class="text-body text-secondary text-pretty font-medium">
@@ -46,22 +46,24 @@
                 <div
                     class="animate relative opacity-0"
                     style:z-index={tiers.length - i}
-                    style:animation-delay="calc({i} * 0.15s)"
+                    style:animation-delay="{i * 0.15}s"
                 >
                     <div
-                        class="border-smooth flex items-center gap-4 overflow-hidden rounded-[40px] border-2 bg-black bg-gradient-to-br from-black to-white/20 py-1 pr-6"
+                        class="border-smooth flex items-center gap-4 overflow-hidden rounded-3xl border-2 bg-black bg-gradient-to-br from-black to-white/20 py-1 pr-6 md:rounded-[40px]"
                         style:margin-bottom={i === tiers.length - 1
                             ? 0
                             : `-${clamp(32, i * 40, 80)}px`}
                         style:transform="scale({1 - i * 0.15})"
                     >
-                        <div class="flex items-center gap-2">
-                            <img src={icon} alt="{title} Icon" class="h-32 w-auto" />
+                        <div class="flex items-center gap-4">
+                            <img src={icon} alt="{title} Icon" class="h-16 w-auto md:h-32" />
                             <div>
-                                <span class="text-primary -mb-2 block font-medium uppercase"
+                                <span class="text-primary block font-medium uppercase"
                                     >{title}<span class="text-accent">_</span></span
                                 >
-                                <h3 class="text-primary text-[48px]">Appwrite Partner</h3>
+                                <h3 class="text-primary text-label md:text-[2.75rem]">
+                                    Appwrite Partner
+                                </h3>
                             </div>
                         </div>
                     </div>
@@ -77,9 +79,9 @@
     }
     @keyframes card-in {
         0% {
-            transform: translateY(100%);
+            transform: translateY(20%);
             opacity: 0;
-            filter: blur(2px);
+            filter: blur(8px);
         }
         100% {
             transform: translateY(0);

@@ -49,7 +49,9 @@
     )}
 >
     {#if !submitted}
-        <div class="container mx-auto flex w-full flex-col justify-between py-40 md:flex-row">
+        <div
+            class="container mx-auto box-border flex w-full flex-col justify-between py-40 max-sm:space-y-8 md:flex-row"
+        >
             <div class="flex max-w-sm flex-col gap-6">
                 <h2 class="text-display text-primary">Become a Partner</h2>
                 <p class="text-body text-secondary font-medium">
@@ -59,66 +61,65 @@
             </div>
 
             <form method="post" on:submit|preventDefault={handleSubmit} class="flex flex-col gap-4">
-                <div class="flex md:min-w-xl">
-                    <ul class="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
-                        <li class="flex flex-col gap-1">
-                            <div class="block">Full name</div>
-                            <input
-                                required
-                                class="web-input-text"
-                                type="text"
-                                placeholder="Walter O'Brien"
-                                aria-label="Full name"
-                                bind:value={personName}
-                            />
-                        </li>
-                        <li class="flex flex-col gap-1">
-                            <div class="block">Email address</div>
-                            <input
-                                required
-                                class="web-input-text"
-                                type="email"
-                                placeholder="walter@company.com"
-                                aria-label="Email address"
-                                bind:value={personEmail}
-                            />
-                        </li>
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                    <div class="flex flex-col gap-1">
+                        <div class="block">Full name</div>
+                        <input
+                            required
+                            class="web-input-text"
+                            type="text"
+                            placeholder="Walter O'Brien"
+                            aria-label="Full name"
+                            bind:value={personName}
+                        />
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <div class="block">Email address</div>
+                        <input
+                            required
+                            class="web-input-text"
+                            type="email"
+                            placeholder="walter@company.com"
+                            aria-label="Email address"
+                            bind:value={personEmail}
+                        />
+                    </div>
 
-                        <li class="flex flex-col gap-1">
-                            <div class="block">Company name</div>
-                            <input
-                                required
-                                class="web-input-text"
-                                type="text"
-                                placeholder="Acme Inc."
-                                aria-label="Company name"
-                                bind:value={companyName}
-                            />
-                        </li>
-                        <li class="flex flex-col gap-1">
-                            <div class="block">Company URL</div>
-                            <input
-                                class="web-input-text"
-                                type="url"
-                                placeholder="https://"
-                                aria-label="Company URL"
-                                bind:value={companyUrl}
-                            />
-                        </li>
+                    <div class="flex flex-col gap-1">
+                        <div class="block">Company name</div>
+                        <input
+                            required
+                            class="web-input-text"
+                            type="text"
+                            placeholder="Acme Inc."
+                            aria-label="Company name"
+                            bind:value={companyName}
+                        />
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <div class="block">Company URL</div>
+                        <input
+                            class="web-input-text"
+                            type="url"
+                            placeholder="https://"
+                            aria-label="Company URL"
+                            bind:value={companyUrl}
+                        />
+                    </div>
 
-                        <li class="col-span-2 flex flex-col gap-1">
-                            <div class="block">Any other details you'd like to share?</div>
-                            <textarea
-                                required
-                                name="message"
-                                class="web-input-text"
-                                placeholder="Your message..."
-                                aria-label="Message"
-                                bind:value={message}
-                            />
-                        </li>
-                    </ul>
+                    <div class="flex flex-col gap-1 md:col-span-2">
+                        <div class="block">Any other details you'd like to share?</div>
+                        <textarea
+                            required
+                            name="message"
+                            class="web-input-text"
+                            placeholder="Your message..."
+                            aria-label="Message"
+                            bind:value={message}
+                        />
+                    </div>
                 </div>
+
                 <div class="web-u-flex-vertical-reverse-mobile flex justify-between gap-4">
                     <p class="text-caption web-u-max-width-380">
                         {#if error}
