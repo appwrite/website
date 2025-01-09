@@ -57,11 +57,11 @@
     <div class="border-smooth w-full border-y border-dashed">
         <div class="container">
             <div
-                class="divide-smooth grid grid-cols-1 gap-px divide-x divide-dashed md:grid-cols-3"
+                class="divide-smooth grid grid-cols-1 gap-px divide-dashed max-md:divide-y md:grid-cols-3 md:divide-x"
             >
                 {#each items as item}
                     <div
-                        class="bg-greyscale-900 last-of-type:border-smooth flex flex-col gap-4 p-6 last-of-type:border-r last-of-type:border-dashed"
+                        class="bg-greyscale-900 last-of-type:border-smooth flex flex-col gap-4 p-6 md:last-of-type:border-r md:last-of-type:border-dashed"
                     >
                         <img src={item.icon} alt="{item.title} Icon" class="size-12" />
                         <span class="text-primary -mb-3">{item.title}</span>
