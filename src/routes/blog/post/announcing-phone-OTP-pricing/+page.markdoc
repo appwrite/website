@@ -3,7 +3,7 @@ layout: post
 title: Announcing phone OTP login pricing change
 description: To keep Appwrite Cloud sustainable, we are introducing phone OTP login pricing.
 date: 2025-01-06
-cover: /images/blog/
+cover: /images/blog/otp-cover.png
 timeToRead: 4
 author: eldad-fux
 category: product
@@ -19,20 +19,20 @@ In the last few months, we’ve worked tirelessly with various vendors, navigati
 
 It’s been incredibly rewarding to see teams successfully implement phone OTP logins, using Appwrite to authenticate hundreds of thousands of users every month securely. Seeing this impact reinforces the importance of continuing to build a secure, accessible, and sustainable platform.
 
-## Pricing update
+# Pricing update
 
 As Appwrite continues to grow, we need to ensure that the platform remains sustainable and that we can provide the best possible service to all our users. Starting February 10th, we will begin charging for phone OTP login attempts. This change will help cover the costs associated with providing this valuable service and allow us to keep improving and expanding the platform.
 
 Please refer to our rates page for a breakdown of the new pricing, including rates by region and specific SMS costs.
 
-To help prepare for these changes, each team can visit their organization’s usage page or the usage section of a specific project to review their current phone OTP usage. This will help them better understand their usage patterns and plan accordingly.
+To help prepare for these changes, each team can visit their organization’s usage page or the usage section of a specific project to review their current phone OTP usage. This will help you better understand your usage patterns and plan accordingly.
 
 ![console image](/images/blog/phone-otp/.png)
 
-## Free quota available
+# Free quota available
 
 To ensure that free users can continue exploring the platform and its features, we will provide up to 10 phone OTP login attempts per month at no charge. This will allow you to continue utilizing OTP logins to evaluate Appwrite’s capabilities and integration into your workflows.
 
-## We’re here to help
+# We’re here to help
 
 If you have any questions about this change or need assistance with adjusting your application, please don’t hesitate to contact us at [billing@appwrite.io](mailto:billing@appwrite.io).
