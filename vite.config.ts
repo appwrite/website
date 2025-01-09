@@ -22,9 +22,11 @@ export default defineConfig({
                 if (id.includes('/node_modules/@appwrite.io/repo/docs')) {
                     return true;
                 }
+                if (id.includes('/node_models/@appwrite.io/repo/
             }
         }),
         ViteImageOptimizer({
+            include: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg'],
             exclude: ['**/*.avif', '**/*.webp'],
             cache: true,
             cacheLocation: '.cache'
