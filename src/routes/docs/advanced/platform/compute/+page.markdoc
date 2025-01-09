@@ -1,0 +1,52 @@
+---
+layout: article
+title: Compute
+description: Learn about Appwrite's function billing and it's different CPU and Memory options.
+---
+
+{% info title="Note" %}
+Pricing changes will take effect on March 1st, 2025. Check out [this blog post](https://appwrite.io/blog/post/introducing-new-compute-capabilities-appwrite-functions) for more information.
+{% /info %}
+
+Appwrite's paid plans give you the ability to change your function's allocated CPU Cores and Memory, enabling functions and builds to perform more computionally demanding actions quicker.
+
+These options enable greater performance and flexibility, allowing developers to optimize their functions based on specific requirements. For instance, resource-intensive tasks such as real-time data processing or complex computational operations can now be executed more efficiently. Additionally, enhanced memory configurations support larger datasets and more demanding applications, broadening the scope of what can be achieved with Appwrite Functions.
+
+# Specifications {% #specifications %}
+
+Appwrite Cloud has the following specifications available:
+
+| Memory | CPU Cores | GB Hours per hour |
+|--------|-----------|-------------------|
+| 512MB  | 0.5       | 0.25              |
+| 512MB  | 1         | 0.5               |
+| 1GB    | 1         | 1                 |
+| 2GB    | 2         | 4                 |
+| 4GB    | 2         | 8                 |
+| 4GB    | 4         | 16                |
+
+{% info title="Note" %}
+Only users on either Pro or Scale are able to change their specification from the default 512MB & 0.5 CPU option.
+{% /info %}
+
+# GB-Hours
+Function and Builds usage is calculated using GB Hours, you will recieve a set amount of GB Hours included within your plan.
+
+GB Hours are calculated like so: ```memory in GB * duration in hours * CPU Cores```. 
+
+So, for example. A function that takes 10 seconds to execute on the 4GB & 2 CPUs specification and it was executed a million times, the 
+
+- Seconds: 1,000,000
+- GB-Seconds: 4 * 1,000,000 = 4,000,000
+- GB-Seconds with CPUs: 4,000,000 * 2 = 8,000,000
+- GB-Hours: 8,000,000 / 3600 = 2,222
+
+The total amount of GB Hours used is 2,222
+
+## Allocation and pricing plans
+
+- Free plan users will have up to 100GB of execution and build time per month.
+
+- Pro, and Scale users will have up to 1,000GB of execution and build time per month. Additional usage is available at a rate of $0.09 per GB-hour.
+
+Once the monthly GB-hours limit is reached, additional usage will automatically apply add-ons to your Pro or Scale account.
