@@ -5,14 +5,16 @@ description: Learn how Appwrite handles OTP and SMS-based authentication for sec
 ---
 
 {% info title="Note" %}
-Changes will take effect on February 10th, 2025. Check out [this blog post](https://appwrite.io/blog/post/announcing-phone-OTP-pricing) for more information.
+Changes will take effect on February 10th, 2025. Check out [this blog post](/blog/post/announcing-phone-OTP-pricing) for more information.
 {% /info %}
 
-Appwrite supports OTP (One-Time Password) and SMS-based authentication to provide secure and reliable user verification. This feature enhances your app's security by adding an extra layer of authentication.
+Appwrite supports SMS-based OTP (One-Time Password) authentication to provide secure and reliable user verification. This feature enhances your app's security by adding an extra layer of authentication.
 
 # Free messages {% #free-messages %}
 
 All Appwrite plans include **10 free SMS messages** per month, which allows you to test and implement OTP functionality without immediate costs.
+
+In addition you can also use the [Mock phone numbers](/docs/products/auth/security#mock-phone-numbers) feature to continue testing your integrations without incurring additional costs.
 
 # Additional messages {% #additional-messages %}
 
