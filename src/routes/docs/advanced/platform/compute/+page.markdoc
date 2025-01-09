@@ -26,7 +26,7 @@ Appwrite Cloud has the following specifications available:
 | 4GB    | 4         | 16                |
 
 {% info title="Note" %}
-Only users on either Pro or Scale are able to change their specification from the default 512MB & 0.5 CPU option.
+Only customers on either Pro or Scale are able to change their specification from the default 512MB & 0.5 CPU option. For custom compute options please contact our [sales team](https://appwrite.io/contact-us/enterprise).
 {% /info %}
 
 # GB-Hours
