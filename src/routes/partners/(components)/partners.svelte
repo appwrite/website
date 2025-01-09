@@ -41,12 +41,12 @@
             </div>
         </div>
 
-        <div class="relative">
+        <div class="mask relative" style:--mask-height="200px">
             {#each tiers as { title, icon }, i}
                 <div
                     class="animate relative opacity-0"
                     style:z-index={tiers.length - i}
-                    style:animation-delay="calc({i} * 0.2s)"
+                    style:animation-delay="calc({i} * 0.15s)"
                 >
                     <div
                         class="border-smooth flex items-center gap-4 overflow-hidden rounded-[40px] border-2 bg-black bg-gradient-to-br from-black to-white/20 py-1 pr-6"
@@ -73,7 +73,7 @@
 
 <style>
     .animate {
-        animation: card-in 600ms ease-out forwards;
+        animation: card-in 600ms ease-in-out forwards;
     }
     @keyframes card-in {
         0% {
