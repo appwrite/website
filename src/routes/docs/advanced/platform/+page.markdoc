@@ -105,6 +105,6 @@ Learn about additional features and functionalities that Appwrite offers.
 
 {% cards %}
 {% cards_item href="/docs/advanced/platform/phone-otp" title="Phone OTP" %}
-Learn how Appwrite handles OTP and SMS-based authentication.
+Learn how Appwrite handles SMS-based OTP authentication.
 {% /cards_item %}
 {% /cards %}
