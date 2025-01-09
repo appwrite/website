@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Product update December 2024: Highlights of the year"
-description: 
+description: Get a full recap of products, features and programs we released in 2024.
 date: 2025-01-07
-cover: /images/blog/product-update-2024/cover.png
+cover: /images/blog/product-update-december-2024/cover-image.png
 timeToRead: 10
 author: dennis-ivy
 category: product
@@ -20,6 +20,8 @@ From launching the highly requested features to launching new programs, here is 
 - 10 runtimes & SDKs
 - 28 integrations
 - 2 programs
+
+![Products & features](/images/blog/product-update-december-2024/products-features.png)
 
 # Products and features highlights 2024
 
@@ -59,11 +61,15 @@ In September, we launched the much-requested [Roles](https://appwrite.io/blog/po
 
 Custom roles are on the way, giving you even more control. Stay tuned.
 
+![Integrations catalog](/images/blog/product-update-december-2024/integrations.png)
+
 # Integrations catalog
 
 We launched the Integrations Catalog with a ton of popular integrations like Stripe, OpenAI, Huggingface, GitHub, and more. These integrations let you add payments, AI capabilities, and other cool things, taking your projects to the next level.
 
 We will continue to update the catalog with more integrations. You can also apply to become a [Technology partner](https://appwrite.io/integrations/technology-partner) and get your integration listed in the catalog. Check out the catalog [here](https://appwrite.io/integrations).
+
+![Runtimes](/images/blog/product-update-december-2024/runtimes.png)
 
 # Runtimes
 
@@ -93,6 +99,8 @@ Making Appwrite language agnostic is a high priority. So this year, we worked di
 - [New SDK versions released for Web, Flutter, and Android](https://appwrite.io/changelog/entry/2024-04-25-2)
 - [New SDK versions released](https://appwrite.io/changelog/entry/2024-02-15)
 
+![Programs](/images/blog/product-update-december-2024/programs.png)
+
 # Programs
 
 We’re committed to helping developers build the future, which is why we introduced two programs for founders who can use some help reducing their costs and students who want to get acquainted with the newest technologies.
@@ -108,6 +116,8 @@ Get $20k worth of cloud credits for 12 months to scale your startup. [Learn more
 In 2024, we also launched Appwrite Education Program for students in partnership with our friends at Github, this makes us the only BaaS platform to offer student discounts.
 
 We already have thousands of students building cool projects and learning along the way. What’s holding you back? [Join the program](https://appwrite.io/education) and start building today!
+
+![Community recognitions](/images/blog/product-update-december-2024/community-recognitions.png)
 
 # Community recognitions
 
