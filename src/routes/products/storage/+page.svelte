@@ -83,7 +83,7 @@
                             manage security, permissions, compression, and more.
                         </p>
                         <a
-                            href="https://builtwith.appwrite.io"
+                            href="/docs/products/storage/buckets"
                             target="_blank"
                             rel="noopener noreferrer"
                             class="web-button is-secondary mt-4 mx-auto !w-full md:!w-fit"
