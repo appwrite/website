@@ -3,7 +3,7 @@ layout: post
 title: Announcing phone OTP login pricing change
 description: To keep Appwrite Cloud sustainable, we are introducing phone OTP login pricing.
 date: 2025-01-06
-cover: /images/blog/otp-cover.png
+cover: /images/changelog/2025-01-09.png
 timeToRead: 4
 author: eldad-fux
 category: product
