@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-    import { writable } from 'svelte/store';
+    import { get, writable } from 'svelte/store';
 
     export const isHeaderHidden = writable(false);
     export const isMobileNavOpen = writable(false);
@@ -23,23 +23,10 @@
     import InitBanner from '$lib/components/InitBanner.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import MainNav from '$lib/components/MainNav.svelte';
-    import posthog from 'posthog-js';
+    import { isHeaderExperiment } from '$lib/experiments';
+
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
-
-    // posthog
-    $: isHeaderExperiment = false;
-
-    onMount(() => {
-        posthog.onFeatureFlags(() => {
-            console.log('Feature flags loaded');
-            if (posthog.getFeatureFlag('sticky-navigation_ab-test') === 'sticky-nav') {
-                isHeaderExperiment = true;
-            }
-        });
-    });
-
-    console.log({ isHeaderExperiment });
 
     function setupThemeObserver() {
         const handleVisibility = () => {
@@ -111,7 +98,7 @@
         return setupThemeObserver();
     });
 
-    $: navLinks = isHeaderExperiment
+    $: navLinks = $isHeaderExperiment.isEnabled
         ? [
               {
                   label: 'Products',
@@ -193,7 +180,7 @@
     <section
         class="web-mobile-header {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
-        class:is-hidden={$isHeaderHidden && !isHeaderExperiment}
+        class:is-hidden={$isHeaderHidden && !$isHeaderExperiment.isEnabled}
     >
         <div class="web-mobile-header-start">
             <a href="/">
@@ -234,11 +221,11 @@
     </section>
     <header
         class="web-main-header is-special-padding {resolvedTheme} is-transparent"
-        class:is-hidden={$isHeaderHidden && !isHeaderExperiment}
+        class:is-hidden={$isHeaderHidden && !$isHeaderExperiment.isEnabled}
         class:is-special-padding={!BANNER_KEY.startsWith('init-banner-')}
         style={BANNER_KEY === 'init-banner-02' ? 'padding-inline: 0' : ''}
     >
-        {#if !isHeaderExperiment}
+        {#if !$isHeaderExperiment.isEnabled}
             {#if BANNER_KEY.startsWith('init-banner-')}
                 <InitBanner />
             {:else}
@@ -273,7 +260,10 @@
                         width="130"
                     />
                 </a>
-                <MainNav initialized={$initialized} links={navLinks} />
+                <MainNav
+                    initialized={$initialized && $isHeaderExperiment.isInitialized}
+                    links={navLinks}
+                />
             </div>
             <div class="web-main-header-end">
                 <a
