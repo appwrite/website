@@ -6,14 +6,10 @@
 
     export let classes = '';
 
-    const isLoggedIn = browser ? 'loggedIn' in document.body.dataset : false;
+    const isLoggedIn = browser && 'loggedIn' in document.body.dataset;
 
     function getTrackingEventName() {
-        return browser
-            ? 'loggedIn' in document.body.dataset
-                ? 'Go to console'
-                : 'Get started'
-            : 'Get started';
+        return browser ? (isLoggedIn ? 'Go to console' : 'Get started') : 'Get started';
     }
 </script>
 
