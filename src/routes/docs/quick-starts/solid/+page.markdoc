@@ -82,55 +82,83 @@ export { ID } from 'appwrite';
 Add the following code to `src/App.jsx`.
 
 ```client-web
-import { createSignal } from 'solid-js'
-import { account, ID } from './lib/appwrite';
+import { Match, Switch, createEffect, createSignal } from "solid-js";
+import { account, ID } from "./lib/appwrite";
 
 const App = () => {
-    const [loggedInUser, setLoggedInUser] = createSignal(null);
-    const [email, setEmail] = createSignal('');
-    const [password, setPassword] = createSignal('');
-    const [name, setName] = createSignal('');
+  const [loggedInUser, setLoggedInUser] = createSignal(null);
+  const [email, setEmail] = createSignal("");
+  const [password, setPassword] = createSignal("");
+  const [name, setName] = createSignal("");
 
-    async function login(email, password) {
-        await account.createEmailPasswordSession(email, password);
-        setLoggedInUser(await account.get());
+  async function login(email, password) {
+    await account.createEmailPasswordSession(email, password);
+    setLoggedInUser(await account.get());
+  }
+
+  async function register(email, password, name) {
+    await account.create(ID.unique(), email, password, name);
+    login(email, password);
+  }
+
+  async function logout() {
+    await account.deleteSession("current");
+    setLoggedInUser(null);
+  }
+
+  createEffect(async () => {
+    try {
+      setLoggedInUser(await account.get());
+    } catch {
+      setLoggedInUser(null);
     }
+  });
 
-    async function register(email, password, name) {
-        await account.create(ID.unique(), email, password, name);
-        login(email, password);
-    }
-
-    async function logout() {
-        await account.deleteSession('current');
-        setLoggedInUser(null);
-    }
-
-    if (loggedInUser()) {
-        return (
-            <div>
-                <p>Logged in as {loggedInUser().name}</p>
-                <button onClick={logout}>Logout</button>
-            </div>
-        );
-    }
-
-    return (
+  return (
+    <Switch>
+      <Match when={!!loggedInUser()}>
         <div>
-            <p>Not logged in</p>
-            <form>
-                <input type="email" placeholder="Email" value={email()} onChange={e => setEmail(e.target.value)} />
-                <input type="password" placeholder="Password" value={password()} onChange={e => setPassword(e.target.value)} />
-                <input type="text" placeholder="Name" value={name()} onChange={e => setName(e.target.value)} />
-                <button type="button" onClick={() => login(email(), password())}>
-                    Login
-                </button>
-                <button type="button" onClick={() => register(email(), password(), name())}>
-                    Register
-                </button>
-            </form>
+          <p>Logged in as {loggedInUser()?.name}</p>
+          <button onClick={logout}>Logout</button>
         </div>
-    );
+      </Match>
+      <Match when={!loggedInUser()}>
+        <div>
+          <p>{!!loggedInUser()}</p>
+          <p>Not logged in</p>
+          <form>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email()}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password()}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Name"
+              value={name()}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <button type="button" onClick={() => login(email(), password())}>
+              Login
+            </button>
+            <button
+              type="button"
+              onClick={() => register(email(), password(), name())}
+            >
+              Register
+            </button>
+          </form>
+        </div>
+      </Match>
+    </Switch>
+  );
 };
 
 export default App;
