@@ -3,11 +3,11 @@
     import { Tabs } from '$lib/UI';
     import { visible } from '$lib/actions/visible';
     import { isHeaderHidden } from '$lib/layouts/Main.svelte';
+    import { classNames } from '$lib/utils/classnames';
     import { getScrollDir } from '$lib/utils/getScrollDir';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
-    import { classNames } from '$lib/utils/classnames';
 
     type Table = {
         title: string;
@@ -164,6 +164,14 @@
                     enterprise: 'Custom'
                 },
                 {
+                    title: 'Phone OTP',
+                    free: '10 SMS / month',
+                    pro: '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>',
+                    scale: '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>',
+                    enterprise:
+                        '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>'
+                },
+                {
                     title: 'Teams',
                     free: '100 per project',
                     pro: 'Unlimited',
@@ -267,6 +275,27 @@
                     free: '750K / month',
                     pro: '3.5M / month',
                     scale: '3.5M / month',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'GB-hours',
+                    free: '100 GB-hour / month',
+                    pro: '1,000 GB-hour / month',
+                    scale: '1,000 GB-hour / month',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Additional GB-hours',
+                    free: '-',
+                    pro: '$0.09 per GB-hour',
+                    scale: '$0.09 per GB-hour',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Compute options',
+                    free: '0.5 CPU - 512MB RAM',
+                    pro: '0.5 CPU - 512MB RAM<br/>1 CPU - 512MB RAM<br/>1 CPU - 1GB RAM<br/>1 CPU - 2GB RAM<br/>2 CPU - 4GB RAM<br/>4 CPU - 4GB RAM',
+                    scale: '0.5 CPU - 512MB RAM<br/>1 CPU - 512MB RAM<br/>1 CPU - 1GB RAM<br/>1 CPU - 2GB RAM<br/>2 CPU - 4GB RAM<br/>4 CPU - 4GB RAM',
                     enterprise: 'Custom'
                 },
                 {
@@ -607,7 +636,7 @@
                                                 class:is-selected={col === tab}
                                             >
                                                 {#if typeof row[col] === 'string'}
-                                                    {row[col]}
+                                                    {@html row[col]}
                                                 {:else}
                                                     <img
                                                         class="mx-auto self-center"
