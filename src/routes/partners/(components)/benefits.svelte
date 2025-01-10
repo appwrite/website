@@ -46,29 +46,38 @@
     ];
 </script>
 
-<div class="flex flex-col items-center gap-24 pt-24 pb-24">
-    <div class="flex flex-col gap-2 text-center">
+<div class="flex flex-col items-center pt-24 pb-24">
+    <div class="mb-20 flex flex-col gap-2 text-center">
         <span class="font-aeonik-fono tracking-loose text-micro text-primary uppercase">
             Benefits<span class="text-accent">_</span>
         </span>
         <h2 class="text-primary font-aeonik-pro text-title">Growing together</h2>
     </div>
 
-    <div class="border-smooth w-full border-y border-dashed">
-        <div class="container">
-            <div
-                class="divide-smooth grid grid-cols-1 gap-px divide-dashed max-md:divide-y md:grid-cols-3 md:divide-x"
-            >
-                {#each items as item}
-                    <div
-                        class="bg-greyscale-900 last-of-type:border-smooth flex flex-col gap-4 p-6 md:last-of-type:border-r md:last-of-type:border-dashed"
-                    >
-                        <img src={item.icon} alt="{item.title} Icon" class="size-12" />
-                        <span class="text-primary -mb-3">{item.title}</span>
-                        <p class="text-secondary">{item.description}</p>
-                    </div>
-                {/each}
-            </div>
+    <div class="border-smooth w-full border-dashed md:border-y">
+        <div
+            class="divide-smooth container grid grid-cols-1 gap-px divide-dashed max-md:divide-y md:grid-cols-3 md:divide-x"
+        >
+            {#each items.slice(0, 3) as item}
+                <div class="bg-greyscale-900 last-of-type:border-smooth flex flex-col gap-4 p-8">
+                    <img src={item.icon} alt="{item.title} Icon" class="size-12" />
+                    <span class="text-primary -mb-3">{item.title}</span>
+                    <p class="text-secondary">{item.description}</p>
+                </div>
+            {/each}
+        </div>
+    </div>
+    <div class="border-smooth w-full border-dashed md:border-b">
+        <div
+            class="divide-smooth container grid grid-cols-1 gap-px divide-dashed max-md:divide-y md:grid-cols-3 md:divide-x"
+        >
+            {#each items.slice(3, 6) as item}
+                <div class="bg-greyscale-900 last-of-type:border-smooth flex flex-col gap-4 p-8">
+                    <img src={item.icon} alt="{item.title} Icon" class="size-12" />
+                    <span class="text-primary -mb-3">{item.title}</span>
+                    <p class="text-secondary">{item.description}</p>
+                </div>
+            {/each}
         </div>
     </div>
 </div>
