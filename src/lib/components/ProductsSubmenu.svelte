@@ -121,7 +121,12 @@
                         <a
                             href={product.href}
                             use:melt={$item}
-                            on:click={() => trackEvent(`${product.name} in products submenu`)}
+                            on:click={() =>
+                                trackEvent({
+                                    plausible: {
+                                        name: `${product.name} in products submenu`
+                                    }
+                                })}
                             class="group flex gap-3 rounded-xl p-1 text-white outline-none transition-colors focus:bg-white/8"
                         >
                             <div

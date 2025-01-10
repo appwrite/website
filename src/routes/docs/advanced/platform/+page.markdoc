@@ -98,3 +98,13 @@ Add a custom domain for your Appwrite APIs.
 Create custom branding and messages when you communicate with users.
 {% /cards_item %}
 {% /cards %}
+
+# Add Ons {% #add-ons %}
+
+Learn about additional features and functionalities that Appwrite offers.
+
+{% cards %}
+{% cards_item href="/docs/advanced/platform/compute" title="Compute" %}
+Learn about Appwrite's different compute add-ons.
+{% /cards_item %}
+{% /cards %}
