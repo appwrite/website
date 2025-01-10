@@ -129,6 +129,8 @@ You can find a full list of supported runtimes [here](/docs/products/functions/r
 
 You can also configure the maximum timeout that can be set on individual Appwrite Functions. The maximum configurable timeout can be increased by changing the `_APP_FUNCTIONS_TIMEOUT` environment variable. This environment variable changes the configurable maximum but does not alter existing configurations of individual functions.
 
+{% partial file="update-variables.md" /%}
+
 # SSL certificates for Function domains {% #ssl-certificates %}
 
 Appwrite does not handle certificates for function domains (e.g. `6772722a00331315adc3.functions.appwrite.myapp.com`)
@@ -223,5 +225,3 @@ environment:
 Note: Let's Encrypt has strict rate limits for certificate requests. If you encounter rate limit errors in the logs, you may need to wait a few hours before trying again.
 
 For other DNS providers, refer to [Traefik's DNS providers documentation](https://doc.traefik.io/traefik/https/acme/#providers).
-
-{% partial file="update-variables.md" /%}
