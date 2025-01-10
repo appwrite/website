@@ -8,7 +8,7 @@
 <div class="border-smooth mb-0 border-b py-24">
     <Marquee>
         {#each Array.from({ length: 3 }) as _}
-            <GradientBorderCard class="flex max-w-sm flex-col gap-4 p-6">
+            <GradientBorderCard class="flex w-lg flex-col gap-4 p-6">
                 <p class="text-sub-body text-secondary font-medium">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices
                     lacus.
@@ -22,8 +22,8 @@
                 </div>
             </GradientBorderCard>
         {/each}
-        {#each Array.from({ length: 4 }) as _}
-            <GradientBorderCard class="flex max-w-sm flex-col gap-4 p-6">
+        {#each Array.from({ length: 3 }) as _}
+            <GradientBorderCard class="flex w-lg flex-col gap-4 p-6">
                 <p class="text-sub-body text-secondary font-medium">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices
                     lacus.
