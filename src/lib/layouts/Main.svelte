@@ -22,29 +22,24 @@
     import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
     import InitBanner from '$lib/components/InitBanner.svelte';
     import { trackEvent } from '$lib/actions/analytics';
-    import MainNav, { type NavLink } from '$lib/components/MainNav.svelte';
+    import MainNav from '$lib/components/MainNav.svelte';
     import posthog from 'posthog-js';
-
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
 
     // posthog
-    let isHeaderExperiment: boolean = false;
-    let mounted: boolean = false;
+    $: isHeaderExperiment = false;
 
-    onMount(async () => {
-        if (posthog) {
-            if (posthog.getFeatureFlag('sticky-navigation_ab-test') === 'control') {
-                isHeaderExperiment = false;
-            }
-
+    onMount(() => {
+        posthog.onFeatureFlags(() => {
+            console.log('Feature flags loaded');
             if (posthog.getFeatureFlag('sticky-navigation_ab-test') === 'sticky-nav') {
                 isHeaderExperiment = true;
             }
-
-            mounted = true;
-        }
+        });
     });
+
+    console.log({ isHeaderExperiment });
 
     function setupThemeObserver() {
         const handleVisibility = () => {
