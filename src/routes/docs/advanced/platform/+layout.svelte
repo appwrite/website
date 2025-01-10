@@ -90,6 +90,16 @@
             ]
         },
         {
+            label: 'Add ons',
+            items: [
+                {
+                    new: true,
+                    label: 'Compute',
+                    href: '/docs/advanced/platform/compute'
+                },
+            ]
+        },
+        {
             label: 'Configuration',
             items: [
                 {
