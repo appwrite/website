@@ -37,9 +37,9 @@
     <Hero />
     <Benefits />
     <Partners />
+    <Testimonials />
     <Ways />
     <Why />
-    <Testimonials />
 
     <SubmissionForm />
     <div class="relative overflow-hidden">

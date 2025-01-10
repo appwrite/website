@@ -793,50 +793,47 @@
         --cubic-bezier: (0.185, 0.84, 0.44, 1);
     }
 
-    // .rightPiece {
-    //     @keyframes right-piece {
-    //         0% {
-    //             transform: translateY(-50vh);
-    //         }
-    //         75% {
-    //             transform: translateY(10vh);
-    //         }
-    //         95% {
-    //             transform: translateY(-2vh);
-    //         }
-    //         100% {
-    //             transform: translateY(0);
-    //         }
-    //     }
+    .rightPiece {
+        opacity: 0;
+        @keyframes right-piece {
+            0% {
+                opacity: 0;
+                filter: blur(4px);
+                transform: translate(40px, -4vh);
+            }
 
-    //     &.active {
-    //         animation: cubic-bezier(0.6, -0.28, 0.735, 0.045) right-piece 1s forwards;
-    //         animation-play-state: paused;
-    //     }
-    // }
+            100% {
+                opacity: 1;
+                filter: blur(0);
+                transform: translate(0, 0);
+            }
+        }
+
+        &.active {
+            animation: var(--transition-timing-function-spring) right-piece 1.333s forwards;
+        }
+    }
 
     .leftPiece {
+        opacity: 0;
         --color-left: #fd366e;
 
-        // @keyframes left-piece {
-        //     0% {
-        //         transform: translateY(50vh);
-        //     }
-        //     75% {
-        //         transform: translateY(-10vh);
-        //     }
-        //     95% {
-        //         transform: translateY(2vh);
-        //     }
-        //     100% {
-        //         transform: translateY(0);
-        //     }
-        // }
+        @keyframes left-piece {
+            0% {
+                opacity: 0;
+                filter: blur(4px);
+                transform: translate(-40px, 4vh);
+            }
+            100% {
+                opacity: 1;
+                filter: blur(0);
+                transform: translate(0, 0);
+            }
+        }
 
-        // &.active {
-        //     animation: cubic-bezier(0.6, -0.28, 0.735, 0.045) left-piece 1s forwards;
-        //     animation-play-state: paused;
-        // }
+        &.active {
+            animation: var(--transition-timing-function-spring) left-piece 1.333s forwards;
+        }
     }
 
     .circles {

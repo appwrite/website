@@ -61,7 +61,9 @@
                                 <span class="text-primary block font-medium uppercase"
                                     >{title}<span class="text-accent">_</span></span
                                 >
-                                <h3 class="text-primary text-label md:text-[2.75rem]">
+                                <h3
+                                    class="text-primary font-aeonik-pro text-label md:text-[2.75rem]"
+                                >
                                     Appwrite Partner
                                 </h3>
                             </div>
@@ -75,7 +77,7 @@
 
 <style>
     .animate {
-        animation: card-in 600ms ease-in-out forwards;
+        animation: card-in 1200ms var(--transition-timing-function-spring) forwards;
     }
     @keyframes card-in {
         0% {
