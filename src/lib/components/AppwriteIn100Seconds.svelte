@@ -17,7 +17,10 @@
 <button
     on:click={() => {
         show = true;
-        trackEvent('Appwrite in 100 seconds');
+        trackEvent({
+            plausible: { name: 'Appwrite in 100 seconds' },
+            posthog: { name: 'intro-video-btn_hero_click' }
+        });
     }}
     class="web-button is-secondary cursor-pointer"
 >
