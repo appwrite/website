@@ -6,8 +6,8 @@
     import MainFooter from '../../../lib/components/MainFooter.svelte';
     import Pink from '../bg.png';
     import { loggedIn, user } from '$lib/utils/console';
-    import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import { sendSalesEmail } from '$routes/contact-us';
+    import { getReferrerAndUtmSource } from '$lib/utils/utm';
 
     let email = '';
     let name = '';
@@ -20,7 +20,7 @@
 
     async function handleSubmit() {
         error = undefined;
-        const subject = `Enterprise Plan Application: ${companyName}`;
+        const subject = `Self Hosted Support: ${companyName}`;
 
         const cloudEmail = loggedIn && $user?.email ? $user.email : undefined;
 
@@ -44,7 +44,7 @@
         submitted = true;
     }
 
-    const title = 'Enterprise' + TITLE_SUFFIX;
+    const title = 'Self hosted support' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
@@ -73,11 +73,15 @@
 <Main>
     <div class="web-big-padding-section">
         <div id="form" class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden">
-            <div class="web-big-padding-section-level-2 is-margin-replace-padding relative">
-                <div class="relative">
+            <div
+                class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative"
+            >
+                <div class="u-position-relative">
                     <div class="web-container relative">
                         <!-- before submit -->
-                        <div class="u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0 relative">
+                        <div
+                            class="u-position-relative u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0"
+                        >
                             <div>
                                 <div
                                     class="web-u-max-inline-size-none-mobile"
@@ -89,9 +93,9 @@
                                                 Thank you for your submission
                                             </h1>
                                             <p class="web-description web-u-padding-block-end-32">
-                                                Your details for the enterprise plan have been sent
-                                                successfully. Our team will get back to you as soon
-                                                as possible.
+                                                Your details for the self hosted enterprise have
+                                                been sent successfully. Our team will get back to
+                                                you as soon as possible.
                                             </p>
                                             <a
                                                 href="/pricing"
@@ -103,11 +107,11 @@
                                     {:else}
                                         <section class="flex flex-col gap-5">
                                             <h4 class="web-display web-u-color-text-primary">
-                                                Enterprise Plan
+                                                Self hosted Enterprise
                                             </h4>
                                             <p class="web-description">
-                                                Interested in a pricing solution that fits your
-                                                specific requirements? Let’s talk.
+                                                Need Enterprise support with your self hosted setup?
+                                                Let’s talk.
                                             </p>
                                         </section>
                                     {/if}
@@ -212,7 +216,7 @@
                                                     required
                                                     class="web-input-text w-full"
                                                     id="use-case"
-                                                    placeholder="Describe your use case and how our Enterprise Plan can support it"
+                                                    placeholder="Describe what you are running into"
                                                     bind:value={useCase}
                                                 />
                                             </li>
