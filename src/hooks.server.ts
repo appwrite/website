@@ -40,7 +40,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
 
     const cspDirectives = [
         "default-src 'self'",
-        "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.posthog.com",
         "style-src 'self' 'unsafe-inline'",
         "img-src 'self' data: https:",
         "font-src 'self'",
@@ -50,7 +50,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
         "frame-ancestors 'self' https://www.youtube.com https://*.vimeo.com",
         'block-all-mixed-content',
         'upgrade-insecure-requests',
-        "connect-src 'self' https://cloud.appwrite.io",
+        "connect-src 'self' https://*.appwrite.io https://*.posthog.com",
         "frame-src 'self' https://www.youtube.com https://status.appwrite.online https://www.youtube-nocookie.com https://player.vimeo.com"
     ];
 
