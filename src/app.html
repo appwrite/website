@@ -53,13 +53,6 @@
             if (isLoggedIn) {
                 document.body.dataset.loggedIn = '';
             }
-
-            const lsValue = localStorage.getItem('sticky');
-            const isSticky = lsValue === 'true';
-
-            if (isSticky) {
-                document.body.dataset.isSticky = '';
-            }
         </script>
 
         <div style="display: contents">%sveltekit.body%</div>

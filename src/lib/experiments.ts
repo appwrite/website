@@ -1,6 +1,5 @@
 import { PUBLIC_POSTHOG_API_KEY } from '$env/static/public';
 import { PostHog } from 'posthog-node';
-import { writable } from 'svelte/store';
 
 export const posthogServerClient = new PostHog(PUBLIC_POSTHOG_API_KEY, {
     host: 'https://eu.i.posthog.com',
@@ -29,8 +28,3 @@ export const getFeatureFlag = async <K extends Key>(
 
     return isFlagEqualTo(variant, flagData);
 };
-
-export const isHeaderExperiment = writable<{ isEnabled: boolean; isInitialized: boolean }>({
-    isEnabled: false,
-    isInitialized: false
-});

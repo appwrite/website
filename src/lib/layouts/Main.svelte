@@ -23,7 +23,8 @@
     import InitBanner from '$lib/components/InitBanner.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import MainNav from '$lib/components/MainNav.svelte';
-    import { isHeaderExperiment } from '$lib/experiments';
+
+    console.log($page.data);
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -260,10 +261,7 @@
                         width="130"
                     />
                 </a>
-                <MainNav
-                    initialized={$initialized && $isHeaderExperiment.isInitialized}
-                    links={navLinks}
-                />
+                <MainNav initialized={$initialized} links={navLinks} />
             </div>
             <div class="web-main-header-end">
                 <a
