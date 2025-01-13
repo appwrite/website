@@ -483,11 +483,11 @@ Then, in a new terminal window, start the frontend development server:
 npm run dev
 ```
 
-Navigate to the URL shown by Vite (typically http://localhost:5173) in your browser.
+Navigate to the URL shown by Vite (typically `http://localhost:5173`) in your browser.
 You can test the authentication using these credentials:
 
-- Email: demo@example.com
-- Password: demo1234
+- Email: `demo@example.com`
+- Password: `demo1234`
 
 # How it works
 
