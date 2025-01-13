@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-    import { get, writable } from 'svelte/store';
+    import { writable } from 'svelte/store';
 
     export const isHeaderHidden = writable(false);
     export const isMobileNavOpen = writable(false);
@@ -23,8 +23,6 @@
     import InitBanner from '$lib/components/InitBanner.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import MainNav from '$lib/components/MainNav.svelte';
-
-    console.log($page.data);
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
