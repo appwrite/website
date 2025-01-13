@@ -296,7 +296,7 @@
                                     </div>
                                     <div>
                                         <a
-                                            href="/blog/post/case-study-undo"
+                                            href="/blog/post/customer-stories-myshoefitter"
                                             class="web-card is-white group flex flex-col gap-5"
                                         >
                                             <div class="border-card">
