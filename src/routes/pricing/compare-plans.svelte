@@ -3,11 +3,11 @@
     import { Tabs } from '$lib/UI';
     import { visible } from '$lib/actions/visible';
     import { isHeaderHidden } from '$lib/layouts/Main.svelte';
+    import { classNames } from '$lib/utils/classnames';
     import { getScrollDir } from '$lib/utils/getScrollDir';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
-    import { cn } from '$lib/utils/classnames';
 
     type Table = {
         title: string;
@@ -164,6 +164,14 @@
                     enterprise: 'Custom'
                 },
                 {
+                    title: 'Phone OTP',
+                    free: '10 SMS / month',
+                    pro: '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>',
+                    scale: '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>',
+                    enterprise:
+                        '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>'
+                },
+                {
                     title: 'Teams',
                     free: '100 per project',
                     pro: 'Unlimited',
@@ -276,7 +284,7 @@
                     scale: '1,000 GB-hour / month',
                     enterprise: 'Custom'
                 },
- 		{
+                {
                     title: 'Additional GB-hours',
                     free: '-',
                     pro: '$0.09 per GB-hour',
@@ -619,7 +627,7 @@
                                         </th>
                                         {#each cols as col, index}
                                             <td
-                                                class={cn(
+                                                class={classNames(
                                                     `text-caption flex justify-center font-normal level-${index}`,
                                                     {
                                                         'md:bg-greyscale-100': col === 'pro'

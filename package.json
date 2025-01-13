@@ -35,6 +35,7 @@
         "@appwrite.io/pink": "~0.26.0",
         "@appwrite.io/pink-icons": "~0.26.0",
         "@appwrite.io/repo": "github:appwrite/appwrite#1.6.x",
+        "@fingerprintjs/fingerprintjs": "^4.5.1",
         "@internationalized/date": "3.5.0",
         "@melt-ui/pp": "^0.3.2",
         "@melt-ui/svelte": "^0.86.0",
