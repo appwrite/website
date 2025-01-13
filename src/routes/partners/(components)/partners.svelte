@@ -1,5 +1,6 @@
 <script>
     import { classNames } from '$lib/utils/classnames';
+    import { inView } from 'motion';
 
     import Platinum from '../(assets)/icons/platinum.png';
     import Gold from '../(assets)/icons/gold.png';
@@ -44,20 +45,20 @@
         <div class="mask relative" style:--mask-height="200px">
             {#each tiers as { title, icon }, i}
                 <div
-                    class="animate relative opacity-0"
+                    class="animate relative h-fit opacity-0"
                     style:z-index={tiers.length - i}
                     style:animation-delay="{i * 0.15}s"
                 >
                     <div
-                        class="border-smooth flex items-center gap-4 overflow-hidden rounded-3xl border-2 bg-black bg-gradient-to-br from-black to-white/20 py-1 pr-6 md:rounded-[40px]"
+                        class="border-smooth flex h-fit items-center gap-4 rounded-3xl border-2 bg-black bg-gradient-to-br from-black to-white/20 md:rounded-[40px]"
                         style:margin-bottom={i === tiers.length - 1
                             ? 0
                             : `-${clamp(32, i * 40, 80)}px`}
                         style:transform="scale({1 - i * 0.15})"
                     >
-                        <div class="flex items-center gap-4">
-                            <img src={icon} alt="{title} Icon" class="h-16 w-auto md:h-32" />
-                            <div>
+                        <div class="flex items-center justify-center gap-4">
+                            <img src={icon} alt="{title} Icon" class="h-16 w-auto md:h-20" />
+                            <div class="flex grow flex-col gap-2">
                                 <span class="text-primary block font-medium uppercase"
                                     >{title}<span class="text-accent">_</span></span
                                 >

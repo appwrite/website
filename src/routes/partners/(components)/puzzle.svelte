@@ -334,6 +334,7 @@
                 stroke-opacity="0.06"
                 stroke-dasharray="4 4"
                 class="gridLine"
+                style:--offset-to="500"
             />
             <path
                 d="M301.743 301.001L289.618 308.001"
@@ -341,6 +342,7 @@
                 stroke-opacity="0.06"
                 stroke-dasharray="4 4"
                 class="gridLine"
+                style:--offset-to="500"
             />
             <path
                 d="M376.913 229.2L364.789 236.2"
@@ -348,6 +350,7 @@
                 stroke-opacity="0.06"
                 stroke-dasharray="4 4"
                 class="gridLine"
+                style:--offset-to="500"
             />
             <path
                 d="M401.075 157.049L388.95 164.049"
@@ -355,6 +358,7 @@
                 stroke-opacity="0.06"
                 stroke-dasharray="4 4"
                 class="gridLine"
+                style:--offset-to="500"
             />
         </g>
 
