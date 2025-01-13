@@ -93,10 +93,6 @@
                                         </header>
                                         <div class="web-pricing-cards-content">
                                             <ul class="web-checked-list-circle">
-                                                <li>
-                                                    <span>Unlimited projects</span>
-                                                </li>
-                                                <li><span>Never paused</span></li>
                                                 <li><span>5GB bandwidth</span></li>
                                                 <li><span>2GB storage</span></li>
                                                 <li><span>750K executions</span></li>
