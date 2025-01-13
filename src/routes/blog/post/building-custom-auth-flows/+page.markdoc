@@ -2,7 +2,7 @@
 layout: post
 title: Building custom authentication flows with Appwrite
 description: Learn how to implement custom authentication flows with Appwrite using custom tokens, allowing you to integrate your existing authentication system or third-party identity providers.
-date: 2024-01-10
+date: 2025-01-10
 cover: /images/blog/building-custom-auth-flows/cover.png
 timeToRead: 15
 author: ebenezer-don
