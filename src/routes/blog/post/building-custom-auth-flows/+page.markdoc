@@ -488,16 +488,13 @@ You can test the authentication using these credentials:
 - Email: `demo@example.com`
 - Password: `demo1234`
 
-# How it works
+# Putting it all together
 
-The authentication flow in this application follows a specific sequence:
-
-When a user submits the login form, the frontend sends their credentials to our backend server.
-The server then validates these credentials against its user database.
-Upon successful validation, the backend uses Appwrite's SDK to create a custom token for the user.
-
-This token, along with user information, is returned to the frontend.
-The frontend then uses this token to create an Appwrite session, effectively authenticating the user and allowing them to access protected resources.
+Now that we have all the pieces in place, let's do a quick rundown of what happens when a user logs in.
+Once a user submits their login details, their credentials go to our backend server.
+The server checks these against our user database and, if they're valid, asks Appwrite to create a custom token.
+This token comes back to the frontend along with user information.
+Finally, the frontend uses this token to create an Appwrite session, which keeps the user logged in and lets them access protected resources.
 
 # Next steps
 
@@ -507,18 +504,6 @@ To enhance this basic implementation, consider these improvements:
 - Add comprehensive error handling and input validation
 - Implement user registration functionality
 - Improve the UI with loading states and better error messages. You might want to use a UI framework or template engine depending on your project's requirements.
-
-# Troubleshooting
-
-Here are some common issues you might encounter and their solutions:
-
-## Backend issues
-
-If you're experiencing environment variable issues, ensure your `.env` file is in the project root and contains all required variables. For port conflicts, either stop the process using port 3000 or change the port using the PORT environment variable. When encountering Appwrite API errors, verify your API key has the necessary permissions in the Appwrite console.
-
-## Frontend issues
-
-For CORS errors, check that your backend's CORS configuration matches your frontend's domain. If sessions aren't persisting, verify that cookies are enabled in your browser. For authentication issues, ensure you're using the correct credentials (demo@example.com / demo1234) or check your user database configuration.
 
 # Conclusion
 
