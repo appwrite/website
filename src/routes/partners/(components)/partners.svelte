@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import { inView } from 'motion';
 
@@ -6,6 +6,18 @@
     import Gold from '../(assets)/icons/gold.png';
     import Silver from '../(assets)/icons/silver.png';
     import { clamp } from '$lib/utils/clamp';
+
+    let animate: boolean = false;
+
+    const useInView = (node: HTMLElement) => {
+        inView(
+            node,
+            () => {
+                animate = true;
+            },
+            { amount: 'all' }
+        );
+    };
 
     const tiers = [
         {
@@ -28,6 +40,7 @@
         'border-smooth relative flex items-center justify-center overflow-hidden border-b bg-[#17171A] py-32',
         'after:absolute after:inset-0 after:top-0 after:right-0 after:mt-auto after:mb-0 after:block after:h-full after:bg-[radial-gradient(circle_at_120%_-40%,_hsla(343,_98%,_60%,_0.2)_0px,_transparent_40%)]'
     )}
+    use:useInView
 >
     <div class="container mx-auto grid items-center gap-16 md:grid-cols-2">
         <div class="max-w-lg space-y-8">
@@ -45,9 +58,11 @@
         <div class="mask relative" style:--mask-height="200px">
             {#each tiers as { title, icon }, i}
                 <div
-                    class="animate relative h-fit opacity-0"
+                    class={classNames('relative h-fit opacity-0', {
+                        animate
+                    })}
                     style:z-index={tiers.length - i}
-                    style:animation-delay="{i * 0.15}s"
+                    style:animation-delay="{i * 0.1}s"
                 >
                     <div
                         class="border-smooth flex h-fit items-center gap-4 rounded-3xl border-2 bg-black bg-gradient-to-br from-black to-white/20 md:rounded-[40px]"
