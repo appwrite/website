@@ -98,7 +98,7 @@
         return setupThemeObserver();
     });
 
-    $: navLinks = $isHeaderExperiment.isEnabled
+    $: navLinks = $page.data.isStickyNav
         ? [
               {
                   label: 'Products',
@@ -180,7 +180,7 @@
     <section
         class="web-mobile-header {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
-        class:is-hidden={$isHeaderHidden && !$isHeaderExperiment.isEnabled}
+        class:is-hidden={$isHeaderHidden && !$page.data.isStickyNav}
     >
         <div class="web-mobile-header-start">
             <a href="/">
@@ -221,11 +221,11 @@
     </section>
     <header
         class="web-main-header is-special-padding {resolvedTheme} is-transparent"
-        class:is-hidden={$isHeaderHidden && !$isHeaderExperiment.isEnabled}
+        class:is-hidden={$isHeaderHidden && !$page.data.isStickyNav}
         class:is-special-padding={!BANNER_KEY.startsWith('init-banner-')}
         style={BANNER_KEY === 'init-banner-02' ? 'padding-inline: 0' : ''}
     >
-        {#if !$isHeaderExperiment.isEnabled}
+        {#if !$page.data.isStickyNav}
             {#if BANNER_KEY.startsWith('init-banner-')}
                 <InitBanner />
             {:else}
