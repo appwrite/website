@@ -10,4 +10,6 @@ export const load = async ({ data }) => {
         });
         posthog.identify(data.distinctId);
     }
+
+    return data;
 };
