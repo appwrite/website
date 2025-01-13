@@ -14,7 +14,7 @@ We've added new runtimes and resolved identity conflicts to make Appwrite even m
 - Identity conflict resolution: We've fixed an issue where GitHub installations were tied to OAuth identities, causing errors when using multiple Appwrite accounts.
   OAuth identities and GitHub installations are now separated to ensure smooth functionality across all accounts.
 
-These changes are now live! Try them out and let us know what your experience is.
+These changes are now live! Try them out and share your experience with us.
 
 {% arrow_link href="https://appwrite.io/discord" %}
 Join the discussion on Discord
