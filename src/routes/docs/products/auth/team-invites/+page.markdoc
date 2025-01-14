@@ -31,23 +31,6 @@ const membership = await teams.createMembership(
     ['developer'],     // roles
     'user@example.com' // email
 );
-
-// You can also invite multiple users with different roles
-const inviteUsers = async () => {
-    const invites = [
-        { email: 'developer@example.com', roles: ['developer'] },
-        { email: 'admin@example.com', roles: ['admin', 'developer'] },
-        { email: 'viewer@example.com', roles: ['viewer'] }
-    ]
-
-    for (const invite of invites) {
-        await teams.createMembership(
-            'team_id',
-            invite.roles,
-            invite.email
-        )
-    }
-}
 ```
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
@@ -64,108 +47,14 @@ final membership = await teams.createMembership(
     roles: ['developer'],
     email: 'user@example.com'
 );
-
-// You can also invite multiple users with different roles
-Future<void> inviteUsers() async {
-  final invites = [
-    {'email': 'developer@example.com', 'roles': ['developer']},
-    {'email': 'admin@example.com', 'roles': ['admin', 'developer']},
-    {'email': 'viewer@example.com', 'roles': ['viewer']}
-  ];
-
-  for (final invite in invites) {
-    await teams.createMembership(
-      teamId: 'team_id',
-      roles: invite['roles'] as List<String>,
-      email: invite['email'] as String
-    );
-  }
-}
-```
-{% /multicode %}
-
-## Handling invitation acceptance {% #handling-acceptance %}
-
-When users receive an invitation email, they'll get a link with the following query parameters:
-- `teamId`: The ID of the team they're being invited to
-- `membershipId`: The unique ID of their membership invitation
-- `userId`: The user's ID (if they're already registered)
-- `secret`: A secret token to verify the invitation
-
-Here's how to handle the invitation acceptance in your app:
-
-{% multicode %}
-```client-web
-// Create a component or page to handle invites
-const AcceptInvite = () => {
-    const acceptInvitation = async () => {
-        // Get parameters from URL
-        const urlParams = new URLSearchParams(window.location.search)
-        const teamId = urlParams.get('teamId')
-        const membershipId = urlParams.get('membershipId')
-        const userId = urlParams.get('userId')
-        const secret = urlParams.get('secret')
-
-        try {
-            const membership = await teams.updateMembershipStatus(
-                teamId,
-                membershipId,
-                userId,
-                secret
-            )
-            // Handle successful acceptance
-            console.log('Invitation accepted:', membership)
-        } catch (error) {
-            // Handle errors (expired invite, already accepted, etc.)
-            console.error('Failed to accept invitation:', error)
-        }
-    }
-
-    return (
-        <button onClick={acceptInvitation}>
-            Accept Team Invitation
-        </button>
-    )
-}
-```
-```client-flutter
-class AcceptInvite extends StatelessWidget {
-  Future<void> acceptInvitation(BuildContext context) async {
-    // Get parameters from deep link or navigation
-    final String teamId = '...';
-    final String membershipId = '...';
-    final String userId = '...';
-    final String secret = '...';
-
-    try {
-      final membership = await teams.updateMembershipStatus(
-        teamId: teamId,
-        membershipId: membershipId,
-        userId: userId,
-        secret: secret
-      );
-      // Handle successful acceptance
-      print('Invitation accepted: $membership');
-    } catch (error) {
-      // Handle errors (expired invite, already accepted, etc.)
-      print('Failed to accept invitation: $error');
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () => acceptInvitation(context),
-      child: Text('Accept Team Invitation'),
-    );
-  }
-}
 ```
 {% /multicode %}
 
 # Server-side invites {% #server-side %}
 
-Server-side invites give you more control over the invitation process. Instead of sending automatic emails, you can create custom flows using the server SDK. This approach is particularly useful for:
+Server-side invites give you more control over the invitation process.
+Instead of sending automatic emails, you can create custom flows using the server SDK.
+This approach is useful for:
 - Custom invitation workflows
 - Bulk user management
 - Automated team assignments
