@@ -72,6 +72,8 @@
         "oslllo-svg-fixer": "^3.0.0",
         "plausible-tracker": "^0.3.9",
         "postcss": "^8.4.49",
+        "posthog-js": "^1.204.0",
+        "posthog-node": "^4.2.1",
         "prettier": "^3.3.3",
         "prettier-plugin-svelte": "^3.2.8",
         "prettier-plugin-tailwindcss": "^0.6.8",

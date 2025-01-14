@@ -22,29 +22,10 @@
     import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
     import InitBanner from '$lib/components/InitBanner.svelte';
     import { trackEvent } from '$lib/actions/analytics';
-    import MainNav, { type NavLink } from '$lib/components/MainNav.svelte';
-    import posthog from 'posthog-js';
+    import MainNav from '$lib/components/MainNav.svelte';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
-
-    // posthog
-    let isHeaderExperiment: boolean = false;
-    let mounted: boolean = false;
-
-    onMount(async () => {
-        if (posthog) {
-            if (posthog.getFeatureFlag('sticky-navigation_ab-test') === 'control') {
-                isHeaderExperiment = false;
-            }
-
-            if (posthog.getFeatureFlag('sticky-navigation_ab-test') === 'sticky-nav') {
-                isHeaderExperiment = true;
-            }
-
-            mounted = true;
-        }
-    });
 
     function setupThemeObserver() {
         const handleVisibility = () => {
@@ -116,38 +97,54 @@
         return setupThemeObserver();
     });
 
-    let navLinks: Array<NavLink> = [
-        {
-            label: 'Products',
-            submenu: ProductsSubmenu,
-            mobileSubmenu: ProductsMobileSubmenu
-        },
-        {
-            label: 'Docs',
-            href: '/docs'
-        },
-        {
-            label: 'Community',
-            href: '/community'
-        },
-        {
-            label: 'Blog',
-            href: '/blog'
-        },
-        {
-            label: 'Integrations',
-            href: '/integrations'
-        },
-        {
-            label: 'Changelog',
-            href: '/changelog',
-            showBadge: hasNewChangelog?.() && !$page.url.pathname.includes('/changelog')
-        },
-        {
-            label: 'Pricing',
-            href: '/pricing'
-        }
-    ];
+    $: navLinks = $page.data.isStickyNav
+        ? [
+              {
+                  label: 'Products',
+                  submenu: ProductsSubmenu,
+                  mobileSubmenu: ProductsMobileSubmenu
+              },
+              {
+                  label: 'Docs',
+                  href: '/docs'
+              },
+              {
+                  label: 'Pricing',
+                  href: '/pricing'
+              }
+          ]
+        : [
+              {
+                  label: 'Products',
+                  submenu: ProductsSubmenu,
+                  mobileSubmenu: ProductsMobileSubmenu
+              },
+              {
+                  label: 'Docs',
+                  href: '/docs'
+              },
+              {
+                  label: 'Community',
+                  href: '/community'
+              },
+              {
+                  label: 'Blog',
+                  href: '/blog'
+              },
+              {
+                  label: 'Integrations',
+                  href: '/integrations'
+              },
+              {
+                  label: 'Changelog',
+                  href: '/changelog',
+                  showBadge: hasNewChangelog?.() && !$page.url.pathname.includes('/changelog')
+              },
+              {
+                  label: 'Pricing',
+                  href: '/pricing'
+              }
+          ];
 
     $: resolvedTheme = $isMobileNavOpen ? 'dark' : theme;
 
@@ -182,7 +179,7 @@
     <section
         class="web-mobile-header {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
-        class:is-hidden={$isHeaderHidden}
+        class:is-hidden={$isHeaderHidden && !$page.data.isStickyNav}
     >
         <div class="web-mobile-header-start">
             <a href="/">
@@ -223,20 +220,22 @@
     </section>
     <header
         class="web-main-header is-special-padding {resolvedTheme} is-transparent"
-        class:is-hidden={$isHeaderHidden}
+        class:is-hidden={$isHeaderHidden && !$page.data.isStickyNav}
         class:is-special-padding={!BANNER_KEY.startsWith('init-banner-')}
         style={BANNER_KEY === 'init-banner-02' ? 'padding-inline: 0' : ''}
     >
-        {#if BANNER_KEY.startsWith('init-banner-')}
-            <InitBanner />
-        {:else}
-            <AnnouncementBanner>
-                <a href="/discord" target="_blank" rel="noopener noreferrer">
-                    <span class="text-caption font-medium">We are having lots of fun on</span>
-                    <span class="web-icon-discord" aria-hidden="true" />
-                    <span class="text-caption font-medium">Discord. Come and join us!</span>
-                </a>
-            </AnnouncementBanner>
+        {#if !$page.data.isStickyNav}
+            {#if BANNER_KEY.startsWith('init-banner-')}
+                <InitBanner />
+            {:else}
+                <AnnouncementBanner>
+                    <a href="/discord" target="_blank" rel="noopener noreferrer">
+                        <span class="text-caption font-medium">We are having lots of fun on</span>
+                        <span class="web-icon-discord" aria-hidden="true" />
+                        <span class="text-caption font-medium">Discord. Come and join us!</span>
+                    </a>
+                </AnnouncementBanner>
+            {/if}
         {/if}
 
         <div
