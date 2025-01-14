@@ -365,11 +365,15 @@
         <defs>
             <filter
                 id="filter0_b_71_1348"
+                x="-100"
+                y="-100"
+                width="895"
+                height="755"
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
             >
                 <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feGaussianBlur in="BackgroundImageFix" stdDeviation="49.5987" />
+                <feGaussianBlur in="BackgroundImageFix" stdDeviation="50" />
                 <feComposite
                     in2="SourceAlpha"
                     operator="in"
@@ -382,17 +386,18 @@
                     result="shape"
                 />
             </filter>
+
             <filter
                 id="filter1_b_71_1348"
-                x="190.469"
-                y="295.366"
-                width="223.32"
-                height="241.556"
+                x="140"
+                y="245"
+                width="324"
+                height="342"
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
             >
                 <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feGaussianBlur in="BackgroundImageFix" stdDeviation="49.5987" />
+                <feGaussianBlur in="BackgroundImageFix" stdDeviation="50" />
                 <feComposite
                     in2="SourceAlpha"
                     operator="in"
@@ -405,17 +410,18 @@
                     result="shape"
                 />
             </filter>
+
             <filter
                 id="filter2_b_71_1348"
-                x="190.47"
-                y="65.203"
-                width="223.312"
-                height="227.164"
+                x="140"
+                y="15"
+                width="324"
+                height="328"
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
             >
                 <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feGaussianBlur in="BackgroundImageFix" stdDeviation="49.5987" />
+                <feGaussianBlur in="BackgroundImageFix" stdDeviation="50" />
                 <feComposite
                     in2="SourceAlpha"
                     operator="in"
@@ -428,17 +434,18 @@
                     result="shape"
                 />
             </filter>
+
             <filter
                 id="filter3_b_71_1348"
-                x="190.466"
-                y="137.123"
-                width="298.063"
-                height="255.935"
+                x="140"
+                y="87"
+                width="399"
+                height="357"
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
             >
                 <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feGaussianBlur in="BackgroundImageFix" stdDeviation="49.5987" />
+                <feGaussianBlur in="BackgroundImageFix" stdDeviation="50" />
                 <feComposite
                     in2="SourceAlpha"
                     operator="in"
@@ -451,17 +458,18 @@
                     result="shape"
                 />
             </filter>
+
             <filter
                 id="filter4_b_71_1348"
-                x="265.221"
-                y="50.8055"
-                width="223.313"
-                height="299.098"
+                x="215"
+                y="0"
+                width="324"
+                height="400"
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
             >
                 <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feGaussianBlur in="BackgroundImageFix" stdDeviation="49.5987" />
+                <feGaussianBlur in="BackgroundImageFix" stdDeviation="50" />
                 <feComposite
                     in2="SourceAlpha"
                     operator="in"
@@ -474,17 +482,18 @@
                     result="shape"
                 />
             </filter>
+
             <filter
                 id="filter5_b_71_1348"
-                x="16.0545"
-                y="50.8055"
-                width="447.561"
-                height="572.426"
+                x="-34"
+                y="0"
+                width="548"
+                height="673"
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
             >
                 <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feGaussianBlur in="BackgroundImageFix" stdDeviation="49.5987" />
+                <feGaussianBlur in="BackgroundImageFix" stdDeviation="50" />
                 <feComposite
                     in2="SourceAlpha"
                     operator="in"
@@ -497,17 +506,18 @@
                     result="shape"
                 />
             </filter>
+
             <filter
                 id="filter6_b_71_1348"
-                x="115.721"
-                y="209.048"
-                width="298.071"
-                height="255.939"
+                x="65"
+                y="159"
+                width="399"
+                height="357"
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
             >
                 <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feGaussianBlur in="BackgroundImageFix" stdDeviation="49.5987" />
+                <feGaussianBlur in="BackgroundImageFix" stdDeviation="50" />
                 <feComposite
                     in2="SourceAlpha"
                     operator="in"
@@ -520,17 +530,18 @@
                     result="shape"
                 />
             </filter>
+
             <filter
                 id="filter7_b_71_1348"
-                x="115.722"
-                y="252.207"
-                width="223.315"
-                height="284.713"
+                x="65"
+                y="202"
+                width="324"
+                height="385"
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
             >
                 <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feGaussianBlur in="BackgroundImageFix" stdDeviation="49.5987" />
+                <feGaussianBlur in="BackgroundImageFix" stdDeviation="50" />
                 <feComposite
                     in2="SourceAlpha"
                     operator="in"
@@ -543,17 +554,18 @@
                     result="shape"
                 />
             </filter>
+
             <filter
                 id="filter8_b_71_1348"
-                x="190.467"
-                y="180.283"
-                width="223.326"
-                height="241.559"
+                x="140"
+                y="130"
+                width="324"
+                height="342"
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
             >
                 <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feGaussianBlur in="BackgroundImageFix" stdDeviation="49.5987" />
+                <feGaussianBlur in="BackgroundImageFix" stdDeviation="50" />
                 <feComposite
                     in2="SourceAlpha"
                     operator="in"
@@ -566,17 +578,18 @@
                     result="shape"
                 />
             </filter>
+
             <filter
                 id="filter9_b_71_1348"
-                x="450.511"
-                y="-85.1183"
-                width="223.313"
-                height="471.723"
+                x="400"
+                y="-135"
+                width="324"
+                height="573"
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
             >
                 <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feGaussianBlur in="BackgroundImageFix" stdDeviation="49.5987" />
+                <feGaussianBlur in="BackgroundImageFix" stdDeviation="50" />
                 <feComposite
                     in2="SourceAlpha"
                     operator="in"
@@ -589,17 +602,18 @@
                     result="shape"
                 />
             </filter>
+
             <filter
                 id="filter10_b_71_1348"
-                x="201.345"
-                y="-85.1181"
-                width="447.563"
-                height="572.426"
+                x="151"
+                y="-135"
+                width="548"
+                height="673"
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
             >
                 <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feGaussianBlur in="BackgroundImageFix" stdDeviation="49.5987" />
+                <feGaussianBlur in="BackgroundImageFix" stdDeviation="50" />
                 <feComposite
                     in2="SourceAlpha"
                     operator="in"
@@ -612,17 +626,18 @@
                     result="shape"
                 />
             </filter>
+
             <filter
                 id="filter11_b_71_1348"
-                x="201.344"
-                y="245.753"
-                width="273.149"
-                height="255.939"
+                x="151"
+                y="195"
+                width="374"
+                height="357"
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
             >
                 <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feGaussianBlur in="BackgroundImageFix" stdDeviation="49.5987" />
+                <feGaussianBlur in="BackgroundImageFix" stdDeviation="50" />
                 <feComposite
                     in2="SourceAlpha"
                     operator="in"
@@ -635,17 +650,18 @@
                     result="shape"
                 />
             </filter>
+
             <filter
                 id="filter12_b_71_1348"
-                x="276.093"
-                y="173.825"
-                width="397.73"
-                height="313.485"
+                x="226"
+                y="123"
+                width="499"
+                height="415"
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
             >
                 <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feGaussianBlur in="BackgroundImageFix" stdDeviation="49.5987" />
+                <feGaussianBlur in="BackgroundImageFix" stdDeviation="50" />
                 <feComposite
                     in2="SourceAlpha"
                     operator="in"
@@ -658,17 +674,18 @@
                     result="shape"
                 />
             </filter>
+
             <filter
                 id="filter13_b_71_1348"
-                x="276.091"
-                y="1.19319"
-                width="273.149"
-                height="255.942"
+                x="226"
+                y="-49"
+                width="374"
+                height="357"
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
             >
                 <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feGaussianBlur in="BackgroundImageFix" stdDeviation="49.5987" />
+                <feGaussianBlur in="BackgroundImageFix" stdDeviation="50" />
                 <feComposite
                     in2="SourceAlpha"
                     operator="in"
@@ -681,6 +698,7 @@
                     result="shape"
                 />
             </filter>
+
             <linearGradient
                 id="paint0_linear_71_1348"
                 x1="308.36"
@@ -793,12 +811,10 @@
 </div>
 
 <style lang="scss">
-    :root {
-        --cubic-bezier: (0.185, 0.84, 0.44, 1);
-    }
-
     .rightPiece {
         opacity: 0;
+        filter: 'blur(4px)';
+
         @keyframes right-piece {
             0% {
                 opacity: 0;
