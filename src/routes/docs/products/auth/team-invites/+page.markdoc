@@ -13,11 +13,8 @@ Client-side email invites provide a user-friendly way to add members to your tea
 2. Creates a pending membership
 3. Activates the membership when the user accepts
 
-Use this approach when you want:
-- Automatic email invitations
-- Built-in email templates and localization
-- Simple invite acceptance flow
-- User verification through email
+Client-side invites are ideal when you want a simple, automated process.
+Appwrite handles the email delivery with built-in templates and localization support, making it easy to implement a standard invite acceptance flow with email verification.
 
 {% multicode %}
 ```client-web
@@ -94,12 +91,9 @@ Server-side membership creation bypasses the email invitation process, allowing 
 2. Doesn't require user acceptance
 3. Gives you complete control over the invitation workflow
 
-Use this when you need:
-- Custom invitation workflows
-- Bulk user management
-- Automated team assignments
-- Integration with external systems
-- Immediate member access
+Server-side flows give you complete control over the membership process.
+This makes them perfect for scenarios requiring custom workflows, such as bulk user management, automated team assignments, or integration with external systems.
+Since memberships are created directly, users gain immediate access without waiting for email acceptance.
 
 {% multicode %}
 ```server-nodejs
@@ -178,9 +172,9 @@ val response = teams.createMembership(
 ```
 {% /multicode %}
 
-# Managing memberships {% #managing %}
+# Manage memberships {% #manage-memberships %}
 
-## Accepting invitations {% #accepting %}
+## Accept invitations {% #accept-invitations %}
 
 For client-side email invites, users must accept the invitation to join the team. The acceptance flow:
 1. User receives an email with an invitation link
@@ -256,7 +250,7 @@ val response = teams.updateMembershipStatus(
 ```
 {% /multicode %}
 
-## Checking membership status {% #status %}
+## Check membership status {% #status %}
 
 You can verify a user's membership status to determine if they've accepted an invitation:
 
@@ -328,7 +322,7 @@ println(membership.status) // 'invited' or 'confirmed'
 ```
 {% /multicode %}
 
-## Removing members {% #removing %}
+## Remove members {% #remove-members %}
 
 Team owners can remove members or users can leave teams:
 
