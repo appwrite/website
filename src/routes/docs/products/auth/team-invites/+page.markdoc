@@ -1,19 +1,18 @@
 ---
 layout: article
-title: Team Invites
-description: Learn how to manage team invites in Appwrite. Explore both client-side and server-side approaches for inviting users to teams.
+title: Team invites
+description: Learn how to manage team invites in Appwrite. Implement both client-side email invites and server-side custom flows for team memberships.
 ---
 
-Teams in Appwrite allow users to share access to resources. When you invite users to a team, they can access resources based on their team roles and permissions.
-There are two main approaches to handling team invites: client-side (using email) and server-side (for custom flows).
+Teams in Appwrite let users share access to resources through roles and permissions. There are two ways to handle team invites: client-side with email invites and server-side for custom flows.
 
-# Client-side invites {% #client-side %}
+# Client-side email invites {% #client-side %}
 
-Client-side invites are the simplest way to invite users to a team. When you create a membership, Appwrite automatically sends an email invitation to the user.
-This approach is ideal when:
-- You want to use Appwrite's built-in email invitation system
-- You need a quick and reliable way to invite users
-- You want to leverage Appwrite's email templates and localization
+Client-side invites use Appwrite's built-in email system. When you create a membership, Appwrite automatically sends an email invitation to the user.
+Use this approach when you want:
+- Automatic email invitations
+- Built-in email templates and localization
+- Simple invite acceptance flow
 
 {% multicode %}
 ```client-web
@@ -25,7 +24,7 @@ const client = new Client()
 
 const teams = new Teams(client);
 
-// Invite a user by email
+// Create membership with email invite
 const membership = await teams.createMembership(
     'team_id',
     ['developer'],     // roles
@@ -41,20 +40,52 @@ final client = Client()
 
 final teams = Teams(client);
 
-// Invite a user by email
+// Create membership with email invite
 final membership = await teams.createMembership(
     teamId: 'team_id',
     roles: ['developer'],
     email: 'user@example.com'
 );
 ```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
+
+let teams = Teams(client)
+
+// Create membership with email invite
+let membership = try await teams.createMembership(
+    teamId: "team_id",
+    roles: ["developer"],
+    email: "user@example.com"
+)
+```
+```kotlin
+import io.appwrite.Client
+import io.appwrite.services.Teams
+
+val client = Client(context)
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
+
+val teams = Teams(client)
+
+// Create membership with email invite
+val response = teams.createMembership(
+    teamId = "team_id",
+    roles = listOf("developer"),
+    email = "user@example.com"
+)
+```
 {% /multicode %}
 
-# Server-side invites {% #server-side %}
+# Server-side custom flows {% #server-side %}
 
-Server-side invites give you more control over the invitation process.
-Instead of sending automatic emails, you can create custom flows using the server SDK.
-This approach is useful for:
+Server-side invites give you complete control over the invitation process. Instead of using email invites, you create memberships directly using user IDs.
+This approach is essential for:
 - Custom invitation workflows
 - Bulk user management
 - Automated team assignments
@@ -76,10 +107,10 @@ const membership = await teams.createMembership(
     'team_id',
     ['developer'],
     'user_id',
-    'John Doe'  // optional
+    'John Doe'  // optional name
 );
 ```
-```python
+```server-python
 from appwrite.client import Client
 from appwrite.services.teams import Teams
 
@@ -98,45 +129,81 @@ membership = teams.create_membership(
     name='John Doe'  # optional
 )
 ```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>") // Your secret API key
+
+let teams = Teams(client)
+
+// Create membership directly with userId
+let membership = try await teams.createMembership(
+    teamId: "team_id",
+    roles: ["developer"],
+    userId: "user_id",
+    name: "John Doe" // optional
+)
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Teams
+
+val client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>") // Your secret API key
+
+val teams = Teams(client)
+
+// Create membership directly with userId
+val response = teams.createMembership(
+    teamId = "team_id",
+    roles = listOf("developer"),
+    userId = "user_id",
+    name = "John Doe" // optional
+)
+```
 {% /multicode %}
 
-# Understanding roles and permissions {% #roles %}
+# Membership roles {% #roles %}
 
-Team roles in Appwrite are flexible and can be used to create sophisticated access control systems. Here's a detailed look at how they work:
+Membership roles define what team members can do. Understanding roles is crucial for implementing proper access control.
 
-## Built-in roles {% #built-in-roles %}
+## Built-in owner role {% #owner-role %}
 
-1. **owner** - Special role that can:
-   - Invite new members
-   - Remove members
-   - Update team settings
-   - Delete the team
-   - Automatically has all permissions within team scope
+The `owner` role is special and has full control. Team owners can:
+- Invite new members
+- Remove members
+- Update team settings
+- Delete the team
+- Access everything in the team's scope
 
-The owner role is automatically assigned to the user who creates the team. Only users with the owner role can invite new members or assign the owner role to other members.
+The user who creates a team automatically becomes its owner. Only owners can invite new members or assign the owner role to others.
 
-## Role-based permissions {% #role-permissions %}
+## Role-based permissions {% #permissions %}
 
-Roles become powerful when combined with Appwrite's [permission system](/docs/advanced/platform/permissions). Here are the ways you can use team roles in permissions:
+Roles integrate with Appwrite's [permission system](/docs/advanced/platform/permissions) to control resource access. Here are common permission patterns:
 
 ```javascript
-// Examples of role-based permissions
-
-// Grant access to specific role in a team
+// Grant access to specific roles
 ['team:team_123/developer']
+['team:team_123/admin']
 
 // Multiple roles for the same resource
 ['team:team_123/admin', 'team:team_123/developer']
 
-// Access for any team member regardless of role
+// Access for any team member
 ['team:team_123']
 
-// Combine with resource permissions
+// Granular resource permissions
 ['team:team_123/developer/documents.read']
 ['team:team_123/admin/documents.*']
 ```
 
-To gain access to team-based permissions:
-1. A user must be invited and accept the team invitation
-2. The user must have the specified role assigned to them
-3. The role must be explicitly granted permission to the resource
+For team permissions to work:
+1. For client-side invites, the user must accept the email invitation. For server-side flows, the membership is created directly
+2. The user must have the required role
+3. The role must have explicit permission to the resource
