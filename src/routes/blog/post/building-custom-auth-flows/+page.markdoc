@@ -40,9 +40,9 @@ Next, you'll need to set up your Appwrite project. Head over to the [Appwrite Co
 Make sure to note down your Project ID, which you can find in the Settings page.
 
 To enable custom authentication, you'll need an API key with the appropriate permissions.
-In your project's overview page, navigate to the "Integrations" section and click on "API Keys".
+In your project's overview page, navigate to the **Integrations** section and click on **API Keys**.
 Create a new API key with a suitable name (e.g., "Custom Auth") and optionally set an expiry date.
-When configuring permissions, ensure you select the "Auth" scope. After creation, securely save your API key as you'll need it in the next steps.
+When configuring permissions, ensure you select the **Auth** scope. After creation, securely save your API key as you'll need it in the next steps.
 
 # Project setup
 
@@ -225,7 +225,6 @@ npm run server
 
 Now that our authentication server is running, let's create an intuitive user interface.
 We'll break this down into several parts: HTML structure, styling, and JavaScript logic.
-Each part plays a crucial role in creating a seamless authentication experience.
 
 ## HTML structure and styling
 
