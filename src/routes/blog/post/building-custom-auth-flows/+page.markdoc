@@ -402,10 +402,10 @@ async function handleExternalAuth(email, password) {
 
 This function:
 
-1. Sends the login details to our backend
-2. Gets back a token if the login is successful
-3. Creates an Appwrite session with this token
-4. Shows the logged-in screen with the user's name
+- Sends the login details to our backend
+- Gets back a token if the login is successful
+- Creates an Appwrite session with this token
+- Shows the logged-in screen with the user's name
 
 Next, we add click handlers to our login and logout buttons.
 These functions run when users click the buttons:
