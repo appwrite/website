@@ -96,6 +96,10 @@
                 {
                     label: 'Verify user',
                     href: '/docs/products/auth/verify-user'
+                },
+                {
+                    label: 'Team invites',
+                    href: '/docs/products/auth/team-invites'
                 }
             ]
         },

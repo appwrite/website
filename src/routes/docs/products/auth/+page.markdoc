@@ -46,10 +46,13 @@ Implement custom authentication methods like biometric and passkey login by gene
 {% cards_item href="/docs/products/auth/mfa" title="Multifactor authentication (MFA)" %}
 Implementing MFA to add extra layers of security to your app.
 {% /cards_item %}
+{% cards_item href="/docs/products/auth/team-invites" title="Team invites" %}
+Manage team invites and memberships with client-side and server-side approaches.
+{% /cards_item %}
 {% /cards %}
 
 # Flexible permissions {% #flexible-permissions %}
-When users sign up using Appwrite, their identity is automatically attached to a robust permissions system. 
+When users sign up using Appwrite, their identity is automatically attached to a robust permissions system.
 Appwrite Authentication provides permissions for individual users and groups of users through [teams](/docs/products/auth/teams) and [labels](/docs/products/auth/labels).
 
 # Built in preferences {% #built-in-preferences %}
