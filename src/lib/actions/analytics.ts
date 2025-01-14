@@ -1,8 +1,8 @@
 import { Analytics, type AnalyticsPlugin } from 'analytics';
 import Plausible from 'plausible-tracker';
+import posthogEvent from 'posthog-js';
 import { get } from 'svelte/store';
 import { page } from '$app/stores';
-import posthogEvent from 'posthog-js';
 
 import { ENV } from '$lib/system';
 import { browser } from '$app/environment';
