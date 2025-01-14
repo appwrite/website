@@ -92,7 +92,7 @@ Create a new file named `server.js` in your project root. Let's break down the i
 
 First, we'll set up our basic server infrastructure by importing dependencies and loading environment variables:
 
-```jsx
+```js
 import express from 'express'
 import cors from 'cors'
 import { Client, Users } from 'node-appwrite'
@@ -105,7 +105,7 @@ dotenv.config()
 Before proceeding, we should validate that all required environment variables are present.
 This helps catch configuration issues early:
 
-```jsx
+```js
 // Validate required environment variables
 const requiredEnvVars = [
   'APPWRITE_ENDPOINT',
@@ -122,7 +122,7 @@ for (const envVar of requiredEnvVars) {
 
 With our environment validated, we can set up the Express server and configure necessary middleware:
 
-```jsx
+```js
 const app = express()
 app.use(cors())
 app.use(express.json())
@@ -130,7 +130,7 @@ app.use(express.json())
 
 Now we'll initialize the Appwrite client with our configuration:
 
-```jsx
+```js
 // Initialize Appwrite
 const client = new Client()
   .setEndpoint(process.env.APPWRITE_ENDPOINT)
@@ -143,7 +143,7 @@ const users = new Users(client)
 For demonstration purposes, we'll create a simulated user database.
 In a real application, this would be replaced with your actual user database or authentication system:
 
-```jsx
+```js
 // Simulate a third-party auth database
 const thirdPartyUsers = {
   'demo@example.com': {
@@ -159,7 +159,7 @@ In a production environment, always use secure password hashing and proper secur
 
 Let's implement the login endpoint that will handle authentication requests:
 
-```jsx
+```js
 // Simulate third-party login
 app.post('/auth/external/login', async (req, res) => {
   const { email, password } = req.body
@@ -207,7 +207,7 @@ This endpoint handles several important tasks:
 
 Finally, let's start the server on our specified port:
 
-```jsx
+```js
 const PORT = process.env.PORT || 3000
 
 app.listen(PORT, () => {
@@ -341,7 +341,7 @@ Now let's implement the frontend logic in `src/main.js`. We'll break this down i
 
 First, we set up the connection to Appwrite. This code tells our frontend how to talk to Appwrite's servers:
 
-```jsx
+```js
 import { Client, Account } from 'appwrite'
 
 // Initialize Appwrite
@@ -355,7 +355,7 @@ const account = new Account(client)
 We need quick access to our HTML elements to show/hide them and update their content.
 These variables help us do that:
 
-```jsx
+```js
 // DOM Elements
 const loginForm = document.getElementById('loginForm')
 const loggedInView = document.getElementById('loggedInView')
@@ -365,7 +365,7 @@ const userInfo = document.getElementById('userInfo')
 The `handleExternalAuth` function is the main piece of our login process.
 It takes the user's email and password and does four specific things:
 
-```jsx
+```js
 // Handle external auth and Appwrite session creation
 async function handleExternalAuth(email, password) {
   try {
@@ -409,7 +409,7 @@ This function:
 Next, we add click handlers to our login and logout buttons.
 These functions run when users click the buttons:
 
-```jsx
+```js
 // Handle login button click
 document.getElementById('loginButton').addEventListener('click', async () => {
   const email = document.getElementById('email').value
@@ -443,7 +443,7 @@ These click handlers:
 
 Lastly, we check if the user is already logged in when they load the page:
 
-```jsx
+```js
 // Check auth status on load
 async function checkAuth() {
   try {
