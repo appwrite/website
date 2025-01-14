@@ -232,7 +232,7 @@
                                             >
                                                 Custom
                                             </div>
-                                            <div class="mt-1">per organization/month</div>
+                                            <div class="mt-1"></div>
                                             <p class="text-body mt-4 h-[5rem] font-medium">
                                                 For enterprises that need more power and premium
                                                 support.
