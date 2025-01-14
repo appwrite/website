@@ -4,15 +4,20 @@ title: Team invites
 description: Learn how to manage team invites in Appwrite. Implement both client-side email invites and server-side custom flows for team memberships.
 ---
 
-Teams in Appwrite let users share access to resources through roles and permissions. There are two ways to handle team invites: client-side with email invites and server-side for custom flows.
+Appwrite provides two approaches for adding members to teams: client-side email invites and server-side custom flows. Each approach serves different use cases and offers unique benefits.
 
 # Client-side email invites {% #client-side %}
 
-Client-side invites use Appwrite's built-in email system. When you create a membership, Appwrite automatically sends an email invitation to the user.
+Client-side email invites provide a user-friendly way to add members to your team. When creating a membership, Appwrite:
+1. Sends an automated email invitation to the user
+2. Creates a pending membership
+3. Activates the membership when the user accepts
+
 Use this approach when you want:
 - Automatic email invitations
 - Built-in email templates and localization
 - Simple invite acceptance flow
+- User verification through email
 
 {% multicode %}
 ```client-web
@@ -84,12 +89,17 @@ val response = teams.createMembership(
 
 # Server-side custom flows {% #server-side %}
 
-Server-side invites give you complete control over the invitation process. Instead of using email invites, you create memberships directly using user IDs.
-This approach is essential for:
+Server-side membership creation bypasses the email invitation process, allowing direct member addition. This approach:
+1. Creates an active membership immediately
+2. Doesn't require user acceptance
+3. Gives you complete control over the invitation workflow
+
+Use this when you need:
 - Custom invitation workflows
 - Bulk user management
 - Automated team assignments
 - Integration with external systems
+- Immediate member access
 
 {% multicode %}
 ```server-nodejs
@@ -168,42 +178,220 @@ val response = teams.createMembership(
 ```
 {% /multicode %}
 
-# Membership roles {% #roles %}
+# Managing memberships {% #managing %}
 
-Membership roles define what team members can do. Understanding roles is crucial for implementing proper access control.
+## Accepting invitations {% #accepting %}
 
-## Built-in owner role {% #owner-role %}
+For client-side email invites, users must accept the invitation to join the team. The acceptance flow:
+1. User receives an email with an invitation link
+2. Clicking the link redirects to your app
+3. Your app calls the acceptance endpoint
+4. Upon success, the user gains immediate access
 
-The `owner` role is special and has full control. Team owners can:
-- Invite new members
-- Remove members
-- Update team settings
-- Delete the team
-- Access everything in the team's scope
+{% multicode %}
+```client-web
+import { Client, Teams } from "appwrite";
 
-The user who creates a team automatically becomes its owner. Only owners can invite new members or assign the owner role to others.
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
 
-## Role-based permissions {% #permissions %}
+const teams = new Teams(client);
 
-Roles integrate with Appwrite's [permission system](/docs/advanced/platform/permissions) to control resource access. Here are common permission patterns:
-
-```javascript
-// Grant access to specific roles
-['team:team_123/developer']
-['team:team_123/admin']
-
-// Multiple roles for the same resource
-['team:team_123/admin', 'team:team_123/developer']
-
-// Access for any team member
-['team:team_123']
-
-// Granular resource permissions
-['team:team_123/developer/documents.read']
-['team:team_123/admin/documents.*']
+// Accept the invitation using the membership ID
+const response = await teams.updateMembershipStatus(
+    'team_id',
+    'membership_id',
+    'user_id'
+);
 ```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
 
-For team permissions to work:
-1. For client-side invites, the user must accept the email invitation. For server-side flows, the membership is created directly
-2. The user must have the required role
-3. The role must have explicit permission to the resource
+final client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final teams = Teams(client);
+
+// Accept the invitation using the membership ID
+final response = await teams.updateMembershipStatus(
+    teamId: 'team_id',
+    membershipId: 'membership_id',
+    userId: 'user_id'
+);
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let teams = Teams(client)
+
+// Accept the invitation using the membership ID
+let response = try await teams.updateMembershipStatus(
+    teamId: "team_id",
+    membershipId: "membership_id",
+    userId: "user_id"
+)
+```
+```kotlin
+import io.appwrite.Client
+import io.appwrite.services.Teams
+
+val client = Client(context)
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val teams = Teams(client)
+
+// Accept the invitation using the membership ID
+val response = teams.updateMembershipStatus(
+    teamId = "team_id",
+    membershipId = "membership_id",
+    userId = "user_id"
+)
+```
+{% /multicode %}
+
+## Checking membership status {% #status %}
+
+You can verify a user's membership status to determine if they've accepted an invitation:
+
+{% multicode %}
+```client-web
+import { Client, Teams } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const teams = new Teams(client);
+
+const membership = await teams.getMembership(
+    'team_id',
+    'membership_id'
+);
+
+console.log(membership.status); // 'invited' or 'confirmed'
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final teams = Teams(client);
+
+final membership = await teams.getMembership(
+    teamId: 'team_id',
+    membershipId: 'membership_id'
+);
+
+print(membership.status); // 'invited' or 'confirmed'
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let teams = Teams(client)
+
+let membership = try await teams.getMembership(
+    teamId: "team_id",
+    membershipId: "membership_id"
+)
+
+print(membership.status) // 'invited' or 'confirmed'
+```
+```kotlin
+import io.appwrite.Client
+import io.appwrite.services.Teams
+
+val client = Client(context)
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val teams = Teams(client)
+
+val membership = teams.getMembership(
+    teamId = "team_id",
+    membershipId = "membership_id"
+)
+
+println(membership.status) // 'invited' or 'confirmed'
+```
+{% /multicode %}
+
+## Removing members {% #removing %}
+
+Team owners can remove members or users can leave teams:
+
+{% multicode %}
+```client-web
+import { Client, Teams } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const teams = new Teams(client);
+
+await teams.deleteMembership(
+    'team_id',
+    'membership_id'
+);
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final teams = Teams(client);
+
+await teams.deleteMembership(
+    teamId: 'team_id',
+    membershipId: 'membership_id'
+);
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let teams = Teams(client)
+
+try await teams.deleteMembership(
+    teamId: "team_id",
+    membershipId: "membership_id"
+)
+```
+```kotlin
+import io.appwrite.Client
+import io.appwrite.services.Teams
+
+val client = Client(context)
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val teams = Teams(client)
+
+teams.deleteMembership(
+    teamId = "team_id",
+    membershipId = "membership_id"
+)
+```
+{% /multicode %}
+
+{% arrow_link href="/docs/products/auth/teams" %}
+Learn more about team management
+{% /arrow_link %}
