@@ -45,16 +45,16 @@
 
 <Main>
     <div class="web-big-padding-section mt-2">
-        <div class="dark pt-10">
+        <div class="dark pt-8">
             <div class="web-big-padding-section-level-2">
                 <section class="container">
                     <div class="web-hero">
                         <h1
-                            class="text-display font-aeonik-pro web-u-max-width-700 web-u-opacity-90 web-u-mobile-align-text-center self-center"
+                            class="text-display font-aeonik-pro web-u-max-width-900 web-u-opacity-90 web-u-mobile-align-text-center self-center"
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
-                            Simple, transparent pricing with no surprises
+                            Simple and transparent pricing
                         </h1>
                     </div>
                 </section>
@@ -123,7 +123,7 @@
                                                 <h2 id="pro" class="text-label font-aeonik-pro">
                                                     Pro
                                                 </h2>
-                                                <div class="web-inline-tag is-pink">Popular</div>
+                                                <div class="web-inline-tag is-pink">Most popular</div>
                                             </header>
                                             <div
                                                 class="text-title font-aeonik-pro text-primary mt-2"
@@ -232,7 +232,7 @@
                                             >
                                                 Custom
                                             </div>
-                                            <div class="mt-1">per organization/month</div>
+                                            <div class="mt-1">&nbsp;</div>
                                             <p class="text-body mt-4 h-[5rem] font-medium">
                                                 For enterprises that need more power and premium
                                                 support.
