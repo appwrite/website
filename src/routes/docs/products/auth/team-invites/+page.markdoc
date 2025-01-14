@@ -79,23 +79,6 @@ const membership = await teams.createMembership(
     'John Doe'  // optional
 );
 
-// Bulk invite users to multiple teams
-async function bulkTeamInvites() {
-    const usersAndTeams = [
-        { userId: 'user1', teamId: 'team1', roles: ['developer'] },
-        { userId: 'user1', teamId: 'team2', roles: ['viewer'] },
-        { userId: 'user2', teamId: 'team1', roles: ['admin'] }
-    ]
-
-    for (const invite of usersAndTeams) {
-        await teams.createMembership(
-            invite.teamId,
-            invite.roles,
-            invite.userId
-        )
-    }
-}
-
 // Create team and add members in one go
 async function createTeamWithMembers(teamName, members) {
     // Create the team
