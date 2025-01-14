@@ -116,21 +116,6 @@ membership = teams.create_membership(
     name='John Doe'  # optional
 )
 
-# Bulk invite users to multiple teams
-async def bulk_team_invites():
-    users_and_teams = [
-        {'user_id': 'user1', 'team_id': 'team1', 'roles': ['developer']},
-        {'user_id': 'user1', 'team_id': 'team2', 'roles': ['viewer']},
-        {'user_id': 'user2', 'team_id': 'team1', 'roles': ['admin']}
-    ]
-
-    for invite in users_and_teams:
-        teams.create_membership(
-            team_id=invite['team_id'],
-            roles=invite['roles'],
-            user_id=invite['user_id']
-        )
-
 # Create team and add members in one go
 async def create_team_with_members(team_name, members):
     # Create the team
@@ -164,20 +149,6 @@ Team roles in Appwrite are flexible and can be used to create sophisticated acce
 
 The owner role is automatically assigned to the user who creates the team. Only users with the owner role can invite new members or assign the owner role to other members.
 
-## Custom roles {% #custom-roles %}
-
-Custom roles can be any string that makes sense for your application. They are used to define granular permissions within your team. Here are some common patterns:
-
-```javascript
-// Common role patterns
-const roles = {
-    administrative: ['admin', 'moderator', 'manager'],
-    access: ['reader', 'writer', 'viewer'],
-    department: ['engineering', 'marketing', 'sales'],
-    level: ['junior', 'senior', 'lead']
-}
-```
-
 ## Role-based permissions {% #role-permissions %}
 
 Roles become powerful when combined with Appwrite's [permission system](/docs/advanced/platform/permissions). Here are the ways you can use team roles in permissions:
@@ -203,48 +174,3 @@ To gain access to team-based permissions:
 1. A user must be invited and accept the team invitation
 2. The user must have the specified role assigned to them
 3. The role must be explicitly granted permission to the resource
-
-## Role hierarchy example {% #role-hierarchy %}
-
-Here's how to implement a role hierarchy in your application:
-
-{% multicode %}
-```server-nodejs
-const roleHierarchy = {
-    admin: ['*'],  // All permissions
-    manager: ['documents.read', 'documents.write', 'users.read'],
-    developer: ['documents.read', 'documents.write'],
-    viewer: ['documents.read']
-}
-
-async function hasPermission(userId, teamId, permission) {
-    const membership = await teams.getMembership(teamId, userId)
-    const userRoles = membership.roles
-
-    return userRoles.some(role =>
-        roleHierarchy[role]?.includes('*') ||
-        roleHierarchy[role]?.includes(permission)
-    )
-}
-```
-```python
-role_hierarchy = {
-    'admin': ['*'],  # All permissions
-    'manager': ['documents.read', 'documents.write', 'users.read'],
-    'developer': ['documents.read', 'documents.write'],
-    'viewer': ['documents.read']
-}
-
-async def has_permission(user_id, team_id, permission):
-    membership = teams.get_membership(team_id, user_id)
-    user_roles = membership.roles
-
-    return any(
-        '*' in role_hierarchy.get(role, []) or
-        permission in role_hierarchy.get(role, [])
-        for role in user_roles
-    )
-```
-{% /multicode %}
-
-# Custom invitation flows {% #custom-flows %}
