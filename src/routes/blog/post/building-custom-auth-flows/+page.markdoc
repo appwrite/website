@@ -154,8 +154,9 @@ const thirdPartyUsers = {
 }
 ```
 
-Note: This simulation uses plain text passwords for simplicity.
-In a production environment, always use secure password hashing and proper security measures.
+{% info title="Security Note" %}
+This simulation uses plain text passwords for simplicity. In a production environment, always use secure password hashing and proper security measures.
+{% /info %}
 
 Let's implement the login endpoint that will handle authentication requests:
 
