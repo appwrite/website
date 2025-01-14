@@ -78,24 +78,6 @@ const membership = await teams.createMembership(
     'user_id',
     'John Doe'  // optional
 );
-
-// Create team and add members in one go
-async function createTeamWithMembers(teamName, members) {
-    // Create the team
-    const team = await teams.create('unique()', teamName);
-
-    // Add members
-    for (const member of members) {
-        await teams.createMembership(
-            team.$id,
-            member.roles,
-            member.userId,
-            member.name
-        );
-    }
-
-    return team;
-}
 ```
 ```python
 from appwrite.client import Client
@@ -115,22 +97,6 @@ membership = teams.create_membership(
     user_id='user_id',
     name='John Doe'  # optional
 )
-
-# Create team and add members in one go
-async def create_team_with_members(team_name, members):
-    # Create the team
-    team = teams.create('unique()', team_name)
-
-    # Add members
-    for member in members:
-        teams.create_membership(
-            team_id=team['$id'],
-            roles=member['roles'],
-            user_id=member['user_id'],
-            name=member.get('name')
-        )
-
-    return team
 ```
 {% /multicode %}
 
