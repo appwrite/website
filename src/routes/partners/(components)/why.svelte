@@ -1,21 +1,50 @@
 <script lang="ts">
     import GradientBorderCard from '$lib/components/shared/gradient-border-card.svelte';
+    import { inView } from 'motion';
+    import NumberFlow from '@number-flow/svelte';
 
-    const items = [
+    let items: Array<{ number: number; label: string; suffix?: string }> = [
         {
-            title: '650k+',
-            description: 'Community members'
+            number: 650,
+            suffix: 'k+',
+            label: 'Community members'
         },
         {
-            title: '45k+',
-            description: 'GitHub stars'
+            number: 45,
+            suffix: 'k+',
+            label: 'GitHub stars'
         },
-        { title: '900+', description: 'OSS Contributors' },
-        { title: '300', description: 'Top OSS GitHub projects' }
+        {
+            number: 900,
+            suffix: '+',
+            label: 'OSS Contributors'
+        },
+        { number: 300, label: 'Top OSS GitHub projects' }
     ];
+
+    const numbers = [650, 45, 900, 300];
+
+    const updateNumbers = () => {
+        items = items.map((item, index) => {
+            return { ...item, number: numbers[index] };
+        });
+    };
+
+    let animate: boolean = false;
+
+    const useInView = (node: HTMLElement) => {
+        inView(
+            node,
+            () => {
+                animate = true;
+                updateNumbers();
+            },
+            { amount: 0.25 }
+        );
+    };
 </script>
 
-<div class="border-smooth mb-0 border-y py-32">
+<div class="border-smooth mb-0 border-y py-32" use:useInView>
     <div class="container space-y-12">
         <div class="mx-auto flex max-w-2xl flex-col gap-4 text-center">
             <span class="font-aeonik-fono tracking-loose text-micro text-primary uppercase">
@@ -30,10 +59,10 @@
             </p>
         </div>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {#each items as { title, description }}
+            {#each items as { label, number, suffix }}
                 <GradientBorderCard class="bg-greyscale-750 rounded-lg p-6">
-                    <h3 class="text-title text-primary">{title}</h3>
-                    <p class="text-description text-secondary">{description}</p>
+                    <h3 class="text-title text-primary"><NumberFlow value={number} {suffix} /></h3>
+                    <p class="text-description text-secondary">{label}</p>
                 </GradientBorderCard>
             {/each}
         </div>
