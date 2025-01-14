@@ -42,7 +42,9 @@
     )}
     use:useInView
 >
-    <div class="container mx-auto grid items-center gap-16 md:grid-cols-2">
+    <div
+        class="container mx-auto flex w-full flex-col items-center justify-between gap-16 md:flex-row"
+    >
         <div class="max-w-lg space-y-8">
             <h1 class="font-aeonik-pro text-title text-primary text-pretty">Partner Tiers</h1>
             <p class="text-body text-secondary text-pretty font-medium">
@@ -55,7 +57,7 @@
             </div>
         </div>
 
-        <div class="mask relative" style:--mask-height="200px">
+        <div class="mask relative" style:--mask-height="150px">
             {#each tiers as { title, icon }, i}
                 <div
                     class={classNames('relative h-fit opacity-0', {
@@ -65,21 +67,19 @@
                     style:animation-delay="{i * 0.1}s"
                 >
                     <div
-                        class="border-smooth flex h-fit items-center gap-4 rounded-3xl border-2 bg-black bg-gradient-to-br from-black to-white/20 md:rounded-[40px]"
+                        class="border-smooth flex h-fit items-center justify-center gap-4 rounded-3xl border-2 bg-black bg-gradient-to-br from-black to-white/20 py-3 px-5 md:rounded-[40px]"
                         style:margin-bottom={i === tiers.length - 1
                             ? 0
                             : `-${clamp(32, i * 40, 80)}px`}
                         style:transform="scale({1 - i * 0.15})"
                     >
-                        <div class="flex items-center justify-center gap-4">
+                        <div class="flex items-center justify-center gap-4 pr-2">
                             <img src={icon} alt="{title} Icon" class="h-16 w-auto md:h-20" />
-                            <div class="flex grow flex-col gap-2">
-                                <span class="text-primary block font-medium uppercase"
+                            <div class="flex grow flex-col -space-y-2">
+                                <span class="text-primary mt-2 block font-medium uppercase"
                                     >{title}<span class="text-accent">_</span></span
                                 >
-                                <h3
-                                    class="text-primary font-aeonik-pro text-label md:text-[2.75rem]"
-                                >
+                                <h3 class="text-primary font-aeonik-pro md:text-[2.75rem]">
                                     Appwrite Partner
                                 </h3>
                             </div>
