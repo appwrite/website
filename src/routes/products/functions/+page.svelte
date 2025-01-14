@@ -109,7 +109,7 @@
                     <li class="web-u-flex-basis-378">
                         <a
                             class="web-card is-normal"
-                            href="/docs/products/functions"
+                            href="/products/functions"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
@@ -160,7 +160,7 @@
                     <li class="web-u-flex-basis-378">
                         <a
                             class="web-card is-normal"
-                            href="/docs/products/storage"
+                            href="/products/storage"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
