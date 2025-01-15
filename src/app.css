@@ -87,7 +87,7 @@
     --animate-scroll: scroll 60s linear infinite;
     --animate-fade-in: fade-in 0.5s ease-in-out both;
     --animate-marquee: marquee var(--speed, 30s) linear infinite var(--direction, forwards);
-    --animate-lighting: lighting var(--speed, 2s) ease-out forwards;
+    --animate-lighting: lighting var(--speed, 1.5s) ease-out forwards;
 
     /* Pink polyfills */
     --transition: 0.2s;

@@ -4,91 +4,14 @@
 </script>
 
 <div class="relative flex min-h-[75vh] items-center">
-    <svg
-        width="921"
-        height="818"
-        viewBox="0 0 921 818"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style:--speed="1.25s"
-        class="animate-lighting absolute top-0 left-0 z-0 max-h-[75vh]"
-    >
-        <g opacity="0.4" filter="url(#filter0_f_752_105943)">
-            <ellipse
-                cx="53.0526"
-                cy="177.79"
-                rx="195.229"
-                ry="24.8951"
-                transform="rotate(22.991 53.0526 177.79)"
-                fill="#FE9567"
-            />
-        </g>
-        <g opacity="0.16" filter="url(#filter1_f_752_105943)">
-            <ellipse
-                cx="77.6157"
-                cy="251.35"
-                rx="549.877"
-                ry="86.6798"
-                transform="rotate(33.4403 77.6157 251.35)"
-                fill="#FD366E"
-            />
-        </g>
-        <g opacity="0.16" filter="url(#filter2_f_752_105943)">
-            <ellipse
-                cx="211.101"
-                cy="196.655"
-                rx="613.195"
-                ry="89.6512"
-                transform="rotate(16.3234 211.101 196.655)"
-                fill="#FD366E"
-            />
-        </g>
-        <defs>
-            <filter
-                id="filter0_f_752_105943"
-                x="-276.938"
-                y="-51.854"
-                width="659.977"
-                height="459.289"
-                filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
-            >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                <feGaussianBlur stdDeviation="75" result="effect1_foregroundBlur_752_105943" />
-            </filter>
-            <filter
-                id="filter1_f_752_105943"
-                x="-638.772"
-                y="-315.276"
-                width="1432.78"
-                height="1133.25"
-                filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
-            >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                <feGaussianBlur stdDeviation="127.511" result="effect1_foregroundBlur_752_105943" />
-            </filter>
-            <filter
-                id="filter2_f_752_105943"
-                x="-497.93"
-                y="-116.013"
-                width="1418.05"
-                height="625.336"
-                filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
-            >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                <feGaussianBlur stdDeviation="60" result="effect1_foregroundBlur_752_105943" />
-            </filter>
-        </defs>
-    </svg>
+    <div
+        class="gradient-background animate-lighting absolute top-0 left-0 z-0 h-[80vh] w-full -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl"
+        style:--speed="500ms"
+    />
 
     <div class="container relative grid grid-cols-1 place-items-center gap-8 md:grid-cols-2">
         <div
-            class="animate-fade-in flex flex-col gap-4 [animation-delay:1200ms] [animation-duration:2000ms]"
+            class="animate-fade-in flex flex-col gap-4 [animation-delay:150ms] [animation-duration:1000ms]"
         >
             <GradientText
                 ><h1 class="text-hero font-aeonik-pro text-pretty">
@@ -103,3 +26,24 @@
     </div>
     <Dashboard />
 </div>
+
+<style>
+    .gradient-background {
+        background-position: 0 0 0 0;
+        background-image: radial-gradient(
+                ellipse 390px 50px at 10% 30%,
+                rgba(254, 149, 103, 0.4) 0%,
+                rgba(254, 149, 103, 0) 70%
+            ),
+            radial-gradient(
+                ellipse 1100px 170px at 15% 40%,
+                rgba(253, 54, 110, 0.16) 0%,
+                rgba(253, 54, 110, 0) 70%
+            ),
+            radial-gradient(
+                ellipse 1200px 180px at 30% 30%,
+                rgba(253, 54, 110, 0.16) 0%,
+                rgba(253, 54, 110, 0) 70%
+            );
+    }
+</style>
