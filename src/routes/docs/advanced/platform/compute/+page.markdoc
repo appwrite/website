@@ -16,7 +16,7 @@ These options enable greater performance and flexibility, allowing developers to
 
 Appwrite Cloud has the following specifications available:
 
-| Memory | CPU Cores | Hourly Usage |
+| Memory | CPU cores | Hourly usage |
 |--------|-----------|--------------|
 | 512MB  | 0.5       | 0.25         |
 | 512MB  | 1         | 0.5          |
