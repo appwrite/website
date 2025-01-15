@@ -70,7 +70,7 @@ export const trackEvent = async (platforms: {
         console.log(`[Analytics] Event`, platforms.plausible, platforms.posthog);
     } else {
         if (platforms.plausible) {
-            await analytics.track(plausible.name, { ...platforms.plausible.data, path });
+            await analytics.track(platforms.plausible.name, { ...platforms.plausible.data, path });
         }
 
         if (platforms.posthog) {
