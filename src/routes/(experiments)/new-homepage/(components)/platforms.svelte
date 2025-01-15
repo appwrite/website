@@ -15,6 +15,7 @@
     import Net from '../(assets)/icons/net.svg';
     import Go from '../(assets)/icons/go.svg';
     import React from '../(assets)/icons/react.svg';
+    import { Tooltip } from '$lib/components';
 
     const platforms = [
         { name: 'js', icon: Javascript, href: '/quickstarts/javascript', primary: '#FFCA28' },
@@ -72,35 +73,65 @@
 </script>
 
 <div class="border-smooth relative z-10 border-y border-dashed">
-    <div class="container flex items-center px-0!">
+    <div class="container flex flex-col items-center px-0! md:flex-row">
         <span class="text-primary flex items-center px-4 text-sm font-medium"
             >Supporting the tools<br /> you work with</span
         >
-        <div class="divide-smooth flex w-full flex-1 grow flex-nowrap divide-x divide-dashed">
-            {#each platforms as platform, i}
-                <a
-                    id={platform.name}
-                    href={platform.href}
-                    class="first-of-type:border-smooth group animate-fade-in last-of-type:border-smooth relative flex h-16 w-full items-center justify-center first-of-type:border-l first-of-type:border-dashed last-of-type:border-r last-of-type:border-dashed"
-                    style:--primary-color={platform.primary}
-                    style:--secondary-color={platform.secondary}
-                    style:animation-delay="{i * 25}ms"
-                >
-                    <img
-                        src={platform.icon}
-                        alt={platform.name}
-                        class="h-8 w-auto grayscale transition-all duration-500 group-hover:grayscale-0"
-                    />
+        <div
+            class={classNames(
+                'w-full overflow-clip',
+                '[mask-mode:alpha] max-sm:[mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)]'
+            )}
+        >
+            <div
+                class="divide-smooth animate-marquee flex w-max flex-1 grow flex-nowrap divide-x divide-dashed md:w-full md:[animation-play-state:paused]"
+            >
+                {#each platforms as platform, i}
+                    <button
+                        class="first-of-type:border-smooth group animate-fade-in last-of-type:border-smooth relative flex h-16 w-full items-center justify-center first-of-type:border-l first-of-type:border-dashed last-of-type:border-r last-of-type:border-dashed"
+                        style:--primary-color={platform.primary}
+                        style:--secondary-color={platform.secondary}
+                        style:animation-delay="{i * 25}ms"
+                    >
+                        <img
+                            src={platform.icon}
+                            alt={platform.name}
+                            class="h-8 w-auto grayscale transition-all duration-500 group-hover:grayscale-0"
+                        />
 
-                    <div
-                        class={classNames(
-                            'absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100',
-                            'bg-gradient-to-tl from-transparent to-transparent',
-                            'hover:from-[var(--primary-color,_#fff)]/4 hover:to-[var(--secondary-color,_transparent)]/10'
-                        )}
-                    />
-                </a>
-            {/each}
+                        <div
+                            class={classNames(
+                                'absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100',
+                                'bg-gradient-to-tl from-transparent to-transparent',
+                                'hover:from-[var(--primary-color,_#fff)]/4 hover:to-[var(--secondary-color,_transparent)]/10'
+                            )}
+                        />
+                    </button>
+                {/each}
+                {#each platforms as platform, i}
+                    <button
+                        class="first-of-type:border-smooth group animate-fade-in last-of-type:border-smooth relative flex h-16 w-full items-center justify-center first-of-type:border-l first-of-type:border-dashed last-of-type:border-r last-of-type:border-dashed md:hidden"
+                        style:--primary-color={platform.primary}
+                        style:--secondary-color={platform.secondary}
+                        style:animation-delay="{i * 25}ms"
+                        aria-hidden="true"
+                    >
+                        <img
+                            src={platform.icon}
+                            alt={platform.name}
+                            class="h-8 w-auto grayscale transition-all duration-500 group-hover:grayscale-0"
+                        />
+
+                        <div
+                            class={classNames(
+                                'absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100',
+                                'bg-gradient-to-tl from-transparent to-transparent',
+                                'hover:from-[var(--primary-color,_#fff)]/4 hover:to-[var(--secondary-color,_transparent)]/10'
+                            )}
+                        />
+                    </button>
+                {/each}
+            </div>
         </div>
     </div>
 </div>
