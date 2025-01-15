@@ -5,7 +5,7 @@ description: Learn about Appwrite Functions compute add-ons and the different CP
 ---
 
 {% info title="Note" %}
-Pricing changes will take effect on March 1st, 2025. Check out [this blog post](https://appwrite.io/blog/post/introducing-new-compute-capabilities-appwrite-functions) for more information.
+Pricing changes will take effect on March 1st, 2025. Learn more on our [blog announcement](https://appwrite.io/blog/post/introducing-new-compute-capabilities-appwrite-functions) for more information.
 {% /info %}
 
 Appwrite's paid plans give you the ability to change your function's allocated CPU Cores and Memory, enabling functions and builds to perform more computionally demanding actions quicker.
@@ -16,7 +16,7 @@ These options enable greater performance and flexibility, allowing developers to
 
 Appwrite Cloud has the following specifications available:
 
-| Memory | CPU Cores | Hourly Usage |
+| Memory | CPU cores | Hourly usage |
 |--------|-----------|--------------|
 | 512MB  | 0.5       | 0.25         |
 | 512MB  | 1         | 0.5          |
@@ -29,16 +29,16 @@ Appwrite Cloud has the following specifications available:
 Only customers on either Pro or Scale are able to change their specification from the default 512MB & 0.5 CPU option. For custom compute options please contact our [sales team](https://appwrite.io/contact-us/enterprise).
 {% /info %}
 
-# GB-Hours
+# GB-Hours {% #gb-hours %}
 
 GB-hours is a metric used to quantify the consumption of compute resources by combining both memory usage and the duration of that usage. Specifically, it represents the number of gigabytes (GB) of memory utilized multiplied by the number of hours those resources are active. This metric provides a comprehensive view of resource usage over time, allowing for accurate tracking, optimization, and billing based on actual compute needs.
 
 How It Works:
-- Memory Allocation: Determine the amount of memory (in GB) that your application or function requires while running.
+- Memory allocation: Determine the amount of memory (in GB) that your application or function requires while running.
 - Duration: Measure the total time (in hours) that the allocated memory is in use.
 - Calculation: Multiply the memory allocated by the duration to obtain the total GB-hours consumed.
 
-Example:
+**Example:**
 
 Assuming you have a function that requires 4 GB of memory to operate. If this function runs continuously for 2 hours, the compute resource usage would be:
 
@@ -46,7 +46,7 @@ Assuming you have a function that requires 4 GB of memory to operate. If this fu
 
 This means the function has consumed 8 GB-hours of compute resources.
 
-## Allocation and pricing plans
+## Pricing {% #pricing %}
 
 - Free plan includes up to 100 GB-hours of execution and build time per month.
 
