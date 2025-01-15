@@ -1,5 +1,6 @@
 <div
-    class="bg-smooth absolute inset-y-0 right-0 h-full w-[48vw] rounded-tl-2xl border-t border-l border-white/10 pt-2 pl-2 backdrop-blur-2xl"
+    style:--mask-height="400px"
+    class="bg-smooth animate-fade-in mask absolute inset-y-0 right-0 h-full w-[48vw] rounded-tl-2xl border-t border-l border-white/10 pt-2 pl-2 backdrop-blur-2xl"
 >
     <div class="bg-greyscale-900 h-full overflow-hidden rounded-tl-xl">
         <div id="top-nav">
@@ -649,7 +650,7 @@
                                 </defs>
                             </svg>
                         </div>
-                        <div id="requests">
+                        <div id="requests" class="animate-zoom-in">
                             <svg
                                 width="67"
                                 height="232"

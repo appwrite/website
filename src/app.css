@@ -87,7 +87,6 @@
     --animate-scroll: scroll 60s linear infinite;
     --animate-fade-in: fade-in 0.5s ease-in-out both;
     --animate-marquee: marquee var(--speed, 30s) linear infinite var(--direction, forwards);
-    --animate-lighting: lighting var(--speed, 1.5s) ease-out forwards;
 
     /* Pink polyfills */
     --transition: 0.2s;
@@ -111,6 +110,15 @@
         20%,
         50% {
             opacity: 0;
+        }
+    }
+
+    @keyframes zoom-in {
+        0% {
+            transform: translateZ(40%);
+        }
+        100% {
+            transform: translateZ(0);
         }
     }
 
@@ -153,19 +161,6 @@
     @keyframes marquee {
         to {
             transform: translateX(-50%);
-        }
-    }
-
-    @keyframes lighting {
-        0% {
-            opacity: 0;
-            clip-path: inset(5%);
-            transform: scale(111.11%);
-        }
-        100% {
-            opacity: 1;
-            clip-path: inset(0);
-            transform: scale(1);
         }
     }
 
@@ -254,6 +249,18 @@
     --color-badge-bg: var(--color-badge-bg-dark);
     --color-badge-border: var(--color-badge-border-dark);
     --color-smooth: hsl(0 0%, 100%, 0.06);
+}
+
+@layer utilities {
+    .mask {
+        mask-image: linear-gradient(
+            to top,
+            transparent,
+            black var(--mask-height, 32px),
+            black calc(100% - var(--mask-height, 32px)),
+            black
+        );
+    }
 }
 
 /* Container */

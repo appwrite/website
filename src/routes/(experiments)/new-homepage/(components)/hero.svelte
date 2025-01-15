@@ -5,7 +5,7 @@
 
 <div class="relative flex min-h-[75vh] items-center">
     <div
-        class="gradient-background animate-lighting absolute top-0 left-0 z-0 h-[80vh] w-full -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl"
+        class="gradient-background absolute top-0 left-0 z-0 h-[80vh] w-full -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl"
         style:--speed="500ms"
     />
 
@@ -28,6 +28,19 @@
 </div>
 
 <style>
+    @keyframes lighting {
+        0% {
+            opacity: 0;
+            clip-path: inset(5%);
+            transform: scale(111.11%);
+        }
+        100% {
+            opacity: 1;
+            clip-path: inset(0);
+            transform: scale(1);
+        }
+    }
+
     .gradient-background {
         background-position: 0 0 0 0;
         background-image: radial-gradient(
@@ -45,5 +58,6 @@
                 rgba(253, 54, 110, 0.16) 0%,
                 rgba(253, 54, 110, 0) 70%
             );
+        animation: lighting 1s ease-out forwards;
     }
 </style>
