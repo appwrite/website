@@ -4,9 +4,9 @@
 </script>
 
 <footer
-    class="border-smooth text-secondary font-micro relative mt-12 flex items-center justify-between gap-4 border-t py-6"
+    class="border-smooth container text-secondary text-micro relative mt-12 flex items-center justify-between gap-4 border-t py-6"
 >
-    <ul class="flex gap-2">
+    <ul class="flex items-center gap-2">
         {#each socials as social}
             <li>
                 <a
@@ -21,7 +21,7 @@
             </li>
         {/each}
     </ul>
-    <div class="e-main-footer">
+    <div class="flex items-center gap-3">
         <div>Copyright © {year} Appwrite</div>
 
         <iframe
@@ -32,7 +32,6 @@
             frameborder="0"
             scrolling="no"
             style:color-scheme="none"
-            style:margin-top="-4px"
         />
 
         <ul class="flex gap-4">

@@ -87,6 +87,7 @@
     --animate-scroll: scroll 60s linear infinite;
     --animate-fade-in: fade-in 0.5s ease-in-out both;
     --animate-marquee: marquee var(--speed, 30s) linear infinite var(--direction, forwards);
+    --animate-lighting: lighting var(--speed, 2s) ease-out forwards;
 
     /* Pink polyfills */
     --transition: 0.2s;
@@ -155,6 +156,19 @@
         }
     }
 
+    @keyframes lighting {
+        0% {
+            opacity: 0;
+            clip-path: inset(5%);
+            transform: scale(111.11%);
+        }
+        100% {
+            opacity: 1;
+            clip-path: inset(0);
+            transform: scale(1);
+        }
+    }
+
     /* Fonts */
     --font-family-sans: 'Inter', arial, sans-serif;
     --font-family-mono: 'Fira Code', monospace;
@@ -195,6 +209,8 @@
     --font-size-display: clamp(3rem, 7vw, 4rem);
     --font-size-display--line-height: clamp(3.125rem, 7.5vw, 4.25rem);
     --font-size-display--letter-spacing: var(--letter-spacing-compressed);
+    --font-size-hero: clamp(3.75rem, 8vw, 4.5rem);
+    --font-size-hero--line-height: clamp(3.75rem, 8.5vw, 4.75rem);
     --font-size-headline: clamp(3.5rem, 8vw, 5.5rem);
     --font-size-headline--line-height: clamp(3.5rem, 8.5vw, 5.75rem);
     --font-size-headline--letter-spacing: var(--letter-spacing-compressed);
