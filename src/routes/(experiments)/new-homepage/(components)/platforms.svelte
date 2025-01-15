@@ -77,13 +77,14 @@
             >Supporting the tools<br /> you work with</span
         >
         <div class="divide-smooth flex w-full flex-1 grow flex-nowrap divide-x divide-dashed">
-            {#each platforms as platform}
+            {#each platforms as platform, i}
                 <a
                     id={platform.name}
                     href={platform.href}
-                    class="first-of-type:border-smooth group last-of-type:border-smooth relative flex h-16 w-full items-center justify-center first-of-type:border-l first-of-type:border-dashed last-of-type:border-r last-of-type:border-dashed"
+                    class="first-of-type:border-smooth group animate-fade-in last-of-type:border-smooth relative flex h-16 w-full items-center justify-center first-of-type:border-l first-of-type:border-dashed last-of-type:border-r last-of-type:border-dashed"
                     style:--primary-color={platform.primary}
                     style:--secondary-color={platform.secondary}
+                    style:animation-delay="{i * 25}ms"
                 >
                     <img
                         src={platform.icon}

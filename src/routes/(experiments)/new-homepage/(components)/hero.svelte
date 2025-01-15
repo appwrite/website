@@ -5,7 +5,7 @@
 
 <div class="relative flex min-h-[75vh] items-center">
     <div
-        class="gradient-background absolute top-0 left-0 z-0 h-[80vh] w-full -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl"
+        class="gradient-background absolute top-0 left-0 z-0 h-screen w-full -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl"
         style:--speed="500ms"
     />
 
@@ -58,6 +58,6 @@
                 rgba(253, 54, 110, 0.16) 0%,
                 rgba(253, 54, 110, 0) 70%
             );
-        animation: lighting 1s ease-out forwards;
+        animation: lighting 1.25s ease-out forwards;
     }
 </style>
