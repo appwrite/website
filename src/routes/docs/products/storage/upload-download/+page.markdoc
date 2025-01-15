@@ -274,7 +274,7 @@ The Appwrite .NET SDK expects an `InputFile` class for file inputs.
 {% /tabs %}
 
 # Get file {% #get-file %}
-To get a metadata about a.file, use the `getFile` method.
+To get a metadata about a file, use the `getFile` method.
 
 {% multicode %}
 ```client-web
