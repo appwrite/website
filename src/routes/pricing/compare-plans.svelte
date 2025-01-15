@@ -168,8 +168,7 @@
                     free: '10 SMS / month',
                     pro: '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>',
                     scale: '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>',
-                    enterprise:
-                        '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>'
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Teams',
