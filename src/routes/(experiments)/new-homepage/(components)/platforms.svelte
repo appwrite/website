@@ -16,6 +16,8 @@
     import Go from '../(assets)/icons/go.svg';
     import React from '../(assets)/icons/react.svg';
     import { Tooltip } from '$lib/components';
+    import GradientText from '$lib/components/fancy/gradient-text.svelte';
+    import Noise from '$lib/components/fancy/noise.svelte';
 
     const platforms = [
         { name: 'js', icon: Javascript, href: '/quickstarts/javascript', primary: '#FFCA28' },
@@ -73,22 +75,24 @@
 </script>
 
 <div class="border-smooth relative z-10 border-y border-dashed">
-    <div class="container flex flex-col items-center px-0! md:flex-row">
-        <span class="text-primary flex items-center px-4 text-sm font-medium"
-            >Supporting the tools<br /> you work with</span
-        >
+    <div class="container flex flex-col items-center max-md:pt-4 md:flex-row">
+        <GradientText>
+            <span class="flex items-center pr-4 text-sm font-medium md:w-full md:max-w-[175px]"
+                >Supporting the tools you work with</span
+            >
+        </GradientText>
         <div
             class={classNames(
                 'w-full overflow-clip',
-                '[mask-mode:alpha] max-sm:[mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)]'
+                'backdrop-blur-3xl [mask-mode:alpha] max-md:[mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)]'
             )}
         >
             <div
-                class="divide-smooth animate-marquee flex w-max flex-1 grow flex-nowrap divide-x divide-dashed md:w-full md:[animation-play-state:paused]"
+                class="divide-smooth animate-marquee flex w-max flex-1 grow flex-nowrap divide-dashed [animation-duration:80s] md:w-full md:divide-x md:[animation-play-state:paused]"
             >
                 {#each platforms as platform, i}
                     <button
-                        class="first-of-type:border-smooth group animate-fade-in last-of-type:border-smooth relative flex h-16 w-full items-center justify-center first-of-type:border-l first-of-type:border-dashed last-of-type:border-r last-of-type:border-dashed"
+                        class="first-of-type:border-smooth group animate-fade-in last-of-type:border-smooth relative flex h-16 w-16 items-center justify-center first-of-type:border-l first-of-type:border-dashed last-of-type:border-r last-of-type:border-dashed md:w-full"
                         style:--primary-color={platform.primary}
                         style:--secondary-color={platform.secondary}
                         style:animation-delay="{i * 25}ms"
@@ -105,12 +109,14 @@
                                 'bg-gradient-to-tl from-transparent to-transparent',
                                 'hover:from-[var(--primary-color,_#fff)]/4 hover:to-[var(--secondary-color,_transparent)]/10'
                             )}
-                        />
+                        >
+                            <Noise opacity={0.1} />
+                        </div>
                     </button>
                 {/each}
                 {#each platforms as platform, i}
                     <button
-                        class="first-of-type:border-smooth group animate-fade-in last-of-type:border-smooth relative flex h-16 w-full items-center justify-center first-of-type:border-l first-of-type:border-dashed last-of-type:border-r last-of-type:border-dashed md:hidden"
+                        class="first-of-type:border-smooth group animate-fade-in last-of-type:border-smooth relative flex h-16 w-16 items-center justify-center first-of-type:border-l first-of-type:border-dashed last-of-type:border-r last-of-type:border-dashed md:hidden md:w-full"
                         style:--primary-color={platform.primary}
                         style:--secondary-color={platform.secondary}
                         style:animation-delay="{i * 25}ms"

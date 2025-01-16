@@ -1,7 +1,8 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
+    import AnimatedText from './animated-text.svelte';
 
-    let className = '';
+    const className = '';
 
     export { className as class };
 </script>

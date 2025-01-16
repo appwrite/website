@@ -1,5 +1,5 @@
 <header
-    class="border-smooth sticky top-0 z-10 flex h-[4.5rem] items-center border-b backdrop-blur-md"
+    class="border-smooth sticky top-0 z-1000 flex h-[4.5rem] items-center border-b backdrop-blur-md"
 >
     <div class="container flex flex-1 items-center justify-between">
         <img
