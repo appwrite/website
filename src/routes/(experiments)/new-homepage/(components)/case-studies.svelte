@@ -1,6 +1,7 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import ProductHunt from '../(assets)/logos/product-hunt.svg';
+    import Avatar from '../(assets)/avatar.png';
 
     import { createToggleGroup, melt } from '@melt-ui/svelte';
 
@@ -8,38 +9,42 @@
         {
             logo: ProductHunt,
             headline:
-                'Product Hunt has leveraged Appwrite to transform logistics and supply chain management for circular businesses_',
-            blur: 'Been a huge supporter of Appwrite for over a year, championing it even at the companies I was working at.',
+                'Product Hunt has leveraged Appwrite to transform logistics and supply chain management for circular businesses',
+            blurb: 'Been a huge supporter of Appwrite for over a year, championing it even at the companies I was working at.',
             name: 'Terry Lennon',
             title: 'Engineer at Product Hunt',
+            avatar: Avatar,
             url: '/case-studies/product-hunt'
         },
         {
             logo: ProductHunt,
             headline:
-                'Product Hunt has leveraged Appwrite to transform logistics and supply chain management for circular businesses_',
-            blur: 'Been a huge supporter of Appwrite for over a year, championing it even at the companies I was working at.',
+                'Product Hunt has leveraged Appwrite to transform logistics and supply chain management for circular businesses',
+            blurb: 'Been a huge supporter of Appwrite for over a year, championing it even at the companies I was working at.',
             name: 'Terry Lennon',
             title: 'Engineer at Product Hunt',
+            avatar: Avatar,
             url: '/case-studies/product-hunt'
         },
         {
             logo: ProductHunt,
             headline:
-                'Product Hunt has leveraged Appwrite to transform logistics and supply chain management for circular businesses_',
-            blur: 'Been a huge supporter of Appwrite for over a year, championing it even at the companies I was working at.',
+                'Product Hunt has leveraged Appwrite to transform logistics and supply chain management for circular businesses',
+            blurb: 'Been a huge supporter of Appwrite for over a year, championing it even at the companies I was working at.',
             name: 'Terry Lennon',
             title: 'Engineer at Product Hunt',
+            avatar: Avatar,
             url: '/case-studies/product-hunt'
         }
     ];
 
     const {
         elements: { root, item },
-        states: { value }
+        helpers: { isPressed }
     } = createToggleGroup({
         type: 'single',
-        defaultValue: '0'
+        defaultValue: '0',
+        loop: true
     });
 </script>
 
@@ -54,13 +59,47 @@
         {#each studies as study, i}
             <div
                 class={classNames(
-                    'h-[350px] grow overflow-hidden rounded-lg bg-black/10 p-6 backdrop-blur-lg transition-all duration-1000 ease-[var(--spring)]',
-                    'data-[state="on"]:[flex-basis:60%] data-[state="off"]:[flex-basis:20%]'
+                    'data-[state="on"]:border-smooth grid h-[425px] cursor-pointer place-content-center place-items-center overflow-hidden rounded-2xl border border-transparent py-6 px-12 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"]',
+                    'group/card hover:bg-black/24 data-[state="on"]:[flex-basis:70%] data-[state="on"]:bg-black/24 data-[state="off"]:[flex-basis:15%] data-[state="off"]:bg-black/16'
                 )}
                 role="figure"
                 use:melt={$item(i.toString())}
             >
-                {study.headline}
+                <img
+                    src={study.logo}
+                    alt={study.headline}
+                    class={classNames(
+                        'visible opacity-100 transition-all [grid-area:stack]',
+                        "group-[&[data-state='on']]/card:invisible group-[&[data-state='on']]/card:opacity-0",
+                        'brightness-50'
+                    )}
+                />
+
+                <div
+                    class={classNames(
+                        'invisible space-y-4 opacity-0 transition-opacity delay-400 [grid-area:stack]',
+                        "group-[&[data-state='on']]/card:visible group-[&[data-state='on']]/card:opacity-100"
+                    )}
+                >
+                    <img src={study.logo} alt={study.headline} />
+                    <span class="text-title text-primary"
+                        >{study.headline}<span class="text-accent">_</span></span
+                    >
+
+                    <div class="border-smooth mt-8 border-t border-dashed pt-8">
+                        <div class="text-primary text-sub-body max-w-[60%] font-medium">
+                            {study.blurb}
+                        </div>
+
+                        <div class="mt-4 flex justify-between">
+                            <div class="flex gap-2">
+                                <img src={study.avatar} alt={study.headline} class="size-6" />
+                                <span class="text-caption">{study.name}, {study.title}</span>
+                            </div>
+                            <a href={study.url} class="text-primary">Read customer story</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         {/each}
     </div>
@@ -68,74 +107,6 @@
 
 <style>
     :root {
-        --spring: linear(
-            0,
-            0.001,
-            0.004,
-            0.009,
-            0.016,
-            0.024,
-            0.035,
-            0.048,
-            0.063 9.1%,
-            0.098,
-            0.141,
-            0.191,
-            0.25,
-            0.317,
-            0.391,
-            0.473,
-            0.563,
-            0.66,
-            0.765,
-            0.879,
-            1,
-            0.941,
-            0.891,
-            0.848,
-            0.813 45.5%,
-            0.798,
-            0.785,
-            0.774,
-            0.766,
-            0.759,
-            0.754,
-            0.751,
-            0.75,
-            0.751,
-            0.754,
-            0.759,
-            0.766,
-            0.774,
-            0.785,
-            0.798,
-            0.813 63.6%,
-            0.848,
-            0.891,
-            0.941,
-            1 72.7%,
-            0.985,
-            0.973,
-            0.962,
-            0.953,
-            0.946,
-            0.941,
-            0.938 80.7% 83%,
-            0.941,
-            0.946,
-            0.953,
-            0.962,
-            0.973,
-            0.985,
-            1,
-            0.993,
-            0.988,
-            0.985,
-            0.984,
-            0.985,
-            0.988,
-            0.993,
-            1
-        );
+        --spring: cubic-bezier(1, -0.4, 0.35, 0.95);
     }
 </style>
