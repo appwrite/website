@@ -43,9 +43,9 @@
 
 <div
     class={classNames(
-        'relative -mb-[6rem] flex min-h-[75vh] flex-col items-center justify-center bg-black/8',
-        'before:absolute before:inset-0 before:top-0 before:left-0 before:-z-10 before:block before:h-full before:bg-[radial-gradient(circle_at_-15%_-30%,_hsla(343,_98%,_60%,_0.2)_0px,_transparent_40%)]',
-        'after:absolute after:inset-0 after:top-0 after:right-0 after:-z-10 after:mt-auto after:mb-0 after:block after:h-full after:bg-[radial-gradient(circle_at_120%_125%,_hsla(177,_53%,_69%,_0.2)_0px,_transparent_40%)]'
+        'relative -mb-[6rem] flex min-h-[75vh] flex-col items-center justify-center overflow-hidden bg-black/8',
+        'before:absolute before:inset-0 before:top-0 before:left-0 before:-z-10 before:block before:h-full before:bg-[radial-gradient(circle_at_-15%_-30%,_hsla(343,_98%,_60%,_0.2)_0px,_transparent_40%)] before:blur-2xl',
+        'after:absolute after:inset-0 after:top-0 after:right-0 after:-z-10 after:mt-auto after:mb-0 after:block after:h-full after:bg-[radial-gradient(circle_at_120%_125%,_hsla(177,_53%,_69%,_0.2)_0px,_transparent_40%)] after:blur-2xl'
     )}
 >
     {#if !submitted}
@@ -146,7 +146,7 @@
     {:else}
         <div class="container animate-fade-in mx-auto flex max-w-sm flex-col gap-4 text-center">
             <div class="border-smooth mb-6 flex flex-col gap-4 border-b pb-8">
-                <h2 class="text-display text-primary">Thank you for applying</h2>
+                <h2 class="text-display text-primary font-aeonik-pro">Thank you for applying</h2>
                 <p class="text-body text-secondary font-medium">
                     Our team will review your application and follow up to ensure we're a perfect
                     fit.

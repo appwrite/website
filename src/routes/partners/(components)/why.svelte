@@ -36,7 +36,7 @@
             () => {
                 updateNumbers();
             },
-            { amount: 0.25 }
+            { amount: 'all' }
         );
     };
 </script>
@@ -58,7 +58,9 @@
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4" use:useInView>
             {#each items as { label, number, suffix }}
                 <GradientBorderCard class="bg-greyscale-750 rounded-lg p-6">
-                    <h3 class="text-title text-primary"><NumberFlow value={number} {suffix} /></h3>
+                    <h3 class="text-title font-aeonik-pro text-primary">
+                        <NumberFlow value={number} {suffix} />
+                    </h3>
                     <p class="text-description text-secondary">{label}</p>
                 </GradientBorderCard>
             {/each}
