@@ -14,7 +14,11 @@
 <button
     use:melt={$trigger}
     on:click={() => {
-        trackEvent('Appwrite in 100 seconds');
+        show = true;
+        trackEvent({
+            plausible: { name: 'Appwrite in 100 seconds' },
+            posthog: { name: 'intro-video-btn_hero_click' }
+        });
     }}
     class="web-button is-secondary cursor-pointer"
 >
