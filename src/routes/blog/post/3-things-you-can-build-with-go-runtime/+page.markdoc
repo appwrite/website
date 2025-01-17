@@ -17,7 +17,7 @@ There are several reasons why Appwrite Functions and Go form a rather handy opti
 
 ## Highly performant (due to compiled nature)
 
-In our internal benchmark, while the larger codebase and compiled nature of Go leads to slower builds, our Go runtime showed up to 3 times faster cold-start times compared to interpreted languages.  Additionally, it demonstrated 5 times less memory consumption than any other runtime, including Node.js, Dart, PHP, and Python.
+In our internal benchmark, while the larger codebase and compiled nature of Go leads to slower builds, our Go runtime showed up to 3 times faster cold-start times compared to interpreted languages.  Additionally, it demonstrated the highest performance in requests per second and 5 times lesser memory usage than several of our other runtimes, including Node.js, Deno, Ruby, and Python.
 
 ## Open-source runtime(s)
 

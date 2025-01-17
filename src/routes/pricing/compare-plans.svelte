@@ -3,11 +3,12 @@
     import { Tabs } from '$lib/UI';
     import { visible } from '$lib/actions/visible';
     import { isHeaderHidden } from '$lib/layouts/Main.svelte';
-    import { classNames } from '$lib/utils/classnames';
     import { getScrollDir } from '$lib/utils/getScrollDir';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
+    import { classNames } from '$lib/utils/classnames';
+    import { Tooltip } from '$lib/components';
 
     type Table = {
         title: string;
@@ -23,7 +24,7 @@
 
     const cols = ['free', 'pro', 'scale', 'enterprise'] as const;
 
-    const tables = [
+    const tables: Array<Table> = [
         {
             title: 'Resources',
             rows: [
@@ -293,8 +294,8 @@
                 {
                     title: 'Compute options',
                     free: '0.5 CPU - 512MB RAM',
-                    pro: '0.5 CPU - 512MB RAM<br/>1 CPU - 512MB RAM<br/>1 CPU - 1GB RAM<br/>1 CPU - 2GB RAM<br/>2 CPU - 4GB RAM<br/>4 CPU - 4GB RAM',
-                    scale: '0.5 CPU - 512MB RAM<br/>1 CPU - 512MB RAM<br/>1 CPU - 1GB RAM<br/>1 CPU - 2GB RAM<br/>2 CPU - 4GB RAM<br/>4 CPU - 4GB RAM',
+                    pro: 'Up to 4 CPU, 4GB RAM',
+                    scale: 'Up to 4 CPU, 4GB RAM',
                     enterprise: 'Custom'
                 },
                 {
@@ -611,9 +612,12 @@
                                         <th class="text-caption font-medium">
                                             <div class="flex items-center gap-1 text-left">
                                                 {row.title}
-                                                <!-- {#if row.info}
+                                                {#if row.info}
                                                     <Tooltip placement="top">
-                                                        <span
+                                                        <button
+                                                            slot="asChild"
+                                                            let:trigger
+                                                            use:melt={trigger}
                                                             class="icon-info"
                                                             aria-hidden="true"
                                                         />
@@ -621,7 +625,7 @@
                                                             {row.info}
                                                         </svelte:fragment>
                                                     </Tooltip>
-                                                {/if} -->
+                                                {/if}
                                             </div>
                                         </th>
                                         {#each cols as col, index}

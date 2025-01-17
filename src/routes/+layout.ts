@@ -6,9 +6,11 @@ export const load = async ({ data }) => {
     if (browser) {
         posthog.init(PUBLIC_POSTHOG_API_KEY, {
             api_host: 'https://eu.i.posthog.com',
-            persistence: 'memory'
+            persistence: 'memory',
+            bootstrap: {
+                distinctID: data.distinctId
+            }
         });
-        posthog.identify(data.distinctId);
     }
 
     return data;
