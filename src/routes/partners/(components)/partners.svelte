@@ -45,22 +45,24 @@
     <div
         class="container mx-auto flex w-full flex-col items-center justify-between gap-16 md:flex-row"
     >
-        <div class="max-w-lg space-y-8">
-            <h1 class="font-aeonik-pro text-title text-primary text-pretty">Partner Tiers</h1>
-            <p class="text-body text-secondary text-pretty font-medium">
-                Our Partner Program is designed to scale with you as you grow. With flexible tiers
-                tailored to your success.
-            </p>
+        <div class="max-w-lg">
+            <div class="flex flex-col gap-4">
+                <h1 class="font-aeonik-pro text-title text-primary text-pretty">Partner Tiers</h1>
+                <p class="text-body text-secondary text-pretty font-medium">
+                    Our Partner Program is designed to scale with you as you grow. With flexible
+                    tiers tailored to your success.
+                </p>
+            </div>
 
-            <div class="flex flex-col items-center gap-2 md:flex-row">
+            <div class="mt-4 flex flex-col items-center gap-2 md:flex-row">
                 <a href="/" class="web-button is-secondary !w-full md:!w-fit">Become a partner</a>
             </div>
         </div>
 
-        <div class="mask relative w-full" style:--mask-height="150px">
+        <div class="mask relative max-sm:w-full" style:--mask-height="150px">
             {#each tiers as { title, icon }, i}
                 <div
-                    class={classNames('relative h-fit opacity-0', {
+                    class={classNames('relative h-fit rounded-3xl opacity-0', {
                         animate
                     })}
                     style:z-index={tiers.length - i}
