@@ -6,10 +6,10 @@
     import Avatar from '../(assets)/icons/avatar.png';
 </script>
 
-<div class="border-smooth oe mb-0 border-b py-24" style:--speed="5s">
+<div class="border-smooth -mt-6 border-b border-dashed py-20">
     <Marquee>
         {#each Array.from({ length: 3 }) as _}
-            <GradientBorderCard class="flex flex-col gap-4 p-6">
+            <GradientBorderCard class="flex max-w-sm flex-col gap-4 p-6">
                 <p class="text-sub-body text-secondary font-medium">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices
                     lacus.
@@ -24,7 +24,7 @@
             </GradientBorderCard>
         {/each}
         {#each Array.from({ length: 3 }) as _}
-            <GradientBorderCard class="flex flex-col gap-4 p-6">
+            <GradientBorderCard class="flex max-w-sm flex-col  gap-4 p-6">
                 <p class="text-sub-body text-secondary font-medium">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in ultrices
                     lacus.

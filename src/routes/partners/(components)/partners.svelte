@@ -37,7 +37,7 @@
 
 <div
     class={classNames(
-        'border-smooth relative flex items-center justify-center overflow-hidden border-b bg-[#17171A] py-32',
+        'border-smooth relative flex items-center justify-center border-b border-dashed bg-[#17171A] py-32',
         'after:absolute after:inset-0 after:top-0 after:right-0 after:mt-auto after:mb-0 after:block after:h-full after:bg-[radial-gradient(circle_at_120%_-40%,_hsla(343,_98%,_60%,_0.2)_0px,_transparent_40%)]'
     )}
     use:useInView
@@ -45,7 +45,7 @@
     <div
         class="container mx-auto flex w-full flex-col items-center justify-between gap-16 md:flex-row"
     >
-        <div class="max-w-lg">
+        <div class="flex max-w-lg flex-col gap-8">
             <div class="flex flex-col gap-4">
                 <h1 class="font-aeonik-pro text-title text-primary text-pretty">Partner Tiers</h1>
                 <p class="text-body text-secondary text-pretty font-medium">
@@ -54,22 +54,22 @@
                 </p>
             </div>
 
-            <div class="mt-4 flex flex-col items-center gap-2 md:flex-row">
+            <div class="mt-3 flex flex-col items-center gap-2 md:flex-row">
                 <a href="/" class="web-button is-secondary !w-full md:!w-fit">Become a partner</a>
             </div>
         </div>
 
-        <div class="mask relative max-sm:w-full" style:--mask-height="150px">
+        <div class="mask relative" style:--mask-height="150px">
             {#each tiers as { title, icon }, i}
                 <div
-                    class={classNames('relative h-fit rounded-3xl opacity-0', {
+                    class={classNames('relative h-fit min-w-md rounded-3xl opacity-0', {
                         animate
                     })}
                     style:z-index={tiers.length - i}
                     style:animation-delay="{i * 0.1}s"
                 >
                     <div
-                        class="border-smooth flex h-fit items-center justify-center gap-4 rounded-3xl border-2 bg-black bg-gradient-to-br from-black to-white/20 py-3 px-5 md:rounded-[40px]"
+                        class="flex h-fit items-center justify-center gap-4 rounded-3xl border border-[#292929] bg-black bg-gradient-to-br from-black to-white/20 py-3 px-5"
                         style:margin-bottom={i === tiers.length - 1
                             ? 0
                             : `-${clamp(32, i * 40, 80)}px`}
@@ -77,11 +77,11 @@
                     >
                         <div class="flex items-center justify-center gap-4 pr-2">
                             <img src={icon} alt="{title} Icon" class="h-16 w-auto md:h-20" />
-                            <div class="flex grow flex-col -space-y-2">
+                            <div class="-mt-2 flex grow flex-col">
                                 <span class="text-primary mt-2 block font-medium uppercase"
                                     >{title}<span class="text-accent">_</span></span
                                 >
-                                <h3 class="text-primary font-aeonik-pro md:text-title">
+                                <h3 class="text-primary font-aeonik-pro text-title">
                                     Appwrite Partner
                                 </h3>
                             </div>

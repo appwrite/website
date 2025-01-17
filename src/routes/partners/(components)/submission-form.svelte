@@ -58,6 +58,18 @@
                     Our team will review your application and follow up to ensure we're a perfect
                     fit.
                 </p>
+
+                <ul class="space-y-4">
+                    <li class="text-body flex items-center gap-2 font-medium">
+                        <img src="/images/icons/colored/check.svg" alt="checkmark icon" /> Item
+                    </li>
+                    <li class="text-body flex items-center gap-2 font-medium">
+                        <img src="/images/icons/colored/check.svg" alt="checkmark icon" /> Item
+                    </li>
+                    <li class="text-body flex items-center gap-2 font-medium">
+                        <img src="/images/icons/colored/check.svg" alt="checkmark icon" /> Item
+                    </li>
+                </ul>
             </div>
 
             <form

@@ -9,8 +9,8 @@
         'before:absolute before:inset-0 before:-z-1 before:bg-linear-to-r before:from-black/32 before:to-transparent'
     )}
 >
-    <div class="container mx-auto grid grid-cols-1 items-center gap-16 md:grid-cols-2">
-        <div class="max-w-lg space-y-8">
+    <div class="container mx-auto grid grid-cols-1 place-items-center gap-16 md:grid-cols-2">
+        <div class="flex max-w-lg flex-col gap-8">
             <div class="flex items-center gap-2">
                 <span class="font-aeonik-fono tracking-loose text-micro text-primary uppercase">
                     Partners Program<span class="web-u-color-text-accent">_</span>

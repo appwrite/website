@@ -23,10 +23,10 @@
     <h2 class="text-primary font-aeonik-pro text-title text-center">Ways to partner</h2>
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
         {#each items as item}
-            <GradientBorderCard class="flex flex-col gap-4 py-8 px-6">
+            <GradientBorderCard class="flex flex-col gap-5 p-8">
                 <h2 class="text-primary font-aeonik-pro text-label font-medium">{item.title}</h2>
                 <p class="text-secondary text-body font-medium">{item.description}</p>
-                <a href={item.href} class="web-button is-secondary">{item.label}</a>
+                <a href={item.href} class="web-button is-secondary mt-3">{item.label}</a>
             </GradientBorderCard>
         {/each}
     </div>
