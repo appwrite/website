@@ -5,6 +5,7 @@
     import Revenue from '../(assets)/icons/revenue.svg';
     import EarlyAccess from '../(assets)/icons/early-access.svg';
     import Discounts from '../(assets)/icons/discounts.svg';
+    import { classNames } from '$lib/utils/classnames';
 
     const items = [
         {
@@ -54,10 +55,13 @@
         <h2 class="text-primary font-aeonik-pro text-title">Growing together</h2>
     </div>
 
-    <div class="border-smooth w-full border-y border-dashed">
-        <div
-            class="border-smooth container grid grid-cols-1 gap-px border-y border-dashed sm:grid-cols-2 lg:grid-cols-3"
-        >
+    <div
+        class={classNames(
+            'border-smooth relative w-full border-y border-dashed',
+            'before:border-smooth before:absolute before:inset-x-0 before:top-1/2 before:hidden before:h-px before:-translate-y-1/2 before:border before:border-dashed before:md:block'
+        )}
+    >
+        <div class="container grid-inner-1 grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-3">
             {#each items as item}
                 <div class="bg-greyscale-900 relative flex flex-col gap-4 p-8">
                     <img src={item.icon} alt="{item.title} Icon" class="size-12" />
