@@ -82,8 +82,6 @@
         duration: 150,
         y: placement === 'top' ? 4 : -4
     } as FlyParams;
-
-    console.log({ initialLabel, $selectedLabel });
 </script>
 
 <button
