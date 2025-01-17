@@ -35,7 +35,7 @@ You can skip optional steps.
 Create a SvelteKit project.
 
 ```sh
-npm create svelte@latest my-app && cd my-app && npm install
+npx sv create
 ```
 {% /section %}
 {% section #step-3 step=3 title="Install Appwrite" %}

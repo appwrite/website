@@ -7,6 +7,8 @@
 </script>
 
 <script lang="ts">
+    import Select from '$lib/components/Select.svelte';
+    import { classNames } from '$lib/utils/classnames';
     import { createTabs } from '@melt-ui/svelte';
     import { setContext } from 'svelte';
     import { writable } from 'svelte/store';
@@ -26,18 +28,83 @@
 </script>
 
 <div class="web-card is-normal mt-4" {...$root} use:root>
-    <div class="tabs flex gap-4 overflow-scroll" style="scrollbar-width: none; -ms-overflow-style: none;">
-        <ul class="tabs-list flex items-center gap-4" {...$list} use:list>
-            {#each $ctx.triggers.entries() as [id, title]}
-                <li class="tabs-item hover:bg-white/[0.04] rounded-t-[0.625rem]">
+    <div
+        class="tabs flex items-center gap-4 overflow-scroll"
+        style="scrollbar-width: none; -ms-overflow-style: none;"
+    >
+        <ul class="tabs-list hidden items-center gap-4 sm:flex" {...$list} use:list>
+            {#each Array.from($ctx.triggers.entries()).slice(0, 7) as [id, title]}
+                <li
+                    class="tabs-item rounded-t-[0.625rem] text-center hover:bg-white/4"
+                    class:text-[var(--color-primary)]={$value === id}
+                >
                     <button
-                        class="tabs-button px-1 py-[0.625rem] font-light outline-none bg-clip-padding cursor-pointer"
-                        class:is-selected={$value === id}
+                        class={classNames(
+                            'tabs-button relative cursor-pointer bg-clip-padding py-[0.625rem] px-1 font-light outline-none',
+                            'after:relative after:top-1 after:bottom-0 after:block after:h-px after:transition-all',
+                            {
+                                'after:bg-[var(--color-primary)]': $value === id
+                            }
+                        )}
                         {...$trigger(id)}
                         use:trigger>{title}</button
                     >
                 </li>
             {/each}
+            {#if Array.from($ctx.triggers.entries()).slice(7, Array.from($ctx.triggers.entries()).length - 1).length}
+                {@const entries = Array.from($ctx.triggers.entries())}
+                {@const desktopOptions = entries.slice(7, entries.length - 1)}
+
+                <li>
+                    <Select
+                        initialLabel="More"
+                        options={desktopOptions.map(([value, label]) => {
+                            return {
+                                value,
+                                label
+                            };
+                        })}
+                        bind:value={$value}
+                    />
+                </li>
+            {/if}
+        </ul>
+        <ul class="tabs-list flex items-center gap-4 sm:hidden" {...$list} use:list>
+            {#each Array.from($ctx.triggers.entries()).slice(0, 3) as [id, title]}
+                <li
+                    class="tabs-item rounded-t-[0.625rem] text-center hover:bg-white/4"
+                    class:text-[var(--color-primary)]={$value === id}
+                >
+                    <button
+                        class={classNames(
+                            'tabs-button relative cursor-pointer bg-clip-padding py-[0.625rem] px-1 font-light outline-none',
+                            'after:relative after:top-1 after:bottom-0 after:block after:h-px after:transition-all',
+                            {
+                                'after:bg-[var(--color-primary)]': $value === id
+                            }
+                        )}
+                        {...$trigger(id)}
+                        use:trigger>{title}</button
+                    >
+                </li>
+            {/each}
+            {#if Array.from($ctx.triggers.entries()).slice(3, Array.from($ctx.triggers.entries()).length - 1).length}
+                {@const entries = Array.from($ctx.triggers.entries())}
+                {@const desktopOptions = entries.slice(3, entries.length - 1)}
+
+                <li>
+                    <Select
+                        initialLabel="More"
+                        options={desktopOptions.map(([value, label]) => {
+                            return {
+                                value,
+                                label
+                            };
+                        })}
+                        bind:value={$value}
+                    />
+                </li>
+            {/if}
         </ul>
     </div>
     <slot />

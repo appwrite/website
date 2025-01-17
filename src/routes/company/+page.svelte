@@ -376,7 +376,7 @@
                     </h5>
                     <ul class="web-grid-2c-4c mt-12">
                         <li class="flex flex-col">
-                            <h6 class="text-body font-medium text-primary">Aaron Applebaum</h6>
+                            <h6 class="text-body text-primary font-medium">Aaron Applebaum</h6>
                             <p class="text-body font-medium">Partner</p>
                             <p class="text-body font-medium">MizMaa</p>
                             <ul class="mt-auto flex gap-2 pt-4">
@@ -405,7 +405,7 @@
                             </ul>
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="text-body font-medium text-primary">Ariel Maislos</h6>
+                            <h6 class="text-body text-primary font-medium">Ariel Maislos</h6>
                             <p class="text-body font-medium">Angel Investor</p>
                             <p class="text-body font-medium">Former Apple IL CEO</p>
                             <ul class="mt-auto flex gap-2 pt-4">
@@ -434,12 +434,12 @@
                             </ul>
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="text-body font-medium text-primary">Gilad Engel</h6>
+                            <h6 class="text-body text-primary font-medium">Gilad Engel</h6>
                             <p class="text-body font-medium">Angel Investor</p>
                             <ul class="mt-auto flex gap-2 pt-4" />
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="text-body font-medium text-primary">Krishna Visvanathan</h6>
+                            <h6 class="text-body text-primary font-medium">Krishna Visvanathan</h6>
                             <p class="text-body font-medium">Co-founder & Partner</p>
                             <p class="text-body font-medium">Crane Venture Partners</p>
                             <ul class="mt-auto flex gap-2 pt-4">
@@ -457,7 +457,7 @@
                             </ul>
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="text-body font-medium text-primary">Ameet Patel</h6>
+                            <h6 class="text-body text-primary font-medium">Ameet Patel</h6>
                             <p class="text-body font-medium">Angel Investor</p>
                             <ul class="mt-auto flex gap-2 pt-4">
                                 <li>
@@ -474,7 +474,7 @@
                             </ul>
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="text-body font-medium text-primary">Benno Jering</h6>
+                            <h6 class="text-body text-primary font-medium">Benno Jering</h6>
                             <p class="text-body font-medium">Partner</p>
                             <p class="text-body font-medium">Redline Capital</p>
                             <ul class="mt-auto flex gap-2 pt-4">
@@ -492,7 +492,7 @@
                             </ul>
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="text-body font-medium text-primary">James Lindenbaum</h6>
+                            <h6 class="text-body text-primary font-medium">James Lindenbaum</h6>
                             <p class="text-body font-medium">Co-founder</p>
                             <p class="text-body font-medium">Heroku</p>
                             <ul class="mt-auto flex gap-2 pt-4">
@@ -510,7 +510,7 @@
                             </ul>
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="text-body font-medium text-primary">Uri Boness</h6>
+                            <h6 class="text-body text-primary font-medium">Uri Boness</h6>
                             <p class="text-body font-medium">Co-Founder</p>
                             <p class="text-body font-medium">Elastic</p>
                             <ul class="mt-auto flex gap-2 pt-4">
@@ -532,7 +532,7 @@
             </div>
         </div>
 
-        <div class="overflow-hidden p-0 py-10">
+        <div class="overflow-hidden p-0 pt-10">
             <div class="web-big-padding-section-level-2 is-margin-replace-padding relative">
                 <img
                     src="/images/bgs/pre-footer.png"
@@ -573,5 +573,9 @@
         height: auto;
         max-inline-size: unset;
         max-block-size: unset;
+    }
+
+    .web-big-padding-section-level-2.is-margin-replace-padding {
+        padding-bottom: 0;
     }
 </style>

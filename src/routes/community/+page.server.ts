@@ -44,8 +44,10 @@ export const load = async () => {
     //     return { issues: mockIssues };
     // }
 
-    // fetch issues from github, appwrite/appwrite repo
-    const response = await fetch('https://api.github.com/repos/appwrite/appwrite/issues');
+    // fetch issues from GitHub, appwrite/appwrite repo
+    const response = await fetch(
+        'https://api.github.com/repos/appwrite/appwrite/issues?state=open'
+    );
     const issues = await response.json();
     if (issues?.message?.includes('API rate limit exceeded')) {
         return { issues: mockIssues };

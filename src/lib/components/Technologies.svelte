@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { trackEvent } from '$lib/actions/analytics';
     import Tooltip from '$lib/components/Tooltip.svelte';
     import { themeInUse } from '$routes/+layout.svelte';
 
@@ -65,11 +66,17 @@
     }>;
 </script>
 
-<ul class="web-u-margin-block-32-mobile web-u-margin-block-40-not-mobile flex flex-wrap gap-4 lg:max-w-[34rem]">
+<ul
+    class="web-u-margin-block-32-mobile web-u-margin-block-40-not-mobile flex flex-wrap gap-4 lg:max-w-[34rem]"
+>
     {#each platforms as platform}
         <Tooltip>
             <li>
-                <a href={platform.href} class="web-icon-button web-box-icon has-border-gradient">
+                <a
+                    href={platform.href}
+                    class="web-icon-button web-box-icon has-border-gradient"
+                    on:click={() => trackEvent({ plausible: { name: `${platform.name} clicked` } })}
+                >
                     <img
                         src={platform.image}
                         alt="{platform.name} quick start"

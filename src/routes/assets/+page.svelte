@@ -35,6 +35,8 @@
             selectedMap = selectedMap;
         };
     };
+
+    let showToc = false;
 </script>
 
 <svelte:head>
@@ -64,19 +66,11 @@
             <div class="web-grid-120-1fr-auto">
                 <header class="web-grid-120-1fr-auto-header">
                     <h1 class="text-display font-aeonik-pro text-primary">Brand assets</h1>
-                    <button
-                        class="web-u-padding-block-20 text-primary web-is-only-mobile
-                        web-u-margin-inline-32-negative web-u-sep-block
-                       mt-6 flex w-full w-full"
-                    >
-                        <span class="container flex w-full items-center justify-between">
-                            <span class="text-description">Table of contents</span>
-                            <span class="icon-menu-alt-4" aria-hidden="true" />
-                        </span>
-                    </button>
                 </header>
-                <TocNav />
-                <main class="web-grid-120-1fr-auto-main /web-is-mobile-closed" id="main">
+
+                <TocNav bind:showToc />
+
+                <main class="web-grid-120-1fr-auto-main" id="main">
                     <div class="web-content">
                         <section>
                             <p>
@@ -195,7 +189,9 @@
                             </div>
                             <section>
                                 <div class="web-flex flex-col gap-2">
-                                    <h3 class="text-label text-primary mt-3 mb-4">Co-branding logotypes</h3>
+                                    <h3 class="text-label text-primary mt-3 mb-4">
+                                        Co-branding logotypes
+                                    </h3>
                                     <p>
                                         Spacing is determined by the Appwrite mark. Unless otherwise
                                         noted by partner brands, each logo is optically equal as a
@@ -302,7 +298,9 @@
                             </div>
                             <section id="">
                                 <div class="web-flex flex-col gap-2">
-                                    <h3 class="text-label text-primary mt-3 mb-4">Co-branding lockups</h3>
+                                    <h3 class="text-label text-primary mt-3 mb-4">
+                                        Co-branding lockups
+                                    </h3>
                                     <p>
                                         Spacing is determined by the Appwrite mark. Unless otherwise
                                         noted by partner brands, each logo is optically equal as a
@@ -331,8 +329,8 @@
                             </h2>
                             <div class="flex flex-wrap gap-8">
                                 <div
-                                    class="media-wrapper | flex aspect-square web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-text-color-neutral-900 web-u-bg-color-neutral-50
-                                web-u-min-block-size-160 flex-1 flex-col justify-center
+                                    class="media-wrapper | web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-text-color-neutral-900 web-u-bg-color-neutral-50 web-u-min-block-size-160 flex
+                                aspect-square flex-1 flex-col justify-center
                                 gap-2 px-6"
                                 >
                                     <h3 class="text-label">Light Grey</h3>
@@ -342,8 +340,8 @@
                                     </div>
                                 </div>
                                 <div
-                                    class="media-wrapper | aspect-square flex web-u-sep web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-min-block-size-160
-                                web-u-text-color-neutral-50 web-u-bg-color-neutral-900 flex-1 flex-col justify-center
+                                    class="media-wrapper | web-u-sep web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-min-block-size-160 web-u-text-color-neutral-50 web-u-bg-color-neutral-900
+                                flex aspect-square flex-1 flex-col justify-center
                                 gap-2 px-6"
                                 >
                                     <h3 class="text-label">Dark Grey</h3>
@@ -353,8 +351,8 @@
                                     </div>
                                 </div>
                                 <div
-                                    class="media-wrapper | flex aspect-square web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-text-color-neutral-50 web-u-bg-color-primary-500
-                                web-u-min-block-size-160 flex-1 flex-col justify-center
+                                    class="media-wrapper | web-u-flex-basis-200 web-flex web-u-border-radius-8 web-u-text-color-neutral-50 web-u-bg-color-primary-500 web-u-min-block-size-160 flex
+                                aspect-square flex-1 flex-col justify-center
                                 gap-2 px-6"
                                 >
                                     <h3 class="text-label">Appwrite Pink</h3>
@@ -616,13 +614,29 @@
             right: 1rem;
             bottom: 1rem;
 
-          &.visuals {
-            justify-content: left;
-            top: auto;
-            position: relative;
-            margin-top: 2rem;
-          }
+            &.visuals {
+                justify-content: left;
+                top: auto;
+                position: relative;
+                margin-top: 2rem;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding-left: 0;
+            padding-right: 0;
         }
 
+        header {
+            padding-block-end: unset;
+        }
+
+        header,
+        main {
+            padding-left: var(--spacing-5, 1.25rem);
+            padding-right: var(--spacing-5, 1.25rem);
+        }
     }
 </style>

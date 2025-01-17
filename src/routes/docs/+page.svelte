@@ -69,7 +69,7 @@
 
     <main class="web-main-section relative overflow-x-hidden" id="main">
         <div class="absolute translate-x-96">
-                <img src="/images/bgs/docs-blur-1.svg" alt=""/>
+            <img src="/images/bgs/docs-blur-1.svg" alt="" />
         </div>
 
         <div class="web-u-opacity-40-mobile absolute top-4 left-0">
@@ -383,10 +383,6 @@
         @media (min-width: 1280px) {
             padding-inline-start: 3rem; // 48px
         }
-    }
-
-    .bg-blur {
-        inset-block-start: -100px;
     }
 
     .tech-hero {

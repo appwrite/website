@@ -150,7 +150,7 @@
                                 {/if}
 
                                 <div class="share-post-section mt-4 flex items-center gap-4">
-                                    <span class="text-micro uppercase pr-2" style:color="#adadb0">
+                                    <span class="text-micro pr-2 uppercase" style:color="#adadb0">
                                         SHARE
                                     </span>
 
@@ -206,7 +206,7 @@
 
                             <div class="web-article-content mt-8">
                                 {#if lastUpdated}
-                                    <span class="text-body font-medium last-updated-text">
+                                    <span class="text-body last-updated-text font-medium">
                                         Updated:
                                         <time dateTime={lastUpdated}>
                                             {formatDate(lastUpdated)}
@@ -236,7 +236,7 @@
         </div>
     </div>
 
-    <div class="web-u-sep-block-start py-10">
+    <div class="web-u-sep-block-start pt-10">
         <div class="web-big-padding-section-level-2">
             <div class="container">
                 <h3 class="text-label text-primary">Read next</h3>
@@ -260,7 +260,7 @@
                 </section>
             </div>
         </div>
-        <div class="pt-[7.5rem] relative overflow-hidden">
+        <div class="relative overflow-hidden pt-[7.5rem]">
             <div class="container">
                 <Newsletter />
                 <FooterNav />

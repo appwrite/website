@@ -45,11 +45,11 @@
                     <span>Back to blog</span>
                 </a>
                 <div class="web-category-header mt-6">
-                    <div class="web-category-header-content">
+                    <div class="flex flex-col justify-between gap-6 md:flex-row md:items-center">
                         <h1 class="text-display font-aeonik-pro text-primary">
                             {name}
                         </h1>
-                        <p class="web-category-header-description text-description">
+                        <p class="text-secondary text-description">
                             {description}
                         </p>
                     </div>
@@ -73,7 +73,7 @@
                         {/each}
                     </ul>
                 </div>
-                <div class="pt-[7.5rem] relative overflow-hidden">
+                <div class="relative overflow-hidden pt-[7.5rem]">
                     <div class="container">
                         <FooterNav />
                         <MainFooter />

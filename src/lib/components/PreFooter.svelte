@@ -1,15 +1,26 @@
 <script lang="ts">
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import { trackEvent } from '$lib/actions/analytics';
 </script>
 
-<img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg" style="z-index:-1" />
+<img
+    src="/images/bgs/pre-footer.png"
+    alt=""
+    class="web-pre-footer-bg"
+    loading="lazy"
+    style="z-index:-1"
+/>
 
-<div class="web-u-row-gap-80 relative grid md:grid-cols-2 gap-8">
+<div class="web-u-row-gap-80 relative grid gap-8 md:grid-cols-2">
     <section class="web-hero flex items-center justify-center gap-y-8">
         <h2 class="text-display font-aeonik-pro text-primary max-w-[500px] text-center">
             Start building today
         </h2>
-        <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button is-transparent web-self-center">
+        <a
+            href={PUBLIC_APPWRITE_DASHBOARD}
+            class="web-button is-transparent web-self-center"
+            on:click={() => trackEvent({ plausible: { name: 'Get started in pre footer' } })}
+        >
             <span class="text">Get started</span>
         </a>
     </section>
@@ -36,6 +47,12 @@
                     <a
                         href={`${PUBLIC_APPWRITE_DASHBOARD}/register`}
                         class="web-button is-secondary is-full-width-mobile web-u-cross-child-end"
+                        on:click={() =>
+                            trackEvent({
+                                plausible: {
+                                    name: 'Get started Free plan'
+                                }
+                            })}
                     >
                         <span class="text">Get started</span>
                     </a>
@@ -56,6 +73,12 @@
                         class="web-button is-full-width-mobile web-u-cross-child-end"
                         target="_blank"
                         rel="noopener noreferrer"
+                        on:click={() =>
+                            trackEvent({
+                                plausible: {
+                                    name: 'Get started Pro plan'
+                                }
+                            })}
                     >
                         <!-- <span class="text">Start trial</span> -->
                         <span class="text">Start building</span>
@@ -145,5 +168,6 @@
         height: auto;
         max-inline-size: unset;
         max-block-size: unset;
+        filter: blur(100px);
     }
 </style>

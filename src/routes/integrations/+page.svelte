@@ -447,16 +447,18 @@
 </Main>
 
 <style lang="scss">
-    @use '$scss/abstract' as *;
+    @use '$scss/abstract/functions' as f;
+    @use '$scss/abstract/variables/devices';
+
     :global([data-scroll-smooth]) {
         scroll-behavior: smooth;
     }
     .hero {
-        min-height: pxToRem(620);
+        min-height: f.pxToRem(620);
         @media (min-width: 768px) {
             display: grid;
             grid-template-columns: 60% minmax(0, 1fr);
-            gap: pxToRem(32);
+            gap: f.pxToRem(32);
             justify-content: space-between;
             align-items: center;
             position: relative;
@@ -465,7 +467,7 @@
                 transform-origin: left center;
                 scale: 1.25;
                 position: relative;
-                left: pxToRem(-30);
+                left: f.pxToRem(-30);
             }
         }
 
@@ -525,7 +527,7 @@
     /* more tha 9 items */
     .l-max-size-list-cards-section {
         scroll-snap-align: start;
-        scroll-margin-top: pxToRem(120);
+        scroll-margin-top: f.pxToRem(120);
     }
     .l-max-size-list-cards {
         &:where(:has(> ul > li:nth-child(10))) {
@@ -536,7 +538,7 @@
                 bottom: 0;
                 height: 100%;
                 width: 100%;
-                max-height: pxToRem(350);
+                max-height: f.pxToRem(350);
                 content: '';
                 display: block;
                 background: linear-gradient(
@@ -550,7 +552,7 @@
             .l-float-button {
                 position: absolute;
                 inset-inline: 0;
-                inset-block-end: pxToRem(20);
+                inset-block-end: f.pxToRem(20);
                 margin-inline: auto;
                 display: flex;
             }
@@ -576,16 +578,16 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
         gap: 1rem;
-        @media #{$break1} {
+        @media #{devices.$break1} {
             gap: 1.25rem;
         }
     }
     .l-integrations-grid {
         position: relative;
 
-        @media #{$break1} {
+        @media #{devices.$break1} {
             gap: 0;
-            padding-block-start: pxToRem(80);
+            padding-block-start: f.pxToRem(80);
         }
 
         .disabled {
@@ -596,8 +598,8 @@
         }
 
         .sidebar {
-            margin-bottom: pxToRem(60);
-            @media #{$break2open} {
+            margin-bottom: f.pxToRem(60);
+            @media #{devices.$break2open} {
                 position: sticky;
                 top: 50px;
                 height: 500px;
@@ -609,7 +611,7 @@
             }
 
             .tag {
-                min-width: pxToRem(42) !important;
+                min-width: f.pxToRem(42) !important;
 
                 &.active-tag {
                     background-color: #fff;
@@ -618,17 +620,17 @@
             }
         }
 
-        @media #{$break2open} {
+        @media #{devices.$break2open} {
             display: grid;
-            gap: pxToRem(68);
-            grid-template-columns: pxToRem(240) 1fr;
-            padding-block-start: pxToRem(40);
+            gap: f.pxToRem(68);
+            grid-template-columns: f.pxToRem(240) 1fr;
+            padding-block-start: f.pxToRem(40);
         }
     }
     .l-integrations-hero {
-        @media #{$break1} {
+        @media #{devices.$break1} {
         }
-        @media #{$break2open} {
+        @media #{devices.$break2open} {
         }
     }
     .l-bg-1 {
@@ -645,12 +647,12 @@
     }
 
     .web-feature-grid {
-        @media #{$break1} {
+        @media #{devices.$break1} {
             gap: 1rem;
         }
     }
     .web-feature-grid {
-        @media #{$break1} {
+        @media #{devices.$break1} {
             gap: 1rem;
         }
     }

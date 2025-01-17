@@ -5,6 +5,8 @@
     import FooterNav from '../../lib/components/FooterNav.svelte';
     import MainFooter from '../../lib/components/MainFooter.svelte';
     import { socials } from '$lib/constants';
+    import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+    import { getReferrerAndUtmSource } from '$lib/utils/utm';
 
     let email = '';
     let firstName = '';
@@ -15,7 +17,7 @@
 
     async function handleSubmit() {
         error = undefined;
-        const response = await fetch('https://growth.appwrite.io/v1/feedback', {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -24,7 +26,8 @@
                 email,
                 firstName,
                 subject,
-                message
+                message,
+                ...getReferrerAndUtmSource()
             })
         });
         if (response.status >= 400) {
@@ -133,7 +136,7 @@
                             >
                                 <div class="flex justify-end">
                                     <ul
-                                        class="web-form-list grid md:grid-cols-2 web-u-max-width-580 web-u-max-inline-size-none-mobile w-full gap-4"
+                                        class="web-form-list web-u-max-width-580 web-u-max-inline-size-none-mobile grid w-full gap-4 md:grid-cols-2"
                                     >
                                         <li class="web-form-item">
                                             <input
