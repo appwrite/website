@@ -61,9 +61,13 @@
             'before:border-smooth before:absolute before:inset-x-0 before:top-1/2 before:hidden before:h-px before:-translate-y-1/2 before:border before:border-dashed before:md:block'
         )}
     >
-        <div class="container grid-inner-1 grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-3">
+        <div
+            class="container divide-smooth grid grid-cols-1 gap-px divide-x divide-dashed sm:grid-cols-2 lg:grid-cols-3"
+        >
             {#each items as item}
-                <div class="bg-greyscale-900 relative flex flex-col gap-4 p-8">
+                <div
+                    class="bg-greyscale-900 relative flex flex-col gap-4 p-8 nth-of-type-[3]:border-none"
+                >
                     <img src={item.icon} alt="{item.title} Icon" class="size-12" />
                     <span class="text-primary -mb-3">{item.title}</span>
                     <p class="text-secondary">{item.description}</p>

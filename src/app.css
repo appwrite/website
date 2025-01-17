@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 @variant dark (&:is(.dark *));
-@plugin ('@michaelallenwarner/tailwind-grid-inner');
 
 @theme {
     /* Colors */
