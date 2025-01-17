@@ -77,7 +77,7 @@
                 on:submit|preventDefault={handleSubmit}
                 class="flex flex-col gap-4 md:min-w-md lg:min-w-[580px]"
             >
-                <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                     <div class="flex flex-col gap-1">
                         <div class="block">Full name</div>
                         <input
@@ -123,7 +123,7 @@
                         />
                     </div>
 
-                    <div class="flex flex-col gap-1 md:col-span-2">
+                    <div class="flex flex-col gap-1 sm:col-span-2">
                         <div class="block">Any other details you'd like to share?</div>
                         <textarea
                             required
