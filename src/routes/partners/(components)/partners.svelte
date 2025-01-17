@@ -57,7 +57,7 @@
             </div>
         </div>
 
-        <div class="mask relative" style:--mask-height="150px">
+        <div class="mask relative w-full" style:--mask-height="150px">
             {#each tiers as { title, icon }, i}
                 <div
                     class={classNames('relative h-fit opacity-0', {
@@ -79,7 +79,7 @@
                                 <span class="text-primary mt-2 block font-medium uppercase"
                                     >{title}<span class="text-accent">_</span></span
                                 >
-                                <h3 class="text-primary font-aeonik-pro md:text-[2.75rem]">
+                                <h3 class="text-primary font-aeonik-pro md:text-title">
                                     Appwrite Partner
                                 </h3>
                             </div>
