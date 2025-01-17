@@ -55,7 +55,7 @@
                 network as a Appwrite Partner.
             </p>
         </div>
-        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4" use:useInView>
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4" use:useInView>
             {#each items as { label, number, suffix }}
                 <GradientBorderCard class="bg-greyscale-750 rounded-lg p-6">
                     <h3 class="text-title font-aeonik-pro text-primary">

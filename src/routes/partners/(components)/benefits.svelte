@@ -54,25 +54,12 @@
         <h2 class="text-primary font-aeonik-pro text-title">Growing together</h2>
     </div>
 
-    <div class="border-smooth w-full border-dashed md:border-y">
+    <div class="border-smooth w-full border-y border-dashed">
         <div
-            class="divide-smooth container grid grid-cols-1 gap-px divide-dashed max-md:divide-y md:grid-cols-3 md:divide-x"
+            class="border-smooth container grid grid-cols-1 gap-px border-y border-dashed sm:grid-cols-2 lg:grid-cols-3"
         >
-            {#each items.slice(0, 3) as item}
-                <div class="bg-greyscale-900 last-of-type:border-smooth flex flex-col gap-4 p-8">
-                    <img src={item.icon} alt="{item.title} Icon" class="size-12" />
-                    <span class="text-primary -mb-3">{item.title}</span>
-                    <p class="text-secondary">{item.description}</p>
-                </div>
-            {/each}
-        </div>
-    </div>
-    <div class="border-smooth w-full border-dashed md:border-b">
-        <div
-            class="divide-smooth container grid grid-cols-1 gap-px divide-dashed max-md:divide-y md:grid-cols-3 md:divide-x"
-        >
-            {#each items.slice(3, 6) as item}
-                <div class="bg-greyscale-900 last-of-type:border-smooth flex flex-col gap-4 p-8">
+            {#each items as item}
+                <div class="bg-greyscale-900 relative flex flex-col gap-4 p-8">
                     <img src={item.icon} alt="{item.title} Icon" class="size-12" />
                     <span class="text-primary -mb-3">{item.title}</span>
                     <p class="text-secondary">{item.description}</p>
