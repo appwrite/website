@@ -1,0 +1,75 @@
+<script lang="ts">
+    const features = [
+        {
+            label: 'Self-Hosted',
+            description: 'Own your data or host it on a cloud region of choice.',
+            icon: '/images/icons/gradients/self-hosted.svg'
+        },
+        {
+            label: 'Encryption',
+            description: 'Built-in data encryption both in rest and in transit.',
+            icon: '/images/icons/gradients/lock.svg'
+        },
+        {
+            label: 'Abuse protection',
+            description: 'Protect your APIs from abuse with built-in protection.',
+            icon: '/images/icons/gradients/shield.svg'
+        },
+        {
+            label: 'Data migrations',
+            description: 'Easily transfer data from 3rd parties or between Cloud and self-hosted.',
+            icon: '/images/icons/gradients/database.svg'
+        },
+        {
+            label: 'GDPR',
+            description: 'Safeguard user data and privacy with provided GDPR regulations.',
+            icon: '/images/icons/gradients/star.svg'
+        },
+        {
+            label: 'SOC-2',
+            description: 'Ensure the highest level of security and privacy protection.',
+            icon: '/images/icons/gradients/soc-2.svg'
+        },
+        {
+            label: 'HIPAA',
+            description: 'Protect sensitive user health data.',
+            icon: '/images/icons/gradients/hipaa.svg'
+        },
+        {
+            label: 'CCPA',
+            description: 'Protect sensitive user health data.',
+            icon: '/images/icons/gradients/ccpa.svg'
+        }
+    ];
+</script>
+
+<div class="light bg-white">
+    <div class="container">
+        <section class="">
+            <h2 class="text-title font-aeonik-pro text-primary max-w-[700px]">
+                Self-host your data or take it to the Cloud
+            </h2>
+            <p class="text-secondary mt-5 max-w-[700px] text-xl font-medium">
+                Migrate your data from and to any platform at any time with Appwrite Migrations.
+                With built-in security and privacy for peace of mind.
+            </p>
+        </section>
+        <div
+            class="mt-20 grid grid-cols-1 gap-8 divide-x divide-y divide-dashed divide-black overflow-hidden md:grid-cols-2 lg:grid-cols-4"
+        >
+            {#each features as box}
+                <div
+                    class="text-sub-body relative border-black/4 font-medium last-of-type:border-r"
+                >
+                    <img src={box.icon} width="40" height="40" alt="" />
+                    <h3 class="text-primary mt-4 flex flex-wrap items-baseline gap-3">
+                        {box.label}
+                    </h3>
+                    <p class="text-secondary mt-1">
+                        {box.description}
+                    </p>
+                </div>
+            {/each}
+        </div>
+    </div>
+</div>
