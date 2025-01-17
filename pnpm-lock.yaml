@@ -48,6 +48,9 @@ importers:
       '@melt-ui/svelte':
         specifier: ^0.86.0
         version: 0.86.2(svelte@4.2.19)
+      '@michaelallenwarner/tailwind-grid-inner':
+        specifier: ^1.0.3
+        version: 1.0.3(tailwindcss@4.0.0-alpha.17)
       '@playwright/test':
         specifier: ^1.49.0
         version: 1.49.0
@@ -857,6 +860,12 @@ packages:
     resolution: {integrity: sha512-wRVN603oIt1aXvx2QRmKqVDJgTScSvr/WJLLokkD8c4QzHgn6pfpPtUKmhV6Dvkk+OY89OG/1Irkd6ouA50Ztw==}
     peerDependencies:
       svelte: ^3.0.0 || ^4.0.0 || ^5.0.0-next.118
+
+  '@michaelallenwarner/tailwind-grid-inner@1.0.3':
+    resolution: {integrity: sha512-1mVSUOLWygxUfZ3euAQp2BjpHzll63Mw8MXJn1OoqDtcTbIIrl7wglww5P9SVbzXdSrDeR3RjNDl/hezoLbnPA==}
+    engines: {node: '>=12.2'}
+    peerDependencies:
+      tailwindcss: '>=2.2'
 
   '@motionone/animation@10.18.0':
     resolution: {integrity: sha512-9z2p5GFGCm0gBsZbi8rVMOAJCtw1WqBTIPw3ozk06gDvZInBPIsQcHgYogEJ4yuHJ+akuW8g1SEIOpTOvYs8hw==}
@@ -3940,6 +3949,9 @@ packages:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
 
+  specificity@1.0.0:
+    resolution: {integrity: sha512-nCtHb5/MTfZ1D36EpLLz03AcUf1v+PxWFFieW4O721MaJUo/anSMckB94Ylj5VQPrjdlx+4BXcKD+s1N0yT+ww==}
+
   split2@1.1.1:
     resolution: {integrity: sha512-cfurE2q8LamExY+lJ9Ex3ZfBwqAPduzOKVscPDXNCLLMvyaeD3DTz1yk7fVIs6Chco+12XeD0BB6HEoYzPYbXA==}
 
@@ -5197,6 +5209,11 @@ snapshots:
       focus-trap: 7.6.0
       nanoid: 5.0.7
       svelte: 4.2.19
+
+  '@michaelallenwarner/tailwind-grid-inner@1.0.3(tailwindcss@4.0.0-alpha.17)':
+    dependencies:
+      specificity: 1.0.0
+      tailwindcss: 4.0.0-alpha.17
 
   '@motionone/animation@10.18.0':
     dependencies:
@@ -8410,6 +8427,10 @@ snapshots:
   source-map-js@1.2.1: {}
 
   source-map@0.6.1: {}
+
+  specificity@1.0.0:
+    dependencies:
+      css-tree: 2.3.1
 
   split2@1.1.1:
     dependencies:
