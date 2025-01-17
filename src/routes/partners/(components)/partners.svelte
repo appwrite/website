@@ -37,7 +37,7 @@
 
 <div
     class={classNames(
-        'border-smooth relative flex items-center justify-center border-b border-dashed bg-[#17171A] py-32',
+        'border-smooth relative flex items-center justify-center border-t border-b border-dashed bg-[#17171A] py-32 [border-top-style:solid]',
         'after:absolute after:inset-0 after:top-0 after:right-0 after:mt-auto after:mb-0 after:block after:h-full after:bg-[radial-gradient(circle_at_120%_-40%,_hsla(343,_98%,_60%,_0.2)_0px,_transparent_40%)]'
     )}
     use:useInView
@@ -45,7 +45,7 @@
     <div
         class="container mx-auto flex w-full flex-col items-center justify-between gap-16 md:flex-row"
     >
-        <div class="flex max-w-lg flex-col gap-8">
+        <div class="flex max-w-lg flex-col gap-8 px-8">
             <div class="flex flex-col gap-4">
                 <h1 class="font-aeonik-pro text-title text-primary text-pretty">Partner Tiers</h1>
                 <p class="text-body text-secondary text-pretty font-medium">
@@ -59,7 +59,7 @@
             </div>
         </div>
 
-        <div class="mask relative" style:--mask-height="150px">
+        <div class="mask overflow-hiddens relative px-8" style:--mask-height="150px">
             {#each tiers as { title, icon }, i}
                 <div
                     class={classNames('relative h-fit min-w-md rounded-3xl opacity-0', {
