@@ -130,7 +130,6 @@ const client = new Client()
 const promise = account.updateRecovery(
     '[USER_ID]',
     '[SECRET]',
-    'password',
     'password'
 );
 
