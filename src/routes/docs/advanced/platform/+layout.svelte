@@ -90,6 +90,21 @@
             ]
         },
         {
+            label: 'Add ons',
+            items: [
+                {
+                    new: true,
+                    label: 'Compute',
+                    href: '/docs/advanced/platform/compute'
+                },
+                {
+                    new: true,
+                    label: 'Phone OTP',
+                    href: '/docs/advanced/platform/phone-otp'
+                }
+            ]
+        },
+        {
             label: 'Configuration',
             items: [
                 {
@@ -103,11 +118,16 @@
             ]
         },
         {
-            label: 'Policy',
+            label: 'Policies',
             items: [
                 {
-                    label: 'Release policy',
+                    label: 'Release',
                     href: '/docs/advanced/platform/release-policy'
+                },
+                {
+                    new: true,
+                    label: 'Fair use',
+                    href: '/docs/advanced/platform/fair-use-policy'
                 }
             ]
         }

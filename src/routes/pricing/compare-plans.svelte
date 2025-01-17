@@ -30,16 +30,16 @@
             rows: [
                 {
                     title: 'Bandwidth',
-                    free: '10GB',
-                    pro: '300GB',
-                    scale: '300GB',
+                    free: '5GB / month',
+                    pro: '300GB / month',
+                    scale: '300GB / month',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Additional bandwidth',
                     free: '-',
-                    pro: '$40 per 100GB',
-                    scale: '$40 per 100GB',
+                    pro: '$40 per 100GB / month',
+                    scale: '$40 per 100GB / month',
                     enterprise: 'Custom'
                 },
                 {
@@ -52,15 +52,15 @@
                 {
                     title: 'Additional storage',
                     free: '-',
-                    pro: '$3 per 100GB',
+                    pro: '$3 per 100GB ',
                     scale: '$3 per 100GB',
                     enterprise: 'Custom'
                 },
                 {
-                    title: 'Compute',
-                    free: '750K executions',
-                    pro: '3.5M executions',
-                    scale: '3.5M executions',
+                    title: 'Executions',
+                    free: '750K / month',
+                    pro: '3.5M / month',
+                    scale: '3.5M / month',
                     enterprise: 'Custom'
                 }
             ]
@@ -165,6 +165,13 @@
                     enterprise: 'Custom'
                 },
                 {
+                    title: 'Phone OTP',
+                    free: '10 SMS / month',
+                    pro: '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>',
+                    scale: '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>',
+                    enterprise: 'Custom'
+                },
+                {
                     title: 'Teams',
                     free: '100 per project',
                     pro: 'Unlimited',
@@ -203,6 +210,20 @@
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
+                },
+                {
+                    title: 'Backups',
+                    free: '-',
+                    pro: 'Daily',
+                    scale: 'Custom',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Backups retention',
+                    free: '-',
+                    pro: '7 days retention',
+                    scale: 'Custom',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Dedicated databases',
@@ -251,9 +272,30 @@
                 },
                 {
                     title: 'Executions',
-                    free: '750K',
-                    pro: '3.5M',
-                    scale: '3.5M',
+                    free: '750K / month',
+                    pro: '3.5M / month',
+                    scale: '3.5M / month',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'GB-hours',
+                    free: '100 GB-hour / month',
+                    pro: '1,000 GB-hour / month',
+                    scale: '1,000 GB-hour / month',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Additional GB-hours',
+                    free: '-',
+                    pro: '$0.09 per GB-hour',
+                    scale: '$0.09 per GB-hour',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Compute options',
+                    free: '0.5 CPU - 512MB RAM',
+                    pro: 'Up to 4 CPU, 4GB RAM',
+                    scale: 'Up to 4 CPU, 4GB RAM',
                     enterprise: 'Custom'
                 },
                 {
@@ -597,7 +639,7 @@
                                                 class:is-selected={col === tab}
                                             >
                                                 {#if typeof row[col] === 'string'}
-                                                    {row[col]}
+                                                    {@html row[col]}
                                                 {:else}
                                                     <img
                                                         class="mx-auto self-center"

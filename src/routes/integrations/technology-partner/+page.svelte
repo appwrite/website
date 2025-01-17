@@ -9,6 +9,8 @@
     //import BlobPink from "$routes/startups/(assets)/blob-pink.svg";
     // import BlobPinkMobile from "$routes/startups/(assets)/blob-pink-mobile.svg";
     import Pink from './bg.png';
+    import { getReferrerAndUtmSource } from '$lib/utils/utm';
+    import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
 
     let email = '';
     let name = '';
@@ -30,7 +32,7 @@
         message = `Name of representative: ${name}\n\nWork Email: ${email}\n\nCompany Name: ${companyName}\n\nCompany Size: ${companySize}\n\nCompany Website: ${companyWebsite}\n\nIntegration status: ${integrationStatus}\n\nLink to Documentation: ${linkToDocumentation}\n\nLink to product/company assets: ${productUrl}\n\nDetails: ${extraDetails}`;
         subject = `Technology Partner Application: ${companyName}`;
 
-        const response = await fetch('https://growth.appwrite.io/v1/feedback', {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -39,7 +41,8 @@
                 email,
                 firstName: name,
                 subject,
-                message
+                message,
+                ...getReferrerAndUtmSource()
             })
         });
         if (response.status >= 400) {
@@ -79,7 +82,7 @@
 <Main>
     <div class="web-big-padding-section">
         <div id="form" class="overflow-hidden p-0 pt-10">
-            <div class="pt-[7.5rem] relative">
+            <div class="relative pt-[7.5rem]">
                 <div class="relative">
                     <div class="container relative">
                         <!-- before submit -->

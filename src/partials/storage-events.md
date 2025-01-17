@@ -30,7 +30,7 @@
 ---
 
 -   `buckets.*.files.*.create`
--   This event triggers when a file is created.
+-   Since the Appwrite SDK chunks files in 5MB increments, this event will trigger for each 5MB chunk. A file is fully uploaded when `chunksTotal` equals `chunksUploaded`.
     Returns [File Object](/docs/references/cloud/models/file)
 
 ---

@@ -6,7 +6,7 @@ date: 2024-08-07
 cover: /images/blog/appwrite-backups-and-restores/cover.png
 timeToRead: 3
 author: bradley-schofield
-category: engineering
+category: product
 ---
 
 Backing up and restoring data is an extremely important part of running servers. It's a virtual safety net against most bad things that can happen. Made a bad config change? Restore a backup. Messed up an update? Restore a backup. Corrupted Drives? Restore a backup.

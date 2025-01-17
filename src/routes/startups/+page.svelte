@@ -19,17 +19,11 @@
 
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import Faq from './faq.svelte';
+    import { getReferrerAndUtmSource } from '$lib/utils/utm';
 
     const title = 'Startups' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
-
-    const infiniteScroll = (node: HTMLElement) => {
-        if (window.matchMedia('prefers-reduced-motion').matches) return;
-        const content = node.querySelector('.inner') as HTMLElement;
-        content.innerHTML += content?.innerHTML;
-        node.dataset.animated = 'true';
-    };
 
     let personName: string;
     let personEmail: string;
@@ -58,7 +52,8 @@
                 personName,
                 personEmail,
                 companyName,
-                companyUrl: companyUrl.startsWith('http') ? companyUrl : `https://${companyUrl}`
+                companyUrl: companyUrl.startsWith('http') ? companyUrl : `https://${companyUrl}`,
+                ...getReferrerAndUtmSource()
             })
         });
 
@@ -130,6 +125,24 @@
             'eddie-jaoude'
         ),
         testimonial(
+            'David Forster',
+            'Creator // Open Mind',
+            'Appwrite saved us a lot of money in comparison to Firebase since the amount of users grew quite fast and we needed a quick switch. I am still surprised how easy the implementation into Flutter was.',
+            'david-forster'
+        ),
+        testimonial(
+            'Marius Bolik',
+            'CTO // mySHOEFITTER',
+            'The integrated user authentication and the ease of creating data structures have undoubtedly saved us several weeks worth of time.',
+            'marius-bolik2'
+        ),
+        testimonial(
+            "Ryan O'Conner",
+            'Founder // K-Collect',
+            'For me, Appwrite is the perfect backend solution. All you have to do is sign up, and your backend is ready to go. I have never seen such an innovative and easy-to-understand backend solution before!',
+            'ryan-oconner'
+        ),
+        testimonial(
             'Diego Ferreyra',
             '@diego_ferreyra1',
             "Loving it. I've been a web developer for 20+ years and I've never gotten from 0 lines to actual useful coding so fast. 100% recommend.",
@@ -142,8 +155,14 @@
             'alejandro-morales'
         ),
         testimonial(
+            'Marius Bolik',
+            'CTO // mySHOEFITTER',
+            'The integrated user authentication and the ease of creating data structures have undoubtedly saved us several weeks worth of time.',
+            'marius-bolik2'
+        ),
+        testimonial(
             'Jonas Janssen',
-            'Founder',
+            'Founder // UNDO',
             'Thanks to Appwrite and advances in technology, we were able to get an MVP out in 2-3 months with 1 developer.',
             'jonas-janssen'
         ),
@@ -187,8 +206,8 @@
                             class="text-description web-u-max-width-640 e-u-padding-inline-32-desktop mx-auto"
                         >
                             The Appwrite Startups Program supports your startup with a complete
-                            backend for you to build your products. Eligible startups receive
-                            Appwrite Cloud Scale for 12 months.
+                            backend for you to build your products. You will receive $20,000 Cloud
+                            credits for Appwrite Scale for 12 months.
                         </p>
                         <button on:click={scrollToForm} class="web-button mt-3 mx-auto">
                             Apply now
@@ -276,7 +295,13 @@
                                         </p>
                                     </div>
                                     <div>
-                                        <div class="web-card is-white flex flex-col gap-5">
+                                        <a
+                                            href="/blog/post/customer-stories-myshoefitter"
+                                            class="web-card is-white group flex flex-col gap-5"
+                                        >
+                                            <div class="border-card">
+                                                <div class="glow" />
+                                            </div>
                                             <p class="aw-sub-body-500">
                                                 The integrated user authentication and the ease of
                                                 creating data structures have undoubtedly saved us
@@ -299,7 +324,13 @@
                                                     CTO // mySHOEFITTER
                                                 </div>
                                             </div>
-                                        </div>
+                                            <span
+                                                class="text-sub-body text-primary flex items-center gap-1"
+                                                >Read customer story <span
+                                                    class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
+                                                /></span
+                                            >
+                                        </a>
                                     </div>
                                 </div>
 
@@ -337,9 +368,13 @@
                                             the transition through different stages of your business
                                             growth.
                                         </p>
-                                        <div
-                                            class="web-card is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
+                                        <a
+                                            href="/blog/post/case-study-kcollect"
+                                            class="web-card group is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
                                         >
+                                            <div class="border-card">
+                                                <div class="glow" />
+                                            </div>
                                             <p class="aw-sub-body-500">{ryanOconner.text}</p>
                                             <div class="web-user-box">
                                                 <img
@@ -358,7 +393,13 @@
                                                     {ryanOconner.handle}
                                                 </div>
                                             </div>
-                                        </div>
+                                            <span
+                                                class="text-sub-body text-primary flex items-center gap-1"
+                                                >Read customer story <span
+                                                    class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
+                                                /></span
+                                            >
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="web-is-only-mobile">
@@ -591,9 +632,13 @@
                                             wealth of knowledge, support, and shared experiences to
                                             help navigate the challenges of startup growth.
                                         </p>
-                                        <div
-                                            class="web-card is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
+                                        <a
+                                            href="/blog/post/case-study-myshoefitter"
+                                            class="web-card group is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
                                         >
+                                            <div class="border-card">
+                                                <div class="glow" />
+                                            </div>
                                             <p class="aw-sub-body-500">{mariusBolik.text}</p>
                                             <div class="web-user-box">
                                                 <img
@@ -612,7 +657,13 @@
                                                     {mariusBolik.handle}
                                                 </div>
                                             </div>
-                                        </div>
+                                            <span
+                                                class="text-sub-body text-primary flex items-center gap-1"
+                                                >Read customer story <span
+                                                    class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
+                                                /></span
+                                            >
+                                        </a>
                                     </div>
                                 </div>
                             </li>
@@ -629,7 +680,7 @@
                 >
                     Focus on building your product
                 </h4>
-                <div class="scroll-carousel" use:infiniteScroll>
+                <div class="scroll-carousel">
                     <ul class="inner gap-8">
                         {#each testimonials as t}
                             <li>
@@ -662,7 +713,7 @@
         </div>
 
         <div id="form" class="overflow-hidden pt-10">
-            <div class="pt-[7.5rem] is-margin-replace-padding relative">
+            <div class="is-margin-replace-padding relative pt-[7.5rem]">
                 <div class="relative">
                     <div class="web-big-padding-section-level-2">
                         <div class="container relative">
@@ -703,9 +754,7 @@
                                                 Join the Appwrite Startups program
                                             </h4>
                                             <p class="text-description">
-                                                We support VC backed or revenue generating startups
-                                                that have been established within the last decade
-                                                with:
+                                                We support your startup with:
                                             </p>
 
                                             <div class="flex flex-col gap-3">
@@ -880,12 +929,64 @@
             } /* items */
         }
     }
-    :global([data-animated]).scroll-carousel {
-        overflow: hidden;
 
-        .inner {
-            padding-inline: 0;
-            animation: scroll 40s linear infinite;
+    .border-card {
+        position: absolute;
+        inset: 0;
+        border: 1px solid transparent;
+        mask-clip: padding-box, border-box;
+        mask-composite: intersect;
+        border-radius: inherit;
+        mask-image: linear-gradient(transparent, transparent), linear-gradient(#000, #000);
+
+        &:hover {
+            .glow {
+                opacity: 1;
+            }
+        }
+
+        .glow {
+            opacity: 0;
+            transition: opacity 0.25s ease-out;
+            position: absolute;
+            inset: 0;
+            width: 60px;
+            aspect-ratio: 1/1;
+            offset-path: rect(0 auto auto 0 round 60px);
+            offset-distance: 0;
+            offset-rotate: auto;
+            animation: glow 6s infinite linear forwards;
+            background-color: var(--color-pink-200);
+            box-shadow:
+                var(--color-pink-200) 0px 0px 60px 30px,
+                var(--color-pink-200) 0px 0px 100px 60px,
+                var(--color-pink-200) 0px 0px 140px 90px;
+        }
+
+        @keyframes glow {
+            0% {
+                offset-distance: 0;
+            }
+            100% {
+                offset-distance: 100%;
+            }
+        }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .scroll-carousel {
+            overflow: hidden;
+
+            &:hover {
+                .inner {
+                    animation-play-state: paused;
+                }
+            }
+
+            .inner {
+                padding-inline: 0;
+                animation: scroll 40s linear infinite;
+            }
         }
     }
 

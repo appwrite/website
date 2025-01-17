@@ -7,7 +7,7 @@
     import Schedule from './(components)/Schedule.svelte';
     import Send from './(components)/Send.svelte';
     import Target from './(components)/Target.svelte';
-    import MultiCodeContextless from './(components)/MultiCodeContextless.svelte';
+    import MultiCodeContextless from '$lib/components/MultiCodeContextless.svelte';
     import { Platform } from '$lib/utils/references';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
@@ -255,7 +255,7 @@ messaging.create_email(
                 <div>
                     <div class="product">
                         <img src="/images/icons/illustrated/dark/messaging.png" alt="" />
-                        <span class="text-micro uppercase text-primary">
+                        <span class="text-micro text-primary uppercase">
                             Messaging<span class="web-u-color-text-accent">_</span>
                         </span>
                         <span class="web-hero-banner-button text-micro uppercase">BETA</span>
@@ -300,7 +300,7 @@ messaging.create_email(
                         </h2>
                     </section>
                     <div class="mt-20 overflow-hidden">
-                        <ul class="web-info-boxes is-desktop-max-out-3 text-sub-body font-medium">
+                        <ul class="text-sub-body grid grid-cols-1 font-medium md:grid-cols-3">
                             <li class="web-info-boxes-item">
                                 <img
                                     src="/images/icons/gradients/mobile.svg"
@@ -483,7 +483,9 @@ messaging.create_email(
                             Start today with your preferred technologies
                         </h2>
                     </div>
-                    <div class="code-snippets divide-border-primary mt-16 grid grid-cols-2 gap-16">
+                    <div
+                        class="code-snippets divide-border-primary mt-16 grid grid-cols-1 gap-16 md:grid-cols-2"
+                    >
                         <div class="flex min-w-0 flex-col gap-2">
                             <h3 class="text-label text-primary">Subscribe to a topic</h3>
                             <p class="text-description">
@@ -526,7 +528,7 @@ messaging.create_email(
                     <li class="web-u-flex-basis-378">
                         <a
                             class="web-card is-normal"
-                            href="/docs/products/auth"
+                            href="/products/auth"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
@@ -551,7 +553,7 @@ messaging.create_email(
                     <li class="web-u-flex-basis-378">
                         <a
                             class="web-card is-normal"
-                            href="/docs/products/functions"
+                            href="/products/functions"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
@@ -602,7 +604,7 @@ messaging.create_email(
                     <li class="web-u-flex-basis-378">
                         <a
                             class="web-card is-normal"
-                            href="/docs/products/storage"
+                            href="/products/storage"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
@@ -652,7 +654,7 @@ messaging.create_email(
                 </ul>
             </div>
         </section>
-        <div class="pt-[7.5rem] relative">
+        <div class="relative pt-[7.5rem]">
             <div class="container">
                 <PreFooter />
                 <FooterNav />
