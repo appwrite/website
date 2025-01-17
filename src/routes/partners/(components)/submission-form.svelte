@@ -50,7 +50,7 @@
 >
     {#if !submitted}
         <div
-            class="container mx-auto box-border flex w-full flex-col justify-between py-40 max-sm:space-y-8 md:flex-row"
+            class="container mx-auto box-border flex w-full flex-col justify-between gap-8 py-20 md:flex-row"
         >
             <div class="flex max-w-sm flex-col gap-6">
                 <h2 class="text-display font-aeonik-pro text-primary">Become a Partner</h2>
@@ -75,7 +75,7 @@
             <form
                 method="post"
                 on:submit|preventDefault={handleSubmit}
-                class="flex flex-col gap-4 md:min-w-[580px]"
+                class="flex flex-col gap-4 md:min-w-md lg:min-w-[580px]"
             >
                 <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                     <div class="flex flex-col gap-1">
