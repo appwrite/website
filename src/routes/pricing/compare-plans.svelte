@@ -572,7 +572,10 @@
                                                 {row.title}
                                                 {#if row.info}
                                                     <Tooltip placement="top">
-                                                        <span
+                                                        <button
+                                                            slot="asChild"
+                                                            let:trigger
+                                                            use:melt={trigger}
                                                             class="icon-info"
                                                             aria-hidden="true"
                                                         />
