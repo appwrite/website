@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How Appwrite streamlines database operations using hooks
-description: Learn Appwrite implemented hook functions to develop custom filters in our Databases services.
+description: Learn how Appwrite implemented hook functions to develop custom filters in the Databases services.
 date: 2025-01-18
 cover: /images/blog/hooks-appwrite-databases/cover.png
 timeToRead: 10
@@ -124,4 +124,4 @@ In addition to databases, [Appwrite](https://appwrite.io/) provides other core b
 - [Quickstarts](https://appwrite.io/docs/quick-starts)
 - [Appwrite Cloud](https://cloud.appwrite.io)
 - [Appwrite Docs](https://appwrite.io/docs)
-- [Discord community](https://discord.gg/appwrite)
+- [Discord community](https://appwrite.io/discord)
