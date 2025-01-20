@@ -40,7 +40,13 @@
         );
     };
 
-    export let pins: Array<{ x: number, y: number, city: string, code: string, available: boolean}> = [
+    export let pins: Array<{
+        x: number;
+        y: number;
+        city: string;
+        code: string;
+        available: boolean;
+    }> = [
         {
             x: 1.25,
             y: 8,

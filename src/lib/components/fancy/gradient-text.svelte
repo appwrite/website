@@ -9,7 +9,7 @@
 
 <span
     class={classNames(
-        'block bg-[linear-gradient(6deg,_#f8a1ba,_#fff_35%)] bg-clip-text text-transparent',
+        '-mb-1 block bg-[linear-gradient(6deg,_#f8a1ba,_#fff_35%)] bg-clip-text pb-1 text-transparent',
         className
     )}
 >

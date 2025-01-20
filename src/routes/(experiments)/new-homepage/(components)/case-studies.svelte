@@ -82,13 +82,13 @@
                     )}
                 >
                     <img src={study.logo} alt={study.headline} />
-                    <span class="text-title text-primary"
+                    <span class="text-title font-aeonik-pro text-primary"
                         >{study.headline}<span class="text-accent">_</span></span
                     >
 
                     <div class="border-smooth mt-8 border-t border-dashed pt-8">
                         <div class="text-primary text-sub-body max-w-[60%] font-medium">
-                            {study.blurb}
+                            "{study.blurb}"
                         </div>
 
                         <div class="mt-4 flex justify-between">
@@ -96,7 +96,12 @@
                                 <img src={study.avatar} alt={study.headline} class="size-6" />
                                 <span class="text-caption">{study.name}, {study.title}</span>
                             </div>
-                            <a href={study.url} class="text-primary">Read customer story</a>
+
+                            <a href={study.url} class="text-primary group flex items-center gap-2"
+                                >Read customer story <span
+                                    class="web-icon-arrow-right transition-transform group-hover:translate-x-0.5"
+                                /></a
+                            >
                         </div>
                     </div>
                 </div>
