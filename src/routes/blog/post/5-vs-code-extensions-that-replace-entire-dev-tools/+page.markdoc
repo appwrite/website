@@ -27,7 +27,7 @@ And for Postman users, the familiar interface makes the transition straightforwa
 
 ![Thunder Client](/images/blog/5-vs-code-extensions-that-replace-entire-dev-tools/thunder-client.png)
 
-It's worth noting that Thunder client has paid plans and some limitations to the free version. For example, the free plan specifies "**non Commercial use**" and Collection Runs are limited to 30, while Postman limits to 25. So the main advantage is that you can use it directly in VS Code without needing to context switch or dedicate computer resources to a separate application.
+It's worth noting that Thunder Client has paid plans and some limitations to the free version. For example, the free plan specifies "**non Commercial use**" and Collection Runs are limited to 30, while Postman limits to 25. So the main advantage is that you can use it directly in VS Code without needing to context switch or dedicate computer resources to a separate application.
 
 Migration tips from experience:
 
