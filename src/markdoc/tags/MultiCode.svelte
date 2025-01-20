@@ -21,11 +21,31 @@
         content: writable('')
     });
 
+    const languageContext = getContext<Writable<string>>('language-context');
+
     const { snippets, selected, content } = getContext<CodeContext>('multi-code');
 
     snippets.subscribe((n) => {
         if ($selected === null && n.size > 0) {
             $selected = Array.from(n)[0];
+        }
+    });
+
+    selected.subscribe((language) => {
+        // apply if exists in snippets
+        if (language && $snippets.has(language as Language)) {
+            languageContext?.set(language);
+        }
+    });
+
+    languageContext?.subscribe((language) => {
+        if (
+            language &&
+            language !== $selected &&
+            // apply if exists in snippets
+            $snippets.has(language as Language)
+        ) {
+            selected.set(language);
         }
     });
 
