@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
     import { slugify } from '$lib/utils/slugify';
     import { melt, createTooltip } from '@melt-ui/svelte';
     import { cubicInOut } from 'svelte/easing';
@@ -53,7 +53,7 @@
 </script>
 
 <div
-    class={cn(
+    class={classNames(
         'group relative flex size-4 translate-x-[var(--x-mobile)] translate-y-[var(--y)] cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)] md:translate-x-[var(--x-desktop)]',
         { 'animate-fade-in': animate }
     )}
@@ -78,7 +78,7 @@
     <div
         use:melt={$content}
         transition:fly={{ duration: 200, easing: cubicInOut, y: 6 }}
-        class={cn(
+        class={classNames(
             'from-card/75 to-greyscale-800/75 flex w-[190px] flex-col gap-2 rounded-[10px] border border-white/3 bg-gradient-to-tl p-2 backdrop-blur-sm',
             className
         )}

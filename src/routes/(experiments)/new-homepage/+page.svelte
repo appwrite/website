@@ -2,6 +2,7 @@
     import CaseStudies from './(components)/case-studies.svelte';
     import Features from './(components)/features.svelte';
     import Hero from './(components)/hero.svelte';
+    import NetworkMap from './(components)/network-map.svelte';
     import Platforms from './(components)/platforms.svelte';
 </script>
 
@@ -9,3 +10,4 @@
 <Platforms />
 <CaseStudies />
 <Features />
+<NetworkMap />
