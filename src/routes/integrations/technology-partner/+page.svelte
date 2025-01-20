@@ -205,7 +205,7 @@
 
                                                 <div class="relative">
                                                     <select
-                                                        class="web-input-text"
+                                                        class="web-input-text w-full appearance-none"
                                                         id="companySize"
                                                         bind:value={companySize}
                                                     >
@@ -248,7 +248,7 @@
                                                 >
                                                 <div class="relative">
                                                     <select
-                                                        class="web-input-text"
+                                                        class="web-input-text w-full appearance-none"
                                                         id="integration"
                                                         bind:value={integrationStatus}
                                                         on:change={(e) =>
