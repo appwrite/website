@@ -26,6 +26,8 @@
         change: unknown;
     }>();
 
+    export let initialLabel: string = 'Select an option';
+
     const {
         elements: { trigger, menu, option: optionEl, group: groupEl, groupLabel },
         states: { open, selected, selectedLabel }
@@ -93,7 +95,7 @@
         {#if selectedOption?.icon}
             <span class={selectedOption.icon} aria-hidden="true" />
         {/if}
-        <span>{$selectedLabel}</span>
+        <span>{$selectedLabel || initialLabel}</span>
     </div>
     <span class="icon-cheveron-{$open ? 'up' : 'down'}" aria-hidden="true" />
 </button>
@@ -115,7 +117,7 @@
                             {#if option.icon}
                                 <span class={option.icon} aria-hidden="true" />
                             {/if}
-                            <span style:text-transform="capitalize">{option.label}</span>
+                            <span>{option.label}</span>
                         </button>
                     {/each}
                 </div>

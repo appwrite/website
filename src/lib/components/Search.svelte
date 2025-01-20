@@ -70,12 +70,12 @@
     const recommended: Hits<Props> = [
         {
             uid: 'recommended-references-account',
-            url: '/docs/references/cloud/client-web/databases',
+            url: '/docs/references/cloud/client-web/account',
             h1: 'API reference',
-            h2: 'Databases'
+            h2: 'Account'
         },
         {
-            uid: 'recommended-references-teans',
+            uid: 'recommended-references-teams',
             url: '/docs/references/cloud/client-web/teams',
             h1: 'API reference',
             h2: 'Teams'

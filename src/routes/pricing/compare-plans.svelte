@@ -8,6 +8,7 @@
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
     import { classNames } from '$lib/utils/classnames';
+    import { Tooltip } from '$lib/components';
 
     type Table = {
         title: string;
@@ -23,13 +24,13 @@
 
     const cols = ['free', 'pro', 'scale', 'enterprise'] as const;
 
-    const tables = [
+    const tables: Array<Table> = [
         {
             title: 'Resources',
             rows: [
                 {
                     title: 'Bandwidth',
-                    free: '10GB / month',
+                    free: '5GB / month',
                     pro: '300GB / month',
                     scale: '300GB / month',
                     enterprise: 'Custom'
@@ -164,6 +165,13 @@
                     enterprise: 'Custom'
                 },
                 {
+                    title: 'Phone OTP',
+                    free: '10 SMS / month',
+                    pro: '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>',
+                    scale: '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>',
+                    enterprise: 'Custom'
+                },
+                {
                     title: 'Teams',
                     free: '100 per project',
                     pro: 'Unlimited',
@@ -267,6 +275,27 @@
                     free: '750K / month',
                     pro: '3.5M / month',
                     scale: '3.5M / month',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'GB-hours',
+                    free: '100 GB-hour / month',
+                    pro: '1,000 GB-hour / month',
+                    scale: '1,000 GB-hour / month',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Additional GB-hours',
+                    free: '-',
+                    pro: '$0.09 per GB-hour',
+                    scale: '$0.09 per GB-hour',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Compute options',
+                    free: '0.5 CPU - 512MB RAM',
+                    pro: 'Up to 4 CPU, 4GB RAM',
+                    scale: 'Up to 4 CPU, 4GB RAM',
                     enterprise: 'Custom'
                 },
                 {
@@ -583,9 +612,12 @@
                                         <th class="text-caption font-medium">
                                             <div class="flex items-center gap-1 text-left">
                                                 {row.title}
-                                                <!-- {#if row.info}
+                                                {#if row.info}
                                                     <Tooltip placement="top">
-                                                        <span
+                                                        <button
+                                                            slot="asChild"
+                                                            let:trigger
+                                                            use:melt={trigger}
                                                             class="icon-info"
                                                             aria-hidden="true"
                                                         />
@@ -593,7 +625,7 @@
                                                             {row.info}
                                                         </svelte:fragment>
                                                     </Tooltip>
-                                                {/if} -->
+                                                {/if}
                                             </div>
                                         </th>
                                         {#each cols as col, index}
@@ -607,7 +639,7 @@
                                                 class:is-selected={col === tab}
                                             >
                                                 {#if typeof row[col] === 'string'}
-                                                    {row[col]}
+                                                    {@html row[col]}
                                                 {:else}
                                                     <img
                                                         class="mx-auto self-center"
