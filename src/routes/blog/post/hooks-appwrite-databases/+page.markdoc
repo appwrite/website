@@ -87,7 +87,7 @@ Database::addFilter(
 
 ## Step 3: Registering the hook functions
 
-Next, we attached these filters to specific hook points within Appwrite. For example, the `encrypt` filter we saw in the previous step had to be declared for each column (attribute) that needs to be encrypted in a table (collection) in AppwAppwrite'serlying MariaDB database, like the `secret` column in the `tokens` table in our [code example](https://github.com/appwrite/appwrite/blob/a49c3a33f0fd831423afa7a0b53df2c5d709fc2b/app/config/collections.php#L502):
+Next, we attached these filters to specific hook points within Appwrite. For example, the `encrypt` filter we saw in the previous step had to be declared for each column (attribute) that needs to be encrypted in a table (collection) in Appwrite's underlying MariaDB database, like the `secret` column in the `tokens` table in our [code example](https://github.com/appwrite/appwrite/blob/a49c3a33f0fd831423afa7a0b53df2c5d709fc2b/app/config/collections.php#L502):
 
 ```php
 .
