@@ -17,7 +17,7 @@ Over the past year, I have replaced most of these tools with VS Code extensions.
 
 In this article, I'll show you five VS Code extensions that can serve as alternatives to standalone development tools, plus a bonus that might save you a subscription. Let's explore how they work and when they make sense as replacements.
 
-## Thunder Client: An alternative to Postman
+# Thunder Client: An alternative to Postman
 
 So many people love Postman. It's a great tool for API development and testing. But it's also a separate application from our development environment, which might introduce unnecessary context switching.
 
@@ -37,7 +37,7 @@ Migration tips from experience:
 
 Thunder Client works well for API development and testing. Postman offers additional features like monitoring and mock servers, so consider your needs when choosing between them.
 
-## BlackBox AI: ChatGPT alternative for VS Code
+# BlackBox AI: ChatGPT alternative for VS Code
 
 If you've been going back and forth between ChatGPT and VS Code, [BlackBox AI](https://marketplace.visualstudio.com/items?itemName=Blackboxapp.blackbox) is another AI coding assistant that works directly in VS Code. It can help you with code suggestions, explanations, and improvements.
 Yes, Copilot exists and it's now free to an extent for many developers. So, you can either use that or BlackBox AI. But what makes BlackBox AI unique is that it functions out of the box and requires no signup. It also works great for almost any code-related tasks, including chat, code generation, suggestions and reviews.
@@ -46,7 +46,7 @@ Yes, Copilot exists and it's now free to an extent for many developers. So, you 
 
 One of the main advantages to ChatGPT is context awareness. BlackBox AI sees your whole project structure when making suggestions. It works well for developers who want AI assistance without leaving their editor.
 
-## Time Master: Alternative to Toggl and RescueTime
+# Time Master: Alternative to Toggl and RescueTime
 
 Many people use Toggl and RescueTime for time tracking. It's a way to understand how you spend your time and how productive you are. Freelancers might use it for client billing, and teams can track time for project estimates and resource allocation.
 
@@ -60,7 +60,7 @@ The extension recognizes different types of development work and categorizes eac
 
 Time Master lacks some features from the standalone apps - mobile apps, client billing, and detailed charts. But for pure development tracking, you might find it more useful than the other timers. Also, the fact that it's right in VS Code, and you don't have to do anything complex to start tracking is very useful.
 
-## Dendron: Alternative to Notion and Obsidian
+# Dendron: Alternative to Notion and Obsidian
 
 Knowledge management tools like Notion and Obsidian work well for general note-taking, but [Dendron](https://marketplace.visualstudio.com/items?itemName=dendron.dendron) takes a developer-first approach. Dendron is built specifically for managing technical knowledge. It handles everything from documentation to meeting notes right in VS Code.
 
@@ -73,7 +73,7 @@ The key difference from tools like Notion is that everything is plain markdown f
 **What you trade:** Notion's real-time collaboration and polish, Obsidian's graph visualizations.
 **What you gain:** Developer-focused features like note references (similar to code imports), mermaid diagrams, and math equations through KaTeX. Plus, everything stays fast even with thousands of notes.
 
-## GitDoc: Google Docs-style auto-saving for code
+# GitDoc: Google Docs-style auto-saving for code
 
 While not replacing a standalone app entirely, [GitDoc](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.gitdoc) transforms how code versioning works. It brings Google Docs-style automatic saving to your code; every save creates a git commit automatically.
 
@@ -98,7 +98,7 @@ The extension only commits error-free code by default, so you won't accidentally
 
 GitDoc doesn't try to replace full git clients. Instead, it makes version control feel more natural - just save your file and a version is preserved. When needed, you can still squash commits or undo changes using regular git commands.
 
-## Error Lens vs traditional error trackers
+# Error Lens vs traditional error trackers
 
 Many developers use Rollbar and Sentry to track and monitor application errors in production. These tools collect, aggregate, and help debug issues that users encounter.
 
@@ -116,7 +116,7 @@ Error Lens makes development errors more visible by:
 
 The immediate feedback loop can change your development patterns and help you fix problems during coding rather than having them show up in the console or in error dashboards later.
 
-## Making the switch
+# Making the switch
 
 Replacing standalone tools with VS Code extensions brings several advantages:
 
@@ -132,7 +132,7 @@ That said, consider these factors before making the switch:
 - **Performance impact**: While extensions generally use fewer resources than separate applications, too many extensions can slow down VS Code. Monitor performance and disable extensions you're not actively using.
 - **Backup plans**: Keep standalone alternatives available for critical tools. If an extension stops working or needs updates, you'll want a backup option.
 
-## Final thoughts
+# Final thoughts
 
 VS Code extensions have matured to the point where they can replace many standalone development tools.
 The benefits of a unified development environment often outweigh the limitations of extensions.
@@ -143,7 +143,7 @@ Choose the combination of tools that works best for your specific needs and work
 And if you haven't seen these [10 new Git commands](https://appwrite.io/blog/post/10-git-commands-you-should-start-using?dofollow=true) that make your workflow faster and more flexible, check them out [here](https://appwrite.io/blog/post/10-git-commands-you-should-start-using?dofollow=true),
 along with our article that compares [Deno 2 vs Bun](https://appwrite.io/blog/post/deno-vs-bun-javascript-runtime); choosing the right runtime can make a big difference in how your applications perform and scale.
 
-## More Resources
+# More Resources
 
 - [Building custom authentication flows with Appwrite](https://appwrite.io/blog/post/building-custom-auth-flows?dofollow=true)
 - [15 Git command line tips every developer should know](https://appwrite.io/blog/post/15-git-cli-tips?dofollow=true)
