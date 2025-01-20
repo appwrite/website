@@ -50,7 +50,7 @@
 
 <div
     class={classNames(
-        'gradient-background relative flex min-h-[60vh] items-center justify-center overflow-hidden',
+        'relative flex min-h-[60vh] items-center justify-center overflow-hidden',
         'before:absolute before:inset-0 before:top-0 before:left-0 before:-z-10 before:block before:h-full before:bg-[radial-gradient(circle_at_120%_-50%,_hsla(248,_99%,_70%,_0.3)_0,_transparent_40%)] before:blur-2xl',
         'after:absolute after:inset-0 after:top-0 after:right-0 after:-z-10 after:mt-auto after:mb-0 after:block after:h-full after:bg-[radial-gradient(circle_at_-15%_125%,_hsla(343,_98%,_60%,_0.2)_0px,_transparent_40%)] after:blur-2xl'
     )}

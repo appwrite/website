@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { classNames } from '$lib/utils/classnames';
+
     const templates = [
         {
             label: 'React templates',
@@ -40,11 +42,30 @@
     ];
 </script>
 
-<div class="light flex w-full items-center bg-[#EDEDF0] pl-36">
+<div
+    class={classNames(
+        'light border-smooth relative flex min-h-[60vh] w-full flex-nowrap items-center gap-4 overflow-hidden border-t border-dashed bg-[#EDEDF0] pl-36',
+        'before:absolute before:inset-0 before:top-0 before:left-0 before:block before:h-full before:bg-[radial-gradient(circle_at_120%_-50%,_hsla(248,_99%,_70%,_0.4)_0,_transparent_40%)]',
+        'after:absolute after:inset-0 after:top-0 after:right-0 after:mt-auto after:mb-0 after:block after:h-full after:bg-[radial-gradient(circle_at_-15%_125%,_hsla(343,_98%,_60%,_0.4)_0px,_transparent_40%)]'
+    )}
+>
     {#each templates as template}
-        <div class="flex-[33vw]">
-            <div class="text-center">{@html template.icon}</div>
-            <div class="text-center">{template.label}</div>
+        <div class="relative z-5 basis-[33vw] rounded-2xl bg-white/90 p-2 drop-shadow-xl">
+            <div
+                style:--height="11.25rem"
+                class="border-smooth relative z-5 flex h-[var(--height)] w-full grow items-center justify-center rounded-xl border bg-[#EDEDF0] bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:44px_44px]"
+            >
+                <div
+                    class="relative z-20 flex size-[5.375rem] items-center justify-center rounded-xl bg-white/90 p-4 drop-shadow-2xl"
+                >
+                    {@html template.icon}
+                </div>
+            </div>
+
+            <div class="text-primary flex items-center justify-between pt-3 px-2 pb-1">
+                <span class="text-body font-medium">{template.label}</span>
+                <span class="web-icon-arrow-right -rotate-45" />
+            </div>
         </div>
     {/each}
 </div>
