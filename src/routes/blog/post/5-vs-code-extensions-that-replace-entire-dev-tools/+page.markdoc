@@ -21,7 +21,7 @@ In this article, I'll show you five VS Code extensions that can serve as alterna
 
 So many people love Postman. It's a great tool for API development and testing. But it's also a separate application from our development environment, which might introduce unnecessary context switching.
 
-With the VSCode [Thunder Client extension](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client), you can replace Postman with a comparable experience directly within your development environment. Thunder Client is a lightweight alternative to Postman. It also has features like Collections, CI/CD integration, local storage and Git Sync.
+With the VS Code [Thunder Client extension](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client), you can replace Postman with a comparable experience directly within your development environment. Thunder Client is a lightweight alternative to Postman. It also has features like Collections, CI/CD integration, local storage and Git Sync.
 
 And for Postman users, the familiar interface makes the transition straightforward.
 
