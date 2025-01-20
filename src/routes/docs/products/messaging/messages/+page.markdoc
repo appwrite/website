@@ -152,6 +152,18 @@ Here are the different components that make up a message.
 * optional
 * Sets the number to display next to the app's icon, indicating the number of notifications or updates. Setting to 0 removes any existing badge. This is for Apple devices only.
 ---
+* `contentAvailable`
+* optional
+* For iOS devices only. When set, wakes up the app in the background without showing a notification. Used to update app data remotely. Requires priority to be set to normal. **Note:** APNS may throttle if sending more than 2-3 background notifications per hour. For Android, similar functionality can be achieved by sending a data-only notification without title and body.
+---
+* `critical`
+* optional
+* For iOS devices only. Marks the notification as critical to bypass silent and do not disturb settings. Requires the app to have the critical notification entitlement from Apple.
+---
+* `priority`
+* optional
+* Sets notification priority to normal or high. Normal priority delivers at the most convenient time based on battery life and may group notifications. High priority delivers immediately.
+---
 * `draft`
 * optional
 * If the message is a draft, can be `true` or `false`.
@@ -251,6 +263,9 @@ const message = await messaging.createPush(
         '[COLOR]',                               // color (optional)
         '[TAG]',                                 // tag (optional)
         '[BADGE]',                               // badge (optional)
+        false,                                   // contentAvailable (optional)
+        false,                                   // critical (optional)
+        'normal',                                // priority (optional)
         true,                                    // draft (optional)
         ''                                       // scheduledAt (optional)
     );
@@ -283,6 +298,9 @@ const message = await messaging.createPush(
         '[COLOR]',                               // color (optional)
         '[TAG]',                                 // tag (optional)
         '[BADGE]',                               // badge (optional)
+        false,                                   // contentAvailable (optional)
+        false,                                   // critical (optional)
+        'normal',                                // priority (optional)
         true,                                    // draft (optional)
         ''                                       // scheduledAt (optional)
     );
@@ -317,6 +335,9 @@ $result = $messaging->createPush(
     color: '[COLOR]',                             // optional
     tag: '[TAG]',                                 // optional
     badge: '[BADGE]',                             // optional
+    contentAvailable: false,                      // optional
+    critical: false,                              // optional
+    priority: 'normal',                           // optional
     draft: true,                                  // optional
     scheduledAt: ''                               // optional
 );
@@ -349,6 +370,9 @@ result = messaging.create_push(
     color = '[COLOR]',                          # optional
     tag = '[TAG]',                              # optional
     badge = '[BADGE]',                          # optional
+    content_available = False,                  # optional
+    critical = False,                           # optional
+    priority = 'normal',                        # optional
     draft = True,                               # optional
     scheduled_at = ''                           # optional
 )
@@ -379,6 +403,9 @@ response = messaging.create_push(
     color: '[COLOR]',                             # optional
     tag: '[TAG]',                                 # optional
     badge: '[BADGE]',                             # optional
+    content_available: false,                     # optional
+    critical: false,                              # optional
+    priority: 'normal',                           # optional
     draft: true,                                  # optional
     scheduled_at: ''                              # optional
 )
@@ -400,19 +427,23 @@ var messaging = new Messaging(client);
 Message result = await messaging.CreatePush(
     messageId: "[MESSAGE_ID]",
     title: "[TITLE]",
-    body: "[BODY]"    
-    topics: new List<string> {}                   // optional    
-    users: new List<string> {}                    // optional    
-    targets: new List<string> {}                  // optional    
-    data: [object]                                // optional    
-    action: "[ACTION]"                            // optional    
-    icon: "[ICON]"                                // optional    
-    sound: "[SOUND]"                              // optional    
-    color: "[COLOR]"                              // optional    
-    tag: "[TAG]"                                  // optional    
-    badge: "[BADGE]"                              // optional    
-    draft: true                                   // optional    
-    scheduledAt: "");                             // optional
+    body: "[BODY]"
+    topics: new List<string> {},                   // optional
+    users: new List<string> {},                    // optional
+    targets: new List<string> {},                  // optional
+    data: [object]                                 // optional
+    action: "[ACTION]",                            // optional
+    icon: "[ICON]",                                // optional
+    sound: "[SOUND]",                              // optional
+    color: "[COLOR]",                              // optional
+    tag: "[TAG]",                                  // optional
+    badge: "[BADGE]",                              // optional
+    contentAvailable: false,                       // optional
+    critical: false,                               // optional
+    priority: "normal",                            // optional
+    draft: true,                                   // optional
+    scheduledAt: ""                                // optional
+);
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -443,6 +474,9 @@ void main() async {                               // Init SDK
     color: '[COLOR]',                            // optional
     tag: '[TAG]',                                // optional
     badge: '[BADGE]',                            // optional
+    content_available: false,                    // optional
+    critical: false,                             // optional
+    priority: 'normal',                          // optional
     draft: true,                                 // optional
     scheduledAt: '',                             // optional
   );
@@ -555,6 +589,9 @@ let message = try await messaging.createPush(
   color: "[COLOR]",                              // optional
   tag: "[TAG]",                                  // optional
   badge: "[BADGE]",                              // optional
+  content_available: false,                      // optional
+  critical: false,                               // optional
+  priority: "normal",                            // optional
   draft: true,                                   // optional
   scheduledAt: ""                                // optional
 )
