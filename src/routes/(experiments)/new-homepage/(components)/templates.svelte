@@ -44,28 +44,38 @@
 
 <div
     class={classNames(
-        'light border-smooth relative flex min-h-[60vh] w-full flex-nowrap items-center gap-4 overflow-hidden border-t border-dashed bg-[#EDEDF0] pl-36',
+        'light border-smooth relative flex min-h-[60vh] w-full flex-col gap-4 overflow-hidden border-t border-dashed bg-[#EDEDF0] py-20',
         'before:absolute before:inset-0 before:top-0 before:left-0 before:block before:h-full before:bg-[radial-gradient(circle_at_120%_-50%,_hsla(248,_99%,_70%,_0.4)_0,_transparent_40%)]',
         'after:absolute after:inset-0 after:top-0 after:right-0 after:mt-auto after:mb-0 after:block after:h-full after:bg-[radial-gradient(circle_at_-15%_125%,_hsla(343,_98%,_60%,_0.4)_0px,_transparent_40%)]'
     )}
 >
-    {#each templates as template}
-        <div class="relative z-5 basis-[33vw] rounded-2xl bg-white/90 p-2 drop-shadow-xl">
-            <div
-                style:--height="11.25rem"
-                class="border-smooth relative z-5 flex h-[var(--height)] w-full grow items-center justify-center rounded-xl border bg-[#EDEDF0] bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:44px_44px]"
-            >
+    <div class="container mb-10 flex items-end justify-between">
+        <h2 class="text-title text-primary font-aeonik-pro">
+            Get started with our template collection<span class="text-accent">_</span>
+        </h2>
+        <p class="text-secondary">
+            Start building with one of Appwrite’s templates with quick setup and self-hosting.
+        </p>
+    </div>
+    <div class="flex flex-nowrap gap-4 pl-36">
+        {#each templates as template}
+            <div class="relative z-5 basis-[33vw] rounded-2xl bg-white/90 p-2 drop-shadow-xl">
                 <div
-                    class="relative z-20 flex size-[5.375rem] items-center justify-center rounded-xl bg-white/90 p-4 drop-shadow-2xl"
+                    style:--height="11.25rem"
+                    class="border-smooth relative z-5 flex h-[var(--height)] w-full grow items-center justify-center rounded-xl border bg-[#EDEDF0] bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:44px_44px]"
                 >
-                    {@html template.icon}
+                    <div
+                        class="relative z-20 flex size-[5.375rem] items-center justify-center rounded-xl bg-white/90 p-4 drop-shadow-2xl"
+                    >
+                        {@html template.icon}
+                    </div>
+                </div>
+
+                <div class="text-primary flex items-center justify-between pt-3 px-2 pb-1">
+                    <span class="text-body font-medium">{template.label}</span>
+                    <span class="web-icon-arrow-right -rotate-45" />
                 </div>
             </div>
-
-            <div class="text-primary flex items-center justify-between pt-3 px-2 pb-1">
-                <span class="text-body font-medium">{template.label}</span>
-                <span class="web-icon-arrow-right -rotate-45" />
-            </div>
-        </div>
-    {/each}
+        {/each}
+    </div>
 </div>
