@@ -35,6 +35,10 @@
     const categories = getValidCategories();
     const posts = getContext<PostsData[]>('posts');
 
+    if (callToAction === undefined) {
+        callToAction = true;
+    }
+
     function getValidCategories() {
         if (!category) return undefined;
         const cats = category.split(',');
