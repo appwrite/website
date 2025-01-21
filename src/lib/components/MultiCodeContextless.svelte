@@ -86,10 +86,17 @@
         </div>
     </header>
     <div
-        class="web-code-snippet-content"
+        class="web-code-snippet-content overflow-auto"
         style={`height: ${height ? height / 16 + 'rem' : 'inherit'}`}
     >
         <!-- eslint-disable-next-line svelte/no-at-html-tags -->
         {@html result}
     </div>
 </section>
+
+<style>
+    /* system breaks the corners */
+    .overflow-auto::-webkit-scrollbar {
+        display: none;
+    }
+</style>
