@@ -473,7 +473,7 @@ void main() async {                               // Init SDK
     sound: '[SOUND]',                            // optional
     color: '[COLOR]',                            // optional
     tag: '[TAG]',                                // optional
-    badge: 1,                                     // optional
+    badge: 1,                                    // optional
     content_available: false,                    // optional
     critical: false,                             // optional
     priority: 'normal',                          // optional
