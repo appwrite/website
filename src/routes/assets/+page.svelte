@@ -347,7 +347,7 @@
                                     <h3 class="text-label">Dark Grey</h3>
                                     <p class="text-caption">#19191D</p>
                                     <div class="buttons">
-                                        <Copy toCopy="#19191D" />
+                                        <Copy toCopy="#19191D" variant="dark" />
                                     </div>
                                 </div>
                                 <div
@@ -358,7 +358,7 @@
                                     <h3 class="text-label">Appwrite Pink</h3>
                                     <p class="text-caption">#FD366E</p>
                                     <div class="buttons">
-                                        <Copy toCopy="#FD366E" />
+                                        <Copy toCopy="#FD366E" variant="pink" />
                                     </div>
                                 </div>
                             </div>
@@ -611,7 +611,6 @@
             gap: 0.5rem;
 
             position: absolute;
-            right: 1rem;
             bottom: 1rem;
 
             &.visuals {
