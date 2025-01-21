@@ -68,20 +68,6 @@
             title: 'Platform',
             rows: [
                 {
-                    title: 'Number of projects',
-                    free: 'Unlimited',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited',
-                    enterprise: 'Unlimited'
-                },
-                {
-                    title: 'Projects pausing',
-                    free: 'Never',
-                    pro: 'Never',
-                    scale: 'Never',
-                    enterprise: 'Never'
-                },
-                {
                     title: 'Organization Members',
                     free: '1',
                     pro: '1',
@@ -98,13 +84,6 @@
                 {
                     title: 'Connected websites and apps',
                     free: '3 per project',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited',
-                    enterprise: 'Unlimited'
-                },
-                {
-                    title: 'Custom domains',
-                    free: 'Unlimited',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
