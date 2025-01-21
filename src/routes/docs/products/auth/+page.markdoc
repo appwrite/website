@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Authentication
-description: Get started with Appwrite Authentication. Our guide will help you to implement secure & robust user authentication, manage user identities, and more.
+description: Get started with Appwrite Authentication. Learn how to implement secure & robust user authentication, manage user identities, and more.
 back: /docs
 ---
 
