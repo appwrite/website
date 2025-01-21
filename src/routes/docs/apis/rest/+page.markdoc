@@ -1,7 +1,7 @@
 ---
 layout: article
 title: REST
-description: Learn how to handle file uploads, manage file versions, and ensure secure downloads in your applications. All made effortless with Appwrite Storage.
+description: Discover the Appwrite REST API for building robust and scalable applications. Access detailed documentation on REST endpoints, authentication, and data management
 ---
 
 Appwrite supports multiple protocols for accessing the server, including [REST](/docs/apis/rest), [GraphQL](/docs/apis/graphql), and [Realtime](/docs/apis/realtime). The REST API allows you to access your Appwrite server through HTTP requests without the needing an SDK. Each endpoint in the API represents a specific operation on a specific resource.
