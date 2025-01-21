@@ -117,12 +117,12 @@ Here are the different components that make up a message.
 * The title of the push notification. This is the headline text that recipients see first.
 ---
 * `title`
-* required
-* The title of the push notification. This is the headline text that recipients see first.
+* optional
+* The title of the push notification. This is the headline text that recipients see first. Can be omitted for background notifications.
 ---
 * `body`
-* required
-* The main content or body of the push notification. Provides the details or message you want to convey.
+* optional
+* The main content or body of the push notification. Provides the details or message you want to convey. Can be omitted for background notifications.
 ---
 * `data`
 * optional
@@ -150,7 +150,7 @@ Here are the different components that make up a message.
 ---
 * `badge`
 * optional
-* Sets the number to display next to the app's icon, indicating the number of notifications or updates. Setting to 0 removes any existing badge. This is for Apple devices only.
+* Sets the number to display next to the app's icon, indicating the number of notifications or updates. Setting to 0 removes any existing badge. Must be an integer. For Apple devices only.
 ---
 * `contentAvailable`
 * optional
@@ -262,7 +262,7 @@ const message = await messaging.createPush(
         '[SOUND]',                               // sound (optional)
         '[COLOR]',                               // color (optional)
         '[TAG]',                                 // tag (optional)
-        '[BADGE]',                               // badge (optional)
+        1,                                       // badge (optional)
         false,                                   // contentAvailable (optional)
         false,                                   // critical (optional)
         'normal',                                // priority (optional)
@@ -297,7 +297,7 @@ const message = await messaging.createPush(
         '[SOUND]',                               // sound (optional)
         '[COLOR]',                               // color (optional)
         '[TAG]',                                 // tag (optional)
-        '[BADGE]',                               // badge (optional)
+        1,                                       // badge (optional)
         false,                                   // contentAvailable (optional)
         false,                                   // critical (optional)
         'normal',                                // priority (optional)
@@ -334,7 +334,7 @@ $result = $messaging->createPush(
     sound: '[SOUND]',                             // optional
     color: '[COLOR]',                             // optional
     tag: '[TAG]',                                 // optional
-    badge: '[BADGE]',                             // optional
+    badge: 1,                                     // optional
     contentAvailable: false,                      // optional
     critical: false,                              // optional
     priority: 'normal',                           // optional
@@ -369,7 +369,7 @@ result = messaging.create_push(
     sound = '[SOUND]',                          # optional
     color = '[COLOR]',                          # optional
     tag = '[TAG]',                              # optional
-    badge = '[BADGE]',                          # optional
+    badge = 1,                                    // optional
     content_available = False,                  # optional
     critical = False,                           # optional
     priority = 'normal',                        # optional
@@ -437,7 +437,7 @@ Message result = await messaging.CreatePush(
     sound: "[SOUND]",                              // optional
     color: "[COLOR]",                              // optional
     tag: "[TAG]",                                  // optional
-    badge: "[BADGE]",                              // optional
+    badge: 1,                                      // optional
     contentAvailable: false,                       // optional
     critical: false,                               // optional
     priority: "normal",                            // optional
@@ -473,7 +473,7 @@ void main() async {                               // Init SDK
     sound: '[SOUND]',                            // optional
     color: '[COLOR]',                            // optional
     tag: '[TAG]',                                // optional
-    badge: '[BADGE]',                            // optional
+    badge: 1,                                     // optional
     content_available: false,                    // optional
     critical: false,                             // optional
     priority: 'normal',                          // optional
@@ -514,7 +514,7 @@ messaging.createPush(
     "[SOUND]",                                    // sound (optional)
     "[COLOR]",                                    // color (optional)
     "[TAG]",                                      // tag (optional)
-    "[BADGE]",                                    // badge (optional)
+    1,                                            // badge (optional)
     true,                                         // draft (optional)
     ""                                            // scheduledAt (optional)
     new CoroutineCallback<>((result, error) -> {
@@ -552,7 +552,7 @@ messaging.createPush(
     "[SOUND]",                                    // sound (optional)
     "[COLOR]",                                    // color (optional)
     "[TAG]",                                      // tag (optional)
-    "[BADGE]",                                    // badge (optional)
+    1,                                            // badge (optional)
     true,                                         // draft (optional)
     ""                                            // scheduledAt (optional)
     new CoroutineCallback<>((result, error) -> {
@@ -588,7 +588,7 @@ let message = try await messaging.createPush(
   sound: "[SOUND]",                              // optional
   color: "[COLOR]",                              // optional
   tag: "[TAG]",                                  // optional
-  badge: "[BADGE]",                              // optional
+  badge: 1,                                      // optional
   content_available: false,                      // optional
   critical: false,                               // optional
   priority: "normal",                            // optional
@@ -762,14 +762,14 @@ var messaging = new Messaging(client);
 Message result = await messaging.CreateEmail(
     messageId: "[MESSAGE_ID]",
     subject: "[SUBJECT]",
-    content: "[CONTENT]"    
-    topics: new List<string> {}                   // optional    
-    users: new List<string> {}                    // optional    
-    targets: new List<string> {}                  // optional    
-    cc: new List<string> {}                       // optional    
-    bcc: new List<string> {}                      // optional    
-    draft: true                                   // optional    
-    html: false                                   // optional    
+    content: "[CONTENT]"
+    topics: new List<string> {}                   // optional
+    users: new List<string> {}                    // optional
+    targets: new List<string> {}                  // optional
+    cc: new List<string> {}                       // optional
+    bcc: new List<string> {}                      // optional
+    draft: true                                   // optional
+    html: false                                   // optional
     scheduledAt: "");                             // optional
 ```
 ```dart
@@ -1046,11 +1046,11 @@ var messaging = new Messaging(client);
 
 Message result = await messaging.CreateSMS(
     messageId: "[MESSAGE_ID]",
-    content: "[CONTENT]"    
-    topics: new List<string> {}                   // optional    
-    users: new List<string> {}                    // optional    
-    targets: new List<string> {}                  // optional    
-    draft: true                                   // optional    
+    content: "[CONTENT]"
+    topics: new List<string> {}                   // optional
+    users: new List<string> {}                    // optional
+    targets: new List<string> {}                  // optional
+    draft: true                                   // optional
     scheduledAt: "");                             // optional
 ```
 ```dart
