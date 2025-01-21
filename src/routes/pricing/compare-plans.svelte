@@ -69,20 +69,6 @@
             title: 'Platform',
             rows: [
                 {
-                    title: 'Number of projects',
-                    free: 'Unlimited',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited',
-                    enterprise: 'Unlimited'
-                },
-                {
-                    title: 'Projects pausing',
-                    free: 'Never',
-                    pro: 'Never',
-                    scale: 'Never',
-                    enterprise: 'Never'
-                },
-                {
                     title: 'Organization Members',
                     free: '1',
                     pro: '1',
@@ -99,13 +85,6 @@
                 {
                     title: 'Connected websites and apps',
                     free: '3 per project',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited',
-                    enterprise: 'Unlimited'
-                },
-                {
-                    title: 'Custom domains',
-                    free: 'Unlimited',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
@@ -293,9 +272,9 @@
                 },
                 {
                     title: 'Compute options',
-                    free: '0.5 CPU - 512MB RAM',
-                    pro: 'Up to 4 CPU, 4GB RAM',
-                    scale: 'Up to 4 CPU, 4GB RAM',
+                    free: '0.5 CPUs - 512MB RAM',
+                    pro: 'Up to 4 CPUs - 4GB RAM',
+                    scale: 'Up to 4 CPUs - 4GB RAM',
                     enterprise: 'Custom'
                 },
                 {
