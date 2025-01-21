@@ -1,4 +1,36 @@
-<script>
+<script lang="ts">
+    const plans: Array<{
+        name: string;
+        price: string;
+        description: string;
+        label?: string;
+        subtitle?: string;
+    }> = [
+        {
+            name: 'Free',
+            price: '$0',
+            description: 'For personal hobby projects and students.'
+        },
+        {
+            name: 'Pro',
+            price: '$15',
+            label: 'Popular',
+            description: 'For pro developers and teams that need to scale their products.',
+            subtitle: 'per member/month'
+        },
+        {
+            name: 'Scale',
+            price: '$599',
+            description: 'For pro developers and teams that need to scale their products.',
+            subtitle: 'per organization/month'
+        },
+        {
+            name: 'Enterprise',
+            price: 'Custom',
+            description: 'For pro developers and teams that need to scale their products.',
+            subtitle: 'per organization/month'
+        }
+    ];
 </script>
 
 <div class="relative flex min-h-[60vh] items-center justify-center">
@@ -9,7 +41,7 @@
         />
 
         <div
-            class="animate-fade-in justify-between[animation-delay:150ms] relative flex w-full items-center [animation-duration:1000ms]"
+            class="animate-fade-in relative flex w-full items-center justify-between [animation-delay:150ms] [animation-duration:1000ms]"
         >
             <h2 class="text-sub-display text-primary font-aeonik-pro max-w-xl text-pretty">
                 Start building like a team of hundreds today<span class="text-accent">_</span>
@@ -22,10 +54,27 @@
         </div>
 
         <div
-            class="border-smooth divide grid h-40 w-full grid-cols-1 place-items-center divide-x divide-dashed rounded-xl border bg-white/2 backdrop-blur-lg md:grid-cols-2 lg:grid-cols-4"
+            class="border-smooth divide-smooth grid w-full grid-cols-1 place-content-center place-items-center gap-8 divide-dashed rounded-xl border bg-white/2 py-10 backdrop-blur-lg md:grid-cols-2 lg:grid-cols-4"
         >
-            {#each Array.from({ length: 4 }) as _}
-                <div class="">Item</div>
+            {#each plans as { name, price, label, subtitle, description }}
+                <div class="flex min-h-48 w-full flex-col gap-1 px-8">
+                    <div class="flex items-center gap-4">
+                        <span class="text-description text-secondary">{name}</span>
+                        {#if label}
+                            <span
+                                class="bg-accent-200 text-caption rounded-lg py-0.5 px-1.5 font-medium text-white"
+                                >{label}</span
+                            >
+                        {/if}
+                    </div>
+                    <div class="flex flex-1 flex-col">
+                        <span class="text-title font-aeonik-pro text-primary">{price}</span>
+                        {#if subtitle}
+                            <span class="text-caption text-secondary">{subtitle}</span>
+                        {/if}
+                        <p class="text-caption text-secondary mt-auto mb-0 block">{description}</p>
+                    </div>
+                </div>
             {/each}
         </div>
     </div>
