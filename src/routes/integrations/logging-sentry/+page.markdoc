@@ -1,7 +1,7 @@
 ---
 layout: integration
 title: Logging with Sentry
-description: Connect Sentry to your self-hosted Appwrite instance for improved error-tracking, logging, and overall reliability of your application.e
+description: Connect Sentry to your self-hosted Appwrite instance for improved error-tracking, logging, and overall reliability of your application.
 date: 2024-07-30
 featured: false
 isPartner: true
