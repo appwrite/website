@@ -1,4 +1,5 @@
 <script>
+    import Bento from './(components)/bento/bento.svelte';
     import CaseStudies from './(components)/case-studies.svelte';
     import Features from './(components)/features.svelte';
     import Hero from './(components)/hero.svelte';
@@ -10,6 +11,7 @@
 
 <Hero />
 <Platforms />
+<Bento />
 <CaseStudies />
 <Features />
 <NetworkMap />

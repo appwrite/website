@@ -15,7 +15,6 @@
     import Net from '../(assets)/icons/net.svg';
     import Go from '../(assets)/icons/go.svg';
     import React from '../(assets)/icons/react.svg';
-    import { Tooltip } from '$lib/components';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import Noise from '$lib/components/fancy/noise.svelte';
 
