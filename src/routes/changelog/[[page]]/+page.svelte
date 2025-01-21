@@ -13,7 +13,7 @@
 
     const seo = {
         title: 'Changelog' + TITLE_SUFFIX,
-        description: DEFAULT_DESCRIPTION,
+        description: "Every day we're working hard to make Appwrite an even better platform. Explore our changelog to stay on top of all the updates and track our journey.",
         ogImage: `${DEFAULT_HOST}/images/open-graph/website.png`
     };
 

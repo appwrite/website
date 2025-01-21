@@ -18,7 +18,7 @@
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     const title = 'Functions' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description = "Appwrite Functions offers everything you need to deploy and scale serveless functions easily and without any server management overhead.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
