@@ -21,7 +21,13 @@
             </div>
         </div>
 
-        <div class="border-smooth h-40 w-full rounded-xl border bg-white/2 backdrop-blur-lg"></div>
+        <div
+            class="border-smooth divide grid h-40 w-full grid-cols-1 place-items-center divide-x divide-dashed rounded-xl border bg-white/2 backdrop-blur-lg md:grid-cols-2 lg:grid-cols-4"
+        >
+            {#each Array.from({ length: 4 }) as _}
+                <div class="">Item</div>
+            {/each}
+        </div>
     </div>
 </div>
 
