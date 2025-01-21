@@ -205,7 +205,7 @@
 
                                                 <div class="relative">
                                                     <select
-                                                        class="web-input-text"
+                                                        class="web-input-text w-full appearance-none"
                                                         id="companySize"
                                                         bind:value={companySize}
                                                     >
@@ -219,7 +219,7 @@
                                                         <option>5000+ employees</option>
                                                     </select>
                                                     <span
-                                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-2 right-2"
+                                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
                                                         aria-hidden="true"
                                                     ></span>
                                                 </div>
@@ -248,7 +248,7 @@
                                                 >
                                                 <div class="relative">
                                                     <select
-                                                        class="web-input-text"
+                                                        class="web-input-text w-full appearance-none"
                                                         id="integration"
                                                         bind:value={integrationStatus}
                                                         on:change={(e) =>
@@ -270,7 +270,7 @@
                                                         >
                                                     </select>
                                                     <span
-                                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-2 right-2"
+                                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
                                                         aria-hidden="true"
                                                     ></span>
                                                 </div>
