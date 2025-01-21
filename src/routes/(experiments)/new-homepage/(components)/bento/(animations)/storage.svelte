@@ -15,8 +15,7 @@
     import Go from '../../../(assets)/icons/go.svg';
     import React from '../../../(assets)/icons/react.svg';
     import { onMount, onDestroy } from 'svelte';
-    import { flip } from 'svelte/animate';
-    import { quadInOut } from 'svelte/easing';
+    // import { Motion, MotionConfig, AnimatePresence } from 'svelte-motion';
 
     const platforms = [
         Python,
@@ -43,43 +42,16 @@
         'DeleteAccount',
         'CreateInvoice'
     ];
-
-    let intervalId: NodeJS.Timeout | null = null;
-
-    const cycleCommands = () => {
-        if (commands.length === 0) {
-            return;
-        }
-
-        intervalId = setInterval(() => {
-            const firstItem = commands.shift();
-            if (firstItem !== undefined) {
-                commands.push(firstItem);
-            }
-
-            commands = [...commands];
-        }, 2000);
-    };
-    onMount(() => {
-        cycleCommands();
-    });
-
-    onDestroy(() => {
-        if (intervalId) {
-            clearInterval(intervalId);
-        }
-    });
 </script>
 
 <div
-    class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-7"
+    class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-5"
 >
     <div class="space-y-3 pt-2 px-3 pb-4">
-        <h3 class="font-aeonik-pro text-label text-primary">Functions</h3>
+        <h3 class="font-aeonik-pro text-label text-primary">Storage</h3>
         <p class="text-sub-body text-primary max-w-lg font-medium">
-            Deploy and scale serverless functions <span class="text-secondary"
-                >in 30+ secure, isolated runtimes in 13 languages.</span
-            >
+            <span class="text-secondary">Securely store files with</span> advanced compression, encryption
+            and image transformations.
         </p>
     </div>
     <div
@@ -88,37 +60,13 @@
         <div
             class="flex flex-1 flex-col items-center gap-3 text-center [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
         >
-            {#each commands as command (command)}
+            {#each commands as command}
                 <span
-                    class="text-caption border-smooth w-fit rounded-2xl border bg-[#232325]/90 py-1 px-3 font-mono text-sm text-white"
-                    animate:flip={{
-                        easing: quadInOut,
-                        duration: 500
-                    }}
+                    class="w-fit rounded-2xl bg-[#232325]/90 py-2 px-4 font-mono text-sm text-white"
+                    >{command}</span
                 >
-                    {command}
-                </span>
             {/each}
         </div>
-
-        <svg width="150" height="2" class="mr-2 -ml-20">
-            <defs>
-                <linearGradient id="movingGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" style="stop-color:white; stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:white; stop-opacity:0" />
-                </linearGradient>
-            </defs>
-
-            <rect width="175" height="2" fill="url(#movingGradient)">
-                <animate
-                    attributeName="x"
-                    from="175"
-                    to="-175"
-                    dur="2.1s"
-                    repeatCount="indefinite"
-                />
-            </rect>
-        </svg>
 
         <div
             class="flex h-full gap-4 [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
