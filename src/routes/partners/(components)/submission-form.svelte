@@ -141,9 +141,9 @@
                         {#if error}
                             {error}
                         {/if}
-                        This form is protected by reCAPTCHA, and the Google
+                        <!--This form is protected by reCAPTCHA, and the Google
                         <a href="/privacy" class="web-link">Privacy Policy</a> and
-                        <a href="/terms" class="web-link">Terms of Service</a> apply.
+                        <a href="/terms" class="web-link">Terms of Service</a> apply.-->
                     </p>
                     <button
                         type="submit"
