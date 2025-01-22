@@ -10,7 +10,9 @@
         {
             name: 'David Forster',
             copy: `We really loved working with Appwrite for launching our bootstrapped "Open Mind" App. I am still surprised how easy the implementation into Flutter was.`,
-            image: '/images/testimonials/david-forster.png'
+            image: '/images/testimonials/david-forster.png',
+            title: 'Founder',
+            company: 'Open Mind'
         },
         {
             name: 'Marius Bolik',
