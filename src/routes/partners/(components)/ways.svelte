@@ -5,15 +5,14 @@
         {
             title: 'Experts',
             description:
-                'For agencies, consultancies, and system integrators obsessed with productivity and performance. Partner with Vercel to deliver state-of-the-art digital experiences and redefine web development today.',
-            href: '/',
-            label: 'Find an Expert'
+                'For agencies, consultancies, freelancers, and integrators who want to provide a scalable backend solution for their clients. Partner with Appwrite to provide a highly custom solution with the newest technology.',
+            label: 'Coming Soon'
         },
         {
             title: 'Integrations',
             description:
-                'For innovative software companies striving to create solutions that integrate seamlessly with our platform. Partner with Vercel to build and enhance performant user experiences across the Web.',
-            href: '/',
+                'For innovative software companies striving to create solutions that integrate seamlessly with our platform. Partner with Appwrite to create a better developer experience.',
+            href: '/integrations',
             label: 'Find an Integration'
         }
     ];
@@ -26,7 +25,11 @@
             <GradientBorderCard class="flex flex-col gap-5 p-8">
                 <h2 class="text-primary font-aeonik-pro text-label font-medium">{item.title}</h2>
                 <p class="text-secondary text-body font-medium">{item.description}</p>
-                <a href={item.href} class="web-button is-secondary mt-3">{item.label}</a>
+                {#if item.href}
+                    <a href={item.href} class="web-button is-secondary mt-3">{item.label}</a>
+                {:else}
+                    <button class="web-button is-secondary mt-3">{item.label}</button>
+                {/if}
             </GradientBorderCard>
         {/each}
     </div>

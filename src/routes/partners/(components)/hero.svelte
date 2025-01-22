@@ -20,13 +20,17 @@
                 Boost businesses with Appwrite<span class="text-accent">_</span>
             </h1>
             <p class="text-description text-secondary text-pretty font-medium">
-                Join the Appwrite Partner program to unlock growth opportunities with tools,
-                resources, and support to boost revenue and expand your reach.
+                Join the Appwrite Partners program and grow your business. Deliver powerful
+                solutions to clients, increase revenue, and expand your reach.
             </p>
 
             <div class="flex flex-col items-center gap-2 md:flex-row">
-                <a href="/" class="web-button is-secondary !w-full md:!w-fit">Find an expert</a>
-                <a href="/" class="web-button is-secondary !w-full md:!w-fit">Become a partner</a>
+                <button class="web-button is-secondary !w-full md:!w-fit"
+                    >Find an expert soon</button
+                >
+                <a href="#become-a-partner" class="web-button is-secondary !w-full md:!w-fit"
+                    >Become a partner</a
+                >
             </div>
         </div>
         <Puzzle />
