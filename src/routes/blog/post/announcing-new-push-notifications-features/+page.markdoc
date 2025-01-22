@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Announcing new features for Push Notifications
-description: ''
+description: 'Appwrite Messaging now supports background updates, critical alerts, and priority controls for push notifications.'
 date: 2025-01-22
 cover: /images/blog/announcing-new-push-notifications-features/cover.png
 timeToRead: 5
@@ -9,11 +9,14 @@ author: jake-barnby
 category: OSS
 ---
 
-We're excited to introduce new additions to Appwrite Messaging that give you greater control over how you send and handle push notifications in your app. The push notification API now affords you finer control over both how and when your notifications are delivered. You can run background updates silently, send critical alerts that bypass Do Not Disturb, and manage delivery priorities. These changes enable you to handle common scenarios - such as data syncs, urgent alerts, and battery-conscious updates more effectively.
+We're excited to introduce new additions to Appwrite Messaging that give you greater control over how you send and handle push notifications in your app.
+The push notification API now affords you finer control over both how and when your notifications are delivered.
+You can run background updates silently, send critical alerts that bypass Do Not Disturb, and manage delivery priorities.
+These changes enable you to handle common scenarios - such as data syncs, urgent alerts, and battery-conscious updates more effectively.
 
-# What's new
+Here's a quick overview of the new features:
 
-## Background updates (iOS)
+# Background updates (iOS)
 
 We're now supporting Apple's background notifications through the `contentAvailable` parameter. This lets your iOS app process updates in the background without displaying notifications to users. Background notifications are useful for data syncs, content updates, and state changes that don't require user interaction.
 
@@ -21,16 +24,16 @@ When you set `contentAvailable`, your app wakes up in the background to handle t
 
 A few things to keep in mind when using background notifications:
 
--   You'll need to configure your app to handle background processing using [Background Modes](https://developer.apple.com/documentation/xcode/configuring-background-execution-modes) in Xcode
--   Set the notification priority to normal to ensure proper background delivery
--   Apple limits background notifications to about 2-3 per hour to preserve battery life
--   For Android users, you can achieve similar functionality by sending a data-only notification (just omit the title and body)
+-   You'll need to configure your app to handle background processing using [Background Modes](https://developer.apple.com/documentation/xcode/configuring-background-execution-modes) in Xcode.
+-   Set the notification priority to normal to ensure proper background delivery.
+-   Apple limits background notifications to about 2-3 per hour to preserve battery life.
+-   For Android users, you can achieve similar functionality by sending a data-only notification (just omit the title and body).
 
 To implement background notifications, set `contentAvailable` to true and handle the [application:didReceiveRemoteNotification:fetchCompletionHandler:](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623013-application) method in your app.
 
-## Critical alerts (iOS)
+# Critical alerts (iOS)
 
-Sometimes users need to see a notification even when their phone is on Do Not Disturb. The new `critical` parameter attempts to mark the notification as critical, which can bypass silent and do not disturb settings when approved. To use critical alerts, you'll need to request the critical alert entitlement from Apple through your developer account - just visit [Apple's developer portal](https://developer.apple.com/contact/request/notifications-critical-alerts-entitlement/) and fill out a brief form explaining your use case.
+Sometimes users need to see a notification even when their phone is on **Do Not Disturb**. The new `critical` parameter attempts to mark the notification as critical, which can bypass silent and do not disturb settings when approved. To use critical alerts, you'll need to request the critical alert entitlement from Apple through your developer account - just visit [Apple's developer portal](https://developer.apple.com/contact/request/notifications-critical-alerts-entitlement/) and fill out a brief form explaining your use case.
 
 Critical alerts are essential for apps that handle time-sensitive or safety-related notifications, such as:
 
@@ -40,17 +43,17 @@ Critical alerts are essential for apps that handle time-sensitive or safety-rela
 -   Emergency response apps sending evacuation notices
 -   Financial apps warning about suspicious transactions
 
-## Priority controls
+# Priority controls
 
 You can now set notifications as either normal or high priority:
 
--   Normal priority: The system delivers these at convenient times based on battery life and may group notifications together
--   High priority: These go out right away - useful for time-sensitive updates
+-   **Normal priority:** The system delivers these at convenient times based on battery life and may group notifications together.
+-   **High priority:** These go out right away - useful for time-sensitive updates.
 
-## Other updates
+# Other updates
 
--   Badge numbers (iOS): Set a number to display on your app icon to show pending notifications. Set it to 0 to clear existing badges. Must be an integer.
--   Data payload: Both title and body are now optional fields. This gives you more flexibility, especially for background updates.
+-   **Badge numbers (iOS):** Set a number to display on your app icon to show pending notifications. Set it to 0 to clear existing badges. Must be an integer.
+-   **Data payload:** Both title and body are now optional fields. This gives you more flexibility, especially for background updates.
 
 # Technical details
 
@@ -58,7 +61,7 @@ These new parameters work with our existing `createPush` and `updatePush` endpoi
 
 Here are some examples to get you started:
 
-**Example 1: Background update for fetching new messages**
+## Example 1: Background update for fetching new messages
 
 {% multicode %}
 
@@ -106,7 +109,7 @@ const result = await messaging.createPush(
 
 {% /multicode %}
 
-**Example 2: Critical alert for security breach**
+## Example 2: Critical alert for security breach
 
 {% multicode %}
 
@@ -155,7 +158,7 @@ const result = await messaging.createPush(
 
 {% /multicode %}
 
-**Example 3: Normal notification for all platforms**
+## Example 3: Normal notification for all platforms
 
 {% multicode %}
 
@@ -208,7 +211,7 @@ Each example shows different combinations of the new parameters based on common 
 # Documentation and resources
 
 -   See the full implementation details in our [docs](https://appwrite.io/docs/products/messaging/messages)
--   Check out real-world examples in our [push notification guide](https://appwrite.io/blog/post/push-notifications-best-practices)
+-   Check out our best practices for sending [push notifications](https://appwrite.io/blog/post/push-notifications-best-practices)
 -   Watch the [feature walkthrough](https://www.youtube.com/watch?v=QdDgPeuBZ1I)
 -   Learn more about [Messaging](https://appwrite.io/products/messaging)
 
