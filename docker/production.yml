@@ -56,8 +56,15 @@ services:
         networks:
             - cloud
         deploy:
-            replicas: 3
             <<: *x-update-config
+            replicas: 2
+            resources:
+                limits:
+                    cpus: '0.5'
+                    memory: 512M
+                reservations:
+                    cpus: '0.1'
+                    memory: 256M
             placement:
                 max_replicas_per_node: 1
                 constraints:
@@ -84,32 +91,20 @@ services:
         deploy:
             <<: *x-update-config
             mode: replicated
-            replicas: 8
+            replicas: 6
+            resources:
+                limits:
+                    cpus: '0.8'
+                    memory: 1G
+                reservations:
+                    cpus: '0.1'
+                    memory: 512M
             placement:
                 max_replicas_per_node: 2
                 constraints:
                     - node.role == worker
                 preferences:
                     - spread: node.role == worker
-            labels:
-                - traefik.enable=true
-                - traefik.docker.lbswarm=true
-                - traefik.constraint-label-stack=appwrite
-                - traefik.http.services.appwrite_service.loadbalancer.server.port=3000
-                - traefik.http.middlewares.appwrite_middlewares.compress=true
-                #http
-                - traefik.http.routers.appwrite.entrypoints=web
-                - traefik.http.routers.appwrite.rule=Host(`$_APP_DOMAIN`) || Host(`www.$_APP_DOMAIN`)
-                - traefik.http.routers.appwrite.service=appwrite_service
-                - traefik.http.routers.appwrite.middlewares=appwrite_middlewares
-                # https
-                - traefik.http.routers.appwrite_secure.entrypoints=websecure
-                - traefik.http.routers.appwrite_secure.rule=Host(`$_APP_DOMAIN`) || Host(`www.$_APP_DOMAIN`)
-                - traefik.http.routers.appwrite_secure.service=appwrite_service
-                - traefik.http.routers.appwrite_secure.tls=true
-                - traefik.http.routers.appwrite_secure.tls.certresolver=myresolver
-                - traefik.http.routers.appwrite_secure.middlewares=appwrite_middlewares
-
     janitor:
         image: appwrite/docker-janitor
         deploy:

@@ -6,11 +6,11 @@ module "droplets" {
     region = "fra1"
     environment = "prd"
     base_image = "docker-20-04"
-    worker_size = "s-2vcpu-2gb-amd"
-    worker_count = 6
+    worker_size = "s-1vcpu-2gb-amd"
+    worker_count = 4
     subnet_range = "10.117.0.0/20"
-    manager_size = "s-2vcpu-2gb-amd"
-    manager_count = 2
+    manager_size = "s-1vcpu-2gb-amd"
+    manager_count = 1
 
     digitalocean_project_name = "Production - Homepage"
 }
