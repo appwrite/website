@@ -9,8 +9,11 @@
     const isExternal = ['http://', 'https://'].some((prefix) => {
         if (href.startsWith(prefix)) {
             try {
+                // Remove 'www.' if it exists.
+                const hostname = new URL(href).hostname.replace(/^www\./, '');
+
                 // if hostname matches, its internal
-                return !whitelisted.includes(new URL(href).hostname);
+                return !whitelisted.includes(hostname);
             } catch {
                 return true; // URL invalid, treat as external
             }
