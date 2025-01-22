@@ -70,11 +70,14 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="starter" class="text-label font-aeonik-pro">
+                                            <h2
+                                                id="starter"
+                                                class="text-label text-primary font-aeonik-pro"
+                                            >
                                                 Free
                                             </h2>
                                             <div
-                                                class="text-title font-aeonik-pro text-primary mt-2"
+                                                class="text-title font-aeonik-pro text-primary mt-10 -mb-6"
                                             >
                                                 $0
                                             </div>
@@ -84,7 +87,7 @@
                                             </p>
                                             <a
                                                 href="{PUBLIC_APPWRITE_DASHBOARD}/register"
-                                                class="web-button is-secondary is-full-width mt-8"
+                                                class="web-button is-secondary is-full-width mt-7"
                                             >
                                                 <span class="text-sub-body font-medium"
                                                     >Start building</span
@@ -120,17 +123,27 @@
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
                                             <header class="flex gap-3">
-                                                <h2 id="pro" class="text-label font-aeonik-pro">
+                                                <h2
+                                                    id="pro"
+                                                    class="text-label text-primary font-aeonik-pro"
+                                                >
                                                     Pro
                                                 </h2>
-                                                <div class="web-inline-tag is-pink">Most popular</div>
+                                                <div class="web-inline-tag is-pink">
+                                                    Most popular
+                                                </div>
                                             </header>
-                                            <div
-                                                class="text-title font-aeonik-pro text-primary mt-2"
-                                            >
-                                                $15
+                                            <div class="mt-4 flex flex-col gap-2">
+                                                <span class="-mb-4">From</span>
+                                                <div class="flex items-end gap-2">
+                                                    <div
+                                                        class="text-title font-aeonik-pro text-primary mt-2"
+                                                    >
+                                                        $15
+                                                    </div>
+                                                    <div class="mt-1">/month</div>
+                                                </div>
                                             </div>
-                                            <div class="mt-1">per member/month</div>
                                             <p class="text-body mt-4 h-[5rem] font-medium">
                                                 For pro developers and teams that need to scale
                                                 their products.
@@ -177,15 +190,25 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="scale" class="text-label font-aeonik-pro">
+                                            <h2
+                                                id="scale"
+                                                class="text-label text-primary font-aeonik-pro"
+                                            >
                                                 Scale
                                             </h2>
-                                            <div
-                                                class="text-title font-aeonik-pro text-primary mt-2"
-                                            >
-                                                $599
+
+                                            <div class="mt-4 flex flex-col gap-2">
+                                                <span class="-mb-4">From</span>
+                                                <div class="flex items-end gap-2">
+                                                    <div
+                                                        class="text-title font-aeonik-pro text-primary mt-2"
+                                                    >
+                                                        $599
+                                                    </div>
+                                                    <div class="mt-1">/month</div>
+                                                </div>
                                             </div>
-                                            <div class="mt-1">per organization/month</div>
+
                                             <p class="text-body mt-4 h-[5rem] font-medium">
                                                 For scaling teams and agencies that need dedicated
                                                 support.
@@ -224,11 +247,14 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="enterprise" class="text-label font-aeonik-pro">
+                                            <h2
+                                                id="enterprise"
+                                                class="text-label text-primary font-aeonik-pro"
+                                            >
                                                 Enterprise
                                             </h2>
                                             <div
-                                                class="text-title font-aeonik-pro text-primary mt-2"
+                                                class="text-title font-aeonik-pro text-primary mt-10 -mb-8"
                                             >
                                                 Custom
                                             </div>
@@ -266,53 +292,10 @@
                         </ul>
                     </div>
 
-                    <!--                    <ul class="web-grid-1-1-opt-2 mt-20 gap-8">-->
-                    <!--                        <li>-->
-                    <!--                            <article-->
-                    <!--                                class="web-card is-transparent has-border-gradient min-h-full"-->
-                    <!--                                style="background:rgba(35, 35, 37, 0.90);"-->
-                    <!--                            >-->
-                    <!--                                <header class="flex gap-3">-->
-                    <!--                                    <h3 id="enterprises" class="text-body text-primary font-medium">-->
-                    <!--                                        Enterprises-->
-                    <!--                                    </h3>-->
-                    <!--                                    <div class="web-inline-tag is-pink">Coming Soon</div>-->
-                    <!--                                </header>-->
-                    <!--                                <p class="mt-2">-->
-                    <!--                                    Large scale projects seeking greater performance, collaboration-->
-                    <!--                                    and security.-->
-                    <!--                                </p>-->
-                    <!--                                <a href="/contact-us" class="web-button is-secondary mt-8">-->
-                    <!--                                    <span>Contact us</span>-->
-                    <!--                                </a>-->
-                    <!--                            </article>-->
-                    <!--                        </li>-->
-                    <!--                        <li>-->
-                    <!--                            <article-->
-                    <!--                                class="web-card is-transparent has-border-gradient min-h-full"-->
-                    <!--                                style="background:rgba(35, 35, 37, 0.90);"-->
-                    <!--                            >-->
-                    <!--                                <header class="flex gap-3">-->
-                    <!--                                    <h3-->
-                    <!--                                        id="open-source-teams"-->
-                    <!--                                        class="text-body text-primary font-medium"-->
-                    <!--                                    >-->
-                    <!--                                        Open-source teams-->
-                    <!--                                    </h3>-->
-                    <!--                                </header>-->
-                    <!--                                <p class="mt-2">-->
-                    <!--                                    We support OSS maintainers with a free Pro Plan. Read our-->
-                    <!--                                    announcement blog to find out more.-->
-                    <!--                                </p>-->
-                    <!--                                <a-->
-                    <!--                                    href="/docs/advanced/platform/oss"-->
-                    <!--                                    class="web-button is-secondary mt-8"-->
-                    <!--                                >-->
-                    <!--                                    <span>Learn more</span>-->
-                    <!--                                </a>-->
-                    <!--                            </article>-->
-                    <!--                        </li>-->
-                    <!--                    </ul>-->
+                    <div class="grid grid-cols-1 place-items-center gap-4 md:grid-cols-2">
+                        <div class="card">Card</div>
+                        <div class="card">Card</div>
+                    </div>
                 </section>
             </div>
         </div>
