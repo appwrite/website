@@ -4,11 +4,11 @@
     import { buildOpenGraphImage } from '$lib/utils/metadata';
 
     import CountdownGrid from './(components)/CountdownGrid.svelte';
-    import Hero from './(components)/Hero.svelte';
     import DayOne from './(components)/days/DayOne.svelte';
     import Domains from './(assets)/illustrations/domains.svg';
     import { addDays } from 'date-fns';
     import Day from './(components)/days/Day.svelte';
+    import Hero from './(components)/hero.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
@@ -88,9 +88,6 @@
         <FooterNav />
         <MainFooter />
     </div>
-    <div
-        class="absolute top-0 z-[-2] h-screen w-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px]"
-    ></div>
 </Main>
 
 <style>
