@@ -123,7 +123,9 @@
                                                 <h2 id="pro" class="text-label font-aeonik-pro">
                                                     Pro
                                                 </h2>
-                                                <div class="web-inline-tag is-pink">Most popular</div>
+                                                <div class="web-inline-tag is-pink">
+                                                    Most popular
+                                                </div>
                                             </header>
                                             <div
                                                 class="text-title font-aeonik-pro text-primary mt-2"
