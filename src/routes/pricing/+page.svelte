@@ -124,10 +124,13 @@
                             </li>
                             <li>
                                 <article
-                                    class="web-card is-transparent is-transparent-pink has-border-gradient h-full"
-                                    style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
+                                    class="web-card is-transparent is-transparent-pink has-border-gradient h-full p-1!"
+                                    style="background: linear-gradient(180deg, rgba(253, 54, 110, 0.12) 38.59%, rgba(253, 54, 110, 0) 99.04%);"
                                 >
-                                    <div class="web-pricing-cards-item">
+                                    <div
+                                        class="web-pricing-cards-item has-border-gradient web-card is-transparent-pink rounded-2xl p-6"
+                                        style:background-color="transparent !important"
+                                    >
                                         <header class="web-pricing-cards-header">
                                             <header class="flex gap-3">
                                                 <h2
