@@ -48,9 +48,6 @@ importers:
       '@melt-ui/svelte':
         specifier: ^0.86.0
         version: 0.86.2(svelte@4.2.19)
-      '@number-flow/svelte':
-        specifier: ^0.3.3
-        version: 0.3.3(svelte@4.2.19)
       '@playwright/test':
         specifier: ^1.49.0
         version: 1.49.0
@@ -184,8 +181,8 @@ importers:
         specifier: ^4.2.3
         version: 4.2.3
       tailwind-merge:
-        specifier: ^2.5.4
-        version: 2.5.4
+        specifier: ^2.6.0
+        version: 2.6.0
       tailwindcss:
         specifier: 4.0.0-alpha.17
         version: 4.0.0-alpha.17
@@ -4129,8 +4126,8 @@ packages:
   tabbable@6.2.0:
     resolution: {integrity: sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==}
 
-  tailwind-merge@2.5.4:
-    resolution: {integrity: sha512-0q8cfZHMu9nuYP/b5Shb7Y7Sh1B7Nnl5GqNr1U+n2p6+mybvRtayrQ+0042Z5byvTA8ihjlP8Odo8/VnHbZu4Q==}
+  tailwind-merge@2.6.0:
+    resolution: {integrity: sha512-P+Vu1qXfzediirmHOC3xKGAYeZtPcV9g76X+xg2FD4tYgR71ewMA35Y3sCz3zhiN/dwefRpJX0yBcgwi1fXNQA==}
 
   tailwindcss@4.0.0-alpha.17:
     resolution: {integrity: sha512-wWr6kvH40Hp1LQVcD738ojwU6+muJnpIUZw3J2EqjOdqHpg3iUIkrrQszP5HP4nwi4qBsoCoHPWVJ3Qw4f1IZw==}
@@ -8635,7 +8632,7 @@ snapshots:
 
   tabbable@6.2.0: {}
 
-  tailwind-merge@2.5.4: {}
+  tailwind-merge@2.6.0: {}
 
   tailwindcss@4.0.0-alpha.17: {}
 
