@@ -12,15 +12,11 @@
     import { BANNER_KEY, GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';
-    import { hasNewChangelog } from '$routes/changelog/utils';
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
-    import { page } from '$app/stores';
     import ProductsSubmenu from '$lib/components/ProductsSubmenu.svelte';
     import ProductsMobileSubmenu from '$lib/components/ProductsMobileSubmenu.svelte';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
-    import InitBanner from '$lib/components/InitBanner.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import MainNav from '$lib/components/MainNav.svelte';
 
@@ -107,7 +103,6 @@
             label: 'Docs',
             href: '/docs'
         },
-        { label: 'Blog', href: '/blog' },
         {
             label: 'Pricing',
             href: '/pricing'
