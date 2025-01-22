@@ -3,7 +3,7 @@
 </script>
 
 <div class="">
-    <div class="light relative flex min-h-[65vh] flex-col items-center justify-center gap-8 px-8">
+    <div class="relative flex min-h-[65vh] flex-col items-center justify-center gap-8 px-8">
         <div class="lockup pointer-events-none relative z-10 w-full"><Lockup /></div>
         <div class="relative z-10 flex w-full max-w-lg flex-col items-center justify-center gap-8">
             <div class="text flex flex-col gap-4 [animation-delay:0.75s]">

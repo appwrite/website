@@ -19,11 +19,9 @@
 </script>
 
 <a href="#day-{index}">
-    <span class="text-caption font-aeonik-fono text-secondary mb-2 block uppercase"
-        >Day {index}</span
-    >
+    <span class="text-caption text-secondary mb-2 block">Day {index}</span>
     <div
-        class="light relative flex aspect-square flex-col items-center justify-center justify-center gap-4 bg-white"
+        class="relative flex aspect-square flex-col items-center justify-center gap-4 rounded-[4px] border border-white/32 bg-black outline outline-offset-4 outline-white/32 outline-dashed"
     >
         <img src={hasReleased ? illustration : Logo} alt="Logo" class="size-24" />
         <div class="font-aeonik-fono text-primary text-base uppercase">
