@@ -39,9 +39,16 @@
         submitted = true;
         submitting = false;
     }
+
+    const list = [
+        'Grow your business',
+        'Work with the latest technology',
+        'Deliver your clients a great experience'
+    ];
 </script>
 
 <div
+    id="become-a-partner"
     class={classNames(
         'relative -mb-[6rem] flex min-h-[75vh] flex-col items-center justify-center overflow-hidden bg-black/8',
         'before:absolute before:inset-0 before:top-0 before:left-0 before:-z-10 before:block before:h-full before:bg-[radial-gradient(circle_at_-15%_-30%,_hsla(343,_98%,_60%,_0.2)_0px,_transparent_40%)] before:blur-2xl',
@@ -60,15 +67,12 @@
                 </p>
 
                 <ul class="space-y-4">
-                    <li class="text-body flex items-center gap-2 font-medium">
-                        <img src="/images/icons/colored/check.svg" alt="checkmark icon" /> Item
-                    </li>
-                    <li class="text-body flex items-center gap-2 font-medium">
-                        <img src="/images/icons/colored/check.svg" alt="checkmark icon" /> Item
-                    </li>
-                    <li class="text-body flex items-center gap-2 font-medium">
-                        <img src="/images/icons/colored/check.svg" alt="checkmark icon" /> Item
-                    </li>
+                    {#each list as item}
+                        <li class="text-body flex items-center gap-2 font-medium">
+                            <img src="/images/icons/colored/check.svg" alt="checkmark icon" />
+                            {item}
+                        </li>
+                    {/each}
                 </ul>
             </div>
 
