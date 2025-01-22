@@ -15,7 +15,7 @@ We've introduced new additions to Appwrite Messaging that give you greater contr
 - **Badge numbers for iOS**: The badge parameter now accepts integers instead of strings for better type safety.
 - **Optional title and body for all platforms**: You can now send notifications without title and body for background and data-only updates.
 
-These updates give you more control over notification delivery across platforms.
+These updates will help you build better notification experiences for your users. Try them out and share your feedback with us.
 
 {% arrow_link href="/blog/post/announcing-new-push-notifications-features" %}
 Read the announcement to learn more
