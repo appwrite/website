@@ -54,8 +54,15 @@
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
-                            Simple and transparent pricing
+                            Pricing
                         </h1>
+                        <p
+                            class="text-description max-w-sm self-center text-center opacity-90"
+                            style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
+                                -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
+                        >
+                            Appwrite offers simple and transparent pricing plans with no surprises.
+                        </p>
                     </div>
                 </section>
             </div>
@@ -292,9 +299,38 @@
                         </ul>
                     </div>
 
-                    <div class="grid grid-cols-1 place-items-center gap-4 md:grid-cols-2">
-                        <div class="card">Card</div>
-                        <div class="card">Card</div>
+                    <div class="mt-24 grid grid-cols-1 place-items-center gap-4 md:grid-cols-2">
+                        <div class="cta-card w-full p-6">
+                            <h6
+                                class="text-body text-primary mb-2 flex items-center gap-3 font-medium"
+                            >
+                                Enterprises
+                                <div
+                                    class="web-inline-tag is-pink text-caption py-1! px-2! font-normal"
+                                >
+                                    Coming soon
+                                </div>
+                            </h6>
+                            <p class="text-body text-secondary font-medium">
+                                Large scale projects seeking greater performance, collaboration and
+                                security.
+                            </p>
+                            <a href="/contact-us" class="web-button is-secondary mt-8">Contact us</a
+                            >
+                        </div>
+                        <div class="cta-card w-full p-6">
+                            <h6
+                                class="text-body text-primary mb-2 flex items-center gap-3 font-medium"
+                            >
+                                Open Source
+                            </h6>
+                            <p class="text-body text-secondary font-medium">
+                                We support open-source teams with free access to Pro and Scale
+                                plans.
+                            </p>
+                            <a href="/contact-us" class="web-button is-secondary mt-8">Learn More</a
+                            >
+                        </div>
                     </div>
                 </section>
             </div>
@@ -324,6 +360,8 @@
 </Main>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     .web-card {
         --web-color-border: 240, 4%, 18%;
         --p-card-padding: 1.25rem;
@@ -337,5 +375,19 @@
     .web-pricing-cards-list {
         gap: 1rem;
         grid-template-columns: repeat(4, 1fr);
+    }
+
+    .cta-card {
+        @include gradients.border-gradient;
+        --p-radius: 16px;
+
+        background-color: hsl(var(--web-color-card));
+        border-radius: var(--p-radius);
+        --m-border-radius: var(--p-radius);
+        --m-border-gradient-before: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.12) 0%,
+            rgba(255, 255, 255, 0) 125.11%
+        );
     }
 </style>
