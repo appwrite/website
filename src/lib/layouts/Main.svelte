@@ -284,7 +284,7 @@
     <MobileNav bind:open={$isMobileNavOpen} links={navLinks} />
 
     <main
-        class="space-y-6"
+        class="relative space-y-6"
         class:web-u-hide-mobile={$isMobileNavOpen}
         id={omitMainId ? undefined : 'main'}
     >

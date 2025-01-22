@@ -7,7 +7,7 @@
     import DayOne from './(components)/days/DayOne.svelte';
     import Domains from './(assets)/illustrations/domains.svg';
     import { addDays } from 'date-fns';
-    import Day from './(components)/days/Day.svelte';
+    import Day from './(components)/days/day.svelte';
     import Hero from './(components)/hero.svelte';
 
     const title = 'Init - Appwrite';

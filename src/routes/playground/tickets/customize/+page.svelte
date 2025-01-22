@@ -2,7 +2,7 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
-    import Lockup from '../../(components)/Lockup.svelte';
+    import Lockup from '../../(components)/lockup.svelte';
     import Window from '../../(components)/retro-ui/Window.svelte';
     import Ticket from '../../(components)/ticket/Ticket.svelte';
     import { dequal } from 'dequal/lite';
@@ -73,10 +73,9 @@
             'after:absolute after:inset-0 after:-z-0 after:bg-gradient-to-b after:from-white after:via-white after:via-5% after:to-transparent'
         )}
     >
-        <Window theme="light" class="flex aspect-[1.28/.74] h-full flex-1 flex-col">
-            <span slot="toolbar">Customize Ticket</span>
+        <Window class="flex aspect-[1.28/.74] h-full flex-1 flex-col">
+            <span slot="title">Customize Ticket</span>
             <div
-                slot="content"
                 class="mt-4 grid flex-1 grid-cols-1 items-center justify-between border-b-2 border-l-2 border-black bg-white outline-2 outline-[#D8D8DB] [outline-style:inset] md:grid-cols-12 md:flex-row"
             >
                 <div class="retro col-span-3 flex h-full flex-1 flex-col bg-[#EDEDF0] px-2">

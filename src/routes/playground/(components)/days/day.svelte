@@ -1,5 +1,5 @@
 <script lang="ts">
-    import PreReleaseCard from '../PreReleaseCard.svelte';
+    import PreReleaseCard from '../pre-release-card.svelte';
 
     export let release: Date;
 

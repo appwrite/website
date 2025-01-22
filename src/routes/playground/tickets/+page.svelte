@@ -4,7 +4,6 @@
     import Main from '$lib/layouts/Main.svelte';
     import { classNames } from '$lib/utils/classnames';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
-    import Lockup from '../(components)/Lockup.svelte';
     import Window from '../(components)/retro-ui/Window.svelte';
     import Ticket from '../(components)/ticket/Ticket.svelte';
     import { getMockContributions, loginGithub } from '../helpers';
@@ -38,14 +37,12 @@
             'after:absolute after:inset-0 after:-z-0 after:bg-gradient-to-b after:from-white after:via-white after:via-5% after:to-transparent'
         )}
     >
-        <Window theme="light" class="flex aspect-[12.8/7.4] h-full flex-1 flex-col">
-            <span slot="toolbar">Init</span>
+        <Window class="flex aspect-[12.8/7.4] h-full flex-1 flex-col">
+            <span slot="title">Init</span>
             <div
-                slot="content"
                 class="mt-4 grid flex-1 grid-cols-1 items-center justify-between gap-24 border-b-2 border-l-2 border-black bg-white p-8 outline-2 outline-[#D8D8DB] [outline-style:inset] md:grid-cols-12 md:flex-row"
             >
                 <div class="col-span-4 flex flex-col">
-                    <Lockup class="w-3/4" />
                     <h2 class="text-title text-secondary font-aeonik-pro">
                         launches on<br /> December 5th
                     </h2>

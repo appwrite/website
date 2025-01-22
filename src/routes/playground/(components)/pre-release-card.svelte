@@ -18,8 +18,8 @@
 </script>
 
 <div class="relative h-fit pb-20">
-    <Window alignment="center" class="aspect-[3/1]" theme="dark">
-        <span slot="toolbar" class="text-micro flex items-center gap-1 text-white">
+    <Window class="aspect-[3/1]">
+        <span slot="title" class="text-micro flex items-center gap-1 text-white">
             Day {index} -
             {#if $hours > 24}
                 <p>
@@ -37,7 +37,6 @@
         >
 
         <div
-            slot="content"
             class={classNames(
                 'retro bg-greyscale-800 relative mt-2 flex flex-1 items-center justify-center overflow-hidden px-12'
             )}

@@ -3,7 +3,7 @@
 
     let classes: string = '';
 
-    export { classNames as class };
+    export { classes as class };
 </script>
 
 <svg

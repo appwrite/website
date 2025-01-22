@@ -4,7 +4,7 @@
     import Logo from '../../(assets)/stickers/logo.svg';
     import { writable } from 'svelte/store';
     import Window from '../retro-ui/Window.svelte';
-    import Lockup from '../Lockup.svelte';
+    import Lockup from '../lockup.svelte';
     import type { ContributionsMatrix, TicketData } from '$routes/playground/tickets/constants';
     import { fade } from 'svelte/transition';
 
@@ -25,19 +25,19 @@
 </script>
 
 <div class="ticket w-full">
-    <Window theme="dark" alignment="left" class="aspect-video w-full flex-1 shrink-0">
-        <span slot="toolbar"
+    <Window class="aspect-video w-full flex-1 shrink-0">
+        <span slot="title"
             >Ticket <span class="text-accent">#</span>{id?.toString().padStart(6, '0')}</span
         >
-        <div slot="content" class="light relative flex flex-1 bg-white p-4">
-            <div class="font-aeonik-pro mt-auto mb-0 block flex w-full items-end justify-between">
+        <div class="light relative flex flex-1 bg-white p-4">
+            <div class="font-aeonik-pro mt-auto mb-0 flex w-full items-end justify-between">
                 <div>
                     <h2 class="text-label text-primary">
                         {name?.split(' ')[0]}
                     </h2>
                     <span class="text-secondary">#{id?.toString().padStart(6, '0')}</span>
                 </div>
-                <Lockup class="mt-auto mb-0 h-[75px] w-[150px]" />
+                <Lockup />
             </div>
 
             <!-- {#each $order as i, index}
@@ -71,43 +71,3 @@
         </div>
     </Window>
 </div>
-
-<style>
-    @keyframes stutter {
-        0% {
-            transform: translateY(0px);
-        }
-        50% {
-            transform: translateY(-10px);
-        }
-        100% {
-            transform: translateY(0px);
-        }
-    }
-
-    @keyframes grid {
-        0% {
-            background-color: hsl(var(--color-greyscale-hue) 2% 68% / 0);
-        }
-        100% {
-            background-color: hsl(var(--color-greyscale-hue) 2% 68% / 1);
-        }
-    }
-
-    @keyframes load {
-        0% {
-            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-        }
-        100% {
-            clip-path: polygon(0 0, 110% 0, 110% 110%, 0 110%);
-        }
-    }
-
-    .grid-block {
-        animation: grid 1.5s forwards;
-    }
-
-    .ticket {
-        animation: load 1.25s steps(5) forwards;
-    }
-</style>
