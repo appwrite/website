@@ -328,7 +328,9 @@
                                 We support open-source teams with free access to Pro and Scale
                                 plans.
                             </p>
-                            <a href="/contact-us" class="web-button is-secondary mt-8">Learn More</a
+                            <a
+                                href="/docs/advanced/platform/oss"
+                                class="web-button is-secondary mt-8">Learn More</a
                             >
                         </div>
                     </div>
