@@ -6,7 +6,8 @@ date: 2025-01-22
 cover: /images/blog/announcing-new-push-notifications-features/cover.png
 timeToRead: 5
 author: jake-barnby
-category: OSS
+category: product
+callToAction: true
 ---
 
 We're excited to introduce new additions to Appwrite Messaging that give you greater control over how you send and handle push notifications in your app.
@@ -33,7 +34,7 @@ To implement background notifications, set `contentAvailable` to true and handle
 
 # Critical alerts (iOS)
 
-Sometimes users need to see a notification even when their phone is on **Do Not Disturb**. The new `critical` parameter attempts to mark the notification as critical, which can bypass silent and do not disturb settings when approved. To use critical alerts, you'll need to request the critical alert entitlement from Apple through your developer account - just visit [Apple's developer portal](https://developer.apple.com/contact/request/notifications-critical-alerts-entitlement/) and fill out a brief form explaining your use case.
+Sometimes, users need to see a notification even when their phone is on **Do Not Disturb**. The new `critical` parameter attempts to mark the notification as critical, which can bypass silent and do not disturb settings when approved. To use critical alerts, you'll need to request the critical alert entitlement from Apple through your developer account - just visit [Apple's developer portal](https://developer.apple.com/contact/request/notifications-critical-alerts-entitlement/) and fill out a brief form explaining your use case.
 
 Critical alerts are essential for apps that handle time-sensitive or safety-related notifications, such as:
 
