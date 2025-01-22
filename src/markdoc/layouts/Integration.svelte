@@ -20,7 +20,9 @@
     //const title = 'Integrations' + TITLE_SUFFIX;
     //const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
     const ogImage = DEFAULT_HOST + cover;
-    const categoryHeading = integrationCategoryDescriptions.find(key => key.slug === category.toLowerCase())?.heading;
+    const categoryHeading = integrationCategoryDescriptions.find(
+        (key) => key.slug === category.toLowerCase()
+    )?.heading;
 </script>
 
 <svelte:head>
