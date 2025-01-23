@@ -69,7 +69,7 @@
                         For pro developers and teams that need to scale their products.
                     </p>
                     <a
-                        href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=createPro`}
+                        href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=create&plan=tier-1`}
                         class="web-button is-full-width-mobile web-u-cross-child-end"
                         target="_blank"
                         rel="noopener noreferrer"
