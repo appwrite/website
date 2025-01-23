@@ -4,7 +4,7 @@ title: Email your users using Resend and Appwrite Messaging
 description: Learn what Resend is and how to integrate it using the SMTP provider in Appwrite Messaging.
 date: 2025-01-23
 cover: /images/blog/integrate-resend-smtp/cover.png
-timeToRead: 10
+timeToRead: 4
 author: aditya-oberai
 category: integrations
 callToAction: true
