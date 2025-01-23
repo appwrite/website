@@ -37,7 +37,7 @@ Coolify handles most configurations automatically. However, to enable additional
 To generate code snippets and assist with documentation for your Appwrite project, set the `_APP_ASSISTANT_OPENAI_API_KEY` variable using your OpenAI API key.
 
 **SMS Notifications**  
-To enable SMS notifications, configure the following environment variables:  
+To enable SMS based OTP authentication, configure the following environment variables:  
 
 1. `_APP_SMS_FROM` - +123456789
 2. `_APP_SMS_PROVIDER` - sms://username:password@mock
@@ -65,4 +65,4 @@ The [Github Docs](https://docs.github.com/en/apps/creating-github-apps/about-cre
 # Troubleshooting {% #troubleshooting %}
 
 1. **Site redirected you too many times**  
-   If you encounter the error `ERR_TOO_MANY_REDIRECTS` with the default Coolify configuration, turn off the **Strip Prefixes** option in the **Settings** page for the three containers with exposed ports: Appwrite, Appwrite Console, and Appwrite Realtime. If you're using Cloudflare and the issue persists, update the SSL/TLS encryption setting to Full in the Cloudflare dashboard. Navigate to `Your Domain` -> `SSL/TLS` -> `Overview` and make the change there.
+   If you encounter the error `ERR_TOO_MANY_REDIRECTS` with the default Coolify configuration, turn off the **Strip Prefixes** option in the **Settings** page for the Appwrite console and Appwrite Realtime service. If you're using Cloudflare and the issue persists, update the SSL/TLS encryption setting to Full in the Cloudflare dashboard. From the dashboard, navigate to `Your Domain` -> `SSL/TLS` -> `Overview` and change the setting to Full.
