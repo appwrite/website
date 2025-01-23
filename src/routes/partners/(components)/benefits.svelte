@@ -55,24 +55,98 @@
         <h2 class="text-primary font-aeonik-pro text-title">Growing together</h2>
     </div>
 
-    <div
-        class={classNames(
-            'border-smooth relative w-full border-y border-dashed',
-            'before:border-smooth before:absolute before:inset-x-0 before:top-1/2 before:hidden before:h-px before:-translate-y-1/2 before:border before:border-dashed before:md:block'
-        )}
-    >
-        <div
-            class="container divide-smooth grid grid-cols-1 gap-px divide-x divide-dashed sm:grid-cols-2 lg:grid-cols-3"
-        >
-            {#each items as item}
-                <div
-                    class="bg-greyscale-900 relative flex flex-col gap-4 p-8 nth-of-type-[3]:border-none"
-                >
-                    <img src={item.icon} alt="{item.title} Icon" class="size-12" />
-                    <span class="text-primary -mb-3">{item.title}</span>
-                    <p class="text-secondary">{item.description}</p>
-                </div>
-            {/each}
+    <div class="hidden w-full lg:block">
+        <div class="border-smooth relative w-full border-t border-dashed">
+            <div
+                class="container divide-smooth hidden grid-cols-3 gap-px divide-x divide-dashed lg:grid"
+            >
+                {#each items.slice(0, 3) as item}
+                    <div
+                        class="bg-greyscale-900 relative flex flex-col gap-4 p-8 nth-of-type-[3]:border-none"
+                    >
+                        <img src={item.icon} alt="{item.title} Icon" class="size-12" />
+                        <span class="text-primary -mb-3">{item.title}</span>
+                        <p class="text-secondary">{item.description}</p>
+                    </div>
+                {/each}
+            </div>
+        </div>
+        <div class="border-smooth relative w-full border-y border-dashed">
+            <div
+                class="container divide-smooth hidden grid-cols-3 gap-px divide-x divide-dashed lg:grid"
+            >
+                {#each items.slice(3, items.length) as item}
+                    <div
+                        class="bg-greyscale-900 relative flex flex-col gap-4 p-8 nth-of-type-[3]:border-none"
+                    >
+                        <img src={item.icon} alt="{item.title} Icon" class="size-12" />
+                        <span class="text-primary -mb-3">{item.title}</span>
+                        <p class="text-secondary">{item.description}</p>
+                    </div>
+                {/each}
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden w-full md:block lg:hidden">
+        <div class="border-smooth relative w-full border-t border-dashed">
+            <div
+                class="container divide-smooth hidden grid-cols-2 gap-px divide-x divide-dashed md:grid"
+            >
+                {#each items.slice(0, 2) as item}
+                    <div
+                        class="bg-greyscale-900 relative flex flex-col gap-4 p-8 nth-of-type-[3]:border-none"
+                    >
+                        <img src={item.icon} alt="{item.title} Icon" class="size-12" />
+                        <span class="text-primary -mb-3">{item.title}</span>
+                        <p class="text-secondary">{item.description}</p>
+                    </div>
+                {/each}
+            </div>
+        </div>
+        <div class="border-smooth relative w-full border-y border-dashed">
+            <div
+                class="container divide-smooth hidden grid-cols-2 gap-px divide-x divide-dashed md:grid"
+            >
+                {#each items.slice(2, 4) as item}
+                    <div
+                        class="bg-greyscale-900 relative flex flex-col gap-4 p-8 nth-of-type-[3]:border-none"
+                    >
+                        <img src={item.icon} alt="{item.title} Icon" class="size-12" />
+                        <span class="text-primary -mb-3">{item.title}</span>
+                        <p class="text-secondary">{item.description}</p>
+                    </div>
+                {/each}
+            </div>
+        </div>
+        <div class="border-smooth relative w-full border-b border-dashed">
+            <div
+                class="container divide-smooth hidden grid-cols-2 gap-px divide-x divide-dashed md:grid"
+            >
+                {#each items.slice(4, items.length) as item}
+                    <div
+                        class="bg-greyscale-900 relative flex flex-col gap-4 p-8 nth-of-type-[3]:border-none"
+                    >
+                        <img src={item.icon} alt="{item.title} Icon" class="size-12" />
+                        <span class="text-primary -mb-3">{item.title}</span>
+                        <p class="text-secondary">{item.description}</p>
+                    </div>
+                {/each}
+            </div>
+        </div>
+    </div>
+
+    <div class="block w-full md:hidden">
+        <div class="border-smooth relative w-full border-y border-dashed">
+            <div class="container divide-smooth grid grid-cols-1 gap-px divide-y divide-dashed">
+                {#each items as item}
+                    <div class="bg-greyscale-900 relative flex flex-col gap-4 p-8">
+                        <img src={item.icon} alt="{item.title} Icon" class="size-12" />
+                        <span class="text-primary -mb-3">{item.title}</span>
+                        <p class="text-secondary">{item.description}</p>
+                    </div>
+                {/each}
+            </div>
         </div>
     </div>
 </div>
