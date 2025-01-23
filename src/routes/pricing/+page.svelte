@@ -80,8 +80,8 @@
                                             </div>
                                             <div class="mt-1">&nbsp;</div>
                                             <p class="text-body mt-4 h-[5rem] font-medium">
-                                                A great fit for passion projects and 
-                                                small applications.
+                                                A great fit for passion projects and small
+                                                applications.
                                             </p>
                                             <a
                                                 href="{PUBLIC_APPWRITE_DASHBOARD}/register"
@@ -124,7 +124,9 @@
                                                 <h2 id="pro" class="text-label font-aeonik-pro">
                                                     Pro
                                                 </h2>
-                                                <div class="web-inline-tag is-pink">Most popular</div>
+                                                <div class="web-inline-tag is-pink">
+                                                    Most popular
+                                                </div>
                                             </header>
                                             <div
                                                 class="text-title font-aeonik-pro text-primary mt-2"
@@ -133,8 +135,8 @@
                                             </div>
                                             <div class="mt-1">per member/month</div>
                                             <p class="text-body mt-4 h-[5rem] font-medium">
-                                               For production applications that need powerful 
-                                               functionality and resources to scale.
+                                                For production applications that need powerful
+                                                functionality and resources to scale.
                                             </p>
                                             <a
                                                 href="https://cloud.appwrite.io/console?type=createPro"
@@ -188,15 +190,19 @@
                                             </div>
                                             <div class="mt-1">per organization/month</div>
                                             <p class="text-body mt-4 h-[5rem] font-medium">
-                                                For teams that handle more complex and large projects
-                                                and need more control and support.
+                                                For teams that handle more complex and large
+                                                projects and need more control and support.
                                             </p>
-                                            <button
-                                                class="web-button is-secondary is-full-width mt-8">
+                                            <a
+                                                href="https://cloud.appwrite.io/console?plan=tier-2"
+                                                class="web-button is-full-width mt-8"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
                                                 <span class="text-sub-body font-medium"
                                                     >Start building</span
                                                 >
-                                            </button>
+                                            </a>
                                         </header>
                                         <div class="web-pricing-cards-content">
                                             <p>Everything in Pro, plus:</p>
