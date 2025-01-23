@@ -29,8 +29,6 @@ export const load = async ({ request, getClientAddress }) => {
         distinctId
     );
 
-    console.log(isStartBuilding);
-
     const isStartForFree = await getFeatureFlag<'cta-copy_ab-test'>(
         'sticky-navigation_ab-test',
         'start-for-free_variant',
