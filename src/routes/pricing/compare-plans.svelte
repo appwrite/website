@@ -520,7 +520,7 @@
                                 <h4 class="text-sub-body text-primary font-medium">Pro</h4>
                                 <a
                                     class="web-button !w-full"
-                                    href="https://cloud.appwrite.io/console?type=createPro"
+                                    href="https://cloud.appwrite.io/console?type=create&plan=tier-1"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >

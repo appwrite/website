@@ -23,15 +23,27 @@ export const load = async ({ request, getClientAddress }) => {
 
     const distinctId = generateDistinctId(fingerprintData);
 
-    const isStickyNav = await getFeatureFlag<'sticky-navigation_ab-test'>(
+    const isStartBuilding = await getFeatureFlag<'cta-copy_ab-test'>(
         'sticky-navigation_ab-test',
-        'sticky-nav',
+        'start-building_variant',
         distinctId
     );
 
+    const isStartForFree = await getFeatureFlag<'cta-copy_ab-test'>(
+        'sticky-navigation_ab-test',
+        'start-for-free_variant',
+        distinctId
+    );
+
+    const ctaCopy = isStartBuilding
+        ? 'Start building'
+        : isStartForFree
+          ? 'Start for free'
+          : 'Get started';
+
     return {
+        ctaCopy,
         distinctId,
-        isStickyNav,
         changelogEntries: (await getAllChangelogEntries()).length
     };
 };
