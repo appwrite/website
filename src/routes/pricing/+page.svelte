@@ -139,7 +139,7 @@
                                                 functionality and resources to scale.
                                             </p>
                                             <a
-                                                href="https://cloud.appwrite.io/console?type=createPro"
+                                                href="https://cloud.appwrite.io/console?type=create&plan=tier-1"
                                                 class="web-button is-full-width mt-8"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
@@ -194,7 +194,7 @@
                                                 projects and need more control and support.
                                             </p>
                                             <a
-                                                href="https://cloud.appwrite.io/console?plan=tier-2"
+                                                href="https://cloud.appwrite.io/console?type=create&plan=tier-2"
                                                 class="web-button is-full-width mt-8"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
