@@ -42,7 +42,7 @@
                         <div class="info text-caption font-medium" />
                     </div>
                     <p class="web-strip-plans-info text-caption font-medium">
-                        For personal hobby projects and students.
+                        A great fit for passion projects and small applications.
                     </p>
                     <a
                         href={`${PUBLIC_APPWRITE_DASHBOARD}/register`}
@@ -66,7 +66,8 @@
                         <div class="info text-caption font-medium">per member/month</div>
                     </div>
                     <p class="web-strip-plans-info text-caption font-medium">
-                        For pro developers and teams that need to scale their products.
+                        For production applications that need powerful functionality and resources
+                        to scale.
                     </p>
                     <a
                         href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=create&plan=tier-1`}
@@ -93,14 +94,23 @@
                         <div class="info text-caption font-medium">per org/month</div>
                     </div>
                     <p class="web-strip-plans-info text-caption font-medium">
-                        For pro developers and production projects that need the ability to scale.
+                        For teams that handle more complex and large projects and need more control
+                        and support.
                     </p>
-                    <button
-                        class="web-button is-full-width-mobile is-secondary web-u-cross-child-end"
-                        disabled
+                    <a
+                        href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=create&plan=tier-2`}
+                        class="web-button is-full-width-mobile web-u-cross-child-end"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        on:click={() =>
+                            trackEvent({
+                                plausible: {
+                                    name: 'Get started Scale plan'
+                                }
+                            })}
                     >
-                        <span class="text">Coming soon</span>
-                    </button>
+                        <span class="text">Start building</span>
+                    </a>
                 </div>
             </li>
             <li class="web-strip-plans-item web-strip-plans-container-query">
