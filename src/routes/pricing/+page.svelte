@@ -192,9 +192,7 @@
                                                 and need more control and support.
                                             </p>
                                             <button
-                                                class="web-button is-secondary is-full-width mt-8"
-                                                disabled
-                                            >
+                                                class="web-button is-secondary is-full-width mt-8">
                                                 <span class="text-sub-body font-medium"
                                                     >Start building</span
                                                 >
