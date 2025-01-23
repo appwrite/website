@@ -3,7 +3,7 @@
     import { Main } from '$lib/layouts';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
 
-    import CountdownGrid from './(components)/CountdownGrid.svelte';
+    import CountdownGrid from './(components)/countdown-grid.svelte';
     import DayOne from './(components)/days/DayOne.svelte';
     import Domains from './(assets)/illustrations/domains.svg';
     import { addDays } from 'date-fns';

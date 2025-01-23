@@ -1,6 +1,6 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import CountdownCard from './CountdownCard.svelte';
+    import CountdownCard from './countdown-card.svelte';
     import Window from './retro-ui/Window.svelte';
 
     export let days: Array<{ title: string; release: Date; illustration: string }> = [];
