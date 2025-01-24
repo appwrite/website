@@ -85,4 +85,4 @@ jobs:
         steps:
             - uses: actions/checkout@v4
             - name: Run Scrapix
-              run: docker run --rm --env CRAWLER_CONFIG=${{ secrets.SCRAPIX_CONFIG }} getmeili/scrapix
+              run: docker run --rm --env CRAWLER_CONFIG=${{ secrets.SCRAPIX_CONFIG }} getmeili/scrapix:v0.1.8
