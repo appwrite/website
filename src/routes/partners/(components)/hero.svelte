@@ -26,10 +26,10 @@
 
             <div class="flex flex-col items-center gap-2 md:flex-row">
                 <button class="web-button is-secondary !w-full md:!w-fit"
-                    >Find an expert soon</button
+                    >Find an Expert</button
                 >
                 <a href="#become-a-partner" class="web-button is-secondary !w-full md:!w-fit"
-                    >Become a partner</a
+                    >Become a Partner</a
                 >
             </div>
         </div>
