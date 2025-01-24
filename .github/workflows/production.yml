@@ -78,11 +78,3 @@ jobs:
                       echo ${{ secrets.GH_REGISTRY_TOKEN }} | docker login ghcr.io --username ${{ env.REGISTRY_USERNAME }} --password-stdin
                       docker-compose -f ${{ env.STACK_FILE }} config
                       env $(cat .env | xargs) docker stack deploy --prune --resolve-image always --with-registry-auth -c ${{ env.STACK_FILE }} ${{ env.REPOSITORY }}
-
-    indexing:
-        needs: deploy
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
-            - name: Run Scrapix
-              run: docker run --rm --env CRAWLER_CONFIG=${{ secrets.SCRAPIX_CONFIG }} getmeili/scrapix:v0.1.8
