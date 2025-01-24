@@ -29,19 +29,22 @@
 
     async function handleSubmit() {
         error = undefined;
-        message = `Name of representative: ${name}\n\nWork Email: ${email}\n\nCompany Name: ${companyName}\n\nCompany Size: ${companySize}\n\nCompany Website: ${companyWebsite}\n\nIntegration status: ${integrationStatus}\n\nLink to Documentation: ${linkToDocumentation}\n\nLink to product/company assets: ${productUrl}\n\nDetails: ${extraDetails}`;
-        subject = `Technology Partner Application: ${companyName}`;
 
-        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback`, {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/conversations/technology-partner`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                name,
                 email,
-                firstName: name,
-                subject,
-                message,
+                companyName,
+                companySize,
+                companyWebsite,
+                integrationStatus,
+                integrationDocs: linkToDocumentation,
+                brandAssets: productUrl,
+                extraDetails,
                 ...getReferrerAndUtmSource()
             })
         });
