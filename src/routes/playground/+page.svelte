@@ -4,7 +4,7 @@
     import { buildOpenGraphImage } from '$lib/utils/metadata';
 
     import CountdownGrid from './(components)/countdown-grid.svelte';
-    import DayOne from './(components)/days/DayOne.svelte';
+    import DayOne from './(components)/days/day-one.svelte';
     import Domains from './(assets)/illustrations/domains.svg';
     import { addDays } from 'date-fns';
     import Day from './(components)/days/day.svelte';

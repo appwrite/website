@@ -23,13 +23,12 @@
 </script>
 
 <div class="relative h-fit">
-    <Window alignment="left" class="aspect-[3/1]" theme="dark">
-        <span slot="toolbar" class="text-micro text-white"
+    <Window class="aspect-[3/1]">
+        <span slot="title" class="text-micro text-white"
             >Day {index} - {format(release, 'EEEE, MMM d')}<span class="text-accent">_</span></span
         >
 
         <div
-            slot="content"
             class={classNames(
                 'light checkerboard relative mt-2 flex flex-1 items-center justify-between overflow-hidden bg-white px-12',
                 'after:absolute after:inset-0 after:-z-0 after:bg-gradient-to-b after:from-transparent after:via-white after:to-white'

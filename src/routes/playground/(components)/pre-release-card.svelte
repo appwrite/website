@@ -1,10 +1,8 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import Window from './retro-ui/Window.svelte';
-    import Logo from '../(assets)/logo-dark.svg';
-
     import { createCountdown } from '../helpers';
-    import Counter from './Counter.svelte';
+    import Counter from './counter.svelte';
 
     type $$Props = {
         release: Date;
@@ -41,7 +39,7 @@
                 'retro bg-greyscale-800 relative mt-2 flex flex-1 items-center justify-center overflow-hidden px-12'
             )}
         >
-            <img src={Logo} alt="key illustration" class="size-32 md:size-48" />
+            <img src={''} alt="key illustration" class="size-32 md:size-48" />
         </div>
     </Window>
 </div>

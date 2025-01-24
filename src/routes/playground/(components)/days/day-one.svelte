@@ -1,7 +1,7 @@
 <script lang="ts">
     import Globe from '../../(assets)/globe.svg';
     import { Grid } from '../grid';
-    import KeyIllustration from './KeyIllustration.svelte';
+    import KeyIllustration from './key-illustration.svelte';
 
     type $$Props = {
         release: Date;
