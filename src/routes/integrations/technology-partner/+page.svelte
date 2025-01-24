@@ -39,7 +39,7 @@
                 companyWebsite,
                 integrationStatus,
                 integrationDocs:
-                    linkToDocumentation || 'N/A' /* fallback when integrationStatus is != yes */,
+                    linkToDocumentation || 'N/A' /* fallback when integrationStatus is !== yes */,
                 brandAssets: productUrl,
                 extraDetails,
                 ...getReferrerAndUtmSource()
