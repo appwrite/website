@@ -531,9 +531,14 @@
                         <div class="web-mini-card">
                             <div class="flex flex-col items-center justify-between gap-2">
                                 <h4 class="text-sub-body text-primary font-medium">Scale</h4>
-                                <button class="web-button is-secondary !w-full" disabled>
-                                    <span class="text-sub-body font-medium">Coming soon</span>
-                                </button>
+                                <a
+                                    class="web-button !w-full"
+                                    href="https://cloud.appwrite.io/console?type=create&plan=tier-2"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <span class="text-sub-body font-medium">Start building</span>
+                                </a>
                             </div>
                         </div>
                         <div class="web-mini-card">
