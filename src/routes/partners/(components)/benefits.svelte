@@ -43,7 +43,7 @@
             description:
                 'Volume discounts are available in case you handle the bill for your clients.',
             icon: Discounts
-        },
+        }
     ];
 </script>
 
