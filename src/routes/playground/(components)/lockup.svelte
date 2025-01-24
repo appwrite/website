@@ -105,6 +105,7 @@
             stroke-dasharray="2 2"
             stroke-miterlimit="10"
             stroke-width="2"
+            class="z-line"
         />
         <path
             d="m208.56 162.3-50.401-87.296"
@@ -539,7 +540,7 @@
 <style lang="scss">
     .lockup {
         --duration: 0.75s;
-        --delay: 1.5s;
+        --delay: 1s;
 
         @keyframes background-layer {
             from {
@@ -565,7 +566,7 @@
             }
         }
 
-        .grid-lines {
+        .grid-lines > path {
             opacity: 0;
             animation: grid-lines var(--duration) ease-in-out forwards var(--delay);
         }

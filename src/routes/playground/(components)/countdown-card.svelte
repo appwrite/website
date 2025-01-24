@@ -20,24 +20,26 @@
 <a href="#day-{index}">
     <span class="text-caption text-secondary mb-2 block">Day {index}</span>
     <div
-        class="relative flex aspect-square flex-col items-center justify-center gap-4 rounded-[4px] border border-white/32 bg-black outline outline-offset-4 outline-white/32 outline-dashed"
+        class="aspect-square gap-4 rounded-[4px] border border-white/32 bg-black outline outline-offset-4 outline-white/32 outline-dashed"
     >
-        <img src={illustration} alt="Logo" class="size-24" />
-        <div class="font-aeonik-fono text-primary text-base uppercase">
-            {#if hasReleased}
-                <span>{title}</span><span class="text-accent">_</span>
-            {:else if $hours > 24}
-                <p>
-                    {$days}
-                    {$days > 1 ? 'days' : 'day'}
-                </p>
-            {:else}
-                <div class="flex items-center gap-0.5 text-center">
-                    <Counter value={$hours} />:<Counter value={$minutes} />:<Counter
-                        value={$seconds}
-                    />
-                </div>
-            {/if}
+        <div class="bg-smooth relative flex h-full w-full flex-col items-center justify-center">
+            <img src={illustration} alt="Logo" class="size-24" />
+            <div class="font-aeonik-fono text-primary text-base uppercase">
+                {#if hasReleased}
+                    <span>{title}</span><span class="text-accent">_</span>
+                {:else if $hours > 24}
+                    <p>
+                        {$days}
+                        {$days > 1 ? 'days' : 'day'}
+                    </p>
+                {:else}
+                    <div class="flex items-center gap-0.5 text-center">
+                        <Counter value={$hours} />:<Counter value={$minutes} />:<Counter
+                            value={$seconds}
+                        />
+                    </div>
+                {/if}
+            </div>
         </div>
     </div>
 </a>
