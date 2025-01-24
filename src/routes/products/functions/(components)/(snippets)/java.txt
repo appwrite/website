@@ -1,0 +1,42 @@
+package io.openruntimes.java.src;
+
+import io.openruntimes.java.RuntimeContext;
+import io.openruntimes.java.RuntimeOutput;
+import java.util.HashMap;
+import io.appwrite.Client;
+
+public class Main {
+
+    // This is your Appwrite function
+    // It's executed each time we get a request
+    public RuntimeOutput main(RuntimeContext context) throws Exception {
+        // Why not try the Appwrite SDK?
+        //
+        // Set project and set API key
+        // Client client = new Client();
+        //     .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
+        //     .setKey(context.getReq().getHeaders().get("x-appwrite-key"));
+
+        // You can log messages to the console
+        context.log("Hello, Logs!");
+
+        // If something goes wrong, log an error
+        context.error("Hello, Errors!");
+
+        // The 'context.getReq()' object contains the request data
+        if (context.getReq().getMethod().equals("GET")) {
+            // Send a response with the res object helpers
+            // 'context.getRes().text()' dispatches a string back to the client
+            return context.getRes().text("Hello, World!");
+        }
+
+        Map json = new HashMap<>();
+        json.put("motto", "Build like a team of hundreds_");
+        json.put("learn", "https://appwrite.io/docs");
+        json.put("connect", "https://appwrite.io/discord");
+        json.put("getInspired", "https://builtwith.appwrite.io");
+
+        // 'context.getRes().json()' is a handy helper for sending JSON
+        return context.getRes().json(json);
+    }
+}
