@@ -61,7 +61,10 @@
             <li class="web-strip-plans-item web-strip-plans-container-query">
                 <div class="web-strip-plans-item-wrapper">
                     <div class="web-strip-plans-plan">
-                        <h4 class="title text-description">Pro</h4>
+                        <div class="flex gap-3">
+                            <h4 class="title text-description">Pro</h4>
+                            <div class="web-inline-tag is-pink text-sub-body">Most popular</div>
+                        </div>
                         <div class="mt-4 flex flex-col">
                             <span>From</span>
                             <div class="flex items-end gap-2">
@@ -94,7 +97,7 @@
             <li class="web-strip-plans-item web-strip-plans-container-query">
                 <div class="web-strip-plans-item-wrapper">
                     <div class="web-strip-plans-plan">
-                        <h4 class="text-description text-primary">Enterprise</h4>
+                        <h4 class="text-description text-primary">Scale</h4>
                         <div class="mt-4 flex flex-col">
                             <span>From</span>
                             <div class="flex items-end gap-2">
@@ -106,6 +109,35 @@
                     <p class="web-strip-plans-info text-caption font-medium">
                         For teams that handle more complex and large projects and need more control
                         and support.
+                    </p>
+                    <a
+                        href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=create&plan=tier-2`}
+                        class="web-button is-full-width-mobile web-u-cross-child-end"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        on:click={() =>
+                            trackEvent({
+                                plausible: {
+                                    name: 'Get started Scale plan'
+                                }
+                            })}
+                    >
+                        <span class="text">Start building</span>
+                    </a>
+                </div>
+            </li>
+            <li class="web-strip-plans-item web-strip-plans-container-query">
+                <div class="web-strip-plans-item-wrapper">
+                    <div class="web-strip-plans-plan">
+                        <h4 class="text-description text-primary">Enterprise</h4>
+                        <div class="mt-4 flex flex-col">
+                            <div class="flex items-end gap-2">
+                                <div class="text-title font-aeonik-pro text-primary">Custom</div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="web-strip-plans-info text-caption font-medium">
+                        For enterprises that need more power and premium support.
                     </p>
                     <a
                         href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=create&plan=tier-2`}

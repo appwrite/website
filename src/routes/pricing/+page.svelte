@@ -84,7 +84,7 @@
                                                 Free
                                             </h2>
                                             <div
-                                                class="text-title font-aeonik-pro text-primary mt-10 -mb-6"
+                                                class="text-title font-aeonik-pro text-primary mt-12 -mb-6"
                                             >
                                                 $0
                                             </div>
@@ -95,7 +95,7 @@
                                             </p>
                                             <a
                                                 href="{PUBLIC_APPWRITE_DASHBOARD}/register"
-                                                class="web-button is-secondary is-full-width mt-7"
+                                                class="web-button is-secondary is-full-width mt-8"
                                             >
                                                 <span class="text-sub-body font-medium"
                                                     >Start building</span
@@ -161,7 +161,7 @@
                                             </p>
                                             <a
                                                 href="https://cloud.appwrite.io/console?type=create&plan=tier-1"
-                                                class="web-button is-full-width mt-8"
+                                                class="web-button is-full-width mt-9"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
@@ -212,7 +212,7 @@
                                                 <span class="-mb-4">From</span>
                                                 <div class="flex items-end gap-2">
                                                     <div
-                                                        class="text-title font-aeonik-pro text-primary mt-2"
+                                                        class="text-title font-aeonik-pro text-primary mt-3"
                                                     >
                                                         $599
                                                     </div>
@@ -226,7 +226,7 @@
                                             </p>
                                             <a
                                                 href="https://cloud.appwrite.io/console?type=create&plan=tier-2"
-                                                class="web-button is-full-width mt-8"
+                                                class="web-button is-full-width mt-10"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
@@ -267,7 +267,7 @@
                                                 Enterprise
                                             </h2>
                                             <div
-                                                class="text-title font-aeonik-pro text-primary mt-10 -mb-8"
+                                                class="text-title font-aeonik-pro text-primary mt-10 -mb-6"
                                             >
                                                 Custom
                                             </div>
@@ -278,7 +278,7 @@
                                             </p>
                                             <a
                                                 href="/contact-us/enterprise"
-                                                class="web-button is-secondary is-full-width mt-8"
+                                                class="web-button is-secondary is-full-width mt-10"
                                                 rel="noopener noreferrer"
                                             >
                                                 <!-- <span class="web-sub-body-500">Start trial</span> -->
