@@ -5,7 +5,6 @@
     import Revenue from '../(assets)/icons/revenue.svg';
     import EarlyAccess from '../(assets)/icons/early-access.svg';
     import Discounts from '../(assets)/icons/discounts.svg';
-    import { classNames } from '$lib/utils/classnames';
 
     const items = [
         {
@@ -31,7 +30,7 @@
             description:
                 'You will get early access to new features and products and the ability to influence our roadmap.',
             icon: EarlyAccess
-        }
+        },
         {
             title: 'Revenue share',
             description:
