@@ -5,25 +5,12 @@
     import Revenue from '../(assets)/icons/revenue.svg';
     import EarlyAccess from '../(assets)/icons/early-access.svg';
     import Discounts from '../(assets)/icons/discounts.svg';
-    import { classNames } from '$lib/utils/classnames';
 
     const items = [
         {
-            title: 'Revenue share',
-            description:
-                'For each client you sell Appwrite to you will receive a part of the revenue for a whole year.',
-            icon: Revenue
-        },
-        {
-            title: 'Discounts',
-            description:
-                'You will be able to provide your clients with Cloud credits to give them discounts on their Appwrite account.',
-            icon: Discounts
-        },
-        {
             title: 'Co-marketing',
             description:
-                'We will have a dedicated partner catalog, and official partner badge and other visibility opportunities.',
+                'We will have a dedicated partner catalog, an official partner badge, and other visibility opportunities.',
             icon: CoMarketing
         },
         {
@@ -43,6 +30,18 @@
             description:
                 'You will get early access to new features and products and the ability to influence our roadmap.',
             icon: EarlyAccess
+        },
+        {
+            title: 'Revenue share',
+            description:
+                'For each client you sell Appwrite to, you will receive a part of the revenue for a whole year.',
+            icon: Revenue
+        },
+        {
+            title: 'Discounts',
+            description:
+                'Volume discounts are available in case you handle the bill for your clients.',
+            icon: Discounts
         }
     ];
 </script>
