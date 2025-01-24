@@ -11,11 +11,12 @@
     import MainFooter from '../lib/components/MainFooter.svelte';
     import DeveloperCard from './DeveloperCard.svelte';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import CoverImage from './dashboard.png';
+    import CoverImage from './dashboard.webp';
     import Hero from '$lib/components/ui/Hero.svelte';
     import GradientText from '$lib/components/ui/GradientText.svelte';
     import Badge from '$lib/components/ui/Badge.svelte';
     import { trackEvent } from '$lib/actions/analytics';
+    import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -79,9 +80,7 @@
 
 <div
     style:position="absolute"
-    style:top="0"
-    style:width="100vw"
-    style:height="100vh"
+    style:inset="0"
     style:overflow="hidden"
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
@@ -92,7 +91,7 @@
         <enhanced:img
             style="width:1466px; height:804px; transform:rotate(150.348deg); opacity: 0.65; filter: blur(127.5px);
 		max-block-size: unset; max-inline-size: unset;"
-            src="./top-page-dark.png"
+            src="./top-page-dark.webp"
             alt=""
         />
     </div>
@@ -103,7 +102,7 @@
     style="top: 22rem; left: 54%; translate: calc(-50% - 900px); width: 75.9375rem;"
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
-    <img src="/images/bgs/hero-lines-1.png" alt="" />
+    <img src="/images/bgs/hero-lines-1.webp" alt="" />
 </div>
 
 <div
@@ -112,7 +111,7 @@
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
     <div style="left: 0;">
-        <img src="/images/bgs/hero-lines-2.png" alt="" />
+        <img src="/images/bgs/hero-lines-2.webp" alt="" />
     </div>
 </div>
 
@@ -122,16 +121,14 @@
             <div class="my-12 lg:my-[7.5rem]">
                 <section class="container pb-0">
                     <a
-                        href="/blog/post/introducing-database-backups"
+                        href="/blog/post/introducing-new-compute-capabilities-appwrite-functions"
                         class="web-hero-banner-button mb-4"
-                        on:click={() => trackEvent('Banner button click')}
+                        on:click={() => trackEvent({ plausible: { name: 'Banner button click' } })}
                     >
                         <span class="web-icon-star shrink-0" aria-hidden="true" />
                         <span class="text-caption shrink-0 font-medium">New</span>
                         <div class="web-hero-banner-button-sep" />
-                        <span class="text-caption web-u-trim-1"
-                            >Introducing Database Backups</span
-                        >
+                        <span class="text-caption web-u-trim-1">New compute options available</span>
                         <span class="web-icon-arrow-right shrink-0" aria-hidden="true" />
                     </a>
                     <Hero>
@@ -146,19 +143,26 @@
                             Functions, Storage, and Messaging to your projects using the frameworks
                             and languages of your choice.
                         </svelte:fragment>
-                        <a
-                            href={PUBLIC_APPWRITE_DASHBOARD}
-                            class="web-button mt-8 w-full lg:w-fit"
-                            slot="cta"
-                            on:click={() => trackEvent('Get started in hero')}
-                        >
-                            Get started
-                        </a>
+                        <div class="mt-8 flex flex-col gap-4 sm:flex-row" slot="cta">
+                            <a
+                                href={PUBLIC_APPWRITE_DASHBOARD}
+                                class="web-button w-full lg:w-fit"
+                                on:click={() =>
+                                    trackEvent({
+                                        plausible: { name: 'Get started in hero' },
+                                        posthog: { name: 'get-started-btn_hero_click' }
+                                    })}
+                            >
+                                Get started
+                            </a>
+
+                            <AppwriteIn100Seconds />
+                        </div>
                     </Hero>
                 </section>
             </div>
             <div class="mb-12 lg:my-[7.5rem]">
-                <section class="container web-u-padding-block-0" style="--container-size:78.75rem">
+                <section class="web-u-padding-block-0 container" style="--container-size:78.75rem">
                     <div class="web-media-container">
                         <img
                             class="block"
@@ -305,10 +309,10 @@
                     </section>
                     <div class="mt-20 overflow-hidden">
                         <ul
-                            class="web-info-boxes text-sub-body divide-x divide-y divide-black/[0.04] font-medium"
+                            class="web-info-boxes text-sub-body divide-x divide-y divide-black/4 font-medium"
                         >
                             {#each infoBoxes as box}
-                                <li class="relative border-black/[0.04] p-8 last-of-type:border-r">
+                                <li class="relative border-black/4 p-8 last-of-type:border-r">
                                     <img src={box.icon} width="40" height="40" alt="" />
                                     <h3
                                         class="text-primary mt-4 flex flex-wrap items-baseline gap-3"
@@ -456,7 +460,8 @@
                         <a
                             href="/docs/sdks"
                             class="web-button is-secondary"
-                            on:click={() => trackEvent('Explore all SDKs')}>Explore all SDKs</a
+                            on:click={() => trackEvent({ plausible: { name: 'Explore all SDKs' } })}
+                            >Explore all SDKs</a
                         >
                     </section>
                 </div>

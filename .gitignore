@@ -19,3 +19,4 @@ package-lock.json
 terraform/**/.t*
 terraform/**/.env
 terraform/**/**/*.tfstate*
+/.cache

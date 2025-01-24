@@ -90,6 +90,16 @@
             ]
         },
         {
+            label: 'Add ons',
+            items: [
+                {
+                    new: true,
+                    label: 'Compute',
+                    href: '/docs/advanced/platform/compute'
+                },
+            ]
+        },
+        {
             label: 'Configuration',
             items: [
                 {
@@ -103,11 +113,16 @@
             ]
         },
         {
-            label: 'Policy',
+            label: 'Policies',
             items: [
                 {
-                    label: 'Release policy',
+                    label: 'Release',
                     href: '/docs/advanced/platform/release-policy'
+                },
+                {
+                    new: true,
+                    label: 'Fair use',
+                    href: '/docs/advanced/platform/fair-use-policy'
                 }
             ]
         }

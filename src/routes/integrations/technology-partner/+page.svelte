@@ -9,6 +9,7 @@
     //import BlobPink from "$routes/startups/(assets)/blob-pink.svg";
     // import BlobPinkMobile from "$routes/startups/(assets)/blob-pink-mobile.svg";
     import Pink from './bg.png';
+    import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
 
     let email = '';
@@ -43,7 +44,8 @@
                 integrationStatus,
                 integrationDocs: linkToDocumentation,
                 brandAssets: productUrl,
-                extraDetails
+                extraDetails,
+                ...getReferrerAndUtmSource()
             })
         });
         if (response.status >= 400) {

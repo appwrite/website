@@ -97,7 +97,7 @@
                                                     <span>Unlimited projects</span>
                                                 </li>
                                                 <li><span>Never paused</span></li>
-                                                <li><span>10GB bandwidth</span></li>
+                                                <li><span>5GB bandwidth</span></li>
                                                 <li><span>2GB storage</span></li>
                                                 <li><span>750K executions</span></li>
                                                 <li><span>75K monthly active users</span></li>
@@ -358,11 +358,5 @@
     .web-pricing-cards-list {
         gap: 1rem;
         grid-template-columns: repeat(4, 1fr);
-    }
-
-    .web-pricing-cards-list .web-main-body-500 {
-        height: 78px;
-        --p-font-size: unset !important;
-        --p-line-height: var(--web-line-height-sm);
     }
 </style>
