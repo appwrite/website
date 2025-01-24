@@ -4,8 +4,8 @@
     import { classNames } from '$lib/utils/classnames';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
 
-    let personName = '';
-    let personEmail = '';
+    let name = '';
+    let email = '';
     let companyName = '';
     let companyUrl = '';
     let message = '';
@@ -18,14 +18,14 @@
         error = undefined;
         submitting = true;
 
-        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/conversations/partners`, {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/conversations/partner`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                personName,
-                personEmail,
+                name,
+                email,
                 companyName,
                 companyUrl,
                 message,
@@ -90,7 +90,7 @@
                             type="text"
                             placeholder="Walter O'Brien"
                             aria-label="Full name"
-                            bind:value={personName}
+                            bind:value={name}
                         />
                     </div>
                     <div class="flex flex-col gap-1">
@@ -101,7 +101,7 @@
                             type="email"
                             placeholder="walter@company.com"
                             aria-label="Email address"
-                            bind:value={personEmail}
+                            bind:value={email}
                         />
                     </div>
 
