@@ -5,6 +5,9 @@
     import Revenue from '../(assets)/icons/revenue.svg';
     import EarlyAccess from '../(assets)/icons/early-access.svg';
     import Discounts from '../(assets)/icons/discounts.svg';
+    import Experience from '../(assets)/icons/experience.svg';
+    import Expert from '../(assets)/icons/expert.svg';
+    import Ship from '../(assets)/icons/ship.svg';
 
     const items = [
         {
@@ -44,9 +47,30 @@
             icon: Discounts
         }
     ];
+
+    const whys = [
+        {
+            title: 'Great experience',
+            description:
+                'Appwrite is built for developers and provides a world class experience. Never worry about scaling or security again.',
+            icon: Experience
+        },
+        {
+            title: 'Ship faster',
+            description:
+                'Appwrite reduces the time and resources spent building a backend infrastructure from scratch.',
+            icon: Ship
+        },
+        {
+            title: 'Expert team',
+            description:
+                'Get support from the Appwrite team to build highly customizable applications for your clients.',
+            icon: Expert
+        }
+    ];
 </script>
 
-<div class="flex flex-col items-center pt-24 pb-24">
+<div class="border-smooth flex flex-col items-center border-b pt-24 pb-24">
     <div class="mb-20 flex flex-col gap-2 text-center">
         <span class="font-aeonik-fono tracking-loose text-micro text-primary uppercase">
             Benefits<span class="text-accent">_</span>
@@ -148,4 +172,30 @@
             </div>
         </div>
     </div>
+
+    <a href="/#become-a-partner" class="web-button is-secondary mt-20 mx-auto">Become a partner</a>
+</div>
+
+<div class="border-smooth flex flex-col items-center pt-24 pb-24">
+    <div class="mb-20 flex flex-col gap-2 text-center">
+        <h2 class="text-primary font-aeonik-pro text-title">Why Appwrite?</h2>
+    </div>
+
+    <div class="border-smooth relative w-full border-y border-dashed">
+        <div
+            class="container divide-smooth grid grid-cols-1 gap-px divide-dashed max-md:divide-y md:grid-cols-3 md:divide-x"
+        >
+            {#each whys as why}
+                <div
+                    class="bg-greyscale-900 relative flex flex-col gap-4 p-8 nth-of-type-[3]:border-none"
+                >
+                    <img src={why.icon} alt="{why.title} Icon" class="size-12" />
+                    <span class="text-primary -mb-3">{why.title}</span>
+                    <p class="text-secondary">{why.description}</p>
+                </div>
+            {/each}
+        </div>
+    </div>
+
+    <a href="/#become-a-partner" class="web-button is-secondary mt-20 mx-auto">Become a partner</a>
 </div>
