@@ -650,6 +650,10 @@
         grid-template-columns: repeat(5, 2fr);
     }
 
+    .web-mini-card {
+        padding-inline-start: inherit !important;
+    }
+
     .web-label {
         font-size: var(--web-font-size-medium);
     }
