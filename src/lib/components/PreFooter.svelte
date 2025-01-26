@@ -107,8 +107,8 @@
                         </div>
                     </div>
                     <p class="web-strip-plans-info text-caption font-medium">
-                        For teams that manage large, complex projects and require more control with
-                        added support.
+                        For teams that handle more complex and large projects and need more control
+                        and support.
                     </p>
                     <a
                         href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=create&plan=tier-2`}
