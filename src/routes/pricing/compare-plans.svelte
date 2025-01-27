@@ -207,8 +207,8 @@
 		{
                     title: 'Aditional writes',
                     free: '-',
-                    pro: '$0.010 per 100k writes',
-                    scale: '$0.010 per 100k writes',
+                    pro: '$0.10 per 100k writes',
+                    scale: '$0.10 per 100k writes',
                     enterprise: 'Unlimited'
                 },
                 {
