@@ -85,6 +85,82 @@ val response = teams.createMembership(
 ```
 {% /multicode %}
 
+## Accept invitations {% #accept-invitations %}
+
+For client-side email invites, users must accept the invitation to join the team. The acceptance flow:
+1. User receives an email with an invitation link
+2. Clicking the link redirects to your app
+3. Your app calls the acceptance endpoint
+4. Upon success, the user gains immediate access
+
+{% multicode %}
+```client-web
+import { Client, Teams } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const teams = new Teams(client);
+
+// Accept the invitation using the membership ID
+const response = await teams.updateMembershipStatus(
+    'team_id',
+    'membership_id',
+    'user_id'
+);
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final teams = Teams(client);
+
+// Accept the invitation using the membership ID
+final response = await teams.updateMembershipStatus(
+    teamId: 'team_id',
+    membershipId: 'membership_id',
+    userId: 'user_id'
+);
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let teams = Teams(client)
+
+// Accept the invitation using the membership ID
+let response = try await teams.updateMembershipStatus(
+    teamId: "team_id",
+    membershipId: "membership_id",
+    userId: "user_id"
+)
+```
+```kotlin
+import io.appwrite.Client
+import io.appwrite.services.Teams
+
+val client = Client(context)
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val teams = Teams(client)
+
+// Accept the invitation using the membership ID
+val response = teams.updateMembershipStatus(
+    teamId = "team_id",
+    membershipId = "membership_id",
+    userId = "user_id"
+)
+```
+{% /multicode %}
+
 # Server-side custom flows {% #server-side %}
 
 Server-side membership creation bypasses the email invitation process, allowing direct member addition. This approach:
@@ -174,82 +250,6 @@ val response = teams.createMembership(
 {% /multicode %}
 
 # Manage memberships {% #manage-memberships %}
-
-## Accept invitations {% #accept-invitations %}
-
-For client-side email invites, users must accept the invitation to join the team. The acceptance flow:
-1. User receives an email with an invitation link
-2. Clicking the link redirects to your app
-3. Your app calls the acceptance endpoint
-4. Upon success, the user gains immediate access
-
-{% multicode %}
-```client-web
-import { Client, Teams } from "appwrite";
-
-const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('<PROJECT_ID>');
-
-const teams = new Teams(client);
-
-// Accept the invitation using the membership ID
-const response = await teams.updateMembershipStatus(
-    'team_id',
-    'membership_id',
-    'user_id'
-);
-```
-```client-flutter
-import 'package:appwrite/appwrite.dart';
-
-final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('<PROJECT_ID>');
-
-final teams = Teams(client);
-
-// Accept the invitation using the membership ID
-final response = await teams.updateMembershipStatus(
-    teamId: 'team_id',
-    membershipId: 'membership_id',
-    userId: 'user_id'
-);
-```
-```client-apple
-import Appwrite
-
-let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<PROJECT_ID>")
-
-let teams = Teams(client)
-
-// Accept the invitation using the membership ID
-let response = try await teams.updateMembershipStatus(
-    teamId: "team_id",
-    membershipId: "membership_id",
-    userId: "user_id"
-)
-```
-```kotlin
-import io.appwrite.Client
-import io.appwrite.services.Teams
-
-val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<PROJECT_ID>")
-
-val teams = Teams(client)
-
-// Accept the invitation using the membership ID
-val response = teams.updateMembershipStatus(
-    teamId = "team_id",
-    membershipId = "membership_id",
-    userId = "user_id"
-)
-```
-{% /multicode %}
 
 ## Check membership status {% #status %}
 
