@@ -187,7 +187,7 @@
         >
             {#each whys as why}
                 <div
-                    class="bg-greyscale-900 relative flex flex-col gap-4 p-8 nth-of-type-[3]:border-none"
+                    class="bg-greyscale-900 relative flex flex-col items-center gap-4 p-8 text-center nth-of-type-[3]:border-none"
                 >
                     <img src={why.icon} alt="{why.title} Icon" class="size-12" />
                     <span class="text-primary -mb-3">{why.title}</span>
