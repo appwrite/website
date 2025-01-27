@@ -3,6 +3,7 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
+    import Hero from '../(components)/hero.svelte';
     import Window from '../(components)/retro-ui/Window.svelte';
     import Ticket from '../(components)/ticket/Ticket.svelte';
     import { getMockContributions } from '../helpers';
@@ -30,6 +31,7 @@
 </svelte:head>
 
 <Main>
+    <Hero />
     <Window class="flex aspect-[12.8/7.4] h-full flex-1 flex-col">
         <span slot="title">Init</span>
 
