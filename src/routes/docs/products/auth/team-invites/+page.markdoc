@@ -8,13 +8,13 @@ Appwrite provides two approaches for adding members to teams: client-side email 
 
 # Client-side email invites {% #client-side %}
 
-Client-side email invites provide a user-friendly way to add members to your team. When creating a membership, Appwrite:
+Client-side email invites are perfect for implementing user-to-user invitations, allowing your users to invite others to join their teams, organizations, or shared resources. When creating a membership, Appwrite:
 1. Creates a new user account if one doesn't exist for the email address
 2. Sends an automated email invitation to the user
 3. Creates a pending membership
 4. Activates the membership when the user accepts
 
-Client-side invites are ideal when you want a simple, automated process.
+Client-side invites are ideal when you want a simple, automated process that lets your users manage their own team invitations.
 Appwrite handles the email delivery with built-in templates and localization support, making it easy to implement a standard invite acceptance flow with email verification.
 
 {% multicode %}
