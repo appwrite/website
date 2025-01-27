@@ -66,7 +66,7 @@ let membership = try await teams.createMembership(
     email: "user@example.com"
 )
 ```
-```kotlin
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Teams
 
@@ -142,7 +142,7 @@ let response = try await teams.updateMembershipStatus(
     userId: "user_id"
 )
 ```
-```kotlin
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Teams
 
@@ -333,7 +333,7 @@ if let userMembership = response.memberships.first(where: { $0.userId == "user_i
     print(userMembership.roles) // ['developer', etc]
 }
 ```
-```kotlin
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Teams
 
@@ -531,7 +531,7 @@ try await teams.deleteMembership(
     membershipId: "membership_id"
 )
 ```
-```kotlin
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Teams
 
