@@ -52,7 +52,7 @@
                    As your business grows, so do the opportunities with Appwrite. 
                    Our Partner Program is designed to evolve with you, offering flexible 
                    tiers that adapt to your unique needs and goals. Together, we’ll build
-                   a scalable partnership that ensures long-term success in a competitive market."
+                   a scalable partnership that ensures long-term success in a competitive market.
                 </p>
             </div>
 
