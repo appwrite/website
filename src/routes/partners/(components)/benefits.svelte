@@ -50,9 +50,9 @@
 
     const whys = [
         {
-            title: 'Great experience',
+            title: 'Developer experience',
             description:
-                'Appwrite is built for developers and provides a world class experience. Never worry about scaling or security again.',
+                'Appwrite is built for and by developers, with a strong focus on your experience. Never worry about scaling or security again.',
             icon: Experience
         },
         {
@@ -62,9 +62,9 @@
             icon: Ship
         },
         {
-            title: 'Expert team',
+            title: 'All in one platform',
             description:
-                'Get support from the Appwrite team to build highly customizable applications for your clients.',
+                'All the APIs a developer needs in one place. And more to come.',
             icon: Expert
         }
     ];
