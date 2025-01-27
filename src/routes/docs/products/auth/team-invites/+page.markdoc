@@ -548,6 +548,163 @@ teams.deleteMembership(
 ```
 {% /multicode %}
 
+# Manage team permissions {% #permissions %}
+
+Teams in Appwrite use a role-based access control (RBAC) system. Each team member can be assigned one or more roles that define their permissions within the team.
+
+## Update roles {% #update-roles %}
+
+You can assign roles when creating a membership or update them later. Note that only team members with the owner role can update other members' roles:
+
+{% multicode %}
+```client-web
+import { Client, Teams } from "appwrite"
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+
+const teams = new Teams(client)
+
+// Update member roles
+await teams.updateMembership(
+    'team_id',
+    'membership_id',
+    ['admin', 'developer']
+)
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart'
+
+final client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+
+final teams = Teams(client)
+
+// Update member roles
+await teams.updateMembership(
+    teamId: 'team_id',
+    membershipId: 'membership_id',
+    roles: ['admin', 'developer']
+)
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let teams = Teams(client)
+
+// Update member roles
+try await teams.updateMembership(
+    teamId: "team_id",
+    membershipId: "membership_id",
+    roles: ["admin", "developer"]
+)
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Teams
+
+val client = Client(context)
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val teams = Teams(client)
+
+// Update member roles
+teams.updateMembership(
+    teamId = "team_id",
+    membershipId = "membership_id",
+    roles = listOf("admin", "developer")
+)
+```
+{% /multicode %}
+
+## Check role access {% #check-role-access %}
+
+You can verify if a user has specific roles:
+
+{% multicode %}
+```client-web
+import { Client, Teams } from "appwrite"
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+
+const teams = new Teams(client)
+
+// Get team memberships
+const response = await teams.listMemberships('team_id')
+
+// Check if user has specific role
+const membership = response.memberships.find(m => m.userId === 'user_id')
+const isAdmin = membership?.roles.includes('admin') ?? false
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart'
+
+final client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+
+final teams = Teams(client)
+
+// Get team memberships
+final response = await teams.listMemberships(
+    teamId: 'team_id'
+)
+
+// Check if user has specific role
+final membership = response.memberships.firstWhere(
+    (m) => m.userId == 'user_id',
+    orElse: () => null
+)
+final isAdmin = membership?.roles.contains('admin') ?? false
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let teams = Teams(client)
+
+// Get team memberships
+let response = try await teams.listMemberships(
+    teamId: "team_id"
+)
+
+// Check if user has specific role
+let membership = response.memberships.first { $0.userId == "user_id" }
+let isAdmin = membership?.roles.contains("admin") ?? false
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Teams
+
+val client = Client(context)
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val teams = Teams(client)
+
+// Get team memberships
+val response = teams.listMemberships(
+    teamId = "team_id"
+)
+
+// Check if user has specific role
+val membership = response.memberships.find { it.userId == "user_id" }
+val isAdmin = membership?.roles?.contains("admin") ?: false
+```
+{% /multicode %}
+
 {% arrow_link href="/docs/products/auth/teams" %}
 Learn more about team management
 {% /arrow_link %}
