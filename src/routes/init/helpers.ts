@@ -5,7 +5,7 @@ import { OAuthProvider } from '@appwrite.io/console';
 import { appwriteInit } from '$lib/appwrite/init';
 import { getAppwriteUser, type AppwriteUser } from '$lib/utils/console';
 import type { ContributionsMatrix, TicketData, TicketDoc } from './tickets/constants';
-import { BASE_URL } from '$routes/playground/tickets/constants';
+import { BASE_URL } from '$routes/(init)/playground/tickets/constants';
 
 export function createCountdown(date: Date) {
     const today = new Date();

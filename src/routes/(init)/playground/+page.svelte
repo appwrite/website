@@ -61,37 +61,25 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<Main>
-    <Hero />
-    <CountdownGrid {days} />
+<Hero />
+<CountdownGrid {days} />
 
-    <div class="container space-y-20 divide-y divide-white/8 py-20">
-        {#each days as day, i}
-            <Day release={day.release}>
-                {#if i === 0}
-                    <DayOne index={i} release={day.release} />
-                {:else if i === 1}
-                    <DayOne index={i} release={day.release} />
-                {:else if i === 2}
-                    <DayOne index={i} release={day.release} />
-                {:else if i === 3}
-                    <DayOne index={i} release={day.release} />
-                {:else if i === 4}
-                    <DayOne index={i} release={day.release} />
-                {:else}
-                    <DayOne index={i} release={day.release} />
-                {/if}
-            </Day>
-        {/each}
-    </div>
-    <div class="container">
-        <FooterNav />
-        <MainFooter />
-    </div>
-    <div
-        class="absolute inset-0 h-full w-full bg-[radial-gradient(rgba(255,255,255,0.24)_1px,transparent_1px)] [background-size:128px_128px]"
-    />
-</Main>
-
-<style>
-</style>
+<div class="container space-y-20 divide-y divide-white/8 py-20">
+    {#each days as day, i}
+        <Day release={day.release}>
+            {#if i === 0}
+                <DayOne index={i} release={day.release} />
+            {:else if i === 1}
+                <DayOne index={i} release={day.release} />
+            {:else if i === 2}
+                <DayOne index={i} release={day.release} />
+            {:else if i === 3}
+                <DayOne index={i} release={day.release} />
+            {:else if i === 4}
+                <DayOne index={i} release={day.release} />
+            {:else}
+                <DayOne index={i} release={day.release} />
+            {/if}
+        </Day>
+    {/each}
+</div>

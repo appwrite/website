@@ -11,7 +11,7 @@
     height="420"
     viewBox="0 0 750 420"
     fill="none"
-    class={classNames('lockup mx-auto w-full', classes)}
+    class={classNames('lockup mx-auto w-full overflow-hidden', classes)}
 >
     <g class="background-layer">
         <path

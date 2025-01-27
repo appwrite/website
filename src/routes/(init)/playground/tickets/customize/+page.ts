@@ -4,9 +4,10 @@ import { BASE_URL } from '../constants.js';
 
 export const load = async ({ fetch }) => {
     const loggedIn = await isLoggedIn();
-    if (!loggedIn) {
-        redirect(307, BASE_URL);
-    }
+    console.log({ loggedIn });
+    // if (!loggedIn) {
+    //     redirect(307, BASE_URL);
+    // }
 
     const user = await getUser();
     const ticket = await getTicketByUser(user, fetch);
