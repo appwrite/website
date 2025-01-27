@@ -218,7 +218,7 @@
             rows: [
                 {
                     title: 'Buckets',
-                    free: '3 per project',
+                    free: '1 per project',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
@@ -244,7 +244,7 @@
             rows: [
                 {
                     title: 'Functions',
-                    free: '5 per project',
+                    free: '3 per project',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
