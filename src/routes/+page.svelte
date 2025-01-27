@@ -17,10 +17,13 @@
     import Badge from '$lib/components/ui/Badge.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
+    import { page } from '$app/stores';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
     const ogImage = `${DEFAULT_HOST}/images/open-graph/website.png`;
+
+    const ctaCopy = $page.data.ctaCopy;
 
     const infoBoxes: Array<{ label: string; description: string; icon: string }> = [
         {
@@ -153,7 +156,7 @@
                                         posthog: { name: 'get-started-btn_hero_click' }
                                     })}
                             >
-                                Get started
+                                {ctaCopy}
                             </a>
 
                             <AppwriteIn100Seconds />

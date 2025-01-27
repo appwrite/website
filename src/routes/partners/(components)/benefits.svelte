@@ -5,25 +5,15 @@
     import Revenue from '../(assets)/icons/revenue.svg';
     import EarlyAccess from '../(assets)/icons/early-access.svg';
     import Discounts from '../(assets)/icons/discounts.svg';
-    import { classNames } from '$lib/utils/classnames';
+    import Experience from '../(assets)/icons/experience.svg';
+    import Expert from '../(assets)/icons/expert.svg';
+    import Ship from '../(assets)/icons/ship.svg';
 
     const items = [
         {
-            title: 'Revenue share',
-            description:
-                'For each client you sell Appwrite to you will receive a part of the revenue for a whole year.',
-            icon: Revenue
-        },
-        {
-            title: 'Discounts',
-            description:
-                'You will be able to provide your clients with Cloud credits to give them discounts on their Appwrite account.',
-            icon: Discounts
-        },
-        {
             title: 'Co-marketing',
             description:
-                'We will have a dedicated partner catalog, and official partner badge and other visibility opportunities.',
+                'We will have a dedicated partner catalog, an official partner badge, and other visibility opportunities.',
             icon: CoMarketing
         },
         {
@@ -43,11 +33,44 @@
             description:
                 'You will get early access to new features and products and the ability to influence our roadmap.',
             icon: EarlyAccess
+        },
+        {
+            title: 'Revenue share',
+            description:
+                'For each client you sell Appwrite to, you will receive a part of the revenue for a whole year.',
+            icon: Revenue
+        },
+        {
+            title: 'Discounts',
+            description:
+                'Volume discounts are available in case you handle the bill for your clients.',
+            icon: Discounts
+        }
+    ];
+
+    const whys = [
+        {
+            title: 'Great experience',
+            description:
+                'Appwrite is built for developers and provides a world class experience. Never worry about scaling or security again.',
+            icon: Experience
+        },
+        {
+            title: 'Ship faster',
+            description:
+                'Appwrite reduces the time and resources spent building a backend infrastructure from scratch.',
+            icon: Ship
+        },
+        {
+            title: 'Expert team',
+            description:
+                'Get support from the Appwrite team to build highly customizable applications for your clients.',
+            icon: Expert
         }
     ];
 </script>
 
-<div class="flex flex-col items-center pt-24 pb-24">
+<div class="border-smooth flex flex-col items-center border-b pt-24 pb-24">
     <div class="mb-20 flex flex-col gap-2 text-center">
         <span class="font-aeonik-fono tracking-loose text-micro text-primary uppercase">
             Benefits<span class="text-accent">_</span>
@@ -55,24 +78,124 @@
         <h2 class="text-primary font-aeonik-pro text-title">Growing together</h2>
     </div>
 
-    <div
-        class={classNames(
-            'border-smooth relative w-full border-y border-dashed',
-            'before:border-smooth before:absolute before:inset-x-0 before:top-1/2 before:hidden before:h-px before:-translate-y-1/2 before:border before:border-dashed before:md:block'
-        )}
-    >
+    <div class="hidden w-full lg:block">
+        <div class="border-smooth relative w-full border-t border-dashed">
+            <div
+                class="container divide-smooth hidden grid-cols-3 gap-px divide-x divide-dashed lg:grid"
+            >
+                {#each items.slice(0, 3) as item}
+                    <div
+                        class="bg-greyscale-900 relative flex flex-col gap-4 p-8 nth-of-type-[3]:border-none"
+                    >
+                        <img src={item.icon} alt="{item.title} Icon" class="size-12" />
+                        <span class="text-primary -mb-3">{item.title}</span>
+                        <p class="text-secondary">{item.description}</p>
+                    </div>
+                {/each}
+            </div>
+        </div>
+        <div class="border-smooth relative w-full border-y border-dashed">
+            <div
+                class="container divide-smooth hidden grid-cols-3 gap-px divide-x divide-dashed lg:grid"
+            >
+                {#each items.slice(3, items.length) as item}
+                    <div
+                        class="bg-greyscale-900 relative flex flex-col gap-4 p-8 nth-of-type-[3]:border-none"
+                    >
+                        <img src={item.icon} alt="{item.title} Icon" class="size-12" />
+                        <span class="text-primary -mb-3">{item.title}</span>
+                        <p class="text-secondary">{item.description}</p>
+                    </div>
+                {/each}
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden w-full md:block lg:hidden">
+        <div class="border-smooth relative w-full border-t border-dashed">
+            <div
+                class="container divide-smooth hidden grid-cols-2 gap-px divide-x divide-dashed md:grid"
+            >
+                {#each items.slice(0, 2) as item}
+                    <div
+                        class="bg-greyscale-900 relative flex flex-col gap-4 p-8 nth-of-type-[3]:border-none"
+                    >
+                        <img src={item.icon} alt="{item.title} Icon" class="size-12" />
+                        <span class="text-primary -mb-3">{item.title}</span>
+                        <p class="text-secondary">{item.description}</p>
+                    </div>
+                {/each}
+            </div>
+        </div>
+        <div class="border-smooth relative w-full border-y border-dashed">
+            <div
+                class="container divide-smooth hidden grid-cols-2 gap-px divide-x divide-dashed md:grid"
+            >
+                {#each items.slice(2, 4) as item}
+                    <div
+                        class="bg-greyscale-900 relative flex flex-col gap-4 p-8 nth-of-type-[3]:border-none"
+                    >
+                        <img src={item.icon} alt="{item.title} Icon" class="size-12" />
+                        <span class="text-primary -mb-3">{item.title}</span>
+                        <p class="text-secondary">{item.description}</p>
+                    </div>
+                {/each}
+            </div>
+        </div>
+        <div class="border-smooth relative w-full border-b border-dashed">
+            <div
+                class="container divide-smooth hidden grid-cols-2 gap-px divide-x divide-dashed md:grid"
+            >
+                {#each items.slice(4, items.length) as item}
+                    <div
+                        class="bg-greyscale-900 relative flex flex-col gap-4 p-8 nth-of-type-[3]:border-none"
+                    >
+                        <img src={item.icon} alt="{item.title} Icon" class="size-12" />
+                        <span class="text-primary -mb-3">{item.title}</span>
+                        <p class="text-secondary">{item.description}</p>
+                    </div>
+                {/each}
+            </div>
+        </div>
+    </div>
+
+    <div class="block w-full md:hidden">
+        <div class="border-smooth relative w-full border-y border-dashed">
+            <div class="container divide-smooth grid grid-cols-1 gap-px divide-y divide-dashed">
+                {#each items as item}
+                    <div class="bg-greyscale-900 relative flex flex-col gap-4 p-8">
+                        <img src={item.icon} alt="{item.title} Icon" class="size-12" />
+                        <span class="text-primary -mb-3">{item.title}</span>
+                        <p class="text-secondary">{item.description}</p>
+                    </div>
+                {/each}
+            </div>
+        </div>
+    </div>
+
+    <a href="/#become-a-partner" class="web-button is-secondary mt-20 mx-auto">Become a partner</a>
+</div>
+
+<div class="border-smooth flex flex-col items-center pt-24 pb-24">
+    <div class="mb-20 flex flex-col gap-2 text-center">
+        <h2 class="text-primary font-aeonik-pro text-title">Why Appwrite?</h2>
+    </div>
+
+    <div class="border-smooth relative w-full border-y border-dashed">
         <div
-            class="container divide-smooth grid grid-cols-1 gap-px divide-x divide-dashed sm:grid-cols-2 lg:grid-cols-3"
+            class="container divide-smooth grid grid-cols-1 gap-px divide-dashed max-md:divide-y md:grid-cols-3 md:divide-x"
         >
-            {#each items as item}
+            {#each whys as why}
                 <div
-                    class="bg-greyscale-900 relative flex flex-col gap-4 p-8 nth-of-type-[3]:border-none"
+                    class="bg-greyscale-900 relative flex flex-col items-center gap-4 p-8 text-center nth-of-type-[3]:border-none"
                 >
-                    <img src={item.icon} alt="{item.title} Icon" class="size-12" />
-                    <span class="text-primary -mb-3">{item.title}</span>
-                    <p class="text-secondary">{item.description}</p>
+                    <img src={why.icon} alt="{why.title} Icon" class="size-12" />
+                    <span class="text-primary -mb-3">{why.title}</span>
+                    <p class="text-secondary">{why.description}</p>
                 </div>
             {/each}
         </div>
     </div>
+
+    <a href="/#become-a-partner" class="web-button is-secondary mt-20 mx-auto">Become a partner</a>
 </div>

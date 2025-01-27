@@ -9,7 +9,6 @@
     import SubmissionForm from './(components)/submission-form.svelte';
     import Ways from './(components)/ways.svelte';
     import Why from './(components)/why.svelte';
-    import Testimonials from './(components)/testimonials.svelte';
 
     const title = 'Partners' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -37,7 +36,6 @@
     <Hero />
     <Benefits />
     <Partners />
-    <Testimonials />
     <Ways />
     <Why />
 
