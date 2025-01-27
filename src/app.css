@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@variant dark (&:is(.dark *));
 
 @theme {
     /* Colors */
@@ -78,6 +79,29 @@
     --color-badge-border-light: #f69db7;
     --color-badge-bg-dark: #2c2c2f;
     --color-badge-border-dark: #39393c;
+
+    /* Easings */
+    --transition-timing-function-bounce: linear(
+        0,
+        0.063,
+        0.25 18.2%,
+        1 36.4%,
+        0.813,
+        0.75,
+        0.813,
+        1,
+        0.938,
+        1,
+        1
+    );
+    --transition-timing-function-spring: linear(
+        0,
+        0.938 16.7%,
+        1.149 24.3%,
+        1.154 29.9%,
+        0.977 51%,
+        1
+    );
 
     /* Animations */
     --animate-scale-in: scale-in 200ms ease-out forwards;
@@ -244,5 +268,15 @@
 @layer components {
     .container {
         @apply mx-auto box-content max-w-[75rem] px-5;
+    }
+
+    .mask {
+        mask-image: linear-gradient(
+            to top,
+            transparent,
+            black var(--mask-height, 32px),
+            black calc(100% - var(--mask-height, 32px)),
+            black
+        );
     }
 }

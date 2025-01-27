@@ -196,7 +196,7 @@
                                         <option value={null}> Select category </option>
                                     </select>
                                     <span
-                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-2 right-2"
+                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
                                         aria-hidden="true"
                                     />
                                 </div>

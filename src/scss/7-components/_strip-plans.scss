@@ -19,7 +19,7 @@
   }
   &-plan {
     display:flex; flex-direction:column; gap:pxToRem(4);
-    flex:1; flex-basis:pxToRem(103); flex-shrink:0;
+    flex:1; flex-basis:pxToRem(125); flex-shrink:0;
     .title { color:rgb(255 255 255 / 0.64); }
     .price {  }
     .info  { white-space:nowrap; color:rgb(255 255 255 / 0.64); }
