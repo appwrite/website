@@ -34,12 +34,12 @@
 
         &.dark {
             background-color: rgba(255, 255, 255, 0.04);
-            border: 1.002px solid var(--smooth, rgba(255, 255, 255, 0.06));
+            border: 1px solid var(--smooth, rgba(255, 255, 255, 0.06));
         }
 
         &.pink {
             background-color: rgba(255, 255, 255, 0.125);
-            border: 1.002px solid var(--smooth, rgba(255, 255, 255, 0.06));
+            border: 1px solid var(--smooth, rgba(255, 255, 255, 0.06));
         }
 
         &:hover {
