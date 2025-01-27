@@ -124,17 +124,17 @@
                                 </article>
                             </li>
                             <li>
-                                <article
-                                    class="web-card is-transparent is-transparent-pink has-border-gradient h-full p-1!"
-                                    style="background: linear-gradient(180deg, rgba(253, 54, 110, 0.12) 38.59%, rgba(253, 54, 110, 0) 99.04%);"
+                                <div
+                                    class="web-card is-transparent has-border-gradient is-transparent-pink -m-1 h-full p-1!"
+                                    style="background: transparent"
+                                    style:--m-border-radius="1.25rem"
                                 >
-                                    <div
-                                        class="web-pricing-cards-item has-border-gradient web-card is-transparent-pink rounded-lg! p-6"
-                                        style:background-color="transparent !important"
-                                        style:--m-border-radius="0.75rem"
+                                    <article
+                                        class="web-card is-transparent is-transparent-pink has-border-gradient h-full"
+                                        style="background: linear-gradient(180deg, rgba(253, 54, 110, 0.12) 38.59%, rgba(253, 54, 110, 0) 99.04%);"
                                     >
                                         <header class="web-pricing-cards-header">
-                                            <header class="-mt-2 flex gap-3">
+                                            <header class="flex gap-3">
                                                 <h2
                                                     id="pro"
                                                     class="text-label text-primary font-aeonik-pro"
@@ -149,7 +149,7 @@
                                                 <span class="-mb-4">From</span>
                                                 <div class="flex items-end gap-2">
                                                     <div
-                                                        class="text-title font-aeonik-pro text-primary mt-2"
+                                                        class="text-title font-aeonik-pro text-primary mt-3"
                                                     >
                                                         $15
                                                     </div>
@@ -166,7 +166,6 @@
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
-                                                <!-- <span class="text-sub-body font-medium">Start trial</span> -->
                                                 <span class="text-sub-body font-medium"
                                                     >Start building</span
                                                 >
@@ -192,8 +191,8 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                    </div>
-                                </article>
+                                    </article>
+                                </div>
                             </li>
                             <li>
                                 <article
