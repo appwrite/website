@@ -14,7 +14,7 @@
 <div class="web-u-row-gap-80 relative grid gap-8 md:grid-cols-2">
     <section class="web-hero flex items-center justify-center gap-y-8">
         <h2 class="text-display font-aeonik-pro text-primary max-w-[500px] text-center">
-            Start building today
+            Start building with Appwrite today
         </h2>
         <a
             href={PUBLIC_APPWRITE_DASHBOARD}
@@ -25,7 +25,7 @@
         </a>
     </section>
     <section
-        class="web-card is-transparent has-border-gradient web-u-max-inline-width-584-mobile web-mx-auto-mobile web-u-inline-width-100-percent-mobile"
+        class="web-card is-transparent has-border-gradient web-u-max-inline-width-584-mobile web-mx-auto-mobile web-u-inline-width-100-percent-mobile p-8!"
     >
         <header class="web-strip-plans-header">
             <div class="web-strip-plans-header-wrapper web-u-row-gap-24">
@@ -33,7 +33,7 @@
             </div>
         </header>
 
-        <ul class="web-strip-plans">
+        <ul class="web-strip-plans -mt-8">
             <li class="web-strip-plans-item web-strip-plans-container-query">
                 <div class="web-strip-plans-item-wrapper">
                     <div class="web-strip-plans-plan">
@@ -61,9 +61,17 @@
             <li class="web-strip-plans-item web-strip-plans-container-query">
                 <div class="web-strip-plans-item-wrapper">
                     <div class="web-strip-plans-plan">
-                        <h4 class="title text-description">Pro</h4>
-                        <div class="text-title font-aeonik-pro text-primary">$15</div>
-                        <div class="info text-caption font-medium">per member/month</div>
+                        <div class="flex gap-3">
+                            <h4 class="title text-description">Pro</h4>
+                            <div class="web-inline-tag is-pink text-sub-body">Most popular</div>
+                        </div>
+                        <div class="mt-4 flex flex-col">
+                            <span>From</span>
+                            <div class="flex items-end gap-2">
+                                <div class="text-title font-aeonik-pro text-primary">$15</div>
+                                <div class="info text-caption font-medium">/month</div>
+                            </div>
+                        </div>
                     </div>
                     <p class="web-strip-plans-info text-caption font-medium">
                         For production applications that need powerful functionality and resources
@@ -89,9 +97,14 @@
             <li class="web-strip-plans-item web-strip-plans-container-query">
                 <div class="web-strip-plans-item-wrapper">
                     <div class="web-strip-plans-plan">
-                        <h4 class="title text-description">Scale</h4>
-                        <div class="text-title font-aeonik-pro text-primary">$599</div>
-                        <div class="info text-caption font-medium">per org/month</div>
+                        <h4 class="text-description text-primary">Scale</h4>
+                        <div class="mt-4 flex flex-col">
+                            <span>From</span>
+                            <div class="flex items-end gap-2">
+                                <div class="text-title font-aeonik-pro text-primary">$599</div>
+                                <div class="info text-caption font-medium">/month</div>
+                            </div>
+                        </div>
                     </div>
                     <p class="web-strip-plans-info text-caption font-medium">
                         For teams that handle more complex and large projects and need more control
@@ -116,18 +129,29 @@
             <li class="web-strip-plans-item web-strip-plans-container-query">
                 <div class="web-strip-plans-item-wrapper">
                     <div class="web-strip-plans-plan">
-                        <h4 class="title web-description">Enterprise</h4>
-                        <div class="web-title web-u-color-text-primary">Custom</div>
-                        <div class="info web-caption-500">per org/month</div>
+                        <h4 class="text-description text-primary">Enterprise</h4>
+                        <div class="mt-4 flex flex-col">
+                            <div class="flex items-end gap-2">
+                                <div class="text-title font-aeonik-pro text-primary">Custom</div>
+                            </div>
+                        </div>
                     </div>
-                    <p class="web-strip-plans-info web-caption-500">
+                    <p class="web-strip-plans-info text-caption font-medium">
                         For enterprises that need more power and premium support.
                     </p>
                     <a
-                        href="/contact-us/enterprise"
-                        class="web-button is-secondary is-full-width-mobile web-u-cross-child-end"
+                        href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=create&plan=tier-2`}
+                        class="web-button is-full-width-mobile web-u-cross-child-end"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        on:click={() =>
+                            trackEvent({
+                                plausible: {
+                                    name: 'Get started Scale plan'
+                                }
+                            })}
                     >
-                        <span class="text">Contact us</span>
+                        <span class="text">Start building</span>
                     </a>
                 </div>
             </li>
