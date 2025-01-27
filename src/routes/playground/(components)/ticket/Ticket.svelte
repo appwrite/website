@@ -25,22 +25,18 @@
 </script>
 
 <div class="ticket w-full">
-    <Window class="aspect-video w-full flex-1 shrink-0">
-        <span slot="title"
-            >Ticket <span class="text-accent">#</span>{id?.toString().padStart(6, '0')}</span
-        >
-        <div class="light relative flex flex-1 bg-white p-4">
-            <div class="font-aeonik-pro mt-auto mb-0 flex w-full items-end justify-between">
-                <div>
-                    <h2 class="text-label text-primary">
-                        {name?.split(' ')[0]}
-                    </h2>
-                    <span class="text-secondary">#{id?.toString().padStart(6, '0')}</span>
-                </div>
-                <Lockup />
+    <span>Ticket <span class="text-accent">#</span>{id?.toString().padStart(6, '0')}</span>
+    <div class="light relative flex p-4">
+        <div class="font-aeonik-pro mt-auto mb-0 flex w-full items-end justify-between">
+            <div>
+                <h2 class="text-label text-primary">
+                    {name?.split(' ')[0]}
+                </h2>
+                <span class="text-secondary">#{id?.toString().padStart(6, '0')}</span>
             </div>
+        </div>
 
-            <!-- {#each $order as i, index}
+        <!-- {#each $order as i, index}
                 <div data-index={index} class="absolute z-10">
                     <img
                         draggable
@@ -51,23 +47,22 @@
                     />
                 </div>
             {/each} -->
-            <div class="absolute inset-x-0 top-0 z-0">
-                {#await contributions then c}
-                    {#if c && show_contributions}
-                        <div class="flex flex-wrap gap-1" out:fade={{ duration: 100 }}>
-                            {#each c as row}
-                                {#each row as level, index}
-                                    <div
-                                        class="grid-block size-2 data-[level='0']:opacity-8 data-[level='1']:opacity-25 data-[level='2']:opacity-50 data-[level='3']:opacity-75"
-                                        data-level={level}
-                                        style:animation-delay={`${(index + 1) * 100 + 250}ms`}
-                                    />
-                                {/each}
+        <div class="absolute inset-x-0 top-0 z-0">
+            {#await contributions then c}
+                {#if c && show_contributions}
+                    <div class="flex flex-wrap gap-1" out:fade={{ duration: 100 }}>
+                        {#each c as row}
+                            {#each row as level, index}
+                                <div
+                                    class="grid-block size-2 data-[level='0']:opacity-8 data-[level='1']:opacity-25 data-[level='2']:opacity-50 data-[level='3']:opacity-75"
+                                    data-level={level}
+                                    style:animation-delay={`${(index + 1) * 100 + 250}ms`}
+                                />
                             {/each}
-                        </div>
-                    {/if}
-                {/await}
-            </div>
+                        {/each}
+                    </div>
+                {/if}
+            {/await}
         </div>
-    </Window>
+    </div>
 </div>
