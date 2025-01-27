@@ -125,8 +125,7 @@
                             </li>
                             <li>
                                 <div
-                                    class="web-card is-transparent has-border-gradient is-transparent-pink -m-1 h-full p-1!"
-                                    style="background: transparent"
+                                    class="web-card is-transparent has-border-gradient is-transparent-pink -m-1 h-full p-1! backdrop-blur-none!"
                                     style:--m-border-radius="1.25rem"
                                 >
                                     <article
