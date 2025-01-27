@@ -129,11 +129,12 @@
                                     style="background: linear-gradient(180deg, rgba(253, 54, 110, 0.12) 38.59%, rgba(253, 54, 110, 0) 99.04%);"
                                 >
                                     <div
-                                        class="web-pricing-cards-item has-border-gradient web-card is-transparent-pink rounded-2xl p-6"
+                                        class="web-pricing-cards-item has-border-gradient web-card is-transparent-pink rounded-lg! p-6"
                                         style:background-color="transparent !important"
+                                        style:--m-border-radius="0.75rem"
                                     >
                                         <header class="web-pricing-cards-header">
-                                            <header class="flex gap-3">
+                                            <header class="-mt-2 flex gap-3">
                                                 <h2
                                                     id="pro"
                                                     class="text-label text-primary font-aeonik-pro"
@@ -161,7 +162,7 @@
                                             </p>
                                             <a
                                                 href="https://cloud.appwrite.io/console?type=create&plan=tier-1"
-                                                class="web-button is-full-width mt-9"
+                                                class="web-button is-full-width mt-11"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
