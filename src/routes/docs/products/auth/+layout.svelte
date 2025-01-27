@@ -98,7 +98,7 @@
                     href: '/docs/products/auth/verify-user'
                 },
                 {
-                    label: 'Manage team invites',
+                    label: 'Team invites',
                     href: '/docs/products/auth/team-invites'
                 }
             ]
