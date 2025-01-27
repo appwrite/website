@@ -70,13 +70,13 @@
         preferredPlatform.set($page.params.platform as Platform);
     });
 
-    // clean, markdown-less service description.
+    // cleaned service description without Markdown links.
     $: serviceDescription = (data.service?.description ?? '').replace(
         /\[([^\]]+)]\([^)]+\)/g,
         '$1'
     );
 
-    // the service description until the first full-stop which has enough info.
+    // the service description up to the first full stop, providing sufficient information.
     $: shortenedDescription = serviceDescription.substring(0, serviceDescription.indexOf('.') + 1);
 
     $: platform = $page.params.platform as Platform;
