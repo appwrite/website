@@ -253,7 +253,8 @@ val response = teams.createMembership(
 
 ## Check membership status {% #status %}
 
-You can verify a user's membership status to determine if they've accepted an invitation:
+### Client-side
+To check membership status client-side, first list the teams and then get the memberships for a specific team:
 
 {% multicode %}
 ```client-web
@@ -265,12 +266,21 @@ const client = new Client()
 
 const teams = new Teams(client);
 
-const membership = await teams.getMembership(
-    'team_id',
-    'membership_id'
+// Get list of teams the user is part of
+const teamsList = await teams.list();
+
+// For a specific team, get all memberships
+const response = await teams.listMemberships('team_id');
+
+// Find membership for specific user
+const userMembership = response.memberships.find(
+    membership => membership.userId === 'user_id'
 );
 
-console.log(membership.status); // 'invited' or 'confirmed'
+if (userMembership) {
+    console.log(userMembership.confirm); // false = invited, true = joined
+    console.log(userMembership.roles); // ['developer', etc]
+}
 ```
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
@@ -281,12 +291,24 @@ final client = Client()
 
 final teams = Teams(client);
 
-final membership = await teams.getMembership(
-    teamId: 'team_id',
-    membershipId: 'membership_id'
+// Get list of teams the user is part of
+final teamsList = await teams.list();
+
+// For a specific team, get all memberships
+final response = await teams.listMemberships(
+    teamId: 'team_id'
 );
 
-print(membership.status); // 'invited' or 'confirmed'
+// Find membership for specific user
+final userMembership = response.memberships.firstWhere(
+    (membership) => membership.userId == 'user_id',
+    orElse: () => null
+);
+
+if (userMembership != null) {
+    print(userMembership.confirm); // false = invited, true = joined
+    print(userMembership.roles); // ['developer', etc]
+}
 ```
 ```client-apple
 import Appwrite
@@ -297,12 +319,19 @@ let client = Client()
 
 let teams = Teams(client)
 
-let membership = try await teams.getMembership(
-    teamId: "team_id",
-    membershipId: "membership_id"
+// Get list of teams the user is part of
+let teamsList = try await teams.list()
+
+// For a specific team, get all memberships
+let response = try await teams.listMemberships(
+    teamId: "team_id"
 )
 
-print(membership.status) // 'invited' or 'confirmed'
+// Find membership for specific user
+if let userMembership = response.memberships.first(where: { $0.userId == "user_id" }) {
+    print(userMembership.confirm) // false = invited, true = joined
+    print(userMembership.roles) // ['developer', etc]
+}
 ```
 ```kotlin
 import io.appwrite.Client
@@ -314,12 +343,144 @@ val client = Client(context)
 
 val teams = Teams(client)
 
-val membership = teams.getMembership(
-    teamId = "team_id",
-    membershipId = "membership_id"
+// Get list of teams the user is part of
+val teamsList = teams.list()
+
+// For a specific team, get all memberships
+val response = teams.listMemberships(
+    teamId = "team_id"
 )
 
-println(membership.status) // 'invited' or 'confirmed'
+// Find membership for specific user
+val userMembership = response.memberships.find {
+    it.userId == "user_id"
+}
+
+userMembership?.let {
+    println(it.confirm) // false = invited, true = joined
+    println(it.roles) // ['developer', etc]
+}
+```
+{% /multicode %}
+
+### Server-side
+Server-side requires iterating through teams and memberships since the data isn't filtered for a specific user:
+
+{% multicode %}
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<API_KEY>');
+
+const teams = new sdk.Teams(client);
+
+// Get all teams
+const teamsList = await teams.list();
+
+// Iterate through teams to find memberships
+for (const team of teamsList.teams) {
+    const response = await teams.listMemberships(team.$id);
+
+    // Find membership for specific user
+    const userMembership = response.memberships.find(
+        membership => membership.userId === 'user_id'
+    );
+
+    if (userMembership) {
+        console.log(`Team: ${team.name}`);
+        console.log(`Joined: ${userMembership.joined}`); // null if invited, timestamp if joined
+        console.log(`Roles: ${userMembership.roles}`);
+    }
+}
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.teams import Teams
+
+client = Client()
+client.set_endpoint('https://cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<API_KEY>')
+
+teams = Teams(client)
+
+// Get all teams
+teams_list = teams.list()
+
+// Iterate through teams to find memberships
+for team in teams_list['teams']:
+    response = teams.list_memberships(team['$id'])
+
+    // Find membership for specific user
+    user_membership = next(
+        (m for m in response['memberships'] if m['userId'] == 'user_id'),
+        None
+    )
+
+    if user_membership:
+        print(f"Team: {team['name']}")
+        print(f"Joined: {user_membership['joined']}") # null if invited, timestamp if joined
+        print(f"Roles: {user_membership['roles']}")
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<API_KEY>")
+
+let teams = Teams(client)
+
+// Get all teams
+let teamsList = try await teams.list()
+
+// Iterate through teams to find memberships
+for team in teamsList.teams {
+    let response = try await teams.listMemberships(
+        teamId: team.$id
+    )
+
+    // Find membership for specific user
+    if let userMembership = response.memberships.first(where: { $0.userId == "user_id" }) {
+        print("Team: \(team.name)")
+        print("Joined: \(userMembership.joined)") # null if invited, timestamp if joined
+        print("Roles: \(userMembership.roles)")
+    }
+}
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Teams
+
+val client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<API_KEY>")
+
+val teams = Teams(client)
+
+// Get all teams
+val teamsList = teams.list()
+
+// Iterate through teams to find memberships
+teamsList.teams.forEach { team ->
+    val response = teams.listMemberships(teamId = team.$id)
+
+    // Find membership for specific user
+    val userMembership = response.memberships.find {
+        it.userId == "user_id"
+    }
+
+    userMembership?.let {
+        println("Team: ${team.name}")
+        println("Joined: ${it.joined}") # null if invited, timestamp if joined
+        println("Roles: ${it.roles}")
+    }
+}
 ```
 {% /multicode %}
 
