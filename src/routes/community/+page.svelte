@@ -228,9 +228,9 @@
             <div class="web-big-padding-section-level-2">
                 <div class="container relative">
                     <div class="web-hero is-mobile-center web-u-max-width-900 gap-5">
-                        <h1 class="text-headline font-aeonik-pro text-primary">
+                        <h2 class="text-headline font-aeonik-pro text-primary">
                             The power of open source benefits us all
-                        </h1>
+                        </h2>
                         <div>
                             <p class="text-description">
                                 See contributors of Appwrite since 2019 and discover how you can
