@@ -6,7 +6,7 @@
     export let days: Array<{ title: string; release: Date; illustration: string }> = [];
 </script>
 
-<div class={classNames('relative min-h-[586px] w-screen')}>
+<div class={classNames('relative')}>
     <div class="container">
         <Window>
             <span slot="title">Init_Schedule</span>

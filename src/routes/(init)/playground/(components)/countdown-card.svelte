@@ -31,7 +31,7 @@
         >
             <div class="relative flex h-full w-full flex-col items-center justify-center">
                 {#if hasReleased}
-                    <img src={illustration} alt="Logo" class="size-24" />
+                    <img src={illustration} alt="Logo" class="size-32" />
                 {/if}
                 <div class="font-aeonik-fono text-primary text-[1.125rem] uppercase">
                     {#if $hours > 24}
@@ -41,7 +41,7 @@
                             {$days}
                             {$days > 1 ? 'days' : 'day'}
                         </div>
-                    {:else}
+                    {:else if !hasReleased}
                         <div
                             class="outline-smooth flex items-center gap-0.5 rounded-full bg-black py-0.5 px-3 text-center outline-2 outline-dashed"
                         >
