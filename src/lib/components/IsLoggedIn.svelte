@@ -3,13 +3,16 @@
     import { classNames } from '$lib/utils/classnames';
     import { trackEvent } from '$lib/actions/analytics';
     import { browser } from '$app/environment';
+    import { page } from '$app/stores';
+
+    const ctaCopy = $page.data.ctaCopy;
 
     export let classes = '';
 
     const isLoggedIn = browser && 'loggedIn' in document.body.dataset;
 
     function getTrackingEventName() {
-        return browser ? (isLoggedIn ? 'Go to console' : 'Get started') : 'Get started';
+        return browser ? (isLoggedIn ? 'Go to console' : ctaCopy) : ctaCopy;
     }
 </script>
 
@@ -23,5 +26,5 @@
         })}
 >
     <span class="hidden group-[&[data-logged-in]]/body:block">Go to Console</span>
-    <span class="block group-[&[data-logged-in]]/body:hidden">Get started</span>
+    <span class="block group-[&[data-logged-in]]/body:hidden">{ctaCopy}</span>
 </a>
