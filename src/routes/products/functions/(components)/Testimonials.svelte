@@ -1,6 +1,4 @@
 <script lang="ts">
-    import Avatar from '../(assets)/avatar.png';
-
     const testimonials = [
         {
             name: 'Ryan O’Conner',
