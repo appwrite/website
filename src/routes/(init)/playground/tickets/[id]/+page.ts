@@ -1,4 +1,4 @@
-import { getTicketById, getTicketContributions } from '$routes/init/helpers.js';
+import { getTicketById, getTicketContributions } from '$lib/utils/init';
 import { error } from '@sveltejs/kit';
 
 export const ssr = true;
@@ -15,6 +15,7 @@ export const load = async ({ params, fetch }) => {
             }
         };
     } catch (e) {
+        console.error(e);
         error(404, 'Ticket not found');
     }
 };

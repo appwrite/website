@@ -1,5 +1,5 @@
 import { redirect } from '@sveltejs/kit';
-import { auth, isLoggedIn } from '../helpers.js';
+import { auth, isLoggedIn } from '$lib/utils/init';
 import { goto } from '$app/navigation';
 
 export const load = async ({ url }) => {

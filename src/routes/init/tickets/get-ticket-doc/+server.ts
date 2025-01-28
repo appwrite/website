@@ -1,7 +1,7 @@
 import { APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID } from '$env/static/private';
 import { appwriteInitServer } from '$lib/appwrite/init.server';
 import { isProUser } from '$lib/utils/console.js';
-import { type User } from '$routes/init/helpers.js';
+import { type User } from '$lib/utils/init';
 import { ID, Query } from '@appwrite.io/console';
 import type { TicketData, TicketDoc } from '../constants.js';
 import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
