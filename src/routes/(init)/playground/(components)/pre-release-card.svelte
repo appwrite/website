@@ -1,7 +1,7 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import Window from './retro-ui/Window.svelte';
-    import { createCountdown } from '../helpers';
+    import { createCountdown } from '$lib/utils/init';
     import Counter from './counter.svelte';
 
     type $$Props = {

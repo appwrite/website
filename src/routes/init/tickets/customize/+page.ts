@@ -1,4 +1,4 @@
-import { getTicketByUser, getTicketContributions, getUser, isLoggedIn } from '$routes/init/helpers';
+import { getTicketByUser, getTicketContributions, getUser, isLoggedIn } from '$lib/utils/init';
 import { BASE_URL } from '$routes/(init)/playground/tickets/constants.js';
 import { redirect } from '@sveltejs/kit';
 

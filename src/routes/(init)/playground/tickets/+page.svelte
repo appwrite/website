@@ -3,7 +3,7 @@
     import LaunchWeek from '../(components)/launch-week.svelte';
     import Lockup from '../(components)/lockup.svelte';
     import GitHub from '../(assets)/github-icon.svg';
-    import { loginGithub } from '../helpers';
+    import { loginGithub } from '$lib/utils/init';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';

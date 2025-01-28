@@ -4,14 +4,11 @@ import { get, writable } from 'svelte/store';
 import { OAuthProvider } from '@appwrite.io/console';
 import { appwriteInit } from '$lib/appwrite/init';
 import { getAppwriteUser, type AppwriteUser } from '$lib/utils/console';
-import {
-    BASE_URL,
-    type ContributionsMatrix,
-    type TicketData,
-    type TicketDoc
-} from './tickets/constants';
 
-export const createCountdown = (date: Date) => {
+import type { Models } from '@appwrite.io/console';
+import { invalidate } from '$app/navigation';
+
+export function createCountdown(date: Date) {
     const today = new Date();
     const hasReleased = today >= date;
 
@@ -22,6 +19,7 @@ export const createCountdown = (date: Date) => {
         const timeRemaining = date.getTime() - today.getTime();
 
         if (timeRemaining <= 0) {
+            // Target date has passed, stop the countdown
             return;
         }
 
@@ -57,7 +55,7 @@ export const createCountdown = (date: Date) => {
         minutes,
         seconds
     };
-};
+}
 
 export async function isLoggedIn() {
     const user = await getUser();
@@ -180,8 +178,31 @@ export async function getTicketById(id: string, f = fetch) {
 export function loginGithub() {
     appwriteInit.account.createOAuth2Token(
         OAuthProvider.Github,
-        `${window.location.origin}${BASE_URL}?success=1`,
-        `${window.location.origin}${BASE_URL}?error=1`,
+        `${window.location.origin}/init/tickets?success=1`,
+        `${window.location.origin}/init/tickets?error=1`,
         ['read:user']
     );
 }
+
+export type ContributionsMatrix = number[][];
+
+export type TicketData = Pick<Models.Document, '$id'> & {
+    name: string;
+    tribe?: string | null;
+    title?: string;
+    gh_user?: string;
+    aw_email?: string;
+    id: number;
+    show_contributions?: boolean;
+    is_pro?: boolean;
+    contributions?: number[];
+};
+
+export type TicketDoc = Omit<TicketData, 'contributions' | 'variant'>;
+
+export const TICKET_DEP = 'ticket';
+export const invalidateTicket = () => {
+    invalidate(TICKET_DEP);
+};
+
+export const BASE_URL = '/playground/tickets';

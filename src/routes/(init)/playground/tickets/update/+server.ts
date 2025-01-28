@@ -1,7 +1,7 @@
 import { APPWRITE_COL_INIT_ID_NEW, APPWRITE_DB_INIT_ID } from '$env/static/private';
 import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_INIT_ID } from '$env/static/public';
 import { appwriteInitServer } from '$lib/appwrite/init.server';
-import type { GithubUser } from '$routes/init/helpers';
+import type { GithubUser } from '$lib/utils/init';
 import { Account, Client, Query } from '@appwrite.io/console';
 import { z } from 'zod';
 
@@ -108,6 +108,7 @@ export async function POST({ request, cookies }) {
             }
         );
     } catch (e) {
+        console.error(e);
         return new Response(
             JSON.stringify({
                 data: null

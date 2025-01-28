@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { getMockContributions } from '../helpers';
+    import { getMockContributions } from '$lib/utils/init';
     import { Ticket } from './ticket';
 
     const tickets = [

@@ -2,7 +2,7 @@
     import { page } from '$app/stores';
     import { Switch } from '$lib/components';
     import { createCopy } from '$lib/utils/copy';
-    import { loginGithub } from '$routes/init/helpers';
+    import { loginGithub } from '$lib/utils/init';
     import Tooltip from '$lib/components/Tooltip.svelte';
 
     import { browser, dev } from '$app/environment';
