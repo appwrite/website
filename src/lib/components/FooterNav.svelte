@@ -70,7 +70,7 @@
                 { label: 'Heroes', href: '/heroes' },
                 { label: 'Startups', href: '/startups' },
                 { label: 'Education', href: '/education' },
-                { label: 'Parners', href: '/partners' }
+                { label: 'Partners', href: '/partners' }
             ],
             About: [
                 { label: 'Company', href: '/company' },
