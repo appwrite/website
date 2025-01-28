@@ -173,7 +173,7 @@
         </div>
     </div>
 
-    <a href="/#become-a-partner" class="web-button is-secondary mt-20 mx-auto">Become a partner</a>
+    <a href="#become-a-partner" class="web-button is-secondary mt-20 mx-auto">Become a partner</a>
 </div>
 
 <div class="border-smooth flex flex-col items-center pt-24 pb-24">
@@ -197,5 +197,5 @@
         </div>
     </div>
 
-    <a href="/#become-a-partner" class="web-button is-secondary mt-20 mx-auto">Become a partner</a>
+    <a href="#become-a-partner" class="web-button is-secondary mt-20 mx-auto">Become a partner</a>
 </div>
