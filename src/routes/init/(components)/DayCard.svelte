@@ -11,7 +11,7 @@
 </script>
 
 <script lang="ts">
-    import { createCountdown } from '../helpers';
+    import { createCountdown } from '$lib/utils/init';
     import Counter from './Counter.svelte';
 
     export let day: DayType;

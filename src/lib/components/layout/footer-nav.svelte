@@ -91,7 +91,7 @@
         };
 </script>
 
-<nav aria-label="Footer" class="text-micro container relative mt-24 flex justify-between pt-16">
+<nav aria-label="Footer" class="text-micro container relative flex justify-between pt-16">
     <img
         class="self-start"
         src="/images/logos/appwrite.svg"

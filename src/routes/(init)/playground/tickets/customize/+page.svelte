@@ -1,9 +1,6 @@
 <script lang="ts">
-    import FooterNav from '$lib/components/FooterNav.svelte';
-    import MainFooter from '$lib/components/MainFooter.svelte';
-    import Main from '$lib/layouts/Main.svelte';
     import { dequal } from 'dequal/lite';
-    import { BASE_URL } from '../constants';
+    import { BASE_URL } from '$lib/utils/init';
 
     export let data;
 

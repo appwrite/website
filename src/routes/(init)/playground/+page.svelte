@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { FooterNav, MainFooter } from '$lib/components';
-    import { Main } from '$lib/layouts';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
 
     import CountdownGrid from './(components)/countdown-grid.svelte';
@@ -14,7 +12,7 @@
     const description = 'The start of something new.';
     const ogImage = buildOpenGraphImage('init', description);
 
-    let base = new Date('2024-11-08T13:00:00.000Z');
+    let base = new Date('2025-01-27T13:00:00.000Z');
     let days = [
         {
             title: 'Domains',

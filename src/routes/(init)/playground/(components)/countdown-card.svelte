@@ -18,28 +18,43 @@
 </script>
 
 <a href="#day-{index}">
-    <span class="text-caption text-secondary mb-2 block">Day {index}</span>
+    <div class="text-caption text-primary mb-2 flex gap-2 font-mono uppercase">
+        Day {index}
+        {#if hasReleased}
+            <span class="text-accent">/</span><span>{title}</span>{/if}
+    </div>
     <div
-        class="aspect-square gap-4 rounded-[4px] border border-white/32 bg-black outline outline-offset-4 outline-white/32 outline-dashed"
+        class="group relative aspect-square gap-4 overflow-hidden rounded-[4px] border border-dashed border-white/32 p-1"
     >
-        <div class="bg-smooth relative flex h-full w-full flex-col items-center justify-center">
-            <img src={illustration} alt="Logo" class="size-24" />
-            <div class="font-aeonik-fono text-primary text-base uppercase">
+        <div
+            class="relative z-20 h-full w-full rounded-[4px] bg-[#19191C] transition group-hover:-translate-x-1 group-hover:-translate-y-1"
+        >
+            <div class="relative flex h-full w-full flex-col items-center justify-center">
                 {#if hasReleased}
-                    <span>{title}</span><span class="text-accent">_</span>
-                {:else if $hours > 24}
-                    <p>
-                        {$days}
-                        {$days > 1 ? 'days' : 'day'}
-                    </p>
-                {:else}
-                    <div class="flex items-center gap-0.5 text-center">
-                        <Counter value={$hours} />:<Counter value={$minutes} />:<Counter
-                            value={$seconds}
-                        />
-                    </div>
+                    <img src={illustration} alt="Logo" class="size-24" />
                 {/if}
+                <div class="font-aeonik-fono text-primary text-[1.125rem] uppercase">
+                    {#if $hours > 24}
+                        <div
+                            class="outline-smooth flex items-center gap-0.5 rounded-full bg-black py-0.5 px-3 text-center outline-2 outline-dashed"
+                        >
+                            {$days}
+                            {$days > 1 ? 'days' : 'day'}
+                        </div>
+                    {:else}
+                        <div
+                            class="outline-smooth flex items-center gap-0.5 rounded-full bg-black py-0.5 px-3 text-center outline-2 outline-dashed"
+                        >
+                            <Counter value={$hours} />:<Counter value={$minutes} />:<Counter
+                                value={$seconds}
+                            />
+                        </div>
+                    {/if}
+                </div>
             </div>
         </div>
+        <div
+            class="absolute inset-0 transform bg-black transition-transform duration-300 ease-in-out"
+        ></div>
     </div>
 </a>

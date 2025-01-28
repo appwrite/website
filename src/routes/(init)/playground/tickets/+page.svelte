@@ -4,6 +4,7 @@
     import Lockup from '../(components)/lockup.svelte';
     import GitHub from '../(assets)/github-icon.svg';
     import { loginGithub } from '$lib/utils/init';
+    import Window from '../(components)/retro-ui/Window.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
@@ -31,29 +32,33 @@
     class="container border-smooth relative z-10 flex w-full flex-col items-center justify-center border-x border-dashed"
 >
     <LaunchWeek />
-    <Lockup />
+    <Lockup class="w-1/2" />
 </div>
 
 <div class="border-smooth -mt-6 border-y border-dashed">
-    <div class="container bg-smooth flex h-48 items-center justify-between gap-4">
-        <div class="flex flex-col gap-4">
-            <h2 class="text-title text-primary font-aeonik-pro max-w-sm">
-                Init launches on February 12th
-            </h2>
-            <p class="text-secondary text-description">Register today and claim your Init ticket</p>
+    <Window>
+        <div class="flex h-48 items-center justify-between gap-4">
+            <div class="flex flex-col gap-4">
+                <h2 class="text-title text-primary font-aeonik-pro max-w-sm">
+                    Init launches on February 12th<span class="text-accent">_</span>
+                </h2>
+                <p class="text-secondary text-description">
+                    Register today and claim your Init ticket
+                </p>
+            </div>
+
+            <button
+                class="bg-smooth border-accent flex cursor-pointer items-center justify-between gap-4 rounded-lg border border-dashed p-4"
+                on:click={loginGithub}
+            >
+                <img
+                    src={GitHub}
+                    alt="GitHub icon"
+                    class="size-12 rounded-full outline-2 outline-offset-2 outline-white/68 outline-dashed"
+                />
+
+                <span class="text-primary text-description">Register with GitHub</span>
+            </button>
         </div>
-
-        <button
-            class="bg-smooth border-accent flex cursor-pointer items-center justify-between gap-4 rounded-lg border border-dashed p-4"
-            on:click={loginGithub}
-        >
-            <img
-                src={GitHub}
-                alt="GitHub icon"
-                class="size-12 rounded-full outline-2 outline-offset-2 outline-white/68 outline-dashed"
-            />
-
-            <span class="text-primary text-description">Register with GitHub</span>
-        </button>
-    </div>
+    </Window>
 </div>

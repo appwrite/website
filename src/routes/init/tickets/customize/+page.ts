@@ -1,5 +1,5 @@
 import { getTicketByUser, getTicketContributions, getUser, isLoggedIn } from '$lib/utils/init';
-import { BASE_URL } from '$routes/(init)/playground/tickets/constants.js';
+import { BASE_URL } from '$lib/utils/init';
 import { redirect } from '@sveltejs/kit';
 
 export const load = async ({ fetch }) => {

@@ -1,7 +1,7 @@
 import { APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID_NEW } from '$env/static/private';
 import { appwriteInitServer } from '$lib/appwrite/init.server';
 import { parse } from 'node-html-parser';
-import type { TicketData, ContributionsMatrix } from '../../constants';
+import type { TicketData, ContributionsMatrix } from '$lib/utils/init';
 
 export async function getContributions(id: string): Promise<ContributionsMatrix | null> {
     const { gh_user, contributions } = (await appwriteInitServer.databases.getDocument(

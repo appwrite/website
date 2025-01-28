@@ -40,6 +40,7 @@ export async function POST({ request, cookies }) {
             }
         );
     } catch (e) {
+        console.error(e);
         return new Response(
             JSON.stringify({
                 data: null

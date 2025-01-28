@@ -36,78 +36,33 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<Main>
-    <div class="hero">
-        <div class="desktop-left">
-            <div class="header">
-                <h1 class="text-display font-aeonik-pro">
-                    Join <span class="text-primary" style:font-weight="500"> init </span><br
-                    />August 19th-23rd
-                </h1>
-            </div>
-
-            <div class="info">
-                <p class="text-label mt-4">Register today and claim your ticket.</p>
-                <div class="mt-8 flex items-center gap-4">
-                    <a class="web-button" href="/init/tickets">
-                        <span class="text">Get my ticket</span>
-                    </a>
-                    <button class="web-button is-secondary" on:click={copy}>
-                        <span class="web-icon-{$copied ? 'check' : 'copy'} text-primary" />
-
-                        <span class="text">Copy ticket URL</span>
-                    </button>
-                </div>
-            </div>
+<div class="hero">
+    <div class="desktop-left">
+        <div class="header">
+            <h1 class="text-display font-aeonik-pro">
+                Join <span class="text-primary" style:font-weight="500"> init </span><br />August
+                19th-23rd
+            </h1>
         </div>
 
-        <TicketPreview>
-            <div class="ticket-holder">
-                <Ticket {...data.ticket} contributions={data.streamed.contributions} />
+        <div class="info">
+            <p class="text-label mt-4">Register today and claim your ticket.</p>
+            <div class="mt-8 flex items-center gap-4">
+                <a class="web-button" href="/init/tickets">
+                    <span class="text">Get my ticket</span>
+                </a>
+                <button class="web-button is-secondary" on:click={copy}>
+                    <span class="web-icon-{$copied ? 'check' : 'copy'} text-primary" />
+
+                    <span class="text">Copy ticket URL</span>
+                </button>
             </div>
-        </TicketPreview>
+        </div>
     </div>
 
-    <div class="container">
-        <FooterNav />
-        <MainFooter />
-    </div>
-</Main>
-
-<style lang="scss">
-    .desktop-left {
-        h1 {
-            margin-block-start: 3.5rem;
-        }
-
-        @media screen and (max-width: 1023px) {
-            h1 {
-                margin-block-start: 0;
-            }
-
-            .info {
-                grid-row: 3;
-
-                .flex {
-                    flex-direction: column;
-                    gap: 0.5rem;
-                    margin-block-start: 1rem;
-
-                    .web-button {
-                        inline-size: 100%;
-                    }
-                }
-            }
-        }
-    }
-
-    @media screen and (max-width: 1023px) {
-        .container {
-            padding-block-start: 0;
-
-            :global(nav) {
-                margin-block-start: 0;
-            }
-        }
-    }
-</style>
+    <TicketPreview>
+        <div class="ticket-holder">
+            <Ticket {...data.ticket} contributions={data.streamed.contributions} />
+        </div>
+    </TicketPreview>
+</div>
