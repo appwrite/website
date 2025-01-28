@@ -2,8 +2,6 @@
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
 
-    export let noBorder = false;
-
     const {
         elements: { content, heading, item, root, trigger },
         helpers: { isSelected }
@@ -93,13 +91,15 @@
         };
 </script>
 
-<nav
-    aria-label="Footer"
-    class="web-footer-nav container relative mt-24"
-    class:web-u-sep-block-start={!noBorder}
->
-    <img class="web-logo" src="/images/logos/appwrite.svg" alt="appwrite" height="24" width="130" />
-    <ul class="web-footer-nav-main-list" use:melt={$root}>
+<nav aria-label="Footer" class="text-micro container relative mt-24 flex justify-between pt-16">
+    <img
+        class="self-start"
+        src="/images/logos/appwrite.svg"
+        alt="appwrite"
+        height="24"
+        width="130"
+    />
+    <ul class="flex basis-[52rem] justify-between gap-3" use:melt={$root}>
         {#each Object.entries(links) as [title, items]}
             <li class="web-footer-nav-main-item web-is-not-mobile">
                 <h2

@@ -2,8 +2,10 @@
     import ProductsSubmenu from '$lib/components/layout/products-submenu.svelte';
     import ProductsMobileSubmenu from '$lib/components/layout/products-mobile-submenu.svelte';
     import MainNav from '$lib/components/layout/main-nav.svelte';
+    import IsLoggedIn from '$lib/components/layout/is-logged-in.svelte';
 
     import { classNames } from '$lib/utils/classnames';
+    import StarOnGithub from './star-on-github.svelte';
 
     let className: string = '';
 
@@ -33,7 +35,7 @@
         'bg-primary-bg border-smooth sticky top-0 z-999 flex min-h-[4.5rem] items-center justify-between border-b px-[4vw]',
         className,
         theme,
-        { 'bg-transparent backdrop-blur-md': transparent }
+        { 'bg-transparent backdrop-blur-[10px]': transparent }
     )}
 >
     <div class="flex items-center gap-8">
@@ -55,5 +57,10 @@
         </a>
 
         <MainNav {links} />
+    </div>
+
+    <div class="flex items-center gap-4">
+        <StarOnGithub />
+        <IsLoggedIn />
     </div>
 </header>
