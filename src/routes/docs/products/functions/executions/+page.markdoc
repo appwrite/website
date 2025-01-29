@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Execution
-description: Understand serverless function execution in Appwrite. Explore how triggers, events, and data flow enable dynamic execution of your code.
+description: Learn how Appwrite handles serverless function executions. More specifically, execution status, details and function logging.
 ---
 
 Each time an Appwrite Function runs, an **execution** is created.

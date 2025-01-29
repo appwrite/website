@@ -14,7 +14,6 @@
 <button
     use:melt={$trigger}
     on:click={() => {
-        show = true;
         trackEvent({
             plausible: { name: 'Appwrite in 100 seconds' },
             posthog: { name: 'intro-video-btn_hero_click' }
