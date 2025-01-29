@@ -39,7 +39,7 @@
                 )}
             >
                 {#each Array.from({ length: 3 }) as _}
-                    <div>
+                    <a href="/" class="block cursor-pointer">
                         <div
                             class={classNames(
                                 'bg-smooth relative mx-4 -mb-0.5 flex flex-col justify-between py-4 px-4 md:mx-8 md:flex-row',
@@ -55,7 +55,7 @@
                             </div>
                             <span>Read article <span class="web-icon-arrow-right" /></span>
                         </div>
-                    </div>
+                    </a>
                 {/each}
             </div>
 
