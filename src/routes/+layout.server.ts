@@ -20,11 +20,17 @@ const generateDistinctId = (request: Request, clientAddress?: string) => {
 
 export const load = async ({ request, getClientAddress }) => {
     const distinctId = generateDistinctId(request, getClientAddress());
-    // const ctaVariant = await posthogServerClient?.getFeatureFlag('cta-copy_ab-test', distinctId);
+    const ctaVariant = await posthogServerClient?.getFeatureFlag('cta-copy_ab-test', distinctId);
 
-    console.log('distinctId', distinctId);
+    const ctaCopy =
+        ctaVariant === 'start-building_variant'
+            ? 'Start building'
+            : ctaVariant === 'start-for-free_variant'
+              ? 'Start for free'
+              : 'Get started';
 
     return {
+        ctaCopy,
         distinctId,
         changelogEntries: (await getAllChangelogEntries()).length
     };
