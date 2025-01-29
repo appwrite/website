@@ -42,13 +42,13 @@
                     <div>
                         <div
                             class={classNames(
-                                'bg-smooth relative mx-8 -mb-0.5 flex items-center justify-between py-4 px-4',
+                                'bg-smooth relative mx-4 -mb-0.5 flex flex-col justify-between py-4 px-4 md:mx-8 md:flex-row',
                                 'before:border-offset before:absolute before:inset-y-0 before:left-0 before:-mr-px before:block before:w-0.5 before:border-l-2 before:border-dashed',
                                 'after:border-offset after:absolute after:inset-y-0 after:right-0 after:-ml-px after:block after:w-0.5 after:border-r-2 after:border-dashed'
                             )}
                         >
-                            <div class="text-primary flex items-center gap-4">
-                                <span class="bg-smooth rounded-[4px] py-0.5 px-2">Blog</span>
+                            <div class="text-primary flex flex-col gap-4 md:flex-row">
+                                <span class="bg-smooth w-fit rounded-[4px] py-0.5 px-2">Blog</span>
                                 <span class="font-aeonik-pro text-label"
                                     >Serverless functions 101: best practices</span
                                 >
