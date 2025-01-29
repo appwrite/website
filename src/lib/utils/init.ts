@@ -38,11 +38,11 @@ export function createCountdown(date: Date) {
 
         function updateFrame() {
             update();
-            // Request the next animation frame to keep updating the countdown
             frame = requestAnimationFrame(() => {
                 updateFrame();
             });
         }
+
         updateFrame();
 
         return () => cancelAnimationFrame(frame);
@@ -60,6 +60,12 @@ export function createCountdown(date: Date) {
 export async function isLoggedIn() {
     const user = await getUser();
     return !!user.github;
+}
+
+export async function isLoggedInEmployee() {
+    const user = await getUser();
+
+    return !!user.github && user.appwrite?.email.endsWith('@appwrite.io');
 }
 
 export interface GithubUser {
@@ -178,8 +184,8 @@ export async function getTicketById(id: string, f = fetch) {
 export function loginGithub() {
     appwriteInit.account.createOAuth2Token(
         OAuthProvider.Github,
-        `${window.location.origin}/init/tickets?success=1`,
-        `${window.location.origin}/init/tickets?error=1`,
+        `${window.location.origin}/playground/tickets?success=1`,
+        `${window.location.origin}/playground/tickets?error=1`,
         ['read:user']
     );
 }

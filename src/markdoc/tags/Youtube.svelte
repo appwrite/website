@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Video from '$routes/init/(components)/Video.svelte';
+    import Video from '$lib/components/ui/video/player.svelte';
 
     export let src: string;
     export let thumbnail: string;
