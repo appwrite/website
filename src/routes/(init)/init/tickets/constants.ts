@@ -6,7 +6,7 @@ export const invalidateTicket = () => {
     invalidate(TICKET_DEP);
 };
 
-export const BASE_URL = '/playground/tickets';
+export const BASE_URL = '/init/tickets';
 
 export type ContributionsMatrix = number[][];
 

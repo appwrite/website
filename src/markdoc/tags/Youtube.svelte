@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Video from '$lib/components/ui/video/player.svelte';
+    import Video from '$lib/components/shared/video/player.svelte';
 
     export let src: string;
     export let thumbnail: string;

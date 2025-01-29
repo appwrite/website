@@ -256,6 +256,7 @@
     --color-badge-bg: var(--color-badge-bg-light);
     --color-badge-border: var(--color-badge-border-light);
     --color-smooth: hsl(var(--color-greyscale-hue) 6%, 10%, 0.04);
+    --color-offset: hsl(var(--color-greyscale-hue) 2%, 11%, 0.94);
 }
 
 /* dark theme */
@@ -265,6 +266,7 @@
     --carousel-gradient: 23, 23, 26;
     --color-primary-bg: var(--color-greyscale-900);
     --color-smooth: hsl(0 0%, 100%, 0.06);
+    --color-offset: hsl(0 0% 100% / 0.1);
 }
 
 /* Container */

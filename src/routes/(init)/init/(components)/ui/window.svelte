@@ -8,7 +8,7 @@
 
 <div
     class={classNames(
-        'border-smooth bg-smooth relative z-10 flex w-full flex-col rounded-2xl border p-1 backdrop-blur-2xl',
+        'bg-smooth relative z-10 flex w-full flex-col rounded-2xl p-1 backdrop-blur-2xl',
         className
     )}
 >
@@ -55,7 +55,6 @@
             />
         </svg>
     </div>
-    <div class="bg-smooth border-smooth flex flex-1 flex-col rounded-xl border p-4">
-        <slot />
-    </div>
+
+    <slot />
 </div>

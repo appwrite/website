@@ -10,7 +10,9 @@
     <div class="container">
         <Window>
             <span slot="title">Init_Schedule</span>
-            <div class="grid gap-4 md:grid-cols-5">
+            <div
+                class="bg-smooth border-smooth grid grid-cols-1 gap-4 rounded-xl border p-4 md:grid-cols-5"
+            >
                 {#each days as day, index}
                     <CountdownCard {...day} {index} />
                 {/each}

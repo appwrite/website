@@ -184,8 +184,8 @@ export async function getTicketById(id: string, f = fetch) {
 export function loginGithub() {
     appwriteInit.account.createOAuth2Token(
         OAuthProvider.Github,
-        `${window.location.origin}/playground/tickets?success=1`,
-        `${window.location.origin}/playground/tickets?error=1`,
+        `${window.location.origin}/init/tickets?success=1`,
+        `${window.location.origin}/init/tickets?error=1`,
         ['read:user']
     );
 }
@@ -211,4 +211,4 @@ export const invalidateTicket = () => {
     invalidate(TICKET_DEP);
 };
 
-export const BASE_URL = '/playground/tickets';
+export const BASE_URL = '/init/tickets';
