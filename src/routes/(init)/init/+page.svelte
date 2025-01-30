@@ -145,7 +145,7 @@
 {#if today >= base}
     <CountdownGrid {days} />
 
-    <div class="container py-20">
+    <div class="container w-full py-20">
         {#each days as day, index}
             <Day {...day} {index} />
         {/each}

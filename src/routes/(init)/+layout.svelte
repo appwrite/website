@@ -4,13 +4,13 @@
     import Lockup from './init/(components)/lockup.svelte';
 </script>
 
-<SiteHeader class="border-b-2 border-dashed" contained simple />
-<slot />
 <div
-    class="absolute inset-0 top-0 -z-1 min-h-full w-full bg-[radial-gradient(rgba(255,255,255,0.24)_1px,transparent_1px)] [background-size:100px_100px]"
-/>
-
-<SiteFooter class="border-t-2 border-dashed" />
-<div class="overflow-y-hidden">
-    <Lockup class="-mb-[24rem] w-full" />
+    class="flex min-h-screen flex-col bg-[url('/images/bgs/dots.svg')] bg-[size:calc(100vw_/_11)] bg-[position:center_top]"
+>
+    <SiteHeader class="border-b-2 border-dashed" contained simple />
+    <slot />
+    <SiteFooter class="border-t-2 border-dashed" />
+    <div class="overflow-y-hidden">
+        <Lockup class="-mb-[24rem] w-full" />
+    </div>
 </div>

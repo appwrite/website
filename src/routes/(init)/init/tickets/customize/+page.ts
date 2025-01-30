@@ -10,7 +10,7 @@ import { BASE_URL } from '$routes/(init)/init/utils';
 export const load = async ({ fetch }) => {
     const loggedIn = await isLoggedIn();
 
-    if (!loggedIn) {
+    if (loggedIn) {
         redirect(307, BASE_URL);
     }
 
