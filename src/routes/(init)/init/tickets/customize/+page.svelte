@@ -1,7 +1,8 @@
 <script lang="ts">
     import { dequal } from 'dequal/lite';
     import { BASE_URL } from '$lib/utils/init';
-    import Card from '../../(components)/ticket/card.svelte';
+    import TicketCard from '../(components)/ticket-card.svelte';
+    import Window from '../../(components)/ui/window.svelte';
 
     export let data;
 
@@ -60,4 +61,11 @@
     />
 </svelte:head>
 
-<div><Card {...data.user} name="Jesse Winton" id={1} /></div>
+<Window class="container">
+    <div slot="title">Walter's Ticket</div>
+    <div class="bg-offset grid grid-cols-1 rounded-xl p-8 md:grid-cols-12">
+        <div class="md:col-span-6">
+            <TicketCard {...data.user} name="Jesse Winton" id={1} />
+        </div>
+    </div>
+</Window>

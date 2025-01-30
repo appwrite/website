@@ -13,6 +13,7 @@
     export let theme: string = '';
     export let transparent: boolean = true;
     export let contained: boolean = false;
+    export let simple: boolean = false;
 
     $: links = [
         {
@@ -65,7 +66,9 @@
                 />
             </a>
 
-            <MainNav {links} />
+            {#if !simple}
+                <MainNav {links} />
+            {/if}
         </div>
 
         <div class="flex items-center gap-4">

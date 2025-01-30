@@ -9,6 +9,7 @@
 <div
     class={classNames(
         'bg-smooth relative z-10 flex w-full flex-col rounded-2xl p-1 backdrop-blur-2xl',
+        'before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-linear-to-r before:from-transparent before:via-white/30 before:to-transparent',
         className
     )}
 >
