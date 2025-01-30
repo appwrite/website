@@ -1,0 +1,22 @@
+---
+layout: changelog
+title: New database metrics and upload safeguards
+date: 2025-01-31
+---
+
+Appwrite Console now includes database metrics and better data protection features to help you monitor and manage your apps.
+
+## What's new
+- Database monitoring: View your read and write operations directly in the Usage screen to track database activity
+- Upload protection: The Console now warns you before accidentally leaving a page during file uploads to prevent data loss
+- Message tracking: When sending messages via server SDK, you can now see the complete list of recipients in message details
+
+## Fixes
+- Function wizard: Fixed navigation issues during function creation to prevent getting stuck in the setup process
+- Text corrections: Updated labels in Storage settings for better clarity
+
+You can find the new database metrics in your database Usage screen, and the upload protection will automatically activate during file uploads.
+
+{% arrow_link href="https://cloud.appwrite.io" %}
+Visit the Console to try the new features
+{% /arrow_link %}
