@@ -1,5 +1,6 @@
 <script lang="ts">
     import { createCountdown } from '$routes/(init)/init/utils';
+    import Badge from './badge.svelte';
     import Counter from './counter.svelte';
 
     type $$Props = {
@@ -33,24 +34,19 @@
                 {#if hasReleased}
                     <img src={illustration} alt="Logo" class="size-32" />
                 {/if}
-                <div class="font-aeonik-fono text-primary text-[1.125rem] uppercase">
-                    {#if $hours > 24}
-                        <div
-                            class="outline-smooth flex items-center gap-0.5 rounded-full bg-black py-0.5 px-3 text-center outline-2 outline-dashed"
-                        >
+
+                {#if !hasReleased}
+                    <Badge class="text-[1.125rem]">
+                        {#if $hours > 24}
                             {$days}
                             {$days > 1 ? 'days' : 'day'}
-                        </div>
-                    {:else if !hasReleased}
-                        <div
-                            class="outline-smooth flex items-center gap-0.5 rounded-full bg-black py-0.5 px-3 text-center outline-2 outline-dashed"
-                        >
+                        {:else}
                             <Counter value={$hours} />:<Counter value={$minutes} />:<Counter
                                 value={$seconds}
                             />
-                        </div>
-                    {/if}
-                </div>
+                        {/if}
+                    </Badge>
+                {/if}
             </div>
         </div>
         <div

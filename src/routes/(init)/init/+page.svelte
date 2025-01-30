@@ -12,6 +12,8 @@
     const ogImage = buildOpenGraphImage('init', description);
 
     let base = new Date('2025-01-29T13:00:00.000Z');
+    const today = new Date();
+
     let days: Array<Omit<DayProps, 'index'>> = [
         {
             title: 'Domains',
@@ -139,10 +141,13 @@
 </svelte:head>
 
 <Hero />
-<CountdownGrid {days} />
 
-<div class="container py-20">
-    {#each days as day, index}
-        <Day {...day} {index} />
-    {/each}
-</div>
+{#if today >= base}
+    <CountdownGrid {days} />
+
+    <div class="container py-20">
+        {#each days as day, index}
+            <Day {...day} {index} />
+        {/each}
+    </div>
+{/if}
