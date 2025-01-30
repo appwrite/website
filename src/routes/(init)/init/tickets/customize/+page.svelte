@@ -1,8 +1,7 @@
 <script lang="ts">
     import { dequal } from 'dequal/lite';
-    import { BASE_URL } from '$lib/utils/init';
+    import { BASE_URL } from '$routes/(init)/init/utils';
     import TicketCard from '../(components)/ticket-card.svelte';
-    import Window from '../../(components)/ui/window.svelte';
 
     export let data;
 
@@ -12,6 +11,7 @@
     let title = originalTitle;
     let originalShowGitHub = data.ticket?.show_contributions ?? true;
     let showGitHub = originalShowGitHub;
+    let id = data.ticket?.id.toString().padStart(6, '0');
 
     let customizing = false;
     let saving = false;
@@ -61,11 +61,31 @@
     />
 </svelte:head>
 
-<Window class="container">
-    <div slot="title">Walter's Ticket</div>
-    <div class="bg-offset grid grid-cols-1 rounded-xl p-8 md:grid-cols-12">
-        <div class="md:col-span-6">
+<div class="container">
+    <div class="grid min-h-[80vh] grid-cols-1 md:grid-cols-12">
+        <div
+            class="border-offset divide-offset grid grid-rows-12 place-items-center divide-y-2 divide-dashed border-l-2 border-dashed md:col-span-6"
+        >
+            <div class="row-span-2 h-full w-full px-8" />
+            <div class="row-span-8 flex h-full w-full items-center px-12">
+                <div class="flex flex-1 flex-col gap-2">
+                    <h2 class="text-display text-primary">Walter's ticket</h2>
+                    <span class="text-display text-primary"
+                        ><span class="text-accent">#</span>{id}</span
+                    >
+                    <p class="text-body text-secondary mt-2 font-medium">
+                        Register today and claim your Init launch week ticket and get the chance to
+                        win prizes.
+                    </p>
+                    <button class="web-button mt-4">Register with GitHub</button>
+                </div>
+            </div>
+            <div class="row-span-2 h-full w-full px-8" />
+        </div>
+        <div
+            class="border-offset flex items-center justify-center border-x-2 border-dashed bg-black/24 py-8 md:col-span-6"
+        >
             <TicketCard {...data.user} name="Jesse Winton" id={1} />
         </div>
     </div>
-</Window>
+</div>

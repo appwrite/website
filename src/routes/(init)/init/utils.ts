@@ -1,11 +1,10 @@
 import { onMount } from 'svelte';
 import { get, writable } from 'svelte/store';
 
-import { OAuthProvider } from '@appwrite.io/console';
+import { OAuthProvider, type Models } from '@appwrite.io/console';
 import { appwriteInit } from '$lib/appwrite/init';
 import { getAppwriteUser, type AppwriteUser } from '$lib/utils/console';
 
-import type { Models } from '@appwrite.io/console';
 import { invalidate } from '$app/navigation';
 
 export function createCountdown(date: Date) {
@@ -59,13 +58,8 @@ export function createCountdown(date: Date) {
 
 export async function isLoggedIn() {
     const user = await getUser();
+
     return !!user.github;
-}
-
-export async function isLoggedInEmployee() {
-    const user = await getUser();
-
-    return !!user.github && user.appwrite?.email.endsWith('@appwrite.io');
 }
 
 export interface GithubUser {
@@ -184,9 +178,9 @@ export async function getTicketById(id: string, f = fetch) {
 export function loginGithub() {
     appwriteInit.account.createOAuth2Token(
         OAuthProvider.Github,
-        `${window.location.origin}/init/tickets?success=1`,
-        `${window.location.origin}/init/tickets?error=1`,
-        ['read:user']
+        `${window.location.origin}/init/tickets/customize?success=1`,
+        `${window.location.origin}/init/tickets/customize?error=1`,
+        ['read:user', 'read:teams']
     );
 }
 
@@ -211,4 +205,4 @@ export const invalidateTicket = () => {
     invalidate(TICKET_DEP);
 };
 
-export const BASE_URL = '/init/tickets';
+export const BASE_URL = '/init';

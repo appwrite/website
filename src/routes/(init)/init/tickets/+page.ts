@@ -1,7 +1,7 @@
 import { redirect } from '@sveltejs/kit';
-import { auth, isLoggedIn } from '$lib/utils/init';
+import { auth, isLoggedIn } from '$routes/(init)/init/utils';
 import { goto } from '$app/navigation';
-import { BASE_URL } from '$lib/utils/init';
+import { BASE_URL } from '$routes/(init)/init/utils';
 
 export const load = async ({ url }) => {
     const secret = url.searchParams.get('secret');

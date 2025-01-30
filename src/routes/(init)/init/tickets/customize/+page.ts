@@ -1,11 +1,16 @@
-import { getTicketByUser, getTicketContributions, getUser, isLoggedIn } from '$lib/utils/init';
+import {
+    getTicketByUser,
+    getTicketContributions,
+    getUser,
+    isLoggedIn
+} from '$routes/(init)/init/utils';
 import { redirect } from '@sveltejs/kit';
-import { BASE_URL } from '$lib/utils/init';
+import { BASE_URL } from '$routes/(init)/init/utils';
 
 export const load = async ({ fetch }) => {
     const loggedIn = await isLoggedIn();
 
-    if (loggedIn) {
+    if (!loggedIn) {
         redirect(307, BASE_URL);
     }
 

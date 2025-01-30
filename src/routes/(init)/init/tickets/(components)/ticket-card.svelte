@@ -1,7 +1,6 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import type { ContributionsMatrix, TicketData } from '$lib/utils/init';
-    import { fade } from 'svelte/transition';
+    import type { ContributionsMatrix, TicketData } from '$routes/(init)/init/utils';
     import Lockup from '../../(components)/lockup.svelte';
 
     //let order = writable<Array<number>>([2, 1, 0]);
@@ -10,9 +9,8 @@
         contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;
     };
 
-    $: ({ name, id, contributions, show_contributions = true } = $$props as $$Props);
+    $: ({ name, id, ...restProps } = $$props as $$Props);
 
-    const formattedId = `#{${id?.toString().padStart(6, '0')}}`;
     const firstName = name?.split(' ')[0];
 </script>
 
@@ -94,10 +92,15 @@
             {/await}
         </div> -->
 
+        <div>
+            <h3>{firstName}</h3>
+        </div>
+
         <div
-            class="font-aeonik-fono border-offset text-micro relative z-10 rounded-lg border-2 border-dashed bg-black p-2 uppercase"
+            class="font-aeonik-fono border-offset text-x-micro relative z-10 flex items-center justify-between rounded-lg border-2 border-dashed bg-black p-2 uppercase"
         >
-            Launch Week
+            <span>Launch Week <span class="text-accent">/</span> FEB X - X</span>
+            <span>Ticket <span class="text-accent">#</span>{id.toString().padStart(6, '0')}</span>
         </div>
 
         <div

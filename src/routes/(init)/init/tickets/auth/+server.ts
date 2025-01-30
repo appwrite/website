@@ -25,9 +25,11 @@ export async function POST({ request, cookies }) {
             httpOnly: true,
             secure: true
         });
+
         const cookieFallback = {
             [`a_session_${PUBLIC_APPWRITE_PROJECT_INIT_ID}`]: session.secret
         };
+
         return new Response(
             JSON.stringify({
                 cookieFallback: JSON.stringify(cookieFallback)

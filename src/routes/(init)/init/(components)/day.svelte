@@ -18,7 +18,7 @@
 <script lang="ts">
     import { format } from 'date-fns';
     import PreReleaseCard from './pre-release-card.svelte';
-    import Window from './ui/window.svelte';
+    import Window from './window.svelte';
     import { classNames } from '$lib/utils/classnames';
 
     export let release: DayProps['release'];

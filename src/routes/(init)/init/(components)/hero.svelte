@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { loginGithub } from '$lib/utils/init';
+    import { loginGithub } from '$routes/(init)/init/utils';
     import Lockup from './lockup.svelte';
 </script>
 

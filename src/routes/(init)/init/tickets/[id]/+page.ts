@@ -1,4 +1,4 @@
-import { getTicketById, getTicketContributions } from '$lib/utils/init';
+import { getTicketById, getTicketContributions } from '$routes/(init)/init/utils';
 import { error } from '@sveltejs/kit';
 
 export const ssr = true;

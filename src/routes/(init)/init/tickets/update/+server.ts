@@ -1,7 +1,7 @@
 import { APPWRITE_INIT_COLLECTION_ID, APPWRITE_INIT_DB_ID } from '$env/static/private';
 import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_INIT_ID } from '$env/static/public';
 import { appwriteInitServer } from '$lib/appwrite/init.server';
-import type { GithubUser } from '$lib/utils/init';
+import type { GithubUser } from '$routes/(init)/init/utils';
 import { Account, Client, Query } from '@appwrite.io/console';
 import { z } from 'zod';
 

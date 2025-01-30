@@ -1,9 +1,9 @@
 import { APPWRITE_INIT_DB_ID, APPWRITE_INIT_COLLECTION_ID } from '$env/static/private';
 import { appwriteInitServer } from '$lib/appwrite/init.server';
 import { isProUser } from '$lib/utils/console.js';
-import { type User } from '$lib/utils/init';
+import { type User } from '$routes/(init)/init/utils';
 import { ID, Query } from '@appwrite.io/console';
-import type { TicketData, TicketDoc } from '../constants.js';
+import type { TicketData, TicketDoc } from '$routes/(init)/init/utils';
 
 type SendToHubspotArgs = {
     name: string;
@@ -26,6 +26,7 @@ async function sendToUserList({ name, email, userId }: SendToHubspotArgs) {
 }
 
 async function getTicketDocByUser(user: User) {
+    console.log({ user });
     if (user.github?.email) {
         sendToUserList({
             name: user.appwrite?.name ?? user.github?.name ?? user.github.email,
@@ -134,7 +135,7 @@ async function getTicketDocByUser(user: User) {
 async function getTicketDocById(id: string) {
     return (await appwriteInitServer.databases.getDocument(
         APPWRITE_INIT_DB_ID,
-        APPWRITE_INIT_COLLECTION_ID_NEW,
+        APPWRITE_INIT_COLLECTION_ID,
         id
     )) as unknown as Omit<TicketData, 'contributions' | 'variant'>;
 }

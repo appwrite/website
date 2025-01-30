@@ -1,14 +1,12 @@
 <script lang="ts">
     import { page } from '$app/stores';
-    import FooterNav from '$lib/components/FooterNav.svelte';
-    import MainFooter from '$lib/components/MainFooter.svelte';
-    import Main from '$lib/layouts/Main.svelte';
     import { createCopy } from '$lib/utils/copy';
-    import { TicketPreview, Ticket } from '$routes/init/(components)/ticket';
+    import TicketCard from '../(components)/ticket-card.svelte';
 
     export let data;
 
     let firstName = data.ticket?.name?.split(/\s/)[0] ?? '';
+    let id = data.ticket?.id.toString().padStart(6, '0');
     const ogImage = `${$page.url.origin}/init/tickets/${data.ticket.$id}/og`;
 
     const { copied, copy } = createCopy($page.url.href);
@@ -36,33 +34,31 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<div class="hero">
-    <div class="desktop-left">
-        <div class="header">
-            <h1 class="text-display font-aeonik-pro">
-                Join <span class="text-primary" style:font-weight="500"> init </span><br />August
-                19th-23rd
-            </h1>
-        </div>
-
-        <div class="info">
-            <p class="text-label mt-4">Register today and claim your ticket.</p>
-            <div class="mt-8 flex items-center gap-4">
-                <a class="web-button" href="/init/tickets">
-                    <span class="text">Get my ticket</span>
-                </a>
-                <button class="web-button is-secondary" on:click={copy}>
-                    <span class="web-icon-{$copied ? 'check' : 'copy'} text-primary" />
-
-                    <span class="text">Copy ticket URL</span>
-                </button>
+<div class="container">
+    <div class="grid min-h-[80vh] grid-cols-1 md:grid-cols-12">
+        <div
+            class="border-offset divide-offset grid grid-rows-12 place-items-center divide-y-2 divide-dashed border-l-2 border-dashed md:col-span-6"
+        >
+            <div class="row-span-2 h-full w-full px-8" />
+            <div class="row-span-8 flex h-full w-full items-center px-12">
+                <div class="flex flex-1 flex-col gap-2">
+                    <h2 class="text-display text-primary">Walter's ticket</h2>
+                    <span class="text-display text-primary"
+                        ><span class="text-accent">#</span>{id}</span
+                    >
+                    <p class="text-body text-secondary mt-2 font-medium">
+                        Register today and claim your Init launch week ticket and get the chance to
+                        win prizes.
+                    </p>
+                    <button class="web-button mt-4">Register with GitHub</button>
+                </div>
             </div>
+            <div class="row-span-2 h-full w-full px-8" />
+        </div>
+        <div
+            class="border-offset flex items-center justify-center border-x-2 border-dashed bg-black/24 py-8 md:col-span-6"
+        >
+            <TicketCard name={firstName} id={1} />
         </div>
     </div>
-
-    <TicketPreview>
-        <div class="ticket-holder">
-            <Ticket {...data.ticket} contributions={data.streamed.contributions} />
-        </div>
-    </TicketPreview>
 </div>

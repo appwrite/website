@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { createCountdown } from '$lib/utils/init';
+    import { createCountdown } from '$routes/(init)/init/utils';
     import Counter from './counter.svelte';
 
     type $$Props = {

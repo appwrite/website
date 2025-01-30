@@ -1,4 +1,4 @@
-import type { ContributionsMatrix, TicketData } from '$lib/utils/init';
+import type { ContributionsMatrix, TicketData } from '$routes/(init)/init/utils';
 import { getContributions } from '../get-contributions/helpers.server';
 
 type GetCubeArgs = {
