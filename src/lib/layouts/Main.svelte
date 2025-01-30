@@ -21,8 +21,6 @@
     import MainNav from '$lib/components/MainNav.svelte';
     import { page } from '$app/stores';
 
-    const ctaCopy = $page.data.ctaCopy;
-
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
 
@@ -167,7 +165,7 @@
         <div class="web-mobile-header-end">
             {#if !$isMobileNavOpen}
                 <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button">
-                    <span class="text">{ctaCopy}</span>
+                    <span class="text">Start building</span>
                 </a>
             {/if}
             <button
