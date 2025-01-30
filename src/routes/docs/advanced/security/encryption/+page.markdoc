@@ -15,5 +15,9 @@ You can enable encryption by going to your bucket's **Settings** > **Security se
 Files are encrypted with AES-128 in Galois/Counter Mode (GCM).
 
 ## Databases {% #databases %}
-Databases will provide the ability to create encrypted columns. This feature is being actively developed and coming soon.
-Attributes will be encrypted with AES-128 in Galois/Counter Mode (GCM).
+Database columns support encryption for string attributes. When creating a string attribute in the UI, encryption can be enabled using a toggle option. 
+Attributes are encrypted with AES-128 in Galois/Counter Mode (GCM).
+
+{% info %}
+Encrypted attributes cannot be queried.
+{% /info %}
