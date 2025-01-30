@@ -4,7 +4,7 @@
 </script>
 
 <div class="relative flex min-h-[75vh] flex-col items-center justify-center gap-8 px-8">
-    <div class="relative z-10 mx-auto w-1/2"><Lockup /></div>
+    <div class="relative z-10 mx-auto md:w-1/2"><Lockup /></div>
     <div class="relative z-10 flex w-full max-w-lg flex-col items-center justify-center gap-8">
         <div class="text flex flex-col gap-4 [animation-delay:0.75s]">
             <p class="text-description text-secondary block max-w-lg text-center">
