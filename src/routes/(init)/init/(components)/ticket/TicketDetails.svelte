@@ -5,9 +5,9 @@
 </script>
 
 {#if customizing}
-    <div class="input-container flex gap-4">
-        <div class="input flex flex-col">
-            <label for="name">Name</label>
+    <div class="flex gap-4">
+        <div class="mb-2 flex flex-1 flex-col gap-3">
+            <label for="name" class="text-micro">Name</label>
             <input
                 class="web-input-text"
                 type="text"
@@ -19,8 +19,8 @@
                 maxlength="42"
             />
         </div>
-        <div class="input flex flex-col">
-            <label for="name">Title</label>
+        <div class="mb-2 flex flex-1 flex-col gap-3">
+            <label for="name" class="text-micro">Title</label>
             <input
                 class="web-input-text"
                 type="text"
@@ -34,22 +34,3 @@
         </div>
     </div>
 {/if}
-
-<style lang="scss">
-    .input-container {
-        .input {
-            flex: 1;
-            margin-bottom: 8px;
-            gap: 12px;
-
-            & > label {
-                font-size: 12px;
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            flex-direction: column;
-            gap: 32px;
-        }
-    }
-</style>

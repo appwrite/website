@@ -1,30 +1,63 @@
 <script lang="ts">
-    import Globe from '../../(assets)/globe.svg';
-    import WindowSticker from '../../(assets)/stickers/window.svg';
-    import Logo from '../../(assets)/stickers/logo.svg';
-    import { writable } from 'svelte/store';
-    import Window from '../ui/window.svelte';
-    import Lockup from '../lockup.svelte';
-    import type { ContributionsMatrix, TicketData } from '$routes/init/tickets/constants';
+    import type { ContributionsMatrix, TicketData } from '$lib/utils/init';
     import { fade } from 'svelte/transition';
 
-    let order = writable<Array<number>>([2, 1, 0]);
+    let card: HTMLDivElement | null = null;
+    let bounds: DOMRect | null = null;
+
+    //let order = writable<Array<number>>([2, 1, 0]);
 
     type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
         contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;
-        disableEffects?: boolean;
     };
 
     $: ({ name, id, contributions, show_contributions = true } = $$props as $$Props);
 
-    const stickers = [
-        { src: Globe, alt: 'Globe' },
-        { src: WindowSticker, alt: 'Window' },
-        { src: Logo, alt: 'Logo' }
-    ];
+    function rotateToMouse(e: MouseEvent) {
+        if (!bounds || !card) return;
+
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        const leftX = mouseX - bounds.x;
+        const topY = mouseY - bounds.y;
+        const center = {
+            x: leftX - bounds.width / 2,
+            y: topY - bounds.height / 2
+        };
+        const distance = Math.sqrt(center.x ** 2 + center.y ** 2);
+
+        card.style.transform = `
+    scale3d(1.07, 1.07, 1.07)
+    rotate3d(
+      ${center.y / 100},
+      ${-center.x / 100},
+      0,
+      ${Math.log(distance) * 2}deg
+    )
+  `;
+    }
+
+    const handleCard = (el: HTMLDivElement) => {
+        bounds = el.getBoundingClientRect();
+
+        el.addEventListener('mouseenter', () => {
+            document.addEventListener('mousemove', rotateToMouse);
+        });
+
+        el.addEventListener('mouseleave', () => {
+            document.removeEventListener('mousemove', rotateToMouse);
+            card!.style.transform = '';
+        });
+    };
 </script>
 
-<div class="ticket w-full">
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<!-- svelte-ignore a11y-mouse-events-have-key-events -->
+<div
+    class="bg-greyscale-800 m-4 aspect-[3/4] max-w-sm overflow-hidden rounded-2xl shadow-lg"
+    use:handleCard
+    bind:this={card}
+>
     <span>Ticket <span class="text-accent">#</span>{id?.toString().padStart(6, '0')}</span>
     <div class="light relative flex p-4">
         <div class="font-aeonik-pro mt-auto mb-0 flex w-full items-end justify-between">
@@ -36,17 +69,6 @@
             </div>
         </div>
 
-        <!-- {#each $order as i, index}
-                <div data-index={index} class="absolute z-10">
-                    <img
-                        draggable
-                        src={stickers[i].src}
-                        alt={stickers[i].alt}
-                        style:top={index * 100 + 'px'}
-                        style:left={index * 20 + '%'}
-                    />
-                </div>
-            {/each} -->
         <div class="absolute inset-x-0 top-0 z-0">
             {#await contributions then c}
                 {#if c && show_contributions}

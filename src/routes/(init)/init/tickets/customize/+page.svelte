@@ -1,6 +1,7 @@
 <script lang="ts">
     import { dequal } from 'dequal/lite';
     import { BASE_URL } from '$lib/utils/init';
+    import Card from '../../(components)/ticket/card.svelte';
 
     export let data;
 
@@ -59,4 +60,4 @@
     />
 </svelte:head>
 
-<div>Ticket customization</div>
+<div><Card {...data.user} name="Jesse Winton" id={1} /></div>
