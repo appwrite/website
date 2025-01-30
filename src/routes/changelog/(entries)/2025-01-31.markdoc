@@ -17,6 +17,6 @@ Appwrite Console now includes database metrics and better data protection featur
 
 You can find the new database metrics in your database Usage screen, and the upload protection will automatically activate during file uploads.
 
-{% arrow_link href="/docs/products/console" %}
+{% arrow_link href="https://cloud.appwrite.io" %}
 Visit the Console to try the new features
 {% /arrow_link %}
