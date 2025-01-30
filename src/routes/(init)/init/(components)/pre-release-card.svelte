@@ -3,6 +3,7 @@
     import Window from './ui/window.svelte';
     import { createCountdown } from '$lib/utils/init';
     import Counter from './counter.svelte';
+    import { format } from 'date-fns';
 
     type $$Props = {
         release: Date;
@@ -17,29 +18,30 @@
 
 <div class="relative h-fit pb-20">
     <Window class="aspect-[3/1]">
-        <span slot="title" class="text-micro flex items-center gap-1 text-white">
-            Day {index} -
-            {#if $hours > 24}
-                <p>
-                    {$days}
-                    {$days > 1 ? 'days' : 'day'}
-                </p>
-            {:else}
-                <div class="flex items-center gap-0.5 text-center">
-                    <Counter value={$hours} />:<Counter value={$minutes} />:<Counter
-                        value={$seconds}
-                    />
-                </div>
-            {/if}
-            <span class="text-accent">_</span></span
-        >
+        <div slot="title" class="text-micro flex items-center gap-1 text-white">
+            Day {index} <span class="text-accent">/</span>
+            {format(release, 'MMM-dd-yyyy')}
+        </div>
 
         <div
             class={classNames(
-                'retro bg-greyscale-800 relative mt-2 flex flex-1 items-center justify-center overflow-hidden px-12'
+                'relative flex flex-1 items-center justify-center rounded-xl bg-[#19191C]'
             )}
         >
-            <img src={''} alt="key illustration" class="size-32 md:size-48" />
+            <div
+                class="font-aeonik-fono text-primary relative flex items-center rounded-full bg-black py-1.5 px-4 text-center text-xl uppercase outline-2 outline-[var(--color-offset)] outline-dashed"
+            >
+                {#if $hours > 24}
+                    <p>
+                        {$days}
+                        {$days > 1 ? 'days' : 'day'}
+                    </p>
+                {:else}
+                    <Counter value={$hours} />:<Counter value={$minutes} />:<Counter
+                        value={$seconds}
+                    />
+                {/if}
+            </div>
         </div>
     </Window>
 </div>

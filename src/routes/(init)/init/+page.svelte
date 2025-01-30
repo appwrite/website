@@ -2,42 +2,121 @@
     import { buildOpenGraphImage } from '$lib/utils/metadata';
 
     import CountdownGrid from './(components)/countdown-grid.svelte';
-    import DayOne from './(components)/days/day-one.svelte';
     import Domains from './(assets)/illustrations/domains.svg';
     import { addDays } from 'date-fns';
-    import Day from './(components)/days/day.svelte';
+    import Day, { type DayProps } from './(components)/day.svelte';
     import Hero from './(components)/hero.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
     const ogImage = buildOpenGraphImage('init', description);
 
-    let base = new Date('2025-01-27T13:00:00.000Z');
-    let days = [
+    let base = new Date('2025-01-29T13:00:00.000Z');
+    let days: Array<Omit<DayProps, 'index'>> = [
         {
             title: 'Domains',
             release: base,
-            illustration: Domains
+            illustration: Domains,
+            description:
+                'A streamlined solution for easily deploying static and server-rendered applications, designed to simplify your workflow.',
+            url: '/',
+            content: [
+                { title: 'Serverless functions 101: best practices', url: '/', type: 'Blog' },
+                {
+                    title: 'Local serverless function development with the new Appwrite CLI',
+                    url: '/',
+                    type: 'Blog'
+                },
+                {
+                    title: 'Local development',
+                    url: '/',
+                    type: 'Docs'
+                }
+            ]
         },
         {
             title: 'Sites',
             release: addDays(base, 1),
-            illustration: Domains
+            illustration: Domains,
+            description:
+                'A streamlined solution for easily deploying static and server-rendered applications, designed to simplify your workflow.',
+            url: '/',
+            content: [
+                { title: 'Serverless functions 101: best practices', url: '/', type: 'Blog' },
+                {
+                    title: 'Local serverless function development with the new Appwrite CLI',
+                    url: '/',
+                    type: 'Blog'
+                },
+                {
+                    title: 'Local development',
+                    url: '/',
+                    type: 'Docs'
+                }
+            ]
         },
         {
             title: 'Domains',
             release: addDays(base, 2),
-            illustration: Domains
+            illustration: Domains,
+            description:
+                'A streamlined solution for easily deploying static and server-rendered applications, designed to simplify your workflow.',
+            url: '/',
+            content: [
+                { title: 'Serverless functions 101: best practices', url: '/', type: 'Blog' },
+                {
+                    title: 'Local serverless function development with the new Appwrite CLI',
+                    url: '/',
+                    type: 'Blog'
+                },
+                {
+                    title: 'Local development',
+                    url: '/',
+                    type: 'Docs'
+                }
+            ]
         },
         {
             title: 'Sites',
             release: addDays(base, 3),
-            illustration: Domains
+            illustration: Domains,
+            description:
+                'A streamlined solution for easily deploying static and server-rendered applications, designed to simplify your workflow.',
+            url: '/',
+            content: [
+                { title: 'Serverless functions 101: best practices', url: '/', type: 'Blog' },
+                {
+                    title: 'Local serverless function development with the new Appwrite CLI',
+                    url: '/',
+                    type: 'Blog'
+                },
+                {
+                    title: 'Local development',
+                    url: '/',
+                    type: 'Docs'
+                }
+            ]
         },
         {
             title: 'Domains',
             release: addDays(base, 4),
-            illustration: Domains
+            illustration: Domains,
+            description:
+                'A streamlined solution for easily deploying static and server-rendered applications, designed to simplify your workflow.',
+            url: '/',
+            content: [
+                { title: 'Serverless functions 101: best practices', url: '/', type: 'Blog' },
+                {
+                    title: 'Local serverless function development with the new Appwrite CLI',
+                    url: '/',
+                    type: 'Blog'
+                },
+                {
+                    title: 'Local development',
+                    url: '/',
+                    type: 'Docs'
+                }
+            ]
         }
     ];
 </script>
@@ -62,22 +141,8 @@
 <Hero />
 <CountdownGrid {days} />
 
-<div class="container space-y-20 divide-y divide-white/8 py-20">
-    {#each days as day, i}
-        <Day release={day.release}>
-            {#if i === 0}
-                <DayOne index={i} release={day.release} />
-            {:else if i === 1}
-                <DayOne index={i} release={day.release} />
-            {:else if i === 2}
-                <DayOne index={i} release={day.release} />
-            {:else if i === 3}
-                <DayOne index={i} release={day.release} />
-            {:else if i === 4}
-                <DayOne index={i} release={day.release} />
-            {:else}
-                <DayOne index={i} release={day.release} />
-            {/if}
-        </Day>
+<div class="container py-20">
+    {#each days as day, index}
+        <Day {...day} {index} />
     {/each}
 </div>
