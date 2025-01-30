@@ -23,8 +23,6 @@
     const description = DEFAULT_DESCRIPTION;
     const ogImage = `${DEFAULT_HOST}/images/open-graph/website.png`;
 
-    const ctaCopy = $page.data.ctaCopy;
-
     const infoBoxes: Array<{ label: string; description: string; icon: string }> = [
         {
             label: 'Self-Hosted',
@@ -156,7 +154,7 @@
                                         posthog: { name: 'get-started-btn_hero_click' }
                                     })}
                             >
-                                {ctaCopy}
+                                Start building
                             </a>
 
                             <AppwriteIn100Seconds />
