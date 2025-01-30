@@ -2,9 +2,6 @@
     import type { ContributionsMatrix, TicketData } from '$lib/utils/init';
     import { fade } from 'svelte/transition';
 
-    let card: HTMLDivElement | null = null;
-    let bounds: DOMRect | null = null;
-
     //let order = writable<Array<number>>([2, 1, 0]);
 
     type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
@@ -12,51 +9,10 @@
     };
 
     $: ({ name, id, contributions, show_contributions = true } = $$props as $$Props);
-
-    function rotateToMouse(e: MouseEvent) {
-        if (!bounds || !card) return;
-
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-        const leftX = mouseX - bounds.x;
-        const topY = mouseY - bounds.y;
-        const center = {
-            x: leftX - bounds.width / 2,
-            y: topY - bounds.height / 2
-        };
-        const distance = Math.sqrt(center.x ** 2 + center.y ** 2);
-
-        card.style.transform = `
-    scale3d(1.07, 1.07, 1.07)
-    rotate3d(
-      ${center.y / 100},
-      ${-center.x / 100},
-      0,
-      ${Math.log(distance) * 2}deg
-    )
-  `;
-    }
-
-    const handleCard = (el: HTMLDivElement) => {
-        bounds = el.getBoundingClientRect();
-
-        el.addEventListener('mouseenter', () => {
-            document.addEventListener('mousemove', rotateToMouse);
-        });
-
-        el.addEventListener('mouseleave', () => {
-            document.removeEventListener('mousemove', rotateToMouse);
-            card!.style.transform = '';
-        });
-    };
 </script>
 
-<!-- svelte-ignore a11y-no-static-element-interactions -->
-<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 <div
-    class="bg-greyscale-800 m-4 aspect-[3/4] max-w-sm overflow-hidden rounded-2xl shadow-lg"
-    use:handleCard
-    bind:this={card}
+    class="bg-greyscale-800 m-4 aspect-[3/4] max-w-sm overflow-hidden rounded-2xl shadow-lg transition-transform"
 >
     <span>Ticket <span class="text-accent">#</span>{id?.toString().padStart(6, '0')}</span>
     <div class="light relative flex p-4">

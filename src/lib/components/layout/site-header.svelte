@@ -12,6 +12,7 @@
     export { className as class };
     export let theme: string = '';
     export let transparent: boolean = true;
+    export let contained: boolean = false;
 
     $: links = [
         {
@@ -32,35 +33,44 @@
 
 <header
     class={classNames(
-        'bg-primary-bg border-smooth sticky top-0 z-999 flex min-h-[4.5rem] items-center justify-between border-b px-[4vw]',
+        'bg-primary-bg border-smooth sticky top-0 z-999 flex min-h-[4.5rem] flex-col items-center border-b',
         className,
         theme,
-        { 'bg-transparent backdrop-blur-[10px]': transparent }
+        {
+            'bg-transparent backdrop-blur-[10px]': transparent
+        }
     )}
 >
-    <div class="flex items-center gap-8">
-        <a href="/">
-            <img
-                class="hidden dark:block"
-                src="/images/logos/appwrite.svg"
-                alt="appwrite"
-                height="24"
-                width="130"
-            />
-            <img
-                class="block dark:hidden"
-                src="/images/logos/appwrite-light.svg"
-                alt="appwrite"
-                height="24"
-                width="130"
-            />
-        </a>
+    <div
+        class={classNames('flex w-full flex-1 items-center justify-between', {
+            'container mx-auto': contained,
+            'px-[4vw]': !contained
+        })}
+    >
+        <div class="flex items-center gap-8">
+            <a href="/">
+                <img
+                    class="hidden dark:block"
+                    src="/images/logos/appwrite.svg"
+                    alt="appwrite"
+                    height="24"
+                    width="130"
+                />
+                <img
+                    class="block dark:hidden"
+                    src="/images/logos/appwrite-light.svg"
+                    alt="appwrite"
+                    height="24"
+                    width="130"
+                />
+            </a>
 
-        <MainNav {links} />
-    </div>
+            <MainNav {links} />
+        </div>
 
-    <div class="flex items-center gap-4">
-        <StarOnGithub />
-        <IsLoggedIn />
+        <div class="flex items-center gap-4">
+            <StarOnGithub />
+            <IsLoggedIn />
+        </div>
     </div>
 </header>
