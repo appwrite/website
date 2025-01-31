@@ -60,19 +60,7 @@ Notwithstanding any other provision of these Terms, to the maximum extent permit
 
 You agree not to use the Service for any unlawful or prohibited activities. This includes, but is not limited to:
 
-- **Illegal Content**: Hosting, transmitting, or distributing content that is illegal, infringing, harmful, threatening, defamatory, obscene, harassing, or otherwise objectionable.
-
-- **Malware and Harmful Code**: Uploading or distributing viruses, malware, or any other malicious code intended to harm or gain unauthorized access to any system, data, or personal information.
-
-- **Unsolicited Communications**: Sending unauthorized or unsolicited advertising, spam, or any other form of improper solicitation.
-
-- **Fraudulent Activities**: Engaging in deceptive practices or activities intended to defraud, mislead, or deceive others.
-
-- **Abuse of Resources**: Misusing the Service in a way that disrupts its integrity or performance.
-
-- **Unauthorized Access**: Attempting to gain unauthorized access to the Service, other user accounts, computer systems, or networks connected to the Service.
-
-- **Violation of Laws**: Engaging in activities that violate any applicable local, state, national, or international laws or regulations.
+{% partial file="prohibited-activities.md" /%} 
 
 ## Prohibited Use of the SMS Messages Service
 
