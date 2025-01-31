@@ -138,19 +138,19 @@ export async function auth(userId: string, secret: string, f = fetch) {
 }
 
 export async function getTicketDocByUser(user: User, f = fetch) {
-    return await f(`${BASE_URL}/get-ticket-doc?user=${JSON.stringify(user)}`).then(
+    return await f(`${BASE_URL}/tickets/get-ticket-doc?user=${JSON.stringify(user)}`).then(
         (res) => res.json() as Promise<TicketDoc>
     );
 }
 
 export async function getTicketDocById(id: string, f = fetch) {
-    return await f(`${BASE_URL}/get-ticket-doc?id=${id}`).then(
+    return await f(`${BASE_URL}/tickets/get-ticket-doc?id=${id}`).then(
         (res) => res.json() as Promise<TicketDoc>
     );
 }
 
 export async function getTicketContributions(id: string, f = fetch): Promise<ContributionsMatrix> {
-    const res = await f(`${BASE_URL}/${id}/get-contributions`);
+    const res = await f(`${BASE_URL}/tickets/${id}/get-contributions`);
     const { data: contributions } = (await res
         .json()
         .then((r) => {

@@ -3,22 +3,59 @@
     import type { ContributionsMatrix, TicketData } from '$routes/(init)/init/utils';
     import Lockup from '../../(components)/lockup.svelte';
 
-    //let order = writable<Array<number>>([2, 1, 0]);
-
     type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
         contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;
     };
 
-    $: ({ name, id, ...restProps } = $$props as $$Props);
-
+    $: ({ name, id } = $$props as $$Props);
     const firstName = name?.split(' ')[0];
+
+    let bounds: DOMRect | null = null;
+    let card: HTMLDivElement | null = null;
+
+    const rotateToMouse = (e: MouseEvent) => {
+        if (!bounds) return;
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        const leftX = mouseX - bounds.x;
+        const topY = mouseY - bounds.y;
+        const center = {
+            x: leftX - bounds.width / 2,
+            y: topY - bounds.height / 2
+        };
+        const distance = Math.sqrt(center.x ** 2 + center.y ** 2);
+
+        card!.style.transform = `
+    scale3d(1.07, 1.07, 1.07)
+    rotate3d(
+      ${center.y / 100},
+      ${-center.x / 100},
+      0,
+      ${Math.log(distance) * 2}deg
+    )
+  `;
+    };
+
+    card!.addEventListener('mouseenter', () => {
+        bounds = card!.getBoundingClientRect();
+        document.addEventListener('mousemove', rotateToMouse);
+    });
+
+    card!.addEventListener('mouseleave', () => {
+        document.removeEventListener('mousemove', rotateToMouse);
+        card!.style.transform = '';
+        card!.style.background = '';
+    });
 </script>
 
 <div
     class={classNames(
         'relative z-10 flex aspect-[3.65/5.72] max-w-sm flex-col gap-1 overflow-hidden rounded-2xl bg-[#27272A] p-1 shadow-lg transition-transform',
-        'before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-linear-to-r before:from-transparent before:via-white/30 before:to-transparent'
+        'before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-linear-to-r before:from-transparent before:via-white/30 before:to-transparent',
+        '[transform:rotate-3d(0)] [transition-property:transform,_box-shadow] duration-300',
+        'hover:[box-shadow:_0_5px_20px_5px_#00000044] hover:duration-150'
     )}
+    bind:this={card}
 >
     <div
         class="border-offset font-aeonik-fono text-micro bg-subtle relative z-10 flex h-9 w-full items-center justify-between rounded-xl border p-2 uppercase"
