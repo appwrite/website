@@ -13,7 +13,9 @@
             <p class="text-body max-width-[380px] mx-auto font-medium">
                 Set up file encryption and granular user permissions in your storage infrastructure
             </p>
-            <a href="/docs/products/storage/permissions" class="web-button is-secondary mt-4 mx-auto !w-full md:!w-fit">Learn more</a
+            <a
+                href="/docs/products/storage/permissions"
+                class="web-button is-secondary mt-4 mx-auto !w-full md:!w-fit">Learn more</a
             >
         </div>
     </div>
