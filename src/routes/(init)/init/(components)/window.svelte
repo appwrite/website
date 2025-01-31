@@ -29,7 +29,8 @@
             />
         </svg>
 
-        <span class="font-aeonik-fono text-micro uppercase"><slot name="title" /></span>
+        <span class="font-aeonik-fono text-micro text-primary uppercase"><slot name="title" /></span
+        >
 
         <svg
             width="20"
