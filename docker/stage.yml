@@ -74,6 +74,7 @@ services:
             - PUBLIC_APPWRITE_COL_THREADS_ID
             - PUBLIC_APPWRITE_COL_MESSAGES_ID
             - PUBLIC_APPWRITE_FN_TLDR_ID
+            - PUBLIC_POSTHOG_API_KEY
         deploy:
             <<: *x-update-config
             mode: replicated
@@ -113,24 +114,6 @@ services:
             - RUN_ON_STARTUP=true
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
-
-    sematext-agent:
-        image: sematext/agent:latest
-        environment:
-            REGION: EU
-            INFRA_TOKEN: $SEMATEXT_TOKEN
-        deploy:
-            mode: global
-            restart_policy:
-                condition: any
-        volumes:
-            - /:/hostfs:ro
-            - /etc/passwd:/etc/passwd:ro
-            - /etc/group:/etc/group:ro
-            - /sys:/host/sys:ro
-            - /dev:/hostfs/dev:ro
-            - /var/run:/var/run
-            - /sys/kernel/debug:/sys/kernel/debug
 
 networks:
     cloud:

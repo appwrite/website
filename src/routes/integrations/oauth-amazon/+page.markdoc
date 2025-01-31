@@ -48,7 +48,7 @@ For this step, you must [create an account on Appwrite Cloud](https://cloud.appw
 
 Add the **Client ID** and **Client secret** you saved from the security profile you created. Copy the URI to add to the **Allowed Return URLs** field in the **Web Settings** of the security profile in the Amazon Developer console.
 
-![New security profile](/images/integrations/oauth-amazon/security-profile.png)
+![New security profile](/images/integrations/oauth-amazon/allowed-return-urls.png)
 
 ## Step 3: Test the provider.
 

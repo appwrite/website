@@ -5,6 +5,8 @@
     import FooterNav from '../../lib/components/FooterNav.svelte';
     import MainFooter from '../../lib/components/MainFooter.svelte';
     import { socials } from '$lib/constants';
+    import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+    import { getReferrerAndUtmSource } from '$lib/utils/utm';
 
     let email = '';
     let firstName = '';
@@ -15,7 +17,7 @@
 
     async function handleSubmit() {
         error = undefined;
-        const response = await fetch('https://growth.appwrite.io/v1/feedback', {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -24,7 +26,8 @@
                 email,
                 firstName,
                 subject,
-                message
+                message,
+                ...getReferrerAndUtmSource()
             })
         });
         if (response.status >= 400) {
@@ -36,7 +39,7 @@
     }
 
     const title = 'Contact us' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description = "Fill in this short form to get in touch with the Appwrite team. Questions, feature requests or bug reports - all input is welcome!";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 

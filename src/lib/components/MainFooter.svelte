@@ -28,7 +28,7 @@
             <div>Copyright © {year} Appwrite</div>
 
             <iframe
-                class="status w-fit max-w-[230px]"
+                class="status w-full md:w-fit md:max-w-[230px]"
                 title="Appwrite Status"
                 src="https://status.appwrite.online/badge?theme=dark"
                 height="35"
@@ -90,6 +90,13 @@
     @use '$scss/abstract/variables/devices';
     .web-icon-button {
         display: grid;
+    }
+
+    @media #{devices.$break1} {
+        .status {
+            height: 55px;
+            margin-bottom: 6px; /* balancing due to style:margin-top="-4px" & the `iframe` has some spacings too I think */
+        }
     }
 
     .e-main-footer {
