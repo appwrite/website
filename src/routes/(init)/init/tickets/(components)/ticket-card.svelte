@@ -7,45 +7,34 @@
         contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;
     };
 
-    $: ({ name, id } = $$props as $$Props);
+    $: ({ name, id, ...rest } = $$props as $$Props);
     const firstName = name?.split(' ')[0];
 
-    let bounds: DOMRect | null = null;
-    let card: HTMLDivElement | null = null;
+    // let bounds: DOMRect | null = null;
+    // let card: HTMLDivElement | null = null;
 
-    const rotateToMouse = (e: MouseEvent) => {
-        if (!bounds) return;
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-        const leftX = mouseX - bounds.x;
-        const topY = mouseY - bounds.y;
-        const center = {
-            x: leftX - bounds.width / 2,
-            y: topY - bounds.height / 2
-        };
-        const distance = Math.sqrt(center.x ** 2 + center.y ** 2);
+    //     const rotateToMouse = (e: MouseEvent) => {
+    //         if (!bounds) return;
+    //         const mouseX = e.clientX;
+    //         const mouseY = e.clientY;
+    //         const leftX = mouseX - bounds.x;
+    //         const topY = mouseY - bounds.y;
+    //         const center = {
+    //             x: leftX - bounds.width / 2,
+    //             y: topY - bounds.height / 2
+    //         };
+    //         const distance = Math.sqrt(center.x ** 2 + center.y ** 2);
 
-        card!.style.transform = `
-    scale3d(1.07, 1.07, 1.07)
-    rotate3d(
-      ${center.y / 100},
-      ${-center.x / 100},
-      0,
-      ${Math.log(distance) * 2}deg
-    )
-  `;
-    };
-
-    card!.addEventListener('mouseenter', () => {
-        bounds = card!.getBoundingClientRect();
-        document.addEventListener('mousemove', rotateToMouse);
-    });
-
-    card!.addEventListener('mouseleave', () => {
-        document.removeEventListener('mousemove', rotateToMouse);
-        card!.style.transform = '';
-        card!.style.background = '';
-    });
+    //         card!.style.transform = `
+    //     scale3d(1.07, 1.07, 1.07)
+    //     rotate3d(
+    //       ${center.y / 100},
+    //       ${-center.x / 100},
+    //       0,
+    //       ${Math.log(distance) * 2}deg
+    //     )
+    //   `;
+    //     };
 </script>
 
 <div
@@ -55,7 +44,6 @@
         '[transform:rotate-3d(0)] [transition-property:transform,_box-shadow] duration-300',
         'hover:[box-shadow:_0_5px_20px_5px_#00000044] hover:duration-150'
     )}
-    bind:this={card}
 >
     <div
         class="border-offset font-aeonik-fono text-micro bg-subtle relative z-10 flex h-9 w-full items-center justify-between rounded-xl border p-2 uppercase"

@@ -11,7 +11,7 @@
     const description = 'The start of something new.';
     const ogImage = buildOpenGraphImage('init', description);
 
-    let base = new Date('2025-01-29T13:00:00.000Z');
+    let base = new Date('2025-01-31T13:00:00.000Z');
     const today = new Date();
 
     let days: Array<Omit<DayProps, 'index'>> = [

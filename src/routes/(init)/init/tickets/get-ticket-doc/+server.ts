@@ -11,7 +11,7 @@ type SendToHubspotArgs = {
     userId: string;
 };
 
-async function sendToUserList({ name, email, userId }: SendToHubspotArgs) {
+const sendToUserList = async ({ name, email, userId }: SendToHubspotArgs) => {
     await fetch('https://growth.appwrite.io/v1/mailinglists/init-2.0', {
         method: 'POST',
         headers: {
@@ -23,10 +23,9 @@ async function sendToUserList({ name, email, userId }: SendToHubspotArgs) {
             userId
         })
     });
-}
+};
 
-async function getTicketDocByUser(user: User) {
-    console.log({ user });
+const getTicketDocByUser = async (user: User) => {
     if (user.github?.email) {
         sendToUserList({
             name: user.appwrite?.name ?? user.github?.name ?? user.github.email,
@@ -130,7 +129,7 @@ async function getTicketDocByUser(user: User) {
             }
         )) as unknown as TicketDoc;
     }
-}
+};
 
 async function getTicketDocById(id: string) {
     return (await appwriteInitServer.databases.getDocument(

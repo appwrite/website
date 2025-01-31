@@ -126,7 +126,7 @@ export function getMockContributions() {
 }
 
 export async function auth(userId: string, secret: string, f = fetch) {
-    const response = await f(`${BASE_URL}/auth`, {
+    const response = await f(`${BASE_URL}/tickets/auth`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

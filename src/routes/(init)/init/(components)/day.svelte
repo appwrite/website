@@ -95,8 +95,7 @@
                                     )}
                                 >
                                     <div class="text-primary flex flex-col gap-4 md:flex-row">
-                                        <span
-                                            class="group-hover:bg-accent/50 bg-smooth w-fit rounded-[4px] py-0.5 px-2"
+                                        <span class="bg-smooth w-fit rounded-[4px] py-0.5 px-2"
                                             >{type}</span
                                         >
                                         <span class="font-aeonik-pro text-label">{title}</span>

@@ -5,7 +5,6 @@ export const ssr = true;
 
 export const load = async ({ params, fetch }) => {
     const { id } = params;
-    console.log(id);
     try {
         const ticket = await getTicketById(id, fetch);
 

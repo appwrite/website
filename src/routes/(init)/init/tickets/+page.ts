@@ -11,9 +11,9 @@ export const load = async ({ url }) => {
 
         if (response?.cookieFallback) {
             localStorage.setItem('cookieFallback', response.cookieFallback);
-            goto(`${BASE_URL}/customize`);
+            goto(`${BASE_URL}/tickets/customize`);
         }
     } else if (await isLoggedIn()) {
-        redirect(307, `${BASE_URL}/customize`);
+        redirect(307, `${BASE_URL}/tickets/customize`);
     }
 };

@@ -50,7 +50,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
         "frame-ancestors 'self' https://www.youtube.com https://*.vimeo.com",
         'block-all-mixed-content',
         'upgrade-insecure-requests',
-        "connect-src 'self' https://*.appwrite.io https://*.appwrite.org https://*.posthog.com https://*.sentry.io https://*.plausible.io https://plausible.io",
+        "connect-src 'self' https://*.github.com https://*.appwrite.io https://*.appwrite.org https://*.posthog.com https://*.sentry.io https://*.plausible.io https://plausible.io",
         "frame-src 'self' https://www.youtube.com https://status.appwrite.online https://www.youtube-nocookie.com https://player.vimeo.com"
     ];
 
