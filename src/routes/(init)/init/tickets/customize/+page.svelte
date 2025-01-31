@@ -13,8 +13,6 @@
     let showGitHub = originalShowGitHub;
     let id = data.ticket?.id.toString().padStart(6, '0');
 
-    console.log({ data });
-
     let customizing = false;
     let saving = false;
 
@@ -71,7 +69,9 @@
             <div class="row-span-2 h-full w-full px-8" />
             <div class="row-span-8 flex h-full w-full items-center px-12">
                 <div class="flex flex-1 flex-col gap-2">
-                    <h2 class="text-display text-primary">{data.ticket.name}'s ticket</h2>
+                    <h2 class="text-display text-primary">
+                        {data.ticket.name.split(' ')[0]}'s ticket
+                    </h2>
                     <span class="text-display text-primary"
                         ><span class="text-accent">#</span>{id}</span
                     >
@@ -87,11 +87,7 @@
         <div
             class="border-offset flex items-center justify-center border-x-2 border-dashed bg-black/24 py-8 md:col-span-6"
         >
-            <TicketCard
-                name={data.ticket.name}
-                id={data.ticket.id}
-                contributions={getMockContributions()}
-            />
+            <TicketCard {...data.ticket} contributions={getMockContributions()} />
         </div>
     </div>
 </div>

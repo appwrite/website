@@ -7,8 +7,9 @@
         contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;
     };
 
-    $: ({ name, id, ...rest } = $$props as $$Props);
-    const firstName = name?.split(' ')[0];
+    export let { name, id, ...rest } = $$props as $$Props;
+
+    const firstName = name.split(' ')[0];
 
     // let bounds: DOMRect | null = null;
     // let card: HTMLDivElement | null = null;
