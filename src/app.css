@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@variant dark (&:is(.dark *));
 
 @theme {
     /* Colors */
@@ -8,6 +9,7 @@
     --color-primary: hsl(var(--color-primary));
     --color-secondary: hsl(var(--color-secondary));
     --color-accent: var(--color-secondary);
+    --color-smooth: var(--color-smooth);
 
     /* pink */
     --color-pink-200: hsl(var(--color-pink-hue) 98% 84%);
@@ -45,6 +47,9 @@
     --color-blue-500: calc(hsl(var(--color-blue-hue) - 1) 99% 70%);
     --color-blue-700: calc(hsl(var(--color-blue-hue) - 1) 42% 42%);
 
+    /* green */
+    --color-green-700: #0a714f;
+
     /* secondary */
     --color-secondary-100: hsl(var(--color-secondary-hue) 99% 66%);
     --color-accent-200: hsl(var(--color-secondary-hue), 78%, 60%, 0.32);
@@ -53,7 +58,7 @@
     --color-white: hsl(0 0% 100%);
     --color-black: hsl(0 0% 0%);
     --color-transparent: rgba(0, 0, 0, 0);
-    --color-smooth: hsl(var(--color-greyscale-hue) 6%, 10%, 0.04);
+    --color-offset: hsl(var(--color-greyscale-hue) 2%, 11%, 0.94);
     --color-greyscale-25: hsl(var(--color-greyscale-hue) 11% 98%);
     --color-greyscale-50: hsl(var(--color-greyscale-hue) 11% 94%);
     --color-greyscale-100: hsl(var(--color-greyscale-hue) 6% 90%);
@@ -75,10 +80,37 @@
     --color-badge-bg-dark: #2c2c2f;
     --color-badge-border-dark: #39393c;
 
+    /* Easings */
+    --transition-timing-function-bounce: linear(
+        0,
+        0.063,
+        0.25 18.2%,
+        1 36.4%,
+        0.813,
+        0.75,
+        0.813,
+        1,
+        0.938,
+        1,
+        1
+    );
+    --transition-timing-function-spring: linear(
+        0,
+        0.938 16.7%,
+        1.149 24.3%,
+        1.154 29.9%,
+        0.977 51%,
+        1
+    );
+
     /* Animations */
     --animate-scale-in: scale-in 200ms ease-out forwards;
-    --animate-text: fade-in 0.75s ease-in-out both, blur 0.75s ease-in-out both,
+    --animate-caret-blink: caret-blink 1s ease-in-out infinite;
+    --animate-text: fade 0.75s ease-in-out both, blur 0.75s ease-in-out both,
         up 0.75s ease-in-out both;
+    --animate-scroll: scroll 60s linear infinite;
+    --animate-fade-in: fade-in 0.5s ease-in-out both;
+    --animate-marquee: marquee var(--speed, 30s) linear infinite var(--direction, forwards);
 
     /* Pink polyfills */
     --transition: 0.2s;
@@ -90,6 +122,18 @@
         }
         100% {
             transform: scale(1);
+        }
+    }
+
+    @keyframes caret-blink {
+        0%,
+        70%,
+        100% {
+            opacity: 1;
+        }
+        20%,
+        50% {
+            opacity: 0;
         }
     }
 
@@ -120,6 +164,21 @@
         }
     }
 
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes marquee {
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
     /* Fonts */
     --font-family-sans: 'Inter', arial, sans-serif;
     --font-family-mono: 'Fira Code', monospace;
@@ -128,9 +187,12 @@
     --font-family-archia: 'Archia', arial, sans-serif;
 
     /* Font sizes */
+    --font-size-x-micro: 0.625rem;
+    --font-size-x-micro--line-height: 0.875rem;
+    --font-size-x-micro--letter-spacing: var(--letter-spacing-tighter);
     --font-size-micro: 0.75rem;
     --font-size-micro--line-height: 1rem;
-    --font-size-micro--letter-spacing: var(--letter-spacing-loose);
+    --font-size-micro--letter-spacing: var(--letter-spacing-tighter);
     --font-size-caption: 0.875rem;
     --font-size-caption--line-height: 1.375rem;
     --font-size-caption--letter-spacing: var(--letter-spacing-tight);
@@ -190,6 +252,7 @@
     --color-accent: var(--color-pink-600);
     --color-badge-bg: var(--color-badge-bg-light);
     --color-badge-border: var(--color-badge-border-light);
+    --color-smooth: hsl(var(--color-greyscale-hue) 6%, 10%, 0.04);
 }
 
 /* dark theme */
@@ -198,11 +261,22 @@
     --color-secondary: var(--color-greyscale-300);
     --color-badge-bg: var(--color-badge-bg-dark);
     --color-badge-border: var(--color-badge-border-dark);
+    --color-smooth: hsl(0 0%, 100%, 0.06);
 }
 
 /* Container */
 @layer components {
     .container {
         @apply mx-auto box-content max-w-[75rem] px-5;
+    }
+
+    .mask {
+        mask-image: linear-gradient(
+            to top,
+            transparent,
+            black var(--mask-height, 32px),
+            black calc(100% - var(--mask-height, 32px)),
+            black
+        );
     }
 }

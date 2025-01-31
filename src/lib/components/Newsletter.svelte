@@ -1,14 +1,15 @@
 <script context="module" lang="ts">
+    import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+
     export async function newsletter(name: string, email: string) {
-        const response = await fetch('https://growth.appwrite.io/v1/newsletter/subscribe', {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/newsletter/subscribe`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 name,
-                email,
-                cloud: true /* not optional on the growth endpoint. */
+                email
             })
         });
         return response;
@@ -90,9 +91,9 @@
                             class:max-w-[380px]={!submitted}
                         >
                             <section class="web-gap-5 flex flex-col">
-                                <h1 class="text-title font-aeonik-pro text-primary">
+                                <h2 class="text-title font-aeonik-pro text-primary">
                                     Subscribe to our newsletter
-                                </h1>
+                                </h2>
                                 <p class="text-description web-u-padding-block-end-40">
                                     Sign up to our company blog and get the latest insights from
                                     Appwrite. Learn more about engineering, product design, building

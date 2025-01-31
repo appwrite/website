@@ -6,6 +6,7 @@
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import type { Integration } from '$routes/integrations/+page';
     import { isHeaderHidden } from '$lib/layouts/Main.svelte';
+    import { integrationCategoryDescriptions } from '$lib/constants';
 
     export let title: Integration['title'];
     export let images: Integration['images'];
@@ -19,6 +20,9 @@
     //const title = 'Integrations' + TITLE_SUFFIX;
     //const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
     const ogImage = DEFAULT_HOST + cover;
+    const categoryHeading = integrationCategoryDescriptions.find(
+        (key) => key.slug === category.toLowerCase()
+    )?.heading;
 </script>
 
 <svelte:head>
@@ -43,7 +47,7 @@
         class="web-u-sep-block-end pb-0"
         style="background-color:rgba(23, 23, 26, 1); margin-block-end: 2.5rem"
     >
-        <div class="container">
+        <div class="container dark">
             <div class="web-integrations-top-section">
                 <div class="web-carousel-wrapper">
                     <a href="/integrations" class="web-button is-text mb-12">
@@ -129,7 +133,7 @@
                             <div class="web-u-sep-block-end"></div>
                             <div class="flex justify-between gap-2">
                                 <dt>Category</dt>
-                                <dd class="text-primary">{category}</dd>
+                                <dd class="text-primary">{categoryHeading}</dd>
                             </div>
                         </dl>
                     </div>

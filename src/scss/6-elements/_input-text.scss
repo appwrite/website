@@ -135,7 +135,7 @@ textarea.#{$p}-input-text {
   block-size: pxToRem(154);
 }
 
-select.#{$p}-input-text { color:hsl(var(--color-neutral-40)); }
+select.#{$p}-input-text { block-size: pxToRem(45.5); color:hsl(var(--color-neutral-40)); }
 
 .#{$p}-subscribe-input {
   padding: pxToRem(4); padding-inline-start:pxToRem(16);

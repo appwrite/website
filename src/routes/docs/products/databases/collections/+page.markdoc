@@ -4,7 +4,7 @@ title: Collections
 description: Organize your data with Appwrite Collections. Explore how to create and configure collections to store and structure your data effectively.
 ---
 Appwrite uses collections as containers of documents. Each collection contains many documents identical in structure.
-The terms collections and documents are used because the Appwrite JSON REST API resembles the API of a traditional NoSQL database.
+The terms collections and documents are used because the Appwrite JSON REST API resembles the API of a traditional NoSQL database, making it intuitive and user-friendly, even though Appwrite uses SQL under the hood.
 
 That said, Appwrite is designed to support both SQL and NoSQL database adapters like MariaDB, MySQL, or MongoDB in future versions.
 
@@ -279,7 +279,7 @@ You can choose between the following types.
 | `ip`         | IP address attribute for IPv4 and IPv6.                          |
 | `email`      | Email address attribute.                                         |
 | `url`        | URL attribute.                                                   |
-| `relationship` | Relationship attribute relates one collection to another. [Learn more about relationships.](/docs/products/databases) |
+| `relationship` | Relationship attribute relates one collection to another. [Learn more about relationships.](/docs/products/databases/relationships) |
 
 If an attribute must be populated in all documents, set it as `required`.
 If not, you may optionally set a default value.
