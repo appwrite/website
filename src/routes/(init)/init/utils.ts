@@ -175,14 +175,14 @@ export async function getTicketById(id: string, f = fetch) {
     return doc as TicketData;
 }
 
-export function loginGithub() {
+export const loginGithub = () => {
     appwriteInit.account.createOAuth2Token(
         OAuthProvider.Github,
         `${window.location.origin}/init/tickets/customize?success=1`,
         `${window.location.origin}/init/tickets/customize?error=1`,
-        ['read:user', 'read:teams']
+        ['read:user']
     );
-}
+};
 
 export type ContributionsMatrix = number[][];
 
