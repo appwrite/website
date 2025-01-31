@@ -1,6 +1,6 @@
 ---
 layout: changelog
-title: Upload safeguards and message tracking improvements
+title: Upload safeguards and Messaging improvements
 date: 2025-01-31
 ---
 
@@ -8,7 +8,7 @@ Appwrite Cloud now includes new warning system for active uploads and new improv
 
 ## What's new
 - Upload protection: The Console now warns you before accidentally leaving a page during file uploads to prevent data loss
-- Message tracking: When sending messages via server SDK, you can now see the complete list of recipients in message details
+- Messaging: When sending messages via server SDK, you can now see the complete list of recipients in message details
 
 ## Fixes
 - Function wizard: Fixed navigation issues during function creation to prevent getting stuck in the setup process
