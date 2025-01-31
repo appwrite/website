@@ -1,6 +1,7 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import type { ContributionsMatrix, TicketData } from '$routes/(init)/init/utils';
+    import { style } from 'motion';
     import Lockup from '../../(components)/lockup.svelte';
 
     type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
@@ -23,26 +24,6 @@
         y: number;
     }
 
-    interface TiltVariables {
-        scale: number;
-        rotateX: number;
-        rotateY: number;
-        rotateZ: number;
-        glowX: number;
-        glowY: number;
-        isHovering: boolean;
-    }
-
-    let variables: TiltVariables = {
-        scale: 1,
-        rotateX: 0,
-        rotateY: 0,
-        rotateZ: 0,
-        glowX: 50,
-        glowY: 50,
-        isHovering: false
-    };
-
     export const tilt = (node: HTMLElement) => {
         let bounds: TiltBounds;
 
@@ -57,15 +38,7 @@
             };
             const distance = Math.sqrt(center.x ** 2 + center.y ** 2);
 
-            node.style.transform = `
-            scale3d(1.07, 1.07, 1.07)
-      rotate3d(
-        ${center.y / 100},
-        ${-center.x / 100},
-        0,
-        ${Math.log(distance) * 2}deg
-      )
-    `;
+            node.style.transform = `scale3d(1.07, 1.07, 1.07) rotate3d(${center.y / 100}, ${-center.x / 100}, 0, ${Math.log(distance) * 2}deg)`;
 
             const glowElement = node.querySelector('.glow') as HTMLElement | null;
             if (glowElement) {
@@ -88,6 +61,7 @@
 
         function handleMouseleave(): void {
             document.removeEventListener('mousemove', rotateToMouse);
+
             node.style.transform = '';
             const glowElement = node.querySelector('.glow') as HTMLElement | null;
             if (glowElement) {

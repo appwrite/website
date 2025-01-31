@@ -1,9 +1,10 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import CountdownCard from './countdown-card.svelte';
+    import type { DayProps } from './day.svelte';
     import Window from './window.svelte';
 
-    export let days: Array<{ title: string; release: Date; illustration: string }> = [];
+    export let days: Array<Omit<DayProps, 'index'>> = [];
 </script>
 
 <div class={classNames('relative')}>
@@ -14,7 +15,12 @@
                 class="bg-smooth border-smooth grid grid-cols-1 gap-4 rounded-xl border p-4 md:grid-cols-5"
             >
                 {#each days as day, index}
-                    <CountdownCard {...day} {index} />
+                    <CountdownCard
+                        title={day.title}
+                        illustration={day.illustration}
+                        release={day.release}
+                        {index}
+                    />
                 {/each}
             </div>
         </Window>

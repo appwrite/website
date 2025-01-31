@@ -2,13 +2,9 @@
     import { createCountdown } from '$routes/(init)/init/utils';
     import Badge from './badge.svelte';
     import Counter from './counter.svelte';
+    import type { DayProps } from './day.svelte';
 
-    type $$Props = {
-        illustration: string;
-        release: Date;
-        index: number;
-        title: string;
-    };
+    type $$Props = Pick<DayProps, 'illustration' | 'release' | 'index' | 'title'>;
 
     export let illustration: $$Props['illustration'] = '';
     export let release: $$Props['release'];
