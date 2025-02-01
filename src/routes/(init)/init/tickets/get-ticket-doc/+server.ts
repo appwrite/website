@@ -2,7 +2,7 @@ import { APPWRITE_INIT_DB_ID, APPWRITE_INIT_COLLECTION_ID } from '$env/static/pr
 import { appwriteInitServer } from '$lib/appwrite/init.server';
 import { isProUser } from '$lib/utils/console.js';
 import { type User } from '$routes/(init)/init/utils';
-import { ID, Query } from '@appwrite.io/console';
+import { ID, Query } from 'node-appwrite';
 import type { TicketData, TicketDoc } from '$routes/(init)/init/utils';
 
 type SendToHubspotArgs = {

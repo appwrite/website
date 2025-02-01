@@ -1,7 +1,7 @@
 import { onMount } from 'svelte';
 import { get, writable } from 'svelte/store';
 
-import { OAuthProvider, type Models } from '@appwrite.io/console';
+import { OAuthProvider, type Models } from 'appwrite';
 import { appwriteInit } from '$lib/appwrite/init';
 import { getAppwriteUser, type AppwriteUser } from '$lib/utils/console';
 
