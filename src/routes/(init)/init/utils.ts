@@ -63,31 +63,6 @@ export const getInitUser = async () => {
     return { github, appwrite };
 };
 
-export async function getTicketDocByUser(user: User, f = fetch) {
-    console.log({ user });
-    return await f(`${BASE_URL}/tickets/get-ticket-doc?user=${JSON.stringify(user)}`).then(
-        (res) => res.json() as Promise<TicketDoc>
-    );
-}
-
-export async function getTicketDocById(id: string, f = fetch) {
-    return await f(`${BASE_URL}/tickets/get-ticket-doc?id=${id}`).then(
-        (res) => res.json() as Promise<TicketDoc>
-    );
-}
-
-export async function getTicketByUser(user: User, f = fetch) {
-    const doc = await getTicketDocByUser(user, f);
-
-    return doc as TicketData;
-}
-
-export async function getTicketById(id: string, f = fetch) {
-    const doc = await getTicketDocById(id, f);
-
-    return doc as TicketData;
-}
-
 export const loginGithub = async () => {
     await appwriteInit.account.createOAuth2Token(
         OAuthProvider.Github,

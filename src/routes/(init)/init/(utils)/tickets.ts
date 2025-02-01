@@ -1,9 +1,8 @@
 import { APPWRITE_INIT_DB_ID, APPWRITE_INIT_COLLECTION_ID } from '$env/static/private';
 import { appwriteInitServer } from '$lib/appwrite/init.server';
 import { Query, ID } from 'appwrite';
-import { BASE_URL, type TicketDoc, type User } from '../utils';
+import { type TicketData, type TicketDoc, type User } from '../utils';
 import { v5 as uuid } from 'uuid';
-import { z } from 'zod';
 
 type SendToUserListArgs = {
     name: string;
@@ -26,8 +25,8 @@ const sendToUserList = async ({ name, email, userId }: SendToUserListArgs) => {
 };
 
 export const getTicketDocByUser = async (user: User) => {
-    // send request details to user list for Growth
-    if (user.github?.email) {
+    // send request details to user list for growth in production
+    if (process.env.NODE_ENV === 'production' && user.github?.email) {
         sendToUserList({
             name: user.appwrite?.name ?? user.github?.name ?? user.github.email,
             email: user.appwrite?.email ?? user.github?.email,
@@ -35,7 +34,7 @@ export const getTicketDocByUser = async (user: User) => {
         });
     }
 
-    // fetch a user's github account, appwrite account, and
+    // fetch a user's github account and appwrite account
     const [githubAccount, appwriteAccount] = await Promise.all([
         user.github?.login
             ? appwriteInitServer.databases.listDocuments(
@@ -54,6 +53,7 @@ export const getTicketDocByUser = async (user: User) => {
     ]);
 
     if (!githubAccount?.total) {
+        // if there is no github account doc, create one
         return (await appwriteInitServer.databases.createDocument(
             APPWRITE_INIT_DB_ID,
             APPWRITE_INIT_COLLECTION_ID,
@@ -94,6 +94,7 @@ export const getTicketDocByUser = async (user: User) => {
         return doc;
     }
 
+    // if we have both docs, update the oldest doc to have the newest data
     const oldest = githubDoc.id < appwriteDoc.id ? githubDoc.$id : appwriteDoc.$id;
     const newest = githubDoc.id > appwriteDoc.id ? githubDoc.$id : appwriteDoc.$id;
 
@@ -118,27 +119,10 @@ export const getTicketDocByUser = async (user: User) => {
     )) as unknown as TicketDoc;
 };
 
-const contributionsSchema = z.array(z.array(z.number()));
-export type ContributionsMatrix = z.infer<typeof contributionsSchema>;
-
-export const getMockContributions = () => {
-    const result: ContributionsMatrix = [];
-    for (let i = 0; i < 53; i++) {
-        result.push([]);
-        for (let j = 0; j < 7; j++) {
-            result[i].push(Math.floor(Math.random() * 4));
-        }
-    }
-    return result;
-};
-
-export const getTicketContributions = async (id: string, f = fetch) => {
-    const res = await f(`${BASE_URL}/tickets/${id}/get-contributions`);
-
-    try {
-        return contributionsSchema.parseAsync((await res.json()).data);
-    } catch (e) {
-        console.error(e);
-        return { data: null };
-    }
+export const getTicketDocById = async (id: string) => {
+    return (await appwriteInitServer.databases.getDocument(
+        APPWRITE_INIT_DB_ID,
+        APPWRITE_INIT_COLLECTION_ID,
+        id
+    )) as unknown as Omit<TicketData, 'contributions' | 'variant'>;
 };
