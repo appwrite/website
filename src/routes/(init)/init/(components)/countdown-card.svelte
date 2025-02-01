@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { createCountdown } from '$routes/(init)/init/utils';
+    import { createCountdown } from '$lib/utils/create-countdown';
+
     import Badge from './badge.svelte';
     import Counter from './counter.svelte';
     import type { DayProps } from './day.svelte';

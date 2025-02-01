@@ -3,7 +3,7 @@ import { appwriteInitServer } from '$lib/appwrite/init.server';
 import { parse } from 'node-html-parser';
 import type { TicketData, ContributionsMatrix } from '$routes/(init)/init/utils';
 
-export async function getContributions(id: string): Promise<ContributionsMatrix | null> {
+export const getGithbubContributions = async (id: string) => {
     const { gh_user, contributions } = (await appwriteInitServer.databases.getDocument(
         APPWRITE_INIT_DB_ID,
         APPWRITE_INIT_COLLECTION_ID,
@@ -56,4 +56,4 @@ export async function getContributions(id: string): Promise<ContributionsMatrix 
     );
 
     return matrix;
-}
+};

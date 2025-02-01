@@ -1,5 +1,5 @@
 import type { ContributionsMatrix, TicketData } from '$routes/(init)/init/utils';
-import { getContributions } from '../get-contributions/helpers.server';
+import { getGithbubContributions } from '../get-contributions/helpers.server';
 
 type GetCubeArgs = {
     week: number;
@@ -28,7 +28,7 @@ const DIFF_X = 11.651;
 
 export async function getCubes(ticket: TicketData) {
     if (!ticket.show_contributions) return [];
-    const matrix = ((await getContributions(ticket.$id)) ?? []) as ContributionsMatrix;
+    const matrix = ((await getGithbubContributions(ticket.$id)) ?? []) as ContributionsMatrix;
 
     return matrix.reduce((acc, week, w) => {
         week.forEach((level, d) => {

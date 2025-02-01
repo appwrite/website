@@ -1,4 +1,4 @@
-import { getContributions } from './helpers.server.js';
+import { getGithbubContributions } from './helpers.server.js';
 
 const emptyResponse = new Response(JSON.stringify({ data: null }), {
     status: 404,
@@ -8,7 +8,7 @@ const emptyResponse = new Response(JSON.stringify({ data: null }), {
 });
 
 export async function GET({ params }) {
-    const matrix = await getContributions(params.id);
+    const matrix = await getGithbubContributions(params.id);
 
     if (!matrix) return emptyResponse;
 

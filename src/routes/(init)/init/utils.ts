@@ -1,66 +1,13 @@
-import { onMount } from 'svelte';
-import { get, writable } from 'svelte/store';
-
 import { OAuthProvider, type Models } from 'appwrite';
 import { appwriteInit } from '$lib/appwrite/init';
 import { getAppwriteUser, type AppwriteUser } from '$lib/utils/console';
-
 import { invalidate } from '$app/navigation';
 
-export function createCountdown(date: Date) {
-    const today = new Date();
-    const hasReleased = today >= date;
-
-    const [days, hours, minutes, seconds] = [writable(0), writable(0), writable(0), writable(0)];
-
-    function update() {
-        const today = new Date();
-        const timeRemaining = date.getTime() - today.getTime();
-
-        if (timeRemaining <= 0) {
-            // Target date has passed, stop the countdown
-            return;
-        }
-
-        const totalSeconds = Math.floor(timeRemaining / 1000);
-        seconds.set(totalSeconds % 60);
-        const totalMinutes = Math.floor(totalSeconds / 60);
-        minutes.set(totalMinutes % 60);
-        hours.set(Math.floor(totalMinutes / 60));
-        days.set(Math.ceil(get(hours) / 24));
-    }
-
-    update();
-
-    onMount(() => {
-        let frame: number;
-
-        function updateFrame() {
-            update();
-            frame = requestAnimationFrame(() => {
-                updateFrame();
-            });
-        }
-
-        updateFrame();
-
-        return () => cancelAnimationFrame(frame);
-    });
-
-    return {
-        hasReleased,
-        days,
-        hours,
-        minutes,
-        seconds
-    };
-}
-
-export async function isLoggedIn() {
-    const user = await getUser();
+export const isLoggedIn = async () => {
+    const user = await getInitUser();
 
     return !!user.github;
-}
+};
 
 export interface GithubUser {
     login: string;
@@ -68,7 +15,7 @@ export interface GithubUser {
     email: string;
 }
 
-export async function getGithubUser() {
+export const getGithubUser = async () => {
     try {
         const identitiesList = await appwriteInit.account.listIdentities();
         if (!identitiesList.total) return null;
@@ -101,20 +48,22 @@ export async function getGithubUser() {
         console.error(e);
         return null;
     }
-}
+
+    return {} as GithubUser;
+};
 
 export type User = {
     github: GithubUser | null;
     appwrite: AppwriteUser | null;
 };
 
-export async function getUser(): Promise<User> {
+export const getInitUser = async () => {
     const [github, appwrite] = await Promise.all([getGithubUser(), getAppwriteUser()]);
 
     return { github, appwrite };
-}
+};
 
-export function getMockContributions() {
+export const getMockContributions = () => {
     const result: ContributionsMatrix = [];
     for (let i = 0; i < 53; i++) {
         result.push([]);
@@ -123,33 +72,9 @@ export function getMockContributions() {
         }
     }
     return result;
-}
+};
 
-export async function auth(userId: string, secret: string, f = fetch) {
-    const response = await f(`${BASE_URL}/tickets/auth`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ userId, secret })
-    });
-
-    return await response.json();
-}
-
-export async function getTicketDocByUser(user: User, f = fetch) {
-    return await f(`${BASE_URL}/tickets/get-ticket-doc?user=${JSON.stringify(user)}`).then(
-        (res) => res.json() as Promise<TicketDoc>
-    );
-}
-
-export async function getTicketDocById(id: string, f = fetch) {
-    return await f(`${BASE_URL}/tickets/get-ticket-doc?id=${id}`).then(
-        (res) => res.json() as Promise<TicketDoc>
-    );
-}
-
-export async function getTicketContributions(id: string, f = fetch): Promise<ContributionsMatrix> {
+export const getTicketContributions = async (id: string, f = fetch) => {
     const res = await f(`${BASE_URL}/tickets/${id}/get-contributions`);
     const { data: contributions } = (await res
         .json()
@@ -161,22 +86,10 @@ export async function getTicketContributions(id: string, f = fetch): Promise<Con
         })) as { data: ContributionsMatrix | null };
 
     return contributions ?? [];
-}
+};
 
-export async function getTicketByUser(user: User, f = fetch) {
-    const doc = await getTicketDocByUser(user, f);
-
-    return doc as TicketData;
-}
-
-export async function getTicketById(id: string, f = fetch) {
-    const doc = await getTicketDocById(id, f);
-
-    return doc as TicketData;
-}
-
-export const loginGithub = () => {
-    appwriteInit.account.createOAuth2Token(
+export const loginGithub = async () => {
+    await appwriteInit.account.createOAuth2Token(
         OAuthProvider.Github,
         `${window.location.origin}/init/tickets/customize?success=1`,
         `${window.location.origin}/init/tickets/customize?error=1`,
@@ -201,6 +114,7 @@ export type TicketData = Pick<Models.Document, '$id'> & {
 export type TicketDoc = Omit<TicketData, 'contributions' | 'variant'>;
 
 export const TICKET_DEP = 'ticket';
+
 export const invalidateTicket = () => {
     invalidate(TICKET_DEP);
 };

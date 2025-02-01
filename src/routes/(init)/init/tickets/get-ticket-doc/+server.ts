@@ -1,143 +1,16 @@
 import { APPWRITE_INIT_DB_ID, APPWRITE_INIT_COLLECTION_ID } from '$env/static/private';
 import { appwriteInitServer } from '$lib/appwrite/init.server';
-import { isProUser } from '$lib/utils/console.js';
 import { type User } from '$routes/(init)/init/utils';
-import { ID, Query } from 'node-appwrite';
-import type { TicketData, TicketDoc } from '$routes/(init)/init/utils';
+import type { TicketData } from '$routes/(init)/init/utils';
+import { getTicketDocByUser } from '../utils';
 
-type SendToHubspotArgs = {
-    name: string;
-    email: string;
-    userId: string;
-};
-
-const sendToUserList = async ({ name, email, userId }: SendToHubspotArgs) => {
-    await fetch('https://growth.appwrite.io/v1/mailinglists/init-2.0', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            email,
-            name,
-            userId
-        })
-    });
-};
-
-const getTicketDocByUser = async (user: User) => {
-    if (user.github?.email) {
-        sendToUserList({
-            name: user.appwrite?.name ?? user.github?.name ?? user.github.email,
-            email: user.appwrite?.email ?? user.github?.email,
-            userId: user.appwrite?.$id ?? ''
-        });
-    }
-
-    const [gh, aw, isPro] = await Promise.all([
-        user.github?.login
-            ? appwriteInitServer.databases.listDocuments(
-                  APPWRITE_INIT_DB_ID,
-                  APPWRITE_INIT_COLLECTION_ID,
-                  [Query.equal('gh_user', user.github.login)]
-              )
-            : null,
-        user.appwrite?.$id
-            ? appwriteInitServer.databases.listDocuments(
-                  APPWRITE_INIT_DB_ID,
-                  APPWRITE_INIT_COLLECTION_ID,
-                  [Query.equal('aw_email', user.appwrite.email)]
-              )
-            : null,
-        isProUser()
-    ]);
-
-    if (gh?.total) {
-        const gh_doc = gh?.documents[0] as unknown as TicketDoc;
-        const aw_doc = aw?.documents[0] as unknown as TicketDoc;
-
-        // If both documents exist, and they are not the same, delete the oldest one
-        if (gh_doc && aw_doc && gh_doc.$id !== aw_doc.$id) {
-            const oldest = gh_doc.id < aw_doc.id ? gh_doc.$id : aw_doc.$id;
-            const newest = gh_doc.id > aw_doc.id ? gh_doc.$id : aw_doc.$id;
-            await appwriteInitServer.databases.updateDocument(
-                APPWRITE_INIT_DB_ID,
-                APPWRITE_INIT_COLLECTION_ID,
-                oldest,
-                {
-                    gh_user: null,
-                    aw_email: null
-                }
-            );
-            return (await appwriteInitServer.databases.updateDocument(
-                APPWRITE_INIT_DB_ID,
-                APPWRITE_INIT_COLLECTION_ID,
-                newest,
-                {
-                    gh_user: user.github?.login,
-                    aw_email: user.appwrite?.email
-                }
-            )) as unknown as TicketDoc;
-        }
-
-        const doc = gh_doc;
-
-        // If the document is missing either the GitHub or Appwrite user, update it
-        if (!doc.gh_user || !doc.aw_email) {
-            return (await appwriteInitServer.databases.updateDocument(
-                APPWRITE_INIT_DB_ID,
-                APPWRITE_INIT_COLLECTION_ID,
-                doc.$id,
-                {
-                    gh_user: user.github?.login,
-                    aw_email: user.appwrite?.email
-                }
-            )) as unknown as TicketDoc;
-        }
-
-        // If the user's pro status has changed, update the document
-        if (!!user.appwrite && doc.is_pro !== isPro) {
-            return (await appwriteInitServer.databases.updateDocument(
-                APPWRITE_INIT_DB_ID,
-                APPWRITE_INIT_COLLECTION_ID,
-                doc.$id,
-                {
-                    is_pro: isPro
-                }
-            )) as unknown as TicketDoc;
-        }
-
-        // Otherwise, return the document as is
-        return doc;
-    } else {
-        // If no document exists, create one
-        const allDocs = await appwriteInitServer.databases.listDocuments(
-            APPWRITE_INIT_DB_ID,
-            APPWRITE_INIT_COLLECTION_ID
-        );
-        return (await appwriteInitServer.databases.createDocument(
-            APPWRITE_INIT_DB_ID,
-            APPWRITE_INIT_COLLECTION_ID,
-            ID.unique(),
-            {
-                aw_email: user.appwrite?.email ?? undefined,
-                gh_user: user.github?.login ?? undefined,
-                id: allDocs.total + 1,
-                name: user.appwrite?.name ?? user.github?.name,
-                title: '',
-                show_contributions: true
-            }
-        )) as unknown as TicketDoc;
-    }
-};
-
-async function getTicketDocById(id: string) {
+const getTicketDocById = async (id: string) => {
     return (await appwriteInitServer.databases.getDocument(
         APPWRITE_INIT_DB_ID,
         APPWRITE_INIT_COLLECTION_ID,
         id
     )) as unknown as Omit<TicketData, 'contributions' | 'variant'>;
-}
+};
 
 export async function GET({ url }) {
     if (url.searchParams.has('id')) {

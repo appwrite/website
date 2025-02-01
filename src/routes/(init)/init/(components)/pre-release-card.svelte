@@ -1,7 +1,7 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import Window from './window.svelte';
-    import { createCountdown } from '$routes/(init)/init/utils';
+    import { createCountdown } from '$lib/utils/create-countdown';
     import Counter from './counter.svelte';
     import { format } from 'date-fns';
 
