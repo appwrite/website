@@ -1,12 +1,13 @@
-import { getTicketById, getTicketContributions } from '$routes/(init)/init/utils';
+import { getTicketDocById } from '$routes/(init)/init/utils';
 import { error } from '@sveltejs/kit';
+import { getTicketContributions } from '../../(utils)/tickets';
 
 export const ssr = true;
 
 export const load = async ({ params, fetch }) => {
     const { id } = params;
     try {
-        const ticket = await getTicketById(id, fetch);
+        const ticket = await getTicketDocById(id, fetch);
 
         return {
             ticket,

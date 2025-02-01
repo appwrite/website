@@ -1,7 +1,8 @@
 <script lang="ts">
     import { dequal } from 'dequal/lite';
-    import { BASE_URL, getMockContributions } from '$routes/(init)/init/utils';
+    import { BASE_URL } from '$routes/(init)/init/utils';
     import TicketCard from '../(components)/ticket-card.svelte';
+    import { getMockContributions } from '../../(utils)/tickets';
 
     export let data;
 

@@ -15,42 +15,42 @@ export interface GithubUser {
     email: string;
 }
 
-export const getGithubUser = async () => {
-    try {
-        const identitiesList = await appwriteInit.account.listIdentities();
-        if (!identitiesList.total) return null;
-        const identity = identitiesList.identities[0];
-        const { providerAccessToken, provider } = identity;
-        if (provider !== 'github') return null;
+export async function getGithubUser() {
+    // try {
+    //     const identitiesList = await appwriteInit.account.listIdentities();
+    //     if (!identitiesList.total) return null;
+    //     const identity = identitiesList.identities[0];
+    //     const { providerAccessToken, provider } = identity;
+    //     if (provider !== 'github') return null;
 
-        const res = await fetch('https://api.github.com/user', {
-            method: 'GET',
-            headers: {
-                Authorization: `Bearer ${providerAccessToken}`
-            }
-        })
-            .then((res) => {
-                return res.json() as Promise<GithubUser>;
-            })
-            .then((n) => ({
-                login: n.login,
-                name: n.name,
-                email: n.email
-            }));
+    //     const res = await fetch('https://api.github.com/user', {
+    //         method: 'GET',
+    //         headers: {
+    //             Authorization: `Bearer ${providerAccessToken}`
+    //         }
+    //     })
+    //         .then((res) => {
+    //             return res.json() as Promise<GithubUser>;
+    //         })
+    //         .then((n) => ({
+    //             login: n.login,
+    //             name: n.name,
+    //             email: n.email
+    //         }));
 
-        if (!res.login) {
-            await appwriteInit.account.deleteSession('current');
-            return null;
-        }
+    //     if (!res.login) {
+    //         await appwriteInit.account.deleteSession('current');
+    //         return null;
+    //     }
 
-        return res;
-    } catch (e) {
-        console.error(e);
-        return null;
-    }
+    //     return res;
+    // } catch (e) {
+    //     console.error(e);
+    //     return null;
+    // }
 
     return {} as GithubUser;
-};
+}
 
 export type User = {
     github: GithubUser | null;
@@ -63,30 +63,30 @@ export const getInitUser = async () => {
     return { github, appwrite };
 };
 
-export const getMockContributions = () => {
-    const result: ContributionsMatrix = [];
-    for (let i = 0; i < 53; i++) {
-        result.push([]);
-        for (let j = 0; j < 7; j++) {
-            result[i].push(Math.floor(Math.random() * 4));
-        }
-    }
-    return result;
-};
+export async function getTicketDocByUser(user: User, f = fetch) {
+    console.log({ user });
+    return await f(`${BASE_URL}/tickets/get-ticket-doc?user=${JSON.stringify(user)}`).then(
+        (res) => res.json() as Promise<TicketDoc>
+    );
+}
 
-export const getTicketContributions = async (id: string, f = fetch) => {
-    const res = await f(`${BASE_URL}/tickets/${id}/get-contributions`);
-    const { data: contributions } = (await res
-        .json()
-        .then((r) => {
-            return r;
-        })
-        .catch(() => {
-            return { data: null };
-        })) as { data: ContributionsMatrix | null };
+export async function getTicketDocById(id: string, f = fetch) {
+    return await f(`${BASE_URL}/tickets/get-ticket-doc?id=${id}`).then(
+        (res) => res.json() as Promise<TicketDoc>
+    );
+}
 
-    return contributions ?? [];
-};
+export async function getTicketByUser(user: User, f = fetch) {
+    const doc = await getTicketDocByUser(user, f);
+
+    return doc as TicketData;
+}
+
+export async function getTicketById(id: string, f = fetch) {
+    const doc = await getTicketDocById(id, f);
+
+    return doc as TicketData;
+}
 
 export const loginGithub = async () => {
     await appwriteInit.account.createOAuth2Token(
@@ -96,8 +96,6 @@ export const loginGithub = async () => {
         ['read:user']
     );
 };
-
-export type ContributionsMatrix = number[][];
 
 export type TicketData = Pick<Models.Document, '$id'> & {
     name: string;
@@ -114,7 +112,6 @@ export type TicketData = Pick<Models.Document, '$id'> & {
 export type TicketDoc = Omit<TicketData, 'contributions' | 'variant'>;
 
 export const TICKET_DEP = 'ticket';
-
 export const invalidateTicket = () => {
     invalidate(TICKET_DEP);
 };

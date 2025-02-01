@@ -2,7 +2,7 @@ import { APPWRITE_INIT_DB_ID, APPWRITE_INIT_COLLECTION_ID } from '$env/static/pr
 import { appwriteInitServer } from '$lib/appwrite/init.server';
 import { type User } from '$routes/(init)/init/utils';
 import type { TicketData } from '$routes/(init)/init/utils';
-import { getTicketDocByUser } from '../utils';
+import { getTicketDocByUser } from '../../(utils)/tickets';
 
 const getTicketDocById = async (id: string) => {
     return (await appwriteInitServer.databases.getDocument(
