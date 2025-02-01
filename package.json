@@ -29,7 +29,6 @@
         "h3": "^1.13.0",
         "posthog-js": "^1.204.0",
         "sharp": "^0.33.5",
-        "uuid": "^11.0.5",
         "zod": "^3.24.1"
     },
     "devDependencies": {
@@ -71,6 +70,7 @@
         "markdown-it": "^14.1.0",
         "meilisearch": "^0.37.0",
         "motion": "^10.18.0",
+        "nanoid": "^5.0.9",
         "node-appwrite": "^15.0.0",
         "node-html-parser": "^6.1.13",
         "openapi-types": "^12.1.3",

@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { BASE_URL } from '../utils';
 
-const contributionsSchema = z.array(z.array(z.number()));
+const contributionsSchema = z.array(z.array(z.number())).nullable();
 export type ContributionsMatrix = z.infer<typeof contributionsSchema>;
 
 export const getMockContributions = () => {

@@ -1,8 +1,8 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import type { ContributionsMatrix, TicketData } from '$routes/(init)/init/utils';
-    import { style } from 'motion';
+    import type { TicketData } from '$routes/(init)/init/utils';
     import Lockup from '../../(components)/lockup.svelte';
+    import type { ContributionsMatrix } from '../../(utils)/contributions';
 
     type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
         contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;
@@ -10,7 +10,7 @@
 
     export let { name, id, ...rest } = $$props as $$Props;
 
-    const firstName = name.split(' ')[0];
+    const firstName = name?.split(' ')[0];
 
     interface TiltBounds {
         x: number;

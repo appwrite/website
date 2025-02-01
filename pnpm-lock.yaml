@@ -23,9 +23,6 @@ importers:
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
-      uuid:
-        specifier: ^11.0.5
-        version: 11.0.5
       zod:
         specifier: ^3.24.1
         version: 3.24.1
@@ -141,6 +138,9 @@ importers:
       motion:
         specifier: ^10.18.0
         version: 10.18.0
+      nanoid:
+        specifier: ^5.0.9
+        version: 5.0.9
       node-appwrite:
         specifier: ^15.0.0
         version: 15.0.0
@@ -3326,8 +3326,8 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  nanoid@5.0.7:
-    resolution: {integrity: sha512-oLxFY2gd2IqnjcYyOXD8XGCftpGtZP2AbHbOkthDkvRywH5ayNtPVy9YlOPcHckXzbLTCHpkb7FB+yuxKV13pQ==}
+  nanoid@5.0.9:
+    resolution: {integrity: sha512-Aooyr6MXU6HpvvWXKoVoXwKMs/KyVakWwg7xQfv5/S/RIgJMy0Ifa45H9qqYy7pTCszrHzP21Uk4PZq2HpEM8Q==}
     engines: {node: ^18 || >=20}
     hasBin: true
 
@@ -4317,10 +4317,6 @@ packages:
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
-  uuid@11.0.5:
-    resolution: {integrity: sha512-508e6IcKLrhxKdBbcA2b4KQZlLVp2+J5UwQ6F7Drckkc5N9ZJwFa4TgWtsww9UG8fGHbm6gbV19TdM5pQ4GaIA==}
-    hasBin: true
-
   validator@13.12.0:
     resolution: {integrity: sha512-c1Q0mCiPlgdTVVVIJIrBuxNicYE+t/7oKeI9MWLj3fh/uq2Pxh/3eeWbVZ4OcGW1TUf53At0njHw5SMdA3tmMg==}
     engines: {node: '>= 0.10'}
@@ -5223,7 +5219,7 @@ snapshots:
       '@internationalized/date': 3.5.0
       dequal: 2.0.3
       focus-trap: 7.6.0
-      nanoid: 5.0.7
+      nanoid: 5.0.9
       svelte: 4.2.19
 
   '@motionone/animation@10.18.0':
@@ -7845,7 +7841,7 @@ snapshots:
 
   nanoid@3.3.7: {}
 
-  nanoid@5.0.7: {}
+  nanoid@5.0.9: {}
 
   natural-compare@1.4.0: {}
 
@@ -8830,8 +8826,6 @@ snapshots:
       pako: 1.0.11
 
   util-deprecate@1.0.2: {}
-
-  uuid@11.0.5: {}
 
   validator@13.12.0: {}
 

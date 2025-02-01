@@ -2,7 +2,7 @@ import { APPWRITE_INIT_DB_ID, APPWRITE_INIT_COLLECTION_ID } from '$env/static/pr
 import { appwriteInitServer } from '$lib/appwrite/init.server';
 import { Query, ID } from 'appwrite';
 import { type TicketData, type TicketDoc, type User } from '../utils';
-import { v5 as uuid } from 'uuid';
+import { nanoid } from 'nanoid';
 
 type SendToUserListArgs = {
     name: string;
@@ -61,7 +61,7 @@ export const getTicketDocByUser = async (user: User) => {
             {
                 aw_email: user.appwrite?.email ?? undefined,
                 gh_user: user.github?.login ?? undefined,
-                id: uuid,
+                id: nanoid(8),
                 name: user.appwrite?.name ?? user.github?.name,
                 title: '',
                 show_contributions: true
