@@ -1,5 +1,5 @@
 import { PUBLIC_APPWRITE_PROJECT_INIT_ID } from '$env/static/public';
-import { appwriteInitServer } from '$lib/appwrite/init.server.js';
+import { appwriteInitServer } from '../../(utils)/appwrite.server';
 
 export async function POST({ request, cookies }) {
     const { userId, secret } = await request.json();

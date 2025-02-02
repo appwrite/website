@@ -1,9 +1,8 @@
-import { appwriteInit } from '$lib/appwrite/init';
+import { appwriteInit } from '../(utils)/appwrite';
 import { getAppwriteUser, type AppwriteUser } from '$lib/utils/console';
-import { BASE_URL } from '../utils';
 
 export const auth = async (userId: string, secret: string, f: typeof fetch = fetch) => {
-    const response = await f(`${BASE_URL}/tickets/auth`, {
+    const response = await f('/init/tickets/auth', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -53,8 +52,6 @@ export const getGithubUser = async () => {
         console.error(e);
         return null;
     }
-
-    return {} as GithubUser;
 };
 
 export type User = {

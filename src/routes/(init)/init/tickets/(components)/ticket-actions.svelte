@@ -6,7 +6,7 @@
     import Tooltip from '$lib/components/Tooltip.svelte';
 
     import { browser, dev } from '$app/environment';
-    import { appwriteInit } from '$lib/appwrite/init';
+    import { appwriteInit } from '../../(utils)/appwrite';
     import { goto } from '$app/navigation';
 
     export let showGitHub = true;
@@ -18,26 +18,7 @@
 
     const ticketUrl = `${$page.url.origin}/init/tickets/${ticket?.$id}`;
     const shareTextOptions = [
-        `Join us during the week of August 19–23 to celebrate everything new with @appwrite. Claim your ticket here 👇 ${ticketUrl}`,
-        `Come celebrate everything new with @appwrite from August 19–23! Don't miss out on the latest features and updates. Get your ticket ASAP! 📅 ${ticketUrl}`,
-        `Don't miss out on init @appwrite from August 19–23. Get your ticket now and join us for a week of innovation. 🚀 ${ticketUrl}`,
-        `Join us August 19–23 to explore everything new with @appwrite. Reserve your spot and be the first to know about the latest features 📌 ${ticketUrl}`,
-        `Join the fun! We're celebrating everything new with @appwrite from August 19–23. Secure your ticket here 🎟️ ${ticketUrl}`,
-        `We're celebrating everything new with @appwrite from August 19–23. Come join us and see what's in store. Get your ticket 🗓️ ${ticketUrl}`,
-        `Join us for an incredible week of exploring everything new with @appwrite, August 19–23. Get your ticket here ✨ ${ticketUrl}`,
-        `Join us August 19–23 to see everything new with @appwrite. Claim your ticket and be the first to experience the FRESH updates 👇 ${ticketUrl}`,
-        `Let's celebrate everything new with @appwrite from August 19–23. Grab your ticket and join us for a week full of surprises 🎁 ${ticketUrl}`,
-        `Be part of everything new with @appwrite from August 19–23. Get your ticket here: ${ticketUrl}`,
-        `Join the fun! August 19–23, let's check out everything new with @appwrite together. Get your ticket and don't miss out 🎟️ ${ticketUrl}`,
-        `I'm attending init @appwrite from August 19–23. Come along and experience the latest features with us. Get your ticket 🎫 ${ticketUrl}`,
-        `Don't miss out on the fun! Join us at @appwrite init from August 19–23. Get your ticket here 🔥 ${ticketUrl}`,
-        `My ticket looks so good! I'll be at @appwrite init from August 19–23. Join us and be the first to explore the updates 🌐 ${ticketUrl}`,
-        `Spot my GitHub contribution graph! 🔥 Let's explore everything new with @appwrite from August 19–23. Secure your spot right away! ${ticketUrl}`,
-        `I'm excited for everything new with @appwrite August 19–23. Come check out all the cool stuff with me! ${ticketUrl}`,
-        `It's finally happening! Grab your ticket here and don't miss out on everything new with @appwrite from August 19–23 🚀 ${ticketUrl}`,
-        `Join us for a week of everything new with @appwrite, August 19–23. Get your ticket here: ${ticketUrl}`,
-        `Don't miss out on everything new with @appwrite from August 19–23. Get your ticket here: 💡 ${ticketUrl}`,
-        `Let's check out everything new with @appwrite from August 19–23. Secure your ticket and join us for a week full of awesomeness! 🎉 ${ticketUrl}`
+        `Join us during the week of August 19–23 to celebrate everything new with @appwrite. Claim your ticket here 👇 ${ticketUrl}`
     ];
 
     const { copied, copy } = createCopy(ticketUrl);

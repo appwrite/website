@@ -1,7 +1,8 @@
 import { OAuthProvider, type Models } from 'appwrite';
-import { appwriteInit } from '$lib/appwrite/init';
+
 import { getAppwriteUser, type AppwriteUser } from '$lib/utils/console';
 import { invalidate } from '$app/navigation';
+import { appwriteInit } from './(utils)/appwrite';
 
 export const isLoggedIn = async () => {
     const user = await getInitUser();
@@ -15,42 +16,40 @@ export interface GithubUser {
     email: string;
 }
 
-export async function getGithubUser() {
-    // try {
-    //     const identitiesList = await appwriteInit.account.listIdentities();
-    //     if (!identitiesList.total) return null;
-    //     const identity = identitiesList.identities[0];
-    //     const { providerAccessToken, provider } = identity;
-    //     if (provider !== 'github') return null;
+export const getGithubUser = async () => {
+    try {
+        const identitiesList = await appwriteInit.account.listIdentities();
+        if (!identitiesList.total) return null;
+        const identity = identitiesList.identities[0];
+        const { providerAccessToken, provider } = identity;
+        if (provider !== 'github') return null;
 
-    //     const res = await fetch('https://api.github.com/user', {
-    //         method: 'GET',
-    //         headers: {
-    //             Authorization: `Bearer ${providerAccessToken}`
-    //         }
-    //     })
-    //         .then((res) => {
-    //             return res.json() as Promise<GithubUser>;
-    //         })
-    //         .then((n) => ({
-    //             login: n.login,
-    //             name: n.name,
-    //             email: n.email
-    //         }));
+        const res = await fetch('https://api.github.com/user', {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${providerAccessToken}`
+            }
+        })
+            .then((res) => {
+                return res.json() as Promise<GithubUser>;
+            })
+            .then((n) => ({
+                login: n.login,
+                name: n.name,
+                email: n.email
+            }));
 
-    //     if (!res.login) {
-    //         await appwriteInit.account.deleteSession('current');
-    //         return null;
-    //     }
+        if (!res.login) {
+            await appwriteInit.account.deleteSession('current');
+            return null;
+        }
 
-    //     return res;
-    // } catch (e) {
-    //     console.error(e);
-    //     return null;
-    // }
-
-    return {} as GithubUser;
-}
+        return res;
+    } catch (e) {
+        console.error(e);
+        return null;
+    }
+};
 
 export type User = {
     github: GithubUser | null;
@@ -84,7 +83,7 @@ export type TicketData = Pick<Models.Document, '$id'> & {
     contributions?: number[];
 };
 
-export type TicketDoc = Omit<TicketData, 'contributions' | 'variant'>;
+export type TicketDoc = Omit<TicketData, 'contributions'>;
 
 export const TICKET_DEP = 'ticket';
 export const invalidateTicket = () => {

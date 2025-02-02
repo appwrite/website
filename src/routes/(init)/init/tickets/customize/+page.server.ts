@@ -20,4 +20,5 @@ export const load = async ({ fetch }) => {
             contributions: getTicketContributions(ticket.$id, fetch)
         }
     };
+    return {};
 };

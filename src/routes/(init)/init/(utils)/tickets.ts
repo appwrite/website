@@ -1,7 +1,7 @@
 import { APPWRITE_INIT_DB_ID, APPWRITE_INIT_COLLECTION_ID } from '$env/static/private';
-import { appwriteInitServer } from '$lib/appwrite/init.server';
-import { Query, ID } from 'appwrite';
-import { type TicketData, type TicketDoc, type User } from '../utils';
+import { appwriteInitServer } from '../(utils)/appwrite.server';
+import { Query, ID, type Models } from 'appwrite';
+import { type User } from '../utils';
 import { nanoid } from 'nanoid';
 
 type SendToUserListArgs = {
@@ -126,3 +126,17 @@ export const getTicketDocById = async (id: string) => {
         id
     )) as unknown as Omit<TicketData, 'contributions' | 'variant'>;
 };
+
+export type TicketData = Pick<Models.Document, '$id'> & {
+    name: string;
+    tribe?: string | null;
+    title?: string;
+    gh_user?: string;
+    aw_email?: string;
+    id: number;
+    show_contributions?: boolean;
+    is_pro?: boolean;
+    contributions?: number[];
+};
+
+export type TicketDoc = Omit<TicketData, 'contributions'>;
