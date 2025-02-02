@@ -3,6 +3,7 @@ import { appwriteInitServer } from '../../(utils)/appwrite.server';
 
 export async function POST({ request, cookies }) {
     const { userId, secret } = await request.json();
+    console.log({ userId, secret });
 
     if (!userId || !secret) {
         return new Response(

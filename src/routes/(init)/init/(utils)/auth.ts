@@ -6,17 +6,9 @@ import type { Cookies } from '@sveltejs/kit';
 
 export const auth = async (userId: string, secret: string, cookies: Cookies) => {
     if (!userId || !secret) {
-        return new Response(
-            JSON.stringify({
-                data: null
-            }),
-            {
-                status: 403,
-                headers: {
-                    'content-type': 'application/json'
-                }
-            }
-        );
+        return {
+            data: null
+        };
     }
 
     try {
@@ -31,17 +23,7 @@ export const auth = async (userId: string, secret: string, cookies: Cookies) => 
             [`a_session_${PUBLIC_APPWRITE_PROJECT_INIT_ID}`]: session.secret
         };
 
-        return new Response(
-            JSON.stringify({
-                cookieFallback: JSON.stringify(cookieFallback)
-            }),
-            {
-                status: 200,
-                headers: {
-                    'content-type': 'application/json'
-                }
-            }
-        );
+        return { cookieFallback };
     } catch (e) {
         console.error(e);
         return new Response(
