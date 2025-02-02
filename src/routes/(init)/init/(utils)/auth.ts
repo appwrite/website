@@ -1,16 +1,61 @@
 import { appwriteInit } from '../(utils)/appwrite';
 import { getAppwriteUser, type AppwriteUser } from '$lib/utils/console';
+import { appwriteInitServer } from './appwrite.server';
+import { PUBLIC_APPWRITE_PROJECT_INIT_ID } from '$env/static/public';
+import type { Cookies } from '@sveltejs/kit';
 
-export const auth = async (userId: string, secret: string, f: typeof fetch = fetch) => {
-    const response = await f('/init/tickets/auth', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ userId, secret })
-    });
+export const auth = async (userId: string, secret: string, cookies: Cookies) => {
+    if (!userId || !secret) {
+        return new Response(
+            JSON.stringify({
+                data: null
+            }),
+            {
+                status: 403,
+                headers: {
+                    'content-type': 'application/json'
+                }
+            }
+        );
+    }
 
-    return await response.json();
+    try {
+        const session = await appwriteInitServer.account.createSession(userId, secret);
+        cookies.set(`a_session_${PUBLIC_APPWRITE_PROJECT_INIT_ID}`, session.secret, {
+            path: '/',
+            httpOnly: true,
+            secure: true
+        });
+
+        const cookieFallback = {
+            [`a_session_${PUBLIC_APPWRITE_PROJECT_INIT_ID}`]: session.secret
+        };
+
+        return new Response(
+            JSON.stringify({
+                cookieFallback: JSON.stringify(cookieFallback)
+            }),
+            {
+                status: 200,
+                headers: {
+                    'content-type': 'application/json'
+                }
+            }
+        );
+    } catch (e) {
+        console.error(e);
+        return new Response(
+            JSON.stringify({
+                data: null
+            }),
+            {
+                status: 403,
+                headers: {
+                    'content-type': 'application/json'
+                }
+            }
+        );
+    }
 };
 
 export interface GithubUser {
