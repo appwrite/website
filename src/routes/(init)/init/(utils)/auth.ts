@@ -4,7 +4,7 @@ import { appwriteInitServer } from './appwrite.server';
 import { PUBLIC_APPWRITE_PROJECT_INIT_ID } from '$env/static/public';
 import type { Cookies } from '@sveltejs/kit';
 
-export const auth = async (userId: string, secret: string, cookies: Cookies) => {
+export const createInitSession = async (userId: string, secret: string, cookies: Cookies) => {
     if (!userId || !secret) {
         return {
             data: null
