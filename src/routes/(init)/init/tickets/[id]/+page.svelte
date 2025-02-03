@@ -42,7 +42,9 @@
             <div class="row-span-2 h-full w-full px-8" />
             <div class="row-span-8 flex h-full w-full items-center px-12">
                 <div class="flex flex-1 flex-col gap-2">
-                    <h2 class="text-display text-primary">Walter's ticket</h2>
+                    <h2 class="text-display text-primary">
+                        {data.ticket.name.split(' ')[0]}'s ticket
+                    </h2>
                     <span class="text-display text-primary"
                         ><span class="text-accent">#</span>{id}</span
                     >

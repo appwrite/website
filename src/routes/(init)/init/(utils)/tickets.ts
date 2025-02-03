@@ -1,7 +1,7 @@
 import { APPWRITE_INIT_DB_ID, APPWRITE_INIT_COLLECTION_ID } from '$env/static/private';
 import { appwriteInitServer } from '../(utils)/appwrite.server';
 import { Query, ID, type Models } from 'appwrite';
-import { type User } from '../utils';
+import type { User } from './auth';
 
 type SendToUserListArgs = {
     name: string;

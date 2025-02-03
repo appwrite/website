@@ -1,8 +1,8 @@
 import { APPWRITE_INIT_COLLECTION_ID, APPWRITE_INIT_DB_ID } from '$env/static/private';
 import sharp from 'sharp';
 import { getTicketSvg } from '../../../(utils)/get-ticket-svg.js';
-import { appwriteInitServer } from '$routes/(init)/init/(utils)/appwrite.server.js';
 import type { TicketData } from '$routes/(init)/init/(utils)/tickets.js';
+import { appwriteInitServer } from '$routes/(init)/init/(utils)/appwrite.server.js';
 
 export async function GET({ params }) {
     const ticket = (await appwriteInitServer.databases.getDocument(

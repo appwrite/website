@@ -4,7 +4,7 @@ import { getTicketContributions } from '../../(utils)/contributions';
 
 export const ssr = true;
 
-export const load = async ({ params, fetch }) => {
+export const load = async ({ params }) => {
     const { id } = params;
     try {
         const ticket = await getTicketDocById(id);
@@ -12,7 +12,7 @@ export const load = async ({ params, fetch }) => {
         return {
             ticket,
             streamed: {
-                contributions: getTicketContributions(ticket.$id, fetch)
+                contributions: getTicketContributions(ticket.$id)
             }
         };
     } catch (e) {
