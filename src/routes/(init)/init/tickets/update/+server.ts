@@ -2,7 +2,7 @@ import { APPWRITE_INIT_COLLECTION_ID, APPWRITE_INIT_DB_ID } from '$env/static/pr
 import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_INIT_ID } from '$env/static/public';
 import { appwriteInitServer } from '../../(utils)/appwrite.server';
 import { Account, Client, Query } from 'node-appwrite';
-import { z } from 'zod';
+//import { z } from 'zod';
 import { cookieKey, type GithubUser } from '../../(utils)/auth';
 
 export async function POST({ request, cookies }) {

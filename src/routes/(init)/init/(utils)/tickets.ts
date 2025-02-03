@@ -53,6 +53,11 @@ export const getTicketDocByUser = async (user: User) => {
 
     if (!githubAccount?.total) {
         // if there is no github account doc, create one
+        const allDocs = await appwriteInitServer.databases.listDocuments(
+            APPWRITE_INIT_DB_ID,
+            APPWRITE_INIT_COLLECTION_ID
+        );
+
         return (await appwriteInitServer.databases.createDocument(
             APPWRITE_INIT_DB_ID,
             APPWRITE_INIT_COLLECTION_ID,
@@ -60,7 +65,7 @@ export const getTicketDocByUser = async (user: User) => {
             {
                 aw_email: user.appwrite?.email ?? undefined,
                 gh_user: user.github?.login ?? undefined,
-                id: 1,
+                id: allDocs.total + 1,
                 name: user.appwrite?.name ?? user.github?.name,
                 title: '',
                 show_contributions: true

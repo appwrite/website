@@ -1,8 +1,17 @@
 <script lang="ts">
+    import Spinner from '$lib/components/shared/spinner.svelte';
     import { loginGithub } from '../(utils)/github';
 
     import Badge from './badge.svelte';
     import Lockup from './lockup.svelte';
+
+    export let claimed: boolean = false;
+    let claiming: boolean = false;
+
+    const handleLogin = () => {
+        claiming = true;
+        loginGithub();
+    };
 </script>
 
 <div class="relative flex min-h-[80vh] flex-col items-center justify-center gap-8 py-20 px-8">
@@ -15,9 +24,23 @@
             </p>
 
             <nav class="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
-                <button on:click={loginGithub} class="web-button flex items-center gap-2">
-                    <span class="web-icon-github text-primary" />Claim your ticket with GitHub</button
-                >
+                {#if claimed}
+                    <a href="/init/tickets/customize" class="web-button flex items-center gap-2">
+                        Customize your ticket</a
+                    >
+                {:else}
+                    <button
+                        on:click={handleLogin}
+                        class="web-button flex items-center gap-2"
+                        disabled={claiming}
+                    >
+                        {#if claiming}
+                            <Spinner />
+                        {:else}
+                            <span class="web-icon-github text-primary" />
+                        {/if}Claim your ticket with GitHub</button
+                    >
+                {/if}
                 <button class="web-button is-secondary !w-full md:!w-fit">Announcement video</button
                 >
             </nav>

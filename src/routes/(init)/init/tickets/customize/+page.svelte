@@ -54,7 +54,7 @@
 </script>
 
 <svelte:head>
-    <title>Customize Ticket - Appwrite</title>
+    <title>Customize Your Ticket - Appwrite</title>
     <meta
         name="description"
         content="Join Init December 5th-9th. Register today and claim your ticket."

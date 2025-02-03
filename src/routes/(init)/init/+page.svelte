@@ -14,6 +14,8 @@
     let base = new Date('2025-01-31T13:00:00.000Z');
     const today = new Date();
 
+    export let data;
+
     let days: Array<Omit<DayProps, 'index'>> = [
         {
             title: 'Domains',
@@ -140,7 +142,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<Hero />
+<Hero claimed={data.claimed} />
 
 {#if today >= base}
     <CountdownGrid {days} />

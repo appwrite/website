@@ -1,4 +1,4 @@
-import { getGithbubContributions } from '$routes/(init)/init/(utils)/contributions';
+import { getGithbubContributions } from '$routes/(init)/init/(utils)/contributions.server';
 
 const emptyResponse = new Response(JSON.stringify({ data: null }), {
     status: 404,

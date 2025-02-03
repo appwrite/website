@@ -7,8 +7,6 @@ import { getInitUser } from '../../(utils)/auth';
 export const load = async ({ fetch }) => {
     const user = await getInitUser();
 
-    console.log({ user });
-
     if (!user.github) {
         redirect(307, '/init');
     }
