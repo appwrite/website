@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { loginGithub } from '../(utils)/auth';
+    import { loginGithub } from '../(utils)/github';
 
     import Badge from './badge.svelte';
     import Lockup from './lockup.svelte';

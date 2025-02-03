@@ -1,9 +1,8 @@
 import { appwriteInit } from '../(utils)/appwrite';
-import { getAppwriteUser, type AppwriteUser } from '$lib/utils/console';
+import { type AppwriteUser } from '$lib/utils/console';
 import { appwriteInitServer } from './appwrite.server';
 import { PUBLIC_APPWRITE_PROJECT_INIT_ID } from '$env/static/public';
 import type { Cookies } from '@sveltejs/kit';
-import { OAuthProvider } from 'appwrite';
 
 export const createInitSession = async (userId: string, secret: string, cookies: Cookies) => {
     if (!userId || !secret) {
@@ -14,6 +13,7 @@ export const createInitSession = async (userId: string, secret: string, cookies:
 
     try {
         const session = await appwriteInitServer.account.createSession(userId, secret);
+
         cookies.set(`a_session_${PUBLIC_APPWRITE_PROJECT_INIT_ID}`, session.secret, {
             path: '/',
             httpOnly: true,
@@ -82,6 +82,13 @@ export const getGithubUser = async () => {
     }
 };
 
+export async function getAppwriteUser(): Promise<AppwriteUser | null> {
+    return await appwriteInit.account
+        .get()
+        .then((res) => res)
+        .catch(() => null);
+}
+
 export type User = {
     github: GithubUser | null;
     appwrite: AppwriteUser | null;
@@ -91,15 +98,6 @@ export const getInitUser = async () => {
     const [github, appwrite] = await Promise.all([getGithubUser(), getAppwriteUser()]);
 
     return { github, appwrite };
-};
-
-export const loginGithub = async () => {
-    await appwriteInit.account.createOAuth2Token(
-        OAuthProvider.Github,
-        `${window.location.origin}/init/tickets/customize?success=1`,
-        `${window.location.origin}/init/tickets/customize?error=1`,
-        ['read:user']
-    );
 };
 
 export const isLoggedIn = async () => {

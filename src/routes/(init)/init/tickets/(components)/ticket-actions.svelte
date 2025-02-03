@@ -7,7 +7,7 @@
     import { browser, dev } from '$app/environment';
     import { appwriteInit } from '../../(utils)/appwrite';
     import { goto } from '$app/navigation';
-    import { loginGithub } from '../../(utils)/auth';
+    import { loginGithub } from '../../(utils)/github';
 
     export let showGitHub = true;
     export let customizing = false;
