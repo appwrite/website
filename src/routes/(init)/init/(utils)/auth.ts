@@ -3,6 +3,7 @@ import { getAppwriteUser, type AppwriteUser } from '$lib/utils/console';
 import { appwriteInitServer } from './appwrite.server';
 import { PUBLIC_APPWRITE_PROJECT_INIT_ID } from '$env/static/public';
 import type { Cookies } from '@sveltejs/kit';
+import { OAuthProvider } from 'appwrite';
 
 export const createInitSession = async (userId: string, secret: string, cookies: Cookies) => {
     if (!userId || !secret) {
@@ -90,6 +91,15 @@ export const getInitUser = async () => {
     const [github, appwrite] = await Promise.all([getGithubUser(), getAppwriteUser()]);
 
     return { github, appwrite };
+};
+
+export const loginGithub = async () => {
+    await appwriteInit.account.createOAuth2Token(
+        OAuthProvider.Github,
+        `${window.location.origin}/init/tickets/customize?success=1`,
+        `${window.location.origin}/init/tickets/customize?error=1`,
+        ['read:user']
+    );
 };
 
 export const isLoggedIn = async () => {

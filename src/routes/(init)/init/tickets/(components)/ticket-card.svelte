@@ -1,8 +1,8 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import type { TicketData } from '$routes/(init)/init/utils';
     import Lockup from '../../(components)/lockup.svelte';
     import type { ContributionsMatrix } from '../../(utils)/contributions';
+    import type { TicketData } from '../../(utils)/tickets';
 
     type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
         contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;

@@ -1,9 +1,9 @@
 import { APPWRITE_INIT_COLLECTION_ID, APPWRITE_INIT_DB_ID } from '$env/static/private';
 import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_INIT_ID } from '$env/static/public';
 import { appwriteInitServer } from '../../(utils)/appwrite.server';
-import type { GithubUser } from '$routes/(init)/init/utils';
 import { Account, Client, Query } from 'node-appwrite';
 import { z } from 'zod';
+import type { GithubUser } from '../../(utils)/auth';
 
 export async function POST({ request, cookies }) {
     const secret = cookies.get(`a_session_${PUBLIC_APPWRITE_PROJECT_INIT_ID}`);

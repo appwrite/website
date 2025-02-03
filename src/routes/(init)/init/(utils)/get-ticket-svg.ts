@@ -2,7 +2,7 @@ import {
     getGithbubContributions,
     type ContributionsMatrix
 } from '$routes/(init)/init/(utils)/contributions';
-import type { TicketData } from '$routes/(init)/init/utils';
+import type { TicketData } from './tickets';
 
 type GetCubeArgs = {
     week: number;

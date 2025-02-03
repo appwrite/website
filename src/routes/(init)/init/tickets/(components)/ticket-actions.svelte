@@ -2,12 +2,12 @@
     import { page } from '$app/stores';
     import { Switch } from '$lib/components';
     import { createCopy } from '$lib/utils/copy';
-    import { loginGithub } from '$routes/(init)/init/utils';
     import Tooltip from '$lib/components/Tooltip.svelte';
 
     import { browser, dev } from '$app/environment';
     import { appwriteInit } from '../../(utils)/appwrite';
     import { goto } from '$app/navigation';
+    import { loginGithub } from '../../(utils)/auth';
 
     export let showGitHub = true;
     export let customizing = false;

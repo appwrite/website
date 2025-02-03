@@ -1,6 +1,5 @@
 <script lang="ts">
     import { dequal } from 'dequal/lite';
-    import { BASE_URL } from '$routes/(init)/init/utils';
     import TicketCard from '../(components)/ticket-card.svelte';
     import { getMockContributions } from '../../(utils)/contributions';
 
@@ -31,7 +30,7 @@
 
         saving = true;
 
-        let response = await fetch(`${BASE_URL}/update`, {
+        let response = await fetch(`/init/tickets/update`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
