@@ -4,6 +4,8 @@ import { appwriteInitServer } from './appwrite.server';
 import { PUBLIC_APPWRITE_PROJECT_INIT_ID } from '$env/static/public';
 import type { Cookies } from '@sveltejs/kit';
 
+export const cookieKey = `a_session_${PUBLIC_APPWRITE_PROJECT_INIT_ID}`;
+
 export const createInitSession = async (userId: string, secret: string, cookies: Cookies) => {
     if (!userId || !secret) {
         return {
@@ -14,14 +16,14 @@ export const createInitSession = async (userId: string, secret: string, cookies:
     try {
         const session = await appwriteInitServer.account.createSession(userId, secret);
 
-        cookies.set(`a_session_${PUBLIC_APPWRITE_PROJECT_INIT_ID}`, session.secret, {
+        cookies.set(cookieKey, session.secret, {
             path: '/',
             httpOnly: true,
             secure: true
         });
 
         const cookieFallback = {
-            [`a_session_${PUBLIC_APPWRITE_PROJECT_INIT_ID}`]: session.secret
+            [cookieKey]: session.secret
         };
 
         return { cookieFallback };

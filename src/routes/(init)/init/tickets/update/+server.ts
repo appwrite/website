@@ -3,10 +3,10 @@ import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_INIT_ID } from '$env/
 import { appwriteInitServer } from '../../(utils)/appwrite.server';
 import { Account, Client, Query } from 'node-appwrite';
 import { z } from 'zod';
-import type { GithubUser } from '../../(utils)/auth';
+import { cookieKey, type GithubUser } from '../../(utils)/auth';
 
 export async function POST({ request, cookies }) {
-    const secret = cookies.get(`a_session_${PUBLIC_APPWRITE_PROJECT_INIT_ID}`);
+    const secret = cookies.get(cookieKey);
 
     if (!secret) {
         return new Response(
@@ -76,14 +76,14 @@ export async function POST({ request, cookies }) {
 
         const document = documentsList.documents[0];
 
-        const schema = z.object({
-            name: z.string(),
-            title: z.string(),
-            showGitHub: z.boolean(),
-            stickers: z.array(z.number())
-        });
+        // const schema = z.object({
+        //     name: z.string(),
+        //     title: z.string(),
+        //     showGitHub: z.boolean(),
+        //     stickers: z.array(z.number()).nullable()
+        // });
 
-        const data = schema.parse(await request.json());
+        const data = await request.json();
 
         await appwriteInitServer.databases.updateDocument(
             APPWRITE_INIT_DB_ID,
