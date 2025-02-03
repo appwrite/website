@@ -47,6 +47,7 @@ export interface GithubUser {
     login: string;
     name: string;
     email: string;
+    avatar_url?: string;
 }
 
 export const getGithubUser = async () => {
@@ -69,7 +70,8 @@ export const getGithubUser = async () => {
             .then((n) => ({
                 login: n.login,
                 name: n.name,
-                email: n.email
+                email: n.email,
+                avatar_url: n.avatar_url
             }));
 
         if (!res.login) {

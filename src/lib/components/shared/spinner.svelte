@@ -1,11 +1,11 @@
 <script lang="ts">
-    export let size: number = 8;
+    export let size: number = 16;
 </script>
 
-<div role="status" style="--size:{size}px">
+<div role="status" class="flex shrink-0 items-center" style="--size:{size}px">
     <svg
         aria-hidden="true"
-        class="text-greyscale-200 dark:text-greyscale-600 fill-accent size-[var(--size)] animate-spin"
+        class="text-greyscale-200 dark:text-greyscale-600 size-[var(--size)] animate-spin fill-white"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

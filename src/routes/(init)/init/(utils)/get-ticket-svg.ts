@@ -1,4 +1,4 @@
-import { type ContributionsMatrix } from '$routes/(init)/init/(utils)/contributions';
+import { type ContributionsMatrix } from '$routes/(init)/init/(utils)/contributions.server';
 import { getGithbubContributions } from './contributions.server';
 import type { TicketData } from './tickets';
 

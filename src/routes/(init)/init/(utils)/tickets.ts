@@ -65,6 +65,7 @@ export const getTicketDocByUser = async (user: User) => {
             {
                 aw_email: user.appwrite?.email ?? undefined,
                 gh_user: user.github?.login ?? undefined,
+                avatar_url: user.github?.avatar_url,
                 id: allDocs.total + 1,
                 name: user.appwrite?.name ?? user.github?.name,
                 title: '',
@@ -118,7 +119,8 @@ export const getTicketDocByUser = async (user: User) => {
         newest,
         {
             gh_user: user.github?.login,
-            aw_email: user.appwrite?.email
+            aw_email: user.appwrite?.email,
+            avatar_url: user.github?.avatar_url
         }
     )) as unknown as TicketDoc;
 };
@@ -136,6 +138,7 @@ export type TicketData = Pick<Models.Document, '$id'> & {
     title?: string;
     gh_user?: string;
     aw_email?: string;
+    avatar_url?: string;
     id: number;
     show_contributions?: boolean;
     contributions?: number[];

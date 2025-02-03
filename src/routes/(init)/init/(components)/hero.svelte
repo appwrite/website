@@ -52,7 +52,7 @@
                 {:else}
                     <button
                         on:click={handleLogin}
-                        class="web-button flex items-center gap-2"
+                        class="web-button flex items-center gap-4"
                         disabled={claiming}
                     >
                         {#if claiming}

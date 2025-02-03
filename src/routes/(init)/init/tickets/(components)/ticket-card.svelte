@@ -4,7 +4,6 @@
     import type { ContributionsMatrix } from '../../(utils)/contributions.server';
     import type { TicketData } from '../../(utils)/tickets';
     import { spring } from 'svelte/motion';
-    import Avatar from '../../(assets)/avatar.png';
     import { fade } from 'svelte/transition';
 
     let coords = spring(
@@ -19,10 +18,11 @@
         contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;
     };
 
-    export let { name, id, title, contributions, show_contributions, ...rest } = $$props as $$Props;
+    export let { name, id, title, contributions, show_contributions, avatar_url, ...rest } =
+        $$props as $$Props;
     const firstName = name?.split(' ')[0];
 
-    let flipped: boolean = true;
+    let flipped: boolean = false;
 
     const handleFlip = () => {
         flipped = !flipped;
@@ -169,7 +169,7 @@
 
                     <div class="mb-2 flex items-center gap-3 p-1 text-left">
                         <img
-                            src={Avatar}
+                            src={avatar_url}
                             alt="{firstName}'s Avatar"
                             class="size-16 rounded outline-2 outline-offset-1 outline-[var(--color-offset)] outline-dashed"
                         />
@@ -244,7 +244,7 @@
                 </div>
                 <div class="relative z-10 flex flex-1 flex-col rounded-xl bg-[#19191C] p-2">
                     <div
-                        class="font-aeonik-fono border-offset text-x-micro relative z-10 mt-auto mb-0 flex items-center justify-between rounded-lg border-2 border-dashed bg-black p-2 uppercase"
+                        class="font-aeonik-fono border-offset text-x-micro relative z-10 mt-auto mb-0 flex flex-col items-center justify-between rounded-lg border-2 border-dashed bg-black p-2 uppercase"
                     >
                         <span>Launch Week <span class="text-accent">/</span> FEB X - X</span>
                         <span
@@ -255,14 +255,11 @@
 
                         {#await contributions then c}
                             {#if c && show_contributions}
-                                <div class="github" out:fade={{ duration: 100 }}>
+                                <div class="flex w-full flex-wrap" out:fade={{ duration: 100 }}>
                                     {#each c as row}
-                                        <div class="row">
-                                            {#each row as level, j}
-                                                <div
-                                                    style:--index={row.length - j}
-                                                    data-level={level}
-                                                />
+                                        <div class="flex size-1.5 flex-wrap rounded-sm">
+                                            {#each row as _}
+                                                <div class="bg-accent size-full rounded-sm" />
                                             {/each}
                                         </div>
                                     {/each}
