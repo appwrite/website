@@ -5,6 +5,7 @@
     import type { TicketData } from '../../(utils)/tickets';
     import { spring } from 'svelte/motion';
     import Avatar from '../../(assets)/avatar.png';
+    import { fade } from 'svelte/transition';
 
     let coords = spring(
         { x: 0, y: 0 },
@@ -18,7 +19,7 @@
         contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;
     };
 
-    export let { name, id, title, ...rest } = $$props as $$Props;
+    export let { name, id, title, contributions, show_contributions, ...rest } = $$props as $$Props;
     const firstName = name?.split(' ')[0];
 
     let flipped: boolean = true;
@@ -251,6 +252,23 @@
                                 .toString()
                                 .padStart(6, '0')}</span
                         >
+
+                        {#await contributions then c}
+                            {#if c && show_contributions}
+                                <div class="github" out:fade={{ duration: 100 }}>
+                                    {#each c as row}
+                                        <div class="row">
+                                            {#each row as level, j}
+                                                <div
+                                                    style:--index={row.length - j}
+                                                    data-level={level}
+                                                />
+                                            {/each}
+                                        </div>
+                                    {/each}
+                                </div>
+                            {/if}
+                        {/await}
                     </div>
                 </div>
             </div>
