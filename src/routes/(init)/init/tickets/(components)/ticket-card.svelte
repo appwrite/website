@@ -90,22 +90,22 @@
 </script>
 
 <button
-    class={classNames(
-        '[transform:rotate-3d(0)] [transition-property:transform,_box-shadow] duration-300 ease-out [transform-style:preserve-3d] perspective-[1500px]',
-        { 'rotate-y-180': flipped }
-    )}
+    class={classNames('transition-transform duration-300 ease-out perspective-[1500px]', {
+        'rotate-y-180': flipped
+    })}
     on:click={handleFlip}
 >
     <div
         class={classNames(
             'group relative z-10 grid aspect-[3.65/5.72] max-w-sm min-w-sm gap-1 overflow-hidden rounded-2xl bg-[#27272A] p-1 shadow-lg transition-transform [grid-template-areas:"stack"]',
-            'before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-linear-to-r before:from-transparent before:via-white/30 before:to-transparent',
-            '[transform:rotate-3d(0)] [transition-property:transform,_box-shadow] duration-300 ease-out',
-            'hover:[box-shadow:_0_5px_20px_5px_#00000044] hover:duration-150'
+            'rotate-none transition-all duration-300 ease-out transform-3d',
+            'shadow-black/25 hover:shadow-xl hover:duration-150',
+            'before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-linear-to-r before:from-transparent before:via-white/30 before:to-transparent'
         )}
         use:tilt
     >
-        <div class="relative z-10 flex flex-col [grid-area:stack] backface-hidden">
+        <!-- card front -->
+        <div class="flex flex-col [grid-area:stack]">
             <div
                 class="border-offset font-aeonik-fono text-micro bg-subtle relative z-10 flex h-9 w-full items-center justify-between rounded-xl border p-2 uppercase"
             >
@@ -177,7 +177,12 @@
                 />
             </div>
         </div>
-        <div class="relative -z-10 flex rotate-y-180 flex-col [grid-area:stack]">
+        <!-- card back -->
+        <div
+            class={classNames('z-10 flex rotate-y-180 flex-col transition-all [grid-area:stack]', {
+                'backface-hidden': !flipped
+            })}
+        >
             <div
                 class="border-offset font-aeonik-fono text-micro bg-subtle relative z-10 flex h-9 w-full items-center justify-between rounded-xl border p-2 uppercase"
             >
@@ -223,6 +228,7 @@
                 BACK OF THE CARD
             </div>
         </div>
+        <!-- sweet sweet glow -->
         <div class="glow absolute inset-0 z-10" />
     </div>
 </button>
