@@ -2,7 +2,10 @@ import { APPWRITE_INIT_DB_ID, APPWRITE_INIT_COLLECTION_ID } from '$env/static/pr
 import parse from 'node-html-parser';
 import { appwriteInitServer } from './appwrite.server';
 import type { TicketData } from './tickets';
-import type { ContributionsMatrix } from './contributions';
+import { z } from 'zod';
+
+const contributionsSchema = z.array(z.array(z.number())).nullable();
+export type ContributionsMatrix = z.infer<typeof contributionsSchema>;
 
 export const getGithbubContributions = async (id: string) => {
     const { gh_user, contributions } = (await appwriteInitServer.databases.getDocument(
@@ -57,4 +60,15 @@ export const getGithbubContributions = async (id: string) => {
     );
 
     return matrix;
+};
+
+export const getTicketContributions = async (id: string) => {
+    const matrix = await getGithbubContributions(id);
+
+    try {
+        return { data: contributionsSchema.parseAsync(matrix) };
+    } catch (e) {
+        console.error(e);
+        return { data: null };
+    }
 };

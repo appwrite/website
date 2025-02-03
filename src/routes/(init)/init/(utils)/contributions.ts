@@ -1,8 +1,4 @@
-import { z } from 'zod';
-import { getGithbubContributions } from './contributions.server';
-
-const contributionsSchema = z.array(z.array(z.number())).nullable();
-export type ContributionsMatrix = z.infer<typeof contributionsSchema>;
+import type { ContributionsMatrix } from './contributions.server';
 
 export const getMockContributions = () => {
     const result: ContributionsMatrix = [];
@@ -13,15 +9,4 @@ export const getMockContributions = () => {
         }
     }
     return result;
-};
-
-export const getTicketContributions = async (id: string) => {
-    const matrix = await getGithbubContributions(id);
-
-    try {
-        return { data: contributionsSchema.parseAsync(matrix) };
-    } catch (e) {
-        console.error(e);
-        return { data: null };
-    }
 };

@@ -133,14 +133,13 @@ export const getTicketDocById = async (id: string) => {
 
 export type TicketData = Pick<Models.Document, '$id'> & {
     name: string;
-    tribe?: string | null;
     title?: string;
     gh_user?: string;
     aw_email?: string;
     id: number;
     show_contributions?: boolean;
-    is_pro?: boolean;
     contributions?: number[];
+    stickers?: number[];
 };
 
 export type TicketDoc = Omit<TicketData, 'contributions'>;

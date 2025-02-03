@@ -1,10 +1,10 @@
 import { redirect } from '@sveltejs/kit';
 
 import { getTicketDocByUser } from '../../(utils)/tickets';
-import { getTicketContributions } from '../../(utils)/contributions';
+import { getTicketContributions } from '../../(utils)/contributions.server';
 import { getInitUser } from '../../(utils)/auth';
 
-export const load = async ({ fetch }) => {
+export const load = async () => {
     const user = await getInitUser();
 
     if (!user.github) {
@@ -17,7 +17,7 @@ export const load = async ({ fetch }) => {
         ticket,
         user,
         streamed: {
-            contributions: getTicketContributions(ticket.$id, fetch)
+            contributions: getTicketContributions(ticket.$id)
         }
     };
 };

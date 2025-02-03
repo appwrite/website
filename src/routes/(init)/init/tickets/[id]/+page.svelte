@@ -60,7 +60,7 @@
         <div
             class="border-offset flex items-center justify-center border-x-2 border-dashed bg-black/24 py-8 md:col-span-6"
         >
-            <TicketCard name={firstName} id={1} />
+            <TicketCard {...data.ticket} name={firstName} id={1} />
         </div>
     </div>
 </div>

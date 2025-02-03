@@ -1,4 +1,3 @@
-import { getTicketDocByUser } from './(utils)/tickets';
 import { getInitUser } from './(utils)/auth';
 
 export const load = async () => {
@@ -6,9 +5,7 @@ export const load = async () => {
 
     if (!user.github) return;
 
-    const ticket = await getTicketDocByUser(user);
-
     return {
-        claimed: !!ticket
+        claimed: !!user
     };
 };

@@ -87,7 +87,11 @@
         <div
             class="border-offset flex items-center justify-center border-x-2 border-dashed bg-black/24 py-8 md:col-span-6"
         >
-            <TicketCard {...data.ticket} contributions={getMockContributions()} />
+            <TicketCard
+                {...data.ticket}
+                title={data.ticket.title}
+                contributions={getMockContributions()}
+            />
         </div>
     </div>
 </div>
