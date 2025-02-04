@@ -259,7 +259,7 @@
                                     {#each c as row}
                                         <div class="flex size-1.5 flex-wrap rounded-sm">
                                             {#each row as _}
-                                                <div class="bg-accent size-full rounded-sm" />
+                                                <div class="size-full rounded-sm bg-white" />
                                             {/each}
                                         </div>
                                     {/each}
