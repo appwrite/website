@@ -195,7 +195,7 @@
                             </h3>
                             {#if title}
                                 <span
-                                    class="text-secondary font-aeonik-pro text-x-micro tracking-loose block uppercase"
+                                    class="text-secondary font-aeonik-pro text-x-micro tracking-loose line-clamp-1 uppercase"
                                     >{title}</span
                                 >
                             {/if}
