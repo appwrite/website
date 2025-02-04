@@ -3,6 +3,7 @@
     import TicketCard from '../(components)/ticket-card.svelte';
     import { getMockContributions } from '../../(utils)/contributions';
     import Window from '../../(components)/window.svelte';
+    import Globe from '../../(assets)/stickers/sticker.svg';
 
     export let data;
 
@@ -24,8 +25,6 @@
         },
         { name, title, showGitHub }
     );
-
-    console.log(name);
 
     async function saveTicket() {
         if (!modified) return;
@@ -53,6 +52,8 @@
         customizing = false;
         saving = false;
     }
+
+    const stickerPack = [Globe, Globe, Globe, Globe, Globe, Globe];
 </script>
 
 <svelte:head>
@@ -67,11 +68,11 @@
     <div slot="title" class="">Init Ticket<span class="text-accent">_</span></div>
     <div class="grid grid-cols-1 p-0.5 md:grid-cols-12">
         <div class="col-span-3 flex flex-col p-4">
-            <h3 class="text-primary text-label border-offset border-b border-dashed pb-2">
+            <h3 class="text-primary text-label border-offset border-b border-dashed pb-4">
                 Customize ticket
             </h3>
 
-            <div class="mt-8 flex flex-1 flex-col gap-4">
+            <div class="mt-4 flex flex-1 flex-col gap-4">
                 <div class="flex flex-col gap-2">
                     <label
                         for="name"
@@ -100,15 +101,22 @@
                 </div>
 
                 <div class="flex h-full flex-1 flex-col gap-2">
-                    <label
-                        for="title"
+                    <span
                         class="text-primary font-aeonik-fono text-x-micro tracking-loose uppercase"
-                        >Sticker Pack</label
+                        >Sticker Pack</span
                     >
                     <div
-                        class="bg-smooth border-offset flex h-full flex-1 flex-wrap rounded-lg border p-2"
+                        class="bg-smooth border-offset grid h-full flex-1 grid-cols-2 place-items-center gap-4 overflow-y-scroll rounded-lg border p-4"
                     >
-                        Stickers
+                        {#each stickerPack as sticker}
+                            <div
+                                class="aspect-square w-full rounded-[1px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed"
+                            >
+                                <div class="bg-smooth flex size-full items-center justify-center">
+                                    <img src={sticker} alt="Sticker" class="size-20" />
+                                </div>
+                            </div>
+                        {/each}
                     </div>
                 </div>
                 <button
@@ -130,7 +138,7 @@
                     contributions={getMockContributions()}
                     disableEffects
                 />
-                <span class="font-aeonik-fono text-x-micro text-primary">Front</span>
+                <span class="font-aeonik-fono tracking-loose text-x-micro text-primary">Front</span>
             </div>
             <div class="flex flex-col items-center gap-4 uppercase">
                 <TicketCard
@@ -139,8 +147,10 @@
                     contributions={getMockContributions()}
                     disableEffects
                     flipped
+                    {stickerPack}
+                    stickers={[0, 4, 3]}
                 />
-                <span class="font-aeonik-fono text-x-micro text-primary">Back</span>
+                <span class="font-aeonik-fono tracking-loose text-x-micro text-primary">Back</span>
             </div>
         </div>
     </div>

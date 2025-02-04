@@ -17,6 +17,7 @@
     type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
         disableEffects?: boolean;
         flipped?: boolean;
+        stickerPack?: string[];
         contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;
     };
 
@@ -29,6 +30,8 @@
         avatar_url,
         flipped = false,
         disableEffects = false,
+        stickers,
+        stickerPack,
         ...rest
     } = $$props as $$Props;
     const firstName = name?.split(' ')[0];
@@ -262,7 +265,25 @@
                     </svg>
                 </div>
                 <div class="relative z-10 flex flex-1 flex-col gap-1 rounded-xl bg-[#19191C] p-2">
-                    <div class="relative flex-1 bg-white/1"></div>
+                    <div class="relative flex flex-1 bg-white/1">
+                        {#if stickers && stickerPack}
+                            {#each stickers as sticker}
+                                <div
+                                    class="aspect-square size-16 rounded-[1px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed"
+                                >
+                                    <div
+                                        class="bg-smooth flex size-full items-center justify-center"
+                                    >
+                                        <img
+                                            src={stickerPack[sticker]}
+                                            alt="Sticker"
+                                            class="size-3/4"
+                                        />
+                                    </div>
+                                </div>
+                            {/each}
+                        {/if}
+                    </div>
                     <div
                         class="border-offset mt-auto mb-0 rounded-md border-2 border-dashed bg-black p-2"
                     >
