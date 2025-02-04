@@ -4,6 +4,9 @@
     import { getMockContributions } from '../../(utils)/contributions';
     import Window from '../../(components)/window.svelte';
     import Globe from '../../(assets)/stickers/sticker.svg';
+    import { enhance } from '$app/forms';
+    import Avatar from '../../(assets)/avatar.png';
+    import { classNames } from '$lib/utils/classnames';
 
     export let data;
 
@@ -13,47 +16,22 @@
     let title = originalTitle;
     let originalShowGitHub = data.ticket?.show_contributions ?? true;
     let showGitHub = originalShowGitHub;
+    let originalStickers = data.ticket.stickers;
+    let stickers = originalStickers?.join(',');
 
-    let customizing = false;
-    let saving = false;
+    console.log(data.ticket.stickers);
 
     $: modified = !dequal(
         {
             name: originalName,
             title: originalTitle,
+            stickers: originalStickers,
             showGitHub: originalShowGitHub
         },
-        { name, title, showGitHub }
+        { name, title, showGitHub, stickers }
     );
 
-    async function saveTicket() {
-        if (!modified) return;
-
-        saving = true;
-
-        let response = await fetch(`/init/tickets/update`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name,
-                title,
-                showGitHub
-            })
-        });
-
-        if (response.ok) {
-            originalName = name;
-            originalTitle = title;
-            originalShowGitHub = showGitHub;
-        }
-
-        customizing = false;
-        saving = false;
-    }
-
-    const stickerPack = [Globe, Globe, Globe, Globe, Globe, Globe];
+    const stickerPack = [Globe, Globe, Avatar, Globe, Globe, Globe];
 </script>
 
 <svelte:head>
@@ -72,7 +50,7 @@
                 Customize ticket
             </h3>
 
-            <div class="mt-4 flex flex-1 flex-col gap-4">
+            <form method="POST" class="mt-4 flex flex-1 flex-col gap-4" use:enhance>
                 <div class="flex flex-col gap-2">
                     <label
                         for="name"
@@ -105,12 +83,23 @@
                         class="text-primary font-aeonik-fono text-x-micro tracking-loose uppercase"
                         >Sticker Pack</span
                     >
+                    <input
+                        bind:value={stickers}
+                        type="text"
+                        name="stickers"
+                        class="bg-smooth border-offset w-full appearance-none rounded-lg border p-2"
+                    />
                     <div
                         class="bg-smooth border-offset grid h-full flex-1 grid-cols-2 place-items-center gap-4 overflow-y-scroll rounded-lg border p-4"
                     >
-                        {#each stickerPack as sticker}
+                        {#each stickerPack as sticker, i}
                             <div
-                                class="aspect-square w-full rounded-[1px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed"
+                                class={classNames(
+                                    'aspect-square w-full rounded-[1px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed',
+                                    data.ticket.stickers?.includes(i)
+                                        ? 'outline-accent/50'
+                                        : 'outline-[var(--color-offset)]'
+                                )}
                             >
                                 <div class="bg-smooth flex size-full items-center justify-center">
                                     <img src={sticker} alt="Sticker" class="size-20" />
@@ -119,12 +108,10 @@
                         {/each}
                     </div>
                 </div>
-                <button
-                    class="web-button is-secondary w-full!"
-                    disabled={!modified || saving}
-                    on:click={saveTicket}>Save</button
+                <button type="submit" class="web-button is-secondary w-full!" disabled={!modified}
+                    >Save</button
                 >
-            </div>
+            </form>
         </div>
         <div
             class="bg-smooth col-span-9 flex w-full items-center justify-center gap-8 rounded-xl p-4 outline-2 [outline-offset:-2px] outline-[var(--color-offset)] outline-dashed"
@@ -148,7 +135,6 @@
                     disableEffects
                     flipped
                     {stickerPack}
-                    stickers={[0, 4, 3]}
                 />
                 <span class="font-aeonik-fono tracking-loose text-x-micro text-primary">Back</span>
             </div>

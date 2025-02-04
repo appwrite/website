@@ -1,5 +1,6 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
+    import { createCopy } from '$lib/utils/copy';
     import Lockup from '../../(components)/lockup.svelte';
     import type { ContributionsMatrix } from '../../(utils)/contributions.server';
     import type { TicketData } from '../../(utils)/tickets';
@@ -40,6 +41,8 @@
         if (disableEffects) return;
         flipped = !flipped;
     };
+
+    const ticketUrl = `https://appwrite.io/init/tickets/${id}`;
 
     interface TiltBounds {
         x: number;
@@ -150,9 +153,8 @@
                             fill="#E4E4E7"
                         />
                     </svg>
-                    <span class="line-clamp-1 max-w-[80%] text-ellipsis"
-                        >https://appwrite.io/init/tickets/{id}</span
-                    >
+                    <span class="line-clamp-1 max-w-[80%] text-ellipsis">{ticketUrl}</span>
+
                     <svg
                         width="20"
                         height="20"
@@ -240,7 +242,7 @@
                             fill="#E4E4E7"
                         />
                     </svg>
-                    <span>https://appwrite.io/init/tickets/{id}</span>
+                    <span>{ticketUrl}</span>
                     <svg
                         width="20"
                         height="20"
@@ -265,7 +267,7 @@
                     </svg>
                 </div>
                 <div class="relative z-10 flex flex-1 flex-col gap-1 rounded-xl bg-[#19191C] p-2">
-                    <div class="relative flex flex-1 bg-white/1">
+                    <div class="relative grid flex-1 grid-cols-4 grid-rows-5 bg-white/1">
                         {#if stickers && stickerPack}
                             {#each stickers as sticker}
                                 <div

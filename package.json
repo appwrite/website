@@ -98,6 +98,7 @@
         "vite-plugin-dynamic-import": "^1.6.0",
         "vite-plugin-image-optimizer": "^1.1.8",
         "vite-plugin-manifest-sri": "^0.2.0",
-        "vitest": "^1.6.0"
+        "vitest": "^1.6.0",
+        "zod-form-data": "^2.0.5"
     }
 }

@@ -38,7 +38,7 @@ function unsecuredCopy(value: string) {
 export async function copy(value: string) {
     // securedCopy works only in HTTPS environment.
     // unsecuredCopy works in HTTP and only runs if securedCopy fails.
-    const success = (await securedCopy(value)) || unsecuredCopy(value);
+    const success = (await securedCopy(value)) ?? unsecuredCopy(value);
 
     return success;
 }
@@ -47,12 +47,13 @@ export function createCopy(value: string) {
     const copied = writable(false);
 
     let timeout: ReturnType<typeof setTimeout> | undefined = undefined;
-    function handleCopy() {
+
+    const handleCopy = () => {
         if (timeout) clearTimeout(timeout);
         copied.set(true);
         copy(value);
         timeout = setTimeout(() => copied.set(false), 1000);
-    }
+    };
 
     return {
         copied,
