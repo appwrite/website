@@ -1,11 +1,16 @@
+<script lang="ts" context="module">
+    export let stickersStore = writable<Array<number>>([]);
+</script>
+
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import { createCopy } from '$lib/utils/copy';
+    import { writable } from 'svelte/store';
     import Lockup from '../../(components)/lockup.svelte';
     import type { ContributionsMatrix } from '../../(utils)/contributions.server';
     import type { TicketData } from '../../(utils)/tickets';
     import { spring } from 'svelte/motion';
     import { fade } from 'svelte/transition';
+    import { onMount } from 'svelte';
 
     let coords = spring(
         { x: 0, y: 0 },
@@ -116,6 +121,12 @@
             }
         };
     };
+
+    onMount(() => {
+        if (!stickers) return;
+
+        stickersStore.set(stickers);
+    });
 </script>
 
 <button
@@ -268,9 +279,10 @@
                 </div>
                 <div class="relative z-10 flex flex-1 flex-col gap-1 rounded-xl bg-[#19191C] p-2">
                     <div class="relative grid flex-1 grid-cols-4 grid-rows-5 bg-white/1">
-                        {#if stickers && stickerPack}
-                            {#each stickers as sticker}
+                        {#if $stickersStore && stickerPack}
+                            {#each $stickersStore as sticker}
                                 <div
+                                    draggable="true"
                                     class="aspect-square size-16 rounded-[1px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed"
                                 >
                                     <div

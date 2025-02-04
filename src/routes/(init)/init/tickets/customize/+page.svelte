@@ -1,6 +1,6 @@
 <script lang="ts">
     import { dequal } from 'dequal/lite';
-    import TicketCard from '../(components)/ticket-card.svelte';
+    import TicketCard, { stickersStore } from '../(components)/ticket-card.svelte';
     import { getMockContributions } from '../../(utils)/contributions';
     import Window from '../../(components)/window.svelte';
     import Globe from '../../(assets)/stickers/sticker.svg';
@@ -19,8 +19,6 @@
     let originalStickers = data.ticket.stickers;
     let stickers = originalStickers?.join(',');
 
-    console.log(data.ticket.stickers);
-
     $: modified = !dequal(
         {
             name: originalName,
@@ -32,6 +30,12 @@
     );
 
     const stickerPack = [Globe, Globe, Avatar, Globe, Globe, Globe];
+
+    const updateStickers = () => {
+        stickersStore.set(stickers!.split(',').map((i) => parseInt(i)));
+    };
+
+    console.log($stickersStore);
 </script>
 
 <svelte:head>
@@ -84,7 +88,7 @@
                         >Sticker Pack</span
                     >
                     <input
-                        bind:value={stickers}
+                        on:change={updateStickers}
                         type="text"
                         name="stickers"
                         class="bg-smooth border-offset w-full appearance-none rounded-lg border p-2"

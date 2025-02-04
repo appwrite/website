@@ -30,7 +30,8 @@ export const load = async () => {
 
 const updateSchema = zfd.formData({
     name: zfd.text(),
-    title: zfd.text()
+    title: zfd.text(),
+    stickers: zfd.text()
 });
 
 export const actions = {
@@ -71,7 +72,7 @@ export const actions = {
             document.$id,
             {
                 ...data,
-                stickers: [0, 4, 2]
+                stickers: data.stickers.split(',').map((s) => Number(s.trim()))
             }
         );
     }
