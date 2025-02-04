@@ -39,8 +39,7 @@
     }
 
     const title = 'Contact us' + TITLE_SUFFIX;
-    const description =
-        'Fill in this short form to get in touch with the Appwrite team. Questions, feature requests or bug reports - all input is welcome!';
+    const description = "Fill in this short form to get in touch with the Appwrite team. Questions, feature requests or bug reports - all input is welcome!";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
