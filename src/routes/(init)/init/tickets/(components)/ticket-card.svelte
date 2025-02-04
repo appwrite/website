@@ -14,17 +14,27 @@
         }
     );
 
-    type $$Props = Omit<TicketData, 'contributions'> & {
+    type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
+        disableEffects?: boolean;
+        flipped?: boolean;
         contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;
     };
 
-    export let { name, id, title, contributions, show_contributions, avatar_url, ...rest } =
-        $$props as $$Props;
+    export let {
+        name,
+        id,
+        title,
+        contributions,
+        show_contributions,
+        avatar_url,
+        flipped = false,
+        disableEffects = false,
+        ...rest
+    } = $$props as $$Props;
     const firstName = name?.split(' ')[0];
 
-    let flipped: boolean = false;
-
     const handleFlip = () => {
+        if (disableEffects) return;
         flipped = !flipped;
     };
 
@@ -44,6 +54,7 @@
         let bounds: TiltBounds;
 
         const rotateToMouse = (e: MouseEvent) => {
+            if (disableEffects) return;
             const mouseX = e.clientX;
             const mouseY = e.clientY;
             const leftX = mouseX - bounds.x;
@@ -101,11 +112,16 @@
     };
 </script>
 
-<button class="group relative perspective-[1500px] hover:cursor-none" on:click={handleFlip}>
+<button
+    class={classNames('group relative', {
+        'perspective-[1500px] hover:cursor-none': !disableEffects
+    })}
+    on:click={handleFlip}
+>
     <div use:tilt class="size-full rounded-2xl transition-all duration-300 ease-out">
         <div
             class={classNames(
-                'group relative z-10 mx-auto flex aspect-[3.65/5.72] max-w-sm min-w-sm flex-col gap-1 rounded-3xl bg-[#27272A] p-1 shadow-lg transition-transform transform-3d',
+                'group relative z-10 mx-auto flex aspect-[3.65/5.72] max-w-xs min-w-xs flex-col gap-1 rounded-3xl bg-[#27272A] p-1 shadow-lg transition-transform transform-3d',
                 'shadow-black/25 hover:shadow-xl',
                 'outline-accent border-8 border-black outline-2 outline-dashed',
                 'before:absolute before:inset-x-0 before:top-0 before:h-px before:rounded-2xl before:bg-linear-to-r before:from-transparent before:via-white/30 before:to-transparent',
@@ -132,7 +148,7 @@
                         />
                     </svg>
                     <span class="line-clamp-1 max-w-[80%] text-ellipsis"
-                        >https://appwrite.io/init/tickets/{rest.$id}</span
+                        >https://appwrite.io/init/tickets/{id}</span
                     >
                     <svg
                         width="20"
@@ -242,26 +258,38 @@
                         />
                     </svg>
                 </div>
-                <div class="relative z-10 flex flex-1 flex-col rounded-xl bg-[#19191C] p-2">
+                <div class="relative z-10 flex flex-1 flex-col gap-1 rounded-xl bg-[#19191C] p-2">
+                    <div class="relative flex-1 bg-white/1"></div>
                     <div
-                        class="font-aeonik-fono border-offset text-x-micro relative z-10 mt-auto mb-0 flex flex-col items-center justify-between rounded-lg border-2 border-dashed bg-black p-2 uppercase"
+                        class="border-offset mt-auto mb-0 rounded-md border-2 border-dashed bg-black p-2"
                     >
-                        <span>Launch Week <span class="text-accent">/</span> FEB X - X</span>
-                        <span
-                            >Ticket <span class="text-accent">#</span>{id
-                                .toString()
-                                .padStart(6, '0')}</span
+                        <div
+                            class="text-primary font-aeonik-fono text-x-micro border-offset mb-2 flex items-center justify-between border-b pb-1 uppercase"
                         >
-
+                            <span>Launch Week <span class="text-accent">/</span> FEB X - X</span>
+                            <span
+                                >Ticket <span class="text-accent">#</span>{id
+                                    .toString()
+                                    .padStart(6, '0')}</span
+                            >
+                        </div>
                         {#await contributions then c}
                             {#if c && show_contributions}
-                                <div class="flex w-full flex-wrap" out:fade={{ duration: 100 }}>
+                                <div
+                                    class="flex w-full flex-wrap gap-0.5"
+                                    out:fade={{ duration: 100 }}
+                                >
                                     {#each c as row}
-                                        <div class="flex size-1.5 flex-wrap rounded-sm">
-                                            {#each row as _}
-                                                <div class="size-full rounded-sm bg-white" />
-                                            {/each}
-                                        </div>
+                                        {#each row as value}
+                                            <div
+                                                class={classNames('size-1 rounded-[1px] bg-white', {
+                                                    'opacity-25': value === 1,
+                                                    'opacity-50': value === 2,
+                                                    'opacity-75': value === 3,
+                                                    'opacity-100': value === 4
+                                                })}
+                                            />
+                                        {/each}
                                     {/each}
                                 </div>
                             {/if}

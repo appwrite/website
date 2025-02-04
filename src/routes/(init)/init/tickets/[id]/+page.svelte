@@ -2,6 +2,7 @@
     import { page } from '$app/stores';
     import { createCopy } from '$lib/utils/copy';
     import TicketCard from '../(components)/ticket-card.svelte';
+    import { getMockContributions } from '../../(utils)/contributions';
 
     export let data;
 
@@ -60,7 +61,11 @@
         <div
             class="border-offset flex items-center justify-center border-x-2 border-dashed bg-black/24 py-8 md:col-span-6"
         >
-            <TicketCard {...data.ticket} name={firstName} id={1} />
+            <TicketCard
+                {...data.ticket}
+                title={data.ticket.title}
+                contributions={getMockContributions()}
+            />
         </div>
     </div>
 </div>

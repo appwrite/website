@@ -2,6 +2,7 @@
     import { dequal } from 'dequal/lite';
     import TicketCard from '../(components)/ticket-card.svelte';
     import { getMockContributions } from '../../(utils)/contributions';
+    import Window from '../../(components)/window.svelte';
 
     export let data;
 
@@ -11,7 +12,6 @@
     let title = originalTitle;
     let originalShowGitHub = data.ticket?.show_contributions ?? true;
     let showGitHub = originalShowGitHub;
-    let id = data.ticket?.id.toString().padStart(6, '0');
 
     let customizing = false;
     let saving = false;
@@ -24,6 +24,8 @@
         },
         { name, title, showGitHub }
     );
+
+    console.log(name);
 
     async function saveTicket() {
         if (!modified) return;
@@ -61,37 +63,40 @@
     />
 </svelte:head>
 
-<div class="container">
-    <div class="grid min-h-[80vh] grid-cols-1 md:grid-cols-12">
-        <div
-            class="border-offset divide-offset grid grid-rows-12 place-items-center divide-y-2 divide-dashed border-l-2 border-dashed md:col-span-6"
-        >
-            <div class="row-span-2 h-full w-full px-8" />
-            <div class="row-span-8 flex h-full w-full items-center px-12">
-                <div class="flex flex-1 flex-col gap-2">
-                    <h2 class="text-display text-primary">
-                        {data.ticket.name.split(' ')[0]}'s ticket
-                    </h2>
-                    <span class="text-display text-primary"
-                        ><span class="text-accent">#</span>{id}</span
-                    >
-                    <p class="text-body text-secondary mt-2 font-medium">
-                        Register today and claim your Init launch week ticket and get the chance to
-                        win prizes.
-                    </p>
-                    <button class="web-button mt-4">Register with GitHub</button>
-                </div>
-            </div>
-            <div class="row-span-2 h-full w-full px-8" />
+<Window class="container my-10">
+    <div slot="title" class="">Init Ticket<span class="text-accent">_</span></div>
+    <div class="grid grid-cols-1 p-0.5 md:grid-cols-12">
+        <div class="col-span-3 p-4">
+            <h3 class="text-primary text-label border-offset border-b border-dashed pb-2">
+                Customize ticket
+            </h3>
+
+            <input bind:value={name} type="text" />
         </div>
         <div
-            class="border-offset flex items-center justify-center border-x-2 border-dashed bg-black/24 py-8 md:col-span-6"
+            class="bg-smooth col-span-9 flex w-full items-center justify-center gap-8 rounded-xl p-4 outline-2 [outline-offset:-2px] outline-[var(--color-offset)] outline-dashed"
         >
-            <TicketCard
-                {...data.ticket}
-                title={data.ticket.title}
-                contributions={getMockContributions()}
-            />
+            <div class="flex flex-col items-center gap-4 uppercase">
+                <TicketCard
+                    {title}
+                    {name}
+                    avatar_url={data.ticket.avatar_url}
+                    id={data.ticket.id}
+                    contributions={getMockContributions()}
+                    disableEffects
+                />
+                <span class="font-aeonik-fono text-x-micro text-primary">Front</span>
+            </div>
+            <div class="flex flex-col items-center gap-4 uppercase">
+                <TicketCard
+                    {...data.ticket}
+                    title={data.ticket.title}
+                    contributions={getMockContributions()}
+                    disableEffects
+                    flipped
+                />
+                <span class="font-aeonik-fono text-x-micro text-primary">Back</span>
+            </div>
         </div>
     </div>
-</div>
+</Window>
