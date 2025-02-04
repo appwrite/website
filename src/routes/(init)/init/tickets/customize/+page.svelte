@@ -32,11 +32,9 @@
 
     const stickerPack = [Globe, Github, Avatar, Globe, Globe, Globe];
 
-    const updateStickers = () => {
-        stickersStore.set(stickers!.split(',').map((i) => parseInt(i)));
-    };
-
-    console.log($stickersStore);
+    // const updateStickers = () => {
+    //     stickersStore.set(stickers!.split(',').map((i) => parseInt(i)));
+    // };
 </script>
 
 <svelte:head>
@@ -51,7 +49,9 @@
     <div slot="title" class="">Init Ticket<span class="text-accent">_</span></div>
     <div class="grid grid-cols-1 p-0.5 md:grid-cols-12">
         <div class="col-span-3 flex flex-col p-4">
-            <h3 class="text-primary text-label border-offset border-b border-dashed pb-4">
+            <h3
+                class="text-primary font-aeonik-pro text-label border-offset border-b border-dashed pb-4"
+            >
                 Customize ticket
             </h3>
 
@@ -88,12 +88,6 @@
                         class="text-primary font-aeonik-fono text-x-micro tracking-loose uppercase"
                         >Sticker Pack</span
                     >
-                    <input
-                        bind:value={stickers}
-                        type="text"
-                        name="stickers"
-                        class="bg-smooth border-offset w-full appearance-none rounded-lg border p-2"
-                    />
                     <div
                         class="bg-smooth border-offset grid h-full flex-1 grid-cols-2 place-items-center gap-4 overflow-y-scroll rounded-lg border p-4"
                     >
