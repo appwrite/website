@@ -8,8 +8,7 @@
     import FloatingHead from '$lib/components/FloatingHead.svelte';
 
     const title = 'Heroes' + TITLE_SUFFIX;
-    const description =
-        "If you're passionate about helping developers build great products with Appwrite - join our Heroes program and get access to a number of exclusive perks.";
+    const description = "If you're passionate about helping developers build great products with Appwrite - join our Heroes program and get access to a number of exclusive perks.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     const heroCards: HeroCardProps[] = [

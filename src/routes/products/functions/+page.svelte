@@ -18,8 +18,7 @@
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     const title = 'Functions' + TITLE_SUFFIX;
-    const description =
-        'Appwrite Functions offer everything you need to deploy and scale serverless functions easily, without any server management overhead.';
+    const description = "Appwrite Functions offer everything you need to deploy and scale serverless functions easily, without any server management overhead.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 

@@ -54,8 +54,7 @@
     }
 
     const title = 'Become a Technology Partner' + TITLE_SUFFIX;
-    const description =
-        "Want to integrate your app with Appwrite's API? Apply to our Technology Partners program by filling a short form.";
+    const description = "Want to integrate your app with Appwrite's API? Apply to our Technology Partners program by filling a short form.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 

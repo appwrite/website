@@ -13,8 +13,7 @@
 
     const seo = {
         title: 'Changelog' + TITLE_SUFFIX,
-        description:
-            "Explore Appwrite's changelog to stay on top of all the product updates and track our journey.",
+        description: "Explore Appwrite's changelog to stay on top of all the product updates and track our journey.",
         ogImage: `${DEFAULT_HOST}/images/open-graph/website.png`
     };
 

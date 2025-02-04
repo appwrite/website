@@ -11,8 +11,7 @@
     import Copy from './Copy.svelte';
 
     const title = 'Assets' + TITLE_SUFFIX;
-    const description =
-        "This page features Appwrite's key brand assets including the logotype, colors, product visuals, and practical guidelines for their usage.";
+    const description = "This page features Appwrite's key brand assets including the logotype, colors, product visuals, and practical guidelines for their usage.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     enum Section {
