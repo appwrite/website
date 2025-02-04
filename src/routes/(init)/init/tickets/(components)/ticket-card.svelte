@@ -189,12 +189,15 @@
                             alt="{firstName}'s Avatar"
                             class="size-16 rounded outline-2 outline-offset-1 outline-[var(--color-offset)] outline-dashed"
                         />
-                        <div class="flex flex-col">
+                        <div class="flex flex-col gap-1">
                             <h3 class="text-primary text-title">
-                                {firstName}<span class="text-accent">_</span>
+                                {name}<span class="text-accent">_</span>
                             </h3>
                             {#if title}
-                                <span class="text-secondary block">{title}</span>
+                                <span
+                                    class="text-secondary font-aeonik-pro text-x-micro tracking-loose block uppercase"
+                                    >{title}</span
+                                >
                             {/if}
                         </div>
                     </div>

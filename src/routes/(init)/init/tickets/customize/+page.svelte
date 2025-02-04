@@ -7,7 +7,7 @@
     export let data;
 
     let originalName = data.ticket?.name ?? '';
-    let name = originalName;
+    let name = originalName.split(' ')[0];
     let originalTitle = data.ticket?.title ?? '';
     let title = originalTitle;
     let originalShowGitHub = data.ticket?.show_contributions ?? true;
@@ -66,20 +66,65 @@
 <Window class="container my-10">
     <div slot="title" class="">Init Ticket<span class="text-accent">_</span></div>
     <div class="grid grid-cols-1 p-0.5 md:grid-cols-12">
-        <div class="col-span-3 p-4">
+        <div class="col-span-3 flex flex-col p-4">
             <h3 class="text-primary text-label border-offset border-b border-dashed pb-2">
                 Customize ticket
             </h3>
 
-            <input bind:value={name} type="text" />
+            <div class="mt-8 flex flex-1 flex-col gap-4">
+                <div class="flex flex-col gap-2">
+                    <label
+                        for="name"
+                        class="text-primary font-aeonik-fono text-x-micro tracking-loose uppercase"
+                        >First name</label
+                    >
+                    <input
+                        bind:value={name}
+                        type="text"
+                        name="name"
+                        class="bg-smooth border-offset w-full appearance-none rounded-lg border p-2"
+                    />
+                </div>
+                <div class="flex flex-col gap-2">
+                    <label
+                        for="title"
+                        class="text-primary font-aeonik-fono text-x-micro tracking-loose uppercase"
+                        >Title</label
+                    >
+                    <input
+                        bind:value={title}
+                        type="text"
+                        name="title"
+                        class="bg-smooth border-offset w-full appearance-none rounded-lg border p-2"
+                    />
+                </div>
+
+                <div class="flex h-full flex-1 flex-col gap-2">
+                    <label
+                        for="title"
+                        class="text-primary font-aeonik-fono text-x-micro tracking-loose uppercase"
+                        >Sticker Pack</label
+                    >
+                    <div
+                        class="bg-smooth border-offset flex h-full flex-1 flex-wrap rounded-lg border p-2"
+                    >
+                        Stickers
+                    </div>
+                </div>
+                <button
+                    class="web-button is-secondary w-full!"
+                    disabled={!modified || saving}
+                    on:click={saveTicket}>Save</button
+                >
+            </div>
         </div>
         <div
             class="bg-smooth col-span-9 flex w-full items-center justify-center gap-8 rounded-xl p-4 outline-2 [outline-offset:-2px] outline-[var(--color-offset)] outline-dashed"
         >
             <div class="flex flex-col items-center gap-4 uppercase">
                 <TicketCard
-                    {title}
                     {name}
+                    {title}
                     avatar_url={data.ticket.avatar_url}
                     id={data.ticket.id}
                     contributions={getMockContributions()}

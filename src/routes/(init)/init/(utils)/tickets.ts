@@ -67,7 +67,7 @@ export const getTicketDocByUser = async (user: User) => {
                 gh_user: user.github?.login ?? undefined,
                 avatar_url: user.github?.avatar_url,
                 id: allDocs.total + 1,
-                name: user.appwrite?.name ?? user.github?.name,
+                name: user.appwrite?.name.split(' ')[0] ?? user.github?.name.split(' ')[0],
                 title: '',
                 show_contributions: true
             }
