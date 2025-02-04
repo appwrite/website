@@ -183,6 +183,9 @@ importers:
       svelte-check:
         specifier: ^3.8.6
         version: 3.8.6(@babel/core@7.25.8)(postcss-load-config@3.1.4(postcss@8.4.49))(postcss@8.4.49)(sass@1.81.0)(svelte@4.2.19)
+      svelte-dnd-action:
+        specifier: ^0.9.57
+        version: 0.9.57(svelte@4.2.19)
       svelte-markdoc-preprocess:
         specifier: ^2.1.0
         version: 2.1.0(@types/react@18.3.12)
@@ -222,6 +225,9 @@ importers:
       vitest:
         specifier: ^1.6.0
         version: 1.6.0(@types/node@22.7.5)(lightningcss@1.27.0)(sass@1.81.0)
+      zod-form-data:
+        specifier: ^2.0.5
+        version: 2.0.5(zod@3.24.1)
 
 packages:
 
@@ -4041,6 +4047,11 @@ packages:
     peerDependencies:
       svelte: ^3.55.0 || ^4.0.0-next.0 || ^4.0.0 || ^5.0.0-next.0
 
+  svelte-dnd-action@0.9.57:
+    resolution: {integrity: sha512-H1QPlthwAH+xjaISKbp/dQJYeC3Jt1mlTNqJDko0f7XgEyi5ee3PMEuAfF1soJXA0Y5ceb+W8xJXiSZ+2CeMNA==}
+    peerDependencies:
+      svelte: '>=3.23.0 || ^5.0.0-next.0'
+
   svelte-eslint-parser@0.43.0:
     resolution: {integrity: sha512-GpU52uPKKcVnh8tKN5P4UZpJ/fUDndmq7wfsvoVXsyP+aY0anol7Yqo01fyrlaWGMFfm4av5DyrjlaXdLRJvGA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -4526,6 +4537,11 @@ packages:
   yocto-queue@1.1.1:
     resolution: {integrity: sha512-b4JR1PFR10y1mKjhHY9LaGo6tmrgjit7hxVIeAmyMw3jegXR4dhYqLaQF5zMXZxY7tLpMyJeLjr1C4rLmkVe8g==}
     engines: {node: '>=12.20'}
+
+  zod-form-data@2.0.5:
+    resolution: {integrity: sha512-T7dV6lTBCwkd8PyvJVCnjXKpgXomU8gEm/TcvEZY7qNdRhIo9T17HrdlHIK68PzTAYaV2HxR9rgwpTSWv0L+QQ==}
+    peerDependencies:
+      zod: '>= 3.11.0'
 
   zod@3.24.1:
     resolution: {integrity: sha512-muH7gBL9sI1nciMZV67X5fTKKBLtwpZ5VBp1vsOQzj1MhrBZ4wlVCm3gedKZWLp0Oyel8sIGfeiz54Su+OVT+A==}
@@ -8542,6 +8558,10 @@ snapshots:
       - stylus
       - sugarss
 
+  svelte-dnd-action@0.9.57(svelte@4.2.19):
+    dependencies:
+      svelte: 4.2.19
+
   svelte-eslint-parser@0.43.0(svelte@4.2.19):
     dependencies:
       eslint-scope: 7.2.2
@@ -9029,5 +9049,9 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   yocto-queue@1.1.1: {}
+
+  zod-form-data@2.0.5(zod@3.24.1):
+    dependencies:
+      zod: 3.24.1
 
   zod@3.24.1: {}

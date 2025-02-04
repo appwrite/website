@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-    export let stickersStore = writable<Array<number>>([]);
+    export const stickersStore = writable<Array<number>>([]);
 </script>
 
 <script lang="ts">
@@ -279,8 +279,8 @@
                 </div>
                 <div class="relative z-10 flex flex-1 flex-col gap-1 rounded-xl bg-[#19191C] p-2">
                     <div class="relative grid flex-1 grid-cols-4 grid-rows-5 bg-white/1">
-                        {#if $stickersStore && stickerPack}
-                            {#each $stickersStore as sticker}
+                        {#if stickers && stickerPack}
+                            {#each stickers as sticker}
                                 <div
                                     draggable="true"
                                     class="aspect-square size-16 rounded-[1px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed"

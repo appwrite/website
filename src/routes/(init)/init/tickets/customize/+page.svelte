@@ -4,6 +4,7 @@
     import { getMockContributions } from '../../(utils)/contributions';
     import Window from '../../(components)/window.svelte';
     import Globe from '../../(assets)/stickers/sticker.svg';
+    import Github from '../../(assets)/stickers/github.svg';
     import { enhance } from '$app/forms';
     import Avatar from '../../(assets)/avatar.png';
     import { classNames } from '$lib/utils/classnames';
@@ -29,7 +30,7 @@
         { name, title, showGitHub, stickers }
     );
 
-    const stickerPack = [Globe, Globe, Avatar, Globe, Globe, Globe];
+    const stickerPack = [Globe, Github, Avatar, Globe, Globe, Globe];
 
     const updateStickers = () => {
         stickersStore.set(stickers!.split(',').map((i) => parseInt(i)));
@@ -88,7 +89,7 @@
                         >Sticker Pack</span
                     >
                     <input
-                        on:change={updateStickers}
+                        bind:value={stickers}
                         type="text"
                         name="stickers"
                         class="bg-smooth border-offset w-full appearance-none rounded-lg border p-2"
