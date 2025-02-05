@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Start with Web
-description: Build JavaScript or Typescript web apps with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
+description: Build JavaScript or Typescript web apps with Appwrite. Add authentication, user management, file storage, and more. Read our guide to get started!
 difficulty: beginner
 readtime: 3
 back: /docs/quick-starts
