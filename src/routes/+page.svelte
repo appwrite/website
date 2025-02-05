@@ -11,11 +11,12 @@
     import MainFooter from '../lib/components/MainFooter.svelte';
     import DeveloperCard from './DeveloperCard.svelte';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import CoverImage from './dashboard.png';
+    import CoverImage from './dashboard.webp';
     import Hero from '$lib/components/ui/Hero.svelte';
     import GradientText from '$lib/components/ui/GradientText.svelte';
     import Badge from '$lib/components/ui/Badge.svelte';
     import { trackEvent } from '$lib/actions/analytics';
+    import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -92,7 +93,7 @@
         <enhanced:img
             style="width:1466px; height:804px; transform:rotate(150.348deg); opacity: 0.65; filter: blur(127.5px);
 		max-block-size: unset; max-inline-size: unset;"
-            src="./top-page-dark.png"
+            src="./top-page-dark.webp"
             alt=""
         />
     </div>
@@ -103,7 +104,7 @@
     style="top: 22rem; left: 54%; translate: calc(-50% - 900px); width: 75.9375rem;"
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
-    <img src="/images/bgs/hero-lines-1.png" alt="" />
+    <img src="/images/bgs/hero-lines-1.webp" alt="" />
 </div>
 
 <div
@@ -112,7 +113,7 @@
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
     <div style="left: 0;">
-        <img src="/images/bgs/hero-lines-2.png" alt="" />
+        <img src="/images/bgs/hero-lines-2.webp" alt="" />
     </div>
 </div>
 
@@ -129,9 +130,7 @@
                         <span class="web-icon-star shrink-0" aria-hidden="true" />
                         <span class="text-caption shrink-0 font-medium">New</span>
                         <div class="web-hero-banner-button-sep" />
-                        <span class="text-caption web-u-trim-1"
-                            >Introducing Database Backups</span
-                        >
+                        <span class="text-caption web-u-trim-1">Introducing Database Backups</span>
 
                         <span class="web-icon-arrow-right shrink-0" aria-hidden="true" />
                     </a>
@@ -147,14 +146,17 @@
                             Functions, Storage, and Messaging to your projects using the frameworks
                             and languages of your choice.
                         </svelte:fragment>
-                        <a
-                            href={PUBLIC_APPWRITE_DASHBOARD}
-                            class="web-button mt-8 w-full lg:w-fit"
-                            slot="cta"
-                            on:click={() => trackEvent('Get started in hero')}
-                        >
-                            Get started
-                        </a>
+                        <div class="mt-8 flex flex-col gap-4 sm:flex-row" slot="cta">
+                            <a
+                                href={PUBLIC_APPWRITE_DASHBOARD}
+                                class="web-button w-full lg:w-fit"
+                                on:click={() => trackEvent('Get started in hero')}
+                            >
+                                Get started
+                            </a>
+
+                            <AppwriteIn100Seconds />
+                        </div>
                     </Hero>
                 </section>
             </div>

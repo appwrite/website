@@ -142,7 +142,7 @@ suspend fun main() {
 
 {% /multicode %}
 
-{% info title="Draw backs" %}
+{% info title="Drawbacks" %}
 While traditional offset pagination is familiar, it comes with some drawbacks. 
 The request gets slower as the number of records increases because the database has to read up to the offset number `M * (N - 1)` of rows to know where it should start selecting data. 
 If the data changes frequently, offset pagination will also produce **missing and duplicate** results.

@@ -7,6 +7,13 @@
   --p-link-color-text-hover: var(--web-color-accent-darker);
   --p-link-color-text-active: var(--web-color-accent);
   --p-link-color-text-focus-visible: var(--web-color-accent-click);
+  display: inline-block;
+
+
+  background-size: 100% 1px;
+
+  text-decoration-thickness: pxToRem(.25);
+  text-underline-offset: pxToRem(5);
 
   color: hsl(var(--p-link-color-text));
   /* display:inline-flex; gap:pxToRem(4); */ /* made issues on long links that break into new line */

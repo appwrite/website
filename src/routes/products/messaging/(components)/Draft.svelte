@@ -116,7 +116,6 @@
 
         aspect-ratio: 16 / 11;
         position: relative;
-        overflow: hidden;
 
         @media screen and (max-width: 1024px) {
             --m-border-gradient-before: transparent;
