@@ -273,14 +273,14 @@
                     <li>
                         <a href="/docs/products/network" class="web-card is-normal">
                             <img
-                                src="/images/icons/illustrated/dark/storage.png"
+                                src="/images/icons/illustrated/dark/network.png"
                                 alt=""
                                 class="web-u-only-dark"
                                 width="40"
                                 height="40"
                             />
                             <img
-                                src="/images/icons/illustrated/light/storage.png"
+                                src="/images/icons/illustrated/light/network.png"
                                 alt=""
                                 class="web-u-only-light"
                                 width="40"
