@@ -75,7 +75,7 @@ Finally, create a file `my_app.py`.
 Install the Python Appwrite SDK.
 
 ```sh
-pip install appwrite==4.1.0
+pip install appwrite
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}

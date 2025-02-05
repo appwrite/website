@@ -1,8 +1,12 @@
 ---
 layout: article
 title: Phone (SMS) login
-description: Enhance security with phone and SMS authentication in Appwrite. Discover how to add multi-factor authentication via SMS, verify phone numbers, and protect user accounts.
+description: Enhance security with SMS and phone authentication in Appwrite. Add multi-factor authentication via SMS, verify phone numbers, and protect user accounts.
 ---
+
+{% info title="Note" %}
+The first 10 SMS messages each month are free. Thereafter OTPs are billed per message, with rates varying by country. See the [phone OTP rates](/docs/advanced/platform/phone-otp#rates) for more information.
+{% /info %}
 
 Phone authentication lets users create accounts using their phone numbers and log in through SMS messages.
 

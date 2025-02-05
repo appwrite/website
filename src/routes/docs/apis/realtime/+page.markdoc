@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Realtime
-description: Explore the power of real-time communication with the Appwrite Realtime API. Learn how to build dynamic and interactive applications with real-time data updates.
+description: Want to build dynamic and interactive applications with real-time data updates? Appwrite Realtime API makes it possible, get started with our intro guide.
 ---
 
 Appwrite supports multiple protocols for accessing the server, including [REST](/docs/apis/rest), [GraphQL](/docs/apis/graphql), and [Realtime](/docs/apis/realtime). The Appwrite Realtime allows you to listen to any Appwrite events in realtime using the `subscribe` method.

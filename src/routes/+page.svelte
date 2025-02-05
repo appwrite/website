@@ -17,6 +17,7 @@
     import Badge from '$lib/components/ui/Badge.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
+    import { page } from '$app/stores';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -80,9 +81,7 @@
 
 <div
     style:position="absolute"
-    style:top="0"
-    style:width="100vw"
-    style:height="100vh"
+    style:inset="0"
     style:overflow="hidden"
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
@@ -123,15 +122,14 @@
             <div class="my-12 lg:my-[7.5rem]">
                 <section class="container pb-0">
                     <a
-                        href="/blog/post/introducing-database-backups"
+                        href="/blog/post/introducing-new-compute-capabilities-appwrite-functions"
                         class="web-hero-banner-button mb-4"
-                        on:click={() => trackEvent('Banner button click')}
+                        on:click={() => trackEvent({ plausible: { name: 'Banner button click' } })}
                     >
                         <span class="web-icon-star shrink-0" aria-hidden="true" />
                         <span class="text-caption shrink-0 font-medium">New</span>
                         <div class="web-hero-banner-button-sep" />
-                        <span class="text-caption web-u-trim-1">Introducing Database Backups</span>
-
+                        <span class="text-caption web-u-trim-1">New compute options available</span>
                         <span class="web-icon-arrow-right shrink-0" aria-hidden="true" />
                     </a>
                     <Hero>
@@ -150,9 +148,13 @@
                             <a
                                 href={PUBLIC_APPWRITE_DASHBOARD}
                                 class="web-button w-full lg:w-fit"
-                                on:click={() => trackEvent('Get started in hero')}
+                                on:click={() =>
+                                    trackEvent({
+                                        plausible: { name: 'Get started in hero' },
+                                        posthog: { name: 'get-started-btn_hero_click' }
+                                    })}
                             >
-                                Get started
+                                Start building
                             </a>
 
                             <AppwriteIn100Seconds />
@@ -161,7 +163,7 @@
                 </section>
             </div>
             <div class="mb-12 lg:my-[7.5rem]">
-                <section class="container web-u-padding-block-0" style="--container-size:78.75rem">
+                <section class="web-u-padding-block-0 container" style="--container-size:78.75rem">
                     <div class="web-media-container">
                         <img
                             class="block"
@@ -459,7 +461,8 @@
                         <a
                             href="/docs/sdks"
                             class="web-button is-secondary"
-                            on:click={() => trackEvent('Explore all SDKs')}>Explore all SDKs</a
+                            on:click={() => trackEvent({ plausible: { name: 'Explore all SDKs' } })}
+                            >Explore all SDKs</a
                         >
                     </section>
                 </div>

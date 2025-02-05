@@ -17,7 +17,10 @@
             </h2>
             <p>Execute your functions effortlessly through the Appwrite console, SDKs, or API.</p>
 
-            <a href="/" class="web-button is-secondary mt-4 !w-full md:!w-fit">Learn more</a>
+            <a
+                href="/docs/products/functions/executions"
+                class="web-button is-secondary mt-4 !w-full md:!w-fit">Learn more</a
+            >
         </div>
 
         <div class="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">

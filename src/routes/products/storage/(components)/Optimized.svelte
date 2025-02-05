@@ -9,7 +9,10 @@
             optimized upload times.
         </p>
         <div class="mt-8 flex gap-2">
-            <a href="/" class="web-button is-secondary !w-full md:!w-fit">
+            <a
+                href="/docs/products/storage/images"
+                class="web-button is-secondary !w-full md:!w-fit"
+            >
                 <span class="text">Learn more</span>
             </a>
         </div>
