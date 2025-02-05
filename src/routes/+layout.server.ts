@@ -1,6 +1,6 @@
 import crypto from 'node:crypto';
 
-import { getFeatureFlag } from '$lib/experiments';
+import { posthogServerClient } from '$lib/experiments';
 import { getAllChangelogEntries } from './changelog/utils';
 
 export const trailingSlash = 'never';
@@ -22,16 +22,18 @@ export const load = async ({ request, getClientAddress }) => {
     };
 
     const distinctId = generateDistinctId(fingerprintData);
+    const ctaVariant = await posthogServerClient?.getFeatureFlag('cta-copy_ab-test', distinctId);
 
-    const isStickyNav = await getFeatureFlag<'sticky-navigation_ab-test'>(
-        'sticky-navigation_ab-test',
-        'sticky-nav',
-        distinctId
-    );
+    const ctaCopy =
+        ctaVariant === 'start-building_variant'
+            ? 'Start building'
+            : ctaVariant === 'start-for-free_variant'
+              ? 'Start for free'
+              : 'Get started';
 
     return {
+        ctaCopy,
         distinctId,
-        isStickyNav,
         changelogEntries: (await getAllChangelogEntries()).length
     };
 };
