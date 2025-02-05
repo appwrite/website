@@ -19,12 +19,13 @@ export const getTicketContributions = async (id: string) => {
 
         if (!gh_user) return null;
 
-        // if contributions exist, transform them
-        // and push them into the `matrix` array
+        // if contributions exist, push them into the matrix
         if (contributions?.length) {
             for (let i = 0; i < contributions.length; i += 7) {
                 matrix.push(contributions.slice(i, i + 7));
             }
+
+            return await contributionsSchema.parseAsync(matrix);
         }
 
         const res = await fetch(`https://github.com/users/${gh_user}/contributions`);
@@ -62,10 +63,12 @@ export const getTicketContributions = async (id: string) => {
             }
         );
 
-        return contributionsSchema.parseAsync(matrix);
+        console.log({ matrix: await contributionsSchema.parseAsync(matrix) });
+
+        return await contributionsSchema.parseAsync(matrix);
     } catch (e) {
         console.error(e);
-        return { data: null };
+        return [];
     }
 };
 

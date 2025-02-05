@@ -22,7 +22,9 @@ export const load = async () => {
     return {
         ticket,
         user,
-        contributions: await getTicketContributions(ticket.$id)
+        streamed: {
+            contributions: getTicketContributions(ticket.$id)
+        }
     };
 };
 

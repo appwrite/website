@@ -26,7 +26,7 @@
         flipped?: boolean;
         $id?: string;
         stickerPack?: string[];
-        contributions?: ContributionsMatrix;
+        contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;
     };
 
     export let {
@@ -248,11 +248,16 @@
                             >
                         </div>
 
-                        {#if contributions?.length}
-                            <div class="flex w-full flex-wrap gap-0.5" out:fade={{ duration: 100 }}>
-                                {#each contributions as row}
-                                    <div class="flex gap-1">
-                                        {#each row as level}
+                        {#await contributions then c}
+                            {#if c?.length}
+                                <div
+                                    class="flex w-full flex-wrap gap-0.5"
+                                    out:fade={{ duration: 100 }}
+                                >
+                                    {#each c as row}
+                                        <div class="flex gap-1">
+                                            "{row}"
+                                            <!-- {#each row as level}
                                             <div
                                                 class={classNames('size-1 rounded-[1px] bg-white', {
                                                     'opacity-25': level === 1,
@@ -261,11 +266,12 @@
                                                     'opacity-100': level === 4
                                                 })}
                                             />
-                                        {/each}
-                                    </div>
-                                {/each}
-                            </div>
-                        {/if}
+                                        {/each} -->
+                                        </div>
+                                    {/each}
+                                </div>
+                            {/if}
+                        {/await}
                     </div>
                 </div>
             </div>
