@@ -4,7 +4,7 @@ import { getTicketSvg } from '../../../(utils)/get-ticket-svg.js';
 import type { TicketData } from '$routes/(init)/init/(utils)/tickets.js';
 import { appwriteInitServer } from '$routes/(init)/init/(utils)/appwrite.server.js';
 
-export async function GET({ params }) {
+export const GET = async ({ params }) => {
     const ticket = (await appwriteInitServer.databases.getDocument(
         APPWRITE_INIT_DB_ID,
         APPWRITE_INIT_COLLECTION_ID,
@@ -12,10 +12,13 @@ export async function GET({ params }) {
     )) as unknown as TicketData;
     const svg = await getTicketSvg({ ...ticket });
 
+    console.log(svg);
+
     const svgBuffer = Buffer.from(svg);
     const pngBuffer = await sharp(svgBuffer, {})
         .resize({
-            // width: 1000
+            width: 1200,
+            height: 630
         })
         .toFormat('png')
         .toBuffer();
@@ -25,4 +28,4 @@ export async function GET({ params }) {
             'Content-Type': 'image/png'
         }
     });
-}
+};

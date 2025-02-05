@@ -117,8 +117,7 @@
         >
             <div class="flex flex-col items-center gap-4 uppercase">
                 <TicketCard
-                    {name}
-                    {title}
+                    {...data.ticket}
                     avatar_url={data.ticket.avatar_url}
                     id={data.ticket.id}
                     contributions={getMockContributions()}

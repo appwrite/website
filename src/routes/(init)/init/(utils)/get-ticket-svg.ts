@@ -1,46 +1,10 @@
-import { getGithbubContributions, type ContributionsMatrix } from './contributions.server';
 import type { TicketData } from './tickets';
-
-type GetCubeArgs = {
-    week: number;
-    day: number;
-    level: number;
-};
 
 const getTicketNumber = (ticket: TicketData) => {
     return `#${ticket.id.toString().padStart(6, '0')}`;
 };
 
-const fill = '#FD366E';
-
-const getCube = ({ week, day, level }: GetCubeArgs) => {
-    const x = INITIAL_X + day * DIFF_X;
-    const y = INITIAL_Y - week * DIFF_Y;
-    const opacity = level / 4;
-
-    return `<rect opacity="${opacity === 0 ? '0.08' : opacity}" x="${x}" y="${y}" width="7.80023" height="7.80023" rx="1.95006" transform="rotate(-90 ${x} ${y})" fill="${fill}"/>`;
-};
-
-const INITIAL_X = 960.191;
-const INITIAL_Y = 632.822;
-const DIFF_Y = 11.651;
-const DIFF_X = 11.651;
-
-export async function getCubes(ticket: TicketData) {
-    if (!ticket.show_contributions) return [];
-    const matrix = ((await getGithbubContributions(ticket.$id)) ?? []) as ContributionsMatrix;
-
-    return matrix?.reduce((acc, week, w) => {
-        week.forEach((level, d) => {
-            acc.push(getCube({ week: w, day: d, level }));
-        });
-
-        return acc;
-    }, [] as string[]);
-}
-
 export const getTicketSvg = async (ticket: TicketData) => {
-    const cubes = await getCubes(ticket);
     const ticketNumber = getTicketNumber(ticket);
     const firstName = ticket.name.split(' ')[0];
 
@@ -87,7 +51,6 @@ ${ticket.title ? `<text transform="translate(91.251 308.795)" fill="white" fill-
 <path d="M1116.23 216.438C1132.23 216.438 1145.21 229.411 1145.21 245.413L1145.21 766.957C1145.21 782.959 1132.23 795.932 1116.23 795.932L902.542 795.932C886.54 795.932 873.568 782.959 873.568 766.957L873.568 245.413C873.568 229.411 886.54 216.438 902.542 216.438L1116.23 216.438Z" fill="black"/>
 <text transform="translate(931.515 230.926) rotate(90)" fill="white" fill-opacity="0.64" xml:space="preserve" style="white-space: pre" font-family="Aeonik Fono" font-size="21.731" letter-spacing="0em"><tspan x="0" y="21.9318">TICKET NUMBER: ${ticketNumber}</tspan></text>
 <text transform="translate(1096.31 230.926) rotate(90)" fill="white" xml:space="preserve" style="white-space: pre" font-family="Aeonik Fono" font-size="21.731" letter-spacing="0em"><tspan x="0" y="21.9318">INIT</tspan></text>
-${cubes?.join('')}
 <g filter="url(#filter7_f_819_219)">
 <path d="M1246.18 258.858L-122.325 1757C-162.391 1800.87 -161.696 1868.25 -120.734 1911.28C-75.4255 1958.87 0.764512 1957.96 44.9309 1909.31L1408.77 406.909C1453.14 358.027 1444.73 281.334 1390.82 243.228C1345.56 211.236 1283.56 217.936 1246.18 258.858Z" fill="url(#paint17_linear_819_219)"/>
 </g>
@@ -550,6 +513,5 @@ ${cubes?.join('')}
 </clipPath>
 </defs>
 </svg>
-
   `;
 };

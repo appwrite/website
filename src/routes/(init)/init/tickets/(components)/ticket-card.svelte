@@ -21,7 +21,7 @@
         }
     );
 
-    type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
+    type $$Props = Omit<TicketData, 'contributions'> & {
         disableEffects?: boolean;
         flipped?: boolean;
         stickerPack?: string[];
@@ -47,8 +47,6 @@
         if (disableEffects) return;
         flipped = !flipped;
     };
-
-    const ticketUrl = `https://appwrite.io/init/tickets/${id}`;
 
     interface TiltBounds {
         x: number;
@@ -162,7 +160,7 @@
         >
             <!-- front of the ticket -->
             <div class="absolute inset-1 flex flex-1 flex-col gap-1 backface-hidden">
-                <TicketUrl {id} />
+                <TicketUrl docId={rest.$id} {id} />
                 <div class="relative z-10 flex flex-1 flex-col rounded-xl bg-[#19191C] p-2">
                     <img
                         src="/images/logos/appwrite.svg"
@@ -210,7 +208,7 @@
             </div>
             <!-- back of the ticket -->
             <div class="absolute inset-1 z-10 flex rotate-y-180 flex-col gap-1 backface-hidden">
-                <TicketUrl {id} />
+                <TicketUrl docId={rest.$id} {id} />
                 <div class="relative z-10 flex flex-1 flex-col gap-1 rounded-xl bg-[#19191C] p-2">
                     <div class="relative grid flex-1 grid-cols-4 grid-rows-5">
                         {#if stickers && stickerPack}
@@ -239,7 +237,12 @@
                         class="border-offset mt-auto mb-0 rounded-md border-2 border-dashed bg-black p-2"
                     >
                         <div
-                            class="text-primary font-aeonik-fono text-x-micro border-offset mb-2 flex items-center justify-between border-b pb-1 uppercase"
+                            class={classNames(
+                                'text-primary font-aeonik-fono text-x-micro border-offset flex items-center justify-between uppercase',
+                                {
+                                    'mb-2 border-b pb-1': show_contributions
+                                }
+                            )}
                         >
                             <span>Launch Week <span class="text-accent">/</span> FEB X - X</span>
                             <span

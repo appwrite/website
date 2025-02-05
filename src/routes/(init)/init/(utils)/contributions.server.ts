@@ -27,7 +27,10 @@ export const getGithbubContributions = async (id: string) => {
     const res = await fetch(`https://github.com/users/${gh_user}/contributions`);
 
     const html = await res.text();
+    console.log('HTML received:', html.includes('ContributionCalendar-grid'));
     const root = parse(html);
+    console.log('Root parsed:', root.toString().includes('ContributionCalendar-grid'));
+
     const table = root.querySelector('table.ContributionCalendar-grid');
 
     if (!table) return null;
