@@ -17,7 +17,7 @@
     import Optimized from './(components)/Optimized.svelte';
 
     const title = 'Storage' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description = "Get to know Appwrite Storage - our robust infrastructure allows you to store, optimize and encrypt all of your project files in one place.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
