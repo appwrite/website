@@ -33,7 +33,6 @@
         id,
         title,
         contributions,
-        show_contributions,
         avatar_url,
         flipped = false,
         disableEffects = false,
@@ -237,12 +236,7 @@
                         class="border-offset mt-auto mb-0 rounded-md border-2 border-dashed bg-black p-2"
                     >
                         <div
-                            class={classNames(
-                                'text-primary font-aeonik-fono text-x-micro border-offset flex items-center justify-between uppercase',
-                                {
-                                    'mb-2 border-b pb-1': show_contributions
-                                }
-                            )}
+                            class="text-primary font-aeonik-fono text-x-micro border-offset flex items-center justify-between uppercase"
                         >
                             <span>Launch Week <span class="text-accent">/</span> FEB X - X</span>
                             <span
@@ -252,7 +246,7 @@
                             >
                         </div>
                         {#await contributions then c}
-                            {#if c && show_contributions}
+                            {#if c}
                                 <div
                                     class="flex w-full flex-wrap gap-0.5"
                                     out:fade={{ duration: 100 }}

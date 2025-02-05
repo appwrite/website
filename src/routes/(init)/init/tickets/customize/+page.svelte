@@ -15,8 +15,6 @@
     let name = originalName.split(' ')[0];
     let originalTitle = data.ticket?.title ?? '';
     let title = originalTitle;
-    let originalShowGitHub = data.ticket?.show_contributions ?? true;
-    let showGitHub = originalShowGitHub;
     let originalStickers = data.ticket.stickers;
     let stickers = originalStickers?.join(',');
 
@@ -24,10 +22,9 @@
         {
             name: originalName,
             title: originalTitle,
-            stickers: originalStickers,
-            showGitHub: originalShowGitHub
+            stickers: originalStickers
         },
-        { name, title, showGitHub, stickers }
+        { name, title, stickers }
     );
 
     const stickerPack = [Globe, Github, Avatar, Globe, Globe, Globe];
