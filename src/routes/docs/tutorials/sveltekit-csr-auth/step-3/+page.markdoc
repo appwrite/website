@@ -39,7 +39,7 @@ export const appwrite = {
 For example, your `.env` might look something similar to this.
 
 ```env
-PUBLIC_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+PUBLIC_APPWRITE_ENDPOINT=https://<REGION>.cloud.appwrite.io/v1
 PUBLIC_APPWRITE_PROJECT=642sdddf85b440dc7e5bf
 ```
 

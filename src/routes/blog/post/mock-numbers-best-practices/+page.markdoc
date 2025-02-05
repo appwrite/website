@@ -64,7 +64,7 @@ import { Client, Account } from 'appwrite'
 
 // Initialize Appwrite client
 const client = new Client()
-client.setEndpoint('https://cloud.appwrite.io/v1').setProject('<PROJECT_ID>')
+client.setEndpoint('https://<REGION>.cloud.appwrite.io/v1').setProject('<PROJECT_ID>')
 
 // Initialize Account
 const account = new Account(client)
