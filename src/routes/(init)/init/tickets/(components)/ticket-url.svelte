@@ -1,9 +1,9 @@
 <script lang="ts">
     export let id: number;
-    export let docId: string;
+    export let docId: string = '';
 
     const ticketUrl = `https://appwrite.io/init/tickets/${id}`;
-    const copyUrl = `https://appwrite.io/init/tickets/${docId}`;
+    const copyUrl = `https://appwrite.io/init/tickets/${docId ?? ''}`;
 </script>
 
 <div
@@ -19,7 +19,7 @@
     </svg>
     <div>
         <span class="line-clamp-1 w-fit">
-            {copyUrl}
+            {ticketUrl}
         </span>
     </div>
 

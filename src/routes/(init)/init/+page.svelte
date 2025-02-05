@@ -6,6 +6,7 @@
     import { addDays } from 'date-fns';
     import Day, { type DayProps } from './(components)/day.svelte';
     import Hero from './(components)/hero.svelte';
+    import Giveaway from './(components)/giveaway.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
@@ -153,3 +154,5 @@
         {/each}
     </div>
 {/if}
+
+<Giveaway />

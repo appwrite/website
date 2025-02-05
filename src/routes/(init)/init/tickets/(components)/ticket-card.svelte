@@ -21,9 +21,10 @@
         }
     );
 
-    type $$Props = Omit<TicketData, 'contributions'> & {
+    type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
         disableEffects?: boolean;
         flipped?: boolean;
+        $id?: string;
         stickerPack?: string[];
         contributions?: NonNullable<ContributionsMatrix>[number];
     };
@@ -40,8 +41,6 @@
         stickerPack,
         ...rest
     } = $$props as $$Props;
-
-    console.log(contributions);
 
     const firstName = name?.split(' ')[0];
 
