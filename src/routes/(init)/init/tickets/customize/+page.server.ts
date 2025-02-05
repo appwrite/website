@@ -1,7 +1,7 @@
 import { redirect } from '@sveltejs/kit';
 
 import { getTicketDocByUser } from '../../(utils)/tickets';
-import { getTicketContributions } from '../../(utils)/contributions.server';
+import { getTicketContributions } from '../../(utils)/contributions';
 import { cookieKey, getInitUser, type GithubUser } from '../../(utils)/auth';
 import type { Actions } from './$types';
 import { zfd } from 'zod-form-data';
@@ -22,9 +22,7 @@ export const load = async () => {
     return {
         ticket,
         user,
-        streamed: {
-            contributions: getTicketContributions(ticket.$id)
-        }
+        contributions: await getTicketContributions(ticket.$id)
     };
 };
 

@@ -1,6 +1,6 @@
 import { getTicketDocById } from '../../(utils)/tickets';
 import { error } from '@sveltejs/kit';
-import { getTicketContributions } from '../../(utils)/contributions.server';
+import { getTicketContributions } from '../../(utils)/contributions';
 
 export const ssr = true;
 

@@ -129,7 +129,7 @@ export const getTicketDocById = async (id: string) => {
         APPWRITE_INIT_DB_ID,
         APPWRITE_INIT_COLLECTION_ID,
         id
-    )) as unknown as Omit<TicketData, 'contributions' | 'variant'>;
+    )) as unknown as Omit<TicketData, 'contributions'>;
 };
 
 export type TicketData = Pick<Models.Document, '$id'> & {

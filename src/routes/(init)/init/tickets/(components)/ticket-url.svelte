@@ -18,7 +18,7 @@
         />
     </svg>
     <div>
-        <span class="block">
+        <span class="line-clamp-1 w-fit">
             {copyUrl}
         </span>
     </div>

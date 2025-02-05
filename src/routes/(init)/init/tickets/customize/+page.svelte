@@ -1,7 +1,6 @@
 <script lang="ts">
     import { dequal } from 'dequal/lite';
-    import TicketCard, { stickersStore } from '../(components)/ticket-card.svelte';
-    import { getMockContributions } from '../../(utils)/contributions';
+    import TicketCard from '../(components)/ticket-card.svelte';
     import Window from '../../(components)/window.svelte';
     import Globe from '../../(assets)/stickers/sticker.svg';
     import Github from '../../(assets)/stickers/github.svg';
@@ -113,24 +112,11 @@
             class="bg-smooth col-span-9 flex w-full items-center justify-center gap-8 rounded-xl p-4 outline-2 [outline-offset:-2px] outline-[var(--color-offset)] outline-dashed"
         >
             <div class="flex flex-col items-center gap-4 uppercase">
-                <TicketCard
-                    {...data.ticket}
-                    avatar_url={data.ticket.avatar_url}
-                    id={data.ticket.id}
-                    contributions={getMockContributions()}
-                    disableEffects
-                />
+                <TicketCard {...data.ticket} disableEffects />
                 <span class="font-aeonik-fono tracking-loose text-x-micro text-primary">Front</span>
             </div>
             <div class="flex flex-col items-center gap-4 uppercase">
-                <TicketCard
-                    {...data.ticket}
-                    title={data.ticket.title}
-                    contributions={getMockContributions()}
-                    disableEffects
-                    flipped
-                    {stickerPack}
-                />
+                <TicketCard {...data.ticket} disableEffects flipped {stickerPack} />
                 <span class="font-aeonik-fono tracking-loose text-x-micro text-primary">Back</span>
             </div>
         </div>
