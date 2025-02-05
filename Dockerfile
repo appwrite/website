@@ -54,6 +54,7 @@ ENV PATH="$PNPM_HOME:$PATH"
 WORKDIR /app
 COPY package.json package.json
 COPY pnpm-lock.yaml pnpm-lock.yaml
+RUN npm i -g corepack@latest
 RUN corepack enable
 
 FROM base as build
