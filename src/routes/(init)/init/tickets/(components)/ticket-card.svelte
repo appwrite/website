@@ -26,7 +26,7 @@
         flipped?: boolean;
         $id?: string;
         stickerPack?: string[];
-        contributions?: NonNullable<ContributionsMatrix>[number];
+        contributions?: ContributionsMatrix;
     };
 
     export let {
@@ -250,15 +250,19 @@
 
                         {#if contributions?.length}
                             <div class="flex w-full flex-wrap gap-0.5" out:fade={{ duration: 100 }}>
-                                {#each contributions as value}
-                                    <div
-                                        class={classNames('size-1 rounded-[1px] bg-white', {
-                                            'opacity-25': value === 1,
-                                            'opacity-50': value === 2,
-                                            'opacity-75': value === 3,
-                                            'opacity-100': value === 4
-                                        })}
-                                    />
+                                {#each contributions as row}
+                                    <div class="flex gap-1">
+                                        {#each row as level}
+                                            <div
+                                                class={classNames('size-1 rounded-[1px] bg-white', {
+                                                    'opacity-25': level === 1,
+                                                    'opacity-50': level === 2,
+                                                    'opacity-75': level === 3,
+                                                    'opacity-100': level === 4
+                                                })}
+                                            />
+                                        {/each}
+                                    </div>
                                 {/each}
                             </div>
                         {/if}
