@@ -56,10 +56,6 @@ The Service and its original content (excluding Content provided by users), feat
 
 Notwithstanding any other provision of these Terms, to the maximum extent permitted by law, we may collect, generate, process, use, and/or publish Anonymous Information (defined below) relating to your and your users’ use of the Service, and/or disclose it, in order to provide, improve, and publicize the Service and our products and services, track general industry trends, develop and publish white papers, reports, and summaries, and for other legitimate business purposes, all without restriction or limitation of any kind. "Anonymous Information" means information that does not enable the identification of an individual, such as aggregated and analytics information. For clarity, Anonymous Information will not include any personally identifiable information, and Appwrite shall own all Anonymous Information collected or obtained by Appwrite.
 
-# Prohibited Use
-
-You agree not to use the Service for any unlawful or prohibited activities. This includes, but is not limited to:
-
 {% partial file="prohibited-activities.md" /%} 
 
 ## Prohibited Use of the SMS Messages Service
