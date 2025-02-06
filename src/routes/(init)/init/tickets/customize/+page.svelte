@@ -16,6 +16,7 @@
     let title = originalTitle;
     let originalSticker = data.ticket.sticker;
     let sticker = originalSticker;
+    let editing = false;
 
     $: modified = !dequal(
         {
@@ -27,7 +28,6 @@
     );
 
     const stickerPack = [Globe, Github, Avatar, Globe, Globe];
-    $: console.log(sticker, stickerPack[sticker ?? 0]);
 </script>
 
 <svelte:head>
@@ -57,6 +57,8 @@
                     >
                     <input
                         bind:value={name}
+                        on:focus={() => (editing = true)}
+                        on:blur={() => (editing = false)}
                         type="text"
                         name="name"
                         class="bg-smooth border-offset w-full appearance-none rounded-lg border p-2"
@@ -127,7 +129,7 @@
             class="bg-smooth relative col-span-9 flex w-full items-center justify-center gap-8 rounded-xl p-4 outline-2 [outline-offset:-2px] outline-[var(--color-offset)] outline-dashed"
         >
             <div class="flex flex-col items-center gap-4 uppercase">
-                <TicketCard {...data.ticket} disableEffects />
+                <TicketCard {...data.ticket} {name} {title} {editing} disableEffects />
                 <span class="font-aeonik-fono tracking-loose text-x-micro text-primary">Front</span>
             </div>
             <div class="flex flex-col items-center gap-4 uppercase">

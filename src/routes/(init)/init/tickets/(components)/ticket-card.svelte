@@ -20,6 +20,7 @@
         disableEffects?: boolean;
         flipped?: boolean;
         stickerPack?: string[];
+        editing?: boolean;
         contributions?: NonNullable<Awaited<Promise<ContributionsMatrix>>>[number];
     };
 
@@ -30,6 +31,7 @@
         contributions,
         avatar_url,
         flipped = false,
+        editing,
         disableEffects = false,
         sticker,
         stickerPack,
@@ -153,7 +155,11 @@
                         />
                         <div class="flex flex-col gap-1">
                             <h3 class="text-primary font-aeonik-pro -mb-2 text-[2rem]">
-                                {name}<span class="text-accent">_</span>
+                                {name}<span
+                                    class={classNames('text-accent', {
+                                        'animate-caret-blink': editing
+                                    })}>_</span
+                                >
                             </h3>
                             {#if title}
                                 <span
