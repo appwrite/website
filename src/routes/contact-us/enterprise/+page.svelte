@@ -51,7 +51,7 @@
     }
 
     const title = 'Enterprise' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description = "Want to learn more about Appwrite's Enterprise plan? Send us a message, and we'll propose a pricing solution that fits your unique use case.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
@@ -189,7 +189,7 @@
                                                         <option>5000+ employees</option>
                                                     </select>
                                                     <span
-                                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-2 right-2"
+                                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
                                                         aria-hidden="true"
                                                     />
                                                 </div>
