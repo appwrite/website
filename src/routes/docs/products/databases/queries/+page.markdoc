@@ -421,10 +421,10 @@ query {
 
 # Multiple Queries {% #multiple-queries %}
 
-When working with databases, you often need to combine multiple conditions to filter your data effectively. Appwrite provides several ways to create complex queries by combining conditions using AND and OR operations.
+When working with databases, you often need to combine multiple conditions to filter your data effectively. Appwrite provides several ways to create complex queries by combining conditions using `AND` and `OR` operations.
 
 ## Default AND behavior
-When you pass multiple queries to `listDocuments()`, they are automatically combined with AND logic. This means a document must match all the conditions to be included in the results. For example, to find movies titled either "Avatar" or "Lord of the Rings" that were released after 1999:
+When you pass multiple queries to `listDocuments()`, they are automatically combined with `AND` logic. This means a document must match all the conditions to be included in the results. For example, to find movies titled either "Avatar" or "Lord of the Rings" that were released after 1999:
 
 {% multicode %}
 ```client-web
@@ -479,7 +479,7 @@ val results = databases.listDocuments(
 ```
 {% /multicode %}
 
-In this example, the first query uses an array in `equal()` to match either title, creating an OR condition within that single query. The second query adds an AND condition requiring the year to be after 1999. The database will return documents where the title matches either "Avatar" OR "Lord of the Rings" AND the year is greater than 1999.
+In this example, the first query uses an array in `equal()` to match either title, creating an `OR` condition within that single query. The second query adds an `AND` condition requiring the year to be after 1999. The database will return documents where the title matches either "Avatar" OR "Lord of the Rings" AND the year is greater than 1999.
 
 ## Explicit AND Queries
 For more complex conditions, you can explicitly group multiple conditions using `Query.and()`. This can be used to make the `AND` logic more clear or when combining it with `OR` conditions. Here's an example to find active users between 18 and 65 years old:
@@ -708,4 +708,4 @@ val results = databases.listDocuments(
 ```
 {% /multicode %}
 
-This example demonstrates how to combine OR and AND operations. The first query uses `Query.or()` to match either category, while the second query uses `Query.and()` to ensure the price falls within the specified range. Since multiple queries are combined with AND logic by default, the database will return documents that match both the category condition AND the price condition.
+This example demonstrates how to combine `OR` and `AND` operations. The first query uses `Query.or()` to match either category, while the second query uses `Query.and()` to ensure the price falls within the specified range. Since multiple queries are combined with `AND` logic by default, the database will return documents that match both the category condition AND the price condition.
