@@ -296,11 +296,11 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 
 Queries are passed to an endpoint through the `queries` parameter as an array of query strings, which can be generated using the `Query` class.
 
-Each query method is logically separated via `AND` operations. For `OR` operation, pass multiple values into the query method separated by commas. 
+Each query method is logically separated via `AND` operations. For `OR` operation, pass multiple values into the query method separated by commas.
 For example `Query.equal('title', ['Avatar', 'Lord of the Rings'])` will fetch the movies `Avatar` or `Lord of the Rings`.
 
 {% info title="Default pagination behavior" %}
-By default, results are limited to the **first 25 items**. 
+By default, results are limited to the **first 25 items**.
 You can change this through [pagination](/docs/products/databases/pagination).
 {% /info %}
 
@@ -404,7 +404,7 @@ query {
     databasesListDocuments(
         databaseId: "<DATABASE_ID>",
         collectionId: "<COLLECTION_ID>"
-        queries: [ 
+        queries: [
             "{\"method\":\"equal\",\"attribute\":\"title\",\"values\":[\"Avatar\",\"Lord of the Rings\"]}",
             "{\"method\":\"greaterThan\",\"attribute\":\"year\",\"values\":[1999]}"
         ]
@@ -418,3 +418,294 @@ query {
 }
 ```
 {% /multicode %}
+
+# Multiple Queries {% #multiple-queries %}
+
+When working with databases, you often need to combine multiple conditions to filter your data effectively. Appwrite provides several ways to create complex queries by combining conditions using AND and OR operations.
+
+## Default AND behavior
+When you pass multiple queries to `listDocuments()`, they are automatically combined with AND logic. This means a document must match all the conditions to be included in the results. For example, to find movies titled either "Avatar" or "Lord of the Rings" that were released after 1999:
+
+{% multicode %}
+```client-web
+const results = await databases.listDocuments(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    [
+        Query.equal('title', ['Avatar', 'Lord of the Rings']),
+        Query.greaterThan('year', 1999)
+    ]
+);
+```
+```client-flutter
+final results = await databases.listDocuments(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    [
+        Query.equal('title', ['Avatar', 'Lord of the Rings']),
+        Query.greaterThan('year', 1999)
+    ]
+);
+```
+```client-python
+results = databases.list_documents(
+    database_id='<DATABASE_ID>',
+    collection_id='<COLLECTION_ID>',
+    queries=[
+        Query.equal('title', ['Avatar', 'Lord of the Rings']),
+        Query.greater_than('year', 1999)
+    ]
+)
+```
+```client-apple
+let results = try await databases.listDocuments(
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    queries: [
+        Query.equal("title", value: ["Avatar", "Lord of the Rings"]),
+        Query.greaterThan("year", value: 1999)
+    ]
+)
+```
+```client-kotlin
+val results = databases.listDocuments(
+    databaseId = '<DATABASE_ID>',
+    collectionId = '<COLLECTION_ID>',
+    queries = listOf(
+        Query.equal("title", listOf("Avatar", "Lord of the Rings")),
+        Query.greaterThan("year", 1999)
+    )
+)
+```
+{% /multicode %}
+
+In this example, the first query uses an array in `equal()` to match either title, creating an OR condition within that single query. The second query adds an AND condition requiring the year to be after 1999. The database will return documents where the title matches either "Avatar" OR "Lord of the Rings" AND the year is greater than 1999.
+
+## Explicit AND Queries
+For more complex conditions, you can explicitly group multiple conditions using `Query.and()`. This can be used to make the `AND` logic more clear or when combining it with `OR` conditions. Here's an example to find active users between 18 and 65 years old:
+
+{% multicode %}
+```client-web
+const results = await databases.listDocuments(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    [
+        Query.and([
+            Query.greaterThan('age', 18),
+            Query.lessThan('age', 65),
+            Query.equal('isActive', true)
+        ])
+    ]
+);
+```
+```client-flutter
+final results = await databases.listDocuments(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    [
+        Query.and([
+            Query.greaterThan('age', 18),
+            Query.lessThan('age', 65),
+            Query.equal('isActive', true)
+        ])
+    ]
+);
+```
+```client-python
+results = databases.list_documents(
+    database_id='<DATABASE_ID>',
+    collection_id='<COLLECTION_ID>',
+    queries=[
+        Query.and_queries([
+            Query.greater_than('age', 18),
+            Query.less_than('age', 65),
+            Query.equal('isActive', True)
+        ])
+    ]
+)
+```
+```client-apple
+let results = try await databases.listDocuments(
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    queries: [
+        Query.and([
+            Query.greaterThan("age", value: 18),
+            Query.lessThan("age", value: 65),
+            Query.equal("isActive", value: true)
+        ])
+    ]
+)
+```
+```client-kotlin
+val results = databases.listDocuments(
+    databaseId = '<DATABASE_ID>',
+    collectionId = '<COLLECTION_ID>',
+    queries = listOf(
+        Query.and(listOf(
+            Query.greaterThan("age", 18),
+            Query.lessThan("age", 65),
+            Query.equal("isActive", true)
+        ))
+    )
+)
+```
+{% /multicode %}
+
+The `Query.and()` method takes an array of queries and requires all conditions to be true. This example will return documents where the age is between 18 and 65 (exclusive) AND the user is active.
+
+## OR Queries
+Use `Query.or()` when you want to match documents that satisfy any of the specified conditions. For example, to find items in either the books or magazines category:
+
+{% multicode %}
+```client-web
+const results = await databases.listDocuments(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    [
+        Query.or([
+            Query.equal('category', 'books'),
+            Query.equal('category', 'magazines')
+        ])
+    ]
+);
+```
+```client-flutter
+final results = await databases.listDocuments(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    [
+        Query.or([
+            Query.equal('category', 'books'),
+            Query.equal('category', 'magazines')
+        ])
+    ]
+);
+```
+```client-python
+results = databases.list_documents(
+    database_id='<DATABASE_ID>',
+    collection_id='<COLLECTION_ID>',
+    queries=[
+        Query.or_queries([
+            Query.equal('category', 'books'),
+            Query.equal('category', 'magazines')
+        ])
+    ]
+)
+```
+```client-apple
+let results = try await databases.listDocuments(
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    queries: [
+        Query.or([
+            Query.equal("category", value: "books"),
+            Query.equal("category", value: "magazines")
+        ])
+    ]
+)
+```
+```client-kotlin
+val results = databases.listDocuments(
+    databaseId = '<DATABASE_ID>',
+    collectionId = '<COLLECTION_ID>',
+    queries = listOf(
+        Query.or(listOf(
+            Query.equal("category", "books"),
+            Query.equal("category", "magazines")
+        ))
+    )
+)
+```
+{% /multicode %}
+
+The `Query.or()` method takes an array of queries and matches documents that satisfy any of the conditions. This example will return documents where the category is either "books" OR "magazines".
+
+## Complex Queries
+You can create complex queries by combining AND and OR operations. For example, to find items in either the books or magazines category that are priced between $10 and $100:
+
+{% multicode %}
+```client-web
+const results = await databases.listDocuments(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    [
+        Query.or([
+            Query.equal('category', 'books'),
+            Query.equal('category', 'magazines')
+        ]),
+        Query.and([
+            Query.greaterThan('price', 10),
+            Query.lessThan('price', 100)
+        ])
+    ]
+);
+```
+```client-flutter
+final results = await databases.listDocuments(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    [
+        Query.or([
+            Query.equal('category', 'books'),
+            Query.equal('category', 'magazines')
+        ]),
+        Query.and([
+            Query.greaterThan('price', 10),
+            Query.lessThan('price', 100)
+        ])
+    ]
+);
+```
+```client-python
+results = databases.list_documents(
+    database_id='<DATABASE_ID>',
+    collection_id='<COLLECTION_ID>',
+    queries=[
+        Query.or_queries([
+            Query.equal('category', 'books'),
+            Query.equal('category', 'magazines')
+        ]),
+        Query.and_queries([
+            Query.greater_than('price', 10),
+            Query.less_than('price', 100)
+        ])
+    ]
+)
+```
+```client-apple
+let results = try await databases.listDocuments(
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    queries: [
+        Query.or([
+            Query.equal("category", value: "books"),
+            Query.equal("category", value: "magazines")
+        ]),
+        Query.and([
+            Query.greaterThan("price", value: 10),
+            Query.lessThan("price", value: 100)
+        ])
+    ]
+)
+```
+```client-kotlin
+val results = databases.listDocuments(
+    databaseId = '<DATABASE_ID>',
+    collectionId = '<COLLECTION_ID>',
+    queries = listOf(
+        Query.or(listOf(
+            Query.equal("category", "books"),
+            Query.equal("category", "magazines")
+        )),
+        Query.and(listOf(
+            Query.greaterThan("price", 10),
+            Query.lessThan("price", 100)
+        ))
+    )
+)
+```
+{% /multicode %}
+
+This example demonstrates how to combine OR and AND operations. The first query uses `Query.or()` to match either category, while the second query uses `Query.and()` to ensure the price falls within the specified range. Since multiple queries are combined with AND logic by default, the database will return documents that match both the category condition AND the price condition.
