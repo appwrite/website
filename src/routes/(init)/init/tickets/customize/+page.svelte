@@ -14,23 +14,20 @@
     let name = originalName.split(' ')[0];
     let originalTitle = data.ticket?.title ?? '';
     let title = originalTitle;
-    let originalStickers = data.ticket.stickers;
-    let stickers = originalStickers?.join(',');
+    let originalSticker = data.ticket.sticker;
+    let sticker = originalSticker;
 
     $: modified = !dequal(
         {
             name: originalName,
             title: originalTitle,
-            stickers: originalStickers
+            sticker: originalSticker
         },
-        { name, title, stickers }
+        { name, title, sticker }
     );
 
-    const stickerPack = [Globe, Github, Avatar, Globe, Globe, Globe];
-
-    // const updateStickers = () => {
-    //     stickersStore.set(stickers!.split(',').map((i) => parseInt(i)));
-    // };
+    const stickerPack = [Globe, Github, Avatar, Globe, Globe];
+    $: console.log(sticker, stickerPack[sticker ?? 0]);
 </script>
 
 <svelte:head>
@@ -87,19 +84,37 @@
                     <div
                         class="bg-smooth border-offset grid h-full flex-1 grid-cols-2 place-items-center gap-4 overflow-y-scroll rounded-lg border p-4"
                     >
-                        {#each stickerPack as sticker, i}
+                        <button
+                            class={classNames(
+                                'aspect-square w-full rounded-[1px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed',
+                                sticker === null
+                                    ? 'outline-white/50'
+                                    : 'outline-[var(--color-offset)]'
+                            )}
+                            on:click={() => (sticker = null)}
+                            type="button"
+                        >
                             <div
+                                class="bg-smooth text-tertiary font-aeonik-fono flex size-full items-center justify-center uppercase"
+                            >
+                                None
+                            </div>
+                        </button>
+                        {#each stickerPack as s, i}
+                            <button
                                 class={classNames(
                                     'aspect-square w-full rounded-[1px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed',
-                                    data.ticket.stickers?.includes(i)
-                                        ? 'outline-accent/50'
+                                    sticker === i
+                                        ? 'outline-white/50'
                                         : 'outline-[var(--color-offset)]'
                                 )}
+                                on:click={() => (sticker = i)}
+                                type="button"
                             >
                                 <div class="bg-smooth flex size-full items-center justify-center">
-                                    <img src={sticker} alt="Sticker" class="size-20" />
+                                    <img src={s} alt="Sticker" class="size-20" />
                                 </div>
-                            </div>
+                            </button>
                         {/each}
                     </div>
                 </div>
@@ -116,7 +131,7 @@
                 <span class="font-aeonik-fono tracking-loose text-x-micro text-primary">Front</span>
             </div>
             <div class="flex flex-col items-center gap-4 uppercase">
-                <TicketCard {...data.ticket} $id={'2'} disableEffects flipped {stickerPack} />
+                <TicketCard {...data.ticket} {sticker} disableEffects flipped {stickerPack} />
                 <span class="font-aeonik-fono tracking-loose text-x-micro text-primary">Back</span>
             </div>
         </div>

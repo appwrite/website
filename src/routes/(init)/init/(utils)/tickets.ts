@@ -140,7 +140,7 @@ export type TicketData = Pick<Models.Document, '$id'> & {
     avatar_url?: string;
     id: number;
     contributions?: number[];
-    stickers?: number[];
+    sticker?: number | null;
 };
 
 export type TicketDoc = Omit<TicketData, 'contributions'>;

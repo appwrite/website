@@ -158,6 +158,6 @@
             <Day {...day} {index} />
         {/each}
     </div>
-{/if}
 
-<Giveaway />
+    <Giveaway />
+{/if}

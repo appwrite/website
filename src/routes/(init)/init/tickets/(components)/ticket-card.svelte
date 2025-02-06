@@ -1,17 +1,12 @@
-<script lang="ts" context="module">
-    export const stickersStore = writable<Array<number>>([]);
-</script>
-
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import { writable } from 'svelte/store';
     import Lockup from '../../(components)/lockup.svelte';
     import type { ContributionsMatrix } from '../../(utils)/contributions';
     import type { TicketData } from '../../(utils)/tickets';
     import { spring } from 'svelte/motion';
-    import { onMount } from 'svelte';
     import TicketUrl from './ticket-url.svelte';
     import { fade } from 'svelte/transition';
+    import { initDates } from '../../+page.svelte';
 
     let coords = spring(
         { x: 0, y: 0 },
@@ -21,10 +16,9 @@
         }
     );
 
-    type $$Props = Omit<TicketData, '$id' | 'contributions'> & {
+    type $$Props = Omit<TicketData, 'contributions'> & {
         disableEffects?: boolean;
         flipped?: boolean;
-        $id?: string;
         stickerPack?: string[];
         contributions?: NonNullable<Awaited<Promise<ContributionsMatrix>>>[number];
     };
@@ -37,7 +31,7 @@
         avatar_url,
         flipped = false,
         disableEffects = false,
-        stickers,
+        sticker,
         stickerPack,
         ...rest
     } = $$props as $$Props;
@@ -120,27 +114,6 @@
             }
         };
     };
-
-    const getStickerPosition = (index: number) => {
-        switch (index) {
-            case 0:
-                return { column: 1, row: 2 };
-            case 1:
-                return { column: 4, row: 2 };
-            case 2:
-                return { column: 3, row: 3 };
-            case 3:
-                return { column: 1, row: 4 };
-            default:
-                return { column: 2, row: 5 };
-        }
-    };
-
-    onMount(() => {
-        if (!stickers) return;
-
-        stickersStore.set(stickers);
-    });
 </script>
 
 <button
@@ -161,7 +134,7 @@
         >
             <!-- front of the ticket -->
             <div class="absolute inset-1 flex flex-1 flex-col gap-1 backface-hidden">
-                <TicketUrl docId={rest.$id} {id} />
+                <TicketUrl docId={rest.$id} />
                 <div class="relative z-10 flex flex-1 flex-col rounded-xl bg-[#19191C] p-2">
                     <img
                         src="/images/logos/appwrite.svg"
@@ -194,7 +167,7 @@
                     <div
                         class="font-aeonik-fono border-offset text-x-micro relative z-10 flex items-center justify-between rounded-lg border-2 border-dashed bg-black p-2 uppercase"
                     >
-                        <span>Launch Week <span class="text-accent">/</span> FEB X - X</span>
+                        <span>Init / {initDates}</span>
                         <span
                             >Ticket <span class="text-accent">#</span>{id
                                 .toString()
@@ -209,29 +182,23 @@
             </div>
             <!-- back of the ticket -->
             <div class="absolute inset-1 z-10 flex rotate-y-180 flex-col gap-1 backface-hidden">
-                <TicketUrl docId={rest.$id} {id} />
+                <TicketUrl docId={rest.$id} />
                 <div class="relative z-10 flex flex-1 flex-col gap-1 rounded-xl bg-[#19191C] p-2">
-                    <div class="relative grid flex-1 grid-cols-4 grid-rows-5">
-                        {#if stickers && stickerPack}
-                            {#each stickers as sticker, i}
-                                {@const position = getStickerPosition(i)}
+                    <div class="relative flex-1">
+                        {#if sticker !== null && typeof sticker !== 'undefined' && stickerPack && sticker in stickerPack}
+                            <div
+                                class="flex aspect-square size-full items-stretch overflow-hidden rounded-[1px] border-black bg-black outline-2 [outline-offset:-1px] outline-[var(--color-offset)] outline-dashed"
+                            >
                                 <div
-                                    draggable="true"
-                                    class="flex aspect-square size-16 items-stretch overflow-hidden rounded-[1px] border-black bg-black outline-2 [outline-offset:-1px] outline-[var(--color-offset)] outline-dashed"
-                                    style:grid-column={position.column}
-                                    style:grid-row={position.row}
+                                    class="bg-smooth m-0.5 flex flex-1 items-center justify-center rounded-[1px] border border-white/32"
                                 >
-                                    <div
-                                        class="bg-smooth m-0.5 flex flex-1 items-center justify-center rounded-[1px] border border-white/32"
-                                    >
-                                        <img
-                                            src={stickerPack[sticker]}
-                                            alt="Sticker"
-                                            class="size-3/4"
-                                        />
-                                    </div>
+                                    <img
+                                        src={stickerPack[sticker]}
+                                        alt="Sticker"
+                                        class="size-3/4"
+                                    />
                                 </div>
-                            {/each}
+                            </div>
                         {/if}
                     </div>
                     <div
@@ -240,7 +207,7 @@
                         <div
                             class="text-primary font-aeonik-fono text-x-micro border-offset mb-2 flex items-center justify-between border-b pb-2 uppercase"
                         >
-                            <span>Launch Week <span class="text-accent">/</span> FEB X - X</span>
+                            <span>Init / {initDates}</span>
                             <span
                                 >Ticket <span class="text-accent">#</span>{id
                                     .toString()
