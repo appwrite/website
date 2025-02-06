@@ -467,7 +467,7 @@ let results = try await databases.listDocuments(
     ]
 )
 ```
-```client-kotlin
+```kotlin
 val results = databases.listDocuments(
     databaseId = '<DATABASE_ID>',
     collectionId = '<COLLECTION_ID>',
@@ -537,7 +537,7 @@ let results = try await databases.listDocuments(
     ]
 )
 ```
-```client-kotlin
+```kotlin
 val results = databases.listDocuments(
     databaseId = '<DATABASE_ID>',
     collectionId = '<COLLECTION_ID>',
@@ -606,7 +606,7 @@ let results = try await databases.listDocuments(
     ]
 )
 ```
-```client-kotlin
+```kotlin
 val results = databases.listDocuments(
     databaseId = '<DATABASE_ID>',
     collectionId = '<COLLECTION_ID>',
@@ -690,7 +690,7 @@ let results = try await databases.listDocuments(
     ]
 )
 ```
-```client-kotlin
+```kotlin
 val results = databases.listDocuments(
     databaseId = '<DATABASE_ID>',
     collectionId = '<COLLECTION_ID>',
