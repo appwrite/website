@@ -91,15 +91,17 @@
         <div
             class="border-offset flex flex-col items-center justify-center border-x-2 border-dashed bg-black/24 py-8 md:col-span-6"
         >
-            <TicketCard {...data.ticket} />
+            <TicketCard copyable={false} {...data.ticket} />
 
             {#if data.isCurrentUsersTicket}
                 <nav class="mt-8 flex items-center gap-4">
-                    <a class="web-button is-secondary active:scale-98" href="/init/customize"
-                        >Customize ticket</a
+                    <a
+                        class="web-button is-secondary active:scale-98"
+                        href="/init/tickets/customize">Customize ticket</a
                     >
                     <button
                         class="text-primary flex cursor-pointer items-center gap-2 transition active:scale-98"
+                        on:click={copy}
                     >
                         <svg
                             width="21"
@@ -122,7 +124,12 @@
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
                             />
-                        </svg>Copy ticket URL</button
+                        </svg>
+                        {#if $copied}
+                            Copied
+                        {:else}
+                            Copy ticket URL
+                        {/if}</button
                     >
                 </nav>
             {/if}
