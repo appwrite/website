@@ -10,7 +10,8 @@ export type ContributionsMatrix = z.infer<typeof contributionsSchema>;
 
 export const getTicketContributions = async (id: string) => {
     try {
-        const matrix: ContributionsMatrix = [];
+        let matrix: ContributionsMatrix = [];
+
         const { gh_user, contributions } = (await appwriteInitServer.databases.getDocument(
             APPWRITE_INIT_DB_ID,
             APPWRITE_INIT_COLLECTION_ID,
@@ -19,38 +20,36 @@ export const getTicketContributions = async (id: string) => {
 
         if (!gh_user) return null;
 
-        // if contributions exist, push them into the matrix
         if (contributions?.length) {
-            for (let i = 0; i < contributions.length; i += 7) {
-                matrix.push(contributions.slice(i, i + 7));
-            }
+            // Create matrix from existing contributions
+            matrix = contributions.reduce((acc: number[][], curr: number, i: number) => {
+                if (i % 7 === 0) acc.push([]);
+                acc[acc.length - 1].push(curr);
+                return acc;
+            }, []);
 
             return await contributionsSchema.parseAsync(matrix);
         }
 
         const res = await fetch(`https://github.com/users/${gh_user}/contributions`);
-
         const html = await res.text();
         const root = new JSDOM(html);
-
         const table = root.window.document.querySelector('table.ContributionCalendar-grid');
 
         if (!table) return null;
 
         const rows = table.querySelectorAll('tbody tr');
         const maxCols = rows[0].querySelectorAll('[role="gridcell"]').length;
+        matrix = Array(maxCols)
+            .fill(null)
+            .map(() => []);
 
         for (let c = 0; c < maxCols; c++) {
-            matrix.push([]);
             for (let r = 0; r < rows.length; r++) {
-                const row = rows[r];
-                const cells = row.querySelectorAll('[role="gridcell"]');
+                const cells = rows[r].querySelectorAll('[role="gridcell"]');
                 if (c >= cells.length) continue;
-
-                const cell = cells[c];
-                matrix[c].push(Number(cell.getAttribute('data-level')));
+                matrix[c].push(Number(cells[c].getAttribute('data-level')));
             }
-
             matrix[c] = matrix[c].reverse();
         }
 
@@ -62,8 +61,6 @@ export const getTicketContributions = async (id: string) => {
                 contributions: matrix.flat()
             }
         );
-
-        console.log({ matrix: await contributionsSchema.parseAsync(matrix) });
 
         return await contributionsSchema.parseAsync(matrix);
     } catch (e) {

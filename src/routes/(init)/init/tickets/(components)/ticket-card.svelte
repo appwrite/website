@@ -26,7 +26,7 @@
         flipped?: boolean;
         $id?: string;
         stickerPack?: string[];
-        contributions?: Promise<ContributionsMatrix> | ContributionsMatrix;
+        contributions?: NonNullable<Awaited<Promise<ContributionsMatrix>>>[number];
     };
 
     export let {
@@ -254,10 +254,8 @@
                                     class="flex w-full flex-wrap gap-0.5"
                                     out:fade={{ duration: 100 }}
                                 >
-                                    {#each c as row}
+                                    {#each c as level}
                                         <div class="flex gap-1">
-                                            "{row}"
-                                            <!-- {#each row as level}
                                             <div
                                                 class={classNames('size-1 rounded-[1px] bg-white', {
                                                     'opacity-25': level === 1,
@@ -266,7 +264,6 @@
                                                     'opacity-100': level === 4
                                                 })}
                                             />
-                                        {/each} -->
                                         </div>
                                     {/each}
                                 </div>
