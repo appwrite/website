@@ -22,7 +22,7 @@
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
 
     const title = 'Startups' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description = "Get $20,000 in cloud credits to fulfill all your startup's backend needs. Apply for Appwrite's Startups Program today.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     let personName: string;
