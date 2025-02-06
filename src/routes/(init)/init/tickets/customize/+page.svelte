@@ -109,14 +109,14 @@
             </form>
         </div>
         <div
-            class="bg-smooth col-span-9 flex w-full items-center justify-center gap-8 rounded-xl p-4 outline-2 [outline-offset:-2px] outline-[var(--color-offset)] outline-dashed"
+            class="bg-smooth relative col-span-9 flex w-full items-center justify-center gap-8 rounded-xl p-4 outline-2 [outline-offset:-2px] outline-[var(--color-offset)] outline-dashed"
         >
             <div class="flex flex-col items-center gap-4 uppercase">
                 <TicketCard {...data.ticket} disableEffects />
                 <span class="font-aeonik-fono tracking-loose text-x-micro text-primary">Front</span>
             </div>
             <div class="flex flex-col items-center gap-4 uppercase">
-                <TicketCard {...data.ticket} disableEffects flipped {stickerPack} />
+                <TicketCard {...data.ticket} $id={'2'} disableEffects flipped {stickerPack} />
                 <span class="font-aeonik-fono tracking-loose text-x-micro text-primary">Back</span>
             </div>
         </div>
