@@ -12,8 +12,6 @@ export const GET = async ({ params }) => {
     )) as unknown as TicketData;
     const svg = await getTicketSvg({ ...ticket });
 
-    console.log(svg);
-
     const svgBuffer = Buffer.from(svg);
     const pngBuffer = await sharp(svgBuffer, {})
         .resize({
