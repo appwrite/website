@@ -8,6 +8,6 @@ export const load = async () => {
     if (!user.github) return;
 
     return {
-        claimed: !!user
+        claimed: !!user.github.email
     };
 };

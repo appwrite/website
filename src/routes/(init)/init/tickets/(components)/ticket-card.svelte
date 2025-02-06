@@ -172,14 +172,14 @@
                         <Lockup class="w-full" />
                     </div>
 
-                    <div class="mb-2 flex items-center gap-3 p-1 text-left">
+                    <div class="mb-2 flex items-center gap-4 p-1 text-left">
                         <img
                             src={avatar_url}
                             alt="{firstName}'s Avatar"
                             class="size-16 rounded outline-2 outline-offset-1 outline-[var(--color-offset)] outline-dashed"
                         />
                         <div class="flex flex-col gap-1">
-                            <h3 class="text-primary text-title">
+                            <h3 class="text-primary font-aeonik-pro -mb-2 text-[2rem]">
                                 {name}<span class="text-accent">_</span>
                             </h3>
                             {#if title}

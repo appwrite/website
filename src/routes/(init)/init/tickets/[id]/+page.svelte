@@ -1,7 +1,9 @@
 <script lang="ts">
     import { page } from '$app/stores';
+    import Spinner from '$lib/components/shared/spinner.svelte';
     import { createCopy } from '$lib/utils/copy';
     import TicketCard from '../(components)/ticket-card.svelte';
+    import { loginGithub } from '../../(utils)/github';
 
     export let data;
 
@@ -10,6 +12,13 @@
     const ogImage = `${$page.url.origin}/init/tickets/${data.ticket.$id}/og`;
 
     const { copied, copy } = createCopy($page.url.href);
+
+    let claiming: boolean = false;
+
+    const handleLogin = () => {
+        claiming = true;
+        loginGithub();
+    };
 </script>
 
 <svelte:head>
@@ -42,25 +51,81 @@
             <div class="row-span-2 h-full w-full px-8" />
             <div class="row-span-8 flex h-full w-full items-center px-12">
                 <div class="flex flex-1 flex-col gap-2">
-                    <h2 class="text-display text-primary">
-                        {data.ticket.name.split(' ')[0]}'s ticket
+                    <h2 class="text-display font-aeonik-pro text-primary">
+                        {#if data.isCurrentUsersTicket}
+                            Here's your Init ticket
+                        {:else}
+                            {data.ticket.name.split(' ')[0]}'s ticket
+                        {/if}
+                        <span class="text-display font-aeonik-pro text-primary"
+                            ><span class="text-accent">#</span>{id}</span
+                        >
                     </h2>
-                    <span class="text-display text-primary"
-                        ><span class="text-accent">#</span>{id}</span
-                    >
+
                     <p class="text-body text-secondary mt-2 font-medium">
                         Register today and claim your Init launch week ticket and get the chance to
                         win prizes.
                     </p>
-                    <button class="web-button mt-4">Register with GitHub</button>
+                    <div class="mt-4 flex items-center gap-4">
+                        {#if !data.isCurrentUsersTicket}
+                            <a class="web-button w-full!" href="/init">Go to Init</a>
+                        {:else}
+                            <button
+                                on:click={handleLogin}
+                                class="web-button flex w-1/2! items-center gap-4"
+                                disabled={claiming}
+                            >
+                                {#if claiming}
+                                    <Spinner />
+                                {:else}
+                                    <span class="web-icon-github text-primary" />
+                                {/if}Register with GitHub</button
+                            >
+                            <a href="/init" class="web-button is-secondary w-1/2!">Go to Init</a>
+                        {/if}
+                    </div>
                 </div>
             </div>
             <div class="row-span-2 h-full w-full px-8" />
         </div>
         <div
-            class="border-offset flex items-center justify-center border-x-2 border-dashed bg-black/24 py-8 md:col-span-6"
+            class="border-offset flex flex-col items-center justify-center border-x-2 border-dashed bg-black/24 py-8 md:col-span-6"
         >
             <TicketCard {...data.ticket} />
+
+            {#if data.isCurrentUsersTicket}
+                <nav class="mt-8 flex items-center gap-4">
+                    <a class="web-button is-secondary active:scale-98" href="/init/customize"
+                        >Customize ticket</a
+                    >
+                    <button
+                        class="text-primary flex cursor-pointer items-center gap-2 transition active:scale-98"
+                    >
+                        <svg
+                            width="21"
+                            height="20"
+                            viewBox="0 0 21 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M12.15 7H6.35C5.78995 7 5.50992 7 5.29601 7.10899C5.10785 7.20487 4.95487 7.35785 4.85899 7.54601C4.75 7.75992 4.75 8.03995 4.75 8.6V14.4C4.75 14.9601 4.75 15.2401 4.85899 15.454C4.95487 15.6422 5.10785 15.7951 5.29601 15.891C5.50992 16 5.78995 16 6.35 16H12.15C12.7101 16 12.9901 16 13.204 15.891C13.3922 15.7951 13.5451 15.6422 13.641 15.454C13.75 15.2401 13.75 14.9601 13.75 14.4V8.6C13.75 8.03995 13.75 7.75992 13.641 7.54601C13.5451 7.35785 13.3922 7.20487 13.204 7.10899C12.9901 7 12.7101 7 12.15 7Z"
+                                stroke="#E4E4E7"
+                                stroke-width="1.2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                            <path
+                                d="M7.75 5.125V5C7.75 4.44772 8.19772 4 8.75 4H15.75C16.3023 4 16.75 4.44772 16.75 5V12C16.75 12.5523 16.3023 13 15.75 13H15.625"
+                                stroke="#E4E4E7"
+                                stroke-width="1.2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>Copy ticket URL</button
+                    >
+                </nav>
+            {/if}
         </div>
     </div>
 </div>

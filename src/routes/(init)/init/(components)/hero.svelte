@@ -1,6 +1,7 @@
 <script lang="ts">
     import Spinner from '$lib/components/shared/spinner.svelte';
     import { loginGithub } from '../(utils)/github';
+    import { initDates } from '../+page.svelte';
 
     import Badge from './badge.svelte';
     import Lockup from './lockup.svelte';
@@ -14,8 +15,10 @@
     };
 </script>
 
-<div class="relative flex min-h-[80vh] flex-col items-center justify-center gap-8 py-20 px-8">
-    <Badge>LAUNCH WEEK 3 / FEB 12 - 17</Badge>
+<div
+    class="relative flex min-h-[50vh] flex-col items-center justify-center gap-8 py-20 px-8 md:min-h-[80vh]"
+>
+    <Badge>{initDates}</Badge>
     <div class="relative z-10 mx-auto md:w-1/2"><Lockup /></div>
     <div class="relative z-10 flex w-full max-w-lg flex-col items-center justify-center gap-8">
         <div class="text flex flex-col gap-4 [animation-delay:0.75s]">
@@ -23,7 +26,7 @@
                 Join us at Appwrite for another week of exciting new announcements and events.
             </p>
 
-            <nav class="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
+            <nav class="mt-4 flex w-full flex-col items-center justify-center gap-4 md:flex-row">
                 {#if claimed}
                     <a href="/init/tickets/customize" class="web-button flex items-center gap-2">
                         <svg
@@ -34,18 +37,24 @@
                             xmlns="http://www.w3.org/2000/svg"
                         >
                             <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M4.00037 2C2.8958 2 2.00037 2.89543 2.00037 4V15C2.00037 16.6569 3.34351 18 5.00037 18C6.65722 18 8.00037 16.6569 8.00037 15V4C8.00037 2.89543 7.10494 2 6.00037 2H4.00037ZM5.00037 16C5.55265 16 6.00037 15.5523 6.00037 15C6.00037 14.4477 5.55265 14 5.00037 14C4.44808 14 4.00037 14.4477 4.00037 15C4.00037 15.5523 4.44808 16 5.00037 16Z"
-                                fill="currentColor"
+                                d="M8.46377 5L5.6 5C5.03995 5 4.75992 5 4.54601 5.10899C4.35785 5.20487 4.20487 5.35785 4.10899 5.54601C4 5.75992 4 6.03995 4 6.6V14.4C4 14.9601 4 15.2401 4.10899 15.454C4.20487 15.6422 4.35785 15.7951 4.54601 15.891C4.75992 16 5.03995 16 5.6 16H13.4C13.9601 16 14.2401 16 14.454 15.891C14.6422 15.7951 14.7951 15.6422 14.891 15.454C15 15.2401 15 14.9601 15 14.4V11.6957"
+                                stroke="currentColor"
+                                stroke-width="1.2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
                             />
                             <path
-                                d="M10.0004 14.2426L14.8998 9.34308C15.6809 8.56203 15.6809 7.2957 14.8998 6.51465L13.4856 5.10043C12.7046 4.31939 11.4383 4.31939 10.6572 5.10043L10.0004 5.75728V14.2426Z"
-                                fill="currentColor"
+                                d="M12.99 4.18163C13.386 3.78562 13.584 3.58761 13.8123 3.51342C14.0132 3.44816 14.2295 3.44816 14.4304 3.51342C14.6587 3.58761 14.8567 3.78562 15.2527 4.18163L15.8184 4.74732C16.2144 5.14334 16.4124 5.34134 16.4866 5.56967C16.5519 5.77052 16.5519 5.98686 16.4866 6.18771C16.4124 6.41603 16.2144 6.61404 15.8184 7.01006L11.7615 11.0669C11.5886 11.2399 11.5021 11.3263 11.4012 11.3882C11.3117 11.443 11.2142 11.4834 11.1121 11.5079C10.9971 11.5355 10.8748 11.5355 10.6302 11.5355H10.0645C9.50443 11.5355 9.2244 11.5355 9.01049 11.4266C8.82233 11.3307 8.66935 11.1777 8.57348 10.9895C8.46448 10.7756 8.46448 10.4956 8.46448 9.93554V9.36986C8.46448 9.12527 8.46448 9.00297 8.49211 8.88788C8.51661 8.78585 8.55701 8.6883 8.61184 8.59883C8.67369 8.49791 8.76016 8.41144 8.93311 8.23849L12.99 4.18163Z"
+                                stroke="currentColor"
+                                stroke-width="1.2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
                             />
                             <path
-                                d="M16.0004 18H9.07141L15.0714 12H16.0004C17.105 12 18.0004 12.8954 18.0004 14V16C18.0004 17.1046 17.105 18 16.0004 18Z"
-                                fill="currentColor"
+                                d="M12 5L15 8"
+                                stroke="currentColor"
+                                stroke-width="1.2"
+                                stroke-linejoin="round"
                             />
                         </svg>Customize your ticket</a
                     >
@@ -62,8 +71,6 @@
                         {/if}Claim your ticket with GitHub</button
                     >
                 {/if}
-                <button class="web-button is-secondary !w-full md:!w-fit">Announcement video</button
-                >
             </nav>
         </div>
     </div>

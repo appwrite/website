@@ -6,7 +6,9 @@
 
 <div class="container grid min-h-[65vh] w-full grid-cols-1 place-items-center py-20 md:grid-cols-2">
     <div>
-        <h2 class="text-title text-primary mb-4">Get a ticket and enter<br /> our Init giveaway</h2>
+        <h2 class="text-title text-primary font-aeonik-pro mb-4">
+            Get a ticket and enter<br /> our Init giveaway
+        </h2>
         <p class="text-secondary text-body mb-8">
             Create, customize and share your ticket to get the chance to win exclusive Init swag.
         </p>
