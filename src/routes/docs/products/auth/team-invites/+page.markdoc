@@ -705,6 +705,9 @@ val isAdmin = membership?.roles?.contains("admin") ?: false
 ```
 {% /multicode %}
 
+See how to grant document and file access to team roles
+{% /arrow_link %}
+
 {% arrow_link href="/docs/products/auth/teams" %}
 Learn more about team management
 {% /arrow_link %}
