@@ -39,6 +39,10 @@
 </svelte:head>
 
 <Window class="container my-10">
+    <a href="/init" slot="link" class="flex gap-1 uppercase">
+        <span class="web-icon-chevron-left" />
+        Back</a
+    >
     <div slot="title" class="">Init Ticket<span class="text-accent">_</span></div>
     <div class="grid grid-cols-1 p-0.5 md:grid-cols-12">
         <div class="col-span-3 flex flex-col p-4">
