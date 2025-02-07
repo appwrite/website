@@ -67,7 +67,7 @@
                         win prizes.
                     </p>
                     <div class="mt-4 flex items-center gap-4">
-                        {#if !data.isCurrentUsersTicket}
+                        {#if data.isCurrentUsersTicket}
                             <a class="web-button w-full!" href="/init">Go to Init</a>
                         {:else}
                             <button
