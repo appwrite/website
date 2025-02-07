@@ -1,7 +1,7 @@
 ---
 layout: integration
 title: Phone auth with Twilio
-description: Authenticate users through OTPs in SMSes via Twilio
+description: Authenticate users via OTPs sent through SMS using Twilio
 date: 2024-07-30
 featured: false
 isPartner: true
