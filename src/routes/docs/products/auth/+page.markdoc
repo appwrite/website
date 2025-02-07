@@ -49,6 +49,9 @@ Implementing MFA to add extra layers of security to your app.
 {% /cards %}
 
 # Team management {% #team-management %}
+Appwrite Authentication lets you organize users into teams and control resource access at a group level.
+Create teams, manage memberships, and handle team-based permissions.
+
 {% cards %}
 {% cards_item href="/docs/products/auth/team-invites" title="Team invites" %}
 Manage team invites and memberships with client-side and server-side approaches.
