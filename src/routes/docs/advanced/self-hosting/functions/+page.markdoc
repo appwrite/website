@@ -133,6 +133,8 @@ You can also configure the maximum timeout that can be set on individual Appwrit
 
 # SSL certificates for Function domains {% #ssl-certificates %}
 
+Before setting up SSL certificates, ensure you have configured your DNS settings properly. You'll need to create a CNAME record that points your wildcard function domain (e.g. `*.functions.appwrite.myapp.com`) to your Appwrite domain.
+
 Appwrite does not handle certificates for function domains (e.g. `6772722a00331315adc3.functions.appwrite.myapp.com`)
 out of the box, since they require wildcard certificates.
 There are two ways to handle certificate generation.
