@@ -29,7 +29,7 @@ const teams = new Teams(client);
 
 // Create membership with email invite
 const membership = await teams.createMembership(
-    'team_id',
+    '<TEAM_ID>',
     ['developer'],     // roles
     'user@example.com' // email
 );
