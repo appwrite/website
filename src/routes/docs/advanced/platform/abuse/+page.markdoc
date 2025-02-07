@@ -9,9 +9,6 @@ Appwrite is committed to providing a fair, secure, and high-quality experience f
 {% partial file="prohibited-activities.md" /%}
 
 # Reporting Abuse {% #reporting-abuse %}
-We take abuse seriously and appreciate your help in keeping Appwrite a safe platform. If you observe or suspect any prohibited activity, please report it as soon as possible:
-
-- **Email:** [abuse@appwrite.io](mailto:abuse@appwrite.io)  
-- **Subject Line:** Provide a clear description such as “Reporting Abuse” or “Suspected Policy Violation.”
+If you observe or suspect any prohibited activity, please report it as soon as possible to [abuse@appwrite.io](mailto:abuse@appwrite.io).
 
 Please include any relevant details (e.g., specific URLs, project IDs, or screenshots) so that we can effectively investigate and address the issue. We will review each report confidentially and take any necessary actions, which may include account suspension, service termination, or referral to law enforcement.
