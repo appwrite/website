@@ -126,7 +126,6 @@
                     </a>
                 </div>
             </li>
-            <!-- TODO: @itznotabug/@thejessewinton - the URL and the event name needs to be checked. -->
             <li class="web-strip-plans-item web-strip-plans-container-query">
                 <div class="web-strip-plans-item-wrapper">
                     <div class="web-strip-plans-plan">
