@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Authentication
-description: Get started with Appwrite Authentication. Learn how to implement secure & robust user authentication, manage user identities, and more.
+description: Explore Appwrite's powerful authentication solutions. Learn how to implement secure user authentication, manage user identities, and enhance your application's security."
 back: /docs
 ---
 
@@ -46,9 +46,6 @@ Implement custom authentication methods like biometric and passkey login by gene
 {% cards_item href="/docs/products/auth/mfa" title="Multifactor authentication (MFA)" %}
 Implementing MFA to add extra layers of security to your app.
 {% /cards_item %}
-{% cards_item href="/docs/products/auth/team-invites" title="Team invites" %}
-Manage team invites and memberships with client-side and server-side approaches.
-{% /cards_item %}
 {% /cards %}
 
 # Flexible permissions {% #flexible-permissions %}
@@ -58,3 +55,10 @@ Appwrite Authentication provides permissions for individual users and groups of 
 # Built in preferences {% #built-in-preferences %}
 Appwrite Authentication comes with built-in [preferences](/docs/products/auth/accounts#preferences) for users to manage their account settings.
 Store notification settings, themes, and other user preferences to be shared across devices.
+
+# Team management {% #team-management %}
+{% cards %}
+{% cards_item href="/docs/products/auth/team-invites" title="Team invites" %}
+Manage team invites and memberships with client-side and server-side approaches.
+{% /cards_item %}
+{% /cards %}
