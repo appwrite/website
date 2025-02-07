@@ -28,7 +28,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.isNotNull("name")`          | Returns documents where attribute value is **not** null.                                                              |
 | `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
+| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if the array attribute contains the specified elements.                                                       |
 | `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
 | `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
@@ -56,7 +56,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query::isNotNull("name")`          | Returns documents where attribute value is **not** null.                                                              |
 | `Query::startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query::endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query::contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
+| `Query::contains("ingredients", ['apple', 'banana'])` | Returns documents if the array attribute contains the specified elements.                                                       |
 | `Query::contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
 | `Query::search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query::orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
@@ -84,7 +84,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.is_not_null("name")`          | Returns documents where attribute value is **not** null.                                                              |
 | `Query.starts_with("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query.ends_with("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
+| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if the array attribute contains the specified elements.                                                       |
 | `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
 | `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query.order_desc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
@@ -112,7 +112,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.is_not_null("name")`          | Returns documents where attribute value is **not** null.                                                              |
 | `Query.starts_with("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query.ends_with("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
+| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if the array attribute contains the specified elements.                                                       |
 | `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
 | `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query.order_desc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
@@ -140,7 +140,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.isNotNull("name")`          | Returns documents where attribute value is **not** null.                                                              |
 | `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
+| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if the array attribute contains the specified elements.                                                       |
 | `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
 | `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
@@ -168,7 +168,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.isNotNull("name")`          | Returns documents where attribute value is **not** null.                                                              |
 | `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
+| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if the array attribute contains the specified elements.                                                       |
 | `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
 | `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
@@ -196,7 +196,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.isNotNull("name")`          | Returns documents where attribute value is **not** null.                                                              |
 | `Query.startsWith("name", value: "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query.endsWith("name", value: "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query.contains("ingredients", value: ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
+| `Query.contains("ingredients", value: ['apple', 'banana'])` | Returns documents if the array attribute contains the specified elements.                                                       |
 | `Query.contains("name", value: "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
 | `Query.search("text", value: "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
@@ -224,7 +224,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.isNotNull("name")`          | Returns documents where attribute value is **not** null.                                                              |
 | `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
+| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if the array attribute contains the specified elements.                                                       |
 | `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
 | `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
@@ -252,7 +252,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.isNotNull("name")`          | Returns documents where attribute value is **not** null.                                                              |
 | `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
+| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if the array attribute contains the specified elements.                                                       |
 | `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
 | `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
@@ -280,7 +280,7 @@ Appwrite SDKs provide a `Query` class to help you build queries. The `Query` cla
 | `Query.isNotNull("name")`          | Returns documents where attribute value is **not** null.                                                              |
 | `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
 | `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
+| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if the array attribute contains the specified elements.                                                       |
 | `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
 | `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
 | `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
