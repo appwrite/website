@@ -20,6 +20,7 @@
     import PreReleaseCard from './pre-release-card.svelte';
     import Window from './window.svelte';
     import { classNames } from '$lib/utils/classnames';
+    import LinkCard from './link-card.svelte';
 
     export let release: DayProps['release'];
     export let illustration: DayProps['illustration'];
@@ -112,7 +113,10 @@
                     </div>
                 {/if}
 
-                <div class="flex h-32 items-center gap-4 px-8">Videos n shit</div>
+                <div class="flex h-48 items-center gap-8 px-8">
+                    <LinkCard href="/init" title="Discord stage" image="" icon="" />
+                    <LinkCard href="/init" title="Discord stage" image="" icon="" />
+                </div>
             </div>
         </Window>
     </div>

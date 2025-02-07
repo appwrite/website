@@ -13,10 +13,6 @@ export const load = async ({ params }) => {
         const userTicket = await getTicketDocByUser(user);
         const isCurrentUsersTicket = userTicket.$id === id;
 
-        console.log(user);
-
-        console.log('isCurrentUsersTicket', isCurrentUsersTicket);
-
         const ticket = await getTicketDocById(id);
 
         return {
