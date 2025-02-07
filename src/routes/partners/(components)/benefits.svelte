@@ -43,7 +43,7 @@
         {
             title: 'Discounts',
             description:
-                'Volume discounts are available in case you handle the bill for your clients.',
+                'Volume discounts are available for partners who manage billing on behalf of their clients.',
             icon: Discounts
         }
     ];
