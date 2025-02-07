@@ -88,7 +88,7 @@ val response = teams.createMembership(
 ## Accept invitations {% #accept-invitations %}
 
 For client-side email invites, users must accept the invitation to join the team. The acceptance flow:
-1. User receives an email with an invitation link
+1. User receives an email with an invitation link containing a secret token
 2. Clicking the link redirects to your app
 3. Your app calls the acceptance endpoint
 4. Upon success, the user gains immediate access
@@ -103,11 +103,12 @@ const client = new Client()
 
 const teams = new Teams(client);
 
-// Accept the invitation using the membership ID
+// Accept the invitation using the membership ID and secret
 const response = await teams.updateMembershipStatus(
     'team_id',
     'membership_id',
-    'user_id'
+    'user_id',
+    'secret'
 );
 ```
 ```client-flutter
@@ -119,11 +120,12 @@ final client = Client()
 
 final teams = Teams(client);
 
-// Accept the invitation using the membership ID
+// Accept the invitation using the membership ID and secret
 final response = await teams.updateMembershipStatus(
     teamId: 'team_id',
     membershipId: 'membership_id',
-    userId: 'user_id'
+    userId: 'user_id',
+    secret: 'secret'
 );
 ```
 ```client-apple
@@ -135,11 +137,12 @@ let client = Client()
 
 let teams = Teams(client)
 
-// Accept the invitation using the membership ID
+// Accept the invitation using the membership ID and secret
 let response = try await teams.updateMembershipStatus(
     teamId: "team_id",
     membershipId: "membership_id",
-    userId: "user_id"
+    userId: "user_id",
+    secret: "secret"
 )
 ```
 ```client-android-kotlin
@@ -152,11 +155,12 @@ val client = Client(context)
 
 val teams = Teams(client)
 
-// Accept the invitation using the membership ID
+// Accept the invitation using the membership ID and secret
 val response = teams.updateMembershipStatus(
     teamId = "team_id",
     membershipId = "membership_id",
-    userId = "user_id"
+    userId = "user_id",
+    secret = "secret"
 )
 ```
 {% /multicode %}
@@ -168,7 +172,6 @@ Server-side membership creation bypasses the email invitation process, allowing 
 2. Doesn't require user acceptance
 3. Gives you complete control over the invitation workflow
 
-Server-side flows give you complete control over the membership process.
 This makes them perfect for scenarios requiring custom workflows, such as bulk user management, automated team assignments, or integration with external systems.
 Since memberships are created directly, users gain immediate access without waiting for email acceptance.
 
