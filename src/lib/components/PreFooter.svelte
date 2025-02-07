@@ -151,7 +151,7 @@
                                 }
                             })}
                     >
-                        <span class="text">Contact us</span>
+                        <span class="text" style:padding-inline="0.5rem">Contact us</span>
                     </a>
                 </div>
             </li>
