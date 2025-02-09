@@ -3,13 +3,7 @@
 
     export const videoCtx = {
         get: () => {
-            return (
-                getContext<Dialog>(CTX_KEY) ??
-                createDialog({
-                    preventScroll: false,
-                    forceVisible: true
-                })
-            );
+            return getContext<Dialog>(CTX_KEY) ?? createDialog();
         },
         set: (dialog: Dialog) => {
             setContext(CTX_KEY, dialog);
