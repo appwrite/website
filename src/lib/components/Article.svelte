@@ -9,7 +9,26 @@
     export let timeToRead: number;
     export let author: string;
     export let avatar: string;
+
+    const articleSchema = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": title,
+      "image": [cover],
+      "datePublished": date.toISOString(),
+      "author": [{
+          "@type": "Person",
+          "name": author,
+          "url": avatar
+        }]
+    }
+
+    //would be good add a dateModified property as well
+
 </script>
+
+{@html `<script type="application/ld+json">${JSON.stringify(articleSchema)}</script>`}
+
 
 <li>
     <a class="web-grid-articles-item is-transparent" {href}>

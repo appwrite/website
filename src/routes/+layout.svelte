@@ -52,6 +52,7 @@
     import { derived, writable } from 'svelte/store';
     import { createSource, loggedIn } from '$lib/utils/console';
     import { beforeNavigate } from '$app/navigation';
+    $: canonicalUrl = String($page.url.origin) + String($page.url.pathname)
 
     function applyTheme(theme: Theme) {
         const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
@@ -120,6 +121,9 @@
     {#if !dev}
         <script defer data-domain="appwrite.io" src="https://plausible.io/js/script.js"></script>
     {/if}
+
+    <!-- canonical url -->
+  <link rel="canonical" href="{canonicalUrl}" />
 </svelte:head>
 
 <a class="skip" href="#main">Skip to content</a>

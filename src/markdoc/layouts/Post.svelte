@@ -6,7 +6,7 @@
     import { formatDate } from '$lib/utils/date';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import type { AuthorData, CategoryData, PostsData } from '$routes/blog/content';
-    import { BLOG_TITLE_SUFFIX } from '$routes/titles';
+    import { TITLE_SUFFIX } from '$routes/titles';
     import { getContext } from 'svelte';
     import { type SocialShareOption, socialSharingOptions } from '$lib/constants';
     import { copy } from '$lib/utils/copy';
@@ -45,6 +45,33 @@
         );
     }
 
+    const currentURL = 'https://appwrite.io' + String($page.url.pathname)
+
+    const breadcrumbsSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+
+    "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Blog",
+            "item": "https://appwrite.io/blog"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": category,
+            "item": `https://appwrite.io/blog?category=${category}`
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": title,
+            "item": currentURL
+        }
+        ]
+  };
+
     let readPercentage = 0;
 
     enum CopyStatus {
@@ -72,11 +99,16 @@
 
         return shareableLink;
     }
+
 </script>
+
+{#if category}
+{@html `<script type="application/ld+json">${JSON.stringify(breadcrumbsSchema)}</script>`}
+{/if}
 
 <svelte:head>
     <!-- Titles -->
-    <title>{title + BLOG_TITLE_SUFFIX}</title>
+    <title>{title + TITLE_SUFFIX}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
     <!-- Description -->

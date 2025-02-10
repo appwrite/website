@@ -60,6 +60,84 @@
             icon: '/images/icons/gradients/hipaa.svg'
         }
     ];
+
+    const organizationSchema = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": 'https://appwrite.io',
+      "sameAs": ["https://www.linkedin.com/company/appwrite", "https://github.com/appwrite/appwrite",'https://www.producthunt.com/products/appwrite', 'https://x.com/appwrite' ],
+      "name": "Appwrite",
+      "legalName": "Appwrite Code Ltd.",
+      "description": "TA secure open-source backend server provides the core APIs required to build web and mobile applications. Appwrite provides authentication, database, storage, functions, messaging, and advanced realtime capabilities.",
+        "logo": 'https://appwrite.io/assets/logotype/white.png',
+      //   "email": "support@appwrite.io",
+    //   "telephone": "+47-99-999-9999",
+    // foundingDate
+     
+    }
+
+    const softwareAppSchema = {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Appwrite",
+      "applicationCategory": 'Software development',
+      "featureList": "Authentication, Database, Storage, Functions, Messaging", 
+
+      "audience": {
+            "@type": "Audience",
+            "audienceType": "Developers"
+        },
+
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "bestRating": "5",
+        "ratingValue": "4.8",
+        "ratingCount": "74"
+    },
+
+    "review": [
+        {
+            "@type": "Review",
+
+                "author": {
+            "@type": "Person",
+            "name": "t4zzlerdeveloper"
+            },
+            
+            "datePublished": "2024-03-01",
+            "reviewBody": "Great Tool to quickly deploy applications without worrying about security and performance issues. The SDK are built really well and the documentation is exceptionally good!!",
+            "name": "Appwrite",
+            "reviewRating": {
+                "@type": "Rating",
+                "bestRating": "5",
+                "worstRating": "1",
+                "ratingValue": "5"
+            }
+        },
+
+        {
+            "@type": "Review",
+
+            "author": {
+            "@type": "Person",
+            "name": "Jason Torres"
+            },
+            
+            "datePublished": "2024-06-01",
+            "reviewBody": "Top tier when it comes to BaaS with a robust free tier!",
+            "name": "Appwrite",
+            "reviewRating": {
+                "@type": "Rating",
+                "bestRating": "5",
+                "worstRating": "1",
+                "ratingValue": "5"
+            }
+        },
+
+        
+    ]
+    }
+
 </script>
 
 <svelte:head>
@@ -78,6 +156,9 @@
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
+
+{@html `<script type="application/ld+json">${JSON.stringify(organizationSchema)}</script>`}
+{@html `<script type="application/ld+json">${JSON.stringify(softwareAppSchema)}</script>`}
 
 <div
     style:position="absolute"
