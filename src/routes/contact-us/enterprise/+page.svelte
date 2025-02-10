@@ -108,9 +108,9 @@
                                         </section>
                                     {:else}
                                         <section class="flex flex-col gap-5">
-                                            <h4 class="web-display web-u-color-text-primary">
+                                            <h1 class="web-display web-u-color-text-primary">
                                                 Enterprise Plan
-                                            </h4>
+                                            </h1>
                                             <p class="web-description">
                                                 Interested in a pricing solution that fits your
                                                 specific requirements? Let’s talk.
