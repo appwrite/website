@@ -133,7 +133,7 @@
                 {/if}
 
                 {#if links?.length}
-                    <div class="flex h-48 items-center gap-8 px-8">
+                    <div class="flex h-48 flex-col items-center gap-8 px-8 md:flex-row">
                         {#each links as link}
                             <MediaCard {...link} />
                         {/each}
