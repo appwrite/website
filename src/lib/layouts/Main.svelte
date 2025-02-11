@@ -43,6 +43,8 @@
         };
     }
 
+    const isSimpleGithub = $page.data.isSimplifiedGithubIcon;
+
     function isInViewport(element: Element): boolean {
         const mobileHeader = document.querySelector('.aw-mobile-header');
         const isMobile =
@@ -186,20 +188,6 @@
         class:is-special-padding={!BANNER_KEY.startsWith('init-banner-')}
         style={BANNER_KEY === 'init-banner-02' ? 'padding-inline: 0' : ''}
     >
-        <!-- {#if !$page.data.isStickyNav}
-            {#if BANNER_KEY.startsWith('init-banner-')}
-                <InitBanner />
-            {:else}
-                <AnnouncementBanner>
-                    <a href="/discord" target="_blank" rel="noopener noreferrer">
-                        <span class="text-caption font-medium">We are having lots of fun on</span>
-                        <span class="web-icon-discord" aria-hidden="true" />
-                        <span class="text-caption font-medium">Discord. Come and join us!</span>
-                    </a>
-                </AnnouncementBanner>
-            {/if}
-        {/if} -->
-
         <div
             class="web-main-header-wrapper"
             class:is-special-padding={BANNER_KEY.startsWith('init-banner-')}
@@ -223,22 +211,25 @@
                 </a>
                 <MainNav initialized={$initialized} links={navLinks} />
             </div>
+
             <div class="web-main-header-end">
-                <a
-                    href={GITHUB_REPO_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="web-button is-text web-u-inline-width-100-percent-mobile"
-                    on:click={() =>
-                        trackEvent({
-                            plausible: { name: 'Star on GitHub in header' },
-                            posthog: { name: 'github-stars_nav_click' }
-                        })}
-                >
-                    <span class="web-icon-star" aria-hidden="true" />
-                    <span class="text">Star on GitHub</span>
-                    <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
-                </a>
+                {#if !isSimpleGithub}
+                    <a
+                        href={GITHUB_REPO_LINK}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="web-button is-text web-u-inline-width-100-percent-mobile"
+                        on:click={() =>
+                            trackEvent({
+                                plausible: { name: 'Star on GitHub in header' },
+                                posthog: { name: 'github-stars_nav_click' }
+                            })}
+                    >
+                        <span class="web-icon-star" aria-hidden="true" />
+                        <span class="text">Star on GitHub</span>
+                        <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
+                    </a>
+                {/if}
                 <IsLoggedIn />
             </div>
         </div>

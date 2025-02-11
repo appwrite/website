@@ -22,17 +22,13 @@ export const load = async ({ request, getClientAddress }) => {
     };
 
     const distinctId = generateDistinctId(fingerprintData);
-    const ctaVariant = await posthogServerClient?.getFeatureFlag('cta-copy_ab-test', distinctId);
-
-    const ctaCopy =
-        ctaVariant === 'start-building_variant'
-            ? 'Start building'
-            : ctaVariant === 'start-for-free_variant'
-              ? 'Start for free'
-              : 'Get started';
+    const githubVariant = await posthogServerClient?.getFeatureFlag(
+        'simplified-github-icon',
+        distinctId
+    );
 
     return {
-        ctaCopy,
+        isSimplifiedGithubIcon: true,
         distinctId,
         changelogEntries: (await getAllChangelogEntries()).length
     };

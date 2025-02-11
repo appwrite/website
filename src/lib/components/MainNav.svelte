@@ -11,6 +11,9 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import type { ComponentType } from 'svelte';
+    import { page } from '$app/stores';
+    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
+    import { trackEvent } from '$lib/actions/analytics';
 
     export let initialized = false;
 
@@ -44,6 +47,24 @@
                 {/if}
             </li>
         {/each}
+        {#if $page.data.isSimplifiedGithubIcon}
+            <li class="text-primary hover:text-accent">
+                <a
+                    href={GITHUB_REPO_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-2"
+                    on:click={() =>
+                        trackEvent({
+                            plausible: { name: 'Star on GitHub in header' },
+                            posthog: { name: 'github-stars_nav_click' }
+                        })}
+                >
+                    <span class="web-icon-github" aria-hidden="true" />
+                    <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
+                </a>
+            </li>
+        {/if}
     </ul>
 </nav>
 
