@@ -20,9 +20,7 @@ Identities are primarily used in the following scenarios:
 2. **Account Management**: When users want to link or unlink external provider accounts
 3. **User Profile Consolidation**: When maintaining a single user profile across multiple authentication methods
 
-# Implementation guide {% #implementation-guide %}
-
-## Create new identities {% #create-new-identities %}
+# Create new identities {% #create-new-identities %}
 
 To create a new identity:
 
@@ -32,7 +30,7 @@ To create a new identity:
 
 For implementation details and code examples, refer to the [OAuth2 documentation](/docs/products/auth/oauth2).
 
-## Manage email addresses {% #manage-email-addresses %}
+# Manage email addresses {% #manage-email-addresses %}
 
 There are important rules regarding email addresses and identities:
 
@@ -41,7 +39,7 @@ There are important rules regarding email addresses and identities:
   - No other user can create an account with email `other@company.com`
   - No other user can create an identity with email `other@company.com`
 
-## List and delete identities {% #list-and-delete-identities %}
+# List and delete identities {% #list-and-delete-identities %}
 
 Users and administrators can manage identities through various operations available in the Account API:
 
