@@ -154,7 +154,7 @@
             </form>
         </div>
         <div
-            class="bg-smooth relative col-span-9 flex w-full items-center justify-center gap-8 rounded-xl p-4 outline-2 [outline-offset:-2px] outline-[var(--color-offset)] outline-dashed"
+            class="bg-smooth relative flex w-full flex-col items-center justify-center gap-8 rounded-xl p-4 outline-2 [outline-offset:-2px] outline-[var(--color-offset)] outline-dashed md:col-span-9 md:flex-row"
         >
             <div class="flex flex-col items-center gap-4 uppercase">
                 <TicketCard {...data.ticket} {name} {title} {editing} disableEffects />
