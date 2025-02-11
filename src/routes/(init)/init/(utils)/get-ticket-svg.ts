@@ -46,16 +46,13 @@ const convertImageToDataUri = async (name: string, avatarUrl?: string) => {
             throw new Error(`Failed to fetch image: ${response.statusText}`);
         }
 
-        // Check if the response is an image
         const contentType = response.headers.get('content-type');
         if (!contentType?.startsWith('image/')) {
             throw new Error('The URL did not return an image');
         }
 
-        // Get the buffer from the response
-        const buffer = await response.buffer();
-
-        // Convert buffer to base64 and create data URI
+        const arrayBuffer = await response.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
         const base64 = buffer.toString('base64');
         const dataUri = `data:${contentType};base64,${base64}`;
 
