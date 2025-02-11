@@ -52,7 +52,7 @@
     import { derived, writable } from 'svelte/store';
     import { createSource, loggedIn } from '$lib/utils/console';
     import { beforeNavigate } from '$app/navigation';
-    $: canonicalUrl = String($page.url.origin) + String($page.url.pathname)
+    $: canonicalUrl = $page.url.origin + $page.url.pathname
 
     function applyTheme(theme: Theme) {
         const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
@@ -123,7 +123,7 @@
     {/if}
 
     <!-- canonical url -->
-  <link rel="canonical" href="{canonicalUrl}" />
+  <link rel="canonical" href={canonicalUrl} />
 </svelte:head>
 
 <a class="skip" href="#main">Skip to content</a>

@@ -12,6 +12,7 @@
     import { copy } from '$lib/utils/copy';
     import { page } from '$app/stores';
     import CTA from '$lib/components/BlogCta.svelte';
+    import { createBreadcrumbsSchema } from '$lib/utils/metadata';
 
     export let title: string;
     export let description: string;
@@ -47,30 +48,13 @@
 
     const currentURL = 'https://appwrite.io' + String($page.url.pathname)
 
-    const breadcrumbsSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
+    const articleMetadata = {
+        title,
+        category, 
+        "url": currentURL
+    }
 
-    "itemListElement": [{
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Blog",
-            "item": "https://appwrite.io/blog"
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name": category,
-            "item": `https://appwrite.io/blog?category=${category}`
-        },
-        {
-            "@type": "ListItem",
-            "position": 3,
-            "name": title,
-            "item": currentURL
-        }
-        ]
-  };
+    const breadcrumbsSchema = JSON.stringify(createBreadcrumbsSchema(articleMetadata))
 
     let readPercentage = 0;
 
@@ -102,9 +86,6 @@
 
 </script>
 
-{#if category}
-{@html `<script type="application/ld+json">${JSON.stringify(breadcrumbsSchema)}</script>`}
-{/if}
 
 <svelte:head>
     <!-- Titles -->
@@ -121,6 +102,10 @@
     <meta property="og:image:height" content="630" />
     <meta name="twitter:image" content={DEFAULT_HOST + cover} />
     <meta name="twitter:card" content="summary_large_image" />
+
+    {#if category}
+        <script type="application/ld+json">{breadcrumbsSchema}</script>
+    {/if}
 </svelte:head>
 
 <Main>
