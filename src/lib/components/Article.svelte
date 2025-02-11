@@ -1,7 +1,8 @@
 <script lang="ts">
     import Media from '$lib/UI/Media.svelte';
     import { formatDate } from '$lib/utils/date';
-
+    import { createSchemaPost } from '$lib/utils/metadata';
+    
     export let title: string;
     export let cover: string;
     export let href: string;
@@ -10,24 +11,17 @@
     export let author: string;
     export let avatar: string;
 
-    const articleSchema = {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": title,
-      "image": [cover],
-      "datePublished": date.toISOString(),
-      "author": [{
-          "@type": "Person",
-          "name": author,
-          "url": avatar
-        }]
+    const postMetadata = {
+        title, cover, date, author, avatar
     }
 
-    //would be good add a dateModified property as well
+    const postSchema = JSON.stringify(createSchemaPost(postMetadata))
 
 </script>
 
-{@html `<script type="application/ld+json">${JSON.stringify(articleSchema)}</script>`}
+<svelte:head>
+    <script type="application/ld+json">{postSchema}</script>
+</svelte:head>
 
 
 <li>
