@@ -1,6 +1,5 @@
 <script lang="ts">
     import Tooltip from '$lib/components/Tooltip.svelte';
-    import { createCopy } from '$lib/utils/copy';
 
     export let docId: string;
     export let copyable: boolean = true;
