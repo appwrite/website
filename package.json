@@ -51,6 +51,7 @@
         "@types/markdown-it": "^13.0.9",
         "@types/morgan": "^1.9.9",
         "analytics": "^0.8.16",
+        "appwrite": "^17.0.0",
         "clsx": "^2.1.1",
         "cva": "npm:class-variance-authority@^0.7.1",
         "date-fns": "^3.6.0",
