@@ -28,7 +28,7 @@ export const load = async ({ request, getClientAddress }) => {
     );
 
     return {
-        isSimplifiedGithubIcon: true,
+        isSimplifiedGithubIcon: githubVariant === 'left_positioning',
         distinctId,
         changelogEntries: (await getAllChangelogEntries()).length
     };
