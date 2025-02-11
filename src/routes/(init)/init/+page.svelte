@@ -48,7 +48,16 @@
                 url: 'https://www.youtube.com/watch?v=31udvDQ5I4Y',
                 title: 'Announcement Video',
                 poster: Poster
-            }
+            },
+            links: [
+                {
+                    title: 'Product demo',
+                    type: 'video',
+                    poster: '',
+                    url: 'https://www.youtube-nocookie.com/embed/31udvDQ5I4Y'
+                },
+                { title: 'Discord Stage', type: 'discord', poster: '', url: 'https://discord.com' }
+            ]
         },
         {
             title: 'Feature',

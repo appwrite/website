@@ -16,7 +16,7 @@
             title: string;
             url: string;
             poster: string;
-            type: 'discord' | 'video';
+            type: 'discord' | 'video' | 'announcement';
         }>;
         announcementVideo?: {
             title: string;
@@ -77,7 +77,9 @@
                             {description}
                         </p>
                         {#if announcementVideo}
-                            <MediaCard {...announcementVideo} type="video" />
+                            <div class="mt-6">
+                                <MediaCard {...announcementVideo} type="announcement" />
+                            </div>
                         {:else}
                             <a href={url} class="text-primary group text-sub-body mt-12 flex gap-1"
                                 >Announcement

@@ -2,6 +2,8 @@
     import type { DayProps } from './day.svelte';
     import DiscordIcon from '../(assets)/icons/discord.svg';
     import PlayIcon from '../(assets)/icons/play.svg';
+    import Poster from '../(assets)/poster.png';
+    import VideoDialog from '$lib/components/shared/video-dialog.svelte';
 
     type $$Props = NonNullable<DayProps['links']>[number];
 
@@ -10,15 +12,37 @@
     const icon = type === 'discord' ? DiscordIcon : PlayIcon;
 </script>
 
-<a
-    href={url}
-    class="flex aspect-video w-full max-w-[190px] flex-col items-center rounded-md outline-2 outline-offset-3 outline-[var(--color-offset)] outline-dashed"
->
-    <div class="relative size-full rounded-lg bg-black">
-        <button class="bg-offset absolute bottom-2 left-2 size-10 rounded-full backdrop-blur-lg" />
-    </div>
-    <a href={url} target="_blank" rel="noopener noreferrer" class="flex flex-col items-center">
-        <img src={icon} alt={title} class="size-6" />
-    </a>
-    <h3 class="mt-2 text-lg font-bold">{title}</h3>
-</a>
+<div class="mt-2 w-fit min-w-[190px]">
+    {#if type === 'video' || type === 'announcement'}
+        <VideoDialog {url}>
+            <div
+                class="group relative flex aspect-video w-full max-w-[190px] cursor-pointer flex-col items-center rounded-md outline-2 outline-offset-3 outline-[var(--color-offset)] outline-dashed"
+            >
+                <img src={Poster} alt={title} class="absolute inset-0 object-cover" />
+
+                <div
+                    class="pointer-events-none absolute bottom-2 left-2 z-1 flex size-10 items-center justify-center rounded-full border border-white/5 bg-gradient-to-bl from-white/10 to-transparent backdrop-blur-lg transition group-hover:scale-105"
+                >
+                    <img src={icon} alt={title} class="size-5" />
+                </div>
+            </div>
+        </VideoDialog>
+    {:else}
+        <a
+            href={url}
+            target="_blank"
+            class="group relative flex aspect-video w-full max-w-[190px] flex-col items-center rounded-md outline-2 outline-offset-3 outline-[var(--color-offset)] outline-dashed"
+        >
+            <img src={Poster} alt={title} class="absolute inset-0 object-cover" />
+
+            <button
+                class="absolute bottom-2 left-2 z-1 flex size-10 items-center justify-center rounded-full border border-white/5 bg-gradient-to-bl from-white/10 to-transparent backdrop-blur-lg transition group-hover:scale-105"
+            >
+                <img src={icon} alt={title} class="size-6" /></button
+            >
+        </a>
+    {/if}
+    <h3 class="text-x-micro font-aeonik-fono text-primary tracking-loose mt-4 block uppercase">
+        {title}
+    </h3>
+</div>
