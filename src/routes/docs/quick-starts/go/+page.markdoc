@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Start with Go
-description: Dive into our step-by-step guide on integrating Appwrite with your Go server backend application. Get your backend up and running quickly with this tutorial.
+description: Integrating Appwrite with your Go backend application is a quick and simple process. Get your backend up and running with our step-by-step guide.
 difficulty: beginner
 readtime: 5
 back: /docs/quick-starts

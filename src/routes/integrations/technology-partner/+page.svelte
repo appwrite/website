@@ -6,8 +6,6 @@
     import MainFooter from '../../../lib/components/MainFooter.svelte';
     import { socials } from '$lib/constants';
     import { anyify } from '$lib/utils/anyify';
-    //import BlobPink from "$routes/startups/(assets)/blob-pink.svg";
-    // import BlobPinkMobile from "$routes/startups/(assets)/blob-pink-mobile.svg";
     import Pink from './bg.png';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
@@ -21,27 +19,29 @@
     let linkToDocumentation = '';
     let productUrl = '';
     let extraDetails = '';
-    let subject = '';
-    let message = '';
     let hasCreatedIntegration = false;
     let error: string | undefined;
     let submitted = false;
 
     async function handleSubmit() {
         error = undefined;
-        message = `Name of representative: ${name}\n\nWork Email: ${email}\n\nCompany Name: ${companyName}\n\nCompany Size: ${companySize}\n\nCompany Website: ${companyWebsite}\n\nIntegration status: ${integrationStatus}\n\nLink to Documentation: ${linkToDocumentation}\n\nLink to product/company assets: ${productUrl}\n\nDetails: ${extraDetails}`;
-        subject = `Technology Partner Application: ${companyName}`;
 
-        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback`, {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/conversations/technology-partner`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                name,
                 email,
-                firstName: name,
-                subject,
-                message,
+                companyName,
+                companySize,
+                companyWebsite,
+                integrationStatus,
+                integrationDocs:
+                    linkToDocumentation || 'N/A' /* fallback when integrationStatus is !== yes */,
+                brandAssets: productUrl,
+                extraDetails,
                 ...getReferrerAndUtmSource()
             })
         });
@@ -54,7 +54,7 @@
     }
 
     const title = 'Become a Technology Partner' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description = "Want to integrate your app with Appwrite's API? Apply to our Technology Partners program by filling a short form.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
@@ -205,7 +205,7 @@
 
                                                 <div class="relative">
                                                     <select
-                                                        class="web-input-text"
+                                                        class="web-input-text w-full appearance-none"
                                                         id="companySize"
                                                         bind:value={companySize}
                                                     >
@@ -219,7 +219,7 @@
                                                         <option>5000+ employees</option>
                                                     </select>
                                                     <span
-                                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-2 right-2"
+                                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
                                                         aria-hidden="true"
                                                     ></span>
                                                 </div>
@@ -248,7 +248,7 @@
                                                 >
                                                 <div class="relative">
                                                     <select
-                                                        class="web-input-text"
+                                                        class="web-input-text w-full appearance-none"
                                                         id="integration"
                                                         bind:value={integrationStatus}
                                                         on:change={(e) =>
@@ -270,7 +270,7 @@
                                                         >
                                                     </select>
                                                     <span
-                                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-2 right-2"
+                                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
                                                         aria-hidden="true"
                                                     ></span>
                                                 </div>

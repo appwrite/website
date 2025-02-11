@@ -12,17 +12,14 @@
     import { BANNER_KEY, GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';
-    import { hasNewChangelog } from '$routes/changelog/utils';
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
-    import { page } from '$app/stores';
     import ProductsSubmenu from '$lib/components/ProductsSubmenu.svelte';
     import ProductsMobileSubmenu from '$lib/components/ProductsMobileSubmenu.svelte';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import AnnouncementBanner from '$lib/components/AnnouncementBanner.svelte';
-    import InitBanner from '$lib/components/InitBanner.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import MainNav from '$lib/components/MainNav.svelte';
+    import { page } from '$app/stores';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -97,54 +94,21 @@
         return setupThemeObserver();
     });
 
-    $: navLinks = $page.data.isStickyNav
-        ? [
-              {
-                  label: 'Products',
-                  submenu: ProductsSubmenu,
-                  mobileSubmenu: ProductsMobileSubmenu
-              },
-              {
-                  label: 'Docs',
-                  href: '/docs'
-              },
-              {
-                  label: 'Pricing',
-                  href: '/pricing'
-              }
-          ]
-        : [
-              {
-                  label: 'Products',
-                  submenu: ProductsSubmenu,
-                  mobileSubmenu: ProductsMobileSubmenu
-              },
-              {
-                  label: 'Docs',
-                  href: '/docs'
-              },
-              {
-                  label: 'Community',
-                  href: '/community'
-              },
-              {
-                  label: 'Blog',
-                  href: '/blog'
-              },
-              {
-                  label: 'Integrations',
-                  href: '/integrations'
-              },
-              {
-                  label: 'Changelog',
-                  href: '/changelog',
-                  showBadge: hasNewChangelog?.() && !$page.url.pathname.includes('/changelog')
-              },
-              {
-                  label: 'Pricing',
-                  href: '/pricing'
-              }
-          ];
+    $: navLinks = [
+        {
+            label: 'Products',
+            submenu: ProductsSubmenu,
+            mobileSubmenu: ProductsMobileSubmenu
+        },
+        {
+            label: 'Docs',
+            href: '/docs'
+        },
+        {
+            label: 'Pricing',
+            href: '/pricing'
+        }
+    ];
 
     $: resolvedTheme = $isMobileNavOpen ? 'dark' : theme;
 
@@ -179,7 +143,6 @@
     <section
         class="web-mobile-header {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
-        class:is-hidden={$isHeaderHidden && !$page.data.isStickyNav}
     >
         <div class="web-mobile-header-start">
             <a href="/">
@@ -202,7 +165,7 @@
         <div class="web-mobile-header-end">
             {#if !$isMobileNavOpen}
                 <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button">
-                    <span class="text">Get started</span>
+                    <span class="text">Start building</span>
                 </a>
             {/if}
             <button
@@ -220,11 +183,10 @@
     </section>
     <header
         class="web-main-header is-special-padding {resolvedTheme} is-transparent"
-        class:is-hidden={$isHeaderHidden && !$page.data.isStickyNav}
         class:is-special-padding={!BANNER_KEY.startsWith('init-banner-')}
         style={BANNER_KEY === 'init-banner-02' ? 'padding-inline: 0' : ''}
     >
-        {#if !$page.data.isStickyNav}
+        <!-- {#if !$page.data.isStickyNav}
             {#if BANNER_KEY.startsWith('init-banner-')}
                 <InitBanner />
             {:else}
@@ -236,7 +198,7 @@
                     </a>
                 </AnnouncementBanner>
             {/if}
-        {/if}
+        {/if} -->
 
         <div
             class="web-main-header-wrapper"
