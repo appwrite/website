@@ -8,7 +8,7 @@
     import { buildOpenGraphImage } from '$lib/utils/metadata';
 
     import CountdownGrid from './(components)/countdown-grid.svelte';
-    import Domains from './(assets)/illustrations/domains.svg';
+    import Key from './(assets)/illustrations/key.svg';
     import { addDays, format } from 'date-fns';
     import Day, { type DayProps } from './(components)/day.svelte';
     import Hero from './(components)/hero.svelte';
@@ -24,11 +24,11 @@
 
     let days: Array<Omit<DayProps, 'index'>> = [
         {
-            title: 'Domains',
+            title: 'Feature',
             release: base,
-            illustration: Domains,
+            illustration: Key,
             description:
-                'A streamlined solution for easily deploying static and server-rendered applications, designed to simplify your workflow.',
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed lacus lectus. Nunc gravida arcu posuere odio sagittis, ac congue lacus placerat.',
             url: '/',
             content: [
                 { title: 'Serverless functions 101: best practices', url: '/', type: 'Blog' },
@@ -45,11 +45,11 @@
             ]
         },
         {
-            title: 'Sites',
+            title: 'Feature',
             release: addDays(base, 1),
-            illustration: Domains,
+            illustration: Key,
             description:
-                'A streamlined solution for easily deploying static and server-rendered applications, designed to simplify your workflow.',
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed lacus lectus. Nunc gravida arcu posuere odio sagittis, ac congue lacus placerat.',
             url: '/',
             content: [
                 { title: 'Serverless functions 101: best practices', url: '/', type: 'Blog' },
@@ -66,11 +66,11 @@
             ]
         },
         {
-            title: 'Domains',
+            title: 'Key',
             release: addDays(base, 2),
-            illustration: Domains,
+            illustration: Key,
             description:
-                'A streamlined solution for easily deploying static and server-rendered applications, designed to simplify your workflow.',
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed lacus lectus. Nunc gravida arcu posuere odio sagittis, ac congue lacus placerat.',
             url: '/',
             content: [
                 { title: 'Serverless functions 101: best practices', url: '/', type: 'Blog' },
@@ -87,11 +87,11 @@
             ]
         },
         {
-            title: 'Sites',
+            title: 'Feature',
             release: addDays(base, 3),
-            illustration: Domains,
+            illustration: Key,
             description:
-                'A streamlined solution for easily deploying static and server-rendered applications, designed to simplify your workflow.',
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed lacus lectus. Nunc gravida arcu posuere odio sagittis, ac congue lacus placerat.',
             url: '/',
             content: [
                 { title: 'Serverless functions 101: best practices', url: '/', type: 'Blog' },
@@ -108,11 +108,11 @@
             ]
         },
         {
-            title: 'Domains',
+            title: 'Feature',
             release: addDays(base, 4),
-            illustration: Domains,
+            illustration: Key,
             description:
-                'A streamlined solution for easily deploying static and server-rendered applications, designed to simplify your workflow.',
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed lacus lectus. Nunc gravida arcu posuere odio sagittis, ac congue lacus placerat.',
             url: '/',
             content: [
                 { title: 'Serverless functions 101: best practices', url: '/', type: 'Blog' },
