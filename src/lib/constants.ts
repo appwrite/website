@@ -1,4 +1,4 @@
-export const GITHUB_STARS = '45.1K';
+export const GITHUB_STARS = '47K';
 export const GITHUB_REPO_LINK = 'https://github.com/appwrite/appwrite';
 export const BANNER_KEY: Banners = 'discord-banner-01'; // Change key to force banner to show again
 export const SENTRY_DSN =
@@ -26,6 +26,60 @@ export type SocialShareOption = {
     link: string;
     type: 'link' | 'copy';
 };
+
+export type IntegrationCategory = {
+    slug: string;
+    heading: string;
+    description: string;
+};
+
+export const integrationCategoryDescriptions: IntegrationCategory[] = [
+    {
+        slug: 'ai',
+        heading: 'AI',
+        description: 'Machine learning and AI capabilities'
+    },
+    {
+        slug: 'auth',
+        heading: 'Auth',
+        description: 'User authentication and authorization'
+    },
+    {
+        slug: 'databases',
+        heading: 'Databases',
+        description: 'Manage database systems'
+    },
+    {
+        slug: 'logging',
+        heading: 'Logging',
+        description: 'Monitor and analyze application logs'
+    },
+    {
+        slug: 'messaging',
+        heading: 'Messaging',
+        description: 'Real-time communication platforms'
+    },
+    {
+        slug: 'payments',
+        heading: 'Payments',
+        description: 'Secure online payment processing'
+    },
+    {
+        slug: 'search',
+        heading: 'Search',
+        description: 'Implement search functionalities'
+    },
+    {
+        slug: 'storage',
+        heading: 'Storage',
+        description: 'Storage for data and media'
+    },
+    {
+        slug: 'deployments',
+        heading: 'Deployments',
+        description: 'Seamlessly deploy your code'
+    }
+];
 
 export const socialSharingOptions: Array<SocialShareOption> = [
     {
