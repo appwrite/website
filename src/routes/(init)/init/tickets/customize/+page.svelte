@@ -28,6 +28,20 @@
     );
 
     const stickerPack = [Globe, Github, Avatar, Globe, Globe];
+
+    const saveTicket = async () => {
+        await fetch('/init/tickets/customize/save', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name,
+                title,
+                sticker
+            })
+        });
+    };
 </script>
 
 <svelte:head>
