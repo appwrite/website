@@ -4,7 +4,7 @@ title: Identities
 description: Handle multiple authentication methods per user through a unified system that maintains consistent identity across providers.
 ---
 
-Identities in Appwrite enable linking multiple authentication methods to a single user account. This allows users to access a unified account through various OAuth2 providers.
+Identities enable linking multiple authentication methods to a single user account. This allows users to access a unified account through various OAuth2 providers.
 
 An identity is another way to refer to a user account. A single user can have multiple identities, each corresponding to different authentication methods. Currently, identities are primarily used with OAuth2 providers. When a user logs in via an OAuth2 provider, an identity is created and linked to their Appwrite account. This system enables:
 
