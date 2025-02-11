@@ -1,14 +1,48 @@
 import type { TicketData } from './tickets';
 import { initDates } from '../+page.svelte';
+import fetch from 'node-fetch';
 
 const getTicketNumber = (ticket: TicketData) => {
     return `${ticket.id.toString().padStart(6, '0')}`;
+};
+
+const convertImageToDataUri = async (imageUrl?: string) => {
+    if (!imageUrl) {
+        throw new Error('No image URL provided');
+    }
+
+    try {
+        // Fetch the image
+        const response = await fetch(imageUrl);
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch image: ${response.statusText}`);
+        }
+
+        // Check if the response is an image
+        const contentType = response.headers.get('content-type');
+        if (!contentType?.startsWith('image/')) {
+            throw new Error('The URL did not return an image');
+        }
+
+        // Get the buffer from the response
+        const buffer = await response.buffer();
+
+        // Convert buffer to base64 and create data URI
+        const base64 = buffer.toString('base64');
+        const dataUri = `data:${contentType};base64,${base64}`;
+
+        return dataUri;
+    } catch (error) {
+        throw new Error(`Error converting image to data URI: ${error}`);
+    }
 };
 
 export const getTicketSvg = async (ticket: TicketData) => {
     const ticketNumber = getTicketNumber(ticket);
     const firstName = ticket.name.split(' ')[0];
     const title = ticket.title?.toUpperCase();
+    const avatar = await convertImageToDataUri(ticket.avatar_url);
 
     return `
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -755,7 +789,8 @@ export const getTicketSvg = async (ticket: TicketData) => {
 <path d="M663.494 461.59C663.743 458.513 666.44 456.221 669.517 456.47L717.806 460.382C720.883 460.632 723.176 463.328 722.926 466.405L719.014 514.694C718.765 517.772 716.068 520.064 712.991 519.815L664.702 515.903C661.625 515.653 659.332 512.957 659.582 509.879L663.494 461.59Z" fill="black"/>
 <path d="M658.653 509.804C658.582 510.684 658.689 511.539 658.945 512.333L659.832 512.046C660.286 513.454 661.287 514.632 662.603 515.307L662.178 516.136C662.92 516.517 663.747 516.76 664.627 516.831L666.351 516.971L666.427 516.042L669.876 516.322L669.801 517.25L673.25 517.53L673.325 516.601L676.774 516.881L676.699 517.809L680.148 518.089L680.224 517.16L683.673 517.44L683.597 518.368L687.047 518.648L687.122 517.719L690.571 517.998L690.496 518.927L693.945 519.206L694.02 518.278L697.47 518.557L697.394 519.486L700.844 519.765L700.919 518.837L704.368 519.116L704.293 520.045L707.742 520.324L707.817 519.396L711.266 519.675L711.191 520.604L712.916 520.743C713.795 520.815 714.651 520.708 715.444 520.451L715.158 519.565C716.566 519.11 717.744 518.109 718.419 516.793L719.248 517.218C719.628 516.476 719.872 515.649 719.943 514.77L720.083 513.045L719.154 512.97L719.433 509.521L720.362 509.596L720.641 506.147L719.713 506.071L719.992 502.622L720.921 502.697L721.2 499.248L720.272 499.173L720.551 495.724L721.48 495.799L721.759 492.35L720.831 492.275L721.11 488.825L722.039 488.901L722.318 485.451L721.39 485.376L721.669 481.927L722.598 482.002L722.877 478.553L721.948 478.478L722.228 475.028L723.157 475.104L723.436 471.654L722.507 471.579L722.787 468.13L723.715 468.205L723.855 466.481C723.926 465.601 723.819 464.746 723.563 463.952L722.676 464.238C722.222 462.831 721.221 461.653 719.905 460.978L720.33 460.149C719.588 459.768 718.761 459.525 717.881 459.454L716.157 459.314L716.081 460.242L712.632 459.963L712.708 459.034L709.258 458.755L709.183 459.684L705.734 459.404L705.809 458.476L702.36 458.196L702.285 459.125L698.835 458.845L698.911 457.917L695.461 457.637L695.386 458.566L691.937 458.286L692.012 457.358L688.563 457.078L688.488 458.007L685.039 457.727L685.114 456.799L681.665 456.519L681.589 457.448L678.14 457.169L678.215 456.24L674.766 455.961L674.691 456.889L671.242 456.61L671.317 455.681L669.592 455.541C668.713 455.47 667.857 455.577 667.064 455.833L667.35 456.72C665.942 457.174 664.765 458.176 664.089 459.492L663.261 459.067C662.88 459.809 662.637 460.635 662.565 461.515L662.426 463.24L663.354 463.315L663.075 466.764L662.146 466.689L661.867 470.138L662.795 470.213L662.516 473.663L661.587 473.587L661.308 477.037L662.236 477.112L661.957 480.561L661.028 480.486L660.749 483.935L661.677 484.01L661.398 487.459L660.469 487.384L660.19 490.833L661.119 490.909L660.839 494.358L659.911 494.283L659.631 497.732L660.56 497.807L660.28 501.256L659.352 501.181L659.072 504.63L660.001 504.706L659.721 508.155L658.793 508.079L658.653 509.804Z" stroke="white" stroke-opacity="0.1" stroke-width="1.86335" stroke-dasharray="3.73 3.73"/>
 <g clip-path="url(#clip25_944_47339)">
-<rect x="665.652" y="458.026" width="55.9006" height="55.9006" rx="3.72671" transform="rotate(4.63184 665.652 458.026)" fill="#EDEDF0"/>
+<rect x="665.652" y="458.026" width="55.9006" height="55.9006" rx="3.72671" transform="rotate(4.63184 665.652 458.026)" fill="#EDEDF0" />
+${avatar ? `<image href="${avatar}" x="665.652" y="458.026" width="55.9006" height="55.9006" rx="3.72671" transform="rotate(4.63184 665.652 458.026)"/>` : ''}
 <g filter="url(#filter25_d_944_47339)">
 <rect x="647.305" y="453.735" width="98.7578" height="119.255" transform="rotate(4.63184 647.305 453.735)" fill="url(#pattern2_944_47339)" shape-rendering="crispEdges"/>
 </g>

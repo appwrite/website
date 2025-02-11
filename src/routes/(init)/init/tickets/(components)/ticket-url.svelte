@@ -65,5 +65,6 @@
             <span class="text-primary font-aeonik-fono text-micro uppercase" slot="tooltip">
                 Copy
             </span>
-        </Tooltip>{/if}
+        </Tooltip>
+    {/if}
 </div>
