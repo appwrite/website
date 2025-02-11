@@ -16,3 +16,4 @@ The following actions are prohibited on the Appwrite platform and may lead to im
 -   **Misuse of resources:**
     -   Using Appwrite Cloud for cryptocurrency mining without authorization
     -   Violating any applicable laws or regulations
+    -   Using the Education plan for non-educational or commercial purposes

@@ -54,7 +54,7 @@
                                 }
                             })}
                     >
-                        <span class="text">Get started</span>
+                        <span class="text" style:padding-inline="0.5rem">Get started</span>
                     </a>
                 </div>
             </li>
@@ -112,7 +112,7 @@
                     </p>
                     <a
                         href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=create&plan=tier-2`}
-                        class="web-button is-full-width-mobile web-u-cross-child-end"
+                        class="web-button is-secondary is-full-width-mobile web-u-cross-child-end"
                         target="_blank"
                         rel="noopener noreferrer"
                         on:click={() =>
@@ -140,8 +140,8 @@
                         For enterprises that need more power and premium support.
                     </p>
                     <a
-                        href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=create&plan=tier-2`}
-                        class="web-button is-full-width-mobile web-u-cross-child-end"
+                        href="/contact-us/enterprise"
+                        class="web-button is-secondary is-full-width-mobile web-u-cross-child-end"
                         target="_blank"
                         rel="noopener noreferrer"
                         on:click={() =>
@@ -151,7 +151,7 @@
                                 }
                             })}
                     >
-                        <span class="text">Start building</span>
+                        <span class="text" style:padding-inline="0.5rem">Contact us</span>
                     </a>
                 </div>
             </li>
