@@ -105,7 +105,7 @@
                     >
                         <div
                             class={classNames(
-                                'relative aspect-square w-full rounded-[1px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed',
+                                'relative aspect-square w-full rounded-[2px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed',
                                 sticker === null
                                     ? 'outline-white/50'
                                     : 'outline-[var(--color-offset)]'
@@ -119,7 +119,7 @@
                                 on:click={() => (sticker = null)}
                             />
                             <div
-                                class="bg-smooth text-tertiary font-aeonik-fono flex size-full items-center justify-center uppercase"
+                                class="bg-smooth text-tertiary font-aeonik-fono flex size-full items-center justify-center rounded-[2px] uppercase"
                             >
                                 None
                             </div>
@@ -128,7 +128,7 @@
                         {#each stickerPack as s, i}
                             <div
                                 class={classNames(
-                                    'relative aspect-square w-full rounded-[1px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed',
+                                    'relative aspect-square w-full rounded-[2px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed',
                                     sticker === i
                                         ? 'outline-white/50'
                                         : 'outline-[var(--color-offset)]'
@@ -141,7 +141,9 @@
                                     value={i}
                                     on:click={() => (sticker = i)}
                                 />
-                                <div class="bg-smooth flex size-full items-center justify-center">
+                                <div
+                                    class="bg-smooth flex size-full items-center justify-center rounded-[2px]"
+                                >
                                     <img src={s} alt="Sticker" class="size-20" />
                                 </div>
                             </div>
