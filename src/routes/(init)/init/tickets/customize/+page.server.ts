@@ -7,7 +7,7 @@ import type { Actions } from './$types';
 import { zfd } from 'zod-form-data';
 import { appwriteInit } from '../../(utils)/appwrite';
 import { appwriteInitServer } from '../../(utils)/appwrite.server';
-import { APPWRITE_INIT_COLLECTION_ID, APPWRITE_INIT_DB_ID } from '$env/static/private';
+import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
 import { Query } from 'node-appwrite';
 
 export const load = async () => {
@@ -57,8 +57,8 @@ export const actions = {
         const user = (await res.json()) as GithubUser;
 
         const documentsList = await appwriteInitServer.databases.listDocuments(
-            APPWRITE_INIT_DB_ID,
-            APPWRITE_INIT_COLLECTION_ID,
+            APPWRITE_DB_INIT_ID,
+            APPWRITE_COL_INIT_ID,
             [Query.equal('gh_user', user.login)]
         );
 
@@ -67,8 +67,8 @@ export const actions = {
         const document = documentsList.documents[0];
 
         await appwriteInitServer.databases.updateDocument(
-            APPWRITE_INIT_DB_ID,
-            APPWRITE_INIT_COLLECTION_ID,
+            APPWRITE_DB_INIT_ID,
+            APPWRITE_COL_INIT_ID,
             document.$id,
             {
                 ...data

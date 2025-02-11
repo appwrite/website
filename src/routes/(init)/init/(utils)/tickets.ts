@@ -1,4 +1,4 @@
-import { APPWRITE_INIT_DB_ID, APPWRITE_INIT_COLLECTION_ID } from '$env/static/private';
+import { APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID } from '$env/static/private';
 import { appwriteInitServer } from '../(utils)/appwrite.server';
 import { Query, ID, type Models } from 'appwrite';
 import type { User } from './auth';
@@ -37,15 +37,15 @@ export const getTicketDocByUser = async (user: User) => {
     const [githubAccount, appwriteAccount] = await Promise.all([
         user.github?.login
             ? appwriteInitServer.databases.listDocuments(
-                  APPWRITE_INIT_DB_ID,
-                  APPWRITE_INIT_COLLECTION_ID,
+                  APPWRITE_DB_INIT_ID,
+                  APPWRITE_COL_INIT_ID,
                   [Query.equal('gh_user', user.github.login)]
               )
             : null,
         user.appwrite?.$id
             ? appwriteInitServer.databases.listDocuments(
-                  APPWRITE_INIT_DB_ID,
-                  APPWRITE_INIT_COLLECTION_ID,
+                  APPWRITE_DB_INIT_ID,
+                  APPWRITE_COL_INIT_ID,
                   [Query.equal('aw_email', user.appwrite.email)]
               )
             : null
@@ -54,13 +54,13 @@ export const getTicketDocByUser = async (user: User) => {
     if (!githubAccount?.total) {
         // if there is no github account doc, create one
         const allDocs = await appwriteInitServer.databases.listDocuments(
-            APPWRITE_INIT_DB_ID,
-            APPWRITE_INIT_COLLECTION_ID
+            APPWRITE_DB_INIT_ID,
+            APPWRITE_COL_INIT_ID
         );
 
         return (await appwriteInitServer.databases.createDocument(
-            APPWRITE_INIT_DB_ID,
-            APPWRITE_INIT_COLLECTION_ID,
+            APPWRITE_DB_INIT_ID,
+            APPWRITE_COL_INIT_ID,
             ID.unique(),
             {
                 aw_email: user.appwrite?.email ?? undefined,
@@ -85,8 +85,8 @@ export const getTicketDocByUser = async (user: User) => {
         // if the doc is missing either the GitHub or Appwrite user, add it
         if (!doc.gh_user || !doc.aw_email) {
             return (await appwriteInitServer.databases.updateDocument(
-                APPWRITE_INIT_DB_ID,
-                APPWRITE_INIT_COLLECTION_ID,
+                APPWRITE_DB_INIT_ID,
+                APPWRITE_COL_INIT_ID,
                 doc.$id,
                 {
                     gh_user: user.github?.login,
@@ -103,8 +103,8 @@ export const getTicketDocByUser = async (user: User) => {
     const newest = githubDoc.id > appwriteDoc.id ? githubDoc.$id : appwriteDoc.$id;
 
     await appwriteInitServer.databases.updateDocument(
-        APPWRITE_INIT_DB_ID,
-        APPWRITE_INIT_COLLECTION_ID,
+        APPWRITE_DB_INIT_ID,
+        APPWRITE_COL_INIT_ID,
         oldest,
         {
             gh_user: null,
@@ -113,8 +113,8 @@ export const getTicketDocByUser = async (user: User) => {
     );
 
     return (await appwriteInitServer.databases.updateDocument(
-        APPWRITE_INIT_DB_ID,
-        APPWRITE_INIT_COLLECTION_ID,
+        APPWRITE_DB_INIT_ID,
+        APPWRITE_COL_INIT_ID,
         newest,
         {
             gh_user: user.github?.login,
@@ -126,8 +126,8 @@ export const getTicketDocByUser = async (user: User) => {
 
 export const getTicketDocById = async (id: string) => {
     return (await appwriteInitServer.databases.getDocument(
-        APPWRITE_INIT_DB_ID,
-        APPWRITE_INIT_COLLECTION_ID,
+        APPWRITE_DB_INIT_ID,
+        APPWRITE_COL_INIT_ID,
         id
     )) as unknown as Omit<TicketData, 'contributions'>;
 };

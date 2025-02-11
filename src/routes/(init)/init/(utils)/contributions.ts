@@ -1,4 +1,4 @@
-import { APPWRITE_INIT_DB_ID, APPWRITE_INIT_COLLECTION_ID } from '$env/static/private';
+import { APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID } from '$env/static/private';
 import { JSDOM } from 'jsdom';
 
 import { appwriteInitServer } from './appwrite.server';
@@ -13,8 +13,8 @@ export const getTicketContributions = async (id: string) => {
         let matrix: ContributionsMatrix = [];
 
         const { gh_user, contributions } = (await appwriteInitServer.databases.getDocument(
-            APPWRITE_INIT_DB_ID,
-            APPWRITE_INIT_COLLECTION_ID,
+            APPWRITE_DB_INIT_ID,
+            APPWRITE_COL_INIT_ID,
             id
         )) as unknown as TicketData;
 
@@ -54,8 +54,8 @@ export const getTicketContributions = async (id: string) => {
         }
 
         await appwriteInitServer.databases.updateDocument(
-            APPWRITE_INIT_DB_ID,
-            APPWRITE_INIT_COLLECTION_ID,
+            APPWRITE_DB_INIT_ID,
+            APPWRITE_COL_INIT_ID,
             id,
             {
                 contributions: matrix.flat()
