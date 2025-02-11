@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-    const base = new Date('2025-02-24T13:00:00.000Z');
+    const base = new Date('2025-02-08T13:00:00.000Z');
 
     export const initDates = `${format(base, 'MMM d')} - ${format(addDays(base, 4), 'd')}`;
 </script>
@@ -8,6 +8,7 @@
     import { buildOpenGraphImage } from '$lib/utils/metadata';
 
     import CountdownGrid from './(components)/countdown-grid.svelte';
+    import Poster from './(assets)/poster.png';
     import Key from './(assets)/illustrations/key.svg';
     import { addDays, format } from 'date-fns';
     import Day, { type DayProps } from './(components)/day.svelte';
@@ -42,7 +43,12 @@
                     url: '/',
                     type: 'Docs'
                 }
-            ]
+            ],
+            announcementVideo: {
+                url: 'https://www.youtube.com/watch?v=31udvDQ5I4Y',
+                title: 'Announcement Video',
+                poster: Poster
+            }
         },
         {
             title: 'Feature',

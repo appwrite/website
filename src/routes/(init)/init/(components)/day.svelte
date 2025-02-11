@@ -12,6 +12,17 @@
             url: string;
             label?: string;
         }>;
+        links?: Array<{
+            title: string;
+            url: string;
+            poster: string;
+            type: 'discord' | 'video';
+        }>;
+        announcementVideo?: {
+            title: string;
+            url: string;
+            poster: string;
+        };
     };
 </script>
 
@@ -20,11 +31,13 @@
     import PreReleaseCard from './pre-release-card.svelte';
     import Window from './window.svelte';
     import { classNames } from '$lib/utils/classnames';
-    import LinkCard from './link-card.svelte';
+    import MediaCard from './media-card.svelte';
 
     export let release: DayProps['release'];
     export let illustration: DayProps['illustration'];
     export let content: DayProps['content'] = [];
+    export let announcementVideo: DayProps['announcementVideo'] = undefined;
+    export let links: DayProps['links'] = [];
     export let title: DayProps['title'];
     export let description: DayProps['description'];
     export let url: DayProps['url'];
@@ -63,12 +76,16 @@
                         <p class="text-secondary text-body max-w-sm font-medium">
                             {description}
                         </p>
-                        <a href={url} class="text-primary group text-sub-body mt-12 flex gap-1"
-                            >Announcement
-                            <span
-                                class="web-icon-arrow-right transition-transform group-hover:translate-x-0.5"
-                            />
-                        </a>
+                        {#if announcementVideo}
+                            <MediaCard {...announcementVideo} type="video" />
+                        {:else}
+                            <a href={url} class="text-primary group text-sub-body mt-12 flex gap-1"
+                                >Announcement
+                                <span
+                                    class="web-icon-arrow-right transition-transform group-hover:translate-x-0.5"
+                                />
+                            </a>
+                        {/if}
                     </div>
                     <div class="col-span-7 max-h-[50vh] overflow-hidden">
                         <img
@@ -78,7 +95,7 @@
                         />
                     </div>
                 </div>
-                {#if content && content.length}
+                {#if content?.length}
                     <div
                         class={classNames(
                             'divide-offset mt-10 divide-y-2 divide-dashed',
@@ -113,10 +130,13 @@
                     </div>
                 {/if}
 
-                <div class="flex h-48 items-center gap-8 px-8">
-                    <LinkCard href="/init" title="Discord stage" image="" icon="" />
-                    <LinkCard href="/init" title="Discord stage" image="" icon="" />
-                </div>
+                {#if links?.length}
+                    <div class="flex h-48 items-center gap-8 px-8">
+                        {#each links as link}
+                            <MediaCard {...link} />
+                        {/each}
+                    </div>
+                {/if}
             </div>
         </Window>
     </div>
