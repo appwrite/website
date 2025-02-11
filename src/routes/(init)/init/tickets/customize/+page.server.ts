@@ -31,7 +31,7 @@ export const load = async () => {
 const updateSchema = zfd.formData({
     name: zfd.text(),
     title: zfd.text(),
-    sticker: zfd.numeric()
+    sticker: zfd.text()
 });
 
 export const actions = {
@@ -71,7 +71,8 @@ export const actions = {
             APPWRITE_COL_INIT_ID,
             document.$id,
             {
-                ...data
+                ...data,
+                sticker: Number(data.sticker)
             }
         );
     }

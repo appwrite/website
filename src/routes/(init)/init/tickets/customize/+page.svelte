@@ -28,20 +28,6 @@
     );
 
     const stickerPack = [Globe, Github, Avatar, Globe, Globe];
-
-    const saveTicket = async () => {
-        await fetch('/init/tickets/customize/save', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name,
-                title,
-                sticker
-            })
-        });
-    };
 </script>
 
 <svelte:head>
@@ -66,7 +52,20 @@
                 Customize ticket
             </h3>
 
-            <form method="POST" class="mt-4 flex flex-1 flex-col gap-4" use:enhance>
+            <form
+                method="POST"
+                class="mt-4 flex flex-1 flex-col gap-4"
+                use:enhance={() => {
+                    return async ({ result, update }) => {
+                        if (result.type === 'success') {
+                            originalName = name;
+                            originalTitle = title;
+                            originalSticker = sticker;
+                        }
+                        update({ reset: false });
+                    };
+                }}
+            >
                 <div class="flex flex-col gap-2">
                     <label
                         for="name"
@@ -104,37 +103,48 @@
                     <div
                         class="bg-smooth border-offset grid h-full flex-1 grid-cols-2 place-items-center gap-4 overflow-y-scroll rounded-lg border p-4"
                     >
-                        <button
+                        <div
                             class={classNames(
-                                'aspect-square w-full rounded-[1px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed',
+                                'relative aspect-square w-full rounded-[1px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed',
                                 sticker === null
                                     ? 'outline-white/50'
                                     : 'outline-[var(--color-offset)]'
                             )}
-                            on:click={() => (sticker = null)}
-                            type="button"
                         >
+                            <input
+                                type="radio"
+                                class="absolute inset-0 appearance-none"
+                                name="sticker"
+                                value="0"
+                                on:click={() => (sticker = null)}
+                            />
                             <div
                                 class="bg-smooth text-tertiary font-aeonik-fono flex size-full items-center justify-center uppercase"
                             >
                                 None
                             </div>
-                        </button>
+                        </div>
+
                         {#each stickerPack as s, i}
-                            <button
+                            <div
                                 class={classNames(
-                                    'aspect-square w-full rounded-[1px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed',
+                                    'relative aspect-square w-full rounded-[1px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed',
                                     sticker === i
                                         ? 'outline-white/50'
                                         : 'outline-[var(--color-offset)]'
                                 )}
-                                on:click={() => (sticker = i)}
-                                type="button"
                             >
+                                <input
+                                    type="radio"
+                                    class="absolute inset-0 appearance-none"
+                                    name="sticker"
+                                    value={i}
+                                    on:click={() => (sticker = i)}
+                                />
                                 <div class="bg-smooth flex size-full items-center justify-center">
                                     <img src={s} alt="Sticker" class="size-20" />
                                 </div>
-                            </button>
+                            </div>
                         {/each}
                     </div>
                 </div>
