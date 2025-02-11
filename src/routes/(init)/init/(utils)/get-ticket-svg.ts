@@ -69,7 +69,7 @@ export const getTicketSvg = async (ticket: TicketData) => {
     const ticketNumber = getTicketNumber(ticket);
     const firstName = ticket.name.split(' ')[0];
     const title = ticket.title?.toUpperCase();
-    const avatar = await convertImageToDataUri(ticket.name);
+    const avatar = await convertImageToDataUri(ticket.name, ticket.avatar_url);
 
     return `
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
