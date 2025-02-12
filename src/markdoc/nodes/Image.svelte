@@ -93,8 +93,13 @@
 
     .overlay {
         inset: 0;
-        z-index: 25;
+        /* docs side nav have a z-index of 35 */
+        z-index: 36;
         position: fixed;
+        background-color: rgba(228, 228, 228, 0.98);
+    }
+
+    :global(.dark) .overlay {
         background-color: rgba(27, 27, 27, 0.98);
     }
 

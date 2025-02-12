@@ -1,5 +1,5 @@
-<script>
-    import Chat from '../(assets)/chat.png';
+<script lang="ts">
+    import CommunitySupportChat from '$lib/components/CommunitySupportChat.svelte';
 </script>
 
 <div class="container grid items-center gap-8 md:grid-cols-2">
@@ -20,5 +20,8 @@
             Join our Discord</a
         >
     </div>
-    <img src={Chat} alt="Chat" class="mx-auto" />
+
+    <div class="px-4">
+        <CommunitySupportChat />
+    </div>
 </div>
