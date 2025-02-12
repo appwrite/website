@@ -5,9 +5,9 @@ export const prerender = false;
 export const load = async () => {
     const user = await getInitUser();
 
-    if (!user.github) return;
+    if (!user.github?.login) return;
 
     return {
-        claimed: !!user.github
+        claimed: !!user.github?.login
     };
 };

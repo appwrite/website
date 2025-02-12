@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-    const base = new Date('2025-02-08T13:00:00.000Z');
+    const base = new Date('2025-02-10T13:00:00.000Z');
 
     export const initDates = `${format(base, 'MMM d')} - ${format(addDays(base, 4), 'd')}`;
 </script>
@@ -9,7 +9,11 @@
 
     import CountdownGrid from './(components)/countdown-grid.svelte';
     import Poster from './(assets)/poster.png';
-    import Key from './(assets)/illustrations/key.svg';
+    import Sites from './(assets)/illustrations/sites.svg';
+    import Flutter from './(assets)/illustrations/flutter.svg';
+    import Formats from './(assets)/illustrations/formats.svg';
+    import Templates from './(assets)/illustrations/templates.svg';
+    import Tokens from './(assets)/illustrations/tokens.svg';
     import { addDays, format } from 'date-fns';
     import Day, { type DayProps } from './(components)/day.svelte';
     import Hero from './(components)/hero.svelte';
@@ -27,7 +31,7 @@
         {
             title: 'Feature',
             release: base,
-            illustration: Key,
+            illustration: Sites,
             description:
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed lacus lectus. Nunc gravida arcu posuere odio sagittis, ac congue lacus placerat.',
             url: '/',
@@ -62,7 +66,7 @@
         {
             title: 'Feature',
             release: addDays(base, 1),
-            illustration: Key,
+            illustration: Flutter,
             description:
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed lacus lectus. Nunc gravida arcu posuere odio sagittis, ac congue lacus placerat.',
             url: '/',
@@ -83,7 +87,7 @@
         {
             title: 'Key',
             release: addDays(base, 2),
-            illustration: Key,
+            illustration: Templates,
             description:
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed lacus lectus. Nunc gravida arcu posuere odio sagittis, ac congue lacus placerat.',
             url: '/',
@@ -104,7 +108,7 @@
         {
             title: 'Feature',
             release: addDays(base, 3),
-            illustration: Key,
+            illustration: Formats,
             description:
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed lacus lectus. Nunc gravida arcu posuere odio sagittis, ac congue lacus placerat.',
             url: '/',
@@ -125,7 +129,7 @@
         {
             title: 'Feature',
             release: addDays(base, 4),
-            illustration: Key,
+            illustration: Tokens,
             description:
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed lacus lectus. Nunc gravida arcu posuere odio sagittis, ac congue lacus placerat.',
             url: '/',
@@ -169,7 +173,8 @@
     <CountdownGrid {days} />
 
     <div class="container w-full py-20">
-        {#each days as day, index}
+        {#each days as day, i}
+            {@const index = i + 1}
             <Day {...day} {index} />
         {/each}
     </div>

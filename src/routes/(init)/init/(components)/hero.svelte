@@ -1,5 +1,7 @@
 <script lang="ts">
     import Spinner from '$lib/components/shared/spinner.svelte';
+    import VideoDialog from '$lib/components/shared/video-dialog.svelte';
+    import { classNames } from '$lib/utils/classnames';
     import { loginGithub } from '../(utils)/github';
     import { initDates } from '../+page.svelte';
 
@@ -16,10 +18,14 @@
 </script>
 
 <div
-    class="relative flex min-h-[50vh] flex-col items-center justify-center gap-8 py-20 px-8 md:min-h-[80vh]"
+    class={classNames(
+        'container relative -mb-10 flex min-h-[50vh] w-full flex-col items-center justify-center gap-8 py-20 px-0 md:min-h-[80vh]',
+        'before:border-offset before:absolute before:inset-0 before:z-0 before:border-r-2 before:border-l-2 before:border-dashed',
+        'before:[mask-image:linear-gradient(to_top,transparent,black_150px,black_calc(100%_-_150px),black)]'
+    )}
 >
     <Badge>{initDates}</Badge>
-    <div class="relative z-10 mx-auto md:w-1/2"><Lockup /></div>
+    <div class="relative z-10 mx-auto w-5/8"><Lockup /></div>
     <div class="relative z-10 flex w-full max-w-lg flex-col items-center justify-center gap-8">
         <div class="text flex flex-col gap-4 [animation-delay:0.75s]">
             <p class="text-description text-secondary block max-w-lg text-center">
@@ -68,9 +74,14 @@
                             <Spinner />
                         {:else}
                             <span class="web-icon-github text-primary" />
-                        {/if}Claim your ticket with GitHub</button
+                        {/if}Claim your ticket</button
                     >
                 {/if}
+                <VideoDialog url="/">
+                    <button class="web-button is-secondary flex items-center gap-4">
+                        <span class="web-icon-play text-primary" />Announcement</button
+                    >
+                </VideoDialog>
             </nav>
         </div>
     </div>

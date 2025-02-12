@@ -63,7 +63,7 @@
                 {format(release, 'EEEE, MMM d')}
             </div>
 
-            <div class="border-smooth overflow-hidden rounded-xl border">
+            <div class="border-smooth overflow-hidden rounded-xl border-2">
                 <div
                     class="bg-smooth relative grid grid-cols-1 place-items-center justify-between px-4 md:min-h-[50vh] md:grid-cols-12"
                 >
@@ -93,14 +93,14 @@
                         <img
                             src={illustration}
                             alt="key illustration"
-                            class="mt-10 -mb-20 size-[320px] md:size-[600px]"
+                            class="size-[320px] md:size-[600px]"
                         />
                     </div>
                 </div>
                 {#if content?.length}
                     <div
                         class={classNames(
-                            'divide-offset mt-10 divide-y-2 divide-dashed',
+                            'divide-offset my-10 divide-y-2 divide-dashed',
                             'before:border-offset before:-mb-px before:block before:h-0.5 before:w-full before:border-t-2 before:border-dashed',
                             'after:border-offset after:-mt-px after:block after:h-0.5 after:w-full after:border-t-2 after:border-dashed'
                         )}
@@ -133,7 +133,7 @@
                 {/if}
 
                 {#if links?.length}
-                    <div class="flex min-h-48 flex-col items-center gap-8 p-8 md:flex-row">
+                    <div class="flex min-h-48 flex-col items-center gap-8 px-8 pb-10 md:flex-row">
                         {#each links as link}
                             <MediaCard {...link} />
                         {/each}
@@ -143,5 +143,5 @@
         </Window>
     </div>
 {:else}
-    <PreReleaseCard index={1} {release} />
+    <PreReleaseCard {index} {release} />
 {/if}

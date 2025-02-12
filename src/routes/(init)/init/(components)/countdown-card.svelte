@@ -25,7 +25,7 @@
         class="group relative aspect-square gap-4 overflow-hidden rounded-[4px] border border-dashed border-white/32 p-1"
     >
         <div
-            class="relative z-20 h-full w-full rounded-[4px] bg-[#19191C] transition group-hover:-translate-x-1 group-hover:-translate-y-1"
+            class="relative z-20 h-full w-full rounded-[4px] bg-[#19191C] transition group-hover:-translate-x-0.5 group-hover:-translate-y-0.5"
         >
             <div class="relative flex h-full w-full flex-col items-center justify-center">
                 {#if hasReleased}

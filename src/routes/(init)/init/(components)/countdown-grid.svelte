@@ -14,7 +14,8 @@
             <div
                 class="bg-smooth border-smooth grid grid-cols-1 gap-4 rounded-xl border p-4 md:grid-cols-5"
             >
-                {#each days as day, index}
+                {#each days as day, i}
+                    {@const index = i + 1}
                     <CountdownCard
                         title={day.title}
                         illustration={day.illustration}

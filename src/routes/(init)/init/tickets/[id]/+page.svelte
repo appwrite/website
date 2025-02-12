@@ -4,6 +4,7 @@
     import { createCopy } from '$lib/utils/copy';
     import TicketCard from '../(components)/ticket-card.svelte';
     import { loginGithub } from '../../(utils)/github';
+    import { stickerPack } from '../customize/+page.svelte';
 
     export let data;
 
@@ -91,7 +92,7 @@
         <div
             class="border-offset flex flex-col items-center justify-center border-x-2 border-dashed bg-black/24 py-8 md:col-span-6"
         >
-            <TicketCard copyable={false} {...data.ticket} />
+            <TicketCard {stickerPack} copyable={false} {...data.ticket} />
 
             {#if data.isCurrentUsersTicket}
                 <nav class="mt-8 flex items-center gap-4">
