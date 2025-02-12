@@ -92,7 +92,7 @@
         <div
             class="border-offset flex flex-col items-center justify-center border-x-2 border-dashed bg-black/24 py-8 md:col-span-6"
         >
-            <TicketCard {stickerPack} copyable={false} {...data.ticket} />
+            <TicketCard {stickerPack} {...data.ticket} />
 
             {#if data.isCurrentUsersTicket}
                 <nav class="mt-8 flex items-center gap-4">

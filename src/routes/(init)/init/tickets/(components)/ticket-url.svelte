@@ -1,8 +1,5 @@
 <script lang="ts">
-    import Tooltip from '$lib/components/Tooltip.svelte';
-
     export let docId: string;
-    export let copyable: boolean = true;
 
     const copyUrl = `https://appwrite.io/init/tickets/${docId}`;
 </script>
@@ -33,37 +30,4 @@
     >
         {copyUrl}
     </span>
-
-    {#if copyable}
-        <Tooltip>
-            <button class="inline cursor-pointer" on:click={() => console.log('copied')}>
-                <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    class="shrink-0"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M11.4 7H5.6C5.03995 7 4.75992 7 4.54601 7.10899C4.35785 7.20487 4.20487 7.35785 4.10899 7.54601C4 7.75992 4 8.03995 4 8.6V14.4C4 14.9601 4 15.2401 4.10899 15.454C4.20487 15.6422 4.35785 15.7951 4.54601 15.891C4.75992 16 5.03995 16 5.6 16H11.4C11.9601 16 12.2401 16 12.454 15.891C12.6422 15.7951 12.7951 15.6422 12.891 15.454C13 15.2401 13 14.9601 13 14.4V8.6C13 8.03995 13 7.75992 12.891 7.54601C12.7951 7.35785 12.6422 7.20487 12.454 7.10899C12.2401 7 11.9601 7 11.4 7Z"
-                        stroke="#ADADB0"
-                        stroke-width="1.2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    />
-                    <path
-                        d="M7 5.125V5C7 4.44772 7.44772 4 8 4H15C15.5523 4 16 4.44772 16 5V12C16 12.5523 15.5523 13 15 13H14.875"
-                        stroke="#ADADB0"
-                        stroke-width="1.2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    />
-                </svg></button
-            >
-            <span class="text-primary font-aeonik-fono text-micro uppercase" slot="tooltip">
-                Copy
-            </span>
-        </Tooltip>
-    {/if}
 </div>

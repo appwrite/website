@@ -68,9 +68,9 @@
                             originalTitle = title;
                             originalSticker = sticker;
                             saved = true;
+                            saving = false;
 
                             const timeout = setTimeout(() => {
-                                saving = false;
                                 saved = false;
                             }, 3000);
 
@@ -167,7 +167,9 @@
                     class="web-button is-secondary w-full!"
                     disabled={!modified || saving}
                 >
-                    {#if saved}
+                    {#if saving}
+                        Saving
+                    {:else if saved}
                         Saved
                     {:else}
                         Save
@@ -179,25 +181,11 @@
             class="bg-smooth relative flex w-full flex-col items-center justify-center gap-8 rounded-xl p-4 outline-2 [outline-offset:-2px] outline-[var(--color-offset)] outline-dashed md:col-span-9 md:flex-row"
         >
             <div class="flex flex-col items-center gap-4 uppercase">
-                <TicketCard
-                    {...data.ticket}
-                    {name}
-                    {title}
-                    {editing}
-                    copyable={false}
-                    disableEffects
-                />
+                <TicketCard {...data.ticket} {name} {title} {editing} disableEffects />
                 <span class="font-aeonik-fono tracking-loose text-x-micro text-primary">Front</span>
             </div>
             <div class="flex flex-col items-center gap-4 uppercase">
-                <TicketCard
-                    {...data.ticket}
-                    {sticker}
-                    disableEffects
-                    copyable={false}
-                    flipped
-                    {stickerPack}
-                />
+                <TicketCard {...data.ticket} {sticker} disableEffects flipped {stickerPack} />
                 <span class="font-aeonik-fono tracking-loose text-x-micro text-primary">Back</span>
             </div>
         </div>

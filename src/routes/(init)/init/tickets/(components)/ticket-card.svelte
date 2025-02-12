@@ -20,7 +20,6 @@
         flipped?: boolean;
         stickerPack?: string[];
         editing?: boolean;
-        copyable?: boolean;
         contributions?: NonNullable<Awaited<Promise<ContributionsMatrix>>>[number];
     };
 
@@ -32,7 +31,6 @@
         avatar_url,
         flipped = false,
         editing,
-        copyable,
         disableEffects = false,
         sticker,
         stickerPack,
@@ -137,7 +135,7 @@
         >
             <!-- front of the ticket -->
             <div class="absolute inset-1 flex flex-1 flex-col gap-1 backface-hidden">
-                <TicketUrl {copyable} docId={rest.$id} />
+                <TicketUrl docId={rest.$id} />
                 <div class="relative z-10 flex flex-1 flex-col rounded-xl bg-[#19191C] p-2">
                     <img
                         src="/images/logos/appwrite.svg"
@@ -155,7 +153,9 @@
                             class="size-16 rounded outline-2 outline-offset-1 outline-[var(--color-offset)] outline-dashed"
                         />
                         <div class="flex flex-col gap-1">
-                            <h3 class="text-primary font-aeonik-pro -mb-2 text-[2rem]">
+                            <h3
+                                class="text-primary font-aeonik-pro line-clamp-2 text-[2rem] leading-8"
+                            >
                                 {name}<span
                                     class={classNames('text-accent', {
                                         'animate-caret-blink': editing
@@ -189,7 +189,7 @@
             </div>
             <!-- back of the ticket -->
             <div class="absolute inset-1 z-10 flex rotate-y-180 flex-col gap-1 backface-hidden">
-                <TicketUrl {copyable} docId={rest.$id} />
+                <TicketUrl docId={rest.$id} />
                 <div class="relative z-10 flex flex-1 flex-col gap-1 rounded-xl bg-[#19191C] p-2">
                     <div class="relative flex-1">
                         {#if sticker !== null && typeof sticker !== 'undefined' && stickerPack && sticker in stickerPack}
