@@ -10,11 +10,15 @@
     }> = [
         {
             question: 'What is the Appwrite Education Program?',
-            answer: "If you're a student with the GitHub Student Developer Pack, you can use Appwrite Pro for free while in school to help you build your next project."
+            answer: "If you're a student with the GitHub Student Developer Pack, you can access the Appwrite Education plan for free while in school to help you build your next project."
+        },
+        {
+            question: 'What does the Education plan offer?',
+            answer: 'The Education plan has equal usage limits as the Appwrite Pro plan (minus email support). We also have a special channel for Education program members in the Appwrite Discord server for support, which will feature exclusive events, hackathons, etc.'
         },
         {
             question: 'Who is eligible to apply?',
-            answer: 'Any student enrolled in the GitHub Student Developer Pack can apply for free and receive Appwrite Pro until graduation.'
+            answer: 'Any student enrolled in the GitHub Student Developer Pack can apply for free and receive Appwrite\'s Education plan until graduation.'
         },
         {
             question: 'How do I apply?',
@@ -22,19 +26,23 @@
         },
         {
             question: 'What happens after I sign up?',
-            answer: 'Appwrite Cloud will automatically verify your GitHub Student Developer Pack membership and apply Appwrite Pro to your account. You can then start using Appwrite right away.'
+            answer: 'Appwrite Cloud will automatically verify your GitHub Student Developer Pack membership and apply the Education plan to your account. You can then start using Appwrite right away.'
         },
         {
             question: "I'm already an Appwrite user. Can I still apply?",
-            answer: 'This program is only open to new users.'
+            answer: 'This program is open to all Appwrite users who are verified members of the GitHub Student Developer Pack.'
         },
         {
             question: 'How long do the Appwrite Education program benefits last?',
-            answer: 'Your access to Appwrite Pro is valid until you finish your studies and graduate from the GitHub Student Developer Pack.'
+            answer: 'Your access to the Appwrite Education plan is valid until you finish your studies and graduate from the GitHub Student Developer Pack.'
         },
         {
-            question: 'Do Cloud credits include any add-ons?',
-            answer: 'No, Cloud credits do not cover any add-ons.'
+            question: 'Does the Education plan include any add-ons?',
+            answer: 'No, the Education plan does not cover any add-ons.'
+        },
+        {
+            question: 'Can I use the Education plan for commercial purposes?',
+            answer: 'No, you may not use the Education plan for any non-educational or commercial purposes.'
         }
     ];
 
