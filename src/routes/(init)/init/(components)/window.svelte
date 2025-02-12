@@ -15,7 +15,7 @@
 >
     <div class="flex items-center justify-between px-1.5 pb-1">
         {#if $$slots.link}
-            <span class="font-aeonik-fono text-micro text-primary pl-2 uppercase"
+            <span class="font-aeonik-fono tracking-loose text-micro text-primary pl-2 uppercase"
                 ><slot name="link" /></span
             >
         {:else}
@@ -35,7 +35,8 @@
             </svg>
         {/if}
 
-        <span class="font-aeonik-fono text-micro text-primary uppercase"><slot name="title" /></span
+        <span class="font-aeonik-fono tracking-loose text-micro text-primary uppercase"
+            ><slot name="title" /></span
         >
 
         <svg

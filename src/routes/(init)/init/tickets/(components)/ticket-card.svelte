@@ -172,7 +172,7 @@
                     </div>
 
                     <div
-                        class="font-aeonik-fono border-offset text-x-micro relative z-10 flex items-center justify-between rounded-lg border-2 border-dashed bg-black p-2 uppercase"
+                        class="font-aeonik-fono tracking-loose border-offset text-x-micro relative z-10 flex items-center justify-between rounded-lg border-2 border-dashed bg-black p-2 uppercase"
                     >
                         <span>Init / {initDates}</span>
                         <span
@@ -209,10 +209,10 @@
                         {/if}
                     </div>
                     <div
-                        class="border-offset mt-auto mb-0 rounded-md border-2 border-dashed bg-black p-2"
+                        class="border-offset mt-2 mb-0 rounded-md border-2 border-dashed bg-black p-2"
                     >
                         <div
-                            class="text-primary font-aeonik-fono text-x-micro border-offset mb-2 flex items-center justify-between border-b pb-2 uppercase"
+                            class="text-primary font-aeonik-fono tracking-loose text-x-micro border-offset mb-2 flex items-center justify-between border-b pb-2 uppercase"
                         >
                             <span>Init / {initDates}</span>
                             <span
@@ -223,16 +223,19 @@
                         </div>
 
                         {#if contributions}
-                            <div class="flex w-full flex-wrap gap-0.5">
-                                {#each contributions as level}
-                                    <div class="flex gap-1">
+                            <div class="grid w-full grid-cols-52 grid-rows-7 gap-0.5">
+                                {#each contributions as level, i}
+                                    <div class="flex gap-1" style:--animation-delay="{i * 0.1}s">
                                         <div
-                                            class={classNames('size-1 rounded-[1px] bg-white', {
-                                                'opacity-25': level === 1,
-                                                'opacity-50': level === 2,
-                                                'opacity-75': level === 3,
-                                                'opacity-100': level === 4
-                                            })}
+                                            class={classNames(
+                                                'size-1 shrink-0 rounded-[1px] bg-white',
+                                                {
+                                                    'opacity-20': level === 1,
+                                                    'opacity-40': level === 2,
+                                                    'opacity-64': level === 3,
+                                                    'opacity-80': level === 4
+                                                }
+                                            )}
                                         />
                                     </div>
                                 {/each}

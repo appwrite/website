@@ -68,16 +68,16 @@
                     class="bg-smooth relative grid grid-cols-1 place-items-center justify-between px-4 md:min-h-[50vh] md:grid-cols-12"
                 >
                     <div
-                        class="border-offset relative z-10 col-span-5 flex h-full flex-col justify-center border-x-2 border-none py-8 px-4 md:border-dashed md:p-8"
+                        class="border-offset relative z-10 col-span-5 flex h-full flex-col justify-center gap-4 border-x-2 border-none py-8 px-4 md:border-dashed md:p-8"
                     >
-                        <h2 class="text-display font-aeonik-pro text-primary mb-2">
+                        <h2 class="text-display font-aeonik-pro text-primary">
                             {title}<span class="text-accent">_</span>
                         </h2>
                         <p class="text-secondary text-body max-w-sm font-medium">
                             {description}
                         </p>
                         {#if announcementVideo}
-                            <div class="mt-6">
+                            <div class="mt-4">
                                 <MediaCard {...announcementVideo} type="announcement" />
                             </div>
                         {:else}

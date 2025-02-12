@@ -2,6 +2,7 @@
     import SiteHeader from '$lib/components/layout/site-header.svelte';
     import SiteFooter from '$lib/components/layout/site-footer.svelte';
     import Lockup from './init/(components)/lockup.svelte';
+    import { isStarted } from './init/+page.svelte';
 </script>
 
 <div
@@ -10,7 +11,9 @@
     <SiteHeader class="border-b-2 border-dashed" contained simple />
     <slot />
     <SiteFooter class="border-t-2 border-dashed" />
-    <div class="overflow-y-hidden">
-        <Lockup class="-mb-[24rem] w-full" />
-    </div>
+    {#if isStarted}
+        <div class="overflow-y-hidden">
+            <Lockup class="-mb-[24rem] w-full" />
+        </div>
+    {/if}
 </div>

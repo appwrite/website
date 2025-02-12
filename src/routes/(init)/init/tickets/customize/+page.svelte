@@ -131,7 +131,7 @@
                                 on:click={() => (sticker = null)}
                             />
                             <div
-                                class="text-tertiary font-aeonik-fono bg-smooth flex size-[calc(100%_-_6px)] items-center justify-center rounded-[1px] p-1 uppercase"
+                                class="text-tertiary font-aeonik-fono tracking-loose bg-smooth flex size-[calc(100%_-_6px)] items-center justify-center rounded-[1px] p-1 uppercase"
                             >
                                 None
                             </div>
