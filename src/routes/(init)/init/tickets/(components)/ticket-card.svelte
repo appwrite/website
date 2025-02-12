@@ -192,7 +192,7 @@
             <div class="absolute inset-1 z-10 flex rotate-y-180 flex-col gap-1 backface-hidden">
                 <TicketUrl docId={props.$id} />
                 <div class="relative z-10 flex flex-1 flex-col gap-1 rounded-xl bg-[#19191C] p-2">
-                    <div class="relative flex-1">
+                    <div class="relative aspect-square">
                         {#if sticker !== null && typeof sticker !== 'undefined' && stickerPack && sticker in stickerPack}
                             <div
                                 class="flex aspect-square size-full items-stretch overflow-hidden rounded-[1px] border-black bg-black outline-2 [outline-offset:-1px] outline-[var(--color-offset)] outline-dashed"
@@ -210,7 +210,7 @@
                         {/if}
                     </div>
                     <div
-                        class="border-offset mt-2 mb-0 rounded-md border-2 border-dashed bg-black p-2"
+                        class="border-offset mt-auto mb-0 rounded-md border-2 border-dashed bg-black p-2"
                     >
                         <div
                             class="text-primary font-aeonik-fono tracking-loose text-x-micro border-offset mb-2 flex items-center justify-between border-b pb-2 uppercase"
