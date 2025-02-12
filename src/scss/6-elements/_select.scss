@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 .#{$p}-select {
-  --p-select-min-width: #{pxToRem(130)};
+  --p-select-min-width: #{pxToRem(145)};
 
   all:unset; display:flex; align-items:center; position:relative; line-height:1; user-select:none; cursor:pointer;
   color:hsl(var(--web-color-primary)); font-size:pxToRem(14); min-width: var(--p-select-min-width); height: pxToRem(30);
