@@ -5,7 +5,6 @@
     import type { TicketData } from '../../(utils)/tickets';
     import { spring } from 'svelte/motion';
     import TicketUrl from './ticket-url.svelte';
-    import { fade } from 'svelte/transition';
     import { initDates } from '../../+page.svelte';
 
     let coords = spring(
@@ -224,7 +223,7 @@
                         </div>
 
                         {#if contributions}
-                            <div class="flex w-full flex-wrap gap-0.5" out:fade={{ duration: 100 }}>
+                            <div class="flex w-full flex-wrap gap-0.5">
                                 {#each contributions as level}
                                     <div class="flex gap-1">
                                         <div

@@ -124,6 +124,16 @@ export const getTicketDocByUser = async (user: User) => {
     )) as unknown as TicketDoc;
 };
 
+export const getUserHasTicket = async (gh_user: string) => {
+    const { documents } = await appwriteInitServer.databases.listDocuments(
+        APPWRITE_DB_INIT_ID,
+        APPWRITE_COL_INIT_ID,
+        [Query.equal('gh_user', gh_user)]
+    );
+
+    return !!documents[0];
+};
+
 export const getTicketDocById = async (id: string) => {
     return (await appwriteInitServer.databases.getDocument(
         APPWRITE_DB_INIT_ID,

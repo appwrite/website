@@ -22,6 +22,9 @@
     let sticker = originalSticker;
     let editing = false;
 
+    let saving: boolean = false;
+    let saved: boolean = false;
+
     $: modified = !dequal(
         {
             name: originalName,
@@ -41,8 +44,8 @@
 </svelte:head>
 
 <Window class="container my-10">
-    <a href="/init" slot="link" class="flex gap-1 uppercase">
-        <span class="web-icon-chevron-left" />
+    <a href="/init" slot="link" class="group flex gap-1 pt-2 uppercase">
+        <span class="web-icon-chevron-left transition-transform group-hover:-translate-x-0.5" />
         Back</a
     >
     <div slot="title" class="">Init Ticket<span class="text-accent">_</span></div>
@@ -58,11 +61,20 @@
                 method="POST"
                 class="mt-4 flex flex-1 flex-col gap-4"
                 use:enhance={() => {
+                    saving = true;
                     return async ({ result, update }) => {
                         if (result.type === 'success') {
                             originalName = name;
                             originalTitle = title;
                             originalSticker = sticker;
+                            saved = true;
+
+                            const timeout = setTimeout(() => {
+                                saving = false;
+                                saved = false;
+                            }, 3000);
+
+                            return () => clearTimeout(timeout);
                         }
                         update({ reset: false });
                     };
@@ -107,21 +119,19 @@
                     >
                         <div
                             class={classNames(
-                                'relative aspect-square w-full rounded-[2px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed',
-                                sticker === null
-                                    ? 'outline-white/50'
-                                    : 'outline-[var(--color-offset)]'
+                                'relative flex aspect-square w-full items-center justify-center rounded-[2px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed',
+                                sticker === null ? 'outline-white' : 'outline-[var(--color-offset)]'
                             )}
                         >
                             <input
                                 type="radio"
-                                class="absolute inset-0 appearance-none"
+                                class="absolute inset-0 appearance-none border-none"
                                 name="sticker"
-                                value="0"
+                                value=""
                                 on:click={() => (sticker = null)}
                             />
                             <div
-                                class="bg-smooth text-tertiary font-aeonik-fono flex size-full items-center justify-center rounded-[2px] uppercase"
+                                class="text-tertiary font-aeonik-fono bg-smooth flex size-[calc(100%_-_6px)] items-center justify-center rounded-[1px] p-1 uppercase"
                             >
                                 None
                             </div>
@@ -130,21 +140,21 @@
                         {#each stickerPack as s, i}
                             <div
                                 class={classNames(
-                                    'relative aspect-square w-full rounded-[2px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed',
+                                    'relative flex aspect-square w-full items-center justify-center rounded-sm bg-black outline-2 [outline-offset:-1px] transition outline-dashed',
                                     sticker === i
-                                        ? 'outline-white/50'
+                                        ? 'outline-white'
                                         : 'outline-[var(--color-offset)]'
                                 )}
                             >
                                 <input
                                     type="radio"
-                                    class="absolute inset-0 appearance-none"
+                                    class="absolute inset-0 appearance-none border-none"
                                     name="sticker"
                                     value={i}
                                     on:click={() => (sticker = i)}
                                 />
                                 <div
-                                    class="bg-smooth flex size-full items-center justify-center rounded-[2px]"
+                                    class="bg-smooth flex size-[calc(100%_-_6px)] items-center justify-center rounded-[1px] p-1"
                                 >
                                     <img src={s} alt="Sticker" class="size-20" />
                                 </div>
@@ -152,9 +162,17 @@
                         {/each}
                     </div>
                 </div>
-                <button type="submit" class="web-button is-secondary w-full!" disabled={!modified}
-                    >Save</button
+                <button
+                    type="submit"
+                    class="web-button is-secondary w-full!"
+                    disabled={!modified || saving}
                 >
+                    {#if saved}
+                        Saved
+                    {:else}
+                        Save
+                    {/if}
+                </button>
             </form>
         </div>
         <div
