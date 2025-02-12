@@ -225,7 +225,7 @@
                         {#if contributions}
                             <div class="grid w-full grid-cols-52 grid-rows-7 gap-0.5">
                                 {#each contributions as level, i}
-                                    <div class="flex gap-1" style:--animation-delay="{i * 0.1}s">
+                                    <div class="flex gap-1">
                                         <div
                                             class={classNames(
                                                 'size-1 shrink-0 rounded-[1px] bg-white',
