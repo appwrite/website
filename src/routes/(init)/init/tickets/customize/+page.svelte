@@ -1,16 +1,20 @@
 <script lang="ts" context="module">
-    export const stickerPack = [Globe, Github, Avatar, Globe, Globe];
+    export const stickerPack = [Sites, Flutter, Templates, Formats, Tokens];
 </script>
 
 <script lang="ts">
     import { dequal } from 'dequal/lite';
-    import TicketCard from '../(components)/ticket-card.svelte';
+
+    import Sites from '../../(assets)/stickers/sites.webp';
+    import Flutter from '../../(assets)/stickers/flutter.webp';
+    import Templates from '../../(assets)/stickers/templates.webp';
+    import Formats from '../../(assets)/stickers/formats.webp';
+    import Tokens from '../../(assets)/stickers/tokens.webp';
     import Window from '../../(components)/window.svelte';
-    import Globe from '../../(assets)/stickers/sticker.svg';
-    import Github from '../../(assets)/stickers/github.svg';
+
     import { enhance } from '$app/forms';
-    import Avatar from '../../(assets)/avatar.png';
     import { classNames } from '$lib/utils/classnames';
+    import TicketCard from '../(components)/ticket-card.svelte';
 
     export let data;
 
@@ -182,11 +186,17 @@
         >
             <div class="flex flex-col items-center gap-4 uppercase">
                 <TicketCard {...data.ticket} {name} {title} {editing} disableEffects />
-                <span class="font-aeonik-fono tracking-loose text-x-micro text-primary">Front</span>
+                <span
+                    class="font-aeonik-fono tracking-loose text-x-micro text-primary transition-opacity peer-hover:opacity-0"
+                    >Front</span
+                >
             </div>
             <div class="flex flex-col items-center gap-4 uppercase">
                 <TicketCard {...data.ticket} {sticker} disableEffects flipped {stickerPack} />
-                <span class="font-aeonik-fono tracking-loose text-x-micro text-primary">Back</span>
+                <span
+                    class="font-aeonik-fono tracking-loose text-x-micro text-primary transition duration-300 peer-hover:opacity-0 peer-hover:blur-sm"
+                    >Back</span
+                >
             </div>
         </div>
     </div>

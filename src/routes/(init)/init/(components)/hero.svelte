@@ -77,7 +77,7 @@
                         {/if}Claim your ticket</button
                     >
                 {/if}
-                <VideoDialog url="/">
+                <VideoDialog url="https://www.youtube-nocookie.com/embed/31udvDQ5I4Y">
                     <button class="web-button is-secondary flex items-center gap-4">
                         <span class="web-icon-play text-primary" />Announcement</button
                     >

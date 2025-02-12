@@ -118,7 +118,7 @@
 </script>
 
 <button
-    class={classNames('group relative perspective-[1500px]', {
+    class={classNames('group peer relative perspective-[1500px]', {
         'hover:cursor-none': !disableEffects
     })}
     on:click={handleFlip}
@@ -164,9 +164,9 @@
                             </h3>
                             {#if title}
                                 <span
-                                    class="text-secondary font-aeonik-pro text-x-micro tracking-loose line-clamp-1 uppercase"
-                                    >{title}</span
-                                >
+                                    class="text-secondary font-aeonik-pro text-x-micro tracking-loose relative w-fit uppercase"
+                                    >{title}
+                                </span>
                             {/if}
                         </div>
                     </div>

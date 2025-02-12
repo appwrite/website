@@ -6,27 +6,28 @@
         elements: { portalled, trigger, content, overlay },
         states: { open }
     } = createDialog({
-        forceVisible: true
+        forceVisible: true,
+        preventScroll: true
     });
 
     export let url: string = '';
     export let title: string = 'YouTube video player';
 </script>
 
-<button use:melt={$trigger} class="contents cursor-pointer" type="button">
+<div use:melt={$trigger} class="contents cursor-pointer">
     <slot />
-</button>
+</div>
 
 {#if $open}
-    <div use:melt={$portalled}>
+    <div class="fixed inset-0 z-1000 flex items-center justify-center">
         <div
             use:melt={$overlay}
-            class="fixed inset-0 bg-black/50 transition ease-out"
+            class="fixed inset-0 top-0 z-1000 bg-black/50 transition ease-out"
             transition:fade={{ duration: 150 }}
         />
 
         <div
-            class="web-media content fixed top-1/2 left-1/2 z-1000 block aspect-video max-h-[75vh] w-[80%] -translate-x-1/2 -translate-y-1/2 transform object-contain"
+            class="web-media content fixed z-1000 block aspect-video max-h-[75vh] w-[80%] object-contain"
             use:melt={$content}
             transition:scale={{ duration: 250, start: 0.95 }}
         >
@@ -36,7 +37,7 @@
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
-                class="block h-full w-full"
+                class="block aspect-video h-full w-full"
             />
         </div>
     </div>
