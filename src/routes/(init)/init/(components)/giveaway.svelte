@@ -17,6 +17,7 @@
     <div class="relative flex w-full items-center">
         <div style:transform="rotate(4deg)" class="absolute right-40 z-0">
             <TicketCard
+                $id="1"
                 disableEffects
                 name="Walter"
                 title="Software Developer"
@@ -30,6 +31,7 @@
             class={classNames('absolute right-20 -z-1')}
         >
             <TicketCard
+                $id="1"
                 disableEffects
                 name="Walter"
                 title="Software Developer"
@@ -39,6 +41,7 @@
         </div>
         <div style:transform="rotate(7deg) scale(.90)" class={classNames('absolute right-0 -z-2')}>
             <TicketCard
+                $id="1"
                 disableEffects
                 name="Walter"
                 title="Software Developer"
