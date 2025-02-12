@@ -48,7 +48,7 @@
 </svelte:head>
 
 <Window class="container my-10">
-    <a href="/init" slot="link" class="group flex gap-1 pt-2 uppercase">
+    <a href="/init" slot="link" class="group flex gap-1 uppercase">
         <span class="web-icon-chevron-left transition-transform group-hover:-translate-x-0.5" />
         Back</a
     >
