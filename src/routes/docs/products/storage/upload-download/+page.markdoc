@@ -151,7 +151,7 @@ Every language and platform handles file inputs differently. This section docume
 # Client SDKs {% #client-sdks %}
 
 {% tabs %}
-{% tabsitem #web title="Web SDK" %}
+{% tabsitem #web title="Web" %}
 The Appwrite Web SDK expects a [File](https://developer.mozilla.org/en-US/docs/Web/API/File) object for file creation. This is most commonly associated with DOM file inputs.
 
 For example, for the input tag `<input type="file" id="uploader">`, you would call create file like this:
@@ -165,7 +165,7 @@ const promise = storage.createFile(
 ```
 {% /tabsitem %}
 
-{% tabsitem #flutter title="Flutter SDK" %}
+{% tabsitem #flutter title="Flutter" %}
 
 The Appwrite Flutter SDK expects an `InputFile` class for file inputs.
 
@@ -175,7 +175,7 @@ The Appwrite Flutter SDK expects an `InputFile` class for file inputs.
 | `InputFile.fromBytes(bytes: [BYTE LIST], filename: [NAME], contentType: [MIME TYPE])` | Used to upload files from a byte list, `contentType` is optional. Used for Flutter apps on the web. |
 {% /tabsitem %}
 
-{% tabsitem #android title="Android SDK" %}
+{% tabsitem #android title="Android" %}
 
 The Appwrite Android SDK expects an `InputFile` class for file inputs.
 
@@ -187,7 +187,7 @@ The Appwrite Android SDK expects an `InputFile` class for file inputs.
 
 {% /tabsitem %}
 
-{% tabsitem #apple title="Apple SDK" %}
+{% tabsitem #apple title="Apple" %}
 The Appwrite Apple SDK expects an `InputFile` class for file inputs.
 
 | Method                                     | Description                                                  |
