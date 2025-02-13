@@ -16,8 +16,8 @@
         </p>
 
         <p class="font-medium">
-            This credit is available only for users who are verified through the GitHub program
-            as students. The plan is valid until you graduate from GitHub Education.
+            This credit is available only for users who are verified through the GitHub program as
+            students. The plan is valid until you graduate from GitHub Education.
         </p>
     </div>
     <img src={Kickstart} alt="Kickstart" class="mx-auto" />
