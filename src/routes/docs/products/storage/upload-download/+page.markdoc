@@ -15,7 +15,7 @@ When you are in the **Files** tab, you can click **Add File** and select a file 
 You can also upload files programmatically using our SDKs:
 
 {% multicode %}
-  ```js
+  ```client-web
   import { Client, Storage } from "appwrite";
 
   const client = new Client()
@@ -37,7 +37,27 @@ You can also upload files programmatically using our SDKs:
   });
   ```
 
-  ```dart
+  ```server-nodejs
+  const sdk = require('node-appwrite');
+  const { InputFile } = require('node-appwrite/file');
+
+  const client = new sdk.Client()
+      .setEndpoint('https://cloud.appwrite.io/v1')
+      .setProject('<PROJECT_ID>')
+      .setKey('<API_KEY>');
+
+  const storage = new sdk.Storage(client);
+
+  // If running in a browser environment, you can use File directly
+  const browserFile = new File(['hello'], 'hello.txt');
+  await storage.createFile('[BUCKET_ID]', ID.unique(), browserFile);
+
+  // If running in Node.js, use InputFile
+  const nodeFile = InputFile.fromPath('/path/to/file.jpg', 'file.jpg');
+  await storage.createFile('[BUCKET_ID]', ID.unique(), nodeFile);
+  ```
+
+  ```client-flutter
   import 'package:appwrite/appwrite.dart';
 
   void main() { // Init SDK
@@ -131,7 +151,7 @@ Every language and platform handles file inputs differently. This section docume
 # Client SDKs {% #client-sdks %}
 
 {% tabs %}
-{% tabsitem #web title="Web" %}
+{% tabsitem #web title="Web SDK" %}
 The Appwrite Web SDK expects a [File](https://developer.mozilla.org/en-US/docs/Web/API/File) object for file creation. This is most commonly associated with DOM file inputs.
 
 For example, for the input tag `<input type="file" id="uploader">`, you would call create file like this:
@@ -145,7 +165,7 @@ const promise = storage.createFile(
 ```
 {% /tabsitem %}
 
-{% tabsitem #flutter title="Flutter" %}
+{% tabsitem #flutter title="Flutter SDK" %}
 
 The Appwrite Flutter SDK expects an `InputFile` class for file inputs.
 
@@ -155,7 +175,7 @@ The Appwrite Flutter SDK expects an `InputFile` class for file inputs.
 | `InputFile.fromBytes(bytes: [BYTE LIST], filename: [NAME], contentType: [MIME TYPE])` | Used to upload files from a byte list, `contentType` is optional. Used for Flutter apps on the web. |
 {% /tabsitem %}
 
-{% tabsitem #android title="Android" %}
+{% tabsitem #android title="Android SDK" %}
 
 The Appwrite Android SDK expects an `InputFile` class for file inputs.
 
@@ -167,7 +187,7 @@ The Appwrite Android SDK expects an `InputFile` class for file inputs.
 
 {% /tabsitem %}
 
-{% tabsitem #apple title="Apple" %}
+{% tabsitem #apple title="Apple SDK" %}
 The Appwrite Apple SDK expects an `InputFile` class for file inputs.
 
 | Method                                     | Description                                                  |
@@ -182,15 +202,18 @@ The Appwrite Apple SDK expects an `InputFile` class for file inputs.
 
 {% tabs %}
 {% tabsitem #nodejs title="Node.js" %}
-The Appwrite NodeJS SDK expects an `InputFile` class for file inputs.
+In browser environments, you can use the `File` object directly. For Node.js environments, import the `InputFile` class from 'node-appwrite/file'.
+
+When using `InputFile`, the following methods are available:
 
 | Method                                     | Description                                                  |
 | ------------------------------------------ | ------------------------------------------------------------ |
 | `InputFile.fromPath(filePath, filename)`     | Used to upload files from a provided path.                  |
-| `InputFile.fromBuffer(buffer, filename)`     | Used to upload files from a [Buffer](https://nodejs.org/api/buffer.html#buffer) object. |
+| `InputFile.fromBuffer(buffer, filename)`     | Used to upload files from a [Buffer](https://nodejs.org/api/buffer.html#buffer) or [Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob) object. |
 | `InputFile.fromPlainText(content, filename)`  | Used to upload files in plain text. Expects a string encoded in UTF-8. |
 {% /tabsitem %}
-{% tabsitem #php title="PHP" %}
+
+{% tabsitem #php title="PHP SDK" %}
 
 The Appwrite PHP SDK expects an `InputFile` class for file inputs.
 
@@ -200,7 +223,7 @@ The Appwrite PHP SDK expects an `InputFile` class for file inputs.
 | `InputFile.withData(string $data, ?string $mimeType = null, ?string $filename = null)` | Used to upload files from a string.                         |
 {% /tabsitem %}
 
-{% tabsitem #python title="Python" %}
+{% tabsitem #python title="Python SDK" %}
 The Appwrite Python SDK expects an `InputFile` class for file inputs.
 
 | Method                                     | Description                                                  |
@@ -209,7 +232,7 @@ The Appwrite Python SDK expects an `InputFile` class for file inputs.
 | `InputFile.from_bytes(bytes)`              | Used to upload files from an array of bytes.               |
 {% /tabsitem %}
 
-{% tabsitem #ruby title="Ruby" %}
+{% tabsitem #ruby title="Ruby SDK" %}
 The Appwrite Ruby SDK expects an `InputFile` class for file inputs.
 
 | Method                                     | Description                                                  |
@@ -220,7 +243,7 @@ The Appwrite Ruby SDK expects an `InputFile` class for file inputs.
 
 {% /tabsitem %}
 
-{% tabsitem #deno title="Deno" %}
+{% tabsitem #deno title="Deno SDK" %}
 The Appwrite Deno SDK expects an `InputFile` class for file inputs.
 
 | Method                                     | Description                                                  |
@@ -230,7 +253,7 @@ The Appwrite Deno SDK expects an `InputFile` class for file inputs.
 | `InputFile.fromPlainText(content, filename)`  | Used to upload files in plain text. Expects a string encoded in UTF-8. |
 {% /tabsitem %}
 
-{% tabsitem #dart title="Dart" %}
+{% tabsitem #dart title="Dart SDK" %}
 The Appwrite Dart SDK expects an `InputFile` class for file inputs.
 
 | Method                                     | Description                                                  |
@@ -239,7 +262,7 @@ The Appwrite Dart SDK expects an `InputFile` class for file inputs.
 | `InputFile.fromBytes(bytes: [BYTE LIST], filename: [NAME], contentType: [MIME TYPE])` | Used to upload files from a byte list, `contentType` is optional. |
 {% /tabsitem %}
 
-{% tabsitem #kotlin title="Kotlin" %}
+{% tabsitem #kotlin title="Kotlin SDK" %}
 
 The Appwrite Kotlin SDK expects an `InputFile` class for file inputs.
 
@@ -250,7 +273,7 @@ The Appwrite Kotlin SDK expects an `InputFile` class for file inputs.
 | `InputFile.fromBytes(bytes: ByteArray, filename: String, mimeType: String)` | Used to upload files from a [ByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/) object. Specify the file [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) using the `mimeType` param. |
 {% /tabsitem %}
 
-{% tabsitem #swift title="Swift" %}
+{% tabsitem #swift title="Swift SDK" %}
 The Appwrite Swift SDK expects an `InputFile` class for file inputs.
 
 | Method                                     | Description                                                  |
@@ -260,7 +283,7 @@ The Appwrite Swift SDK expects an `InputFile` class for file inputs.
 | `InputFile.fromBuffer(_ buffer: ByteBuffer, filename: String, mimeType: String)` | Used to upload files from a [NIO Buffer](https://swiftinit.org/reference/swift-nio/niocore/bytebuffer) object. Specify the file [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) using the `mimeType` param. |
 {% /tabsitem %}
 
-{% tabsitem #dotnet title=".Net" %}
+{% tabsitem #dotnet title=".NET SDK" %}
 The Appwrite .NET SDK expects an `InputFile` class for file inputs.
 
 | Method                                     | Description                                                  |
