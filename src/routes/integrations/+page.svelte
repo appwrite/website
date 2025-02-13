@@ -18,7 +18,8 @@
     export let data;
 
     const title = 'Integrations' + TITLE_SUFFIX;
-    const description = "Connect your favorite apps to Appwrite for one unified tech stack. Explore our catalog of integrations now.";
+    const description =
+        'Connect your favorite apps to Appwrite for one unified tech stack. Explore our catalog of integrations now.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     // search functionality
