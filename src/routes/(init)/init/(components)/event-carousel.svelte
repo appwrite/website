@@ -68,10 +68,10 @@
             use:embla={{ options, plugins }}
             on:emblaInit={onEmblaInit}
         >
-            <div class="embla__container flex gap-4">
+            <div class="embla__container flex">
                 {#each Array.from({ length: 8 }) as _}
                     <div
-                        class="embla__slide h-[180px] min-w-0 [flex:0_0_33%] rounded-lg bg-white shadow-lg"
+                        class="embla__slide bg-card/90 mr-4 h-[180px] min-w-0 [flex:0_0_33%] rounded-lg"
                     />
                 {/each}
             </div>
