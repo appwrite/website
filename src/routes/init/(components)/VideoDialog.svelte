@@ -3,7 +3,7 @@
     import { melt, type Dialog } from '@melt-ui/svelte';
     import { fade, scale } from 'svelte/transition';
 
-    export let src: string = 'https://www.youtube.com/embed/XxbJw8PrIkc?si=kOEzUREP0KZoFDY7'; // TODO: REMOVE THIS BEFORE MERGING, THIS IS MOCK DATA
+    export let src: string;
 
     export let dialog: Dialog;
 
@@ -27,7 +27,6 @@
 
 <div use:melt={$portalled}>
     <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }} />
-
     <div
         class="web-media content"
         use:melt={$content}
@@ -56,7 +55,7 @@
         pointer-events: none;
         transition: 200ms ease;
 
-        :global(&[data-state='open']) {
+        &[data-state='open'] {
             opacity: 1;
             pointer-events: all;
         }
@@ -82,7 +81,7 @@
         pointer-events: none;
         transition: 200ms ease;
 
-        :global(&[data-state='open']) {
+        &[data-state='open'] {
             opacity: 1;
             transform: scale(1);
             pointer-events: all;

@@ -49,10 +49,10 @@
             <div class="flex flex-col gap-4">
                 <h1 class="font-aeonik-pro text-title text-primary text-pretty">Partner Tiers</h1>
                 <p class="text-body text-secondary text-pretty font-medium">
-                    As you continue to grow, so do your opportunities with Appwrite. 
-                    Our Partner Program is designed to scale with you as you grow.
-                    With flexible tiers tailored to your success. A partnership built to 
-                    scale together for lasting success in a competitive market.
+                    As you continue to grow, so do your opportunities with Appwrite. Our Partner
+                    Program is designed to scale with you as you grow. With flexible tiers tailored
+                    to your success. A partnership built to scale together for lasting success in a
+                    competitive market.
                 </p>
             </div>
 
