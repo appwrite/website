@@ -225,7 +225,7 @@
                                             </p>
                                             <a
                                                 href="https://cloud.appwrite.io/console?type=create&plan=tier-2"
-                                                class="web-button is-full-width mt-10"
+                                                class="web-button is-secondary is-full-width mt-10"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >

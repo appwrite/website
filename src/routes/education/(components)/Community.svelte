@@ -1,5 +1,5 @@
-<script>
-    import Chat from '../(assets)/chat.png';
+<script lang="ts">
+    import CommunitySupportChat from '$lib/components/CommunitySupportChat.svelte';
 </script>
 
 <div class="container grid items-center gap-8 md:grid-cols-2">
@@ -9,8 +9,8 @@
         </h2>
         <p class="text-secondary text-pretty">
             Join a growing community of developers and students who use Appwrite to build their
-            products. Gain access to a wealth of knowledge, support, and shared experiences to help
-            navigate the challenges of startup growth.
+            products. Gain access to a wealth of knowledge, support, and shared experiences needed
+            to grow and advance your tech career.
         </p>
         <a
             href="/discord"
@@ -20,5 +20,8 @@
             Join our Discord</a
         >
     </div>
-    <img src={Chat} alt="Chat" class="mx-auto" />
+
+    <div class="px-4">
+        <CommunitySupportChat />
+    </div>
 </div>
