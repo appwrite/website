@@ -17,7 +17,7 @@
         },
         {
             question: 'Who is eligible to apply?',
-            answer: 'Any student enrolled in the GitHub Student Developer Pack can apply for free and receive Appwrite\'s Education plan until graduation.'
+            answer: "Any student enrolled in the GitHub Student Developer Pack can apply for free and receive Appwrite's Education plan until graduation."
         },
         {
             question: 'How do I apply?',
