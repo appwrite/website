@@ -15,8 +15,7 @@
 >
     <div class="flex items-center justify-between pt-1 px-1.5 pb-2">
         {#if $$slots.link}
-            <span
-                class="font-aeonik-fono tracking-loose text-micro text-primary flex-1 pl-2 uppercase"
+            <span class="font-aeonik-fono tracking-loose text-micro text-primary pl-2 uppercase"
                 ><slot name="link" /></span
             >
         {:else}
@@ -26,7 +25,6 @@
                 viewBox="0 0 20 20"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="flex-1"
             >
                 <path
                     fill-rule="evenodd"
@@ -38,37 +36,34 @@
         {/if}
 
         <span
-            class="font-aeonik-fono tracking-loose text-micro text-primary mx-auto block flex-1 text-center uppercase"
+            class="font-aeonik-fono tracking-loose text-micro text-primary mx-auto block text-center uppercase"
             ><slot name="title" /></span
         >
 
-        <div class="flex-1">
-            <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                class="mr-0 ml-auto"
-            >
-                <rect
-                    x="5.5498"
-                    y="4.64645"
-                    width="14"
-                    height="1"
-                    transform="rotate(45 5.5498 4.64645)"
-                    fill="#E4E4E7"
-                />
-                <rect
-                    x="4.5498"
-                    y="14.6465"
-                    width="14"
-                    height="1"
-                    transform="rotate(-45 4.5498 14.6465)"
-                    fill="#E4E4E7"
-                />
-            </svg>
-        </div>
+        <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <rect
+                x="5.5498"
+                y="4.64645"
+                width="14"
+                height="1"
+                transform="rotate(45 5.5498 4.64645)"
+                fill="#E4E4E7"
+            />
+            <rect
+                x="4.5498"
+                y="14.6465"
+                width="14"
+                height="1"
+                transform="rotate(-45 4.5498 14.6465)"
+                fill="#E4E4E7"
+            />
+        </svg>
     </div>
 
     <slot />

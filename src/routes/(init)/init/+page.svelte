@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-    const base = new Date('2025-02-24T13:00:00.000Z');
+    const base = new Date('2025-02-12T13:00:00.000Z');
 
     export const isStarted = new Date() >= base;
     export const initDates = `${format(base, 'MMM d')} - ${format(addDays(base, 4), 'd')}`;
@@ -19,6 +19,7 @@
     import Day, { type DayProps } from './(components)/day.svelte';
     import Hero from './(components)/hero.svelte';
     import Giveaway from './(components)/giveaway.svelte';
+    import EventCarousel from './(components)/event-carousel.svelte';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
@@ -180,5 +181,6 @@
         {/each}
     </div>
 
+    <EventCarousel />
     <Giveaway />
 {/if}

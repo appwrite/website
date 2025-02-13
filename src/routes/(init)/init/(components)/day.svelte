@@ -56,7 +56,7 @@
 </script>
 
 {#if hasReleased}
-    <div class="scroll-mt-10 space-y-4 pb-20" id="day-{index}">
+    <div class="scroll-mt-10 space-y-4 pb-8" id="day-{index}">
         <Window>
             <div slot="title" class="text-micro flex items-center gap-1 text-white">
                 Day {index} <span class="text-accent">/</span>
