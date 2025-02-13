@@ -51,7 +51,8 @@
     }
 
     const title = 'Enterprise' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        "Want to learn more about Appwrite's Enterprise plan? Send us a message, and we'll propose a pricing solution that fits your unique use case.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 

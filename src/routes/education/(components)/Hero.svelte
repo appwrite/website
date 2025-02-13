@@ -10,19 +10,18 @@
         {
             label: 'Develop your skills',
             description:
-                'Get access to Appwrite’s Pro plan and build your entire backend with Appwrite.',
+                'Get access to Appwrite Cloud and build your entire backend with Appwrite.',
             icon: Checkmark
         },
         {
             label: 'Build with any framework',
             description:
-                'Get free access to build with Appwrite Pro, valid throughout your student career.',
+                'Get free access to build with Appwrite’s Education plan, valid throughout your student career.',
             icon: Beaker
         },
         {
             label: 'Join a vibrant community',
-            description:
-                'Get community support and dedicated email support from the Appwrite team.',
+            description: 'Get community support in the Appwrite Discord server.',
             icon: ChatIcon
         }
     ];
@@ -43,7 +42,7 @@
         <h1 class="font-aeonik-pro text-5xl text-white">Build your next project with Appwrite</h1>
         <p class="text-secondary font-medium">
             Join the Appwrite Education program in collaboration with the GitHub Student Developer
-            Pack. Students receive Appwrite Cloud for free throughout their studies.
+            Pack. Students access Appwrite Cloud for free throughout their studies.
         </p>
 
         <div class="flex w-full flex-col items-center justify-center gap-4 md:flex-row">

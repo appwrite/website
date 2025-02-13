@@ -54,8 +54,15 @@
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
-                            Simple and transparent pricing
+                            Pricing
                         </h1>
+                        <p
+                            class="text-description max-w-sm self-center text-center opacity-90"
+                            style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
+                                -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
+                        >
+                            Appwrite offers simple and transparent pricing plans with no surprises.
+                        </p>
                     </div>
                 </section>
             </div>
@@ -70,11 +77,14 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="starter" class="text-label font-aeonik-pro">
+                                            <h2
+                                                id="starter"
+                                                class="text-label text-primary font-aeonik-pro"
+                                            >
                                                 Free
                                             </h2>
                                             <div
-                                                class="text-title font-aeonik-pro text-primary mt-2"
+                                                class="text-title font-aeonik-pro text-primary mt-12 -mb-6"
                                             >
                                                 $0
                                             </div>
@@ -104,7 +114,7 @@
                                                 </li>
                                                 <li>
                                                     <span
-                                                        >1 Database, 3 Buckets, 5 Functions per
+                                                        >1 Database, 1 Bucket, 3 Functions per
                                                         project</span
                                                     >
                                                 </li>
@@ -114,37 +124,47 @@
                                 </article>
                             </li>
                             <li>
-                                <article
-                                    class="web-card is-transparent is-transparent-pink has-border-gradient h-full"
-                                    style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
+                                <div
+                                    class="web-card is-transparent has-border-gradient is-transparent-pink -m-1 h-full p-1! backdrop-blur-none!"
+                                    style:--m-border-radius="1.25rem"
                                 >
-                                    <div class="web-pricing-cards-item">
+                                    <article
+                                        class="web-card is-transparent is-transparent-pink has-border-gradient h-full"
+                                        style="background: linear-gradient(180deg, rgba(253, 54, 110, 0.12) 38.59%, rgba(253, 54, 110, 0) 99.04%);"
+                                    >
                                         <header class="web-pricing-cards-header">
                                             <header class="flex gap-3">
-                                                <h2 id="pro" class="text-label font-aeonik-pro">
+                                                <h2
+                                                    id="pro"
+                                                    class="text-label text-primary font-aeonik-pro"
+                                                >
                                                     Pro
                                                 </h2>
                                                 <div class="web-inline-tag is-pink">
                                                     Most popular
                                                 </div>
                                             </header>
-                                            <div
-                                                class="text-title font-aeonik-pro text-primary mt-2"
-                                            >
-                                                $15
+                                            <div class="mt-4 flex flex-col gap-2">
+                                                <span class="-mb-4">From</span>
+                                                <div class="flex items-end gap-2">
+                                                    <div
+                                                        class="text-title font-aeonik-pro text-primary mt-3"
+                                                    >
+                                                        $15
+                                                    </div>
+                                                    <div class="mt-1">/month</div>
+                                                </div>
                                             </div>
-                                            <div class="mt-1">per member/month</div>
                                             <p class="text-body mt-4 h-[5rem] font-medium">
                                                 For production applications that need powerful
                                                 functionality and resources to scale.
                                             </p>
                                             <a
                                                 href="https://cloud.appwrite.io/console?type=create&plan=tier-1"
-                                                class="web-button is-full-width mt-8"
+                                                class="web-button is-full-width mt-11"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
-                                                <!-- <span class="text-sub-body font-medium">Start trial</span> -->
                                                 <span class="text-sub-body font-medium"
                                                     >Start building</span
                                                 >
@@ -170,8 +190,8 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                    </div>
-                                </article>
+                                    </article>
+                                </div>
                             </li>
                             <li>
                                 <article
@@ -180,22 +200,32 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="scale" class="text-label font-aeonik-pro">
+                                            <h2
+                                                id="scale"
+                                                class="text-label text-primary font-aeonik-pro"
+                                            >
                                                 Scale
                                             </h2>
-                                            <div
-                                                class="text-title font-aeonik-pro text-primary mt-2"
-                                            >
-                                                $599
+
+                                            <div class="mt-4 flex flex-col gap-2">
+                                                <span class="-mb-4">From</span>
+                                                <div class="flex items-end gap-2">
+                                                    <div
+                                                        class="text-title font-aeonik-pro text-primary mt-3"
+                                                    >
+                                                        $599
+                                                    </div>
+                                                    <div class="mt-1">/month</div>
+                                                </div>
                                             </div>
-                                            <div class="mt-1">per organization/month</div>
+
                                             <p class="text-body mt-4 h-[5rem] font-medium">
                                                 For teams that handle more complex and large
                                                 projects and need more control and support.
                                             </p>
                                             <a
                                                 href="https://cloud.appwrite.io/console?type=create&plan=tier-2"
-                                                class="web-button is-full-width mt-8"
+                                                class="web-button is-secondary is-full-width mt-10"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
@@ -229,11 +259,14 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="enterprise" class="text-label font-aeonik-pro">
+                                            <h2
+                                                id="enterprise"
+                                                class="text-label text-primary font-aeonik-pro"
+                                            >
                                                 Enterprise
                                             </h2>
                                             <div
-                                                class="text-title font-aeonik-pro text-primary mt-2"
+                                                class="text-title font-aeonik-pro text-primary mt-10 -mb-6"
                                             >
                                                 Custom
                                             </div>
@@ -244,7 +277,7 @@
                                             </p>
                                             <a
                                                 href="/contact-us/enterprise"
-                                                class="web-button is-secondary is-full-width mt-8"
+                                                class="web-button is-secondary is-full-width mt-10"
                                                 rel="noopener noreferrer"
                                             >
                                                 <!-- <span class="web-sub-body-500">Start trial</span> -->
@@ -271,53 +304,41 @@
                         </ul>
                     </div>
 
-                    <!--                    <ul class="web-grid-1-1-opt-2 mt-20 gap-8">-->
-                    <!--                        <li>-->
-                    <!--                            <article-->
-                    <!--                                class="web-card is-transparent has-border-gradient min-h-full"-->
-                    <!--                                style="background:rgba(35, 35, 37, 0.90);"-->
-                    <!--                            >-->
-                    <!--                                <header class="flex gap-3">-->
-                    <!--                                    <h3 id="enterprises" class="text-body text-primary font-medium">-->
-                    <!--                                        Enterprises-->
-                    <!--                                    </h3>-->
-                    <!--                                    <div class="web-inline-tag is-pink">Coming Soon</div>-->
-                    <!--                                </header>-->
-                    <!--                                <p class="mt-2">-->
-                    <!--                                    Large scale projects seeking greater performance, collaboration-->
-                    <!--                                    and security.-->
-                    <!--                                </p>-->
-                    <!--                                <a href="/contact-us" class="web-button is-secondary mt-8">-->
-                    <!--                                    <span>Contact us</span>-->
-                    <!--                                </a>-->
-                    <!--                            </article>-->
-                    <!--                        </li>-->
-                    <!--                        <li>-->
-                    <!--                            <article-->
-                    <!--                                class="web-card is-transparent has-border-gradient min-h-full"-->
-                    <!--                                style="background:rgba(35, 35, 37, 0.90);"-->
-                    <!--                            >-->
-                    <!--                                <header class="flex gap-3">-->
-                    <!--                                    <h3-->
-                    <!--                                        id="open-source-teams"-->
-                    <!--                                        class="text-body text-primary font-medium"-->
-                    <!--                                    >-->
-                    <!--                                        Open-source teams-->
-                    <!--                                    </h3>-->
-                    <!--                                </header>-->
-                    <!--                                <p class="mt-2">-->
-                    <!--                                    We support OSS maintainers with a free Pro Plan. Read our-->
-                    <!--                                    announcement blog to find out more.-->
-                    <!--                                </p>-->
-                    <!--                                <a-->
-                    <!--                                    href="/docs/advanced/platform/oss"-->
-                    <!--                                    class="web-button is-secondary mt-8"-->
-                    <!--                                >-->
-                    <!--                                    <span>Learn more</span>-->
-                    <!--                                </a>-->
-                    <!--                            </article>-->
-                    <!--                        </li>-->
-                    <!--                    </ul>-->
+                    <div class="mt-24 grid grid-cols-1 place-items-center gap-4 md:grid-cols-2">
+                        <div class="cta-card w-full p-6">
+                            <h6
+                                class="text-body text-primary mb-2 flex items-center gap-3 font-medium"
+                            >
+                                Enterprises
+                                <div
+                                    class="web-inline-tag is-pink text-caption py-1! px-2! font-normal"
+                                >
+                                    Coming soon
+                                </div>
+                            </h6>
+                            <p class="text-body text-secondary font-medium">
+                                Large scale projects seeking greater performance, collaboration and
+                                security.
+                            </p>
+                            <a href="/contact-us" class="web-button is-secondary mt-8">Contact us</a
+                            >
+                        </div>
+                        <div class="cta-card w-full p-6">
+                            <h6
+                                class="text-body text-primary mb-2 flex items-center gap-3 font-medium"
+                            >
+                                Open Source
+                            </h6>
+                            <p class="text-body text-secondary font-medium">
+                                We support open-source teams with free access to Pro and Scale
+                                plans.
+                            </p>
+                            <a
+                                href="/docs/advanced/platform/oss"
+                                class="web-button is-secondary mt-8">Learn More</a
+                            >
+                        </div>
+                    </div>
                 </section>
             </div>
         </div>
@@ -346,6 +367,8 @@
 </Main>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     .web-card {
         --web-color-border: 240, 4%, 18%;
         --p-card-padding: 1.25rem;
@@ -359,5 +382,19 @@
     .web-pricing-cards-list {
         gap: 1rem;
         grid-template-columns: repeat(4, 1fr);
+    }
+
+    .cta-card {
+        @include gradients.border-gradient;
+        --p-radius: 16px;
+
+        background-color: hsl(var(--web-color-card));
+        border-radius: var(--p-radius);
+        --m-border-radius: var(--p-radius);
+        --m-border-gradient-before: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.12) 0%,
+            rgba(255, 255, 255, 0) 125.11%
+        );
     }
 </style>

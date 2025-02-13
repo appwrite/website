@@ -12,7 +12,8 @@
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     const title = 'Messaging' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        'Appwrite Messaging allows you to communicate with your audience across various mediums. Push notifications, SMS and emails - set up within minutes!';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     const codeTopic = [
