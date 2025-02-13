@@ -1,0 +1,24 @@
+name: Format
+
+on:
+    pull_request_target:
+        branches: ['**']
+
+jobs:
+    format:
+        name: Format
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout the repo
+              uses: actions/checkout@v4
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Format
+              run: npm run format
