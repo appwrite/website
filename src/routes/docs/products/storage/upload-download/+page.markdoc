@@ -213,7 +213,7 @@ When using `InputFile`, the following methods are available:
 | `InputFile.fromPlainText(content, filename)`  | Used to upload files in plain text. Expects a string encoded in UTF-8. |
 {% /tabsitem %}
 
-{% tabsitem #php title="PHP SDK" %}
+{% tabsitem #php title="PHP" %}
 
 The Appwrite PHP SDK expects an `InputFile` class for file inputs.
 
@@ -223,7 +223,7 @@ The Appwrite PHP SDK expects an `InputFile` class for file inputs.
 | `InputFile.withData(string $data, ?string $mimeType = null, ?string $filename = null)` | Used to upload files from a string.                         |
 {% /tabsitem %}
 
-{% tabsitem #python title="Python SDK" %}
+{% tabsitem #python title="Python" %}
 The Appwrite Python SDK expects an `InputFile` class for file inputs.
 
 | Method                                     | Description                                                  |
@@ -243,7 +243,7 @@ The Appwrite Ruby SDK expects an `InputFile` class for file inputs.
 
 {% /tabsitem %}
 
-{% tabsitem #deno title="Deno SDK" %}
+{% tabsitem #deno title="Deno" %}
 The Appwrite Deno SDK expects an `InputFile` class for file inputs.
 
 | Method                                     | Description                                                  |
@@ -253,7 +253,7 @@ The Appwrite Deno SDK expects an `InputFile` class for file inputs.
 | `InputFile.fromPlainText(content, filename)`  | Used to upload files in plain text. Expects a string encoded in UTF-8. |
 {% /tabsitem %}
 
-{% tabsitem #dart title="Dart SDK" %}
+{% tabsitem #dart title="Dart" %}
 The Appwrite Dart SDK expects an `InputFile` class for file inputs.
 
 | Method                                     | Description                                                  |
@@ -262,7 +262,7 @@ The Appwrite Dart SDK expects an `InputFile` class for file inputs.
 | `InputFile.fromBytes(bytes: [BYTE LIST], filename: [NAME], contentType: [MIME TYPE])` | Used to upload files from a byte list, `contentType` is optional. |
 {% /tabsitem %}
 
-{% tabsitem #kotlin title="Kotlin SDK" %}
+{% tabsitem #kotlin title="Kotlin" %}
 
 The Appwrite Kotlin SDK expects an `InputFile` class for file inputs.
 
@@ -273,7 +273,7 @@ The Appwrite Kotlin SDK expects an `InputFile` class for file inputs.
 | `InputFile.fromBytes(bytes: ByteArray, filename: String, mimeType: String)` | Used to upload files from a [ByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/) object. Specify the file [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) using the `mimeType` param. |
 {% /tabsitem %}
 
-{% tabsitem #swift title="Swift SDK" %}
+{% tabsitem #swift title="Swift" %}
 The Appwrite Swift SDK expects an `InputFile` class for file inputs.
 
 | Method                                     | Description                                                  |
@@ -283,7 +283,7 @@ The Appwrite Swift SDK expects an `InputFile` class for file inputs.
 | `InputFile.fromBuffer(_ buffer: ByteBuffer, filename: String, mimeType: String)` | Used to upload files from a [NIO Buffer](https://swiftinit.org/reference/swift-nio/niocore/bytebuffer) object. Specify the file [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) using the `mimeType` param. |
 {% /tabsitem %}
 
-{% tabsitem #dotnet title=".NET SDK" %}
+{% tabsitem #dotnet title=".NET" %}
 The Appwrite .NET SDK expects an `InputFile` class for file inputs.
 
 | Method                                     | Description                                                  |
