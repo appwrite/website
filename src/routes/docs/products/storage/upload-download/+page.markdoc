@@ -232,7 +232,7 @@ The Appwrite Python SDK expects an `InputFile` class for file inputs.
 | `InputFile.from_bytes(bytes)`              | Used to upload files from an array of bytes.               |
 {% /tabsitem %}
 
-{% tabsitem #ruby title="Ruby SDK" %}
+{% tabsitem #ruby title="Ruby" %}
 The Appwrite Ruby SDK expects an `InputFile` class for file inputs.
 
 | Method                                     | Description                                                  |
