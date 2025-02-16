@@ -41,7 +41,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
     const cspDirectives = [
         "default-src 'self'",
         "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.posthog.com https://*.plausible.io https://plausible.io",
-        "style-src 'self' 'unsafe-inline' https://*.posthog.com",
+        "style-src 'self' 'unsafe-inline'",
         "img-src 'self' data: https:",
         "font-src 'self'",
         "object-src 'none'",

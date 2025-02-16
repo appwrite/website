@@ -1,8 +1,8 @@
 <script lang="ts">
     import { browser } from '$app/environment';
-    import Faq from '$routes/pricing/faq.svelte';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
+    import { createFaqSchema, getInlinedScriptTag } from '$lib/utils/metadata';
 
     export let items: Array<{
         question: string;
@@ -38,21 +38,6 @@
         }
     ];
 
-
-    const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": items.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  };
-
-
     const {
         elements: { root, heading, content, item, trigger },
         helpers: { isSelected }
@@ -63,8 +48,10 @@
     });
 </script>
 
-
-{@html `<script type="application/ld+json">${JSON.stringify(faqSchema)}</script>`}
+<svelte:head>
+    <!-- eslint-disable-next-line svelte/no-at-html-tags-->
+    {@html getInlinedScriptTag(createFaqSchema(items))}
+</svelte:head>
 
 <div class="container grid justify-between pt-20 md:grid-cols-2">
     <h2 class="text-primary mt-10 text-5xl">FAQ</h2>

@@ -1,11 +1,5 @@
 import { base } from '$app/paths';
 
-export type BreadcrumbData = {
-    title: string;
-    category: string;
-    url: string;
-};
-
 export type CategoryData = {
     name: string;
     description: string;
@@ -41,14 +35,6 @@ export type PostsData = {
         label?: string;
         url?: string;
     };
-};
-
-export type PostSchemaData = {
-    title: string;
-    cover: string;
-    date: Date;
-    author: string;
-    avatar: string;
 };
 
 const postsGlob = import.meta.glob('./post/**/*.markdoc', {
