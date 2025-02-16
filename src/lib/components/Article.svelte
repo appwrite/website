@@ -1,8 +1,7 @@
 <script lang="ts">
     import Media from '$lib/UI/Media.svelte';
     import { formatDate } from '$lib/utils/date';
-    import { createSchemaPost } from '$lib/utils/metadata';
-    
+
     export let title: string;
     export let cover: string;
     export let href: string;
@@ -10,19 +9,7 @@
     export let timeToRead: number;
     export let author: string;
     export let avatar: string;
-
-    const postMetadata = {
-        title, cover, date, author, avatar
-    }
-
-    const postSchema = JSON.stringify(createSchemaPost(postMetadata))
-
 </script>
-
-<svelte:head>
-    <script type="application/ld+json">{postSchema}</script>
-</svelte:head>
-
 
 <li>
     <a class="web-grid-articles-item is-transparent" {href}>

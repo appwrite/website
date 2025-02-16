@@ -4,15 +4,19 @@
     import { Article, FooterNav, MainFooter, Newsletter, Tooltip } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { formatDate } from '$lib/utils/date';
-    import { DEFAULT_HOST } from '$lib/utils/metadata';
-    import type { AuthorData, CategoryData, PostsData } from '$routes/blog/content';
+    import {
+        createBreadcrumbsSchema,
+        createPostSchema,
+        DEFAULT_HOST,
+        getInlinedScriptTag
+    } from '$lib/utils/metadata';
+    import type { AuthorData, PostsData } from '$routes/blog/content';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { getContext } from 'svelte';
     import { type SocialShareOption, socialSharingOptions } from '$lib/constants';
     import { copy } from '$lib/utils/copy';
     import { page } from '$app/stores';
     import CTA from '$lib/components/BlogCta.svelte';
-    import { createBreadcrumbsSchema } from '$lib/utils/metadata';
 
     export let title: string;
     export let description: string;
@@ -30,33 +34,14 @@
         | boolean;
     export let lastUpdated: string;
 
+    const posts = getContext<PostsData[]>('posts');
     const authors = getContext<AuthorData[]>('authors');
     const authorData = authors.find((a) => a.slug === author);
-    const categoriesList = getContext<CategoryData[]>('categories');
-    const categories = getValidCategories();
-    const posts = getContext<PostsData[]>('posts');
 
     callToAction ??= true;
 
-    function getValidCategories() {
-        if (!category) return undefined;
-        const cats = category.split(',');
-        return categoriesList.filter((c) =>
-            cats.some((cat) => cat.toLocaleLowerCase() === c.name.toLocaleLowerCase())
-        );
-    }
-
-    const currentURL = 'https://appwrite.io' + String($page.url.pathname)
-
-    const articleMetadata = {
-        title,
-        category, 
-        "url": currentURL
-    }
-
-    const breadcrumbsSchema = JSON.stringify(createBreadcrumbsSchema(articleMetadata))
-
     let readPercentage = 0;
+    const currentURL = `https://appwrite.io${$page.url.pathname}`;
 
     enum CopyStatus {
         Copy = 'Copy URL',
@@ -64,8 +49,9 @@
     }
 
     let copyText = CopyStatus.Copy;
+
     async function handleCopy() {
-        const blogPostUrl = encodeURI(`https://appwrite.io${$page.url.pathname}`);
+        const blogPostUrl = encodeURI(currentURL);
 
         await copy(blogPostUrl);
 
@@ -76,16 +62,10 @@
     }
 
     function getShareLink(shareOption: SocialShareOption): string {
-        const blogPostUrl = encodeURI(`https://appwrite.io${$page.url.pathname}`);
-        const shareableLink = shareOption.link
-            .replace('{TITLE}', title + '.')
-            .replace('{URL}', blogPostUrl);
-
-        return shareableLink;
+        const blogPostUrl = encodeURI(currentURL);
+        return shareOption.link.replace('{TITLE}', title + '.').replace('{URL}', blogPostUrl);
     }
-
 </script>
-
 
 <svelte:head>
     <!-- Titles -->
@@ -104,8 +84,28 @@
     <meta name="twitter:card" content="summary_large_image" />
 
     {#if category}
-        <script type="application/ld+json">{breadcrumbsSchema}</script>
+        <!-- eslint-disable-next-line svelte/no-at-html-tags-->
+        {@html getInlinedScriptTag(
+            createBreadcrumbsSchema({
+                title,
+                category,
+                url: currentURL
+            })
+        )}
     {/if}
+
+    <!-- eslint-disable-next-line svelte/no-at-html-tags-->
+    {@html getInlinedScriptTag(
+        createPostSchema(
+            {
+                title: title,
+                cover: cover,
+                date: date,
+                lastUpdated: lastUpdated
+            },
+            authorData
+        )
+    )}
 </svelte:head>
 
 <Main>

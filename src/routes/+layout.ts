@@ -11,11 +11,6 @@ export const load = async ({ data }) => {
                 distinctID: data.distinctId
             }
         });
-
-    const toolbarJSON = new URLSearchParams(window.location.hash.substring(1)).get('__posthog')
-    if (toolbarJSON) {
-        posthog.loadToolbar(JSON.parse(toolbarJSON))
-    }
     }
 
     return data;
