@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { Main } from '$lib/layouts';
     import { TITLE_SUFFIX } from '$routes/titles';
     import FooterNav from '../../../lib/components/FooterNav.svelte';
@@ -74,7 +74,7 @@
 </svelte:head>
 
 <div class="absolute" style="pointer-events:none;">
-    <img src={Pink} alt="" />
+    <enhanced:img src={Pink} alt="" />
 </div>
 
 <Main>
