@@ -735,6 +735,7 @@
                                             </p>
                                             <button
                                                 type="submit"
+                                                disabled={submitting}
                                                 class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
                                             >
                                                 <span>Apply</span>
