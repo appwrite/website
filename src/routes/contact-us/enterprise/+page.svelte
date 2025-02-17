@@ -15,11 +15,14 @@
     let companySize: string | null = null;
     let companyWebsite = '';
     let useCase = '';
-    let error: string | undefined;
+
     let submitted = false;
+    let submitting = true;
+    let error: string | undefined;
 
     async function handleSubmit() {
         error = undefined;
+        submitting = true;
         const subject = `Enterprise Plan Application: ${companyName}`;
 
         const cloudEmail = loggedIn && $user?.email ? $user.email : undefined;
@@ -42,6 +45,7 @@
             })
         });
 
+        submitting = false;
         if (response.status >= 400) {
             error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
             return;
@@ -237,6 +241,7 @@
                                         </p>
                                         <button
                                             type="submit"
+                                            disabled={submitting}
                                             class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1 cursor-pointer"
                                         >
                                             <span>Submit</span>
