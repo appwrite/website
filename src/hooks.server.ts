@@ -38,8 +38,9 @@ const securityheaders: Handle = async ({ event, resolve }) => {
         }
     });
 
-    const hostname = event.url.hostname;
-    const isPreview = hostname.endsWith('.sslip.io');
+    // `true` if deployed via Coolify.
+    const isPreview = !!process.env.COOLIFY_FQDN;
+    const previewDomain = process.env.COOLIFY_FQDN ? `http://${process.env.COOLIFY_FQDN}` : null;
 
     const cspDirectives: Record<string, string> = {
         'default-src': "'self'",
@@ -61,10 +62,9 @@ const securityheaders: Handle = async ({ event, resolve }) => {
     };
 
     if (isPreview) {
-        const allowPreview = ' http://*.sslip.io';
         ['default-src', 'script-src', 'style-src', 'img-src', 'font-src', 'connect-src'].forEach(
             (key) => {
-                cspDirectives[key] += allowPreview;
+                cspDirectives[key] += ` ${previewDomain}`;
             }
         );
     }
