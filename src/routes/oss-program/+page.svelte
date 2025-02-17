@@ -40,12 +40,14 @@
                 ...getReferrerAndUtmSource()
             })
         });
+
+        submitting = false;
+
         if (response.status >= 400) {
             error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
             return;
         }
         submitted = true;
-        submitting = false;
     }
 
     const title = 'OSS program' + TITLE_SUFFIX;

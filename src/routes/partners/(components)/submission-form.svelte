@@ -10,9 +10,9 @@
     let companyUrl = '';
     let message = '';
 
-    let error: string | undefined;
     let submitted = false;
     let submitting = false;
+    let error: string | undefined;
 
     async function handleSubmit() {
         error = undefined;

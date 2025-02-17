@@ -128,6 +128,11 @@
                     new: true,
                     label: 'Fair use',
                     href: '/docs/advanced/platform/fair-use-policy'
+                },
+                {
+                    new: true,
+                    label: 'Abuse',
+                    href: '/docs/advanced/platform/abuse'
                 }
             ]
         }
