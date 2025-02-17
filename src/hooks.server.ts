@@ -38,24 +38,43 @@ const securityheaders: Handle = async ({ event, resolve }) => {
         }
     });
 
-    const cspDirectives = [
-        "default-src 'self'",
-        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.posthog.com https://*.plausible.io https://plausible.io",
-        "style-src 'self' 'unsafe-inline'",
-        "img-src 'self' data: https:",
-        "font-src 'self'",
-        "object-src 'none'",
-        "base-uri 'self'",
-        "form-action 'self'",
-        "frame-ancestors 'self' https://www.youtube.com https://*.vimeo.com",
-        'block-all-mixed-content',
-        'upgrade-insecure-requests',
-        "connect-src 'self' https://*.appwrite.io https://*.appwrite.org https://*.posthog.com https://*.sentry.io https://*.plausible.io https://plausible.io",
-        "frame-src 'self' https://www.youtube.com https://status.appwrite.online https://www.youtube-nocookie.com https://player.vimeo.com"
-    ];
+    const hostname = event.url.hostname;
+    const isPreview = hostname.endsWith('.sslip.io');
+
+    const cspDirectives: Record<string, string> = {
+        'default-src': "'self'",
+        'script-src':
+            "'self' 'unsafe-inline' 'unsafe-eval' https://*.posthog.com https://*.plausible.io https://plausible.io",
+        'style-src': "'self' 'unsafe-inline'",
+        'img-src': "'self' data: https:",
+        'font-src': "'self'",
+        'object-src': "'none'",
+        'base-uri': "'self'",
+        'form-action': "'self'",
+        'frame-ancestors': "'self' https://www.youtube.com https://*.vimeo.com",
+        'block-all-mixed-content': '',
+        'upgrade-insecure-requests': '',
+        'connect-src':
+            "'self' https://*.appwrite.io https://*.appwrite.org https://*.posthog.com https://*.sentry.io https://*.plausible.io https://plausible.io",
+        'frame-src':
+            "'self' https://www.youtube.com https://status.appwrite.online https://www.youtube-nocookie.com https://player.vimeo.com"
+    };
+
+    if (isPreview) {
+        const allowPreview = ' http://*.sslip.io';
+        ['default-src', 'script-src', 'style-src', 'img-src', 'font-src', 'connect-src'].forEach(
+            (key) => {
+                cspDirectives[key] += allowPreview;
+            }
+        );
+    }
+
+    const cspDirectivesString = Object.entries(cspDirectives)
+        .map(([key, value]) => `${key} ${value}`.trim())
+        .join('; ');
 
     // Set security headers
-    response.headers.set('Content-Security-Policy', cspDirectives.join('; '));
+    response.headers.set('Content-Security-Policy', cspDirectivesString);
 
     // HTTP Strict Transport Security
     // max-age is set to 1 year in seconds
