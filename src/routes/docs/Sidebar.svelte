@@ -70,7 +70,7 @@
                     href: '/docs/products/network',
                     icon: 'icon-share',
                     isParent: true,
-                    new: true,
+                    new: true
                 },
                 {
                     label: 'AI',
