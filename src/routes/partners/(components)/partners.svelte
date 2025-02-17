@@ -43,7 +43,7 @@
     use:useInView
 >
     <div
-        class="container relative z-10 mx-auto flex w-full flex-col items-center justify-between gap-16 md:flex-row"
+        class="container relative z-10 mx-auto flex w-full flex-col items-center justify-between gap-16 px-0 md:flex-row"
     >
         <div class="flex max-w-lg flex-col gap-8 px-8">
             <div class="flex flex-col gap-4">
@@ -63,12 +63,18 @@
             </div>
         </div>
 
-        <div class="mask relative overflow-hidden px-8" style:--mask-height="150px">
+        <div
+            class="mask relative max-w-[100vw] overflow-hidden md:px-8"
+            style:--mask-height="150px"
+        >
             {#each tiers as { title, icon }, i}
                 <div
-                    class={classNames('relative h-fit min-w-md rounded-3xl opacity-0', {
-                        animate
-                    })}
+                    class={classNames(
+                        'relative h-fit min-w-[98vw] rounded-3xl opacity-0 md:min-w-md',
+                        {
+                            animate: 'opacity-100'
+                        }
+                    )}
                     style:z-index={tiers.length - i}
                     style:animation-delay="{i * 0.1}s"
                 >
