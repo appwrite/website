@@ -92,10 +92,10 @@ const handleCallback = async (userId, secret) => {
 
 ## Why this solution works
 
-✅ **No Third-Party Cookies**: The flow doesn't rely on cookies from external domains
-✅ **Modern Security**: Uses token-based authentication, following OAuth2 best practices
-✅ **Universal Compatibility**: Works across all browsers and devices
-✅ **Simple Implementation**: Requires minimal code changes to implement
+- **No Third-Party Cookies**: The flow doesn't rely on cookies from external domains
+- **Modern Security**: Uses token-based authentication, following OAuth2 best practices
+- **Universal Compatibility**: Works across all browsers and devices
+- **Simple Implementation**: Requires minimal code changes to implement
 
 # Solution 2: Use custom domains
 
