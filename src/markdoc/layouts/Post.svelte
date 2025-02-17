@@ -202,7 +202,8 @@
                             </header>
                             {#if cover}
                                 <div class="web-media-container">
-                                    <Media class="block" src={cover} />
+                                    <!-- cover images always have a fixed dimension -->
+                                    <Media class="block" src={cover} height={435} width={775} />
                                 </div>
                             {/if}
 
