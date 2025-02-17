@@ -21,8 +21,7 @@
         },
         {
             label: 'Join a vibrant community',
-            description:
-                'Get community support in the Appwrite Discord server.',
+            description: 'Get community support in the Appwrite Discord server.',
             icon: ChatIcon
         }
     ];

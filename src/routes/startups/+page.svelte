@@ -23,7 +23,8 @@
     import CommunitySupportChat from '$lib/components/CommunitySupportChat.svelte';
 
     const title = 'Startups' + TITLE_SUFFIX;
-    const description = "Get $20,000 in cloud credits to fulfill all your startup's backend needs. Apply for Appwrite's Startups Program today.";
+    const description =
+        "Get $20,000 in cloud credits to fulfill all your startup's backend needs. Apply for Appwrite's Startups Program today.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     let personName: string;
@@ -734,6 +735,7 @@
                                             </p>
                                             <button
                                                 type="submit"
+                                                disabled={submitting}
                                                 class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
                                             >
                                                 <span>Apply</span>
