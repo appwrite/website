@@ -6,7 +6,8 @@
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
 
     const title = 'Company' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        'At Appwrite, we aim to remove technical barriers with our backend solutions. Click here to learn more about our organization, its mission and goals.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
