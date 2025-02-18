@@ -40,7 +40,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
 
     // `true` if deployed via Coolify.
     const isPreview = !!process.env.COOLIFY_FQDN;
-    const previewDomain = process.env.COOLIFY_FQDN ? `http://${process.env.COOLIFY_FQDN}` : null;
+    const previewDomain = isPreview ? `http://${process.env.COOLIFY_FQDN}` : null;
 
     const cspDirectives: Record<string, string> = {
         'default-src': "'self'",
