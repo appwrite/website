@@ -20,11 +20,14 @@
     let productUrl = '';
     let extraDetails = '';
     let hasCreatedIntegration = false;
-    let error: string | undefined;
+
     let submitted = false;
+    let submitting = false;
+    let error: string | undefined;
 
     async function handleSubmit() {
         error = undefined;
+        submitting = true;
 
         const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/conversations/technology-partner`, {
             method: 'POST',
@@ -45,6 +48,9 @@
                 ...getReferrerAndUtmSource()
             })
         });
+
+        submitting = false;
+
         if (response.status >= 400) {
             error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
             return;
@@ -54,7 +60,8 @@
     }
 
     const title = 'Become a Technology Partner' + TITLE_SUFFIX;
-    const description = "Want to integrate your app with Appwrite's API? Apply to our Technology Partners program by filling a short form.";
+    const description =
+        "Want to integrate your app with Appwrite's API? Apply to our Technology Partners program by filling a short form.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
@@ -333,6 +340,7 @@
                                         </p>
                                         <button
                                             type="submit"
+                                            disabled={submitting}
                                             class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
                                         >
                                             <span>Submit</span>

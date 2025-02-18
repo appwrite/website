@@ -531,7 +531,7 @@
                             <div class="flex flex-col items-center justify-between gap-2">
                                 <h4 class="text-sub-body text-primary font-medium">Scale</h4>
                                 <a
-                                    class="web-button !w-full"
+                                    class="web-button is-secondary !w-full"
                                     href="https://cloud.appwrite.io/console?type=create&plan=tier-2"
                                     target="_blank"
                                     rel="noopener noreferrer"
