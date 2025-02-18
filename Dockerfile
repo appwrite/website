@@ -88,4 +88,4 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
       pnpm install --frozen-lockfile --prod; \
     fi
 
-CMD ["sh", "-c", "if [ \"$DEPLOY_MODE\" = \"preview\" ]; then pnpm dev --port 3000; else node server/main.js; fi"]
+CMD ["sh", "-c", "if [ \"$DEPLOY_MODE\" = \"preview\" ]; then pnpm dev --port 3000 --host; else node server/main.js; fi"]
