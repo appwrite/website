@@ -69,14 +69,28 @@
             title: 'Platform',
             rows: [
                 {
-                    title: 'Organization Members',
+                    title: 'Number of projects',
+                    free: 'Unlimited',
+                    pro: 'Unlimited',
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
+                },
+                {
+                    title: 'Projects pausing',
+                    free: 'Never',
+                    pro: 'Never',
+                    scale: 'Never',
+                    enterprise: 'Never'
+                },
+                {
+                    title: 'Organization members',
                     free: '1',
                     pro: '1',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 },
                 {
-                    title: 'Additional Organization members',
+                    title: 'Additional members',
                     free: '-',
                     pro: '$15 per member',
                     scale: '$0',
@@ -207,7 +221,7 @@
                 {
                     title: 'Dedicated databases',
                     free: '-',
-                    pro: 'Coming Soon',
+                    pro: 'Coming soon',
                     scale: 'Coming soon',
                     enterprise: 'Coming soon'
                 }
@@ -280,8 +294,8 @@
                 {
                     title: 'Additional executions',
                     free: '-',
-                    pro: '$2 per 1 Million',
-                    scale: '$2 per 1 Million',
+                    pro: '$2 per 1m',
+                    scale: '$2 per 1m',
                     enterprise: 'Custom'
                 },
                 {
@@ -305,7 +319,7 @@
                     enterprise: 'Custom'
                 },
                 {
-                    title: 'Additional concurrent connections',
+                    title: 'Additional connections',
                     free: '-',
                     pro: '$5 per 1,000',
                     scale: '$5 per 1,000',
@@ -317,6 +331,68 @@
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
+                }
+            ]
+        },
+        {
+            title: 'Network',
+            rows: [
+                {
+                    title: 'Edge compute',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'DDoS mitigation',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Content delivery network',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Content compression',
+                    info: 'Support for brotli, zstd and gzip for text compression and webp for image compression',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'TLS encryption',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Logs',
+                    free: '-',
+                    pro: '-',
+                    scale: 'Coming soon',
+                    enterprise: 'Coming soon'
+                },
+                {
+                    title: 'Firewall',
+                    free: '-',
+                    pro: '-',
+                    scale: '-',
+                    enterprise: 'Custom rules'
+                },
+                {
+                    title: 'WAF',
+                    free: '-',
+                    pro: '-',
+                    scale: '-',
+                    enterprise: 'Custom rules'
                 }
             ]
         },
@@ -355,22 +431,15 @@
                     title: 'Custom organization roles',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming Soon',
-                    enterprise: 'Coming Soon'
-                },
-                {
-                    title: 'Network logs',
-                    free: '-',
-                    pro: '-',
-                    scale: 'Coming Soon',
-                    enterprise: 'Coming Soon'
+                    scale: 'Coming soon',
+                    enterprise: 'Coming soon'
                 },
                 {
                     title: 'Activity logs',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming Soon',
-                    enterprise: 'Coming Soon'
+                    scale: 'Coming soon',
+                    enterprise: 'Coming soon'
                 }
             ]
         },

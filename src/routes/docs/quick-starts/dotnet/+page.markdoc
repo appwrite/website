@@ -83,7 +83,7 @@ using Appwrite.Services;
 var client = new Client();
 
 client
-    .SetEndpoint("https://cloud.appwrite.io/v1")
+    .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .SetProject("<PROJECT_ID>")
     .SetKey("<YOUR_API_KEY>");
 ```
