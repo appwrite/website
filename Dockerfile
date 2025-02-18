@@ -80,7 +80,7 @@ RUN apt-get update && \
 RUN fc-cache -f -v
 
 # copy everything for now.
-COPY --from=build /app/. ./
+COPY --from=build ./app/ ./
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
     if [ "$DEPLOY_MODE" = "preview" ]; then \
