@@ -4,7 +4,7 @@
     import { Main } from '$lib/layouts';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import type { AuthorData, PostsData } from '$routes/blog/content';
-    import { BLOG_TITLE_SUFFIX } from '$routes/titles';
+    import { TITLE_SUFFIX } from '$routes/titles';
     import { getContext } from 'svelte';
 
     export let name: string;
@@ -15,7 +15,7 @@
     const postsList = getContext<PostsData[]>('posts');
     const posts = postsList.filter((post) => post.category.includes(pageSlug));
 
-    const seoTitle = name + BLOG_TITLE_SUFFIX;
+    const seoTitle = name + TITLE_SUFFIX;
     const ogImage = DEFAULT_HOST + '/images/open-graph/blog.png';
 </script>
 

@@ -6,7 +6,13 @@
     import Technologies from '$lib/components/Technologies.svelte';
     import { Main } from '$lib/layouts';
     import { isMobileNavOpen } from '$lib/layouts/Main.svelte';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import {
+        DEFAULT_DESCRIPTION,
+        DEFAULT_HOST,
+        getInlinedScriptTag,
+        organizationJsonSchema,
+        softwareAppSchema
+    } from '$lib/utils/metadata';
     import FooterNav from '../lib/components/FooterNav.svelte';
     import MainFooter from '../lib/components/MainFooter.svelte';
     import DeveloperCard from './DeveloperCard.svelte';
@@ -17,7 +23,6 @@
     import Badge from '$lib/components/ui/Badge.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
-    import { page } from '$app/stores';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -77,6 +82,12 @@
     <meta property="og:image:height" content="630" />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- eslint-disable-next-line svelte/no-at-html-tags-->
+    {@html getInlinedScriptTag(softwareAppSchema())}
+
+    <!-- eslint-disable-next-line svelte/no-at-html-tags-->
+    {@html getInlinedScriptTag(organizationJsonSchema())}
 </svelte:head>
 
 <div

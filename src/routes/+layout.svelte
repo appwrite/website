@@ -1,4 +1,6 @@
 <script lang="ts" context="module">
+    import { derived, writable } from 'svelte/store';
+
     export type Theme = 'dark' | 'light' | 'system';
     export const currentTheme = (function () {
         const store = writable<Theme>(getPreferredTheme());
@@ -49,7 +51,6 @@
     import { browser, dev } from '$app/environment';
     import { navigating, page, updated } from '$app/stores';
     import { onMount } from 'svelte';
-    import { derived, writable } from 'svelte/store';
     import { createSource, loggedIn } from '$lib/utils/console';
     import { beforeNavigate } from '$app/navigation';
 
@@ -114,12 +115,19 @@
     $: if (browser && $loggedIn) {
         document.body.dataset.loggedIn = '';
     }
+
+    $: canonicalUrl =
+        $page.url.origin.replace(/^https?:\/\/www\./, 'https://') + $page.url.pathname;
 </script>
 
 <svelte:head>
     {#if !dev}
+        <!--suppress JSUnresolvedLibraryURL -->
         <script defer data-domain="appwrite.io" src="https://plausible.io/js/script.js"></script>
     {/if}
+
+    <!-- canonical url -->
+    <link rel="canonical" href={canonicalUrl} />
 </svelte:head>
 
 <a class="skip" href="#main">Skip to content</a>
