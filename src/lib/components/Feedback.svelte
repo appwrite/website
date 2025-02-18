@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
     import { page } from '$app/stores';
     import { fade } from 'svelte/transition';
     import { loggedIn, user } from '$lib/utils/console';
@@ -55,9 +56,11 @@
         reset();
     }
 
-    $: if (showFeedback && loggedIn && $user?.email) {
-        email = $user?.email;
-    }
+    onMount(() => {
+        if (loggedIn && $user?.email) {
+            email = $user?.email;
+        }
+    });
 </script>
 
 <section class="web-content-footer">
