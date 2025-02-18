@@ -10,8 +10,8 @@ The Appwrite Website repo features the main Appwrite website, including our [hom
 
 The Appwrite Website has been built with the following frameworks:
 
--   [Svelte](https://svelte.dev/)
--   [SvelteKit](https://kit.svelte.dev/)
+- [Svelte](https://svelte.dev/)
+- [SvelteKit](https://kit.svelte.dev/)
 
 ## Development
 
