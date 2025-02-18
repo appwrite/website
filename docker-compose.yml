@@ -27,7 +27,6 @@ services:
         build:
             context: .
             args:
-                - DEPLOY_MODE=$DEPLOY_MODE
                 - PUBLIC_APPWRITE_ENDPOINT=$PUBLIC_APPWRITE_ENDPOINT
                 - PUBLIC_APPWRITE_DASHBOARD=$PUBLIC_APPWRITE_DASHBOARD
                 - PUBLIC_APPWRITE_PROJECT_INIT_ID=$PUBLIC_APPWRITE_PROJECT_INIT_ID
