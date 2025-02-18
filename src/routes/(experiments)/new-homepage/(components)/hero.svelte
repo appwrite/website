@@ -11,7 +11,7 @@
 
     <div class="container relative grid grid-cols-1 place-items-center gap-8 md:grid-cols-2">
         <div
-            class="animate-fade-in flex flex-col gap-4 [animation-delay:150ms] [animation-duration:1000ms]"
+            class="animate-blur-in flex flex-col gap-4 [animation-delay:150ms] [animation-duration:1000ms]"
         >
             <GradientText
                 ><h1 class="text-hero font-aeonik-pro text-pretty">
