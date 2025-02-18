@@ -1,4 +1,7 @@
-FROM node:20-bullseye as base
+FROM node:20-bullseye AS base
+
+ARG DEPLOY_MODE=production
+ENV DEPLOY_MODE ${DEPLOY_MODE}
 
 ARG PUBLIC_APPWRITE_ENDPOINT
 ENV PUBLIC_APPWRITE_ENDPOINT ${PUBLIC_APPWRITE_ENDPOINT}
@@ -45,9 +48,6 @@ ENV GITHUB_TOKEN ${GITHUB_TOKEN}
 ARG SENTRY_AUTH_TOKEN
 ENV SENTRY_AUTH_TOKEN ${SENTRY_AUTH_TOKEN}
 
-ARG PUBLIC_POSTHOG_API_KEY
-ENV PUBLIC_POSTHOG_API_KEY ${PUBLIC_POSTHOG_API_KEY}
-
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
@@ -61,7 +61,14 @@ FROM base as build
 
 COPY . .
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
-RUN NODE_OPTIONS=--max_old_space_size=16384 pnpm run build
+
+RUN if [ "$DEPLOY_MODE" = "production" ]; then \
+    NODE_OPTIONS=--max_old_space_size=16384 pnpm run build; \
+    else \
+      # so that the copy doesn't fail
+      mkdir -p build server; \
+      echo "Skipping full build for preview deployments"; \
+    fi
 
 FROM base as final
 
@@ -74,6 +81,12 @@ RUN apt-get update && \
 RUN fc-cache -f -v
 COPY --from=build /app/build/ build
 COPY --from=build /app/server/ server
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --prod
 
-CMD [ "node", "server/main.js"]
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
+    if [ "$DEPLOY_MODE" = "production" ]; then \
+      pnpm install --frozen-lockfile --prod; \
+    else \
+      pnpm install --frozen-lockfile; \
+    fi
+
+CMD ["sh", "-c", "if [ \"$DEPLOY_MODE\" = \"production\" ]; then node server/main.js; else pnpm dev; fi"]
