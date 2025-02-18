@@ -1,6 +1,6 @@
 FROM node:20-bullseye AS base
 
-ARG DEPLOY_MODE=production
+ARG DEPLOY_MODE
 ENV DEPLOY_MODE ${DEPLOY_MODE}
 
 ARG PUBLIC_APPWRITE_ENDPOINT
@@ -62,12 +62,11 @@ FROM base as build
 COPY . .
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
-RUN if [ "$DEPLOY_MODE" = "production" ]; then \
-    NODE_OPTIONS=--max_old_space_size=16384 pnpm run build; \
+RUN if [ "$DEPLOY_MODE" = "preview" ]; then \
+    mkdir -p build server; \
+    echo "Skipping full build for preview deployments"; \
     else \
-      # so that the copy doesn't fail
-      mkdir -p build server; \
-      echo "Skipping full build for preview deployments"; \
+      NODE_OPTIONS=--max_old_space_size=16384 pnpm run build; \
     fi
 
 FROM base as final
@@ -83,10 +82,10 @@ COPY --from=build /app/build/ build
 COPY --from=build /app/server/ server
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
-    if [ "$DEPLOY_MODE" = "production" ]; then \
-      pnpm install --frozen-lockfile --prod; \
-    else \
+    if [ "$DEPLOY_MODE" = "preview" ]; then \
       pnpm install --frozen-lockfile; \
+    else \
+      pnpm install --frozen-lockfile --prod; \
     fi
 
-CMD ["sh", "-c", "if [ \"$DEPLOY_MODE\" = \"production\" ]; then node server/main.js; else pnpm dev; fi"]
+CMD ["sh", "-c", "if [ \"$DEPLOY_MODE\" = \"preview\" ]; then pnpm dev; else node server/main.js; fi"]
