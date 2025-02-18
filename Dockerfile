@@ -1,7 +1,4 @@
-FROM node:20-bullseye AS base
-
-ARG DEPLOY_MODE
-ENV DEPLOY_MODE ${DEPLOY_MODE}
+FROM node:20-bullseye as base
 
 ARG PUBLIC_APPWRITE_ENDPOINT
 ENV PUBLIC_APPWRITE_ENDPOINT ${PUBLIC_APPWRITE_ENDPOINT}
@@ -48,6 +45,9 @@ ENV GITHUB_TOKEN ${GITHUB_TOKEN}
 ARG SENTRY_AUTH_TOKEN
 ENV SENTRY_AUTH_TOKEN ${SENTRY_AUTH_TOKEN}
 
+ARG PUBLIC_POSTHOG_API_KEY
+ENV PUBLIC_POSTHOG_API_KEY ${PUBLIC_POSTHOG_API_KEY}
+
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
@@ -61,13 +61,7 @@ FROM base as build
 
 COPY . .
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
-
-RUN if [ "$DEPLOY_MODE" = "preview" ]; then \
-    mkdir -p build server; \
-    echo "Skipping full build for preview deployments"; \
-    else \
-      NODE_OPTIONS=--max_old_space_size=16384 pnpm run build; \
-    fi
+RUN NODE_OPTIONS=--max_old_space_size=16384 pnpm run build
 
 FROM base as final
 
@@ -78,17 +72,8 @@ RUN apt-get update && \
     apt-get autoremove --purge && \
     rm -rf /var/lib/apt/lists/*
 RUN fc-cache -f -v
+COPY --from=build /app/build/ build
+COPY --from=build /app/server/ server
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --prod
 
-# copy everything for now.
-COPY --from=build ./app/ ./
-
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
-    if [ "$DEPLOY_MODE" = "preview" ]; then \
-      pnpm install --frozen-lockfile; \
-    else \
-      echo "Preview mode: Moving /preview back to /"; \
-      ls -A | grep -vE '^(build|server|node_modules|package\.json|pnpm-lock\.yaml|package-lock\.json)$' | xargs rm -rf; \
-      pnpm install --frozen-lockfile --prod; \
-    fi
-
-CMD ["sh", "-c", "if [ \"$DEPLOY_MODE\" = \"preview\" ]; then pnpm dev --port 3000 --host; else node server/main.js; fi"]
+CMD [ "node", "server/main.js"]
