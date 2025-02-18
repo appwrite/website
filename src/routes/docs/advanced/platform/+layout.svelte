@@ -93,13 +93,11 @@
             label: 'Add ons',
             items: [
                 {
-                    // expires on 28 Feb, 2025
                     label: 'Compute',
                     new: isNewUntil('28 Feb 2025'),
                     href: '/docs/advanced/platform/compute'
                 },
                 {
-                    // expires on 28 Feb, 2025
                     label: 'Phone OTP',
                     new: isNewUntil('28 Feb 2025'),
                     href: '/docs/advanced/platform/phone-otp'
@@ -127,13 +125,11 @@
                     href: '/docs/advanced/platform/release-policy'
                 },
                 {
-                    // expires on 28 Feb, 2025
                     new: isNewUntil('28 Feb 2025'),
                     label: 'Fair use',
                     href: '/docs/advanced/platform/fair-use-policy'
                 },
                 {
-                    // expires on 28 Feb, 2025
                     new: isNewUntil('28 Feb 2025'),
                     label: 'Abuse',
                     href: '/docs/advanced/platform/abuse'
