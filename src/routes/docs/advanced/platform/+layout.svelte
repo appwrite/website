@@ -1,6 +1,7 @@
 <script lang="ts">
     import Docs from '$lib/layouts/Docs.svelte';
     import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
+    import { isNewUntil } from '$lib/utils/date';
 
     const parent: NavParent = {
         href: '/docs',
@@ -93,14 +94,14 @@
             items: [
                 {
                     // expires on 28 Feb, 2025
-                    new: new Date('28 Feb 2025') > new Date(),
                     label: 'Compute',
+                    new: isNewUntil('28 Feb 2025'),
                     href: '/docs/advanced/platform/compute'
                 },
                 {
                     // expires on 28 Feb, 2025
-                    new: new Date('28 Feb 2025') > new Date(),
                     label: 'Phone OTP',
+                    new: isNewUntil('28 Feb 2025'),
                     href: '/docs/advanced/platform/phone-otp'
                 }
             ]
@@ -127,13 +128,13 @@
                 },
                 {
                     // expires on 28 Feb, 2025
-                    new: new Date('28 Feb 2025') > new Date(),
+                    new: isNewUntil('28 Feb 2025'),
                     label: 'Fair use',
                     href: '/docs/advanced/platform/fair-use-policy'
                 },
                 {
                     // expires on 28 Feb, 2025
-                    new: new Date('28 Feb 2025') > new Date(),
+                    new: isNewUntil('28 Feb 2025'),
                     label: 'Abuse',
                     href: '/docs/advanced/platform/abuse'
                 }
