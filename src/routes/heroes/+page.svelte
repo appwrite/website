@@ -333,7 +333,7 @@
             </div>
         </div>
 
-        <div class="footer-wrapper relative py-10">
+        <div class="footer-wrapper relative pt-10">
             <enhanced:img src="./bg-pre.png" alt="" class="absolute" style:inset-block-start="0" />
             <div class="web-big-padding-section-level-2 relative">
                 <div class="container">
@@ -510,6 +510,12 @@
         @media (max-width: 1024px) {
             .web-hero {
                 padding-block-start: 5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .web-big-padding-section-level-2 {
+                margin-block-end: 0;
             }
         }
 
