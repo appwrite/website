@@ -6,7 +6,7 @@ date: 2025-01-18
 cover: /images/blog/hooks-appwrite-databases/cover.png
 timeToRead: 10
 author: aditya-oberai
-category: open-source
+category: tutorial
 ---
 
 Software engineering is complex, especially when you aim to build robust applications. For example, you may want to handle type conversions and clean your data before storing it in your database, add external loggers and observability tools, or add additional user authentication factors for specific functionalities. At some point, the need for extensibility will inevitably arise in your software.
