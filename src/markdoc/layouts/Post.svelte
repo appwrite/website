@@ -202,7 +202,7 @@
                             </header>
                             {#if cover}
                                 <div class="web-media-container">
-                                    <Media class="block" src={cover} />
+                                    <Media class="web-u-media-ratio-16-9 block" src={cover} />
                                 </div>
                             {/if}
 
