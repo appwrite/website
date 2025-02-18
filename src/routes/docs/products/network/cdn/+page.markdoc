@@ -6,7 +6,12 @@ description: Learn about Appwrite's CDN, designed to optimize content delivery w
 
 Appwrite's CDN (Content Delivery Network) is a globally distributed system designed to enhance the speed, reliability, and security of your application's content delivery. With points of presence (PoPs) in over 120 cities worldwide, the CDN ensures low latency and consistent performance for users, no matter their location.
 
-[POPS MAP HERE - NO EDGES OR REGIONS INCLUDED]
+{% only_dark %}
+![PoPs map](/images/docs/network/dark/pops-map.png)
+{% /only_dark %}
+{% only_light %}
+![PoPs map](/images/docs/network/pops-map.png)
+{% /only_light %}
 
 # Key features {% #key-features %}
 

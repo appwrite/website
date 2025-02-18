@@ -8,7 +8,12 @@ Appwrite's network is designed to deliver low-latency, high-performance experien
 
 With distributed infrastructure and multiple deployment regions, Appwrite enables developers to build globally scalable applications while maintaining data sovereignty. Its architecture integrates seamlessly with APIs, storage, and databases, optimizing both speed and availability.
 
-[NETWORK MAP HERE - REGIONS, EDGES AND POPs INCLUDED]
+{% only_dark %}
+![Network map](/images/docs/network/dark/all-maps.png)
+{% /only_dark %}
+{% only_light %}
+![Network map](/images/docs/network/all-maps.png)
+{% /only_light %}
 
 # Components {% #components %}
 The Appwrite Network is composed of multiple components that work together to deliver a seamless experience for developers and end-users. These components include:

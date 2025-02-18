@@ -6,7 +6,12 @@ description: Learn about Appwrite edges, where lightweight compute tasks like ca
 
 Appwrite edges are strategically distributed locations designed to process requests closer to your users. These edge nodes handle latency-sensitive operations, such as caching, routing, and quick computations, to deliver faster, more efficient interactions while reducing the load on your application's core infrastructure.
 
-[EDGES MAP HERE - NO REGIONS OR POPs INCLUDED]
+{% only_dark %}
+![Edges map](/images/docs/network/dark/edges-map.png)
+{% /only_dark %}
+{% only_light %}
+![Edges map](/images/docs/network/edges-map.png)
+{% /only_light %}
 
 {% info title="We're expanding!" %}
 Currently, Appwrite's edge network includes 3 locations. We are actively working to expand the number of edge locations globally. New locations will be strategically prioritized to ensure the best possible global coverage and performance for all users.
@@ -32,12 +37,12 @@ Edges complement Appwrite regions, working together to provide fast, reliable, a
 
 # Routing {% #routing %}
 
-Appwrite's edges handle geo-aware routing to balance traffic across the network efficiently. When a user makes a request, it is directed to the nearest available edge node based on their geographic location. This ensures optimal performance by minimizing latency and distributing traffic evenly across edge nodes.  
+Appwrite's edges handle geo-aware routing to balance traffic across the network efficiently. When a user makes a request, it is directed to the nearest available edge node based on their geographic location. This ensures optimal performance by minimizing latency and distributing traffic evenly across edge nodes.
 
 Geo-aware routing helps handle high traffic loads by intelligently directing requests to the best-performing edge, reducing congestion and maintaining consistent response times. By leveraging this approach, Appwrite ensures that your application delivers fast and reliable experiences to users worldwide.
 
 {% info title="Edge vs Region" %}
-Use an edge when compute needs to happen close to your users, like serving static content, doing local computation or data processing. Use a region when compute needs to happen closer to your data, such as frequent access to your Appwrite database or storage.  
+Use an edge when compute needs to happen close to your users, like serving static content, doing local computation or data processing. Use a region when compute needs to happen closer to your data, such as frequent access to your Appwrite database or storage.
 {% /info %}
 
 # Design {% #design %}
