@@ -78,13 +78,16 @@ RUN apt-get update && \
     apt-get autoremove --purge && \
     rm -rf /var/lib/apt/lists/*
 RUN fc-cache -f -v
-COPY --from=build /app/build/ build
-COPY --from=build /app/server/ server
+
+# copy everything for now.
+COPY --from=build /app/. ./
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
     if [ "$DEPLOY_MODE" = "preview" ]; then \
       pnpm install --frozen-lockfile; \
     else \
+      echo "Preview mode: Moving /preview back to /"; \
+      ls -A | grep -vE '^(build|server|node_modules|package\.json|pnpm-lock\.yaml|package-lock\.json)$' | xargs rm -rf; \
       pnpm install --frozen-lockfile --prod; \
     fi
 
