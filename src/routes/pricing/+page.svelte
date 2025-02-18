@@ -54,14 +54,15 @@
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
-                            Pricing
+                            Straightforward pricing for any project
                         </h1>
                         <p
                             class="text-description max-w-sm self-center text-center opacity-90"
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
-                            Appwrite offers simple and transparent pricing plans with no surprises.
+                            Start building for free and upgrade your plan as your project and team
+                            grows.
                         </p>
                     </div>
                 </section>
