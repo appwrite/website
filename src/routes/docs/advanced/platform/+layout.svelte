@@ -101,6 +101,11 @@
                     label: 'Phone OTP',
                     new: isNewUntil('28 Feb 2025'),
                     href: '/docs/advanced/platform/phone-otp'
+                },
+                {
+                    new: true,
+                    label: 'Image Transformations',
+                    href: '/docs/advanced/platform/image-transformations'
                 }
             ]
         },
