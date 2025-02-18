@@ -20,7 +20,6 @@
                     href: '/docs/advanced/platform/shortcuts'
                 },
                 {
-                    new: true,
                     label: 'Roles',
                     href: '/docs/advanced/platform/roles'
                 }
@@ -93,12 +92,14 @@
             label: 'Add ons',
             items: [
                 {
-                    new: true,
+                    // expires on 28 Feb, 2025
+                    new: new Date('28 Feb 2025') > new Date(),
                     label: 'Compute',
                     href: '/docs/advanced/platform/compute'
                 },
                 {
-                    new: true,
+                    // expires on 28 Feb, 2025
+                    new: new Date('28 Feb 2025') > new Date(),
                     label: 'Phone OTP',
                     href: '/docs/advanced/platform/phone-otp'
                 }
@@ -125,12 +126,14 @@
                     href: '/docs/advanced/platform/release-policy'
                 },
                 {
-                    new: true,
+                    // expires on 28 Feb, 2025
+                    new: new Date('28 Feb 2025') > new Date(),
                     label: 'Fair use',
                     href: '/docs/advanced/platform/fair-use-policy'
                 },
                 {
-                    new: true,
+                    // expires on 28 Feb, 2025
+                    new: new Date('28 Feb 2025') > new Date(),
                     label: 'Abuse',
                     href: '/docs/advanced/platform/abuse'
                 }
