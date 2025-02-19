@@ -6,7 +6,7 @@ date: 2023-08-08
 cover: /images/blog/cloud-pricing.png
 timeToRead: 5
 author: laura-du-ry
-category: cloud
+category: announcement
 ---
 
 An important day has come for Appwrite, where we finally announce the pricing for Appwrite Cloud. Many of you mentioned that in order to continue building with Appwrite Cloud it is important to know what the potential costs are. So due to the high number of requests and to provide clarity we decided to share our pricing models before they're live. Please note that Appwrite Cloud continues to be free untill billing is enabled towards the end of 2024.
