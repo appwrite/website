@@ -337,7 +337,7 @@ void main() async {
     try {
         final documents = await databases.listDocuments(
             '<DATABASE_ID>',
-            '[COLLECTION_ID]',
+            '[COLLECTION_ID>',
             [
                 Query.equal('title', ['Avatar', 'Lord of the Rings']),
                 Query.greaterThan('year', 1999)
@@ -420,7 +420,7 @@ query {
 {% /multicode %}
 
 ## Complex Queries
-You can create complex queries by combining AND and OR operations. For example, to find items in either the books or magazines category that are priced between $10 and $100.
+You can create complex queries by combining AND and OR operations. For example, to find items that are either books under $20 or magazines under $10.
 
 {% multicode %}
 ```client-web
@@ -429,11 +429,14 @@ const results = await databases.listDocuments(
     '<COLLECTION_ID>',
     [
         Query.or([
-            Query.equal('category', ['books', 'magazines'])
-        ]),
-        Query.and([
-            Query.greaterThan('price', 10),
-            Query.lessThan('price', 100)
+            Query.and([
+                Query.equal('category', ['books']),
+                Query.lessThan('price', 20)
+            ]),
+            Query.and([
+                Query.equal('category', ['magazines']),
+                Query.lessThan('price', 10)
+            ])
         ])
     ]
 );
@@ -444,11 +447,14 @@ final results = await databases.listDocuments(
     '<COLLECTION_ID>',
     [
         Query.or([
-            Query.equal('category', ['books', 'magazines'])
-        ]),
-        Query.and([
-            Query.greaterThan('price', 10),
-            Query.lessThan('price', 100)
+            Query.and([
+                Query.equal('category', ['books']),
+                Query.lessThan('price', 20)
+            ]),
+            Query.and([
+                Query.equal('category', ['magazines']),
+                Query.lessThan('price', 10)
+            ])
         ])
     ]
 );
@@ -459,11 +465,14 @@ results = databases.list_documents(
     collection_id='<COLLECTION_ID>',
     queries=[
         Query.or_queries([
-            Query.equal('category', ['books', 'magazines'])
-        ]),
-        Query.and_queries([
-            Query.greater_than('price', 10),
-            Query.less_than('price', 100)
+            Query.and_queries([
+                Query.equal('category', ['books']),
+                Query.less_than('price', 20)
+            ]),
+            Query.and_queries([
+                Query.equal('category', ['magazines']),
+                Query.less_than('price', 10)
+            ])
         ])
     ]
 )
@@ -474,11 +483,14 @@ let results = try await databases.listDocuments(
     collectionId: '<COLLECTION_ID>',
     queries: [
         Query.or([
-            Query.equal("category", value: ["books", "magazines"])
-        ]),
-        Query.and([
-            Query.greaterThan("price", value: 10),
-            Query.lessThan("price", value: 100)
+            Query.and([
+                Query.equal("category", value: ["books"]),
+                Query.lessThan("price", value: 20)
+            ]),
+            Query.and([
+                Query.equal("category", value: ["magazines"]),
+                Query.lessThan("price", value: 10)
+            ])
         ])
     ]
 )
@@ -489,15 +501,19 @@ val results = databases.listDocuments(
     collectionId = '<COLLECTION_ID>',
     queries = listOf(
         Query.or(listOf(
-            Query.equal("category", ["books", "magazines"])
-        )),
-        Query.and(listOf(
-            Query.greaterThan("price", 10),
-            Query.lessThan("price", 100)
+            Query.and(listOf(
+                Query.equal("category", ["books"]),
+                Query.lessThan("price", 20)
+            )),
+            Query.and(listOf(
+                Query.equal("category", ["magazines"]),
+                Query.lessThan("price", 10)
+            ))
         ))
     )
 )
-```
-{% /multicode %}
+```{% /multicode %}
 
-This example demonstrates how to combine `OR` and `AND` operations. The first query uses `Query.or()` to match either category, while the second query uses `Query.and()` to ensure the price falls within the specified range. Since multiple queries are combined with `AND` logic by default, the database will return documents that match both the category condition AND the price condition.
+This example demonstrates how to combine `OR` and `AND` operations. The query uses `Query.or()` to match either condition: books under $20 OR magazines under $10.
+Each condition within the OR is composed of two AND conditions - one for the category and one for the price threshold. The database will return documents that match either of these combined conditions.
+
