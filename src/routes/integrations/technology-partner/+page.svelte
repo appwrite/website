@@ -20,11 +20,14 @@
     let productUrl = '';
     let extraDetails = '';
     let hasCreatedIntegration = false;
-    let error: string | undefined;
+
     let submitted = false;
+    let submitting = false;
+    let error: string | undefined;
 
     async function handleSubmit() {
         error = undefined;
+        submitting = true;
 
         const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/conversations/technology-partner`, {
             method: 'POST',
@@ -45,6 +48,9 @@
                 ...getReferrerAndUtmSource()
             })
         });
+
+        submitting = false;
+
         if (response.status >= 400) {
             error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
             return;
@@ -112,9 +118,9 @@
                                         </section>
                                     {:else}
                                         <section class="flex flex-col gap-5">
-                                            <h4 class="text-display font-aeonik-pro text-primary">
+                                            <h1 class="text-display font-aeonik-pro text-primary">
                                                 Become a Technology Partner
-                                            </h4>
+                                            </h1>
                                             <p class="text-description">
                                                 Apply to our Technology Partners Program by filling
                                                 out this form. Our team will reach out to you to
@@ -334,6 +340,7 @@
                                         </p>
                                         <button
                                             type="submit"
+                                            disabled={submitting}
                                             class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
                                         >
                                             <span>Submit</span>
