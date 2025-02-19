@@ -96,7 +96,7 @@ import { Client } from "appwrite";
 const client = new Client();
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')    // Your API Endpoint
     .setProject('<PROJECT_ID>')                // Your project ID
 ;
 ```
@@ -106,7 +106,7 @@ import 'package:appwrite/appwrite.dart';
 Client client = Client();
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')    // Your API Endpoint
     .setProject('<PROJECT_ID>')                // Your project ID
 ;
 ```
@@ -114,14 +114,14 @@ client
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")    // Your API Endpoint
     .setProject("<PROJECT_ID>")                            // Your project ID
 ```
 ```client-android-kotlin
 import io.appwrite.Client
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")    // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 ```
 {% /multicode %}
@@ -139,7 +139,7 @@ const sdk = require('node-appwrite');
 const client = new sdk.Client();
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')                // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')                // Your API Endpoint
     .setProject('<PROJECT_ID>')                            // Your project ID
     .setJWT('<YOUR_API_KEY>')                                   // Your secret JSON Web Token
 ;
@@ -151,7 +151,7 @@ import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 let client = new sdk.Client();
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')                // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')                // Your API Endpoint
     .setProject('<PROJECT_ID>')                            // Your project ID
     .setJWT('<YOUR_API_KEY>')                                   // Your secret JSON Web Token
 ;
@@ -164,7 +164,7 @@ use Appwrite\Client;
 $client = new Client();
 
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1')               // Your API Endpoint
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')               // Your API Endpoint
     ->setProject('<PROJECT_ID>')                           // Your project ID
     ->setJWT('<YOUR_API_KEY>')                                  // Your secret JSON Web Token
 ;
@@ -175,7 +175,7 @@ from appwrite.client import Client
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1')                 # Your API Endpoint
+  .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')                 # Your API Endpoint
   .set_project('<PROJECT_ID>')                             # Your project ID
   .set_jwt('<YOUR_API_KEY>')                                    # Your secret JSON Web Token
 )
@@ -186,7 +186,7 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1')               # Your API Endpoint
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')               # Your API Endpoint
     .set_project('<PROJECT_ID>')                           # Your project ID
     .set_jwt('<YOUR_API_KEY>')                                  # Your secret JSON Web Token
 ```
@@ -195,7 +195,7 @@ using Appwrite;
 using Appwrite.Services;
 
 var client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1")                // Your API Endpoint
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")                // Your API Endpoint
     .SetProject("<PROJECT_ID>")                            // Your project ID
     .SetJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
 ```
@@ -206,7 +206,7 @@ void main() {                                                   // Init SDK
   Client client = Client();
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1')                // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')                // Your API Endpoint
     .setProject('<PROJECT_ID>')                            // Your project ID
     .setJWT('<YOUR_API_KEY>')                                   // Your secret JSON Web Token
   ;
@@ -217,7 +217,7 @@ import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")                // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")                // Your API Endpoint
     .setProject("<PROJECT_ID>")                            // Your project ID
     .setJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
 ```
@@ -226,7 +226,7 @@ import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")                // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")                // Your API Endpoint
     .setProject("<PROJECT_ID>")                            // Your project ID
     .setJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
 ```
@@ -234,7 +234,7 @@ Client client = new Client()
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")                // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")                // Your API Endpoint
     .setProject("<PROJECT_ID>")                            // Your project ID
     .setJWT("<YOUR_API_KEY>")                                   // Your secret JSON Web Token
 ```
@@ -262,7 +262,7 @@ The API key should have the following scope in order to perform authentication:
 import { Client } from "node-appwrite"; // Using the server SDK
 
 const adminClient = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>')             // Your project ID
     .setKey('<YOUR_API_KEY>');                   // Your secret API key
 ```
@@ -271,7 +271,7 @@ use Appwrite\Client;
 use Appwrite\Services\Account;
 
 $adminClient = (new Client())
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     ->setProject('<PROJECT_ID>')             // Your project ID
     ->setKey('<YOUR_API_KEY>');                   // Your secret API key
 
@@ -291,7 +291,7 @@ You should create a new client for each request and **never** share the client b
 {% multicode %}
 ```server-nodejs
 const sessionClient = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');            // Your project ID
 
 const session = req.cookies.session; // Get the session cookie from the request
@@ -301,7 +301,7 @@ if (session) {
 ```
 ```php
 $sessionClient = (new Client())
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     ->setProject('<PROJECT_ID>');            // Your project ID
 
 $session = $_COOKIE['session']; // Get the session cookie from the request
