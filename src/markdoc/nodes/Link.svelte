@@ -45,9 +45,3 @@
     {target}
     {rel}><slot /></a
 >
-
-<style lang="scss">
-    .in-changelog:last-child {
-        margin-block-start: 1rem;
-    }
-</style>
