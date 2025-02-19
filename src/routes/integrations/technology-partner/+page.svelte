@@ -118,9 +118,9 @@
                                         </section>
                                     {:else}
                                         <section class="flex flex-col gap-5">
-                                            <h4 class="text-display font-aeonik-pro text-primary">
+                                            <h1 class="text-display font-aeonik-pro text-primary">
                                                 Become a Technology Partner
-                                            </h4>
+                                            </h1>
                                             <p class="text-description">
                                                 Apply to our Technology Partners Program by filling
                                                 out this form. Our team will reach out to you to
