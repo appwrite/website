@@ -512,7 +512,8 @@ val results = databases.listDocuments(
         ))
     )
 )
-```{% /multicode %}
+```
+{% /multicode %}
 
 This example demonstrates how to combine `OR` and `AND` operations. The query uses `Query.or()` to match either condition: books under $20 OR magazines under $10.
 Each condition within the OR is composed of two AND conditions - one for the category and one for the price threshold. The database will return documents that match either of these combined conditions.
