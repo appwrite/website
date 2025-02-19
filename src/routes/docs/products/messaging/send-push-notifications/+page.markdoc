@@ -151,35 +151,51 @@ For example, when the user logs in with email and password, your app
 can register itself as a target after handling the login.
 
 ```kotlin
-fun onLogin(
-    email: String,
-    password: String,
-    token: String?,
-) {
-    viewModelScope.launch {
-        try {
-            // Log in the user
-            val session = account.createEmailPasswordSession(
-                email,
-                password
-            )
+class AccountsViewModel(application: Application) : AndroidViewModel(application) {
 
-            // If a token exists, register a push target with Appwrite.
-            if (token != null) {
-                val target = account.createPushTarget(ID.unique(), token)
+    private val prefs = getApplication<Application>().getSharedPreferences("example", MODE_PRIVATE)
 
-                _target.postValue(Event(target))
+    private val _error = MutableLiveData<Event<Exception>>().apply { value = null }
+    val error: LiveData<Event<Exception>> = _error
+
+    private val _response = MutableLiveData<Event<String>>().apply { value = null }
+    val response: LiveData<Event<String>> = _response
+
+    private val _target = MutableLiveData<Event<Target>>().apply { value = null }
+    val target: LiveData<Event<Target>> = _target
+
+    fun onLogin(
+        email: String,
+        password: String,
+        token: String?,
+    ) {
+        viewModelScope.launch {
+            try {
+                // Log in the user
+                val session = account.createEmailPasswordSession(
+                    email,
+                    password
+                )
+
+                // If a token exists, register a push target with Appwrite.
+                if (token != null) {
+                    val target = account.createPushTarget(ID.unique(), token)
+
+                    prefs.edit().putString("targetId", target.id).apply()
+
+                    _target.postValue(Event(target))
+                }
+
+                _response.postValue(Event(session.toJson()))
+            } catch (e: AppwriteException) {
+                _error.postValue(Event(e))
             }
-
-            _response.postValue(Event(session.toJson()))
-        } catch (e: AppwriteException) {
-            _error.postValue(Event(e))
         }
     }
 }
 ```
 
-The FCM token that we defined in `sharedPreferenes` will be passed into the `onLogin` handler
+The FCM token that we defined in `sharedPreferences` will be passed into the `onLogin` handler
 to create the push target.
 ```kotlin
  binding.login.setOnClickListener{
@@ -202,31 +218,23 @@ the FCM token is updated.
 ```kotlin
 class MessagingService : FirebaseMessagingService() {
 
-    companion object {
-        var account: Account? = null
-    }
+    private val prefs = getSharedPreferences("example", MODE_PRIVATE)
 
     // This is called when FCM token is updated.
     override fun onNewToken(token: String) {
         super.onNewToken(token)
 
-        val prefs = getSharedPreferences("example", MODE_PRIVATE)
-
         prefs.edit().putString("fcmToken", token).apply()
-
-        if (account == null) {
-            return
-        }
 
         val targetId = prefs.getString("targetId", null)
 
         runBlocking {
             if (targetId == null) {
-                val target = account!!.createPushTarget(ID.unique(), token)
+                val target = account?.createPushTarget(ID.unique(), token)
 
                 prefs.edit().putString("targetId", target.id).apply()
             } else {
-                account!!.updatePushTarget(targetId, token)
+                account?.updatePushTarget(targetId, token)
             }
         }
     }
