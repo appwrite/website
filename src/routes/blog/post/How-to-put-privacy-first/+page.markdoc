@@ -6,7 +6,7 @@ date: 2024-01-12
 cover: /images/blog/privacy.png
 timeToRead: 9
 author: laura-du-ry
-category: GDPR
+category: security
 ---
 
 With our recent announcement of GDPR compliance, we took a big step in becoming a privacy-first organization. But we didn’t want to stop here. We wanted to take it further than just ticking the privacy boxes. We wanted to act as a party that values your personal data, so we needed to take action and move to privacy-friendly analytics. This led to removing most of the tags, pixels, and cookies on our website and the Appwrite Console. In this blog, we dive deeper into what we removed, how this affected our growth strategy, and, most of all, what we, as a community, gained from this decision.
