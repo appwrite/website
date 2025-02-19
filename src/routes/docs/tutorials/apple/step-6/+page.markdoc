@@ -1,0 +1,147 @@
+---
+layout: tutorial
+title: Add authentication
+description: Add authentication to your SwiftUI application.
+step: 6
+---
+
+# Authentication {% #authentication %}
+
+In order to allow creating OAuth sessions, the following URL scheme must be added to your **Info.plist** file.
+
+```xml
+<key>CFBundleURLTypes</key>
+<array>
+<dict>
+    <key>CFBundleTypeRole</key>
+    <string>Editor</string>
+    <key>CFBundleURLName</key>
+    <string>io.appwrite</string>
+    <key>CFBundleURLSchemes</key>
+    <array>
+        <string>appwrite-callback-[PROJECT_ID]</string>
+    </array>
+</dict>
+</array>
+```
+
+In `AppwriteService.swift`, let's update the object to include the auth methods by adding the following snippets.
+
+```swift
+    public func currentSession() async throws -> User<[String: AnyCodable]> {
+        try await account.get()
+    }
+    
+    public func onRegister(
+        _ email: String,
+        _ password: String
+    ) async throws -> User<[String: AnyCodable]> {
+        try await account.create(
+            userId: ID.unique(),
+            email: email,
+            password: password
+        )
+    }
+    
+    public func onLogin(
+        _ email: String,
+        _ password: String
+    ) async throws -> Session {
+        try await account.createEmailSession(
+            email: email,
+            password: password
+        )
+    }
+    
+    public func onLogout() async throws {
+        _ = try await account.deleteSession(
+            sessionId: "current"
+        )
+    }
+    
+    
+    public func onAccountDelete() async throws {
+        _ = try await account.deleteSession(
+            sessionId: "current"
+        )
+    }
+```
+
+Add the following code to `AuthView.swift` inside the `Auth/View` folder. This UI is designed to handle both user login and registration.
+
+```swift
+import SwiftUI
+
+struct AuthScreen: View {
+    
+    @State var email: String = ""
+    @State var password: String = ""
+    @State var isRegister: Bool = false
+    @FocusState private var focusedTextField: FormTextField?
+    @EnvironmentObject private var userViewModel: UserViewModel
+    @EnvironmentObject private var router: Router
+    
+    enum FormTextField {
+        case email, password
+    }
+    
+    
+    var body: some View {
+        NavigationView {
+            
+            
+            VStack {
+                
+                Form {
+                        Section {
+                            
+                            TextField("Email",text: $email)
+                                .focused($focusedTextField, equals: .email)
+                                .onSubmit { focusedTextField = .password }
+                                .submitLabel(.next)
+                            
+                            SecureField("Password", text: $password)
+                                .focused($focusedTextField, equals: .password)
+                                .onSubmit { focusedTextField = nil }
+                                .submitLabel(.continue)
+                            
+                        }
+                        
+                        Button( action: { Task {
+                            if isRegister {
+                                
+                                await userViewModel.register(email, password)
+
+                                isRegister = false
+                                
+                            } else {
+                                
+                                await userViewModel.login(email, password)
+                                
+                                router.pushReplacement(.home)
+                                
+                            }
+                            
+                        }},
+                        label: {
+                            Text(isRegister ? "Register" : "Login")
+                        })
+                    
+                }
+                
+                Button(isRegister ? "Already have account, Login" : "Don't have account, Register") {
+                    isRegister = !isRegister
+                }
+            }
+            
+            .navigationTitle(isRegister ? "Create account" : "Welcome")
+            
+                
+            
+        }
+        .navigationBarBackButtonHidden(true)
+        
+    }
+}
+
+```
