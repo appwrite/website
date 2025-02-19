@@ -2,6 +2,7 @@
     import { browser } from '$app/environment';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
+    import { createFaqSchema, getInlinedScriptTag } from '$lib/utils/metadata';
 
     export let items: Array<{
         question: string;
@@ -54,6 +55,11 @@
         forceVisible: true
     });
 </script>
+
+<svelte:head>
+    <!-- eslint-disable-next-line svelte/no-at-html-tags-->
+    {@html getInlinedScriptTag(createFaqSchema(items))}
+</svelte:head>
 
 <div class="container grid justify-between pt-20 md:grid-cols-2">
     <h2 class="text-primary mt-10 text-5xl">FAQ</h2>
