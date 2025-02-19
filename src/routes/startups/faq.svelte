@@ -32,12 +32,16 @@
             answer: 'The Appwrite Scale plan has ample room for growth and can handle production applications of all sizes. We have set generous limits to ensure most applications can grow comfortably within those limits without incurring high bills. Please review our <a class="web-link underline" href="/pricing">pricing page</a> for a full overview of the Scale plan limits.'
         },
         {
+            question: 'Are OTP SMS costs covered by Appwrite?',
+            answer: 'All Appwrite plans include 10 free SMS messages per month, which allows you to test and implement OTP functionality without immediate costs. After this, you will have to pay the costs for SMS OTP. Please refer to our <a class="web-link underline" href="/docs/advanced/platform/phone-otp#rates">rates page</a> for a breakdown of the pricing, including rates by region and specific SMS costs.'
+        },
+        {
             question: 'What happens if we scale overnight?',
             answer: `Appwrite has the resources to handle large amounts of traffic, ensuring stability and room for scale for your application. We can also offer increased support and on-call help during your launch.`
         },
         {
             question: "What's included in the Appwrite for Startups program?",
-            answer: 'Startups joining the program get access to everything Appwrite Scale offers. This includes Cloud credits, unlimited team members, and premium email support. In addition, we provide you with special swag, and you get a program manager and a private Slack channel. The only cost that we don't cover is OTP SMS costs. Read more about it in our <a class="web-link underline" href="/blog/post/announcing-appwrite-startups-program">announcement</a>.'
+            answer: 'Startups joining the program get access to everything Appwrite Scale offers. This includes Cloud credits, unlimited team members, and premium email support. In addition, we provide you with special swag, and you get a program manager and a private Slack channel. Read more about it in our <a class="web-link underline" href="/blog/post/announcing-appwrite-startups-program">announcement</a>.'
         },
         {
             question: 'What kind of support do we get?',
