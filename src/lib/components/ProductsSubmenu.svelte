@@ -166,7 +166,7 @@
                     <header class="flex items-center justify-between">
                         <span
                             class="font-aeonik-fono tracking-loose text-secondary block text-xs uppercase"
-                            >Customer stories<span class="text-accent">_</span></span
+                            >Customer Stories<span class="text-accent">_</span></span
                         >
                         <a
                             href="/blog/category/case-studies"
@@ -175,11 +175,11 @@
                         >
                     </header>
 
-                    <div class="flex-1 outline-none">
+                    <div class="my-4 flex flex-1 gap-3 outline-none">
                         <img
                             src="/images/blog/case-study-undo/cover.png"
                             alt="Case study cover"
-                            class="my-6 aspect-[3/1] rounded-xl object-cover"
+                            class="aspect-[3/1] max-w-[6rem] shrink-0 rounded-xl object-cover"
                         />
                         <p>
                             Pioneering asset management solutions for the circular economy with UNDŌ
