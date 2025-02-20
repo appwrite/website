@@ -33,6 +33,10 @@
             answer: 'The Appwrite Scale plan has ample room for growth and can handle production applications of all sizes. We have set generous limits to ensure most applications can grow comfortably within those limits without incurring high bills. Please review our <a class="web-link underline" href="/pricing">pricing page</a> for a full overview of the Scale plan limits.'
         },
         {
+            question: 'Are OTP SMS costs covered by Appwrite?',
+            answer: 'All Appwrite plans include 10 free SMS messages per month, which allows you to test and implement OTP functionality without immediate costs. After this, you will have to pay the costs for SMS OTP. Please refer to our <a class="web-link underline" href="/docs/advanced/platform/phone-otp#rates">rates page</a> for a breakdown of the pricing, including rates by region and specific SMS costs.'
+        },
+        {
             question: 'What happens if we scale overnight?',
             answer: `Appwrite has the resources to handle large amounts of traffic, ensuring stability and room for scale for your application. We can also offer increased support and on-call help during your launch.`
         },
