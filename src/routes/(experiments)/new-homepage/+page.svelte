@@ -6,6 +6,7 @@
     import NetworkMap from './(components)/network-map.svelte';
     import Platforms from './(components)/platforms.svelte';
     import Pricing from './(components)/pricing.svelte';
+    import Scale from './(components)/scale.svelte';
     import Templates from './(components)/templates.svelte';
 </script>
 
@@ -16,4 +17,5 @@
 <Features />
 <NetworkMap />
 <Templates />
+<Scale />
 <Pricing />
