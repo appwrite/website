@@ -47,6 +47,10 @@
                 {
                     label: 'Tokens',
                     href: '/docs/products/auth/tokens'
+                },
+                {
+                    label: 'Identities',
+                    href: '/docs/products/auth/identities'
                 }
             ]
         },

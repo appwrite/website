@@ -6,7 +6,7 @@ cover: /images/blog/backup-encryption/cover.png
 timeToRead: 5
 date: 2024-10-15
 author: aditya-oberai
-category: product
+category: product, security
 ---
 Data security is more important than ever, and if you manage databases, one key question you may ask is: *Should I encrypt my backups?* The answer is a clear yes. Let’s break down why encrypting your backups is essential, especially for database backups, and how Appwrite helps by automatically encrypting them.
 

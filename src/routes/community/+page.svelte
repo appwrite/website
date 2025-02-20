@@ -582,9 +582,9 @@
                                 class:web-u-max-width-380={!submitted}
                             >
                                 <section class="flex flex-col gap-5">
-                                    <h1 class="text-title font-aeonik-pro text-primary">
+                                    <h2 class="text-title font-aeonik-pro text-primary">
                                         Appwrite insights
-                                    </h1>
+                                    </h2>
                                     <p class="text-description web-u-padding-block-end-40">
                                         Sign up to our company blog and get the latest insights from
                                         Appwrite. Learn more about engineering, product design,
