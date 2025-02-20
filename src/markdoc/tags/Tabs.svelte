@@ -35,7 +35,7 @@
         <ul class="tabs-list hidden items-center gap-4 sm:flex" {...$list} use:list>
             {#each Array.from($ctx.triggers.entries()).slice(0, 7) as [id, title]}
                 <li
-                    class="tabs-item rounded-t-[0.625rem] text-center hover:bg-white/4"
+                    class="tabs-item shrink-0 rounded-t-[0.625rem] text-center hover:bg-white/4"
                     class:text-[var(--color-primary)]={$value === id}
                 >
                     <button
@@ -72,7 +72,7 @@
         <ul class="tabs-list flex items-center gap-4 sm:hidden" {...$list} use:list>
             {#each Array.from($ctx.triggers.entries()).slice(0, 2) as [id, title]}
                 <li
-                    class="tabs-item rounded-t-[0.625rem] text-center hover:bg-white/4"
+                    class="tabs-item shrink-0 rounded-t-[0.625rem] text-center hover:bg-white/4"
                     class:text-[var(--color-primary)]={$value === id}
                 >
                     <button
