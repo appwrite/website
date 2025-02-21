@@ -43,7 +43,7 @@
     ];
 </script>
 
-<div class="light bg-white">
+<div class="light bg-white py-20">
     <div class="container">
         <section class="">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[700px]">
@@ -54,13 +54,9 @@
                 With built-in security and privacy for peace of mind.
             </p>
         </section>
-        <div
-            class="mt-20 grid grid-cols-1 gap-8 divide-x divide-y divide-dashed divide-black overflow-hidden md:grid-cols-2 lg:grid-cols-4"
-        >
+        <div class="mt-20 grid grid-cols-1 gap-12 overflow-hidden md:grid-cols-2 lg:grid-cols-4">
             {#each features as box}
-                <div
-                    class="text-sub-body relative border-black/4 font-medium last-of-type:border-r"
-                >
+                <div class="text-sub-body relative font-medium">
                     <img src={box.icon} width="40" height="40" alt="" />
                     <h3 class="text-primary mt-4 flex flex-wrap items-baseline gap-3">
                         {box.label}

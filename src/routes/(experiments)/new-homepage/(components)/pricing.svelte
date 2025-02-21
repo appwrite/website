@@ -33,7 +33,7 @@
     ];
 </script>
 
-<div class="relative flex min-h-[60vh] items-center justify-center">
+<div class="relative flex min-h-[75vh] items-center justify-center py-20">
     <div class="container flex w-full flex-col items-center justify-center gap-10">
         <div
             class="gradient-background absolute bottom-0 left-0 z-0 h-screen w-full -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl"
@@ -54,10 +54,10 @@
         </div>
 
         <div
-            class="border-smooth divide-smooth grid w-full grid-cols-1 place-content-center place-items-center gap-8 divide-dashed rounded-xl border bg-white/2 py-10 backdrop-blur-lg md:grid-cols-2 lg:grid-cols-4"
+            class="border-smooth divide-smooth grid w-full grid-cols-1 place-content-center place-items-center gap-8 divide-x divide-dashed rounded-xl border bg-white/2 py-10 backdrop-blur-lg md:grid-cols-2 lg:grid-cols-4"
         >
             {#each plans as { name, price, label, subtitle, description }}
-                <div class="flex min-h-48 w-full flex-col gap-1 px-8">
+                <div class="flex min-h-40 w-full flex-col gap-1 px-4">
                     <div class="flex items-center gap-4">
                         <span class="text-description text-secondary">{name}</span>
                         {#if label}

@@ -92,20 +92,23 @@
         </div>
     </div>
 
-    <div class="wiper absolute inset-0" style:--animation-duration={`${animationDuration}s`}>
+    <div class="swipe absolute inset-0" style:--animation-duration={`${animationDuration}s`}>
         <div class="container relative h-full">
             <div class="absolute inset-0 z-100 grid grid-cols-4">
                 {#each stats as stat, i}
                     <div
-                        class={classNames(
-                            'mask h-full border-l border-dashed border-black/10',
-                            'after:border-accent after:absolute after:top-[var(--after-top)] after:size-2 after:rounded-full after:border after:bg-white'
-                        )}
+                        class="mask h-full border-l border-dashed border-black/10"
                         style:--mask-direction="bottom"
                         style:--mask-height={`${(4 - i) * 25}%`}
-                        style:--after-top={`${4 * i * 10}%`}
+                        style:--after-top={`140px`}
                     >
-                        <div class="relative" style:top={`${(4 - i) * 18}%`}>
+                        <div
+                            class={classNames(
+                                'relative',
+                                'after:border-accent after:absolute after:top-[var(--after-top)] after:size-2 after:rounded-full after:border after:bg-white'
+                            )}
+                            style:top={`${(4 - i) * 18}%`}
+                        >
                             <NumberFlow
                                 class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
                                 value={stat.number}
@@ -129,7 +132,7 @@
 </div>
 
 <style>
-    .wiper {
+    .swipe {
         animation: wipe-in var(--animation-duration) ease-in-out;
     }
 
@@ -144,11 +147,9 @@
 
     @keyframes wipe-in {
         0% {
-            filter: blur(2px);
             clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
         }
         100% {
-            filter: blur(0);
             clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
         }
     }
