@@ -21,6 +21,10 @@
             label: 'Guides',
             items: [
                 {
+                    label: 'Coolify',
+                    href: '/docs/advanced/self-hosting/coolify'
+                },
+                {
                     label: 'Functions',
                     href: '/docs/advanced/self-hosting/functions'
                 },

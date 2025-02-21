@@ -4,7 +4,23 @@
     export let href: string;
     export let title: string;
 
-    const isExternal = ['http://', 'https://'].some((prefix) => href.startsWith(prefix));
+    const whitelisted = ['appwrite.io', 'cloud.appwrite.io'];
+
+    const isExternal = ['http://', 'https://'].some((prefix) => {
+        if (href.startsWith(prefix)) {
+            try {
+                // Remove 'www.' if it exists.
+                const hostname = new URL(href).hostname.replace(/^www\./, '');
+
+                // if hostname matches, its internal
+                return !whitelisted.includes(hostname);
+            } catch {
+                return true; // URL invalid, treat as external
+            }
+        }
+        return false; // doesn't start with the prefix, consider it internal
+    });
+
     const target = isExternal ? '_blank' : undefined;
 
     const doFollow = href.includes('?dofollow=true') || href.includes('&dofollow=true');
@@ -29,9 +45,3 @@
     {target}
     {rel}><slot /></a
 >
-
-<style lang="scss">
-    .in-changelog:last-child {
-        margin-block-start: 1rem;
-    }
-</style>

@@ -69,9 +69,9 @@ In certain use cases, your app may not need to share members' personal informati
 
 These details can be made private:
 
--   `userName` - The member's name
--   `userEmail` - The member's email address
--   `mfa` - Whether the member has enabled multi-factor authentication
+- `userName` - The member's name
+- `userEmail` - The member's email address
+- `mfa` - Whether the member has enabled multi-factor authentication
 
 # Mock phone numbers {% #mock-phone-numbers %}
 
