@@ -59,7 +59,7 @@ Appwrite was leveraged at the core of StoreAlert’s backend infrastructure in t
     - Key events related to the Shopify store, including product updates, deletions, and order changes, are fetched from Shopify’s API and stored in an Appwrite Database for easier referencing.
     - All key event data stored in the Appwrite Database can be used to generate notifications and maintain detailed logs.
 - **Notification synchronization with Gadget.dev**
-    - An Appwrite Function processes key event data and logs notifications, which are forwarded to [Gadget.dev](http://Gadget.devhttps://gadget.dev/use-cases/shopify-app-development) to send real-time notifications to merchants using the app.
+    - An Appwrite Function processes key event data and logs notifications, which are forwarded to [Gadget.dev](https://gadget.dev/use-cases/shopify-app-development) to send real-time notifications to merchants using the app.
 - **Automated background tasks**
     - Appwrite Functions triggered by CRON schedules automate recurring tasks, such as:
         - Fetching new key events from Shopify’s API
