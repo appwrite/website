@@ -15,7 +15,7 @@
         },
         {
             number: 0,
-            suffix: 'million',
+            suffix: 'M',
             description: 'end users'
         },
         {
@@ -25,17 +25,21 @@
         }
     ];
 
-    const updatedNumbers = [12, 900, 1, 999];
+    const numbers = [12, 900, 1, 999];
+
+    const updateNumbers = () => {
+        stats = stats.map((stat, index) => {
+            return { ...stat, number: numbers[index] };
+        });
+    };
 
     onMount(() => {
-        stats.forEach((stat, i) => {
-            stat.number = updatedNumbers[i];
-        });
+        updateNumbers();
     });
 </script>
 
 <div
-    class="light relative flex min-h-[65vh] w-full flex-col gap-4 overflow-hidden bg-[#EDEDF0] py-20"
+    class="light relative flex min-h-[70vh] w-full flex-col gap-4 overflow-hidden bg-[#EDEDF0] py-20"
 >
     <div class="container relative z-10 w-full">
         <div class="max-w-xl">
@@ -44,7 +48,7 @@
                     class="text-accent">_</span
                 >
             </h2>
-            <p class="text-secondary border-accent border-l-2 pl-2 font-medium">
+            <p class="text-secondary border-accent mt-5 border-l-2 pr-28 pl-2 font-medium">
                 <span class="text-accent">“</span>Appwrite has supported our recent growth in every
                 step of the way,
                 <span class="text-primary">without any failures or outages</span><span
@@ -56,16 +60,21 @@
 
     <div class="wiper absolute inset-0 overflow-hidden">
         <div class="container relative h-full">
-            <div class="absolute inset-0 grid grid-cols-4">
+            <div class="absolute inset-0 z-1 grid grid-cols-4">
                 {#each stats as stat, i}
                     <div
                         class="mask h-full border-l border-dashed border-black/10"
                         style:--mask-direction="bottom"
                         style:--mask-height={`${(4 - i) * 25}%`}
                     >
-                        <div class="relative top-40">
-                            <span class="text-description text-primary font-medium"
-                                ><NumberFlow value={stat.number} suffix={stat.suffix} /></span
+                        <div class="relative" style:top={`${(4 - i) * 18}%`}>
+                            <NumberFlow
+                                class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
+                                value={stat.number}
+                                suffix={stat.suffix}
+                            />
+                            <span class="text-body text-secondary block pl-4"
+                                >{stat.description}</span
                             >
                         </div>
                     </div>
@@ -82,9 +91,9 @@
 </div>
 
 <style>
-    /* .wiper {
-        animation: wipe-in 5s ease-in-out;
-    } */
+    .wiper {
+        animation: wipe-in 3s ease-in-out;
+    }
 
     @keyframes mask-wipe {
         0% {
