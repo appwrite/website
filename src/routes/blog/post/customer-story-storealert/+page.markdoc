@@ -46,7 +46,7 @@ Recognizing this gap, Devkind set out to develop a solution designed to give mer
 
 > "Our clients rely on us to deliver solutions that not only address issues but also proactively prevent them from occurring."  
 > ⠀  
-> Saad Bhutto, Co-founder at Devkind
+> Saad Bhutto, Co-Founder at Devkind
 
 To turn StoreAlert into reality, Devkind needed a robust backend solution that could handle Shopify authentication, synchronize event data, and automate recurring tasks efficiently. They explored various Backend-as-a-Service solutions, including Firebase and Supabase. However, the **reasonable pricing model** and **extensive Functions and Database limits** convinced them to choose Appwrite for the same.
 
