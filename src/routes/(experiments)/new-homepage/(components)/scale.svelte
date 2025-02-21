@@ -1,6 +1,10 @@
 <script lang="ts">
+    import { classNames } from '$lib/utils/classnames';
     import NumberFlow from '@number-flow/svelte';
-    import { onMount } from 'svelte';
+    import { inView } from 'motion';
+    import { onDestroy } from 'svelte';
+
+    const animationDuration = 3;
 
     let stats = [
         {
@@ -27,19 +31,49 @@
 
     const numbers = [12, 900, 1, 999];
 
+    let animate: boolean = false;
+
+    let timeoutIds: Array<NodeJS.Timeout> = [];
     const updateNumbers = () => {
-        stats = stats.map((stat, index) => {
-            return { ...stat, number: numbers[index] };
+        stats.forEach((stat, index) => {
+            const timeoutId = setTimeout(
+                () => {
+                    stats[index] = { ...stat, number: numbers[index] };
+                },
+                ((index * animationDuration) / numbers.length) * 1000
+            );
+
+            timeoutIds.push(timeoutId);
         });
     };
 
-    onMount(() => {
-        updateNumbers();
+    const useInView = (node: HTMLElement) => {
+        inView(
+            node,
+            () => {
+                animate = true;
+                updateNumbers();
+            },
+            { amount: 0.5 }
+        );
+    };
+
+    const clearAllTimeouts = () => {
+        timeoutIds.forEach((timeoutId) => {
+            clearTimeout(timeoutId);
+        });
+
+        timeoutIds = [];
+    };
+
+    onDestroy(() => {
+        clearAllTimeouts();
     });
 </script>
 
 <div
     class="light relative flex min-h-[70vh] w-full flex-col gap-4 overflow-hidden bg-[#EDEDF0] py-20"
+    use:useInView
 >
     <div class="container relative z-10 w-full">
         <div class="max-w-xl">
@@ -58,14 +92,18 @@
         </div>
     </div>
 
-    <div class="wiper absolute inset-0 overflow-hidden">
+    <div class="wiper absolute inset-0" style:--animation-duration={`${animationDuration}s`}>
         <div class="container relative h-full">
-            <div class="absolute inset-0 z-1 grid grid-cols-4">
+            <div class="absolute inset-0 z-100 grid grid-cols-4">
                 {#each stats as stat, i}
                     <div
-                        class="mask h-full border-l border-dashed border-black/10"
+                        class={classNames(
+                            'mask h-full border-l border-dashed border-black/10',
+                            'after:border-accent after:absolute after:top-[var(--after-top)] after:size-2 after:rounded-full after:border after:bg-white'
+                        )}
                         style:--mask-direction="bottom"
                         style:--mask-height={`${(4 - i) * 25}%`}
+                        style:--after-top={`${4 * i * 10}%`}
                     >
                         <div class="relative" style:top={`${(4 - i) * 18}%`}>
                             <NumberFlow
@@ -92,7 +130,7 @@
 
 <style>
     .wiper {
-        animation: wipe-in 3s ease-in-out;
+        animation: wipe-in var(--animation-duration) ease-in-out;
     }
 
     @keyframes mask-wipe {
@@ -106,9 +144,11 @@
 
     @keyframes wipe-in {
         0% {
+            filter: blur(2px);
             clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
         }
         100% {
+            filter: blur(0);
             clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
         }
     }
