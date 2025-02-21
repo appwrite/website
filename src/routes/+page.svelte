@@ -6,7 +6,13 @@
     import Technologies from '$lib/components/Technologies.svelte';
     import { Main } from '$lib/layouts';
     import { isMobileNavOpen } from '$lib/layouts/Main.svelte';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import {
+        DEFAULT_DESCRIPTION,
+        DEFAULT_HOST,
+        getInlinedScriptTag,
+        organizationJsonSchema,
+        softwareAppSchema
+    } from '$lib/utils/metadata';
     import FooterNav from '../lib/components/FooterNav.svelte';
     import MainFooter from '../lib/components/MainFooter.svelte';
     import DeveloperCard from './DeveloperCard.svelte';
@@ -76,6 +82,12 @@
     <meta property="og:image:height" content="630" />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- eslint-disable-next-line svelte/no-at-html-tags-->
+    {@html getInlinedScriptTag(softwareAppSchema())}
+
+    <!-- eslint-disable-next-line svelte/no-at-html-tags-->
+    {@html getInlinedScriptTag(organizationJsonSchema())}
 </svelte:head>
 
 <div
@@ -153,7 +165,7 @@
                                         posthog: { name: 'get-started-btn_hero_click' }
                                     })}
                             >
-                                Get started
+                                Start building
                             </a>
 
                             <AppwriteIn100Seconds />
@@ -309,10 +321,10 @@
                     </section>
                     <div class="mt-20 overflow-hidden">
                         <ul
-                            class="web-info-boxes text-sub-body divide-black/4 divide-x divide-y font-medium"
+                            class="web-info-boxes text-sub-body divide-x divide-y divide-black/4 font-medium"
                         >
                             {#each infoBoxes as box}
-                                <li class="border-black/4 relative p-8 last-of-type:border-r">
+                                <li class="relative border-black/4 p-8 last-of-type:border-r">
                                     <img src={box.icon} width="40" height="40" alt="" />
                                     <h3
                                         class="text-primary mt-4 flex flex-wrap items-baseline gap-3"

@@ -9,7 +9,8 @@ export const posthogServerClient = PUBLIC_POSTHOG_API_KEY
     : null;
 
 export const experiments = {
-    'sticky-navigation_ab-test': ['control', 'sticky-nav']
+    'sticky-navigation_ab-test': ['control', 'sticky-nav'],
+    'cta-copy_ab-test': ['control', 'start-for-free_variant', 'start-building_variant']
 } as const;
 
 type Key = keyof typeof experiments;

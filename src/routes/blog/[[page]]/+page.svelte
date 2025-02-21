@@ -52,12 +52,17 @@
          */
         const url = new URL('/blog', $page.url);
 
-        searchQuery
-            ? url.searchParams.set('search', searchQuery)
-            : url.searchParams.delete('search');
-        selectedCategory && selectedCategory !== 'Latest'
-            ? url.searchParams.set('category', selectedCategory)
-            : url.searchParams.delete('category');
+        if (searchQuery) {
+            url.searchParams.set('search', searchQuery);
+        } else {
+            url.searchParams.delete('search');
+        }
+
+        if (selectedCategory && selectedCategory !== 'Latest') {
+            url.searchParams.set('category', selectedCategory);
+        } else {
+            url.searchParams.delete('category');
+        }
 
         await goto(url.toString(), {
             noScroll: true,
@@ -106,7 +111,7 @@
 
     const title = 'Blog' + TITLE_SUFFIX;
     const description =
-        'Stay updated with the latest product news, insights, and tutorials from the Appwrite team. Discover tips and best practices for hassle-free backend development.';
+        'Stay updated with the latest product news, insights, and tutorials from the Appwrite team. Our blog covers everything for hassle-free backend development.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/blog.png';
 </script>
 

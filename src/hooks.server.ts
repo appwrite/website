@@ -38,24 +38,46 @@ const securityheaders: Handle = async ({ event, resolve }) => {
         }
     });
 
-    const cspDirectives = [
-        "default-src 'self'",
-        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.posthog.com https://*.plausible.io https://plausible.io",
-        "style-src 'self' 'unsafe-inline'",
-        "img-src 'self' data: https:",
-        "font-src 'self'",
-        "object-src 'none'",
-        "base-uri 'self'",
-        "form-action 'self'",
-        "frame-ancestors 'self' https://www.youtube.com https://*.vimeo.com",
-        'block-all-mixed-content',
-        'upgrade-insecure-requests',
-        "connect-src 'self' https://*.appwrite.io https://*.appwrite.org https://*.posthog.com https://*.sentry.io https://*.plausible.io https://plausible.io",
-        "frame-src 'self' https://www.youtube.com https://status.appwrite.online https://www.youtube-nocookie.com https://player.vimeo.com"
-    ];
+    // `true` if deployed via Coolify.
+    const isPreview = !!process.env.COOLIFY_FQDN;
+    // COOLIFY_FQDN already includes `http`.
+    const previewDomain = isPreview ? `${process.env.COOLIFY_FQDN}` : null;
+
+    const cspDirectives: Record<string, string> = {
+        'default-src': "'self'",
+        'script-src':
+            "'self' 'unsafe-inline' 'unsafe-eval' https://*.posthog.com https://*.plausible.io https://plausible.io",
+        'style-src': "'self' 'unsafe-inline'",
+        'img-src': "'self' data: https:",
+        'font-src': "'self'",
+        'object-src': "'none'",
+        'base-uri': "'self'",
+        'form-action': "'self'",
+        'frame-ancestors': "'self' https://www.youtube.com https://*.vimeo.com",
+        'block-all-mixed-content': '',
+        'upgrade-insecure-requests': '',
+        'connect-src':
+            "'self' https://*.appwrite.io https://*.appwrite.org https://*.posthog.com https://*.sentry.io https://*.plausible.io https://plausible.io",
+        'frame-src':
+            "'self' https://www.youtube.com https://status.appwrite.online https://www.youtube-nocookie.com https://player.vimeo.com"
+    };
+
+    if (isPreview) {
+        delete cspDirectives['block-all-mixed-content'];
+        delete cspDirectives['upgrade-insecure-requests'];
+        ['default-src', 'script-src', 'style-src', 'img-src', 'font-src', 'connect-src'].forEach(
+            (key) => {
+                cspDirectives[key] += ` ${previewDomain}`;
+            }
+        );
+    }
+
+    const cspDirectivesString = Object.entries(cspDirectives)
+        .map(([key, value]) => `${key} ${value}`.trim())
+        .join('; ');
 
     // Set security headers
-    response.headers.set('Content-Security-Policy', cspDirectives.join('; '));
+    response.headers.set('Content-Security-Policy', cspDirectivesString);
 
     // HTTP Strict Transport Security
     // max-age is set to 1 year in seconds
