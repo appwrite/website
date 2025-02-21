@@ -100,7 +100,7 @@
                         class="mask h-full border-l border-dashed border-black/10"
                         style:--mask-direction="bottom"
                         style:--mask-height={`${(4 - i) * 25}%`}
-                        style:--after-top={`140px`}
+                        style:--after-top={`${(4 - i) * 80}px`}
                     >
                         <div
                             class={classNames(
