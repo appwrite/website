@@ -91,7 +91,7 @@ import { Appwrite, Databases, Query } from "appwrite";
 
 const client = new Appwrite();
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('articles-demo'); // Your project ID
 const databases = new Databases(client);
 
