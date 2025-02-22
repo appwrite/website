@@ -9,36 +9,38 @@
 
 <script lang="ts">
     import { platformMap } from '$lib/utils/references';
-    import { getContext, setContext } from 'svelte';
+    import { getContext, onMount, setContext } from 'svelte';
     import { writable } from 'svelte/store';
-    import type { Language } from '$lib/utils/code';
+    import {
+        type Language,
+        multiCodeSelectedLanguage,
+        userSelectedLanguage
+    } from '$lib/utils/code';
     import { copy } from '$lib/utils/copy';
     import { Select, Tooltip } from '$lib/components';
 
     setContext<CodeContext>('multi-code', {
-        selected: writable(null),
+        content: writable(''),
         snippets: writable(new Set()),
-        content: writable('')
+        selected: multiCodeSelectedLanguage
     });
-
-    const languageContext = getContext<Writable<string>>('language-context');
 
     const { snippets, selected, content } = getContext<CodeContext>('multi-code');
 
     snippets.subscribe((n) => {
-        if ($selected === null && n.size > 0) {
-            $selected = Array.from(n)[0];
+        if (!$selected && n.size > 0) {
+            selected.set(Array.from(n)[0]);
         }
     });
 
     selected.subscribe((language) => {
         // apply if exists in snippets
         if (language && $snippets.has(language as Language)) {
-            languageContext?.set(language);
+            userSelectedLanguage?.set(language as Language);
         }
     });
 
-    languageContext?.subscribe((language) => {
+    userSelectedLanguage?.subscribe((language) => {
         if (
             language &&
             language !== $selected &&
@@ -62,6 +64,12 @@
             copyText = CopyStatus.Copy;
         }, 1000);
     }
+
+    onMount(() => {
+        if ($userSelectedLanguage && $snippets.has($userSelectedLanguage as Language)) {
+            selected.set($userSelectedLanguage);
+        }
+    });
 </script>
 
 <section class="dark web-code-snippet" aria-label="code-snippet panel">
