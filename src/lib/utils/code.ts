@@ -28,6 +28,7 @@ import css from 'highlight.js/lib/languages/css';
 import groovy from 'highlight.js/lib/languages/groovy';
 import ini from 'highlight.js/lib/languages/ini';
 import { Platform } from './references';
+import { writable } from 'svelte/store';
 
 const languages = {
     js: javascript,
@@ -129,3 +130,17 @@ export const getCodeHtml = (args: Args) => {
         withLineNumbers ? 'line-numbers' : ''
     }">${final}</code></pre>`;
 };
+
+/**
+ * Stores the user's last selected language globally across pages.
+ *
+ * Used to persist language selection across `MultiCode.svelte` component mounts.
+ */
+export const userSelectedLanguage = writable<Language>();
+
+/**
+ * Stores the currently selected language within a `MultiCode` instance.
+ *
+ * Defaults to `userSelectedLanguage` on component mount if not already set.
+ */
+export const multiCodeSelectedLanguage = writable<Language | null>(null);
