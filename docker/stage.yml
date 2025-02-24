@@ -50,8 +50,15 @@ services:
         networks:
             - cloud
         deploy:
-            replicas: 3
             <<: *x-update-config
+            replicas: 1
+            resources:
+                limits:
+                    cpus: '0.3'
+                    memory: 256M
+                reservations:
+                    cpus: '0.1'
+                    memory: 128M
             placement:
                 max_replicas_per_node: 1
                 constraints:
@@ -78,7 +85,14 @@ services:
         deploy:
             <<: *x-update-config
             mode: replicated
-            replicas: 8
+            replicas: 3
+            resources:
+                limits:
+                    cpus: '0.5'
+                    memory: 512M
+                reservations:
+                    cpus: '0.1'
+                    memory: 256M
             placement:
                 max_replicas_per_node: 2
                 constraints:
