@@ -8,7 +8,9 @@
             API.
         </p>
     </div>
-    <div class="relative flex h-[26.25rem] items-center justify-center rounded-xl bg-black/24 px-8">
+    <div
+        class="relative flex h-[26.25rem] items-center justify-center overflow-hidden rounded-xl bg-black/24 px-8"
+    >
         <svg
             fill="none"
             class="h-2/3 w-2/3"
@@ -426,7 +428,10 @@
             </defs>
         </svg>
 
-        <div class="absolute aspect-square h-12 w-[4.25rem]" style:right="100px">
+        <div
+            class="pointer-events-none absolute aspect-square h-12 w-[4.25rem]"
+            style:right="100px"
+        >
             <svg
                 width="20"
                 height="20"
@@ -453,7 +458,7 @@
             </div>
         </div>
 
-        <div class="absolute aspect-square h-12 w-[5.25rem]" style:left="50px">
+        <div class="pointer-events-none absolute aspect-square h-12 w-[5.25rem]" style:left="50px">
             <svg
                 width="20"
                 height="20"
@@ -480,7 +485,7 @@
             </div>
         </div>
 
-        <div class="absolute aspect-square h-12 w-[5rem]" style:top="100px">
+        <div class="pointer-events-none absolute aspect-square h-12 w-[5rem]" style:top="100px">
             <svg
                 width="20"
                 height="20"
@@ -506,5 +511,9 @@
                 <span>Walter</span>
             </div>
         </div>
+
+        <div
+            class="absolute inset-0 -z-10 h-full w-full bg-transparent [background-image:linear-gradient(to_right,#80808012_1px,transparent_1px,transparent_10px,#80808012_1px,transparent_10px),_linear-gradient(to_bottom,#80808012_1px,transparent_1px,transparent_10px,#80808012_1px,transparent_10px)] bg-[size:60px_60px]"
+        />
     </div>
 </div>
