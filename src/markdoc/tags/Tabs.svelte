@@ -25,6 +25,8 @@
             triggers: new Map()
         })
     );
+
+    setContext('tabs-selection', value);
 </script>
 
 <div class="web-card is-normal mt-4" {...$root} use:root>
@@ -35,7 +37,7 @@
         <ul class="tabs-list hidden items-center gap-4 sm:flex" {...$list} use:list>
             {#each Array.from($ctx.triggers.entries()).slice(0, 7) as [id, title]}
                 <li
-                    class="tabs-item rounded-t-[0.625rem] text-center hover:bg-white/4"
+                    class="tabs-item shrink-0 rounded-t-[0.625rem] text-center hover:bg-white/4"
                     class:text-[var(--color-primary)]={$value === id}
                 >
                     <button
@@ -51,9 +53,9 @@
                     >
                 </li>
             {/each}
-            {#if Array.from($ctx.triggers.entries()).slice(7, Array.from($ctx.triggers.entries()).length - 1).length}
+            {#if Array.from($ctx.triggers.entries()).slice(7).length}
                 {@const entries = Array.from($ctx.triggers.entries())}
-                {@const desktopOptions = entries.slice(7, entries.length - 1)}
+                {@const desktopOptions = entries.slice(7)}
 
                 <li>
                     <Select
@@ -70,9 +72,9 @@
             {/if}
         </ul>
         <ul class="tabs-list flex items-center gap-4 sm:hidden" {...$list} use:list>
-            {#each Array.from($ctx.triggers.entries()).slice(0, 3) as [id, title]}
+            {#each Array.from($ctx.triggers.entries()).slice(0, 2) as [id, title]}
                 <li
-                    class="tabs-item rounded-t-[0.625rem] text-center hover:bg-white/4"
+                    class="tabs-item shrink-0 rounded-t-[0.625rem] text-center hover:bg-white/4"
                     class:text-[var(--color-primary)]={$value === id}
                 >
                     <button
@@ -84,13 +86,15 @@
                             }
                         )}
                         {...$trigger(id)}
-                        use:trigger>{title}</button
+                        use:trigger
                     >
+                        {title}
+                    </button>
                 </li>
             {/each}
-            {#if Array.from($ctx.triggers.entries()).slice(3, Array.from($ctx.triggers.entries()).length - 1).length}
+            {#if Array.from($ctx.triggers.entries()).slice(2).length}
                 {@const entries = Array.from($ctx.triggers.entries())}
-                {@const desktopOptions = entries.slice(3, entries.length - 1)}
+                {@const desktopOptions = entries.slice(2)}
 
                 <li>
                     <Select
