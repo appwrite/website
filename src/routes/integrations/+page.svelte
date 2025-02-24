@@ -602,7 +602,7 @@
             margin-bottom: f.pxToRem(60);
             @media #{devices.$break2open} {
                 position: sticky;
-                top: 50px;
+                top: 90px;
                 height: 500px;
                 transition: top 0.3s ease;
 
