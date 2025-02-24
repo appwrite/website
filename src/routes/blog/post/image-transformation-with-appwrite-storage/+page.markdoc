@@ -9,6 +9,8 @@ author: ebenezer-don
 category: tutorial
 ---
 
+{% Storage_Image src="/images/blog/image-classification.png" /%}
+
 Images are a core part of any modern web or mobile application. Whether you're displaying user avatars, product thumbnails, or full-screen backgrounds, images need to be optimized for performance, aesthetics, and consistency. Loading large, uncompressed images can slow down your app, and mismatched styles can break your UI. This is why dynamic image transformation should be a part of your app.
 
 Instead of manually editing images before uploading them or storing multiple variations of the same file, Appwrite lets you manipulate images on the fly using the Storage preview endpoint. With a simple API call, you can resize, crop, compress, change formats, add borders, round corners, adjust opacity, and even apply background colors. The best part is that Appwrite automatically caches the transformed images, speeding up repeat requests.
