@@ -143,8 +143,8 @@ export const preferredVersion = writable<Version | null>(
     globalThis?.localStorage?.getItem('preferredVersion') as Version
 );
 
-export const preferredPlatform = writable<Platform | null>(
-    (globalThis?.localStorage?.getItem('preferredPlatform') as Platform) ?? 'client-web'
+export const preferredPlatform = writable<Platform>(
+    (globalThis?.localStorage?.getItem('preferredPlatform') ?? 'client-web') as Platform
 );
 
 if (browser) {

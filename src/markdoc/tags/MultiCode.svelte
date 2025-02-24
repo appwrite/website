@@ -26,11 +26,11 @@
     selected.subscribe((language) => {
         // apply if exists in snippets
         if (language && $snippets.has(language as Language)) {
-            preferredPlatform?.set(language as Platform);
+            preferredPlatform.set(language as Platform);
         }
     });
 
-    preferredPlatform?.subscribe((language) => {
+    preferredPlatform.subscribe((language) => {
         if (
             language &&
             language !== $selected &&
