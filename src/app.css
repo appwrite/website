@@ -29,8 +29,8 @@
 
     /* mint */
     --color-mint-200: hsl(var(--color-mint-hue) 56% 88%);
-    --color-mint-500: calc(hsl(var(--color-mint-hue) + 1) 54% 69%);
-    --color-mint-700: calc(hsl(var(--color-mint-hue) + 2) 24% 41%);
+    --color-mint-500: hsl(var(--color-mint-hue) 54% 69%);
+    --color-mint-700: hsl(var(--color-mint-hue) 24% 41%);
 
     /* purple */
     --color-purple-200: hsl(var(--color-purple-hue) 100% 88%);
@@ -44,8 +44,8 @@
 
     /* blue */
     --color-blue-200: hsl(var(--color-blue-hue) 100% 88%);
-    --color-blue-500: calc(hsl(var(--color-blue-hue) - 1) 99% 70%);
-    --color-blue-700: calc(hsl(var(--color-blue-hue) - 1) 42% 42%);
+    --color-blue-500: hsl(var(--color-blue-hue) 99% 70%);
+    --color-blue-700: hsl(var(--color-blue-hue) 42% 42%);
 
     /* green */
     --color-green-700: #0a714f;

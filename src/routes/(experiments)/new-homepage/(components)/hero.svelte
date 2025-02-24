@@ -3,7 +3,7 @@
     import Dashboard from './dashboard.svelte';
 </script>
 
-<div class="relative flex min-h-[75vh] flex-col items-center md:flex-row">
+<div class="relative flex min-h-[80vh] flex-col items-center md:flex-row">
     <div
         class="gradient-background absolute top-0 left-0 z-0 h-screen w-full -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl"
         style:--speed="500ms"
