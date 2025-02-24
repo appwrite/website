@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
 
     type $$Props = {
         eyebrow: {
@@ -66,7 +66,11 @@
                 {/if}
             </div>
         </div>
-        <img class={cn({ 'hidden md:block': mobileImage })} src={image.url} alt={image.alt ?? ''} />
+        <img
+            class={classNames({ 'hidden md:block': mobileImage })}
+            src={image.url}
+            alt={image.alt ?? ''}
+        />
         {#if mobileImage}
             <img class="block md:hidden" src={mobileImage.url} alt={mobileImage.alt ?? ''} />
         {/if}

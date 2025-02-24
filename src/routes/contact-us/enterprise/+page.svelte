@@ -8,6 +8,7 @@
     import { loggedIn, user } from '$lib/utils/console';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
+    import Scale from '$routes/(experiments)/new-homepage/(components)/scale.svelte';
 
     let email = '';
     let name = '';
@@ -258,6 +259,7 @@
                 <MainFooter />
             </div>
         </div>
+        <Scale />
     </div>
 </Main>
 

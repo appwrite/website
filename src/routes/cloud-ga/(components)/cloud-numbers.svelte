@@ -3,7 +3,7 @@
     import Cell from './grid-system/cell.svelte';
     import NumberFlow from '@number-flow/svelte';
     import { inView } from 'motion';
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
 
     let featuredNumbers: Array<{ number: number; label: string; suffix?: string }> = [
         { number: 0, label: 'GitHub Stars', suffix: 'k+' },
@@ -39,7 +39,7 @@
 </script>
 
 <div
-    class={cn(
+    class={classNames(
         'relative h-full',
         'before:absolute before:inset-x-0 before:h-[350px] before:bg-gradient-to-b before:from-[#232325]/90 before:to-transparent'
     )}

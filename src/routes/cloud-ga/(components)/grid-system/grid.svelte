@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
 
     export let columns: number = 4;
     export let rows: number = 4;
@@ -11,7 +11,7 @@
 </script>
 
 <div
-    class={cn(
+    class={classNames(
         'grid h-full w-full auto-rows-min grid-cols-1 grid-rows-[1fr] md:grid-cols-[repeat(var(--columns),_1fr)]',
         'border-smooth border-dashed md:border-l',
         'relative',
@@ -26,7 +26,7 @@
             {@const x = (index % columns) + 1}
             {@const y = Math.floor(index / columns) + 1}
             <div
-                class={cn(
+                class={classNames(
                     'animate-fade-in absolute inset-0',
                     '[grid-column-start:var(--x)] [grid-column-end:span_1]',
                     '[grid-row-start:var(--y)] [grid-row-end:span_1]',

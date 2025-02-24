@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
 
     export let row: number | 'auto' = 'auto';
     export let column: number | 'auto' = 'auto';
@@ -12,7 +12,7 @@
 </script>
 
 <div
-    class={cn(
+    class={classNames(
         'relative md:col-span-[var(--column)] md:col-start-[var(--col-start)] md:row-span-[var(--row)]',
         classNames
     )}

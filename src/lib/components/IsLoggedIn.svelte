@@ -1,6 +1,6 @@
 <script lang="ts">
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
     import { trackEvent } from '$lib/actions/analytics';
     import { browser } from '$app/environment';
     import { page } from '$app/stores';
@@ -15,7 +15,7 @@
 </script>
 
 <a
-    class={cn('web-button web-u-inline-width-100-percent-mobile', classes)}
+    class={classNames('web-button web-u-inline-width-100-percent-mobile', classes)}
     href={PUBLIC_APPWRITE_DASHBOARD}
     on:click={() =>
         trackEvent({

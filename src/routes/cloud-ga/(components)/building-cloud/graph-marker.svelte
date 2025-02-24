@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
 
     export let delay: number = 0;
     let classNames: string = '';
@@ -10,7 +10,7 @@
 </script>
 
 <div
-    class={cn(
+    class={classNames(
         'text-caption text-primary relative z-10 flex items-start gap-x-4 px-4 font-medium opacity-0 [animation-delay:var(--delay)]',
         classNames,
         {
@@ -20,7 +20,7 @@
     style:--delay="{delay}ms"
 >
     <div
-        class={cn(
+        class={classNames(
             'relative flex h-full w-px items-end justify-center bg-white/10',
             'before:bg-accent before:absolute before:top-0 before:h-3 before:w-px',
             {
@@ -29,7 +29,7 @@
         )}
     >
         <div
-            class={cn(
+            class={classNames(
                 'animate-fade-in group absolute z-10 flex size-5 cursor-pointer items-center justify-center opacity-0'
             )}
         >

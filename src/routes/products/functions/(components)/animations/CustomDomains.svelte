@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
 
     import Chrome from '../../(assets)/chrome.svg';
 
@@ -33,7 +33,7 @@
                     >
                         {#each ['Deployments', 'Executions', 'Domains', 'Usage', 'Settings'] as heading, i}
                             <button
-                                class={cn('border-b border-transparent pb-2', {
+                                class={classNames('border-b border-transparent pb-2', {
                                     ' border-white/40': i === 2
                                 })}>{heading}</button
                             >

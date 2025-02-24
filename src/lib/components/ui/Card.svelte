@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
     import type { HTMLButtonAttributes, HTMLAnchorAttributes } from 'svelte/elements';
     import { cva, type VariantProps } from 'cva';
 
@@ -34,7 +34,7 @@
     export let variant: $$Props['variant'] = 'primary';
     const { class: classes, ...props } = $$restProps;
 
-    const buttonClasses = cn(card({ variant }), classes);
+    const buttonClasses = classNames(card({ variant }), classes);
 </script>
 
 {#if href}

@@ -2,7 +2,7 @@
     import { inView } from 'motion';
     import MapMarker from './map-marker.svelte';
     import { slugify } from '$lib/utils/slugify';
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
 
     let mouse = { x: 0, y: 0 };
     let animate: boolean = true;
@@ -146,7 +146,7 @@
     >
         {#each pins as pin}
             <button
-                class={cn(
+                class={classNames(
                     'grow text-nowrap rounded-full border-0.5 bg-gradient-to-br py-1 px-4 text-white backdrop-blur-lg transition-colors',
                     {
                         'from-accent to-accent/50 border-accent':

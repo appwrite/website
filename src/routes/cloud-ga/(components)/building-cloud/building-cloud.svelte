@@ -3,7 +3,7 @@
     import Cell from '../grid-system/cell.svelte';
     import Graph from './graph.svelte';
     import { inView } from 'motion';
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
 
     const missions = [
         'Developer experience',
@@ -80,7 +80,7 @@
                         {@const index = `0${i + 1}`}
                         <a
                             href="/"
-                            class={cn(
+                            class={classNames(
                                 'group flex items-center gap-2 text-white [animation-delay:var(--delay)]',
                                 {
                                     'animate-text': animate

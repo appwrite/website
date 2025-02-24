@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
 
     export let animate: boolean = false;
 
@@ -13,7 +13,7 @@
     height="400"
     viewBox="0 0 1166 400"
     fill="none"
-    class={cn('graph max-w-full', classNames)}
+    class={classNames('graph max-w-full', classNames)}
     xmlns="http://www.w3.org/2000/svg"
     style:animation-play-state={animate ? 'running' : 'paused'}
 >

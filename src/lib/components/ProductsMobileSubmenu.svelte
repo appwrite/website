@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
     import { melt, createCollapsible } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
     import { products, sublinks } from './ProductsSubmenu.svelte';
@@ -21,7 +21,7 @@
             class="text-caption web-side-nav-button flex items-center justify-between"
             >{label}
             <span
-                class={cn('web-icon-chevron-down transition-transform', {
+                class={classNames('web-icon-chevron-down transition-transform', {
                     'rotate-180': $open
                 })}
             /></button

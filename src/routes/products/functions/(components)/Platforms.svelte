@@ -11,7 +11,7 @@
     import Ruby from '../(assets)/platforms/ruby.svg';
     import Swift from '../(assets)/platforms/swift.svg';
     import DotNet from '../(assets)/platforms/dot-net.svg';
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
 
     const platforms = [
         { name: 'Deno', icon: Deno },
@@ -30,7 +30,7 @@
 </script>
 
 <div
-    class={cn(
+    class={classNames(
         'container mb-10 overflow-clip',
         '[filter:brightness(1.5)] [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]'
     )}

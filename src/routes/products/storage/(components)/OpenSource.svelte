@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
 
     const items = [
         {
@@ -47,7 +47,7 @@
             >
                 {#each items as { title, content, icon }}
                     <div
-                        class={cn(
+                        class={classNames(
                             'relative flex flex-col items-center justify-center px-11 text-center md:-mr-8 md:max-w-[290px] md:px-0 md:pr-8'
                         )}
                     >

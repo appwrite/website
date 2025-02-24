@@ -1,5 +1,5 @@
 <script>
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
     import Cell from './grid-system/cell.svelte';
     import Grid from './grid-system/grid.svelte';
 
@@ -50,14 +50,14 @@
                 })}
                 <Cell {columnStart}>
                     <div
-                        class={cn('absolute flex flex-col gap-80', {
+                        class={classNames('absolute flex flex-col gap-80', {
                             'left-0 -ml-px': i !== 4,
                             'right-0 -mr-px': i === 4
                         })}
                     >
                         {#each lines as line}
                             <div
-                                class={cn(
+                                class={classNames(
                                     'animate-drop h-[var(--height)] w-px bg-gradient-to-t to-transparent',
                                     line.from
                                 )}

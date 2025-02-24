@@ -1,6 +1,6 @@
 <script>
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
     import Logos from './Logos.svelte';
     import ChatIcon from '../(assets)/chat-icon.svg';
     import Beaker from '../(assets)/beaker.svg';
@@ -30,7 +30,7 @@
 </script>
 
 <section
-    class={cn(
+    class={classNames(
         'gridLine horizontal relative mt-8 grid h-full min-h-[50vh] w-full place-items-center md:mt-32 md:grid-cols-[10%_1fr_10%] lg:grid-cols-[20%_1fr_20%] xl:grid-cols-3'
     )}
 >
