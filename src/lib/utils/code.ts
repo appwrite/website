@@ -134,6 +134,6 @@ export const getCodeHtml = (args: Args) => {
 /**
  * Stores the currently selected language within a `MultiCode` instance.
  *
- * Defaults to `userSelectedLanguage` on component mount if not already set.
+ * Defaults to `references#preferredPlatform` on component mount if not already set.
  */
 export const multiCodeSelectedLanguage = writable<Language | null>(null);
