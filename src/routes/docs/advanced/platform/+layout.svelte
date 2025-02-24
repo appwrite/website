@@ -103,7 +103,7 @@
                     href: '/docs/advanced/platform/phone-otp'
                 },
                 {
-                    new: isNewUntil('1 Apr 2025'),
+                    new: isNewUntil('14 Apr 2025'),
                     label: 'Image Transformations',
                     href: '/docs/advanced/platform/image-transformations'
                 }

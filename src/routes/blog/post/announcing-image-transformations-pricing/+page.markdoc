@@ -25,7 +25,7 @@ As Appwrite continues to scale, we need to ensure that our platform remains sust
 
 Please refer to our [rates page](/docs/advanced/platform/image-transformations#rates) for detailed pricing information, including origin image costs and included quotas for different plans.
 
-To help prepare for these changes, teams can review their current image transformation usage through their organization's usage page or the usage section of specific projects. This will help you understand your usage patterns and plan accordingly.
+To help prepare for these changes, teams can review their current image transformation usage through their organization's usage page or the usage section of specific buckets. This will help you understand your usage patterns and plan accordingly.
 
 ![console image](/images/blog/announcing-image-transformations/cover.png)
 
