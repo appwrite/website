@@ -9,9 +9,9 @@
 
 <script lang="ts">
     import { copy } from '$lib/utils/copy';
-    import { writable } from 'svelte/store';
+    import { type Readable, writable } from 'svelte/store';
     import { Select, Tooltip } from '$lib/components';
-    import { getContext, onMount, setContext } from 'svelte';
+    import { getContext, hasContext, onMount, setContext } from 'svelte';
     import { type Language, multiCodeSelectedLanguage } from '$lib/utils/code';
     import { Platform, platformMap, preferredPlatform } from '$lib/utils/references';
 
@@ -35,7 +35,7 @@
             language &&
             language !== $selected &&
             // apply if exists in snippets
-            $snippets.has(language as Language)
+            $snippets.has(language)
         ) {
             selected.set(language);
         }
@@ -55,11 +55,25 @@
         }, 1000);
     }
 
+    let hasMounted = false;
+
     onMount(() => {
-        if ($preferredPlatform && $snippets.has($preferredPlatform as Language)) {
+        if ($preferredPlatform && $snippets.has($preferredPlatform)) {
             selected.set($preferredPlatform);
         }
+
+        hasMounted = true;
     });
+
+    if (hasContext('tabs-selection')) {
+        const tabsSelection = getContext<Readable<string>>('tabs-selection');
+        tabsSelection.subscribe(() => {
+            if (!hasMounted) return;
+            if (!$snippets.has($preferredPlatform)) {
+                selected.set(Array.from($snippets)[0]);
+            }
+        });
+    }
 </script>
 
 <section class="dark web-code-snippet" aria-label="code-snippet panel">
