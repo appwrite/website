@@ -53,7 +53,7 @@ After entering the project directory, remove the `lib/` and `test/` directories.
 Install the Dart Appwrite SDK.
 
 ```sh
-dart pub add dart_appwrite 11.0.2
+dart pub add dart_appwrite:13.0.0
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
