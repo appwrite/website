@@ -65,9 +65,13 @@
         });
     }
 
+    let platform = $page.params.platform as Platform;
+
     onMount(() => {
+        platform = ($preferredPlatform ?? $page.params.platform) as Platform;
+
+        preferredPlatform.set(platform);
         preferredVersion.set($page.params.version as Version);
-        preferredPlatform.set($page.params.platform as Platform);
     });
 
     // cleaned service description without Markdown links.
@@ -79,7 +83,6 @@
     // the service description up to the first full stop, providing sufficient information.
     $: shortenedDescription = serviceDescription.substring(0, serviceDescription.indexOf('.') + 1);
 
-    $: platform = $page.params.platform as Platform;
     $: platformType = platform.startsWith('client-') ? 'CLIENT' : 'SERVER';
     $: serviceName = serviceMap[data.service?.name];
     $: title = serviceName + API_REFERENCE_TITLE_SUFFIX;
