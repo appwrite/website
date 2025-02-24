@@ -132,13 +132,6 @@ export const getCodeHtml = (args: Args) => {
 };
 
 /**
- * Stores the user's last selected language globally across pages.
- *
- * Used to persist language selection across `MultiCode.svelte` component mounts.
- */
-export const userSelectedLanguage = writable<Language>();
-
-/**
  * Stores the currently selected language within a `MultiCode` instance.
  *
  * Defaults to `userSelectedLanguage` on component mount if not already set.

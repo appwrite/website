@@ -8,16 +8,12 @@
 </script>
 
 <script lang="ts">
-    import { platformMap } from '$lib/utils/references';
-    import { getContext, onMount, setContext } from 'svelte';
-    import { writable } from 'svelte/store';
-    import {
-        type Language,
-        multiCodeSelectedLanguage,
-        userSelectedLanguage
-    } from '$lib/utils/code';
     import { copy } from '$lib/utils/copy';
+    import { writable } from 'svelte/store';
     import { Select, Tooltip } from '$lib/components';
+    import { getContext, onMount, setContext } from 'svelte';
+    import { type Language, multiCodeSelectedLanguage } from '$lib/utils/code';
+    import { Platform, platformMap, preferredPlatform } from '$lib/utils/references';
 
     setContext<CodeContext>('multi-code', {
         content: writable(''),
@@ -27,20 +23,14 @@
 
     const { snippets, selected, content } = getContext<CodeContext>('multi-code');
 
-    snippets.subscribe((n) => {
-        if (!$selected && n.size > 0) {
-            selected.set(Array.from(n)[0]);
-        }
-    });
-
     selected.subscribe((language) => {
         // apply if exists in snippets
         if (language && $snippets.has(language as Language)) {
-            userSelectedLanguage?.set(language as Language);
+            preferredPlatform?.set(language as Platform);
         }
     });
 
-    userSelectedLanguage?.subscribe((language) => {
+    preferredPlatform?.subscribe((language) => {
         if (
             language &&
             language !== $selected &&
@@ -66,8 +56,8 @@
     }
 
     onMount(() => {
-        if ($userSelectedLanguage && $snippets.has($userSelectedLanguage as Language)) {
-            selected.set($userSelectedLanguage);
+        if ($preferredPlatform && $snippets.has($preferredPlatform as Language)) {
+            selected.set($preferredPlatform);
         }
     });
 </script>
