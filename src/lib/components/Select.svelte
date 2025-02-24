@@ -8,6 +8,7 @@
 </script>
 
 <script lang="ts">
+    import { classNames } from '$lib/utils/classnames';
     import { createSelect, melt, type CreateSelectProps } from '@melt-ui/svelte';
     import { createEventDispatcher } from 'svelte';
     import { fly, type FlyParams } from 'svelte/transition';
@@ -21,6 +22,9 @@
     export let id: string | undefined = undefined;
     export let preventScroll = false;
     export let placement: NonNullable<CreateSelectProps['positioning']>['placement'] = 'bottom';
+    let className: string = '';
+
+    export { className as class };
 
     const dispatch = createEventDispatcher<{
         change: unknown;
@@ -85,7 +89,7 @@
 </script>
 
 <button
-    class="web-select is-colored"
+    class={classNames('web-select is-colored', className)}
     {id}
     class:web-is-not-mobile={nativeMobile}
     use:melt={$trigger}
