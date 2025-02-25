@@ -66,7 +66,7 @@ console.log(result.href) // Image URL
 
 ```
 
-{% storage_image file_id="cat-image" width=1600 height=0 gravity="center" quality=90 border_width=5 border_color="CDCA30" border_radius=15 opacity=1 rotation=0 background_color="FFFFFF" output="webp" /%}
+{% storage_image just_img=true file_id="cat-image" width=1600 height=0 gravity="center" quality=90 border_width=5 border_color="CDCA30" border_radius=15 opacity=1 rotation=0 background_color="FFFFFF" output="webp" /%}
 
 
 This returns a new URL for the transformed image, which can be used directly in your app. Let's break down the parameters:
@@ -91,7 +91,7 @@ const previewUrl = storage.getFilePreview(
 )
 ```
 
-{% storage_image file_id="cat-image" width=1600 height=600 /%}
+{% storage_image just_img=true file_id="cat-image" width=1600 height=600 /%}
 
 ## 2. Cropping with gravity
 
@@ -122,7 +122,7 @@ const previewUrl = storage.getFilePreview(
 )
 ```
 
-{% storage_image file_id="cat-image" width=1600 height=1600 gravity="top-left" /%}
+{% storage_image just_img=true file_id="cat-image" width=1600 height=1600 gravity="top-left" /%}
 
 ## 3. Adjusting image quality
 
@@ -144,7 +144,7 @@ const compressedImage = storage.getFilePreview(
 )
 ```
 
-{% storage_image file_id="cat-image" width=1600 height=800 gravity="center" quality=10 /%}
+{% storage_image just_img=true file_id="cat-image" width=1600 height=800 gravity="center" quality=10 /%}
 
 ## 4. Adding borders and border radius
 
@@ -170,7 +170,7 @@ const previewUrl = storage.getFilePreview(
 )
 ```
 
-{% storage_image file_id="cat-image" width=1600 height=1000 gravity="center" quality=100 border_width=8 border_color="FF3366" border_radius=80 /%}
+{% storage_image just_img=true file_id="cat-image" width=1600 height=1000 gravity="center" quality=100 border_width=8 border_color="FF3366" border_radius=80 /%}
 
 ## 5. Controlling opacity
 
@@ -196,7 +196,7 @@ const overlayImage = storage.getFilePreview(
 )
 ```
 
-{% storage_image file_id="cat-image" width=1600 height=1000 gravity="center" quality=100 opacity=0.3 /%}
+{% storage_image just_img=true file_id="cat-image" width=1600 height=1000 gravity="center" quality=100 opacity=0.3 /%}
 
 ## 6. Rotating an Image
 
@@ -223,7 +223,7 @@ const rotatedImage = storage.getFilePreview(
 )
 ```
 
-{% storage_image file_id="cat-image" width=400 height=400 gravity="center" quality=100 rotation=45 background_color="FFFFFF" /%}
+{% storage_image just_img=true file_id="cat-image" width=400 height=400 gravity="center" quality=100 rotation=45 background_color="FFFFFF" /%}
 
 ## 7. Changing background color
 
@@ -250,7 +250,7 @@ const previewUrl = storage.getFilePreview(
 )
 ```
 
-{% storage_image file_id="cat-image" width=1600 height=800 gravity="center" quality=100 opacity=0.7 background_color="FF9900" /%}
+{% storage_image just_img=true file_id="cat-image" width=1600 height=800 gravity="center" quality=100 opacity=0.7 background_color="FF9900" /%}
 
 ## Final thoughts
 

@@ -17,6 +17,7 @@
     export let rotation: number = 0;
     export let background_color: string = '000000';
     export let output: string = 'webp';
+    export let just_img: boolean = false;
 
     // Get the file preview URL from Appwrite Storage
     const src = storage
@@ -38,4 +39,8 @@
         .toString();
 </script>
 
-<img {src} {alt} {title} />
+{#if just_img}
+    <img {src} {alt} {title} />
+{:else}
+    <Image {src} {alt} {title} />
+{/if}
