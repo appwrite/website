@@ -41,7 +41,8 @@
                 companyName,
                 companySize,
                 companyWebsite,
-                firstName: name,
+                firstName,
+                lastName,
                 message: useCase,
                 ...getReferrerAndUtmSource()
             })
