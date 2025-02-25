@@ -2,7 +2,8 @@
     import Map from '$lib/components/regions-map/map.svelte';
     import { classNames } from '$lib/utils/classnames';
 
-    let activeItem = 'PoP Locations';
+    import { createTabs, melt } from '@melt-ui/svelte';
+
     const navItems = [
         {
             label: 'PoP Locations',
@@ -46,9 +47,20 @@
 `
         }
     ];
+
+    const {
+        elements: { root, list, content, trigger },
+        states: { value }
+    } = createTabs({
+        defaultValue: navItems[0].label.toLowerCase(),
+        loop: true
+    });
 </script>
 
-<div class="light flex min-h-[100vh] flex-col items-center justify-center gap-12 bg-[#EDEDF0]">
+<div
+    class="light flex min-h-[100vh] flex-col items-center justify-center gap-12 bg-[#EDEDF0]"
+    use:melt={$root}
+>
     <div class="flex flex-col items-center gap-4">
         <h1 class="text-title font-aeonik-pro text-primary">
             The Appwrite Network<span class="text-accent">_</span>
@@ -64,12 +76,13 @@
     <Map />
 
     <div
+        use:melt={$list}
         class="grid w-full max-w-xl grid-cols-3 place-content-center gap-3 rounded-full bg-white/90 p-1 drop-shadow-md"
     >
         {#each navItems as { label, icon }}
-            {@const isActive = activeItem === label}
+            {@const isActive = $value === label.toLowerCase()}
             <button
-                on:click={() => (activeItem = label)}
+                use:melt={$trigger(label.toLowerCase())}
                 class={classNames(
                     'text-caption text-primary bg-smooth flex h-8 items-center justify-center gap-1 rounded-full border border-[#EBEBEB] font-medium transition-colors',
                     {
