@@ -16,9 +16,6 @@
     export let background_color: string = 'FFFFFF';
     export let output: string = 'webp';
 
-    console.log('<><><>bucket_id<><><><><><>>>==>', bucket_id);
-    console.log('<><><>file_id<><><><><><>>>==>', file_id);
-
     // Get the file preview URL from Appwrite Storage
     const imageSrc = storage
         .getFilePreview(
@@ -37,20 +34,6 @@
             output as any
         )
         .toString();
-    console.log('<><><>imageSrc<><><><><><>>>==>', imageSrc);
-
-    /*
-    1800, // Width
-  0, // Height (ignored if 0)
-  'center', // Cropping gravity
-  90, // Quality (1-100)
-  5, // Border width
-  'CDCA30', // Border color (hex)
-  15, // Border radius
-  1, // Opacity (0-1)
-  0, // Rotation (degrees)
-  'FFFFFF', // Background color
-  'jpg', // Output format */
 </script>
 
 <img src={imageSrc} {alt} {title} />
