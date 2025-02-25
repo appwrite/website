@@ -3,7 +3,7 @@ layout: post
 title: Image transformation with Appwrite Storage
 description: Learn how to dynamically transform images with Appwrite Storage for better performance.
 date: 2025-02-28
-cover: /images/blog/image-transformation-with-appwrite-storage/cover.png
+cover: /images/blog/planetscale-databases-alternative/cover.png
 timeToRead: 6
 author: ebenezer-don
 category: tutorial
@@ -54,19 +54,16 @@ const result = storage.getFilePreview(
   'center', // Cropping gravity
   90, // Quality (1-100)
   5, // Border width
-  'CDCA30', // Border color (hex)
+  'FD346E', // Border color (hex)
   15, // Border radius
   1, // Opacity (0-1)
   0, // Rotation (degrees)
   'FFFFFF', // Background color
   'webp', // Output format
 )
-
-console.log(result.href) // Image URL
-
 ```
 
-{% storage_image just_img=true file_id="cat-image" width=1600 height=0 gravity="center" quality=90 border_width=5 border_color="CDCA30" border_radius=15 opacity=1 rotation=0 background_color="FFFFFF" output="webp" /%}
+{% storage_image just_img=true file_id="cat-image" width=1600 height=0 gravity="center" quality=90 border_width=5 border_color="FD346E" border_radius=15 opacity=1 rotation=0 background_color="FFFFFF" output="webp" /%}
 
 
 This returns a new URL for the transformed image, which can be used directly in your app. Let's break down the parameters:
