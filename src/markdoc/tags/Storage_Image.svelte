@@ -38,4 +38,4 @@
         .toString();
 </script>
 
-<Image {src} {alt} {title} />
+<img {src} {alt} {title} />
