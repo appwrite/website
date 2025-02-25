@@ -9,7 +9,7 @@ author: ebenezer-don
 category: tutorial
 ---
 
-{% Storage_Image src="/images/blog/image-classification.png" /%}
+{% storage_image src="/images/blog/image-classification.png" /%}
 
 Images are a core part of any modern web or mobile application. Whether you're displaying user avatars, product thumbnails, or full-screen backgrounds, images need to be optimized for performance, aesthetics, and consistency. Loading large, uncompressed images can slow down your app, and mismatched styles can break your UI. This is why dynamic image transformation should be a part of your app.
 
