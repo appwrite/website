@@ -17,7 +17,7 @@ This guide will walk you through everything you need to know about image transfo
 
 Let's get started.
 
-## Why dynamic image transformations?
+# Why dynamic image transformations?
 
 Here are some of the benefits of transforming images dynamically:
 
@@ -30,7 +30,7 @@ You can crop, rotate, and adjust opacity to fine-tune how images appear. This is
 4. **Built-in caching**
 Appwrite caches transformed images, which reduces processing time and ensures faster repeat requests.
 
-## How image transformation works in Appwrite
+# How image transformation works in Appwrite
 
 Appwrite's **Storage preview endpoint** applies transformations dynamically when retrieving an image. The original file remains unchanged, while Appwrite generates a modified version on-the-fly and returns the transformed image.
 
@@ -71,7 +71,7 @@ console.log(result.href) // Image URL
 
 This returns a new URL for the transformed image, which can be used directly in your app. Let's break down the parameters:
 
-## 1. Resizing the image
+# 1. Resizing the image
 
 Resizing is one of the most common transformations. Whether you're displaying thumbnails, profile pictures, or high-resolution banners, controlling the width and height ensures that images fit well within your design. Appwrite allows you to set:
 
@@ -93,17 +93,17 @@ const previewUrl = storage.getFilePreview(
 
 {% storage_image just_img=true file_id="cat-image" width=1600 height=600 /%}
 
-## 2. Cropping with gravity
+# 2. Cropping with gravity
 
 Cropping allows you to remove unnecessary parts of an image and focus on the important area. The **gravity** parameter controls which part of the image remains visible when cropping.
 
-### Common use cases
+## Common use cases
 
 - Ensuring a profile picture always centers on a face
 - Keeping product images aligned in an e-commerce store
 - Removing excess background in UI components
 
-### Gravity options
+## Gravity options
 
 - `center` (default)
 - `top-left`, `top`, `top-right`
@@ -124,7 +124,7 @@ const previewUrl = storage.getFilePreview(
 
 {% storage_image just_img=true file_id="cat-image" width=1600 height=1600 gravity="top-left" /%}
 
-## 3. Adjusting image quality
+# 3. Adjusting image quality
 
 The **quality** parameter controls image compression, helping to balance clarity and file size.
 
@@ -146,7 +146,7 @@ const compressedImage = storage.getFilePreview(
 
 {% storage_image just_img=true file_id="cat-image" width=1600 height=800 gravity="center" quality=10 /%}
 
-## 4. Adding borders and border radius
+# 4. Adding borders and border radius
 
 Borders help separate images from the background, while border radius adds rounded corners for a softer appearance.
 
@@ -172,7 +172,7 @@ const previewUrl = storage.getFilePreview(
 
 {% storage_image just_img=true file_id="cat-image" width=1600 height=1000 gravity="center" quality=100 border_width=8 border_color="FF3366" border_radius=80 /%}
 
-## 5. Controlling opacity
+# 5. Controlling opacity
 
 Setting **opacity** allows images to blend into backgrounds or appear as overlays.
 
@@ -198,7 +198,7 @@ const overlayImage = storage.getFilePreview(
 
 {% storage_image just_img=true file_id="cat-image" width=1600 height=1000 gravity="center" quality=100 opacity=0.3 /%}
 
-## 6. Rotating an Image
+# 6. Rotating an Image
 
 The **rotation** parameter allows you to rotate an image by a specified number of degrees.
 
@@ -225,7 +225,7 @@ const rotatedImage = storage.getFilePreview(
 
 {% storage_image just_img=true file_id="cat-image" width=400 height=400 gravity="center" quality=100 rotation=45 background_color="FFFFFF" /%}
 
-## 7. Changing background color
+# 7. Changing background color
 
 For transparent images (like PNGs), you can set a background color.
 
@@ -252,7 +252,7 @@ const previewUrl = storage.getFilePreview(
 
 {% storage_image just_img=true file_id="cat-image" width=1600 height=800 gravity="center" quality=100 opacity=0.7 background_color="FF9900" /%}
 
-## Final thoughts
+# Final thoughts
 
 With just a few lines of code, Appwrite's [image transformations](https://appwrite.io/docs/products/storage/images) eliminate the need for:
 
@@ -265,7 +265,7 @@ Try replacing your next image processing task with a single API call, and you mi
 
 Check out the [docs](https://appwrite.io/docs/storage) for more information on how to use Appwrite Storage.
 
-## Further reading
+# Further reading
 
 - [Building a full-stack app with Svelte and Appwrite](https://appwrite.io/blog/post/build-fullstack-svelte-appwrite)
 - [Setting up route protection in React Native](https://appwrite.io/blog/post/setting-up-route-protection-in-react-native)
