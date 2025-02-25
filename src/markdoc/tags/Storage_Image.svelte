@@ -40,7 +40,7 @@
 </script>
 
 {#if just_img}
-    <img {src} {alt} {title} />
+    <img {src} {alt} {title} style="margin-bottom: 2rem;" />
 {:else}
     <Image {src} {alt} {title} />
 {/if}
