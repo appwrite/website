@@ -9,6 +9,7 @@
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import LogoList from '$lib/components/LogoList.svelte';
+    import Scale from '$routes/(experiments)/new-homepage/(components)/scale.svelte';
 
     let email = '';
     let firstName = '';
@@ -267,9 +268,8 @@
                     </div>
                 </div>
             </div>
-            <div class="-mt-32">
-                <LogoList />
-            </div>
+            <Scale />
+            <LogoList />
             <div class="container">
                 <FooterNav />
                 <MainFooter />
