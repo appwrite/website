@@ -10,7 +10,8 @@
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
 
     let email = '';
-    let name = '';
+    let firstName = '';
+    let lastName = '';
     let companyName = '';
     let companySize: string | null = null;
     let companyWebsite = '';
@@ -88,41 +89,40 @@
                 <div class="relative">
                     <div class="web-container relative">
                         <!-- before submit -->
-                        <div class="u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0 relative">
+                        <div class="relative z-1 grid grid-cols-1 gap-16 md:grid-cols-2">
                             <div>
-                                <div
-                                    class="web-u-max-inline-size-none-mobile"
-                                    class:web-u-max-width-380={!submitted}
-                                >
-                                    {#if submitted}
-                                        <section class="flex flex-col gap-5">
-                                            <h1 class="web-display web-u-color-text-primary">
-                                                Thank you for your submission
-                                            </h1>
-                                            <p class="web-description web-u-padding-block-end-32">
-                                                Your details for the enterprise plan have been sent
-                                                successfully. Our team will get back to you as soon
-                                                as possible.
-                                            </p>
-                                            <a
-                                                href="/pricing"
-                                                class="web-button is-secondary web-u-margin-block-end-32"
-                                            >
-                                                <span>Back to pricing</span>
-                                            </a>
-                                        </section>
-                                    {:else}
-                                        <section class="flex flex-col gap-5">
-                                            <h1 class="web-display web-u-color-text-primary">
-                                                Enterprise Plan
-                                            </h1>
-                                            <p class="web-description">
-                                                Interested in a pricing solution that fits your
-                                                specific requirements? Let’s talk.
-                                            </p>
-                                        </section>
-                                    {/if}
-                                </div>
+                                {#if submitted}
+                                    <section class="flex flex-col gap-5">
+                                        <h1 class="web-display web-u-color-text-primary">
+                                            Thank you for your submission
+                                        </h1>
+                                        <p class="text-description">
+                                            Your details for the enterprise plan have been sent
+                                            successfully. Our team will get back to you as soon as
+                                            possible.
+                                        </p>
+                                        <a
+                                            href="/pricing"
+                                            class="web-button is-secondary web-u-margin-block-end-32"
+                                        >
+                                            <span>Back to pricing</span>
+                                        </a>
+                                    </section>
+                                {:else}
+                                    <section class="flex flex-col gap-5">
+                                        <h1 class="text-display font-aeonik-pro text-primary">
+                                            Enterprise Plan
+                                        </h1>
+                                        <p class="text-description">
+                                            Enterprise businesses partner with Appwrite to give
+                                            their developers the power to innovate and build their
+                                            applications all on one UI. Say goodbye to repetitive
+                                            backend work and hello to faster product launches. Ready
+                                            to talk? Fill out the form and one of our experts will
+                                            be in touch!
+                                        </p>
+                                    </section>
+                                {/if}
                             </div>
                             {#if !submitted}
                                 <form
@@ -135,20 +135,32 @@
                                             class="web-form-list web-u-max-width-580 web-u-max-inline-size-none-mobile grid w-full gap-4 md:grid-cols-2"
                                         >
                                             <li class="web-form-item">
-                                                <label class="u-block" for="name"
-                                                    >Name of representative</label
+                                                <label class="block" for="firstName"
+                                                    >First name</label
                                                 >
                                                 <input
                                                     required
                                                     class="web-input-text"
                                                     type="text"
-                                                    placeholder="Walter O'Brien"
-                                                    id="name"
-                                                    bind:value={name}
+                                                    placeholder="Walter"
+                                                    id="firstName"
+                                                    bind:value={firstName}
                                                 />
                                             </li>
                                             <li class="web-form-item">
-                                                <label class="u-block" for="workEmail"
+                                                <label class="block" for="lastName">Last name</label
+                                                >
+                                                <input
+                                                    required
+                                                    class="web-input-text"
+                                                    type="text"
+                                                    placeholder="O'Brien"
+                                                    id="lastName"
+                                                    bind:value={lastName}
+                                                />
+                                            </li>
+                                            <li class="web-form-item">
+                                                <label class="block" for="workEmail"
                                                     >Work email address</label
                                                 >
                                                 <input
@@ -161,7 +173,7 @@
                                                 />
                                             </li>
                                             <li class="web-form-item">
-                                                <label class="u-block" for="companyName"
+                                                <label class="block" for="companyName"
                                                     >Company name</label
                                                 >
                                                 <input
@@ -174,7 +186,7 @@
                                                 />
                                             </li>
                                             <li class="web-form-item">
-                                                <label class="u-block" for="companySize"
+                                                <label class="block" for="companySize"
                                                     >Company size</label
                                                 >
 
@@ -199,8 +211,8 @@
                                                     />
                                                 </div>
                                             </li>
-                                            <li class="web-form-item flex-col gap-1 md:col-span-2">
-                                                <label class="u-block" for="companyWebsite"
+                                            <li class="web-form-item flex-col gap-1">
+                                                <label class="block" for="companyWebsite"
                                                     >Company website</label
                                                 >
                                                 <input
@@ -215,7 +227,7 @@
                                             <li
                                                 class="web-form-item flex-col gap-1 sm:col-span-1 md:col-span-2"
                                             >
-                                                <label class="u-block" for="use-case"
+                                                <label class="block" for="use-case"
                                                     >Please share more information about your use
                                                     case</label
                                                 >
