@@ -1,0 +1,157 @@
+---
+layout: tutorial
+title: Manage service and view models
+description: Manage Appwrite wervice using Appwrite Apple SDK and SwiftUI application View Model.
+step: 4
+---
+
+# Appwrite service {% #appwrite-service %}
+
+Create a new file AppwriteService.swift inside `Shared/Services` folder and add the following code to it, replacing [YOUR_PROJECT_ID] with your project ID. The purpose of this file is to initialize Appwrite SDK and create necessary methods needed for both authentication and read/write from documents.
+
+```swift
+import Foundation
+import Appwrite
+import JSONCodable
+
+class AppwriteService {
+    var client: Client
+    var account: Account
+    var database: Databases
+    
+    public init() {
+        self.client = Client()
+            .setEndpoint("https://cloud.appwrite.io/v1")
+            .setProject("[YOUR_PROJECT_ID]")
+        self.account = Account(client)
+        self.database = Databases(client)
+    }
+    
+    
+    public func getDocs<T>(_ db: Database, _ collection: DatabaseCollections, queries: [String]? = nil) async throws -> DocumentList<T> {
+        try await database.listDocuments<T>(
+            databaseId: db.rawValue,
+            collectionId: collection.rawValue,
+            queries: queries,
+            nestedType: T.self
+        )
+    }
+    
+    public func insertDoc(_ db: Database, _ collection: DatabaseCollections, data: Any) async throws {
+        _ = try await database.createDocument(
+            databaseId: db.rawValue,
+            collectionId: collection.rawValue,
+            documentId: ID.unique(),
+            data: data
+        )
+    }
+    
+    
+    public func updateDoc(_ db: Database, _ collection: DatabaseCollections, _ id: String, data: Any) async throws {
+        _ = try await database.updateDocument(
+            databaseId: db.rawValue,
+            collectionId: collection.rawValue,
+            documentId: id,
+            data: data
+        )
+    }
+    
+    
+    public func removeDoc(_ db: Database, _ collection: DatabaseCollections, _ id: String, data: Any) async throws {
+        _ = try await database.deleteDocument(
+            databaseId: db.rawValue,
+            collectionId: collection.rawValue,
+            documentId: id
+        )
+    }
+    
+}
+```
+
+# Snackbar service {% #snackbar-service %}
+
+In order to manage error toast, we need a view model to handle and dispatch error messsgae to our UI. Create a new file SnackbarService.swift inside `Shared/Services` folder and add the following code to it.
+
+```swift
+import SwiftUI
+
+struct SnackBarState: Identifiable, Equatable {
+    static func == (lhs: SnackBarState, rhs: SnackBarState) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    let id = UUID()
+    let hasError: Bool
+    let error: Error
+}
+
+class SnackBarService: ObservableObject {
+    @Published private (set) var snackBarState: SnackBarState?
+    
+    @MainActor
+    func displayError(_ error: Error) {
+        snackBarState = nil
+        snackBarState = SnackBarState(hasError: true, error: error)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
+            withAnimation(.easeOut(duration: 0.3)) {
+                self.snackBarState = nil
+            }
+        })
+    }
+}
+```
+
+Add the following code to SnackbarView.swift inside `Shared/Views` folder.
+
+```swift
+import SwiftUI
+
+struct SnackbarView: View {
+    @State private var isAnimating: Bool = false
+    @State var text: String
+    @State var isError: Bool = true
+    
+    var body: some View {
+        HStack {
+            Text(text)
+                .foregroundColor(.white)
+                .lineLimit(1...2)
+                .multilineTextAlignment(.leading)
+                .padding()
+        }
+        .background(isError ? .red : Color.accentColor)
+        .cornerRadius(10)
+        .padding(.top, 15)
+        .opacity(isAnimating ? 1 : 0)
+        .offset(y: isAnimating ? -20 : 20)
+        .onAppear {
+            withAnimation(.easeOut(duration: 0.3)) {
+                isAnimating.toggle()
+            }
+        }
+    }
+}
+```
+
+# Habit model {% #habit-model %}
+
+Add the following code to HabitModel.swift inside `Shared/Models` folder.
+
+```swift
+import Appwrite
+import Foundation
+
+
+
+struct HabitModel: Codable, Identifiable {
+    let id: String
+    let userId: String
+    let title: String
+    let description: String?
+    let goals: Int?
+    let goalCompleted: Int?
+    let icon: String
+    let startDate: String?
+    let endDate: String?
+}
+```
