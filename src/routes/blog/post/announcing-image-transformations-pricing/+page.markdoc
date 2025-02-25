@@ -3,7 +3,7 @@ layout: post
 title: Announcing image transformation pricing
 description: To keep Appwrite Cloud sustainable, we are introducing image transformation pricing.
 date: 2025-03-01
-cover: /images/blog/announcing-image-transformations/cover.png
+cover: /images/blog/announcing-image-transformations-pricing/cover.png
 timeToRead: 4
 author: eldad-fux
 category: product
@@ -27,7 +27,7 @@ Please refer to our [rates page](/docs/advanced/platform/image-transformations#r
 
 To help prepare for these changes, teams can review their current image transformation usage through their organization's usage page or the usage section of specific buckets. This will help you understand your usage patterns and plan accordingly.
 
-![console image](/images/blog/announcing-image-transformations/cover.png)
+![console image](/images/blog/announcing-image-transformations-pricing/usage-component.png)
 
 # Pro and Scale plan benefits
 
