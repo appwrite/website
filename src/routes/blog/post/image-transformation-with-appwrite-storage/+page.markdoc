@@ -9,8 +9,6 @@ author: ebenezer-don
 category: tutorial
 ---
 
-{% storage_image file_id="cat-image" /%}
-
 Images are a core part of any modern web or mobile application. Whether you're displaying user avatars, product thumbnails, or full-screen backgrounds, images need to be optimized for performance, aesthetics, and consistency. Loading large, uncompressed images can slow down your app, and mismatched styles can break your UI. This is why dynamic image transformation should be a part of your app.
 
 Instead of manually editing images before uploading them or storing multiple variations of the same file, Appwrite lets you manipulate images on the fly using the Storage preview endpoint. With a simple API call, you can resize, crop, compress, change formats, add borders, round corners, adjust opacity, and even apply background colors. The best part is that Appwrite automatically caches the transformed images, speeding up repeat requests.
@@ -36,7 +34,7 @@ Appwrite caches transformed images, which reduces processing time and ensures fa
 
 Appwrite's **Storage preview endpoint** applies transformations dynamically when retrieving an image. The original file remains unchanged, while Appwrite generates a modified version on-the-fly and returns the transformed image.
 
-Here's an example of how to transform an image:
+Here's an example of how to transform an image. With each example, we'll use the Appwrite Storage SDK to show the actual result:
 
 ```jsx
 import { Client, Storage } from 'appwrite'
@@ -51,7 +49,7 @@ client
 const result = storage.getFilePreview(
   'photos', // Bucket ID
   'sunset.png', // File ID
-  1800, // Width
+  1600, // Width
   0, // Height (ignored if 0)
   'center', // Cropping gravity
   90, // Quality (1-100)
@@ -61,12 +59,15 @@ const result = storage.getFilePreview(
   1, // Opacity (0-1)
   0, // Rotation (degrees)
   'FFFFFF', // Background color
-  'jpg', // Output format
+  'webp', // Output format
 )
 
 console.log(result.href) // Image URL
 
 ```
+
+{% storage_image file_id="cat-image" width=1600 height=0 gravity="center" quality=90 border_width=5 border_color="CDCA30" border_radius=15 opacity=1 rotation=0 background_color="FFFFFF" output="webp" /%}
+
 
 This returns a new URL for the transformed image, which can be used directly in your app. Let's break down the parameters:
 
@@ -85,12 +86,12 @@ If only one dimension is set, Appwrite adjusts the other proportionally.
 const previewUrl = storage.getFilePreview(
 	'bucketID',
 	'fileID',
-	1200, // Setting width to 1200px
-	0, // Height set to 0 to maintain aspect ratio
+	1600, // Width
+	600, // Height
 )
 ```
 
-This resizes the image to **1200px width**, keeping its original aspect ratio.
+{% storage_image file_id="cat-image" width=1600 height=600 /%}
 
 ## 2. Cropping with gravity
 
@@ -115,13 +116,13 @@ Cropping allows you to remove unnecessary parts of an image and focus on the imp
 const previewUrl = storage.getFilePreview(
   'bucketID',
   'fileID',
-  800,
-  600,
+  1600,
+  1600,
   'top-left', // Setting gravity to focus on top-left portion
 )
 ```
 
-Crops the image while focusing on the **top-left** portion.
+{% storage_image file_id="cat-image" width=1600 height=1600 gravity="top-left" /%}
 
 ## 3. Adjusting image quality
 
@@ -133,17 +134,17 @@ The **quality** parameter controls image compression, helping to balance clarity
 **Example:**
 
 ```jsx
-const previewUrl = storage.getFilePreview(
-  'bucketID',
-  'fileID',
-  800,
-  600,
-  'center',
-  80, // Setting quality to 80% for balanced compression
+const compressedImage = storage.getFilePreview(
+    'bucketID',
+    'fileID',
+    1600,
+    800,
+    'center',
+    10, // Quality
 )
 ```
 
-This keeps the image **quality at 80%**, which is a good balance between clarity and performance. Although, you should experiment with different values to find the best quality level for your use case.
+{% storage_image file_id="cat-image" width=1600 height=800 gravity="center" quality=10 /%}
 
 ## 4. Adding borders and border radius
 
@@ -157,19 +158,19 @@ Borders help separate images from the background, while border radius adds round
 
 ```jsx
 const previewUrl = storage.getFilePreview(
-  'bucketID',
-  'fileID',
-  800,
-  600,
-  'center',
-  90,
-  10, // Adding 10px border width
-  'FF5733', // Setting orange border color
-  20, // Adding 20px border radius
+    'bucketID',
+    'fileID',
+    1600,
+    1000,
+    'center',
+    100,
+    8, // border width
+    'FF3366', // border color
+    80 // border radius
 )
 ```
 
-Adds a **10px orange border** and **20px rounded corners**.
+{% storage_image file_id="cat-image" width=1600 height=1000 gravity="center" quality=100 border_width=8 border_color="FF3366" border_radius=80 /%}
 
 ## 5. Controlling opacity
 
@@ -181,21 +182,21 @@ Setting **opacity** allows images to blend into backgrounds or appear as overlay
 **Example:**
 
 ```jsx
-const previewUrl = storage.getFilePreview(
-  'bucketID',
-  'fileID',
-  800,
-  600,
-  'center',
-  90,
-  10,
-  'FF5733',
-  20,
-  0.5, // Setting 50% transparency
+const overlayImage = storage.getFilePreview(
+    'bucketID',
+    'fileID',
+    1600,
+    1000,
+    'center',
+    100,
+    0,
+    '',
+    0,
+    0.3, // Opacity
 )
 ```
 
-Makes the image **50% transparent**.
+{% storage_image file_id="cat-image" width=1600 height=1000 gravity="center" quality=100 opacity=0.3 /%}
 
 ## 6. Rotating an Image
 
@@ -206,22 +207,23 @@ The **rotation** parameter allows you to rotate an image by a specified number o
 **Example:**
 
 ```jsx
-const previewUrl = storage.getFilePreview(
-  'bucketID',
-  'fileID',
-  800,
-  600,
-  'center',
-  90,
-  10,
-  'FF5733',
-  20,
-  1,
-  90, // Rotating 90 degrees clockwise
+// 45-degree rotation with padding
+const rotatedImage = storage.getFilePreview(
+    'bucketID',
+    'fileID',
+    400,
+    400,
+    'center',
+    100,
+    0,
+    '',
+    0,
+    1,
+    45,        // Rotation
 )
 ```
 
-This rotates the image **90 degrees clockwise**.
+{% storage_image file_id="cat-image" width=400 height=400 gravity="center" quality=100 rotation=45 background_color="FFFFFF" /%}
 
 ## 7. Changing background color
 
@@ -233,22 +235,22 @@ For transparent images (like PNGs), you can set a background color.
 
 ```jsx
 const previewUrl = storage.getFilePreview(
-  'bucketID',
-  'fileID',
-  800,
-  600,
-  'center',
-  90,
-  10,
-  'FF5733',
-  20,
-  1,
-  0,
-  '000000', // Setting black background color
+    'bucketID',
+    'fileID',
+    1600,
+    800,
+    'center',
+    100,
+    0,
+    '',
+    0,
+    0.7, // Partial transparency to show background
+    0,
+    'FF9900' // Bright orange background
 )
 ```
 
-This sets the **background color to black**.
+{% storage_image file_id="cat-image" width=1600 height=800 gravity="center" quality=100 opacity=0.7 background_color="FF9900" /%}
 
 ## Final thoughts
 
