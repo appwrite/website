@@ -19,29 +19,28 @@
             alt={title}
         />
     </div>
-    <div class="flex flex-col gap-1">
+    <div class="flex flex-col gap-5">
         <h4 class="text-label text-primary line-clamp-2">
             {title}
         </h4>
-        <div class="web-author">
-            <div class="flex items-center gap-2">
-                <img
-                    class="web-author-image"
-                    loading="lazy"
-                    src={avatar}
-                    width="24"
-                    height="24"
-                    alt={author}
-                />
-                <div class="web-author-info">
-                    <h4 class="text-sub-body text-primary">{author}</h4>
-                    <ul class="web-metadata text-caption">
-                        <li>
-                            {formatDate(date)}
-                        </li>
-                        <li>{timeToRead} min</li>
-                    </ul>
-                </div>
+
+        <div class="flex items-center gap-2">
+            <img
+                class="size-6 rounded-full"
+                loading="lazy"
+                src={avatar}
+                width="24"
+                height="24"
+                alt={author}
+            />
+            <div class="flex items-baseline gap-3">
+                <h4 class="text-sub-body text-primary">{author}</h4>
+                <ul class="text-caption flex items-center gap-2">
+                    <li>
+                        {formatDate(date)}
+                    </li>
+                    <li>{timeToRead} min</li>
+                </ul>
             </div>
         </div>
     </div>
