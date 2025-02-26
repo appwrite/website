@@ -26,7 +26,7 @@ There are a handful of reasons you may be receiving this error, which we'll expl
 
 ## No active session
 
-The most straightforward cause of this error is attempting to access user account information when there's no active session.
+The most common cause of this error is attempting to access user account information when there's no active session.
 
 If you're not logged in yet and you try to get information about the user with something like `account.get()`, you'll see this error.
 
