@@ -24,8 +24,6 @@
             return;
         }
 
-        console.log(element.textContent);
-
         $ctx = {
             ...$ctx,
             [id]: {

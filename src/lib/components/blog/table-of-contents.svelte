@@ -1,7 +1,9 @@
 <script lang="ts" context="module">
     export const extractHeadings = () => {
-        const headings: Array<string> = [];
-
+        let headings: Array<string> = [];
+        headings.push('Accessibility in design systems');
+        headings.push('Use high color contrast');
+        headings.push('Not relying on color');
         return headings;
     };
 </script>
@@ -9,17 +11,13 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
 
-    export let headings: Array<string> = [
-        'Accessibility in design systems',
-        'Use high color contrast',
-        'Not relying on color'
-    ];
-
     const backToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     let activeIndex: number = 0;
+
+    const headings = extractHeadings();
 </script>
 
 <nav class="border-smooth col-span-3 ml-4 hidden border-l lg:block">
