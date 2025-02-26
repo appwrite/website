@@ -22,9 +22,7 @@ In essence, this error occurs when you're trying to perform an operation that re
 
 There are a handful of reasons you may be receiving this error, which we'll explore in detail below.
 
-# Common scenarios and solutions
-
-## No active session
+# No active session
 
 The most common cause of this error is attempting to access user account information when there's no active session.
 
@@ -40,9 +38,7 @@ try {
 }
 ```
 
-### Solution
-
-Create a session before calling `account.get()`:
+To fix this issue, simply create a session before calling `account.get()`:
 
 ```js
 // First create a session
@@ -53,15 +49,15 @@ const user = await account.get();
 console.log(user);
 ```
 
-## OAuth2 sessions in web applications
+# OAuth2 sessions in web applications
 
 A more complex scenario occurs when using OAuth2 authentication in web applications. When you use `account.createOAuth2Session()` in a web app, a cookie is set for the session.
 
 If your app and Appwrite endpoint are on different domains (for example, your app is on `localhost:3000` and you're using `https://cloud.appwrite.io/v1` as your Appwrite endpoint), the cookie may not be included in the `account.get()` request because the cookie is considered a 3rd party cookie.
 
-### Solution:
+There are two approaches to solve this issue:
 
-#### Option 1: Browser settings and custom domains
+## Option 1: Browser settings and custom domains
 
 For local development:
 - Allow 3rd party cookies in your browser settings
@@ -77,13 +73,13 @@ await account.createOAuth2Session('github');
 const user = await account.get(); // Cookie is included in this request
 ```
 
-#### Option 2: Use OAuth2 tokens (Recommended)
+## Option 2: Use OAuth2 tokens
 
 A more reliable approach is to use Appwrite's OAuth2 token-based authentication, which bypasses third-party cookie restrictions entirely. Instead of `createOAuth2Session()`, you would use `createOAuth2Token()` which implements a more privacy-friendly flow that works in all browsers.
 
 For a detailed implementation guide, check out our article on [Fixing OAuth2 authentication issues in Appwrite Cloud](https://appwrite.io/blog/post/fixing-oauth2-issues-in-appwrite-cloud?doFollow=true), which covers this approach in depth.
 
-## Creating sessions server side
+# Creating sessions server side
 
 In the browser, the Appwrite SDK automatically persists the session by using cookies. Server-side, however, different frameworks handle sessions differently so the session is not persisted.
 
@@ -95,8 +91,6 @@ await account.createEmailPasswordSession('user@example.com', 'password');
 // In a different request or function call:
 const user = await account.get(); // Error: missing scope (account)
 ```
-
-### Solution:
 
 For server-side environments, you need to handle session persistence manually:
 
