@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Media } from '$lib/UI';
-    import { Article, FooterNav, MainFooter, Newsletter, Tooltip } from '$lib/components';
+    import { FooterNav, MainFooter, Newsletter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { formatDate } from '$lib/utils/date';
     import {
@@ -17,6 +17,7 @@
     import PostMeta from '$lib/components/blog/post-meta.svelte';
     import Breadcrumbs from '$lib/components/blog/breadcrumbs.svelte';
     import TableOfContents from '$lib/components/blog/table-of-contents.svelte';
+    import Article from '$lib/components/blog/article.svelte';
 
     export let title: string;
     export let description: string;
@@ -121,12 +122,12 @@
         {/if}
     </div>
 
-    <div class="web-u-sep-block-start pt-10">
+    <div class="border-smooth border-t pt-10">
         <div class="web-big-padding-section-level-2">
             <div class="container">
                 <h3 class="text-label text-primary">Read next</h3>
                 <section class="mt-8">
-                    <ul class="web-grid-articles">
+                    <div class="grid grid-cols-1 gap-12 md:grid-cols-3">
                         {#each posts.filter((p) => p.title !== title).slice(0, 3) as post}
                             {@const author = authors.find((a) => a.slug === post.author)}
                             {#if author}
@@ -141,7 +142,7 @@
                                 />
                             {/if}
                         {/each}
-                    </ul>
+                    </div>
                 </section>
             </div>
         </div>
