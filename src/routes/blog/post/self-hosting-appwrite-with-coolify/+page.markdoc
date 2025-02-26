@@ -136,7 +136,7 @@ Currently, Coolify will mark all the Appwrite containers as unhealthy due to a l
 3. Verify that all required ports are open and not blocked by firewalls.
 4. Check for Docker storage issues with df -h to ensure you haven't run out of disk space.
 
-# Self-host vs Appwrite Cloud
+# Appwrite Cloud vs Self-hosting with Coolify
 
 Appwrite also offers Cloud as a subscription-based Backend-As-A-Service (BaaS), eliminating the complexities of managing infrastructure so developers can focus purely on building their apps. With Appwrite Cloud, you get instant access to Appwrite's powerful features — databases, authentication, storage, and functions — without the need to self-host or worry about server maintenance.
 
