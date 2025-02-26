@@ -1,8 +1,10 @@
 @import 'tailwindcss';
+@plugin "@tailwindcss/typography";
 @variant dark (&:is(.dark *));
+@config "../tailwind.config.ts";
 
 @theme {
-    /* Colors */
+    /* colors */
     --color-*: initial;
 
     /* base */
@@ -75,10 +77,10 @@
     --color-greyscale-900: hsl(var(--color-greyscale-hue) 5.7% 10.4%);
 
     /* utility colors */
-    --color-badge-bg-light: #f2c8d6;
-    --color-badge-border-light: #f69db7;
-    --color-badge-bg-dark: #2c2c2f;
-    --color-badge-border-dark: #39393c;
+    --color-badge-bg-light: hsl(340, 61.8%, 86.7%);
+    --color-badge-border-light: hsl(342, 83.2%, 79%);
+    --color-badge-bg-dark: hsl(240, 3.3%, 17.8%);
+    --color-badge-border-dark: hsl(240, 2.6%, 22.9%);
 
     /* Easings */
     --ease-bounce: linear(0, 0.063, 0.25 18.2%, 1 36.4%, 0.813, 0.75, 0.813, 1, 0.938, 1, 1);
@@ -204,7 +206,7 @@
     --text-headline--line-height: clamp(3.5rem, 8.5vw, 5.75rem);
     --text-headline--tracking: var(--tracking-compressed);
 
-    /* Letter spacing */
+    /* letter spacing */
     --tracking-*: initial;
     --tracking-compressed: -0.022em;
     --tracking-squeezed: -0.01em;
@@ -214,7 +216,7 @@
     --tracking-loose: 0.08em;
 }
 
-/* Themes */
+/* light & dark mode */
 :root,
 .light {
     --color-pink-hue: 343;
@@ -253,7 +255,7 @@
 
     .mask {
         mask-image: linear-gradient(
-            to top,
+            to var(--mask-direction, top),
             transparent,
             black var(--mask-height, 32px),
             black calc(100% - var(--mask-height, 32px)),
