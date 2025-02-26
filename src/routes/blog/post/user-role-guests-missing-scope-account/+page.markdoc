@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Error: User (role: guests) missing scope (account)" - What it means and how to fix it
+title: "Error: User (role: guests) missing scope (account) - What it means and how to fix it"
 description: Understanding and resolving a common authentication error in Appwrite.
 date: 2025-03-07
 cover: /images/blog/user-role-guests-missing-scope-account/cover.png
