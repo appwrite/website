@@ -98,7 +98,7 @@
                         </div>
                     {/if}
 
-                    <div class="text-secondary mt-8 flex flex-col gap-8">
+                    <div class="web-article-content text-secondary mt-8 flex flex-col gap-8">
                         {#if lastUpdated}
                             <span class="text-body last-updated-text font-medium">
                                 Updated:
