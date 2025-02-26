@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Announcing image transformation pricing
-description: To keep Appwrite Cloud sustainable, we are introducing image transformation pricing.
-date: 2025-03-01
+description: To keep Appwrite Cloud sustainable, we are introducing image transformation pricing. Only available on Pro and Scale plans.
+date: 2025-03-03
 cover: /images/blog/announcing-image-transformations-pricing/cover.png
 timeToRead: 4
 author: eldad-fux
@@ -21,17 +21,21 @@ It's been incredible to see teams leverage our image transformation features, pr
 
 # Pricing update
 
-As Appwrite continues to scale, we need to ensure that our platform remains sustainable while providing the best possible service to all users. Starting April 1st, 2025, we will begin charging for origin images used in transformations. This change will help support the computational resources required for this valuable service and enable us to continue enhancing our platform.
+As Appwrite continues to grow, we need to ensure that our platform remains sustainable while providing the best possible service to all users. The new pricing will be effective Starting April 1st, 2025, and is only available on paid plans.
+
+## What will change
+
+We will begin charging for origin images used in transformations. To use this functionality, you will need to be on the Pro or Scale plan. Both plans will include 100 origin images per month at no additional charge. Beyond this allocation, additional origin images will be available at $5 per 1,000 images.
+
+This change will help support the computational resources required for this valuable service and enable us to continue enhancing our platform.
 
 Please refer to our [rates page](/docs/advanced/platform/image-transformations#rates) for detailed pricing information, including origin image costs and included quotas for different plans.
 
-To help prepare for these changes, teams can review their current image transformation usage through their organization's usage page or the usage section of specific buckets. This will help you understand your usage patterns and plan accordingly.
-
 ![console image](/images/blog/announcing-image-transformations-pricing/usage-component.png)
 
-# Pro and Scale plan benefits
+# Your usage
 
-We understand the importance of image transformations for our users on Pro and Scale plans. These plans will include 100 origin images per month at no additional charge. Beyond this allocation, additional origin images will be available at $5 per 1,000 images.
+To help prepare for these changes, teams can review their current image transformation usage through their organization's usage page or the usage section of specific buckets. This will help you understand your usage patterns and plan accordingly.
 
 # We're here to help
 
