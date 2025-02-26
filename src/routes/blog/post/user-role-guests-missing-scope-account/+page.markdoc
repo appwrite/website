@@ -112,3 +112,10 @@ Whenever you see "User (role: guests) missing scope (account)", remember: Appwri
 Each scenario has a straightforward solution as we've covered above. Test your authentication flow across multiple browsers and environments to ensure it works consistently.
 
 If you're still running into issues, our [Discord community](https://appwrite.io/discord) is always available to help troubleshoot your specific situation.
+
+# Further reading
+
+- [Building custom authentication flows with Appwrite](https://appwrite.io/blog/post/building-custom-auth-flows?doFollow=true)
+- [Fixing OAuth2 authentication issues in Appwrite Cloud](https://appwrite.io/blog/post/fixing-oauth2-issues-in-appwrite-cloud?doFollow=true)
+- [A modern developer's guide to user authentication](https://appwrite.io/blog/post/guide-to-user-authentication?doFollow=true)
+
