@@ -99,7 +99,7 @@ For server-side environments, you need to handle session persistence manually:
 
 When you create a session with `createEmailPasswordSession()`, Appwrite returns a session object that includes a `$id` and `secret`. You can use these values with the `setSession()` method to authenticate future requests.
 
-For detailed implementation examples and best practices for server-side rendering with Appwrite, check out our [SSR documentation](https://appwrite.io/docs/advanced/platform/ssr).
+For detailed implementation examples and best practices for server-side rendering with Appwrite, check out our [SSR documentation](https://appwrite.io/docs/products/auth/server-side-rendering?doFollow=true).
 
 # Conclusion
 
