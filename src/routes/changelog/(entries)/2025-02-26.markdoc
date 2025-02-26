@@ -1,10 +1,11 @@
 ---
 layout: changelog
-title: "Usage metrics now include OPTIONS and 4XX requests"
+title: "Usage metrics now include OPTIONS requests and 4XX responses"
 date: 2025-02-26
 ---
 
-We've updated our tracking system to include OPTIONS requests and 4XX responses in your project usage metrics.
+We've improved our usage metrics system to now properly account for OPTIONS requests and 4XX responses.
+You may notice an increase in your project usage metrics as these request types were wrongly omitted before now.
 
 ## What's changed
 
