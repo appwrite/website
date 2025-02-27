@@ -76,10 +76,10 @@
 </script>
 
 <div
-    class="border-smooth relative flex min-h-[70vh] w-full flex-col gap-4 border-y bg-black/8 py-20"
+    class="border-smooth relative flex min-h-[70vh] flex-col gap-4 border-y bg-black/8 py-20"
     use:useInView
 >
-    <div class="container relative z-10 w-full">
+    <div class="container relative z-10 w-fit md:w-full">
         <div class="max-w-xl">
             <h2 class="text-primary font-aeonik-pro text-pretty text-5xl tracking-tighter">
                 Thousands of developers <span class="text-secondary">scale with Appwrite</span><span
@@ -94,6 +94,21 @@
                 >
             </p>
         </div>
+    </div>
+
+    <div class="mt-12 block space-y-8 md:hidden">
+        {#each stats as stat, i}
+            <div class="h-full overflow-auto pl-6">
+                <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
+                    <NumberFlow
+                        class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
+                        value={stat.number}
+                        suffix={stat.suffix}
+                    />
+                    <span class="text-body text-secondary block pl-4">{stat.description}</span>
+                </div>
+            </div>
+        {/each}
     </div>
 
     <div
@@ -128,7 +143,7 @@
                             class="border-accent absolute top-[var(--top)] left-[calc(var(--left)_+_1px)] h-2 w-2 -translate-1/2 rounded-full border bg-white"
                             style:--top={`${stat.top}%`}
                             style:--left="{i * 25}%"
-                        ></div>
+                        />
                     {/each}
                 </div>
             </div>
