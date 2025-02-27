@@ -14,7 +14,7 @@
     let eventPublicWebLink = '';
     let estimatedAttendees = '';
     let eventDate = new Date().toISOString().split('T')[0];
-    let eventType: 'Virtual' | 'In-Person' | 'Both' = 'Virtual';
+    let eventType: 'Virtual' | 'In Person' | 'Hybrid' = 'Virtual';
 
     let submitted = false;
     let submitting = false;
