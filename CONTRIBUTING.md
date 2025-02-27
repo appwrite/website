@@ -34,6 +34,8 @@ Once you've cloned the Appwrite website repo, running the following command to i
 pnpm i
 ```
 
+**Locate the `.env.example` file in the root directory and rename it to `.env`.** This file contains the required environment variables for the project to function properly.
+
 Then, run the following command to start a development server.
 
 ```sh

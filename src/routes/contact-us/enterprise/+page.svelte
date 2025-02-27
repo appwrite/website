@@ -14,11 +14,14 @@
     let companySize: string | null = null;
     let companyWebsite = '';
     let useCase = '';
-    let error: string | undefined;
+
     let submitted = false;
+    let submitting = true;
+    let error: string | undefined;
 
     async function handleSubmit() {
         error = undefined;
+        submitting = true;
         const subject = `Enterprise Plan Application: ${companyName}`;
 
         const cloudEmail = loggedIn && $user?.email ? $user.email : undefined;
@@ -41,6 +44,7 @@
             })
         });
 
+        submitting = false;
         if (response.status >= 400) {
             error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
             return;
@@ -108,9 +112,9 @@
                                         </section>
                                     {:else}
                                         <section class="flex flex-col gap-5">
-                                            <h4 class="web-display web-u-color-text-primary">
+                                            <h1 class="web-display web-u-color-text-primary">
                                                 Enterprise Plan
-                                            </h4>
+                                            </h1>
                                             <p class="web-description">
                                                 Interested in a pricing solution that fits your
                                                 specific requirements? Let’s talk.
@@ -236,6 +240,7 @@
                                         </p>
                                         <button
                                             type="submit"
+                                            disabled={submitting}
                                             class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1 cursor-pointer"
                                         >
                                             <span>Submit</span>

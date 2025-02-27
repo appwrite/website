@@ -6,7 +6,7 @@ date: 2024-04-09
 cover: /images/blog/introducing-appwrite-react-native-sdk/cover.png
 timeToRead: 4
 author: vincent-ge
-category: product
+category: product, announcement
 ---
 
 If you’re a mobile developer who doesn’t (want to) use Flutter, we have great news for you. Appwrite now has a React Native SDK in open beta. This will allow more mobile developers to benefit from Appwrite, giving everything you need to build your mobile applications backend, without the hassle of building it yourself.
