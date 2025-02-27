@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Media } from '$lib/UI';
-    import { FooterNav, MainFooter, Newsletter } from '$lib/components';
+    import { FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { formatDate } from '$lib/utils/date';
     import {
@@ -16,6 +16,7 @@
     import CTA from '$lib/components/BlogCta.svelte';
     import PostMeta from '$lib/components/blog/post-meta.svelte';
     import Breadcrumbs from '$lib/components/blog/breadcrumbs.svelte';
+    import Newsletter from '$lib/components/blog/newsletter.svelte';
     import TableOfContents from '$lib/components/blog/table-of-contents.svelte';
     import Article from '$lib/components/blog/article.svelte';
 
