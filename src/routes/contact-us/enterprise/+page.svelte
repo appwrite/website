@@ -87,7 +87,7 @@
 
 <Main>
     <div class="web-big-padding-section">
-        <div id="form" class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden">
+        <div id="form" class="web-big-padding-section-level-1 overflow-hidden p-0">
             <div class="web-big-padding-section-level-2 is-margin-replace-padding relative">
                 <div class="relative">
                     <div class="web-container relative">
@@ -120,8 +120,10 @@
                                             Enterprise businesses partner with Appwrite to give
                                             their developers the power to innovate and build their
                                             applications all on one UI. Say goodbye to repetitive
-                                            backend work and hello to faster product launches. Ready
-                                            to talk? Fill out the form and one of our experts will
+                                            backend work and hello to faster product launches.
+                                            <br />
+                                            <br />
+                                            Ready to talk? Fill out the form and one of our experts will
                                             be in touch!
                                         </p>
                                     </section>
@@ -133,10 +135,8 @@
                                     on:submit|preventDefault={handleSubmit}
                                     class="mt-4 flex flex-col gap-4 lg:mt-0"
                                 >
-                                    <div class="flex justify-end">
-                                        <ul
-                                            class="web-form-list web-u-max-width-580 web-u-max-inline-size-none-mobile grid w-full gap-4 md:grid-cols-2"
-                                        >
+                                    <div class="flex w-full">
+                                        <ul class="web-form-list grid w-full gap-4 md:grid-cols-2">
                                             <li class="web-form-item">
                                                 <label class="block" for="firstName"
                                                     >First name</label
