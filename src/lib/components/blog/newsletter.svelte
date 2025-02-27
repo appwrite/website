@@ -1,19 +1,18 @@
 <script context="module" lang="ts">
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
 
-    export async function newsletter(name: string, email: string) {
+    export const subscribeToNewsletter = async (email: string) => {
         const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/newsletter/subscribe`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                name,
                 email
             })
         });
         return response;
-    }
+    };
 </script>
 
 <script lang="ts">
@@ -22,17 +21,17 @@
     let error: string | undefined;
     let submitting = false;
 
-    async function submit() {
+    const handleSubmit = async () => {
         submitting = true;
         error = undefined;
-        const response = await newsletter('', email);
+        const response = await subscribeToNewsletter(email);
         submitting = false;
         if (response.status >= 400) {
             error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
             return;
         }
         submitted = true;
-    }
+    };
 </script>
 
 <div class="relative max-h-[35vh]">
@@ -84,7 +83,7 @@
                     </span>
                 </div>
             {:else}
-                <form method="post" class="contents" on:submit|preventDefault={submit}>
+                <form method="post" class="contents" on:submit|preventDefault={handleSubmit}>
                     <div
                         class="border-primary/12 focus-within:border-primary/48 flex w-full max-w-sm justify-between gap-1 rounded-xl border bg-white/4 py-1 pr-1 pl-4 backdrop-blur-2xl transition-colors"
                     >
