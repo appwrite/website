@@ -29,21 +29,19 @@
         const cloudEmail = loggedIn && $user?.email ? $user.email : undefined;
 
         try {
-            // endpoint hasn't been created yet!
-            // todo: @itznotabug, update the form endpoint and the body params!.
             const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback/sponsorships`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
+                    name,
                     email,
                     subject,
                     cloudEmail,
                     eventName,
                     eventDate,
                     eventType,
-                    firstName: name,
                     socialHandles,
                     eventPublicWebLink,
                     estimatedAttendees,
