@@ -15,7 +15,7 @@ When you are in the **Files** tab, you can click **Add File** and select a file 
 You can also upload files programmatically using our SDKs:
 
 {% multicode %}
-  ```js
+  ```client-web
   import { Client, Storage } from "appwrite";
 
   const client = new Client()
@@ -37,7 +37,27 @@ You can also upload files programmatically using our SDKs:
   });
   ```
 
-  ```dart
+  ```server-nodejs
+  const sdk = require('node-appwrite');
+  const { InputFile } = require('node-appwrite/file');
+
+  const client = new sdk.Client()
+      .setEndpoint('https://cloud.appwrite.io/v1')
+      .setProject('<PROJECT_ID>')
+      .setKey('<API_KEY>');
+
+  const storage = new sdk.Storage(client);
+
+  // If running in a browser environment, you can use File directly
+  const browserFile = new File(['hello'], 'hello.txt');
+  await storage.createFile('[BUCKET_ID]', ID.unique(), browserFile);
+
+  // If running in Node.js, use InputFile
+  const nodeFile = InputFile.fromPath('/path/to/file.jpg', 'file.jpg');
+  await storage.createFile('[BUCKET_ID]', ID.unique(), nodeFile);
+  ```
+
+  ```client-flutter
   import 'package:appwrite/appwrite.dart';
 
   void main() { // Init SDK
@@ -182,14 +202,17 @@ The Appwrite Apple SDK expects an `InputFile` class for file inputs.
 
 {% tabs %}
 {% tabsitem #nodejs title="Node.js" %}
-The Appwrite NodeJS SDK expects an `InputFile` class for file inputs.
+In browser environments, you can use the `File` object directly. For Node.js environments, import the `InputFile` class from 'node-appwrite/file'.
+
+When using `InputFile`, the following methods are available:
 
 | Method                                     | Description                                                  |
 | ------------------------------------------ | ------------------------------------------------------------ |
 | `InputFile.fromPath(filePath, filename)`     | Used to upload files from a provided path.                  |
-| `InputFile.fromBuffer(buffer, filename)`     | Used to upload files from a [Buffer](https://nodejs.org/api/buffer.html#buffer) object. |
+| `InputFile.fromBuffer(buffer, filename)`     | Used to upload files from a [Buffer](https://nodejs.org/api/buffer.html#buffer) or [Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob) object. |
 | `InputFile.fromPlainText(content, filename)`  | Used to upload files in plain text. Expects a string encoded in UTF-8. |
 {% /tabsitem %}
+
 {% tabsitem #php title="PHP" %}
 
 The Appwrite PHP SDK expects an `InputFile` class for file inputs.
@@ -260,7 +283,7 @@ The Appwrite Swift SDK expects an `InputFile` class for file inputs.
 | `InputFile.fromBuffer(_ buffer: ByteBuffer, filename: String, mimeType: String)` | Used to upload files from a [NIO Buffer](https://swiftinit.org/reference/swift-nio/niocore/bytebuffer) object. Specify the file [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) using the `mimeType` param. |
 {% /tabsitem %}
 
-{% tabsitem #dotnet title=".Net" %}
+{% tabsitem #dotnet title=".NET" %}
 The Appwrite .NET SDK expects an `InputFile` class for file inputs.
 
 | Method                                     | Description                                                  |

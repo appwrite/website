@@ -15,7 +15,7 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import { TITLE_SUFFIX } from '$routes/titles';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
 
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import Faq from './faq.svelte';
@@ -735,6 +735,7 @@
                                             </p>
                                             <button
                                                 type="submit"
+                                                disabled={submitting}
                                                 class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
                                             >
                                                 <span>Apply</span>

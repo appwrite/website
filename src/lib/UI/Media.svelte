@@ -16,5 +16,5 @@
         <slot />
     </video>
 {:else}
-    <img loading="lazy" {src} {alt} class={className} />
+    <img loading="lazy" {src} {alt} class={className} data-active="" />
 {/if}

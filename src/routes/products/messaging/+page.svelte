@@ -419,17 +419,6 @@ messaging.create_email(
                                 <p class="web-info-boxes-content">
                                     Send realtime alerts to your users within your application.
                                 </p>
-                                <ul class="mt-4 flex flex-wrap gap-2">
-                                    <li>
-                                        <a class="web-interactive-tag" href="/docs">
-                                            <span
-                                                class="web-icon-appwrite web-u-margin-inline-end-4 text-sm"
-                                                aria-hidden="true"
-                                            />
-                                            <span class="text">Appwrite</span>
-                                        </a>
-                                    </li>
-                                </ul>
                             </li>
                             <li class="web-info-boxes-item">
                                 <img
