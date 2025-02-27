@@ -2,7 +2,8 @@
 layout: post
 title: Self-hosting Appwrite with Coolify
 description: Learn how to self-host Appwrite with Coolify.
-date: 2025-02-25
+date: 2025-02-28
+cover: /images/blog/self-hosting-appwrite-with-coolify/cover.png
 timeToRead: 15
 author: chirag-aggarwal
 category: tutorial
