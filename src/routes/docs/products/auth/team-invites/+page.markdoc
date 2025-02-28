@@ -45,7 +45,7 @@ final teams = Teams(client);
 
 // Create membership with email invite
 final membership = await teams.createMembership(
-    teamId: 'team_id',
+    teamId: '<TEAM_ID>',
     roles: ['developer'],
     email: 'user@example.com'
 );
