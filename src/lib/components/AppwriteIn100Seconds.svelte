@@ -19,9 +19,9 @@
             posthog: { name: 'intro-video-btn_hero_click' }
         });
     }}
-    class="web-button is-secondary cursor-pointer"
+    class="web-button cursor-pointer"
 >
-    <span class="web-icon-play" style:color="unset" />
+    <span class="web-icon-play" />
     <span>Appwrite in 100 seconds</span>
 </button>
 
