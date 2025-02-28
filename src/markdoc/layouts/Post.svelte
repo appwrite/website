@@ -11,7 +11,7 @@
     } from '$lib/utils/metadata';
     import type { AuthorData, PostsData } from '$routes/blog/content';
     import { TITLE_SUFFIX } from '$routes/titles';
-    import { getContext } from 'svelte';
+    import { getContext, setContext } from 'svelte';
     import { page } from '$app/state';
     import CTA from '$lib/components/BlogCta.svelte';
     import PostMeta from '$lib/components/blog/post-meta.svelte';
@@ -19,6 +19,9 @@
     import Newsletter from '$lib/components/blog/newsletter.svelte';
     import TableOfContents from '$lib/components/blog/table-of-contents.svelte';
     import Article from '$lib/components/blog/article.svelte';
+    import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
+    import { writable } from 'svelte/store';
+    import type { LayoutContext } from './Article.svelte';
 
     export let title: string;
     export let description: string;
@@ -39,6 +42,35 @@
     const posts = getContext<PostsData[]>('posts');
     const authors = getContext<AuthorData[]>('authors');
     const authorData = authors.find((a) => a.slug === author);
+
+    setContext<LayoutContext>('headings', writable({}));
+
+    const headings = getContext<LayoutContext>('headings');
+
+    let selected: string | undefined = undefined;
+    headings.subscribe((n) => {
+        const noVisible = Object.values(n).every((n) => !n.visible);
+        if (selected && noVisible) {
+            return;
+        }
+        for (const key in n) {
+            if (n[key].visible) {
+                selected = key;
+                break;
+            }
+        }
+    });
+
+    $: entries = Object.entries($headings);
+    $: toc = entries.reduce<Array<TocItem>>((carry, [id, heading]) => {
+        carry.push({
+            title: heading.title,
+            href: `#${id}`,
+            step: heading.step,
+            selected: selected === id
+        });
+        return carry;
+    }, []);
 
     callToAction ??= true;
 
@@ -91,7 +123,7 @@
         <div class="container">
             <Breadcrumbs {title} />
             <article class="grid grid-cols-1 gap-4 lg:grid-cols-12">
-                <div class="lg:col-span-9">
+                <div class="border-smooth border-r pr-12 lg:col-span-9">
                     <PostMeta {authorData} {title} {timeToRead} {currentURL} {date} {description} />
                     {#if cover}
                         <div>
@@ -113,7 +145,7 @@
                     </div>
                 </div>
 
-                <TableOfContents />
+                <TableOfContents {toc} />
             </article>
         </div>
         {#if typeof callToAction === 'boolean'}
