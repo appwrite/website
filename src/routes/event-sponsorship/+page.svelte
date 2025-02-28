@@ -239,8 +239,8 @@
                                                             >Select event type</option
                                                         >
                                                         <option>Virtual</option>
-                                                        <option>In-Person</option>
-                                                        <option>Both</option>
+                                                        <option>In Person</option>
+                                                        <option>Hybrid</option>
                                                     </select>
                                                     <span
                                                         class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
