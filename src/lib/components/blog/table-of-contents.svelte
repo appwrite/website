@@ -1,33 +1,61 @@
-<script lang="ts" context="module">
-    export const extractHeadings = () => {
-        let headings: Array<string> = [];
-        headings.push('Accessibility in design systems');
-        headings.push('Use high color contrast');
-        headings.push('Not relying on color');
-        return headings;
-    };
-</script>
-
 <script lang="ts">
+    import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
     import { classNames } from '$lib/utils/classnames';
+    import { onMount } from 'svelte';
 
     const backToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    let activeIndex: number = 0;
+    export let toc: Array<TocItem> = [];
 
-    const headings = extractHeadings();
+    $: activeIndex = 0;
+
+    onMount(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const index = toc.findIndex((item) => item.href === `#${entry.target.id}`);
+                        if (index !== -1) {
+                            activeIndex = index;
+                        }
+                    }
+                });
+            },
+            {
+                rootMargin: '0px',
+                threshold: 0.5
+            }
+        );
+
+        toc.forEach((item) => {
+            const target = document.querySelector(item.href);
+            if (target) {
+                observer.observe(target);
+            }
+        });
+
+        return () => {
+            observer.disconnect();
+        };
+    });
+
+    $: console.log({ activeIndex });
 </script>
 
-<nav class="border-smooth col-span-3 ml-4 hidden border-l lg:block">
+<nav class="sticky top-32 col-span-3 -ml-4 hidden h-[600px] lg:block">
     <span class="text-micro tracking-loose text-primary pl-8 uppercase">Table of Contents</span>
     <div class="relative">
         <ul class="border-smooth mt-11 ml-7 flex flex-col gap-7 border-b pb-11">
-            {#each headings as heading, i}
-                {@const isActive = i === 0}
-                <li class={classNames(isActive ? 'text-primary' : 'text-secondary', 'relative')}>
-                    {heading}
+            {#each toc as item}
+                <li
+                    class={classNames(
+                        item.selected ? 'text-primary' : 'text-secondary',
+                        'relative transition-colors'
+                    )}
+                >
+                    <a href={item.href}> {item.title}</a>
                 </li>
             {/each}
         </ul>
