@@ -1,10 +1,9 @@
 <script lang="ts">
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { Main } from '$lib/layouts';
     import { TITLE_SUFFIX } from '$routes/titles';
     import FooterNav from '../../../lib/components/FooterNav.svelte';
     import MainFooter from '../../../lib/components/MainFooter.svelte';
-    import Pink from '../bg.png';
     import { loggedIn, user } from '$lib/utils/console';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
@@ -82,7 +81,7 @@
 </svelte:head>
 
 <div class="absolute" style="pointer-events:none;">
-    <img src={Pink} alt="" />
+    <enhanced:img src="../bg.png" alt="" />
 </div>
 
 <Main>
