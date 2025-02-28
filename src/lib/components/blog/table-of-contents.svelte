@@ -55,7 +55,7 @@
                         'relative transition-colors'
                     )}
                 >
-                    <a href={item.href}> {item.title}</a>
+                    <a href={item.href} class="line-clamp-1">{item.title}</a>
                 </li>
             {/each}
         </ul>
