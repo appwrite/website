@@ -254,7 +254,11 @@ val response = teams.createMembership(
 
 # Manage memberships {% #manage-memberships %}
 
+Once team memberships are created, you'll need to manage their lifecycle. This includes checking status, updating roles, and removing members when necessary.
+
 ## Check membership status {% #status %}
+
+Before performing actions on team memberships, you often need to verify a user's current status within a team. The process differs between client-side and server-side implementations.
 
 ### Client-side
 To check membership status client-side, first list the teams and then get the memberships for a specific team:
