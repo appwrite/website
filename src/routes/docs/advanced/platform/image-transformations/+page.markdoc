@@ -5,7 +5,7 @@ description: Learn how to transform images using Appwrite's storage API.
 ---
 
 {% info title="Note" %} 
-Changes will take effect on March 3rd, 2025. Check out this [blog post](/blog/post/announcing-image-transformations-pricing) for more information.
+Changes will take effect on April 1st, 2025. Check out this [blog post](/blog/post/announcing-image-transformations-pricing) for more information.
 {% /info %}
 
 Appwrite enables the transformation of images before retrieval using the [getFilePreview](/docs/references/cloud/client-web/storage#getFilePreview) endpoint. This functionality supports resizing images by width and height, adjusting quality, and applying filters such as opacity, border colour, border radius, and more.
