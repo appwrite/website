@@ -31,7 +31,10 @@ const teams = new Teams(client);
 const membership = await teams.createMembership(
     '<TEAM_ID>',
     ['developer'],     // roles
-    'user@example.com' // email
+    'user@example.com', // email
+    undefined,         // userId (optional)
+    undefined,         // phone (optional)
+    'https://yourapp.com/accept-invite' // url - redirect after email click
 );
 ```
 ```client-flutter
@@ -47,7 +50,8 @@ final teams = Teams(client);
 final membership = await teams.createMembership(
     teamId: '<TEAM_ID>',
     roles: ['developer'],
-    email: 'user@example.com'
+    email: 'user@example.com',
+    url: 'https://yourapp.com/accept-invite' // redirect after email click
 );
 ```
 ```client-apple
@@ -63,7 +67,8 @@ let teams = Teams(client)
 let membership = try await teams.createMembership(
     teamId: "team_id",
     roles: ["developer"],
-    email: "user@example.com"
+    email: "user@example.com",
+    url: "https://yourapp.com/accept-invite" // redirect after email click
 )
 ```
 ```client-android-kotlin
@@ -80,7 +85,8 @@ val teams = Teams(client)
 val response = teams.createMembership(
     teamId = "team_id",
     roles = listOf("developer"),
-    email = "user@example.com"
+    email = "user@example.com",
+    url = "https://yourapp.com/accept-invite" // redirect after email click
 )
 ```
 {% /multicode %}
