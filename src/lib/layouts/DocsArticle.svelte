@@ -17,15 +17,11 @@
     import { writable } from 'svelte/store';
     import { Feedback } from '$lib/components';
     import { scrollToTop } from '$lib/actions/scrollToTop';
-    import type { Language } from '$lib/utils/code';
 
     export let title: string;
     export let toc: Array<TocItem>;
     export let back: string | undefined = undefined;
     export let date: string | undefined = undefined;
-
-    // Shared writable store for a selected language.
-    setContext('language-context', writable<Language>());
 
     const reducedArticleSize = setContext('articleHasNumericBadge', writable(false));
 </script>

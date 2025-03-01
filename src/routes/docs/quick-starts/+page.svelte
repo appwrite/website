@@ -20,12 +20,6 @@
             title: 'Web app',
             quickStarts: [
                 {
-                    title: 'Web',
-                    icon: 'icon-js',
-                    image: '/images/blog/placeholder.png',
-                    href: 'web'
-                },
-                {
                     title: 'Next.js',
                     icon: 'icon-nextjs',
                     image: '/images/blog/placeholder.png',
@@ -44,22 +38,10 @@
                     href: 'vue'
                 },
                 {
-                    title: 'Nuxt',
-                    icon: 'web-icon-nuxt',
-                    image: '/images/blog/placeholder.png',
-                    href: 'nuxt'
-                },
-                {
                     title: 'SvelteKit',
                     icon: 'icon-svelte',
                     image: '/images/blog/placeholder.png',
                     href: 'sveltekit'
-                },
-                {
-                    title: 'Refine',
-                    icon: 'web-icon-refine',
-                    image: '/images/blog/placeholder.png',
-                    href: 'refine'
                 },
                 {
                     title: 'Angular',
@@ -68,10 +50,28 @@
                     href: 'angular'
                 },
                 {
+                    title: 'Nuxt',
+                    icon: 'web-icon-nuxt',
+                    image: '/images/blog/placeholder.png',
+                    href: 'nuxt'
+                },
+                {
+                    title: 'Refine',
+                    icon: 'web-icon-refine',
+                    image: '/images/blog/placeholder.png',
+                    href: 'refine'
+                },
+                {
                     title: 'Solid',
                     icon: 'icon-solidjs',
                     image: '/images/blog/placeholder.png',
                     href: 'solid'
+                },
+                {
+                    title: 'Web',
+                    icon: 'icon-js',
+                    image: '/images/blog/placeholder.png',
+                    href: 'web'
                 }
             ]
         },
@@ -79,28 +79,28 @@
             title: 'Mobile and native',
             quickStarts: [
                 {
-                    title: 'React Native',
-                    icon: 'icon-react-native',
-                    image: '/images/blog/placeholder.png',
-                    href: 'react-native'
-                },
-                {
                     title: 'Flutter',
                     icon: 'icon-flutter',
                     image: '/images/blog/placeholder.png',
                     href: 'flutter'
                 },
                 {
-                    title: 'Apple',
-                    icon: 'icon-apple',
+                    title: 'React Native',
+                    icon: 'icon-react-native',
                     image: '/images/blog/placeholder.png',
-                    href: 'apple'
+                    href: 'react-native'
                 },
                 {
                     title: 'Android',
                     icon: 'icon-android',
                     image: '/images/blog/placeholder.png',
                     href: 'android'
+                },
+                {
+                    title: 'Apple',
+                    icon: 'icon-apple',
+                    image: '/images/blog/placeholder.png',
+                    href: 'apple'
                 }
             ]
         },
@@ -120,10 +120,10 @@
                     href: 'python'
                 },
                 {
-                    title: 'Dart',
-                    icon: 'icon-dart',
+                    title: '.NET',
+                    icon: 'icon-dotnet',
                     image: '/images/blog/placeholder.png',
-                    href: 'dart'
+                    href: 'dotnet'
                 },
                 {
                     title: 'PHP',
@@ -132,16 +132,16 @@
                     href: 'php'
                 },
                 {
+                    title: 'Dart',
+                    icon: 'icon-dart',
+                    image: '/images/blog/placeholder.png',
+                    href: 'dart'
+                },
+                {
                     title: 'Ruby',
                     icon: 'icon-ruby',
                     image: '/images/blog/placeholder.png',
                     href: 'ruby'
-                },
-                {
-                    title: '.NET',
-                    icon: 'icon-dotnet',
-                    image: '/images/blog/placeholder.png',
-                    href: 'dotnet'
                 },
                 {
                     title: 'Deno',
