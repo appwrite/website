@@ -3,7 +3,7 @@ layout: post
 title: Image transformation with Appwrite Storage
 description: Learn how to dynamically transform images with Appwrite Storage for better performance.
 date: 2025-02-28
-cover: /images/blog/planetscale-databases-alternative/cover.png
+cover: /images/blog/image-transformation-with-appwrite-storage/cover.png
 timeToRead: 6
 author: ebenezer-don
 category: tutorial
