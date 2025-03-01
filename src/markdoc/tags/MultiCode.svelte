@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
     import type { Writable } from 'svelte/store';
+
     export type CodeContext = {
         selected: Writable<string | null>;
         snippets: Writable<Set<Language>>;
@@ -45,7 +46,9 @@
         Copy = 'Copy',
         Copied = 'Copied!'
     }
+
     let copyText = CopyStatus.Copy;
+
     async function handleCopy() {
         await copy($content);
 
@@ -60,6 +63,22 @@
     onMount(() => {
         if ($preferredPlatform && $snippets.has($preferredPlatform)) {
             selected.set($preferredPlatform);
+        } else if ($preferredPlatform && !$snippets.has($preferredPlatform)) {
+            /*
+             * Edge case handling:
+             *
+             * 1. `$preferredPlatform` defaults to `client-web`
+             * 2. `$snippets` may not include it (e.g., shell commands: bash, cmd, powershell, etc.)
+             * 3. Fallback: use the first available snippet, but restore `$preferredPlatform`.
+             */
+            const tempPreferredPlatform = $preferredPlatform;
+
+            // set the first available
+            selected.set(Array.from($snippets)[0]);
+
+            // reset back to original platform,
+            // manual changes should update correctly!
+            $preferredPlatform = tempPreferredPlatform;
         }
 
         hasMounted = true;
@@ -111,5 +130,7 @@
             </ul>
         </div>
     </header>
-    <div class="web-code-snippet-content"><slot /></div>
+    <div class="web-code-snippet-content">
+        <slot />
+    </div>
 </section>
