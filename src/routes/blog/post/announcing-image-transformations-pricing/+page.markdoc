@@ -21,7 +21,7 @@ It's been incredible to see teams leverage our image transformation features, pr
 
 # Pricing update
 
-As Appwrite continues to grow, we need to ensure that our platform remains sustainable while providing the best possible service to all users. The new pricing will be effective Starting April 1st, 2025, and is only available on paid plans.
+As Appwrite continues to grow, we need to ensure that our platform remains sustainable while providing the best possible service to all users. The new pricing will be effective __starting April 1st, 2025__, and will only be available on paid plans.
 
 ## What will change
 
@@ -29,7 +29,7 @@ We will begin charging for origin images used in transformations. To use this fu
 
 This change will help support the computational resources required for this valuable service and enable us to continue enhancing our platform.
 
-Please refer to our [rates page](/docs/advanced/platform/image-transformations#rates) for detailed pricing information, including origin image costs and included quotas for different plans.
+Please refer to our [Pricing Page](/pricing) for detailed pricing information, including origin image costs and included quotas for different plans.
 
 ![console image](/images/blog/announcing-image-transformations-pricing/usage-component.png)
 
