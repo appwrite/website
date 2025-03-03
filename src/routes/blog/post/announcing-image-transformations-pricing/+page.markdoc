@@ -1,0 +1,60 @@
+---
+layout: post
+title: Announcing image transformation pricing
+description: To keep Appwrite Cloud sustainable, we are introducing pricing for image transformations.
+date: 2025-03-03
+cover: /images/blog/announcing-image-transformations-pricing/cover.png
+timeToRead: 4
+author: eldad-fux
+category: product
+featured: false
+callToAction: true
+---
+
+Image transformations are essential for modern applications, allowing developers to dynamically resize, crop, and modify images to suit different devices and use cases. With features like width and height adjustment, quality control, and various filters including opacity and border modifications, image transformations help deliver the perfect image for every situation while optimizing performance and user experience. This service has become a fundamental part of many applications, and we've worked hard to make it powerful yet simple to implement.
+
+When we launched Appwrite Cloud in beta, our focus was on building a robust platform that provided maximum value to our users. We intentionally offered many services without charge, even when they required significant computational resources - like image transformations, which demand substantial processing power and storage capacity to handle various transformations efficiently.
+
+In recent months, we've invested heavily in our infrastructure, optimizing our image processing pipeline and implementing advanced caching mechanisms to ensure fast and reliable image delivery. Our goal has always been to provide powerful image transformation capabilities while maintaining the simplicity that Appwrite is known for.
+
+It's been incredible to see teams leverage our image transformation features, processing millions of images monthly for their applications. This widespread adoption reinforces our commitment to building a powerful, accessible, and sustainable platform.
+
+# Pricing update
+
+As Appwrite continues to grow, we need to ensure that our platform remains sustainable while providing the best possible service to all users. The new pricing will be effective __starting April 1st, 2025__, and will only be available on paid plans.
+
+## What will change
+
+We will begin charging for origin images used in transformations. To use this functionality, you will need to be on the Pro or Scale plan. Both plans will include 100 origin images per month at no additional charge. Beyond this allocation, additional origin images will be available at $5 per 1,000 images.
+
+This change will help support the computational resources required for this valuable service and enable us to continue enhancing our platform.
+
+Please refer to our [Pricing Page](/pricing) for detailed pricing information, including origin image costs and included quotas for different plans.
+
+![console image](/images/blog/announcing-image-transformations-pricing/usage-component.png)
+
+# How it works
+
+Appwrite enables the transformation of images before retrieval using the [getFilePreview](/docs/references/cloud/client-web/storage#getFilePreview) endpoint. This functionality supports resizing images by width and height, adjusting quality, and applying filters such as opacity, border color, border radius, and more.
+
+## Origin image transformations
+
+An "origin image" represents the original, unmodified image file in Appwrite Storage. Each origin image serves as the base for unlimited transformations, allowing the creation of multiple variants without incurring additional origin image charges.
+
+**How it works:**
+1. Upload an image to Appwrite Storage
+2. Use the `getFilePreview` method to apply transformations to the image
+3. Retrieve transformed images through the preview endpoint
+4. Pay only for unique origin images, regardless of transformation count
+
+For example, suppose there are around 100 images in storage. If only 50 of these images undergo transformations, but transformations are applied around 200 times, the origin image transformations are only 50 and **not 200**.
+
+# Your usage
+
+To help prepare for these changes, teams can review their current image transformation usage through their organization's usage page or the usage section of specific buckets. This will help you understand your usage patterns and plan accordingly.
+
+# We're here to help
+
+If you have questions about this pricing change or need assistance optimizing your image transformation usage, please don't hesitate to reach out to us at [billing@appwrite.io](mailto:billing@appwrite.io).
+
+Your success is our priority, and we're committed to helping you make the most of Appwrite's image transformation capabilities while keeping costs predictable and manageable.
