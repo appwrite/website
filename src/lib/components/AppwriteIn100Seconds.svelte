@@ -19,7 +19,7 @@
             posthog: { name: 'intro-video-btn_hero_click' }
         });
     }}
-    class="web-button cursor-pointer"
+    class="web-button cursor-pointer shadow-lg shadow-black/50"
 >
     <span class="web-icon-play" />
     <span>Appwrite in 100 seconds</span>
