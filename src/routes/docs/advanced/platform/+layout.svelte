@@ -40,6 +40,11 @@
                 {
                     label: 'Response codes',
                     href: '/docs/advanced/platform/response-codes'
+                },
+                {
+                    label: 'Error handling',
+                    new: isNewUntil('10 Mar 2025'),
+                    href: '/docs/advanced/platform/error-handling'
                 }
             ]
         },

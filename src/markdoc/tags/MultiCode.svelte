@@ -8,42 +8,34 @@
 </script>
 
 <script lang="ts">
-    import { platformMap } from '$lib/utils/references';
-    import { getContext, setContext } from 'svelte';
-    import { writable } from 'svelte/store';
-    import type { Language } from '$lib/utils/code';
     import { copy } from '$lib/utils/copy';
+    import { type Readable, writable } from 'svelte/store';
     import { Select, Tooltip } from '$lib/components';
+    import { getContext, hasContext, onMount, setContext } from 'svelte';
+    import { type Language, multiCodeSelectedLanguage } from '$lib/utils/code';
+    import { Platform, platformMap, preferredPlatform } from '$lib/utils/references';
 
     setContext<CodeContext>('multi-code', {
-        selected: writable(null),
+        content: writable(''),
         snippets: writable(new Set()),
-        content: writable('')
+        selected: multiCodeSelectedLanguage
     });
-
-    const languageContext = getContext<Writable<string>>('language-context');
 
     const { snippets, selected, content } = getContext<CodeContext>('multi-code');
-
-    snippets.subscribe((n) => {
-        if ($selected === null && n.size > 0) {
-            $selected = Array.from(n)[0];
-        }
-    });
 
     selected.subscribe((language) => {
         // apply if exists in snippets
         if (language && $snippets.has(language as Language)) {
-            languageContext?.set(language);
+            preferredPlatform.set(language as Platform);
         }
     });
 
-    languageContext?.subscribe((language) => {
+    preferredPlatform.subscribe((language) => {
         if (
             language &&
             language !== $selected &&
             // apply if exists in snippets
-            $snippets.has(language as Language)
+            $snippets.has(language)
         ) {
             selected.set(language);
         }
@@ -61,6 +53,26 @@
         setTimeout(() => {
             copyText = CopyStatus.Copy;
         }, 1000);
+    }
+
+    let hasMounted = false;
+
+    onMount(() => {
+        if ($preferredPlatform && $snippets.has($preferredPlatform)) {
+            selected.set($preferredPlatform);
+        }
+
+        hasMounted = true;
+    });
+
+    if (hasContext('tabs-selection')) {
+        const tabsSelection = getContext<Readable<string>>('tabs-selection');
+        tabsSelection.subscribe(() => {
+            if (!hasMounted) return;
+            if (!$snippets.has($preferredPlatform)) {
+                selected.set(Array.from($snippets)[0]);
+            }
+        });
     }
 </script>
 
