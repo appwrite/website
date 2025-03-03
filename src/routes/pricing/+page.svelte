@@ -115,7 +115,7 @@
                                                 </li>
                                                 <li>
                                                     <span
-                                                        >1 Database, 1 Bucket, 3 Functions per
+                                                        >1 Database, 1 Bucket, 5 Functions per
                                                         project</span
                                                     >
                                                 </li>
