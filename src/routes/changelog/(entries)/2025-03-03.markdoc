@@ -16,6 +16,6 @@ To ensure the sustainability of Appwrite Cloud as it continues to scale, we're i
 
 Review your current image transformation usage through your organization's usage page or the usage section of specific projects to understand your usage patterns and plan accordingly.
 
-{% arrow_link href="/docs/advanced/platform/image-transformations#rates" %}
+{% arrow_link href="/docs/advanced/platform/image-transformations#pricing" %}
 View detailed pricing information
 {% /arrow_link %}
