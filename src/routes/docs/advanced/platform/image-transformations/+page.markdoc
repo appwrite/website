@@ -21,11 +21,11 @@ How it works:
 3. Retrieve transformed images through the preview endpoint
 4. Pay only for unique origin images, regardless of transformation count
 
-For example, suppose there are around 100 images in storage. If only 50 of these images undergo transformations, but transformations are applied around 200 times, charges will apply only to the 50 origin images.
+For example, suppose there are around 100 images in storage. If only 50 of these images undergo transformations, but transformations are applied around 200 times, the origin image transformations are only 50 and **not 200**.
 
 ## Pricing
 
-- Currently, this feature is **not available on the free plan**.
+- Currently, this feature is **unavailable on the free plan**.
 - Pro and Scale plans include 100 origin images per month. Additional usage is available at $5 per 1000 origin images.
 
 For detailed information about the different pricing options and features, please visit the [pricing page](/pricing).

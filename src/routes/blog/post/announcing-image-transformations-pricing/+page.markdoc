@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Announcing image transformation pricing
-description: To keep Appwrite Cloud sustainable, we are introducing image transformation pricing. Only available on Pro and Scale plans.
+description: To keep Appwrite Cloud sustainable, we are introducing pricing for image transformations.
 date: 2025-03-03
 cover: /images/blog/announcing-image-transformations-pricing/cover.png
 timeToRead: 4
@@ -37,7 +37,7 @@ Please refer to our [Pricing Page](/pricing) for detailed pricing information, i
 
 Appwrite enables the transformation of images before retrieval using the [getFilePreview](/docs/references/cloud/client-web/storage#getFilePreview) endpoint. This functionality supports resizing images by width and height, adjusting quality, and applying filters such as opacity, border color, border radius, and more.
 
-## Origin image
+## Origin image transformations
 
 An "origin image" represents the original, unmodified image file in Appwrite Storage. Each origin image serves as the base for unlimited transformations, allowing the creation of multiple variants without incurring additional origin image charges.
 
@@ -47,7 +47,7 @@ An "origin image" represents the original, unmodified image file in Appwrite Sto
 3. Retrieve transformed images through the preview endpoint
 4. Pay only for unique origin images, regardless of transformation count
 
-For example, suppose there are around 100 images in storage. If only 50 of these images undergo transformations, but transformations are applied around 200 times, charges will apply only to the 50 origin images.
+For example, suppose there are around 100 images in storage. If only 50 of these images undergo transformations, but transformations are applied around 200 times, the origin image transformations are only 50 and **not 200**.
 
 # Your usage
 
