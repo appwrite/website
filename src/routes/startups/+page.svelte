@@ -641,7 +641,7 @@
                                         />
                                     </div>
                                 </div>
-                                {#if !submitted}
+                                {#if submitted}
                                     <div
                                         class="web-u-max-width-380 web-u-max-inline-size-none-mobile relative z-[1] mx-auto flex flex-col gap-2 text-center"
                                     >
