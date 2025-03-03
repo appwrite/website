@@ -142,15 +142,17 @@ export const serviceMap: Record<Service, string> = {
 export const preferredVersion = writable<Version | null>(
     globalThis?.localStorage?.getItem('preferredVersion') as Version
 );
-export const preferredPlatform = writable<Platform | null>(
-    globalThis?.localStorage?.getItem('preferredPlatform') as Platform
+
+export const preferredPlatform = writable<Platform>(
+    (globalThis?.localStorage?.getItem('preferredPlatform') ?? 'client-web') as Platform
 );
 
 if (browser) {
     preferredVersion.subscribe((value) => {
-        if (value) globalThis?.sessionStorage?.setItem('preferredVersion', value);
+        if (value) globalThis?.localStorage?.setItem('preferredVersion', value);
     });
+
     preferredPlatform.subscribe((value) => {
-        if (value) globalThis?.sessionStorage?.setItem('preferredPlatform', value);
+        if (value) globalThis?.localStorage?.setItem('preferredPlatform', value);
     });
 }
