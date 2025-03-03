@@ -2,8 +2,6 @@
     import { browser } from '$app/environment';
     import { Tabs } from '$lib/UI';
     import { visible } from '$lib/actions/visible';
-    import { Tooltip } from '$lib/components';
-    import { classNames } from '$lib/utils/classnames';
     import { getScrollDir } from '$lib/utils/getScrollDir';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
@@ -250,7 +248,7 @@
             rows: [
                 {
                     title: 'Functions',
-                    free: '3 per project',
+                    free: '5 per project',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'

@@ -25,6 +25,8 @@
             triggers: new Map()
         })
     );
+
+    setContext('tabs-selection', value);
 </script>
 
 <div class="web-card is-normal mt-4" {...$root} use:root>
