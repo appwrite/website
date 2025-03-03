@@ -113,7 +113,7 @@
                                 {:else}
                                     <section class="flex flex-col gap-5">
                                         <h1 class="text-display font-aeonik-pro text-primary">
-                                            Enterprise Plan
+                                            Appwrite for Enterprise
                                         </h1>
                                         <p class="text-description">
                                             Enterprise businesses partner with Appwrite to give
