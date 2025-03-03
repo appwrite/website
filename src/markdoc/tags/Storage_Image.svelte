@@ -19,7 +19,6 @@
     export let output: string = 'webp';
     export let just_img: boolean = false;
 
-    // Get the file preview URL from Appwrite Storage
     const src = storage
         .getFilePreview(
             bucket_id,
