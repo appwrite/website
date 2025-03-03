@@ -23,6 +23,7 @@
     import Badge from '$lib/components/ui/Badge.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
+    import Button from '$lib/components/ui/button.svelte';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -156,6 +157,16 @@
                             and languages of your choice.
                         </svelte:fragment>
                         <div class="mt-8 flex flex-col gap-4 sm:flex-row" slot="cta">
+                            <Button
+                                variant="primary"
+                                on:click={() =>
+                                    trackEvent({
+                                        plausible: { name: 'Get started in hero' },
+                                        posthog: { name: 'get-started-btn_hero_click' }
+                                    })}
+                            >
+                                Start building
+                            </Button>
                             <a
                                 href={PUBLIC_APPWRITE_DASHBOARD}
                                 class="web-button w-full lg:w-fit"
@@ -168,7 +179,7 @@
                                 Start building
                             </a>
 
-                            <AppwriteIn100Seconds />
+                            <!-- <AppwriteIn100Seconds /> -->
                         </div>
                     </Hero>
                 </section>

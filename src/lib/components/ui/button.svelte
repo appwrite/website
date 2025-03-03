@@ -6,14 +6,14 @@
 
     const button = cva(
         [
-            'flex w-fit justify-center px-[0.875rem] h-10 transition-all text-center no-underline select-none min-w-10 bg-origin-border text-white font-medium items-center gap-2 rounded-lg border border-transparent'
+            'flex w-fit cursor-pointer justify-center px-[0.875rem] h-10 transition-all text-center no-underline select-none min-w-10 bg-origin-border text-white font-medium items-center gap-2 rounded-lg border border-transparent'
         ],
         {
             variants: {
                 variant: {
                     primary: [
-                        'bg-[linear-gradient(135deg,_var(--color-accent)_0%,_var(--color-accent)_61%,_var(--color-secondary-100)_100%)]',
-                        'hover:shadow-[0_0_2rem_var(--color-accent-200)] active:not:disabled:shadow-[0_0_2rem_var(--color-accent-200)]'
+                        'bg-[linear-gradient(135deg,_var(--color-pink-500)_0%,_var(--color-pink-500)_61%,_var(--color-secondary-100)_100%)]',
+                        'hover:not:disabled:shadow-[0_0_2rem_var(--color-accent-200)] active:not:disabled:shadow-[0_0_2rem_var(--color-accent-200)]'
                     ]
                 }
             },
