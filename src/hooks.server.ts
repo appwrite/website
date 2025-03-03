@@ -63,6 +63,8 @@ const securityheaders: Handle = async ({ event, resolve }) => {
     };
 
     if (isPreview) {
+        delete cspDirectives['block-all-mixed-content'];
+        delete cspDirectives['upgrade-insecure-requests'];
         ['default-src', 'script-src', 'style-src', 'img-src', 'font-src', 'connect-src'].forEach(
             (key) => {
                 cspDirectives[key] += ` ${previewDomain}`;

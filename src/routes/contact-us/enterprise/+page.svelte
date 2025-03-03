@@ -1,10 +1,9 @@
 <script lang="ts">
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { Main } from '$lib/layouts';
     import { TITLE_SUFFIX } from '$routes/titles';
     import FooterNav from '../../../lib/components/FooterNav.svelte';
     import MainFooter from '../../../lib/components/MainFooter.svelte';
-    import Pink from '../bg.png';
     import { loggedIn, user } from '$lib/utils/console';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
@@ -78,7 +77,7 @@
 </svelte:head>
 
 <div class="absolute" style="pointer-events:none;">
-    <img src={Pink} alt="" />
+    <enhanced:img src="../bg.png" alt="" />
 </div>
 
 <Main>
@@ -113,9 +112,9 @@
                                         </section>
                                     {:else}
                                         <section class="flex flex-col gap-5">
-                                            <h4 class="web-display web-u-color-text-primary">
+                                            <h1 class="web-display web-u-color-text-primary">
                                                 Enterprise Plan
-                                            </h4>
+                                            </h1>
                                             <p class="web-description">
                                                 Interested in a pricing solution that fits your
                                                 specific requirements? Let’s talk.
