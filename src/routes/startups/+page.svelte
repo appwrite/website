@@ -641,12 +641,12 @@
                                         />
                                     </div>
                                 </div>
-                                {#if submitted}
+                                {#if !submitted}
                                     <div
                                         class="web-u-max-width-380 web-u-max-inline-size-none-mobile relative z-[1] mx-auto flex flex-col gap-2 text-center"
                                     >
                                         <h6
-                                            class="text-label e-mobile-fix-1 flex items-center justify-center gap-2"
+                                            class="text-label flex items-center justify-center gap-2"
                                         >
                                             <img
                                                 class="shrink-0"
@@ -907,11 +907,6 @@
             inset-inline-end: 0; /*transform:translateX(50px);*/
             inset-block-start: 100px;
             opacity: 0.4;
-        }
-    }
-    @media #{devices.$break1} {
-        .e-mobile-fix-1 {
-            display: block;
         }
     }
 
