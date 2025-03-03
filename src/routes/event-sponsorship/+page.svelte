@@ -2,60 +2,68 @@
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { Main } from '$lib/layouts';
     import { TITLE_SUFFIX } from '$routes/titles';
-    import FooterNav from '../../../lib/components/FooterNav.svelte';
-    import MainFooter from '../../../lib/components/MainFooter.svelte';
     import { loggedIn, user } from '$lib/utils/console';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
+    import { FooterNav, MainFooter } from '$lib/components';
 
-    let email = '';
     let name = '';
-    let companyName = '';
-    let companySize: string | null = null;
-    let companyWebsite = '';
-    let useCase = '';
+    let email = '';
+    let eventName = '';
+    let socialHandles = '';
+    let eventPublicWebLink = '';
+    let estimatedAttendees = '';
+    let eventDate = new Date().toISOString().split('T')[0];
+    let eventType: 'Virtual' | 'In Person' | 'Hybrid' = 'Virtual';
 
     let submitted = false;
-    let submitting = true;
+    let submitting = false;
     let error: string | undefined;
 
     async function handleSubmit() {
         error = undefined;
         submitting = true;
-        const subject = `Enterprise Plan Application: ${companyName}`;
+
+        const subject = `Event Sponsorship Application`;
 
         const cloudEmail = loggedIn && $user?.email ? $user.email : undefined;
 
-        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback/sales`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email,
-                subject,
-                cloudEmail,
-                companyName,
-                companySize,
-                companyWebsite,
-                firstName: name,
-                message: useCase,
-                ...getReferrerAndUtmSource()
-            })
-        });
+        try {
+            const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback/sponsorships`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    subject,
+                    cloudEmail,
+                    eventName,
+                    eventDate,
+                    eventType,
+                    socialHandles,
+                    eventPublicWebLink,
+                    estimatedAttendees,
+                    ...getReferrerAndUtmSource()
+                })
+            });
 
-        submitting = false;
-        if (response.status >= 400) {
-            error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
-            return;
+            if (response.status >= 400) {
+                error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
+                return;
+            }
+
+            submitted = true;
+        } catch {
+            error = 'Error submitting form.';
+        } finally {
+            submitting = false;
         }
-
-        submitted = true;
     }
 
-    const title = 'Enterprise' + TITLE_SUFFIX;
-    const description =
-        "Want to learn more about Appwrite's Enterprise plan? Send us a message, and we'll propose a pricing solution that fits your unique use case.";
+    const title = 'Event sponsorship' + TITLE_SUFFIX;
+    const description = 'Apply for Appwrite Cloud Pro credits for your event.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
@@ -64,7 +72,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -77,7 +85,7 @@
 </svelte:head>
 
 <div class="absolute" style="pointer-events:none;">
-    <enhanced:img src="../bg.png" alt="" />
+    <enhanced:img src="./bg.png" alt="" />
 </div>
 
 <Main>
@@ -95,29 +103,30 @@
                                 >
                                     {#if submitted}
                                         <section class="flex flex-col gap-5">
-                                            <h1 class="web-display web-u-color-text-primary">
-                                                Thank you for your submission
-                                            </h1>
+                                            <h2 class="web-display web-u-color-text-primary">
+                                                Submission received
+                                            </h2>
                                             <p class="web-description web-u-padding-block-end-32">
-                                                Your details for the enterprise plan have been sent
-                                                successfully. Our team will get back to you as soon
-                                                as possible.
+                                                Thank you for applying for an Appwrite hackathon
+                                                sponsorship. We will get back to you in a couple of
+                                                days.
                                             </p>
                                             <a
-                                                href="/pricing"
+                                                href="/"
                                                 class="web-button is-secondary web-u-margin-block-end-32"
                                             >
-                                                <span>Back to pricing</span>
+                                                <span>Back to home</span>
                                             </a>
                                         </section>
                                     {:else}
                                         <section class="flex flex-col gap-5">
-                                            <h1 class="web-display web-u-color-text-primary">
-                                                Enterprise Plan
-                                            </h1>
+                                            <h4 class="web-display web-u-color-text-primary">
+                                                Event sponsorship
+                                            </h4>
                                             <p class="web-description">
-                                                Interested in a pricing solution that fits your
-                                                specific requirements? Let’s talk.
+                                                Hosting an event or hackathon? Apply for an Appwrite
+                                                sponsorship and get $50 Cloud credits for all your
+                                                attendees to build with Appwrite Pro.
                                             </p>
                                         </section>
                                     {/if}
@@ -160,37 +169,78 @@
                                                 />
                                             </li>
                                             <li class="web-form-item">
-                                                <label class="u-block" for="companyName"
-                                                    >Company name</label
+                                                <label class="u-block" for="eventName"
+                                                    >Event name</label
                                                 >
                                                 <input
                                                     required
                                                     class="web-input-text w-full"
                                                     type="text"
-                                                    placeholder="Acme Corp"
-                                                    id="companyName"
-                                                    bind:value={companyName}
+                                                    placeholder="Awesome hackathon"
+                                                    id="eventName"
+                                                    bind:value={eventName}
                                                 />
                                             </li>
                                             <li class="web-form-item">
-                                                <label class="u-block" for="companySize"
-                                                    >Company size</label
+                                                <label class="u-block" for="eventLink"
+                                                    >Event link</label
+                                                >
+
+                                                <input
+                                                    required
+                                                    class="web-input-text w-full"
+                                                    type="url"
+                                                    placeholder="https://appwrite.io"
+                                                    id="eventLink"
+                                                    bind:value={eventPublicWebLink}
+                                                />
+                                            </li>
+                                            <li class="web-form-item">
+                                                <label class="u-block" for="eventDate"
+                                                    >Event date</label
+                                                >
+                                                <input
+                                                    required
+                                                    type="date"
+                                                    id="eventDate"
+                                                    bind:value={eventDate}
+                                                    class="web-input-text w-full"
+                                                    min={new Date().toISOString().split('T')[0]}
+                                                />
+                                            </li>
+                                            <li class="web-form-item">
+                                                <label class="u-block" for="estimatedAttendees"
+                                                    >Estimated attendees</label
+                                                >
+                                                <input
+                                                    required
+                                                    min="10"
+                                                    type="number"
+                                                    placeholder="10"
+                                                    id="estimatedAttendees"
+                                                    bind:value={estimatedAttendees}
+                                                    class="web-input-text w-full"
+                                                />
+                                            </li>
+                                            <li
+                                                class="web-form-item flex-col gap-1 sm:col-span-1 md:col-span-2"
+                                            >
+                                                <label class="u-block" for="eventType"
+                                                    >Event type</label
                                                 >
 
                                                 <div class="relative">
                                                     <select
                                                         class="web-input-text w-full appearance-none"
-                                                        id="companySize"
-                                                        bind:value={companySize}
+                                                        id="eventType"
+                                                        bind:value={eventType}
                                                     >
-                                                        <option value={null}>Select size</option>
-                                                        <option>1-10 employees</option>
-                                                        <option>11-50 employees</option>
-                                                        <option>51-200 employees</option>
-                                                        <option>201-500 employees</option>
-                                                        <option>501-1000 employees</option>
-                                                        <option>1001-5000 employees</option>
-                                                        <option>5000+ employees</option>
+                                                        <option value={null}
+                                                            >Select event type</option
+                                                        >
+                                                        <option>Virtual</option>
+                                                        <option>In Person</option>
+                                                        <option>Hybrid</option>
                                                     </select>
                                                     <span
                                                         class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
@@ -198,32 +248,18 @@
                                                     />
                                                 </div>
                                             </li>
-                                            <li class="web-form-item flex-col gap-1 md:col-span-2">
-                                                <label class="u-block" for="companyWebsite"
-                                                    >Company website</label
-                                                >
-                                                <input
-                                                    required
-                                                    class="web-input-text w-full"
-                                                    type="url"
-                                                    placeholder="https://appwrite.io"
-                                                    id="companyWebsite"
-                                                    bind:value={companyWebsite}
-                                                />
-                                            </li>
                                             <li
                                                 class="web-form-item flex-col gap-1 sm:col-span-1 md:col-span-2"
                                             >
-                                                <label class="u-block" for="use-case"
-                                                    >Please share more information about your use
-                                                    case</label
+                                                <label class="u-block" for="socialHandles"
+                                                    >Social media handles</label
                                                 >
                                                 <textarea
                                                     required
+                                                    id="socialHandles"
                                                     class="web-input-text w-full"
-                                                    id="use-case"
-                                                    placeholder="Describe your use case and how our Enterprise Plan can support it"
-                                                    bind:value={useCase}
+                                                    bind:value={socialHandles}
+                                                    placeholder="List your social media handles or profile URLs"
                                                 />
                                             </li>
                                         </ul>
@@ -260,10 +296,24 @@
     </div>
 </Main>
 
-<style>
+<style lang="scss">
     .web-form-item {
         gap: 4px;
         display: flex;
         flex-direction: column;
+    }
+
+    input[type='date'] {
+        padding: 0.8rem;
+        position: relative;
+
+        /* Position the native calendar icon */
+        &::-webkit-calendar-picker-indicator {
+            top: 50%;
+            right: 1rem;
+            cursor: pointer;
+            position: absolute;
+            transform: translateY(-50%);
+        }
     }
 </style>
