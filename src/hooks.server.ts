@@ -42,24 +42,49 @@ const securityheaders: Handle = async ({ event, resolve }) => {
     const isPreview = !!process.env.COOLIFY_FQDN;
     // COOLIFY_FQDN already includes `http`.
     const previewDomain = isPreview ? `${process.env.COOLIFY_FQDN}` : null;
+    const join = (arr: string[]) => arr.join(' ');
 
     const cspDirectives: Record<string, string> = {
         'default-src': "'self'",
-        'script-src':
-            "'self' 'unsafe-inline' 'unsafe-eval' https://*.posthog.com https://*.plausible.io https://plausible.io",
+        'script-src': join([
+            "'self'",
+            "'unsafe-inline'",
+            "'unsafe-eval'",
+            'https://*.posthog.com',
+            'https://*.plausible.io',
+            'https://plausible.io',
+            'https://js.zi-scripts.com',
+            'https://tags.clickagy.com'
+        ]),
         'style-src': "'self' 'unsafe-inline'",
         'img-src': "'self' data: https:",
         'font-src': "'self'",
         'object-src': "'none'",
         'base-uri': "'self'",
         'form-action': "'self'",
-        'frame-ancestors': "'self' https://www.youtube.com https://*.vimeo.com",
+        'frame-ancestors': join(["'self'", 'https://www.youtube.com', 'https://*.vimeo.com']),
         'block-all-mixed-content': '',
         'upgrade-insecure-requests': '',
-        'connect-src':
-            "'self' https://*.appwrite.io https://*.appwrite.org https://*.posthog.com https://*.sentry.io https://*.plausible.io https://plausible.io",
-        'frame-src':
-            "'self' https://www.youtube.com https://status.appwrite.online https://www.youtube-nocookie.com https://player.vimeo.com"
+        'connect-src': join([
+            "'self'",
+            'https://*.appwrite.io',
+            'https://*.appwrite.org',
+            'https://*.posthog.com',
+            'https://*.sentry.io',
+            'https://*.plausible.io',
+            'https://plausible.io',
+            'https://aorta.clickagy.com',
+            'https://hemsync.clickagy.com',
+            
+        ]),
+        'frame-src': join([
+            "'self'",
+            'https://www.youtube.com',
+            'https://status.appwrite.online',
+            'https://www.youtube-nocookie.com',
+            'https://player.vimeo.com',
+            'https://hemsync.clickagy.com'
+        ])
     };
 
     if (isPreview) {
