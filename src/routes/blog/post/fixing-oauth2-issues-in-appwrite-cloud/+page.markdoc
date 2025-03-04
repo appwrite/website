@@ -3,7 +3,7 @@ layout: post
 title: Fixing OAuth2 authentication issues in Appwrite
 description: Learn how to fix OAuth2 and third-party cookie issues in Appwrite.
 date: 2025-02-18
-cover: /images/blog/fixing-oauth2-issues-in-appwrite/cover.png
+cover: /images/blog/fixing-oauth2-issues-in-appwrite-cloud/cover.png
 timeToRead: 5
 author: ebenezer-don
 category: tutorial
