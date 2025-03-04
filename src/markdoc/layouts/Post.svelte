@@ -123,7 +123,7 @@
         <div class="container">
             <Breadcrumbs {title} />
             <article class="grid grid-cols-1 gap-4 lg:grid-cols-12">
-                <div class="border-smooth border-r pr-12 lg:col-span-9">
+                <div class="border-smooth md:border-r md:pr-12 lg:col-span-9">
                     <PostMeta {authorData} {title} {timeToRead} {currentURL} {date} {description} />
                     {#if cover}
                         <div>
