@@ -66,15 +66,17 @@ For local development:
 - Some browsers have specific development settings to allow cross-domain cookies during local development
 
 For production:
-- Configure a custom domain for your Appwrite project so that cookies are sent from the same domain as your application
+- [Configure a custom domain](https://appwrite.io/docs/advanced/platform/custom-domains) for your Appwrite project so that cookies are sent from the same domain as your application
 - This ensures that session cookies are properly sent with each request
 
 
 ## Option 2: Use OAuth2 tokens
 
-A more reliable approach is to use Appwrite's OAuth2 token-based authentication, which bypasses third-party cookie restrictions entirely. Instead of `createOAuth2Session()`, you would use `createOAuth2Token()` which implements a more privacy-friendly flow that works in all browsers.
+Another approach is to use Appwrite's OAuth2 token-based authentication, which bypasses third-party cookie restrictions entirely. Instead of `createOAuth2Session()`, you would use `createOAuth2Token()` which implements a more privacy-friendly flow that works in all browsers.
 
 For a detailed implementation guide, check out our article on [Fixing OAuth2 authentication issues in Appwrite Cloud](https://appwrite.io/blog/post/fixing-oauth2-issues-in-appwrite-cloud?doFollow=true), which covers this approach in depth.
+
+Keep in mind that non-public files still require session cookies, so stick with Option 1 if your app needs to handle such files.
 
 # Creating sessions server side
 
@@ -93,8 +95,6 @@ For server-side environments, you need to handle session persistence manually:
 
 1. Use an API key when authenticating so that the response from Appwrite includes a secret you can use for subsequent requests
 2. Store and reuse the session information between requests
-
-When you create a session with `createEmailPasswordSession()`, Appwrite returns a session object that includes a `$id` and `secret`. You can use these values with the `setSession()` method to authenticate future requests.
 
 For detailed implementation examples and best practices for server-side rendering with Appwrite, check out our [SSR documentation](https://appwrite.io/docs/products/auth/server-side-rendering?doFollow=true).
 
