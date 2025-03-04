@@ -121,7 +121,7 @@
 </script>
 
 <svelte:head>
-    {#if !dev}
+    <!-- {#if !dev} -->
         <!--suppress JSUnresolvedLibraryURL -->
         <script defer data-domain="appwrite.io" src="https://plausible.io/js/script.js"></script>
         <!-- ZoomInfo snippet -->
@@ -167,7 +167,7 @@
                           document.body.appendChild(zi);
                       });
         </script>
-    {/if}
+    <!-- {/if} -->
 
     <!-- canonical url -->
     <link rel="canonical" href={canonicalUrl} />

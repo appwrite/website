@@ -54,7 +54,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://*.plausible.io',
             'https://plausible.io',
             'https://js.zi-scripts.com',
-            'https://tags.clickagy.com'
+            'https://ws.zoominfo.com '
         ]),
         'style-src': "'self' 'unsafe-inline'",
         'img-src': "'self' data: https:",
@@ -73,9 +73,9 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://*.sentry.io',
             'https://*.plausible.io',
             'https://plausible.io',
+            'https://js.zi-scripts.com',
             'https://aorta.clickagy.com',
             'https://hemsync.clickagy.com',
-            
         ]),
         'frame-src': join([
             "'self'",
