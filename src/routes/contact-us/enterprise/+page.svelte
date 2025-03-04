@@ -95,10 +95,10 @@
                                 >
                                     {#if submitted}
                                         <section class="flex flex-col gap-5">
-                                            <h1 class="web-display web-u-color-text-primary">
+                                            <h1 class="text-display font-aeonik-pro text-primary">
                                                 Thank you for your submission
                                             </h1>
-                                            <p class="web-description web-u-padding-block-end-32">
+                                            <p class="text-description pb-8">
                                                 Your details for the enterprise plan have been sent
                                                 successfully. Our team will get back to you as soon
                                                 as possible.

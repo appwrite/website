@@ -37,7 +37,7 @@
     {/if}
 {:else}
     <div class="web-media main">
-        <img {src} {alt} {title} loading="lazy" class="web-u-media-ratio-16-9 w-full" />
+        <img {src} {alt} {title} loading="lazy" class="aspect-video w-full" />
         <div class="abs">
             <Tooltip closeOnPointerDown>
                 <button class="web-button is-secondary cursor-pointer" use:melt={$trigger}>
