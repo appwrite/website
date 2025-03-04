@@ -15,8 +15,6 @@ Instead of manually editing images before uploading them or storing multiple var
 
 This guide will walk you through everything you need to know about image transformation with Appwrite, and how to use the Storage preview endpoint to transform images. By the end, you'll be able to integrate image transformations into your app without touching an image editor.
 
-Let's get started.
-
 # Why dynamic image transformations?
 
 Here are some of the benefits of transforming images dynamically:
