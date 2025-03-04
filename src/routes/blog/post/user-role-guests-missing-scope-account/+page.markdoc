@@ -16,7 +16,7 @@ If you've been working with Appwrite, you've likely encountered the error messag
 Before diving into specific scenarios, let's understand what the error message is telling us:
 
 - **User (role: guests)**: This indicates that the request is coming from an unauthenticated user (a guest) rather than a logged-in user.
-- **missing scope (account)**: This means the operation you're trying to perform requires authentication privileges that a guest user doesn't have.
+- **missing scope (account)**: This means the operation you're trying to perform requires access to an account.
 
 In essence, this error occurs when you're trying to perform an operation that requires authentication, but Appwrite doesn't detect a valid authenticated session.
 
@@ -38,7 +38,9 @@ try {
 }
 ```
 
-To fix this issue, simply create a session before calling `account.get()`:
+Note: This error is actually expected and useful in certain scenarios, such as when your app first starts and you need to check if a user is logged in. You can catch this error to determine that there's no active session and redirect users to a login page accordingly.
+
+However, if you're getting this error when you actually need an authenticated session, here's how to resolve it:
 
 ```js
 // First create a session
