@@ -69,11 +69,6 @@ For production:
 - Configure a custom domain for your Appwrite project so that cookies are sent from the same domain as your application
 - This ensures that session cookies are properly sent with each request
 
-```js
-// In production with properly configured domains, this works as expected
-await account.createOAuth2Session('github');
-const user = await account.get(); // Cookie is included in this request
-```
 
 ## Option 2: Use OAuth2 tokens
 
