@@ -56,8 +56,6 @@
     const inPolicy = isInPolicy();
     $: headingClass =
         inPolicy && level === 1 ? 'text-title font-aeonik-pro mb-4 mt-8' : classList[level];
-
-    $: console.log({ ctx: $ctx });
 </script>
 
 <svelte:element

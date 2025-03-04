@@ -40,22 +40,37 @@
             observer.disconnect();
         };
     });
-
-    $: console.log({ activeIndex });
 </script>
 
 <nav class="sticky top-32 col-span-3 -ml-4 hidden h-[600px] lg:block">
     <span class="text-micro tracking-loose text-primary pl-8 uppercase">Table of Contents</span>
     <div class="relative">
         <ul class="border-smooth mt-11 ml-7 flex flex-col gap-7 border-b pb-11">
-            {#each toc as item}
+            {#each toc as parent (parent.href)}
                 <li
                     class={classNames(
-                        item.selected ? 'text-primary' : 'text-secondary',
+                        parent.selected ? 'text-primary' : 'text-secondary',
                         'relative transition-colors'
                     )}
                 >
-                    <a href={item.href} class="line-clamp-1">{item.title}</a>
+                    <a href={parent.href} class="line-clamp-1">{parent.title}</a>
+
+                    {#if parent.children}
+                        <ul class="border-smooth mt-11 ml-9 flex flex-col gap-7 border-b pb-11">
+                            {#each parent.children as child}
+                                <li
+                                    class={classNames(
+                                        parent.selected ? 'text-primary' : 'text-secondary',
+                                        'relative transition-colors'
+                                    )}
+                                >
+                                    <a href={child.href} class="line-clamp-1">
+                                        {child.title}
+                                    </a>
+                                </li>
+                            {/each}
+                        </ul>
+                    {/if}
                 </li>
             {/each}
         </ul>
