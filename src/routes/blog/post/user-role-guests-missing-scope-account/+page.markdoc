@@ -74,7 +74,7 @@ For production:
 
 Another approach is to use Appwrite's OAuth2 token-based authentication, which bypasses third-party cookie restrictions entirely. Instead of `createOAuth2Session()`, you would use `createOAuth2Token()` which implements a more privacy-friendly flow that works in all browsers.
 
-For a detailed implementation guide, check out our article on [Fixing OAuth2 authentication issues in Appwrite Cloud](https://appwrite.io/blog/post/fixing-oauth2-issues-in-appwrite-cloud?doFollow=true), which covers this approach in depth.
+For a detailed implementation guide, check out this article on [Fixing OAuth2 authentication issues in Appwrite Cloud](https://appwrite.io/blog/post/fixing-oauth2-issues-in-appwrite-cloud?doFollow=true), which covers this approach in depth.
 
 Keep in mind that non-public files still require session cookies, so stick with Option 1 if your app needs to handle such files.
 
@@ -96,7 +96,7 @@ For server-side environments, you need to handle session persistence manually:
 1. Use an API key when authenticating so that the response from Appwrite includes a secret you can use for subsequent requests
 2. Store and reuse the session information between requests
 
-For detailed implementation examples and best practices for server-side rendering with Appwrite, check out our [SSR documentation](https://appwrite.io/docs/products/auth/server-side-rendering?doFollow=true).
+For detailed implementation examples and best practices for server-side rendering with Appwrite, check out the [SSR documentation](https://appwrite.io/docs/products/auth/server-side-rendering?doFollow=true).
 
 # Conclusion
 
@@ -108,7 +108,7 @@ Whenever you see "User (role: guests) missing scope (account)", remember: Appwri
 
 Each scenario has a straightforward solution as we've covered above. Test your authentication flow across multiple browsers and environments to ensure it works consistently.
 
-If you're still running into issues, our [Discord community](https://appwrite.io/discord) is always available to help troubleshoot your specific situation.
+If you're still running into issues, the Appwrite [Discord community](https://appwrite.io/discord) is always available to help troubleshoot your specific situation.
 
 # Further reading
 
