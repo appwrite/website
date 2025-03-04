@@ -247,6 +247,41 @@ const previewUrl = storage.getFilePreview(
 
 {% storage_image just_img=true file_id="cat-image" width=1600 height=800 gravity="center" quality=100 opacity=0.7 background_color="FF9900" /%}
 
+# 8. Configure output format
+
+The **output** parameter lets you convert images between different formats on the fly, regardless of the original image format.
+
+**Example:**
+
+```jsx
+
+const webpImage = storage.getFilePreview(
+    'bucketID',
+    'fileID',
+    1600,
+    800,
+    'center',
+    90,
+    0,
+    '',
+    0,
+    1,
+    0,
+    '',
+    'webp' // Output format
+)
+```
+
+{% storage_image just_img=true file_id="cat-image" width=1600 height=800 gravity="center" quality=90 output="webp" /%}
+
+The above image is originally a PNG file. However, by setting the output format to WebP, Appwrite automatically converts the image to WebP format and returns the transformed image.
+You can confirm this by downloading the image or inspecting its source.
+
+The `output` parameter supports `png`, `jpeg`, `webp`, `gif`, `heic`, and `avif`.
+
+Choosing the right format can significantly impact your application's performance. For example, WebP and AVIF are modern formats that offer better compression and quality than JPEG and PNG.
+However, while these are compatible with most modern browsers, it's good practice to implement a fallback for older browsers.
+
 # Final thoughts
 
 With just a few lines of code, Appwrite's [image transformations](https://appwrite.io/docs/products/storage/images) eliminate the need for:
