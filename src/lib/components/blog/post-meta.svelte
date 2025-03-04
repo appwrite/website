@@ -38,7 +38,7 @@
         {/if}
     </div>
 
-    <div class="border-smooth mb-8 flex justify-between border-b py-8">
+    <div class="border-smooth mb-8 flex flex-col justify-between border-b py-8 md:flex-row">
         {#if authorData}
             <a href={authorData.href} class="flex items-center gap-2">
                 {#if authorData.avatar}
