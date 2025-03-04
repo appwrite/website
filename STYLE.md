@@ -250,7 +250,14 @@ Split content such that each piece makes sense without reading dependents or exp
 
 ### Headings
 
-Prefer simple nouns and root form verbs.
+Navigation labels should be short (ideally, one word) and not have verbs or a directive to keep labels concise. Also make sure not to repeat a term if already under certain context
+
+- ✅ User verification
+- ✅ Release (under a Policies section)
+- ❌ Verify user
+- ❌ Release policies (under a Policies section)
+
+For content headings, prefer simple nouns and root form verbs.
 
 - ✅ Create screen (root verb, noun)
 - ✅ Authentication (noun)
