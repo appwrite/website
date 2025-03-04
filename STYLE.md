@@ -301,6 +301,13 @@ Even if your paragraph is just one or two sentences, shorter paragraphs are easi
 
 ### Diction
 
+Avoid using possession as it is less welcoming.
+
+- ✅ read the documentation
+- ✅ the API
+- ❌ read on our documentation
+- ❌ our API
+
 If you're unsure about which word to use to describe a concept, you shuold look for precedence in the following order.
 
 1. Appwrite docs
