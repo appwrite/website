@@ -44,6 +44,22 @@
         'CreateInvoice'
     ];
 
+    const seededShuffle = <T,>(array: T[], seed: number) => {
+        const shuffledArray = [...array];
+
+        const random = (seed: number) => {
+            const x = Math.sin(seed) * 10000;
+            return x - Math.floor(x);
+        };
+
+        for (let i = shuffledArray.length - 1; i > 0; i--) {
+            const j = Math.floor(random(seed + i) * (i + 1));
+            [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+        }
+
+        return shuffledArray;
+    };
+
     let intervalId: NodeJS.Timeout | null = null;
 
     const cycleCommands = () => {
@@ -60,6 +76,7 @@
             commands = [...commands];
         }, 2000);
     };
+
     onMount(() => {
         cycleCommands();
     });
@@ -88,16 +105,20 @@
         <div
             class="flex flex-1 flex-col items-center gap-3 text-center [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
         >
-            {#each commands as command (command)}
-                <span
-                    class="text-caption border-smooth w-fit rounded-2xl border bg-[#232325]/90 py-1 px-3 font-mono text-sm text-white"
+            {#each commands as command, i (command)}
+                <div
+                    class="text-caption relative w-fit overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
+                    class:active={i === 2}
+                    style:--spread="{command.length * 2}px"
                     animate:flip={{
                         easing: quadInOut,
                         duration: 500
                     }}
                 >
-                    {command}
-                </span>
+                    <div class="h-full w-full rounded-2xl bg-[#232325]/90 py-1 px-3">
+                        {command}
+                    </div>
+                </div>
             {/each}
         </div>
 
@@ -110,13 +131,7 @@
             </defs>
 
             <rect width="175" height="2" fill="url(#movingGradient)">
-                <animate
-                    attributeName="x"
-                    from="175"
-                    to="-175"
-                    dur="2.1s"
-                    repeatCount="indefinite"
-                />
+                <animate attributeName="x" from="175" to="-175" dur="2s" repeatCount="indefinite" />
             </rect>
         </svg>
 
@@ -124,12 +139,13 @@
             class="relative flex h-full gap-4 [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
         >
             {#each Array.from({ length: 3 }) as _, i}
+                {@const shuffledPlatforms = seededShuffle(platforms, i + 1)}
                 <div
                     class="animate-vertical-marquee flex flex-col gap-4"
                     class:[animation-direction:reverse]={i % 2}
                 >
                     {#each Array.from({ length: 2 }) as _, i}
-                        {#each platforms as platform}
+                        {#each shuffledPlatforms as platform}
                             <div
                                 aria-hidden={i === 1 ? 'true' : 'false'}
                                 class="flex size-16 shrink-0 items-center justify-center rounded-xl bg-[#232325]/90"
@@ -152,3 +168,31 @@
         />
     </div>
 </div>
+
+<style>
+    .active {
+        --base-color: transparent;
+        --base-gradient-color: white;
+
+        --gradient: linear-gradient(
+            -90deg,
+            #0000 calc(50% - var(--spread)),
+            var(--base-gradient-color),
+            #0000 calc(50% + var(--spread))
+        );
+        background: var(--gradient), linear-gradient(var(--base-color), var(--base-color));
+        background-size:
+            250% 150%,
+            auto;
+        animation: badge 1.5s forwards 0.5s ease-in-out;
+    }
+
+    @keyframes badge {
+        from {
+            background-position: 0% center;
+        }
+        to {
+            background-position: 100% center;
+        }
+    }
+</style>
