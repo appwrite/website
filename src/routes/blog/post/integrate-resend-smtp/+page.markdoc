@@ -59,10 +59,6 @@ Next, you must create an API key to send emails using Resend. To do so, visit th
 
 ![Create a Resend API key](/images/blog/integrate-resend-smtp/api-key.png)
 
-{% call_to_action %}
-
-{% /call_to_action %}
-
 ## Step 3: Create SMTP provider on Appwrite Messaging
 
 Once we have our verified domain and Resend API key, we must create an SMTP provider on Appwrite to send emails to our app’s users. To do so, create a project on Appwrite Cloud, go to the **Messaging** page from the left sidebar, click on the **Providers** tab, and create a new **Email** provider. In the Email provider setup wizard, select the **SMTP** provider.
