@@ -1,17 +1,17 @@
 ---
 layout: post
-title: Fixing OAuth2 authentication issues in Appwrite Cloud
-description: Learn how to fix OAuth2 and third-party cookie issues in Appwrite Cloud.
+title: Fixing OAuth2 authentication issues in Appwrite
+description: Learn how to fix OAuth2 and third-party cookie issues in Appwrite.
 date: 2025-02-18
-cover: /images/blog/fixing-oauth2-issues-in-appwrite-cloud/cover.png
+cover: /images/blog/fixing-oauth2-issues-in-appwrite/cover.png
 timeToRead: 5
 author: ebenezer-don
 category: tutorial
 ---
 
-# Fixing OAuth2 authentication issues in Appwrite Cloud
+# Fixing OAuth2 authentication issues in Appwrite
 
-When integrating OAuth2 authentication with Appwrite Cloud, you might face an issue where authentication appears to succeed, but users remain logged out. The OAuth flow completes, the app redirects back as expected, yet when the app checks for an authenticated session, no user data is found.
+When integrating OAuth2 authentication with Appwrite, you might face an issue where authentication appears to succeed, but users remain logged out. The OAuth flow completes, the app redirects back as expected, yet when the app checks for an authenticated session, no user data is found.
 
 This issue can be frustrating because:
 
@@ -23,7 +23,7 @@ If this sounds familiar, you're not alone. Let's break down why this happens and
 
 # What's causing the issue?
 
-The root cause is related to how modern browsers handle third-party cookies. When your app domain differs from Appwrite's domain (`cloud.appwrite.io`), browsers treat Appwrite's session cookies as third-party cookies and may block them.
+The root cause is related to how modern browsers handle third-party cookies. When your app domain differs from Appwrite's domain, for example `cloud.appwrite.io` in Appwrite Cloud, browsers treat Appwrite's session cookies as third-party cookies and may block them.
 
 There are two ways to solve this issue:
 
@@ -167,10 +167,10 @@ The solutions aren't mutually exclusive - they solve the same problem from diffe
 
 Appwrite offers OAuth2 tokens and custom domains to solve authentication issues in modern browsers. OAuth2 tokens provide immediate, cross-browser compatibility without infrastructure changes, while custom domains give you complete control over your authentication flow.
 
-Need extra help? Check our [documentation](https://appwrite.io/docs/products/auth) or ask for support in the Appwrite [Discord community](https://appwrite.io/discord).
+Need extra help? Check the [documentation](https://appwrite.io/docs/products/auth) or ask for support in the Appwrite [Discord community](https://appwrite.io/discord).
 
 # Further reading
 
 - [Building custom authentication flows with Appwrite](https://appwrite.io/blog/post/building-custom-auth-flows?doFollow=true)
 - [How to set up Google authentication in React with Appwrite](https://appwrite.io/blog/post/set-up-google-auth-appwrite-react?doFollow=true)
-- [A modern developer’s guide to user authentication](https://appwrite.io/blog/post/guide-to-user-authentication?doFollow=true)
+- [A modern developer's guide to user authentication](https://appwrite.io/blog/post/guide-to-user-authentication?doFollow=true)
