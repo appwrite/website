@@ -19,7 +19,8 @@
             posthog: { name: 'intro-video-btn_hero_click' }
         });
     }}
-    class="web-button cursor-pointer shadow-lg shadow-black/50"
+    class="web-button cursor-pointer transition-opacity hover:opacity-90 active:scale-95"
+    style:box-shadow="0 2px 40px rgba(0, 0, 0, 0.5)"
 >
     <span class="web-icon-play" />
     <span>Appwrite in 100 seconds</span>
