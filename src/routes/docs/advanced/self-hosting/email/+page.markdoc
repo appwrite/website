@@ -40,6 +40,8 @@ _APP_SMTP_PASSWORD=YOUR-SMTP-PASSWORD
 _APP_SYSTEM_EMAIL_ADDRESS=YOUR-SENDER-EMAIL
 ```
 
+When using SendGrid, the SMTP username should be set to the literal string "apikey".
+
 {% partial file="update-variables.md" /%}
 
 # Debugging {% #debugging %}
