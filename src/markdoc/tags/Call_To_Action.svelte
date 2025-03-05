@@ -19,12 +19,12 @@
         'before:absolute before:inset-0 before:h-[170%] before:scale-x-125 before:bg-[radial-gradient(ellipse_at_center,_rgba(253,_54,_110,_0.2),_transparent_65%)] before:blur-lg'
     )}
 >
-    <div class="flex flex-col gap-1">
-        <h2 class="text-label text-primary font-aeonik-pro">{heading}</h2>
-        <p class="text-body text-secondary">{copy}</p>
+    <div class="flex flex-col gap-2">
+        <h2 class="text-label text-primary font-aeonik-pro text-pretty">{heading}</h2>
+        <p class="text-body text-secondary text-pretty">{copy}</p>
     </div>
 
-    <ul class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <ul class="grid grid-cols-1 gap-3 md:grid-cols-2">
         {#each benefits as benefit}
             <li class="text-sub-body text-primary flex items-center gap-2 font-medium">
                 <img
