@@ -61,9 +61,10 @@
     };
 
     let intervalId: NodeJS.Timeout | null = null;
+    let animate: boolean = false;
 
     const cycleCommands = () => {
-        if (commands.length === 0) {
+        if (commands.length === 0 || !animate) {
             return;
         }
 
@@ -88,8 +89,12 @@
     });
 </script>
 
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 <div
     class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-7"
+    on:mouseover={() => (animate = true)}
+    on:mouseleave={() => (animate = false)}
 >
     <div class="space-y-3 pt-2 px-3 pb-4">
         <h3 class="font-aeonik-pro text-label text-primary">Functions</h3>
@@ -109,20 +114,21 @@
                 <div
                     class="text-caption relative w-fit overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
                     class:active={i === 2}
-                    style:--spread="{command.length * 2}px"
+                    class:animate
+                    style:--spread="{command.length * 2.25}px"
                     animate:flip={{
                         easing: quadInOut,
-                        duration: 500
+                        duration: animate ? 500 : 0
                     }}
                 >
-                    <div class="h-full w-full rounded-2xl bg-[#232325]/90 py-1 px-3">
+                    <div class="h-full w-full rounded-2xl bg-[#232325]/90 py-1 px-3 text-white/80">
                         {command}
                     </div>
                 </div>
             {/each}
         </div>
 
-        <svg width="150" height="2" class="mr-2 -ml-20">
+        <svg width="165" height="2" class="mr-2 -ml-20 transition" class:opacity-0={!animate}>
             <defs>
                 <linearGradient id="movingGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" style="stop-color:white; stop-opacity:1" />
@@ -143,6 +149,7 @@
                 <div
                     class="animate-vertical-marquee flex flex-col gap-4"
                     class:[animation-direction:reverse]={i % 2}
+                    class:[animation-play-state:paused]={!animate}
                 >
                     {#each Array.from({ length: 2 }) as _, i}
                         {#each shuffledPlatforms as platform}
@@ -170,7 +177,7 @@
 </div>
 
 <style>
-    .active {
+    .active.animate {
         --base-color: transparent;
         --base-gradient-color: white;
 
