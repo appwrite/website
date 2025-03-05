@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
-
     export let src: string;
     export let alt = '';
     export let controls = true;
