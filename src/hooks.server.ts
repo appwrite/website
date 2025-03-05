@@ -48,13 +48,14 @@ const securityheaders: Handle = async ({ event, resolve }) => {
         'default-src': "'self'",
         'script-src': join([
             "'self'",
+            'blob:',
             "'unsafe-inline'",
             "'unsafe-eval'",
             'https://*.posthog.com',
             'https://*.plausible.io',
             'https://plausible.io',
             'https://js.zi-scripts.com',
-            'https://ws.zoominfo.com '
+            'https://ws.zoominfo.com'
         ]),
         'style-src': "'self' 'unsafe-inline'",
         'img-src': "'self' data: https:",
