@@ -180,7 +180,8 @@
                             class="aspect-[3/1] max-w-[7.5rem] shrink-0 rounded-xl object-cover"
                         />
                         <p class="text-pretty">
-                            Empowering Shopify merchants with real-time store monitoring using StoreAlert
+                            Empowering Shopify merchants with real-time store monitoring using
+                            StoreAlert
                         </p>
                     </div>
                 </a>
