@@ -155,7 +155,7 @@
             </div>
             <div class="col-span-4 -ml-12 border-l border-white/6 pl-12">
                 <a
-                    href="/blog/post/case-study-undo"
+                    href="/blog/post/customer-story-storealert"
                     use:melt={$item}
                     class="group block rounded-2xl border border-white/12 bg-white/6 p-4 outline-none focus-within:bg-white/12"
                 >
@@ -165,7 +165,7 @@
                             >Customer Stories<span class="text-accent">_</span></span
                         >
                         <a
-                            href="/blog/category/case-studies"
+                            href="/blog/category/customer-stories"
                             class="text-primary text-caption flex items-center gap-2"
                             >See more <span
                                 class="web-icon-chevron-right transition-transform group-hover:translate-x-0.5"
@@ -175,12 +175,12 @@
 
                     <div class="my-4 flex flex-1 gap-3 outline-none">
                         <img
-                            src="/images/blog/case-study-undo/cover.png"
+                            src="/images/blog/customer-story-storealert/cover.png"
                             alt="Case study cover"
                             class="aspect-[3/1] max-w-[7.5rem] shrink-0 rounded-xl object-cover"
                         />
                         <p class="text-pretty">
-                            Pioneering asset management solutions for the circular economy with UNDŌ
+                            Empowering Shopify merchants with real-time store monitoring using StoreAlert
                         </p>
                     </div>
                 </a>
