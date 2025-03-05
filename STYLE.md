@@ -250,12 +250,19 @@ Split content such that each piece makes sense without reading dependents or exp
 
 ### Headings
 
-Prefer simple nouns and root form verbs.
+Navigation labels should be short (ideally, one word) and not have verbs or a directive to keep labels concise. Also make sure not to repeat a term if already under certain context
 
-✅ Create screen (root verb, noun)
-✅ Authentication (noun)
-❌ Authenticating (present participle verb)
-❌ Create a new screen (too wordy)
+- ✅ User verification
+- ✅ Release (under a Policies section)
+- ❌ Verify user
+- ❌ Release policies (under a Policies section)
+
+For content headings, prefer simple nouns and root form verbs.
+
+- ✅ Create screen (root verb, noun)
+- ✅ Authentication (noun)
+- ❌ Authenticating (present participle verb)
+- ❌ Create a new screen (too wordy)
 
 Try your best to stick to simple headings, if it's not possible, don't worry and write a full heading if need be.
 
@@ -264,19 +271,19 @@ Try your best to stick to simple headings, if it's not possible, don't worry and
 Avoid unclear [links](https://www.youtube.com/watch?v=dQw4w9WgXcQ) such as learn more [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
 Readers will be unsure where a link may take them. Those using a screen reader will find it especially difficult.
 
-✅ [Learn more about authentication](https://appwrite.io/docs/products/auth/email-password#login)
-❌ Learn more about authentication [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+- ✅ [Learn more about authentication](https://appwrite.io/docs/products/auth/email-password#login)
+- ❌ Learn more about authentication [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 ### Sentences
 
 Use a directive that's straight to the point when providing an action a developer must perform.
 The action and verb always comes first, the explanation after.
 
-✅ Create a new database.
-✅ Update a document so its permissions include your new users.
-❌ To allow access, update your permissions.
-❌ You can create a new database for each tenant.
-❌ Creating a new bucket lets you set different permissions for images uploaded by users.
+- ✅ Create a new database.
+- ✅ Update a document so its permissions include your new users.
+- ❌ To allow access, update your permissions.
+- ❌ You can create a new database for each tenant.
+- ❌ Creating a new bucket lets you set different permissions for images uploaded by users.
 
 The action always comes first and is in the beginning of the sentence, which makes important steps easier to follow.
 
@@ -288,11 +295,11 @@ to skip and scan a document.
 Like sentences, important information always comes first.
 This makes it easier to scan through the page.
 
-✅ Clear, important information such as actions come first
+- ✅ Clear, important information such as actions come first
 
 > Store secrets as environment variables in vaults by navigating to **settings** > **security** > **vault**. Your secrets should never be shared. You must ensure data privacy, sharing secrets can compromise security during development.
 
-❌ Unclear, important information is in the middle of the paragraph
+- ❌ Unclear, important information is in the middle of the paragraph
 
 > Security is important in development. That's why you should take care to protect secrets. Secrets should be safely stored as a environment variable in a vault. You can find vaults under **settings** > **security** > **vault**. Don't share this with anyone!
 
@@ -300,6 +307,13 @@ If there are multiple important actions or pieces of information, **break up the
 Even if your paragraph is just one or two sentences, shorter paragraphs are easier to scan.
 
 ### Diction
+
+Avoid using possession as it is less welcoming.
+
+- ✅ read the documentation
+- ✅ the API
+- ❌ read on our documentation
+- ❌ our API
 
 If you're unsure about which word to use to describe a concept, you shuold look for precedence in the following order.
 
