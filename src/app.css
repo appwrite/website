@@ -2,7 +2,7 @@
 @variant dark (&:is(.dark *));
 
 @theme {
-    /* colors */
+    /* Colors */
     --color-*: initial;
 
     /* base */
@@ -75,10 +75,10 @@
     --color-greyscale-900: hsl(var(--color-greyscale-hue) 5.7% 10.4%);
 
     /* utility colors */
-    --color-badge-bg-light: hsl(340, 61.8%, 86.7%);
-    --color-badge-border-light: hsl(342, 83.2%, 79%);
-    --color-badge-bg-dark: hsl(240, 3.3%, 17.8%);
-    --color-badge-border-dark: hsl(240, 2.6%, 22.9%);
+    --color-badge-bg-light: #f2c8d6;
+    --color-badge-border-light: #f69db7;
+    --color-badge-bg-dark: #2c2c2f;
+    --color-badge-border-dark: #39393c;
 
     /* Easings */
     --transition-timing-function-bounce: linear(
@@ -223,7 +223,7 @@
     --font-size-headline--line-height: clamp(3.5rem, 8.5vw, 5.75rem);
     --font-size-headline--letter-spacing: var(--letter-spacing-compressed);
 
-    /* letter spacing */
+    /* Letter spacing */
     --letter-spacing-*: initial;
     --letter-spacing-compressed: -0.022em;
     --letter-spacing-squeezed: -0.01em;
@@ -233,7 +233,7 @@
     --letter-spacing-loose: 0.08em;
 }
 
-/* light & dark mode */
+/* Themes */
 :root,
 .light {
     --color-pink-hue: 343;
