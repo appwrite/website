@@ -1,7 +1,5 @@
 <script lang="ts">
-    import { page } from '$app/state';
     import { socialSharingOptions, type SocialShareOption } from '$lib/constants';
-    import { classNames } from '$lib/utils/classnames';
     import { handleCopy } from '$lib/utils/copy';
     import { formatDate } from '$lib/utils/date';
     import type { AuthorData } from '$routes/blog/content';
