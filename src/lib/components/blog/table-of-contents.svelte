@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
     import { classNames } from '$lib/utils/classnames';
-    import { onMount } from 'svelte';
+    //import { onMount } from 'svelte';
 
     const backToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -9,37 +9,37 @@
 
     export let toc: Array<TocItem> = [];
 
-    $: activeIndex = 0;
+    //$: activeIndex = 0;
 
-    onMount(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const index = toc.findIndex((item) => item.href === `#${entry.target.id}`);
-                        if (index !== -1) {
-                            activeIndex = index;
-                        }
-                    }
-                });
-            },
-            {
-                rootMargin: '0px',
-                threshold: 0.5
-            }
-        );
+    // onMount(() => {
+    //     const observer = new IntersectionObserver(
+    //         (entries) => {
+    //             entries.forEach((entry) => {
+    //                 if (entry.isIntersecting) {
+    //                     const index = toc.findIndex((item) => item.href === `#${entry.target.id}`);
+    //                     if (index !== -1) {
+    //                         activeIndex = index;
+    //                     }
+    //                 }
+    //             });
+    //         },
+    //         {
+    //             rootMargin: '0px',
+    //             threshold: 0.5
+    //         }
+    //     );
 
-        toc.forEach((item) => {
-            const target = document.querySelector(item.href);
-            if (target) {
-                observer.observe(target);
-            }
-        });
+    //     toc.forEach((item) => {
+    //         const target = document.querySelector(item.href);
+    //         if (target) {
+    //             observer.observe(target);
+    //         }
+    //     });
 
-        return () => {
-            observer.disconnect();
-        };
-    });
+    //     return () => {
+    //         observer.disconnect();
+    //     };
+    // });
 </script>
 
 <nav class="sticky top-32 col-span-3 -ml-4 hidden h-[600px] lg:block">
@@ -74,10 +74,10 @@
                 </li>
             {/each}
         </ul>
-        <div
+        <!-- <div
             class="bg-primary absolute top-0 -left-px h-6 w-px rounded-full transition duration-500 ease-in-out"
             style:transform={`translateY(${activeIndex * 52}px)`}
-        />
+        /> -->
     </div>
 
     <button
