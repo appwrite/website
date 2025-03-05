@@ -21,4 +21,3 @@ terraform/**/.t*
 terraform/**/.env
 terraform/**/**/*.tfstate*
 /.cache
-tailwind.config.*
