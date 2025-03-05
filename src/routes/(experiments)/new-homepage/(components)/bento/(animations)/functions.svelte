@@ -61,10 +61,9 @@
     };
 
     let intervalId: NodeJS.Timeout | null = null;
-    let animate: boolean = false;
 
     const cycleCommands = () => {
-        if (commands.length === 0 || !animate) {
+        if (commands.length === 0) {
             return;
         }
 
@@ -89,12 +88,8 @@
     });
 </script>
 
-<!-- svelte-ignore a11y-no-static-element-interactions -->
-<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 <div
     class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-7"
-    on:mouseover={() => (animate = true)}
-    on:mouseleave={() => (animate = false)}
 >
     <div class="space-y-3 pt-2 px-3 pb-4">
         <h3 class="font-aeonik-pro text-label text-primary">Functions</h3>
@@ -114,11 +109,10 @@
                 <div
                     class="text-caption relative w-fit overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
                     class:active={i === 2}
-                    class:animate
                     style:--spread="{command.length * 2.25}px"
                     animate:flip={{
                         easing: quadInOut,
-                        duration: animate ? 500 : 0
+                        duration: 500
                     }}
                 >
                     <div class="h-full w-full rounded-2xl bg-[#232325]/90 py-1 px-3 text-white/80">
@@ -128,7 +122,7 @@
             {/each}
         </div>
 
-        <svg width="165" height="2" class="mr-2 -ml-20 transition" class:opacity-0={!animate}>
+        <svg width="200" height="2" class="mr-2 -ml-32 transition">
             <defs>
                 <linearGradient id="movingGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" style="stop-color:white; stop-opacity:1" />
@@ -137,7 +131,13 @@
             </defs>
 
             <rect width="175" height="2" fill="url(#movingGradient)">
-                <animate attributeName="x" from="175" to="-175" dur="2s" repeatCount="indefinite" />
+                <animate
+                    attributeName="x"
+                    from="175"
+                    to="-175"
+                    dur="2.2s"
+                    repeatCount="indefinite"
+                />
             </rect>
         </svg>
 
@@ -147,24 +147,16 @@
             {#each Array.from({ length: 3 }) as _, i}
                 {@const shuffledPlatforms = seededShuffle(platforms, i + 1)}
                 <div
+                    style:--steps={shuffledPlatforms.length + 1}
                     class="animate-vertical-marquee flex flex-col gap-4"
                     class:[animation-direction:reverse]={i % 2}
-                    class:[animation-play-state:paused]={!animate}
                 >
-                    {#each Array.from({ length: 2 }) as _, i}
-                        {#each shuffledPlatforms as platform}
-                            <div
-                                aria-hidden={i === 1 ? 'true' : 'false'}
-                                class="flex size-16 shrink-0 items-center justify-center rounded-xl bg-[#232325]/90"
-                            >
-                                <img
-                                    src={platform}
-                                    alt=""
-                                    role="presentation"
-                                    class="h-10 grayscale"
-                                />
-                            </div>
-                        {/each}
+                    {#each shuffledPlatforms as platform}
+                        <div
+                            class="flex size-16 shrink-0 items-center justify-center rounded-xl bg-[#232325]/90"
+                        >
+                            <img src={platform} alt="" role="presentation" class="h-10 grayscale" />
+                        </div>
                     {/each}
                 </div>
             {/each}
@@ -177,7 +169,7 @@
 </div>
 
 <style>
-    .active.animate {
+    .active {
         --base-color: transparent;
         --base-gradient-color: white;
 
