@@ -1,15 +1,17 @@
 <script lang="ts">
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { classNames } from '$lib/utils/classnames';
-    export let heading: string = 'Start building with Appwrite today';
-    export let copy: string = 'This is a small sentence further explaining the title above.';
 
-    let benefits: Array<string> = [
-        'Optimized content types',
-        'Influencer marketing',
-        'Posting volume',
-        'Secure funding'
-    ];
+    export let title: string = 'Start building with Appwrite today';
+    export let description: string = 'Build with the frameworks and languages you want.';
+    export let point1: string = 'Built in security';
+    export let point2: string = 'Scalable infrastructure';
+    export let point3: string = 'No vendor lock in';
+    export let point4: string = 'Highly customizable backend';
+    export let cta: string = 'Get started';
+
+    let benefits: Array<string> = [point1, point2, point3, point4];
+
     export let url: string = PUBLIC_APPWRITE_DASHBOARD;
 </script>
 
@@ -20,8 +22,8 @@
     )}
 >
     <div class="flex flex-col gap-2">
-        <h2 class="text-label text-primary font-aeonik-pro text-pretty">{heading}</h2>
-        <p class="text-body text-secondary text-pretty">{copy}</p>
+        <h2 class="text-label text-primary font-aeonik-pro text-pretty">{title}</h2>
+        <p class="text-body text-secondary text-pretty">{description}</p>
     </div>
 
     <ul class="grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -38,7 +40,6 @@
         {/each}
     </ul>
     <div class="flex flex-col gap-2 md:flex-row">
-        <a href={url} class="web-button max-sm:w-full!">Button</a>
-        <a href={url} class="web-button is-secondary max-sm:w-full!">Button</a>
+        <a href={url} class="web-button max-sm:w-full!">{cta}</a>
     </div>
 </div>
