@@ -14,9 +14,6 @@
     import Net from '../../../(assets)/icons/net.svg';
     import Go from '../../../(assets)/icons/go.svg';
     import React from '../../../(assets)/icons/react.svg';
-    import { onMount, onDestroy } from 'svelte';
-    import { flip } from 'svelte/animate';
-    import { quadInOut } from 'svelte/easing';
 
     const platforms = [
         Python,
@@ -59,33 +56,6 @@
 
         return shuffledArray;
     };
-
-    let intervalId: NodeJS.Timeout | null = null;
-
-    const cycleCommands = () => {
-        if (commands.length === 0) {
-            return;
-        }
-
-        intervalId = setInterval(() => {
-            const firstItem = commands.shift();
-            if (firstItem !== undefined) {
-                commands.push(firstItem);
-            }
-
-            commands = [...commands];
-        }, 2000);
-    };
-
-    onMount(() => {
-        cycleCommands();
-    });
-
-    onDestroy(() => {
-        if (intervalId) {
-            clearInterval(intervalId);
-        }
-    });
 </script>
 
 <div
@@ -104,51 +74,47 @@
     >
         <div
             class="flex flex-1 flex-col items-center gap-3 text-center [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
+            style:--spacing={`calc(${commands.length} * 12px)`}
         >
-            {#each commands as command, i (command)}
-                <div
-                    class="text-caption relative w-fit overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
-                    class:active={i === 2}
-                    style:--spread="{command.length * 2.25}px"
-                    animate:flip={{
-                        easing: quadInOut,
-                        duration: 500
-                    }}
-                >
-                    <div class="h-full w-full rounded-2xl bg-[#232325]/90 py-1 px-3 text-white/80">
-                        {command}
+            <div class="animate-vertical-marquee flex flex-col items-center gap-3">
+                {#each commands as command}
+                    <div
+                        class="text-caption relative w-fit overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
+                        style:--spread="{command.length * 2.25}px"
+                    >
+                        <div
+                            class="h-full w-full rounded-2xl bg-[#232325]/90 py-1 px-3 text-white/80"
+                        >
+                            {command}
+                        </div>
                     </div>
-                </div>
-            {/each}
+                {/each}
+            </div>
+            <div class="animate-vertical-marquee flex flex-col items-center gap-3">
+                {#each commands as command}
+                    <div
+                        class="text-caption relative w-fit overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
+                        style:--spread="{command.length * 2.25}px"
+                        aria-hidden="true"
+                    >
+                        <div
+                            class="h-full w-full rounded-2xl bg-[#232325]/90 py-1 px-3 text-white/80"
+                        >
+                            {command}
+                        </div>
+                    </div>
+                {/each}
+            </div>
         </div>
-
-        <svg width="200" height="2" class="mr-2 -ml-32 transition">
-            <defs>
-                <linearGradient id="movingGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" style="stop-color:white; stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:white; stop-opacity:0" />
-                </linearGradient>
-            </defs>
-
-            <rect width="175" height="2" fill="url(#movingGradient)">
-                <animate
-                    attributeName="x"
-                    from="175"
-                    to="-175"
-                    dur="2.2s"
-                    repeatCount="indefinite"
-                />
-            </rect>
-        </svg>
-
         <div
             class="relative flex h-full gap-4 [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
+            style:--spacing={`calc(${platforms.length} * var(--spacing-3))`}
         >
             {#each Array.from({ length: 3 }) as _, i}
                 {@const shuffledPlatforms = seededShuffle(platforms, i + 1)}
                 <div
                     style:--steps={shuffledPlatforms.length + 1}
-                    class="animate-vertical-marquee flex flex-col gap-4"
+                    class="animate-vertical-marquee flex flex-col"
                     class:[animation-direction:reverse]={i % 2}
                 >
                     {#each shuffledPlatforms as platform}
@@ -183,7 +149,7 @@
         background-size:
             250% 150%,
             auto;
-        animation: badge 1.5s forwards 0.5s ease-in-out;
+        animation: badge 1.5s infinite 0.5s ease-in-out;
     }
 
     @keyframes badge {

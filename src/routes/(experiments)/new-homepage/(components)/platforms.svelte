@@ -89,52 +89,32 @@
             <div
                 class="divide-smooth animate-marquee flex w-max flex-1 grow flex-nowrap divide-dashed [animation-duration:80s] md:w-full md:divide-x md:[animation-play-state:paused]"
             >
-                {#each platforms as platform, i}
-                    <button
-                        class="first-of-type:border-smooth group animate-fade-in last-of-type:border-smooth relative flex h-16 w-16 items-center justify-center first-of-type:border-l first-of-type:border-dashed last-of-type:border-r last-of-type:border-dashed md:w-full"
-                        style:--primary-color={platform.primary}
-                        style:--secondary-color={platform.secondary}
-                        style:animation-delay="{i * 25}ms"
-                    >
-                        <img
-                            src={platform.icon}
-                            alt={platform.name}
-                            class="h-8 w-auto grayscale transition-all duration-500 group-hover:grayscale-0"
-                        />
-
-                        <div
-                            class={classNames(
-                                'absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100',
-                                'bg-gradient-to-tl from-transparent to-transparent',
-                                'hover:from-[var(--primary-color,_#fff)]/4 hover:to-[var(--secondary-color,_transparent)]/10'
-                            )}
+                {#each Array.from({ length: 2 }) as _}
+                    {#each platforms as platform, i}
+                        <button
+                            class="first-of-type:border-smooth group animate-fade-in last-of-type:border-smooth relative flex h-16 w-16 items-center justify-center first-of-type:border-l first-of-type:border-dashed last-of-type:border-r last-of-type:border-dashed md:w-full"
+                            style:--primary-color={platform.primary}
+                            style:--secondary-color={platform.secondary}
+                            style:animation-delay="{i * 25}ms"
+                            aria-hidden={i < platforms.length - 1}
                         >
-                            <Noise opacity={0.1} />
-                        </div>
-                    </button>
-                {/each}
-                {#each platforms as platform, i}
-                    <button
-                        class="first-of-type:border-smooth group animate-fade-in last-of-type:border-smooth relative flex h-16 w-16 items-center justify-center first-of-type:border-l first-of-type:border-dashed last-of-type:border-r last-of-type:border-dashed md:hidden md:w-full"
-                        style:--primary-color={platform.primary}
-                        style:--secondary-color={platform.secondary}
-                        style:animation-delay="{i * 25}ms"
-                        aria-hidden="true"
-                    >
-                        <img
-                            src={platform.icon}
-                            alt={platform.name}
-                            class="h-8 w-auto grayscale transition-all duration-500 group-hover:grayscale-0"
-                        />
+                            <img
+                                src={platform.icon}
+                                alt={platform.name}
+                                class="h-8 w-auto grayscale transition-all duration-500 group-hover:grayscale-0"
+                            />
 
-                        <div
-                            class={classNames(
-                                'absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100',
-                                'bg-gradient-to-tl from-transparent to-transparent',
-                                'hover:from-[var(--primary-color,_#fff)]/4 hover:to-[var(--secondary-color,_transparent)]/10'
-                            )}
-                        />
-                    </button>
+                            <div
+                                class={classNames(
+                                    'absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100',
+                                    'bg-gradient-to-tl from-transparent to-transparent',
+                                    'hover:from-[var(--primary-color,_#fff)]/4 hover:to-[var(--secondary-color,_transparent)]/10'
+                                )}
+                            >
+                                <Noise opacity={0.1} />
+                            </div>
+                        </button>
+                    {/each}
                 {/each}
             </div>
         </div>

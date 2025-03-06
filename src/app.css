@@ -112,7 +112,7 @@
     --animate-fade-in: fade-in 0.5s ease-in-out both;
     --animate-blur-in: blur-in 0.5s ease-in-out both, fade-in 0.5s ease-in-out both;
     --animate-marquee: marquee var(--speed, 30s) linear infinite var(--direction, forwards);
-    --animate-vertical-marquee: vertical-marquee var(--speed, 20s) linear infinite
+    --animate-vertical-marquee: vertical-marquee var(--speed, 8s) linear infinite
         var(--direction, forwards);
 
     /* Pink polyfills */
@@ -192,7 +192,7 @@
     }
 
     @keyframes vertical-marquee {
-        to {
+        100% {
             transform: translateY(-50%);
         }
     }
