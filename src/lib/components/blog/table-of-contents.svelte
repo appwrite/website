@@ -9,7 +9,7 @@
 
     export let toc: Array<TocItem> = [];
 
-    $: activeIndex = 0;
+    let activeIndex: number = 0;
 
     onMount(() => {
         const observer = new IntersectionObserver(
