@@ -28,7 +28,7 @@ The most common cause of this error is attempting to access user account informa
 
 If you're not logged in yet and you try to get information about the user with something like `account.get()`, you'll see this error.
 
-```js
+```jsx
 // This will fail if no user is logged in
 try {
   const user = await account.get();
@@ -38,11 +38,11 @@ try {
 }
 ```
 
-Note: This error is actually expected and useful in certain scenarios, such as when your app first starts and you need to check if a user is logged in. You can catch this error to determine that there's no active session and redirect users to a login page accordingly.
+This error is actually expected and useful in certain scenarios, such as when your app first starts and you need to check if a user is logged in. You can catch this error to determine that there's no active session and redirect users to a login page.
 
-However, if you're getting this error when you actually need an authenticated session, here's how to resolve it:
+However, if you're getting this error when you actually need an authenticated session, simply create a session before calling `account.get()`:
 
-```js
+```jsx
 // First create a session
 await account.createEmailSession('user@example.com', 'password');
 
@@ -62,13 +62,14 @@ There are two approaches to solve this issue:
 ## Option 1: Browser settings and custom domains
 
 For local development:
+
 - Allow 3rd party cookies in your browser settings
 - Some browsers have specific development settings to allow cross-domain cookies during local development
 
 For production:
+
 - [Configure a custom domain](https://appwrite.io/docs/advanced/platform/custom-domains) for your Appwrite project so that cookies are sent from the same domain as your application
 - This ensures that session cookies are properly sent with each request
-
 
 ## Option 2: Use OAuth2 tokens
 
@@ -80,11 +81,11 @@ Keep in mind that non-public files still require session cookies, so stick with 
 
 # Creating sessions server side
 
-In the browser, the Appwrite SDK automatically persists the session by using cookies. Server-side, however, different frameworks handle sessions differently so the session is not persisted.
+In client-side applications, Appwrite automatically persists the session by using cookies. Server-side, however, different frameworks handle sessions differently so the session is not persisted.
 
 Since `account.createEmailPasswordSession()` doesn't persist a session, calling `account.get()` right after will result in an unauthenticated request:
 
-```js
+```jsx
 // Server-side code - this approach doesn't work as expected
 await account.createEmailPasswordSession('user@example.com', 'password');
 // In a different request or function call:
@@ -108,11 +109,10 @@ Whenever you see "User (role: guests) missing scope (account)", remember: Appwri
 
 Each scenario has a straightforward solution as we've covered above. Test your authentication flow across multiple browsers and environments to ensure it works consistently.
 
-If you're still running into issues, the Appwrite [Discord community](https://appwrite.io/discord) is always available to help troubleshoot your specific situation.
+If you're still running into issues, the Appwrite [Discord community](https://appwrite.io/discord) is always available to help.
 
 # Further reading
 
 - [Building custom authentication flows with Appwrite](https://appwrite.io/blog/post/building-custom-auth-flows?doFollow=true)
 - [Fixing OAuth2 authentication issues in Appwrite Cloud](https://appwrite.io/blog/post/fixing-oauth2-issues-in-appwrite-cloud?doFollow=true)
 - [A modern developer's guide to user authentication](https://appwrite.io/blog/post/guide-to-user-authentication?doFollow=true)
-
