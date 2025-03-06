@@ -9,52 +9,46 @@ author: ebenezer-don
 category: tutorial
 ---
 
-ByteDance, the company behind TikTok, recently released a new cross-platform UI framework called **Lynx**. It allows developers to build applications for Android, iOS, and the web using familiar web technologies (React and CSS). Lynx is still new, but ByteDance has successfully used it internally across several of its apps, including TikTok.
+ByteDance, the company behind TikTok, recently released a new cross-platform UI framework called [Lynx](https://lynxjs.org/blog/lynx-unlock-native-for-more.html). It allows developers to build applications for Android, iOS, and the web using familiar web technologies (React and CSS). Lynx is still new, but ByteDance has successfully used it internally across several of its apps, including TikTok.
 
 Let's explore what Lynx actually offers developers, and compare it with **React Native**. We'll look at the technical strengths and limitations of both frameworks, and when you might want to use one over the other.
 
-## What is Lynx, really?
+# What is Lynx, really?
 
 Lynx is ByteDance's open-source UI framework designed for cross-platform application development across Android, iOS, and the web. Simply put, it's for building native-quality apps without the need for separate codebases or teams.
 
 Lynx achieves this by combining:
 
-- A custom JavaScript engine called [PrimJS](https://github.com/lynx-family/primjs), specifically optimized for Lynx
-- A dedicated rendering engine, flexible enough to adapt to different platform primitives and graphics interfaces
+- A custom JavaScript engine called [PrimJS](https://github.com/lynx-family/primjs)
+- A dedicated rendering engine that can adapt to different platform primitives and graphics interfaces
 - Dual-thread JavaScript execution (one for responsive UI, one for heavy tasks)
 - Genuine CSS styling with animations, transitions, selectors, variables, and modern visual effects
 - Built-in cross-platform support: Android, iOS, and Web
 
-This setup means Lynx apps can look consistent across all platforms, something React Native approaches differently.
+This setup means Lynx apps can easily look consistent across all platforms, something React Native approaches differently.
 
-## Lynx's technical strengths
+# Lynx's technical strengths
 
-Lynx offers several key technical advantages over traditional frameworks like React Native:
+Lynx offers several technical advantages over traditional frameworks like React Native:
 
-### 1. Dual-thread architecture
+## 1. Dual-thread architecture
 
 Lynx divides JavaScript work between two threads:
 
-- **Main UI thread:**
-  Handles UI updates instantly. Animations, scrolling, or tapping respond quickly because this thread isn't busy calculating data or logic.
+**Main UI thread:** Handles UI updates instantly. Animations, scrolling, or tapping respond quickly because this thread isn't busy calculating data or logic.
 
-- **Background thread:**
-  Manages most React logic, data fetching, state management, and heavy computations.
+**Background thread:** Manages most React logic, data fetching, state management, and heavy computations.
 
-**Why does this matter practically?**
-It reduces UI lag or stutter, especially in applications with heavy logic or data processing. Apps can feel smoother to the user. The Lynx team reports that surfaces migrating from Web to Lynx often achieve a 2-4x reduction in launch times across the board.
+This reduces UI lag or stutter, especially in applications with heavy logic or data processing. Apps can feel smoother to the user. The Lynx team reports that surfaces migrating from Web to Lynx often achieve a 2-4x reduction in launch times across the board.
 
-### 2. Instant first-frame rendering (IFR) and main-thread scripting (MTS):
+## 2. Instant first-frame rendering (IFR) and main-thread scripting (MTS):
 
 The dual-thread architecture enables two key features:
 
-- **Instant first-frame rendering (IFR):**
-  Prioritizes initial UI rendering to eliminate blank screens during startup, creating the impression of immediate app launch.
+**Instant first-frame rendering (IFR):** Prioritizes initial UI rendering to eliminate blank screens during startup, creating the impression of immediate app launch.
 
-- **Main-thread scripting (MTS):**
-  Allows critical interaction code to run directly on the main thread, ensuring touch responses and animations remain smooth regardless of background processing.
-
-### 3. PrimJS: A lightweight JavaScript engine:
+**Main-thread scripting (MTS):** Allows critical interaction code to run directly on the main thread, ensuring touch responses and animations remain smooth regardless of background processing.
+## 3. PrimJS: A lightweight JavaScript engine:
 
 PrimJS optimizes JavaScript execution:
 
@@ -64,7 +58,7 @@ PrimJS optimizes JavaScript execution:
 In simple terms: this means your app loads faster, performs smoothly, and behaves consistently even on older devices.
 
 
-### 4. CSS for real web-like styling:
+## 4. CSS for real web-like styling:
 
 With Lynx, styling works like regular web development:
 
@@ -75,19 +69,19 @@ With Lynx, styling works like regular web development:
 
 This should lower the learning curve for web developers and speed up UI development.
 
-### 5. Framework flexibility:
+## 5. Framework flexibility:
 
 While Lynx ships with [ReactLynx](https://lynxjs.org/react/) ("React on Lynx") as its initial frontend framework, it's designed to be framework-agnostic. The official announcement notes that other frameworks already represent roughly half of Lynx's overall usage.
 
-### 6. Built-in cross-platform support (Android, iOS, Web):
+## 6. Built-in cross-platform support (Android, iOS, Web):
 
 Lynx apps run on Android, iOS, and browsers without additional frameworks or modifications. The same UI and logic can appear consistently on all platforms by default. No third-party bridging or significant rework needed.
 
 This simplicity can save substantial development and testing effort when targeting multiple platforms.
 
-## Lynx vs React Native technical comparison
+# Lynx vs React Native technical comparison
 
-### Performance and rendering:
+## Performance and rendering:
 
 | Framework        | Approach & implications                                         |
 |------------------|-----------------------------------------------------------------|
@@ -96,7 +90,7 @@ This simplicity can save substantial development and testing effort when targeti
 
 In practice, Lynx promises smoother UI performance in intensive apps, whereas React Native works well under typical conditions, though it requires careful coding to avoid slowdowns in complex apps.
 
-### Developer experience:
+## Developer experience:
 
 | Framework        | Styling and debugging                                            |
 |------------------|------------------------------------------------------------------|
@@ -105,7 +99,7 @@ In practice, Lynx promises smoother UI performance in intensive apps, whereas Re
 
 If you prioritize a straightforward transition from web development, Lynx's CSS approach is beneficial. React Native has a slight learning curve for web developers but offers more immediate third-party support and extensive debugging resources.
 
-### Platform coverage and UI consistency:
+## Platform coverage and UI consistency:
 
 | Framework        | Platform support & consistency                                   |
 |------------------|------------------------------------------------------------------|
@@ -114,7 +108,7 @@ If you prioritize a straightforward transition from web development, Lynx's CSS 
 
 Choose Lynx if consistency across web and mobile is critical. Choose React Native if you prefer apps that adhere more closely to native platform styles out of the box.
 
-### Ecosystem and community maturity:
+## Ecosystem and community maturity:
 
 | Framework        | Community support & libraries                                   |
 |------------------|-----------------------------------------------------------------|
@@ -123,11 +117,11 @@ Choose Lynx if consistency across web and mobile is critical. Choose React Nativ
 
 React Native offers immediate solutions to common tasks (payments, maps, camera integrations), whereas Lynx will require more hands-on initial development.
 
-## Practical examples: Lynx and React Native
+# Practical examples: Lynx and React Native
 
 Let's compare how Lynx and React Native handle a common development scenario: building animations.
 
-- **Lynx:** Animations can use standard CSS keyframes or transitions, running smoothly on the main thread. No extra libraries required.
+**Lynx:** Animations can use standard CSS keyframes or transitions, running smoothly on the main thread. No extra libraries required.
 
 ```css
 .button {
@@ -139,7 +133,7 @@ Let's compare how Lynx and React Native handle a common development scenario: bu
 }
 ```
 
-- **React Native:** Requires JavaScript-driven animations using built-in Animated API or libraries like React Native Reanimated for smooth results.
+**React Native:** Requires JavaScript-driven animations using built-in Animated API or libraries like React Native Reanimated for smooth results.
 
 ```jsx
 import { Animated } from 'react-native';
@@ -155,7 +149,7 @@ const pressAnimation = () => {
 
 Both achieve good results, but Lynx is simpler because of CSS, whereas React Native's approach is slightly more complex to the average web developer.
 
-## Final Thoughts: Should You Try Lynx?
+# Final thoughts: Should you try Lynx?
 
 If you're open to experimenting, comfortable diving deeper into technology, and perhaps frustrated with React Native's rendering hiccups or styling approach, Lynx is worth exploring. The dual-thread JS runtime, clean CSS-based styling, and instant UI responsiveness are practical advantages.
 
@@ -164,3 +158,9 @@ On the other hand, if proven ecosystem maturity, large community support, and im
 Lynx's arrival, in any case, is excellent news. New competition means React Native will likely continue improving, and Lynx offers an intriguing alternative path forward, especially for web-oriented developers looking for better mobile experiences without compromise.
 
 It's early days, but Lynx could quickly become an influential player in cross-platform app development.
+
+# Further reading
+
+- [Flutter vs React Native: Which framework is best for your app in 2024?](https://appwrite.io/blog/post/flutter-vs-react-native?doFollow=true)
+- [Setting up route protection in React Native](https://appwrite.io/blog/post/setting-up-route-protection-in-react-native?doFollow=true)
+- [Building a full-stack app with Svelte and Appwrite](https://appwrite.io/blog/post/build-fullstack-svelte-appwrite?doFollow=true)
