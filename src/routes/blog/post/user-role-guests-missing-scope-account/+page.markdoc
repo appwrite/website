@@ -9,7 +9,7 @@ author: ebenezer-don
 category: debugging
 ---
 
-If you've been working with Appwrite, you've likely encountered the error message "Error: User (role: guests) missing scope (account)" at some point. This error is one of the most common questions we see from developers, especially those new to Appwrite. In this post, we'll break down what this error means and walk through the various scenarios where it might appear, along with their solutions.
+If you've been working with Appwrite, you've likely encountered the error message **"Error: User (role: guests) missing scope (account)"** at some point. This error is one of the most common questions we see from developers, especially those new to Appwrite. In this post, we'll break down what this error means and walk through the various scenarios where it might appear, along with their solutions.
 
 # Understanding the error message
 
