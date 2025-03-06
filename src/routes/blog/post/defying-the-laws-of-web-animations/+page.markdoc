@@ -38,9 +38,6 @@ Let's get into it!
 
 P.S. The code for the website, including animations, can be found at [https://github.com/appwrite/website/](https://github.com/appwrite/website/).
 
-{% call_to_action /%}
-
-
 ## Excuse me, scrolling through!
 
 Scroll-based animations are quite common. There are two types. Animations that start when you scroll to a certain section, and animations that progress together with your scroll. For our animations, we're using the former.
