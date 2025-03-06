@@ -91,7 +91,7 @@
                 <div class="relative">
                     <div class="web-container relative">
                         <!-- before submit -->
-                        <div class="z-1 relative grid grid-cols-1 gap-16 md:grid-cols-2">
+                        <div class="relative z-1 grid grid-cols-1 gap-16 md:grid-cols-2">
                             <div>
                                 {#if submitted}
                                     <section class="flex flex-col gap-5">
@@ -208,7 +208,7 @@
                                                         <option>5000+ employees</option>
                                                     </select>
                                                     <span
-                                                        class="icon-cheveron-down web-u-pointer-events-none absolute right-2 top-[11px]"
+                                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
                                                         aria-hidden="true"
                                                     />
                                                 </div>
