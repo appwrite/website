@@ -12,7 +12,8 @@
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     const title = 'Messaging' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        'Appwrite Messaging allows you to communicate with your audience across various mediums. Push notifications, SMS and emails - set up within minutes!';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     const codeTopic = [
@@ -418,17 +419,6 @@ messaging.create_email(
                                 <p class="web-info-boxes-content">
                                     Send realtime alerts to your users within your application.
                                 </p>
-                                <ul class="mt-4 flex flex-wrap gap-2">
-                                    <li>
-                                        <a class="web-interactive-tag" href="/docs">
-                                            <span
-                                                class="web-icon-appwrite web-u-margin-inline-end-4 text-sm"
-                                                aria-hidden="true"
-                                            />
-                                            <span class="text">Appwrite</span>
-                                        </a>
-                                    </li>
-                                </ul>
                             </li>
                             <li class="web-info-boxes-item">
                                 <img
@@ -528,7 +518,7 @@ messaging.create_email(
                     <li class="web-u-flex-basis-378">
                         <a
                             class="web-card is-normal"
-                            href="/docs/products/auth"
+                            href="/products/auth"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
@@ -553,7 +543,7 @@ messaging.create_email(
                     <li class="web-u-flex-basis-378">
                         <a
                             class="web-card is-normal"
-                            href="/docs/products/functions"
+                            href="/products/functions"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
@@ -604,7 +594,7 @@ messaging.create_email(
                     <li class="web-u-flex-basis-378">
                         <a
                             class="web-card is-normal"
-                            href="/docs/products/storage"
+                            href="/products/storage"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div

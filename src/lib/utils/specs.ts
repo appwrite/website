@@ -1,5 +1,6 @@
 import { OpenAPIV3 } from 'openapi-types';
 import { Platform, type Service } from './references';
+import { error } from '@sveltejs/kit';
 
 export type SDKMethod = {
     'rate-limit': number;
@@ -195,7 +196,14 @@ export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.Schema
     if (schema) {
         return schema;
     }
-    throw new Error(`Schema doesn't exist for id: ${id}`);
+
+    /**
+     * It is better to show a `404` if no schema exists for a given `id`,
+     * rather than a 500 internal server error which is, misleading in cases like this.
+     *
+     * It is quite possible that the user just wandered around here with a wrong docs link!
+     */
+    error(404, { message: `Not found` });
 }
 
 const specs = import.meta.glob(

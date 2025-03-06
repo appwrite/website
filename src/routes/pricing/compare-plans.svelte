@@ -2,12 +2,12 @@
     import { browser } from '$app/environment';
     import { Tabs } from '$lib/UI';
     import { visible } from '$lib/actions/visible';
-    import { isHeaderHidden } from '$lib/layouts/Main.svelte';
+    import { Tooltip } from '$lib/components';
+    import { classNames } from '$lib/utils/classnames';
     import { getScrollDir } from '$lib/utils/getScrollDir';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
-    import { classNames } from '$lib/utils/classnames';
 
     type Table = {
         title: string;
@@ -23,7 +23,7 @@
 
     const cols = ['free', 'pro', 'scale', 'enterprise'] as const;
 
-    const tables = [
+    const tables: Array<Table> = [
         {
             title: 'Resources',
             rows: [
@@ -68,20 +68,6 @@
             title: 'Platform',
             rows: [
                 {
-                    title: 'Number of projects',
-                    free: 'Unlimited',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited',
-                    enterprise: 'Unlimited'
-                },
-                {
-                    title: 'Projects pausing',
-                    free: 'Never',
-                    pro: 'Never',
-                    scale: 'Never',
-                    enterprise: 'Never'
-                },
-                {
                     title: 'Organization Members',
                     free: '1',
                     pro: '1',
@@ -98,13 +84,6 @@
                 {
                     title: 'Connected websites and apps',
                     free: '3 per project',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited',
-                    enterprise: 'Unlimited'
-                },
-                {
-                    title: 'Custom domains',
-                    free: 'Unlimited',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
@@ -161,6 +140,13 @@
                     free: '-',
                     pro: '$3 per 1,000 users',
                     scale: '$3 per 1,000 users',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Phone OTP',
+                    free: '10 SMS / month',
+                    pro: '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>',
+                    scale: '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>',
                     enterprise: 'Custom'
                 },
                 {
@@ -231,7 +217,7 @@
             rows: [
                 {
                     title: 'Buckets',
-                    free: '3 per project',
+                    free: '1 per project',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
@@ -245,10 +231,17 @@
                 },
                 {
                     title: 'Image transformations',
-                    free: 'Unlimited',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited',
-                    enterprise: 'Unlimited'
+                    free: '-',
+                    pro: '100 origin images / month',
+                    scale: '100 origin images / month',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Additional transformations',
+                    free: '-',
+                    pro: '$5 per 1000 origin images',
+                    scale: '$5 per 1000 origin images',
+                    enterprise: 'Custom'
                 }
             ]
         },
@@ -267,6 +260,27 @@
                     free: '750K / month',
                     pro: '3.5M / month',
                     scale: '3.5M / month',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'GB-hours',
+                    free: '100 GB-hour / month',
+                    pro: '1,000 GB-hour / month',
+                    scale: '1,000 GB-hour / month',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Additional GB-hours',
+                    free: '-',
+                    pro: '$0.09 per GB-hour',
+                    scale: '$0.09 per GB-hour',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Compute options',
+                    free: '0.5 CPUs - 512MB RAM',
+                    pro: 'Up to 4 CPUs - 4GB RAM',
+                    scale: 'Up to 4 CPUs - 4GB RAM',
                     enterprise: 'Custom'
                 },
                 {
@@ -467,8 +481,7 @@
                     </div>
 
                     <div
-                        class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 web-u-container-query-inline sticky z-10 gap-8"
-                        style:top={$isHeaderHidden ? '0px' : '70px'}
+                        class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 web-u-container-query-inline sticky top-[70px] z-10 gap-8 [padding-block:20px]!"
                         style:transition="inset-block-start 0.3s ease"
                     >
                         <div
@@ -512,7 +525,7 @@
                                 <h4 class="text-sub-body text-primary font-medium">Pro</h4>
                                 <a
                                     class="web-button !w-full"
-                                    href="https://cloud.appwrite.io/console?type=createPro"
+                                    href="https://cloud.appwrite.io/console?type=create&plan=tier-1"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -523,9 +536,14 @@
                         <div class="web-mini-card">
                             <div class="flex flex-col items-center justify-between gap-2">
                                 <h4 class="text-sub-body text-primary font-medium">Scale</h4>
-                                <button class="web-button is-secondary !w-full" disabled>
-                                    <span class="text-sub-body font-medium">Coming soon</span>
-                                </button>
+                                <a
+                                    class="web-button is-secondary !w-full"
+                                    href="https://cloud.appwrite.io/console?type=create&plan=tier-2"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <span class="text-sub-body font-medium">Start building</span>
+                                </a>
                             </div>
                         </div>
                         <div class="web-mini-card">
@@ -583,9 +601,12 @@
                                         <th class="text-caption font-medium">
                                             <div class="flex items-center gap-1 text-left">
                                                 {row.title}
-                                                <!-- {#if row.info}
+                                                {#if row.info}
                                                     <Tooltip placement="top">
-                                                        <span
+                                                        <button
+                                                            slot="asChild"
+                                                            let:trigger
+                                                            use:melt={trigger}
                                                             class="icon-info"
                                                             aria-hidden="true"
                                                         />
@@ -593,7 +614,7 @@
                                                             {row.info}
                                                         </svelte:fragment>
                                                     </Tooltip>
-                                                {/if} -->
+                                                {/if}
                                             </div>
                                         </th>
                                         {#each cols as col, index}
@@ -607,7 +628,7 @@
                                                 class:is-selected={col === tab}
                                             >
                                                 {#if typeof row[col] === 'string'}
-                                                    {row[col]}
+                                                    {@html row[col]}
                                                 {:else}
                                                     <img
                                                         class="mx-auto self-center"
@@ -632,6 +653,10 @@
     .web-u-grid-auto-column-1fr {
         grid-auto-columns: max-content;
         grid-template-columns: repeat(5, 2fr);
+    }
+
+    .web-mini-card {
+        padding-inline-start: inherit !important;
     }
 
     .web-label {

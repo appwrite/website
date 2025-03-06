@@ -6,7 +6,13 @@
     import Technologies from '$lib/components/Technologies.svelte';
     import { Main } from '$lib/layouts';
     import { isMobileNavOpen } from '$lib/layouts/Main.svelte';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import {
+        DEFAULT_DESCRIPTION,
+        DEFAULT_HOST,
+        getInlinedScriptTag,
+        organizationJsonSchema,
+        softwareAppSchema
+    } from '$lib/utils/metadata';
     import FooterNav from '../lib/components/FooterNav.svelte';
     import MainFooter from '../lib/components/MainFooter.svelte';
     import DeveloperCard from './DeveloperCard.svelte';
@@ -76,13 +82,17 @@
     <meta property="og:image:height" content="630" />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- eslint-disable-next-line svelte/no-at-html-tags-->
+    {@html getInlinedScriptTag(softwareAppSchema())}
+
+    <!-- eslint-disable-next-line svelte/no-at-html-tags-->
+    {@html getInlinedScriptTag(organizationJsonSchema())}
 </svelte:head>
 
 <div
     style:position="absolute"
-    style:top="0"
-    style:width="100vw"
-    style:height="100vh"
+    style:inset="0"
     style:overflow="hidden"
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
@@ -123,15 +133,14 @@
             <div class="my-12 lg:my-[7.5rem]">
                 <section class="container pb-0">
                     <a
-                        href="/blog/post/introducing-database-backups"
+                        href="/blog/post/introducing-new-compute-capabilities-appwrite-functions"
                         class="web-hero-banner-button mb-4"
-                        on:click={() => trackEvent('Banner button click')}
+                        on:click={() => trackEvent({ plausible: { name: 'Banner button click' } })}
                     >
                         <span class="web-icon-star shrink-0" aria-hidden="true" />
                         <span class="text-caption shrink-0 font-medium">New</span>
                         <div class="web-hero-banner-button-sep" />
-                        <span class="text-caption web-u-trim-1">Introducing Database Backups</span>
-
+                        <span class="text-caption web-u-trim-1">New compute options available</span>
                         <span class="web-icon-arrow-right shrink-0" aria-hidden="true" />
                     </a>
                     <Hero>
@@ -150,18 +159,33 @@
                             <a
                                 href={PUBLIC_APPWRITE_DASHBOARD}
                                 class="web-button w-full lg:w-fit"
-                                on:click={() => trackEvent('Get started in hero')}
+                                on:click={() =>
+                                    trackEvent({
+                                        plausible: { name: 'Get started in hero' },
+                                        posthog: { name: 'get-started-btn_hero_click' }
+                                    })}
                             >
-                                Get started
+                                Start building
                             </a>
 
-                            <AppwriteIn100Seconds />
+                            <a
+                                href="/contact-us/enterprise"
+                                class="web-button is-secondary w-full lg:w-fit">Request a demo</a
+                            >
+
+                            <!-- <AppwriteIn100Seconds /> -->
                         </div>
                     </Hero>
                 </section>
             </div>
             <div class="mb-12 lg:my-[7.5rem]">
-                <section class="container web-u-padding-block-0" style="--container-size:78.75rem">
+                <section
+                    class="web-u-padding-block-0 container relative"
+                    style="--container-size:78.75rem"
+                >
+                    <div class="absolute top-1/2 left-1/2 z-10 -translate-1/2">
+                        <AppwriteIn100Seconds />
+                    </div>
                     <div class="web-media-container">
                         <img
                             class="block"
@@ -459,7 +483,8 @@
                         <a
                             href="/docs/sdks"
                             class="web-button is-secondary"
-                            on:click={() => trackEvent('Explore all SDKs')}>Explore all SDKs</a
+                            on:click={() => trackEvent({ plausible: { name: 'Explore all SDKs' } })}
+                            >Explore all SDKs</a
                         >
                     </section>
                 </div>

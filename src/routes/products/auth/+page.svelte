@@ -14,7 +14,8 @@
     import Features from './(components)/features/Features.svelte';
 
     const title = 'Auth' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        'Enable secure and reliable user login with Appwrite Auth. We support multiple authentication methods with compliance features out of the box.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
@@ -85,7 +86,7 @@
                     <li class="web-u-flex-basis-378">
                         <a
                             class="web-card is-normal"
-                            href="/docs/products/functions"
+                            href="/products/functions"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
@@ -136,7 +137,7 @@
                     <li class="web-u-flex-basis-378">
                         <a
                             class="web-card is-normal"
-                            href="/docs/products/storage"
+                            href="/products/storage"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div

@@ -1,4 +1,6 @@
 <script lang="ts" context="module">
+    import type { ComponentType } from 'svelte';
+
     export type NavLink = {
         label: string;
         href?: string;
@@ -10,7 +12,7 @@
 
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import type { ComponentType } from 'svelte';
+    import { trackEvent } from '$lib/actions/analytics';
 
     export let initialized = false;
 
@@ -39,6 +41,12 @@
                         href={link.href}
                         data-initialized={initialized ? '' : undefined}
                         data-badge={link.showBadge ? '' : undefined}
+                        on:click={() => {
+                            trackEvent({
+                                plausible: { name: `${link.label} in header` },
+                                posthog: { name: `${link.label.toLowerCase()}_nav_click` }
+                            });
+                        }}
                         >{link.label}
                     </a>
                 {/if}

@@ -1,6 +1,6 @@
 import { dev } from '$app/environment';
 import { SENTRY_DSN } from '$lib/constants';
-import { handleErrorWithSentry, replayIntegration } from '@sentry/sveltekit';
+import { handleErrorWithSentry } from '@sentry/sveltekit';
 import * as Sentry from '@sentry/sveltekit';
 
 Sentry.init({
@@ -15,16 +15,7 @@ Sentry.init({
 
     // If the entire session is not sampled, use the below sample rate to sample
     // sessions when an error occurs.
-    replaysOnErrorSampleRate: 1.0,
-
-    // If you don't want to use Session Replay, just remove the line below:
-    integrations: [
-        replayIntegration({
-            maskAllInputs: true,
-            maskAllText: false,
-            blockAllMedia: false
-        })
-    ]
+    replaysOnErrorSampleRate: 0
 });
 
 // If you have a custom error handler, pass it to `handleErrorWithSentry`

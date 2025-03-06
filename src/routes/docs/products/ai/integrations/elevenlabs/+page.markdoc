@@ -259,7 +259,7 @@ const storage = new Storage(client);
 const file = await storage.createFile(
   process.env.APPWRITE_BUCKET_ID,
   ID.unique(),
-  InputFile.fromBlob(await response.blob(), "audio.mp3"),
+  InputFile.fromBuffer(await response.blob(), "audio.mp3"),
   [Permission.read(Role.any())],
 );
 ```

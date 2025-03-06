@@ -91,9 +91,9 @@
                             class:max-w-[380px]={!submitted}
                         >
                             <section class="web-gap-5 flex flex-col">
-                                <h1 class="text-title font-aeonik-pro text-primary">
+                                <h2 class="text-title font-aeonik-pro text-primary">
                                     Subscribe to our newsletter
-                                </h1>
+                                </h2>
                                 <p class="text-description web-u-padding-block-end-40">
                                     Sign up to our company blog and get the latest insights from
                                     Appwrite. Learn more about engineering, product design, building

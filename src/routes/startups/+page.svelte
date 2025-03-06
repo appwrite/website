@@ -15,14 +15,16 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import { TITLE_SUFFIX } from '$routes/titles';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
 
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import Faq from './faq.svelte';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
+    import CommunitySupportChat from '$lib/components/CommunitySupportChat.svelte';
 
     const title = 'Startups' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        "Get $20,000 in cloud credits to fulfill all your startup's backend needs. Apply for Appwrite's Startups Program today.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     let personName: string;
@@ -296,7 +298,7 @@
                                     </div>
                                     <div>
                                         <a
-                                            href="/blog/post/case-study-undo"
+                                            href="/blog/post/customer-stories-myshoefitter"
                                             class="web-card is-white group flex flex-col gap-5"
                                         >
                                             <div class="border-card">
@@ -481,145 +483,7 @@
                                         <div
                                             class="web-chat web-u-max-width-580 web-u-margin-block-start-40-mobile"
                                         >
-                                            <ul class="web-chat-list">
-                                                <li class="web-chat-item is-user-a">
-                                                    <div class="web-chat-message">
-                                                        <div class="web-user-box">
-                                                            <img
-                                                                class="web-user-box-image"
-                                                                src="/images/community/avatars/walter.avif"
-                                                                height="40"
-                                                                width="40"
-                                                                alt="Avatar of Walter"
-                                                            />
-                                                            <div
-                                                                class="web-user-box-name flex gap-2"
-                                                            >
-                                                                <span
-                                                                    class="text-sub-body font-medium"
-                                                                    >Walter O'Brien</span
-                                                                >
-                                                                <time
-                                                                    class="text-caption web-u-color-text-tertiary"
-                                                                    >8:32 AM</time
-                                                                >
-                                                            </div>
-                                                            <div
-                                                                class="web-user-box-content text-caption text-primary"
-                                                            >
-                                                                Hello devs! I am getting a CORS
-                                                                error when sending a request to the
-                                                                backend. Can you help me?
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="web-chat-item is-user-b">
-                                                    <div class="web-chat-message">
-                                                        <div class="web-user-box">
-                                                            <img
-                                                                class="web-user-box-image"
-                                                                src="/images/avatars/steven.avif"
-                                                                width="48"
-                                                                height="48"
-                                                                alt="Avatar of Steven"
-                                                            />
-                                                            <div
-                                                                class="web-user-box-name flex gap-2"
-                                                            >
-                                                                <span
-                                                                    class="text-sub-body font-medium"
-                                                                    >Steven</span
-                                                                >
-                                                                <time
-                                                                    class="text-caption web-u-color-text-tertiary"
-                                                                    >8:38 AM</time
-                                                                >
-                                                            </div>
-                                                            <div
-                                                                class="web-user-box-content text-caption text-primary"
-                                                            >
-                                                                Hey Louis! Is this the message you
-                                                                get
-                                                                <a
-                                                                    class="web-link is-pink"
-                                                                    href="/blog/post/cors-error"
-                                                                    target="_blank"
-                                                                    >"Access blocked by CORS policy"</a
-                                                                >?
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="web-chat-item is-user-a">
-                                                    <div class="web-chat-message">
-                                                        <div class="web-user-box">
-                                                            <img
-                                                                class="web-user-box-image"
-                                                                src="/images/community/avatars/walter.avif"
-                                                                height="40"
-                                                                width="40"
-                                                                alt="Avatar of Walter"
-                                                            />
-                                                            <div
-                                                                class="web-user-box-name flex gap-2"
-                                                            >
-                                                                <span
-                                                                    class="text-sub-body font-medium"
-                                                                    >Walter O'Brien</span
-                                                                >
-                                                                <time
-                                                                    class="text-caption web-u-color-text-tertiary"
-                                                                    >9:05 AM</time
-                                                                >
-                                                            </div>
-                                                            <div
-                                                                class="web-user-box-content text-caption text-primary"
-                                                            >
-                                                                Yes!
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="web-chat-item is-user-b">
-                                                    <div class="web-chat-message">
-                                                        <div class="web-user-box">
-                                                            <img
-                                                                class="web-user-box-image"
-                                                                src="/images/avatars/steven.avif"
-                                                                width="48"
-                                                                height="48"
-                                                                alt="Avatar of Steven"
-                                                            />
-                                                            <div
-                                                                class="web-user-box-name flex gap-2"
-                                                            >
-                                                                <span
-                                                                    class="text-sub-body font-medium"
-                                                                    >Steven</span
-                                                                >
-                                                                <time
-                                                                    class="text-caption web-u-color-text-tertiary"
-                                                                    >9:08 AM</time
-                                                                >
-                                                            </div>
-                                                            <div
-                                                                class="web-user-box-content text-caption text-primary"
-                                                            >
-                                                                You should be able to debug this
-                                                                with a few steps. Just follow this
-                                                                blog:
-                                                                <a
-                                                                    class="web-link is-pink"
-                                                                    href="/blog/post/cors-error"
-                                                                    target="_blank"
-                                                                    >https://appwrite.io/blog/post/cors-error</a
-                                                                >. Let me know if this helps 🙂
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                            <CommunitySupportChat />
                                         </div>
                                     </div>
                                     <div class="web-mx-auto-mobile ml-auto flex flex-col gap-4">
@@ -782,7 +646,7 @@
                                         class="web-u-max-width-380 web-u-max-inline-size-none-mobile relative z-[1] mx-auto flex flex-col gap-2 text-center"
                                     >
                                         <h6
-                                            class="text-label e-mobile-fix-1 flex items-center justify-center gap-2"
+                                            class="text-label flex items-center justify-center gap-2"
                                         >
                                             <img
                                                 class="shrink-0"
@@ -871,6 +735,7 @@
                                             </p>
                                             <button
                                                 type="submit"
+                                                disabled={submitting}
                                                 class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
                                             >
                                                 <span>Apply</span>
@@ -1042,11 +907,6 @@
             inset-inline-end: 0; /*transform:translateX(50px);*/
             inset-block-start: 100px;
             opacity: 0.4;
-        }
-    }
-    @media #{devices.$break1} {
-        .e-mobile-fix-1 {
-            display: block;
         }
     }
 

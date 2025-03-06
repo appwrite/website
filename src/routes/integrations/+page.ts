@@ -1,5 +1,7 @@
 import { base } from '$app/paths';
 import { groupBy } from 'remeda';
+import type { IntegrationCategory } from '$lib/constants';
+import { integrationCategoryDescriptions as categoryDescriptions } from '$lib/constants';
 
 export type Integration = {
     title: string;
@@ -18,60 +20,6 @@ export type Integration = {
     href: string;
     images: string[];
 };
-
-export type IntegrationCategory = {
-    slug: string;
-    heading: string;
-    description: string;
-};
-
-const categoryDescriptions: IntegrationCategory[] = [
-    {
-        slug: 'ai',
-        heading: 'AI',
-        description: 'Machine learning and AI capabilities'
-    },
-    {
-        slug: 'auth',
-        heading: 'Auth',
-        description: 'User authentication and authorization'
-    },
-    {
-        slug: 'databases',
-        heading: 'Databases',
-        description: 'Manage database systems'
-    },
-    {
-        slug: 'logging',
-        heading: 'Logging',
-        description: 'Monitor and analyze application logs'
-    },
-    {
-        slug: 'messaging',
-        heading: 'Messaging',
-        description: 'Real-time communication platforms'
-    },
-    {
-        slug: 'payments',
-        heading: 'Payments',
-        description: 'Secure online payment processing'
-    },
-    {
-        slug: 'search',
-        heading: 'Search',
-        description: 'Implement search functionalities'
-    },
-    {
-        slug: 'storage',
-        heading: 'Storage',
-        description: 'Storage for data and media'
-    },
-    {
-        slug: 'deployments',
-        heading: 'Deployments',
-        description: 'Seamlessly deploy your code'
-    }
-];
 
 export const load = () => {
     const integrationsGlob = import.meta.glob('./**/*.markdoc', {

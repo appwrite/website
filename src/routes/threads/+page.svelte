@@ -14,7 +14,8 @@
     import Input from '$lib/components/ui/Input.svelte';
 
     const title = 'Threads' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        "Appwrite's Threads page showcases our community interactions on Discord. Join the conversation, ask questions, or assist other members with their issues.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     export let data;

@@ -1,49 +1,48 @@
 <script lang="ts">
     import { fade, scale } from 'svelte/transition';
     import { trackEvent } from '$lib/actions/analytics';
+    import { createDialog, melt } from '@melt-ui/svelte';
 
-    let show = false;
-
-    function handleKeypress(event: KeyboardEvent) {
-        if (event.key.toLowerCase() === 'escape' || event.key.toLowerCase() === 'esc') {
-            event.preventDefault();
-            show = false;
-        }
-    }
+    const {
+        elements: { portalled, trigger, content, overlay },
+        states: { open }
+    } = createDialog({
+        forceVisible: true
+    });
 </script>
 
-<svelte:window on:keydown={handleKeypress} />
-
 <button
+    use:melt={$trigger}
     on:click={() => {
-        show = true;
-        trackEvent('Appwrite in 100 seconds');
+        trackEvent({
+            plausible: { name: 'Appwrite in 100 seconds' },
+            posthog: { name: 'intro-video-btn_hero_click' }
+        });
     }}
-    class="web-button is-secondary cursor-pointer"
+    class="web-button cursor-pointer transition-opacity hover:opacity-90 active:scale-95"
+    style:box-shadow="0 2px 40px rgba(0, 0, 0, 0.5)"
 >
-    <span class="web-icon-play" style:color="unset" />
+    <span class="web-icon-play" />
     <span>Appwrite in 100 seconds</span>
 </button>
 
-{#if show}
-    <!-- `on:keypress={null}` silences the a11y warnings -->
-    <div
-        tabindex="0"
-        role="button"
-        class="overlay"
-        on:keypress={null}
-        on:click={() => (show = false)}
-        transition:fade={{ duration: 150 }}
-    />
+{#if $open}
+    <div use:melt={$portalled}>
+        <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }} />
 
-    <div class="web-media content" transition:scale={{ duration: 250, start: 0.95 }}>
-        <iframe
-            src="https://www.youtube-nocookie.com/embed/L07xPMyL8sY?si=Odrwj1tHzlm12Fi2&controls=0"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-        />
+        <div
+            class="web-media content"
+            use:melt={$content}
+            transition:scale={{ duration: 250, start: 0.95 }}
+        >
+            <iframe
+                src="https://www.youtube-nocookie.com/embed/L07xPMyL8sY?si=Odrwj1tHzlm12Fi2&controls=0"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+            />
+        </div>
     </div>
 {/if}
 

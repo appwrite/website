@@ -74,6 +74,7 @@ services:
             - PUBLIC_APPWRITE_COL_THREADS_ID
             - PUBLIC_APPWRITE_COL_MESSAGES_ID
             - PUBLIC_APPWRITE_FN_TLDR_ID
+            - PUBLIC_POSTHOG_API_KEY
         deploy:
             <<: *x-update-config
             mode: replicated
@@ -113,24 +114,6 @@ services:
             - RUN_ON_STARTUP=true
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
-
-    resource-monitor:
-        image: ghcr.io/appwrite/monitoring:0.1.0
-        entrypoint: monitoring
-        command:
-            - '--url=${_APP_BETTER_STACK_INCIDENT_URL}'
-            - '--interval=60'
-            - '--cpu-limit=85'
-            - '--memory-limit=80'
-            - '--disk-limit=85'
-        hostname: '{{.Node.Hostname}}'
-        <<: *x-logging
-        volumes:
-            - /mnt:/mnt:ro
-        deploy:
-            <<: *x-update-config
-            endpoint_mode: dnsrr
-            mode: global
 
 networks:
     cloud:

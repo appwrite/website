@@ -1,7 +1,7 @@
 ---
 layout: article
 title: GraphQL
-description: Leverage the Appwrite GraphQL API for flexible data querying and manipulation. Explore GraphQL schema, queries, mutations, and how to integrate with your applications.
+description: Get to know Appwrite GraphQL API for flexible data querying & manipulation. Our docs cover the schema, queries, mutations, integration tips and more.
 ---
 
 Appwrite supports multiple protocols for accessing the platform, including [REST](/docs/apis/rest), [GraphQL](/docs/apis/graphql), and [Realtime](/docs/apis/realtime).

@@ -17,7 +17,8 @@
     import Optimized from './(components)/Optimized.svelte';
 
     const title = 'Storage' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        'Get to know Appwrite Storage - our robust infrastructure allows you to store, optimize and encrypt all of your project files in one place.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
@@ -83,7 +84,7 @@
                             manage security, permissions, compression, and more.
                         </p>
                         <a
-                            href="https://builtwith.appwrite.io"
+                            href="/docs/products/storage/buckets"
                             target="_blank"
                             rel="noopener noreferrer"
                             class="web-button is-secondary mt-4 mx-auto !w-full md:!w-fit"
@@ -94,7 +95,7 @@
                 </div>
             </div>
 
-            <div class="web-big-padding-section-level-2 !my-0">
+            <div class="web-big-padding-section-level-2 mt-20! mb-0!">
                 <div class="container">
                     <div class="flex flex-col gap-8 lg:flex-row">
                         <div class="flex flex-1 flex-col gap-8">
@@ -169,7 +170,7 @@
                                 apply image transformations, and more.
                             </p>
                             <a
-                                href="/docs"
+                                href="/docs/references/cloud/client-web/storage"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="web-button mt-4 !w-full md:!w-fit"

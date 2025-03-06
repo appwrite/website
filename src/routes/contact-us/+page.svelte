@@ -12,11 +12,15 @@
     let firstName = '';
     let subject = '';
     let message = '';
-    let error: string | undefined;
+
     let submitted = false;
+    let submitting = false;
+    let error: string | undefined;
 
     async function handleSubmit() {
         error = undefined;
+        submitting = true;
+
         const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback`, {
             method: 'POST',
             headers: {
@@ -30,6 +34,9 @@
                 ...getReferrerAndUtmSource()
             })
         });
+
+        submitting = false;
+
         if (response.status >= 400) {
             error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
             return;
@@ -39,7 +46,8 @@
     }
 
     const title = 'Contact us' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        'Fill in this short form to get in touch with the Appwrite team. Questions, feature requests or bug reports - all input is welcome!';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
@@ -199,6 +207,7 @@
 									</p> -->
                                     <button
                                         type="submit"
+                                        disabled={submitting}
                                         class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
                                     >
                                         <span>Submit</span>

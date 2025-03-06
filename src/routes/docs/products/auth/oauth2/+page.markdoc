@@ -52,6 +52,23 @@ account.createOAuth2Session(
 {% /tabsitem %}
 
 {% tabsitem #flutter title="Flutter" %}
+
+For Android, add the following activity inside the `<application>` tag in your `AndroidManifest.xml`. Replace `<PROJECT_ID>` with your actual Appwrite project ID.
+
+```xml
+<!-- Add this inside the <application> tag, along side the existing <activity> tags -->
+<activity android:exported="true" android:name="com.linusu.flutter_web_auth_2.CallbackActivity" >
+  <intent-filter android:label="flutter_web_auth_2">
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="appwrite-callback-[PROJECT_ID]" />
+  </intent-filter>
+</activity>
+```
+
+No other configuration is required for iOS.
+
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/enums.dart';
@@ -64,7 +81,7 @@ final account = Account(client);
 
 // Go to OAuth provider login page
 await account.createOAuth2Session(
-    provider: 'OAuthProvider.github',
+    provider: OAuthProvider.github,
     scopes: ['repo', 'user']
 );
 ```
@@ -153,9 +170,19 @@ account.createOAuth2Session(
 {% /tabsitem %}
 
 {% tabsitem #react-native title="React Native" %}
+If using Expo, set the URL scheme in your `app.json` file.
+
+```json
+{
+  "expo": {
+    "scheme": "myapp"
+  }
+}
+```
+
 ```client-react-native
 import { Client, Account, OAuthProvider } from "appwrite";
-import * as Linking from 'expo-linking';
+import { makeRedirectUri } from 'expo-auth-session'
 import * as WebBrowser from 'expo-web-browser';
 
 const client = new Client()
@@ -164,21 +191,23 @@ const client = new Client()
 
 const account = new Account(client);
 
-// Create OAuth URL that works across Expo environments
-const deepLink = new URL(Linking.createURL('oauth-callback', { isTripleSlashed: true }));
+// Create a deep link that works across Expo environments
+// Ensure localhost is used for the hostname to validation error for success/failure URLs
+const deepLink = new URL(makeRedirectUri({preferLocalhost: true}));
 if (!deepLink.hostname) {
     deepLink.hostname = 'localhost';
 }
+const scheme = `${deepLink.protocol}//`; // e.g. 'exp://' or 'playground://'
 
 // Start OAuth flow
 const loginUrl = await account.createOAuth2Token(
-    OAuthProvider.Github,
-    `${deepLink}/success`,
-    `${deepLink}/failure`,
-    ['repo', 'user'] // scopes (optional)
+    provider,
+    `${deepLink}`,
+    `${deepLink}`,
 );
 
-const result = await WebBrowser.openAuthSessionAsync(loginUrl);
+// Open loginUrl and listen for the scheme redirect
+const result = await WebBrowser.openAuthSessionAsync(`${loginUrl}`, scheme);
 
 // Extract credentials from OAuth redirect URL
 const url = new URL(result.url);
@@ -187,6 +216,7 @@ const userId = url.searchParams.get('userId');
 
 // Create session with OAuth credentials
 await account.createSession(userId, secret);
+// Redirect as needed
 ```
 {% /tabsitem %}
 {% /tabs %}

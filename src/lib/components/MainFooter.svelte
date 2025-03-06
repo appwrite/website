@@ -28,7 +28,7 @@
             <div>Copyright © {year} Appwrite</div>
 
             <iframe
-                class="status w-fit max-w-[230px]"
+                class="status w-full md:w-fit md:max-w-[230px]"
                 title="Appwrite Status"
                 src="https://status.appwrite.online/badge?theme=dark"
                 height="35"

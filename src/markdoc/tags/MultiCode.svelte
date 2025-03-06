@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
     import type { Writable } from 'svelte/store';
+
     export type CodeContext = {
         selected: Writable<string | null>;
         snippets: Writable<Set<Language>>;
@@ -8,24 +9,36 @@
 </script>
 
 <script lang="ts">
-    import { platformMap } from '$lib/utils/references';
-    import { getContext, setContext } from 'svelte';
-    import { writable } from 'svelte/store';
-    import type { Language } from '$lib/utils/code';
     import { copy } from '$lib/utils/copy';
+    import { type Readable, writable } from 'svelte/store';
     import { Select, Tooltip } from '$lib/components';
+    import { getContext, hasContext, onMount, setContext } from 'svelte';
+    import { type Language, multiCodeSelectedLanguage } from '$lib/utils/code';
+    import { Platform, platformMap, preferredPlatform } from '$lib/utils/references';
 
     setContext<CodeContext>('multi-code', {
-        selected: writable(null),
+        content: writable(''),
         snippets: writable(new Set()),
-        content: writable('')
+        selected: multiCodeSelectedLanguage
     });
 
     const { snippets, selected, content } = getContext<CodeContext>('multi-code');
 
-    snippets.subscribe((n) => {
-        if ($selected === null && n.size > 0) {
-            $selected = Array.from(n)[0];
+    selected.subscribe((language) => {
+        // apply if exists in snippets
+        if (language && $snippets.has(language as Language)) {
+            preferredPlatform.set(language as Platform);
+        }
+    });
+
+    preferredPlatform.subscribe((language) => {
+        if (
+            language &&
+            language !== $selected &&
+            // apply if exists in snippets
+            $snippets.has(language)
+        ) {
+            selected.set(language);
         }
     });
 
@@ -33,7 +46,9 @@
         Copy = 'Copy',
         Copied = 'Copied!'
     }
+
     let copyText = CopyStatus.Copy;
+
     async function handleCopy() {
         await copy($content);
 
@@ -41,6 +56,42 @@
         setTimeout(() => {
             copyText = CopyStatus.Copy;
         }, 1000);
+    }
+
+    let hasMounted = false;
+
+    onMount(() => {
+        if ($preferredPlatform && $snippets.has($preferredPlatform)) {
+            selected.set($preferredPlatform);
+        } else if ($preferredPlatform && !$snippets.has($preferredPlatform)) {
+            /*
+             * Edge case handling:
+             *
+             * 1. `$preferredPlatform` defaults to `client-web`
+             * 2. `$snippets` may not include it (e.g., shell commands: bash, cmd, powershell, etc.)
+             * 3. Fallback: use the first available snippet, but restore `$preferredPlatform`.
+             */
+            const tempPreferredPlatform = $preferredPlatform;
+
+            // set the first available
+            selected.set(Array.from($snippets)[0]);
+
+            // reset back to original platform,
+            // manual changes should update correctly!
+            $preferredPlatform = tempPreferredPlatform;
+        }
+
+        hasMounted = true;
+    });
+
+    if (hasContext('tabs-selection')) {
+        const tabsSelection = getContext<Readable<string>>('tabs-selection');
+        tabsSelection.subscribe(() => {
+            if (!hasMounted) return;
+            if (!$snippets.has($preferredPlatform)) {
+                selected.set(Array.from($snippets)[0]);
+            }
+        });
     }
 </script>
 
@@ -79,5 +130,7 @@
             </ul>
         </div>
     </header>
-    <div class="web-code-snippet-content"><slot /></div>
+    <div class="web-code-snippet-content">
+        <slot />
+    </div>
 </section>

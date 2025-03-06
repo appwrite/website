@@ -19,4 +19,5 @@
     height={sizes[size]}
     style:width={sizes[size]}
     style:vertical-align="middle"
+    style:min-width={sizes[size]}
 />

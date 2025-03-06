@@ -18,7 +18,8 @@
     export let data;
 
     const title = 'Integrations' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        'Connect your favorite apps to Appwrite for one unified tech stack. Explore our catalog of integrations now.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     // search functionality
@@ -196,7 +197,7 @@
                                         <option value={null}> Select category </option>
                                     </select>
                                     <span
-                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-2 right-2"
+                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
                                         aria-hidden="true"
                                     />
                                 </div>
@@ -601,7 +602,7 @@
             margin-bottom: f.pxToRem(60);
             @media #{devices.$break2open} {
                 position: sticky;
-                top: 50px;
+                top: 90px;
                 height: 500px;
                 transition: top 0.3s ease;
 

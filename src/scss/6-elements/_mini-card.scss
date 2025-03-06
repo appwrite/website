@@ -4,7 +4,7 @@
   --p-mini-card-bg-color: var(--web-color-white);
   --p-mini-card-border-color: var(--web-color-greyscale-100);
 
-  padding:pxToRem(10); padding-inline-start:pxToRem(16);
+  padding:pxToRem(10);
 
   background-color: hsl(var(--p-mini-card-bg-color));
   border: solid pxToRem(1) hsl(var(--p-mini-card-border-color));

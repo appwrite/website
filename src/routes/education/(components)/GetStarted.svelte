@@ -16,9 +16,9 @@
             }
         },
         {
-            label: 'Redeem your Cloud credits',
+            label: 'Access the Education plan',
             description:
-                'Create your Appwrite account through the Education program sign up page. Once verified, your credits will be applied.',
+                'Create your Appwrite account through the Education program sign up page. Once verified, the Education plan will be applied to your account.',
             cta: { url: educationSignUp, label: 'Sign up' }
         },
         {

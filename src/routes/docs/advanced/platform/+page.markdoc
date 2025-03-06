@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Platform
-description: Appwrite is a development platform designed to adapt you unique use cases. Appwrite provides features that help you maintain, scale, and integrate Appwrite with other platforms.
+description: Appwrite is a development platform designed to adapt to your unique use cases. It provides features that help you maintain and scale your application.
 ---
 
 Appwrite is a development platform designed to adapt your unique use cases.
@@ -96,5 +96,18 @@ Add a custom domain for your Appwrite APIs.
    href="/docs/advanced/platform/message-templates"
    title="Message templates" %}
 Create custom branding and messages when you communicate with users.
+{% /cards_item %}
+{% /cards %}
+
+# Add Ons {% #add-ons %}
+
+Learn about additional features and functionalities that Appwrite offers.
+
+{% cards %}
+{% cards_item href="/docs/advanced/platform/compute" title="Compute" %}
+Learn about Appwrite's different compute add-ons.
+{% /cards_item %}
+{% cards_item href="/docs/advanced/platform/phone-otp" title="Phone OTP" %}
+Learn how Appwrite handles SMS-based OTP authentication.
 {% /cards_item %}
 {% /cards %}

@@ -1,7 +1,7 @@
 ---
 layout: integration
 title: Logging with AppSignal
-description: Store logs and track issues on your Appwrite instance
+description: Monitor application health in real time, store logs and track issues on your Appwrite instance with the help of AppSignal intergration.
 date: 2024-07-30
 featured: false
 isPartner: true

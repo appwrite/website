@@ -1,5 +1,6 @@
 import { Analytics, type AnalyticsPlugin } from 'analytics';
 import Plausible from 'plausible-tracker';
+import posthogEvent from 'posthog-js';
 import { get } from 'svelte/store';
 import { page } from '$app/stores';
 
@@ -54,7 +55,10 @@ const analytics = Analytics({
     plugins: [plausible('appwrite.io')]
 });
 
-export const trackEvent = async (name: string, data: object = {}) => {
+export const trackEvent = async (platforms: {
+    plausible?: { name: string; data?: object };
+    posthog?: { name: string };
+}) => {
     if (!isTrackingAllowed()) {
         return;
     }
@@ -63,9 +67,15 @@ export const trackEvent = async (name: string, data: object = {}) => {
     const path = currentPage.route.id ?? '';
 
     if (ENV.DEV || ENV.PREVIEW) {
-        console.log(`[Analytics] Event ${name} ${path}`, data);
+        console.log(`[Analytics] Event`, platforms.plausible, platforms.posthog);
     } else {
-        await analytics.track(name, { ...data, path });
+        if (platforms.plausible) {
+            await analytics.track(platforms.plausible.name, { ...platforms.plausible.data, path });
+        }
+
+        if (platforms.posthog) {
+            posthogEvent.capture(platforms.posthog.name);
+        }
     }
 };
 

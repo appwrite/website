@@ -4,19 +4,19 @@
             title: 'Messaging',
             description: 'Use Appwrite messaging to send email, SMS, and push notifications.',
             icon: '/images/icons/illustrated/dark/messaging.png',
-            url: '/docs/products/messaging'
+            url: '/products/messaging'
         },
         auth: {
             title: 'Auth',
             description: 'Build secure authentication and manage your users.',
             icon: '/images/icons/illustrated/dark/auth.png',
-            url: '/docs/products/auth'
+            url: '/products/auth'
         },
         functions: {
             title: 'Functions',
             description: ' Scale big and unlock limitless potential with Appwrite functions.',
             icon: '/images/icons/illustrated/dark/functions.png',
-            url: '/docs/products/functions'
+            url: '/products/functions'
         },
         databases: {
             title: 'Databases',
@@ -28,7 +28,7 @@
             title: 'Storage',
             description: 'Manage your files project, using convenient APIs and utilities.',
             icon: '/images/icons/illustrated/dark/storage.png',
-            url: '/docs/products/storage'
+            url: '/products/storage'
         }
     } as const;
 

@@ -27,7 +27,7 @@
 </script>
 
 <div {...$root} use:root>
-    <div class="flex gap-4 overflow-scroll">
+    <div class="flex gap-4 overflow-auto">
         <ul class="flex items-center gap-2" {...$list} use:list>
             {#each $ctx.triggers.entries() as [id, title]}
                 <li

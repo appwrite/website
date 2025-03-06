@@ -808,7 +808,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const message - await messaging.createEmail(
+const message = await messaging.createEmail(
         '[MESSAGE_ID]',            // messageId
         '[SUBJECT]',               // subject
         '[CONTENT]',               // content

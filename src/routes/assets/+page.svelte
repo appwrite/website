@@ -11,7 +11,8 @@
     import Copy from './Copy.svelte';
 
     const title = 'Assets' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        "This page features Appwrite's key brand assets including the logotype, colors, product visuals, and practical guidelines for their usage.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     enum Section {
@@ -347,7 +348,7 @@
                                     <h3 class="text-label">Dark Grey</h3>
                                     <p class="text-caption">#19191D</p>
                                     <div class="buttons">
-                                        <Copy toCopy="#19191D" />
+                                        <Copy toCopy="#19191D" variant="dark" />
                                     </div>
                                 </div>
                                 <div
@@ -358,7 +359,7 @@
                                     <h3 class="text-label">Appwrite Pink</h3>
                                     <p class="text-caption">#FD366E</p>
                                     <div class="buttons">
-                                        <Copy toCopy="#FD366E" />
+                                        <Copy toCopy="#FD366E" variant="pink" />
                                     </div>
                                 </div>
                             </div>
@@ -611,7 +612,6 @@
             gap: 0.5rem;
 
             position: absolute;
-            right: 1rem;
             bottom: 1rem;
 
             &.visuals {

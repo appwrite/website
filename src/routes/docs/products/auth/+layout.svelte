@@ -47,6 +47,10 @@
                 {
                     label: 'Tokens',
                     href: '/docs/products/auth/tokens'
+                },
+                {
+                    label: 'Identities',
+                    href: '/docs/products/auth/identities'
                 }
             ]
         },
@@ -92,6 +96,10 @@
                 {
                     label: 'Multi-factor authentication',
                     href: '/docs/products/auth/mfa'
+                },
+                {
+                    label: 'Verify user',
+                    href: '/docs/products/auth/verify-user'
                 }
             ]
         },

@@ -66,15 +66,24 @@
     }
 
     onMount(() => {
+        preferredPlatform.set(platform);
         preferredVersion.set($page.params.version as Version);
-        preferredPlatform.set($page.params.platform as Platform);
     });
 
-    $: platform = $page.params.platform as Platform;
+    // cleaned service description without Markdown links.
+    $: serviceDescription = (data.service?.description ?? '').replace(
+        /\[([^\]]+)]\([^)]+\)/g,
+        '$1'
+    );
+
+    // the service description up to the first full stop, providing sufficient information.
+    $: shortenedDescription = serviceDescription.substring(0, serviceDescription.indexOf('.') + 1);
+
+    $: platform = ($preferredPlatform ?? $page.params.platform) as Platform;
     $: platformType = platform.startsWith('client-') ? 'CLIENT' : 'SERVER';
     $: serviceName = serviceMap[data.service?.name];
     $: title = serviceName + API_REFERENCE_TITLE_SUFFIX;
-    $: description = data.service?.description;
+    $: description = shortenedDescription;
     $: ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 </script>
 

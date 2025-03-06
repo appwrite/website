@@ -6,7 +6,7 @@ date: 2024-03-04
 cover: /images/blog/tickets-cover.png
 timeToRead: 12
 author: laura-du-ry
-category: engineering
+category: init
 ---
 
 Do you remember the Appwrite [Cloud cards](https://dev.to/appwrite/how-we-implemented-the-card-animation-in-appwrite-cloud-public-beta-4npb)? They were an absolute hit and filled our entire timeline for days. For Init, we wanted to create a new card, or better yet, a ticket to celebrate in style. So, we created three types of tickets that are unique to you with the help of your GitHub contributions and the tribe customization.

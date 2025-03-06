@@ -64,7 +64,7 @@ const client = new Client()
 
 const account = new Account(client);
 
-const promise = account.createVerification('https://example.com');
+const promise = account.createVerification('https://example.com/verify');
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -110,7 +110,7 @@ import { Client, Account } from "appwrite";
 const client = new Client()
     .setProject('<PROJECT_ID>'); // Your project ID
 
-const promise = account.createRecovery('email@example.com', 'https://example.com');
+const promise = account.createRecovery('email@example.com', 'https://example.com/recovery');
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -130,7 +130,6 @@ const client = new Client()
 const promise = account.updateRecovery(
     '[USER_ID]',
     '[SECRET]',
-    'password',
     'password'
 );
 

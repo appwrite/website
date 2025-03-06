@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Start with React Native
-description: Build React Native apps on iOS, Android, and other native platforms with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
+description: Discover how to leverage Appwrite's powerful backend to help you build React Native apps for iOS, Android and other native platforms. 
 difficulty: beginner
 readtime: 10
 back: /docs/quick-starts

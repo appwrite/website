@@ -171,8 +171,9 @@
                 over your development.
             </p>
 
-            <a href="/docs/sdks#server" class="web-button is-secondary mt-8 !w-full md:!w-fit"
-                >Learn more</a
+            <a
+                href="/docs/products/functions/develop-locally"
+                class="web-button is-secondary mt-8 !w-full md:!w-fit">Learn more</a
             >
         </div>
     </div>

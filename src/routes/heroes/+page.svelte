@@ -8,7 +8,8 @@
     import FloatingHead from '$lib/components/FloatingHead.svelte';
 
     const title = 'Heroes' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        "If you're passionate about helping developers build great products with Appwrite - join our Heroes program and get access to a number of exclusive perks.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     const heroCards: HeroCardProps[] = [
@@ -332,7 +333,7 @@
             </div>
         </div>
 
-        <div class="footer-wrapper relative py-10">
+        <div class="footer-wrapper relative pt-10">
             <enhanced:img src="./bg-pre.png" alt="" class="absolute" style:inset-block-start="0" />
             <div class="web-big-padding-section-level-2 relative">
                 <div class="container">
@@ -509,6 +510,12 @@
         @media (max-width: 1024px) {
             .web-hero {
                 padding-block-start: 5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .web-big-padding-section-level-2 {
+                margin-block-end: 0;
             }
         }
 
