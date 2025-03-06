@@ -306,7 +306,7 @@
 
     .mask {
         mask-image: linear-gradient(
-            to top,
+            to var(--mask-direction, top),
             transparent,
             black var(--mask-height, 32px),
             black calc(100% - var(--mask-height, 32px)),
