@@ -13,11 +13,7 @@
 
 <td class="py-[0.5625rem] px-3 text-sm leading-[1.375rem]" {align} {colspan} {rowspan}>
     {#if $isCodeInsideTd}
-        <div
-            class:flex={$isCodeInsideTd}
-            class:gap-1={$isCodeInsideTd}
-            class:items-center={$isCodeInsideTd}
-        >
+        <div>
             <slot />
         </div>
     {:else}
