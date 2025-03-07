@@ -1,13 +1,13 @@
 <script lang="ts">
     import { Main } from '$lib/layouts';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import { type ResultType, Fuse } from '$lib/integrations';
     import { writable } from 'svelte/store';
     import { autoHash } from '$lib/actions/autoHash';
-    import type { Integration } from './+page';
+    import type { Partner } from './+page';
     import { goto } from '$app/navigation';
     import { onDestroy, onMount } from 'svelte';
     import { browser } from '$app/environment';
@@ -31,7 +31,7 @@
         distance: 500
     };
 
-    let result: ResultType<Integration> = [];
+    let result: ResultType<Partner> = [];
 
     let hasQuery: boolean;
     let query = writable(decodeURIComponent($page.url.searchParams.get('search') ?? ''));

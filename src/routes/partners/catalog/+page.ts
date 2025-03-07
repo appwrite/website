@@ -3,7 +3,7 @@ import { groupBy } from 'remeda';
 import type { IntegrationCategory } from '$lib/constants';
 import { integrationCategoryDescriptions as categoryDescriptions } from '$lib/constants';
 
-export type Integration = {
+export type Partner = {
     title: string;
     description: string;
     featured?: boolean;
@@ -12,13 +12,13 @@ export type Integration = {
     isPartner?: boolean;
     platform: string[];
     category: string;
-    product: {
-        avatar: string;
-        vendor: string;
-        description: string;
-    };
+    frameworks: string[];
     href: string;
-    images: string[];
+    product: {
+        vendor: string;
+        avatar: string;
+        href: string;
+    };
 };
 
 export const load = () => {
@@ -31,7 +31,7 @@ export const load = () => {
 
     const integrations = Object.entries(integrationsGlob).map(([filepath, integrationList]) => {
         const { frontmatter } = integrationList as {
-            frontmatter: Integration;
+            frontmatter: Partner;
         };
 
         const slug = filepath.replace('./', '').replace('/+page.markdoc', '');
