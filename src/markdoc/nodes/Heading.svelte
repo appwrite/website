@@ -9,6 +9,7 @@
     export let step: number | undefined = undefined;
     export let inReferences = false;
 
+    let href: string;
     const tag = `h${level + 1}`;
     const ctx = hasContext('headings') ? getContext<LayoutContext>('headings') : undefined;
 
@@ -27,6 +28,7 @@
         }
 
         const slug = id ?? slugify(element.innerText);
+        href = slug;
 
         $ctx = {
             ...$ctx,
@@ -66,5 +68,5 @@
     class:web-snap-location-references={id && inReferences}
     class="{headingClass} text-primary scroll-m-32 font-medium"
 >
-    <a href={`#${id}`} class=""><slot /></a>
+    <a href={`#${href}`} class=""><slot /></a>
 </svelte:element>
