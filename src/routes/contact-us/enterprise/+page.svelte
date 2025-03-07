@@ -25,7 +25,6 @@
     async function handleSubmit() {
         error = undefined;
         submitting = true;
-        const subject = `Enterprise Plan Application: ${companyName}`;
 
         const cloudEmail = loggedIn && $user?.email ? $user.email : undefined;
 
@@ -36,7 +35,7 @@
             },
             body: JSON.stringify({
                 email,
-                subject,
+                subject: companyName,
                 cloudEmail,
                 companyName,
                 companySize,
