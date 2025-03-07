@@ -10,13 +10,11 @@
     $: isVideo = videoExtensions.some((ext) => src.endsWith(ext));
 </script>
 
-<div class="web-media">
-    {#if isVideo}
-        <!-- svelte-ignore a11y-media-has-caption-->
-        <video {src} class={className} {controls} {autoplay}>
-            <slot />
-        </video>
-    {:else}
-        <img loading="lazy" {src} {alt} class={className} data-active="" />
-    {/if}
-</div>
+{#if isVideo}
+    <!-- svelte-ignore a11y-media-has-caption-->
+    <video {src} class={className} {controls} {autoplay}>
+        <slot />
+    </video>
+{:else}
+    <img loading="lazy" {src} {alt} class={className} data-active="" />
+{/if}
