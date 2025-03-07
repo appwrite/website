@@ -16,9 +16,9 @@ An identity is another way to refer to a user account. A single user can have mu
 
 Identities are primarily used in the following scenarios:
 
-1. **OAuth2 Authentication**: When users authenticate through any OAuth2 provider
-2. **Account Management**: When users want to link or unlink external provider accounts
-3. **User Profile Consolidation**: When maintaining a single user profile across multiple authentication methods
+1. **OAuth2 authentication**: When users authenticate through any OAuth2 provider
+2. **Account management**: When users want to link or unlink external provider accounts
+3. **User profile consolidation**: When maintaining a single user profile across multiple authentication methods
 
 # Create new identities {% #create-new-identities %}
 
