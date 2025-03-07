@@ -19,13 +19,12 @@
     let useCase = '';
 
     let submitted = false;
-    let submitting = true;
+    let submitting = false;
     let error: string | undefined;
 
     async function handleSubmit() {
         error = undefined;
         submitting = true;
-        const subject = `Enterprise Plan Application: ${companyName}`;
 
         const cloudEmail = loggedIn && $user?.email ? $user.email : undefined;
 
@@ -36,7 +35,7 @@
             },
             body: JSON.stringify({
                 email,
-                subject,
+                subject: companyName,
                 cloudEmail,
                 companyName,
                 companySize,
@@ -116,14 +115,15 @@
                                             Appwrite for Enterprise
                                         </h1>
                                         <p class="text-description">
-                                            Enterprise businesses partner with Appwrite to give
-                                            their developers the power to innovate and build their
-                                            applications all on one UI. Say goodbye to repetitive
-                                            backend work and hello to faster product launches.
+                                            Enterprise businesses partner with Appwrite to empower
+                                            their developers with an all-in-one backend platform, so
+                                            they can focus on innovation, not reinventing the wheel.
+                                            Reduce complexity, accelerate development, and launch
+                                            faster.
                                             <br />
                                             <br />
-                                            Ready to talk? Fill out the form and one of our experts will
-                                            be in touch!
+                                            Ready to talk? Fill out the form, and one of our experts
+                                            will be in touch.
                                         </p>
                                     </section>
                                 {/if}

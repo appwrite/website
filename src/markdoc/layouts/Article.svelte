@@ -58,7 +58,7 @@
         return carry;
     }, []);
 
-    const isProductsPage = /^\/docs\/products\/[^/]+$/.test($page.route.id.toString());
+    const isProductsPage = /^\/docs\/products\/[^/]+$/.test($page.route.id!.toString());
 
     let seoTitle = title + DOCS_TITLE_SUFFIX;
     if (isProductsPage) seoTitle = title + OVERVIEW_TITLE_SUFFIX;
