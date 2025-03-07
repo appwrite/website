@@ -12,7 +12,9 @@
 <nav class="sticky top-32 col-span-3 -ml-4 hidden h-[600px] lg:block">
     <span class="text-micro tracking-loose text-primary pl-8 uppercase">Table of Contents</span>
     <div class="relative">
-        <ul class="border-smooth mt-11 flex flex-col gap-7 border-b pb-11">
+        <ul
+            class="border-smooth mask mt-11 flex max-h-[600px] flex-col gap-7 overflow-scroll border-b pb-11 [scrollbar-width:none]"
+        >
             {#each toc as parent (parent.href)}
                 <li
                     class={classNames(
