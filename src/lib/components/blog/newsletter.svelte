@@ -90,7 +90,7 @@
                         <input
                             type="email"
                             placeholder="Enter your email"
-                            class="text-primary flex-1 outline-none"
+                            class="text-primary flex-1 appearance-none border-none outline-none"
                             required
                             id="email"
                             name="email"
