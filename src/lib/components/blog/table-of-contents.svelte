@@ -4,7 +4,7 @@
     import { onMount } from 'svelte';
 
     const backToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0 });
     };
 
     export let toc: Array<TocItem> = [];
