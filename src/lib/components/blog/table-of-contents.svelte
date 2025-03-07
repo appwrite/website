@@ -9,7 +9,7 @@
     export let toc: Array<TocItem> = [];
 </script>
 
-<nav class="sticky top-32 col-span-3 -ml-4 hidden h-[600px] lg:block">
+<nav class="sticky top-32 col-span-3 -ml-4 hidden h-[800px] lg:block">
     <span class="text-micro tracking-loose text-primary pl-8 uppercase">Table of Contents</span>
     <div class="relative">
         <ul
