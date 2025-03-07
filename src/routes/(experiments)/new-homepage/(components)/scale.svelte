@@ -10,22 +10,26 @@
         {
             number: 0,
             suffix: '+',
-            description: 'Regions served'
+            description: 'Regions served',
+            top: 93.75
         },
         {
             number: 0,
             suffix: 'TB',
-            description: 'of data served'
+            description: 'of data served',
+            top: 78.25
         },
         {
             number: 0,
             suffix: 'M',
-            description: 'end users'
+            description: 'end users',
+            top: 62.5
         },
         {
             number: 0,
             suffix: '+',
-            description: 'total compute time'
+            description: 'total compute time',
+            top: 46.75
         }
     ];
 
@@ -40,7 +44,7 @@
                 () => {
                     stats[index] = { ...stat, number: numbers[index] };
                 },
-                ((index * animationDuration) / numbers.length) * 1000
+                ((index * animationDuration) / numbers.length) * 500
             );
 
             timeoutIds.push(timeoutId);
@@ -72,12 +76,12 @@
 </script>
 
 <div
-    class="light relative flex min-h-[70vh] w-full flex-col gap-4 overflow-hidden bg-[#EDEDF0] py-20"
+    class="border-smooth relative flex min-h-[70vh] flex-col gap-4 border-y bg-black/8 py-20"
     use:useInView
 >
-    <div class="container relative z-10 w-full">
+    <div class="container relative z-10 w-fit md:w-full">
         <div class="max-w-xl">
-            <h2 class="text-primary font-aeonik-pro text-5xl tracking-tighter">
+            <h2 class="text-primary font-aeonik-pro text-pretty text-5xl tracking-tighter">
                 Thousands of developers <span class="text-secondary">scale with Appwrite</span><span
                     class="text-accent">_</span
                 >
@@ -92,23 +96,35 @@
         </div>
     </div>
 
-    <div class="swipe absolute inset-0" style:--animation-duration={`${animationDuration}s`}>
+    <div class="mt-12 block space-y-8 md:hidden">
+        {#each stats as stat, i}
+            <div class="h-full overflow-auto pl-6">
+                <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
+                    <NumberFlow
+                        class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
+                        value={stat.number}
+                        suffix={stat.suffix}
+                    />
+                    <span class="text-body text-secondary block pl-4">{stat.description}</span>
+                </div>
+            </div>
+        {/each}
+    </div>
+
+    <div
+        class="swipe mask absolute inset-0 hidden md:block"
+        style:--animation-duration={`${animationDuration}s`}
+        style:--mask-height="50px"
+    >
         <div class="container relative h-full">
             <div class="absolute inset-0 z-100 grid grid-cols-4">
                 {#each stats as stat, i}
                     <div
-                        class="mask h-full border-l border-dashed border-black/10"
+                        class="mask border-smooth h-full overflow-auto border-l"
                         style:--mask-direction="bottom"
                         style:--mask-height={`${(4 - i) * 25}%`}
-                        style:--after-top={`${4 - i + 150}px`}
                     >
-                        <div
-                            class={classNames(
-                                'relative',
-                                'after:border-accent after:absolute after:top-[var(--after-top)] after:size-2 after:rounded-full after:border after:bg-white'
-                            )}
-                            style:top={`${(4 - i) * 18}%`}
-                        >
+                        <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
                             <NumberFlow
                                 class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
                                 value={stat.number}
@@ -120,6 +136,16 @@
                         </div>
                     </div>
                 {/each}
+
+                <div class="pointer-events-none absolute inset-0 z-50">
+                    {#each stats as stat, i}
+                        <div
+                            class="border-accent absolute top-[var(--top)] left-[calc(var(--left)_+_1px)] h-2 w-2 -translate-1/2 rounded-full border bg-white"
+                            style:--top={`${stat.top}%`}
+                            style:--left="{i * 25}%"
+                        />
+                    {/each}
+                </div>
             </div>
         </div>
         <div

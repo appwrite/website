@@ -107,6 +107,10 @@
         {
             label: 'Pricing',
             href: '/pricing'
+        },
+        {
+            label: 'Enterprise',
+            href: '/contact-us/enterprise'
         }
     ];
 
