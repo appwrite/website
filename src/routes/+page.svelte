@@ -168,13 +168,24 @@
                                 Start building
                             </a>
 
-                            <AppwriteIn100Seconds />
+                            <a
+                                href="/contact-us/enterprise"
+                                class="web-button is-secondary w-full lg:w-fit">Request a demo</a
+                            >
+
+                            <!-- <AppwriteIn100Seconds /> -->
                         </div>
                     </Hero>
                 </section>
             </div>
             <div class="mb-12 lg:my-[7.5rem]">
-                <section class="web-u-padding-block-0 container" style="--container-size:78.75rem">
+                <section
+                    class="web-u-padding-block-0 container relative"
+                    style="--container-size:78.75rem"
+                >
+                    <div class="absolute top-1/2 left-1/2 z-10 -translate-1/2">
+                        <AppwriteIn100Seconds />
+                    </div>
                     <div class="web-media-container">
                         <img
                             class="block"

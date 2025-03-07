@@ -53,16 +53,12 @@
 
     export const sublinks: Array<SubLink> = [
         {
-            label: 'See more',
-            href: '/'
+            label: 'Appwrite vs. Supabase',
+            href: '/blog/post/appwrite-compared-to-supabase'
         },
         {
-            label: 'See more',
-            href: '/'
-        },
-        {
-            label: 'See more',
-            href: '/'
+            label: 'Appwrite vs. Firebase',
+            href: '/blog/post/open-source-firebase-alternative'
         }
     ];
 </script>
@@ -159,51 +155,56 @@
             </div>
             <div class="col-span-4 -ml-12 border-l border-white/6 pl-12">
                 <a
-                    href="/blog/post/case-study-undo"
+                    href="/blog/post/customer-story-storealert"
                     use:melt={$item}
-                    class="block rounded-2xl border border-white/12 bg-white/6 p-4 outline-none focus-within:bg-white/12"
+                    class="group block rounded-2xl border border-white/12 bg-white/6 p-4 outline-none focus-within:bg-white/12"
                 >
                     <header class="flex items-center justify-between">
                         <span
                             class="font-aeonik-fono tracking-loose text-secondary block text-xs uppercase"
-                            >Customer stories<span class="text-accent">_</span></span
+                            >Customer Stories<span class="text-accent">_</span></span
                         >
                         <a
-                            href="/blog/category/case-studies"
+                            href="/blog/category/customer-stories"
                             class="text-primary text-caption flex items-center gap-2"
-                            >See more <span class="web-icon-chevron-right" /></a
+                            >See more <span
+                                class="web-icon-chevron-right transition-transform group-hover:translate-x-0.5"
+                            /></a
                         >
                     </header>
 
-                    <div class="flex-1 outline-none">
+                    <div class="my-4 flex flex-1 gap-3 outline-none">
                         <img
-                            src="/images/blog/case-study-undo/cover.png"
+                            src="/images/blog/customer-story-storealert/cover.png"
                             alt="Case study cover"
-                            class="my-6 aspect-[3/1] rounded-xl object-cover"
+                            class="aspect-[3/1] max-w-[7.5rem] shrink-0 rounded-xl object-cover"
                         />
-                        <p>
-                            Pioneering asset management solutions for the circular economy with UNDŌ
+                        <p class="text-pretty">
+                            Empowering Shopify merchants with real-time store monitoring using
+                            StoreAlert
                         </p>
                     </div>
                 </a>
-                {#if dev}
-                    <div class="mt-8">
-                        <span
-                            class="font-aeonik-fono tracking-loose text-secondary block text-xs uppercase"
-                            >This is a title<span class="text-accent">_</span></span
-                        >
-                        <div class="mt-3 space-y-3">
-                            {#each sublinks as sublink}
-                                <a
-                                    href={sublink.href}
-                                    class="text-caption text-primary flex items-center gap-2"
-                                >
-                                    {sublink.label} <span class="web-icon-chevron-right" />
-                                </a>
-                            {/each}
-                        </div>
+
+                <div class="mt-8">
+                    <span
+                        class="font-aeonik-fono tracking-loose text-secondary block text-xs uppercase"
+                        >Compare Appwrite<span class="text-accent">_</span></span
+                    >
+                    <div class="mt-3 space-y-3">
+                        {#each sublinks as sublink}
+                            <a
+                                href={sublink.href}
+                                class="text-caption text-primary group flex items-center gap-1"
+                            >
+                                {sublink.label}
+                                <span
+                                    class="web-icon-chevron-right transition-transform group-hover:translate-x-0.5"
+                                />
+                            </a>
+                        {/each}
                     </div>
-                {/if}
+                </div>
             </div>
         </div>
     </div>
