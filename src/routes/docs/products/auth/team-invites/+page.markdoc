@@ -65,7 +65,7 @@ let teams = Teams(client)
 
 // Create membership with email invite
 let membership = try await teams.createMembership(
-    teamId: "team_id",
+    teamId: "<TEAM_ID>",
     roles: ["developer"],
     email: "user@example.com",
     url: "https://yourapp.com/accept-invite" // redirect after email click
@@ -83,7 +83,7 @@ val teams = Teams(client)
 
 // Create membership with email invite
 val response = teams.createMembership(
-    teamId = "team_id",
+    teamId = "<TEAM_ID>",
     roles = listOf("developer"),
     email = "user@example.com",
     url = "https://yourapp.com/accept-invite" // redirect after email click
@@ -111,10 +111,10 @@ const teams = new Teams(client);
 
 // Accept the invitation using the membership ID and secret
 const response = await teams.updateMembershipStatus(
-    'team_id',
-    'membership_id',
-    'user_id',
-    'secret'
+    '<TEAM_ID>',
+    '<MEMBERSHIP_ID>',
+    '<USER_ID>',
+    '<SECRET>'
 );
 ```
 ```client-flutter
@@ -128,10 +128,10 @@ final teams = Teams(client);
 
 // Accept the invitation using the membership ID and secret
 final response = await teams.updateMembershipStatus(
-    teamId: 'team_id',
-    membershipId: 'membership_id',
-    userId: 'user_id',
-    secret: 'secret'
+    teamId: '<TEAM_ID>',
+    membershipId: '<MEMBERSHIP_ID>',
+    userId: '<USER_ID>',
+    secret: '<SECRET>'
 );
 ```
 ```client-apple
@@ -145,10 +145,10 @@ let teams = Teams(client)
 
 // Accept the invitation using the membership ID and secret
 let response = try await teams.updateMembershipStatus(
-    teamId: "team_id",
-    membershipId: "membership_id",
-    userId: "user_id",
-    secret: "secret"
+    teamId: "<TEAM_ID>",
+    membershipId: "<MEMBERSHIP_ID>",
+    userId: "<USER_ID>",
+    secret: "<SECRET>"
 )
 ```
 ```client-android-kotlin
@@ -163,10 +163,10 @@ val teams = Teams(client)
 
 // Accept the invitation using the membership ID and secret
 val response = teams.updateMembershipStatus(
-    teamId = "team_id",
-    membershipId = "membership_id",
-    userId = "user_id",
-    secret = "secret"
+    teamId = "<TEAM_ID>",
+    membershipId = "<MEMBERSHIP_ID>",
+    userId = "<USER_ID>",
+    secret = "<SECRET>"
 )
 ```
 {% /multicode %}
@@ -194,9 +194,9 @@ const teams = new sdk.Teams(client);
 
 // Create membership directly with userId
 const membership = await teams.createMembership(
-    'team_id',
+    '<TEAM_ID>',
     ['developer'],
-    'user_id',
+    '<USER_ID>',
     'John Doe'  // optional name
 );
 ```
@@ -213,9 +213,9 @@ teams = Teams(client)
 
 # Create membership directly with userId
 membership = teams.create_membership(
-    team_id='team_id',
+    team_id='<TEAM_ID>',
     roles=['developer'],
-    user_id='user_id',
+    user_id='<USER_ID>',
     name='John Doe'  # optional
 )
 ```
@@ -231,9 +231,9 @@ let teams = Teams(client)
 
 // Create membership directly with userId
 let membership = try await teams.createMembership(
-    teamId: "team_id",
+    teamId: "<TEAM_ID>",
     roles: ["developer"],
-    userId: "user_id",
+    userId: "<USER_ID>",
     name: "John Doe" // optional
 )
 ```
@@ -250,9 +250,9 @@ val teams = Teams(client)
 
 // Create membership directly with userId
 val response = teams.createMembership(
-    teamId = "team_id",
+    teamId = "<TEAM_ID>",
     roles = listOf("developer"),
-    userId = "user_id",
+    userId = "<USER_ID>",
     name = "John Doe" // optional
 )
 ```
@@ -283,11 +283,11 @@ const teams = new Teams(client);
 const teamsList = await teams.list();
 
 // For a specific team, get all memberships
-const response = await teams.listMemberships('team_id');
+const response = await teams.listMemberships('<TEAM_ID>');
 
 // Find membership for specific user
 const userMembership = response.memberships.find(
-    membership => membership.userId === 'user_id'
+    membership => membership.userId === '<USER_ID>'
 );
 
 if (userMembership) {
@@ -309,12 +309,12 @@ final teamsList = await teams.list();
 
 // For a specific team, get all memberships
 final response = await teams.listMemberships(
-    teamId: 'team_id'
+    teamId: '<TEAM_ID>'
 );
 
 // Find membership for specific user
 final userMembership = response.memberships.firstWhere(
-    (membership) => membership.userId == 'user_id',
+    (membership) => membership.userId == '<USER_ID>',
     orElse: () => null
 );
 
@@ -337,11 +337,11 @@ let teamsList = try await teams.list()
 
 // For a specific team, get all memberships
 let response = try await teams.listMemberships(
-    teamId: "team_id"
+    teamId: "<TEAM_ID>"
 )
 
 // Find membership for specific user
-if let userMembership = response.memberships.first(where: { $0.userId == "user_id" }) {
+if let userMembership = response.memberships.first(where: { $0.userId == "<USER_ID>" }) {
     print(userMembership.confirm) // false = invited, true = joined
     print(userMembership.roles) // ['developer', etc]
 }
@@ -366,7 +366,7 @@ val response = teams.listMemberships(
 
 // Find membership for specific user
 val userMembership = response.memberships.find {
-    it.userId == "user_id"
+    it.userId == "<USER_ID>"
 }
 
 userMembership?.let {
@@ -399,7 +399,7 @@ for (const team of teamsList.teams) {
 
     // Find membership for specific user
     const userMembership = response.memberships.find(
-        membership => membership.userId === 'user_id'
+        membership => membership.userId === '<USER_ID>'
     );
 
     if (userMembership) {
@@ -429,7 +429,7 @@ for team in teams_list['teams']:
 
     // Find membership for specific user
     user_membership = next(
-        (m for m in response['memberships'] if m['userId'] == 'user_id'),
+        (m for m in response['memberships'] if m['userId'] == '<USER_ID>'),
         None
     )
 
@@ -458,7 +458,7 @@ for team in teamsList.teams {
     )
 
     // Find membership for specific user
-    if let userMembership = response.memberships.first(where: { $0.userId == "user_id" }) {
+    if let userMembership = response.memberships.first(where: { $0.userId == "<USER_ID>" }) {
         print("Team: \(team.name)")
         print("Joined: \(userMembership.joined)") # null if invited, timestamp if joined
         print("Roles: \(userMembership.roles)")
@@ -485,7 +485,7 @@ teamsList.teams.forEach { team ->
 
     // Find membership for specific user
     val userMembership = response.memberships.find {
-        it.userId == "user_id"
+        it.userId == "<USER_ID>"
     }
 
     userMembership?.let {
@@ -512,8 +512,8 @@ const client = new Client()
 const teams = new Teams(client);
 
 await teams.deleteMembership(
-    'team_id',
-    'membership_id'
+    '<TEAM_ID>',
+    '<MEMBERSHIP_ID>'
 );
 ```
 ```client-flutter
@@ -526,8 +526,8 @@ final client = Client()
 final teams = Teams(client);
 
 await teams.deleteMembership(
-    teamId: 'team_id',
-    membershipId: 'membership_id'
+    teamId: '<TEAM_ID>',
+    membershipId: '<MEMBERSHIP_ID>'
 );
 ```
 ```client-apple
@@ -540,8 +540,8 @@ let client = Client()
 let teams = Teams(client)
 
 try await teams.deleteMembership(
-    teamId: "team_id",
-    membershipId: "membership_id"
+    teamId: "<TEAM_ID>",
+    membershipId: "<MEMBERSHIP_ID>"
 )
 ```
 ```client-android-kotlin
@@ -555,7 +555,7 @@ val client = Client(context)
 val teams = Teams(client)
 
 teams.deleteMembership(
-    teamId = "team_id",
+    teamId = "<TEAM_ID>",
     membershipId = "membership_id"
 )
 ```
@@ -581,8 +581,8 @@ const teams = new Teams(client)
 
 // Update member roles
 await teams.updateMembership(
-    'team_id',
-    'membership_id',
+    '<TEAM_ID>',
+    '<MEMBERSHIP_ID>',
     ['admin', 'developer']
 )
 ```
@@ -597,8 +597,8 @@ final teams = Teams(client)
 
 // Update member roles
 await teams.updateMembership(
-    teamId: 'team_id',
-    membershipId: 'membership_id',
+    teamId: '<TEAM_ID>',
+    membershipId: '<MEMBERSHIP_ID>',
     roles: ['admin', 'developer']
 )
 ```
@@ -613,8 +613,8 @@ let teams = Teams(client)
 
 // Update member roles
 try await teams.updateMembership(
-    teamId: "team_id",
-    membershipId: "membership_id",
+    teamId: "<TEAM_ID>",
+    membershipId: "<MEMBERSHIP_ID>",
     roles: ["admin", "developer"]
 )
 ```
@@ -630,8 +630,8 @@ val teams = Teams(client)
 
 // Update member roles
 teams.updateMembership(
-    teamId = "team_id",
-    membershipId = "membership_id",
+    teamId = "<TEAM_ID>",
+    membershipId = "<MEMBERSHIP_ID>",
     roles = listOf("admin", "developer")
 )
 ```
@@ -652,10 +652,10 @@ const client = new Client()
 const teams = new Teams(client)
 
 // Get team memberships
-const response = await teams.listMemberships('team_id')
+const response = await teams.listMemberships('<TEAM_ID>')
 
 // Check if user has specific role
-const membership = response.memberships.find(m => m.userId === 'user_id')
+const membership = response.memberships.find(m => m.userId === '<USER_ID>')
 const isAdmin = membership?.roles.includes('admin') ?? false
 ```
 ```client-flutter
@@ -669,12 +669,12 @@ final teams = Teams(client)
 
 // Get team memberships
 final response = await teams.listMemberships(
-    teamId: 'team_id'
+    teamId: '<TEAM_ID>'
 )
 
 // Check if user has specific role
 final membership = response.memberships.firstWhere(
-    (m) => m.userId == 'user_id',
+    (m) => m.userId == '<USER_ID>',
     orElse: () => null
 )
 final isAdmin = membership?.roles.contains('admin') ?? false
@@ -690,11 +690,11 @@ let teams = Teams(client)
 
 // Get team memberships
 let response = try await teams.listMemberships(
-    teamId: "team_id"
+    teamId: "<TEAM_ID>"
 )
 
 // Check if user has specific role
-let membership = response.memberships.first { $0.userId == "user_id" }
+let membership = response.memberships.first { $0.userId == "<USER_ID>" }
 let isAdmin = membership?.roles.contains("admin") ?? false
 ```
 ```client-android-kotlin
@@ -713,7 +713,7 @@ val response = teams.listMemberships(
 )
 
 // Check if user has specific role
-val membership = response.memberships.find { it.userId == "user_id" }
+val membership = response.memberships.find { it.userId == "<USER_ID>" }
 val isAdmin = membership?.roles?.contains("admin") ?: false
 ```
 {% /multicode %}
