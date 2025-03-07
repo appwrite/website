@@ -1,56 +1,27 @@
 <script lang="ts">
     import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
     import { classNames } from '$lib/utils/classnames';
-    import { onMount } from 'svelte';
 
     const backToTop = () => {
         window.scrollTo({ top: 0 });
     };
 
     export let toc: Array<TocItem> = [];
-
-    let activeIndex: number = 0;
-
-    onMount(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const index = toc.findIndex((item) => item.href === `#${entry.target.id}`);
-                        if (index !== -1) {
-                            activeIndex = index;
-                        }
-                    }
-                });
-            },
-            {
-                rootMargin: '0px',
-                threshold: 0.5
-            }
-        );
-
-        toc.forEach((item) => {
-            const target = document.querySelector(item.href);
-            if (target) {
-                observer.observe(target);
-            }
-        });
-
-        return () => {
-            observer.disconnect();
-        };
-    });
 </script>
 
 <nav class="sticky top-32 col-span-3 -ml-4 hidden h-[600px] lg:block">
     <span class="text-micro tracking-loose text-primary pl-8 uppercase">Table of Contents</span>
     <div class="relative">
-        <ul class="border-smooth mt-11 ml-7 flex flex-col gap-7 border-b pb-11">
+        <ul class="border-smooth mt-11 flex flex-col gap-7 border-b pb-11">
             {#each toc as parent (parent.href)}
                 <li
                     class={classNames(
                         parent.selected ? 'text-primary' : 'text-secondary',
-                        'relative transition-colors'
+                        'relative pl-7 transition-colors',
+                        'before:bg-primary before:absolute before:top-0 before:left-0 before:h-6 before:w-px before:rounded-full before:opacity-0 before:transition-opacity',
+                        {
+                            'before:opacity-100': parent.selected
+                        }
                     )}
                 >
                     <a href={parent.href} class="line-clamp-1">{parent.title}</a>
@@ -61,7 +32,11 @@
                                 <li
                                     class={classNames(
                                         parent.selected ? 'text-primary' : 'text-secondary',
-                                        'relative transition-colors'
+                                        'relative transition-colors',
+                                        'before:bg-primary before:absolute before:top-0 before:left-0 before:h-6 before:w-px before:rounded-full before:opacity-0 before:transition-opacity',
+                                        {
+                                            'before:opacity-100': parent.selected
+                                        }
                                     )}
                                 >
                                     <a href={child.href} class="line-clamp-1">
@@ -74,10 +49,6 @@
                 </li>
             {/each}
         </ul>
-        <div
-            class="bg-primary absolute top-0 -left-px h-6 w-px rounded-full transition duration-500 ease-in-out"
-            style:transform={`translateY(${activeIndex * 52}px)`}
-        />
     </div>
 
     <button
