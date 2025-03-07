@@ -126,7 +126,9 @@
                 <div class="border-smooth md:border-r md:pr-12 lg:col-span-9">
                     <PostMeta {authorData} {title} {timeToRead} {currentURL} {date} {description} />
                     {#if cover}
-                        <Media class="block aspect-video" src={cover} />
+                        <div class="web-media">
+                            <Media class="block aspect-video" src={cover} />
+                        </div>
                     {/if}
 
                     <div class="web-article-content text-secondary mt-8 flex flex-col gap-8">
