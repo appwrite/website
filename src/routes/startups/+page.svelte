@@ -21,6 +21,7 @@
     import Faq from './faq.svelte';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import CommunitySupportChat from '$lib/components/CommunitySupportChat.svelte';
+    import { trackEvent } from '$lib/actions/analytics';
 
     const title = 'Startups' + TITLE_SUFFIX;
     const description =
@@ -57,6 +58,11 @@
                 companyUrl: companyUrl.startsWith('http') ? companyUrl : `https://${companyUrl}`,
                 ...getReferrerAndUtmSource()
             })
+        });
+
+        trackEvent({
+            plausible: { name: 'startups-form_submit' },
+            posthog: { name: 'startups-form_submit' }
         });
 
         submitting = false;
