@@ -111,6 +111,11 @@
                     new: isNewUntil('15 Apr 2025'),
                     label: 'Image Transformations',
                     href: '/docs/advanced/platform/image-transformations'
+                },
+                {
+                    new: isNewUntil('30 Apr 2025'),
+                    label: 'Database Reads and Writes',
+                    href: '/docs/advanced/platform/database-reads-and-writes'
                 }
             ]
         },
