@@ -113,6 +113,11 @@
                     icon: 'icon-sparkles'
                 },
                 {
+                    label: 'MCP',
+                    href: '/docs/tooling/mcp',
+                    icon: 'icon-sparkles'
+                },
+                {
                     label: 'The Appwriter',
                     href: '/docs/tooling/appwriter',
                     icon: 'icon-text'
