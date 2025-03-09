@@ -35,8 +35,8 @@ Next, you must configure your working directory. Open your terminal and run the 
 ### Bash
 
 ```sh
-APPWRITE_PROJECT_ID=my-project-id
-APPWRITE_API_KEY=my-api-key
+APPWRITE_PROJECT_ID=your-project-id
+APPWRITE_API_KEY=your-api-key
 APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
 ```
 
@@ -47,16 +47,16 @@ APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
 ### CMD
 
 ```cmd
-SET APPWRITE_PROJECT_ID=my-project-id
-SET APPWRITE_API_KEY=my-api-key
+SET APPWRITE_PROJECT_ID=your-project-id
+SET APPWRITE_API_KEY=your-api-key
 SET APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
 ```
 
 ### Powershell
 
 ```ps
-$env:APPWRITE_PROJECT_ID="my-project-id";
-$env:APPWRITE_API_KEY="my-api-key";
+$env:APPWRITE_PROJECT_ID="your-project-id";
+$env:APPWRITE_API_KEY="your-api-key";
 $env:APPWRITE_ENDPOINT="https://cloud.appwrite.io/v1";
 ```
 
