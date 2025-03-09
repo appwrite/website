@@ -1,0 +1,116 @@
+---
+layout: article
+title: Model Context Protocol
+description: Enable LLMs and code-generation tools to interact with your Appwrite project
+---
+
+Appwrite offers a [Model Context Protocol](https://modelcontextprotocol.io) (MCP) server that allows LLMs to directly interact with Appwrite's API. Using our MCP server, you can use applications such as Claude Desktop apps, Cursor, and Zed to make updates to your Appwrite project.
+
+Currently, the MCP server supports the following Appwrite APIs:
+
+- [Users](/docs/references/cloud/server-python/users)
+- [Databases](/docs/references/cloud/server-python/databases)
+
+{% info title="Why are only the Users and Databases APIs available?" %}
+
+Adding a lot of [tools](https://modelcontextprotocol.io/docs/concepts/tools) to your MCP server can result in exceeding the context window of the LLM. Therefore, only the most commonly used Appwrite products have been made available currently.
+
+If you want to use the other APIs, you can [self-host the MCP server](https://github.com/appwrite/mcp?tab=readme-ov-file#local-development).
+
+{% /info %}
+
+# Install the MCP server
+
+## Pre-requisites
+
+Before launching the MCP server, you must setup an Appwrite project and create an API key with the necessary scopes enabled.
+
+![Appwrite API key](/images/docs/mcp/appwrite-api-secret.png)
+
+Next, you must configure your working directory. Open your terminal and run the following command:
+
+{% tabs %}
+{% tabsitem #pre-requisites-linux-macos title="Linux and MacOS" %}
+
+### Bash
+
+```sh
+APPWRITE_PROJECT_ID=my-project-id
+APPWRITE_API_KEY=my-api-key
+APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+```
+
+{% /tabsitem %}
+
+{% tabsitem #pre-requisites-windows title="Windows" %}
+
+### CMD
+
+```cmd
+SET APPWRITE_PROJECT_ID=my-project-id
+SET APPWRITE_API_KEY=my-api-key
+SET APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+```
+
+### Powershell
+
+```ps
+$env:APPWRITE_PROJECT_ID="my-project-id";
+$env:APPWRITE_API_KEY="my-api-key";
+$env:APPWRITE_ENDPOINT="https://cloud.appwrite.io/v1";
+```
+
+{% /tabsitem %}
+{% /tabs %}
+
+## Launch the server
+
+Once your Appwrite project and API key are ready, there are two different ways by which you can setup the MCP server.
+
+### Using `uv` (recommended)
+
+{% info title="Install uv" %}
+
+You must install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your system.
+
+{% /info %}
+
+Run the following command in your terminal: 
+
+```sh
+uvx mcp-server-appwrite
+```
+
+### Using `pip`
+
+{% info title="Install Python" %}
+
+You must install a version of [Python](https://www.python.org/downloads/) `>= 3.12` on your system.
+
+{% /info %}
+
+First, you must install the MCP server using `pip`:
+
+```sh
+pip install mcp-server-appwrite
+```
+
+Then, run the server:
+
+```sh
+python -m mcp_server_appwrite
+```
+
+# Integrate with popular AI tools
+
+{% cards %}
+
+{% cards_item href="/docs/tooling/mcp/claude" title="Claude Desktop" %}
+Add the MCP server to Claude Desktop
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/mcp/claude" title="Cursor" %}
+Add the MCP server to Cursor
+{% /cards_item %}
+
+{% /cards %}
