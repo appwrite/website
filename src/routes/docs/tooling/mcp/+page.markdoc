@@ -54,7 +54,7 @@ SET APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
 
 ### Powershell
 
-```ps
+```powershell
 $env:APPWRITE_PROJECT_ID="your-project-id";
 $env:APPWRITE_API_KEY="your-api-key";
 $env:APPWRITE_ENDPOINT="https://cloud.appwrite.io/v1";
@@ -67,7 +67,7 @@ $env:APPWRITE_ENDPOINT="https://cloud.appwrite.io/v1";
 
 Once your Appwrite project and API key are ready, there are two different ways by which you can setup the MCP server.
 
-### Using `uv` (recommended)
+### Using uv (recommended)
 
 {% info title="Install uv" %}
 
@@ -81,7 +81,7 @@ Run the following command in your terminal:
 uvx mcp-server-appwrite
 ```
 
-### Using `pip`
+### Using pip
 
 {% info title="Install Python" %}
 
