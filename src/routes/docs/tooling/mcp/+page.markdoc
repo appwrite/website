@@ -35,9 +35,9 @@ Next, you must configure your working directory. Open your terminal and run the 
 ### Bash
 
 ```sh
-APPWRITE_PROJECT_ID=your-project-id
-APPWRITE_API_KEY=your-api-key
-APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+export APPWRITE_PROJECT_ID=your-project-id
+export APPWRITE_API_KEY=your-api-key
+export APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
 ```
 
 {% /tabsitem %}
