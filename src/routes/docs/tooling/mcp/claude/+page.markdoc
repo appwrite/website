@@ -21,7 +21,8 @@ Clicking on the **Edit Config** button will take you to the `claude_desktop_conf
         "appwrite": {
             "command": "uvx",
             "args": [
-                "mcp-server-appwrite"
+                "mcp-server-appwrite",
+                "--users"
             ],
             "env": {
                 "APPWRITE_PROJECT_ID": "your-project-id",
@@ -33,7 +34,11 @@ Clicking on the **Edit Config** button will take you to the `claude_desktop_conf
 }
 ```
 
-To enable tools other than our Databases API, learn more about our [Command-line arguments](/docs/tooling/mcp#command-line-arguments).
+{% info title="Enable other MCP tools" %}
+
+To enable tools other than our Databases or Users API, [learn more about our Command-line arguments](/docs/tooling/mcp#command-line-arguments).
+
+{% /info %}
 
 {% /section %}
 
