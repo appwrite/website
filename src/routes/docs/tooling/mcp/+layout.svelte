@@ -4,7 +4,7 @@
 
     const parent: NavParent = {
         href: '/docs',
-        label: 'MCP'
+        label: 'MCP Server'
     };
 
     const navigation: NavTree = [
