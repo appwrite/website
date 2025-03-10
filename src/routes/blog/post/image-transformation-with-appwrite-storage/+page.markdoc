@@ -284,7 +284,7 @@ However, while these are compatible with most modern browsers, it's good practic
 
 # Final thoughts
 
-With just a few lines of code, Appwrite's [image transformations](https://appwrite.io/docs/products/storage/images) eliminate the need for:
+With just a few lines of code, Appwrite's [image transformations](/docs/products/storage/images) eliminate the need for:
 
 - Multiple image versions cluttering your storage
 - Complex client-side image processing
