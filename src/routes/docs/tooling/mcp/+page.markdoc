@@ -27,7 +27,7 @@ You can integrate the MCP server with various popular AI-enabled code editors an
 Add the MCP server to Claude Desktop
 {% /cards_item %}
 
-{% cards_item href="/docs/tooling/mcp/claude" title="Cursor" %}
+{% cards_item href="/docs/tooling/mcp/cursor" title="Cursor" %}
 Add the MCP server to Cursor
 {% /cards_item %}
 
