@@ -22,7 +22,9 @@
                         'relative pl-7 transition-colors',
                         'before:bg-primary before:absolute before:top-0 before:left-0 before:h-6 before:w-px before:rounded-full before:opacity-0 before:transition-opacity',
                         {
-                            'pl-11': parent.level && parent.level >= 3,
+                            'font-medium': parent.level && parent.level === 1,
+                            'pl-11': parent.level && parent.level === 2,
+                            'pl-16': parent.level && parent.level >= 3,
                             'before:opacity-100': parent.selected
                         }
                     )}
