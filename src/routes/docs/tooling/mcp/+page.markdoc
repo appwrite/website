@@ -8,7 +8,7 @@ Appwrite offers a [Model Context Protocol](https://modelcontextprotocol.io) (MCP
 
 # Install the MCP server
 
-{% info title="Pre-requisites" %}
+## Pre-requisites
 
 Before launching the MCP server, you must [setup an Appwrite project](https://cloud.appwrite.io) and create an API key with the necessary scopes enabled.
 
@@ -18,8 +18,6 @@ Before launching the MCP server, you must [setup an Appwrite project](https://cl
 {% only_dark %}
 ![Appwrite API key](/images/docs/mcp/dark/appwrite-api-secret.png)
 {% /only_dark %}
-
-{% /info %}
 
 ## Integrate with popular AI tools
 
@@ -35,7 +33,17 @@ Add the MCP server to Claude Desktop
 Add the MCP server to Cursor
 {% /cards_item %}
 
+{% cards_item href="/docs/tooling/mcp/windsurf" title="Windsurf" %}
+Add the MCP server to Windsurf Editor
+{% /cards_item %}
+
 {% /cards %}
+
+{% info title="Want to integrate your AI tool?" %}
+
+If you are building an AI code-generation tool that can integrate with MCP servers and would like to collaborate, join our [Technology Partners](https://appwrite.io/integrations/technology-partner) program.
+
+{% /info %}
 
 ## Setup locally on your system
 
@@ -119,16 +127,22 @@ python -m mcp_server_appwrite [args]
 
 ### Command-line arguments
 
-Both the `uv` and `pip` setup processes require certain arguments to enable MCP tools for various Appwrite APIs. Please ensure you only enable the APIs you require as having too many MCPs tools enabled may cause you to exceed the context window of the LLM.
+Both the `uv` and `pip` setup processes require certain arguments to enable MCP tools for various Appwrite APIs. 
 
 | Argument | Description |
 | --- | --- |
-| `--databases` | Enables the Databases service |
-| `--users` | Enables the Users service |
-| `--teams` | Enables the Teams service |
-| `--storage` | Enables the Storage service |
-| `--functions` | Enables the Functions service |
-| `--messaging` | Enables the Messaging service |
-| `--locale` | Enables the Locale service |
-| `--avatars` | Enables the Avatars service |
-| `--all` | Enables all Appwrite services |
+| `--databases` | Enables the Databases API |
+| `--users` | Enables the Users API |
+| `--teams` | Enables the Teams API |
+| `--storage` | Enables the Storage API |
+| `--functions` | Enables the Functions API |
+| `--messaging` | Enables the Messaging API |
+| `--locale` | Enables the Locale API |
+| `--avatars` | Enables the Avatars API |
+| `--all` | Enables all Appwrite APIs |
+
+{% info title="Do not enable too many MCP tools" %}
+
+Each enabled MCP tool consumes part of the LLM's available context window. If too many tools are active, the model may have less space to focus on the primary task, leading to incomplete or less coherent responses. Therefore, please ensure you only enable the APIs you require.
+
+{% /info %}
