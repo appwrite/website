@@ -32,7 +32,7 @@ Add the MCP server to Cursor
 {% /cards_item %}
 
 
-{% cards_item href="/docs/tooling/mcp/windsurf" title="Windsurf" %}
+{% cards_item href="/docs/tooling/mcp/windsurf" title="Windsurf Editor" %}
 Add the MCP server to Windsurf Editor
 {% /cards_item %}
 
