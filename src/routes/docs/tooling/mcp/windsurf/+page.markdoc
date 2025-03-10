@@ -1,0 +1,30 @@
+---
+layout: article
+title: Windsurf Editor
+description: Add the MCP server to Windsurf Editor
+---
+
+Learn how you can add the Appwrite MCP server to Windsurf Editor.
+
+{% section #step-1 step=1 title="Add MCP server" %}
+
+Open the **Windsurf Settings** page, head to the **Cascade** section, find the **Model Context Protocol (MCP) Servers** sub-section, and click on the **View raw config** button.
+
+![Add MCP server](/images/docs/mcp/windsurf/windsurf-add-mcp.png)
+
+Update the `mcp_config.json` file to include the following:
+
+```json
+```
+
+Once you save the details, Windsurf Editor will connect with the MCP server and load all available tools.
+
+{% /section %}
+
+{% section #step-2 step=2 title="Test the integration" %}
+
+Open Windsurf Editor Agent and add a prompt to create a new user.
+
+![Create user in Appwrite project](/images/docs/mcp/windsurf/windsurf-create-user.png)
+
+{% /section %}
