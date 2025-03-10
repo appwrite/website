@@ -4,11 +4,9 @@ title: Model Context Protocol
 description: Enable LLMs and code-generation tools to interact with your Appwrite project
 ---
 
-Appwrite offers a [Model Context Protocol](https://modelcontextprotocol.io) (MCP) server that allows LLMs to directly interact with Appwrite's API. Using our MCP server, you can use applications such as Claude Desktop apps, Cursor, and Zed to make updates to your Appwrite project.
+Appwrite offers a [Model Context Protocol](https://modelcontextprotocol.io) (MCP) server that allows LLMs to directly interact with Appwrite's API. Using our MCP server, you can use applications such as Claude Desktop apps, Cursor, Windsurf Editor, etc. to make updates to your Appwrite project.
 
 # Install the MCP server
-
-## Pre-requisites
 
 Before launching the MCP server, you must [setup an Appwrite project](https://cloud.appwrite.io) and create an API key with the necessary scopes enabled.
 
@@ -31,6 +29,11 @@ Add the MCP server to Claude Desktop
 
 {% cards_item href="/docs/tooling/mcp/claude" title="Cursor" %}
 Add the MCP server to Cursor
+{% /cards_item %}
+
+
+{% cards_item href="/docs/tooling/mcp/windsurf" title="Windsurf" %}
+Add the MCP server to Windsurf Editor
 {% /cards_item %}
 
 {% /cards %}
@@ -125,9 +128,13 @@ python -m mcp_server_appwrite [args]
 
 Both the `uv` and `pip` setup processes require certain arguments to enable MCP tools for various Appwrite APIs.
 
+{% info title="Enable only necessary MCP tools" %}
+
 When an MCP tool is enabled, the tool's definition is passed to the LLM, using up tokens from the model's available context window. As a result, the effective context window is reduced. 
 
 The default Appwrite MCP server ships with only the Databases tools (our most commonly used API) enabled to stay within these limits. Additional tools can be enabled by using the flags below.
+
+{% /info %}
 
 | Argument | Description |
 | --- | --- |

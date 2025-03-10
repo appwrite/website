@@ -27,6 +27,10 @@
                 {
                     label: 'Cursor',
                     href: '/docs/tooling/mcp/cursor'
+                },
+                {
+                    label: 'Windsurf Editor',
+                    href: '/docs/tooling/mcp/windsurf'
                 }
             ]
         }
