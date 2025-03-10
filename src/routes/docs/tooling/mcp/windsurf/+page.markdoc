@@ -8,7 +8,7 @@ Learn how you can add the Appwrite MCP server to Windsurf Editor.
 
 {% section #step-1 step=1 title="Add MCP server" %}
 
-Open the **Windsurf Settings** page, head to the **Cascade** section, find the **Model Context Protocol (MCP) Servers** sub-section, and click on the **View raw config** button.
+Open the **Windsurf Settings** page, head to the **Cascade** tab, find the **Model Context Protocol (MCP) Servers** section, and click on the **View raw config** button.
 
 ![Add MCP server](/images/docs/mcp/windsurf/windsurf-add-mcp-server.png)
 

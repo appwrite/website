@@ -13,7 +13,9 @@ In the Claude Desktop app, open the app's **Settings** page (press `CTRL + ,` on
 
 ![Claude Settings](/images/docs/mcp/claude/claude-settings.png)
 
-Clicking on the **Edit Config** button will take you to the `claude_desktop_config.json` file, where you must add the following info:
+Clicking on the **Edit Config** button will take you to the `claude_desktop_config.json` file. In case you're a MacOS user and the file is missing, create the file in the directory `/Users/<username>/Library/Application Support/Claude/`.
+
+After opening the file, add the following info:
 
 ```json
 {
