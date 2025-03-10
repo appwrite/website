@@ -42,6 +42,7 @@
                 companyWebsite,
                 firstName,
                 lastName,
+                program: 'Enterprise',
                 message: useCase,
                 ...getReferrerAndUtmSource()
             })
