@@ -8,6 +8,7 @@
     import { integrationCategoryDescriptions } from '$lib/constants';
     import { classNames } from '$lib/utils/classnames';
     import type { Partner } from '$routes/partners/catalog/+page';
+    import ContactPartner from '$routes/partners/catalog/(components)/contact-partner.svelte';
 
     export let title: Partner['title'];
     export let isPartner: Partner['isPartner'];
@@ -66,9 +67,11 @@
                             <div class="web-article-content">
                                 <slot />
                             </div>
+                            <ContactPartner />
                         </div>
                     </div>
                     <div class="l-grid-sidebar">
+                        <h2 class="text-label text-primary font-aeonik-pro">About {title}</h2>
                         <dl
                             class="sidebar-desc flex flex-col gap-5"
                             style:top={$isHeaderHidden ? '4rem' : '9rem'}

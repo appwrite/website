@@ -37,6 +37,8 @@ export const load = () => {
         const slug = filepath.replace('./', '').replace('/+page.markdoc', '');
         const integrationName = slug.slice(slug.lastIndexOf('/') + 1);
 
+        console.log({ slug, integrationName });
+
         frontmatter.platform.map((platform) => platforms.push(platform));
         categories.push(
             categoryDescriptions.find((i) => i.slug === frontmatter.category) ??
@@ -45,7 +47,7 @@ export const load = () => {
 
         return {
             ...frontmatter,
-            href: `${base}/integrations/${integrationName}`
+            href: `${base}/partners/catalog/${integrationName}`
         };
     });
 
