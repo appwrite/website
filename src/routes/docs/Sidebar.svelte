@@ -115,7 +115,7 @@
                 {
                     label: 'MCP Server',
                     href: '/docs/tooling/mcp',
-                    icon: 'icon-sparkles'
+                    icon: 'web-icon-mcp'
                 },
                 {
                     label: 'The Appwriter',
