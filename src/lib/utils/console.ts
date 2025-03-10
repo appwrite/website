@@ -50,6 +50,7 @@ export async function isProUser() {
         const orgs = await teams.list([Query.equal('billingPlan', BillingPlan.PRO)]);
         return orgs?.teams?.length > 1;
     } catch (e) {
+        console.error(e);
         return false;
     }
 }
@@ -61,8 +62,8 @@ function isAppwriteUser(user: unknown): user is AppwriteUser {
     return typeof user === 'object' && user !== null && '$id' in user;
 }
 
-export function getAppwriteUser(): Promise<AppwriteUser | null> {
-    return account
+export async function getAppwriteUser(): Promise<AppwriteUser | null> {
+    return await account
         .get()
         .then((res) => res)
         .catch(() => null);
