@@ -21,7 +21,7 @@ Enter the name as `Appwrite`, select the `command` type, and enter the following
 APPWRITE_PROJECT_ID=your-project-id APPWRITE_API_KEY=your-api-key uvx mcp-server-appwrite
 ```
 
-To enable tools other than our Databases API, learn more about our [Command-line arguments](/docs/tooling/mcp#command-line-arguments).
+To enable tools other than our Databases API, [learn more about our Command-line arguments](/docs/tooling/mcp#command-line-arguments).
 
 {% /tabsitem %}
 
