@@ -62,7 +62,14 @@
     class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-7"
 >
     <div class="space-y-3 pt-2 px-3 pb-4">
-        <h3 class="font-aeonik-pro text-label text-primary">Functions</h3>
+        <div class="flex items-center gap-2">
+            <img
+                src="/images/icons/illustrated/dark/functions.png"
+                alt="Functions"
+                class="size-7"
+            />
+            <h3 class="font-aeonik-pro text-label text-primary">Functions</h3>
+        </div>
         <p class="text-sub-body text-primary max-w-lg font-medium">
             Deploy and scale serverless functions <span class="text-secondary"
                 >in 30+ secure, isolated runtimes in 13 languages.</span

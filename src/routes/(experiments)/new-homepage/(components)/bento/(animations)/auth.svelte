@@ -5,7 +5,10 @@
     class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-6"
 >
     <div class="space-y-3 pt-2 px-3 pb-4">
-        <h3 class="font-aeonik-pro text-label text-primary">Auth</h3>
+        <div class="flex items-center gap-2">
+            <img src="/images/icons/illustrated/dark/auth.png" alt="Auth" class="size-7" />
+            <h3 class="font-aeonik-pro text-label text-primary">Auth</h3>
+        </div>
         <p class="text-sub-body text-primary max-w-lg font-medium">
             <span class="text-secondary"
                 >Authenticate users securely with multiple login methods like</span

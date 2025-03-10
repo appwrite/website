@@ -5,7 +5,10 @@
     class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-5"
 >
     <div class="space-y-3 pt-2 px-3 pb-4">
-        <h3 class="font-aeonik-pro text-label text-primary">Storage</h3>
+        <div class="flex items-center gap-2">
+            <img src="/images/icons/illustrated/dark/storage.png" alt="Storage" class="size-7" />
+            <h3 class="font-aeonik-pro text-label text-primary">Storage</h3>
+        </div>
         <p class="text-sub-body text-primary max-w-lg font-medium">
             <span class="text-secondary">Securely store files with</span> advanced compression, encryption
             and image transformations.
