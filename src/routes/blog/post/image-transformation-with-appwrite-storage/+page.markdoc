@@ -19,13 +19,13 @@ This guide will walk you through everything you need to know about image transfo
 
 Here are some of the benefits of transforming images dynamically:
 
-1. **Optimize performance**
+1. **Optimize performance** -
 Uncompressed images can slow down your app and increase bandwidth usage. Appwrite allows you to dynamically resize and compress images, improving load times and reducing network costs.
-2. **Maintain a consistent UI**
+2. **Maintain a consistent UI** -
 By adjusting borders, border-radius, and background color, you can ensure images match your app's theme and display correctly across different screen sizes.
-3. **Improve user experience**
+3. **Improve user experience** -
 You can crop, rotate, and adjust opacity to fine-tune how images appear. This is useful for dynamic UI elements like profile pictures, cards, and galleries.
-4. **Built-in caching**
+4. **Built-in caching** -
 Appwrite caches transformed images, which reduces processing time and ensures faster repeat requests.
 
 # How image transformation works in Appwrite
@@ -297,6 +297,6 @@ Check out the [docs](/docs/storage) for more information on how to use Appwrite 
 
 # Further reading
 
-- [Building a full-stack app with Svelte and Appwrite](https://appwrite.io/blog/post/build-fullstack-svelte-appwrite)
-- [Setting up route protection in React Native](https://appwrite.io/blog/post/setting-up-route-protection-in-react-native)
-- [A technical deep dive into image classification](https://appwrite.io/blog/post/image-classification)
+- [Building a full-stack app with Svelte and Appwrite](/blog/post/build-fullstack-svelte-appwrite?doFollow=true)
+- [Setting up route protection in React Native](/blog/post/setting-up-route-protection-in-react-native?doFollow=true)
+- [A technical deep dive into image classification](/blog/post/image-classification?doFollow=true)
