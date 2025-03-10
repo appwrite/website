@@ -6,7 +6,6 @@ description: Add the MCP server to Cursor
 
 Learn how you can add the Appwrite MCP server to Cursor.
 
-
 {% section #step-1 step=1 title="Add MCP server" %}
 
 Open the **Cursor Settings** page, head to the **MCP** tab, and click on the **Add new MCP server** button.
@@ -21,6 +20,8 @@ Enter the name as `Appwrite`, select the `command` type, and enter the following
 ```sh
 APPWRITE_PROJECT_ID=your-project-id APPWRITE_API_KEY=your-api-key uvx mcp-server-appwrite
 ```
+
+To enable tools other than our Databases API, learn more about our [Command-line arguments](/docs/tooling/mcp#command-line-arguments).
 
 {% /tabsitem %}
 
