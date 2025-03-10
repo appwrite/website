@@ -28,7 +28,7 @@
 
         const cloudEmail = loggedIn && $user?.email ? $user.email : undefined;
 
-        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback/sales`, {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback/sales/enterprise`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -42,7 +42,6 @@
                 companyWebsite,
                 firstName,
                 lastName,
-                program: 'Enterprise',
                 message: useCase,
                 ...getReferrerAndUtmSource()
             })
