@@ -75,7 +75,7 @@ SET APPWRITE_API_KEY=your-api-key
 SET APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
 ```
 
-### Powershell
+### PowerShell
 
 ```powershell
 $env:APPWRITE_PROJECT_ID="your-project-id";
