@@ -12,7 +12,12 @@ Appwrite offers a [Model Context Protocol](https://modelcontextprotocol.io) (MCP
 
 Before launching the MCP server, you must [setup an Appwrite project](https://cloud.appwrite.io) and create an API key with the necessary scopes enabled.
 
+{% only_light %}
 ![Appwrite API key](/images/docs/mcp/appwrite-api-secret.png)
+{% /only_light %}
+{% only_dark %}
+![Appwrite API key](/images/docs/mcp/dark/appwrite-api-secret.png)
+{% /only_dark %}
 
 {% /info %}
 
@@ -114,7 +119,7 @@ python -m mcp_server_appwrite [args]
 
 ### Command-line arguments
 
-Both the `uv` and `pip` setup processes require certain arguments to enable various Appwrite services. Please ensure you only add the 
+Both the `uv` and `pip` setup processes require certain arguments to enable MCP tools for various Appwrite APIs. Please ensure you only enable the APIs you require as having too many MCPs tools enabled may cause you to exceed the context window of the LLM.
 
 | Argument | Description |
 | --- | --- |
