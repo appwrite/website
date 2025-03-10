@@ -293,7 +293,7 @@ With just a few lines of code, Appwrite's [image transformations](/docs/products
 
 Try replacing your next image processing task with a single API call, and you might be surprised how much time and performance you can gain.
 
-Check out the [docs](https://appwrite.io/docs/storage) for more information on how to use Appwrite Storage.
+Check out the [docs](/docs/storage) for more information on how to use Appwrite Storage.
 
 # Further reading
 
