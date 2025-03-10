@@ -33,10 +33,6 @@ Add the MCP server to Claude Desktop
 Add the MCP server to Cursor
 {% /cards_item %}
 
-{% cards_item href="/docs/tooling/mcp/windsurf" title="Windsurf" %}
-Add the MCP server to Windsurf Editor
-{% /cards_item %}
-
 {% /cards %}
 
 {% info title="Want to integrate your AI tool?" %}
@@ -127,7 +123,11 @@ python -m mcp_server_appwrite [args]
 
 ### Command-line arguments
 
-Both the `uv` and `pip` setup processes require certain arguments to enable MCP tools for various Appwrite APIs. 
+Both the `uv` and `pip` setup processes require certain arguments to enable MCP tools for various Appwrite APIs.
+
+When an MCP tool is enabled, the tool's definition is passed to the LLM, using up tokens from the model's available context window. As a result, the effective context window is reduced. 
+
+The default Appwrite MCP server ships with only the Databases tools (our most commonly used API) enabled to stay within these limits. Additional tools can be enabled by using the flags below.
 
 | Argument | Description |
 | --- | --- |
@@ -140,9 +140,3 @@ Both the `uv` and `pip` setup processes require certain arguments to enable MCP 
 | `--locale` | Enables the Locale API |
 | `--avatars` | Enables the Avatars API |
 | `--all` | Enables all Appwrite APIs |
-
-{% info title="Do not enable too many MCP tools" %}
-
-Each enabled MCP tool consumes part of the LLM's available context window. If too many tools are active, the model may have less space to focus on the primary task, leading to incomplete or less coherent responses. Therefore, please ensure you only enable the APIs you require.
-
-{% /info %}
