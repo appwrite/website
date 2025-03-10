@@ -11,7 +11,7 @@ Learn how you can add the Appwrite MCP server to Claude Desktop.
 
 In the Claude Desktop app, open the app's **Settings** page (press `CTRL + ,` on Windows or `CMD + ,` on MacOS) and head to the **Developer** tab.
 
-![Claude Settings](/images/docs/mcp/claude-settings.png)
+![Claude Settings](/images/docs/mcp/claude/claude-settings.png)
 
 Clicking on the **Edit Config** button will take you to the `claude_desktop_config.json` file, where you must add the following info:
 
@@ -39,7 +39,7 @@ Clicking on the **Edit Config** button will take you to the `claude_desktop_conf
 
 Restart the Claude Desktop app, click on the MCP tools button (at the bottom right section of the prompt input) and click on it to view available Appwrite MCP tools.
 
-![Appwrite MCP tools](/images/docs/mcp/claude-mcp-tools.png)
+![Appwrite MCP tools](/images/docs/mcp/claude/claude-mcp-tools.png)
 
 {% /section %}
 
@@ -47,6 +47,6 @@ Restart the Claude Desktop app, click on the MCP tools button (at the bottom rig
 
 Enter a prompt to list all users in your Appwrite project.
 
-![List users in Appwrite project](/images/docs/mcp/claude-list-users.png)
+![List users in Appwrite project](/images/docs/mcp/claude/claude-list-users.png)
 
 {% /section %}
