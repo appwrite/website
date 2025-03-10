@@ -709,7 +709,7 @@ val teams = Teams(client)
 
 // Get team memberships
 val response = teams.listMemberships(
-    teamId = "team_id"
+    teamId = "<TEAM_ID>"
 )
 
 // Check if user has specific role
