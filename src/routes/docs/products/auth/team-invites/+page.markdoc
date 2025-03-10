@@ -556,7 +556,7 @@ val teams = Teams(client)
 
 teams.deleteMembership(
     teamId = "<TEAM_ID>",
-    membershipId = "membership_id"
+    membershipId = "<MEMBERSHIP_ID>"
 )
 ```
 {% /multicode %}
