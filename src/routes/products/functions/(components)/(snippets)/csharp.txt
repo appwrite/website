@@ -1,0 +1,42 @@
+namespace DotNetRuntime;
+
+using Appwrite;
+using Appwrite.Services;
+using Appwrite.Models;
+
+public class Handler {
+
+    // This is your Appwrite function
+    // It"s executed each time we get a request
+    public async Task Main(RuntimeContext Context) 
+    {
+        // Why not try the Appwrite SDK?
+        //
+        // Set project and set API key
+        // var client = new Client()
+        //     .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID")) 
+        //     .SetKey(Context.Req.Headers["x-appwrite-key"]);
+
+        // You can log messages to the console
+        Context.Log("Hello, Logs!");
+
+        // If something goes wrong, log an error
+        Context.Error("Hello, Errors!");
+
+        // The 'Context.Req' object contains the request data
+        if (Context.Req.Method == "GET") {
+            // Send a response with the res object helpers
+            // 'Context.Res.Text()' dispatches a string back to the client
+            return Context.Res.Text("Hello, World!");
+        }
+
+        // 'Context.Res.Json()' is a handy helper for sending JSON
+        return Context.Res.Json(new Dictionary()
+        {
+            { "motto", "Build like a team of hundreds_" },
+            { "learn", "https://appwrite.io/docs" },
+            { "connect", "https://appwrite.io/discord" },
+            { "getInspired", "https://builtwith.appwrite.io" },
+        });
+    }
+}
