@@ -113,7 +113,7 @@
                     icon: 'icon-sparkles'
                 },
                 {
-                    label: 'MCP',
+                    label: 'MCP Server',
                     href: '/docs/tooling/mcp',
                     icon: 'icon-sparkles'
                 },
