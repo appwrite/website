@@ -158,10 +158,10 @@
                 </table>
             </div>
         </div>
-        <div class="relative">
+        <div class="mt-0 mb-auto h-full w-full flex-1">
             {#each Array.from({ length: 3 }) as _, i}
                 <div
-                    class="border-smooth absolute flex aspect-[4/2] min-w-[275px] flex-col rounded-2xl border bg-[#232325]/90 shadow-[4px_8px_20px_rgba(0,0,0,0.2)] backdrop-blur-md"
+                    class="border-smooth absolute right-20 bottom-16 flex aspect-[4/2] min-w-[275px] flex-col rounded-2xl border bg-[#232325]/90 shadow-[4px_8px_20px_rgba(0,0,0,0.2)] backdrop-blur-md"
                     style:transform={`translateY(${i * 15}px) translateX(${i * 25}px)`}
                     style:opacity={1 - i * 0.01}
                     style:z-index={-i}
