@@ -6,6 +6,12 @@ description: Add the MCP server to Cursor
 
 Learn how you can add the Appwrite MCP server to Cursor.
 
+{% info title="Pre-requisite: Install uv" %}
+
+You must install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your system to use the MCP server.
+
+{% /info %}
+
 {% section #step-1 step=1 title="Add MCP server" %}
 
 Open the **Cursor Settings** page, head to the **MCP** tab, and click on the **Add new MCP server** button.
