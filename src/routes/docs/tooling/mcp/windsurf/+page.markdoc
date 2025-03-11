@@ -6,6 +6,12 @@ description: Add the MCP server to Windsurf Editor
 
 Learn how you can add the Appwrite MCP server to Windsurf Editor.
 
+{% info title="Pre-requisite: Install uv" %}
+
+You must install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your system to use the MCP server.
+
+{% /info %}
+
 {% section #step-1 step=1 title="Add MCP server" %}
 
 Open the **Windsurf Settings** page, head to the **Cascade** tab, find the **Model Context Protocol (MCP) Servers** section, and click on the **View raw config** button.
