@@ -51,6 +51,12 @@ Restart the Claude Desktop app, click on the MCP tools button (at the bottom rig
 
 ![Appwrite MCP tools](/images/docs/mcp/claude/claude-mcp-tools.png)
 
+{% info title="uvx ENOENT error" %}
+
+In case you see a `uvx ENOENT` error, ensure that you either add `uvx` to the `PATH` environment variable on your system or use the full path to your `uvx` installation in the config file.
+
+{% /info %}
+
 {% /section %}
 
 {% section #step-3 step=3 title="Test the integration" %}
