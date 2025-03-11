@@ -68,6 +68,21 @@
     onMount(() => {
         preferredPlatform.set(platform);
         preferredVersion.set($page.params.version as Version);
+
+        const isSame = $preferredPlatform === $page.params.platform;
+        const hasPlatformPrefix =
+            $preferredPlatform.startsWith('client-') || $preferredPlatform.startsWith('server-');
+
+        if (!isSame) {
+            const platformMode = hasPlatformPrefix
+                ? $preferredPlatform
+                : `server-${$preferredPlatform}`;
+
+            goto(`/docs/references/${$preferredVersion}/${platformMode}/${$page.params.service}`, {
+                noScroll: true,
+                replaceState: false
+            });
+        }
     });
 
     // cleaned service description without Markdown links.
