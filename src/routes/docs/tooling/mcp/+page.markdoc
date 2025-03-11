@@ -11,10 +11,10 @@ Appwrite offers a [Model Context Protocol](https://modelcontextprotocol.io) (MCP
 Before launching the MCP server, you must [setup an Appwrite project](https://cloud.appwrite.io) and create an API key with the necessary scopes enabled.
 
 {% only_light %}
-![Appwrite API key](/images/docs/mcp/appwrite-api-secret.png)
+![Appwrite API key](/images/docs/mcp/appwrite/appwrite-api-secret.png)
 {% /only_light %}
 {% only_dark %}
-![Appwrite API key](/images/docs/mcp/dark/appwrite-api-secret.png)
+![Appwrite API key](/images/docs/mcp/appwrite/dark/appwrite-api-secret.png)
 {% /only_dark %}
 
 ## Integrate with popular AI tools
