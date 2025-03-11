@@ -23,7 +23,7 @@
         "optimize": "node ./scripts/optimize-assets.js",
         "optimize:all": "node ./scripts/optimize-all.js"
     },
-    "packageManager": "pnpm@10.5.2",
+    "packageManager": "pnpm@10.6.2",
     "dependencies": {
         "@number-flow/svelte": "^0.3.3",
         "@sentry/sveltekit": "^8.51.0",
