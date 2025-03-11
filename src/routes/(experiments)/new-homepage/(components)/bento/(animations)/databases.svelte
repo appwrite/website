@@ -1,14 +1,40 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
 
-    const collection = [
+    const collections = [
         {
-            category: '',
-            department: '',
-            barcode: '',
-            id: 0
+            Category: 'Sweaters',
+            Department: 'Sweaters',
+            barcode: 'Sweaters',
+            ID: '3397fecdedb1'
+        },
+        {
+            Category: 'Pants',
+            Department: 'Pants',
+            barcode: 'Pants',
+            ID: '2224gabjger4'
+        },
+        {
+            Category: 'T-shirts',
+            Department: 'T-shirts',
+            barcode: 'T-shirts',
+            ID: '5689fdoerre2'
+        },
+        {
+            Category: 'Shoes',
+            Department: 'Shoes',
+            barcode: 'Shoes',
+            ID: '5689fdoerre2'
+        },
+        {
+            Category: 'Accessories',
+            Department: 'Accessories',
+            barcode: 'Accessories',
+            ID: '5689fdoerre2'
         }
     ];
+
+    const [collectionKeys] = collections.map((collection) => Object.keys(collection));
 
     const products = [
         {
@@ -28,9 +54,7 @@
         }
     ];
 
-    const [productHeadings] = products.map((product) => Object.keys(product));
-
-    //         style:transform={`translateY(-${i * 10}px) translateX(-${i * 10}px)`}
+    const [productKeys] = products.map((product) => Object.keys(product));
 </script>
 
 <div
@@ -51,64 +75,153 @@
             >
         </p>
     </div>
-    <div
-        class="flex h-[26.25rem] items-center justify-between overflow-clip rounded-xl bg-black/24 px-8"
-    >
-        <div class="relative">
-            <div
-                class="border-smooth absolute flex aspect-[3/2] min-w-[260px] flex-col rounded-2xl border bg-[#232325]/90 shadow-[4px_8px_20px_rgba(0,0,0,0.2)] backdrop-blur-md"
-            >
-                <h3 class="text-caption text-primary py-1 px-2.5">Sweaters</h3>
-                <div class="border-smooth mx-1 mt-auto mb-1 flex-1 rounded-xl border">
-                    <table class="table w-full p-2.5">
-                        <thead>
-                            <tr
-                                class="bg-greyscale-900 border-smooth text-primary text-micro w-full border-b font-normal"
-                            >
-                                {#each productHeadings as heading}
-                                    <th
-                                        class="p-2 text-left first-of-type:rounded-tl-xl last-of-type:rounded-tr-xl"
+    <div class="relative flex flex-1 flex-col overflow-hidden rounded-xl bg-black/24 px-8">
+        <div
+            class="border-smooth mask absolute -z-3 mt-12 flex aspect-[4/2] w-full flex-col rounded-2xl border bg-[#232325]/90 shadow-[4px_8px_20px_rgba(0,0,0,0.2)] backdrop-blur-md"
+            style:--mask-height="100px"
+        >
+            <h3 class="text-caption text-primary py-2 px-3">Products</h3>
+            <div class="border-smooth mx-1 mt-auto mb-1 flex-1 rounded-xl border">
+                <table class="table w-full p-2.5">
+                    <thead>
+                        <tr
+                            class="bg-greyscale-900 border-smooth text-primary text-micro w-full border-b font-normal"
+                        >
+                            {#each collectionKeys as heading}
+                                <th
+                                    class="p-2 text-left first-of-type:rounded-tl-xl last-of-type:rounded-tr-xl"
+                                >
+                                    <span class="inline">{heading}</span>
+                                    <svg
+                                        width="16"
+                                        height="17"
+                                        viewBox="0 0 16 17"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="inline h-[1lh]"
                                     >
-                                        <span class="inline">{heading}</span>
-                                        <svg
-                                            width="16"
-                                            height="17"
-                                            viewBox="0 0 16 17"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="inline h-[1lh]"
-                                        >
-                                            <path
-                                                fill-rule="evenodd"
-                                                clip-rule="evenodd"
-                                                d="M8.00005 2.8999C8.21222 2.8999 8.41571 2.98419 8.56573 3.13422L10.9657 5.53422C11.2782 5.84664 11.2782 6.35317 10.9657 6.66559C10.6533 6.97801 10.1468 6.97801 9.83436 6.66559L8.00005 4.83127L6.16573 6.66559C5.85331 6.97801 5.34678 6.97801 5.03436 6.66559C4.72194 6.35317 4.72194 5.84664 5.03436 5.53422L7.43436 3.13422C7.58439 2.98419 7.78788 2.8999 8.00005 2.8999ZM5.03436 10.3342C5.34678 10.0218 5.85331 10.0218 6.16573 10.3342L8.00005 12.1685L9.83436 10.3342C10.1468 10.0218 10.6533 10.0218 10.9657 10.3342C11.2782 10.6466 11.2782 11.1532 10.9657 11.4656L8.56573 13.8656C8.25331 14.178 7.74678 14.178 7.43436 13.8656L5.03436 11.4656C4.72194 11.1532 4.72194 10.6466 5.03436 10.3342Z"
-                                                fill="#6C6C71"
-                                            />
-                                        </svg>
-                                    </th>
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M8.00005 2.8999C8.21222 2.8999 8.41571 2.98419 8.56573 3.13422L10.9657 5.53422C11.2782 5.84664 11.2782 6.35317 10.9657 6.66559C10.6533 6.97801 10.1468 6.97801 9.83436 6.66559L8.00005 4.83127L6.16573 6.66559C5.85331 6.97801 5.34678 6.97801 5.03436 6.66559C4.72194 6.35317 4.72194 5.84664 5.03436 5.53422L7.43436 3.13422C7.58439 2.98419 7.78788 2.8999 8.00005 2.8999ZM5.03436 10.3342C5.34678 10.0218 5.85331 10.0218 6.16573 10.3342L8.00005 12.1685L9.83436 10.3342C10.1468 10.0218 10.6533 10.0218 10.9657 10.3342C11.2782 10.6466 11.2782 11.1532 10.9657 11.4656L8.56573 13.8656C8.25331 14.178 7.74678 14.178 7.43436 13.8656L5.03436 11.4656C4.72194 11.1532 4.72194 10.6466 5.03436 10.3342Z"
+                                            fill="#6C6C71"
+                                        />
+                                    </svg>
+                                </th>
+                            {/each}
+                        </tr>
+                    </thead>
+                    <tbody class="text-micro divide-smooth divide-y">
+                        {#each collections as collection, c}
+                            <tr class="bg-[#1D1D21]">
+                                {#each Object.values(collection) as item, i}
+                                    {@const isLastProduct = c === products.length - 1}
+                                    {@const isLastItem = i === Object.values(collection).length - 1}
+                                    <td
+                                        class={classNames('text-primary p-2.5 text-left', {
+                                            'rounded-bl-xl': isLastProduct && i === 0,
+                                            'rounded-br-xl': isLastProduct && isLastItem
+                                        })}
+                                    >
+                                        {#if isLastItem}
+                                            <span
+                                                class="text-secondary border-smooth bg-greyscale-900 rounded-md border p-1.5"
+                                            >
+                                                <svg
+                                                    width="17"
+                                                    height="17"
+                                                    viewBox="0 0 17 17"
+                                                    fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    class="inline"
+                                                >
+                                                    <path
+                                                        d="M5.84978 7.6999C5.84978 6.81625 6.56613 6.0999 7.44978 6.0999H12.2498C13.1334 6.0999 13.8498 6.81625 13.8498 7.6999V12.4999C13.8498 13.3836 13.1334 14.0999 12.2498 14.0999H7.44978C6.56613 14.0999 5.84978 13.3836 5.84978 12.4999V7.6999Z"
+                                                        fill="#C3C3C6"
+                                                    />
+                                                    <path
+                                                        d="M4.24978 2.8999C3.36612 2.8999 2.64978 3.61625 2.64978 4.4999V9.2999C2.64978 10.1836 3.36612 10.8999 4.24978 10.8999L4.24978 4.4999H10.6498C10.6498 3.61625 9.93344 2.8999 9.04978 2.8999H4.24978Z"
+                                                        fill="#C3C3C6"
+                                                    />
+                                                </svg>
+
+                                                ...{item}</span
+                                            >
+                                        {:else}
+                                            {item}
+                                        {/if}</td
+                                    >
                                 {/each}
                             </tr>
-                        </thead>
-                        <tbody class="text-micro divide-smooth divide-y">
-                            {#each products as product, p}
-                                <tr class="bg-[#1D1D21]">
-                                    {#each Object.values(product) as item, i}
-                                        <td
-                                            class={classNames('text-primary p-2.5 text-left', {
-                                                'rounded-bl-xl':
-                                                    p === products.length - 1 && i === 0,
-                                                'rounded-br-xl':
-                                                    p === products.length - 1 &&
-                                                    i === Object.values(product).length - 1
-                                            })}>{item}</td
-                                        >
-                                    {/each}
-                                </tr>
-                            {/each}
-                        </tbody>
-                    </table>
-                </div>
+                        {/each}
+                    </tbody>
+                </table>
             </div>
         </div>
+        <div class="relative">
+            {#each Array.from({ length: 3 }) as _, i}
+                <div
+                    class="border-smooth absolute flex aspect-[4/2] min-w-[275px] flex-col rounded-2xl border bg-[#232325]/90 shadow-[4px_8px_20px_rgba(0,0,0,0.2)] backdrop-blur-md"
+                    style:transform={`translateY(${i * 15}px) translateX(${i * 25}px)`}
+                    style:opacity={1 - i * 0.01}
+                    style:z-index={-i}
+                >
+                    <h3 class="text-caption text-primary py-2 px-3">Sweaters</h3>
+                    <div class="border-smooth mx-1 mt-auto mb-1 flex-1 rounded-xl border">
+                        <table class="table w-full p-2.5">
+                            <thead>
+                                <tr
+                                    class="bg-greyscale-900 border-smooth text-primary text-micro w-full border-b font-normal"
+                                >
+                                    {#each productKeys as heading}
+                                        <th
+                                            class="p-2 text-left first-of-type:rounded-tl-xl last-of-type:rounded-tr-xl"
+                                        >
+                                            <span class="inline">{heading}</span>
+                                            <svg
+                                                width="16"
+                                                height="17"
+                                                viewBox="0 0 16 17"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="inline h-[1lh]"
+                                            >
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    clip-rule="evenodd"
+                                                    d="M8.00005 2.8999C8.21222 2.8999 8.41571 2.98419 8.56573 3.13422L10.9657 5.53422C11.2782 5.84664 11.2782 6.35317 10.9657 6.66559C10.6533 6.97801 10.1468 6.97801 9.83436 6.66559L8.00005 4.83127L6.16573 6.66559C5.85331 6.97801 5.34678 6.97801 5.03436 6.66559C4.72194 6.35317 4.72194 5.84664 5.03436 5.53422L7.43436 3.13422C7.58439 2.98419 7.78788 2.8999 8.00005 2.8999ZM5.03436 10.3342C5.34678 10.0218 5.85331 10.0218 6.16573 10.3342L8.00005 12.1685L9.83436 10.3342C10.1468 10.0218 10.6533 10.0218 10.9657 10.3342C11.2782 10.6466 11.2782 11.1532 10.9657 11.4656L8.56573 13.8656C8.25331 14.178 7.74678 14.178 7.43436 13.8656L5.03436 11.4656C4.72194 11.1532 4.72194 10.6466 5.03436 10.3342Z"
+                                                    fill="#6C6C71"
+                                                />
+                                            </svg>
+                                        </th>
+                                    {/each}
+                                </tr>
+                            </thead>
+                            <tbody class="text-micro divide-smooth divide-y">
+                                {#each products as product, p}
+                                    <tr class="bg-[#1D1D21]">
+                                        {#each Object.values(product) as item, i}
+                                            {@const isLastProduct = p === products.length - 1}
+                                            {@const isLastItem =
+                                                i === Object.values(product).length - 1}
+                                            <td
+                                                class={classNames('text-primary p-2.5 text-left', {
+                                                    'rounded-bl-xl': isLastProduct && i === 0,
+                                                    'rounded-br-xl': isLastProduct && isLastItem
+                                                })}>{item}</td
+                                            >
+                                        {/each}
+                                    </tr>
+                                {/each}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {/each}
+        </div>
+
+        <div
+            class="absolute inset-0 -z-10 h-full w-full bg-transparent bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:60px_60px]"
+        />
     </div>
 </div>
