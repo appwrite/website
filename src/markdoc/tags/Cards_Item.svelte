@@ -4,6 +4,7 @@
     export let href: string;
     export let icon = '';
     export let image = '';
+    export let dark = '';
     export let title: string;
 
     setContext('no-paragraph', true);
@@ -16,7 +17,16 @@
                 <span class="{icon} web-u-font-size-24" aria-hidden="true" />
             {/if}
             {#if image}
-                <img src={image} alt={title} />
+                {#if dark}
+                    <span class="web-u-only-light">
+                        <img src={image} alt={title} />
+                    </span>
+                    <span class="web-u-only-dark">
+                        <img src={dark} alt={title} />
+                    </span>
+                {:else}
+                    <img src={image} alt={title} />
+                {/if}
             {/if}
             <h4 class="text-sub-body text-primary font-medium">
                 {title}
