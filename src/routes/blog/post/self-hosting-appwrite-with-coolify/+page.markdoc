@@ -43,7 +43,9 @@ This blog will focus on droplets from the DigitalOcean, but the same steps shoul
 7. Enable backups for production environments *(optional but recommended)*.
 8. Add your SSH key for secure access:
 
-### Adding SSH Key
+**Adding SSH Key**
+
+SSH stands for **Secure Shell**. It is a protocol that allows you to securely access your server without using a password. It is more secure than passwords and easier to manage.
 
 **a.** Select an existing key if you've previously added one.
 
@@ -119,7 +121,7 @@ After deployment, access your Appwrite instance's console by clicking the consol
 
 # Troubleshooting common Issues
 
-## `ERR_TOO_MANY_REDIRECTS` Issue
+## Too many redirects
 
 While accessing the console, you might run into the error `ERR_TOO_MANY_REDIRECTS` *(Site redirected you too many times)*. There can be a couple of issues here:
 
