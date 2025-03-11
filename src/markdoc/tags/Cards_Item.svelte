@@ -11,7 +11,7 @@
 
 <li>
     <a {href} class="web-card is-normal" style:margin-block-end="0">
-        <header class="flex items-baseline gap-1">
+        <header class="flex items-center gap-1">
             {#if icon}
                 <span class="{icon} web-u-font-size-24" aria-hidden="true" />
             {/if}
