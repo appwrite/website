@@ -3,6 +3,7 @@
 
     export let href: string;
     export let icon = '';
+    export let image = '';
     export let title: string;
 
     setContext('no-paragraph', true);
@@ -14,6 +15,9 @@
             {#if icon}
                 <span class="{icon} web-u-font-size-24" aria-hidden="true" />
             {/if}
+            {#if image}
+                <img src={image} alt={title} />
+            {/if}
             <h4 class="text-sub-body text-primary font-medium">
                 {title}
             </h4>
@@ -23,3 +27,11 @@
         </p>
     </a>
 </li>
+
+<style>
+    img {
+        width: 24px;
+        object-fit: contain;
+        object-position: center;
+    }
+</style>
