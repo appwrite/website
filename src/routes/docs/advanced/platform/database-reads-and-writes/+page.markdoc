@@ -4,7 +4,7 @@ title: Database Reads and Writes
 description: Learn how Appwrite handles database reads and writes and their associated costs.
 ---
 {% info title="Note" %} 
-Updated pricing will take effect on April 15th, 2025. Check out this [blog post](/blog/post/announcing-database-operations-pricing) for more information.
+Updated pricing will take effect on April 10th, 2025. Check out this [blog post](/blog/post/announcing-database-operations-pricing) for more information.
 {% /info %}
 
 Appwrite provides powerful database capabilities through its [database API](/docs/products/databases), allowing you to perform read and write operations across your application data. Understanding how these operations are counted and billed is essential for planning your application's scalability.
