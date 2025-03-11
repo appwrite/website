@@ -23,16 +23,22 @@ You can integrate the MCP server with various popular AI-enabled code editors an
 
 {% cards %}
 
-{% cards_item href="/docs/tooling/mcp/claude" title="Claude Desktop" image="/images/docs/mcp/logos/claude.svg" %}
+{% cards_item href="/docs/tooling/mcp/claude" title="Claude Desktop" icon="web-icon-claude" %}
 Add the MCP server to Claude Desktop
 {% /cards_item %}
 
+{% only_light %}
 {% cards_item href="/docs/tooling/mcp/cursor" title="Cursor" image="/images/docs/mcp/logos/cursor-ai.svg" %}
 Add the MCP server to Cursor
 {% /cards_item %}
+{% /only_light %}
+{% only_dark %}
+{% cards_item href="/docs/tooling/mcp/cursor" title="Cursor" image="/images/docs/mcp/logos/dark/cursor-ai.svg" %}
+Add the MCP server to Cursor
+{% /cards_item %}
+{% /only_dark %}
 
-
-{% cards_item href="/docs/tooling/mcp/windsurf" title="Windsurf Editor" image="/images/docs/mcp/logos/windsurf.svg" %}
+{% cards_item href="/docs/tooling/mcp/windsurf" title="Windsurf Editor" icon="web-icon-windsurf" %}
 Add the MCP server to Windsurf Editor
 {% /cards_item %}
 
