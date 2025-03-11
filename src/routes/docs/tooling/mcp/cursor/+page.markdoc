@@ -18,7 +18,7 @@ Enter the name as `Appwrite`, select the `command` type, and enter the following
 {% tabsitem #linux-macos title="MacOS" %}
 
 ```sh
-APPWRITE_PROJECT_ID=your-project-id APPWRITE_API_KEY=your-api-key uvx mcp-server-appwrite --users
+APPWRITE_PROJECT_ID=your-project-id APPWRITE_API_KEY=your-api-key uvx mcp-server-appwrite --databases --users
 ```
 
 
@@ -27,7 +27,7 @@ APPWRITE_PROJECT_ID=your-project-id APPWRITE_API_KEY=your-api-key uvx mcp-server
 {% tabsitem #windows title="Windows" %}
 
 ```cmd
-cmd /c SET APPWRITE_PROJECT_ID=your-project-id && SET APPWRITE_API_KEY=your-api-key && uvx mcp-server-appwrite --users
+cmd /c SET APPWRITE_PROJECT_ID=your-project-id && SET APPWRITE_API_KEY=your-api-key && uvx mcp-server-appwrite --databases --users
 ```
 
 {% /tabsitem %}
@@ -37,7 +37,7 @@ Once you save the details, Cursor will connect with the MCP server and load all 
 
 {% info title="Enable other MCP tools" %}
 
-To enable tools other than our Users API, [learn more about our Command-line arguments](/docs/tooling/mcp#command-line-arguments).
+To enable tools other than our Databases or Users API, [learn more about our Command-line arguments](/docs/tooling/mcp#command-line-arguments).
 
 {% /info %}
 
