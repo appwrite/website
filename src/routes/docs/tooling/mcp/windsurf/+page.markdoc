@@ -21,7 +21,8 @@ Update the `mcp_config.json` file to include the following:
       "command": "uvx",
       "args": [
         "mcp-server-appwrite",
-        "--databases"
+        "--databases",
+        "--users"
       ],
       "env": {
         "APPWRITE_PROJECT_ID": "your-project-id",
@@ -37,7 +38,7 @@ Once you save the details, head back to the MCP Servers section in the Windsurf 
 
 {% info title="Enable other MCP tools" %}
 
-To enable tools other than our Databases API, [learn more about our Command-line arguments](/docs/tooling/mcp#command-line-arguments).
+To enable tools other than our Databases or Users API, [learn more about our Command-line arguments](/docs/tooling/mcp#command-line-arguments).
 
 {% /info %}
 
