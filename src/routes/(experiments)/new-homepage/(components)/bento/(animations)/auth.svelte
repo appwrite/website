@@ -77,7 +77,7 @@
             </div>
             <div
                 class="mask border-smooth mt-20 flex h-full w-full flex-col rounded-t-[40px] border-t border-x bg-[#232325]/90"
-                style:--mask-height="150px"
+                style:--mask-height="350px"
             >
                 <div class="mx-2 mt-2 flex-1 rounded-t-4xl bg-[#19191C] pt-4 px-3">
                     <form class="mt-8 flex flex-col gap-3">

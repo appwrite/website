@@ -29,17 +29,29 @@
             <div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-black">
                 <div class="size-4 rounded-full bg-white" />
             </div>
-            <div class="text-micro flex flex-col">
+            <div class="text-micro flex flex-col gap-1">
                 <h2 class="text-primary font-medium">New security measures implemented</h2>
-                <p>Check out our latest security updates to protect your account!</p>
+                <p class="text-secondary">
+                    Check out our latest security updates to protect your account!
+                </p>
             </div>
             <span class="text-micro block self-start">now</span>
         </div>
         <div
-            class="mask border-smooth mt-20 flex h-full w-[300px] flex-col rounded-t-[40px] border-t border-x bg-white/8 backdrop-blur-2xl"
+            class="light mask border-smooth mt-20 flex h-full w-[300px] flex-col rounded-t-[40px] border-t border-x bg-white/8 backdrop-blur-2xl"
             style:--mask-height="250px"
         >
-            <div class="mx-2 mt-2 flex-1 rounded-t-4xl bg-white pt-4 px-3"></div>
+            <div class="text-micro mx-2 mt-2 flex-1 rounded-t-4xl bg-white pt-4 px-3">
+                <p class="text-secondary mt-20 px-2">
+                    Hey,
+                    <br /><br />
+                    We have recently implemented new security measures to strengthen the protection of
+                    your account. These measures are designed to enhance the security of your personal
+                    information and ensure a safer experience.<br /><br />Learn more about these
+                    changes and how they may affect you in our
+                    <span class="underline">documentation</span>. Best regards, Appwrite team
+                </p>
+            </div>
         </div>
         <div
             class="absolute inset-0 -z-10 h-full w-full bg-transparent bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:60px_60px]"
