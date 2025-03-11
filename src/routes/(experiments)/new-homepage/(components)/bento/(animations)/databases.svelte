@@ -78,7 +78,7 @@
     <div class="relative flex flex-1 flex-col overflow-hidden rounded-xl bg-black/24 px-8">
         <div
             class="border-smooth mask absolute -z-3 mt-12 flex aspect-[4/2] w-full flex-col rounded-2xl border bg-[#232325]/90 shadow-[4px_8px_20px_rgba(0,0,0,0.2)] backdrop-blur-md"
-            style:--mask-height="100px"
+            style:--mask-height="200px"
         >
             <h3 class="text-caption text-primary py-2 px-3">Products</h3>
             <div class="border-smooth mx-1 mt-auto mb-1 flex-1 rounded-xl border">

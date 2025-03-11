@@ -97,21 +97,6 @@
                     </div>
                 {/each}
             </div>
-            <div class="animate-vertical-marquee flex flex-col items-center gap-3">
-                {#each commands as command}
-                    <div
-                        class="text-caption relative w-fit overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
-                        style:--spread="{command.length * 2.25}px"
-                        aria-hidden="true"
-                    >
-                        <div
-                            class="h-full w-full rounded-2xl bg-[#232325]/90 py-1 px-3 text-white/80"
-                        >
-                            {command}
-                        </div>
-                    </div>
-                {/each}
-            </div>
         </div>
         <div
             class="relative flex h-full gap-4 [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
