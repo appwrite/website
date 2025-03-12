@@ -64,17 +64,23 @@ You can also setup the MCP server on your system to integrate with any apps you'
 
 ### Configure environment variables
 
-Open the terminal in your working directory and run the following command:
+First, create a `.env` file in your working directory and add the following:
+
+```env
+APPWRITE_PROJECT_ID=your-project-id
+APPWRITE_API_KEY=your-api-key
+APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+```
+
+Then, open your terminal in the same directory and run the following command:
 
 {% tabs %}
 {% tabsitem #pre-requisites-linux-macos title="Linux and MacOS" %}
 
 ### Bash
 
-```sh
-export APPWRITE_PROJECT_ID=your-project-id
-export APPWRITE_API_KEY=your-api-key
-export APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+```bash
+source .env
 ```
 
 {% /tabsitem %}
@@ -84,17 +90,17 @@ export APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
 ### Command Prompt
 
 ```cmd
-SET APPWRITE_PROJECT_ID=your-project-id
-SET APPWRITE_API_KEY=your-api-key
-SET APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+for /f "tokens=1,2 delims==" %A in (.env) do set %A=%B
 ```
 
 ### PowerShell
 
 ```powershell
-$env:APPWRITE_PROJECT_ID="your-project-id";
-$env:APPWRITE_API_KEY="your-api-key";
-$env:APPWRITE_ENDPOINT="https://cloud.appwrite.io/v1";
+Get-Content .\.env | ForEach-Object {
+    if ($_ -match '^(.*?)=(.*)$') {
+        [System.Environment]::SetEnvironmentVariable($matches[1], $matches[2], "Process")
+    }
+}
 ```
 
 {% /tabsitem %}
