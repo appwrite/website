@@ -2,7 +2,7 @@
 layout: post
 title: What exactly is MCP, and why is it trending?
 description: Appwrite introduces its own Model Context Protocol (MCP). Learn what it is and why it's becoming a popular solution for AI assistants to interact with real-world tools, and how to install Appwrite's new MCP server.
-date: 2025-03-11
+date: 2025-03-12
 cover: /images/blog/what-is-mcp/cover.png
 timeToRead: 7
 author: ebenezer-don
