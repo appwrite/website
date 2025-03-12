@@ -11,8 +11,8 @@
         preferredPlatform,
         preferredVersion,
         serviceMap,
-        versions,
-        type Version
+        type Version,
+        versions
     } from '$lib/utils/references';
     import type { LayoutContext } from '$markdoc/layouts/Article.svelte';
     import { Fence, Heading } from '$markdoc/nodes/_Module.svelte';
@@ -50,7 +50,15 @@
     function selectPlatform(event: CustomEvent<unknown>) {
         const { version, service } = $page.params;
         const platform = event.detail as Platform;
-        preferredPlatform.set(platform);
+
+        // except nodejs, all other server sided need to be saved as without `server-` prefix
+        const isServerSide =
+            !platform.startsWith('client-') && !platform.startsWith('server-nodejs');
+        if (isServerSide) {
+            const correctPlatform = platform.replaceAll(`server-`, ``);
+            preferredPlatform.set(correctPlatform as Platform);
+        }
+
         goto(`/docs/references/${version}/${platform}/${service}`, {
             noScroll: true
         });
@@ -63,6 +71,25 @@
         goto(`/docs/references/${version}/${platform}/${service}`, {
             noScroll: true
         });
+    }
+
+    /**
+     * Ensures consistency between documentation and the references page
+     * by correctly handling server-side language prefixes.
+     *
+     * In normal code blocks, server-side languages are named without
+     * a `server-` prefix, unlike client languages, which use `client-`.
+     *
+     * However, the references page follows a `client-` / `server-` prefix
+     * convention. This function standardizes the naming to maintain consistency.
+     */
+    function handleServerSideLanguage() {
+        // nodejs has a `server-` prefix.
+        const isServerSideLanguage =
+            !platform.startsWith('client-') && !platform.startsWith('server-');
+        if (isServerSideLanguage) {
+            platformBindingForSelect = `server-${platform}` as Platform;
+        }
     }
 
     onMount(() => {
@@ -83,6 +110,8 @@
                 replaceState: false
             });
         }
+
+        handleServerSideLanguage();
     });
 
     // cleaned service description without Markdown links.
@@ -94,6 +123,7 @@
     // the service description up to the first full stop, providing sufficient information.
     $: shortenedDescription = serviceDescription.substring(0, serviceDescription.indexOf('.') + 1);
 
+    $: platformBindingForSelect = platform;
     $: platform = ($preferredPlatform ?? $page.params.platform) as Platform;
     $: platformType = platform.startsWith('client-') ? 'CLIENT' : 'SERVER';
     $: serviceName = serviceMap[data.service?.name];
@@ -140,7 +170,7 @@
                         <Select
                             --min-width="10rem"
                             id="platform"
-                            value={platform}
+                            value={platformBindingForSelect}
                             on:change={selectPlatform}
                             options={[
                                 ...Object.values(Platform)
