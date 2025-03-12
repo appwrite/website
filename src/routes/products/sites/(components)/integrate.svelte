@@ -42,7 +42,7 @@
             <div class="text-body flex flex-col items-end gap-8 font-medium text-white">
                 {#each products.slice(0, 3) as product}
                     <div
-                        class="bg-card border-smooth flex items-center gap-2 rounded-xl border py-2 pr-4 pl-2"
+                        class="bg-card border-smooth pointer-events-none flex items-center gap-2 rounded-xl border py-2 pr-4 pl-2"
                     >
                         <img src={product.icon} alt={product.label} class="h-6 w-6" />
                         {product.label}
@@ -78,7 +78,7 @@
             <div class="text-body flex flex-col items-start gap-8 font-medium text-white">
                 {#each products.slice(3) as product}
                     <div
-                        class="bg-card border-smooth flex items-center gap-2 rounded-xl border py-2 pr-4 pl-2"
+                        class="bg-card border-smooth pointer-events-none flex items-center gap-2 rounded-xl border py-2 pr-4 pl-2"
                     >
                         <img src={product.icon} alt={product.label} class="h-6 w-6" />
                         {product.label}
