@@ -62,8 +62,7 @@ Without MCP:
 
 With MCP:
 
-1. The AI assistant sends a **request** to an MCP server:
-    > “Get the latest 10 users from the database.”
+1. The AI assistant sends a request like *“Get the latest 10 users from the database”* to the MCP server.
 2. The **MCP server** translates that into an actual database query and fetches the result.
 3. The **MCP server** sends the data back to the AI assistant in a structured way.
 4. The AI assistant now “knows” the latest user signups and can use that data to answer you.
