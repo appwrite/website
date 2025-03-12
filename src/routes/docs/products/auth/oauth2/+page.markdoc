@@ -8,6 +8,10 @@ OAuth authentication allows users to log in using accounts from other popular se
 
 When using OAuth to authenticate, the authentication request is initiated from the client application. The user is then redirected to an OAuth 2 provider to complete the authentication step, and finally, the user is redirected back to the client application.
 
+{% info title="Identities and OAuth2" %}
+OAuth2 login creates an **identity** in Appwrite, allowing users to connect multiple providers to a single account. Learn more in [Identities](/docs/products/auth/identities).
+{% /info %}
+
 # Configure OAuth 2 login {% #configure %}
 
 Before using OAuth 2 login, you need to enable and configure an OAuth 2 login provider.
