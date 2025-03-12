@@ -12,15 +12,19 @@
 </script>
 
 <td class="py-[0.5625rem] px-3 text-sm leading-[1.375rem]" {align} {colspan} {rowspan}>
-    {#if $isCodeInsideTd}
-        <div
-            class:flex={$isCodeInsideTd}
-            class:gap-1={$isCodeInsideTd}
-            class:items-center={$isCodeInsideTd}
-        >
-            <slot />
-        </div>
-    {:else}
+    <div class:center-align={isCodeInsideTd}>
         <slot />
-    {/if}
+    </div>
 </td>
+
+<style lang="scss">
+    .center-align {
+        display: inline;
+
+        & :global(.web-inline-code) {
+            display: unset;
+            vertical-align: top;
+            line-height: inherit;
+        }
+    }
+</style>
