@@ -71,7 +71,7 @@ Another approach is to use Appwrite's OAuth2 token-based authentication, which b
 
 For a detailed implementation guide, check out this article on [Fixing OAuth2 authentication issues in Appwrite Cloud](https://appwrite.io/blog/post/fixing-oauth2-issues-in-appwrite-cloud?doFollow=true), which covers this approach in detail.
 
-Keep in mind that non-public files still require session cookies, so stick with Option 1 if your app needs to handle such files.
+Keep in mind that non-public files still require session cookies. If your app needs to handle such files, you'll need to configure a custom domain to ensure cookies are treated as first-party cookies.
 
 # Creating sessions server side
 
