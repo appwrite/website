@@ -188,7 +188,7 @@ Next, opening Claude Desktop should show you a tool icon in the chat input field
 
 If you get an error that the Appwrite MCP server failed to start, it might be that your computer hasn't recognized the `uvx` command yet. In that case, you can replace the `uvx` string in your config object's `command` property with the direct path to your uv installation. Here's an example for MacOS:
 
-```jsx
+```json
 "command": "/Users/username/.local/bin/uvx",
 ```
 
