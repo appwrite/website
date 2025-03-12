@@ -1,31 +1,37 @@
 <script lang="ts">
 </script>
 
-<div class="mt-80 flex flex-col gap-8 px-16">
-    <div class="grid grid-cols-2 items-center">
-        <div class="border-smooth relative h-80 w-full rounded-sm border-y border-l border-dashed">
-            <div class="grid h-full grid-cols-12 grid-rows-12">
-                <div class="border-smooth col-span-12 row-span-2 border-b border-dashed" />
-                <div class="col-span-12 row-span-8" />
-                <div class="border-smooth col-span-12 row-span-2 border-t border-dashed" />
-            </div>
-            <div class="absolute inset-0 top-0 grid h-full grid-cols-12">
-                <div class="border-smooth relative col-span-7 border-r border-dashed">
-                    <div class="absolute inset-0 top-0 flex items-center">
-                        {#each Array.from({ length: 7 }) as _, i}
-                            <div
-                                class="border-smooth hover:bg-accent/8 hover:border-accent/40 absolute h-[calc(100%-32px)] w-48 cursor-pointer rounded-sm border bg-white/2 backdrop-blur-2xl transition duration-300 ease-in-out hover:-translate-y-10"
-                                style:transform="translateX({i * 70}px) perspective(400px)
-                                rotateY(25deg)"
-                            />
-                        {/each}
+<div class="my-40 flex flex-col gap-16 bg-center px-16">
+    <div class="relative grid grid-cols-12 place-items-center">
+        <div class="col-span-3">Left</div>
+        <div
+            class="border-accent/25 col-span-6 flex aspect-[6.5/4.25] w-full items-center justify-center rounded-[48px] border border-dashed p-3"
+        >
+            <div
+                class="border-accent/50 flex h-full flex-1 rounded-[40px] border border-dashed p-3"
+            >
+                <div
+                    class="border-accent/75 flex h-full flex-1 rounded-[28px] border border-dashed p-3"
+                >
+                    <div
+                        class="bg-greyscale-850 border-smooth flex flex-1 flex-col rounded-[20px] border px-2 pb-2"
+                    >
+                        <div class="flex h-8 w-fit items-center justify-start gap-1.5 pl-2">
+                            {#each Array.from({ length: 3 }) as _}
+                                <div class="size-2 flex-1 shrink rounded-full bg-white" />
+                            {/each}
+                        </div>
+                        <div class="flex-1 rounded-2xl bg-[#19191C]" />
                     </div>
                 </div>
             </div>
         </div>
-        <div class="aspect-[1.25/1] rounded-4xl bg-white/90" />
-    </div>
+        <div class="col-span-3">Right</div>
 
+        <div
+            class="absolute inset-0 -z-1 [background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)]"
+        />
+    </div>
     <div class="mx-auto flex flex-col gap-2 text-center">
         <h2 class="text-primary text-title font-aeonik-pro">Integrate your backend</h2>
         <p class="text-secondary mx-auto">
