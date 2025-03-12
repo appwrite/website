@@ -10,6 +10,7 @@
     --color-secondary: hsl(var(--color-secondary));
     --color-accent: var(--color-secondary);
     --color-smooth: var(--color-smooth);
+    --color-card: var(--color-card);
 
     /* pink */
     --color-pink-200: hsl(var(--color-pink-hue) 98% 84%);
@@ -111,6 +112,7 @@
     --animate-scroll: scroll 60s linear infinite;
     --animate-fade-in: fade-in 0.5s ease-in-out both;
     --animate-marquee: marquee var(--speed, 30s) linear infinite var(--direction, forwards);
+    --animate-lighting: lighting var(--speed, 500ms) ease-in-out forwards;
 
     /* Pink polyfills */
     --transition: 0.2s;
@@ -176,6 +178,19 @@
     @keyframes marquee {
         to {
             transform: translateX(-50%);
+        }
+    }
+
+    @keyframes lighting {
+        0% {
+            opacity: 0;
+            clip-path: inset(5%);
+            transform: scale(111.11%);
+        }
+        100% {
+            opacity: 1;
+            clip-path: inset(0);
+            transform: scale(1);
         }
     }
 
@@ -253,6 +268,7 @@
     --color-badge-bg: var(--color-badge-bg-light);
     --color-badge-border: var(--color-badge-border-light);
     --color-smooth: hsl(var(--color-greyscale-hue) 6%, 10%, 0.04);
+    --color-card: hsl(var(--color-greyscale-hue) 3%, 14%, 0.9);
 }
 
 /* dark theme */
