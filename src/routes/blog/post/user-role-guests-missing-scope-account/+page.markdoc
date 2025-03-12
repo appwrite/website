@@ -67,9 +67,9 @@ When moving to production, configure a [custom domain](https://appwrite.io/docs/
 
 ## Option 2: Use OAuth2 tokens
 
-Another approach is to use Appwrite's OAuth2 token-based authentication, which bypasses third-party cookie restrictions entirely. Instead of `createOAuth2Session()`, you would use `createOAuth2Token()` which implements a more privacy-friendly flow that works in all browsers.
+Another approach is to use Appwrite's OAuth2 token-based authentication, which bypasses third-party cookie restrictions entirely. Instead of `createOAuth2Session()`, you would use `createOAuth2Token()` which uses local storage as a fallback where cookies won't work.
 
-For a detailed implementation guide, check out this article on [Fixing OAuth2 authentication issues in Appwrite Cloud](https://appwrite.io/blog/post/fixing-oauth2-issues-in-appwrite-cloud?doFollow=true), which covers this approach in depth.
+For a detailed implementation guide, check out this article on [Fixing OAuth2 authentication issues in Appwrite Cloud](https://appwrite.io/blog/post/fixing-oauth2-issues-in-appwrite-cloud?doFollow=true), which covers this approach in detail.
 
 Keep in mind that non-public files still require session cookies, so stick with Option 1 if your app needs to handle such files.
 
