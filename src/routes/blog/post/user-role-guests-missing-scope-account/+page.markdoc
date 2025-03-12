@@ -61,15 +61,9 @@ There are two approaches to solve this issue:
 
 ## Option 1: Browser settings and custom domains
 
-For local development:
+For local development, you'll need to allow 3rd party cookies in your browser settings. Many browsers have specific development settings to allow cross-domain cookies during local development.
 
-- Allow 3rd party cookies in your browser settings
-- Some browsers have specific development settings to allow cross-domain cookies during local development
-
-For production:
-
-- [Configure a custom domain](https://appwrite.io/docs/advanced/platform/custom-domains) for your Appwrite project so that cookies are sent from the same domain as your application
-- This ensures that session cookies are properly sent with each request
+When moving to production, configure a [custom domain](https://appwrite.io/docs/advanced/platform/custom-domains) for your Appwrite project so that cookies are sent from the same domain as your application. This ensures that session cookies are properly sent with each request.
 
 ## Option 2: Use OAuth2 tokens
 
