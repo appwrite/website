@@ -1,23 +1,21 @@
 ---
 layout: post
-title: Announcing database operations pricing
-description: To ensure Appwrite Cloud's sustainability, we are introducing pricing for database read and write operations.
+title: Announcing Database read and write operations pricing
+description: To ensure Appwrite Cloud's sustainability, we are introducing pricing for database read and write operations, effective April 10th, 2025.
 date: 2025-03-15
 cover: /images/blog/announcing-database-operations-pricing/cover.png
-timeToRead: 4
+timeToRead: 6
 author: eldad-fux
-category: product
-featured: false
+category: announcement
+featured: true
 callToAction: true
 ---
 
-Database operations are the backbone of modern applications, enabling developers to store, retrieve, and manipulate data efficiently. With Appwrite's database service, you can perform powerful queries, create complex data structures, and build real-time applications that respond instantly to changes. Our database capabilities have been designed to be both powerful and intuitive, making it easier for developers to focus on building great applications rather than managing infrastructure.
+Database operations are the backbone of modern applications, enabling you to store, retrieve, and manipulate data efficiently. With Appwrite Databases, you can perform powerful queries, create complex data structures, and build real-time applications that respond instantly to changes. Appwrite’s database capabilities have been designed to be both powerful and intuitive, making it easier for you to focus on building great applications rather than managing infrastructure.
 
 When we launched Appwrite Cloud in beta, we provided generous limits for database operations without additional charges, even though these operations consume significant computational resources. Our database service requires robust infrastructure to handle concurrent operations, maintain data consistency, and deliver fast response times across all types of queries.
 
-Over the past year, we've made substantial improvements to our database infrastructure, optimizing query performance, enhancing indexing capabilities, and implementing advanced caching strategies. These improvements have allowed us to support applications processing millions of database operations monthly while maintaining the reliability and simplicity that Appwrite is known for.
-
-We've been thrilled to see how developers have leveraged our database services to build increasingly sophisticated applications. This widespread adoption confirms our commitment to providing a powerful, accessible, and sustainable platform for all developers.
+Over the past year, we've made substantial improvements to the database infrastructure, optimizing query performance, enhancing indexing capabilities, and implementing advanced caching strategies. These improvements have ensured support for applications processing millions of database operations monthly while maintaining the reliability and simplicity that Appwrite is known for.
 
 # Pricing update
 
@@ -32,7 +30,7 @@ We will begin charging for database read and write operations beyond the include
 - **Scale Plan**: 1,750,000 read operations and 750,000 write operations per month, with additional operations available at $0.060 per 100,000 reads and $0.10 per 100,000 writes
 - **Enterprise Plan**: Unlimited read and write operations
 
-This change will help support the infrastructure required to maintain high-performance database services and enable us to continue enhancing our platform.
+This change will help support the infrastructure required to maintain high-performance database services and enable us to continue enhancing the platform.
 
 Please refer to our [Pricing Page](/pricing) for detailed information, including operation costs and included quotas for different plans.
 
