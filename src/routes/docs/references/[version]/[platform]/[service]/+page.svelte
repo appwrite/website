@@ -85,9 +85,9 @@
      */
     function handleServerSideLanguage() {
         // nodejs has a `server-` prefix.
-        const isServerSideLanguage =
+        const needsServerPrefix =
             !platform.startsWith('client-') && !platform.startsWith('server-');
-        if (isServerSideLanguage) {
+        if (needsServerPrefix) {
             platformBindingForSelect = `server-${platform}` as Platform;
         }
     }
