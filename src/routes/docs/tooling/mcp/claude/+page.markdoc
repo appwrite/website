@@ -29,7 +29,6 @@ After opening the file, add the following info:
             "command": "uvx",
             "args": [
                 "mcp-server-appwrite",
-                "--databases",
                 "--users"
             ],
             "env": {
@@ -44,7 +43,7 @@ After opening the file, add the following info:
 
 {% info title="Enable other MCP tools" %}
 
-To enable tools other than our Databases or Users API, [learn more about our command-line arguments](/docs/tooling/mcp#command-line-arguments).
+To enable tools other than our Users API, [learn more about our command-line arguments](/docs/tooling/mcp#command-line-arguments).
 
 {% /info %}
 
