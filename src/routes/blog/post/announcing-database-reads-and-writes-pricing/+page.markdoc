@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Announcing Database read and write operations pricing
+title: Announcing Database reads and writes pricing
 description: To ensure Appwrite Cloud's sustainability, we are introducing pricing for database read and write operations, effective April 10th, 2025.
-date: 2025-03-15
-cover: /images/blog/announcing-database-operations-pricing/cover.png
+date: 2025-03-13
+cover: /images/blog/announcing-database-reads-and-writes-pricing/cover.png
 timeToRead: 6
 author: eldad-fux
 category: announcement
