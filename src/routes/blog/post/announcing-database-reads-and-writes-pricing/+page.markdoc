@@ -13,9 +13,9 @@ callToAction: true
 
 Database operations are the backbone of modern applications, enabling you to store, retrieve, and manipulate data efficiently. With Appwrite Databases, you can perform powerful queries, create complex data structures, and build real-time applications that respond instantly to changes. Appwrite’s database capabilities have been designed to be both powerful and intuitive, making it easier for you to focus on building great applications rather than managing infrastructure.
 
-When we launched Appwrite Cloud in beta, we provided generous limits for database operations without additional charges, even though these operations consume significant computational resources. Our database service requires robust infrastructure to handle concurrent operations, maintain data consistency, and deliver fast response times across all types of queries.
+When we launched Appwrite Cloud in beta, we provided database operations without additional charges, even though these operations consume significant computational resources. Our database service requires robust infrastructure to handle concurrent operations, maintain data consistency, and deliver fast response times across all types of queries.
 
-Over the past year, we've made substantial improvements to the database infrastructure, optimizing query performance, enhancing indexing capabilities, and implementing advanced caching strategies. These improvements have ensured support for applications processing millions of database operations monthly while maintaining the reliability and simplicity that Appwrite is known for.
+Over the past year, we've made substantial improvements to the database infrastructure, optimizing query performance, enhancing indexing capabilities, improving high availability and redundancy, adding backups as a service, and implementing advanced caching strategies. These improvements have ensured support for applications processing millions of database operations monthly while maintaining the reliability and simplicity that Appwrite is known for. Appwrite is committed to creating a fair and sustainable platform, in which your usage reflects your bill. Those using compute with 100m operations, should be charged differently than those with 10k operations.
 
 # Pricing update
 
@@ -55,7 +55,7 @@ Any action that modifies data in your database, including:
 - Deleting documents with `deleteDocument`
 - Batch operations that modify multiple documents
 
-**Important to note**: Operations are counted based on the number of documents affected, not API calls. For example, if you fetch a collection of 50 documents with a single API call, this counts as 50 read operations, not as a single operation.
+**Important to note**: Operations are counted based on the number of documents affected, not API calls. For example, if you fetch a collection of 50 documents with a single API call, this counts as 50 read operations, not as a single operation. If your query returned no documents, it will still count as one operation.
 
 # Your usage
 
