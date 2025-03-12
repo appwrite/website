@@ -39,7 +39,7 @@
         class="relative grid grid-cols-12 place-items-center [background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)]"
     >
         <div class="col-span-3">
-            <div class="text-body flex flex-col items-end gap-4 font-medium text-white">
+            <div class="text-body flex flex-col items-end gap-8 font-medium text-white">
                 {#each products.slice(0, 3) as product}
                     <div
                         class="bg-card border-smooth flex items-center gap-2 rounded-xl border py-2 pr-4 pl-2"
@@ -75,7 +75,7 @@
             </div>
         </div>
         <div class="col-span-3">
-            <div class="text-body flex flex-col items-start gap-4 font-medium text-white">
+            <div class="text-body flex flex-col items-start gap-8 font-medium text-white">
                 {#each products.slice(3) as product}
                     <div
                         class="bg-card border-smooth flex items-center gap-2 rounded-xl border py-2 pr-4 pl-2"
