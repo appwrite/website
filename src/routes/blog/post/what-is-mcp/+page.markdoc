@@ -162,7 +162,7 @@ Here's a simple example of how Appwrite MCP works:
 
 ## How to set it up
 
-An easy way to try out the Appwrite MCP is by using Claude Desktop. Install Claude on your computer if you don't have it already, then navigate to Settings → developer and click “Edit Config”. This should lead you to your `claude_desktop_config.json` file.
+An easy way to try out the Appwrite MCP is by using Claude Desktop. Install Claude on your computer if you don't have it already, then navigate to **Settings → Developer** and click on **Edit Config**. This should lead you to your `claude_desktop_config.json` file.
 
 Next, edit your config file and add this:
 
