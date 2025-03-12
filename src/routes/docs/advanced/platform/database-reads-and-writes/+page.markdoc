@@ -30,7 +30,7 @@ How it works:
 3. Operations are counted based on the number of documents affected, not API calls
 4. Quotas are refreshed monthly based on your subscription plan
 
-For example, if you fetch a collection of 50 documents with a single API call, this counts as 50 read operations, not as a single operation.
+For example, if you fetch a collection of 50 documents with a single API call, this counts as 50 read operations, not as a single operation. If your query returned no documents, it will still count as one operation.
 
 ## Pricing
 
