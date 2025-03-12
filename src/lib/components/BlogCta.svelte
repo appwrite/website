@@ -5,10 +5,10 @@
 </script>
 
 <div
-    class="bg relative mt-12 !-mb-28 flex min-h-[12rem] items-center justify-center overflow-hidden border-t border-[hsl(var(--web-color-subtle))] py-12 lg:!-mb-[184px]"
+    class="bg relative mt-12 !-mb-28 flex min-h-[12rem] items-center justify-center overflow-hidden border-t border-[hsl(var(--web-color-subtle))] py-12 lg:!-mb-[64px]"
 >
     <div class="flex max-w-3xs flex-col items-center justify-center gap-5 text-center">
-        <h2 class="text-label">{heading}</h2>
+        <h2 class="text-label text-primary font-aeonik-pro">{heading}</h2>
         <a href={url} class="web-button">{label}</a>
     </div>
 </div>
