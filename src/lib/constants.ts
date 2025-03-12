@@ -138,5 +138,15 @@ export const socials: Array<Social> = [
         icon: 'web-icon-daily-dev',
         label: 'Daily.dev',
         link: 'https://app.daily.dev/squads/appwrite'
+    },
+    {
+        icon: 'web-icon-bluesky',
+        label: 'Bluesky',
+        link: 'https://bsky.app/profile/appwrite.io'
+    },
+    {
+        icon: 'web-icon-tiktok',
+        label: 'Tiktok',
+        link: 'https://www.tiktok.com/@appwrite'
     }
 ];
