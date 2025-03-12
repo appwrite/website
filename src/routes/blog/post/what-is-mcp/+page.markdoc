@@ -181,7 +181,8 @@ Next, edit your config file and add this:
 }
 ```
 
-You'll need **uvx** on your computer for the command to work. Use this [link](https://docs.astral.sh/uv/getting-started/installation/) to install it.
+> You'll need to [install uvx](https://docs.astral.sh/uv/getting-started/installation/) on your computer for the command to work.
+
 Next, opening Claude Desktop should show you a tool icon in the chat input field with a list of the available MCP tools.
 
 ![Claude Desktop MCP tool icon](/images/blog/what-is-mcp/claude-mcp-tools.png)
@@ -196,7 +197,7 @@ With the MCP server successfully started on Claude Desktop, you should now be ab
 
 ![Claude Desktop MCP chat](/images/blog/what-is-mcp/claude-mcp-chat.png)
 
-You can also set up the Appwrite MCP server with other AI tools and editors like Cursor, WindSurf and Zed. For more examples and specific setup instructions, check out the [MCP documentation](https://appwrite.io/docs/tooling/mcp?doFollow=true).
+You can also set up the Appwrite MCP server with other AI tools like Cursor and WindSurf. For more examples and specific setup instructions, check out the [MCP documentation](https://appwrite.io/docs/tooling/mcp?doFollow=true).
 
 # **Final thoughts**
 
