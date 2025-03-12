@@ -2,7 +2,7 @@
 layout: post
 title: What exactly is MCP, and why is it trending?
 description: Appwrite introduces its own Model Context Protocol (MCP). Learn what it is and why it's becoming a popular solution for AI assistants to interact with real-world tools, and how to install Appwrite's new MCP server.
-date: 2025-03-12
+date: 2025-03-13
 cover: /images/blog/what-is-mcp/cover.png
 timeToRead: 7
 author: ebenezer-don
@@ -144,10 +144,16 @@ Appwrite has introduced the **Appwrite MCP server** to allow AI assistants to in
 
 Appwrite MCP is an **MCP server** that connects AI assistants to your **Appwrite project**.
 
-It currently supports:
+It supports all Appwrite APIs, including:
 
-- **Databases**: Query and retrieve database records.
-- **Users**: Fetch user lists and details.
+- **Databases**: Query and retrieve database records
+- **Users**: Fetch user lists and details
+- **Storage**: File operations (beta)
+- **Functions**: Execute and manage functions
+- **Authentication**: User authentication operations
+- And more...
+
+Note: Some features like file operations (getFile, getFilePreview) are currently in beta.
 
 ## How it works
 
