@@ -134,9 +134,9 @@
         thresholds.forEach((threshold) => {
             if (scrollPercentage >= threshold && !tracked.has(threshold)) {
                 const pageName =
-                    location.pathname.slice(1) === ''
+                    $page.url.pathname.slice(1) === ''
                         ? 'home'
-                        : location.pathname.slice(1).replace(/\//g, '-');
+                        : $page.url.pathname.slice(1).replace(/\//g, '-');
 
                 const eventName = `${pageName}_scroll-depth_${threshold * 100}prct_scroll`;
                 tracked.add(threshold);
