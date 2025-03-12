@@ -166,14 +166,16 @@ An easy way to try out the Appwrite MCP is by using Claude Desktop. Install Clau
 
 Next, edit your config file and add this:
 
-```jsx
-"MCPServers": {
-  "appwrite": {
-    "command": "uvx",
-    "args": ["mcp-server-appwrite"],
-    "env": {
-      "APPWRITE_PROJECT_ID": "your-project-id",
-      "APPWRITE_API_KEY": "your-api-key"
+```json
+{
+  "mcpServers": {
+    "appwrite": {
+      "command": "uvx",
+      "args": [ "mcp-server-appwrite" ],
+      "env": {
+        "APPWRITE_PROJECT_ID": "your-project-id",
+        "APPWRITE_API_KEY": "your-api-key"
+      }
     }
   }
 }
