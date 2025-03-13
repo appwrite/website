@@ -20,8 +20,6 @@ export function saveReferrerAndUtmSource(url: URL) {
     const ref = params.get('ref');
     const utmSource = params.get('utm_source');
     const utmMedium = params.get('utm_medium');
-
-    // not saved in `sessionStorage`
     const utmCampaign = params.get('utm_campaign');
     const referrer = document.referrer.includes('//appwrite.io') ? null : document.referrer || null;
 
@@ -43,7 +41,7 @@ export function getUtmSourceForLink(): string {
 
     ['utmSource', 'utmMedium', 'utmCampaign'].forEach((key) => {
         const value = sessionStorage.getItem(key);
-        if (value) params.set(key.replace('utm', 'utm_'), value);
+        if (value) params.set(key.replace('utm', 'utm_').toLowerCase(), value);
     });
 
     return params.toString();
