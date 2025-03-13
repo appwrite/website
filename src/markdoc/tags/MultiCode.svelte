@@ -10,7 +10,7 @@
 
 <script lang="ts">
     import { copy } from '$lib/utils/copy';
-    import { type Readable, writable } from 'svelte/store';
+    import { get, type Readable, writable } from 'svelte/store';
     import { Select, Tooltip } from '$lib/components';
     import { getContext, hasContext, onMount, setContext } from 'svelte';
     import { type Language, multiCodeSelectedLanguage } from '$lib/utils/code';
@@ -19,7 +19,7 @@
     setContext<CodeContext>('multi-code', {
         content: writable(''),
         snippets: writable(new Set()),
-        selected: multiCodeSelectedLanguage
+        selected: writable<string | null>(get(multiCodeSelectedLanguage))
     });
 
     const { snippets, selected, content } = getContext<CodeContext>('multi-code');

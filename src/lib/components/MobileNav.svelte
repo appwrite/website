@@ -3,6 +3,7 @@
     import { IsLoggedIn } from '$lib/components';
     import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import type { NavLink } from './MainNav.svelte';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     export let open = false;
     export let links: NavLink[];
@@ -17,7 +18,7 @@
 <nav class="web-side-nav web-is-not-desktop" class:hidden={!open}>
     <div class="web-side-nav-wrapper ps-4 pe-4">
         <div class="flex items-center gap-2 px-4">
-            <a href="https://cloud.appwrite.io/register" class="web-button is-secondary flex-1">
+            <a href={getAppwriteDashboardUrl('/register')} class="web-button is-secondary flex-1">
                 Sign up
             </a>
             <IsLoggedIn classes="flex-1" />

@@ -1,8 +1,8 @@
 <script>
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { classNames } from '$lib/utils/classnames';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
-    const educationSignUp = `${PUBLIC_APPWRITE_DASHBOARD}/console/education`;
+    const educationSignUp = getAppwriteDashboardUrl('/console/education');
 </script>
 
 <div
