@@ -1,0 +1,58 @@
+---
+layout: article
+title: Cursor
+description: Add the MCP server to Cursor
+---
+
+Learn how you can add the Appwrite MCP server to Cursor.
+
+{% info title="Pre-requisite: Install uv" %}
+
+You must install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your system to use the MCP server.
+
+{% /info %}
+
+{% section #step-1 step=1 title="Add MCP server" %}
+
+Open the **Cursor Settings** page, head to the **MCP** tab, and click on the **Add new MCP server** button.
+
+![Add MCP server](/images/docs/mcp/cursor/cursor-add-mcp.png)
+
+Enter the name as `Appwrite`, select the `command` type, and enter the following command:
+
+{% tabs %}
+{% tabsitem #linux-macos title="MacOS" %}
+
+```sh
+env APPWRITE_API_KEY=your-api-key env APPWRITE_PROJECT_ID=your-project-id uvx mcp-server-appwrite --databases --users
+```
+
+
+{% /tabsitem %}
+
+{% tabsitem #windows title="Windows" %}
+
+```cmd
+cmd /c SET APPWRITE_PROJECT_ID=your-project-id && SET APPWRITE_API_KEY=your-api-key && uvx mcp-server-appwrite --databases --users
+```
+
+{% /tabsitem %}
+{% /tabs %}
+
+Once you save the details, Cursor will connect with the MCP server and load all available tools.
+
+{% info title="Enable other MCP tools" %}
+
+To enable tools other than our Databases or Users API, [learn more about our command-line arguments](/docs/tooling/mcp#command-line-arguments).
+
+{% /info %}
+
+{% /section %}
+
+{% section #step-2 step=2 title="Test the integration" %}
+
+Open Cursor Agent and add a prompt to create a new user.
+
+![Create user in Appwrite project](/images/docs/mcp/cursor/cursor-create-user.png)
+
+{% /section %}
