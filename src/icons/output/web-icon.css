@@ -101,84 +101,90 @@
 .web-icon-hamburger-menu:before {
     content: '\ea1b';
 }
-.web-icon-light:before {
+.web-icon-instagram:before {
     content: '\ea1c';
 }
-.web-icon-linkedin:before {
+.web-icon-light:before {
     content: '\ea1d';
 }
-.web-icon-location:before {
+.web-icon-linkedin:before {
     content: '\ea1e';
 }
-.web-icon-logout-left:before {
+.web-icon-location:before {
     content: '\ea1f';
 }
-.web-icon-logout-right:before {
+.web-icon-logout-left:before {
     content: '\ea20';
 }
-.web-icon-mailgun:before {
+.web-icon-logout-right:before {
     content: '\ea21';
 }
-.web-icon-message:before {
+.web-icon-mailgun:before {
     content: '\ea22';
 }
-.web-icon-microsoft:before {
+.web-icon-mcp:before {
     content: '\ea23';
 }
-.web-icon-minus:before {
+.web-icon-message:before {
     content: '\ea24';
 }
-.web-icon-nuxt:before {
+.web-icon-microsoft:before {
     content: '\ea25';
 }
-.web-icon-platform:before {
+.web-icon-minus:before {
     content: '\ea26';
 }
-.web-icon-play:before {
+.web-icon-nuxt:before {
     content: '\ea27';
 }
-.web-icon-plus:before {
+.web-icon-platform:before {
     content: '\ea28';
 }
-.web-icon-product-hunt:before {
+.web-icon-play:before {
     content: '\ea29';
 }
-.web-icon-refine:before {
+.web-icon-plus:before {
     content: '\ea2a';
 }
-.web-icon-rest:before {
+.web-icon-product-hunt:before {
     content: '\ea2b';
 }
-.web-icon-search:before {
+.web-icon-refine:before {
     content: '\ea2c';
 }
-.web-icon-sendgrid:before {
+.web-icon-rest:before {
     content: '\ea2d';
 }
-.web-icon-star:before {
+.web-icon-search:before {
     content: '\ea2e';
 }
-.web-icon-system:before {
+.web-icon-sendgrid:before {
     content: '\ea2f';
 }
-.web-icon-textmagic:before {
+.web-icon-star:before {
     content: '\ea30';
 }
-.web-icon-tiktok:before {
+.web-icon-system:before {
     content: '\ea31';
 }
-.web-icon-twitter:before {
+.web-icon-textmagic:before {
     content: '\ea32';
 }
-.web-icon-vue:before {
+.web-icon-tiktok:before {
     content: '\ea33';
 }
-.web-icon-x:before {
+.web-icon-twitter:before {
     content: '\ea34';
 }
-.web-icon-ycombinator:before {
+.web-icon-vue:before {
     content: '\ea35';
 }
-.web-icon-youtube:before {
+.web-icon-x:before {
     content: '\ea36';
+}
+.web-icon-ycombinator:before {
+    content: '\ea37';
+}
+.web-icon-youtube:before {
+    content: '\ea38';
 }
