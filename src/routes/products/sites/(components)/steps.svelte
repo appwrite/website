@@ -6,7 +6,7 @@
             <div class="size-1 rounded-full bg-white" />
         </div>
     </div>
-    <div class="min-h-[100vh]">
+    <div class="min-h-[100vh] w-full">
         <slot />
     </div>
 </div>
