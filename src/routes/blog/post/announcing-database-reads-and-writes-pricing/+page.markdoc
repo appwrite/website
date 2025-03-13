@@ -42,8 +42,6 @@ Database operations in Appwrite are categorized into two types:
 
 Any action that retrieves data from your database, including:
 - Fetching documents with `getDocument` or `listDocuments`
-- Running queries with `find`
-- Counting documents with `count`
 
 ## Write operations
 
@@ -51,7 +49,6 @@ Any action that modifies data in your database, including:
 - Creating documents with `createDocument`
 - Updating documents with `updateDocument`
 - Deleting documents with `deleteDocument`
-- Batch operations that modify multiple documents
 
 **Important to note**: Operations are counted based on the number of documents affected, not API calls. For example, if you fetch a collection of 50 documents with a single API call, this counts as 50 read operations, not as a single operation. If your query returned no documents, it will still count as one operation.
 
