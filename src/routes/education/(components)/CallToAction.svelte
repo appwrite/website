@@ -1,9 +1,8 @@
 <script>
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { classNames } from '$lib/utils/classnames';
-    import { getUtmSourceForLink } from '$lib/utils/utm';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard.js';
 
-    const educationSignUp = `${PUBLIC_APPWRITE_DASHBOARD}/console/education?${getUtmSourceForLink()}`;
+    const educationSignUp = getAppwriteDashboardUrl('/console/education');
 </script>
 
 <div

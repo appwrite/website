@@ -33,8 +33,7 @@
     import Ticket11 from './(assets)/mock/ticket-11.png';
     import Ticket12 from './(assets)/mock/ticket-12.png';
     import { addDays, toReleaseDate } from '$lib/utils/date';
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import { getUtmSourceForLink } from '$lib/utils/utm';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     const base = new Date('2024-02-26T14:00:00.000Z');
     const kickoff = new Date('2024-02-21T15:00:00.000Z');
@@ -279,9 +278,7 @@
                     your product and build any application at any scale, own your data, and use your
                     preferred coding languages and tools.
                 </p>
-                <a href={`${PUBLIC_APPWRITE_DASHBOARD}?${getUtmSourceForLink()}`} class="web-button"
-                    >Get started</a
-                >
+                <a href={getAppwriteDashboardUrl()} class="web-button">Get started</a>
             </div>
 
             <img class="console" src={ConsoleImage} alt="" />
