@@ -189,21 +189,21 @@
                     scale: '1750K',
                     enterprise: 'Unlimited'
                 },
- 		{
+                {
                     title: 'Writes',
                     free: '250K',
                     pro: '750K',
                     scale: '750K',
                     enterprise: 'Unlimited'
                 },
-		{
+                {
                     title: 'Aditional reads',
                     free: '-',
                     pro: '$0.060 per 100k reads',
                     scale: '$0.060 per 100k reads',
                     enterprise: 'Unlimited'
                 },
-		{
+                {
                     title: 'Aditional writes',
                     free: '-',
                     pro: '$0.10 per 100k writes',
