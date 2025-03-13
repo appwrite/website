@@ -17,19 +17,17 @@ export function getReferrerAndUtmSource() {
 }
 
 export function getUtmSourceForLink() {
+    let values = {};
     if (typeof sessionStorage !== 'undefined') {
-        const values = [];
         if (sessionStorage.getItem('utmSource')) {
-            values.push(`utm_source=${sessionStorage.getItem('utmSource')}`);
+            values = { ...values, utm_source: sessionStorage.getItem('utmSource') };
         }
         if (sessionStorage.getItem('utmMedium')) {
-            values.push(`utm_medium=${sessionStorage.getItem('utmMedium')}`);
+            values = { ...values, utm_medium: sessionStorage.getItem('utmMedium') };
         }
         if (sessionStorage.getItem('utmCampaign')) {
-            values.push(`utm_campaign=${sessionStorage.getItem('utmCampaign')}`);
+            values = { ...values, utm_campaign: sessionStorage.getItem('utmCampaign') };
         }
-
-        return values.join('&');
     }
-    return '';
+    return values;
 }
