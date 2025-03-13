@@ -22,6 +22,9 @@
                         'relative pl-7 transition-colors',
                         'before:bg-primary before:absolute before:top-0 before:left-0 before:h-6 before:w-px before:rounded-full before:opacity-0 before:transition-opacity',
                         {
+                            'font-medium': parent.level && parent.level === 1,
+                            'pl-11': parent.level && parent.level === 2,
+                            'pl-16': parent.level && parent.level >= 3,
                             'before:opacity-100': parent.selected
                         }
                     )}
@@ -29,7 +32,9 @@
                     <a href={parent.href} class="line-clamp-1">{parent.title}</a>
 
                     {#if parent.children}
-                        <ul class="border-smooth mt-11 ml-9 flex flex-col gap-7 border-b pb-11">
+                        <ul
+                            class="border-smooth mt-11 ml-9 flex flex-col gap-7 border-b pb-11 text-xs"
+                        >
                             {#each parent.children as child}
                                 <li
                                     class={classNames(
