@@ -28,6 +28,6 @@
 </svelte:head>
 
 <Main>
-    <Frameworks />
+    <Frameworks headline="Host your favorite web frameworks" />
     <Integrate />
 </Main>

@@ -71,6 +71,8 @@
             secondary: '#E1725C'
         }
     ];
+
+    export let headline: string = 'Supporting the tools you work with';
 </script>
 
 <div class="border-smooth relative z-10 border-y border-dashed">
