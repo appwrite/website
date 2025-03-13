@@ -95,6 +95,14 @@
     });
 </script>
 
+<svelte:head>
+    {#if prevStep}
+        <link rel="prev" href={prevStep.href} />
+    {/if}
+    {#if nextStep}
+        <link rel="next" href={nextStep.href} />
+    {/if}
+</svelte:head>
 <main class="contents" id="main">
     <article class="web-article contents">
         <header class="web-article-header">
