@@ -17,8 +17,6 @@ Before launching the MCP server, you must [setup an Appwrite project](https://cl
 ![Appwrite API key](/images/docs/mcp/appwrite/dark/appwrite-api-secret.png)
 {% /only_dark %}
 
-## Install uv
-
 Then, install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your system.
 
 {% tabs %}
