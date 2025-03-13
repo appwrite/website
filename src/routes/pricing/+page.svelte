@@ -8,6 +8,7 @@
     import Faq from './faq.svelte';
     import BG from './bg.png?enhanced';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import { getUtmSourceForLink } from '$lib/utils/utm';
 
     const title = 'Pricing' + TITLE_SUFFIX;
     const description = 'Explore our straightforward pricing plans that scale with your project.';
@@ -95,7 +96,7 @@
                                                 applications.
                                             </p>
                                             <a
-                                                href="{PUBLIC_APPWRITE_DASHBOARD}/register"
+                                                href={`${PUBLIC_APPWRITE_DASHBOARD}/register?${getUtmSourceForLink()}`}
                                                 class="web-button is-secondary is-full-width mt-8"
                                             >
                                                 <span class="text-sub-body font-medium"
@@ -161,7 +162,7 @@
                                                 functionality and resources to scale.
                                             </p>
                                             <a
-                                                href="https://cloud.appwrite.io/console?type=create&plan=tier-1"
+                                                href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=create&plan=tier-1&${getUtmSourceForLink()}`}
                                                 class="web-button is-full-width mt-11"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
@@ -225,7 +226,7 @@
                                                 projects and need more control and support.
                                             </p>
                                             <a
-                                                href="https://cloud.appwrite.io/console?type=create&plan=tier-2"
+                                                href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=create&plan=tier-2&${getUtmSourceForLink()}`}
                                                 class="web-button is-secondary is-full-width mt-10"
                                                 target="_blank"
                                                 rel="noopener noreferrer"

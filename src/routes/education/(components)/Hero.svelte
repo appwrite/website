@@ -5,6 +5,7 @@
     import ChatIcon from '../(assets)/chat-icon.svg';
     import Beaker from '../(assets)/beaker.svg';
     import Checkmark from '../(assets)/checkmark.svg';
+    import { getUtmSourceForLink } from '$lib/utils/utm';
 
     const items = [
         {
@@ -26,7 +27,7 @@
         }
     ];
 
-    const educationSignUp = `${PUBLIC_APPWRITE_DASHBOARD}/console/education`;
+    const educationSignUp = `${PUBLIC_APPWRITE_DASHBOARD}/console/education?${getUtmSourceForLink()}`;
 </script>
 
 <section

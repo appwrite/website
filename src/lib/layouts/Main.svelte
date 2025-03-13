@@ -20,6 +20,7 @@
     import { trackEvent } from '$lib/actions/analytics';
     import MainNav from '$lib/components/MainNav.svelte';
     import { page } from '$app/stores';
+    import { getUtmSourceForLink } from '$lib/utils/utm';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -168,7 +169,10 @@
         </div>
         <div class="web-mobile-header-end">
             {#if !$isMobileNavOpen}
-                <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button">
+                <a
+                    href={`${PUBLIC_APPWRITE_DASHBOARD}?${getUtmSourceForLink()}`}
+                    class="web-button"
+                >
                     <span class="text">Start building</span>
                 </a>
             {/if}
