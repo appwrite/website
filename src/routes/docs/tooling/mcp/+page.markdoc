@@ -112,13 +112,27 @@ There are two different ways by which you can launch the MCP server.
 
 ### Using uv (recommended)
 
-{% info title="Install uv" %}
+First, install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your system (if you haven't already).
 
-You must install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your system.
+{% tabs %}
+{% tabsitem #uv-linux-macos title="Linux and MacOS" %}
 
-{% /info %}
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
 
-Run the following command in your terminal: 
+{% /tabsitem %}
+
+{% tabsitem #uv-windows title="Windows" %}
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+``` 
+
+{% /tabsitem %}
+{% /tabs %}
+
+Then. run the following command in your terminal: 
 
 ```sh
 uvx mcp-server-appwrite [args]
