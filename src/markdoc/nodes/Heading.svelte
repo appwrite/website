@@ -35,7 +35,8 @@
             [slug]: {
                 step,
                 title: element?.textContent ?? '',
-                visible: false
+                visible: false,
+                level
             }
         };
 
