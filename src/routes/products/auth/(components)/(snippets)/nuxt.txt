@@ -1,0 +1,16 @@
+import { Client, Account } from 'node-appwrite';
+import { H3Event, getCookie } from 'h3';
+
+async function getLoggedInUser(event) {
+  const session = getCookie(event, 'custom-session-cookie');
+  if (!session) return;
+
+  const client = new Client()
+    .setEndpoint(process.env.PUBLIC_APPWRITE_ENDPOINT)
+    .setProject(process.env.PUBLIC_APPWRITE_PROJECT_ID);
+
+  client.setSession(session.value);
+  const account = new Account(client);
+
+  return account.get();
+}
