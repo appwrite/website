@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Frameworks from '$lib/components/marketing/frameworks.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
@@ -27,5 +28,6 @@
 </svelte:head>
 
 <Main>
+    <Frameworks />
     <Integrate />
 </Main>
