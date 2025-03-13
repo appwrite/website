@@ -17,6 +17,7 @@
     import React from './(assets)/icons/react.svg';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import Noise from '$lib/components/fancy/noise.svelte';
+    import { type SvelteHTMLElements } from 'svelte/elements';
 
     const platforms = [
         { name: 'js', icon: Javascript, href: '/quickstarts/javascript', primary: '#FFCA28' },
@@ -72,14 +73,20 @@
         }
     ];
 
-    export let headline: string = 'Supporting the tools you work with';
+    type $$Props = {
+        headline: string;
+    } & SvelteHTMLElements['div'];
+
+    let className: $$Props['class'] = '';
+    export let headline: $$Props['headline'] = 'Supporting the tools you work with';
+    export { className as class };
 </script>
 
 <div class="border-smooth relative z-10 border-y border-dashed">
     <div class="container flex flex-col items-center max-md:pt-4 md:flex-row">
         <GradientText>
             <span class="flex items-center pr-4 text-sm font-medium md:w-full md:max-w-[175px]"
-                >Supporting the tools you work with</span
+                >{headline}</span
             >
         </GradientText>
         <div
