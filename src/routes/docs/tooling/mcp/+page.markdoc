@@ -42,7 +42,7 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 
 ## Integrate with popular AI tools
 
-You can integrate the MCP server with various popular AI-enabled code editors and LLM apps.
+You can now integrate the MCP server with various popular AI-enabled code editors and LLM apps.
 
 {% only_light %}
 {% cards %}
