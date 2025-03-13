@@ -270,7 +270,8 @@
 
     .shine,
     .glare {
-        will-change: transform, opacity, background-image, background-size, background-position,
+        will-change:
+            transform, opacity, background-image, background-size, background-position,
             background-blend-mode, filter;
         border-radius: adjusted(1);
         border-bottom-left-radius: adjusted(1.2);
