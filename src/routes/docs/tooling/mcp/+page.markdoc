@@ -132,7 +132,7 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 {% /tabsitem %}
 {% /tabs %}
 
-Then. run the following command in your terminal: 
+Then, run the following command in your terminal: 
 
 ```sh
 uvx mcp-server-appwrite [args]
