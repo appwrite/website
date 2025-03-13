@@ -23,6 +23,8 @@
     import Badge from '$lib/components/ui/Badge.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
+    import { getUtmSourceForLink } from '$lib/utils/utm';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -157,7 +159,7 @@
                         </svelte:fragment>
                         <div class="mt-8 flex flex-col gap-4 sm:flex-row" slot="cta">
                             <a
-                                href={PUBLIC_APPWRITE_DASHBOARD}
+                                href={getAppwriteDashboardUrl()}
                                 class="web-button w-full lg:w-fit"
                                 on:click={() =>
                                     trackEvent({
