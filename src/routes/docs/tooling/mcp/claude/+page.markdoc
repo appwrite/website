@@ -1,0 +1,72 @@
+---
+layout: article
+title: Claude Desktop
+description: Add the MCP server to Claude Desktop
+---
+
+Learn how you can add the Appwrite MCP server to Claude Desktop.
+
+{% info title="Pre-requisite: Install uv" %}
+
+You must install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your system to use the MCP server.
+
+{% /info %}
+
+{% section #step-1 step=1 title="Add MCP server" %}
+
+In the Claude Desktop app, open the app's **Settings** page (press `CTRL + ,` on Windows or `CMD + ,` on MacOS) and head to the **Developer** tab.
+
+![Claude Settings](/images/docs/mcp/claude/claude-settings.png)
+
+Clicking on the **Edit Config** button will take you to the `claude_desktop_config.json` file. In case the file is missing, please visit the [Model Context Protocol](https://modelcontextprotocol.io/quickstart/user#2-add-the-filesystem-mcp-server) docs.
+
+After opening the file, add the following info:
+
+```json
+{
+    "mcpServers": {
+        "appwrite": {
+            "command": "uvx",
+            "args": [
+                "mcp-server-appwrite",
+                "--users"
+            ],
+            "env": {
+                "APPWRITE_PROJECT_ID": "your-project-id",
+                "APPWRITE_API_KEY": "your-api-key",
+                "APPWRITE_ENDPOINT": "https://cloud.appwrite.io/v1" // Optional
+            }
+        }
+    }
+}
+```
+
+{% info title="Enable other MCP tools" %}
+
+To enable additional tools, learn more about [command-line arguments](/docs/tooling/mcp#command-line-arguments).
+
+{% /info %}
+
+{% /section %}
+
+{% section #step-2 step=2 title="Verify MCP tools" %}
+
+Restart the Claude Desktop app, click on the MCP tools button (at the bottom right section of the prompt input) and click on it to view available Appwrite MCP tools.
+
+![Appwrite MCP tools](/images/docs/mcp/claude/claude-mcp-tools.png)
+
+{% info title="uvx ENOENT error" %}
+
+In case you see a `uvx ENOENT` error, ensure that you either add `uvx` to the `PATH` environment variable on your system or use the full path to your `uvx` installation in the config file.
+
+{% /info %}
+
+{% /section %}
+
+{% section #step-3 step=3 title="Test the integration" %}
+
+Enter a prompt to list all users in your Appwrite project.
+
+![List users in Appwrite project](/images/docs/mcp/claude/claude-list-users.png)
+
+{% /section %}

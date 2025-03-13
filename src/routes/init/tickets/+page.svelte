@@ -155,7 +155,8 @@
                 backdrop-filter: blur(6px);
                 background-color: hsl(var(--web-color-background) / 50%);
                 mask-composite: intersect;
-                mask-image: linear-gradient(
+                mask-image:
+                    linear-gradient(
                         to top,
                         transparent,
                         rgba(0, 0, 0, 1) 25%,

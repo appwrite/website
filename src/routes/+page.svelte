@@ -16,13 +16,13 @@
     import FooterNav from '../lib/components/FooterNav.svelte';
     import MainFooter from '../lib/components/MainFooter.svelte';
     import DeveloperCard from './DeveloperCard.svelte';
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import CoverImage from './dashboard.webp';
     import Hero from '$lib/components/ui/Hero.svelte';
     import GradientText from '$lib/components/ui/GradientText.svelte';
     import Badge from '$lib/components/ui/Badge.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -157,7 +157,7 @@
                         </svelte:fragment>
                         <div class="mt-8 flex flex-col gap-4 sm:flex-row" slot="cta">
                             <a
-                                href={PUBLIC_APPWRITE_DASHBOARD}
+                                href={getAppwriteDashboardUrl()}
                                 class="web-button w-full lg:w-fit"
                                 on:click={() =>
                                     trackEvent({

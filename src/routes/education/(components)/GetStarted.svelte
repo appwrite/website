@@ -1,9 +1,9 @@
 <script lang="ts">
     import Badge from '$lib/components/ui/Badge.svelte';
     import { classNames } from '$lib/utils/classnames';
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
-    const educationSignUp = `${PUBLIC_APPWRITE_DASHBOARD}/console/education`;
+    const educationSignUp = getAppwriteDashboardUrl('/console/education');
 
     const items = [
         {
