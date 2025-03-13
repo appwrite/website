@@ -1,33 +1,50 @@
-export function getReferrerAndUtmSource() {
-    if (sessionStorage) {
-        let values = {};
-        if (sessionStorage.getItem('utmReferral')) {
-            values = { ...values, utmReferral: sessionStorage.getItem('utmReferral') };
-        }
-        if (sessionStorage.getItem('utmSource')) {
-            values = { ...values, utmSource: sessionStorage.getItem('utmSource') };
-        }
-        if (sessionStorage.getItem('utmMedium')) {
-            values = { ...values, utmMedium: sessionStorage.getItem('utmMedium') };
-        }
+import { createSource } from '$lib/utils/console';
+import { dev as isDevEnv } from '$app/environment';
 
-        return values;
-    }
-    return {};
+export function getReferrerAndUtmSource(): Record<string, string> {
+    if (typeof sessionStorage === 'undefined') return {};
+
+    return ['utmReferral', 'utmSource', 'utmMedium'].reduce(
+        (acc, key) => {
+            const value = sessionStorage.getItem(key);
+            if (value) acc[key] = value;
+            return acc;
+        },
+        {} as Record<string, string>
+    );
 }
 
-export function getUtmSourceForLink() {
-    let values = {};
-    if (typeof sessionStorage !== 'undefined') {
-        if (sessionStorage.getItem('utmSource')) {
-            values = { ...values, utm_source: sessionStorage.getItem('utmSource') };
-        }
-        if (sessionStorage.getItem('utmMedium')) {
-            values = { ...values, utm_medium: sessionStorage.getItem('utmMedium') };
-        }
-        if (sessionStorage.getItem('utmCampaign')) {
-            values = { ...values, utm_campaign: sessionStorage.getItem('utmCampaign') };
-        }
+export function saveReferrerAndUtmSource(url: URL) {
+    const params = url.searchParams;
+
+    const ref = params.get('ref');
+    const utmSource = params.get('utm_source');
+    const utmMedium = params.get('utm_medium');
+
+    // not saved in `sessionStorage`
+    const utmCampaign = params.get('utm_campaign');
+    const referrer = document.referrer.includes('//appwrite.io') ? null : document.referrer || null;
+
+    if ((ref || referrer || utmSource || utmCampaign || utmMedium) && !isDevEnv) {
+        // noinspection JSIgnoredPromiseFromCall
+        createSource(ref, referrer, utmSource, utmCampaign, utmMedium);
     }
-    return values;
+
+    if (utmSource) sessionStorage.setItem('utmSource', utmSource);
+    if (utmMedium) sessionStorage.setItem('utmMedium', utmMedium);
+    if (utmCampaign) sessionStorage.setItem('utmCampaign', utmCampaign);
+    if (ref || referrer) sessionStorage.setItem('utmReferral', referrer || ref || '');
+}
+
+export function getUtmSourceForLink(): string {
+    if (typeof sessionStorage === 'undefined') return '';
+
+    const params = new URLSearchParams();
+
+    ['utmSource', 'utmMedium', 'utmCampaign'].forEach((key) => {
+        const value = sessionStorage.getItem(key);
+        if (value) params.set(key.replace('utm', 'utm_'), value);
+    });
+
+    return params.toString();
 }
