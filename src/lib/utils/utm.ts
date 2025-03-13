@@ -15,3 +15,21 @@ export function getReferrerAndUtmSource() {
     }
     return {};
 }
+
+export function getUtmSourceForLink() {
+    if (typeof sessionStorage !== 'undefined') {
+        const values = [];
+        if (sessionStorage.getItem('utmSource')) {
+            values.push(`utm_source=${sessionStorage.getItem('utmSource')}`);
+        }
+        if (sessionStorage.getItem('utmMedium')) {
+            values.push(`utm_medium=${sessionStorage.getItem('utmMedium')}`);
+        }
+        if (sessionStorage.getItem('utmCampaign')) {
+            values.push(`utm_campaign=${sessionStorage.getItem('utmCampaign')}`);
+        }
+
+        return values.join('&');
+    }
+    return '';
+}

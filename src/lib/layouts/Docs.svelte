@@ -46,6 +46,7 @@
     import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { page } from '$app/stores';
+    import { getUtmSourceForLink } from '$lib/utils/utm';
 
     export let variant: DocsLayoutVariant = 'default';
     export let isReferences = false;
@@ -105,7 +106,10 @@
             </a>
         </div>
         <div class="web-mobile-header-end">
-            <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button web-is-only-desktop">
+            <a
+                href={`${PUBLIC_APPWRITE_DASHBOARD}?${getUtmSourceForLink()}`}
+                class="web-button web-is-only-desktop"
+            >
                 <span class="text-sub-body font-medium">Go to Console</span>
             </a>
             <button

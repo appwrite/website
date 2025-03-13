@@ -88,6 +88,9 @@
         if (utmMedium) {
             sessionStorage.setItem('utmMedium', utmMedium);
         }
+        if (utmCampaign) {
+            sessionStorage.setItem('utmCampaign', utmCampaign);
+        }
         const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
 
         applyTheme(initialTheme);

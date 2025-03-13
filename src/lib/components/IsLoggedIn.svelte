@@ -4,6 +4,7 @@
     import { trackEvent } from '$lib/actions/analytics';
     import { browser } from '$app/environment';
     import { page } from '$app/stores';
+    import { getUtmSourceForLink } from '$lib/utils/utm';
 
     export let classes = '';
 
@@ -16,7 +17,7 @@
 
 <a
     class={classNames('web-button web-u-inline-width-100-percent-mobile', classes)}
-    href={PUBLIC_APPWRITE_DASHBOARD}
+    href={`${PUBLIC_APPWRITE_DASHBOARD}?${getUtmSourceForLink()}`}
     on:click={() =>
         trackEvent({
             plausible: { name: `${getTrackingEventName()} in header` },

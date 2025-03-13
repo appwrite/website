@@ -1,6 +1,7 @@
 <script lang="ts">
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { trackEvent } from '$lib/actions/analytics';
+    import { getUtmSourceForLink } from '$lib/utils/utm';
 </script>
 
 <img
@@ -17,7 +18,7 @@
             Start building with Appwrite today
         </h2>
         <a
-            href={PUBLIC_APPWRITE_DASHBOARD}
+            href={`${PUBLIC_APPWRITE_DASHBOARD}?${getUtmSourceForLink()}`}
             class="web-button is-transparent web-self-center"
             on:click={() => trackEvent({ plausible: { name: 'Get started in pre footer' } })}
         >
@@ -45,7 +46,7 @@
                         A great fit for passion projects and small applications.
                     </p>
                     <a
-                        href={`${PUBLIC_APPWRITE_DASHBOARD}/register`}
+                        href={`${PUBLIC_APPWRITE_DASHBOARD}/register?${getUtmSourceForLink()}`}
                         class="web-button is-secondary is-full-width-mobile web-u-cross-child-end"
                         on:click={() =>
                             trackEvent({
@@ -78,7 +79,7 @@
                         to scale.
                     </p>
                     <a
-                        href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=create&plan=tier-1`}
+                        href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=create&plan=tier-1&${getUtmSourceForLink()}`}
                         class="web-button is-full-width-mobile web-u-cross-child-end"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -111,7 +112,7 @@
                         and support.
                     </p>
                     <a
-                        href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=create&plan=tier-2`}
+                        href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=create&plan=tier-2&${getUtmSourceForLink()}`}
                         class="web-button is-secondary is-full-width-mobile web-u-cross-child-end"
                         target="_blank"
                         rel="noopener noreferrer"
