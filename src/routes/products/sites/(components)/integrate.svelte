@@ -5,33 +5,54 @@
     import Storage from '../(assets)/icons/storage.svg';
     import Realtime from '../(assets)/icons/realtime.svg';
     import Messaging from '../(assets)/icons/messaging.svg';
+    import { classNames } from '$lib/utils/classnames';
 
     const products = [
         {
             label: 'Auth',
-            icon: Auth
+            icon: Auth,
+            line: `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 1H35.3623C41.9897 1 47.3623 6.37258 47.3623 13V62C47.3623 68.6274 52.7349 74 59.3623 74H98" class="peer-hover:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
+                   </svg>`
         },
         {
             label: 'Databases',
-            icon: Databases
+            icon: Databases,
+            line: `<svg width="98" height="2" viewBox="0 0 98 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 1L98 1.00001" class="peer-hover:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
+                   </svg>`
         },
         {
             label: 'Functions',
-            icon: Functions
+            icon: Functions,
+            line: `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 74H35.3623C41.9897 74 47.3623 68.6274 47.3623 62V13C47.3623 6.37258 52.7349 0.999998 59.3623 0.999998H98" class="peer-hover:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
+                   </svg>`
         },
         {
             label: 'Storage',
-            icon: Storage
+            icon: Storage,
+            line: `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M98 1H62.6377C56.0103 1 50.6377 6.37258 50.6377 13V62C50.6377 68.6274 45.2651 74 38.6377 74H-9.53674e-07" class="peer-hover:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
+                   </svg>`
         },
         {
             label: 'Realtime',
-            icon: Realtime
+            icon: Realtime,
+            line: `<svg width="98" height="2" viewBox="0 0 98 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 1L98 1.00001" class="peer-hover:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
+                   </svg>`
         },
         {
             label: 'Messaging',
-            icon: Messaging
+            icon: Messaging,
+            line: `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M98 74H62.6377C56.0103 74 50.6377 68.6274 50.6377 62V13C50.6377 6.37258 45.2651 0.999998 38.6377 0.999998H-9.53674e-07" class="peer-hover:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
+                   </svg>`
         }
     ];
+
+    let activeItem: string = products[0].label;
 </script>
 
 <div class="my-40 flex flex-col gap-16 bg-center px-16">
@@ -39,48 +60,24 @@
         class="relative grid grid-cols-12 place-items-center [background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)]"
     >
         <div class="col-span-3 w-full">
-            <div class="text-body flex flex-col items-end gap-8 font-medium text-white">
+            <div class="text-body flex flex-col items-end gap-12 font-medium text-white">
                 {#each products.slice(0, 3) as product, i}
-                    <div class="pointer-events-none relative mr-auto ml-0 flex w-full items-center">
-                        <div
-                            class="bg-card border-smooth mr-0 ml-auto flex items-center gap-2 rounded-xl border py-2 pr-4 pl-2"
+                    <div class="relative mr-auto ml-0 flex w-full items-center">
+                        <button
+                            class="peer bg-card border-smooth mr-[100px] ml-auto flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-2 backdrop-blur-md"
+                            on:mouseover={() => (activeItem = product.label)}
+                            on:focus={() => (activeItem = product.label)}
                         >
                             <img src={product.icon} alt={product.label} class="h-6 w-6" />
                             {product.label}
-                            <div class="absolute right-0">
-                                {#if i === 1}
-                                    <svg
-                                        width="98"
-                                        height="2"
-                                        viewBox="0 0 98 2"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M0 1L98 1.00001"
-                                            stroke="white"
-                                            stroke-opacity="0.1"
-                                            stroke-dasharray="4 4"
-                                        />
-                                    </svg>
-                                {:else}
-                                    <svg
-                                        width="98"
-                                        height="75"
-                                        viewBox="0 0 98 75"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class:-scale-x-100={i === 2}
-                                    >
-                                        <path
-                                            d="M0 74H35.3623C41.9897 74 47.3623 68.6274 47.3623 62V13C47.3623 6.37258 52.7349 0.999998 59.3623 0.999998H98"
-                                            stroke="white"
-                                            stroke-opacity="0.1"
-                                            stroke-dasharray="4 4"
-                                        />
-                                    </svg>
-                                {/if}
-                            </div>
+                        </button>
+                        <div
+                            class={classNames('absolute right-0', {
+                                'top-1/2': i === 0,
+                                'bottom-1/2': i === 2
+                            })}
+                        >
+                            {@html product.line}
                         </div>
                     </div>
                 {/each}
@@ -108,54 +105,32 @@
                                 />
                             {/each}
                         </div>
-                        <div class="flex-1 rounded-2xl bg-[#19191C]" />
+                        <div class="flex-1 rounded-2xl bg-[#19191C]">
+                            {activeItem}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-span-3 w-full">
-            <div class="text-body flex flex-col gap-8 font-medium text-white">
+            <div class="text-body flex flex-col gap-12 font-medium text-white">
                 {#each products.slice(3) as product, i}
-                    <div class="pointer-events-none relative flex w-full items-center">
-                        <div
-                            class="bg-card border-smooth mr-auto ml-0 flex items-center gap-2 rounded-xl border py-2 pr-4 pl-2"
+                    <div class="relative mr-0 ml-auto flex w-full items-center">
+                        <button
+                            class="peer bg-card border-smooth mr-auto ml-[100px] flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-2 backdrop-blur-md"
+                            on:mouseover={() => (activeItem = product.label)}
+                            on:focus={() => (activeItem = product.label)}
                         >
                             <img src={product.icon} alt={product.label} class="h-6 w-6" />
                             {product.label}
-                            <div class="absolute left-0">
-                                {#if i === 1}
-                                    <svg
-                                        width="98"
-                                        height="2"
-                                        viewBox="0 0 98 2"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M0 1L98 1.00001"
-                                            stroke="white"
-                                            stroke-opacity="0.1"
-                                            stroke-dasharray="4 4"
-                                        />
-                                    </svg>
-                                {:else}
-                                    <svg
-                                        width="98"
-                                        height="75"
-                                        viewBox="0 0 98 75"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class:-scale-x-100={i === 2}
-                                    >
-                                        <path
-                                            d="M0 74H35.3623C41.9897 74 47.3623 68.6274 47.3623 62V13C47.3623 6.37258 52.7349 0.999998 59.3623 0.999998H98"
-                                            stroke="white"
-                                            stroke-opacity="0.1"
-                                            stroke-dasharray="4 4"
-                                        />
-                                    </svg>
-                                {/if}
-                            </div>
+                        </button>
+                        <div
+                            class={classNames('absolute left-0', {
+                                'top-1/2': i === 0,
+                                'bottom-1/2': i === 2
+                            })}
+                        >
+                            {@html product.line}
                         </div>
                     </div>
                 {/each}
