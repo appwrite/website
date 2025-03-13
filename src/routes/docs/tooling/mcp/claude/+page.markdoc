@@ -43,7 +43,7 @@ After opening the file, add the following info:
 
 {% info title="Enable other MCP tools" %}
 
-To enable tools other than the Users API, learn more about [command-line arguments](/docs/tooling/mcp#command-line-arguments).
+To enable additional tools, learn more about [command-line arguments](/docs/tooling/mcp#command-line-arguments).
 
 {% /info %}
 

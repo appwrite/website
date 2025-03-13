@@ -17,7 +17,9 @@ Before launching the MCP server, you must [setup an Appwrite project](https://cl
 ![Appwrite API key](/images/docs/mcp/appwrite/dark/appwrite-api-secret.png)
 {% /only_dark %}
 
-Then, install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your system with:
+## Integrate with popular AI tools
+
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your system with:
 
 {% tabs %}
 {% tabsitem #uv-linux-macos title="Linux and MacOS" %}
@@ -36,9 +38,6 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 
 {% /tabsitem %}
 {% /tabs %}
-
-
-## Integrate with popular AI tools
 
 You can now integrate the MCP server with various popular AI-enabled code editors and LLM apps.
 
