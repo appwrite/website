@@ -25,14 +25,13 @@ As Appwrite continues to scale, we need to ensure our platform remains sustainab
 
 We will begin charging for database read and write operations beyond the included quotas in each plan. All plans will continue to include a generous allocation of operations at no additional charge:
 
-- **Free Plan**: 500,000 read operations and 250,000 write operations per month
-- **Pro Plan**: 1,750,000 read operations and 750,000 write operations per month, with additional operations available at $0.060 per 100,000 reads and $0.10 per 100,000 writes
-- **Scale Plan**: 1,750,000 read operations and 750,000 write operations per month, with additional operations available at $0.060 per 100,000 reads and $0.10 per 100,000 writes
-- **Enterprise Plan**: Unlimited read and write operations
+- **Free Plan**: 500,000 read operations and 250,000 write operations per month.
+- **Pro and Scale Plans**: 1,750,000 read operations and 750,000 write operations per month, with additional operations available at $0.060 per 100,000 reads and $0.10 per 100,000 writes.
+- **Enterprise Plan**: Unlimited read and write operations.
 
 This change will help support the infrastructure required to maintain high-performance database services and enable us to continue enhancing the platform.
 
-Please refer to our [Pricing Page](/pricing) for detailed information, including operation costs and included quotas for different plans.
+Please refer to our [pricing page](/pricing) for detailed information, including operation costs and included quotas for different plans.
 
 # How it works
 
@@ -41,16 +40,16 @@ Database operations in Appwrite are categorized into two types:
 ## Read operations
 
 Any action that retrieves data from your database, including:
-- Fetching documents with `getDocument` or `listDocuments`
+- Fetching documents with `getDocument` or `listDocuments`.
 
 ## Write operations
 
 Any action that modifies data in your database, including:
-- Creating documents with `createDocument`
-- Updating documents with `updateDocument`
-- Deleting documents with `deleteDocument`
+- Creating documents with `createDocument`.
+- Updating documents with `updateDocument`.
+- Deleting documents with `deleteDocument`.
 
-**Important to note**: Operations are counted based on the number of documents affected, not API calls. For example, if you fetch a collection of 50 documents with a single API call, this counts as 50 read operations, not as a single operation. If your query returned no documents, it will still count as one operation.
+**Important to note**: Operations are counted based on the number of documents affected, not API calls. For example, if you fetch a collection of 50 documents with a single API call, this counts as 50 read operations, not as a single operation. If your query returned no documents, **it won't be counted**.
 
 # Your usage
 
@@ -60,10 +59,10 @@ To help prepare for these changes, teams can review their current database opera
 
 To help you manage your database operations efficiently, here are some best practices:
 
-1. **Use efficient queries**: Filter data on the server side rather than retrieving large datasets and filtering client-side
-2. **Implement pagination**: Use the `limit` and `offset` parameters to retrieve only the data you need
-3. **Consider caching**: Cache frequently accessed data to reduce repeated read operations
-4. **Monitor usage**: Keep track of your database operations through the Appwrite Console
+1. **Use efficient queries**: Filter data on the server side rather than retrieving large datasets and filtering client-side.
+2. **Implement pagination**: Use the `limit` and `offset` parameters to retrieve only the data you need.
+3. **Consider caching**: Cache frequently accessed data to reduce repeated read operations.
+4. **Monitor usage**: Keep track of your database operations through the Appwrite Console.
 
 # We're here to help
 
