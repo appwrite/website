@@ -4,10 +4,12 @@
         href: string;
         step?: number;
         selected?: boolean;
+        level?: number;
         children?: Array<{
             title: string;
             href: string;
             selected: boolean;
+            level?: number;
         }>;
     };
 </script>

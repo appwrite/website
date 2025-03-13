@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import ConsoleImage from '../(assets)/console.png';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     export let title: string = 'Start building with Appwrite today';
     export let description: string =
@@ -14,7 +14,7 @@
             <p class="text-body font-medium">
                 {description}
             </p>
-            <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button">Get started</a>
+            <a href={getAppwriteDashboardUrl()} class="web-button">Get started</a>
         </div>
 
         <img class="console" src={ConsoleImage} alt="" />
