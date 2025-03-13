@@ -64,7 +64,7 @@
                 {#each products.slice(0, 3) as product, i}
                     <div class="relative mr-auto ml-0 flex w-full items-center">
                         <button
-                            class="peer bg-card border-smooth mr-[100px] ml-auto flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-2 backdrop-blur-md"
+                            class="peer bg-card border-smooth mr-[100px] ml-auto flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md"
                             on:mouseover={() => (activeItem = product.label)}
                             on:focus={() => (activeItem = product.label)}
                         >
@@ -117,7 +117,7 @@
                 {#each products.slice(3) as product, i}
                     <div class="relative mr-0 ml-auto flex w-full items-center">
                         <button
-                            class="peer bg-card border-smooth mr-auto ml-[100px] flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-2 backdrop-blur-md"
+                            class="peer bg-card border-smooth mr-auto ml-[100px] flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md"
                             on:mouseover={() => (activeItem = product.label)}
                             on:focus={() => (activeItem = product.label)}
                         >
