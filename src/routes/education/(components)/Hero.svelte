@@ -4,7 +4,7 @@
     import ChatIcon from '../(assets)/chat-icon.svg';
     import Beaker from '../(assets)/beaker.svg';
     import Checkmark from '../(assets)/checkmark.svg';
-    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard.js';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     const items = [
         {

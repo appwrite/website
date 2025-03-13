@@ -1,6 +1,6 @@
 <script>
     import { classNames } from '$lib/utils/classnames';
-    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard.js';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     const educationSignUp = getAppwriteDashboardUrl('/console/education');
 </script>
