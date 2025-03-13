@@ -8,6 +8,7 @@
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     type Table = {
         title: string;
@@ -513,7 +514,7 @@
                             <div class="flex flex-col items-center justify-between gap-2">
                                 <h4 class="text-sub-body text-primary font-medium">Free</h4>
                                 <a
-                                    href="https://cloud.appwrite.io/register"
+                                    href={getAppwriteDashboardUrl('/register')}
                                     class="web-button is-secondary !w-full"
                                 >
                                     <span class="text-sub-body font-medium">Start building</span>
@@ -525,7 +526,9 @@
                                 <h4 class="text-sub-body text-primary font-medium">Pro</h4>
                                 <a
                                     class="web-button !w-full"
-                                    href="https://cloud.appwrite.io/console?type=create&plan=tier-1"
+                                    href={getAppwriteDashboardUrl(
+                                        '/console?type=create&plan=tier-1'
+                                    )}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -538,7 +541,9 @@
                                 <h4 class="text-sub-body text-primary font-medium">Scale</h4>
                                 <a
                                     class="web-button is-secondary !w-full"
-                                    href="https://cloud.appwrite.io/console?type=create&plan=tier-2"
+                                    href={getAppwriteDashboardUrl(
+                                        '/console?type=create&plan=tier-2'
+                                    )}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
