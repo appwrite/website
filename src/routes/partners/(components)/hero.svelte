@@ -45,7 +45,8 @@
         position: relative;
         z-index: 1;
         overflow: hidden;
-        background-image: repeating-linear-gradient(
+        background-image:
+            repeating-linear-gradient(
                 0deg,
                 var(--line-color),
                 var(--line-color) 1px,

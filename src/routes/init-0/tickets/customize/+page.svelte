@@ -233,7 +233,8 @@
             }
 
             > button {
-                background: linear-gradient(
+                background:
+                    linear-gradient(
                         93deg,
                         rgba(253, 54, 110, 0.2) 0.29%,
                         rgba(35, 35, 37, 0.2) 52.57%,

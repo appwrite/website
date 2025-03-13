@@ -50,8 +50,6 @@ export default defineConfig({
         include: ['src/**/*.{test,spec}.{js,ts}']
     },
     server: {
-        allowedHosts: [
-            '5173-appwrite-website-46vk5bvcfb8.ws-us118.gitpod.io'
-        ]
+        allowedHosts: ['5173-appwrite-website-46vk5bvcfb8.ws-us118.gitpod.io']
     }
 });
