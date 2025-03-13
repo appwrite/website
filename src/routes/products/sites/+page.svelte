@@ -3,7 +3,9 @@
     import Main from '$lib/layouts/Main.svelte';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
+    import Create from './(components)/create.svelte';
     import Integrate from './(components)/integrate.svelte';
+    import Steps from './(components)/steps.svelte';
 
     const title = 'Sites' + TITLE_SUFFIX;
     const description = 'Appwrite Sites is very cool';
@@ -29,5 +31,10 @@
 
 <Main>
     <Frameworks headline="Host your favorite web frameworks" />
-    <Integrate />
+    <div class="px-16">
+        <Steps>
+            <Create />
+        </Steps>
+        <Integrate />
+    </div>
 </Main>
