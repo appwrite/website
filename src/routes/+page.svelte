@@ -16,14 +16,12 @@
     import FooterNav from '../lib/components/FooterNav.svelte';
     import MainFooter from '../lib/components/MainFooter.svelte';
     import DeveloperCard from './DeveloperCard.svelte';
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import CoverImage from './dashboard.webp';
     import Hero from '$lib/components/ui/Hero.svelte';
     import GradientText from '$lib/components/ui/GradientText.svelte';
     import Badge from '$lib/components/ui/Badge.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
-    import { getUtmSourceForLink } from '$lib/utils/utm';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     const title = 'Appwrite - Build like a team of hundreds';
