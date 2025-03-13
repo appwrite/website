@@ -6,61 +6,98 @@
     import Realtime from '../(assets)/icons/realtime.svg';
     import Messaging from '../(assets)/icons/messaging.svg';
     import { classNames } from '$lib/utils/classnames';
-    import Deploy from '../(assets)/slides/deploy.jpg';
+
+    import DefaultSlide from '../(assets)/slides/default.svg';
+    import AuthSlide from '../(assets)/slides/auth.svg';
+    import DatabasesSlide from '../(assets)/slides/databases.svg';
+    import FunctionsSlide from '../(assets)/slides/functions.svg';
+    import StorageSlide from '../(assets)/slides/storage.svg';
+    import RealtimeSlide from '../(assets)/slides/realtime.svg';
+    import MessagingSlide from '../(assets)/slides/messaging.svg';
+    import { onDestroy, onMount } from 'svelte';
 
     const products = [
         {
             label: 'Auth',
             icon: Auth,
             line: `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 1H35.3623C41.9897 1 47.3623 6.37258 47.3623 13V62C47.3623 68.6274 52.7349 74 59.3623 74H98" class="peer-hover:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
+                        <path d="M0 1H35.3623C41.9897 1 47.3623 6.37258 47.3623 13V62C47.3623 68.6274 52.7349 74 59.3623 74H98" class="group-hover:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
-            image: Deploy
+            image: AuthSlide
         },
         {
             label: 'Databases',
             icon: Databases,
             line: `<svg width="98" height="2" viewBox="0 0 98 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 1L98 1.00001" class="peer-hover:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
+                        <path d="M0 1L98 1.00001" class="group-hover:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
-            image: Deploy
+            image: DatabasesSlide
         },
         {
             label: 'Functions',
             icon: Functions,
             line: `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 74H35.3623C41.9897 74 47.3623 68.6274 47.3623 62V13C47.3623 6.37258 52.7349 0.999998 59.3623 0.999998H98" class="peer-hover:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
+                        <path d="M0 74H35.3623C41.9897 74 47.3623 68.6274 47.3623 62V13C47.3623 6.37258 52.7349 0.999998 59.3623 0.999998H98" class="group-hover:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
-            image: Deploy
+            image: FunctionsSlide
         },
         {
             label: 'Storage',
             icon: Storage,
             line: `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M98 1H62.6377C56.0103 1 50.6377 6.37258 50.6377 13V62C50.6377 68.6274 45.2651 74 38.6377 74H-9.53674e-07" class="peer-hover:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
+                        <path d="M98 1H62.6377C56.0103 1 50.6377 6.37258 50.6377 13V62C50.6377 68.6274 45.2651 74 38.6377 74H-9.53674e-07" class="group-hover:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
-            image: Deploy
+            image: StorageSlide
         },
         {
             label: 'Realtime',
             icon: Realtime,
             line: `<svg width="98" height="2" viewBox="0 0 98 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 1L98 1.00001" class="peer-hover:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
+                        <path d="M0 1L98 1.00001" class="group-hover:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
-            image: Deploy
+            image: RealtimeSlide
         },
         {
             label: 'Messaging',
             icon: Messaging,
             line: `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M98 74H62.6377C56.0103 74 50.6377 68.6274 50.6377 62V13C50.6377 6.37258 45.2651 0.999998 38.6377 0.999998H-9.53674e-07" class="peer-hover:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
+                        <path d="M98 74H62.6377C56.0103 74 50.6377 68.6274 50.6377 62V13C50.6377 6.37258 45.2651 0.999998 38.6377 0.999998H-9.53674e-07" class="group-hover:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
-            image: Deploy
+            image: MessagingSlide
         }
     ];
 
     $: activeIndex = 0;
     $: activeSlide = products[activeIndex].image;
+    let paused: boolean = false;
+
+    const autoCycle = () => {
+        if (paused) return;
+        activeIndex = (activeIndex + 1) % products.length;
+    };
+
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    let intervalId: number;
+
+    const handleSetActive = (index: number) => {
+        paused = true;
+        activeIndex = index;
+    };
+
+    const handleMouseOut = () => {
+        paused = false;
+    };
+
+    onMount(() => {
+        intervalId = setInterval(autoCycle, 5000, { signal });
+    });
+
+    onDestroy(() => {
+        clearInterval(intervalId);
+        controller.abort();
+    });
 </script>
 
 <div class="my-40 flex flex-col gap-16 bg-center">
@@ -70,11 +107,13 @@
         <div class="col-span-3 w-full">
             <div class="text-body flex flex-col items-end gap-12 font-medium text-white">
                 {#each products.slice(0, 3) as product, index}
-                    <div class="relative mr-auto ml-0 flex w-full items-center">
+                    <div class="group relative mr-auto ml-0 flex w-full items-center">
                         <button
-                            class="peer bg-card border-smooth mr-[100px] ml-auto flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md"
-                            on:mouseover={() => (activeIndex = index)}
-                            on:focus={() => (activeIndex = index)}
+                            class="bg-card border-smooth mr-[100px] ml-auto flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md"
+                            on:mouseover={() => handleSetActive(index)}
+                            on:focus={() => handleSetActive(index)}
+                            on:mouseout={() => handleMouseOut()}
+                            on:blur={() => handleMouseOut()}
                         >
                             <img src={product.icon} alt={product.label} class="h-6 w-6" />
                             {product.label}
@@ -92,7 +131,7 @@
             </div>
         </div>
         <div
-            class="window col-span-6 flex aspect-[6.5/4.25] w-full items-center justify-center rounded-[48px] border border-dashed border-transparent p-3"
+            class="window col-span-6 flex aspect-[6.5/4.5] w-full items-center justify-center rounded-[48px] border border-dashed border-transparent p-3"
             style:animation-delay="0.6s"
         >
             <div
@@ -116,7 +155,7 @@
                         <div class="flex-1 rounded-2xl bg-[#19191C]">
                             <img
                                 src={activeSlide}
-                                class="h-full w-full rounded-2xl object-cover"
+                                class="animate-fade-in h-full w-full rounded-2xl"
                                 alt=""
                             />
                         </div>
@@ -128,11 +167,13 @@
             <div class="text-body flex flex-col gap-12 font-medium text-white">
                 {#each products.slice(3) as product, i}
                     {@const index = i + 3}
-                    <div class="relative mr-0 ml-auto flex w-full items-center">
+                    <div class="group relative mr-0 ml-auto flex w-full items-center">
                         <button
-                            class="peer bg-card border-smooth mr-auto ml-[100px] flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md"
-                            on:mouseover={() => (activeIndex = index)}
-                            on:focus={() => (activeIndex = index)}
+                            class="bg-card border-smooth mr-auto ml-[100px] flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md"
+                            on:mouseover={() => handleSetActive(index)}
+                            on:focus={() => handleSetActive(index)}
+                            on:mouseout={() => handleMouseOut()}
+                            on:blur={() => handleMouseOut()}
                         >
                             <img src={product.icon} alt={product.label} class="h-6 w-6" />
                             {product.label}
