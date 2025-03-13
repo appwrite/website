@@ -1,6 +1,5 @@
 <script lang="ts">
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import { getUtmSourceForLink } from '$lib/utils/utm';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     export let heading: string = 'Start building with Appwrite today';
     export let label: string = 'Get started';
@@ -11,9 +10,7 @@
 >
     <div class="flex max-w-3xs flex-col items-center justify-center gap-5 text-center">
         <h2 class="text-label text-primary font-aeonik-pro">{heading}</h2>
-        <a href={`${PUBLIC_APPWRITE_DASHBOARD}?${getUtmSourceForLink()}`} class="web-button"
-            >{label}</a
-        >
+        <a href={getAppwriteDashboardUrl()} class="web-button">{label}</a>
     </div>
 </div>
 

@@ -1,11 +1,10 @@
 <script>
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { classNames } from '$lib/utils/classnames';
     import Logos from './Logos.svelte';
     import ChatIcon from '../(assets)/chat-icon.svg';
     import Beaker from '../(assets)/beaker.svg';
     import Checkmark from '../(assets)/checkmark.svg';
-    import { getUtmSourceForLink } from '$lib/utils/utm';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard.js';
 
     const items = [
         {
@@ -27,7 +26,7 @@
         }
     ];
 
-    const educationSignUp = `${PUBLIC_APPWRITE_DASHBOARD}/console/education?${getUtmSourceForLink()}`;
+    const educationSignUp = getAppwriteDashboardUrl('/console/education');
 </script>
 
 <section

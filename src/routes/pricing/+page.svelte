@@ -7,8 +7,7 @@
     import ComparePlans from './compare-plans.svelte';
     import Faq from './faq.svelte';
     import BG from './bg.png?enhanced';
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import { getUtmSourceForLink } from '$lib/utils/utm';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     const title = 'Pricing' + TITLE_SUFFIX;
     const description = 'Explore our straightforward pricing plans that scale with your project.';
@@ -96,7 +95,7 @@
                                                 applications.
                                             </p>
                                             <a
-                                                href={`${PUBLIC_APPWRITE_DASHBOARD}/register?${getUtmSourceForLink()}`}
+                                                href={getAppwriteDashboardUrl('/register')}
                                                 class="web-button is-secondary is-full-width mt-8"
                                             >
                                                 <span class="text-sub-body font-medium"
@@ -162,7 +161,9 @@
                                                 functionality and resources to scale.
                                             </p>
                                             <a
-                                                href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=create&plan=tier-1&${getUtmSourceForLink()}`}
+                                                href={getAppwriteDashboardUrl(
+                                                    '/console?type=create&plan=tier-1'
+                                                )}
                                                 class="web-button is-full-width mt-11"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
@@ -226,7 +227,9 @@
                                                 projects and need more control and support.
                                             </p>
                                             <a
-                                                href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=create&plan=tier-2&${getUtmSourceForLink()}`}
+                                                href={getAppwriteDashboardUrl(
+                                                    '/console?type=create&plan=tier-2'
+                                                )}
                                                 class="web-button is-secondary is-full-width mt-10"
                                                 target="_blank"
                                                 rel="noopener noreferrer"

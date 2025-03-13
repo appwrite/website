@@ -1,8 +1,7 @@
 <script lang="ts">
     import Phone from '../(assets)/phone.png';
     import PhoneMobile from '../(assets)/phone-mobile.png';
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import { getUtmSourceForLink } from '$lib/utils/utm';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 </script>
 
 <div
@@ -25,10 +24,7 @@
             </p>
 
             <div class="flex flex-col items-center gap-2 md:flex-row">
-                <a
-                    href={`${PUBLIC_APPWRITE_DASHBOARD}?${getUtmSourceForLink()}`}
-                    class="web-button !w-full md:!w-fit"
-                >
+                <a href={getAppwriteDashboardUrl()} class="web-button !w-full md:!w-fit">
                     Get started
                 </a>
                 <a href="/docs/products/auth" class="web-button is-secondary !w-full md:!w-fit">
