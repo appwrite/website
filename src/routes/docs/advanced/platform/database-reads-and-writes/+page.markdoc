@@ -3,7 +3,7 @@ layout: article
 title: Database Reads and Writes
 description: Learn how Appwrite handles database reads and writes and their associated costs.
 ---
-{% info title="Note" %} 
+{% info title="Note" %}
 Updated pricing will take effect on April 10th, 2025. Check out this [blog post](/blog/post/announcing-database-reads-and-writes-pricing) for more information.
 {% /info %}
 
@@ -27,7 +27,7 @@ How it works:
 3. Operations are counted based on the number of documents affected, not API calls.
 4. Quotas are refreshed monthly based on your subscription plan.
 
-For example, if you fetch a collection of 50 documents with a single API call, this counts as 50 read operations, not as a single operation. If your query returned no documents, it **won't be counted**.
+For example, if you fetch a collection of 50 documents with a single API call, this counts as 50 read operations, not as a single operation. If your query returns no documents, this counts as a single operation.
 
 ## Pricing
 
