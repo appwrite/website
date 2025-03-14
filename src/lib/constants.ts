@@ -127,12 +127,12 @@ export const socials: Array<Social> = [
     {
         icon: 'web-icon-linkedin',
         label: 'LinkedIn',
-        link: 'https://www.linkedin.com/company/appwrite'
+        link: 'https://linkedin.com/company/appwrite'
     },
     {
         icon: 'web-icon-youtube',
         label: 'YouTube',
-        link: 'https://www.youtube.com/c/appwrite?sub_confirmation=1'
+        link: 'https://youtube.com/c/appwrite?sub_confirmation=1'
     },
     {
         icon: 'web-icon-daily-dev',
@@ -147,6 +147,11 @@ export const socials: Array<Social> = [
     {
         icon: 'web-icon-tiktok',
         label: 'Tiktok',
-        link: 'https://www.tiktok.com/@appwrite'
+        link: 'https://tiktok.com/@appwrite'
+    },
+    {
+        icon: 'web-icon-instagram',
+        label: 'Instagram',
+        link: 'https://instagram.com/appwrite.io'
     }
 ];

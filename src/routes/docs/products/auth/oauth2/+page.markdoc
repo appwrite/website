@@ -159,7 +159,7 @@ import io.appwrite.Client
 import io.appwrite.services.Account
 import io.appwrite.enums.OAuthProvider
 
-val client = Client()
+val client = Client(context)                     // Activity or application context
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                  // Your project ID
 
@@ -234,6 +234,10 @@ You can optionally configure `success` or `failure` redirect links on web to han
 After authenticating a user through their OAuth 2 provider, you can fetch their profile information such as their avatar image or name. To do this you can use the access token from the OAuth 2 provider and make API calls to the provider.
 
 After creating an OAuth 2 session, you can fetch the session to get information about the provider.
+
+{% info title="Tip" %}
+Replace `[SESSION_ID]` with either `"current"` to get or update the active session, or with a specific session ID.
+{% /info %}
 
 {% multicode %}
 ```client-web
