@@ -31,7 +31,7 @@
 
 <Main>
     <Frameworks headline="Host your favorite web frameworks" />
-    <div class="px-16">
+    <div class="px-4 md:px-16">
         <Steps>
             <Create />
         </Steps>
