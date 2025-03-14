@@ -43,7 +43,8 @@
 
     .gradient-background {
         background-position: 0 0 0 0;
-        background-image: radial-gradient(
+        background-image:
+            radial-gradient(
                 ellipse 390px 50px at 10% 30%,
                 rgba(254, 149, 103, 0.4) 0%,
                 rgba(254, 149, 103, 0) 70%

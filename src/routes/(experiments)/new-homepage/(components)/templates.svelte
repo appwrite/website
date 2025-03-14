@@ -94,7 +94,8 @@
         background-size:
             var(--grid-gap) var(--grid-gap),
             var(--grid-size) var(--grid-size);
-        background-image: linear-gradient(
+        background-image:
+            linear-gradient(
                 to bottom,
                 transparent var(--grid-dash),
                 var(--paper-color) var(--grid-dash)
