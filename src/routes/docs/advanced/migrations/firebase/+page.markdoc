@@ -49,7 +49,7 @@ To begin migrating to Appwrite, follow these steps.
 
 1. Click on the **Create Migration** button and select **Firebase** as your source.
 
-1. Upload the JSON file to Appwrite and follow the migration wizard to select which resources you need to migrate. Finally click **Start migration** to begin the migration process.
+1. Paste the contents of your JSON file into the textbox and follow the migration wizard to select which resources you need to migrate. Finally click **Start migration** to begin the migration process.
 
 {% /section %}
 {% section #next-steps step=4 title="Next steps" %}
