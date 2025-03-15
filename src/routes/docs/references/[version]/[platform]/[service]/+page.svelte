@@ -103,8 +103,8 @@
         const hasPlatformPrefix =
             $preferredPlatform.startsWith('client-') || $preferredPlatform.startsWith('server-');
 
-        /* `!document.referrer` = don't redirect if the page was opened via a direct url hit */
-        if (!isSame && !document.referrer) {
+        /* `document.referrer` = don't redirect if the page was opened via a direct url hit */
+        if (!isSame && document.referrer) {
             const platformMode = hasPlatformPrefix
                 ? $preferredPlatform
                 : `server-${$preferredPlatform}`;
@@ -128,7 +128,7 @@
     $: shortenedDescription = serviceDescription.substring(0, serviceDescription.indexOf('.') + 1);
 
     $: platformBindingForSelect = platform;
-    $: platform = ($preferredPlatform ?? $page.params.platform) as Platform;
+    $: platform = $page.params.platform as Platform;
     $: platformType = platform.startsWith('client-') ? 'CLIENT' : 'SERVER';
     $: serviceName = serviceMap[data.service?.name];
     $: title = serviceName + API_REFERENCE_TITLE_SUFFIX;
