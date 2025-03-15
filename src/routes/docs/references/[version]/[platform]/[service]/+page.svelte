@@ -90,7 +90,7 @@
         // nodejs has a `server-` prefix.
         const needsServerPrefix =
             !platform.startsWith('client-') && !platform.startsWith('server-');
-        if (needsServerPrefix) {
+        if (needsServerPrefix && document.referrer) {
             platformBindingForSelect = `server-${platform}` as Platform;
         }
     }
@@ -127,8 +127,8 @@
     // the service description up to the first full stop, providing sufficient information.
     $: shortenedDescription = serviceDescription.substring(0, serviceDescription.indexOf('.') + 1);
 
-    $: platformBindingForSelect = platform;
-    $: platform = $page.params.platform as Platform;
+    $: platformBindingForSelect = $page.params.platform as Platform;
+    $: platform = ($preferredPlatform ?? $page.params.platform) as Platform;
     $: platformType = platform.startsWith('client-') ? 'CLIENT' : 'SERVER';
     $: serviceName = serviceMap[data.service?.name];
     $: title = serviceName + API_REFERENCE_TITLE_SUFFIX;
