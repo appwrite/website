@@ -54,10 +54,13 @@
         // except nodejs, all other server sided need to be saved as without `server-` prefix
         const isServerSide =
             !platform.startsWith('client-') && !platform.startsWith('server-nodejs');
+
+        let correctPlatform = platform;
         if (isServerSide) {
-            const correctPlatform = platform.replaceAll(`server-`, ``);
-            preferredPlatform.set(correctPlatform as Platform);
+            correctPlatform = platform.replaceAll(`server-`, ``) as Platform;
         }
+
+        preferredPlatform.set(correctPlatform as Platform);
 
         goto(`/docs/references/${version}/${platform}/${service}`, {
             noScroll: true
@@ -100,7 +103,8 @@
         const hasPlatformPrefix =
             $preferredPlatform.startsWith('client-') || $preferredPlatform.startsWith('server-');
 
-        if (!isSame) {
+        /* `!document.referrer` = don't redirect if the page was opened via a direct url hit */
+        if (!isSame && !document.referrer) {
             const platformMode = hasPlatformPrefix
                 ? $preferredPlatform
                 : `server-${$preferredPlatform}`;
