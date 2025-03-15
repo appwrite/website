@@ -8,9 +8,15 @@
         /\/docs\/references\/.*?\/(client|server).*?\/.*?\/?/
     );
 
-    $: prefix = `/docs/references/${$preferredVersion ?? $page.params?.version ?? 'cloud'}/${
-        $preferredPlatform ?? $page.params?.platform ?? 'client-web'
-    }`;
+    $: platform = $preferredPlatform ?? $page.params?.platform ?? 'client-web';
+
+    /* correct platform prefix for references page */
+    $: resolvedPlatformPrefix = /^server-|^client-/.test(platform)
+        ? platform
+        : `server-${platform}`;
+
+    $: prefix = `/docs/references/${$preferredVersion ?? $page.params?.version ?? 'cloud'}/${resolvedPlatformPrefix}`;
+
     $: navigation = [
         {
             label: 'Getting started',
