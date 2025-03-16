@@ -72,7 +72,7 @@ async function signUpWithEmail(formData) {
   await account.create(ID.unique(), email, password, name);
   const session = await account.createEmailPasswordSession(email, password);
 
-  cookies().set("my-custom-session", session.secret, {
+  (await cookies()).set("my-custom-session", session.secret, {
     path: "/",
     httpOnly: true,
     sameSite: "strict",
