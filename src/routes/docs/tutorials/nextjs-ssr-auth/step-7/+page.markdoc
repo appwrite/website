@@ -27,7 +27,7 @@ import { OAuthProvider } from "node-appwrite";
 export async function signUpWithGithub() {
 	const { account } = await createAdminClient();
 
-  const origin = headers().get("origin");
+  const origin = (await headers()).get("origin");
   
 	const redirectUrl = await account.createOAuth2Token(
 		OAuthProvider.Github,
@@ -85,7 +85,7 @@ export async function GET(request) {
   const { account } = await createAdminClient();
   const session = await account.createSession(userId, secret);
 
-  cookies().set("my-custom-session", session.secret, {
+  (await cookies()).set("my-custom-session", session.secret, {
     path: "/",
     httpOnly: true,
     sameSite: "strict",
