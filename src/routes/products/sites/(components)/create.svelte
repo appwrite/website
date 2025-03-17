@@ -66,7 +66,7 @@
         </div>
     </div>
 
-    <div class="relative z-10 -mt-28 flex max-w-md flex-col gap-4 pl-12">
+    <div class="relative z-10 -mt-24 mx-auto flex max-w-2xl flex-col gap-4 pl-12 text-center">
         <h2 class="text-title text-primary font-aeonik-pro">
             Clone a template or import a repository
         </h2>

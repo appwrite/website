@@ -1,9 +1,13 @@
 <script lang="ts">
     import Frameworks from '$lib/components/marketing/frameworks.svelte';
+    import OpenSourceAlternative from '$lib/components/marketing/open-source-alternative.svelte';
+    import Testimonials from '$lib/components/marketing/testimonials.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import Create from './(components)/create.svelte';
+    import Deploy from './(components)/deploy.svelte';
+    import Hero from './(components)/hero.svelte';
     import Integrate from './(components)/integrate.svelte';
     import Steps from './(components)/steps.svelte';
 
@@ -30,11 +34,14 @@
 </svelte:head>
 
 <Main>
-    <Frameworks headline="Host your favorite web frameworks" />
+    <Hero />
     <div class="px-4 md:px-16">
         <Steps>
             <Create />
+            <Deploy />
         </Steps>
         <Integrate />
     </div>
+    <OpenSourceAlternative />
+    <Testimonials />
 </Main>

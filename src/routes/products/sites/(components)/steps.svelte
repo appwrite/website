@@ -6,7 +6,7 @@
             <div class="size-1 rounded-full bg-white" />
         </div>
     </div>
-    <div class="min-h-[100vh] w-full">
+    <div class="flex min-h-[100vh] w-full flex-col gap-24">
         <slot />
     </div>
 </div>
