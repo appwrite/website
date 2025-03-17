@@ -24,7 +24,7 @@
                         {
                             'font-medium': parent.level && parent.level === 1,
                             'ps-6': parent.level && parent.level === 2,
-                            'pl-16': parent.level && parent.level >= 3,
+                            'pl-10': parent.level && parent.level >= 3,
                             'before:opacity-100': parent.selected
                         }
                     )}
