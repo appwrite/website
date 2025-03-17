@@ -140,7 +140,9 @@
                         <span class="web-icon-star shrink-0" aria-hidden="true" />
                         <span class="text-caption shrink-0 font-medium">New</span>
                         <div class="web-hero-banner-button-sep" />
-                        <span class="text-caption web-u-trim-1">Announncing new Appwrite MCP server</span>
+                        <span class="text-caption web-u-trim-1"
+                            >Announcing new Appwrite MCP server</span
+                        >
                         <span class="web-icon-arrow-right shrink-0" aria-hidden="true" />
                     </a>
                     <Hero>
