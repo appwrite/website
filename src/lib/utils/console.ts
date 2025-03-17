@@ -49,8 +49,7 @@ export async function isProUser() {
     try {
         const orgs = await teams.list([Query.equal('billingPlan', BillingPlan.PRO)]);
         return orgs?.teams?.length > 1;
-    } catch (e) {
-        console.error(e);
+    } catch {
         return false;
     }
 }
