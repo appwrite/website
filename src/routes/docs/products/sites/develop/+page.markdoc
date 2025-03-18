@@ -1,0 +1,58 @@
+---
+layout: article
+title: Develop Appwrite Sites
+description: Master site development with Appwrite.
+---
+
+## Hosting methods
+
+// TODO: Mention the following (link the Concepts pages)
+
+- Static (mention SPAs)
+- SSR
+
+## **Accessing environment variables**
+
+If you need to pass constants or secrets to Appwrite Sites, you can use environment variables.
+
+| Variable | Description | Available at Build and/or Run Time |
+| --- | --- | --- |
+| `APPWRITE_SITE_API_ENDPOINT` | The API endpoint of the running site | Both |
+| `APPWRITE_VERSION` | The Appwrite version used to run the site | Both |
+| `APPWRITE_REGION` | The region where the site will run from | Both |
+| `APPWRITE_SITE_API_KEY` | The site API key is used for server authentication | Build time |
+| `APPWRITE_SITE_ID` | The ID of the running site. | Both |
+| `APPWRITE_SITE_NAME` | The name of the running site. | Both |
+| `APPWRITE_SITE_DEPLOYMENT` | The deployment ID of the running sites. | Both |
+| `APPWRITE_SITE_PROJECT_ID` | The project ID of the running site. | Both |
+| `APPWRITE_SITE_FRAMEWORK_NAME` | The framework of the running site. | Both |
+
+You can set static environment variables that will be passed to your site by navigating to your site > **Settings** > **Environment variables**.
+
+You can also configure global variables that apply to all your functions in the **Settings** of your project.
+
+## Dependencies
+
+To install your dependencies before your site is built, you should add the relevant install command to the top of your site’s **Build setting** > **Commands**. You can find this setting under **Sites** > your site > **Settings** > **Configuration** > **Build settings**.
+
+Make sure to include dependency files like `package.json` in your function's configured root directory. Do not include the dependency folders like `node_modules` in your site’s root directory. The dependencies installed for your local OS may not work in the executor environments
+
+Your site's dependencies should be managed by the package manager of each language. We include the following package managers by default in each runtime.
+
+| Language/Framework | Package manager | Install command | Build command | Output directory |
+| --- | --- | --- | --- | --- |
+| SvelteKit | npm | `npm install`  | `npm run build` | `./build` |
+| React | npm | `npm install`  | `npm run build` | `./dist` |
+| Flutter | pub | `pub get` |  |  |
+
+## Using Appwrite in a Site
+
+Appwrite Sites make it easier for you to integrate the Appwrite client SDKs with your app so that you can consume other Appwrite products.
+
+### Via user authentication
+
+// TODO
+
+### Via an API key
+
+// TODO

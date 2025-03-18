@@ -1,0 +1,58 @@
+---
+layout: article
+title: Templates
+description: "Learn about Appwrite Sites' templates that let you jump start site development."
+---
+
+Appwrite provides a variety of Site Templates to help you jump-start your web app development.
+
+## Find templates
+
+You can find all available templates by navigating to the Appwrite Console under your project > **Sites** > **Templates**.
+
+![image.png](https://warm-tray-285.notion.site/image/attachment%3A4be49224-fb3c-4a1e-8cc8-3d091317d6a4%3Aimage.png?table=block&id=1b9fb53f-e82d-80c0-8d20-ee458cf83e83&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
+
+You can filter sites by searching, filter by use case, or filter by framework. Click **Create site** to create a site from a template.
+
+## Create with templates
+
+The create sites wizard for templates will include the following steps:
+
+### Configuration
+
+Pick a display name for your site and an ID. You will later use the ID to programmatically configure the site. Pick the framework you wish the site to be created in; not all frameworks are available for all templates.
+
+### Connect
+
+You can choose to clone a new repository to your GitHub profile or organization or to connect to an existing repository.
+
+If you choose to connect to an existing repository, you must specify the output folder of your build under the **Branch** step.
+
+#### Repository
+
+Configure the connected repository for your Appwrite Site. This repository will hold the source code for your site. When the code in this repository is updated, new deployments will be created.
+
+#### Branch
+
+The production branch specifies the branch connected to your Appwrite Site. When new commits are made to this branch, a new deployment is automatically created and deployed.
+
+The output directory specifies the folder holding the build output of your site.
+
+When a PR is made to the branch, a new deployment is built and a preview URL becomes available. A comment is made to your PR about the build unless you enable **Silent mode**.
+
+### Variables
+
+Appwrite Sites uses environment variables to pass constants and secrets to your Appwrite Sites. You can provide information like API keys and other secrets in this step. If you need an Appwrite API key, you'll be prompted to generate one.
+
+### Domains
+
+Configure the subdomain of the Appwrite Site to be deployed. Once deployment completes, your application will be available to access on this domain.
+
+## Available templates
+
+| Template name | Description | Frameworks |
+| --- | --- | --- |
+| **Starter** | A starter website that can use the Appwrite SDK | `Angular` `Astro` `Flutter` `Next.js` `Nuxt` `React` `Remix` `SvelteKit` `Vanilla JS` `Vue.js` |
+| **Event** | A hackathon event website with user authentication and submissions | `Next.js` |
+| **Portfolio** | An individual’s portfolio | `Next.js` |
+| **OneLink** | A Linktree alternative | `Nuxt` |
