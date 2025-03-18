@@ -277,10 +277,10 @@ const webpImage = storage.getFilePreview(
 The above image is originally a PNG file. However, by setting the output format to WebP, Appwrite automatically converts the image to WebP format and returns the transformed image.
 You can confirm this by downloading the image or inspecting its source.
 
-The `output` parameter supports `png`, `jpeg`, `webp`, `gif`, `heic`, and `avif`.
+The `output` parameter supports `png`, `jpeg`, `webp`, `gif`, and `heic`.
 
-Choosing the right format can significantly impact your application's performance. For example, WebP and AVIF are modern formats that offer better compression and quality than JPEG and PNG.
-However, while these are compatible with most modern browsers, it's good practice to implement a fallback for older browsers.
+Choosing the right format can significantly impact your application's performance. For example, WebP is a modern format that offers better compression and quality than JPEG and PNG.
+However, while it's supported in most modern browsers, it's good practice to implement a fallback for older browsers.
 
 # Final thoughts
 
