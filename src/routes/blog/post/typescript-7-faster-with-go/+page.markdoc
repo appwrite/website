@@ -15,7 +15,7 @@ To address this challenge, Microsoft recently confirmed a significant shift unde
 
 Let's break down what this transition means, what's officially confirmed, and how it'll affect you as a developer.
 
-### What does this mean for TypeScript?
+# What does this mean for TypeScript?
 
 Here's what we know so far:
 
@@ -26,7 +26,7 @@ Here's what we know so far:
 
 Microsoft has not announced any changes to TypeScript's language features, syntax, or output because of this rewrite. The transition to Go is an engineering effort to improve performance and maintainability.
 
-### Why Go specifically? Not Rust or C++?
+# Why Go specifically? Not Rust or C++?
 
 One question naturally arises: why Go specifically? While Microsoft hasn't provided a comprehensive breakdown comparing Go to alternatives like Rust or C++, they've [publicly shared](https://github.com/microsoft/typescript-go/discussions/411) some key factors:
 
@@ -38,13 +38,13 @@ One question naturally arises: why Go specifically? While Microsoft hasn't provi
 
 **Long-term API design considerations:** The TypeScript team wants more control over internal compiler APIs. While Go's interop with JavaScript isn't as strong as some alternatives, moving to a more intentional API design will help modernize the ecosystem.
 
-### Benchmark numbers: early results, still preliminary
+# Benchmark numbers: early results, still preliminary
 
 Perhaps the most attention-grabbing details involve benchmark numbers shared by Microsoft and industry publications. For instance, compiling the Visual Studio Code codebase (about 1.5 million lines of TypeScript) reportedly went from around 78 seconds with the current compiler down to roughly 7.5 seconds with the new Go-based compiler; a 10x improvement. Other large projects, such as Playwright and TypeORM, reportedly saw similar performance improvements (approximately 10x-13x faster).
 
 These numbers come directly from early demonstrations and internal testing shared by Microsoft. But benchmarks at this early stage often represent idealized or carefully selected scenarios. Real-world improvements for diverse TypeScript projects may vary, and final figures might differ as the implementation matures.
 
-### How will this affect tooling and ecosystem compatibility?
+# How will this affect tooling and ecosystem compatibility?
 
 A main concern among developers centers around compatibility with existing tools and integrations. Currently, TypeScript integrates smoothly with bundlers like Webpack, Vite, and esbuild, plus countless IDE plugins and language-server implementations.
 
@@ -52,7 +52,7 @@ Microsoft has publicly committed to maintaining compatibility and minimizing dis
 
 While Microsoft is prioritizing a smooth transition, developers and tool authors should prepare for minor integration adjustments, especially if their workflows rely directly on internal TypeScript compiler APIs.
 
-### Timeline and versioning: what we know
+# Timeline and versioning: what we know
 
 Microsoft has confirmed that **TypeScript 7.0 will ship with the Go-based compiler** once it reaches feature parity with the current JavaScript-based version. Meanwhile, the existing compiler will continue under the **TypeScript 6.x** series, which will receive updates and breaking changes to align with the upcoming transition.
 
@@ -65,7 +65,7 @@ The rough timeline is:
 
 For now, both compilers will coexist, allowing developers to upgrade at their own pace.
 
-### What does this mean for you?
+# What does this mean for you?
 
 This transition changes how TypeScript is compiled but not how developers use it. The language itself remains the same, and the compiler will continue outputting JavaScript as before. The main difference is that builds should be significantly faster, with better performance in large projects.
 
