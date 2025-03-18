@@ -81,15 +81,15 @@
     >
         <div
             class="flex flex-1 flex-col items-center gap-3 overflow-clip text-center [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
-            style:--spacing={`calc(${commands.length} * 12px)`}
         >
             <div
-                class="animate-vertical-marquee flex h-[max-content] flex-col items-center gap-3 pt-3"
+                class="animate-vertical-marquee flex h-[max-content] max-h-[200px] flex-col items-center gap-3 pt-3"
+                style:--speed="8s"
             >
                 {#each Array.from({ length: 2 }) as _, index}
                     {#each commands as command}
                         <div
-                            class="text-caption relative w-fit overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
+                            class="text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
                             style:--spread="{command.length * 2.25}px"
                             aria-hidden={index !== 0}
                         >
@@ -109,7 +109,11 @@
         >
             {#each Array.from({ length: 3 }) as _, i}
                 {@const shuffledPlatforms = seededShuffle(platforms, i + 1)}
-                <div class="animate-vertical-marquee flex h-[max-content] flex-col gap-3 pt-3">
+                <div
+                    class="animate-vertical-marquee flex h-[max-content] flex-col gap-3 pt-3"
+                    style:--speed="24s"
+                    style:--direction={i % 2 === 0 ? 'reverse' : 'forwards'}
+                >
                     {#each Array.from({ length: 2 }) as _, index}
                         {#each shuffledPlatforms as platform}
                             <div
