@@ -1,0 +1,17 @@
+---
+layout: article
+title: Frameworks
+description: Discover which frameworks are supported out-of-the-box by Appwrite Sites.
+---
+
+Appwrite Sites allows web apps developed with a variety of frameworks to be hosted and served to your users.
+
+| Framework | Hosting Method | Starter available? |
+| --- | --- | --- |
+| Next.js | `SSR` `Static` | `Yes` |
+| Nuxt | `SSR` `Static` | `Yes` |
+| SvelteKit | `SSR` `Static` | `Yes` |
+| Astro | `SSR` `Static` | `Yes` |
+| Remix | `SSR` `Static` | `Yes` |
+| Vanilla JS | `Static` | `Yes` |
+| Flutter | `Static` | `Yes` |

@@ -1,0 +1,46 @@
+---
+layout: article
+title: Start with Sites
+description: Get started quickly with Appwrite Sites. Follow a step-by-step guide to create your first Appwrite Site and deploy a web app.
+---
+
+# Start with Sites
+
+You can create and execute your first Appwrite Site in minutes.
+
+## Create site
+
+Before deploying your web app with Git, create a new Site attached to your GitHub repository.
+
+![Create Site from GitHub repo](https://warm-tray-285.notion.site/image/attachment%3A59cff292-50e7-4bc9-b38a-497cc71eb780%3Aimage.png?table=block&id=1bafb53f-e82d-808e-a703-d7730947593f&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
+
+1. In the Appwrite Console's sidebar, click **Sites**.
+2. Click **Create site**.
+3. After clicking on **Connect Git repository**, select your repository.
+4. After connecting to GitHub, add a **name** and site ID.
+5. Follow the step-by-step wizard and create the site.
+6. The site will be created, and a build will begin. Once the build is completed, you'll have created your first site. You can use your site's **domain** to access the deployment.
+
+## Explore
+
+Use this your first site as a springboard to explore the flexible and powerful features of Appwrite Functions.
+
+{% cards %}
+
+{% cards_item href="/docs/products/sites/templates" title="Template" %}
+Get a template site up and running with a single click.
+{% /cards_item %}
+
+{% cards_item href="/docs/products/sites/develop" title="Develop" %}
+Learn about developing your own Appwrite Site.
+{% /cards_item %}
+
+{% cards_item href="/docs/products/sites/deploy-from-git" title="Deploy" %}
+Learn to deploy Appwrite Site from Git.
+{% /cards_item %}
+
+{% cards_item href="/docs/products/sites/frameworks" title="Frameworks" %}
+Deploy Appwrite Sites in your favorite framework.
+{% /cards_item %}
+
+{% /cards %}

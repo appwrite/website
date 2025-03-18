@@ -1,0 +1,34 @@
+---
+layout: article
+title: Logs
+description: Learn how Appwrite Sites handles logs
+---
+
+Each time a URL path on an Appwrite Site is requested, a log is created. Each log has a unique ID. You can find site logs logged in the **Logs** tab.
+
+## Logs table
+
+In your site's **Logs** tab, you will see a table of your recent logs. The following information is shown in this table:
+
+| Column | Description |
+| --- | --- |
+| Log ID | Unique identifier for each log |
+| Status code | The HTTP status of the request |
+| Created | Timestamp of when the log was created |
+| Method | The HTTP method used to create the request |
+| Path | The URL path the request was made to |
+| Duration | The time taken for the request |
+
+## Log details
+
+When you click on a log, you will be shown a set of log details.
+
+![image.png](https://warm-tray-285.notion.site/image/attachment%3Abca21f73-292d-4425-b6a5-04b850f6a7cb%3Aimage.png?table=block&id=1b9fb53f-e82d-80ff-9ade-da48aeb1c286&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
+
+You can find both request and response details, including parameters and headers. If your app uses SSR hosting on Appwrite Sites, you can also observe `console.log` output in the response logs.
+
+## **Log retention**
+
+Logs are not retained forever in order to be compliant with GDPR and other data privacy standards. Free plan organizations will retain logs for 24 hours, Pro plan organizations will retain logs for 7 days.
+
+If you need longer log retention, you can log to an Appwrite collection. Remember to configure proper permissions and implement Appwrite Functions or other scheduled tasks to expire and clean up logs.

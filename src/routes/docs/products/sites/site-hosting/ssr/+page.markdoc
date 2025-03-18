@@ -1,0 +1,15 @@
+---
+layout: article
+title: Server Site Rendering
+description: Learn how to host SSR web apps on Appwrite Sites.
+---
+
+Server Side Rendering (SSR) apps generate HTML content dynamically on the server for each request and send fully rendered pages to the browser. This approach improves performance for the initial load and enhances SEO since search engines can easily index the content. While SSR can be slightly slower than static apps due to server-side processing, it provides a good balance between performance and interactivity.
+
+## Configuring your Appwrite Site to use SSR
+
+// TODO: Add user flow to configure SSR through site settings
+
+### Enabling SSR builds on your web app
+
+// TODO: add steps for each framework

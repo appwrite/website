@@ -1,0 +1,49 @@
+---
+layout: article
+title: Deployments
+description: Efficiently deploy your web apps with Appwrite. Explore deployment options, strategies, and best practices.
+---
+
+Each site can have many deployments, which can be thought of as versions of the web application. Sites can be created and deployed using different methods to meet your unique development habits.
+
+## Deployment status
+
+Throughout the life cycle of a deployment, it could have the following status.
+
+| Status | Description |
+| --- | --- |
+| `active` | The deployment is built and currently activated and ready to be accessed. A site can have one active deployment and the deployment must be active before being executed. |
+| `ready` | A deployment is built, but is not activated. Any `ready` deployment can be activated to replace the current active deployment. |
+| `building` | A deployment is being built. Check the deployment log for more detailed logs. |
+| `processing` | The creation of a site deployment has begun and has not finished. |
+| `waiting` | The deployment is queued but has not been picked up for processing. |
+| `failed` | A deployment was not successful. Check the deployment log for detailed logs for debugging. |
+
+## Deployment logs
+
+When you build a deployment, the logs generated will be saved for debugging purposes. You can find these build logs by navigating to the **Deployments** tab of your site, clicking the three-dots menu beside a deployment, and clicking **Logs**.
+
+![image.png](https://warm-tray-285.notion.site/image/attachment%3Aa646a7a8-031e-47f7-9f27-0e4b3b884ab7%3Aimage.png?table=block&id=1b9fb53f-e82d-80a8-aaed-e58baab47c91&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
+
+## Update deployment
+
+Some Site settings require redeploying your function to be reflected in your active deployment. When you update a function by changing its **Git setting**s, **Build settings**, and **Environment variables**, you must redeploy your site before those changes take effect.
+
+## Redeploy
+
+After updating the configuration, redeploy your Site for changes to take effect. You can also redeploy to retry failed builds.
+
+1. Navigate to **Sites**.
+2. Open the site you wish to redeploy.
+3. Under the **Deployments** tab, find the status of the current active deployment.
+4. Redeploy by clicking the triple-dots beside a deployment and hitting the **Redeploy** button.
+
+Redeployment behavior varies depending on how the initial deployment was created.
+
+## Preview deployments
+
+If you create a new Pull Request on the GitHub repo for your site, Appwrite Sites will create a preview deployment that you can view and test before promoting to production.
+
+To access this preview deployment, navigate to the **Deployments** tab of your site and click on the **Visit** button. Appwrite Sites will then verify whether you are authorized to access the Appwrite project in which the site is deployed and allow you to access this preview accordingly.
+
+![Preview deployment](https://warm-tray-285.notion.site/image/attachment%3A670b195b-e4e5-4a38-bcdf-9d77f7cf417a%3Aimage.png?table=block&id=1b9fb53f-e82d-80ed-8e6d-d88d0442412e&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
