@@ -143,10 +143,10 @@
                                             goto(`#${e.currentTarget.value.toLowerCase()}`)}
                                     >
                                         {#each data.categories as category}
-                                            {@const integrations = data.integrations.find(
+                                            {@const integrations = data.partners.find(
                                                 (i) => i.category === category.slug
                                             )}
-                                            {#if integrations && (activePlatform === 'All' || integrations.integrations.some( (i) => i.platform.includes(activePlatform) ))}
+                                            {#if integrations && (activePlatform === 'All' || integrations.integrations.some( (i) => i.partnerLevel.includes(activePlatform) ))}
                                                 <option value={category.slug}>
                                                     {category.heading}
                                                 </option>
@@ -162,10 +162,10 @@
 
                                 <ul class="hidden flex-col gap-4 sm:flex" class:disabled={hasQuery}>
                                     {#each data.categories as category}
-                                        {@const integrations = data.integrations.find(
+                                        {@const integrations = data.partners.find(
                                             (i) => i.category === category.slug
                                         )}
-                                        {#if integrations && (activePlatform === 'All' || integrations.integrations.some( (i) => i.platform.includes(activePlatform) ))}
+                                        {#if integrations && (activePlatform === 'All' || integrations.integrations.some( (i) => i.partnerLevel.includes(activePlatform) ))}
                                             <li>
                                                 <a
                                                     href={`#${category.slug}`}
@@ -285,8 +285,8 @@
                                     </div>
                                 </section>
 
-                                {#each data.integrations as { category, heading, description, integrations }}
-                                    {#if integrations?.length > 0 && (activePlatform === 'All' || integrations.some( (i) => i.platform.includes(activePlatform) ))}
+                                {#each data.partners as { category, heading, description, integrations }}
+                                    {#if integrations?.length > 0 && (activePlatform === 'All' || integrations.some( (i) => i.partnerLevel.includes(activePlatform) ))}
                                         <section
                                             class="l-max-size-list-cards-section flex flex-col gap-8"
                                             id={category.toLowerCase()}
@@ -312,7 +312,7 @@
                                             <div class="l-max-size-list-cards flex flex-col gap-8">
                                                 <ul class="l-grid-1">
                                                     {#each integrations as integration, index (`${integration.title}-${index}`)}
-                                                        {#if activePlatform === 'All' || integration.platform.includes(activePlatform)}
+                                                        {#if activePlatform === 'All' || integration.partnerLevel.includes(activePlatform)}
                                                             <li>
                                                                 <a
                                                                     href={integration.href}

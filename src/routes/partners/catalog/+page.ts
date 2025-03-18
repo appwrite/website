@@ -1,7 +1,9 @@
 import { base } from '$app/paths';
 import { groupBy } from 'remeda';
-import type { IntegrationCategory } from '$lib/constants';
-import { integrationCategoryDescriptions as categoryDescriptions } from '$lib/constants';
+import {
+    partnerCategoryDescriptions as categoryDescriptions,
+    type SearchableCategory
+} from '$lib/constants';
 
 export type Partner = {
     title: string;
@@ -28,10 +30,10 @@ export const load = () => {
         eager: true
     });
 
-    const categories: IntegrationCategory[] = [];
+    const categories: Array<SearchableCategory> = [];
     const platforms: string[] = [];
 
-    const integrations = Object.entries(partnersGlob).map(([filepath, integrationList]) => {
+    const partners = Object.entries(partnersGlob).map(([filepath, integrationList]) => {
         const { frontmatter } = integrationList as {
             frontmatter: Partner;
         };
@@ -41,7 +43,7 @@ export const load = () => {
 
         categories.push(
             categoryDescriptions.find((i) => i.slug === frontmatter.category) ??
-                ({} as IntegrationCategory)
+                ({} as SearchableCategory)
         );
 
         return {
@@ -50,9 +52,9 @@ export const load = () => {
         };
     });
 
-    const groupedIntegrations = groupBy(integrations, (i) => i.category);
+    const groupedPartners = groupBy(partners, (i) => i.category);
 
-    const integrationsWithDescriptions = Object.entries(groupedIntegrations).map(
+    const partnersWithDescriptions = Object.entries(groupedPartners).map(
         ([category, integrations]) => {
             const integrationCategory = categoryDescriptions.find(
                 (key) => key.slug === category.toLowerCase()
@@ -66,7 +68,7 @@ export const load = () => {
         }
     );
 
-    const featuredIntegrations = integrations.filter((i) => i.featured);
+    const featuredIntegrations = partners.filter((i) => i.featured);
 
     const featuredIntegrationsWithCategoryHeadings = Object.entries(featuredIntegrations).map(
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -82,8 +84,8 @@ export const load = () => {
     );
 
     return {
-        integrations: integrationsWithDescriptions,
-        list: integrations,
+        partners: partnersWithDescriptions,
+        list: partners,
         categories: new Set(categories),
         platforms: new Set(platforms),
         featured: featuredIntegrationsWithCategoryHeadings

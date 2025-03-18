@@ -7,7 +7,7 @@ featured: true
 partnerLevel: Platinum
 isNew: true
 cover: /images/integrations/ai-openai/cover.png
-category: Agency
+category: agency
 website: partnername.com
 product: 
     avatar: '/images/integrations/avatars/openai.png'

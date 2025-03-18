@@ -6,7 +6,7 @@
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import type { Integration } from '$routes/integrations/+page';
     import { isHeaderHidden } from '$lib/layouts/Main.svelte';
-    import { integrationCategoryDescriptions } from '$lib/constants';
+    import { partnerCategoryDescriptions } from '$lib/constants';
 
     export let title: Integration['title'];
     export let images: Integration['images'];
@@ -20,7 +20,7 @@
     //const title = 'Integrations' + TITLE_SUFFIX;
     //const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
     const ogImage = DEFAULT_HOST + cover;
-    const categoryHeading = integrationCategoryDescriptions.find(
+    const categoryHeading = partnerCategoryDescriptions.find(
         (key) => key.slug === category.toLowerCase()
     )?.heading;
 </script>

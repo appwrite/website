@@ -27,13 +27,13 @@ export type SocialShareOption = {
     type: 'link' | 'copy';
 };
 
-export type IntegrationCategory = {
+export type SearchableCategory = {
     slug: string;
     heading: string;
     description: string;
 };
 
-export const integrationCategoryDescriptions: IntegrationCategory[] = [
+export const integrationCategoryDescriptions: SearchableCategory[] = [
     {
         slug: 'ai',
         heading: 'AI',
@@ -78,6 +78,14 @@ export const integrationCategoryDescriptions: IntegrationCategory[] = [
         slug: 'deployments',
         heading: 'Deployments',
         description: 'Seamlessly deploy your code'
+    }
+];
+
+export const partnerCategoryDescriptions: SearchableCategory[] = [
+    {
+        slug: 'agency',
+        heading: 'Agency',
+        description: 'Agency description goes here'
     }
 ];
 
