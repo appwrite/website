@@ -7,7 +7,7 @@ cover: /images/blog/announcing-database-reads-and-writes-pricing/cover.png
 timeToRead: 6
 author: eldad-fux
 category: announcement
-featured: true
+featured: false
 callToAction: true
 ---
 
@@ -49,7 +49,7 @@ Any action that modifies data in your database, including:
 - Updating documents with `updateDocument`.
 - Deleting documents with `deleteDocument`.
 
-**Important to note**: Operations are counted based on the number of documents affected, not API calls. For example, if you fetch a collection of 50 documents with a single API call, this counts as 50 read operations, not as a single operation. If your query returned no documents, **it won't be counted**.
+Most operations are counted based on the number of documents affected. For example, if you fetch a collection of 50 documents with a single API call, this counts as 50 read operations, not as a single operation. However, if your query returns no documents, it will count as a single operation.
 
 # Your usage
 
