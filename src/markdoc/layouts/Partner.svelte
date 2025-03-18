@@ -4,23 +4,22 @@
     import { Main } from '$lib/layouts';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
 
-    import { isHeaderHidden } from '$lib/layouts/Main.svelte';
-    import { integrationCategoryDescriptions } from '$lib/constants';
     import { classNames } from '$lib/utils/classnames';
     import type { Partner } from '$routes/partners/catalog/+page';
     import ContactPartner from '$routes/partners/catalog/(components)/contact-partner.svelte';
 
     export let title: Partner['title'];
-    export let isPartner: Partner['isPartner'];
-    export let product: Partner['product'];
+    export let partnerLevel: Partner['partnerLevel'];
     export let category: Partner['category'];
     export let description: Partner['description'];
     export let cover: Partner['cover'];
+    export let capabilities: Partner['capabilities'];
+    export let frameworks: Partner['frameworks'];
+    export let regions: Partner['regions'];
+    export let languages: Partner['languages'];
+    export let website: Partner['website'];
 
     const ogImage = DEFAULT_HOST + cover;
-    const categoryHeading = integrationCategoryDescriptions.find(
-        (key) => key.slug === category.toLowerCase()
-    )?.heading;
 </script>
 
 <svelte:head>
@@ -48,7 +47,7 @@
         )}
     >
         <div class="container relative w-full pb-0">
-            <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-7">
                 <a href="/partners" class="text-caption text-primary group flex gap-2">
                     <span class="web-icon-arrow-left transition group-hover:-translate-x-1" />
                     Back to Partners Catalog
@@ -60,9 +59,9 @@
 
     <div class="py-10">
         <div class="container">
-            <article class="web-u-gap-60-not-mobile web-u-gap-40-mobile flex flex-col">
-                <div class="l-grid-2-1 web-u-row-gap-56 web-u-gap-40-mobile">
-                    <div class="l-grid-content">
+            <article class="flex flex-col gap-10 md:gap-14">
+                <div class="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-x-14">
+                    <div class="md:col-span-7">
                         <div class="web-article">
                             <div class="web-article-content">
                                 <slot />
@@ -70,27 +69,92 @@
                             <ContactPartner />
                         </div>
                     </div>
-                    <div class="l-grid-sidebar">
+                    <div class="md:col-span-5">
                         <h2 class="text-label text-primary font-aeonik-pro">About {title}</h2>
-                        <dl
-                            class="sidebar-desc flex flex-col gap-5"
-                            style:top={$isHeaderHidden ? '4rem' : '9rem'}
-                        >
-                            <div class="flex justify-between gap-2">
-                                <dt>Vendor</dt>
-                                <dd class="text-primary">{product.vendor}</dd>
+                        <dl class="divide-smooth sticky top-32 mt-10 flex flex-col gap-7 divide-y">
+                            <div class="flex flex-col justify-between gap-7 pb-7">
+                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                    Frameworks
+                                </dt>
+                                <dd class="flex flex-wrap gap-2">
+                                    {#each frameworks as framework}
+                                        <div
+                                            class="text-primary text-caption bg-smooth rounded-full py-1 px-3"
+                                        >
+                                            {framework}
+                                        </div>
+                                    {/each}
+                                </dd>
                             </div>
-                            <div class="web-u-sep-block-end"></div>
-                            {#if isPartner}
-                                <div class="flex justify-between gap-2">
-                                    <dt>Partner</dt>
-                                    <dd><div class="web-inline-tag">Verified</div></dd>
-                                </div>
-                            {/if}
-                            <div class="web-u-sep-block-end"></div>
-                            <div class="flex justify-between gap-2">
-                                <dt>Category</dt>
-                                <dd class="text-primary">{categoryHeading}</dd>
+
+                            <div class="flex flex-col justify-between gap-7 pb-7">
+                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                    Capabilities
+                                </dt>
+                                <dd class="flex flex-wrap gap-2">
+                                    {#each capabilities as capability}
+                                        <div
+                                            class="text-primary text-caption bg-smooth rounded-full py-1 px-3"
+                                        >
+                                            {capability}
+                                        </div>
+                                    {/each}
+                                </dd>
+                            </div>
+
+                            <div class="flex items-center justify-between gap-7 pb-7">
+                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                    Category
+                                </dt>
+                                <dd class="text-primary text-caption">{category}</dd>
+                            </div>
+
+                            <div class="flex items-center justify-between gap-7 pb-7">
+                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                    Website
+                                </dt>
+                                <dd
+                                    class="text-primary text-caption font-medium underline underline-offset-4"
+                                >
+                                    {website}
+                                </dd>
+                            </div>
+
+                            <div class="flex items-center justify-between gap-7 pb-7">
+                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                    Partner Level
+                                </dt>
+                                <dd>
+                                    <div
+                                        class="text-primary text-caption rounded bg-white/24 py-0.5 px-2"
+                                    >
+                                        {partnerLevel}
+                                    </div>
+                                </dd>
+                            </div>
+
+                            <div class="flex items-center justify-between gap-8 pb-7">
+                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                    Regions
+                                </dt>
+                                <dd class="text-primary text-caption">
+                                    {regions.join(', ')}
+                                </dd>
+                            </div>
+
+                            <div class="flex flex-col justify-between gap-7 pb-7">
+                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                    Languages
+                                </dt>
+                                <dd class="flex flex-wrap gap-2">
+                                    {#each languages as language}
+                                        <div
+                                            class="text-primary text-caption bg-smooth rounded-full py-1 px-3"
+                                        >
+                                            {language}
+                                        </div>
+                                    {/each}
+                                </dd>
                             </div>
                         </dl>
                     </div>
@@ -106,86 +170,3 @@
         </div>
     </div>
 </Main>
-
-<style lang="scss">
-    @use '$scss/abstract/functions' as f;
-    @use '$scss/abstract/variables/devices';
-
-    .grid-bg {
-        --line-color: rgba(255, 255, 255, 0.02);
-        --size: calc(100vw / 16);
-
-        position: relative;
-        z-index: 1;
-        overflow: hidden;
-        background-image: repeating-linear-gradient(
-                0deg,
-                var(--line-color),
-                var(--line-color) 1px,
-                transparent 1px,
-                transparent var(--size)
-            ),
-            repeating-linear-gradient(
-                90deg,
-                var(--line-color),
-                var(--line-color) 1px,
-                transparent 1px,
-                transparent var(--size)
-            );
-
-        &::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: radial-gradient(
-                circle at bottom right,
-                rgba(25, 25, 28, 0.5) 19%,
-                transparent 100%
-            );
-            z-index: -2;
-        }
-    }
-
-    .web-pre-footer-bg {
-        position: absolute;
-        top: clamp(300px, 50vw, 50%);
-        left: clamp(300px, 50vw, 50%);
-        transform: translate(-58%, -52%);
-        width: clamp(1200px, 200vw, 3000px);
-        height: auto;
-        max-inline-size: unset;
-        max-block-size: unset;
-    }
-
-    .l-grid-2-1 {
-        @media #{devices.$break1} {
-            display: flex;
-            flex-direction: column;
-        }
-        @media #{devices.$break2open} {
-            display: grid;
-            gap: f.pxToRem(64);
-            grid-template-columns: repeat(12, 1fr);
-        }
-
-        .l-grid-content {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-            grid-column: span 7 / span 7;
-        }
-
-        .l-grid-sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-            grid-column: span 5 / span 5;
-            position: relative;
-            .sidebar-desc {
-                position: sticky;
-                left: 0;
-            }
-        }
-    }
-</style>

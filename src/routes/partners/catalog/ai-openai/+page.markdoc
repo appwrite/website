@@ -4,23 +4,38 @@ title: OpenAI
 description: Send text prompts to OpenAI GPT-3.5 and receive text generations
 date: 2024-07-30
 featured: true
-isPartner: true
+partnerLevel: Platinum
 isNew: true
 cover: /images/integrations/ai-openai/cover.png
-category: ai
+category: Agency
+website: partnername.com
 product: 
     avatar: '/images/integrations/avatars/openai.png'
     vendor: OpenAI
     description: 'The OpenAI API allows you to integrate advanced AI models into your app.'
-platform: 
-    - 'Self-hosted'
-    - 'Cloud'
-images: 
-    - /images/integrations/ai-openai/cover.png
-    - /images/integrations/ai-openai/api-key.png
-    - /images/integrations/ai-openai/template.png
-    - /images/integrations/ai-openai/variables.png
-    - /images/integrations/ai-openai/demo.png
+frameworks: 
+    - Next.js
+    - Astro
+    - Ruby
+    - Javascript
+    - Vue
+    - React
+capabilities:
+    - AI
+    - Web & Mobile Applications
+    - UI/UX Development
+    - Other Cool Shit
+regions:
+    - Africa
+    - Asia
+    - Australia
+    - New Zealand
+    - Europe
+    - Latin America
+    - Middle East
+    - North America
+languages: 
+    - English
 ---
 
 # Overview

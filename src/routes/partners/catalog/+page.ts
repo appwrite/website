@@ -8,28 +8,30 @@ export type Partner = {
     description: string;
     featured?: boolean;
     cover: string;
-    isNew?: boolean;
-    isPartner?: boolean;
-    platform: string[];
+    partnerLevel: 'Bronze' | 'Silver' | 'Gold' | 'Platinum';
     category: string;
-    frameworks: string[];
+    frameworks: Array<string>;
+    website: string;
     href: string;
     product: {
         vendor: string;
         avatar: string;
         href: string;
     };
+    capabilities: Array<string>;
+    regions: Array<string>;
+    languages: Array<string>;
 };
 
 export const load = () => {
-    const integrationsGlob = import.meta.glob('./**/*.markdoc', {
+    const partnersGlob = import.meta.glob('./**/*.markdoc', {
         eager: true
     });
 
     const categories: IntegrationCategory[] = [];
     const platforms: string[] = [];
 
-    const integrations = Object.entries(integrationsGlob).map(([filepath, integrationList]) => {
+    const integrations = Object.entries(partnersGlob).map(([filepath, integrationList]) => {
         const { frontmatter } = integrationList as {
             frontmatter: Partner;
         };
@@ -37,9 +39,6 @@ export const load = () => {
         const slug = filepath.replace('./', '').replace('/+page.markdoc', '');
         const integrationName = slug.slice(slug.lastIndexOf('/') + 1);
 
-        console.log({ slug, integrationName });
-
-        frontmatter.platform.map((platform) => platforms.push(platform));
         categories.push(
             categoryDescriptions.find((i) => i.slug === frontmatter.category) ??
                 ({} as IntegrationCategory)
@@ -70,6 +69,7 @@ export const load = () => {
     const featuredIntegrations = integrations.filter((i) => i.featured);
 
     const featuredIntegrationsWithCategoryHeadings = Object.entries(featuredIntegrations).map(
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         ([_, integration]) => {
             const integrationCategory = categoryDescriptions.find(
                 (key) => key.slug === integration.category.toLowerCase()

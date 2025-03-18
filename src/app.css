@@ -279,4 +279,38 @@
             black
         );
     }
+
+    .grid-bg {
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        background-image:
+            repeating-linear-gradient(
+                0deg,
+                var(--line-color, rgba(255, 255, 255, 0.02)),
+                var(--line-color, rgba(255, 255, 255, 0.02)) 1px,
+                transparent 1px,
+                transparent var(--size, calc(100vw / 16))
+            ),
+            repeating-linear-gradient(
+                90deg,
+                var(--line-color, rgba(255, 255, 255, 0.02)),
+                var(--line-color, rgba(255, 255, 255, 0.02)) 1px,
+                transparent 1px,
+                transparent var(--size, calc(100vw / 16))
+            );
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(
+                circle at bottom right,
+                var(--overlay, rgba(25, 25, 28, 0.5) 19%),
+                transparent 100%
+            );
+            z-index: -2;
+        }
+    }
 }
