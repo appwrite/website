@@ -70,6 +70,12 @@
                     href: '/docs/products/ai',
                     icon: 'icon-chip',
                     isParent: true
+                },
+                {
+                    label: 'Sites',
+                    href: '/docs/products/sites',
+                    icon: 'icon-globe-alt',
+                    isParent: true
                 }
             ]
         },
