@@ -89,7 +89,7 @@
                 {#each Array.from({ length: 2 }) as _, index}
                     {#each commands as command}
                         <div
-                            class="text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
+                            class="text-caption active relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
                             style:--spread="{command.length * 2.25}px"
                             aria-hidden={index !== 0}
                         >
