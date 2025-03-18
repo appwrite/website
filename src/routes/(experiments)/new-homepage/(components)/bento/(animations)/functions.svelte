@@ -80,41 +80,50 @@
         class="relative flex h-[26.25rem] items-center justify-between overflow-clip rounded-xl bg-black/24 px-8"
     >
         <div
-            class="flex flex-1 flex-col items-center gap-3 text-center [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
+            class="flex flex-1 flex-col items-center gap-3 overflow-clip text-center [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
             style:--spacing={`calc(${commands.length} * 12px)`}
         >
-            <div class="animate-vertical-marquee flex flex-col items-center gap-3">
-                {#each commands as command}
-                    <div
-                        class="text-caption relative w-fit overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
-                        style:--spread="{command.length * 2.25}px"
-                    >
+            <div
+                class="animate-vertical-marquee flex h-[max-content] flex-col items-center gap-3 pt-3"
+            >
+                {#each Array.from({ length: 2 }) as _, index}
+                    {#each commands as command}
                         <div
-                            class="h-full w-full rounded-2xl bg-[#232325]/90 py-1 px-3 text-white/80"
+                            class="text-caption relative w-fit overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
+                            style:--spread="{command.length * 2.25}px"
+                            aria-hidden={index !== 0}
                         >
-                            {command}
+                            <div
+                                class="h-full w-full rounded-2xl bg-[#232325]/90 py-1 px-3 text-white/80"
+                            >
+                                {command}
+                            </div>
                         </div>
-                    </div>
+                    {/each}
                 {/each}
             </div>
         </div>
         <div
-            class="relative flex h-full gap-4 [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
+            class="relative flex h-full gap-4 overflow-clip [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
             style:--spacing={`calc(${platforms.length} * var(--spacing-3))`}
         >
             {#each Array.from({ length: 3 }) as _, i}
                 {@const shuffledPlatforms = seededShuffle(platforms, i + 1)}
-                <div
-                    style:--steps={shuffledPlatforms.length + 1}
-                    class="animate-vertical-marquee flex flex-col"
-                    class:[animation-direction:reverse]={i % 2}
-                >
-                    {#each shuffledPlatforms as platform}
-                        <div
-                            class="flex size-16 shrink-0 items-center justify-center rounded-xl bg-[#232325]/90"
-                        >
-                            <img src={platform} alt="" role="presentation" class="h-10 grayscale" />
-                        </div>
+                <div class="animate-vertical-marquee flex h-[max-content] flex-col gap-3 pt-3">
+                    {#each Array.from({ length: 2 }) as _, index}
+                        {#each shuffledPlatforms as platform}
+                            <div
+                                class="flex size-16 shrink-0 items-center justify-center rounded-xl bg-[#232325]/90"
+                                aria-hidden={index !== 0}
+                            >
+                                <img
+                                    src={platform}
+                                    alt=""
+                                    role="presentation"
+                                    class="h-10 grayscale"
+                                />
+                            </div>
+                        {/each}
                     {/each}
                 </div>
             {/each}

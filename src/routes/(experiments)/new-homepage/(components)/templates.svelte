@@ -53,7 +53,7 @@
         <h2 class="text-title text-primary font-aeonik-pro">
             Get started with our template collection<span class="text-accent">_</span>
         </h2>
-        <p class="text-secondary">
+        <p class="text-secondary text-description font-medium">
             Start building with one of Appwrite’s templates with quick setup and self-hosting.
         </p>
     </div>
