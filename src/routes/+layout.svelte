@@ -51,8 +51,10 @@
     import { browser, dev } from '$app/environment';
     import { navigating, page, updated } from '$app/stores';
     import { onMount } from 'svelte';
-    import { createSource, loggedIn } from '$lib/utils/console';
+    import { loggedIn } from '$lib/utils/console';
     import { beforeNavigate } from '$app/navigation';
+    import { trackEvent } from '$lib/actions/analytics';
+    import { saveReferrerAndUtmSource } from '$lib/utils/utm';
 
     function applyTheme(theme: Theme) {
         const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
@@ -61,29 +63,12 @@
         document.body.classList.add(className);
     }
 
+    const thresholds = [0.25, 0.5, 0.75];
+    const tracked = new Set();
+
     onMount(() => {
-        const urlParams = $page.url.searchParams;
-        const ref = urlParams.get('ref');
-        const utmSource = urlParams.get('utm_source');
-        const utmMedium = urlParams.get('utm_medium');
-        const utmCampaign = urlParams.get('utm_campaign');
-        let referrer = document.referrer.length ? document.referrer : null;
-        // Skip our own
-        if (referrer?.includes('//appwrite.io')) {
-            referrer = null;
-        }
-        if (ref || referrer || utmSource || utmCampaign || utmMedium) {
-            createSource(ref, referrer, utmSource, utmCampaign, utmMedium);
-        }
-        if (referrer || ref) {
-            sessionStorage.setItem('utmReferral', referrer ? referrer : (ref ?? ''));
-        }
-        if (utmSource) {
-            sessionStorage.setItem('utmSource', utmSource);
-        }
-        if (utmMedium) {
-            sessionStorage.setItem('utmMedium', utmMedium);
-        }
+        saveReferrerAndUtmSource($page.url);
+
         const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
 
         applyTheme(initialTheme);
@@ -106,6 +91,9 @@
     });
 
     beforeNavigate(({ willUnload, to }) => {
+        if (window) {
+            tracked.clear();
+        }
         if ($updated && !willUnload && to?.url) {
             location.href = to.url.href;
         }
@@ -118,8 +106,31 @@
 
     $: canonicalUrl =
         $page.url.origin.replace(/^https?:\/\/www\./, 'https://') + $page.url.pathname;
+
+    function handleScroll() {
+        const scrollY = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercentage = scrollY / docHeight;
+
+        thresholds.forEach((threshold) => {
+            if (scrollPercentage >= threshold && !tracked.has(threshold)) {
+                const pageName =
+                    $page.url.pathname.slice(1) === ''
+                        ? 'home'
+                        : $page.url.pathname.slice(1).replace(/\//g, '-');
+
+                const eventName = `${pageName}_scroll-depth_${threshold * 100}prct_scroll`;
+                tracked.add(threshold);
+                trackEvent({
+                    plausible: { name: eventName },
+                    posthog: { name: eventName }
+                });
+            }
+        });
+    }
 </script>
 
+<svelte:window on:scroll={handleScroll} />
 <svelte:head>
     {#if !dev}
         <!--suppress JSUnresolvedLibraryURL -->
