@@ -1,4 +1,7 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
+    import { animate, hover, type AnimationSequence } from 'motion';
+
     import Python from '../../../(assets)/icons/python.svg';
     import Node from '../../../(assets)/icons/node.svg';
     import Javascript from '../../../(assets)/icons/javascript.svg';
@@ -56,10 +59,51 @@
 
         return shuffledArray;
     };
+
+    let container: HTMLElement;
+
+    const marqueeCount: number = 3;
+    let marqueeRefs: Array<HTMLElement> = Array.from({ length: marqueeCount });
+
+    let commandElement: HTMLElement;
+
+    onMount(() => {
+        const to: AnimationSequence = [
+            [
+                marqueeRefs[0],
+                { y: '-50%' },
+                { duration: 32, at: 0, ease: 'linear', repeatType: 'loop' }
+            ],
+            [
+                marqueeRefs[1],
+                { y: '-50%' },
+                { duration: 32, at: 0, ease: 'linear', repeatType: 'loop' }
+            ],
+            [
+                marqueeRefs[2],
+                { y: '-50%' },
+                { duration: 32, at: 0, ease: 'linear', repeatType: 'loop' }
+            ],
+            [
+                commandElement,
+                { y: '-50%' },
+                { duration: 8, at: 0, ease: 'linear', repeatType: 'loop' }
+            ]
+        ];
+
+        hover(container, () => {
+            const animation = animate(to);
+
+            return () => {
+                animation.pause();
+            };
+        });
+    });
 </script>
 
 <div
     class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-7"
+    bind:this={container}
 >
     <div class="space-y-3 pt-2 px-3 pb-4">
         <div class="flex items-center gap-2">
@@ -84,8 +128,8 @@
             style:max-height={`calc(${platforms.length} * var(--spacing-4))`}
         >
             <div
-                class="animate-vertical-marquee flex h-[max-content] flex-col items-center gap-3 pt-3"
-                style:--speed="8s"
+                class="flex h-[max-content] flex-col items-center gap-3 pt-3"
+                bind:this={commandElement}
             >
                 {#each Array.from({ length: 2 }) as _, index}
                     {#each commands as command}
@@ -108,13 +152,9 @@
             class="relative flex h-full gap-4 overflow-clip [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
             style:--spacing={`calc(${platforms.length} * var(--spacing-3))`}
         >
-            {#each Array.from({ length: 3 }) as _, i}
-                {@const shuffledPlatforms = seededShuffle(platforms, i + 1)}
-                <div
-                    class="animate-vertical-marquee flex h-[max-content] flex-col gap-3 pt-3"
-                    style:--speed="24s"
-                    style:--direction={i % 2 === 0 ? 'reverse' : 'forwards'}
-                >
+            {#each Array.from({ length: marqueeCount }) as _, i}
+                {@const shuffledPlatforms = seededShuffle(platforms, i * i)}
+                <div class="flex h-[max-content] flex-col gap-3 pt-3" bind:this={marqueeRefs[i]}>
                     {#each Array.from({ length: 2 }) as _, index}
                         {#each shuffledPlatforms as platform}
                             <div

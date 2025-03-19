@@ -1,9 +1,39 @@
 <script lang="ts">
-    import Phone from '$lib/animations/Phone.svelte';
+    import { animate, hover, type AnimationSequence } from 'motion';
+    import { onMount } from 'svelte';
+
+    let container: HTMLElement;
+
+    let device: HTMLElement;
+    let screen: HTMLElement;
+    let notification: HTMLElement;
+
+    onMount(() => {
+        const from: AnimationSequence = [
+            [notification, { opacity: 0, y: -20, filter: 'blur(4px)' }, { duration: 0.2 }],
+            [screen, { filter: 'blur(4px)', opacity: 0 }, { duration: 0.25 }],
+            [device, { y: 15 }, { duration: 0.25 }]
+        ];
+
+        const to: AnimationSequence = [
+            [device, { y: 0 }, { duration: 0.25 }],
+            [screen, { filter: 'blur(0px)', opacity: 1 }, { duration: 0.25 }],
+            [notification, { opacity: 1, y: 0, filter: 'blur(0px)' }, { duration: 0.2, at: 0.15 }]
+        ];
+
+        hover(container, () => {
+            animate(to);
+
+            return () => {
+                animate(from);
+            };
+        });
+    });
 </script>
 
 <div
     class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-7"
+    bind:this={container}
 >
     <div class="space-y-3 pt-2 px-3 pb-4">
         <div class="flex items-center gap-2">
@@ -24,25 +54,30 @@
         class="relative flex h-[26.25rem] items-center justify-center overflow-clip rounded-xl bg-black/24 px-8"
     >
         <div
-            class="light absolute top-14 z-10 flex h-16 w-[340px] items-center justify-between gap-3 rounded-[20px] bg-white/80 py-1 px-3 shadow-[-8px_4px_32px_rgba(0,0,0,0.24)] backdrop-blur-xl"
+            class="light absolute top-14 z-10 flex h-16 w-[340px] items-center justify-between gap-3 rounded-[20px] bg-white/80 py-1 px-3 opacity-0 shadow-[-8px_4px_32px_rgba(0,0,0,0.24)] backdrop-blur-xl"
+            bind:this={notification}
         >
             <div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-black">
                 <div class="size-4 rounded-full bg-white" />
             </div>
-            <div class="text-micro flex flex-col gap-1">
+            <div class="text-micro flex flex-col">
                 <h2 class="text-primary font-medium">New security measures implemented</h2>
                 <p class="text-secondary">
                     Check out our latest security updates to protect your account!
                 </p>
             </div>
-            <span class="text-micro block self-start">now</span>
+            <span class="text-micro mt-1 mr-1 block self-start">now</span>
         </div>
         <div
             class="light mask border-smooth mt-20 flex h-full w-[300px] flex-col rounded-t-[40px] border-t border-x bg-white/8 backdrop-blur-2xl"
-            style:--mask-height="250px"
+            style:--mask-height="100px"
+            bind:this={device}
         >
-            <div class="text-micro mx-2 mt-2 flex-1 rounded-t-4xl bg-white pt-4 px-5">
-                <header class="mt-16 flex items-center justify-between">
+            <div
+                class="text-micro mx-2 mt-2 flex-1 rounded-t-4xl bg-white pt-4 px-5"
+                bind:this={screen}
+            >
+                <header class="mt-8 flex items-center justify-between">
                     <div class="flex items-center gap-1">
                         <h3 class="text-sm text-[#1C1B1F]">New security measures</h3>
                         <span class="rounded bg-[#eee] py-0.5 px-1 text-[#1C1B1F]">Inbox</span>

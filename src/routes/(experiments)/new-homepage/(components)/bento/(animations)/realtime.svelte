@@ -1,5 +1,49 @@
+<script lang="ts">
+    import { animate, hover, type AnimationSequence } from 'motion';
+    import { onMount } from 'svelte';
+
+    let container: HTMLElement;
+
+    let walterCursor: HTMLElement;
+    let adityaCursor: HTMLElement;
+    let saraCursor: HTMLElement;
+
+    let walterPiece: SVGGElement;
+    let adityaPiece: SVGGElement;
+    let saraPiece: SVGGElement;
+
+    onMount(() => {
+        hover(container, () => {
+            const from: AnimationSequence = [
+                [walterCursor, { y: -25, x: 40, opacity: 0 }, { duration: 0.25, at: 0 }],
+                [walterPiece, { y: -35, x: 40 }, { duration: 0.25, at: 0 }],
+                [adityaCursor, { y: 50, opacity: 0 }, { duration: 0.25, at: 0 }],
+                [adityaPiece, { y: 40, x: -10 }, { duration: 0.25, at: 0 }],
+                [saraCursor, { y: 10, x: 8, opacity: 0 }, { duration: 0.25, at: 0 }],
+                [saraPiece, { y: 18, x: 22 }, { duration: 0.25, at: 0 }]
+            ];
+
+            const to: AnimationSequence = [
+                [walterCursor, { y: 0, x: 0, opacity: 1 }, { duration: 0.25, at: 0 }],
+                [walterPiece, { y: 0, x: 0 }, { duration: 0.25, at: 0.1 }],
+                [adityaCursor, { y: 0, opacity: 1 }, { duration: 0.45, at: 0 }],
+                [adityaPiece, { y: 0, x: 0 }, { duration: 0.45, at: 0.1 }],
+                [saraCursor, { y: 0, x: 0, opacity: 1 }, { duration: 0.15, at: 0.25 }],
+                [saraPiece, { y: 0, x: 0 }, { duration: 0.15, at: 0.25 }]
+            ];
+
+            animate(to);
+
+            return () => {
+                animate(from);
+            };
+        });
+    });
+</script>
+
 <div
     class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-5"
+    bind:this={container}
 >
     <div class="space-y-3 pt-2 px-3 pb-4">
         <div class="flex items-center gap-2">
@@ -20,12 +64,7 @@
             viewBox="0 0 264 264"
             xmlns="http://www.w3.org/2000/svg"
         >
-            <g clip-path="url(#u)" data-figma-skip-parse="true">
-                <foreignObject x="82" y="118" width="194" height="162">
-                    <div style="backdrop-filter:blur(8px);height:100%;width:100%" />
-                </foreignObject>
-            </g>
-            <g data-figma-bg-blur-radius="16">
+            <g data-figma-bg-blur-radius="16" bind:this={saraPiece}>
                 <mask id="d" fill="white">
                     <path
                         d="m260 240c0 13.255-10.745 24-24 24h-102c-2.209 0-4-1.791-4-4v-38.366c-2.502 0.885-5.195 1.366-8 1.366-13.255 0-24-10.745-24-24s10.745-24 24-24c2.805 0 5.498 0.481 8 1.366v-38.366c0-2.209 1.791-4 4-4h38.366c-0.885 2.502-1.366 5.195-1.366 8 0 13.255 10.745 24 24 24s24-10.745 24-24c0-2.805-0.481-5.498-1.366-8h38.366c2.209 0 4 1.791 4 4v102z"
@@ -46,6 +85,14 @@
                     fill-opacity=".12"
                     mask="url(#d)"
                 />
+                <g fill="#fff" mask="url(#p)">
+                    <path
+                        d="m206.59 167.97v34.323h-85.793c-24.995 0-46.82-13.804-58.496-34.323-1.6975-2.983-3.1831-6.113-4.4293-9.361-2.4464-6.366-3.9843-13.196-4.4508-20.323v-9.28c0.1013-1.588 0.2609-3.164 0.4696-4.721 0.4267-3.195 1.0713-6.322 1.9185-9.361 8.0145-28.813 34.075-49.925 64.988-49.925 30.913 0 56.97 21.112 64.984 49.925h-36.683c-6.023-9.392-16.447-15.602-28.301-15.602-11.855 0-22.279 6.2095-28.301 15.602-1.8356 2.855-3.2599 6.004-4.193 9.361-0.8288 2.977-1.2708 6.116-1.2708 9.361 0 9.838 4.0702 18.706 10.596 24.963 6.047 5.807 14.2 9.361 23.169 9.361h85.793z"
+                    />
+                    <path
+                        d="m206.55 124.29v34.323h-62.624c6.525-6.256 10.596-15.124 10.596-24.962 0-3.246-0.442-6.385-1.271-9.361h53.299z"
+                    />
+                </g>
             </g>
             <g class="top-left">
                 <mask
@@ -68,19 +115,7 @@
                         stroke-opacity=".12"
                     />
                 </mask>
-                <g fill="#fff" mask="url(#p)">
-                    <path
-                        d="m206.59 167.97v34.323h-85.793c-24.995 0-46.82-13.804-58.496-34.323-1.6975-2.983-3.1831-6.113-4.4293-9.361-2.4464-6.366-3.9843-13.196-4.4508-20.323v-9.28c0.1013-1.588 0.2609-3.164 0.4696-4.721 0.4267-3.195 1.0713-6.322 1.9185-9.361 8.0145-28.813 34.075-49.925 64.988-49.925 30.913 0 56.97 21.112 64.984 49.925h-36.683c-6.023-9.392-16.447-15.602-28.301-15.602-11.855 0-22.279 6.2095-28.301 15.602-1.8356 2.855-3.2599 6.004-4.193 9.361-0.8288 2.977-1.2708 6.116-1.2708 9.361 0 9.838 4.0702 18.706 10.596 24.963 6.047 5.807 14.2 9.361 23.169 9.361h85.793z"
-                    />
-                    <path
-                        d="m206.55 124.29v34.323h-62.624c6.525-6.256 10.596-15.124 10.596-24.962 0-3.246-0.442-6.385-1.271-9.361h53.299z"
-                    />
-                </g>
-                <g clip-path="url(#t)" data-figma-skip-parse="true">
-                    <foreignObject x="-16" y="-12" width="194" height="162">
-                        <div style="backdrop-filter:blur(8px);height:100%;width:100%" />
-                    </foreignObject>
-                </g>
+
                 <g data-figma-bg-blur-radius="16">
                     <mask id="a" fill="white">
                         <path
@@ -123,8 +158,6 @@
                         stroke-opacity=".12"
                     />
                 </mask>
-            </g>
-            <g class="bottom-left">
                 <g fill="#fff" mask="url(#o)">
                     <path
                         d="m206.59 167.97v34.323h-85.793c-24.995 0-46.82-13.804-58.496-34.323-1.6975-2.983-3.1831-6.113-4.4293-9.361-2.4464-6.366-3.9843-13.196-4.4508-20.323v-9.28c0.1013-1.588 0.2609-3.164 0.4696-4.721 0.4267-3.195 1.0713-6.322 1.9185-9.361 8.0145-28.813 34.075-49.925 64.988-49.925 30.913 0 56.97 21.112 64.984 49.925h-36.683c-6.023-9.392-16.447-15.602-28.301-15.602-11.855 0-22.279 6.2095-28.301 15.602-1.8356 2.855-3.2599 6.004-4.193 9.361-0.8288 2.977-1.2708 6.116-1.2708 9.361 0 9.838 4.0702 18.706 10.596 24.963 6.047 5.807 14.2 9.361 23.169 9.361h85.793z"
@@ -133,11 +166,8 @@
                         d="m206.55 124.29v34.323h-62.624c6.525-6.256 10.596-15.124 10.596-24.962 0-3.246-0.442-6.385-1.271-9.361h53.299z"
                     />
                 </g>
-                <g clip-path="url(#s)" data-figma-skip-parse="true">
-                    <foreignObject x="-16" y="86" width="162" height="194">
-                        <div style="backdrop-filter:blur(8px);height:100%;width:100%" />
-                    </foreignObject>
-                </g>
+            </g>
+            <g class="bottom-left" bind:this={adityaPiece}>
                 <g data-figma-bg-blur-radius="16">
                     <mask id="c" fill="white">
                         <path
@@ -187,12 +217,7 @@
                     />
                 </g>
             </g>
-            <g class="bottom-right">
-                <g clip-path="url(#r)" data-figma-skip-parse="true">
-                    <foreignObject x="83.5371" y="-8.3901" width="188.853" height="241.761">
-                        <div style="backdrop-filter:blur(6.2px);height:100%;width:100%" />
-                    </foreignObject>
-                </g>
+            <g class="top-right" bind:this={walterPiece}>
                 <g filter="url(#q)">
                     <g>
                         <mask id="b" fill="white">
@@ -434,6 +459,8 @@
         <div
             class="pointer-events-none absolute aspect-square h-12 w-[4.25rem]"
             style:right="100px"
+            style:bottom="75px"
+            bind:this={saraCursor}
         >
             <svg
                 width="20"
@@ -461,7 +488,12 @@
             </div>
         </div>
 
-        <div class="pointer-events-none absolute aspect-square h-12 w-[5.25rem]" style:left="50px">
+        <div
+            class="pointer-events-none absolute aspect-square h-12 w-[5.25rem]"
+            style:left="120px"
+            style:bottom="125px"
+            bind:this={adityaCursor}
+        >
             <svg
                 width="20"
                 height="20"
@@ -488,7 +520,12 @@
             </div>
         </div>
 
-        <div class="pointer-events-none absolute aspect-square h-12 w-[5rem]" style:top="100px">
+        <div
+            class="pointer-events-none absolute aspect-square h-12 w-[5rem]"
+            style:top="100px"
+            style:right="75px"
+            bind:this={walterCursor}
+        >
             <svg
                 width="20"
                 height="20"
