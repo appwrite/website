@@ -315,9 +315,7 @@
                         </button>
                     </div>
                     {#if data.service?.name === 'account'}
-                        <!-- Categorized view for account methods -->
                         <ul class="web-references-menu-list">
-                            <!-- Authentication & Session Management -->
                             <li class="web-references-menu-category">
                                 <h6 class="text-micro text-greyscale-500 mt-6 mb-4 uppercase">
                                     Authentication & Sessions
@@ -334,7 +332,6 @@
                                 {/each}
                             </li>
 
-                            <!-- Account Creation & Management -->
                             <li class="web-references-menu-category">
                                 <h6 class="text-micro text-greyscale-500 mt-6 mb-4 uppercase">
                                     Account Management
@@ -351,7 +348,6 @@
                                 {/each}
                             </li>
 
-                            <!-- Multi-Factor Authentication (MFA) -->
                             <li class="web-references-menu-category">
                                 <h6 class="text-micro text-greyscale-500 mt-6 mb-4 uppercase">
                                     Multi-Factor Authentication
@@ -368,7 +364,6 @@
                                 {/each}
                             </li>
 
-                            <!-- User Preferences -->
                             <li class="web-references-menu-category">
                                 <h6 class="text-micro text-greyscale-500 mt-6 mb-4 uppercase">
                                     User Preferences
@@ -385,7 +380,6 @@
                                 {/each}
                             </li>
 
-                            <!-- Security & Verification -->
                             <li class="web-references-menu-category">
                                 <h6 class="text-micro text-greyscale-500 mt-6 mb-4 uppercase">
                                     Security & Verification
@@ -402,7 +396,6 @@
                                 {/each}
                             </li>
 
-                            <!-- Other Methods -->
                             {#if data.methods.filter((m) => !['get', 'createSession', 'createAnonymousSession', 'createEmailSession', 'createMagicURLSession', 'createOAuth2Session', 'getSession', 'updateSession', 'deleteSessions', 'deleteSession', 'create', 'updateEmail', 'updateName', 'updatePassword', 'updatePhone', 'delete', 'updateStatus', 'createMfaAuthenticator', 'getMfaAuthenticators', 'deleteMfaAuthenticator', 'updateMfaAuthenticator', 'createMfaChallenge', 'updateMfaChallenge', 'getMfaFactors', 'getMfaRecoveryCodes', 'createMfaRecoveryCodes', 'updateMfaRecoveryCodes', 'getPrefs', 'updatePrefs', 'createVerification', 'updateVerification', 'createEmailVerification', 'updateEmailVerification', 'createPhoneVerification', 'updatePhoneVerification', 'getLogs', 'getSessions', 'getJWT'].includes(m.id)).length > 0}
                                 <li class="web-references-menu-category">
                                     <h6 class="text-micro text-greyscale-500 mt-6 mb-4 uppercase">
@@ -422,7 +415,6 @@
                             {/if}
                         </ul>
                     {:else}
-                        <!-- Default flat list for other services -->
                         <ul class="web-references-menu-list">
                             {#each data.methods as method}
                                 <li class="web-references-menu-item">
