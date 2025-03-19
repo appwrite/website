@@ -314,17 +314,127 @@
                             <span class="icon-x" aria-hidden="true" />
                         </button>
                     </div>
-                    <ul class="web-references-menu-list">
-                        {#each data.methods as method}
-                            <li class="web-references-menu-item">
-                                <a
-                                    href={`#${method.id}`}
-                                    class="web-references-menu-link text-caption"
-                                    class:is-selected={method.id === selected}>{method.title}</a
-                                >
+                    {#if data.service?.name === 'account'}
+                        <!-- Categorized view for account methods -->
+                        <ul class="web-references-menu-list">
+                            <!-- Authentication & Session Management -->
+                            <li class="web-references-menu-category">
+                                <h6 class="text-micro text-greyscale-500 mt-6 mb-4 uppercase">
+                                    Authentication & Sessions
+                                </h6>
+                                {#each data.methods.filter( (m) => ['get', 'createSession', 'createAnonymousSession', 'createEmailSession', 'createMagicURLSession', 'createOAuth2Session', 'getSession', 'updateSession', 'deleteSessions', 'deleteSession'].includes(m.id) ) as method}
+                                    <li class="web-references-menu-item mb-3">
+                                        <a
+                                            href={`#${method.id}`}
+                                            class="web-references-menu-link text-caption"
+                                            class:is-selected={method.id === selected}
+                                            >{method.title}</a
+                                        >
+                                    </li>
+                                {/each}
                             </li>
-                        {/each}
-                    </ul>
+
+                            <!-- Account Creation & Management -->
+                            <li class="web-references-menu-category">
+                                <h6 class="text-micro text-greyscale-500 mt-6 mb-4 uppercase">
+                                    Account Management
+                                </h6>
+                                {#each data.methods.filter( (m) => ['create', 'updateEmail', 'updateName', 'updatePassword', 'updatePhone', 'delete', 'updateStatus'].includes(m.id) ) as method}
+                                    <li class="web-references-menu-item mb-3">
+                                        <a
+                                            href={`#${method.id}`}
+                                            class="web-references-menu-link text-caption"
+                                            class:is-selected={method.id === selected}
+                                            >{method.title}</a
+                                        >
+                                    </li>
+                                {/each}
+                            </li>
+
+                            <!-- Multi-Factor Authentication (MFA) -->
+                            <li class="web-references-menu-category">
+                                <h6 class="text-micro text-greyscale-500 mt-6 mb-4 uppercase">
+                                    Multi-Factor Authentication
+                                </h6>
+                                {#each data.methods.filter( (m) => ['createMfaAuthenticator', 'getMfaAuthenticators', 'deleteMfaAuthenticator', 'updateMfaAuthenticator', 'createMfaChallenge', 'updateMfaChallenge', 'getMfaFactors', 'getMfaRecoveryCodes', 'createMfaRecoveryCodes', 'updateMfaRecoveryCodes'].includes(m.id) ) as method}
+                                    <li class="web-references-menu-item mb-3">
+                                        <a
+                                            href={`#${method.id}`}
+                                            class="web-references-menu-link text-caption"
+                                            class:is-selected={method.id === selected}
+                                            >{method.title}</a
+                                        >
+                                    </li>
+                                {/each}
+                            </li>
+
+                            <!-- User Preferences -->
+                            <li class="web-references-menu-category">
+                                <h6 class="text-micro text-greyscale-500 mt-6 mb-4 uppercase">
+                                    User Preferences
+                                </h6>
+                                {#each data.methods.filter( (m) => ['getPrefs', 'updatePrefs'].includes(m.id) ) as method}
+                                    <li class="web-references-menu-item mb-3">
+                                        <a
+                                            href={`#${method.id}`}
+                                            class="web-references-menu-link text-caption"
+                                            class:is-selected={method.id === selected}
+                                            >{method.title}</a
+                                        >
+                                    </li>
+                                {/each}
+                            </li>
+
+                            <!-- Security & Verification -->
+                            <li class="web-references-menu-category">
+                                <h6 class="text-micro text-greyscale-500 mt-6 mb-4 uppercase">
+                                    Security & Verification
+                                </h6>
+                                {#each data.methods.filter( (m) => ['createVerification', 'updateVerification', 'createEmailVerification', 'updateEmailVerification', 'createPhoneVerification', 'updatePhoneVerification', 'getLogs', 'getSessions', 'getJWT'].includes(m.id) ) as method}
+                                    <li class="web-references-menu-item mb-3">
+                                        <a
+                                            href={`#${method.id}`}
+                                            class="web-references-menu-link text-caption"
+                                            class:is-selected={method.id === selected}
+                                            >{method.title}</a
+                                        >
+                                    </li>
+                                {/each}
+                            </li>
+
+                            <!-- Other Methods -->
+                            {#if data.methods.filter((m) => !['get', 'createSession', 'createAnonymousSession', 'createEmailSession', 'createMagicURLSession', 'createOAuth2Session', 'getSession', 'updateSession', 'deleteSessions', 'deleteSession', 'create', 'updateEmail', 'updateName', 'updatePassword', 'updatePhone', 'delete', 'updateStatus', 'createMfaAuthenticator', 'getMfaAuthenticators', 'deleteMfaAuthenticator', 'updateMfaAuthenticator', 'createMfaChallenge', 'updateMfaChallenge', 'getMfaFactors', 'getMfaRecoveryCodes', 'createMfaRecoveryCodes', 'updateMfaRecoveryCodes', 'getPrefs', 'updatePrefs', 'createVerification', 'updateVerification', 'createEmailVerification', 'updateEmailVerification', 'createPhoneVerification', 'updatePhoneVerification', 'getLogs', 'getSessions', 'getJWT'].includes(m.id)).length > 0}
+                                <li class="web-references-menu-category">
+                                    <h6 class="text-micro text-greyscale-500 mt-6 mb-4 uppercase">
+                                        Other Methods
+                                    </h6>
+                                    {#each data.methods.filter((m) => !['get', 'createSession', 'createAnonymousSession', 'createEmailSession', 'createMagicURLSession', 'createOAuth2Session', 'getSession', 'updateSession', 'deleteSessions', 'deleteSession', 'create', 'updateEmail', 'updateName', 'updatePassword', 'updatePhone', 'delete', 'updateStatus', 'createMfaAuthenticator', 'getMfaAuthenticators', 'deleteMfaAuthenticator', 'updateMfaAuthenticator', 'createMfaChallenge', 'updateMfaChallenge', 'getMfaFactors', 'getMfaRecoveryCodes', 'createMfaRecoveryCodes', 'updateMfaRecoveryCodes', 'getPrefs', 'updatePrefs', 'createVerification', 'updateVerification', 'createEmailVerification', 'updateEmailVerification', 'createPhoneVerification', 'updatePhoneVerification', 'getLogs', 'getSessions', 'getJWT'].includes(m.id)) as method}
+                                        <li class="web-references-menu-item mb-3">
+                                            <a
+                                                href={`#${method.id}`}
+                                                class="web-references-menu-link text-caption"
+                                                class:is-selected={method.id === selected}
+                                                >{method.title}</a
+                                            >
+                                        </li>
+                                    {/each}
+                                </li>
+                            {/if}
+                        </ul>
+                    {:else}
+                        <!-- Default flat list for other services -->
+                        <ul class="web-references-menu-list">
+                            {#each data.methods as method}
+                                <li class="web-references-menu-item">
+                                    <a
+                                        href={`#${method.id}`}
+                                        class="web-references-menu-link text-caption"
+                                        class:is-selected={method.id === selected}>{method.title}</a
+                                    >
+                                </li>
+                            {/each}
+                        </ul>
+                    {/if}
                     <div class="border-greyscale-900/4 web-u-padding-block-20 border-t">
                         <button class="web-link inline-flex items-center gap-2" use:scrollToTop>
                             <span class="web-icon-arrow-up" aria-hidden="true" />
