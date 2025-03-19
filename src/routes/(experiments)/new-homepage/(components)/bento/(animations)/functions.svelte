@@ -81,9 +81,10 @@
     >
         <div
             class="flex flex-1 flex-col items-center gap-3 overflow-clip text-center [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
+            style:max-height={`calc(${platforms.length} * var(--spacing-4))`}
         >
             <div
-                class="animate-vertical-marquee flex h-[max-content] max-h-[200px] flex-col items-center gap-3 pt-3"
+                class="animate-vertical-marquee flex h-[max-content] flex-col items-center gap-3 pt-3"
                 style:--speed="8s"
             >
                 {#each Array.from({ length: 2 }) as _, index}
