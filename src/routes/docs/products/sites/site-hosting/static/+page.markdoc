@@ -10,11 +10,46 @@ Since the pages are pre-generated, static apps offer incredibly fast load times.
 
 ## Configuring your Appwrite Site to use static hosting
 
-// TODO: Add user flow to configure static hosting through site settings
+When Appwrite builds your site for the first time, it scans your project's configuration files to determine whether the website should be rendered as static pages or using SSR.
+
+If you need to manually update these settings, here are the steps to do so:
+
+1. Open the Site page and navigate to the **Settings** tab > **Build settings** section
+2. Select the **Static site** checkbox (you may need to update your project codebase depending on your framework option)
+3. Confirm that the appropriate install command, build command, and output directory are set
+4. Click on the **Update** button and redeploy your site.
 
 ### Enabling static builds on your web app
 
-// TODO: add steps for each framework (including Flutter)
+To enable static builds for your web app, you may need to make some additional updates in case of the following frameworks:
+
+{% tabs %}
+
+{% tabsitem #analog title="Analog" %}
+Set `static: true` in `analog` plugin in the `vite.config.ts` file.
+{% /tabsitem %}
+
+{% tabsitem #nextjs title="Next.js" %}
+Set `output: export` in the `next.config.js`.
+{% /tabsitem %}
+
+{% tabsitem #nuxt title="Nuxt" %}
+Set build command to `npm run generate` in site settings.
+{% /tabsitem %}
+
+{% tabsitem #sveltekit title="SvelteKit" %}
+Use `@sveltejs/adapter-static` adapter in the `svelte.config.js` file.
+{% /tabsitem %}
+
+{% tabsitem #astro title="Astro" %}
+Ensure you don't set `adapter` in the `astro.config.mjs` file.
+{% /tabsitem %}
+
+{% tabsitem #remix title="Remix" %}
+Set `ssr: false` in `remix` plugin in the `vite.config.ts` file.
+{% /tabsitem %}
+
+{% /tabs %}
 
 ## Running SPAs on Appwrite Sites
 
@@ -24,4 +59,10 @@ Appwrite Sites allows hosting SPAs through our static apps offering. Instead of 
 
 ### Configuring an Appwrite Site to run as an SPA
 
-// TODO: Add user flow to configure SPA through site settings
+To configure an Appwrite Site to run as an SPA, you must do the following:
+
+1. Open the Site page and navigate to the **Settings** tab > **Build settings** section
+2. Select the **Static site** checkbox (you may need to update your project codebase depending on your framework option)
+3. Confirm that the appropriate install command, build command, and output directory are set
+4. Provide a fallback file for advanced routing and proper page handling.
+5. Click on the **Update** button and redeploy your site.
