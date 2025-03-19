@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { animate, hover, type AnimationSequence } from 'motion';
+    import { isMobile } from '$lib/utils/is-mobile';
+    import { animate, hover, inView, type AnimationSequence } from 'motion';
     import { onMount } from 'svelte';
 
     let container: HTMLElement;
@@ -21,7 +22,21 @@
             [notification, { opacity: 1, y: 0, filter: 'blur(0px)' }, { duration: 0.2, at: 0.15 }]
         ];
 
+        inView(
+            container,
+            () => {
+                if (!isMobile()) return;
+                animate(to);
+
+                return () => {
+                    animate(from);
+                };
+            },
+            { amount: 'all' }
+        );
+
         hover(container, () => {
+            if (isMobile()) return;
             animate(to);
 
             return () => {
