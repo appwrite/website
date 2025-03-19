@@ -69,30 +69,18 @@
 
     onMount(() => {
         const to: AnimationSequence = [
-            [
-                marqueeRefs[0],
-                { y: '-50%' },
-                { duration: 32, at: 0, ease: 'linear', repeatType: 'loop' }
-            ],
-            [
-                marqueeRefs[1],
-                { y: '-50%' },
-                { duration: 32, at: 0, ease: 'linear', repeatType: 'loop' }
-            ],
-            [
-                marqueeRefs[2],
-                { y: '-50%' },
-                { duration: 32, at: 0, ease: 'linear', repeatType: 'loop' }
-            ],
+            [marqueeRefs[0], { y: '-50%' }, { duration: 32, at: 0, ease: 'linear' }],
+            [marqueeRefs[1], { y: '-50%' }, { duration: 32, at: 0, ease: 'linear' }],
+            [marqueeRefs[2], { y: '-50%' }, { duration: 32, at: 0, ease: 'linear' }],
             [
                 commandElement,
                 { y: '-50%' },
-                { duration: 8, at: 0, ease: 'linear', repeatType: 'loop' }
+                { duration: 8, at: 0, ease: 'linear', repeat: 19, repeatType: 'loop' }
             ]
         ];
 
         hover(container, () => {
-            const animation = animate(to);
+            const animation = animate(to, { repeat: Infinity });
 
             return () => {
                 animation.pause();
