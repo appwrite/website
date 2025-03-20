@@ -44,7 +44,7 @@ Use `@sveltejs/adapter-node` adapter in the `svelte.config.js` file.
 {% /tabsitem %}
 
 {% tabsitem #astro title="Astro" %}
-User `astro/node` adapter in the `astro.config.mjs` file.
+Use `@astrojs/node` adapter in the `astro.config.mjs` file.
 {% /tabsitem %}
 
 {% tabsitem #remix title="Remix" %}
