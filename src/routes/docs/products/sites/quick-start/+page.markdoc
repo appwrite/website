@@ -21,6 +21,16 @@ Before deploying your web app with Git, create a new Site attached to your GitHu
 5. Follow the step-by-step wizard and create the site.
 6. The site will be created, and a build will begin. Once the build is completed, you'll have created your first site. You can use your site's **domain** to access the deployment.
 
+## Framework quick-starts
+
+{% cards %}
+
+{% cards_item href="/docs/products/sites/quick-start/sveltekit" title="SvelteKit" icon="icon-svelte" %}
+Deploy a SvelteKit app to Appwrite Sites
+{% /cards_item %}
+
+{% /cards %}
+
 ## Explore
 
 Use this your first site as a springboard to explore the flexible and powerful features of Appwrite Functions.
