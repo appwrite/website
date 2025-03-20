@@ -45,7 +45,7 @@
         'CreateInvoice'
     ];
 
-    let activeCommand: number = 0;
+    let activeCommand: number | null = null;
 
     const seededShuffle = <T,>(array: T[], seed: number) => {
         const shuffledArray = [...array];
@@ -70,54 +70,50 @@
 
     let commandElement: HTMLElement;
 
-    const getMaxYSteps = (steps: number) => {
-        return Math.min(50, (steps * 50) / (steps + 1));
-    };
-
     onMount(() => {
-        const maxPlatformsY = getMaxYSteps(platforms.length);
-
         const platformsTo: AnimationSequence = Array.from({ length: platforms.length + 1 }).map(
             (_, index) => {
-                const yValue = `${-(index * maxPlatformsY) / platforms.length}%`;
+                const yValue = `-${(index * 50) / platforms.length}%`;
                 return [
                     marqueeRefs[Math.floor(index / platforms.length)],
                     { y: yValue },
-                    { at: index, ease: 'linear' }
+                    { at: index + 0.25, ease: 'linear' }
                 ];
             }
         );
 
-        const maxCommandsY = getMaxYSteps(commands.length);
-
         const commandsTo: AnimationSequence = Array.from({ length: commands.length + 1 }).map(
             (_, index) => {
-                const yValue = `${-(index * maxCommandsY) / commands.length}%`;
+                const yValue = `-${(index * 50) / commands.length}%`;
                 return [commandElement, { y: yValue }, { at: index, ease: 'linear' }];
             }
         );
 
         hover(container, () => {
-            const timeout = setTimeout(() => {
-                activeCommand = (activeCommand + 1) % commands.length;
-            }, 1000);
+            const interval = setInterval(
+                () => {
+                    activeCommand = activeCommand ? activeCommand + (1 % commands.length) : 3;
+                },
+                2000 + commands.length * 100
+            );
 
             const platformsAnimation = animate(platformsTo, {
                 repeat: Infinity,
                 repeatType: 'loop',
                 repeatDelay: 0,
-                duration: platforms.length * 2
+                duration: platforms.length * 2.5
             });
 
             const commandAnimation = animate(commandsTo, {
                 repeat: Infinity,
                 repeatType: 'loop',
                 repeatDelay: 0,
-                duration: commands.length * 2
+                duration: commands.length * 2.5
             });
 
             return () => {
-                clearTimeout(timeout);
+                activeCommand = null;
+                clearInterval(interval);
                 platformsAnimation.pause();
                 commandAnimation.pause();
             };
@@ -220,7 +216,7 @@
         background-size:
             250% 150%,
             auto;
-        animation: badge 1.5s infinite 0.5s ease-in-out;
+        animation: badge 1s forwards 0.5s ease-in-out;
     }
 
     @keyframes badge {
