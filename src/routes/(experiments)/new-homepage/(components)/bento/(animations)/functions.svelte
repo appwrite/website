@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import { animate, hover, type AnimationSequence } from 'motion';
+    import { animate, hover, inView, type AnimationSequence } from 'motion';
 
     import Python from '../../../(assets)/icons/python.svg';
     import Node from '../../../(assets)/icons/node.svg';
@@ -17,6 +17,7 @@
     import Net from '../../../(assets)/icons/net.svg';
     import Go from '../../../(assets)/icons/go.svg';
     import React from '../../../(assets)/icons/react.svg';
+    import { isMobile } from '$lib/utils/is-mobile';
 
     const platforms = [
         Python,
@@ -44,6 +45,8 @@
         'CreateInvoice'
     ];
 
+    let activeCommand: number = 0;
+
     const seededShuffle = <T,>(array: T[], seed: number) => {
         const shuffledArray = [...array];
 
@@ -67,23 +70,56 @@
 
     let commandElement: HTMLElement;
 
+    const getMaxYSteps = (steps: number) => {
+        return Math.min(50, (steps * 50) / (steps + 1));
+    };
+
     onMount(() => {
-        const to: AnimationSequence = [
-            [marqueeRefs[0], { y: '-50%' }, { duration: 32, at: 0, ease: 'linear' }],
-            [marqueeRefs[1], { y: '-50%' }, { duration: 32, at: 0, ease: 'linear' }],
-            [marqueeRefs[2], { y: '-50%' }, { duration: 32, at: 0, ease: 'linear' }],
-            [
-                commandElement,
-                { y: '-50%' },
-                { duration: 8, at: 0, ease: 'linear', repeat: 19, repeatType: 'loop' }
-            ]
-        ];
+        const maxPlatformsY = getMaxYSteps(platforms.length);
+
+        const platformsTo: AnimationSequence = Array.from({ length: platforms.length + 1 }).map(
+            (_, index) => {
+                const yValue = `${-(index * maxPlatformsY) / platforms.length}%`;
+                return [
+                    marqueeRefs[Math.floor(index / platforms.length)],
+                    { y: yValue },
+                    { at: index, ease: 'linear' }
+                ];
+            }
+        );
+
+        const maxCommandsY = getMaxYSteps(commands.length);
+
+        const commandsTo: AnimationSequence = Array.from({ length: commands.length + 1 }).map(
+            (_, index) => {
+                const yValue = `${-(index * maxCommandsY) / commands.length}%`;
+                return [commandElement, { y: yValue }, { at: index, ease: 'linear' }];
+            }
+        );
 
         hover(container, () => {
-            const animation = animate(to, { repeat: Infinity });
+            const timeout = setTimeout(() => {
+                activeCommand = (activeCommand + 1) % commands.length;
+            }, 1000);
+
+            const platformsAnimation = animate(platformsTo, {
+                repeat: Infinity,
+                repeatType: 'loop',
+                repeatDelay: 0,
+                duration: platforms.length * 2
+            });
+
+            const commandAnimation = animate(commandsTo, {
+                repeat: Infinity,
+                repeatType: 'loop',
+                repeatDelay: 0,
+                duration: commands.length * 2
+            });
 
             return () => {
-                animation.pause();
+                clearTimeout(timeout);
+                platformsAnimation.pause();
+                commandAnimation.pause();
             };
         });
     });
@@ -120,11 +156,12 @@
                 bind:this={commandElement}
             >
                 {#each Array.from({ length: 2 }) as _, index}
-                    {#each commands as command}
+                    {#each commands as command, i}
                         <div
-                            class="text-caption active relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
+                            class="text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
                             style:--spread="{command.length * 2.25}px"
                             aria-hidden={index !== 0}
+                            class:active={activeCommand === i}
                         >
                             <div
                                 class="h-full w-full rounded-2xl bg-[#232325]/90 py-1 px-3 text-white/80"

@@ -1,25 +1,30 @@
 <script lang="ts">
     import { isMobile } from '$lib/utils/is-mobile';
+    import { format } from 'date-fns';
     import { animate, hover, inView, type AnimationSequence } from 'motion';
     import { onMount } from 'svelte';
 
     let container: HTMLElement;
 
     let device: HTMLElement;
-    let screen: HTMLElement;
     let notification: HTMLElement;
+    let icon: HTMLElement;
 
     onMount(() => {
         const from: AnimationSequence = [
             [notification, { opacity: 0, y: -20, filter: 'blur(4px)' }, { duration: 0.2 }],
-            [screen, { filter: 'blur(4px)', opacity: 0 }, { duration: 0.25 }],
+            [icon, { scale: 0, opacity: 0, filter: 'blur(2px)' }, { duration: 0.25 }],
             [device, { y: 15 }, { duration: 0.25 }]
         ];
 
         const to: AnimationSequence = [
             [device, { y: 0 }, { duration: 0.25 }],
-            [screen, { filter: 'blur(0px)', opacity: 1 }, { duration: 0.25 }],
-            [notification, { opacity: 1, y: 0, filter: 'blur(0px)' }, { duration: 0.2, at: 0.15 }]
+            [
+                icon,
+                { scale: 1, opacity: 1, transformOrigin: 'center', filter: 'blur(0px)' },
+                { duration: 0.25, at: 0.1 }
+            ],
+            [notification, { opacity: 1, y: 0, filter: 'blur(0px)' }, { duration: 0.2, at: 0.65 }]
         ];
 
         inView(
@@ -69,7 +74,8 @@
         class="relative flex h-[26.25rem] items-center justify-center overflow-clip rounded-xl bg-black/24 px-8"
     >
         <div
-            class="light absolute top-14 z-10 flex h-16 w-[340px] items-center justify-between gap-3 rounded-[20px] bg-white/80 py-1 px-3 opacity-0 shadow-[-8px_4px_32px_rgba(0,0,0,0.24)] backdrop-blur-xl"
+            class="light absolute top-14 z-10 flex h-16 w-[340px] items-center justify-between gap-3 rounded-[20px] bg-white/80 py-1 px-3 shadow-[-8px_4px_32px_rgba(0,0,0,0.24)] backdrop-blur-xl"
+            style="transform: translateY(-15px); opacity: 0; filter: blur(4px);"
             bind:this={notification}
         >
             <div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-black">
@@ -86,50 +92,39 @@
         <div
             class="light mask border-smooth mt-20 flex h-full w-[300px] flex-col rounded-t-[40px] border-t border-x bg-white/8 backdrop-blur-2xl"
             style:--mask-height="100px"
+            style:transform="translateY(15px)"
             bind:this={device}
         >
             <div
-                class="text-micro mx-2 mt-2 flex-1 rounded-t-4xl bg-white pt-4 px-5"
-                bind:this={screen}
+                class="mx-2 mt-2 flex-1 rounded-t-4xl bg-gradient-to-br from-[#1A1A1D] to-[#1A1A1D]/60"
             >
-                <header class="mt-8 flex items-center justify-between">
-                    <div class="flex items-center gap-1">
-                        <h3 class="text-sm text-[#1C1B1F]">New security measures</h3>
-                        <span class="rounded bg-[#eee] py-0.5 px-1 text-[#1C1B1F]">Inbox</span>
-                    </div>
-                    <svg
-                        width="15"
-                        height="14"
-                        viewBox="0 0 15 14"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
+                <div class="flex items-center justify-between pt-4 px-6">
+                    <span class="text-micro w-10 font-medium text-white"
+                        >{format(new Date(), 'h:mm')}</span
                     >
-                        <path
-                            d="M14.5599 5.35747L9.63564 4.93284L7.71112 0.398926L5.7866 4.93969L0.862305 5.35747L4.60176 8.59696L3.47855 13.4117L7.71112 10.8571L11.9437 13.4117L10.8273 8.59696L14.5599 5.35747ZM7.71112 9.57634L5.13597 11.131L5.82085 8.19973L3.54704 6.22727L6.54682 5.96701L7.71112 3.20694L8.88227 5.97386L11.8821 6.23412L9.60824 8.20658L10.2931 11.1379L7.71112 9.57634Z"
-                            fill="#49454F"
-                        />
-                    </svg>
-                </header>
-
-                <div class="mt-4 flex gap-2">
-                    <div
-                        class="flex size-5 shrink-0 items-center justify-center rounded-lg bg-black"
-                    >
-                        <div class="size-2 rounded-full bg-white" />
-                    </div>
-                    <div class="font-medium text-[#1C1B1F]">
-                        Acme.Inc <span class="ml-1 font-normal text-[#686B70]">2 days ago</span>
-                    </div>
+                    <div class="h-4 w-24 rounded-full bg-white/10" />
+                    <div class="h-4 w-10 rounded-full bg-white/5" />
                 </div>
-                <p class="mt-8 text-[#3f3f3f]">
-                    Hey,
-                    <br /><br />
-                    We have recently implemented new security measures to strengthen the protection of
-                    your account. These measures are designed to enhance the security of your personal
-                    information and ensure a safer experience.<br /><br />Learn more about these
-                    changes and how they may affect you in our
-                    <span class="underline">documentation</span>. Best regards, Appwrite team
-                </p>
+                <div
+                    class="text-micro grid flex-1 grid-cols-4 grid-rows-24 place-items-center gap-4 pt-12 px-6"
+                >
+                    <div
+                        class="relative size-12 shrink-0 rounded-xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5"
+                    >
+                        <div
+                            class="bg-accent text-x-micro absolute -top-1 -right-1 flex size-4 items-center justify-center rounded-full text-white"
+                            style="transform: scale(0); opacity: 0; filter: blur(2px);"
+                            bind:this={icon}
+                        >
+                            1
+                        </div>
+                    </div>
+                    {#each Array.from({ length: 19 }) as _, index}
+                        <div
+                            class="size-12 shrink-0 rounded-xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5"
+                        />
+                    {/each}
+                </div>
             </div>
         </div>
         <div
