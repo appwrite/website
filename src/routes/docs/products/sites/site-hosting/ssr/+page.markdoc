@@ -19,7 +19,7 @@ If you need to manually update these settings, here are the steps to do so:
 
 ### Enabling SSR builds on your web app
 
-To enable static builds for your web app, you may need to make some additional updates in case of the following frameworks:
+To enable SSR builds for your web app, you may need to make some additional updates in case of the following frameworks:
 
 {% tabs %}
 
