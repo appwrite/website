@@ -8,9 +8,8 @@ Appwrite Cloud backups are now significantly faster, reducing wait times and imp
 
 ## What's improved
 
-- **Backup creation** is **7x faster** (from **241.3s** → **29.1s**)
-- **Backup archiving** is nearly **3x faster** (from **5.8s** → **1.5s**)
-- **Overall backup process** is **7x faster** (from **247.1s** → **30.6s**)
+- **Backup creation** is **7x faster**
+- **Backup archiving** is nearly **3x faster**
 
 This optimization drastically cuts down backup times, making data recovery and management more efficient.
 
