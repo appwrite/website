@@ -29,6 +29,14 @@ Before deploying your web app with Git, create a new Site attached to your GitHu
 Deploy a SvelteKit app to Appwrite Sites
 {% /cards_item %}
 
+{% cards_item href="/docs/products/sites/quick-start/nextjs" title="Next.js" icon="icon-nextjs" %}
+Deploy a Next.js app to Appwrite Sites
+{% /cards_item %}
+
+{% cards_item href="/docs/products/sites/quick-start/nuxt" title="Nuxt" icon="icon-nuxt" %}
+Deploy a Nuxt app to Appwrite Sites
+{% /cards_item %}
+
 {% /cards %}
 
 ## Explore
