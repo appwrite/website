@@ -71,16 +71,26 @@
     let commandElement: HTMLElement;
 
     onMount(() => {
-        const platformsTo: AnimationSequence = Array.from({ length: platforms.length + 1 }).map(
-            (_, index) => {
-                const yValue = `-${(index * 50) / platforms.length}%`;
-                return [
-                    marqueeRefs[2],
+        const platformsTo: AnimationSequence = [];
+
+        for (let marqueeIndex = 0; marqueeIndex < marqueeCount; marqueeIndex++) {
+            const isMiddleMarquee = marqueeIndex === 1;
+            const direction = isMiddleMarquee ? 1 : -1;
+
+            Array.from({ length: platforms.length + 1 }).forEach((_, index) => {
+                const yValue = `${(direction * (index * 50)) / platforms.length}%`;
+
+                platformsTo.push([
+                    marqueeRefs[marqueeIndex],
                     { y: yValue },
-                    { at: index + 0.25, type: 'spring', duration: 0.5 }
-                ];
-            }
-        );
+                    {
+                        at: index + 0.25,
+                        type: 'spring',
+                        duration: 0.5
+                    }
+                ]);
+            });
+        }
 
         const commandsTo: AnimationSequence = [];
 
@@ -197,7 +207,6 @@
         </div>
         <div
             class="relative flex h-full gap-4 overflow-clip [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
-            style:--spacing={`calc(${platforms.length} * var(--spacing-3))`}
         >
             {#each Array.from({ length: marqueeCount }) as _, i}
                 {@const shuffledPlatforms = seededShuffle(platforms, i * i)}
