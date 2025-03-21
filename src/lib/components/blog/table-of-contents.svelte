@@ -9,22 +9,22 @@
     export let toc: Array<TocItem> = [];
 </script>
 
-<nav class="sticky top-32 col-span-3 -ml-4 hidden h-[800px] lg:block">
-    <span class="text-micro tracking-loose text-primary pl-8 uppercase">Table of Contents</span>
+<nav class="sticky top-32 col-span-3 mt-2 -ml-4 hidden h-[800px] flex-col gap-6 lg:flex">
+    <span class="text-micro text-primary ps-6 uppercase tracking-tighter">Table of Contents</span>
     <div class="relative">
         <ul
-            class="border-smooth mask mt-11 flex max-h-[600px] flex-col gap-7 overflow-scroll border-b pb-11 [scrollbar-width:none]"
+            class="border-smooth mask text-caption flex max-h-[600px] flex-col gap-4 overflow-scroll border-b pb-11 [scrollbar-width:none]"
         >
             {#each toc as parent (parent.href)}
                 <li
                     class={classNames(
                         parent.selected ? 'text-primary' : 'text-secondary',
-                        'relative pl-7 transition-colors',
-                        'before:bg-primary before:absolute before:top-0 before:left-0 before:h-6 before:w-px before:rounded-full before:opacity-0 before:transition-opacity',
+                        'relative ps-6 transition-colors',
+                        'before:bg-greyscale-300 before:absolute before:top-0 before:left-0 before:h-6 before:w-px before:rounded-full before:opacity-0 before:transition-opacity',
                         {
                             'font-medium': parent.level && parent.level === 1,
-                            'pl-11': parent.level && parent.level === 2,
-                            'pl-16': parent.level && parent.level >= 3,
+                            'ps-6': parent.level && parent.level === 2,
+                            'pl-10': parent.level && parent.level >= 3,
                             'before:opacity-100': parent.selected
                         }
                     )}
