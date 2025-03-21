@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Image from '../../../(assets)/images/storage.webp';
 </script>
 
 <div
@@ -20,6 +21,7 @@
         <div
             class="relative flex h-full gap-4 [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
         >
+            <img src={Image} alt="Storage" class="aspect-video object-cover" />
             <div
                 class="absolute inset-0 -z-10 h-full w-full bg-transparent bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:60px_60px]"
             />

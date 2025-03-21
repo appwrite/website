@@ -10,18 +10,20 @@
 
     let container: HTMLElement;
 
-    let walterCursor: HTMLElement;
-    let walterPiece: HTMLElement;
+    let topRightCursor: HTMLElement;
+    let topRightPiece: HTMLElement;
 
     onMount(() => {
         const from: AnimationSequence = [
-            [walterCursor, { y: -20, x: 32, opacity: 0 }, { duration: 0.25, at: 0 }],
-            [walterPiece, { y: -35, x: 40 }, { duration: 0.25, at: 0 }]
+            [topRightCursor, { y: -20, x: 32, scale: 1 }, { duration: 0.25, at: 0 }],
+            [topRightPiece, { y: -35, x: 40 }, { duration: 0.25, at: 0 }]
         ];
 
         const to: AnimationSequence = [
-            [walterCursor, { y: 0, x: 0, opacity: 1 }, { duration: 0.25, at: 0 }],
-            [walterPiece, { y: 0, x: 0 }, { duration: 0.25, at: 0.5 }]
+            [topRightCursor, { scale: 0.85 }, { duration: 0.5, at: 0 }],
+            [topRightPiece, { y: 0, x: 0 }, { duration: 0.25, at: 0.5 }],
+            [topRightCursor, { y: 0, x: 0 }, { duration: 0.25, at: 0.45 }],
+            [topRightCursor, { scale: 1 }, { duration: 0.5, at: 0.5 }]
         ];
 
         inView(
@@ -70,8 +72,9 @@
             <img
                 src={TopRight}
                 alt="Top Right"
-                bind:this={walterPiece}
+                bind:this={topRightPiece}
                 class="relative top-9 right-3"
+                style="transform: translateY(-35px) translateX(40px)"
             />
             <img src={BottomLeft} alt="Bottom Left" class="relative bottom-9 left-5" />
             <img src={BottomRight} alt="Bottom Right" class="relative right-7 bottom-5" />
@@ -149,7 +152,9 @@
             class="pointer-events-none absolute aspect-square h-12 w-[5rem]"
             style:top="100px"
             style:right="75px"
-            bind:this={walterCursor}
+            style:--duration="2.5s"
+            style="transform: translateY(-20px) translateX(32px)"
+            bind:this={topRightCursor}
         >
             <svg
                 width="20"
