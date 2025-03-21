@@ -6,11 +6,11 @@ description: Harness the power of querying with Appwrite Databases. Discover var
 
 Many list endpoints in Appwrite allow you to filter, sort, and paginate results using queries. Appwrite provides a common set of syntax to build queries.
 
-# Query Class {% #query-class %}
+# Query class {% #query-class %}
 
 Appwrite SDKs provide a `Query` class to help you build queries. The `Query` class has methods for each type of supported query operation.
 
-# Building Queries {% #building-queries %}
+# Building queries {% #building-queries %}
 
 Queries are passed to an endpoint through the `queries` parameter as an array of query strings, which can be generated using the `Query` class.
 
@@ -137,7 +137,7 @@ query {
 ```
 {% /multicode %}
 
-# Query Operators {% #query-operators %}
+# Query operators {% #query-operators %}
 
 ## Select {% #select %}
 
@@ -167,7 +167,7 @@ Query.select(["name", "title"])
 ```
 {% /multicode %}
 
-## Comparison Operators {% #comparison %}
+## Comparison operators {% #comparison %}
 
 ### Equal {% #equal %}
 
@@ -197,7 +197,7 @@ Query.equal("title", value: ["Iron Man"])
 ```
 {% /multicode %}
 
-### Not Equal {% #not-equal %}
+### Not equal {% #not-equal %}
 
 Returns document if attribute is not equal to any value in the provided array.
 
@@ -225,7 +225,7 @@ Query.notEqual("title", value: ["Iron Man"])
 ```
 {% /multicode %}
 
-### Less Than {% #less-than %}
+### Less than {% #less-than %}
 
 Returns document if attribute is less than the provided value.
 
@@ -253,7 +253,7 @@ Query.lessThan("score", value: 10)
 ```
 {% /multicode %}
 
-### Less Than or Equal {% #less-than-equal %}
+### Less than or equal {% #less-than-equal %}
 
 Returns document if attribute is less than or equal to the provided value.
 
@@ -281,7 +281,7 @@ Query.lessThanEqual("score", value: 10)
 ```
 {% /multicode %}
 
-### Greater Than {% #greater-than %}
+### Greater than {% #greater-than %}
 
 Returns document if attribute is greater than the provided value.
 
@@ -309,7 +309,7 @@ Query.greaterThan("score", value: 10)
 ```
 {% /multicode %}
 
-### Greater Than or Equal {% #greater-than-equal %}
+### Greater than or equal {% #greater-than-equal %}
 
 Returns document if attribute is greater than or equal to the provided value.
 
@@ -365,9 +365,9 @@ Query.between("price", start: 5, end: 10)
 ```
 {% /multicode %}
 
-## Null Checks {% #null-checks %}
+## Null checks {% #null-checks %}
 
-### Is Null {% #is-null %}
+### Is null {% #is-null %}
 
 Returns documents where attribute value is null.
 
@@ -395,7 +395,7 @@ Query.isNull("name")
 ```
 {% /multicode %}
 
-### Is Not Null {% #is-not-null %}
+### Is not null {% #is-not-null %}
 
 Returns documents where attribute value is **not** null.
 
@@ -423,9 +423,9 @@ Query.isNotNull("name")
 ```
 {% /multicode %}
 
-## String Operations {% #string-operations %}
+## String operations {% #string-operations %}
 
-### Starts With {% #starts-with %}
+### Starts with {% #starts-with %}
 
 Returns documents if a string attribute starts with a substring.
 
@@ -453,7 +453,7 @@ Query.startsWith("name", value: "Once upon a time")
 ```
 {% /multicode %}
 
-### Ends With {% #ends-with %}
+### Ends with {% #ends-with %}
 
 Returns documents if a string attribute ends with a substring.
 
@@ -565,7 +565,7 @@ Query.search("text", value: "key words")
 ```
 {% /multicode %}
 
-## Logical Operators {% #logical-operators %}
+## Logical operators {% #logical-operators %}
 
 ### AND {% #and %}
 
@@ -667,7 +667,7 @@ Query.or([
 
 ## Ordering {% #ordering %}
 
-### Order Descending {% #order-desc %}
+### Order descending {% #order-desc %}
 
 Orders results in descending order by attribute. Attribute must be indexed.
 
@@ -695,7 +695,7 @@ Query.orderDesc("attribute")
 ```
 {% /multicode %}
 
-### Order Ascending {% #order-asc %}
+### Order ascending {% #order-asc %}
 
 Orders results in ascending order by attribute. Attribute must be indexed.
 
@@ -781,7 +781,7 @@ Query.offset(0)
 ```
 {% /multicode %}
 
-### Cursor After {% #cursor-after %}
+### Cursor after {% #cursor-after %}
 
 Places the cursor after the specified resource ID. Used for [pagination](/docs/products/databases/pagination).
 
@@ -809,7 +809,7 @@ Query.cursorAfter("62a7...f620")
 ```
 {% /multicode %}
 
-### Cursor Before {% #cursor-before %}
+### Cursor before {% #cursor-before %}
 
 Places the cursor before the specified resource ID. Used for [pagination](/docs/products/databases/pagination).
 
@@ -837,7 +837,7 @@ Query.cursorBefore("62a7...a600")
 ```
 {% /multicode %}
 
-# Complex Queries {% #complex-queries %}
+# Complex queries {% #complex-queries %}
 
 You can create complex queries by combining AND and OR operations. For example, to find items that are either books under $20 or magazines under $10:
 
