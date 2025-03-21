@@ -10,7 +10,7 @@ step: 2
 Create a React app with the `npm create` command.
 
 ```sh
-npm create vite@latest -- --template react ideas-tracker && cd ideas-tracker
+npm create vite@latest ideas-tracker -- --template react && cd ideas-tracker
 ```
 
 # Add dependencies {% #add-dependencies %}
