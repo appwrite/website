@@ -82,17 +82,42 @@
             }
         );
 
-        const commandsTo: AnimationSequence = Array.from({ length: commands.length + 1 }).map(
-            (_, index) => {
-                const yValue = `-${(index * 50) / commands.length}%`;
-                return [commandElement, { y: yValue }, { at: index, ease: 'linear' }];
+        const commandsTo: AnimationSequence = [];
+
+        Array.from({ length: commands.length + 1 }).forEach((_, index) => {
+            const yValue = `-${(index * 50) / commands.length}%`;
+            commandsTo.push([commandElement, { y: yValue }, { at: index, ease: 'linear' }]);
+
+            const centerItemIndex = index + 2;
+
+            if (index < commands.length) {
+                const commandItemElements = document.querySelectorAll('.command-item');
+
+                commandsTo.push([
+                    commandItemElements[centerItemIndex],
+                    {
+                        backgroundPosition: ['0% center', '100% center']
+                    },
+                    { at: index + 0.2, duration: 0.8, ease: 'backOut' }
+                ]);
+
+                commandsTo.push([
+                    commandItemElements[centerItemIndex],
+                    {
+                        backgroundColor: 'transparent',
+                        boxShadow: 'none'
+                    },
+                    { at: index + 1, duration: 0.3, ease: 'easeOut' }
+                ]);
             }
-        );
+        });
+
+        console.log({ platformsTo, commandsTo });
 
         hover(container, () => {
             const interval = setInterval(
                 () => {
-                    activeCommand = activeCommand ? activeCommand + (1 % commands.length) : 3;
+                    activeCommand = activeCommand ? (activeCommand + 1) % commands.length : 3;
                 },
                 2000 + commands.length * 100
             );
@@ -154,10 +179,9 @@
                 {#each Array.from({ length: 2 }) as _, index}
                     {#each commands as command, i}
                         <div
-                            class="text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
+                            class="command-item text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
                             style:--spread="{command.length * 2.25}px"
                             aria-hidden={index !== 0}
-                            class:active={activeCommand === i}
                         >
                             <div
                                 class="h-full w-full rounded-2xl bg-[#232325]/90 py-1 px-3 text-white/80"
@@ -202,7 +226,7 @@
 </div>
 
 <style>
-    .active {
+    .command-item {
         --base-color: transparent;
         --base-gradient-color: white;
 
@@ -216,7 +240,6 @@
         background-size:
             250% 150%,
             auto;
-        animation: badge 1s forwards 0.5s ease-in-out;
     }
 
     @keyframes badge {

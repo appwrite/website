@@ -16,12 +16,12 @@
     onMount(() => {
         const from: AnimationSequence = [
             [topRightCursor, { y: -20, x: 32, scale: 1 }, { duration: 0.25, at: 0 }],
-            [topRightPiece, { y: -35, x: 40 }, { duration: 0.25, at: 0 }]
+            [topRightPiece, { y: -35, x: 40 }, { duration: 0.5, at: 0, type: 'spring' }]
         ];
 
         const to: AnimationSequence = [
             [topRightCursor, { scale: 0.85 }, { duration: 0.25, at: 0 }],
-            [topRightPiece, { y: 0, x: 0 }, { duration: 0.25, at: 0.5 }],
+            [topRightPiece, { y: 0, x: 0 }, { duration: 0.5, at: 0.5, type: 'spring' }],
             [topRightCursor, { y: 0, x: 0 }, { duration: 0.25, at: 0.45 }],
             [topRightCursor, { scale: 1 }, { duration: 0.25, at: 0.5 }]
         ];
