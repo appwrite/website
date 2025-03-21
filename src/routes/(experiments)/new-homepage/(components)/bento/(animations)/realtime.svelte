@@ -20,10 +20,10 @@
         ];
 
         const to: AnimationSequence = [
-            [topRightCursor, { scale: 0.85 }, { duration: 0.5, at: 0 }],
+            [topRightCursor, { scale: 0.85 }, { duration: 0.25, at: 0 }],
             [topRightPiece, { y: 0, x: 0 }, { duration: 0.25, at: 0.5 }],
             [topRightCursor, { y: 0, x: 0 }, { duration: 0.25, at: 0.45 }],
-            [topRightCursor, { scale: 1 }, { duration: 0.5, at: 0.5 }]
+            [topRightCursor, { scale: 1 }, { duration: 0.25, at: 0.5 }]
         ];
 
         inView(
@@ -149,10 +149,9 @@
         </div>
 
         <div
-            class="pointer-events-none absolute aspect-square h-12 w-[5rem]"
+            class="cursor pointer-events-none absolute aspect-square h-12 w-[5rem]"
             style:top="100px"
             style:right="75px"
-            style:--duration="2.5s"
             style="transform: translateY(-20px) translateX(32px)"
             bind:this={topRightCursor}
         >
