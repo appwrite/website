@@ -77,7 +77,7 @@
                 return [
                     marqueeRefs[Math.floor(index / platforms.length)],
                     { y: yValue },
-                    { at: index + 0.25, ease: 'linear' }
+                    { at: index + 0.25, type: 'spring', duration: 0.5 }
                 ];
             }
         );
@@ -86,7 +86,11 @@
 
         Array.from({ length: commands.length + 1 }).forEach((_, index) => {
             const yValue = `-${(index * 50) / commands.length}%`;
-            commandsTo.push([commandElement, { y: yValue }, { at: index, ease: 'linear' }]);
+            commandsTo.push([
+                commandElement,
+                { y: yValue },
+                { at: index, type: 'spring', duration: 0.5 }
+            ]);
 
             const centerItemIndex = index + 2;
 
@@ -98,7 +102,7 @@
                     {
                         backgroundPosition: ['0% center', '100% center']
                     },
-                    { at: index + 0.2, duration: 0.8, ease: 'backOut' }
+                    { at: index + 0.4, duration: 0.8, ease: 'backOut' }
                 ]);
 
                 commandsTo.push([
@@ -111,8 +115,6 @@
                 ]);
             }
         });
-
-        console.log({ platformsTo, commandsTo });
 
         hover(container, () => {
             const interval = setInterval(
