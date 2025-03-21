@@ -75,7 +75,7 @@
             (_, index) => {
                 const yValue = `-${(index * 50) / platforms.length}%`;
                 return [
-                    marqueeRefs[Math.floor(index / platforms.length)],
+                    marqueeRefs[2],
                     { y: yValue },
                     { at: index + 0.25, type: 'spring', duration: 0.5 }
                 ];
