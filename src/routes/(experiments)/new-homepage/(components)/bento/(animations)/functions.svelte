@@ -155,6 +155,8 @@
                 commandAnimation.pause();
             };
         });
+
+        console.log({ platformsTo, commandsTo });
     });
 </script>
 
