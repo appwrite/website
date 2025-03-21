@@ -1,7 +1,7 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import ProductHunt from '../(assets)/logos/product-hunt.svg';
-    import Avatar from '../(assets)/avatar.png';
+    import Avatar from '../(assets)/images/avatar.png';
 
     import { createToggleGroup, melt } from '@melt-ui/svelte';
 

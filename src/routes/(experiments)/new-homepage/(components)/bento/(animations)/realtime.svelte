@@ -3,38 +3,25 @@
     import { animate, hover, inView, type AnimationSequence } from 'motion';
     import { onMount } from 'svelte';
 
-    import TopLeft from '../../../(assets)/top-left.svg';
-    import TopRight from '../../../(assets)/top-right.svg';
-    import BottomLeft from '../../../(assets)/bottom-left.svg';
-    import BottomRight from '../../../(assets)/bottom-right.svg';
+    import TopLeft from '../../../(assets)/images/top-left.svg';
+    import TopRight from '../../../(assets)/images/top-right.svg';
+    import BottomLeft from '../../../(assets)/images/bottom-left.svg';
+    import BottomRight from '../../../(assets)/images/bottom-right.svg';
 
     let container: HTMLElement;
 
     let walterCursor: HTMLElement;
-    let adityaCursor: HTMLElement;
-    let saraCursor: HTMLElement;
-
     let walterPiece: HTMLElement;
-    let adityaPiece: HTMLElement;
-    let saraPiece: HTMLElement;
 
     onMount(() => {
         const from: AnimationSequence = [
-            [walterCursor, { y: -25, x: 40, opacity: 0 }, { duration: 0.25, at: 0 }],
-            [walterPiece, { y: -35, x: 40 }, { duration: 0.25, at: 0 }],
-            [adityaCursor, { y: 50, opacity: 0 }, { duration: 0.25, at: 0 }],
-            [adityaPiece, { y: 40, x: -10 }, { duration: 0.25, at: 0 }],
-            [saraCursor, { y: 10, x: 8, opacity: 0, scale: 1 }, { duration: 0.25, at: 0 }],
-            [saraPiece, { y: 18, x: 22 }, { duration: 0.25, at: 0 }]
+            [walterCursor, { y: -20, x: 32, opacity: 0 }, { duration: 0.25, at: 0 }],
+            [walterPiece, { y: -35, x: 40 }, { duration: 0.25, at: 0 }]
         ];
 
         const to: AnimationSequence = [
             [walterCursor, { y: 0, x: 0, opacity: 1 }, { duration: 0.25, at: 0 }],
-            [walterPiece, { y: 0, x: 0 }, { duration: 0.25, at: 0.25 }],
-            [adityaCursor, { y: 0, opacity: 1 }, { duration: 0.45, at: 0 }],
-            [adityaPiece, { y: 0, x: 0 }, { duration: 0.45, at: 0.5 }],
-            [saraCursor, { y: 0, x: 0, opacity: 1 }, { duration: 0.15, at: 0.25 }],
-            [saraPiece, { y: 0, x: 0 }, { duration: 0.15, at: 0.5 }]
+            [walterPiece, { y: 0, x: 0 }, { duration: 0.25, at: 0.5 }]
         ];
 
         inView(
@@ -86,25 +73,17 @@
                 bind:this={walterPiece}
                 class="relative top-9 right-3"
             />
-            <img
-                src={BottomLeft}
-                alt="Bottom Left"
-                bind:this={adityaPiece}
-                class="relative bottom-9 left-5"
-            />
-            <img
-                src={BottomRight}
-                alt="Bottom Right"
-                bind:this={saraPiece}
-                class="relative right-7 bottom-5"
-            />
+            <img src={BottomLeft} alt="Bottom Left" class="relative bottom-9 left-5" />
+            <img src={BottomRight} alt="Bottom Right" class="relative right-7 bottom-5" />
         </div>
 
         <div
-            class="pointer-events-none absolute aspect-square h-12 w-[4.25rem]"
+            class="cursor pointer-events-none absolute aspect-square h-12 w-[4.25rem]"
             style:right="100px"
             style:bottom="75px"
-            bind:this={saraCursor}
+            style:--y="-12px"
+            style:--x="-6px"
+            style:--duration="2.5s"
         >
             <svg
                 width="20"
@@ -133,10 +112,12 @@
         </div>
 
         <div
-            class="pointer-events-none absolute aspect-square h-12 w-[5.25rem]"
-            style:left="120px"
+            class="cursor pointer-events-none absolute aspect-square h-12 w-[5.25rem]"
+            style:left="140px"
             style:bottom="125px"
-            bind:this={adityaCursor}
+            style:--y="8px"
+            style:--x="-5px"
+            style:--duration="4s"
         >
             <svg
                 width="20"
@@ -201,3 +182,21 @@
         />
     </div>
 </div>
+
+<style>
+    .cursor {
+        animation: cursor var(--duration) ease-in-out infinite;
+    }
+
+    @keyframes cursor {
+        0% {
+            transform: translateY(0) translateX(0);
+        }
+        50% {
+            transform: translateY(var(--y)) translateX(var(--x));
+        }
+        100% {
+            transform: translateY(0) translateX(0);
+        }
+    }
+</style>
