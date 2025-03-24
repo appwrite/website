@@ -46,7 +46,11 @@ Deploy a Remix app to Appwrite Sites
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/quick-start/astro" title="Astro" icon="icon-astro" %}
-Deploy a Astro app to Appwrite Sites
+Deploy an Astro app to Appwrite Sites
+{% /cards_item %}
+
+{% cards_item href="/docs/products/sites/quick-start/vue" title="Vue.js" icon="web-icon-vue" %}
+Deploy a Vue.js app to Appwrite Sites
 {% /cards_item %}
 
 {% /cards %}
