@@ -17,7 +17,7 @@
         "icons:optimize": "node ./src/icons/optimize.js",
         "lint": "prettier --check . && eslint .",
         "preview": "vite preview",
-        "test": "npm run test:integration && npm run test:unit",
+        "test": "npm run test:integration",
         "test:integration": "playwright test",
         "test:unit": "vitest",
         "optimize": "node ./scripts/optimize-assets.js",

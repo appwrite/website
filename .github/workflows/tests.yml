@@ -35,7 +35,36 @@ jobs:
               run: pnpm install --frozen-lockfile
             - name: Check formatting
               run: pnpm format:check
-
+    tests:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  ref: ${{ github.event.pull_request.head.sha }}
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+            - name: Install corepack
+              run: npm i -g corepack@latest
+            - name: Install pnpm
+              run: corepack enable
+            - name: Get pnpm store directory
+              shell: bash
+              run: |
+                  echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+            - uses: actions/cache@v4
+              name: Setup pnpm cache
+              with:
+                  path: ${{ env.STORE_PATH }}
+                  key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-pnpm-store-
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+            - name: Install playwright dependencies
+              run: pnpm exec playwright install
+            - name: Run tests
+              run: pnpm test
     build:
         runs-on: ubuntu-latest
         steps:
