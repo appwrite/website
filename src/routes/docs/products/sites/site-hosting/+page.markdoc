@@ -22,7 +22,11 @@ Build an SSR web app
 
 There are several differences between how static hosting and SSR work on Appwrite.
 
-| Static | SSR |
+| Static/SPA/PWA | SSR |
 |---|---|
 | Pages are rendered at build time only | Pages are rendered every time a request is made to the server |
-| All `console.log` and `console.error` outputs are be displayed in the browser console | `console.log` and `console.error` outputs on server-side functions will be displayed in the response logs on Appwrite |
+| All `console.log` and `console.error` outputs at run-time are be displayed in the browser console | `console.log` and `console.error` outputs on server-side functions will be displayed in the response logs on Appwrite |
+| The default 404 error page is Appwrite-branded (can be updated) | The default 404 error page is taken from the framework |
+| Faster cold starts | Slower cold starts |
+| Can access environment variables only during build-time | Can access environment variables during build-time and run-time |
+| Supported for all frameworks | Limited support for certain frameworks (learn more on [Frameworks page](/docs/products/sites/frameworks)) |
