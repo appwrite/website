@@ -37,6 +37,14 @@ Deploy a Next.js app to Appwrite Sites
 Deploy a Nuxt app to Appwrite Sites
 {% /cards_item %}
 
+{% cards_item href="/docs/products/sites/quick-start/angular" title="Angular" icon="icon-angular" %}
+Deploy a Angular app to Appwrite Sites
+{% /cards_item %}
+
+{% cards_item href="/docs/products/sites/quick-start/remix" title="Remix" icon="web-icon-remix" %}
+Deploy a Remix app to Appwrite Sites
+{% /cards_item %}
+
 {% /cards %}
 
 ## Explore
