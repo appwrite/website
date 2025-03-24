@@ -55,7 +55,7 @@ Set `ssr: false` in `remix` plugin in the `vite.config.ts` file.
 
 Single Page Applications (or SPAs) are web applications that load a single HTML page and dynamically update content using JavaScript, typically leveraging frameworks like React, Vue, or Angular. Unlike traditional websites, SPAs do not require full-page reloads; instead, they use client-side routing to modify the URL and fetch new content asynchronously from APIs. This results in a smoother, more app-like user experience.
 
-Appwrite Sites allows hosting SPAs through our static apps offering. Instead of returning all pre-rendered HTML pages, it allows your client to download relevant JavaScript files, which can then run in the browser.
+Appwrite Sites allows hosting SPAs through the static apps offering. Instead of returning all pre-rendered HTML pages, it allows your client to download relevant JavaScript files, which can then run in the browser.
 
 ### Configuring an Appwrite Site to run as an SPA
 
