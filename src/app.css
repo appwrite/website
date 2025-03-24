@@ -280,3 +280,8 @@
         );
     }
 }
+
+.web-icon-button.web-box-icon.has-border-gradient:hover {
+    box-shadow: 0 0 10px 2px #F02E65; 
+    transition: box-shadow 0.3s ease-in-out;
+}
