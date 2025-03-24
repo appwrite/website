@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Deploy a Nuxt app to Appwrite Sites
-description: Learn how to setup and deploy SveltKit apps on Appwrite Sites.
+description: Learn how to setup and deploy Nuxt apps on Appwrite Sites.
 ---
 
 {% section #step-1 step=1 title="Create Nuxt app" %}

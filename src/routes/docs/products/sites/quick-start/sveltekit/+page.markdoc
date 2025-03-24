@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Deploy a SvelteKit app to Appwrite Sites
-description: Learn how to setup and deploy SveltKit apps on Appwrite Sites.
+description: Learn how to setup and deploy SvelteKit apps on Appwrite Sites.
 ---
 
 {% section #step-1 step=1 title="Create SvelteKit app" %}
