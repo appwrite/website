@@ -118,7 +118,7 @@
                 commandsTo.push([
                     commandItemElements[centerItemIndex],
                     {
-                        backgroundColor: 'transparent',
+                        backgroundColor: 'rgba(0,0,0,0)',
                         boxShadow: 'none'
                     },
                     { at: index + 1, duration: 0.3, ease: 'easeOut' }
@@ -155,8 +155,6 @@
                 commandAnimation.pause();
             };
         });
-
-        console.log({ platformsTo, commandsTo });
     });
 </script>
 

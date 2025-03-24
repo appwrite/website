@@ -2,58 +2,49 @@
     import { classNames } from '$lib/utils/classnames';
     import { onMount } from 'svelte';
     import Image from '../../../(assets)/images/storage.webp';
-    import {
-        animate,
-        hover,
-        inView,
-        motionValue,
-        transform,
-        type AnimationPlaybackControls,
-        type AnimationSequence
-    } from 'motion';
+    import { animate, hover, inView, motionValue, type AnimationSequence } from 'motion';
     import { isMobile } from '$lib/utils/is-mobile';
+    import CodeWindow from '$lib/animations/CodeWindow/CodeWindow.svelte';
 
     let container: HTMLElement;
     let imageComponent: HTMLElement;
     let image: HTMLElement;
 
-    let widthPx: number = 232;
-    let heightPx: number = 148;
-    let borderRadiusPx: number = 4;
-
-    const width = transform([0, 100], [widthPx, widthPx * 1.2]);
+    $: width = motionValue(232);
+    $: height = motionValue(148);
+    $: borderRadius = motionValue(4);
 
     let widthElement: HTMLElement;
     let heightElement: HTMLElement;
     let borderRadiusElement: HTMLElement;
 
-    const snippet: string = `const result = storage.getFilePreview(
+    $: snippet = `const result = storage.getFilePreview(
 	 'photos',     // bucket ID
 	 'sunset.heic',// file ID
-	 ${widthPx},          // width
-	 ${heightPx},          // height
+	 ${width.get()},          // width
+	 ${height.get()},          // height
 	 '90',         // slight compression
-	 ${borderRadiusPx},            // border radius
+	 ${borderRadius.get()},            // border radius
 	 'heic'        // output heic format
 ;`;
-
-    console.log({ width });
 
     onMount(() => {
         const from: AnimationSequence = [
             [
                 imageComponent,
-                { scale: 1, width: '232px', height: '158px' },
+                { scale: 1, width: 232, height: 158 },
                 { duration: 0.25, at: 0, type: 'spring' }
             ],
             [image, { borderRadius: '4px' }, { duration: 0.25 }]
         ];
 
         const to: AnimationSequence = [
+            [width, 282, { at: 0 }],
+            [height, 198, { at: 0 }],
             [
                 imageComponent,
-                { width: width(282), height: '198px' },
-                { duration: 0.25, at: 0, type: 'spring' }
+                { width: `${width.get()}px`, height: `${height.get()}px` },
+                { duration: 0.5, at: 0.5, type: 'spring' }
             ],
             [image, { borderRadius: '24px' }, { duration: 0.25 }],
             [image, { borderRadius: '8px' }, { duration: 0.25, delay: 0.45 }],
@@ -102,17 +93,10 @@
     <div
         class="relative flex h-[26.25rem] justify-between overflow-clip rounded-xl bg-black/24 p-8"
     >
-        <div class="absolute right-0 bottom-8 aspect-square">
-            <span bind:this={widthElement}>{widthPx}</span>
-            <span bind:this={heightElement}>{heightPx}</span>
-            <span bind:this={borderRadiusElement}>{borderRadiusPx}</span>
-        </div>
-        <div
-            class="relative origin-top-left border border-white/50 p-1"
-            style:width="242px"
-            style:height="158px"
-            bind:this={imageComponent}
-        >
+        <CodeWindow>
+            {snippet}
+        </CodeWindow>
+        <div class="relative origin-top-left border border-white/50 p-1" bind:this={imageComponent}>
             {#each [1, 2, 3, 4] as _, i}
                 <div
                     class={classNames(
