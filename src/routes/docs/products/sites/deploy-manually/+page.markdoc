@@ -6,37 +6,7 @@ description: Learn to deploy Appwrite Sites manually from the Appwrite CLI or th
 
 Appwrite Sites allows you to host and deploy web applications directly within the Appwrite platform. Each site can have many deployments, which can be thought of as versions of the web application.
 
-While we recommend you create deployments through [automatic Git deployments](https://www.notion.so/Deploy-from-Git-ef9f0d144cc14e119379c8a2717bbab1?pvs=21), you can also create deployments manually or through the Appwrite CLI.
-
-## CLI
-
-You can create sites using the CLI without needing to access the Console.
-
-{% info title="Before proceeding" %}
-
-Ensure you [**install**](https://appwrite.io/docs/tooling/command-line/installation#getting-started) the CLI, [**log in**](https://appwrite.io/docs/tooling/command-line/installation#login) to your Appwrite account, and [**initialize**](https://appwrite.io/docs/tooling/command-line/installation#initialization) your Appwrite project.
-
-{% /info %}
-
-To deploy your site with the Appwrite CLI, use the `appwrite init sites` command to create a site on your Appwrite project.
-
-```bash
-appwrite init sites
-```
-
-To deploy the site, add any dependencies and push the function using the following command:
-
-```bash
-appwrite push sites
-```
-
-[Learn more about the CLI sites commands >](/docs/tooling/command-line/functions#commands)
-
-### Configure CLI deployments
-
-If you need to target a different project or API endpoint, change the output directory , or update any of the other configuration options, you can do so by editing the `appwrite.json` file.
-
-[Learn more about appwrite.json >](/docs/tooling/command-line/functions#appwritejson)
+While we recommend you create deployments through [automatic Git deployments](/docs/products/sites/deploy-from-git), you can also create deployments manually.
 
 ## Manual Deployment
 
