@@ -4,7 +4,6 @@
     import Image from '../../../(assets)/images/storage.webp';
     import { animate, hover, inView, motionValue, type AnimationSequence } from 'motion';
     import { isMobile } from '$lib/utils/is-mobile';
-    import CodeWindow from '$lib/animations/CodeWindow/CodeWindow.svelte';
 
     let container: HTMLElement;
     let imageComponent: HTMLElement;
@@ -13,10 +12,6 @@
     $: width = motionValue(232);
     $: height = motionValue(148);
     $: borderRadius = motionValue(4);
-
-    let widthElement: HTMLElement;
-    let heightElement: HTMLElement;
-    let borderRadiusElement: HTMLElement;
 
     $: snippet = `const result = storage.getFilePreview(
 	 'photos',     // bucket ID
@@ -30,6 +25,8 @@
 
     onMount(() => {
         const from: AnimationSequence = [
+            [width, 232, { at: 0 }],
+            [height, 158, { at: 0 }],
             [
                 imageComponent,
                 { scale: 1, width: 232, height: 158 },
@@ -48,8 +45,10 @@
             ],
             [image, { borderRadius: '24px' }, { duration: 0.25 }],
             [image, { borderRadius: '8px' }, { duration: 0.25, delay: 0.45 }],
-            [imageComponent, { width: '250px' }, { duration: 0.25, delay: 0.45 }],
-            [imageComponent, { height: '250px' }, { duration: 0.25, delay: 0.45 }]
+            [width, 250],
+            [imageComponent, { width: `${width.get()}px` }, { duration: 0.25, delay: 0.45 }],
+            [height, 250],
+            [imageComponent, { height: `${height.get()}px` }, { duration: 0.25, delay: 0.45 }]
         ];
 
         inView(
@@ -93,10 +92,12 @@
     <div
         class="relative flex h-[26.25rem] justify-between overflow-clip rounded-xl bg-black/24 p-8"
     >
-        <CodeWindow>
-            {snippet}
-        </CodeWindow>
-        <div class="relative origin-top-left border border-white/50 p-1" bind:this={imageComponent}>
+        <div
+            class="relative origin-top-left border border-white/50 p-1"
+            style:width={`${width.get()}px`}
+            style:height={`${height.get()}px`}
+            bind:this={imageComponent}
+        >
             {#each [1, 2, 3, 4] as _, i}
                 <div
                     class={classNames(
