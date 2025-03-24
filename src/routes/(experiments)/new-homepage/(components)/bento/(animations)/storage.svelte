@@ -17,41 +17,33 @@
     let imageComponent: HTMLElement;
     let image: HTMLElement;
 
-    let widthTextCount: number = 0;
-    let widthText: string = '242px';
+    let widthPx: number = 232;
+    let heightPx: number = 148;
+    let borderRadiusPx: number = 4;
 
-    let heightTextCount: number = 0;
-    let heightText: string = '158px';
-
-    let borderRadiusText: string = '4px';
+    const width = transform([0, 100], [widthPx, widthPx * 1.2]);
 
     let widthElement: HTMLElement;
     let heightElement: HTMLElement;
     let borderRadiusElement: HTMLElement;
 
-    const dimemsionSteps = [
-        {
-            width: 242,
-            height: 158,
-            borderRadius: 4
-        },
-        {
-            width: 282,
-            height: 198,
-            borderRadius: 24
-        },
-        {
-            width: 250,
-            height: 250,
-            borderRadius: 8
-        }
-    ];
+    const snippet: string = `const result = storage.getFilePreview(
+	 'photos',     // bucket ID
+	 'sunset.heic',// file ID
+	 ${widthPx},          // width
+	 ${heightPx},          // height
+	 '90',         // slight compression
+	 ${borderRadiusPx},            // border radius
+	 'heic'        // output heic format
+;`;
+
+    console.log({ width });
 
     onMount(() => {
         const from: AnimationSequence = [
             [
                 imageComponent,
-                { scale: 1, width: '242px', height: '158px' },
+                { scale: 1, width: '232px', height: '158px' },
                 { duration: 0.25, at: 0, type: 'spring' }
             ],
             [image, { borderRadius: '4px' }, { duration: 0.25 }]
@@ -60,7 +52,7 @@
         const to: AnimationSequence = [
             [
                 imageComponent,
-                { width: '282px', height: '198px' },
+                { width: width(282), height: '198px' },
                 { duration: 0.25, at: 0, type: 'spring' }
             ],
             [image, { borderRadius: '24px' }, { duration: 0.25 }],
@@ -68,12 +60,6 @@
             [imageComponent, { width: '250px' }, { duration: 0.25, delay: 0.45 }],
             [imageComponent, { height: '250px' }, { duration: 0.25, delay: 0.45 }]
         ];
-
-        const textFrom: AnimationSequence = [];
-
-        const textControls: AnimationPlaybackControls = animate(0, widthText.length, {
-            duration: 0.5
-        });
 
         inView(
             container,
@@ -91,8 +77,6 @@
         hover(container, () => {
             if (isMobile()) return;
             animate(to);
-
-            transform(count, (latest) => Math.round(latest));
 
             return () => {
                 animate(from);
@@ -118,9 +102,11 @@
     <div
         class="relative flex h-[26.25rem] justify-between overflow-clip rounded-xl bg-black/24 p-8"
     >
-        <span bind:this={widthElement}>{widthText}</span>
-        <span bind:this={heightElement}>{heightText}</span>
-        <span bind:this={borderRadiusElement}>{borderRadiusText}</span>
+        <div class="absolute right-0 bottom-8 aspect-square">
+            <span bind:this={widthElement}>{widthPx}</span>
+            <span bind:this={heightElement}>{heightPx}</span>
+            <span bind:this={borderRadiusElement}>{borderRadiusPx}</span>
+        </div>
         <div
             class="relative origin-top-left border border-white/50 p-1"
             style:width="242px"
