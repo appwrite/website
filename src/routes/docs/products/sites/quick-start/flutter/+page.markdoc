@@ -1,22 +1,27 @@
 ---
 layout: article
-title: Deploy an Angular app to Appwrite Sites
-description: Learn how to setup and deploy Angular apps on Appwrite Sites.
+title: Deploy a Flutter Web app to Appwrite Sites
+description: Learn how to setup and deploy Flutter Web apps on Appwrite Sites.
 ---
 
-{% section #step-1 step=1 title="Create Angular app" %}
+{% section #step-1 step=1 title="Create Flutter Web app" %}
 
 {% info title="Important note" %}
-You can skip this step if you have developed an Angular app already.
+You can skip this step if you have developed a Flutter Web app already.
 
-If you prefer, you can also directly setup our [Angular starter template](/docs/products/sites/templates) instead.
+In case you have a Flutter app and want to add web support to it, you must run the following command in your project directory:
+
+```bash
+flutter create . --platforms web
+```
+
+If you prefer, you can also directly setup our [Flutter Web starter template](/docs/products/sites/templates) instead.
 {% /info %}
 
 Open your terminal, and run the following command.
 
 ```bash
-npm install -g @angular/cli@17
-ng new my-app
+flutter create my_app
 ```
 
 Push this project to a [GitHub repo](https://github.com/new).
@@ -38,11 +43,11 @@ Connect your GitHub account and select the repository you intend to deploy.
 ![Create a site](https://warm-tray-285.notion.site/image/attachment%3A59cff292-50e7-4bc9-b38a-497cc71eb780%3Aimage.png?table=block&id=1bafb53f-e82d-808e-a703-d7730947593f&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
 
 1. Select the **production branch** and **root directory** from your repo.
-2. Verify that the **correct framework** is selected. In case an incorrect framework is visible, pick **Angular** from the drop-down list. 
-3. Confirm the **install command**, **build command**, and **output directory** in the build settings. The default build settings for Angular are:
-    - **Install command:** `npm install`
-    - **Build command:** `npm run build`
-    - **Output directory:** `./dist/angular/browser`
+2. Verify that the **correct framework** is selected. In case an incorrect framework is visible, pick **Flutter Web** from the drop-down list. 
+3. Confirm the **install command**, **build command**, and **output directory** in the build settings. The default build settings for Flutter Web are:
+    - **Install command:** `N/A` (leave empty)
+    - **Build command:** `flutter build web`
+    - **Output directory:** `./build/web`
 4. Add any **environment variables** required by the site.
 
 Click on the **Deploy** button.

@@ -38,7 +38,7 @@ Deploy a Nuxt app to Appwrite Sites
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/quick-start/angular" title="Angular" icon="icon-angular" %}
-Deploy a Angular app to Appwrite Sites
+Deploy an Angular app to Appwrite Sites
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/quick-start/remix" title="Remix" icon="web-icon-remix" %}
@@ -49,12 +49,16 @@ Deploy a Remix app to Appwrite Sites
 Deploy an Astro app to Appwrite Sites
 {% /cards_item %}
 
-{% cards_item href="/docs/products/sites/quick-start/react" title="React (+ Vite)" icon="icon-react" %}
-Deploy a Vite-based React app to Appwrite Sites
+{% cards_item href="/docs/products/sites/quick-start/react" title="React" icon="icon-react" %}
+Deploy a React app to Appwrite Sites
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/quick-start/vue" title="Vue.js" icon="web-icon-vue" %}
 Deploy a Vue.js app to Appwrite Sites
+{% /cards_item %}
+
+{% cards_item href="/docs/products/sites/quick-start/flutter" title="Flutter" icon="icon-flutter" %}
+Deploy a Flutter Web app to Appwrite Sites
 {% /cards_item %}
 
 {% /cards %}

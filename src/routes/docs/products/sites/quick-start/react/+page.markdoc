@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Deploy a React (+ Vite) app to Appwrite Sites
+title: Deploy a React app to Appwrite Sites
 description: Learn how to setup and deploy React apps on Appwrite Sites.
 ---
 
