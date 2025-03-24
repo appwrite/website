@@ -16,7 +16,6 @@ Internal testing revealed notable time savings across database backups:
 - **3.5 minute backup → 1.2 minutes** (3x faster)
 - **6.7 minute backup → 2 minutes** (3.4x faster)
 - **34.2 minute backup → 5.2 minutes** (6.6x faster)
-- **25.8 minute backup → 8.7 minutes** (3x faster)
 
 Most databases showed at least a 2x reduction in backup time, with many achieving up to 7x faster backups.
 
