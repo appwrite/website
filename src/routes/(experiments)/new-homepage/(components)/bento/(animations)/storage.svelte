@@ -10,7 +10,7 @@
     let image: HTMLElement;
 
     $: width = motionValue(232);
-    $: height = motionValue(148);
+    $: height = motionValue(158);
     $: borderRadius = motionValue(4);
 
     $: snippet = `const result = storage.getFilePreview(
