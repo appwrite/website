@@ -1,19 +1,27 @@
 <script lang="ts">
     import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
     import { classNames } from '$lib/utils/classnames';
+    import { fade } from 'svelte/transition';
 
     const backToTop = () => {
         window.scrollTo({ top: 0 });
     };
 
+    let isScrolled: boolean = false;
+
+    window.addEventListener('scroll', () => {
+        isScrolled = !!window.scrollY;
+    });
+
     export let toc: Array<TocItem> = [];
+    export let heading: string = 'Table of Contents';
 </script>
 
 <nav class="sticky top-32 col-span-3 mt-2 -ml-4 hidden h-[800px] flex-col gap-6 lg:flex">
-    <span class="text-micro text-primary ps-6 uppercase tracking-tighter">Table of Contents</span>
+    <span class="text-micro text-primary ps-6 uppercase tracking-tighter">{heading}</span>
     <div class="relative">
         <ul
-            class="border-smooth mask text-caption flex max-h-[600px] flex-col gap-4 overflow-scroll border-b pb-11 [scrollbar-width:none]"
+            class="mask text-caption flex max-h-[600px] flex-col gap-4 overflow-scroll pb-11 [scrollbar-width:none]"
         >
             {#each toc as parent (parent.href)}
                 <li
@@ -33,7 +41,7 @@
 
                     {#if parent.children}
                         <ul
-                            class="border-smooth mt-11 ml-9 flex flex-col gap-7 border-b pb-11 text-xs"
+                            class="border-smooth text-caption mt-11 ml-9 flex flex-col gap-7 border-b pb-11"
                         >
                             {#each parent.children as child}
                                 <li
@@ -58,11 +66,15 @@
         </ul>
     </div>
 
-    <button
-        class="text-primary group mt-8 flex cursor-pointer items-center gap-2 pl-7 transition-all active:scale-95"
-        on:click={backToTop}
-    >
-        <span class="web-icon-arrow-up transition group-hover:-translate-y-0.5" />
-        Back to Top
-    </button>
+    {#if isScrolled}
+        <button
+            class="text-primary group border-smooth text-caption ms-5 flex cursor-pointer items-center gap-2 border-t pt-11 font-medium transition-all"
+            on:click={backToTop}
+            out:fade
+            in:fade
+        >
+            <span class="web-icon-arrow-up transition group-hover:-translate-y-0.5" />
+            Back to Top
+        </button>
+    {/if}
 </nav>
