@@ -26,7 +26,7 @@
 
     $: snippet = getCodeHtml({
         content,
-        language: 'js',
+        language: 'javascript',
         withLineNumbers: true
     });
 
@@ -44,13 +44,13 @@
 
         const animationSequence = () => {
             animate(width, 285, {
-                duration: 0.25,
+                duration: 0.35,
                 type: 'spring',
                 onUpdate: (latest) => (width = Math.round(latest))
             });
 
             animate(height, 182, {
-                duration: 0.25,
+                duration: 0.35,
                 type: 'spring',
                 onUpdate: (latest) => (height = Math.round(latest))
             });
@@ -63,7 +63,7 @@
                 },
                 {
                     duration: 0.25,
-                    delay: 0.3,
+                    delay: 0.25,
                     type: 'spring'
                 }
             );
@@ -128,9 +128,13 @@
     <div
         class="relative flex h-[26.25rem] justify-between overflow-clip rounded-xl bg-black/24 p-8"
     >
-        <div class="absolute -right-4 bottom-8 z-10 overflow-hidden rounded-l-xl bg-[#232325] p-1">
+        <div
+            class="web-code-snippet absolute -right-4 bottom-8 z-10 overflow-hidden rounded-l-xl bg-[#232325] p-1"
+        >
             <div class="py-3 px-4">Node.js</div>
-            <div class="z-10 rounded-l-[10px] bg-gradient-to-br from-black/48 to-transparent p-3">
+            <div
+                class="web-code-snippet-content z-10 rounded-l-[10px] bg-gradient-to-br from-black/48 to-transparent p-3"
+            >
                 {@html snippet}
             </div>
         </div>
