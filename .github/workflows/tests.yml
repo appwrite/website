@@ -64,6 +64,22 @@ jobs:
             - name: Install playwright dependencies
               run: pnpm exec playwright install
             - name: Run tests
+              env:
+                  NODE_OPTIONS: '--max_old_space_size=16384'
+                  PUBLIC_APPWRITE_ENDPOINT: ${{ vars.PUBLIC_APPWRITE_ENDPOINT }}
+                  PUBLIC_APPWRITE_DASHBOARD: ${{ vars.PUBLIC_APPWRITE_DASHBOARD }}
+                  PUBLIC_APPWRITE_PROJECT_ID: ${{ vars.PUBLIC_APPWRITE_PROJECT_ID }}
+                  PUBLIC_APPWRITE_DB_MAIN_ID: ${{ vars.PUBLIC_APPWRITE_DB_MAIN_ID }}
+                  PUBLIC_APPWRITE_COL_THREADS_ID: ${{ vars.PUBLIC_APPWRITE_COL_THREADS_ID }}
+                  PUBLIC_APPWRITE_COL_MESSAGES_ID: ${{ vars.PUBLIC_APPWRITE_COL_MESSAGES_ID }}
+                  PUBLIC_APPWRITE_FN_TLDR_ID: ${{ vars.PUBLIC_APPWRITE_FN_TLDR_ID }}
+                  PUBLIC_APPWRITE_PROJECT_INIT_ID: ${{ vars.PUBLIC_APPWRITE_PROJECT_INIT_ID }}
+                  PUBLIC_GROWTH_ENDPOINT: ${{ vars.PUBLIC_GROWTH_ENDPOINT }}
+                  PUBLIC_POSTHOG_API_KEY: ${{ vars.PUBLIC_POSTHOG_API_KEY }}
+                  APPWRITE_DB_INIT_ID: ${{ secrets.APPWRITE_DB_INIT_ID }}
+                  APPWRITE_COL_INIT_ID: ${{ secrets.APPWRITE_COL_INIT_ID }}
+                  APPWRITE_API_KEY_INIT: ${{ secrets.APPWRITE_API_KEY_INIT }}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               run: pnpm test
     build:
         runs-on: ubuntu-latest
