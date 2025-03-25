@@ -23,49 +23,42 @@ Before deploying your web app with Git, create a new Site attached to your GitHu
 
 ## Framework quick-starts
 
+Learn how to quickly setup a web app developed using any of the following frameworks and deploy it on Appwrite Sites.
+
 {% cards %}
 
 {% cards_item href="/docs/products/sites/quick-start/sveltekit" title="SvelteKit" icon="icon-svelte" %}
-Deploy a SvelteKit app to Appwrite Sites
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/quick-start/nextjs" title="Next.js" icon="icon-nextjs" %}
-Deploy a Next.js app to Appwrite Sites
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/quick-start/nuxt" title="Nuxt" icon="icon-nuxt" %}
-Deploy a Nuxt app to Appwrite Sites
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/quick-start/angular" title="Angular" icon="icon-angular" %}
-Deploy an Angular app to Appwrite Sites
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/quick-start/remix" title="Remix" icon="web-icon-remix" %}
-Deploy a Remix app to Appwrite Sites
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/quick-start/astro" title="Astro" icon="icon-astro" %}
-Deploy an Astro app to Appwrite Sites
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/quick-start/react" title="React" icon="icon-react" %}
-Deploy a React app to Appwrite Sites
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/quick-start/vue" title="Vue.js" icon="web-icon-vue" %}
-Deploy a Vue.js app to Appwrite Sites
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/quick-start/flutter" title="Flutter" icon="icon-flutter" %}
-Deploy a Flutter Web app to Appwrite Sites
 {% /cards_item %}
 
 {% /cards %}
 
 ## Explore
 
-Use this your first site as a springboard to explore the flexible and powerful features of Appwrite Functions.
+Use your first site as a springboard to explore the flexible and powerful features of Appwrite Functions.
 
 {% cards %}
 
