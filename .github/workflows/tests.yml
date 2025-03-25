@@ -62,7 +62,7 @@ jobs:
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
             - name: Install playwright dependencies
-              run: pnpm exec playwright install && pnpm exec playwright install-deps
+              run: pnpm exec playwright install --with-deps chromium
             - name: Run tests
               env:
                   PUBLIC_APPWRITE_ENDPOINT: ${{ vars.PUBLIC_APPWRITE_ENDPOINT }}
