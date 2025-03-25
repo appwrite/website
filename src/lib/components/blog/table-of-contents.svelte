@@ -18,7 +18,9 @@
 </script>
 
 <nav class="sticky top-32 col-span-3 mt-2 -ml-4 hidden h-[800px] flex-col gap-6 lg:flex">
-    <span class="text-micro text-primary ps-6 uppercase tracking-tighter">{heading}</span>
+    <span class="text-micro tracking-loose text-primary font-aeonik-fono ps-6 uppercase"
+        >{heading}</span
+    >
     <div class="relative">
         <ul
             class="mask text-caption flex max-h-[600px] flex-col gap-4 overflow-scroll pb-11 [scrollbar-width:none]"
@@ -32,7 +34,7 @@
                         {
                             'font-medium': parent.level && parent.level === 1,
                             'ps-6': parent.level && parent.level === 2,
-                            'pl-10': parent.level && parent.level >= 3,
+                            'ps-12': parent.level && parent.level >= 3,
                             'before:opacity-100': parent.selected
                         }
                     )}
@@ -41,7 +43,7 @@
 
                     {#if parent.children}
                         <ul
-                            class="border-smooth text-caption mt-11 ml-9 flex flex-col gap-7 border-b pb-11"
+                            class="border-smooth text-caption mt-11 ml-9 flex flex-col gap-7 border-b pb-10"
                         >
                             {#each parent.children as child}
                                 <li
@@ -68,7 +70,7 @@
 
     {#if isScrolled}
         <button
-            class="text-primary group border-smooth text-caption ms-5 flex cursor-pointer items-center gap-2 border-t pt-11 font-medium transition-all"
+            class="text-primary group border-smooth text-caption ms-6 -mt-4 flex cursor-pointer items-center gap-2 border-t pt-10 font-medium transition-all"
             on:click={backToTop}
             out:fade
             in:fade
