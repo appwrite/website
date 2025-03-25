@@ -62,10 +62,9 @@ jobs:
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
             - name: Install playwright dependencies
-              run: pnpm exec playwright install
+              run: pnpm exec playwright install && pnpm exec playwright install-deps
             - name: Run tests
               env:
-                  NODE_OPTIONS: '--max_old_space_size=16384'
                   PUBLIC_APPWRITE_ENDPOINT: ${{ vars.PUBLIC_APPWRITE_ENDPOINT }}
                   PUBLIC_APPWRITE_DASHBOARD: ${{ vars.PUBLIC_APPWRITE_DASHBOARD }}
                   PUBLIC_APPWRITE_PROJECT_ID: ${{ vars.PUBLIC_APPWRITE_PROJECT_ID }}
