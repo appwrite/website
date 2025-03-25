@@ -22,3 +22,5 @@ terraform/**/.env
 terraform/**/**/*.tfstate*
 /.cache
 /test-results
+
+# test e2e
