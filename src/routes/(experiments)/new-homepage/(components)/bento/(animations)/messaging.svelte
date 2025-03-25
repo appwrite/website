@@ -13,18 +13,12 @@
     onMount(() => {
         const from: AnimationSequence = [
             [notification, { opacity: 0, y: -20, filter: 'blur(4px)' }, { duration: 0.2 }],
-            [icon, { scale: 0, opacity: 0, filter: 'blur(2px)' }, { duration: 0.25 }],
             [device, { y: 15 }, { duration: 0.25 }]
         ];
 
         const to: AnimationSequence = [
             [device, { y: 0 }, { duration: 0.25 }],
-            [
-                icon,
-                { scale: 1, opacity: 1, transformOrigin: 'center', filter: 'blur(0px)' },
-                { duration: 0.25, at: 0.1 }
-            ],
-            [notification, { opacity: 1, y: 0, filter: 'blur(0px)' }, { duration: 0.2, at: 0.65 }]
+            [notification, { opacity: 1, y: 0, filter: 'blur(0px)' }, { duration: 0.2, at: 0.15 }]
         ];
 
         inView(
@@ -113,7 +107,6 @@
                     >
                         <div
                             class="bg-accent text-x-micro absolute -top-1 -right-1 flex size-4 items-center justify-center rounded-full text-white"
-                            style="transform: scale(0); opacity: 0; filter: blur(2px);"
                             bind:this={icon}
                         >
                             1

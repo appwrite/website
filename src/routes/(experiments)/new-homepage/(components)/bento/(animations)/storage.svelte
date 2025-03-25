@@ -2,63 +2,98 @@
     import { classNames } from '$lib/utils/classnames';
     import { onMount } from 'svelte';
     import Image from '../../../(assets)/images/storage.webp';
-    import { animate, hover, inView, motionValue, type AnimationSequence } from 'motion';
+    import { animate, hover, inView, type AnimationSequence } from 'motion';
     import { isMobile } from '$lib/utils/is-mobile';
+    import { getCodeHtml } from '$lib/utils/code';
 
     let container: HTMLElement;
     let imageComponent: HTMLElement;
     let image: HTMLElement;
 
-    $: width = motionValue(232);
-    $: height = motionValue(158);
-    $: borderRadius = motionValue(4);
+    $: width = 232;
+    $: height = 158;
+    $: borderRadius = 4;
 
-    $: snippet = `const result = storage.getFilePreview(
+    $: content = `const result = storage.getFilePreview(
 	 'photos',     // bucket ID
 	 'sunset.heic',// file ID
-	 ${width.get()},          // width
-	 ${height.get()},          // height
+	 ${width},          // width
+	 ${height},          // height
 	 '90',         // slight compression
-	 ${borderRadius.get()},            // border radius
+	 ${borderRadius},            // border radius
 	 'heic'        // output heic format
 ;`;
 
+    $: snippet = getCodeHtml({
+        content,
+        language: 'js',
+        withLineNumbers: true
+    });
+
+    $: console.log({ width, height });
+
     onMount(() => {
-        const from: AnimationSequence = [
-            [width, 232, { at: 0 }],
-            [height, 158, { at: 0 }],
+        const startingSequence: AnimationSequence = [
             [
                 imageComponent,
-                { scale: 1, width: 232, height: 158 },
+                { scale: 1, width: '232px', height: '158px' },
                 { duration: 0.25, at: 0, type: 'spring' }
             ],
             [image, { borderRadius: '4px' }, { duration: 0.25 }]
         ];
 
-        const to: AnimationSequence = [
-            [width, 282, { at: 0 }],
-            [height, 198, { at: 0 }],
-            [
+        const animationSequence = () => {
+            animate(width, 285, {
+                duration: 0.25,
+                type: 'spring',
+                onUpdate: (latest) => (width = Math.round(latest))
+            });
+
+            animate(height, 182, {
+                duration: 0.25,
+                type: 'spring',
+                onUpdate: (latest) => (height = Math.round(latest))
+            });
+
+            animate(
                 imageComponent,
-                { width: `${width.get()}px`, height: `${height.get()}px` },
-                { duration: 0.5, at: 0.5, type: 'spring' }
-            ],
-            [image, { borderRadius: '24px' }, { duration: 0.25 }],
-            [image, { borderRadius: '8px' }, { duration: 0.25, delay: 0.45 }],
-            [width, 250],
-            [imageComponent, { width: `${width.get()}px` }, { duration: 0.25, delay: 0.45 }],
-            [height, 250],
-            [imageComponent, { height: `${height.get()}px` }, { duration: 0.25, delay: 0.45 }]
-        ];
+                {
+                    width: '285px',
+                    height: '182px'
+                },
+                {
+                    duration: 0.25,
+                    delay: 0.3,
+                    type: 'spring'
+                }
+            );
+
+            animate(borderRadius, 12, {
+                duration: 0.25,
+                ease: 'linear',
+                onUpdate: (latest) => (borderRadius = Math.round(latest))
+            });
+
+            animate(
+                image,
+                {
+                    borderRadius: '12px'
+                },
+                {
+                    duration: 0.25,
+                    ease: 'linear'
+                }
+            );
+        };
 
         inView(
             container,
             () => {
                 if (!isMobile()) return;
-                animate(to);
+                animationSequence();
 
                 return () => {
-                    animate(from);
+                    animate(startingSequence);
                 };
             },
             { amount: 'all' }
@@ -66,10 +101,11 @@
 
         hover(container, () => {
             if (isMobile()) return;
-            animate(to);
+
+            animationSequence();
 
             return () => {
-                animate(from);
+                animate(startingSequence);
             };
         });
     });
@@ -92,10 +128,16 @@
     <div
         class="relative flex h-[26.25rem] justify-between overflow-clip rounded-xl bg-black/24 p-8"
     >
+        <div class="absolute -right-4 bottom-8 z-10 overflow-hidden rounded-l-xl bg-[#232325] p-1">
+            <div class="py-3 px-4">Node.js</div>
+            <div class="z-10 rounded-l-[10px] bg-gradient-to-br from-black/48 to-transparent p-3">
+                {@html snippet}
+            </div>
+        </div>
         <div
             class="relative origin-top-left border border-white/50 p-1"
-            style:width={`${width.get()}px`}
-            style:height={`${height.get()}px`}
+            style:width="232px"
+            style:height="158px"
             bind:this={imageComponent}
         >
             {#each [1, 2, 3, 4] as _, i}
