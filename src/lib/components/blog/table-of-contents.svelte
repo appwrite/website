@@ -1,5 +1,20 @@
+<script lang="ts" context="module">
+    export type TocItem = {
+        title: string;
+        href: string;
+        step?: number;
+        selected?: boolean;
+        level?: number;
+        children?: Array<{
+            title: string;
+            href: string;
+            selected: boolean;
+            level?: number;
+        }>;
+    };
+</script>
+
 <script lang="ts">
-    import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
     import { classNames } from '$lib/utils/classnames';
     import { fade } from 'svelte/transition';
 
@@ -9,13 +24,15 @@
 
     let isScrolled: boolean = false;
 
-    window.addEventListener('scroll', () => {
+    const handleIsScrolled = () => {
         isScrolled = !!window.scrollY;
-    });
+    };
 
     export let toc: Array<TocItem> = [];
     export let heading: string = 'Table of Contents';
 </script>
+
+<svelte:window on:scroll={handleIsScrolled} />
 
 <nav class="sticky top-32 col-span-3 mt-2 -ml-4 hidden h-[800px] flex-col gap-6 lg:flex">
     <span class="text-micro tracking-loose text-primary font-aeonik-fono ps-6 uppercase"
