@@ -30,8 +30,6 @@
         withLineNumbers: true
     });
 
-    $: console.log({ width, height });
-
     onMount(() => {
         const startingSequence: AnimationSequence = [
             [

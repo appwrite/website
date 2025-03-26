@@ -13,6 +13,8 @@
     let topRightCursor: HTMLElement;
     let topRightPiece: HTMLElement;
 
+    let isAnimating: boolean = false;
+
     onMount(() => {
         const from: AnimationSequence = [
             [topRightCursor, { y: -20, x: 32, scale: 1 }, { duration: 0.25, at: 0 }],
@@ -41,7 +43,8 @@
 
         hover(container, () => {
             if (isMobile()) return;
-            animate(to);
+            isAnimating = true;
+            animate(to).then(() => (isAnimating = false));
 
             return () => {
                 animate(from);
@@ -149,10 +152,15 @@
         </div>
 
         <div
-            class="cursor pointer-events-none absolute aspect-square h-12 w-[5rem]"
+            class="pointer-events-none absolute aspect-square h-12 w-[5rem]"
             style:top="100px"
             style:right="75px"
-            style="transform: translateY(-20px) translateX(32px)"
+            style:--x="12px"
+            style:--y="9px"
+            style:--startingY="-20px"
+            style:--startingX="32px"
+            style:--duration="2.5s"
+            class:cursor={!isAnimating}
             bind:this={topRightCursor}
         >
             <svg
@@ -194,13 +202,13 @@
 
     @keyframes cursor {
         0% {
-            transform: translateY(0) translateX(0);
+            transform: translateY(var(--startingY), 0) translateX(var(--startingX), 0);
         }
         50% {
             transform: translateY(var(--y)) translateX(var(--x));
         }
         100% {
-            transform: translateY(0) translateX(0);
+            transform: translateY(var(--startingY), 0) translateX(var(--startingX), 0);
         }
     }
 </style>
