@@ -1,7 +1,8 @@
 ---
 layout: changelog
 title: Appwrite Cloud backups now faster
-date: 2025-03-24
+date: 2025-03-27
+cover: /images/changelog/2025-03-27.png
 ---
 
 Appwrite Cloud backups are now considerably faster, reducing wait times and improving reliability.
