@@ -1,5 +1,20 @@
+<script lang="ts" context="module">
+    export type TocItem = {
+        title: string;
+        href: string;
+        step?: number;
+        selected?: boolean;
+        level?: number;
+        children?: Array<{
+            title: string;
+            href: string;
+            selected: boolean;
+            level?: number;
+        }>;
+    };
+</script>
+
 <script lang="ts">
-    import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
     import { classNames } from '$lib/utils/classnames';
     import { fade } from 'svelte/transition';
 
