@@ -18,7 +18,6 @@
     import { setContext } from 'svelte';
     import { writable } from 'svelte/store';
     import { Feedback } from '$lib/components';
-    import { scrollToTop } from '$lib/actions/scrollToTop';
     import TableOfContents from '$lib/components/blog/table-of-contents.svelte';
 
     export let title: string;
