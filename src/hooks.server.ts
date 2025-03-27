@@ -53,6 +53,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             "'unsafe-eval'",
             'https://*.posthog.com',
             'https://*.plausible.io',
+            'https://*.reo.dev',
             'https://plausible.io',
             'https://js.zi-scripts.com',
             'https://ws.zoominfo.com'
@@ -74,6 +75,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://*.sentry.io',
             'https://*.plausible.io',
             'https://plausible.io',
+            'https://*.reo.dev',
             'https://js.zi-scripts.com',
             'https://aorta.clickagy.com',
             'https://hemsync.clickagy.com',
