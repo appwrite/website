@@ -2,15 +2,15 @@ import type { Action } from 'svelte/action';
 import {
     animate as motionAnimate,
     type ElementOrSelector,
-    type MotionKeyframesDefinition,
-    type AnimationOptionsWithOverrides,
+    type ValueKeyframesDefinition,
+    type AnimationOptionsWithValueOverrides,
     animate
 } from 'motion';
 
 export function animation(
     elementOrSelector: ElementOrSelector,
-    keyframes: MotionKeyframesDefinition,
-    options?: AnimationOptionsWithOverrides
+    keyframes: ValueKeyframesDefinition,
+    options?: AnimationOptionsWithValueOverrides
 ) {
     const play = () => {
         const played = motionAnimate(elementOrSelector, keyframes, options);
@@ -37,8 +37,8 @@ export type Animation = ReturnType<typeof animation>;
 
 export const safeAnimate = (
     elementOrSelector: ElementOrSelector,
-    keyframes: MotionKeyframesDefinition,
-    options?: AnimationOptionsWithOverrides
+    keyframes: ValueKeyframesDefinition,
+    options?: AnimationOptionsWithValueOverrides
 ) => {
     try {
         return animate(elementOrSelector, keyframes, options);
