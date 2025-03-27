@@ -4,6 +4,7 @@
     import { fade } from 'svelte/transition';
     import { loggedIn, user } from '$lib/utils/console';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+    import Button from './ui/button.svelte';
 
     export let date: string | undefined = undefined;
     let showFeedback = false;
@@ -158,12 +159,12 @@
             {/if}
 
             <div class="mt-4 flex justify-end gap-2">
-                <button class="web-button is-text" on:click={() => (showFeedback = false)}>
+                <Button variant="text" on:click={() => (showFeedback = false)}>
                     <span>Cancel</span>
-                </button>
-                <button type="submit" class="web-button" disabled={submitting || !email}>
+                </Button>
+                <Button type="submit" disabled={submitting || !email}>
                     <span>Submit</span>
-                </button>
+                </Button>
             </div>
         </form>
     {/if}

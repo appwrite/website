@@ -22,8 +22,8 @@
     }}
     class="cursor-pointer shadow-[0_2px_40px_rgba(0,0,0,0.5)] transition-opacity hover:opacity-90 active:scale-95"
 >
-    <span class="web-icon-play" />
-    <span>Appwrite in 100 seconds</span>
+    <span slot="icon" class="web-icon-play" />
+    Appwrite in 100 seconds
 </Button>
 
 {#if $open}
