@@ -1,5 +1,6 @@
 <script lang="ts">
     import { cn } from '$lib/utils/classnames';
+    import Eyebrow from '../ui/eyebrow.svelte';
 
     type $$Props = {
         eyebrow: {
@@ -36,22 +37,22 @@
 </script>
 
 <div
-    class="border-smooth box-content flex items-center border-b bg-[url(/images/bgs/mobile-hero.png)] bg-cover bg-bottom py-12 px-5 md:bg-[url(/images/bgs/hero.png)] md:bg-center md:pt-32 md:pb-40 lg:px-8 xl:px-16"
+    class="border-smooth box-content flex items-center border-b bg-[url(/images/bgs/mobile-hero.png)] bg-cover bg-bottom px-5 py-12 md:bg-[url(/images/bgs/hero.png)] md:bg-center md:pt-32 md:pb-40 lg:px-8 xl:px-16"
 >
     <div class="mx-auto grid max-w-[75rem] items-center gap-16 md:grid-cols-2">
         <div class="space-y-8">
             <div class="flex items-center gap-2">
                 <img src={eyebrow.icon} class="size-8" alt="" />
-                <span class="text-micro font-aeonik-fono tracking-loose text-primary uppercase">
+                <Eyebrow>
                     {eyebrow.label}<span class="web-u-color-text-accent">_</span>
-                </span>
+                </Eyebrow>
             </div>
             <h1
                 class="text-display font-aeonik-pro text-primary text-pretty max-sm:max-w-[300px] md:max-w-md"
             >
                 {title}
             </h1>
-            <p class="text-description text-secondary text-pretty font-medium">
+            <p class="text-description text-secondary font-medium text-pretty">
                 {description}
             </p>
 

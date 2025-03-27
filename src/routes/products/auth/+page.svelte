@@ -4,14 +4,18 @@
     import { TITLE_SUFFIX } from '$routes/titles';
     import Access from './(components)/Access.svelte';
 
+    import Phone from './(assets)/phone.png';
+    import PhoneMobile from './(assets)/phone-mobile.png';
+
     import Bento from './(components)/Bento.svelte';
     import SSR from './(components)/SSR.svelte';
     import UseCases from './(components)/UseCases.svelte';
     import OpenSource from './(components)/OpenSource.svelte';
     import { PreFooter, FooterNav, MainFooter } from '$lib/components';
-    import Hero from './(components)/Hero.svelte';
     import Testimonials from '$lib/components/product-pages/testimonials.svelte';
     import Features from './(components)/features/Features.svelte';
+    import Hero from '$lib/components/product-pages/hero.svelte';
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
     const title = 'Auth' + TITLE_SUFFIX;
     const description =
@@ -38,7 +42,30 @@
 
 <Main>
     <div class="overflow-hidden">
-        <Hero />
+        <Hero
+            eyebrow={{
+                label: 'Auth',
+                icon: '/images/icons/illustrated/dark/storage.png'
+            }}
+            title="Secure login for all users"
+            description=" Authenticate users securely with multiple login methods like Email/Password, SMS,
+                OAuth, Anonymous, Magic URLs, and more."
+            image={{
+                url: Phone
+            }}
+            mobileImage={{
+                url: PhoneMobile
+            }}
+            cta={{
+                label: 'Get started',
+                url: PUBLIC_APPWRITE_DASHBOARD
+            }}
+            secondaryCta={{
+                label: 'Documentation',
+                url: '/docs/auth'
+            }}
+        />
+
         <div>
             <Features />
             <Bento />

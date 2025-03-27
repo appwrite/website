@@ -237,7 +237,7 @@
             >
                 {#if scrollInfo.percentage > -0.1}
                     <span
-                        class="web-badges text-micro uppercase !text-white"
+                        class="web-badges font-aeonik-fono text-micro !text-white uppercase"
                         transition:slide={{ axis: 'x' }}>Products_</span
                     >
 

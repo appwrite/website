@@ -11,6 +11,6 @@
 
 <svelte:element
     this={as}
-    class={cn('text-micro tracking-loose font-aeonik-fono ps-6 uppercase', className)}
+    class={cn('text-micro tracking-loose text-primary font-aeonik-fono uppercase', className)}
     ><slot /></svelte:element
 >

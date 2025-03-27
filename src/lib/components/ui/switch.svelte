@@ -27,7 +27,7 @@
     >
         <span
             class={cn(
-                'absolute top-1/2 block size-5 -translate-y-1/2 translate-x-0.5 rounded-full bg-white transition duration-150',
+                'absolute top-1/2 block size-5 translate-x-0.5 -translate-y-1/2 rounded-full bg-white transition duration-150',
                 'group-[data-state="checked"]:translate-x-3.5'
             )}
         />
