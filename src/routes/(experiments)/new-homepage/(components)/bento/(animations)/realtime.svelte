@@ -13,19 +13,25 @@
     let topRightCursor: HTMLElement;
     let topRightPiece: HTMLElement;
 
-    let isAnimating: boolean = false;
-
     onMount(() => {
         const from: AnimationSequence = [
-            [topRightCursor, { y: -20, x: 32, scale: 1 }, { duration: 0.25, at: 0 }],
-            [topRightPiece, { y: -35, x: 40 }, { duration: 0.5, at: 0, type: 'spring' }]
+            [
+                topRightCursor,
+                { y: -20, x: 32, scale: 1, opacity: 0, filter: 'blur(4px)' },
+                { duration: 0.25, at: 0 }
+            ],
+            [topRightPiece, { y: -35, x: 40 }, { duration: 0.25, at: 0, type: 'spring' }]
         ];
 
         const to: AnimationSequence = [
-            [topRightCursor, { scale: 0.85 }, { duration: 0.25, at: 0 }],
-            [topRightPiece, { y: 0, x: 0 }, { duration: 0.5, at: 0.5, type: 'spring' }],
-            [topRightCursor, { y: 0, x: 0 }, { duration: 0.25, at: 0.45 }],
-            [topRightCursor, { scale: 1 }, { duration: 0.25, at: 0.5 }]
+            [
+                topRightCursor,
+                { opacity: 1, scale: 0.85, filter: 'blur(0)' },
+                { duration: 0.15, at: 0 }
+            ],
+            [topRightPiece, { y: 0, x: 0 }, { duration: 0.25, at: 0.25, type: 'spring' }],
+            [topRightCursor, { y: 0, x: 0 }, { duration: 0.15, at: 0.2 }],
+            [topRightCursor, { scale: 1 }, { duration: 0.25, at: 0.35 }]
         ];
 
         inView(
@@ -43,8 +49,8 @@
 
         hover(container, () => {
             if (isMobile()) return;
-            isAnimating = true;
-            animate(to).then(() => (isAnimating = false));
+
+            animate(to);
 
             return () => {
                 animate(from);
@@ -155,12 +161,10 @@
             class="pointer-events-none absolute aspect-square h-12 w-[5rem]"
             style:top="100px"
             style:right="75px"
-            style:--x="12px"
-            style:--y="9px"
-            style:--startingY="-20px"
-            style:--startingX="32px"
             style:--duration="2.5s"
-            class:cursor={!isAnimating}
+            style:transform="translateY(-20px) translateX(32px)"
+            style:opacity="0"
+            style:filter="blur(4px)"
             bind:this={topRightCursor}
         >
             <svg
@@ -202,13 +206,13 @@
 
     @keyframes cursor {
         0% {
-            transform: translateY(var(--startingY), 0) translateX(var(--startingX), 0);
+            transform: translateY(0) translateX(0);
         }
         50% {
             transform: translateY(var(--y)) translateX(var(--x));
         }
         100% {
-            transform: translateY(var(--startingY), 0) translateX(var(--startingX), 0);
+            transform: translateY(0) translateX(0);
         }
     }
 </style>
