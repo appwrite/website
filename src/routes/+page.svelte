@@ -23,6 +23,7 @@
     import { trackEvent } from '$lib/actions/analytics';
     import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import Button from '$lib/components/ui/button.svelte';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -158,24 +159,17 @@
                             and languages of your choice.
                         </svelte:fragment>
                         <div class="mt-8 flex flex-col gap-4 sm:flex-row" slot="cta">
-                            <a
+                            <Button
                                 href={getAppwriteDashboardUrl()}
-                                class="web-button w-full lg:w-fit"
                                 on:click={() =>
                                     trackEvent({
                                         plausible: { name: 'Get started in hero' },
                                         posthog: { name: 'get-started-btn_hero_click' }
-                                    })}
+                                    })}>Start building</Button
                             >
-                                Start building
-                            </a>
-
-                            <a
-                                href="/contact-us/enterprise"
-                                class="web-button is-secondary w-full lg:w-fit">Request a demo</a
+                            <Button href="/contact-us/enterprise" variant="secondary"
+                                >Request a demo</Button
                             >
-
-                            <!-- <AppwriteIn100Seconds /> -->
                         </div>
                     </Hero>
                 </section>
