@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Badge from '$lib/components/ui/Badge.svelte';
+    import Badge from '$lib/components/ui/badge.svelte';
     import { classNames } from '$lib/utils/classnames';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 

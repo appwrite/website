@@ -19,7 +19,7 @@
     import CoverImage from './dashboard.webp';
     import Hero from '$lib/components/ui/Hero.svelte';
     import GradientText from '$lib/components/ui/GradientText.svelte';
-    import Badge from '$lib/components/ui/Badge.svelte';
+    import Badge from '$lib/components/ui/badge.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
