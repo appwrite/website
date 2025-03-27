@@ -30,8 +30,6 @@
 
     export let toc: Array<TocItem> = [];
     export let heading: string = 'Table of Contents';
-
-    $: console.log({ toc });
 </script>
 
 <svelte:window on:scroll={handleIsScrolled} />
