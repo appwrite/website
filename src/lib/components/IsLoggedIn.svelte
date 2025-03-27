@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
     import { trackEvent } from '$lib/actions/analytics';
     import { browser } from '$app/environment';
     import { page } from '$app/stores';
@@ -15,7 +15,7 @@
 </script>
 
 <a
-    class={classNames('web-button web-u-inline-width-100-percent-mobile', classes)}
+    class={cn('web-button web-u-inline-width-100-percent-mobile', classes)}
     href={getAppwriteDashboardUrl()}
     on:click={() =>
         trackEvent({

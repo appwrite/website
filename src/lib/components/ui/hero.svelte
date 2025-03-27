@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
     import { cva, type VariantProps } from 'cva';
     import type { SvelteHTMLElements } from 'svelte/elements';
 
@@ -36,8 +36,8 @@
     const { class: classes, ...props } = $$restProps;
 </script>
 
-<section class={classNames(hero({ layout }), classes)} {...props}>
-    <h1 class={classNames(styles({ size }))}>
+<section class={cn(hero({ layout }), classes)} {...props}>
+    <h1 class={cn(styles({ size }))}>
         <slot name="title" />
     </h1>
     {#if $$slots.description}

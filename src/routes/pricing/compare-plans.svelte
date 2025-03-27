@@ -3,7 +3,7 @@
     import { Tabs } from '$lib/UI';
     import { visible } from '$lib/actions/visible';
     import { Tooltip } from '$lib/components';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
     import { getScrollDir } from '$lib/utils/getScrollDir';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
@@ -645,7 +645,7 @@
                                         </th>
                                         {#each cols as col, index}
                                             <td
-                                                class={classNames(
+                                                class={cn(
                                                     `text-caption flex justify-center font-normal level-${index}`,
                                                     {
                                                         'md:bg-greyscale-100': col === 'pro'

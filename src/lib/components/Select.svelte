@@ -8,7 +8,7 @@
 </script>
 
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
     import { createSelect, melt, type CreateSelectProps } from '@melt-ui/svelte';
     import { createEventDispatcher } from 'svelte';
     import { fly, type FlyParams } from 'svelte/transition';
@@ -89,7 +89,7 @@
 </script>
 
 <button
-    class={classNames('web-select is-colored', className)}
+    class={cn('web-select is-colored', className)}
     {id}
     class:web-is-not-mobile={nativeMobile}
     use:melt={$trigger}

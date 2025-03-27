@@ -1,6 +1,6 @@
 <script lang="ts">
     import Badge from '$lib/components/ui/badge.svelte';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     const educationSignUp = getAppwriteDashboardUrl('/console/education');
@@ -31,7 +31,7 @@
 </script>
 
 <div
-    class={classNames(
+    class={cn(
         'light border-smooth relative mt-10 min-h-80 border-t',
         'before:absolute before:top-0 before:left-0 before:z-0 before:block before:h-80 before:w-full before:bg-[radial-gradient(at_25%_0%,_hsla(343,_98%,_60%,_0.4)_0px,_transparent_73%,_transparent_100%)] md:before:w-1/2',
         'after:absolute after:top-0 after:right-0 after:z-0 after:hidden after:h-80 after:w-1/2 after:bg-[radial-gradient(at_100%_0%,_hsla(177,_53%,_69%,_0.6)_0px,_transparent_73%,_transparent_100%)] after:md:block md:after:block'
@@ -48,7 +48,7 @@
                     class="group relative flex h-full flex-col gap-6 px-4 pb-8 last-of-type:pb-0 lg:pb-0"
                 >
                     <Badge>Step {i + 1}</Badge>
-                    <div class={classNames('flex flex-1 flex-col gap-2 font-medium')}>
+                    <div class={cn('flex flex-1 flex-col gap-2 font-medium')}>
                         <h3 class="text-primary text-pretty">{item.label}</h3>
                         <p class="text-secondary text-pretty">{item.description}</p>
                     </div>

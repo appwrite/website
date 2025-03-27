@@ -8,7 +8,7 @@
 
 <script lang="ts">
     import Select from '$lib/components/Select.svelte';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
     import { createTabs } from '@melt-ui/svelte';
     import { setContext } from 'svelte';
     import { writable } from 'svelte/store';
@@ -41,7 +41,7 @@
                     class:text-[var(--color-primary)]={$value === id}
                 >
                     <button
-                        class={classNames(
+                        class={cn(
                             'tabs-button relative cursor-pointer bg-clip-padding py-[0.625rem] px-1 font-light outline-none',
                             'after:relative after:top-1 after:bottom-0 after:block after:h-px after:transition-all',
                             {
@@ -78,7 +78,7 @@
                     class:text-[var(--color-primary)]={$value === id}
                 >
                     <button
-                        class={classNames(
+                        class={cn(
                             'tabs-button relative cursor-pointer bg-clip-padding py-[0.625rem] px-1 font-light outline-none',
                             'after:relative after:top-1 after:bottom-0 after:block after:h-px after:transition-all',
                             {

@@ -3,7 +3,7 @@
 
     import TeamsConsole from '../(assets)/teams-console.png';
     import PermissionsConsole from '../(assets)/permissions-console.png';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
 
     const consoles: Array<{ title: string; copy: string; image: string }> = [
         {
@@ -45,7 +45,7 @@
     >
         {#each consoles as console}
             <div
-                class={classNames(
+                class={cn(
                     'relative',
                     'first-of-type:after:absolute first-of-type:after:top-0 first-of-type:after:-right-6 first-of-type:after:bottom-0 first-of-type:after:ml-8 first-of-type:after:w-px first-of-type:after:bg-[#19191C]/4'
                 )}

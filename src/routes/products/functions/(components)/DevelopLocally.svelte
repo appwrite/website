@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
     import Hat from '../(assets)/hat.png';
     import Shirt from '../(assets)/shirt.png';
     import Window from '../(assets)/checkout-window.png';
@@ -51,7 +51,7 @@
                         >
 
                         <ul
-                            class={classNames(
+                            class={cn(
                                 'text-greyscale-600 relative mt-2 px-2 font-mono',
                                 'after:to-offset after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:via-transparent'
                             )}

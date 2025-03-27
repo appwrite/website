@@ -1,6 +1,6 @@
 <script lang="ts">
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
 
     export let title: string = 'Start building with Appwrite today';
     export let description: string = 'Build with the frameworks and languages you want.';
@@ -16,7 +16,7 @@
 </script>
 
 <div
-    class={classNames(
+    class={cn(
         'border-smooth relative mb-8 flex flex-col justify-center gap-8 overflow-hidden rounded-xl border p-5 outline-3 [outline-offset:-3px] outline-white/5 md:p-12',
         'before:absolute before:inset-0 before:h-[170%] before:scale-x-125 before:bg-[radial-gradient(ellipse_at_center,_rgba(253,_54,_110,_0.2),_transparent_65%)] before:blur-lg'
     )}

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
 
     import Chrome from '../../(assets)/chrome.svg';
     import Safari from '../../(assets)/safari.svg';
@@ -50,7 +50,7 @@
                     <nav class="relative z-10 mt-4 -mb-[17px] flex items-center gap-4 pl-1 text-xs">
                         {#each ['Overview', 'Memberships', 'Sessions', 'Activity'] as heading, i}
                             <button
-                                class={classNames('border-b border-transparent pb-2', {
+                                class={cn('border-b border-transparent pb-2', {
                                     ' border-white/40': i === 2
                                 })}>{heading}</button
                             >

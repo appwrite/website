@@ -1,10 +1,10 @@
 <script>
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
     import Puzzle from './puzzle.svelte';
 </script>
 
 <div
-    class={classNames(
+    class={cn(
         'grid-bg border-smooth relative box-content flex items-center border-b py-12 px-5 lg:px-8 xl:px-16',
         'before:absolute before:inset-0 before:-z-1 before:bg-linear-to-r before:from-black/32 before:to-transparent'
     )}

@@ -1,7 +1,7 @@
 <script lang="ts">
     import { sleep, write } from '$lib/animations';
     import Input from '$lib/components/ui/Input.svelte';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
     import { writable } from 'svelte/store';
 
     const state = writable<{

@@ -1,7 +1,7 @@
 <script lang="ts">
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { socials } from '$lib/constants';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
 
     let name = '';
@@ -49,7 +49,7 @@
 
 <div
     id="become-a-partner"
-    class={classNames(
+    class={cn(
         'relative -mb-[6rem] flex min-h-[75vh] flex-col items-center justify-center overflow-hidden bg-black/8',
         'before:absolute before:inset-0 before:top-0 before:left-0 before:-z-10 before:block before:h-full before:bg-[radial-gradient(circle_at_-15%_-30%,_hsla(343,_98%,_60%,_0.2)_0px,_transparent_40%)] before:blur-2xl',
         'after:absolute after:inset-0 after:top-0 after:right-0 after:-z-10 after:mt-auto after:mb-0 after:block after:h-full after:bg-[radial-gradient(circle_at_120%_125%,_hsla(177,_53%,_69%,_0.2)_0px,_transparent_40%)] after:blur-2xl'

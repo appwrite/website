@@ -1,8 +1,8 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
     import type { HTMLButtonAttributes, HTMLAnchorAttributes } from 'svelte/elements';
     import { cva, type VariantProps } from 'cva';
-    import InlineTag from './InlineTag.svelte';
+    import InlineTag from './inline-tag.svelte';
 
     const button = cva(
         [
@@ -38,7 +38,7 @@
     export let variant: $$Props['variant'] = 'primary';
     const { class: classes, ...props } = $$restProps;
 
-    const buttonClasses = classNames(button({ variant }), classes, {
+    const buttonClasses = cn(button({ variant }), classes, {
         secondary: variant === 'secondary',
         'leading-tight': $$slots.icon
     });

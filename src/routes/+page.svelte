@@ -17,8 +17,8 @@
     import MainFooter from '../lib/components/MainFooter.svelte';
     import DeveloperCard from './DeveloperCard.svelte';
     import CoverImage from './dashboard.webp';
-    import Hero from '$lib/components/ui/Hero.svelte';
-    import GradientText from '$lib/components/ui/GradientText.svelte';
+    import Hero from '$lib/components/ui/hero.svelte';
+    import GradientText from '$lib/components/ui/gradient-text.svelte';
     import Badge from '$lib/components/ui/badge.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/classnames';
     import NumberFlow from '@number-flow/svelte';
     import { inView } from 'motion';
     import { onDestroy } from 'svelte';
@@ -99,7 +99,7 @@
     <div class="mt-12 block space-y-8 md:hidden">
         {#each stats as stat, i}
             <div class="h-full overflow-auto pl-6">
-                <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
+                <div class={cn('relative')} style:top={`${(4 - i) * 18}%`}>
                     <NumberFlow
                         class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
                         value={stat.number}
@@ -124,7 +124,7 @@
                         style:--mask-direction="bottom"
                         style:--mask-height={`${(4 - i) * 25}%`}
                     >
-                        <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
+                        <div class={cn('relative')} style:top={`${(4 - i) * 18}%`}>
                             <NumberFlow
                                 class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
                                 value={stat.number}
