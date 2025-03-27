@@ -1,11 +1,13 @@
 <script lang="ts">
+    import Eyebrow from '$lib/components/ui/eyebrow.svelte';
+
     export let title: string;
     export let hideLine = false;
 </script>
 
 <div class="step" data-hideline={hideLine}>
     <div class="web-dot" />
-    <h2 class="text-micro text-primary step-title uppercase">{title}</h2>
+    <Eyebrow as="h2" class="text-primary">{title}</Eyebrow>
     <div class="step-content mt-8">
         <slot />
     </div>

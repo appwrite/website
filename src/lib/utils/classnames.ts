@@ -1,6 +1,28 @@
 import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
+import { extendTailwindMerge } from 'tailwind-merge';
+
+const customConfig = extendTailwindMerge({
+    extend: {
+        theme: {
+            text: [
+                'x-micro',
+                'micro',
+                'caption',
+                'sub-body',
+                'body',
+                'paragraph-md',
+                'paragraph-lg',
+                'description',
+                'label',
+                'title',
+                'display',
+                'headline'
+            ],
+            color: ['primary', 'secondary']
+        }
+    }
+});
 
 export const cn = (...inputs: ClassValue[]) => {
-    return twMerge(clsx(inputs));
+    return customConfig(clsx(inputs));
 };
