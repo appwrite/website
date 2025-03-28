@@ -24,14 +24,6 @@ Pick a display name for your site and an ID. You will later use the ID to progra
 
 ## Setup a GitHub repo
 
-{% info title="Pre-requisite" %}
-
-You will require a [GitHub](https://github.com) account to connect a repository.
-
-In case your GitHub account is not yet linked with the Appwrite project, the wizard will prompt you to login and add the necessary repo permissions.
-
-{% /info %}
-
 You can choose to clone a new repository to your GitHub profile or organization or to connect to an existing repository.
 
 If you choose to connect to an existing repository intead of creating a new one, you must specify the output folder of your build under the [Branch](#select-a-production-branch) step.

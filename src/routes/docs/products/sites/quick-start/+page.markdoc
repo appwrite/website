@@ -15,10 +15,12 @@ Before deploying your web app with Git, create a new Site attached to your GitHu
 ![Create Site from GitHub repo](https://warm-tray-285.notion.site/image/attachment%3A59cff292-50e7-4bc9-b38a-497cc71eb780%3Aimage.png?table=block&id=1bafb53f-e82d-808e-a703-d7730947593f&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
 
 1. In the Appwrite Console's sidebar, click **Sites**.
-2. Click **Create site**.
+2. Click on the **Create site** button.
 3. After clicking on **Connect Git repository**, select your repository.
-4. After connecting to GitHub, add a **name** and site ID.
-5. Follow the step-by-step wizard and create the site.
+4. After connecting to GitHub, (optionally) add a name and site ID.
+5. Verify that the correct framework is selected.
+6. Confirm the install command, build command, and output directory in the build settings. Visit your preferred [framework quick-start](#framework-quick-starts) to learn more.
+7. Add any environment variables required by the site.
 6. The site will be created, and a build will begin. Once the build is completed, you'll have created your first site. You can use your site's **domain** to access the deployment.
 
 # Framework quick-starts
@@ -74,11 +76,11 @@ Learn about developing your own Appwrite Site.
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/deploy-from-git" title="Deploy" %}
-Learn to deploy Appwrite Site from Git.
+Configure and deploy your Appwrite Site from Git.
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/frameworks" title="Frameworks" %}
-Deploy Appwrite Sites in your favorite framework.
+Learn which frameworks are supported by Appwrite Sites.
 {% /cards_item %}
 
 {% /cards %}

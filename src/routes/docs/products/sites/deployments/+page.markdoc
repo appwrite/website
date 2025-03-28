@@ -25,9 +25,16 @@ When you build a deployment, the logs generated will be saved for debugging purp
 
 ![image.png](https://warm-tray-285.notion.site/image/attachment%3Aa646a7a8-031e-47f7-9f27-0e4b3b884ab7%3Aimage.png?table=block&id=1b9fb53f-e82d-80a8-aaed-e58baab47c91&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
 
+# Create deployment
+
+To manually trigger a deployment of your app from the Appwrite Console, you can head to the **Deployments** tab of your site, click on the **Create deployment** button, and select one of the following:
+
+- **Git**: Lets you select a branch on your connected Git repo and whether you would like to activate the build post-deployment
+- **Manual**: Lets you upload a [.tar.gz file](/docs/products/sites/deploy-manually#manual-deployment) containing your app's build output
+
 # Update deployment
 
-Some site settings require redeploying your site to be reflected in your active deployment. When you update a site by changing its **Git settings**, **Build settings**, and **Environment variables**, you must redeploy your site before those changes take effect.
+Some site settings require redeploying your site to be reflected in your active deployment. When you update a site by changing its **Git repository**, **Build settings**, and **Environment variables**, you must redeploy your site before those changes take effect.
 
 # Cancel deployment
 
@@ -37,12 +44,19 @@ If a site is being deployed and you wish to stop this deployment, you can head t
 
 After updating the configuration, redeploy your site for changes to take effect. You can also redeploy to retry failed builds.
 
-1. Navigate to **Sites**.
-2. Open the site you wish to redeploy.
-3. Under the **Deployments** tab, find the status of the current active deployment.
-4. Redeploy by clicking the triple-dots beside a deployment and hitting the **Redeploy** button.
+1. Navigate to your site on Appwrite Console.
+2. Under the **Deployments** tab, find the status of the current active deployment.
+3. Redeploy by clicking the triple-dots beside a deployment and hitting the **Redeploy** button.
 
 Redeployment behavior varies depending on how the initial deployment was created.
+
+# Instant rollback
+
+If a site needs to be reverted to a previously functional state for any reason (runtime errors, security flaw, etc.), you can head to the **Overview** tab of your site, click on the **Instant Rollback** button. 
+
+![Instant rollback](https://warm-tray-285.notion.site/image/attachment%3A781eee0c-2921-4baa-bb73-803120bde625%3Aimage.png?table=block&id=1c4fb53f-e82d-8021-b0bb-f69dfd2c7ba1&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
+
+This will allow you to select a previously active, ready deployment to promote to currently active state.
 
 # Preview deployments
 

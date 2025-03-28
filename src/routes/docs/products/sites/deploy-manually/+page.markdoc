@@ -22,7 +22,7 @@ You can upload your sites to be deployed using the Appwrite Console. The example
 └ vite.config.js
 ```
 
-First, create a build using the `npm run build` command (or an alternative package manager link `yarn` or `pnpm`). Then navigate inside the folder that contains your build output (`./build` in SvelteKit) and package your code files into the `.tar.gz` format:
+First, create a build using the `npm run build` command (or an alternative package manager link `yarn` or `pnpm`). Then navigate inside the folder that contains your build output (for example, `./build` in SvelteKit) and package your code files into the `.tar.gz` format:
 
 ```bash
 tar --exclude code.tar.gz -czf code.tar.gz .

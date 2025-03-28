@@ -61,9 +61,19 @@ Appwrite passes the following environment variables into every deployed site by 
 | `APPWRITE_SITE_RUNTIME_VERSION` | The runtime version of the running site. | Both |
 | `APPWRITE_SITE_FRAMEWORK_NAME` | The framework of the running site. | Both |
 
-# Dependencies
+# Timeouts
 
-To install your dependencies before your site is built, you should add the relevant install command to your site’s build settings. Here are the steps to do so:
+Each request made to a path on an Appwrite Site has a set time limit, after which the request will timeout. Here are the steps to configure those timeout period:
+
+1. Navigate to your site on Appwrite Console.
+2. Head to the **Settings** tab > **Timeout** section.
+3. Add an appropriate time limit (in seconds).
+
+The default timeout is set at `15 seconds` and the maximum value possible is `30 seconds`.
+
+# Project dependencies
+
+To install your dependencies before your site is built, you should add the relevant install command to your site’s build settings. Here are the steps to add the install command:
 
 1. Navigate to your site on Appwrite Console.
 2. Head to the **Settings** tab > **Build settings** section.
