@@ -32,13 +32,13 @@ If you need to pass constants or secrets to Appwrite Sites, you can use environm
 
 You can set static environment variables that will be passed to your site by navigating to your site > **Settings** > **Environment variables**.
 
-You can also configure global variables that apply to all your functions in the **Settings** of your project.
+You can also configure global variables that apply to all your sites in the **Settings** of your project.
 
 ## Dependencies
 
 To install your dependencies before your site is built, you should add the relevant install command to the top of your site’s **Build setting** > **Commands**. You can find this setting under **Sites** > your site > **Settings** > **Configuration** > **Build settings**.
 
-Make sure to include dependency files like `package.json` in your function's configured root directory. Do not include the dependency folders like `node_modules` in your site’s root directory. The dependencies installed for your local OS may not work in the executor environments
+Make sure to include dependency files like `package.json` in your site's configured root directory. Do not include the dependency folders like `node_modules` in your site’s root directory. The dependencies installed for your local OS may not work in the executor environments
 
 Your site's dependencies should be managed by the package manager of each language. We include the following package managers by default in each runtime.
 
