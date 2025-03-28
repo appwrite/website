@@ -11,7 +11,6 @@
     import PreFooter from './PreFooter.svelte';
     import TagsDropdown from './TagsDropdown.svelte';
     import { getThreads } from './helpers';
-    import Input from '$lib/components/ui/input.svelte';
 
     const title = 'Threads' + TITLE_SUFFIX;
     const description =
