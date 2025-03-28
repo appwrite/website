@@ -8,7 +8,7 @@ description: Get started quickly with Appwrite Sites. Follow a step-by-step guid
 
 You can create and execute your first Appwrite Site in minutes.
 
-## Create site
+# Create site
 
 Before deploying your web app with Git, create a new Site attached to your GitHub repository.
 
@@ -21,7 +21,7 @@ Before deploying your web app with Git, create a new Site attached to your GitHu
 5. Follow the step-by-step wizard and create the site.
 6. The site will be created, and a build will begin. Once the build is completed, you'll have created your first site. You can use your site's **domain** to access the deployment.
 
-## Framework quick-starts
+# Framework quick-starts
 
 Learn how to quickly setup a web app developed using any of the following frameworks and deploy it on Appwrite Sites.
 
@@ -59,7 +59,7 @@ Learn how to quickly setup a web app developed using any of the following framew
 
 {% /cards %}
 
-## Explore
+# Explore
 
 Use your first site as a springboard to explore the flexible and powerful features of Appwrite Sites.
 

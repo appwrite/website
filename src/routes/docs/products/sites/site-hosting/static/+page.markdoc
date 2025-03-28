@@ -8,18 +8,18 @@ Static apps, also known as static websites, consist of pre-built HTML, CSS, and 
 
 Since the pages are pre-generated, static apps offer incredibly fast load times. However, they lack dynamic interactivity and are best suited for use cases like personal portfolios, documentation sites, and landing pages.
 
-## Configuring your Appwrite Site to use static hosting
+# Configuring your Appwrite Site to use static hosting
 
 When Appwrite builds your site for the first time, it scans your project's configuration files to determine whether the website should be rendered as static pages or using SSR.
 
 If you need to manually update these settings, here are the steps to do so:
 
-1. Open the Site page and navigate to the **Settings** tab > **Build settings** section
+1. Navigate to your site in the Appwrite console and head to the **Settings** tab > **Build settings** section
 2. Select the **Static site** checkbox (you may need to update your project codebase depending on your framework option)
 3. Confirm that the appropriate install command, build command, and output directory are set
 4. Click on the **Update** button and redeploy your site.
 
-### Enabling static builds on your web app
+## Enabling static builds on your web app
 
 To enable static builds for your web app, you may need to make some additional updates in case of the following frameworks:
 
@@ -51,17 +51,17 @@ Set `ssr: false` in `remix` plugin in the `vite.config.ts` file.
 
 {% /tabs %}
 
-## Running SPAs on Appwrite Sites
+# Running SPAs on Appwrite Sites
 
 Single Page Applications (or SPAs) are web applications that load a single HTML page and dynamically update content using JavaScript, typically leveraging frameworks like React, Vue, or Angular. Unlike traditional websites, SPAs do not require full-page reloads; instead, they use client-side routing to modify the URL and fetch new content asynchronously from APIs. This results in a smoother, more app-like user experience.
 
-Appwrite Sites allows hosting SPAs through the static apps offering. Instead of returning all pre-rendered HTML pages, it allows your client to download relevant JavaScript files, which can then run in the browser.
+Appwrite Sites allows hosting SPAs through the static hosting method. Instead of returning all pre-rendered HTML pages, it allows your client to download relevant JavaScript files, which can then run in the browser.
 
-### Configuring an Appwrite Site to run as an SPA
+## Configuring an Appwrite Site to run as an SPA
 
 To configure an Appwrite Site to run as an SPA, you must do the following:
 
-1. Open the Site page and navigate to the **Settings** tab > **Build settings** section
+1. Navigate to your site in the Appwrite console and head to the **Settings** tab > **Build settings** section
 2. Select the **Static site** checkbox (you may need to update your project codebase depending on your framework option)
 3. Confirm that the appropriate install command, build command, and output directory are set
 4. Provide a fallback file for advanced routing and proper page handling.

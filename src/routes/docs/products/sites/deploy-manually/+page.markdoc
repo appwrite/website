@@ -8,7 +8,7 @@ Appwrite Sites allows you to host and deploy web applications directly within th
 
 While we recommend you create deployments through [automatic Git deployments](/docs/products/sites/deploy-from-git), you can also create deployments manually.
 
-## Manual Deployment
+# Manual Deployment
 
 You can upload your sites to be deployed using the Appwrite Console. The example below shows a skeleton SvelteKit app.
 
@@ -37,6 +37,6 @@ Next, navigate to your Appwrite Console and upload the site.
 5. Select **Activate deployment after build**.
 6. Click **Create**.
 
-## Debugging
+# Debugging
 
 - If you updated your site's configuration but the deployment is not working as expected, you may need to first redeploy your site before the changes take effect.

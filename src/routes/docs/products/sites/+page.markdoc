@@ -6,7 +6,7 @@ description: Appwrite Sites is your gateway to scalable web applications. Explor
 
 Appwrite Sites empowers developers to host and manage web applications seamlessly within the Appwrite ecosystem. Appwrite Sites provides a fast, scalable, and secure way to deploy web apps directly from source control, allowing for quick iterations and live updates. Each site has a dedicated URL, runs within its own isolated container, and can be configured with custom domains and environment variables.
 
-## Getting started
+# Getting started
 
 Appwrite Sites lets you host any web application with ease. However, to make this process even simpler, you can begin by exploring starter kits developed by the Appwrite team or leverage a pre-configured template with built-in integrations to implement essential features.
 
