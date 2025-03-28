@@ -6,7 +6,7 @@ description: Learn how to manage team invites in Appwrite. Implement both client
 
 Appwrite provides two approaches for adding members to teams: client-side email invites and server-side custom flows. Each approach serves different use cases and offers unique benefits.
 
-# Invite client-side {% #client-side %}
+# Invite client-side
 
 Client-side email invites are perfect for implementing user-to-user invitations, allowing your users to invite others to join their teams, organizations, or shared resources. When creating a membership, Appwrite:
 1. Creates a new user account if one doesn't exist for the email address
@@ -91,7 +91,7 @@ val response = teams.createMembership(
 ```
 {% /multicode %}
 
-## Accept invitations {% #accept-invitations %}
+# Accept invitations
 
 For client-side email invites, users must accept the invitation to join the team. The acceptance flow:
 1. User receives an email with an invitation link containing a secret token
@@ -171,7 +171,7 @@ val response = teams.updateMembershipStatus(
 ```
 {% /multicode %}
 
-# Server-side custom flows {% #server-side %}
+# Server-side custom flows
 
 Server-side membership creation bypasses the email invitation process, allowing direct member addition. This approach:
 1. Creates an active membership immediately
@@ -258,11 +258,11 @@ val response = teams.createMembership(
 ```
 {% /multicode %}
 
-# Manage memberships {% #manage-memberships %}
+# Manage memberships
 
 Once team memberships are created, you'll need to manage their lifecycle. This includes checking status, updating roles, and removing members when necessary.
 
-## Check membership status {% #status %}
+## Check membership status
 
 Before performing actions on team memberships, you often need to verify a user's current status within a team. The process differs between client-side and server-side implementations.
 
@@ -497,7 +497,7 @@ teamsList.teams.forEach { team ->
 ```
 {% /multicode %}
 
-## Remove members {% #remove-members %}
+## Remove members
 
 Team owners can remove members or users can leave teams:
 
@@ -561,11 +561,11 @@ teams.deleteMembership(
 ```
 {% /multicode %}
 
-# Manage team permissions {% #permissions %}
+# Manage team permissions
 
 Teams in Appwrite use a role-based access control (RBAC) system. Each team member can be assigned one or more roles that define their permissions within the team.
 
-## Update roles {% #update-roles %}
+## Update roles
 
 You can assign roles when creating a membership or update them later. Note that only team members with the owner role can update other members' roles:
 
@@ -637,7 +637,7 @@ teams.updateMembership(
 ```
 {% /multicode %}
 
-## Check role access {% #check-role-access %}
+## Check role access
 
 You can verify if a user has specific roles:
 
