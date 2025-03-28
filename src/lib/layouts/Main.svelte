@@ -8,18 +8,17 @@
 
 <script lang="ts">
     import { browser } from '$app/environment';
-    import { MobileNav, IsLoggedIn } from '$lib/components';
+    import { trackEvent } from '$lib/actions/analytics';
+    import { IsLoggedIn, MobileNav } from '$lib/components';
+    import MainNav from '$lib/components/MainNav.svelte';
+    import ProductsMobileSubmenu from '$lib/components/ProductsMobileSubmenu.svelte';
+    import ProductsSubmenu from '$lib/components/ProductsSubmenu.svelte';
     import { BANNER_KEY, GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
-    import ProductsSubmenu from '$lib/components/ProductsSubmenu.svelte';
-    import ProductsMobileSubmenu from '$lib/components/ProductsMobileSubmenu.svelte';
-    import { trackEvent } from '$lib/actions/analytics';
-    import MainNav from '$lib/components/MainNav.svelte';
-    import { page } from '$app/stores';
-    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
