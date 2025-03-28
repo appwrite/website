@@ -29,6 +29,10 @@ When you build a deployment, the logs generated will be saved for debugging purp
 
 Some site settings require redeploying your site to be reflected in your active deployment. When you update a site by changing its **Git settings**, **Build settings**, and **Environment variables**, you must redeploy your site before those changes take effect.
 
+# Cancel deployment
+
+If a site is being deployed and you wish to stop this deployment, you can head to the **Deployments** tab of your site, click on the three-dots menu, and click on the **Cancel** button.
+
 # Redeploy
 
 After updating the configuration, redeploy your site for changes to take effect. You can also redeploy to retry failed builds.
