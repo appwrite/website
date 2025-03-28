@@ -14,7 +14,7 @@ When Appwrite builds your site for the first time, it scans your project's confi
 
 If you need to manually update these settings, here are the steps to do so:
 
-1. Navigate to your site in the Appwrite console and head to the **Settings** tab > **Build settings** section
+1. Navigate to your site in the Appwrite Console and head to the **Settings** tab > **Build settings** section
 2. Select the **Static site** checkbox (you may need to update your project codebase depending on your framework option)
 3. Confirm that the appropriate install command, build command, and output directory are set
 4. Click on the **Update** button and redeploy your site.
@@ -61,7 +61,7 @@ Appwrite Sites allows hosting SPAs through the static hosting method. Instead of
 
 To configure an Appwrite Site to run as an SPA, you must do the following:
 
-1. Navigate to your site in the Appwrite console and head to the **Settings** tab > **Build settings** section
+1. Navigate to your site in the Appwrite Console and head to the **Settings** tab > **Build settings** section
 2. Select the **Static site** checkbox (you may need to update your project codebase depending on your framework option)
 3. Confirm that the appropriate install command, build command, and output directory are set
 4. Provide a fallback file for advanced routing and proper page handling.
