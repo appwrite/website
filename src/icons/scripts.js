@@ -7,7 +7,7 @@ import svgtofont from 'svgtofont';
 const src = resolve(process.cwd(), 'src/icons/svg');
 const optimized = resolve(process.cwd(), 'src/icons/optimized');
 const dist = resolve(process.cwd(), 'src/icons/output');
-const outputPath = resolve(process.cwd(), 'src/lib/components/icon/types.ts');
+const outputPath = resolve(process.cwd(), 'src/lib/components/ui/icon/types.ts');
 
 const generateIconType = () => {
     try {

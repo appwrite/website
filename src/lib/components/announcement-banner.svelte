@@ -1,6 +1,7 @@
 <script lang="ts">
     import { browser } from '$app/environment';
     import { BANNER_KEY } from '$lib/constants';
+    import Icon from './ui/icon';
 
     const hideTopBanner = () => {
         document.body.dataset.bannerHidden = '';
@@ -19,7 +20,7 @@
                 aria-label="close discord message"
                 on:click={hideTopBanner}
             >
-                <span class="web-icon-close" aria-hidden="true" />
+                <Icon icon="close" aria-hidden="true" />
             </button>
         {/if}
     </div>
