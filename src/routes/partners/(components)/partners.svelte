@@ -2,12 +2,12 @@
     import { cn } from '$lib/utils/classnames';
     import { inView } from 'motion';
 
-    import Platinum from '../(assets)/icons/platinum.png';
-    import Gold from '../(assets)/icons/gold.png';
-    import Silver from '../(assets)/icons/silver.png';
     import { clamp } from '$lib/utils/clamp';
+    import Gold from '../(assets)/icons/gold.png';
+    import Platinum from '../(assets)/icons/platinum.png';
+    import Silver from '../(assets)/icons/silver.png';
 
-    let animate: boolean = false;
+    let animate = false;
 
     const useInView = (node: HTMLElement) => {
         inView(
@@ -99,7 +99,7 @@
 
 <style>
     .animate {
-        animation: card-in 1200ms var(--transition-timing-function--spring) forwards;
+        animation: card-in 1200ms var(--easing--spring) forwards;
     }
     @keyframes card-in {
         0% {

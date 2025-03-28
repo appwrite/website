@@ -2,7 +2,6 @@
 @import './styles/typography.css';
 @variant dark (&:is(.dark *));
 
-@layer theme {
     @theme {
         /* Colors */
         --color-*: initial;
@@ -83,7 +82,7 @@
         --color-badge-border-dark: #39393c;
 
         /* Easings */
-        --transition-timing-function-bounce: linear(
+        --easing-bounce: linear(
             0,
             0.063,
             0.25 18.2%,
@@ -96,7 +95,7 @@
             1,
             1
         );
-        --transition-timing-function-spring: linear(
+        --easing-spring: linear(
             0,
             0.938 16.7%,
             1.149 24.3%,
@@ -234,7 +233,7 @@
         --tracking-none: 0em;
         --tracking-loose: 0.08em;
     }
-}
+
 
 /* Themes */
 :root,
