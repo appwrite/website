@@ -1,5 +1,10 @@
 import { Config } from 'tailwindcss';
 
-const config = {} satisfies Config;
+const config = {
+    content: [],
+    theme: {
+        extends: {}
+    }
+} satisfies Config;
 
 export default config;
