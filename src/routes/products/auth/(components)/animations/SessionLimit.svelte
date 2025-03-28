@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Input from '$lib/components/ui/Input.svelte';
+    import Input from '$lib/components/ui/input.svelte';
     import { cn } from '$lib/utils/classnames';
 </script>
 
@@ -14,7 +14,7 @@
         class="relative flex flex-1 flex-col items-center justify-center gap-4 overflow-hidden rounded-lg bg-white/[0.02]"
     >
         <div
-            class="bg-greyscale-800 -mt-[40%] mr-0 ml-auto flex flex-col rounded-l-2xl border-y border-l border-white/[0.06] to-transparent py-4 px-6"
+            class="bg-greyscale-800 -mt-[40%] mr-0 ml-auto flex flex-col rounded-l-2xl border-y border-l border-white/[0.06] to-transparent px-6 py-4"
         >
             <div class="gradient inset-0 z-10 flex items-center justify-center">
                 <div class="text-xs">
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div
-            class="bg-greyscale-800 mr-0 ml-auto flex flex-col rounded-l-2xl border-y border-l border-white/[0.06] to-transparent py-4 px-6"
+            class="bg-greyscale-800 mr-0 ml-auto flex flex-col rounded-l-2xl border-y border-l border-white/[0.06] to-transparent px-6 py-4"
         >
             <div class="gradient inset-0 z-10 flex items-center justify-center">
                 <div class="text-xs">

@@ -12,7 +12,7 @@
     import { onDestroy, onMount } from 'svelte';
     import { browser } from '$app/environment';
     import { cn } from '$lib/utils/classnames';
-    import Input from '$lib/components/ui/Input.svelte';
+    import Input from '$lib/components/ui/input.svelte';
     import { page } from '$app/stores';
 
     export let data;
@@ -81,7 +81,7 @@
 <Fuse list={data.list} options={fuseOptions} bind:query={$query} bind:result />
 <Main>
     <header class="web-u-sep-block-end web-u-padding-block-end-0 relative overflow-hidden pb-0">
-        <div class="container hero web-u-padding-block-end-0 relative">
+        <div class="hero web-u-padding-block-end-0 relative container">
             <img
                 src="/images/pages/integration/integration-bg-top-1.png"
                 alt=""
