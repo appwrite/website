@@ -1,0 +1,15 @@
+---
+layout: article
+title: Sites
+description: Appwrite Sites is your gateway to scalable web applications. Explore our complete guide to building and deploying websites effortlessly.
+---
+
+Appwrite Sites empowers developers to host and manage web applications seamlessly within the Appwrite ecosystem. Appwrite Sites provides a fast, scalable, and secure way to deploy web apps directly from source control, allowing for quick iterations and live updates. Each site has a dedicated URL, runs within its own isolated container, and can be configured with custom domains and environment variables.
+
+# Getting started
+
+Appwrite Sites lets you host any web application with ease. However, to make this process even simpler, you can begin by exploring starter kits developed by the Appwrite team or leverage a pre-configured template with built-in integrations to implement essential features.
+
+![Create your first site](https://warm-tray-285.notion.site/image/attachment%3A31a296a4-7b32-4669-8a2e-8c7726e48b80%3Aimage.png?table=block&id=1bafb53f-e82d-80ef-bba7-c4dc5cdcdd93&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
+
+[Quick start >](/docs/products/sites/quick-start)
