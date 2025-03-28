@@ -2,242 +2,234 @@
 @import './styles/typography.css';
 @variant dark (&:is(.dark *));
 
-    @theme {
-        /* Colors */
-        --color-*: initial;
+@theme {
+    /* Colors */
+    --color-*: initial;
 
-        /* base */
-        --color-primary: hsl(var(--color-primary));
-        --color-secondary: hsl(var(--color-secondary));
-        --color-accent: var(--color-secondary);
-        --color-smooth: var(--color-smooth);
+    /* base */
+    --color-black: #000;
+    --color-white: #fff;
+    --color-transparent: transparent;
 
-        /* pink */
-        --color-pink-200: hsl(var(--color-pink-hue) 98% 84%);
-        --color-pink-500: hsl(var(--color-pink-hue) 98% 60%);
-        --color-pink-600: hsl(var(--color-pink-hue) 65% 48%);
-        --color-pink-700: hsl(var(--color-pink-hue) 65% 36%);
+    /* theme */
+    --color-primary: var(--color-primary);
+    --color-secondary: var(--color-secondary);
+    --color-accent: var(--color-secondary);
+    --color-smooth: var(--color-smooth);
 
-        /* red */
-        --color-red-200: calc(hsl(var(--color-red-hue) - 2) 100% 92%);
-        --color-red-500: hsl(var(--color-red-hue) 100% 61%);
-        --color-red-700: calc(hsl(var(--color-red-hue) - 3) 82% 39%);
+    /* pink */
+    --color-pink-200: hsl(var(--color-pink-hue) 98% 84%);
+    --color-pink-500: hsl(var(--color-pink-hue) 98% 60%);
+    --color-pink-600: hsl(var(--color-pink-hue) 65% 48%);
+    --color-pink-700: hsl(var(--color-pink-hue) 65% 36%);
 
-        /* orange */
-        --color-orange-200: hsl(var(--color-orange-hue) 100% 88%);
-        --color-orange-500: hsl(var(--color-orange-hue) 99% 70%);
-        --color-orange-700: hsl(var(--color-orange-hue) 42% 42%);
+    /* red */
+    --color-red-200: calc(hsl(var(--color-red-hue) - 2) 100% 92%);
+    --color-red-500: hsl(var(--color-red-hue) 100% 61%);
+    --color-red-700: calc(hsl(var(--color-red-hue) - 3) 82% 39%);
 
-        /* mint */
-        --color-mint-200: hsl(var(--color-mint-hue) 56% 88%);
-        --color-mint-500: calc(hsl(var(--color-mint-hue) + 1) 54% 69%);
-        --color-mint-700: calc(hsl(var(--color-mint-hue) + 2) 24% 41%);
+    /* orange */
+    --color-orange-200: hsl(var(--color-orange-hue) 100% 88%);
+    --color-orange-500: hsl(var(--color-orange-hue) 99% 70%);
+    --color-orange-700: hsl(var(--color-orange-hue) 42% 42%);
 
-        /* purple */
-        --color-purple-200: hsl(var(--color-purple-hue) 100% 88%);
-        --color-purple-500: calc(hsl(var(--color-purple-hue) - 1) 99% 70%);
-        --color-purple-700: calc(hsl(var(--color-purple-hue) - 1) 42% 42%);
+    /* mint */
+    --color-mint-200: hsl(var(--color-mint-hue) 56% 88%);
+    --color-mint-500: calc(hsl(var(--color-mint-hue) + 1) 54% 69%);
+    --color-mint-700: calc(hsl(var(--color-mint-hue) + 2) 24% 41%);
 
-        /* yellow */
-        --color-yellow-200: hsl(var(--color-yellow-hue) 100% 88%);
-        --color-yellow-500: hsl(var(--color-yellow-hue) 99% 70%);
-        --color-yellow-700: calc(hsl(var(--color-yellow-hue) + 1) 42% 42%);
+    /* purple */
+    --color-purple-200: hsl(var(--color-purple-hue) 100% 88%);
+    --color-purple-500: calc(hsl(var(--color-purple-hue) - 1) 99% 70%);
+    --color-purple-700: calc(hsl(var(--color-purple-hue) - 1) 42% 42%);
 
-        /* blue */
-        --color-blue-200: hsl(var(--color-blue-hue) 100% 88%);
-        --color-blue-500: calc(hsl(var(--color-blue-hue) - 1) 99% 70%);
-        --color-blue-700: calc(hsl(var(--color-blue-hue) - 1) 42% 42%);
+    /* yellow */
+    --color-yellow-200: hsl(var(--color-yellow-hue) 100% 88%);
+    --color-yellow-500: hsl(var(--color-yellow-hue) 99% 70%);
+    --color-yellow-700: calc(hsl(var(--color-yellow-hue) + 1) 42% 42%);
 
-        /* green */
-        --color-green-700: #0a714f;
+    /* blue */
+    --color-blue-200: hsl(var(--color-blue-hue) 100% 88%);
+    --color-blue-500: calc(hsl(var(--color-blue-hue) - 1) 99% 70%);
+    --color-blue-700: calc(hsl(var(--color-blue-hue) - 1) 42% 42%);
 
-        /* secondary */
-        --color-secondary-100: hsl(var(--color-secondary-hue) 99% 66%);
-        --color-accent-200: hsl(var(--color-secondary-hue), 78%, 60%, 0.32);
+    /* green */
+    --color-green-700: #0a714f;
 
-        /* greyscale */
-        --color-white: hsl(0 0% 100%);
-        --color-black: hsl(0 0% 0%);
-        --color-transparent: rgba(0, 0, 0, 0);
-        --color-offset: hsl(var(--color-greyscale-hue) 2%, 11%, 0.94);
-        --color-greyscale-25: hsl(var(--color-greyscale-hue) 11% 98%);
-        --color-greyscale-50: hsl(var(--color-greyscale-hue) 11% 94%);
-        --color-greyscale-100: hsl(var(--color-greyscale-hue) 6% 90%);
-        --color-greyscale-200: hsl(var(--color-greyscale-hue) 4% 85%);
-        --color-greyscale-250: hsl(var(--color-greyscale-hue) 3% 77%);
-        --color-greyscale-300: hsl(var(--color-greyscale-hue) 2% 68%);
-        --color-greyscale-400: hsl(var(--color-greyscale-hue) 2% 60%);
-        --color-greyscale-500: hsl(var(--color-greyscale-hue) 2% 52%);
-        --color-greyscale-600: hsl(var(--color-greyscale-hue) 2% 43%);
-        --color-greyscale-700: hsl(var(--color-greyscale-hue) 3% 35%);
-        --color-greyscale-750: hsl(var(--color-greyscale-hue) 4% 26%);
-        --color-greyscale-800: hsl(var(--color-greyscale-hue) 4% 18%);
-        --color-greyscale-850: hsl(var(--color-greyscale-hue) 3% 14%);
-        --color-greyscale-900: hsl(var(--color-greyscale-hue) 5.7% 10.4%);
+    /* secondary */
+    --color-secondary-100: hsl(var(--color-secondary-hue) 99% 66%);
+    --color-accent-200: hsl(var(--color-secondary-hue), 78%, 60%, 0.32);
 
-        /* utility colors */
-        --color-badge-bg-light: #f2c8d6;
-        --color-badge-border-light: #f69db7;
-        --color-badge-bg-dark: #2c2c2f;
-        --color-badge-border-dark: #39393c;
+    /* greyscale */
+    --color-offset: hsl(var(--color-greyscale-hue) 2%, 11%, 0.94);
+    --color-greyscale-25: hsl(var(--color-greyscale-hue) 11% 98%);
+    --color-greyscale-50: hsl(var(--color-greyscale-hue) 11% 94%);
+    --color-greyscale-100: hsl(var(--color-greyscale-hue) 6% 90%);
+    --color-greyscale-200: hsl(var(--color-greyscale-hue) 4% 85%);
+    --color-greyscale-250: hsl(var(--color-greyscale-hue) 3% 77%);
+    --color-greyscale-300: hsl(var(--color-greyscale-hue) 2% 68%);
+    --color-greyscale-400: hsl(var(--color-greyscale-hue) 2% 60%);
+    --color-greyscale-500: hsl(var(--color-greyscale-hue) 2% 52%);
+    --color-greyscale-600: hsl(var(--color-greyscale-hue) 2% 43%);
+    --color-greyscale-700: hsl(var(--color-greyscale-hue) 3% 35%);
+    --color-greyscale-750: hsl(var(--color-greyscale-hue) 4% 26%);
+    --color-greyscale-800: hsl(var(--color-greyscale-hue) 4% 18%);
+    --color-greyscale-850: hsl(var(--color-greyscale-hue) 3% 14%);
+    --color-greyscale-900: hsl(var(--color-greyscale-hue) 5.7% 10.4%);
 
-        /* Easings */
-        --easing-bounce: linear(
-            0,
-            0.063,
-            0.25 18.2%,
-            1 36.4%,
-            0.813,
-            0.75,
-            0.813,
-            1,
-            0.938,
-            1,
-            1
-        );
-        --easing-spring: linear(
-            0,
-            0.938 16.7%,
-            1.149 24.3%,
-            1.154 29.9%,
-            0.977 51%,
-            1
-        );
+    /* Easings */
+    --easing-bounce: linear(0, 0.063, 0.25 18.2%, 1 36.4%, 0.813, 0.75, 0.813, 1, 0.938, 1, 1);
+    --easing-spring: linear(0, 0.938 16.7%, 1.149 24.3%, 1.154 29.9%, 0.977 51%, 1);
 
-        /* Animations */
-        --animate-scale-in: scale-in 200ms ease-out forwards;
-        --animate-caret-blink: caret-blink 1s ease-in-out infinite;
-        --animate-text:
-            fade 0.75s ease-in-out both, blur 0.75s ease-in-out both, up 0.75s ease-in-out both;
-        --animate-scroll: scroll 60s linear infinite;
-        --animate-fade-in: fade-in 0.5s ease-in-out both;
-        --animate-marquee: marquee var(--speed, 30s) linear infinite var(--direction, forwards);
+    /* Animations */
+    --animate-scale-in: scale-in 200ms ease-out forwards;
+    --animate-caret-blink: caret-blink 1s ease-in-out infinite;
+    --animate-text:
+        fade 0.75s ease-in-out both, blur 0.75s ease-in-out both, up 0.75s ease-in-out both;
+    --animate-scroll: scroll 60s linear infinite;
+    --animate-fade-in: fade-in 0.5s ease-in-out both;
+    --animate-marquee: marquee var(--speed, 30s) linear infinite var(--direction, forwards);
 
-        /* Pink polyfills */
-        --transition: 0.2s;
-
-        /* Keyframes */
-        @keyframes scale-in {
-            0% {
-                transform: scale(0);
-            }
-            100% {
-                transform: scale(1);
-            }
+    /* Keyframes */
+    @keyframes scale-in {
+        0% {
+            transform: scale(0);
         }
-
-        @keyframes caret-blink {
-            0%,
-            70%,
-            100% {
-                opacity: 1;
-            }
-            20%,
-            50% {
-                opacity: 0;
-            }
+        100% {
+            transform: scale(1);
         }
-
-        @keyframes blur {
-            0% {
-                filter: blur(5px);
-            }
-            100% {
-                filter: blur(0);
-            }
-        }
-
-        @keyframes up {
-            0% {
-                transform: translateY(8px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
-        }
-
-        @keyframes fade-in {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        @keyframes marquee {
-            to {
-                transform: translateX(-50%);
-            }
-        }
-
-        /* Fonts */
-        --font-sans: 'Inter', arial, sans-serif;
-        --font-mono: 'Fira Code', monospace;
-        --font-aeonik-fono: 'Aenoik Fono', monospace;
-        --font-aeonik-pro: 'Aeonik Pro', var(--font-sans);
-        --font-archia: 'Archia', arial, sans-serif;
-
-        /* Font sizes */
-        --text-x-micro: 0.625rem;
-        --text-x-micro--line-height: 0.875rem;
-        --text-x-micro--tracking: var(--tracking-tighter);
-        --text-micro: 0.75rem;
-        --text-micro--line-height: 1rem;
-        --text-micro--tracking: var(--tracking-tighter);
-        --text-caption: 0.875rem;
-        --text-caption--line-height: 1.375rem;
-        --text-caption--tracking: var(--tracking-tight);
-        --text-sub-body: clamp(0.875rem, 2vw, 1rem);
-        --text-sub-body--line-height: 1.375rem;
-        --text-sub-body--tracking: var(--tracking-tight);
-        --text-body: clamp(1rem, 2.5vw, 1.125rem);
-        --text-body--line-height: clamp(1.375rem, 3vw, 1.625rem);
-        --text-body--tracking: var(--tracking-tight);
-        --text-paragraph-md: 1rem;
-        --text-paragraph-md--line-height: 1.625rem;
-        --text-paragraph-md--tracking: var(--tracking-tight);
-        --text-paragraph-lg: 1.125rem;
-        --text-paragraph-lg--line-height: 1.75rem;
-        --text-paragraph-lg--tracking: var(--tracking-tight);
-        --text-description: clamp(1.125rem, 3vw, 1.25rem);
-        --text-description--line-height: clamp(1.625rem, 3.5vw, 1.75rem);
-        --text-description--tracking: var(--tracking-tighter);
-        --text-label: 1.5rem;
-        --text-label--line-height: 1.75rem;
-        --text-title: clamp(2rem, 5vw, 2.5rem);
-        --text-title--line-height: clamp(2.125rem, 5.5vw, 2.75rem);
-        --text-title--tracking: var(--tracking-squeezed);
-        --text-display: clamp(3rem, 7vw, 4rem);
-        --text-display--line-height: clamp(3.125rem, 7.5vw, 4.25rem);
-        --text-display--tracking: var(--tracking-compressed);
-        --text-headline: clamp(3.5rem, 8vw, 5.5rem);
-        --text-headline--line-height: clamp(3.5rem, 8.5vw, 5.75rem);
-        --text-headline--tracking: var(--tracking-compressed);
-
-        /* Letter spacing */
-        --tracking-*: initial;
-        --tracking-compressed: -0.022em;
-        --tracking-squeezed: -0.01em;
-        --tracking-tighter: -0.018em;
-        --tracking-tight: -0.0045em;
-        --tracking-none: 0em;
-        --tracking-loose: 0.08em;
     }
 
+    @keyframes caret-blink {
+        0%,
+        70%,
+        100% {
+            opacity: 1;
+        }
+        20%,
+        50% {
+            opacity: 0;
+        }
+    }
 
-/* Themes */
+    @keyframes blur {
+        0% {
+            filter: blur(5px);
+        }
+        100% {
+            filter: blur(0);
+        }
+    }
+
+    @keyframes up {
+        0% {
+            transform: translateY(8px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes marquee {
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    /* Fonts */
+    --font-sans: 'Inter', arial, sans-serif;
+    --font-mono: 'Fira Code', monospace;
+    --font-aeonik-fono: 'Aenoik Fono', monospace;
+    --font-aeonik-pro: 'Aeonik Pro', var(--font-sans);
+    --font-archia: 'Archia', arial, sans-serif;
+
+    /* Font sizes */
+    --text-x-micro: 0.625rem;
+    --text-x-micro--line-height: 0.875rem;
+    --text-x-micro--tracking: var(--tracking-tighter);
+    --text-micro: 0.75rem;
+    --text-micro--line-height: 1rem;
+    --text-micro--tracking: var(--tracking-tighter);
+    --text-caption: 0.875rem;
+    --text-caption--line-height: 1.375rem;
+    --text-caption--tracking: var(--tracking-tight);
+    --text-sub-body: clamp(0.875rem, 2vw, 1rem);
+    --text-sub-body--line-height: 1.375rem;
+    --text-sub-body--tracking: var(--tracking-tight);
+    --text-body: clamp(1rem, 2.5vw, 1.125rem);
+    --text-body--line-height: clamp(1.375rem, 3vw, 1.625rem);
+    --text-body--tracking: var(--tracking-tight);
+    --text-paragraph-md: 1rem;
+    --text-paragraph-md--line-height: 1.625rem;
+    --text-paragraph-md--tracking: var(--tracking-tight);
+    --text-paragraph-lg: 1.125rem;
+    --text-paragraph-lg--line-height: 1.75rem;
+    --text-paragraph-lg--tracking: var(--tracking-tight);
+    --text-description: clamp(1.125rem, 3vw, 1.25rem);
+    --text-description--line-height: clamp(1.625rem, 3.5vw, 1.75rem);
+    --text-description--tracking: var(--tracking-tighter);
+    --text-label: 1.5rem;
+    --text-label--line-height: 1.75rem;
+    --text-title: clamp(2rem, 5vw, 2.5rem);
+    --text-title--line-height: clamp(2.125rem, 5.5vw, 2.75rem);
+    --text-title--tracking: var(--tracking-squeezed);
+    --text-display: clamp(3rem, 7vw, 4rem);
+    --text-display--line-height: clamp(3.125rem, 7.5vw, 4.25rem);
+    --text-display--tracking: var(--tracking-compressed);
+    --text-headline: clamp(3.5rem, 8vw, 5.5rem);
+    --text-headline--line-height: clamp(3.5rem, 8.5vw, 5.75rem);
+    --text-headline--tracking: var(--tracking-compressed);
+
+    /* Letter spacing */
+    --tracking-*: initial;
+    --tracking-compressed: -0.022em;
+    --tracking-squeezed: -0.01em;
+    --tracking-tighter: -0.018em;
+    --tracking-tight: -0.0045em;
+    --tracking-none: 0em;
+    --tracking-loose: 0.08em;
+}
+
+@layer components {
+    .container {
+        @apply mx-auto box-content max-w-[75rem] px-5;
+    }
+
+    .mask {
+        mask-image: linear-gradient(
+            to var(--mask-direction, top),
+            transparent,
+            black var(--mask-height, 32px),
+            black calc(100% - var(--mask-height, 32px)),
+            black
+        );
+    }
+}
+
 :root,
 .light {
+    /* pink polyfills */
+    --transition: 0.2s;
+
+    /* color hues */
     --color-pink-hue: 343;
     --color-secondary-hue: 351;
     --color-red-hue: 3;
@@ -257,28 +249,10 @@
     --color-smooth: hsl(var(--color-greyscale-hue) 6%, 10%, 0.04);
 }
 
-/* dark theme */
 .dark {
     --color-primary: var(--color-greyscale-100);
     --color-secondary: var(--color-greyscale-300);
     --color-badge-bg: var(--color-badge-bg-dark);
     --color-badge-border: var(--color-badge-border-dark);
     --color-smooth: hsl(0 0%, 100%, 0.06);
-}
-
-/* Container */
-@layer components {
-    .container {
-        @apply mx-auto box-content max-w-[75rem] px-5;
-    }
-
-    .mask {
-        mask-image: linear-gradient(
-            to var(--mask-direction, top),
-            transparent,
-            black var(--mask-height, 32px),
-            black calc(100% - var(--mask-height, 32px)),
-            black
-        );
-    }
 }
