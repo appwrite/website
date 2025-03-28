@@ -67,7 +67,7 @@ importers:
         specifier: ^3.1.2
         version: 3.1.2(svelte@4.2.19)(vite@5.4.14(@types/node@22.13.10)(lightningcss@1.29.2)(sass@1.85.1))
       '@tailwindcss/postcss':
-        specifier: 4.0.17
+        specifier: ^4.0.17
         version: 4.0.17
       '@types/compression':
         specifier: ^1.7.5
@@ -187,7 +187,7 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       tailwindcss:
-        specifier: 4.0.17
+        specifier: ^4.0.17
         version: 4.0.17
       tslib:
         specifier: ^2.8.1
