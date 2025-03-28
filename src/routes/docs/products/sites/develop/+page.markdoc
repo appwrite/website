@@ -8,7 +8,7 @@ description: Master site development with Appwrite.
 
 Appwrite allows you to host both statically-generated and server-rendered websites. 
 
-[Static sites](/docs/products/sites/site-hosting/static) are websites that are pre-built and served as-is to clients. They're do not execute server-side code on each request. They are ideal for use-cases such as [Single Page Applications (SPAs)](/docs/products/sites/site-hosting/static#running-spas-on-appwrite-sites), documentation sites, personal blogs, and portfolio websites. 
+[Static sites](/docs/products/sites/site-hosting/static) are websites that are pre-built and served as-is to clients. They do not execute server-side code on each request. They are ideal for use-cases such as [Single Page Applications (SPAs)](/docs/products/sites/site-hosting/static#running-spas-on-appwrite-sites), documentation sites, personal blogs, and portfolio websites. 
 
 [Server-side rendered (SSR) sites](/docs/products/sites/site-hosting/ssr) generate content dynamically on the server and send fully rendered pages for each request. They are ideal for use-cases with substantial dynamic content or server-side processing such as e-commerce platforms, social media applications, content management systems (CMS), and real-time collaboration tools.
 
