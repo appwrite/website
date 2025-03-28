@@ -27,7 +27,7 @@ When you build a deployment, the logs generated will be saved for debugging purp
 
 ## Update deployment
 
-Some Site settings require redeploying your function to be reflected in your active deployment. When you update a function by changing its **Git setting**s, **Build settings**, and **Environment variables**, you must redeploy your site before those changes take effect.
+Some site settings require redeploying your site to be reflected in your active deployment. When you update a site by changing its **Git settings**, **Build settings**, and **Environment variables**, you must redeploy your site before those changes take effect.
 
 ## Redeploy
 
