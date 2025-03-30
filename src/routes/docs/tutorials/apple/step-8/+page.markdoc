@@ -1,0 +1,99 @@
+---
+layout: tutorial
+title: Add Habit
+description: Handle create habit and store in Appwrite Database.
+step: 9
+---
+
+# Add Habit Screen {% #habit-ui %}
+
+Here will explore a simple "Add Habit" screen that lets users input information to create a new habit. This screen covers various aspects like the habit title, description, goals, duration, and habit icon. Trigger the create method in HabitViewModel then pop the navigation back to HomeScreen.
+
+```swift
+import SwiftUI
+
+struct AddHabitScreen: View {
+    
+    @EnvironmentObject private var router: Router
+    @EnvironmentObject private var habitViewModel: HabitViewModel
+    @EnvironmentObject private var userViewModel: UserViewModel
+    @State private var title: String = ""
+    @State private var description: String = ""
+    @State private var habitIcon: String = "figure.walk"
+    
+    @State private var startDate: Date = .now
+    @State private var endDate: Date = .now
+    
+    @State private var goals: Int? = nil
+    
+    @State private var taskRepeat: String? = nil
+    
+    let icons: [String] = [
+        "figure.walk",
+        "book.pages"
+        // Add as more icon as you want
+    ]
+    
+    let gridItems = [
+        GridItem(.flexible(minimum: 50, maximum: 100), spacing: 16),
+        GridItem(.flexible(minimum: 50, maximum: 100), spacing: 16),
+        GridItem(.flexible(minimum: 50, maximum: 100), spacing: 16),
+        GridItem(.flexible(minimum: 50, maximum: 100), spacing: 16),
+    ]
+    
+    
+    var body: some View {
+        Form {
+            Section("Title") {
+                TextField("Habit Title", text: $title)
+                TextField("Description", text: $description)
+            }
+            
+            Section("Task") {
+               
+                TextField("Goals", value: $goals, format: .number)
+                    .keyboardType(.numberPad)
+            }
+            
+            Section("Period") {
+                DatePicker("Start", selection: $startDate, displayedComponents: .date)
+                DatePicker("End", selection: $endDate, displayedComponents: .date)
+            }
+            
+            Section("Icons") {
+                
+                LazyVGrid(columns: gridItems, spacing: 16) {
+                    ForEach(icons, id: \.self) { icon in
+                        Image(systemName: icon)
+                            .renderingMode(.original)
+                            .resizable()
+                            .foregroundColor(habitIcon == icon ? .white : Theme.pink)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 30, height: 30)
+                            .padding(.all, 10)
+                            .background((habitIcon == icon ? Theme.pink : .clear))
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                            .onTapGesture {
+                                habitIcon = icon
+                            }
+                    }
+                }
+                
+            }
+            
+            Button {
+                Task {
+                    
+                    await habitViewModel.create(title, description, goals ?? 0, habitIcon, startDate.formatted(), endDate.formatted(), userViewModel.userState.userId!)
+                    
+                    router.pop()
+                }
+            } label: {
+                Text("Create Habit")
+            }
+        }
+        .navigationTitle("New habit")
+        
+    }
+}
+```
