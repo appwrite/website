@@ -21,3 +21,4 @@ terraform/**/.t*
 terraform/**/.env
 terraform/**/**/*.tfstate*
 /.cache
+/test-results
