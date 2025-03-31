@@ -188,28 +188,28 @@
                     free: '500K',
                     pro: '1750K',
                     scale: '1750K',
-                    enterprise: 'Unlimited'
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Writes',
                     free: '250K',
                     pro: '750K',
                     scale: '750K',
-                    enterprise: 'Unlimited'
+                    enterprise: 'Custom'
                 },
                 {
-                    title: 'Aditional reads',
+                    title: 'Additional reads',
                     free: '-',
                     pro: '$0.060 per 100k reads',
                     scale: '$0.060 per 100k reads',
-                    enterprise: 'Unlimited'
+                    enterprise: 'Custom'
                 },
                 {
-                    title: 'Aditional writes',
+                    title: 'Additional writes',
                     free: '-',
                     pro: '$0.10 per 100k writes',
                     scale: '$0.10 per 100k writes',
-                    enterprise: 'Unlimited'
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Backups',
