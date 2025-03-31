@@ -65,9 +65,9 @@
 
 <script lang="ts">
     import { dev } from '$app/environment';
+    import { trackEvent } from '$lib/actions/analytics';
     import { classNames } from '$lib/utils/classnames';
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
-    import { trackEvent } from '$lib/actions/analytics';
 
     const {
         elements: { trigger, menu, item, overlay },
@@ -154,8 +154,7 @@
                 </div>
             </div>
             <div class="col-span-4 -ml-12 border-l border-white/6 pl-12">
-                <a
-                    href="/blog/post/customer-story-storealert"
+                <div
                     use:melt={$item}
                     class="group block rounded-2xl border border-white/12 bg-white/6 p-4 outline-none focus-within:bg-white/12"
                 >
@@ -173,7 +172,7 @@
                         >
                     </header>
 
-                    <div class="my-4 flex flex-1 gap-3 outline-none">
+                    <a href="/blog/post/customer-story-storealert" class="my-4 flex flex-1 gap-3 outline-none">
                         <img
                             src="/images/blog/customer-story-storealert/cover.png"
                             alt="Case study cover"
@@ -183,8 +182,8 @@
                             Empowering Shopify merchants with real-time store monitoring using
                             StoreAlert
                         </p>
-                    </div>
-                </a>
+                    </a>
+                </div>
 
                 <div class="mt-8">
                     <span
