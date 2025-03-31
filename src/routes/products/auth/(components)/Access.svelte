@@ -24,7 +24,7 @@
         <div
             class="mx-auto mb-20 flex max-w-md flex-col items-center justify-center gap-y-4 text-center"
         >
-            <span class="web-badges web-eyebrow text-micro font-aeonik-fono uppercase !text-white"
+            <span class="web-badges web-eyebrow text-micro font-aeonik-fono !text-white uppercase"
                 >Access_</span
             >
             <h2 class="text-title text-primary font-aeonik-pro">

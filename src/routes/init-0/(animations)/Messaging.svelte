@@ -50,7 +50,7 @@
 </script>
 
 <div class="wrapper">
-    <div class="container messaging-1" bind:this={messaging1}>
+    <div class="messaging-1 container" bind:this={messaging1}>
         <div class="box1" />
         <div class="box2" />
         <div class="box3" />
@@ -59,7 +59,7 @@
         </div>
     </div>
 
-    <div class="container messaging-2" bind:this={messaging2}>
+    <div class="messaging-2 container" bind:this={messaging2}>
         <div class="box1" />
         <div class="box2" />
         <div class="box3" />

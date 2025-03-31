@@ -157,7 +157,7 @@
                 <img src="/images/community/sphere.png" alt="" />
             </div>
             <div class="web-big-padding-section-level-2">
-                <section class="container web-u-padding-block-end-0 relative">
+                <section class="web-u-padding-block-end-0 relative container">
                     <div class="web-hero is-align-start web-u-max-width-580">
                         <h1 class="text-display font-aeonik-pro text-primary">
                             Built by a community of 800+ contributors
@@ -226,7 +226,7 @@
             </div>
 
             <div class="web-big-padding-section-level-2">
-                <div class="container relative">
+                <div class="relative container">
                     <div class="web-hero is-mobile-center web-u-max-width-900 gap-5">
                         <h2 class="text-headline font-aeonik-pro text-primary">
                             The power of open source benefits us all
@@ -292,7 +292,7 @@
                                     <thead class="web-table-line-head">
                                         <tr class="web-table-line-row">
                                             <th
-                                                class="web-table-line-cell text-primary whitespace-nowrap text-start"
+                                                class="web-table-line-cell text-primary text-start whitespace-nowrap"
                                                 >Issue #</th
                                             >
                                             <th class="web-table-line-cell text-primary text-start"
@@ -421,7 +421,7 @@
                 </section>
             </div>
             <div class="web-big-padding-section-level-2">
-                <section class="container web-u-sep-block-start web-u-padding-block-start-64">
+                <section class="web-u-sep-block-start web-u-padding-block-start-64 container">
                     <Carousel size="big">
                         <svelte:fragment slot="header">
                             <h4 class="text-label text-primary">Upcoming Events</h4>

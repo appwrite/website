@@ -48,7 +48,7 @@
     <div class="web-big-padding-section">
         <div class="pt-10">
             <div class="web-big-padding-section-level-2">
-                <div class="container wrapper">
+                <div class="wrapper container">
                     <h1 class="text-display font-aeonik-pro text-primary">Changelog</h1>
                     <ul>
                         {#each data.entries as entry}

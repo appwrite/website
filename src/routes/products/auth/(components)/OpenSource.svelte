@@ -64,7 +64,7 @@
                 need to get your project started.
             </p>
             <div
-                class="mt-2 mx-auto flex w-full flex-col items-center justify-center gap-2 md:flex-row"
+                class="mx-auto mt-2 flex w-full flex-col items-center justify-center gap-2 md:flex-row"
             >
                 <a
                     href={GITHUB_REPO_LINK}

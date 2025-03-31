@@ -36,7 +36,7 @@
 >
     <div class="pattern relative hidden h-full w-full md:block" />
     <div
-        class="gridLine vertical from-accent/5 relative flex h-full w-full flex-1 basis-[calc(100vw_/_3)] flex-col items-center justify-center gap-8 to-transparent py-10 px-8 text-center md:bg-gradient-to-t"
+        class="gridLine vertical from-accent/5 relative flex h-full w-full flex-1 basis-[calc(100vw_/_3)] flex-col items-center justify-center gap-8 to-transparent px-8 py-10 text-center md:bg-gradient-to-t"
     >
         <Logos />
         <h1 class="font-aeonik-pro text-5xl text-white">Build your next project with Appwrite</h1>

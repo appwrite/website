@@ -293,7 +293,7 @@ messaging.create_email(
             <div class="web-big-padding-section-level-2" style="margin-block-end: 160px">
                 <div class="container">
                     <section class="web-hero is-align-start">
-                        <span class="web-badges text-micro uppercase !text-white"
+                        <span class="web-badges text-micro !text-white uppercase"
                             >capabilities_</span
                         >
                         <h2 class="text-display font-aeonik-pro text-primary max-w-[700px]">
@@ -468,7 +468,7 @@ messaging.create_email(
             <div class="web-big-padding-section-level-2">
                 <div class="container">
                     <div class="web-hero is-align-start">
-                        <span class="web-badges text-micro uppercase !text-white">SDKs_</span>
+                        <span class="web-badges text-micro !text-white uppercase">SDKs_</span>
                         <h2 class="text-display font-aeonik-pro text-primary max-w-[700px]">
                             Start today with your preferred technologies
                         </h2>

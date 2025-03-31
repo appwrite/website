@@ -42,7 +42,7 @@
                 >
                     <button
                         class={classNames(
-                            'tabs-button relative cursor-pointer bg-clip-padding py-[0.625rem] px-1 font-light outline-none',
+                            'tabs-button relative cursor-pointer bg-clip-padding px-1 py-[0.625rem] font-light outline-none',
                             'after:relative after:top-1 after:bottom-0 after:block after:h-px after:transition-all',
                             {
                                 'after:bg-[var(--color-primary)]': $value === id
@@ -79,7 +79,7 @@
                 >
                     <button
                         class={classNames(
-                            'tabs-button relative cursor-pointer bg-clip-padding py-[0.625rem] px-1 font-light outline-none',
+                            'tabs-button relative cursor-pointer bg-clip-padding px-1 py-[0.625rem] font-light outline-none',
                             'after:relative after:top-1 after:bottom-0 after:block after:h-px after:transition-all',
                             {
                                 'after:bg-[var(--color-primary)]': $value === id

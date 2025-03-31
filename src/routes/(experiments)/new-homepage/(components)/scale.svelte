@@ -79,9 +79,9 @@
     class="border-smooth relative flex min-h-[70vh] flex-col gap-4 border-y bg-black/8 py-20"
     use:useInView
 >
-    <div class="container relative z-10 w-fit md:w-full">
+    <div class="relative z-10 container w-fit md:w-full">
         <div class="max-w-xl">
-            <h2 class="text-primary font-aeonik-pro text-pretty text-5xl tracking-tighter">
+            <h2 class="text-primary font-aeonik-pro text-5xl tracking-tighter text-pretty">
                 Thousands of developers <span class="text-secondary">scale with Appwrite</span><span
                     class="text-accent">_</span
                 >
@@ -116,7 +116,7 @@
         style:--animation-duration={`${animationDuration}s`}
         style:--mask-height="50px"
     >
-        <div class="container relative h-full">
+        <div class="relative container h-full">
             <div class="absolute inset-0 z-100 grid grid-cols-4">
                 {#each stats as stat, i}
                     <div

@@ -36,7 +36,7 @@
 </svelte:head>
 
 <Main>
-    <div class="container web-u-padding-block-end-0">
+    <div class="web-u-padding-block-end-0 container">
         <div class="header">
             <div>
                 <a class="web-link is-secondary items-baseline" href="/threads">

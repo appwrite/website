@@ -222,7 +222,7 @@
                                         </div>
                                         {#if hit.p}
                                             <div
-                                                class="web-u-color-text-secondary w-full overflow-hidden text-ellipsis whitespace-nowrap text-left"
+                                                class="web-u-color-text-secondary w-full overflow-hidden text-left text-ellipsis whitespace-nowrap"
                                             >
                                                 {hit.p}
                                             </div>

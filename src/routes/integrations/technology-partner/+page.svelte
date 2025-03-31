@@ -91,7 +91,7 @@
         <div id="form" class="overflow-hidden p-0 pt-10">
             <div class="relative pt-[7.5rem]">
                 <div class="relative">
-                    <div class="container relative">
+                    <div class="relative container">
                         <!-- before submit -->
                         <div class="web-grid-1-1-opt-2 e-u-row-gap-0 relative z-[1] gap-8">
                             <div>

@@ -5,7 +5,7 @@
 
 <div class="outside">
     <div class="wrapper">
-        <span class="web-badges text-micro uppercase !text-white">Products_</span>
+        <span class="web-badges text-micro !text-white uppercase">Products_</span>
 
         <h2 class="text-display font-aeonik-pro text-primary mt-4">
             Your backend, minus the hassle

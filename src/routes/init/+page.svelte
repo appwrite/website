@@ -80,7 +80,7 @@
             <Hero />
         </div>
 
-        <div class="container divide-border-primary divide-y">
+        <div class="divide-border-primary container divide-y">
             <div class="day-cards">
                 {#each days as day, i (day.release.toISOString())}
                     <a href="#day-{i}" class="contents">

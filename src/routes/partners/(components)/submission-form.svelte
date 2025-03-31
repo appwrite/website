@@ -160,7 +160,7 @@
             </form>
         </div>
     {:else}
-        <div class="container animate-fade-in mx-auto flex max-w-sm flex-col gap-4 text-center">
+        <div class="animate-fade-in container mx-auto flex max-w-sm flex-col gap-4 text-center">
             <div class="border-smooth mb-6 flex flex-col gap-4 border-b pb-8">
                 <h2 class="text-display text-primary font-aeonik-pro">Thank you for applying</h2>
                 <p class="text-body text-secondary font-medium">

@@ -142,7 +142,7 @@
         </p>
     </div>
     <div
-        class="container relative mx-auto flex h-full items-center justify-center py-10 md:mt-[7.5rem]"
+        class="relative container mx-auto flex h-full items-center justify-center py-10 md:mt-[7.5rem]"
         bind:this={mapContainer}
     >
         {#if showTooltip}
@@ -176,7 +176,7 @@
         <div class="relative z-10 block w-full space-y-4 md:hidden">
             {#each pins as pin}
                 <div
-                    class="z-100 flex w-full flex-col gap-2 rounded-[10px] border border-white bg-gradient-to-br from-white/64 to-white/32 py-4 px-2 backdrop-blur-sm"
+                    class="z-100 flex w-full flex-col gap-2 rounded-[10px] border border-white bg-gradient-to-br from-white/64 to-white/32 px-2 py-4 backdrop-blur-sm"
                 >
                     <span class="text-primary text-caption w-fit"
                         >{pin.city}

@@ -10,7 +10,7 @@
     <div class="web-article mx-auto flex max-w-[700px] items-center justify-center py-4">
         <div class="container">
             <div class="web-hero" style="--hero-gap:1.25rem;">
-                <span class="web-badges text-micro uppercase !text-white">{$page.status}</span>
+                <span class="web-badges text-micro !text-white uppercase">{$page.status}</span>
                 <h1 class="text-headline font-aeonik-pro text-primary">
                     {$page.error?.message ?? 'An error has occured'}
                 </h1>
