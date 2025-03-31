@@ -1,19 +1,19 @@
 <script lang="ts">
-    import { Main } from '$lib/layouts';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-    import { TITLE_SUFFIX } from '$routes/titles';
+    import { browser } from '$app/environment';
+    import { goto } from '$app/navigation';
+    import { page } from '$app/stores';
+    import { autoHash } from '$lib/actions/autoHash';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
-    import { type ResultType, Fuse } from '$lib/integrations';
-    import { writable } from 'svelte/store';
-    import { autoHash } from '$lib/actions/autoHash';
-    import type { Integration } from './+page';
-    import { goto } from '$app/navigation';
-    import { onDestroy, onMount } from 'svelte';
-    import { browser } from '$app/environment';
-    import { cn } from '$lib/utils/classnames';
     import Input from '$lib/components/ui/input.svelte';
-    import { page } from '$app/stores';
+    import { type ResultType, Fuse } from '$lib/integrations';
+    import { Main } from '$lib/layouts';
+    import { classNames } from '$lib/utils/classnames';
+    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { TITLE_SUFFIX } from '$routes/titles';
+    import { onDestroy, onMount } from 'svelte';
+    import { writable } from 'svelte/store';
+    import type { Integration } from './+page';
 
     export let data;
 
@@ -154,7 +154,7 @@
                                     {#each platforms as platform}
                                         <li>
                                             <button
-                                                class={cn(
+                                                class={classNames(
                                                     'tag bg-greyscale-800 border-greyscale-700 h-8 cursor-pointer rounded-full border px-3 text-sm font-light',
                                                     {
                                                         'bg-white text-black':

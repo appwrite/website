@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { cn } from '$lib/utils/classnames';
-    import type { HTMLButtonAttributes, HTMLAnchorAttributes } from 'svelte/elements';
-    import { cva, type VariantProps } from 'cva';
-    import InlineTag from './inline-tag.svelte';
-    import type { Action } from 'svelte/action';
+    import { classNames } from '$lib/utils/classnames';
     import { emptyMeltElement, melt, type AnyMeltElement } from '@melt-ui/svelte';
+    import { cva, type VariantProps } from 'cva';
+    import type { Action } from 'svelte/action';
+    import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
+    import InlineTag from './inline-tag.svelte';
 
     // TODO: replace _button.scss with Tailwind classes for maintainability
     const button = cva(['web-button'], {
@@ -36,7 +36,7 @@
 
     const { class: classes, href: _, ...props } = $$restProps;
 
-    const buttonClasses = cn(button({ variant }), classes);
+    const buttonClasses = classNames(button({ variant }), classes);
 
     const applyAction = (node: HTMLButtonElement | HTMLAnchorElement) => {
         if (!use) return { destroy: () => {} };

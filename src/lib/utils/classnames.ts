@@ -23,6 +23,6 @@ const customConfig = extendTailwindMerge({
     }
 });
 
-export const cn = (...inputs: ClassValue[]) => {
+export const classNames = (...inputs: ClassValue[]) => {
     return customConfig(clsx(inputs));
 };

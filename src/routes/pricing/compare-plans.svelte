@@ -3,12 +3,12 @@
     import { Tabs } from '$lib/UI';
     import { visible } from '$lib/actions/visible';
     import { Tooltip } from '$lib/components';
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { getScrollDir } from '$lib/utils/getScrollDir';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
-    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     type Table = {
         title: string;
@@ -645,7 +645,7 @@
                                         </th>
                                         {#each cols as col, index}
                                             <td
-                                                class={cn(
+                                                class={classNames(
                                                     `text-caption flex justify-center font-normal level-${index}`,
                                                     {
                                                         'md:bg-greyscale-100': col === 'pro'

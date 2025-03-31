@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
     import type { SvelteHTMLElements } from 'svelte/elements';
     import Eyebrow from './eyebrow.svelte';
 
@@ -10,7 +10,7 @@
 
 <Eyebrow class="text-white">
     <span
-        class={cn(
+        class={classNames(
             'badge self-start rounded-[0.375rem] px-3 py-[0.375rem] backdrop-blur-2xl',
             classes
         )}

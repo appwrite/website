@@ -11,8 +11,8 @@
 </script>
 
 <script lang="ts">
-    import { cn } from '$lib/utils/classnames';
     import { trackEvent } from '$lib/actions/analytics';
+    import { classNames } from '$lib/utils/classnames';
 
     export let initialized = false;
 
@@ -35,7 +35,7 @@
                     </div>
                 {:else}
                     <a
-                        class={cn(
+                        class={classNames(
                             'data-[badge]:after:animate-scale-in data-[badge]:relative data-[badge]:after:absolute data-[badge]:after:size-1.5 data-[badge]:after:translate-full data-[badge]:after:rounded-full'
                         )}
                         href={link.href}

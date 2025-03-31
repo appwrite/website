@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
 
     type ElementType = 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span';
 
@@ -11,6 +11,8 @@
 
 <svelte:element
     this={as}
-    class={cn('text-micro tracking-loose text-primary font-aeonik-fono uppercase', className)}
-    ><slot /></svelte:element
+    class={classNames(
+        'text-micro tracking-loose text-primary font-aeonik-fono uppercase',
+        className
+    )}><slot /></svelte:element
 >

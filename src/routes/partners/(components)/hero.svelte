@@ -1,11 +1,11 @@
 <script>
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
     import Puzzle from './puzzle.svelte';
 </script>
 
 <div
-    class={cn(
-        'grid-bg border-smooth relative box-content flex items-center border-b py-12 px-5 lg:px-8 xl:px-16',
+    class={classNames(
+        'grid-bg border-smooth relative box-content flex items-center border-b px-5 py-12 lg:px-8 xl:px-16',
         'before:absolute before:inset-0 before:-z-1 before:bg-linear-to-r before:from-black/32 before:to-transparent'
     )}
 >
@@ -19,7 +19,7 @@
             <h1 class="font-aeonik-pro text-display text-primary text-pretty">
                 Boost businesses with Appwrite<span class="text-accent">_</span>
             </h1>
-            <p class="text-description text-secondary text-pretty font-medium">
+            <p class="text-description text-secondary font-medium text-pretty">
                 Join the Appwrite Partners program and grow your business. Deliver powerful
                 solutions to clients, increase revenue, and expand your reach.
             </p>

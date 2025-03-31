@@ -65,9 +65,9 @@
 
 <script lang="ts">
     import { dev } from '$app/environment';
-    import { cn } from '$lib/utils/classnames';
-    import { createDropdownMenu, melt } from '@melt-ui/svelte';
     import { trackEvent } from '$lib/actions/analytics';
+    import { classNames } from '$lib/utils/classnames';
+    import { createDropdownMenu, melt } from '@melt-ui/svelte';
 
     const {
         elements: { trigger, menu, item, overlay },
@@ -80,7 +80,7 @@
 </script>
 
 <button
-    class={cn(
+    class={classNames(
         'text-primary focus:text-accent hover:text-accent inline-flex cursor-pointer items-center justify-between outline-none',
         {
             'text-accent': $open
@@ -91,7 +91,7 @@
     {label}
 
     <span
-        class={cn('web-icon-chevron-down block transition-transform', {
+        class={classNames('web-icon-chevron-down block transition-transform', {
             'rotate-180': $open
         })}
     />
@@ -99,8 +99,8 @@
 
 <div
     use:melt={$menu}
-    class={cn(
-        'data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in relative !left-1/2 z-10 mt-6 mx-auto hidden w-full -translate-x-1/2 flex-col items-center p-0 outline-none [max-inline-size:86.875rem] md:flex'
+    class={classNames(
+        'data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in relative !left-1/2 z-10 mx-auto mt-6 hidden w-full -translate-x-1/2 flex-col items-center p-0 outline-none [max-inline-size:86.875rem] md:flex'
     )}
 >
     <div class="is-special-padding w-full rounded-2xl border border-white/8 bg-[#232325] p-6">
@@ -123,7 +123,7 @@
                                         name: `${product.name} in products submenu`
                                     }
                                 })}
-                            class="group flex gap-3 rounded-xl p-1 text-white outline-none transition-colors focus:bg-white/8"
+                            class="group flex gap-3 rounded-xl p-1 text-white transition-colors outline-none focus:bg-white/8"
                         >
                             <div
                                 class="flex size-12 shrink-0 items-center justify-center rounded-lg border border-white/12 bg-white/6"
@@ -140,7 +140,7 @@
 
                                     {#if product.beta}
                                         <span
-                                            class="text-caption bg-accent/24 ml-1 rounded py-1 px-2 font-medium text-white"
+                                            class="text-caption bg-accent/24 ml-1 rounded px-2 py-1 font-medium text-white"
                                             >Coming soon</span
                                         >
                                     {/if}

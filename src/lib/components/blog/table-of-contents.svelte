@@ -15,7 +15,7 @@
 </script>
 
 <script lang="ts">
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
     import { fade } from 'svelte/transition';
 
     const backToTop = () => {
@@ -44,7 +44,7 @@
         >
             {#each toc as parent (parent.href)}
                 <li
-                    class={cn(
+                    class={classNames(
                         parent.selected ? 'text-primary' : 'text-secondary',
                         'relative ps-6 transition-colors',
                         'before:bg-greyscale-300 before:absolute before:top-0 before:left-0 before:h-6 before:w-px before:rounded-full before:opacity-0 before:transition-opacity',
@@ -64,7 +64,7 @@
                         >
                             {#each parent.children as child}
                                 <li
-                                    class={cn(
+                                    class={classNames(
                                         parent.selected ? 'text-primary' : 'text-secondary',
                                         'relative transition-colors',
                                         'before:bg-primary before:absolute before:top-0 before:left-0 before:h-6 before:w-px before:rounded-full before:opacity-0 before:transition-opacity',

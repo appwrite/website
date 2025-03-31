@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
     import type { SvelteHTMLElements } from 'svelte/elements';
     import type { Icon } from './types';
 
@@ -13,4 +13,4 @@
     export let icon: $$Props['icon'] = 'arrow-right';
 </script>
 
-<span class={cn(`web-icon-${icon}`, className)} {...$$restProps} />
+<span class={classNames(`web-icon-${icon}`, className)} {...$$restProps} />

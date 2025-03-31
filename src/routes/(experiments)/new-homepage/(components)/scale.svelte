@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
     import NumberFlow from '@number-flow/svelte';
     import { inView } from 'motion';
     import { onDestroy } from 'svelte';
@@ -79,9 +79,9 @@
     class="border-smooth relative flex min-h-[70vh] flex-col gap-4 border-y bg-black/8 py-20"
     use:useInView
 >
-    <div class="container relative z-10 w-fit md:w-full">
+    <div class="relative z-10 container w-fit md:w-full">
         <div class="max-w-xl">
-            <h2 class="text-primary font-aeonik-pro text-pretty text-5xl tracking-tighter">
+            <h2 class="text-primary font-aeonik-pro text-5xl tracking-tighter text-pretty">
                 Thousands of developers <span class="text-secondary">scale with Appwrite</span><span
                     class="text-accent">_</span
                 >
@@ -99,7 +99,7 @@
     <div class="mt-12 block space-y-8 md:hidden">
         {#each stats as stat, i}
             <div class="h-full overflow-auto pl-6">
-                <div class={cn('relative')} style:top={`${(4 - i) * 18}%`}>
+                <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
                     <NumberFlow
                         class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
                         value={stat.number}
@@ -116,7 +116,7 @@
         style:--animation-duration={`${animationDuration}s`}
         style:--mask-height="50px"
     >
-        <div class="container relative h-full">
+        <div class="relative container h-full">
             <div class="absolute inset-0 z-100 grid grid-cols-4">
                 {#each stats as stat, i}
                     <div
@@ -124,7 +124,7 @@
                         style:--mask-direction="bottom"
                         style:--mask-height={`${(4 - i) * 25}%`}
                     >
-                        <div class={cn('relative')} style:top={`${(4 - i) * 18}%`}>
+                        <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
                             <NumberFlow
                                 class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
                                 value={stat.number}

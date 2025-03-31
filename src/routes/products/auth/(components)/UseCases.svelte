@@ -1,14 +1,14 @@
 <script lang="ts">
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import { classNames } from '$lib/utils/classnames';
     import Android from '../(assets)/platforms/android.svg';
     import Apple from '../(assets)/platforms/apple.svg';
+    import Firebase from '../(assets)/platforms/firebase.svg';
     import Flutter from '../(assets)/platforms/flutter.svg';
     import JavaScript from '../(assets)/platforms/javascript.svg';
-    import React from '../(assets)/platforms/react.svg';
     import NHost from '../(assets)/platforms/nhost.svg';
+    import React from '../(assets)/platforms/react.svg';
     import Supabase from '../(assets)/platforms/supabase.svg';
-    import Firebase from '../(assets)/platforms/firebase.svg';
-    import { cn } from '$lib/utils/classnames';
 
     const platforms = [
         { icon: Android, size: 24 },

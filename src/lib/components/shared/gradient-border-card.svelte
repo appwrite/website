@@ -1,12 +1,12 @@
 <script lang="ts">
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
 
     let className: string = '';
 
     export { className as class };
 </script>
 
-<div class={cn('gradient-card', className)}>
+<div class={classNames('gradient-card', className)}>
     <slot />
 </div>
 
