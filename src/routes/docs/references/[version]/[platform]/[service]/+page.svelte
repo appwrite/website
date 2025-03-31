@@ -34,6 +34,8 @@
     const headings = getContext<LayoutContext>('headings');
 
     let selected: string | undefined = undefined;
+    let selectedMenuItem: HTMLElement;
+
     headings.subscribe((n) => {
         const noVisible = Object.values(n).every((n) => !n.visible);
         if (selected && noVisible) {
@@ -42,6 +44,22 @@
         for (const key in n) {
             if (n[key].visible) {
                 selected = key;
+                setTimeout(() => {
+                    if (selectedMenuItem) {
+                        // First scroll the item into view
+                        selectedMenuItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                        // Get the parent scrollable container (the menu)
+                        const menuContainer = selectedMenuItem.closest(
+                            '.web-references-menu-content'
+                        );
+                        if (menuContainer) {
+                            // Add some offset to position the item higher in the viewport
+                            const offset = 100; // Adjust this value as needed
+                            menuContainer.scrollTop = menuContainer.scrollTop - offset;
+                        }
+                    }
+                }, 0);
                 break;
             }
         }
@@ -156,6 +174,20 @@
             }
             return orderA - orderB;
         });
+    }
+
+    function bindSelectedRef(node: HTMLElement, isSelected: boolean) {
+        if (isSelected) {
+            selectedMenuItem = node;
+        }
+
+        return {
+            update(newIsSelected: boolean) {
+                if (newIsSelected) {
+                    selectedMenuItem = node;
+                }
+            }
+        };
     }
 </script>
 
@@ -367,6 +399,7 @@
                                                 href={`#${method.id}`}
                                                 class="web-references-menu-link text-caption"
                                                 class:is-selected={method.id === selected}
+                                                use:bindSelectedRef={method.id === selected}
                                             >
                                                 {method.title}
                                             </a>
