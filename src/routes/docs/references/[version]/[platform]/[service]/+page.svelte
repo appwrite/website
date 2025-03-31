@@ -26,6 +26,7 @@
     import Request from './(components)/Request.svelte';
     import Response from './(components)/Response.svelte';
     import RateLimits from './(components)/RateLimits.svelte';
+    import type { SDKMethod } from '$lib/utils/specs';
 
     export let data;
 
@@ -135,19 +136,37 @@
     $: description = shortenedDescription;
     $: ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 
-    // Add this function to determine the operation type and its order
+    const groupedMethods = data.methods.reduce(
+        (acc, method) => {
+            if (!acc[method.group]) {
+                acc[method.group] = [];
+            }
+            acc[method.group].push(method);
+            return acc;
+        },
+        {} as Record<string, SDKMethod[]>
+    );
+
     function getOperationOrder(methodTitle: string): number {
-        const title = methodTitle.toLowerCase();
-        if (title.startsWith('create')) return 1;
-        if (title.startsWith('read') || title.startsWith('get') || title.startsWith('list'))
-            return 2;
-        if (title.startsWith('update')) return 3;
-        if (title.startsWith('delete')) return 4;
-        return 5; // Other operations
+        const [firstWord] = methodTitle.toLowerCase().trim().split(/\s+/);
+
+        switch (firstWord) {
+            case 'create':
+                return 1;
+            case 'read':
+            case 'get':
+            case 'list':
+                return 2;
+            case 'update':
+                return 3;
+            case 'delete':
+                return 4;
+            default:
+                return 5;
+        }
     }
 
-    // Add this function to sort methods within each group
-    function sortMethods(methods: any[]) {
+    function sortMethods(methods: SDKMethod[]) {
         return methods.sort((a, b) => {
             const orderA = getOperationOrder(a.title);
             const orderB = getOperationOrder(b.title);
@@ -265,13 +284,7 @@
                     </div>
                 {/if}
             </section>
-            {#each Object.entries(data.methods.reduce((acc, method) => {
-                    if (!acc[method.group]) {
-                        acc[method.group] = [];
-                    }
-                    acc[method.group].push(method);
-                    return acc;
-                }, {})) as [_group, methods]}
+            {#each Object.entries(groupedMethods) as [, methods]}
                 {#each sortMethods(methods) as method (method.id)}
                     <section class="web-article-content-grid-6-4">
                         <div class="web-article-content-grid-6-4-column-1 flex flex-col gap-8">
@@ -342,20 +355,13 @@
                     <div
                         class="web-references-menu-header mt-6 flex items-center justify-between gap-4"
                     >
-                        <h5 class="web-references-menu-title text-micro uppercase">On This Page</h5>
+                        <h5 class="web-references-menu-title text-micro uppercase">On this page</h5>
                         <button class="web-icon-button" id="refClose" on:click={toggleReferences}>
                             <span class="icon-x" aria-hidden="true" />
                         </button>
                     </div>
                     <ul class="web-references-menu-list">
-                        {#each Object.entries(data.methods.reduce((acc, method) => {
-                                // Group methods by their group attribute
-                                if (!acc[method.group]) {
-                                    acc[method.group] = [];
-                                }
-                                acc[method.group].push(method);
-                                return acc;
-                            }, {})) as [group, methods]}
+                        {#each Object.entries(groupedMethods) as [group, methods]}
                             <li class="web-references-menu-group">
                                 <h6 class="text-micro text-greyscale-500 mb-2 uppercase">
                                     {group}
