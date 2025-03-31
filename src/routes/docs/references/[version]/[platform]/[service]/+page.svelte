@@ -271,7 +271,7 @@
                     }
                     acc[method.group].push(method);
                     return acc;
-                }, {})) as [_group, methods]}
+                }, {})).sort( ([groupA], [groupB]) => groupA.localeCompare(groupB) ) as [_group, methods]}
                 {#each sortMethods(methods) as method (method.id)}
                     <section class="web-article-content-grid-6-4">
                         <div class="web-article-content-grid-6-4-column-1 flex flex-col gap-8">
@@ -349,13 +349,12 @@
                     </div>
                     <ul class="web-references-menu-list">
                         {#each Object.entries(data.methods.reduce((acc, method) => {
-                                // Group methods by their group attribute
                                 if (!acc[method.group]) {
                                     acc[method.group] = [];
                                 }
                                 acc[method.group].push(method);
                                 return acc;
-                            }, {})) as [group, methods]}
+                            }, {})).sort( ([groupA], [groupB]) => groupA.localeCompare(groupB) ) as [group, methods]}
                             <li class="web-references-menu-group">
                                 <h6 class="text-micro text-greyscale-500 mb-2 uppercase">
                                     {group}
