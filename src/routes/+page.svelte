@@ -176,7 +176,7 @@
             </div>
             <div class="mb-12 lg:my-[7.5rem]">
                 <section
-                    class="web-u-padding-block-0 container relative"
+                    class="web-u-padding-block-0 relative container"
                     style="--container-size:78.75rem"
                 >
                     <div class="absolute top-1/2 left-1/2 z-10 -translate-1/2">
@@ -465,9 +465,9 @@
                 />
             </div>
             <div class="py-[7.5rem]">
-                <div class="container relative">
+                <div class="relative container">
                     <section class="web-hero is-align-start">
-                        <span class="web-badges text-micro uppercase !text-white">SDKs_</span>
+                        <span class="web-badges text-micro !text-white uppercase">SDKs_</span>
                         <h2 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                             Code the way you want
                         </h2>
@@ -501,10 +501,10 @@
                         />
                     </div>
                 </div>
-                <div class="container relative">
+                <div class="relative container">
                     <div class="grid md:grid-cols-2">
                         <section class="web-hero is-align-start">
-                            <span class="web-badges text-micro uppercase !text-white">Scale_</span>
+                            <span class="web-badges text-micro !text-white uppercase">Scale_</span>
                             <h2 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                                 We scale for you
                             </h2>

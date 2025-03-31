@@ -70,7 +70,7 @@
     <div class="web-big-padding-section">
         <div class="pt-10">
             <div class="web-big-padding-section-level-2">
-                <div class="container wrapper max-w-[42.5rem]" style="--container-size:42.5rem">
+                <div class="wrapper container max-w-[42.5rem]" style="--container-size:42.5rem">
                     <article class="web-main-article">
                         <header class="web-main-article-header">
                             <a

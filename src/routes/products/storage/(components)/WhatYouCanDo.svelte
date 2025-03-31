@@ -49,7 +49,7 @@ const files = await storage.deleteFiles('[BUCKET_ID]');`
     ];
 </script>
 
-<div class="web-u-gap-20 u-min-width-0 u-max-width-100-percent max-w-1/2 flex flex-col">
+<div class="web-u-gap-20 u-min-width-0 u-max-width-100-percent flex max-w-1/2 flex-col">
     <Tabs>
         {#each tabs as tab}
             <TabsItem id={tab.label.toLowerCase()} title={tab.label}>

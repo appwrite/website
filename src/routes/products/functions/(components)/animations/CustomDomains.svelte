@@ -24,7 +24,7 @@
                 >
                     <div class="flex items-center gap-3">
                         <span class="font-aeonik-pro text-[18px] text-white">Function</span>
-                        <span class="bg-greyscale-700/60 rounded-full py-1 px-2 font-mono text-xs"
+                        <span class="bg-greyscale-700/60 rounded-full px-2 py-1 font-mono text-xs"
                             >637a40ba7</span
                         >
                     </div>
@@ -43,7 +43,7 @@
                 <div class="bg-greyscale-850 flex flex-1 flex-col pt-4 pl-4">
                     <div class="bg-greyscale-800 flex flex-1 flex-col rounded-tl-2xl">
                         <div
-                            class="border-y-greyscale-600/40 flex justify-between gap-8 border-b py-4 px-6"
+                            class="border-y-greyscale-600/40 flex justify-between gap-8 border-b px-6 py-4"
                         >
                             {#each ['Name', 'Verification Status'] as heading}
                                 <span class="basis-1/2 font-mono text-[0.5625rem] uppercase"
@@ -54,7 +54,7 @@
                         <div class="divide-greyscale-600/40 flex flex-1 flex-col divide-y">
                             {#each sessionData as data}
                                 <div
-                                    class="-mb-2 flex items-center justify-between py-2 px-6 text-xs"
+                                    class="-mb-2 flex items-center justify-between px-6 py-2 text-xs"
                                 >
                                     <div class="flex h-8 basis-2/3 items-center gap-2 text-left">
                                         <span class="font-sans">{data.domain}</span>

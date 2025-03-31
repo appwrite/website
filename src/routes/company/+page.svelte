@@ -34,7 +34,7 @@
     <div class="web-big-padding-section relative">
         <div class="relative py-10">
             <div class="web-big-padding-section-level-2" style:margin-block="8rem">
-                <section class="container web-u-padding-block-end-0">
+                <section class="web-u-padding-block-end-0 container">
                     <div
                         class="web-hero"
                         style="--hero-max-inline-size:62.125rem; --hero-gap:1.125rem;"
