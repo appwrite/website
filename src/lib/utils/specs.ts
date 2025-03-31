@@ -10,6 +10,7 @@ export type SDKMethod = {
     title: string;
     description: string;
     demo: string;
+    group: string;
     parameters: Array<{
         name: string;
         description: string;
@@ -330,7 +331,7 @@ export async function getService(
         data.methods.push({
             id: operation['x-appwrite'].method,
             group: operation['x-appwrite'].group,
-            demo: demo ?? '',
+            demo: typeof demo === 'string' ? demo : '',
             title: operation.summary ?? '',
             description: operation.description ?? '',
             parameters: parameters ?? [],
