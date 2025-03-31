@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
     import Window from '../(assets)/deploy-window.png';
 </script>
 
@@ -185,7 +185,7 @@
                 </div>
                 <div class="col-span-9 col-start-4 overflow-hidden rounded-xl bg-[#232325] p-2">
                     <ul
-                        class={cn(
+                        class={classNames(
                             'text-greyscale-600 relative px-1 font-mono',
                             'after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:via-transparent after:to-[#232325]'
                         )}
@@ -196,7 +196,7 @@
                             {@const isError = lineNumber === 41}
                             {@const isGood = highlightedNumbers.includes(lineNumber)}
                             <li
-                                class={cn('md:text-x-micro pointer-events-none pl-2 text-[6px]', {
+                                class={classNames(ssNames('md:text-x-micro pointer-events-none pl-2 text-[6px]', {
                                     'rounded bg-[#FF453A]/8 text-white': isError,
                                     'bg-[#7ADF82]/8 text-white': isGood,
                                     'rounded-t': lineNumber === highlightedNumbers[0],

@@ -1,6 +1,6 @@
 <script lang="ts">
     import Input from '$lib/components/ui/input.svelte';
-    import { cn } from '$lib/utils/classnames';
+    import { classNames } from '$lib/utils/classnames';
 
     const options = [
         '123456',
@@ -99,7 +99,7 @@
             {#each options as option}
                 {#if option === '654321'}
                     <div
-                        class={cn(
+                        class={classNames(
                             'from-greyscale-800 to-greyscale-900 relative z-50 flex items-center gap-2 bg-gradient-to-r px-1 font-mono text-white shadow-lg shadow-black/30'
                         )}
                     >
@@ -110,7 +110,7 @@
                         <span class="text-white/50">21</span>
                     </div>
                 {:else}
-                    <span class={cn('font-mono text-white/20 transition-all duration-1000')}
+                    <span class={classNames(ssNames('font-mono text-white/20 transition-all duration-1000')}
                         >{option}</span
                     >{/if}
             {/each}
