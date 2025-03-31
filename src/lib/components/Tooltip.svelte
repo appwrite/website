@@ -10,7 +10,7 @@
         closeOnPointerDown?: boolean;
         disableHoverableContent?: boolean;
         asChild?: Snippet<[any]>;
-        children: Snippet;
+        children?: Snippet;
         tooltip: Snippet;
     }
 
@@ -74,7 +74,7 @@
 
 {@render asChild?.({ trigger: $trigger })}
 
-{#if !asChild}
+{#if !asChild && children}
     <span use:melt={$trigger}>
         {@render children()}
     </span>
