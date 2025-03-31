@@ -1,6 +1,6 @@
+import { error } from '@sveltejs/kit';
 import { OpenAPIV3 } from 'openapi-types';
 import { Platform, type Service } from './references';
-import { error } from '@sveltejs/kit';
 
 export type SDKMethod = {
     'rate-limit': number;
@@ -34,6 +34,7 @@ type SDKMethodModel = {
 type AppwriteOperationObject = OpenAPIV3.OperationObject & {
     'x-appwrite': {
         method: string;
+        group: string;
         weight: number;
         cookies: boolean;
         type: string;
@@ -217,7 +218,7 @@ export async function getApi(version: string, platform: string): Promise<OpenAPI
         isServer ? 'server' : isClient ? 'client' : 'console'
     }.json`;
 
-    return specs[target]();
+    return (await specs[target]()) as OpenAPIV3.Document;
 }
 
 const descriptions = import.meta.glob(
@@ -235,7 +236,7 @@ export async function getDescription(service: string): Promise<string> {
         throw new Error('Missing service description');
     }
 
-    return descriptions[target]();
+    return (await descriptions[target]()) as string;
 }
 
 export async function getService(
@@ -258,7 +259,7 @@ export async function getService(
         platform === Platform.ClientAndroidKotlin || platform === Platform.ServerKotlin;
     const isAndroid = isAndroidJava || isAndroidKotlin;
     const isAndroidServer = platform === Platform.ServerJava || platform === Platform.ServerKotlin;
-    const api = await getApi(version, platform);
+    const api = await getApi('latest', platform);
 
     const data: Awaited<ReturnType<typeof getService>> = {
         service: {
@@ -328,6 +329,7 @@ export async function getService(
 
         data.methods.push({
             id: operation['x-appwrite'].method,
+            group: operation['x-appwrite'].group,
             demo: demo ?? '',
             title: operation.summary ?? '',
             description: operation.description ?? '',

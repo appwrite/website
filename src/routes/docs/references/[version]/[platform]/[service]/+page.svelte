@@ -242,58 +242,68 @@
                     </div>
                 {/if}
             </section>
-            {#each data.methods as method (method.id)}
-                <section class="web-article-content-grid-6-4">
-                    <div class="web-article-content-grid-6-4-column-1 flex flex-col gap-8">
-                        <header class="web-article-content-header">
-                            <Heading id={method.id} level={2} inReferences>{method.title}</Heading>
-                        </header>
-                        <div class="flex flex-col gap-2">
-                            <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-                            {@html parse(method.description)}
+            {#each Object.entries(data.methods.reduce((acc, method) => {
+                    if (!acc[method.group]) {
+                        acc[method.group] = [];
+                    }
+                    acc[method.group].push(method);
+                    return acc;
+                }, {})) as [_group, methods]}
+                {#each methods as method (method.id)}
+                    <section class="web-article-content-grid-6-4">
+                        <div class="web-article-content-grid-6-4-column-1 flex flex-col gap-8">
+                            <header class="web-article-content-header">
+                                <Heading id={method.id} level={2} inReferences
+                                    >{method.title}</Heading
+                                >
+                            </header>
+                            <div class="flex flex-col gap-2">
+                                <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+                                {@html parse(method.description)}
+                            </div>
+                            <Accordion>
+                                {#if method.parameters.length > 0}
+                                    <AccordionItem open={true} title="Request">
+                                        <Request {method} />
+                                    </AccordionItem>
+                                {/if}
+                                <AccordionItem title="Response">
+                                    <Response {method} />
+                                </AccordionItem>
+                                {#if method?.['rate-limit'] > 0 && method?.['rate-key']?.length > 0}
+                                    <AccordionItem title="Rate limits">
+                                        <RateLimits {method} {platformType} />
+                                    </AccordionItem>
+                                {/if}
+                            </Accordion>
                         </div>
-                        <Accordion>
-                            {#if method.parameters.length > 0}
-                                <AccordionItem open={true} title="Request">
-                                    <Request {method} />
-                                </AccordionItem>
-                            {/if}
-                            <AccordionItem title="Response">
-                                <Response {method} />
-                            </AccordionItem>
-                            {#if method?.['rate-limit'] > 0 && method?.['rate-key']?.length > 0}
-                                <AccordionItem title="Rate limits">
-                                    <RateLimits {method} {platformType} />
-                                </AccordionItem>
-                            {/if}
-                        </Accordion>
-                    </div>
-                    <div class="web-article-content-grid-6-4-column-2 flex flex-col gap-8">
-                        <div class="dark contents">
-                            <div
-                                class="sticky"
-                                style="--inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position);"
-                            >
-                                <Fence
-                                    language="text"
-                                    badge="Endpoint"
-                                    content="{method.method.toUpperCase()} {method.url}"
-                                    toCopy={method.url}
-                                    process
-                                    withLineNumbers={false}
-                                />
-                                <div class="mt-6">
+                        <div class="web-article-content-grid-6-4-column-2 flex flex-col gap-8">
+                            <div class="dark contents">
+                                <div
+                                    class="sticky"
+                                    style="--inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position);"
+                                >
                                     <Fence
-                                        language={platform}
-                                        content={method.demo}
+                                        language="text"
+                                        badge="Endpoint"
+                                        content="{method.method.toUpperCase()} {method.url}"
+                                        toCopy={method.url}
                                         process
                                         withLineNumbers={false}
                                     />
+                                    <div class="mt-6">
+                                        <Fence
+                                            language={platform}
+                                            content={method.demo}
+                                            process
+                                            withLineNumbers={false}
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                {/each}
             {/each}
         </div>
         <aside
@@ -315,13 +325,31 @@
                         </button>
                     </div>
                     <ul class="web-references-menu-list">
-                        {#each data.methods as method}
-                            <li class="web-references-menu-item">
-                                <a
-                                    href={`#${method.id}`}
-                                    class="web-references-menu-link text-caption"
-                                    class:is-selected={method.id === selected}>{method.title}</a
-                                >
+                        {#each Object.entries(data.methods.reduce((acc, method) => {
+                                // Group methods by their group attribute
+                                if (!acc[method.group]) {
+                                    acc[method.group] = [];
+                                }
+                                acc[method.group].push(method);
+                                return acc;
+                            }, {})) as [group, methods]}
+                            <li class="web-references-menu-group">
+                                <h6 class="text-micro text-greyscale-500 mb-2 uppercase">
+                                    {group}
+                                </h6>
+                                <ul class="flex flex-col gap-2">
+                                    {#each methods as method}
+                                        <li class="web-references-menu-item">
+                                            <a
+                                                href={`#${method.id}`}
+                                                class="web-references-menu-link text-caption"
+                                                class:is-selected={method.id === selected}
+                                            >
+                                                {method.title}
+                                            </a>
+                                        </li>
+                                    {/each}
+                                </ul>
                             </li>
                         {/each}
                     </ul>
@@ -341,5 +369,12 @@
 <style lang="scss">
     .web-inline-code {
         translate: 0 0.125rem;
+    }
+    .web-references-menu-group {
+        margin-bottom: 1.5rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 </style>
