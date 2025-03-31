@@ -6,7 +6,7 @@
     import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
     import InlineTag from './inline-tag.svelte';
 
-    // TODO: replace _button.scss with Tailwind classes for maintainability
+    // TODO: replace _button.scss with Tailwind classes for long-term maintainability
     const button = cva(['web-button'], {
         variants: {
             variant: {
