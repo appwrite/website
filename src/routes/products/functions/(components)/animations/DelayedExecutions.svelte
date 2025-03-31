@@ -55,7 +55,7 @@
                             >
                                 <button
                                     use:melt={$cell(date, month.value)}
-                                    class={classNames(ssNames(
+                                    class={classNames(
                                         'size-5 rounded-md',
                                         'data-[disabled]:opacity-60',
                                         'data-[today]:bg-greyscale-700 data-[today]:text-white'

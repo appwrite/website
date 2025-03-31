@@ -110,7 +110,7 @@
                         <span class="text-white/50">21</span>
                     </div>
                 {:else}
-                    <span class={classNames(ssNames('font-mono text-white/20 transition-all duration-1000')}
+                    <span class={classNames('font-mono text-white/20 transition-all duration-1000')}
                         >{option}</span
                     >{/if}
             {/each}
