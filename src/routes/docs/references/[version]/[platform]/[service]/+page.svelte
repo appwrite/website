@@ -134,6 +134,29 @@
     $: title = serviceName + API_REFERENCE_TITLE_SUFFIX;
     $: description = shortenedDescription;
     $: ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
+
+    // Add this function to determine the operation type and its order
+    function getOperationOrder(methodTitle: string): number {
+        const title = methodTitle.toLowerCase();
+        if (title.startsWith('create')) return 1;
+        if (title.startsWith('read') || title.startsWith('get') || title.startsWith('list'))
+            return 2;
+        if (title.startsWith('update')) return 3;
+        if (title.startsWith('delete')) return 4;
+        return 5; // Other operations
+    }
+
+    // Add this function to sort methods within each group
+    function sortMethods(methods: any[]) {
+        return methods.sort((a, b) => {
+            const orderA = getOperationOrder(a.title);
+            const orderB = getOperationOrder(b.title);
+            if (orderA === orderB) {
+                return a.title.localeCompare(b.title);
+            }
+            return orderA - orderB;
+        });
+    }
 </script>
 
 <svelte:head>
@@ -249,7 +272,7 @@
                     acc[method.group].push(method);
                     return acc;
                 }, {})) as [_group, methods]}
-                {#each methods as method (method.id)}
+                {#each sortMethods(methods) as method (method.id)}
                     <section class="web-article-content-grid-6-4">
                         <div class="web-article-content-grid-6-4-column-1 flex flex-col gap-8">
                             <header class="web-article-content-header">
@@ -338,7 +361,7 @@
                                     {group}
                                 </h6>
                                 <ul class="flex flex-col gap-2">
-                                    {#each methods as method}
+                                    {#each sortMethods(methods) as method}
                                         <li class="web-references-menu-item">
                                             <a
                                                 href={`#${method.id}`}
