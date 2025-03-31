@@ -143,17 +143,17 @@
                             class="border-accent absolute top-[var(--top)] left-[calc(var(--left)_+_1px)] h-2 w-2 -translate-1/2 rounded-full border bg-white"
                             style:--top={`${stat.top}%`}
                             style:--left="{i * 25}%"
-                        />
+                       ></div>
                     {/each}
                 </div>
             </div>
         </div>
         <div
             class="from-accent/15 absolute inset-0 bg-gradient-to-tr to-transparent [clip-path:polygon(0_100%,_100%_25%,_100%_100%,_0_100%)]"
-        />
+       ></div>
         <div
             class="from-accent absolute inset-0 bg-gradient-to-r to-transparent [clip-path:polygon(0_100%,_100%_25%,_100%_25.1%,_0_100.1%)]"
-        />
+       ></div>
     </div>
 </div>
 

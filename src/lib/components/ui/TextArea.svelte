@@ -25,4 +25,4 @@
         classes
     )}
     {...props}
-/>
+></textarea>

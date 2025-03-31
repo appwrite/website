@@ -10,7 +10,7 @@
         >
             <span class="text-primary text-sub-body font-medium">{title}</span>
             <div class="icon text-primary transition-transform group-[&[open]]:rotate-180">
-                <span class="icon-cheveron-down" aria-hidden="true" />
+                <span class="icon-cheveron-down" aria-hidden="true"></span>
             </div>
         </summary>
         <div class="collapsible-content text-secondary text-sub-body flex flex-col">

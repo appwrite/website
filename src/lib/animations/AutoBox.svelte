@@ -10,7 +10,7 @@
         class="true-body"
         style:width={`${$bodyRect?.width ?? 0}px`}
         style:height={`${$bodyRect?.height ?? 0}px`}
-    />
+   ></div>
     <div class="body" use:rect={bodyRect}>
         <slot />
     </div>

@@ -191,7 +191,7 @@
                         class="web-icon-discord web-u-font-size-40"
                         aria-hidden="true"
                         aria-label="Discord"
-                    />
+                   ></span>
                 </div>
                 <div class="text-title font-aeonik-pro mt-auto">17k+ Discord Members</div>
             </a>
@@ -206,7 +206,7 @@
                         class="web-icon-github web-u-font-size-40"
                         aria-hidden="true"
                         aria-label="GitHub"
-                    />
+                   ></span>
                 </div>
                 <div class="text-title font-aeonik-pro mt-auto">
                     {GITHUB_STARS}+ GitHub Stars
@@ -223,7 +223,7 @@
                         class="web-icon-x web-u-font-size-40"
                         aria-hidden="true"
                         aria-label="Twitter"
-                    />
+                   ></span>
                 </div>
                 <div class="text-title font-aeonik-pro mt-auto">128k+ Twitter Followers</div>
             </a>
@@ -238,7 +238,7 @@
                         class="web-icon-youtube web-u-font-size-40"
                         aria-hidden="true"
                         aria-label="YouTube"
-                    />
+                   ></span>
                 </div>
                 <div class="text-title font-aeonik-pro mt-auto">7k+ Youtube Subscribers</div>
             </a>
@@ -253,7 +253,7 @@
                         class="web-icon-github web-u-font-size-40"
                         aria-hidden="true"
                         aria-label="GitHub"
-                    />
+                   ></span>
                 </div>
                 <div class="text-title font-aeonik-pro mt-auto">21k+ Code Commits</div>
             </a>

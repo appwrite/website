@@ -34,7 +34,7 @@
         'gridLine horizontal relative mt-8 grid h-full min-h-[50vh] w-full place-items-center md:mt-32 md:grid-cols-[10%_1fr_10%] lg:grid-cols-[20%_1fr_20%] xl:grid-cols-3'
     )}
 >
-    <div class="pattern relative hidden h-full w-full md:block" />
+    <div class="pattern relative hidden h-full w-full md:block"></div>
     <div
         class="gridLine vertical from-accent/5 relative flex h-full w-full flex-1 basis-[calc(100vw_/_3)] flex-col items-center justify-center gap-8 to-transparent px-8 py-10 text-center md:bg-gradient-to-t"
     >
@@ -51,12 +51,12 @@
                 class="web-button is-secondary !w-full !whitespace-normal md:!w-fit"
                 href="https://github.com/education"
             >
-                <span class="web-icon-github !text-white" />
+                <span class="web-icon-github !text-white"></span>
                 GitHub Education</a
             >
         </div>
     </div>
-    <div class="pattern relative hidden h-full w-full md:block" />
+    <div class="pattern relative hidden h-full w-full md:block"></div>
 </section>
 
 <div

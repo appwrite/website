@@ -77,7 +77,7 @@
                                 class="web-link web-u-color-text-secondary items-baseline"
                                 href="/changelog"
                             >
-                                <span class="web-icon-chevron-left" aria-hidden="true" />
+                                <span class="web-icon-chevron-left" aria-hidden="true"></span>
                                 <span>Back to Changelog</span>
                             </a>
                             <ul class="web-metadata text-caption">
@@ -111,7 +111,7 @@
                                                         <span
                                                             class={sharingOption.icon}
                                                             aria-hidden="true"
-                                                        />
+                                                       ></span>
                                                     </a>
                                                 {:else}
                                                     <button
@@ -122,7 +122,7 @@
                                                         <span
                                                             class={sharingOption.icon}
                                                             aria-hidden="true"
-                                                        />
+                                                       ></span>
                                                     </button>
                                                 {/if}
 

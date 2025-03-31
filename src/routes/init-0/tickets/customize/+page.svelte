@@ -79,7 +79,7 @@
         {#if customizing}
             <div style:margin-block-start="0.625rem">
                 <button class="web-link is-secondary u-cross-center" on:click={goBack}>
-                    <span class="web-icon-chevron-left" aria-hidden="true" />
+                    <span class="web-icon-chevron-left" aria-hidden="true"></span>
 
                     <span>Back</span>
                 </button>
@@ -118,7 +118,7 @@
 
                     <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
                         <button class="web-button is-full-width is-secondary" on:click={copy}>
-                            <div class="web-icon-{$copied ? 'check' : 'copy'} text-primary" />
+                            <div class="web-icon-{$copied ? 'check' : 'copy'} text-primary"></div>
                             <span class="text">Copy ticket URL</span>
                         </button>
                         <a
@@ -126,7 +126,7 @@
                             href="https://twitter.com/intent/tweet?text={twitterText}"
                             target="_blank"
                         >
-                            <div class="web-icon-x text-primary" />
+                            <div class="web-icon-x text-primary"></div>
                             <span class="text">Share your ticket</span>
                         </a>
                     </div>
@@ -158,7 +158,7 @@
             <button on:click={() => (drawerOpen = !drawerOpen)}>
                 <div class="inner">
                     <span class="text-label text-primary">Ticket Editor</span>
-                    <span class="web-icon-chevron-down" />
+                    <span class="web-icon-chevron-down"></span>
                 </div>
             </button>
             {#if drawerOpen}

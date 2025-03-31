@@ -42,7 +42,7 @@
         >
             <div class="flex gap-0.5 py-2 pl-1">
                 {#each Array.from({ length: 3 }) as _}
-                    <div class="size-1 rounded-full bg-white" />
+                    <div class="size-1 rounded-full bg-white"></div>
                 {/each}
             </div>
             <div class="bg-greyscale-850 rounded-md p-4">

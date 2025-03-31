@@ -100,7 +100,7 @@
             }}
             disabled={!browser}
         >
-            <div class="web-icon-github text-primary" />
+            <div class="web-icon-github text-primary"></div>
             <span class="text">(DEBUG) Log-out of GitHub</span>
         </button>
     {/if}
@@ -113,7 +113,7 @@
         class="web-button is-full-width is-secondary u-margin-block-start-24"
         on:click={loginGithub}
     >
-        <div class="web-icon-github text-primary" />
+        <div class="web-icon-github text-primary"></div>
         <span class="text">Log in to GitHub account</span>
     </button>
 {/if}
@@ -138,7 +138,7 @@
         href={getAppwriteDashboardUrl(`/login?forceRedirect=${$page.url.origin}/init-0/tickets`)}
         class="web-button is-full-width is-secondary u-margin-block-start-24"
     >
-        <div class="web-icon-appwrite text-primary" />
+        <div class="web-icon-appwrite text-primary"></div>
         <span class="text">Log in to Appwrite account</span>
     </a>
 {/if}

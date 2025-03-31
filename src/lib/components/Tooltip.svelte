@@ -64,7 +64,7 @@
 
 {#if $open && !disabled}
     <div use:melt={$content} class="web-tooltip text-sub-body" transition:fly={flyParams}>
-        <div use:melt={$arrow} />
+        <div use:melt={$arrow}></div>
         <slot name="tooltip" />
     </div>
 {/if}

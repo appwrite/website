@@ -39,16 +39,16 @@
                 > has started
             </span>
             <span class="web-u-color-text-secondary">The start of something new</span>
-            <div class="shadow" />
+            <div class="shadow"></div>
         </div>
         <a href="/init" rel="noopener noreferrer" class="action">
             <span class="text-caption font-medium">Join now</span>
-            <span class="web-icon-arrow-right" aria-hidden="true" />
-            <div class="shadow" />
+            <span class="web-icon-arrow-right" aria-hidden="true"></span>
+            <div class="shadow"></div>
         </a>
     </div>
-    <div class="shine" />
-    <div class="border" />
+    <div class="shine"></div>
+    <div class="border"></div>
     <div class="lines">
         {#if mounted}
             {#each Array.from({ length: groups.length }) as _, i}
@@ -57,7 +57,7 @@
                         <div
                             class="line"
                             style={`--width:${getRandomWidth(index)}px;--initial-delay:${randomDelay()}ms;left:${getRandomXValue()}px;`}
-                        />
+                       ></div>
                     {/each}
                 </div>
             {/each}

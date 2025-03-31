@@ -160,8 +160,8 @@
     on:click={handleExit}
 >
     <div class="web-input-text-search-wrapper web-u-margin-inline-20 w-full max-w-[680px]">
-        <span class="web-icon-search z-[5]" aria-hidden="true" style="inset-block-start:0.9rem" />
-        <div id="searchbox" />
+        <span class="web-icon-search z-[5]" aria-hidden="true" style="inset-block-start:0.9rem"></span>
+        <div id="searchbox"></div>
 
         <input
             class="web-input-button bg-greyscale-800/75! relative z-1 !rounded-b-none !pl-10"

@@ -53,7 +53,7 @@
                         <span class="text">Get my ticket</span>
                     </a>
                     <button class="web-button is-secondary" on:click={copy}>
-                        <span class="web-icon-{$copied ? 'check' : 'copy'} text-primary" />
+                        <span class="web-icon-{$copied ? 'check' : 'copy'} text-primary"></span>
 
                         <span class="text">Copy ticket URL</span>
                     </button>

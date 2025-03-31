@@ -18,13 +18,13 @@
                 <button
                     class="text-micro flex flex-1 items-center justify-center gap-1 rounded-md border border-[#E2E8F0] py-1 font-medium text-[#0F172A]"
                 >
-                    <span class="web-icon-google !text-sm" />
+                    <span class="web-icon-google !text-sm"></span>
                     Google</button
                 >
                 <button
                     class="text-micro flex flex-1 items-center justify-center gap-1 rounded-md border border-[#E2E8F0] py-1 font-medium text-[#0F172A]"
                 >
-                    <span class="web-icon-github !text-sm" />
+                    <span class="web-icon-github !text-sm"></span>
                     GitHub</button
                 >
             </div>

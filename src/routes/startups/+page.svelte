@@ -308,7 +308,7 @@
                                             class="web-card is-white group flex flex-col gap-5"
                                         >
                                             <div class="border-card">
-                                                <div class="glow" />
+                                                <div class="glow"></div>
                                             </div>
                                             <p class="aw-sub-body-500">
                                                 The integrated user authentication and the ease of
@@ -336,7 +336,7 @@
                                                 class="text-sub-body text-primary flex items-center gap-1"
                                                 >Read customer story <span
                                                     class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
-                                                /></span
+                                               ></span></span
                                             >
                                         </a>
                                     </div>
@@ -381,7 +381,7 @@
                                             class="web-card group is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
                                         >
                                             <div class="border-card">
-                                                <div class="glow" />
+                                                <div class="glow"></div>
                                             </div>
                                             <p class="aw-sub-body-500">{ryanOconner.text}</p>
                                             <div class="web-user-box">
@@ -405,7 +405,7 @@
                                                 class="text-sub-body text-primary flex items-center gap-1"
                                                 >Read customer story <span
                                                     class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
-                                                /></span
+                                               ></span></span
                                             >
                                         </a>
                                     </div>
@@ -507,7 +507,7 @@
                                             class="web-card group is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
                                         >
                                             <div class="border-card">
-                                                <div class="glow" />
+                                                <div class="glow"></div>
                                             </div>
                                             <p class="aw-sub-body-500">{mariusBolik.text}</p>
                                             <div class="web-user-box">
@@ -531,7 +531,7 @@
                                                 class="text-sub-body text-primary flex items-center gap-1"
                                                 >Read customer story <span
                                                     class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
-                                                /></span
+                                               ></span></span
                                             >
                                         </a>
                                     </div>
@@ -644,7 +644,7 @@
                                         </section>
                                         <div
                                             class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
-                                        />
+                                       ></div>
                                     </div>
                                 </div>
                                 {#if submitted}

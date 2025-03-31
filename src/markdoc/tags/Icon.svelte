@@ -10,4 +10,4 @@
     };
 </script>
 
-<span class="icon-{icon}" style:font-size={sizes[size]} />
+<span class="icon-{icon}" style:font-size={sizes[size]}></span>

@@ -41,7 +41,7 @@
                 class="web-icon-button is-more-content web-u-pointer-events-none flex items-center"
                 aria-label="Replies"
             >
-                <span class="web-icon-message web-u-font-size-16" aria-hidden="true" />
+                <span class="web-icon-message web-u-font-size-16" aria-hidden="true"></span>
                 <span class="text-caption font-sans">{thread.message_count}</span>
             </div>
         </div>

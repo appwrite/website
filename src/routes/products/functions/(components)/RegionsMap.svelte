@@ -260,7 +260,7 @@
                 </g>
             {/each}
         </svg>
-        <div class="overlay absolute inset-0 right-0 hidden [clip-path:url(#map)]" />
+        <div class="overlay absolute inset-0 right-0 hidden [clip-path:url(#map)]"></div>
     </div>
 </div>
 

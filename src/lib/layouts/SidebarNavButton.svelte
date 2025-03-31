@@ -12,7 +12,7 @@
     target={groupItem.openInNewTab ? '_blank' : '_self'}
 >
     {#if groupItem.icon}
-        <span class="icon {groupItem.icon}" aria-hidden="true" />
+        <span class="icon {groupItem.icon}" aria-hidden="true"></span>
     {/if}
     <span class="text-caption flex gap-2">
         <span>{groupItem.label}</span>
@@ -22,11 +22,11 @@
         {/if}
 
         {#if groupItem.openInNewTab}
-            <span class="icon icon-external-link icon-secondary" aria-hidden="true" />
+            <span class="icon icon-external-link icon-secondary" aria-hidden="true"></span>
         {/if}
     </span>
     {#if groupItem.isParent}
-        <span class="icon-cheveron-right ml-auto" aria-hidden="true" />
+        <span class="icon-cheveron-right ml-auto" aria-hidden="true"></span>
     {/if}
 </a>
 

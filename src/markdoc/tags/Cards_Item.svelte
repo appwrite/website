@@ -12,7 +12,7 @@
     <a {href} class="web-card is-normal" style:margin-block-end="0">
         <header class="flex items-center gap-1">
             {#if icon}
-                <span class="{icon} web-u-font-size-24" aria-hidden="true" />
+                <span class="{icon} web-u-font-size-24" aria-hidden="true"></span>
             {/if}
             {#if image}
                 <img src={image} alt={title} />

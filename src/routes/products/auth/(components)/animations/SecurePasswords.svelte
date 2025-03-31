@@ -34,7 +34,7 @@
                 <span
                     class="text-secondary flex items-center gap-0.5 rounded-full bg-white/[0.08] px-2 py-0.5 pl-1 text-xs"
                 >
-                    <span class="web-icon-check text-sm duration-500" />
+                    <span class="web-icon-check text-sm duration-500"></span>
                     {condition}</span
                 >
             {/each}

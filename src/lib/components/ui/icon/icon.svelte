@@ -13,4 +13,4 @@
     export let icon: $$Props['icon'] = 'arrow-right';
 </script>
 
-<span class={classNames(`web-icon-${icon}`, className)} {...$$restProps} />
+<span class={classNames(`web-icon-${icon}`, className)} {...$$restProps}></span>

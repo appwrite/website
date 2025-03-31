@@ -16,7 +16,7 @@
             href="/discord"
             class="web-button is-secondary text-accent mt-10 !w-full py-1 !whitespace-normal md:!w-fit"
         >
-            <span class="web-icon-discord" />
+            <span class="web-icon-discord"></span>
             Join our Discord</a
         >
     </div>

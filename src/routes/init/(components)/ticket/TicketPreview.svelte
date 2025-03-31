@@ -4,7 +4,7 @@
 
 <div class="ticket-preview" style:opacity={browser ? '1' : '0.5'}>
     <slot />
-    <div class="shine" />
+    <div class="shine"></div>
 </div>
 
 <style lang="scss">

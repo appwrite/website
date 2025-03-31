@@ -41,7 +41,7 @@
         <div class="abs">
             <Tooltip closeOnPointerDown>
                 <button class="web-button is-secondary cursor-pointer" use:melt={$trigger}>
-                    <span class="icon-arrow-expand" aria-hidden="true" />
+                    <span class="icon-arrow-expand" aria-hidden="true"></span>
                 </button>
                 <svelte:fragment slot="tooltip">Expand</svelte:fragment>
             </Tooltip>
@@ -50,7 +50,7 @@
 
     {#if $open}
         <div use:melt={$portalled}>
-            <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 350 }} />
+            <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 350 }}></div>
 
             <img
                 class="web-media content"

@@ -58,7 +58,7 @@
                         target="_blank"
                     >
                         {#if item.cta.icon}
-                            <span class="web-icon-{item.cta.icon}" />
+                            <span class="web-icon-{item.cta.icon}"></span>
                         {/if}
                         {item.cta.label}</a
                     >

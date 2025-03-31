@@ -18,7 +18,7 @@
 
 <div class="melt-switch">
     <button use:melt={$root}>
-        <span class="thumb" />
+        <span class="thumb"></span>
     </button>
 </div>
 

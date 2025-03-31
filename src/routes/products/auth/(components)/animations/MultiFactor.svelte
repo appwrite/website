@@ -16,14 +16,14 @@
             <div
                 class="text-primary bg-greyscale-850 border-primary pointer-events-none relative flex size-10 items-center justify-center space-x-4 rounded-lg border text-center text-lg shadow-lg shadow-black/5 transition-all duration-500 outline-none"
             >
-                <span class="h-[20px] w-px bg-white" />
+                <span class="h-[20px] w-px bg-white"></span>
             </div>
             <div
                 class="text-primary bg-greyscale-850 border-primary pointer-events-none relative flex size-10 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-lg shadow-lg shadow-black/5 transition-all duration-500 outline-none"
-            />
+           ></div>
             <div
                 class="text-primary bg-greyscale-850 border-primary pointer-events-none relative flex size-10 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-lg shadow-lg shadow-black/5 transition-all duration-500 outline-none"
-            />
+           ></div>
         </div>
     </div>
     <div class="text-sub-body p-3 font-medium">

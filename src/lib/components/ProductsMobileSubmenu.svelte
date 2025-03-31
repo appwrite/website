@@ -23,7 +23,7 @@
                 class={classNames('web-icon-chevron-down transition-transform', {
                     'rotate-180': $open
                 })}
-            /></button
+           ></span></button
         >
     </div>
 
@@ -81,7 +81,7 @@
                                 href={sublink.href}
                                 class="text-caption text-primary flex items-center gap-2"
                             >
-                                {sublink.label} <span class="web-icon-chevron-right" />
+                                {sublink.label} <span class="web-icon-chevron-right"></span>
                             </a>
                         {/each}
                     </div>

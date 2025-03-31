@@ -114,7 +114,7 @@
                         >{option}</span
                     >{/if}
             {/each}
-            <div class="mask absolute inset-0 z-0 backdrop-blur-md" />
+            <div class="mask absolute inset-0 z-0 backdrop-blur-md"></div>
         </div>
 
         <div class="gradient absolute inset-0 z-10 flex items-center justify-center">

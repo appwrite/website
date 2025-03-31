@@ -60,7 +60,7 @@
             </p>
         </div>
     </div>
-    <div class="img-overlay" />
+    <div class="img-overlay"></div>
 </div>
 
 <style lang="scss">

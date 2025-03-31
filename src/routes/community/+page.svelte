@@ -183,7 +183,7 @@
                                     rel="noopener noreferrer"
                                     class="web-button is-secondary is-full-width-mobile"
                                 >
-                                    <span aria-hidden="true" class="web-icon-star" />
+                                    <span aria-hidden="true" class="web-icon-star"></span>
                                     <span>Star on GitHub</span>
                                     <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
                                 </a>
@@ -207,8 +207,8 @@
 
         <div class="relative py-10">
             <div class="absolute-container">
-                <div class="green-gradient" />
-                <div class="pink-gradient" />
+                <div class="green-gradient"></div>
+                <div class="pink-gradient"></div>
                 <FloatingHeads
                     images={[
                         '/images/community/avatars/1.png',
@@ -283,7 +283,7 @@
                                     rel="noopener noreferrer"
                                     class="web-button is-secondary mt-8"
                                 >
-                                    <span class="web-icon-github" aria-hidden="true" />
+                                    <span class="web-icon-github" aria-hidden="true"></span>
                                     <span class="">View all Open Issues</span>
                                 </a>
                             </div>
@@ -500,7 +500,7 @@
                                             class="icon-discord web-u-font-size-40"
                                             aria-hidden="true"
                                             aria-label="Discord"
-                                        />
+                                       ></span>
                                     </div>
                                     <div class="text-title font-aeonik-pro mt-auto">
                                         17K+ members
@@ -520,7 +520,7 @@
                                             class="web-icon-x web-u-font-size-40"
                                             aria-hidden="true"
                                             aria-label="X"
-                                        />
+                                       ></span>
                                     </div>
                                     <div class="text-title font-aeonik-pro mt-auto">
                                         128K+ followers
@@ -540,7 +540,7 @@
                                             class="icon-github web-u-font-size-40"
                                             aria-hidden="true"
                                             aria-label="GitHub"
-                                        />
+                                       ></span>
                                     </div>
                                     <div class="text-title font-aeonik-pro mt-auto">
                                         {GITHUB_STARS}+ stargazers
@@ -560,7 +560,7 @@
                                             class="icon-youtube web-u-font-size-40"
                                             aria-hidden="true"
                                             aria-label="Youtube"
-                                        />
+                                       ></span>
                                     </div>
                                     <div class="text-title font-aeonik-pro mt-auto">
                                         4K+ subscribers

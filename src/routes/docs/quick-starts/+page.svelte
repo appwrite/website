@@ -202,7 +202,7 @@
                     <h1 class="text-title font-aeonik-pro">Quick start</h1>
                 </div>
             </div>
-            <div class="web-article-header-end" />
+            <div class="web-article-header-end"></div>
         </header>
         <div class="web-article-content web-u-gap-80">
             {#each quickStarts as category}
@@ -219,7 +219,7 @@
                                         <span
                                             class="{quickStart.icon} web-u-font-size-24"
                                             aria-hidden="true"
-                                        />
+                                       ></span>
                                         <h4 class="text-sub-body text-primary font-medium">
                                             {quickStart.title}
                                         </h4>

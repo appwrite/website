@@ -53,7 +53,7 @@
                     <ul>
                         {#each data.entries as entry}
                             <li>
-                                <div class="web-dot" />
+                                <div class="web-dot"></div>
                                 <ChangelogEntry {entry}>
                                     <svelte:component this={entry.component} />
                                 </ChangelogEntry>

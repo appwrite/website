@@ -136,7 +136,7 @@
                             placeholder="Your message..."
                             aria-label="Message"
                             bind:value={message}
-                        />
+                       ></textarea>
                     </div>
                 </div>
 
@@ -180,7 +180,7 @@
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <span class={social.icon} aria-hidden="true" />
+                                <span class={social.icon} aria-hidden="true"></span>
                             </a>
                         </li>
                     {/each}

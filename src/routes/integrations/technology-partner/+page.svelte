@@ -145,7 +145,7 @@
                                                         <span
                                                             class={social.icon}
                                                             aria-hidden="true"
-                                                        />
+                                                       ></span>
                                                     </a>
                                                 </li>
                                             {/each}
@@ -153,7 +153,7 @@
                                     </section>
                                     <div
                                         class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
-                                    />
+                                   ></div>
                                 </div>
                             </div>
                             {#if !submitted}

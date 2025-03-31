@@ -95,7 +95,7 @@
                 {#each days as day, i}
                     {@const date = `DAY ${i} - ${toReleaseDate(day.release)}`}
                     <Day day={date} release={day.release}>
-                        <div id="day-{i}" style:scroll-margin="100px" />
+                        <div id="day-{i}" style:scroll-margin="100px"></div>
                         {#if i === 0}
                             <Day0 release={day.release} />
                         {:else if i === 1}
@@ -108,7 +108,7 @@
                             <Day4 release={day.release} />
                         {:else}
                             <h2 class="text-micro text-primary uppercase">
-                                <div class="web-dot" />
+                                <div class="web-dot"></div>
                                 {date}
                                 <span class="web-u-color-text-accent">_</span>
                             </h2>

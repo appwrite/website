@@ -22,7 +22,7 @@
 <div class="wrapper">
     <button use:melt={$root} class="anim-checkbox">
         {#if $isChecked}
-            <span class="web-icon-check" />
+            <span class="web-icon-check"></span>
         {/if}
     </button>
 </div>

@@ -94,30 +94,30 @@
             <div class="rows">
                 <div class="item">
                     <div class="item is-blue">
-                        <div class="rectangle-wrapper"><div class="rectangle" /></div>
-                        <div class="div" />
+                        <div class="rectangle-wrapper"><div class="rectangle"></div></div>
+                        <div class="div"></div>
                     </div>
-                    <div class="rectangle-wrapper"><div class="rectangle-2" /></div>
-                    <div class="div" />
+                    <div class="rectangle-wrapper"><div class="rectangle-2"></div></div>
+                    <div class="div"></div>
                 </div>
                 <div class="item">
-                    <div class="rectangle-wrapper"><div class="rectangle-2" /></div>
-                    <div class="div" />
+                    <div class="rectangle-wrapper"><div class="rectangle-2"></div></div>
+                    <div class="div"></div>
                 </div>
                 <div class="item">
-                    <div class="rectangle-wrapper"><div class="rectangle-2" /></div>
-                    <div class="div" />
+                    <div class="rectangle-wrapper"><div class="rectangle-2"></div></div>
+                    <div class="div"></div>
                 </div>
                 <div class="item">
-                    <div class="rectangle-wrapper"><div class="rectangle-2" /></div>
-                    <div class="div" />
+                    <div class="rectangle-wrapper"><div class="rectangle-2"></div></div>
+                    <div class="div"></div>
                 </div>
             </div>
         </div>
         <div class="circles">
-            <div class="circle" />
-            <div class="circle" />
-            <div class="circle" />
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
         </div>
     </div>
     <div class="icon-token bun">

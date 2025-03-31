@@ -19,7 +19,7 @@
 </script>
 
 <a class={classes} data-in-changelog={inChangelog ? '' : undefined} {href} {target} {rel}
-    ><slot /><span class="icon-cheveron-right" style:font-size="16px" /></a
+    ><slot /><span class="icon-cheveron-right" style:font-size="16px"></span></a
 >
 
 <style>

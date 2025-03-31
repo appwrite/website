@@ -39,7 +39,7 @@
         <div class="inner">
             <div class="header">
                 <h3 class="text-sub-body font-medium">Push notification</h3>
-                <div class="web-icon-close" />
+                <div class="web-icon-close"></div>
             </div>
             <div class="griddy">
                 <div class="sidebar">
@@ -70,20 +70,20 @@
                         id="message"
                         name="message"
                         bind:value={message}
-                    />
+                   ></textarea>
                 </div>
             </div>
         </div>
         <div class="phone">
-            <div class="notch" />
+            <div class="notch"></div>
             <span class="date">Sunday, October 1</span>
             <span class="time">9:41</span>
         </div>
-        <div class="overlay" />
+        <div class="overlay"></div>
 
         <div class="notification">
             <div class="header">
-                <div class="icon-bell" />
+                <div class="icon-bell"></div>
                 <span>APPWRITE</span>
                 <span>now</span>
             </div>

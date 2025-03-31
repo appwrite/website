@@ -140,7 +140,7 @@
                                 autocomplete="off"
                                 on:input={handleQuery}
                             >
-                                <span class="web-icon-search" aria-hidden="true" slot="icon" />
+                                <span class="web-icon-search" aria-hidden="true" slot="icon"></span>
                             </Input>
                         </section>
                         <section class="flex flex-col">
@@ -199,7 +199,7 @@
                                     <span
                                         class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
                                         aria-hidden="true"
-                                    />
+                                   ></span>
                                 </div>
 
                                 <ul class="hidden flex-col gap-4 sm:flex" class:disabled={hasQuery}>
@@ -259,7 +259,7 @@
                                                             <span
                                                                 class="icon-arrow-right ml-auto"
                                                                 aria-hidden="true"
-                                                            />
+                                                           ></span>
                                                         </div>
 
                                                         <h4 class="text-primary">
@@ -376,7 +376,7 @@
                                                                         <span
                                                                             class="icon-arrow-right ml-auto"
                                                                             aria-hidden="true"
-                                                                        />
+                                                                       ></span>
                                                                     </div>
 
                                                                     <h4 class="text-primary">

@@ -149,7 +149,7 @@
                                 />
                                 <span
                                     class="web-icon-check pointer-events-none absolute top-0 left-0 mx-auto block scale-0 !text-[16px] leading-none text-white opacity-0 transition-all duration-100 peer-checked:scale-100 peer-checked:opacity-100 md:!text-[20px]"
-                                />
+                               ></span>
                             </div>
                         </td>
                     {/each}
