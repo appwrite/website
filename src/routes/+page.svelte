@@ -1,11 +1,17 @@
 <script lang="ts">
+    import { trackEvent } from '$lib/actions/analytics';
     import OpenSource from '$lib/animations/OpenSource.svelte';
     import Products from '$lib/animations/Products/Products.svelte';
     import ProductsMobile from '$lib/animations/Products/ProductsMobile.svelte';
+    import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
     import PreFooter from '$lib/components/PreFooter.svelte';
     import Technologies from '$lib/components/Technologies.svelte';
+    import Badge from '$lib/components/ui/badge.svelte';
+    import GradientText from '$lib/components/ui/gradient-text.svelte';
+    import Hero from '$lib/components/ui/hero.svelte';
     import { Main } from '$lib/layouts';
     import { isMobileNavOpen } from '$lib/layouts/Main.svelte';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import {
         DEFAULT_DESCRIPTION,
         DEFAULT_HOST,
@@ -17,12 +23,6 @@
     import MainFooter from '../lib/components/MainFooter.svelte';
     import DeveloperCard from './DeveloperCard.svelte';
     import CoverImage from './dashboard.webp';
-    import Hero from '$lib/components/ui/Hero.svelte';
-    import GradientText from '$lib/components/ui/GradientText.svelte';
-    import Badge from '$lib/components/ui/Badge.svelte';
-    import { trackEvent } from '$lib/actions/analytics';
-    import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
-    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -182,7 +182,7 @@
             </div>
             <div class="mb-12 lg:my-[7.5rem]">
                 <section
-                    class="web-u-padding-block-0 container relative"
+                    class="web-u-padding-block-0 relative container"
                     style="--container-size:78.75rem"
                 >
                     <div class="absolute top-1/2 left-1/2 z-10 -translate-1/2">
@@ -471,9 +471,9 @@
                 />
             </div>
             <div class="py-[7.5rem]">
-                <div class="container relative">
+                <div class="relative container">
                     <section class="web-hero is-align-start">
-                        <span class="web-badges text-micro uppercase !text-white">SDKs_</span>
+                        <span class="web-badges text-micro !text-white uppercase">SDKs_</span>
                         <h2 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                             Code the way you want
                         </h2>
@@ -507,10 +507,10 @@
                         />
                     </div>
                 </div>
-                <div class="container relative">
+                <div class="relative container">
                     <div class="grid md:grid-cols-2">
                         <section class="web-hero is-align-start">
-                            <span class="web-badges text-micro uppercase !text-white">Scale_</span>
+                            <span class="web-badges text-micro !text-white uppercase">Scale_</span>
                             <h2 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                                 We scale for you
                             </h2>
