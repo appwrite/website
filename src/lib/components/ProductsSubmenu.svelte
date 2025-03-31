@@ -172,7 +172,10 @@
                         >
                     </header>
 
-                    <a href="/blog/post/customer-story-storealert" class="my-4 flex flex-1 gap-3 outline-none">
+                    <a
+                        href="/blog/post/customer-story-storealert"
+                        class="my-4 flex flex-1 gap-3 outline-none"
+                    >
                         <img
                             src="/images/blog/customer-story-storealert/cover.png"
                             alt="Case study cover"
