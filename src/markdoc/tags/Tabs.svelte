@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     import type { Writable } from 'svelte/store';
     export type TabsContext = Writable<{
         content: ReturnType<typeof createTabs>['elements']['content'];
@@ -10,8 +10,14 @@
     import Select from '$lib/components/Select.svelte';
     import { classNames } from '$lib/utils/classnames';
     import { createTabs } from '@melt-ui/svelte';
-    import { setContext } from 'svelte';
+    import { setContext, type Snippet } from 'svelte';
     import { writable } from 'svelte/store';
+
+    interface Props {
+        children: Snippet;
+    }
+
+    const { children }: Props = $props();
 
     const {
         elements: { root, list, content, trigger },
@@ -111,5 +117,5 @@
             {/if}
         </ul>
     </div>
-    <slot />
+    {@render children?.()}
 </div>

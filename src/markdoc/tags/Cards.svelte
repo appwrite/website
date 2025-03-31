@@ -1,6 +1,16 @@
+<script lang="ts">
+    import { type Snippet } from 'svelte';
+
+    interface Props {
+        children: Snippet;
+    }
+
+    const { children }: Props = $props();
+</script>
+
 <div>
     <ul class="web-grid-row-2">
-        <slot />
+        {@render children()}
     </ul>
 </div>
 

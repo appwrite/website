@@ -4,6 +4,7 @@
     import { cva, type VariantProps } from 'cva';
     import type { Action } from 'svelte/action';
     import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
+    import { createBubbler } from 'svelte/legacy';
     import InlineTag from './inline-tag.svelte';
 
     // TODO: replace _button.scss with Tailwind classes for long-term maintainability
@@ -28,13 +29,30 @@
                 | [Action<HTMLButtonElement | HTMLAnchorElement, any>, any];
         } & { element?: AnyMeltElement };
 
-    export let href: $$Props['href'] = undefined;
-    export let variant: $$Props['variant'] = 'primary';
-    export let use: $$Props['use'] = undefined;
-    export let element: AnyMeltElement | undefined = undefined;
-    $: meltElement = element ?? emptyMeltElement;
+    interface Props {
+        href?: $$Props['href'];
+        variant?: $$Props['variant'];
+        use?: $$Props['use'];
+        element?: AnyMeltElement | undefined;
+        icon?: import('svelte').Snippet;
+        children: import('svelte').Snippet;
+        tag?: import('svelte').Snippet;
+        [key: string]: any;
+    }
 
-    const { class: classes, href: _, ...props } = $$restProps;
+    const {
+        href = undefined,
+        variant = 'primary',
+        use = undefined,
+        element = undefined,
+        icon,
+        children,
+        tag,
+        ...rest
+    }: Props = $props();
+    let meltElement = $derived(element ?? emptyMeltElement);
+
+    const { class: classes, href: _ } = rest;
 
     const buttonClasses = classNames(button({ variant }), classes);
 
@@ -53,45 +71,26 @@
 </script>
 
 {#if href}
-    <a
-        {...props}
-        {href}
-        class={buttonClasses}
-        use:melt={$meltElement}
-        use:applyAction
-        on:click
-        on:dblclick
-        on:mousedown
-        on:mouseup
-    >
-        {#if $$slots.icon}
-            <slot name="icon" />
+    <a {...rest} {href} class={buttonClasses} use:melt={$meltElement} use:applyAction>
+        {#if icon}
+            {@render icon()}
         {/if}
-        <slot />
-        {#if $$slots.tag}
+        {@render children()}
+        {#if tag}
             <InlineTag>
-                <slot name="tag" />
+                {@render tag()}
             </InlineTag>
         {/if}
     </a>
 {:else}
-    <button
-        {...props}
-        class={buttonClasses}
-        use:melt={$meltElement}
-        use:applyAction
-        on:click
-        on:dblclick
-        on:mousedown
-        on:mouseup
-    >
-        {#if $$slots.icon}
-            <slot name="icon" />
+    <button {...rest} class={buttonClasses} use:melt={$meltElement} use:applyAction>
+        {#if icon}
+            {@render icon()}
         {/if}
-        <slot />
-        {#if $$slots.tag}
+        {@render children()}
+        {#if tag}
             <InlineTag>
-                <slot name="tag" />
+                {@render tag()}
             </InlineTag>
         {/if}
     </button>

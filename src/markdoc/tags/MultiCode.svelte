@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
     import type { Writable } from 'svelte/store';
 
     export type CodeContext = {
@@ -13,8 +13,14 @@
     import { type Language, multiCodeSelectedLanguage } from '$lib/utils/code';
     import { copy } from '$lib/utils/copy';
     import { Platform, platformMap, preferredPlatform } from '$lib/utils/references';
-    import { getContext, hasContext, onMount, setContext } from 'svelte';
+    import { getContext, hasContext, onMount, setContext, type Snippet } from 'svelte';
     import { get, type Readable, writable } from 'svelte/store';
+
+    interface Props {
+        children: Snippet;
+    }
+
+    const { children }: Props = $props();
 
     setContext<CodeContext>('multi-code', {
         content: writable(''),
@@ -47,7 +53,7 @@
         Copied: 'Copied!'
     };
 
-    let copyText = CopyStatus.Copy;
+    let copyText = $state(CopyStatus.Copy);
 
     async function handleCopy() {
         await copy($content);
@@ -117,20 +123,20 @@
                 <li class="buttons-list-item" style="padding-inline-start: 13px">
                     <Tooltip>
                         <button
-                            on:click={handleCopy}
+                            onclick={handleCopy}
                             class="web-icon-button"
                             aria-label="copy code from code-snippet"
                             ><span class="web-icon-copy" aria-hidden="true"></span></button
                         >
-                        <svelte:fragment slot="tooltip">
+                        {#snippet tooltip()}
                             {copyText}
-                        </svelte:fragment>
+                        {/snippet}
                     </Tooltip>
                 </li>
             </ul>
         </div>
     </header>
     <div class="web-code-snippet-content">
-        <slot />
+        {@render children()}
     </div>
 </section>
