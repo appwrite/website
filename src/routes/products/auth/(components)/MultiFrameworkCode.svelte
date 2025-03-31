@@ -22,11 +22,11 @@
         }
     });
 
-    const CopyStatus  ={
-        Copy = 'Copy',
-        Copied = 'Copied!'
-    }
-    
+    const CopyStatus = {
+        Copy: 'Copy',
+        Copied: 'Copied!'
+    };
+
     let copyText = CopyStatus.Copy;
     async function handleCopy() {
         await copy(content);
