@@ -219,7 +219,7 @@
                                         <span
                                             class="{quickStart.icon} web-u-font-size-24"
                                             aria-hidden="true"
-                                       ></span>
+                                        ></span>
                                         <h4 class="text-sub-body text-primary font-medium">
                                             {quickStart.title}
                                         </h4>

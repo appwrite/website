@@ -500,7 +500,7 @@
                                             class="icon-discord web-u-font-size-40"
                                             aria-hidden="true"
                                             aria-label="Discord"
-                                       ></span>
+                                        ></span>
                                     </div>
                                     <div class="text-title font-aeonik-pro mt-auto">
                                         17K+ members
@@ -520,7 +520,7 @@
                                             class="web-icon-x web-u-font-size-40"
                                             aria-hidden="true"
                                             aria-label="X"
-                                       ></span>
+                                        ></span>
                                     </div>
                                     <div class="text-title font-aeonik-pro mt-auto">
                                         128K+ followers
@@ -540,7 +540,7 @@
                                             class="icon-github web-u-font-size-40"
                                             aria-hidden="true"
                                             aria-label="GitHub"
-                                       ></span>
+                                        ></span>
                                     </div>
                                     <div class="text-title font-aeonik-pro mt-auto">
                                         {GITHUB_STARS}+ stargazers
@@ -560,7 +560,7 @@
                                             class="icon-youtube web-u-font-size-40"
                                             aria-hidden="true"
                                             aria-label="Youtube"
-                                       ></span>
+                                        ></span>
                                     </div>
                                     <div class="text-title font-aeonik-pro mt-auto">
                                         4K+ subscribers

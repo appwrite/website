@@ -136,7 +136,7 @@
                             placeholder="Your message..."
                             aria-label="Message"
                             bind:value={message}
-                       ></textarea>
+                        ></textarea>
                     </div>
                 </div>
 

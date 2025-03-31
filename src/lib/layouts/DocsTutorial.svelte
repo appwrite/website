@@ -136,7 +136,7 @@
                             <span
                                 class="icon-cheveron-left web-u-font-size-24 web-u-color-text-primary"
                                 aria-hidden="true"
-                           ></span>
+                            ></span>
                         </a>
                     {/if}
                     <h1 class="web-title {currentStep === 1 ? 'lg:-ml-5' : ''}">

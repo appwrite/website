@@ -56,7 +56,7 @@
                     {activePlatform}{' '}
                     <div
                         class="animate-caret-blink absolute top-1/2 -right-2 bottom-0 block h-[75%] w-px -translate-y-1/2 bg-[linear-gradient(-146deg,_#FD376F,_#19191D_47%,_#19191D)]"
-                   ></div>
+                    ></div>
                 </div>
             </h2>
             <p class="md:text-description text-body text-secondary font-medium">

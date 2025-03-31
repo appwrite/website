@@ -133,7 +133,7 @@
                     id="message"
                     placeholder="Write your message"
                     bind:value={comment}
-               ></textarea>
+                ></textarea>
                 <label for="message" class="mt-2">
                     <span class="text-primary">Email</span>
                 </label>

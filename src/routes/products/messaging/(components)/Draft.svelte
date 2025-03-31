@@ -70,7 +70,7 @@
                         id="message"
                         name="message"
                         bind:value={message}
-                   ></textarea>
+                    ></textarea>
                 </div>
             </div>
         </div>

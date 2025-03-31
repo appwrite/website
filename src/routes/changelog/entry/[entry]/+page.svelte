@@ -111,7 +111,7 @@
                                                         <span
                                                             class={sharingOption.icon}
                                                             aria-hidden="true"
-                                                       ></span>
+                                                        ></span>
                                                     </a>
                                                 {:else}
                                                     <button
@@ -122,7 +122,7 @@
                                                         <span
                                                             class={sharingOption.icon}
                                                             aria-hidden="true"
-                                                       ></span>
+                                                        ></span>
                                                     </button>
                                                 {/if}
 

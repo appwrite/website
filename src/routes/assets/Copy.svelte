@@ -14,7 +14,8 @@
 </script>
 
 <button class="copy-button cursor-pointer {variant}" on:click={copyToClipboard}>
-    <span class="web-icon-{copied ? 'check' : 'copy'}" aria-label={copied ? 'Copied' : 'Copy'}></span>
+    <span class="web-icon-{copied ? 'check' : 'copy'}" aria-label={copied ? 'Copied' : 'Copy'}
+    ></span>
     <span>Copy</span>
 </button>
 

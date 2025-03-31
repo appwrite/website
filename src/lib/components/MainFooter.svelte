@@ -36,7 +36,7 @@
                 scrolling="no"
                 style:color-scheme="none"
                 style:margin-top="-4px"
-           ></iframe>
+            ></iframe>
 
             <ul class="flex gap-4">
                 <li><a class="web-link" href="/terms">Terms</a></li>

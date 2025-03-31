@@ -84,7 +84,7 @@
                                             <span
                                                 class="{getIcon(tutorial)} web-u-font-size-24"
                                                 aria-hidden="true"
-                                           ></span>
+                                            ></span>
                                             <h3 class="text-sub-body text-primary font-medium">
                                                 {tutorial.framework}
                                             </h3>
@@ -97,7 +97,7 @@
                                             <span
                                                 class="{getIcon(tutorial)} web-u-font-size-24"
                                                 aria-hidden="true"
-                                           ></span>
+                                            ></span>
                                             <h3 class="text-sub-body text-primary font-medium">
                                                 {tutorial.framework}
                                             </h3>

@@ -57,7 +57,7 @@
                         <div
                             class="line"
                             style={`--width:${getRandomWidth(index)}px;--initial-delay:${randomDelay()}ms;left:${getRandomXValue()}px;`}
-                       ></div>
+                        ></div>
                     {/each}
                 </div>
             {/each}

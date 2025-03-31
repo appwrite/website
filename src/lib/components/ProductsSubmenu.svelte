@@ -94,7 +94,7 @@
         class={classNames('web-icon-chevron-down block transition-transform', {
             'rotate-180': $open
         })}
-   ></span>
+    ></span>
 </button>
 
 <div
@@ -169,7 +169,7 @@
                             class="text-primary text-caption flex items-center gap-2"
                             >See more <span
                                 class="web-icon-chevron-right transition-transform group-hover:translate-x-0.5"
-                           ></span></a
+                            ></span></a
                         >
                     </header>
 
@@ -200,7 +200,7 @@
                                 {sublink.label}
                                 <span
                                     class="web-icon-chevron-right transition-transform group-hover:translate-x-0.5"
-                               ></span>
+                                ></span>
                             </a>
                         {/each}
                     </div>
@@ -211,5 +211,5 @@
     <div
         use:melt={$overlay}
         class="data-[state=closed]:animate-fade-out fixed inset-0 bg-black/60"
-   ></div>
+    ></div>
 </div>

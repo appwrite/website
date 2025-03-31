@@ -139,7 +139,7 @@
                             'data-[state=high]:bg-white/30 data-[state=medium]:bg-white/20 data-[state=off]:bg-white/10'
                         )}
                         style:transition-duration={`${transitionDuration}ms`}
-                   ></div>
+                    ></div>
                 {/each}
             </div>
         {:else}

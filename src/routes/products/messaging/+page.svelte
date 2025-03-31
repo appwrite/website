@@ -320,7 +320,8 @@ messaging.create_email(
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/fcm"
                                         >
-                                            <span class="web-icon-firebase" aria-hidden="true"></span>
+                                            <span class="web-icon-firebase" aria-hidden="true"
+                                            ></span>
                                             <span class="text">FCM</span>
                                         </a>
                                     </li>
@@ -353,7 +354,8 @@ messaging.create_email(
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/mailgun"
                                         >
-                                            <span class="web-icon-mailgun" aria-hidden="true"></span>
+                                            <span class="web-icon-mailgun" aria-hidden="true"
+                                            ></span>
                                             <span class="text">Mailgun</span>
                                         </a>
                                     </li>
@@ -362,7 +364,8 @@ messaging.create_email(
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/sendgrid"
                                         >
-                                            <span class="web-icon-sendgrid" aria-hidden="true"></span>
+                                            <span class="web-icon-sendgrid" aria-hidden="true"
+                                            ></span>
                                             <span class="text">SendGrid</span>
                                         </a>
                                     </li>
@@ -532,7 +535,8 @@ messaging.create_email(
                                         height="32"
                                     />
                                     <h4 class="text-body text-primary">Auth</h4>
-                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"></span>
+                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
+                                    ></span>
                                 </div>
                                 <p class="text-sub-body">
                                     Build secure authentication and manage your users.
@@ -557,7 +561,8 @@ messaging.create_email(
                                         height="32"
                                     />
                                     <h4 class="text-body text-primary">Functions</h4>
-                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"></span>
+                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
+                                    ></span>
                                 </div>
                                 <p class="text-sub-body">
                                     Scale big and unlock limitless potential with Appwrite
@@ -583,7 +588,8 @@ messaging.create_email(
                                         height="32"
                                     />
                                     <h4 class="text-body text-primary">Databases</h4>
-                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"></span>
+                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
+                                    ></span>
                                 </div>
                                 <p class="text-sub-body">
                                     Store and query structured data, ensuring scalable storage.
@@ -608,7 +614,8 @@ messaging.create_email(
                                         height="32"
                                     />
                                     <h4 class="text-body text-primary">Storage</h4>
-                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"></span>
+                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
+                                    ></span>
                                 </div>
                                 <p class="text-sub-body">
                                     Manage your files' project, using convenient APIs and utilities.
@@ -633,7 +640,8 @@ messaging.create_email(
                                         height="32"
                                     />
                                     <h4 class="text-body text-primary">Realtime</h4>
-                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"></span>
+                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
+                                    ></span>
                                 </div>
                                 <p class="text-sub-body">
                                     Utilize realtime information from all Appwrite services.

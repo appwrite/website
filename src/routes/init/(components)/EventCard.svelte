@@ -44,7 +44,8 @@
             </li>
             {#if location}
                 <li class="flex items-baseline gap-1">
-                    <span class="web-icon-location web-u-color-text-tertiary" aria-hidden="true"></span>
+                    <span class="web-icon-location web-u-color-text-tertiary" aria-hidden="true"
+                    ></span>
                     <span class="">{location}</span>
                 </li>
             {/if}

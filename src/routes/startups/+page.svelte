@@ -336,7 +336,7 @@
                                                 class="text-sub-body text-primary flex items-center gap-1"
                                                 >Read customer story <span
                                                     class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
-                                               ></span></span
+                                                ></span></span
                                             >
                                         </a>
                                     </div>
@@ -405,7 +405,7 @@
                                                 class="text-sub-body text-primary flex items-center gap-1"
                                                 >Read customer story <span
                                                     class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
-                                               ></span></span
+                                                ></span></span
                                             >
                                         </a>
                                     </div>
@@ -531,7 +531,7 @@
                                                 class="text-sub-body text-primary flex items-center gap-1"
                                                 >Read customer story <span
                                                     class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
-                                               ></span></span
+                                                ></span></span
                                             >
                                         </a>
                                     </div>
@@ -644,7 +644,7 @@
                                         </section>
                                         <div
                                             class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
-                                       ></div>
+                                        ></div>
                                     </div>
                                 </div>
                                 {#if submitted}

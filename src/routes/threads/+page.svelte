@@ -170,7 +170,7 @@
                                 class="web-icon-search z-[5]"
                                 aria-hidden="true"
                                 style="inset-block-start:0.9rem"
-                           ></span>
+                            ></span>
 
                             <input
                                 class="web-input-button relative z-1 !pl-10"

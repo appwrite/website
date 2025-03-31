@@ -136,7 +136,7 @@
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
-                                               ></span>
+                                                ></span>
                                                 <span>SVG</span>
                                             </a>
                                             <a
@@ -147,7 +147,7 @@
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
-                                               ></span>
+                                                ></span>
                                                 <span>PNG</span>
                                             </a>
                                         </div>
@@ -170,7 +170,7 @@
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
-                                               ></span>
+                                                ></span>
                                                 <span>SVG</span>
                                             </a>
                                             <a
@@ -181,7 +181,7 @@
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
-                                               ></span>
+                                                ></span>
                                                 <span>PNG</span>
                                             </a>
                                         </div>
@@ -245,7 +245,7 @@
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
-                                               ></span>
+                                                ></span>
                                                 <span>SVG</span>
                                             </a>
                                             <a
@@ -256,7 +256,7 @@
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
-                                               ></span>
+                                                ></span>
                                                 <span>PNG</span>
                                             </a>
                                         </div>
@@ -279,7 +279,7 @@
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
-                                               ></span>
+                                                ></span>
                                                 <span>SVG</span>
                                             </a>
                                             <a
@@ -290,7 +290,7 @@
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
-                                               ></span>
+                                                ></span>
                                                 <span>PNG</span>
                                             </a>
                                         </div>
@@ -394,7 +394,7 @@
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
-                                               ></span>
+                                                ></span>
                                                 <span>JPG</span>
                                             </a>
                                             <a
@@ -405,7 +405,7 @@
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
-                                               ></span>
+                                                ></span>
                                                 <span>PNG</span>
                                             </a>
                                         </div>
@@ -425,7 +425,7 @@
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
-                                               ></span>
+                                                ></span>
                                                 <span>JPG</span>
                                             </a>
                                             <a
@@ -436,7 +436,7 @@
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
-                                               ></span>
+                                                ></span>
                                                 <span>PNG</span>
                                             </a>
                                         </div>
@@ -456,7 +456,7 @@
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
-                                               ></span>
+                                                ></span>
                                                 <span>JPG</span>
                                             </a>
                                             <a
@@ -467,7 +467,7 @@
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
-                                               ></span>
+                                                ></span>
                                                 <span>PNG</span>
                                             </a>
                                         </div>
@@ -488,7 +488,7 @@
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
-                                               ></span>
+                                                ></span>
                                                 <span>JPG</span>
                                             </a>
                                             <a
@@ -499,7 +499,7 @@
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
-                                               ></span>
+                                                ></span>
                                                 <span>PNG</span>
                                             </a>
                                         </div>
@@ -520,7 +520,7 @@
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
-                                               ></span>
+                                                ></span>
                                                 <span>JPG</span>
                                             </a>
                                             <a
@@ -531,7 +531,7 @@
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
-                                               ></span>
+                                                ></span>
                                                 <span>PNG</span>
                                             </a>
                                         </div>
@@ -551,7 +551,7 @@
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
-                                               ></span>
+                                                ></span>
                                                 <span>JPG</span>
                                             </a>
                                             <a
@@ -562,7 +562,7 @@
                                                 <span
                                                     class="web-icon-download"
                                                     aria-label="download"
-                                               ></span>
+                                                ></span>
                                                 <span>PNG</span>
                                             </a>
                                         </div>

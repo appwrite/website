@@ -23,7 +23,7 @@
                 class={classNames('web-icon-chevron-down transition-transform', {
                     'rotate-180': $open
                 })}
-           ></span></button
+            ></span></button
         >
     </div>
 

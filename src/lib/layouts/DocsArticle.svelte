@@ -56,7 +56,7 @@
                             <span
                                 class="icon-cheveron-left web-u-font-size-24 text-primary web-is-not-mobile"
                                 aria-hidden="true"
-                           ></span>
+                            ></span>
                         </a>
                     {/if}
                     <h1 class="text-title font-aeonik-pro text-primary">{title}</h1>
