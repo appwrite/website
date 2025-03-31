@@ -178,8 +178,8 @@ importers:
         specifier: ^4.0.0
         version: 4.1.5(picomatch@4.0.2)(svelte@5.25.3)(typescript@5.8.2)
       svelte-markdoc-preprocess:
-        specifier: 3.0.0-rc.1
-        version: 3.0.0-rc.1
+        specifier: 3.0.0
+        version: 3.0.0
       svelte-markdown:
         specifier: ^0.4.1
         version: 0.4.1(svelte@5.25.3)
@@ -3320,8 +3320,8 @@ packages:
   loupe@2.3.7:
     resolution: {integrity: sha512-zSMINGVYkdpYSOBmLi0D1Uo7JU9nVdQKrHxC8eYlV+9YKK9WePqAlL7lSlorG/U2Fw1w0hTBmaa/jrQ3UbPHtA==}
 
-  lovely-logs@1.2.2:
-    resolution: {integrity: sha512-dPvYcBok38QvXC+X8/v2BZJDA/iZfCfkRXAwp+s9rvBxY+ZWkMuhNNxukQVIUVMNutIonKpN140Vfv6LCli/wQ==}
+  lovely-logs@2.6.0:
+    resolution: {integrity: sha512-l5Oao2HccZj4eRkaGpIyGsNkcxvhgL4emmYrRAllMVHlZY2Zag+w2tWrp5LqP+Ih92ONIhCTNZk/8zvGH8+row==}
 
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
@@ -4210,8 +4210,8 @@ packages:
       svelte:
         optional: true
 
-  svelte-markdoc-preprocess@3.0.0-rc.1:
-    resolution: {integrity: sha512-d9VyHFNLDtit3L487UOLfzgrKgECJNMUVfalw527/onRkQXbeWQ5NbvlwCidMUDga+kZIntVpvMJqyG5QCxXtQ==}
+  svelte-markdoc-preprocess@3.0.0:
+    resolution: {integrity: sha512-95VPUYL1yQyPgRucsikQy673h5FDH+qqQa8pugPT1/zuMFuvoBRvTRmB0kKeC2TD/mBsQm+is2vU2YwYbVPZoA==}
 
   svelte-markdown@0.4.1:
     resolution: {integrity: sha512-pOlLY6EruKJaWI9my/2bKX8PdTeP5CM0s4VMmwmC2prlOkjAf+AOmTM4wW/l19Y6WZ87YmP8+ZCJCCwBChWjYw==}
@@ -4225,6 +4225,10 @@ packages:
 
   svelte@5.25.3:
     resolution: {integrity: sha512-J9rcZ/xVJonAoESqVGHHZhrNdVbrCfkdB41BP6eiwHMoFShD9it3yZXApVYMHdGfCshBsZCKsajwJeBbS/M1zg==}
+    engines: {node: '>=18'}
+
+  svelte@5.25.5:
+    resolution: {integrity: sha512-ULi9rkVWQJyJYZSpy6SIgSTchWadyWG1QYAUx3JAXL2gXrnhdXtoB20KmXGSNdtNyquq3eYd/gkwAkLcL5PGWw==}
     engines: {node: '>=18'}
 
   svg-pathdata@6.0.3:
@@ -7915,7 +7919,7 @@ snapshots:
     dependencies:
       get-func-name: 2.0.2
 
-  lovely-logs@1.2.2: {}
+  lovely-logs@2.6.0: {}
 
   lru-cache@10.4.3: {}
 
@@ -8781,14 +8785,14 @@ snapshots:
     optionalDependencies:
       svelte: 5.25.3
 
-  svelte-markdoc-preprocess@3.0.0-rc.1:
+  svelte-markdoc-preprocess@3.0.0:
     dependencies:
       '@markdoc/markdoc': 0.5.1
       estree-walker: 3.0.3
       html-escaper: 3.0.3
       js-yaml: 4.1.0
-      lovely-logs: 1.2.2
-      svelte: 5.25.3
+      lovely-logs: 2.6.0
+      svelte: 5.25.5
       typescript: 5.8.2
     transitivePeerDependencies:
       - '@types/react'
@@ -8805,6 +8809,23 @@ snapshots:
       svelte: 5.25.3
 
   svelte@5.25.3:
+    dependencies:
+      '@ampproject/remapping': 2.3.0
+      '@jridgewell/sourcemap-codec': 1.5.0
+      '@sveltejs/acorn-typescript': 1.0.5(acorn@8.14.1)
+      '@types/estree': 1.0.6
+      acorn: 8.14.1
+      aria-query: 5.3.2
+      axobject-query: 4.1.0
+      clsx: 2.1.1
+      esm-env: 1.2.2
+      esrap: 1.4.5
+      is-reference: 3.0.3
+      locate-character: 3.0.0
+      magic-string: 0.30.17
+      zimmerframe: 1.1.2
+
+  svelte@5.25.5:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@jridgewell/sourcemap-codec': 1.5.0
