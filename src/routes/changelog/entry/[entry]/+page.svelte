@@ -1,13 +1,13 @@
 <script lang="ts">
+    import { page } from '$app/stores';
     import { FooterNav, MainFooter, Tooltip } from '$lib/components';
     import PreFooter from '$lib/components/PreFooter.svelte';
+    import { type SocialShareOption, socialSharingOptions } from '$lib/constants';
     import { Main } from '$lib/layouts';
+    import { copy } from '$lib/utils/copy';
     import { formatDate } from '$lib/utils/date';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { CHANGELOG_TITLE_SUFFIX } from '$routes/titles';
-    import { type SocialShareOption, socialSharingOptions } from '$lib/constants';
-    import { page } from '$app/stores';
-    import { copy } from '$lib/utils/copy';
 
     export let data;
 
@@ -21,9 +21,9 @@
 
     const sharingOptions = socialSharingOptions.filter((option) => option.label !== 'YCombinator');
 
-    enum CopyStatus {
-        Copy = 'Copy URL',
-        Copied = 'Copied'
+    const CopyStatus  ={
+        Copy = 'Copy',
+        Copied = 'Copied!'
     }
 
     let copyText = CopyStatus.Copy;

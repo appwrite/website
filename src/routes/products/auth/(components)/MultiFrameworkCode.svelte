@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { platformMap } from '$lib/utils/references';
-    import { writable } from 'svelte/store';
+    import { Select, Tooltip } from '$lib/components';
     import { getCodeHtml, type Language } from '$lib/utils/code';
     import { copy } from '$lib/utils/copy';
-    import { Select, Tooltip } from '$lib/components';
+    import { platformMap } from '$lib/utils/references';
+    import { writable } from 'svelte/store';
 
     export let selected: string = '';
     export let data: { language: string; content: string; platform: string }[] = [];
@@ -22,10 +22,11 @@
         }
     });
 
-    enum CopyStatus {
+    const CopyStatus  ={
         Copy = 'Copy',
         Copied = 'Copied!'
     }
+    
     let copyText = CopyStatus.Copy;
     async function handleCopy() {
         await copy(content);

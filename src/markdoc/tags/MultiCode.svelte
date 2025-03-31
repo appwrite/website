@@ -9,12 +9,12 @@
 </script>
 
 <script lang="ts">
-    import { copy } from '$lib/utils/copy';
-    import { get, type Readable, writable } from 'svelte/store';
     import { Select, Tooltip } from '$lib/components';
-    import { getContext, hasContext, onMount, setContext } from 'svelte';
     import { type Language, multiCodeSelectedLanguage } from '$lib/utils/code';
+    import { copy } from '$lib/utils/copy';
     import { Platform, platformMap, preferredPlatform } from '$lib/utils/references';
+    import { getContext, hasContext, onMount, setContext } from 'svelte';
+    import { get, type Readable, writable } from 'svelte/store';
 
     setContext<CodeContext>('multi-code', {
         content: writable(''),
@@ -42,7 +42,7 @@
         }
     });
 
-    enum CopyStatus {
+    const CopyStatus  ={
         Copy = 'Copy',
         Copied = 'Copied!'
     }

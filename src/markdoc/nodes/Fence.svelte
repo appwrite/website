@@ -1,13 +1,13 @@
 <script lang="ts">
-    import '$scss/hljs.css';
-    import { getCodeHtml, type Language } from '$lib/utils/code';
-    import { getContext, hasContext } from 'svelte';
-    import { platformMap } from '$lib/utils/references';
     import { Tooltip } from '$lib/components';
-    import { copy } from '$lib/utils/copy';
-    import type { CodeContext } from '../tags/MultiCode.svelte';
-    import { melt } from '@melt-ui/svelte';
     import { isInTutorialDocs } from '$lib/layouts/Docs.svelte';
+    import { getCodeHtml, type Language } from '$lib/utils/code';
+    import { copy } from '$lib/utils/copy';
+    import { platformMap } from '$lib/utils/references';
+    import '$scss/hljs.css';
+    import { melt } from '@melt-ui/svelte';
+    import { getContext, hasContext } from 'svelte';
+    import type { CodeContext } from '../tags/MultiCode.svelte';
 
     export let content: string;
     export let toCopy: string | undefined = undefined;
@@ -20,7 +20,7 @@
     const insideMultiCode = hasContext('multi-code');
     const selected = insideMultiCode ? getContext<CodeContext>('multi-code').selected : null;
 
-    enum CopyStatus {
+    const CopyStatus  ={
         Copy = 'Copy',
         Copied = 'Copied!'
     }
