@@ -1,19 +1,19 @@
 <script lang="ts">
-    import { Main } from '$lib/layouts';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-    import { TITLE_SUFFIX } from '$routes/titles';
+    import { browser } from '$app/environment';
+    import { goto } from '$app/navigation';
+    import { page } from '$app/stores';
+    import { autoHash } from '$lib/actions/autoHash';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
+    import Input from '$lib/components/ui/input.svelte';
     import { type ResultType, Fuse } from '$lib/integrations';
-    import { writable } from 'svelte/store';
-    import { autoHash } from '$lib/actions/autoHash';
-    import type { Integration } from './+page';
-    import { goto } from '$app/navigation';
-    import { onDestroy, onMount } from 'svelte';
-    import { browser } from '$app/environment';
+    import { Main } from '$lib/layouts';
     import { classNames } from '$lib/utils/classnames';
-    import Input from '$lib/components/ui/Input.svelte';
-    import { page } from '$app/stores';
+    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { TITLE_SUFFIX } from '$routes/titles';
+    import { onDestroy, onMount } from 'svelte';
+    import { writable } from 'svelte/store';
+    import type { Integration } from './+page';
 
     export let data;
 
@@ -81,7 +81,7 @@
 <Fuse list={data.list} options={fuseOptions} bind:query={$query} bind:result />
 <Main>
     <header class="web-u-sep-block-end web-u-padding-block-end-0 relative overflow-hidden pb-0">
-        <div class="container hero web-u-padding-block-end-0 relative">
+        <div class="hero web-u-padding-block-end-0 relative container">
             <img
                 src="/images/pages/integration/integration-bg-top-1.png"
                 alt=""

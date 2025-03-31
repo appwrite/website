@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Input from '$lib/components/ui/Input.svelte';
+    import Input from '$lib/components/ui/input.svelte';
     import { classNames } from '$lib/utils/classnames';
 
     const options = [
