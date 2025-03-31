@@ -1,8 +1,9 @@
 <script lang="ts">
+    import Icon from '$lib/components/ui/icon';
+    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import { toScale, type Scale } from '$lib/utils/toScale';
     import { spring, type AnimationListOptions, type SpringOptions } from 'motion';
     import { animation, createScrollHandler, scroll, type Animation } from '.';
-    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
 
     const springOptions: SpringOptions = {
         stiffness: 58.78,
@@ -187,8 +188,9 @@
                 id="oss-discord"
             >
                 <div class="flex flex-col justify-between gap-8">
-                    <span
-                        class="web-icon-discord web-u-font-size-40"
+                    <Icon
+                        icon="discord"
+                        class="text-greyscale-400 text-[40px]!"
                         aria-hidden="true"
                         aria-label="Discord"
                     />
