@@ -22,10 +22,10 @@
         }
     });
 
-    const enum CopyStatus {
-        Copy = 'Copy',
-        Copied = 'Copied!'
-    }
+    const CopyStatus = {
+        Copy: 'Copy',
+        Copied: 'Copied!'
+    } as const;
     let copyText = CopyStatus.Copy;
     async function handleCopy() {
         await copy(content);

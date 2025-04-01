@@ -20,51 +20,51 @@ export const versions: Readonly<Array<Omit<Version, 'cloud'>>> = allVersions.fil
     (v) => v !== 'cloud'
 );
 
-export enum Service {
-    Account = 'account',
-    Avatars = 'avatars',
-    Databases = 'databases',
-    Functions = 'functions',
-    Messaging = 'messaging',
-    Health = 'health',
-    Locale = 'locale',
-    Storage = 'storage',
-    Teams = 'teams',
-    Users = 'users'
-}
+export const Service = {
+    Account: 'account',
+    Avatars: 'avatars',
+    Databases: 'databases',
+    Functions: 'functions',
+    Messaging: 'messaging',
+    Health: 'health',
+    Locale: 'locale',
+    Storage: 'storage',
+    Teams: 'teams',
+    Users: 'users'
+} as const;
 
-export enum Platform {
-    ClientWeb = 'client-web',
-    ClientFlutter = 'client-flutter',
-    ClientReactNative = 'client-react-native',
-    ClientApple = 'client-apple',
-    ClientAndroidKotlin = 'client-android-kotlin',
-    ClientAndroidJava = 'client-android-java',
-    ClientGraphql = 'client-graphql',
-    ClientRest = 'client-rest',
-    ServerNodeJs = 'server-nodejs',
-    ServerPython = 'server-python',
-    ServerDart = 'server-dart',
-    ServerPhp = 'server-php',
-    ServerRuby = 'server-ruby',
-    ServerDotNet = 'server-dotnet',
-    ServerDeno = 'server-deno',
-    ServerGo = 'server-go',
-    ServerSwift = 'server-swift',
-    ServerKotlin = 'server-kotlin',
-    ServerJava = 'server-java',
-    ServerGraphql = 'server-graphql',
-    ServerRest = 'server-rest'
-}
+export const Platform = {
+    ClientWeb: 'client-web',
+    ClientFlutter: 'client-flutter',
+    ClientReactNative: 'client-react-native',
+    ClientApple: 'client-apple',
+    ClientAndroidKotlin: 'client-android-kotlin',
+    ClientAndroidJava: 'client-android-java',
+    ClientGraphql: 'client-graphql',
+    ClientRest: 'client-rest',
+    ServerNodeJs: 'server-nodejs',
+    ServerPython: 'server-python',
+    ServerDart: 'server-dart',
+    ServerPhp: 'server-php',
+    ServerRuby: 'server-ruby',
+    ServerDotNet: 'server-dotnet',
+    ServerDeno: 'server-deno',
+    ServerGo: 'server-go',
+    ServerSwift: 'server-swift',
+    ServerKotlin: 'server-kotlin',
+    ServerJava: 'server-java',
+    ServerGraphql: 'server-graphql',
+    ServerRest: 'server-rest'
+} as const;
 
-export enum Framework {
-    NextJs = 'Next.js',
-    SvelteKit = 'SvelteKit',
-    VueJs = 'Vue.js',
-    Nuxt3 = 'Nuxt3',
-    Astro = 'Astro',
-    Remix = 'Remix'
-}
+export const Framework = {
+    NextJs: 'Next.js',
+    SvelteKit: 'SvelteKit',
+    VueJs: 'Vue.js',
+    Nuxt3: 'Nuxt3',
+    Astro: 'Astro',
+    Remix: 'Remix'
+} as const;
 
 export const platformMap: Record<Language | string, string> = {
     [Platform.ClientApple]: 'Apple',

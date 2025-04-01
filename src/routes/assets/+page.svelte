@@ -10,19 +10,19 @@
     import MainFooter from '../../lib/components/MainFooter.svelte';
     import Copy from './Copy.svelte';
 
-    const title = 'Assets' + TITLE_SUFFIX;
+    const title: 'Assets' + TITLE_SUFFIX;
     const description =
         "This page features Appwrite's key brand assets including the logotype, colors, product visuals, and practical guidelines for their usage.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
-    enum Section {
-        NAMING = 'Naming',
-        LOGOTYPE = 'Logotype',
-        LOGOMARK = 'Logomark',
-        COLORS = 'Brand colors',
-        VISUALS = 'Product visuals',
-        CONTACT = 'Contact us'
-    }
+    const Section = {
+        NAMING: 'Naming',
+        LOGOTYPE: 'Logotype',
+        LOGOMARK: 'Logomark',
+        COLORS: 'Brand colors',
+        VISUALS: 'Product visuals',
+        CONTACT: 'Contact us'
+    } as const
 
     const getSectionId = (section: Section) => section.toLowerCase().replace(/\s/g, '-');
 

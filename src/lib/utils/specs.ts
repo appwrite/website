@@ -60,10 +60,10 @@ export interface Property {
     } & OpenAPIV3.ReferenceObject;
 }
 
-export enum ModelType {
-    REST = 'REST',
-    GRAPHQL = 'GraphQL'
-}
+export const ModelType = {
+    REST: 'REST',
+    GRAPHQL: 'GraphQL'
+} as const;
 
 function getExamples(version: string) {
     switch (version) {

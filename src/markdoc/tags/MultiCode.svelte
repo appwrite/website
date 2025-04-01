@@ -48,10 +48,11 @@
         }
     });
 
-    const enum CopyStatus {
-        Copy = 'Copy',
-        Copied = 'Copied!'
-    }
+    const CopyStatus = {
+        Copy: 'Copy',
+        Copied: 'Copied!'
+    } as const;
+
     let copyText = $state(CopyStatus.Copy);
 
     async function handleCopy() {

@@ -17,10 +17,10 @@
     const insideMultiCode = hasContext('multi-code');
     const selected = insideMultiCode ? getContext<CodeContext>('multi-code').selected : null;
 
-    const enum CopyStatus {
-        Copy = 'Copy',
-        Copied = 'Copied!'
-    }
+    const CopyStatus = {
+        Copy: 'Copy',
+        Copied: 'Copied!'
+    } as const;
 
     let copyText = CopyStatus.Copy;
     async function handleCopy() {
