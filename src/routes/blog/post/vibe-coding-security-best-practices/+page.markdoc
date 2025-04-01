@@ -41,7 +41,7 @@ User input is one of the most common attack vectors in web applications. AI-gene
 
 Consider a scenario where AI generates a search function for a database query:
 
-```jsx
+```js
 app.get('/search', async (req, res) => {
   const query = `SELECT * FROM users WHERE name = '${req.query.name}'`
   const result = await db.query(query)
@@ -57,7 +57,7 @@ This function directly inserts user input (`req.query.name`) into an SQL query, 
 
 This would return all user records, exposing sensitive data. To prevent this, always **validate input** and use **parameterized queries**:
 
-```jsx
+```js
 app.get('/search', async (req, res) => {
   const name = req.query.name?.trim()
   if (!name || /[^a-zA-Z0-9 ]/.test(name)) {
@@ -79,7 +79,7 @@ AI-generated code sometimes suggests using API keys, database credentials, or ot
 
 For example, AI-generated code might include:
 
-```jsx
+```js
 const apiKey = 'sk_test_1234567890abcdef' // DO NOT DO THIS
 fetch(`https://api.example.com/data?key=${apiKey}`)
   .then((response) => response.json())
@@ -88,7 +88,7 @@ fetch(`https://api.example.com/data?key=${apiKey}`)
 
 Instead of hardcoding secrets, always store them in **environment variables** or a **secrets manager**. Services like **AWS Secrets Manager, Azure Key Vault, and HashiCorp Vault** provide secure storage and controlled access to sensitive credentials. In a Node.js application, use environment variables like this:
 
-```jsx
+```js
 const apiKey = process.env.API_KEY
 ```
 
@@ -114,7 +114,7 @@ REACT_APP_API_KEY=sk_test_1234567890abcdef
 
 And referenced in a component:
 
-```jsx
+```js
 const apiKey = process.env.REACT_APP_API_KEY
 ```
 
@@ -164,7 +164,7 @@ To enforce HTTPS, configure your web server to **redirect all HTTP traffic to HT
 
 For Express.js applications, force HTTPS using middleware:
 
-```jsx
+```js
 const express = require('express')
 const helmet = require('helmet')
 
@@ -239,7 +239,7 @@ A common mistake is using weak session identifiers or storing session tokens in 
 
 For example, in Express.js with `express-session`:
 
-```jsx
+```js
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -263,7 +263,7 @@ AI-generated file upload handlers may accept any file type without validation, o
 
 For example, an insecure file upload endpoint might look like this:
 
-```jsx
+```js
 app.post('/upload', upload.single('file'), (req, res) => {
   res.send('File uploaded')
 })
@@ -330,7 +330,7 @@ AI-generated API endpoints often lack protection against excessive requests, mak
 
 To prevent this, implement **rate limiting** at the API level using middleware like `express-rate-limit`:
 
-```jsx
+```js
 const rateLimit = require('express-rate-limit')
 
 const limiter = rateLimit({
@@ -353,7 +353,7 @@ We mentioned CORS briefly, but it's important to address it in detail. Cross-Ori
 
 For example, a poorly implemented CORS policy might allow requests from **any** domain (`*`):
 
-```jsx
+```js
 app.use(cors({ origin: '*' }))
 ```
 
@@ -361,7 +361,7 @@ This is dangerous because it allows **any website** to make API requests on beha
 
 A better approach is to define **allowed origins explicitly**:
 
-```jsx
+```js
 const corsOptions = {
   origin: ['<https://yourtrusteddomain.com>'],
   methods: ['GET', 'POST'],
