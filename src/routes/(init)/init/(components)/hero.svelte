@@ -77,11 +77,9 @@
                         {/if}Claim your ticket</button
                     >
                 {/if}
-                <VideoDialog url="https://www.youtube-nocookie.com/embed/31udvDQ5I4Y">
-                    <button class="web-button is-secondary flex items-center gap-4">
-                        <span class="web-icon-play text-primary" />Announcement</button
-                    >
-                </VideoDialog>
+                <a href="https://producthunt.com" class="web-button is-secondary">
+                    Follow on Product Hunt
+                </a>
             </nav>
         </div>
     </div>
