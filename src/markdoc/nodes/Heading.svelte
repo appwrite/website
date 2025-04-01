@@ -1,15 +1,26 @@
 <script lang="ts">
-    import { getContext, hasContext, onMount } from 'svelte';
-    import type { LayoutContext } from '../layouts/Article.svelte';
-    import { isInPolicy } from '$markdoc/layouts/Policy.svelte';
     import { slugify } from '$lib/utils/slugify';
+    import { isInPolicy } from '$markdoc/layouts/Policy.svelte';
+    import { getContext, hasContext, onMount, type Snippet } from 'svelte';
+    import type { LayoutContext } from '../layouts/Article.svelte';
 
-    export let level: number;
-    export let id: string | undefined = undefined;
-    export let step: number | undefined = undefined;
-    export let inReferences = false;
+    interface Props {
+        level: number;
+        id?: string | undefined;
+        step?: number | undefined;
+        inReferences?: boolean;
+        children: Snippet;
+    }
 
-    let href: string;
+    const {
+        level,
+        id = undefined,
+        step = undefined,
+        inReferences = false,
+        children
+    }: Props = $props();
+
+    let href: string = $state('');
     const tag = `h${level + 1}`;
     const ctx = hasContext('headings') ? getContext<LayoutContext>('headings') : undefined;
 
@@ -20,7 +31,7 @@
         4: 'text-sub-body font-medium'
     };
 
-    let element: HTMLElement | undefined;
+    let element: HTMLElement | undefined = $state();
 
     onMount(() => {
         if (!element || !$ctx) {
@@ -57,8 +68,9 @@
     });
 
     const inPolicy = isInPolicy();
-    $: headingClass =
-        inPolicy && level === 1 ? 'text-title font-aeonik-pro mb-4 mt-8' : classList[level];
+    let headingClass = $derived(
+        inPolicy && level === 1 ? 'text-title font-aeonik-pro mb-4 mt-8' : classList[level]
+    );
 </script>
 
 <svelte:element
@@ -69,5 +81,5 @@
     class:web-snap-location-references={id && inReferences}
     class="{headingClass} text-primary scroll-m-32 font-medium"
 >
-    <a href={`#${href}`} class=""><slot /></a>
+    <a href={`#${href}`} class="">{@render children()}</a>
 </svelte:element>

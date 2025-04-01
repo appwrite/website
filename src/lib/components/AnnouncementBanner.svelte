@@ -17,7 +17,7 @@
                 aria-label="close discord message"
                 on:click={hideTopBanner}
             >
-                <span class="web-icon-close" aria-hidden="true" />
+                <span class="web-icon-close" aria-hidden="true"></span>
             </button>
         {/if}
     </div>

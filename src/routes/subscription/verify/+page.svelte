@@ -32,7 +32,7 @@
         <div class="web-big-padding-section-level-2">
             <div class="container">
                 <div class="web-hero" style="--hero-gap:1.25rem;">
-                    <span class="web-badges text-micro uppercase text-white">verification</span>
+                    <span class="web-badges text-micro text-white uppercase">verification</span>
                     <h1 class="text-headline font-aeonik-pro text-primary">
                         {#if error}
                             Error

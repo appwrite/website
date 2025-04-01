@@ -66,7 +66,7 @@
                     </div>
                 {/each}
 
-                <div class="-mr-2 h-px w-24 flex-1 bg-gradient-to-r from-white to-[#FD366E]" />
+                <div class="-mr-2 h-px w-24 flex-1 bg-gradient-to-r from-white to-[#FD366E]"></div>
 
                 <div
                     class="flex size-14 items-center justify-center rounded-lg border border-[#FD366E] bg-white shadow-[0px_0px_8px_rgba(253,_54,_110,_0.24),_0px_5.35209px_10.7042px_rgba(0,_0,_0,_0.02)]"

@@ -1,6 +1,10 @@
 <script lang="ts">
-    export let icon: string;
-    export let size = 's';
+    interface Props {
+        icon: string;
+        size?: string;
+    }
+
+    const { icon, size = 's' }: Props = $props();
 
     const sizes: Record<string, string> = {
         s: '16px',
@@ -10,4 +14,4 @@
     };
 </script>
 
-<span class="icon-{icon}" style:font-size={sizes[size]} />
+<span class="icon-{icon}" style:font-size={sizes[size]}></span>

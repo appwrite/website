@@ -11,11 +11,11 @@ client.setEndpoint(PUBLIC_APPWRITE_ENDPOINT).setProject('console');
 const account = new Account(client);
 const teams = new Teams(client);
 
-enum BillingPlan {
-    STARTER = 'tier-0',
-    PRO = 'tier-1',
-    SCALE = 'tier-2'
-}
+const BillingPlan = {
+    STARTER: 'tier-0',
+    PRO: 'tier-1',
+    SCALE: 'tier-2'
+} as const;
 
 export async function createSource(
     ref: string | null,

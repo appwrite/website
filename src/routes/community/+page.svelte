@@ -157,7 +157,7 @@
                 <img src="/images/community/sphere.png" alt="" />
             </div>
             <div class="web-big-padding-section-level-2">
-                <section class="container web-u-padding-block-end-0 relative">
+                <section class="web-u-padding-block-end-0 relative container">
                     <div class="web-hero is-align-start web-u-max-width-580">
                         <h1 class="text-display font-aeonik-pro text-primary">
                             Built by a community of 800+ contributors
@@ -183,7 +183,7 @@
                                     rel="noopener noreferrer"
                                     class="web-button is-secondary is-full-width-mobile"
                                 >
-                                    <span aria-hidden="true" class="web-icon-star" />
+                                    <span aria-hidden="true" class="web-icon-star"></span>
                                     <span>Star on GitHub</span>
                                     <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
                                 </a>
@@ -207,8 +207,8 @@
 
         <div class="relative py-10">
             <div class="absolute-container">
-                <div class="green-gradient" />
-                <div class="pink-gradient" />
+                <div class="green-gradient"></div>
+                <div class="pink-gradient"></div>
                 <FloatingHeads
                     images={[
                         '/images/community/avatars/1.png',
@@ -226,7 +226,7 @@
             </div>
 
             <div class="web-big-padding-section-level-2">
-                <div class="container relative">
+                <div class="relative container">
                     <div class="web-hero is-mobile-center web-u-max-width-900 gap-5">
                         <h2 class="text-headline font-aeonik-pro text-primary">
                             The power of open source benefits us all
@@ -283,7 +283,7 @@
                                     rel="noopener noreferrer"
                                     class="web-button is-secondary mt-8"
                                 >
-                                    <span class="web-icon-github" aria-hidden="true" />
+                                    <span class="web-icon-github" aria-hidden="true"></span>
                                     <span class="">View all Open Issues</span>
                                 </a>
                             </div>
@@ -292,7 +292,7 @@
                                     <thead class="web-table-line-head">
                                         <tr class="web-table-line-row">
                                             <th
-                                                class="web-table-line-cell text-primary whitespace-nowrap text-start"
+                                                class="web-table-line-cell text-primary text-start whitespace-nowrap"
                                                 >Issue #</th
                                             >
                                             <th class="web-table-line-cell text-primary text-start"
@@ -421,7 +421,7 @@
                 </section>
             </div>
             <div class="web-big-padding-section-level-2">
-                <section class="container web-u-sep-block-start web-u-padding-block-start-64">
+                <section class="web-u-sep-block-start web-u-padding-block-start-64 container">
                     <Carousel size="big">
                         <svelte:fragment slot="header">
                             <h4 class="text-label text-primary">Upcoming Events</h4>
@@ -500,7 +500,7 @@
                                             class="icon-discord web-u-font-size-40"
                                             aria-hidden="true"
                                             aria-label="Discord"
-                                        />
+                                        ></span>
                                     </div>
                                     <div class="text-title font-aeonik-pro mt-auto">
                                         17K+ members
@@ -520,7 +520,7 @@
                                             class="web-icon-x web-u-font-size-40"
                                             aria-hidden="true"
                                             aria-label="X"
-                                        />
+                                        ></span>
                                     </div>
                                     <div class="text-title font-aeonik-pro mt-auto">
                                         128K+ followers
@@ -540,7 +540,7 @@
                                             class="icon-github web-u-font-size-40"
                                             aria-hidden="true"
                                             aria-label="GitHub"
-                                        />
+                                        ></span>
                                     </div>
                                     <div class="text-title font-aeonik-pro mt-auto">
                                         {GITHUB_STARS}+ stargazers
@@ -560,7 +560,7 @@
                                             class="icon-youtube web-u-font-size-40"
                                             aria-hidden="true"
                                             aria-label="Youtube"
-                                        />
+                                        ></span>
                                     </div>
                                     <div class="text-title font-aeonik-pro mt-auto">
                                         4K+ subscribers

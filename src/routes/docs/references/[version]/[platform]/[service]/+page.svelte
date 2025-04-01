@@ -233,7 +233,7 @@
                 {#if data.methods.length === 0}
                     <div class="web-article-content-grid-6-4-column-2 flex flex-col gap-8">
                         <div class="web-inline-info">
-                            <span class="icon-info" aria-hidden="true" />
+                            <span class="icon-info" aria-hidden="true"></span>
                             <h5 class="text-sub-body text-primary font-medium">
                                 No endpoint found for this version and platform
                             </h5>
@@ -303,7 +303,7 @@
         >
             {#if data.methods.length > 0}
                 <button class="web-icon-button" id="refOpen" on:click={toggleReferences}>
-                    <span class="icon-menu-alt-4" aria-hidden="true" />
+                    <span class="icon-menu-alt-4" aria-hidden="true"></span>
                 </button>
                 <div class="web-references-menu-content">
                     <div
@@ -311,7 +311,7 @@
                     >
                         <h5 class="web-references-menu-title text-micro uppercase">On This Page</h5>
                         <button class="web-icon-button" id="refClose" on:click={toggleReferences}>
-                            <span class="icon-x" aria-hidden="true" />
+                            <span class="icon-x" aria-hidden="true"></span>
                         </button>
                     </div>
                     <ul class="web-references-menu-list">
@@ -327,7 +327,7 @@
                     </ul>
                     <div class="border-greyscale-900/4 web-u-padding-block-20 border-t">
                         <button class="web-link inline-flex items-center gap-2" use:scrollToTop>
-                            <span class="web-icon-arrow-up" aria-hidden="true" />
+                            <span class="web-icon-arrow-up" aria-hidden="true"></span>
                             <span class="text-caption">Back to top</span>
                         </button>
                     </div>

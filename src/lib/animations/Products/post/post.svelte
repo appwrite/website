@@ -17,7 +17,7 @@
 
 <div class="gradient-box auth" id="post-auth-{$elId}">
     <div class="flex items-center gap-2">
-        <p class="icon-user-group" />
+        <p class="icon-user-group"></p>
         <p class="f-eyebrow">Authentication</p>
     </div>
     <p class="f-display mbs-16">
@@ -31,7 +31,7 @@
 
 <div class="gradient-box storage" id="post-storage-{$elId}">
     <div class="flex items-center gap-2">
-        <p class="icon-folder" />
+        <p class="icon-folder"></p>
         <p class="f-eyebrow">Storage</p>
     </div>
     <p class="f-display mbs-16">
@@ -55,7 +55,7 @@
 
 <div class="gradient-box functions" id="post-functions-{$elId}">
     <div class="flex items-center gap-2">
-        <p class="icon-lightning-bolt" />
+        <p class="icon-lightning-bolt"></p>
         <p class="f-eyebrow">Functions</p>
     </div>
     <p class="f-display mbs-16">
@@ -68,7 +68,7 @@
 
 <div class="gradient-box databases" id="post-databases-{$elId}">
     <div class="flex items-center gap-2">
-        <p class="icon-database" />
+        <p class="icon-database"></p>
         <p class="f-eyebrow">Databases</p>
     </div>
     <p class="f-display mbs-16">

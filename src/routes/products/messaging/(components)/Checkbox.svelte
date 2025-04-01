@@ -21,9 +21,9 @@
 
 <button {id} use:melt={$root} aria-label={ariaLabel} on:click|stopPropagation>
     {#if $isIndeterminate}
-        <div class="web-icon-minus" />
+        <div class="web-icon-minus"></div>
     {:else if $isChecked}
-        <div class="web-icon-check" />
+        <div class="web-icon-check"></div>
     {/if}
 </button>
 

@@ -1,9 +1,9 @@
-import { dirname, join } from 'path';
-import { fileURLToPath } from 'url';
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { preprocessMeltUI, sequence } from '@melt-ui/pp';
-import { markdoc } from 'svelte-markdoc-preprocess';
 import nodeAdapter from '@sveltejs/adapter-node';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import { dirname, join } from 'path';
+import { markdoc } from 'svelte-markdoc-preprocess';
+import { fileURLToPath } from 'url';
 
 /** @type {import('@sveltejs/kit').Config}*/
 const config = {
