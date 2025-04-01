@@ -1,10 +1,10 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import type { SvelteHTMLElements } from 'svelte/elements';
-    import type { Icon } from './types';
+    import type { IconType } from './types';
 
     type $$Props = {
-        icon?: Icon;
+        icon?: IconType;
         class?: string;
     } & SvelteHTMLElements['span'];
 

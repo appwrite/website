@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     export type NavLink = {
         label: string;
         href: string;
@@ -28,9 +28,13 @@
     import { layoutState, toggleSidenav } from './Docs.svelte';
     import SidebarNavButton from './SidebarNavButton.svelte';
 
-    export let expandable = false;
-    export let navigation: NavTree;
-    export let parent: NavParent | undefined = undefined;
+    interface Props {
+        expandable?: boolean;
+        navigation: NavTree;
+        parent?: NavParent | undefined;
+    }
+
+    let { expandable = false, navigation, parent = undefined }: Props = $props();
 
     function isNavLink(item: NavLink | NavGroup): item is NavLink {
         return 'href' in item;
@@ -50,7 +54,7 @@
     <div class="web-side-nav-wrapper">
         <button
             class="web-input-text web-is-not-desktop"
-            on:click={() => ($layoutState.showSearch = true)}
+            onclick={() => ($layoutState.showSearch = true)}
         >
             <span class="web-icon-search"></span>
             <span class="text">Search in docs</span>
@@ -72,7 +76,9 @@
                         {#if expandable && !$layoutState.showSidenav}
                             <Tooltip placement="right">
                                 <SidebarNavButton groupItem={navGroup} />
-                                <svelte:fragment slot="tooltip">{navGroup.label}</svelte:fragment>
+                                {#snippet tooltip()}
+                                    {navGroup.label}
+                                {/snippet}
                             </Tooltip>
                         {:else}
                             <SidebarNavButton groupItem={navGroup} />
@@ -89,9 +95,9 @@
                                     {#if expandable && !$layoutState.showSidenav}
                                         <Tooltip placement="right">
                                             <SidebarNavButton {groupItem} />
-                                            <svelte:fragment slot="tooltip"
-                                                >{groupItem.label}</svelte:fragment
-                                            >
+                                            {#snippet tooltip()}
+                                                {groupItem.label}
+                                            {/snippet}
                                         </Tooltip>
                                     {:else}
                                         <SidebarNavButton {groupItem} />
@@ -105,7 +111,7 @@
         </div>
         {#if expandable}
             <button
-                on:click={toggleSidenav}
+                onclick={toggleSidenav}
                 class="web-icon-button ml-auto"
                 style:margin-bottom="1rem"
                 aria-label="toggle nav"

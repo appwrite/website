@@ -21,7 +21,7 @@
             <a href={getAppwriteDashboardUrl('/register')} class="web-button is-secondary flex-1">
                 Sign up
             </a>
-            <IsLoggedIn classes="flex-1" />
+            <IsLoggedIn class="flex-1" />
         </div>
         <div class="web-side-nav-scroll">
             <section>

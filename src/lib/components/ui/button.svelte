@@ -4,8 +4,9 @@
     import { cva, type VariantProps } from 'cva';
     import type { Action } from 'svelte/action';
     import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
-    import { createBubbler } from 'svelte/legacy';
     import InlineTag from './inline-tag.svelte';
+    import type { Snippet } from 'svelte';
+    import { type IconType, Icon } from '$lib/components/ui';
 
     // TODO: replace _button.scss with Tailwind classes for long-term maintainability
     const button = cva(['web-button'], {
@@ -13,7 +14,8 @@
             variant: {
                 primary: [''],
                 secondary: ['is-secondary'],
-                text: ['is-text']
+                text: ['is-text'],
+                transparent: ['is-transparent']
             }
         }
     });
@@ -29,31 +31,28 @@
                 | [Action<HTMLButtonElement | HTMLAnchorElement, any>, any];
         } & { element?: AnyMeltElement };
 
-    interface Props {
-        href?: $$Props['href'];
+    type Props = $$Props & {
         variant?: $$Props['variant'];
         use?: $$Props['use'];
-        element?: AnyMeltElement | undefined;
-        icon?: import('svelte').Snippet;
-        children: import('svelte').Snippet;
-        tag?: import('svelte').Snippet;
-        [key: string]: any;
-    }
+        element?: AnyMeltElement;
+        icon?: IconType;
+        children: Snippet;
+        tag?: Snippet;
+    };
 
     const {
-        href = undefined,
+        href,
         variant = 'primary',
         use = undefined,
-        element = undefined,
+        element,
         icon,
         children,
         tag,
+        class: classes,
         ...rest
     }: Props = $props();
+
     let meltElement = $derived(element ?? emptyMeltElement);
-
-    const { class: classes, href: _ } = rest;
-
     const buttonClasses = classNames(button({ variant }), classes);
 
     const applyAction = (node: HTMLButtonElement | HTMLAnchorElement) => {
@@ -70,10 +69,20 @@
     };
 </script>
 
+{#snippet iconElement(type: IconType)}
+    <Icon icon={type} />
+{/snippet}
+
 {#if href}
-    <a {...rest} {href} class={buttonClasses} use:melt={$meltElement} use:applyAction>
+    <a
+        {...rest as HTMLAnchorAttributes}
+        {href}
+        class={buttonClasses}
+        use:melt={$meltElement}
+        use:applyAction
+    >
         {#if icon}
-            {@render icon()}
+            {@render iconElement(icon)}
         {/if}
         {@render children()}
         {#if tag}
@@ -83,9 +92,14 @@
         {/if}
     </a>
 {:else}
-    <button {...rest} class={buttonClasses} use:melt={$meltElement} use:applyAction>
+    <button
+        {...rest as HTMLButtonAttributes}
+        class={buttonClasses}
+        use:melt={$meltElement}
+        use:applyAction
+    >
         {#if icon}
-            {@render icon()}
+            {@render iconElement(icon)}
         {/if}
         {@render children()}
         {#if tag}

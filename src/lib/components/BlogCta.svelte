@@ -1,5 +1,6 @@
 <script lang="ts">
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button } from '$lib/components/ui';
 
     export let heading: string = 'Start building with Appwrite today';
     export let label: string = 'Get started';
@@ -10,7 +11,7 @@
 >
     <div class="flex max-w-3xs flex-col items-center justify-center gap-5 text-center">
         <h2 class="text-label text-primary font-aeonik-pro">{heading}</h2>
-        <a href={getAppwriteDashboardUrl()} class="web-button">{label}</a>
+        <Button href={getAppwriteDashboardUrl()}>{label}</Button>
     </div>
 </div>
 

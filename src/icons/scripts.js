@@ -1,11 +1,32 @@
 // @ts-expect-error missing types
 import SVGFixer from 'oslllo-svg-fixer';
 import svgtofont from 'svgtofont';
-import { resolve } from 'path';
+import { basename, extname, resolve } from 'path';
+import { readdirSync, writeFileSync } from 'fs';
 
 const src = resolve(process.cwd(), 'src/icons/svg');
 const optimized = resolve(process.cwd(), 'src/icons/optimized');
 const dist = resolve(process.cwd(), 'src/icons/output');
+const outputPath = resolve(process.cwd(), 'src/lib/components/ui/icon/types.ts');
+
+const generateIconType = () => {
+    try {
+        const files = readdirSync(optimized);
+
+        const fileNames = files
+            .filter((file) => extname(file) !== '')
+            .map((file) => basename(file, extname(file)));
+
+        const typeDefinition = `export type IconType = ${fileNames.map((name) => `"${name}"`).join(' | ')};`;
+
+        writeFileSync(outputPath, typeDefinition);
+
+        console.log(`Type generated successfully at ${outputPath}`);
+        console.log(`Generated type: ${typeDefinition}`);
+    } catch (error) {
+        console.error('Error generating filename type:', error);
+    }
+};
 
 export const optimizeSVG = async () => {
     const fixer = new SVGFixer(src, optimized, {
@@ -36,5 +57,5 @@ export const generateIcons = async () => {
         },
         emptyDist: true,
         generateInfoData: true
-    });
+    }).then(() => generateIconType());
 };

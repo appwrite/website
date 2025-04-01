@@ -4,6 +4,7 @@
     import { fade } from 'svelte/transition';
     import { loggedIn, user } from '$lib/utils/console';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+    import { Button } from '$lib/components/ui';
 
     export let date: string | undefined = undefined;
     let showFeedback = false;
@@ -75,7 +76,7 @@
                     <button
                         class="web-radio-button"
                         aria-label="helpful"
-                        on:click={() => {
+                        onclick={() => {
                             showFeedback = feedbackType !== 'positive';
                             feedbackType = 'positive';
                         }}
@@ -85,7 +86,7 @@
                     <button
                         class="web-radio-button"
                         aria-label="unhelpful"
-                        on:click={() => {
+                        onclick={() => {
                             showFeedback = feedbackType !== 'negative';
                             feedbackType = 'negative';
                         }}
@@ -117,7 +118,10 @@
     </header>
     {#if showFeedback}
         <form
-            on:submit|preventDefault={handleSubmit}
+            onsubmit={(e) => {
+                e.preventDefault();
+                handleSubmit();
+            }}
             class="web-card is-normal"
             style="--card-padding:1rem"
             out:fade={{ duration: 450 }}
@@ -158,12 +162,8 @@
             {/if}
 
             <div class="mt-4 flex justify-end gap-2">
-                <button class="web-button is-text" on:click={() => (showFeedback = false)}>
-                    <span>Cancel</span>
-                </button>
-                <button type="submit" class="web-button" disabled={submitting || !email}>
-                    <span>Submit</span>
-                </button>
+                <Button variant="text" onclick={() => (showFeedback = false)}>Cancel</Button>
+                <Button type="submit" disabled={submitting || !email}>Submit</Button>
             </div>
         </form>
     {/if}

@@ -5,16 +5,20 @@
     import { platformMap } from '$lib/utils/references';
     import { writable } from 'svelte/store';
 
-    export let selected: Language = 'js';
-    export let data: { language: string; content: string; platform?: string }[] = [];
-    export let width: number | null = null;
-    export let height: number | null = null;
+    interface Props {
+        selected?: Language;
+        data?: { language: string; content: string; platform?: string }[];
+        width?: number | null;
+        height?: number | null;
+    }
 
-    $: snippets = writable(new Set(data.map((d) => d.language)));
+    let { selected = $bindable('js'), data = [], width = null, height = null }: Props = $props();
 
-    $: content = data.find((d) => d.language === selected)?.content ?? '';
+    let snippets = $derived(writable(new Set(data.map((d) => d.language))));
 
-    $: platform = data.find((d) => d.language === selected)?.platform ?? '';
+    let content = $derived(data.find((d) => d.language === selected)?.content ?? '');
+
+    let platform = $derived(data.find((d) => d.language === selected)?.platform ?? '');
 
     snippets?.subscribe((n) => {
         if (selected === null && n.size > 0) {
@@ -27,7 +31,10 @@
         Copied: 'Copied!'
     } as const;
 
-    let copyText = CopyStatus.Copy;
+    type CopyStatusType = keyof typeof CopyStatus;
+    type CopyStatusValue = (typeof CopyStatus)[CopyStatusType];
+
+    let copyText = $state<CopyStatusValue>(CopyStatus.Copy);
     async function handleCopy() {
         await copy(content);
 
@@ -37,15 +44,19 @@
         }, 1000);
     }
 
-    $: result = getCodeHtml({
-        content,
-        language: selected ?? 'sh',
-        withLineNumbers: true
-    });
-    $: options = Array.from($snippets).map((language) => ({
-        value: language,
-        label: platformMap[language]
-    }));
+    let result = $derived(
+        getCodeHtml({
+            content,
+            language: selected ?? 'sh',
+            withLineNumbers: true
+        })
+    );
+    let options = $derived(
+        Array.from($snippets).map((language) => ({
+            value: language,
+            label: platformMap[language]
+        }))
+    );
 </script>
 
 <section
@@ -73,14 +84,14 @@
                 <li class="buttons-list-item" style="padding-inline-start: 13px">
                     <Tooltip>
                         <button
-                            on:click={handleCopy}
+                            onclick={handleCopy}
                             class="web-icon-button"
                             aria-label="copy code from code-snippet"
                             ><span class="web-icon-copy" aria-hidden="true"></span></button
                         >
-                        <svelte:fragment slot="tooltip">
+                        {#snippet tooltip()}
                             {copyText}
-                        </svelte:fragment>
+                        {/snippet}
                     </Tooltip>
                 </li>
             </ul>
