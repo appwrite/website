@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { fade, scale } from 'svelte/transition';
     import { trackEvent } from '$lib/actions/analytics';
     import { createDialog, melt } from '@melt-ui/svelte';
+    import { fade, scale } from 'svelte/transition';
 
     const {
         elements: { portalled, trigger, content, overlay },
