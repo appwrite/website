@@ -27,7 +27,6 @@
     "dependencies": {
         "@number-flow/svelte": "^0.3.3",
         "h3": "^1.14.0",
-        "melt": "^0.28.0",
         "posthog-js": "^1.210.2",
         "sharp": "^0.33.5"
     },
