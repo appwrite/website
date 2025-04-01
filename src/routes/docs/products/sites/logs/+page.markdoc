@@ -33,7 +33,15 @@ If your app uses **SSR hosting** on Appwrite Sites, you can also observe `consol
 
 {% /info %}
 
-# **Log retention**
+# Disable logs
+
+You can optionally disable execution logs for your site, which will exclude `console.log` and `console.error` outputs from the response logs and make site responses slightly faster. Here are the steps to disable execution logs:
+
+1. Navigate to your site on Appwrite Console.
+2. Under the **Settings** tab, find the **Execution logs** section.
+3. Disable logs and click on the **Update** button.
+
+# Log retention
 
 Logs are not retained forever in order to be compliant with GDPR and other data privacy standards. Free plan organizations will retain logs for 24 hours, Pro plan organizations will retain logs for 7 days.
 
