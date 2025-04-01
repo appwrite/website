@@ -11,17 +11,17 @@ featured: false
 callToAction: true
 ---
 
-Vibe coding is changing the way developers build software. Instead of manually writing every function, many developers are beginning to rely on AI-assisted tools to generate code based on natural language instructions. This approach can significantly speed up development, allow teams to create applications faster and reduce the burden of repetitive coding tasks. But... the convenience of vibe coding comes with significant security risks.
+Vibe coding is changing the way developers build software. Instead of manually writing every function, many developers are beginning to rely on AI-assisted tools to generate code based on natural language instructions. This approach can significantly speed up development and allow teams to create applications faster. But... the convenience of vibe coding comes with significant security risks.
 
 AI-generated code is not inherently secure, and without proper oversight, it can introduce vulnerabilities that lead to data breaches, unauthorized access, and critical system failures.
 
-Security must be a top priority for vibe coders, and as a developer, you must take responsibility for reviewing, testing, and securing AI-generated code. In this article, we'll go beyond surface-level recommendations and dive deep into **20 essential security best practices** you must follow as a vibe coder to ensure your applications remain safe.
+Security must be a top priority for vibe coders, and as a developer, you must take responsibility for reviewing, testing, and securing AI-generated code. In this article, we'll explore **20 essential security best practices** you must follow as a vibe coder to ensure your applications remain safe.
 
 # 1. Always review and understand AI-generated code
 
-One of the most common mistakes developers make when using AI-generated code is assuming that it is correct and secure by default. AI models do not "think" like humans. They generate code based on patterns from their training data. They don't have feelings, and therefore, cannot feel responsible for the code they generate. This means they can produce insecure, inefficient, or completely incorrect solutions that may work at first glance but introduce serious risks.
+One of the most common mistakes developers make when using AI-generated code is assuming that it is correct and secure by default. AI models do not "think" like humans. They generate code based on patterns from their training data. **They don't have feelings, and therefore, cannot feel responsible for the code they generate.** This means they can produce insecure, inefficient, or completely incorrect solutions that may work at first glance but introduce serious risks.
 
-For example, an AI-generated authentication system might include a password-checking function but fail to enforce proper hashing standards. A careless developer might copy this code into their project without realizing it stores passwords in plaintext, a serious security vulnerability.
+For example, an AI-generated authentication system might include a password-checking function but fail to enforce proper hashing standards. A vibe coder might copy this code into their project without realizing it stores passwords in plaintext, a serious security vulnerability.
 
 To avoid such issues, always review AI-generated code line by line, understand each function's purpose and ensure it aligns with security best practices. If the AI generates a complex piece of logic that you do not fully understand, take the time to research and test it before integrating it into your application.
 
@@ -31,7 +31,7 @@ Authentication is one of the most critical security components of any applicatio
 
 AI can very easily generate a function that checks passwords against stored values in a database but can also easily fail to implement proper password hashing. If as a developer, you are unaware of best practices, there'll be nothing stopping you from using this insecure function to store passwords in plaintext. If an attacker gains access to the database, they would have full visibility into user credentials, leading to massive security breaches.
 
-Instead of relying on AI-generated authentication logic, go for **widely adopted** authentication solutions and libraries. A straightforward choice is a platform like [Appwrite](https://appwrite.io/), which provides a secure authentication flow out of the box with several authentication methods including email/password, social login, magic link/passwordless login, and more. For Node.js applications, you can also use **Passport.js** or **NextAuth** to provide secure authentication flows. For web applications, **Auth0** exists as well, and can ensure that authentication is handled correctly with industry-standard security measures like OpenID Connect, and multi-factor authentication (MFA).
+Instead of relying on AI-generated authentication logic, go for **widely adopted** authentication solutions and libraries. A straightforward choice is a platform like [Appwrite](https://appwrite.io/), which provides a secure authentication flow out of the box with several authentication patterns including email/password, social login, magic link/passwordless login, and more. For Node.js applications, you can also use **Passport.js** or **NextAuth** to provide secure authentication flows. For web applications, **Auth0** exists as well, and can ensure that authentication is handled correctly with industry-standard security measures like OpenID Connect, and multi-factor authentication (MFA).
 
 You should also ensure that password hashing follows modern best practices. Use **bcrypt** or **Argon2** for hashing rather than outdated methods like MD5 or SHA-1, which are vulnerable to brute-force attacks. When AI generates authentication code, always verify that it follows these principles before deploying it to production.
 
@@ -103,11 +103,11 @@ Proper secret management ensures that sensitive data is never exposed in public 
 
 # 5. Do not store API keys in env files of frontend frameworks
 
-One of the most common security mistakes developers make is storing API keys, secrets, or sensitive credentials inside environment files of frontend frameworks like Next.js, React, or Vue.js. While environment variables are a good practice for backend applications, using them incorrectly in frontend projects can expose sensitive credentials to attackers.
+One of the most common security mistakes developers make is storing API keys, secrets, or sensitive credentials inside environment files of frontend frameworks like Next.js, React, or Vue.js. While environment variables are a good practice for server-side applications, using them incorrectly in frontend projects can expose sensitive credentials to attackers.
 
 ## Why frontend environment variables are insecure
 
-In frontend frameworks like React and Vue, environment variables are bundled at build time, meaning they are part of the JavaScript files served to users. If a key is included in a .env file like this:
+In frontend frameworks like React and Vue, environment variables are usually bundled at build time, meaning they are part of the JavaScript files served to users. If a key is included in a .env file like this:
 
 ```
 REACT_APP_API_KEY=sk_test_1234567890abcdef
