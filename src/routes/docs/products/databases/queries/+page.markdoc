@@ -135,6 +135,11 @@ query {
     }
 }
 ```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]=%7B%22method%22%3A%22equal%22%2C%22attribute%22%3A%22title%22%2C%22values%22%3A%5B%22Avatar%22%2C%22Lord%20of%20the%20Rings%22%5D%7D&queries[]=%7B%22method%22%3A%22greaterThan%22%2C%22attribute%22%3A%22year%22%2C%22values%22%3A%5B1999%5D%7D HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+```
 {% /multicode %}
 
 # Query operators {% #query-operators %}
@@ -164,6 +169,11 @@ Query::select(["name", "title"])
 ```
 ```swift
 Query.select(["name", "title"])
+```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"select","values":["name","title"]} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
 ```
 {% /multicode %}
 
@@ -195,6 +205,11 @@ Query::equal("title", ["Iron Man"])
 ```swift
 Query.equal("title", value: ["Iron Man"])
 ```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"equal","attribute":"title","values":["Iron Man"]} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+```
 {% /multicode %}
 
 ### Not equal {% #not-equal %}
@@ -222,6 +237,11 @@ Query::notEqual("title", ["Iron Man"])
 ```
 ```swift
 Query.notEqual("title", value: ["Iron Man"])
+```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"notEqual","attribute":"title","values":["Iron Man"]} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
 ```
 {% /multicode %}
 
@@ -251,6 +271,11 @@ Query::lessThan("score", 10)
 ```swift
 Query.lessThan("score", value: 10)
 ```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"lessThan","attribute":"score","values":[10]} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+```
 {% /multicode %}
 
 ### Less than or equal {% #less-than-equal %}
@@ -278,6 +303,11 @@ Query::lessThanEqual("score", 10)
 ```
 ```swift
 Query.lessThanEqual("score", value: 10)
+```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"lessThanEqual","attribute":"score","values":[10]} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
 ```
 {% /multicode %}
 
@@ -307,6 +337,11 @@ Query::greaterThan("score", 10)
 ```swift
 Query.greaterThan("score", value: 10)
 ```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"greaterThan","attribute":"score","values":[10]} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+```
 {% /multicode %}
 
 ### Greater than or equal {% #greater-than-equal %}
@@ -335,6 +370,11 @@ Query::greaterThanEqual("score", 10)
 ```swift
 Query.greaterThanEqual("score", value: 10)
 ```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"greaterThanEqual","attribute":"score","values":[10]} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+```
 {% /multicode %}
 
 ### Between {% #between %}
@@ -362,6 +402,11 @@ Query::between("price", 5, 10)
 ```
 ```swift
 Query.between("price", start: 5, end: 10)
+```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"between","attribute":"price","values":[5,10]} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
 ```
 {% /multicode %}
 
@@ -393,6 +438,11 @@ Query::isNull("name")
 ```swift
 Query.isNull("name")
 ```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"isNull","attribute":"name"} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+```
 {% /multicode %}
 
 ### Is not null {% #is-not-null %}
@@ -420,6 +470,11 @@ Query::isNotNull("name")
 ```
 ```swift
 Query.isNotNull("name")
+```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"isNotNull","attribute":"name"} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
 ```
 {% /multicode %}
 
@@ -451,6 +506,11 @@ Query::startsWith("name", "Once upon a time")
 ```swift
 Query.startsWith("name", value: "Once upon a time")
 ```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"startsWith","attribute":"name","values":["Once upon a time"]} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+```
 {% /multicode %}
 
 ### Ends with {% #ends-with %}
@@ -478,6 +538,11 @@ Query::endsWith("name", "happily ever after.")
 ```
 ```swift
 Query.endsWith("name", value: "happily ever after.")
+```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"endsWith","attribute":"name","values":["happily ever after."]} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
 ```
 {% /multicode %}
 
@@ -535,6 +600,17 @@ Query.contains("ingredients", value: ['apple', 'banana'])
 // For strings
 Query.contains("name", value: "Tom")
 ```
+```http
+# For arrays
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"contains","attribute":"ingredients","values":["apple","banana"]} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+
+# For strings
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"contains","attribute":"name","values":["Tom"]} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+```
 {% /multicode %}
 
 ### Search {% #search %}
@@ -562,6 +638,11 @@ Query::search("text", "key words")
 ```
 ```swift
 Query.search("text", value: "key words")
+```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"search","attribute":"text","values":["key words"]} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
 ```
 {% /multicode %}
 
@@ -614,6 +695,11 @@ Query.and([
     Query.greaterThan("size", value: 5)
 ])
 ```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"and","values":[{"method":"lessThan","attribute":"size","values":[10]},{"method":"greaterThan","attribute":"size","values":[5]}]} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+```
 {% /multicode %}
 
 ### OR {% #or %}
@@ -663,6 +749,11 @@ Query.or([
     Query.greaterThan("size", value: 10)
 ])
 ```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"or","values":[{"method":"lessThan","attribute":"size","values":[5]},{"method":"greaterThan","attribute":"size","values":[10]}]} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+```
 {% /multicode %}
 
 ## Ordering {% #ordering %}
@@ -693,6 +784,11 @@ Query::orderDesc("attribute")
 ```swift
 Query.orderDesc("attribute")
 ```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"orderDesc","attribute":"attribute"} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+```
 {% /multicode %}
 
 ### Order ascending {% #order-asc %}
@@ -720,6 +816,11 @@ Query::orderAsc("attribute")
 ```
 ```swift
 Query.orderAsc("attribute")
+```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"orderAsc","attribute":"attribute"} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
 ```
 {% /multicode %}
 
@@ -751,6 +852,11 @@ Query::limit(25)
 ```swift
 Query.limit(25)
 ```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"limit","values":[25]} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+```
 {% /multicode %}
 
 ### Offset {% #offset %}
@@ -778,6 +884,11 @@ Query::offset(0)
 ```
 ```swift
 Query.offset(0)
+```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"offset","values":[0]} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
 ```
 {% /multicode %}
 
@@ -807,6 +918,11 @@ Query::cursorAfter("62a7...f620")
 ```swift
 Query.cursorAfter("62a7...f620")
 ```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"cursorAfter","values":["62a7...f620"]} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+```
 {% /multicode %}
 
 ### Cursor before {% #cursor-before %}
@@ -834,6 +950,11 @@ Query::cursorBefore("62a7...a600")
 ```
 ```swift
 Query.cursorBefore("62a7...a600")
+```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"cursorBefore","values":["62a7...a600"]} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
 ```
 {% /multicode %}
 
@@ -895,6 +1016,11 @@ results = databases.list_documents(
         ])
     ]
 )
+```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]={"method":"or","values":[{"method":"and","values":[{"method":"equal","attribute":"category","values":["books"]},{"method":"lessThan","attribute":"price","values":[20]}]},{"method":"and","values":[{"method":"equal","attribute":"category","values":["magazines"]},{"method":"lessThan","attribute":"price","values":[10]}]}]} HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
 ```
 {% /multicode %}
 
