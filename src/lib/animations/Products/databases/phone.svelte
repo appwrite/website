@@ -9,7 +9,7 @@
 <div data-theme-ignore class="inner-phone light">
     <div class="header">
         <p class="title">Your tasks</p>
-        <span class="icon-menu" aria-label="menu" />
+        <span class="icon-menu" aria-label="menu"></span>
     </div>
 
     <div class="date">Today</div>
@@ -23,7 +23,7 @@
     </div>
 
     <button class="add-btn">
-        <span class="web-icon-plus" />
+        <span class="web-icon-plus"></span>
     </button>
 </div>
 

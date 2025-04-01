@@ -311,7 +311,7 @@
                                 class="web-icon-search z-[5]"
                                 aria-hidden="true"
                                 style="inset-block-start: 0.65rem;"
-                            />
+                            ></span>
                             <input
                                 class="web-input-button relative z-1 w-full"
                                 type="text"
@@ -373,12 +373,14 @@
                                     href={navigationLink(data.currentPage - 1)}
                                     class:navigation-button-active={!isFirstPage}
                                 >
-                                    <span class="web-icon-chevron-left" style="font-size: 20px" />
+                                    <span class="web-icon-chevron-left" style="font-size: 20px"
+                                    ></span>
                                     Previous
                                 </a>
                             {:else}
                                 <span class="navigation-button flex">
-                                    <span class="web-icon-chevron-left" style="font-size: 20px" />
+                                    <span class="web-icon-chevron-left" style="font-size: 20px"
+                                    ></span>
                                     Previous
                                 </span>
                             {/if}
@@ -406,12 +408,14 @@
                                     class:navigation-button-active={!isLastPage}
                                 >
                                     Next
-                                    <span class="web-icon-chevron-right" style="font-size: 20px" />
+                                    <span class="web-icon-chevron-right" style="font-size: 20px"
+                                    ></span>
                                 </a>
                             {:else}
                                 <span class="navigation-button flex">
                                     Next
-                                    <span class="web-icon-chevron-right" style="font-size: 20px" />
+                                    <span class="web-icon-chevron-right" style="font-size: 20px"
+                                    ></span>
                                 </span>
                             {/if}
                         </ul>

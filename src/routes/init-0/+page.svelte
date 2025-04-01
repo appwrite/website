@@ -146,7 +146,7 @@
         <p class="text-description">The start of something new.</p>
         <div class="buttons">
             <button on:click={() => scrollIntoView('#kickoff')} class="web-button is-secondary">
-                <div class="web-icon-play" />
+                <div class="web-icon-play"></div>
                 <span class="text">Watch the video</span>
             </button>
         </div>
@@ -198,7 +198,7 @@
                     <Day5 {date} release={day.release} />
                 {:else}
                     <h2 class="text-micro text-primary uppercase">
-                        <div class="web-dot" />
+                        <div class="web-dot"></div>
                         {date}
                         <span class="web-u-color-text-accent">_</span>
                     </h2>

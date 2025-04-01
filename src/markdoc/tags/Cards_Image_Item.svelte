@@ -1,10 +1,15 @@
 <script lang="ts">
-    import { setContext } from 'svelte';
+    import { setContext, type Snippet } from 'svelte';
 
-    export let href: string;
-    export let light = '';
-    export let dark = '';
-    export let title: string;
+    interface Props {
+        href: string;
+        light?: string;
+        dark?: string;
+        title: string;
+        children: Snippet;
+    }
+
+    const { href, light = '', dark = '', title, children }: Props = $props();
 
     setContext('no-paragraph', true);
 </script>
@@ -17,7 +22,7 @@
             {title}
         </h4>
         <p class="text-sub-body mt-1">
-            <slot />
+            {@render children()}
         </p>
     </a>
 </li>

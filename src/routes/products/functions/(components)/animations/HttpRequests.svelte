@@ -1,6 +1,6 @@
 <script lang="ts">
     import { sleep, write } from '$lib/animations';
-    import Input from '$lib/components/ui/Input.svelte';
+    import Input from '$lib/components/ui/input.svelte';
     import { classNames } from '$lib/utils/classnames';
     import { writable } from 'svelte/store';
 
@@ -31,7 +31,7 @@
         >
             <div class="flex gap-0.5 py-1 pl-1">
                 {#each Array.from({ length: 3 }) as _}
-                    <div class="size-1 rounded-full bg-white" />
+                    <div class="size-1 rounded-full bg-white"></div>
                 {/each}
             </div>
             <div class="bg-greyscale-850 flex-1 rounded-md p-4"></div>
@@ -73,8 +73,8 @@
         <div class="flex w-full flex-1 flex-col gap-2">
             {#each Array.from({ length: 3 }) as _}
                 <div class="flex w-full items-center gap-3 rounded-md bg-white/6 p-2">
-                    <div class="bg-greyscale-850 h-1 flex-1 rounded" />
-                    <div class="size-1 rounded-full bg-white" />
+                    <div class="bg-greyscale-850 h-1 flex-1 rounded"></div>
+                    <div class="size-1 rounded-full bg-white"></div>
                 </div>
             {/each}
         </div>

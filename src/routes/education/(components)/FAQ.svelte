@@ -85,7 +85,7 @@
                                     class="icon web-u-color-text-primary self-start transition-transform"
                                     class:rotate-180={$isSelected(`${index}`)}
                                 >
-                                    <span class="icon-cheveron-down" aria-hidden="true" />
+                                    <span class="icon-cheveron-down" aria-hidden="true"></span>
                                 </div>
                             </button>
                         </h3>
@@ -110,7 +110,7 @@
                                 {faqItem.question}
                             </span>
                             <div class="icon web-u-color-text-primary">
-                                <span class="icon-cheveron-down" aria-hidden="true" />
+                                <span class="icon-cheveron-down" aria-hidden="true"></span>
                             </div>
                         </summary>
 

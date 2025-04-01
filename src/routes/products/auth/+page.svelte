@@ -74,7 +74,8 @@
                                         height="32"
                                     />
                                     <h4 class="text-body text-primary">Messaging</h4>
-                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
+                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
+                                    ></span>
                                 </div>
                                 <p class="text-sub-body">
                                     Use Appwrite messaging to send email, SMS, and push
@@ -100,7 +101,8 @@
                                         height="32"
                                     />
                                     <h4 class="text-body text-primary">Functions</h4>
-                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
+                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
+                                    ></span>
                                 </div>
                                 <p class="text-sub-body">
                                     Scale big and unlock limitless potential with Appwrite
@@ -126,7 +128,8 @@
                                         height="32"
                                     />
                                     <h4 class="text-body text-primary">Databases</h4>
-                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
+                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
+                                    ></span>
                                 </div>
                                 <p class="text-sub-body">
                                     Store and query structured data, ensuring scalable storage.
@@ -151,7 +154,8 @@
                                         height="32"
                                     />
                                     <h4 class="text-body text-primary">Storage</h4>
-                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
+                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
+                                    ></span>
                                 </div>
                                 <p class="text-sub-body">
                                     Manage your files' project, using convenient APIs and utilities.
@@ -176,7 +180,8 @@
                                         height="32"
                                     />
                                     <h4 class="text-body text-primary">Realtime</h4>
-                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true" />
+                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
+                                    ></span>
                                 </div>
                                 <p class="text-sub-body">
                                     Utilize realtime information from all Appwrite services.

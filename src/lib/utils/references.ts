@@ -21,7 +21,7 @@ export const versions: Readonly<Array<Omit<Version, 'cloud'>>> = allVersions.fil
     (v) => v !== 'cloud'
 );
 
-export enum Service {
+export const Service {
     Account = 'account',
     Avatars = 'avatars',
     Databases = 'databases',
@@ -33,40 +33,46 @@ export enum Service {
     Teams = 'teams',
     Users = 'users',
     Sites = 'sites'
-}
+} as const;
 
-export enum Platform {
-    ClientWeb = 'client-web',
-    ClientFlutter = 'client-flutter',
-    ClientReactNative = 'client-react-native',
-    ClientApple = 'client-apple',
-    ClientAndroidKotlin = 'client-android-kotlin',
-    ClientAndroidJava = 'client-android-java',
-    ClientGraphql = 'client-graphql',
-    ClientRest = 'client-rest',
-    ServerNodeJs = 'server-nodejs',
-    ServerPython = 'server-python',
-    ServerDart = 'server-dart',
-    ServerPhp = 'server-php',
-    ServerRuby = 'server-ruby',
-    ServerDotNet = 'server-dotnet',
-    ServerDeno = 'server-deno',
-    ServerGo = 'server-go',
-    ServerSwift = 'server-swift',
-    ServerKotlin = 'server-kotlin',
-    ServerJava = 'server-java',
-    ServerGraphql = 'server-graphql',
-    ServerRest = 'server-rest'
-}
+export type ServiceType = typeof Service;
+export type ServiceValue = (typeof Service)[keyof typeof Service];
 
-export enum Framework {
-    NextJs = 'Next.js',
-    SvelteKit = 'SvelteKit',
-    VueJs = 'Vue.js',
-    Nuxt3 = 'Nuxt3',
-    Astro = 'Astro',
-    Remix = 'Remix'
-}
+export const Platform = {
+    ClientWeb: 'client-web',
+    ClientFlutter: 'client-flutter',
+    ClientReactNative: 'client-react-native',
+    ClientApple: 'client-apple',
+    ClientAndroidKotlin: 'client-android-kotlin',
+    ClientAndroidJava: 'client-android-java',
+    ClientGraphql: 'client-graphql',
+    ClientRest: 'client-rest',
+    ServerNodeJs: 'server-nodejs',
+    ServerPython: 'server-python',
+    ServerDart: 'server-dart',
+    ServerPhp: 'server-php',
+    ServerRuby: 'server-ruby',
+    ServerDotNet: 'server-dotnet',
+    ServerDeno: 'server-deno',
+    ServerGo: 'server-go',
+    ServerSwift: 'server-swift',
+    ServerKotlin: 'server-kotlin',
+    ServerJava: 'server-java',
+    ServerGraphql: 'server-graphql',
+    ServerRest: 'server-rest'
+} as const;
+
+type PlatformType = typeof Platform;
+export type Platform = (typeof Platform)[keyof typeof Platform];
+
+export const Framework = {
+    NextJs: 'Next.js',
+    SvelteKit: 'SvelteKit',
+    VueJs: 'Vue.js',
+    Nuxt3: 'Nuxt3',
+    Astro: 'Astro',
+    Remix: 'Remix'
+} as const;
 
 export const platformMap: Record<Language | string, string> = {
     [Platform.ClientApple]: 'Apple',
@@ -128,7 +134,7 @@ export const platformMap: Record<Language | string, string> = {
     go: 'Go'
 };
 
-export const serviceMap: Record<Service, string> = {
+export const serviceMap: Record<ServiceValue, string> = {
     [Service.Account]: 'Account',
     [Service.Avatars]: 'Avatars',
     [Service.Databases]: 'Databases',
