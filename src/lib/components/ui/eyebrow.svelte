@@ -1,7 +1,30 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
 
-    type ElementType = 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span';
+    // html text elements
+    type ElementType =
+        | 'p'
+        | 'h1'
+        | 'h2'
+        | 'h3'
+        | 'h4'
+        | 'h5'
+        | 'h6'
+        | 'span'
+        | 'div'
+        | 'strong'
+        | 'em'
+        | 'small'
+        | 'mark'
+        | 'abbr'
+        | 'blockquote'
+        | 'cite'
+        | 'code'
+        | 'kbd'
+        | 'var'
+        | 'samp'
+        | 'sub'
+        | 'sup';
 
     let className: string = '';
     export let as: ElementType = 'span';
