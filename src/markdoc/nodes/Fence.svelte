@@ -31,12 +31,16 @@
     const insideMultiCode = hasContext('multi-code');
     const selected = insideMultiCode ? getContext<CodeContext>('multi-code').selected : null;
 
-    const CopyStatus = {
+  const CopyStatus = {
         Copy: 'Copy',
         Copied: 'Copied!'
     } as const;
+    type CopyStatusType = keyof typeof CopyStatus;
+    type CopyStatusValue = (typeof CopyStatus)[CopyStatusType];
 
-    let copyText = $state(CopyStatus.Copy);
+    let copyText = $state<CopyStatusValue>(CopyStatus.Copy);
+
+
     async function handleCopy() {
         await copy(toCopy ?? content);
 

@@ -108,9 +108,9 @@
                                             +{hiddenRuntimes.length}
                                         </span>
                                     </li>
-                                    <svelte:fragment slot="tooltip">
+                                    {#snippet tooltip()}
                                         <span class="text-micro">{hiddenRuntimes.join(', ')}</span>
-                                    </svelte:fragment>
+                                    {/snippet}
                                 </Tooltip>
                             {/if}
                         </ul>

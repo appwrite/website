@@ -22,12 +22,15 @@
         }
     });
 
-    const CopyStatus = {
+ const CopyStatus = {
         Copy: 'Copy',
         Copied: 'Copied!'
     } as const;
+    type CopyStatusType = keyof typeof CopyStatus;
+    type CopyStatusValue = (typeof CopyStatus)[CopyStatusType];
 
-    let copyText = CopyStatus.Copy;
+    let copyText = $state<CopyStatusValue>(CopyStatus.Copy);
+
     async function handleCopy() {
         await copy(content);
 
@@ -73,14 +76,16 @@
                 <li class="buttons-list-item" style="padding-inline-start: 13px">
                     <Tooltip>
                         <button
-                            on:click={handleCopy}
-                            class="web-icon-button"
-                            aria-label="copy code from code-snippet"
-                            ><span class="web-icon-copy" aria-hidden="true"></span></button
+                        on:click={handleCopy}
+                        class="web-icon-button"
+                        aria-label="copy code from code-snippet"
+                        ><span class="web-icon-copy" aria-hidden="true"></span></button
                         >
-                        <svelte:fragment slot="tooltip">
-                            {copyText}
-                        </svelte:fragment>
+                        {#snippet tooltip()}
+                            <span>
+                                {copyText}
+                            </span>
+                        {/snippet}
                     </Tooltip>
                 </li>
             </ul>

@@ -26,7 +26,10 @@
         Copy: 'Copy',
         Copied: 'Copied!'
     } as const;
-    let copyText = CopyStatus.Copy;
+    type CopyStatusType = keyof typeof CopyStatus;
+    type CopyStatusValue = (typeof CopyStatus)[CopyStatusType];
+
+    let copyText = $state<CopyStatusValue>(CopyStatus.Copy);
     async function handleCopy() {
         await copy(content);
 
@@ -75,9 +78,11 @@
                             aria-label="copy code from code-snippet"
                             ><span class="web-icon-copy" aria-hidden="true"></span></button
                         >
-                        <svelte:fragment slot="tooltip">
-                            {copyText}
-                        </svelte:fragment>
+                        {#snippet tooltip()}
+                            <span>
+                                {copyText}
+                            </span>
+                        {/snippet}
                     </Tooltip>
                 </li>
             </ul>

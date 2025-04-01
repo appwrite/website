@@ -72,17 +72,17 @@
     );
 </script>
 
-{@render asChild?.({ trigger: $trigger })}
-
-{#if !asChild && children}
+{#if asChild}
+    {@render asChild({ trigger: $trigger })}
+{:else if children}
     <span use:melt={$trigger}>
         {@render children()}
     </span>
 {/if}
 
-{#if $open && !disabled}
-    <div use:melt={$content} class="web-tooltip text-sub-body" transition:fly={flyParams}>
-        <div use:melt={$arrow}></div>
-        {@render tooltip()}
-    </div>
+{#if tooltip && $open && !disabled}
+<div use:melt={$content} class="web-tooltip text-sub-body" transition:fly={flyParams}>
+    <div use:melt={$arrow}></div>
+    {@render tooltip()}
+</div>
 {/if}

@@ -636,9 +636,9 @@
                                                             class="icon-info"
                                                             aria-hidden="true"
                                                         ></button>
-                                                        <svelte:fragment slot="tooltip">
+                                                        {#snippet tooltip()}
                                                             {row.info}
-                                                        </svelte:fragment>
+                                                        {/snippet}
                                                     </Tooltip>
                                                 {/if}
                                             </div>
