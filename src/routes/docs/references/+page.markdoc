@@ -48,6 +48,9 @@ Deploy and scale serverless functions in secure, isolated runtimes.
 {% cards_item href="/docs/references/cloud/server-nodejs/messaging" title="Messaging" %}
 Send push notifications, SMS, or emails to users or groups of users using your app.
 {% /cards_item %}
+{% cards_item href="/docs/references/cloud/client-web/sites" title="Sites" %}
+Build and deploy web applications on the internet at scale.
+{% /cards_item %}
 {% cards_item href="/docs/references/cloud/client-web/locale" title="Localization" %}
 Utility APIs to customize your app based on your users' location.
 {% /cards_item %}

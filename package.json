@@ -35,7 +35,7 @@
         "@appwrite.io/console": "https://pkg.pr.new/appwrite/appwrite/@appwrite.io/console@fbd0051",
         "@appwrite.io/pink": "~0.26.0",
         "@appwrite.io/pink-icons": "~0.26.0",
-        "@appwrite.io/repo": "github:appwrite/appwrite#1.6.x",
+        "@appwrite.io/repo": "github:appwrite/appwrite#feat-sites",
         "@eslint/js": "^9.21.0",
         "@fingerprintjs/fingerprintjs": "^4.5.1",
         "@internationalized/date": "3.5.0",

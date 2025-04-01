@@ -3,6 +3,7 @@ import type { Language } from './code';
 import { browser } from '$app/environment';
 
 const allVersions = [
+    '1.7.x',
     '1.6.x',
     '1.5.x',
     '1.4.x',
@@ -30,7 +31,8 @@ export enum Service {
     Locale = 'locale',
     Storage = 'storage',
     Teams = 'teams',
-    Users = 'users'
+    Users = 'users',
+    Sites = 'sites'
 }
 
 export enum Platform {
@@ -136,7 +138,8 @@ export const serviceMap: Record<Service, string> = {
     [Service.Locale]: 'Locale',
     [Service.Storage]: 'Storage',
     [Service.Teams]: 'Teams',
-    [Service.Users]: 'Users'
+    [Service.Users]: 'Users',
+    [Service.Sites]: 'Sites'
 };
 
 export const preferredVersion = writable<Version | null>(

@@ -107,6 +107,11 @@ function getExamples(version: string) {
                 query: '?raw',
                 import: 'default'
             });
+        case '1.7.x':
+            return import.meta.glob('$appwrite/docs/examples/1.7.x/**/*.md', {
+                query: '?raw',
+                import: 'default'
+            });
     }
 }
 

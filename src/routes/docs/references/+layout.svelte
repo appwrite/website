@@ -72,6 +72,11 @@
                     href: `${prefix}/messaging`
                 },
                 {
+                    label: 'Sites',
+                    icon: 'icon-globe-alt',
+                    href: `${prefix}/sites`
+                },
+                {
                     label: 'Localization',
                     icon: 'icon-location-marker',
                     href: `${prefix}/locale`
