@@ -5,10 +5,15 @@
     import { platformMap } from '$lib/utils/references';
     import { writable } from 'svelte/store';
 
-    export let selected: Language = 'js';
-    export let data: { language: string; content: string; platform?: string }[] = [];
-    export let width: number | null = null;
-    export let height: number | null = null;
+    type $$Props = {
+        selected: Language;
+        data: Array<{ language: string; content: string; platform?: string }>
+        width: number | null;
+        height: number | null;
+    }
+
+    let { selected, data, width, height}: $$Props = $props()
+
 
     $: snippets = writable(new Set(data.map((d) => d.language)));
 
