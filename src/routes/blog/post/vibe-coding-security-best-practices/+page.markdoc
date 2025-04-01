@@ -89,7 +89,6 @@ fetch(`https://api.example.com/data?key=${apiKey}`)
 Instead of hardcoding secrets, always store them in **environment variables** or a **secrets manager**. Services like **AWS Secrets Manager, Azure Key Vault, and HashiCorp Vault** provide secure storage and controlled access to sensitive credentials. In a Node.js application, use environment variables like this:
 
 ```jsx
-require('dotenv').config()
 const apiKey = process.env.API_KEY
 ```
 
