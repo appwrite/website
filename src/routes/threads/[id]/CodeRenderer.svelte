@@ -21,7 +21,7 @@
         Copy = 'Copy',
         Copied = 'Copied!'
     }
-    
+
     let copyText = CopyStatus.Copy;
     async function handleCopy() {
         await copy(text);

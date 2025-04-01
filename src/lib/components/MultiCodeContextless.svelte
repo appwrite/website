@@ -22,7 +22,7 @@
         }
     });
 
-  const enum CopyStatus {
+    const enum CopyStatus {
         Copy = 'Copy',
         Copied = 'Copied!'
     }
