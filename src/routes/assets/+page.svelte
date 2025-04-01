@@ -10,7 +10,7 @@
     import MainFooter from '../../lib/components/MainFooter.svelte';
     import Copy from './Copy.svelte';
 
-    const title: 'Assets' + TITLE_SUFFIX;
+    const title: string = 'Assets' + TITLE_SUFFIX;
     const description =
         "This page features Appwrite's key brand assets including the logotype, colors, product visuals, and practical guidelines for their usage.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
@@ -22,15 +22,20 @@
         COLORS: 'Brand colors',
         VISUALS: 'Product visuals',
         CONTACT: 'Contact us'
-    } as const
+    } as const;
 
-    const getSectionId = (section: Section) => section.toLowerCase().replace(/\s/g, '-');
+    type SectionType = typeof Section;
 
-    let selectedMap: Map<Section, boolean> = new Map(
+    // To get the type of the values (union of string literals)
+    type SectionValues = SectionType[keyof SectionType];
+
+    const getSectionId = (section: SectionValues) => section.toLowerCase().replace(/\s/g, '-');
+
+    let selectedMap: Map<SectionValues, boolean> = new Map(
         Object.values(Section).map((section) => [section, false])
     );
 
-    const handleVisibility = (section: Section) => {
+    const handleVisibility = (section: SectionValues) => {
         return (e: CustomEvent<boolean>) => {
             selectedMap.set(section, e.detail);
             selectedMap = selectedMap;

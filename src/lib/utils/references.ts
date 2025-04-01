@@ -33,6 +33,9 @@ export const Service = {
     Users: 'users'
 } as const;
 
+export type ServiceType = typeof Service;
+export type ServiceValue = (typeof Service)[keyof typeof Service];
+
 export const Platform = {
     ClientWeb: 'client-web',
     ClientFlutter: 'client-flutter',
@@ -56,6 +59,9 @@ export const Platform = {
     ServerGraphql: 'server-graphql',
     ServerRest: 'server-rest'
 } as const;
+
+type PlatformType = typeof Platform;
+export type Platform = (typeof Platform)[keyof typeof Platform];
 
 export const Framework = {
     NextJs: 'Next.js',
@@ -126,7 +132,7 @@ export const platformMap: Record<Language | string, string> = {
     go: 'Go'
 };
 
-export const serviceMap: Record<Service, string> = {
+export const serviceMap: Record<ServiceValue, string> = {
     [Service.Account]: 'Account',
     [Service.Avatars]: 'Avatars',
     [Service.Databases]: 'Databases',
