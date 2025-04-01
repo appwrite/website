@@ -1,4 +1,5 @@
 import crypto from 'node:crypto';
+import { dev as isDevEnv } from '$app/environment';
 
 import { posthogServerClient } from '$lib/experiments';
 import { getAllChangelogEntries } from './changelog/utils';
@@ -10,7 +11,9 @@ const generateDistinctId = (fingerprintData: Record<string, string>) => {
 };
 
 export const load = async ({ request, getClientAddress }) => {
-    const clientAddress = getClientAddress();
+    // use dummy IP in dev to avoid warnings — its harmless.
+    const clientAddress = isDevEnv ? '127.0.0.1' : getClientAddress();
+
     const headers = Object.fromEntries(request.headers);
     const fingerprintData = {
         ip: clientAddress,

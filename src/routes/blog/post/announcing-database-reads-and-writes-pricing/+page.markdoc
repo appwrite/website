@@ -27,7 +27,7 @@ We will begin charging for database read and write operations beyond the include
 
 - **Free Plan**: 500,000 read operations and 250,000 write operations per month.
 - **Pro and Scale Plans**: 1,750,000 read operations and 750,000 write operations per month, with additional operations available at $0.060 per 100,000 reads and $0.10 per 100,000 writes.
-- **Enterprise Plan**: Unlimited read and write operations.
+- **Enterprise Plan**: Custom pricing.
 
 This change will help support the infrastructure required to maintain high-performance database services and enable us to continue enhancing the platform.
 
