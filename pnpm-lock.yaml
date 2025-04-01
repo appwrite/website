@@ -237,6 +237,9 @@ importers:
       vitest:
         specifier: ^1.6.0
         version: 1.6.1(@types/node@22.13.10)(jsdom@26.0.0)(lightningcss@1.29.2)(sass@1.85.1)
+      zod:
+        specifier: ^3.24.2
+        version: 3.24.2
 
 packages:
 
