@@ -1,8 +1,12 @@
 <script lang="ts">
-    import type { Writable } from 'svelte/store';
     import { getContext, hasContext } from 'svelte';
+    import type { Writable } from 'svelte/store';
 
-    export let content: string;
+    interface Props {
+        content: string;
+    }
+
+    let { content }: Props = $props();
 
     if (hasContext('isCodeInsideTd')) {
         // setting `true` correctly uses flex & align center.

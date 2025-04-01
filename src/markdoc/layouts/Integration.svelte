@@ -47,7 +47,7 @@
         class="web-u-sep-block-end pb-0"
         style="background-color:rgba(23, 23, 26, 1); margin-block-end: 2.5rem"
     >
-        <div class="container dark">
+        <div class="dark container">
             <div class="web-integrations-top-section">
                 <div class="web-carousel-wrapper">
                     <a href="/integrations" class="web-button is-text mb-12">

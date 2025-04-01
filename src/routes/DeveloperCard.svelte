@@ -13,11 +13,8 @@
                 <div class="web-user-box-name text-sub-body font-medium">{name}</div>
                 <div class="web-user-box-username text-sub-body">{tag}</div>
             </div>
-            <span
-                class="web-social-item-icon web-icon-{icon}"
-                aria-label={icon}
-                aria-hidden="true"
-            />
+            <span class="web-social-item-icon web-icon-{icon}" aria-label={icon} aria-hidden="true"
+            ></span>
         </div>
         <p class="text-sub-body web-u-text-color-neutral-700 font-medium">
             <slot />

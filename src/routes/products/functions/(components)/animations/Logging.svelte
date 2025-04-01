@@ -38,11 +38,11 @@
         class="relative flex h-[250px] flex-col items-center justify-center overflow-hidden rounded-lg bg-white/[0.02]"
     >
         <div
-            class="my-6 mx-auto w-full max-w-[95%] rounded-lg bg-white/10 px-2 pb-2 md:max-w-[70%]"
+            class="mx-auto my-6 w-full max-w-[95%] rounded-lg bg-white/10 px-2 pb-2 md:max-w-[70%]"
         >
             <div class="flex gap-0.5 py-2 pl-1">
                 {#each Array.from({ length: 3 }) as _}
-                    <div class="size-1 rounded-full bg-white" />
+                    <div class="size-1 rounded-full bg-white"></div>
                 {/each}
             </div>
             <div class="bg-greyscale-850 rounded-md p-4">

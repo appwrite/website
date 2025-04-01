@@ -56,7 +56,7 @@
                     {activePlatform}{' '}
                     <div
                         class="animate-caret-blink absolute top-1/2 -right-2 bottom-0 block h-[75%] w-px -translate-y-1/2 bg-[linear-gradient(-146deg,_#FD376F,_#19191D_47%,_#19191D)]"
-                    />
+                    ></div>
                 </div>
             </h2>
             <p class="md:text-description text-body text-secondary font-medium">
@@ -64,7 +64,7 @@
                 need to get your project started.
             </p>
             <div
-                class="mt-2 mx-auto flex w-full flex-col items-center justify-center gap-2 md:flex-row"
+                class="mx-auto mt-2 flex w-full flex-col items-center justify-center gap-2 md:flex-row"
             >
                 <a
                     href={GITHUB_REPO_LINK}
@@ -72,7 +72,7 @@
                     rel="noopener noreferrer"
                     class="web-button is-secondary h-10 !w-full md:!w-fit"
                 >
-                    <span class="web-icon-star" aria-hidden="true" />
+                    <span class="web-icon-star" aria-hidden="true"></span>
                     <span class="text">Star on GitHub</span>
                     <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
                 </a>
@@ -80,7 +80,7 @@
                     class="web-button is-secondary h-10 !w-full md:!w-fit"
                     href="https://appwrite.io/discord"
                 >
-                    <span class="web-icon-discord" />
+                    <span class="web-icon-discord"></span>
                     <span class="text">Join Discord</span>
                 </a>
             </div>

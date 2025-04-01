@@ -17,7 +17,7 @@
 </script>
 
 <h2 class="text-micro text-primary uppercase">
-    <div class="web-dot" />
+    <div class="web-dot"></div>
     {#if day !== undefined}
         {day}<span class="web-u-color-text-accent">_</span>
     {/if}
