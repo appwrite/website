@@ -178,9 +178,9 @@
                 on:click={() => ($isMobileNavOpen = !$isMobileNavOpen)}
             >
                 {#if $isMobileNavOpen}
-                    <span aria-hidden="true" class="web-icon-close" />
+                    <span aria-hidden="true" class="web-icon-close"></span>
                 {:else}
-                    <span aria-hidden="true" class="web-icon-hamburger-menu" />
+                    <span aria-hidden="true" class="web-icon-hamburger-menu"></span>
                 {/if}
             </button>
         </div>
@@ -221,7 +221,7 @@
                             posthog: { name: 'github-stars_nav_click' }
                         })}
                 >
-                    <span class="web-icon-star" aria-hidden="true" />
+                    <span class="web-icon-star" aria-hidden="true"></span>
                     <span class="text">Star on GitHub</span>
                     <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
                 </a>

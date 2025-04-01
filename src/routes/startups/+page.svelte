@@ -202,7 +202,7 @@
     <div class="web-big-padding-section relative overflow-hidden">
         <div class="relative py-10">
             <div class="web-big-padding-section-level-2 e-u-margin-block-128-desktop">
-                <section class="container web-u-padding-block-end-0">
+                <section class="web-u-padding-block-end-0 container">
                     <div
                         class="web-hero"
                         style="--hero-max-inline-size:49.375rem; --hero-gap:1.125rem;"
@@ -217,7 +217,7 @@
                             backend for you to build your products. You will receive $20,000 Cloud
                             credits for Appwrite Scale for 12 months.
                         </p>
-                        <button on:click={scrollToForm} class="web-button mt-3 mx-auto">
+                        <button on:click={scrollToForm} class="web-button mx-auto mt-3">
                             Apply now
                         </button>
                     </div>
@@ -308,7 +308,7 @@
                                             class="web-card is-white group flex flex-col gap-5"
                                         >
                                             <div class="border-card">
-                                                <div class="glow" />
+                                                <div class="glow"></div>
                                             </div>
                                             <p class="aw-sub-body-500">
                                                 The integrated user authentication and the ease of
@@ -336,7 +336,7 @@
                                                 class="text-sub-body text-primary flex items-center gap-1"
                                                 >Read customer story <span
                                                     class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
-                                                /></span
+                                                ></span></span
                                             >
                                         </a>
                                     </div>
@@ -381,7 +381,7 @@
                                             class="web-card group is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
                                         >
                                             <div class="border-card">
-                                                <div class="glow" />
+                                                <div class="glow"></div>
                                             </div>
                                             <p class="aw-sub-body-500">{ryanOconner.text}</p>
                                             <div class="web-user-box">
@@ -405,7 +405,7 @@
                                                 class="text-sub-body text-primary flex items-center gap-1"
                                                 >Read customer story <span
                                                     class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
-                                                /></span
+                                                ></span></span
                                             >
                                         </a>
                                     </div>
@@ -507,7 +507,7 @@
                                             class="web-card group is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
                                         >
                                             <div class="border-card">
-                                                <div class="glow" />
+                                                <div class="glow"></div>
                                             </div>
                                             <p class="aw-sub-body-500">{mariusBolik.text}</p>
                                             <div class="web-user-box">
@@ -531,7 +531,7 @@
                                                 class="text-sub-body text-primary flex items-center gap-1"
                                                 >Read customer story <span
                                                     class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
-                                                /></span
+                                                ></span></span
                                             >
                                         </a>
                                     </div>
@@ -586,7 +586,7 @@
             <div class="is-margin-replace-padding relative pt-[7.5rem]">
                 <div class="relative">
                     <div class="web-big-padding-section-level-2">
-                        <div class="container relative">
+                        <div class="relative container">
                             <img
                                 class="web-is-only-desktop absolute"
                                 style="inset-inline-end:-650px; inset-block-start:-200px; max-width:none; max-height:none;"
@@ -644,7 +644,7 @@
                                         </section>
                                         <div
                                             class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
-                                        />
+                                        ></div>
                                     </div>
                                 </div>
                                 {#if submitted}
@@ -753,7 +753,7 @@
                         </div>
                     </div>
                     <div class="web-big-padding-section-level-2 relative">
-                        <div class="container relative" style:z-index="10">
+                        <div class="relative container" style:z-index="10">
                             <section class="web-grid-4-6">
                                 <header>
                                     <div class="text-display font-aeonik-pro text-primary">FAQ</div>

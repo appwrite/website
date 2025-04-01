@@ -30,9 +30,9 @@
         >
             <header class="grid h-12 w-full grid-cols-12 items-center pl-2">
                 <div class="col-span-2 flex gap-1">
-                    <button class="size-2 rounded-full bg-[#EC6A5E]" />
-                    <button class="size-2 rounded-full bg-[#F5BF4F]" />
-                    <button class="size-2 rounded-full bg-[#6d9e66]" />
+                    <button class="size-2 rounded-full bg-[#EC6A5E]"></button>
+                    <button class="size-2 rounded-full bg-[#F5BF4F]"></button>
+                    <button class="size-2 rounded-full bg-[#6d9e66]"></button>
                 </div>
                 <div
                     class="bg-offset col-span-6 col-start-4 flex h-6 w-full flex-1 items-center justify-center rounded-full backdrop-blur-lg"
@@ -46,7 +46,7 @@
                     class="grid size-full min-h-0 flex-1 grid-cols-1 grid-rows-12 gap-2 overflow-hidden rounded-xl"
                 >
                     <div class="bg-offset row-span-8 p-1">
-                        <span class="bg-badge-bg-dark ml-1 rounded-full py-0.5 px-2 text-[.5265rem]"
+                        <span class="bg-badge-bg-dark ml-1 rounded-full px-2 py-0.5 text-[.5265rem]"
                             >main.ts</span
                         >
 
@@ -65,7 +65,7 @@
                         </ul>
                     </div>
                     <div class="bg-offset row-span-4">
-                        <span class="bg-badge-bg-dark ml-1 rounded-full py-0.5 px-2 text-[.5265rem]"
+                        <span class="bg-badge-bg-dark ml-1 rounded-full px-2 py-0.5 text-[.5265rem]"
                             >Terminal</span
                         >
                     </div>
@@ -96,20 +96,20 @@
                                 <div
                                     class="text-primary text-micro grid grid-cols-3 place-items-center items-center divide-x divide-black/8 rounded-md border border-black/8 bg-[#19191C]/4 text-center"
                                 >
-                                    <button class="web-icon-minus size-6" />
+                                    <button class="web-icon-minus size-6"></button>
                                     <span class="flex size-6 items-center justify-center">1</span>
-                                    <button class="web-icon-plus size-6" />
+                                    <button class="web-icon-plus size-6"></button>
                                 </div>
                             </div>
                         {/each}
                         <div
-                            class="text-primary text-x-micro flex w-full items-center justify-between rounded-lg border border-black/8 bg-[#19191C]/4 py-1.5 px-2 font-medium"
+                            class="text-primary text-x-micro flex w-full items-center justify-between rounded-lg border border-black/8 bg-[#19191C]/4 px-2 py-1.5 font-medium"
                         >
                             <span>Coupon code</span>
                             <span class="text-[#7C67FE]">Apply</span>
                         </div>
                         <div
-                            class="-mt-1 flex w-fit items-center gap-1 rounded-[0.1875rem] bg-[#10B981]/32 py-0.5 px-1 text-[0.5rem] uppercase text-green-700"
+                            class="-mt-1 flex w-fit items-center gap-1 rounded-[0.1875rem] bg-[#10B981]/32 px-1 py-0.5 text-[0.5rem] text-green-700 uppercase"
                         >
                             GET30OFF
                             <span class=""
@@ -166,7 +166,7 @@
             <h2 class="text-title text-primary font-aeonik-pro my-4 text-pretty">
                 Develop your functions locally
             </h2>
-            <p class="text-body text-secondary text-pretty font-medium">
+            <p class="text-body text-secondary font-medium text-pretty">
                 Code and test your functions locally with Appwrite Functions, ensuring full control
                 over your development.
             </p>

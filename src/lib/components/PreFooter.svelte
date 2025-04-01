@@ -39,7 +39,7 @@
                     <div class="web-strip-plans-plan">
                         <h4 class="title text-description">Free</h4>
                         <div class="text-title font-aeonik-pro text-primary">$0</div>
-                        <div class="info text-caption font-medium" />
+                        <div class="info text-caption font-medium"></div>
                     </div>
                     <p class="web-strip-plans-info text-caption font-medium">
                         A great fit for passion projects and small applications.

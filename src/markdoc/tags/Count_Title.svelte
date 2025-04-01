@@ -1,5 +1,9 @@
 <script lang="ts">
-    export let title = '';
+    interface Props {
+        title?: string;
+    }
+
+    const { title = '' }: Props = $props();
 
     const el = title ? 'h3' : 'span';
 </script>

@@ -8,10 +8,10 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import ThreadCard from './ThreadCard.svelte';
 
+    import Input from '$lib/components/ui/input.svelte';
     import PreFooter from './PreFooter.svelte';
     import TagsDropdown from './TagsDropdown.svelte';
     import { getThreads } from './helpers';
-    import Input from '$lib/components/ui/Input.svelte';
 
     const title = 'Threads' + TITLE_SUFFIX;
     const description =
@@ -170,7 +170,7 @@
                                 class="web-icon-search z-[5]"
                                 aria-hidden="true"
                                 style="inset-block-start:0.9rem"
-                            />
+                            ></span>
 
                             <input
                                 class="web-input-button relative z-1 !pl-10"

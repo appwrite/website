@@ -92,7 +92,7 @@
             out:fade
             in:fade
         >
-            <span class="web-icon-arrow-up transition group-hover:-translate-y-0.5" />
+            <span class="web-icon-arrow-up transition group-hover:-translate-y-0.5"></span>
             Back to Top
         </button>
     {/if}

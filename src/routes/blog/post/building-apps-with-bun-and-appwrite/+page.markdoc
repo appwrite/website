@@ -71,7 +71,7 @@ Installing a self-hosted version of Appwrite is pretty straight-forward, all you
 2. Run the command:
 
 ```bash
-docker run -it --rm \
+"\t\t\t\t\tcontent: 'docker run -it --rm \\\n" +
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
     --entrypoint="install" \
