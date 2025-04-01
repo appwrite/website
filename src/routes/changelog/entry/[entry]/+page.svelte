@@ -21,10 +21,10 @@
 
     const sharingOptions = socialSharingOptions.filter((option) => option.label !== 'YCombinator');
 
-    const CopyStatus = {
-        Copy: 'Copy',
-        Copied: 'Copied!'
-    };
+    const enum CopyStatus {
+        Copy = 'Copy',
+        Copied = 'Copied!'
+    }
 
     let copyText = CopyStatus.Copy;
     async function handleCopy() {

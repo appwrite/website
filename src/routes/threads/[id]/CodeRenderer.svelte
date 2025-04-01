@@ -1,32 +1,28 @@
 <script lang="ts">
-    import { Tooltip } from '$lib/components';
-    import { getCodeHtml, type Language } from '$lib/utils/code';
-    import { copy } from '$lib/utils/copy';
-    import { platformMap } from '$lib/utils/references';
     import '$scss/hljs.css';
+    import { getCodeHtml, type Language } from '$lib/utils/code';
     import { getContext, hasContext } from 'svelte';
+    import { platformMap } from '$lib/utils/references';
+    import { Tooltip } from '$lib/components';
+    import { copy } from '$lib/utils/copy';
 
-    import type { CodeContext } from '$markdoc/tags/MultiCode.svelte';
     import { melt } from '@melt-ui/svelte';
+    import type { CodeContext } from '$markdoc/tags/MultiCode.svelte';
 
-    interface Props {
-        text: string;
-        language?: Language;
-        process?: boolean;
-        withLineNumbers?: boolean;
-    }
-
-    let { text, language = 'typescript', process = true, withLineNumbers = true }: Props = $props();
+    export let text: string;
+    export let language: Language = 'typescript';
+    export let process = true;
+    export let withLineNumbers = true;
 
     const insideMultiCode = hasContext('multi-code');
     const selected = insideMultiCode ? getContext<CodeContext>('multi-code').selected : null;
 
-    const CopyStatus = {
-        Copy: 'Copy',
-        Copied: 'Copied!'
-    };
-
-    let copyText = $state(CopyStatus.Copy);
+    const enum CopyStatus {
+        Copy = 'Copy',
+        Copied = 'Copied!'
+    }
+    
+    let copyText = CopyStatus.Copy;
     async function handleCopy() {
         await copy(text);
 
@@ -52,15 +48,13 @@
         });
     }
 
-    let result = $derived(
-        process
-            ? getCodeHtml({
-                  content: text,
-                  language: language ?? 'sh',
-                  withLineNumbers
-              })
-            : text
-    );
+    $: result = process
+        ? getCodeHtml({
+              content: text,
+              language: language ?? 'sh',
+              withLineNumbers
+          })
+        : text;
 </script>
 
 {#if insideMultiCode}
@@ -84,19 +78,19 @@
                 <ul class="buttons-list flex gap-2">
                     <li class="buttons-list-item ps-5">
                         <Tooltip>
-                            {#snippet asChild({ trigger })}
-                                <button
-                                    use:melt={trigger}
-                                    onclick={handleCopy}
-                                    class="web-icon-button"
-                                    aria-label="copy code from code-snippet"
-                                >
-                                    <span class="web-icon-copy" aria-hidden="true"></span>
-                                </button>
-                            {/snippet}
-                            {#snippet tooltip()}
+                            <button
+                                slot="asChild"
+                                let:trigger
+                                use:melt={trigger}
+                                on:click={handleCopy}
+                                class="web-icon-button"
+                                aria-label="copy code from code-snippet"
+                            >
+                                <span class="web-icon-copy" aria-hidden="true"></span>
+                            </button>
+                            <svelte:fragment slot="tooltip">
                                 {copyText}
-                            {/snippet}
+                            </svelte:fragment>
                         </Tooltip>
                     </li>
                 </ul>

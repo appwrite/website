@@ -31,10 +31,10 @@
     const insideMultiCode = hasContext('multi-code');
     const selected = insideMultiCode ? getContext<CodeContext>('multi-code').selected : null;
 
-    const CopyStatus = {
-        Copy: 'Copy',
-        Copied: 'Copied!'
-    };
+    const enum CopyStatus {
+        Copy = 'Copy',
+        Copied = 'Copied!'
+    }
 
     let copyText = $state(CopyStatus.Copy);
     async function handleCopy() {

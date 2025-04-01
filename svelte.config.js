@@ -10,7 +10,7 @@ const config = {
     // Consult https://kit.svelte.dev/docs/integrations#preprocessors
     // for more information about preprocessors
     preprocess: sequence([
-        vitePreprocess({ script: true}),
+        vitePreprocess(),
         markdoc({
             generateSchema: true,
             nodes: absolute('./src/markdoc/nodes/_Module.svelte'),
