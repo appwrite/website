@@ -9,7 +9,7 @@
                     Get community support by joining our Discord server.
                 </p>
                 <a class="web-button mt-6" href="https://appwrite.io/discord">
-                    <span class="web-icon-discord" />
+                    <span class="web-icon-discord"></span>
                     <span class="text">Join Discord</span>
                 </a>
             </div>

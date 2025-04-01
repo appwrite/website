@@ -97,11 +97,11 @@
 >
     <div class="physical-select">
         {#if selectedOption?.icon}
-            <span class={selectedOption.icon} aria-hidden="true" />
+            <span class={selectedOption.icon} aria-hidden="true"></span>
         {/if}
         <span>{$selectedLabel || initialLabel}</span>
     </div>
-    <span class="icon-cheveron-{$open ? 'up' : 'down'}" aria-hidden="true" />
+    <span class="icon-cheveron-{$open ? 'up' : 'down'}" aria-hidden="true"></span>
 </button>
 
 {#if $open}
@@ -119,7 +119,7 @@
                     {#each group.options as option}
                         <button class="web-select-option" use:melt={$optionEl(option)}>
                             {#if option.icon}
-                                <span class={option.icon} aria-hidden="true" />
+                                <span class={option.icon} aria-hidden="true"></span>
                             {/if}
                             <span>{option.label}</span>
                         </button>
@@ -134,7 +134,7 @@
                     {#each group.options as option}
                         <button class="web-select-option" use:melt={$optionEl(option)}>
                             {#if option.icon}
-                                <span class={option.icon} aria-hidden="true" />
+                                <span class={option.icon} aria-hidden="true"></span>
                             {/if}
                             <span style:text-transform="capitalize">{option.label}</span>
                         </button>
@@ -150,7 +150,7 @@
     style:display={nativeMobile ? undefined : 'none'}
 >
     {#if selectedOption?.icon}
-        <span class={selectedOption.icon} aria-hidden="true" />
+        <span class={selectedOption.icon} aria-hidden="true"></span>
     {/if}
     <select {id} bind:value>
         {#each groups as group}
@@ -172,7 +172,7 @@
             {/if}
         {/each}
     </select>
-    <span class="icon-cheveron-{$open ? 'up' : 'down'}" aria-hidden="true" />
+    <span class="icon-cheveron-{$open ? 'up' : 'down'}" aria-hidden="true"></span>
 </div>
 
 <style lang="scss">

@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { platformMap } from '$lib/utils/references';
-    import { writable } from 'svelte/store';
+    import { Select, Tooltip } from '$lib/components';
     import { getCodeHtml, type Language } from '$lib/utils/code';
     import { copy } from '$lib/utils/copy';
-    import { Select, Tooltip } from '$lib/components';
+    import { platformMap } from '$lib/utils/references';
+    import { writable } from 'svelte/store';
 
     export let selected: Language = 'js';
     export let data: { language: string; content: string; platform?: string }[] = [];
@@ -22,10 +22,10 @@
         }
     });
 
-    enum CopyStatus {
-        Copy = 'Copy',
-        Copied = 'Copied!'
-    }
+    const CopyStatus = {
+        Copy: 'Copy',
+        Copied: 'Copied!'
+    } as const;
     let copyText = CopyStatus.Copy;
     async function handleCopy() {
         await copy(content);
@@ -73,7 +73,7 @@
                             on:click={handleCopy}
                             class="web-icon-button"
                             aria-label="copy code from code-snippet"
-                            ><span class="web-icon-copy" aria-hidden="true" /></button
+                            ><span class="web-icon-copy" aria-hidden="true"></span></button
                         >
                         <svelte:fragment slot="tooltip">
                             {copyText}

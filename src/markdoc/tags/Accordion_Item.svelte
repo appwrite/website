@@ -1,9 +1,15 @@
 <script lang="ts">
     import { AccordionItem } from '$lib/components/Accordion';
+    import type { Snippet } from 'svelte';
 
-    export let title: string;
+    interface Props {
+        title: string;
+        children: Snippet;
+    }
+
+    const { title, children }: Props = $props();
 </script>
 
 <AccordionItem {title}>
-    <slot />
+    {@render children()}
 </AccordionItem>

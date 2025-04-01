@@ -12,7 +12,7 @@
 >
     <div class="container">
         <div class="mx-auto flex max-w-[325px] flex-col gap-4 text-center">
-            <h2 class="font-aeonik-pro text-primary text-pretty text-4xl">
+            <h2 class="font-aeonik-pro text-primary text-4xl text-pretty">
                 Built-in<br /> advanced security
             </h2>
             <p>

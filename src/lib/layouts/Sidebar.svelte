@@ -52,14 +52,14 @@
             class="web-input-text web-is-not-desktop"
             on:click={() => ($layoutState.showSearch = true)}
         >
-            <span class="web-icon-search" />
+            <span class="web-icon-search"></span>
             <span class="text">Search in docs</span>
         </button>
         <div class="web-side-nav-scroll">
             {#if parent}
                 <section class="web-side-nav-wrapper-parent">
                     <a href={parent.href} aria-label="go back">
-                        <span class="icon-cheveron-left" aria-hidden="true" />
+                        <span class="icon-cheveron-left" aria-hidden="true"></span>
                     </a>
                     <span class="web-side-nav-wrapper-parent-title text-micro uppercase"
                         >{parent.label}</span
@@ -110,7 +110,7 @@
                 style:margin-bottom="1rem"
                 aria-label="toggle nav"
             >
-                <span class="icon-cheveron-right" aria-hidden="true" />
+                <span class="icon-cheveron-right" aria-hidden="true"></span>
             </button>
         {/if}
         <div class="web-side-nav-mobile-footer-buttons">
@@ -122,7 +122,7 @@
                 rel="noopener noreferrer"
                 class="web-button is-text web-u-inline-width-100-percent-mobile"
             >
-                <span class="web-icon-star" aria-hidden="true" />
+                <span class="web-icon-star" aria-hidden="true"></span>
                 <span class="text">Star on GitHub</span>
                 <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
             </a>

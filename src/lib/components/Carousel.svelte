@@ -51,7 +51,7 @@
                 disabled={isStart}
                 on:click={prev}
             >
-                <span class="web-icon-arrow-left" aria-hidden="true" />
+                <span class="web-icon-arrow-left" aria-hidden="true"></span>
             </button>
             <button
                 class="web-icon-button"
@@ -59,7 +59,7 @@
                 disabled={isEnd}
                 on:click={next}
             >
-                <span class="web-icon-arrow-right" aria-hidden="true" />
+                <span class="web-icon-arrow-right" aria-hidden="true"></span>
             </button>
         </div>
     </div>

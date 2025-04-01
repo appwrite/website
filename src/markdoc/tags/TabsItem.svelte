@@ -1,9 +1,14 @@
 <script lang="ts">
-    import { getContext } from 'svelte';
+    import { getContext, type Snippet } from 'svelte';
     import type { TabsContext } from './Tabs.svelte';
 
-    export let id: string;
-    export let title: string;
+    interface Props {
+        id: string;
+        title: string;
+        children: Snippet;
+    }
+
+    const { id, title, children }: Props = $props();
 
     const ctx = getContext<TabsContext>('tabs');
 
@@ -16,5 +21,5 @@
 </script>
 
 <div class="web-u-sep-block-start pt-4" {...$content(id)} use:content>
-    <slot />
+    {@render children()}
 </div>

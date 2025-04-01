@@ -1,7 +1,7 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import type { HTMLButtonAttributes, HTMLAnchorAttributes } from 'svelte/elements';
     import { cva, type VariantProps } from 'cva';
+    import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
 
     const card = cva(
         [

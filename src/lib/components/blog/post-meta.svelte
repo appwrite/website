@@ -73,14 +73,14 @@
                                 target="_blank"
                                 rel="noopener, noreferrer"
                             >
-                                <span class={sharingOption.icon} aria-hidden="true" />
+                                <span class={sharingOption.icon} aria-hidden="true"></span>
                             </a>
                         {:else}
                             <button
                                 aria-label={sharingOption.label}
                                 on:click={() => handleCopy(currentURL)}
                             >
-                                <span class={sharingOption.icon} aria-hidden="true" />
+                                <span class={sharingOption.icon} aria-hidden="true"></span>
                             </button>
                         {/if}
                     </li>

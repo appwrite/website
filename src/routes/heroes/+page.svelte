@@ -148,7 +148,7 @@
     <div class="web-big-padding-section">
         <div class="py-10">
             <div class="web-big-padding-section-level-2">
-                <section class="container hero web-u-padding-block-end-0">
+                <section class="hero web-u-padding-block-end-0 container">
                     <div>
                         <h1 class="text-display font-aeonik-pro text-primary">Appwrite Heroes</h1>
                         <p class="text-body mt-5 font-medium">
@@ -354,7 +354,7 @@
                     </div>
                 </div>
                 <div class="web-big-padding-section-level-2 relative">
-                    <div class="container relative">
+                    <div class="relative container">
                         <FooterNav noBorder />
                         <MainFooter />
                     </div>
