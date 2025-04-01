@@ -21,18 +21,18 @@ export const versions: Readonly<Array<Omit<Version, 'cloud'>>> = allVersions.fil
     (v) => v !== 'cloud'
 );
 
-export const Service {
-    Account = 'account',
-    Avatars = 'avatars',
-    Databases = 'databases',
-    Functions = 'functions',
-    Messaging = 'messaging',
-    Health = 'health',
-    Locale = 'locale',
-    Storage = 'storage',
-    Teams = 'teams',
-    Users = 'users',
-    Sites = 'sites'
+export const Service = {
+    Account: 'account',
+    Avatars: 'avatars',
+    Databases: 'databases',
+    Functions: 'functions',
+    Messaging: 'messaging',
+    Health: 'health',
+    Locale: 'locale',
+    Storage: 'storage',
+    Teams: 'teams',
+    Users: 'users',
+    Sites: 'sites'
 } as const;
 
 export type ServiceType = typeof Service;
