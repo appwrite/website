@@ -1,6 +1,11 @@
 <script lang="ts">
     import { trackEvent } from '$lib/actions/analytics';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button } from '$lib/components/ui';
+
+    const action = (node: HTMLElement) => {
+        console.log(node, 'mounted');
+    };
 </script>
 
 <img
@@ -16,13 +21,14 @@
         <h2 class="text-display font-aeonik-pro text-primary max-w-[500px] text-center">
             Start building with Appwrite today
         </h2>
-        <a
+        <Button
+            variant="transparent"
             href={getAppwriteDashboardUrl()}
-            class="web-button is-transparent web-self-center"
-            on:click={() => trackEvent({ plausible: { name: 'Get started in pre footer' } })}
+            class="self-center"
+            onclick={() => trackEvent({ plausible: { name: 'Get started in pre footer' } })}
         >
             <span class="text">Get started</span>
-        </a>
+        </Button>
     </section>
     <section
         class="web-card is-transparent has-border-gradient web-u-max-inline-width-584-mobile web-mx-auto-mobile web-u-inline-width-100-percent-mobile p-8!"
@@ -44,10 +50,11 @@
                     <p class="web-strip-plans-info text-caption font-medium">
                         A great fit for passion projects and small applications.
                     </p>
-                    <a
+                    <Button
+                        variant="secondary"
                         href={getAppwriteDashboardUrl('/register')}
-                        class="web-button is-secondary is-full-width-mobile web-u-cross-child-end"
-                        on:click={() =>
+                        class="web-u-cross-child-end w-full! md:w-fit"
+                        onclick={() =>
                             trackEvent({
                                 plausible: {
                                     name: 'Get started Free plan'
@@ -55,7 +62,7 @@
                             })}
                     >
                         <span class="text" style:padding-inline="0.5rem">Get started</span>
-                    </a>
+                    </Button>
                 </div>
             </li>
             <li class="web-strip-plans-item web-strip-plans-container-query">
@@ -77,21 +84,20 @@
                         For production applications that need powerful functionality and resources
                         to scale.
                     </p>
-                    <a
+                    <Button
                         href={getAppwriteDashboardUrl('/console?type=create&plan=tier-1')}
-                        class="web-button is-full-width-mobile web-u-cross-child-end"
+                        class="web-u-cross-child-end w-full! md:w-fit"
                         target="_blank"
                         rel="noopener noreferrer"
-                        on:click={() =>
+                        onclick={() =>
                             trackEvent({
                                 plausible: {
                                     name: 'Get started Pro plan'
                                 }
                             })}
                     >
-                        <!-- <span class="text">Start trial</span> -->
                         <span class="text">Start building</span>
-                    </a>
+                    </Button>
                 </div>
             </li>
             <li class="web-strip-plans-item web-strip-plans-container-query">
@@ -110,12 +116,13 @@
                         For teams that handle more complex and large projects and need more control
                         and support.
                     </p>
-                    <a
+                    <Button
+                        variant="secondary"
                         href={getAppwriteDashboardUrl('/console?type=create&plan=tier-2')}
-                        class="web-button is-secondary is-full-width-mobile web-u-cross-child-end"
+                        class="web-u-cross-child-end w-full! md:w-fit"
                         target="_blank"
                         rel="noopener noreferrer"
-                        on:click={() =>
+                        onclick={() =>
                             trackEvent({
                                 plausible: {
                                     name: 'Get started Scale plan'
@@ -123,7 +130,7 @@
                             })}
                     >
                         <span class="text">Start building</span>
-                    </a>
+                    </Button>
                 </div>
             </li>
             <li class="web-strip-plans-item web-strip-plans-container-query">
@@ -139,12 +146,13 @@
                     <p class="web-strip-plans-info text-caption font-medium">
                         For enterprises that need more power and premium support.
                     </p>
-                    <a
+                    <Button
                         href="/contact-us/enterprise"
-                        class="web-button is-secondary is-full-width-mobile web-u-cross-child-end"
+                        variant="secondary"
+                        class="web-u-cross-child-end w-full md:w-fit"
                         target="_blank"
                         rel="noopener noreferrer"
-                        on:click={() =>
+                        onclick={() =>
                             trackEvent({
                                 plausible: {
                                     name: 'Get started Scale plan'
@@ -152,7 +160,7 @@
                             })}
                     >
                         <span class="text" style:padding-inline="0.5rem">Contact us</span>
-                    </a>
+                    </Button>
                 </div>
             </li>
         </ul>

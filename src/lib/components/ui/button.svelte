@@ -1,12 +1,12 @@
 <script lang="ts">
+    import { Icon, type IconType } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
-    import { emptyMeltElement, melt, type AnyMeltElement } from '@melt-ui/svelte';
-    import { cva, type VariantProps } from 'cva';
+    import { type AnyMeltElement, emptyMeltElement, melt } from '@melt-ui/svelte';
+    import { type VariantProps, cva } from 'cva';
+    import type { Snippet } from 'svelte';
     import type { Action } from 'svelte/action';
     import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
-    import InlineTag from './inline-tag.svelte';
-    import type { Snippet } from 'svelte';
-    import { type IconType, Icon } from '$lib/components/ui';
+    import { InlineTag } from '$lib/components/ui';
 
     // TODO: replace _button.scss with Tailwind classes for long-term maintainability
     const button = cva(['web-button'], {
@@ -24,26 +24,19 @@
         | (HTMLButtonAttributes & { href?: undefined })
         | (HTMLAnchorAttributes & { href: string });
 
-    type $$Props = ButtonProps &
+    type Props = ButtonProps &
         VariantProps<typeof button> & {
-            use?:
-                | Action<HTMLButtonElement | HTMLAnchorElement, any>
-                | [Action<HTMLButtonElement | HTMLAnchorElement, any>, any];
-        } & { element?: AnyMeltElement };
-
-    type Props = $$Props & {
-        variant?: $$Props['variant'];
-        use?: $$Props['use'];
-        element?: AnyMeltElement;
-        icon?: IconType;
-        children: Snippet;
-        tag?: Snippet;
-    };
+            action?: Action;
+            element?: AnyMeltElement;
+            icon?: Snippet;
+            children: Snippet;
+            tag?: Snippet;
+        };
 
     const {
         href,
-        variant = 'primary',
-        use = undefined,
+        variant,
+        action = () => {},
         element,
         icon,
         children,
@@ -52,54 +45,24 @@
         ...rest
     }: Props = $props();
 
-    let meltElement = $derived(element ?? emptyMeltElement);
+    const meltElement = element ?? emptyMeltElement;
     const buttonClasses = classNames(button({ variant }), classes);
-
-    const applyAction = (node: HTMLButtonElement | HTMLAnchorElement) => {
-        if (!use) return { destroy: () => {} };
-
-        if (typeof use === 'function') {
-            return use(node);
-        } else if (Array.isArray(use)) {
-            const [action, params] = use;
-            return action(node, params);
-        }
-
-        return { destroy: () => {} };
-    };
 </script>
 
-{#snippet iconElement(type: IconType)}
-    <Icon icon={type} />
-{/snippet}
-
 {#if href}
-    <a
-        {...rest as HTMLAnchorAttributes}
-        {href}
-        class={buttonClasses}
-        use:melt={$meltElement}
-        use:applyAction
-    >
+    <a use:action {href} class={buttonClasses} {...rest as HTMLAnchorAttributes}>
         {#if icon}
-            {@render iconElement(icon)}
+            {@render icon()}
         {/if}
         {@render children()}
         {#if tag}
-            <InlineTag>
-                {@render tag()}
-            </InlineTag>
+            {@render tag()}
         {/if}
     </a>
 {:else}
-    <button
-        {...rest as HTMLButtonAttributes}
-        class={buttonClasses}
-        use:melt={$meltElement}
-        use:applyAction
-    >
+    <button use:action class={buttonClasses} {...rest as HTMLButtonAttributes}>
         {#if icon}
-            {@render iconElement(icon)}
+            {@render icon()}
         {/if}
         {@render children()}
         {#if tag}

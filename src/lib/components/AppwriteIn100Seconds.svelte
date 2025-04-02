@@ -14,16 +14,18 @@
 
 <Button
     class="cursor-pointer shadow-[0_2px_40px_rgba(0,0,0,0.5)] transition-opacity hover:opacity-90 active:scale-95"
-    element={trigger}
+    action={trigger}
     onclick={() => {
         trackEvent({
             plausible: { name: 'Appwrite in 100 seconds' },
             posthog: { name: 'intro-video-btn_hero_click' }
         });
     }}
-    icon="play"
 >
     Appwrite in 100 seconds
+    {#snippet icon()}
+        <Icon icon="play" />
+    {/snippet}
 </Button>
 {#if $open}
     <div use:melt={$portalled}>
