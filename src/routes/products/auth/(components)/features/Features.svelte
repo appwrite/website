@@ -20,7 +20,7 @@
     ];
 </script>
 
-<div class="md:container relative pt-40 pb-32">
+<div class="relative pt-40 pb-32 md:container">
     <div
         class={classNames(
             'relative mx-auto max-h-[50vh] lg:max-w-[85vw] xl:max-w-[75vw]',
@@ -57,7 +57,7 @@
                 methods for them to identify and login.
             </p>
         </div>
-        <div class="mt-8 mx-auto max-w-md md:max-w-2xl">
+        <div class="mx-auto mt-8 max-w-md md:max-w-2xl">
             <div class="flex flex-wrap items-center gap-3 md:justify-center">
                 {#each platforms as { label, docs }}
                     <a

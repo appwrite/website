@@ -117,7 +117,7 @@
                     style="position: absolute;"
                 />
             </div>
-            <div class="bg-overlay" />
+            <div class="bg-overlay"></div>
         </section>
         <section>
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">Show me some code</h2>

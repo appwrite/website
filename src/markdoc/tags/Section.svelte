@@ -1,11 +1,16 @@
 <script lang="ts">
+    import { getContext, hasContext, type Snippet } from 'svelte';
     import { type Writable } from 'svelte/store';
     import Heading from '../nodes/Heading.svelte';
-    import { getContext, hasContext } from 'svelte';
 
-    export let id: string;
-    export let step: number;
-    export let title: string;
+    interface Props {
+        id: string;
+        step: number;
+        title: string;
+        children: Snippet;
+    }
+
+    let { id, step, title, children }: Props = $props();
 
     if (hasContext('articleHasNumericBadge')) {
         getContext<Writable<boolean>>('articleHasNumericBadge').set(true);
@@ -20,6 +25,6 @@
                 {title}
             </Heading>
         </header>
-        <slot />
+        {@render children()}
     </section>
 </section>

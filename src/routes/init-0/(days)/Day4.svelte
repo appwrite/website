@@ -28,10 +28,10 @@
                 </p>
                 <div class="web-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
                     <span class="text">Announcement</span>
-                    <span class="web-icon-arrow-right" />
+                    <span class="web-icon-arrow-right"></span>
                 </div>
                 <img src={illustration} alt="" />
-                <div class="circle" />
+                <div class="circle"></div>
             </div>
         </a>
         <div
@@ -55,7 +55,7 @@
                 <h3 class="text-label text-primary" style="max-width: 300px">Event: Logic</h3>
                 <div class="web-card-link u-flex u-cross-center">
                     <span class="text">Join</span>
-                    <span class="web-icon-arrow-right" />
+                    <span class="web-icon-arrow-right"></span>
                 </div>
             </div>
             <img
@@ -75,7 +75,7 @@
             </h3>
             <div class="web-card-link u-flex u-cross-center">
                 <span class="text">Article</span>
-                <span class="web-icon-arrow-right" />
+                <span class="web-icon-arrow-right"></span>
             </div>
             <div>
                 <Animations.Operators />
@@ -91,7 +91,7 @@
                     <h3 class="text-label text-primary" style="max-width: 300px">Product tour</h3>
                     <div class="web-card-link u-flex u-cross-center">
                         <span class="text">Watch</span>
-                        <span class="web-icon-arrow-right" />
+                        <span class="web-icon-arrow-right"></span>
                     </div>
                 </div>
                 <Video
@@ -110,7 +110,7 @@
             <h3 class="text-label text-primary">Documentation</h3>
             <div class="web-card-link u-flex u-cross-center">
                 <span class="text">Learn more</span>
-                <span class="web-icon-arrow-right" />
+                <span class="web-icon-arrow-right"></span>
             </div>
         </a>
     </div>

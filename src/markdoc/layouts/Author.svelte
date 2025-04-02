@@ -127,7 +127,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <span class="web-icon-github" aria-hidden="true" />
+                                    <span class="web-icon-github" aria-hidden="true"></span>
                                 </a>
                             </li>
                         {/if}
@@ -140,7 +140,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <span class="web-icon-x" aria-hidden="true" />
+                                    <span class="web-icon-x" aria-hidden="true"></span>
                                 </a>
                             </li>
                         {/if}
@@ -153,7 +153,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <span class="web-icon-linkedin" aria-hidden="true" />
+                                    <span class="web-icon-linkedin" aria-hidden="true"></span>
                                 </a>
                             </li>
                         {/if}

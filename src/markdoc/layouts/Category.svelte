@@ -41,7 +41,7 @@
         <div class="web-big-padding-section-level-2">
             <div class="container">
                 <a class="web-link web-u-color-text-secondary items-baseline" href="/blog">
-                    <span class="web-icon-chevron-left" aria-hidden="true" />
+                    <span class="web-icon-chevron-left" aria-hidden="true"></span>
                     <span>Back to blog</span>
                 </a>
                 <div class="web-category-header mt-6">

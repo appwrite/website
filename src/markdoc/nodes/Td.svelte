@@ -11,7 +11,7 @@
     setContext('isCodeInsideTd', isCodeInsideTd);
 </script>
 
-<td class="py-[0.5625rem] px-3 text-sm leading-[1.375rem]" {align} {colspan} {rowspan}>
+<td class="px-3 py-[0.5625rem] text-sm leading-[1.375rem]" {align} {colspan} {rowspan}>
     <div class:center-align={isCodeInsideTd}>
         <slot />
     </div>
